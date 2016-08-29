@@ -101,12 +101,18 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
                 'class' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
 
-            ->add('imageBig', 'sonata_type_model_list', array(
+            /*`->add('imageBig', 'sonata_type_model_list', array(
                 'required' => false,
                 'label' => 'form.fdc_page_participate_section.image_big',
                 'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getModelManager(),
                 'class' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
+            ))*/
+
+            ->add('pdf', 'sonata_type_model_list', array(
+                'sonata_field_description' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['pdf'],
+                'model_manager' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getModelManager(),
+                'class' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['pdf']->getAssociationAdmin()->getClass(),
             ))
         ;
     }

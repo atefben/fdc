@@ -1,0 +1,64 @@
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}retrospective retrospective-home restrospective-init{% endblock %}
+
+{% block body %}
+<section class="border-bottom s-slider-retrospective">
+    {% include 'FDCCorporateBundle:Retrospective:years_slider_mini.html.twig' %}
+
+    <div class="ajax-section"><div class="contain-ajax">
+            <nav class="navigation-sticky">
+                <ul>
+                    <li><a href="retrospective-poster.html">L'affiche</a></li>
+                    <li class="active"><a href="selection.html">La sélection</a></li>
+                    <li><a href="jury.html">Les jurys</a></li>
+                    <li><a href="retrospective-palmares.html">Le palmarès</a></li>
+                    <li><a href="evenements.html">Les évènements</a></li>
+                    <li><a href="medias.html">Les médias</a></li>
+                    <li><a href="articles.html">L'actualité</a></li>
+                </ul>
+            </nav>
+            <nav class="navigation-sticky-02">
+                <ul>
+                    <li><a href="selection.html">En Compétition</a></li>
+                    <li><a href="selection-cr.html">Un certain regard</a></li>
+                    <li><a href="selection-hc.html">Hors compétition</a></li>
+                    <li><a href="selection-ss.html">Séances spéciales</a></li>
+                    <li><a href="selection-cf.html">Cinéfondation</a></li>
+                    <li><a href="selection-cm.html">courts métrages</a></li>
+                    <li><a href="selection-cc.html">cannes classics</a></li>
+                    <li class="active"><a href="selection-cp.html">cinéma de la plage</a></li>
+                </ul>
+            </nav>
+
+            <div class="all-contain">
+
+                <div class="contain-title contain-title-small vFlexAlign border-bottom">
+                    <h2 class="title-04">Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public.</h2>
+                </div>
+
+                <article class="block-movie-preview" style="background-image: url(&quot;media/images/retrospective-poster-01.jpg&quot;)">
+                    <div class="bck-hover">
+                        <div class="wrapper-item">
+                            <div class="poster">
+                                <img src="media/images/retrospective-poster-01.jpg" alt="images films"  >
+                            </div>
+                            <div class="infos">
+                                <span class="date-infos">Jeudi 12 mai  <span class="hours">21:30</span></span>
+
+                                <a href="#"><strong class="name-f">VOYAGE A TRAVERS LE CINEMA FRANCAIS</strong></a>
+                                <a href="#"><span class="names-a">Frédéric MENANT - Tim GARCIA</span></a>
+                                <span class="date">2016 - 03:10</span>
+
+                                <p class="description">
+                                    Le Festival de Cannes a choisi pour l’affiche de sa 58e édition un couple qui incarne à la perfection l’esprit du cinéma. L'affiche a été conçue et réalisée par Frédéric Menant et Tim Garcia de l'agence It'suptoyou.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div> <!-- end all contain -->
+        </div>
+    </div>
+</section>
+{% endblock %}

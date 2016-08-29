@@ -15,12 +15,12 @@
     </div> <!-- end block push -->
 
     <div class="block-search block-01">
-      <form action="">
+      <form action="ajax-medialib.html">
         <div class="vFlexAlign">
           <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id='s-text' ></label>
-          <label for="s-photo" class="icon-s vFlexAlign active"><i class="icon icon-photo"></i><span class="text">Photos</span><input type="checkbox" name="photo" id='s-photo'checked></label>
-          <label for="s-video" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">Vidéos</span><input type="checkbox" name="photo" id='s-video'></label>
-          <label for="s-audio" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">Audios</span><input type="checkbox" name="photo" id='s-audio'></label>
+          <label for="s-photo" class="icon-s vFlexAlign "><i class="icon icon-photo"></i><span class="text">Photos</span><input class="choice" type="checkbox" name="photo" id='s-photo' ></label>
+          <label for="s-video" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">Vidéos</span><input class="choice" type="checkbox" name="video" id='s-video'></label>
+          <label for="s-audio" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">Audios</span><input class="choice" type="checkbox" name="audio" id='s-audio'></label>
         </div>
         <div class="slider-selection">
           <span id="slider-snap-value-lower" class="number"></span>
@@ -31,33 +31,39 @@
         </div>
 
         <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>lancer la recherche</button>
-
+        <!-- TODO back - il faudra peut-être modifier le JS : ajax.js fonction ajaxMedialib -->
       </form>
     </div>
 
-    <div class="grid-01 isotope-03 block-01 padding-bottom">
+    <div class="contain-title vFlexAlign">
+      <h1 class="title-01">Notre sélection</h1>
+    </div>
+
+    <div class="grid-01 isotope-03 block-01 padding-bottom block-mediatheque">
       <div class="grid-sizer"></div>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="media/images/articles-01.jpg" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-photo"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+        <a href="#" class="linkAllCover"></a>
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="media/images/articles-01.jpg" alt="" />
             </div>
-            <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
           </div>
-        </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-photo"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            </div>
+          </div>
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -77,6 +83,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -96,6 +103,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -115,6 +123,7 @@
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -134,6 +143,7 @@
       </article>
 
       <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
@@ -153,6 +163,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -172,6 +183,7 @@
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -191,6 +203,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -210,6 +223,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -229,6 +243,7 @@
       </article>
 
       <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
@@ -248,6 +263,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -267,6 +283,7 @@
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -286,6 +303,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -306,6 +324,7 @@
 
 
     <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+      <a href="#" class="linkAllCover"></a>
       <div class="image">
         <div class="image-wrapper">
           <img src="media/images/articles-01.jpg" alt="" />
@@ -325,6 +344,7 @@
     </article>
 
     <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+      <a href="#" class="linkAllCover"></a>
       <div class="image">
         <div class="image-wrapper">
           <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -345,6 +365,7 @@
 
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -364,6 +385,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -383,6 +405,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />

@@ -11,7 +11,7 @@ class DefaultController extends Controller
     /**
      * @Route("/corporate")
      * @Route("/")
-     * @Template()
+     * @Template("FDCCorporateBundle:Default:index.html.twig")
      */
     public function indexAction()
     {

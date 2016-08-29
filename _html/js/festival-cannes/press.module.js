@@ -1047,18 +1047,24 @@ $(document).ready(function () {
     $('.press .read-more').on('click', function (e) {
       e.preventDefault();
       $(this).hide();
+      var value = jQuery(this).attr('data-offset');
       $.ajax({
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.loadPressReleaseUrl,
+        url: GLOBALS.urls.loadPressReleaseUrl + "?offset=" + value,
         success: function (data) {
-          var $data = $(data).find('.gridelement');
-          var $container = $('#gridAudios'),
-            $grid;
+          var $data = data;
+          var $container = $('#gridAudios');
+          var  $grid;
           $grid = $container.imagesLoaded(function () {
             setGrid($grid, $data, false);
           });
+          setTimeout(function() {
+            $('.item').addClass('visible');
+            $grid.isotope('layout');
+          },1000);
+
         }
       });
     });

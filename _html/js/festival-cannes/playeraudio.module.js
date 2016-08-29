@@ -54,6 +54,30 @@ function audioInit(id, cls, havePlaylist) {
     }
 };
 
+function updateShareLink() {
+    var $audio    = $('.audio-container');
+    var fbHref = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
+        '&link=CUSTOM_URL' +
+        '&picture=CUSTOM_IMAGE' +
+        '&name=CUSTOM_NAME' +
+        '&caption=' +
+        '&description=CUSTOM_DESC' +
+        '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
+        '&display=popup';
+    twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
+    $container       = $('.content-article');
+    fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent($audio.attr('data-link')));
+    fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($audio.attr('data-img')));
+    fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($audio.parent().find('.title-article').html()));
+    fbHref       = fbHref.replace('CUSTOM_DESC', '');
+    $container.find('.buttons .facebook').attr('href', fbHref);
+    // CUSTOM LINK TWITTER
+    var twHref   = twitterLink;
+    twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($audio.parent().find('.title-article').html() + " " + $audio.attr('data-link')));
+    $container.find('.buttons .twitter').attr('href', twHref);
+
+}
+
 function audioLoad(aid, playerInstance, havePlaylist, callback) {
     var $container    = $("#"+aid.id).closest('.audio-container');
 
@@ -81,6 +105,7 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
     });
 
     playerInstance.on('ready', function() {
+        updateShareLink();
         this.setVolume(100);
     }).on('play', function() {
         $container.removeClass('state-init').removeClass('state-complete');

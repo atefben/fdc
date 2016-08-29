@@ -1,5 +1,6 @@
 {% trans_default_domain 'FDCPressBundle' %}
-
+{%  if pressNews is defined %}
 {% for article in pressNews %}
     {% include 'FDCPressBundle:News:list/article.html.twig' %}
 {% endfor %}
+    {% endif %}

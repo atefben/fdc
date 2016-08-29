@@ -144,6 +144,12 @@ $(document).ready(function() {
 
     $('.button.email.self').on('click touchstart', function(e) {
       e.preventDefault();
+
+      var message = $('.tetiere-movie h2').html()+" - "+$('.title-original').next().find('a').html()+"\r\r";
+      message += $('.synopsis p').html().replace(/<br>/g,"\r")+"\r\r";
+      message += location.href;
+      $('#contact_message').val(message);
+
       $('.popin-mail:not(.media)').addClass('visible-popin');
       $("#main").addClass('overlay-popin');
       

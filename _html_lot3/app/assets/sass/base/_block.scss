@@ -99,6 +99,7 @@
   }
 }
 
+
 // - BLOCK 01 medium
 .block-01-m {
   margin: 40px auto;
@@ -153,6 +154,19 @@
 
 }
 
+// - BLOCK 01 x small
+.block-01-mms {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 750px;
+
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+}
+
 // - BLOCK 02
 .block-02 {
   background-color: #f6f6f6;
@@ -187,6 +201,7 @@
     height:100%;
     display: block;
     position: absolute;
+    z-index: 6;
   }
 
   .link {
@@ -518,6 +533,7 @@
       width: 38%;
       box-sizing: border-box;
       padding-right: 100px;
+      line-height: 24px;
     }
 
     .text-01 {
@@ -532,6 +548,12 @@
   }
 }
 
+
+// - BLOCK VIDEO
+
+.block-videos {
+  margin-top: 50px;
+}
 
 // - BLOCK FILMS
 .block-films {
@@ -642,6 +664,10 @@
     background-color: #141414;
     transition: .5s;
 
+    .ie & {
+      width: 100%;
+    }
+
     &:hover {
       background-color:rgba(0, 0, 0, .7);
 
@@ -656,12 +682,22 @@
     width: 708px;
     display:flex;
     margin: 0 auto;
+
+    .ie & {
+      width: 72%;
+    }
+
   }
 
   .wrapper-item-big {
     width: 989px;
     display:flex;
     margin: 0 auto;
+
+    .ie & {
+      width: 72%;
+    }
+
 
     .description {
       width: auto;
@@ -676,7 +712,12 @@
 
   .poster {
     display:inline-block;
-    width: 100%
+    width: 100%;
+
+    .ie & {
+      width: auto;
+    }
+
   }
 
   .infos {
@@ -686,6 +727,11 @@
     justify-content: center;
     margin-left: 80px;
     width: 100%;
+
+    .ie & {
+      width: 30%;
+    }
+
   }
 
   .big-date {
@@ -705,6 +751,17 @@
     text-align: center;
     width: 355px;
     margin-bottom: 40px;
+
+    .ie & {
+      width: 100%;
+    }
+
+    .palm-gold &{
+      font-family: $CamphorRegular;
+      font-size: .875rem;
+      line-height: 24px;
+    }
+
   }
 
   .name-f {
@@ -732,6 +789,12 @@
     font-size: .8125rem;
     line-height: 18px;
     font-family: $CamphorItalic;
+
+    .hours {
+      font-size: 0.69rem;
+      color: #999;
+      font-family: $CamphorRegular;
+    }
   }
 
   .name-award {
@@ -742,6 +805,10 @@
     font-family: $CamphorBold;
     line-height: 24px;
     text-align: center;
+
+    .ie & {
+      width:100%;
+    }
   }
 
   .date {
@@ -820,6 +887,10 @@
 
     &:hover:after {
       opacity:.1;
+
+      .mobile & {
+        opacity: .5;
+      }
     }
 
     img {
@@ -857,6 +928,10 @@
 
       &:hover:after {
         border: 4px solid $gold;
+
+        .mobile & {
+          border: 0px solid;
+        }
       }
     }
 
@@ -980,6 +1055,10 @@
     flex-direction: column;
     justify-content: initial;
     text-align: center;
+
+    .ie & {
+      padding-top: 0px !important;
+    }
   }
 
   .bright & {
@@ -1145,7 +1224,7 @@
   }
 
   .btn-center {
-    width: 173px;
+    width: 180px;
     margin: 0 auto;
   }
 
@@ -1782,4 +1861,15 @@
     margin-bottom: 30px;
     color: #fff;
   }
+}
+
+.block-mediatheque {
+  @media screen and (max-width: 1024px){
+    width: 1024px;
+  }
+
+  @media screen and  (min-width: 1024px){
+    width: 1280px;
+  }
+
 }

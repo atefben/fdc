@@ -62,14 +62,7 @@ var timeout = 1000,
                 </div>\
             </div>\
         </div>',
-    facebookLink = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
-        '&link=CUSTOM_URL' +
-        '&picture=CUSTOM_IMAGE' +
-        '&name=CUSTOM_NAME' +
-        '&caption=' +
-        '&description=CUSTOM_DESC' +
-        '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
-    '&display=popup',
+    $topBar
     twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
@@ -137,7 +130,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
     }
 
-    // CUSTOM LINK FACEBOOK
+    /*// CUSTOM LINK FACEBOOK
     var fbHref = $topBar.find('.buttons .facebook').attr('href');
     fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
     $topBar.find('.buttons .facebook').attr('href', fbHref);
@@ -175,7 +168,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             'url'      : shareUrl
         }, playerInstance);
     });
-
+*/
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
             percentage;

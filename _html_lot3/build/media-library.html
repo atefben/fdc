@@ -73,7 +73,7 @@
         <a href="/"><img src="img/header/palme.svg" alt="Festival de Cannes" class="palm" /></a>
         <h1><a href="/"><img width="200" src="img/header/logo.svg" alt="Festival de Cannes" /></a></h1>
         <h2><a href="/">11-22 Mai 2016</a></h2>
-        <p class="stick"><a href="/"><img width="178" src="img/header/logo.svg" alt="Festival de Cannes" /></a></p>
+        <p class="stick"><a href="/"><img width="178" src="img/header/logo178.svg" alt="Festival de Cannes" /></a></p>
       </div>
       <div id="partners">
         <a href="//www.chopard.fr/" target="_blank"><img width="84" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" /></a>
@@ -137,10 +137,10 @@
             <ul>
               <li><a href="participate-register-movie.html">inscrire un film</a></li>
               <li><a href="#">s'accréditer</a></li>
-              <li><a href="#">guide pratique</a></li>
-              <li><a href="#">Partenaires</a></li>
-              <li><a href="#">Fournisseurs</a></li>
-              <li><a href="#">Remerciement</a></li>
+              <li><a href="participate_template.html">guide pratique</a></li>
+              <li><a href="participate_template.html">Partenaires</a></li>
+              <li><a href="participate_template.html">Fournisseurs</a></li>
+              <li><a href="participate_template.html">Remerciement</a></li>
             </ul>
           </li>
           <li>
@@ -198,12 +198,12 @@
     </div> <!-- end block push -->
 
     <div class="block-search block-01">
-      <form action="">
+      <form action="ajax-medialib.html">
         <div class="vFlexAlign">
           <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id='s-text' ></label>
-          <label for="s-photo" class="icon-s vFlexAlign active"><i class="icon icon-photo"></i><span class="text">Photos</span><input type="checkbox" name="photo" id='s-photo'checked></label>
-          <label for="s-video" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">Vidéos</span><input type="checkbox" name="photo" id='s-video'></label>
-          <label for="s-audio" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">Audios</span><input type="checkbox" name="photo" id='s-audio'></label>
+          <label for="s-photo" class="icon-s vFlexAlign "><i class="icon icon-photo"></i><span class="text">Photos</span><input class="choice" type="checkbox" name="photo" id='s-photo' ></label>
+          <label for="s-video" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">Vidéos</span><input class="choice" type="checkbox" name="video" id='s-video'></label>
+          <label for="s-audio" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">Audios</span><input class="choice" type="checkbox" name="audio" id='s-audio'></label>
         </div>
         <div class="slider-selection">
           <span id="slider-snap-value-lower" class="number"></span>
@@ -214,33 +214,39 @@
         </div>
 
         <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>lancer la recherche</button>
-
+        <!-- TODO back - il faudra peut-être modifier le JS : ajax.js fonction ajaxMedialib -->
       </form>
     </div>
 
-    <div class="grid-01 isotope-03 block-01 padding-bottom">
+    <div class="contain-title vFlexAlign">
+      <h1 class="title-01">Notre sélection</h1>
+    </div>
+
+    <div class="grid-01 isotope-03 block-01 padding-bottom block-mediatheque">
       <div class="grid-sizer"></div>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="media/images/articles-01.jpg" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-photo"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+        <a href="#" class="linkAllCover"></a>
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="media/images/articles-01.jpg" alt="" />
             </div>
-            <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
           </div>
-        </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-photo"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            </div>
+          </div>
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -260,6 +266,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -279,6 +286,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -298,6 +306,7 @@
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -317,6 +326,7 @@
       </article>
 
       <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
@@ -336,6 +346,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -355,6 +366,7 @@
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -374,6 +386,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -393,6 +406,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -412,6 +426,7 @@
       </article>
 
       <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
@@ -431,6 +446,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -450,6 +466,7 @@
       </article>
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -469,6 +486,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -489,6 +507,7 @@
 
 
     <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+      <a href="#" class="linkAllCover"></a>
       <div class="image">
         <div class="image-wrapper">
           <img src="media/images/articles-01.jpg" alt="" />
@@ -508,6 +527,7 @@
     </article>
 
     <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+      <a href="#" class="linkAllCover"></a>
       <div class="image">
         <div class="image-wrapper">
           <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -528,6 +548,7 @@
 
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="media/images/articles-01.jpg" alt="" />
@@ -547,6 +568,7 @@
       </article>
 
       <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
@@ -566,6 +588,7 @@
       </article>
 
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+        <a href="#" class="linkAllCover"></a>
         <div class="image">
           <div class="image-wrapper">
             <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
@@ -592,7 +615,92 @@
 
   </section>
 
-    <div id="breadcrumb">
+  <script>
+  var GLOBALS = {
+    "env" : "html",
+    "locale" : "fr",
+    "defaultDate" : "2016-05-12",
+    "dateStart": "2016-05-12",
+    "dateEnd": "2016-05-24",
+    "year" : 2017,
+    "api" : {
+      "instagramUrl" : "https://api.instagram.com/v1/tags/Cannes2016/media/recent/?access_token=18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
+      "twitterUrl" : "./json/twitter.json"
+    },
+    "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
+    "urls" : {
+      "programmationUrl" : "programmation.php",
+      "calendarProgrammationUrl" : "calendarprogrammation.html",
+      "eventUrl" : "load-evenements.php",
+      "newsUrl" : "news.html",
+      "newsUrlNext" : "news_page2.html",
+      "loadPressReleaseUrl" : "load-communique.php",
+      "selectionUrl" : "selection.html",
+      "audiosUrl": "audios.php",
+      "photosUrl": "photos.php",
+      "videosUrl": "videos.php",
+      "searchUrl": "searchsuggest.json",
+      "resultUrl": "results.json",
+    },
+    "texts" : {
+      "url" : {
+        "title" : "titre test"
+      },
+      "search" : {
+        "noresult" : "Aucun résultat"
+      },
+      "popin" : {
+        "error" : "valide",
+        "empty" : "renseignée",
+        "valid" : "Votre email a bien été envoyé !",
+        "copy"  :  "lien copié ! ",
+        "acces" :  "les contenus qui vous sont réservés sont à présents accessibles."
+      },
+      "googleMap" : {
+        "title" : "Festival de Cannes"
+      },
+      "readMore" : {
+        "more" : "Afficher <strong>plus d'actualités</strong>",
+        "nextDay" : "Passer au <strong>jour précédent</strong>"
+      },
+      "newsletter" : {
+        "errorsNotValide" : "L'adresse e-mail n'est pas valide",
+        "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+      },
+      'agenda' : {
+        'delete' : "Supprimer de votre agenda"
+      }
+    },
+    "player": {
+      "file" : "./files/mov_bbb.mp4",
+      "image" : "//dummyimage.com/960x540/c8a461/000.png",
+      "title" : "Video 1"
+    },
+    "calendar": {
+      "labelFormat": {
+        "fr" : "H [H]",
+        "default" : "h A"
+      },
+      "i18n": {
+        "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+        "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
+        "labelFormat": {
+          "fr" : "H\\hi",
+          "default" : "g:ia"
+        }
+      }
+    },
+    "socialWall": {
+      "points" : [50,60,50,450,70,50,100,320,70,0,900,70],
+      "heightGraph" : 200
+    }
+  }
+</script>
+
+
+
+<div id="breadcrumb">
     <div class="container block-01">
       <ul>
         <li>
@@ -600,7 +708,7 @@
         <i class="icon icon-arrow-right"></i>
         </li>
         <li>
-          <a href="#">Jour après jour</a>
+          <a rhref="#">Jour après jour</a>
           <i class="icon icon-arrow-right"></i>
         </li>
         <li>
@@ -652,7 +760,7 @@
     <div class="social">
       <p><img width="230" src="img/header/logo-white.svg" alt="Festival de Cannes" /></p>
       <ul>
-        <li><a class="appli" href="app.php" target="_blank"><i class="icon icon-app"></i></a></li>
+        <li><a class="appli" href="app.html" target="_blank"><i class="icon icon-app"></i></a></li>
         <li><a class="facebook" href="//www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937" target="_blank"><i class="icon icon-facebook"></i></a></li>
         <li><a class="twitter" href="//twitter.com/Festival_Cannes" target="_blank"><i class="icon icon-twitter"></i></a></li>
         <li><a class="instagram" href="//instagram.com/festivaldecannes" target="_blank"><i class="icon icon-instagram"></i></a></li>
@@ -683,6 +791,7 @@
 <div id="siteLoader" class="canvasloader"></div>
 
   <script src="js/vendors.js" ></script>
+<script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
 <script src="js/app.js" ></script>
 </body>
 </html>

@@ -31,6 +31,10 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.commonContent) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.parent.children.hideCommonContent) }}
+                                            {{ form_label(form.parent.children.hideCommonContent) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -36,8 +36,16 @@
     article {
       padding: 0;
       width: 29%;
-
       &:nth-child(2) {
+        margin: 0 6.5%;
+      }
+      &:nth-child(5) {
+        margin: 0 6.5%;
+      }
+      &:nth-child(8) {
+        margin: 0 6.5%;
+      }
+      &:nth-child(11) {
         margin: 0 6.5%;
       }
     }

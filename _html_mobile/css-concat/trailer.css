@@ -3716,6 +3716,10 @@ p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
     background: #141414;
 }
 
+.hidden-element {
+    display: none;
+}
+
 /* owl carrousel custom */
 
 .owl-carousel {
@@ -5415,6 +5419,7 @@ article .picto .icon{
 .slideshow .img img{
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .slideshow {
 
@@ -5455,6 +5460,7 @@ article .picto .icon{
   height: 100%;
   width: 100%;
   z-index: 0;
+    object-fit: cover;
 }
 .slideshow .thumbnails .thumb .image-wrapper img {
   display: block;
@@ -6543,7 +6549,7 @@ font-weight: bolder;
   width: 100%;
   margin-left: 0;
 }
-#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
+#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a, #menu .section-contain li.active-page a{
   color: #c8a461;
 }
 #menu .language ul{
@@ -7060,6 +7066,9 @@ display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 0.2em;
 }
+ .informations-video .infos-film a {
+  color: #fff;
+ }
  .informations-video .infos-film strong {
   font-size: 25px;
   text-transform: uppercase;

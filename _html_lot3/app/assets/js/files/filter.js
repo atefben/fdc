@@ -60,6 +60,33 @@ var owInitFilter = function(){
 var owRemoveElementListe = function() {
   $('.filters-02 li .icon-close').on('click', function(){
     $(this).parent().remove();
+
+
+    if(!$('.new-filter ul li').length) {
+      $('.new-filter').parent().remove();
+    }
+
+  });
+}
+
+var addNextFilters = function() {
+  $('.filters-02 li.more').on('click', function(e){
+    e.preventDefault();
+
+    $(this).remove();
+
+    var url = $(this).attr("data-url");
+
+    $.get( url, function(data) {
+      $('.c-filters').append(data);
+
+      $('.filters-02 li.more').off('click');
+      $('.filters-02 li .icon-close').off('click');
+
+      owRemoveElementListe();
+      addNextFilters();
+      owInitNavSticky(3);
+    });
   });
 }
 

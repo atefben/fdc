@@ -14,14 +14,24 @@
   width: 32%;
   padding-top: 24px;
 
-  .evenements & {
+  .linkAllCover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top:0;
+    left: 0;
+    z-index: 4;
+  }
+
+  .evenements &, .articles-list &  {
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px;
-    min-height: 305px;
+    min-height: 310px;
   }
 
-  .evenements & {
+  .evenements &, .articles-list &  {
     height: auto !important;
 
     .image {
@@ -33,14 +43,14 @@
     }
   }
 
-  .evenements & .info{
+  .evenements & .info, .articles-list & .info{
     height: auto !important;
   }
 
   &.w2.double {
     height: 613px;
 
-    .evenements & {
+    .evenements &, .articles-list &  {
       padding-left: 0px;
       min-height: 610px;
     }
@@ -50,7 +60,7 @@
     .image {
       height: 363px;
 
-      .evenements & {
+      .evenements &, .articles-list &  {
         width: 89.9%;
         height: auto;
         display: block;
@@ -87,10 +97,14 @@
     strong {
       max-width: 92%;
 
-      .evenements & {
+      .evenements &, .articles-list & {
         max-width: 74%;
         font-family: $CamphorThin;
         font-weight: normal;
+      }
+
+      .articles-list & {
+        font-family: $CamphorThin;
       }
     }
   }
@@ -106,7 +120,7 @@
       margin-top: 20px;
       max-width: 74%;
 
-      .evenements & {
+      .evenements &, .articles-list &  {
         font-size: 2.25rem;
         font-family: $CamphorThin;
         font-weight: normal;
@@ -142,7 +156,7 @@
         min-width: 100%;
         min-height: 100%;
 
-        .evenements & {
+        .evenements &, .articles-list &  {
           min-height: initial !important;
         }
 
@@ -159,7 +173,7 @@
     position: relative;
     width: 100%;
 
-    .evenements & {
+    .evenements &, .articles-list &  {
       width: 79.1%;
       height: auto;
       display: block;

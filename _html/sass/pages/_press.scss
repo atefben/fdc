@@ -1468,6 +1468,14 @@
         font-size: 0.850rem;
         line-height: 1.6em;
         margin-bottom: 30px;
+        strong {
+          font-family: $CamphorBold;
+        }
+      }
+
+      strong {
+        font-family: $CamphorBold;
+        font-weight: bold;
       }
 
       p {

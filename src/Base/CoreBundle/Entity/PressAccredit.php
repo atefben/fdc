@@ -41,6 +41,13 @@ class PressAccredit implements TranslateMainInterface
     protected $procedure;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $hideCommonContent;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -105,4 +112,27 @@ class PressAccredit implements TranslateMainInterface
         return $this->procedure;
     }
 
+
+    /**
+     * Set hideCommonContent
+     *
+     * @param boolean $hideCommonContent
+     * @return PressAccredit
+     */
+    public function setHideCommonContent($hideCommonContent)
+    {
+        $this->hideCommonContent = $hideCommonContent;
+
+        return $this;
+    }
+
+    /**
+     * Get hideCommonContent
+     *
+     * @return boolean 
+     */
+    public function getHideCommonContent()
+    {
+        return $this->hideCommonContent;
+    }
 }

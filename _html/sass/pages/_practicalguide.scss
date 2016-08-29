@@ -86,6 +86,11 @@
               border: 1px solid #d8c29f;
               padding-bottom: 22px;
 
+              strong {
+                font-family: $CamphorBold;
+                font-weight: bold;
+              }
+
               .container-title {
                 font-size: 0.75rem;
                 letter-spacing: .2em;
