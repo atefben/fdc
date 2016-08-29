@@ -62,7 +62,7 @@ class FestivalPosterManager extends CoreManager
         
         $this->mapperTranslations = array(
             'TraductionElementMultimedias' => array(
-                'result' => 'TraductionElementMultimediaDto',
+                'result' => 'PosterTraductionDto',
                 'setters' => array(
                     'setDescription' => 'Description',
                     'setTitle' => 'Libelle'
