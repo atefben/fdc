@@ -78,7 +78,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 null,
                 InputOption::VALUE_NONE,
                 'Count entities total'
-            );
+            )
+            ->addOption(
+                'only-create',
+                null,
+                InputOption::VALUE_NONE,
+                'Create only new entities'
+            )
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -216,6 +223,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $totalSaved = 0;
         $optionAssociatedNews = $input->getOption('associated-news');
         $optionCount = $input->getOption('count');
+        $onlyCreate = $input->getOption('only-create');
         $siteFDCCorporate = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
         $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
         $entities = array();
@@ -242,6 +250,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
             // old news
             $news = $dm->getRepository($entitiesArray['main_entity'])->findOneByOldNewsId($oldArticle->getId());
+            if ($onlyCreate == true && $news != null) {
+                continue;
+            }
             // set values
             if ($news == null) {
                 $news = clone $entitiesArray['main'];
