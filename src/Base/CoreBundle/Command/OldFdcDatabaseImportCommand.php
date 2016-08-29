@@ -55,8 +55,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     const TYPE_COMMUNIQUE = 23109;
 
     const MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA = 1;
+    const MEDIA_GALLERY_PHOTOGRAPHER_EYES = 2;
 
     const MEDIA_TYPE_IMAGE = 1;
+    const MEDIA_TYPE_AUDIO = 3;
+
+    const MEDIA_QUOTIDIEN_AUDIO = 1;
+
+    const VIDEO_TYPE_FESTIVAL_TV = 1;
 
     private $langs = array('fr', 'en', 'es', 'zh');
     private $entitiesCount = array();
@@ -109,14 +115,153 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         if (($onlyMedias == false && $onlyArticles == true) || ($onlyMedias == false && $onlyArticles == false)) {
             $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-            $this->importArticleActualite($dm, $mediaManager, $output, $input);
-            $this->importArticleCommunique($dm, $mediaManager, $output, $input);
+            //$this->importArticleActualite($dm, $mediaManager, $output, $input);
+            //$this->importArticleCommunique($dm, $mediaManager, $output, $input);
         }
 
         if (($onlyMedias == true && $onlyArticles == false) || ($onlyMedias == false && $onlyArticles == false)) {
-            $this->importMediaImage($dm, $mediaManager, $output, $input);
+            //$this->importMediaImage($dm, $mediaManager, $output, $input);
+            //$this->importMediaAudio($dm, $mediaManager, $output, $input);
         }
     }
+
+    private function importMediaAudio($dm, $mediaManager, $output, $input)
+    {
+        $output->writeln('<info>Import Media Audio ...</info>');
+
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60596);
+        $oldArticles[0] = $element;*/
+
+        // case one
+        // Publier dans "Quotidien - Audios"
+        // Film associé
+        $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
+            ->where('m.fileClass = :file_class')
+            ->andWhere('m.published = :published')
+            ->setParameter('file_class', self::MEDIA_TYPE_AUDIO)
+            ->setParameter('published', self::MEDIA_QUOTIDIEN_AUDIO)
+            ->getQuery()
+            ->getResult();
+
+        $oldMediasSelected = array();
+        foreach ($oldMedias as $oldMedia) {
+            $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldMediaAssociation')->findBy(array(
+                'id' => $oldMedia->getId(),
+                'objectClass' => 'Film'
+            ));
+            if (count($oldArticleAssociations) > 0) {
+                $oldMediasSelected[] = $oldMedia;
+            }
+        }
+
+        $this->importMediaAudioLoop($oldMediasSelected, $dm, $mediaManager, $output, $input, false);
+    }
+
+    private function importMediaAudioLoop($oldMedias, $dm, $mediaManager, $output, $input, $addSiteCorporate = true)
+    {
+        $totalSaved = 0;
+        $optionCount = $input->getOption('count');
+        $onlyCreate = $input->getOption('only-create');
+        $siteFDCCorporate = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
+        $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
+        $entities = array();
+        $oldMediasTotal = count($oldMedias);
+
+        foreach ($oldMedias as $oldMediaKey => $oldMedia) {
+            $output->writeln('<comment>#'. $oldMedia->getId(). ' - '. ($oldMediaKey + 1). '/'. $oldMediasTotal. '</comment>');
+            $output->writeln('<info>#'. $oldMedia->getId(). ' is matching.</info>');
+
+            // old news
+            $mediaAudio = $dm->getRepository('BaseCoreBundle:MediaImage')->findOneByOldMediaId($oldMedia->getId());
+            if ($onlyCreate == true && $mediaAudio != null) {
+                continue;
+            }
+            // set values
+            if ($mediaAudio == null) {
+                $mediaAudio = new MediaAudio();
+            }
+
+            if ($addSiteCorporate == true) {
+                if (!$mediaAudio->getSites()->contains($siteFDCCorporate)) {
+                    $mediaAudio->addSite($siteFDCCorporate);
+                }
+            }
+            /*if (!$mediaAudio->getSites()->contains($siteFDCEvent)) {
+                $mediaAudio->addSite($siteFDCEvent);
+            }*/
+            /* remove site fdc event after testing
+            if ($mediaAudio->getSites()->contains($siteFDCEvent)) {
+                $mediaAudio->removeSite($siteFDCEvent);
+            }*/
+
+            $oldMediaTranslations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findById($oldMedia->getId());
+            foreach ($oldMediaTranslations as $oldMediaTrans) {
+                $culture = ($oldMediaTrans->getCulture() == 'cn') ? 'zh' : $oldMediaTrans->getCulture();
+                $audioTrans = $mediaAudio->findTranslationByLocale($culture);
+                if ($audioTrans == null) {
+                    $audioTrans = new MediaAudioTranslation();
+                }
+
+                if ($oldMediaTrans->getHdFormatFilename() != null) {
+                    $code = $oldMediaTrans->getHdFormatFilename();
+                    $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
+                }
+
+                if ($code != null) {
+                    if ($audioTrans->getFile() == null) {
+                        $media = new Media();
+                        $audioTrans->setFile($media);
+                    } else {
+                        $media = $audioTrans->getFile();
+                    }
+
+                    $file = $this->createAudio($audioPath, $output);
+                    if ($file == null) {
+                        break;
+                    }
+                    $media->setName($oldMediaTrans->getLabel());
+                    $media->setBinaryContent($file);
+                    $media->setEnabled(true);
+                    $media->setProviderReference($oldMediaTrans->getLabel());
+                    $media->setContext('media_audio');
+                    $media->setProviderStatus(1);
+                    $media->setProviderName('sonata.media.provider.audio');
+                    $mediaManager->save($media, 'media_audio', 'sonata.media.provider.audio');
+                    $audioTrans->setFile($media);
+                    $audioTrans->setTitle($oldMediaTrans->getLabel());
+                    $audioTrans->setJobMp3State(MediaAudioTranslation::ENCODING_STATE_READY);
+                } else {
+                    $output->writeln("<error>Audio code not found for Object id #{$oldMediaTrans->getId()}</error>");
+                }
+
+                $publishedAt = $oldMedia->getPublishFor();
+                $mediaAudio->setPublishedAt($publishedAt);
+            }
+
+            if ($mediaAudio->getId() == null) {
+                $dm->persist($mediaAudio);
+            }
+            $entities[] = $mediaAudio;
+            $output->writeln('<info>To be saved...</info>');
+            $totalSaved++;
+
+            if ($totalSaved % 100 == 0) {
+                $output->writeln('<info>Saved !</info>');
+                $dm->flush();
+                $this->updateAcl($entities, 'base.admin.media_audio', $output);
+                $entities = array();
+            }
+        }
+
+        if ($optionCount) {
+            dump($this->entitiesCount);
+        } else {
+            $output->writeln('<info>Total saved: ' . $totalSaved . '</info>');
+            $dm->flush();
+            $this->updateAcl($entities, 'base.admin.media_audio', $output);
+        }
+    }
+
 
     private function importMediaImage($dm, $mediaManager, $output, $input)
     {
@@ -124,16 +269,45 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60596);
         $oldArticles[0] = $element;*/
+
+        // case one
+        // Galerie Quotidien - Diaporama
+        // id > 7816
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-            ->where('m.id > 7816')
-            ->andWhere('m.published = :published')
+            ->where('m.id >= 7816')
             ->andWhere('m.fileClass = :file_class')
+            ->andWhere('m.published = :published')
             ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
             ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
             ->getQuery()
             ->getResult();
-
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
+
+        // case third
+        // Galerie Oeil du photographe
+        // id > 11802
+        $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
+            ->where('m.id >= 11802')
+            ->andWhere('m.published = :published')
+            ->andWhere('m.fileClass = :file_class')
+            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+            ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
+            ->getQuery()
+            ->getResult();
+        $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
+
+        // case fourth
+        // Galerie Oeil du photographe
+        // id < 11802
+        $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
+            ->where('m.id < 11802')
+            ->andWhere('m.published = :published')
+            ->andWhere('m.fileClass = :file_class')
+            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+            ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
+            ->getQuery()
+            ->getResult();
+        $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input, false);
     }
 
 
@@ -205,7 +379,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(55456);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56042);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -234,7 +408,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isQuotidienMatching');
     }
 
-    private function importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input)
+
+    private function importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input, $addSiteCorporate = true)
     {
         $totalSaved = 0;
         $optionAssociatedNews = $input->getOption('associated-news');
@@ -267,12 +442,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             } else {
                 $media = new Media();
             }
-            if (!$mediaImage->getSites()->contains($siteFDCCorporate)) {
-                $mediaImage->addSite($siteFDCCorporate);
+            if ($addSiteCorporate == true) {
+                if (!$mediaImage->getSites()->contains($siteFDCCorporate)) {
+                    $mediaImage->addSite($siteFDCCorporate);
+                }
             }
-            if (!$mediaImage->getSites()->contains($siteFDCEvent)) {
+            /*if (!$mediaImage->getSites()->contains($siteFDCEvent)) {
                 $mediaImage->addSite($siteFDCEvent);
-            }
+            }*/
             /* remove site fdc event after testing
             if ($mediaImage->getSites()->contains($siteFDCEvent)) {
                 $mediaImage->removeSite($siteFDCEvent);
@@ -324,6 +501,28 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 $publishedAt->setTime($oldMedia->getHourOrder(), 0);
                 $mediaImage->setPublishedAt($publishedAt);
             }
+
+            if ($mediaImage->getId() == null) {
+                $dm->persist($mediaImage);
+            }
+            $entities[] = $mediaImage;
+            $output->writeln('<info>To be saved...</info>');
+            $totalSaved++;
+
+            if ($totalSaved % 100 == 0) {
+                $output->writeln('<info>Saved !</info>');
+                $dm->flush();
+                $this->updateAcl($entities, 'base.admin.media_image', $output);
+                $entities = array();
+            }
+        }
+
+        if ($optionCount) {
+            dump($this->entitiesCount);
+        } else {
+            $output->writeln('<info>Total saved: ' . $totalSaved . '</info>');
+            $dm->flush();
+            $this->updateAcl($entities, 'base.admin.media_image', $output);
         }
     }
 
@@ -706,6 +905,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     } else {
                                         $output->writeln("<error>Audio code not found for Object id #{$association->getObjectId()}</error>");
                                     }
+                                    $dm->flush();
                                 }
                                 if ($widget->getId() == null) {
                                     $news->addWidget($widget);
