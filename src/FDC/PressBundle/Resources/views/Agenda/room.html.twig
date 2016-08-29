@@ -30,7 +30,7 @@
                         {% set trans = img.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set file = trans.file %}
-                    <a href="{% path file, '646x567' %}" target="_blank">{% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt'), 'class': "visible first" ,'data-image': 'default' } %}</a>
+                    <a href="{% path file, '646x567' %}" target="_blank">{% thumbnail file, '646x567' with {'title': '','alt': img|trans_fallback('alt'), 'class': "visible first" ,'data-image': 'default' } %}</a>
 
                     {#                      #}
                     {#      Zone Image      #}
@@ -45,7 +45,7 @@
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                    <a href="{% path file, '646x567' %}" target="_blank">{% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt'), 'data-image': roomActive } %}</a>
+                    <a href="{% path file, '646x567' %}" target="_blank">{% thumbnail file, '646x567' with {'title': '','alt': img|trans_fallback('alt'), 'data-image': roomActive } %}</a>
                     {% endfor %}
                 </li>
             </ul>
@@ -61,7 +61,7 @@
                     {% set trans = defaultImg.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set defaultImg = trans.file %}
-                {% thumbnail defaultImg, '646x567' with {'alt': defaultImg|trans_fallback('alt') } %}
+                {% thumbnail defaultImg, '646x567' with {'title': '','alt': defaultImg|trans_fallback('alt') } %}
             </span>
             {#                      #}
             {#        Map Image     #}
@@ -74,7 +74,7 @@
                         {% set trans = img.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set file = trans.file %}
-                    {% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt') } %}
+                    {% thumbnail file, '646x567' with {'title': '','alt': img|trans_fallback('alt') } %}
                 </span>
             {% endfor %}
         </div>
