@@ -1,4 +1,14 @@
 .accreditation {
+
+  ul {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      margin-bottom: 36px;
+    }
+  }
+
   #accreditation {
     border-top: 1px solid #e3e3e3;
 
