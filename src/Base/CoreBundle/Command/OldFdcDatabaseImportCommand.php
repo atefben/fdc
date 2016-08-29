@@ -85,6 +85,18 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 InputOption::VALUE_NONE,
                 'Create only new entities'
             )
+            ->addOption(
+                'only-articles',
+                null,
+                InputOption::VALUE_NONE,
+                'Only import articles'
+            )
+            ->addOption(
+                'only-medias',
+                null,
+                InputOption::VALUE_NONE,
+                'Only import medias'
+            )
         ;
     }
 
@@ -92,11 +104,18 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     {
         $dm = $this->getContainer()->get('doctrine')->getManager();
         $mediaManager = $this->getContainer()->get('sonata.media.manager.media');
+        $onlyArticles = $input->getOption('only-articles');
+        $onlyMedias = $input->getOption('only-medias');
 
-        $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-        $this->importArticleActualite($dm, $mediaManager, $output, $input);
-        $this->importArticleCommunique($dm, $mediaManager, $output, $input);
-        //$this->importMediaImage($dm, $mediaManager, $output, $input);
+        if (($onlyMedias == false && $onlyArticles == true) || ($onlyMedias == false && $onlyArticles == false)) {
+            $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
+            $this->importArticleActualite($dm, $mediaManager, $output, $input);
+            $this->importArticleCommunique($dm, $mediaManager, $output, $input);
+        }
+
+        if (($onlyMedias == true && $onlyArticles == false) || ($onlyMedias == false && $onlyArticles == false)) {
+            $this->importMediaImage($dm, $mediaManager, $output, $input);
+        }
     }
 
     private function importMediaImage($dm, $mediaManager, $output, $input)
@@ -112,7 +131,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
             ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
             ->getQuery()
-            ->getArrayResult();
+            ->getResult();
 
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
     }
@@ -215,6 +234,99 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isQuotidienMatching');
     }
 
+    private function importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input)
+    {
+        $totalSaved = 0;
+        $optionAssociatedNews = $input->getOption('associated-news');
+        $optionCount = $input->getOption('count');
+        $onlyCreate = $input->getOption('only-create');
+        $siteFDCCorporate = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
+        $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
+        $entities = array();
+        $oldMediasTotal = count($oldMedias);
+
+        foreach ($oldMedias as $oldMediaKey => $oldMedia) {
+            $output->writeln('<comment>#'. $oldMedia->getId(). ' - '. ($oldMediaKey + 1). '/'. $oldMediasTotal. '</comment>');
+            $output->writeln('<info>#'. $oldMedia->getId(). ' is matching.</info>');
+
+            // old news
+            $mediaImage = $dm->getRepository('BaseCoreBundle:MediaImage')->findOneByOldMediaId($oldMedia->getId());
+            if ($onlyCreate == true && $mediaImage != null) {
+                continue;
+            }
+            // set values
+            if ($mediaImage == null) {
+                $mediaImage = new MediaImage();
+            }
+
+            $url = 'http://www.festival-cannes.fr/assets/Image/General/' . $oldMedia->getFilename();
+            $file = $this->imagecreatefromfile($url, $output);
+
+            if ($file != null) {
+                $media = ($mediaImage->findTranslationByLocale('fr') != null && $mediaImage->findTranslationByLocale('fr')->getFile() != null) ? $mediaImage->findTranslationByLocale('fr')->getFile() : new Media();
+            } else {
+                $media = new Media();
+            }
+            if (!$mediaImage->getSites()->contains($siteFDCCorporate)) {
+                $mediaImage->addSite($siteFDCCorporate);
+            }
+            if (!$mediaImage->getSites()->contains($siteFDCEvent)) {
+                $mediaImage->addSite($siteFDCEvent);
+            }
+            /* remove site fdc event after testing
+            if ($mediaImage->getSites()->contains($siteFDCEvent)) {
+                $mediaImage->removeSite($siteFDCEvent);
+            }*/
+            $mediaImage->setOldMediaId($oldMedia->getId());
+            $saved = false;
+            if ($media->getId() == null && $oldMedia->getFilename()) {
+                $media->setContentType('image/jpeg');
+                $media->setName($oldMedia->getFilename());
+                $media->setBinaryContent($file);
+                $media->setEnabled(true);
+                $media->setProviderReference($oldMedia->getFilename());
+                $media->setContext('media_image');
+                $media->setProviderStatus(1);
+                $media->setProviderName('sonata.media.provider.image');
+                $mediaManager->save($media, 'media_image', 'sonata.media.provider.image');
+                $saved = true;
+            }
+
+            $oldMediaTranslations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findById($oldMedia->getId());
+            foreach ($oldMediaTranslations as $oldMediaTrans) {
+                $culture = ($oldMediaTrans->getCulture() == 'cn') ? 'zh' : $oldMediaTrans->getCulture();
+                $imgTrans = $mediaImage->findTranslationByLocale($culture);
+                if ($imgTrans == null) {
+                    $imgTrans = new MediaImageTranslation();
+                    $mediaImage->addTranslation($imgTrans);
+                }
+                if ($culture == 'fr') {
+                    $imgTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                } else {
+                    $imgTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                }
+                if ($saved == true && $culture == 'fr') {
+                    $imgTrans->setFile($media);
+                }
+                $imgTrans->setTranslatable($mediaImage);
+                $imgTitle = array(
+                    'fr' => 'photo',
+                    'en' => 'photo',
+                    'es' => 'foto',
+                    'zh' => '照片'
+                );
+                $imgTrans->setLegend(($oldMediaTrans->getLabel() != null) ? $oldMediaTrans->getLabel() : $imgTitle[$culture]);
+                $imgTrans->setCopyright($oldMediaTrans->getCopyright());
+                $imgTrans->setLocale($culture);
+                $imgTrans->setisPublishedOnFDCEvent(1);
+
+                $publishedAt = $oldMedia->getPublishFor();
+                $publishedAt->setTime($oldMedia->getHourOrder(), 0);
+                $mediaImage->setPublishedAt($publishedAt);
+            }
+        }
+    }
+
     private function importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, $getterMatching)
     {
         $mapperFields = array(
@@ -270,8 +382,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 if (!$news->getSites()->contains($siteFDCEvent)) {
                     $news->addSite($siteFDCEvent);
                 }
-                /* remove site fdc event
-                  if ($news->getSites()->contains($siteFDCEvent)) {
+                /* remove site fdc event after testing
+                if ($news->getSites()->contains($siteFDCEvent)) {
                     $news->removeSite($siteFDCEvent);
                 }*/
             }
@@ -460,6 +572,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $media->setContext('media_image');
                                     $media->setProviderStatus(1);
                                     $media->setProviderName('sonata.media.provider.image');
+                                    dump($news->getId());
                                     $mediaManager->save($media, 'media_image', 'sonata.media.provider.image');
                                     $saved = true;
                                 }
