@@ -81,7 +81,7 @@ var owInitAjax = function() {
       }
 
       if($('.block-accordion').length) {
-          wInitAccordion("block-accordion");
+          owInitAccordion("block-accordion");
       }
 
       if($('.block-social-network').length) {
