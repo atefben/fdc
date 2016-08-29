@@ -5188,6 +5188,9 @@ video {
 .block-list-img .item:hover:after {
   opacity: .1;
 }
+.mobile .block-list-img .item:hover:after {
+  opacity: .5;
+}
 .block-list-img .item img {
   transition: .5s;
   object-fit: cover;
@@ -5217,6 +5220,9 @@ video {
 }
 .block-list-img .item .wrapper:hover:after {
   border: 4px solid #c8a461;
+}
+.mobile .block-list-img .item .wrapper:hover:after {
+  border: 0px solid;
 }
 .block-list-img .center .wrapper:after {
   border: 4px solid #c8a461;
