@@ -19186,6 +19186,12 @@ input[type=submit] {
   color: #c8a461;
 }
 
+.accreditation ul li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  margin-bottom: 36px;
+}
 .accreditation #accreditation {
   border-top: 1px solid #e3e3e3;
 }
