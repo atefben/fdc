@@ -6360,6 +6360,11 @@ div.chocolat-wrapper .zoomCursor .icon {
   visibility: visible;
 }
 
+video {
+  width: 100%;
+  height: 100%;
+}
+
 .single-movie .trailer .video-container,
 .webtv-live .trailer .video-container {
   width: 100%;
