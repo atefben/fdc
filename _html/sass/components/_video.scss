@@ -231,6 +231,7 @@
         opacity: 1;
         visibility: visible;
         z-index: 3;
+        overflow: hidden;
       }
 
       .info, .picto {
@@ -244,10 +245,12 @@
 
       .owl-item {
         opacity: 1;
+        width: 293px !important;
 
         .image-wrapper {
           img {
-            width: auto;
+            width: 100%;
+            object-fit: cover;
             max-height: 185px;
           }
         }
