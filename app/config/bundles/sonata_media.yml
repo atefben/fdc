@@ -83,6 +83,7 @@ sonata_media:
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                379x515: { width: 379, height: 515, quality: 100, constraint: false }
         film_main:
             providers:
                 - sonata.media.provider.image
@@ -120,6 +121,7 @@ sonata_media:
                   # film images mobile
                   1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                   320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                  379x515: { width: 379, height: 515, quality: 100, constraint: false }
 
         film_film:
             providers:
@@ -163,6 +165,7 @@ sonata_media:
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                379x515: { width: 379, height: 515, quality: 100, constraint: false }
 
         pdf:
             providers:
@@ -317,6 +320,7 @@ sonata_media:
                 # film cover mobile
                 1600x903: { width: 1600, height: 903, quality: 100, constraint: false }
                 210x284: { width: 210 , height: 284 , quality: 100, constraint: false }
+                379x515: { width: 379, height: 515, quality: 100, constraint: false }
 
         media_audio:
             providers:
