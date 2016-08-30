@@ -24,18 +24,6 @@ class EditionsController extends Controller
     }
 
 
-
-    /**
-     * @Route("/retrospective/{year}", requirements={"year" = "\d+"})
-     * @Template("FDCCorporateBundle:Retrospective:year.html.twig")
-     */
-    public function yearAction($year)
-    {
-        $festival = $this->getFestival($year);
-
-        return array('festival' => $festival);
-    }
-
     /**
      * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
      * @Template("FDCCorporateBundle:Retrospective:affiche.html.twig")
@@ -46,7 +34,6 @@ class EditionsController extends Controller
     public function afficheAction(Request $request, $year)
     {
         $em = $this->get('doctrine')->getManager();
-        $locale = $request->getLocale();
         $festival = $this->getFestival($year);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
