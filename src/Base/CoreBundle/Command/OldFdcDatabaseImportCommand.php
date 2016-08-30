@@ -16,6 +16,7 @@ use Base\CoreBundle\Entity\InfoWidgetVideo;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutube;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
 use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
@@ -115,13 +116,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         if (($onlyMedias == false && $onlyArticles == true) || ($onlyMedias == false && $onlyArticles == false)) {
             $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-            //$this->importArticleActualite($dm, $mediaManager, $output, $input);
-            //$this->importArticleCommunique($dm, $mediaManager, $output, $input);
+            $this->importArticleActualite($dm, $mediaManager, $output, $input);
+            $this->importArticleCommunique($dm, $mediaManager, $output, $input);
         }
 
         if (($onlyMedias == true && $onlyArticles == false) || ($onlyMedias == false && $onlyArticles == false)) {
-            //$this->importMediaImage($dm, $mediaManager, $output, $input);
-            //$this->importMediaAudio($dm, $mediaManager, $output, $input);
+            $this->importMediaImage($dm, $mediaManager, $output, $input);
+            $this->importMediaAudio($dm, $mediaManager, $output, $input);
         }
     }
 
@@ -129,8 +130,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     {
         $output->writeln('<info>Import Media Audio ...</info>');
 
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60596);
-        $oldArticles[0] = $element;*/
+        /*$element = $dm->getRepository('BaseCoreBundle:OldMedia')->findOneById(15626);
+        $oldMedias[0] = $element;*/
 
         // case one
         // Publier dans "Quotidien - Audios"
@@ -172,7 +173,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $output->writeln('<info>#'. $oldMedia->getId(). ' is matching.</info>');
 
             // old news
-            $mediaAudio = $dm->getRepository('BaseCoreBundle:MediaImage')->findOneByOldMediaId($oldMedia->getId());
+            $mediaAudio = $dm->getRepository('BaseCoreBundle:MediaAudio')->findOneByOldMediaId($oldMedia->getId());
             if ($onlyCreate == true && $mediaAudio != null) {
                 continue;
             }
@@ -180,6 +181,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             if ($mediaAudio == null) {
                 $mediaAudio = new MediaAudio();
             }
+            $mediaAudio->setOldMediaId($oldMedia->getId());
+
+            $festival = $dm->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($oldMedia->getCreatedAt()->format('Y'));
+            $mediaAudio->setFestival($festival);
 
             if ($addSiteCorporate == true) {
                 if (!$mediaAudio->getSites()->contains($siteFDCCorporate)) {
@@ -194,25 +199,28 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 $mediaAudio->removeSite($siteFDCEvent);
             }*/
 
+            $dm->persist($mediaAudio);
+            $dm->flush();
+
             $oldMediaTranslations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findById($oldMedia->getId());
             foreach ($oldMediaTranslations as $oldMediaTrans) {
                 $culture = ($oldMediaTrans->getCulture() == 'cn') ? 'zh' : $oldMediaTrans->getCulture();
-                $audioTrans = $mediaAudio->findTranslationByLocale($culture);
-                if ($audioTrans == null) {
-                    $audioTrans = new MediaAudioTranslation();
+                if (!in_array($culture, $this->langs)) {
+                    continue;
                 }
+                $audioTrans = $mediaAudio->findTranslationByLocale($culture);
 
+                // file
                 if ($oldMediaTrans->getHdFormatFilename() != null) {
                     $code = $oldMediaTrans->getHdFormatFilename();
                     $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
                 }
 
                 if ($code != null) {
-                    if ($audioTrans->getFile() == null) {
-                        $media = new Media();
-                        $audioTrans->setFile($media);
-                    } else {
+                    if ($audioTrans != null && $audioTrans->getFile() != null) {
                         $media = $audioTrans->getFile();
+                    } else {
+                        $media = new Media();
                     }
 
                     $file = $this->createAudio($audioPath, $output);
@@ -227,20 +235,91 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                     $media->setProviderStatus(1);
                     $media->setProviderName('sonata.media.provider.audio');
                     $mediaManager->save($media, 'media_audio', 'sonata.media.provider.audio');
+
+                    if ($audioTrans == null) {
+                        $audioTrans = new MediaAudioTranslation();
+                    }
+                    $audioTrans->setLocale($culture);
                     $audioTrans->setFile($media);
+                    $audioTrans->setTranslatable($mediaAudio);
                     $audioTrans->setTitle($oldMediaTrans->getLabel());
                     $audioTrans->setJobMp3State(MediaAudioTranslation::ENCODING_STATE_READY);
+                    $audioTrans->setTranslatable($mediaAudio);
                 } else {
                     $output->writeln("<error>Audio code not found for Object id #{$oldMediaTrans->getId()}</error>");
+                }
+
+                // image
+                if ($oldMediaTrans->getFilenameThumbnail() != null) {
+                    $url = 'http://www.festival-cannes.fr/assets/Audio/General/thumbnails/' . $oldMediaTrans->getFilenameThumbnail();
+                    $file = $this->imagecreatefromfile($url, $output);
+
+                    if ($file !== null) {
+                        $mediaImage = $mediaAudio->getImage();
+
+                        if ($mediaImage == null) {
+                            $mediaImage = new MediaImage();
+                        }
+                        if ($mediaImage !== null && $mediaImage->findTranslationByLocale($culture)) {
+                            $mediaImageTrans = $mediaImage->findTranslationByLocale($culture);
+                        } else {
+                            $mediaImageTrans = new MediaImageTranslation();
+                            $mediaImageTrans->setLocale($culture);
+                            $mediaImageTrans->setTranslatable($mediaImage);
+                        }
+                        $mediaImageTrans->setCopyright($oldMediaTrans->getThumbnailCopyright());
+                        $mediaAudio->setImage($mediaImage);
+                        if ($mediaImageTrans->getFile() == null) {
+                            $imgTitle = array(
+                                'fr' => 'photo',
+                                'en' => 'photo',
+                                'es' => 'foto',
+                                'zh' => '照片'
+                            );
+                            $media = new Media();
+                            $media->setContentType('image/jpeg');
+                            $media->setName($imgTitle[$culture]);
+                            $media->setBinaryContent($file);
+                            $media->setEnabled(true);
+                            $media->setProviderReference($oldMediaTrans->getFilenameThumbnail());
+                            $media->setContext('media_image');
+                            $media->setProviderStatus(1);
+                            $media->setProviderName('sonata.media.provider.image');
+                            $mediaManager->save($media, 'media_image', 'sonata.media.provider.image');
+                            $mediaImageTrans->setFile($media);
+                        }
+                    }
                 }
 
                 $publishedAt = $oldMedia->getPublishFor();
                 $mediaAudio->setPublishedAt($publishedAt);
             }
 
-            if ($mediaAudio->getId() == null) {
-                $dm->persist($mediaAudio);
+            $oldMediaAssociations = $dm->getRepository('BaseCoreBundle:OldMediaAssociation')->findBy(array(
+                'id' => $oldMedia->getId(),
+                'objectClass' => 'Film'
+            ));
+
+            foreach ($oldMediaAssociations as $oldMediaAssoc) {
+                $filmFilm = $dm->getRepository('BaseCoreBundle:FilmFilm')->findOneById($oldMediaAssoc->getObjectId());
+                if ($filmFilm == null) {
+                    $output->writeln("<error>Film #{$oldMediaAssoc->getObjectId()} not found</error>");
+                } else {
+                    $found = false;
+                    foreach ($mediaAudio->getAssociatedFilms() as $associated) {
+                        if ($associated->getAssociation()->getId() == $filmFilm->getId()) {
+                            $found = true;
+                        }
+                    }
+                    if ($found == false) {
+                        $associated = new MediaAudioFilmFilmAssociated();
+                        $associated->setMediaAudio($mediaAudio);
+                        $associated->setAssociation($filmFilm);
+                        $mediaAudio->addAssociatedFilm($associated);
+                    }
+                }
             }
+
             $entities[] = $mediaAudio;
             $output->writeln('<info>To be saved...</info>');
             $totalSaved++;
@@ -472,6 +551,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $oldMediaTranslations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findById($oldMedia->getId());
             foreach ($oldMediaTranslations as $oldMediaTrans) {
                 $culture = ($oldMediaTrans->getCulture() == 'cn') ? 'zh' : $oldMediaTrans->getCulture();
+                if (!in_array($culture, $this->langs)) {
+                    continue;
+                }
                 $imgTrans = $mediaImage->findTranslationByLocale($culture);
                 if ($imgTrans == null) {
                     $imgTrans = new MediaImageTranslation();
@@ -771,7 +853,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $media->setContext('media_image');
                                     $media->setProviderStatus(1);
                                     $media->setProviderName('sonata.media.provider.image');
-                                    dump($news->getId());
                                     $mediaManager->save($media, 'media_image', 'sonata.media.provider.image');
                                     $saved = true;
                                 }
