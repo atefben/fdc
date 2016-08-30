@@ -23,15 +23,37 @@ class EditionsController extends Controller
         return array('festivals' => $festivals);
     }
 
+
+
     /**
      * @Route("/retrospective/{year}", requirements={"year" = "\d+"})
      * @Template("FDCCorporateBundle:Retrospective:year.html.twig")
      */
     public function yearAction($year)
     {
-        $festival = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($year);
+        $festival = $this->getFestival($year);
 
         return array('festival' => $festival);
+    }
+
+    /**
+     * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
+     * @Template("FDCCorporateBundle:Retrospective:affiche.html.twig")
+     * @param Request $request
+     * @param $year
+     * @return array
+     */
+    public function afficheAction(Request $request, $year)
+    {
+        $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
+        $festival = $this->getFestival($year);
+        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
+
+        $posters = $em->getRepository('BaseCoreBundle:FilmFestivalPoster')
+            ->findByFestival($festival);
+
+        return array('posters' => $posters, 'festivals' => $festivals);
     }
 
     /**
@@ -45,6 +67,7 @@ class EditionsController extends Controller
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
+        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
 
         $this->isPageEnabled($request->get('_route'));
@@ -79,13 +102,14 @@ class EditionsController extends Controller
 
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
-            
+
             return $this->render('FDCCorporateBundle:Movie:cinema_plage.html.twig', array(
                 'page'           => $page,
                 'projections'    => $projections,
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs'  => $selectionTabs,
                 'next'           => $next,
+                'festivals'      => $festivals
             ));
         }
 
@@ -161,11 +185,13 @@ class EditionsController extends Controller
             ->getFilmsBySelectionSection($festival, $locale, $page->getSelectionSection()->getId())
         ;
 
+        
+
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
         $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
 
-        return $this->render('FDCEventBundle:Movie:selection.html.twig', array(
+        return $this->render('FDCCorporateBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,
             'selectionTabs'  => $pages,
             'page'           => $page,
@@ -173,6 +199,183 @@ class EditionsController extends Controller
             'next'           => is_object($next) ? $next : false,
             'next_classics'  => !empty($nextClassics),
             'localeSlugs'    => $localeSlugs,
+            'festivals'      => $festivals
         ));
+    }
+
+    /**
+     * @Route("/retrospective/{year}/selection/cannes-classics/{slug}")
+     * @Template("FDCCorporateBundle:Movie:classics.html.twig")
+     * @param $year
+     * @param $slug
+     * @return array
+     */
+    public function classicsAction(Request $request, $slug)
+    {
+        $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
+
+        $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug);
+
+        if ($classic == null) {
+            throw new NotFoundHttpException('Cannes Classic not found');
+        }
+
+        $localeSlugs = $classic->getLocaleSlugs();
+
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+            ->getPagesOrdoredBySelectionSectionOrder($locale)
+        ;
+
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
+
+        //SEO
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
+
+
+        $next = null;
+
+        foreach ($filters as $item) {
+            if ($next) {
+                $next = $item;
+                break;
+            }
+            if ($item->getId() == $classic->getId()) {
+                $next = true;
+            }
+        }
+        if ($filters && (!$next || $next === true)) {
+            $next = reset($filters);
+        }
+
+        return array(
+            'cannesClassics' => $filters,
+            'classic'        => $classic,
+            'filters'        => $filters,
+            'selectionTabs'  => $pages,
+            'next'           => is_object($next) ? $next : false,
+            'localeSlugs'    => $localeSlugs,
+        );
+    }
+
+    /**
+     * @Route("/retrospective/{year}/juries/{slug}")
+     * @Template("FDCCorporateBundle:Jury:section.html.twig")
+     * @param Request $request
+     */
+    public function getAction(Request $request, $year, $slug = null)
+    {
+        $this->isPageEnabled($request->get('_route'));
+        $festival = $this->getFestival($year)->getId();
+        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
+        $locale = $request->getLocale();
+
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
+        }
+
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageJury')
+            ->getPages($locale)
+        ;
+
+        if ($slug === null) {
+            foreach ($pages as $page) {
+                if ($page->findTranslationByLocale($locale)) {
+                    $slug = $page->findTranslationByLocale($locale)->getSlug();
+                }
+                if ($slug) {
+                    return $this->redirectToRoute('fdc_event_jury_get', array('slug' => $slug));
+                }
+
+            }
+            throw $this->createNotFoundException('Page Jury not found');
+        }
+
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageJury')
+            ->getPageBySlug($locale, $slug)
+        ;
+
+        if ($page == null) {
+            throw new NotFoundHttpException("Page Jury {$slug} not found");
+        }
+
+        $localeSlugs = $page->getLocaleSlugs();
+
+        //SEO
+        $this->get('base.manager.seo')->setFDCEventPageJurySeo($page, $locale);
+
+        // find all juries by type
+        $juries = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmJury')
+            ->getJurysByType($festival, $locale, $page->getJuryType()->getId())
+        ;
+
+        $members = array();
+        $president = null;
+        $hasPresident = false;
+        foreach ($juries as $jury) {
+            $filmMedia = null;
+            if ($jury->getMedias()->count()) {
+                foreach ($jury->getMedias() as $media) {
+                    $filmMedia = $media;
+                }
+            }
+            if (!$filmMedia && $jury->getPerson() && $jury->getPerson()->getMedias()->count()) {
+                foreach ($jury->getPerson()->getMedias() as $media) {
+                    $filmMedia = $media->getMedia();
+                }
+            }
+            if (!$hasPresident && in_array($jury->getFunction()->getId(), array(1, 4))) {
+                $president = array(
+                    'jury'       => $jury,
+                    'film_media' => $filmMedia,
+                );
+                $hasPresident = true;
+            } else {
+                array_push($members, array(
+                    'jury'       => $jury,
+                    'film_media' => $filmMedia,
+                ));
+            }
+        }
+
+        $next = null;
+        if (count($pages) > 1) {
+            foreach ($pages as $item) {
+                if ($next) {
+                    $next = $item;
+                    break;
+                }
+                if ($item->getId() == $page->getId()) {
+                    $next = true;
+                }
+            }
+            if ($next === true) {
+                if ($pages[0]->getId() !== $page->getId()) {
+                    $next = $pages[0];
+                } else {
+                    $next = $pages[1];
+                }
+            }
+        }
+
+        return array(
+            'page'      => $page,
+            'pages'     => $pages,
+            'next'      => is_object($next) ? $next : false,
+            'members'   => $members,
+            'president' => $president,
+            'localeSlugs' => $localeSlugs,
+            'festivals'      => $festivals
+        );
+
     }
 }
