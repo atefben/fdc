@@ -6569,6 +6569,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   opacity: 1;
   visibility: visible;
   z-index: 3;
+  overflow: hidden;
 }
 .video-container .channels-video .info, .video-container .channels-video .picto {
   display: block;
@@ -6579,9 +6580,11 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .video-container .channels-video .owl-item {
   opacity: 1;
+  width: 293px !important;
 }
 .video-container .channels-video .owl-item .image-wrapper img {
-  width: auto;
+  width: 100%;
+  object-fit: cover;
   max-height: 185px;
 }
 .video-container .channels-video .owl-item .linkVid {
