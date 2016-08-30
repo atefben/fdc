@@ -14,7 +14,7 @@
         <ul>
             {% for tab in pages %}
                 <li class="{% if app.request.attributes.get('slug') == (tab|trans_fallback('slug')) %}active {% endif %}ajax">
-                    <a href="{{ path('fdc_event_jury_get', {'slug': tab|trans_fallback('slug')}) }}">
+                    <a href="{{ path('fdc_corporate_editions_juries', {year: app.request.attributes.get('year'), 'slug': tab|trans_fallback('slug')}) }}">
                         {{ (tab|trans_fallback('overrideName'))?:(tab.juryType|trans_fallback('name')) }}
                     </a>
                 </li>
@@ -22,140 +22,83 @@
         </ul>
     </nav>
 
-    <div class="all-contain">
-        <div class="block-jury">
-            <div class="contain-img" style="background-image:url(media/images/jury-01.jpg)">
-            </div><!--
-              --><div class="contain-txt">
-                <strong class="title-18">président du jury</strong>
-                <h1 class="title-19">Emir KUSTURICA</h1>
-                <strong class="title-20">Réalisateur, Scénariste, Producteur</strong>
-                <p class="texte-01">
-                    « Ma foi dans le cinéma est bien vivante et la meilleure confirmation de cela est ma participation dans un jury qui met en valeur le cinéma d’auteur». Emir Kusturica est né à Sarajevo. Il fait ses études à l’Académie du Cinéma de Prague (FAMU). Son premier long métrage "Te souviens-tu de Dolly Bell ?" (1981), reçoit le Lion d’or de la première oeuvre à Venise. En 1985, "Papa est en voyage d’affaires" est couronné de la Palme d’or à Cannes. En 1989, c’est le Prix de la mise en scène qui récompense "Le Temps des Gitans". Puis l’Ours d’argent pour "Arizona Dream" à Berlin, en 1993. "Underground", présenté à Cannes en 1995, lui vaudra sa deuxième Palme d’or. En 1998, "Chat Noir, Chat Blanc" obtient le Lion d’argent à Venise.
-                    <br><br>
-                    Il se tourne vers le documentaire avec "Super 8 Stories" (2001), sur son groupe de musique « The No Smoking Orchestra ». En 2004, il présente à Cannes La Vie est un miracle. C’est sur le lieu de tournage de ce dernier film qu’il décide de construire son propre village : Kustendorf, où il souhaite créer un modèle de vie nouvelle. Il revient au Festival en 2007 avec "Promets-moi" puis en 2008 avec son documentaire "Maradona by Kusturica". Emir Kusturica vient de publier son autobiographie « Où suis-je dans cette histoire ? »
-                </p>
-            </div>
+            <div class="all-contain">
+                <div class="block-jury">
+                    {%- if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
+                        <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
+                        </div>
+                    {%- else -%}
+                        {%- set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
+                        {%- if media is empty -%}
+                            {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
+                        {%- endif -%}
+                        {%- if media is empty -%}
+                            {%- set photo = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
+                        {%- endif -%}
+                        {%- if media is not empty -%}
+                            <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
+                        {%- else -%}
+                            <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
+                        {%- endif -%}
+                    {%- endif -%}
+                    <div class="contain-txt">
+                        <strong class="title-18">
+                            {% if president['jury'].person|person_gender == 'F' %}
+                                {{ 'juries.role.title.presidentedujury'|trans }}
+                            {% else %}
+                                {{ 'juries.role.title.presidentdujury'|trans }}
+                            {% endif %}
+                        </strong>
+                        <h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1>
+                        <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
+                        <p class="texte-01">
+                            {{ president['jury'].person|trans_fallback('biography') }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contain-title vFlexAlign ">
+                    <strong class="title-01">
+                        {% if page.id == admin_fdc_page_jury_certain_regard_id %}
+                            {{ 'juries.role.title.membresdujury.regard'|trans }}
+                        {%  elseif page.id == admin_fdc_page_jury_camera_dor_id %}
+                            {{ 'juries.role.title.membresdujury.camera'|trans }}
+                        {%  elseif page.id == admin_fdc_page_jury_long_metrages_id %}
+                            {{ 'juries.role.title.membresdujury.long'|trans }}
+                        {%  elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
+                            {{ 'juries.role.title.membresdujury.court'|trans }}
+                        {%  endif %}
+                    </strong>
+                </div>
+
+                <div class="isotope-01 bright grid-jury">
+                    <div class="grid-sizer"></div>
+
+                    {% for member in members %}
+                    <div class="item block-poster">
+                        <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
+                            <div class="contain-img">
+                                {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
+                                {% if artistImage is not empty %}
+                                    <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
+                                {% else %}
+                                    <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
+                                {% endif %}
+                            </div>
+                            <div class="contain-txts vFlexAlign">
+                                <span class="title-11">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
+                                {% set profession =  member['jury'].person|profession_gender('profession') %}
+                                {% if profession %}
+                                    <span class="title-12">{{ profession }}</span>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div> <!-- end all contain -->
         </div>
-
-        <div class="contain-title vFlexAlign ">
-            <strong class="title-01">membres du jury des longs métrages</strong>
-        </div>
-
-        <div class="isotope-01 bright grid-jury">
-            <div class="grid-sizer"></div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="media/images/jury-02.jpg" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Fatih AKIN</span>
-                        <span class="title-12">Réalisateur, Scénariste, Producteur</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="media/images/jury-03.jpg" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Javier BARDEM</span>
-                        <span class="title-12">Comédien</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="media/images/jury-04.jpg" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Nandita DAS</span>
-                        <span class="title-12">Comédienne</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="media/images/jury-05.jpg" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Fatih AKIN</span>
-                        <span class="title-12">Réalisateur</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="http://dummyimage.com/320x405/d4ae5b/fff" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Salma HAYEK</span>
-                        <span class="title-12">Comédienne</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="http://dummyimage.com/320x405/d4ae5b/fff" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Salma HAYEK</span>
-                        <span class="title-12">Comédienne</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="http://dummyimage.com/320x405/d4ae5b/fff" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Salma HAYEK</span>
-                        <span class="title-12">Comédienne</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="http://dummyimage.com/320x405/d4ae5b/fff" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Salma HAYEK</span>
-                        <span class="title-12">Comédienne</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="item block-poster">
-                <a href="#">
-                    <div class="contain-img">
-                        <img src="http://dummyimage.com/320x405/d4ae5b/fff" alt=""  >
-                    </div>
-                    <div class="contain-txts vFlexAlign">
-                        <span class="title-11">Salma HAYEK</span>
-                        <span class="title-12">Comédienne</span>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-    </div> <!-- end all contain -->
-</div>
-</div>
+    </div>
 </section>
 {% endblock %}

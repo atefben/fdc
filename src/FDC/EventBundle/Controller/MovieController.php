@@ -40,19 +40,19 @@ class MovieController extends Controller
         }
 
         // GET MOVIE
-        if ($isAdmin) {
+        //if ($isAdmin) {
             $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
                 'slug' => $slug
             ))
             ;
-        } else {
+        /*} else {
             $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
                 'slug'     => $slug,
                 'festival' => $this->getFestival()
             ))
             ;
 
-        }
+        }*/
 
         if ($movie === null) {
             throw new NotFoundHttpException('Movie not found');

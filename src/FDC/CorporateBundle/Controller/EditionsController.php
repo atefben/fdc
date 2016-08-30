@@ -214,6 +214,7 @@ class EditionsController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
+        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
         $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug);
 
@@ -257,15 +258,18 @@ class EditionsController extends Controller
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
             'localeSlugs'    => $localeSlugs,
+            'festivals'      => $festivals
         );
     }
 
     /**
-     * @Route("/retrospective/{year}/juries/{slug}")
+     * @Route("/retrospective/{year}/juries/{slug}", requirements={"year" = "\d+"})
      * @Template("FDCCorporateBundle:Jury:section.html.twig")
      * @param Request $request
+     * @param $slug
+     * @return array
      */
-    public function juriesAction(Request $request, $year, $slug = null)
+    public function juriesAction(Request $request, $year = null, $slug = null)
     {
         $this->isPageEnabled($request->get('_route'));
         $festival = $this->getFestival($year)->getId();

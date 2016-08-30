@@ -201,7 +201,7 @@ class FestivalPosterManager extends CoreManager
         $this->setEntityProperties($resultObject, $entity);
         
         // set media
-        $media = $this->mediaStreamManager->getById($entity, $resultObject->ElementMultimediaId, 'jpg');
+        $media = $this->mediaStreamManager->getById($entity, $resultObject->ElementMultimediaId, 'jpg', 'sonata.media.provider.image', 'film_affiche');
         
         // set translations
         $this->setEntityTranslations($resultObject, $entity, new FilmFestivalPosterTranslation());
