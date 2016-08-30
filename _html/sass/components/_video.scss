@@ -243,15 +243,23 @@
         max-width: 200px;
       }
 
+      .image-wrapper {
+        overflow: hidden;
+        width: 293px;
+        height: 193px;
+        position: relative;
+      }
+
       .owl-item {
         opacity: 1;
         width: 293px !important;
 
         .image-wrapper {
           img {
-            width: 100%;
-            object-fit: cover;
-            max-height: 185px;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
           }
         }
 

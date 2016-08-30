@@ -6578,14 +6578,21 @@ div.chocolat-wrapper .zoomCursor .icon {
   text-align: left;
   max-width: 200px;
 }
+.video-container .channels-video .image-wrapper {
+  overflow: hidden;
+  width: 293px;
+  height: 193px;
+  position: relative;
+}
 .video-container .channels-video .owl-item {
   opacity: 1;
   width: 293px !important;
 }
 .video-container .channels-video .owl-item .image-wrapper img {
-  width: 100%;
-  object-fit: cover;
-  max-height: 185px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .video-container .channels-video .owl-item .linkVid {
   display: block;
