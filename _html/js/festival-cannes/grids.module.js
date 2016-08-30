@@ -492,7 +492,10 @@ $(document).ready(function () {
               name        = $(e.target).find('p').data('title');
 
           if($('body').hasClass('mobile')) {
-            $popinVideo.find('.video-container').html('<video src="'+source[0].file+'" autoplay controls poster="'+img+'"> </video>');
+            $popinVideo.find('.video-container').html('<video autoplay controls poster="'+img+'">' +
+                  '<source src="'+source[0].file+'" type="video/webm"> ' +
+                  '<source src="'+source[1].file+'" type="video/mp4">' +
+                ' </video>');
           }
 
           videoPopin.playlistItem($(this).index()-1);
