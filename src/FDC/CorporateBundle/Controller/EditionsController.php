@@ -265,7 +265,7 @@ class EditionsController extends Controller
      * @Template("FDCCorporateBundle:Jury:section.html.twig")
      * @param Request $request
      */
-    public function getAction(Request $request, $year, $slug = null)
+    public function juriesAction(Request $request, $year, $slug = null)
     {
         $this->isPageEnabled($request->get('_route'));
         $festival = $this->getFestival($year)->getId();
@@ -289,7 +289,7 @@ class EditionsController extends Controller
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
                 if ($slug) {
-                    return $this->redirectToRoute('fdc_event_jury_get', array('slug' => $slug));
+                    return $this->redirectToRoute('fdc_corporate_editions_juries', array('slug' => $slug));
                 }
 
             }
