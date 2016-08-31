@@ -974,7 +974,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                         $media->setContext('media_audio');
                                         $media->setProviderStatus(1);
                                         $media->setProviderName('sonata.media.provider.audio');
-                                        $mediaManager->save($media, 'media_audio', 'sonata.media.provider.audio');
+                                        if ($media->getId() == null) {
+                                            $mediaManager->save($media, 'media_audio', 'sonata.media.provider.audio');
+                                        }
                                         $audioTrans->setFile($media);
                                         $audioTrans->setTitle($oldAudio->getLabel());
                                         $audioTrans->setJobMp3State(MediaAudioTranslation::ENCODING_STATE_READY);
