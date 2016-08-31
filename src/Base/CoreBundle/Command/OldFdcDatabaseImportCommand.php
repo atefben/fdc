@@ -1060,7 +1060,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $media->setContext('media_video');
                                     $media->setProviderStatus(1);
                                     $media->setProviderName('sonata.media.provider.video');
-                                    $mediaManager->save($media);
+                                    if ($media->getId() == null) {
+                                        $mediaManager->save($media);
+                                    }
                                     $videoTrans->setFile($media);
                                 }
                                 if ($widget->getId() == null) {
