@@ -14951,6 +14951,12 @@ input[type=submit] {
   font-size: smaller;
   vertical-align: super;
 }
+.faq .faq-container article em {
+  font-style: italic;
+}
+.faq .faq-container article i {
+  font-style: italic;
+}
 .faq .faq-active {
   display: inline-block;
 }
