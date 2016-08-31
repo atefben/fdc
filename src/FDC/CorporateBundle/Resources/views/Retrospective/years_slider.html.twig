@@ -35,13 +35,13 @@
                 </div>
             </div>
         </div>
+
         {% for festival in festivals %}
             {% if festival.id < 26 %}
         <div data-slide="{{ festival.id }}" class="slider-restropective small">
-            <div class="container block-01 vFlexAlign" >
-
+            <div class="container block-01 vFlexAlign">
                 <div class="link-return-c">
-                    <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+                    <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
                 </div>
 
                 {% if festival.id > 1 %}<div class="date-back"><a href="#">{{ festival.id - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
@@ -52,7 +52,7 @@
                     <div class="texts">
                         <span class="title-edition">{{ festival.id }}<sub>E</sub> édition</span>
                         <h2 class="title-big-date">{{ festival.year }}</h2>
-                        <a href="{{ path('fdc_corporate_editions_year', {year: festival.year}) }}" class="button discover">découvrir</a>
+                        <a href="{{ path('fdc_corporate_editions_affiche', {year: festival.year}) }}" class="button discover">découvrir</a>
                     </div>
                 </div>
             </div>
@@ -69,8 +69,9 @@
                 <img class="i3" src="{{ asset('bundles/fdccorporate/media/images/retrospective-home-02.jpg') }}" alt="">
             </div>
         </div>
-        {% endif %}
+            {% endif %}
         {% endfor %}
+
     </div>
 
     <div class="block-01">

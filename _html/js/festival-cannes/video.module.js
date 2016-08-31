@@ -62,7 +62,15 @@ var timeout = 1000,
                 </div>\
             </div>\
         </div>',
-    $topBar
+    facebookLink = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
+                '&link=CUSTOM_URL' +
+                '&picture=CUSTOM_IMAGE' +
+                '&name=CUSTOM_NAME' +
+                '&caption=' +
+                '&description=CUSTOM_DESC' +
+                '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
+            '&display=popup',
+    $topBar = '',
     twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
@@ -130,45 +138,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
     }
 
-    /*// CUSTOM LINK FACEBOOK
-    var fbHref = $topBar.find('.buttons .facebook').attr('href');
-    fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-    $topBar.find('.buttons .facebook').attr('href', fbHref);
-    // CUSTOM LINK TWITTER
-    var twHref = $topBar.find('.buttons .twitter').attr('href');
-    if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
-        twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
-    } else {
-        twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($topBar.find('.info p').text()+" "+shareUrl));
-    }
-    $topBar.find('.buttons .twitter').attr('href', twHref);
-    // CUSTOM LINK COPY
-    $topBar.find('.buttons .link').attr('href', shareUrl);
-    $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
-    linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
-
-    $topBar.find('.buttons .facebook').on('click',function() {
-        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
-        return false;
-    });
-    $topBar.find('.buttons .twitter').on('click', function() {
-        window.open(this.href,'','width=700,height=500');
-        return false;
-    });
-
-    // CUSTOM LINK MAIL
-    // $topBar.find('.buttons .email').attr('href', $container.data('email'));
-    $topBar.find('.buttons .email').on('click', function(e) {
-        e.preventDefault();
-        launchPopinMedia({
-            'type'     : "video",
-            'category' : $topBar.find('.info .category').text(),
-            'date'     : $topBar.find('.info .date').text(),
-            'title'    : $topBar.find('.info p').text(),
-            'url'      : shareUrl
-        }, playerInstance);
-    });
-*/
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
             percentage;
@@ -396,16 +365,33 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    playerInstance.setup({
-        // file: $container.data('file'),
-        sources: $container.data('file'),
-        image: $container.data('img'),
-        primary: 'html5',
-        aspectratio: '16:9',
-        width: $(vid).parent('div').width(),
-        height: $(vid).parent('div').height(),
-        controls: false
-    });
+    if('ontouchstart' in window) {
+        if (navigator.userAgent.indexOf("iPad") > -1 ||
+            navigator.userAgent.indexOf("iPhone") > -1 ||
+            navigator.userAgent.indexOf("Android") > -1) {
+            $('body').addClass('mobile');
+        } else {
+            $('body').addClass('mobile');
+        }
+    }else {
+        $('body').addClass('notmobile');
+    }
+
+
+
+    if($('body').hasClass('notmobile')) {
+       playerInstance.setup({
+            // file: $container.data('file'),
+            sources: $container.data('file'),
+            image: $container.data('img'),
+            primary: 'html5',
+            aspectratio: '16:9',
+            width: $(vid).parent('div').width(),
+            height: $(vid).parent('div').height(),
+            controls: false
+        });
+    }
+
 
     if(havePlaylist) {
         var tempSlider = $(slider),
@@ -423,6 +409,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 }
                 playlist.push(tempList);
             });
+
         } else if (typeof $container.data('playlist') != "undefined") {
             playlist = $container.data('playlist');
         }
@@ -617,15 +604,29 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function() {
-    if($('#video-player-ba').length > 0) {
+
+    if('ontouchstart' in window) {
+        if (navigator.userAgent.indexOf("iPad") > -1 ||
+            navigator.userAgent.indexOf("iPhone") > -1 ||
+            navigator.userAgent.indexOf("Android") > -1) {
+            $('body').addClass('mobile');
+        } else {
+            $('body').addClass('mobile');
+        }
+    }else {
+        $('body').addClass('notmobile');
+    }
+    
+    
+    if($('#video-player-ba').length > 0 && $('body').hasClass('notmobile')) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
 
-    if($('.video-player').length > 0) {
+    if($('.video-player').length > 0 && $('body').hasClass('notmobile')) {
         videoPlayer = playerInit(false, 'video-player', false);
     }
 
-    if($('.video-player-pl').length > 0) {
+    if($('.video-player-pl').length > 0 && $('body').hasClass('notmobile')) {
         videoPlayer = playerInit(false, 'video-player-pl', true);
     }
 });

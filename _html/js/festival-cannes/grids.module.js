@@ -460,6 +460,7 @@ $(document).ready(function () {
           $grid,
           videoPopin;
 
+
       videoPopin = playerInit('video-player-popin', false, 'grid');
       linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
       $('.popin-video .popin-buttons.buttons .email').on('click', function(e) {
@@ -489,6 +490,13 @@ $(document).ready(function () {
               date        = $(e.target).find('.date').text(),
               hour        = $(e.target).find('.hour').text(),
               name        = $(e.target).find('p').data('title');
+
+          if($('body').hasClass('mobile')) {
+            $popinVideo.find('.video-container').html('<video autoplay controls poster="'+img+'">' +
+                  '<source src="'+source[0].file+'" type="video/webm"> ' +
+                  '<source src="'+source[1].file+'" type="video/mp4">' +
+                ' </video>');
+          }
 
           videoPopin.playlistItem($(this).index()-1);
           sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index()-1,1,true]);

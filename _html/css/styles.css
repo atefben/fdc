@@ -6360,6 +6360,11 @@ div.chocolat-wrapper .zoomCursor .icon {
   visibility: visible;
 }
 
+video {
+  width: 100%;
+  height: 100%;
+}
+
 .single-movie .trailer .video-container,
 .webtv-live .trailer .video-container {
   width: 100%;
@@ -6569,6 +6574,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   opacity: 1;
   visibility: visible;
   z-index: 3;
+  overflow: hidden;
 }
 .video-container .channels-video .info, .video-container .channels-video .picto {
   display: block;
@@ -6577,12 +6583,21 @@ div.chocolat-wrapper .zoomCursor .icon {
   text-align: left;
   max-width: 200px;
 }
+.video-container .channels-video .image-wrapper {
+  overflow: hidden;
+  width: 293px;
+  height: 193px;
+  position: relative;
+}
 .video-container .channels-video .owl-item {
   opacity: 1;
+  width: 293px !important;
 }
 .video-container .channels-video .owl-item .image-wrapper img {
-  width: auto;
-  max-height: 185px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .video-container .channels-video .owl-item .linkVid {
   display: block;

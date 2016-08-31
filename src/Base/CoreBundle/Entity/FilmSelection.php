@@ -24,6 +24,8 @@ class FilmSelection implements TranslateMainInterface
     use Time;
     use TranslateMain;
 
+    const CANNES_CLASSICS = 4;
+
     /**
      * @var integer
      *

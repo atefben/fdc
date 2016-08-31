@@ -1,0 +1,47 @@
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}retrospective selection retrospective-home restrospective-init dark not-mobile{% endblock %}
+
+{% block body %}
+<section class="padding-bottom border-bottom s-slider-retrospective">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+
+    <div class="ajax-section"><div class="contain-ajax">
+
+            {% include 'FDCCorporateBundle:Retrospective:components/menu.html.twig' %}
+
+            {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
+
+            <div class="all-contain">
+                <div class="isotope-01">
+
+                    <div class="grid-sizer"></div>
+
+                    {% for movie in movies %}
+                        <div class="item block-poster">
+                            <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                <div class="contain-img">
+                                    {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
+                                    film: movie,
+                                    film_format: '588x784',
+                                    film_image_default: '/bundles/fdccorporate/media/images/selection-01.jpg',
+                                    }) %}
+                                </div>
+                                <div class="contain-txts vFlexAlign">
+                                    {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
+                                        <span class="title-11">{{ movie.titleVo }}</span>
+                                        <span class="title-13">({{ movie|trans_fallback_movie('title') }})</span>
+                                    {% else %}
+                                        <span class="title-12">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+                </div> <!-- end isotope 01 -->
+            </div> <!-- end all contain -->
+        </div>
+    </div>
+</section>
+{% endblock %}
