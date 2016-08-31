@@ -777,7 +777,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $widgetTextTranslation->setTranslatable($widgetText);
                             $widgetText->addTranslation($widgetTextTranslation);
 
-                            if ($widgetText->getTranslations()->count() == 0) {
+                            if ($widgetText->getId() == null) {
                                 $news->addWidget($widgetText);
                             }
                         }
@@ -799,7 +799,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $widgetVideoYoutubeTranslation->setUrl($oldArticleTranslation->getYoutubeLink());
                             $widgetVideoYoutubeTranslation->setTitle($oldArticleTranslation->getYoutubeLinkDescription());
                             $widgetVideoYoutubeTranslation->setTranslatable($widgetVideoYoutube);
-                            if ($widgetVideoYoutube->getTranslations()->count() == 0) {
+                            if ($widgetVideoYoutube->getId() == null) {
                                 $news->addWidget($widgetVideoYoutube);
                             }
                         }
@@ -887,7 +887,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $gallery->addMedia($galleryMedia);
                                 }
                             }
-                            if ($widget->getTranslations()->count() == 0) {
+                            if ($widget->getId() == null) {
                                 $news->addWidget($widget);
                             }
                         }
@@ -983,7 +983,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     }
                                     $dm->flush();
                                 }
-                                if ($widget->getTranslations()->count() == 0) {
+                                if ($widget->getId() == null) {
                                     $news->addWidget($widget);
                                 }
                             }
@@ -1050,7 +1050,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $path = $pathArray[0]. '80'. $pathArray[count($pathArray) - 1];
                                     $output->writeln('before create video');
                                     $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path), $output);
-                                    $output->writeln('after create video');
                                     if ($file == null) {
                                         break;
                                     }
@@ -1063,12 +1062,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $media->setProviderName('sonata.media.provider.video');
                                     $mediaManager->save($media);
                                     $videoTrans->setFile($media);
-                                    break;
                                 }
                                 if ($widget->getId() == null) {
                                     $news->addWidget($widget);
                                 }
-                                break;
                             }
                         }
 
@@ -1123,6 +1120,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             }
                         }
                     }
+                    // must be set to avoid widgets duplication
+                    $output->writeln("Saving lang: {$culture} of #{$oldArticle->getId()}");
+                    $dm->flush();
                 }
             }
 
