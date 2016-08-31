@@ -116,13 +116,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         if (($onlyMedias == false && $onlyArticles == true) || ($onlyMedias == false && $onlyArticles == false)) {
             $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-            //$this->importArticleActualite($dm, $mediaManager, $output, $input);
-            //$this->importArticleCommunique($dm, $mediaManager, $output, $input);
+            $this->importArticleActualite($dm, $mediaManager, $output, $input);
+            $this->importArticleCommunique($dm, $mediaManager, $output, $input);
         }
 
         if (($onlyMedias == true && $onlyArticles == false) || ($onlyMedias == false && $onlyArticles == false)) {
-            //$this->importMediaImage($dm, $mediaManager, $output, $input);
-            //$this->importMediaAudio($dm, $mediaManager, $output, $input);
+            $this->importMediaImage($dm, $mediaManager, $output, $input);
+            $this->importMediaAudio($dm, $mediaManager, $output, $input);
         }
     }
 
@@ -458,12 +458,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56075);
-        $oldArticles[0] = $element;
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56075);
+        $oldArticles[0] = $element;*/
 
-        /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+        $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
-        ), array('id' => 'ASC'));*/
+        ), array('id' => 'ASC'));
 
         $entitiesArray = array(
             'main_entity_parent' => 'BaseCoreBundle:News',
