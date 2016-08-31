@@ -59,6 +59,19 @@
     width: 733px;
     display: none;
     vertical-align: top;
+    article {
+      strong {
+        font-family: $CamphorBold;
+      }
+      sub {
+        vertical-align: sub;
+        font-size: smaller;
+      }
+      sup {
+        font-size: smaller;
+        vertical-align: super;
+      }
+    }
   }
 
   .faq-active {
