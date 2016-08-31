@@ -1066,6 +1066,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                         $mediaManager->save($media);
                                     }
                                     $videoTrans->setFile($media);
+                                    // must be set to avoid duplicate constraint
+                                    $dm->flush();
                                 }
                                 if ($widget->getId() == null) {
                                     $news->addWidget($widget);
