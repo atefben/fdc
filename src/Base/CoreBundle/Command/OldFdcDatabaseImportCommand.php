@@ -1017,7 +1017,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                 ));
 
                                 foreach ($oldVideoAssociations as $oldVideo) {
-                                    $output->writeln('old video translation');
+                                    $output->writeln("old video translation for {$culture}");
                                     $videoTrans = new MediaVideoTranslation();
                                     if ($video->findTranslationByLocale($culture) != null) {
                                         $videoTrans = $video->findTranslationByLocale($culture);
