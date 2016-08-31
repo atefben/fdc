@@ -63,26 +63,26 @@ var timeout = 1000,
             </div>\
         </div>',
     facebookLink = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
-                '&link=CUSTOM_URL' +
-                '&picture=CUSTOM_IMAGE' +
-                '&name=CUSTOM_NAME' +
-                '&caption=' +
-                '&description=CUSTOM_DESC' +
-                '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
-            '&display=popup',
+        '&link=CUSTOM_URL' +
+        '&picture=CUSTOM_IMAGE' +
+        '&name=CUSTOM_NAME' +
+        '&caption=' +
+        '&description=CUSTOM_DESC' +
+        '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
+        '&display=popup',
     $topBar = '',
-    twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
+    twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
-    cls          = cls || 'video-player';
+    cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
-    live         = live || false;
+    live = live || false;
     var tmp;
 
     if (id) {
         var videoPlayer = jwplayer(id);
-        if(!$(videoPlayer).data('loaded')) {
-            playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
+        if (!$(videoPlayer).data('loaded')) {
+            playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
             });
@@ -92,13 +92,13 @@ function playerInit(id, cls, havePlaylist, live) {
         return tmp;
     } else {
         tmp = [];
-        $("."+cls).each(function(i,v) {
+        $("." + cls).each(function (i, v) {
             // console.log("",this);
             // console.log("",this.className);
             // console.log("",this.id);
-            var videoPlayer  = jwplayer(this.id);
-            if(!$(videoPlayer).data('loaded')) {
-                playerLoad(this, videoPlayer, havePlaylist, live, function(vid) {
+            var videoPlayer = jwplayer(this.id);
+            if (!$(videoPlayer).data('loaded')) {
+                playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
                 });
@@ -111,31 +111,31 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    var $container    = $("#"+vid.id).closest('.video-container');
+    var $container = $("#" + vid.id).closest('.video-container');
 
-    if($container.find('.control-bar').length <= 0) {
+    if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
-    if($container.find('.top-bar').length <= 0) {
-        $(topBar).insertAfter($container.find('#'+vid.id));
+    if ($container.find('.top-bar').length <= 0) {
+        $(topBar).insertAfter($container.find('#' + vid.id));
     }
 
-    var $infoBar      = $container.find('.infos-bar'),
-        $stateBtn     = $container.find('.play-btn'),
+    var $infoBar = $container.find('.infos-bar'),
+        $stateBtn = $container.find('.play-btn'),
         $durationTime = $container.find('.duration-time'),
-        $current      = $container.find('.current-time'),
-        $progressBar  = $container.find('.progress-bar'),
-        $fullscreen   = $container.find('.fs button'),
-        $sound        = $container.find('.sound'),
-        $topBar       = $container.find('.top-bar'),
-        $playlist     = [];
+        $current = $container.find('.current-time'),
+        $progressBar = $container.find('.progress-bar'),
+        $fullscreen = $container.find('.fs button'),
+        $sound = $container.find('.sound'),
+        $topBar = $container.find('.top-bar'),
+        $playlist = [];
 
     $topBar.find('.info').append($infoBar.find('.info').html());
 
-    if($('.container-webtv-ba-video').length > 0) {
+    if ($('.container-webtv-ba-video').length > 0) {
         var shareUrl = $('.video .video-container').attr('data-link');
     } else {
-        var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
+        var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $container.data('vid');
     }
 
     function updateVolume(x, vol) {
@@ -154,55 +154,55 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             percentage = 0;
         }
 
-        $sound.find('.sound-seek').css('width',percentage+'%');
+        $sound.find('.sound-seek').css('width', percentage + '%');
         playerInstance.setVolume(percentage);
     };
 
-    playerInstance.updateMute = function(force) {
+    playerInstance.updateMute = function (force) {
         force = force || false;
         if (force) {
             playerInstance.setMute(true);
             playerInstance.setVolume(0);
-            $sound.find('.sound-seek').css('width','0%');
+            $sound.find('.sound-seek').css('width', '0%');
         } else {
             if (playerInstance.getMute()) {
                 playerInstance.setMute(false);
-                $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
+                $sound.find('.sound-seek').css('width', playerInstance.getVolume() + '%');
             } else {
                 playerInstance.setMute(true);
-                $sound.find('.sound-seek').css('width','0%');
+                $sound.find('.sound-seek').css('width', '0%');
             }
         }
     }
 
-    playerInstance.stopMute = function() {
+    playerInstance.stopMute = function () {
         playerInstance.setMute(false);
         playerInstance.setVolume(100);
-        $sound.find('.sound-seek').css('width','100%');
+        $sound.find('.sound-seek').css('width', '100%');
     }
 
-    playerInstance.removeFullscreen = function() {
+    playerInstance.removeFullscreen = function () {
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
         fullScreenApi.cancelFullScreen();
         $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
-        playerInstance.resize('100%','100%');
+        playerInstance.resize('100%', '100%');
         mouseMoving(false);
     }
 
     function externeControl() {
-        $topBar.on('click', '.channels', function() {
+        $topBar.on('click', '.channels', function () {
             $container.find('.channels-video').toggleClass('active');
             $container.find('.jwplayer').toggleClass('overlay-channels');
         });
     }
 
     function mouseMoving(listen) {
-        if(listen) {
-            $container.on('mousemove', function(event) {
+        if (listen) {
+            $container.on('mousemove', function (event) {
                 $container.removeClass('control-hide');
                 clearTimeout(thread);
-                thread = setTimeout(function() {
+                thread = setTimeout(function () {
                     $container.addClass('control-hide');
                 }, timeout);
             });
@@ -215,35 +215,44 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     function updateShareLink(index, secondaryContainer) {
         index = index || 0;
-        sc    = secondaryContainer || 0;
+        sc = secondaryContainer || 0;
 
         // CUSTOM LINK FACEBOOK
-        if($('.container-webtv-ba-video').length > 0) {
+        if ($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
+        } else if (window.location.href.indexOf('web-tv/channel') != -1 || window.location.href.indexOf('_html/channel.php') != -1) {
+
+            hash = window.location.hash;
+            var url = window.location.href.split('#')[0];
+            shareUrl = url + "#vid=" + $playlist[index].vid;
+
         } else {
-            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
+            var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $playlist[index].vid;
         }
 
-        var fbHref   = facebookLink;
-        fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-        fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
-        fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
-        fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
+
+        var fbHref = facebookLink;
+        fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+        fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
+        fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
+        fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
         $topBar.find('.buttons .facebook').attr('href', fbHref);
+
         // CUSTOM LINK TWITTER
-        var twHref   = twitterLink;
-        twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
+        var twHref = twitterLink;
+        twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name + " " + shareUrl));
         $topBar.find('.buttons .twitter').attr('href', twHref);
+
         // CUSTOM LINK COPY
         $topBar.find('.buttons .link').attr('href', shareUrl);
         $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
 
         updatePopinMedia({
-            'type'     : "video",
-            'category' : $playlist[index].category,
-            'date'     : $playlist[index].date,
-            'title'    : $playlist[index].name,
-            'url'      : shareUrl
+            'type': "video",
+            'category': $playlist[index].category,
+            'date': $playlist[index].date,
+            'title': $playlist[index].name,
+            'url': shareUrl
         });
 
         if (sc) {
@@ -267,7 +276,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         });
 
         sliderChannelsVideo.owlCarousel();
-        sliderChannelsVideo.on('click', '.owl-item', function() {
+        sliderChannelsVideo.on('click', '.owl-item', function () {
             var index = $(this).index();
             playerInstance.playlistItem(index);
 
@@ -280,41 +289,93 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $container.find('.channels-video').removeClass('active');
             $container.find('.jwplayer').removeClass('overlay-channels');
 
-            sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
-            if($('#slider-trailer').length > 0) {
+            sliderChannelsVideo.trigger('to.owl.carousel', [index, 1, true]);
+            if ($('#slider-trailer').length > 0) {
                 sliderTrailerVideo = $('#slider-trailer').owlCarousel();
-                sliderTrailerVideo.trigger('to.owl.carousel',[index,1000,true]);
+                sliderTrailerVideo.trigger('to.owl.carousel', [index, 1000, true]);
 
-                if($('.infos-videos').length > 0) {
+                if ($('.infos-videos').length > 0) {
                     $('.infos-videos strong').text(infos.category);
-                    $('.infos-videos .time').text(infos.date+" . "+infos.hour);
+                    $('.infos-videos .time').text(infos.date + " . " + infos.hour);
                     $('.infos-videos p').text(infos.name);
                 }
             }
 
-            if($('#slider-movie-videos').length > 0) {
+            if ($('#slider-movie-videos').length > 0) {
                 sliderMovieVideo = $('#slider-movie-videos').owlCarousel();
-                sliderMovieVideo.trigger('to.owl.carousel',[index,1000,true]);
+                sliderMovieVideo.trigger('to.owl.carousel', [index, 1000, true]);
             }
 
-            if($('.infos-videos .buttons').length > 0) {
+            if ($('.infos-videos .buttons').length > 0) {
                 updateShareLink(index, '.infos-videos');
-            } else if($('.informations-video .buttons').length > 0) {
+            } else if ($('.informations-video .buttons').length > 0) {
                 updateShareLink(index, '.informations-video');
             } else {
                 updateShareLink(index);
             }
 
-            if($('#gridVideos')) {
+            if ($('#gridVideos')) {
                 var item = $('#gridVideos .item')[index];
-                var vid  = $(item).data('vid');
+                var vid = $(item).data('vid');
                 var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
                 history.replaceState('', document.title, newURL);
             }
         });
 
-        if($('#slider-trailer').length > 0) {
-            $('body').on('click', '#slider-trailer .owl-item', function(e) {
+        if ($('#slider-trailer').length > 0) {
+
+            //ici
+            var hash = window.location.hash;
+
+            if(hash.indexOf('vid') > -1) {
+
+                setTimeout(function(){
+
+                    var n = 0;
+                    var index = hash.substring(5);
+                    index = Number(index);
+                    console.log(index);
+
+
+                    data = $('.video-container');
+                    data = data.data('playlist');
+
+                    data.forEach(function(value, i){
+
+                        if(value.vid == index) {
+                              playerInstance.playlistItem(i);
+                            $topBar.find('.info .category').text(value.category);
+                            $topBar.find('.info .date').text(value.date);
+                            $topBar.find('.info .hour').text(value.hour);
+                            $topBar.find('.info p').text(value.name);
+
+                            if ($('.infos-videos').length > 0) {
+                                $('.infos-videos strong').text(value.category);
+                                $('.infos-videos .time').text(value.date + " . " + value.hour);
+                                $('.infos-videos p').text(value.name);
+                            }
+
+                            if ($('.infos-videos .buttons').length > 0) {
+                                updateShareLink(i, '.infos-videos');
+                            } else if ($('.informations-video .buttons').length > 0) {
+                                updateShareLink(i, '.informations-video');
+                            } else {
+                                updateShareLink(i);
+                            }
+
+                            $container.find('.channels-video').removeClass('active');
+                            $container.find('.jwplayer').removeClass('overlay-channels');
+
+                            $('#slider-trailer').trigger('to.owl.carousel', [i, 1000, true]);
+
+                        }
+                    });
+                }, 1000);
+
+
+            }
+
+            $('body').on('click', '#slider-trailer .owl-item', function (e) {
                 var index = $(this).index();
                 playerInstance.playlistItem(index);
 
@@ -324,15 +385,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $topBar.find('.info .hour').text(infos.hour);
                 $topBar.find('.info p').text(infos.name);
 
-                if($('.infos-videos').length > 0) {
+                if ($('.infos-videos').length > 0) {
                     $('.infos-videos strong').text(infos.category);
-                    $('.infos-videos .time').text(infos.date+" . "+infos.hour);
+                    $('.infos-videos .time').text(infos.date + " . " + infos.hour);
                     $('.infos-videos p').text(infos.name);
                 }
 
-                if($('.infos-videos .buttons').length > 0) {
+                if ($('.infos-videos .buttons').length > 0) {
                     updateShareLink(index, '.infos-videos');
-                } else if($('.informations-video .buttons').length > 0) {
+                } else if ($('.informations-video .buttons').length > 0) {
                     updateShareLink(index, '.informations-video');
                 } else {
                     updateShareLink(index);
@@ -341,12 +402,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
 
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1000,true]);
+                sliderChannelsVideo.trigger('to.owl.carousel', [index, 1000, true]);
             });
         }
 
-        if($('#slider-movie-videos').length > 0) {
-            $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+        if ($('#slider-movie-videos').length > 0) {
+            $('body').on('click', '#slider-movie-videos .owl-item', function (e) {
                 var index = $(this).index();
                 playerInstance.playlistItem(index);
                 updateShareLink(index);
@@ -360,12 +421,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $container.find('.channels-video').removeClass('active');
                 $(this).addClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1000,true]);
+                sliderChannelsVideo.trigger('to.owl.carousel', [index, 1000, true]);
             });
         }
     }
 
-    if('ontouchstart' in window) {
+    if ('ontouchstart' in window) {
         if (navigator.userAgent.indexOf("iPad") > -1 ||
             navigator.userAgent.indexOf("iPhone") > -1 ||
             navigator.userAgent.indexOf("Android") > -1) {
@@ -373,39 +434,46 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         } else {
             $('body').addClass('mobile');
         }
-    }else {
+    } else {
         $('body').addClass('notmobile');
     }
 
 
+    /*
+     if ($('body').hasClass('notmobile')) {
+     */
+    playerInstance.setup({
+        // file: $container.data('file'),
+        sources: $container.data('file'),
+        image: $container.data('img'),
+        primary: 'html5',
+        aspectratio: '16:9',
+        width: $(vid).parent('div').width(),
+        height: $(vid).parent('div').height(),
+        controls: false
+    });
+    /*
+     } else {
+     $('#' + vid.id).html('<video autoplay controls poster="' + img + '">' +
+     '<source src="' + source[0].file + '" type="video/webm"> ' +
+     '<source src="' + source[1].file + '" type="video/mp4">' +
+     ' </video>');
+     }*/
 
-    if($('body').hasClass('notmobile')) {
-       playerInstance.setup({
-            // file: $container.data('file'),
-            sources: $container.data('file'),
-            image: $container.data('img'),
-            primary: 'html5',
-            aspectratio: '16:9',
-            width: $(vid).parent('div').width(),
-            height: $(vid).parent('div').height(),
-            controls: false
-        });
-    }
 
-
-    if(havePlaylist) {
+    if (havePlaylist) {
         var tempSlider = $(slider),
-            playlist   = [];
+            playlist = [];
 
-        if(havePlaylist === "grid") {
-            $.each($('#gridVideos .item'), function(i,p) {
+        if (havePlaylist === "grid") {
+            $.each($('#gridVideos .item'), function (i, p) {
                 var tempList = {
-                    "sources"  : $(p).data('file'),
-                    "image"    : $(p).data('img'),
-                    "date"     : $(p).data('date'),
-                    "hour"     : $(p).data('hour'),
-                    "category" : $(p).find('.info .category').text(),
-                    "name"     : $(p).find('.info p').text()
+                    "sources": $(p).data('file'),
+                    "image": $(p).data('img'),
+                    "date": $(p).data('date'),
+                    "hour": $(p).data('hour'),
+                    "category": $(p).find('.info .category').text(),
+                    "name": $(p).find('.info p').text()
                 }
                 playlist.push(tempList);
             });
@@ -414,9 +482,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             playlist = $container.data('playlist');
         }
 
-        $.each(playlist, function(i,p) {
+        $.each(playlist, function (i, p) {
             var tempSlide = $(slide);
-            tempSlide.find('.image-wrapper img').attr('src',p.image);
+            tempSlide.find('.image-wrapper img').attr('src', p.image);
             tempSlide.find('.info-container .category').text(p.category);
             tempSlide.find('.info-container p').text(p.name.trunc(30, true))
             tempSlide.data('json', JSON.stringify(p));
@@ -432,19 +500,19 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $topBar.find('.info .hour').text(playlist[0].hour);
         $topBar.find('.info p').text(playlist[0].name);
 
-        if($('.infos-videos .buttons').length > 0) {
+        if ($('.infos-videos .buttons').length > 0) {
             linkPopinInit(0, '.infos-videos .buttons .link');
             updateShareLink(0, '.infos-videos');
 
-            $('.infos-videos .buttons .email').on('click', function(e) {
+            $('.infos-videos .buttons .email').on('click', function (e) {
                 e.preventDefault();
                 launchPopinMedia({}, playerInstance);
             });
-        } else if($('.informations-video .buttons').length > 0) {
+        } else if ($('.informations-video .buttons').length > 0) {
             linkPopinInit(0, '.informations-video .buttons .link');
             updateShareLink(0, '.informations-video');
 
-            $('.informations-video .buttons .email').on('click', function(e) {
+            $('.informations-video .buttons .email').on('click', function (e) {
                 e.preventDefault();
                 launchPopinMedia({}, playerInstance);
             });
@@ -462,35 +530,35 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
 
-    playerInstance.on('ready', function() {
+    playerInstance.on('ready', function () {
         this.setVolume(100);
         externeControl();
-    }).on('play', function() {
+    }).on('play', function () {
         $container.removeClass('state-init').removeClass('state-complete');
         $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
         $stateBtn.removeClass('icon_play').addClass('icon_pause');
         fullScreenApi.isFullScreen() ? mouseMoving(true) : mouseMoving(false);
-    }).on('pause', function() {
+    }).on('pause', function () {
         $stateBtn.removeClass('icon_pause').addClass('icon_play');
         mouseMoving(false);
-    }).on('buffer', function() {
+    }).on('buffer', function () {
         // console.log("");
     }).on('complete', function () {
         this.stop();
         $stateBtn.removeClass('icon_pause').addClass('icon_play');
         $container.addClass('state-complete');
         mouseMoving(false);
-    }).on('firstFrame', function() {
+    }).on('firstFrame', function () {
         _duration = playerInstance.getDuration();
         duration_mins = Math.floor(_duration / 60);
         duration_secs = Math.floor(_duration - duration_mins * 60);
         $durationTime.html(duration_mins + ":" + duration_secs);
-    }).on('bufferChange', function(e) {
+    }).on('bufferChange', function (e) {
         var currentBuffer = e.bufferPercent;
-        $progressBar.find('.buffer-bar').css('width', currentBuffer+'%');
-    }).on('time', function(e) {
+        $progressBar.find('.buffer-bar').css('width', currentBuffer + '%');
+    }).on('time', function (e) {
         if (typeof _duration === "undefined" || _duration == 0) {
             duration_mins = Math.floor(e.duration / 60);
             duration_secs = Math.floor(e.duration - duration_mins * 60);
@@ -508,69 +576,69 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
 
         $current.html(currentMins + ":" + currentSecs);
-        $progressBar.find('.current-bar').css('width', percent+'%');
-    }).on('fullScreen', function() {
-        this.resize('100%','100%');
+        $progressBar.find('.current-bar').css('width', percent + '%');
+    }).on('fullScreen', function () {
+        this.resize('100%', '100%');
     });
 
-    $stateBtn.on('click', function() {
+    $stateBtn.on('click', function () {
         playerInstance.play();
     });
 
-    $progressBar.on('click', function(e) {
+    $progressBar.on('click', function (e) {
         var ratio = e.offsetX / $progressBar.outerWidth(),
             duration = playerInstance.getDuration(),
             current = duration * ratio;
         playerInstance.seek(current);
     });
 
-    $container.find('.video-player, .infos-bar .picto').on('click', function(e) {
+    $container.find('.video-player, .infos-bar .picto').on('click', function (e) {
         $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
         $container.removeClass('state-init');
         playerInstance.play();
         // $(this).off('click');
     });
 
-    $sound.on('click', '.icon_son', function() {
+    $sound.on('click', '.icon_son', function () {
         playerInstance.updateMute();
     });
 
     var volumeDrag = false;
-    $sound.find('.sound-bar').on('mousedown', function(e) {
+    $sound.find('.sound-bar').on('mousedown', function (e) {
         volumeDrag = true;
         playerInstance.setMute(false);
         updateVolume(e.pageX);
     });
 
-    $(document).on('mouseup', function(e) {
-        if(volumeDrag) {
+    $(document).on('mouseup', function (e) {
+        if (volumeDrag) {
             volumeDrag = false;
             updateVolume(e.pageX);
         }
-    }).on('mousemove', function(e) {
-        if(volumeDrag) {
+    }).on('mousemove', function (e) {
+        if (volumeDrag) {
             updateVolume(e.pageX);
         }
     });
 
     if (fullScreenApi.supportsFullScreen) {
-        $fullscreen[0].addEventListener('click', function() {
-            if(!fullScreenApi.isFullScreen()) {
+        $fullscreen[0].addEventListener('click', function () {
+            if (!fullScreenApi.isFullScreen()) {
                 fullScreenApi.requestFullScreen($container[0]);
                 $fullscreen.removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
-                playerInstance.resize('100%','100%');
+                playerInstance.resize('100%', '100%');
                 mouseMoving(true);
             } else {
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
                 fullScreenApi.cancelFullScreen();
                 $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
-                playerInstance.resize('100%','100%');
+                playerInstance.resize('100%', '100%');
                 mouseMoving(false);
             }
         }, true);
 
-        document.addEventListener(fullScreenApi.fullScreenEventName, function(e) {
+        document.addEventListener(fullScreenApi.fullScreenEventName, function (e) {
             if (!fullScreenApi.isFullScreen()) {
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
@@ -603,9 +671,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     callback(playerInstance);
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    if('ontouchstart' in window) {
+    if ('ontouchstart' in window) {
         if (navigator.userAgent.indexOf("iPad") > -1 ||
             navigator.userAgent.indexOf("iPhone") > -1 ||
             navigator.userAgent.indexOf("Android") > -1) {
@@ -613,20 +681,20 @@ $(document).ready(function() {
         } else {
             $('body').addClass('mobile');
         }
-    }else {
+    } else {
         $('body').addClass('notmobile');
     }
-    
-    
-    if($('#video-player-ba').length > 0 && $('body').hasClass('notmobile')) {
+
+
+    if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
 
-    if($('.video-player').length > 0 && $('body').hasClass('notmobile')) {
+    if ($('.video-player').length > 0) {
         videoPlayer = playerInit(false, 'video-player', false);
     }
 
-    if($('.video-player-pl').length > 0 && $('body').hasClass('notmobile')) {
+    if ($('.video-player-pl').length > 0) {
         videoPlayer = playerInit(false, 'video-player-pl', true);
     }
 });
