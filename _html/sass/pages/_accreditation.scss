@@ -87,6 +87,28 @@
         width: 100%;
         margin: 0 auto;
 
+        em {
+          font-style:italic;
+        }
+        i {
+          font-style:italic;
+        }
+        ol, ul {
+          list-style:inherit;
+        }
+        strong {
+          font-family: $CamphorBold;
+        }
+        sub {
+          vertical-align: sub;
+          font-size: smaller;
+        }
+        sup {
+          font-size: smaller;
+          vertical-align: super;
+        }
+
+
         a {
           color: #c8a461;
           text-decoration: none;
