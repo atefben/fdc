@@ -116,13 +116,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         if (($onlyMedias == false && $onlyArticles == true) || ($onlyMedias == false && $onlyArticles == false)) {
             $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-            $this->importArticleActualite($dm, $mediaManager, $output, $input);
-            $this->importArticleCommunique($dm, $mediaManager, $output, $input);
+            //$this->importArticleActualite($dm, $mediaManager, $output, $input);
+            //$this->importArticleCommunique($dm, $mediaManager, $output, $input);
         }
 
         if (($onlyMedias == true && $onlyArticles == false) || ($onlyMedias == false && $onlyArticles == false)) {
-            $this->importMediaImage($dm, $mediaManager, $output, $input);
-            $this->importMediaAudio($dm, $mediaManager, $output, $input);
+            //$this->importMediaImage($dm, $mediaManager, $output, $input);
+            //$this->importMediaAudio($dm, $mediaManager, $output, $input);
         }
     }
 
@@ -425,7 +425,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleActualite($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Actualite...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(61347);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56075);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -458,12 +458,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56042);
-        $oldArticles[0] = $element;*/
+        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56075);
+        $oldArticles[0] = $element;
 
-        $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+        /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
-        ), array('id' => 'ASC'));
+        ), array('id' => 'ASC'));*/
 
         $entitiesArray = array(
             'main_entity_parent' => 'BaseCoreBundle:News',
@@ -777,7 +777,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $widgetTextTranslation->setTranslatable($widgetText);
                             $widgetText->addTranslation($widgetTextTranslation);
 
-                            if ($widgetText->getId() == null) {
+                            if ($widgetText->getTranslations()->count() == 0) {
                                 $news->addWidget($widgetText);
                             }
                         }
@@ -787,13 +787,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $oldArticleTranslation->getYoutubeLinkDescription() != null) {
                             $widgetVideoYoutube = clone $entitiesArray['widget_yt'];
                             $widgetCount++;
+                            $widgetVideoYoutube = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_yt_entity']);
                             $widgetVideoYoutube->setPosition($widgetCount);
-                            foreach ($news->getWidgets() as $widget) {
-                                if (strpos(get_class($widget), $entitiesArray['widget_yt_entity'])) {
-                                    $widgetVideoYoutube = $widget;
-                                    break;
-                                }
-                            }
 
                             $widgetVideoYoutubeTranslation = clone $entitiesArray['widget_yt_trans'];
                             if ($widgetVideoYoutube->findTranslationByLocale($culture) != null) {
@@ -804,7 +799,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $widgetVideoYoutubeTranslation->setUrl($oldArticleTranslation->getYoutubeLink());
                             $widgetVideoYoutubeTranslation->setTitle($oldArticleTranslation->getYoutubeLinkDescription());
                             $widgetVideoYoutubeTranslation->setTranslatable($widgetVideoYoutube);
-                            if ($widgetVideoYoutube->getId() == null) {
+                            if ($widgetVideoYoutube->getTranslations()->count() == 0) {
                                 $news->addWidget($widgetVideoYoutube);
                             }
                         }
@@ -892,7 +887,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $gallery->addMedia($galleryMedia);
                                 }
                             }
-                            if ($widget->getId() == null) {
+                            if ($widget->getTranslations()->count() == 0) {
                                 $news->addWidget($widget);
                             }
                         }
@@ -988,7 +983,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     }
                                     $dm->flush();
                                 }
-                                if ($widget->getId() == null) {
+                                if ($widget->getTranslations()->count() == 0) {
                                     $news->addWidget($widget);
                                 }
                             }
