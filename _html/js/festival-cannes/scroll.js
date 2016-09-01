@@ -308,7 +308,7 @@ $(document).ready(function() {
       if($('.main-image').length > 0 && (s > 100 && $('.main-image').hasClass('trailer'))) {
 
         if($('body').hasClass('tablet')) {
-          $('.main-image').height('360px');
+          $('.main-image').height('360px').css('padding-top', 0);
         }else{
           $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
         }
