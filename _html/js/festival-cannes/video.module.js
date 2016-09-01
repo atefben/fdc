@@ -87,7 +87,7 @@ function playerInit(id, cls, havePlaylist, live) {
                 tmp = vid;
             });
         } else {
-            tmp = videoPlayer
+            tmp = videoPlayer;
         }
         return tmp;
     } else {
@@ -334,8 +334,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     var n = 0;
                     var index = hash.substring(5);
                     index = Number(index);
-                    console.log(index);
-
 
                     data = $('.video-container');
                     data = data.data('playlist');
@@ -343,7 +341,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     data.forEach(function(value, i){
 
                         if(value.vid == index) {
-                              playerInstance.playlistItem(i);
+                            playerInstance.playlistItem(i);
                             $topBar.find('.info .category').text(value.category);
                             $topBar.find('.info .date').text(value.date);
                             $topBar.find('.info .hour').text(value.hour);
@@ -600,6 +598,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     });
 
     $sound.on('click', '.icon_son', function () {
+        console.log(playerInstance.getConfig());
         playerInstance.updateMute();
     });
 

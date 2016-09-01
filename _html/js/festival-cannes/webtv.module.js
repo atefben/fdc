@@ -95,7 +95,7 @@ $(document).ready(function () {
             });
 
             if ($('#content-latest').length) {
-                videoPopin = playerInit('video-player-popin', false, false);
+                //videoPopin = playerInit('video-player-popin', false, false);
                 // linkPopinInit(0'.popin-video .popin-buttons.buttons .link');
 
                 $('.ov').on('click', function (e) {
@@ -118,8 +118,17 @@ $(document).ready(function () {
                         hour = $(e.target).closest('.video').find('.hour').text(),
                         name = $(e.target).closest('.video').data('title');
 
-                    if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
-                        videoPopin.remove();
+                    if (typeof videoPopin === "undefined" ||
+                        (
+                            typeof videoPopin.getConfig().playlist[0].file === "undefined" ||
+                            videoPopin.getConfig().playlist[0].file === ""
+                        )
+                    ) {
+                        try {
+                            videoPopin.remove();
+                        } catch(e) {
+                            console.log(e);
+                        }
                         $(videoPopin).data('loaded', false);
                         $('#video-player-popin').closest('.video-container').data('file', source);
                         $('#video-player-popin').closest('.video-container').data('img', img);
@@ -133,6 +142,7 @@ $(document).ready(function () {
                         }]);
                         videoPopin.play();
                     }
+
 
                     // CUSTOM LINK FACEBOOK
                     if ($('.container-webtv-ba-video').length > 0) {
