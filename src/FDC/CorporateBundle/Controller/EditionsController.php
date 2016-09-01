@@ -6,6 +6,7 @@ use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Base\CoreBundle\Entity\FDCPageLaSelection;
 
 /**
  * @Route("/69-editions")
@@ -121,7 +122,7 @@ class EditionsController extends Controller
                         $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_event_movie_selection', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_corporate_editions_selection', array('slug' => $slug, 'year' => $year));
                     }
                 }
             }
@@ -280,7 +281,7 @@ class EditionsController extends Controller
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
                 if ($slug) {
-                    return $this->redirectToRoute('fdc_corporate_editions_juries', array('slug' => $slug));
+                    return $this->redirectToRoute('fdc_corporate_editions_juries', array('slug' => $slug, 'year' => $year));
                 }
 
             }

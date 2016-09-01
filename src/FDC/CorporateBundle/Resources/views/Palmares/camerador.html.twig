@@ -1,0 +1,62 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<div class="all-contain">
+
+    {% if displayOnylCameraDorWinner is not defined or displayOnylCameraDorWinner == false %}
+    <div class="contain-title vFlexAlign border-bottom">
+        <h2 class="title-palmares-co block-01-mms ">{{ page|trans_fallback('header')|raw }}</h2>
+    </div>
+    {% endif %}
+    {% for award_association in award_associations['camerador'] %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+
+
+    {% if displayOnylCameraDorWinner is not defined or displayOnylCameraDorWinner == false %}
+        <div class="contain-title vFlexAlign border-bottom border-top">
+            <h1 class="title-01">{{ page|trans_fallback('nameEnCompetition') }}</h1>
+        </div>
+    {% endif %}
+    {% for movie in award_associations['competition'] %}
+        {% if movie.awards %}
+            {% set award_association = movie.awards|first %}
+        {% endif %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true, 'hidePalme': true}) %}
+    {% endfor %}
+
+
+    {% for key,item in award_associations['others'] %}
+        <div class="contain-title-grey vFlexAlign">
+            <h3 class="title">{{ item['selection']|trans_fallback('name') }}</h3>
+        </div>
+        {% for movie in item['movies'] %}
+            {% if movie.awards %}
+                {% set award_association = movie.awards|first %}
+            {% endif %}
+            {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true, 'hidePalme': true}) %}
+        {% endfor %}
+    {% endfor %}
+
+    <div class="contain-title vFlexAlign border-bottom border-top">
+        <h1 class="title-01">{{ 'palmares.camerador.title.lesautresfilmsenlice'|trans|raw }}</h1>
+    </div>
+
+    <section class="categorie-items-columns vFlexAlign big-padding ">
+        <ul class="vFlexAlign">
+            <li>
+                <a href="http://www.quinzaine-realisateurs.com/" target="_blank">
+                    {% if app.request.locale == 'fr' %}
+                        <img src="{{ asset('bundles/fdccorporate/media/images/quinzaine.jpg') }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
+                    {% else %}
+                        <img src="{{ asset('bundles/fdccorporate/media/images/quinzaine-international.jpg') }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
+                    {% endif %}
+                </a>
+            </li>
+            <li>
+                <a href="http://www.semainedelacritique.com/" target="_blank">
+                    <img src="{{ asset('bundles/fdccorporate/media/images/semaine-critique.jpg') }}" alt="{{ 'palmares.camerador.alt.semainecritique'|trans }}"/>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+</div>

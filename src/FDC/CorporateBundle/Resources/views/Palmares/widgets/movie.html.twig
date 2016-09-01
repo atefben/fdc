@@ -1,0 +1,69 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if award_association.award is defined and award_association.award.id not in palmares_award_mutual_get() %}
+    {% if award_association.award.filmMutual %}
+        {{ palmares_award_mutual_set(award_association.award) }}
+    {% endif %}
+
+    {% if movie is not defined %}
+        {% set movie = award_association.film %}
+    {% endif %}
+
+    {% set author = '' %}
+{% endif %}
+
+{% if movie is defined %} {% dump(movie) %}
+<article class="block-movie-preview" style='background-image: url("media/images/retrospective-palmares-06.jpg")'>
+    <div class="bck-hover">
+        <div class="wrapper-item">
+            <style>
+                div.poster img { width: 256px; height: 348px; }
+            </style>
+            <div class="poster">
+                {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
+                film: movie,
+                film_format: 'mobile',
+                film_attrs: {
+                alt: movie|trans_fallback('title')?:movie.titleVO,
+                'data-object-fit': 'cover'
+                },
+                film_image_default: 'bundles/fdccorporate/img/palmares/film_w256.jpg',
+                }) %}
+            </div>
+            <div class="infos">
+                {% if award_association is defined and award_association %}
+                {% if hidePalme is not defined or hidePalme == false %}
+                    <i class="icon icon-palme"></i>
+                    <strong class="name-award line">
+                        {{ award_association.award.prize|trans_fallback('title') }}
+                        {% if award_association.award.exAequo %}
+                            ({{ 'award.ex_aequo'|trans }})
+                        {% endif %}
+                        {% if award_association.award.unanimity %}
+                            ({{ 'award.unanimity'|trans }})
+                        {% endif %}
+                    </strong>
+                {% endif %}
+                <strong class="name-f">{{ movie.selectionSection|trans_fallback('name') }}</strong>
+                <strong class="name-fb">({{ movie.titleVO }})</strong>
+                <span class="names-a">
+                    {% spaceless %}
+                        {% set author = '' %}
+                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                            {% if loop.first == false %}
+                                {% set author = author ~ ', ' %}
+                            {% endif %}
+
+                            {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
+                            {% set author = author ~ director.fullName %}
+                            {% set author = author ~ '</a>' %}
+                        {% endfor %}
+                        {{ author|raw }}
+                    {% endspaceless %}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</article>
+{% endif %}

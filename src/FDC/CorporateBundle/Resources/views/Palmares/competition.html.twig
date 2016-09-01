@@ -1,0 +1,20 @@
+{% if award_associations[page.selectionLongsMetrages.id] and award_associations[page.selectionLongsMetrages.id]|length %}
+    <div class="contain-title vFlexAlign border-bottom border-top">
+        <h1 class="title-01">{{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}</h1>
+    </div>
+
+    {% for award_association in award_associations[page.selectionLongsMetrages.id] %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+{% endif %}
+
+{% if award_associations[page.selectionCourtsMetrages.id] and award_associations[page.selectionCourtsMetrages.id]|length %}
+    <div class="contain-title vFlexAlign border-bottom border-top">
+        <h1 class="title-01">{{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}</h1>
+    </div>
+
+    {% for award_association in award_associations[page.selectionCourtsMetrages.id] %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+
+{% endif %}

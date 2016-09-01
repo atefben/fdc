@@ -23,17 +23,22 @@
                                 <div class="contain-img">
                                     {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
                                     film: movie,
-                                    film_format: '588x784',
+                                    film_format: '240x320',
                                     film_image_default: '/bundles/fdccorporate/media/images/selection-01.jpg',
                                     }) %}
                                 </div>
                                 <div class="contain-txts vFlexAlign">
                                     {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
-                                        <span class="title-11">{{ movie.titleVo }}</span>
+                                        <span class="title-11">{{ movie.titleVo }}</span><br />
                                         <span class="title-13">({{ movie|trans_fallback_movie('title') }})</span>
                                     {% else %}
-                                        <span class="title-12">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                        <span class="title-13">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
                                     {% endif %}
+                                    {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                        <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
+                                            <span class="title-12">{{ director.fullName|trim }}{{ loop.last == true ? '':', '}}</span>
+                                        </a>
+                                    {% endfor %}
                                 </div>
                             </a>
                         </div>

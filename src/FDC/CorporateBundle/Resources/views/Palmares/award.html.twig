@@ -1,0 +1,33 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}jury dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block body %}
+    <section class="s-slider-retrospective">
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+        <div class="ajax-section"><div class="contain-ajax">
+
+        {% include 'FDCCorporateBundle:Retrospective:components/menu.html.twig' %}
+
+        {% include 'FDCCorporateBundle:Palmares:components/nav.html.twig' %}
+
+        <div class="all-contain">
+
+            <div class="contain-title vFlexAlign border-bottom border-top">
+                <h1 class="title-01">{{ 'palmares.title.palmares'|trans }}</h1>
+            </div>
+
+            {% if page.id == 1 and waitingPage == null %}
+                {% include 'FDCCorporateBundle:Palmares:competition.html.twig' %}
+            {% elseif page.id == 4 %}
+                {% include 'FDCCorporateBundle:Palmares:camerador.html.twig' %}
+            {% elseif page.id == 5 and waitingPage == null %}
+                {% include 'FDCCorporateBundle:Palmares:all.html.twig' %}
+            {% elseif waitingPage == null %}
+                {% include 'FDCCorporateBundle:Palmares:simple.html.twig' %}
+            {% endif %}
+
+        </div> <!-- end all contain -->
+        </div>
+        </div>
+    </section>
+{% endblock %}

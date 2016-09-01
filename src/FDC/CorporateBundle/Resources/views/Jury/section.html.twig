@@ -24,7 +24,8 @@
 
             <div class="all-contain">
                 <div class="block-jury">
-                    {%- if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
+                {% if president %}
+                    {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                         <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
                         </div>
                     {%- else -%}
@@ -55,6 +56,7 @@
                             {{ president['jury'].person|trans_fallback('biography') }}
                         </p>
                     </div>
+                {% endif %}
                 </div>
 
                 <div class="contain-title vFlexAlign ">
