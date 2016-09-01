@@ -298,4 +298,5 @@ class AgendaController extends Controller
             'rooms' => $rooms
         );
     }
+
 }
