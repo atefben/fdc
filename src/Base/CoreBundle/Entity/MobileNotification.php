@@ -40,7 +40,7 @@ class MobileNotification implements TranslateMainInterface
     /**
      * @var DateTime
      *
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(name="send_at", type="datetime", nullable=true)
      */
     private $sendAt;
 
