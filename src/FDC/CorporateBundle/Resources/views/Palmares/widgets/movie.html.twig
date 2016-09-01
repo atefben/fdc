@@ -13,7 +13,14 @@
 {% endif %}
 
 {% if movie is defined %}
-<article class="block-movie-preview" style='background-image: url("media/images/retrospective-palmares-06.jpg")'>
+<article class="block-movie-preview" style='background-image: url("{% spaceless %}
+    {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
+    film: movie,
+    film_format: '976x535',
+    display_film_path: true,
+    film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg'
+    }) %}
+{% endspaceless %}")'>
     <div class="bck-hover">
         <div class="wrapper-item">
             <style>
