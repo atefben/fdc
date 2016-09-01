@@ -160,7 +160,7 @@ $(document).ready(function() {
         }
         handleEndVideo();
       } else {
-        if ($('#featured-movies .active').length) {
+        if ($('#featured-movies .active').length) {fv
           $('#featured-movies .active').find('video')[0].pause();
         }
       }

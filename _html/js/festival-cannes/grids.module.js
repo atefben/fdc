@@ -491,7 +491,7 @@ $(document).ready(function () {
               hour        = $(e.target).find('.hour').text(),
               name        = $(e.target).find('p').data('title');
 
-          if($('body').hasClass('mobile')) {
+/*          if($('body').hasClass('mobile')) {
             if(typeof source[1].file == 'string') {
               $popinVideo.find('.video-container').html('<video autoplay controls poster="'+img+'">' +
                   '<source src="'+source[0].file+'" type="video/webm"> ' +
@@ -502,7 +502,7 @@ $(document).ready(function () {
                   '<source src="'+source[0].file+'" type="video/webm">' +
                 '</video>');
             }
-          }
+          }*/
 
           videoPopin.playlistItem($(this).index()-1);
           sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index()-1,1,true]);

@@ -4607,32 +4607,32 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   min-width: 9.5px;
 }
 
-.mob #navigation ul li {
+.mob:not(.tablet) #navigation ul li {
   margin-left: -5px;
 }
-.mob #navigation ul ul:before {
+.mob:not(.tablet) #navigation ul ul:before {
   width: 91% !important;
 }
-.mob #navigation ul.user .programmation-wrapper ul {
+.mob:not(.tablet) #navigation ul.user .programmation-wrapper ul {
   margin-left: -662px;
 }
-.mob #navigation ul.user .participate-wrapper ul {
+.mob:not(.tablet) #navigation ul.user .participate-wrapper ul {
   margin-left: -793px;
 }
-.mob #navigation ul li ul {
+.mob:not(.tablet) #navigation ul li ul {
   width: 1024px;
 }
-.mob #navigation ul li a {
+.mob:not(.tablet) #navigation ul li a {
   padding-right: 12px;
 }
-.mob #navigation ul li ul li {
+.mob:not(.tablet) #navigation ul li ul li {
   margin-left: 5px;
 }
 @media screen and (max-width: 1024px) {
-  .mob .mob header #navigation ul.main {
+  .mob:not(.tablet) .mob header #navigation ul.main {
     font-size: 0.8rem;
   }
-  .mob .mob header #navigation ul.user {
+  .mob:not(.tablet) .mob header #navigation ul.user {
     font-size: 0.7rem;
   }
 }
@@ -6436,6 +6436,9 @@ video {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
 }
+.tablet .video-container .top-bar {
+  display: none;
+}
 .video-container .top-bar:after {
   content: '';
   display: block;
@@ -6613,6 +6616,9 @@ video {
   position: relative;
   z-index: 5;
 }
+.tablet .video-container .infos-bar {
+  display: none;
+}
 .video-container .infos-bar .picto {
   bottom: 20px;
   left: 20px;
@@ -6677,6 +6683,9 @@ video {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+.tablet .video-container .control-bar {
+  display: none;
 }
 .video-container .control-bar .playstate {
   position: relative;
@@ -6981,6 +6990,9 @@ video {
   opacity: 0.5;
   visibility: visible;
   z-index: 2;
+}
+.tablet .video-container .jw-state-paused:before {
+  display: none;
 }
 .video-container .jw-state-paused.overlay-channels:before {
   opacity: 0.8;

@@ -597,7 +597,7 @@ header {
   }
 }
 
-.mob {
+.mob:not(.tablet) {
   #navigation {
     ul {
       li {

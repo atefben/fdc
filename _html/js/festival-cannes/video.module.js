@@ -424,22 +424,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    if ('ontouchstart' in window) {
-        if (navigator.userAgent.indexOf("iPad") > -1 ||
-            navigator.userAgent.indexOf("iPhone") > -1 ||
-            navigator.userAgent.indexOf("Android") > -1) {
-            $('body').addClass('mobile');
-        } else {
-            $('body').addClass('mobile');
-        }
-    } else {
-        $('body').addClass('notmobile');
-    }
 
 
-    /*
-     if ($('body').hasClass('notmobile')) {
-     */
     playerInstance.setup({
         // file: $container.data('file'),
         sources: $container.data('file'),
@@ -448,15 +434,11 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         aspectratio: '16:9',
         width: $(vid).parent('div').width(),
         height: $(vid).parent('div').height(),
-        controls: false
+        controls: ($('body').hasClass('tablet')) ? true : false
     });
-    /*
-     } else {
-     $('#' + vid.id).html('<video autoplay controls poster="' + img + '">' +
-     '<source src="' + source[0].file + '" type="video/webm"> ' +
-     '<source src="' + source[1].file + '" type="video/mp4">' +
-     ' </video>');
-     }*/
+
+    console.log($('body').hasClass('tablet'));
+    console.log(playerInstance.controls);
 
 
     if (havePlaylist) {
@@ -644,45 +626,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
             }
         }, true);
-    } else {
-        // if (isiPad(true)) {
-        //     $fullscreen[0].addEventListener('touchstart', function() {
-        //         time = window.setInterval(function() {
-        //             try {
-        //                 $container[0].webkitEnterFullscreen();
-        //             }
-        //             catch(e) {
-        //                 console.erro(e)
-        //             }
-        //         }, 250);
-        //     });
-
-        //     $container[0].addEventListener('webkitbeginfullscreen', function() {
-        //         window.clearInterval(time);
-        //     });
-        //     $container[0].addEventListener('webkitendfullscreen', function() {
-        //         window.clearInterval(time);
-        //         // playerInstance.pause();
-        //     });
-        // }
     }
 
     callback(playerInstance);
 };
 
 $(document).ready(function () {
-
-    if ('ontouchstart' in window) {
-        if (navigator.userAgent.indexOf("iPad") > -1 ||
-            navigator.userAgent.indexOf("iPhone") > -1 ||
-            navigator.userAgent.indexOf("Android") > -1) {
-            $('body').addClass('mobile');
-        } else {
-            $('body').addClass('mobile');
-        }
-    } else {
-        $('body').addClass('notmobile');
-    }
 
 
     if ($('#video-player-ba').length > 0) {
