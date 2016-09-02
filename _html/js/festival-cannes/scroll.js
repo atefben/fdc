@@ -267,15 +267,23 @@ $(document).ready(function () {
             $('#main').css('padding-top', $header.hasClass('sticky') ? 91 : 0);
 
             if (!isIE() && s > 50 && $('#live').hasClass('on')) {
+                console.log("ici");
                 $('#live').removeClass('on');
                 $('#live').height($('#live').data('height'));
                 setTimeout(function () {
                     if (videoWebtv.getState() != "paused" && videoWebtv.getState() != "idle") {
+                        console.log("pasla");
                         $('#live .trailer').removeClass('on');
                         videoWebtv.pause();
                         videoWebtv.updateMute(true);
+
+                        setTimeout(function () {
+                            videoWebtv.setMute(true);
+                            videoWebtv.setVolume(0);
+                            videoWebtv.find('.sound-seek').css('width', '0%');
+                        }, 300);
                     }
-                }, 200);
+                }, 500);
             }
         }
 
@@ -336,7 +344,7 @@ $(document).ready(function () {
 
         if ($('#calendar-programmation').length > 0) {
             if (s > 291) {
-                var w = s - 287;
+                var w = s - 289;
                 w = w + "px";
                 $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                 $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
