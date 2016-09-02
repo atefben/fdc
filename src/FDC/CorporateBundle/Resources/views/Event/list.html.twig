@@ -1,0 +1,54 @@
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}articles-list dark retrospective retrospective-home restrospective-init{% endblock %}
+
+{% block body %}
+<section class="s-slider-retrospective">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+
+    <div class="ajax-section"><div class="contain-ajax evenements" id="main">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/menu.html.twig' %}
+
+    <div class="filters padding-small-top">
+        <div id="theme" class="filter">
+            <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
+              <span class="select">
+                <span data-filter="all" class="active">{{ 'search.result.filter.tous'|trans }} </span>
+                  {% for theme in filters.themes %}
+                      <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+                  {% endfor %}
+                <i class="icon icon-arrow-down"></i>
+              </span>
+        </div>
+    </div> <!-- end filters -->
+
+    <div class="grid-01 isotope-01 event-card">
+
+        <div class="grid-sizer"></div>
+
+    {% for event in events %}
+        <article class="card item photo all {{ event.theme|trans_fallback('slug') }}" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+            <div class="image">
+                <div class="image-wrapper">
+                    <img src="{% path event.header|trans_fallback('file') , '575x364' %}" srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '575x364' %} 2x" alt="{{ event.header|trans_fallback('alt') }} ">
+                </div>
+                <a href="{{ path('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}" class="linkImage"></a>
+            </div>
+            <div class="info">
+                <a href="{{ path('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}" class="category">{{ event.theme|trans_fallback('name') }} </a>
+                <strong><a href="{{ path('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}">{{ event|trans_fallback('title') }}</a></strong>
+            </div>
+        </article>
+    {% endfor %}
+
+    </div>
+
+    <div class="bright padding-bottom">
+        <a href="http://www.festival-cannes.fr/fr/archivesPage.html" class="read-more block-01">{{ 'event.btn.afficherplusdevenement'|trans|raw }}</a>
+    </div>
+
+    </div></div>
+
+</section>
+{% endblock %}
