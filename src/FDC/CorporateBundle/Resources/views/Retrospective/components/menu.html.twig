@@ -1,8 +1,8 @@
 <nav class="navigation-sticky">
     <ul>
         <li{% if app.request.attributes.get('_route') == 'fdc_corporate_editions_affiche' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_editions_affiche', {year: app.request.attributes.get('year')}) }}">L'affiche</a></li>
-        <li{% if app.request.attributes.get('_route') == 'fdc_corporate_editions_selection' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_editions_selection', {year: app.request.attributes.get('year')}) }}">La sélection</a></li>
-        <li{% if app.request.attributes.get('_route') == 'fdc_corporate_editions_juries' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_editions_juries', {year: app.request.attributes.get('year')}) }}">Les jurys</a></li>
+        <li{% if app.request.attributes.get('_route') == 'fdc_corporate_movie_selection' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_movie_selection', {year: app.request.attributes.get('year')}) }}">La sélection</a></li>
+        <li{% if app.request.attributes.get('_route') == 'fdc_corporate_jury_juries' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_jury_juries', {year: app.request.attributes.get('year')}) }}">Les jurys</a></li>
         <li{% if app.request.attributes.get('_route') == 'fdc_corporate_palmares_get' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_palmares_get', {year: app.request.attributes.get('year')}) }}">Le palmarès</a></li>
         <li><a href="evenements.html">Les évènements</a></li>
         <li><a href="medias.html">Les médias</a></li>

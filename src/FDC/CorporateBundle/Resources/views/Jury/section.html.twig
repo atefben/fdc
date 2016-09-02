@@ -14,7 +14,7 @@
         <ul>
             {% for tab in pages %}
                 <li class="{% if app.request.attributes.get('slug') == (tab|trans_fallback('slug')) %}active {% endif %}ajax">
-                    <a href="{{ path('fdc_corporate_editions_juries', {year: app.request.attributes.get('year'), 'slug': tab|trans_fallback('slug')}) }}">
+                    <a href="{{ path('fdc_corporate_jury_juries', {year: app.request.attributes.get('year'), 'slug': tab|trans_fallback('slug')}) }}">
                         {{ (tab|trans_fallback('overrideName'))?:(tab.juryType|trans_fallback('name')) }}
                     </a>
                 </li>
