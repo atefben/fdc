@@ -198,7 +198,7 @@ var owInitReadMore = function() {
 
 var owInitFilter = function(){
   // on click on a filter
-  $('body').on('click', '.filters .select span', function() {
+  $('body').on('click', '.filters .select span, .tab-selection .selection', function() {
     var h = $(this).parent().html();
 
     $('#filters').remove();
