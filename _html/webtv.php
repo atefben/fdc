@@ -26,7 +26,7 @@
               data-twitter="//www.twitter.com"
               data-link="//www.example.com"
               data-email="//www.gmail.com"
-              data-file='[{"file":"https://youtu.be/8H3TB-Cg1cI"}]'
+              data-file='[{"file":"https://www.youtube.com/watch?v=Q5gieh35wxI"}]'
               data-img="//dummyimage.com/960x540/c8a461/000.png">
               <div id="video-webtv-live">
               </div>

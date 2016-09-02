@@ -266,16 +266,34 @@ $(document).ready(function () {
             $('.webtv #live .img').css('top', '');
             $('#main').css('padding-top', $header.hasClass('sticky') ? 91 : 0);
 
+
             if (!isIE() && s > 50 && $('#live').hasClass('on')) {
                 $('#live').removeClass('on');
                 $('#live').height($('#live').data('height'));
+
                 setTimeout(function () {
                     if (videoWebtv.getState() != "paused" && videoWebtv.getState() != "idle") {
                         $('#live .trailer').removeClass('on');
-                        videoWebtv.pause();
+
+                        if(isiPad) {
+                            videoWebtv.stop();
+                        }else{
+                            videoWebtv.pause();
+                        }
+
                         videoWebtv.updateMute(true);
                     }
-                }, 200);
+                }, 300);
+
+                if(isiPad) {
+                    setTimeout(function() {
+                        videoWebtv.stop();
+                    }, 600);
+
+                    setTimeout(function() {
+                        videoWebtv.stop();
+                    }, 900);
+                }
             }
         }
 
@@ -336,7 +354,7 @@ $(document).ready(function () {
 
         if ($('#calendar-programmation').length > 0) {
             if (s > 291) {
-                var w = s - 287;
+                var w = s - 289;
                 w = w + "px";
                 $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                 $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);

@@ -206,6 +206,7 @@ if($('body').hasClass('mobile')){
     owInitSliderSelect('tab-selection');
     owInitAccordion('more-search');
     owInitFilterSearch();
+    owInitFilter(true);
   }
 
   if($('.filters').length) {
