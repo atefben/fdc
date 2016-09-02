@@ -219,7 +219,7 @@
     right: -310px;
     top: 0;
     width: 310px;
-    z-index: 1;
+    z-index: 2;
 
     &.fullwidth {
       position: relative;
@@ -233,6 +233,7 @@
     }
 
     #calendar-wrapper {
+
       &.stick {
         position: fixed;
         top: 91px;
@@ -921,6 +922,7 @@
           .v-wrapper {
             height: 100%;
             @include transition(all 0.6s $smoothTransition);
+            position: relative;
           }
 
           .venue {
@@ -939,6 +941,8 @@
               font-size: 0.750rem;
               text-align: center;
               text-transform: uppercase;
+              position: relative;
+              z-index: 1;
             }
 
             .v-container {
@@ -1755,6 +1759,10 @@
         }
       }
 
+      .fc-head {
+        position: relative;
+      }
+      
       .fc-head .fc-axis {
         background-color: #373737;
         width: 60px !important;
@@ -1768,6 +1776,7 @@
         font-family: $CamphorBold;
         font-size: 0.750rem;
         text-transform: uppercase;
+        position: relative;
       }
 
       .fc-slats .fc-time {

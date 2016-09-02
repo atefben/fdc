@@ -16915,7 +16915,7 @@ input[type=submit] {
   right: -310px;
   top: 0;
   width: 310px;
-  z-index: 1;
+  z-index: 2;
 }
 .press #calendar.fullwidth {
   position: relative;
@@ -17530,6 +17530,7 @@ input[type=submit] {
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  position: relative;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue {
   float: left;
@@ -17547,6 +17548,8 @@ input[type=submit] {
   font-size: 0.750rem;
   text-align: center;
   text-transform: uppercase;
+  position: relative;
+  z-index: 1;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container {
   background: url("../img/press/bg.jpg") repeat-x;
@@ -18209,6 +18212,9 @@ input[type=submit] {
   height: 41px;
   z-index: 3;
 }
+.fullcalendar #calendar #mycalendar .fc-head {
+  position: relative;
+}
 .fullcalendar #calendar #mycalendar .fc-head .fc-axis {
   background-color: #373737;
   width: 60px !important;
@@ -18221,6 +18227,7 @@ input[type=submit] {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   text-transform: uppercase;
+  position: relative;
 }
 .fullcalendar #calendar #mycalendar .fc-slats .fc-time {
   background-color: #373737;
