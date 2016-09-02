@@ -3,14 +3,13 @@
 // 1. Global
 // =========================
 
-
 // 1. Global
 // =========================
 
 .filters {
   text-align: center;
 
-  .icon{ //todo css//
+  .icon { //todo css//
     font-size: .4rem;
     vertical-align: baseline;
   }
@@ -52,7 +51,6 @@
   }
 }
 
-
 #filters {
   background-color: rgba(0, 0, 0, 0.9);
   height: 100%;
@@ -64,6 +62,7 @@
   width: 100%;
   z-index: 15;
   @include transition(opacity 0.7s $smoothTransition, visibility 0.7s $smoothTransition);
+  overflow-y: auto;
 
   &.show {
     opacity: 1;
@@ -175,8 +174,8 @@
     opacity: 1;
   }
 
-  .icon{
-    color:$gold;
+  .icon {
+    color: $gold;
     line-height: 85px;
   }
 }
