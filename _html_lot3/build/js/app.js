@@ -1336,7 +1336,10 @@ var owInitSlider = function(sliderName) {
 
     var numberSlide = $('.slider-restropective').size();
     var sizeSlide = $('.slider-restropective').width();
-    var finalSizeSlider = numberSlide * sizeSlide + 100;
+    var finalSizeSlider = numberSlide * sizeSlide + 1000;
+
+    console.log(numberSlide);
+    console.log(sizeSlide);
 
     var initOpenAjax = function() { //ajax
       $('.discover').on('click', function(e){
@@ -1372,7 +1375,10 @@ var owInitSlider = function(sliderName) {
 
     // init slider
     $slide.css('width',finalSizeSlider); // change size slider
-    $slideCalc1.css('width',finalSizeSlider); // change size slider
+
+    var test = '445%';
+
+    $slideCalc1.css('width',test); // change size slider
 
     //init width of slide
     noUiSlider.create(slider, {
