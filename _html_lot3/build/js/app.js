@@ -231,9 +231,6 @@ var owInitFilter = function (isTabSelection) {
             $('#filters span').on('click', function () {
                 var data = $(this).data('select');
                 var selected = $('#'+block+' .select option[value="'+data+'"]');
-
-                console.log(selected);
-
                 selected.attr('selected','selected');
             });
 
@@ -438,9 +435,12 @@ var owInitGrid = function(id){
       if($('.filters #date').length > 0) {
         filterDate = $('.filters #date .select span.active').data('filter');
         filterDate = "."+filterDate;
-      }else
+      }
 
       if($('.filters #theme').length > 0) {
+
+        console.log('c bien ici');
+
         filterTheme = $('.filters #theme .select span.active').data('filter');
         filterTheme = "."+filterTheme;
       }
@@ -451,6 +451,8 @@ var owInitGrid = function(id){
       }
 
       var filters = filterDate+filterTheme+filterFormat;
+
+      console.log(filters);
 
       var $grid = $('.isotope-01').isotope({filter: filters});
     }

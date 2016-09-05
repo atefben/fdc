@@ -36,9 +36,6 @@ var owInitFilter = function (isTabSelection) {
             $('#filters span').on('click', function () {
                 var data = $(this).data('select');
                 var selected = $('#'+block+' .select option[value="'+data+'"]');
-
-                console.log(selected);
-
                 selected.attr('selected','selected');
             });
 
