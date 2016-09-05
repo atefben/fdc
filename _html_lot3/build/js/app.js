@@ -354,6 +354,7 @@ var owInitGrid = function(id){
 
   if(id == 'isotope-01') {
 
+
     var $grid = $('.isotope-01').imagesLoaded(function () {
       $grid.isotope({
         itemSelector    : '.item',
@@ -365,6 +366,28 @@ var owInitGrid = function(id){
         }
       });
     });
+
+
+    if($('.jury').length) {
+
+      var resize = function() {
+        var w = $('.isotope-01 .contain-img').first().width();
+        $('.isotope-01 .contain-img').each(function() {
+          $(this).css('height', (w / 0.75));
+          var $container = $(this), imgUrl = $container.find('img').prop('src');
+          if (imgUrl) {
+            $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+            img = $container.find('img');
+            img.css('display','none');
+          }
+        });
+      }
+
+      $( window ).resize(function() {
+        resize();
+      });
+
+    }
 
     return $grid;
   }
@@ -475,13 +498,13 @@ var owsetGridBigImg  = function(grid, dom, init) {
       i++;
     }
 
-    $(dom).find('article.card:not(.double w2)').each(function() {
+    $(dom).find('article.card:not(.double.w2)').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(20,true));
       }
     });
 
-    $(dom).find('article.card.double w2').each(function() {
+    $(dom).find('article.card.double.w2').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(50,true));
       }
@@ -502,12 +525,12 @@ var owsetGridBigImg  = function(grid, dom, init) {
       i++;
     }
 
-    $(dom).find('article.card:not(.double w2)').each(function() {
+    $(dom).find('article.card:not(.double.w2)').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(30,true));
       }
     });
-    $(dom).find('article.card.double w2').each(function() {
+    $(dom).find('article.card.double.w2').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(60,true));
       }

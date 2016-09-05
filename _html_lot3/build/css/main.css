@@ -9634,6 +9634,7 @@ header #searchContainer {
 }
 .isotope-01 .item .contain-img {
   overflow: hidden;
+  background-size: cover;
 }
 @media screen and (max-width: 1280px) {
   .isotope-01 {
