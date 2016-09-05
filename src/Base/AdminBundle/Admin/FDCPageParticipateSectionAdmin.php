@@ -128,6 +128,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                     'icon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
+                            null => 'Aucun pictogramme',
                             'icon_horaires' => 'Horloge',
                             'icon_acces' => 'Carte ID',
                             'icon_informations' => 'Informations',
