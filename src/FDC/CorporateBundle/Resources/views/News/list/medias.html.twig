@@ -1,0 +1,53 @@
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyId %}top-bar{% endblock %}
+
+{% block body %}
+<section class=" border-bottom s-slider-retrospective">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+
+    <div class="ajax-section"><div class="contain-ajax medias" id="main">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/menu.html.twig' %}
+
+    {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+
+    <div class="grid-01 isotope-01">
+        <div class="grid-sizer"></div>
+
+        {% for photo in photos %}
+            {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = photo.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
+            {% set copyright = photo|trans_fallback('copyright') %}
+            <article class="card card-01 item {{ format }} shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }}  all {{ photo.theme|trans_fallback('slug') }}" data-format="{{ format }}"
+                     data-theme="all {{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+                <a href="#" class="linkAllCover"></a>
+                <div class="image">
+                    <div class="image-wrapper">
+                        {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
+                        {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
+                        <img src="{% path trans.file , resolution %}" srcset="{% path trans.file , resolution %} 1x, {% path trans.file , resolutionRetina %} 2x" alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}">
+                    </div>
+                    <a href="{% path trans.file , 'reference' %}" class="linkImage"></a>
+                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                </div>
+                <div class="info vFlexAlign">
+                    <span class="picto"><i class="icon icon-photo"></i></span>
+                    <div class="contain-txt">
+                        <div>
+                            <a href="#" class="category">{{ photo.theme|trans_fallback('name')|truncate(22) }} </a><span class="date">{{ photo.publishedAt|date('d.m.y') }}</span> . <span
+                                    class="hour">{{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span>
+                        </div>
+                        <strong><a href="{% path trans.file , 'reference' %}">{{ photo|trans_fallback('legend') }}</a></strong>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+
+    </div></div>
+</section>
+{% endblock %}
