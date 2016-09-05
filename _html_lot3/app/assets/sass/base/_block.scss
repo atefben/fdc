@@ -657,9 +657,6 @@
   background-size: cover;
 
   .bck-hover {
-    /*
-    height: 448px;
-    */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -681,6 +678,7 @@
   }
 
   .wrapper-item {
+    width: 699px;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;

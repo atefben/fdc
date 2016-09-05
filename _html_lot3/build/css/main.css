@@ -4977,9 +4977,6 @@ video {
   background-size: cover;
 }
 .block-movie-preview .bck-hover {
-  /*
-  height: 448px;
-  */
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5003,6 +5000,7 @@ video {
   transition: .5s;
 }
 .block-movie-preview .wrapper-item {
+  width: 699px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
