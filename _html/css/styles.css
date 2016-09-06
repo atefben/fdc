@@ -4315,6 +4315,7 @@ header #logo-wrapper #logo {
   text-align: center;
   vertical-align: middle;
   width: 200px;
+  positon: relative;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -4324,6 +4325,16 @@ header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
 header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
   color: #c8a461;
   text-transform: uppercase;
+}
+header #logo-wrapper #logo h1 {
+  position: absolute;
+  top: 108px;
+  left: 0px;
+}
+header #logo-wrapper #logo h2 {
+  position: absolute;
+  top: 130px;
+  left: 44px;
 }
 header #logo-wrapper #logo p.stick {
   opacity: 0;
