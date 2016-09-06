@@ -284,6 +284,7 @@ header {
       text-align: center;
       vertical-align: middle;
       width: 200px;
+      position: relative;
 
       h1, p.stick {
         font-family: $CamphorBold;
@@ -294,6 +295,18 @@ header {
           color: $gold;
           text-transform: uppercase;
         }
+      }
+
+      h1 {
+        position: absolute;
+        top: 108px;
+        left: 0px;
+      }
+
+      h2 {
+        position: absolute;
+        top: 130px;
+        left: 44px;
       }
 
       p.stick {

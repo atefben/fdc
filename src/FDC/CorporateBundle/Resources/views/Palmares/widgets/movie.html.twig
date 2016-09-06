@@ -53,7 +53,6 @@
                 {% endif %}
                 <strong class="name-f">{{ movie.selectionSection|trans_fallback('name') }}</strong>
                 <strong class="name-fb">({{ movie.titleVO }})</strong>
-                <span class="names-a">
                     {% spaceless %}
                         {% set author = '' %}
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
@@ -61,13 +60,12 @@
                                 {% set author = author ~ ', ' %}
                             {% endif %}
 
-                            {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
+                            {% set author = author ~ '<a class="names-a" href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
                             {% set author = author ~ director.fullName %}
                             {% set author = author ~ '</a>' %}
                         {% endfor %}
                         {{ author|raw }}
                     {% endspaceless %}
-                </span>
                 {% endif %}
             </div>
         </div>
