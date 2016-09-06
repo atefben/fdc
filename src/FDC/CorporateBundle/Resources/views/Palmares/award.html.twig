@@ -16,13 +16,18 @@
                 <h1 class="title-01">{{ 'palmares.title.palmares'|trans }}</h1>
             </div>
 
+            {% dump(page.id) %}
             {% if page.id == 1 and waitingPage == null %}
+                {% set breadcrumbPage = 'competition' %}
                 {% include 'FDCCorporateBundle:Palmares:competition.html.twig' %}
             {% elseif page.id == 4 %}
+                {% set breadcrumbPage = 'camerador' %}
                 {% include 'FDCCorporateBundle:Palmares:camerador.html.twig' %}
             {% elseif page.id == 5 and waitingPage == null %}
+                {% set breadcrumbPage = 'all' %}
                 {% include 'FDCCorporateBundle:Palmares:all.html.twig' %}
             {% elseif waitingPage == null %}
+                {% set breadcrumbPage = 'simple' %}
                 {% include 'FDCCorporateBundle:Palmares:simple.html.twig' %}
             {% endif %}
 
@@ -30,4 +35,30 @@
         </div>
         </div>
     </section>
+
+    {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : ''
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.palmares.main'|trans,
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : page|trans_fallback('name'),
+    "url"  : ''
+    }
+    ]
+    } %}
 {% endblock %}

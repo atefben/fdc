@@ -24,6 +24,34 @@ class EditionsController extends Controller
         return array('festivals' => $festivals);
     }
 
+    /**
+     * @Route("/{year}/", requirements={"year" = "\d+"})
+     */
+    public function yearAction(Request $request, $year)
+    {
+        $locale = $request->getLocale();
+
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+            ->getPagesOrdoredBySelectionSectionOrder($locale);
+
+        foreach ($pages as $page) {
+            if ($page instanceof FDCPageLaSelection) {
+                if ($page->findTranslationByLocale($locale)) {
+                    $slug = $page->findTranslationByLocale($locale)->getSlug();
+                }
+                if (!$slug) {
+                    $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
+                }
+                if ($slug) {
+                    return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $slug, 'year' => $year));
+                }
+            }
+        }
+        throw $this->createNotFoundException('There is not available selection.');
+    }
+
 
     /**
      * @Route("/{year}/affiche", requirements={"year" = "\d+"})
@@ -41,6 +69,6 @@ class EditionsController extends Controller
         $posters = $em->getRepository('BaseCoreBundle:FilmFestivalPoster')
             ->findByFestival($festival);
 
-        return array('posters' => $posters, 'festivals' => $festivals);
+        return array('posters' => $posters, 'festival' => $festival, 'festivals' => $festivals);
     }
 }

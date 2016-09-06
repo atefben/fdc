@@ -22,37 +22,65 @@
         </div>
     </div>
 
+    {% set currentYear = festivals|first.year %}
+    {% set yearEdition = 1 %}
+    {% set slideId = 1 %}
+    {% set lastSlideId = festivals|last.year - festivals|first.year %}
     {% for festival in festivals %}
-    {%  if festival.id < 10 %}
-    <div data-slide="{{ festival.id }}" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
-        <div class="container block-01 vFlexAlign">
+    {% if currentYear != festival.year %}
+        <div data-slide="{{ slideId }}" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
+            <div class="container block-01 vFlexAlign">
 
-            <div class="link-return-c">
-                <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
-            </div>
+                <div class="link-return-c">
+                    <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+                </div>
 
-            <!-- <div class="date-back"><a href="#"></a><i class="icon icon-arrow-fill"></i></div> -->
-            <div class="date-next" data-url="retrospective-poster2.html"><a href="#">{{ festival.year }}</a><i class="icon icon-arrow-fill"></i></div>
+                {% if slideId > 1 %}<div class="date-back" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear-1}) }}"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition < lastSlideId %}<div class="date-next" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear+1}) }}"><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
-            <div class="vFlexAlign">
-                <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
-                <div class="texts animated visible pulse">
-                    <span class="title-4">{{ festival.id }}<sub>E</sub> édition</span>
-                    <h2 class="title-2">{{ festival.year }}</h2>
-                    <a href="#" data-url="{{ path('fdc_corporate_editions_retrospective', {year:festival.year}) }}" class="button discover" style="display: none;">découvrir</a>
+                <div class="vFlexAlign">
+                    <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
+                    <div class="texts animated visible pulse">
+                        <span class="title-4">Pas de contenu pour cette édition</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        {% set currentYear = currentYear + 1 %}
+        {% set slideId = slideId + 1 %}
+    {% else %}
+        <div data-slide="{{ slideId }}" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
+            <div class="container block-01 vFlexAlign">
+
+                <div class="link-return-c">
+                    <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+                </div>
+
+                {% if slideId > 1 %}<div class="date-back" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear-1}) }}"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition < lastSlideId %}<div class="date-next" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear+1}) }}"><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+
+                <div class="vFlexAlign">
+                    <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
+                    <div class="texts animated visible pulse">
+                        <span class="title-4">{{ yearEdition }}<sub>E</sub> édition</span>
+                        <h2 class="title-2">{{ festival.year }}</h2>
+                        <a href="#" data-url="{{ path('fdc_corporate_editions_affiche', {year:festival.year}) }}" class="button discover" style="display: none;">découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endif %}
+        {% set yearEdition = yearEdition + 1 %}
+        {% set currentYear = currentYear + 1 %}
+        {% set slideId = slideId + 1 %}
     {% endfor %}
 
 </div>
 
 <div class="block-01">
     <div class="timelapse block-drag" style="display: none;">
-        <span class="date date-first" data-firstdate="1946">1946</span>
+        <span class="date date-first" data-firstdate="{{ festivals|first.year }}">{{ festivals|first.year }}</span>
         <div class="avance noUi-target noUi-ltr noUi-horizontal noUi-background" id="timelapse-01"><span class="square"></span><div class="noUi-base"><div class="noUi-origin" style="left: 1.42857%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
-        <span class="date date-last" data-lastdate="1955">1955</span>
+        <span class="date date-last" data-lastdate="{{ festivals|last.year }}">{{ festivals|last.year }}</span>
     </div>
 </div>

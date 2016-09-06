@@ -7,7 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use DateTime;
-
+use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 /**
  * @Route("/69-editions/retrospective")
  */
@@ -23,8 +24,8 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/articles")
-     * @Template("FDCCorporatesBundle:News/list:article.html.twig")
+     * @Route("/{year}/articles")
+     * @Template("FDCCorporateBundle:News/list:article.html.twig")
      */
     public function getArticlesAction(Request $request, $year)
     {
@@ -94,6 +95,7 @@ class NewsController extends Controller
         return array(
             'articles' => $newsArticles,
             'filters'  => $filters,
+            'festivals'  => $festivals,
         );
     }
 
