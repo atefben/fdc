@@ -352,7 +352,7 @@ $(document).ready(function () {
             });
         }
 
-        if ($('#calendar-programmation').length > 0) {
+        if ($('#calendar-programmation').length > 0 && !$('.press-home').length > 0 ) {
             if (s > 291) {
                 var w = s - 289;
                 w = w + "px";

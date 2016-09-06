@@ -10,6 +10,17 @@
 // 1. Global
 // =========================
 .participate {
+
+  ul {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style: initial;
+      list-style-position: inside;
+    }
+  }
+
   .participate-active {
     height: auto !important;
   }
