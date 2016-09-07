@@ -8,5 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
-    
+    /**
+     * @Route("/")
+     * @Template("FDCCorporateBundle:News:home.html.twig")
+     */
+    public function homeAction()
+    {
+        return array();
+    }
 }

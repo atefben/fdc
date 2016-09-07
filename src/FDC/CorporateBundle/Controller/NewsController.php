@@ -15,15 +15,6 @@ use Base\CoreBundle\Entity\NewsArticleTranslation;
 class NewsController extends Controller
 {
     /**
-     * @Route("/")
-     * @Template()
-     */
-    public function homeAction()
-    {
-        return array();
-    }
-
-    /**
      * @Route("/{year}/articles")
      * @Template("FDCCorporateBundle:News/list:article.html.twig")
      */
