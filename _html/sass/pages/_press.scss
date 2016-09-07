@@ -1445,6 +1445,26 @@
   .contact-press {
     border-top: 1px solid #e3e3e3;
     padding: 60px 0;
+
+    ul {
+      li {
+        font-family: $CamphorRegular;
+        line-height: 30px;
+        font-size: 1rem;
+        list-style: initial;
+        list-style-position: inside;
+      }
+    }
+
+    ol {
+      li {
+        font-family: $CamphorRegular;
+        line-height: 30px;
+        font-size: 1rem;
+      }
+    }
+
+
     .button{
       font-size: 0.75rem;
     }

@@ -1784,6 +1784,7 @@ article .picto .icon{
 .slideshow .img img{
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .slideshow {
 
@@ -1824,6 +1825,7 @@ article .picto .icon{
   height: 100%;
   width: 100%;
   z-index: 0;
+    object-fit: cover;
 }
 .slideshow .thumbnails .thumb .image-wrapper img {
   display: block;
@@ -4341,6 +4343,139 @@ p{
     text-align: center;
     text-transform: uppercase;
 }
+#create-event-pop {
+	position: fixed;
+	top: 85px;
+	left: 0px;
+	width: 100%;
+	background-color: #fff;
+	height: 100vh;
+	z-index: 9;
+	padding-top: 200px;
+	display:none;
+}
+
+#create-event-pop.visible-popin {
+	display: block;
+}
+
+#create-event-pop .contain-btn .btn-close {
+	height: 68px;
+	width: 68px;
+	position: absolute;
+	right: 37px;
+	top: 38px;
+	border: 1px solid #c8a461;
+	color: #c8a461;
+	transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	cursor: pointer;
+}
+#create-event-pop .contain-btn .btn-close .icon {
+	margin-top: 27px;
+	margin-left: 26px;
+}
+#create-event-pop .contain-btn .btn-close:hover {
+	color: #000;
+	border-color: #000;
+}
+#create-event-pop .container {
+	width: 561px;
+	margin: 0 auto;
+}
+#create-event-pop .container .button {
+	background-color: #fff;
+	border-color: #c8a461;
+	padding: 0px 33px;
+	text-align: center;
+}
+#create-event-pop .container .button:hover {
+	background-color: #c8a461;
+	color: #fff;
+}
+#create-event-pop .container h3 {
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	color: #c8a461;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	line-height: 24px;
+	font-size: 25px;
+	padding-bottom: 4px;
+}
+#create-event-pop .container p {
+	color: #666666;
+	font-size: 23px;
+	line-height: 33px;
+	margin-top: 18px;
+}
+#create-event-pop .container form {
+	padding-top: 23px;
+	width: 561px;
+}
+#create-event-pop .container form label {
+	text-transform: uppercase;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	letter-spacing: .2em;
+	display: block;
+	margin-top: 15px;
+}
+#create-event-pop .container form input {
+	margin: 12px 0px;
+	font-size: 20px;
+	-webkit-appearance: none;
+	border-radius: 0px;
+}
+#create-event-pop .container form input[type="submit"] {
+	margin-bottom: 41px;
+	height: 60px;
+}
+#create-event-pop .container form input[type="submit"]:hover {
+	cursor: pointer;
+}
+#create-event-pop .container form input[type="text"] {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 537px;
+	height: 46px;
+	color: #666;
+	border: 1px solid #CCC;
+}
+#create-event-pop .container form input[type="text"].error {
+	border-color: red;
+}
+#create-event-pop .container form .time {
+	display: inline-block;
+	width: 268px;
+}
+#create-event-pop .container form .time input[type='text'] {
+	width: 96px;
+	height: 46px;
+	text-align: center;
+}
+#create-event-pop .container form .time .pictodate {
+	width: 51px;
+	height: 56px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	margin: 12px 0px;
+	vertical-align: bottom;
+	border-left: 0px solid #fff;
+	color: #8c8c8c;
+}
+#create-event-pop .container form .time .pictodate .icon {
+	margin-top: 16px;
+	margin-left: 18px;
+}
+#create-event-pop .container form .time .hours {
+	width: 64px !important;
+	height: 46px;
+	text-align: center;
+	margin-left: 8px;
+}
+#create-event-pop .container form .first {
+	margin-right: 21px;
+}
+
 .calendar-press #timeline a{
 	color: #fff;
 }

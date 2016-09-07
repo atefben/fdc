@@ -594,7 +594,7 @@ $(document).ready(function() {
       playerInstance.setup({
         file         : $(this).data('file'),
         image        : $(this).data('poster'),
-        width        : "1playerInstance00%",
+        width        : "100%",
         aspectratio  : "16:9",
         displaytitle : false,
         mediaid      : '123456',

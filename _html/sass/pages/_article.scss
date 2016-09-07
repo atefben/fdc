@@ -280,6 +280,15 @@ article {
     }
   }
 
+  ol {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+    }
+  }
+
+
   .anim {
     display: block;
     height: 100%;

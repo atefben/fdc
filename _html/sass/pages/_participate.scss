@@ -21,6 +21,15 @@
     }
   }
 
+  ol {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+    }
+  }
+
+
   .participate-active {
     height: auto !important;
   }
