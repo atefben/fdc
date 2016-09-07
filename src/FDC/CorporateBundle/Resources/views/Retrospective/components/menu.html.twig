@@ -1,3 +1,4 @@
+{% trans_default_domain 'FDCEventBundle' %}
 <nav class="navigation-sticky">
     <ul>
         <li{% if app.request.attributes.get('_route') == 'fdc_corporate_editions_affiche' %} class="active"{% endif %}><a href="{{ path('fdc_corporate_editions_affiche', {year: app.request.attributes.get('year')}) }}">L'affiche</a></li>
