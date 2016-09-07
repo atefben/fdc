@@ -104,4 +104,30 @@
         </div>
     </div>
 </section>
+    {% dump(page) %}
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : ''
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.jury.home'|trans,
+    "url"  : path('fdc_corporate_jury_juries', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : (page|trans_fallback('overrideName'))?:(page.juryType|trans_fallback('name')),
+    "url"  : ''
+    }
+    ]
+    } %}
 {% endblock %}

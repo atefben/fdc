@@ -1,3 +1,4 @@
+{% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}retrospective selection retrospective-home restrospective-init dark{% endblock %}
 
@@ -138,4 +139,34 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
 </div>
 </div>
 </section>
+    {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : ''
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.la_selection'|trans,
+    "url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'selection.nav.cannes-classics'|trans,
+    "url"  : path('fdc_event_movie_classics', {slug: transClassic.slug})
+    },
+    {
+    "name" : transClassic.title,
+    "url"  : ""
+    }
+    ]
+    } %}
 {% endblock %}

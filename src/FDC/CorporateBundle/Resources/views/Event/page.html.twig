@@ -1,3 +1,4 @@
+{% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}articles-list dark retrospective retrospective-home restrospective-init{% endblock %}
 
@@ -50,22 +51,26 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
 </div></div>
 
 </section>
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-    {
-    "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : ''
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : event|trans_fallback('title'),
-    "url"  : ''
-    }
-    ]} %}
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+{
+"name" : 'breadcrumb.69editions.home'|trans,
+"url"  : ''
+},
+{
+"name" : 'breadcrumb.retrospective.home'|trans,
+"url"  : path('fdc_corporate_editions_retrospective')
+},
+{
+"name" : app.request.attributes.get('year'),
+"url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+},
+{
+"name" : 'breadcrumb.event.list'|trans,
+"url"  : ''
+},
+{
+"name" : event|trans_fallback('title'),
+"url"  : ''
+}
+]} %}
 {% endblock %}
