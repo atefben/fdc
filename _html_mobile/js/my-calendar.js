@@ -1,4 +1,13 @@
 $(document).ready(function() {
+
+  // Renvoie un UID unique
+  function guid() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+  }
+
   // init array of events
   var events = [];
   // get local storage
@@ -170,7 +179,7 @@ $(document).ready(function() {
       $('#create-event-pop').addClass("visible-popin");
 
       $('#form_data').on('submit',function(e) {
-        e.preventDefault;
+        e.preventDefault();
 
         //vérification des données reçues//
         $('#create-event-pop input[type=text]').each(function(index,value) {
@@ -183,11 +192,12 @@ $(document).ready(function() {
           }
         });
 
+        console.log('ici');
+
         if(!$('#create-event-pop input[type=text]').hasClass('error')) {
           //récupération des données sous forme de JSON//
           var $form = $(this);
           var data = getFormData($form);
-
 
           date1 = data.datebegin;
           date1 = date1.replace(/\//g,'-');
@@ -204,13 +214,17 @@ $(document).ready(function() {
           var dateEnd = new Date(date2);
           var _userOffset = dateBegin.getTimezoneOffset()*60000;
 
+
           if(dateEnd < dateBegin) {
             $('#create-event-pop input[name="datebegin"], \
                #create-event-pop input[name="hoursbegin"], \
                #create-event-pop input[name="dateend"], \
                #create-event-pop input[name="hoursend"]').addClass('error');
+
+
             return false;
           } else {
+
             $('#create-event-pop input[name="datebegin"], \
                #create-event-pop input[name="hoursbegin"], \
                #create-event-pop input[name="dateend"], \
@@ -218,8 +232,10 @@ $(document).ready(function() {
             $('#create-event-pop').removeClass("visible-popin");
 
             id = guid();
+
             var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
             //Création de l'évènement et affichage sur le calendrier
+
             var myEvent = {
               "title": titleEvent,
               "eventColor": "#fff",
@@ -233,7 +249,12 @@ $(document).ready(function() {
               "id": id,
               "url": "eventPopin.html"
             };
+
+            console.log(myEvent);
+
+/*
             $('#mycalendar').fullCalendar( 'renderEvent', myEvent );
+*/
             $(this)[0].reset();
 
             myEvent['start'] = dateBegin;
@@ -264,11 +285,6 @@ $(document).ready(function() {
       });
     });
 
-    $(document).keyup(function (e) {
-      if (e.keyCode == 27) {
-        $('#create-event-pop').removeClass('visible-popin');
-      }
-    });
     $('.btn-close').on('click', function () {
       $('#create-event-pop').removeClass('visible-popin');
     });

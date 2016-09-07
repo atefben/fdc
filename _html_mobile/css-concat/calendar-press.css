@@ -4432,7 +4432,7 @@ p{
 #create-event-pop .container form input[type="submit"]:hover {
 	cursor: pointer;
 }
-#create-event-pop .container form input[type="text"] {
+#create-event-pop .container form input[type="text"], #create-event-pop .container form input[type="date"] {
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 537px;
@@ -4440,14 +4440,14 @@ p{
 	color: #666;
 	border: 1px solid #CCC;
 }
-#create-event-pop .container form input[type="text"].error {
+#create-event-pop .container form input[type="text"].error, #create-event-pop .container form input[type="date"].error {
 	border-color: red;
 }
 #create-event-pop .container form .time {
 	display: inline-block;
 	width: 268px;
 }
-#create-event-pop .container form .time input[type='text'] {
+#create-event-pop .container form .time input[type='text'], #create-event-pop .container form .time input[type='date'] {
 	width: 96px;
 	height: 46px;
 	text-align: center;
@@ -4471,6 +4471,8 @@ p{
 	height: 46px;
 	text-align: center;
 	margin-left: 8px;
+	position: relative;
+	top: 8px;
 }
 #create-event-pop .container form .first {
 	margin-right: 21px;
