@@ -19307,6 +19307,11 @@ input[type=submit] {
   list-style: initial;
   list-style-position: inside;
 }
+.accreditation ol li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+}
 .accreditation #accreditation {
   border-top: 1px solid #e3e3e3;
 }
