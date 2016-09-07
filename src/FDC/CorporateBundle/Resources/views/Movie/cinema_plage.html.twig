@@ -16,7 +16,7 @@
             <div class="all-contain">
 
                 <div class="contain-title contain-title-small vFlexAlign border-bottom">
-                    <h2 class="title-04">Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public.</h2>
+                    <h2 class="title-04">{{ page|trans_fallback('subtitle') }}</h2>
                 </div>
 
                 {% for projection in projections %}

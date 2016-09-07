@@ -13,6 +13,9 @@
     <div class="all-contain">
 
         {% for poster in posters %}
+            {% if poster.type == 13 %}
+                {% set affiche = poster %}{% dump(poster) %}
+            {% endif %}
             <div class="contain-title vFlexAlign border-bottom">
                 <h1 class="title-01">{{ poster|trans_fallback('title') }}</h1>
             </div>
@@ -35,8 +38,7 @@
             </article>
         {% endfor %}
 
-        {% set currentPath = path(app.request.attributes.get('_route'),
-        app.request.attributes.get('_route_params')) %}
+        {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
         <div class="black small-h">
             <strong class="title-9">Partager la page</strong>
             <div class="block-social-network block-social-network-all ">
