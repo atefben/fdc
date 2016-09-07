@@ -22,12 +22,18 @@
   }
 
   ol {
+    list-style-type: decimal;
+    list-style: initial;
+    list-style-position: inside;
+
     li {
       font-family: $CamphorRegular;
       line-height: 30px;
       font-size: 1rem;
+      list-style-type: decimal;
     }
   }
+
 
 
   .participate-active {
