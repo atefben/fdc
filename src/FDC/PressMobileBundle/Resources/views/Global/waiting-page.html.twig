@@ -1,0 +1,36 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressMobileBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/palmares.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+
+<div id="main" data-menu="selection">
+    {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+    {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    <div id="banner-top" class="show">
+        <div class="banner-img vCenter" style="background-image:url({% path waitingPage.banner|trans_fallback('file'), 'reference' %})">
+            <div class="vCenterKid">
+                <h2 class="title one-line">{{ waitingPage|trans_fallback('title')|raw }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container container-landing">
+            {{ waitingPage|trans_fallback('text')|raw }}
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/article.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}
