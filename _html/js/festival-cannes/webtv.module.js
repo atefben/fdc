@@ -126,7 +126,7 @@ $(document).ready(function () {
                     ) {
                         try {
                             videoPopin.remove();
-                        } catch(e) {
+                        } catch (e) {
                             console.log(e);
                         }
                         $(videoPopin).data('loaded', false);
@@ -305,8 +305,10 @@ $(document).ready(function () {
 
     if ($('.single-channel').length) {
         if ($('#content-latest').length) {
-            videoPopin = playerInit('video-player-popin', false, false);
-            linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
+          /*  videoPopin = playerInit('video-player-popin', false, false);
+            linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');*/
+
+
             $('.popin-video .popin-buttons.buttons .email').on('click', function (e) {
                 e.preventDefault();
                 launchPopinMedia({}, videoPopin);
@@ -332,8 +334,20 @@ $(document).ready(function () {
                     hour = $(e.target).closest('.video').find('.hour').text(),
                     name = $(e.target).closest('.video').find('p').text();
 
-                if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
-                    videoPopin.remove();
+                console.log("1");
+                console.log(videoPopin);
+
+                if (typeof videoPopin === "undefined" ||
+                    (
+                        typeof videoPopin.getConfig().playlist[0].file === "undefined" ||
+                        videoPopin.getConfig().playlist[0].file === ""
+                    )
+                ) {
+                    try {
+                        videoPopin.remove();
+                    } catch (e) {
+                        console.log(e);
+                    }
                     $(videoPopin).data('loaded', false);
                     $('#video-player-popin').closest('.video-container').data('file', source);
                     $('#video-player-popin').closest('.video-container').data('img', img);
@@ -347,6 +361,22 @@ $(document).ready(function () {
                     }]);
                     videoPopin.play();
                 }
+
+                /*if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
+                 videoPopin.remove();
+                 $(videoPopin).data('loaded', false);
+                 $('#video-player-popin').closest('.video-container').data('file', source);
+                 $('#video-player-popin').closest('.video-container').data('img', img);
+
+                 videoPopin = playerInit('video-player-popin', false, false);
+                 videoPopin.play();
+                 } else {
+                 videoPopin.load([{
+                 sources: source,
+                 image: img
+                 }]);
+                 videoPopin.play();
+                 }*/
 
                 // CUSTOM LINK FACEBOOK
                 if ($('.container-webtv-ba-video').length > 0) {
