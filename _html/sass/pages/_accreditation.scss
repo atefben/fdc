@@ -10,6 +10,19 @@
     }
   }
 
+  ol {
+    list-style-type: decimal;
+    list-style: initial;
+    list-style-position: inside;
+
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style-type: decimal;
+    }
+  }
+
   #accreditation {
     border-top: 1px solid #e3e3e3;
 

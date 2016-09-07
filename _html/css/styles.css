@@ -10355,6 +10355,17 @@ article .read-later.rAlign span:after {
   list-style: initial;
   list-style-position: inside;
 }
+.single-article ol {
+  list-style-type: decimal;
+  list-style: initial;
+  list-style-position: inside;
+}
+.single-article ol li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  list-style-type: decimal;
+}
 .single-article .anim {
   display: block;
   height: 100%;
@@ -15897,6 +15908,17 @@ input[type=submit] {
   list-style: initial;
   list-style-position: inside;
 }
+.participate ol {
+  list-style-type: decimal;
+  list-style: initial;
+  list-style-position: inside;
+}
+.participate ol li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  list-style-type: decimal;
+}
 .participate .participate-active {
   height: auto !important;
 }
@@ -18002,6 +18024,24 @@ input[type=submit] {
   border-top: 1px solid #e3e3e3;
   padding: 60px 0;
 }
+.press .contact-press ul li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  list-style: initial;
+  list-style-position: inside;
+}
+.press .contact-press ol {
+  list-style-type: decimal;
+  list-style: initial;
+  list-style-position: inside;
+}
+.press .contact-press ol li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  list-style-type: decimal;
+}
 .press .contact-press .button {
   font-size: 0.75rem;
 }
@@ -19065,6 +19105,17 @@ input[type=submit] {
   list-style: initial;
   list-style-position: inside;
 }
+.practicalguide ol {
+  list-style-type: decimal;
+  list-style: initial;
+  list-style-position: inside;
+}
+.practicalguide ol li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  list-style-type: decimal;
+}
 .practicalguide .header-press {
   border-bottom: 1px solid #e3e3e3 !important;
 }
@@ -19279,6 +19330,17 @@ input[type=submit] {
   font-size: 1rem;
   list-style: initial;
   list-style-position: inside;
+}
+.accreditation ol {
+  list-style-type: decimal;
+  list-style: initial;
+  list-style-position: inside;
+}
+.accreditation ol li {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1rem;
+  list-style-type: decimal;
 }
 .accreditation #accreditation {
   border-top: 1px solid #e3e3e3;
