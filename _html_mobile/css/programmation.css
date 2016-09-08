@@ -1,4 +1,9 @@
 
+.calendar .v-head {
+    position: relative;
+    z-index: 3;
+}
+
 .calendar .timeCol{
 	
 	background-color: #f4f4f4;
