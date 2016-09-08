@@ -433,8 +433,6 @@ $(document).ready(function() {
 
 
     if($('.jwplayer').length > 0) {
-      alert('ici');
-
       playerInstance.stop();
     }
 
