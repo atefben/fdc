@@ -14,7 +14,7 @@
 
         {% for poster in posters %}
             {% if poster.type == 13 %}
-                {% set affiche = poster %}{% dump(poster) %}
+                {% set affiche = poster %}
             {% endif %}
             <div class="contain-title vFlexAlign border-bottom">
                 <h1 class="title-01">{{ poster|trans_fallback('title') }}</h1>
