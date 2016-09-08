@@ -371,7 +371,7 @@ $(document).ready(function() {
     }, 200);
     
     if($("#player1").length !== 0) {
-      var playerInstance = jwplayer("player1");
+      playerInstance = jwplayer("player1");
       playerInstance.setup({
         file         : $(this).data('file'),
         image        : $(this).data('poster'),
@@ -430,5 +430,13 @@ $(document).ready(function() {
         stopSound();
       }
     }, 200);
+
+
+    if($('.jwplayer').length > 0) {
+      alert('ici');
+
+      playerInstance.stop();
+    }
+
   });
 });
