@@ -438,9 +438,6 @@ var owInitGrid = function(id){
       }
 
       if($('.filters #theme').length > 0) {
-
-        console.log('c bien ici');
-
         filterTheme = $('.filters #theme .select span.active').data('filter');
         filterTheme = "."+filterTheme;
       }
@@ -451,8 +448,6 @@ var owInitGrid = function(id){
       }
 
       var filters = filterDate+filterTheme+filterFormat;
-
-      console.log(filters);
 
       var $grid = $('.isotope-01').isotope({filter: filters});
     }
@@ -1363,9 +1358,6 @@ var owInitSlider = function(sliderName) {
     var sizeSlide = $('.slider-restropective').width();
     var finalSizeSlider = numberSlide * sizeSlide + 1000;
 
-    console.log(numberSlide);
-    console.log(sizeSlide);
-
     var initOpenAjax = function() { //ajax
       $('.discover').on('click', function(e){
 
@@ -1661,7 +1653,6 @@ var owInitSlider = function(sliderName) {
     });
 
     if($('.restrospective-init').length) {
-
 
       var w = $('body').width();
       values = $('.slides-calc1 .date').data('date');
