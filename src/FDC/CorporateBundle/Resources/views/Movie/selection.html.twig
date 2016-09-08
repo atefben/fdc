@@ -33,7 +33,7 @@
                                         <span class="title-11">{{ movie.titleVo }}</span><br />
                                         <span class="title-13">({{ movie|trans_fallback_movie('title') }})</span>
                                     {% else %}
-                                        <span class="title-13">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                        <span class="title-11">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
                                     {% endif %}
                                     {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                         <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
