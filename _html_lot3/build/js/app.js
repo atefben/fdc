@@ -380,6 +380,8 @@ var owInitGrid = function(id){
         });
       }
 
+      resize();
+      
       $( window ).resize(function() {
         resize();
       });
