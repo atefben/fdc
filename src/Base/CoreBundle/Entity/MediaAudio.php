@@ -47,6 +47,11 @@ class MediaAudio extends Media implements RoutedItemInterface
      */
     private $homepageNews;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->associatedFilms = new ArrayCollection();
+    }
 
     /**
      * Set image

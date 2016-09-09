@@ -70,11 +70,11 @@ fos_elastica:
                             properties :
                                 name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
-                        theme.translations:
-                            type: nested
-                            properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
+ #                       theme.translations:
+ #                           type: nested
+ #                           properties :
+ #                               name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+ #                               locale: ~
                         tags:
                             type: nested
                             properties :
@@ -171,11 +171,11 @@ fos_elastica:
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 status: ~
-                        theme.translations:
-                            type: nested
-                            properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
+                        #theme.translations:
+                        #    type: nested
+                        #    properties :
+                        #        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        #        locale: ~
                         tags:
                             type: nested
                             properties :
@@ -241,38 +241,42 @@ fos_elastica:
                                 title: { boost: 60, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 status: ~
-                news:
-                    indexable_callback: 'isElasticable'
-                    persistence:
-                        driver: orm
-                        model: Base\CoreBundle\Entity\News
-                        provider: ~
-                        listener:
-                            immediate: ~
-                        finder: ~
-                        repository: Base\CoreBundle\SearchRepository\NewsRepository
-                    mappings:
-                        publishedAt: { type: date }
-                        translations:
-                            type: nested
-                            properties :
-                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
-                                status: ~
-                        theme.translations:
-                            type: nested
-                            properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
-                        tags:
-                            type: nested
-                            properties :
-                                tag.translations:
-                                    type: nested
-                                    properties :
-                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                        locale: ~
+#                news:
+#                    indexable_callback: 'isElasticable'
+#                    persistence:
+#                        driver: orm
+#                        model: Base\CoreBundle\Entity\News
+#                        provider: ~
+#                        listener:
+#                            immediate: ~
+#                        finder: ~
+#                        repository: Base\CoreBundle\SearchRepository\NewsRepository
+#                        model_to_elastica_transformer:
+#                            service: base.transformers.model.nullable
+#                    mappings:
+#                        publishedAt: { type: date }
+#                        translations:
+#                            type: nested
+#                            properties :
+#                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+#                                introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+#                                locale: ~
+#                                status: ~
+#                        theme.translations:
+#                            type: nested
+#                            property_path:
+#                                theme.translations
+#                            properties :
+#                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+#                                locale: ~
+#                        tags:
+#                            type: nested
+#                            properties :
+#                                tag.translations:
+#                                    type: nested
+#                                    properties :
+#                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+#                                        locale: ~
                                 
                 artist:
                     indexable_callback: 'isElasticable'

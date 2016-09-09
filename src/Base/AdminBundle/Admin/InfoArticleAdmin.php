@@ -150,7 +150,8 @@ class InfoArticleAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'btn_delete' => false
+                'btn_delete' => false,
+                'required' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label'        => 'form.label_article_tags',
@@ -169,7 +170,8 @@ class InfoArticleAdmin extends Admin
                 'label'              => 'form.label_header_image',
                 'help'               => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete'         => false
+                'btn_delete'         => false,
+                'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help'     => 'form.news.helper_film_film_associated',
