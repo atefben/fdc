@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use DateTime;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * @Route("/69-editions/retrospective")
  */
