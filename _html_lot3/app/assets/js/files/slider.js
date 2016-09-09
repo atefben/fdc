@@ -135,9 +135,8 @@ var owInitSlider = function(sliderName) {
     // init slider
     $slide.css('width',finalSizeSlider); // change size slider
 
-    var test = '445%';
-
-    $slideCalc1.css('width',test); // change size slider
+    var test = '418%';
+    $slideCalc1.css('width', test); // change size slider
 
     //init width of slide
     noUiSlider.create(slider, {
@@ -153,15 +152,20 @@ var owInitSlider = function(sliderName) {
    slider.noUiSlider.on('update', function( values, handle ) {
 
       //drag
-      var w = $('body').width();
+      var w = $(window).width() +4;
       var number = 0;
+
 
       valuesFloat = parseFloat(values[handle]);
       valuesInt = parseInt(values[handle]);
       values = Math.round(valuesFloat);
       number = values - 1945;
+     console.log(valuesFloat);
+     console.log(valuesInt);
+     console.log(values);
+     console.log(number);
 
-      $('.slides-calc1 .date').html(valuesInt);
+      $('.slides-calc1 .date').html(values);
 
       $('.big img').removeClass('open');
       $('.slider-restropective .calc3').css('display','block');
@@ -171,7 +175,7 @@ var owInitSlider = function(sliderName) {
         initDrag = 0;
       }
 
-      if(valuesInt > 1945){
+      if(values > 1945){
         $('.slides-calc1').css('display','block');
         $('.slides-calc2.navigation').removeClass('begin');
       }else {
@@ -197,8 +201,7 @@ var owInitSlider = function(sliderName) {
       var val3 = - (valuesFloat - 1945 - number) * 80; //todo script ?
       $('.slider-restropective[data-slide='+number+'] .calc4').css('transform','translate('+val3+'px)');
 
-      var val = - w * (valuesFloat - 1945) * .8; //todo script ?
-      var valPos = w * (valuesFloat - 1945) * .8; //todo script ?
+      var val = - w * (values - 1945); //todo script ?
 
       $slide.css('transform','translate('+val+'px)');
 
@@ -210,11 +213,17 @@ var owInitSlider = function(sliderName) {
 
      slider.noUiSlider.on('end', function(values, handle){ //end drag
 
-       var w = $('body').width();
+      var w = $('body').width() +4;
        valuesFloat = parseFloat(values[handle]);
        values = Math.round(valuesFloat);
        number = values - 1945;
-       var val = - w * (values - 1945); //todo script ?
+
+
+       var val = - w * (number) ; //todo script ?
+
+       console.log(w);
+       console.log(values - 1945)
+       console.log(val);
 
        $slide.css('transform','translate('+val+'px)');
 
@@ -278,7 +287,7 @@ var owInitSlider = function(sliderName) {
 
      var stopAnimation = function() {
 
-       var w = $('body').width();
+       var w = $('body').width() +4;
        values = $('.slides-calc1 .date').html();
        number = values - 1945;
        var val = - w * (values - 1945); //todo script ?
@@ -313,7 +322,7 @@ var owInitSlider = function(sliderName) {
      }
 
       var animationOpen = function() {
-        var w = $('body').width();
+        var w = $('body').width() +4;
         values = $('.slides-calc1 .date').html();
         number = values - 1945;
         var val = - w * (values - 1945) - 10; //todo script ?
@@ -396,7 +405,7 @@ var owInitSlider = function(sliderName) {
 
      if($('.restrospective-init').length) {
 
-       var w = $('body').width();
+       var w = $('body').width() +4;
        values = $('.slides-calc1 .date').data('date');
 
        slider.noUiSlider.set([values]);
@@ -418,13 +427,13 @@ $(window).resize(function() {
      var $slide = $('.slides');
      var $slideCalc1 = $('.slides-calc1');
 
-     var w = $('body').width();
-     var numberSlide = $('.slider-restropective').size();
+     var w = $('body').width() +4;
+     var numberSlide = $('.slider-restropective').size() +1;
      var sizeSlide = $('.slider-restropective').width();
-     var finalSizeSlider = numberSlide * sizeSlide + 1800;
+     var finalSizeSlider = numberSlide * sizeSlide;
 
      $slide.css('width',finalSizeSlider); // change size slider
-     $slideCalc1.css('width',finalSizeSlider); // change size slider
+     /*$slideCalc1.css('width',finalSizeSlider); // change size slider*/
 
      values = $('.slides-calc1 .date').html();
      number = values - 1945;
