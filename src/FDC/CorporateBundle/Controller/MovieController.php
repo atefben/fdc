@@ -20,7 +20,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class MovieController extends Controller
 {
-
     /**
      * @Route("/{year}/selection/{slug}", requirements={"year" = "\d+"})
      * @param Request $request
@@ -89,6 +88,19 @@ class MovieController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageLaSelection')
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
+
+        $selectionTabs = array();
+        foreach($pages as $p) {
+            $movies = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsBySelectionSection($festival, $locale, $p->getSelectionSection()->getId())
+            ;
+            if(count($movies) > 0) {
+                $selectionTabs[] = $p;
+            }
+        }
+
         if ($slug === null) {
             foreach ($pages as $page) {
                 if ($page instanceof FDCPageLaSelection) {
@@ -140,7 +152,7 @@ class MovieController extends Controller
             }
 
         }
-        if ($pages && (!$next || $next === true)) {
+        if ($selectionTabs && (!$next || $next === true)) {
             $next = reset($pages);
         }
 
@@ -158,7 +170,7 @@ class MovieController extends Controller
 
         return $this->render('FDCCorporateBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,
-            'selectionTabs'  => $pages,
+            'selectionTabs'  => $selectionTabs,
             'page'           => $page,
             'movies'         => $movies,
             'next'           => is_object($next) ? $next : false,
