@@ -13,7 +13,7 @@
     {% include 'FDCCorporateBundle:Retrospective:components/menu.html.twig' %}
 
     <div class="all-contain">
-
+        {% set affiche = null %}
         {% for poster in posters %}
             {% if poster.type == 13 %}
                 {% set affiche = poster %}
@@ -26,7 +26,10 @@
                 <div class="bck-hover">
                     <div class="wrapper-item">
                         <div class="poster">
-                            <img src="" />
+                            {% dump(poster.media) %}
+                          {% if poster.media is not empty %}
+                            <img src="{% path poster.media, '256x348' %}" />
+                          {% endif %}
                         </div>
                         <div class="infos">
                             <p class="description">
@@ -39,14 +42,13 @@
                 </div>
             </article>
         {% endfor %}
-        {% dump(poster.file) %}
         {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
         <div class="black small-h">
             <strong class="title-9">Partager la page</strong>
             <div class="block-social-network block-social-network-all ">
                 <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentPath }}&picture=
-http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=Festival de Cannes {{ year }}&caption=&description={{ poster|trans_fallback('description') }}6&redirect_uri={{ currentPath }}&display=popup"><i class="icon icon-facebook"></i></a><!--
-            --><a class="twitter" href="https://twitter.com/intent/tweet?text=BACALAUREAT%20{{ currentPath }}"><i class="icon icon-twitter"></i></a><!--
+http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=Festival de Cannes {{ year }}&caption=&description={{ "affiche|trans_fallback('description')" }}6&redirect_uri={{ currentPath }}&display=popup"><i class="icon icon-facebook"></i></a><!--
+            --><a class="twitter" href="https://twitter.com/intent/tweet?text=Affiche de la {{ 'affiche.festival.id' }}e édition ({{ year }})%20{{ currentPath }}"><i class="icon icon-twitter"></i></a><!--
             --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentPath }}"><i class="icon icon-link"></i></a><!--
             --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
             --><a href="#" class="print" onclick="javascript:window.print()"><i class="icon icon-print"></i></a>
