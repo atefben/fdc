@@ -7,23 +7,23 @@
             <h3 class="subtitle">{{ 'home.prefooter.subtitle.suivezlamanifestation'|trans }}</h3>
             <ul>
                 {% if homepage|trans_fallback('prefooterTitle1') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl1') }}" class="active" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl1') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle1') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl1') }}" class="active" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl1') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle1')|raw }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle2') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl2') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl2') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle2') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl2') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl2') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle2')|raw }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle3') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl3') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl3') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle3') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl3') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl3') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle3')|raw }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle4') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl4') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl4') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle4') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl4') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl4') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle4')|raw }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle5') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl5') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl5') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle5') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl5') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl5') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle5')|raw }}</a></li>
                 {% endif %}
             </ul>
         </div>
