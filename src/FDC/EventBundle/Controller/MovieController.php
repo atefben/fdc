@@ -175,7 +175,6 @@ class MovieController extends Controller
             $nextProjectionDate = $projections[0];
         }
 
-
         return array(
             'movies'             => $movies,
             'movie'              => $movie,

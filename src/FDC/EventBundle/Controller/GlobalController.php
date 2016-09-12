@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\Newsletter;
 use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use FDC\EventBundle\Component\Controller\Controller;
@@ -140,7 +141,7 @@ class GlobalController extends Controller {
 
 
     /**
-     * @Route("/share-email", options={"expose"=true})
+     * @Route("/share-email/", options={"expose"=true})
      * @Template("FDCEventBundle:Global:share-email.html.twig")
      * @param Request $request
      * @param $section
@@ -149,7 +150,7 @@ class GlobalController extends Controller {
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null) {
+    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null) {
         $email = array(
             'section' => $section,
             'detail' => $detail,
@@ -161,8 +162,7 @@ class GlobalController extends Controller {
         $translator = $this->get('translator');
         $hasErrors  = false;
 
-        $form = $this->createForm(new ShareEmailType($translator));
-
+        $form = $this->createForm(new ShareEmailType($translator, $artist));
         if ($request->isMethod('POST')) {
             $form->submit($request);
             if ($form['email']->isValid()) {
@@ -179,13 +179,15 @@ class GlobalController extends Controller {
             if ($form->isValid()) {
                 foreach ($emails as $email){
                     $data    = $form->getData();
+                    $artist = $request->get('artist');
                     $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],
                         'description' => strip_tags($data['description'], '<p><em>'),
                         'detail' => $data['detail'],
-                        'url' => $data['url']
+                        'url' => $data['url'],
+                        'artist' => ($artist != null) ? $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist) : null
                     )), 'text/html');
                     $mailer  = $this->get('mailer');
                     $mailer->send($message);
@@ -200,7 +202,8 @@ class GlobalController extends Controller {
                             'title' => $data['title'],
                             'description' => strip_tags($data['description'], '<p><em>'),
                             'detail' => $data['detail'],
-                            'url' => $data['url']
+                            'url' => $data['url'],
+                            'artist' => ($artist != null) ? $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist) : null
                         )), 'text/html');
                         $mailer  = $this->get('mailer');
                         $mailer->send($message);
@@ -216,16 +219,27 @@ class GlobalController extends Controller {
                     }
                 }
             } else {
+                dump($form->getErrorsAsString());exit;
                 $response['success'] = false;
             }
             return new JsonResponse($response);
         }
 
-        return array(
-            'share_email' => $email,
-            'form' => $form,
-            'hasErrors' => $hasErrors
-        );
+        if ($artist) {
+            return array(
+                'share_email' => $email,
+                'form' => $form,
+                'hasErrors' => $hasErrors,
+                'artist' => $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist)
+            );
+        } else {
+            return array(
+                'share_email' => $email,
+                'form' => $form,
+                'hasErrors' => $hasErrors,
+            );
+        }
+
     }
 
     /**
