@@ -24,9 +24,15 @@
         </one-to-many>
 
         <one-to-one field="parentVideoTranslation" target-entity="Base\CoreBundle\Entity\MediaVideoTranslation" mapped-by="file">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
         </one-to-one>
 
         <one-to-one field="parentAudioTranslation" target-entity="Base\CoreBundle\Entity\MediaAudioTranslation" mapped-by="file">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
         </one-to-one>
 
         <one-to-one field="projectionMedias" target-entity="Base\CoreBundle\Entity\FilmProjectionMedia" mapped-by="file">

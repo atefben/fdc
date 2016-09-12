@@ -35,8 +35,8 @@
                     <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'perspective.retour'|trans }}</a>
                 </div>
 
-                {% if slideId > 1 %}<div class="date-back" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear-1}) }}"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                {% if yearEdition < lastSlideId %}<div class="date-next" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear+1}) }}"><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if slideId > 1 %}<div class="date-back" data-url="{{ path('fdc_corporate_movie_selection', {year: currentYear-1}) }}"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition < lastSlideId %}<div class="date-next" data-url="{{ path('fdc_corporate_movie_selection', {year: currentYear+1}) }}"><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                 <div class="vFlexAlign">
                     <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
@@ -50,22 +50,22 @@
         {% set currentYear = currentYear + 1 %}
         {% set slideId = slideId + 1 %}
     {% else %}
-        <div data-slide="{{ slideId }}" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
+        <div data-slide="{{ slideId }}" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url({{ asset('bundles/fdccorporate/media/images/retrospective-slider01.jpg') }});">
             <div class="container block-01 vFlexAlign">
 
                 <div class="link-return-c">
                     <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
                 </div>
 
-                {% if slideId > 1 %}<div class="date-back" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear-1}) }}"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                {% if yearEdition < lastSlideId %}<div class="date-next" data-url="{{ path('fdc_corporate_editions_affiche', {year: currentYear+1}) }}"><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if slideId > 1 %}<div class="date-back" data-url="{{ path('fdc_corporate_movie_selection', {year: currentYear-1}) }}"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition < lastSlideId %}<div class="date-next" data-url="{{ path('fdc_corporate_movie_selection', {year: currentYear+1}) }}"><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                 <div class="vFlexAlign">
-                    <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
+                    <!--img src="{{ asset('bundles/fdccorporate/media/images/retrospective-slider01.jpg') }}" alt="" class="open" style="display: none;"-->
                     <div class="texts animated visible pulse">
                         <span class="title-4">{{ yearEdition }}<sub>E</sub> {{ 'retrospective.edition'|trans }}</span>
                         <h2 class="title-2">{{ festival.year }}</h2>
-                        <a href="#" data-url="{{ path('fdc_corporate_editions_affiche', {year:festival.year}) }}" class="button discover" style="display: none;">{{ 'retrospective.discover'|trans }}</a>
+                        <a href="#" data-url="{{ path('fdc_corporate_movie_selection', {year:festival.year}) }}" class="button discover" style="display: none;">{{ 'retrospective.discover'|trans }}</a>
                     </div>
                 </div>
             </div>

@@ -52,7 +52,6 @@ abstract class Media implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "live", "event_show", "home", "search"})
-     * @Assert\NotNull()
      */
     private $theme;
 
@@ -205,10 +204,19 @@ abstract class Media implements TranslateMainInterface
      */
     private $associatedProjections;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldMediaId;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->sites = new ArrayCollection();
+        $this->displayedAll = false;
+        $this->displayedHome = false;
+        $this->displayedMobile = false;
     }
 
     public function __toString()
@@ -217,11 +225,15 @@ abstract class Media implements TranslateMainInterface
 
         if ($this->getId()) {
             if ($string != 'MediaImage') {
-                $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
-                $string = $this->truncate($string, 40, '..."', true);
+                if ($this->findTranslationByLocale('fr') != null) {
+                    $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+                    $string = $this->truncate($string, 40, '..."', true);
+                }
             } else {
-                $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
-                $string = $this->truncate($string, 40, '..."', true);
+                if ($this->findTranslationByLocale('fr') != null) {
+                    $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
+                    $string = $this->truncate($string, 40, '..."', true);
+                }
             }
         }
 
@@ -658,5 +670,28 @@ abstract class Media implements TranslateMainInterface
     public function getExcludeFromSearch()
     {
         return $this->excludeFromSearch;
+    }
+
+    /**
+     * Set oldMediaId
+     *
+     * @param integer $oldMediaId
+     * @return Media
+     */
+    public function setOldMediaId($oldMediaId)
+    {
+        $this->oldMediaId = $oldMediaId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldMediaId
+     *
+     * @return integer 
+     */
+    public function getOldMediaId()
+    {
+        return $this->oldMediaId;
     }
 }

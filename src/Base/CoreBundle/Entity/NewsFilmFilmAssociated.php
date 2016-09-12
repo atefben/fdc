@@ -38,7 +38,7 @@ class NewsFilmFilmAssociated
     /**
      * @var News
      *
-     * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedFilms")
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedFilms", cascade={"persist"})
      * @Groups({"film_show"})
      *
      */

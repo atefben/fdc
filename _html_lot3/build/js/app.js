@@ -347,254 +347,286 @@ var owFixMobile = function() {
 
 }
 
-var owInitGrid = function(id){
+var owInitGrid = function (id) {
 
-  if(id == 'isotope-01') {
+    String.prototype.trunc = function (n, useWordBoundary) {
+        var isTooLong = this.length > n,
+            s_ = isTooLong ? this.substr(0, n - 1) : this;
+        s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
+        return isTooLong ? s_ + '...' : s_;
+    };
 
-
-    var $grid = $('.isotope-01').imagesLoaded(function () {
-      $grid.isotope({
-        itemSelector    : '.item',
-        percentPosition : true,
-        sortBy          : 'original-order',
-        layoutMode      : 'packery',
-        packery         : {
-          columnWidth : '.grid-sizer'
-        }
-      });
-    });
+    if (id == 'isotope-01') {
 
 
-    if($('.jury').length) {
-
-      var resize = function() {
-        var w = $('.isotope-01 .contain-img').first().width();
-        $('.isotope-01 .contain-img').each(function() {
-          $(this).css('height', (w / 0.75));
-          var $container = $(this), imgUrl = $container.find('img').prop('src');
-          if (imgUrl) {
-            $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
-            img = $container.find('img');
-            img.css('display','none');
-          }
+        var $grid = $('.isotope-01').imagesLoaded(function () {
+            $grid.isotope({
+                itemSelector: '.item',
+                percentPosition: true,
+                sortBy: 'original-order',
+                layoutMode: 'packery',
+                packery: {
+                    columnWidth: '.grid-sizer'
+                }
+            });
         });
-      }
-
-      resize();
-
-      $( window ).resize(function() {
-        resize();
-      });
-
-    }
-
-    var title = $('.info strong a');
-/*
-    truncTitle(title, 20);
-*/
-
-    return $grid;
-  }
-
-  if(id == 'isotope-02') {
 
 
-    var $grid = $('.isotope-02').imagesLoaded(function () {
-      $grid.isotope({
-        itemSelector    : '.item',
-        percentPosition : true,
-        sortBy          : 'original-order',
-        layoutMode      : 'packery',
-        packery         : {
-           gutter: 39
+        if ($('.jury').length) {
+
+            var resize = function () {
+                var w = $('.isotope-01 .contain-img').first().width();
+                $('.isotope-01 .contain-img').each(function () {
+                    $(this).css('height', (w / 0.75));
+                    var $container = $(this), imgUrl = $container.find('img').prop('src');
+                    if (imgUrl) {
+                        $container.css('backgroundImage', 'url(' + imgUrl + ')').addClass('compat-object-fit');
+                        img = $container.find('img');
+                        img.css('display', 'none');
+                    }
+                });
+            }
+
+            resize();
+
+            $(window).resize(function () {
+                resize();
+            });
+
         }
-      });
-    });
 
-    return $grid;
-  }
+        var trunTitle = function() {
+            $.each($('.card.item'), function (i, e) {
+                var title = $(e).find('.info strong a');
 
-  if(id == 'isotope-03') {
+                if (!title.hasClass('init')) {
+                    var text = $(e).find('.info strong a').text();
+                    title.addClass('init');
+                    title.attr('data-title', text);
+                } else {
+                    var text = title.attr('data-title');
+                }
 
-    var $grid = $('.isotope-03').imagesLoaded(function () {
-      $grid.isotope({
-        itemSelector    : '.item',
-        percentPosition : true,
-        sortBy          : 'original-order',
-        layoutMode      : 'packery',
-        packery         : {
-          columnWidth : '.grid-sizer'
+
+                if($('.medias').length > 0) {
+
+                    if (window.matchMedia("(max-width: 1405px)").matches) {
+                        title.html(text.trunc(25, true));
+                    }else{
+                        title.html(text.trunc(40, true));
+                    }
+
+                } else {
+                    title.html(text.trunc(60, true));
+                }
+            });
         }
-      });
-    });
 
-    return $grid;
-  }
 
-  if(id == 'filter'){
+        trunTitle();
 
-    if($('.isotope-01').length){
 
-      var filterDate = '',
-          filterTheme = '',
-          filterFormat = '';
+        $(window).resize(function () {
+            trunTitle();
+        });
 
-      if($('.filters #date').length > 0) {
-        filterDate = $('.filters #date .select span.active').data('filter');
-        filterDate = "."+filterDate;
-      }
+        var title = $('.info strong a').text();
 
-      if($('.filters #theme').length > 0) {
-        filterTheme = $('.filters #theme .select span.active').data('filter');
-        filterTheme = "."+filterTheme;
-      }
-
-      if($('.filters #format').length > 0) {
-        filterFormat = $('.filters #format .select span.active').data('filter');
-        filterFormat = "."+filterFormat;
-      }
-
-      var filters = filterDate+filterTheme+filterFormat;
-
-      var $grid = $('.isotope-01').isotope({filter: filters});
+        return $grid;
     }
 
-    if($('.isotope-02').length){
-
-      var filterStaff = $('.filters #staff .select span.active').data('filter');
-      filterStaff = "."+filterStaff;
+    if (id == 'isotope-02') {
 
 
-      var $grid = $('.isotope-02').isotope({filter: filterStaff});
+        var $grid = $('.isotope-02').imagesLoaded(function () {
+            $grid.isotope({
+                itemSelector: '.item',
+                percentPosition: true,
+                sortBy: 'original-order',
+                layoutMode: 'packery',
+                packery: {
+                    gutter: 39
+                }
+            });
+        });
+
+        return $grid;
     }
-  }
+
+    if (id == 'isotope-03') {
+
+        var $grid = $('.isotope-03').imagesLoaded(function () {
+            $grid.isotope({
+                itemSelector: '.item',
+                percentPosition: true,
+                sortBy: 'original-order',
+                layoutMode: 'packery',
+                packery: {
+                    columnWidth: '.grid-sizer'
+                }
+            });
+        });
+
+        return $grid;
+    }
+
+    if (id == 'filter') {
+
+        if ($('.isotope-01').length) {
+
+            var filterDate = '',
+                filterTheme = '',
+                filterFormat = '';
+
+            if ($('.filters #date').length > 0) {
+                filterDate = $('.filters #date .select span.active').data('filter');
+                filterDate = "." + filterDate;
+            }
+
+            if ($('.filters #theme').length > 0) {
+                filterTheme = $('.filters #theme .select span.active').data('filter');
+                filterTheme = "." + filterTheme;
+            }
+
+            if ($('.filters #format').length > 0) {
+                filterFormat = $('.filters #format .select span.active').data('filter');
+                filterFormat = "." + filterFormat;
+            }
+
+            var filters = filterDate + filterTheme + filterFormat;
+
+            var $grid = $('.isotope-01').isotope({filter: filters});
+        }
+
+        if ($('.isotope-02').length) {
+
+            var filterStaff = $('.filters #staff .select span.active').data('filter');
+            filterStaff = "." + filterStaff;
+
+
+            var $grid = $('.isotope-02').isotope({filter: filterStaff});
+        }
+    }
 
 
 };
 
-/*
-var truncTitle = function(title, number) {
-  title.html(title.trunc(number,true));
-}
-*/
 
+var owsetGridBigImg = function (grid, dom, init) {
 
-var owsetGridBigImg  = function(grid, dom, init) {
+    var $img = $(dom).find('.card img'),
+        pourcentage = 0.30,
+        nbImgAAgrandir = $img.length * pourcentage,
+        i = 0,
+        nbRamdom = [],
+        x = 1,
+        j = 0,
+        max = 0,
+        min = 0,
+        nbImage = $img.length;
 
-  var $img            = $(dom).find('.card img'),
-      pourcentage     = 0.30,
-      nbImgAAgrandir  = $img.length * pourcentage,
-      i               = 0,
-      nbRamdom        = [],
-      x               = 1,
-      j               = 0,
-      max             = 0,
-      min             = 0,
-      nbImage         = $img.length;
+    $($img).closest('article.card').removeClass('double w2');
 
-  $($img).closest('article.card').removeClass('double w2');
+    if (window.matchMedia("(max-width: 1279px)").matches) {
 
-  if (window.matchMedia("(max-width: 1279px)").matches) {
-
-    while (i < $img.length) {
-      if (j < 15) {
-        if (j == 0 || j == 5 || j == 11) {
-          $($img[i]).closest('article.card').addClass('double w2');
+        while (i < $img.length) {
+            if (j < 15) {
+                if (j == 0 || j == 5 || j == 11) {
+                    $($img[i]).closest('article.card').addClass('double w2');
+                }
+                j++;
+            }
+            if (j == 14) {
+                j = 0;
+            }
+            i++;
         }
-        j++;
-      }
-      if (j == 14) {
-        j = 0;
-      }
-      i++;
-    }
 
 
-  } else if (window.matchMedia("(max-width: 1599px)").matches) {
+    } else if (window.matchMedia("(max-width: 1599px)").matches) {
 
-    while (i < $img.length) {
-      if (j < 10) {
-        if (j == 0 || j == 3) {
-          $($img[i]).closest('article.card').addClass('double w2');
+        while (i < $img.length) {
+            if (j < 10) {
+                if (j == 0 || j == 3) {
+                    $($img[i]).closest('article.card').addClass('double w2');
+                }
+                j++;
+            }
+            if (j == 9) {
+                j = 0;
+            }
+            i++;
         }
-        j++;
-      }
-      if (j == 9) {
-        j = 0;
-      }
-      i++;
-    }
 
 
-
-  } else if (window.matchMedia("(max-width: 1919px)").matches) {
-    while (i < $img.length) {
-      if (j < 30) {
-        if (j == 0 || j == 3 || j == 12 || j == 17 || j == 25) {
-          $($img[i]).closest('article.card').addClass('double w2');
+    } else if (window.matchMedia("(max-width: 1919px)").matches) {
+        while (i < $img.length) {
+            if (j < 30) {
+                if (j == 0 || j == 3 || j == 12 || j == 17 || j == 25) {
+                    $($img[i]).closest('article.card').addClass('double w2');
+                }
+                j++;
+            }
+            if (j == 29) {
+                j = 0;
+            }
+            i++;
         }
-        j++;
-      }
-      if (j == 29) {
-        j = 0;
-      }
-      i++;
-    }
 
 
-  } else if (window.matchMedia("(min-width: 1920px)").matches) {
+    } else if (window.matchMedia("(min-width: 1920px)").matches) {
 
-    while (i < $img.length) {
-      if (j < 15) {
-        if (j == 0 || j == 5 || j == 14) {
-          $($img[i]).closest('article.card').addClass('double w2');
+        while (i < $img.length) {
+            if (j < 15) {
+                if (j == 0 || j == 5 || j == 14) {
+                    $($img[i]).closest('article.card').addClass('double w2');
+                }
+                j++;
+            }
+            if (j == 14) {
+                j = 0;
+            }
+            i++;
         }
-        j++;
-      }
-      if (j == 14) {
-        j = 0;
-      }
-      i++;
     }
-  }
 };
 
-var owInitAleaGrid = function(grid, dom, init) {
-  var $img            = $(dom).find('.item:not(.portrait) img'),
-      pourcentage     = 0.50,
-      nbImgAAgrandir  = $img.length * pourcentage,
-      i               = 0,
-      nbRamdom        = [],
-      x               = 1,
-      max             = 0,
-      min             = 0,
-      nbImage         = $img.length;
+var owInitAleaGrid = function (grid, dom, init) {
+    var $img = $(dom).find('.item:not(.portrait) img'),
+        pourcentage = 0.50,
+        nbImgAAgrandir = $img.length * pourcentage,
+        i = 0,
+        nbRamdom = [],
+        x = 1,
+        max = 0,
+        min = 0,
+        nbImage = $img.length;
 
-  while(x < nbImgAAgrandir) {
-    while(nbImgAAgrandir > nbRamdom.length) {
-      max = nbImage * pourcentage * x;
-      min = nbImage * pourcentage * (x - 1);
-      nbAlea = Math.floor(Math.random() * (max - min) + min);
-      nbRamdom[i] = nbAlea;
-      $($img[nbRamdom[i]]).closest('article.item').addClass('double w2');
-      i++;
-      x++;
+    while (x < nbImgAAgrandir) {
+        while (nbImgAAgrandir > nbRamdom.length) {
+            max = nbImage * pourcentage * x;
+            min = nbImage * pourcentage * (x - 1);
+            nbAlea = Math.floor(Math.random() * (max - min) + min);
+            nbRamdom[i] = nbAlea;
+            $($img[nbRamdom[i]]).closest('article.item').addClass('double w2');
+            i++;
+            x++;
+        }
     }
-  }
 
-  $('.item').addClass('visible');
+    $('.item').addClass('visible');
 
-  grid.isotope({
-    itemSelector    : '.item',
-    percentPosition : true,
-    sortBy          : 'original-order',
-    layoutMode      : 'packery',
-    packery         : {
-      columnWidth : '.grid-sizer'
-    }
-  });
+    grid.isotope({
+        itemSelector: '.item',
+        percentPosition: true,
+        sortBy: 'original-order',
+        layoutMode: 'packery',
+        packery: {
+            columnWidth: '.grid-sizer'
+        }
+    });
 
-  grid.isotope('layout');
+    grid.isotope('layout');
 };
 
 var owInitLinkChangeEffect = function() {
@@ -1364,9 +1396,8 @@ var owInitSlider = function(sliderName) {
     // init slider
     $slide.css('width',finalSizeSlider); // change size slider
 
-    var test = '445%';
-
-    $slideCalc1.css('width',test); // change size slider
+    var test = '418%';
+    $slideCalc1.css('width', test); // change size slider
 
     //init width of slide
     noUiSlider.create(slider, {
@@ -1382,15 +1413,20 @@ var owInitSlider = function(sliderName) {
    slider.noUiSlider.on('update', function( values, handle ) {
 
       //drag
-      var w = $('body').width();
+      var w = $(window).width() +4;
       var number = 0;
+
 
       valuesFloat = parseFloat(values[handle]);
       valuesInt = parseInt(values[handle]);
       values = Math.round(valuesFloat);
       number = values - 1945;
+     console.log(valuesFloat);
+     console.log(valuesInt);
+     console.log(values);
+     console.log(number);
 
-      $('.slides-calc1 .date').html(valuesInt);
+      $('.slides-calc1 .date').html(values);
 
       $('.big img').removeClass('open');
       $('.slider-restropective .calc3').css('display','block');
@@ -1400,7 +1436,7 @@ var owInitSlider = function(sliderName) {
         initDrag = 0;
       }
 
-      if(valuesInt > 1945){
+      if(values > 1945){
         $('.slides-calc1').css('display','block');
         $('.slides-calc2.navigation').removeClass('begin');
       }else {
@@ -1426,8 +1462,7 @@ var owInitSlider = function(sliderName) {
       var val3 = - (valuesFloat - 1945 - number) * 80; //todo script ?
       $('.slider-restropective[data-slide='+number+'] .calc4').css('transform','translate('+val3+'px)');
 
-      var val = - w * (valuesFloat - 1945) * .8; //todo script ?
-      var valPos = w * (valuesFloat - 1945) * .8; //todo script ?
+      var val = - w * (values - 1945); //todo script ?
 
       $slide.css('transform','translate('+val+'px)');
 
@@ -1439,11 +1474,17 @@ var owInitSlider = function(sliderName) {
 
      slider.noUiSlider.on('end', function(values, handle){ //end drag
 
-       var w = $('body').width();
+      var w = $('body').width() +4;
        valuesFloat = parseFloat(values[handle]);
        values = Math.round(valuesFloat);
        number = values - 1945;
-       var val = - w * (values - 1945); //todo script ?
+
+
+       var val = - w * (number) ; //todo script ?
+
+       console.log(w);
+       console.log(values - 1945)
+       console.log(val);
 
        $slide.css('transform','translate('+val+'px)');
 
@@ -1507,7 +1548,7 @@ var owInitSlider = function(sliderName) {
 
      var stopAnimation = function() {
 
-       var w = $('body').width();
+       var w = $('body').width() +4;
        values = $('.slides-calc1 .date').html();
        number = values - 1945;
        var val = - w * (values - 1945); //todo script ?
@@ -1542,7 +1583,7 @@ var owInitSlider = function(sliderName) {
      }
 
       var animationOpen = function() {
-        var w = $('body').width();
+        var w = $('body').width() +4;
         values = $('.slides-calc1 .date').html();
         number = values - 1945;
         var val = - w * (values - 1945) - 10; //todo script ?
@@ -1625,7 +1666,7 @@ var owInitSlider = function(sliderName) {
 
      if($('.restrospective-init').length) {
 
-       var w = $('body').width();
+       var w = $('body').width() +4;
        values = $('.slides-calc1 .date').data('date');
 
        slider.noUiSlider.set([values]);
@@ -1647,13 +1688,13 @@ $(window).resize(function() {
      var $slide = $('.slides');
      var $slideCalc1 = $('.slides-calc1');
 
-     var w = $('body').width();
-     var numberSlide = $('.slider-restropective').size();
+     var w = $('body').width() +4;
+     var numberSlide = $('.slider-restropective').size() +1;
      var sizeSlide = $('.slider-restropective').width();
-     var finalSizeSlider = numberSlide * sizeSlide + 1800;
+     var finalSizeSlider = numberSlide * sizeSlide;
 
      $slide.css('width',finalSizeSlider); // change size slider
-     $slideCalc1.css('width',finalSizeSlider); // change size slider
+     /*$slideCalc1.css('width',finalSizeSlider); // change size slider*/
 
      values = $('.slides-calc1 .date').html();
      number = values - 1945;
