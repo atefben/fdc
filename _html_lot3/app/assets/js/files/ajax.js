@@ -10,12 +10,11 @@ var owInitAjax = function() {
       console.log($data);
       contain = $data.find('.contain-ajax')[0];
 
-      test = $data.find('#breadcrumb');
-
-      console.log(test.prevObject);
-
+      test = $data.filter('#breadcrumb').children()[0];
 
       $( ".ajax-section" ).html(contain);
+
+      $( "#breadcrumb" ).html(test);
 
       if($('.navigation-sticky-02').length) {
         owInitNavSticky(2);

@@ -12584,6 +12584,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .content-result .block-poster-search {
   max-width: 218px;
 }
+.block-search .content-result .block-poster-search img {
+  height: 223px;
+}
 .block-search .content-result .block-poster-search.medias {
   max-width: none;
 }
