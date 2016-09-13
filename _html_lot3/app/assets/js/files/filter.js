@@ -13,11 +13,7 @@ var owInitFilter = function (isTabSelection) {
             e.preventDefault();
 
             var block = $(this).parent().attr('id');
-            console.log(block);
             var h = $(this).parent().find('.select-span').html();
-
-            console.log(h);
-
             $('#filters').remove();
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);

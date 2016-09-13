@@ -160,10 +160,6 @@ var owInitSlider = function(sliderName) {
       valuesInt = parseInt(values[handle]);
       values = Math.round(valuesFloat);
       number = values - 1945;
-     console.log(valuesFloat);
-     console.log(valuesInt);
-     console.log(values);
-     console.log(number);
 
       $('.slides-calc1 .date').html(values);
 
@@ -220,10 +216,6 @@ var owInitSlider = function(sliderName) {
 
 
        var val = - w * (number) ; //todo script ?
-
-       console.log(w);
-       console.log(values - 1945)
-       console.log(val);
 
        $slide.css('transform','translate('+val+'px)');
 
@@ -371,9 +363,7 @@ var owInitSlider = function(sliderName) {
        var $this = $(this);
 
        var url = $this.data('url');
-
-       console.log(url);
-
+         
        $.get(url, function(data) {
         var data = $(data).find('.contain-ajax');
 

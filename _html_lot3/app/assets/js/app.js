@@ -66,6 +66,20 @@ $(document).ready(function () {
         $('body').addClass('not-mobile');
     }
 
+    if($('body').hasClass('mobile') > 0) {
+        var hideKeyboard = function() {
+            document.activeElement.blur();
+            $(".newsletter#email").blur();
+        };
+
+        $('.newsletter').focusin(function() {
+
+            $('#breadcrumb, .all-contain, .social, .title, .subtitle, .footer-menu').on('click', function () {
+              hideKeyboard();
+            })
+        });
+    }
+
     if ($('#breadcrumb').length > 0) {
         owInitFooterScroll();
         owInitValidateNewsletter();

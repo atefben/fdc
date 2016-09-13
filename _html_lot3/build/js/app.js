@@ -49,9 +49,16 @@ var owInitAjax = function() {
     var url = $(this).attr('href');
 
     $.get( url, function( data ) {
-      data = $(data);
-      data = data.find('.contain-ajax')[0];
-      $( ".ajax-section" ).html( data );
+      $data = $(data);
+      console.log($data);
+      contain = $data.find('.contain-ajax')[0];
+
+      test = $data.find('#breadcrumb');
+
+      console.log(test.prevObject);
+
+
+      $( ".ajax-section" ).html(contain);
 
       if($('.navigation-sticky-02').length) {
         owInitNavSticky(2);
@@ -128,9 +135,6 @@ var ajaxMedialib = function() {
       }
     })
 
-    console.log(checked);
-    console.log(keyword);
-    console.log(date);
 
     //TODO back data
 
@@ -139,7 +143,6 @@ var ajaxMedialib = function() {
       type : 'GET',
     }).done(function(data) {
 
-      console.log(data);
       grid = $(data);
       $('.grid-01').html(grid);
 
@@ -208,11 +211,7 @@ var owInitFilter = function (isTabSelection) {
             e.preventDefault();
 
             var block = $(this).parent().attr('id');
-            console.log(block);
             var h = $(this).parent().find('.select-span').html();
-
-            console.log(h);
-
             $('#filters').remove();
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
@@ -654,19 +653,16 @@ var owInitPopin = function(id) {
 
   if(id == 'popin-landing-e') {
 
-    console.log('popin-1');
 
     var $popin = $('.popin-landing-e');
 
     var visiblePopin = function() {
       var dateFestival = $('.compteur').data("date");
-      console.log(dateFestival);
-      
+
       var dateToday = new Date();
       dateFestival = new Date(dateFestival);
 
-      console.log(dateFestival);
-      
+
       var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
 
       var jours = Math.floor(timeLanding / (60 * 60 * 24));
@@ -677,10 +673,8 @@ var owInitPopin = function(id) {
 
       if(timeLanding < 0){
         //pas de compteur ?
-        console.log('popin-2');
 
       }else if(timeLanding > 0){
-        console.log('popin-3');
 
 
         var $day = $('.day').html(jours);
@@ -689,7 +683,6 @@ var owInitPopin = function(id) {
         var $secondes = $('.secondes').html(secondes);
 
       }else{
-        console.log('popin-4');
 
         //compteur terminé ! on ferme la popin
         $popin.addClass('animated fadeOut').removeClass('visible');
@@ -728,11 +721,9 @@ var owInitPopin = function(id) {
     };
 
     var fClosePopin = function() {
-      console.log('popin-5');
 
 
       $('.popin-landing-e').on('click', function(){
-        console.log('popin-6');
 
 
         $popin.addClass('animated fadeOut');
@@ -745,8 +736,6 @@ var owInitPopin = function(id) {
     // Verifier si les cookies existent
     if(typeof Cookies.get('popin-landing-e') === "undefined") {
       Cookies.set('popin-landing-e','0', { expires: 365 });
-      console.log('popin-7');
-
     }
 
     var closePopin = Cookies.get('popin-landing-e');
@@ -755,11 +744,7 @@ var owInitPopin = function(id) {
       $popin.addClass('animated fadeIn').addClass('visible');
       visiblePopin();
       fClosePopin();
-      console.log('popin-8');
-
     }else {
-      console.log('popin-9');
-
       Cookies.set('popin-landing-e','1', { expires: 365 });
     }
   }
@@ -1421,10 +1406,6 @@ var owInitSlider = function(sliderName) {
       valuesInt = parseInt(values[handle]);
       values = Math.round(valuesFloat);
       number = values - 1945;
-     console.log(valuesFloat);
-     console.log(valuesInt);
-     console.log(values);
-     console.log(number);
 
       $('.slides-calc1 .date').html(values);
 
@@ -1481,10 +1462,6 @@ var owInitSlider = function(sliderName) {
 
 
        var val = - w * (number) ; //todo script ?
-
-       console.log(w);
-       console.log(values - 1945)
-       console.log(val);
 
        $slide.css('transform','translate('+val+'px)');
 
@@ -1632,9 +1609,7 @@ var owInitSlider = function(sliderName) {
        var $this = $(this);
 
        var url = $this.data('url');
-
-       console.log(url);
-
+         
        $.get(url, function(data) {
         var data = $(data).find('.contain-ajax');
 
@@ -1864,7 +1839,6 @@ var openSlideShow = function (slider, hash) {
         for (var i = 0; i < images.length; i++) {
 
             if (images[i].id == hash) {
-                console.log(images[i].id);
                 centerElement = i;
                 fullscreen.append("<img src='" + images[i].src + "' alt='" + images[i].data + "' class='center-item' />");
             } else {
@@ -2234,8 +2208,6 @@ var initVideo = function() {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        console.log($infoBar.find('.info').html());
-
         $topBar.find('.info').append($infoBar.find('.info').html());
 
         if($('.container-webtv-ba-video').length > 0) {
@@ -2440,10 +2412,7 @@ var initVideo = function() {
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
             }
         }
-
-
-        console.log(playerInstance);
-
+        
         playerInstance.setup({
             // file: $container.data('file'),
             sources: $container.data('file'),
@@ -2711,6 +2680,20 @@ $(document).ready(function () {
         }
     } else {
         $('body').addClass('not-mobile');
+    }
+
+    if($('body').hasClass('mobile') > 0) {
+        var hideKeyboard = function() {
+            document.activeElement.blur();
+            $(".newsletter#email").blur();
+        };
+
+        $('.newsletter').focusin(function() {
+
+            $('#breadcrumb, .all-contain, .social, .title, .subtitle, .footer-menu').on('click', function () {
+              hideKeyboard();
+            })
+        });
     }
 
     if ($('#breadcrumb').length > 0) {

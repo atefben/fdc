@@ -132,8 +132,6 @@ var initVideo = function() {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        console.log($infoBar.find('.info').html());
-
         $topBar.find('.info').append($infoBar.find('.info').html());
 
         if($('.container-webtv-ba-video').length > 0) {
@@ -338,10 +336,7 @@ var initVideo = function() {
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
             }
         }
-
-
-        console.log(playerInstance);
-
+        
         playerInstance.setup({
             // file: $container.data('file'),
             sources: $container.data('file'),

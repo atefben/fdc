@@ -6,9 +6,16 @@ var owInitAjax = function() {
     var url = $(this).attr('href');
 
     $.get( url, function( data ) {
-      data = $(data);
-      data = data.find('.contain-ajax')[0];
-      $( ".ajax-section" ).html( data );
+      $data = $(data);
+      console.log($data);
+      contain = $data.find('.contain-ajax')[0];
+
+      test = $data.find('#breadcrumb');
+
+      console.log(test.prevObject);
+
+
+      $( ".ajax-section" ).html(contain);
 
       if($('.navigation-sticky-02').length) {
         owInitNavSticky(2);
@@ -85,9 +92,6 @@ var ajaxMedialib = function() {
       }
     })
 
-    console.log(checked);
-    console.log(keyword);
-    console.log(date);
 
     //TODO back data
 
@@ -96,7 +100,6 @@ var ajaxMedialib = function() {
       type : 'GET',
     }).done(function(data) {
 
-      console.log(data);
       grid = $(data);
       $('.grid-01').html(grid);
 

@@ -156,7 +156,6 @@ var openSlideShow = function (slider, hash) {
         for (var i = 0; i < images.length; i++) {
 
             if (images[i].id == hash) {
-                console.log(images[i].id);
                 centerElement = i;
                 fullscreen.append("<img src='" + images[i].src + "' alt='" + images[i].data + "' class='center-item' />");
             } else {
