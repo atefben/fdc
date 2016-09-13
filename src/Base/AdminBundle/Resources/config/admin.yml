@@ -32,7 +32,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.social_wall, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.theme:
         class: Base\AdminBundle\Admin\ThemeAdmin
         arguments: [~, Base\CoreBundle\Entity\Theme, BaseAdminBundle:ThemeAdmin]
@@ -249,7 +249,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.orange, label: entity.orange_series, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-             
+
     base.admin.orange_programmation_ocs:
         class: Base\AdminBundle\Admin\OrangeProgrammationOCSAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeProgrammationOCS, BaseAdminBundle:OrangeProgrammationOCSAdmin]
@@ -257,7 +257,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.orange, label: entity.orange_ocs, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-             
+
     base.admin.orange_vod:
         class: Base\AdminBundle\Admin\OrangeVideoOnDemandAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeVideoOnDemand, BaseAdminBundle:OrangeVideoOnDemandAdmin]
@@ -265,7 +265,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.orange, label: entity.orange_vod, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-             
+
     base.admin.orange_studio:
         class: Base\AdminBundle\Admin\OrangeStudioAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeStudio, BaseAdminBundle:OrangeStudioAdmin]
@@ -273,7 +273,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.orange, label: entity.orange_studio, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-             
+
     #HIDDEN
     #seo
     base.admin.fdc_page_web_tv_channels:
@@ -733,7 +733,7 @@ services:
          - {name: sonata.admin, manager_type: orm, group: admin, label: Statement Widget Image Dual Align, show_in_dashboard: false}
         calls:
          - [ setTranslationDomain, ['BaseAdminBundle']]
-                 
+
     base.admin.statement_widget_audio_dummy:
         class: Base\AdminBundle\Admin\StatementWidgetAudioDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\StatementWidgetAudio, BaseAdminBundle:StatementWidgetAudioDummyAdmin]
@@ -789,7 +789,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Statement Widget Video, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-             
+
     base.admin.statement_widget_video_youtube_dummy:
         class: Base\AdminBundle\Admin\StatementWidgetVideoYoutubeDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\StatementWidgetVideoYoutube, BaseAdminBundle:StatementWidgetVideoYoutubeDummyAdmin]
@@ -807,7 +807,7 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    #INFO 
+    #INFO
     base.admin.info_widget_image_dummy:
         class: Base\AdminBundle\Admin\InfoWidgetImageDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\InfoWidgetImage, BaseAdminBundle:InfoWidgetImageDummyAdmin]
@@ -839,7 +839,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Info Widget Video, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-             
+
     base.admin.info_widget_video_youtube_dummy:
         class: Base\AdminBundle\Admin\InfoWidgetVideoYoutubeDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\InfoWidgetVideoYoutube, BaseAdminBundle:InfoWidgetVideoYoutubeDummyAdmin]
@@ -1149,7 +1149,7 @@ services:
              - {name: sonata.admin, manager_type: orm, group: admin, label: Download Photo widget, show_in_dashboard: false}
          calls:
               - [ setTranslationDomain, ['BaseAdminBundle']]
-              
+
     base.admin.press_download_section_widget_video_dummy:
         class: Base\AdminBundle\Admin\PressDownloadSectionWidgetVideoDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetVideo, BaseAdminBundle:PressDownloadSectionWidgetVideoDummyAdmin]
@@ -1157,7 +1157,7 @@ services:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download Video widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.press_download_section_widget_document_dummy:
         class: Base\AdminBundle\Admin\PressDownloadSectionWidgetDocumentDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetDocument, BaseAdminBundle:PressDownloadSectionWidgetDocumentDummyAdmin]
@@ -1165,7 +1165,7 @@ services:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download Document widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-           
+
     base.admin.press_download_section_widget_archive_dummy:
         class: Base\AdminBundle\Admin\PressDownloadSectionWidgetArchiveDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetArchive, BaseAdminBundle:PressDownloadSectionWidgetArchiveDummyAdmin]
@@ -1173,7 +1173,7 @@ services:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.press_download_section_widget_file_dummy:
         class: Base\AdminBundle\Admin\PressDownloadSectionWidgetFileDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetFile, BaseAdminBundle:PressDownloadSectionWidgetFileDummyAdmin]
@@ -1287,7 +1287,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: OrangeWidgetYoutube, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.orange_widget_film_ocs_dummy:
         class: Base\AdminBundle\Admin\OrangeWidgetFilmOCSDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeWidgetFilmOCS, BaseAdminBundle:OrangeWidgetFilmOCSDummyAdmin]
@@ -1295,7 +1295,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: OrangeWidgetFilmOCS, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.orange_widget_film_vod_dummy:
         class: Base\AdminBundle\Admin\OrangeWidgetFilmVODDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeWidgetFilmVOD, BaseAdminBundle:OrangeWidgetFilmVODDummyAdmin]
@@ -1303,7 +1303,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: OrangeWidgetFilmVOD, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.orange_widget_film_studio_dummy:
         class: Base\AdminBundle\Admin\OrangeWidgetFilmStudioDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeWidgetFilmStudio, BaseAdminBundle:OrangeWidgetFilmStudioDummyAdmin]
@@ -1311,7 +1311,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: OrangeWidgetFilmStudio, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
+
     base.admin.orange_studio_film_associated:
         class: Base\AdminBundle\Admin\OrangeStudioFilmAssociatedAdmin
         arguments: [~, Base\CoreBundle\Entity\OrangeStudioFilmAssociated, BaseAdminBundle:OrangeStudioFilmAssociatedAdmin]

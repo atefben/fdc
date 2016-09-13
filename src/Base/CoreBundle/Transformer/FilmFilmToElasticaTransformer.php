@@ -48,10 +48,10 @@ class FilmFilmToElasticaTransformer extends ModelToElasticaAutoTransformer imple
           }
         }
       }
-      
+
       $document = parent::transform($film, $fields);
       $document->set('persons', $this->normalizeValue($value));
-      
+
       return $document;
     }
 }

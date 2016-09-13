@@ -27,10 +27,9 @@ class NewsArticle extends News
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
-     * @Assert\NotNull()
      */
     private $header;
 

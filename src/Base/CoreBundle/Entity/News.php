@@ -56,7 +56,6 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
       * @ORM\ManyToOne(targetEntity="Theme")
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
-      * @Assert\NotNull()
       */
     private $theme;
 
@@ -241,27 +240,43 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      */
     private $homepageMediaVideo;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldNewsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $oldNewsTable;
+
     public function __construct()
     {
         $this->hideSameDay = false;
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->sites = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
         $this->associatedProjections = new ArrayCollection();
         $this->associatedFilms = new ArrayCollection();
+        $this->displayedHome = false;
+        $this->displayedMobile = false;
     }
-    
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
             $string .= ' #'. $this->getId();
         }
-        
+
         return $string;
     }
-    
+
     public static function getTypes()
     {
         return array(
@@ -286,7 +301,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -320,7 +335,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get widgets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWidgets()
     {
@@ -422,7 +437,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get homepage
      *
-     * @return \Base\CoreBundle\Entity\Homepage 
+     * @return \Base\CoreBundle\Entity\Homepage
      */
     public function getHomepage()
     {
@@ -456,7 +471,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -479,7 +494,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get priorityStatus
      *
-     * @return integer 
+     * @return integer
      */
     public function getPriorityStatus()
     {
@@ -502,7 +517,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get displayedHome
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedHome()
     {
@@ -525,7 +540,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get signature
      *
-     * @return string 
+     * @return string
      */
     public function getSignature()
     {
@@ -548,7 +563,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get displayedMobile
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedMobile()
     {
@@ -571,7 +586,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -594,7 +609,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get publishEndedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishEndedAt()
     {
@@ -684,7 +699,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get associatedFilm
      *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
+     * @return \Base\CoreBundle\Entity\FilmFilm
      */
     public function getAssociatedFilm()
     {
@@ -707,7 +722,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get associatedEvent
      *
-     * @return \Base\CoreBundle\Entity\Event 
+     * @return \Base\CoreBundle\Entity\Event
      */
     public function getAssociatedEvent()
     {
@@ -741,7 +756,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get associatedProjections
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedProjections()
     {
@@ -775,7 +790,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get associatedFilms
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedFilms()
     {
@@ -798,7 +813,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get createdBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getCreatedBy()
     {
@@ -821,7 +836,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get updatedBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUpdatedBy()
     {
@@ -914,7 +929,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get hidden
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHidden()
     {
@@ -937,7 +952,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get homepageMediaAudio
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return \Base\CoreBundle\Entity\MediaAudio
      */
     public function getHomepageMediaAudio()
     {
@@ -960,7 +975,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get hideSameDay
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHideSameDay()
     {
@@ -970,7 +985,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get homepageMediaVideo
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getHomepageMediaVideo()
     {
@@ -1074,7 +1089,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get typeClone
      *
-     * @return string 
+     * @return string
      */
     public function getTypeClone()
     {
@@ -1085,7 +1100,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     {
         $isElasticable = true;
         $fr = $this->findTranslationByLocale('fr');
-        if ($fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
+        if ($fr == null || $fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
             $isElasticable = false;
         }
         if ($this->getExcludeFromSearch()) {
@@ -1115,5 +1130,51 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     public function getExcludeFromSearch()
     {
         return $this->excludeFromSearch;
+    }
+
+    /**
+     * Set oldNewsId
+     *
+     * @param integer $oldNewsId
+     * @return News
+     */
+    public function setOldNewsId($oldNewsId)
+    {
+        $this->oldNewsId = $oldNewsId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsId
+     *
+     * @return integer
+     */
+    public function getOldNewsId()
+    {
+        return $this->oldNewsId;
+    }
+
+    /**
+     * Set oldNewsTable
+     *
+     * @param string $oldNewsTable
+     * @return News
+     */
+    public function setOldNewsTable($oldNewsTable)
+    {
+        $this->oldNewsTable = $oldNewsTable;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsTable
+     *
+     * @return string
+     */
+    public function getOldNewsTable()
+    {
+        return $this->oldNewsTable;
     }
 }

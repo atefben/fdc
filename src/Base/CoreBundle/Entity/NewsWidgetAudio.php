@@ -21,7 +21,7 @@ class NewsWidgetAudio extends NewsWidget
     /**
      * @var MediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"all"})
      * @Groups({"news_list", "search", "news_show"})
      */
     private $file;

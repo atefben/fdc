@@ -40,8 +40,13 @@ trait Time
      */
     public function prePersist()
     {
-        $this->createdAt = new DateTime();
-        $this->updatedAt = new DateTime();
+        if ($this->getCreatedAt() == null) {
+            $this->createdAt = new DateTime();
+        }
+
+        if ($this->getUpdatedAt() == null) {
+            $this->updatedAt = new DateTime();
+        }
     }
 
     /**
@@ -49,7 +54,9 @@ trait Time
      */
     public function preUpdate()
     {
-        $this->updatedAt = new DateTime();
+        if ($this->getUpdatedAt() == null) {
+            $this->updatedAt = new DateTime();
+        }
     }
     /**
      * Set createdAt

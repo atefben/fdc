@@ -151,10 +151,6 @@
                                 <div class="vCenterKid">
                                     <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
                                     <ul>
-
-
-                                        {#{{ dump(programmations) }}#}
-
                                         {% for programmation in programmations|slice(-4) %}
                                             <li>
                                                 <span class="type">{{ 'article.film.text.projection'|trans }}</span>

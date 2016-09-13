@@ -31,7 +31,6 @@ class InfoArticle extends Info
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
      * @Groups({"news_list", "search", "news_show", "home"})
-     * @Assert\NotNull()
      */
     private $header;
 
