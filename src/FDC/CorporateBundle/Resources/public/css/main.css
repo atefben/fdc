@@ -7980,7 +7980,9 @@ header #navigation ul li ul {
   visibility: hidden;
   width: 977px;
   z-index: 15;
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  /*
+  @include transition(all 0.5s $smoothTransition);
+  */
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
@@ -12583,6 +12585,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;
+}
+.block-search .content-result .block-poster-search .contain-img:not(.landscape) img {
+  height: 223px;
 }
 .block-search .content-result .block-poster-search.medias {
   max-width: none;
