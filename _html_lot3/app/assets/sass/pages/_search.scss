@@ -282,7 +282,7 @@
     .block-poster-search {
       max-width: 218px;
 
-      img {
+      .contain-img:not(.landscape) img {
         height: 223px;
       }
     }
