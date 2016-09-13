@@ -500,6 +500,10 @@ blockquote, .quote {
   display:block;
   transition: .5s;
 
+  .mobile.portrait & {
+    left: 130px;
+  }
+
   .icon {
     font-size: .4rem;
     margin-right: 10px;

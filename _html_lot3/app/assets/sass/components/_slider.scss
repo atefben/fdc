@@ -250,6 +250,13 @@
   position: relative;
   overflow: hidden;
 
+
+  .mobile.portrait & {
+    .block-01 {
+      margin-left: 0px;
+    }
+  }
+
   .date-point{
     position: absolute;
     top: 48.8%;
@@ -275,6 +282,10 @@
     position: absolute;
     bottom: 1px;
     z-index: 3;
+
+    .portrait.mobile &{
+      left: 20px;
+    }
 
     @media screen and (max-width: 768px) {
       height: 20px;
@@ -411,6 +422,11 @@
   background-size: cover;
   text-align: center;
   width: 100vw;
+
+  .portrait.mobile & {
+    width: 100.5vw;
+  }
+
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -524,7 +540,7 @@
       opacity: .7;
     }
 
-    .link-return-c {
+    &.big .link-return-c {
       display: block;
       z-index: 2;
       text-align: left;
