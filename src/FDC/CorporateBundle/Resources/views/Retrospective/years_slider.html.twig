@@ -19,7 +19,7 @@
 
     <div class="slides-calc1">
         <div class="slide">
-            <div class="date"data-date="1946">1946</div>
+            <div class="date"data-date="{{ app.request.attributes.get('year') }}">{{ app.request.attributes.get('year') }}</div>
         </div>
     </div>
 
@@ -117,7 +117,7 @@
         <div class="timelapse block-drag">
             <span class="date date-first" data-firstdate='{{ festivals|first.year }}'>{{ festivals|first.year }}</span>
             <div class="avance" id="timelapse-01"><span class="square"></span></div>
-            <span class="date date-last" data-lastdate='{{ festivals|last.year }}'>{{ festivals|last.year }}</span>
+            <span class="date date-last" data-lastdate='{{ festivals|last.year + 1 }}'>{{ festivals|last.year }}</span>
         </div>
     </div>
 
