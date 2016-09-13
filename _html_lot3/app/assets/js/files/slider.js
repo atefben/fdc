@@ -138,12 +138,14 @@ var owInitSlider = function(sliderName) {
     var test = '418%';
     $slideCalc1.css('width', test); // change size slider
 
+      var maxDate = $('.timelapse .date-last').data('lastdate');
+
     //init width of slide
     noUiSlider.create(slider, {
       start: [1945],//todo script
       range: {
         'min': 1945,
-        'max': 2015
+        'max': maxDate
       }
      });
 
