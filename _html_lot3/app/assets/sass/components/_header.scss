@@ -349,7 +349,10 @@ header {
         display: block;
         margin: 0 auto;
         width: 145px;
+        /*
         @include transition(width 0.3s $smoothTransition);
+        */
+        transition: .5s;
         @include transform(translateY(0));
       }
     }
