@@ -807,7 +807,15 @@ a {
   opacity: 0;
   transition: .3s;
 
-  &.visible{
+  .ie & {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  &.visible {
     opacity: 1;
   }
 

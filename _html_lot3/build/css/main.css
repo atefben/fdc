@@ -3831,6 +3831,12 @@ a {
   opacity: 0;
   transition: .3s;
 }
+.ie .arrows {
+  display: none;
+}
+.ie .arrows.visible {
+  display: block;
+}
 .arrows.visible {
   opacity: 1;
 }
