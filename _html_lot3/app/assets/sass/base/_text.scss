@@ -806,6 +806,8 @@ a {
 .arrows {
   opacity: 0;
   transition: .3s;
+  z-index: 1;
+  position: relative;
 
   .ie & {
     display: none;
