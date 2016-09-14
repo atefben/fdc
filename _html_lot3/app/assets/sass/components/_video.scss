@@ -316,6 +316,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
 
+    .mobile & {
+      display: none;
+    }
+
     .playstate {
       position: relative;
       width: 100px;

@@ -2413,7 +2413,7 @@ var initVideo = function() {
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
             }
         }
-        
+
         playerInstance.setup({
             // file: $container.data('file'),
             sources: $container.data('file'),
@@ -2422,9 +2422,8 @@ var initVideo = function() {
             aspectratio: '16:9',
             width: $(vid).parent('div').width(),
             height: $(vid).parent('div').height(),
-            controls: false
+            controls: ($('body').hasClass('mobile')) ? true : false
         });
-
 
         if(havePlaylist) {
             var tempSlider = $(slider),

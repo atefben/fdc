@@ -11951,6 +11951,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+.mobile .video-container .control-bar {
+  display: none;
+}
 .video-container .control-bar .playstate {
   position: relative;
   width: 100px;
