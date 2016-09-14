@@ -7949,6 +7949,7 @@ header #navigation {
   border-top: 1px solid #404040;
   height: 39px;
   line-height: 39px;
+  -webkit-transform: translate3d(0px, 0px, 0px);
   /*.container {
     overflow: hidden;
   }*/
@@ -10726,6 +10727,7 @@ header #searchContainer {
   height: 45px;
   line-height: 45px;
   z-index: 3;
+  -webkit-transform: translate3d(0px, 0px, 0px);
 }
 .navigation-sticky a {
   color: #999999;
