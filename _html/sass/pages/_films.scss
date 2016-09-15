@@ -389,10 +389,14 @@
       height: 300px;
 
       //TEST PARALLAX//
-      background: center 0 no-repeat fixed;
-      background-size: cover;
-      @include transition(all 1s $linear);
-    
+
+      body:not(.mob) & {
+        background: center 0 no-repeat fixed;
+        background-size: cover;
+         @include transition(all 1s $linear);
+      }
+
+
       .title-list-header {
         color: #ffffff;
         font-size: 1.75rem;
