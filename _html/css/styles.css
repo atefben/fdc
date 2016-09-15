@@ -11857,6 +11857,9 @@ article .read-later.rAlign span:after {
 .single-movie .audios {
   padding: 45px 0;
 }
+.single-movie .audios .audio-container + .audio-container {
+  margin-top: 30px;
+}
 .single-movie .press {
   min-height: 286px;
   background-color: #141414;
