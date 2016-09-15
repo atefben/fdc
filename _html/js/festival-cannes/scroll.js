@@ -364,20 +364,29 @@ $(document).ready(function () {
             }
         }
 
-       /* if( $('#mycalendar').length > 0 ) { // attention il y a un problème avec la calendrier, lorsque
-       //l'on change de date cela remonte en haut parce que les thead sont supprimés et reconstruit
-       //TODO si demande du client.
-            if (s > 180) {
-                var w = s - 151 ;
-                w = w + "px";
-                $('.fc-head .fc-day-header').css('transform', 'translateY(' + w + ')');
-                $('#mycalendar .fc-button').css('transform', 'translateY(' + w + ')').css('z-index', 3);
+       if( $('#mycalendar').length > 0 ) {
 
-            }else {
-                $('.fc-head .fc-day-header').css('transform', 'translateY(' + 0 + ')');
-                $('#mycalendar .fc-button').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
+           $('#mycalendar .fc-button').on('click', function(){
+            start();
+           })
+
+
+            var start = function() {
+                if (s > 180) {
+                    var w = s - 151 ;
+                    w = w + "px";
+                    $('.fc-head .fc-day-header').css('transform', 'translateY(' + w + ')');
+                    $('#mycalendar .fc-button').css('transform', 'translateY(' + w + ')');
+
+                }else {
+                    $('.fc-head .fc-day-header').css('transform', 'translateY(' + 0 + ')');
+                    $('#mycalendar .fc-button').css('transform', 'translateY(' + 0 + ')');
+                }
             }
-        }*/
+
+           start();
+
+        }
 
         lastScrollTop = s;
     });

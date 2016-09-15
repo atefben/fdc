@@ -1801,6 +1801,9 @@
         font-size: 0.750rem;
         text-transform: uppercase;
         position: relative;
+        transition: .3s;
+        position: relative;
+        z-index: 3;
       }
 
       .fc-slats .fc-time {
