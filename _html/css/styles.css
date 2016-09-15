@@ -13318,14 +13318,14 @@ input[type=submit] {
 }
 .list-article .bandeau-list .bandeau-list-img {
   height: 300px;
-  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background: center 0 no-repeat fixed;
   background-size: cover;
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .list-article .bandeau-list .bandeau-list-img .title-list-header {
   color: #ffffff;
@@ -16572,6 +16572,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 30px;
   width: 778px;
   margin: 0 auto;
+  text-align: center;
+}
+.manual .title-bandeau ul li, .manual .title-bandeau ol li {
   text-align: center;
 }
 .manual .content-manual {
