@@ -219,8 +219,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         // CUSTOM LINK FACEBOOK
         if ($('.container-webtv-ba-video').length > 0) {
-            var shareUrl = $('.video .video-container').attr('data-link');
-        } else if (window.location.href.indexOf('web-tv/channel') != -1 || window.location.href.indexOf('_html/channel.php') != -1) {
+            /*var shareUrl = $('.video .video-container').attr('data-link');*/
+
+            hash = window.location.hash;
+            var url = window.location.href.split('#')[0];
+            shareUrl = url + "#vid=" + $playlist[index].vid;
+
+        } else if (window.location.href.indexOf('web-tv/channel') != -1 || window.location.href.indexOf('_html/channel.php') != -1 ) {
 
             hash = window.location.hash;
             var url = window.location.href.split('#')[0];
@@ -335,10 +340,17 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     var index = hash.substring(5);
                     index = Number(index);
 
-                    data = $('.video-container');
+                    if($('.video-container').length > 0){
+                        data = $('.video-container');
+                    }else{
+                        data = $('.html5-video-container');
+                    }
+
                     data = data.data('playlist');
 
                     data.forEach(function(value, i){
+
+                    console.log(value.vid +' = '+index);
 
                         if(value.vid == index) {
                             playerInstance.playlistItem(i);
@@ -436,9 +448,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         height: $(vid).parent('div').height(),
         controls: ($('body').hasClass('tablet')) ? true : false
     });
-
-    console.log($('body').hasClass('tablet'));
-    console.log(playerInstance.controls);
 
 
     if (havePlaylist) {

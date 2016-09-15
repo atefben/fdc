@@ -23,7 +23,7 @@
           data-playlist='[
             {
               "sources":[{"file":"./files/mov_bbb.mp4"}],
-              "vid": 31,
+              "vid": 21,
               "image":"//dummyimage.com/960x540/000/c8a461.png",
               "name":"Sils Maria",
               "category":"Photocall",
@@ -32,7 +32,7 @@
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
-              "vid": 32,
+              "vid": 22,
               "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
               "name":"Interviews des réalisateurs",
               "category":"Montée des marches",
@@ -41,7 +41,7 @@
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
-              "vid": 33,
+              "vid": 23,
               "image":"img/slider-channels/03.jpg",
               "name":"Sils Maria",
               "category":"Conférence de presse",
@@ -50,7 +50,7 @@
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
-              "vid": 34,
+              "vid": 24,
               "image":"img/slider-channels/01.jpg",
               "name":"Sils Maria",
               "category":"Photocall",
@@ -59,7 +59,7 @@
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
-              "vid": 35,
+              "vid": 25,
               "image":"img/slider-channels/02.jpg",
               "name":"Sils Maria",
               "category":"Montée des marches",
@@ -177,7 +177,7 @@
   </div>
   <div id="content-trailers">
     <div id="slider-trailer" class="owl-carousel sliderDrag">
-      <div class="channel">
+      <div class="channel" data-vid="21">
         <div class="image-wrapper">
           <img src="img/slider-channels/01.jpg" alt="" />
         </div>
@@ -194,7 +194,7 @@
           </div>
         </div>
       </div>
-      <div class="channel">
+      <div class="channel" data-vid="22">
         <div class="image-wrapper">
           <img src="img/slider-channels/02.jpg" alt="" />
         </div>
@@ -211,7 +211,7 @@
           </div>
         </div>
       </div>
-      <div class="channel">
+      <div class="channel" data-vid="23">
         <div class="image-wrapper">
           <img src="img/slider-channels/03.jpg" alt="" />
         </div>
@@ -228,7 +228,7 @@
           </div>
         </div>
       </div>
-      <div class="channel">
+      <div class="channel" data-vid="24">
         <div class="image-wrapper">
           <img src="img/slider-channels/01.jpg" alt="" />
         </div>
@@ -245,7 +245,7 @@
           </div>
         </div>
       </div>
-      <div class="channel">
+      <div class="channel" data-vid="25">
         <div class="image-wrapper">
           <img src="img/slider-channels/02.jpg" alt="" />
         </div>
@@ -262,7 +262,7 @@
           </div>
         </div>
       </div>
-      <div class="channel">
+      <div class="channel" data-vid="26">
         <div class="image-wrapper">
           <img src="img/slider-channels/03.jpg" alt="" />
         </div>
