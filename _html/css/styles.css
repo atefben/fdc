@@ -11274,7 +11274,10 @@ article .read-later.rAlign span:after {
 .single-movie .palmares {
   float: left;
   width: 63%;
+  /*
   padding-bottom: 5px;
+  */
+  padding-bottom: 23px;
   margin-top: -66px;
 }
 .single-movie .palmares.trailer {
