@@ -12780,6 +12780,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .slider-selection .noUi-horizontal {
   height: 1px;
 }
+.portrait.mobile .slider-selection .noUi-horizontal {
+  height: 2px;
+}
 .slider-selection .noUi-background {
   background: #252525;
   box-shadow: none;

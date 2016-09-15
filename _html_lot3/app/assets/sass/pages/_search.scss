@@ -500,6 +500,11 @@
   }
 
   .noUi-horizontal {
+
+    .portrait.mobile &{
+      height: 2px;
+    }
+
     height: 1px;
   }
 
