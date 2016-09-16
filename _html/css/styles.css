@@ -7530,6 +7530,12 @@ header #searchContainer {
   overflow: hidden;
   padding-left: 120px;
 }
+#searchContainer #results #artistsResults .person.big {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  margin-left: 24px;
+}
 #searchContainer #results #filtered {
   display: none;
 }
