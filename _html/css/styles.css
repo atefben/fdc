@@ -7530,6 +7530,12 @@ header #searchContainer {
   overflow: hidden;
   padding-left: 120px;
 }
+#searchContainer #results #artistsResults .person.big {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  margin-left: 24px;
+}
 #searchContainer #results #filtered {
   display: none;
 }
@@ -14742,6 +14748,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   top: 0;
   left: -1%;
   z-index: 1;
+  opacity: .6;
 }
 .webtv-ba-video #content-trailers .channel:after {
   border: 0px solid #c8a461;
@@ -18862,7 +18869,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   height: auto;
   position: absolute;
   top: 150px;
-  z-index: 1;
+  z-index: 3;
   border-top: 1px solid #ccc;
   padding-top: 47px;
   visibility: hidden;

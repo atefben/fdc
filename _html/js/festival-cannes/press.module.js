@@ -911,7 +911,7 @@ $(document).ready(function () {
             success: function (data) {
               $('.v-wrapper').html(data);
               initDraggable();
-              updateFilterCalendar();
+              /*updateFilterCalendar();*/
             }
           });
           var date = $.fullCalendar.moment($(this).data('date'));

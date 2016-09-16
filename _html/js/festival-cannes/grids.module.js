@@ -100,9 +100,7 @@ function setGrid(grid, dom, init){
         });
       }
 
-
-
-
+      
       $(dom).find('div.item:not(.w2)').each(function() {
 
         console.log('2');
