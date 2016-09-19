@@ -20104,15 +20104,16 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   opacity: 0;
   width: 100%;
   height: 100%;
-  display: block;
   background-color: rgba(0, 0, 0, 0.8);
   transition: .7s;
   position: absolute;
   top: 0px;
   left: 0px;
+  display: none;
 }
 .press-media .nav-container.load:after {
   opacity: 1;
+  display: block;
 }
 .press-media .nav-container .table .line {
   position: relative;
