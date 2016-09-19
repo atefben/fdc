@@ -231,6 +231,14 @@ $(document).ready(function () {
                 } else {
                     $('a.nav').removeClass('bottom');
                 }
+            } else {
+                var elt = $('footer');
+
+                if (s >= elt.offset().top - elt.height() - 400) {
+                    $('a.nav').addClass('bottom').css('bottom', '155px');
+                } else {
+                    $('a.nav').removeClass('bottom').css('bottom', 'auto');
+                }
             }
         }
 
