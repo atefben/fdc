@@ -9290,7 +9290,7 @@ header #searchContainer {
 
 #featured-videos {
   background-color: #141414;
-  padding: 70px 0 60px 0;
+  padding: 70px 0 0px 0;
 }
 #featured-videos .title {
   color: #fff;
@@ -9463,7 +9463,7 @@ header #searchContainer {
 
 #channels {
   background-color: #141414;
-  padding: 0 0 60px 0;
+  padding: 60px 0 60px 0;
 }
 #channels .title {
   color: #fff;
