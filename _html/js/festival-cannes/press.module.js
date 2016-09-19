@@ -1392,7 +1392,47 @@ $(document).ready(function () {
       if ($(this).is(':not(.active)')) {
         var urlPath = $(this).data('cat');
 
-        $.get(urlPath, function (data) {
+        $.ajax({
+          type:'GET',
+          url: urlPath,
+
+          success:function(d){
+            $('.nav-container').removeClass('load');
+
+            l = $('nav-container').find('.loader');
+            l.remove;
+            $('.loader').remove();
+
+            var matches = data.match(/<title>(.*?)<\/title>/);
+            var spUrlTitle = matches[1];
+            document.title = spUrlTitle;
+
+            $('.nav-container').remove();
+            $('.nav-popin').remove();
+            $('.nav-mediapress').after($(data).find('.nav-container'));
+            $('.nav-container').after($(data).find('.nav-popin'));
+
+            history.pushState('', GLOBALS.texts.url.title, urlPath);
+            ajaxEvent();
+            menuMedia();
+            initSlideshows();
+            popinInit();
+          },
+          beforeSend: function(){
+            $('.nav-container').addClass('load');
+            $('.nav-container').append('<img class="loader" src="img/loading.svg" alt="">');
+          },
+          complete: function(){
+            $('.nav-container').removeClass('load');
+            l = $('nav-container').find('.loader');
+            l.remove;
+
+
+            $('.loader').remove();
+          }
+        });
+
+/*        $.get(urlPath, function (data) {
           var matches = data.match(/<title>(.*?)<\/title>/);
           var spUrlTitle = matches[1];
           document.title = spUrlTitle;
@@ -1407,7 +1447,7 @@ $(document).ready(function () {
           menuMedia();
           initSlideshows();
           popinInit();
-        });
+        });*/
 
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
         $(this).addClass('active');
