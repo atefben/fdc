@@ -1801,7 +1801,7 @@
         font-size: 0.750rem;
         text-transform: uppercase;
         position: relative;
-        transition: .3s;
+        @include transform(translate3d(0, 0, 0));
         position: relative;
         z-index: 3;
       }

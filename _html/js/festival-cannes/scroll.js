@@ -372,7 +372,7 @@ $(document).ready(function () {
             }
         }
 
-       if( $('#mycalendar').length > 0 ) {
+       if( $('#mycalendar').length > 0 && !$('.press-programmation').length) {
 
            $('#mycalendar .fc-button').on('click', function(){
             start();
@@ -389,6 +389,14 @@ $(document).ready(function () {
                 }else {
                     $('.fc-head .fc-day-header').css('transform', 'translateY(' + 0 + ')');
                     $('#mycalendar .fc-button').css('transform', 'translateY(' + 0 + ')');
+                }
+
+                if ( s > $('#mycalendar').height() + 95) {
+
+                    var a = $('#mycalendar').height() - 42;
+                    a = a + "px";
+                    $('.fc-head .fc-day-header').css('transform', 'translateY(' + a + ')');
+                    $('#mycalendar .fc-button').css('transform', 'translateY(' + a + ')');
                 }
             }
 
