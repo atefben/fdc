@@ -283,9 +283,9 @@ $(document).ready(function () {
                     if (videoWebtv.getState() != "paused" && videoWebtv.getState() != "idle") {
                         $('#live .trailer').removeClass('on');
 
-                        if(isiPad) {
+                        if (isiPad) {
                             videoWebtv.stop();
-                        }else{
+                        } else {
                             videoWebtv.pause();
                         }
 
@@ -293,12 +293,12 @@ $(document).ready(function () {
                     }
                 }, 300);
 
-                if(isiPad) {
-                    setTimeout(function() {
+                if (isiPad) {
+                    setTimeout(function () {
                         videoWebtv.stop();
                     }, 600);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         videoWebtv.stop();
                     }, 900);
                 }
@@ -360,38 +360,49 @@ $(document).ready(function () {
             });
         }
 
-        if ($('#calendar-programmation').length > 0 && !$('.press-home').length > 0 ) {
+        if ($('#calendar-programmation').length > 0 && !$('.press-home').length > 0) {
             if (s > 291) {
-                var w = s - 289;
+                var w = s - 289 + 41;
+                var y = w + 39 - 41;
+                y = y + "px";
                 w = w + "px";
-                $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
-                $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
+
+                $('.filters').css('top', '' + w + '');
+                $('#timeline').css('top', '' + w + '').css('z-index', 3);
+                $('.calendar .v-head').css('transform', 'translateY(' + y + ')');
+                $('.calendar .nav').css('transform', 'translateY(' + y + ')').css('z-index', 3);
+
+
             } else {
+
+                $('.filters').css('top', '' + 0 + '');
+                $('#timeline').css('top', '' + 0 + '').css('z-index', 3);
+
                 $('.calendar .v-head').css('transform', 'translateY(' + 0 + ')');
                 $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
             }
         }
 
-       if( $('#mycalendar').length > 0 && !$('.press-programmation').length) {
+        if ($('#mycalendar').length > 0 && !$('.press-programmation').length) {
 
-           $('#mycalendar .fc-button').on('click', function(){
-            start();
-           })
+            $('#mycalendar .fc-button').on('click', function () {
+                start();
+            })
 
 
-            var start = function() {
+            var start = function () {
                 if (s > 180) {
-                    var w = s - 151 ;
+                    var w = s - 151;
                     w = w + "px";
                     $('.fc-head .fc-day-header').css('transform', 'translateY(' + w + ')');
                     $('#mycalendar .fc-button').css('transform', 'translateY(' + w + ')');
 
-                }else {
+                } else {
                     $('.fc-head .fc-day-header').css('transform', 'translateY(' + 0 + ')');
                     $('#mycalendar .fc-button').css('transform', 'translateY(' + 0 + ')');
                 }
 
-                if ( s > $('#mycalendar').height() + 95) {
+                if (s > $('#mycalendar').height() + 95) {
 
                     var a = $('#mycalendar').height() - 42;
                     a = a + "px";
@@ -400,7 +411,7 @@ $(document).ready(function () {
                 }
             }
 
-           start();
+            start();
 
         }
 
