@@ -19,7 +19,9 @@ a{
 .article-title{
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
+  /*
   max-height: 200px;
+  */
   margin-bottom: 40px;
   font-size: 20px;
   color: #666;
