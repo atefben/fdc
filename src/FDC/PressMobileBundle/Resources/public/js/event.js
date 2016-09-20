@@ -1805,11 +1805,11 @@ $(document).ready(function() {
     dragEndSpeed : 600,
     items        : 1,
     onInitialized: function() {
-      var m = ($(window).width() - $('.container').width()) / 2;
+      var m = 32;
       $('.articles-carousel .owl-stage').css({ 'margin-left': m });
     },
     onResized: function() {
-      var m = ($(window).width() - $('.container').width()) / 2;
+      var m = 32;
       $('.articles-carousel .owl-stage').css({ 'margin-left': m });
     }
   });
