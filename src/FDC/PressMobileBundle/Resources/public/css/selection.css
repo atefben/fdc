@@ -4387,6 +4387,7 @@ display: inline-block;
   color: #fff;
   margin: 60px auto;
   padding: 0;
+    height: auto;
 }
 .title-list-cat .title.article-style {
     font-family: "Playfair Display",Times New Roman,Times,serif;

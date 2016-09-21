@@ -17677,6 +17677,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   position: absolute;
   right: 0;
   top: 0;
+  background-color: #fff;
 }
 .press .programmation #calendar-programmation #timeline .arrow {
   background-color: #fff;
