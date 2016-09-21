@@ -76,7 +76,7 @@ $(document).ready(function () {
                             smartSpeed: 500,
                             margin: 0,
                             autoWidth: true,
-                            loop: true,
+                            loop: false,
                             items: 2
                         });
                         venues.owlCarousel();
