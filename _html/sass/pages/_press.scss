@@ -1874,7 +1874,7 @@
   height: 973px;
   opacity: 0;
   visibility: hidden;
-  z-index: 2;
+  z-index: 4;
   @include transition(all 0.6s $smoothTransition);
 
   .close-button {
