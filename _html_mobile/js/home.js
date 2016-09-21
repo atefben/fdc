@@ -294,19 +294,27 @@ $(document).ready(function() {
       });
     }
   });
-
+  
   // init timeline
   moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'), false);
 
   var day = $('.timeline-container').find('.active').data('date');
 
-  if(day == 21) {
+  var dayEnd = GLOBALS.dateEnd;
+  dayEnd = new Date(dayEnd);
+  dayEnd = dayEnd.getDate();
+
+  var dayStart = GLOBALS.dateStart;
+  dayStart = new Date(dayStart);
+  dayStart = dayStart.getDate();
+
+  if(day >= dayEnd - 1) {
     $('#calendar .next').addClass('disabled');
   }else{
     $('#calendar .next').removeClass('disabled');
   }
 
-  if(day == 11) {
+  if(day <= dayStart + 1) {
     $('#calendar .prev').addClass('disabled');
   }else{
     $('#calendar .prev').removeClass('disabled');
@@ -316,9 +324,25 @@ $(document).ready(function() {
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
 
+    day =  $(this).data('date')
+
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
     }
+
+    if(day <= dayStart) {
+      $('#calendar .prev').addClass('disabled');
+    }else{
+      $('#calendar .prev').removeClass('disabled');
+    }
+
+    if(day == dayEnd - 1) {
+      $('#calendar .next').addClass('disabled');
+    }else{
+      $('#calendar .next').removeClass('disabled');
+    }
+
+
     moveTimeline($(this), $(this).data('date'));
   });
 
@@ -327,15 +351,17 @@ $(document).ready(function() {
 
     var day = $('.timeline-container').find('.active').data('date');
 
+
     $('#calendar .next').removeClass('disabled');
 
-    if(day == 12) {
+    if(day <= dayStart + 1) {
       $('#calendar .prev').addClass('disabled');
     }else{
       $('#calendar .prev').removeClass('disabled');
     }
 
-    if(day == 11) {
+    if(day <= dayStart) {
+
       return false;
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
@@ -350,14 +376,14 @@ $(document).ready(function() {
 
     $('#calendar .prev').removeClass('disabled');
 
-    if(day == 20) {
+    if(day == dayEnd - 1) {
       $('#calendar .next').addClass('disabled');
     }else{
       $('#calendar .next').removeClass('disabled');
     }
 
-    if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
-      return false;
+    if(day == dayEnd || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
+       return false;
 
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
