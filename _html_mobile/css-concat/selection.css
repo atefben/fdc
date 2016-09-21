@@ -4405,6 +4405,18 @@ display: inline-block;
   margin: 0 40px 60px;
   max-height: 300px;
 }
+
+.title-item .subtile {
+    color: #fff;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding-top: 10px;
+    font-style: italic;
+    line-height: 28px;
+    margin: 0 40px 60px;
+    max-height: 300px;
+}
+
 .title-list-cat .subtitle.alone{
   margin-top: 60px;
   padding-top: 0;
