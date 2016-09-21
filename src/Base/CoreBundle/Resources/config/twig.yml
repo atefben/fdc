@@ -150,3 +150,8 @@ services:
         tags:
             - { name: twig.extension }
         arguments: ["%locale_fallback%", "@request_stack"]
+
+    base.twig.retrospective_slider_extension:
+        class: Base\CoreBundle\Twig\Extension\RetrospectiveSliderExtension
+        tags:
+            - { name: twig.extension }

@@ -1,0 +1,135 @@
+{% dump(app.request.attributes.get('_route_params')) %}
+<div class="slides-calc2 navigation prev"{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} style="display: none;"{% endif %}><i class="icon icon-arrow-left"></i></div>
+<div class="slides-calc2 navigation next"{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} style="display: none;"{% endif %}><i class="icon icon-arrow-right"></i></div>
+
+<div class="slides-calc1">
+    <div class="slide">
+        <div class="date"data-date="{{ app.request.attributes.get('year') }}">{{ app.request.attributes.get('year') }}</div>
+    </div>
+</div>
+{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %}
+<div class="slides-calc1 animated fadeOut" style="display: none;">
+{% else %}
+<div class="slides-calc1">
+{% endif %}
+    <div class="slide">
+        <div class="date" data-date="{{ app.request.attributes.get('year') }}">{{ app.request.attributes.get('year') }}</div>
+    </div>
+</div>
+
+<div class="slides">
+
+    <div data-slide="0" class="first-slide slider-restropective{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} isOpen block-push block-push-top background-effet animated fadeOut{% endif %}" style="background-image: url('{{ asset('bundles/fdccorporate/media/images/retrospective-home-01.jpg') }}')">
+        <div class="container block-01 vFlexAlign" >
+            <div class="vFlexAlign">
+                <h1 class="title-big">{{ 'retrospective.69ansfestival'|trans }}</h1>
+                <p>{{ 'retrospective.69ansfestival'|trans }}</p>
+                <div class="block-drag">
+                    <div class="avance"><span class="square"></span></div>
+                    <i class="icon icon-drag-hand"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% set currentYear = festivals|first.year %}
+    {% set yearEdition = 1 %}
+    {% set slideId = 1 %}
+    {% set lastSlideId = festivals|last.year - festivals|first.year %}
+    {% for festival in festivals %}
+        {% if currentYear != festival.year %}
+            <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-top background-effet small{% endif %}">
+                <div class="container block-01 vFlexAlign">
+                    <div class="link-return-c">
+                        <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
+                    </div>
+
+                    {% if slideId > 1 %}<div class="date-back"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                    {% if slideId < lastSlideId %}<div class="date-next" data-url='{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(1)) }}'><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(1)) }}">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+
+                    <div class="vFlexAlign">
+
+                        <div class="texts">
+                            <span class="title-edition">{{ 'retrospective.pasdecontenu'|trans }}</span>
+                            <h2 class="title-big-date">{{ currentYear }}</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc3">
+
+                </div>
+
+                <div class="calc4">
+
+                </div>
+            </div>
+            {% set currentYear = currentYear + 1 %}
+            {% set slideId = slideId + 1 %}
+        {% endif %}
+
+        <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-top background-effet small{% endif %}">
+            <div class="container block-01 vFlexAlign">
+                <div class="link-return-c">
+                    <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
+                </div>
+
+                {% if yearEdition > 1 %}<div class="date-back"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition < lastSlideId %}<div class="date-next" data-url='{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}'><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(1)) }}">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+
+                <div class="vFlexAlign">
+                    <img src="{{ asset('bundles/fdccorporate/media/images/retrospective-slider01.jpg') }}" alt="">
+                    <div class="texts">
+                        <span class="title-edition">{{ yearEdition }}<sub>E</sub> {{ 'retrospective.edition'|trans }}</span>
+                        <h2 class="title-big-date">{{ festival.year }}</h2>
+                        {% if app.request.attributes.get('_route') == 'fdc_corporate_editions_retrospective' %}
+                            <a href="{{ path('fdc_corporate_movie_selection', {year: festival.year}) }}" data-url="{{ path('fdc_corporate_movie_selection', {year: festival.year}) }}" class="button discover">{{ 'retrospective.decouvrir'|trans }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc3">
+                <img class="i1" src="http://dummyimage.com/600x400/000/fff" alt="">
+                <img class="i2" src="{{ asset('bundles/fdccorporate/media/images/retrospective-home-03.jpg') }}" alt="">
+                <img class="i3" src="{{ asset('bundles/fdccorporate/media/images/retrospective-home-02.jpg') }}" alt="">
+            </div>
+
+            <div class="calc4">
+                <img class="i1" src="{{ asset('bundles/fdccorporate/media/images/retrospective-home-04.jpg') }}" alt="">
+                <img class="i2" src="http://dummyimage.com/600x400/bbbbbb/bbbbbb" alt="">
+                <img class="i3" src="{{ asset('bundles/fdccorporate/media/images/retrospective-home-02.jpg') }}" alt="">
+            </div>
+        </div>
+
+        {% set yearEdition = yearEdition + 1 %}
+        {% set currentYear = currentYear + 1 %}
+        {% set slideId = slideId + 1 %}
+    {% endfor %}
+
+</div>
+
+{% if app.request.attributes.get('_route') == 'fdc_corporate_editions_retrospective' %}
+<div class="block-01">
+    <div class="timelapse block-drag">
+        <span class="date date-first" data-firstdate='{{ festivals|first.year }}'>{{ festivals|first.year }}</span>
+        <div class="avance" id="timelapse-01"><span class="square"></span></div>
+        <span class="date date-last" data-lastdate='{{ festivals|last.year }}'>{{ festivals|last.year }}</span>
+    </div>
+</div>
+{% else %}
+    <div class="block-01">
+        <div class="timelapse block-drag" style="display: none;">
+            <span class="date date-first" data-firstdate="{{ festivals|first.year }}">{{ festivals|first.year }}</span>
+            <div class="avance noUi-target noUi-ltr noUi-horizontal noUi-background" id="timelapse-01"><span
+                        class="square"></span>
+                <div class="noUi-base">
+                    <div class="noUi-origin" style="left: 1.42857%;">
+                        <div class="noUi-handle noUi-handle-lower"></div>
+                    </div>
+                </div>
+            </div>
+            <span class="date date-last" data-lastdate="{{ festivals|last.year }}">{{ festivals|last.year }}</span>
+        </div>
+    </div>
+{% endif %}

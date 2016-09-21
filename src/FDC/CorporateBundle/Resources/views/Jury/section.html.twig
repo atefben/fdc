@@ -5,7 +5,7 @@
 {% block body %}
 <section class="s-slider-retrospective">
 
-    {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+    {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
     <div class="ajax-section"><div class="contain-ajax">
 
@@ -23,86 +23,87 @@
         </ul>
     </nav>
 
-            <div class="all-contain">
-                <div class="block-jury">
-                {% if president %}
-                    {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
-                        <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
-                        </div>
-                    {%- else -%}
-                        {%- set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
-                        {%- if media is empty -%}
-                            {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
-                        {%- endif -%}
-                        {%- if media is empty -%}
-                            {%- set photo = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
-                        {%- endif -%}
-                        {%- if media is not empty -%}
-                            <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
-                        {%- else -%}
-                            <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
-                        {%- endif -%}
-                    {%- endif -%}
-                    <div class="contain-txt">
-                        <strong class="title-18">
-                            {% if president['jury'].person|person_gender == 'F' %}
-                                {{ 'juries.role.title.presidentedujury'|trans }}
-                            {% else %}
-                                {{ 'juries.role.title.presidentdujury'|trans }}
-                            {% endif %}
-                        </strong>
-                        <h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1>
-                        <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
-                        <p class="texte-01">
-                            {{ president['jury'].person|trans_fallback('biography') }}
-                        </p>
-                    </div>
-                {% endif %}
+    <div class="all-contain">
+        <div class="block-jury">
+        {% if president %}
+            {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
+                <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
                 </div>
-
-                <div class="contain-title vFlexAlign ">
-                    <strong class="title-01">
-                        {% if page.id == admin_fdc_page_jury_certain_regard_id %}
-                            {{ 'juries.role.title.membresdujury.regard'|trans }}
-                        {%  elseif page.id == admin_fdc_page_jury_camera_dor_id %}
-                            {{ 'juries.role.title.membresdujury.camera'|trans }}
-                        {%  elseif page.id == admin_fdc_page_jury_long_metrages_id %}
-                            {{ 'juries.role.title.membresdujury.long'|trans }}
-                        {%  elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
-                            {{ 'juries.role.title.membresdujury.court'|trans }}
-                        {%  endif %}
-                    </strong>
-                </div>
-
-                <div class="isotope-01 bright grid-jury">
-                    <div class="grid-sizer"></div>
-
-                    {% for member in members %}
-                    <div class="item block-poster">
-                        <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
-                            <div class="contain-img">
-                                {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
-                                {% if artistImage is not empty %}
-                                    <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
-                                {% else %}
-                                    <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
-                                {% endif %}
-                            </div>
-                            <div class="contain-txts vFlexAlign">
-                                <span class="title-11">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
-                                {% set profession =  member['jury'].person|profession_gender('profession') %}
-                                {% if profession %}
-                                    <span class="title-12">{{ profession }}</span>
-                                {% endif %}
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
-
-                </div>
-            </div> <!-- end all contain -->
+            {%- else -%}
+                {%- set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
+                {%- if media is empty -%}
+                    {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
+                {%- endif -%}
+                {%- if media is empty -%}
+                    {%- set photo = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
+                {%- endif -%}
+                {%- if media is not empty -%}
+                    <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
+                {%- else -%}
+                    <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
+                {%- endif -%}
+            {%- endif -%}
+            <div class="contain-txt">
+                <strong class="title-18">
+                    {% if president['jury'].person|person_gender == 'F' %}
+                        {{ 'juries.role.title.presidentedujury'|trans }}
+                    {% else %}
+                        {{ 'juries.role.title.presidentdujury'|trans }}
+                    {% endif %}
+                </strong>
+                <h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1>
+                <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
+                <p class="texte-01">
+                    {{ president['jury'].person|trans_fallback('biography') }}
+                </p>
+            </div>
+        {% endif %}
         </div>
-    </div>
+
+        <div class="contain-title vFlexAlign ">
+            <strong class="title-01">
+                {% if page.id == admin_fdc_page_jury_certain_regard_id %}
+                    {{ 'juries.role.title.membresdujury.regard'|trans }}
+                {%  elseif page.id == admin_fdc_page_jury_camera_dor_id %}
+                    {{ 'juries.role.title.membresdujury.camera'|trans }}
+                {%  elseif page.id == admin_fdc_page_jury_long_metrages_id %}
+                    {{ 'juries.role.title.membresdujury.long'|trans }}
+                {%  elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
+                    {{ 'juries.role.title.membresdujury.court'|trans }}
+                {%  endif %}
+            </strong>
+        </div>
+
+        <div class="isotope-01 bright grid-jury">
+            <div class="grid-sizer"></div>
+
+            {% for member in members %}
+            <div class="item block-poster">
+                <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
+                    <div class="contain-img">
+                        {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
+                        {% if artistImage is not empty %}
+                            <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
+                        {% else %}
+                            <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
+                        {% endif %}
+                    </div>
+                    <div class="contain-txts vFlexAlign">
+                        <span class="title-11">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
+                        {% set profession =  member['jury'].person|profession_gender('profession') %}
+                        {% if profession %}
+                            <span class="title-12">{{ profession }}</span>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div> <!-- end all contain -->
+
+    </div></div>
+
 </section>
 
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
