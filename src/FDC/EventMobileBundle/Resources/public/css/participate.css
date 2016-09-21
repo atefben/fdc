@@ -3367,6 +3367,15 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
     list-style-position: inside;
 }
 
+.description h5 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    padding-bottom: 30px;
+    font-weight: 600;
+}
+
 .loc{
     display: block;
 }
