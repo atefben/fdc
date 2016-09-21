@@ -1407,58 +1407,42 @@ $(document).ready(function () {
           type:'GET',
           url: urlPath,
 
-          success:function(d){
-            $('.nav-container').removeClass('load');
+          success:function(data){
 
-            l = $('nav-container').find('.loader');
-            l.remove;
-            $('.loader').remove();
 
             var matches = data.match(/<title>(.*?)<\/title>/);
             var spUrlTitle = matches[1];
             document.title = spUrlTitle;
 
-            $('.nav-container').remove();
-            $('.nav-popin').remove();
-            $('.nav-mediapress').after($(data).find('.nav-container'));
-            $('.nav-container').after($(data).find('.nav-popin'));
+            setTimeout(function(){
+              $('.nav-container').removeClass('load');
+            }, 800);
+
+            setTimeout(function(){
+              $('.loader').remove();
+              $('.nav-container').remove();
+              $('.nav-popin').remove();
+              $('.nav-mediapress').after($(data).find('.nav-container'));
+              $('.nav-container').after($(data).find('.nav-popin'));
+
+            }, 1000);
+
 
             history.pushState('', GLOBALS.texts.url.title, urlPath);
             ajaxEvent();
             menuMedia();
             initSlideshows();
             popinInit();
+
+
           },
           beforeSend: function(){
             $('.nav-container').addClass('load');
-            $('.nav-container').append('<img class="loader" src="img/loading.svg" alt="">');
-          },
-          complete: function(){
-            $('.nav-container').removeClass('load');
-            l = $('nav-container').find('.loader');
-            l.remove;
-
-
-            $('.loader').remove();
+            $('.nav-container').append('<img class="loader" src="'+GLOBALS.baseUrl+'img/loading.svg" alt="">');
           }
         });
 
-/*        $.get(urlPath, function (data) {
-          var matches = data.match(/<title>(.*?)<\/title>/);
-          var spUrlTitle = matches[1];
-          document.title = spUrlTitle;
 
-          $('.nav-container').remove();
-          $('.nav-popin').remove();
-          $('.nav-mediapress').after($(data).find('.nav-container'));
-          $('.nav-container').after($(data).find('.nav-popin'));
-
-          history.pushState('', GLOBALS.texts.url.title, urlPath);
-          ajaxEvent();
-          menuMedia();
-          initSlideshows();
-          popinInit();
-        });*/
 
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
         $(this).addClass('active');

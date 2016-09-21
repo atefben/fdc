@@ -23,12 +23,18 @@ $(document).ready(function() {
 
         $.get(urlPath, function(data) {
           var matches = data.match(/<title>(.*?)<\/title>/);
+
+          console.log($(data).find('.sub-languages').html());
+
+
           var spUrlTitle = matches[1];
 
           document.title = spUrlTitle;
           $( ".container-jurys" ).html( $(data).find('.container-jurys') );
           $('.bandeau-head').html( $(data).find('.bandeau-head') );
           $('.bandeau-list-footer').html( $(data).find('.bandeau-list-footer').html() );
+          $('.sub-languages').html($(data).find('.sub-languages').html());
+
 
           history.pushState('', GLOBALS.texts.url.title, urlPath);
           $grid = $('#gridJurys').imagesLoaded(function() {

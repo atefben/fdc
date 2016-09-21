@@ -307,7 +307,7 @@
               <div class="side side-1"></div>
               <div class="side side-2"></div>
             </div>
-            <div class="post">
+            <div class="post empty">
               <div class="side side-1"></div>
               <div class="side side-2"></div>
             </div>
@@ -331,7 +331,7 @@
               <div class="side side-1"></div>
               <div class="side side-2"></div>
             </div>
-            <div class="post">
+            <div class="post empty">
               <div class="side side-1"></div>
               <div class="side side-2"></div>
             </div>
@@ -347,7 +347,7 @@
               <div class="side side-1"></div>
               <div class="side side-2"></div>
             </div>
-            <div class="post">
+            <div class="post empty">
               <div class="side side-1"></div>
               <div class="side side-2"></div>
             </div>

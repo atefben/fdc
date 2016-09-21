@@ -3169,13 +3169,24 @@ a{
 	padding-top: 50px;
 	font-size: 0;
 }
+
+.container em {
+    font-style: italic;
+}
+
+.chapeau em {
+    font-style: italic;
+}
+
 #player{
     margin-bottom: 40px;
 }
 .article-title{
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
+  /*
   max-height: 200px;
+  */
   margin-bottom: 40px;
   font-size: 20px;
   color: #666;
@@ -3263,6 +3274,9 @@ a{
     background-color: #f4f4f4;
     padding: 88px 0px;
     margin-bottom: 70px;
+    font-size: 13px;
+    padding: 50px;
+    font-style: italic;
 }
 
 .text-content  .txt-grey-bkg-container .content {
@@ -3319,10 +3333,22 @@ a{
     text-decoration: none;
 }
 
-
 .text-content .single-button {
     border-right: 1px solid #c8a461 !important;
     border-color: #c8a461;
+    width: 93%;
+    text-align: center;
+    color: #c8a461;
+    padding: 12px 21px;
+}
+
+.text-content .single-button a{
+    color: #c8a461;
+    font-size: 19px;
+}
+
+.text-content .single-button a strong{
+    color: #c8a461;
 }
 
 
