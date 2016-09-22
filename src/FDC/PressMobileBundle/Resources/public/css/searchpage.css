@@ -4006,7 +4006,8 @@ display: inline-block;
 }
 /*FILTERS*/
 .filters{
-
+    width: 110%;
+    margin-left: -30px;
 	padding-bottom: 75px;
   text-align: center;
 }
