@@ -25,6 +25,45 @@ class EditionsController extends Controller
     }
 
     /**
+     * @Route("/menu")
+     * @Template("FDCCorporateBundle:Retrospective:components/menu.html.twig")
+     * @return array
+     */
+    public function menuAction(Request $request, $year, $route) {
+        $em = $this->get('doctrine')->getManager();
+        $festival = $this->getFestival($year);
+        $locale = $request->getLocale();
+
+        //posters
+        $posters = $em->getRepository('BaseCoreBundle:FilmFestivalPoster')
+            ->findByFestival($festival);
+
+        //photos
+        $medias = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId());
+
+        //news
+        $news = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $festival->getId());
+        $news = $this->removeUnpublishedNewsAudioVideo($news, $locale, null, true);
+
+        //events
+        $events =
+            $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Event')
+                ->getEvents($festival, $locale)
+        ;
+
+        return array(
+            'posters' => $posters,
+            'medias' => $medias,
+            'news' => $news,
+            'events' => $events,
+            'route' => $route
+        );
+
+    }
+
+    /**
      * @Route("/{year}/", requirements={"year" = "\d+"})
      */
     public function yearAction(Request $request, $year)

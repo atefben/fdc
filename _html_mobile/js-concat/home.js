@@ -2150,15 +2150,20 @@ $(document).ready(function() {
       // once all data is loaded, build html and display the grid
       $('.post-container').html('');
       for (var i = 0; i < 6; ++i){
-        var noPhoto = "show-text";
-        if(posts[i].img ==""){
-          noPhoto += "always-show";
-        }
-        var html = '<div class="post show-text '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
-        $('.post-container').append(html);
-      }
 
-        console.log('ici');
+        var noPhoto = "";
+
+        if(posts[i].img ==""){
+          noPhoto += " always-show";
+        }
+
+        if(i == 1 || i == 2) {
+          var html = '<div class="post show-text'+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        } else {
+          var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        }
+          $('.post-container').append(html);
+      }
 
       $('.post').on('click',function(){
         if($(this).hasClass('always-show')) {
@@ -2166,7 +2171,9 @@ $(document).ready(function() {
         } else if($(this).hasClass('show-text')) {
           $(this).removeClass('show-text');
         } else {
+/*
           $('.post').removeClass('show-text');
+*/
           $('.always-show').addClass("show-text");
           $(this).addClass('show-text')
         }

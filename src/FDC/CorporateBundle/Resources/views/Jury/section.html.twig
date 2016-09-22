@@ -9,7 +9,7 @@
 
     <div class="ajax-section"><div class="contain-ajax">
 
-    {% include 'FDCCorporateBundle:Retrospective:components/menu.html.twig' %}
+    {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
     <nav class="navigation-sticky-02">
         <ul>

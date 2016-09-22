@@ -47,6 +47,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 {
@@ -458,8 +459,18 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56075);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(1885);
         $oldArticles[0] = $element;*/
+
+
+        $rsm = new ResultSetMapping();
+        $query = $dm->createNativeQuery('SELECT * FROM news WHERE id not in (select translatable_id from news_article_translation)', $rsm);
+        $query = $dm->createNativeQuery('SELECT * FROM news WHERE id = 1', $rsm);
+
+
+
+        dump($query->getResult());
+        exit;
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
