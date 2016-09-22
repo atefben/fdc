@@ -3401,7 +3401,7 @@ display: inline-block;
 .title-list-cat{
   border-bottom: 1px solid #2c2c2c;
   border-top:1px solid #2c2c2c;
-  width: 640px;
+    width: 122%;
   margin-left: -40px;
 }
 
