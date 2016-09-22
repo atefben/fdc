@@ -3867,6 +3867,18 @@ display: inline-block;
 	font-size: 18px;
 }
 
+.fc-event .info .info-dynamic-prog {
+    color: black;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 5px 0 11px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.fc-event .info .txt.txt-padding {
+    padding: 20px 10px 10px 10px;
+}
+
 /*ONE HOUR EVENT*/
 .fc-event.one-hour .bottom, .fc-event.one-hour img{
 	display: none;
