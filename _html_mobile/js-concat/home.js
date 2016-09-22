@@ -2150,13 +2150,15 @@ $(document).ready(function() {
       // once all data is loaded, build html and display the grid
       $('.post-container').html('');
       for (var i = 0; i < 6; ++i){
-        var noPhoto = "show-text";
+
+        var noPhoto = "";
+
         if(posts[i].img ==""){
-          noPhoto += "always-show";
+          noPhoto += " always-show";
         }
 
-        if(i == 2 || i == 3) {
-          var html = '<div class="post show-text '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        if(i == 1 || i == 2) {
+          var html = '<div class="post show-text'+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
         } else {
           var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
         }
