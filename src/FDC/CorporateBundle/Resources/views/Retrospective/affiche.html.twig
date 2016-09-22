@@ -22,7 +22,7 @@
                 <h1 class="title-01">{{ poster|trans_fallback('title') }}</h1>
             </div>
 
-            <article class="block-movie-preview" style="background-image: url(&quot;media/images/retrospective-poster-01.jpg&quot;)">
+            <article class="block-movie-preview" style="background-image: url('{% path poster.file, '976x535' %}')">
                 <div class="bck-hover">
                     <div class="wrapper-item">
                         <div class="poster">
