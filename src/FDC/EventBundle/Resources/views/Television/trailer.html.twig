@@ -128,9 +128,8 @@
                     </div>
                     <div class="share">
                         <div class="buttons square">
-                            <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&t={{ film|trans_fallback('title')|url_encode }}"
-                               rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                            <a href="//twitter.com/intent/tweet?url={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&text={{ film|trans_fallback('title')|url_encode }}"
+                            <a href="#" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                            <a href="#"
                                class="button twitter"><i class="icon icon_twitter"></i></a>
                             <a href="#" class="button link self"><i class="icon icon_link"></i></a>
                             <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
@@ -204,12 +203,12 @@
         {% endif %}
         {% set author = author ~ director.fullName %}
     {%- endfor -%}
-    {{ render(controller('FDCEventBundle:Global:shareEmail',
-        {'section': film.theme,
-         'detail': author,
-         'title': film|trans_fallback('title'),
-         'description': film|trans_fallback('synopsis')
-        })) 
+    {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+        {'section': '',
+            'detail': '',
+            'title': '',
+            'description': ''
+        }))
     }}
 
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
