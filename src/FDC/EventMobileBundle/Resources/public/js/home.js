@@ -2154,8 +2154,13 @@ $(document).ready(function() {
         if(posts[i].img ==""){
           noPhoto += "always-show";
         }
-        var html = '<div class="post show-text '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
-        $('.post-container').append(html);
+
+        if(i == 2 || i == 3) {
+          var html = '<div class="post show-text '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        } else {
+          var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        }
+          $('.post-container').append(html);
       }
 
         console.log('ici');
