@@ -22,7 +22,9 @@ class RetrospectiveSliderExtension extends Twig_Extension
 
     public function changeYear($routeParams, $value)
     {
-        $routeParams['year'] = $routeParams['year'] + $value;
+        if(isset($routeParams['year'])) {
+            $routeParams['year'] = $routeParams['year'] + $value;
+        }
 
         return $routeParams;
     }
