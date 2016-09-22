@@ -107,15 +107,15 @@ $(document).ready(function() {
       margin     : 60,
       autoWidth  : true,
       loop       : false,
-      items      : 2,
-      onInitialized: function() {
+      items      : 1
+     /* onInitialized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu2 .owl-stage').css({ 'margin-left': m });
       },
       onResized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu2 .owl-stage').css({ 'margin-left': m });
-      }
+      }*/
     });
     menu.owlCarousel();
 

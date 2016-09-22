@@ -4041,6 +4041,14 @@ display: inline-block;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     margin-right: 20px;
 }
+
+.fullscreenplayer .date {
+    color: #969696;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: -.05em;
+}
+
 .fullscreenplayer .img-container{
   width: 100%;
   height: 412px;
@@ -4284,7 +4292,7 @@ display: inline-block;
   color: #c8a461;
 }
 #horizontal-menu .owl-stage{
-
+    margin-left: 128.5px;
   height: 100%;
 }
 .content-selection, .content-selection2{
@@ -4521,7 +4529,7 @@ display: inline-block;
   color: #c8a461;
 }
 #horizontal-menu2 .owl-stage{
-
+    margin-left: 128.5px;
   height: 100%;
 }
 
