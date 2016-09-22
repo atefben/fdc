@@ -46,7 +46,7 @@
             <strong class="title-9">Partager la page</strong>
             <div class="block-social-network block-social-network-all ">
                 <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentPath }}&picture=
-{% if affiche is not null %}{% path affiche.file, '256x348' %}{% endif %}&name=Festival de Cannes {{ app.request.attributes.get('year') }}&caption=&description={{ affiche|trans_fallback('description') }}6&redirect_uri={{ currentPath }}&display=popup"><i class="icon icon-facebook"></i></a><!--
+{% if affiche is not null %}{% path affiche.file, '256x348' %}{% endif %}&name=Festival de Cannes {{ app.request.attributes.get('year') }}&caption=&description={{ affiche|trans_fallback('description') }}6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
             --><a class="twitter" href="https://twitter.com/intent/tweet?text=Affiche de la {{ festival.id }}e édition ({{ app.request.attributes.get('year') }})%20{{ currentPath }}"><i class="icon icon-twitter"></i></a><!--
             --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentPath }}"><i class="icon icon-link"></i></a><!--
             --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
