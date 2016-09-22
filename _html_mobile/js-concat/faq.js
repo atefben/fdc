@@ -291,7 +291,7 @@ $(document).ready(function() {
       margin: 40,
       autoWidth: true,
       loop: false,
-      items:2
+      items:1
     });
     menu.owlCarousel();
 
