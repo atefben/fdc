@@ -211,7 +211,7 @@
   color: #c8a461;
 }
 #horizontal-menu2 .owl-stage{
-
+    margin-left: 128.5px;
   height: 100%;
 }
 
@@ -232,8 +232,12 @@ a{
   border: none;
 }
 .selection .container{
-  padding-top: 50px;
+  padding-top: 30px;
   font-size: 0;
+}
+
+.selection .section {
+    padding-top: 0px;
 }
 #player{
     margin-bottom: 40px;

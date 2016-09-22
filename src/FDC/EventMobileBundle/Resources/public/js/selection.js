@@ -1763,7 +1763,7 @@ $(document).ready(function() {
       margin: 40,
       autoWidth: true,
       loop: false,
-      items:1
+      items:2
     });
     menu.owlCarousel();
 
@@ -1791,6 +1791,7 @@ $(document).ready(function() {
       autoWidth: true,
       loop: false,
       items:1,
+      /*
       onInitialized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
@@ -1798,7 +1799,7 @@ $(document).ready(function() {
       onResized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
-      }
+      }*/
     });
     menu.owlCarousel();
 
@@ -2028,15 +2029,15 @@ $(document).ready(function() {
       margin     : 60,
       autoWidth  : true,
       loop       : false,
-      items      : 2,
-      onInitialized: function() {
+      items      : 1
+     /* onInitialized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu2 .owl-stage').css({ 'margin-left': m });
       },
       onResized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu2 .owl-stage').css({ 'margin-left': m });
-      }
+      }*/
     });
     menu.owlCarousel();
 
