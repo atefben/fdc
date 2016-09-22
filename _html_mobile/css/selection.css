@@ -728,10 +728,10 @@ margin-left: 6px;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     font-weight: 700;
     font-size: 25px;
-    margin-bottom: 8px;
     max-width: 480px;
     line-height: 34px;
     margin: 20px auto;
+    margin-bottom: 8px;
 }
 .movie-container .title-item a {
     color: #fff;
