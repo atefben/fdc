@@ -19,10 +19,10 @@
                 <li><a class="twitter" href="{{ social_twitter }}" target="_blank"></a></li>
                 <li><a class="instagram" href="{{ social_instagram }}" target="_blank"></a></li>
                 <li><a class="tumblr" href="{{ social_tumblr }}" target="_blank"></a></li>
-                <li><a class="rss" href="http://feeds.feedburner.com/festival-cannes/Ncqt" target="_blank"></a></li>
+                <li><a class="rss" href="{{ attribute(_context, 'social_rss_'~ app.request.locale) }}" target="_blank"></a></li>
                 <li><a class="youtube" href="{{ social_youtube }}" target="_blank"></a></li>
                 <li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank"></a></li>
-                <li><a class="podcast" href="http://feeds.feedburner.com/festival-cannes/Zzqn" target="_blank"></a></li>
+                <li><a class="podcast" href="{{ attribute(_context, 'social_podcast_'~ app.request.locale) }}" target="_blank"></a></li>
             </ul>
         </div>
         {{ render(controller('FDCEventBundle:Global:footer', {route : app.request.get('_route')})) }}

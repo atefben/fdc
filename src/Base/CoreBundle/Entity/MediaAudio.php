@@ -23,6 +23,9 @@ class MediaAudio extends Media implements RoutedItemInterface
 {
     use Translatable;
 
+    public static $localeTemp = 'fr';
+
+
     /**
      * @var Media
      *
@@ -212,7 +215,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      * @return string
      */
     public function getFeedItemTitle(){
-        return array('title' => $this->findTranslationByLocale('fr')->getTitle());
+        return array('title' => $this->findTranslationByLocale(static::$localeTemp)->getTitle());
     }
 
     /**
