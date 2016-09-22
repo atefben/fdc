@@ -43,7 +43,7 @@
                 {%- if loop.index != directors|length %}, {% endif -%}
             {%- endfor -%}
 
-        <p style="font-family: 'Camphor W01 Regular', Arial, Helvetica, sans-serif;color: #999999;font-size: 18px;margin-top: 8px;" >
+        <p style="font-family: 'Camphor W01 Bold', Arial, Helvetica, sans-serif;color: #999999;font-size: 18px;margin-top: 8px;" >
             {% set duration = [] %}
             {% if film.duration is not empty %}
                 {% set duration = film.duration|split('.') %}
