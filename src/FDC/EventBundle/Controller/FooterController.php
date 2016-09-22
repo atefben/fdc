@@ -2,8 +2,11 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 
+use Eko\FeedBundle\Field\Channel\ChannelField;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -300,6 +303,8 @@ class FooterController extends Controller
         $dateTime = new DateTime();
 
         $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
+
+        MediaAudio::$localeTemp = $locale;
         $feed = $this->get('eko_feed.feed.manager')->get('article');
         $feed->addFromArray($audios);
 
@@ -310,6 +315,8 @@ class FooterController extends Controller
      * Generate the news rss feed
      * @Route("/rss")
      * @return Response XML Feed
+     * @param Request $request
+     * @return Response
      */
     public function rssFeedAction(Request $request)
     {
@@ -320,7 +327,9 @@ class FooterController extends Controller
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
         $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
 
+        News::$localeTemp = $locale;
         $feed = $this->get('eko_feed.feed.manager')->get('article');
+        $feed->addChannelField(new ChannelField('test', 'lol'));
         $feed->addFromArray($newsArticles);
 
         return new Response($feed->render('rss')); // ou 'atom'
