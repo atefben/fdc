@@ -350,8 +350,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                     data.forEach(function(value, i){
 
-                    console.log(value.vid +' = '+index);
-
                         if(value.vid == index) {
                             playerInstance.playlistItem(i);
                             $topBar.find('.info .category').text(value.category);
@@ -372,6 +370,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                             } else {
                                 updateShareLink(i);
                             }
+
+                            console.log($container);
+                            console.log($container.find('.channels-video'));
 
                             $container.find('.channels-video').removeClass('active');
                             $container.find('.jwplayer').removeClass('overlay-channels');
