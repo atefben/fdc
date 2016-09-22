@@ -55,7 +55,7 @@
                     </div>
                     <div class="infos-videos">
                         <div class="infos">
-                            <strong>{{ videos[0].theme }}</strong>
+                            <strong>{{ videos[0].theme|trans_fallback('name') }}</strong>
                                 <span class="time">{{ videos[0].publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(videos[0].publishedAt|date('H:i'), true, true) }}</span>
                             <p>{{ videos[0]|trans_fallback('title') }}</p>
                         </div>
