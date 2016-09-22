@@ -2095,6 +2095,7 @@ $(document).ready(function() {
       $('#calendar .next').removeClass('disabled');
     }
 
+    $('.nd').html(day);
 
     moveTimeline($(this), $(this).data('date'));
   });
@@ -2167,9 +2168,13 @@ $(document).ready(function() {
 
       $('.post').on('click',function(){
         if($(this).hasClass('always-show')) {
+
           return false;
+
         } else if($(this).hasClass('show-text')) {
+
           $(this).removeClass('show-text');
+
         } else {
 /*
           $('.post').removeClass('show-text');

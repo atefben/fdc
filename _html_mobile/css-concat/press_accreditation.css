@@ -3326,6 +3326,12 @@ p{
 
 	padding: 60px 0 90px 0;
 }
+
+.header-press .container p a{
+	color:#000000;
+	text-decoration: underline;
+}
+
 .programmation-press .header-press .container{
 	padding: 60px 0 30px 0;
 }
@@ -3612,7 +3618,7 @@ p{
 	margin:60px 0;
 }
 .downloads .portrait{
-	width: 480px;
+	width: 95%;
 	margin: 0 auto;
 }
 .downloads img{
@@ -3674,16 +3680,15 @@ p{
 }
 .downloads .buttons{
 	text-align: left;
- 	width: 480px;
+ 	width: 100%;
  	margin: 0 auto 60px auto;
 }
 .downloads .button{
-
 	font-weight: 700;
     height: 80px;
     line-height: 80px;
     box-sizing: border-box;
-    padding: 0 40px;
+    padding: 0 20px;
     font-size: 19px;
 }
 
