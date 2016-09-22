@@ -15,10 +15,10 @@
                 <li><a class="twitter" href="//twitter.com/Festival_Cannes" target="_blank"><i class="icon icon-twitter"></i></a></li>
                 <li><a class="instagram" href="//instagram.com/festivaldecannes" target="_blank"><i class="icon icon-instagram"></i></a></li>
                 <li><a class="tumblr" href="//festivaldecannesofficiel.tumblr.com/" target="_blank"><i class="icon icon-tumblr"></i></a></li>
-                <li><a class="rss" href="//feeds2.feedburner.com/festival-cannes/rss_fr" target="_blank"><i class="icon icon-rss"></i></a></li>
+                <li><a class="rss" href="/{{ attribute(_context, 'social_rss_'~ app.request.locale) }}" target="_blank"><i class="icon icon-rss"></i></a></li>
                 <li><a class="youtube" href="//www.youtube.com/user/TVFestivaldeCannes" target="_blank"><i class="icon icon-youtube"></i></a></li>
                 <li><a class="dailymotion" href="//www.dailymotion.com/CannesFestTV" target="_blank"><i class="icon icon-dailymotion"></i></a></li>
-                <li><a class="podcast" href="//feeds2.feedburner.com/festivalcannes/podcast_fr" target="_blank"><i class="icon icon-podcast"></i></a></li>
+                <li><a class="podcast" href="{{ attribute(_context, 'social_podcast_'~ app.request.locale) }}" target="_blank"><i class="icon icon-podcast"></i></a></li>
             </ul>
         </div>
 
