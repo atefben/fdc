@@ -26,6 +26,7 @@
     <div class="all-contain">
         <div class="block-jury">
         {% if president %}
+            <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
             {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                 <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
                 </div>
@@ -51,12 +52,13 @@
                         {{ 'juries.role.title.presidentdujury'|trans }}
                     {% endif %}
                 </strong>
-                <h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1>
+                <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}"><h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1></a>
                 <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
                 <p class="texte-01">
                     {{ president['jury'].person|trans_fallback('biography') }}
                 </p>
             </div>
+            </a>
         {% endif %}
         </div>
 
