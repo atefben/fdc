@@ -7164,6 +7164,11 @@ display: inline-block;
 
   padding:30px 40px;
 }
+
+.ba .slideshow-img .images {
+    height: auto;
+}
+
 .ba .slideshow .container, .channel .slideshow .container{
 
  
