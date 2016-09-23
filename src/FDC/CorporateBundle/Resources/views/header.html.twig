@@ -25,7 +25,6 @@
                 <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> Mon compte</a>
             </li>
             <li class="lang">
-                {% dump(locales) %}
                 <a href="#" class="language"><i class="icon icon-language"></i> {{ app.request.locale|upper }}</a>
                 <ul class="sub-languages">
                 {% for locale in locales %}
