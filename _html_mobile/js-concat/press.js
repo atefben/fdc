@@ -444,8 +444,8 @@ $(document).ready(function () {
                 scrollTarget = s;
 
                 if ($('#timeline-calendar').length > 0 && !$('.press-home').length > 0) {
-                    if (s > 1000) {
-                        var w = s - 1020;
+                    if (s > 1850) {
+                        var w = s - 1850;
                         w = w + "px";
                         $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                         $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
