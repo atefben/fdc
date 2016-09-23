@@ -438,7 +438,7 @@ $(document).ready(function () {
 
                 if ($('#timeline-calendar').length > 0 && !$('.press-home').length > 0) {
 
-                    if(!$('.programmation-press').lenght > 0 ) {
+                    if(!$('.programmation-press').length > 0 ) {
                         if (s > 1850) {
                             var w = s - 1850;
                             w = w + "px";
@@ -450,7 +450,7 @@ $(document).ready(function () {
                         }
                     } else {
                         console.log(s);
-                        
+
                         if (s > 488) {
                             var w = s - 488;
                             w = w + "px";
