@@ -4129,6 +4129,23 @@ a{
     width: 100%;
 }
 
+/*
+.jw-icon  {
+    font-family: "icons";
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*/
+
 .jw-state-playing + .legend-video, .jw-state-paused + .legend-video{
     display: none;
 }
@@ -4215,7 +4232,9 @@ a{
 
 /*INFO FILM*/
 .film {
+    /*
     height: 730px;
+    */
     overflow: hidden;
     background-color: #2e2e2e;
     margin-top: 40px;
@@ -4229,6 +4248,7 @@ a{
     color: #fff;
     height: 50%;
     overflow: hidden;
+    margin: 30px 0px;
 }
 .film .info-film .wrapper{
 	height: 100%;
@@ -4293,6 +4313,7 @@ a{
 .film .programmation-film .wrapper {
     color: #fff;
     height: 100%;
+    margin: 30px 0px;
     margin-left: 70px;
 }
 .film .programmation-film .wrapper .category {
