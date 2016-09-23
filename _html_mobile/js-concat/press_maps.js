@@ -473,7 +473,7 @@ $(document).ready(function() {
       margin: 40,
       autoWidth: true,
       loop: false,
-      items: 2,
+      items: 1,
       onInitialized: function() {
           // var m = ($(window).width() - $('.container').width()) / 2;
           // $('#horizontal-menu .owl-stage').css({

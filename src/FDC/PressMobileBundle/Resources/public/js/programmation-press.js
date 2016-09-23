@@ -748,7 +748,6 @@ $(document).ready(function () {
                 $('.fc-event').each(function (index, value) {
                     var h = $(value).attr('data-duration');
                     h = h * 2.65;
-                    console.log(h);
                     $(value).css('height', h + 'px');
                 })
             }
