@@ -4093,10 +4093,7 @@ a{
 }
 
 .section{
-
-
 	padding: 30px 0;
-
 }
 .title-section{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -4117,6 +4114,32 @@ a{
 	/*font-size: 1.5rem;*/
 	line-height: 30px;
 	font-size: 24px;
+}
+
+
+.m-video {
+    position: relative;
+}
+
+.m-video .legend-video {
+    position: absolute;
+    height: 40px;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+}
+
+.jw-state-playing + .legend-video, .jw-state-paused + .legend-video{
+    display: none;
+}
+
+.m-video .legend-video p{
+    font-size: 24px;
+    color: #ffffff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    margin-bottom: 40px;
+    margin-left: 10px;
 }
 
 /*SLIDER*/
