@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-09-16T14:04:35Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-09-23T11:58:08Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="0d02d9a9740bf54359e24d2b25c61c3fab85af0c" resname="MESSAGE DE L’EXPÉDITEUR">
+        <source>MESSAGE DE L’EXPÉDITEUR</source>
+        <target state="new">MESSAGE DE L’EXPÉDITEUR</target>
+        <jms:reference-file line="17">views/Emails/share.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8fe4c3415322371f49eb8d95ffb9b9c0536c397a" resname="Retrouvez cet article sur le site du Festival de Cannes">
+        <source>Retrouvez cet article sur le site du Festival de Cannes</source>
+        <target state="new">Retrouvez cet article sur le site du Festival de Cannes</target>
+        <jms:reference-file line="10">views/Emails/share.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="4ac4713b3107b9bcbdda9a0c232266baffd905cd" resname="Tournez votre smartphone pour accéder au site">
         <source>Tournez votre smartphone pour accéder au site</source>
         <target state="new">Tournez votre smartphone pour accéder au site</target>
@@ -249,7 +259,7 @@
         <jms:reference-file line="195">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="57">views/Television/channels.html.twig</jms:reference-file>
         <jms:reference-file line="202">views/Television/live.html.twig</jms:reference-file>
-        <jms:reference-file line="219">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="216">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="91">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="515e1fa9ba45d551a50d16cd9e630aa535378340" resname="breadcrumb.webtv.live">
@@ -258,13 +268,13 @@
         <jms:reference-file line="199">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="61">views/Television/channels.html.twig</jms:reference-file>
         <jms:reference-file line="206">views/Television/live.html.twig</jms:reference-file>
-        <jms:reference-file line="223">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="220">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="95">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4d17577963615d0f37d12df7c1ad1f8b7a683685" resname="breadcrumb.webtv.trailers">
         <source>breadcrumb.webtv.trailers</source>
         <target>Bandes annonces</target>
-        <jms:reference-file line="227">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="224">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="99">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b9c85e46c0554cdbdf5644527e47dc5a034169a1" resname="cannesclassics.btn.imprimer">
@@ -352,21 +362,6 @@
         <target><![CDATA[En poursuivant votre navigation sur nos sites,<br/>vous acceptez l'installation et l'utilisation de cookies sur votre poste,
 notamment à des fins promotionnelles et/ou publicitaires, dans le respect de notre politique de protection de votre vie privée.]]></target>
         <jms:reference-file line="5">views/Global/cookies.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="5915b11d69eb36be4b9a8bf24f2a6e07cf3846eb" resname="email.expeditor.message">
-        <source>email.expeditor.message</source>
-        <target state="new">email.expeditor.message</target>
-        <jms:reference-file line="17">views/Emails/share.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="f2c9b2a96f3c6caf08a145b5e392a43dd8ec514e" resname="email.retrieve.artist">
-        <source>email.retrieve.artist</source>
-        <target>email.retrieve.artist</target>
-        <jms:reference-file line="10">views/Emails/share.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="c84a5a22a311b83ea148fc8813cd648929f73730" resname="event.btn.afficherplusdevenement">
-        <source>event.btn.afficherplusdevenement</source>
-        <target><![CDATA[Afficher <strong>plus d'évènements</strong>]]></target>
-        <jms:reference-file line="66">views/Event/list.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ea451ef130ac61b774f205cebd4d859f1d56cf19" resname="event.btn.decouvrirlarubrique">
         <source>event.btn.decouvrirlarubrique</source>
@@ -1661,7 +1656,7 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       <trans-unit id="2f0a77f804a8b85f4d7b3b42754661ea9b22d5ca" resname="trailer.btn.voirlabandeannonce">
         <source>trailer.btn.voirlabandeannonce</source>
         <target>Voir la bande annonce</target>
-        <jms:reference-file line="196">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="193">views/Television/trailer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="df557fd929f8d589affcc8ce89bd79389cdf036e" resname="trailer.nav.film">
         <source>trailer.nav.film</source>
