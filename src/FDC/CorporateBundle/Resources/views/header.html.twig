@@ -25,11 +25,22 @@
                 <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> Mon compte</a>
             </li>
             <li class="lang">
-                <a href="#" class="language"><i class="icon icon-language"></i> FR</a>
+                {% dump(locales) %}
+                <a href="#" class="language"><i class="icon icon-language"></i> {{ app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    <li><a href="#">EN</a></li>
-                    <li><a href="#">ES</a></li>
-                    <li><a href="#">ZH</a></li>
+                {% for locale in locales %}
+                    {% if locale != app.request.locale %}
+                        <li>
+                            {% set params = {'_locale' : locale} %}
+                            {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
+                                {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
+                                    {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                                {% endif %}
+                            {% endif %}
+                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge(params)) }}">{{ locales[loop.index0]|upper }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
                 </ul>
             </li>
         </ul>
