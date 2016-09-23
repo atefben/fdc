@@ -38,9 +38,9 @@ $(document).ready(function () {
                     } else {
                         console.log(s);
 
-                        if (s > 488) {
-                            var w = s - 488;
-                            w = w + "px";
+                        if (s > 955) {
+                            var w = s - 955;
+                            wf = w + "px";
                             $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                             $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
                         } else {
