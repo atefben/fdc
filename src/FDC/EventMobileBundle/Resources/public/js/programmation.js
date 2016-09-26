@@ -316,15 +316,13 @@ $(document).ready(function () {
                         }
                     } else {
                         if (s > 955) {
-                            console.log("ici");
-
                             var w = s - 955;
-                            wf = w + "px";
+                            w = w + "px";
+
                             $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                             $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
 
                         } else {
-                            console.log("pas la");
 
                             $('.calendar .v-head').css('transform', 'translateY(' + 0 + ')');
                             $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
