@@ -24,7 +24,6 @@
             <div class="infos">
                 {% if projection is defined and projection is not empty %}
                     {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
-                    {% dump(substr) %}
                     <span class="date-infos">{% for i in 0..2 %}{{ substr[i] }} {% endfor %}  <span class="hours">{{ projection.startsAt|date('H:i') }}</span></span>
                 {% endif %}
                 {% if film|trans_fallback_movie('title') is not empty and film|trans_fallback_movie('title') != film.titleVO %}
