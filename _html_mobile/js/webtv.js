@@ -43,6 +43,7 @@ $(document).ready(function() {
         $('.banner-img').removeClass('active');
 
         setTimeout(function(){
+          $('.ytp-thumbnail-overlay-image').click();
           playerInstance.play();
         }, 400);
 
