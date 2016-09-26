@@ -114,7 +114,7 @@ class ShareEmailType extends AbstractType
         $defaults = array(
             'csrf_protection' => false,
             'constraints' => $collectionConstraint,
-            'translation_domain' => 'FDCEventBundle'
+            'translation_domain' => 'messages'
         );
         if ($this->artist) {
             $defaults['attr'] = array(

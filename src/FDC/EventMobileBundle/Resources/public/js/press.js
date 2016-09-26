@@ -456,14 +456,15 @@ $(document).ready(function () {
                             $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
                         }
                     } else {
-                        console.log(s);
-
                         if (s > 955) {
-                            var w = s - 955;
-                            wf = w + "px";
+                            var w = s - 959;
+                            w = w + "px";
+
                             $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                             $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
+
                         } else {
+
                             $('.calendar .v-head').css('transform', 'translateY(' + 0 + ')');
                             $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
                         }
