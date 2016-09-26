@@ -105,7 +105,7 @@ $(document).ready(function() {
 
     $('.players').each(function (i, e) {
 
-      var id = $(e);
+      var id = $(e).attr('id');
 
       btConsoleLog(id, 'id');
 
