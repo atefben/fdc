@@ -2,10 +2,10 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="/">Festival 2016</a>
+                <a href="{{ path('fdc_event_news_index') }}">Festival 2016</a>
             </li>
             <li>
-                <a href="/" target="_blank" class="active">Festival de Cannes</a>
+                <a href="{{ path('fdc_corporate_default_home') }}" target="_blank" class="active">Festival de Cannes</a>
             </li>
             <li>
                 <a href="http://www.cinefondation.com/fr/" target="_blank">Cinéfondation</a>
@@ -47,10 +47,10 @@
     <div id="logo-wrapper">
         <div class="block-01 container">
             <div id="logo">
-                <a href="/"><img src="{{ asset('bundles/fdccorporate/img/header/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
-                <h1><a href="/"><img width="200" src="{{ asset('bundles/fdccorporate/img/header/logo.svg') }}" alt="Festival de Cannes" /></a></h1>
-                <h2><a href="/">11-22 Mai 2016</a></h2>
-                <p class="stick"><a href="/"><img width="178" src="{{ asset('bundles/fdccorporate/img/header/logo178.svg') }}" alt="Festival de Cannes" /></a></p>
+                <a href="{{ path('fdc_corporate_default_home') }}"><img src="{{ asset('bundles/fdccorporate/img/header/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
+                <h1><a href="{{ path('fdc_corporate_default_home') }}"><img width="200" src="{{ asset('bundles/fdccorporate/img/header/logo.svg') }}" alt="Festival de Cannes" /></a></h1>
+                <h2><a href="{{ path('fdc_corporate_default_home') }}">11-22 Mai 2016</a></h2>
+                <p class="stick"><a href="{{ path('fdc_corporate_default_home') }}"><img width="178" src="{{ asset('bundles/fdccorporate/img/header/logo178.svg') }}" alt="Festival de Cannes" /></a></p>
             </div>
             <div id="partners">
                 <a href="//www.chopard.fr/" target="_blank"><img width="84" src="{{ asset('bundles/fdccorporate/img/header/Logo_Chopard.svg') }}" alt="Chopard" class="chopard" /></a>
