@@ -569,17 +569,23 @@ $(document).ready(function() {
       /*if($('.banner-video').hasClass('active')) {
         $('.banner-video').removeClass('active');
         $('.banner-img').addClass('active');
-      } else */if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
+      } else */
+      if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
         $('.banner-img-text .before').addClass('show');
         $('.banner-img-text .off').removeClass('show');
         $('.banner-video').addClass('active');
         $('.banner-img').removeClass('active');
 
-        playerInstance.play();
+        setTimeout(function(){
+          playerInstance.play();
+        }, 400);
 
       } else {
         $('.banner-img-text .before').removeClass('show');
         $('.banner-img-text .off').addClass('show');
+
+        playerInstance.stop();
+
       }
     });
   }
