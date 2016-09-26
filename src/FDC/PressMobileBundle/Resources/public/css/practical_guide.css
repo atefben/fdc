@@ -4100,11 +4100,18 @@ p{
 	font-size: 24px;
 	letter-spacing: 10px;
 }
-.contact .title-section{
 
-	padding: 60px 0;
-
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+	.title-section #dateProgram {
+		display: block;
+		margin-top: 6px;
+	}
 }
+
+
+
 .sub-section{
 	padding: 0 40px;
 	border-bottom: 1px solid #d6d6d6;
