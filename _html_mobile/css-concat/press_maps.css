@@ -3744,8 +3744,11 @@ and (max-device-width : 568px) {
 		display: block;
 		margin-top: 6px;
 	}
-}
 
+	.prog-press-home .title-section{
+		padding: 49px 0 16px 40px;
+	}
+}
 
 
 .sub-section{
