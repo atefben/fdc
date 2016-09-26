@@ -4155,6 +4155,19 @@ and (max-device-width : 568px) {
     overflow-y: hidden;
     box-sizing: border-box;
 }
+
+#popin-press strong {
+	color: #000000;
+	margin: 40px 0 45px 0;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	font-size: 23px;
+}
+
+#popin-press strong .icon {
+	margin-right: 10px;
+	vertical-align: text-top;
+}
+
 #popin-press.visible{
 	
 	visibility: visible;
