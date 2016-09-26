@@ -48,7 +48,10 @@
                         {% endif %}
                     </strong>
                 {% endif %}
-                <strong class="name-f">{{ movie.selectionSection|trans_fallback('name') }}</strong>
+
+                <strong class="name-fb">{{ movie.selectionSection|trans_fallback('name') }}</strong>
+                    <br />
+                <strong class="name-f">{{ movie|trans_fallback('title') }}</strong>
                 <strong class="name-fb">({{ movie.titleVO }})</strong>
                     {% spaceless %}
                         {% set author = '' %}
