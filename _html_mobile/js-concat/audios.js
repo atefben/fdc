@@ -303,6 +303,8 @@ $(document).ready(function() {
     $('.filters .select span').on('click', function() {
       var h = $(this).parent().html();
 
+      $('body').addClass('no-scroll');
+
       $('#filters').remove();
       $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
       $('#filters .vCenterKid').html(h);
@@ -342,6 +344,7 @@ $(document).ready(function() {
     $('#filters').removeClass('show');
     setTimeout(function() {
       $('#filters').remove();
+      $('body').removeClass('no-scroll');
     }, 700);
   });
 
@@ -497,9 +500,10 @@ $(document).ready(function() {
     }, 200);
     
     if($("#player1").length !== 0) {
+      
       playerInstance = jwplayer("player1");
       playerInstance.setup({
-        file         : $(this).data('file'),
+        file         : $(this).data('video'),
         image        : $(this).data('poster'),
         width        : "100%",
         aspectratio  : "16:9",
@@ -550,10 +554,16 @@ $(document).ready(function() {
     $('body').removeClass('allow-landscape');
   
     setTimeout(function() {
+
       $('.fullscreenplayer').removeClass('show');
+
       if($('.audios').length !==0) {
         $('.playpause').find(".icon").removeClass("icon_play");
         stopSound();
+
+        playerInstance.setMute(true);
+        playerInstance.setVolume(0);
+
       }
     }, 200);
 

@@ -1,4 +1,20 @@
 $(document).ready(function() {
+
+  // INIT VIDEO PLAYER
+  if($("#player").length !== 0) {
+    var playerInstance = jwplayer("player");
+    playerInstance.setup({
+      file         : $("#player").data('video'),
+      image        : $("#player").data('poster'),
+      width        : "100%",
+      aspectratio  : "16:9",
+      displaytitle : false,
+      skin         : {
+        name : "five"
+      }
+    });
+  }
+
   if($('.ba').length > 0) {
     $('.nav li').click(function() {
       if(!$(this).hasClass('active')) {
@@ -24,6 +40,9 @@ $(document).ready(function() {
         $('.banner-img-text .off').removeClass('show');
         $('.banner-video').addClass('active');
         $('.banner-img').removeClass('active');
+
+        playerInstance.play();
+
       } else {
         $('.banner-img-text .before').removeClass('show');
         $('.banner-img-text .off').addClass('show');
@@ -31,18 +50,5 @@ $(document).ready(function() {
     });
   }
 
-  // INIT VIDEO PLAYER
-  if($("#player").length !== 0) {
-    var playerInstance = jwplayer("player");
-    playerInstance.setup({
-      file         : $("#player").data('video'),
-      image        : $("#player").data('poster'),
-      width        : "100%",
-      aspectratio  : "16:9",
-      displaytitle : false,
-      skin         : {
-        name : "five"
-      }
-    });
-  }
+
 });

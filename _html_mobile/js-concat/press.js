@@ -872,6 +872,8 @@ $(document).ready(function() {
     $('.filters .select span').on('click', function() {
       var h = $(this).parent().html();
 
+      $('body').addClass('no-scroll');
+
       $('#filters').remove();
       $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
       $('#filters .vCenterKid').html(h);
@@ -911,6 +913,7 @@ $(document).ready(function() {
     $('#filters').removeClass('show');
     setTimeout(function() {
       $('#filters').remove();
+      $('body').removeClass('no-scroll');
     }, 700);
   });
 

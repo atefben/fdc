@@ -533,6 +533,22 @@ $(document).ready(function() {
   }
 });
 $(document).ready(function() {
+
+  // INIT VIDEO PLAYER
+  if($("#player").length !== 0) {
+    var playerInstance = jwplayer("player");
+    playerInstance.setup({
+      file         : $("#player").data('video'),
+      image        : $("#player").data('poster'),
+      width        : "100%",
+      aspectratio  : "16:9",
+      displaytitle : false,
+      skin         : {
+        name : "five"
+      }
+    });
+  }
+
   if($('.ba').length > 0) {
     $('.nav li').click(function() {
       if(!$(this).hasClass('active')) {
@@ -558,6 +574,9 @@ $(document).ready(function() {
         $('.banner-img-text .off').removeClass('show');
         $('.banner-video').addClass('active');
         $('.banner-img').removeClass('active');
+
+        playerInstance.play();
+
       } else {
         $('.banner-img-text .before').removeClass('show');
         $('.banner-img-text .off').addClass('show');
@@ -565,20 +584,7 @@ $(document).ready(function() {
     });
   }
 
-  // INIT VIDEO PLAYER
-  if($("#player").length !== 0) {
-    var playerInstance = jwplayer("player");
-    playerInstance.setup({
-      file         : $("#player").data('video'),
-      image        : $("#player").data('poster'),
-      width        : "100%",
-      aspectratio  : "16:9",
-      displaytitle : false,
-      skin         : {
-        name : "five"
-      }
-    });
-  }
+
 });
 $(document).ready(function() {
   // VIDEO PLAYER
@@ -590,9 +596,10 @@ $(document).ready(function() {
     }, 200);
     
     if($("#player1").length !== 0) {
+      
       playerInstance = jwplayer("player1");
       playerInstance.setup({
-        file         : $(this).data('file'),
+        file         : $(this).data('video'),
         image        : $(this).data('poster'),
         width        : "100%",
         aspectratio  : "16:9",
@@ -643,10 +650,16 @@ $(document).ready(function() {
     $('body').removeClass('allow-landscape');
   
     setTimeout(function() {
+
       $('.fullscreenplayer').removeClass('show');
+
       if($('.audios').length !==0) {
         $('.playpause').find(".icon").removeClass("icon_play");
         stopSound();
+
+        playerInstance.setMute(true);
+        playerInstance.setVolume(0);
+
       }
     }, 200);
 

@@ -36,19 +36,22 @@
             </div>
             <div class="infos">
                 {% if award_association is defined and award_association %}
-                {% if hidePalme is not defined or hidePalme == false %}
-                    <i class="icon icon-palme"></i>
-                    <strong class="name-award line">
-                        {{ award_association.award.prize|trans_fallback('title') }}
-                        {% if award_association.award.exAequo %}
-                            ({{ 'award.ex_aequo'|trans }})
-                        {% endif %}
-                        {% if award_association.award.unanimity %}
-                            ({{ 'award.unanimity'|trans }})
-                        {% endif %}
-                    </strong>
+                    {% if hidePalme is not defined or hidePalme == false %}
+                        <i class="icon icon-palme"></i>
+                        <strong class="name-award line">
+                            {{ award_association.award.prize|trans_fallback('title') }}
+                            {% if award_association.award.exAequo %}
+                                ({{ 'award.ex_aequo'|trans }})
+                            {% endif %}
+                            {% if award_association.award.unanimity %}
+                                ({{ 'award.unanimity'|trans }})
+                            {% endif %}
+                        </strong>
+                    {% endif %}
                 {% endif %}
-                <strong class="name-f">{{ movie.selectionSection|trans_fallback('name') }}</strong>
+                <strong class="name-fb">{{ movie.selectionSection|trans_fallback('name') }}</strong>
+                <br />
+                <strong class="name-f">{{ movie|trans_fallback('title') }}</strong>
                 <strong class="name-fb">({{ movie.titleVO }})</strong>
                     {% spaceless %}
                         {% set author = '' %}
@@ -63,7 +66,6 @@
                         {% endfor %}
                         {{ author|raw }}
                     {% endspaceless %}
-                {% endif %}
             </div>
         </div>
     </div>
