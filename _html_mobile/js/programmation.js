@@ -37,7 +37,7 @@ $(document).ready(function () {
                         }
                     } else {
                         if (s > 955) {
-                            var w = s - 955;
+                            var w = s - 959;
                             w = w + "px";
 
                             $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
