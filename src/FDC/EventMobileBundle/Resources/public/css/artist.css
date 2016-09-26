@@ -3969,11 +3969,39 @@ a{
 
 
 
+/** APP **/
 
+#app {
+    background-color: #000;
+    background-image: url(../img/app.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50% 15%;
+}
 
+#app h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.875rem;
+    padding-top: 385px;
+    text-align: center;
+    letter-spacing: 5px;
+}
 
+#app h2 {
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    font-size: 1.125rem;
+    color: #fff;
+    padding-top: 25px;
+    text-align: center;
+    font-style: italic;
+}
 
-
+#app .logo-app {
+    margin-top: 50px;
+    text-align: center;
+    padding-bottom: 145px;
+}
 .slideshow .thumbnails .thumb {
   height: 210px;
   overflow: hidden;
