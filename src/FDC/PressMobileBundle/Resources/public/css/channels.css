@@ -3687,6 +3687,8 @@ display: inline-block;
     height: auto;
 }
 
+
+
 .ba .slideshow .container, .channel .slideshow .container{
 
  
@@ -3714,4 +3716,23 @@ display: inline-block;
 .program-film ::-webkit-scrollbar-thumb {
   height: 10px;
   background-color: #c8a461;
+}
+
+.video-container .title-video {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    font-size: 25px;
+    line-height: 40px;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    letter-spacing: 0.5em;
+    text-align: center;
+    text-transform: uppercase;
+    max-width: 598px;
+}
+
+.banner-video {
+    position: relative;
 }

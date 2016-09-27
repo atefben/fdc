@@ -32,11 +32,17 @@ $(document).ready(function() {
       }
     });
   } else if($('.webtv').length > 0) {
-    $('#banner-top').on('click',function() {
-      /*if($('.banner-video').hasClass('active')) {
-        $('.banner-video').removeClass('active');
+
+    $('.banner-img-text .before').addClass('show');
+    $('.banner-img-text .off').removeClass('show');
+    $('.banner-video').addClass('active');
+    $('.banner-img').removeClass('active');
+
+/*    $('#banner-top').on('click',function() {
+      /!*if($('.banner-video').hasClass('active')) {
+        $('.banner-video').removeClass('active'); 
         $('.banner-img').addClass('active');
-      } else */
+      } else *!/
       if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
         $('.banner-img-text .before').addClass('show');
         $('.banner-img-text .off').removeClass('show');
@@ -45,7 +51,7 @@ $(document).ready(function() {
 
         setTimeout(function(){
           playerInstanceWebTv.play();
-        }, 500);
+        }, 400);
 
       } else {
         $('.banner-img-text .before').removeClass('show');
@@ -54,7 +60,7 @@ $(document).ready(function() {
         playerInstanceWebTv.stop();
 
       }
-    });
+    });*/
   }
 
 
