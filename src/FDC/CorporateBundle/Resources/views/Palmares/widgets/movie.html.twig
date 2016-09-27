@@ -52,7 +52,7 @@
                 <strong class="name-fb">{{ movie.selectionSection|trans_fallback('name') }}</strong>
                 <br />
                 <strong class="name-f">{{ movie|trans_fallback('title') }}</strong>
-                <strong class="name-fb">({{ movie.titleVO }})</strong>
+                {% if movie|trans_fallback('title') != movie.titleVO %}<strong class="name-fb">({{ movie.titleVO }})</strong>{% endif %}
                     {% spaceless %}
                         {% set author = '' %}
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
