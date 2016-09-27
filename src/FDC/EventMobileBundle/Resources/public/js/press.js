@@ -697,6 +697,19 @@ $(document).ready(function () {
 
                             // store the Event Object in the DOM element so we can get to it later
                             $(this).data('eventObject', eventObject);
+
+                            var films = $(".owl-carousel-film").owlCarousel({
+                                nav: false,
+                                dots: false,
+                                smartSpeed: 500,
+                                margin: 20,
+                                autoWidth: true,
+                                loop: false,
+                                items:1,
+                            });
+                            films.owlCarousel();
+
+                            $('body').addClass('no-scroll');
                         });
 
                         // show popin

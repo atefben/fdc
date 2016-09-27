@@ -3957,8 +3957,9 @@ display: inline-block;
   position: relative;
 }
 .popin-event .img-container{
-  width: 100%;
-  height: auto;
+  width: 480px;
+  height: 640px;
+    object-fit: cover;
 }
 .popin-event .img-container img{
   width: 100%;
@@ -3995,6 +3996,7 @@ display: inline-block;
   font-weight: 700;
   margin-bottom: 15px;
   margin-top: 60px;
+    width: 480px;
 }
 .popin-event .content .title-original{
   text-transform: uppercase;
