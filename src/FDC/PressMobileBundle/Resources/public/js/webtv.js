@@ -574,7 +574,7 @@ $(document).ready(function() {
 
 /*    $('#banner-top').on('click',function() {
       /!*if($('.banner-video').hasClass('active')) {
-        $('.banner-video').removeClass('active');
+        $('.banner-video').removeClass('active'); 
         $('.banner-img').addClass('active');
       } else *!/
       if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {

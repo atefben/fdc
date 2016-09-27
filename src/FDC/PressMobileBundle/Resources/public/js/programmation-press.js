@@ -424,6 +424,7 @@ $(document).ready(function () {
 
             var hW = $(window).height();
 
+
             // Events on scroll
             // =========================
             var lastScrollTop = 0,
@@ -438,7 +439,7 @@ $(document).ready(function () {
 
                 if ($('#timeline-calendar').length > 0 && !$('.press-home').length > 0) {
 
-                    if(!$('.programmation-press').length > 0 ) {
+                    if (!$('.programmation-press').length > 0) {
                         if (s > 1850) {
                             var w = s - 1850;
                             w = w + "px";
@@ -463,8 +464,6 @@ $(document).ready(function () {
                         }
                     }
 
-
-
                 }
             });
 
@@ -481,7 +480,7 @@ $(document).ready(function () {
                 }
             });
 
-            function displayProgrammationDay(day) {
+            function displayProgrammationDay(day, isInit) {
                 var url;
                 if (GLOBALS.env == "html") {
                     if (day % 2 == 0) {
@@ -512,6 +511,74 @@ $(document).ready(function () {
                             items: 2
                         });
                         venues.owlCarousel();
+
+                        if ($('.programmation-press').length > 0 && !$('.press-home').length > 0) {
+                            var init = true;
+
+                            if (isInit == false) {
+                                console.log('n"a pas encore scroll');
+
+
+                                $(window).on('scroll', function () {
+                                    var s = $(this).scrollTop();
+                                    scrollTarget = s;
+
+
+                                    if (s > 1850 && init) {
+                                        init = false;
+
+                                        setTimeout(function () {
+
+                                            $.each($('.venues .owl-item'), function (i, e) {
+                                                var n = $(e).find('.v-container .fc-event').length;
+
+
+                                                if (n > 0) {
+
+                                                    venues.trigger('to.owl.carousel', [i, 2, true])
+
+                                                    var top = $(e).find('.v-container .fc-event').offset().top - 300;
+                                                    $('html, body').animate({
+                                                        scrollTop: top
+                                                    }, 500);
+
+                                                    return false;
+                                                }
+                                            })
+
+                                        }, 500);
+
+                                    }
+
+
+                                });
+                            } else {
+
+                                console.log('a scroll');
+
+                                setTimeout(function () {
+
+                                    $.each($('.venues .owl-item'), function (i, e) {
+                                        var n = $(e).find('.v-container .fc-event').length;
+
+
+                                        if (n > 0) {
+
+                                            venues.trigger('to.owl.carousel', [i, 2, true])
+
+                                            var top = $(e).find('.v-container .fc-event').offset().top - 300;
+                                            $('html, body').animate({
+                                                scrollTop: top
+                                            }, 500);
+
+                                            return false;
+                                        }
+                                    })
+
+                                }, 500);
+                            }
+                        }
+
 
                         $('.calendar .v-container').each(function () {
                             var endDate = new Date("1900-01-01T00:00:00").getTime();
@@ -583,7 +650,7 @@ $(document).ready(function () {
                 });
             }
 
-            displayProgrammationDay($('.timeline-container .active').data('date'));
+            displayProgrammationDay($('.timeline-container .active').data('date'), false);
 
             function moveTimeline(element, day) {
                 //console.log(element, day)
@@ -610,7 +677,9 @@ $(document).ready(function () {
                 $('#timeline a').removeClass('active');
                 $(this).addClass('active');
                 moveTimeline($(this), $(this).data('day'));
-                displayProgrammationDay($('.timeline-container .active').data('date'));
+                displayProgrammationDay($('.timeline-container .active').data('date'), true);
+
+
             });
 
             $('#timeline-calendar .prev').on('click', function (e) {
@@ -623,7 +692,7 @@ $(document).ready(function () {
                     return false;
                 } else {
                     moveTimeline($('.timeline-container').find("[data-day='" + (day - 1) + "']"), day - 1);
-                    displayProgrammationDay($('.timeline-container .active').data('date'));
+                    displayProgrammationDay($('.timeline-container .active').data('date'), true);
                 }
             });
 
@@ -635,7 +704,7 @@ $(document).ready(function () {
                     return false;
                 } else {
                     moveTimeline($('.timeline-container').find("[data-day='" + (day + 1) + "']"), day + 1);
-                    displayProgrammationDay($('.timeline-container .active').data('date'));
+                    displayProgrammationDay($('.timeline-container .active').data('date'), true);
                 }
             });
 
@@ -698,7 +767,7 @@ $(document).ready(function () {
                                 margin: 20,
                                 autoWidth: true,
                                 loop: false,
-                                items:1,
+                                items: 1,
                             });
                             films.owlCarousel();
 
