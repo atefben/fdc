@@ -512,73 +512,6 @@ $(document).ready(function () {
                         });
                         venues.owlCarousel();
 
-                        if ($('.programmation-press').length > 0 && !$('.press-home').length > 0) {
-                            var init = true;
-
-                            if (isInit == false) {
-                                console.log('n"a pas encore scroll');
-
-
-                                $(window).on('scroll', function () {
-                                    var s = $(this).scrollTop();
-                                    scrollTarget = s;
-
-
-                                    if (s > 1850 && init) {
-                                        init = false;
-
-                                        setTimeout(function () {
-
-                                            $.each($('.venues .owl-item'), function (i, e) {
-                                                var n = $(e).find('.v-container .fc-event').length;
-
-
-                                                if (n > 0) {
-
-                                                    venues.trigger('to.owl.carousel', [i, 2, true])
-
-                                                    var top = $(e).find('.v-container .fc-event').offset().top - 300;
-                                                    $('html, body').animate({
-                                                        scrollTop: top
-                                                    }, 500);
-
-                                                    return false;
-                                                }
-                                            })
-
-                                        }, 500);
-
-                                    }
-
-
-                                });
-                            } else {
-
-                                console.log('a scroll');
-
-                                setTimeout(function () {
-
-                                    $.each($('.venues .owl-item'), function (i, e) {
-                                        var n = $(e).find('.v-container .fc-event').length;
-
-
-                                        if (n > 0) {
-
-                                            venues.trigger('to.owl.carousel', [i, 2, true])
-
-                                            var top = $(e).find('.v-container .fc-event').offset().top - 300;
-                                            $('html, body').animate({
-                                                scrollTop: top
-                                            }, 500);
-
-                                            return false;
-                                        }
-                                    })
-
-                                }, 500);
-                            }
-                        }
-
 
                         $('.calendar .v-container').each(function () {
                             var endDate = new Date("1900-01-01T00:00:00").getTime();
@@ -641,6 +574,97 @@ $(document).ready(function () {
 
                             });
                         });
+
+                        if ($('.programmation-press').length > 0 && !$('.press-home').length > 0) {
+                            var init = true;
+
+                            if (isInit == false) {
+                                console.log('n"a pas encore scroll');
+
+
+                                $(window).on('scroll', function () {
+                                    var s = $(this).scrollTop();
+                                    scrollTarget = s;
+
+                                    var calTop = $('.venues').offset().top - 300;
+
+                                    if (s > calTop && init) {
+                                      console.log('toto')
+                                        init = false;
+
+                                        setTimeout(function () {
+
+                                            $.each($('.venues .owl-item'), function (i, e) {
+                                                var n = $(e).find('.v-container .fc-event').length;
+
+
+                                                if (n > 0) {
+
+                                                    venues.trigger('to.owl.carousel', [i, 2, true])
+
+                                                    var top = $(e).find('.v-container .fc-event').offset().top - 300;
+                                                    $('html, body').animate({
+                                                        scrollTop: top
+                                                    }, 500);
+
+                                                    return false;
+                                                }
+                                            })
+                                        }, 500);
+                                    }
+                                });
+                            } else {
+
+                                console.log('a scroll');
+
+                                setTimeout(function () {
+
+                                    $.each($('.venues .owl-item'), function (i, e) {
+                                        var n = $(e).find('.v-container .fc-event').length;
+
+                                        if (n > 0) {
+
+                                            venues.trigger('to.owl.carousel', [i, 2, true])
+
+                                            var times = [];
+
+                                            $.each($(e).find('.v-container .fc-event'), function (i, e) {
+                                               times.push($(e).data('time'));
+                                            });
+
+                                            console.log(times);
+
+                                            var val = 24;
+
+                                            for(var o = 0; o<times.length; o++){
+                                                if(times[o] < val){
+                                                    val = times[o];
+                                                }
+                                            }
+
+                                            console.log(val);
+
+                                            $.each($(e).find('.v-container .fc-event'), function (i, e) {
+                                                if($(e).data('time') == val) {
+                                                    var time = $(e).data('time');
+
+                                                    var top = $(e).offset().top - 300;
+                                                    $('html, body').animate({
+                                                        scrollTop: top
+                                                    }, 500);
+
+                                                    return false;
+                                                }
+                                            });
+
+
+                                            return false;
+                                        }
+                                    })
+
+                                }, 500);
+                            }
+                        }
 
                         $('.calendar').on('click', '.fc-event', function (e) {
                             var url = $(this).data('url');
