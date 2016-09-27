@@ -52,6 +52,14 @@ $(document).ready(function() {
     });
     menu.owlCarousel();
 
+    setTimeout(function(){
+      var parent = $('#horizontal-menu .vid .active').closest('.owl-item.active').index();
+      menu.trigger('to.owl.carousel', [parent, 2, true])
+
+    }, 1000);
+
+
+
     if($('.faq-page').length == 0) {
       var toIndex = $('a.active').parents('.owl-item').index() - 1;
       menu.trigger("to.owl.carousel", [toIndex, 2, true]);  
