@@ -1805,11 +1805,11 @@ $(document).ready(function() {
 
     setTimeout(function(){
       var parent = $('#horizontal-menu .vid .active').closest('.owl-item.active').index();
-      console.log(parent);
+      menu.trigger('to.owl.carousel', [parent, 2, true])
+
     }, 1000);
 
 
-    menu.trigger('to.owl.carousel', [1, 2, true])
 
     if($('.faq-page').length == 0) {
       var toIndex = $('a.active').parents('.owl-item').index() - 1;

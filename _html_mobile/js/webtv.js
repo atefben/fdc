@@ -1,9 +1,10 @@
-$(document).ready(function() {
+var playerInstanceWebTv;
 
+$(document).ready(function() {
   // INIT VIDEO PLAYER
   if($("#player").length !== 0) {
-    var playerInstance = jwplayer("player");
-    playerInstance.setup({
+    playerInstanceWebTv = jwplayer("player");
+    playerInstanceWebTv.setup({
       file         : $("#player").data('video'),
       image        : $("#player").data('poster'),
       width        : "100%",
@@ -43,15 +44,14 @@ $(document).ready(function() {
         $('.banner-img').removeClass('active');
 
         setTimeout(function(){
-          $('.ytp-thumbnail-overlay-image').click();
-          playerInstance.play();
-        }, 400);
+          playerInstanceWebTv.play();
+        }, 500);
 
       } else {
         $('.banner-img-text .before').removeClass('show');
         $('.banner-img-text .off').addClass('show');
 
-        playerInstance.stop();
+        playerInstanceWebTv.stop();
 
       }
     });
