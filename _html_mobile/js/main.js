@@ -303,4 +303,5 @@ $(document).ready(function() {
       $(this).parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
     });
   }
+  
 });

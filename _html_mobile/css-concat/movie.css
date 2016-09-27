@@ -2412,6 +2412,50 @@ body.overlay::after {
 }
 
 
+.diapoFullscreen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diapoFullscreen img {
+    width: 100%;
+}
+
+.diapoFullscreen .owl-stage {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    position: relative;
+    -ms-touch-action: pan-Y;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1080px;
+}
+
+.diapoFullscreen .owl-item {
+    height: auto;
+    left: -48px;
+}
+
+.diapoFullscreen .close-button {
+    position: absolute;
+    z-index: 100540;
+    top: 10px;
+    right: 10px;
+    visibility: visible;
+    opacity: 1;
+}
+
 /* CUSTOM CSS */
 .pictos-nav .calendar a {
 	color: #000000;
