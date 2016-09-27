@@ -65,10 +65,10 @@ class FDCPageLaSelectionRepository extends TranslationRepository
             ->orderBy('s.position', 'asc')
         ;
 
-        if(!is_null($festival)) {
+        /*if(!is_null($festival)) {
             $qb->andWhere('s.festival = :festival')
                 ->setParameter('festival', $festival);
-        }
+        }*/
 
         return $qb->getQuery()->getResult();
     }

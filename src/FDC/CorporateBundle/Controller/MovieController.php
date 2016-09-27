@@ -47,7 +47,7 @@ class MovieController extends Controller
             $selectionTabs = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FDCPageLaSelection')
-                ->getPagesOrdoredBySelectionSectionOrder($locale, $festival)
+                ->getPagesOrdoredBySelectionSectionOrder($locale)
             ;
 
             $projections = $this
