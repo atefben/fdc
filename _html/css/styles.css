@@ -11010,6 +11010,9 @@ article .read-later.rAlign span:after {
   padding-top: 410px;
   position: relative;
 }
+.single-movie .content-movie .tetiere-movie {
+  height: 290px;
+}
 .single-movie .slide-video:before {
   background: transparent;
   background: -moz-linear-gradient(top, transparent 25%, transparent 25%, black 85%);

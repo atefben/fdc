@@ -11,6 +11,10 @@
   padding-top: 410px;
   position: relative;
 
+  .content-movie .tetiere-movie {
+    height: 290px;
+  }
+
   .slide-video:before {
     background: transparent;
     background: -moz-linear-gradient(top, transparent 25%, transparent 25%, black 85%);

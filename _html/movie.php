@@ -81,7 +81,7 @@
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
             <img src="img/movie/002.jpg" alt="" data-object-fit="cover">
           </div>
-          <div class="info-film">
+          <div class="info-film tetiere-movie">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>
             <h2>Adieu au langage</h2>
             <div class="title-original">(Adieu au langage)</div>
