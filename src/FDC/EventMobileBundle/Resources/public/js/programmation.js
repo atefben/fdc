@@ -291,6 +291,7 @@ $(document).ready(function () {
             var hW = $(window).height();
 
 
+
             // Events on scroll
             // =========================
             var lastScrollTop = 0,
@@ -299,15 +300,21 @@ $(document).ready(function () {
                 $navMovie = $('#nav-movie'),
                 $faqmenu = $(".faq-menu");
 
+            var calTop = $('.venues').offset().top - 80;
+            console.log(calTop);
+
+
             $(window).on('scroll', function () {
                 var s = $(this).scrollTop();
                 scrollTarget = s;
 
                 if ($('#timeline-calendar').length > 0 && !$('.press-home').length > 0) {
-
                     if (!$('.programmation-press').length > 0) {
-                        if (s > 1850) {
-                            var w = s - 1850;
+
+                        calTop = $('.venues').offset().top - 93;
+
+                        if (s > calTop) {
+                            var w = s - calTop;
                             w = w + "px";
                             $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
                             $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
@@ -316,8 +323,9 @@ $(document).ready(function () {
                             $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
                         }
                     } else {
-                        if (s > 955) {
-                            var w = s - 959;
+
+                        if (s > calTop) {
+                            var w = s - calTop;
                             w = w + "px";
 
                             $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
@@ -445,8 +453,6 @@ $(document).ready(function () {
                             var init = true;
 
                             if (isInit == false) {
-                                console.log('n"a pas encore scroll');
-
 
                                 $(window).on('scroll', function () {
                                     var s = $(this).scrollTop();
@@ -455,14 +461,12 @@ $(document).ready(function () {
                                     var calTop = $('.venues').offset().top - 300;
 
                                     if (s > calTop && init) {
-                                      console.log('toto')
                                         init = false;
 
                                         setTimeout(function () {
 
                                             $.each($('.venues .owl-item'), function (i, e) {
                                                 var n = $(e).find('.v-container .fc-event').length;
-
 
                                                 if (n > 0) {
 
@@ -480,9 +484,6 @@ $(document).ready(function () {
                                     }
                                 });
                             } else {
-
-                                console.log('a scroll');
-
                                 setTimeout(function () {
 
                                     $.each($('.venues .owl-item'), function (i, e) {
@@ -498,7 +499,6 @@ $(document).ready(function () {
                                                times.push($(e).data('time'));
                                             });
 
-                                            console.log(times);
 
                                             var val = 24;
 
@@ -507,8 +507,6 @@ $(document).ready(function () {
                                                     val = times[o];
                                                 }
                                             }
-
-                                            console.log(val);
 
                                             $.each($(e).find('.v-container .fc-event'), function (i, e) {
                                                 if($(e).data('time') == val) {
