@@ -463,11 +463,15 @@ a{
 	max-height: none;
 }
 .contact p:not(.sub){
-
 	font-size: 22px;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color: #999999;
 	letter-spacing: -1px;
+	line-height: 35px;
+}
+
+.contact .sub {
+	margin-bottom: 19px;
 }
 .contact div:not(.contact-content){
 
