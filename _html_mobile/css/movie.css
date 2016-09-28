@@ -94,7 +94,9 @@ a{
 .prize{
 	padding: 60px 0;
 	border-bottom: 1px solid #f1f1f1;
+    /*
 	max-height: 170px;
+    */
 }
 .prize .icon{
 
@@ -217,6 +219,10 @@ a{
 }
 .photos .slideshow .thumbnails .thumb.active:before{
 
+    /*
+	display: none;
+    */
+	background: none;
 	width: 144px;
 	height: 94px;
 }
