@@ -18,6 +18,10 @@
       vertical-align: middle !important;
       margin-bottom: 3px;
     }
+
+    & + .communiques {
+      border-top: 1px solid #e3e3e3;
+    }
   }
 
   .button {

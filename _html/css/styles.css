@@ -16861,6 +16861,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   vertical-align: middle !important;
   margin-bottom: 3px;
 }
+.press .download + .communiques {
+  border-top: 1px solid #e3e3e3;
+}
 .press .button {
   font-size: 0.63rem;
   height: 37px;
