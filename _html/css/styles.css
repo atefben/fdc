@@ -11076,6 +11076,9 @@ article .read-later.rAlign span:after {
 .single-movie .prevmovie.show, .single-movie .nextmovie.show {
   width: 420px;
 }
+.single-movie .videos {
+  margin-bottom: 47px;
+}
 .single-movie .prevmovie {
   left: 2%;
 }
@@ -15679,6 +15682,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .artist {
   padding: 0px 0px;
   padding-top: 65px;
+  /*  .button {
+      padding: 0 19px 0 39px;
+    }
+    */
 }
 .artist .nav.next, .artist .nav.prev {
   -moz-transition: all 0.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15688,9 +15695,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .artist .info .category {
   margin-right: 2px;
-}
-.artist .button {
-  padding: 0 19px 0 39px;
 }
 .artist .small-container {
   margin: 0 auto;
