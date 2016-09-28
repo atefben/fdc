@@ -131,6 +131,11 @@ class NewsController extends Controller
         $filters['dateFormated'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
+        $filters['format'][0] = 'all';
+
+        if(count($photos) > 0) {
+            $filters['format'][] = 'photo';
+        }
 
         foreach ($photos as $key => $photo) {
             $photo->theme = $photo->getTheme();

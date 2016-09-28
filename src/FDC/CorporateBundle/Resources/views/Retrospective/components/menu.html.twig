@@ -17,7 +17,7 @@
         <li{% if 'fdc_corporate_news_getphotos' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getphotos', {year: app.request.attributes.get('year')}) }}">Les médias</a></li>
         {% endif %}
 
-        {% if medias|length > 0 %}
+        {% if news|length > 0 %}
         <li{% if 'fdc_corporate_news_getarticles' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getarticles', {year: app.request.attributes.get('year')}) }}">L'actualité</a></li>
         {% endif %}
     </ul>

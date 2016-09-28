@@ -20,7 +20,8 @@
             {% if trans is null or trans.file is null %}
                 {% set trans = photo.findTranslationByLocale('fr') %}
             {% endif %}
-            {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
+            {# set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' #}
+            {% set format = 'photo' %}
             {% set copyright = photo|trans_fallback('copyright') %}
             <article class="card card-01 item {{ format }} shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }}  all {{ photo.theme|trans_fallback('slug') }}" data-format="{{ format }}"
                      data-theme="all {{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">

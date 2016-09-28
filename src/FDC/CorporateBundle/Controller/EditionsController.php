@@ -44,7 +44,7 @@ class EditionsController extends Controller
         //news
         $news = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $festival->getId());
         $news = $this->removeUnpublishedNewsAudioVideo($news, $locale, null, true);
-
+        
         //events
         $events =
             $this
