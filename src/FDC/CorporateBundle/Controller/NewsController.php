@@ -75,7 +75,7 @@ class NewsController extends Controller
                     $filters['dates'][$date->format('y-m-d')] = $date;
                 }
 
-                if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
                     $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
