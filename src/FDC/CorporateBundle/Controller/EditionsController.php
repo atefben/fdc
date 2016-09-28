@@ -102,12 +102,18 @@ class EditionsController extends Controller
     public function afficheAction(Request $request, $year)
     {
         $em = $this->get('doctrine')->getManager();
+
         $festival = $this->getFestival($year);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
         $posters = $em->getRepository('BaseCoreBundle:FilmFestivalPoster')
             ->findByFestival($festival);
 
-        return array('posters' => $posters, 'festival' => $festival, 'festivals' => $festivals);
+        $bitlyManager = $this->get('base.manager.bitly');
+        $params['access_token'] = '1471b10911b48ad79ad042b02a15711ea71fc6c0';
+        $params['longUrl'] = $request->getUri();
+        $results = $bitlyManager->bitly_get('shorten', $params);
+
+        return array('posters' => $posters, 'festival' => $festival, 'festivals' => $festivals, 'urlshare' => $results['data']['url']);
     }
 }

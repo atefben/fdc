@@ -48,6 +48,7 @@ class ShareEmailType extends AbstractType
                 'pattern' => '^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$',
                 'attr' => array(
                     'placeholder' => 'sharemail.form.placeholder.email',
+                    'class'       => 'popin'
                 ),
                 'label' => false
             ))
