@@ -19000,6 +19000,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 #create-event-pop .container form input[type="submit"] {
   margin-bottom: 41px;
+  font-size: .625rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 #create-event-pop .container form input[type="submit"]:hover {
   cursor: pointer;
