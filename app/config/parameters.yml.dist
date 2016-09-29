@@ -318,3 +318,4 @@ parameters:
     header_ccm_zh: 'http://www.cannescourtmetrage.com/en/'
     header_mdf_zh: 'http://www.marchedufilm.com/cn/'
     email_sysadmin_fdc: sysadmin@ohwee.fr
+    admin_corpo_movie_inscription_id: 1
