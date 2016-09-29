@@ -1,20 +1,21 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
 <header>
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="{{ path('fdc_event_news_index') }}">Festival 2016</a>
+                <a href="{{ path('fdc_event_news_index') }}">{{ 'header.topbar.nav.festival'|trans }}</a>
             </li>
             <li>
-                <a href="{{ path('fdc_corporate_default_home') }}" target="_blank" class="active">Festival de Cannes</a>
+                <a href="/{{app.request.locale}}/" target="_blank" class="active">{{ 'header.topbar.nav.festivalcannes'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.cinefondation.com/fr/" target="_blank">Cinéfondation</a>
+                <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank">{{ 'header.topbar.nav.cinefondation'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.cannescourtmetrage.com/fr/" target="_blank">Cannes Court Métrage</a>
+                <a href="{{ attribute(_context, 'header_ccm_'~ app.request.locale) }}" target="_blank">{{ 'header.topbar.nav.courtmetrage'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.marchedufilm.com/fr/" target="_blank">Marché du film</a>
+                <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank">{{ 'header.topbar.nav.marche'|trans }}</a>
             </li>
         </ul>
         <ul class="user-nav">
@@ -22,7 +23,7 @@
               <a href="#" class="selection"><i class="icon icon-hours-black"></i> Ma Sélection</a>
             </li> -->
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> Mon compte</a>
+                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
             </li>
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon-language"></i> {{ app.request.locale|upper }}</a>
@@ -69,10 +70,10 @@
                       <a href="#" class="selection"><i class="icon icon-hours-black"></i>Ma Sélection</a>
                     </li> -->
                     <li>
-                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> Mon compte</a>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
                     </li>
                     <li>
-                        <a href="search.html" class="search"><i class="icon icon-search"></i>Rechercher</a>
+                        <a href="search.html" class="search"><i class="icon icon-search"></i>{{ 'header.usernav.nav.rechercher'|trans }}</a>
                     </li>
                 </ul>
             </div>
@@ -83,21 +84,21 @@
             <nav>
                 <ul class="main">
                     <li>
-                        <a href="/"{% if 'fdc_corporate_news_home' == app.request.attributes.get("_route") %} class="active"{% endif %}>Accueil</a>
+                        <a href="/"{% if 'fdc_corporate_news_home' == app.request.attributes.get("_route") %} class="active"{% endif %}>{{ 'header.nav.accueil'|trans }}</a>
                     </li>
                     <li>
-                        <a href="who-fdc.html">Qui sommes nous ?</a>
+                        <a href="who-fdc.html">{{ 'header.nav.qui'|trans }}</a>
                     </li>
                     <li class="hasSubNav">
-                        <a href="#" class="noLink{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} active{% endif %}">69 éditions</a>
+                        <a href="#" class="noLink{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} active{% endif %}">{{ 'header.nav.69editions'|trans }}</a>
                         <ul class="tcenter">
-                            <li><a href="{{ path('fdc_corporate_editions_retrospective') }}"{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} class="active"{% endif %}>Rétrospective</a></li>
-                            <li><a href="story-movie.html">L'histoire du festival</a></li>
-                            <li><a href="palm-gold.html">La palme d'or</a></li>
+                            <li><a href="{{ path('fdc_corporate_editions_retrospective') }}"{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} class="active"{% endif %}>{{ 'header.nav.69editions.retrospective'|trans }}</a></li>
+                            <li><a href="story-movie.html">{{ 'header.nav.69editions.histoire'|trans }}</a></li>
+                            <li><a href="palm-gold.html">{{ 'header.nav.69editions.palme'|trans }}</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="media-library.html">Médiathèque</a>
+                        <a href="media-library.html">{{ 'header.nav.mediatheque'|trans }}</a>
                     </li>
                 </ul>
                 <ul class="user"> <!-- todo -->
