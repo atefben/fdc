@@ -97,7 +97,9 @@ class LockController extends Controller
         'orangevideoondemand'              => 'OrangeVideoOnDemand',
         'orangestudio'                     => 'OrangeStudio',
         // deprecrated ??
-        'presscinemaroom'                  => 'PressCinemaRoom'
+        'presscinemaroom'                  => 'PressCinemaRoom',
+        'corpomovieinscription'            => 'CorpoMovieInscription',
+        'corpomovieinscriptionprocedure'   => 'CorpoMovieInscriptionProcedure',
     );
 
     /**
