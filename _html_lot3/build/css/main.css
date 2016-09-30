@@ -15608,3 +15608,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .article-single .big-quote a, .single-movie .big-quote a {
   color: #c8a461;
 }
+.article-single .txt-grey-bkg-container, .single-movie .txt-grey-bkg-container {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+  padding: 70px 70px;
+  background-color: #f4f4f4;
+}
