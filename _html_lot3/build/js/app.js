@@ -3788,6 +3788,11 @@ $(document).ready(function () {
     if ($('.article-single').length) {
         owInitNavSticky(1);
         owArrowDisplay();
+
+        if(!$('.single-movie').length > 0) {
+            var slider = $('.slideshow-img .images');
+            owinitSlideShow(slider);
+        }
     }
 
     if ($('.articles-list').length) {

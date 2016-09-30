@@ -1,0 +1,74 @@
+//CSS for articles, events, artist page & wisiwyg
+
+
+.article-single, .single-movie {
+  h2.sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: $CamphorRegular;
+  }
+
+  .table-article td, .table-article th {
+    font-weight: 400;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0;
+    width: 320px;
+    color: #666;
+    font-size: .74rem;
+    font-family:  $CamphorMedium;
+    text-align: center;
+  }
+
+  .table-article {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+  }
+
+  .text a strong {
+    color: #c8a461;
+    font-weight: 400;
+  }
+
+  .text strong {
+    font-family: $CamphorBold;
+    color: #333;
+    font-weight: 400;
+  }
+
+   table[border="0"] td, table[border="0"] td, table[border="0"] td {
+    border: none !important;
+  }
+
+  .text p {
+    color: #666;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+  }
+
+  .text {
+    margin: 0 auto 70px;
+  }
+
+  .big-quote {
+    width: 630px;
+    margin: 0 auto;
+    padding: 70px 70px;
+    box-sizing: border-box;
+    border: 1px solid #c8a461;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+
+
+    a {
+      color: $gold;
+    }
+  }
+
+}

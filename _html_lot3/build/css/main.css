@@ -4080,47 +4080,47 @@ body .icon:before {
 .picto {
   color: #c8a461;
   line-height: 39px;
-}
-.picto .icon {
-  margin-left: 17px;
-  margin-top: 17px;
-  font-size: .7rem;
+  /*  .icon{
+      margin-left: 17px;
+      margin-top: 17px;
+      font-size: .7rem;
+    }*/
 }
 
 .video .picto {
   color: #c8a461;
-}
-.video .picto .icon {
-  font-size: 0.8rem;
-  margin-top: 16px;
-  margin-left: 16px;
+  /*  .icon{
+      font-size: 0.8rem;
+      margin-top: 16px;
+      margin-left: 16px;
+    }*/
 }
 
 .audio .picto {
   color: #c8a461;
-}
-.audio .picto .icon {
-  font-size: 1rem;
-  margin-top: 14px;
-  margin-left: 14px;
+  /*  .icon{
+      font-size: 1rem;
+      margin-top: 14px;
+      margin-left: 14px;
+    }*/
 }
 
 .photo .picto {
   color: #c8a461;
-}
-.photo .picto .icon {
-  font-size: 1rem;
-  margin-top: 14px;
-  margin-left: 14px;
+  /*  .icon{
+      font-size: 1rem;
+      margin-top: 14px;
+      margin-left: 14px;
+    }*/
 }
 
 .playlist .picto {
   color: #c8a461;
-}
-.playlist .picto .icon {
-  font-size: .8rem;
-  margin-top: 16px;
-  margin-left: 15px;
+  /*  .icon{
+      font-size: .8rem;
+      margin-top: 16px;
+      margin-left: 15px;
+    }*/
 }
 
 .picto {
@@ -12440,7 +12440,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
 }
-.single-movie .video-container.state-init .control-bar {
+.single-movie .video-container.state-init .control-bar, .article-single .video-container.state-init .control-bar {
   opacity: 0;
 }
 .video-container.state-init:hover .control-bar {
@@ -15548,4 +15548,63 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #666;
   font-size: .74rem !important;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+
+.article-single h2.sub-title, .single-movie h2.sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.article-single .table-article td, .article-single .table-article th, .single-movie .table-article td, .single-movie .table-article th {
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  color: #666;
+  font-size: .74rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.article-single .table-article, .single-movie .table-article {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-bottom: 50px;
+}
+.article-single .text a strong, .single-movie .text a strong {
+  color: #c8a461;
+  font-weight: 400;
+}
+.article-single .text strong, .single-movie .text strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #333;
+  font-weight: 400;
+}
+.article-single table[border="0"] td, .article-single table[border="0"] td, .article-single table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td {
+  border: none !important;
+}
+.article-single .text p, .single-movie .text p {
+  color: #666;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+}
+.article-single .text, .single-movie .text {
+  margin: 0 auto 70px;
+}
+.article-single .big-quote, .single-movie .big-quote {
+  width: 630px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+}
+.article-single .big-quote a, .single-movie .big-quote a {
+  color: #c8a461;
 }
