@@ -86,12 +86,79 @@
                                     </div>
                                     <div>
                                         <label>
-                                            Procédure
+                                            Procédures
                                         </label>
                                             <span>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
                                                     {{ form.children.fr.vars.value.procedureContent|raw }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <h4 class="box-title">
+                                        Procédures d’inscription
+                                    </h4>
+                                    <div>
+                                        <label>
+                                            Règlement contenu
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.rulesContent|raw }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Bouton 1 Label
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.btnSelectionLabel|raw }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Bouton 2 Label
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.btnInscriptionLabel|raw }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Bouton 1 Lien
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.btnSelectionLink|raw }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Bouton 2 lien
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.btnInscriptionLink|raw }}
                                                 </div>
                                             {% endif %}
                                             </span>
