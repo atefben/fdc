@@ -22,6 +22,15 @@ var owinitSlideShow = function (slider, hash) {
         });
     }
 
+    if($('.medias').length > 0 ) {
+        $('.item.photo').on('click', function (e) {
+            e.preventDefault();
+
+            openSlideShow(slider);
+
+            return false;
+        });
+    }
 
 
     if (typeof hash != "undefined") {
@@ -29,6 +38,8 @@ var owinitSlideShow = function (slider, hash) {
             openSlideShow(slider, hash);
         }, 100);
     }
+
+    
 
 }
 
@@ -43,43 +54,57 @@ var openSlideShow = function (slider, hash) {
     var caption = "";
 
 
+    console.log(slider);
+
     slider.find('.item, .img').each(function (index, value) {
 
-        if ($(value).parent().hasClass('active center')) {
-            centerElement = index;
+        if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
+            if ($(value).parent().hasClass('active center')) {
+                centerElement = index;
+            }
+
+            if ($('.img').length > 0 && $(value).hasClass('active')) {
+                centerElement = index;
+            }
+
+
+/*
+            console.log($(value).find('.contain-txt a').html());
+*/
+            console.log($(value).hasClass('photo'));
+
+            var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+            var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
+            var title = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
+            var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
+            var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
+            var caption = $(value).find('img').attr('data-credit');
+            var id = $(value).find('img').attr('data-id');
+            var facebookurl = $(value).find('img').attr('data-facebookurl');
+            var twitterurl = $(value).find('img').attr('data-facebookurl');
+            var url = $(value).find('img').attr('data-url');
+
+            var image = {
+                id: id,
+                url: url,
+                src: src,
+                alt: alt,
+                title: title,
+                label: label,
+                date: date,
+                caption: caption,
+                facebookurl: facebookurl,
+                twitterurl: twitterurl
+            };
+
+            images.push(image);
+
         }
 
-        if ($('.img').length > 0 && $(value).hasClass('active')) {
-            centerElement = index;
-        }
-
-        var src = $(value).find('img').attr("src");
-        var alt = $(value).find('img').attr("alt");
-        var title = $(value).find('img').attr("data-title");
-        var label = $(value).find('img').attr("data-label");
-        var date = $(value).find('img').attr("data-date");
-        caption = $(value).find('img').attr('data-credit');
-        var id = $(value).find('img').attr('data-id');
-        var facebookurl = $(value).find('img').attr('data-facebookurl');
-        var twitterurl = $(value).find('img').attr('data-facebookurl');
-        var url = $(value).find('img').attr('data-url');
-
-        var image = {
-            id: id,
-            url: url,
-            src: src,
-            alt: alt,
-            title: title,
-            label: label,
-            date: date,
-            caption: caption,
-            facebookurl: facebookurl,
-            twitterurl: twitterurl
-        };
-
-        images.push(image);
 
     });
+
+    console.log(images);
 
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
@@ -302,7 +327,7 @@ var openSlideShow = function (slider, hash) {
         }
     })
 
-    $('.chocolat-close').on('click', function(){
+    $('.chocolat-top').on('click', function(){
        $('.c-fullscreen-slider').addClass('animated fadeOut');
 
         setTimeout(function(){
