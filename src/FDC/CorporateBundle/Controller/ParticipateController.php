@@ -58,7 +58,9 @@ class ParticipateController extends Controller
      */
     public function rulesAction(Request $request)
     {
-       $id = $request->get('id');
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+
 
         if($id) {
             $procedure = $this->getDoctrineManager()->getRepository('BaseCoreBundle:CorpoMovieInscriptionProcedure')->find($id);
@@ -66,8 +68,11 @@ class ParticipateController extends Controller
             return $this->createNotFoundException();
         }
 
+        $registerMovie = $em->getRepository('BaseCoreBundle:CorpoMovieInscription')->findOneById($this->getParameter('admin_corpo_movie_inscription_id'));
+
         return $this->render('FDCCorporateBundle:Participate:rules.html.twig',array(
-            'procedure' => $procedure,
+            'procedure'     => $procedure,
+            'registerMovie' => $registerMovie,
         ));
     }
 }

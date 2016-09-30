@@ -77,32 +77,12 @@
                     </div>
                 {% endif %}
                 <div class="block-contact block-01-ms">
-                    <strong class="title-25">Contactez-nous</strong>
-                    <div class="item i-1">
-                        <strong class="bold-1">Département Films</strong>
-                        <ul>
-                            <li>Longs métrages en Compétition /</li>
-                            <li>Hors Compétition / Un Certain Regard</li>
-                            <li>3, rue Amélie - 75007 Paris - France</li>
-                            <li>Tel. : +33 (0) 1 53 59 61 71</li>
-                            <li>Fax. : +33 (0) 1 53 59 61 24</li>
-                        </ul>
-                        <strong class="bold-1">Email</strong>
-                        <ul>
-                            <li><a href="mailto:fbeauville@festival-cannes.fr">fbeauville@festival-cannes.fr</a></li>
-                            <li><a href="mailto:zklein@festival-cannes.fr">zklein@festival-cannes.fr</a></li>
-                            <li><a href="mailto:bmunoz@festival-cannes">bmunoz@festival-cannes</a></li>
-                        </ul>
-                    </div>
-
                     <div class="item i-2">
-                        <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
-                        <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
-                        <div class="buttons-02">
-                            <a href="#" class="button">Formulaire de contact</a>
-                        </div>
+                        {{ accredit|trans_fallback('firstColumnContact')|raw }}
                     </div>
-
+                    <div class="item i-2">
+                        {{ accredit|trans_fallback('secondColumnContact')|raw }}
+                    </div>
                 </div>
             </div>
             {% endfor %}
