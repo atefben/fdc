@@ -34,7 +34,7 @@
     </div>
 
     <div class="block-contact block-01-ms">
-        {#<strong class="title-25">{{ registerMovie|trans_fallback('contactTitle ') }}</strong>#}
+        <strong class="title-25">{{ registerMovie|trans_fallback('contactTitle')|raw }}</strong>
         <div class="item i-1">
             {{ registerMovie|trans_fallback('firstColumnContact')|raw }}
         </div>

@@ -19,7 +19,6 @@
             </div>
         </div> <!-- end block push -->
 
-
         <div class="all-contain">
 
             <div class="block-p-register block-01-ms">
@@ -77,7 +76,8 @@
                     </div>
                 {% endif %}
                 <div class="block-contact block-01-ms">
-                    <div class="item i-2">
+                    <strong class="title-25">{{ accredit|trans_fallback('contactTitle')|raw }}</strong>
+                    <div class="item i-1">
                         {{ accredit|trans_fallback('firstColumnContact')|raw }}
                     </div>
                     <div class="item i-2">
