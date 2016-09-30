@@ -172,6 +172,11 @@ $(document).ready(function () {
     }
 
 
+    if($('.medias').length > 0) {
+        var slider = $('.grid-01');
+        owinitSlideShow(slider);
+    }
+
     if ($('.articles-list').length) {
 
         var grid = owInitGrid('isotope-01');
