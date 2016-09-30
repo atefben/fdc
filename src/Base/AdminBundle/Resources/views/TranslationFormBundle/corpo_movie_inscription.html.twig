@@ -165,9 +165,11 @@
                                     </span>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="box box-success">
                                 <div class="box-body">
                                     <h4 class="box-title">
-                                        Informations bloc formulaire
+                                        Contenu bloc inscription
                                     </h4>
                                     <div>
                                         <label>
@@ -182,14 +184,20 @@
                                     </span>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="box box-success">
                                 <div class="box-body">
                                     <h4 class="box-title">
-                                        Contact
+                                        Informations bloc formulaire
                                     </h4>
-                                    <div>
-                                        <label>
-                                            Titre
-                                        </label>
+                                    <div class="box-body">
+                                        <h4 class="box-title">
+                                            Contact
+                                        </h4>
+                                        <div>
+                                            <label>
+                                                Titre
+                                            </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -197,12 +205,12 @@
                                         </div>
                                     {% endif %}
                                     </span>
-                                    </div>
+                                        </div>
 
-                                    <div>
-                                        <label>
-                                            -> Première colonne <-
-                                        </label>
+                                        <div>
+                                            <label>
+                                                -> Première colonne <-
+                                            </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -210,12 +218,12 @@
                                         </div>
                                     {% endif %}
                                     </span>
-                                    </div>
+                                        </div>
 
-                                    <div>
-                                        <label>
-                                            -> Deuxième colonne <-
-                                        </label>
+                                        <div>
+                                            <label>
+                                                -> Deuxième colonne <-
+                                            </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -223,7 +231,8 @@
                                         </div>
                                     {% endif %}
                                     </span>
-                                    </div>
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     {% endif %}
