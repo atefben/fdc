@@ -40,14 +40,14 @@
             </div>
           </div>
         </div>
-        <a href="movie2.php" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
-        <a href="movie3.php" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+        <a href="movie2.php" class="nav prev ajax"><i class="icon icon-arrow-left"></i></a>
+        <a href="movie3.php" class="nav next ajax"><i class="icon icon-arrow-right"></i></a>
         <span id="plx"></span>
         <div class="main-image">
           <div class="img" style="background-image: url('img/movie/001.jpg')"></div>
           <div class="links">
             <div class="container">
-              <a class="movies" href="#"><i class="icon icon_flecheGauche"></i>Tous les films</a>
+              <a class="movies" href="#"><i class="icon icon-arrow-left"></i>Tous les films</a>
               <a class="programmation" href="#"><i class="icon icon_programmation"></i>Voir la programmation</a>
             </div>
           </div>

@@ -101,3 +101,84 @@ var owInitFooterScroll = function () {
         });
     }
 }
+
+
+var scrollSingleMovie = function () {
+    var lastScrollTop = 0,
+        $header = $('header'),
+        $timeline = $('#timeline'),
+        $navMovie = $('#nav-movie'),
+        $faqmenu = $(".faq-menu");
+
+    console.log('oc');
+
+    // SINGLE MOVIE
+    $(window).on('scroll', function () {
+        var s = $(this).scrollTop();
+        scrollTarget = s;
+        
+        console.log(s);
+        console.log($navMovie.next('div').length > 0);
+        console.log($navMovie.next('div').offset().top - $navMovie.height() - 100);
+
+        if ($('.single-movie').length) {
+            // NAV
+            if ($navMovie.next('div').length > 0 && (s > ($navMovie.next('div').offset().top - $navMovie.height() - 100))) {
+                
+                $navMovie.addClass('sticky');
+
+
+                if ($('div.press').length > 0 && (s > $('div.press').offset().top + 1 - $navMovie.height())) {
+
+                    $navMovie.css('top', 0);
+
+                } else {
+                    
+                    $navMovie.css('top', '91px');
+                }
+            } else {
+                $navMovie.removeClass('sticky');
+            }
+
+            if ($('.competition').length > 0 && (s > $('.competition').offset().top - ($(window).height() - $header.height() - 200))) {
+                $('.nav').addClass('hide');
+            } else {
+                $('.nav').removeClass('hide');
+            }
+
+            if ($('div.press').length > 0 && (s > 50 && s < $('div.press').offset().top - $('div.press').height())) {
+                $('.nav, .prevmovie, .nextmovie').addClass('black');
+            } else {
+                $('.nav, .prevmovie, .nextmovie').removeClass('black');
+            }
+
+            if ($('.main-image').length > 0 && (s > 100 && $('.main-image').hasClass('trailer'))) {
+
+                if ($('body').hasClass('tablet')) {
+                    $('.main-image').height('360px').css('padding-top', 0);
+                } else {
+                    $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
+                }
+
+                $('.main-image, .poster, .info-film, .nav, .palmares').removeClass('trailer');
+                if (videoMovie.getState() === "playing") {
+                    videoMovie.pause();
+                }
+            }
+
+            var sections = $('*[data-section]'),
+                nav = $('#nav-movie'),
+                nav_height = nav.outerHeight() + $header.height();
+
+            sections.each(function () {
+                var top = $(this).offset().top - nav_height,
+                    bottom = top + $(this).outerHeight();
+
+                if (s >= top && s <= bottom) {
+                    nav.find('ul a').removeClass('active');
+                    nav.find('a[href="#' + $(this).data('section') + '"]').addClass('active');
+                }
+            });
+        }
+    });
+}

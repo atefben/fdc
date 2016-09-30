@@ -246,6 +246,11 @@
     position: relative;
     z-index: 5;
 
+
+    &.hide-info {
+      display: none;
+    }
+
     .picto {
       bottom: 20px;
       left: 20px;
@@ -585,9 +590,12 @@
 
   &.state-init {
     .control-bar {
-      /*
-      opacity: 0;$*/
 
+      .single-movie & {
+        opacity: 0;
+      }
+
+      opacity: 1;
       @include transform(translateY(100%));
     }
 

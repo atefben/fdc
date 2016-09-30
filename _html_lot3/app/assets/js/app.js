@@ -145,6 +145,13 @@ $(document).ready(function () {
         onInitParallax();
     }
 
+    if( $('.single-movie').length) {
+        var slider = $('.slideshow-img .images');
+        owinitSlideShow(slider);
+        owInitSlider('slider-03');
+        scrollSingleMovie();
+    }
+
     if ($('.jury').length) {
         owInitNavSticky(2);
         owInitGrid('isotope-01');
