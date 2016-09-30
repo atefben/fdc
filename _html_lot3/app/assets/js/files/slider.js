@@ -87,6 +87,32 @@ var owInitSlider = function(sliderName) {
     });
   }
 
+    /* SLIDER 03
+     ----------------------------------------------------------------------------- */
+    if(sliderName == 'slider-03') {
+
+
+        var slide01 = $('.slider-03').owlCarousel({
+            navigation          : false,
+            items               : 1,
+            autoWidth           : true,
+            smartSpeed          : 700,
+            center              : true,
+            margin              : 27.5
+        });
+
+        // Custom Navigation Events
+        $(document).on('click', '.slider-03 .owl-item', function(){
+            var number = $(this).index();
+
+            $('.slider-02 .center').removeClass('center');
+            $(this).addClass('center');
+            slide01.trigger('to.owl.carousel', number);
+
+        });
+    }
+
+
   if(sliderName == "timelapse-01") {
 
     //Init var

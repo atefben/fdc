@@ -80,8 +80,12 @@ var initVideo = function() {
         live         = live || false;
         var tmp;
 
+
+        console.log(id);
+
         if (id) {
             var videoPlayer = jwplayer(id);
+
             if(!$(videoPlayer).data('loaded')) {
                 playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
@@ -112,6 +116,9 @@ var initVideo = function() {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
+
+        console.log(vid);
+
         var $container    = $("#"+vid.id).closest('.video-container');
 
         if($container.find('.control-bar').length <= 0) {
@@ -526,13 +533,44 @@ var initVideo = function() {
     };
 
 
-    if($('.video-player').length > 0) {
+    if($('#video-movie-trailer').length > 0) {
+        videoMovie = playerInit('video-movie-trailer');
+        videoMovie.resize('100%','100%');
+        // show and play trailer
+        $('body').on('click', '.poster .picto', function(e) {
+            e.preventDefault();
 
+            $('html, body').animate({
+                scrollTop: 377
+            }, 300, function() {
+                $('.main-image, .poster, .info-film, .palmares, .nav').addClass('trailer');
+                $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
+                $('#video-movie-trailer').closest('.video-container').css({
+                    'margin-top': '91px',
+                    'height' : 'calc(100% - 91px)'
+                });
+                setTimeout(function() {
+                    $('header').addClass('sticky');
+                    $('body').css('padding-top', 0);
+                }, 800);
+            });
+
+            setTimeout(function() {
+                videoMovie.play();
+            }, 500);
+
+        });
+    }else if($('.video-player').length > 0) {
         videoPlayer = playerInit('video-player', 'video-player', false, false);
     }
 
     if($('.video-playlist').length > 0) {
         videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
     }
+
+    if ($('#video-player-ba').length > 0) {
+        videoMovieBa = playerInit('video-player-ba', false, true)
+    }
+    
 
 }

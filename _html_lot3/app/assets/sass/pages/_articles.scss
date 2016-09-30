@@ -1,0 +1,181 @@
+//CSS for articles, events, artist page & wisiwyg
+
+
+.article-single, .single-movie {
+  h2.sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: $CamphorRegular;
+  }
+
+  .table-article td, .table-article th {
+    font-weight: 400;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0;
+    width: 320px;
+    color: #666;
+    font-size: .74rem;
+    font-family:  $CamphorMedium;
+    text-align: center;
+  }
+
+  .table-article {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+  }
+
+  .text a strong {
+    color: #c8a461;
+    font-weight: 400;
+  }
+
+  .text strong {
+    font-family: $CamphorBold;
+    color: #333;
+    font-weight: 400;
+  }
+
+   table[border="0"] td, table[border="0"] td, table[border="0"] td {
+    border: none !important;
+  }
+
+  .text p {
+    color: #666;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+  }
+
+  .text {
+    margin: 0 auto 70px;
+  }
+
+  .big-quote {
+    width: 630px;
+    margin: 0 auto;
+    padding: 70px 70px;
+    box-sizing: border-box;
+    border: 1px solid #c8a461;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+
+
+    a {
+      color: $gold;
+    }
+  }
+
+  .txt-grey-bkg-container {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding: 70px 70px;
+    background-color: #f4f4f4;
+
+  }
+
+  .block-02 {
+    .title {
+      color: $black;
+    }
+  }
+
+  .jury {
+    text-align: center;
+    padding-bottom: 50px;
+    line-height: 30px;
+  }
+
+  .jury .rank {
+    font-family: $CamphorBold;
+    color: #c8a461;
+    font-size: 1.125rem;
+  }
+
+
+  .jury .item-separate {
+    color: #c8a461;
+    font-size: 1.125rem;
+    padding: 0 7px;
+  }
+
+  .jury .role {
+    text-transform: uppercase;
+    font-size: .875rem;
+    font-family: $CamphorMedium;
+  }
+
+}
+
+#slider-real {
+  margin-top: 65px;
+
+  .owl-item {
+    opacity: 1;
+    min-height: 380px;
+    position: relative;
+    left: -380px;
+
+    .slide {
+      &.compat-object-fit {
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        height: 284px;
+        margin-bottom: 60px;
+
+        img {
+          opacity: 0;
+        }
+      }
+    }
+
+    img {
+      height: 284px;
+      width: 210px;
+    }
+
+    .linkVid {
+      height: 284px;
+      display: block;
+      z-index: 3;
+      width: 210px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    position: relative;
+  }
+
+  .info-movie {
+    padding-top: 30px;
+    text-align: center;
+    width: 210px;
+
+    p {
+      color: #2c2c2c;
+      font-family: $CamphorBold;
+      font-size: 0.875rem;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: #2c2c2c;
+    }
+
+    a.director {
+      color: $gold;
+      display: block;
+      font-family: $CamphorItalic;
+      font-size: 0.813rem;
+    }
+  }
+}

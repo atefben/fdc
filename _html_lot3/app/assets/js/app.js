@@ -145,6 +145,13 @@ $(document).ready(function () {
         onInitParallax();
     }
 
+    if( $('.single-movie').length) {
+        var slider = $('.slideshow-img .images');
+        owinitSlideShow(slider);
+        owInitSlider('slider-03');
+        scrollSingleMovie();
+    }
+
     if ($('.jury').length) {
         owInitNavSticky(2);
         owInitGrid('isotope-01');
@@ -153,7 +160,17 @@ $(document).ready(function () {
     if ($('.article-single').length) {
         owInitNavSticky(1);
         owArrowDisplay();
+
+        if(!$('.single-movie').length > 0) {
+            var slider = $('.slideshow-img .images');
+            owinitSlideShow(slider);
+        }
+
+        if($('.artist-page').length > 0 ){
+            owInitSlider('slider-03');
+        }
     }
+
 
     if ($('.articles-list').length) {
 

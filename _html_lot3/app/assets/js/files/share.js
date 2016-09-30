@@ -223,12 +223,11 @@ var initRs = function () {
                 $('#share-box').remove();
             }
 
-/*           setTimeout(function () {
-                $('#share-box').animate({'opacity': 0}, 200, function () {
-                    $('#share-box').removeClass('show');
-                    $('#share-box').remove();
-                });
-            }, 3000);*/
+           setTimeout(function () {
+                $('#share-box').remove();
+                $('#share-box').remove();
+               //two time because first don't work... 
+            }, 3000);
         });
 
     }
