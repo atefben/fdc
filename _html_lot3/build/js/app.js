@@ -3793,7 +3793,12 @@ $(document).ready(function () {
             var slider = $('.slideshow-img .images');
             owinitSlideShow(slider);
         }
+
+        if($('.artist-page').length > 0 ){
+            owInitSlider('slider-03');
+        }
     }
+
 
     if ($('.articles-list').length) {
 

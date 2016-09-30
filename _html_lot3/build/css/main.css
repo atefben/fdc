@@ -15616,3 +15616,81 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding: 70px 70px;
   background-color: #f4f4f4;
 }
+.article-single .block-02 .title, .single-movie .block-02 .title {
+  color: #141414;
+}
+.article-single .jury, .single-movie .jury {
+  text-align: center;
+  padding-bottom: 50px;
+  line-height: 30px;
+}
+.article-single .jury .rank, .single-movie .jury .rank {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c8a461;
+  font-size: 1.125rem;
+}
+.article-single .jury .item-separate, .single-movie .jury .item-separate {
+  color: #c8a461;
+  font-size: 1.125rem;
+  padding: 0 7px;
+}
+.article-single .jury .role, .single-movie .jury .role {
+  text-transform: uppercase;
+  font-size: .875rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+
+#slider-real {
+  margin-top: 65px;
+}
+#slider-real .owl-item {
+  opacity: 1;
+  min-height: 380px;
+  position: relative;
+  left: -380px;
+  position: relative;
+}
+#slider-real .owl-item .slide.compat-object-fit {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 284px;
+  margin-bottom: 60px;
+}
+#slider-real .owl-item .slide.compat-object-fit img {
+  opacity: 0;
+}
+#slider-real .owl-item img {
+  height: 284px;
+  width: 210px;
+}
+#slider-real .owl-item .linkVid {
+  height: 284px;
+  display: block;
+  z-index: 3;
+  width: 210px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#slider-real .info-movie {
+  padding-top: 30px;
+  text-align: center;
+  width: 210px;
+}
+#slider-real .info-movie p {
+  color: #2c2c2c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+#slider-real .info-movie a {
+  color: #2c2c2c;
+}
+#slider-real .info-movie a.director {
+  color: #c8a461;
+  display: block;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+}
