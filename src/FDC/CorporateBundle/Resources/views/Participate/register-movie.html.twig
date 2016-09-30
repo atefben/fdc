@@ -1,0 +1,114 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}
+    participate p-register bright
+{% endblock bodyClass %}
+{% block body %}
+
+    <section id="main">
+        {% set mainTrans = accredit.mainImage.findTranslationByLocale(app.request.locale) %}
+        {% if mainTrans is null or mainTrans.file is null %}
+            {% set mainTrans = accredit.mainImage.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set mainImage = mainTrans.file %}
+        <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %})">
+            <div class="vFlexAlign">
+                <div class="txts">
+                    <h1 class="title-3">{{ 'participate.register.movie'|trans }}</h1>
+                </div>
+            </div>
+        </div> <!-- end block push -->
+
+
+        <div class="all-contain">
+
+            <div class="block-p-register block-01-ms">
+                {{ accredit|trans_fallback('commonContent')|raw }}
+            </div>
+
+            <div class="block-tab-switch block-01">
+                <h3 class="title-tab-swich">{{ 'participate.register.procedure'|trans }}</h3>
+
+            {% if accredit.procedure|length > 0 %}
+                 <table class="tab1">
+                    <tbody>
+                    <tr>
+                        {% for key,sectionFilter in accredit.procedure %}
+                        <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
+                            {{ sectionFilter.procedure|trans_fallback('title') }}
+                        </td>
+                        {% if  loop.index % 3 == 0 %}
+                    </tr>
+                    <tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+            </div>
+
+            <div class="border-top">
+            {% for key, section in accredit.procedure %}
+            <div class="block-contain-txt-register-movie" data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
+                <div class="block-01-ms">
+                    <h4>{{ section.procedure|trans_fallback('title') }}</h4>
+                    {{ section.procedure|trans_fallback('procedureContent')|raw }}
+                </div>
+                <div class="block-s-info border-bottom border-top vFlexAlign">
+                    <strong class="title-25">{{ 'participate.submit.movie'|trans }}</strong>
+                    <p>{{ 'participate.consult.rules'|trans }}</p>
+                    <div class="buttons-02">
+                        <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.id}) }}" class="button" target="_blank">{{ 'participate.see.rules' }}</a>
+                    </div>
+                </div>
+                {% if section.procedure.mainImage is not null %}
+                    {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
+                    {% if mainTrans is null or mainTrans.file is null %}
+                        {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set mainImage = mainTrans.file %}
+                    <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url({% path mainImage, '1280x808' %})">
+                        {{ accredit|trans_fallback('inscriptionContent')|raw  }}
+                        <div class="buttons-02">
+                            <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">
+                                {{ 'participate.see.form'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="block-contact block-01-ms">
+                    <strong class="title-25">Contactez-nous</strong>
+                    <div class="item i-1">
+                        <strong class="bold-1">Département Films</strong>
+                        <ul>
+                            <li>Longs métrages en Compétition /</li>
+                            <li>Hors Compétition / Un Certain Regard</li>
+                            <li>3, rue Amélie - 75007 Paris - France</li>
+                            <li>Tel. : +33 (0) 1 53 59 61 71</li>
+                            <li>Fax. : +33 (0) 1 53 59 61 24</li>
+                        </ul>
+                        <strong class="bold-1">Email</strong>
+                        <ul>
+                            <li><a href="mailto:fbeauville@festival-cannes.fr">fbeauville@festival-cannes.fr</a></li>
+                            <li><a href="mailto:zklein@festival-cannes.fr">zklein@festival-cannes.fr</a></li>
+                            <li><a href="mailto:bmunoz@festival-cannes">bmunoz@festival-cannes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item i-2">
+                        <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
+                        <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
+                        <div class="buttons-02">
+                            <a href="#" class="button">Formulaire de contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            <!-- FIN border-top border-bottom-->
+            </div>
+        </div>
+    </section>
+    </div>
+{% endblock %}

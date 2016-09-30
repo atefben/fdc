@@ -1,199 +1,199 @@
 var owInitAccordion = function(id) {
 
-    if(id == "block-accordion") {
+  if(id == "block-accordion") {
 
-        var $accordion = $('.block-accordion');
-        var $title = $('.block-accordion .title-contain');
+    var $accordion = $('.block-accordion');
+    var $title = $('.block-accordion .title-contain');
 
-        $title.on('click', function() {
-            $parent = $(this).closest('.item');
-            $this = $(this);
-            $icon = $(this).find('.icon-nav-accordion');
+    $title.on('click', function() {
+      $parent = $(this).closest('.item');
+      $this = $(this);
+      $icon = $(this).find('.icon-nav-accordion');
 
-            if($parent.hasClass('active')) {
+      if($parent.hasClass('active')) {
 
-                $parent.removeClass('active');
-                $icon.removeClass('icon-minus').addClass('icon-create');
+        $parent.removeClass('active');
+        $icon.removeClass('icon-minus').addClass('icon-create');
 
-            }else{
-                $parent.addClass('active');
-                $icon.removeClass('icon-create').addClass('icon-minus');
+      }else{
+        $parent.addClass('active');
+        $icon.removeClass('icon-create').addClass('icon-minus');
 
-            }
-        });
-    }
+      }
+    });
+  }
 
-    if(id = "more-search") {
-        var $title = $('.more-search .sub-tab .title-cont');
+  if(id = "more-search") {
+    var $title = $('.more-search .sub-tab .title-cont');
 
-        $title.on('click',function(){
-            var $this = $(this).closest('.sub-tab');
+    $title.on('click',function(){
+     var $this = $(this).closest('.sub-tab');
 
-            if($this.hasClass('active')){
-                $this.find('.icon').removeClass('icon-minus').addClass('icon-create');
-            }else{
-                $this.find('.icon').addClass('icon-minus').removeClass('icon-create');
-            }
+      if($this.hasClass('active')){
+        $this.find('.icon').removeClass('icon-minus').addClass('icon-create');
+      }else{
+        $this.find('.icon').addClass('icon-minus').removeClass('icon-create');
+      }
 
-            $this.toggleClass('active');
-            b
-        });
-    }
+      $this.toggleClass('active');
+b
+    });
+  }
 };
 
 var owInitAjax = function() {
 
-    $('.ajax-section nav a').on('click', function(e){
-        e.preventDefault;
+  $('.ajax-section nav a').on('click', function(e){
+    e.preventDefault;
 
-        var url = $(this).attr('href');
+    var url = $(this).attr('href');
 
-        $.get( url, function( data ) {
-            $data = $(data);
-            console.log($data);
-            contain = $data.find('.contain-ajax')[0];
+    $.get( url, function( data ) {
+      $data = $(data);
+      console.log($data);
+      contain = $data.find('.contain-ajax')[0];
 
-            test = $data.filter('#breadcrumb').children()[0];
+      test = $data.filter('#breadcrumb').children()[0];
 
-            $( ".ajax-section" ).html(contain);
+      $( ".ajax-section" ).html(contain);
 
-            $( "#breadcrumb" ).html(test);
+      $( "#breadcrumb" ).html(test);
 
-            if($('.navigation-sticky-02').length) {
-                owInitNavSticky(2);
-            }else if($('.navigation-sticky').length) {
-                owInitNavSticky(1);
-            }
+      if($('.navigation-sticky-02').length) {
+        owInitNavSticky(2);
+      }else if($('.navigation-sticky').length) {
+        owInitNavSticky(1);
+      }
 
-            if($('.isotope-01').length) {
-                owInitGrid('isotope-01');
-            }
+      if($('.isotope-01').length) {
+        owInitGrid('isotope-01');
+      }
 
-            if($('.isotope-02').length) {
-                owInitGrid('isotope-02');
-            }
+      if($('.isotope-02').length) {
+        owInitGrid('isotope-02');
+      }
 
-            if($('.grid-01').length) {
-                var grid = owInitGrid('isotope-01');
-                owsetGridBigImg(grid, $('.grid-01'), true);
+      if($('.grid-01').length) {
+        var grid = owInitGrid('isotope-01');
+        owsetGridBigImg(grid, $('.grid-01'), true);
 
-                $( window ).resize(function() {
-                    owsetGridBigImg(grid, $('.grid-01'), false);
-                });
-            }
-
-            if($('.filters').length) {
-                owInitFilter();
-            }
-
-            if($('.block-accordion').length) {
-                owInitAccordion("block-accordion");
-            }
-
-            if($('.block-social-network').length) {
-                initRs();
-
-                if($('#share-article').length) {
-                    $('#share-article').on('click', function(e) {
-                        e.preventDefault();
-
-                        $('html, body').animate({
-                            scrollTop: $(".block-social-network").offset().top - $('header').height() - $('.block-social-network').height() - 300
-                        }, 500);
-                    });
-                }
-            }
-
-            window.history.pushState('','',url);
-
-            owInitAjax();
+        $( window ).resize(function() {
+            owsetGridBigImg(grid, $('.grid-01'), false);
         });
+      }
 
-        return false;
+      if($('.filters').length) {
+        owInitFilter();
+      }
+
+      if($('.block-accordion').length) {
+          owInitAccordion("block-accordion");
+      }
+
+      if($('.block-social-network').length) {
+        initRs();
+
+        if($('#share-article').length) {
+          $('#share-article').on('click', function(e) {
+            e.preventDefault();
+
+            $('html, body').animate({
+              scrollTop: $(".block-social-network").offset().top - $('header').height() - $('.block-social-network').height() - 300
+            }, 500);
+          });
+        }
+      }
+
+      window.history.pushState('','',url);
+
+      owInitAjax();
     });
+
+    return false;
+  });
 }
 
 
 var ajaxMedialib = function() {
-    $('.block-search .button-submit').on('click', function(e) {
-        e.preventDefault();
+  $('.block-search .button-submit').on('click', function(e) {
+    e.preventDefault();
 
-        //on récupère les informations
+    //on récupère les informations
 
-        var url = $('.block-search form').attr('action');
-        var keyword = $('.block-search input[name="search"]').val();
-        var checked = [];
-        var date = [];
+    var url = $('.block-search form').attr('action');
+    var keyword = $('.block-search input[name="search"]').val();
+    var checked = [];
+    var date = [];
 
-        date[1] = $('.block-search #slider-snap-value-lower').html();
-        date[2] = $('.block-search #slider-snap-value-upper').html();
+    date[1] = $('.block-search #slider-snap-value-lower').html();
+    date[2] = $('.block-search #slider-snap-value-upper').html();
 
-        $.each($('.choice'), function(i,v) {
-            if($(v).is(":checked")) {
-                checked.push($(v).attr('name'));
-            }
-        })
-
-
-        //TODO back data
-
-        $.ajax({
-            url: url,
-            type : 'GET',
-        }).done(function(data) {
-
-            grid = $(data);
-            $('.grid-01').html(grid);
-
-            //on mets à jour la nouvelle grille
-
-            var grid = $('.isotope-03').isotope({
-                itemSelector    : '.item',
-                percentPosition : true,
-                sortBy          : 'original-order',
-                layoutMode      : 'packery',
-                packery         : {
-                    columnWidth : '.grid-sizer'
-                }
-            });
+    $.each($('.choice'), function(i,v) {
+      if($(v).is(":checked")) {
+        checked.push($(v).attr('name'));
+      }
+    })
 
 
-            owInitAleaGrid(grid, $('.grid-01'), true);
+    //TODO back data
 
+    $.ajax({
+      url: url,
+      type : 'GET',
+    }).done(function(data) {
 
+      grid = $(data);
+      $('.grid-01').html(grid);
+
+      //on mets à jour la nouvelle grille
+
+        var grid = $('.isotope-03').isotope({
+          itemSelector    : '.item',
+          percentPosition : true,
+          sortBy          : 'original-order',
+          layoutMode      : 'packery',
+          packery         : {
+            columnWidth : '.grid-sizer'
+          }
         });
 
 
-    })
+      owInitAleaGrid(grid, $('.grid-01'), true);
+      
+
+    });
+
+
+  })
 }
 
 
 var owInitReadMore = function() {
-    var number = 0;
+  var number = 0;
+  
+  $('.read-more.ajax-request').on('click', function(e){
+    e.preventDefault();
 
-    $('.read-more.ajax-request').on('click', function(e){
-        e.preventDefault();
+    var url = $(this).attr('href');
 
-        var url = $(this).attr('href');
+      if(number%2 == 0){
+        $.get( url, function( data ) {
+          data = $(data);
+           $('.add-ajax-request').append(data);
+        });
+      }else{
+        url = $(this).data('reverse');
 
-        if(number%2 == 0){
-            $.get( url, function( data ) {
-                data = $(data);
-                $('.add-ajax-request').append(data);
-            });
-        }else{
-            url = $(this).data('reverse');
+        $.get( url, function( data ) {
+          data = $(data);
+          $('.add-ajax-request').append(data);
+        });
+      }
 
-            $.get( url, function( data ) {
-                data = $(data);
-                $('.add-ajax-request').append(data);
-            });
-        }
-
-        number++;
+      number++;
 
 
-    });
+  });
 }
 // Filters
 // =========================
@@ -331,16 +331,16 @@ var owInitFilterSearch = function () {
 }
 var owFixMobile = function() {
 
-    $('header .hasSubNav').on('click', function(){
-        var element = $(this).find('ul');
-        element.toggleClass('visible');
-    });
+  $('header .hasSubNav').on('click', function(){
+    var element = $(this).find('ul');
+    element.toggleClass('visible');
+  });
 
     $('#logo-wrapper, section').on('click', function(){
-        if($('header .hasSubNav ul').hasClass('visible')){
-            var element = $('header').find('ul.visible');
-            element.removeClass('visible');
-        }
+      if($('header .hasSubNav ul').hasClass('visible')){
+        var element = $('header').find('ul.visible');
+        element.removeClass('visible');
+      }
     });
 
 }
@@ -629,227 +629,227 @@ var owInitAleaGrid = function (grid, dom, init) {
 
 var owInitLinkChangeEffect = function() {
 
-    $('header a, footer a, .cards a, .block-push a, .block-infos a, .small-push a, .texte-01 a, .item a, .link').on('click', function(e) {
+  $('header a, footer a, .cards a, .block-push a, .block-infos a, .small-push a, .texte-01 a, .item a, .link').on('click', function(e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        var url = $(this).attr('href');
+    var url = $(this).attr('href');
 
-        $('.overlay').addClass('animated fadeIn visible');
+    $('.overlay').addClass('animated fadeIn visible');
 
-        setTimeout(function(){
-            window.history.pushState('','',url);
-            window.location.reload();
+    setTimeout(function(){
+        window.history.pushState('','',url);
+        window.location.reload();
 
-        }, 1000);
+    }, 1000);
 
-        return false;
-    });
+    return false;
+  });
 }
 
 var owInitPopin = function(id) {
 
 
-    if(id == 'popin-landing-e') {
+  if(id == 'popin-landing-e') {
 
 
-        var $popin = $('.popin-landing-e');
+    var $popin = $('.popin-landing-e');
 
-        var visiblePopin = function() {
-            var dateFestival = $('.compteur').data("date");
+    var visiblePopin = function() {
+      var dateFestival = $('.compteur').data("date");
 
-            var dateToday = new Date();
-            dateFestival = new Date(dateFestival);
-
-
-            var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
-
-            var jours = Math.floor(timeLanding / (60 * 60 * 24));
-            var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
-            var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
-            var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+      var dateToday = new Date();
+      dateFestival = new Date(dateFestival);
 
 
-            if(timeLanding < 0){
-                //pas de compteur ?
+      var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
 
-            }else if(timeLanding > 0){
-
-
-                var $day = $('.day').html(jours);
-                var $hour = $('.hour').html(heures);
-                var $minutes = $('.minutes').html(minutes);
-                var $secondes = $('.secondes').html(secondes);
-
-            }else{
-
-                //compteur terminé ! on ferme la popin
-                $popin.addClass('animated fadeOut').removeClass('visible');
-            }
-
-            actualisation = setInterval(function() {
-
-                var dateToday = new Date();
-                dateFestival = new Date(dateFestival);
-
-                var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
-
-                var jours = Math.floor(timeLanding / (60 * 60 * 24));
-                var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
-                var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
-                var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-
-                if(timeLanding < 0){
-                    //pas de compteur ?
-                    Cookies.set('popin-landing-e','1', { expires: 365 });
-
-                }else if(timeLanding > 0){
-
-                    var $day = $('.day').html(jours);
-                    var $hour = $('.hour').html(heures);
-                    var $minutes = $('.minutes').html(minutes);
-                    var $secondes = $('.secondes').html(secondes);
-
-                }else{
-                    //compteur terminé ! on ferme la popin
-                    $popin.addClass('animated fadeOut').removeClass('visible');
-                    Cookies.set('popin-landing-e','1', { expires: 365 });
-                }
-            }, 1000);
-
-        };
-
-        var fClosePopin = function() {
+      var jours = Math.floor(timeLanding / (60 * 60 * 24));
+      var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
+      var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+      var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
 
-            $('.popin-landing-e').on('click', function(){
+      if(timeLanding < 0){
+        //pas de compteur ?
+
+      }else if(timeLanding > 0){
 
 
-                $popin.addClass('animated fadeOut');
-                Cookies.set('popin-landing-e','1', { expires: 365 });
+        var $day = $('.day').html(jours);
+        var $hour = $('.hour').html(heures);
+        var $minutes = $('.minutes').html(minutes);
+        var $secondes = $('.secondes').html(secondes);
 
-                setTimeout(function(){   $popin.removeClass('visible'); }, 500);
-            });
+      }else{
+
+        //compteur terminé ! on ferme la popin
+        $popin.addClass('animated fadeOut').removeClass('visible');
+      }
+
+      actualisation = setInterval(function() {
+
+        var dateToday = new Date();
+        dateFestival = new Date(dateFestival);
+
+        var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
+
+        var jours = Math.floor(timeLanding / (60 * 60 * 24));
+        var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
+        var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+        var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+
+        if(timeLanding < 0){
+          //pas de compteur ?
+          Cookies.set('popin-landing-e','1', { expires: 365 });
+
+        }else if(timeLanding > 0){
+
+          var $day = $('.day').html(jours);
+          var $hour = $('.hour').html(heures);
+          var $minutes = $('.minutes').html(minutes);
+          var $secondes = $('.secondes').html(secondes);
+
+        }else{
+          //compteur terminé ! on ferme la popin
+          $popin.addClass('animated fadeOut').removeClass('visible');
+          Cookies.set('popin-landing-e','1', { expires: 365 });
         }
+      }, 1000);
 
-        // Verifier si les cookies existent
-        if(typeof Cookies.get('popin-landing-e') === "undefined") {
-            Cookies.set('popin-landing-e','0', { expires: 365 });
-        }
+    };
 
-        var closePopin = Cookies.get('popin-landing-e');
+    var fClosePopin = function() {
 
-        if(closePopin == 0) {
-            $popin.addClass('animated fadeIn').addClass('visible');
-            visiblePopin();
-            fClosePopin();
-        }else {
-            Cookies.set('popin-landing-e','1', { expires: 365 });
-        }
+
+      $('.popin-landing-e').on('click', function(){
+
+
+        $popin.addClass('animated fadeOut');
+        Cookies.set('popin-landing-e','1', { expires: 365 });
+
+        setTimeout(function(){   $popin.removeClass('visible'); }, 500);
+      });
     }
 
-    if(id == 'popin-timer-banner') {
-
-        var $popin = $('.b-timer');
-
-        var visiblePopinB = function() {
-            var dateFestival = $('.time').data("date");
-
-            var dateToday = new Date();
-            dateFestival = new Date(dateFestival);
-
-            var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
-
-            var jours = Math.floor(timeLanding / (60 * 60 * 24));
-            var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
-            var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
-            var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-
-            if(timeLanding < 0){
-                //pas de compteur ?
-            }else if(timeLanding > 0){
-
-                var $day = $('.day').html(jours);
-                var $hour = $('.hour').html(heures);
-                var $minutes = $('.minutes').html(minutes);
-                var $secondes = $('.secondes').html(secondes);
-
-            }else{
-                //compteur terminé ! on ferme la popin
-                $popin.addClass('animated fadeOut').removeClass('visible');
-            }
-
-            actualisation = setInterval(function() {
-
-                var dateToday = new Date();
-                dateFestival = new Date(dateFestival);
-
-                var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
-
-                var jours = Math.floor(timeLanding / (60 * 60 * 24));
-                var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
-                var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
-                var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-
-                if(timeLanding < 0){
-                    //pas de compteur ?
-                    Cookies.set('popin-banner','1', { expires: 365 });
-
-                }else if(timeLanding > 0){
-
-                    var $timer = $('.time').html(jours+' : '+heures+' : '+minutes+' : '+secondes);
-
-                }else{
-                    //compteur terminé ! on ferme la popin
-                    $popin.addClass('animated fadeOut').removeClass('visible');
-                    Cookies.set('popin-banner','1', { expires: 365 });
-                }
-            }, 1000);
-
-            setTimeout(function(){
-                /*
-                 fClosePopinB('force');
-                 */
-            }, 5000);
-
-        };
-
-        var fClosePopinB = function(force) {
-
-            if(force == 'force'){
-                $popin.addClass('animated fadeOut');
-
-                setTimeout(function(){   $popin.removeClass('visible'); }, 500);
-
-            }
-
-            $('.c-icon').on('click', function(){
-                $popin.addClass('animated fadeOut');
-                Cookies.set('popin-banner','1', { expires: 365 });
-
-                setTimeout(function(){   $popin.removeClass('visible'); }, 500);
-            });
-        }
-
-        // Verifier si les cookies existent
-        if(typeof Cookies.get('popin-banner') === "undefined") {
-            Cookies.set('popin-banner','0', { expires: 365 });
-        }
-
-        var closePopin = Cookies.get('popin-banner');
-
-        console.log(closePopin);
-
-        if(closePopin == 0) {
-            $popin.addClass('animated fadeIn').addClass('visible');
-            visiblePopinB();
-            fClosePopinB();
-
-        }else {
-            Cookies.set('popin-banner','1', { expires: 365 });
-        }
-
+    // Verifier si les cookies existent
+    if(typeof Cookies.get('popin-landing-e') === "undefined") {
+      Cookies.set('popin-landing-e','0', { expires: 365 });
     }
+
+    var closePopin = Cookies.get('popin-landing-e');
+
+    if(closePopin == 0) {
+      $popin.addClass('animated fadeIn').addClass('visible');
+      visiblePopin();
+      fClosePopin();
+    }else {
+      Cookies.set('popin-landing-e','1', { expires: 365 });
+    }
+  }
+
+  if(id == 'popin-timer-banner') {
+
+    var $popin = $('.b-timer');
+
+    var visiblePopinB = function() {
+      var dateFestival = $('.time').data("date");
+
+      var dateToday = new Date();
+      dateFestival = new Date(dateFestival);
+
+      var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
+
+      var jours = Math.floor(timeLanding / (60 * 60 * 24));
+      var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
+      var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+      var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+
+      if(timeLanding < 0){
+        //pas de compteur ?
+      }else if(timeLanding > 0){
+
+        var $day = $('.day').html(jours);
+        var $hour = $('.hour').html(heures);
+        var $minutes = $('.minutes').html(minutes);
+        var $secondes = $('.secondes').html(secondes);
+
+      }else{
+        //compteur terminé ! on ferme la popin
+        $popin.addClass('animated fadeOut').removeClass('visible');
+      }
+
+      actualisation = setInterval(function() {
+
+        var dateToday = new Date();
+        dateFestival = new Date(dateFestival);
+
+        var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
+
+        var jours = Math.floor(timeLanding / (60 * 60 * 24));
+        var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
+        var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+        var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+
+        if(timeLanding < 0){
+          //pas de compteur ?
+          Cookies.set('popin-banner','1', { expires: 365 });
+
+        }else if(timeLanding > 0){
+
+          var $timer = $('.time').html(jours+' : '+heures+' : '+minutes+' : '+secondes);
+
+        }else{
+          //compteur terminé ! on ferme la popin
+          $popin.addClass('animated fadeOut').removeClass('visible');
+          Cookies.set('popin-banner','1', { expires: 365 });
+        }
+      }, 1000);
+
+      setTimeout(function(){
+/*
+        fClosePopinB('force'); 
+*/
+      }, 5000);
+
+    };
+
+    var fClosePopinB = function(force) {
+
+      if(force == 'force'){
+        $popin.addClass('animated fadeOut');
+
+        setTimeout(function(){   $popin.removeClass('visible'); }, 500);
+
+      }
+
+      $('.c-icon').on('click', function(){
+        $popin.addClass('animated fadeOut');
+        Cookies.set('popin-banner','1', { expires: 365 });
+
+        setTimeout(function(){   $popin.removeClass('visible'); }, 500);
+      });
+    }
+
+    // Verifier si les cookies existent
+    if(typeof Cookies.get('popin-banner') === "undefined") {
+      Cookies.set('popin-banner','0', { expires: 365 });
+    }
+
+    var closePopin = Cookies.get('popin-banner');
+
+    console.log(closePopin);
+
+    if(closePopin == 0) {
+      $popin.addClass('animated fadeIn').addClass('visible');
+      visiblePopinB();
+      fClosePopinB();
+
+    }else {
+      Cookies.set('popin-banner','1', { expires: 365 });
+    }
+
+  }
 
 };
 
@@ -959,50 +959,50 @@ var owInitFooterScroll = function () {
 
 var owInitSliderSelect = function(id) {
 
-    if(id == "timelapse"){
-        var slider = document.getElementById('timelapse');
-        var snapValues = [
-            document.getElementById('slider-snap-value-lower'),
-            document.getElementById('slider-snap-value-upper')
-        ];
+  if(id == "timelapse"){
+    var slider = document.getElementById('timelapse');
+    var snapValues = [
+    	document.getElementById('slider-snap-value-lower'),
+    	document.getElementById('slider-snap-value-upper')
+    ];
 
 
-        noUiSlider.create(slider, {
-            start: [1946, GLOBALS.year],//todo script
-            connect: true,
-            range: {
-                'min': 1946,
-                'max': GLOBALS.year
-            }
-        });
+    noUiSlider.create(slider, {
+    	start: [1946, GLOBALS.year],//todo script
+    	connect: true,
+    	range: {
+    		'min': 1946,
+    		'max': GLOBALS.year
+    	}
+     });
 
-        slider.noUiSlider.on('update', function( values, handle ) {
+    slider.noUiSlider.on('update', function( values, handle ) {
 
-            snapValues[handle].innerHTML = parseInt(values[handle]);
-        });
-    }
+    	snapValues[handle].innerHTML = parseInt(values[handle]);
+    });
+  }
 
-    if(id == 'tab-selection') {
-        var $tab = $('.icon-s');
+  if(id == 'tab-selection') {
+    var $tab = $('.icon-s');
 
-        $tab.on('click', function(){
-            var input = $(this).find('input');
+    $tab.on('click', function(){
+      var input = $(this).find('input');
 
-            if(input[0].checked){
-                input[0].checked = false;
-                $(this).removeClass('active');
-            }else{
-                $('.more-search').addClass('active');
-                input[0].checked = true;
-                $(this).addClass('active');
-            }
+      if(input[0].checked){
+        input[0].checked = false;
+        $(this).removeClass('active');
+      }else{
+        $('.more-search').addClass('active');
+        input[0].checked = true;
+        $(this).addClass('active');
+      }
 
-            if(!$('.tabs-two .icon-s').hasClass('active')){
-                $('.more-search').removeClass('active');
-            }
+      if(!$('.tabs-two .icon-s').hasClass('active')){
+        $('.more-search').removeClass('active');
+      }
 
-        });
-    }
+    });
+  }
 }
 
 //setup twitter
@@ -1230,12 +1230,12 @@ var initRs = function () {
                 $('#share-box').remove();
             }
 
-            /*           setTimeout(function () {
-             $('#share-box').animate({'opacity': 0}, 200, function () {
-             $('#share-box').removeClass('show');
-             $('#share-box').remove();
-             });
-             }, 3000);*/
+/*           setTimeout(function () {
+                $('#share-box').animate({'opacity': 0}, 200, function () {
+                    $('#share-box').removeClass('show');
+                    $('#share-box').remove();
+                });
+            }, 3000);*/
         });
 
     }
@@ -1244,442 +1244,442 @@ var initRs = function () {
 }
 
 /*------------------------------------------------------------------------------
- JS Document (https://developer.mozilla.org/en/JavaScript)
+    JS Document (https://developer.mozilla.org/en/JavaScript)
 
- project:    Festival de Cannes
- Author:     OHWEE
- created:    2016-24-03
+    project:    Festival de Cannes
+    Author:     OHWEE
+    created:    2016-24-03
 
- summary:    SLIDER HOME
- ----------------------------------------------------------------------------- */
+    summary:    SLIDER HOME
+----------------------------------------------------------------------------- */
 
 
 var owInitSlider = function(sliderName) {
-    /* SLIDER HOME
-     ----------------------------------------------------------------------------- */
-    if(sliderName == 'home') {
+  /* SLIDER HOME
+  ----------------------------------------------------------------------------- */
+  if(sliderName == 'home') {
 
-        var slide = $('.slider-carousel').owlCarousel({
-            navigation          :  true,
-            items               :  1,
-            autoWidth           :  true,
-            autoplay            :  true,
-            autoplayTimeout     :  4000,
-            autoplayHoverPause  :  true,
-            loop                :  true,
-            smartSpeed          :  700
-        });
+    var slide = $('.slider-carousel').owlCarousel({
+      navigation          :  true,
+      items               :  1,
+      autoWidth           :  true,
+      autoplay            :  true,
+      autoplayTimeout     :  4000,
+      autoplayHoverPause  :  true,
+      loop                :  true,
+      smartSpeed          :  700
+    });
 
-        slide.on('changed.owl.carousel', function(event) {
-            setTimeout(function(){
-                var $item   = $('.owl-item.active').find('.item');
-                var number  = $item.data('item');
-                var $active = $(".container-images .item.active");
+    slide.on('changed.owl.carousel', function(event) {
+      setTimeout(function(){
+        var $item   = $('.owl-item.active').find('.item');
+        var number  = $item.data('item');
+        var $active = $(".container-images .item.active");
 
-                $active.removeClass("fadeInRight").addClass('fadeOut');
+        $active.removeClass("fadeInRight").addClass('fadeOut');
 
-                setTimeout(function(){
-                    $(".container-images .item[data-item="+number+"]").removeClass('fadeOut').addClass('active fadeInRight');
-                    $active.removeClass('active');
-                }, 500);
-            }, 200);
-        });
+        setTimeout(function(){
+          $(".container-images .item[data-item="+number+"]").removeClass('fadeOut').addClass('active fadeInRight');
+          $active.removeClass('active');
+        }, 500);
+      }, 200);
+    });
+  }
+
+
+  /* SLIDER 01
+  ----------------------------------------------------------------------------- */
+  if(sliderName == 'slider-01') {
+    var slide01 = $('.slider-01').owlCarousel({
+      navigation          : false,
+      items               : 1,
+      autoWidth           : true,
+      smartSpeed          : 700,
+      center              : true
+    });
+
+    // Custom Navigation Events
+    $(document).on('click', '.slider-01 .owl-item', function(){
+      var number = $(this).index();
+
+      $('.slider-01 .center').removeClass('center');
+      $(this).addClass('center');
+      slide01.trigger('to.owl.carousel', number);
+    });
+  }
+
+  /* SLIDER 02
+  ----------------------------------------------------------------------------- */
+  if(sliderName == 'slider-02' && !$('.s-video-playlist').length) {
+
+    var slide01 = $('.slider-02').owlCarousel({
+      navigation          : false,
+      items               : 1,
+      autoWidth           : true,
+      smartSpeed          : 700,
+      center              : true,
+      margin              : 27.5
+    });
+
+    // Custom Navigation Events
+    $(document).on('click', '.slider-02 .owl-item', function(){
+      var number = $(this).index();
+
+      $('.slider-02 .center').removeClass('center');
+      $(this).addClass('center');
+      slide01.trigger('to.owl.carousel', number);
+
+    });
+  }
+
+  if(sliderName == "timelapse-01") {
+
+    //Init var
+    var slider = document.getElementById('timelapse-01');
+    var $slide = $('.slides');
+    var $slideCalc1 = $('.slides-calc1');
+    var $slideCalc1Slide = $('.slides-calc1 .slide');
+    var $slideCalc2 = $('.slides-calc2');
+
+    var numberSlide = $('.slider-restropective').size();
+    var sizeSlide = $('.slider-restropective').width();
+    var finalSizeSlider = numberSlide * sizeSlide + 1000;
+
+    var initOpenAjax = function() { //ajax
+      $('.discover').on('click', function(e){
+
+        e.preventDefault();
+        var url = $(this).data('url');
+
+        $.get(url, function(data) {
+
+          $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
+          $('.timelapse').css('display','none');
+          $('.discover').css('display','none');
+          $('.slides-calc2').css('display','none');
+          $('.title-big-date').addClass('title-2').removeClass('title-big-date');
+          $('.title-edition').addClass('title-4').removeClass('title-edition');
+
+          var imgurl = $('.block-push-top.big .container img').attr('src');
+          $('.block-push-top.big .container img').css('display','none');
+
+          $('.block-push-top.big').css('background-image','url('+imgurl+')');
+
+          var data = $(data).find('.contain-ajax');
+
+          $('.ajax-section').html(data);
+          owInitNavSticky(1);
+
+          window.history.pushState('','',url);
+         });
+
+         return false;
+      });
     }
 
+    // init slider
+    $slide.css('width',finalSizeSlider); // change size slider
 
-    /* SLIDER 01
-     ----------------------------------------------------------------------------- */
-    if(sliderName == 'slider-01') {
-        var slide01 = $('.slider-01').owlCarousel({
-            navigation          : false,
-            items               : 1,
-            autoWidth           : true,
-            smartSpeed          : 700,
-            center              : true
-        });
-
-        // Custom Navigation Events
-        $(document).on('click', '.slider-01 .owl-item', function(){
-            var number = $(this).index();
-
-            $('.slider-01 .center').removeClass('center');
-            $(this).addClass('center');
-            slide01.trigger('to.owl.carousel', number);
-        });
-    }
-
-    /* SLIDER 02
-     ----------------------------------------------------------------------------- */
-    if(sliderName == 'slider-02' && !$('.s-video-playlist').length) {
+    var test = '418%';
+    $slideCalc1.css('width', test); // change size slider
 
-        var slide01 = $('.slider-02').owlCarousel({
-            navigation          : false,
-            items               : 1,
-            autoWidth           : true,
-            smartSpeed          : 700,
-            center              : true,
-            margin              : 27.5
-        });
+      var maxDate = $('.timelapse .date-last').data('lastdate');
 
-        // Custom Navigation Events
-        $(document).on('click', '.slider-02 .owl-item', function(){
-            var number = $(this).index();
-
-            $('.slider-02 .center').removeClass('center');
-            $(this).addClass('center');
-            slide01.trigger('to.owl.carousel', number);
-
-        });
-    }
-
-    if(sliderName == "timelapse-01") {
-
-        //Init var
-        var slider = document.getElementById('timelapse-01');
-        var $slide = $('.slides');
-        var $slideCalc1 = $('.slides-calc1');
-        var $slideCalc1Slide = $('.slides-calc1 .slide');
-        var $slideCalc2 = $('.slides-calc2');
-
-        var numberSlide = $('.slider-restropective').size();
-        var sizeSlide = $('.slider-restropective').width();
-        var finalSizeSlider = numberSlide * sizeSlide + 1000;
+    //init width of slide
+    noUiSlider.create(slider, {
+      start: [1945],//todo script
+      range: {
+        'min': 1945,
+        'max': maxDate
+      }
+     });
 
-        var initOpenAjax = function() { //ajax
-            $('.discover').on('click', function(e){
+    var initDrag = 1;
 
-                e.preventDefault();
-                var url = $(this).data('url');
+   slider.noUiSlider.on('update', function( values, handle ) {
 
-                $.get(url, function(data) {
+      //drag
+      var w = $(window).width() +4;
+      var number = 0;
 
-                    $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
-                    $('.timelapse').css('display','none');
-                    $('.discover').css('display','none');
-                    $('.slides-calc2').css('display','none');
-                    $('.title-big-date').addClass('title-2').removeClass('title-big-date');
-                    $('.title-edition').addClass('title-4').removeClass('title-edition');
 
-                    var imgurl = $('.block-push-top.big .container img').attr('src');
-                    $('.block-push-top.big .container img').css('display','none');
+      valuesFloat = parseFloat(values[handle]);
+      valuesInt = parseInt(values[handle]);
+      values = Math.round(valuesFloat);
+      number = values - 1945;
 
-                    $('.block-push-top.big').css('background-image','url('+imgurl+')');
+      $('.slides-calc1 .date').html(values);
 
-                    var data = $(data).find('.contain-ajax');
+      $('.big img').removeClass('open');
+      $('.slider-restropective .calc3').css('display','block');
+      $('.slider-restropective .calc4').css('display','block');
 
-                    $('.ajax-section').html(data);
-                    owInitNavSticky(1);
+      if(initDrag) {
+        initDrag = 0;
+      }
 
-                    window.history.pushState('','',url);
-                });
+      if(values > 1945){
+        $('.slides-calc1').css('display','block');
+        $('.slides-calc2.navigation').removeClass('begin');
+      }else {
+        $('.slides-calc1').css('display','none');
+        $('.slides-calc2.navigation').addClass('begin');
+      }
 
-                return false;
-            });
-        }
+      if(number > 0.7 && initDrag == 0){
+        $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
+        $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
+      }else if(number < 0.9){
+        $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
+        $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
+      }
 
-        // init slider
-        $slide.css('width',finalSizeSlider); // change size slider
+      //paralax calc 3
 
-        var test = '418%';
-        $slideCalc1.css('width', test); // change size slider
+      var val2 = - (valuesFloat - 1945 - number) * 380; //todo script ?
+      $('.slider-restropective[data-slide='+number+'] .calc3').css('transform','translate('+val2+'px)');
 
-        var maxDate = $('.timelapse .date-last').data('lastdate');
+      //paralax cal 4
 
-        //init width of slide
-        noUiSlider.create(slider, {
-            start: [1945],//todo script
-            range: {
-                'min': 1945,
-                'max': maxDate
-            }
-        });
+      var val3 = - (valuesFloat - 1945 - number) * 80; //todo script ?
+      $('.slider-restropective[data-slide='+number+'] .calc4').css('transform','translate('+val3+'px)');
 
-        var initDrag = 1;
+      var val = - w * (values - 1945); //todo script ?
 
-        slider.noUiSlider.on('update', function( values, handle ) {
+      $slide.css('transform','translate('+val+'px)');
 
-            //drag
-            var w = $(window).width() +4;
-            var number = 0;
+      $('.slider-restropective').removeClass('big').addClass('small');
+      $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
+      $('.slider-restropective .texts').removeClass('zoomIn fadeIn pulse visible');
 
+     });
 
-            valuesFloat = parseFloat(values[handle]);
-            valuesInt = parseInt(values[handle]);
-            values = Math.round(valuesFloat);
-            number = values - 1945;
+     slider.noUiSlider.on('end', function(values, handle){ //end drag
 
-            $('.slides-calc1 .date').html(values);
+      var w = $('body').width() +4;
+       valuesFloat = parseFloat(values[handle]);
+       values = Math.round(valuesFloat);
+       number = values - 1945;
 
-            $('.big img').removeClass('open');
-            $('.slider-restropective .calc3').css('display','block');
-            $('.slider-restropective .calc4').css('display','block');
 
-            if(initDrag) {
-                initDrag = 0;
-            }
+       var val = - w * (number) ; //todo script ?
 
-            if(values > 1945){
-                $('.slides-calc1').css('display','block');
-                $('.slides-calc2.navigation').removeClass('begin');
-            }else {
-                $('.slides-calc1').css('display','none');
-                $('.slides-calc2.navigation').addClass('begin');
-            }
+       $slide.css('transform','translate('+val+'px)');
 
-            if(number > 0.7 && initDrag == 0){
-                $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
-                $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
-            }else if(number < 0.9){
-                $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
-                $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
-            }
+       $('.slider-restropective .calc3').css('display','none');
+       $('.slider-restropective .calc4').css('display','none');
 
-            //paralax calc 3
+       var slideElement = $('.slider-restropective[data-slide='+number+']');
+       var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
 
-            var val2 = - (valuesFloat - 1945 - number) * 380; //todo script ?
-            $('.slider-restropective[data-slide='+number+'] .calc3').css('transform','translate('+val2+'px)');
+       slideElement.removeClass('small').addClass('big');
+       $('.big img').addClass('open');
 
-            //paralax cal 4
+       setTimeout(function(){
 
-            var val3 = - (valuesFloat - 1945 - number) * 80; //todo script ?
-            $('.slider-restropective[data-slide='+number+'] .calc4').css('transform','translate('+val3+'px)');
+         slideElementText.addClass('animated zoomIn fadeIn visible');
+         $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-            var val = - w * (values - 1945); //todo script ?
+         setTimeout(function(){
 
-            $slide.css('transform','translate('+val+'px)');
+           slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
+           $('.slides-calc1').css('display','none');
+           initOpenAjax();
+         }, 600);
+       }, 900);
 
-            $('.slider-restropective').removeClass('big').addClass('small');
-            $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
-            $('.slider-restropective .texts').removeClass('zoomIn fadeIn pulse visible');
+       $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
 
-        });
+     });
 
-        slider.noUiSlider.on('end', function(values, handle){ //end drag
+     var animation = function(event) {
 
-            var w = $('body').width() +4;
-            valuesFloat = parseFloat(values[handle]);
-            values = Math.round(valuesFloat);
-            number = values - 1945;
+       var date = $('.slides-calc1 .date').html();
+       date = parseInt(date);
 
+       if(event == "next"){
+         date = date +1;
+         slider.noUiSlider.set([date]);
+         stopAnimation();
+       }
 
-            var val = - w * (number) ; //todo script ?
+       if(event == "prev"){
+         date = date -1;
+         slider.noUiSlider.set([date]);
+         stopAnimation();
+       }
 
-            $slide.css('transform','translate('+val+'px)');
+       if(event == "next-open"){
+         date = date +1;
+         slider.noUiSlider.set([date]);
+         animationOpen();
+       }
 
-            $('.slider-restropective .calc3').css('display','none');
-            $('.slider-restropective .calc4').css('display','none');
+       if(event == "prev-open"){
+         date = date -1;
+         slider.noUiSlider.set([date]);
+         animationOpen();
+       }
 
-            var slideElement = $('.slider-restropective[data-slide='+number+']');
-            var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
+       return false;
+     }
 
-            slideElement.removeClass('small').addClass('big');
-            $('.big img').addClass('open');
+     var stopAnimation = function() {
 
-            setTimeout(function(){
+       var w = $('body').width() +4;
+       values = $('.slides-calc1 .date').html();
+       number = values - 1945;
+       var val = - w * (values - 1945); //todo script ?
 
-                slideElementText.addClass('animated zoomIn fadeIn visible');
-                $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-                setTimeout(function(){
+       $slide.css('transform','translate('+val+'px)');
 
-                    slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
-                    $('.slides-calc1').css('display','none');
-                    initOpenAjax();
-                }, 600);
-            }, 900);
+       $('.slider-restropective .calc3').css('display','none');
+       $('.slider-restropective .calc4').css('display','none');
 
-            $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
+       var slideElement = $('.slider-restropective[data-slide='+number+']');
+       var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
 
-        });
+       slideElement.removeClass('small').addClass('big');
+       $('.big img').addClass('open');
 
-        var animation = function(event) {
+       setTimeout(function(){
 
-            var date = $('.slides-calc1 .date').html();
-            date = parseInt(date);
+         slideElementText.addClass('animated zoomIn fadeIn visible');
+         $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-            if(event == "next"){
-                date = date +1;
-                slider.noUiSlider.set([date]);
-                stopAnimation();
-            }
+         setTimeout(function(){
 
-            if(event == "prev"){
-                date = date -1;
-                slider.noUiSlider.set([date]);
-                stopAnimation();
-            }
+           slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
+           $('.slides-calc1').css('display','none');
+           initOpenAjax();
 
-            if(event == "next-open"){
-                date = date +1;
-                slider.noUiSlider.set([date]);
-                animationOpen();
-            }
+         }, 600);
+       }, 900);
 
-            if(event == "prev-open"){
-                date = date -1;
-                slider.noUiSlider.set([date]);
-                animationOpen();
-            }
+       $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
+     }
 
-            return false;
-        }
+      var animationOpen = function() {
+        var w = $('body').width() +4;
+        values = $('.slides-calc1 .date').html();
+        number = values - 1945;
+        var val = - w * (values - 1945) - 10; //todo script ?
+        var slideElement = $('.slider-restropective[data-slide='+number+']');
+        var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
 
-        var stopAnimation = function() {
+        $('.slider-restropective .calc3').css('display','none');
+        $('.slider-restropective .calc4').css('display','none');
 
-            var w = $('body').width() +4;
-            values = $('.slides-calc1 .date').html();
-            number = values - 1945;
-            var val = - w * (values - 1945); //todo script ?
+        $slide.css('transform','translate('+val+'px)');
+        $('.slides-calc1').css('display','none');
+        slideElement.addClass('big');
 
+        var imgurl = $('.block-push-top.big .container img').attr('src');
+        $('.block-push-top.big .container img').css('display','none');
+        $('.block-push-top.big').css('background-image','url('+imgurl+')');
 
-            $slide.css('transform','translate('+val+'px)');
+        setTimeout(function(){
 
-            $('.slider-restropective .calc3').css('display','none');
-            $('.slider-restropective .calc4').css('display','none');
+          slideElementText.addClass('animated zoomIn fadeIn visible');
+          $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-            var slideElement = $('.slider-restropective[data-slide='+number+']');
-            var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
+          setTimeout(function(){
 
-            slideElement.removeClass('small').addClass('big');
-            $('.big img').addClass('open');
-
-            setTimeout(function(){
-
-                slideElementText.addClass('animated zoomIn fadeIn visible');
-                $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
-
-                setTimeout(function(){
-
-                    slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
-                    $('.slides-calc1').css('display','none');
-                    initOpenAjax();
-
-                }, 600);
-            }, 900);
-
-            $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
-        }
-
-        var animationOpen = function() {
-            var w = $('body').width() +4;
-            values = $('.slides-calc1 .date').html();
-            number = values - 1945;
-            var val = - w * (values - 1945) - 10; //todo script ?
-            var slideElement = $('.slider-restropective[data-slide='+number+']');
-            var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
-
-            $('.slider-restropective .calc3').css('display','none');
-            $('.slider-restropective .calc4').css('display','none');
-
-            $slide.css('transform','translate('+val+'px)');
+            slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
             $('.slides-calc1').css('display','none');
-            slideElement.addClass('big');
+            initOpenAjax();
 
-            var imgurl = $('.block-push-top.big .container img').attr('src');
-            $('.block-push-top.big .container img').css('display','none');
-            $('.block-push-top.big').css('background-image','url('+imgurl+')');
+          }, 600);
+        }, 900);
+      }
+     // ON CLICK
 
-            setTimeout(function(){
+     $('.slides-calc2.next').on('click', function(){
+       animation('next');
+     });
 
-                slideElementText.addClass('animated zoomIn fadeIn visible');
-                $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
+     $('.slides-calc2.prev').on('click', function(){
+       animation('prev');
+     });
 
-                setTimeout(function(){
 
-                    slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
-                    $('.slides-calc1').css('display','none');
-                    initOpenAjax();
+     $('.date-next').on('click', function(){
+       animation('next-open');
 
-                }, 600);
-            }, 900);
-        }
-        // ON CLICK
+       var $this = $(this);
 
-        $('.slides-calc2.next').on('click', function(){
-            animation('next');
+       var url = $this.data('url');
+         
+       $.get(url, function(data) {
+        var data = $(data).find('.contain-ajax');
+
+         $('.ajax-section').html(data);
+         owInitNavSticky(1);
+
+         window.history.pushState('','',url);
         });
 
-        $('.slides-calc2.prev').on('click', function(){
-            animation('prev');
-        });
+     });
+
+     $('.date-back').on('click', function(){
 
 
-        $('.date-next').on('click', function(){
-            animation('next-open');
-
-            var $this = $(this);
-
-            var url = $this.data('url');
-
-            $.get(url, function(data) {
-                var data = $(data).find('.contain-ajax');
-
-                $('.ajax-section').html(data);
-                owInitNavSticky(1);
-
-                window.history.pushState('','',url);
-            });
-
-        });
-
-        $('.date-back').on('click', function(){
+       var url = $(this).data('url');
 
 
-            var url = $(this).data('url');
+       $.get(url, function(data) {
+         var data = $(data).find('.contain-ajax');
 
+         $('.ajax-section').html(data);
+         owInitNavSticky(1);
 
-            $.get(url, function(data) {
-                var data = $(data).find('.contain-ajax');
+         window.history.pushState('','',url);
+       });
 
-                $('.ajax-section').html(data);
-                owInitNavSticky(1);
+       animation('prev-open');
+     });
 
-                window.history.pushState('','',url);
-            });
+     if($('.restrospective-init').length) {
 
-            animation('prev-open');
-        });
+       var w = $('body').width() +4;
+       values = $('.slides-calc1 .date').data('date');
 
-        if($('.restrospective-init').length) {
+       slider.noUiSlider.set([values]);
 
-            var w = $('body').width() +4;
-            values = $('.slides-calc1 .date').data('date');
+       number = values - 1945;
+       var val = - w * (values - 1945) - 10; //todo script
 
-            slider.noUiSlider.set([values]);
+       $slide.css('transform','translate('+val+'px)');
 
-            number = values - 1945;
-            var val = - w * (values - 1945) - 10; //todo script
-
-            $slide.css('transform','translate('+val+'px)');
-
-            animationOpen();
-        }
-    }
+       animationOpen();
+      }
+  }
 };
 
 $(window).resize(function() {
 
-    if($('.retrospective').length) {
+  if($('.retrospective').length) {
 
-        var $slide = $('.slides');
-        var $slideCalc1 = $('.slides-calc1');
+     var $slide = $('.slides');
+     var $slideCalc1 = $('.slides-calc1');
 
-        var w = $('body').width() +4;
-        var numberSlide = $('.slider-restropective').size() +1;
-        var sizeSlide = $('.slider-restropective').width();
-        var finalSizeSlider = numberSlide * sizeSlide;
+     var w = $('body').width() +4;
+     var numberSlide = $('.slider-restropective').size() +1;
+     var sizeSlide = $('.slider-restropective').width();
+     var finalSizeSlider = numberSlide * sizeSlide;
 
-        $slide.css('width',finalSizeSlider); // change size slider
-        /*$slideCalc1.css('width',finalSizeSlider); // change size slider*/
+     $slide.css('width',finalSizeSlider); // change size slider
+     /*$slideCalc1.css('width',finalSizeSlider); // change size slider*/
 
-        values = $('.slides-calc1 .date').html();
-        number = values - 1945;
-        var val = - w * (values - 1945); //todo script ?
+     values = $('.slides-calc1 .date').html();
+     number = values - 1945;
+     var val = - w * (values - 1945); //todo script ?
 
 
-        $slide.css('transform','translate('+val+'px)');
+     $slide.css('transform','translate('+val+'px)');
 
-    }
+  }
 });
 
 /**
@@ -1880,13 +1880,13 @@ var openSlideShow = function (slider, hash) {
         '</div>' +
         '<div class="credit">' + images[centerElement].caption + '</div>' +
         '<a href="" class="share"><i class="icon icon-share"></i></a>' +
-        '<div class="buttons square img-slideshow-share rs-slideshow">' +
-        '<div class="texts-clipboard"></div>' +
-        '<a href="'+images[centerElement].facebookurl+'" rel="nofollow" class="button facebook ajax">' +
-        '<i class="icon icon-facebook"></i></a>' +
-        '<a href="'+images[centerElement].twitterurl+'" class="button twitter">' +
-        '<i class="icon icon-twitter"></i></a>' +
-        '<a href="#" rel="nofollow" class="link self button" data-clipboard-text="'+images[centerElement].url+'"><i class="icon icon-link"></i></a>' +
+            '<div class="buttons square img-slideshow-share rs-slideshow">' +
+            '<div class="texts-clipboard"></div>' +
+            '<a href="'+images[centerElement].facebookurl+'" rel="nofollow" class="button facebook ajax">' +
+            '<i class="icon icon-facebook"></i></a>' +
+            '<a href="'+images[centerElement].twitterurl+'" class="button twitter">' +
+            '<i class="icon icon-twitter"></i></a>' +
+            '<a href="#" rel="nofollow" class="link self button" data-clipboard-text="'+images[centerElement].url+'"><i class="icon icon-link"></i></a>' +
         '<a href="#" class="button popin-mail-open"><i class="icon icon-letter"></i></a></div>' +
         '<div class="chocolat-left active"><i class="icon icon-arrow-left"></i></div>' +
         '<div class="chocolat-right active"><i class="icon icon-arrow-right"></i></div>' +
@@ -1905,9 +1905,9 @@ var openSlideShow = function (slider, hash) {
                 "</div>");
         }else{
 
-            thumbnails.append("<div class='thumb'>" +
-                "<img  data-id='"+i+"' src='" + images[i].src + "' alt='" + images[i].data + "'/>" +
-                "</div>");
+        thumbnails.append("<div class='thumb'>" +
+            "<img  data-id='"+i+"' src='" + images[i].src + "' alt='" + images[i].data + "'/>" +
+            "</div>");
         }
     }
 
@@ -1971,7 +1971,7 @@ var openSlideShow = function (slider, hash) {
     })
 
     $('.chocolat-close').on('click', function(){
-        $('.c-fullscreen-slider').addClass('animated fadeOut');
+       $('.c-fullscreen-slider').addClass('animated fadeOut');
 
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
@@ -1992,25 +1992,25 @@ var openSlideShow = function (slider, hash) {
 
 var owInitTab = function(id) {
 
-    if(id == 'tab1') {
+  if(id == 'tab1') {
 
-        var $tab = $('.tab1 td');
+    var $tab = $('.tab1 td');
 
 
-        $tab.on('click', function(e) {
-            var $element = $(this);
-            var dataTab = $element.data('tab');
-            var $block = $('.block-contain-txt-register-movie[data-article='+dataTab+']');
+    $tab.on('click', function(e) {
+      var $element = $(this);
+      var dataTab = $element.data('tab');
+      var $block = $('.block-contain-txt-register-movie[data-article='+dataTab+']');
 
-            $tab.removeClass('active');
-            $element.addClass('active');
+      $tab.removeClass('active');
+      $element.addClass('active');
 
-            $('.block-contain-txt-register-movie').removeClass('active animated fadeInUp');
+      $('.block-contain-txt-register-movie').removeClass('active animated fadeInUp');
 
-            $block.addClass('active animated fadeInUp');
-        });
+      $block.addClass('active animated fadeInUp');
+    });
 
-    }
+  }
 };
 
 var owInitValidateNewsletter = function() {
@@ -2691,7 +2691,7 @@ $(document).ready(function () {
         $('.newsletter').focusin(function() {
 
             $('#breadcrumb, .all-contain, .social, .title, .subtitle, .footer-menu').on('click', function () {
-                hideKeyboard();
+              hideKeyboard();
             })
         });
     }

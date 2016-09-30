@@ -65,7 +65,7 @@ class GlobalController extends Controller {
                 foreach ($emails as $email){
                     $data    = $form->getData();
                     $artist = $request->get('artist');
-                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCCorporateBundle:Emails:share.html.twig', array(
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],

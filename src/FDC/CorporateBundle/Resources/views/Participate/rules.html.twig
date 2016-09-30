@@ -1,0 +1,67 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}
+    participate bright
+{% endblock bodyClass %}
+{% block body %}
+<section id="main">
+    {% set mainTrans = procedure.mainImage.findTranslationByLocale(app.request.locale) %}
+    {% if mainTrans is null or mainTrans.file is null %}
+        {% set mainTrans = procedure.mainImage.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set mainImage = mainTrans.file %}
+    <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %}); background-position: 0px 0px;">
+        <div class="vFlexAlign">
+            <div class="txts">
+                <strong class="title-3">{{ procedure|trans_fallback('title')|raw }}</strong>
+            </div>
+        </div>
+    </div> <!-- end block push -->
+
+
+    <div class="block-contain-txt-register-movie active all-contain block-01-ms padding-top block-rules">
+        {{ procedure|trans_fallback('procedureContent')|raw }}
+    </div> <!-- fin de all-contain block-01-xs padding-top -->
+
+    <div class="border-top border-bottom block-button-bottom">
+        <div class="block-01-ms">
+            <a href="#" class="button button-long"><i class="icon icon-download"></i>{{ 'download.pdf'|trans}}</a>
+            <div class="align-flex">
+                <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" class="button button-half">{{ procedure|trans_fallback('btnSelectionLabel') }}</a>
+                <a href="{{ procedure|trans_fallback('btnInscriptionlink') }}" class="button button-half">{{ procedure|trans_fallback('btnInscriptionLabel') }}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-contact block-01-ms">
+        <strong class="title-25">Contactez-nous</strong>
+        <div class="item i-1">
+            <strong class="bold-1">Département Films</strong>
+            <ul>
+                <li>Longs métrages en Compétition /</li>
+                <li>Hors Compétition / Un Certain Regard</li>
+                <li>3, rue Amélie - 75007 Paris - France</li>
+                <li>Tel. : +33 (0) 1 53 59 61 71</li>
+                <li>Fax. : +33 (0) 1 53 59 61 24</li>
+            </ul>
+            <strong class="bold-1">Email</strong>
+            <ul>
+                <li><a href="mailto:fbeauville@festival-cannes.fr">fbeauville@festival-cannes.fr</a></li>
+                <li><a href="mailto:zklein@festival-cannes.fr">zklein@festival-cannes.fr</a></li>
+                <li><a href="mailto:bmunoz@festival-cannes">bmunoz@festival-cannes</a></li>
+            </ul>
+        </div>
+
+        <div class="item i-2">
+            <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
+            <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
+            <div class="buttons-02">
+                <a href="#" class="button">Formulaire de contact</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock body %}

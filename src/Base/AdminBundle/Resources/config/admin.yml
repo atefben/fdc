@@ -1357,3 +1357,21 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FAQ, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.corpo_movie_inscription:
+        class: Base\AdminBundle\Admin\CorpoMovieInscriptionAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoMovieInscription, BaseAdminBundle:CorpoMovieInscriptionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMovieInscription}
+
+    base.admin.corpo_movie_inscription_has_procedure:
+        class: Base\AdminBundle\Admin\CorpoMovieInscriptionHasProcedureAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoMovieInscriptionHasProcedure, BaseAdminBundle:CorpoMovieInscriptionHasProcedureAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMovieInscriptionHasProcedure}
+
+    base.admin.corpo_movie_inscription_procedure:
+        class: Base\AdminBundle\Admin\CorpoMovieInscriptionProcedureAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoMovieInscriptionProcedure, BaseAdminBundle:CorpoMovieInscriptionProcedureAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMovieInscriptionProcedure}

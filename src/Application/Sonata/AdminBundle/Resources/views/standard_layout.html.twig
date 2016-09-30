@@ -327,7 +327,10 @@ file that was distributed with this source code.
                                         {% set active = false %}
                                         {% if app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_edit'
                                         or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_list'
-                                        or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipatesection_list' %}
+                                        or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipatesection_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscription_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_edit' %}
                                             {% set active = true %}
                                         {% endif %}
                                         <!--------------------------->
@@ -359,7 +362,19 @@ file that was distributed with this source code.
                                                         {{ 'dashboard.link.fdc_page_participate_section'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
-
+                                                <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscription_edit' ? 'active' }}">
+                                                    <a data-edit="true" class="fdc-check-lock-list"
+                                                       href="{{ path('admin_base_core_corpomovieinscription_edit', {id: admin_corpo_movie_inscription_id}) }}">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                        {{ 'dashboard.link.film_inscription'|trans({}, 'BaseAdminBundle') }}
+                                                    </a>
+                                                </li>
+                                                <li class="{{ (app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_list' or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_edit') ? 'active' }}">
+                                                    <a href="{{ path('admin_base_core_corpomovieinscriptionprocedure_list') }}">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                        {{ 'dashboard.link.film_procedure'|trans({}, 'BaseAdminBundle') }}
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <!--------------------------->
