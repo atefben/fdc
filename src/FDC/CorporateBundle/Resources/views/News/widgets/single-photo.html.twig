@@ -1,7 +1,5 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
-
-<div class="single-photo{% if photo_class is defined %}{{ photo_class }}{% endif %}">
-    <div class="photo-container">
+{% dump('la') %}
         {% set trans = photo.findTranslationByLocale(app.request.locale) %}
         {% if trans is null or trans.file is null %}
             {% set trans = photo.findTranslationByLocale('fr') %}
@@ -13,5 +11,3 @@
         {% if hideCopyright is not defined %}
             <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
         {% endif %}
-    </div>
-</div>

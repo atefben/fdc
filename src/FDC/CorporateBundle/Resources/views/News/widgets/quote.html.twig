@@ -1,0 +1,13 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+<div class="text">
+    <div class="quote">
+        <p class="italic">
+            {% for translation in widget.translations %}
+                {% if app.request.get('_locale') == translation.locale and translation.content|trim %}
+                    {{ translation.content|raw }}
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+</div>

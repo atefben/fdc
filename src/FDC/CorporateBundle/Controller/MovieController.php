@@ -16,12 +16,217 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * @Route("/69-editions/retrospective")
+ * @Route("/")
  */
 class MovieController extends Controller
 {
     /**
-     * @Route("/{year}/selection/{slug}", requirements={"year" = "\d+"})
+     * @Route("/films/{slug}")
+     * @Template("FDCCorporateBundle:Movie:main.html.twig")
+     * @param $slug
+     * @param Request $request
+     * @return array
+     */
+    public function getAction(Request $request, $slug)
+    {
+        $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
+
+        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
+
+        try {
+            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+        } catch (\Exception $e) {
+            $isAdmin = false;
+        }
+
+        // GET MOVIE
+        //if ($isAdmin) {
+        $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+            'slug' => $slug
+        ))
+        ;
+        /*} else {
+            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+                'slug'     => $slug,
+                'festival' => $this->getFestival()
+            ))
+            ;
+
+        }*/
+
+        if ($movie === null) {
+            throw new NotFoundHttpException('Movie not found');
+        }
+
+        $movies = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId(), $movie->getId())
+        ;
+
+        $moviesAll = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId())
+        ;
+
+        $articles = array();
+        $articlesIds = array();
+        foreach ($movie->getAssociatedNews() as $associatedNews) {
+            if ($associatedNews->getNews()) {
+                $article = $associatedNews->getNews();
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
+                    if ($article instanceof NewsAudio) {
+                        if ($article->getAudio()->getDisplayedHome()) {
+                            continue;
+                        }
+                    }
+                    if ($article instanceof NewsVideo) {
+                        if ($article->getVideo()->getDisplayedHome()) {
+                            continue;
+                        }
+                    }
+                    if ($this->isNewsPublished($article, $locale)) {
+                        $key = $article->getPublishedAt()->getTimestamp();
+                        $articles[$key] = $article;
+                        $articlesIds[] = $article->getId();
+                    }
+                }
+            }
+        }
+
+        foreach ($movie->getNews() as $news) {
+            if (!in_array($news->getId(), $articlesIds)) {
+                if ($news instanceof NewsAudio) {
+                    if ($news->getAudio()->getDisplayedHome()) {
+                        continue;
+                    }
+                }
+                if ($news instanceof NewsVideo) {
+                    if ($news->getVideo()->getDisplayedHome()) {
+                        continue;
+                    }
+                }
+                if ($this->isNewsPublished($news, $locale)) {
+                    $key = $news->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $news;
+                    $articlesIds[] = $news->getId();
+                }
+            }
+        }
+
+        foreach ($movie->getAssociatedInfo() as $associatedInfo) {
+            if ($associatedInfo->getInfo()) {
+                $article = $associatedInfo->getInfo();
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
+                    $key = $article->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $article;
+                }
+            }
+        }
+        foreach ($movie->getAssociatedStatement() as $associatedStatement) {
+            if ($associatedStatement->getStatement()) {
+                $article = $associatedStatement->getStatement();
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
+                    $key = $article->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $article;
+                }
+            }
+        }
+
+        krsort($articles);
+
+        $prev = null;
+        $next = null;
+        foreach ($moviesAll as $key => $tmp) {
+            if ($tmp->getId() == $movie->getId()) {
+                if ($key == 0) {
+                    $prev = $movies[count($movies) - 1];
+                    $next = $movies[1];
+                } elseif ($key == count($movies) - 1) {
+                    $prev = $movies[count($movies) - 2];
+                    $next = $movies[0];
+                } else {
+                    if (isset($movies[$key - 1])) {
+                        $prev = $movies[$key - 1];
+                    }
+                    if (isset($movies[$key])) {
+                        $next = $movies[$key];
+                    }
+                }
+                break;
+            }
+        }
+
+        $now = new \DateTime();
+        $projections = array();
+        foreach ($movie->getProjectionProgrammationFilms() as $projectionProgrammationFilm) {
+            if ($projectionProgrammationFilm instanceof FilmProjectionProgrammationFilm && $projectionProgrammationFilm->getProjection()) {
+                $projection = $projectionProgrammationFilm->getProjection();
+                if ($projection->getStartsAt() && $projection->getStartsAt() > $now) {
+                    $projections[$projection->getStartsAt()->getTimestamp()] = $projection->getStartsAt()->format('Y-m-d');
+                }
+            }
+        }
+        ksort($projections);
+        $nextProjectionDate = '';
+        if ($projections) {
+            $projections = array_values($projections);
+            $nextProjectionDate = $projections[0];
+        }
+
+        return array(
+            'movies'             => $movies,
+            'movie'              => $movie,
+            'articles'           => $articles,
+            'prev'               => $prev,
+            'next'               => $next,
+            'nextProjectionDate' => $nextProjectionDate,
+            'festivals'          => $festivals,
+        );
+    }
+
+    protected function isPublished($article, $locale)
+    {
+        $translation = $article->findTranslationByLocale($locale);
+        if ($locale == 'fr') {
+            if ($translation->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) {
+                return true;
+            }
+        } else {
+            $fr = $article->findTranslationByLocale($locale);
+            $translated = NewsArticleTranslation::STATUS_TRANSLATED;
+            if ($fr->getStatus() === $translated) {
+                return true;
+            }
+        }
+    }
+    
+    protected function isNewsPublished(News $news = null, $locale)
+    {
+        if ($news) {
+            $now = new \DateTime();
+            $isPublished = $news->getPublishedAt() && $news->getPublishedAt() <= $now;
+            $isPublished = $isPublished && ($news->getPublishEndedAt() === null || $news->getPublishEndedAt() >= $now);
+            if ($isPublished) {
+                $fr = $news->findTranslationByLocale('fr');
+                if ($fr && $fr->getStatus() === TranslateChildInterface::STATUS_PUBLISHED) {
+                    if ($locale != 'fr') {
+                        $trans = $news->findTranslationByLocale($locale);
+                        if ($trans && $trans->getStatus() === TranslateChildInterface::STATUS_TRANSLATED) {
+                            return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @Route("/69-editions/retrospective/{year}/selection/{slug}", requirements={"year" = "\d+"})
      * @param Request $request
      * @param $slug
      * @return array
@@ -181,7 +386,7 @@ class MovieController extends Controller
     }
 
     /**
-     * @Route("/{year}/selection/cannes-classics/{slug}")
+     * @Route("/69-editions/retrospective/{year}/selection/cannes-classics/{slug}")
      * @Template("FDCCorporateBundle:Movie:classics.html.twig")
      * @param $year
      * @param $slug
