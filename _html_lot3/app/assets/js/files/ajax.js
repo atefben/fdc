@@ -23,9 +23,44 @@ var owInitAjax = function() {
       }
 
       if($('.isotope-01').length) {
-        owInitGrid('isotope-01');
+        setTimeout(function(){
+          owInitGrid('isotope-01');
+        }, 800);
       }
 
+      if($('.medias').length > 0) {
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "pid") {
+          var slider = $('.grid-01');
+          owinitSlideShow(slider,hash);
+        }else{
+          var slider = $('.grid-01');
+          owinitSlideShow(slider);
+        }
+
+        if (hash.length > 0 && verif == "vid") {
+          console.log(number);
+
+          initVideo(number);
+        }else{
+          initVideo();
+        }
+
+        if (hash.length > 0 && verif == "aid") {
+          initAudio(number);
+        }else{
+          initAudio();
+        }
+
+
+      }
+      
       if($('.isotope-02').length) {
         owInitGrid('isotope-02');
       }

@@ -196,6 +196,11 @@ $(document).ready(function () {
             initVideo();
         }
 
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        }else{
+            initAudio();
+        }
 
 
     }

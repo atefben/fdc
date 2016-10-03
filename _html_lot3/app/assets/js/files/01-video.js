@@ -343,10 +343,7 @@ var initVideo = function(hash) {
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
             }
         }
-
-
-        console.log($container);
-
+        
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
@@ -369,7 +366,7 @@ var initVideo = function(hash) {
                 playlist   = [];
 
             if(havePlaylist === "grid") {
-                $.each($('#gridVideos .item'), function(i,p) {
+                $.each($('.grid-01 .item.video'), function(i,p) {
                     var tempList = {
                         "sources"  : $(p).data('file'),
                         "image"    : $(p).data('img'),
@@ -393,8 +390,11 @@ var initVideo = function(hash) {
             });
             $playlist = playlist;
 
+            console.log(playlist)
+
             initChannel();
             playerInstance.load(playlist);
+
 
             if($('.infos-videos .buttons').length > 0) {
                 linkPopinInit(0, '.infos-videos .buttons .link');
@@ -543,8 +543,6 @@ var initVideo = function(hash) {
 
 
     var initPopinVideo = function(hash) {
-
-        console.log(hash);
 
         if(hash != undefined) {
 
