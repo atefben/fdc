@@ -75,4 +75,35 @@ class ParticipateController extends Controller
             'registerMovie' => $registerMovie,
         ));
     }
+
+    /**
+     * @Route("/guide")
+     * @param Request $request
+     * @return Response
+     */
+    public function guideAction(Request $request)
+    {
+        $this->isPageEnabled($request->get('_route'));
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET PARTICIPATE PAGE
+        $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_fdc_page_prepare_id'));
+        if ($content === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // GET PARTICIPATE PAGE
+        $datas = $em
+            ->getRepository('BaseCoreBundle:FDCPageParticipate')
+            ->findAll();
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);
+
+        return $this->render('FDCCorporateBundle:Participate:prepare.html.twig',array(
+            'content' => $content,
+            'datas' => $datas
+        ));
+    }
 }

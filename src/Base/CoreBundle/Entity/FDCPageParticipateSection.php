@@ -58,6 +58,13 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
     /**
      * @var integer
      *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $instit;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $page;
@@ -68,6 +75,7 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
      * @ORM\Column(type="integer", nullable=true)
      */
     private $stratePosition;
+
 
     /**
      * Constructor
@@ -239,5 +247,28 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
     public function getStratePosition()
     {
         return $this->stratePosition;
+    }
+
+    /**
+     * Set instit
+     *
+     * @param boolean $instit
+     * @return FDCPageParticipateSection
+     */
+    public function setInstit($instit)
+    {
+        $this->instit = $instit;
+
+        return $this;
+    }
+
+    /**
+     * Get instit
+     *
+     * @return boolean 
+     */
+    public function getInstit()
+    {
+        return $this->instit;
     }
 }
