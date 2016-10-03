@@ -55,6 +55,35 @@ class FDCPagePrepare implements TranslateMainInterface
     protected $arriveIcon;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="arrive_display_instit", type="boolean")
+     */
+    protected $arriveDisplayInstit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meeting_display_instit", type="boolean")
+     */
+    protected $meetingDisplayInstit;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="information_display_instit", type="boolean")
+     */
+    protected $informationDisplayInstit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="service_display_instit", type="boolean")
+     */
+    protected $serviceDisplayInstit;
+
+    /**
      * @var FDCPagePrepareWidget
      *
      * @ORM\OneToMany(targetEntity="FDCPagePrepareWidget", mappedBy="FDCPagePrepareArrive", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -460,5 +489,97 @@ class FDCPagePrepare implements TranslateMainInterface
     public function getMeetingPdf()
     {
         return $this->meetingPdf;
+    }
+
+    /**
+     * Set arriveDisplayInstit
+     *
+     * @param boolean $arriveDisplayInstit
+     * @return FDCPagePrepare
+     */
+    public function setArriveDisplayInstit($arriveDisplayInstit)
+    {
+        $this->arriveDisplayInstit = $arriveDisplayInstit;
+
+        return $this;
+    }
+
+    /**
+     * Get arriveDisplayInstit
+     *
+     * @return boolean 
+     */
+    public function getArriveDisplayInstit()
+    {
+        return $this->arriveDisplayInstit;
+    }
+
+    /**
+     * Set meetingDisplayInstit
+     *
+     * @param boolean $meetingDisplayInstit
+     * @return FDCPagePrepare
+     */
+    public function setMeetingDisplayInstit($meetingDisplayInstit)
+    {
+        $this->meetingDisplayInstit = $meetingDisplayInstit;
+
+        return $this;
+    }
+
+    /**
+     * Get meetingDisplayInstit
+     *
+     * @return boolean 
+     */
+    public function getMeetingDisplayInstit()
+    {
+        return $this->meetingDisplayInstit;
+    }
+
+    /**
+     * Set informationDisplayInstit
+     *
+     * @param boolean $informationDisplayInstit
+     * @return FDCPagePrepare
+     */
+    public function setInformationDisplayInstit($informationDisplayInstit)
+    {
+        $this->informationDisplayInstit = $informationDisplayInstit;
+
+        return $this;
+    }
+
+    /**
+     * Get informationDisplayInstit
+     *
+     * @return boolean 
+     */
+    public function getInformationDisplayInstit()
+    {
+        return $this->informationDisplayInstit;
+    }
+
+    /**
+     * Set serviceDisplayInstit
+     *
+     * @param boolean $serviceDisplayInstit
+     * @return FDCPagePrepare
+     */
+    public function setServiceDisplayInstit($serviceDisplayInstit)
+    {
+        $this->serviceDisplayInstit = $serviceDisplayInstit;
+
+        return $this;
+    }
+
+    /**
+     * Get serviceDisplayInstit
+     *
+     * @return boolean 
+     */
+    public function getServiceDisplayInstit()
+    {
+        return $this->serviceDisplayInstit;
     }
 }

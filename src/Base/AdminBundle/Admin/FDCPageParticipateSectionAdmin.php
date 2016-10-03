@@ -152,6 +152,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                 )
             ))
             ->add('mobile')
+            ->add('instit')
             ->add('page', 'choice' ,array(
                 'choices' => FDCPageParticipateSection::getPages()
             ))

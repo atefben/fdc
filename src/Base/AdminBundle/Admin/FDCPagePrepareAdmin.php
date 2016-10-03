@@ -204,6 +204,10 @@ class FDCPagePrepareAdmin extends Admin
             ->add('translate', 'checkbox', array(
                 'required' => false,
             ))
+            ->add('serviceDisplayInstit')
+            ->add('informationDisplayInstit')
+            ->add('arriveDisplayInstit')
+            ->add('meetingDisplayInstit')
             ->add('translateOptions', 'choice', array(
                 'choices' => FDCPagePrepare::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
