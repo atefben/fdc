@@ -68,7 +68,7 @@ class EditionsController extends Controller
      */
     public function yearAction(Request $request, $year)
     {
-        $locale = $request->getLocale();
+        /*$locale = $request->getLocale();
 
         $pages = $this
             ->getDoctrineManager()
@@ -88,7 +88,8 @@ class EditionsController extends Controller
                 }
             }
         }
-        throw $this->createNotFoundException('There is not available selection.');
+        throw $this->createNotFoundException('There is not available selection.');*/
+        return $this->redirectToRoute('fdc_corporate_movie_selection', array('year' => $year));
     }
 
 
