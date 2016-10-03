@@ -173,8 +173,31 @@ $(document).ready(function () {
 
 
     if($('.medias').length > 0) {
-        var slider = $('.grid-01');
-        owinitSlideShow(slider);
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "pid") {
+            var slider = $('.grid-01');
+            owinitSlideShow(slider,hash);
+        }else{
+            var slider = $('.grid-01');
+            owinitSlideShow(slider);
+        }
+
+        if (hash.length > 0 && verif == "vid") {
+            console.log(number);
+
+            initVideo(number);
+        }else{
+            initVideo();
+        }
+
+
+
     }
 
     if ($('.articles-list').length) {

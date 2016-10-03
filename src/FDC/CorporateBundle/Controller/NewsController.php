@@ -298,4 +298,150 @@ class NewsController extends Controller
             'filters' => $filters,
         );
     }
+
+    /**
+     * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
+     *     options={"expose"=true})
+     * @Template("FDCCorporateBundle:News:main.html.twig")
+     * @param $slug
+     * @return array
+     */
+    public function getAction(Request $request, $year, $format, $slug)
+    {
+
+        $this->isPageEnabled($request->get('_route'));
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        $festival = $this->getFestival($year);
+        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
+
+        try {
+            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+        } catch (\Exception $e) {
+            $isAdmin = false;
+        }
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $festival === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $format = substr($format, 0, -1);
+        $mapper = array_flip(News::getTypes());
+
+        if (!isset($mapper[$format])) {
+            throw new NotFoundHttpException();
+        }
+
+        // GET NEWS
+        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format]);
+
+        if ($news === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $localeSlugs = $news->getLocaleSlugs();
+        $isPublished = ($news->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED);
+
+        if (!$isAdmin && !$isPublished) {
+            throw new NotFoundHttpException();
+        }
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
+
+        //get associated film to the news
+        $associatedFilm = null;
+        $associatedProgrammation = null;
+        $associatedFilmDuration = null;
+        $type = null;
+        if ($news->getAssociatedFilm() != null) {
+            $associatedFilm = $news->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+            $type = 'film';
+        } elseif ($news->getAssociatedEvent() != null && $news->getAssociatedEvent()->getAssociatedFilm()) {
+            $associatedFilm = $news->getAssociatedEvent()->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+            $type = 'film';
+        } elseif ($news->getAssociatedProjections() != null) {
+            $associatedProgrammation = $news->getAssociatedProjections();
+            $type = 'event';
+        }
+
+        //get film projection
+        $programmations = array();
+        if ($associatedProgrammation != null) {
+            foreach ($associatedProgrammation as $projection) {
+                if ($type == 'event') {
+                    if ($projection->getAssociation() != null) {
+                        $programmations[] = $projection->getAssociation();
+                    }
+                } else {
+                    if ($projection->getProjection() != null) {
+                        $programmations[] = $projection->getProjection();
+                    }
+                }
+
+            }
+        }
+        $tempProjections = array();
+        $now = new DateTime();
+        if ($programmations) {
+            foreach ($programmations as $item) {
+                if ($item !== null && $item->getStartsAt() && $item->getStartsAt() > $now) {
+                    $tempProjections[$item->getStartsAt()->getTimestamp()] = $item->getStartsAt()->format('Y-m-d');
+                }
+            }
+        }
+        $nextProjectionDate = '';
+        if ($tempProjections) {
+            ksort($tempProjections);
+            $tempProjections = array_values($tempProjections);
+            $nextProjectionDate = $tempProjections[0];
+        }
+
+        //get focus articles
+        $associatedNews = $news->getAssociatedNews();
+        $focusArticles = array();
+        foreach ($associatedNews as $associatedNew) {
+            if ($associatedNew->getAssociation() != null) {
+                $focusArticles[] = $associatedNew->getAssociation();
+            }
+        }
+
+        //get day articles
+        $count = 3;
+        if ($news->getPublishedAt()) {
+            $newsDate = $news->getPublishedAt();
+        } else {
+            $newsDate = new DateTime();
+        }
+
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($festival->getId(), $locale, $newsDate, $count, $news->getId(),null,$focusArticles);
+        $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
+
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $festival->getId(), $newsDate);
+        $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
+
+        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $festival->getId(), $newsDate);
+        $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
+
+        return array(
+            'localeSlugs'            => $localeSlugs,
+            'focusArticles'          => $focusArticles,
+            'programmations'         => $programmations,
+            'associatedFilmDuration' => $associatedFilmDuration,
+            'news'                   => $news,
+            'prev'                   => $prevArticlesURL,
+            'next'                   => $nextArticlesURL,
+            'associatedFilm'         => $associatedFilm,
+            'sameDayArticles'        => $sameDayArticles,
+            'nextProjectionDate'     => $nextProjectionDate,
+            'festivals'              => $festivals,
+        );
+    }
 }

@@ -3,7 +3,7 @@
 {% set displayOnylCameraDorWinner = true %}
 
 <div class="contain-title-grey vFlexAlign">
-    <h3 class="title">{{ subpages['competition']['page']|trans_fallback('nameEnCompetition') }}</h3>
+    <h3 class="title">{{ subpages['competition']['page']|trans_fallback('name') }}</h3>
 </div>
 {% include 'FDCCorporateBundle:Palmares:competition.html.twig' with (subpages['competition']|merge({'all': true })) %}
 

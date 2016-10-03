@@ -35,7 +35,7 @@
                 <div class="image-wrapper">
                     <img src="{% path event.header|trans_fallback('file') , '575x364' %}" srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '575x364' %} 2x" alt="{{ event.header|trans_fallback('alt') }} ">
                 </div>
-                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug')}) }}" class="linkImage"></a>
+                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year': app.request.get('year')}) }}" class="linkImage"></a>
             </div>
             <div class="info">
                 <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}" class="category">{{ event.theme|trans_fallback('name') }} </a>
@@ -46,9 +46,9 @@
 
     </div>
 
-    <div class="bright padding-bottom">
+    <!--div class="bright padding-bottom">
         <a href="http://www.festival-cannes.fr/fr/archivesPage.html" class="read-more block-01">{{ 'event.btn.afficherplusdevenement'|trans|raw }}</a>
-    </div>
+    </div-->
 
     </div></div>
 
@@ -58,7 +58,7 @@
 [
 {
 "name" : 'breadcrumb.69editions.home'|trans,
-"url"  : '#'
+"url"  : path('fdc_corporate_default_home')
 },
 {
 "name" : 'breadcrumb.retrospective.home'|trans,

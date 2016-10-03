@@ -3,44 +3,40 @@
  */
 var owinitSlideShow = function (slider, hash) {
 
-    $('.block-diaporama .item').on('mousedown', function () {
-
-        if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
-            openSlideShow(slider);
-        }
-
-    });
-
-
-    if($('.slideshow-img').length > 0 ) {
-        $('.images').on('click', function (e) {
-            e.preventDefault();
-
-            openSlideShow(slider);
-
-            return false;
-        });
-    }
-
-    if($('.medias').length > 0 ) {
-        $('.item.photo').on('click', function (e) {
-            e.preventDefault();
-
-            openSlideShow(slider);
-
-            return false;
-        });
-    }
-
-
     if (typeof hash != "undefined") {
         setTimeout(function () {
             openSlideShow(slider, hash);
         }, 100);
+    }else{
+        $('.block-diaporama .item').on('mousedown', function () {
+
+            if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
+                openSlideShow(slider);
+            }
+
+        });
+
+
+        if($('.slideshow-img').length > 0 ) {
+            $('.images').on('click', function (e) {
+                e.preventDefault();
+
+                openSlideShow(slider);
+
+                return false;
+            });
+        }
+
+        if($('.medias').length > 0 ) {
+            $('.item.photo').on('click', function (e) {
+                e.preventDefault();
+
+                openSlideShow(slider);
+
+                return false;
+            });
+        }
     }
-
-    
-
 }
 
 

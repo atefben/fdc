@@ -43,7 +43,7 @@
         {% endfor %}
         {% set currentPath = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
         <div class="black small-h">
-            <strong class="title-9">Partager la page</strong>
+            <strong class="title-9">{{ 'retrospective.affiche.partager'|trans }}</strong>
             <div class="block-social-network block-social-network-all ">
                 <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentPath }}&picture=
 {% if affiche is not null %}{% path affiche.file, '256x348' %}{% endif %}&name=L'affiche du Festival {{ app.request.attributes.get('year') }}&caption={{ affiche.copyright }}&description={{ currentPath }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
@@ -70,7 +70,7 @@
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : ''
+    "url"  : path('fdc_corporate_default_home')
     },
     {
     "name" : 'breadcrumb.retrospective.home'|trans,

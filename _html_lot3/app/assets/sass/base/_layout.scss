@@ -80,6 +80,18 @@ body {
 
   &.overlay {
     cursor: pointer;
+
+    width: auto;
+    height: auto;
+    z-index: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: initial;
+    opacity: 1;
+    display: block;
+    transition: 0s;
+
   }
 }
 

@@ -60,7 +60,7 @@
                                 {% set author = author ~ ', ' %}
                             {% endif %}
 
-                            {% set author = author ~ '<a class="names-a" href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
+                            {% set author = author ~ '<a class="names-a" href="' ~ path('fdc_corporate_artist_get', {slug: director.slug }) ~ '">' %}
                             {% set author = author ~ director.fullName %}
                             {% set author = author ~ '</a>' %}
                         {% endfor %}
