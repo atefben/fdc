@@ -178,6 +178,7 @@ $(document).ready(function () {
         hash = hash.substring(1, hash.length);
 
         verif = hash.slice(0, 3);
+        number = hash.slice(4);
 
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.grid-01');
@@ -187,7 +188,15 @@ $(document).ready(function () {
             owinitSlideShow(slider);
         }
 
-        initVideo();
+        if (hash.length > 0 && verif == "vid") {
+            console.log(number);
+
+            initVideo(number);
+        }else{
+            initVideo();
+        }
+
+
 
     }
 

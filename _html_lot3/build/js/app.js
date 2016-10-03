@@ -1,6 +1,6 @@
 var videoNews;
 
-var initVideo = function() {
+var initVideo = function(hash) {
     var timeout = 1000,
         thread,
         time,
@@ -542,23 +542,29 @@ var initVideo = function() {
     };
 
 
-    var initPopinVideo = function() {
-        $('.item.video').on('click', function (e) {
+    var initPopinVideo = function(hash) {
 
-            e.preventDefault();
+        console.log(hash);
 
-            $(this).addClass('activeVideo');
+        if(hash != undefined) {
+
+            $this = $('.item.video[data-vid="'+hash+'"');
+
+            $this.addClass('activeVideo');
 
             var $popinVideo = $('.popin-video'),
-                vid = $(e.target).closest('.video').data('vid'),
-                source = $(e.target).closest('.video').data('file'),
-                img = $(e.target).closest('.video').data('img'),
-                category = $(e.target).closest('.video').find('.category').text(),
-                date = $(e.target).closest('.video').find('.date').text(),
-                hour = $(e.target).closest('.video').find('.hour').text(),
-                name = $(e.target).closest('.video').data('title');
+                vid = $this.data('vid'),
+                source = $this.data('file'),
+                img = $this.data('img'),
+                category = $this.find('.category').text(),
+                date = $this.find('.date').text(),
+                hour = $this.find('.hour').text(),
+                name = $this.data('title');
 
             videoNews = playerInit('video-player-popin', false, false);
+
+            var hashPush = '#vid='+vid;
+            history.pushState(null, null, hashPush);
 
             setTimeout(function(){
                 videoNews.play();
@@ -579,8 +585,6 @@ var initVideo = function() {
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
             fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
-
-            console.log(encodeURIComponent(img));
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER
@@ -630,8 +634,102 @@ var initVideo = function() {
 
 
             initRs();
-            
+        }
+
+
+        $('.item.video').on('click', function (e) {
+
+            e.preventDefault();
+
+
+            $(this).addClass('activeVideo');
+
+            var $popinVideo = $('.popin-video'),
+                vid = $(e.target).closest('.video').data('vid'),
+                source = $(e.target).closest('.video').data('file'),
+                img = $(e.target).closest('.video').data('img'),
+                category = $(e.target).closest('.video').find('.category').text(),
+                date = $(e.target).closest('.video').find('.date').text(),
+                hour = $(e.target).closest('.video').find('.hour').text(),
+                name = $(e.target).closest('.video').data('title');
+
+            videoNews = playerInit('video-player-popin', false, false);
+
+            var hashPush = '#vid='+vid;
+            history.pushState(null, null, hashPush);
+
+            setTimeout(function(){
+                videoNews.play();
+            }, 800);
+
+
+            // CUSTOM LINK FACEBOOK
+            if ($('.container-webtv-ba-video').length > 0) {
+                var shareUrl = $('.video .video-container').attr('data-link');
+            } else {
+                var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + vid;
+            }
+
+            var fbHref = facebookLink;
+
+
+            fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+            fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
+            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
+            fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
+
+            $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
+            // CUSTOM LINK TWITTER
+            var twHref = twitterLink;
+            twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
+            $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
+            // CUSTOM LINK COPY
+            $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', shareUrl);
+            $('#video-player-popin + .top-bar').find('.buttons .link').attr('data-clipboard-text', shareUrl);
+
+            $('.popin-video').find('.popin-buttons.buttons .facebook').attr('data-href', fbHref);
+            $('.popin-video').find('.popin-buttons.buttons .facebook').attr('href', fbHref);
+            $('.popin-video').find('.popin-buttons.buttons .twitter').attr('href', twHref);
+            $('.popin-video').find('.popin-buttons.buttons .link').attr('href', shareUrl);
+            $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', shareUrl);
+
+            updatePopinMedia({
+                'type': "video",
+                'category': category,
+                'date': date,
+                'title': name,
+                'url': shareUrl
+            });
+
+            $popinVideo.find('.popin-info .category').text(category);
+            $popinVideo.find('.popin-info .date').text(date);
+            $popinVideo.find('.popin-info .hour').text(hour);
+            $popinVideo.find('.popin-info p').text(name);
+            $popinVideo.addClass('video-player show loading');
+            $('.ov').addClass('show');
+
+            $('#main').addClass('overlay');
+
+            setTimeout(function(){
+                $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
+
+                    videoNews.stop();
+                    videoNews.setMute(true);
+
+                    $popinVideo.removeClass('show');
+                    $('#main').removeClass('overlay');
+                    $('.activeVideo').removeClass('activeVideo');
+
+                    $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
+                });
+            }, 1000);
+
+
+            initRs();
+
+
         });
+
     }
 
     function updatePopinMedia(data) {
@@ -688,7 +786,7 @@ var initVideo = function() {
     }
 
     if($('.medias').length > 0) {
-        initPopinVideo();
+        initPopinVideo(hash);
     }
     
 
@@ -3954,6 +4052,7 @@ $(document).ready(function () {
         hash = hash.substring(1, hash.length);
 
         verif = hash.slice(0, 3);
+        number = hash.slice(4);
 
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.grid-01');
@@ -3963,7 +4062,15 @@ $(document).ready(function () {
             owinitSlideShow(slider);
         }
 
-        initVideo();
+        if (hash.length > 0 && verif == "vid") {
+            console.log(number);
+
+            initVideo(number);
+        }else{
+            initVideo();
+        }
+
+
 
     }
 
