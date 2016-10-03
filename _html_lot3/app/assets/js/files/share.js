@@ -24,14 +24,14 @@ var initRs = function () {
         e.preventDefault();
     })
 
-    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function () {
+    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
         window.open(this.href, '', 'width=600,height=400');
         return false;
     });
 
 
     //POPIN facebook SHARE
-    $('.block-social-network .facebook, .rs-slideshow .facebook').on('click', function () {
+    $('.block-social-network .facebook, .rs-slideshow .facebook').on('click', function (e) {
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
     });
@@ -205,8 +205,11 @@ var initRs = function () {
         $(cls).attr('data-clipboard-text', link);
 
         $(cls).on('click touchstart', function (e) {
-            var that = $(this);
             e.preventDefault();
+
+            console.log('ici');
+
+            var that = $(this);
 
             if (!$('#share-box').length) {
 
@@ -228,6 +231,8 @@ var initRs = function () {
                 $('#share-box').remove();
                //two time because first don't work... 
             }, 3000);
+
+            return false;
         });
 
     }
