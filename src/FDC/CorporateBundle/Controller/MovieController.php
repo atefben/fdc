@@ -295,19 +295,23 @@ class MovieController extends Controller
         ;
 
         $selectionTabs = array();
+        $defaultSlug = null;
         foreach($pages as $p) {
             $movies = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFilm')
                 ->getFilmsBySelectionSection($festival, $locale, $p->getSelectionSection()->getId())
             ;
+            if($defaultSlug === null) {
+                $defaultSlug = $p->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
+            }
             if(count($movies) > 0) {
                 $selectionTabs[] = $p;
             }
         }
 
         if ($slug === null) {
-            foreach ($pages as $page) {
+            /*foreach ($pages as $page) {
                 if ($page instanceof FDCPageLaSelection) {
                     if ($page->findTranslationByLocale($locale)) {
                         $slug = $page->findTranslationByLocale($locale)->getSlug();
@@ -316,11 +320,12 @@ class MovieController extends Controller
                         $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $slug, 'year' => $year));
+
                     }
                 }
             }
-            throw $this->createNotFoundException('There is not available selection.');
+            throw $this->createNotFoundException('There is not available selection.');*/
+            return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $defaultSlug, 'year' => $year));
         }
 
         $page = $this
