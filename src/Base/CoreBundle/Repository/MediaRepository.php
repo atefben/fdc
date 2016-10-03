@@ -8,6 +8,7 @@ use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\Site;
 
 /**
  * MediaRepository class.
@@ -41,6 +42,47 @@ class MediaRepository extends EntityRepository
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
+
+        return $qb;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param Site|null $site
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function getImageMediaCorporate($locale, $festival, Site $site = null)
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->innerJoin('m.sites', 's')
+            ->leftjoin('m.festival', 'f')
+            ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+            ->leftjoin('mi.translations', 'mit')
+            ->andWhere('f.id = :festival')
+            //->andWhere('m.displayedAll = 1')
+            ;
+        $qb->setParameter('festival', $festival);
+
+        if ($site) {
+            $qb
+                ->distinct(true)
+                ->andWhere('s.id = :sid')
+                ->setParameter(':sid', $site->getId())
+            ;
+        }
+
+        $qb = $qb
+            ->andWhere("m.publishedAt IS NULL")
+        ;
+        $qb = $qb->setMaxResults(200);
+        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $qb
+            ->orderBy('mi.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        //dump($qb);exit;
 
         return $qb;
     }
