@@ -12,20 +12,27 @@
 
         <div class="all-contain">
 
-            <!--div class="contain-title vFlexAlign border-bottom border-top">
-                <h1 class="title-01">{{ 'palmares.title.palmares'|trans }}</h1>
-            </div-->
+
 
             {% if page.id == 1 and waitingPage == null %}
                 {% set breadcrumbPage = 'competition' %}
                 {% include 'FDCCorporateBundle:Palmares:competition.html.twig' %}
             {% elseif page.id == 4 %}
+                <div class="contain-title vFlexAlign border-bottom border-top">
+                    <h1 class="title-01">{{ page|trans_fallback('name') }}</h1>
+                </div>
                 {% set breadcrumbPage = 'camerador' %}
                 {% include 'FDCCorporateBundle:Palmares:camerador.html.twig' %}
             {% elseif page.id == 5 and waitingPage == null %}
+                <div class="contain-title vFlexAlign border-bottom border-top">
+                    <h1 class="title-01">{{ page|trans_fallback('name') }}</h1>
+                </div>
                 {% set breadcrumbPage = 'all' %}
                 {% include 'FDCCorporateBundle:Palmares:all.html.twig' %}
             {% elseif waitingPage == null %}
+                <div class="contain-title vFlexAlign border-bottom border-top">
+                    <h1 class="title-01">{{ page|trans_fallback('name') }}</h1>
+                </div>
                 {% set breadcrumbPage = 'simple' %}
                 {% include 'FDCCorporateBundle:Palmares:simple.html.twig' %}
             {% endif %}
