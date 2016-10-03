@@ -5049,6 +5049,7 @@ video {
   width: 256px;
   max-width: 100%;
   min-height: 100%;
+  object-fit: cover;
 }
 .block-movie-preview .wrapper-item-big {
   width: 989px;
