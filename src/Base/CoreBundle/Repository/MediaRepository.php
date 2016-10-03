@@ -60,7 +60,7 @@ class MediaRepository extends EntityRepository
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->andWhere('f.id = :festival')
-            //->andWhere('m.displayedAll = 1')
+            ->andWhere('m.displayedAll = 1')
             ;
         $qb->setParameter('festival', $festival);
 
@@ -73,9 +73,9 @@ class MediaRepository extends EntityRepository
         }
 
         $qb = $qb
-            ->andWhere("m.publishedAt IS NULL")
+            ->andWhere("m.publishEndedAt IS NULL")
         ;
-        $qb = $qb->setMaxResults(200);
+        
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $qb
             ->orderBy('mi.publishedAt', 'DESC')

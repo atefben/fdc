@@ -101,6 +101,48 @@
                     </div>
                 </article>
                 {% endif %}
+            {% elseif media.mediaType == 'MediaAudio' %}
+                {% set audio = media %}
+                {% set trans = audio.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null %}
+                    {% set trans = audio.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% if audio.header is not null %}
+                    {% set transImage = audio.header.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null or transImage.file is null %}
+                        {% set transImage = audio.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% elseif audio.image %}
+                    {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null or transImage.file is null %}
+                        {% set transImage = audio.image.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% endif %}
+                {% if transImage is defined %}
+                <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}" data-format="audio"
+                         data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+                         data-img="{% path transImage.file , '1144x724' %}"
+                         data-aid="{{ audio.id }}">
+                    <a href="#" class="linkAllCover"></a>
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="{% path transImage.file , '572x362' %}" alt=""/>
+                        </div>
+                        <a href="#" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                    </div>
+                    <div class="info vFlexAlign">
+                        <span class="picto"><i class="icon icon-audio"></i></span>
+                        <div class="contain-txt">
+                            <div>
+                                <a href="#" class="category">{{ audio.theme|trans_fallback('name') }} </a><span class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span
+                                        class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
+                            </div>
+                            <strong><a href="#">{{ audio|trans_fallback('title') }}</a></strong>
+                        </div>
+                    </div>
+                </article>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
