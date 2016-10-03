@@ -59,12 +59,12 @@ class NewsController extends Controller
         $filters['dateFormated'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
+        $filters['format'][0] = 'all';
 
 
         foreach ($newsArticles as $key => $newsArticle) {
             $isPublished = ($newsArticles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
             if ($isPublished) {
-
                 if (($key % 3) == 0) {
                     $newsArticle->double = true;
                 }
@@ -78,6 +78,10 @@ class NewsController extends Controller
                 if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
                     $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
+                }
+
+                if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
+                    $filters['format'][] = $newsArticle->getNewsType();
                 }
             } else {
                 unset($newsArticles[$key]);
@@ -122,8 +126,10 @@ class NewsController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
+        $site = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
+
         //GET ALL MEDIA PHOTOS
-        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), $dateTime);
+        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMediaCorporate($locale, $festival->getId(), $site);
 
         //set default filters
         $filters = array();
@@ -150,7 +156,7 @@ class NewsController extends Controller
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
-            if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
+            if ($photo->getTheme() && !in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
                 $filters['themes']['id'][] = $photo->getTheme()->getId();
                 $filters['themes']['content'][] = $photo->getTheme();
             }
