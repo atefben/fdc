@@ -2218,19 +2218,22 @@ window.twttr = (function (d, s, id) {
 
 var initRs = function () {
 
+    console.log('init RS');
+
     $('.print').on('click', function(e){
         e.preventDefault();
     })
 
-    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
-        window.open(this.href, '', 'width=600,height=400');
+    //POPIN facebook SHARE
+    $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
+        e.preventDefault();
+        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
     });
 
 
-    //POPIN facebook SHARE
-    $('.block-social-network .facebook, .rs-slideshow .facebook').on('click', function (e) {
-        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
+    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
+        window.open(this.href, '', 'width=600,height=400');
         return false;
     });
 

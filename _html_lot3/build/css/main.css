@@ -12602,6 +12602,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   top: 20px;
   left: 30px;
 }
+.popin-video .popin-buttons a .icon.icon-letter {
+  left: 27px;
+}
 .popin-video .popin-buttons a:hover {
   color: #c8a461;
 }
