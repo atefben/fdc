@@ -38,7 +38,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb
+        $qb = $qb->setMaxResults(100)
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
@@ -56,7 +56,7 @@ class MediaRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('m')
             ->innerJoin('m.sites', 's')
-            ->leftjoin('m.festival', 'f')
+            ->innerJoin('m.festival', 'f')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
             ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
@@ -84,7 +84,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
         $qb = $this->addTranslationQueries($qb, 'mat', $locale);
         $qb = $qb
-            ->orderBy('mi.publishedAt', 'DESC')
+            ->orderBy('ma.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -148,7 +148,7 @@ class MediaRepository extends EntityRepository
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        return $qb
+        return $qb->setMaxResults(100)
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
@@ -172,7 +172,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb
+        $qb = $qb->setMaxResults(100)
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();

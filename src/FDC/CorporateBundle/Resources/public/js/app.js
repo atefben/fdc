@@ -85,12 +85,14 @@ var initVideo = function(hash) {
         if (id) {
             var videoPlayer = jwplayer(id);
 
-            if(!$(videoPlayer).data('loaded')) {
+            if(!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0 ) {
+                console.log('loaded');
                 playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp = vid;
                 });
             } else {
+                console.log('else');
                 tmp = videoPlayer
             }
             return tmp;
@@ -546,6 +548,7 @@ var initVideo = function(hash) {
 
             $this = $('.item.video[data-vid="'+hash+'"');
 
+            $('.activeVideo').removeClass('activeVideo');
             $this.addClass('activeVideo');
 
             var $popinVideo = $('.popin-video'),
@@ -620,9 +623,15 @@ var initVideo = function(hash) {
                     videoNews.stop();
                     videoNews.setMute(true);
 
+                    videoNews = 0;
+
                     $popinVideo.removeClass('show');
+                    $popinVideo.removeClass('video-player');
+                    $popinVideo.removeClass('loading');
+                    $popinVideo.css('display','none');
                     $('#main').removeClass('overlay');
                     $('.activeVideo').removeClass('activeVideo');
+                    $(videoNews).data('loaded', false);
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
@@ -637,7 +646,7 @@ var initVideo = function(hash) {
 
             e.preventDefault();
 
-
+            $('.activeVideo').removeClass('activeVideo');
             $(this).addClass('activeVideo');
 
             var $popinVideo = $('.popin-video'),
@@ -653,6 +662,8 @@ var initVideo = function(hash) {
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
+
+            $popinVideo.css('display','block');
 
             setTimeout(function(){
                 videoNews.play();
@@ -715,8 +726,12 @@ var initVideo = function(hash) {
                     videoNews = 0;
 
                     $popinVideo.removeClass('show');
+                    $popinVideo.removeClass('video-player');
+                    $popinVideo.removeClass('loading');
+                    $popinVideo.css('display','none');
                     $('#main').removeClass('overlay');
                     $('.activeVideo').removeClass('activeVideo');
+                    $(videoNews).data('loaded', false);
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
