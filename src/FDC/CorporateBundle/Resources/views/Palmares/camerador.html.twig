@@ -11,6 +11,7 @@
     {% endfor %}
 
 
+    {% if all is not defined %}
     {% if displayOnylCameraDorWinner is not defined or displayOnylCameraDorWinner == false %}
         <div class="contain-title vFlexAlign border-bottom border-top">
             <h1 class="title-01">{{ page|trans_fallback('nameEnCompetition') }}</h1>
@@ -22,9 +23,10 @@
         {% endif %}
         {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true, 'hidePalme': true}) %}
     {% endfor %}
+    {% endif %}
 
 
-    {% for key,item in award_associations['others'] %}
+    {# for key,item in award_associations['others'] %}
         <div class="contain-title-grey vFlexAlign">
             <h3 class="title">{{ item['selection']|trans_fallback('name') }}</h3>
         </div>
@@ -34,9 +36,9 @@
             {% endif %}
             {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true, 'hidePalme': true}) %}
         {% endfor %}
-    {% endfor %}
+    {% endfor #}
 
-    <div class="contain-title vFlexAlign border-bottom border-top">
+    <!--div class="contain-title vFlexAlign border-bottom border-top">
         <h1 class="title-01">{{ 'palmares.camerador.title.lesautresfilmsenlice'|trans|raw }}</h1>
     </div>
 
@@ -57,6 +59,6 @@
                 </a>
             </li>
         </ul>
-    </section>
+    </section-->
 
 </div>

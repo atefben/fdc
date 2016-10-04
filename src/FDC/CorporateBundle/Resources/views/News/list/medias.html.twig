@@ -32,7 +32,7 @@
                 {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
                 {% set copyright = photo|trans_fallback('copyright') %}
 
-                <article class="card card-01 item photo shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }}" data-format="photo"
+                <article class="card card-01 item photo shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }} {{ format }}" data-format="photo"
                          data-theme="all {{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
                     <a href="{% path trans.file , 'reference' %}" class="linkAllCover"></a>
                     <div class="image">
