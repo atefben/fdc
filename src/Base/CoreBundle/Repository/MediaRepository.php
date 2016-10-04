@@ -58,7 +58,11 @@ class MediaRepository extends EntityRepository
             ->innerJoin('m.sites', 's')
             ->leftjoin('m.festival', 'f')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+            ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
+            ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
             ->leftjoin('mi.translations', 'mit')
+            ->leftjoin('mv.translations', 'mvt')
+            ->leftjoin('ma.translations', 'mat')
             ->andWhere('f.id = :festival')
             ->andWhere('m.displayedAll = 1')
             ;
@@ -77,6 +81,8 @@ class MediaRepository extends EntityRepository
         ;
         
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mat', $locale);
         $qb = $qb
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
