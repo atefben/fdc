@@ -181,8 +181,6 @@ var initVideo = function(hash) {
             fullScreenApi.cancelFullScreen();
         });
 
-
-
         function updateVolume(x, vol) {
             var volume = $sound.find('.sound-bar'),
                 percentage;
@@ -3371,15 +3369,8 @@ var openSlideShow = function (slider, hash) {
 
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
-        console.log(pid);
-        console.log(images);
         for(var o = 0; o < images.length; o++){
-            console.log("pid "+pid);
-            console.log("image o "+images[o].id);
-
             if(pid == images[o].id){
-
-                console.log("o "+o);
                 var v = o;
                 centerElement = v;
             }
@@ -3475,6 +3466,8 @@ var openSlideShow = function (slider, hash) {
     var wSlide = wSlide + "px";
 
     fullscreen.css('width', wSlide);
+
+    console.log(centerElement);
 
     if (typeof hash != "undefined") {
 
@@ -3618,7 +3611,7 @@ var openSlideShow = function (slider, hash) {
 
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
-            $('.photoActive').addClass('photoActive');
+            $('.photoActive').removeClass('photoActive');
         }, 1000);
     });
 
@@ -3644,13 +3637,9 @@ var openSlideShow = function (slider, hash) {
             var height = $('.chocolat-wrapper').height();
             var width = $('.chocolat-wrapper').width();
 
-            console.log(pos+' '+height+' '+width);
-
             var currentImage = img[0];
             var imgWidth = currentImage.width * 2;
             var imgHeight = currentImage.height * 2;
-
-            console.log(currentImage+' '+imgWidth+' '+imgHeight);
 
             var coord = [e.pageX - width/2 - pos.left, e.pageY - height/2 - pos.top];
 
@@ -3665,8 +3654,6 @@ var openSlideShow = function (slider, hash) {
                 mvtY = coord[1] / (height / 2);
                 mvtY = ((imgHeight - height + 0) / 2) * mvtY;
             }
-
-            console.log(imgWidth+' '+imgHeight);
 
             img.css('transform','translate3d(' + (-mvtX) + 'px' +',' + (-mvtY) + 'px' + ', 0) scale(2)');
         }
