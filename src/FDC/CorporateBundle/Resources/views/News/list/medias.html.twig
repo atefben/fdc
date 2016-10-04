@@ -39,7 +39,7 @@
                         <div class="image-wrapper">
                             {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                             {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
-                            <img src="{% path trans.file , resolution %}" alt="" data-id="pid={{ photo.id }}" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}" data-title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'/>
+                            <img src="{% path trans.file , resolutionRetina %}" alt="" data-id="pid={{ photo.id }}" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}" data-title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'/>
                         </div>
                         <a href="{% path trans.file , 'reference' %}" class="linkImage"></a>
                         <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
