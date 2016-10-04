@@ -25,7 +25,7 @@ var owInitAjax = function() {
       if($('.isotope-01').length) {
         setTimeout(function(){
           owInitGrid('isotope-01');
-        }, 800);
+        }, 1000);
       }
 
       if($('.medias').length > 0) {

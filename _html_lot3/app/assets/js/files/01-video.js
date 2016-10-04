@@ -82,9 +82,6 @@ var initVideo = function(hash) {
         live         = live || false;
         var tmp;
 
-
-        console.log(id);
-
         if (id) {
             var videoPlayer = jwplayer(id);
 
@@ -349,6 +346,7 @@ var initVideo = function(hash) {
             var videoImage =  $('.activeVideo').data('img');
         }
 
+        console.log(videoFile);
 
         playerInstance.setup({
             // file: $container.data('file'),
@@ -713,6 +711,8 @@ var initVideo = function(hash) {
 
                     videoNews.stop();
                     videoNews.setMute(true);
+
+                    videoNews = 0;
 
                     $popinVideo.removeClass('show');
                     $('#main').removeClass('overlay');
