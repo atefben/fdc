@@ -111,7 +111,7 @@ var openSlideShow = function (slider, hash) {
             if(pid == images[o].id){
                 /*console.log('ixi');
                  goToSLide(o);*/
-                centerElement = o;
+                centerElement = o - 1;
             }
         }
         console.log(images);
@@ -354,9 +354,6 @@ var openSlideShow = function (slider, hash) {
         $('.chocolat-content').removeClass('thumbsOpen');
         $('.fullscreen-slider img').css('opacity', '1');
     });
-
-
-
 }
 
 
