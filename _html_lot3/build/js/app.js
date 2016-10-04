@@ -2922,12 +2922,13 @@ var owInitSlider = function (sliderName) {
                     owInitNavSticky(1);
 
                     window.history.pushState('', '', url);
-                    
+
                     setTimeout(function () {
                         if ($('.isotope-01').length) {
                             owInitGrid('isotope-01');
+                            console.log('init grid');
                         }
-                    }, 500);
+                    }, 1000);
 
                 });
 
