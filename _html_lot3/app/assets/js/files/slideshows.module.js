@@ -358,6 +358,7 @@ $('body').on('mouseenter', '.chocolat-content', function() {
 
 var timeoutCursor;
 
+
 /*
 
 $('body').on('mousemove', '.chocolat-content', function(e) {
@@ -381,6 +382,7 @@ $('body').on('mousemove', '.chocolat-content', function(e) {
   }, 4000);
 });
 */
+
 
 /*
 function updatePhotoShare(pid, title) {
