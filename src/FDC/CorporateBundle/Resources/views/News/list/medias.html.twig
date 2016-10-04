@@ -76,7 +76,7 @@
                 {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                     {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                 {%- endif -%}
-                {% if transImage is defined or amazonImage is defined %}
+                {# if transImage is defined or amazonImage is defined #}
                 <article class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }}" data-format="video"
                          data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-vid="{{ video.id }}"
                          data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </article>
-                {% endif %}
+                {# endif #}
             {% elseif media.mediaType == 'MediaAudio' %}
                 {% set audio = media %}
                 {% set trans = audio.findTranslationByLocale(app.request.locale) %}
@@ -118,7 +118,7 @@
                         {% set transImage = audio.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
-                {% if transImage is defined %}
+                {# if transImage is defined #}
                 <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}" data-format="audio"
                          data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
                          data-img="{% path transImage.file , '1144x724' %}"
@@ -142,87 +142,29 @@
                         </div>
                     </div>
                 </article>
-                {% endif %}
+                {# endif #}
             {% endif %}
         {% endfor %}
     </div>
 
     </div></div>
 </section>
-<div class="popin-video video loading">
-    <div class="video-container state-init video"
-         data-facebook="//www.facebook.com"
-         data-twitter="//www.twitter.com"
-         data-link="//www.example.com"
-         data-email="//www.gmail.com"
-         data-file=''
-         data-img="">
-        <div id="video-player-popin" class="">
-        </div>
-        <div class="video-overlay"></div>
-        <div class="infos-bar hide-info">
-            <div class="picto"><i class="icon icon-video"></i></div>
-            <div class="info">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="popin-info info">
-        <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-        <p></p>
-    </div>
-
-    <div class="popin-buttons buttons square relative">
-        <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"  class="button facebook"><i class="icon icon-facebook"></i></a>
-        <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon-twitter"></i></a>
-        <a href="#" rel="nofollow" class="button link self" data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-link"></i></a>
-        <a href="#" class="button email popin-mail-open"><i class="icon icon-letter"></i></a>
-        <div class="texts-clipboard"></div>
-    </div>
-</div>
-
-<div class="audio-container state-init popin-audio"
-     data-file=''
-     data-img="">
-    <div class="audio-player">
-        <div id="audio-player-popin" class="audio-player-container"></div>
-        <div class="image"></div>
-        <button class="play-btn play"><i class="icon icon-play"></i></button>
-        <div class="on"></div>
-    </div>
-    <div class="popin-info info">
-        <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-        <p></p>
-    </div>
-    <div class="popin-buttons buttons square relative">
-        <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"  class="button facebook"><i class="icon icon-facebook"></i></a>
-        <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon-twitter"></i></a>
-        <a href="#" rel="nofollow" class="button link self" data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-link"></i></a>
-        <a href="#" class="button email popin-mail-open"><i class="icon icon-letter"></i></a>
-        <div class="texts-clipboard"></div>
-    </div>
-</div>
-    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-    {
-    "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : 'Les Médias',
-    "url"  : ''
-    },
-    ]} %}
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+{
+"name" : 'breadcrumb.69editions.home'|trans,
+"url"  : path('fdc_corporate_default_home')
+},
+{
+"name" : 'breadcrumb.retrospective.home'|trans,
+"url"  : path('fdc_corporate_editions_retrospective')
+},
+{
+"name" : app.request.attributes.get('year'),
+"url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+},
+{
+"name" : 'Les Médias',
+"url"  : ''
+},
+]} %}
 {% endblock %}
