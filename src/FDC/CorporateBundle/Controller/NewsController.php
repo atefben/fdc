@@ -125,8 +125,15 @@ class NewsController extends Controller
         $site = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
 
         //GET ALL MEDIA PHOTOS
-        $medias = $em->getRepository('BaseCoreBundle:Media')->getImageMediaCorporate($locale, $festival->getId(), null);
-        
+        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), null);
+        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), null);
+        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), null);
+
+        $medias = array();
+        $medias = array_merge($medias, $images);
+        $medias = array_merge($medias, $videos);
+        $medias = array_merge($medias, $audios);
+
         //set default filters
         $filters = array();
         $filters['dates'][0] = 'all';
