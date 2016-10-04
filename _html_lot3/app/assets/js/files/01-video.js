@@ -180,9 +180,7 @@ var initVideo = function(hash) {
         $topBar.find('.buttons .popin-mail-open').on('click', function(e) {
             fullScreenApi.cancelFullScreen();
         });
-
-
-
+        
         function updateVolume(x, vol) {
             var volume = $sound.find('.sound-bar'),
                 percentage;
