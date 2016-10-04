@@ -14,7 +14,7 @@
         {% endif %}
 
         {% if medias|length > 0 %}
-        <li{% if 'fdc_corporate_news_getphotos' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getphotos', {year: app.request.attributes.get('year')}) }}">Les médias</a></li>
+        <li{% if 'fdc_corporate_news_getmedias' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getmedias', {year: app.request.attributes.get('year')}) }}">Les médias</a></li>
         {% endif %}
 
         {% if news|length > 0 %}

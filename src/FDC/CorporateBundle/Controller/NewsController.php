@@ -79,10 +79,6 @@ class NewsController extends Controller
                     $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
-
-                if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
-                    $filters['format'][] = $newsArticle->getNewsType();
-                }
             } else {
                 unset($newsArticles[$key]);
             }
@@ -98,10 +94,10 @@ class NewsController extends Controller
     /**
      * @param Request $request
      * @return array
-     * @Route("/{year}/photos")
+     * @Route("/{year}/medias")
      * @Template("FDCCorporateBundle:News/list:medias.html.twig")
      */
-    public function getPhotosAction(Request $request, $year)
+    public function getMediasAction(Request $request, $year)
     {
 
         $this->isPageEnabled($request->get('_route'));
@@ -129,8 +125,8 @@ class NewsController extends Controller
         $site = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
 
         //GET ALL MEDIA PHOTOS
-        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMediaCorporate($locale, $festival->getId(), $site);
-
+        $medias = $em->getRepository('BaseCoreBundle:Media')->getImageMediaCorporate($locale, $festival->getId(), null);
+        
         //set default filters
         $filters = array();
         $filters['dates'][0] = 'all';
@@ -139,31 +135,31 @@ class NewsController extends Controller
         $filters['themes']['id'][0] = 'all';
         $filters['format'][0] = 'all';
 
-        if(count($photos) > 0) {
-            $filters['format'][] = 'photo';
-        }
-
-        foreach ($photos as $key => $photo) {
-            $photo->theme = $photo->getTheme();
+        foreach ($medias as $key => $media) {
+            $media->theme = $media->getTheme();
 
             if (($key % 3) == 0) {
-                $photo->double = true;
+                $media->double = true;
             }
 
             //check if filters don't already exist
-            $date = $photo->getPublishedAt();
+            $date = $media->getPublishedAt();
             if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
+            if ($media->getTheme() && !in_array($media->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $media->getTheme()->getId();
+                $filters['themes']['content'][] = $media->getTheme();
+            }
 
-            if ($photo->getTheme() && !in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $photo->getTheme()->getId();
-                $filters['themes']['content'][] = $photo->getTheme();
+            $slugTypes = array('MediaImage' => 'photo', 'MediaVideo' => 'video', 'MediaAudio' => 'audio');
+            if (!in_array($slugTypes[$media->getMediaType()], $filters['format'])) {
+                $filters['format'][] = $slugTypes[$media->getMediaType()];
             }
         }
 
         return array(
-            'photos'  => $photos,
+            'medias'  => $medias,
             'filters' => $filters,
             'festivals' => $festivals,
         );
