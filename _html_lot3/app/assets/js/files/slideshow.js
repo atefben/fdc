@@ -62,8 +62,6 @@ var openSlideShow = function (slider, hash) {
             if ($('.img').length > 0 && $(value).hasClass('active')) {
                 centerElement = index;
             }
-
-
 /*
             console.log($(value).find('.contain-txt a').html());
 */
