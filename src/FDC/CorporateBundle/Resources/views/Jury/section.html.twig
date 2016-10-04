@@ -7,7 +7,7 @@
 
     {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
-    <div class="ajax-section"><div class="contain-ajax">
+    <div class="ajax-section"><div class="contain-ajax jury">
 
     {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 

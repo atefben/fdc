@@ -1076,7 +1076,7 @@ var initAudio = function (hash) {
 
         if (id) {
             var audioPlayer = jwplayer(id);
-            if (!$(audioPlayer).data('loaded')) {
+            if (!$(audioPlayer).data('loaded') || $('.activeAudio').length > 0) {
                 audioLoad($("#" + id)[0], audioPlayer, havePlaylist, function (aid) {
                     $(aid).data('loaded', true);
                     tmp = aid;
@@ -1341,6 +1341,8 @@ var initAudio = function (hash) {
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
 
+            $popinAudio.css('display','block');
+
             setTimeout(function(){
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
@@ -1391,10 +1393,15 @@ var initAudio = function (hash) {
 
                     audioPopin.stop();
                     audioPopin.setMute(true);
+                    audioPopin = 0;
 
+                    $popinAudio.removeClass('video-player');
+                    $popinAudio.removeClass('loading');
+                    $popinAudio.css('display','none');
                     $popinAudio.removeClass('show');
                     $('#main').removeClass('overlay');
                     $('.activeAudio').removeClass('activeAudio');
+                    $(audioPopin).data('loaded', false);
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
@@ -1421,6 +1428,8 @@ var initAudio = function (hash) {
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
 
+            $popinAudio.css('display','block');
+
             setTimeout(function(){
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
@@ -1470,12 +1479,20 @@ var initAudio = function (hash) {
 
                     audioPopin.stop();
                     audioPopin.setMute(true);
+                    audioPopin = 0;
 
+                    $popinAudio.removeClass('video-player');
+                    $popinAudio.removeClass('loading');
+                    $popinAudio.css('display','none');
                     $popinAudio.removeClass('show');
                     $('#main').removeClass('overlay');
                     $('.activeAudio').removeClass('activeAudio');
+                    $(audioPopin).data('loaded', false);
+
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
+
+
                 });
             }, 1000);
 
@@ -3320,8 +3337,6 @@ var openSlideShow = function (slider, hash) {
             if ($('.img').length > 0 && $(value).hasClass('active')) {
                 centerElement = index;
             }
-
-
             /*
              console.log($(value).find('.contain-txt a').html());
              */

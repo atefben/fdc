@@ -159,10 +159,10 @@ class EntityRepository extends BaseRepository
                 ;
             }
         } else {
-            $qb
+            /*$qb
                 ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
                 ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
-            ;
+            ;*/
 
             if ($media == 'MediaAudio') {
             //    $this->addAWSAudioEncodersQueries($qb, $alias);
