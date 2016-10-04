@@ -339,6 +339,7 @@ var openSlideShow = function (slider, hash) {
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
+            window.location.hash = "";
         }, 1000);
     });
 

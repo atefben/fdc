@@ -357,7 +357,7 @@ var initAudio = function (hash) {
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-
+                    window.location.hash = "";
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -443,7 +443,7 @@ var initAudio = function (hash) {
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-
+                    window.location.hash = "";
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
