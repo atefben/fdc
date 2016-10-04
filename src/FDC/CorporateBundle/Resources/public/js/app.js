@@ -82,9 +82,6 @@ var initVideo = function(hash) {
         live         = live || false;
         var tmp;
 
-
-        console.log(id);
-
         if (id) {
             var videoPlayer = jwplayer(id);
 
@@ -349,6 +346,7 @@ var initVideo = function(hash) {
             var videoImage =  $('.activeVideo').data('img');
         }
 
+        console.log(videoFile);
 
         playerInstance.setup({
             // file: $container.data('file'),
@@ -714,6 +712,8 @@ var initVideo = function(hash) {
                     videoNews.stop();
                     videoNews.setMute(true);
 
+                    videoNews = 0;
+
                     $popinVideo.removeClass('show');
                     $('#main').removeClass('overlay');
                     $('.activeVideo').removeClass('activeVideo');
@@ -858,9 +858,7 @@ var owInitAjax = function() {
             }
 
             if($('.isotope-01').length) {
-                setTimeout(function(){
-                    owInitGrid('isotope-01');
-                }, 800);
+                owInitGrid('isotope-01');
             }
 
             if($('.medias').length > 0) {
@@ -2781,32 +2779,32 @@ var initRs = function () {
  ----------------------------------------------------------------------------- */
 
 
-var owInitSlider = function(sliderName) {
+var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
-    if(sliderName == 'home') {
+    if (sliderName == 'home') {
 
         var slide = $('.slider-carousel').owlCarousel({
-            navigation          :  true,
-            items               :  1,
-            autoWidth           :  true,
-            autoplay            :  true,
-            autoplayTimeout     :  4000,
-            autoplayHoverPause  :  true,
-            loop                :  true,
-            smartSpeed          :  700
+            navigation: true,
+            items: 1,
+            autoWidth: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            loop: true,
+            smartSpeed: 700
         });
 
-        slide.on('changed.owl.carousel', function(event) {
-            setTimeout(function(){
-                var $item   = $('.owl-item.active').find('.item');
-                var number  = $item.data('item');
+        slide.on('changed.owl.carousel', function (event) {
+            setTimeout(function () {
+                var $item = $('.owl-item.active').find('.item');
+                var number = $item.data('item');
                 var $active = $(".container-images .item.active");
 
                 $active.removeClass("fadeInRight").addClass('fadeOut');
 
-                setTimeout(function(){
-                    $(".container-images .item[data-item="+number+"]").removeClass('fadeOut').addClass('active fadeInRight');
+                setTimeout(function () {
+                    $(".container-images .item[data-item=" + number + "]").removeClass('fadeOut').addClass('active fadeInRight');
                     $active.removeClass('active');
                 }, 500);
             }, 200);
@@ -2816,17 +2814,17 @@ var owInitSlider = function(sliderName) {
 
     /* SLIDER 01
      ----------------------------------------------------------------------------- */
-    if(sliderName == 'slider-01') {
+    if (sliderName == 'slider-01') {
         var slide01 = $('.slider-01').owlCarousel({
-            navigation          : false,
-            items               : 1,
-            autoWidth           : true,
-            smartSpeed          : 700,
-            center              : true
+            navigation: false,
+            items: 1,
+            autoWidth: true,
+            smartSpeed: 700,
+            center: true
         });
 
         // Custom Navigation Events
-        $(document).on('click', '.slider-01 .owl-item', function(){
+        $(document).on('click', '.slider-01 .owl-item', function () {
             var number = $(this).index();
 
             $('.slider-01 .center').removeClass('center');
@@ -2837,19 +2835,19 @@ var owInitSlider = function(sliderName) {
 
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
-    if(sliderName == 'slider-02' && !$('.s-video-playlist').length) {
+    if (sliderName == 'slider-02' && !$('.s-video-playlist').length) {
 
         var slide01 = $('.slider-02').owlCarousel({
-            navigation          : false,
-            items               : 1,
-            autoWidth           : true,
-            smartSpeed          : 700,
-            center              : true,
-            margin              : 27.5
+            navigation: false,
+            items: 1,
+            autoWidth: true,
+            smartSpeed: 700,
+            center: true,
+            margin: 27.5
         });
 
         // Custom Navigation Events
-        $(document).on('click', '.slider-02 .owl-item', function(){
+        $(document).on('click', '.slider-02 .owl-item', function () {
             var number = $(this).index();
 
             $('.slider-02 .center').removeClass('center');
@@ -2861,20 +2859,20 @@ var owInitSlider = function(sliderName) {
 
     /* SLIDER 03
      ----------------------------------------------------------------------------- */
-    if(sliderName == 'slider-03') {
+    if (sliderName == 'slider-03') {
 
 
         var slide01 = $('.slider-03').owlCarousel({
-            navigation          : false,
-            items               : 1,
-            autoWidth           : true,
-            smartSpeed          : 700,
-            center              : true,
-            margin              : 27.5
+            navigation: false,
+            items: 1,
+            autoWidth: true,
+            smartSpeed: 700,
+            center: true,
+            margin: 27.5
         });
 
         // Custom Navigation Events
-        $(document).on('click', '.slider-03 .owl-item', function(){
+        $(document).on('click', '.slider-03 .owl-item', function () {
             var number = $(this).index();
 
             $('.slider-02 .center').removeClass('center');
@@ -2885,7 +2883,7 @@ var owInitSlider = function(sliderName) {
     }
 
 
-    if(sliderName == "timelapse-01") {
+    if (sliderName == "timelapse-01") {
 
         //Init var
         var slider = document.getElementById('timelapse-01');
@@ -2898,32 +2896,40 @@ var owInitSlider = function(sliderName) {
         var sizeSlide = $('.slider-restropective').width();
         var finalSizeSlider = numberSlide * sizeSlide + 1000;
 
-        var initOpenAjax = function() { //ajax
-            $('.discover').on('click', function(e){
+        var initOpenAjax = function () { //ajax
+            $('.discover').on('click', function (e) {
 
                 e.preventDefault();
                 var url = $(this).data('url');
 
-                $.get(url, function(data) {
+                $.get(url, function (data) {
 
                     $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
-                    $('.timelapse').css('display','none');
-                    $('.discover').css('display','none');
-                    $('.slides-calc2').css('display','none');
+                    $('.timelapse').css('display', 'none');
+                    $('.discover').css('display', 'none');
+                    $('.slides-calc2').css('display', 'none');
                     $('.title-big-date').addClass('title-2').removeClass('title-big-date');
                     $('.title-edition').addClass('title-4').removeClass('title-edition');
 
                     var imgurl = $('.block-push-top.big .container img').attr('src');
-                    $('.block-push-top.big .container img').css('display','none');
+                    $('.block-push-top.big .container img').css('display', 'none');
 
-                    $('.block-push-top.big').css('background-image','url('+imgurl+')');
+                    $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                     var data = $(data).find('.contain-ajax');
 
                     $('.ajax-section').html(data);
                     owInitNavSticky(1);
 
-                    window.history.pushState('','',url);
+                    window.history.pushState('', '', url);
+
+                    setTimeout(function () {
+                        if ($('.isotope-01').length) {
+                            owInitGrid('isotope-01');
+                            console.log('init grid');
+                        }
+                    }, 1000);
+
                 });
 
                 return false;
@@ -2931,7 +2937,7 @@ var owInitSlider = function(sliderName) {
         }
 
         // init slider
-        $slide.css('width',finalSizeSlider); // change size slider
+        $slide.css('width', finalSizeSlider); // change size slider
 
         var test = '418%';
         $slideCalc1.css('width', test); // change size slider
@@ -2949,10 +2955,10 @@ var owInitSlider = function(sliderName) {
 
         var initDrag = 1;
 
-        slider.noUiSlider.on('update', function( values, handle ) {
+        slider.noUiSlider.on('update', function (values, handle) {
 
             //drag
-            var w = $(window).width() +4;
+            var w = $(window).width() + 4;
             var number = 0;
 
 
@@ -2964,42 +2970,42 @@ var owInitSlider = function(sliderName) {
             $('.slides-calc1 .date').html(values);
 
             $('.big img').removeClass('open');
-            $('.slider-restropective .calc3').css('display','block');
-            $('.slider-restropective .calc4').css('display','block');
+            $('.slider-restropective .calc3').css('display', 'block');
+            $('.slider-restropective .calc4').css('display', 'block');
 
-            if(initDrag) {
+            if (initDrag) {
                 initDrag = 0;
             }
 
-            if(values > 1945){
-                $('.slides-calc1').css('display','block');
+            if (values > 1945) {
+                $('.slides-calc1').css('display', 'block');
                 $('.slides-calc2.navigation').removeClass('begin');
-            }else {
-                $('.slides-calc1').css('display','none');
+            } else {
+                $('.slides-calc1').css('display', 'none');
                 $('.slides-calc2.navigation').addClass('begin');
             }
 
-            if(number > 0.7 && initDrag == 0){
+            if (number > 0.7 && initDrag == 0) {
                 $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
                 $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
-            }else if(number < 0.9){
+            } else if (number < 0.9) {
                 $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
                 $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
             }
 
             //paralax calc 3
 
-            var val2 = - (valuesFloat - 1945 - number) * 380; //todo script ?
-            $('.slider-restropective[data-slide='+number+'] .calc3').css('transform','translate('+val2+'px)');
+            var val2 = -(valuesFloat - 1945 - number) * 380; //todo script ?
+            $('.slider-restropective[data-slide=' + number + '] .calc3').css('transform', 'translate(' + val2 + 'px)');
 
             //paralax cal 4
 
-            var val3 = - (valuesFloat - 1945 - number) * 80; //todo script ?
-            $('.slider-restropective[data-slide='+number+'] .calc4').css('transform','translate('+val3+'px)');
+            var val3 = -(valuesFloat - 1945 - number) * 80; //todo script ?
+            $('.slider-restropective[data-slide=' + number + '] .calc4').css('transform', 'translate(' + val3 + 'px)');
 
-            var val = - w * (values - 1945); //todo script ?
+            var val = -w * (values - 1945); //todo script ?
 
-            $slide.css('transform','translate('+val+'px)');
+            $slide.css('transform', 'translate(' + val + 'px)');
 
             $('.slider-restropective').removeClass('big').addClass('small');
             $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
@@ -3007,36 +3013,36 @@ var owInitSlider = function(sliderName) {
 
         });
 
-        slider.noUiSlider.on('end', function(values, handle){ //end drag
+        slider.noUiSlider.on('end', function (values, handle) { //end drag
 
-            var w = $('body').width() +4;
+            var w = $('body').width() + 4;
             valuesFloat = parseFloat(values[handle]);
             values = Math.round(valuesFloat);
             number = values - 1945;
 
 
-            var val = - w * (number) ; //todo script ?
+            var val = -w * (number); //todo script ?
 
-            $slide.css('transform','translate('+val+'px)');
+            $slide.css('transform', 'translate(' + val + 'px)');
 
-            $('.slider-restropective .calc3').css('display','none');
-            $('.slider-restropective .calc4').css('display','none');
+            $('.slider-restropective .calc3').css('display', 'none');
+            $('.slider-restropective .calc4').css('display', 'none');
 
-            var slideElement = $('.slider-restropective[data-slide='+number+']');
-            var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
+            var slideElement = $('.slider-restropective[data-slide=' + number + ']');
+            var slideElementText = $('.slider-restropective[data-slide=' + number + '] .texts');
 
             slideElement.removeClass('small').addClass('big');
             $('.big img').addClass('open');
 
-            setTimeout(function(){
+            setTimeout(function () {
 
                 slideElementText.addClass('animated zoomIn fadeIn visible');
                 $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-                setTimeout(function(){
+                setTimeout(function () {
 
                     slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
-                    $('.slides-calc1').css('display','none');
+                    $('.slides-calc1').css('display', 'none');
                     initOpenAjax();
                 }, 600);
             }, 900);
@@ -3045,31 +3051,31 @@ var owInitSlider = function(sliderName) {
 
         });
 
-        var animation = function(event) {
+        var animation = function (event) {
 
             var date = $('.slides-calc1 .date').html();
             date = parseInt(date);
 
-            if(event == "next"){
-                date = date +1;
+            if (event == "next") {
+                date = date + 1;
                 slider.noUiSlider.set([date]);
                 stopAnimation();
             }
 
-            if(event == "prev"){
-                date = date -1;
+            if (event == "prev") {
+                date = date - 1;
                 slider.noUiSlider.set([date]);
                 stopAnimation();
             }
 
-            if(event == "next-open"){
-                date = date +1;
+            if (event == "next-open") {
+                date = date + 1;
                 slider.noUiSlider.set([date]);
                 animationOpen();
             }
 
-            if(event == "prev-open"){
-                date = date -1;
+            if (event == "prev-open") {
+                date = date - 1;
                 slider.noUiSlider.set([date]);
                 animationOpen();
             }
@@ -3077,34 +3083,34 @@ var owInitSlider = function(sliderName) {
             return false;
         }
 
-        var stopAnimation = function() {
+        var stopAnimation = function () {
 
-            var w = $('body').width() +4;
+            var w = $('body').width() + 4;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = - w * (values - 1945); //todo script ?
+            var val = -w * (values - 1945); //todo script ?
 
 
-            $slide.css('transform','translate('+val+'px)');
+            $slide.css('transform', 'translate(' + val + 'px)');
 
-            $('.slider-restropective .calc3').css('display','none');
-            $('.slider-restropective .calc4').css('display','none');
+            $('.slider-restropective .calc3').css('display', 'none');
+            $('.slider-restropective .calc4').css('display', 'none');
 
-            var slideElement = $('.slider-restropective[data-slide='+number+']');
-            var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
+            var slideElement = $('.slider-restropective[data-slide=' + number + ']');
+            var slideElementText = $('.slider-restropective[data-slide=' + number + '] .texts');
 
             slideElement.removeClass('small').addClass('big');
             $('.big img').addClass('open');
 
-            setTimeout(function(){
+            setTimeout(function () {
 
                 slideElementText.addClass('animated zoomIn fadeIn visible');
                 $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-                setTimeout(function(){
+                setTimeout(function () {
 
                     slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
-                    $('.slides-calc1').css('display','none');
+                    $('.slides-calc1').css('display', 'none');
                     initOpenAjax();
 
                 }, 600);
@@ -3113,34 +3119,34 @@ var owInitSlider = function(sliderName) {
             $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
         }
 
-        var animationOpen = function() {
-            var w = $('body').width() +4;
+        var animationOpen = function () {
+            var w = $('body').width() + 4;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = - w * (values - 1945) - 10; //todo script ?
-            var slideElement = $('.slider-restropective[data-slide='+number+']');
-            var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
+            var val = -w * (values - 1945) - 10; //todo script ?
+            var slideElement = $('.slider-restropective[data-slide=' + number + ']');
+            var slideElementText = $('.slider-restropective[data-slide=' + number + '] .texts');
 
-            $('.slider-restropective .calc3').css('display','none');
-            $('.slider-restropective .calc4').css('display','none');
+            $('.slider-restropective .calc3').css('display', 'none');
+            $('.slider-restropective .calc4').css('display', 'none');
 
-            $slide.css('transform','translate('+val+'px)');
-            $('.slides-calc1').css('display','none');
+            $slide.css('transform', 'translate(' + val + 'px)');
+            $('.slides-calc1').css('display', 'none');
             slideElement.addClass('big');
 
             var imgurl = $('.block-push-top.big .container img').attr('src');
-            $('.block-push-top.big .container img').css('display','none');
-            $('.block-push-top.big').css('background-image','url('+imgurl+')');
+            $('.block-push-top.big .container img').css('display', 'none');
+            $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
-            setTimeout(function(){
+            setTimeout(function () {
 
                 slideElementText.addClass('animated zoomIn fadeIn visible');
                 $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
 
-                setTimeout(function(){
+                setTimeout(function () {
 
                     slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
-                    $('.slides-calc1').css('display','none');
+                    $('.slides-calc1').css('display', 'none');
                     initOpenAjax();
 
                 }, 600);
@@ -3148,89 +3154,89 @@ var owInitSlider = function(sliderName) {
         }
         // ON CLICK
 
-        $('.slides-calc2.next').on('click', function(){
+        $('.slides-calc2.next').on('click', function () {
             animation('next');
         });
 
-        $('.slides-calc2.prev').on('click', function(){
+        $('.slides-calc2.prev').on('click', function () {
             animation('prev');
         });
 
 
-        $('.date-next').on('click', function(){
+        $('.date-next').on('click', function () {
             animation('next-open');
 
             var $this = $(this);
 
             var url = $this.data('url');
 
-            $.get(url, function(data) {
+            $.get(url, function (data) {
                 var data = $(data).find('.contain-ajax');
 
                 $('.ajax-section').html(data);
                 owInitNavSticky(1);
 
-                window.history.pushState('','',url);
+                window.history.pushState('', '', url);
             });
 
         });
 
-        $('.date-back').on('click', function(){
+        $('.date-back').on('click', function () {
 
 
             var url = $(this).data('url');
 
 
-            $.get(url, function(data) {
+            $.get(url, function (data) {
                 var data = $(data).find('.contain-ajax');
 
                 $('.ajax-section').html(data);
                 owInitNavSticky(1);
 
-                window.history.pushState('','',url);
+                window.history.pushState('', '', url);
             });
 
             animation('prev-open');
         });
 
-        if($('.restrospective-init').length) {
+        if ($('.restrospective-init').length) {
 
-            var w = $('body').width() +4;
+            var w = $('body').width() + 4;
             values = $('.slides-calc1 .date').data('date');
 
             slider.noUiSlider.set([values]);
 
             number = values - 1945;
-            var val = - w * (values - 1945) - 10; //todo script
+            var val = -w * (values - 1945) - 10; //todo script
 
-            $slide.css('transform','translate('+val+'px)');
+            $slide.css('transform', 'translate(' + val + 'px)');
 
             animationOpen();
         }
     }
 };
 
-$(window).resize(function() {
+$(window).resize(function () {
 
-    if($('.retrospective').length) {
+    if ($('.retrospective').length) {
 
         var $slide = $('.slides');
         var $slideCalc1 = $('.slides-calc1');
 
-        var w = $('body').width() +4;
-        var numberSlide = $('.slider-restropective').size() +1;
+        var w = $('body').width() + 4;
+        var numberSlide = $('.slider-restropective').size() + 1;
         var sizeSlide = $('.slider-restropective').width();
         var finalSizeSlider = numberSlide * sizeSlide;
 
-        $slide.css('width',finalSizeSlider); // change size slider
+        $slide.css('width', finalSizeSlider); // change size slider
         /*$slideCalc1.css('width',finalSizeSlider); // change size slider*/
 
         values = $('.slides-calc1 .date').html();
         number = values - 1945;
-        var val = - w * (values - 1945); //todo script ?
+        var val = -w * (values - 1945); //todo script ?
 
 
-        $slide.css('transform','translate('+val+'px)');
+        $slide.css('transform', 'translate(' + val + 'px)');
 
     }
 });
@@ -4171,13 +4177,13 @@ $(document).ready(function () {
         $('body').addClass('not-mobile');
     }
 
-    if($('body').hasClass('mobile') > 0) {
-        var hideKeyboard = function() {
+    if ($('body').hasClass('mobile') > 0) {
+        var hideKeyboard = function () {
             document.activeElement.blur();
             $(".newsletter#email").blur();
         };
 
-        $('.newsletter').focusin(function() {
+        $('.newsletter').focusin(function () {
 
             $('#breadcrumb, .all-contain, .social, .title, .subtitle, .footer-menu').on('click', function () {
                 hideKeyboard();
@@ -4233,14 +4239,6 @@ $(document).ready(function () {
         owinitSlideShow(slider);
     }
 
-    if ($('.retrospective.poster').length) {
-        owInitNavSticky(1);
-    }
-
-    if ($('.retrospective-home').length) {
-        owInitSlider('timelapse-01');
-        onInitParallax();
-    }
 
     if ($('.ajax-section').length) {
         owInitAjax();
@@ -4250,7 +4248,58 @@ $(document).ready(function () {
         onInitParallax();
     }
 
-    if( $('.single-movie').length) {
+
+    if ($('.retrospective.poster').length) {
+        owInitNavSticky(1);
+    }
+
+    if ($('.retrospective-home').length) {
+        owInitSlider('timelapse-01');
+        onInitParallax();
+    }
+
+    if ($('.medias').length > 0) {
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "pid") {
+            var slider = $('.grid-01');
+            owinitSlideShow(slider, hash);
+        } else {
+            var slider = $('.grid-01');
+            owinitSlideShow(slider);
+        }
+
+        if (hash.length > 0 && verif == "vid") {
+            console.log(number);
+
+            initVideo(number);
+        } else {
+            initVideo();
+        }
+
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        } else {
+            initAudio();
+        }
+    }
+
+    if ($('.retrospective.palmares').length) {
+        owInitNavSticky(2);
+    }
+
+    if ($('.retrospective.selection').length) {
+        owInitNavSticky(2);
+        owInitGrid('isotope-01');
+    }
+
+
+    if ($('.single-movie').length) {
         var slider = $('.slideshow-img .images');
         owinitSlideShow(slider);
         owInitSlider('slider-03');
@@ -4266,49 +4315,16 @@ $(document).ready(function () {
         owInitNavSticky(1);
         owArrowDisplay();
 
-        if(!$('.single-movie').length > 0) {
+        if (!$('.single-movie').length > 0) {
             var slider = $('.slideshow-img .images');
             owinitSlideShow(slider);
         }
 
-        if($('.artist-page').length > 0 ){
+        if ($('.artist-page').length > 0) {
             owInitSlider('slider-03');
         }
     }
 
-
-    if($('.medias').length > 0) {
-
-        var hash = window.location.hash;
-        hash = hash.substring(1, hash.length);
-
-        verif = hash.slice(0, 3);
-        number = hash.slice(4);
-
-        if (hash.length > 0 && verif == "pid") {
-            var slider = $('.grid-01');
-            owinitSlideShow(slider,hash);
-        }else{
-            var slider = $('.grid-01');
-            owinitSlideShow(slider);
-        }
-
-        if (hash.length > 0 && verif == "vid") {
-            console.log(number);
-
-            initVideo(number);
-        }else{
-            initVideo();
-        }
-
-        if (hash.length > 0 && verif == "aid") {
-            initAudio(number);
-        }else{
-            initAudio();
-        }
-
-
-    }
 
     if ($('.articles-list').length) {
 
@@ -4327,17 +4343,9 @@ $(document).ready(function () {
         owInitAleaGrid(grid, $('.grid-01'), true);
     }
 
-    if ($('.retrospective.palmares').length) {
-        owInitNavSticky(2);
-    }
 
     if ($('.edition-69.palm-gold').length) {
         owInitNavSticky(1);
-    }
-
-    if ($('.retrospective.selection').length) {
-        owInitNavSticky(2);
-        owInitGrid('isotope-01');
     }
 
     if ($('.who').length) {
@@ -4398,5 +4406,9 @@ $(document).ready(function () {
             }, 500);
         });
     }
+
+    setTimeout(function () {
+        $('body').removeClass('loading');
+    }, 1000);
 
 });
