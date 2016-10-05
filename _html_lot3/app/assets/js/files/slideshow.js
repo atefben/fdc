@@ -93,7 +93,7 @@ var openSlideShow = function (slider, hash) {
             images.push(image);
         }
     });
-
+    
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
         for(var o = 0; o < images.length; o++){
@@ -142,6 +142,12 @@ var openSlideShow = function (slider, hash) {
                 goToSLide(centerElement);
             }
         }
+
+        thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+
+        $(thumbs).removeClass('active');
+        $(thumbs[centerElement]).addClass('active');
+
 
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
@@ -236,9 +242,7 @@ var openSlideShow = function (slider, hash) {
     var wSlide = wSlide + "px";
 
     fullscreen.css('width', wSlide);
-
-    console.log(centerElement);
-
+    
     if (typeof hash != "undefined") {
 
         for (var i = 0; i < images.length; i++) {
@@ -329,6 +333,11 @@ var openSlideShow = function (slider, hash) {
 
     thumbs = thumbnails.find(".thumb");
 
+    thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    
+    $(thumbs).removeClass('active');
+    $(thumbs[centerElement]).addClass('active');
+
     $(thumbs).on('click', function () {
 
         if (!$('.c-fullscreen-slider .owl-stage').hasClass('owl-grab')) {
@@ -337,9 +346,9 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
+            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
-            thumbnailsSlide.trigger('to.owl.carousel',[id]);
 
             $('.chocolat-pagination').removeClass('active');
             $('.chocolat-wrapper .thumbnails').removeClass('open');
@@ -384,6 +393,7 @@ var openSlideShow = function (slider, hash) {
 
         if ($('.thumbnails').hasClass('open')) {
             $('.fullscreen-slider img').css('transition', '.5s').css('opacity', '.5');
+            thumbnailsSlide.trigger('to.owl.carousel',[centerElement]);
         } else {
             $('.fullscreen-slider img').css('opacity', '1');
         }
