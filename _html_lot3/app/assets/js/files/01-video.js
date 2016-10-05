@@ -82,13 +82,10 @@ var initVideo = function(hash) {
         live         = live || false;
         var tmp;
 
-
-        console.log(id);
-
         if (id) {
             var videoPlayer = jwplayer(id);
 
-            if(!$(videoPlayer).data('loaded')) {
+            if(!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0 ) {
                 playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp = vid;
@@ -181,9 +178,7 @@ var initVideo = function(hash) {
         $topBar.find('.buttons .popin-mail-open').on('click', function(e) {
             fullScreenApi.cancelFullScreen();
         });
-
-
-
+        
         function updateVolume(x, vol) {
             var volume = $sound.find('.sound-bar'),
                 percentage;
@@ -343,16 +338,12 @@ var initVideo = function(hash) {
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
             }
         }
-
-
-        console.log($container);
-
+        
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
         }
-
-
+        
         playerInstance.setup({
             // file: $container.data('file'),
             sources: $('.activeVideo').length > 0 ? videoFile : $container.data('file'),
@@ -369,7 +360,7 @@ var initVideo = function(hash) {
                 playlist   = [];
 
             if(havePlaylist === "grid") {
-                $.each($('#gridVideos .item'), function(i,p) {
+                $.each($('.grid-01 .item.video'), function(i,p) {
                     var tempList = {
                         "sources"  : $(p).data('file'),
                         "image"    : $(p).data('img'),
@@ -392,9 +383,10 @@ var initVideo = function(hash) {
                 tempSlider.find('.slider-channels-video').append(tempSlide);
             });
             $playlist = playlist;
-
+            
             initChannel();
             playerInstance.load(playlist);
+
 
             if($('.infos-videos .buttons').length > 0) {
                 linkPopinInit(0, '.infos-videos .buttons .link');
@@ -472,11 +464,11 @@ var initVideo = function(hash) {
             this.resize('100%','100%');
         });
 
-        $stateBtn.on('click', function() {
+        $stateBtn.off('click').on('click', function() {
             playerInstance.play();
         });
 
-        $progressBar.on('click', function(e) {
+        $progressBar.off('click').on('click', function(e) {
             var ratio = e.offsetX / $progressBar.outerWidth(),
                 duration = playerInstance.getDuration(),
                 current = duration * ratio;
@@ -544,12 +536,11 @@ var initVideo = function(hash) {
 
     var initPopinVideo = function(hash) {
 
-        console.log(hash);
-
         if(hash != undefined) {
 
             $this = $('.item.video[data-vid="'+hash+'"');
 
+            $('.activeVideo').removeClass('activeVideo');
             $this.addClass('activeVideo');
 
             var $popinVideo = $('.popin-video'),
@@ -559,8 +550,8 @@ var initVideo = function(hash) {
                 category = $this.find('.category').text(),
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
-                name = $this.data('title');
-
+                name = $this.find('.contain-txt strong a').html();
+            
             videoNews = playerInit('video-player-popin', false, false);
 
             var hashPush = '#vid='+vid;
@@ -624,9 +615,17 @@ var initVideo = function(hash) {
                     videoNews.stop();
                     videoNews.setMute(true);
 
+                    videoNews = 0;
+
+                    window.location.hash = "";
+
                     $popinVideo.removeClass('show');
+                    $popinVideo.removeClass('video-player');
+                    $popinVideo.removeClass('loading');
+                    $popinVideo.css('display','none');
                     $('#main').removeClass('overlay');
                     $('.activeVideo').removeClass('activeVideo');
+                    $(videoNews).data('loaded', false);
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
@@ -641,7 +640,7 @@ var initVideo = function(hash) {
 
             e.preventDefault();
 
-
+            $('.activeVideo').removeClass('activeVideo');
             $(this).addClass('activeVideo');
 
             var $popinVideo = $('.popin-video'),
@@ -651,12 +650,14 @@ var initVideo = function(hash) {
                 category = $(e.target).closest('.video').find('.category').text(),
                 date = $(e.target).closest('.video').find('.date').text(),
                 hour = $(e.target).closest('.video').find('.hour').text(),
-                name = $(e.target).closest('.video').data('title');
+                name = $(this).find('.contain-txt strong a').data('title');
 
             videoNews = playerInit('video-player-popin', false, false);
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
+
+            $popinVideo.css('display','block');
 
             setTimeout(function(){
                 videoNews.play();
@@ -712,15 +713,23 @@ var initVideo = function(hash) {
 
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
+                    window.location.hash = "";
 
                     videoNews.stop();
                     videoNews.setMute(true);
 
+                    videoNews = 0;
+
                     $popinVideo.removeClass('show');
+                    $popinVideo.removeClass('video-player');
+                    $popinVideo.removeClass('loading');
+                    $popinVideo.css('display','none');
                     $('#main').removeClass('overlay');
                     $('.activeVideo').removeClass('activeVideo');
+                    $(videoNews).data('loaded', false);
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
+
                 });
             }, 1000);
 

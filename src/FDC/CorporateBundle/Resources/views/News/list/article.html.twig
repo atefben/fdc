@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block bodyClass %}loading dark retrospective retrospective-home restrospective-init{% endblock %}
 
 {% block body %}
     <section class=" border-bottom s-slider-retrospective">
@@ -17,7 +17,7 @@
         <div class="grid-sizer"></div>
 
         {% for article in articles %}
-        <article class="card item article date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} all" data-format="article" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+        <article class="card item article date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
             <div class="image">
                 <div class="image-wrapper">
                     {% if article is news_article %}
@@ -116,9 +116,9 @@
                         <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
                     {% endif %}
                 </div>
-                <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'year': app.request.attributes.get('year') }) }}" class="linkImage"></a>
+                <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>
                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                <span class="picto"><i class="icon icon-photo"></i></span>
+                <span class="picto"><i class="icon icon-{{ article.newsType|get_news_type }}"></i></span>
             </div>
             <div class="info">
                 <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a><span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>

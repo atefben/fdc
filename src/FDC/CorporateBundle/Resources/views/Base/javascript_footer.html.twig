@@ -12,6 +12,7 @@
 
 
         <script>
+            {% set globalsCurrentPage = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
             var GLOBALS = {
                 "env" : "html",
                 "locale" : "fr",
@@ -32,9 +33,9 @@
                     "newsUrlNext" : "news_page2.html",
                     "loadPressReleaseUrl" : "load-communique.php",
                     "selectionUrl" : "selection.html",
-                    "audiosUrl": "audios.php",
-                    "photosUrl": "photos.php",
-                    "videosUrl": "videos.php",
+                    "audiosUrl": "{{ globalsCurrentPage }}",
+                    "photosUrl": "{{ globalsCurrentPage }}",
+                    "videosUrl": "{{ globalsCurrentPage }}",
                     "searchUrl": "searchsuggest.json",
                     "resultUrl": "results.json",
                     "shareEmailUrl": "{{ url('fdc_corporate_global_shareemail') }}"

@@ -3997,6 +3997,24 @@ body {
   font-size: 16px;
   overflow-x: hidden;
 }
+body:before {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 5;
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+body.loading:before {
+  opacity: 1;
+  visibility: visible;
+}
 
 ::-moz-selection {
   background: #fff;
@@ -10698,10 +10716,16 @@ header #searchContainer {
   height: 100vh;
   display: block;
 }
-.fullscreen-slider img {
+.fullscreen-slider div {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+  display: inline-block;
+  text-align: center;
+}
+.fullscreen-slider img {
+  height: 100%;
+  transition: all 900ms cubic-bezier(0.165, 0.435, 0, 0.935);
 }
 
 .navigation-sticky {
@@ -12602,6 +12626,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   top: 20px;
   left: 30px;
 }
+.popin-video .popin-buttons a .icon.icon-letter {
+  left: 27px;
+}
 .popin-video .popin-buttons a:hover {
   color: #c8a461;
 }
@@ -12883,111 +12910,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .mob .audio-container.actu-article-audio .audio-player .progress {
   width: 635px;
 }
-.audio-container.popin-audio {
-  background-color: #fff;
-  position: fixed;
-  opacity: 0;
-  visibility: hidden;
-  top: 50%;
-  left: 50%;
-  width: 750px;
-  height: 580px;
-  margin: -290px 0 0 -375px;
-  padding: 20px;
-  box-sizing: border-box;
-  pointer-events: none;
-  z-index: 100;
-  -webkit-transform: translateY(30px);
-  transform: translateY(30px);
-  transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.audio-container.popin-audio:after {
-  right: 50%;
-}
-.audio-container.popin-audio:before {
-  visibility: hidden;
-}
-.audio-container.popin-audio.show {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-}
-.audio-container.popin-audio .audio-player {
-  height: 440px;
-}
-.audio-container.popin-audio .audio-player .play-btn {
-  top: auto;
-  bottom: 0;
-}
-.audio-container.popin-audio .audio-player .on {
-  height: 87px;
-  margin-top: 353px;
-  margin-left: 70px;
-}
-.audio-container.popin-audio .audio-player .progress {
-  width: 520px;
-}
-.mob .audio-container.popin-audio .audio-player .progress {
-  width: 605px;
-}
-.audio-container.popin-audio .info {
-  color: #969696;
-  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  bottom: 20px;
-  height: 80px;
-  left: 20px;
-  margin: 0;
-  text-align: left;
-  width: 710px;
-}
-.audio-container.popin-audio .info .category {
-  color: #c8a461;
-  display: inline-block;
-  font-size: 0.625rem;
-  letter-spacing: 0.1em;
-  margin-right: 12px;
-  text-transform: uppercase;
-}
-.audio-container.popin-audio .info span {
-  color: #969696;
-  display: inline-block;
-  font-size: 0.625rem;
-  letter-spacing: -0.05em;
-}
-.audio-container.popin-audio .info p {
-  color: #333;
-  font-size: 1rem;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  text-align: left;
-  margin-top: 5px;
-  width: auto;
-}
-.audio-container.popin-audio .buttons {
-  position: absolute;
-  bottom: 25px;
-  right: 20px;
-}
-.audio-container.popin-audio .buttons a:hover {
-  background-color: #fff;
-  border-color: #c8a461 !important;
-}
-.audio-container.popin-audio .buttons a:hover + .button {
-  border-left-color: #c8a461;
-}
-.audio-container.popin-audio .buttons a .icon {
-  font-size: .8rem;
-  position: absolute;
-  top: 30px;
-  left: 30px;
-}
-.audio-container.popin-audio .buttons a:hover {
-  color: #c8a461;
-}
 .single-article .audio-container {
   margin: 0 auto 70px;
   width: 630px;
@@ -13011,6 +12933,121 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .ov.show {
   opacity: 0.8;
   visibility: visible;
+}
+
+.popin-audio {
+  background-color: #fff;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  width: 750px;
+  height: 580px;
+  margin: -290px 0 0 -375px;
+  padding: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 100;
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+  transition: all 1.2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.popin-audio:after {
+  right: 50%;
+}
+.popin-audio:before {
+  visibility: hidden;
+}
+.popin-audio.show {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+.popin-audio .audio-player {
+  height: 440px;
+}
+.popin-audio .audio-player .play-btn {
+  top: auto;
+  bottom: 0;
+}
+.popin-audio .audio-player .on {
+  height: 87px;
+  margin-top: 353px;
+  margin-left: 70px;
+}
+.popin-audio .audio-player .progress {
+  width: 520px;
+}
+.mob .popin-audio .audio-player .progress {
+  width: 605px;
+}
+.popin-audio .info {
+  color: #969696;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  bottom: 20px;
+  height: 80px;
+  left: 20px;
+  margin: 0;
+  text-align: left;
+  width: 710px;
+}
+.popin-audio .info .category {
+  color: #c8a461;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+.popin-audio .info span {
+  color: #969696;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: -0.05em;
+}
+.popin-audio .info p {
+  color: #333;
+  font-size: 1rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-align: left;
+  margin-top: 5px;
+  width: auto;
+}
+.popin-audio .popin-buttons {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+}
+.popin-audio .popin-buttons .button.email {
+  border-right: 1px solid #dfdfdf;
+}
+.popin-audio .popin-buttons a:hover {
+  background-color: #fff;
+  border-color: #c8a461 !important;
+}
+.popin-audio .popin-buttons a:hover + .button {
+  border-left-color: #c8a461;
+}
+.popin-audio .popin-buttons a .icon {
+  font-size: .8rem;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+.popin-audio .popin-buttons a .icon.icon-letter {
+  left: 27px;
+}
+.popin-audio .popin-buttons a:hover {
+  color: #c8a461;
+}
+.popin-audio .audio-player .on .progress {
+  width: 520px;
 }
 
 .edition-69 figure.padding-bottom {
