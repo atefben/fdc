@@ -51,6 +51,46 @@ class ParticipateController extends Controller
         ));
     }
 
+
+    /**
+     * @Route("/accredit")
+     * @param Request $request
+     * @return Response
+     */
+    public function accreditAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // GET ACCREDIT PAGE
+        $accredit = $em->getRepository('BaseCoreBundle:CorpoAccredit')->findOneById($this->getParameter('admin_press_accredit_id'));
+        if ($accredit === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // SEO
+        //$this->get('base.manager.seo')->setFDCPressPagePressAccreditSeo($accredit, $locale);
+
+        $headerInfo = array(
+            'title' => 'S\'accréditer',
+            'description' => 'Le Festival de Cannes est réservé aux professionels du Cinéma. Pour y participer, ceux-ci
+                              doivent être accrédités. Les accréditations sont attribuées en fonction de l’activité
+                              professionnelle.'
+        );
+
+
+        return $this->render('FDCCorporateBundle:Participate:accredit.html.twig',array(
+            'headerInfo' => $headerInfo,
+            'accredit' => $accredit,
+        ));
+    }
+
     /**
      * @Route("/rules")
      * @param Request $request
