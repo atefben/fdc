@@ -124,15 +124,13 @@ class NewsController extends Controller
 
         $site = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
 
-        //GET ALL MEDIA PHOTOS
-        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), null);
-        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), null);
-        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), null);
+        //GET ALL MEDIA
+        if($festival->getYear() < 2016) {
+            $medias = $em->getRepository('BaseCoreBundle:Media')->getOldMedia($locale, $festival->getId(), $site);
+        } else {
+            $medias = $em->getRepository('BaseCoreBundle:Media')->getMedia($locale, $festival->getId(), null);
+        }
 
-        $medias = array();
-        $medias = array_merge($medias, $images);
-        $medias = array_merge($medias, $videos);
-        $medias = array_merge($medias, $audios);
 
         //set default filters
         $filters = array();
@@ -151,7 +149,8 @@ class NewsController extends Controller
 
             //check if filters don't already exist
             $date = $media->getPublishedAt();
-            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+            $notin = array('16-05-16','15-05-16','14-05-16','13-05-16','12-05-16','11-05-16');
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates']) && !in_array($date->format('d-m-y'), $notin)) {
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
             if ($media->getTheme() && !in_array($media->getTheme()->getId(), $filters['themes']['id'])) {
@@ -164,7 +163,7 @@ class NewsController extends Controller
                 $filters['format'][] = $slugTypes[$media->getMediaType()];
             }
         }
-
+        
         return array(
             'medias'  => $medias,
             'filters' => $filters,
