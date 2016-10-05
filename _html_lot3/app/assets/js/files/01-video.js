@@ -86,13 +86,11 @@ var initVideo = function(hash) {
             var videoPlayer = jwplayer(id);
 
             if(!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0 ) {
-                console.log('loaded');
                 playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp = vid;
                 });
             } else {
-                console.log('else');
                 tmp = videoPlayer
             }
             return tmp;
@@ -345,9 +343,7 @@ var initVideo = function(hash) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
         }
-
-        console.log(videoFile);
-
+        
         playerInstance.setup({
             // file: $container.data('file'),
             sources: $('.activeVideo').length > 0 ? videoFile : $container.data('file'),
@@ -387,9 +383,7 @@ var initVideo = function(hash) {
                 tempSlider.find('.slider-channels-video').append(tempSlide);
             });
             $playlist = playlist;
-
-            console.log(playlist)
-
+            
             initChannel();
             playerInstance.load(playlist);
 
@@ -470,11 +464,11 @@ var initVideo = function(hash) {
             this.resize('100%','100%');
         });
 
-        $stateBtn.on('click', function() {
+        $stateBtn.off('click').on('click', function() {
             playerInstance.play();
         });
 
-        $progressBar.on('click', function(e) {
+        $progressBar.off('click').on('click', function(e) {
             var ratio = e.offsetX / $progressBar.outerWidth(),
                 duration = playerInstance.getDuration(),
                 current = duration * ratio;
@@ -557,9 +551,7 @@ var initVideo = function(hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-
-            console.log(name);
-
+            
             videoNews = playerInit('video-player-popin', false, false);
 
             var hashPush = '#vid='+vid;

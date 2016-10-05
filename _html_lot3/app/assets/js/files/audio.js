@@ -1,5 +1,7 @@
 var initAudio = function (hash) {
 
+    console.log('initAudio');
+
     var audioControlBar =
             '<div class="vCenter">\
                 <div class="vCenterKid">\
@@ -33,6 +35,7 @@ var initAudio = function (hash) {
         twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
     function audioInit(id, cls, havePlaylist) {
+        console.log('audioInit');
         cls = cls || 'audio-player-container';
         havePlaylist = havePlaylist || false;
         var tmp;
@@ -90,6 +93,7 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
+        console.log('audioLoad');
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -167,11 +171,11 @@ var initAudio = function (hash) {
             $progressBar.find('.current-bar').css('width', percent + '%');
         });
 
-        $stateBtn.on('click', function () {
+        $stateBtn.off('click').on('click', function () {
             playerInstance.play();
         });
 
-        $progressBar.on('click', function (e) {
+        $progressBar.off('click').on('click', function (e) {
             var ratio = e.offsetX / $progressBar.outerWidth(),
                 duration = playerInstance.getDuration(),
                 current = duration * ratio;
@@ -290,6 +294,7 @@ var initAudio = function (hash) {
 
             $this = $('.item.audio[data-aid="' + hash + '"');
 
+            $('.activeAudio').removeClass('activeAudio');
             $this.addClass('activeAudio');
 
             var $popinAudio = $('.popin-audio'),
@@ -366,6 +371,8 @@ var initAudio = function (hash) {
                     $('.activeAudio').removeClass('activeAudio');
                     $(audioPopin).data('loaded', false);
 
+                    audioPopin = 0;
+
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
             }, 1000);
@@ -377,6 +384,7 @@ var initAudio = function (hash) {
 
         $('.item.audio').on('click', function (e) {
 
+            $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
             var $popinAudio = $('.popin-audio'),
@@ -456,6 +464,7 @@ var initAudio = function (hash) {
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
 
 
+                    audioPopin = 0;
                 });
             }, 1000);
 
