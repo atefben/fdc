@@ -1,8 +1,8 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}
+{% block bodyClass %}loading
     participate bright
-{% endblock bodyClass %}
+{% endblock bodyClass %}loading
 {% block body %}
 <section id="main">
     {% set mainTrans = procedure.mainImage.findTranslationByLocale(app.request.locale) %}

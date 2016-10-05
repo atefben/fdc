@@ -744,14 +744,15 @@ var initVideo = function(hash) {
     function updatePopinMedia(data) {
         data['url'] = data['url'] || document.location.href;
 
-        if($('.popin-mail.media').length) {
-            $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
-            $('.popin-mail.media').find('.contain-popin .date-article').text(data['date']);
-            $('.popin-mail.media').find('.contain-popin .title-article').text(data['title']);
-            $('.popin-mail.media').find('form #contact_section').val(data['category']);
-            $('.popin-mail.media').find('form #contact_detail').val(data['date']);
-            $('.popin-mail.media').find('form #contact_title').val(data['title']);
-            $('.popin-mail.media').find('form #contact_url').val(data['url']);
+        if($('.popin-mail').length) {
+            $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
+            $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
+            $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+            $('.popin-mail').find('form #contact_section').val(data['category']);
+            $('.popin-mail').find('form #contact_detail').val(data['date']);
+            $('.popin-mail').find('form #contact_title').val(data['title']);
+            $('.popin-mail').find('form #contact_url').val(data['url']);
+            $('.popin-mail').find('.chap-article').html('');
         }
     }
 
@@ -1033,8 +1034,6 @@ var owInitReadMore = function() {
 }
 var initAudio = function (hash) {
 
-    console.log('initAudio');
-
     var audioControlBar =
             '<div class="vCenter">\
                 <div class="vCenterKid">\
@@ -1068,7 +1067,6 @@ var initAudio = function (hash) {
         twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
     function audioInit(id, cls, havePlaylist) {
-        console.log('audioInit');
         cls = cls || 'audio-player-container';
         havePlaylist = havePlaylist || false;
         var tmp;
@@ -1126,7 +1124,6 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
-        console.log('audioLoad');
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -1311,14 +1308,15 @@ var initAudio = function (hash) {
         function updatePopinMedia(data) {
             data['url'] = data['url'] || document.location.href;
 
-            if ($('.popin-mail.media').length) {
-                $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
-                $('.popin-mail.media').find('.contain-popin .date-article').text(data['date']);
-                $('.popin-mail.media').find('.contain-popin .title-article').text(data['title']);
-                $('.popin-mail.media').find('form #contact_section').val(data['category']);
-                $('.popin-mail.media').find('form #contact_detail').val(data['date']);
-                $('.popin-mail.media').find('form #contact_title').val(data['title']);
-                $('.popin-mail.media').find('form #contact_url').val(data['url']);
+            if ($('.popin-mail').length) {
+                $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
+                $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
+                $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+                $('.popin-mail').find('form #contact_section').val(data['category']);
+                $('.popin-mail').find('form #contact_detail').val(data['date']);
+                $('.popin-mail').find('form #contact_title').val(data['title']);
+                $('.popin-mail').find('form #contact_url').val(data['url']);
+                $('.popin-mail').find('.chap-article').html('');
             }
         }
 
@@ -2765,16 +2763,32 @@ var initRs = function () {
         var cls = cls || '.link.self';
 
 
-        new Clipboard(cls);
+        clipboard = new Clipboard(cls);
+
+        console.log(clipboard);
 
         $(cls).attr('data-clipboard-text', link);
 
-        $(cls).on('click touchstart', function (e) {
-            e.preventDefault();
+        clipboard.on('success', function(e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
 
-            console.log('ici');
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+
+
+        $(cls).on('click touchstart', function (e) {
+
 
             var that = $(this);
+
+            e.preventDefault();
 
             if (!$('#share-box').length) {
 
@@ -2797,7 +2811,6 @@ var initRs = function () {
                 //two time because first don't work...
             }, 3000);
 
-            return false;
         });
 
     }

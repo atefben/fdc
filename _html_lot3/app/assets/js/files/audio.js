@@ -1,7 +1,5 @@
 var initAudio = function (hash) {
 
-    console.log('initAudio');
-
     var audioControlBar =
             '<div class="vCenter">\
                 <div class="vCenterKid">\
@@ -35,7 +33,6 @@ var initAudio = function (hash) {
         twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
     function audioInit(id, cls, havePlaylist) {
-        console.log('audioInit');
         cls = cls || 'audio-player-container';
         havePlaylist = havePlaylist || false;
         var tmp;
@@ -93,7 +90,6 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
-        console.log('audioLoad');
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -278,14 +274,15 @@ var initAudio = function (hash) {
         function updatePopinMedia(data) {
             data['url'] = data['url'] || document.location.href;
 
-            if ($('.popin-mail.media').length) {
-                $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
-                $('.popin-mail.media').find('.contain-popin .date-article').text(data['date']);
-                $('.popin-mail.media').find('.contain-popin .title-article').text(data['title']);
-                $('.popin-mail.media').find('form #contact_section').val(data['category']);
-                $('.popin-mail.media').find('form #contact_detail').val(data['date']);
-                $('.popin-mail.media').find('form #contact_title').val(data['title']);
-                $('.popin-mail.media').find('form #contact_url').val(data['url']);
+            if ($('.popin-mail').length) {
+                $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
+                $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
+                $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+                $('.popin-mail').find('form #contact_section').val(data['category']);
+                $('.popin-mail').find('form #contact_detail').val(data['date']);
+                $('.popin-mail').find('form #contact_title').val(data['title']);
+                $('.popin-mail').find('form #contact_url').val(data['url']);
+                $('.popin-mail').find('.chap-article').html('');
             }
         }
 

@@ -744,14 +744,15 @@ var initVideo = function(hash) {
     function updatePopinMedia(data) {
         data['url'] = data['url'] || document.location.href;
 
-        if($('.popin-mail.media').length) {
-            $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
-            $('.popin-mail.media').find('.contain-popin .date-article').text(data['date']);
-            $('.popin-mail.media').find('.contain-popin .title-article').text(data['title']);
-            $('.popin-mail.media').find('form #contact_section').val(data['category']);
-            $('.popin-mail.media').find('form #contact_detail').val(data['date']);
-            $('.popin-mail.media').find('form #contact_title').val(data['title']);
-            $('.popin-mail.media').find('form #contact_url').val(data['url']);
+        if($('.popin-mail').length) {
+            $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
+            $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
+            $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+            $('.popin-mail').find('form #contact_section').val(data['category']);
+            $('.popin-mail').find('form #contact_detail').val(data['date']);
+            $('.popin-mail').find('form #contact_title').val(data['title']);
+            $('.popin-mail').find('form #contact_url').val(data['url']);
+            $('.popin-mail').find('.chap-article').html('');
         }
     }
 
