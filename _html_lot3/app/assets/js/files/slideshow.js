@@ -70,7 +70,7 @@ var openSlideShow = function (slider, hash) {
             var caption = $(value).find('img').attr('data-credit');
             var id = $(value).find('img').attr('data-id');
             var facebookurl = $(value).find('img').attr('data-facebookurl');
-            var twitterurl = $(value).find('img').attr('data-facebookurl');
+            var twitterurl = $(value).find('img').attr('data-twitterurl');
             var url = $(value).find('img').attr('data-url');
 
             var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
