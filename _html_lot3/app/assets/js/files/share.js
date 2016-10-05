@@ -203,16 +203,32 @@ var initRs = function () {
         var cls = cls || '.link.self';
 
 
-        new Clipboard(cls);
+        clipboard = new Clipboard(cls);
+
+        console.log(clipboard);
 
         $(cls).attr('data-clipboard-text', link);
 
-        $(cls).on('click touchstart', function (e) {
-            e.preventDefault();
+        clipboard.on('success', function(e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
 
-            console.log('ici');
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+
+
+        $(cls).on('click touchstart', function (e) {
+
 
             var that = $(this);
+
+            e.preventDefault();
 
             if (!$('#share-box').length) {
 
@@ -235,7 +251,6 @@ var initRs = function () {
                //two time because first don't work... 
             }, 3000);
 
-            return false;
         });
 
     }
