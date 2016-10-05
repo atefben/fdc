@@ -55,12 +55,12 @@
     }
     ]
     } %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    }))
+    }}
 {% endblock %}
-{{ render(controller('FDCCorporateBundle:Global:shareEmail',
-{'section': '',
-    'detail' : '',
-    'title'  : '',
-    'description': '',
-    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-}))
-}}

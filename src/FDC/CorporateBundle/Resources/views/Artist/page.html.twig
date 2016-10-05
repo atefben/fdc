@@ -196,7 +196,6 @@
     </div>
 </div>
 </section>
-{% endblock %}
 {{ render(controller('FDCCorporateBundle:Global:shareEmail',
 {'section': '',
     'detail' : '',
@@ -205,3 +204,4 @@
     'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
 }))
 }}
+{% endblock %}
