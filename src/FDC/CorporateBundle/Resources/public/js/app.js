@@ -86,13 +86,11 @@ var initVideo = function(hash) {
             var videoPlayer = jwplayer(id);
 
             if(!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0 ) {
-                console.log('loaded');
                 playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp = vid;
                 });
             } else {
-                console.log('else');
                 tmp = videoPlayer
             }
             return tmp;
@@ -346,8 +344,6 @@ var initVideo = function(hash) {
             var videoImage =  $('.activeVideo').data('img');
         }
 
-        console.log(videoFile);
-
         playerInstance.setup({
             // file: $container.data('file'),
             sources: $('.activeVideo').length > 0 ? videoFile : $container.data('file'),
@@ -387,8 +383,6 @@ var initVideo = function(hash) {
                 tempSlider.find('.slider-channels-video').append(tempSlide);
             });
             $playlist = playlist;
-
-            console.log(playlist)
 
             initChannel();
             playerInstance.load(playlist);
@@ -470,11 +464,11 @@ var initVideo = function(hash) {
             this.resize('100%','100%');
         });
 
-        $stateBtn.on('click', function() {
+        $stateBtn.off('click').on('click', function() {
             playerInstance.play();
         });
 
-        $progressBar.on('click', function(e) {
+        $progressBar.off('click').on('click', function(e) {
             var ratio = e.offsetX / $progressBar.outerWidth(),
                 duration = playerInstance.getDuration(),
                 current = duration * ratio;
@@ -556,7 +550,7 @@ var initVideo = function(hash) {
                 category = $this.find('.category').text(),
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
-                name = $this.data('title');
+                name = $this.find('.contain-txt strong a').html();
 
             videoNews = playerInit('video-player-popin', false, false);
 
@@ -623,6 +617,8 @@ var initVideo = function(hash) {
 
                     videoNews = 0;
 
+                    window.location.hash = "";
+
                     $popinVideo.removeClass('show');
                     $popinVideo.removeClass('video-player');
                     $popinVideo.removeClass('loading');
@@ -654,7 +650,7 @@ var initVideo = function(hash) {
                 category = $(e.target).closest('.video').find('.category').text(),
                 date = $(e.target).closest('.video').find('.date').text(),
                 hour = $(e.target).closest('.video').find('.hour').text(),
-                name = $(e.target).closest('.video').data('title');
+                name = $(this).find('.contain-txt strong a').data('title');
 
             videoNews = playerInit('video-player-popin', false, false);
 
@@ -717,6 +713,7 @@ var initVideo = function(hash) {
 
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
+                    window.location.hash = "";
 
                     videoNews.stop();
                     videoNews.setMute(true);
@@ -732,6 +729,7 @@ var initVideo = function(hash) {
                     $(videoNews).data('loaded', false);
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
+
                 });
             }, 1000);
 
@@ -1035,6 +1033,8 @@ var owInitReadMore = function() {
 }
 var initAudio = function (hash) {
 
+    console.log('initAudio');
+
     var audioControlBar =
             '<div class="vCenter">\
                 <div class="vCenterKid">\
@@ -1068,6 +1068,7 @@ var initAudio = function (hash) {
         twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
     function audioInit(id, cls, havePlaylist) {
+        console.log('audioInit');
         cls = cls || 'audio-player-container';
         havePlaylist = havePlaylist || false;
         var tmp;
@@ -1125,6 +1126,7 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
+        console.log('audioLoad');
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -1202,11 +1204,11 @@ var initAudio = function (hash) {
             $progressBar.find('.current-bar').css('width', percent + '%');
         });
 
-        $stateBtn.on('click', function () {
+        $stateBtn.off('click').on('click', function () {
             playerInstance.play();
         });
 
-        $progressBar.on('click', function (e) {
+        $progressBar.off('click').on('click', function (e) {
             var ratio = e.offsetX / $progressBar.outerWidth(),
                 duration = playerInstance.getDuration(),
                 current = duration * ratio;
@@ -1325,6 +1327,7 @@ var initAudio = function (hash) {
 
             $this = $('.item.audio[data-aid="' + hash + '"');
 
+            $('.activeAudio').removeClass('activeAudio');
             $this.addClass('activeAudio');
 
             var $popinAudio = $('.popin-audio'),
@@ -1334,7 +1337,7 @@ var initAudio = function (hash) {
                 category = $this.find('.category').text(),
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
-                name = $this.data('title');
+                name = $this.find('.contain-txt strong a').html();
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
@@ -1392,7 +1395,7 @@ var initAudio = function (hash) {
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-
+                    window.location.hash = "";
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -1400,6 +1403,8 @@ var initAudio = function (hash) {
                     $('#main').removeClass('overlay');
                     $('.activeAudio').removeClass('activeAudio');
                     $(audioPopin).data('loaded', false);
+
+                    audioPopin = 0;
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
@@ -1412,6 +1417,7 @@ var initAudio = function (hash) {
 
         $('.item.audio').on('click', function (e) {
 
+            $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
             var $popinAudio = $('.popin-audio'),
@@ -1421,7 +1427,7 @@ var initAudio = function (hash) {
                 category = $(e.target).closest('.audio').find('.category').text(),
                 date = $(e.target).closest('.audio').find('.date').text(),
                 hour = $(e.target).closest('.audio').find('.hour').text(),
-                name = $(e.target).closest('.audio').data('title');
+                name = $(this).find('.contain-txt strong a').data('title');
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
@@ -1478,7 +1484,7 @@ var initAudio = function (hash) {
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-
+                    window.location.hash = "";
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -1491,6 +1497,7 @@ var initAudio = function (hash) {
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
 
 
+                    audioPopin = 0;
                 });
             }, 1000);
 
@@ -3612,6 +3619,7 @@ var openSlideShow = function (slider, hash) {
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
+            window.location.hash = "";
         }, 1000);
     });
 
