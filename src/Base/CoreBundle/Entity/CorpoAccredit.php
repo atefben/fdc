@@ -34,6 +34,11 @@ class CorpoAccredit implements TranslateMainInterface
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $mainImage;
+
+    /**
      * @var CorpoAccreditProcedure
      *
      * @ORM\OneToMany(targetEntity="CorpoAccreditHasProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
@@ -134,5 +139,28 @@ class CorpoAccredit implements TranslateMainInterface
     public function getHideCommonContent()
     {
         return $this->hideCommonContent;
+    }
+
+    /**
+     * Set mainImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $mainImage
+     * @return CorpoAccredit
+     */
+    public function setMainImage(\Base\CoreBundle\Entity\MediaImageSimple $mainImage = null)
+    {
+        $this->mainImage = $mainImage;
+
+        return $this;
+    }
+
+    /**
+     * Get mainImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getMainImage()
+    {
+        return $this->mainImage;
     }
 }

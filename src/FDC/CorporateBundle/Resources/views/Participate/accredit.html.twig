@@ -6,10 +6,15 @@
 {% block body %}
 
     <section id="main">
-        <div class="block-push block-push-top" style="background-image: url({{ asset('bundles/fdccorporate/media/images/participate-01.jpg') }})">
+        {% set mainTrans = accredit.mainImage.findTranslationByLocale(app.request.locale) %}
+        {% if mainTrans is null or mainTrans.file is null %}
+            {% set mainTrans = accredit.mainImage.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set mainImage = mainTrans.file %}
+        <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %})">
             <div class="vFlexAlign">
                 <div class="txts">
-                    <h1 class="title-3">{{ 'participate.register.movie'|trans }}</h1>
+                    <h1 class="title-3">{{ 'participate.accredit'|trans }}</h1>
                 </div>
             </div>
         </div> <!-- end block push -->
@@ -49,11 +54,10 @@
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
                         </div>
                         <div class="block-s-info border-bottom border-top vFlexAlign">
-                            <strong class="title-25">{{ 'participate.submit.movie'|trans }}</strong>
-                            <p>{{ 'participate.consult.rules'|trans }}</p>
                             <div class="buttons-02">
-                                <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.id}) }}" class="button" target="_blank">{{ 'participate.see.rules' }}</a>
+                                <a href="{{ accredit|trans_fallback('btnLink') }}" class="button" target="_blank">{{ accredit|trans_fallback('btnLabel') }}</a>
                             </div>
+                            <br><span class="legend">{{ accredit|trans_fallback('btnText') }}</span>
                         </div>
                         <div class="block-contact block-01-ms">
                             <strong class="title-25">{{ accredit|trans_fallback('contactTitle')|raw }}</strong>

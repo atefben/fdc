@@ -164,6 +164,9 @@ class CorpoAccreditAdmin extends Admin
                 'help' => 'form.seo.helper_file',
                 'required' => false,
             ))
+            ->add('mainImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_image'
+            ))
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(
