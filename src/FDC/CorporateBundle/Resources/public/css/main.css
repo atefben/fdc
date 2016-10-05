@@ -12059,7 +12059,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.9rem;
   line-height: 20px;
   text-align: left;
-  width: auto;
+  width: 400px;
 }
 .video-container .top-bar .buttons {
   float: right;
@@ -12756,7 +12756,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.750rem;
   text-align: left;
   margin-top: 5px;
-  width: auto;
+  width: 400px;
 }
 .audio-container .audio-player .on {
   opacity: 0;

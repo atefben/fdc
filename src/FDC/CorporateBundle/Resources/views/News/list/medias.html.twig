@@ -12,6 +12,8 @@
 
     {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
 
+        {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+
         <div class="grid-01 isotope-01">
             <div class="grid-sizer"></div>
         {% for media in medias %}
@@ -39,7 +41,7 @@
                         <div class="image-wrapper">
                             {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                             {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
-                            <img src="{% path trans.file , resolutionRetina %}" alt="" data-id="pid={{ photo.id }}" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}" data-title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'/>
+                            <img src="{% path trans.file , resolutionRetina %}" alt="" data-id="pid={{ photo.id }}" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}" data-title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>' data-label="{{ photo.theme|trans_fallback('slug') }}" data-date="{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ mediaUrl }}&picture={% path trans.file , resolution %}&name=&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="{{ mediaUrl }}" />
                         </div>
                         <a href="{% path trans.file , 'reference' %}" class="linkImage"></a>
                         <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
@@ -76,7 +78,7 @@
                 {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                     {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                 {%- endif -%}
-                {# if transImage is defined or amazonImage is defined #}
+                {% if transImage is defined or amazonImage is defined %}
                 <article class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }}" data-format="video"
                          data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-vid="{{ video.id }}"
                          data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
@@ -100,7 +102,7 @@
                         </div>
                     </div>
                 </article>
-                {# endif #}
+                {%  endif %}
             {% elseif media.mediaType == 'MediaAudio' %}
                 {% set audio = media %}
                 {% set trans = audio.findTranslationByLocale(app.request.locale) %}
@@ -118,7 +120,7 @@
                         {% set transImage = audio.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
-                {# if transImage is defined #}
+                {% if transImage is defined %}
                 <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}" data-format="audio"
                          data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
                          data-img="{% path transImage.file , '1144x724' %}"
@@ -142,7 +144,7 @@
                         </div>
                     </div>
                 </article>
-                {# endif #}
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
@@ -167,4 +169,12 @@
 "url"  : ''
 },
 ]} %}
+{{ render(controller('FDCCorporateBundle:Global:shareEmail',
+{'section': '',
+    'detail' : '',
+    'title'  : '',
+    'description': '',
+    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+}))
+}}
 {% endblock %}
