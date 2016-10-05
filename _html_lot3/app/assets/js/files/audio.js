@@ -372,10 +372,12 @@ var initAudio = function (hash) {
 
                     $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
                 });
+
+                initRs();
+
             }, 1000);
 
 
-            initRs();
 
         }
 
@@ -463,9 +465,11 @@ var initAudio = function (hash) {
 
                     audioPopin = 0;
                 });
+
+                initRs();
             }, 1000);
 
-            initRs();
+
         });
     }
 }
