@@ -13046,6 +13046,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .popin-audio .popin-buttons a:hover {
   color: #c8a461;
 }
+.popin-audio .audio-player .on .progress {
+  width: 520px;
+}
 
 .edition-69 figure.padding-bottom {
   padding-bottom: 56px;
