@@ -299,7 +299,7 @@ var initAudio = function (hash) {
                 category = $this.find('.category').text(),
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
-                name = $this.data('title');
+                name = $this.find('.contain-txt strong a').html();
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
@@ -386,7 +386,7 @@ var initAudio = function (hash) {
                 category = $(e.target).closest('.audio').find('.category').text(),
                 date = $(e.target).closest('.audio').find('.date').text(),
                 hour = $(e.target).closest('.audio').find('.hour').text(),
-                name = $(e.target).closest('.audio').data('title');
+                name = $(this).find('.contain-txt strong a').data('title');
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);

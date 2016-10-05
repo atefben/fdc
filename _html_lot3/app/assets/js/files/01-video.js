@@ -556,7 +556,9 @@ var initVideo = function(hash) {
                 category = $this.find('.category').text(),
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
-                name = $this.data('title');
+                name = $this.find('.contain-txt strong a').html();
+
+            console.log(name);
 
             videoNews = playerInit('video-player-popin', false, false);
 
@@ -656,7 +658,7 @@ var initVideo = function(hash) {
                 category = $(e.target).closest('.video').find('.category').text(),
                 date = $(e.target).closest('.video').find('.date').text(),
                 hour = $(e.target).closest('.video').find('.hour').text(),
-                name = $(e.target).closest('.video').data('title');
+                name = $(this).find('.contain-txt strong a').data('title');
 
             videoNews = playerInit('video-player-popin', false, false);
 
