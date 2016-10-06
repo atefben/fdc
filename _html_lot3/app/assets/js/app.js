@@ -251,6 +251,7 @@ $(document).ready(function () {
 
     if ($('.participate-accordion').length) {
         owInitAccordion("block-accordion");
+        owInitNavSticky(1);
     }
 
     if ($('.p-register').length) {
