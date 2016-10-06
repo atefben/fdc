@@ -1417,6 +1417,8 @@ var initAudio = function (hash) {
 
         $('.item.audio').on('click', function (e) {
 
+            e.preventDefault();
+
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
@@ -1480,6 +1482,8 @@ var initAudio = function (hash) {
 
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
+
+                    e.preventDefault();
 
                     audioPopin.stop();
                     audioPopin.setMute(true);
@@ -2625,14 +2629,14 @@ var initRs = function () {
             }
         });
 
-        $('body').on('click', '.selectOptions span', function () {
+        $('body').off('click').on('click', '.selectOptions span', function () {
             var i = parseInt($(this).index()) + 1;
             $('select option').eq(i).prop('selected', 'selected');
             $('.select').removeClass('invalid');
         });
 
         // check valid email address
-        $(cls + ' input[type="email"]').on('input', function () {
+        $(cls + ' input[type="email"]').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             var is_email = re.test(input.val());
@@ -2662,7 +2666,7 @@ var initRs = function () {
         });
 
         // check valid email address
-        $('#contact_email').on('input', function () {
+        $('#contact_email').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$/i;
             var is_email = re.test(input.val());
@@ -2692,7 +2696,7 @@ var initRs = function () {
         });
 
         // on submit : check if there are errors in the form
-        $(cls + ' form').on('submit', function (e) {
+        $(cls + ' form').off('submit').on('submit', function (e) {
             e.preventDefault();
             var $that = $(this);
             var empty = false;
@@ -2772,20 +2776,6 @@ var initRs = function () {
         console.log(clipboard);
 
         $(cls).attr('data-clipboard-text', link);
-
-        clipboard.on('success', function(e) {
-            console.info('Action:', e.action);
-            console.info('Text:', e.text);
-            console.info('Trigger:', e.trigger);
-
-            e.clearSelection();
-        });
-
-        clipboard.on('error', function(e) {
-            console.error('Action:', e.action);
-            console.error('Trigger:', e.trigger);
-        });
-
 
         $(cls).on('click touchstart', function (e) {
 
