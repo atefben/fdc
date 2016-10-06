@@ -47,7 +47,30 @@ var owInitFilter = function (isTabSelection) {
 
 
     } else {
+
+
         $('body').on('click', '.filters .select span', function () {
+
+            $('.filter .select').each(function() {
+                $that = $(this);
+                $id   = $(this).closest('.filter').attr('id');
+
+                $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+                    $this = $(this);
+
+                    var getVal = $this.data('filter');
+                    var numItems = $('.item[data-'+$id+'="'+getVal+'"]').length;
+
+                    console.log($('.item[data-'+$id+'="'+getVal+'"]').length);
+
+                    if (numItems === 0) {
+                        $this.addClass('disabled');
+                    } else {
+                        $this.removeClass('disabled');
+                    }
+                });
+            });
+
             var h = $(this).parent().html();
 
             $('#filters').remove();
