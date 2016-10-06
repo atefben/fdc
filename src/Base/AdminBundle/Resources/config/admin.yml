@@ -1393,3 +1393,15 @@ services:
         arguments: [~, Base\CoreBundle\Entity\CorpoAccreditProcedure, BaseAdminBundle:CorpoAccreditProcedureAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoAccreditProcedure}
+
+    base.admin.film_festival:
+        class: Base\AdminBundle\Admin\FilmFestivalAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmFestival, BaseAdminBundle:FilmFestivalAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFestival}
+
+    base.admin.film_festival_media_image_associated:
+        class: Base\AdminBundle\Admin\FilmFestivalMediaImageAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated, BaseAdminBundle:FilmFestivalMediaImageAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFestivalMediaImageAssociated}
