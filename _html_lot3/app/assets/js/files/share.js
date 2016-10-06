@@ -41,6 +41,9 @@ var initRs = function () {
 
     function initPopinMail(cls) {
         // check that fields are not empty
+        $(cls).find('#form').css('display','block');
+        $(cls).find('.info-popin').css('display','block');
+
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
             var is_name = input.val();
@@ -167,8 +170,8 @@ var initRs = function () {
                         }
                         else {
                             // TODO envoie du mail //
-                            $(cls).find('#form').remove();
-                            $(cls).find('.info-popin').remove();
+                            $(cls).find('#form').css('display','none');
+                            $(cls).find('.info-popin').css('display','none');
                             $(cls).find('#msg').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
                             $(cls).css('height', '31%');
                             return false;
