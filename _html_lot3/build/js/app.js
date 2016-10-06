@@ -859,10 +859,13 @@ var owInitAjax = function() {
 
       test = $data.filter('#breadcrumb').children()[0];
 
+
       $( ".ajax-section" ).html(contain);
 
       $( "#breadcrumb" ).html(test);
 
+      owInitFooterScroll();
+      
       if($('.navigation-sticky-02').length) {
         owInitNavSticky(2);
       }else if($('.navigation-sticky').length) {
