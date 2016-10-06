@@ -864,7 +864,7 @@ var owInitAjax = function() {
 
       $( "#breadcrumb" ).html(test);
 
-      owInitFooterScroll();
+      owInitFooterScroll(); 
       
       if($('.navigation-sticky-02').length) {
         owInitNavSticky(2);
