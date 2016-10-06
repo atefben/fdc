@@ -242,6 +242,14 @@ var openSlideShow = function (slider, hash) {
     var wSlide = wSlide + "px";
 
     fullscreen.css('width', wSlide);
+
+    $( window ).resize(function() {
+        var w = $(window).width();
+        var wSlide = w * images.length + 100;
+        var wSlide = wSlide + "px";
+
+        fullscreen.css('width', wSlide);
+    });
     
     if (typeof hash != "undefined") {
 

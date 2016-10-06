@@ -12059,7 +12059,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.9rem;
   line-height: 20px;
   text-align: left;
-  width: 400px;
 }
 .video-container .top-bar .buttons {
   float: right;
@@ -12590,6 +12589,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 1rem;
   line-height: normal;
   margin-top: 5px;
+  width: 400px;
 }
 .popin-video .popin-info .category {
   color: #c8a461;

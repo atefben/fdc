@@ -225,7 +225,8 @@ var initRs = function () {
 
         $(cls).on('click touchstart', function (e) {
 
-
+            $('#share-box').remove();
+            
             var that = $(this);
 
             e.preventDefault();
