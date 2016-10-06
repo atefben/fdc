@@ -859,9 +859,12 @@ var owInitAjax = function() {
 
             test = $data.filter('#breadcrumb').children()[0];
 
+
             $( ".ajax-section" ).html(contain);
 
             $( "#breadcrumb" ).html(test);
+
+            owInitFooterScroll();
 
             if($('.navigation-sticky-02').length) {
                 owInitNavSticky(2);
@@ -1563,7 +1566,30 @@ var owInitFilter = function (isTabSelection) {
 
 
     } else {
+
+
         $('body').on('click', '.filters .select span', function () {
+
+            $('.filter .select').each(function() {
+                $that = $(this);
+                $id   = $(this).closest('.filter').attr('id');
+
+                $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+                    $this = $(this);
+
+                    var getVal = $this.data('filter');
+                    var numItems = $('.item[data-'+$id+'="'+getVal+'"]').length;
+
+                    console.log($('.item[data-'+$id+'="'+getVal+'"]').length);
+
+                    if (numItems === 0) {
+                        $this.addClass('disabled');
+                    } else {
+                        $this.removeClass('disabled');
+                    }
+                });
+            });
+
             var h = $(this).parent().html();
 
             $('#filters').remove();
@@ -2612,6 +2638,9 @@ var initRs = function () {
 
     function initPopinMail(cls) {
         // check that fields are not empty
+        $(cls).find('#form').css('display','block');
+        $(cls).find('.info-popin').css('display','block');
+
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
             var is_name = input.val();
@@ -2738,8 +2767,8 @@ var initRs = function () {
                         }
                         else {
                             // TODO envoie du mail //
-                            $(cls).find('#form').remove();
-                            $(cls).find('.info-popin').remove();
+                            $(cls).find('#form').css('display','none');
+                            $(cls).find('.info-popin').css('display','none');
                             $(cls).find('#msg').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
                             $(cls).css('height', '31%');
                             return false;
@@ -3417,11 +3446,6 @@ var openSlideShow = function (slider, hash) {
         history.pushState(null, null, hashPush);
     }
 
-    $(window).resize(function () {
-        w = $(window).width();
-        translate = -(w + 1) * centerElement;
-        $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
-    });
 
     var goToNextPrev = function (direction) {
         w = $(window).width();
@@ -3785,6 +3809,15 @@ var openSlideShow = function (slider, hash) {
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
     })
+
+    $(window).resize(function () {
+        w = $(window).width();
+        translate = -(w + 1) * centerElement;
+        console.log(centerElement);
+        $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
+    });
+
+
 }
 
 
