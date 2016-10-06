@@ -383,6 +383,8 @@ var initAudio = function (hash) {
 
         $('.item.audio').on('click', function (e) {
 
+            e.preventDefault();
+
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
@@ -446,6 +448,8 @@ var initAudio = function (hash) {
 
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
+
+                    e.preventDefault();
 
                     audioPopin.stop();
                     audioPopin.setMute(true);
