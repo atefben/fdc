@@ -1578,8 +1578,9 @@ var owInitFilter = function (isTabSelection) {
                     $this = $(this);
 
                     var getVal = $this.data('filter');
-                    var numItems = $('.item[data-'+$id+'="'+getVal+'"]').length;
+                    var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
 
+                    console.log('.item[data-'+$id+'="'+getVal+'"]');
                     console.log($('.item[data-'+$id+'="'+getVal+'"]').length);
 
                     if (numItems === 0) {
