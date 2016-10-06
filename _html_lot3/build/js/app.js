@@ -617,7 +617,7 @@ var initVideo = function(hash) {
 
                     videoNews = 0;
 
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
 
                     $popinVideo.removeClass('show');
                     $popinVideo.removeClass('video-player');
@@ -713,7 +713,7 @@ var initVideo = function(hash) {
 
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
 
                     videoNews.stop();
                     videoNews.setMute(true);
@@ -1390,10 +1390,12 @@ var initAudio = function (hash) {
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
 
+                    e.preventDefault();
+
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -1488,7 +1490,8 @@ var initAudio = function (hash) {
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-                    window.location.hash = "";
+
+                    history.pushState(null, null, '#');
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -3701,7 +3704,7 @@ var openSlideShow = function (slider, hash) {
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
-            window.location.hash = "";
+            history.pushState(null, null, '#');
         }, 1000);
     });
 

@@ -413,7 +413,7 @@ var openSlideShow = function (slider, hash) {
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
-            window.location.hash = "";
+            history.pushState(null, null, '#');
         }, 1000);
     });
 
