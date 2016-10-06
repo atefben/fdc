@@ -42,10 +42,10 @@
 
         <span class="complet-infos newsletter popin">
           {{ form_widget(form.newsletter) }}
-          <label class="popin" for="newsletter-mail">{{ 'sharemail.label.inscriptionnewsletter'|trans }}</label>
+          {{ form_label(form.newsletter, 'sharemail.label.inscriptionnewsletter'|trans, {'label_attr':{'class':'popin'}}) }}
         </span>
             <span class="detail popin">* {{ 'sharemail.text.champsobligatoires'|trans }}</span>
-            <input type="submit" value='{{ 'sharemail.btn.envoyer'|trans }}' class='popin' id="share_mail">
+            <input type="submit" value="{{ 'sharemail.btn.envoyer'|trans }}" class='popin' id="share_mail">
         {{ form_rest(form) }}
         {{ form_end(form) }}
 
