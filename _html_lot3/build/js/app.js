@@ -2641,6 +2641,8 @@ var initRs = function () {
         // check that fields are not empty
         $(cls).find('#form').css('display','block');
         $(cls).find('.info-popin').css('display','block');
+        $(cls).find('#msg').html('');
+
 
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
