@@ -8,6 +8,16 @@
  summary:    SLIDER HOME
  ----------------------------------------------------------------------------- */
 
+function isMacintosh() {
+    return navigator.platform.indexOf('Mac') > -1
+}
+
+function isWindows() {
+    return navigator.platform.indexOf('Win') > -1
+}
+
+var isMac = isMacintosh();
+var isPC = !isMacintosh();
 
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
@@ -245,7 +255,8 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('end', function (values, handle) { //end drag
 
-            var w = $('body').width() + 4;
+            var nm = isMac ? 4 : 21; 
+            var w = $('body').width() + nm;
             valuesFloat = parseFloat(values[handle]);
             values = Math.round(valuesFloat);
             number = values - 1945;
@@ -315,7 +326,8 @@ var owInitSlider = function (sliderName) {
 
         var stopAnimation = function () {
 
-            var w = $('body').width() + 4;
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
             var val = -w * (values - 1945); //todo script ?
@@ -350,7 +362,9 @@ var owInitSlider = function (sliderName) {
         }
 
         var animationOpen = function () {
-            var w = $('body').width() + 4;
+            
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
             var val = -w * (values - 1945) - 10; //todo script ?
@@ -431,7 +445,8 @@ var owInitSlider = function (sliderName) {
 
         if ($('.restrospective-init').length) {
 
-            var w = $('body').width() + 4;
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').data('date');
 
             slider.noUiSlider.set([values]);
@@ -453,7 +468,8 @@ $(window).resize(function () {
         var $slide = $('.slides');
         var $slideCalc1 = $('.slides-calc1');
 
-        var w = $('body').width() + 4;
+        var nm = isMac ? 4 : 21;
+        var w = $('body').width() + nm;
         var numberSlide = $('.slider-restropective').size() + 1;
         var sizeSlide = $('.slider-restropective').width();
         var finalSizeSlider = numberSlide * sizeSlide;

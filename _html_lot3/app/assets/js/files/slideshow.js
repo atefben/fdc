@@ -93,7 +93,7 @@ var openSlideShow = function (slider, hash) {
             images.push(image);
         }
     });
-    
+
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
         for(var o = 0; o < images.length; o++){
@@ -342,7 +342,7 @@ var openSlideShow = function (slider, hash) {
     thumbs = thumbnails.find(".thumb");
 
     thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
-    
+
     $(thumbs).removeClass('active');
     $(thumbs[centerElement]).addClass('active');
 
