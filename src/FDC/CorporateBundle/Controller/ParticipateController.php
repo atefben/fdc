@@ -143,7 +143,35 @@ class ParticipateController extends Controller
 
         return $this->render('FDCCorporateBundle:Participate:prepare.html.twig',array(
             'content' => $content,
-            'datas' => $datas
+            'datas' => $datas,
+        ));
+    }
+
+
+    /**
+     * @Route("/prepare/{slug}")
+     * @param Request $request
+     * @return Response
+     */
+    public function getPageAction(Request $request, $slug)
+    {
+        $this->isPageEnabled($request->get('_route'));
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET PARTICIPATE PAGE
+        $page = $em
+            ->getRepository('BaseCoreBundle:FDCPageParticipate')
+            ->getFDCPageParticipateBySlug($slug, $locale);
+
+        if ($page === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $localeSlugs = $page->getLocaleSlugs();
+
+        return $this->render('FDCCorporateBundle:Participate:participate.html.twig',array(
+            'datas' => $page,
         ));
     }
 }
