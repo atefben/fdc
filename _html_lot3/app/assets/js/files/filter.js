@@ -49,7 +49,7 @@ var owInitFilter = function (isTabSelection) {
     } else {
 
 
-        $('body').on('click', '.filters .select span', function () {
+        $('.filters .select span').on('click', function () {
 
             $('.filter .select').each(function() {
                 $that = $(this);
@@ -99,15 +99,15 @@ var owInitFilter = function (isTabSelection) {
                 owInitGrid('filter');
             });
 
+            // close filters
+            $('body').on('click', '#filters', function () {
+                $('#filters').removeClass('show');
+                setTimeout(function () {
+                    $('#filters').remove();
+                }, 700);
+            });
         });
 
-        // close filters
-        $('body').on('click', '#filters', function () {
-            $('#filters').removeClass('show');
-            setTimeout(function () {
-                $('#filters').remove();
-            }, 700);
-        });
 
     }
 };
