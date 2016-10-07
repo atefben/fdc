@@ -109,7 +109,11 @@
     }
 
     .img {
-      background: center 0 no-repeat fixed;
+
+      body:not(.tablette) & {
+        background: center 0 no-repeat fixed;
+      }
+
       background-size: cover;
       opacity: 0.5;
       position: absolute;
