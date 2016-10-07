@@ -59,6 +59,8 @@ class LockController extends Controller
         'mediaaudio'                       => 'MediaAudio',
         'mediavideo'                       => 'MediaVideo',
         'mediapdf'                         => 'MediaPdf',
+        // Edition par année
+        'filmfestival'                     => 'FilmFestival',
         // Participer
         'fdcpageprepare'                   => 'FDCPagePrepare',
         'fdcpageparticipate'               => 'FDCPageParticipate',
