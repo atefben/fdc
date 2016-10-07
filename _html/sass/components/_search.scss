@@ -95,10 +95,11 @@ header #searchContainer {
     width: 100%;
 
     &::-ms-clear {
-      display: none;
+      visibility: hidden;
     }
 
   }
+
   .icon_recherche{
     color: $gold;
     font-size: 1.5rem;
@@ -123,10 +124,6 @@ header #searchContainer {
     line-height: 50px;
     width: 50px;
     @include transition(all 0.9s $linear);
-
-    &::-ms-clear {
-      display: none;
-    }
 
     &:hover {
       opacity: 0.6;
