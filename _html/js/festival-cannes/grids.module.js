@@ -95,7 +95,7 @@ function setGrid(grid, dom, init){
             var text = title.attr('data-title');
           }
 
-            title.html(text.trunc(15, true));
+            title.html(text.trunc(20, true));
 
         });
       }
@@ -186,6 +186,28 @@ function setGrid(grid, dom, init){
         });
 
       }
+
+
+      if($('#gridWebtv').length > 0 ){
+        console.log('ok');
+
+        $.each($('.item'), function (i, e) {
+
+          var title = $(e).find('.info .category + span');
+
+          if (!title.hasClass('init')) {
+            var text = $(e).find('.info .category + span').text();
+            title.addClass('init');
+            title.attr('data-title', text);
+          } else {
+            var text = title.attr('data-title');
+          }
+
+          title.html(text.trunc(40, true));
+
+        });
+      }
+
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
 
       console.log('8');
