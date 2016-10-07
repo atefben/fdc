@@ -9,7 +9,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="webtv_trailer_video.php" class="category">Sils Maria</a>
-                    <span>Olivier ASSAYAS</span>
+                    <span>Olivier ASSAYAS test très long texte pour la trunc</span>
                   </div>
                 </div>
               </div>
