@@ -35,7 +35,7 @@
                 {% set copyright = photo|trans_fallback('copyright') %}
 
                 <article class="card card-01 item photo shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }} {{ format }}" data-format="photo"
-                         data-theme="all {{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+                         data-theme="{{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-date="date-{{ photo.publishedAt|date('d-m-y') }}">
                     <a href="{% path trans.file , 'reference' %}" class="linkAllCover"></a>
                     <div class="image">
                         <div class="image-wrapper">
@@ -82,7 +82,8 @@
                 <article class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }}" data-format="video"
                          data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-vid="{{ video.id }}"
                          data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-                         data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}">
+                         data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}"
+                         data-date="date-{{ video.publishedAt|date('d-m-y') }}">
                     <a href="#" class="linkAllCover"></a>
                     <div class="image">
                         <div class="image-wrapper">
@@ -122,7 +123,7 @@
                 {% endif %}
                 {% if transImage is defined %}
                 <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}" data-format="audio"
-                         data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+                         data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]' data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
                          data-img="{% path transImage.file , '1144x724' %}"
                          data-aid="{{ audio.id }}">
                     <a href="#" class="linkAllCover"></a>

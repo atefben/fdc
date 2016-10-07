@@ -319,6 +319,14 @@ file that was distributed with this source code.
                                                             </a>
                                                         </li>
                                                     {% endif %}
+                                                    {% if app.security.token and is_granted('ROLE_BASE_ADMIN_FILM_FESTIVAL_ADMIN') and group.label == 'dashboard.group.general' %}
+                                                        <li>
+                                                            <a href="{{ path('admin_base_core_filmfestival_list') }}">
+                                                                <i class="fa fa-angle-double-right"></i>
+                                                                {{ 'dashboard.link.festivals'|trans({}, 'BaseAdminBundle') }}
+                                                            </a>
+                                                        </li>
+                                                    {% endif %}
                                                 </ul>
                                             </li>
                                         {% endif %}

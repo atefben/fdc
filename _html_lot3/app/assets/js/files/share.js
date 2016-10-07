@@ -41,6 +41,11 @@ var initRs = function () {
 
     function initPopinMail(cls) {
         // check that fields are not empty
+        $(cls).find('#form').css('display','block');
+        $(cls).find('.info-popin').css('display','block');
+        $(cls).find('#msg').html('');
+
+
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
             var is_name = input.val();
@@ -61,14 +66,14 @@ var initRs = function () {
             }
         });
 
-        $('body').on('click', '.selectOptions span', function () {
+        $('body').off('click').on('click', '.selectOptions span', function () {
             var i = parseInt($(this).index()) + 1;
             $('select option').eq(i).prop('selected', 'selected');
             $('.select').removeClass('invalid');
         });
 
         // check valid email address
-        $(cls + ' input[type="email"]').on('input', function () {
+        $(cls + ' input[type="email"]').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             var is_email = re.test(input.val());
@@ -98,7 +103,7 @@ var initRs = function () {
         });
 
         // check valid email address
-        $('#contact_email').on('input', function () {
+        $('#contact_email').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$/i;
             var is_email = re.test(input.val());
@@ -128,7 +133,7 @@ var initRs = function () {
         });
 
         // on submit : check if there are errors in the form
-        $(cls + ' form').on('submit', function (e) {
+        $(cls + ' form').off('submit').on('submit', function (e) {
             e.preventDefault();
             var $that = $(this);
             var empty = false;
@@ -167,8 +172,8 @@ var initRs = function () {
                         }
                         else {
                             // TODO envoie du mail //
-                            $(cls).find('#form').remove();
-                            $(cls).find('.info-popin').remove();
+                            $(cls).find('#form').css('display','none');
+                            $(cls).find('.info-popin').css('display','none');
                             $(cls).find('#msg').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
                             $(cls).css('height', '31%');
                             return false;
@@ -209,23 +214,10 @@ var initRs = function () {
 
         $(cls).attr('data-clipboard-text', link);
 
-        clipboard.on('success', function(e) {
-            console.info('Action:', e.action);
-            console.info('Text:', e.text);
-            console.info('Trigger:', e.trigger);
-
-            e.clearSelection();
-        });
-
-        clipboard.on('error', function(e) {
-            console.error('Action:', e.action);
-            console.error('Trigger:', e.trigger);
-        });
-
-
         $(cls).on('click touchstart', function (e) {
 
-
+            $('#share-box').remove();
+            
             var that = $(this);
 
             e.preventDefault();

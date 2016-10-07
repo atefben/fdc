@@ -356,10 +356,12 @@ var initAudio = function (hash) {
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
 
+                    e.preventDefault();
+
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -382,6 +384,8 @@ var initAudio = function (hash) {
         }
 
         $('.item.audio').on('click', function (e) {
+
+            e.preventDefault();
 
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
@@ -447,10 +451,13 @@ var initAudio = function (hash) {
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
 
+                    e.preventDefault();
+
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-                    window.location.hash = "";
+
+                    history.pushState(null, null, '#');
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');

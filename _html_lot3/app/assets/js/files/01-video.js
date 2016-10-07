@@ -617,7 +617,7 @@ var initVideo = function(hash) {
 
                     videoNews = 0;
 
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
 
                     $popinVideo.removeClass('show');
                     $popinVideo.removeClass('video-player');
@@ -713,7 +713,7 @@ var initVideo = function(hash) {
 
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
 
                     videoNews.stop();
                     videoNews.setMute(true);

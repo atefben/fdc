@@ -17,7 +17,7 @@
         <div class="grid-sizer"></div>
 
         {% for article in articles %}
-        <article class="card item article date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+        <article class="card item article date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-date="date-{{ article.publishedAt|date('d-m-y') }}">
             <div class="image">
                 <div class="image-wrapper">
                     {% if article is news_article %}

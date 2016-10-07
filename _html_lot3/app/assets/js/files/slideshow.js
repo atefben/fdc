@@ -110,11 +110,6 @@ var openSlideShow = function (slider, hash) {
         history.pushState(null, null, hashPush);
     }
 
-    $(window).resize(function () {
-        w = $(window).width();
-        translate = -(w + 1) * centerElement;
-        $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
-    });
 
     var goToNextPrev = function (direction) {
         w = $(window).width();
@@ -142,6 +137,12 @@ var openSlideShow = function (slider, hash) {
                 goToSLide(centerElement);
             }
         }
+
+        thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+
+        $(thumbs).removeClass('active');
+        $(thumbs[centerElement]).addClass('active');
+
 
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
@@ -237,8 +238,14 @@ var openSlideShow = function (slider, hash) {
 
     fullscreen.css('width', wSlide);
 
-    console.log(centerElement);
+    $( window ).resize(function() {
+        var w = $(window).width();
+        var wSlide = w * images.length + 100;
+        var wSlide = wSlide + "px";
 
+        fullscreen.css('width', wSlide);
+    });
+    
     if (typeof hash != "undefined") {
 
         for (var i = 0; i < images.length; i++) {
@@ -329,6 +336,11 @@ var openSlideShow = function (slider, hash) {
 
     thumbs = thumbnails.find(".thumb");
 
+    thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+
+    $(thumbs).removeClass('active');
+    $(thumbs[centerElement]).addClass('active');
+
     $(thumbs).on('click', function () {
 
         if (!$('.c-fullscreen-slider .owl-stage').hasClass('owl-grab')) {
@@ -337,9 +349,9 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
+            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
-            thumbnailsSlide.trigger('to.owl.carousel',[id]);
 
             $('.chocolat-pagination').removeClass('active');
             $('.chocolat-wrapper .thumbnails').removeClass('open');
@@ -384,6 +396,7 @@ var openSlideShow = function (slider, hash) {
 
         if ($('.thumbnails').hasClass('open')) {
             $('.fullscreen-slider img').css('transition', '.5s').css('opacity', '.5');
+            thumbnailsSlide.trigger('to.owl.carousel',[centerElement]);
         } else {
             $('.fullscreen-slider img').css('opacity', '1');
         }
@@ -395,7 +408,7 @@ var openSlideShow = function (slider, hash) {
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
-            window.location.hash = "";
+            history.pushState(null, null, '#');
         }, 1000);
     });
 
@@ -460,6 +473,15 @@ var openSlideShow = function (slider, hash) {
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
     })
+
+    $(window).resize(function () {
+        w = $(window).width();
+        translate = -(w + 1) * centerElement;
+        console.log(centerElement);
+        $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
+    });
+
+
 }
 
 

@@ -617,7 +617,7 @@ var initVideo = function(hash) {
 
                     videoNews = 0;
 
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
 
                     $popinVideo.removeClass('show');
                     $popinVideo.removeClass('video-player');
@@ -713,7 +713,7 @@ var initVideo = function(hash) {
 
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
 
                     videoNews.stop();
                     videoNews.setMute(true);
@@ -859,10 +859,13 @@ var owInitAjax = function() {
 
       test = $data.filter('#breadcrumb').children()[0];
 
+
       $( ".ajax-section" ).html(contain);
 
       $( "#breadcrumb" ).html(test);
 
+      owInitFooterScroll(); 
+      
       if($('.navigation-sticky-02').length) {
         owInitNavSticky(2);
       }else if($('.navigation-sticky').length) {
@@ -1390,10 +1393,12 @@ var initAudio = function (hash) {
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
 
+                    e.preventDefault();
+
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-                    window.location.hash = "";
+                    history.pushState(null, null, '#');
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -1416,6 +1421,8 @@ var initAudio = function (hash) {
         }
 
         $('.item.audio').on('click', function (e) {
+
+            e.preventDefault();
 
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
@@ -1481,10 +1488,13 @@ var initAudio = function (hash) {
             setTimeout(function () {
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
 
+                    e.preventDefault();
+
                     audioPopin.stop();
                     audioPopin.setMute(true);
                     audioPopin = 0;
-                    window.location.hash = "";
+
+                    history.pushState(null, null, '#');
                     $popinAudio.removeClass('video-player');
                     $popinAudio.removeClass('loading');
                     $popinAudio.css('display','none');
@@ -1556,7 +1566,31 @@ var owInitFilter = function (isTabSelection) {
 
 
     } else {
+
+
         $('body').on('click', '.filters .select span', function () {
+
+            $('.filter .select').each(function() {
+                $that = $(this);
+                $id   = $(this).closest('.filter').attr('id');
+
+                $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+                    $this = $(this);
+
+                    var getVal = $this.data('filter');
+                    var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
+
+                    console.log('.item[data-'+$id+'="'+getVal+'"]');
+                    console.log($('.item[data-'+$id+'="'+getVal+'"]').length);
+
+                    if (numItems === 0) {
+                        $this.addClass('disabled');
+                    } else {
+                        $this.removeClass('disabled');
+                    }
+                });
+            });
+
             var h = $(this).parent().html();
 
             $('#filters').remove();
@@ -2605,6 +2639,11 @@ var initRs = function () {
 
     function initPopinMail(cls) {
         // check that fields are not empty
+        $(cls).find('#form').css('display','block');
+        $(cls).find('.info-popin').css('display','block');
+        $(cls).find('#msg').html('');
+
+
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
             var is_name = input.val();
@@ -2625,14 +2664,14 @@ var initRs = function () {
             }
         });
 
-        $('body').on('click', '.selectOptions span', function () {
+        $('body').off('click').on('click', '.selectOptions span', function () {
             var i = parseInt($(this).index()) + 1;
             $('select option').eq(i).prop('selected', 'selected');
             $('.select').removeClass('invalid');
         });
 
         // check valid email address
-        $(cls + ' input[type="email"]').on('input', function () {
+        $(cls + ' input[type="email"]').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             var is_email = re.test(input.val());
@@ -2662,7 +2701,7 @@ var initRs = function () {
         });
 
         // check valid email address
-        $('#contact_email').on('input', function () {
+        $('#contact_email').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$/i;
             var is_email = re.test(input.val());
@@ -2692,7 +2731,7 @@ var initRs = function () {
         });
 
         // on submit : check if there are errors in the form
-        $(cls + ' form').on('submit', function (e) {
+        $(cls + ' form').off('submit').on('submit', function (e) {
             e.preventDefault();
             var $that = $(this);
             var empty = false;
@@ -2731,8 +2770,8 @@ var initRs = function () {
                         }
                         else {
                             // TODO envoie du mail //
-                            $(cls).find('#form').remove();
-                            $(cls).find('.info-popin').remove();
+                            $(cls).find('#form').css('display','none');
+                            $(cls).find('.info-popin').css('display','none');
                             $(cls).find('#msg').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
                             $(cls).css('height', '31%');
                             return false;
@@ -2773,23 +2812,10 @@ var initRs = function () {
 
         $(cls).attr('data-clipboard-text', link);
 
-        clipboard.on('success', function(e) {
-            console.info('Action:', e.action);
-            console.info('Text:', e.text);
-            console.info('Trigger:', e.trigger);
-
-            e.clearSelection();
-        });
-
-        clipboard.on('error', function(e) {
-            console.error('Action:', e.action);
-            console.error('Trigger:', e.trigger);
-        });
-
-
         $(cls).on('click touchstart', function (e) {
 
-
+            $('#share-box').remove();
+            
             var that = $(this);
 
             e.preventDefault();
@@ -2832,6 +2858,16 @@ var initRs = function () {
  summary:    SLIDER HOME
  ----------------------------------------------------------------------------- */
 
+function isMacintosh() {
+    return navigator.platform.indexOf('Mac') > -1
+}
+
+function isWindows() {
+    return navigator.platform.indexOf('Win') > -1
+}
+
+var isMac = isMacintosh();
+var isPC = !isMacintosh();
 
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
@@ -3069,7 +3105,8 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('end', function (values, handle) { //end drag
 
-            var w = $('body').width() + 4;
+            var nm = isMac ? 4 : 21; 
+            var w = $('body').width() + nm;
             valuesFloat = parseFloat(values[handle]);
             values = Math.round(valuesFloat);
             number = values - 1945;
@@ -3139,7 +3176,8 @@ var owInitSlider = function (sliderName) {
 
         var stopAnimation = function () {
 
-            var w = $('body').width() + 4;
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
             var val = -w * (values - 1945); //todo script ?
@@ -3174,7 +3212,9 @@ var owInitSlider = function (sliderName) {
         }
 
         var animationOpen = function () {
-            var w = $('body').width() + 4;
+            
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
             var val = -w * (values - 1945) - 10; //todo script ?
@@ -3255,7 +3295,8 @@ var owInitSlider = function (sliderName) {
 
         if ($('.restrospective-init').length) {
 
-            var w = $('body').width() + 4;
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').data('date');
 
             slider.noUiSlider.set([values]);
@@ -3277,7 +3318,8 @@ $(window).resize(function () {
         var $slide = $('.slides');
         var $slideCalc1 = $('.slides-calc1');
 
-        var w = $('body').width() + 4;
+        var nm = isMac ? 4 : 21;
+        var w = $('body').width() + nm;
         var numberSlide = $('.slider-restropective').size() + 1;
         var sizeSlide = $('.slider-restropective').width();
         var finalSizeSlider = numberSlide * sizeSlide;
@@ -3407,11 +3449,6 @@ var openSlideShow = function (slider, hash) {
         history.pushState(null, null, hashPush);
     }
 
-    $(window).resize(function () {
-        w = $(window).width();
-        translate = -(w + 1) * centerElement;
-        $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
-    });
 
     var goToNextPrev = function (direction) {
         w = $(window).width();
@@ -3439,6 +3476,12 @@ var openSlideShow = function (slider, hash) {
                 goToSLide(centerElement);
             }
         }
+
+        thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+
+        $(thumbs).removeClass('active');
+        $(thumbs[centerElement]).addClass('active');
+
 
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
@@ -3534,8 +3577,14 @@ var openSlideShow = function (slider, hash) {
 
     fullscreen.css('width', wSlide);
 
-    console.log(centerElement);
+    $( window ).resize(function() {
+        var w = $(window).width();
+        var wSlide = w * images.length + 100;
+        var wSlide = wSlide + "px";
 
+        fullscreen.css('width', wSlide);
+    });
+    
     if (typeof hash != "undefined") {
 
         for (var i = 0; i < images.length; i++) {
@@ -3626,6 +3675,11 @@ var openSlideShow = function (slider, hash) {
 
     thumbs = thumbnails.find(".thumb");
 
+    thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+
+    $(thumbs).removeClass('active');
+    $(thumbs[centerElement]).addClass('active');
+
     $(thumbs).on('click', function () {
 
         if (!$('.c-fullscreen-slider .owl-stage').hasClass('owl-grab')) {
@@ -3634,9 +3688,9 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
+            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
-            thumbnailsSlide.trigger('to.owl.carousel',[id]);
 
             $('.chocolat-pagination').removeClass('active');
             $('.chocolat-wrapper .thumbnails').removeClass('open');
@@ -3681,6 +3735,7 @@ var openSlideShow = function (slider, hash) {
 
         if ($('.thumbnails').hasClass('open')) {
             $('.fullscreen-slider img').css('transition', '.5s').css('opacity', '.5');
+            thumbnailsSlide.trigger('to.owl.carousel',[centerElement]);
         } else {
             $('.fullscreen-slider img').css('opacity', '1');
         }
@@ -3692,7 +3747,7 @@ var openSlideShow = function (slider, hash) {
         setTimeout(function(){
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
-            window.location.hash = "";
+            history.pushState(null, null, '#');
         }, 1000);
     });
 
@@ -3757,6 +3812,15 @@ var openSlideShow = function (slider, hash) {
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
     })
+
+    $(window).resize(function () {
+        w = $(window).width();
+        translate = -(w + 1) * centerElement;
+        console.log(centerElement);
+        $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
+    });
+
+
 }
 
 
@@ -4540,6 +4604,7 @@ $(document).ready(function () {
 
     if ($('.participate-accordion').length) {
         owInitAccordion("block-accordion");
+        owInitNavSticky(1);
     }
 
     if ($('.p-register').length) {
