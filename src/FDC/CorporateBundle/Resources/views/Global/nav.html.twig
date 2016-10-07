@@ -1,0 +1,96 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<nav>
+    <ul class="main">
+        {% for menu in menus %}
+            {% if menu.route != 'fdc_corporate_press_show' and menu.route != 'fdc_corporate_participate_inscription' %}
+                <li>
+                    {% if menu.route == '#' and menu.enabled == true %}
+                        <a href="#">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_corporate_editions_retrospective' and menu.enabled == true %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route =='fdc_corporate_editions_retrospective' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_corporate_default_home' and menu.enabled == true %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route == 'fdc_corporate_default_home' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% endif %}
+                    {% if menu['__children'] is defined and menu['__children']|length > 0  %}
+                        <ul class="tcenter">
+                            {% for child in menu['__children'] %}
+                                {% if child.enabled %}
+                                    <li>
+                                        {% if child.route != '#' %}
+                                        <a href="{{ path(child.route) }}"
+                                           class="{% if route == child.route %}active{% endif %}">
+                                            {{ child.transName|trans }}
+                                        </a>
+                                        {% elseif child.route == '#' %}
+                                        <a href="#">
+                                            {{ child.transName|trans }}
+                                        </a>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <ul class="user">
+        {% for menu in menus %}
+            {% if menu.route == 'fdc_corporate_press_show' or menu.route == 'fdc_corporate_participate_inscription' %}
+                {% if menu.route == 'fdc_corporate_press_show' and menu.enabled == true %}
+                    <li class="programmation-wrapper">
+                        <a href="{{ path(menu.route) }}" class="programmation">
+                            <i class="icon icon_programmation"></i>{{ menu.transName|trans }}
+                        </a>
+                        {% if menu['__children'] is defined and menu['__children']|length > 0  %}
+                            <ul>
+                                {% for child in menu['__children'] %}
+                                    {% if child.enabled %}
+                                        <li>
+                                            <a href="{{ path(child.route) }}">
+                                                {{ child.transName|trans }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% elseif menu.route == 'fdc_corporate_participate_inscription' %}
+                    {% if menu.enabled == true %}
+                        <li class="participate-wrapper">
+                            <a href="{{ path(menu.route) }}" class="participate">
+                                <i class="icon icon_participer"></i>{{ menu.transName|trans }}
+                            </a>
+                            {% if menu['__children'] is defined and menu['__children']|length > 0  %}
+                                <ul>
+                                    {% for k,child in participateMenu %}
+                                        {% if k == 0 %}
+                                            <li><a href="{{ path('fdc_corporate_participate_inscription') }}">{{ 'header.nav.inscription'|trans }}</a></li>
+                                        {% elseif k == 2 %}
+                                            <li><a href="{{ path('fdc_corporate_participate_guide') }}">{{ 'header.nav.guide'|trans }}</a></li>
+                                        {% elseif k == 1 %}
+                                            <li><a href="{{ path('fdc_corporate_participate_accredit') }}">{{ 'header.nav.accredit'|trans }}</a></li>
+                                        {% else %}
+                                            <li><a href="{{ path('fdc_corporate_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

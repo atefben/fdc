@@ -126,4 +126,72 @@ class GlobalController extends Controller {
         }
 
     }
+
+    /**
+     * @Route("/menu")
+     * @Template("FDCCorporateBundle:Global:nav.html.twig")
+     * @return array
+     */
+    public function menuAction($route) {
+
+        $em = $this->get('doctrine')->getManager();
+        $menus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+
+        // Menu Participer
+        $participatePage = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
+        $preparePage = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
+
+        $participateMenu = array_merge($preparePage, $participatePage);
+
+        $displayedMenus = array();
+        foreach($menus as $menu){
+            if($menu['site'] == FDCEventRoutesInterface::CORPO) {
+                $displayedMenus[] = $menu;
+            }
+        }
+
+        usort($displayedMenus, function($a, $b) {
+            if ($a["position"] == $b["position"]) {
+                return 0;
+            }
+            return ($a["position"] < $b["position"]) ? -1 : 1;
+        });
+
+       // dump($displayedMenus);exit;
+
+        foreach ($displayedMenus as $key => $menu) {
+            usort($displayedMenus[$key]['__children'], function($a, $b) {
+                if ($a["position"] == $b["position"]) {
+                    return 0;
+                }
+                return ($a["position"] < $b["position"]) ? -1 : 1;
+            });
+        }
+
+        $routesArticles = array(
+            'fdc_event_news_index',
+            'fdc_event_news_get',
+            'fdc_event_news_getarticles',
+            'fdc_event_news_getphotos',
+            'fdc_event_news_getvideos',
+            'fdc_event_news_getaudios',
+        );
+
+        $routesWebTv = array(
+            'fdc_event_television_live',
+            'fdc_event_television_channels',
+            'fdc_event_television_getchannel',
+            'fdc_event_television_gettrailer',
+            'fdc_event_television_trailers'
+        );
+
+        return array(
+            'menus' => $displayedMenus,
+            'routesArticles' => $routesArticles,
+            'routesWebTv' => $routesWebTv,
+            'route' => $route,
+            'participateMenu' => $participateMenu
+        );
+
+    }
 }

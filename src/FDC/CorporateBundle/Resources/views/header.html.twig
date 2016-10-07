@@ -81,51 +81,53 @@
     </div>
     <div id="navigation">
         <div class="block-01">
-            <nav>
-                <ul class="main">
-                    <li>
-                        <a href="/"{% if 'fdc_corporate_news_home' == app.request.attributes.get("_route") %} class="active"{% endif %}>{{ 'header.nav.accueil'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="who-fdc.html">{{ 'header.nav.qui'|trans }}</a>
-                    </li>
-                    <li class="hasSubNav">
-                        <a href="#" class="noLink{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} active{% endif %}">{{ 'header.nav.69editions'|trans }}</a>
-                        <ul class="tcenter">
-                            <li><a href="{{ path('fdc_corporate_editions_retrospective') }}"{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} class="active"{% endif %}>{{ 'header.nav.69editions.retrospective'|trans }}</a></li>
-                            <li><a href="story-movie.html">{{ 'header.nav.69editions.histoire'|trans }}</a></li>
-                            <li><a href="palm-gold.html">{{ 'header.nav.69editions.palme'|trans }}</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="media-library.html">{{ 'header.nav.mediatheque'|trans }}</a>
-                    </li>
-                </ul>
-                <ul class="user"> <!-- todo -->
-                    <!-- <li  class="programmation-wrapper">
-                      <a href="programmation-evenementiel.php" class="programmation"><i class="icon icon-programmation"></i> Programmation</a>
-                      <ul>
-                        <li><a href="programmation-evenementiel.php">Programmation</a></li>
-                        <li><a href="calendar-evenementiel.php">Agenda</a></li>
-                        <li><a href="seating-chart-evenementiel.php">Plan des salles</a></li>
-                      </ul>
-                    </li> -->
-                    <li class="participate-wrapper hasSubNav">
-                        <a href="" class="participate noLink"><i class="icon icon-marker-black"></i>Participer</a>
-                        <ul>
-                            <li><a href="{{ path('fdc_corporate_participate_inscription') }}">inscrire un film</a></li>
-                            <li><a href="{{ path('fdc_corporate_participate_accredit') }}">s'accréditer</a></li>
-                            <li><a href="{{ path('fdc_corporate_participate_guide') }}">guide pratique</a></li>
-                            <li><a href="participate_template.html">Partenaires</a></li>
-                            <li><a href="participate_template.html">Fournisseurs</a></li>
-                            <li><a href="participate_template.html">Remerciement</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="press.php" class="press"><i class="icon icon-pencil"></i>Espace presse</a>
-                    </li>
-                </ul>
-            </nav>
+            {{ render(controller('FDCCorporateBundle:Global:menu', {route : app.request.get('_route')})) }}
+
+            {#<nav>#}
+                {#<ul class="main">#}
+                    {#<li>#}
+                        {#<a href="/"{% if 'fdc_corporate_news_home' == app.request.attributes.get("_route") %} class="active"{% endif %}>{{ 'header.nav.accueil'|trans }}</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="who-fdc.html">{{ 'header.nav.qui'|trans }}</a>#}
+                    {#</li>#}
+                    {#<li class="hasSubNav">#}
+                        {#<a href="#" class="noLink{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} active{% endif %}">{{ 'header.nav.69editions'|trans }}</a>#}
+                        {#<ul class="tcenter">#}
+                            {#<li><a href="{{ path('fdc_corporate_editions_retrospective') }}"{% if 'fdc_corporate_editions' in app.request.attributes.get("_route") %} class="active"{% endif %}>{{ 'header.nav.69editions.retrospective'|trans }}</a></li>#}
+                            {#<li><a href="story-movie.html">{{ 'header.nav.69editions.histoire'|trans }}</a></li>#}
+                            {#<li><a href="palm-gold.html">{{ 'header.nav.69editions.palme'|trans }}</a></li>#}
+                        {#</ul>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="media-library.html">{{ 'header.nav.mediatheque'|trans }}</a>#}
+                    {#</li>#}
+                {#</ul>#}
+                {#<ul class="user"> <!-- todo -->#}
+                    {#<!-- <li  class="programmation-wrapper">#}
+                      {#<a href="programmation-evenementiel.php" class="programmation"><i class="icon icon-programmation"></i> Programmation</a>#}
+                      {#<ul>#}
+                        {#<li><a href="programmation-evenementiel.php">Programmation</a></li>#}
+                        {#<li><a href="calendar-evenementiel.php">Agenda</a></li>#}
+                        {#<li><a href="seating-chart-evenementiel.php">Plan des salles</a></li>#}
+                      {#</ul>#}
+                    {#</li> -->#}
+                    {#<li class="participate-wrapper hasSubNav">#}
+                        {#<a href="" class="participate noLink"><i class="icon icon-marker-black"></i>Participer</a>#}
+                        {#<ul>#}
+                            {#<li><a href="{{ path('fdc_corporate_participate_inscription') }}">inscrire un film</a></li>#}
+                            {#<li><a href="{{ path('fdc_corporate_participate_accredit') }}">s'accréditer</a></li>#}
+                            {#<li><a href="{{ path('fdc_corporate_participate_guide') }}">guide pratique</a></li>#}
+                            {#<li><a href="participate_template.html">Partenaires</a></li>#}
+                            {#<li><a href="participate_template.html">Fournisseurs</a></li>#}
+                            {#<li><a href="participate_template.html">Remerciement</a></li>#}
+                        {#</ul>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="press.php" class="press"><i class="icon icon-pencil"></i>Espace presse</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</nav>#}
         </div>
     </div>
     <!-- <div id="selection">
