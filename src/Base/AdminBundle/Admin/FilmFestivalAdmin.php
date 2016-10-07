@@ -89,7 +89,8 @@ class FilmFestivalAdmin extends Admin
                 'required' => false,
             ), array(
                     'edit' => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
+                    'sortable'  => 'position'
                 )
             )
         ;
