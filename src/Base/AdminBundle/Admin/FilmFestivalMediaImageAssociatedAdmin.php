@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class FilmFestivalMediaImageAssociatedAdmin extends Admin
 {
+    protected $translationDomain = 'BaseAdminBundle';
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -48,8 +49,8 @@ class FilmFestivalMediaImageAssociatedAdmin extends Admin
     {
         $formMapper
             ->add('association', 'sonata_type_model_list', array(
-                'label' => 'form.label_film_festival_media_image_associated',
-                'help' => 'form.film_festival.helper_film_festival_media_image_associated',
+                'label' => 'form.film_festival.label_grid_media_image_associated',
+                'help' => 'form.film_festival.label_helper_media_image_associated',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => false

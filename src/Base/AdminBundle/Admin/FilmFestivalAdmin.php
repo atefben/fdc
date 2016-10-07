@@ -10,6 +10,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class FilmFestivalAdmin extends Admin
 {
+    protected $translationDomain = 'BaseAdminBundle';
+
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -28,12 +30,10 @@ class FilmFestivalAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('year')
-            ->add('festivalStartsAt')
-            ->add('festivalEndsAt')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array('label' => 'list.film_festival.label_edition'))
+            ->add('year', null, array('label' => 'list.film_festival.label_year'))
+            ->add('festivalStartsAt', null, array('label' => 'list.film_festival.label_startsat'))
+            ->add('festivalEndsAt', null, array('label' => 'list.film_festival.label_endsat'))
         ;
     }
 
@@ -43,17 +43,17 @@ class FilmFestivalAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('year')
-            ->add('festivalStartsAt')
-            ->add('festivalEndsAt')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array('label' => 'list.film_festival.label_edition'))
+            ->add('year', null, array('label' => 'list.film_festival.label_year'))
+            ->add('festivalStartsAt', null, array('label' => 'list.film_festival.label_startsat'))
+            ->add('festivalEndsAt', null, array('label' => 'list.film_festival.label_endsat'))
+            //->add('createdAt')
+            //->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
+                    //'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
+                    //'delete' => array(),
                 )
             ))
         ;
@@ -65,7 +65,7 @@ class FilmFestivalAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('year')
+            ->add('year', null, array('label' => 'list.film_festival.label_year'))
             /*->add('festivalStartsAt', 'sonata_type_datetime_picker', array(
                 'format' => 'dd/MM/yyyy HH:mm',
                 'required' => false,
@@ -83,8 +83,8 @@ class FilmFestivalAdmin extends Admin
             //->add('marcheDuFilmStartsAt')
             //->add('marcheduFilmEndsAt')
             ->add('associatedMediaImages', 'sonata_type_collection', array(
-                'label' => 'form.label_film_festival_media_image_associated',
-                'help' => 'form.film_festival.helper_film_festival_media_image_associated',
+                'label' => 'form.film_festival.label_media_image_associated',
+                'help' => 'form.film_festival.label_helper_media_image_associated',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -103,8 +103,8 @@ class FilmFestivalAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('year')
-            ->add('festivalStartsAt')
-            ->add('festivalEndsAt')
+            ->add('festivalStartsAt', null, array('label' => 'list.festival.label_startsat'))
+            ->add('festivalEndsAt', null, array('label' => 'list.festival.label_endsat'))
             ->add('marcheDuFilmStartsAt')
             ->add('marcheduFilmEndsAt')
             ->add('createdAt')

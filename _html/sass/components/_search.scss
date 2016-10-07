@@ -94,7 +94,12 @@ header #searchContainer {
     outline: none;
     width: 100%;
 
+    &::-ms-clear {
+      visibility: hidden;
+    }
+
   }
+
   .icon_recherche{
     color: $gold;
     font-size: 1.5rem;
