@@ -57,9 +57,15 @@
                                 {% for child in menu['__children'] %}
                                     {% if child.enabled %}
                                         <li>
+                                            {% if child.route != '#' %}
                                             <a href="{{ path(child.route) }}">
                                                 {{ child.transName|trans }}
                                             </a>
+                                            {% elseif child.route == '#' %}
+                                            <a href="#">
+                                                {{ child.transName|trans }}
+                                            </a>
+                                            {% endif %}
                                         </li>
                                     {% endif %}
                                 {% endfor %}
