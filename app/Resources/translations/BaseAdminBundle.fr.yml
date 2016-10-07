@@ -228,6 +228,7 @@ entity:
     orange_vod: Vidéo à la demande
     orange_ocs: Programmation OCS
     orange_studio: Orange Studio
+    film_festival: Festival
 
 list:
     label_duplicate: Doublon
@@ -342,6 +343,11 @@ list:
         label_title: Nom de la section
     fdc_page_participate:
         label_title: Nom de la section
+    film_festival:
+        label_edition: Edition
+        label_year: Année de l'édition
+        label_startsat: Date de début du festival
+        label_endsat: Date de fin du festival
 
 filter:
     media_pdf:
@@ -465,6 +471,7 @@ dashboard:
         cinema_plage: Cinéma de la plage
         orange: Orange
     link:
+        retrospective: Retrospective
         settings: Paramètres
         bo_translation: Libellés
         homepage: Homepage
@@ -1040,6 +1047,10 @@ form:
         housing_url: URL Googlemaps - Hébergement
         more_title: Titre - Pour plus d'informations
         more_description: Contenu - Pour plus d'informations
+    film_festival:
+        label_media_image_associated: Les photos de l'édition
+        label_grid_media_image_associated: Photos
+        label_helper_media_image_associated: Sélectionnez 7 photos. Elles apparaitront dans le slider de la retrospective dans l'ordre des champs. La première photo apparaitra comme photo principale de l'édition
 nav:
     site_modal: Ouvrir la sélection des sites
 
