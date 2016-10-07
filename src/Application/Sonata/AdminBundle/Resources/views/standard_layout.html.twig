@@ -335,8 +335,7 @@ file that was distributed with this source code.
                                         <ul class="treeview-menu {% if active %} active{% endif %}">
                                             {% if is_granted('ROLE_BASE_ADMIN_FILM_FESTIVAL_ADMIN') %}
                                                 <li class="{% if active %} active{% endif %}">
-                                                    <a data-edit="true" class="fdc-check-lock-list"
-                                                       href="{{ path('admin_base_core_filmfestival_list') }}">
+                                                    <a href="{{ path('admin_base_core_filmfestival_list') }}">
                                                         <i class="fa fa-angle-double-right"></i>
                                                         {{ 'dashboard.link.retrospective'|trans({}, 'BaseAdminBundle') }}
                                                     </a>

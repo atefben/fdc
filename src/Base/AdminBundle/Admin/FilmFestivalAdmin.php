@@ -24,6 +24,8 @@ class FilmFestivalAdmin extends Admin
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
     }
+
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -32,8 +34,24 @@ class FilmFestivalAdmin extends Admin
         $datagridMapper
             ->add('id', null, array('label' => 'list.film_festival.label_edition'))
             ->add('year', null, array('label' => 'list.film_festival.label_year'))
-            ->add('festivalStartsAt', null, array('label' => 'list.film_festival.label_startsat'))
-            ->add('festivalEndsAt', null, array('label' => 'list.film_festival.label_endsat'))
+            //->add('festivalStartsAt', null, array('label' => 'list.film_festival.label_startsat'))
+            //->add('festivalEndsAt', null, array('label' => 'list.film_festival.label_endsat'))
+            ->add('festivalStartsAt', null, array(
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'list.film_festival.label_startsat',
+            ))
+            ->add('festivalEndsAt', null, array(
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'list.film_festival.label_endsat',
+            ))
         ;
     }
 
@@ -65,6 +83,8 @@ class FilmFestivalAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with('Retrospective')
+
             ->add('year', null, array('label' => 'list.film_festival.label_year'))
             /*->add('festivalStartsAt', 'sonata_type_datetime_picker', array(
                 'format' => 'dd/MM/yyyy HH:mm',
@@ -93,6 +113,8 @@ class FilmFestivalAdmin extends Admin
                     'sortable'  => 'position'
                 )
             )
+            ->end()
+
         ;
     }
 
