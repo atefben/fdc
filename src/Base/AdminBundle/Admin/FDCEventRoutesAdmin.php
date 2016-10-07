@@ -71,7 +71,8 @@ class FDCEventRoutesAdmin extends Admin
                 'field_options' => array(
                     'choices'                   => array(
                         FDCEventRoutesInterface::EVENT => 'Site évènementiel',
-                        FDCEventRoutesInterface::PRESS => 'Site presse' ),
+                        FDCEventRoutesInterface::PRESS => 'Site presse' ,
+                        FDCEventRoutesInterface::CORPO => 'Site corporate' ),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
@@ -152,7 +153,8 @@ class FDCEventRoutesAdmin extends Admin
             ->add('site', 'choice', array(
                 'choices' => array(
                 FDCEventRoutesInterface::EVENT => 'Site évènementiel',
-                FDCEventRoutesInterface::PRESS => 'Site presse' ),
+                FDCEventRoutesInterface::PRESS => 'Site presse' ,
+                FDCEventRoutesInterface::CORPO => 'Site corporate' ),
                 'label' => 'Site'
            ))
             ->add('type', 'choice', array(

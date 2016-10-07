@@ -7,6 +7,8 @@
             <p style="float: left">{{ 'form.label_list_event'|trans }}</p>
         {% elseif object.site == constant('Base\\CoreBundle\\Entity\\FDCEventRoutes::PRESS') %}
              <p style="float: left">{{ 'form.label_list_press'|trans }}</p>
+        {% elseif object.site == constant('Base\\CoreBundle\\Entity\\FDCEventRoutes::CORPO') %}
+            <p style="float: left">{{ 'form.label_list_corpo'|trans }}</p>
         {% endif %}
     </div>
 {% endblock %}

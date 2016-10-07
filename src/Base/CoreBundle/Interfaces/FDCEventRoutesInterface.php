@@ -17,6 +17,7 @@ interface FDCEventRoutesInterface
     //sites
     const EVENT = 1;
     const PRESS  = 2;
+    const CORPO  = 3;
 
     //types
     const MENU = 1;

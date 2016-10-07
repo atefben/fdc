@@ -3167,6 +3167,7 @@ a {
 
 html {
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -7451,6 +7452,10 @@ header #searchContainer {
   font-size: 2.250rem;
   outline: none;
   width: 100%;
+  /*  &::-ms-clear {
+      visibility: hidden;
+    }
+*/
 }
 #searchContainer .icon_recherche {
   color: #c8a461;
