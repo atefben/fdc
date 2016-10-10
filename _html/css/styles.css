@@ -7183,6 +7183,7 @@ video {
   padding-right: 0 !important;
   width: 0 !important;
   overflow: hidden;
+  position: absolute;
 }
 #selection #slider-selection .owl-item.scaled, #selection #slider-suggestion .owl-item.scaled {
   opacity: 0;
@@ -7452,10 +7453,9 @@ header #searchContainer {
   font-size: 2.250rem;
   outline: none;
   width: 100%;
-  /*  &::-ms-clear {
-      visibility: hidden;
-    }
-*/
+}
+#searchContainer #inputSearch::-ms-clear {
+  visibility: hidden;
 }
 #searchContainer .icon_recherche {
   color: #c8a461;
@@ -14065,7 +14065,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-transform: uppercase;
 }
 .webtv #live .img {
-  background: center 0 no-repeat fixed;
   background-size: cover;
   opacity: 0.5;
   position: absolute;
@@ -14082,6 +14081,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   /*&.rePosition {
     position: absolute!important;
   }*/
+}
+body:not(.tablette) .webtv #live .img {
+  background: center 0 no-repeat fixed;
 }
 .webtv #live .vCenter {
   position: relative;

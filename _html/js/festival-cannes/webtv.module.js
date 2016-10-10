@@ -275,6 +275,64 @@ $(document).ready(function () {
                             itemSelector: '.item'
                         });
                     });
+
+                    if (window.matchMedia("(max-width: 1279px)").matches) {
+
+                        if($('#gridWebtv').length > 0 ){
+                            console.log('ok');
+
+                            $.each($('.item'), function (i, e) {
+
+                                var title = $(e).find('.info .category + span');
+
+                                if (!title.hasClass('init')) {
+                                    var text = $(e).find('.info .category + span').text();
+                                    title.addClass('init');
+                                    title.attr('data-title', text);
+                                } else {
+                                    var text = title.attr('data-title');
+                                }
+
+                                title.html(text.trunc(20, true));
+
+                            });
+                        }
+
+                    } else if (window.matchMedia("(max-width: 1599px)").matches) {
+
+                        console.log('7');
+                        if($('#gridWebtv').length > 0 ){
+                            console.log('ok');
+
+                            $.each($('.item'), function (i, e) {
+
+                                var title = $(e).find('.info .category + span');
+
+                                if (!title.hasClass('init')) {
+                                    var text = $(e).find('.info .category + span').text();
+                                    title.addClass('init');
+                                    title.attr('data-title', text);
+
+                                    console.log('1');
+
+                                } else {
+                                    console.log('2');
+                                    var text = title.attr('data-title');
+                                }
+
+                                title.html(text.trunc(40, true));
+
+                            });
+                        }
+
+                    } else if (window.matchMedia("(max-width: 1919px)").matches) {
+
+
+
+                    } else if (window.matchMedia("(min-width: 1920px)").matches) {
+
+
+                    }
                 });
 
                 $('.webtv-ba .sub-nav-list').find('a.active').removeClass('active');
