@@ -5,7 +5,7 @@
         {% for element in footer %}
             {% if element.enabled == true and element.route is defined and element.route != '' %}
                 <li>
-                    <a href="{{ path(element.route) }}">
+                    <a href="{% if element.route != '#' %}{{ path(element.route) }}{% else %}#{% endif %}">
                         {{ element.transName }}
                     </a>
                 </li>
