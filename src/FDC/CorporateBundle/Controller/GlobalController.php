@@ -194,4 +194,24 @@ class GlobalController extends Controller {
         );
 
     }
+
+    /**
+     * @Route("/menu")
+     * @Template("FDCCorporateBundle:Global:footer.html.twig")
+     * @return array
+     */
+    public function footerAction(Request $request, $route) {
+        $em = $this->get('doctrine')->getManager();
+        $displayedFooterElements = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
+            array('type' => 2,'site' => 3),
+            array('position' => 'asc'),
+            null,
+            null
+        );
+        return array(
+            'footer' => $displayedFooterElements,
+            'route' => $route
+        );
+    }
+
 }
