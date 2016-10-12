@@ -144,6 +144,8 @@ security:
             #corpo festivals:
             - ROLE_BASE_ADMIN_FILM_FESTIVAL_ADMIN
             - ROLE_BASE_ADMIN_FILM_FESTIVAL_MEDIA_IMAGE_ASSOCIATED_ADMIN
+            #qui sommes nous:
+            - ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN
 
         ROLE_ALL_TRANSLATOR:
             - ROLE_ADMIN

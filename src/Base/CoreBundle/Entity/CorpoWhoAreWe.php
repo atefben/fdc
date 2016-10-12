@@ -17,7 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * CorpoWhoAreWe
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\CorpoWhoAreWeRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CorpoWhoAreWe implements TranslateMainInterface
@@ -68,6 +68,15 @@ class CorpoWhoAreWe implements TranslateMainInterface
      *
      */
     private $updatedBy;
+
+    /**
+     * @var NewsWidget
+     *
+     * @ORM\OneToMany(targetEntity="FDCPageLaSelectionCannesClassicsWidget", mappedBy="corpoWhoAreWe", cascade={"all"}, orphanRemoval=true)
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $widgets;
 
     /**
      * @var ArrayCollection
@@ -179,5 +188,47 @@ class CorpoWhoAreWe implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->widgets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add widgets
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets
+     * @return CorpoWhoAreWe
+     */
+    public function addWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
+    {
+        $widgets->setCorpoWhoAreWe($this);
+        $this->widgets[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets
+     */
+    public function removeWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
+    {
+        $this->widgets->removeElement($widgets);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
     }
 }

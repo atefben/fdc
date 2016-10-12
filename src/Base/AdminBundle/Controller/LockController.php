@@ -102,6 +102,7 @@ class LockController extends Controller
         'presscinemaroom'                  => 'PressCinemaRoom',
         'corpomovieinscription'            => 'CorpoMovieInscription',
         'corpomovieinscriptionprocedure'   => 'CorpoMovieInscriptionProcedure',
+        'corpowhoarewe'                    => 'CorpoWhoAreWe',
     );
 
     /**

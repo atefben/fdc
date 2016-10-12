@@ -50,6 +50,24 @@ class CorpoWhoAreWeTranslation implements TranslateChildInterface
      *
      */
     private $title;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"classics"})
+     *
+     */
+    private $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"classics"})
+     *
+     */
+    private $chapo;
 
     /**
      * @var string
@@ -160,5 +178,51 @@ class CorpoWhoAreWeTranslation implements TranslateChildInterface
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return CorpoWhoAreWeTranslation
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set chapo
+     *
+     * @param string $chapo
+     * @return CorpoWhoAreWeTranslation
+     */
+    public function setChapo($chapo)
+    {
+        $this->chapo = $chapo;
+
+        return $this;
+    }
+
+    /**
+     * Get chapo
+     *
+     * @return string 
+     */
+    public function getChapo()
+    {
+        return $this->chapo;
     }
 }

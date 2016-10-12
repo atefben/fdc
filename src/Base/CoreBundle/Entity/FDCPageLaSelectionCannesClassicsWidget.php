@@ -61,6 +61,13 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
     protected $FDCPageLaSelectionCannesClassics;
 
     /**
+     * @var FDCPageLaSelectionCannesClassics
+     *
+     * @ORM\ManyToOne(targetEntity="CorpoWhoAreWe", inversedBy="widgets")
+     */
+    protected $corpoWhoAreWe;
+
+    /**
      * Get the class type in the Api
      *
      * @VirtualProperty
@@ -143,5 +150,28 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
     public function getFDCPageLaSelectionCannesClassics()
     {
         return $this->FDCPageLaSelectionCannesClassics;
+    }
+
+    /**
+     * Set corpoWhoAreWe
+     *
+     * @param \Base\CoreBundle\Entity\CorpoWhoAreWe $corpoWhoAreWe
+     * @return FDCPageLaSelectionCannesClassicsWidget
+     */
+    public function setCorpoWhoAreWe(\Base\CoreBundle\Entity\CorpoWhoAreWe $corpoWhoAreWe = null)
+    {
+        $this->corpoWhoAreWe = $corpoWhoAreWe;
+
+        return $this;
+    }
+
+    /**
+     * Get corpoWhoAreWe
+     *
+     * @return \Base\CoreBundle\Entity\CorpoWhoAreWe 
+     */
+    public function getCorpoWhoAreWe()
+    {
+        return $this->corpoWhoAreWe;
     }
 }
