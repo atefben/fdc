@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\FDCPageParticipate;
 use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -117,11 +118,11 @@ class ParticipateController extends Controller
     }
 
     /**
-     * @Route("/guide")
+     * @Route("/guide/{slug}")
      * @param Request $request
      * @return Response
      */
-    public function guideAction(Request $request)
+    public function guideAction(Request $request, $slug = null)
     {
         $this->isPageEnabled($request->get('_route'));
         $em = $this->getDoctrine()->getManager();
@@ -129,6 +130,24 @@ class ParticipateController extends Controller
 
         // GET PARTICIPATE PAGE
         $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_fdc_page_prepare_id'));
+        $pages = $em
+            ->getRepository('BaseCoreBundle:FDCPageParticipate')
+            ->findAll();
+
+        if ($slug === null) {
+            foreach ($pages as $page) {
+                if ($page instanceof FDCPageParticipate) {
+                    if ($page) {
+                        $slug = $page->findTranslationByLocale($locale)->getSlug();
+                    }
+                    if ($slug) {
+                        return $this->redirectToRoute('fdc_corporate_participate_guide', array('slug' => $slug));
+                    }
+                }
+            }
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
         if ($content === null) {
             throw new NotFoundHttpException();
         }
@@ -136,14 +155,15 @@ class ParticipateController extends Controller
         // GET PARTICIPATE PAGE
         $datas = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
-            ->findAll();
+            ->getFDCPageParticipateBySlug($slug, $locale);
 
         // SEO
-        $this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);
+        //$this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);
 
         return $this->render('FDCCorporateBundle:Participate:prepare.html.twig',array(
             'content' => $content,
             'datas' => $datas,
+            'pages' => $pages
         ));
     }
 
