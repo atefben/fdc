@@ -95,7 +95,7 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'display' => false
                     ),
                     'title' => array(
-                        'label' => 'form.label_media_title',
+                        'label' => 'Nom de la procédure d\'inscription',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -105,39 +105,44 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                     ),
                     'procedureContent' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_procedure',
+                        'label' => 'Description de la procédure',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
                     'rulesContent' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_procedure',
+                        'label' => 'Description du règlement',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
                     'btnSelectionLabel' => array(
-                        'field_type' => 'text'
+                        'field_type' => 'text',
+                        'label' => 'Libellé du bouton 1 (gauche)'
                     ),
                     'btnSelectionLink' => array(
-                        'field_type' => 'text'
+                        'field_type' => 'text',
+                        'label' => 'Lien du bouton 1 (gauche)'
                     ),
                     'btnInscriptionLabel' => array(
-                        'field_type' => 'text'
+                        'field_type' => 'text',
+                        'label' => 'Libellé du bouton 2 (droite)'
                     ),
                     'btnInscriptionLink' => array(
-                        'field_type' => 'text'
+                        'field_type' => 'text',
+                        'label' => 'Lien du bouton 2 (droite)'
                     )
                 )
             ))
             ->add('pdf', 'sonata_type_model_list',
                 array(
+                    'label' => 'PDF du règlement',
                     "required" => false,
                 )
             )
             ->add('mainImage', 'sonata_type_model_list', array(
-                'label' => 'form.label_image'
+                'label' => 'Image cover du règlement'
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(

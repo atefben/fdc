@@ -81,6 +81,7 @@ breadcrumb:
     link_orange_studio_list: Orange Studio
     link_mobile_notification_list: Notifications mobiles
     link_corpo_movie_inscription_list: Participer
+    link_corpo_movie_inscription_procedure_list  : Participer
     
 link:
     action_soif_refresh: Mettre à jour
@@ -231,6 +232,7 @@ entity:
     orange_studio: Orange Studio
     film_festival: Festival
     corpo_movie_inscription: Inscrire un film
+    corpo_movie_inscription_procedure: Procédure d'inscription
 
 list:
     label_duplicate: Doublon
