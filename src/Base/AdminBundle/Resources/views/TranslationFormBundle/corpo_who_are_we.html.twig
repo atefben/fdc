@@ -483,6 +483,7 @@
                                                                 {{ 'form.label_header_gallery'|trans }}
                                                             </label>
                                                             <div>
+                                                               {% if widget.children.gallery.vars.data is not null %}
                                                                 {% for media in widget.children.gallery.vars.data.medias %}
                                                                     {% if media and media.media %}
                                                                         <div class="form-group">
@@ -509,6 +510,8 @@
                                                                         </div>
                                                                     {% endif %}
                                                                 {% endfor %}
+                                                               {% endif %}
+
                                                             </div>
                                                         </div>
                                                     {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' %}
