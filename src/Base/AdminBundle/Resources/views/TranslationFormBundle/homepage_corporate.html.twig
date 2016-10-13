@@ -62,14 +62,31 @@
                                             <div id="homepageSlideArea">
                                                 {{  form_row(form.parent.children.homepageSlide) }}
                                             </div>
-                                            {{  form_row(form.parent.children.displayedSliderFilters) }}
-                                            {{  form_row(form.parent.children.displayedSlider) }}
+                                                {{  form_row(form.parent.children.displayedSlider) }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Communiqués et Infos à la une
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="col-md-12">
+                                        {{  form_row(form.parent.children.displayedFeaturedContentsFilters) }}
+                                        {{  form_row(form.parent.children.displayedFeaturedContents) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{  form_row(form.parent.children.displayedFeaturedContentsFilters) }}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-success">
