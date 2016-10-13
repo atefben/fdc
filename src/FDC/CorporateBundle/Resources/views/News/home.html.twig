@@ -91,121 +91,50 @@
             <div class="block-01 padding-bottom block-scale">
                 <div class="contain-card">
                     <div class="cards">
-                        {% set firstArticle = 0 %}
-                        {% for i in 0..2 %}
-                            {% set homeSlide = homeSlider[i] %}
-                            {% if class(homeSlide) starts with 'S' %}
-                                {% set type = 'communique' %}
-                            {% else %}
-                                {% set type = 'info' %}
-                            {% endif %}
-                            {% if homeSlide is news_article or homeSlide is statement_article or homeSlide is info_article %}
-                                {% set contentType = 'article' %}
-                                {% set img = homeSlide.header %}
-                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                {% if trans is null or trans.file is null %}
-                                    {% set trans = img.findTranslationByLocale('fr') %}
-                                {% endif %}
-                                {% set file = trans.file %}
-                            {% elseif homeSlide is news_video or homeSlide is statement_video or homeSlide is info_video %}
-                                {% set contentType = 'video' %}
-                                {% set header = homeSlide.header %}
-                                {% if header is not null %}
-                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is not null and trans.file is not null %}
-                                        {% set imageTrans = trans %}
-                                    {% else %}
-                                        {% set trans = homeSlide.header.findTranslationByLocale('fr') %}
-                                        {% if trans is not null and trans.file is not null %}
-                                            {% set imageTrans = trans %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if imageTrans is defined and imageTrans is not null %}
-                                    {% set file = imageTrans.file %}
-                                    {% set img = homeSlide.header %}
-                                {% else %}
-                                    {% set img = homeSlide.video.image %}
-                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = img.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                    {% set file = trans.file %}
-                                {% endif %}
-                            {% elseif homeSlide is news_audio or homeSlide is info_audio or homeSlide is statement_audio %}
-                                {% set contentType = 'audio' %}
-                                {% set header = homeSlide.header %}
-                                {% if header is not null %}
-                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is not null and trans.file is not null %}
-                                        {% set imageTrans = trans %}
-                                    {% else %}
-                                        {% set trans = homeSlide.header.findTranslationByLocale('fr') %}
-                                        {% if trans is not null and trans.file is not null %}
-                                            {% set imageTrans = trans %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if imageTrans is defined and imageTrans is not null %}
-                                    {% set file = imageTrans.file %}
-                                    {% set img = homeSlide.header %}
-                                {% else %}
-                                    {% set img = homeSlide.audio.image %}
-                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = img.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                    {% set file = trans.file %}
-                                {% endif %}
-                            {% elseif homeSlide is news_image or homeSlide is statement_image or homeSlide is info_image %}
-                                {% set contentType = 'photo' %}
-                                {% set header = homeSlide.header %}
-                                {% if header is not null %}
-                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is not null and trans.file is not null %}
-                                        {% set imageTrans = homeSlide.header.findTranslationByLocale(app.request.locale) %}
-                                    {% else %}
-                                        {% set trans = homeSlide.header.findTranslationByLocale('fr') %}
-                                        {% if trans is not null and trans.file is not null %}
-                                            {% set imageTrans = trans %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if imageTrans is defined and imageTrans is not null %}
-                                    {% set img = homeSlide.header %}
-                                    {% set file = imageTrans.file %}
-                                {% else %}
-                                    {% set img = homeSlide.gallery.medias[0].media %}
-                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = img.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                    {% set file = trans.file %}
-                                {% endif %}
-                            {% endif %}
-                            <article class="card {{ contentType }}{% if firstArticle == false %} double{% set firstArticle = 1 %}{% endif %}" data-format="{{ contentType }}" data-theme="{{ homeSlide.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
-                                <div class="image">
-                                    <div class="image-wrapper">
-                                        {% if file is defined %}<img src="{% path file , '926x584' %}" />{% endif %}
-                                    </div>
-                                    {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans == null %}
-                                        {% set trans = homeSlide.findTranslationByLocale('fr') %}
-                                    {% endif %}
-
-                                    {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
-
-                                    <a href="{{ sliderUrl }}" class="linkImage"></a>
-
-                                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                    <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
+                        <article class="card article double" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
+                            <div class="image">
+                                <div class="image-wrapper">
+                                    <img src="media/images/home-image1.jpg" alt=""  />
                                 </div>
-                                <div class="info">
-                                    <a href="#" class="category">{{ homeSlide.theme|trans_fallback('name') }}</a><span class="date">{{ homeSlide.publishedAt|date('Y-m-d') }}</span> . <span class="hour">{{ homeSlide.publishedAt|date('H:i') }}</span>
-                                    <strong><a href="{{ sliderUrl }}">{{ homeSlide|trans_fallback('title') }}</a></strong>
+                                <a href="article.html" class="linkImage"></a>
+                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                                <span class="picto"><i class="icon icon-video"></i></span>
+                            </div>
+                            <div class="info">
+                                <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
+                                <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                            </div>
+                        </article>
+
+                        <article class="card photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+                            <div class="image">
+                                <div class="image-wrapper">
+                                    <img src="media/images/home-image2.jpg" alt=""  />
                                 </div>
-                            </article>
-                        {% endfor %}
+                                <a href="article.html" class="linkImage"></a>
+                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                                <span class="picto"><i class="icon icon-photo"></i></span>
+                            </div>
+                            <div class="info">
+                                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                                <strong><a href="article.html">Benjamin Millepied aux côtés de son épouse Natalie Portman</a></strong>
+                            </div>
+                        </article>
+
+                        <article class="card video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+                            <div class="image">
+                                <div class="image-wrapper">
+                                    <img src="media/images/home-image3.jpg" alt=""  />
+                                </div>
+                                <a href="article.html" class="linkImage"></a>
+                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                                <span class="picto"><i class="icon icon-video"></i></span>
+                            </div>
+                            <div class="info">
+                                <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                                <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                            </div>
+                        </article>
                     </div> <!-- end articles-->
                 </div> <!-- end article wrapper-->
 
