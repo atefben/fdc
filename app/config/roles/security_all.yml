@@ -144,10 +144,11 @@ security:
             #corpo festivals:
             - ROLE_BASE_ADMIN_FILM_FESTIVAL_ADMIN
             - ROLE_BASE_ADMIN_FILM_FESTIVAL_MEDIA_IMAGE_ASSOCIATED_ADMIN
+            #qui sommes nous:
+            - ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN
             #corpo homepage:
             - ROLE_BASE_ADMIN_HOMEPAGE_CORPORATE_ADMIN
             - ROLE_BASE_ADMIN_HOMEPAGE_CORPORATE_SLIDE_ADMIN
-
         ROLE_ALL_TRANSLATOR:
             - ROLE_ADMIN
             - ROLE_JMS_TRANSLATION

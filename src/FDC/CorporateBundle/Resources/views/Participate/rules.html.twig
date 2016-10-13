@@ -14,7 +14,7 @@
     <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %}); background-position: 0px 0px;">
         <div class="vFlexAlign">
             <div class="txts">
-                <strong class="title-3">{{ procedure|trans_fallback('title')|raw }}</strong>
+                <strong class="title-3">{{ 'participate.rules'|trans }}</strong>
             </div>
         </div>
     </div> <!-- end block push -->
@@ -28,8 +28,8 @@
         <div class="block-01-ms">
             <a href="#" class="button button-long"><i class="icon icon-download"></i>{{ 'download.pdf'|trans}}</a>
             <div class="align-flex">
-                <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" class="button button-half">{{ procedure|trans_fallback('btnSelectionLabel') }}</a>
-                <a href="{{ procedure|trans_fallback('btnInscriptionlink') }}" class="button button-half">{{ procedure|trans_fallback('btnInscriptionLabel') }}</a>
+                <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" target="_blank" class="button button-half">{{ procedure|trans_fallback('btnSelectionLabel') }}</a>
+                <a href="{{ procedure|trans_fallback('btnInscriptionlink') }}" target="_blank" class="button button-half">{{ procedure|trans_fallback('btnInscriptionLabel') }}</a>
             </div>
         </div>
     </div>

@@ -1362,7 +1362,9 @@ services:
         class: Base\AdminBundle\Admin\CorpoMovieInscriptionAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoMovieInscription, BaseAdminBundle:CorpoMovieInscriptionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMovieInscription}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_movie_inscription, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.corpo_movie_inscription_has_procedure:
         class: Base\AdminBundle\Admin\CorpoMovieInscriptionHasProcedureAdmin
@@ -1374,7 +1376,10 @@ services:
         class: Base\AdminBundle\Admin\CorpoMovieInscriptionProcedureAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoMovieInscriptionProcedure, BaseAdminBundle:CorpoMovieInscriptionProcedureAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMovieInscriptionProcedure}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_movie_inscription_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
 
     base.admin.corpo_accredit:
         class: Base\AdminBundle\Admin\CorpoAccreditAdmin
@@ -1392,7 +1397,9 @@ services:
         class: Base\AdminBundle\Admin\CorpoAccreditProcedureAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoAccreditProcedure, BaseAdminBundle:CorpoAccreditProcedureAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoAccreditProcedure}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.film_festival:
         class: Base\AdminBundle\Admin\FilmFestivalAdmin
@@ -1405,6 +1412,12 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated, BaseAdminBundle:FilmFestivalMediaImageAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFestivalMediaImageAssociated}
+
+    base.admin.corpo_who_are_we:
+        class: Base\AdminBundle\Admin\CorpoWhoAreWeAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoWhoAreWe, BaseAdminBundle:CorpoWhoAreWeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoWhoAreWe}
 
     base.admin.homepage_corporate:
         class: Base\AdminBundle\Admin\HomepageCorporateAdmin

@@ -104,7 +104,7 @@ class CorpoMovieInscriptionAdmin extends Admin
                     ),
                     'inscriptionContent' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'Contenu de la strate',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
@@ -174,7 +174,7 @@ class CorpoMovieInscriptionAdmin extends Admin
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,
-                    'label' => 'form.label_accredit_procedure',
+                    'label' => 'form.label_accredit_procedure_movie',
                     'required' => false
                 ),
                 array(

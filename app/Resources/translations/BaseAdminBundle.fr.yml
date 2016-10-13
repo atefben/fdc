@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_accredit_procedure_list: Participer
     link_media_pdf_list: Liste des médias Pdf
     link_f_d_c_page_participate_section_list: Liste des Strates Participer
     link_widget_mosaic_movie_list: Mosaïque de film
@@ -80,6 +81,8 @@ breadcrumb:
     link_orange_video_on_demand_list: Vidéo à la demande
     link_orange_studio_list: Orange Studio
     link_mobile_notification_list: Notifications mobiles
+    link_corpo_movie_inscription_list: Participer
+    link_corpo_movie_inscription_procedure_list  : Participer
     
 link:
     action_soif_refresh: Mettre à jour
@@ -229,6 +232,9 @@ entity:
     orange_ocs: Programmation OCS
     orange_studio: Orange Studio
     film_festival: Festival
+    corpo_movie_inscription: Inscrire un film
+    corpo_movie_inscription_procedure: Procédure d'inscription
+    corpo_accredit_procedure: Procédure d'accréditation
 
 list:
     label_duplicate: Doublon
@@ -542,6 +548,12 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    label_information_display_instit: Publier sur le site institutionnel
+    label_arrive_display_instit: Publier sur le site institutionnel
+    label_meeting_display_instit: Publier sur le site institutionnel
+    label_service_display_instit: Publier sur le site institutionnel
+    label_accredit_procedure_movie: Choisissez les procédures d'inscription à afficher*
+    label_procedure_movie: Procédures
     label_hide_common_content: Ne pas afficher cette strate
     label_pdf: Pdf
     media_pdf:

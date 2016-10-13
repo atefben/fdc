@@ -58,6 +58,10 @@ class CorpoMovieInscription implements TranslateMainInterface
         $this->procedure = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString() {
+        return 'Inscrire un film';
+    }
+
     /**
      * Get id
      *
