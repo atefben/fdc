@@ -165,7 +165,12 @@ class Controller extends BaseController
 
             return $this->getSettings()->getFestival();
         } else {
-            return $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($year);
+            $festival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($year);
+            if(!$festival) {
+                throw $this->createNotFoundException();
+            } else {
+                return $festival;
+            }
         }
 
     }

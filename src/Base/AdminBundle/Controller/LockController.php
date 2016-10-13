@@ -27,6 +27,7 @@ class LockController extends Controller
     private static $entityMapper = array(
         // General
         'homepage'                         => 'Homepage',
+        'homepagecorporate'                => 'HomepageCorporate',
         'fdcpagewebtvlive'                 => 'FDCPageWebTvLive',
         'tag'                              => 'Tag',
         'webtv'                            => 'WebTv',

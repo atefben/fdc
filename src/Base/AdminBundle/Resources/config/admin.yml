@@ -1405,3 +1405,15 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated, BaseAdminBundle:FilmFestivalMediaImageAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFestivalMediaImageAssociated}
+
+    base.admin.homepage_corporate:
+        class: Base\AdminBundle\Admin\HomepageCorporateAdmin
+        arguments: [~, Base\CoreBundle\Entity\HomepageCorporate, BaseAdminBundle:HomepageCorporateAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageCorporate}
+
+    base.admin.homepage_corporate_slide:
+        class: Base\AdminBundle\Admin\HomepageCorporateSlideAdmin
+        arguments: [~, Base\CoreBundle\Entity\HomepageCorporateSlide, BaseAdminBundle:HomepageCorporateSlideAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageCorporateSlide}

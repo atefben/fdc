@@ -54,6 +54,7 @@ twig:
         admin_routes_translation_lock: %admin_routes_translation_lock%
         #homepage
         admin_homepage_id: %admin_homepage_id%
+        admin_homepage_corporate_id: %admin_homepage_corporate_id%
         # prepare / participate
         admin_fdc_page_prepare_id: %admin_fdc_page_prepare_id%
         admin_event_fdc_page_prepare_id: %admin_event_fdc_page_prepare_id%
