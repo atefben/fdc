@@ -104,6 +104,8 @@ class LockController extends Controller
         'corpomovieinscription'            => 'CorpoMovieInscription',
         'corpomovieinscriptionprocedure'   => 'CorpoMovieInscriptionProcedure',
         'corpowhoarewe'                    => 'CorpoWhoAreWe',
+        'corpoaccreditprocedure'           => 'CorpoAccreditProcedure',
+        'corpoaccredit'                    => 'CorpoAccredit',
     );
 
     /**

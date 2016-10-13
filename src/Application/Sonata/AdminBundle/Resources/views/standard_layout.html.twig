@@ -377,12 +377,28 @@ file that was distributed with this source code.
 
                                     {% if is_granted('ROLE_BASE_ADMIN_PRESS_HOMEPAGE_ADMIN') %}
                                         {% set active = false %}
-                                        {% if app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_edit'
+                                        {% if
+                                        app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_create'
                                         or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_create'
                                         or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipatesection_list'
                                         or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscription_edit'
                                         or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_list'
-                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_edit' %}
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_create'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpomovieinscriptionprocedure_create'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpoaccredit_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpoaccredit_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpoaccredit_create'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpoaccreditprocedure_list'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpoaccreditprocedure_edit'
+                                        or app.request.attributes.get('_route') == 'admin_base_core_corpoaccreditprocedure_create'
+                                        %}
                                             {% set active = true %}
                                         {% endif %}
                                         <!--------------------------->
@@ -402,13 +418,13 @@ file that was distributed with this source code.
                                                         {{ 'dashboard.link.fdc_page_prepare'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
-                                                <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_list' ? 'active' }}">
+                                                <li class="{{ app.request.attributes.get('_route') in ['admin_base_core_fdcpageparticipate_list','admin_base_core_fdcpageparticipate_edit','admin_base_core_fdcpageparticipate_create'] ? 'active' }}">
                                                     <a href="{{ path('admin_base_core_fdcpageparticipate_list') }}">
                                                         <i class="fa fa-angle-double-right"></i>
                                                         {{ 'dashboard.link.fdc_page_participate'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
-                                                <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipatesection_list' ? 'active' }}">
+                                                <li class="{{ app.request.attributes.get('_route') in ['admin_base_core_fdcpageparticipatesection_list','admin_base_core_fdcpageparticipatesection_edit','admin_base_core_fdcpageparticipatesection_create'] ? 'active' }}">
                                                     <a href="{{ path('admin_base_core_fdcpageparticipatesection_list') }}">
                                                         <i class="fa fa-angle-double-right"></i>
                                                         {{ 'dashboard.link.fdc_page_participate_section'|trans({}, 'BaseAdminBundle') }}
@@ -433,7 +449,7 @@ file that was distributed with this source code.
                                                         {{ 'dashboard.link.press_accredit'|trans({}, 'BaseAdminBundle') }}
                                                     </a>
                                                 </li>
-                                                <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_corpoaccreditprocedure_list' ? 'active' }}">
+                                                <li class="{{ app.request.attributes.get('_route') in ['admin_base_core_corpoaccreditprocedure_list','admin_base_core_corpoaccreditprocedure_edit','admin_base_core_corpoaccreditprocedure_create'] ? 'active' }}">
                                                     <a href="{{ path('admin_base_core_corpoaccreditprocedure_list') }}">
                                                         <i class="fa fa-angle-double-right"></i>
                                                         {{ 'dashboard.link.press_accredit_procedure'|trans({}, 'BaseAdminBundle') }}
