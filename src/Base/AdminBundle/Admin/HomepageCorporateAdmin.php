@@ -51,7 +51,8 @@ class HomepageCorporateAdmin extends Admin
             ->add('displayedPopin')
             ->add('displayedBanner')
             ->add('displayedSlider')
-            ->add('displayedSliderFilters')
+            ->add('displayedFeaturedContents')
+            ->add('displayedFeaturedContentsFilters')
             ->add('displayedCannesReleases')
             ->add('createdAt')
             ->add('updatedAt')
@@ -219,8 +220,12 @@ class HomepageCorporateAdmin extends Admin
                 'label'    => 'Ne pas afficher cette strate',
                 'required' => false,
             ))
-            ->add('displayedSliderFilters', 'checkbox', array(
+            ->add('displayedFeaturedContentsFilters', 'checkbox', array(
                 'label'    => 'Ne pas afficher les filtres',
+                'required' => false,
+            ))
+            ->add('displayedFeaturedContents', 'checkbox', array(
+                'label'    => 'Ne pas afficher cette strate',
                 'required' => false,
             ))
             ->add('displayedCannesReleases', 'checkbox', array(
