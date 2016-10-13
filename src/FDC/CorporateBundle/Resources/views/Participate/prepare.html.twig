@@ -81,30 +81,30 @@
                                 </div>
                             </div>
                             {% endif %}
-                            {#<div class="item">#}
-                                {#<div class="block-01">#}
-                                    {#<div class="title-contain border-top">#}
-                                        {#<strong class="title-22">#}
-                                            {#<i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}#}
-                                        {#</strong>#}
-                                        {#<i class="icon icon-nav-accordion icon-minus"></i>#}
-                                    {#</div>#}
-                                    {#<div class="item-manual">#}
-                                        {#<div class="contain-infos">#}
-                                            {#<div class="descrip-section">#}
-                                                {#{{ content|trans_fallback('meetingDescription')|raw }}#}
-                                            {#</div>#}
-                                            {#{% if content.meetingPdf is not null %}#}
-                                                {#{% set pdfFile = content.meetingPdf|trans_fallback('file') %}#}
-                                                {#<a href="{% path pdfFile, 'reference' %}" target="_blank" download>#}
-                                                    {#{{ content|trans_fallback('meetingLabel') }}#}
-                                                {#</a>#}
-                                            {#{% endif %}#}
-                                            {#<div id="google-map"></div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
+                            <div class="item">
+                                <div class="block-01">
+                                    <div class="title-contain border-top">
+                                        <strong class="title-22">
+                                            <i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}
+                                        </strong>
+                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                    </div>
+                                    <div class="item-manual">
+                                        <div class="contain-infos">
+                                            <div class="descrip-section">
+                                                {{ content|trans_fallback('meetingDescription')|raw }}
+                                            </div>
+                                            {% if content.meetingPdf is not null %}
+                                                {% set pdfFile = content.meetingPdf|trans_fallback('file') %}
+                                                <a href="{% path pdfFile, 'reference' %}" target="_blank" download>
+                                                    {{ content|trans_fallback('meetingLabel') }}
+                                                </a>
+                                            {% endif %}
+                                            <div id="google-map"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                              {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
                              {% if content.serviceDisplayInstit %}
                              <div class="item">
