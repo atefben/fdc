@@ -546,6 +546,10 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    label_information_display_instit: Publier sur le site institutionnel
+    label_arrive_display_instit: Publier sur le site institutionnel
+    label_meeting_display_instit: Publier sur le site institutionnel
+    label_service_display_instit: Publier sur le site institutionnel
     label_accredit_procedure_movie: Choisissez les procédures d'inscription à afficher*
     label_procedure_movie: Procédures
     label_hide_common_content: Ne pas afficher cette strate
