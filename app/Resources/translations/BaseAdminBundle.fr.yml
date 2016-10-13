@@ -556,6 +556,8 @@ form:
     label_service_display_instit: Publier sur le site institutionnel
     label_accredit_procedure_movie: Choisissez les procédures d'inscription à afficher*
     label_procedure_movie: Procédures
+    label_instit: Site institutionnel
+    label_evenmt: Site évènementiel
     label_hide_common_content: Ne pas afficher cette strate
     label_pdf: Pdf
     media_pdf:

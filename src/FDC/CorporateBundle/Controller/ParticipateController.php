@@ -132,7 +132,7 @@ class ParticipateController extends Controller
         $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_fdc_page_prepare_id'));
         $pages = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
-            ->findAll();
+            ->findBy(array('evenmt' => true));
 
         if ($slug === null) {
             foreach ($pages as $page) {
