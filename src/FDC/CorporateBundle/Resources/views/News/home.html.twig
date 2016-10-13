@@ -1,6 +1,6 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
-{% block bodyId %}home{% endblock %}
+{% block bodyClass %}retrospective retrospective-home{% endblock %}
 
 {% block body %}
     <section id="main" class="home">
@@ -8,59 +8,56 @@
         <div class="padding-bottom">
             <div class="slider-home block-scale">
                 <div class="container-images">
-                    <div class="item animated active" data-item='1' style="background-image:url('media/images/home-slider-01.jpg')"></div>
-                    <div class="item animated" data-item='2' style="background-image:url('http://dummyimage.com/1304x700/000/fff')"></div>
-                    <div class="item animated" data-item='3' style="background-image:url('http://dummyimage.com/1304x700/bbb/fff')"></div>
-                </div>
+                    {% set sliderItems = {} %}
+                    {% set dataItem = 1 %}
+                    {% for homeSlide in homeSlider %}
+                        {% set img = homeSlide.header %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        <div class="item animated active" data-item="{{ dataItem }}" style="background-image:url('{% path file , '1280x808' %}')"></div>
 
+                        {% if class(homeSlide) starts with 'S' %}
+                            {% set type = 'communique' %}
+                        {% else %}
+                            {% set type = 'info' %}
+                        {% endif %}
+                        {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
+                        {% if trans == null %}
+                            {% set trans = homeSlide.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% dump(homeSlide) %}
+                        {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
+                        {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
+                        {% set sliderItems = sliderItems|merge(sliderItem) %}
+                        {% set dataItem = dataItem + 1 %}
+                    {% endfor %}
+                </div>
                 <div class="block-01 container-txts">
                     <div class="texts ">
                         <div class="slider-carousel">
-
-                            <div class="item vFlexAlign" data-item='1'>
-                                <a href="evenement.html">
-                                    <strong class="title-4a">Cate Blanchett nous parle de Carol</strong>
+                            {% for sliderItem in sliderItems %}
+                            <div class="item vFlexAlign" data-item='{{ sliderItem.item }}'>
+                                <a href="{{ sliderItem.url }}">
+                                    <strong class="title-4a">{{ sliderItem.title }}</strong>
                                 </a>
-                                <a href="evenement.html">
-                                    <strong class="title-2a">conférence de presse</strong>
+                                <a href="{{ sliderItem.url }}">
+                                    <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                 </a>
                                 <p>
-                                    <a href="evenement.html">
-                                        A 46 ans, l’actrice américaine prend des risques. Souvent payants. Elle étonne, elle épate, elle éblouit. Retour sur ses multiples visages...
+                                    <a href="{{ sliderItem.url }}">
+                                        {{ sliderItem.introduction }}
                                     </a>
                                 </p>
                             </div>
-
-                            <div class="item vFlexAlign" data-item='2'>
-                                <a href="evenement.html">
-                                    <strong class="title-4a">Cate Blanchett nous parle de Carol</strong>
-                                </a>
-                                <a href="evenement.html">
-                                    <strong class="title-2a">conférence de presse</strong>
-                                </a>
-                                <p>
-                                    <a href="evenement.html">
-                                        A 46 ans, l’actrice américaine prend des risques. Souvent payants. Elle étonne, elle épate, elle éblouit. Retour sur ses multiples visages...
-                                    </a>
-                                </p>
-                            </div>
-
-                            <div class="item vFlexAlign" data-item='3'>
-                                <a href="evenement.html">
-                                    <strong class="title-4a">Cate Blanchett nous parle de Carol</strong>
-                                </a>
-                                <a href="evenement.html">
-                                    <strong class="title-2a">conférence de presse</strong>
-                                </a>
-                                <p>
-                                    <a href="evenement.html">
-                                        A 46 ans, l’actrice américaine prend des risques. Souvent payants. Elle étonne, elle épate, elle éblouit. Retour sur ses multiples visages...
-                                    </a>
-                                </p>
-                            </div>
+                            {% endfor %}
                         </div> <!-- end slider carousel -->
                     </div> <!-- end texts -->
                 </div> <!-- end block 01 -->
+
+
             </div> <!-- end slider home -->
         </div> <!-- end padding-bottom -->
 
@@ -94,52 +91,121 @@
             <div class="block-01 padding-bottom block-scale">
                 <div class="contain-card">
                     <div class="cards">
+                        {% set firstArticle = 0 %}
+                        {% for i in 0..2 %}
+                            {% set homeSlide = homeSlider[i] %}
+                            {% if class(homeSlide) starts with 'S' %}
+                                {% set type = 'communique' %}
+                            {% else %}
+                                {% set type = 'info' %}
+                            {% endif %}
+                            {% if homeSlide is news_article or homeSlide is statement_article or homeSlide is info_article %}
+                                {% set contentType = 'article' %}
+                                {% set img = homeSlide.header %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% elseif homeSlide is news_video or homeSlide is statement_video or homeSlide is info_video %}
+                                {% set contentType = 'video' %}
+                                {% set header = homeSlide.header %}
+                                {% if header is not null %}
+                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% else %}
+                                        {% set trans = homeSlide.header.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.file is not null %}
+                                            {% set imageTrans = trans %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if imageTrans is defined and imageTrans is not null %}
+                                    {% set file = imageTrans.file %}
+                                    {% set img = homeSlide.header %}
+                                {% else %}
+                                    {% set img = homeSlide.video.image %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+                            {% elseif homeSlide is news_audio or homeSlide is info_audio or homeSlide is statement_audio %}
+                                {% set contentType = 'audio' %}
+                                {% set header = homeSlide.header %}
+                                {% if header is not null %}
+                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% else %}
+                                        {% set trans = homeSlide.header.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.file is not null %}
+                                            {% set imageTrans = trans %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if imageTrans is defined and imageTrans is not null %}
+                                    {% set file = imageTrans.file %}
+                                    {% set img = homeSlide.header %}
+                                {% else %}
+                                    {% set img = homeSlide.audio.image %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+                            {% elseif homeSlide is news_image or homeSlide is statement_image or homeSlide is info_image %}
+                                {% set contentType = 'photo' %}
+                                {% set header = homeSlide.header %}
+                                {% if header is not null %}
+                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = homeSlide.header.findTranslationByLocale(app.request.locale) %}
+                                    {% else %}
+                                        {% set trans = homeSlide.header.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.file is not null %}
+                                            {% set imageTrans = trans %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if imageTrans is defined and imageTrans is not null %}
+                                    {% set img = homeSlide.header %}
+                                    {% set file = imageTrans.file %}
+                                {% else %}
+                                    {% set img = homeSlide.gallery.medias[0].media %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+                            {% endif %}
+                            <article class="card {{ contentType }}{% if firstArticle == false %} double{% set firstArticle = 1 %}{% endif %}" data-format="{{ contentType }}" data-theme="{{ homeSlide.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+                                <div class="image">
+                                    <div class="image-wrapper">
+                                        {% if file is defined %}<img src="{% path file , '926x584' %}" />{% endif %}
+                                    </div>
+                                    {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans == null %}
+                                        {% set trans = homeSlide.findTranslationByLocale('fr') %}
+                                    {% endif %}
 
-                        <article class="card article double" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image1.jpg" alt=""  />
+                                    {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
+
+                                    <a href="{{ sliderUrl }}" class="linkImage"></a>
+
+                                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                                    <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
                                 </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
-                            </div>
-                        </article>
-
-                        <article class="card photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image2.jpg" alt=""  />
+                                <div class="info">
+                                    <a href="#" class="category">{{ homeSlide.theme|trans_fallback('name') }}</a><span class="date">{{ homeSlide.publishedAt|date('Y-m-d') }}</span> . <span class="hour">{{ homeSlide.publishedAt|date('H:i') }}</span>
+                                    <strong><a href="{{ sliderUrl }}">{{ homeSlide|trans_fallback('title') }}</a></strong>
                                 </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-photo"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Benjamin Millepied aux côtés de son épouse Natalie Portman</a></strong>
-                            </div>
-                        </article>
-
-                        <article class="card video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image3.jpg" alt=""  />
-                                </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-                            </div>
-                        </article>
-
+                            </article>
+                        {% endfor %}
                     </div> <!-- end articles-->
                 </div> <!-- end article wrapper-->
 
@@ -148,7 +214,7 @@
                     <div class="slider-01">
                         <div class="item">
                             <figure>
-                                <img src="media/images/home-slider2-01.jpg" alt="image" data-id="pid=1889"   data-credit="Crédit Image : Loïc Venance / AFP" data-title="Ken Loach, Palme d'or - I, Daniel Blake (Moi, Daniel Blake)" data-label="photocall" data-date="22.05.16 21:46" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat" data-url="http://localhost:3000/#pid=1889">
+                                <img src="{{ asset('bundles/fdccocporate/media/images/home-slider2-01.jpg ') }}" alt="image" data-id="pid=1889"   data-credit="Crédit Image : Loïc Venance / AFP" data-title="Ken Loach, Palme d'or - I, Daniel Blake (Moi, Daniel Blake)" data-label="photocall" data-date="22.05.16 21:46" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat" data-url="http://localhost:3000/#pid=1889">
                                 <figcaption>Xavier Dolan © FDC / Théophile Delange</figcaption>
                             </figure>
                         </div>
@@ -193,56 +259,41 @@
 
                 <div class="articles-wrapper add-ajax-request">
                     <div class="articles article-inverse">
+                        {% if homeSlider|length > 3 %}
+                        {% for i in 3..homeSlider|length %}
+                            {% set homeSlide = homeSlider[i] %}
+                            <article class="card {{ contentType }} {% if i == 4 %}double-right{% else %}small-left{% endif %}" data-format="{{ contentType }}" data-theme="{{ homeSlide.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+                                <div class="image">
+                                    <div class="image-wrapper">
+                                        <img src="{% path file , '926x584' %}" alt="" />
+                                    </div>
+                                    {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans == null %}
+                                        {% set trans = homeSlide.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% if type == 'news' %}
+                                        {% set sliderUrl = url('fdc_corporate_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) %}
+                                    {% else %}
+                                        {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
+                                    {% endif %}
 
-                        <article class="card photo small-left" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image2.jpg" alt=""  />
+                                    <a href="{{ sliderUrl }}" class="linkImage"></a>
+
+                                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                                    <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
                                 </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-photo"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Benjamin Millepied aux côtés de son épouse Natalie Portman</a></strong>
-                            </div>
-                        </article>
-
-                        <article class="card article double double-right" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image1.jpg" alt=""  />
+                                <div class="info">
+                                    <a href="#" class="category">{{ homeSlide.theme|trans_fallback('name') }}</a><span class="date">{{ homeSlide.publishedAt|date('Y-m-d') }}</span> . <span class="hour">{{ homeSlide.publishedAt|date('H:i') }}</span>
+                                    <strong><a href="{{ sliderUrl }}">{{ homeSlide|trans_fallback('title') }}</a></strong>
                                 </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-article"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
-                            </div>
-                        </article>
-
-                        <article class="card video small-left" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image3.jpg" alt=""  />
-                                </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-                            </div>
-                        </article>
-
+                            </article>
+                       {% endfor %}
+                       <a href="ajax_more_news.html" data-reverse="ajax_more_news-reverse.html" class="read-more ajax-request">Afficher <strong>plus d'infos</strong></a>
+                       {% endif %}
                     </div> <!-- end articles -->
                 </div> <!-- end article wrapper-->
 
-                <a href="ajax_more_news.html" data-reverse="ajax_more_news-reverse.html" class="read-more ajax-request">Afficher <strong>plus d'infos</strong></a>
+
 
             </div> <!-- end block 01-->
 
@@ -299,16 +350,21 @@
 
             </div> <!-- end block 02 -->
 
-            <div class="block-push block-03 block-scale" style="background-image: url('media/images/home-push-01.jpg')">
-                <a href="#" class="coverLink"></a>
-                <div class="vFlexAlign">
-                    <div>
-                        <strong class="title-2">revivez l’édition 2016</strong>
-                        <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+            {% if homepage.pushEditionImage is not null %}
+                {% set trans = homepage.pushEditionImage.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = homepage.pushEditionImage.findTranslationByLocale('fr') %}
+                {% endif %}
+                <div class="block-push block-03 block-scale" style="background-image: url('{% path trans.file , '325x205' %}')">
+                    <a href="{{ homepage|trans_fallback('pushEditionUrl') }}" class="coverLink"></a>
+                    <div class="vFlexAlign">
+                        <div>
+                            <strong class="title-2">{{ homepage|trans_fallback('pushEditionTitle')|raw }}</strong>
+                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                        </div>
                     </div>
-                </div>
-            </div> <!-- end block push -->
-
+                </div> <!-- end block push -->
+            {% endif %}
             <div class="block-02">
                 <div class="block-01">
                     <h2 class="title title-01">sorties de cannes</h2>
@@ -484,23 +540,31 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     <a href="#" class="coverLink"></a>
                     <div class="vFlexAlign">
                         <div>
-                            <strong class="title-2">La rétrospective</strong>
-                            <p>Retrouvez toute l’histoire du festival à travers ses différents éditions</p>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                            <strong class="title-2">{{ homepage|trans_fallback('pushMainTitle1') }}</strong>
+                            <p>TODO : Ajouter pushMainSubtitle1</p>
+                            <a class="link" href="{{ homepage|trans_fallback('pushMainUrl2') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
                         </div>
                     </div>
-                    <img src="media/images/home-push-02.jpg" alt="">
+                    {% set trans = homepage.pushMainImage1.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushMainImage1.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <img src="{% path trans.file , '325x205' %}" alt="" />
                 </div><!--
       --><div class="half-div block-push">
                     <a href="#" class="coverLink"></a>
                     <div class="vFlexAlign">
                         <div>
-                            <strong class="title-2">La médiathèque</strong>
-                            <p>Retrouvez tous les médias du Festival depuis sa création</p>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>fo
+                            <strong class="title-2">{{ homepage|trans_fallback('pushMainTitle2') }}</strong>
+                            <p>TODO : Ajouter pushMainSubtitle2</p>
+                            <a class="link" href="{{ homepage|trans_fallback('pushMainUrl2') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
+                        </div>
                     </div>
-                    <img src="media/images/home-push-03.jpg" alt="">
+                    {% set trans = homepage.pushMainImage2.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushMainImage2.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <img src="{% path trans.file , '325x205' %}" alt="" />
                 </div>
             </div>
 
@@ -509,28 +573,40 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     <div class="block-push-02 clear">
                         <div class="right three-quarts-div">
                             <div class="small-push half-div">
-                                <a href="#"><div class="image-wrapper">
-                                        <img src="media/images/home-push-04.jpg" alt=""  >
+                                <a href="{{ homepage|trans_fallback('pushSecondaryUrl1')}}"><div class="image-wrapper">
+                                        {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale(app.request.locale) %}
+                                        {% if trans is null or trans.file is null %}
+                                            {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
+                                        {% endif %}
+                                        <img src="{% path trans.file , '325x205' %}" alt="" />
                                         <div class="vFlexAlign">
-                                            <strong class="title-8">participer<br>au festival</strong>
+                                            <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle1')|raw }}</strong>
                                         </div>
                                     </div></a>
                             </div><!--
             --><div class="small-push half-div">
-                                <a href=""><div class="image-wrapper">
-                                        <img src="media/images/home-push-05.jpg" alt=""  >
+                                <a href="{{ homepage|trans_fallback('pushSecondaryUrl2')}}"><div class="image-wrapper">
+                                        {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale(app.request.locale) %}
+                                        {% if trans is null or trans.file is null %}
+                                            {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale('fr') %}
+                                        {% endif %}
+                                        <img src="{% path trans.file , '325x205' %}" alt="" />
                                         <div class="vFlexAlign">
-                                            <strong class="title-8">espace presse</strong>
+                                            <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle2')|raw }}</strong>
                                         </div>
                                     </div></a>
                             </div>
                         </div><!--
         --><div class="left">
                             <div class="long-push three-quarts-div">
-                                <a href="#"><div class="image-wrapper">
-                                        <img src="media/images/home-push-06.jpg" alt=""  >
+                                <a href="{{ homepage|trans_fallback('pushSecondaryUrl3')}}"><div class="image-wrapper">
+                                        {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale(app.request.locale) %}
+                                        {% if trans is null or trans.file is null %}
+                                            {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
+                                        {% endif %}
+                                        <img src="{% path trans.file , '325x205' %}" alt="" />
                                         <div class="vFlexAlign">
-                                            <strong class="title-8">L'oeil du photographe</strong>
+                                            <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle3')|raw }}</strong>
                                         </div>
                                     </div></a>
                             </div>
