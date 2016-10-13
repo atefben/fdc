@@ -6,7 +6,7 @@
             {% if element.enabled == true and element.route is defined and element.route != '' %}
                 <li>
                     <a href="{% if element.route != '#' %}{{ path(element.route) }}{% else %}#{% endif %}">
-                        {{ element.transName }}
+                        {{ element.transName|trans }}
                     </a>
                 </li>
             {% endif %}
