@@ -157,6 +157,17 @@ class ParticipateController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
             ->getFDCPageParticipateBySlug($slug, $locale);
 
+        if ($slug === 'prepare') {
+
+            return $this->render('FDCCorporateBundle:Participate:prepare.html.twig',array(
+                'content' => $content,
+                'datas' => $datas,
+                'pages' => $pages,
+                'prepare' => true
+            ));
+
+        }
+
         // SEO
         //$this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);
 

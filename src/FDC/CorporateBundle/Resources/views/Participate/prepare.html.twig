@@ -24,6 +24,7 @@
 
                 <nav class="navigation-sticky">
                     <ul>
+                        <li class="{% if app.request.attributes.get('slug') == 'prepare' %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : 'prepare' }) }}">{{ 'participate.prepare.sejour'|trans }}</a></li>
                         {% for data in pages %}
                             <li class="{% if app.request.attributes.get('slug') == data|trans_fallback('slug') %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : data|trans_fallback('slug')}) }}">{{ data|trans_fallback('title') }}</a></li>
                         {% endfor %}
@@ -34,6 +35,7 @@
                 <div class="all-contain">
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
+                        {% if app.request.attributes.get('slug') == 'prepare' %}
                             {% if content.informationDisplayInstit %}
                             <div class="item">
                                 <div class="block-01">
@@ -124,7 +126,7 @@
                             </div>
                              {% endif %}
                              {% endif %}
-
+                        {% else %}
                                 {% for s in datas.downloadSection %}
 
                                     {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
@@ -172,8 +174,9 @@
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
+                        {% endif %}
 
-                     </div> <!-- fin de accordion -->
+                        </div> <!-- fin de accordion -->
                     </div>
                 </div>
             </div>
