@@ -1397,7 +1397,9 @@ services:
         class: Base\AdminBundle\Admin\CorpoAccreditProcedureAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoAccreditProcedure, BaseAdminBundle:CorpoAccreditProcedureAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoAccreditProcedure}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.film_festival:
         class: Base\AdminBundle\Admin\FilmFestivalAdmin

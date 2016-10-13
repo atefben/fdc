@@ -73,13 +73,7 @@ class CorpoAccreditProcedure implements TranslateMainInterface
     }
 
     public function __toString() {
-        $trans = $this->findTranslationByLocale('fr');
-        if ($trans) {
-            $string = $trans->getTitle();
-        } else {
-            $string = substr(strrchr(get_class($this), '\\'), 1);
-        }
-        return $string;
+        return 'Procédure d\'accréditation';
     }
 
     /**

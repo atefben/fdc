@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_accredit_procedure_list: Participer
     link_media_pdf_list: Liste des médias Pdf
     link_f_d_c_page_participate_section_list: Liste des Strates Participer
     link_widget_mosaic_movie_list: Mosaïque de film
@@ -233,6 +234,7 @@ entity:
     film_festival: Festival
     corpo_movie_inscription: Inscrire un film
     corpo_movie_inscription_procedure: Procédure d'inscription
+    corpo_accredit_procedure: Procédure d'accréditation
 
 list:
     label_duplicate: Doublon
