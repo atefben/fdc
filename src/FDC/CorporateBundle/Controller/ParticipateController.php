@@ -132,7 +132,7 @@ class ParticipateController extends Controller
         $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_fdc_page_prepare_id'));
         $pages = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
-            ->findBy(array('evenmt' => true));
+            ->findAll();
 
         if ($slug === null) {
             foreach ($pages as $page) {
@@ -156,6 +156,17 @@ class ParticipateController extends Controller
         $datas = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
             ->getFDCPageParticipateBySlug($slug, $locale);
+
+        if ($slug === 'prepare') {
+
+            return $this->render('FDCCorporateBundle:Participate:prepare.html.twig',array(
+                'content' => $content,
+                'datas' => $datas,
+                'pages' => $pages,
+                'prepare' => true
+            ));
+
+        }
 
         // SEO
         //$this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);
