@@ -1385,7 +1385,9 @@ services:
         class: Base\AdminBundle\Admin\CorpoAccreditAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoAccredit, BaseAdminBundle:CorpoAccreditAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoAccredit}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_accredit, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.corpo_accredit_has_procedure:
         class: Base\AdminBundle\Admin\CorpoAccreditHasProcedureAdmin

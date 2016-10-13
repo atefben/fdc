@@ -67,10 +67,7 @@ class CorpoAccredit implements TranslateMainInterface
     }
 
     public function __toString() {
-
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        return $string;
+        return 'S\'accréditer';
     }
 
     /**
