@@ -550,6 +550,8 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    label_level2: niveau d'arborescence 2
+    label_level3: niveau d'arborescence 3
     label_information_display_instit: Publier sur le site institutionnel
     label_arrive_display_instit: Publier sur le site institutionnel
     label_meeting_display_instit: Publier sur le site institutionnel

@@ -37,6 +37,20 @@ class FDCPageParticipate implements TranslateMainInterface
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $level2;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $level3;
+
+    /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $image;
@@ -156,4 +170,50 @@ class FDCPageParticipate implements TranslateMainInterface
         return $this->image;
     }
 
+
+    /**
+     * Set level2
+     *
+     * @param boolean $level2
+     * @return FDCPageParticipate
+     */
+    public function setLevel2($level2)
+    {
+        $this->level2 = $level2;
+
+        return $this;
+    }
+
+    /**
+     * Get level2
+     *
+     * @return boolean 
+     */
+    public function getLevel2()
+    {
+        return $this->level2;
+    }
+
+    /**
+     * Set level3
+     *
+     * @param boolean $level3
+     * @return FDCPageParticipate
+     */
+    public function setLevel3($level3)
+    {
+        $this->level3 = $level3;
+
+        return $this;
+    }
+
+    /**
+     * Get level3
+     *
+     * @return boolean 
+     */
+    public function getLevel3()
+    {
+        return $this->level3;
+    }
 }

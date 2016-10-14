@@ -165,6 +165,8 @@ class FDCPageParticipateAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
+            ->add('level2')
+            ->add('level3')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices' => FDCPageParticipate::getAvailableTranslateOptions(),
