@@ -36,8 +36,29 @@
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
                         {% if app.request.attributes.get('slug') == 'prepare' %}
+                            {% if content.arriveDisplayInstit %}
+                                <div class="item active">
+                                    <div class="block-01">
+                                        <div class="title-contain border-top">
+                                            <strong class="title-22">
+                                                <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
+                                            </strong>
+                                            <i class="icon icon-nav-accordion icon-minus"></i>
+                                        </div>
+                                        <div class="item-manual">
+                                            <div class="contain-infos">
+                                                {% for widget in content.arriveWidgets %}
+                                                    {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
+                                                        {% include 'FDCEventBundle:Participate:widgets/picto.html.twig' %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                             {% if content.informationDisplayInstit %}
-                            <div class="item active">
+                            <div class="item">
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
@@ -56,27 +77,6 @@
                                                 {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
                                             {% endif %}
                                         {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% if content.arriveDisplayInstit %}
-                            <div class="item">
-                                <div class="block-01">
-                                    <div class="title-contain border-top">
-                                        <strong class="title-22">
-                                            <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
-                                        </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
-                                    </div>
-                                    <div class="item-manual">
-                                        <div class="contain-infos">
-                                            {% for widget in content.arriveWidgets %}
-                                                {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
-                                                    {% include 'FDCEventBundle:Participate:widgets/picto.html.twig' %}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
