@@ -37,7 +37,7 @@
                         <div class="block-accordion block-accordion-02">
                         {% if app.request.attributes.get('slug') == 'prepare' %}
                             {% if content.informationDisplayInstit %}
-                            <div class="item">
+                            <div class="item active">
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
@@ -133,7 +133,7 @@
                                     ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
                                     %}
                                         {% if s.section.instit %}
-                                        <div class="item">
+                                        <div class="item {% if loop.index0 == 0 %}active{% endif %}">
                                             <div class="block-01">
                                                 <div class="title-contain border-top">
                                                     <strong class="title-22">
