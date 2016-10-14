@@ -404,15 +404,12 @@
                     <div class="block-legend">
                         <div class="info">
 
-                            <a href="#" class="category">Conférence presse</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
+                            <a href="#" class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
 
                             <div class="texts">
-                                <h2><a href="article.html">Rencontre avec les lauréats du 68e Festival de Cannes</a></h2>
+                                <h2><a href="article.html">{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
                                 <div class="text-01">
-                                    <p>
-                                        Jacques Audiard, lauréat de la Palme d’or pour Dheepan :<br>
-                                        « La fin du film est un happy ending parce que lui accepte son désir à elle. J’aimais bien cette acceptation par l’homme du désir de la femme. Ce qui m’intéresse, c’est le regard de l’autre, comment on perçoit ceux qui vendent des roses en terrasse des restaurants. Ces gens viennent de quelque part ».
-                                    </p>
+                                    {{ featuredVideo|trans_fallback('introductionHomeCorpo')|raw }}
                                 </div>
                             </div> <!-- end block texts-->
 
