@@ -2,7 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,18 +42,53 @@ class DefaultController extends Controller
             }
         }
 
+
+        /////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////      INFOS AND STATEMENTS      ////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////
+        $lastFestival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneBy(array(), array('id' => 'DESC'));
+        $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $lastFestival->getId(), $dateTime);
+        $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $lastFestival->getId(), $dateTime);
+        $homeContents = array_merge($homeInfos, $homeStatement);
+
+        dump($homeInfos);
+        dump($homeStatement);
+
+        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 3);
+
         //set default filters
         $filters = array();
         $filters['format'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
 
+        foreach ($homeContents as $key => $homeContent) {
+            $homeContent->theme = $homeContent->getTheme();
+
+            if (($key % 3) == 0) {
+                $homeContent->double = true;
+            }
+
+            //check if filters don't already exist
+            if (!in_array($homeContent->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $homeContent->getTheme()->getId();
+                $filters['themes']['content'][] = $homeContent->getTheme();
+            }
+
+            if (!in_array($homeContent->getNewsType(), $filters['format'])) {
+                $filters['format'][] = $homeContent->getNewsType();
+            }
+        }
+
+        dump($homeContents); exit;
+
 
         return array(
             'homepage'           => $homepage,
             'displayHomeSlider'  => $displayHomeSlider,
             'homeSlider'         => $homeSlider,
-            'festivalStartsAt'      => $homepage->getFestivalStartsAt(),
+            'homeContents'       => $homeContents,
+            'festivalStartsAt'   => $homepage->getFestivalStartsAt(),
             'filters'            => $filters
         );
     }
