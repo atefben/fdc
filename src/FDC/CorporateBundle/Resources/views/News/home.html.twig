@@ -28,7 +28,6 @@
                         {% if trans == null %}
                             {% set trans = homeSlide.findTranslationByLocale('fr') %}
                         {% endif %}
-                        {% dump(homeSlide) %}
                         {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
                         {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
                         {% set sliderItems = sliderItems|merge(sliderItem) %}
@@ -87,54 +86,113 @@
             </div>
         </div> <!-- end filters -->
 
+
         <div class="content">
             <div class="block-01 padding-bottom block-scale">
                 <div class="contain-card">
                     <div class="cards">
-                        <article class="card article double" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
+                    {% for article in homeContents %}
+                        {% if class(article) starts with 'S' %}
+                            {% set type = 'communique' %}
+                        {% else %}
+                            {% set type = 'info' %}
+                        {% endif %}
+                        {% if article is news_video or article is statement_video or article is info_video %}
+                            {% set contentType = 'video' %}
+                            {% set header = article.header %}
+                            {% if header is not null %}
+                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% else %}
+                                    {% set trans = article.header.findTranslationByLocale('fr') %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if imageTrans is defined and imageTrans is not null %}
+                                {% set file = imageTrans.file %}
+                                {% set img = article.header %}
+                            {% else %}
+                                {% set img = article.video.image %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% elseif article is news_audio or article is info_audio or article is statement_audio %}
+                            {% set contentType = 'audio' %}
+                            {% set header = article.header %}
+                            {% if header is not null %}
+                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% else %}
+                                    {% set trans = article.header.findTranslationByLocale('fr') %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if imageTrans is defined and imageTrans is not null %}
+                                {% set file = imageTrans.file %}
+                                {% set img = article.header %}
+                            {% else %}
+                                {% set img = article.audio.image %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% elseif article is news_image or article is statement_image or article is info_image %}
+                            {% set contentType = 'photo' %}
+                            {% set header = article.header %}
+                            {% if header is not null %}
+                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                                {% else %}
+                                    {% set trans = article.header.findTranslationByLocale('fr') %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if imageTrans is defined and imageTrans is not null %}
+                                {% set img = article.header %}
+                                {% set file = imageTrans.file %}
+                            {% else %}
+                                {% set img = article.gallery.medias[0].media %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% endif %}
+                        <article class="card {{ contentType }} double" data-format="{{ contentType }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
                             <div class="image">
                                 <div class="image-wrapper">
-                                    <img src="media/images/home-image1.jpg" alt=""  />
+                                    <img src="{% path file , '926x584' %}" alt=""  />
                                 </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
-                            </div>
-                        </article>
 
-                        <article class="card photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image2.jpg" alt=""  />
-                                </div>
-                                <a href="article.html" class="linkImage"></a>
+                                {% set trans = article.findTranslationByLocale(app.request.locale) %}
+                                {% if trans == null %}
+                                    {% set trans = article.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkImage"></a>
                                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-photo"></i></span>
+                                <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
                             </div>
                             <div class="info">
-                                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Benjamin Millepied aux côtés de son épouse Natalie Portman</a></strong>
+                                <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="category">{{ article.theme|trans_fallback('name') }}</a><span class="date">{{ article.publishedAt|format('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|format('H:i') }}</span>
+                                <strong><a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article.title|trans_fallback('name') }}</a></strong>
                             </div>
                         </article>
-
-                        <article class="card video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="media/images/home-image3.jpg" alt=""  />
-                                </div>
-                                <a href="article.html" class="linkImage"></a>
-                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                <span class="picto"><i class="icon icon-video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-                            </div>
-                        </article>
+                    {% endfor %}
                     </div> <!-- end articles-->
                 </div> <!-- end article wrapper-->
 
