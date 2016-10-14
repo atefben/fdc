@@ -26,7 +26,9 @@
                     <ul>
                         <li class="{% if app.request.attributes.get('slug') == 'prepare' %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : 'prepare' }) }}">{{ 'participate.prepare.sejour'|trans }}</a></li>
                         {% for data in pages %}
-                            <li class="{% if app.request.attributes.get('slug') == data|trans_fallback('slug') %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : data|trans_fallback('slug')}) }}">{{ data|trans_fallback('title') }}</a></li>
+                            {% if data.level3 %}
+                                <li class="{% if app.request.attributes.get('slug') == data|trans_fallback('slug') %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : data|trans_fallback('slug')}) }}">{{ data|trans_fallback('title') }}</a></li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </nav>

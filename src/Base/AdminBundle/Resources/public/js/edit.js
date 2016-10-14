@@ -134,6 +134,19 @@ jQuery(document).ready(function ($) {
         $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
 
+    $('input[name$="[instit]"]').on('ifChanged', function() {
+        if (!$(this).is(':checked')) {
+            $('#level-nav').hide();
+        } else {
+            $('#level-nav').show();
+        }
+    });
+    if ($('input[name$="[instit]"]').is(':checked')) {
+        $('#level-nav').show();
+    } else {
+        $('#level-nav').hide();
+    }
+
 });
 
 function dataTranslation() {
