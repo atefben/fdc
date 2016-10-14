@@ -359,66 +359,65 @@
 
             </div> <!-- end block 01-->
 
-            <div class="block-02">
+            {% if featuredVideo is defined and featuredVideo != null %}
+                {# if featuredVideo is not null and featuredVideo.jobMp4State == 3 #}
+                <div class="block-02">
 
-                <div class="block-01">
-                    <h2 class="title title-01">Vidéo à la une</h2>
+                    <div class="block-01">
+                        <h2 class="title title-01">Vidéo à la une</h2>
 
-                    <div class="center block-videos">
-                        {% dump(featuredVideo|trans_fallback('file')) %}
-                    {% if featuredVideo is defined and featuredVideo != null %}
-                        {# if featuredVideo is not null and featuredVideo.jobMp4State == 3 #}
-                        <article class="video">
-                            <div class="video-container state-init video video-player"
-                                 data-link="{{ featuredVideo.id }}"
-                                 data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                 data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                {% if featuredVideo.image|trans_fallback('file') %}
-                                    data-img="{% path featuredVideo.image|trans_fallback('file'), '463x292' %}"
-                                {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
-                                    data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
-                                {% else %}
-                                    data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '463x292' %}"
-                                {% endif %}
-                                 data-name="Le Best-of du 69e Festival de Cannes">
-                                <div id="video-player" class="jwplayer jw-reset">
-                                </div>
-                                <div class="video-overlay"></div>
-                                <div class="infos-bar hide-info">
-                                    <div class="picto"><i class="icon icon-video"></i></div>
-                                    <div class="info ">
-                                        <div class="vCenter">
-                                            <div class="vCenterKid">
-                                                <a href="#" class="category">{{ featuredVideo.theme|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.publishedAt|date('H:i'), true, true) }}</span>
-                                                <p>{{ featuredVideo|trans_fallback('title') }}</p>
+                        <div class="center block-videos">
+                            <article class="video">
+                                <div class="video-container state-init video video-player"
+                                     data-link="{{ featuredVideo.id }}"
+                                     data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
+                                     data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
+                                    {% if featuredVideo.image|trans_fallback('file') %}
+                                        data-img="{% path featuredVideo.image|trans_fallback('file'), '463x292' %}"
+                                    {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
+                                        data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
+                                    {% else %}
+                                        data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                    {% endif %}
+                                     data-name="Le Best-of du 69e Festival de Cannes">
+                                    <div id="video-player" class="jwplayer jw-reset">
+                                    </div>
+                                    <div class="video-overlay"></div>
+                                    <div class="infos-bar hide-info">
+                                        <div class="picto"><i class="icon icon-video"></i></div>
+                                        <div class="info ">
+                                            <div class="vCenter">
+                                                <div class="vCenterKid">
+                                                    <a href="#" class="category">{{ featuredVideo.theme|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.publishedAt|date('H:i'), true, true) }}</span>
+                                                    <p>{{ featuredVideo|trans_fallback('title') }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                        {# endif #}
-                    {% endif %}
-                    </div>
+                            </article>
+                        </div>
 
-                    <div class="block-legend">
-                        <div class="info">
+                        <div class="block-legend">
+                            <div class="info">
 
-                            <a href="#" class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
+                                <a href="#" class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
 
-                            <div class="texts">
-                                <h2><a href="article.html">{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
-                                <div class="text-01">
-                                    {{ featuredVideo|trans_fallback('introductionHomeCorpo')|raw }}
-                                </div>
-                            </div> <!-- end block texts-->
+                                <div class="texts">
+                                    <h2><a href="article.html">{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
+                                    <div class="text-01">
+                                        {{ featuredVideo|trans_fallback('introductionHomeCorpo')|raw }}
+                                    </div>
+                                </div> <!-- end block texts-->
 
-                        </div> <!-- end block info -->
-                    </div> <!-- end block legend-->
+                            </div> <!-- end block info -->
+                        </div> <!-- end block legend-->
 
-                </div> <!-- end block 01 -->
+                    </div> <!-- end block 01 -->
 
-            </div> <!-- end block 02 -->
+                </div> <!-- end block 02 -->
+                {# endif #}
+            {% endif %}
 
             {% if homepage.pushEditionImage is not null %}
                 {% set trans = homepage.pushEditionImage.findTranslationByLocale(app.request.locale) %}
