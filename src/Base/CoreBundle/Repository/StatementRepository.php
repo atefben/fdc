@@ -331,7 +331,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getStatementByDate($locale, $festival, $dateTime, $count)
+    public function getStatementByDate($locale, $festival, $dateTime, $count=null)
     {
         $qb = $this
             ->createQueryBuilder('n')

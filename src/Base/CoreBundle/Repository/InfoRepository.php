@@ -246,7 +246,7 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfosByDate($locale, $festival, $dateTime, $count)
+    public function getInfosByDate($locale, $festival, $dateTime, $count=null)
     {
         $qb = $this
             ->createQueryBuilder('n')
