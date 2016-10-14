@@ -47,8 +47,12 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(form.parent.children.level2) }}
-                                        {{ form_row(form.parent.children.level3) }}
+                                        {{ form_row(form.parent.children.evenmnt) }}
+                                        {{ form_row(form.parent.children.instit) }}
+                                        <div id="level-nav" style="display: none">
+                                            &nbsp &nbsp{{ form_row(form.parent.children.level2) }}
+                                            &nbsp &nbsp{{ form_row(form.parent.children.level3) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

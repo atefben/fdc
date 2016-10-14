@@ -552,6 +552,7 @@ dashboard:
 form:
     label_level2: niveau d'arborescence 2
     label_level3: niveau d'arborescence 3
+    label_evenmnt: Site évènementiel
     label_information_display_instit: Publier sur le site institutionnel
     label_arrive_display_instit: Publier sur le site institutionnel
     label_meeting_display_instit: Publier sur le site institutionnel

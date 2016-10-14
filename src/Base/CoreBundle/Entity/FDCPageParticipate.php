@@ -41,6 +41,21 @@ class FDCPageParticipate implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
+    private $instit;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $evenmnt;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
     private $level2;
 
     /**
@@ -215,5 +230,51 @@ class FDCPageParticipate implements TranslateMainInterface
     public function getLevel3()
     {
         return $this->level3;
+    }
+
+    /**
+     * Set instit
+     *
+     * @param boolean $instit
+     * @return FDCPageParticipate
+     */
+    public function setInstit($instit)
+    {
+        $this->instit = $instit;
+
+        return $this;
+    }
+
+    /**
+     * Get instit
+     *
+     * @return boolean 
+     */
+    public function getInstit()
+    {
+        return $this->instit;
+    }
+
+    /**
+     * Set evenmnt
+     *
+     * @param boolean $evenmnt
+     * @return FDCPageParticipate
+     */
+    public function setEvenmnt($evenmnt)
+    {
+        $this->evenmnt = $evenmnt;
+
+        return $this;
+    }
+
+    /**
+     * Get evenmnt
+     *
+     * @return boolean 
+     */
+    public function getEvenmnt()
+    {
+        return $this->evenmnt;
     }
 }
