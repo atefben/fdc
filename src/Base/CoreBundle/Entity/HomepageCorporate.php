@@ -702,6 +702,7 @@ class HomepageCorporate implements TranslateMainInterface
      */
     public function addHomepageSlide(\Base\CoreBundle\Entity\HomepageCorporateSlide $homepageSlide)
     {
+        $homepageSlide->setHomepage($this);
         $this->homepageSlide[] = $homepageSlide;
 
         return $this;

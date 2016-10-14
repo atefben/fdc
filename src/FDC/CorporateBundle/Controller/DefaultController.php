@@ -51,10 +51,7 @@ class DefaultController extends Controller
         $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $lastFestival->getId(), $dateTime);
         $homeContents = array_merge($homeInfos, $homeStatement);
 
-        //dump($homeInfos);
-        //dump($homeStatement);
-
-        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 3);
+        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
 
         //set default filters
         $filters = array();
@@ -80,14 +77,18 @@ class DefaultController extends Controller
             }
         }
 
-        //dump($homeContents); exit;
 
+        /////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////      FEATURED VIDEO      //////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////
+        $featuredVideo = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
 
         return array(
             'homepage'           => $homepage,
             'displayHomeSlider'  => $displayHomeSlider,
             'homeSlider'         => $homeSlider,
             'homeContents'       => $homeContents,
+            'featuredVideo'      => $featuredVideo,
             'festivalStartsAt'   => $homepage->getFestivalStartsAt(),
             'filters'            => $filters
         );
