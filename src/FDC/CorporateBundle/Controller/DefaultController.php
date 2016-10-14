@@ -51,8 +51,8 @@ class DefaultController extends Controller
         $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $lastFestival->getId(), $dateTime);
         $homeContents = array_merge($homeInfos, $homeStatement);
 
-        dump($homeInfos);
-        dump($homeStatement);
+        //dump($homeInfos);
+        //dump($homeStatement);
 
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 3);
 
@@ -80,7 +80,7 @@ class DefaultController extends Controller
             }
         }
 
-        dump($homeContents); exit;
+        //dump($homeContents); exit;
 
 
         return array(
