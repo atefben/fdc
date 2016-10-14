@@ -141,12 +141,6 @@ class CorpoWhoAreWeAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
-                    'content' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
-                    ),
                     'titleNav'       => array(
                         'label'              => 'form.fdc_page_la_selection_cannes_classics.title_nav',
                         'translation_domain' => 'BaseAdminBundle',
