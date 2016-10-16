@@ -598,6 +598,15 @@ form:
         helper_pushes : Format de l'image recommandé : 650x410
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
+    homepage_corporate:
+        label_title: Titre
+        label_subtitle: Sous-titre
+        label_subtitle_1: Sous-titre 1
+        label_subtitle_2: Sous-titre 2
+        label_url: URL de destination
+        label_banner: Bandeau
+        label_banner_text: Texte du bandeau
+
     flashbag:
         modified: Modification effectuée.
     settings:

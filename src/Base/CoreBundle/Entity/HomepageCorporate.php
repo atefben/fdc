@@ -63,7 +63,17 @@ class HomepageCorporate implements TranslateMainInterface
      **/
     private $displayedBanner;
 
-    //gallery
+    /**
+     * @ORM\ManyToOne(targetEntity="Gallery")
+     */
+    private $gallery;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     **/
+    private $displayedGallery;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
@@ -773,5 +783,51 @@ class HomepageCorporate implements TranslateMainInterface
     public function getDisplayedFeaturedContentsFilters()
     {
         return $this->displayedFeaturedContentsFilters;
+    }
+
+    /**
+     * Set gallery
+     *
+     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @return HomepageCorporate
+     */
+    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \Base\CoreBundle\Entity\Gallery 
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * Set displayedGallery
+     *
+     * @param boolean $displayedGallery
+     * @return HomepageCorporate
+     */
+    public function setDisplayedGallery($displayedGallery)
+    {
+        $this->displayedGallery = $displayedGallery;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedGallery
+     *
+     * @return boolean 
+     */
+    public function getDisplayedGallery()
+    {
+        return $this->displayedGallery;
     }
 }

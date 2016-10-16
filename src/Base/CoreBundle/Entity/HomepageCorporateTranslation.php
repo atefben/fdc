@@ -68,6 +68,12 @@ class HomepageCorporateTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      **/
     private $pushMainTitle1;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $pushMainSubtitle1;
 
     /**
      * @var string
@@ -82,6 +88,13 @@ class HomepageCorporateTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      **/
     private $pushMainTitle2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $pushMainSubtitle2;
 
     /**
      * @var string
@@ -476,5 +489,51 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     public function getPushEditionUrl()
     {
         return $this->pushEditionUrl;
+    }
+
+    /**
+     * Set pushMainSubtitle1
+     *
+     * @param string $pushMainSubtitle1
+     * @return HomepageCorporateTranslation
+     */
+    public function setPushMainSubtitle1($pushMainSubtitle1)
+    {
+        $this->pushMainSubtitle1 = $pushMainSubtitle1;
+
+        return $this;
+    }
+
+    /**
+     * Get pushMainSubtitle1
+     *
+     * @return string 
+     */
+    public function getPushMainSubtitle1()
+    {
+        return $this->pushMainSubtitle1;
+    }
+
+    /**
+     * Set pushMainSubtitle2
+     *
+     * @param string $pushMainSubtitle2
+     * @return HomepageCorporateTranslation
+     */
+    public function setPushMainSubtitle2($pushMainSubtitle2)
+    {
+        $this->pushMainSubtitle2 = $pushMainSubtitle2;
+
+        return $this;
+    }
+
+    /**
+     * Get pushMainSubtitle2
+     *
+     * @return string 
+     */
+    public function getPushMainSubtitle2()
+    {
+        return $this->pushMainSubtitle2;
     }
 }
