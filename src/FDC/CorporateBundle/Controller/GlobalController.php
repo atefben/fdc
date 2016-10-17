@@ -128,6 +128,45 @@ class GlobalController extends Controller {
     }
 
     /**
+     * @Route("/landing")
+     * @Template("FDCCorporateBundle:Global:landing.html.twig")
+     * @return array
+     */
+    public function landingAction($route) {
+        $em = $this->get('doctrine')->getManager();
+        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'route' => $route,
+            'date' => $homepage->getFestivalStartsAt(),
+            'bannerText' => $homepage->getBannerText()
+        );
+    }
+
+    /**
+     * @Route("/timer")
+     * @Template("FDCCorporateBundle:Global:timer.html.twig")
+     * @return array
+     */
+    public function timerAction($route) {
+        $em = $this->get('doctrine')->getManager();
+        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'route' => $route,
+            'date' => $homepage->getFestivalStartsAt(),
+            'popinSubtitle1' => $homepage->getPopinSubtitle1(),
+            'popinSubtitle2' => $homepage->getPopinSubtitle2()
+        );
+    }
+
+    /**
      * @Route("/menu")
      * @Template("FDCCorporateBundle:Global:nav.html.twig")
      * @return array
