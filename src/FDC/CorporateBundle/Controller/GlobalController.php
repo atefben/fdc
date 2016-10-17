@@ -139,6 +139,8 @@ class GlobalController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        dump($homepage); exit;
+
         return array(
             'date' => $homepage->getFestivalStartsAt(),
             'homepage' => $homepage
@@ -158,7 +160,7 @@ class GlobalController extends Controller {
         }
 
         return array(
-            'homepage' => $homepage->getPopinSubtitle1()
+            'homepage' => $homepage
         );
     }
 
