@@ -188,7 +188,7 @@
 
                     <div class="slider-01">
                         {% for image in homepage.gallery.medias %}
-                            {% set photo = image.media %}{% dump(photo.translations) %}
+                            {% set photo = image.media %}
                             {% set trans = photo.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
                                 {% set trans = photo.findTranslationByLocale('fr') %}
