@@ -184,7 +184,7 @@
                 </div> <!-- end article wrapper-->
                 {% endif %}
 
-                {% if homepage.displayedGallery == false or (homepage.gallery is not null and homepage.gallery.medias.length > 0) %}
+                {% if homepage.displayedGallery == false and homepage.gallery is not null and homepage.gallery.medias.count > 0 %}
                 <div class="block-diaporama">
 
                     <div class="slider-01">
