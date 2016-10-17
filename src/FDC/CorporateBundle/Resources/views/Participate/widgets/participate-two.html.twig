@@ -1,0 +1,25 @@
+<div class="item-partners">
+    <div class="contain-img">
+        {% if widget.image is not null %}
+            {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = widget.image.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set image = trans.file %}
+            <img src="{% path image, '270x165' %}" {% if image.width > image.height %}width="200"{% elseif image.width == image.height %}width="105" height="105"{% else %}height="105"{% endif %} alt="{{ widget.image|trans_fallback('alt') }}" />
+        {% endif %}
+    </div>
+    <div class="text-partners">
+        <div class="content-text-with-portrait">
+            <h4 class="title-partners">Air France</h4>
+            <p>Tapis rouge en plein ciel. Tout au long de l’année, envolez-vous avec Air France, partenaire officiel du Festival de Cannes et profitez du meilleur des cinémas du monde entier. La Compagnie vous invite à revivre plus de 1 000 heures de
+                programmation à la demande grâce à de larges écrans tactiles sur ses vols long-courriers.</p>
+
+            <h4><a href="http://www.airfrance.fr" target="_blank">Site Internet</a></h4>
+        </div>
+        <div class="portrait">
+            <strong class="name"> </strong>
+            <span class="rank"></span>
+        </div>
+    </div>
+</div>

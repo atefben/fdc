@@ -86,7 +86,9 @@ class CorpoWhoAreWe implements TranslateMainInterface
      */
     protected $translations;
 
-
+    public function __toString() {
+        return 'Qui sommes nous';
+    }
 
     /**
      * Get id
