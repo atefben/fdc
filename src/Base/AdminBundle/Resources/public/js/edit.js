@@ -141,7 +141,14 @@ jQuery(document).ready(function ($) {
             $('#level-nav').show();
         }
     });
-    if ($('input[name$="[instit]"]').is(':checked')) {
+    $('input[name$="[displayedHomeCorpo]"]').on('ifChanged', function() {
+        if (!$(this).is(':checked')) {
+            $('#level-nav').hide();
+        } else {
+            $('#level-nav').show();
+        }
+    });
+    if ($('input[name$="[instit]"]').is(':checked') || $('input[name$="[displayedHomeCorpo]"]').is(':checked')) {
         $('#level-nav').show();
     } else {
         $('#level-nav').hide();

@@ -52,7 +52,53 @@ class MediaRepository extends EntityRepository
      * @param Site|null $site
      * @return array|\Doctrine\ORM\QueryBuilder
      */
-    public function getImageMediaCorporate($locale, $festival, Site $site = null)
+    public function getOldMedia($locale, $festival, Site $site = null)
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->innerJoin('m.sites', 's')
+            ->innerJoin('m.festival', 'f')
+            ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+            ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
+            ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
+            ->leftjoin('mi.translations', 'mit')
+            ->leftjoin('mv.translations', 'mvt')
+            ->leftjoin('ma.translations', 'mat')
+            ->andWhere('f.id = :festival')
+        ;
+        $qb->setParameter('festival', $festival);
+
+        if ($site) {
+            $qb
+                ->distinct(true)
+                ->andWhere('s.id = :sid')
+                ->setParameter(':sid', $site->getId())
+            ;
+        }
+
+        $qb = $qb
+            ->andWhere("m.publishEndedAt IS NULL")
+        ;
+
+        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mat', $locale);
+        $qb = $qb
+            ->orderBy('ma.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        //dump($qb);exit;
+
+        return $qb;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param Site|null $site
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function getMedia($locale, $festival, Site $site = null)
     {
         $qb = $this->createQueryBuilder('m')
             ->innerJoin('m.sites', 's')
