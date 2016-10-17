@@ -141,7 +141,7 @@ class GlobalController extends Controller {
 
         return array(
             'date' => $homepage->getFestivalStartsAt(),
-            'bannerText' => $homepage->getBannerText()
+            'homepage' => $homepage
         );
     }
 
@@ -158,9 +158,7 @@ class GlobalController extends Controller {
         }
 
         return array(
-            'date' => $homepage->getFestivalStartsAt(),
-            'popinSubtitle1' => $homepage->getPopinSubtitle1(),
-            'popinSubtitle2' => $homepage->getPopinSubtitle2()
+            'homepage' => $homepage->getPopinSubtitle1()
         );
     }
 

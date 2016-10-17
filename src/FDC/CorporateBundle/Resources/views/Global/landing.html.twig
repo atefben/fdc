@@ -8,7 +8,7 @@
             <h2><a href="/">11-22 Mai 2016</a></h2>
         </div>
         <span class="compteur" data-date="{{ date|date('Y-m-d') }}T{{ date|date('H:i:s') }}"><span class='day'>12</span> : <span class="hour">06</span> : <span class="minutes">34</span> : <span class="secondes">57</span></span>
-        <strong class="description">{{ popinSubtitle1 }} <span class="color">{{ popinSubtitle2 }}</span></strong>
+        <strong class="description">{{ homepage|trans_fallback('popinSubtitle1') }} <span class="color">{{ homepage|trans_fallback('popinSubtitle2') }}</span></strong>
     </div>
 </div>
 <!-- POPIN LANDING evenemential -->
