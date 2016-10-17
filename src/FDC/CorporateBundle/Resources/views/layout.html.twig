@@ -34,13 +34,9 @@
 </head>
 <body id="{% block bodyId %}{% endblock %}" class="{% block bodyClass %}{% endblock %}">
     {% include 'FDCCorporateBundle::header.html.twig' %}
-    <div class="b-timer">
-        <div class="c-timer block-01">
-            <span class="time" data-date="2017-05-11 00:00:00"></span>
-            <span class="c-texts">avant l'ouverture<br>du Festival de Cannes 2017</span>
-            <span class="c-icon"><i class="icon icon-close"></i></span>
-        </div>
-    </div>
+
+    {{ render(controller('FDCCorporateBundle:Global:timer')) }}
+
     {% block body %}
 
     {% endblock %}
@@ -102,19 +98,8 @@
             <div class="texts-clipboard"></div>
         </div>
     </div>
-    <!-- POPIN LANDING evenemential -->
-    <div class="popin-landing-e vFlexAlign" class="">
-        <div class="vFlexAlign">
-            <div class="logo">
-                <a href="/"><img src="{{ asset('bundles/fdccorporate/img/header/palme.svg') }}" alt="Festival de Cannes" class="palm"></a>
-                <h1><a href="/"><img width="170" src="{{ asset('bundles/fdccorporate/img/header/logo.svg') }}" alt="Festival de Cannes"></a></h1>
-                <h2><a href="/">11-22 Mai 2016</a></h2>
-            </div>
-            <span class="compteur" data-date="2017-05-11T00:00:00"><span class='day'>12</span> : <span class="hour">06</span> : <span class="minutes">34</span> : <span class="secondes">57</span></span>
-            <strong class="description">avant l’ouverture du <span class="color">site éVÉNEMENTIEL</span></strong>
-        </div>
-    </div>
-    <!-- POPIN LANDING evenemential -->
+
+    {{ render(controller('FDCCorporateBundle:Global:landing')) }}
 
     {% include 'FDCCorporateBundle::footer.html.twig' %}
     {% include 'FDCCorporateBundle:Base:javascript_footer.html.twig' %}
