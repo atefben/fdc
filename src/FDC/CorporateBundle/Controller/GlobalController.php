@@ -140,7 +140,6 @@ class GlobalController extends Controller {
         }
 
         return array(
-            'route' => $route,
             'date' => $homepage->getFestivalStartsAt(),
             'bannerText' => $homepage->getBannerText()
         );
@@ -159,7 +158,6 @@ class GlobalController extends Controller {
         }
 
         return array(
-            'route' => $route,
             'date' => $homepage->getFestivalStartsAt(),
             'popinSubtitle1' => $homepage->getPopinSubtitle1(),
             'popinSubtitle2' => $homepage->getPopinSubtitle2()
