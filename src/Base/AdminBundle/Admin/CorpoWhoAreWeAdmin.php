@@ -83,22 +83,30 @@ class CorpoWhoAreWeAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
+                'label' => 'Titre'
+            ))
             ->add('weight',null,array('label' => 'Position'))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
+                'label' => 'Date de création'
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaVideo::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
+                'label' => 'Priorité'
             ))
             ->add('statusMain', 'choice', array(
                 'choices'   => MediaVideoTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle',
+                'label' => 'Statut'
             ))
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'Editer'
+
             ))
         ;
     }

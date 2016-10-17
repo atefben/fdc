@@ -21,7 +21,7 @@
         {% endif %}
         <div class="all-contain">
             <div class="accordion">
-                <div class="block-accordion block-accordion-01">
+                <div class="block-accordion block-accordion-02">
                         {% for s in datas.downloadSection %}
                             {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
                             ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
@@ -36,7 +36,7 @@
                                                 <i class="icon icon-nav-accordion icon-minus"></i>
                                             </div>
                                             <div class="item-manual">
-                                                <div class="contain-infos">
+                                                <div class="contain-infos-02">
                                                     {% if s.section|trans_fallback('description') %}
                                                         <div class="descrip-section">
                                                             {{ s.section|trans_fallback('description')|raw }}
@@ -50,7 +50,7 @@
                                                         {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
-                                                            {% include 'FDCEventBundle:Participate:widgets/participate-two.html.twig' %}
+                                                            {% include 'FDCCorporateBundle:Participate/widgets:participate-two.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
