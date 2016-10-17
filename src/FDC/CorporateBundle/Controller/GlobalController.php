@@ -132,7 +132,7 @@ class GlobalController extends Controller {
      * @Template("FDCCorporateBundle:Global:landing.html.twig")
      * @return array
      */
-    public function landingAction($route) {
+    public function landingAction() {
         $em = $this->get('doctrine')->getManager();
         $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
         if ($homepage === null) {
@@ -151,7 +151,7 @@ class GlobalController extends Controller {
      * @Template("FDCCorporateBundle:Global:timer.html.twig")
      * @return array
      */
-    public function timerAction($route) {
+    public function timerAction() {
         $em = $this->get('doctrine')->getManager();
         $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
         if ($homepage === null) {
