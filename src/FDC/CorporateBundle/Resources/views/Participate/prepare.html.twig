@@ -45,13 +45,19 @@
                                             <strong class="title-22">
                                                 <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
                                             </strong>
-                                            <i class="icon icon-nav-accordion icon-minus"></i>
+                                            <i class="icon icon-nav-accordion icon-create"></i>
                                         </div>
                                         <div class="item-manual">
                                             <div class="contain-infos">
                                                 {% for widget in content.arriveWidgets %}
                                                     {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/picto.html.twig' %}
+                                                        <div class="item-infos">
+                                                            {% if widget.picto is not null %}
+                                                                <i class="icon {{ widget.picto }}"></i>
+                                                            {% endif %}
+                                                            <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
+                                                            {{ widget|trans_fallback('content')|raw }}
+                                                        </div>
                                                     {% endif %}
                                                 {% endfor %}
                                             </div>
@@ -66,7 +72,7 @@
                                         <strong class="title-22">
                                         <i class="noFloat icon {{ content.informationIcon }}"></i>{{ content|trans_fallback('informationTitle') }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
                                     <div class="item-manual">
                                         <div class="contain-infos">
@@ -89,7 +95,7 @@
                                         <strong class="title-22">
                                             <i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
                                     <div class="item-manual">
                                         <div class="contain-infos">
@@ -115,7 +121,7 @@
                                         <strong class="title-22">
                                             <i class="noFloat icon {{ content.serviceIcon }}"></i>{{ content|trans_fallback('serviceTitle') }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
                                     <div class="item-manual">
                                         <div class="contain-infos">
@@ -141,7 +147,7 @@
                                                     <strong class="title-22">
                                                         <i class="noFloat icon {{ s.section|trans_fallback('icon') }}"></i>{{ s.section|trans_fallback('title') }}
                                                     </strong>
-                                                    <i class="icon icon-nav-accordion icon-minus"></i>
+                                                    <i class="icon icon-nav-accordion icon-create"></i>
                                                 </div>
                                                 <div class="item-manual">
                                                     <div class="contain-infos">
