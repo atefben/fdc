@@ -120,6 +120,11 @@ sub {
   line-height: 24px;
   font-family: $CamphorBold;
   color:#141414;
+
+  .block-infos & {
+    width: 150px;
+    text-align: center;
+  }
 }
 
 .title-8 {
