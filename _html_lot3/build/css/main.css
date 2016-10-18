@@ -6269,6 +6269,22 @@ video {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+.block-p-register h3 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.block-p-register h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 .block-p-register p {
   color: #666666;
   font-size: 1rem;
