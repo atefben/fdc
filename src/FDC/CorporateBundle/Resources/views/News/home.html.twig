@@ -6,7 +6,7 @@
     <section id="main" class="home">
 
         {% if homepage.displayedSlider == false %}
-        <div class="padding-bottom">
+        <div class="">
             <div class="slider-home block-scale">
                 <div class="container-images">
                     {% set sliderItems = {} %}
@@ -58,11 +58,15 @@
         </div> <!-- end padding-bottom -->
         {% endif %}
 
-        <h2 class="title title-01">communiqués et infos</h2>
+        <div class="padding-top">
 
-        {% if homepage.displayedFeaturedContentsFilters == false %}
-            {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
-        {% endif %}
+            <h2 class="title title-01">communiqués et infos</h2>
+
+            {% if homepage.displayedFeaturedContentsFilters == false %}
+                {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+            {% endif %}
+
+        </div>
 
         <div class="content">
             <div class="block-01 padding-bottom block-scale">
@@ -210,10 +214,10 @@
                     <div class="block-legend">
                         <div class="info">
 
-                            <a href="#" class="category">{{ homepage.gallery.themeHomeCorpo|trans_fallback('name') }} </a><span class="date">{{ homepage.gallery.dateHomeCorpo|date('y.m.d') }}</span> . <span class="hour">{{ homepage.gallery.dateHomeCorpo|date('H:i') }}</span>
+                            <span class="category">{{ homepage.gallery.themeHomeCorpo|trans_fallback('name') }} </span><span class="date">{{ homepage.gallery.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ homepage.gallery.dateHomeCorpo|date('H:i') }}</span>
 
                             <div class="texts">
-                                <h2><a href="article.html">{{ homepage.gallery|trans_fallback('titleHomeCorpo') }}</a></h2>
+                                <h2><a>{{ homepage.gallery|trans_fallback('titleHomeCorpo') }}</a></h2>
                                 <div class="text-01">
                                     {{ homepage.gallery|trans_fallback('introductionHomeCorpo')|raw }}
                                 </div>
@@ -383,7 +387,7 @@
                                         <div class="info ">
                                             <div class="vCenter">
                                                 <div class="vCenterKid">
-                                                    <a href="#" class="category">{{ featuredVideo.theme|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.publishedAt|date('H:i'), true, true) }}</span>
+                                                    <span class="category">{{ featuredVideo.theme|trans_fallback('name') }}</span><span class="date">{{ featuredVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.publishedAt|date('H:i'), true, true) }}</span>
                                                     <p>{{ featuredVideo|trans_fallback('title') }}</p>
                                                 </div>
                                             </div>
@@ -396,10 +400,10 @@
                         <div class="block-legend">
                             <div class="info">
 
-                                <a href="#" class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</a><span class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
+                                <span class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</span><span class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
 
                                 <div class="texts">
-                                    <h2><a href="article.html">{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
+                                    <h2><a>{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
                                     <div class="text-01">
                                         {{ featuredVideo|trans_fallback('introductionHomeCorpo')|raw }}
                                     </div>
@@ -426,7 +430,7 @@
                     <div class="vFlexAlign">
                         <div>
                             <strong class="title-2">{{ homepage|trans_fallback('pushEditionTitle')|raw }}</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                            <a class="link" href="{{ homepage|trans_fallback('pushEditionUrl') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
                         </div>
                     </div>
                 </div> <!-- end block push -->
@@ -608,12 +612,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
             {% if homepage.displayedPushsMain == false %}
             <div class="block-scale">
                 <div class="half-div block-push">
-                    <a href="#" class="coverLink"></a>
+                    <a href="{{ homepage|trans_fallback('pushMainUrl1') }}" class="coverLink"></a>
                     <div class="vFlexAlign">
                         <div>
                             <strong class="title-2">{{ homepage|trans_fallback('pushMainTitle1') }}</strong>
                             <p>{{ homepage|trans_fallback('pushMainSubtitle1') }}</p>
-                            <a class="link" href="{{ homepage|trans_fallback('pushMainUrl2') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
+                            <a class="link" href="{{ homepage|trans_fallback('pushMainUrl1') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
                         </div>
                     </div>
                     {% set trans = homepage.pushMainImage1.findTranslationByLocale(app.request.locale) %}
@@ -623,7 +627,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     <img src="{% path trans.file , '325x205' %}" alt="" />
                 </div><!--
       --><div class="half-div block-push">
-                    <a href="#" class="coverLink"></a>
+                    <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" class="coverLink"></a>
                     <div class="vFlexAlign">
                         <div>
                             <strong class="title-2">{{ homepage|trans_fallback('pushMainTitle2') }}</strong>
