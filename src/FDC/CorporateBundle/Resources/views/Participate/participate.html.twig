@@ -5,6 +5,7 @@
 {% endblock bodyClass %}
 {% block body %}
     <section id="main">
+        {% set corpo = true %}
         {% if content.mainImage is defined and content.mainImage is not null %}
             {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
@@ -31,9 +32,9 @@
                                         <div class="block-01">
                                             <div class="title-contain border-top">
                                                 <strong class="title-22">
-                                                    <i class="noFloat icon {{ s.section|trans_fallback('icon') }}"></i>{{ s.section|trans_fallback('title') }}
+                                                    <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
                                                 </strong>
-                                                <i class="icon icon-nav-accordion icon-minus"></i>
+                                                <i class="icon icon-nav-accordion icon-create"></i>
                                             </div>
                                             <div class="item-manual">
                                                 <div class="contain-infos-02">
