@@ -1562,6 +1562,13 @@
       color: #c8a461;
     }
 
+    .item-manual .text-manual h5, .item-manual .text-manual h3 {
+      font-size: .75rem;
+      text-transform: uppercase;
+      font-family: $CamphorBold;
+      padding-bottom: 29px;
+    }
+
     .item-manual .contain-infos .descrip-section {
 
       p {
