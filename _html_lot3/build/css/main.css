@@ -10059,6 +10059,7 @@ header #searchContainer {
   height: 79vh;
   margin-bottom: 29px;
   transition: height .5s;
+  overflow: hidden;
 }
 .slider-home .slider-carousel, .slider-home .owl-stage-outer, .slider-home .owl-stage, .slider-home .owl-item {
   height: 100%;
