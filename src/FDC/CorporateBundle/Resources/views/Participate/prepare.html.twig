@@ -19,152 +19,170 @@
                 </div>
             </div> <!-- end block push -->
         {% endif %}
-        <div class="all-contain">
-            <div class="accordion">
-                <div class="block-accordion block-accordion-02">
-                    {% if content.informationDisplayInstit %}
-                    <div class="item">
-                        <div class="block-01">
-                            <div class="title-contain border-top">
-                                <strong class="title-22">
-                                <i class="noFloat icon {{ content.informationIcon }}"></i>{{ content|trans_fallback('informationTitle') }}
-                                </strong>
-                                <i class="icon icon-nav-accordion icon-minus"></i>
-                            </div>
-                            <div class="item-manual">
-                                <div class="contain-infos">
-                                    <div class="descrip-section">
-                                        {{ content|trans_fallback('informationDescription')|raw }}
-                                    </div>
-                                </div>
-                                {% for widget in content.informationWidgets %}
-                                    {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
-                                        {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% if content.arriveDisplayInstit %}
-                    <div class="item">
-                        <div class="block-01">
-                            <div class="title-contain border-top">
-                                <strong class="title-22">
-                                    <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
-                                </strong>
-                                <i class="icon icon-nav-accordion icon-minus"></i>
-                            </div>
-                            <div class="item-manual">
-                                <div class="contain-infos">
-                                    {% for widget in content.arriveWidgets %}
-                                        {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
-                                            {% include 'FDCEventBundle:Participate:widgets/picto.html.twig' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {#<div class="item">#}
-                        {#<div class="block-01">#}
-                            {#<div class="title-contain border-top">#}
-                                {#<strong class="title-22">#}
-                                    {#<i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}#}
-                                {#</strong>#}
-                                {#<i class="icon icon-nav-accordion icon-minus"></i>#}
-                            {#</div>#}
-                            {#<div class="item-manual">#}
-                                {#<div class="contain-infos">#}
-                                    {#<div class="descrip-section">#}
-                                        {#{{ content|trans_fallback('meetingDescription')|raw }}#}
-                                    {#</div>#}
-                                    {#{% if content.meetingPdf is not null %}#}
-                                        {#{% set pdfFile = content.meetingPdf|trans_fallback('file') %}#}
-                                        {#<a href="{% path pdfFile, 'reference' %}" target="_blank" download>#}
-                                            {#{{ content|trans_fallback('meetingLabel') }}#}
-                                        {#</a>#}
-                                    {#{% endif %}#}
-                                    {#<div id="google-map"></div>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                     {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
-                     {% if content.serviceDisplayInstit %}
-                     <div class="item">
-                        <div class="block-01">
-                            <div class="title-contain border-top">
-                                <strong class="title-22">
-                                    <i class="noFloat icon {{ content.serviceIcon }}"></i>{{ content|trans_fallback('serviceTitle') }}
-                                </strong>
-                                <i class="icon icon-nav-accordion icon-minus"></i>
-                            </div>
-                            <div class="item-manual">
-                                <div class="contain-infos">
-                                    <div class="descrip-section">
-                                        {{ content|trans_fallback('serviceDescription')|raw }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     {% endif %}
-                     {% endif %}
+        <div class="ajax-section">
+            <div class="contain-ajax">
 
-                    {% for data in datas %}
-                        {% for s in data.downloadSection %}
-                            {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
-                            ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
-                            %}
-                                {% if s.section.instit %}
-                                <div class="item">
+                <nav class="navigation-sticky">
+                    <ul>
+                        <li class="{% if app.request.attributes.get('slug') == 'prepare' %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : 'prepare' }) }}">{{ 'participate.prepare.sejour'|trans }}</a></li>
+                        {% for data in pages %}
+                            {% if data.level3 %}
+                                <li class="{% if app.request.attributes.get('slug') == data|trans_fallback('slug') %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : data|trans_fallback('slug')}) }}">{{ data|trans_fallback('title') }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+
+
+                <div class="all-contain">
+                    <div class="accordion">
+                        <div class="block-accordion block-accordion-02">
+                        {% if app.request.attributes.get('slug') == 'prepare' %}
+                            {% if content.arriveDisplayInstit %}
+                                <div class="item active">
                                     <div class="block-01">
                                         <div class="title-contain border-top">
                                             <strong class="title-22">
-                                                <i class="noFloat icon {{ s.section|trans_fallback('icon') }}"></i>{{ s.section|trans_fallback('title') }}
+                                                <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
                                             </strong>
                                             <i class="icon icon-nav-accordion icon-minus"></i>
                                         </div>
                                         <div class="item-manual">
                                             <div class="contain-infos">
-                                                {% if s.section|trans_fallback('description') %}
-                                                    <div class="descrip-section">
-                                                        {{ s.section|trans_fallback('description')|raw }}
-                                                    </div>
-                                                {% endif %}
-
-                                                {#                  #}
-                                                {#     WIDGETS      #}
-                                                {#                  #}
-                                                {% for widget in s.section.widgets %}
-                                                    {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
-                                                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/participate-two.html.twig' %}
-                                                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
-                                                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/participate-four.html.twig' %}
-                                                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/participate-five.html.twig' %}
-                                                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
-                                                        {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
+                                                {% for widget in content.arriveWidgets %}
+                                                    {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
+                                                        {% include 'FDCEventBundle:Participate:widgets/picto.html.twig' %}
                                                     {% endif %}
                                                 {% endfor %}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {% endif %}
                             {% endif %}
-                        {% endfor %}
-                    {% endfor %}
+                            {% if content.informationDisplayInstit %}
+                            <div class="item">
+                                <div class="block-01">
+                                    <div class="title-contain border-top">
+                                        <strong class="title-22">
+                                        <i class="noFloat icon {{ content.informationIcon }}"></i>{{ content|trans_fallback('informationTitle') }}
+                                        </strong>
+                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                    </div>
+                                    <div class="item-manual">
+                                        <div class="contain-infos">
+                                            <div class="descrip-section">
+                                                {{ content|trans_fallback('informationDescription')|raw }}
+                                            </div>
+                                        </div>
+                                        {% for widget in content.informationWidgets %}
+                                            {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
+                                                {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="item">
+                                <div class="block-01">
+                                    <div class="title-contain border-top">
+                                        <strong class="title-22">
+                                            <i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}
+                                        </strong>
+                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                    </div>
+                                    <div class="item-manual">
+                                        <div class="contain-infos">
+                                            <div class="descrip-section">
+                                                {{ content|trans_fallback('meetingDescription')|raw }}
+                                            </div>
+                                            {% if content.meetingPdf is not null %}
+                                                {% set pdfFile = content.meetingPdf|trans_fallback('file') %}
+                                                <a href="{% path pdfFile, 'reference' %}" target="_blank" download>
+                                                    {{ content|trans_fallback('meetingLabel') }}
+                                                </a>
+                                            {% endif %}
+                                            <div id="google-map"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
+                             {% if content.serviceDisplayInstit %}
+                             <div class="item">
+                                <div class="block-01">
+                                    <div class="title-contain border-top">
+                                        <strong class="title-22">
+                                            <i class="noFloat icon {{ content.serviceIcon }}"></i>{{ content|trans_fallback('serviceTitle') }}
+                                        </strong>
+                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                    </div>
+                                    <div class="item-manual">
+                                        <div class="contain-infos">
+                                            <div class="descrip-section">
+                                                {{ content|trans_fallback('serviceDescription')|raw }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             {% endif %}
+                             {% endif %}
+                        {% else %}
+                                {% for s in datas.downloadSection %}
 
-                </div> <!-- fin de accordion -->
+                                    {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
+                                    ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
+                                    %}
+                                        {% if s.section.instit %}
+                                        <div class="item {% if loop.index0 == 0 %}active{% endif %}">
+                                            <div class="block-01">
+                                                <div class="title-contain border-top">
+                                                    <strong class="title-22">
+                                                        <i class="noFloat icon {{ s.section|trans_fallback('icon') }}"></i>{{ s.section|trans_fallback('title') }}
+                                                    </strong>
+                                                    <i class="icon icon-nav-accordion icon-minus"></i>
+                                                </div>
+                                                <div class="item-manual">
+                                                    <div class="contain-infos">
+                                                        {% if s.section|trans_fallback('description') %}
+                                                            <div class="descrip-section">
+                                                                {{ s.section|trans_fallback('description')|raw }}
+                                                            </div>
+                                                        {% endif %}
+
+                                                        {#                  #}
+                                                        {#     WIDGETS      #}
+                                                        {#                  #}
+                                                        {% for widget in s.section.widgets %}
+                                                            {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
+                                                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/participate-two.html.twig' %}
+                                                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
+                                                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/participate-four.html.twig' %}
+                                                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/participate-five.html.twig' %}
+                                                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                        {% endif %}
+
+                        </div> <!-- fin de accordion -->
+                    </div>
+                </div>
             </div>
-        </div>
+            </div>
     </section>
 
 {% endblock body %}

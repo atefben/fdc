@@ -1,0 +1,9 @@
+{% if homepage.displayedPopin == false %}
+<div class="b-timer">
+    <div class="c-timer block-01">
+        <span class="time" data-date="{{ homepage.festivalStartsAt|date('Y-m-d H:i:s') }}"></span>
+        <span class="c-texts">{{ homepage|trans_fallback('bannerText')|raw }}</span>
+        <span class="c-icon"><i class="icon icon-close"></i></span>
+    </div>
+</div>
+{% endif %}

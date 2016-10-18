@@ -20,7 +20,7 @@
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 {% if form.vars.default_locale == locale %}
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
@@ -34,6 +34,46 @@
                                         {{ form_row(translationsFields.content) }}
                                         {{ form_row(form.parent.children.image) }}
                                         {{ form_row(form.parent.children.downloadSection) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Paramètres de publication
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(form.parent.children.evenmnt) }}
+                                        {{ form_row(form.parent.children.instit) }}
+                                        <div id="level-nav" style="display: none">
+                                            &nbsp &nbsp{{ form_row(form.parent.children.level2) }}
+                                            &nbsp &nbsp{{ form_row(form.parent.children.level3) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group fdc-input-border">
+                                    {{ form_widget(form.parent.children.translate) }}
+                                    {{ form_label(form.parent.children.translate) }}
+                                    {{ form_widget(form.parent.children.translateOptions) }}
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+
                                     </div>
                                 </div>
                             </div>
@@ -108,28 +148,6 @@
                                     {{ form_row(translationsFields.seoTitle) }}
                                     {{ form_row(translationsFields.seoDescription) }}
                                     {{ form_row(form.parent.children.seoFile) }}
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    <div class="form-group fdc-input-border">
-                                        {{ form_widget(form.parent.children.translate) }}
-                                        {{ form_label(form.parent.children.translate) }}
-                                        {{ form_widget(form.parent.children.translateOptions) }}
-                                        {{ form_row(form.parent.children.priorityStatus) }}
-                                    </div>
-                                    {{ form_row(form.parent.children.priorityStatus) }}
-                                    <div class="status-hidden">
-                                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
-                                        {% elseif is_granted('ROLE_JOURNALIST') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
-                                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
-                                        {% else %}
-                                            {{ form_row(translationsFields.status) }}
-                                        {% endif %}
-                                    </div>
                                 </div>
                             </div>
                         </div>

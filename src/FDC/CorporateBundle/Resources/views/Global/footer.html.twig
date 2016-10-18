@@ -1,0 +1,15 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+<div class="footer-menu">
+    <ul>
+        <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
+        {% for element in footer %}
+            {% if element.enabled == true and element.route is defined and element.route != '' %}
+                <li>
+                    <a href="{% if element.route != '#' %}{{ path(element.route) }}{% else %}#{% endif %}">
+                        {{ element.transName|trans }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

@@ -1,5 +1,11 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle::layout.html.twig' %}
+{% if 'CorporateBundle' in app.request.attributes.get("_controller") %}
+    {% set extended_layout = 'FDCCorporateBundle::layout.html.twig' %}
+{% else %}
+    {% set extended_layout = 'FDCEventBundle::layout.html.twig' %}
+{% endif %}
+
+{% extends extended_layout %}
 
 {% block body %}
     {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
@@ -218,18 +224,43 @@
         'description': news|trans_fallback('introduction')|raw,
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-    {
-    "name" : 'header.mainnav.nav.jourapresjour'|trans,
-    "url"  : path('fdc_event_news_index')
-    },
-    {
-    "name" : 'header.mainnav.nav.articles'|trans,
-    "url"  : path('fdc_event_news_getarticles')
-    },
-    {
-    "name" : news|trans_fallback('title'),
-    "url"  : ''
-    }
-    ]} %}
+
+    {% if 'CorporateBundle' in app.request.attributes.get("_controller") %}
+        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+        {"breadcrumb":
+        [
+        {
+        "name" : 'breadcrumb.69editions.home'|trans,
+        "url"  : path('fdc_corporate_default_home')
+        },
+        {
+        "name" : 'breadcrumb.retrospective.home'|trans,
+        "url"  : path('fdc_corporate_editions_retrospective')
+        },
+        {
+        "name" : app.request.attributes.get('year'),
+        "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+        },
+        {
+        "name" : news|trans_fallback('title'),
+        "url"  : ''
+        }
+        ]
+        } %}
+    {% else %}
+        {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+        {
+        "name" : 'header.mainnav.nav.jourapresjour'|trans,
+        "url"  : path('fdc_event_news_index')
+        },
+        {
+        "name" : 'header.mainnav.nav.articles'|trans,
+        "url"  : path('fdc_event_news_getarticles')
+        },
+        {
+        "name" : news|trans_fallback('title'),
+        "url"  : ''
+        }
+        ]} %}
+    {% endif %}
 {% endblock %}

@@ -65,6 +65,13 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
     /**
      * @var integer
      *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $evenmt;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $page;
@@ -270,5 +277,28 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
     public function getInstit()
     {
         return $this->instit;
+    }
+
+    /**
+     * Set evenmt
+     *
+     * @param boolean $evenmt
+     * @return FDCPageParticipateSection
+     */
+    public function setEvenmt($evenmt)
+    {
+        $this->evenmt = $evenmt;
+
+        return $this;
+    }
+
+    /**
+     * Get evenmt
+     *
+     * @return boolean 
+     */
+    public function getEvenmt()
+    {
+        return $this->evenmt;
     }
 }

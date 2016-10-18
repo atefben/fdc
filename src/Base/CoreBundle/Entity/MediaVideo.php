@@ -41,6 +41,28 @@ class MediaVideo extends Media
     private $displayedTrailer;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     */
+    private $displayedHomeCorpo;
+
+    /**
+     * @var Theme
+     *
+     * @ORM\ManyToOne(targetEntity="Theme")
+     *
+     */
+    private $themeHomeCorpo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateHomeCorpo;
+
+    /**
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topVideos")
@@ -344,5 +366,74 @@ class MediaVideo extends Media
     public function getExportDisplayedTrailer()
     {
         return Export::yesOrNo($this->getDisplayedTrailer());
+    }
+
+    /**
+     * Set displayedHomeCorpo
+     *
+     * @param boolean $displayedHomeCorpo
+     * @return MediaVideo
+     */
+    public function setDisplayedHomeCorpo($displayedHomeCorpo)
+    {
+        $this->displayedHomeCorpo = $displayedHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedHomeCorpo
+     *
+     * @return boolean 
+     */
+    public function getDisplayedHomeCorpo()
+    {
+        return $this->displayedHomeCorpo;
+    }
+
+    /**
+     * Set themeHomeCorpo
+     *
+     * @param \Base\CoreBundle\Entity\Theme $themeHomeCorpo
+     * @return MediaVideo
+     */
+    public function setThemeHomeCorpo(\Base\CoreBundle\Entity\Theme $themeHomeCorpo = null)
+    {
+        $this->themeHomeCorpo = $themeHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get themeHomeCorpo
+     *
+     * @return \Base\CoreBundle\Entity\Theme 
+     */
+    public function getThemeHomeCorpo()
+    {
+        return $this->themeHomeCorpo;
+    }
+
+    /**
+     * Set dateHomeCorpo
+     *
+     * @param \DateTime $dateHomeCorpo
+     * @return MediaVideo
+     */
+    public function setDateHomeCorpo($dateHomeCorpo)
+    {
+        $this->dateHomeCorpo = $dateHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateHomeCorpo
+     *
+     * @return \DateTime 
+     */
+    public function getDateHomeCorpo()
+    {
+        return $this->dateHomeCorpo;
     }
 }

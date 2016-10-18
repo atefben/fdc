@@ -3,7 +3,10 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
 
+use Base\CoreBundle\Util\TranslateMain;
 use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -16,13 +19,15 @@ use JMS\Serializer\Annotation\Groups;
  * Gallery
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Gallery
-{   
+class Gallery implements TranslateMainInterface
+{
+
+    use Translatable;
     use Time;
-    use TruncatePro;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -50,10 +55,37 @@ class Gallery
     private $medias;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     */
+    private $displayedHomeCorpo;
+
+    /**
+     * @var Theme
+     *
+     * @ORM\ManyToOne(targetEntity="Theme")
+     *
+     */
+    private $themeHomeCorpo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateHomeCorpo;
+    /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->translations = new ArrayCollection();
         $this->medias = new ArrayCollection();
     }
     
@@ -146,4 +178,73 @@ class Gallery
         return Export::formatDate($this->getUpdatedAt());
     }
 
+
+    /**
+     * Set displayedHomeCorpo
+     *
+     * @param boolean $displayedHomeCorpo
+     * @return Gallery
+     */
+    public function setDisplayedHomeCorpo($displayedHomeCorpo)
+    {
+        $this->displayedHomeCorpo = $displayedHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedHomeCorpo
+     *
+     * @return boolean 
+     */
+    public function getDisplayedHomeCorpo()
+    {
+        return $this->displayedHomeCorpo;
+    }
+
+    /**
+     * Set dateHomeCorpo
+     *
+     * @param \DateTime $dateHomeCorpo
+     * @return Gallery
+     */
+    public function setDateHomeCorpo($dateHomeCorpo)
+    {
+        $this->dateHomeCorpo = $dateHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateHomeCorpo
+     *
+     * @return \DateTime 
+     */
+    public function getDateHomeCorpo()
+    {
+        return $this->dateHomeCorpo;
+    }
+
+    /**
+     * Set themeHomeCorpo
+     *
+     * @param \Base\CoreBundle\Entity\Theme $themeHomeCorpo
+     * @return Gallery
+     */
+    public function setThemeHomeCorpo(\Base\CoreBundle\Entity\Theme $themeHomeCorpo = null)
+    {
+        $this->themeHomeCorpo = $themeHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get themeHomeCorpo
+     *
+     * @return \Base\CoreBundle\Entity\Theme 
+     */
+    public function getThemeHomeCorpo()
+    {
+        return $this->themeHomeCorpo;
+    }
 }

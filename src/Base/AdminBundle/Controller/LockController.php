@@ -27,6 +27,7 @@ class LockController extends Controller
     private static $entityMapper = array(
         // General
         'homepage'                         => 'Homepage',
+        'homepagecorporate'                => 'HomepageCorporate',
         'fdcpagewebtvlive'                 => 'FDCPageWebTvLive',
         'tag'                              => 'Tag',
         'webtv'                            => 'WebTv',
@@ -102,6 +103,9 @@ class LockController extends Controller
         'presscinemaroom'                  => 'PressCinemaRoom',
         'corpomovieinscription'            => 'CorpoMovieInscription',
         'corpomovieinscriptionprocedure'   => 'CorpoMovieInscriptionProcedure',
+        'corpowhoarewe'                    => 'CorpoWhoAreWe',
+        'corpoaccreditprocedure'           => 'CorpoAccreditProcedure',
+        'corpoaccredit'                    => 'CorpoAccredit',
     );
 
     /**

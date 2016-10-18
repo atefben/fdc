@@ -331,7 +331,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getStatementByDate($locale, $festival, $dateTime, $count)
+    public function getStatementByDate($locale, $festival, $dateTime, $count=null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -347,7 +347,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('n.displayedHome = 1')
+            //->andWhere('n.displayedHome = 1')
             ->andWhere('(n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;

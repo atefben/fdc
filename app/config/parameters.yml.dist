@@ -27,6 +27,7 @@ parameters:
 
     # admin
     admin_homepage_id: ~
+    admin_homepage_corporate_id: 1
     admin_press_homepage_id: ~
     admin_press_guide_id: ~
     admin_press_contact_id: ~

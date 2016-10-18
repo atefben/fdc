@@ -246,7 +246,7 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfosByDate($locale, $festival, $dateTime, $count)
+    public function getInfosByDate($locale, $festival, $dateTime, $count=null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -262,7 +262,7 @@ class InfoRepository extends EntityRepository
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('n.displayedHome = 1')
+            //->andWhere('n.displayedHome = 1')
             ->andWhere('(n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;

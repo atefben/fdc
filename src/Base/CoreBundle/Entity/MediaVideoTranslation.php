@@ -174,6 +174,21 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $theme;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $titleHomeCorpo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     *
+     */
+    protected $introductionHomeCorpo;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -536,5 +551,51 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getAmazonRemoteFile()
     {
         return $this->amazonRemoteFile;
+    }
+
+    /**
+     * Set titleHomeCorpo
+     *
+     * @param string $titleHomeCorpo
+     * @return MediaVideoTranslation
+     */
+    public function setTitleHomeCorpo($titleHomeCorpo)
+    {
+        $this->titleHomeCorpo = $titleHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get titleHomeCorpo
+     *
+     * @return string 
+     */
+    public function getTitleHomeCorpo()
+    {
+        return $this->titleHomeCorpo;
+    }
+
+    /**
+     * Set introductionHomeCorpo
+     *
+     * @param string $introductionHomeCorpo
+     * @return MediaVideoTranslation
+     */
+    public function setIntroductionHomeCorpo($introductionHomeCorpo)
+    {
+        $this->introductionHomeCorpo = $introductionHomeCorpo;
+
+        return $this;
+    }
+
+    /**
+     * Get introductionHomeCorpo
+     *
+     * @return string 
+     */
+    public function getIntroductionHomeCorpo()
+    {
+        return $this->introductionHomeCorpo;
     }
 }

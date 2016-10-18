@@ -128,6 +128,41 @@ class GlobalController extends Controller {
     }
 
     /**
+     * @Route("/landing")
+     * @Template("FDCCorporateBundle:Global:landing.html.twig")
+     * @return array
+     */
+    public function landingAction() {
+        $em = $this->get('doctrine')->getManager();
+        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'date' => $homepage->getFestivalStartsAt(),
+            'homepage' => $homepage
+        );
+    }
+
+    /**
+     * @Route("/timer")
+     * @Template("FDCCorporateBundle:Global:timer.html.twig")
+     * @return array
+     */
+    public function timerAction() {
+        $em = $this->get('doctrine')->getManager();
+        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'homepage' => $homepage
+        );
+    }
+
+    /**
      * @Route("/menu")
      * @Template("FDCCorporateBundle:Global:nav.html.twig")
      * @return array
@@ -194,4 +229,24 @@ class GlobalController extends Controller {
         );
 
     }
+
+    /**
+     * @Route("/menu")
+     * @Template("FDCCorporateBundle:Global:footer.html.twig")
+     * @return array
+     */
+    public function footerAction(Request $request, $route) {
+        $em = $this->get('doctrine')->getManager();
+        $displayedFooterElements = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
+            array('type' => 2,'site' => 3),
+            array('position' => 'asc'),
+            null,
+            null
+        );
+        return array(
+            'footer' => $displayedFooterElements,
+            'route' => $route
+        );
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Base\CoreBundle\Entity\Gallery;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -72,6 +73,36 @@ class GalleryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('translations', 'a2lix_translations', array(
+                'label' => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array(),
+                'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
+                    ),
+                    'titleHomeCorpo' => array(
+                        'label' => 'form.homepage_corporate.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'introductionHomeCorpo' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    )
+                )
+            ))
             ->add('name', null, array(
                 'required' => true,
             ))
@@ -83,6 +114,33 @@ class GalleryAdmin extends Admin
                 'edit'     => 'inline',
                 'inline'   => 'table',
                 'sortable' => 'position',
+            ))
+            ->add('displayedHomeCorpo','checkbox',array(
+                'label' => 'form.label_homepage_corpo_display',
+                'required' => false
+            ))
+            ->add('themeHomeCorpo', 'sonata_type_model_list', array(
+                'label' => 'form.label_theme',
+                'btn_delete' => false
+            ))
+            ->add('dateHomeCorpo', 'sonata_type_datetime_picker', array(
+                'label'   => 'form.label_date',
+                'format'   => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr'     => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
+            ))
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Gallery::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'                   => Gallery::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
         ;
     }

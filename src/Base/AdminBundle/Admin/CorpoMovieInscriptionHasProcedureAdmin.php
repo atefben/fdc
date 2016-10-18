@@ -52,7 +52,7 @@ class CorpoMovieInscriptionHasProcedureAdmin extends Admin
             ->add('procedure', 'sonata_type_model_list', array(
                 'required' => false,
                 'btn_add' => false,
-                'label' => 'form.label_procedure'
+                'label' => 'Procédures'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;

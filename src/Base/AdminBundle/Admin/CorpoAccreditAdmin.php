@@ -165,7 +165,7 @@ class CorpoAccreditAdmin extends Admin
                 'required' => false,
             ))
             ->add('mainImage', 'sonata_type_model_list', array(
-                'label' => 'form.label_image'
+                'label' => 'Image cover'
             ))
             ->add('procedure', 'sonata_type_collection',
                 array(
