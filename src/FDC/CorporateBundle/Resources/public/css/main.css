@@ -4604,6 +4604,9 @@ video {
   padding-top: 10px;
 }
 
+/*.contain-card + .block-diaporama {
+  padding-top: 0px;
+}*/
 .block-push {
   background: center 0 no-repeat fixed;
   background-size: cover;
@@ -5800,6 +5803,10 @@ video {
   line-height: 36px;
   padding: 39px 0;
   text-align: center;
+}
+.block-accordion-02 .i-transport .item-manual .contain-infos .item-infos .icon {
+  font-size: 5rem;
+  color: #c8a461;
 }
 .block-accordion-02 .item-manual {
   padding: 41px 0;
