@@ -5813,6 +5813,8 @@ video {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding-bottom: 29px;
+  width: 100% !important;
+  text-align: left !important;
 }
 .block-accordion-02 .item-manual .contain-infos .descrip-section p {
   line-height: 24px;
