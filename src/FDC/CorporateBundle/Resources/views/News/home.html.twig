@@ -6,7 +6,7 @@
     <section id="main" class="home">
 
         {% if homepage.displayedSlider == false %}
-        <div class="padding-bottom">
+        <div class="">
             <div class="slider-home block-scale">
                 <div class="container-images">
                     {% set sliderItems = {} %}
@@ -58,11 +58,15 @@
         </div> <!-- end padding-bottom -->
         {% endif %}
 
-        <h2 class="title title-01">communiqués et infos</h2>
+        <div class="padding-top">
 
-        {% if homepage.displayedFeaturedContentsFilters == false %}
-            {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
-        {% endif %}
+            <h2 class="title title-01">communiqués et infos</h2>
+
+            {% if homepage.displayedFeaturedContentsFilters == false %}
+                {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+            {% endif %}
+
+        </div>
 
         <div class="content">
             <div class="block-01 padding-bottom block-scale">
