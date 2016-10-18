@@ -55,7 +55,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* 
+/*
  *  Owl Carousel - Animate Plugin
  */
 .owl-carousel .animated {
@@ -94,14 +94,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     opacity: 0;
   }
 }
-/* 
+/*
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
   transition: height 500ms ease-in-out;
 }
 
-/* 
+/*
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -209,7 +209,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* 
+/*
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -4261,6 +4261,11 @@ video {
   display: block;
 }
 
+.padding-top {
+  padding-top: 70px;
+  display: block;
+}
+
 .padding-big-bottom {
   padding-bottom: 100px;
   display: block;
@@ -4593,6 +4598,10 @@ video {
 }
 .block-05 a {
   color: #fff;
+}
+
+.block-diaporama {
+  padding-top: 10px;
 }
 
 .block-push {
@@ -10059,6 +10068,7 @@ header #searchContainer {
   height: 79vh;
   margin-bottom: 29px;
   transition: height .5s;
+  overflow: hidden;
 }
 .slider-home .slider-carousel, .slider-home .owl-stage-outer, .slider-home .owl-stage, .slider-home .owl-item {
   height: 100%;
@@ -10068,7 +10078,7 @@ header #searchContainer {
 }
 .slider-home .owl-dots {
   position: absolute;
-  bottom: 113px;
+  bottom: 96px;
   width: 100%;
   text-align: center;
 }
@@ -10144,7 +10154,7 @@ header #searchContainer {
   color: #141414;
 }
 .slider-home .texts p {
-  width: 335px;
+  width: 425px;
   text-align: center;
   color: #838383;
   margin-top: 29px;
@@ -15835,4 +15845,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: block;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
+}
+
+#google-map {
+  width: 975px;
+  height: 350px;
+  margin-top: 51px;
 }

@@ -188,6 +188,14 @@
   }
 }
 
+.block-diaporama {
+  padding-top:10px;
+}
+
+/*.contain-card + .block-diaporama {
+  padding-top: 0px;
+}*/
+
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
