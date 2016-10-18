@@ -320,31 +320,13 @@ var initVideo = function(hash) {
                 $(this).addClass('center');
                 sliderChannelsVideo.trigger('to.owl.carousel', index);
                 changeVideo(index,playerInstance,$(this));
-            });
 
-            sliderChannelsVideo.on('translated.owl.carousel', function () {
-                index = $('.slider-02 .center').index();
-                changeVideo(index,playerInstance,$('.slider-02 .center'));
-            })
-
-            var changeVideo = function (index, playerInstance, exThis) {
-
-                sliderChannelsVideo.trigger('to.owl.carousel', index);
-
-                playerInstance.playlistItem(index);
-
-                console.log(exThis.find('.channel.video').data('json'));
-
-                var infos = $.parseJSON(exThis.find('.channel.video').data('json'));
-                $topBar.find('.info .category').text(infos.category);
-                $topBar.find('.info .date').text(infos.date);
-                $topBar.find('.info .hour').text(infos.hour);
-                $topBar.find('.info p').text(infos.name);
-
-                $container.find('.channels-video').removeClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
+                dateN = $(this).find('.item').data('date');
+                titleN = $(this).find('.item').data('title');
+                whoN = $(this).find('.item').data('who');
+                labelN = $(this).find('.item').data('label');
+                palmN = $(this).find('.item').data('palm');
+                palmDateN = $(this).find('.item').data('palmdate');
 
 
                 $.each($('.text-infos'), function(i,e){
@@ -355,8 +337,63 @@ var initVideo = function(hash) {
                     var $palm = $(e).find('.title-7');
                     var $palmDate = $(e).find('.date');
 
-                    $date.html('sortie le'+infos.date);
+                    $date.html('sortie le '+dateN);
+                    $title.html(titleN);
+                    $who.html(whoN);
+                    $label.html(labelN);
+                    $palm.html(palmN);
+                    $palmDate.html(palmDateN);
                 });
+                
+            });
+
+            sliderChannelsVideo.on('translated.owl.carousel', function () {
+                index = $('.slider-02 .center').index();
+                changeVideo(index,playerInstance,$('.slider-02 .center'));
+
+                dateN = $('.slider-02 .center').find('.item').data('date');
+                titleN = $('.slider-02 .center').find('.item').data('title');
+                whoN = $('.slider-02 .center').find('.item').data('who');
+                labelN = $('.slider-02 .center').find('.item').data('label');
+                palmN = $('.slider-02 .center').find('.item').data('palm');
+                palmDateN = $('.slider-02 .center').find('.item').data('palmdate');
+
+
+                $.each($('.text-infos'), function(i,e){
+                    var $date = $(e).find('.title-3');
+                    var $title = $(e).find('.title-4');
+                    var $who = $(e).find('.title-5');
+                    var $label = $(e).find('.title-6');
+                    var $palm = $(e).find('.title-7');
+                    var $palmDate = $(e).find('.date');
+
+                    $date.html('sortie le '+dateN);
+                    $title.html(titleN);
+                    $who.html(whoN);
+                    $label.html(labelN);
+                    $palm.html(palmN);
+                    $palmDate.html(palmDateN);
+                });
+
+            })
+
+            var changeVideo = function (index, playerInstance, exThis) {
+
+                sliderChannelsVideo.trigger('to.owl.carousel', index);
+
+                playerInstance.playlistItem(index);
+
+               /* var infos = $.parseJSON(exThis.find('.channel.video').data('json'));
+                $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info .date').text(infos.date);
+                $topBar.find('.info .hour').text(infos.hour);
+                $topBar.find('.info p').text(infos.name);
+
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');*/
+
+                sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
+                
             }
         }
         
