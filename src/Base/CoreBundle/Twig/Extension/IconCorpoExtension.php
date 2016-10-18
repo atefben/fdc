@@ -51,9 +51,18 @@ class IconCorpoExtension extends Twig_Extension
                 'icon_a-votre-service' => 'icon-marker-black',
                 'icon_hebergement' => 'icon-lodging',
                 'icon_informations' => "icon-information",
+                'icon_horaires' => 'icon-hours',
+                'icon_acces' => 'icon-card-access',
+                'icon_les-differents-types-dacces' => 'icon-documen-acces',
+                'icon_les-salles-de-projections' => 'icon-camera-round',
+                'icon_les-bonnes-pratiques' => 'icon-check',
+                'icon_point-infos' => 'icon-user-fill',
+                'icon_consignes' => 'icon-bag',
+                'icon_objets-trouves' => 'icon-wen-fill',
+                'icon_n-urgence' => 'icon-emergency',
             );
 
-            if($datas[$object]) {
+            if(isset($datas[$object])) {
                 return $datas[$object];
             } else {
                 return $object;
