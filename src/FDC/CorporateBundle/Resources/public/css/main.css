@@ -4604,10 +4604,6 @@ video {
   padding-top: 10px;
 }
 
-.contain-card + .block-diaporama {
-  padding-top: 0px;
-}
-
 .block-push {
   background: center 0 no-repeat fixed;
   background-size: cover;
