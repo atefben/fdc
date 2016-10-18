@@ -304,6 +304,16 @@ var initVideo = function(hash) {
 
         function initChannel() {
 
+            /*            var hash = window.location.hash;
+             hash = hash.substring(1, hash.length);
+
+             verif = hash.slice(0, 3);
+             number = hash.slice(4);
+
+             if (hash.length > 0 && verif == "vid") {
+             changeVideo(number,playerInstance,$('.slider-02 .center'));
+             }*/
+
             var sliderChannelsVideo = $('.slider-02').owlCarousel({
                 navigation          : false,
                 items               : 1,
@@ -327,6 +337,13 @@ var initVideo = function(hash) {
                 labelN = $(this).find('.item').data('label');
                 palmN = $(this).find('.item').data('palm');
                 palmDateN = $(this).find('.item').data('palmdate');
+                fbN = $(this).find('.item').data('facebook');
+                twitterN = $(this).find('.item').data('twitter');
+                linkN = $(this).find('.item').data('link');
+                vidN = $(this).find('.item').data('vid');
+
+                var hashPush = '#vid='+parseString(vidN);
+                history.pushState(null, null, hashPush);
 
 
                 $.each($('.text-infos'), function(i,e){
@@ -336,6 +353,9 @@ var initVideo = function(hash) {
                     var $label = $(e).find('.title-6');
                     var $palm = $(e).find('.title-7');
                     var $palmDate = $(e).find('.date');
+                    var $facebook = $(e).parent().find('.block-social-network .facebook');
+                    var $twitter = $(e).parent().find('.block-social-network .twitter');
+                    var $link = $(e).parent().find('.block-social-network .link');
 
                     $date.html('sortie le '+dateN);
                     $title.html(titleN);
@@ -343,6 +363,18 @@ var initVideo = function(hash) {
                     $label.html(labelN);
                     $palm.html(palmN);
                     $palmDate.html(palmDateN);
+                    $facebook.attr('href', fbN);
+                    $twitter.attr('href', twitterN);
+                    $link.attr('data-clipboard-text', linkN);
+
+                    updatePopinMedia({
+                        'type': "video",
+                        'category': labelN,
+                        'date': dateN,
+                        'title': titleN,
+                        'url': linkN
+                    });
+
                 });
 
             });
