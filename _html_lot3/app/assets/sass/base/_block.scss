@@ -1562,6 +1562,62 @@
       color: #c8a461;
     }
 
+    .item-manual .contain-infos .contain-map  {
+      .btn {
+        font-size: .625rem;
+        padding: 14px 26px;
+        border: 1px solid #c8a461;
+        color: #c8a461;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: $CamphorHeavy;
+        display: block;
+        width: 130px;
+        margin: 0 auto;
+        @include transition(all 0.9s $linear);
+
+        .icon {
+          margin-right: 10px;
+          font-size: .7rem;
+          float: none;
+          position: relative;
+          top: 1px;
+        }
+      }
+
+      .btn:hover {
+        border-color: #000;
+        color: #000;
+      }
+
+      .link {
+        padding-top: 38px;
+        color: #c8a461;
+
+        a {
+          color: #c8a461;
+          text-decoration: underline;
+          vertical-align: text-top;
+          font-size: 0.81rem;
+          @include transition(all 0.9s $linear);
+
+          &:hover {
+            color: #966505;
+          }
+        }
+
+        .icon {
+          padding-right: 9px;
+          @include transition(all 0.9s $linear);
+          vertical-align: text-top;
+        }
+      }
+
+      .link:hover {
+        color: #966505;
+      }
+    }
+
     .item-manual {
       padding: 41px 0;
     }
