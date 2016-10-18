@@ -1562,6 +1562,27 @@
       color: #c8a461;
     }
 
+    .item-manual .contain-infos .descrip-section {
+
+      p {
+        line-height: 24px;
+        font-size: .8125rem;
+        width: 100%;
+        padding: 0px;
+        text-align: left;
+
+        a {
+          color: $gold;
+          text-decoration: underline;
+          transition: all .9s cubic-bezier(.25,.46,.45,.94);
+
+          &:hover {
+            color: #966505;
+          }
+        }
+      }
+    }
+
     .item-manual .contain-infos .contain-map  {
       .btn {
         font-size: .625rem;
