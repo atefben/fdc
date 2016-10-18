@@ -333,6 +333,8 @@ var initVideo = function(hash) {
 
                 playerInstance.playlistItem(index);
 
+                console.log(exThis.find('.channel.video').data('json'));
+
                 var infos = $.parseJSON(exThis.find('.channel.video').data('json'));
                 $topBar.find('.info .category').text(infos.category);
                 $topBar.find('.info .date').text(infos.date);
@@ -343,6 +345,18 @@ var initVideo = function(hash) {
                 $container.find('.jwplayer').removeClass('overlay-channels');
 
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
+
+
+                $.each($('.text-infos'), function(i,e){
+                    var $date = $(e).find('.title-3');
+                    var $title = $(e).find('.title-4');
+                    var $who = $(e).find('.title-5');
+                    var $label = $(e).find('.title-6');
+                    var $palm = $(e).find('.title-7');
+                    var $palmDate = $(e).find('.date');
+
+                    $date.html('sortie le'+infos.date);
+                });
             }
         }
         
@@ -927,6 +941,10 @@ var owInitAjax = function() {
         $( window ).resize(function() {
             owsetGridBigImg(grid, $('.grid-01'), false);
         });
+      }
+
+      if($('#google-map').length) {
+        google.maps.event.addDomListener(window, 'load', initMap);
       }
 
       if($('.filters').length) {

@@ -75,6 +75,10 @@ var owInitAjax = function() {
         });
       }
 
+      if($('#google-map').length) {
+        google.maps.event.addDomListener(window, 'load', initMap);
+      }
+
       if($('.filters').length) {
         owInitFilter();
       }

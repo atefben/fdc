@@ -3489,7 +3489,7 @@ blockquote, .quote {
   line-height: 32px;
 }
 
-.quote-important, .p-register .infos {
+.quote-important, .p-register .info {
   padding: 25px 40px;
   border: 1px solid #c8a461;
   margin: 50px 0px;
@@ -3498,14 +3498,14 @@ blockquote, .quote {
   color: #666666;
   line-height: 30px;
 }
-.quote-important a, .p-register .infos a {
+.quote-important a, .p-register .info a {
   color: #c8a461;
   transition: .5s;
 }
-.quote-important a:hover, .p-register .infos a:hover {
+.quote-important a:hover, .p-register .info a:hover {
   opacity: .8;
 }
-.quote-important strong, .p-register .infos strong {
+.quote-important strong, .p-register .info strong {
   font-size: .75rem;
   color: #0c0c0c;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
