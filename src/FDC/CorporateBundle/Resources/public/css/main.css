@@ -6205,9 +6205,12 @@ video {
 .block-s-info a.button {
   height: 50px;
   line-height: 50px;
+  /*
   width: 178px;
+  */
   text-align: center;
   padding: 0px;
+  padding: 0px 10px;
 }
 
 .block-s-info-02 {
