@@ -5808,6 +5808,67 @@ video {
   font-size: 5rem;
   color: #c8a461;
 }
+.block-accordion-02 .item-manual .contain-infos .descrip-section p {
+  line-height: 24px;
+  font-size: .8125rem;
+  width: 100%;
+  padding: 0px;
+  text-align: left;
+}
+.block-accordion-02 .item-manual .contain-infos .descrip-section p a {
+  color: #c8a461;
+  text-decoration: underline;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-accordion-02 .item-manual .contain-infos .descrip-section p a:hover {
+  color: #966505;
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .btn {
+  font-size: .625rem;
+  padding: 14px 26px;
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  display: block;
+  width: 130px;
+  margin: 0 auto;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .btn .icon {
+  margin-right: 10px;
+  font-size: .7rem;
+  float: none;
+  position: relative;
+  top: 1px;
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .btn:hover {
+  border-color: #000;
+  color: #000;
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .link {
+  padding-top: 38px;
+  color: #c8a461;
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .link a {
+  color: #c8a461;
+  text-decoration: underline;
+  vertical-align: text-top;
+  font-size: 0.81rem;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .link a:hover {
+  color: #966505;
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .link .icon {
+  padding-right: 9px;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  vertical-align: text-top;
+}
+.block-accordion-02 .item-manual .contain-infos .contain-map .link:hover {
+  color: #966505;
+}
 .block-accordion-02 .item-manual {
   padding: 41px 0;
 }
