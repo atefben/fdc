@@ -210,14 +210,12 @@
                     <div class="block-legend">
                         <div class="info">
 
-                            <a href="#" class="category">Diaporama </a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
+                            <a href="#" class="category">{{ homepage.gallery.themeHomeCorpo|trans_fallback('name') }} </a><span class="date">{{ homepage.gallery.dateHomeCorpo|date('y.m.d') }}</span> . <span class="hour">{{ homepage.gallery.dateHomeCorpo|date('H:i') }}</span>
 
                             <div class="texts">
-                                <h2><a href="article.html">Premier dîner pour le Jury 2015</a></h2>
+                                <h2><a href="article.html">{{ homepage.gallery|trans_fallback('titleHomeCorpo') }}</a></h2>
                                 <div class="text-01">
-                                    <p>
-                                        A la veille de l'ouverture du festival de Cannes 2015, les membres du jury se sont réunis pour un premier dîner. Les actrices Sophie Marceau, Sienna Miller et Rossy de Palma ont ainsi pu discuter avec les réalisateurs Xavier Dolan et Guillermo del Toro, mais aussi la compositrice Rokia Traoré et l'acteur Jake Gyllenhaal.
-                                    </p>
+                                    {{ homepage.gallery|trans_fallback('introductionHomeCorpo')|raw }}
                                 </div>
                             </div> <!-- end block texts-->
 

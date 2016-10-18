@@ -293,7 +293,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooters
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPrefooters()
     {
@@ -316,7 +316,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get primaryPushTitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryPushTitle1()
     {
@@ -339,7 +339,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get primaryPushTitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryPushTitle2()
     {
@@ -362,7 +362,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get primaryPushTitle3
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryPushTitle3()
     {
@@ -385,7 +385,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle1
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle1()
     {
@@ -408,7 +408,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle2
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle2()
     {
@@ -431,7 +431,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle3
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle3()
     {
@@ -454,7 +454,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle4
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle4()
     {
@@ -477,7 +477,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle5
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle5()
     {
@@ -500,7 +500,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle6
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle6()
     {
@@ -523,7 +523,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle7
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle7()
     {
@@ -546,7 +546,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushTitle8
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushTitle8()
     {
@@ -569,7 +569,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get primaryPushUrl1
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryPushUrl1()
     {
@@ -592,7 +592,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get primaryPushUrl2
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryPushUrl2()
     {
@@ -615,7 +615,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get primaryPushUrl3
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryPushUrl3()
     {
@@ -638,7 +638,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl1
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl1()
     {
@@ -661,7 +661,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl2
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl2()
     {
@@ -684,7 +684,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl3
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl3()
     {
@@ -707,7 +707,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl4
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl4()
     {
@@ -730,7 +730,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl5
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl5()
     {
@@ -753,7 +753,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl6
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl6()
     {
@@ -776,7 +776,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl7
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl7()
     {
@@ -799,7 +799,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get secondaryPushUrl8
      *
-     * @return string 
+     * @return string
      */
     public function getSecondaryPushUrl8()
     {
@@ -822,7 +822,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterTitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterTitle1()
     {
@@ -845,7 +845,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterTitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterTitle2()
     {
@@ -868,7 +868,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterTitle3
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterTitle3()
     {
@@ -891,7 +891,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterTitle4
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterTitle4()
     {
@@ -914,7 +914,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterUrl1
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterUrl1()
     {
@@ -937,7 +937,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterUrl2
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterUrl2()
     {
@@ -960,7 +960,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterUrl3
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterUrl3()
     {
@@ -983,7 +983,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterUrl4
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterUrl4()
     {
@@ -1006,7 +1006,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterTitle5
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterTitle5()
     {
@@ -1029,7 +1029,7 @@ class HomepageTranslation implements TranslateChildInterface
     /**
      * Get prefooterUrl5
      *
-     * @return string 
+     * @return string
      */
     public function getPrefooterUrl5()
     {
