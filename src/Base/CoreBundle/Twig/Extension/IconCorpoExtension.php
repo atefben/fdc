@@ -60,6 +60,9 @@ class IconCorpoExtension extends Twig_Extension
                 'icon_consignes' => 'icon-bag',
                 'icon_objets-trouves' => 'icon-wen-fill',
                 'icon_n-urgence' => 'icon-emergency',
+                'icon_selfie' => 'icon-selfie',
+                'icon_telephone' => 'icon-phone-fill',
+                'icon_dress-code' => 'icon-dress-code',
             );
 
             if(isset($datas[$object])) {

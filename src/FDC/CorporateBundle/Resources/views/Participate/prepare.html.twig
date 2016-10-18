@@ -77,13 +77,13 @@
                                         <div class="contain-infos">
                                             <div class="descrip-section">
                                                 {{ content|trans_fallback('informationDescription')|raw }}
+                                                {% for widget in content.informationWidgets %}
+                                                    {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
+                                                        {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
+                                                    {% endif %}
+                                                {% endfor %}
                                             </div>
                                         </div>
-                                        {% for widget in content.informationWidgets %}
-                                            {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
-                                                {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
-                                            {% endif %}
-                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -131,6 +131,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                              {% endif %}
                              {% endif %}
                         {% else %}
