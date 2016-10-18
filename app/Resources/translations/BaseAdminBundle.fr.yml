@@ -564,6 +564,7 @@ form:
     label_procedure_movie: Procédures
     label_instit: Site institutionnel
     label_evenmt: Site évènementiel
+    label_homepage_corpo_display: Remonter sur la homepage du site institutionnel
     label_hide_common_content: Ne pas afficher cette strate
     label_pdf: Pdf
     media_pdf:
@@ -737,6 +738,7 @@ form:
     label_title: Titre
     label_subtitle: Sous-Titre
     label_publish_on: Publié sur
+    label_date: Date et heure
     label_published_at: Date de début de publication
     label_publish_ended_at: Date de fin de publication
     label_status: Statut

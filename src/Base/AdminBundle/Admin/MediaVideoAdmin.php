@@ -72,7 +72,7 @@ class MediaVideoAdmin extends Admin
                 'field_type' => 'checkbox',
             ))
             ->add('displayedHomeCorpo', null, array(
-                'label'      => 'filter.media_video.displayed_home_corpo',
+                'label'      => 'form.homepage_corpo_display',
                 'field_type' => 'checkbox',
             ))
         ;
@@ -376,7 +376,7 @@ class MediaVideoAdmin extends Admin
                 'label' => 'form.label_exclude_from_search',
             ))
             ->add('displayedHomeCorpo', null, array(
-                'label' => 'form.media_video.displayed_home_corpo',
+                'label' => 'form.label_homepage_corpo_display',
             ))
             ->add('themeHomeCorpo', 'sonata_type_model_list', array(
                 'btn_delete' => false
