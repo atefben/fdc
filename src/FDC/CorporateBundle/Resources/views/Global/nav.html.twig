@@ -103,7 +103,6 @@
                                         {% endif %}
                                     {% endfor %}
                                     {% for k,child in participateMenu %}
-                                        {% dump(child|trans_fallback('slug')) %}
                                             {% if child.level2 %}
                                                 <li><a href="{{ path('fdc_corporate_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
                                             {% endif %}
