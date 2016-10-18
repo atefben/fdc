@@ -1,5 +1,12 @@
 var videoNews;
 
+String.prototype.trunc = function (n, useWordBoundary) {
+    var isTooLong = this.length > n,
+        s_ = isTooLong ? this.substr(0, n - 1) : this;
+    s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
+    return isTooLong ? s_ + '...' : s_;
+};
+
 var initVideo = function(hash) {
     var timeout = 1000,
         thread,
@@ -1693,13 +1700,6 @@ var owFixMobile = function() {
 
 var owInitGrid = function (id) {
 
-    String.prototype.trunc = function (n, useWordBoundary) {
-        var isTooLong = this.length > n,
-            s_ = isTooLong ? this.substr(0, n - 1) : this;
-        s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
-        return isTooLong ? s_ + '...' : s_;
-    };
-
     if (id == 'isotope-01') {
 
 
@@ -2928,6 +2928,13 @@ var owInitSlider = function (sliderName) {
                     $active.removeClass('active');
                 }, 500);
             }, 200);
+        });
+
+        $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
+
+            var title = $(e).find('.title-4a');
+            var text = $(e).find('.title-4a').html();
+            title.html(text.trunc(30, true));
         });
     }
 
