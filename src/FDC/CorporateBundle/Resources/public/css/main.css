@@ -4261,6 +4261,11 @@ video {
   display: block;
 }
 
+.padding-top {
+  padding-top: 70px;
+  display: block;
+}
+
 .padding-big-bottom {
   padding-bottom: 100px;
   display: block;
@@ -4593,6 +4598,14 @@ video {
 }
 .block-05 a {
   color: #fff;
+}
+
+.block-diaporama {
+  padding-top: 10px;
+}
+
+.contain-card + .block-diaporama {
+  padding-top: 0px;
 }
 
 .block-push {
@@ -10069,7 +10082,7 @@ header #searchContainer {
 }
 .slider-home .owl-dots {
   position: absolute;
-  bottom: 113px;
+  bottom: 96px;
   width: 100%;
   text-align: center;
 }
