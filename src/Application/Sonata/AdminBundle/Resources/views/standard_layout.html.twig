@@ -272,6 +272,15 @@ file that was distributed with this source code.
                                                                 </a>
                                                             </li>
                                                         {% endif %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_HOMEPAGE_CORPORATE_ADMIN') %}
+                                                            <li>
+                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                   href="{{ path('admin_base_core_homepagecorporate_edit', {id: admin_homepage_corporate_id}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'dashboard.link.homepage_corporate'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_WEB_TV_ADMIN') %}
                                                             <li>
                                                                 <a data-edit="true" class="fdc-check-lock-list"

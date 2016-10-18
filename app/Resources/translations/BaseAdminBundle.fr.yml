@@ -485,6 +485,7 @@ dashboard:
         settings: Paramètres
         bo_translation: Libellés
         homepage: Homepage
+        homepage_corporate: Homepage Corporate
         FAQ: FAQ
         FAQTheme: Thèmes FAQ
         pages: Pages
