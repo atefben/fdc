@@ -18,10 +18,6 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({
- *  "member" = "CorpoTeamMembersWidgetMembers"
- *
- * })
  */
 abstract class CorpoTeamMembersWidget
 {

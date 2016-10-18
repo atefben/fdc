@@ -16,6 +16,7 @@
   height: 79vh;
   margin-bottom: 29px;
   transition: height .5s;
+  overflow: hidden;
 
   .slider-carousel, .owl-stage-outer, .owl-stage, .owl-item {
     height: 100%;
@@ -109,7 +110,7 @@
     }
 
     p {
-      width: 335px;
+      width: 425px;
       text-align: center;
       color: #838383;
       margin-top: 29px;

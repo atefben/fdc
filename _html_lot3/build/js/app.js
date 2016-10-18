@@ -1,5 +1,12 @@
 var videoNews;
 
+String.prototype.trunc = function (n, useWordBoundary) {
+    var isTooLong = this.length > n,
+        s_ = isTooLong ? this.substr(0, n - 1) : this;
+    s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
+    return isTooLong ? s_ + '...' : s_;
+};
+
 var initVideo = function(hash) {
     var timeout = 1000,
         thread,
@@ -1693,13 +1700,6 @@ var owFixMobile = function() {
 
 var owInitGrid = function (id) {
 
-    String.prototype.trunc = function (n, useWordBoundary) {
-        var isTooLong = this.length > n,
-            s_ = isTooLong ? this.substr(0, n - 1) : this;
-        s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
-        return isTooLong ? s_ + '...' : s_;
-    };
-
     if (id == 'isotope-01') {
 
 
@@ -1993,6 +1993,36 @@ var owInitLinkChangeEffect = function() {
   });
 }
 
+// Google map
+
+//page participate
+
+var initMap = function() {
+    var myLatLng = new google.maps.LatLng(43.550404, 7.017419);
+    console.log(myLatLng);
+    var mapOptions = {
+        center: myLatLng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.PLAN,
+        scrollwheel: false,
+        draggable: false,
+        panControl: false,
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: true,
+        overviewMapControl: true,
+        rotateControl: true
+    }
+    var map = new google.maps.Map(document.getElementById("google-map"), mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: GLOBALS.texts.googleMap.title
+    });
+
+}
 var videoMovie;
 
 // Single Movie
@@ -2898,6 +2928,13 @@ var owInitSlider = function (sliderName) {
                     $active.removeClass('active');
                 }, 500);
             }, 200);
+        });
+
+        $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
+
+            var title = $(e).find('.title-4a');
+            var text = $(e).find('.title-4a').html();
+            title.html(text.trunc(30, true));
         });
     }
 
@@ -4648,6 +4685,10 @@ $(document).ready(function () {
                 scrollTop: $(".block-social-network").offset().top - $('header').height() - $('.block-social-network').height() - 300
             }, 500);
         });
+    }
+
+    if($('#google-map').length) {
+        google.maps.event.addDomListener(window, 'load', initMap);
     }
 
     setTimeout(function () {
