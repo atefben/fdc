@@ -49,6 +49,13 @@ var owInitSlider = function (sliderName) {
                 }, 500);
             }, 200);
         });
+
+        $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
+
+            var title = $(e).find('.title-4a');
+            var text = $(e).find('.title-4a').html();
+            title.html(text.trunc(30, true));
+        });
     }
 
 
