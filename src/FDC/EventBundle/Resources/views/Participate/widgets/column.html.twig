@@ -29,7 +29,7 @@
         {% endif %}
     {% endif %}
     
-    {% if widget.btnLabel is not null %}
+    {% if widget.btnLabel is not null and corpo is not defined %}
         <div class="link">
             <i class="icon icon_a-votre-service"></i>
             <a href="{{ widget.btnLabel }}" target="_blank">

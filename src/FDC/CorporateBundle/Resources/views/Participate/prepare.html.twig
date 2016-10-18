@@ -5,6 +5,7 @@
 {% endblock bodyClass %}
 {% block body %}
     <section id="main">
+        {% set corpo = true %}
         {% if content.mainImage is defined and content.mainImage is not null %}
             {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
@@ -32,18 +33,16 @@
                         {% endfor %}
                     </ul>
                 </nav>
-
-
                 <div class="all-contain">
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
                         {% if app.request.attributes.get('slug') == 'prepare' %}
                             {% if content.arriveDisplayInstit %}
-                                <div class="item active">
+                                <div class="item i-transport active">
                                     <div class="block-01">
                                         <div class="title-contain border-top">
                                             <strong class="title-22">
-                                                <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
+                                                <i class="noFloat icon {{ content.arriveIcon|icon_corpo }}"></i>{{ content|trans_fallback('arriveTitle') }}
                                             </strong>
                                             <i class="icon icon-nav-accordion icon-create"></i>
                                         </div>
@@ -53,7 +52,7 @@
                                                     {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
                                                         <div class="item-infos">
                                                             {% if widget.picto is not null %}
-                                                                <i class="icon {{ widget.picto }}"></i>
+                                                                <i class="icon {{ widget.picto|icon_corpo }}"></i>
                                                             {% endif %}
                                                             <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
                                                             {{ widget|trans_fallback('content')|raw }}
@@ -70,7 +69,7 @@
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
-                                        <i class="noFloat icon {{ content.informationIcon }}"></i>{{ content|trans_fallback('informationTitle') }}
+                                        <i class="noFloat icon {{ content.informationIcon|icon_corpo }}"></i>{{ content|trans_fallback('informationTitle') }}
                                         </strong>
                                         <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
@@ -93,7 +92,7 @@
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
-                                            <i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}
+                                            <i class="noFloat icon {{ content.meetingIcon|icon_corpo }}"></i>{{ content|trans_fallback('meetingTitle') }}
                                         </strong>
                                         <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
@@ -119,7 +118,7 @@
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
-                                            <i class="noFloat icon {{ content.serviceIcon }}"></i>{{ content|trans_fallback('serviceTitle') }}
+                                            <i class="noFloat icon {{ content.serviceIcon|icon_corpo }}"></i>{{ content|trans_fallback('serviceTitle') }}
                                         </strong>
                                         <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
@@ -135,6 +134,7 @@
                              {% endif %}
                              {% endif %}
                         {% else %}
+                                {% set corpo = true %}
                                 {% for s in datas.downloadSection %}
 
                                     {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
@@ -145,7 +145,7 @@
                                             <div class="block-01">
                                                 <div class="title-contain border-top">
                                                     <strong class="title-22">
-                                                        <i class="noFloat icon {{ s.section|trans_fallback('icon') }}"></i>{{ s.section|trans_fallback('title') }}
+                                                        <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
                                                     </strong>
                                                     <i class="icon icon-nav-accordion icon-create"></i>
                                                 </div>

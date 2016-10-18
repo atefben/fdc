@@ -2,19 +2,20 @@
 
 <div class="contain-good-practice">
     <div class="item-good-practice">
-        <i class="icon {{ widget|trans_fallback('oneIcon') }}"></i>
+        <i class="icon {{ corpo ? widget|trans_fallback('oneIcon')|icon_corpo : widget|trans_fallback('oneIcon') }}"></i>
         <strong>{{ widget|trans_fallback('oneDescription')|raw }}</strong>
     </div>
     <div class="item-good-practice">
-        <i class="icon {{ widget|trans_fallback('twoIcon') }}"></i>
+        <i class="icon {{  corpo ? widget|trans_fallback('twoIcon')|icon_corpo : widget|trans_fallback('twoIcon') }}"></i>
         <strong>{{ widget|trans_fallback('twoDescription')|raw }}</strong>
     </div>
     <div class="item-good-practice">
-        <i class="icon {{ widget|trans_fallback('threeIcon') }}"></i>
+        <i class="icon {{  corpo ? widget|trans_fallback('threeIcon')|icon_corpo : widget|trans_fallback('threeIcon') }}"></i>
         <strong>{{ widget|trans_fallback('threeDescription')|raw }}</strong>
     </div>
     <div class="item-good-practice">
-        <i class="icon {{ widget|trans_fallback('fourIcon') }}"></i>
+        <i class="icon {{  corpo ? widget|trans_fallback('fourIcon')|icon_corpo : widget|trans_fallback('fourIcon') }}"></i>
         <strong>{{ widget|trans_fallback('fourDescription')|raw }}</strong>
     </div>
 </div>
+
