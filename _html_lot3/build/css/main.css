@@ -15836,3 +15836,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
 }
+
+#google-map {
+  width: 975px;
+  height: 350px;
+  margin-top: 51px;
+}

@@ -297,6 +297,10 @@ $(document).ready(function () {
         });
     }
 
+    if($('#google-map').length) {
+        google.maps.event.addDomListener(window, 'load', initMap);
+    }
+
     setTimeout(function () {
         $('body').removeClass('loading');
     }, 1000);
