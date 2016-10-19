@@ -1450,3 +1450,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_team_members, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.corpo_team_members_widget:
+        class: Base\AdminBundle\Admin\CorpoTeamMembersWidgetAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamMembersWidget, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamMembersWidget}
