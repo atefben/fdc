@@ -333,12 +333,20 @@ var initVideo = function(hash) {
                 changeVideo(index,playerInstance,$(this));
 */
 
+                $this = $(this);
+
+                vidN = $this.find('.item').data('vid');
+
+                var hashPush = '#vid='+vidN;
+                history.pushState(null, null, hashPush);
+
+
             });
 
             sliderChannelsVideo.on('translated.owl.carousel', function () {
                 index = $('.slider-02 .center').index();
                 changeVideo(index,playerInstance,$('.slider-02 .center'));
-
+                
                 $this = $('.slider-02 .center');
 
                 dateN = $this.find('.item').data('date');
@@ -391,6 +399,8 @@ var initVideo = function(hash) {
                         'title': titleN,
                         'url': linkN
                     });
+
+                    initRs();
 
                 });
 
