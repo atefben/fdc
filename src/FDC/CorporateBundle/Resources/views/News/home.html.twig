@@ -40,13 +40,16 @@
                         <div class="slider-carousel">
                             {% for sliderItem in sliderItems %}
                             <div class="item vFlexAlign" data-item='{{ sliderItem.item }}'>
+                                <a href="{{ sliderItem.url }}" class="coverLink"></a>
                                 <a href="{{ sliderItem.url }}">
                                     <strong class="title-4a">{{ sliderItem.title }}</strong>
                                 </a>
                                 <a href="{{ sliderItem.url }}">
                                     <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                 </a>
-                                {{ sliderItem.introduction|raw }}
+                                <span class="text-trunc">
+                                    {{ sliderItem.introduction|raw }}
+                                </span>
                             </div>
                             {% endfor %}
                         </div> <!-- end slider carousel -->
