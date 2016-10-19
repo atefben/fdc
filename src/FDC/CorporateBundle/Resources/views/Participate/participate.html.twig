@@ -34,7 +34,7 @@
                                                 <strong class="title-22">
                                                     <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
                                                 </strong>
-                                                <i class="icon icon-nav-accordion icon-create"></i>
+                                                <i class="icon icon-nav-accordion {% if loop.index0 == 0 %}icon-minus{% else %}icon-create{% endif %}"></i>
                                             </div>
                                             <div class="item-manual">
                                                 <div class="contain-infos">
