@@ -1,4 +1,4 @@
-{% trans_default_domain 'BaseAdminBundle' %}
+{% trans_default_domain 'BaseAdminBundle' %}{% dump(form) %}
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
@@ -95,8 +95,16 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
-                                    <div class="col-md-12">
-                                        {{  form_row(form.parent.children.displayedGallery) }}
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            {{ render(controller('FDCCorporateBundle:Default:galleryCorpo')) }}
+                                        </div>
+                                    </div>
+                                    <br /><br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{  form_row(form.parent.children.displayedGallery) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -111,8 +119,16 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
-                                    <div class="col-md-12">
-                                        {{  form_row(form.parent.children.displayedVideo) }}
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            {{ render(controller('FDCCorporateBundle:Default:videoCorpo')) }}
+                                        </div>
+                                    </div>
+                                    <br /><br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{  form_row(form.parent.children.displayedVideo) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -324,7 +340,7 @@
                                             <div class="col-md-4">
                                                 <h4 class="box-title">
                                                     Push 2
-                                                </h4>
+                                                </h4>s
                                                 {{  form_row(translationsFields.pushSecondaryTitle2) }}
                                                 {{  form_row(translationsFields.pushSecondaryUrl2) }}
                                                 <hr>
