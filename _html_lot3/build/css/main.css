@@ -8175,6 +8175,7 @@ header #navigation ul.main {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   position: relative;
+  width: 740px;
 }
 header #navigation ul.user {
   border-left: 1px solid #404040;
