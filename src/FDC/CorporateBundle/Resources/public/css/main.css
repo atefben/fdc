@@ -6445,11 +6445,11 @@ video {
   line-height: 30px;
   margin-bottom: 25px;
 }
-.block-contain-txt-register-movie a {
+.block-contain-txt-register-movie a:not(.button) {
   color: #c8a461;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.block-contain-txt-register-movie a:hover {
+.block-contain-txt-register-movie a:not(.button):hover {
   color: #8e6d30;
 }
 .block-contain-txt-register-movie ul {
