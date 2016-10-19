@@ -3266,7 +3266,7 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('end', function (values, handle) { //end drag
 
-            var nm = isMac ? 4 : 21; 
+            var nm = isMac ? 4 : 21;
             var w = $('body').width() + nm;
             valuesFloat = parseFloat(values[handle]);
             values = Math.round(valuesFloat);
@@ -3373,7 +3373,7 @@ var owInitSlider = function (sliderName) {
         }
 
         var animationOpen = function () {
-            
+
             var nm = isMac ? 4 : 21;
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
