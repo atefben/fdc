@@ -380,6 +380,7 @@ var initVideo = function(hash) {
                     $title.html(titleN);
                     $who.html(whoN);
                     $label.html(labelN);
+                    $palm.html(palmN);
 
                     if(isPalm) {
                         $isPalm.addClass('icon-palme');

@@ -380,6 +380,7 @@ var initVideo = function(hash) {
                     $title.html(titleN);
                     $who.html(whoN);
                     $label.html(labelN);
+                    $palm.html(palmN);
 
                     if(isPalm) {
                         $isPalm.addClass('icon-palme');
@@ -2456,7 +2457,7 @@ var owInitPopin = function(id) {
 
             setTimeout(function(){
                 /*
-                 fClosePopinB('force'); 
+                 fClosePopinB('force');
                  */
             }, 5000);
 
