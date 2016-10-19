@@ -409,8 +409,7 @@ var initVideo = function(hash) {
 
                 setTimeout(function(){
 
-                    var test =  $('#sortiecanne').offset().top - 100;
-
+                    var test =  $('#sortiecanne').offset().top - 200;
 
                     test = parseInt(test);
 
