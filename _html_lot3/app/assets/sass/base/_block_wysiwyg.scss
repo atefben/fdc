@@ -25,6 +25,7 @@
     letter-spacing: .1em;
     padding: 52px 0;
     padding-top: 0px;
+    line-height: 24px;
   }
 
   h4 {
@@ -38,11 +39,29 @@
 
   &.accredit {
 
+    h5 {
+      font-size: .75rem;
+      line-height: 24px;
+      font-family: $CamphorBold;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
     p {
       line-height: 30px;
       font-size: 1rem;
       margin-bottom: 36px;
       margin-top: 0px;
+      color: #666666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
     }
 
     .legend {
@@ -55,10 +74,12 @@
       font-size: 1rem;
       line-height: 30px;
       list-style: inside;
+      color: #666666;
     }
 
     ul {
       list-style: inherit;
+      color: #666666;
     }
 
     ol li {
@@ -66,14 +87,16 @@
       line-height: 30px;
       list-style: inside;
       list-style-type: decimal;
+      color: #666666;
     }
 
     ol {
       list-style: inherit;
       list-style-type: decimal;
+      color: #666666;
     }
 
-  }
+  } //fin accredit class
 
   p {
     color: #666666;
@@ -159,11 +182,13 @@
     line-height: 30px;
     list-style: inside;
     list-style-type: decimal;
+    color: #666666;
   }
 
   ol {
     list-style: inherit;
     list-style-type: decimal;
+    color: #666666;
   }
 
   h4 {
