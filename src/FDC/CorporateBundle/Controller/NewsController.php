@@ -15,6 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class NewsController extends Controller
 {
+    
     /**
      * @Route("/{year}/articles")
      * @Template("FDCCorporateBundle:News/list:article.html.twig")
@@ -125,11 +126,20 @@ class NewsController extends Controller
         $site = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
 
         //GET ALL MEDIA
-        if($festival->getYear() < 2016) {
+        /*if($festival->getYear() < 2016) {
             $medias = $em->getRepository('BaseCoreBundle:Media')->getOldMedia($locale, $festival->getId(), $site);
         } else {
             $medias = $em->getRepository('BaseCoreBundle:Media')->getMedia($locale, $festival->getId(), null);
-        }
+        }*/
+
+        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), null);
+        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), null);
+        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), null);
+
+        $medias = array();
+        $medias = array_merge($medias, $images);
+        $medias = array_merge($medias, $videos);
+        $medias = array_merge($medias, $audios);
 
 
         //set default filters
@@ -163,6 +173,8 @@ class NewsController extends Controller
                 $filters['format'][] = $slugTypes[$media->getMediaType()];
             }
         }
+
+        shuffle($medias);
         
         return array(
             'medias'  => $medias,

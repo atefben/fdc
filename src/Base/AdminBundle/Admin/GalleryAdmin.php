@@ -4,10 +4,12 @@ namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\Gallery;
+use Base\CoreBundle\Entity\GalleryTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 /**
@@ -100,7 +102,14 @@ class GalleryAdmin extends Admin
                         'label' => 'form.label_introduction',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
-                    )
+                    ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => GalleryTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
                 )
             ))
             ->add('name', null, array(
