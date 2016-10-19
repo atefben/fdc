@@ -137,6 +137,8 @@ $(document).ready(function () {
         owInitReadMore();
         var slider = $('.block-diaporama .slider-01');
         owinitSlideShow(slider);
+
+        owInitGrid('isotope-01');
     }
 
 

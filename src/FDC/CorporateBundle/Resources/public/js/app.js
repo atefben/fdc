@@ -1821,6 +1821,7 @@ var owInitGrid = function (id) {
                     columnWidth: '.grid-sizer'
                 }
             });
+
         });
 
 
@@ -1847,42 +1848,45 @@ var owInitGrid = function (id) {
 
         }
 
-        var trunTitle = function() {
-            $.each($('.card.item'), function (i, e) {
-                var title = $(e).find('.info strong a');
+        if(!$('#home').length > 0) {
 
-                if (!title.hasClass('init')) {
-                    var text = $(e).find('.info strong a').text();
-                    title.addClass('init');
-                    title.attr('data-title', text);
-                } else {
-                    var text = title.attr('data-title');
-                }
+            var trunTitle = function() {
+                $.each($('.card.item'), function (i, e) {
+                    var title = $(e).find('.info strong a');
 
-
-                if($('.medias').length > 0) {
-
-                    if (window.matchMedia("(max-width: 1405px)").matches) {
-                        title.html(text.trunc(25, true));
-                    }else{
-                        title.html(text.trunc(40, true));
+                    if (!title.hasClass('init')) {
+                        var text = $(e).find('.info strong a').text();
+                        title.addClass('init');
+                        title.attr('data-title', text);
+                    } else {
+                        var text = title.attr('data-title');
                     }
 
-                } else {
-                    title.html(text.trunc(60, true));
-                }
-            });
-        }
+
+                    if($('.medias').length > 0) {
+
+                        if (window.matchMedia("(max-width: 1405px)").matches) {
+                            title.html(text.trunc(25, true));
+                        }else{
+                            title.html(text.trunc(40, true));
+                        }
+
+                    } else {
+                        title.html(text.trunc(60, true));
+                    }
+                });
+            }
 
 
-        trunTitle();
-
-
-        $(window).resize(function () {
             trunTitle();
-        });
 
-        var title = $('.info strong a').text();
+
+            $(window).resize(function () {
+                trunTitle();
+            });
+
+            var title = $('.info strong a').text();
+        }
 
         return $grid;
     }
@@ -1946,6 +1950,8 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat;
+
+            console.log(filters);
 
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
@@ -3053,9 +3059,6 @@ var owInitSlider = function (sliderName) {
             var text = $(e).find('.title-4a').html();
             var textTrunc = $(e).find('.text-trunc p');
             var textI = textTrunc[0].innerText;
-
-            console.log(textTrunc);
-            console.log(textI.length);
 
             title.html(text.trunc(30, true));
             textTrunc.html(textI.trunc(400, false));
@@ -4651,6 +4654,8 @@ $(document).ready(function () {
         owInitReadMore();
         var slider = $('.block-diaporama .slider-01');
         owinitSlideShow(slider);
+
+        owInitGrid('isotope-01');
     }
 
 
