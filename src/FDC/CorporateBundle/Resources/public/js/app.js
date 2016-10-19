@@ -333,6 +333,14 @@ var initVideo = function(hash) {
                  changeVideo(index,playerInstance,$(this));
                  */
 
+                $this = $(this);
+
+                vidN = $this.find('.item').data('vid');
+
+                var hashPush = '#vid='+vidN;
+                history.pushState(null, null, hashPush);
+
+
             });
 
             sliderChannelsVideo.on('translated.owl.carousel', function () {
@@ -372,6 +380,7 @@ var initVideo = function(hash) {
                     $title.html(titleN);
                     $who.html(whoN);
                     $label.html(labelN);
+                    $palm.html(palmN);
 
                     if(isPalm) {
                         $isPalm.addClass('icon-palme');
@@ -391,6 +400,8 @@ var initVideo = function(hash) {
                         'title': titleN,
                         'url': linkN
                     });
+
+                    initRs();
 
                 });
 
@@ -2928,7 +2939,7 @@ var initRs = function () {
     }
 
     //LINK POPIN//
-    function linkPopinInit(link, cls) {
+    var linkPopinInit = function(link, cls) {
         var link = link || document.location.href;
         var cls = cls || '.link.self';
 
@@ -2939,13 +2950,14 @@ var initRs = function () {
 
         $(cls).attr('data-clipboard-text', link);
 
-        $(cls).on('click touchstart', function (e) {
+        $(cls).off('click touchstart').on('click touchstart', function (e) {
+
+            e.preventDefault();
 
             $('#share-box').remove();
 
             var that = $(this);
 
-            e.preventDefault();
 
             if (!$('#share-box').length) {
 
@@ -2966,6 +2978,15 @@ var initRs = function () {
                 $('#share-box').remove();
                 $('#share-box').remove();
                 //two time because first don't work...
+
+                setTimeout(function () {
+                    $('#share-box').remove();
+                    $('#share-box').remove();
+                    //two time because first don't work...
+
+                    linkPopinInit = 0;
+                }, 1000);
+
             }, 3000);
 
         });
