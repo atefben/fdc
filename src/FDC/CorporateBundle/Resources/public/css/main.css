@@ -6304,17 +6304,12 @@ video {
   margin-top: 0px;
   color: #666666;
 }
-.block-p-register.accredit p a {
+.block-p-register.accredit a {
   color: #c8a461;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.block-p-register.accredit p a:hover {
+.block-p-register.accredit a:hover {
   color: #8e6d30;
-}
-.block-p-register.accredit .legend {
-  display: block;
-  text-align: center;
-  font-size: .75rem;
 }
 .block-p-register.accredit ul li {
   font-size: 1rem;
@@ -6322,9 +6317,17 @@ video {
   list-style: inside;
   color: #666666;
 }
+.block-p-register.accredit ul li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-p-register.accredit ul li a:hover {
+  color: #8e6d30;
+}
 .block-p-register.accredit ul {
   list-style: inherit;
   color: #666666;
+  margin-bottom: 36px;
 }
 .block-p-register.accredit ol li {
   font-size: 1rem;
@@ -6333,10 +6336,18 @@ video {
   list-style-type: decimal;
   color: #666666;
 }
+.block-p-register.accredit ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-p-register.accredit ol li a:hover {
+  color: #8e6d30;
+}
 .block-p-register.accredit ol {
   list-style: inherit;
   list-style-type: decimal;
   color: #666666;
+  margin-bottom: 36px;
 }
 .block-p-register p {
   color: #666666;
@@ -6385,6 +6396,11 @@ video {
   padding-top: 55px;
   display: none;
 }
+.block-contain-txt-register-movie .legend {
+  display: block;
+  text-align: center;
+  font-size: .75rem;
+}
 .block-contain-txt-register-movie p {
   font-size: 1rem;
   color: #666666;
@@ -6393,6 +6409,10 @@ video {
 }
 .block-contain-txt-register-movie a {
   color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-contain-txt-register-movie a:hover {
+  color: #8e6d30;
 }
 .block-contain-txt-register-movie ul {
   font-size: 1rem;
@@ -6404,6 +6424,13 @@ video {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.block-contain-txt-register-movie ul a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-contain-txt-register-movie ul a:hover {
+  color: #8e6d30;
+}
 .block-contain-txt-register-movie ol li {
   font-size: 1rem;
   line-height: 30px;
@@ -6411,10 +6438,18 @@ video {
   list-style-type: decimal;
   color: #666666;
 }
+.block-contain-txt-register-movie ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-contain-txt-register-movie ol li a:hover {
+  color: #8e6d30;
+}
 .block-contain-txt-register-movie ol {
   list-style: inherit;
   list-style-type: decimal;
   color: #666666;
+  margin-bottom: 36px;
 }
 .block-contain-txt-register-movie h4 {
   color: #c8a461;

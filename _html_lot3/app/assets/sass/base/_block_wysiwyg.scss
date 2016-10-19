@@ -54,6 +54,48 @@
       margin-top: 0px;
       color: #666666;
 
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+
+
+    ul li {
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      color: #666666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+
+    }
+
+    ul {
+      list-style: inherit;
+      color: #666666;
+      margin-bottom: 36px;
+    }
+
+    ol li {
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      list-style-type: decimal;
+      color: #666666;
+
       a {
         color: $gold;
         transition: all .5s cubic-bezier(.25,.46,.45,.94);
@@ -64,36 +106,11 @@
       }
     }
 
-    .legend {
-      display: block;
-      text-align: center;
-      font-size: .75rem;
-    }
-
-    ul li {
-      font-size: 1rem;
-      line-height: 30px;
-      list-style: inside;
-      color: #666666;
-    }
-
-    ul {
-      list-style: inherit;
-      color: #666666;
-    }
-
-    ol li {
-      font-size: 1rem;
-      line-height: 30px;
-      list-style: inside;
-      list-style-type: decimal;
-      color: #666666;
-    }
-
     ol {
       list-style: inherit;
       list-style-type: decimal;
       color: #666666;
+      margin-bottom: 36px;
     }
 
   } //fin accredit class
@@ -155,6 +172,12 @@
   // padding-bottom: 55px;
   display: none;
 
+  .legend {
+    display: block;
+    text-align: center;
+    font-size: .75rem;
+  }
+
   p {
     font-size:1rem;
     color:#666666;
@@ -163,8 +186,14 @@
   }
 
   a {
-    color:$gold;
+    color: $gold;
+    transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+    &:hover {
+      color: #8e6d30;
+    }
   }
+
 
   ul {
     font-size:1rem;
@@ -175,6 +204,15 @@
     margin-left: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
   }
 
   ol li {
@@ -183,12 +221,22 @@
     list-style: inside;
     list-style-type: decimal;
     color: #666666;
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
   }
 
   ol {
     list-style: inherit;
     list-style-type: decimal;
     color: #666666;
+    margin-bottom: 36px;
   }
 
   h4 {
