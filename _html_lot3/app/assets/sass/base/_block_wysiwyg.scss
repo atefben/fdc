@@ -35,6 +35,26 @@
     color: #c8a461;
   }
 
+  em {
+    font-family: $CamphorItalic;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+    font-size: .5rem;
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: .5rem;
+  }
+
+
+
   table {
     text-align: center;
     display: block;
@@ -216,6 +236,24 @@
   padding-top: 55px;
   // padding-bottom: 55px;
   display: none;
+
+  em {
+    font-family: $CamphorItalic;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+    font-size: .5rem;
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: .5rem;
+  }
 
   .legend {
     display: block;
