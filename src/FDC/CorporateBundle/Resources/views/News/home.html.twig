@@ -452,51 +452,26 @@
                                      data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg"
                                      data-name="Le Best-of du 69e Festival de Cannes"
                                      data-playlist='[
+                  {% for movie in filmReleases %}
+                    {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
+                    {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                   {
-                    "sources":[{"file":"http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"}],
-                    "vid": 31,
-                    "image":"http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg",
-                    "name":"Sils Maria",
+                    "sources":[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}],
+                    "vid": {{ trans.id }},
+                    "image":"{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                film: movie,
+                film_format: '135x185',
+                display_film_path: true,
+                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+            }) %}{% endspaceless %}",
+                    "name":"{{ movie.titleVO }}",
                     "category":"Photocall",
-                    "date":"11.03.2016",
-                    "hour":"12:00"
-                  },
-                  {
-                    "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
-                    "vid": 32,
-                    "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
-                    "name":"Interviews des réalisateurs",
-                    "category":"Montée des marches",
-                    "date":"13.03.2016",
-                    "hour":"13:00"
-                  },
-                  {
-                    "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
-                    "vid": 33,
-                    "image":"img/slider-channels/03.jpg",
-                    "name":"Sils Maria",
-                    "category":"Conférence de presse",
-                    "date":"14.03.2016",
-                    "hour":"15:00"
-                  },
-                  {
-                    "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
-                    "vid": 34,
-                    "image":"img/slider-channels/01.jpg",
-                    "name":"Sils Maria",
-                    "category":"Photocall",
-                    "date":"15.03.2016",
-                    "hour":"12:00"
-                  },
-                  {
-                    "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
-                    "vid": 35,
-                    "image":"img/slider-channels/02.jpg",
-                    "name":"Sils Maria",
-                    "category":"Montée des marches",
-                    "date":"11.03.2016",
-                    "hour":"12:00"
-                  }]'>
+                    "date":"{{ movie.publishedAt|date('d.m.y') }}",
+                    "hour":"{{ movie.publishedAt|date('H:i') }}"
+                  }{% if loop.last == false %},{% endif %}
+                  {% endif %}
+                  {% endfor %}
+                  ]'>
                                     <div id="video-playlist" class="jwplayer jw-reset"></div>
                                     <div class="video-overlay"></div>
                                     <div class="infos-bar hide-info">
@@ -516,22 +491,40 @@
             --><div class="right info-02">
                             <div class="block-infos">
                                 <div class="text-infos vFlexAlign ">
-                                    <strong class="title-3">Sortie le 18.05.5</strong>
-                                    <strong class='title-4'>Je suis un soldat</strong>
-                                    <span>De <span class="title-5">Oliver ASSAYAS</span></span>
-                                    <span class="title-6">En compétition</span>
-                                    <i class="icon icon-palme"></i>
-                                    <strong class="title-7">Palme D'or</strong>
-                                    <span class="date">2015</span>
-                                </div>
-                                <div class="text-infos vFlexAlign ">
-                                    <strong class="title-3">Sortie le 18.05.5</strong>
-                                    <strong class='title-4'>Je suis un soldat</strong>
-                                    <span>De <span class="title-5">Oliver ASSAYAS</span></span>
-                                    <span class="title-6">En compétition</span>
-                                    <i class="icon icon-palme"></i>
-                                    <strong class="title-7">Palme D'or</strong>
-                                    <span class="date">2015</span>
+                                    {% set movie = filmReleases[0] %}
+                                    <strong class="title-3">Sortie le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
+                                    <strong class='title-4'>{{ movie.titleVO }}</strong>
+                                    {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+
+                                    <span>De <span class="title-5">
+                                        {% set dataWho = '' %}
+                                        {% for director in directors %}
+                                            {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.slug}) ~ '">' ~ director.fullName ~ '</a>' %}
+                                            {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
+                                        {% endfor %}
+                                        {{ dataWho|raw }}</span>
+                                    </span>
+                                    <span class="title-6">{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
+                                    {% set awardsUnique = [] %}
+                                    {% set dataAward = '' %}
+                                    {% for movieAward in movie.awards %}
+                                        {% if movieAward.award and movieAward.award.prize %}
+                                            {% if movieAward.award.id not in awardsUnique %}
+                                                {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                                                {% set dataAward = movieAward.award.prize|trans_fallback('title')|trim %}
+                                                {% if movieAward.award.exAequo == 1 %}
+                                                    {% set dataAward = dataAward ~ ' (' ~ 'award.ex_aequo'|trans ~ ')' %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if dataAward != '' %}
+                                        <i class="icon icon-palme"></i>
+                                        <strong class="title-7">{{ dataAward }}</strong>
+                                    {% else %}
+                                        <strong class="title-7"></strong>
+                                    {% endif %}
+                                    <span class="date">{{ movie.productionYear }}</span>
                                 </div>
                             </div>
 
@@ -550,60 +543,37 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     </div> <!-- end block film -->
 
                     <div class="block-list-img slider-02 s-video-playlist">
-                        <div class="item">
+                    {% for movie in filmReleases %}
+                        {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                        {% set dataWho = '' %}
+                        {% for director in directors %}
+                            {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.slug}) ~ '">' ~ director.fullName ~ '</a>' %}
+                            {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
+                        {% endfor %}
+                        {% set awardsUnique = [] %}
+                        {% set dataAward = '' %}
+                        {% for movieAward in movie.awards %}
+                            {% if movieAward.award and movieAward.award.prize %}
+                                {% if movieAward.award.id not in awardsUnique %}
+                                    {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                                    {% set dataAward = movieAward.award.prize|trans_fallback('title')|trim %}
+                                    {% if movieAward.award.exAequo == 1 %}
+                                        {% set dataAward = dataAward ~ ' (' ~ 'award.ex_aequo'|trans ~ ')' %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        <div class="item" data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}" data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}" data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}" data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}" data-palmdate="{{ movie.productionYear }}">
                             <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""   ></a>
+                                <a href="#"><img src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                    film: movie,
+                                    film_format: '135x185',
+                                    display_film_path: true,
+                                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                    }) %}{% endspaceless %}" alt=""   ></a>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>            </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>            </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>            </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>            </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>            </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>            </div>
-                        <div class="item">
-                            <div class="wrapper">
-                                <a href="#"><img src="http://dummyimage.com/140x190/bbb/fff" alt=""  ></a>
-                            </div>
-                        </div>
+                    {% endfor %}
                     </div>
                 </div> <!-- end block 01 -->
             </div> <!-- end block 02 -->

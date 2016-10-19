@@ -304,6 +304,16 @@ var initVideo = function(hash) {
 
         function initChannel() {
 
+/*            var hash = window.location.hash;
+            hash = hash.substring(1, hash.length);
+
+            verif = hash.slice(0, 3);
+            number = hash.slice(4);
+
+           if (hash.length > 0 && verif == "vid") {
+               changeVideo(number,playerInstance,$('.slider-02 .center'));
+            }*/
+
             var sliderChannelsVideo = $('.slider-02').owlCarousel({
                 navigation          : false,
                 items               : 1,
@@ -319,33 +329,32 @@ var initVideo = function(hash) {
                 $('.slider-02 .center').removeClass('center');
                 $(this).addClass('center');
                 sliderChannelsVideo.trigger('to.owl.carousel', index);
+/*
                 changeVideo(index,playerInstance,$(this));
+*/
+
             });
 
             sliderChannelsVideo.on('translated.owl.carousel', function () {
                 index = $('.slider-02 .center').index();
                 changeVideo(index,playerInstance,$('.slider-02 .center'));
-            })
 
-            var changeVideo = function (index, playerInstance, exThis) {
+                $this = $('.slider-02 .center');
 
-                sliderChannelsVideo.trigger('to.owl.carousel', index);
+                dateN = $this.find('.item').data('date');
+                titleN = $this.find('.item').data('title');
+                whoN = $this.find('.item').data('who');
+                labelN = $this.find('.item').data('label');
+                palmN = $this.find('.item').data('palm');
+                palmDateN = $this.find('.item').data('palmdate');
+                fbN = $this.find('.item').data('facebook');
+                twitterN = $this.find('.item').data('twitter');
+                linkN = $this.find('.item').data('link');
+                vidN = $this.find('.item').data('vid');
+                isPalm = $this.find('.item').data('ispalm');
 
-                playerInstance.playlistItem(index);
-
-                console.log(exThis.find('.channel.video').data('json'));
-
-                var infos = $.parseJSON(exThis.find('.channel.video').data('json'));
-                $topBar.find('.info .category').text(infos.category);
-                $topBar.find('.info .date').text(infos.date);
-                $topBar.find('.info .hour').text(infos.hour);
-                $topBar.find('.info p').text(infos.name);
-
-                $container.find('.channels-video').removeClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
-
+                var hashPush = '#vid='+vidN;
+                history.pushState(null, null, hashPush);
 
                 $.each($('.text-infos'), function(i,e){
                     var $date = $(e).find('.title-3');
@@ -353,10 +362,80 @@ var initVideo = function(hash) {
                     var $who = $(e).find('.title-5');
                     var $label = $(e).find('.title-6');
                     var $palm = $(e).find('.title-7');
+                    var $isPalm = $(e).find('.ispalme');
                     var $palmDate = $(e).find('.date');
+                    var $facebook = $(e).parent().find('.block-social-network .facebook');
+                    var $twitter = $(e).parent().find('.block-social-network .twitter');
+                    var $link = $(e).parent().find('.block-social-network .link');
 
-                    $date.html('sortie le'+infos.date);
+                    $date.html('sortie le '+dateN);
+                    $title.html(titleN);
+                    $who.html(whoN);
+                    $label.html(labelN);
+
+                    if(isPalm) {
+                        $isPalm.addClass('icon-palme');
+                    }else{
+                        $isPalm.removeClass('icon-palme');
+                    }
+
+                    $palmDate.html(palmDateN);
+                    $facebook.attr('href', fbN);
+                    $twitter.attr('href', twitterN);
+                    $link.attr('data-clipboard-text', linkN);
+
+                    updatePopinMedia({
+                        'type': "video",
+                        'category': labelN,
+                        'date': dateN,
+                        'title': titleN,
+                        'url': linkN
+                    });
+
                 });
+
+            })
+
+            var changeVideo = function (index, playerInstance, exThis) {
+
+                sliderChannelsVideo.trigger('to.owl.carousel', index);
+                playerInstance.playlistItem(index);
+                sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
+                
+            }
+
+
+            if(hash > 0){
+
+                setTimeout(function(){
+
+                    var test =  $('#sortiecanne').offset().top - 200;
+
+                    test = parseInt(test);
+
+                    console.log(test);
+
+                    $('html, body').animate({
+                     scrollTop: test
+                     }, 'slow');
+
+
+                    $('.slider-02 .center').removeClass('center');
+
+                    $.each($('.s-video-playlist .item'), function(i,e){
+                        var tVid = $(e).data('vid');
+
+                        if(tVid == hash) {
+                            $(e).parent().addClass('center');
+                            index = $(e).parent().index();
+                        }
+                    });
+
+                    sliderChannelsVideo.trigger('to.owl.carousel', index);
+
+                }, 1000);
+
+
             }
         }
         

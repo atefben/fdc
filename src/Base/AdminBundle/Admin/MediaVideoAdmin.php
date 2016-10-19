@@ -379,9 +379,11 @@ class MediaVideoAdmin extends Admin
                 'label' => 'form.label_homepage_corpo_display',
             ))
             ->add('themeHomeCorpo', 'sonata_type_model_list', array(
+                'label' => 'form.label_theme',
                 'btn_delete' => false
             ))
             ->add('dateHomeCorpo', 'sonata_type_datetime_picker', array(
+                'label'    => 'form.label_date',
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => false,
                 'attr'     => array(

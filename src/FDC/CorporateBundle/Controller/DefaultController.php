@@ -83,9 +83,17 @@ class DefaultController extends Controller
         /////////////////////////////////////////////////////////////////////////////////////
         $featuredVideo = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
 
+
+        /////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////      CANNES RELEASES      /////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////
+        $movies = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsReleases($dateTime);
+        //$movies = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFilm')->findBy(array(), array('publishedAt' => 'DESC'), 10);
+
         return array(
             'homepage'           => $homepage,
             'displayHomeSlider'  => $displayHomeSlider,
+            'filmReleases'       => $movies,
             'homeSlider'         => $homeSlider,
             'homeContents'       => $homeContents,
             'featuredVideo'      => $featuredVideo,

@@ -97,7 +97,18 @@ $(document).ready(function () {
     }
 
     if ($('.video-player').length > 0) {
-        initVideo();
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "vid") {
+            initVideo(number);
+        } else {
+            initVideo();
+        }
     }
 
     if ($('.block-social-network ').length > 0) {
