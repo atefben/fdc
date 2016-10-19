@@ -341,10 +341,10 @@ var initVideo = function(hash) {
                 twitterN = $(this).find('.item').data('twitter');
                 linkN = $(this).find('.item').data('link');
                 vidN = $(this).find('.item').data('vid');
+                isPalm = $(this).find('.item').data('ispalm');
 
-                var hashPush = '#vid='+parseString(vidN);
+                var hashPush = '#vid='+vidN;
                 history.pushState(null, null, hashPush);
-
 
                 $.each($('.text-infos'), function(i,e){
                     var $date = $(e).find('.title-3');
@@ -352,22 +352,31 @@ var initVideo = function(hash) {
                     var $who = $(e).find('.title-5');
                     var $label = $(e).find('.title-6');
                     var $palm = $(e).find('.title-7');
+                    var $isPalm = $(e).find('.ispalme');
                     var $palmDate = $(e).find('.date');
                     var $facebook = $(e).parent().find('.block-social-network .facebook');
                     var $twitter = $(e).parent().find('.block-social-network .twitter');
                     var $link = $(e).parent().find('.block-social-network .link');
 
+                    console.log($isPalm);
+                    
                     $date.html('sortie le '+dateN);
                     $title.html(titleN);
                     $who.html(whoN);
                     $label.html(labelN);
-                    $palm.html(palmN);
+
+                    if(isPalm) {
+                        $isPalm.addClass('icon-palme')
+                    }else{
+                        $isPalm.removeClass('icon-palme');
+                    }
+
                     $palmDate.html(palmDateN);
                     $facebook.attr('href', fbN);
                     $twitter.attr('href', twitterN);
                     $link.attr('data-clipboard-text', linkN);
 
-                    updatePopinMedia({
+                    updatePopinMedia({ 
                         'type': "video",
                         'category': labelN,
                         'date': dateN,
