@@ -6289,11 +6289,34 @@ video {
   margin-bottom: 10px;
   color: #c8a461;
 }
-.block-p-register.accredit {
+.block-p-register.accredit p {
   line-height: 30px;
   font-size: 1rem;
   margin-bottom: 36px;
   margin-top: 0px;
+}
+.block-p-register.accredit .legend {
+  display: block;
+  text-align: center;
+  font-size: .75rem;
+}
+.block-p-register.accredit ul li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+}
+.block-p-register.accredit ul {
+  list-style: inherit;
+}
+.block-p-register.accredit ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+}
+.block-p-register.accredit ol {
+  list-style: inherit;
+  list-style-type: decimal;
 }
 .block-p-register p {
   color: #666666;
@@ -6360,6 +6383,16 @@ video {
   margin-left: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.block-contain-txt-register-movie ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+}
+.block-contain-txt-register-movie ol {
+  list-style: inherit;
+  list-style-type: decimal;
 }
 .block-contain-txt-register-movie h4 {
   color: #c8a461;
