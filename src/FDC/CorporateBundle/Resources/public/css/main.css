@@ -6280,6 +6280,7 @@ video {
   letter-spacing: .1em;
   padding: 52px 0;
   padding-top: 0px;
+  line-height: 24px;
 }
 .block-p-register h4 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -6289,11 +6290,26 @@ video {
   margin-bottom: 10px;
   color: #c8a461;
 }
+.block-p-register.accredit h5 {
+  font-size: .75rem;
+  line-height: 24px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
 .block-p-register.accredit p {
   line-height: 30px;
   font-size: 1rem;
   margin-bottom: 36px;
   margin-top: 0px;
+  color: #666666;
+}
+.block-p-register.accredit p a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-p-register.accredit p a:hover {
+  color: #8e6d30;
 }
 .block-p-register.accredit .legend {
   display: block;
@@ -6304,19 +6320,23 @@ video {
   font-size: 1rem;
   line-height: 30px;
   list-style: inside;
+  color: #666666;
 }
 .block-p-register.accredit ul {
   list-style: inherit;
+  color: #666666;
 }
 .block-p-register.accredit ol li {
   font-size: 1rem;
   line-height: 30px;
   list-style: inside;
   list-style-type: decimal;
+  color: #666666;
 }
 .block-p-register.accredit ol {
   list-style: inherit;
   list-style-type: decimal;
+  color: #666666;
 }
 .block-p-register p {
   color: #666666;
@@ -6389,10 +6409,12 @@ video {
   line-height: 30px;
   list-style: inside;
   list-style-type: decimal;
+  color: #666666;
 }
 .block-contain-txt-register-movie ol {
   list-style: inherit;
   list-style-type: decimal;
+  color: #666666;
 }
 .block-contain-txt-register-movie h4 {
   color: #c8a461;
@@ -10221,6 +10243,9 @@ header #searchContainer {
 }
 .slider-home .owl-item {
   min-width: 527px;
+}
+.slider-home .owl-item .item {
+  position: relative;
 }
 .slider-home .owl-dots {
   position: absolute;
