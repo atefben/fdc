@@ -110,7 +110,9 @@
       list-style: inherit;
       list-style-type: decimal;
       color: #666666;
-      margin-bottom: 36px;
+      margin-left: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
     }
 
   } //fin accredit class
@@ -220,6 +222,7 @@
     line-height: 30px;
     list-style: inside;
     list-style-type: decimal;
+    list-style-position: inside;
     color: #666666;
 
     a {
@@ -235,8 +238,12 @@
   ol {
     list-style: inherit;
     list-style-type: decimal;
+    list-style-position: inside;
     color: #666666;
     margin-bottom: 36px;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   h4 {
