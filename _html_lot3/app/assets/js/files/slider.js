@@ -51,10 +51,16 @@ var owInitSlider = function (sliderName) {
         });
 
         $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
-
             var title = $(e).find('.title-4a');
             var text = $(e).find('.title-4a').html();
+            var textTrunc = $(e).find('.text-trunc p');
+            var textI = textTrunc[0].innerText;
+
+            console.log(textTrunc);
+            console.log(textI.length);
+
             title.html(text.trunc(30, true));
+            textTrunc.html(textI.trunc(400, false));
         });
     }
 
@@ -262,7 +268,7 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('end', function (values, handle) { //end drag
 
-            var nm = isMac ? 4 : 21; 
+            var nm = isMac ? 4 : 21;
             var w = $('body').width() + nm;
             valuesFloat = parseFloat(values[handle]);
             values = Math.round(valuesFloat);
@@ -369,7 +375,7 @@ var owInitSlider = function (sliderName) {
         }
 
         var animationOpen = function () {
-            
+
             var nm = isMac ? 4 : 21;
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();

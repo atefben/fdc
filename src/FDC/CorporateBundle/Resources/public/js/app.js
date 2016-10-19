@@ -380,6 +380,7 @@ var initVideo = function(hash) {
                     $title.html(titleN);
                     $who.html(whoN);
                     $label.html(labelN);
+                    $palm.html(palmN);
 
                     if(isPalm) {
                         $isPalm.addClass('icon-palme');
@@ -2456,7 +2457,7 @@ var owInitPopin = function(id) {
 
             setTimeout(function(){
                 /*
-                 fClosePopinB('force'); 
+                 fClosePopinB('force');
                  */
             }, 5000);
 
@@ -3048,10 +3049,16 @@ var owInitSlider = function (sliderName) {
         });
 
         $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
-
             var title = $(e).find('.title-4a');
             var text = $(e).find('.title-4a').html();
+            var textTrunc = $(e).find('.text-trunc p');
+            var textI = textTrunc[0].innerText;
+
+            console.log(textTrunc);
+            console.log(textI.length);
+
             title.html(text.trunc(30, true));
+            textTrunc.html(textI.trunc(400, false));
         });
     }
 

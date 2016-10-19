@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class HomepageCorporateAdmin extends Admin
 {
@@ -25,6 +26,16 @@ class HomepageCorporateAdmin extends Admin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('list');
+        $collection->remove('create');
+        $collection->remove('show');
+        $collection->remove('batch');
+        $collection->remove('delete');
+        $collection->remove('export');
     }
 
     /**
@@ -264,11 +275,6 @@ class HomepageCorporateAdmin extends Admin
             ))
             ->add('displayedGallery', 'checkbox', array(
                 'label'    => 'Ne pas afficher cette strate',
-                'required' => false,
-            ))
-            ->add('gallery', 'sonata_type_model_list', array(
-                'label' => 'form.label_gallery',
-                'help' => 'form.homepage_corporate.gallery',
                 'required' => false,
             ))
             ->add('pushEditionImage', 'sonata_type_model_list', array(
