@@ -188,11 +188,11 @@
                 </div> <!-- end article wrapper-->
                 {% endif %}
 
-                {% if homepage.displayedGallery == false and homepage.gallery is not null and homepage.gallery.medias.count > 0 %}
+                {% if homepage.displayedGallery == false and gallery is not null and gallery.medias.count > 0 %}
                 <div class="block-diaporama">
 
                     <div class="slider-01">
-                        {% for image in homepage.gallery.medias %}
+                        {% for image in gallery.medias %}
                             {% set photo = image.media %}
                             {% set trans = photo.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
@@ -214,12 +214,12 @@
                     <div class="block-legend">
                         <div class="info">
 
-                            <span class="category">{{ homepage.gallery.themeHomeCorpo|trans_fallback('name') }} </span><span class="date">{{ homepage.gallery.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ homepage.gallery.dateHomeCorpo|date('H:i') }}</span>
+                            <span class="category">{{ gallery.themeHomeCorpo|trans_fallback('name') }} </span><span class="date">{{ gallery.dateHomeCorpo|date('d.m.y') }}</span> . <span class="hour">{{ gallery.dateHomeCorpo|date('H:i') }}</span>
 
                             <div class="texts">
-                                <h2><a>{{ homepage.gallery|trans_fallback('titleHomeCorpo') }}</a></h2>
+                                <h2><a>{{ gallery|trans_fallback('titleHomeCorpo') }}</a></h2>
                                 <div class="text-01">
-                                    {{ homepage.gallery|trans_fallback('introductionHomeCorpo')|raw }}
+                                    {{ gallery|trans_fallback('introductionHomeCorpo')|raw }}
                                 </div>
                             </div> <!-- end block texts-->
 
