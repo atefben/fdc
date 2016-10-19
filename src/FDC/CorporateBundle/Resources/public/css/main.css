@@ -6289,12 +6289,49 @@ video {
   margin-bottom: 10px;
   color: #c8a461;
 }
+.block-p-register table {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-bottom: 50px;
+}
+.block-p-register table td, .block-p-register table th {
+  font-weight: normal;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0px;
+  width: 320px;
+  text-align: center;
+  color: #666666;
+  font-size: .74rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.block-p-register table th {
+  text-transform: uppercase;
+  color: #000;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-p-register table a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-p-register table a:hover {
+  color: #8e6d30;
+}
+.block-p-register table[border="0"] td {
+  border: none !important;
+}
 .block-p-register.accredit h5 {
   font-size: .75rem;
   line-height: 24px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: .2em;
   text-transform: uppercase;
+}
+.block-p-register.accredit h3 {
+  margin-bottom: 36px;
 }
 .block-p-register.accredit p {
   line-height: 30px;
