@@ -18,12 +18,24 @@
   transition: height .5s;
   overflow: hidden;
 
+  .coverLink {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 6;
+  }
+
   .slider-carousel, .owl-stage-outer, .owl-stage, .owl-item {
     height: 100%;
   }
 
   .owl-item {
     min-width: 527px;
+
+    .item {
+      position: relative;
+    }
   }
 
   .owl-dots {
