@@ -438,7 +438,7 @@
             {% endif %}
 
             {% if homepage.displayedCannesReleases == false %}
-            <div class="block-02">
+            <div class="block-02" id="sortiecanne">
                 <div class="block-01">
                     <h2 class="title title-01">sorties de cannes</h2>
 
@@ -518,12 +518,8 @@
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
-                                    {% if dataAward != '' %}
-                                        <i class="icon icon-palme"></i>
-                                        <strong class="title-7">{{ dataAward }}</strong>
-                                    {% else %}
-                                        <strong class="title-7"></strong>
-                                    {% endif %}
+                                    <i class="icon ispalme icon-palme"></i>
+                                    <strong class="title-7">{{ dataAward }}</strong>
                                     <span class="date">{{ movie.productionYear }}</span>
                                 </div>
                             </div>
@@ -544,6 +540,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
 
                     <div class="block-list-img slider-02 s-video-playlist">
                     {% for movie in filmReleases %}
+                        {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                         {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                         {% set dataWho = '' %}
                         {% for director in directors %}
@@ -563,7 +560,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
-                        <div class="item" data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}" data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}" data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}" data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}" data-palmdate="{{ movie.productionYear }}">
+                        <div class="item" data-vid="{{ trans.id }}" data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}" data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}" data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}" data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}" data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}" data-palmdate="{{ movie.productionYear }}">
                             <div class="wrapper">
                                 <a href="#"><img src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
                                     film: movie,
