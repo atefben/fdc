@@ -63,10 +63,12 @@
 
         <div class="padding-top">
 
-            <h2 class="title title-01">communiqués et infos</h2>
+            {% if homepage.displayedFeaturedContents == false %}
+                <h2 class="title title-01">communiqués et infos</h2>
 
-            {% if homepage.displayedFeaturedContentsFilters == false %}
-                {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+                {% if homepage.displayedFeaturedContentsFilters == false %}
+                    {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+                {% endif %}
             {% endif %}
 
         </div>
