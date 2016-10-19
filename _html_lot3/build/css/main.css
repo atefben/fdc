@@ -6278,8 +6278,6 @@ video {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: .1em;
-  padding: 52px 0;
-  padding-top: 0px;
   line-height: 24px;
 }
 .block-p-register h4 {
@@ -6347,7 +6345,9 @@ video {
   list-style: inherit;
   list-style-type: decimal;
   color: #666666;
-  margin-bottom: 36px;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .block-p-register p {
   color: #666666;
