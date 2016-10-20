@@ -16573,6 +16573,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #c8a461;
 }
 
+.legal-notice {
+  padding: 65px 0;
+}
 .legal-notice em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
@@ -16715,4 +16718,53 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   letter-spacing: 3px;
   font-size: 0.89rem;
   color: #c8a461;
+}
+
+.sitemap {
+  padding: 65px 0;
+}
+.sitemap h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+.sitemap section {
+  background-color: #fff;
+  width: 1122px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.sitemap section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  margin-bottom: 100px;
+  position: relative;
+  width: 363px;
+  display: inline-block;
+  padding: 13px;
+  vertical-align: top;
+  text-align: center;
+}
+.sitemap section article .title {
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: 300;
+  margin-bottom: 27px;
+}
+.sitemap section article a {
+  color: #c8a461;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.sitemap section article a:hover {
+  color: #966505;
+}
+.sitemap section article li {
+  padding-bottom: 20px;
+  letter-spacing: 3px;
 }
