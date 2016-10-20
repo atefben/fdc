@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CorpoTeamMembersWidgetAdmin extends Admin
+class CorpoTeamDepartementsAssociationAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -49,11 +49,11 @@ class CorpoTeamMembersWidgetAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('position')
-            ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('members', 'sonata_type_model_list', array(
+                'required' => false,
+                'label' => 'Nom du membre'
+            ))
+            ->add('position', 'hidden', array('attr' => array("hidden" => true)));
     }
 
     /**

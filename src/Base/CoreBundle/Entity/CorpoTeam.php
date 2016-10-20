@@ -39,13 +39,10 @@ class CorpoTeam implements TranslateMainInterface
     private $mainImage;
 
     /**
-     * @var NewsWidget
      *
-     * @ORM\OneToMany(targetEntity="CorpoTeamMembersWidget", mappedBy="corpoTeam", cascade={"all"}, orphanRemoval=true)
-     *
-     * @ORM\OrderBy({"position" = "ASC"})
+     * @ORM\OneToMany(targetEntity="CorpoTeamsAssociation", mappedBy="team", cascade={"persist"}, orphanRemoval=true)
      */
-    private $widgets;
+    protected $teams;
 
     /**
      * ArrayCollection
@@ -96,5 +93,39 @@ class CorpoTeam implements TranslateMainInterface
     public function getMainImage()
     {
         return $this->mainImage;
+    }
+
+    /**
+     * Add teams
+     *
+     * @param \Base\CoreBundle\Entity\CorpoTeamsAssociation $teams
+     * @return CorpoTeam
+     */
+    public function addTeam(\Base\CoreBundle\Entity\CorpoTeamsAssociation $teams)
+    {
+        $teams->setTeam($this);
+        $this->teams[] = $teams;
+
+        return $this;
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param \Base\CoreBundle\Entity\CorpoTeamsAssociation $teams
+     */
+    public function removeTeam(\Base\CoreBundle\Entity\CorpoTeamsAssociation $teams)
+    {
+        $this->teams->removeElement($teams);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
     }
 }

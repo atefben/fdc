@@ -25,7 +25,7 @@ use DateTime;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class CorpoTeamTeamsTranslation implements TranslateChildInterface
+class CorpoTeamDepartementsTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
@@ -40,29 +40,29 @@ class CorpoTeamTeamsTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $teamName;
-    
+    private $departementName;
+
 
     /**
-     * Set teamName
+     * Set departementName
      *
-     * @param string $teamName
-     * @return CorpoTeamTeamsTranslation
+     * @param string $departementName
+     * @return CorpoTeamDepartementsTranslation
      */
-    public function setTeamName($teamName)
+    public function setDepartementName($departementName)
     {
-        $this->teamName = $teamName;
+        $this->departementName = $departementName;
 
         return $this;
     }
 
     /**
-     * Get teamName
+     * Get departementName
      *
      * @return string 
      */
-    public function getTeamName()
+    public function getDepartementName()
     {
-        return $this->teamName;
+        return $this->departementName;
     }
 }

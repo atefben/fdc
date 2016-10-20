@@ -17,7 +17,7 @@ use Base\CoreBundle\Util\SeoMain;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class CorpoTeamMembers implements TranslateMainInterface
+class CorpoTeamDepartements implements TranslateMainInterface
 {
     use Time;
     use Translatable;
@@ -34,14 +34,15 @@ class CorpoTeamMembers implements TranslateMainInterface
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     */
-    private $mainImage;
-
-    /**
      * ArrayCollection
      */
     protected $translations;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="CorpoTeamDepartementsAssociation", mappedBy="departement", cascade={"persist"}, orphanRemoval=true)
+     */
+    protected $members;
 
     /**
      * Constructor
@@ -55,12 +56,11 @@ class CorpoTeamMembers implements TranslateMainInterface
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string = ' "' . $this->findTranslationByLocale('fr')->getFirstName() . ' ' . $this->findTranslationByLocale('fr')->getLastName() .'"';
+            $string = ' "' . $this->findTranslationByLocale('fr')->getDepartementName() . '"';
         }
 
         return $string;
     }
-
 
     /**
      * Get id
@@ -71,27 +71,39 @@ class CorpoTeamMembers implements TranslateMainInterface
     {
         return $this->id;
     }
+    
 
     /**
-     * Set mainImage
+     * Add members
      *
-     * @param \Base\CoreBundle\Entity\MediaImageSimple $mainImage
-     * @return CorpoTeam
+     * @param \Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $members
+     * @return CorpoTeamDepartements
      */
-    public function setMainImage(\Base\CoreBundle\Entity\MediaImageSimple $mainImage = null)
+    public function addMember(\Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $members)
     {
-        $this->mainImage = $mainImage;
+        $members->setDepartement($this);
+        $this->members[] = $members;
 
         return $this;
     }
 
     /**
-     * Get mainImage
+     * Remove members
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple
+     * @param \Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $members
      */
-    public function getMainImage()
+    public function removeMember(\Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $members)
     {
-        return $this->mainImage;
+        $this->members->removeElement($members);
+    }
+
+    /**
+     * Get members
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMembers()
+    {
+        return $this->members;
     }
 }

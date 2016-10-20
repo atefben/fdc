@@ -34,14 +34,15 @@ class CorpoTeamTeams implements TranslateMainInterface
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     */
-    private $mainImage;
-
-    /**
      * ArrayCollection
      */
     protected $translations;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="CorpoTeamTeamsAssociation", mappedBy="teamTeams", cascade={"persist"}, orphanRemoval=true)
+     */
+    protected $departement;
 
     /**
      * Constructor
@@ -52,7 +53,56 @@ class CorpoTeamTeams implements TranslateMainInterface
     }
 
     public function __toString() {
-        return 'Les équipes';
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = ' "' . $this->findTranslationByLocale('fr')->getTeamName() . '"';
+        }
+
+        return $string;
     }
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add departement
+     *
+     * @param \Base\CoreBundle\Entity\CorpoTeamTeamsAssociation $departement
+     * @return CorpoTeamTeams
+     */
+    public function addDepartement(\Base\CoreBundle\Entity\CorpoTeamTeamsAssociation $departement)
+    {
+        $departement->setTeamTeams($this);
+        $this->departement[] = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Remove departement
+     *
+     * @param \Base\CoreBundle\Entity\CorpoTeamTeamsAssociation $departement
+     */
+    public function removeDepartement(\Base\CoreBundle\Entity\CorpoTeamTeamsAssociation $departement)
+    {
+        $this->departement->removeElement($departement);
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
 }

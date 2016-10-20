@@ -1451,8 +1451,40 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.corpo_team_members_widget:
-        class: Base\AdminBundle\Admin\CorpoTeamMembersWidgetAdmin
-        arguments: [~, Base\CoreBundle\Entity\CorpoTeamMembersWidget, SonataAdminBundle:CRUD]
+    base.admin.corpo_team_teams:
+        class: Base\AdminBundle\Admin\CorpoTeamTeamsAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamTeams, BaseAdminBundle:CorpoTeamTeamsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamMembersWidget}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.corpo_team_teams, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.corpo_team_members_group_association:
+        class: Base\AdminBundle\Admin\CorpoTeamMembersGroupAssociationAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamMembersGroupAssociation, BaseAdminBundle:CorpoTeamMembersGroupAssociationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamMembersGroupAssociation}
+
+    base.admin.corpo_teams_association:
+        class: Base\AdminBundle\Admin\CorpoTeamsAssociationAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamsAssociation, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamsAssociation}
+
+    base.admin.corpo_team_teams_association:
+        class: Base\AdminBundle\Admin\CorpoTeamTeamsAssociationAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamTeamsAssociation, BaseAdminBundle:CorpoTeamTeamsAssociationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamTeamsAssociation}
+
+    base.admin.corpo_team_departements:
+        class: Base\AdminBundle\Admin\CorpoTeamDepartementsAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamDepartements, BaseAdminBundle:CorpoTeamDepartementsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamDepartements}
+
+    base.admin.corpo_team_departements_association:
+        class: Base\AdminBundle\Admin\CorpoTeamDepartementsAssociationAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation, BaseAdminBundle:CorpoTeamDepartementsAssociationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamDepartementsAssociation}

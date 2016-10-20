@@ -4,6 +4,8 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
+use Base\CoreBundle\Entity\PressAccreditProcedure;
+use Base\CoreBundle\Entity\PressAccreditProcedureTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -11,7 +13,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CorpoTeamAdmin extends Admin
+class CorpoTeamTeamsAdmin extends Admin
 {
 
     protected $datagridValues = array(
@@ -53,11 +55,21 @@ class CorpoTeamAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.teamName LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label'      => 'Nom de l\'équipe'
+            ))
         ;
     }
 
@@ -67,18 +79,25 @@ class CorpoTeamAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
+                'label'    => 'Nom de l\'équipe',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => PressAccreditProcedure::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => PressAccreditProcedureTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }
@@ -115,29 +134,8 @@ class CorpoTeamAdmin extends Admin
                         'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'content' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'Chapô',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
-                    ),
-                    'seoTitle'       => array(
-                        'attr'               => array(
-                            'placeholder' => 'form.fdc_page_web_tv_trailers.placeholder_seo_title'
-                        ),
-                        'label'              => 'form.label_seo_title',
-                        'sonata_help'        => 'form.news.helper_seo_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
-                    ),
-                    'seoDescription' => array(
-                        'attr'               => array(
-                            'placeholder' => 'form.fdc_page_web_tv_trailers.placeholder_seo_description'
-                        ),
-                        'label'              => 'form.label_seo_description',
-                        'sonata_help'        => 'form.news.helper_description',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
+                    'teamName' => array(
+                        'label' => 'Nom de l\'équipe',
                     ),
                     'createdAt'      => array(
                         'display' => false
@@ -147,32 +145,22 @@ class CorpoTeamAdmin extends Admin
                     ),
                 )
             ))
-            ->add('mainImage', 'sonata_type_model_list', array(
-                'label'    => 'Image Tétière',
-                'required' => false,
-            ))
-            ->add('teams', 'sonata_type_collection',
-               array(
-                   'type_options' => array(
-                       'delete' => true,
-                   ),
-                   'cascade_validation' => true,
-                   'by_reference' => false,
-                   'label' => 'Equipe',
-                   'required' => false
-               ),
-               array(
-                   'edit' => 'inline',
-                   'inline' => 'table',
-                   'sortable'  => 'position',
-               )
+            ->add('departement', 'sonata_type_collection',
+                array(
+                    'type_options' => array(
+                        'delete' => true,
+                    ),
+                    'cascade_validation' => true,
+                    'by_reference' => false,
+                    'label' => 'Département',
+                    'required' => false
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable'  => 'position',
+                )
             )
-            ->add('seoFile', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'seo_file',
-                'help'     => 'form.seo.helper_file',
-                'required' => false
-            ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices' => FDCPageLaSelectionCannesClassics::getAvailableTranslateOptions(),

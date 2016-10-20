@@ -106,6 +106,8 @@ class LockController extends Controller
         'corpowhoarewe'                    => 'CorpoWhoAreWe',
         'corpoaccreditprocedure'           => 'CorpoAccreditProcedure',
         'corpoaccredit'                    => 'CorpoAccredit',
+        'corpoteamteams'                   => 'CorpoTeamTeams',
+        'corpoteamdepartements'            => 'CorpoTeamDepartements',
     );
 
     /**
