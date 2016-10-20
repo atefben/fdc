@@ -16572,3 +16572,147 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .faq section .faq-article-active .fa {
   color: #c8a461;
 }
+
+.legal-notice em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.legal-notice strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.legal-notice sub {
+  vertical-align: text-bottom;
+  font-size: .5rem;
+}
+.legal-notice sup {
+  vertical-align: super;
+  font-size: .5rem;
+}
+.legal-notice table {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-bottom: 50px;
+}
+.legal-notice table td, .legal-notice table th {
+  font-weight: normal;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0px;
+  width: 320px;
+  text-align: center;
+  color: #666666;
+  font-size: .74rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.legal-notice table th {
+  text-transform: uppercase;
+  color: #000;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.legal-notice table a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.legal-notice table a:hover {
+  color: #8e6d30;
+}
+.legal-notice ul li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  color: #666666;
+}
+.legal-notice ul li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.legal-notice ul li a:hover {
+  color: #8e6d30;
+}
+.legal-notice ul {
+  list-style: inherit;
+  color: #666666;
+  margin-bottom: 36px;
+}
+.legal-notice ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+  color: #666666;
+}
+.legal-notice ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.legal-notice ol li a:hover {
+  color: #8e6d30;
+}
+.legal-notice ol {
+  list-style: inherit;
+  list-style-type: decimal;
+  color: #666666;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.legal-notice table[border="0"] td {
+  border: none !important;
+}
+.legal-notice .text p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+}
+.legal-notice .text a strong {
+  color: #c8a461;
+  font-weight: 400;
+}
+.legal-notice .text strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.legal-notice h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+.legal-notice section {
+  background-color: #fff;
+  width: 630px;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #666666;
+  padding-bottom: 150px;
+}
+.legal-notice section .legal-notice-description {
+  padding-bottom: 40px;
+}
+.legal-notice section .legal-notice-responsable p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.89rem;
+  color: #000;
+}
+.legal-notice section .legal-notice-responsable p:first-child {
+  padding-bottom: 18px;
+}
+.legal-notice section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  position: relative;
+  width: 100%;
+  padding-top: 42px;
+  line-height: 26px;
+}
+.legal-notice section article h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.89rem;
+  color: #c8a461;
+}
