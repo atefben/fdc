@@ -39,6 +39,10 @@ class GalleryAdmin extends Admin
             ->add('name', null, array(
                 'translation_domain' => 'BaseAdminBundle',
             ))
+            ->add('displayedHomeCorpo', null, array(
+                'label'      => 'filter.label_homepage_corpo_displayed_galleries',
+                'field_type' => 'checkbox',
+            ))
         ;
 
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
