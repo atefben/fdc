@@ -16576,11 +16576,27 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .legal-notice {
   padding: 65px 0;
 }
+.legal-notice h3.sub-title {
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  font-size: .875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  clear: both;
+}
 .legal-notice em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 .legal-notice strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.legal-notice .text strong {
+  color: #333;
+  font-weight: 400;
+}
+.legal-notice .text p a {
+  color: #c8a461;
 }
 .legal-notice sub {
   vertical-align: text-bottom;
@@ -16597,6 +16613,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 644px;
   padding-bottom: 50px;
 }
+.legal-notice table:after {
+  content: '';
+  clear: both;
+}
 .legal-notice table td, .legal-notice table th {
   font-weight: normal;
   vertical-align: middle;
@@ -16608,6 +16628,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: .74rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
+  font-size: 0.74rem !important;
+}
+.legal-notice table td p, .legal-notice table th p {
+  font-size: 0.74rem !important;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 .legal-notice table th {
   text-transform: uppercase;
@@ -16638,6 +16663,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   list-style: inherit;
   color: #666666;
   margin-bottom: 36px;
+  clear: both;
 }
 .legal-notice ol li {
   font-size: 1rem;
@@ -16660,6 +16686,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
+  clear: both;
 }
 .legal-notice table[border="0"] td {
   border: none !important;
@@ -16669,6 +16696,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 1rem;
   line-height: 1.7em;
   margin-bottom: 5px;
+  clear: both;
 }
 .legal-notice .text a strong {
   color: #c8a461;
