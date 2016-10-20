@@ -4038,6 +4038,9 @@ body.loading:before {
   position: relative;
   overflow-x: hidden;
 }
+#main.block-mediatheque {
+  background-color: #141414;
+}
 #main:after {
   background-color: #141414;
   content: '';
@@ -4086,6 +4089,9 @@ body.loading:before {
   opacity: 1;
   display: block;
   transition: 0s;
+}
+#main.overlay.block-mediatheque {
+  width: 1280px;
 }
 
 html body .icon:before {

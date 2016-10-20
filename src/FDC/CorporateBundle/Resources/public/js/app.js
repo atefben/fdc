@@ -906,7 +906,7 @@ var initVideo = function(hash) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
 
-    if($('.medias').length > 0) {
+    if($('.medias').length > 0 || $('.media-library').length > 0) {
         initPopinVideo(hash);
     }
 
@@ -2165,6 +2165,43 @@ var owInitGrid = function (id) {
                 }
             });
         });
+
+        var trunTitle = function() {
+            $.each($('.card.item'), function (i, e) {
+                var title = $(e).find('.info strong a');
+
+                if (!title.hasClass('init')) {
+                    var text = $(e).find('.info strong a').text();
+                    title.addClass('init');
+                    title.attr('data-title', text);
+                } else {
+                    var text = title.attr('data-title');
+                }
+
+
+                if($('.medias').length > 0) {
+
+                    if (window.matchMedia("(max-width: 1405px)").matches) {
+                        title.html(text.trunc(25, true));
+                    }else{
+                        title.html(text.trunc(40, true));
+                    }
+
+                } else {
+                    title.html(text.trunc(60, true));
+                }
+            });
+        }
+
+
+        trunTitle();
+
+
+        $(window).resize(function () {
+            trunTitle();
+        });
+
+        var title = $('.info strong a').text();
 
         return $grid;
     }
@@ -3814,7 +3851,7 @@ var owinitSlideShow = function (slider, hash) {
             });
         }
 
-        if($('.medias').length > 0 ) {
+        if($('.medias').length > 0 || $('.media-library').length > 0) {
             $('.item.photo').on('click', function (e) {
                 e.preventDefault();
 
@@ -5093,6 +5130,32 @@ $(document).ready(function () {
         /*
          ajaxMedialib();
          */
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "pid") {
+            owinitSlideShow(grid, hash);
+        } else {
+            owinitSlideShow(grid);
+        }
+
+        if (hash.length > 0 && verif == "vid") {
+            console.log(number);
+
+            initVideo(number);
+        } else {
+            initVideo();
+        }
+
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        } else {
+            initAudio();
+        }
     }
 
     if ($('.search-page').length) {

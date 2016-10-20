@@ -906,7 +906,7 @@ var initVideo = function(hash) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
 
-    if($('.medias').length > 0) {
+    if($('.medias').length > 0 || $('.media-library').length > 0) {
         initPopinVideo(hash);
     }
     

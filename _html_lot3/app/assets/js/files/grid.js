@@ -176,6 +176,43 @@ var owInitGrid = function (id) {
             });
         });
 
+        var trunTitle = function() {
+            $.each($('.card.item'), function (i, e) {
+                var title = $(e).find('.info strong a');
+
+                if (!title.hasClass('init')) {
+                    var text = $(e).find('.info strong a').text();
+                    title.addClass('init');
+                    title.attr('data-title', text);
+                } else {
+                    var text = title.attr('data-title');
+                }
+
+
+                if($('.medias').length > 0) {
+
+                    if (window.matchMedia("(max-width: 1405px)").matches) {
+                        title.html(text.trunc(25, true));
+                    }else{
+                        title.html(text.trunc(40, true));
+                    }
+
+                } else {
+                    title.html(text.trunc(60, true));
+                }
+            });
+        }
+
+
+        trunTitle();
+
+
+        $(window).resize(function () {
+            trunTitle();
+        });
+
+        var title = $('.info strong a').text();
+
         return $grid;
     }
 
