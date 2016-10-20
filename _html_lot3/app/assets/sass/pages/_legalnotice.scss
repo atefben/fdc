@@ -10,12 +10,31 @@
 .legal-notice{
     padding: 65px 0;
 
+    h3.sub-title {
+        font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+        font-size: .875rem;
+        margin: 50px 0;
+        text-align: center;
+        text-transform: uppercase;
+        display: block;
+        clear: both;
+    }
+
     em {
         font-family: $CamphorItalic;
     }
 
     strong {
         font-family: $CamphorBold;
+    }
+
+    .text strong {
+        color: #333;
+        font-weight: 400;
+    }
+
+    .text p a {
+        color: #c8a461;
     }
 
     sub {
@@ -35,6 +54,11 @@
         width: 644px;
         padding-bottom: 50px;
 
+        &:after {
+            content:'';
+            clear: both;
+        }
+
 
         td, th {
             font-weight: normal;
@@ -47,6 +71,12 @@
             font-size: .74rem;
             font-family: $CamphorMedium;
             text-align: center;
+            font-size: .74rem!important;
+
+            p {
+                font-size: .74rem!important;
+                font-family: $CamphorMedium;
+            }
         }
 
         th {
@@ -86,6 +116,7 @@
         list-style: inherit;
         color: #666666;
         margin-bottom: 36px;
+        clear: both;
     }
 
     ol li {
@@ -112,6 +143,7 @@
         margin-left: 30px;
         margin-top: 30px;
         margin-bottom: 30px;
+        clear: both;
     }
 
     table[border="0"] td {
@@ -123,6 +155,7 @@
         font-size: 1rem;
         line-height: 1.7em;
         margin-bottom: 5px;
+        clear: both;
     }
 
     .text a strong {
