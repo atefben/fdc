@@ -28,7 +28,7 @@ class DefaultController extends Controller
     public function videoCorpoAction(Request $request)
     {
         $video = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
-        
+
         return array('video' => $video);
     }
 
@@ -94,11 +94,10 @@ class DefaultController extends Controller
                 $filters['themes']['content'][] = $homeContent->getTheme();
             }
 
-            if (!in_array($homeContent->getNewsType(), $filters['format'])) {
-                $filters['format'][] = $homeContent->getNewsType();
+            if (!in_array($homeContent->getTypeClone(), $filters['format'])) {
+                $filters['format'][] = $homeContent->getTypeClone();
             }
         }
-
 
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      FEATURED VIDEO      //////////////////////////////////
