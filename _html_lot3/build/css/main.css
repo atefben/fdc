@@ -11584,6 +11584,34 @@ body#home .isotope-01 .item .contain-img {
   opacity: 1;
 }
 
+#cookies-banner {
+  width: 100%;
+  margin: 0;
+  background: #080808;
+  border-bottom: solid 1px black;
+  position: fixed;
+  bottom: 0px;
+  z-index: 200;
+  padding: 17px;
+  font-size: 0.75rem;
+}
+
+#cookies-banner p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#cookies-banner .cookie-accept {
+  position: fixed;
+  bottom: 10px;
+  right: 12px;
+  font-size: 30px;
+  cursor: pointer;
+}
+#cookies-banner .cookie-accept .icon {
+  color: #c8a461;
+}
+
 body.slideshow-open {
   overflow: hidden;
 }

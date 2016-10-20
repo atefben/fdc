@@ -203,3 +203,22 @@ var owInitPopin = function(id) {
   }
 
 };
+
+/*  COOKIE BANNER
+ ----------------------------------------------------------------------------- */
+var owCookieBanner = function() {
+  if(typeof Cookies.get('cooki_banner') === "undefined"){
+    $('#cookies-banner').show();
+
+    $('.cookie-accept').click(function () { //on click event
+      days = 365; //number of days to keep the cookie
+      myDate = new Date();
+      myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
+      document.cookie = "cooki_banner = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
+      $("#cookies-banner").slideUp("slow"); //jquery to slide it up
+      $(".btnClose").hide();
+    });
+  } else {
+    $('#cookies-banner').hide();
+  }
+};

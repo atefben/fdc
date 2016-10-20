@@ -34,6 +34,7 @@ $(document).ready(function () {
 
     owInitPopin('popin-landing-e');
     owInitPopin('popin-timer-banner');
+    owCookieBanner();
 
     //fix scale zoom tablette
 
