@@ -67,14 +67,15 @@ class MediaVideoAdmin extends Admin
                 'label'      => 'filter.media_video.displayed_home',
 
             ))
+            ->add('displayedHomeCorpo', null, array(
+                'label'      => 'filter.label_homepage_corpo_displayed_videos',
+                'field_type' => 'checkbox',
+            ))
             ->add('displayedTrailer', null, array(
                 'label'      => 'filter.media_video.displayed_trailer',
                 'field_type' => 'checkbox',
             ))
-            ->add('displayedHomeCorpo', null, array(
-                'label'      => 'form.homepage_corpo_display',
-                'field_type' => 'checkbox',
-            ))
+
         ;
     }
 

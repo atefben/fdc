@@ -3,7 +3,7 @@ var owInitGrid = function (id) {
     if (id == 'isotope-01') {
 
 
-        var $grid = $('.isotope-01').imagesLoaded(function () {
+        var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
                 percentPosition: true,
@@ -13,6 +13,68 @@ var owInitGrid = function (id) {
                     columnWidth: '.grid-sizer'
                 }
             });
+
+        });
+
+        var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
+            $gridMore.isotope({
+                itemSelector: '.item',
+                percentPosition: true,
+                sortBy: 'original-order',
+                layoutMode: 'packery',
+                packery: {
+                    columnWidth: '.grid-sizer'
+                }
+            });
+        });
+
+
+        var number = 0;
+
+        $('.read-more.ajax-request').off('click').on('click', function(e){
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+
+            if(number%2 == 0){
+                $.get( url, function( data ) {
+                    data = $(data);
+                    $gridMore.append(data).isotope( 'addItems', data );
+
+
+                    $gridMore.isotope({
+                        itemSelector: '.item',
+                        percentPosition: true,
+                        sortBy: 'original-order',
+                        layoutMode: 'packery',
+                        packery: {
+                            columnWidth: '.grid-sizer'
+                        }
+                    });
+
+
+                });
+            }else{
+                url = $(this).data('reverse');
+
+                $.get( url, function( data ) {
+                    data = $(data);
+                    $gridMore.append(data).isotope( 'addItems', data );
+
+
+                    $gridMore.isotope({
+                        itemSelector: '.item',
+                        percentPosition: true,
+                        sortBy: 'original-order',
+                        layoutMode: 'packery',
+                        packery: {
+                            columnWidth: '.grid-sizer'
+                        }
+                    });
+
+                });
+            }
+            number++;
         });
 
 
@@ -38,6 +100,81 @@ var owInitGrid = function (id) {
             });
 
         }
+
+        if(!$('#home').length > 0) {
+            
+            var trunTitle = function() {
+                $.each($('.card.item'), function (i, e) {
+                    var title = $(e).find('.info strong a');
+    
+                    if (!title.hasClass('init')) {
+                        var text = $(e).find('.info strong a').text();
+                        title.addClass('init');
+                        title.attr('data-title', text);
+                    } else {
+                        var text = title.attr('data-title');
+                    }
+    
+    
+                    if($('.medias').length > 0) {
+    
+                        if (window.matchMedia("(max-width: 1405px)").matches) {
+                            title.html(text.trunc(25, true));
+                        }else{
+                            title.html(text.trunc(40, true));
+                        }
+    
+                    } else {
+                        title.html(text.trunc(60, true));
+                    }
+                });
+            }
+    
+    
+            trunTitle();
+    
+    
+            $(window).resize(function () {
+                trunTitle();
+            });
+    
+            var title = $('.info strong a').text();
+        }
+
+        return $grid;
+    }
+
+    if (id == 'isotope-02') {
+
+
+        var $grid = $('.isotope-02').imagesLoaded(function () {
+            $grid.isotope({
+                itemSelector: '.item',
+                percentPosition: true,
+                sortBy: 'original-order',
+                layoutMode: 'packery',
+                packery: {
+                    gutter: 39
+                }
+            });
+        });
+
+        return $grid;
+    }
+
+    if (id == 'isotope-03') {
+
+        var $grid = $('.isotope-03').imagesLoaded(function () {
+            $grid.isotope({
+                itemSelector: '.item',
+                percentPosition: true,
+                sortBy: 'original-order',
+                layoutMode: 'packery',
+                packery: {
+                    columnWidth: '.grid-sizer'
+                }
+            });
+        });
 
         var trunTitle = function() {
             $.each($('.card.item'), function (i, e) {
@@ -79,41 +216,6 @@ var owInitGrid = function (id) {
         return $grid;
     }
 
-    if (id == 'isotope-02') {
-
-
-        var $grid = $('.isotope-02').imagesLoaded(function () {
-            $grid.isotope({
-                itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
-                layoutMode: 'packery',
-                packery: {
-                    gutter: 39
-                }
-            });
-        });
-
-        return $grid;
-    }
-
-    if (id == 'isotope-03') {
-
-        var $grid = $('.isotope-03').imagesLoaded(function () {
-            $grid.isotope({
-                itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
-                layoutMode: 'packery',
-                packery: {
-                    columnWidth: '.grid-sizer'
-                }
-            });
-        });
-
-        return $grid;
-    }
-
     if (id == 'filter') {
 
         if ($('.isotope-01').length) {
@@ -138,6 +240,8 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat;
+
+            console.log(filters);
 
             var $grid = $('.isotope-01').isotope({filter: filters});
         }

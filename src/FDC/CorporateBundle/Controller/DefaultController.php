@@ -11,6 +11,28 @@ use DateTime;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/homepagecorporate/gallery")
+     * @Template("BaseAdminBundle:Gallery:show.html.twig")
+     */
+    public function galleryCorpoAction(Request $request)
+    {
+        $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+
+        return array('gallery' => $gallery);
+    }
+
+    /**
+     * @Route("/homepagecorporate/mediavideo")
+     * @Template("BaseAdminBundle:MediaVideo:show.html.twig")
+     */
+    public function videoCorpoAction(Request $request)
+    {
+        $video = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+
+        return array('video' => $video);
+    }
+
+    /**
      * @Route("/")
      * @Template("FDCCorporateBundle:News:home.html.twig")
      */
@@ -72,16 +94,18 @@ class DefaultController extends Controller
                 $filters['themes']['content'][] = $homeContent->getTheme();
             }
 
-            if (!in_array($homeContent->getNewsType(), $filters['format'])) {
-                $filters['format'][] = $homeContent->getNewsType();
+            if (!in_array($homeContent->getTypeClone(), $filters['format'])) {
+                $filters['format'][] = $homeContent->getTypeClone();
             }
         }
-
 
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      FEATURED VIDEO      //////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////
         $featuredVideo = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+
+
+        $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
 
 
         /////////////////////////////////////////////////////////////////////////////////////
@@ -98,6 +122,7 @@ class DefaultController extends Controller
             'homeContents'       => $homeContents,
             'featuredVideo'      => $featuredVideo,
             'festivalStartsAt'   => $homepage->getFestivalStartsAt(),
+            'gallery'            => $gallery,
             'filters'            => $filters
         );
     }

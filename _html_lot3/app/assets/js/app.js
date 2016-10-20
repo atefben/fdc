@@ -34,6 +34,7 @@ $(document).ready(function () {
 
     owInitPopin('popin-landing-e');
     owInitPopin('popin-timer-banner');
+    owCookieBanner();
 
     //fix scale zoom tablette
 
@@ -137,6 +138,8 @@ $(document).ready(function () {
         owInitReadMore();
         var slider = $('.block-diaporama .slider-01');
         owinitSlideShow(slider);
+
+        owInitGrid('isotope-01');
     }
 
 
@@ -146,6 +149,15 @@ $(document).ready(function () {
 
     if ($('.block-push-top').length) {
         onInitParallax();
+    }
+    
+    if($('.contact').length ) {
+        initContact();
+    }
+
+    if($('.faq').length > 0) {
+        initFaq();
+        owInitScrollFaq();
     }
 
 
@@ -277,7 +289,35 @@ $(document).ready(function () {
 
         owInitAleaGrid(grid, $('.grid-01'), true);
 
+/*
         ajaxMedialib();
+*/
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "pid") {
+            owinitSlideShow(grid, hash);
+        } else {
+            owinitSlideShow(grid);
+        }
+
+        if (hash.length > 0 && verif == "vid") {
+            console.log(number);
+
+            initVideo(number);
+        } else {
+            initVideo();
+        }
+
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        } else {
+            initAudio();
+        }
     }
 
     if ($('.search-page').length) {

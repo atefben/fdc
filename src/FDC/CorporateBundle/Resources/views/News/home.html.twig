@@ -1,6 +1,7 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
-{% block bodyClass %}retrospective retrospective-home{% endblock %}
+{% block bodyClass %}home{% endblock %}
+{% block bodyId %}home{% endblock %}
 
 {% block body %}
     <section id="main" class="home">
@@ -40,13 +41,16 @@
                         <div class="slider-carousel">
                             {% for sliderItem in sliderItems %}
                             <div class="item vFlexAlign" data-item='{{ sliderItem.item }}'>
+                                <a href="{{ sliderItem.url }}" class="coverLink"></a>
                                 <a href="{{ sliderItem.url }}">
                                     <strong class="title-4a">{{ sliderItem.title }}</strong>
                                 </a>
                                 <a href="{{ sliderItem.url }}">
                                     <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                 </a>
-                                {{ sliderItem.introduction|raw }}
+                                <span class="text-trunc">
+                                    {{ sliderItem.introduction|raw }}
+                                </span>
                             </div>
                             {% endfor %}
                         </div> <!-- end slider carousel -->
@@ -58,21 +62,22 @@
         </div> <!-- end padding-bottom -->
         {% endif %}
 
+        {% if homepage.displayedFeaturedContents == false %}
         <div class="padding-top">
-
             <h2 class="title title-01">communiqués et infos</h2>
 
             {% if homepage.displayedFeaturedContentsFilters == false %}
                 {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
             {% endif %}
-
         </div>
+        {% endif %}
 
         <div class="content">
             <div class="block-01 padding-bottom block-scale">
                 {% if homepage.displayedFeaturedContents == false %}
                 <div class="contain-card">
-                    <div class="cards">
+                    <div class="cards grid-01 isotope-01">
+                        <div class="grid-sizer"></div>
                     {% for i in 0..2 %}
                         {% set article = homeContents[i] %}
                         {% if class(article) starts with 'S' %}
@@ -164,7 +169,7 @@
                                 {% set file = trans.file %}
                             {% endif %}
                         {% endif %}
-                        <article class="card {{ contentType }}{% if i == 0 %} double{% endif %}" data-format="{{ contentType }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+                        <article class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{% if i == 0 %} double w2{% endif %}" data-format="{{ contentType }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
                             <div class="image">
                                 <div class="image-wrapper">
                                     <img src="{% path file , '926x584' %}" alt=""  />
@@ -232,6 +237,7 @@
                 {% if homepage.displayedFeaturedContents == false %}
                 <div class="articles-wrapper add-ajax-request">
                     <div class="articles article-inverse">
+                        <div class="cards grid-01 isotope-01">
                         {% if homeContents|length > 3 %}
                         {% for i in 3..(homeContents|length)-1 %}
                             {% set article = homeContents[i] %}
@@ -324,7 +330,9 @@
                                     {% set file = trans.file %}
                                 {% endif %}
                             {% endif %}
-                            <article class="card {{ contentType }} {% if i == 4 %}double-right{% else %}small-left{% endif %}" data-format="{{ contentType }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
+
+                            <div class="grid-sizer"></div>
+                            <article class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if i == 4 %}double w2{% else %}{% endif %}" data-format="{{ contentType }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false">
                                 <div class="image">
                                     <div class="image-wrapper">
                                         <img src="{% path file , '926x584' %}" alt="" />
@@ -352,6 +360,7 @@
                        {% endfor %}
                        <a style="visibility: hidden" href="ajax_more_news.html" data-reverse="ajax_more_news-reverse.html" class="read-more ajax-request">Afficher <strong>plus d'infos</strong></a>
                        {% endif %}
+                        </div>
                     </div> <!-- end articles -->
                 </div> <!-- end article wrapper-->
                 {% endif %}

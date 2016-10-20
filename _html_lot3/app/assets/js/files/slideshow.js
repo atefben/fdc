@@ -27,7 +27,7 @@ var owinitSlideShow = function (slider, hash) {
             });
         }
 
-        if($('.medias').length > 0 ) {
+        if($('.medias').length > 0 || $('.media-library').length > 0) {
             $('.item.photo').on('click', function (e) {
                 e.preventDefault();
 

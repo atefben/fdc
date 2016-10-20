@@ -421,6 +421,8 @@ filter:
     label_selection: Sélection
     label_festival-year: Année de sélection
     label_programmation_films: Film
+    label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
+    label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
