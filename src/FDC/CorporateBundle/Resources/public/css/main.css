@@ -4562,6 +4562,12 @@ video {
   max-width: 100%;
   object-fit: cover;
 }
+.block-01-s .video-container {
+  height: calc(830px / 1.58);
+}
+.block-01-s .slideshow .slideshow-img {
+  height: 462px;
+}
 
 .block-01-ms {
   margin: 0 auto;
@@ -4572,6 +4578,12 @@ video {
   max-width: 100%;
   object-fit: cover;
 }
+.block-01-ms .video-container {
+  height: calc(663px / 1.58);
+}
+.block-01-ms .slideshow .slideshow-img {
+  height: 462px;
+}
 
 .block-01-xs {
   margin: 0 auto;
@@ -4581,6 +4593,12 @@ video {
 .block-01-xs img {
   max-width: 100%;
   object-fit: cover;
+}
+.block-01-xs .video-container {
+  height: calc(663px / 1.58);
+}
+.block-01-xs .slideshow .slideshow-img {
+  height: 462px;
 }
 
 .block-01-mms {

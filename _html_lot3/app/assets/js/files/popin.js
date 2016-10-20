@@ -188,9 +188,7 @@ var owInitPopin = function(id) {
     }
 
     var closePopin = Cookies.get('popin-banner');
-
-    console.log(closePopin);
-
+    
     if(closePopin == 0) {
       $popin.addClass('animated fadeIn').addClass('visible');
       visiblePopinB();
