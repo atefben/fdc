@@ -1,0 +1,184 @@
+//       SUMMARY TABLE     
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+.legal-notice{
+    padding: 65px 0;
+
+    em {
+        font-family: $CamphorItalic;
+    }
+
+    strong {
+        font-family: $CamphorBold;
+    }
+
+    sub {
+        vertical-align: text-bottom;
+        font-size: .5rem;
+    }
+
+    sup {
+        vertical-align: super;
+        font-size: .5rem;
+    }
+
+    table {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        width: 644px;
+        padding-bottom: 50px;
+
+
+        td, th {
+            font-weight: normal;
+            vertical-align: middle;
+            border: 1px solid #dfdfdf;
+            padding: 15px 0px;
+            width: 320px;
+            text-align: center;
+            color:#666666;
+            font-size: .74rem;
+            font-family: $CamphorMedium;
+            text-align: center;
+        }
+
+        th {
+            text-transform: uppercase;
+            color:#000;
+            font-family: $CamphorBold;
+        }
+
+        a {
+            color: $gold;
+            transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+            &:hover {
+                color: #8e6d30;
+            }
+        }
+    }
+
+    ul li {
+        font-size: 1rem;
+        line-height: 30px;
+        list-style: inside;
+        color: #666666;
+
+        a {
+            color: $gold;
+            transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+            &:hover {
+                color: #8e6d30;
+            }
+        }
+
+    }
+
+    ul {
+        list-style: inherit;
+        color: #666666;
+        margin-bottom: 36px;
+    }
+
+    ol li {
+        font-size: 1rem;
+        line-height: 30px;
+        list-style: inside;
+        list-style-type: decimal;
+        color: #666666;
+
+        a {
+            color: $gold;
+            transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+            &:hover {
+                color: #8e6d30;
+            }
+        }
+    }
+
+    ol {
+        list-style: inherit;
+        list-style-type: decimal;
+        color: #666666;
+        margin-left: 30px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    table[border="0"] td {
+        border: none !important;
+    }
+
+    .text p {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.7em;
+        margin-bottom: 5px;
+    }
+
+    .text a strong {
+        color: #c8a461;
+        font-weight: 400;
+    }
+
+    .text strong {
+        font-family: $CamphorBold;
+    }
+
+    h2{
+     padding: 60px; 
+        font-size: 28px;
+    }
+    section{
+        background-color: #fff;
+        width: 630px;
+        max-width: 100%;
+        margin: 0 auto;
+        color:#666666;
+        padding-bottom: 150px;
+        .legal-notice-description{
+            padding-bottom: 40px;
+        }
+        .legal-notice-responsable{
+            p{
+                strong{
+                    font-family: $CamphorBold;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    font-size: 0.89rem;
+                    color: #000;
+                }
+            }
+            p:first-child{
+                padding-bottom: 18px;
+            }
+        }
+        article{
+            height: auto;
+            box-sizing: border-box;
+            float: none;
+            padding-left: 0px;
+            position: relative;
+            width: 100%;
+            padding-top: 42px;
+            line-height: 26px;
+            h4{
+                    font-family: $CamphorBold;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    font-size: 0.89rem;
+                    color: #c8a461;
+            }
+            
+        }
+    }
+}
