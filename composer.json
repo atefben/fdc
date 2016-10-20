@@ -13,7 +13,6 @@
         "doctrine/dbal": "<2.5",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/doctrine-fixtures-bundle": "dev-master#0f1a2f91",
-        "beberlei/DoctrineExtensions": "*",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
