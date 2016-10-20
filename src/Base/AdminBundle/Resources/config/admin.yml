@@ -1459,12 +1459,6 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.corpo_team_members_group_association:
-        class: Base\AdminBundle\Admin\CorpoTeamMembersGroupAssociationAdmin
-        arguments: [~, Base\CoreBundle\Entity\CorpoTeamMembersGroupAssociation, BaseAdminBundle:CorpoTeamMembersGroupAssociationAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamMembersGroupAssociation}
-
     base.admin.corpo_teams_association:
         class: Base\AdminBundle\Admin\CorpoTeamsAssociationAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoTeamsAssociation, SonataAdminBundle:CRUD]
