@@ -14,7 +14,7 @@
         <div class="fdc-help form-group">
             {{ form_row(form.parent.children.evenmt) }}
             {{ form_row(form.parent.children.instit) }}
-        </div>    `
+        </div>
         {% endif %}
         {% if form.parent.children.createdAt is defined and form.parent.children.createdAt.vars.data and
             form.parent.children.createdBy is defined and form.parent.children.createdBy.vars.data
@@ -26,7 +26,7 @@
                         'user': form.parent.children.createdBy.vars.data.fullName
                     })|raw
                 }}
-
+            </div>
         {% endif %}
         {% if form.parent.children.updatedAt is defined and form.parent.children.updatedAt.vars.data and
             form.parent.children.createdBy is defined and form.parent.children.updatedBy.vars.data
