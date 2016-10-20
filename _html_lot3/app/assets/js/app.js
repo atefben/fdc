@@ -149,6 +149,10 @@ $(document).ready(function () {
     if ($('.block-push-top').length) {
         onInitParallax();
     }
+    
+    if($('.contact').length ) {
+        initContact();
+    }
 
 
     if ($('.retrospective.poster').length) {

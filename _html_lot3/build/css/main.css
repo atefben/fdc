@@ -16192,3 +16192,210 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 350px;
   margin-top: 51px;
 }
+
+.c-contact input[type=text],
+.c-contact input[type=email],
+.c-contact input[type=tel],
+.c-contact input[type=url],
+.c-contact input[type=search],
+.c-contact input[type=submit] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+}
+.c-contact .contact {
+  padding-top: 60px;
+}
+.c-contact .contact h2.title {
+  color: #333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+.c-contact .contact .coords, .c-contact .contact .success {
+  background-color: #f4f4f4;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 35px 0;
+}
+.c-contact .contact .coords h3, .c-contact .contact .success h3 {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875em;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.c-contact .contact .coords p, .c-contact .contact .success p {
+  color: #666;
+  line-height: 1.4em;
+}
+.c-contact .contact .success {
+  display: none;
+}
+.c-contact .contact .container p {
+  color: #666;
+  line-height: 1.6em;
+  margin: 50px 0 25px 0;
+  text-align: center;
+}
+.c-contact .contact #form {
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 70px;
+  width: 525px;
+}
+.c-contact .contact #form ::-webkit-input-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.c-contact .contact #form :-moz-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.c-contact .contact #form ::-moz-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.c-contact .contact #form :-ms-input-placeholder {
+  color: #999;
+  font-size: 0.875rem;
+}
+.c-contact .contact #form .required {
+  color: #999;
+  float: right;
+  font-size: 0.875rem;
+}
+.c-contact .contact #form input, .c-contact .contact #form textarea {
+  background: #fff;
+  border: 1px solid #c1c1c1;
+  box-sizing: border-box;
+  color: #999;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 15px;
+  outline: none;
+  padding: 0 25px;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.c-contact .contact #form input:focus, .c-contact .contact #form textarea:focus {
+  border-color: #141414;
+}
+.c-contact .contact #form textarea {
+  height: 190px;
+  padding-top: 20px;
+  resize: none;
+}
+.c-contact .contact #form textarea.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.c-contact .contact #form input {
+  height: 50px;
+  line-height: 50px;
+}
+.c-contact .contact #form input.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.c-contact .contact #form input.valid {
+  border-color: green;
+}
+.c-contact .contact #form input[type="submit"] {
+  border-color: #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+  float: left;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 0.625rem;
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  width: 180px;
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.c-contact .contact #form input[type="submit"]:hover {
+  border-color: #000;
+  color: #000;
+}
+.c-contact .contact #form .select {
+  border: 1px solid #c1c1c1;
+  box-sizing: border-box;
+  color: #999;
+  line-height: 50px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 0.688rem;
+  display: block;
+  height: 50px;
+  margin-bottom: 15px;
+  outline: none;
+  padding: 0 25px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+.c-contact .contact #form .select.invalid {
+  border-color: #e93939;
+  color: #e93939;
+}
+.c-contact .contact #form .select #triggerSelect {
+  position: absolute;
+  display: block;
+  height: 50px;
+  top: 0;
+  right: 0;
+  width: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+.c-contact .contact #form .select label {
+  color: #333;
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.c-contact .contact #form .select select {
+  background: none;
+  height: 50px;
+  line-height: 50px;
+  border: none;
+  color: #c8a461;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 0.688rem;
+  outline: none;
+  -webkit-appearance: none;
+  text-transform: uppercase;
+  padding-right: 10px;
+  width: 280px;
+}
+.c-contact .contact #form .errors {
+  border: 1px solid #e93939;
+  color: #e93939;
+  clear: both;
+  font-size: 0.875rem;
+  opacity: 0;
+  padding: 20px;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.c-contact .contact #form .errors.show {
+  opacity: 1;
+  visibility: visible;
+}
+.c-contact .contact #form .errors ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.c-contact .contact #form .errors ul li {
+  margin-bottom: 5px;
+}
