@@ -11594,6 +11594,7 @@ body#home .isotope-01 .item .contain-img {
   z-index: 200;
   padding: 17px;
   font-size: 0.75rem;
+  display: none;
 }
 
 #cookies-banner p {

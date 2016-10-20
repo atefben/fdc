@@ -289,7 +289,9 @@ $(document).ready(function () {
 
         owInitAleaGrid(grid, $('.grid-01'), true);
 
+/*
         ajaxMedialib();
+*/
     }
 
     if ($('.search-page').length) {
