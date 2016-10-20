@@ -154,6 +154,11 @@ $(document).ready(function () {
         initContact();
     }
 
+    if($('.faq').length > 0) {
+        initFaq();
+        owInitScrollFaq();
+    }
+
 
     if ($('.retrospective.poster').length) {
         owInitNavSticky(1);

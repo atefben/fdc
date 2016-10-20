@@ -16399,3 +16399,176 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .c-contact .contact #form .errors ul li {
   margin-bottom: 5px;
 }
+
+.faq {
+  width: 978px;
+  margin: 0 auto;
+}
+.faq .faq-menu {
+  width: 210px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin-right: 29px;
+  position: absolute;
+  top: 163px;
+}
+.faq .faq-menu.stick {
+  position: fixed;
+  top: 120px;
+  z-index: 4;
+}
+.faq .faq-menu.bottom {
+  position: absolute;
+  top: auto;
+  bottom: 190px;
+  left: auto !important;
+}
+.faq .faq-menu ul {
+  border-right: 1px solid #dfdfdf;
+}
+.faq .faq-menu ul li {
+  padding: 15px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #ccc;
+  transition: .5s;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.faq .faq-menu ul li:hover {
+  background-color: #fafafa;
+  color: #b2b2b2;
+  cursor: pointer;
+}
+.faq .faq-menu ul .active {
+  background-color: #dfdfdf;
+  color: #000;
+}
+.faq .faq-container {
+  width: 733px;
+  display: none;
+  vertical-align: top;
+}
+.faq .faq-container article strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.faq .faq-container article sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+.faq .faq-container article sup {
+  font-size: smaller;
+  vertical-align: super;
+}
+.faq .faq-container article em {
+  font-style: italic;
+}
+.faq .faq-container article i {
+  font-style: italic;
+}
+.faq .faq-container article ol, .faq .faq-container article ul {
+  list-style: inherit;
+}
+.faq .faq-active {
+  display: inline-block;
+}
+.faq section[data-name="informations-generales"], .faq section[data-name="general-informations"], .faq section[data-name="informaciones-generales"], .faq section[data-name="chang-gui-xin-xi"] {
+  top: 1px;
+  opacity: 1;
+  display: inline-block;
+}
+.faq h2 {
+  padding: 55px;
+  font-size: 1.75rem;
+}
+.faq section {
+  background-color: #fff;
+  width: 630px;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #666666;
+  padding-bottom: 150px;
+  position: relative;
+  opacity: 0;
+  display: inline-block;
+  top: 200px;
+  margin-left: 240px;
+}
+.faq section article {
+  height: auto;
+  box-sizing: border-box;
+  float: none;
+  padding-left: 0px;
+  position: relative;
+  width: 100%;
+  padding-top: 0px;
+  line-height: 26px;
+  border-top: 1px solid #c1c1c1;
+  padding: 20px 18px;
+  max-height: 100px;
+  overflow: hidden;
+  transition: 1s;
+}
+.faq section article .faq-question {
+  position: relative;
+}
+.faq section article .faq-question:hover .icon_case-plus {
+  color: #c8a461;
+  cursor: pointer;
+}
+.faq section article .faq-question:hover h3 {
+  color: #c8a461;
+  transition: .5s;
+  cursor: pointer;
+}
+.faq section article h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #999999;
+  padding-bottom: 40px;
+  width: 533px;
+  display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-align: left;
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.3em;
+  margin: 18px auto 0;
+}
+.faq section article .icon-more-square {
+  position: absolute;
+  top: 7px;
+  right: -4px;
+  font-size: 2.8rem;
+  color: #c1c1c1;
+  transition: color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.faq section article .icon-minus {
+  position: absolute;
+  top: 21px;
+  right: 12px;
+  font-size: 0.7rem;
+  color: #c8a461;
+}
+.faq section article .faq-description {
+  width: 660px;
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+}
+.faq section article .faq-description a {
+  color: #c8a461;
+  text-decoration: underline;
+}
+.faq section article .fa:hover {
+  color: #c8a461;
+  transition: .5s;
+  cursor: pointer;
+}
+.faq section .faq-article-active h3 {
+  color: #c8a461;
+}
+.faq section .faq-article-active .fa {
+  color: #c8a461;
+}
