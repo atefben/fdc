@@ -10054,6 +10054,14 @@ header #searchContainer {
   visibility: visible !important;
 }
 
+.floatr {
+  float: right;
+}
+
+.floatl {
+  float: left;
+}
+
 .isotope-01 .item img {
   width: 100%;
   object-fit: cover;
@@ -10061,6 +10069,12 @@ header #searchContainer {
 .isotope-01 .item .contain-img {
   overflow: hidden;
   background-size: cover;
+}
+body#home .isotope-01 .card {
+  height: 300px;
+}
+body#home .isotope-01 .card.w2 {
+  height: 600px;
 }
 body#home .isotope-01 .item img {
   width: 100%;

@@ -1988,8 +1988,6 @@ var owInitGrid = function (id) {
         var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
                 layoutMode: 'packery',
                 packery: {
                     columnWidth: '.grid-sizer'
@@ -1998,15 +1996,21 @@ var owInitGrid = function (id) {
 
         });
 
+        var $items = $('.item');
+
+        
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
-                layoutMode: 'packery',
+                layoutMode: 'masonry',
                 packery: {
                     columnWidth: '.grid-sizer'
-                }
+                },
+                getSortData: {
+                    number: '[data-sort]'
+                },
+                // sort by color then number
+                sortBy: ['number']
             });
         });
 
@@ -2024,15 +2028,7 @@ var owInitGrid = function (id) {
                     $gridMore.append(data).isotope( 'addItems', data );
 
 
-                    $gridMore.isotope({
-                        itemSelector: '.item',
-                        percentPosition: true,
-                        sortBy: 'original-order',
-                        layoutMode: 'packery',
-                        packery: {
-                            columnWidth: '.grid-sizer'
-                        }
-                    });
+                    $gridMore.isotope();
 
 
                 });
@@ -2044,15 +2040,7 @@ var owInitGrid = function (id) {
                     $gridMore.append(data).isotope( 'addItems', data );
 
 
-                    $gridMore.isotope({
-                        itemSelector: '.item',
-                        percentPosition: true,
-                        sortBy: 'original-order',
-                        layoutMode: 'packery',
-                        packery: {
-                            columnWidth: '.grid-sizer'
-                        }
-                    });
+                    $gridMore.isotope();
 
                 });
             }
