@@ -3022,6 +3022,13 @@ var owInitSliderSelect = function(id) {
         slider.noUiSlider.on('update', function( values, handle ) {
 
             snapValues[handle].innerHTML = parseInt(values[handle]);
+
+            var lower = parseInt(values[0]);
+            var up = parseInt(values[1]);
+
+            $('#s-yearstart').val(lower);
+            $('#s-yearend').val(up);
+
         });
     }
 
