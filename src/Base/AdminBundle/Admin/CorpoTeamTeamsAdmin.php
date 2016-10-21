@@ -127,13 +127,6 @@ class CorpoTeamTeamsAdmin extends Admin
                             'class' => 'hidden'
                         )
                     ),
-                    'status'         => array(
-                        'label'                     => 'form.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
-                    ),
                     'teamName' => array(
                         'label' => 'Nom de l\'équipe',
                     ),
@@ -167,10 +160,6 @@ class CorpoTeamTeamsAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle',
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
         ;

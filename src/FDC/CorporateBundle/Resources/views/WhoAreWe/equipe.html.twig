@@ -1,0 +1,88 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}
+    who who-fdc bright article-single
+{% endblock bodyClass %}
+{% block body %}
+    <section id="main">
+        {% set mainTrans = datas.mainImage.findTranslationByLocale(app.request.locale) %}
+        {% if mainTrans is null or mainTrans.file is null %}
+            {% set mainTrans = datas.mainImage.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set mainImage = mainTrans.file %}
+        <div class="block-push block-push-top"
+             style="background-image: url({% path mainImage, '1280x808' %});">
+            <div class="vFlexAlign">
+                <div class="txts">
+                    <h1 class="title-3">qui sommes nous ?</h1>
+                </div>
+            </div>
+        </div> <!-- end block push -->
+
+        <div class="ajax-section">
+            <div class="contain-ajax">
+                {{ render(controller('FDCCorporateBundle:WhoAreWe:nav', {'slug' : 'equipe'})) }}
+
+
+                <div class="all-contain">
+
+                    <div class="contain-title vFlexAlign block-01-s">
+                        <h2 class="title-02">{{ datas|trans_fallback('content')|raw }}</h2>
+                    </div>
+
+                    <div class="filters">
+                        <div id="staff" class="filter">
+                            <span class="label">l'équipe :</span>
+                              <span class="select">
+                                {% for team in datas.teams %}
+                                    <span data-filter="{{ team.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}"
+                                          class="active">{{ team.teams|trans_fallback('teamName') }}</span>
+                                {% endfor %}
+                                  <i class="icon icon-arrow-down"></i>
+                              </span>
+                        </div>
+                    </div> <!-- end filters -->
+
+                    {% for teamAssociation in datas.teams %}
+                    {% for departementAssociation in teamAssociation.teams.departement %}
+                    <div class="block-01 border-bottom padding-bottom ">
+                        <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
+                        <div class="isotope-02">
+                            <div class="grid-sizer"></div>
+                            {% for membersAssociation in departementAssociation.departement.members %}
+                            <div class="item block-poster festival-de-cannes">
+                                <a href="#">
+                                    <div class="contain-img">
+                                        {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale(app.request.locale) %}
+                                        {% if mainTrans is null or mainTrans.file is null %}
+                                            {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale('fr') %}
+                                        {% endif %}
+                                        {% set mainImage = mainTrans.file %}
+                                        {% if mainImage is not null %}
+                                            <img src="{% path mainImage, '256x348' %}" alt=""  >
+                                        {% else %}
+                                            <img src="{{ asset('bundles/fdccorporate/media/images/who-staff-01.jpg') }}" alt=""  >
+                                        {% endif %}
+                                    </div>
+                                    <div class="contain-txts vFlexAlign">
+                                        <span class="title-11">{{ membersAssociation.members|trans_fallback('firstname') }}
+                                            <br>{{ membersAssociation.members|trans_fallback('lastname') }}
+                                        </span>
+                                        <span class="title-12">{{ membersAssociation.members|trans_fallback('function') }}</span>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div> <!-- fin block 01 -->
+                    {% endfor %}    <!-- fin isotope-02 -->
+                    {% endfor %}    <!-- fin isotope-02 -->
+
+
+                </div> <!-- end all contain -->
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

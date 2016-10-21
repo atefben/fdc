@@ -90,14 +90,6 @@ class CorpoTeamDepartementsAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
             ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'   => PressAccreditProcedure::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices'   => PressAccreditProcedureTranslation::getMainStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
@@ -169,10 +161,6 @@ class CorpoTeamDepartementsAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle',
             ))
         ;
     }

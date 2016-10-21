@@ -15,18 +15,7 @@
     </div> <!-- end block push -->
 
     <div class="ajax-section"><div class="contain-ajax">
-            <nav class="navigation-sticky">
-                <ul>
-                    {% for page in pages %}
-                        <li>
-                            <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}"
-                               class="{% if app.request.attributes.get('slug') == page|trans_fallback('slug') %}active{% endif %}">
-                                {{ page|trans_fallback('title') }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
+           {{ render(controller('FDCCorporateBundle:WhoAreWe:nav',{'slug': app.request.attributes.get('slug')})) }}
 
             <div class="all-contain">
 

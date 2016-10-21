@@ -88,14 +88,6 @@ class CorpoTeamMembersAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
             ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'   => PressAccreditProcedure::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices'   => PressAccreditProcedureTranslation::getMainStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
@@ -126,13 +118,6 @@ class CorpoTeamMembersAdmin extends Admin
                         'attr' => array (
                             'class' => 'hidden'
                         )
-                    ),
-                    'status'         => array(
-                        'label'                     => 'form.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'firstname' => array(
                         'label' => 'Prénom'
@@ -182,7 +167,6 @@ class CorpoTeamMembersAdmin extends Admin
             ->add('updatedAt')
             ->add('translate')
             ->add('translateOptions')
-            ->add('priorityStatus')
         ;
     }
 }
