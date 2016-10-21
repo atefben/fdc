@@ -40,29 +40,17 @@ var owInitGrid = function (id) {
 
             var url = $(this).attr('href');
 
-            if(number%2 == 0){
-                $.get( url, function( data ) {
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
+
+            $.get( url, function( data ) {
+                data = $(data);
+                $gridMore.append(data).isotope( 'addItems', data );
 
 
-                    $gridMore.isotope();
+                $gridMore.isotope();
 
 
-                });
-            }else{
-                url = $(this).data('reverse');
+            });
 
-                $.get( url, function( data ) {
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
-
-
-                    $gridMore.isotope();
-
-                });
-            }
-            number++;
         });
 
 
