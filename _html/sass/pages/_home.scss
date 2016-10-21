@@ -1801,8 +1801,8 @@
     h5 {
       color: #2b2b2b;
       font-size: 16px;
-      margin-bottom: 90px;
-      line-height: 50px;
+      margin-bottom: 150px;
+      line-height: 40px;
     }
 
     p {
@@ -2416,68 +2416,7 @@ header {
   }
 }
 
-.reverse {
-      -ms-transform: rotate(180deg); 
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
 
-
-/* COMPONENTS */
-
-.blackBtn {
-  width: 180px;
-  height: 50px;
-  background: black;
-  color:white;
-  text-transform: uppercase;
-  padding-top: 30px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.floatingButton {
-    position: absolute;
-    right: 1%;
-    top: 27%;
-    z-index: 1004;  
-
-    span:first-child {
-      background: black;
-      padding: 20px 30px;
-      color: white;
-      text-transform: uppercase;
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-    }
-
-    .arrow {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    .icon_flecheGauche {
-      
-      padding: 20px;
-      font-size: 15px;
-      border:1px solid #ECECEC;
-      
-    }
-    
-    &:hover span:first-child {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    
-    &:hover .arrow {
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-
-    }
-}
 
 /* ACCORDION*/
 

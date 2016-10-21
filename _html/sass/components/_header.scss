@@ -668,7 +668,6 @@ header {
   background-attachment: fixed;
   background-position:middle;
   height: auto;
-  min-height: 500px;
   color:white!important;
   @include transition(all .6s $smoothTransition);
   margin-top: 40px;
@@ -690,6 +689,7 @@ header {
     .active, &:hover {
       color: #FFFFFF!important;
       opacity: 0.8;
+      @include transition(all .6s $smoothTransition);
     }
     
   }
@@ -733,6 +733,7 @@ header {
   
   padding-left: 10px!important;
   height: 40px;
+  @include transition(all .6s $smoothTransition);
 
   li {
     height: 20px;

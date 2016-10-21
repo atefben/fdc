@@ -28,31 +28,43 @@
         </div>
         <div class="whiteBckg">
               <div class="tab_container ">
+                <div class="floatingButtonLeft">
+                  <div class="floatingButtonBckg">
+                    <span class="arrow"><i class='icon icon_flecheGauche'></i></span>
+                    <span class="floatingButtonText">nos conférences</span>
+                  </div>
+                </div>
+                <div class="floatingButtonRight">
+                  <div class="floatingButtonBckg">
+                    <span class="floatingButtonText">nos conférences</span>           
+                    <span class="arrow"><i class='icon icon_flecheGauche reverse'></i></span> 
+                  </div>
+                </div>
                 <div id="tab1" class="tab_content">
                     <div class="minTab">
                       <div class="tabPic">
                         <img src="img/guide.png">
                       </div>
                       <div class="tabBox">
-                        <span>le pocket guide</span>
-                        <h5>à partir de <span class="fromPrice">4500 euros</span></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
-                      <input type="checkbox" class="read-more-state" id="post-1" />
-                        <div class="read-more-wrap">
-                          <div class="read-more-target">
-                            <span>Le tarif forfaitaire comprend :</span>
-                            <ul>
-                              <li>• Équipement du stand: construction de base, mobilier, moquette, alimentation électrique, éclairage, enseigne, nettoyage (sauf en cas de cocktails) et tri sélectif, gardiennage de nuit des zones d’exposition ; ainsi que montage et démontage du stand, recyclage des moquettes.</li>
-                              <li>• Inscription au marché du film : 3 badges marché.</li>
-                              <li>• 10 % de remise sur les tarifs de réservation des projections au Marché du Film.</li>
-                              <li>• Abonnement d’1 an à la base de données Cinando.</li>
-                              <li>• Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
-                              <li>• Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails).</li>
-                            </ul>
-                          </div>       
-                        </div> 
-                        <label for="post-1" class="read-more-trigger"></label> 
-                        </div>     
+                          <span>le pocket guide</span>
+                          <h5>à partir de <span class="fromPrice">4500 euros</span></h5>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+                          <input type="checkbox" class="read-more-state" id="post-1" />
+                            <div class="read-more-wrap">
+                              <div class="read-more-target">
+                                <span>Le tarif forfaitaire comprend :</span>
+                                <ul>
+                                  <li>• Équipement du stand: construction de base, mobilier, moquette, alimentation électrique, éclairage, enseigne, nettoyage (sauf en cas de cocktails) et tri sélectif, gardiennage de nuit des zones d’exposition ; ainsi que montage et démontage du stand, recyclage des moquettes.</li>
+                                  <li>• Inscription au marché du film : 3 badges marché.</li>
+                                  <li>• 10 % de remise sur les tarifs de réservation des projections au Marché du Film.</li>
+                                  <li>• Abonnement d’1 an à la base de données Cinando.</li>
+                                  <li>• Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
+                                  <li>• Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails).</li>
+                                </ul>
+                              </div>       
+                            </div> 
+                            <label for="post-1" class="read-more-trigger"><a href=""><div  class="blueBtn">Réserver</div></a></label>       
+                      </div>     
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
@@ -77,7 +89,7 @@
                           </div>       
                         </div> 
                         <label for="post-2" class="read-more-trigger"></label> 
-                        </div>     
+                      </div>     
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
@@ -102,7 +114,7 @@
                           </div>       
                         </div> 
                         <label for="post-3" class="read-more-trigger"></label> 
-                        </div>     
+                      </div>     
                     </div>
                 </div>
                 <!-- #tab1 -->

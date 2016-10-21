@@ -9,7 +9,10 @@
 .boxes {
   height: auto;
   min-height: 500px;
+}
 
+.boxesHeight {
+  min-height: 580px;
 }
 
 .bigContainer {
@@ -111,11 +114,24 @@ ul.tabs {
   min-height: 450px;
 }
 
+.tabsMargin {
+  margin-top: -100px;
+}
+
 .tabpicturesBox {
     width: 25%;
     height: 225px;
     float: left;
     background: white;
+    vertical-align: middle;
+
+    img {
+      vertical-align: middle;
+      border: 3px solid white;
+      &:hover {
+        border: 3px solid #CCC;
+      }
+    }
   }
 
 .whiteBckg {
@@ -149,11 +165,23 @@ ul.tabs {
 
   .tabBox {
     text-align: left;
-    width: 70%;
+    width: 68%;
     float: left;
     background-color: #f8f8f8;
-    min-height: 300px;
+    min-height: 270px;
     padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right:2%;
+
+    .tabBoxleft {
+      width: 80%;
+      float: left;
+    }
+
+    .tabBoxright {
+      width: 100%;
+      float: left;
+    }
 
     span, h5 {
       font-size: 18px;
@@ -198,6 +226,10 @@ ul.tabs {
       border: 0px solid #ddd;
     }
 
+    .read-more-wrap {
+      margin-bottom: 30px;
+    }
+
     p {
       margin-bottom: 15px;
     }
@@ -206,6 +238,10 @@ ul.tabs {
       padding-left: 0px;
     }
   }
+}
+
+.picturesTabcontainer {
+  margin-top: -0px!important;
 }
 
 .tab_content {
@@ -253,21 +289,38 @@ ul.tabs {
   opacity: 0;
   max-height: 0;
   transition: .25s ease;
+
+  ul {
+    z-index:999;
+  }
+}
+
+.read-more-wrap .read-more-target {
+  display: none;
+  width: 0%;
+  height: 0px;
+  @include transition(all .5s $smoothTransition);
 }
 
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
+  display: block;
   opacity: 1;
   max-height: 999em;
+  width: 100%;
+  height: auto;
+  @include transition(all .5s $smoothTransition);
 }
 
 .read-more-state ~ .read-more-trigger:before {
   content: 'Plus détails';
   color: black;
+        @include transition(all .5s $smoothTransition);
 }
 
 .read-more-state:checked ~ .read-more-trigger:before {
   content: 'Fermer';
   color: black;
+        @include transition(all .5s $smoothTransition);
 }
 
 .read-more-trigger {
@@ -280,3 +333,174 @@ ul.tabs {
 }
 
 /* END TABS */
+
+.reverse {
+      -ms-transform: rotate(180deg); 
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+/* COMPONENTS */
+
+.blackBtn {
+  width: 180px;
+  height: 50px;
+  background: black;
+  color:white;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.floatingButton {
+    position: absolute;
+    z-index: 1004;  
+    right: 1%;
+    top: 27%;
+    
+    span:first-child {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      
+    }
+    
+    &:hover span:first-child {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    
+    &:hover .arrow {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+
+    }
+}
+
+
+.floatingButtonRight {
+  position: absolute;
+  z-index: 1004;  
+  right: 1%;
+  top: 40%;
+    
+    span:first-child {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      
+    }
+    
+    &:hover span:first-child {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    
+    &:hover .arrow {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+
+    }
+}
+
+.floatingButtonLeft {
+  position: absolute;
+  z-index: 1004;  
+  left: 1%; 
+  top: 40%;
+    span:nth-child(2) {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      
+    }
+    
+    &:hover span:nth-child(2){
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    
+    &:hover .arrow {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+
+    }
+}
+
+.blueBtn {
+    float: right;
+    right: 5%;
+    width: 139px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid #29afcf;
+    color: #29afcf;
+    line-height: 50px;
+    text-decoration: none;
+    background: transparent;
+    z-index: 1005;
+    cursor: pointer;
+
+    &.hover {
+      background: #29afcf!important;
+      color: white!important;
+      cursor: pointer;
+    }
+}

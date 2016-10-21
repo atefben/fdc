@@ -68,7 +68,7 @@
 }
 
 .accreditations {
-    background: url(/img/background-gold.png) no-repeat;
+    background: url(/img/greenBckg.png) no-repeat;
     background-size: 100% 100%;
     text-align: center;
     height: 1200px;
@@ -78,18 +78,22 @@
     width: 100%;
 
   .articles {
-    width: 33.18%;
+    width: 33.2%;
     height: 200px;
     margin-left: 0% !important;
     overflow: hidden !important;
     float: left;
     background: white;
 
+    @media screen and (max-width: 1280px) {
+      width: 33%;
+    }
+
     &:nth-child(2) {
-        border-left: 3px solid #ECECEC;
+        border-left: 2px solid #ECECEC;
+        border-right: 2px solid #ECECEC;
     }
     &:nth-child(3) {
-        border-left: 3px solid #ECECEC;
     }
     .articles-content {
         padding: 55px 5px;
@@ -107,6 +111,11 @@
         }
     }  
 
+    .primo{
+        padding-top: 0px;
+        margin-top: -38px;
+      }
+
     h3 {
       text-transform: initial;
     }
@@ -116,6 +125,7 @@
     }
 
     &:first-child {
+
       h6 {
         color: #ec3050;
         font-family: $CamphorHeavy;
@@ -137,19 +147,11 @@
     }
 
     .earlyBird {
-        position: absolute;
-        -ms-transform: rotate(-35deg); /* IE 9 */
-        -webkit-transform: rotate(-35deg); /* Chrome, Safari, Opera */
-        transform: rotate(-35deg);
-        margin-top: 20px;
-        padding: 5px 14px;
-        font-size: 12px;
-        margin-left: -12px;
-    }
-    span {
-      background: #ec3050;
-      color: white;
-      padding: 10px 0px;
+        img {
+          position: relative;
+          left: -146px;
+        }
+
     }
   }
 

@@ -4683,7 +4683,6 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   background-attachment: fixed;
   background-position: middle;
   height: auto;
-  min-height: 500px;
   color: white !important;
   -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4713,6 +4712,10 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 .subMenu li .active, .subMenu li:hover {
   color: #FFFFFF !important;
   opacity: 0.8;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .subMenu a.active, .subMenu a:hover {
   color: #FFFFFF !important;
@@ -4762,6 +4765,10 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 .subsubMenu {
   padding-left: 10px !important;
   height: 40px;
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .subsubMenu li {
   height: 20px;
@@ -10335,8 +10342,8 @@ header #searchContainer {
 .text-presentation h5 {
   color: #2b2b2b;
   font-size: 16px;
-  margin-bottom: 90px;
-  line-height: 50px;
+  margin-bottom: 150px;
+  line-height: 40px;
 }
 .text-presentation p {
   color: #2b2b2b;
@@ -10876,72 +10883,6 @@ header #logo-wrapper #logo h1 {
   position: absolute;
   top: 108px;
   left: 30px;
-}
-
-.reverse {
-  -ms-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-/* COMPONENTS */
-.blackBtn {
-  width: 180px;
-  height: 50px;
-  background: black;
-  color: white;
-  text-transform: uppercase;
-  padding-top: 30px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.floatingButton {
-  position: absolute;
-  right: 1%;
-  top: 27%;
-  z-index: 1004;
-}
-.floatingButton span:first-child {
-  background: black;
-  padding: 20px 30px;
-  color: white;
-  text-transform: uppercase;
-  opacity: 0;
-  visibility: hidden;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.floatingButton .arrow {
-  opacity: 1;
-  visibility: visible;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.floatingButton .icon_flecheGauche {
-  padding: 20px;
-  font-size: 15px;
-  border: 1px solid #ECECEC;
-}
-.floatingButton:hover span:first-child {
-  opacity: 1;
-  visibility: visible;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.floatingButton:hover .arrow {
-  opacity: 0;
-  visibility: hidden;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 /* ACCORDION*/
@@ -21577,7 +21518,7 @@ body:not(.tablette) .webtv #live .img {
 }
 
 .accreditations {
-  background: url(/img/background-gold.png) no-repeat;
+  background: url(/img/greenBckg.png) no-repeat;
   background-size: 100% 100%;
   text-align: center;
   height: 1200px;
@@ -21587,18 +21528,21 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
 }
 .accreditations .articles {
-  width: 33.18%;
+  width: 33.2%;
   height: 200px;
   margin-left: 0% !important;
   overflow: hidden !important;
   float: left;
   background: white;
 }
-.accreditations .articles:nth-child(2) {
-  border-left: 3px solid #ECECEC;
+@media screen and (max-width: 1280px) {
+  .accreditations .articles {
+    width: 33%;
+  }
 }
-.accreditations .articles:nth-child(3) {
-  border-left: 3px solid #ECECEC;
+.accreditations .articles:nth-child(2) {
+  border-left: 2px solid #ECECEC;
+  border-right: 2px solid #ECECEC;
 }
 .accreditations .articles .articles-content {
   padding: 55px 5px;
@@ -21612,6 +21556,10 @@ body:not(.tablette) .webtv #live .img {
   color: inherit;
   font-size: 25px !important;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+}
+.accreditations .articles .primo {
+  padding-top: 0px;
+  margin-top: -38px;
 }
 .accreditations .articles h3 {
   text-transform: initial;
@@ -21631,22 +21579,9 @@ body:not(.tablette) .webtv #live .img {
   color: #40acab;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
-.accreditations .articles .earlyBird {
-  position: absolute;
-  -ms-transform: rotate(-35deg);
-  /* IE 9 */
-  -webkit-transform: rotate(-35deg);
-  /* Chrome, Safari, Opera */
-  transform: rotate(-35deg);
-  margin-top: 20px;
-  padding: 5px 14px;
-  font-size: 12px;
-  margin-left: -12px;
-}
-.accreditations .articles span {
-  background: #ec3050;
-  color: white;
-  padding: 10px 0px;
+.accreditations .articles .earlyBird img {
+  position: relative;
+  left: -146px;
 }
 .accreditations .textWrapper {
   text-align: center;
@@ -21853,6 +21788,10 @@ body:not(.tablette) .webtv #live .img {
   min-height: 500px;
 }
 
+.boxesHeight {
+  min-height: 580px;
+}
+
 .bigContainer {
   width: 100%;
   margin: 0 auto;
@@ -21936,11 +21875,23 @@ ul.tabs .quarterTab h4 {
   min-height: 450px;
 }
 
+.tabsMargin {
+  margin-top: -100px;
+}
+
 .tabpicturesBox {
   width: 25%;
   height: 225px;
   float: left;
   background: white;
+  vertical-align: middle;
+}
+.tabpicturesBox img {
+  vertical-align: middle;
+  border: 3px solid white;
+}
+.tabpicturesBox img:hover {
+  border: 3px solid #CCC;
 }
 
 .whiteBckg {
@@ -21972,11 +21923,21 @@ ul.tabs .quarterTab h4 {
 }
 .tab_container .tabBox {
   text-align: left;
-  width: 70%;
+  width: 68%;
   float: left;
   background-color: #f8f8f8;
-  min-height: 300px;
+  min-height: 270px;
   padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 2%;
+}
+.tab_container .tabBox .tabBoxleft {
+  width: 80%;
+  float: left;
+}
+.tab_container .tabBox .tabBoxright {
+  width: 100%;
+  float: left;
 }
 .tab_container .tabBox span, .tab_container .tabBox h5 {
   font-size: 18px;
@@ -22015,11 +21976,18 @@ ul.tabs .quarterTab h4 {
   padding-left: 50px;
   border: 0px solid #ddd;
 }
+.tab_container .tabBox .read-more-wrap {
+  margin-bottom: 30px;
+}
 .tab_container .tabBox p {
   margin-bottom: 15px;
 }
 .tab_container .tabBox .read-more-target span {
   padding-left: 0px;
+}
+
+.picturesTabcontainer {
+  margin-top: 0px !important;
 }
 
 .tab_content {
@@ -22071,20 +22039,48 @@ ul.tabs .quarterTab h4 {
   max-height: 0;
   transition: .25s ease;
 }
+.read-more-target ul {
+  z-index: 999;
+}
+
+.read-more-wrap .read-more-target {
+  display: none;
+  width: 0%;
+  height: 0px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
+  display: block;
   opacity: 1;
   max-height: 999em;
+  width: 100%;
+  height: auto;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .read-more-state ~ .read-more-trigger:before {
   content: 'Plus détails';
   color: black;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .read-more-state:checked ~ .read-more-trigger:before {
   content: 'Fermer';
   color: black;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .read-more-trigger {
@@ -22097,6 +22093,189 @@ ul.tabs .quarterTab h4 {
 }
 
 /* END TABS */
+.reverse {
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* COMPONENTS */
+.blackBtn {
+  width: 180px;
+  height: 50px;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.floatingButton {
+  position: absolute;
+  z-index: 1004;
+  right: 1%;
+  top: 27%;
+}
+.floatingButton span:first-child {
+  background: black;
+  padding: 20px 30px;
+  color: white;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButton .arrow {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButton .icon_flecheGauche {
+  padding: 20px;
+  font-size: 15px;
+  border: 1px solid #ECECEC;
+}
+.floatingButton:hover span:first-child {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButton:hover .arrow {
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.floatingButtonRight {
+  position: absolute;
+  z-index: 1004;
+  right: 1%;
+  top: 40%;
+}
+.floatingButtonRight span:first-child {
+  background: black;
+  padding: 20px 30px;
+  color: white;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButtonRight .arrow {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButtonRight .icon_flecheGauche {
+  padding: 20px;
+  font-size: 15px;
+  border: 1px solid #ECECEC;
+}
+.floatingButtonRight:hover span:first-child {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButtonRight:hover .arrow {
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.floatingButtonLeft {
+  position: absolute;
+  z-index: 1004;
+  left: 1%;
+  top: 40%;
+}
+.floatingButtonLeft span:nth-child(2) {
+  background: black;
+  padding: 20px 30px;
+  color: white;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButtonLeft .arrow {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButtonLeft .icon_flecheGauche {
+  padding: 20px;
+  font-size: 15px;
+  border: 1px solid #ECECEC;
+}
+.floatingButtonLeft:hover span:nth-child(2) {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.floatingButtonLeft:hover .arrow {
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.blueBtn {
+  float: right;
+  right: 5%;
+  width: 139px;
+  height: 50px;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid #29afcf;
+  color: #29afcf;
+  line-height: 50px;
+  text-decoration: none;
+  background: transparent;
+  z-index: 1005;
+  cursor: pointer;
+}
+.blueBtn.hover {
+  background: #29afcf !important;
+  color: white !important;
+  cursor: pointer;
+}
+
 /*infosPage */
 .infosPage {
   background: white;

@@ -52,14 +52,13 @@ $(document).ready(function() {
 
 	var blackBckg = $(".blackBckg");
 
-	$("#navigation").hover(function() {
+	$("#edition, #subMenu").hover(function() {
 
 		$(blackBckg).toggle();
 
 		});
 
 	$('.seeSub').hover(function() {
-
   		$('.liMargin').toggleClass('littleMargin');
       $('.subMenu').toggle();
       $('.reverse').toggleClass('spanRotation');
@@ -157,20 +156,37 @@ $('#accordion-conf .open').each(function() {
 $('#accordion-conf .content').hide();
 
 /* EVENT SELECTOR */
+
+function click() {
     var el = [];
+    var clicked;
     
-    $('.selectbtn').each(function() {
+    $('.selectbtn').click(function() {
 
-      $(this).click(function() {
+      var identification = $(this).attr('id'); 
 
-        var clicked = true;
+        if($(this).hasClass('purpleBtn')) {
+            $(this).removeClass('purpleBtn');
+            console.log("class removed");
+              var index = el.indexOf(identification);
+              if (index > -1) {
+                  el.splice(index, 1);
+              }
+              $('.' + identification).fadeOut(450); 
+              console.log("removed " + identification);
+              console.log(el);
+
+              if (this.id == 'all') {
+                $('#parent > div').fadeOut(450);
+              }
+          }
+
+      else {
 
         $('.events').addClass('hideContent');
-        $(this).toggleClass('purpleBtn');
+        $(this).addClass('purpleBtn'); 
 
-        var identification = $(this).attr('id');  
-
-        el.push($(this).attr('id'));  
+        el.push(identification);  
            
         console.log(el);
 
@@ -184,20 +200,14 @@ $('#accordion-conf .content').hide();
                     $("." + identification).addClass('hideContent');
                   }
               });
-          } else {
-            $(this).click(function() {
-              $(this).removeClass('purpleBtn');
-                    var index = $.inArray(val, list);
-                         if (index >= 0) {
-                            list.splice(index, 1);
-                            $('.' + val).fadeOut(450); 
-                         }          
-            });
-
-            clicked = false; 
           }
-      });
+
+      }
     });
+}
+
+click();
+
     
     $(function() {
       $('#eventSelector').change(function(){

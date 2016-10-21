@@ -94,8 +94,8 @@
               <div class="pricesContainer">
                 <div class="innerWrapper">
                   <div class="articles">
-                    <span class="earlyBird">early Birds</span>
-                    <div class="articles-content">
+                    <span class="earlyBird"><img src="/img/early-bird.png"></span>
+                    <div class="articles-content primo">
                       <div class="textWrapper">
                         <span>PRIX avant le 26 février</span>
                         <h6>150€ <span class="ht">(HT)</span></h6>    
