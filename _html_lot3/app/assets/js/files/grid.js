@@ -240,9 +240,7 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat;
-
-            console.log(filters);
-
+            
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 

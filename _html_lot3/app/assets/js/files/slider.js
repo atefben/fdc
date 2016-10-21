@@ -176,7 +176,6 @@ var owInitSlider = function (sliderName) {
                     setTimeout(function () {
                         if ($('.isotope-01').length) {
                             owInitGrid('isotope-01');
-                            console.log('init grid');
                         }
                     }, 1000);
 

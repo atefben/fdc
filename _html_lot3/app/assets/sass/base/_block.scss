@@ -126,6 +126,14 @@
     object-fit: cover;
   }
 
+  .video-container {
+    height: calc(830px / 1.58);
+  }
+
+  .slideshow .slideshow-img {
+    height: 462px;
+  }
+
 }
 
 // - BLOCK 01 m small
@@ -139,6 +147,14 @@
     object-fit: cover;
   }
 
+  .video-container {
+    height: calc(663px / 1.58);
+  }
+
+  .slideshow  .slideshow-img {
+    height: 462px;
+  }
+
 }
 
 // - BLOCK 01 x small
@@ -150,6 +166,14 @@
   img {
     max-width: 100%;
     object-fit: cover;
+  }
+
+  .video-container {
+    height: calc(663px / 1.58);
+  }
+
+  .slideshow  .slideshow-img {
+    height: 462px;
   }
 
 }
