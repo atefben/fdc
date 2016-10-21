@@ -50,7 +50,7 @@
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
-                            {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' %}
+                            {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
                             {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
