@@ -48,21 +48,17 @@
                             </div>
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                            <div class="quote">
-                                <blockquote>
-                                    {{ transWidget.content }}
-                                </blockquote>
-                            </div>
+                            {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
-                            {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+                            {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
                             {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
-                            {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                            {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                         {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                             <div class="contain-img-honneur">
                                 {% set photo = widget.gallery.medias[0].media %}
-                                {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
+                                {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
                                 {% set copyright = photo|trans_fallback('copyright') %}
                                 <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
                             </div>
