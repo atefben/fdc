@@ -6,8 +6,6 @@ var owInitGrid = function (id) {
         var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
                 layoutMode: 'packery',
                 packery: {
                     columnWidth: '.grid-sizer'
@@ -16,15 +14,21 @@ var owInitGrid = function (id) {
 
         });
 
+        var $items = $('.item');
+
+        
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
-                layoutMode: 'packery',
+                layoutMode: 'masonry',
                 packery: {
                     columnWidth: '.grid-sizer'
-                }
+                },
+                getSortData: {
+                    number: '[data-sort]'
+                },
+                // sort by color then number
+                sortBy: ['number']
             });
         });
 
@@ -36,45 +40,17 @@ var owInitGrid = function (id) {
 
             var url = $(this).attr('href');
 
-            if(number%2 == 0){
-                $.get( url, function( data ) {
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
+
+            $.get( url, function( data ) {
+                data = $(data);
+                $gridMore.append(data).isotope( 'addItems', data );
 
 
-                    $gridMore.isotope({
-                        itemSelector: '.item',
-                        percentPosition: true,
-                        sortBy: 'original-order',
-                        layoutMode: 'packery',
-                        packery: {
-                            columnWidth: '.grid-sizer'
-                        }
-                    });
+                $gridMore.isotope();
 
 
-                });
-            }else{
-                url = $(this).data('reverse');
+            });
 
-                $.get( url, function( data ) {
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
-
-
-                    $gridMore.isotope({
-                        itemSelector: '.item',
-                        percentPosition: true,
-                        sortBy: 'original-order',
-                        layoutMode: 'packery',
-                        packery: {
-                            columnWidth: '.grid-sizer'
-                        }
-                    });
-
-                });
-            }
-            number++;
         });
 
 
