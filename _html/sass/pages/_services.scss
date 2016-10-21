@@ -1,0 +1,99 @@
+
+/* SERVICES PAGE */
+
+
+.servicesPage {
+
+    p {
+      font-size: 16px;
+      font-family: $CamphorRegular;
+    }
+
+    .innerWrapper {
+      padding-top: 5%;
+    }
+
+    h6 {
+      font-family: $Playfair;
+      font-weight: bold;
+      font-size: 28px!important;
+      color: #141414;
+    }
+
+    span {
+      font-size: 14px!important;
+      color: #505050!important;
+      text-transform: initial!important;
+      font-family: $CamphorHeavy;
+    }
+
+    .fitImg {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      filter: brightness(70%);
+      -webkit-filter: brightness(70%);
+      -moz-filter: brightness(70%);
+      -o-filter: brightness(70%);
+      -ms-filter: brightness(70%);
+    }
+
+    .normalImg {
+      width: 100%;
+      text-align: center;
+      position: relative;
+      top: -120px;
+      img {
+        width: 12px!important;
+        height: 12px!important;
+      }
+    }
+
+    .articles:last-child {
+      text-align: center;
+      background: url("/img/blueBckg.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+        
+      .articles-content {
+        padding: 0px;
+      }  
+
+      .lastArticle {
+        position: absolute;
+        top: 150px;
+      }
+
+      h6 {
+        padding-top: 115px;
+        font-size: 46px!important;
+        font-family: $Playfair;
+      }
+
+      p {
+        height: 100px;
+      }
+
+      h6, p {
+        color: white!important;
+      }
+
+      .fitImgLast {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          filter: brightness(100%);
+          -webkit-filter: brightness(100%);
+          -moz-filter: brightness(100%);
+          -o-filter: brightness(100%);
+          -ms-filter: brightness(100%);
+      }  
+    }
+}
+

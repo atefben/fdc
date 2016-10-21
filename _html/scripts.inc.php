@@ -150,6 +150,9 @@ var GLOBALS = {
 <script src="js/festival-cannes/webtv.module.js"></script>
 <script src="js/festival-cannes/popin.js"></script>
 <script src="js/festival-cannes/scroll.js"></script>
+<script src="js/festival-cannes/owl.carousel.min.js"></script>
+<script src="js/festival-cannes/isotope.pkgd.min.js"></script>
+<script src="js/festival-cannes/custom.js"></script>
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
 <script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>

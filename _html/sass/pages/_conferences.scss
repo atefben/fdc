@@ -1,0 +1,242 @@
+/* CONFERENCE PAGE */
+
+.conferences {
+  padding: 30px;
+  margin: 50px 0px;
+  height: auto;
+  min-height: 1500px;
+
+    .content {
+      background: white;
+    }
+
+   .open-selected-conf{
+      background: #ec3050!important;
+      color: white!important;
+      @include transition(all 1s $smoothTransition);
+   } 
+
+   .open {
+    font-family: $CamphorBold;
+   }
+
+  .dropdown {
+    width: 100%;
+    float: left;
+    text-align: left;
+  }
+  
+  .selector {
+    width: 100%;
+    float: left;
+  }
+  
+  .conferencesMenu {
+    width: 100%;
+    margin-top: 200px;
+  }
+  .conferenceMenu {
+    width: 100%;
+    margin-top: 400px;
+  }
+
+  li {
+    padding: 10px 40px;
+    text-transform: uppercase;
+    color: #505050;
+    background: #f8f8f8;
+    line-height: 50px;
+    border-bottom: 3px solid white;
+    text-align: left;
+  }
+
+  .dropdown span {
+    color: #505050!important;
+     font-size: 16px;
+     text-transform: uppercase;   
+  }
+  select, option {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     background: transparent;
+     border:none;
+     color: #ec3050!important;
+     font-size: 22px;
+  }
+  select::-ms-expand, option::-ms-expand { /* for IE 11 */
+      display: none;
+  }
+
+  .openPlus {
+    color: #333;
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    font-family: $CamphorHeavy;
+  }
+
+  .openMinus {
+    display: none;
+    color: white;
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    font-family: $CamphorHeavy;
+  }
+
+  .noDisplay {
+    display: none;
+  }
+
+  .doDisplay {
+    display: block;
+  }
+
+  .conf10 {
+    width: 15%;
+    float: left;
+    color: #505050;
+    font-family: $CamphorBold;
+    text-transform: uppercase;
+    line-height: 30px;
+    padding-top: 100px;
+    opacity: 0.8;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .conf60, .conf70 {
+    width: 50%;
+    float: left;
+    color: #505050;
+    text-transform: initial;
+    line-height: 30px;
+    text-align: left;
+    padding-top: 35px;
+    height: 200px;
+
+    .confButton {
+      position: relative;
+      bottom: -15%;
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-size: 16px;
+      color: #ec3050!important;
+      font-family: $CamphorBold;
+    }
+  }
+
+  .conf70 { 
+    width: 60%;
+    padding-left: 5%;
+  }
+
+  .conf30Sharp {
+      width: 35%!important;
+    }
+
+  .conf30, .conf30Sharp {
+    width: 35%;
+    float:left;
+    color: #505050;
+    text-transform: initial;
+    line-height: 30px;
+    text-align: left;
+    padding-top: 30px;
+    font-size: 14px;
+    color: #505050;
+
+    span {
+      color: #505050;
+      text-transform: uppercase;
+      opacity: 0.6;
+      font-family: $CamphorBold;
+    }
+
+    div {
+          padding-left: 45px;
+    }
+    div:first-child {
+          &:before {
+            content: url(/img/clock.png);
+            position: relative;
+            top: 10px;
+            left: -10px;
+            /* margin-right: 30px; */
+            width: 20px;
+        }
+    }
+
+    div:nth-child(2) {
+      &:before {
+            content: url(/img/pin.png);
+            position: relative;
+            top: 10px;
+            left: -10px;
+            /* margin-right: 30px; */
+            width: 20px;
+        }
+    }
+    div:nth-child(3) {
+      &:before {
+            content: url(/img/access.png);
+            position: relative;
+            top: 10px;
+            left: -10px;
+            /* margin-right: 30px; */
+            width: 20px;
+        }
+    }
+  }
+
+  .box {
+    min-height: 280px;
+    height: auto;
+    border-bottom: 2px solid #ec3050!important;
+  }
+
+  .confDetails {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: $CamphorHeavy;
+    color: #505050!important;
+    line-height: 50px;
+  }
+}
+
+  .conferenceMenu {
+    .box {
+      height: auto;
+      min-height: 800px;
+    }
+  }
+
+
+.confPeople {
+  .quarterWidth {
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-size: 10px;
+    font-family: $CamphorHeavy;
+    span {
+      font-size: 12px!important;
+    }
+  }
+}
+
+.minPadding {
+  padding: 50px 0px 5px 0px !important;
+  height: auto !important;
+}
+
+
+/* END CONFERENCE PAGE*/

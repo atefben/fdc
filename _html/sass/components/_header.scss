@@ -20,7 +20,7 @@ header {
     overflow: initial;
 
     #navigation ul li ul.tcenter {
-      width: 836px
+      width: 836px;
     }
 
     #navigation ul.main {
@@ -66,7 +66,7 @@ header {
     position: fixed;
     top: 0;
     @include transform(translateZ(0));
-    z-index: 15;
+    z-index: 1005;
 
     #top-bar, h1 {
       display: none;
@@ -394,6 +394,18 @@ header {
       }
     }
 
+    #leaderBoard {
+      position: absolute;
+      width: 720px;
+      height: 90px;
+      @include transition(all 0.5s $smoothTransition);
+      top: 50px;
+      left: 480px;
+      background: #333333;
+      text-align: center;
+      color: white;
+    }
+
     #search {
       border: 1px solid #404040;
       display: block;
@@ -424,12 +436,19 @@ header {
     }
   }
 
+  .bigContainer {
+    max-width: 1152px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   #navigation {
     background-color: $black;
     border-bottom: 1px solid #404040;
     border-top: 1px solid #404040;
     height: 39px;
     line-height: 39px;
+    z-index: 1005;
 
     /*.container {
       overflow: hidden;
@@ -440,7 +459,11 @@ header {
 
       li {
         display: inline-block;
-        margin-left: -4px;
+        margin-left: 50px;
+
+        @media screen and(max-width: 1024px) {
+          margin-left: 5px;
+        }
 
         &:hover>a {
           color: $gold;
@@ -458,7 +481,7 @@ header {
           @include transition(color 0.9s $smoothTransition);
 
           &:hover, &.active {
-            color: $gold;
+            color: #ec3050;
           }
         }
 
@@ -467,7 +490,6 @@ header {
         }
 
         ul {
-          background-color: $black;
           box-sizing: border-box;
           margin-top: 1px;
           opacity: 0;
@@ -480,11 +502,12 @@ header {
           @include transform(translateY(0));
 
           &:before {
-            background-color: $black;
-            border-bottom: 1px solid #404040;
+
+            border-bottom: 0px solid #404040;
             content: '';
             display: block;
             height: 100%;
+            height: auto;
             left: -150%;
             position: absolute;
             width: 450%;
@@ -500,20 +523,41 @@ header {
 
           &.tcenter {
             text-align: center;
-            width: 639px;
             padding-left: 0;
             left: 0;
+            opacity: 1;
+            min-height: 500px!important;
+            visibility: visible;
+            display: block;
+            @include transition(all 0.5s $smoothTransition);
 
-            li:last-child a {
-              padding-right: 0;
-            }
+              li {
+                display: block;
+                width: 34%;
+                text-align: left;
+                margin-left: 0px;
+                @include transition(all 0.5s $smoothTransition);
+              }
+
+              li:last-child a {
+                padding-right: 0;
+              }
           }
+
         }
 
-        &:hover ul {
+        &:hover ul, &:hover ul li {
           opacity: 1;
           visibility: visible;
+          display: block;
         }
+      }
+
+      .redBckg {
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+        z-index: 1005;
       }
 
       &.main {
@@ -611,6 +655,120 @@ header {
   }
 }
 
+
+.subMenu {
+  display: none;
+  position:absolute;
+  width: 100%;
+  background: url("/img/purpleBackg.png");
+  background-size: 100% 450px;
+  border-bottom: 0px solid #404040;
+  border: 0px solid #404040;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position:middle;
+  height: auto;
+  min-height: 500px;
+  color:white!important;
+  @include transition(all .6s $smoothTransition);
+  margin-top: 40px;
+
+  ul {
+    width: 34%;
+    @include transition(all .6s $smoothTransition);
+  }
+
+  li {
+    max-width: 100%!important;
+    display: block!important;
+    margin-left: 0px!important;
+    font-family: $CamphorHeavy;
+    font-size: 90%!important;
+    text-align: left;
+    @include transition(all .6s $smoothTransition);
+    
+    .active, &:hover {
+      color: #FFFFFF!important;
+      opacity: 0.8;
+    }
+    
+  }
+    
+  a.active, a:hover {
+        color: #FFFFFF!important;
+        opacity: 0.8;
+    } 
+}
+
+.littleMargin {
+  margin-top: 50px;
+  @include transition(all .6s $smoothTransition);
+}
+
+.seeSub {
+  z-index: 1006;
+  @include transition(all .6s $smoothTransition);
+
+  span {
+    font-size: 10px;
+    -ms-transform: rotate(0deg); 
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+.seeSub:hover .subsubMenu {
+  display: block!important;
+  @include transition(all .6s $smoothTransition);
+}
+
+.spanRotation {
+  -ms-transform: rotate(180deg); 
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  @include transition(all .6s $smoothTransition);
+}
+
+.subsubMenu {
+  
+  padding-left: 10px!important;
+  height: 40px;
+
+  li {
+    height: 20px;
+
+    .active, &:hover {
+      color: #FFFFFF;
+      opacity: 0.8;
+    }
+
+    a { 
+      .active, &:hover {
+        color: #FFFFFF;
+        opacity: 0.8;
+      }   
+    }
+  }
+}
+
+header {
+
+  z-index: 1005;
+
+  #navigation {
+        /*.tleft:before {
+        background: url("/img/purpleBackg.png");
+        background-size: 100% 450px;
+        border-bottom: 0px solid #404040;
+        border: 0px solid #404040;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position:middle;
+        }*/
+    }
+
+  }
+
 .mob:not(.tablet) {
   #navigation {
     ul {
@@ -649,4 +807,30 @@ header {
       font-size: 0.7rem;
     }
   }
+}
+
+.blackBckg {
+    display: none;
+    position: fixed;
+    width: 100%;
+    margin-top: -30px;
+    height: 100%;
+    background: black;
+    opacity: 0.9;
+    padding: 0px;
+    margin: 0px;
+    @include transition(all .6s $smoothTransition);
+    z-index: 999;
+}
+
+@media screen and (max-width: 1155px) {
+    .main {
+      float:none;
+    }
+
+    #navigation {
+      ul {
+        margin-left: 30px;
+      }
+    }
 }

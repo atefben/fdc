@@ -2,7 +2,7 @@
   <div id="top-bar">
     <ul class="main-nav">
       <li>
-        <a href="/" class="active">Festival 2016</a>
+        <a href="/">Festival 2016</a>
       </li>
       <li>
         <a href="http://www.festival-cannes.com/fr.html" target="_blank">Festival de Cannes</a>
@@ -14,10 +14,10 @@
         <a href="http://www.cannescourtmetrage.com/fr/" target="_blank">Cannes Court Métrage</a>
       </li>
       <li>
-        <a href="http://www.marchedufilm.com/fr/" target="_blank">Marché du film</a>
+        <a href="http://www.marchedufilm.com/fr/" target="_blank" class="active">Marché du film</a>
       </li>
     </ul>
-    <ul class="user-nav">
+    <!--<ul class="user-nav">
       <li>
         <a href="#" class="selection"><i class="icon icon_ma-selection"></i> Ma Sélection</a>
       </li>
@@ -32,28 +32,20 @@
           <li><a href="#">ZH</a></li>
         </ul>
       </li>
-    </ul>
+    </ul>-->
   </div>
   <div id="logo-wrapper">
     <div class="container">
       <div id="logo">
         <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm" /></a>
-        <h1><a href="/"><img width="200" src="img/logo.svg" alt="Festival de Cannes" /></a></h1>
-        <h2><a href="/">11-22 Mai 2016</a></h2>
-        <p class="stick"><a href="/"><img width="178" src="img/logo.svg" alt="Festival de Cannes" /></a></p>
+        <h1><a href="/"><img width="100%" src="img/logo-marche-film.png" alt="Festival de Cannes" /></a></h1>
+        <!--<h2><a href="/">11-22 Mai 2016</a></h2>-->
+        <p class="stick"><a href="/"><img width="100%" src="img/logo-marche-film.png" alt="Festival de Cannes" /></a></p>
       </div>
-      <div id="partners">
-        <a href="//www.chopard.fr/" target="_blank"><img width="84" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" /></a>
-        <a href="//www.loreal-paris.fr/index.aspx" target="_blank"><img width="75" src="img/header/loreal.svg" alt="L'Oréal" class="oreal" /></a>
-        <a href="//www8.hp.com/fr/fr/home.html" target="_blank"><img width="28" src="img/header/hp.svg" alt="HP" class="hp" /></a>
-        <a href="//www.kering.com/fr" target="_blank"><img width="82" src="img/header/Kering-logo.svg" alt="Kering" class="kering" /></a>
-        <a href="//group.renault.com/" target="_blank"><img width="95" src="img/header/renault.svg" alt="Renault" class="renault" /></a>
-        <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank"><img width="73" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" /></a>
+      <div id="leaderBoard">
+        <span>banner</span>
       </div>
-      <div id="search">
-        <a href="#" class="search"><i class="icon icon_recherche"></i></a>
-      </div>
-      <div id="sticky-user">
+      <!--<div id="sticky-user">
         <ul class="user-nav">
           <li>
             <a href="#" class="selection"><i class="icon icon_ma-selection"></i>Ma Sélection</a>
@@ -65,45 +57,38 @@
             <a href="#" class="search"><i class="icon icon_recherche"></i>Rechercher</a>
           </li>
         </ul>
-      </div>
+      </div>-->
     </div>
   </div>
   <div id="navigation">
-    <div class="container">
+    <div class="bigContainer">
       <nav>
         <ul class="main">
           <li>
-            <a href="/" class="active">L'actualité</a>
-            <ul class="tcenter">
-              <li><a href="/" class="active">Jour après Jour</a></li>
-              <li><a href="articles.php">Articles</a></li>
-              <li><a href="photos.php">Photos</a></li>
-              <li><a href="videos.php">Vidéos</a></li>
-              <li><a href="audios.php">Audios</a></li>
-            </ul>
+            <a href="/" class="active" data-rel="subMenu" id="edition">Edition 2017</a>
           </li>
           <li>
-            <a href="webtv.php">Web TV</a>
-            <ul class="tcenter">
-              <li><a href="webtv.php">Direct</a></li>
-              <li><a href="channels.php">Chaines</a></li>
-              <li><a href="webtv_trailer_competition.php">Bandes annonces</a></li>
-            </ul>
+            <a href="accreditations.php">ACCREDITATIONS</a>
           </li>
           <li>
-            <a href="selectionofficielle_competition.php">La sélection</a>
+            <a href="services.php">SERVICES</a>
           </li>
           <li>
-            <a href="jury_longsmetrages.php">Les Jurys</a>
+            <a href="">QUI SOMMES-NOUS ?</a>
           </li>
           <li>
-            <a href="palmares_competition.php">Le palmarès</a>
+            <a href="">PRESSE</a>
           </li>
           <li>
-            <a href="evenements.php">Les évènements</a>
+            <a href="infos.php">INFORMATIONS UTILES</a>
+          </li>
+          <li>
+            <div id="search">
+              <a href="#" class="search"><i class="icon icon_recherche"></i></a>
+            </div>
           </li>
         </ul>
-        <ul class="user"> <!-- todo -->
+        <!--<ul class="user"> 
           <li  class="programmation-wrapper">
             <a href="programmation-evenementiel.php" class="programmation"><i class="icon icon_programmation"></i> Programmation</a>
             <ul>
@@ -125,9 +110,32 @@
           <li>
             <a href="press.php" class="press"><i class="icon icon_espace-presse"></i>Espace presse</a>
           </li>
-        </ul>
+        </ul>-->
       </nav>
     </div>
+    <div class="subMenu" id="subMenu">
+      <div class="bigContainer">
+            <ul class="tleft">
+              <li><a href="/">présentation</a></li>
+              <li><a href="articles.php">Actualités</a></li>
+              <li class="seeSub">
+                <a href="photos.php"><span><i class='icon icon_flecheGauche reverse'></i></span> Programme</a>
+                <ul class="subsubMenu">
+                  <li><a href="projections.php">Projections</a></li>
+                  <li><a href="evenements.php">évenements</a></li>
+                </ul>
+              </li>
+              <li class="liMargin"><a href="videos.php">producers workshop</a></li>
+            </ul>
+        <ul class="tright">
+              <li><a href="audios.php">producers network</a></li>
+              <li><a href="audios.php">producers network</a></li>
+              <li><a href="audios.php">producers network</a></li>
+              <li><a href="audios.php">producers network</a></li>
+              <li><a href="audios.php">producers network</a></li>
+            </ul>
+        </div>
+      </div>
   </div>
   <div id="selection">
     <h2 class="title">Ma sélection <strong>(<span></span>)</strong></h2>
@@ -167,3 +175,4 @@
     </div>
   </div>
 </header>
+<div class="blackBckg"></div>

@@ -1,0 +1,140 @@
+/* BOX PRODUCERS WORKSHOP */
+
+.producersWorkshop {
+    width: 100%;
+    height: 274px;
+    padding: 0px 0px;
+    background: url("/img/purpleBackg.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+    h3 {
+      color: white;
+      margin: 85px 0px 70px 0px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.subNavigation {
+  background: black;
+  height: 50px;
+  line-height: 50px;
+
+    ul {
+      font-size: 0.875rem;
+      li {
+        display: inline-block;
+        margin-left: 50px;
+        a {
+          color: #fff;
+          font-family: $CamphorHeavy;
+          display: block;
+          padding-right: 20px;
+          text-transform: uppercase;
+          -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+        }
+      }
+    }
+}
+
+/* END BOX PRODUCERS WORKSHOP */
+
+/* Box Projection */
+
+.projections {
+    
+    padding-top:3%;
+
+    .text-presentation {
+      padding-top: 0%;
+    }
+
+    h3 {
+      color: white;
+      text-transform: initial;
+    }
+    
+    .blackBtn {
+      padding: 30px 20px 0px;
+    }
+    
+    width: 100%;
+    background: url("/img/salle.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+  @media screen and (max-width: 1280px) {
+    height: 400px;
+    max-height: 400px;
+  }
+
+}
+
+.projection {
+
+  
+  height: 800px;
+  padding-top:3%;
+
+  @media screen and (max-width: 1280px) {
+    padding:0% 2%;
+  }
+
+  h3 {
+    color: black;
+    text-transform: initial;
+  }
+
+  h5 {
+    line-height: 40px;
+  }
+  
+  .blackBtn {
+    padding: 30px 20px 0px;
+  }
+
+  .programme {
+    
+    border: 2px solid #ECECEC;
+        padding: 40px 20px 50px 20px;
+    text-align: left;
+
+    div {
+      float: left;
+      display: block;
+    }
+
+    div:first-child {
+      margin-right: 20px;
+    }
+
+    div:nth-child(2) {
+      width: 85%;
+    }
+     div:nth-child(3) {
+      float: right;
+      margin-top: -20px;
+    }
+
+    h6 {
+      color: #ec3050;
+      font-size: 20px;
+    }
+
+  }
+}
