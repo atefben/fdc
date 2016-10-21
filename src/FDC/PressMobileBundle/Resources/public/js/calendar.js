@@ -279,6 +279,58 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
+  // Events on scroll
+  // =========================
+  var lastScrollTop = 0,
+      $header = $('header'),
+      $timeline = $('#timeline'),
+      $navMovie = $('#nav-movie');
+
+  var calTop = $('.venues').offset().top - 80;
+  console.log(calTop);
+
+
+  $(window).on('scroll', function () {
+    var s = $(this).scrollTop();
+    scrollTarget = s;
+
+    if ($('#timeline-calendar').length > 0 && !$('.press-home').length > 0) {
+      if (!$('.programmation-press').length > 0) {
+
+        calTop = $('.venues').offset().top - 93;
+
+        if (s > calTop) {
+          var w = s - calTop + 120;
+          w = w + "px";
+          $('#timeline-calendar').css('transform', 'translateY(' + w + ')').css('z-index', 3);
+          /*
+           $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
+           */
+        } else {
+          $('#timeline-calendar').css('transform', 'translateY(' + 0 + ')');
+          /*
+           $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
+           */
+        }
+      } else {
+
+        if (s > calTop) {
+          var w = s - calTop
+          w = w + "px";
+
+          $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
+          $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
+
+        } else {
+
+          $('.calendar .v-head').css('transform', 'translateY(' + 0 + ')');
+          $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
+        }
+      }
+
+    }
+  });
+
   // Renvoie un UID unique
   function guid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
