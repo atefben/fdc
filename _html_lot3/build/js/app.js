@@ -893,7 +893,11 @@ var initVideo = function(hash) {
 
         });
     }else if($('.video-player').length > 0) {
-        videoPlayer = playerInit('video-player', 'video-player', false, false);
+
+        $.each($('.video-player'), function(i,e){
+            var id = $(e).find('.jwplayer').attr('id');
+            videoPlayer = playerInit(id, 'video-player', false, false);
+        })
     }
 
     if($('.video-playlist').length > 0) {
