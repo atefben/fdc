@@ -26,12 +26,12 @@ class MediaController extends Controller
         $page = $em->getRepository('BaseCoreBundle:FDCPageMediatheque')->find(1);
         $locale = $request->getLocale();
 
-        $medias = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, '', true, true, true);
+        //$medias = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, '', true, true, true);
 
-        dump($medias);
+        //dump($medias);
 
 
-        exit;
+        //exit;
 
         if($request->isMethod('POST')) {
             $search = $request->get('search');
