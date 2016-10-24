@@ -92,6 +92,62 @@ class MediaRepository extends EntityRepository
         return $qb;
     }
 
+    public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 20) {
+        $qb = $this->createQueryBuilder('m')
+            ->leftJoin('m.theme', 't')
+            ->leftJoin('t.translations', 'tt')
+            ->andWhere('m.displayedAll = 1');
+
+        $searchOr = array('tt.name LIKE :search');
+
+        if($photo) {
+            $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+                ->leftJoin('mi.translations', 'mit');
+
+            $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+
+            $searchOr[] = 'mit.legend LIKE :search';
+        }
+
+        if($video) {
+            $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
+                ->leftJoin('mv.translations', 'mvt');
+
+            $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+
+            $searchOr[] = 'mvt.title LIKE :search';
+        }
+
+        if($audio) {
+            $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
+                ->leftJoin('ma.translations', 'mat');
+
+            $qb = $this->addTranslationQueries($qb, 'mat', $locale);
+
+            $searchOr[] = 'mat.title LIKE :search';
+
+        }
+
+        $qb->andWhere('('.implode(' OR ', $searchOr).')');
+
+        $qb->setParameter('search', '%'.$search.'%');
+
+        if($yearStart && $yearEnd) {
+            $qb->innerJoin('m.festival', 'f')
+                ->andWhere('f.year BETWEEN :yearStart AND :yearEnd')
+                ->setParameter('yearStart', $yearStart)
+                ->setParameter('yearEnd', $yearEnd);
+        }
+
+        $qb = $qb->andWhere("m.publishEndedAt IS NULL")
+            ->orderBy('m.publishedAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
     /**
      * @param $locale
      * @param $festival

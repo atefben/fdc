@@ -152,6 +152,10 @@ security:
             #corpo team:
             - ROLE_BASE_ADMIN_CORPO_TEAM_ADMIN
             - ROLE_BASE_ADMIN_CORPO_TEAM_MEMBERS_ADMIN
+            #corpo mediatheque
+            - ROLE_BASE_ADMIN_FDC_PAGE_MEDIATHEQUE_ADMIN
+            - ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN
+            - ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_MEDIA_ADMIN
         ROLE_ALL_TRANSLATOR:
             - ROLE_ADMIN
             - ROLE_JMS_TRANSLATION
