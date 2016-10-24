@@ -31,7 +31,7 @@
              {% endif %}
              data-img="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
              data-name="{{ trans.title }}">
-            <div id="video-player" class="video-player">
+            <div id="video-player-{{ widget.id }}" class="video-player">
             </div>
             <div class="video-overlay"></div>
             <div class="infos-bar">
