@@ -411,6 +411,11 @@ $(document).ready(function() {
       $(this).css('margin-top', mT*170+10);
     });
 
+    $('.calendar').on('click', '.fc-event', function (e) {
+      var url = $(this).data('url');
+      openPopinEvent(url);
+    });
+
     // delete event from localStorage
     $('.fc-event').on('click', '.remove-evt', function (e) {
       e.preventDefault();
@@ -618,6 +623,140 @@ $(document).ready(function() {
 
     $('.btn-close').on('click', function () {
       $('#create-event-pop').removeClass('visible-popin');
+    });
+  }
+
+  function openPopinEvent(url) {
+    $.ajax({
+      type: "GET",
+      dataType: "html",
+      cache: false,
+      url: url,
+      success: function (data) {
+        $('.popin-event').remove();
+        // display the html
+        $('.calendar').append(data);
+
+        // $('.popin-event').css('top', $(document).scrollTop());
+        $('.popin-event .fc-event').each(function () {
+          $(this).find('.category').css('background-color', $(this).data('color'));
+          $(this).addClass($(this).data('picto').substr(1));
+        });
+
+        $('.events-container .fc-event').each(function () {
+          var $this = $(this),
+              id = $(this).data('id');
+
+          for (var i = 0; i < events.length; i++) {
+            if (id == events[i].id) {
+              $this.parent().addClass('agenda');
+              $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+            }
+          }
+
+          // init all the data of the event
+          var eventObject = {
+            title: $(this).find('.txt span').text(),
+            eventColor: $(this).data('color'),
+            start: $(this).data('start'),
+            end: $(this).data('end'),
+            time: $(this).data('time'),
+            type: $(this).find('.category').text(),
+            author: $(this).find('.txt strong').text(),
+            picture: $(this).find('img').attr('src'),
+            duration: $(this).data('duration'),
+            room: $(this).find('.bottom .ven').text(),
+            selection: $(this).find('.bottom .competition').text(),
+            eventPictogram: $(this).find('.category .icon').attr('class').split(' ')[1],
+            id: $(this).data('id'),
+            url: $(this).data('url')
+          };
+
+          // store the Event Object in the DOM element so we can get to it later
+          $(this).data('eventObject', eventObject);
+
+          var films = $(".owl-carousel-film").owlCarousel({
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            margin: 20,
+            autoWidth: true,
+            loop: false,
+            items: 1,
+          });
+          films.owlCarousel();
+
+          $('body').addClass('no-scroll');
+        });
+
+        // show popin
+        setTimeout(function () {
+          $('.popin-event').addClass('show');
+          // $('#main').addClass('event-open');
+          $('body').addClass('overlay');
+        }, 100);
+
+        // close popin
+        $('.calendar').on('click', '.close-button', function (e) {
+          e.preventDefault();
+
+          $('.popin-event').removeClass('show');
+          $('body').removeClass('overlay');
+          setTimeout(function () {
+            $('.popin-event').remove();
+          }, 600);
+        });
+
+        // add event
+        $('.calendar').on('click', '.event .add', function (e) {
+          e.preventDefault();
+
+          var $ev = $(this).parent().find('.fc-event');
+          var originalEventObject = $ev.data('eventObject');
+          var copiedEventObject = $.extend({}, originalEventObject);
+
+          if (events.filter(function (e) {
+                return e.id == copiedEventObject.id;
+              }).length > 0) {
+            return false;
+          }
+
+          // get local storage
+          var agenda = localStorage.getItem('agenda_press');
+
+          if (agenda == null) {
+            events.push(copiedEventObject);
+            localStorage.setItem('agenda_press', JSON.stringify(events));
+          } else {
+            events = JSON.parse(agenda);
+            events.push(copiedEventObject);
+            localStorage.setItem('agenda_press', JSON.stringify(events));
+          }
+
+          $(this).parent().addClass('agenda');
+          $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
+        });
+
+        // delete event
+        $('.calendar').on('click', '.event.agenda .button', function (e) {
+          e.preventDefault();
+
+          var id = parseInt($(this).parent().find('.fc-event').data('id'));
+          var agenda = localStorage.getItem('agenda_press');
+          events = JSON.parse(agenda);
+
+          for (var i = 0; i < events.length; i++) {
+            if (events[i].id == id) {
+              events.splice(i, 1);
+            }
+          }
+
+          localStorage.setItem('agenda_press', JSON.stringify(events));
+
+          $(this).parent().removeClass('agenda');
+          $(this).text('Ajouter').addClass('add');
+        });
+      }
     });
   }
 
