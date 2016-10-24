@@ -41,7 +41,7 @@
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
                             {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
-                            {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                            {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
                             {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                         {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
