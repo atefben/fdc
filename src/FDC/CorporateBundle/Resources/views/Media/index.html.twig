@@ -1,0 +1,58 @@
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+
+{% block bodyClass %}media-library dark{% endblock %}
+
+{% block body %}
+    <section class="padding-big-bottom border-bottom">
+        <div class="block-push block-push-top" style="background-image: url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
+            <div class="vFlexAlign">
+                <div class="txts">
+                    <strong class="title-3">{{ page|trans_fallback('title') }}</strong>
+                </div>
+            </div>
+        </div> <!-- end block push -->
+
+        <div class="block-search block-01">
+            <form method="post">
+                <div class="vFlexAlign">
+                    <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id="s-text" ></label>
+                    <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') is not null %} active{% endif %}"><i class="icon icon-photo"></i><span class="text">Photos</span><input class="choice" type="checkbox" name="photo" id="s-photo" {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
+                    <label for="s-video" class="icon-s vFlexAlign{% if app.request.get('video') is not null %} active{% endif %}"><i class="icon icon-video"></i><span class="text">Vidéos</span><input class="choice" type="checkbox" name="video" id="s-video" {% if app.request.get('video') is not null %}checked {% endif %}/></label>
+                    <label for="s-audio" class="icon-s vFlexAlign{% if app.request.get('audio') is not null %} active{% endif %}"><i class="icon icon-audio"></i><span class="text">Audios</span><input class="choice" type="checkbox" name="audio" id="s-audio" {% if app.request.get('audio') is not null %}checked {% endif %}/></label>
+                </div>
+                <div class="slider-selection">
+                    <span id="slider-snap-value-lower" class="number"></span>
+                    <div class="container-timelapse">
+                        <div class="timelapse" id="timelapse"></div>
+                    </div>
+                    <span id="slider-snap-value-upper" class="number"></span>
+                </div>
+                <input type="hidden" for="s-yearstart" id="s-yearstart" name="year-start" value="1946">
+                <input type="hidden" for="s-yearend" id="s-yearend" name="year-end" value="2017">
+                <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>lancer la recherche</button>
+            </form>
+        </div>
+
+        {% if selection %}
+        <div class="contain-title vFlexAlign">
+            <h1 class="title-01">Notre sélection</h1>
+        </div>
+        {% endif %}
+
+        <div class="grid-01 isotope-03 block-01 padding-bottom block-mediatheque">
+            <div class="grid-sizer"></div>
+
+            {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+
+            {% for media in medias %}
+                {% include "FDCCorporateBundle:Media:media.html.twig" with {"media": media} %}
+            {% endfor %}
+
+        </div> <!-- fin de grid-01 -->
+
+        <div class="">
+            <a href="#" class="read-more block-01">Afficher <strong>plus de résultats</strong></a>
+        </div>
+
+    </section>
+{% endblock %}
