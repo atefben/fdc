@@ -6,8 +6,6 @@ var owInitGrid = function (id) {
         var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
                 layoutMode: 'packery',
                 packery: {
                     columnWidth: '.grid-sizer'
@@ -16,15 +14,21 @@ var owInitGrid = function (id) {
 
         });
 
+        var $items = $('.item');
+
+        
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                percentPosition: true,
-                sortBy: 'original-order',
-                layoutMode: 'packery',
+                layoutMode: 'masonry',
                 packery: {
                     columnWidth: '.grid-sizer'
-                }
+                },
+                getSortData: {
+                    number: '[data-sort]'
+                },
+                // sort by color then number
+                sortBy: ['number']
             });
         });
 
@@ -36,45 +40,17 @@ var owInitGrid = function (id) {
 
             var url = $(this).attr('href');
 
-            if(number%2 == 0){
-                $.get( url, function( data ) {
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
+
+            $.get( url, function( data ) {
+                data = $(data);
+                $gridMore.append(data).isotope( 'addItems', data );
 
 
-                    $gridMore.isotope({
-                        itemSelector: '.item',
-                        percentPosition: true,
-                        sortBy: 'original-order',
-                        layoutMode: 'packery',
-                        packery: {
-                            columnWidth: '.grid-sizer'
-                        }
-                    });
+                $gridMore.isotope();
 
 
-                });
-            }else{
-                url = $(this).data('reverse');
+            });
 
-                $.get( url, function( data ) {
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
-
-
-                    $gridMore.isotope({
-                        itemSelector: '.item',
-                        percentPosition: true,
-                        sortBy: 'original-order',
-                        layoutMode: 'packery',
-                        packery: {
-                            columnWidth: '.grid-sizer'
-                        }
-                    });
-
-                });
-            }
-            number++;
         });
 
 
@@ -176,6 +152,43 @@ var owInitGrid = function (id) {
             });
         });
 
+        var trunTitle = function() {
+            $.each($('.card.item'), function (i, e) {
+                var title = $(e).find('.info strong a');
+
+                if (!title.hasClass('init')) {
+                    var text = $(e).find('.info strong a').text();
+                    title.addClass('init');
+                    title.attr('data-title', text);
+                } else {
+                    var text = title.attr('data-title');
+                }
+
+
+                if($('.medias').length > 0) {
+
+                    if (window.matchMedia("(max-width: 1405px)").matches) {
+                        title.html(text.trunc(25, true));
+                    }else{
+                        title.html(text.trunc(40, true));
+                    }
+
+                } else {
+                    title.html(text.trunc(60, true));
+                }
+            });
+        }
+
+
+        trunTitle();
+
+
+        $(window).resize(function () {
+            trunTitle();
+        });
+
+        var title = $('.info strong a').text();
+
         return $grid;
     }
 
@@ -203,9 +216,7 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat;
-
-            console.log(filters);
-
+            
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 

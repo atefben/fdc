@@ -4,6 +4,8 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
+use Base\CoreBundle\Entity\PressAccreditProcedure;
+use Base\CoreBundle\Entity\PressAccreditProcedureTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -52,12 +54,22 @@ class CorpoTeamMembersAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
+        ->add('id')
+        ->add('title', 'doctrine_orm_callback', array(
+            'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                if (!$value['value']) {
+                    return;
+                }
+                $queryBuilder->join("{$alias}.translations", 't');
+                $queryBuilder->andWhere('t.locale = :locale');
+                $queryBuilder->setParameter('locale', 'fr');
+                $queryBuilder->andWhere('t.firstname LIKE :title');
+                $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                return true;
+            },
+            'field_type' => 'text',
+            'label'      => 'prenom'
+        ))
         ;
     }
 
@@ -67,18 +79,17 @@ class CorpoTeamMembersAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
+                'label'    => 'Nom du membre',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }
@@ -113,7 +124,8 @@ class CorpoTeamMembersAdmin extends Admin
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'required'                  => false
                     ),
                     'firstname' => array(
                         'label' => 'Prénom'
@@ -163,7 +175,6 @@ class CorpoTeamMembersAdmin extends Admin
             ->add('updatedAt')
             ->add('translate')
             ->add('translateOptions')
-            ->add('priorityStatus')
         ;
     }
 }

@@ -20,7 +20,6 @@ $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
         $('body').addClass('ie');
-        console.log('ici');
     }
 
     if (/MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent)) {
@@ -187,8 +186,6 @@ $(document).ready(function () {
         }
 
         if (hash.length > 0 && verif == "vid") {
-            console.log(number);
-
             initVideo(number);
         } else {
             initVideo();
@@ -230,6 +227,24 @@ $(document).ready(function () {
         if (!$('.single-movie').length > 0) {
             var slider = $('.slideshow-img .images');
             owinitSlideShow(slider);
+
+            var hash = window.location.hash;
+            hash = hash.substring(1, hash.length);
+
+            verif = hash.slice(0, 3);
+            number = hash.slice(4);
+
+            if (hash.length > 0 && verif == "pid") {
+                owinitSlideShow(slider, hash);
+            } else {
+                owinitSlideShow(slider);
+            }
+
+            if (hash.length > 0 && verif == "aid") {
+                initAudio(number);
+            } else {
+                initAudio();
+            }
         }
 
         if ($('.artist-page').length > 0) {
@@ -289,9 +304,29 @@ $(document).ready(function () {
 
         owInitAleaGrid(grid, $('.grid-01'), true);
 
-/*
-        ajaxMedialib();
-*/
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+        number = hash.slice(4);
+
+        if (hash.length > 0 && verif == "pid") {
+            owinitSlideShow(grid, hash);
+        } else {
+            owinitSlideShow(grid);
+        }
+
+        if (hash.length > 0 && verif == "vid") {
+            initVideo(number);
+        } else {
+            initVideo();
+        }
+
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        } else {
+            initAudio();
+        }
     }
 
     if ($('.search-page').length) {

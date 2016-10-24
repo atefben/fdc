@@ -19,9 +19,7 @@ window.twttr = (function (d, s, id) {
 
 
 var initRs = function () {
-
-    console.log('init RS');
-
+    
     $('.print').on('click', function(e){
         e.preventDefault();
     })
@@ -209,9 +207,7 @@ var initRs = function () {
 
 
         clipboard = new Clipboard(cls);
-
-        console.log(clipboard);
-
+        
         $(cls).attr('data-clipboard-text', link);
 
         $(cls).off('click touchstart').on('click touchstart', function (e) {

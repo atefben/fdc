@@ -1,13 +1,12 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
-{% dump('la') %}
-        {% set trans = photo.findTranslationByLocale(app.request.locale) %}
-        {% if trans is null or trans.file is null %}
-            {% set trans = photo.findTranslationByLocale('fr') %}
-        {% endif %}
-        {% set file = trans.file %}
-        {% set copyright = photo|trans_fallback('copyright') %}
-        {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
-        {% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}
-        {% if hideCopyright is not defined %}
-            <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
-        {% endif %}
+{% set trans = photo.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+    {% set trans = photo.findTranslationByLocale('fr') %}
+{% endif %}
+{% set file = trans.file %}
+{% set copyright = photo|trans_fallback('copyright') %}
+{% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
+{% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}
+{% if hideCopyright is not defined %}
+    <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
+{% endif %}

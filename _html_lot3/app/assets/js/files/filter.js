@@ -60,10 +60,7 @@ var owInitFilter = function (isTabSelection) {
 
                     var getVal = $this.data('filter');
                     var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
-
-                    console.log('.item[data-'+$id+'="'+getVal+'"]');
-                    console.log($('.item[data-'+$id+'="'+getVal+'"]').length);
-
+                    
                     if (numItems === 0) {
                         $this.addClass('disabled');
                     } else {

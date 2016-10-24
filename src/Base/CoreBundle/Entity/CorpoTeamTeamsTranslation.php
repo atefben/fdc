@@ -40,29 +40,29 @@ class CorpoTeamTeamsTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $content;
-
+    private $teamName;
+    
 
     /**
-     * Set content
+     * Set teamName
      *
-     * @param string $content
-     * @return CorpoTeamTranslation
+     * @param string $teamName
+     * @return CorpoTeamTeamsTranslation
      */
-    public function setContent($content)
+    public function setTeamName($teamName)
     {
-        $this->content = $content;
+        $this->teamName = $teamName;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get teamName
      *
-     * @return string
+     * @return string 
      */
-    public function getContent()
+    public function getTeamName()
     {
-        return $this->content;
+        return $this->teamName;
     }
 }

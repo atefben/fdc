@@ -27,7 +27,7 @@ var owinitSlideShow = function (slider, hash) {
             });
         }
 
-        if($('.medias').length > 0 ) {
+        if($('.medias').length > 0 || $('.media-library').length > 0) {
             $('.item.photo').on('click', function (e) {
                 e.preventDefault();
 
@@ -62,19 +62,35 @@ var openSlideShow = function (slider, hash) {
                 centerElement = index;
             }
 
-            var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
-            var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
-            var title = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
-            var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
-            var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
-            var caption = $(value).find('img').attr('data-credit');
-            var id = $(value).find('img').attr('data-id');
-            var facebookurl = $(value).find('img').attr('data-facebookurl');
-            var twitterurl = $(value).find('img').attr('data-twitterurl');
-            var url = $(value).find('img').attr('data-url');
 
-            var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+            if($('.photo-module').length ) {
 
+                var src = $(value).find('img').attr('src');
+                var alt = $(value).find('img').attr('alt');
+                var title = $(value).find('a').attr('title');
+                var label = $(value).find('a').data('label');
+                var date = $(value).find('a').data('date');
+                var caption = $(value).find('a').data('credit');
+                var id = $(value).find('a').data('pid');
+                var facebookurl = $(value).find('a').data('facebook');
+                var twitterurl = $(value).find('a').data('twitter');
+                var url = $(value).find('a').data('link');
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+
+            }else{
+                var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
+                var title = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
+                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
+                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
+                var caption = $(value).find('img').attr('data-credit');
+                var id = $(value).find('img').attr('data-id');
+                var facebookurl = $(value).find('img').attr('data-facebookurl');
+                var twitterurl = $(value).find('img').attr('data-twitterurl');
+                var url = $(value).find('img').attr('data-url');
+
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+            }
 
             var image = {
                 id: id,
@@ -89,6 +105,8 @@ var openSlideShow = function (slider, hash) {
                 twitterurl: twitterurl,
                 isPortrait: isPortrait
             };
+
+            console.log(image);
 
             images.push(image);
         }
@@ -477,7 +495,6 @@ var openSlideShow = function (slider, hash) {
     $(window).resize(function () {
         w = $(window).width();
         translate = -(w + 1) * centerElement;
-        console.log(centerElement);
         $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
     });
 

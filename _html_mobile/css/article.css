@@ -562,10 +562,15 @@ a{
 	margin: 20px auto;
 }
 .articles .owl-item{
-
 	width: 516px;
 	height: 490px;
 }
+
+.articles .articles-carousel .owl-item{
+    width: 516px;
+    height: auto;
+}
+
 .articles .img-container{
 
     position: relative;

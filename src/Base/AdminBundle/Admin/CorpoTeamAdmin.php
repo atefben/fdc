@@ -148,10 +148,25 @@ class CorpoTeamAdmin extends Admin
                 )
             ))
             ->add('mainImage', 'sonata_type_model_list', array(
-                'label'    => 'form.fdc_page_web_tv_trailers.image',
-                'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
+                'label'    => 'Image Tétière',
                 'required' => false,
             ))
+            ->add('teams', 'sonata_type_collection',
+               array(
+                   'type_options' => array(
+                       'delete' => true,
+                   ),
+                   'cascade_validation' => true,
+                   'by_reference' => false,
+                   'label' => 'Equipe',
+                   'required' => false
+               ),
+               array(
+                   'edit' => 'inline',
+                   'inline' => 'table',
+                   'sortable'  => 'position',
+               )
+            )
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',

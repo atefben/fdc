@@ -7,7 +7,6 @@ var owInitAjax = function() {
 
     $.get( url, function( data ) {
       $data = $(data);
-      console.log($data);
       contain = $data.find('.contain-ajax')[0];
 
       test = $data.filter('#breadcrumb').children()[0];
@@ -46,8 +45,6 @@ var owInitAjax = function() {
         }
 
         if (hash.length > 0 && verif == "vid") {
-          console.log(number);
-
           initVideo(number);
         }else{
           initVideo();

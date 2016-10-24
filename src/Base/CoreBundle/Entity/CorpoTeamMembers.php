@@ -52,7 +52,13 @@ class CorpoTeamMembers implements TranslateMainInterface
     }
 
     public function __toString() {
-        return 'L\'équipe';
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = ' "' . $this->findTranslationByLocale('fr')->getFirstName() . ' ' . $this->findTranslationByLocale('fr')->getLastName() .'"';
+        }
+
+        return $string;
     }
 
 

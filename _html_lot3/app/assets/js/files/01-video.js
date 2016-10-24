@@ -423,9 +423,7 @@ var initVideo = function(hash) {
                     var test =  $('#sortiecanne').offset().top - 200;
 
                     test = parseInt(test);
-
-                    console.log(test);
-
+                    
                     $('html, body').animate({
                      scrollTop: test
                      }, 'slow');
@@ -906,7 +904,7 @@ var initVideo = function(hash) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
 
-    if($('.medias').length > 0) {
+    if($('.medias').length > 0 || $('.media-library').length > 0) {
         initPopinVideo(hash);
     }
     

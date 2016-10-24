@@ -14,6 +14,47 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class WhoAreWeController extends Controller
 {
+
+    /**
+     * @Route("/equipe")
+     * @param Request $request
+     * @return Response
+     */
+    public function equipeAction(Request $request)
+    {
+        $datas = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoTeam')
+            ->find(1)
+        ;
+
+        if(!$datas) {
+            throw $this->createNotFoundException('There is not available Team.');
+        }
+        return $this->render('FDCCorporateBundle:WhoAreWe:equipe.html.twig', array(
+            'datas' => $datas,
+        ));
+    }
+
+    /**
+     * @Route("/nav")
+     * @param Request $request
+     * @return Response
+     */
+    public function navAction(Request $request, $slug = null)
+    {
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
+            ->findAll()
+        ;
+
+        return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', array(
+            'pages' => $pages,
+            'slug'  => $slug
+        ));
+    }
+
     /**
      * @Route("/{slug}")
      * @param Request $request
@@ -21,9 +62,7 @@ class WhoAreWeController extends Controller
      */
     public function showAction(Request $request, $slug = null)
     {
-        $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
-        $festival = $this->getFestival()->getId();
 
         $pages = $this
             ->getDoctrineManager()
@@ -50,11 +89,12 @@ class WhoAreWeController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
-        $localeSlugs = $page->getLocaleSlugs();
-
         return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', array(
             'pages' => $pages,
             'currentPage' => $page
         ));
     }
+
 }
+
+

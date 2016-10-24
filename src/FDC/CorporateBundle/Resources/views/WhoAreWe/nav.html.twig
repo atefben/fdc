@@ -1,0 +1,18 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+<nav class="navigation-sticky">
+    <ul>
+
+        {% for page in pages %}
+            <li class="{% if slug == page|trans_fallback('slug') %}active{% endif %}">
+                <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}">
+                    {{ page|trans_fallback('title') }}
+                </a>
+            </li>
+        {% endfor %}
+        <li class="{% if slug == 'equipe' %}active{% endif %}">
+            <a href="{{ path('fdc_corporate_whoarewe_equipe') }}">
+                {{ 'aboutus.team' }}
+            </a>
+        </li>
+    </ul>
+</nav>
