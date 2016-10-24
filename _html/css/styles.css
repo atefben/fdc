@@ -11760,6 +11760,7 @@ article .read-later.rAlign span:after {
   height: 185px;
   position: relative;
   width: 293px;
+  overflow: hidden;
 }
 .single-movie .videos #slider-movie-videos .slide-video .info .category {
   font-size: 0.650rem;
@@ -12159,6 +12160,9 @@ article .read-later.rAlign span:after {
   position: relative;
   cursor: pointer;
   width: calc(100%/4);
+}
+.webtv .grid .item {
+  overflow: hidden;
 }
 .grid .item img {
   display: block;
