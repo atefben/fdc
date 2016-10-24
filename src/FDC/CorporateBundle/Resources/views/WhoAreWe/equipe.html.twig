@@ -53,11 +53,14 @@
                             <div class="item block-poster festival-de-cannes">
                                 <a href="#">
                                     <div class="contain-img">
-                                        {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale(app.request.locale) %}
-                                        {% if mainTrans is null or mainTrans.file is null %}
-                                            {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale('fr') %}
+                                        {% set mainImage = null %}
+                                        {% if membersAssociation.members.mainImage is not null %}
+                                            {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale(app.request.locale) %}
+                                            {% if mainTrans is null or mainTrans.file is null %}
+                                                {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale('fr') %}
+                                            {% endif %}
+                                            {% set mainImage = mainTrans.file %}
                                         {% endif %}
-                                        {% set mainImage = mainTrans.file %}
                                         {% if mainImage is not null %}
                                             <img src="{% path mainImage, '256x348' %}" alt=""  >
                                         {% else %}
