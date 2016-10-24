@@ -74,6 +74,11 @@
   margin-left: -40px;
 }
 
+.contain-article-invit .title-list-cat {
+    width: 130%;
+    margin-left: -70px;
+}
+
 .title-list-cat .title{
   color: #fff;
   margin: 60px auto;
