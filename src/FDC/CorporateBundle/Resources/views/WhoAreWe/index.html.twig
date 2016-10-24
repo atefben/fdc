@@ -52,8 +52,10 @@
                                 <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
                             </div>
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                            <div class="small-pres half-div container">
-                                {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                            <div class="photos photo-module" data-section="photos">
+                                <div class="slideshow">
+                                    {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                                 </div>
                             </div>
                         {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
                             <div class="small-pres half-div container">
