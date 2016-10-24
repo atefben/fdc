@@ -119,6 +119,14 @@ class CorpoTeamMembersAdmin extends Admin
                             'class' => 'hidden'
                         )
                     ),
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'required'                  => false
+                    ),
                     'firstname' => array(
                         'label' => 'Prénom'
                     ),
