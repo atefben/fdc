@@ -333,7 +333,8 @@ file that was distributed with this source code.
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% set active = app.request.attributes.get('_route') == 'admin_base_core_corpowhoarewe_list' ? 'active' %}
+                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list']) ? 'active' %}
+
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN') %}
                                         <li class="treeview {% if active %} active{% endif %}">
                                             <a href="#">
@@ -343,7 +344,7 @@ file that was distributed with this source code.
                                             </a>
                                             <ul class="treeview-menu {% if active %} active{% endif %}">
                                                 {% if is_granted('ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN') %}
-                                                    <li class="{% if active %} active{% endif %}">
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpowhoarewe_edit','admin_base_core_corpowhoarewe_create'] %} active{% endif %}">
                                                         <a href="{{ path('admin_base_core_corpowhoarewe_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             Qui sommes nous
@@ -351,7 +352,7 @@ file that was distributed with this source code.
                                                     </li>
                                                 {% endif %}
                                                 {% if is_granted('ROLE_BASE_ADMIN_CORPO_TEAM_ADMIN') %}
-                                                    <li class="{% if active %} active{% endif %}">
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpoteam_edit'] %} active{% endif %}">
                                                         <a href="{{ path('admin_base_core_corpoteam_edit',{id: admin_homepage_corporate_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             L'équipe
@@ -359,7 +360,7 @@ file that was distributed with this source code.
                                                     </li>
                                                 {% endif %}
                                                 {% if is_granted('ROLE_BASE_ADMIN_CORPO_TEAM_MEMBERS_ADMIN') %}
-                                                    <li class="{% if active %} active{% endif %}">
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpoteammembers_list','admin_base_core_corpoteammembers_edit','admin_base_core_corpoteammembers_create'] %} active{% endif %}">
                                                         <a href="{{ path('admin_base_core_corpoteammembers_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             Les membres de l'équipe
@@ -390,7 +391,6 @@ file that was distributed with this source code.
                                         </ul>
                                     </li>
                                     {% endif %}
-
 
                                     {% if is_granted('ROLE_BASE_ADMIN_PRESS_HOMEPAGE_ADMIN') %}
                                         {% set active = false %}
