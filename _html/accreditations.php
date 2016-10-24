@@ -114,7 +114,7 @@
                     <div class="articles-content">
                       <div class="textWrapper">
                         <span>Prix sur place</span>
-                        <h6>399€<span class="ht">(ht)</span></h6>  
+                        <h6>399€ <span class="ht">(ht)</span></h6>  
                       </div>
                     </div>
                   </div>
@@ -163,7 +163,7 @@
           </div>
         </div>
     </div>
-
+    <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>
 

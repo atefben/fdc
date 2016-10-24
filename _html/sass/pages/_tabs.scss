@@ -4,11 +4,24 @@
   height: 480px;
 }
 
-.greyBckg {  background-color: #f8f8f8;}
+.greyBckg {     
+    background-color: #f8f8f8;
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+}
 
 .boxes {
-  height: auto;
-  min-height: 500px;
+  height: 400px!important;
+  padding-top:3%;
+
+  h3 {
+    text-transform: initial;
+  }
+
+  h5 {
+    margin-bottom: 0px;
+  }
 }
 
 .boxesHeight {
@@ -23,13 +36,14 @@
 }
 
 ul.tabs {
-  margin: 0;
-  padding: 0;
-  float: left;
-  list-style: none;
-  height: 32px;
-  width: 100%;
-  margin-top: -90px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 50px;
+    /* margin-top: -90px; */
   
   li {
     float: left;
@@ -59,11 +73,17 @@ ul.tabs {
         opacity: 1;
         font-family: $CamphorHeavy;
       }
+
+      .redActive {
+        color: #ec3050!important;
+      }
   }
 
   p.active {
     color: #29afcf;
   }
+
+
 
   .halfTab {
     width: 50%;
@@ -72,7 +92,7 @@ ul.tabs {
     h4 {
 
       text-transform: uppercase;
-      line-height: 9px;
+      line-height:22px;
       padding-top: 25px;
       font-family: $CamphorHeavy;
 
@@ -86,7 +106,7 @@ ul.tabs {
     h4 {
 
       text-transform: uppercase;
-      line-height: 9px;
+      line-height:22px;
       padding-top: 25px;
       font-family: $CamphorHeavy;
 
@@ -101,7 +121,7 @@ ul.tabs {
     h4 {
 
       text-transform: uppercase;
-      line-height: 9px;
+      line-height:22px;
       padding-top: 25px;
       font-family: $CamphorHeavy;
 
@@ -238,7 +258,43 @@ ul.tabs {
       padding-left: 0px;
     }
   }
+
 }
+
+.speakersBox {
+  width: 83%!important;
+  float: left;
+  span {
+    color: #ec3050!important;
+  }
+
+  h5 {
+    color: #505050!important;
+    font-size: 12px;
+  }
+
+  .fromCountry {
+    color: #c3a05f!important;
+    font-size: 12px!important;
+    padding-left: 0px!important;
+  }
+}
+
+.speakersPicture {
+  
+  width: 15%;
+  float: left;
+  background: #fff;
+  height: 330px;
+  overflow: hidden;
+
+  img {
+    width: 150px;
+    height: 220px;
+    float: right;
+  }
+}
+
 
 .picturesTabcontainer {
   margin-top: -0px!important;
@@ -498,9 +554,42 @@ ul.tabs {
     z-index: 1005;
     cursor: pointer;
 
-    &.hover {
+    &:hover {
       background: #29afcf!important;
       color: white!important;
       cursor: pointer;
     }
 }
+
+.owl-pub {
+  .owl-controls {
+    position: absolute;
+    width: 100%;
+    z-index: 1004;
+    text-align: center;
+    margin-top: 85%;
+  }
+
+  .owl-buttons {
+    display: none;
+  }
+  .owl-page {
+    display: inline-block;
+    height: 7px;
+    margin: 0 5px;
+    vertical-align: middle;
+    position: relative;
+    width: 7px;
+    border-radius: 50px;
+    border: 3px solid transparent;
+    background: white;
+    @include transition(all .8s $smoothTransition);
+
+    &.active {
+      border: 5px solid white;
+      background: none;
+      @include transition(all .8s $smoothTransition);
+    }
+  }
+}
+

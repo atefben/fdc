@@ -12,18 +12,49 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
+        <div class="text-presentation producersWorkshop opportunites">
+          <h3>Opportunités publicitaires</h3>
+            <div class="subNavigation">
+              <nav>
+                <ul class="main">
+                  <li>
+                    <a href="#" class="active">stand</a>
+                  </li>
+                  <li>
+                    <a href="#">pavillons</a>
+                  </li>
+                  <li>
+                    <a href="#">projections</a>
+                  </li>
+                  <li>
+                    <a href="#">équipements et services</a>
+                  </li>
+                  <li>
+                    <a href="#">partenaires</a>
+                  </li>
+                  <li>
+                    <a href="#">Opportunités publicitaires</a>
+                  </li>
+                </ul>
+               </nav>
+          </div>
+        </div>
         <div class="greyBckg"> 
           <div class="bigContainer">    
             <div class="text-presentation boxes">
                 <h3>Retrouvez toutes nos offres<br> publicitaires</h3>
                 <h5>Simplifiez votre travail et celui de vos partenaires en installant votre société en plein cœur du Marché.<br> Nos stands sont situés au niveau du Riviera, au Lérins et dans le Palais. Vous profiterez ainsi de la proximité des salles<br> de projections, du business center, des bars et de la Plage des Palmes.</h5> 
+            </div>
+          </div>
+        </diV>
+        <div class="greyBckg"> 
+          <div class="bigContainer">   
                   <ul class="tabs">
                     <li class="active quarterTab" rel="tab1"><h4>publications officielles</h4>Mettez en avant votre société ou votre film</li>
                     <li class="quarterTab" rel="tab2"><h4>affichage officiel</h4>Maximisez votre visibilité.</li>
                     <li class="quarterTab" rel="tab3"><h4>bannières internet</h4>Mettez vos bannières sur nos sites.</li>
                     <li class="quarterTab" rel="tab4"><h4>Packages</h4>Mettez vos bannières sur nos sites.</li>
                   </ul>
-            </div>
             </div>
         </div>
         <div class="whiteBckg">
@@ -43,7 +74,18 @@
                 <div id="tab1" class="tab_content">
                     <div class="minTab">
                       <div class="tabPic">
-                        <img src="img/guide.png">
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                           <span>le pocket guide</span>
@@ -68,7 +110,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        <img src="img/guide.png">
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>sarah calderon</span>
@@ -93,7 +146,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        <img src="img/guide.png">
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>entre chien et loup (belgium)</span>
@@ -121,7 +185,18 @@
                 <div id="tab2" class="tab_content">
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>lucius barre</span>
@@ -141,7 +216,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>entre chien et loup (belgium)</span>
@@ -154,7 +240,18 @@
                 <div id="tab3" class="tab_content">
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>lucius barre</span>
@@ -164,7 +261,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>sarah calderon</span>
@@ -174,7 +282,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>entre chien et loup (belgium)</span>
@@ -187,7 +306,18 @@
                 <div id="tab4" class="tab_content">
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>lucius barre</span>
@@ -197,7 +327,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>sarah calderon</span>
@@ -207,7 +348,18 @@
                     </div>
                     <div class="minTab">
                       <div class="tabPic">
-                        pictures
+                          <div class="owl-pub owl-carousel owl-theme">
+
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                              <div class="item">
+                                <img src="/img/guide.png" alt="Marché du film">
+                              </div>
+                          </div>
                       </div>
                       <div class="tabBox">
                         <span>entre chien et loup (belgium)</span>

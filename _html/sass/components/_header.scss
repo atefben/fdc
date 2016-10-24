@@ -459,7 +459,7 @@ header {
 
       li {
         display: inline-block;
-        margin-left: 50px;
+        margin-left: 40px;
 
         @media screen and(max-width: 1024px) {
           margin-left: 5px;
@@ -470,7 +470,10 @@ header {
         }
 
         &:first-child {
-          margin-left: 0;
+          margin-left: 100px;
+          @media screen and(max-width: 1024px) {
+            margin-left: 5px;
+          }
         }
 
         a {
@@ -655,22 +658,41 @@ header {
   }
 }
 
+.tleft, .tright {
+  display: none;
+  margin-top: 30px;
+  @include transition(all .8s $smoothTransition);
+}
+
+.tleft {
+    margin-left: 100px;
+}
+
+.showT {
+  display: block;
+  @include transition(all .8s $smoothTransition);
+}
 
 .subMenu {
-  display: none;
-  position:absolute;
-  width: 100%;
-  background: url("/img/purpleBackg.png");
-  background-size: 100% 450px;
-  border-bottom: 0px solid #404040;
-  border: 0px solid #404040;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position:middle;
-  height: auto;
-  color:white!important;
-  @include transition(all .6s $smoothTransition);
-  margin-top: 40px;
+    display: none;
+    height: 0px;
+    position: absolute;
+    width: 100%;
+    background: url(/img/purpleBackg.png);
+    background-size: 100% 600px;
+    border-bottom: 0px solid #404040;
+    border: 0px solid #404040;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: middle;
+    color: white !important;
+    -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    margin-top: 40px;
+    z-index: 999;
+    @include transition(all .8s $smoothTransition);
 
   ul {
     width: 34%;
@@ -700,13 +722,17 @@ header {
     } 
 }
 
+.liMargin {
+  z-index: 1004;
+}
+
 .littleMargin {
   margin-top: 50px;
+  height: 50px;
   @include transition(all .6s $smoothTransition);
 }
 
 .seeSub {
-  z-index: 1006;
   @include transition(all .6s $smoothTransition);
 
   span {
@@ -717,12 +743,23 @@ header {
   }
 }
 
-.seeSub:hover .subsubMenu {
-  display: block!important;
+.showMenu {
+  display: block;
+  opacity: 1;
+  height: 300px;
+  min-height: 300px;
   @include transition(all .6s $smoothTransition);
 }
 
-.spanRotation {
+.rotateArrow {
+  -ms-transform: rotate(0deg); 
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  @include transition(all .6s $smoothTransition);
+  font-size: 10px;
+}
+
+.arrowRotated {
   -ms-transform: rotate(180deg); 
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -730,9 +767,11 @@ header {
 }
 
 .subsubMenu {
-  
-  padding-left: 10px!important;
-  height: 40px;
+  overflow: hidden;
+  height: 0px;
+  padding-left: 20px!important;
+  margin-top: -15px!important;
+  margin-bottom: 10px;
   @include transition(all .6s $smoothTransition);
 
   li {
@@ -741,9 +780,11 @@ header {
     .active, &:hover {
       color: #FFFFFF;
       opacity: 0.8;
+      text-transform: initial!important;
     }
 
     a { 
+      text-transform: initial!important;
       .active, &:hover {
         color: #FFFFFF;
         opacity: 0.8;
@@ -751,6 +792,13 @@ header {
     }
   }
 }
+
+.seesubsubMenu {
+    height: 50px;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+  }
 
 header {
 

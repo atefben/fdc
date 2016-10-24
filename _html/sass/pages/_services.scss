@@ -7,10 +7,15 @@
     p {
       font-size: 16px;
       font-family: $CamphorRegular;
+      line-height: 40px;
     }
 
     .innerWrapper {
       padding-top: 5%;
+    }
+
+    h3 {
+      text-transform: initial;
     }
 
     h6 {
@@ -18,6 +23,9 @@
       font-weight: bold;
       font-size: 28px!important;
       color: #141414;
+      margin: 10px 0px;
+      margin: 10px 0px 20px 0px !important;
+      line-height: 40px;
     }
 
     span {
@@ -25,6 +33,7 @@
       color: #505050!important;
       text-transform: initial!important;
       font-family: $CamphorHeavy;
+      line-height: 50px;
     }
 
     .fitImg {
@@ -52,7 +61,7 @@
     .articles:last-child {
       text-align: center;
       background: url("/img/blueBckg.png");
-      background-size: 100%;
+      background-size: 100% 500px;
       background-repeat: no-repeat;
 
       img {
@@ -68,6 +77,19 @@
       .lastArticle {
         position: absolute;
         top: 150px;
+      }
+
+      .blackBtn {
+        width: 180px;
+        height: 40px;
+        background: black;
+        color: white;
+        text-transform: uppercase;
+        padding-top: 30px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: $CamphorHeavy;
+        font-size: 12px;
       }
 
       h6 {

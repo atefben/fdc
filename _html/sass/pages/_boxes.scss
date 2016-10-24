@@ -5,13 +5,36 @@
     height: 274px;
     padding: 0px 0px;
     background: url("/img/purpleBackg.png");
-    background-size: 100%;
+    background-size: 100% 275px;
     background-repeat: no-repeat;
     border: 0px solid #404040;
     overflow: hidden;
     h3 {
       color: white;
       margin: 85px 0px 70px 0px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.opportunites {
+    width: 100%;
+    height: 274px;
+    padding: 0px 0px;
+    background: url("/img/ligthblueBckg.png");
+    background-size: 100% 275px;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+
+    h3 {
+      color: white;
+      margin: 85px 0px 70px 0px;
+      text-transform: initial;
     }
 
     img {
@@ -53,6 +76,13 @@
 .projections {
     
     padding-top:3%;
+    height: 500px;
+    max-height: 500px;
+
+    @media screen and (max-width: 1366px){
+      height: 400px;
+      max-height:400px;
+    }
 
     .text-presentation {
       padding-top: 0%;
@@ -65,6 +95,8 @@
     
     .blackBtn {
       padding: 30px 20px 0px;
+      font-family: $CamphorHeavy;
+      font-size: 12px;
     }
     
     width: 100%;
@@ -77,11 +109,6 @@
       width: 100%;
       height: 100%;
     }
-
-  @media screen and (max-width: 1280px) {
-    height: 400px;
-    max-height: 400px;
-  }
 
 }
 
@@ -106,6 +133,8 @@
   
   .blackBtn {
     padding: 30px 20px 0px;
+    font-family: $CamphorHeavy;
+    font-size: 12px;
   }
 
   .programme {

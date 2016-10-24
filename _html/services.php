@@ -96,7 +96,7 @@
             </div>
           </div><!--CONTAINER-->
 
-    <?php include('box-accreditation.php'); ?>
+    <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>
 

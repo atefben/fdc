@@ -22,7 +22,7 @@
                 <div class="articles">
                   <div class="articles-content">
                     <div class="photoWrapper">
-                      <img src="img/photo.png">
+                      <img src="img/julie-bergeron.png">
                     </div>
                     <div class="textWrapper">
                       <h6>JULIE BERGERON</h6>
@@ -33,21 +33,21 @@
                 <div class="articles">
                   <div class="articles-content">
                     <div class="photoWrapper">
-                      <img src="img/photo.png">
+                      <img src="img/clara-massot.png">
                     </div>
                     <div class="textWrapper">
                       <h6>clara massot</h6>
-                      <span>Project Manager NEXT<br><a href="clara.massot@gmail.com">clara.massot@gmail.com</a></span>
+                      <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com">clara.massot@gmail.com</a></span>
                     </div>
                   </div>
                 </div>
                 <div class="articles">
                   <div class="articles-content">
                     <div class="photoWrapper">
-                      <img src="img/photo.png">
+                      <img src="img/kevin-montero.png">
                     </div>
                     <div class="textWrapper">
-                      <h6>KEVIN MONTERO deschamps</h6>
+                      <h6 class="littleMargin">KEVIN MONTERO deschamps</h6>
                       <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
                     </div>
                   </div>
