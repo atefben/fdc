@@ -146,7 +146,7 @@ class CorpoTeamMembersAdmin extends Admin
             ))
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label'    => 'Photo du membre',
-                'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
+                'help'     => 'Dimensions attendues : 326x442. Format attendu : .jpg, .png, .gif',
                 'required' => false,
             ))
             ->add('translate')
