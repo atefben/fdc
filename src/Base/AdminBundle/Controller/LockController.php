@@ -28,6 +28,7 @@ class LockController extends Controller
         // General
         'homepage'                         => 'Homepage',
         'homepagecorporate'                => 'HomepageCorporate',
+        'corpomediatheque'                 => 'CorpoMediatheque',
         'fdcpagewebtvlive'                 => 'FDCPageWebTvLive',
         'tag'                              => 'Tag',
         'webtv'                            => 'WebTv',
@@ -94,6 +95,7 @@ class LockController extends Controller
         'fdcpagelaselectioncinemaplage'    => 'FDCPageLaSelectionCinemaPlage',
         'fdcpagejury'                      => 'FDCPageJury',
         'fdcpageaward'                     => 'FDCPageAward',
+        'fdcpagemediatheque'               => 'FDCPageMediatheque',
         // Orange
         'orangeseriesandcie'               => 'OrangeSeriesAndCie',
         'orangeprogrammationocs'           => 'OrangeProgrammationOCS',

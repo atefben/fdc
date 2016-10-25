@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,7 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
 class MediaController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="fdc_corporate_media_index")
+     * @Route("/more", name="fdc_corporate_media_index_ajax")
      * @Template("FDCCorporateBundle:Media:index.html.twig")
      * @return Response
      */
@@ -26,13 +28,6 @@ class MediaController extends Controller
         $page = $em->getRepository('BaseCoreBundle:FDCPageMediatheque')->find(1);
         $locale = $request->getLocale();
 
-        //$medias = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, '', true, true, true);
-
-        //dump($medias);
-
-
-        //exit;
-
         if($request->isMethod('POST')) {
             $search = $request->get('search');
             $photo = $request->get('photo') ? true : false;
@@ -41,17 +36,49 @@ class MediaController extends Controller
             $yearStart = $request->query->get('year-start');
             $yearEnd = $request->query->get('year-end');
 
-            $medias = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, 100);
+            if(!$photo && !$video && !$audio) {
+                $photo = true;
+                $video = true;
+                $audio = true;
+            }
 
-            $selection = false;
+            //multi type does not work, doing it manually with single type
+            $medias = array();
+            if($photo) {
+                $photos = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, true, false, false, $yearStart, $yearEnd, 30);
+                foreach($photos as $photo) {
+                    $medias[$photo->getId()] = $photo;
+                }
+            }
+
+            if($video) {
+                $videos = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, false, true, false, $yearStart, $yearEnd, 30);
+                foreach($videos as $video) {
+                    $medias[$video->getId()] = $video;
+                }
+            }
+
+            if($audio) {
+                $audios = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, false, false, true, $yearStart, $yearEnd, 30);
+                foreach($audios as $audio) {
+                    $medias[$audio->getId()] = $audio;
+                }
+            }
+
+            ksort($medias);
         } else {
             $mediatheque = $em->getRepository('BaseCoreBundle:CorpoMediatheque')->find(1);
-            $medias = $mediatheque->getMediasSelection();
-
-            $selection = true;
+            if(!$mediatheque->getDisplayedSelection()) {
+                $medias = $mediatheque->getMediasSelection();
+            } else {
+                $medias = array();
+            }
         }
 
-
-        return array('page' => $page, 'medias' => $medias, 'selection' => $selection);
+        if($request->get('_route') == 'fdc_corporate_media_index_ajax') {
+            return $this->render('FDCCorporateBundle:Media:medias.html.twig', array('medias' => $medias));
+        } else {
+            return $this->render('FDCCorporateBundle:Media:index.html.twig', array('page' => $page, 'medias' => $medias));
+        }
     }
 }
