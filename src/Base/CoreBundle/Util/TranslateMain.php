@@ -66,7 +66,6 @@ trait TranslateMain
      *
      * @access public
      * @static
-     * @return void
      */
     public static function getPriorityStatuses()
     {
@@ -83,7 +82,6 @@ trait TranslateMain
      *
      * @access public
      * @static
-     * @return void
      */
     public static function getPriorityStatusesList()
     {

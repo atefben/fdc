@@ -1,0 +1,5 @@
+services:
+    old_import.article_importer:
+        class: Base\CoreBundle\OldImport\ArticleImporter
+        arguments:
+            -  "@service_container"
