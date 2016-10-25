@@ -28,7 +28,7 @@
                   <li>
                     <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
-                        <div id="parent">
+                        <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
                             <div class="conf70">

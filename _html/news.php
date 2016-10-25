@@ -12,9 +12,8 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
-
-          <div class="bigContainer">
-            <?php include('box-producers-workshop.php'); ?>     
+        <?php include('box-producers-workshop.php'); ?> 
+          <div class="bigContainer">        
             <div class="our-news newsPage">
               <h3>Dernières parutions</h3>
               <div class="innerWrapper">
@@ -65,6 +64,7 @@
               </div>
             </div>
           </div><!--CONTAINER-->
+        </div>
 
     <?php include('box-accreditation.php'); ?>
     <?php include('box-contact.php'); ?>

@@ -95,6 +95,7 @@
               </div>
             </div>
           </div><!--CONTAINER-->
+        </div>
 
     <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>

@@ -12,11 +12,18 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
-        <?php include('box-producers-calendar.php'); ?>
-          <div class="text-presentation greyBckg minPadding">
-            <h5 class="bigContainer">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960.</h5> 
+        
+          <div class="text-presentation producersWorkshop calendar">
+            <div class="bigContainer">
+              <h3>Calendrier des événements</h3>
+            </div>
           </div>
-          <div class="midContainer">
+          <div class="text-presentation greyBckg minPadding">   
+            <div class="bigContainer">    
+              <h5 class="minMargin">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960.</h5>
+            </div>
+          </div>
+        <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
                 
                 <div class="dropdown"> 
@@ -41,7 +48,7 @@
                   <li>
                     <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
-                        <div id="parent">
+                        <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
                             <div class="conf10">Producers<br>NetWork</div>
@@ -120,7 +127,7 @@
                   <li>
                     <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
-                        <div id="parent">
+                        <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
                             <div class="conf10">Producers<br>NetWork</div>

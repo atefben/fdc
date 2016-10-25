@@ -162,14 +162,10 @@ function click() {
               console.log("removed " + identification);
               console.log(el);
 
-              if (this.id == 'all') {
-                $('#parent > div').fadeOut(450);
-                $('#parent').append('<div class="events message">aucun évenement sélectionné</div>');
-              }
+              if (this.id == 'all' || el.length < 1 ) {
+                $('.parent > div').fadeOut(450);
 
-              else if(el.length < 1 ) {
-
-                  $('#parent').append('<div class="events message">aucun évenement sélectionné</div>');
+                  $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
               } 
             
           }
@@ -184,8 +180,8 @@ function click() {
         console.log(el);
 
           if (this.id == 'all') {
-            $('#parent > div').fadeIn(450);
-            $('#parent').append('<div class="events message"></div>');
+            $('.parent > div').fadeIn(450);
+            $('.message').empty();
           } else if (el){
               $.each(el, function(i, val) { 
                 /*$(this).closest('li').addClass('open-selected-conf');*/

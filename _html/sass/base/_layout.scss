@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background-color: $black;
+  background-color: #FFFFFF;
   font-family: $CamphorRegular;
   font-size: 16px;
   overflow-x: hidden;
@@ -163,4 +163,10 @@ body {
       height: 576px!important;
     }
   }
+}
+
+.bigContainer {
+   @media screen and(max-width: $mobileWidth) {
+      max-width: 1024px;
+    }
 }

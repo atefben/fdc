@@ -3171,7 +3171,7 @@ html {
 }
 
 body {
-  background-color: #141414;
+  background-color: #FFFFFF;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   overflow-x: hidden;
@@ -3311,6 +3311,12 @@ body.fix {
     height: 576px !important;
   }
 }
+@media screen and (max-width: 1279px) {
+  .bigContainer {
+    max-width: 1024px;
+  }
+}
+
 @font-face {
   font-family: "icons";
   src: url("../fonts/icons.eot?6b329b5fed30750a169723fe02097f8c");
@@ -4492,7 +4498,7 @@ header #navigation ul li {
   display: inline-block;
   margin-left: 40px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1279px) {
   header #navigation ul li {
     margin-left: 5px;
   }
@@ -4503,7 +4509,7 @@ header #navigation ul li:hover > a {
 header #navigation ul li:first-child {
   margin-left: 100px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1279px) {
   header #navigation ul li:first-child {
     margin-left: 5px;
   }
@@ -10408,6 +10414,11 @@ header #searchContainer {
   margin-bottom: 150px;
   line-height: 40px;
 }
+@media screen and (max-width: 1279px) {
+  .text-presentation h5 {
+    font-size: 90%;
+  }
+}
 .text-presentation p {
   color: #2b2b2b;
   font-size: 16px;
@@ -10653,9 +10664,9 @@ header #searchContainer {
 }
 @media screen and (max-width: 1366px) {
   .contact-box .contact-details {
-    height: 300px;
-    max-height: 300px;
-    width: 250px;
+    height: 320px;
+    max-height: 320px;
+    width: 230px;
   }
 }
 .contact-box .contact-details span {
@@ -21578,6 +21589,11 @@ body:not(.tablette) .webtv #live .img {
   line-height: 90px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
+@media screen and (max-width: 1279px) {
+  .accredidationsDetails .accredidationsMessage div:first-child {
+    font-size: 90%;
+  }
+}
 .accredidationsDetails .accredidationsMessage div:nth-child(2) {
   width: 10%;
   height: 90px;
@@ -21672,6 +21688,11 @@ body:not(.tablette) .webtv #live .img {
 .accreditations .articles .earlyBird img {
   position: relative;
   left: -146px;
+}
+@media screen and (max-width: 1279px) {
+  .accreditations .articles .earlyBird img {
+    left: -128px;
+  }
 }
 .accreditations .textWrapper {
   text-align: center;
@@ -21846,6 +21867,7 @@ body:not(.tablette) .webtv #live .img {
 .accreditation h5 {
   font-size: 18px;
   opacity: 0.8;
+  margin-bottom: 50px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .accreditation .blackBtn {
@@ -21892,6 +21914,11 @@ body:not(.tablette) .webtv #live .img {
 .boxes {
   height: 400px !important;
   padding-top: 3%;
+}
+@media screen and (max-width: 1279px) {
+  .boxes {
+    padding: 3% 5%;
+  }
 }
 .boxes h3 {
   text-transform: initial;
@@ -22006,6 +22033,12 @@ ul.tabs .quarterTab h4 {
   vertical-align: middle;
   border: 3px solid white;
 }
+@media screen and (max-width: 1279px) {
+  .tabpicturesBox img {
+    object-fit: cover;
+    width: 90%;
+  }
+}
 .tabpicturesBox img:hover {
   border: 3px solid #CCC;
 }
@@ -22024,6 +22057,11 @@ ul.tabs .quarterTab h4 {
   margin: 0 auto;
   /* padding-top: 40px; */
   margin-top: -60px;
+}
+@media screen and (max-width: 1279px) {
+  .tab_container {
+    max-width: 980px;
+  }
 }
 .tab_container .tabPic {
   width: 30%;
@@ -22311,6 +22349,11 @@ ul.tabs .quarterTab h4 {
   right: 1%;
   top: 40%;
 }
+@media screen and (max-width: 1279px) {
+  .floatingButtonRight {
+    top: 48%;
+  }
+}
 .floatingButtonRight span:first-child {
   background: black;
   padding: 20px 30px;
@@ -22353,11 +22396,28 @@ ul.tabs .quarterTab h4 {
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+.message {
+  margin-left: 50px;
+  text-transform: initial;
+  font-size: 16px;
+  color: #505050;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
 .floatingButtonLeft {
   position: absolute;
   z-index: 1004;
   left: 1%;
   top: 40%;
+}
+@media screen and (max-width: 1279px) {
+  .floatingButtonLeft {
+    top: 48%;
+  }
 }
 .floatingButtonLeft span:nth-child(2) {
   background: black;
@@ -22456,6 +22516,13 @@ ul.tabs .quarterTab h4 {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+@media screen and (max-width: 1279px) {
+  #accordion-menu {
+    font-size: 90%;
+    padding: 0px 45px;
+  }
+}
+
 /*infosPage */
 .infosPage {
   background: white;
@@ -22552,6 +22619,10 @@ ul.tabs .quarterTab h4 {
 
 /*END EVENT PAGE*/
 /* CONFERENCE PAGE */
+.calendar h3 {
+  text-transform: initial;
+}
+
 .conference h5 {
   margin-bottom: 50px;
 }
@@ -22569,7 +22640,7 @@ ul.tabs .quarterTab h4 {
 
 .conferences {
   padding: 30px;
-  margin: 50px 0px;
+  margin: 50px 0px 0px 0px;
   height: auto;
 }
 .conferences .content {
@@ -22774,6 +22845,10 @@ ul.tabs .quarterTab h4 {
 .minPadding {
   padding: 50px 0px 5px 0px !important;
   height: auto !important;
+}
+
+.minMargin {
+  margin-bottom: 20px !important;
 }
 
 /* END CONFERENCE PAGE*/
@@ -23005,6 +23080,7 @@ ul.tabs .quarterTab h4 {
   padding-top: 115px;
   font-size: 46px !important;
   font-family: "Playfair Display", Times New Roman, Times, serif;
+  opacity: 1;
 }
 .servicesPage .articles:last-child p {
   height: 100px;

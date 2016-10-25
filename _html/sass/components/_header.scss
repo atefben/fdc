@@ -461,7 +461,7 @@ header {
         display: inline-block;
         margin-left: 40px;
 
-        @media screen and(max-width: 1024px) {
+        @media screen and(max-width: $mobileWidth) {
           margin-left: 5px;
         }
 
@@ -471,7 +471,7 @@ header {
 
         &:first-child {
           margin-left: 100px;
-          @media screen and(max-width: 1024px) {
+          @media screen and(max-width: $mobileWidth) {
             margin-left: 5px;
           }
         }

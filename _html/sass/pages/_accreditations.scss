@@ -41,6 +41,9 @@
       text-transform: uppercase;
       line-height: 90px;
       font-family: $CamphorHeavy;
+          @media screen and(max-width: $mobileWidth) {
+            font-size: 90%;
+          }
     }
 
     div:nth-child(2) {
@@ -159,6 +162,10 @@
         img {
           position: relative;
           left: -146px;
+
+          @media screen and (max-width: $mobileWidth) {
+            left: -128px;
+          }
         }
 
     }
@@ -363,6 +370,7 @@
     h5 {
       font-size: 18px;
       opacity: 0.8;
+      margin-bottom: 50px;
       font-family: $CamphorHeavy;
     }
 

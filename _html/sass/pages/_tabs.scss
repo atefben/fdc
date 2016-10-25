@@ -15,6 +15,10 @@
   height: 400px!important;
   padding-top:3%;
 
+  @media screen and(max-width: $mobileWidth) {
+      padding: 3% 5%;
+  }
+
   h3 {
     text-transform: initial;
   }
@@ -148,6 +152,12 @@ ul.tabs {
     img {
       vertical-align: middle;
       border: 3px solid white;
+      
+      @media screen and (max-width: $mobileWidth) {
+          object-fit: cover;
+          width: 90%;
+      }
+
       &:hover {
         border: 3px solid #CCC;
       }
@@ -168,6 +178,10 @@ ul.tabs {
     margin: 0 auto;
     /* padding-top: 40px; */
     margin-top: -60px;
+
+   @media screen and(max-width: $mobileWidth) {
+        max-width: 980px;
+    }
 
   .tabPic {
     width: 30%;
@@ -459,7 +473,9 @@ ul.tabs {
   z-index: 1004;  
   right: 1%;
   top: 40%;
-    
+  @media screen and (max-width: $mobileWidth) {
+    top: 48%;
+  }      
     span:first-child {
       background: black;
       padding: 20px 30px;
@@ -497,11 +513,24 @@ ul.tabs {
     }
 }
 
+.message {
+  margin-left: 50px;
+  text-transform: initial;
+  font-size: 16px;
+  color: #505050;
+  font-family: $CamphorHeavy;
+  @include transition(all 1s $smoothTransition);
+}
+
 .floatingButtonLeft {
   position: absolute;
   z-index: 1004;  
   left: 1%; 
   top: 40%;
+
+  @media screen and (max-width: $mobileWidth) {
+    top: 48%;
+  }  
     span:nth-child(2) {
       background: black;
       padding: 20px 30px;
@@ -593,3 +622,9 @@ ul.tabs {
   }
 }
 
+#accordion-menu {
+   @media screen and(max-width: $mobileWidth) {
+      font-size: 90%;
+      padding: 0px 45px;
+    }
+}

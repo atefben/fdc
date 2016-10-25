@@ -55,6 +55,7 @@
               </div>
             </div>
           </div><!--CONTAINER-->
+        </div>
 
 
     <?php include('box-contact.php'); ?>
