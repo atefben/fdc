@@ -11760,6 +11760,7 @@ article .read-later.rAlign span:after {
   height: 185px;
   position: relative;
   width: 293px;
+  overflow: hidden;
 }
 .single-movie .videos #slider-movie-videos .slide-video .info .category {
   font-size: 0.650rem;
@@ -12159,6 +12160,9 @@ article .read-later.rAlign span:after {
   position: relative;
   cursor: pointer;
   width: calc(100%/4);
+}
+.webtv .grid .item {
+  overflow: hidden;
 }
 .grid .item img {
   display: block;
@@ -17607,7 +17611,7 @@ body:not(.tablette) .webtv #live .img {
   float: left;
   position: relative;
   width: 60px;
-  z-index: 2;
+  z-index: 5;
 }
 .press .programmation #calendar-programmation .calendar .timeCol .empty {
   border-bottom: 1px solid #e5e5e5;
@@ -17729,6 +17733,11 @@ body:not(.tablette) .webtv #live .img {
   left: 15px;
   height: 40px;
   line-height: 38px;
+  z-index: 3;
+  background-color: #fff;
+  width: 55%;
+  text-align: left;
+  padding-left: 54px;
 }
 @media screen and (max-width: 1279px) {
   .press .programmation #calendar-programmation .filters {

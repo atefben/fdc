@@ -862,7 +862,7 @@
           float: left;
           position: relative;
           width: 60px;
-          z-index: 2;
+          z-index: 5;
 
           .empty {
             border-bottom: 1px solid #e5e5e5;
@@ -1002,6 +1002,12 @@
         left: 15px;
         height: 40px;
         line-height: 38px;
+        z-index: 3;
+        background-color: #fff;
+        width: 55%;
+        text-align: left;
+        padding-left: 54px;
+
 
         @include breakpoint(1279px) {
           width: calc(100% - 360px);
