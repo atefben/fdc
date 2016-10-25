@@ -1,0 +1,31 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div id="main">
+        <div class="faq">
+            <h2 class="title">FAQ</h2>
+            <inside class="faq-menu">
+                <ul>
+                    {% for data in faq %}
+                        <li {% if loop.first %}class="active"{% endif %} data-name="{{ data['theme']|trans_fallback('slug') }}">{{ data['theme']|trans_fallback('name') }}</li>
+                    {% endfor %}
+                </ul>
+            </inside>
+            {% for data in faq %}
+                <section class="faq-container {% if loop.first %}faq-active{% endif %}" data-name="{{ data['theme']|trans_fallback('slug') }}">
+                    {% for faqData in data['faq'] %}
+                        <article>
+                            <div class="faq-question">
+                                <div class="faq-question">
+                                    <h3 class="faq-title">{{ faqData|trans_fallback('title') }}</h3><i class="icon icon-more-square"></i></div>
+                                <p class="faq-description">{{ faqData|trans_fallback('content')|raw }}</p>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </section>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}
