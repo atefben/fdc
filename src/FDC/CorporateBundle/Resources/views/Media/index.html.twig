@@ -33,7 +33,7 @@
             </form>
         </div>
 
-        {% if app.request.method == 'GET' and mediatheque.displayedSelection %}
+        {% if app.request.method == 'GET' and mediatheque.displayedSelection == false %}
         <div class="contain-title vFlexAlign">
             <h1 class="title-01">Notre sélection</h1>
         </div>
