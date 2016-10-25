@@ -33,7 +33,7 @@
             </form>
         </div>
 
-        {% if selection %}
+        {% if app.request.method == 'GET' and mediatheque.displayedSelection == false %}
         <div class="contain-title vFlexAlign">
             <h1 class="title-01">Notre sélection</h1>
         </div>
@@ -44,15 +44,15 @@
 
             {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 
-            {% for media in medias %}
-                {% include "FDCCorporateBundle:Media:media.html.twig" with {"media": media} %}
-            {% endfor %}
+            {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
 
         </div> <!-- fin de grid-01 -->
 
-        <div class="">
+        {% if medias|length > 30 %}
+        <div>
             <a href="#" class="read-more block-01">Afficher <strong>plus de résultats</strong></a>
         </div>
+        {% endif %}
 
     </section>
 {% endblock %}

@@ -488,10 +488,12 @@ dashboard:
         bo_translation: Libellés
         homepage: Homepage
         homepage_corporate: Homepage Institutionnel
+        corpo_mediatheque: Médiathèque
         FAQ: FAQ
         FAQTheme: Thèmes FAQ
         pages: Pages
         pages_libre: Pages libres
+        fdc_page_mediatheque: Médiathèque
         fdc_page_la_selection_cannes_classics_honor: Invité d'honneur
         fdc_page_la_selection_cannes_classics_hommages: Hommages
         fdc_page_la_selection_cannes_classics_copy: Copies Restaurées

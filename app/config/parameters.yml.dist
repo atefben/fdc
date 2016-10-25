@@ -320,3 +320,5 @@ parameters:
     header_mdf_zh: 'http://www.marchedufilm.com/cn/'
     email_sysadmin_fdc: sysadmin@ohwee.fr
     admin_corpo_movie_inscription_id: 1
+    admin_corpo_mediatheque_id: 1
+    admin_fdc_page_mediatheque_id: 1

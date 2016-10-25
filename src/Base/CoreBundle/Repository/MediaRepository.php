@@ -92,7 +92,29 @@ class MediaRepository extends EntityRepository
         return $qb;
     }
 
-    public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 20) {
+    public function searchTest($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 500) {
+        $qb = $this->createQueryBuilder('m')
+            ->leftJoin('m.theme', 't')
+            ->leftJoin('t.translations', 'tt')
+            ->andWhere('m.displayedAll = 1');
+
+            $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+                ->leftJoin('mi.translations', 'mit');
+            $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
+                ->leftJoin('mv.translations', 'mvt');
+            $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
+                ->leftJoin('ma.translations', 'mat');
+
+        $qb = $qb->andWhere("m.publishEndedAt IS NULL")
+            ->orderBy('m.publishedAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
+    public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 30, $page = 1) {
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.theme', 't')
             ->leftJoin('t.translations', 'tt')
@@ -139,9 +161,11 @@ class MediaRepository extends EntityRepository
                 ->setParameter('yearEnd', $yearEnd);
         }
 
+        $max = $limit * 4;
+
         $qb = $qb->andWhere("m.publishEndedAt IS NULL")
             ->orderBy('m.publishedAt', 'DESC')
-            ->setMaxResults($limit)
+            ->setMaxResults($max)
             ->getQuery()
             ->getResult();
 
@@ -167,7 +191,7 @@ class MediaRepository extends EntityRepository
             ->leftjoin('ma.translations', 'mat')
             ->andWhere('f.id = :festival')
             ->andWhere('m.displayedAll = 1')
-            ;
+        ;
         $qb->setParameter('festival', $festival);
 
         if ($site) {
@@ -181,7 +205,7 @@ class MediaRepository extends EntityRepository
         $qb = $qb
             ->andWhere("m.publishEndedAt IS NULL")
         ;
-        
+
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
         $qb = $this->addTranslationQueries($qb, 'mat', $locale);
