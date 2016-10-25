@@ -341,7 +341,7 @@ file that was distributed with this source code.
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list']) ? 'active' %}
+                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list','admin_base_core_corpoteammembers_edit','admin_base_core_corpoteammembers_create']) ? 'active' %}
 
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN') %}
                                         <li class="treeview {% if active %} active{% endif %}">
