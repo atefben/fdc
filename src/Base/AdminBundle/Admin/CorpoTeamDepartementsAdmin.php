@@ -126,7 +126,8 @@ class CorpoTeamDepartementsAdmin extends Admin
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'required'                  => false
                     ),
                     'departementName' => array(
                         'label' => 'Nom du département',
