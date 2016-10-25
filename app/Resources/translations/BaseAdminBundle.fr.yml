@@ -532,6 +532,7 @@ dashboard:
         credits: Crédits
         mentions_legales: Mentions légales
         confidentialite: Politique de confidentialité
+        old_news_id: Référence article
 
 form:
     label_hide_common_content: Ne pas afficher cette strate
