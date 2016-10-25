@@ -14,7 +14,6 @@
     <div id="main" class="home loading">    
             <?php include('box-producers-workshop.php'); ?>  
           <div class="container">
-   
             <div class="our-news infosPage">
               <h3>Besoin d’informations ?</h3>
               <h5>Our dedicated team will be at your disposal throughout the Marché du Film to help you have the best possible experience in Cannes. If you have any questions or inquiries about the 2016 Doc Corner, your main contact is Pierre-Alexis Chevit.</h5>

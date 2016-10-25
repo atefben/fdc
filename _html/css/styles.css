@@ -4797,24 +4797,29 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 .rotateArrow {
+  width: 5px;
+  float: left;
+  margin-right: 5px;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
-  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   font-size: 10px;
+  margin-top: 8px;
 }
 
 .arrowRotated {
-  -ms-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  margin-top: 11px;
 }
 
 .subsubMenu {
@@ -10411,7 +10416,7 @@ header #searchContainer {
 .text-presentation h5 {
   color: #2b2b2b;
   font-size: 16px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   line-height: 40px;
 }
 @media screen and (max-width: 1279px) {
@@ -10534,6 +10539,11 @@ header #searchContainer {
   padding-top: 3%;
   width: 100%;
 }
+@media screen and (max-width: 1279px) {
+  .our-news {
+    height: 1200px;
+  }
+}
 .our-news span {
   color: #533b0e;
   text-transform: uppercase;
@@ -10554,6 +10564,13 @@ header #searchContainer {
   float: left;
   text-align: left;
 }
+@media screen and (max-width: 1279px) {
+  .our-news .articles {
+    width: 49% !important;
+    margin-left: 0% !important;
+    margin: 0.5% !important;
+  }
+}
 .our-news .articles .articles-content {
   padding: 30px;
 }
@@ -10565,11 +10582,6 @@ header #searchContainer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-@media screen and (max-width: 1279px) {
-  .our-news .articles {
-    width: 32%;
-  }
 }
 .our-news .articles:nth-child(2), .our-news .articles:nth-child(3) {
   margin-left: 1%;
@@ -10605,7 +10617,7 @@ header #searchContainer {
 
 .newsPage {
   background: white;
-  min-height: 1500px;
+  min-height: 2000px;
 }
 .newsPage .articles {
   background: #f8f8f8;
@@ -10640,6 +10652,7 @@ header #searchContainer {
   max-height: 600px;
   background: url("/img/plage-cannes.png");
   background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 @media screen and (max-width: 1366px) {
@@ -10728,6 +10741,7 @@ header #searchContainer {
   width: 100%;
   background: url("/img/accreditations.png");
   background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .altImg img {
@@ -22251,6 +22265,7 @@ ul.tabs .quarterTab h4 {
 
 .read-more-state ~ .read-more-trigger:before {
   content: 'Plus détails';
+  padding-left: 30px;
   color: black;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -22260,6 +22275,7 @@ ul.tabs .quarterTab h4 {
 
 .read-more-state:checked ~ .read-more-trigger:before {
   content: 'Fermer';
+  padding-left: 30px;
   color: black;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -22274,6 +22290,23 @@ ul.tabs .quarterTab h4 {
   line-height: 25px;
   font-size: 14px;
   text-transform: uppercase;
+}
+
+.opportuniteArrow {
+  position: absolute;
+  margin-left: 50px;
+  font-size: 10px;
+  margin-top: 5px;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  color: #29afcf;
+}
+
+.read-more-state:checked ~ .opportuniteArrow {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 /* END TABS */
@@ -22527,6 +22560,11 @@ ul.tabs .quarterTab h4 {
 .infosPage {
   background: white;
 }
+@media screen and (max-width: 1279px) {
+  .infosPage .articles {
+    width: 32% !important;
+  }
+}
 .infosPage .photoWrapper {
   width: 150px;
   height: 200px;
@@ -22661,6 +22699,8 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   float: left;
   text-align: left;
+  margin-bottom: 15px;
+  margin-left: 10px;
 }
 .conferences .selector {
   width: 100%;
@@ -22687,6 +22727,7 @@ ul.tabs .quarterTab h4 {
   color: #505050 !important;
   font-size: 16px;
   text-transform: uppercase;
+  margin-right: 15px;
 }
 .conferences select, .conferences option {
   -webkit-appearance: none;
@@ -22866,6 +22907,7 @@ ul.tabs .quarterTab h4 {
 .producersWorkshop h3 {
   color: white;
   margin: 85px 0px 70px 0px;
+  text-transform: initial;
 }
 .producersWorkshop img {
   object-fit: cover;
@@ -22899,6 +22941,9 @@ ul.tabs .quarterTab h4 {
   height: 50px;
   line-height: 50px;
 }
+.subNavigation .active {
+  color: #ec3050;
+}
 .subNavigation ul {
   font-size: 0.875rem;
 }
@@ -22927,6 +22972,7 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   background: url("/img/salle.png");
   background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 @media screen and (max-width: 1366px) {

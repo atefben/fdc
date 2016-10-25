@@ -12,6 +12,7 @@
     h3 {
       color: white;
       margin: 85px 0px 70px 0px;
+      text-transform: initial;
     }
 
     img {
@@ -48,6 +49,10 @@
   background: black;
   height: 50px;
   line-height: 50px;
+
+    .active {
+      color: #ec3050;
+    }
 
     ul {
       font-size: 0.875rem;
@@ -102,6 +107,7 @@
     width: 100%;
     background: url("/img/salle.png");
     background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 
     img {

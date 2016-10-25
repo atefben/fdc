@@ -752,18 +752,23 @@ header {
 }
 
 .rotateArrow {
-  -ms-transform: rotate(0deg); 
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  @include transition(all .6s $smoothTransition);
-  font-size: 10px;
+    width: 5px;
+    float: left;
+    margin-right: 5px;
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    @include transition(all .1s $smoothTransition);
+    font-size: 10px;
+    margin-top: 8px;
 }
 
 .arrowRotated {
-  -ms-transform: rotate(180deg); 
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  @include transition(all .6s $smoothTransition);
+  -ms-transform: rotate(90deg); 
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  @include transition(all .1s $smoothTransition);
+  margin-top: 11px;
 }
 
 .subsubMenu {

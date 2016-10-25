@@ -383,12 +383,14 @@ ul.tabs {
 
 .read-more-state ~ .read-more-trigger:before {
   content: 'Plus détails';
+  padding-left: 30px;
   color: black;
         @include transition(all .5s $smoothTransition);
 }
 
 .read-more-state:checked ~ .read-more-trigger:before {
   content: 'Fermer';
+  padding-left: 30px;
   color: black;
         @include transition(all .5s $smoothTransition);
 }
@@ -400,6 +402,23 @@ ul.tabs {
     line-height: 25px;
     font-size: 14px;
     text-transform: uppercase;
+}
+
+.opportuniteArrow {
+  position: absolute;
+  margin-left: 50px;
+  font-size: 10px;
+  margin-top: 5px;
+  -ms-transform: rotate(-90deg); 
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  color: #29afcf;
+}
+
+.read-more-state:checked ~ .opportuniteArrow {
+  -ms-transform: rotate(90deg); 
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 /* END TABS */

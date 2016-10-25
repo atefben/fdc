@@ -68,8 +68,11 @@ function menuMDF() {
       $('.subMenu').toggle();
       $('#subMenu').show();
       $('.subsubMenu').toggleClass('seesubsubMenu');
-      $('.rotateArrow').toggleClass('arrowRotated');
 		});
+
+  $('.prog, .subsubMenu').hover(function() {
+      $('.rotateArrow').toggleClass('arrowRotated');
+    });
 
   $("#edition, #subMenu").hover(function() {
         $('#subMenu').toggleClass("showMenu");

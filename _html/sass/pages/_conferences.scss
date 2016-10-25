@@ -49,6 +49,8 @@
     width: 100%;
     float: left;
     text-align: left;
+    margin-bottom: 15px;
+    margin-left: 10px;
   }
   
   .selector {
@@ -78,7 +80,8 @@
   .dropdown span {
     color: #505050!important;
      font-size: 16px;
-     text-transform: uppercase;   
+     text-transform: uppercase;
+     margin-right: 15px;   
   }
   select, option {
      -webkit-appearance: none;

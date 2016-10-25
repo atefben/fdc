@@ -11,6 +11,7 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
+    <?php include('box-producers-workshop.php'); ?>
     <div id="main" class="home loading">
         <div class="greyBckg"> 
           <div class="bigContainer">    

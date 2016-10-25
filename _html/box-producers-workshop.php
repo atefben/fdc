@@ -4,10 +4,10 @@
       <nav>
         <ul class="main">
           <li>
-            <a href="/" class="active">Accueil</a>
+            <a href="programmation.php" class="active">Accueil</a>
           </li>
           <li>
-            <a href="conference.php">conférences</a>
+            <a href="conferences.php">conférences</a>
           </li>
           <li>
             <a href="speakers.php">intervenants</a>
@@ -16,7 +16,7 @@
             <a href="news.php">news</a>
           </li>
           <li>
-            <a href="partneraires.php">partenaires</a>
+            <a href="partenaires.php">partenaires</a>
           </li>
           <li>
             <a href="infos.php">infos et contact</a>

@@ -12,8 +12,8 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
+      <?php include('box-producers-workshop.php'); ?>
       <div class="container">
-
               <div class="text-presentation">
                 <h3>Les clés pour bien débuter sur<br>le marché international !</h3>
                 <h5>Le Producers Workshop est un programme destiné aux producteurs qui commencent sur la scène internationale ou qui n’ont pas ou peu d’expérience du Marché du Film et du Festival de Cannes.<br>De la technique du pitch aux rouages de la co-production internationale, vous vous familiariserez avec tous les outils et compétences nécessaires à votre succès sur le marché cinématographique international.</h5> 

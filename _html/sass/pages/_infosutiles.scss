@@ -4,7 +4,13 @@
 
 .infosPage {
   background: white;
-  
+
+  .articles {
+    @media screen and (max-width:$mobileWidth) {
+      width: 32%!important;
+    }
+  }
+
   .photoWrapper {
     width: 150px;
     height: 200px;

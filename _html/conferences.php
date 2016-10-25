@@ -12,7 +12,6 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
-        
           <div class="text-presentation producersWorkshop calendar">
             <div class="bigContainer">
               <h3>Calendrier des événements</h3>
@@ -29,11 +28,14 @@
                 <div class="dropdown"> 
                   <span>AFFICHER</span>
                   <select id="eventSelector">
-                     <option value="a">Red</option>
-                     <option value="b">Yellow</option>
-                     <option value="c">Blue</option>
+                     <option value="a">Producers Workshop</option>
+                     <option value="b">Producers Network</option>
+                     <option value="c">Doc Corner</option>
+                     <option value="d">Next</option>
+                     <option value="e">mixers</option>
+                     <option value="f">Goes To Cannes</option>
                   </select>
-                </div>
+                </div><br>
                 <div class="selector">
                   <div class="active selectbtn" id="all">Show All</div>
                   <div class="selectbtn" id="b">Producers Workshop</div>
@@ -51,7 +53,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
                               <span>Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -95,7 +97,7 @@
                             </div>                            
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <span>Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -117,20 +119,80 @@
                             </div>                            
                             
                           </div>
-                          <div class="box d events">Cdfghdfghdfdf</div>
-                          <div class="box e events">Ddgfdfhgghdfghfhfdgh</div>
-                          <div class="box f events">Edfggfhdfhdf</div>
+                          <div class="box d events"><div class="conf10">Next</div>
+                            <div class="conf60">
+                              <span>Breakfast Meeting</span>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confButton">En savoir plus</div>
+                            </div>
+                            <div class="conf30">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>               
+                          </div>
+                          <div class="box e events"><div class="conf10">Next</div>
+                            <div class="conf60">
+                              <span>Breakfast Meeting</span>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confButton">En savoir plus</div>
+                            </div>
+                            <div class="conf30">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>               
+                          </div>
+                          <div class="box f events"><div class="conf10">Goes to Cannes</div>
+                            <div class="conf60">
+                              <span>Breakfast Meeting</span>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confButton">En savoir plus</div>
+                            </div>
+                            <div class="conf30">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>              
+                          </div>
                           <div class="box g events">Fgfhdfhggfdhdfgh</div>
                         </div>
                     </div>
                   </li>
                   <li>
-                    <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                                    <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
                               <span>Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -174,7 +236,7 @@
                             </div>                            
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <span>Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -196,9 +258,69 @@
                             </div>                            
                             
                           </div>
-                          <div class="box d events">Cdfghdfghdfdf</div>
-                          <div class="box e events">Ddgfdfhgghdfghfhfdgh</div>
-                          <div class="box f events">Edfggfhdfhdf</div>
+                          <div class="box d events"><div class="conf10">Next</div>
+                            <div class="conf60">
+                              <span>Breakfast Meeting</span>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confButton">En savoir plus</div>
+                            </div>
+                            <div class="conf30">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>               
+                          </div>
+                          <div class="box e events"><div class="conf10">Next</div>
+                            <div class="conf60">
+                              <span>Breakfast Meeting</span>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confButton">En savoir plus</div>
+                            </div>
+                            <div class="conf30">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>               
+                          </div>
+                          <div class="box f events"><div class="conf10">Goes to Cannes</div>
+                            <div class="conf60">
+                              <span>Breakfast Meeting</span>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confButton">En savoir plus</div>
+                            </div>
+                            <div class="conf30">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>              
+                          </div>
                           <div class="box g events">Fgfhdfhggfdhdfgh</div>
                         </div>
                     </div>
