@@ -161,6 +161,7 @@ class MediaRepository extends EntityRepository
                 ->setParameter('yearEnd', $yearEnd);
         }
 
+        //because of entity relations
         $max = $limit * 4;
 
         $qb = $qb->andWhere("m.publishEndedAt IS NULL")

@@ -4,8 +4,8 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
@@ -16,13 +16,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * FDCPageMediathequeTranslation
+ * CorpoMediathequeTranslation
  *
  * @ORM\Table()
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class FDCPageMediathequeTranslation implements TranslateChildInterface
+class CorpoMediathequeTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
@@ -43,7 +43,7 @@ class FDCPageMediathequeTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return FDCPageMediathequeTranslation
+     * @return CorpoMediathequeTranslation
      */
     public function setTitle($title)
     {

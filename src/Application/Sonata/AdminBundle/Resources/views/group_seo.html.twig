@@ -23,14 +23,6 @@
                     </a>
                 </li>
             {% endif %}
-            {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_MEDIATHEQUE_ADMIN') or is_granted('ROLE_BASE_ADMIN_FDC_PAGE_MEDIATHQUE_LIST_EDIT') %}
-                <li>
-                    <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_fdcpagemediatheque_edit', {id: admin_fdc_page_mediatheque_id}) }}">
-                        <i class="fa fa-angle-double-right"></i>
-                        {{ 'dashboard.link.fdc_page_mediatheque'|trans({}, 'BaseAdminBundle') }}
-                    </a>
-                </li>
-            {% endif %}
             {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_WEB_TV_CHANNELS_ADMIN') or is_granted('ROLE_BASE_ADMIN_FDC_PAGE_WEB_TV_CHANNELS_LIST_EDIT') %}
                 <li>
                     <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_fdcpagewebtvchannels_edit', {id: admin_fdc_page_web_tv_channels_id}) }}">

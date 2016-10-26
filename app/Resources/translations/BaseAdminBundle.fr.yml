@@ -570,6 +570,7 @@ form:
     label_evenmt: Site évènementiel
     label_homepage_corpo_display: Remonter sur la homepage du site institutionnel
     label_hide_common_content: Ne pas afficher cette strate
+    label_our_selection: Notre Sélection
     label_pdf: Pdf
     media_pdf:
         helper_file: Format attendu : .pdf

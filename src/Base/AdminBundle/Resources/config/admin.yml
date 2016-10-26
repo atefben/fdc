@@ -1483,20 +1483,14 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoTeamDepartementsAssociation}
 
-    base.admin.fdc_page_mediatheque:
-        class: Base\AdminBundle\Admin\FDCPageMediathequeAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCPageMediatheque, BaseAdminBundle:FDCPageMediathequeAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageMediatheque}
-
     base.admin_corpo_mediatheque:
         class: Base\AdminBundle\Admin\CorpoMediathequeAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoMediatheque, BaseAdminBundle:CorpoMediathequeAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMediatheque}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMediatheque, show_in_dashboard: false}
 
     base.admin_corpo_mediatheque_media:
         class: Base\AdminBundle\Admin\CorpoMediathequeMediaAdmin
         arguments: [~, Base\CoreBundle\Entity\CorpoMediathequeMedia, BaseAdminBundle:CorpoMediathequeMediaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMediathequeMedia}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoMediathequeMedia, show_in_dashboard: false}

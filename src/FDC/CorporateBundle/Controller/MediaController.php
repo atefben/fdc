@@ -25,8 +25,7 @@ class MediaController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->get('doctrine')->getManager();
-        $page = $em->getRepository('BaseCoreBundle:FDCPageMediatheque')->find(1);
-        $mediatheque = $em->getRepository('BaseCoreBundle:CorpoMediatheque')->find(1);
+        $page = $em->getRepository('BaseCoreBundle:CorpoMediatheque')->find(1);
         $locale = $request->getLocale();
 
         if($request->isMethod('POST')) {
@@ -68,8 +67,8 @@ class MediaController extends Controller
 
             ksort($medias);
         } else {
-            if(!$mediatheque->getDisplayedSelection()) {
-                $medias = $mediatheque->getMediasSelection();
+            if(!$page->getDisplayedSelection()) {
+                $medias = $page->getMediasSelection();
             } else {
                 $medias = array();
             }
@@ -78,7 +77,7 @@ class MediaController extends Controller
         if($request->get('_route') == 'fdc_corporate_media_index_ajax') {
             return $this->render('FDCCorporateBundle:Media:medias.html.twig', array('medias' => $medias));
         } else {
-            return $this->render('FDCCorporateBundle:Media:index.html.twig', array('page' => $page, 'mediatheque' => $mediatheque, 'medias' => $medias));
+            return $this->render('FDCCorporateBundle:Media:index.html.twig', array('page' => $page, 'medias' => $medias));
         }
     }
 }
