@@ -100,4 +100,22 @@ jQuery(document).ready(function($) {
             $(this).val(idx + 1);
         });
     });
+    $('form[action*="corpoteamdepartements"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="corpoteamteams"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="corpoteam"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
 });
