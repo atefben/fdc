@@ -2,8 +2,14 @@
 
 namespace Base\CoreBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CorpoMediatheque
@@ -11,8 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class CorpoMediatheque
+class CorpoMediatheque implements TranslateMainInterface
 {
+    use Time;
+    use Translatable;
+    use TranslateMain;
+    use SeoMain;
+
     /**
      * @var integer
      *
@@ -21,6 +32,21 @@ class CorpoMediatheque
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     *
+     */
+    private $image;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @Assert\Valid()
+     */
+    protected $translations;
 
     /**
      * @var CorpoMediathequeMedia
@@ -36,6 +62,15 @@ class CorpoMediatheque
      */
     private $displayedSelection;
 
+
+    /**
+     * FDCPageMediatheque constructor.
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -68,13 +103,6 @@ class CorpoMediatheque
     public function getDisplayedSelection()
     {
         return $this->displayedSelection;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -124,5 +152,28 @@ class CorpoMediatheque
         }
 
         return $medias;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return CorpoMediatheque
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
