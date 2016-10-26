@@ -54,7 +54,7 @@
                                 <a href="#">
                                     <div class="contain-img">
                                         {% set mainImage = null %}
-                                        {% if membersAssociation.members.mainImage is not null %}
+                                        {% if  membersAssociation.members is not null and membersAssociation.members.mainImage is not null %}
                                             {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale(app.request.locale) %}
                                             {% if mainTrans is null or mainTrans.file is null %}
                                                 {% set mainTrans = membersAssociation.members.mainImage.findTranslationByLocale('fr') %}
