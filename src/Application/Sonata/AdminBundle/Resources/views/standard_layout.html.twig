@@ -333,7 +333,8 @@ file that was distributed with this source code.
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list']) ? 'active' %}
+                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list','admin_base_core_corpoteammembers_edit',
+                                    'admin_base_core_corpoteammembers_create','admin_base_core_corpoteamdepartement_list','admin_base_core_corpoteamdepartement_edit','admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit']) ? 'active' %}
 
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
                                         <li class="treeview {% if active %} active{% endif %}">
@@ -375,6 +376,22 @@ file that was distributed with this source code.
                                                         <a href="{{ path('admin_base_core_corpoteam_edit',{id: admin_homepage_corporate_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             L'équipe
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CORPO_TEAM_ADMIN') %}
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit'] %} active{% endif %}">
+                                                        <a href="{{ path('admin_base_core_corpoteamteams_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            Les équipes
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CORPO_TEAM_ADMIN') %}
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpoteamdepartements_list','admin_base_core_corpoteamdepartements_edit'] %} active{% endif %}">
+                                                        <a href="{{ path('admin_base_core_corpoteamdepartements_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            Les départements
                                                         </a>
                                                     </li>
                                                 {% endif %}

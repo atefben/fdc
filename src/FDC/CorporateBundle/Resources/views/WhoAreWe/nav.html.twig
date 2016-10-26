@@ -11,7 +11,7 @@
         {% endfor %}
         <li class="{% if slug == 'equipe' %}active{% endif %}">
             <a href="{{ path('fdc_corporate_whoarewe_equipe') }}">
-                {{ 'aboutus.team' }}
+                {{ 'aboutus.team'|trans }}
             </a>
         </li>
     </ul>

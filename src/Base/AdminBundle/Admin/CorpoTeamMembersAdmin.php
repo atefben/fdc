@@ -25,6 +25,7 @@ class CorpoTeamMembersAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
+        $collection->remove('batch');
         $collection->remove('export');
     }
 
@@ -128,13 +129,16 @@ class CorpoTeamMembersAdmin extends Admin
                         'required'                  => false
                     ),
                     'firstname' => array(
-                        'label' => 'Prénom'
+                        'label' => 'Prénom',
+                        'field_type' => 'text'
                     ),
                     'lastname' => array(
-                        'label' => 'Nom'
+                        'label' => 'Nom',
+                        'field_type' => 'text'
                     ),
                     'function' => array(
-                        'label' => 'Fonction'
+                        'label' => 'Fonction',
+                        'field_type' => 'text'
                     ),
                     'createdAt'      => array(
                         'display' => false
@@ -146,8 +150,9 @@ class CorpoTeamMembersAdmin extends Admin
             ))
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label'    => 'Photo du membre',
-                'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
+                'help'     => 'Dimensions attendues : 326x442. Format attendu : .jpg, .png, .gif',
                 'required' => false,
+                'btn_delete' => false
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(

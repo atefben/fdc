@@ -41,6 +41,7 @@ class CorpoTeamTeams implements TranslateMainInterface
     /**
      *
      * @ORM\OneToMany(targetEntity="CorpoTeamTeamsAssociation", mappedBy="teamTeams", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $departement;
 

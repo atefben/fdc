@@ -1,0 +1,142 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="sitemap">
+        <h2 class="title">{{ 'sitemap.title.plandusite'|trans }}</h2>
+        <section class="sitemap-container">
+            {% for route in routes %}
+                {% if route.route == 'fdc_event_movie_selection' and route.enabled == true %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            <li><a href="{{ path('fdc_event_movie_selection', {'slug': selectionSlug}) }}">{{ selectionName }}</a></li>
+                        </ul>
+                    </article>
+                {% elseif route.route == 'fdc_corporate_default_home' and route.enabled == true %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            <li>
+                                {% if route.route != '#' %}
+                                    <a href="{{ path(route.route) }}">
+                                        {{ route.transName|trans }}
+                                    </a>
+                                {% elseif route.route == '#' %}
+                                    <a href="#">
+                                        {{ child.transName|trans }}
+                                    </a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </article>
+                {% elseif route.route == 'fdc_corporate_default_home' and route.enabled == true %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            <li>
+                                {% if route.route != '#' %}
+                                    <a href="{{ path(route.route) }}">
+                                        {{ route.transName|trans }}
+                                    </a>
+                                {% elseif route.route == '#' %}
+                                    <a href="#">
+                                        {{ child.transName|trans }}
+                                    </a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </article>
+                {% elseif route.route == 'fdc_corporate_whoarewe_show' and route.enabled == true %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            {% for page in aboutUs %}
+                                <li>
+                                    <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}">
+                                        {{ page|trans_fallback('title') }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_whoarewe_equipe') }}">
+                                    {{ 'aboutus.team'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </article>
+                {% else %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            {% if route.route == '#' %}
+                                <li><a href="#">{{ route.transName|trans }}</a></li>
+                            {% else %}
+                                <li><a href="{{ path(route.route) }}">{{ route.transName|trans }}</a></li>
+                            {% endif %}
+                            {% for child in route['__children'] %}
+                                {% if child.enabled %}
+                                    {% if child.route == '#' %}
+                                        <li><a href="#">{{ child.transName|trans }}</a></li>
+                                    {% else %}
+                                        <li><a href="{{ path(child.route, {locale: app.request.get('locale')}) }}">{{ child.transName|trans }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </article>
+                {% endif %}
+            {% endfor %}
+            <article class="sitemap-item">
+                <h3 class="title sitemap-item-title">{{ 'Footer' }}</h3>
+                <ul>
+                    {% for route in footer %}
+                        {% if route.route == 'fdc_corporate_footer_contact' and route.enabled == true %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_footer_contact') }}">
+                                    {{ 'footer.nav.contact'|trans }}
+                                </a>
+                            </li>
+                        {% elseif route.transName == 'footer.nav.faq' and route.enabled == true %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_footer_faq') }}">
+                                    {{ 'footer.nav.faq'|trans }}
+                                </a>
+                            </li>
+                        {% elseif route.transName == 'footer.nav.credit' and route.enabled == true %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_footer_credits') }}">
+                                    {{ 'footer.nav.credit'|trans }}
+                                </a>
+                            </li>
+                        {% elseif route.transName == 'footer.nav.mentionslegales' and route.enabled == true %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_footer_mentionslegales') }}">
+                                    {{ 'footer.nav.mentionslegales'|trans }}
+                                </a>
+                            </li>
+                        {% elseif route.transName == 'footer.nav.plandusite' and route.enabled == true %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_footer_sitemap') }}">
+                                    {{ 'footer.nav.plandusite'|trans }}
+                                </a>
+                            </li>
+                        {% elseif route.transName == 'footer.nav.politiqueconfidentialite' and route.enabled == true %}
+                            <li>
+                                <a href="{{ path('fdc_corporate_footer_privacy') }}">
+                                    {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                                </a>
+                            </li>
+                        {% elseif route.transName == 'footer.nav.boutique' and route.enabled == true  %}
+                            <li>
+                                <a href="{{ footer_boutique }}">
+                                    {{ 'footer.nav.boutique'|trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </article>
+        </section>
+    </div>
+{% endblock %}

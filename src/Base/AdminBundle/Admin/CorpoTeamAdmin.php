@@ -22,8 +22,13 @@ class CorpoTeamAdmin extends Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->remove('list');
+        $collection->remove('create');
         $collection->remove('show');
+        $collection->remove('batch');
+        $collection->remove('delete');
         $collection->remove('export');
+        $collection->remove('acl');
     }
 
     protected $formOptions = array(
@@ -159,7 +164,7 @@ class CorpoTeamAdmin extends Admin
                    'cascade_validation' => true,
                    'by_reference' => false,
                    'label' => 'Equipe',
-                   'required' => false
+                   'required' => false,
                ),
                array(
                    'edit' => 'inline',
