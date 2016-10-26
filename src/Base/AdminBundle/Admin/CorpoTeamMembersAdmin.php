@@ -128,13 +128,16 @@ class CorpoTeamMembersAdmin extends Admin
                         'required'                  => false
                     ),
                     'firstname' => array(
-                        'label' => 'Prénom'
+                        'label' => 'Prénom',
+                        'field_type' => 'text'
                     ),
                     'lastname' => array(
-                        'label' => 'Nom'
+                        'label' => 'Nom',
+                        'field_type' => 'text'
                     ),
                     'function' => array(
-                        'label' => 'Fonction'
+                        'label' => 'Fonction',
+                        'field_type' => 'text'
                     ),
                     'createdAt'      => array(
                         'display' => false

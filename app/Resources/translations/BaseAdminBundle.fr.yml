@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_team_members_list: Les membres de l'équipe
     link_corpo_who_are_we_list: Qui sommes nous
     link_corpo_accredit_procedure_list: Participer
     link_corpo_accredit_list: Participer
@@ -174,6 +175,7 @@ group:
     mobile_notificaton:
         publish: Publication
 entity:
+    corpo_team_members: Les membres de l'équipe
     corpo_who_are_we: Qui sommes nous
     fdc_event_routes: Menu
     news_article: Articles
