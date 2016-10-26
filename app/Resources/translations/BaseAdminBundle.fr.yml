@@ -176,6 +176,8 @@ group:
     mobile_notificaton:
         publish: Publication
 entity:
+    corpo_team_departements: Départements
+    corpo_team: L'équipe
     corpo_team_teams: Les équipes
     corpo_team_members: Les membres de l'équipe
     corpo_who_are_we: Qui sommes nous
