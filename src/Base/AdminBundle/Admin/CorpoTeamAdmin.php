@@ -159,7 +159,7 @@ class CorpoTeamAdmin extends Admin
                    'cascade_validation' => true,
                    'by_reference' => false,
                    'label' => 'Equipe',
-                   'required' => false
+                   'required' => false,
                ),
                array(
                    'edit' => 'inline',

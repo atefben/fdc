@@ -25,6 +25,7 @@ class CorpoTeamMembersAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
+        $collection->remove('batch');
         $collection->remove('export');
     }
 
@@ -151,6 +152,7 @@ class CorpoTeamMembersAdmin extends Admin
                 'label'    => 'Photo du membre',
                 'help'     => 'Dimensions attendues : 326x442. Format attendu : .jpg, .png, .gif',
                 'required' => false,
+                'btn_delete' => false
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
