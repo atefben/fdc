@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_team_departements_list: Les départements
     link_corpo_team_list: Les équipes
     link_corpo_team_members_list: Les membres de l'équipe
     link_corpo_who_are_we_list: Qui sommes nous
