@@ -113,9 +113,18 @@
               <div class="owlContainer innerWrapper ">
                 <div id="owl-mid" class="owl-carousel owl-theme">
            
-                  <div class="item"><img src="/img/public.png" alt="Marché du film"></div>
-                  <div class="item"><img src="/img/slider/slider02.jpg" alt="GTA V"></div>
-                  <div class="item"><img src="/img/slider/slider02.jpg" alt="Mirror Edge"></div>
+                  <div class="item">
+                    <img src="/img/public.png" alt="Marché du film">
+                    <p>Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                  </div>
+                  <div class="item">
+                    <img src="/img/public.png" alt="Marché du film">
+                    <p>Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                  </div>
+                  <div class="item">
+                    <img src="/img/public.png" alt="Marché du film">
+                    <p>Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                  </div>
                  
                 </div>
               </div>

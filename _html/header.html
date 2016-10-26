@@ -2,7 +2,7 @@
   <div id="top-bar">
     <ul class="main-nav">
       <li>
-        <a href="/">Festival 2016</a>
+        <a href="/">Festival 2017</a>
       </li>
       <li>
         <a href="http://www.festival-cannes.com/fr.html" target="_blank">Festival de Cannes</a>
@@ -17,10 +17,10 @@
         <a href="http://www.marchedufilm.com/fr/" target="_blank" class="active">Marché du film</a>
       </li>
     </ul>
-    <!--<ul class="user-nav">
-      <li>
+    <ul class="user-nav">
+      <!--<li>
         <a href="#" class="selection"><i class="icon icon_ma-selection"></i> Ma Sélection</a>
-      </li>
+      </li>-->
       <li>
         <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
       </li>
@@ -32,13 +32,13 @@
           <li><a href="#">ZH</a></li>
         </ul>
       </li>
-    </ul>-->
+    </ul>
   </div>
   <div id="logo-wrapper">
     <div class="container">
       <div id="logo">
         <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm" /></a>
-        <h1><a href="/"><img width="100%" src="img/logo-marche-film.png" alt="Festival de Cannes" /></a></h1>
+        <h1><a href="/"><img width="100%" src="img/logo-marche-du-film.png" alt="Festival de Cannes" /></a></h1>
         <!--<h2><a href="/">11-22 Mai 2016</a></h2>-->
         <p class="stick"><a href="/"><img width="100%" src="img/logo-marche-film.png" alt="Festival de Cannes" /></a></p>
       </div>
@@ -64,8 +64,8 @@
     <div class="bigContainer">
       <nav>
         <ul class="main">
-          <li>
-            <a href="/" class="active" data-rel="subMenu" id="edition">Edition 2017</a>
+          <li id="edition">
+            <a href="/" class="active" >Edition 2017</a>
           </li>
           <li>
             <a href="accreditations.php">ACCREDITATIONS</a>
@@ -83,8 +83,15 @@
             <a href="infos.php">INFORMATIONS UTILES</a>
           </li>
           <li>
-            <div id="search">
-              <a href="#" class="search"><i class="icon icon_recherche"></i></a>
+            <div id="searchBox" >
+                <form action="">
+                  <input type="text" name="name" placeholder="rechercher" autocomplete="off" />
+                </form>
+            </div>
+          </li>
+          <li id="searchBar">
+            <div>
+              <a href="#" id=""><i class="icon icon_recherche"></i></a>
             </div>
           </li>
         </ul>
@@ -140,7 +147,7 @@
         </div>
       </div>
   </div>
-  <div id="selection">
+  <!--<div id="selection">
     <h2 class="title">Ma sélection <strong>(<span></span>)</strong></h2>
     <ul class="filters-selection">
       <li><a href="#" data-selection='all' class="active">Tous</a></li>
@@ -167,15 +174,6 @@
       </article>
       <a href="#" class="delete"></a>
     </div>
-  </div>
-  <div id="searchContainer">
-    <div class="container">
-      <form action="search.php">
-        <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="Entrez votre recherche..." autocomplete="off" />
-        <i class="icon icon_recherche"></i><input id="submitSearch" type="submit" value="" /> <!-- todo -->
-      </form>
-      <ul id="suggest"></ul>
-    </div>
-  </div>
+  </div>-->
 </header>
 <div class="blackBckg"></div>

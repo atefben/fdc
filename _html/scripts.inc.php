@@ -83,7 +83,6 @@ var GLOBALS = {
 
 <!-- build:js js/vendor.min.js -->
 <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="js/bower_components/owl.carousel/src/js/owl.carousel.js"></script>
 <script src="js/bower_components/moment/min/moment.min.js"></script>
 <script src="js/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="js/bower_components/fullcalendar/dist/lang-all.js"></script>
@@ -151,7 +150,6 @@ var GLOBALS = {
 <script src="js/festival-cannes/popin.js"></script>
 <script src="js/festival-cannes/scroll.js"></script>
 <script src="js/festival-cannes/owl.carousel.min.js"></script>
-<script src="js/festival-cannes/isotope.pkgd.min.js"></script>
 <script src="js/festival-cannes/custom.js"></script>
 <!-- festival-cannes tags end -->
 <!-- endbuild -->

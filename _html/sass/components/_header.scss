@@ -114,6 +114,7 @@ header {
           float: left;
           margin-top: -5px;
           width: 72px;
+          margin-left: 35px;
         }
 
         h2 {
@@ -143,7 +144,7 @@ header {
 
   .user-nav {
     background-color: $black;
-    border-left: 1px solid #404040;
+    border-left: 1px solid #141414;
     float: right;
     font-family: $CamphorBold;
     padding: 0 15px 0 10px;
@@ -224,17 +225,28 @@ header {
   }
 
   #top-bar {
-    border-bottom: 1px solid #404040;
+    border-bottom: 0px solid #080808;
+    background-color: #141414;
     font-size: 0.750rem;
-    height: 28px;
-    line-height: 28px;
+    height: 35px;
+    line-height: 30px;
 
     .main-nav {
       float: left;
       font-family: $CamphorBold;
+      background-color: #080808;
 
       li {
+        margin-left: -4px;
         display: inline-block;
+        background-color: #080808;
+        border-left: 0px solid #404040;
+        border-right: 0px solid #404040;
+        border-bottom: 1px solid #404040;
+
+        &:last-child {
+          border-bottom: 1px solid #141414!important;
+        }
 
         a {
           color: $grey;
@@ -245,12 +257,11 @@ header {
 
           &:hover, &.active {
             color: $gold;
+            background-color: #141414!important;
           }
 
           &.active {
-            background-color: $black;
-            border-right: 1px solid #404040;
-            padding-bottom: 1px;
+            border-left: 1px solid #404040!important;
           }
         }
       }
@@ -279,7 +290,7 @@ header {
 
     #logo {
       display: inline-block;
-      padding: 5px 100px 0 0;
+      padding: 5px 100px 20px 0;
       text-align: center;
       vertical-align: middle;
       width: 200px;
@@ -348,7 +359,8 @@ header {
       img.palm {
         display: block;
         margin: 0 auto;
-        width: 145px;
+        width: 165px;
+        margin-left: 35px;
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
       }
@@ -449,6 +461,7 @@ header {
     height: 39px;
     line-height: 39px;
     z-index: 1005;
+    @include transition(all .8s $smoothTransition);
 
     /*.container {
       overflow: hidden;
@@ -459,14 +472,15 @@ header {
 
       li {
         display: inline-block;
-        margin-left: 40px;
+        margin-left: 25px;
 
         @media screen and(max-width: $mobileWidth) {
           margin-left: 5px;
         }
 
         &:hover>a {
-          color: $gold;
+          color: #FFFFFF;
+          @include transition(all .8s $smoothTransition);
         }
 
         &:first-child {
@@ -553,6 +567,7 @@ header {
           opacity: 1;
           visibility: visible;
           display: block;
+          @include transition(all .8s $smoothTransition);
         }
       }
 
@@ -566,7 +581,7 @@ header {
       &.main {
         border-right: 1px solid #404040;
         font-family: $CamphorHeavy;
-        font-size: 0.875rem;
+        font-size: 0.78rem;
         position: relative;
       }
 
@@ -577,10 +592,14 @@ header {
 
         li {
           vertical-align: top;
+          font-size: 0.78rem;
+          @include transition(all .8s $smoothTransition);
         }
 
         li:hover>a {
-          color: $gold;
+          color: #FFFFFF;
+          font-size: 0.78rem;
+          @include transition(all .8s $smoothTransition);
 
           &:after {
             opacity: 1;
@@ -593,6 +612,7 @@ header {
           padding: 0 0 0 26px; //todo
           padding: 0px;
           position: relative;
+          @include transition(all .8s $smoothTransition);
 
           &:after {
             content: '';
@@ -612,7 +632,8 @@ header {
             margin-left: 14px;
           }
           &:hover {
-            color: $gold;
+            color: #FFFFFF;
+            @include transition(all .8s $smoothTransition);
 
             &:after {
               opacity: 1;
@@ -623,9 +644,10 @@ header {
 
         li ul li a {
           color: #fff;
-          font-size: 0.750rem;
+          font-size: 0.78rem;
           font-family: $CamphorHeavy;
           padding: 0 0 0 26px; //todo
+          @include transition(all .8s $smoothTransition);
         }
 
         .participate-wrapper ul {
@@ -658,10 +680,47 @@ header {
   }
 }
 
+#edition:hover, #edition {
+    @include transition(all .8s $smoothTransition);
+}
+
+#searchBox {
+    @include transition(all  2s $smoothTransition);
+  display: none;
+  width: 0px;
+  margin-right: 100px;
+  @include transition(all  0.9s $smoothTransition);
+
+  input {
+    height: 25px;
+    width: 150px;
+  }
+}
+  
+.showsearchBox {
+    @include transition(all  2s $smoothTransition);
+  display: block!important;
+  width: 100px!important;
+  margin-right: 0px!important;
+
+}
+
+.blackIcon, .icon_recherche:checked {
+  color: black!important;
+}
+
 .tleft, .tright {
+  @include transition(all 2s $smoothTransition);
   display: none;
   margin-top: 30px;
-  @include transition(all .8s $smoothTransition);
+  height: 0px;
+  li {
+    &:hover {
+      color: #FFFFFF!important;
+      opacity: 1!important;
+        @include transition(all 2s $smoothTransition);
+    }
+  }
 }
 
 .tleft {
@@ -670,10 +729,11 @@ header {
 
 .showT {
   display: block;
-  @include transition(all .8s $smoothTransition);
+  height: 300px;
+  @include transition(all 2s $smoothTransition);
 }
 
-.subMenu {
+.subMenu{
     display: none;
     height: 0px;
     position: absolute;
@@ -686,17 +746,13 @@ header {
     background-attachment: fixed;
     background-position: middle;
     color: white !important;
-    -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     margin-top: 40px;
     z-index: 999;
     @include transition(all .8s $smoothTransition);
 
   ul {
     width: 34%;
-    @include transition(all .6s $smoothTransition);
+    @include transition(all .8s $smoothTransition);
   }
 
   li {
@@ -704,21 +760,22 @@ header {
     display: block!important;
     margin-left: 0px!important;
     font-family: $CamphorHeavy;
-    font-size: 90%!important;
+    font-size: 0.78rem;
     text-align: left;
-    @include transition(all .6s $smoothTransition);
+    @include transition(all .8s $smoothTransition);
     
     .active, &:hover {
       color: #FFFFFF!important;
-      opacity: 0.8;
-      @include transition(all .6s $smoothTransition);
+      opacity: 1!important;
+      @include transition(all .8s $smoothTransition);
     }
     
   }
     
-  a.active, a:hover {
+  a {
+      &:hover, &.active {
         color: #FFFFFF!important;
-        opacity: 0.8;
+      }
     } 
 }
 
@@ -745,10 +802,8 @@ header {
 
 .showMenu {
   display: block;
-  opacity: 1;
-  height: 300px;
-  min-height: 300px;
-  @include transition(all .6s $smoothTransition);
+  height: 300px!important;
+  @include transition(all .8s $smoothTransition);
 }
 
 .rotateArrow {
@@ -771,20 +826,19 @@ header {
   margin-top: 11px;
 }
 
-.subsubMenu {
+.subsubMenu  {
   overflow: hidden;
   height: 0px;
   padding-left: 20px!important;
   margin-top: -15px!important;
   margin-bottom: 10px;
-  @include transition(all .6s $smoothTransition);
+  @include transition(all  0.9s $smoothTransition);
 
   li {
     height: 20px;
-
     .active, &:hover {
-      color: #FFFFFF;
-      opacity: 0.8;
+      color: #FFFFFF!important;
+      opacity: 1!important;
       text-transform: initial!important;
     }
 
@@ -792,7 +846,6 @@ header {
       text-transform: initial!important;
       .active, &:hover {
         color: #FFFFFF;
-        opacity: 0.8;
       }   
     }
   }
@@ -810,6 +863,7 @@ header {
   z-index: 1005;
 
   #navigation {
+    @include transition(all  0.9s $smoothTransition);
         /*.tleft:before {
         background: url("/img/purpleBackg.png");
         background-size: 100% 450px;
@@ -868,13 +922,19 @@ header {
     position: fixed;
     width: 100%;
     margin-top: -30px;
-    height: 100%;
+    height: 0%;
     background: black;
     opacity: 0.9;
     padding: 0px;
     margin: 0px;
     @include transition(all .6s $smoothTransition);
     z-index: 999;
+}
+
+.showblackBckg {
+  display: block!important;
+  height: 100%!important;
+  @include transition(all .6s $smoothTransition);
 }
 
 @media screen and (max-width: 1155px) {
