@@ -46,7 +46,7 @@ class WhoAreWeController extends Controller
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
-            ->findBy([], ['position' => 'asc'])
+            ->findBy([], ['weight' => 'asc'])
         ;
 
         return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', array(
