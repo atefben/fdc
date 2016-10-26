@@ -28,6 +28,7 @@ class CorpoTeamAdmin extends Admin
         $collection->remove('batch');
         $collection->remove('delete');
         $collection->remove('export');
+        $collection->remove('acl');
     }
 
     protected $formOptions = array(
