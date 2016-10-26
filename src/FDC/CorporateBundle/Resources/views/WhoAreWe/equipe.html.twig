@@ -36,7 +36,7 @@
                               <span class="select">
                                 {% for team in datas.teams %}
                                     <span data-filter="{{ team.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}"
-                                          class="active">{{ team.teams|trans_fallback('teamName') }}</span>
+                                          {% if loop.index0 == 0 %}class="active"{% endif %}>{{ team.teams|trans_fallback('teamName') }}</span>
                                 {% endfor %}
                                   <i class="icon icon-arrow-down"></i>
                               </span>
