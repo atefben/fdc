@@ -71,7 +71,22 @@ class CorpoTeamMembersAdmin extends Admin
                 return true;
             },
             'field_type' => 'text',
-            'label'      => 'prenom'
+            'label'      => 'Nom du membre'
+        ))
+        ->add('function', 'doctrine_orm_callback', array(
+            'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                if (!$value['value']) {
+                    return;
+                }
+                $queryBuilder->join("{$alias}.translations", 't');
+                $queryBuilder->andWhere('t.locale = :locale');
+                $queryBuilder->setParameter('locale', 'fr');
+                $queryBuilder->andWhere('t.function LIKE :title');
+                $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                return true;
+            },
+            'field_type' => 'text',
+            'label'      => 'Nom de la fonction'
         ))
         ;
     }
@@ -85,6 +100,10 @@ class CorpoTeamMembersAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
+                'label'    => 'Nom du membre',
+            ))
+            ->add('function', null, array(
+                'template' => 'BaseAdminBundle:CorpoTeamMembers:list_function.html.twig',
                 'label'    => 'Nom du membre',
             ))
             ->add('createdAt', null, array(
