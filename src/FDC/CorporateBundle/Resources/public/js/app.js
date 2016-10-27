@@ -126,7 +126,7 @@ var initVideo = function(hash) {
         var $container    = $("#"+vid.id).closest('.video-container');
 
         console.log('container');
-        conosle.log($container);
+        console.log($container);
 
         if($container.find('.control-bar').length <= 0) {
             $container.append(controlBar);
@@ -149,7 +149,7 @@ var initVideo = function(hash) {
         $topBar.find('.info').append($infoBar.find('.info').html());
 
         console.log('topbar');
-        conosle.log($topBar);
+        console.log($topBar);
 
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
