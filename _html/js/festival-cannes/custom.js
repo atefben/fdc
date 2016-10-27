@@ -58,12 +58,6 @@ function menuMDF() {
 
 	var blackBckg = $(".blackBckg");
 
-	$("#edition, #subMenu").hover(function() {
-
-		$(blackBckg).toggleClass("showblackBckg");
-
-		});
-
     $('.seeSub').hover(function() {
       $('.liMargin').toggleClass('littleMargin');
       $('.subsubMenu').toggleClass('seesubsubMenu');
@@ -74,9 +68,10 @@ function menuMDF() {
     });
 
   $("#edition, #subMenu").hover(function() {
+        $('.tleft, .tright').toggleClass("showT");
         $('#subMenu').show();
         $('#subMenu').toggleClass("showMenu");
-        $('.tleft, .tright').toggleClass("showT");
+        $(blackBckg).toggleClass("showblackBckg");
 
   });
 

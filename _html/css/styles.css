@@ -4805,7 +4805,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   display: none;
-  margin-top: 30px;
+  margin-top: 0px;
   height: 0px;
 }
 .tleft li:hover, .tright li:hover {
@@ -4823,6 +4823,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 
 .showT {
   display: block;
+  margin-top: 30px;
   height: 300px;
   -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4831,7 +4832,6 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 #subMenu {
-  display: none;
   height: 0px;
   position: absolute;
   width: 100%;
@@ -4908,7 +4908,6 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 .showMenu {
-  display: block;
   height: 300px !important;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
