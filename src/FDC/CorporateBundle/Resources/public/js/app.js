@@ -125,6 +125,9 @@ var initVideo = function(hash) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
 
+        console.log('container');
+        console.log($container);
+
         if($container.find('.control-bar').length <= 0) {
             $container.append(controlBar);
         }
@@ -145,6 +148,9 @@ var initVideo = function(hash) {
 
         $topBar.find('.info').append($infoBar.find('.info').html());
 
+        console.log('topbar');
+        console.log($topBar);
+
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
@@ -154,6 +160,10 @@ var initVideo = function(hash) {
         // CUSTOM LINK FACEBOOK
         var fbHref = $topBar.find('.buttons .facebook').attr('href');
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+
+        console.log('fbHref');
+        console.log(fbHref);
+
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = $topBar.find('.buttons .twitter').attr('href');
