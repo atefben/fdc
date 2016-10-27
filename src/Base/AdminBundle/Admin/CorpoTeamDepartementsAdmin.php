@@ -133,6 +133,7 @@ class CorpoTeamDepartementsAdmin extends Admin
                     ),
                     'departementName' => array(
                         'label' => 'Nom du département',
+                        'field_type' => 'text'
                     ),
                     'createdAt'      => array(
                         'display' => false

@@ -333,17 +333,15 @@ file that was distributed with this source code.
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list','admin_base_core_corpoteammembers_edit',
-                                    'admin_base_core_corpoteammembers_create','admin_base_core_corpoteamdepartement_list','admin_base_core_corpoteamdepartement_edit','admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit']) ? 'active' %}
 
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
-                                        <li class="treeview {% if active %} active{% endif %}">
+                                        <li class="treeview {% if app.request.attributes.get('_route') == 'admin_base_core_corpomediatheque_edit' %} active{% endif %}">
                                             <a href="#">
                                                 <i class="fa fa-folder"></i>
                                                 <span>{{ 'dashboard.link.corpo_mediatheque'|trans({}, 'BaseAdminBundle') }}</span>
                                                 <i class="fa pull-right fa-angle-left"></i>
                                             </a>
-                                            <ul class="treeview-menu {% if active %} active{% endif %}">
+                                            <ul class="treeview-menu {% if app.request.attributes.get('_route') == 'admin_base_core_corpomediatheque_edit' %} active{% endif %}">
                                                 {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
                                                     <li class="{% if app.request.attributes.get('_route') == 'admin_base_core_corpomediatheque_edit' %} active{% endif %}">
                                                         <a href="{{ path('admin_base_core_corpomediatheque_edit', {id: admin_corpo_mediatheque_id}) }}">
@@ -355,6 +353,11 @@ file that was distributed with this source code.
                                             </ul>
                                         </li>
                                     {% endif %}
+
+                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list','admin_base_core_corpoteammembers_edit',
+                                    'admin_base_core_corpoteammembers_create','admin_base_core_corpoteamdepartements_list','admin_base_core_corpoteamdepartements_edit','admin_base_core_corpoteamdepartements_create','admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit','admin_base_core_corpoteamteams_create']) ? 'active' %}
+
+
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN') %}
                                         <li class="treeview {% if active %} active{% endif %}">
                                             <a href="#">
