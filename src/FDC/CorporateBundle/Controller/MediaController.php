@@ -84,7 +84,7 @@ class MediaController extends Controller
             $items = 30;
             $pageMedias = array();
             $start = $pg != 1 ? $pg * $items : 0;
-            $end = count($medias) > ($start+$items) ? $start + $items : count($medias);
+            $end = count($medias) > ($start+$items) ? $start + $items : count($medias)-1;
             for($i=$start; $i<=$end; $i++) {
                 $pageMedias[] = $medias[$i];
             }
