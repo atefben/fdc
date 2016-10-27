@@ -2444,7 +2444,7 @@ a {
   left: 92px;
 }
 
-.small-pres p, .pres-honneur p {
+.article-single .small-pres p, .article-single .pres-honneur p {
   margin-bottom: 51px;
   color: #666666;
   font-size: 1rem;
@@ -2453,14 +2453,21 @@ a {
   text-align: left;
   margin-top: 32px;
 }
-.small-pres p strong, .pres-honneur p strong {
+.article-single .small-pres p strong, .article-single .pres-honneur p strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   color: #141414;
   line-height: 24px;
   text-align: left;
 }
-.small-pres .big-quote p, .pres-honneur .big-quote p {
+.article-single .small-pres p a, .article-single .pres-honneur p a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.article-single .small-pres p a:hover, .article-single .pres-honneur p a:hover {
+  color: #8e6d30;
+}
+.article-single .small-pres .big-quote p, .article-single .pres-honneur .big-quote p {
   color: #b1b1b1;
   text-align: center;
   font-size: .875rem;
@@ -2468,8 +2475,12 @@ a {
   font-weight: bold;
   line-height: 26px;
 }
-.small-pres .big-quote strong, .pres-honneur .big-quote strong {
-  color: #c8a461;
+.article-single .small-pres .big-quote p strong, .article-single .pres-honneur .big-quote p strong {
+  color: #b1b1b1;
+  font-size: .875rem;
+}
+.article-single .small-pres .big-quote strong, .article-single .pres-honneur .big-quote strong {
+  color: #c8a461 !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: 1rem;

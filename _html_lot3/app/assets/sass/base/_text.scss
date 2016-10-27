@@ -1081,7 +1081,7 @@ a {
 }
 
 
-.small-pres, .pres-honneur {
+.article-single .small-pres, .article-single .pres-honneur {
   p {
     margin-bottom: 51px;
     color: #666666;
@@ -1098,6 +1098,15 @@ a {
       line-height: 24px;
       text-align: left;
     }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
   }
 
   .big-quote {
@@ -1108,10 +1117,15 @@ a {
       font-family: $CamphorItalic;
       font-weight: bold;
       line-height: 26px;
+
+      strong {
+        color: #b1b1b1;
+        font-size: .875rem;
+      }
     }
 
     strong {
-      color: #c8a461;
+      color: $gold !important;
       font-family: $CamphorBold;
       text-transform: uppercase;
       font-size: 1rem;
