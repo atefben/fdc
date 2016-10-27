@@ -2125,6 +2125,17 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  margin-top: 50px;
+  flex-direction: row;
+
+  .caption {
+    color: #666 !important;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    line-height: 18px;
+    text-align: left;
+    font-family: $CamphorRegular;
+  }
 }
 
 .half-photo {
