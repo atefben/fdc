@@ -2120,3 +2120,17 @@
   }
 
 }
+
+.half-photos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.half-photo {
+  width: 45%;
+
+  img {
+    margin-bottom: 10px !important;
+  }
+}
