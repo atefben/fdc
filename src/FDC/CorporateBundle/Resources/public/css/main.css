@@ -1965,12 +1965,12 @@ blockquote, .quote {
   opacity: .75;
 }
 
-.contain-title, .small-pres, .pres-honneur {
+.contain-title {
   min-height: 152px;
   -ms-flex-direction: column;
   flex-direction: column;
 }
-.contain-title p, .contain-title ul, .contain-title ol, .small-pres p, .small-pres ul, .small-pres ol, .pres-honneur p, .pres-honneur ul, .pres-honneur ol {
+.contain-title p, .contain-title ul, .contain-title ol {
   font-size: 1.125rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #fff;
@@ -1982,71 +1982,71 @@ blockquote, .quote {
   list-style: inside;
   color: #666666;
 }
-.ie .contain-title p, .ie .contain-title ul, .ie .contain-title ol, .ie .small-pres p, .ie .small-pres ul, .ie .small-pres ol, .ie .pres-honneur p, .ie .pres-honneur ul, .ie .pres-honneur ol {
+.ie .contain-title p, .ie .contain-title ul, .ie .contain-title ol {
   margin-top: 67px;
   width: 100%;
 }
-.contain-title p strong, .contain-title ul strong, .contain-title ol strong, .small-pres p strong, .small-pres ul strong, .small-pres ol strong, .pres-honneur p strong, .pres-honneur ul strong, .pres-honneur ol strong {
+.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
   color: #c8a461;
 }
-.bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol, .bright .small-pres p, .bright .small-pres ul, .bright .small-pres ol, .bright .pres-honneur p, .bright .pres-honneur ul, .bright .pres-honneur ol {
+.bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol {
   color: #141414;
 }
-.contain-title p a, .contain-title ul a, .contain-title ol a, .small-pres p a, .small-pres ul a, .small-pres ol a, .pres-honneur p a, .pres-honneur ul a, .pres-honneur ol a {
+.contain-title p a, .contain-title ul a, .contain-title ol a {
   color: #c8a461;
 }
-.contain-title p em, .contain-title ul em, .contain-title ol em, .small-pres p em, .small-pres ul em, .small-pres ol em, .pres-honneur p em, .pres-honneur ul em, .pres-honneur ol em {
+.contain-title p em, .contain-title ul em, .contain-title ol em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
-.contain-title p strong, .contain-title ul strong, .contain-title ol strong, .small-pres p strong, .small-pres ul strong, .small-pres ol strong, .pres-honneur p strong, .pres-honneur ul strong, .pres-honneur ol strong {
+.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.contain-title p sub, .contain-title ul sub, .contain-title ol sub, .small-pres p sub, .small-pres ul sub, .small-pres ol sub, .pres-honneur p sub, .pres-honneur ul sub, .pres-honneur ol sub {
+.contain-title p sub, .contain-title ul sub, .contain-title ol sub {
   vertical-align: text-bottom;
   font-size: .5rem;
 }
-.contain-title p sup, .contain-title ul sup, .contain-title ol sup, .small-pres p sup, .small-pres ul sup, .small-pres ol sup, .pres-honneur p sup, .pres-honneur ul sup, .pres-honneur ol sup {
+.contain-title p sup, .contain-title ul sup, .contain-title ol sup {
   vertical-align: super;
   font-size: .5rem;
 }
-.contain-title p a, .contain-title ul a, .contain-title ol a, .small-pres p a, .small-pres ul a, .small-pres ol a, .pres-honneur p a, .pres-honneur ul a, .pres-honneur ol a {
+.contain-title p a, .contain-title ul a, .contain-title ol a {
   color: #c8a461;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.contain-title p a:hover, .contain-title ul a:hover, .contain-title ol a:hover, .small-pres p a:hover, .small-pres ul a:hover, .small-pres ol a:hover, .pres-honneur p a:hover, .pres-honneur ul a:hover, .pres-honneur ol a:hover {
+.contain-title p a:hover, .contain-title ul a:hover, .contain-title ol a:hover {
   color: #8e6d30;
 }
-.contain-title ul, .small-pres ul, .pres-honneur ul {
+.contain-title ul {
   list-style: inherit;
   color: #666666;
 }
-.contain-title ol li, .small-pres ol li, .pres-honneur ol li {
+.contain-title ol li {
   font-size: 1rem;
   line-height: 30px;
   list-style: inside;
   list-style-type: decimal;
   color: #666666;
 }
-.contain-title ol li a, .small-pres ol li a, .pres-honneur ol li a {
+.contain-title ol li a {
   color: #c8a461;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.contain-title ol li a:hover, .small-pres ol li a:hover, .pres-honneur ol li a:hover {
+.contain-title ol li a:hover {
   color: #8e6d30;
 }
-.contain-title ol, .small-pres ol, .pres-honneur ol {
+.contain-title ol {
   list-style: inherit;
   list-style-type: decimal;
   color: #666666;
   margin-left: 30px;
 }
-.contain-title.contain-title-small, .small-pres.contain-title-small, .pres-honneur.contain-title-small {
+.contain-title.contain-title-small {
   min-height: 100px;
 }
-.contain-title.contain-title-top, .small-pres.contain-title-top, .pres-honneur.contain-title-top {
+.contain-title.contain-title-top {
   padding: 10px 0px;
 }
-.contain-title .title-01, .small-pres .title-01, .pres-honneur .title-01 {
+.contain-title .title-01 {
   font-size: 1.125rem;
   color: #fff;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -2055,13 +2055,13 @@ blockquote, .quote {
   text-align: center;
   line-height: 30px;
 }
-.ie .contain-title .title-01, .ie .small-pres .title-01, .ie .pres-honneur .title-01 {
+.ie .contain-title .title-01 {
   margin-top: 67px;
 }
-.ie .contain-title .title-01.two, .ie .small-pres .title-01.two, .ie .pres-honneur .title-01.two {
+.ie .contain-title .title-01.two {
   margin-top: 28px;
 }
-.contain-title .title-02, .small-pres .title-02, .pres-honneur .title-02 {
+.contain-title .title-02 {
   font-size: 1.125rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #fff;
@@ -2069,17 +2069,17 @@ blockquote, .quote {
   text-align: center;
   line-height: 36px;
 }
-.ie .contain-title .title-02, .ie .small-pres .title-02, .ie .pres-honneur .title-02 {
+.ie .contain-title .title-02 {
   margin-top: 67px;
   width: 100%;
 }
-.contain-title .title-02 strong, .small-pres .title-02 strong, .pres-honneur .title-02 strong {
+.contain-title .title-02 strong {
   color: #c8a461;
 }
-.bright .contain-title .title-02, .bright .small-pres .title-02, .bright .pres-honneur .title-02 {
+.bright .contain-title .title-02 {
   color: #141414;
 }
-.contain-title .title-03, .small-pres .title-03, .pres-honneur .title-03 {
+.contain-title .title-03 {
   text-align: center;
   padding: 20px 20px 0;
   font-size: .875rem;
@@ -2088,13 +2088,13 @@ blockquote, .quote {
   line-height: 26px;
   color: #fff;
 }
-.contain-title .title-04, .small-pres .title-04, .pres-honneur .title-04 {
+.contain-title .title-04 {
   color: #999;
   width: 958px;
   margin: 0 auto;
   text-align: center;
 }
-.ie .contain-title .title-04, .ie .small-pres .title-04, .ie .pres-honneur .title-04 {
+.ie .contain-title .title-04 {
   margin-top: 30px;
 }
 
@@ -2442,6 +2442,41 @@ a {
   border-top-color: #141414;
   top: 100%;
   left: 92px;
+}
+
+.small-pres p, .pres-honneur p {
+  margin-bottom: 51px;
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-align: left;
+  margin-top: 32px;
+}
+.small-pres p strong, .pres-honneur p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #141414;
+  line-height: 24px;
+  text-align: left;
+}
+.small-pres .big-quote p, .pres-honneur .big-quote p {
+  color: #b1b1b1;
+  text-align: center;
+  font-size: .875rem;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 26px;
+}
+.small-pres .big-quote strong, .pres-honneur .big-quote strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  display: block;
+  margin-bottom: 25px;
 }
 
 html {
