@@ -92,10 +92,6 @@ class CorpoTeamTeamsAdmin extends Admin
                 'choices'   => PressAccreditProcedure::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-            ->add('statusMain', 'choice', array(
-                'choices'   => PressAccreditProcedureTranslation::getMainStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
