@@ -2129,9 +2129,12 @@
   flex-direction: row;
 
   .caption {
-    color: #666;
+    color: #666 !important;
     font-size: 0.750rem;
     margin: 10px 0 0;
+    line-height: 18px;
+    text-align: left;
+    font-family: $CamphorRegular;
   }
 }
 
