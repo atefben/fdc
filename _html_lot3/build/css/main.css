@@ -12171,6 +12171,17 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-bottom: 68px;
 }
 
+.who-staff .block-poster {
+  width: 163px;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 29px;
+}
+.who-staff .title-22 {
+  margin-bottom: 20px;
+  display: block;
+}
+
 .block-search {
   margin-top: 50px;
   margin-bottom: 80px;

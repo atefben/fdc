@@ -1873,64 +1873,128 @@ var owInitFilter = function (isTabSelection) {
 
     } else {
 
+        if(!$('.who-filter').length){
 
-        $('.filters .select span').on('click', function () {
+            $('.filters .select span').on('click', function () {
 
-            $('.filter .select').each(function() {
-                $that = $(this);
-                $id   = $(this).closest('.filter').attr('id');
+                $('.filter .select').each(function() {
+                    $that = $(this);
+                    $id   = $(this).closest('.filter').attr('id');
 
-                $that.find("span:not(.active):not([data-filter='all'])").each(function() {
-                    $this = $(this);
+                    $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+                        $this = $(this);
 
-                    var getVal = $this.data('filter');
-                    var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
-                    
-                    if (numItems === 0) {
-                        $this.addClass('disabled');
-                    } else {
-                        $this.removeClass('disabled');
-                    }
+                        var getVal = $this.data('filter');
+                        var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
+
+                        if (numItems === 0) {
+                            $this.addClass('disabled');
+                        } else {
+                            $this.removeClass('disabled');
+                        }
+                    });
+                });
+
+                var h = $(this).parent().html();
+
+                $('#filters').remove();
+                $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
+                $('#filters .vCenterKid').html(h);
+                $('#filters .vCenterKid').find(':not(span)').remove();
+                $('#filters .vCenterKid').find('span.disabled').remove();
+                $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+                setTimeout(function () {
+                    $('#filters').addClass('show');
+                }, 100);
+
+                setTimeout(function () {
+                    $('#filters span').addClass('show');
+                }, 400);
+
+                $('#filters span').on('click', function () {
+                    var id = $('#filters').data('id'),
+                        f = $(this).data('filter');
+
+                    $('#' + id + ' .select span').removeClass('active');
+                    $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
+
+                    owInitGrid('filter');
+                });
+
+                // close filters
+                $('body').on('click', '#filters', function () {
+                    $('#filters').removeClass('show');
+                    setTimeout(function () {
+                        $('#filters').remove();
+                    }, 700);
                 });
             });
 
-            var h = $(this).parent().html();
+        }else{
 
-            $('#filters').remove();
-            $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
-            $('#filters .vCenterKid').html(h);
-            $('#filters .vCenterKid').find(':not(span)').remove();
-            $('#filters .vCenterKid').find('span.disabled').remove();
-            $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
-            setTimeout(function () {
-                $('#filters').addClass('show');
-            }, 100);
+            $('.filters .select span').off('click').on('click', function () {
 
-            setTimeout(function () {
-                $('#filters span').addClass('show');
-            }, 400);
+                $('.filter .select').each(function() {
+                    $that = $(this);
+                    $id   = $(this).closest('.filter').attr('id');
 
-            $('#filters span').on('click', function () {
-                var id = $('#filters').data('id'),
-                    f = $(this).data('filter');
+                    $that.find(".pages:not([data-filter='all'])").each(function() {
+                        $this = $(this);
 
-                $('#' + id + ' .select span').removeClass('active');
-                $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
+                        console.log($this);
 
-                owInitGrid('filter');
-            });
+                        var getVal = $this.data('filter');
+                        var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
 
-            // close filters
-            $('body').on('click', '#filters', function () {
-                $('#filters').removeClass('show');
+                        if (numItems === 0) {
+                            $this.addClass('disabled');
+                        } else {
+                            $this.removeClass('disabled');
+                        }
+                    });
+                });
+
+                var h = $(this).parent().html();
+
+                $('#filters').remove();
+                $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
+                $('#filters .vCenterKid').html(h);
+                $('#filters .vCenterKid').find(':not(span)').remove();
+                $('#filters .vCenterKid').find('span.disabled').remove();
+                $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
                 setTimeout(function () {
-                    $('#filters').remove();
-                }, 700);
+                    $('#filters').addClass('show');
+                }, 100);
+
+                setTimeout(function () {
+                    $('#filters span').addClass('show');
+                }, 400);
+
+                $('#filters span').on('click', function () {
+                    var id = $('#filters').data('id'),
+                        f = $(this).data('filter');
+
+                    $('#' + id + ' .select span').removeClass('active');
+                    $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
+
+                    $('.pages:not(.'+f+')').css('display','none');
+                    $('.pages.'+f).css('display','block');
+                    console.log(f);
+                });
+
+                // close filters
+                $('body').on('click', '#filters', function () {
+                    $('#filters').removeClass('show');
+                    setTimeout(function () {
+                        $('#filters').remove();
+                    }, 700);
+                });
             });
-        });
 
-
+        }
     }
 };
 
