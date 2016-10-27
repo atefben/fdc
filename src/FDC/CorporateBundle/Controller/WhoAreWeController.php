@@ -22,18 +22,23 @@ class WhoAreWeController extends Controller
      */
     public function equipeAction(Request $request)
     {
-        $datas = $this
+        $equipes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoTeam')
-            ->find(1)
-        ;
+            ->findOneById(1);
 
-        if(!$datas) {
+        if(!$equipes) {
             throw $this->createNotFoundException('There is not available Team.');
         }
-        return $this->render('FDCCorporateBundle:WhoAreWe:equipe.html.twig', array(
-            'datas' => $datas,
-        ));
+
+        if($equipes->findTranslationByLocale('fr')->getStatus() == 1) {
+            return $this->render('FDCCorporateBundle:WhoAreWe:equipe.html.twig', array(
+                'datas' => $equipes,
+            ));
+        } else {
+            throw $this->createNotFoundException('There is not available Team.');
+        }
+
     }
 
     /**
@@ -43,12 +48,18 @@ class WhoAreWeController extends Controller
      */
     public function navAction(Request $request, $slug = null)
     {
-        $pages = $this
+        $nav = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
             ->findBy([], ['weight' => 'asc'])
         ;
 
+        $pages = array();
+        foreach($nav as $n){
+            if($n->findTranslationByLocale('fr')->getStatus() == 1) {
+                $pages[] = $n;
+            }
+        }
         return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', array(
             'pages' => $pages,
             'slug'  => $slug

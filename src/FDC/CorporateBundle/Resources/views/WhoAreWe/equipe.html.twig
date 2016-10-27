@@ -35,8 +35,10 @@
                             <span class="label">l'équipe :</span>
                               <span class="select">
                                 {% for team in datas.teams %}
+                                    {% if team.teams.findTranslationByLocale('fr').status == 1  %}
                                     <span data-filter="{{ team.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}"
                                           {% if loop.index0 == 0 %}class="active"{% else %}class="disabled"{% endif %}>{{ team.teams|trans_fallback('teamName') }}</span>
+                                    {% endif %}
                                 {% endfor %}
                                   <i class="icon icon-arrow-down"></i>
                               </span>
@@ -45,6 +47,7 @@
 
                     {% for teamAssociation in datas.teams %}
                     {% for departementAssociation in teamAssociation.teams.departement %}
+                    {% if departementAssociation.departement.findTranslationByLocale('fr').status == 1 %}
                     <div class="block-01 border-bottom padding-bottom ">
                         <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
                         <div class="isotope-02">
@@ -79,6 +82,7 @@
                         </div>
 
                     </div> <!-- fin block 01 -->
+                    {% endif %}
                     {% endfor %}    <!-- fin isotope-02 -->
                     {% endfor %}    <!-- fin isotope-02 -->
 

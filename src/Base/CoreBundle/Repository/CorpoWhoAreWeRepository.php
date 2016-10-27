@@ -26,6 +26,7 @@ class CorpoWhoAreWeRepository extends TranslationRepository
             ->join('p.translations', 't')
             ->andWhere('t.locale = :locale')
             ->andWhere('t.slug = :slug')
+            ->andWhere('t.status = 1')
             ->setParameter('locale', $locale)
             ->setParameter('slug', $slug)
         ;
