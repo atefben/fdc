@@ -40,7 +40,7 @@ sub {
   }
 }
 
-.title {
+.title, .title-item {
   font-family: $CamphorRegular;
   font-weight: 700;
   font-size: 1.125rem;//18px
@@ -519,7 +519,7 @@ blockquote, .quote {
   }
 }
 
-.contain-title {
+.contain-title, .small-pres, .pres-honneur {
   min-height: 152px;
   flex-direction: column;
 
