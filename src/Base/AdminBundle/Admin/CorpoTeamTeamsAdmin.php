@@ -133,6 +133,7 @@ class CorpoTeamTeamsAdmin extends Admin
                     ),
                     'teamName' => array(
                         'label' => 'Nom de l\'équipe',
+                        'field_type' => 'text'
                     ),
                     'createdAt'      => array(
                         'display' => false
