@@ -22706,6 +22706,24 @@ ul.tabs .quarterTab h4 {
   display: block !important;
 }
 
+.owl-pub {
+  text-align: center;
+  margin: 0 auto;
+}
+.owl-pub .owl-carousel {
+  overflow: hidden;
+}
+.owl-pub .owl-stage-outer {
+  height: auto !important;
+}
+.owl-pub .minowl-item {
+  min-width: 347px !important;
+}
+.owl-pub .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .owl-pub .owl-controls {
   position: absolute;
   width: 100%;
@@ -22717,13 +22735,41 @@ ul.tabs .quarterTab h4 {
 .owl-pub .owl-buttons {
   display: none;
 }
-.owl-pub .item {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 .owl-pub .owl-dot:after {
   color: white;
+}
+.owl-pub .owl-controls {
+  position: absolute;
+  width: 100%;
+  z-index: 1004;
+  text-align: center;
+  margin-top: 85% !important;
+  display: block !important;
+}
+.owl-pub .owl-page {
+  display: inline-block;
+  height: 3px;
+  margin: 0 8.5px;
+  vertical-align: middle;
+  position: relative;
+  width: 3px;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: white;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.owl-pub .owl-page.active {
+  border: 4px solid white;
+  width: 7px;
+  height: 7px;
+  background: none;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 @media screen and (max-width: 1279px) {

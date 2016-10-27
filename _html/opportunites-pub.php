@@ -112,7 +112,6 @@
                     <div class="minTab">
                       <div class="tabPic">
                           <div class="owl-pub owl-carousel owl-theme">
-
                               <div class="item">
                                 <img src="/img/guide.png" alt="Marché du film">
                               </div>
@@ -418,8 +417,6 @@
           </div>
 
 
-
-
     <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>
@@ -429,5 +426,6 @@
     <!-- //// SCRIPTS \\\\ -->
 
     <?php include('scripts.inc.php'); ?>
+    <script src="js/festival-cannes/owl.carousel.min.js"></script>
   </body>
 </html>

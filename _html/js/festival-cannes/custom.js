@@ -13,12 +13,6 @@ $(document).ready(function() {
       paginationSpeed : 400
     });
 
- 
-  $('.owl-pub').owlCarousel({
-      items:1,
-      dots: true
-  });
-
   $('#owl-mid').owlCarousel({
       items:1,
       dots: false,
@@ -30,6 +24,10 @@ $(document).ready(function() {
    
   });
 
+  $('.owl-pub, #owl-pub').owlCarousel({
+          singleItem:true,
+          dots: true
+  });
   
   $('#owl-second').owlCarousel({
       dots: false,
@@ -40,7 +38,6 @@ $(document).ready(function() {
       navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
  
   });
-
 
 /* BOX SERVICES */
 
@@ -267,3 +264,48 @@ click();
       });
     });
 });
+
+
+/* FIX FOR OWL-PUB CARROUSEL 2, DO NOT ADD TO DOCUMENT.READY. pub page currently has carousel 1 / #2 wasn't working properly still in beta :) 
+
+$(window).load(function() {
+
+    var fixOwl = function(){
+          
+          var $stage = $('.owl-stage'),
+              stageW = $stage.width(),
+              $el = $('.owl-item'),
+              elW = 0;
+          
+          $el.each(function() {
+              elW += $(this).width()+ +($(this).css("margin-right").slice(0, -2))
+          });
+          if ( elW > stageW ) {
+              $stage.width( elW );
+          };
+      }
+
+      $('.owl-pub, #owl-pub').owlCarousel({
+          items:1,
+          dots: true,
+          onInitialized: fixOwl,
+          onRefreshed: fixOwl/*,
+          onInitialized: function() {
+            
+            if ($(window).width() < 1280) {
+              $('.owl-item').css({ 'width': '294px' });
+              $('.owl-dot').click(function(){
+                  $('.owl-pub .owl-stage').css({ transform: "translate3d(294px, 0, 0)" });
+              }); 
+            } else {
+              
+              $('.owl-item').css({ 'width': '346px' });
+              
+              $('.owl-dot').click(function(){
+                    $('.owl-pub .owl-stage').css({ transform: "translate3d(346px, 0, 0)" });
+                    alert('clicked');
+              });
+            }
+          }
+      });
+  });*/
