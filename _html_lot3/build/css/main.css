@@ -3448,6 +3448,11 @@ video {
   margin-bottom: 25px;
 }
 
+.block-videos + .block-videos {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
 .block-films {
   padding-top: 15px;
   height: 382px;
