@@ -383,7 +383,7 @@ file that was distributed with this source code.
                                                     </li>
                                                 {% endif %}
                                                 {% if is_granted('ROLE_BASE_ADMIN_CORPO_TEAM_ADMIN') %}
-                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit'] %} active{% endif %}">
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit','admin_base_core_corpoteamteams_create'] %} active{% endif %}">
                                                         <a href="{{ path('admin_base_core_corpoteamteams_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             Les équipes
