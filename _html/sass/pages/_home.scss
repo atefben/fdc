@@ -2254,6 +2254,7 @@
 }
 
 #owl-mid {
+  height: 600px;
   .owl-controls {
       display: block;
       position: absolute;
@@ -2272,6 +2273,15 @@
     width: 977px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .image-caption {
+    color: #666;
+    font-family: $CamphorRegular;
+    font-size: 0.750rem;
+    margin: 20px 0;
+    z-index: 1002;
+    text-align: left;
   }
 
   .owl-next {

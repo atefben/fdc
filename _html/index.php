@@ -21,7 +21,6 @@
             
 
               <div id="owl-top" class="owl-carousel owl-theme">
-
                   <div class="item">
                     <img src="/img/home.png" alt="Marché du film">
                     <div class="owl-Title">
@@ -115,15 +114,15 @@
            
                   <div class="item">
                     <img src="/img/public.png" alt="Marché du film">
-                    <p>Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                    <div class="image-caption">Replace this Caption</div>
                   </div>
                   <div class="item">
                     <img src="/img/public.png" alt="Marché du film">
-                    <p>Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                    <div class="image-caption">Replace this Caption</div>
                   </div>
                   <div class="item">
                     <img src="/img/public.png" alt="Marché du film">
-                    <p>Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                    <div class="image-caption">Replace this Caption</div>
                   </div>
                  
                 </div>

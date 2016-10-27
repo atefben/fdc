@@ -6,20 +6,20 @@ $(document).ready(function() {
   $('#owl-top').owlCarousel({
       items:1,
       navigation : true,
-      slideSpeed : 300,
-      paginationSpeed : 400,
       dots: true,
       loop:true,
-      autoPlay:true
+      autoplay:true,
+      slideSpeed : 300,
+      paginationSpeed : 400
     });
 
  
-  $(".owl-pub").owlCarousel({
+  $('.owl-pub').owlCarousel({
       items:1,
       dots: true
   });
 
-  $("#owl-mid").owlCarousel({
+  $('#owl-mid').owlCarousel({
       items:1,
       dots: false,
       navigation : true,
@@ -31,15 +31,12 @@ $(document).ready(function() {
   });
 
   
-  $("#owl-second").owlCarousel({
+  $('#owl-second').owlCarousel({
       dots: false,
-      rewindNav : true,
       navigation : true,
       slideSpeed : 600,
       paginationSpeed : 400,
       items : 3,
-      itemsDesktop : [1199,3],
-      itemsDesktopSmall : [979,3],
       navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
  
   });

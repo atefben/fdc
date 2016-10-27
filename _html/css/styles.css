@@ -10976,6 +10976,9 @@ header #searchContainer {
   color: white;
 }
 
+#owl-mid {
+  height: 600px;
+}
 #owl-mid .owl-controls {
   display: block;
   position: absolute;
@@ -10992,6 +10995,14 @@ header #searchContainer {
   width: 977px;
   margin: 0 auto;
   text-align: center;
+}
+#owl-mid .image-caption {
+  color: #666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  margin: 20px 0;
+  z-index: 1002;
+  text-align: left;
 }
 #owl-mid .owl-next {
   display: block !important;
@@ -22707,7 +22718,7 @@ ul.tabs .quarterTab h4 {
 .owl-pub .owl-buttons {
   display: none;
 }
-.owl-pub .item img {
+.owl-pub .item {
   display: block;
   width: 100%;
   height: auto;
