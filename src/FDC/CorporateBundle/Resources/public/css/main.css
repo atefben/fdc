@@ -4702,6 +4702,9 @@ video {
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 50px;
+  margin-top: 50px;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .half-photo {
