@@ -609,35 +609,30 @@ ul.tabs {
     }
 }
 
+.owl-carousel {
+  display: block !important;
+}
+
 .owl-pub {
+  
   .owl-controls {
     position: absolute;
     width: 100%;
     z-index: 1004;
     text-align: center;
-    margin-top: 85%;
+    margin-top: -15%;
+    display: block!important;
   }
-
   .owl-buttons {
     display: none;
   }
-  .owl-page {
-    display: inline-block;
-    height: 7px;
-    margin: 0 5px;
-    vertical-align: middle;
-    position: relative;
-    width: 7px;
-    border-radius: 50px;
-    border: 3px solid transparent;
-    background: white;
-    @include transition(all .8s $smoothTransition);
-
-    &.active {
-      border: 5px solid white;
-      background: none;
-      @include transition(all .8s $smoothTransition);
-    }
+  .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .owl-dot:after {
+      color: white;
   }
 }
 

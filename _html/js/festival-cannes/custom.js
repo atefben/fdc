@@ -14,13 +14,9 @@ $(document).ready(function() {
     });
 
  
-  $("owl-pub").owlCarousel({
-      navigation : true,
-      slideSpeed : 300,
-      paginationSpeed : 400,
-      dots: false,
-      singleItem:true,
-      loop:true
+  $(".owl-pub").owlCarousel({
+      items:1,
+      dots: true
   });
 
   $("#owl-mid").owlCarousel({
