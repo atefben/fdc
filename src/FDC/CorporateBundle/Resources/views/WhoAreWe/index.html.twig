@@ -89,8 +89,8 @@
                     {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                     <div class="relative">
                         <div class="block-social-network block-social-network-all">
-                            <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
-                --><a class="twitter" href="https://twitter.com/intent/tweet?text={{ currentUrl }} {{ currentPage|trans_fallback('title')|url_encode(true) }}"><i class="icon icon-twitter"></i></a><!--
+                            <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'Qui sommes nous ? - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
+                --><a class="twitter" href="https://twitter.com/intent/tweet?text={{ 'Qui sommes nous ? - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i class="icon icon-twitter"></i></a><!--
                 --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentUrl }}"><i class="icon icon-link"></i></a><!--
                 --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
                 --><a href="#" onclick="window.print()" class="print"><i class="icon icon-print"></i></a>
