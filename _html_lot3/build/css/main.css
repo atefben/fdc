@@ -2098,6 +2098,11 @@ blockquote, .quote {
   margin-top: 30px;
 }
 
+.small-pres ul, .small-pres ol, .pres-honneur ul, .pres-honneur ol {
+  list-style: inside;
+  color: #666666;
+}
+
 figcaption, .caption {
   color: #868686;
   font-size: .625rem;

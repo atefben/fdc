@@ -686,6 +686,13 @@ blockquote, .quote {
   }
 }
 
+.small-pres, .pres-honneur {
+  ul, ol {
+    list-style: inside;
+    color: #666666;
+  }
+}
+
 figcaption, .caption {
   color:#868686;
   font-size:.625rem;
