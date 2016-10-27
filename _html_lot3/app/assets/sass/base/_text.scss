@@ -519,7 +519,7 @@ blockquote, .quote {
   }
 }
 
-.contain-title, .small-pres, .pres-honneur {
+.contain-title {
   min-height: 152px;
   flex-direction: column;
 
@@ -1076,6 +1076,63 @@ a {
       border-top-color: $black;
       top: 100%;
       left: 92px;
+    }
+  }
+}
+
+
+.article-single .small-pres, .article-single .pres-honneur {
+  p {
+    margin-bottom: 51px;
+    color: #666666;
+    font-size: 1rem;
+    line-height: 26px;
+    font-family: $CamphorRegular;
+    text-align: left;
+    margin-top: 32px;
+
+    strong {
+      font-family: $CamphorBold;
+      font-size: 1rem;
+      color: #141414;
+      line-height: 24px;
+      text-align: left;
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  .big-quote {
+    p {
+      color: #b1b1b1;
+      text-align: center;
+      font-size: .875rem;
+      font-family: $CamphorItalic;
+      font-weight: bold;
+      line-height: 26px;
+
+      strong {
+        color: #b1b1b1;
+        font-size: .875rem;
+      }
+    }
+
+    strong {
+      color: $gold !important;
+      font-family: $CamphorBold;
+      text-transform: uppercase;
+      font-size: 1rem;
+      line-height: 26px;
+      text-align: center;
+      display: block;
+      margin-bottom: 25px;
     }
   }
 }
