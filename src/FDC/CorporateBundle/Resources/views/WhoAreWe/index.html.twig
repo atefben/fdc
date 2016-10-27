@@ -101,6 +101,14 @@
             </div> <!-- end all contain -->
         </div></div>
 </section>
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : currentPage|trans_fallback('title'),
+        'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    }))
+    }}
     <div id="breadcrumb" style="zoom: 0;"><div class="container block-01">
             <ul>
                 <li>
