@@ -53,9 +53,7 @@
                             </div>
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                             <div class="photos photo-module" data-section="photos">
-                                <div class="slideshow">
-                                    {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
-                                 </div>
+                                {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                             </div>
                         {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
                             <div class="small-pres half-div container">
@@ -103,5 +101,29 @@
             </div> <!-- end all contain -->
         </div></div>
 </section>
+    <div id="breadcrumb" style="zoom: 0;"><div class="container block-01">
+            <ul>
+                <li>
+                    <a href="#">L'actualité</a>
+                    <i class="icon icon-arrow-right"></i>
+                </li>
+                <li>
+                    <a rhref="#">Jour après jour</a>
+                    <i class="icon icon-arrow-right"></i>
+                </li>
+                <li>
+                    <a href="#">Jour après jour</a>
+                    <i class="icon icon-arrow-right"></i>
+                </li>
+                <li>
+                    <a href="#" class="active">Enragés, polar hybride d'éric han ...</a>
+                </li>
+        <span class="goTop">
+          Haut de la page
+          <i class="icon icon-arrow-top"></i>
+        </span>
+            </ul>
+
+        </div></div>
 
 {% endblock %}
