@@ -4,7 +4,7 @@ $(document).ready(function() {
 /*CAROUSSELS OWL*/
  
   $('#owl-top').owlCarousel({
-      singleItem:true,
+      items:1,
       navigation : true,
       slideSpeed : 300,
       paginationSpeed : 400,
@@ -18,31 +18,33 @@ $(document).ready(function() {
       navigation : true,
       slideSpeed : 300,
       paginationSpeed : 400,
-      dots: true,
+      dots: false,
       singleItem:true,
       loop:true
   });
 
   $("#owl-mid").owlCarousel({
- 
+      items:1,
+      dots: false,
       navigation : true,
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:true,
-      navigationText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
    
   });
 
   
   $("#owl-second").owlCarousel({
- 
+      dots: false,
+      rewindNav : true,
       navigation : true,
       slideSpeed : 600,
       paginationSpeed : 400,
       items : 3,
       itemsDesktop : [1199,3],
       itemsDesktopSmall : [979,3],
-      navigationText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
  
   });
 
@@ -79,23 +81,52 @@ function menuMDF() {
     });
 
   $("#edition, #subMenu").hover(function() {
-        $('.subMenu').show();
+        $('#subMenu').show();
         $('#subMenu').toggleClass("showMenu");
         $('.tleft, .tright').toggleClass("showT");
 
   });
 
-
-
 }
 
 menuMDF();
 
-  $('#searchBar').click(function() {
-        $('#searchBox').toggleClass("showsearchBox");
-        $('.icon_recherche').toggleClass("blackIcon");
+
+function hoverSearch() {
+
+      $('#searchBar').click(function() {
+            $('#navigation li').toggleClass('marginli');
+            $('#searchBar').toggleClass('marginLastli');
+            $('.searchBox').toggleClass("showsearchBox");
+            $('.icon_recherche').toggleClass("blackIcon");
+        });
+
+      $('.searchBox').hover(function() {
+            $('#navigation li').addClass('marginli');
+            $('#searchBar').addClass('marginLastli');
+            $('.searchBox').addClass("showsearchBox");
+            $('.icon_recherche').addClass("blackIcon");
+        });
+
+    $(".liSearchBox").mouseover(function() {
+
+            $('#navigation li').addClass('marginli');
+            $('#searchBar').addClass('marginLastli');
+            $('.searchBox').addClass("showsearchBox");
+            $('.icon_recherche').addClass("blackIcon");
+
+      }).mouseout(function() {
+
+            $('#navigation li').removeClass('marginli');
+            $('#searchBar').removeClass('marginLastli');
+            $('.searchBox').removeClass("showsearchBox");
+            $('.icon_recherche').removeClass("blackIcon");
+      
     });
 
+  }
+
+hoverSearch();
 
 /* TABS */
 

@@ -230,11 +230,13 @@ header {
     font-size: 0.750rem;
     height: 35px;
     line-height: 30px;
+    @include transition(all .6s $smoothTransition);
 
     .main-nav {
       float: left;
       font-family: $CamphorBold;
       background-color: #080808;
+      @include transition(all .6s $smoothTransition);
 
       li {
         margin-left: -4px;
@@ -684,29 +686,55 @@ header {
     @include transition(all .8s $smoothTransition);
 }
 
-#searchBox {
-    @include transition(all  2s $smoothTransition);
+.searchBox {
+  @include transition(all  2s $smoothTransition);
+  right: 0%;
   display: none;
   width: 0px;
-  margin-right: 100px;
+  direction: rtl;
   @include transition(all  0.9s $smoothTransition);
 
   input {
-    height: 25px;
-    width: 150px;
-  }
+    background: white;
+    height: 30px;
+    width: 190px;
+    padding-left: 15px;
+    
+    }
+}
+
+#searchInput {
+    background-color: white;
+    background-image: url("/img/loupe.png");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;  
 }
   
 .showsearchBox {
-    @include transition(all  2s $smoothTransition);
-  display: block!important;
+  right: 30%;
+  direction: rtl;
+  @include transition(all  2s $smoothTransition);
+  display: inline-block!important;
   width: 100px!important;
-  margin-right: 0px!important;
 
+}
+
+.marginli {
+  margin-left:15px!important;
+}
+
+.marginLastli {
+  display: none!important;
+}
+
+.showsearchBox > *, .searchBox > * {
+  direction: ltr;
 }
 
 .blackIcon, .icon_recherche:checked {
   color: black!important;
+  margin-left: 50px!important;
 }
 
 .tleft, .tright {
@@ -733,7 +761,7 @@ header {
   @include transition(all 2s $smoothTransition);
 }
 
-.subMenu{
+#subMenu{
     display: none;
     height: 0px;
     position: absolute;
@@ -919,12 +947,12 @@ header {
 
 .blackBckg {
     display: none;
+    opacity: 0;
     position: fixed;
     width: 100%;
     margin-top: -30px;
     height: 0%;
     background: black;
-    opacity: 0.9;
     padding: 0px;
     margin: 0px;
     @include transition(all .6s $smoothTransition);
@@ -934,6 +962,7 @@ header {
 .showblackBckg {
   display: block!important;
   height: 100%!important;
+  opacity: 0.9;
   @include transition(all .6s $smoothTransition);
 }
 
@@ -944,7 +973,7 @@ header {
 
     #navigation {
       ul {
-        margin-left: 30px;
+        margin-left: 75px;
       }
     }
 }
