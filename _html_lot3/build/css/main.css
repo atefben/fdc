@@ -3586,6 +3586,76 @@ blockquote, .quote {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.contain-title p, .contain-title ul, .contain-title ol {
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  color: #666666;
+}
+.ie .contain-title p, .ie .contain-title ul, .ie .contain-title ol {
+  margin-top: 67px;
+  width: 100%;
+}
+.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
+  color: #c8a461;
+}
+.bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol {
+  color: #141414;
+}
+.contain-title p a, .contain-title ul a, .contain-title ol a {
+  color: #c8a461;
+}
+.contain-title p em, .contain-title ul em, .contain-title ol em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.contain-title p sub, .contain-title ul sub, .contain-title ol sub {
+  vertical-align: text-bottom;
+  font-size: .5rem;
+}
+.contain-title p sup, .contain-title ul sup, .contain-title ol sup {
+  vertical-align: super;
+  font-size: .5rem;
+}
+.contain-title p a, .contain-title ul a, .contain-title ol a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.contain-title p a:hover, .contain-title ul a:hover, .contain-title ol a:hover {
+  color: #8e6d30;
+}
+.contain-title ul {
+  list-style: inherit;
+  color: #666666;
+}
+.contain-title ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+  color: #666666;
+}
+.contain-title ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.contain-title ol li a:hover {
+  color: #8e6d30;
+}
+.contain-title ol {
+  list-style: inherit;
+  list-style-type: decimal;
+  color: #666666;
+  margin-left: 30px;
+}
 .contain-title.contain-title-small {
   min-height: 100px;
 }
