@@ -53,6 +53,8 @@ class MediaImage extends Media
      * @Serializer\Accessor(getter="getApiTranslations")
      */
     protected $translations;
+    
+    
 
     public function getApiTranslations()
     {

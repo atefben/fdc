@@ -33,6 +33,7 @@ class MediaController extends Controller
             $photo = $request->get('photo') ? true : false;
             $video = $request->get('video') ? true : false;
             $audio = $request->get('audio') ? true : false;
+            $pg = $request->get('pg') ? $request->get('pg') : 1;
             $yearStart = $request->query->get('year-start');
             $yearEnd = $request->query->get('year-end');
 
@@ -45,27 +46,50 @@ class MediaController extends Controller
             //multi type does not work, doing it manually with single type
             $medias = array();
             if($photo) {
+                //MediaImage
                 $photos = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, true, false, false, $yearStart, $yearEnd, 30);
-                foreach($photos as $photo) {
-                    $medias[$photo->getId()] = $photo;
+                foreach($photos as $p) {
+                    $medias[] = $p;
                 }
+
+                //FilmFilmMedia
+                $photosFilm = $em->getRepository('BaseCoreBundle:FilmFilmMedia')->getMedias($search, $yearStart, $yearEnd);
+                foreach($photosFilm as $p) {
+                    $medias[] = $p;
+                }
+
+                //FilmPersonMedia
+                $photosPerson = $em->getRepository('BaseCoreBundle:FilmPersonMedia')->getMedias($search, $yearStart, $yearEnd);
+                foreach($photosPerson as $p) {
+                    $medias[] = $p;
+                }
+                
+                
             }
 
             if($video) {
                 $videos = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, false, true, false, $yearStart, $yearEnd, 30);
                 foreach($videos as $video) {
-                    $medias[$video->getId()] = $video;
+                    $medias[] = $video;
                 }
             }
 
             if($audio) {
                 $audios = $em->getRepository('BaseCoreBundle:Media')->searchMedias($locale, $search, false, false, true, $yearStart, $yearEnd, 30);
                 foreach($audios as $audio) {
-                    $medias[$audio->getId()] = $audio;
+                    $medias[] = $audio;
                 }
             }
 
-            ksort($medias);
+            $items = 30;
+            $pageMedias = array();
+            $start = $pg != 1 ? $pg * $items : 0;
+            $end = count($medias) > ($start+$items) ? $start + $items : count($medias);
+            for($i=$start; $i<=$end; $i++) {
+                $pageMedias[] = $medias[$i];
+            }
+
+            $medias = $pageMedias;
         } else {
             if(!$page->getDisplayedSelection()) {
                 $medias = $page->getMediasSelection();
@@ -73,6 +97,7 @@ class MediaController extends Controller
                 $medias = array();
             }
         }
+        
 
         if($request->get('_route') == 'fdc_corporate_media_index_ajax') {
             return $this->render('FDCCorporateBundle:Media:medias.html.twig', array('medias' => $medias));

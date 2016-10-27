@@ -15,7 +15,7 @@
         <div class="block-search block-01">
             <form method="post">
                 <div class="vFlexAlign">
-                    <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id="s-text" ></label>
+                    <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id="s-text" value="{% if app.request.get('search') is not null %}{{ app.request.get('search') }}{% endif %}" /></label>
                     <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') is not null %} active{% endif %}"><i class="icon icon-photo"></i><span class="text">Photos</span><input class="choice" type="checkbox" name="photo" id="s-photo" {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
                     <label for="s-video" class="icon-s vFlexAlign{% if app.request.get('video') is not null %} active{% endif %}"><i class="icon icon-video"></i><span class="text">Vidéos</span><input class="choice" type="checkbox" name="video" id="s-video" {% if app.request.get('video') is not null %}checked {% endif %}/></label>
                     <label for="s-audio" class="icon-s vFlexAlign{% if app.request.get('audio') is not null %} active{% endif %}"><i class="icon icon-audio"></i><span class="text">Audios</span><input class="choice" type="checkbox" name="audio" id="s-audio" {% if app.request.get('audio') is not null %}checked {% endif %}/></label>
@@ -43,8 +43,46 @@
             <div class="grid-sizer"></div>
 
             {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
-
-            {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
+            {% for id, media in medias %}
+                {% if media.type is not null %}
+                    {% set title = '' %}
+                    {% if media.film is defined %}
+                        {% set title = media.film|trans_fallback('title') %}
+                    {% elseif media.person is defined %}
+                        {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
+                    {% endif %}
+                    {% set format = media.media.file.width > media.media.file.height ? 'paysage' : 'portrait' %}
+                    {% set legend = '' %}
+                    {% if app.request.locale == 'fr' and media.media.titleVf %}
+                        {% set legend = media.media.titleVf %}
+                    {% elseif app.request.locale != 'fr' and media.media.titleVa %}
+                        {% set legend = media.media.titleVa %}
+                    {% endif %}
+                    <article class="card card-01 item photo shadow-bottom date-{{ media.createdAt|date('d.m.y') }} all {{ title }} {{ format }}" data-format="photo"
+                             data-theme="{{ title }}" data-time="1455909420" data-end="false" data-date="date-{{ media.createdAt|date('d-m-y') }}">
+                        <a href="{% path media.media.file, media.media.file.context ~ '_big' %}" class="linkAllCover"></a>
+                        <div class="image">
+                            <div class="image-wrapper">
+                                <img src="{% path media.media.file, media.media.file.context ~ '_big' %}" alt="" data-id="pid={{ id }}" data-credit="{% if media.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ media.media.copyright }}{% endif %}" data-title='<span class="category">{{ legend }}</span><span class="date">{{ media.createdAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(media.createdAt|date('H:i'), true, true) }}</span><h2>{{ legend }}</h2>' data-label="{{ legend }}" data-date="{{ media.createdAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(media.createdAt|date('H:i'), true, true) }}" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ app.request.uri }}&picture={% path media.media.file, media.media.file.context ~ '_big' %}&name=&caption=&description={% if media.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ media.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="https://twitter.com/intent/tweet?text={{ app.request.uri }}" />
+                            </div>
+                            <a href="{% path media.media.file , 'reference' %}" class="linkImage"></a>
+                            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        </div>
+                        <div class="info vFlexAlign">
+                            <span class="picto"><i class="icon icon-photo"></i></span>
+                            <div class="contain-txt">
+                                <div>
+                                    <a href="#" class="category">{{ title }} </a><span class="date">{{ media.createdAt|date('d.m.y') }}</span> . <span
+                                            class="hour">{{ agenda_leftbar_translate_hour(media.createdAt|date('H:i'), true, true) }}</span>
+                                </div>
+                                <strong><a href="{% path media.media.file, media.media.file.context ~ '_big' %}">{{ legend }}</a></strong>
+                            </div>
+                        </div>
+                    </article>
+                {% else %}
+                    {% include "FDCCorporateBundle:Media:components/media.html.twig" with {"media": media} %}
+                {% endif %}
+            {% endfor %}
 
         </div> <!-- fin de grid-01 -->
 
