@@ -27,7 +27,6 @@ class CorpoTeamDepartementsAdmin extends Admin
     {
         $collection->remove('show');
         $collection->remove('export');
-        $collection->remove('delete');
         $collection->remove('acl');
     }
 

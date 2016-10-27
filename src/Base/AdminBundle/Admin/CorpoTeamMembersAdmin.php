@@ -25,10 +25,8 @@ class CorpoTeamMembersAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
-        $collection->remove('batch');
         $collection->remove('export');
         $collection->remove('acl');
-        $collection->remove('delete');
     }
 
     protected $formOptions = array(
