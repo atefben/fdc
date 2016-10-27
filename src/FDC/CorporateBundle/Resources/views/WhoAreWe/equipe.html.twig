@@ -35,10 +35,8 @@
                             <span class="label">l'équipe :</span>
                               <span class="select">
                                 {% for team in datas.teams %}
-                                    {% if team.teams.findTranslationByLocale('fr').status == 1  %}
                                     <span data-filter="{{ team.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}"
-                                          {% if loop.index0 == 0 %}class="active"{% endif %}>{{ team.teams|trans_fallback('teamName') }}</span>
-                                    {% endif %}
+                                      {% if loop.index0 == 0 %}class="active"{% endif %}>{{ team.teams|trans_fallback('teamName') }}</span>
                                 {% endfor %}
                                   <i class="icon icon-arrow-down"></i>
                               </span>
