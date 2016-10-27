@@ -4706,6 +4706,11 @@ video {
   -ms-flex-direction: row;
   flex-direction: row;
 }
+.half-photos .caption {
+  color: #666;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+}
 
 .half-photo {
   width: 45%;

@@ -2127,6 +2127,12 @@
   margin-bottom: 50px;
   margin-top: 50px;
   flex-direction: row;
+
+  .caption {
+    color: #666;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+  }
 }
 
 .half-photo {
