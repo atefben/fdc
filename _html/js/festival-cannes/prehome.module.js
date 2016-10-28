@@ -51,11 +51,11 @@ $(document).ready(function() {
 
   if(getCookie('comply_cookie=comply_yes') != 1) {
     if($("#cookies-banner").length > 0) {
-      $("#cookies-banner").css('display','block');
+      $("#cookies-banner").hide();
     }
   }else{
     if($("#cookies-banner").length > 0) {
-      $("#cookies-banner").hide();
+      $("#cookies-banner").css('display','block');
     }
   }
 
