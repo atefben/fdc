@@ -87,29 +87,17 @@
             </div>
         </div>
     </section>
-    <div id="breadcrumb" style="zoom: 0;"><div class="container block-01">
-            <ul>
-                <li>
-                    <a href="#">L'actualité</a>
-                    <i class="icon icon-arrow-right"></i>
-                </li>
-                <li>
-                    <a rhref="#">Jour après jour</a>
-                    <i class="icon icon-arrow-right"></i>
-                </li>
-                <li>
-                    <a href="#">Jour après jour</a>
-                    <i class="icon icon-arrow-right"></i>
-                </li>
-                <li>
-                    <a href="#" class="active">Enragés, polar hybride d'éric han ...</a>
-                </li>
-        <span class="goTop">
-          Haut de la page
-          <i class="icon icon-arrow-top"></i>
-        </span>
-            </ul>
-
-        </div></div>
-
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" : 'aboutus.team'|trans,
+    "url"  : path('fdc_corporate_whoarewe_equipe')
+    },
+    ]
+    } %}
 {% endblock %}

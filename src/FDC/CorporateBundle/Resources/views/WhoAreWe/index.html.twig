@@ -119,7 +119,7 @@
     },
     {
     "name" :  currentPage|trans_fallback('title'),
-    "url"  : {{ path('fdc_corporate_whoarewe_show', {'slug': app.request.attributes.get('slug')}) }}
+    "url"  :  path('fdc_corporate_whoarewe_show', {'slug': app.request.attributes.get('slug')})
     },
     ]
     } %}
