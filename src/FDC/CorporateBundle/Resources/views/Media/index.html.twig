@@ -30,6 +30,7 @@
                 </div>
                 <input type="hidden" for="s-yearstart" id="s-yearstart" name="year-start" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-start') }}{% else %}1946{% endif %}">
                 <input type="hidden" for="s-yearend" id="s-yearend" name="year-end" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-end') }}{% else %}2016{% endif %}">
+                <input type="hidden" name="pg" value="1">
                 <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}</button>
             </form>
         </div>
@@ -44,61 +45,50 @@
             <div class="contain-title vFlexAlign">
                 <h1 class="title-01">{{ 'mediatheque.title.nosresults'|trans }}</h1>
             </div>
+            {% if page.displayedSelection == false %}
+                <div class="contain-title vFlexAlign">
+                    <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
+                </div>
+            {% endif %}
         {% endif %}
 
         <div class="grid-01 isotope-03 block-01 padding-bottom block-mediatheque">
             <div class="grid-sizer"></div>
 
-            {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
-            {% for id, media in medias %}
-                {% if media.type is not null %}
-                    {% set title = '' %}
-                    {% if media.film is defined %}
-                        {% set title = media.film|trans_fallback('title') %}
-                        {% set dateMedia = media.film.productionYear %}
-                    {% elseif media.person is defined %}
-                        {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
-                        {% set dateMedia = '' %}
-                    {% endif %}
-                    {% set format = media.media.file.width > media.media.file.height ? 'paysage' : 'portrait' %}
-                    {% set legend = '' %}
-                    {% if app.request.locale == 'fr' and media.media.titleVf %}
-                        {% set legend = media.media.titleVf %}
-                    {% elseif app.request.locale != 'fr' and media.media.titleVa %}
-                        {% set legend = media.media.titleVa %}
-                    {% endif %}
-                    <article class="card card-01 item photo shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}" data-format="photo"
-                             data-theme="{{ title }}" data-time="1455909420" data-end="false" data-date="date-{{ dateMedia }}">
-                        <a href="{% path media.media.file, media.media.file.context ~ '_big' %}" class="linkAllCover"></a>
-                        <div class="image">
-                            <div class="image-wrapper">
-                                <img src="{% path media.media.file, media.media.file.context ~ '_big' %}" alt="" data-id="pid={{ id }}" data-credit="{% if media.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ media.media.copyright }}{% endif %}" data-title='<span class="category">{{ legend }}</span><span class="date">{{ dateMedia }}</span><h2>{{ legend }}</h2>' data-label="{{ legend }}" data-date="{{ dateMedia }}" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ app.request.uri }}&picture={% path media.media.file, media.media.file.context ~ '_big' %}&name=&caption=&description={% if media.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ media.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="https://twitter.com/intent/tweet?text={{ app.request.uri }}" />
-                            </div>
-                            <a href="{% path media.media.file , 'reference' %}" class="linkImage"></a>
-                            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                        </div>
-                        <div class="info vFlexAlign">
-                            <span class="picto"><i class="icon icon-photo"></i></span>
-                            <div class="contain-txt">
-                                <div>
-                                    <a href="#" class="category">{{ title }} </a><span class="date">{{ dateMedia }}</span>
-                                </div>
-                                <strong><a href="{% path media.media.file, media.media.file.context ~ '_big' %}">{{ legend }}</a></strong>
-                            </div>
-                        </div>
-                    </article>
-                {% else %}
-                    {% include "FDCCorporateBundle:Media:components/media.html.twig" with {"media": media} %}
-                {% endif %}
-            {% endfor %}
+            {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
 
         </div> <!-- fin de grid-01 -->
 
-        {% if medias|length > 30 %}
+        {% if moreresults %}
         <div>
-            <a href="#" class="read-more block-01">{{ 'mediatheque.moreresults'|trans }}</a>
+            <a href="" class="read-more block-01">{{ 'mediatheque.moreresults'|trans|raw }}</a>
         </div>
         {% endif %}
 
     </section>
+{% endblock %}
+{% block js_end %}
+    <script>
+        $('.read-more').click(function() {
+            $.post({
+                type: 'POST',
+                url: '{{ path('fdc_corporate_media_index_ajax') }}',
+                data: {
+                    search: $('input[name="search"]').val(),
+                    photo: $('input[name="photo"]').val(),
+                    video: $('input[name="video"]').val(),
+                    audio: $('input[name="audio"]').val(),
+                    'year-start': $('input[name="year-start"]').val(),
+                    'year-end': $('input[name="year-end"]').val(),
+                    pg: parseInt($('input[name="pg"]').val())+1
+                },
+                success: function(data) {
+                    $('.block-mediatheque').append(data).isotope( 'addItems', data );
+                    $('.block-mediatheque').isotope();
+                    $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+                }
+            });
+            return false;
+        })
+    </script>
 {% endblock %}
