@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_mediatheque_list: Médiathèque
     link_corpo_team_teams_list: Les équipes
     link_corpo_team_departements_list: Les départements
     link_corpo_team_list: Qui sommes nous
@@ -178,6 +179,7 @@ group:
     mobile_notificaton:
         publish: Publication
 entity:
+    corpo_mediatheque: Médiathèque
     corpo_team_departements: Départements
     corpo_team: L'équipe
     corpo_team_teams: Les équipes
