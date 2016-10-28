@@ -4,7 +4,7 @@
         {% if media.media.file is not null %}
             {% set title = '' %}
             {% if media.film is defined %}
-                {% set title = media.film|trans_fallback('title') %}
+                {% set title = media.film|trans_fallback('title')?:media.film.titleVO %}
                 {% set dateMedia = media.film.productionYear %}
             {% elseif media.person is defined %}
                 {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
