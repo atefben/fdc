@@ -134,11 +134,14 @@ class MediaRepository extends EntityRepository
         if($video) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
                 ->leftJoin('mv.translations', 'mvt')
-                ->andWhere('m.displayedAll = 1 OR mv.displayedWebTv = 1');
+                ->leftJoin('mv.webTv', 'w')
+                ->leftJoin('w.translations', 'wt')
+                ->andWhere('m.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
             $searchOr[] = 'mvt.title LIKE :search';
+            $searchOr[] = 'wt.name LIKE :search';
         }
 
         if($audio) {
