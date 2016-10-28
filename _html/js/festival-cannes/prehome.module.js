@@ -49,7 +49,7 @@ $(document).ready(function() {
     }
   }
 
-  if(getCookie('comply_cookie=comply_yes') != 1) {
+  if(getCookie('comply_cookie=comply_yes') == 1) {
     if($("#cookies-banner").length > 0) {
       $("#cookies-banner").hide();
     }
