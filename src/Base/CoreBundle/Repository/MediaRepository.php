@@ -124,7 +124,8 @@ class MediaRepository extends EntityRepository
 
         if($photo) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
-                ->leftJoin('mi.translations', 'mit');
+                ->leftJoin('mi.translations', 'mit')
+                ->andWhere('(m.associatedFilm IS NOT NULL) OR (m.displayedHome = 1)');
 
             $qb = $this->addTranslationQueries($qb, 'mit', $locale);
 
@@ -133,7 +134,8 @@ class MediaRepository extends EntityRepository
 
         if($video) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
-                ->leftJoin('mv.translations', 'mvt');
+                ->leftJoin('mv.translations', 'mvt')
+                ->andWhere('mv.displayedWebTv = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 

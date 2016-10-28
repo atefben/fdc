@@ -3135,8 +3135,6 @@ video {
     background-size: cover;
     transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
     position: relative;
-    background-size: 130%;
-    background-position: 0px 0px;
 }
 .block-push .coverLink {
     width: 100%;
@@ -3329,7 +3327,6 @@ video {
     height: 300px;
     display: block;
     position: relative;
-    background-attachment: inherit;
 }
 .block-push-top .vFlexAlign {
     height: 100%;
