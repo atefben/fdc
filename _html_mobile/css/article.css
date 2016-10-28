@@ -730,3 +730,93 @@ a{
     text-align: center;
     padding-bottom: 145px;
 }
+
+
+.caption-article {
+    color: #333333;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+
+
+}
+
+.caption-article  .name {
+    color:#000;
+}
+
+
+/** test fix **/
+
+
+.big-quote span.big-quote-paragraph {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: .875rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.big-quote strong {
+    color: #c8a461 !important;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
+}
+
+.txt-grey-bkg-container {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding: 70px 70px;
+}
+
+.txt-grey-bkg-container .content span {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+}
+
+.blockquote {
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 1.688rem;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 40px;
+    text-align: center;
+}
+
+.little-txt {
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+    display: block;
+}
+
+.quote blockquote {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
