@@ -1,0 +1,80 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}
+    participate participate-accordion bright
+{% endblock bodyClass %}
+{% block body %}
+    <section id="main">
+        {% set corpo = true %}
+        {% if content.mainImage is defined and content.mainImage is not null %}
+            {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
+            {% if mainTrans is null or mainTrans.file is null %}
+                {% set mainTrans = content.mainImage.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set mainImage = mainTrans.file %}
+            <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %})">
+                <div class="vFlexAlign">
+                    <div class="txts">
+                        <h1 class="title-3">{{ 'participate.guide.pratique'|trans }}</h1>
+                    </div>
+                </div>
+            </div> <!-- end block push -->
+        {% endif %}
+        <div class="all-contain">
+            <div class="accordion">
+                <div class="block-accordion block-accordion-02">
+                    {% set i = 0 %}
+                    {% for s in datas.downloadSection %}
+                            {% if ( s.section is not null and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
+                            ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
+                            %}
+                                {% if s.section.instit %}
+                                    <div class="item {% if i == 0 %}active{% endif %}">
+                                        <div class="block-01">
+                                            <div class="title-contain border-top">
+                                                <strong class="title-22">
+                                                    <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
+                                                </strong>
+                                                <i class="icon icon-nav-accordion {% if i == 0 %}icon-minus{% else %}icon-create{% endif %}"></i>
+                                            </div>
+                                            {% set i = 1 %}
+                                            <div class="item-manual">
+                                                <div class="contain-infos">
+                                                    {% if s.section|trans_fallback('description') %}
+                                                        <div class="descrip-section">
+                                                            {{ s.section|trans_fallback('description')|raw }}
+                                                        </div>
+                                                    {% endif %}
+
+                                                    {#                  #}
+                                                    {#     WIDGETS      #}
+                                                    {#                  #}
+                                                    {% for widget in s.section.widgets %}
+                                                        {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+                                                            {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
+                                                        {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+                                                            {% include 'FDCCorporateBundle:Participate/widgets:participate-two.html.twig' %}
+                                                        {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+                                                            {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
+                                                        {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+                                                            {% include 'FDCEventBundle:Participate:widgets/participate-four.html.twig' %}
+                                                        {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+                                                            {% include 'FDCEventBundle:Participate:widgets/participate-five.html.twig' %}
+                                                        {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                                                            {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                </div> <!-- fin de accordion -->
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

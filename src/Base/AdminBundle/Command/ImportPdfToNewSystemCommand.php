@@ -63,7 +63,7 @@ class ImportPdfToNewSystemCommand extends ContainerAwareCommand
             }
         }
 
-        $pressAccreditProcedure = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressAccreditProcedure')->findAll();
+        $pressAccreditProcedure = $this->getDoctrineManager()->getRepository('CorpoAccreditProcedure.php')->findAll();
 
         foreach ($pressAccreditProcedure as $entity) {
             if ($entity->getPdf() == null) {

@@ -10,6 +10,32 @@
 // 1. Global
 // =========================
 .participate {
+
+  ul {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style: initial;
+      list-style-position: inside;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style: initial;
+    list-style-position: inside;
+
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style-type: decimal;
+    }
+  }
+
+
+
   .participate-active {
     height: auto !important;
   }
@@ -88,7 +114,6 @@
 
         a {
           color: #c29f5f;
-          text-decoration: underline;
           @include transition(all 0.9s $linear);
 
           &:hover {
@@ -472,7 +497,6 @@
 
       strong {
         font-family: $CamphorBold;
-        font-weight: 700;
       }
 
       span {
@@ -777,6 +801,10 @@
       line-height: 30px;
       width: 778px;
       margin: 0 auto;
+      text-align: center;
+    }
+
+    ul li, ol li {
       text-align: center;
     }
   }

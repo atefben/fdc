@@ -294,19 +294,27 @@ $(document).ready(function() {
       });
     }
   });
-
+  
   // init timeline
   moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'), false);
 
   var day = $('.timeline-container').find('.active').data('date');
 
-  if(day == 21) {
+  var dayEnd = GLOBALS.dateEnd;
+  dayEnd = new Date(dayEnd);
+  dayEnd = dayEnd.getDate();
+
+  var dayStart = GLOBALS.dateStart;
+  dayStart = new Date(dayStart);
+  dayStart = dayStart.getDate();
+
+  if(day >= dayEnd - 1) {
     $('#calendar .next').addClass('disabled');
   }else{
     $('#calendar .next').removeClass('disabled');
   }
 
-  if(day == 11) {
+  if(day <= dayStart + 1) {
     $('#calendar .prev').addClass('disabled');
   }else{
     $('#calendar .prev').removeClass('disabled');
@@ -316,9 +324,26 @@ $(document).ready(function() {
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
 
+    day =  $(this).data('date')
+
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
     }
+
+    if(day <= dayStart) {
+      $('#calendar .prev').addClass('disabled');
+    }else{
+      $('#calendar .prev').removeClass('disabled');
+    }
+
+    if(day == dayEnd - 1) {
+      $('#calendar .next').addClass('disabled');
+    }else{
+      $('#calendar .next').removeClass('disabled');
+    }
+
+    $('.nd').html(day);
+
     moveTimeline($(this), $(this).data('date'));
   });
 
@@ -327,15 +352,17 @@ $(document).ready(function() {
 
     var day = $('.timeline-container').find('.active').data('date');
 
+
     $('#calendar .next').removeClass('disabled');
 
-    if(day == 12) {
+    if(day <= dayStart + 1) {
       $('#calendar .prev').addClass('disabled');
     }else{
       $('#calendar .prev').removeClass('disabled');
     }
 
-    if(day == 11) {
+    if(day <= dayStart) {
+
       return false;
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
@@ -350,14 +377,14 @@ $(document).ready(function() {
 
     $('#calendar .prev').removeClass('disabled');
 
-    if(day == 20) {
+    if(day == dayEnd - 1) {
       $('#calendar .next').addClass('disabled');
     }else{
       $('#calendar .next').removeClass('disabled');
     }
 
-    if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
-      return false;
+    if(day == dayEnd || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
+       return false;
 
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
@@ -371,23 +398,34 @@ $(document).ready(function() {
       // once all data is loaded, build html and display the grid
       $('.post-container').html('');
       for (var i = 0; i < 6; ++i){
-        var noPhoto = "show-text";
-        if(posts[i].img ==""){
-          noPhoto += "always-show";
-        }
-        var html = '<div class="post show-text '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
-        $('.post-container').append(html);
-      }
 
-        console.log('ici');
+        var noPhoto = "";
+
+        if(posts[i].img ==""){
+          noPhoto += " always-show";
+        }
+
+        if(i == 1 || i == 2) {
+          var html = '<div class="post show-text'+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        } else {
+          var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        }
+          $('.post-container').append(html);
+      }
 
       $('.post').on('click',function(){
         if($(this).hasClass('always-show')) {
+
           return false;
+
         } else if($(this).hasClass('show-text')) {
+
           $(this).removeClass('show-text');
+
         } else {
+/*
           $('.post').removeClass('show-text');
+*/
           $('.always-show').addClass("show-text");
           $(this).addClass('show-text')
         }

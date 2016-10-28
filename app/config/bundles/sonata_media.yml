@@ -48,6 +48,13 @@ sonata_media:
                 2560x1103: { width: 2560, height: 1103, quality: 100, constraint: false }
                 976x535: { width: 976, height: 535, quality: 100, constraint: false }
 
+        film_affiche:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                256x348: { width: 256 , height: 348 , quality: 100, constraint: false }
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+
         film_poster:
             providers:
                 - sonata.media.provider.image
@@ -254,6 +261,7 @@ sonata_media:
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 tiny:    { width: 76, height: 92, quality: 100, constraint: false }
                 small:   { width: 187, height: 255, quality: 100, constraint: false }
+                197x142: { width: 197 , height: 142 , quality: 100}
                 212x134: { width: 212 , height: 134 , quality: 100, constraint: false }
                 293x185: { width: 293 , height: 185 , quality: 100, constraint: false }
                 #event mosaic movie widget

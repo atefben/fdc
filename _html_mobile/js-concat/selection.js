@@ -1791,6 +1791,7 @@ $(document).ready(function() {
       autoWidth: true,
       loop: false,
       items:1,
+      /*
       onInitialized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
@@ -1798,9 +1799,16 @@ $(document).ready(function() {
       onResized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu .owl-stage').css({ 'margin-left': m });
-      }
+      }*/
     });
     menu.owlCarousel();
+
+    setTimeout(function(){
+      var parent = $('#horizontal-menu .vid .active').closest('.owl-item.active').index();
+      menu.trigger('to.owl.carousel', [parent, 2, true])
+    }, 500);
+
+
 
     if($('.faq-page').length == 0) {
       var toIndex = $('a.active').parents('.owl-item').index() - 1;
@@ -2028,15 +2036,15 @@ $(document).ready(function() {
       margin     : 60,
       autoWidth  : true,
       loop       : false,
-      items      : 2,
-      onInitialized: function() {
+      items      : 1
+     /* onInitialized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu2 .owl-stage').css({ 'margin-left': m });
       },
       onResized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#horizontal-menu2 .owl-stage').css({ 'margin-left': m });
-      }
+      }*/
     });
     menu.owlCarousel();
 

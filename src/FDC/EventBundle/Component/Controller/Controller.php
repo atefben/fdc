@@ -155,14 +155,24 @@ class Controller extends BaseController
      * @return Settings
      * @throws NotFoundHttpException
      */
-    public function getFestival()
+    public function getFestival($year = null)
     {
 
-        if (!$this->getSettings() || $this->getSettings()->getFestival() === null) {
-            throw $this->createNotFoundException();
+        if(is_null($year)) {
+            if (!$this->getSettings() || $this->getSettings()->getFestival() === null) {
+                throw $this->createNotFoundException();
+            }
+
+            return $this->getSettings()->getFestival();
+        } else {
+            $festival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($year);
+            if(!$festival) {
+                throw $this->createNotFoundException();
+            } else {
+                return $festival;
+            }
         }
 
-        return $this->getSettings()->getFestival();
     }
 
     public function isWaitingPage(Request $request, $routeId = null)

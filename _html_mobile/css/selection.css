@@ -70,19 +70,26 @@
 .title-list-cat{
   border-bottom: 1px solid #2c2c2c;
   border-top:1px solid #2c2c2c;
-  width: 640px;
+    width: 122%;
   margin-left: -40px;
+}
+
+.contain-article-invit .title-list-cat {
+    width: 130%;
+    margin-left: -70px;
 }
 
 .title-list-cat .title{
   color: #fff;
   margin: 60px auto;
   padding: 0;
+    height: auto;
 }
 .title-list-cat .title.article-style {
     font-family: "Playfair Display",Times New Roman,Times,serif;
     font-weight: 400;
     line-height: 1.3em;
+    text-transform: none;
 }
 .title-list-cat .subtitle{
   color: #fff;
@@ -94,6 +101,18 @@
   margin: 0 40px 60px;
   max-height: 300px;
 }
+
+.title-item .subtile {
+    color: #fff;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding-top: 10px;
+    font-style: italic;
+    line-height: 28px;
+    margin: 0 40px 60px;
+    max-height: 300px;
+}
+
 .title-list-cat .subtitle.alone{
   margin-top: 60px;
   padding-top: 0;
@@ -125,7 +144,7 @@
   font-weight: 700;
   font-size: 25px;
   margin-bottom: 8px;
-  max-width: 380px;
+  max-width: 385px;
 }
 .film-slider .info p.subtitle{
   font-size: 18px;
@@ -197,7 +216,7 @@
   color: #c8a461;
 }
 #horizontal-menu2 .owl-stage{
-
+    margin-left: 128.5px;
   height: 100%;
 }
 
@@ -218,8 +237,12 @@ a{
   border: none;
 }
 .selection .container{
-  padding-top: 50px;
+  padding-top: 30px;
   font-size: 0;
+}
+
+.selection .section {
+    padding-top: 0px;
 }
 #player{
     margin-bottom: 40px;
@@ -710,10 +733,10 @@ margin-left: 6px;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     font-weight: 700;
     font-size: 25px;
-    margin-bottom: 8px;
     max-width: 480px;
     line-height: 34px;
     margin: 20px auto;
+    margin-bottom: 8px;
 }
 .movie-container .title-item a {
     color: #fff;

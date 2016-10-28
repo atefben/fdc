@@ -1,4 +1,9 @@
 
+.calendar .v-head {
+    position: relative;
+    z-index: 3;
+}
+
 .calendar .timeCol{
 	
 	background-color: #f4f4f4;
@@ -270,6 +275,18 @@
 	font-size: 18px;
 }
 
+.fc-event .info .info-dynamic-prog {
+    color: black;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 5px 0 11px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.fc-event .info .txt.txt-padding {
+    padding: 20px 10px 10px 10px;
+}
+
 /*ONE HOUR EVENT*/
 .fc-event.one-hour .bottom, .fc-event.one-hour img{
 	display: none;
@@ -345,8 +362,9 @@
   position: relative;
 }
 .popin-event .img-container{
-  width: 100%;
-  height: auto;
+  width: 480px;
+  height: 640px;
+    object-fit: cover;
 }
 .popin-event .img-container img{
   width: 100%;
@@ -383,6 +401,7 @@
   font-weight: 700;
   margin-bottom: 15px;
   margin-top: 60px;
+    width: 480px;
 }
 .popin-event .content .title-original{
   text-transform: uppercase;

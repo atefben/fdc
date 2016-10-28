@@ -50,7 +50,7 @@ class PressMediaLibrary implements TranslateMainInterface
 
     public function __toString()
     {
-        return "Médiathèque";
+        return "Médiathèque1";
     }
 
     /**

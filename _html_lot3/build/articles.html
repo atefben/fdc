@@ -30,8 +30,8 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="img/favicon//ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<body class="articles-list dark retrospective retrospective-home restrospective-init">
-  <header>
+<body class="dark retrospective retrospective-home restrospective-init loading">
+<header>
   <div id="top-bar">
     <ul class="main-nav">
       <li>
@@ -73,7 +73,7 @@
         <a href="/"><img src="img/header/palme.svg" alt="Festival de Cannes" class="palm" /></a>
         <h1><a href="/"><img width="200" src="img/header/logo.svg" alt="Festival de Cannes" /></a></h1>
         <h2><a href="/">11-22 Mai 2016</a></h2>
-        <p class="stick"><a href="/"><img width="178" src="img/header/logo.svg" alt="Festival de Cannes" /></a></p>
+        <p class="stick"><a href="/"><img width="178" src="img/header/logo178.svg" alt="Festival de Cannes" /></a></p>
       </div>
       <div id="partners">
         <a href="//www.chopard.fr/" target="_blank"><img width="84" src="img/header/Logo_Chopard.svg" alt="Chopard" class="chopard" /></a>
@@ -81,7 +81,7 @@
         <a href="//www8.hp.com/fr/fr/home.html" target="_blank"><img width="28" src="img/header/hp.svg" alt="HP" class="hp" /></a>
         <a href="//www.kering.com/fr" target="_blank"><img width="82" src="img/header/Kering-logo.svg" alt="Kering" class="kering" /></a>
         <a href="//group.renault.com/" target="_blank"><img width="95" src="img/header/renault.svg" alt="Renault" class="renault" /></a>
-        <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank"><img width="57" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" /></a>
+        <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank"><img width="73" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" /></a>
       </div>
       <div id="search">
         <a href="search.html" class="search"><i class="icon icon-search"></i></a>
@@ -106,7 +106,11 @@
       <nav>
         <ul class="main">
           <li>
-            <a href="/" class="active">Accueil</a>
+            <a href="/" class="active noLink">L'actualité</a>
+            <ul class="tcenter">
+              <li><a href="/">Jour à jour</a></li>
+              <li><a href="articles-all.html">Toute l'actualité</a></li>
+            </ul>
           </li>
           <li>
             <a href="who-fdc.html">Qui sommes nous ?</a>
@@ -189,598 +193,680 @@
   </div>
 </div>
 
-  <section class="s-slider-retrospective">
+<section class="s-slider-retrospective">
 
     <div class="slides-calc2 navigation prev" style="display: none;"><i class="icon icon-arrow-left"></i></div>
     <div class="slides-calc2 navigation next" style="display: none;"><i class="icon icon-arrow-right"></i></div>
 
     <div class="slides-calc1 animated fadeOut" style="display: none;">
-      <div class="slide">
-        <div class="date" data-date="1948">1946</div>
-      </div>
+        <div class="slide">
+            <div class="date" data-date="1948">1946</div>
+        </div>
     </div>
 
     <div class="slides">
 
-      <div data-slide="0" class="first-slide slider-restropective animated fadeOut isOpen block-push block-push-top background-effet" style="background-image: url('media/images/retrospective-home-01.jpg')">
-        <div class="container block-01 vFlexAlign">
-          <div class="vFlexAlign">
-            <h1 class="title-big">69 ans de festival</h1>
-            <p>Revivez tous les moments forts de l'histoire du Festival de Cannes à travers cette timeline interactive</p>
-            <div class="block-drag">
-              <div class="avance"><span class="square"></span></div>
-              <i class="icon icon-drag-hand"></i>
+        <div data-slide="0"
+             class="first-slide slider-restropective animated fadeOut isOpen block-push block-push-top background-effet"
+             style="background-image: url('media/images/retrospective-home-01.jpg')">
+            <div class="container block-01 vFlexAlign">
+                <div class="vFlexAlign">
+                    <h1 class="title-big">69 ans de festival</h1>
+                    <p>Revivez tous les moments forts de l'histoire du Festival de Cannes à travers cette timeline
+                        interactive</p>
+                    <div class="block-drag">
+                        <div class="avance"><span class="square"></span></div>
+                        <i class="icon icon-drag-hand"></i>
+                    </div>
+                </div>
             </div>
-          </div>
+
         </div>
 
-      </div>
+        <div data-slide="1" class="slider-restropective big isOpen block-push block-push-top background-effet"
+             style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
+            <div class="container block-01 vFlexAlign">
 
-      <div data-slide="1" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
-        <div class="container block-01 vFlexAlign">
+                <div class="link-return-c">
+                    <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour
+                        à la rétrospective</a>
+                </div>
 
-          <div class="link-return-c">
-            <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
-          </div>
+                <!-- <div class="date-back"><a href="#"></a><i class="icon icon-arrow-fill"></i></div> -->
+                <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1947</a><i
+                        class="icon icon-arrow-fill"></i></div>
 
-          <!-- <div class="date-back"><a href="#"></a><i class="icon icon-arrow-fill"></i></div> -->
-          <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1947</a><i class="icon icon-arrow-fill"></i></div>
-
-        <div class="vFlexAlign">
-            <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
-            <div class="texts animated visible pulse">
-              <span class="title-4">1<sub>E</sub> édition</span>
-              <h2 class="title-2">1946</h2>
-              <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+                <div class="vFlexAlign">
+                    <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
+                    <div class="texts animated visible pulse">
+                        <span class="title-4">1<sub>E</sub> édition</span>
+                        <h2 class="title-2">1946</h2>
+                        <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-      <div data-slide="2" class="slider-restropective small isOpen block-push block-push-top background-effet">
-        <div class="container block-01 vFlexAlign">
-          <div class="link-return-c">
-            <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
-          </div>
+        <div data-slide="2" class="slider-restropective small isOpen block-push block-push-top background-effet">
+            <div class="container block-01 vFlexAlign">
+                <div class="link-return-c">
+                    <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour
+                        à la rétrospective</a>
+                </div>
 
-          <div class="date-back" data-url="retrospective-poster2.html"><a href="#">1946</a><i class="icon icon-arrow-fill"></i></div>
-          <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1948</a><i class="icon icon-arrow-fill"></i></div>
+                <div class="date-back" data-url="retrospective-poster2.html"><a href="#">1946</a><i
+                        class="icon icon-arrow-fill"></i></div>
+                <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1948</a><i
+                        class="icon icon-arrow-fill"></i></div>
 
-          <div class="vFlexAlign">
-            <img src="media/images/retrospective-slider01.jpg" alt="">
-            <div class="texts">
-              <span class="title-4">2<sub>E</sub> édition</span>
-              <h2 class="title-2">1947</h2>
-              <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+                <div class="vFlexAlign">
+                    <img src="media/images/retrospective-slider01.jpg" alt="">
+                    <div class="texts">
+                        <span class="title-4">2<sub>E</sub> édition</span>
+                        <h2 class="title-2">1947</h2>
+                        <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-      <div data-slide="3" class="slider-restropective small isOpen block-push block-push-top background-effet">
-        <div class="container block-01 vFlexAlign">
-          <div class="link-return-c">
-            <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
-          </div>
+        <div data-slide="3" class="slider-restropective small isOpen block-push block-push-top background-effet">
+            <div class="container block-01 vFlexAlign">
+                <div class="link-return-c">
+                    <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour
+                        à la rétrospective</a>
+                </div>
 
-          <div class="date-back" data-url="retrospective-poster2.html"><a href="#">1947</a><i class="icon icon-arrow-fill"></i></div>
-          <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1949</a><i class="icon icon-arrow-fill"></i></div>
+                <div class="date-back" data-url="retrospective-poster2.html"><a href="#">1947</a><i
+                        class="icon icon-arrow-fill"></i></div>
+                <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1949</a><i
+                        class="icon icon-arrow-fill"></i></div>
 
-          <div class="vFlexAlign">
-            <img src="media/images/retrospective-slider01.jpg" alt="">
-            <div class="texts">
-              <span class="title-4">3<sub>E</sub> édition</span>
-              <h2 class="title-2">1948</h2>
+                <div class="vFlexAlign">
+                    <img src="media/images/retrospective-slider01.jpg" alt="">
+                    <div class="texts">
+                        <span class="title-4">3<sub>E</sub> édition</span>
+                        <h2 class="title-2">1948</h2>
 
-              <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+                        <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
     </div>
 
     <div class="block-01">
-      <div class="timelapse block-drag" style="display: none;">
-        <span class="date date-first" data-firstdate="1946">1946</span>
-        <div class="avance noUi-target noUi-ltr noUi-horizontal noUi-background" id="timelapse-01"><span class="square"></span><div class="noUi-base"><div class="noUi-origin" style="left: 1.42857%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
-        <span class="date date-last" data-lastdate="2015">2015</span>
-      </div>
+        <div class="timelapse block-drag" style="display: none;">
+            <span class="date date-first" data-firstdate="1946">1946</span>
+            <div class="avance noUi-target noUi-ltr noUi-horizontal noUi-background" id="timelapse-01"><span
+                    class="square"></span>
+                <div class="noUi-base">
+                    <div class="noUi-origin" style="left: 1.42857%;">
+                        <div class="noUi-handle noUi-handle-lower"></div>
+                    </div>
+                </div>
+            </div>
+            <span class="date date-last" data-lastdate="2015">2015</span>
+        </div>
     </div>
 
 
-    <div class="ajax-section"><div class="contain-ajax padding-bottom" id="main">
-      <nav class="navigation-sticky">
-        <ul>
-          <li><a href="retrospective-poster.html">L'affiche</a></li>
-          <li><a href="selection.html">La sélection</a></li>
-          <li><a href="jury.html">Les jurys</a></li>
-          <li><a href="retrospective-palmares.html">Le palmarès</a></li>
-          <li ><a href="evenements.html">Les évènements</a></li>
-          <li><a href="medias.html">Les médias</a></li>
-          <li class="active"><a href="articles.html">L'actualité</a></li>
-        </ul>
-      </nav>
+    <div class="ajax-section">
+        <div class="contain-ajax articles-list evenements padding-bottom" id="main">
+            <nav class="navigation-sticky">
+                <ul>
+                    <li><a href="retrospective-poster.html">L'affiche</a></li>
+                    <li><a href="selection.html">La sélection</a></li>
+                    <li><a href="jury.html">Les jurys</a></li>
+                    <li><a href="retrospective-palmares.html">Le palmarès</a></li>
+                    <li><a href="evenements.html">Les évènements</a></li>
+                    <li><a href="medias.html">Les médias</a></li>
+                    <li class="active"><a href="articles.html">L'actualité</a></li>
+                </ul>
+            </nav>
 
-      <div class="filters padding-small-top">
+            <div class="filters padding-small-top">
 
-        <div id="date" class="filter">
-          <span class="label">Dates :</span>
-          <span class="select">
-            <span data-filter="date-18-05-5" class="active">18.05.5 </span>
-            <span data-filter="date-19-05-5">19.05.5</span>
-            <span data-filter="date-20-05-5">20.05.5</span>
-            <i class="icon icon-arrow-down"></i>
-          </span>
+                <div id="date" class="filter">
+                    <span class="label">Dates :</span>
+                      <span class="select">
+                        <span data-filter="date-18-05-5" class="active">18.05.5 </span>
+                        <span data-filter="date-19-05-5">19.05.5</span>
+                        <span data-filter="date-20-05-5">20.05.5</span>
+                        <i class="icon icon-arrow-down"></i>
+                      </span>
+                </div>
+
+                <div id="theme" class="filter">
+                    <span class="label">Thèmes :</span>
+                      <span class="select">
+                        <span data-filter="all" class="active">Tous </span>
+                        <span data-filter="competition">Compétition</span>
+                        <span data-filter="photocall">photocall</span>
+                        <i class="icon icon-arrow-down"></i>
+                      </span>
+                </div>
+
+                <div id="format" class="filter">
+                    <span class="label">Formats :</span>
+                      <span class="select">
+                        <span data-filter="all" class="active">Tous </span>
+                        <span data-filter="photo">Photo</span>
+                        <span data-filter="video">Vidéo</span>
+                        <span data-filter="audio">Audio</span>
+                        <span data-filter="article">Article</span>
+                        <i class="icon  icon-arrow-down"></i>
+                      </span>
+                </div>
+            </div> <!-- end filters -->
+
+            <div class="grid-01 isotope-01">
+                <div class="grid-sizer"></div>
+
+                <article class="card item photo date-20-05-5 all photocall" data-format="photo" data-theme="photocall"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-19-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-18-05-5 all photocall" data-format="photo" data-theme="photocall"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+
+                <article class="card item photo date-19-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-19-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item article date-18-05-5 all photocall" data-format="article"
+                         data-theme="competition" data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-article"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-18-05-5 all competition" data-format="video"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-18-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item article date-20-05-5 all competition" data-format="article"
+                         data-theme="competition" data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-article"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-19-05-5 all photocall" data-format="photo" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item article date-18-05-5 all competition" data-format="article"
+                         data-theme="competition" data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-article"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-18-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-19-05-5 all competition" data-format="video"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item audio date-20-05-5 all photocall" data-format="audio" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-audio"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="bright">
+                <a href="#" class="read-more block-01">Afficher <strong>plus d'infos</strong></a>
+            </div>
         </div>
+    </div>
 
-        <div id="theme" class="filter">
-          <span class="label">Thèmes :</span>
-          <span class="select">
-            <span data-filter="all" class="active">Tous </span>
-            <span data-filter="competition">Compétition</span>
-            <span data-filter="photocall">photocall</span>
-            <i class="icon icon-arrow-down"></i>
-          </span>
-        </div>
+</section>
 
-        <div id="format" class="filter">
-          <span class="label">Formats :</span>
-          <span class="select">
-            <span data-filter="all" class="active">Tous </span>
-            <span data-filter="photo">Photo</span>
-            <span data-filter="video">Vidéo</span>
-            <span data-filter="audio">Audio</span>
-            <span data-filter="article">Article</span>
-            <i class="icon  icon-arrow-down"></i>
-          </span>
-        </div>
-      </div> <!-- end filters -->
-
-      <div class="grid-01 isotope-01">
-        <div class="grid-sizer"></div>
-
-        <article class="card item photo date-20-05-5 all photocall" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-01.jpg" alt="" />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-        <article class="card item photo date-19-05-5 all competition" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-02.jpg" alt="" />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-        <article class="card item photo date-18-05-5 all photocall" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-02.jpg" alt="" />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-
-        <article class="card item photo date-19-05-5 all competition" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-02.jpg" alt="" />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-        <article class="card item photo date-19-05-5 all competition" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-02.jpg" alt="" />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-        <article class="card item article date-18-05-5 all photocall" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-01.jpg" alt=""   />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-article"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
-          </div>
-        </article>
-
-        <article class="card item video date-18-05-5 all competition" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""   />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-video"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-        <article class="card item photo date-18-05-5 all competition" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-02.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-        <article class="card item article date-20-05-5 all competition" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-01.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-article"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
-          </div>
-        </article>
-
-        <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-video"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-        <article class="card item photo date-19-05-5 all photocall" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-02.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-photo"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
-          </div>
-        </article>
-
-        <article class="card item article date-18-05-5 all competition" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/articles-01.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-article"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
-          </div>
-        </article>
-
-        <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-video"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-        <article class="card item video date-18-05-5 all photocall" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-video"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-        <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-video"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-        <article class="card item video date-19-05-5 all competition" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-video"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-        <article class="card item audio date-20-05-5 all photocall" data-format="audio" data-theme="steps" data-time="1455909420" data-end="false">
-          <div class="image">
-            <div class="image-wrapper">
-              <img src="media/images/home-image3.jpg" alt=""  />
-            </div>
-            <a href="article.html" class="linkImage"></a>
-            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-            <span class="picto"><i class="icon icon-audio"></i></span>
-          </div>
-          <div class="info">
-            <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <strong><a href="article.html">Z de Costa-Gravas</a></strong>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="bright">
-        <a href="#" class="read-more block-01">Afficher <strong>plus d'infos</strong></a>
-      </div>
-    </div></div>
-
-  </section>
-
-  <script>
-  var GLOBALS = {
-    "env" : "html",
-    "locale" : "fr",
-    "defaultDate" : "2016-05-12",
-    "dateStart": "2016-05-12",
-    "dateEnd": "2016-05-24",
-    "year" : 2017,
-    "api" : {
-      "instagramUrl" : "https://api.instagram.com/v1/tags/Cannes2016/media/recent/?access_token=18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-      "twitterUrl" : "./json/twitter.json"
-    },
-    "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
-    "urls" : {
-      "programmationUrl" : "programmation.php",
-      "calendarProgrammationUrl" : "calendarprogrammation.html",
-      "eventUrl" : "load-evenements.php",
-      "newsUrl" : "news.html",
-      "newsUrlNext" : "news_page2.html",
-      "loadPressReleaseUrl" : "load-communique.php",
-      "selectionUrl" : "selection.html",
-      "audiosUrl": "audios.php",
-      "photosUrl": "photos.php",
-      "videosUrl": "videos.php",
-      "searchUrl": "searchsuggest.json",
-      "resultUrl": "results.json",
-    },
-    "texts" : {
-      "url" : {
-        "title" : "titre test"
-      },
-      "search" : {
-        "noresult" : "Aucun résultat"
-      },
-      "popin" : {
-        "error" : "valide",
-        "empty" : "renseignée",
-        "valid" : "Votre email a bien été envoyé !",
-        "copy"  :  "lien copié ! ",
-        "acces" :  "les contenus qui vous sont réservés sont à présents accessibles."
-      },
-      "googleMap" : {
-        "title" : "Festival de Cannes"
-      },
-      "readMore" : {
-        "more" : "Afficher <strong>plus d'actualités</strong>",
-        "nextDay" : "Passer au <strong>jour précédent</strong>"
-      },
-      "newsletter" : {
-        "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-        "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
-      },
-      'agenda' : {
-        'delete' : "Supprimer de votre agenda"
-      }
-    },
-    "player": {
-      "file" : "./files/mov_bbb.mp4",
-      "image" : "//dummyimage.com/960x540/c8a461/000.png",
-      "title" : "Video 1"
-    },
-    "calendar": {
-      "labelFormat": {
-        "fr" : "H [H]",
-        "default" : "h A"
-      },
-      "i18n": {
-        "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
-        "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
-        "labelFormat": {
-          "fr" : "H\\hi",
-          "default" : "g:ia"
+<script>
+    var GLOBALS = {
+        "env": "html",
+        "locale": "fr",
+        "defaultDate": "2016-05-12",
+        "dateStart": "2016-05-12",
+        "dateEnd": "2016-05-24",
+        "year": 2017,
+        "api": {
+            "instagramUrl": "https://api.instagram.com/v1/tags/Cannes2016/media/recent/?access_token=2480568612.1677ed0.e6bd83eae8a74220ad07059c7b3ab5bc",
+            "twitterUrl": "./json/twitter.json"
+        },
+        "baseUrl": "http://html.festival-cannes-2016.com.ohwee.fr",
+        "urls": {
+            "programmationUrl": "programmation.php",
+            "calendarProgrammationUrl": "calendarprogrammation.html",
+            "eventUrl": "load-evenements.php",
+            "newsUrl": "news.html",
+            "newsUrlNext": "news_page2.html",
+            "loadPressReleaseUrl": "load-communique.php",
+            "selectionUrl": "selection.html",
+            "audiosUrl": "audios.php",
+            "photosUrl": "photos.php",
+            "videosUrl": "videos.php",
+            "searchUrl": "searchsuggest.json",
+            "resultUrl": "results.json",
+            "shareEmailUrl": "http://www.festival-cannes-2016.com.ohwee.fr/fr/corporate/share-email/"
+        },
+        "texts": {
+            "url": {
+                "title": "titre test"
+            },
+            "search": {
+                "noresult": "Aucun résultat"
+            },
+            "popin": {
+                "error": "valide",
+                "empty": "renseignée",
+                "valid": "Votre email a bien été envoyé !",
+                "copy": "lien copié ! ",
+                "acces": "les contenus qui vous sont réservés sont à présents accessibles."
+            },
+            "googleMap": {
+                "title": "Festival de Cannes"
+            },
+            "readMore": {
+                "more": "Afficher <strong>plus d'actualités</strong>",
+                "nextDay": "Passer au <strong>jour précédent</strong>"
+            },
+            "newsletter": {
+                "errorsNotValide": "L'adresse e-mail n'est pas valide",
+                "errorsMailEmpty": "Veuillez saisir une adresse e-mail valide"
+            },
+            'agenda': {
+                'delete': "Supprimer de votre agenda"
+            }
+        },
+        "player": {
+            "file": "./files/mov_bbb.mp4",
+            "image": "//dummyimage.com/960x540/c8a461/000.png",
+            "title": "Video 1"
+        },
+        "calendar": {
+            "labelFormat": {
+                "fr": "H [H]",
+                "default": "h A"
+            },
+            "i18n": {
+                "months": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "weekdaysShort": ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+                "labelFormat": {
+                    "fr": "H\\hi",
+                    "default": "g:ia"
+                }
+            }
+        },
+        "socialWall": {
+            "points": [50, 60, 50, 450, 70, 50, 100, 320, 70, 0, 900, 70],
+            "heightGraph": 200
         }
-      }
-    },
-    "socialWall": {
-      "points" : [50,60,50,450,70,50,100,320,70,0,900,70],
-      "heightGraph" : 200
     }
-  }
 </script>
 
+<div id="cookies-banner">
+    <p>En poursuivant votre navigation sur nos sites, vous acceptez l'installation et l'utilisation de cookies sur votre poste,<br/>
+        notamment à des fins promotionnelles et/ou publicitaires, dans le respect de notre politique de protection de votre vie privée.
+  <span class="cookie-accept" title="Okay, close"><i class="icon icon-close-big-square"></i></span>
+    </p>
+</div>
 
 
 <div id="breadcrumb">
     <div class="container block-01">
-      <ul>
-        <li>
-          <a href="#">L'actualité</a>
-        <i class="icon icon-arrow-right"></i>
-        </li>
-        <li>
-          <a rhref="#">Jour après jour</a>
-          <i class="icon icon-arrow-right"></i>
-        </li>
-        <li>
-          <a href="#">Jour après jour</a>
-          <i class="icon icon-arrow-right"></i>
-        </li>
-        <li>
-          <a href="#" class="active">Enragés, polar hybride d'éric han ...</a>
-        </li>
+        <ul>
+            <li>
+                <a href="#">L'actualité</a>
+                <i class="icon icon-arrow-right"></i>
+            </li>
+            <li>
+                <a rhref="#">Jour après jour</a>
+                <i class="icon icon-arrow-right"></i>
+            </li>
+            <li>
+                <a href="#">Jour après jour</a>
+                <i class="icon icon-arrow-right"></i>
+            </li>
+            <li>
+                <a href="#" class="active">Enragés, polar hybride d'éric han ...</a>
+            </li>
         <span class="goTop">
           Haut de la page
           <i class="icon icon-arrow-top"></i>
         </span>
-      </ul>
+        </ul>
 
     </div>
-  </div>
+</div>
 
-  <!-- POPIN LANDING evenemential -->
-  <div class="popin-landing-e vFlexAlign" class="">
+
+<!-- POPIN LANDING evenemential -->
+<div class="popin-landing-e vFlexAlign" >
     <div class="vFlexAlign">
-      <div class="logo">
-        <a href="/"><img src="img/header/palme.svg" alt="Festival de Cannes" class="palm"></a>
-        <h1><a href="/"><img width="170" src="img/header/logo.svg" alt="Festival de Cannes"></a></h1>
-        <h2><a href="/">11-22 Mai 2016</a></h2>
-      </div>
-      <span class="compteur" data-date="2017-05-11T00:00:00"><span class='day'>12</span> : <span class="hour">06</span> : <span class="minutes">34</span> : <span class="secondes">57</span></span>
-      <strong class="description">avant l’ouverture du <span class="color">site éVÉNEMENTIEL</span></strong>
+        <div class="logo">
+            <a href="/"><img src="img/header/palme.svg" alt="Festival de Cannes" class="palm"></a>
+            <h1><a href="/"><img width="170" src="img/header/logo.svg" alt="Festival de Cannes"></a></h1>
+            <h2><a href="/">11-22 Mai 2016</a></h2>
+        </div>
+        <span class="compteur" data-date="2017-05-11T00:00:00"><span class='day'>12</span> : <span
+                class="hour">06</span> : <span class="minutes">34</span> : <span class="secondes">57</span></span>
+        <strong class="description">avant l’ouverture du <span class="color">site éVÉNEMENTIEL</span></strong>
     </div>
-  </div>
-  <!-- POPIN LANDING evenemential -->
+</div>
+<!-- POPIN LANDING evenemential -->
 
 
- <footer class=""> <!-- add class loading -->
-  <div class="block-01 dark">
-    <h2 class="title">Newsletter</h2>
-    <h3 class="subtitle">Toute l'actualité du festival</h3>
+<footer class=""> <!-- add class loading -->
+    <div class="block-01 dark">
+        <h2 class="title">Newsletter</h2>
+        <h3 class="subtitle">Toute l'actualité du festival</h3>
 
-    <div class="newsletter">
-      <form action="" novalidate>
-        <input id="email" type="email" name="email" placeholder="Votre adresse email">
-        <input id="submit" type="submit" name="submit" value="S'abonner">
-      </form>
-      <div id="confirmation">
-        <p>Votre abonnement a bien été enregistré !<br />Un e-mail de confirmation a été envoyé à l’adresse <span></span></p>
-      </div>
+        <div class="newsletter">
+            <form action="" novalidate>
+                <input id="email" type="email" name="email" placeholder="Votre adresse email">
+                <input id="submit" type="submit" name="submit" value="S'abonner">
+            </form>
+            <div id="confirmation">
+                <p>Votre abonnement a bien été enregistré !<br/>Un e-mail de confirmation a été envoyé à l’adresse
+                    <span></span></p>
+            </div>
+        </div>
+
+        <div class="social">
+            <p><img width="230" src="img/header/logo-white.svg" alt="Festival de Cannes"/></p>
+            <ul>
+                <li><a class="appli" href="app.html" target="_blank"><i class="icon icon-app"></i></a></li>
+                <li><a class="facebook"
+                       href="//www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937"
+                       target="_blank"><i class="icon icon-facebook"></i></a></li>
+                <li><a class="twitter" href="//twitter.com/Festival_Cannes" target="_blank"><i
+                        class="icon icon-twitter"></i></a></li>
+                <li><a class="instagram" href="//instagram.com/festivaldecannes" target="_blank"><i
+                        class="icon icon-instagram"></i></a></li>
+                <li><a class="tumblr" href="//festivaldecannesofficiel.tumblr.com/" target="_blank"><i
+                        class="icon icon-tumblr"></i></a></li>
+                <li><a class="rss" href="//feeds2.feedburner.com/festival-cannes/rss_fr" target="_blank"><i
+                        class="icon icon-rss"></i></a></li>
+                <li><a class="youtube" href="//www.youtube.com/user/TVFestivaldeCannes" target="_blank"><i
+                        class="icon icon-youtube"></i></a></li>
+                <li><a class="dailymotion" href="//www.dailymotion.com/CannesFestTV" target="_blank"><i
+                        class="icon icon-dailymotion"></i></a></li>
+                <li><a class="podcast" href="//feeds2.feedburner.com/festivalcannes/podcast_fr" target="_blank"><i
+                        class="icon icon-podcast"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-menu">
+            <ul>
+                <li class="copyright">© Copyright 2016</li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="faq.php">FAQ</a></li>
+                <li><a href="#">Crédits</a></li>
+                <li><a href="mentions-legales.php">Mentions Légales</a></li>
+                <li><a href="//stage.online-festival.com/" target="_blank">Nous rejoindre</a></li>
+                <li><a href="//www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique</a></li>
+                <li><a href="plan-du-site.php">Plan du Site</a></li>
+                <li><a href="#">Politique de Confidentialité</a></li>
+            </ul>
+        </div>
+
     </div>
-
-    <div class="social">
-      <p><img width="230" src="img/header/logo-white.svg" alt="Festival de Cannes" /></p>
-      <ul>
-        <li><a class="appli" href="app.html" target="_blank"><i class="icon icon-app"></i></a></li>
-        <li><a class="facebook" href="//www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937" target="_blank"><i class="icon icon-facebook"></i></a></li>
-        <li><a class="twitter" href="//twitter.com/Festival_Cannes" target="_blank"><i class="icon icon-twitter"></i></a></li>
-        <li><a class="instagram" href="//instagram.com/festivaldecannes" target="_blank"><i class="icon icon-instagram"></i></a></li>
-        <li><a class="tumblr" href="//festivaldecannesofficiel.tumblr.com/" target="_blank"><i class="icon icon-tumblr"></i></a></li>
-        <li><a class="rss" href="//feeds2.feedburner.com/festival-cannes/rss_fr" target="_blank"><i class="icon icon-rss"></i></a></li>
-        <li><a class="youtube" href="//www.youtube.com/user/TVFestivaldeCannes" target="_blank"><i class="icon icon-youtube"></i></a></li>
-        <li><a class="dailymotion" href="//www.dailymotion.com/CannesFestTV" target="_blank"><i class="icon icon-dailymotion"></i></a></li>
-        <li><a class="podcast" href="//feeds2.feedburner.com/festivalcannes/podcast_fr" target="_blank"><i class="icon icon-podcast"></i></a></li>
-      </ul>
-    </div>
-
-    <div class="footer-menu">
-      <ul>
-        <li class="copyright">© Copyright 2016</li>
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="faq.php">FAQ</a></li>
-        <li><a href="#">Crédits</a></li>
-        <li><a href="mentions-legales.php">Mentions Légales</a></li>
-        <li><a href="//stage.online-festival.com/" target="_blank">Nous rejoindre</a></li>
-        <li><a href="//www.boutiqueofficielle.festival-cannes.com/" target="_blank">Boutique</a></li>
-        <li><a href="plan-du-site.php">Plan du Site</a></li>
-        <li><a href="#">Politique de Confidentialité</a></li>
-      </ul>
-    </div>
-
-  </div>
 </footer>
 <div id="siteLoader" class="canvasloader"></div>
 
-  <script src="js/vendors.js" ></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="js/vendors.js" ></script>
 <script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
 <script src="js/app.js" ></script>
 </body>

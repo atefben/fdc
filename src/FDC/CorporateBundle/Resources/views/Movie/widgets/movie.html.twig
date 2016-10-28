@@ -1,0 +1,71 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+<article class="block-movie-preview" style="background-image: url('{% spaceless %}
+    {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
+    film: film,
+    film_format: '976x535',
+    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+    display_film_path: true
+    }) %}
+{% endspaceless %}')">
+    <div class="bck-hover">
+        <div class="wrapper-item">
+            <div class="poster">
+                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                film: film,
+                film_format: '259x352',
+                film_attrs: {
+                alt: film|trans_fallback('title')?:film.titleVO,
+                'data-object-fit': 'cover'
+                },
+                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg'
+                }) %}
+            </div>
+            <div class="infos">
+                {% if projection is defined and projection is not empty %}
+                    {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
+                    <span class="date-infos">{% for i in 0..2 %}{{ substr[i] }} {% endfor %}  <span class="hours">{{ projection.startsAt|date('H:i') }}</span></span>
+                {% endif %}
+                {% if film|trans_fallback_movie('title') is not empty and film|trans_fallback_movie('title') != film.titleVO %}
+                    {% set titleTranslated = film|trans_fallback_movie('title') %}
+                {% endif %}
+
+                <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
+
+                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                {% for director in directors %}
+                    {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                    {% if loop.index != directors|length %}
+                        ,
+                    {% endif %}
+                {% endfor %}
+
+
+                <span class="date">
+                    {% set duration = [] %}
+                    {% if film.duration is not empty %}
+                        {% set duration = film.duration|split('.') %}
+                    {% endif %}
+                    {% if film.productionYear is not null and  film.productionYear != 0 %}{{ film.productionYear }}
+                        {% if duration|length > 0 and duration[0] > 0 %}
+                            -
+                        {% endif %}
+                    {% endif %}
+                    {% if duration|length > 0 and duration[0] > 0 %}
+                        {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                        {% set minutes = duration[0] % 60 %}
+                        {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
+                    {% endif %}
+                </span>
+
+                <p class="description">
+                    {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
+                        {{ film|trans_fallback('infoRestauration')|nl2br|raw }}
+                    {% else %}
+                        {{ film|trans_fallback('synopsis')|nl2br|raw }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</article>

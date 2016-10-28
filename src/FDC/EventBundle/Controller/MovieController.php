@@ -15,9 +15,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * @Route("/")
- */
 class MovieController extends Controller
 {
 
@@ -40,19 +37,19 @@ class MovieController extends Controller
         }
 
         // GET MOVIE
-        if ($isAdmin) {
+        //if ($isAdmin) {
             $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
                 'slug' => $slug
             ))
             ;
-        } else {
+        /*} else {
             $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
                 'slug'     => $slug,
                 'festival' => $this->getFestival()
             ))
             ;
 
-        }
+        }*/
 
         if ($movie === null) {
             throw new NotFoundHttpException('Movie not found');
@@ -174,7 +171,6 @@ class MovieController extends Controller
             $projections = array_values($projections);
             $nextProjectionDate = $projections[0];
         }
-
 
         return array(
             'movies'             => $movies,

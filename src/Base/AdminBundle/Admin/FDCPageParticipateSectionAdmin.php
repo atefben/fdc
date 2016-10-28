@@ -128,6 +128,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                     'icon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
+                            null => 'Aucun pictogramme',
                             'icon_horaires' => 'Horloge',
                             'icon_acces' => 'Carte ID',
                             'icon_informations' => 'Informations',
@@ -151,6 +152,8 @@ class FDCPageParticipateSectionAdmin extends Admin
                 )
             ))
             ->add('mobile')
+            ->add('instit')
+            ->add('evenmt')
             ->add('page', 'choice' ,array(
                 'choices' => FDCPageParticipateSection::getPages()
             ))

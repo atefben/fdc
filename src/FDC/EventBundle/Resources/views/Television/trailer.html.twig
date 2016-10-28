@@ -55,7 +55,7 @@
                     </div>
                     <div class="infos-videos">
                         <div class="infos">
-                            <strong>{{ videos[0].theme }}</strong>
+                            <strong>{{ videos[0].theme|trans_fallback('name') }}</strong>
                                 <span class="time">{{ videos[0].publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(videos[0].publishedAt|date('H:i'), true, true) }}</span>
                             <p>{{ videos[0]|trans_fallback('title') }}</p>
                         </div>
@@ -128,12 +128,11 @@
                     </div>
                     <div class="share">
                         <div class="buttons square">
-                            <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&t={{ film|trans_fallback('title')|url_encode }}"
-                               rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                            <a href="//twitter.com/intent/tweet?url={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&text={{ film|trans_fallback('title')|url_encode }}"
+                            <a href="#" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                            <a href="#"
                                class="button twitter"><i class="icon icon_twitter"></i></a>
                             <a href="#" class="button link self"><i class="icon icon_link"></i></a>
-                            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                            <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
                         </div>
                     </div>
                 </aside>
@@ -142,32 +141,30 @@
         <div id="content-trailers">
             <div id="slider-trailer" class="owl-carousel sliderDrag">
                 {% for video in videos %}
-                    <div class="channel">
-                        <div class="channel">
-                            <div class="image-wrapper">
-                                {% if video.image and video.image|trans_fallback('file') %}
-                                    {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
+                    <div class="channel" data-vid="{{ video.id }}">
+                        <div class="image-wrapper">
+                            {% if video.image and video.image|trans_fallback('file') %}
+                                {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
+                                {% set alt = video.image|trans_fallback('alt') %}
+                            {% elseif video|trans_fallback('imageAmazonUrl') %}
+                                {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                                {% if video.image %}
                                     {% set alt = video.image|trans_fallback('alt') %}
-                                {% elseif video|trans_fallback('imageAmazonUrl') %}
-                                    {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
-                                    {% if video.image %}
-                                        {% set alt = video.image|trans_fallback('alt') %}
-                                    {% else %}
-                                        {% set alt = '' %}
-                                    {% endif %}
+                                {% else %}
+                                    {% set alt = '' %}
                                 {% endif %}
-                                <img src="{{ videoImage }}" alt="{{ alt }}"/>
-                            </div>
-                            <a class="linkVid" href="#"></a>
-                            <div class="info">
-                                <div class="picto"><i class="icon icon_video"></i></div>
-                                <div class="info-container">
-                                    <div class="vCenter">
-                                        <div class="vCenterKid">
-                                            <a class="category">{{ video.theme|truncate(12) }}</a>
-                                            <span class="date">{{ video.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
-                                            <span>{{ video|trans_fallback('title')|truncate(25) }}</span>
-                                        </div>
+                            {% endif %}
+                            <img src="{{ videoImage }}" alt="{{ alt }}"/>
+                        </div>
+                        <a class="linkVid" href="#"></a>
+                        <div class="info">
+                            <div class="picto"><i class="icon icon_video"></i></div>
+                            <div class="info-container">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a class="category">{{ video.theme|trans_fallback('name')|truncate(12) }}</a>
+                                        <span class="date">{{ video.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
+                                        <span>{{ video|trans_fallback('title')|truncate(25) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +183,7 @@
                             film_attrs: {
                                 alt: next|trans_fallback('title')?:movie.titleVO
                             },
-                            film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+                            film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
                         }) %}
                     {% endspaceless %}');">
                     <h2 class="title title-list-header">{{ next.findTranslationByLocal(app.request.locale)?:next.titleVO }}</h2>
@@ -206,12 +203,12 @@
         {% endif %}
         {% set author = author ~ director.fullName %}
     {%- endfor -%}
-    {{ render(controller('FDCEventBundle:Global:shareEmail',
-        {'section': film.theme,
-         'detail': author,
-         'title': film|trans_fallback('title'),
-         'description': film|trans_fallback('synopsis')
-        })) 
+    {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+        {'section': '',
+            'detail': '',
+            'title': '',
+            'description': ''
+        }))
     }}
 
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [

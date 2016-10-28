@@ -32,10 +32,10 @@
 
 /* empêche la sélection */
 [draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 // - HALF DIV
@@ -62,7 +62,7 @@
     z-index: 1;
   }
 
-  &:hover img{
+  &:hover img {
     @include transition(all 6s $linear);
     @include transform(scale(1.08) translateZ(0));
     cursor: pointer;
@@ -80,6 +80,7 @@
 // - CARDS
 .cards {
   display: inline-block;
+  width: 100%;
 }
 
 // - BLOCK 01
@@ -98,7 +99,6 @@
     object-fit: cover;
   }
 }
-
 
 // - BLOCK 01 medium
 .block-01-m {
@@ -126,6 +126,14 @@
     object-fit: cover;
   }
 
+  .video-container {
+    height: calc(830px / 1.58);
+  }
+
+  .slideshow .slideshow-img {
+    height: 462px;
+  }
+
 }
 
 // - BLOCK 01 m small
@@ -139,6 +147,14 @@
     object-fit: cover;
   }
 
+  .video-container {
+    height: calc(663px / 1.58);
+  }
+
+  .slideshow  .slideshow-img {
+    height: 462px;
+  }
+
 }
 
 // - BLOCK 01 x small
@@ -150,6 +166,14 @@
   img {
     max-width: 100%;
     object-fit: cover;
+  }
+
+  .video-container {
+    height: calc(663px / 1.58);
+  }
+
+  .slideshow  .slideshow-img {
+    height: 462px;
   }
 
 }
@@ -189,16 +213,29 @@
   }
 }
 
+.block-diaporama {
+  padding-top:10px;
+}
+
+/*.contain-card + .block-diaporama {
+  padding-top: 0px;
+}*/
+
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
   background-size: cover;
   transition: $smoothTransition .7s;
   position: relative;
-  
+
+  body:not(.who) & {
+    background-size: 130%;
+    background-position: 0px 0px;
+  }
+
   .coverLink {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     display: block;
     position: absolute;
     z-index: 6;
@@ -206,7 +243,7 @@
 
   .link {
     margin-top: 20px;
-    color:$gold;
+    color: $gold;
     display: block;
     text-align: center;
     text-transform: uppercase;
@@ -234,16 +271,16 @@
   }
 
   &.half-div {
-    text-align:center;
+    text-align: center;
     height: 325px;
 
     strong {
-      font-size:1.25rem;
+      font-size: 1.25rem;
     }
 
-    p{
+    p {
       font-size: .875rem;
-      color:#f6f6f6;
+      color: #f6f6f6;
       padding-bottom: 6px;
     }
 
@@ -262,13 +299,13 @@
   }
 
   @media screen and (min-width: 1600px) and (max-width: 1920px) {
-      & {
-        height:751px;
-      }
+    & {
+      height: 751px;
+    }
   }
 
   @media screen and (min-width: 1920px) {
-    &{
+    & {
       height: 825px;
     }
   }
@@ -330,12 +367,12 @@
   margin-top: 70px;
   margin-bottom: 25px;
 
-  .block-push-item{
+  .block-push-item {
     width: 477px;
     height: 303px;
 
     .title {
-      color:#fff;
+      color: #fff;
       font-family: $CamphorBold;
       font-size: .875rem;
       letter-spacing: 2px;
@@ -376,13 +413,13 @@
   position: relative;
   overflow: hidden;
 
-  .vFlexAlign{
+  .vFlexAlign {
     z-index: 2;
     position: relative;
   }
 
   .title-2 {
-    color:#fff;
+    color: #fff;
     font-family: $CamphorBold;
     font-size: .875rem;
     letter-spacing: 2px;
@@ -401,7 +438,7 @@
     z-index: 1;
   }
 
-  &:hover img{
+  &:hover img {
     @include transition(all 6s $linear);
     @include transform(scale(1.08) translateZ(0));
     cursor: pointer;
@@ -410,41 +447,44 @@
 
 // - BLOCK PUSH TOP
 
-
 .block-push-top {
   height: 300px;
-  display:block;
-  position:relative;
+  display: block;
+  position: relative;
   background-attachment: inherit;
+
+  .who &{
+    background-attachment: fixed;
+  }
 
   .vFlexAlign {
     height: 100%;
   }
 
   .txts {
-    text-align:center;
+    text-align: center;
   }
 
   .title-2 {
     font-size: 3.75rem;
     font-family: $CamphorHeavy;
-    color:#fff;
-    display:block;
+    color: #fff;
+    display: block;
     letter-spacing: .1rem;
   }
 
   .title-3 {
     font-size: 1.75rem;
     font-family: $CamphorHeavy;
-    color:#fff;
-    display:block;
+    color: #fff;
+    display: block;
     letter-spacing: 0.85rem;
   }
 
   .title-4 {
     font-size: .75rem;
-    color:#fff;
-    display:block;
+    color: #fff;
+    display: block;
     letter-spacing: .1rem;
   }
 
@@ -452,19 +492,19 @@
     position: absolute;
 
     a {
-      color:#fff;
+      color: #fff;
       font-size: .75rem;
       font-family: $CamphorHeavy;
     }
 
     i {
-      display:block;
-      color:#383738;
+      display: block;
+      color: #383738;
     }
   }
 
   .date-back {
-    left:28px;
+    left: 28px;
     top: 50%;
     transform: rotate(-90deg);
 
@@ -475,7 +515,7 @@
   }
 
   .date-next {
-    right:28px;
+    right: 28px;
     top: 50%;
     transform: rotate(90deg);
 
@@ -487,32 +527,31 @@
 
   //MEDIA BANDEAU
   @media screen and (min-width: 1920px) {
-      height: 448px !important;
+    height: 448px !important;
   }
 
-  @media screen and (min-width: 1600px) and (max-width:1919px) {
-      height: 373px !important;
+  @media screen and (min-width: 1600px) and (max-width: 1919px) {
+    height: 373px !important;
   }
 
-  @media screen and (min-width: 1280px) and (max-width:1599px) {
-      height: 297px !important;
+  @media screen and (min-width: 1280px) and (max-width: 1599px) {
+    height: 297px !important;
   }
 
-  @media screen and (min-width: 1024px) and (max-width:1279px) {
-      height: 296px !important;
+  @media screen and (min-width: 1024px) and (max-width: 1279px) {
+    height: 296px !important;
   }
 
-  @media screen and (max-width:1023px) {
-      height: 296px !important;
+  @media screen and (max-width: 1023px) {
+    height: 296px !important;
   }
 
 }
 
-
 // - BLOCK LEGEND
 .block-legend {
   padding: 25px 0;
-  padding-bottom:33px;
+  padding-bottom: 33px;
 
   .info, .info h2 {
     text-align: left;
@@ -521,7 +560,7 @@
 
   .info h2 {
     a {
-      color:#141414;
+      color: #141414;
     }
   }
 
@@ -540,7 +579,7 @@
       width: 62%;
       font-family: $CamphorRegular;
       line-height: 24px;
-      color:#868686;
+      color: #868686;
       font-size: .875rem;
       box-sizing: border-box;
       padding-right: 65px;
@@ -552,7 +591,8 @@
 // - BLOCK VIDEO
 
 .block-videos {
-  margin-top: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 // - BLOCK FILMS
@@ -603,18 +643,18 @@
     border-top: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
     flex-direction: column;
-    height: calc( 100% - 76px );
+    height: calc(100% - 76px);
     overflow: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
 
     .title-3 {
       padding-bottom: 30px;
     }
 
     .date {
-      color:#999999;
-      font-size:.6875rem;
-      font-family:$CamphorRegular;
+      color: #999999;
+      font-size: .6875rem;
+      font-family: $CamphorRegular;
     }
   }
 
@@ -623,21 +663,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position:relative;
+    position: relative;
 
     &:after {
-      content:'';
-      display:block;
-      height:0px;
+      content: '';
+      display: block;
+      height: 0px;
       width: 25px;
-      border-top:1px solid #e7e7e7;
-      margin-top:30px;
-      position:absolute;
-      left:46%;
+      border-top: 1px solid #e7e7e7;
+      margin-top: 30px;
+      position: absolute;
+      left: 46%;
     }
 
     &:last-child:after {
-      display:none;
+      display: none;
     }
   }
 
@@ -646,10 +686,9 @@
     font-size: 2.5rem;
     color: $gold;
     max-height: 39px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
 }
-
 
 // - BLOCK MOVIE PREVIEW
 .block-movie-preview {
@@ -657,7 +696,6 @@
   background-size: cover;
 
   .bck-hover {
-    height: 448px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -669,35 +707,58 @@
     }
 
     &:hover {
-      background-color:rgba(0, 0, 0, .7);
+      background-color: rgba(0, 0, 0, .7);
 
       .infos p, figcaption {
-        color:#fff;
+        color: #fff;
         transition: .5s;
       }
     }
   }
 
   .wrapper-item {
-    width: 708px;
-    display:flex;
-    margin: 0 auto;
+    width: 699px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 30px auto;
+    height: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
 
     .ie & {
-      width: 72%;
+      width: 87%;
     }
 
+    .poster {
+      width: 256px;
+      min-width: 256px;
+      height: 348px;
+      overflow: hidden;
+
+      img {
+        width: 256px;
+        max-width: 100%;
+        min-height: 100%;
+        object-fit: cover; 
+      }
+    }
   }
 
   .wrapper-item-big {
     width: 989px;
-    display:flex;
+    display: flex;
     margin: 0 auto;
 
     .ie & {
       width: 72%;
     }
-
 
     .description {
       width: auto;
@@ -705,13 +766,13 @@
   }
 
   figcaption {
-    font-size:.75rem;
+    font-size: .75rem;
     font-family: $CamphorMedium;
     color: #666666;
   }
 
   .poster {
-    display:inline-block;
+    display: inline-block;
     width: 100%;
 
     .ie & {
@@ -732,6 +793,10 @@
       width: 30%;
     }
 
+    a {
+      color: $gold;
+    }
+
   }
 
   .big-date {
@@ -744,9 +809,9 @@
   }
 
   .description {
-    color:#666666;
+    color: #666666;
     font-family: $CamphorItalic;
-    font-size : 1rem;
+    font-size: 1rem;
     line-height: 26px;
     text-align: center;
     width: 355px;
@@ -756,7 +821,7 @@
       width: 100%;
     }
 
-    .palm-gold &{
+    .palm-gold & {
       font-family: $CamphorRegular;
       font-size: .875rem;
       line-height: 24px;
@@ -765,8 +830,8 @@
   }
 
   .name-f {
-    color:#fff;
-    font-size: .875rem;//14px
+    color: #fff;
+    font-size: .875rem; //14px
     text-transform: uppercase;
     line-height: 18px;
     font-family: $CamphorBold;
@@ -775,8 +840,8 @@
   }
 
   .name-fb {
-    color:#fff;
-    font-size: .625rem;//10px
+    color: #fff;
+    font-size: .625rem; //10px
     text-transform: uppercase;
     line-height: 18px;
     font-family: $CamphorBold;
@@ -785,7 +850,7 @@
   }
 
   .names-a {
-    color:$gold;
+    color: $gold;
     font-size: .8125rem;
     line-height: 18px;
     font-family: $CamphorItalic;
@@ -798,8 +863,8 @@
   }
 
   .name-award {
-    color:#fff;
-    font-size:1.125rem;
+    color: #fff;
+    font-size: 1.125rem;
     text-transform: uppercase;
     letter-spacing: .2rem;
     font-family: $CamphorBold;
@@ -807,7 +872,7 @@
     text-align: center;
 
     .ie & {
-      width:100%;
+      width: 100%;
     }
   }
 
@@ -844,11 +909,11 @@
   }
 
   .line:after {
-    content:'';
+    content: '';
     height: 20px;
     width: 1px;
     background-color: #434343;
-    display:block;
+    display: block;
     margin: 10px auto;
   }
 
@@ -861,7 +926,6 @@
   }
 }
 
-
 // - BLOCK LIST IMG
 .block-list-img {
   margin-top: 30px;
@@ -869,24 +933,28 @@
   .item {
     display: inline-block;
     margin: 0 11.5px;
-    margin-bottom:13px;
+    margin-bottom: 13px;
     position: relative;
-    cursor:pointer;
+    cursor: pointer;
 
     &:after {
-      content:'';
+      content: '';
       width: 100%;
       height: 100%;
       opacity: .5;
-      background-color:#000;
-      position:absolute;
-      top:0;
-      left:0;
-      transition:.5s;
+      background-color: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: .5s;
     }
 
     &:hover:after {
-      opacity:.1;
+      opacity: .1;
+
+      .mobile & {
+        opacity: .5;
+      }
     }
 
     img {
@@ -924,6 +992,10 @@
 
       &:hover:after {
         border: 4px solid $gold;
+
+        .mobile & {
+          border: 0px solid;
+        }
       }
     }
 
@@ -939,21 +1011,20 @@
 
     .item {
       &:after {
-        opacity:0;
+        opacity: 0;
       }
     }
   }
 }
 
-
 // - BLOCK SOCIAL NETWORK
 .block-social-network {
-  height:76px;
+  height: 76px;
   box-sizing: padding-box;
 
   a {
     line-height: 76px;
-    height:76px;
+    height: 76px;
     color: $gold;
     width: 25%;
     display: inline-block;
@@ -975,25 +1046,24 @@
     &:hover {
       border-color: $gold;
 
-      &+a {
+      & + a {
         border-left-color: $gold;
       }
     }
   }
 }
 
-
 // - BLOCK SOCIAL NETWORK ALL
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
   padding-bottom: 60px;
-  height:76px;
+  height: 76px;
   box-sizing: inherit;
 
   a {
     width: 76px;
-    height:76px;
+    height: 76px;
     border-color: #222222;
 
     .bright & {
@@ -1010,7 +1080,7 @@
       &:hover {
         border-color: $gold;
 
-        &+a {
+        & + a {
           border-left-color: $gold;
         }
       }
@@ -1028,7 +1098,7 @@
       border-color: $gold;
       cursor: pointer;
 
-      &+a {
+      & + a {
         border-left-color: $gold;
       }
     }
@@ -1057,11 +1127,10 @@
     background-color: #fff;
 
     .title-11 {
-      color:#141414;
+      color: #141414;
     }
   }
 }
-
 
 // - BLOCK POSTER 01
 .block-poster-01 {
@@ -1088,22 +1157,22 @@
   }
 }
 
-
 // - BLOCK JURY
 .block-jury {
   height: 606px;
+  background-color: #fff;
 
   .contain-img {
-    display:inline-block;
+    display: inline-block;
     width: 50%;
     height: 100%;
     max-height: 100%;
     overflow: hidden;
-    background-size:cover;
+    background-size: cover;
   }
   .contain-txt {
     background-color: #fff;
-    display:inline-block;
+    display: inline-block;
     width: 50%;
     height: 100%;
     max-height: 100%;
@@ -1115,22 +1184,128 @@
     padding-top: 50px;
   }
 
-  .texte-01{
+  .texte-01 {
     font-size: .875rem;
     line-height: 24px;
-    color:#666666;
+    color: #666666;
     margin-top: 39px;
   }
 
   .title-18 {
     margin-bottom: 13px;
+    padding-top: 25px;
   }
 
   .title-20 {
     margin-top: 8px;
   }
-}
 
+  @media screen and (min-width: 1920px) {
+    max-height: 904px;
+    min-height: 904px;
+
+    .contain-txt {
+      padding-top: 72px;
+      padding-left: 160px;
+      padding-right: 160px;
+      padding-bottom: 66px;
+      max-height: 904px;
+      min-height: 904px;
+    }
+
+    .contain-img {
+      max-height: 904px;
+      min-height: 904px;
+      max-width: 960px;
+    }
+
+  }
+
+  @media screen and (min-width: 1600px) and (max-width: 1919px) {
+    max-height: 748px;
+    min-height: 748px;
+
+    .contain-txt {
+      padding-top: 33px;
+      padding-left: 120px;
+      padding-right: 120px;
+      padding-bottom: 66px;
+      max-height: 748px;
+      min-height: 748px;
+    }
+
+    .contain-img {
+      max-height: 748px;
+      min-height: 748px;
+      max-width: 800px;
+    }
+
+  }
+
+  @media screen and (min-width: 1280px) and (max-width: 1599px) {
+    max-height: 603px;
+    min-height: 603px;
+
+    .contain-txt {
+      padding-top: 25px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 66px;
+      max-height: 603px;
+      min-height: 603px;
+      width: 49%;
+    }
+
+    .contain-img {
+      max-height: 603px;
+      min-height: 603px;
+      max-width: 640px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1279px) {
+    max-height: 603px;
+    min-height: 603px;
+
+    .contain-txt {
+      padding-top: 25px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 66px;
+      max-height: 603px;
+      min-height: 603px;
+      width: 49%;
+    }
+
+    .contain-img {
+      max-height: 603px;
+      min-height: 603px;
+      max-width: 512px;
+    }
+  }
+
+  @media screen and (max-width:1023px) {
+      max-height: 603px;
+      min-height: 603px;
+
+      .contain-txt {
+        padding-top: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 66px;
+        max-height: 603px;
+        min-height: 603px;
+        width: 49%;
+      }
+
+      .contain-img {
+        max-height: 603px;
+        min-height: 603px;
+        max-width: 512px;
+      }
+  }
+
+}
 
 // - BLOCK ACCORDION
 .block-accordion {
@@ -1163,7 +1338,7 @@
   }
 
   .description, p {
-    color:#666666;
+    color: #666666;
     line-height: 26px;
     font-family: $CamphorRegular;
     font-size: .875rem;
@@ -1172,7 +1347,7 @@
   .description-top {
     margin-top: 22px;
 
-    &.bottom-padding{
+    &.bottom-padding {
       margin-bottom: 22px;
     }
   }
@@ -1184,7 +1359,7 @@
     margin-right: 5px;
   }
 
-  .icon-download{
+  .icon-download {
     margin-top: 0px;
     float: none;
   }
@@ -1216,7 +1391,7 @@
   }
 
   .btn-center {
-    width: 173px;
+    width: 180px;
     margin: 0 auto;
   }
 
@@ -1235,7 +1410,7 @@
   .caption {
     font-size: .875rem;
     font-family: $CamphorRegular;
-    color:#666666;
+    color: #666666;
     line-height: 24px;
     margin-top: 19px;
   }
@@ -1243,7 +1418,7 @@
   .s-caption {
     font-size: .75rem;
     font-family: $CamphorRegular;
-    color:#666666;
+    color: #666666;
     line-height: 18px;
     margin-top: 19px;
     width: 560px;
@@ -1260,7 +1435,7 @@
 
   .item {
     padding-bottom: 42px;
-    max-height : 56px;
+    max-height: 56px;
     overflow: hidden;
     transition: .5s;
 
@@ -1271,13 +1446,12 @@
   }
 
   .active {
-    max-height : 10000px;
+    max-height: 10000px;
 
-    .title-contain strong, .title-contain i, .title-contain .title-22{
+    .title-contain strong, .title-contain i, .title-contain .title-22 {
       color: $gold;
     }
   }
-
 
   .link {
     color: #666666;
@@ -1297,7 +1471,7 @@
     font-family: $CamphorBold;
     font-size: .75rem;
     text-transform: uppercase;
-    color:#a6a6a6;
+    color: #a6a6a6;
     letter-spacing: 2px;
 
     &.title-dowload-top {
@@ -1340,7 +1514,7 @@
 
   .two-images {
     display: flex;
-    margin-top:25px;
+    margin-top: 25px;
 
     .small {
       width: 295px;
@@ -1406,8 +1580,8 @@
       vertical-align: sub;
     }
 
-    .title-contain .title-22{
-      color:#c1c1c1;
+    .title-contain .title-22 {
+      color: #c1c1c1;
     }
 
     h3 {
@@ -1417,6 +1591,97 @@
       line-height: 36px;
       padding: 39px 0;
       text-align: center;
+    }
+
+    .i-transport .item-manual .contain-infos .item-infos .icon{
+      font-size: 5rem;
+      color: #c8a461;
+    }
+
+    .item-manual .text-manual h5, .item-manual .text-manual h3 {
+      font-size: .75rem;
+      text-transform: uppercase;
+      font-family: $CamphorBold;
+      padding-bottom: 29px;
+      width: 100% !important;
+      text-align: left !important;
+    }
+
+    .item-manual .contain-infos .descrip-section {
+
+      p {
+        line-height: 24px;
+        font-size: .8125rem;
+        width: 100%;
+        padding: 0px;
+        text-align: left;
+
+        a {
+          color: $gold;
+          text-decoration: underline;
+          transition: all .9s cubic-bezier(.25,.46,.45,.94);
+
+          &:hover {
+            color: #966505;
+          }
+        }
+      }
+    }
+
+    .item-manual .contain-infos .contain-map  {
+      .btn {
+        font-size: .625rem;
+        padding: 14px 26px;
+        border: 1px solid #c8a461;
+        color: #c8a461;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: $CamphorHeavy;
+        display: block;
+        width: 130px;
+        margin: 0 auto;
+        @include transition(all 0.9s $linear);
+
+        .icon {
+          margin-right: 10px;
+          font-size: .7rem;
+          float: none;
+          position: relative;
+          top: 1px;
+        }
+      }
+
+      .btn:hover {
+        border-color: #000;
+        color: #000;
+      }
+
+      .link {
+        padding-top: 38px;
+        color: #c8a461;
+
+        a {
+          color: #c8a461;
+          text-decoration: underline;
+          vertical-align: text-top;
+          font-size: 0.81rem;
+          @include transition(all 0.9s $linear);
+
+          &:hover {
+            color: #966505;
+          }
+        }
+
+        .icon {
+          padding-right: 9px;
+          @include transition(all 0.9s $linear);
+          vertical-align: text-top;
+        }
+      }
+
+      .link:hover {
+        color: #966505;
+      }
     }
 
     .item-manual {
@@ -1449,7 +1714,7 @@
     .item-manual .text-manual p {
       font-size: .81rem;
       line-height: 24px;
-      color:#000;
+      color: #000;
     }
 
     .text-manual p strong {
@@ -1478,8 +1743,8 @@
       line-height: 24px;
     }
 
-    .item-manual .contain-infos .item-infos p{
-      color:#000;
+    .item-manual .contain-infos .item-infos p {
+      color: #000;
     }
 
     .item-manual .contain-infos .item-infos .icon {
@@ -1497,13 +1762,13 @@
     }
 
     .item-manual .contain-infos .item-infos strong {
-       font-family: $CamphorBold;
+      font-family: $CamphorBold;
     }
 
     .item-manual .contain-infos .item-infos a {
-     color: #c29f5f;
-     text-decoration: underline;
-     transition: all .9s cubic-bezier(.25,.46,.45,.94);
+      color: #c29f5f;
+      text-decoration: underline;
+      transition: all .9s cubic-bezier(.25, .46, .45, .94);
     }
 
     .contain-map {
@@ -1530,15 +1795,15 @@
     }
 
     .contain-map strong {
-     font-family: $CamphorBold;
+      font-family: $CamphorBold;
     }
 
     .contain-map .name {
-     font-size: .75rem;
-     display: block;
-     padding-bottom: 20px;
-     letter-spacing: 1px;
-     font-family: $CamphorHeavy;
+      font-size: .75rem;
+      display: block;
+      padding-bottom: 20px;
+      letter-spacing: 1px;
+      font-family: $CamphorHeavy;
       text-transform: uppercase;
     }
 
@@ -1554,12 +1819,12 @@
       line-height: 36px;
       padding: 39px 0;
       text-align: center;
-      color:#000;
+      color: #000;
     }
 
     .item-manual .item-partners .contain-img img {
-       padding-bottom: 30px;
-       padding: 65px;
+      padding-bottom: 30px;
+      padding: 65px;
       margin: 0 auto;
       display: block;
     }
@@ -1589,7 +1854,7 @@
     .item-partners .text-partners .title-partners {
       font-size: .75rem;
       text-transform: uppercase;
-      font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
       padding-bottom: 29px;
       letter-spacing: 2px;
     }
@@ -1601,13 +1866,13 @@
     }
 
     .item-partners .text-partners a {
-       color: #c8a461;
-       font-size: .75rem;
-       padding-right: 13px;
-       transition: all .9s cubic-bezier(.25,.46,.45,.94);
-       text-decoration: underline;
-       text-transform: uppercase;
-       font-family: $CamphorBold;
+      color: #c8a461;
+      font-size: .75rem;
+      padding-right: 13px;
+      transition: all .9s cubic-bezier(.25, .46, .45, .94);
+      text-decoration: underline;
+      text-transform: uppercase;
+      font-family: $CamphorBold;
     }
 
     .item-partners .text-partners .content-text-with-portrait {
@@ -1625,14 +1890,14 @@
     }
 
     .item-partners .text-partners .portrait .name {
-     display: block;
-     font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
-     padding-bottom: 5px;
-     padding-top: 10px;
-     font-size: .75rem;
+      display: block;
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      padding-bottom: 5px;
+      padding-top: 10px;
+      font-size: .75rem;
     }
 
-   .item-partners .text-partners .portrait .rank {
+    .item-partners .text-partners .portrait .rank {
       display: block;
       font-size: .75rem;
       padding-bottom: 5px;
@@ -1645,7 +1910,7 @@
       width: 188px;
       margin: 0 auto;
       line-height: 24px;
-      color:#000;
+      color: #000;
     }
 
     .item-good-practice .icon {
@@ -1663,14 +1928,13 @@
     }
 
     .contain-good-practice {
-     width: 980px;
-     margin: 0 auto;
-     padding-top: 10px;
+      width: 980px;
+      margin: 0 auto;
+      padding-top: 10px;
     }
 
   }
 }
-
 
 // - BLOCK RULES
 .block-rules {
@@ -1700,7 +1964,6 @@
   }
 }
 
-
 // - BLOCK CONTACT
 .block-contact {
   padding-top: 55px;
@@ -1723,7 +1986,7 @@
     padding: 0px;
   }
 
-  ul,p {
+  ul, p {
     color: #666666;
     margin-bottom: 42px;
     font-size: .875rem;
@@ -1737,7 +2000,7 @@
 
   .item {
     display: inline-block;
-    width:247px;
+    width: 247px;
     vertical-align: top;
   }
 
@@ -1749,7 +2012,7 @@
 // - BLOCK TAB SWITCH
 .block-tab-switch {
   .title-tab-swich {
-    font-size:.75rem;
+    font-size: .75rem;
     text-transform: uppercase;
     line-height: 24px;
     letter-spacing: 2px;
@@ -1765,11 +2028,11 @@
 
     td {
       color: #0c0c0c;
-      border:1px solid #e6e6e6;
+      border: 1px solid #e6e6e6;
       border-color: #e6e6e6;
       text-transform: uppercase;
       text-align: center;
-      font-size:.75rem;
+      font-size: .75rem;
       font-family: $CamphorBold;
       width: 326px;
       height: 66px;
@@ -1811,9 +2074,12 @@
   a.button {
     height: 50px;
     line-height: 50px;
+    /*
     width: 178px;
+    */
     text-align: center;
     padding: 0px;
+    padding: 0px 10px;
   }
 }
 
@@ -1827,7 +2093,7 @@
   background-size: cover;
 
   a {
-    color:$gold;
+    color: $gold;
     transition: .5s;
 
     &:hover {
@@ -1856,12 +2122,37 @@
 }
 
 .block-mediatheque {
-  @media screen and (max-width: 1024px){
+  @media screen and (max-width: 1024px) {
     width: 1024px;
   }
 
-  @media screen and  (min-width: 1024px){
+  @media screen and (min-width: 1024px) {
     width: 1280px;
   }
 
+}
+
+.half-photos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  flex-direction: row;
+
+  .caption {
+    color: #666 !important;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    line-height: 18px;
+    text-align: left;
+    font-family: $CamphorRegular;
+  }
+}
+
+.half-photo {
+  width: 45%;
+
+  img {
+    margin-bottom: 10px !important;
+  }
 }

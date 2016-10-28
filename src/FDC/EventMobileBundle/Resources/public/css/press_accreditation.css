@@ -30,7 +30,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    
+}
+body.no-scroll {
+    overflow:hidden;
 }
 ol, ul {
     list-style: none;
@@ -560,433 +562,551 @@ from desktop
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon_InternetExplorer:before {
-  content: "\f101";
+    content:"\f101";
 }
+
 
 .icon_Micro:before {
-  content: "\f102";
+    content:"\f102";
 }
+
 
 .icon_a-votre-service:before {
-  content: "\f103";
+    content:"\f103";
 }
+
 
 .icon_acces-libre:before {
-  content: "\f104";
+    content:"\f104";
 }
+
 
 .icon_acces:before {
-  content: "\f105";
+    content:"\f105";
 }
+
 
 .icon_accreditation:before {
-  content: "\f106";
+    content:"\f106";
 }
+
 
 .icon_agenda-personnel:before {
-  content: "\f107";
+    content:"\f107";
 }
+
 
 .icon_appli:before {
-  content: "\f108";
+    content:"\f108";
 }
+
 
 .icon_article:before {
-  content: "\f109";
+    content:"\f109";
 }
+
 
 .icon_assistance-photo:before {
-  content: "\f10a";
+    content:"\f10a";
 }
+
 
 .icon_audio:before {
-  content: "\f10b";
+    content:"\f10b";
 }
+
 
 .icon_avion:before {
-  content: "\f10c";
+    content:"\f10c";
 }
+
 
 .icon_badge:before {
-  content: "\f10d";
+    content:"\f10d";
 }
+
 
 .icon_bande-annonce:before {
-  content: "\f10e";
+    content:"\f10e";
 }
+
 
 .icon_bandes-annonces-extraits:before {
-  content: "\f10f";
+    content:"\f10f";
 }
+
 
 .icon_bus:before {
-  content: "\f110";
+    content:"\f110";
 }
+
 
 .icon_cadenas:before {
-  content: "\f111";
+    content:"\f111";
 }
+
 
 .icon_camera:before {
-  content: "\f112";
+    content:"\f112";
 }
+
 
 .icon_camion:before {
-  content: "\f113";
+    content:"\f113";
 }
+
 
 .icon_case-fermer:before {
-  content: "\f114";
+    content:"\f114";
 }
+
 
 .icon_case-plus:before {
-  content: "\f115";
+    content:"\f115";
 }
+
 
 .icon_casier:before {
-  content: "\f116";
+    content:"\f116";
 }
+
 
 .icon_chrome:before {
-  content: "\f117";
+    content:"\f117";
 }
+
 
 .icon_close:before {
-  content: "\f118";
+    content:"\f118";
 }
+
 
 .icon_communique-presse:before {
-  content: "\f119";
+    content:"\f119";
 }
+
 
 .icon_consignes:before {
-  content: "\f11a";
+    content:"\f11a";
 }
+
 
 .icon_creer:before {
-  content: "\f11b";
+    content:"\f11b";
 }
+
 
 .icon_dailymotion:before {
-  content: "\f11c";
+    content:"\f11c";
 }
+
 
 .icon_diaporama:before {
-  content: "\f11d";
+    content:"\f11d";
 }
+
 
 .icon_divers:before {
-  content: "\f11e";
+    content:"\f11e";
 }
+
 
 .icon_dossier:before {
-  content: "\f11f";
+    content:"\f11f";
 }
+
 
 .icon_drag:before {
-  content: "\f120";
+    content:"\f120";
 }
+
 
 .icon_dress-code:before {
-  content: "\f121";
+    content:"\f121";
 }
+
 
 .icon_enregistreur:before {
-  content: "\f122";
+    content:"\f122";
 }
+
 
 .icon_espace-presse:before {
-  content: "\f123";
+    content:"\f123";
 }
+
 
 .icon_evt-conference:before {
-  content: "\f124";
+    content:"\f124";
 }
+
 
 .icon_evt-personnel:before {
-  content: "\f125";
+    content:"\f125";
 }
+
 
 .icon_evt-seance-presse:before {
-  content: "\f126";
+    content:"\f126";
 }
+
 
 .icon_evt-seance:before {
-  content: "\f127";
+    content:"\f127";
 }
+
 
 .icon_facebook:before {
-  content: "\f128";
+    content:"\f128";
 }
+
 
 .icon_fermer-cookies:before {
-  content: "\f129";
+    content:"\f129";
 }
+
 
 .icon_firefox:before {
-  content: "\f12a";
+    content:"\f12a";
 }
+
 
 .icon_fleche-down:before {
-  content: "\f12b";
+    content:"\f12b";
 }
+
 
 .icon_fleche-right:before {
-  content: "\f12c";
+    content:"\f12c";
 }
+
 
 .icon_fleche-top:before {
-  content: "\f12d";
+    content:"\f12d";
 }
+
 
 .icon_flecheGauche:before {
-  content: "\f12e";
+    content:"\f12e";
 }
+
 
 .icon_fullscreen:before {
-  content: "\f12f";
+    content:"\f12f";
 }
+
 
 .icon_hebergement:before {
-  content: "\f130";
+    content:"\f130";
 }
+
 
 .icon_horaires:before {
-  content: "\f131";
+    content:"\f131";
 }
+
 
 .icon_informations:before {
-  content: "\f132";
+    content:"\f132";
 }
+
 
 .icon_instagram:before {
-  content: "\f133";
+    content:"\f133";
 }
+
 
 .icon_invitation:before {
-  content: "\f134";
+    content:"\f134";
 }
+
 
 .icon_langue:before {
-  content: "\f135";
+    content:"\f135";
 }
+
 
 .icon_les-bonnes-pratiques:before {
-  content: "\f136";
+    content:"\f136";
 }
+
 
 .icon_les-differents-types-dacces:before {
-  content: "\f137";
+    content:"\f137";
 }
+
 
 .icon_les-salles-de-projections:before {
-  content: "\f138";
+    content:"\f138";
 }
+
 
 .icon_lettre:before {
-  content: "\f139";
+    content:"\f139";
 }
+
 
 .icon_link:before {
-  content: "\f13a";
+    content:"\f13a";
 }
+
 
 .icon_lire-plus-tard:before {
-  content: "\f13b";
+    content:"\f13b";
 }
+
 
 .icon_loupeMoins:before {
-  content: "\f13c";
+    content:"\f13c";
 }
+
 
 .icon_loupePlus:before {
-  content: "\f13d";
+    content:"\f13d";
 }
+
 
 .icon_ma-selection:before {
-  content: "\f13e";
+    content:"\f13e";
 }
+
 
 .icon_main-drag:before {
-  content: "\f13f";
+    content:"\f13f";
 }
+
 
 .icon_mains:before {
-  content: "\f140";
+    content:"\f140";
 }
+
 
 .icon_media:before {
-  content: "\f141";
+    content:"\f141";
 }
+
 
 .icon_moins:before {
-  content: "\f142";
+    content:"\f142";
 }
+
 
 .icon_mon-compte:before {
-  content: "\f143";
+    content:"\f143";
 }
+
 
 .icon_n-urgences:before {
-  content: "\f144";
+    content:"\f144";
 }
+
 
 .icon_objets-trouves:before {
-  content: "\f145";
+    content:"\f145";
 }
+
+
+.icon_palme-bg:before {
+    content:"\f146";
+}
+
 
 .icon_palme:before {
-  content: "\f146";
+    content:"\f147";
 }
+
 
 .icon_participer:before {
-  content: "\f147";
+    content:"\f148";
 }
+
 
 .icon_pause:before {
-  content: "\f148";
+    content:"\f149";
 }
+
 
 .icon_pdf:before {
-  content: "\f149";
+    content:"\f14a";
 }
+
 
 .icon_photo:before {
-  content: "\f14a";
+    content:"\f14b";
 }
+
 
 .icon_plateau-tv:before {
-  content: "\f14b";
+    content:"\f14c";
 }
+
 
 .icon_play:before {
-  content: "\f14c";
+    content:"\f14d";
 }
+
 
 .icon_player:before {
-  content: "\f14d";
+    content:"\f14e";
 }
+
 
 .icon_playlist:before {
-  content: "\f14e";
+    content:"\f14f";
 }
+
 
 .icon_podcast:before {
-  content: "\f14f";
+    content:"\f150";
 }
+
 
 .icon_point-infos:before {
-  content: "\f150";
+    content:"\f151";
 }
+
 
 .icon_print:before {
-  content: "\f151";
+    content:"\f152";
 }
+
 
 .icon_programmation:before {
-  content: "\f152";
+    content:"\f153";
 }
+
 
 .icon_puce-big:before {
-  content: "\f153";
+    content:"\f154";
 }
+
 
 .icon_puce-small:before {
-  content: "\f154";
+    content:"\f155";
 }
+
 
 .icon_recherche:before {
-  content: "\f155";
+    content:"\f156";
 }
+
 
 .icon_rendez-vous-des-medias:before {
-  content: "\f156";
+    content:"\f157";
 }
+
 
 .icon_reverseFullScreen:before {
-  content: "\f157";
+    content:"\f158";
 }
+
 
 .icon_rss:before {
-  content: "\f158";
+    content:"\f159";
 }
+
 
 .icon_safari:before {
-  content: "\f159";
+    content:"\f15a";
 }
+
 
 .icon_salle-presse:before {
-  content: "\f15a";
+    content:"\f15b";
 }
+
 
 .icon_se-rendre-a-cannes:before {
-  content: "\f15b";
+    content:"\f15c";
 }
+
 
 .icon_selfie:before {
-  content: "\f15c";
+    content:"\f15d";
 }
+
 
 .icon_service:before {
-  content: "\f15d";
+    content:"\f15e";
 }
+
 
 .icon_share:before {
-  content: "\f15e";
+    content:"\f15f";
 }
+
 
 .icon_son:before {
-  content: "\f15f";
+    content:"\f160";
 }
+
+
+.icon_speacker:before {
+    content:"\f161";
+}
+
 
 .icon_taxi:before {
-  content: "\f160";
+    content:"\f162";
 }
+
 
 .icon_telecharger:before {
-  content: "\f161";
+    content:"\f163";
 }
+
 
 .icon_telephone:before {
-  content: "\f162";
+    content:"\f164";
 }
+
 
 .icon_train:before {
-  content: "\f163";
+    content:"\f165";
 }
+
 
 .icon_transport:before {
-  content: "\f164";
+    content:"\f166";
 }
+
 
 .icon_tumblr:before {
-  content: "\f165";
+    content:"\f167";
 }
+
 
 .icon_twitter:before {
-  content: "\f166";
+    content:"\f168";
 }
+
 
 .icon_video:before {
-  content: "\f167";
+    content:"\f169";
 }
+
 
 .icon_voiture:before {
-  content: "\f168";
+    content:"\f16a";
 }
+
 
 .icon_wifi:before {
-  content: "\f169";
+    content:"\f16b";
 }
+
 
 .icon_youtube:before {
-  content: "\f16a";
+    content:"\f16c";
 }
 
+
 .icon_zone-media:before {
-  content: "\f16b";
+    content:"\f16d";
 }
+
 
 @font-face {
   font-family: 'mobile';
@@ -1766,6 +1886,7 @@ article .picto .icon{
   width: 100%;
   height: 356px;
   position: relative;
+    background-color: #000;
 }
 .slideshow .img{
   width: 100%;
@@ -1782,8 +1903,9 @@ article .picto .icon{
   height: 100%;
 }
 .slideshow .img img{
-  width: 100%;
   height: 100%;
+    display: block;
+    margin: 0 auto;
 }
 .slideshow {
 
@@ -1824,6 +1946,7 @@ article .picto .icon{
   height: 100%;
   width: 100%;
   z-index: 0;
+    object-fit: cover;
 }
 .slideshow .thumbnails .thumb .image-wrapper img {
   display: block;
@@ -2288,6 +2411,50 @@ body.overlay::after {
     color: #c8a461;
 }
 
+
+.diapoFullscreen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diapoFullscreen img {
+    width: 100%;
+}
+
+.diapoFullscreen .owl-stage {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    position: relative;
+    -ms-touch-action: pan-Y;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1080px;
+}
+
+.diapoFullscreen .owl-item {
+    height: auto;
+    left: -48px;
+}
+
+.diapoFullscreen .close-button {
+    position: absolute;
+    z-index: 100540;
+    top: 10px;
+    right: 10px;
+    visibility: visible;
+    opacity: 1;
+}
 
 /* footer */
 footer {
@@ -3205,6 +3372,12 @@ p{
 
 	padding: 60px 0 90px 0;
 }
+
+.header-press .container p a{
+	color:#000000;
+	text-decoration: underline;
+}
+
 .programmation-press .header-press .container{
 	padding: 60px 0 30px 0;
 }
@@ -3491,7 +3664,7 @@ p{
 	margin:60px 0;
 }
 .downloads .portrait{
-	width: 480px;
+	width: 95%;
 	margin: 0 auto;
 }
 .downloads img{
@@ -3553,16 +3726,15 @@ p{
 }
 .downloads .buttons{
 	text-align: left;
- 	width: 480px;
+ 	width: 100%;
  	margin: 0 auto 60px auto;
 }
 .downloads .button{
-
 	font-weight: 700;
     height: 80px;
     line-height: 80px;
     box-sizing: border-box;
-    padding: 0 40px;
+    padding: 0 20px;
     font-size: 19px;
 }
 
@@ -3608,11 +3780,21 @@ p{
 	font-size: 24px;
 	letter-spacing: 10px;
 }
-.contact .title-section{
 
-	padding: 60px 0;
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+	.title-section #dateProgram {
+		display: block;
+		margin-top: 6px;
+	}
 
+	.prog-press-home .title-section{
+		padding: 49px 0 16px 40px;
+	}
 }
+
+
 .sub-section{
 	padding: 0 40px;
 	border-bottom: 1px solid #d6d6d6;
@@ -3715,6 +3897,19 @@ p{
     overflow-y: hidden;
     box-sizing: border-box;
 }
+
+#popin-press strong {
+	color: #000000;
+	margin: 40px 0 45px 0;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	font-size: 23px;
+}
+
+#popin-press strong .icon {
+	margin-right: 10px;
+	vertical-align: text-top;
+}
+
 #popin-press.visible{
 	
 	visibility: visible;
@@ -3818,7 +4013,7 @@ p{
   color: #c8a461;
 }
 #horizontal-menu .owl-stage{
-
+    margin-left: 128.5px;
   height: 100%;
 }
 .content-selection, .content-selection2{

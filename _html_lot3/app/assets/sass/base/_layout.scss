@@ -18,6 +18,26 @@ body {
   font-family: $CamphorRegular;
   font-size: 16px;
   overflow-x: hidden;
+
+  &:before {
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100vh;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    width: 100vw;
+    z-index: 5;
+    @include transition(all 0.9s $smoothTransition);
+  }
+
+  &.loading:before {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 ::-moz-selection {
@@ -37,6 +57,10 @@ body {
   clear: both;
   position: relative;
   overflow-x: hidden;
+
+  &.block-mediatheque {
+    background-color: $black;
+  }
 
   &:after {
     background-color: $black;
@@ -80,6 +104,21 @@ body {
 
   &.overlay {
     cursor: pointer;
+    width: auto;
+    height: auto;
+    z-index: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: initial;
+    opacity: 1;
+    display: block;
+    transition: 0s;
+
+    &.block-mediatheque {
+      width: 1280px;
+    }
+
   }
 }
 
@@ -130,7 +169,7 @@ body .icon{
 
 .audio .picto {
   color: $gold;
-  .icon{
+ .icon{
     font-size: 1rem;
     margin-top: 14px;
     margin-left: 14px;
@@ -139,7 +178,7 @@ body .icon{
 
 .photo .picto {
   color: $gold;
-  .icon{
+ .icon{
     font-size: 1rem;
     margin-top: 14px;
     margin-left: 14px;
@@ -268,6 +307,11 @@ video{
 
 .padding-bottom{
   padding-bottom: 70px;
+  display: block;
+}
+
+.padding-top {
+  padding-top: 70px;
   display: block;
 }
 

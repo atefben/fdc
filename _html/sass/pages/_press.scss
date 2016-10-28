@@ -18,6 +18,10 @@
       vertical-align: middle !important;
       margin-bottom: 3px;
     }
+
+    & + .communiques {
+      border-top: 1px solid #e3e3e3;
+    }
   }
 
   .button {
@@ -219,7 +223,7 @@
     right: -310px;
     top: 0;
     width: 310px;
-    z-index: 1;
+    z-index: 2;
 
     &.fullwidth {
       position: relative;
@@ -233,6 +237,7 @@
     }
 
     #calendar-wrapper {
+
       &.stick {
         position: fixed;
         top: 91px;
@@ -857,7 +862,7 @@
           float: left;
           position: relative;
           width: 60px;
-          z-index: 2;
+          z-index: 5;
 
           .empty {
             border-bottom: 1px solid #e5e5e5;
@@ -921,6 +926,7 @@
           .v-wrapper {
             height: 100%;
             @include transition(all 0.6s $smoothTransition);
+            position: relative;
           }
 
           .venue {
@@ -939,6 +945,8 @@
               font-size: 0.750rem;
               text-align: center;
               text-transform: uppercase;
+              position: relative;
+              z-index: 1;
             }
 
             .v-container {
@@ -994,6 +1002,12 @@
         left: 15px;
         height: 40px;
         line-height: 38px;
+        z-index: 3;
+        background-color: #fff;
+        width: 55%;
+        text-align: left;
+        padding-left: 54px;
+
 
         @include breakpoint(1279px) {
           width: calc(100% - 360px);
@@ -1007,6 +1021,7 @@
         position: absolute;
         right: 0;
         top: 0;
+        background-color: #fff;
 
         .arrow {
           background-color: #fff;
@@ -1441,6 +1456,30 @@
   .contact-press {
     border-top: 1px solid #e3e3e3;
     padding: 60px 0;
+
+    ul {
+      li {
+        font-family: $CamphorRegular;
+        line-height: 30px;
+        font-size: 1rem;
+        list-style: initial;
+        list-style-position: inside;
+      }
+    }
+
+    ol {
+      list-style-type: decimal;
+      list-style: initial;
+      list-style-position: inside;
+
+      li {
+        font-family: $CamphorRegular;
+        line-height: 30px;
+        font-size: 1rem;
+        list-style-type: decimal;
+      }
+    }
+
     .button{
       font-size: 0.75rem;
     }
@@ -1468,6 +1507,14 @@
         font-size: 0.850rem;
         line-height: 1.6em;
         margin-bottom: 30px;
+        strong {
+          font-family: $CamphorBold;
+        }
+      }
+
+      strong {
+        font-family: $CamphorBold;
+        font-weight: bold;
       }
 
       p {
@@ -1747,6 +1794,10 @@
         }
       }
 
+      .fc-head {
+        position: relative;
+      }
+      
       .fc-head .fc-axis {
         background-color: #373737;
         width: 60px !important;
@@ -1760,6 +1811,10 @@
         font-family: $CamphorBold;
         font-size: 0.750rem;
         text-transform: uppercase;
+        position: relative;
+        @include transform(translate3d(0, 0, 0));
+        position: relative;
+        z-index: 3;
       }
 
       .fc-slats .fc-time {
@@ -1830,7 +1885,7 @@
   height: 973px;
   opacity: 0;
   visibility: hidden;
-  z-index: 2;
+  z-index: 4;
   @include transition(all 0.6s $smoothTransition);
 
   .close-button {
@@ -2376,7 +2431,7 @@
   height: auto;
   position: absolute;
   top: 150px;
-  z-index: 1;
+  z-index: 3;
   border-top: 1px solid #ccc;
   padding-top: 47px;
   visibility: hidden;
@@ -2460,6 +2515,9 @@
 
       input[type="submit"] {
         margin-bottom: 41px;
+        font-size: .625rem;
+        font-family: $CamphorHeavy;
+
 
         &:hover {
           cursor: pointer;

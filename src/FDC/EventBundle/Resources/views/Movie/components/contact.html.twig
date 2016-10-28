@@ -1,4 +1,4 @@
-{% trans_default_domain 'FDCEventBundle' %}
+z{% trans_default_domain 'FDCEventBundle' %}
 <div class="press" data-section="press">
     <div class="info-press">
         <div class="wrapper">
@@ -119,25 +119,25 @@
                                         {% endif %}
                                     {% endfor %}
                                     {% set first = true %}
-                                    {% for contact in movie.contacts %}
-                                        {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}
-                                            {% if increasePaddingBottom is defined and increasePaddingBottom %}
-                                                <div class="contact-increase-padding-bottom"></div>
-                                            {% endif %}
-                                            <div class="contact-reduce-line-height">
-                                                <p>
-                                                    {% set displayContact = [] %}
-                                                    {% if contact.companyName %}
-                                                        {% set displayContact = displayContact|merge([contact.companyName]) %}
-                                                    {% endif %}
-                                                    {% if contact.address and contact.address.country %}
-                                                        {% set displayContact = displayContact|merge([contact.address.country|trans_fallback_country('name')]) %}
-                                                    {% endif %}
-                                                    {{ displayContact|join(' - ')|raw }}
-                                                </p>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
+                                    {#{% for contact in movie.contacts %}#}
+                                        {#{% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}#}
+                                            {#{% if increasePaddingBottom is defined and increasePaddingBottom %}#}
+                                                {#<div class="contact-increase-padding-bottom"></div>#}
+                                            {#{% endif %}#}
+                                            {#<div class="contact-reduce-line-height">#}
+                                                {#<p>#}
+                                                    {#{% set displayContact = [] %}#}
+                                                    {#{% if contact.companyName %}#}
+                                                        {#{% set displayContact = displayContact|merge([contact.companyName]) %}#}
+                                                    {#{% endif %}#}
+                                                    {#{% if contact.address and contact.address.country %}#}
+                                                        {#{% set displayContact = displayContact|merge([contact.address.country|trans_fallback_country('name')]) %}#}
+                                                    {#{% endif %}#}
+                                                    {#{{ displayContact|join(' - ')|raw }}#}
+                                                {#</p>#}
+                                            {#</div>#}
+                                        {#{% endif %}#}
+                                    {#{% endfor %}#}
                                 </div>
                             {% endif %}
                             {% set first = true %}

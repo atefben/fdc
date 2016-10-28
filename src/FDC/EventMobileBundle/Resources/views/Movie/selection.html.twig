@@ -33,7 +33,7 @@
                         <div class="img" style="background-image:url('{%- include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                                 film: movie,
                                 film_format: '240x320',
-                                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
+                                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
                                 display_film_path: true
                             }) -%}')"></div>
                         {%- if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower -%}

@@ -38,7 +38,9 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     use Time;
     use SeoMain;
     use TranslateMain;
-    
+
+    public static $localeTemp = 'fr';
+
     /**
      * @var integer
      *
@@ -1001,7 +1003,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @return string
      */
     public function getFeedItemTitle(){
-        return array('title' => $this->findTranslationByLocale('fr')->getTitle());
+        return array('title' => $this->findTranslationByLocale(static::$localeTemp)->getTitle());
     }
 
     /**
@@ -1047,7 +1049,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
         }
         return array(
             'format' => $format,
-            'slug' => $this->findTranslationByLocale('fr')->getSlug(),
+            'slug' => $this->findTranslationByLocale(static::$localeTemp)->getSlug(),
         );
     }
 
@@ -1070,7 +1072,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @return \DateTime
      */
     public function getFeedItemPubDate() {
-        return array('date' => $this->findTranslationByLocale('fr')->getUpdatedAt());
+        return array('date' => $this->getUpdatedAt());
     }
 
     /**

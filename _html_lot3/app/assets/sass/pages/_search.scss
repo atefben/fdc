@@ -281,6 +281,10 @@
 
     .block-poster-search {
       max-width: 218px;
+
+      .contain-img:not(.landscape) img {
+        height: 223px;
+      }
     }
 
     .block-poster-search.medias {
@@ -496,6 +500,11 @@
   }
 
   .noUi-horizontal {
+
+    .portrait.mobile &{
+      height: 2px;
+    }
+
     height: 1px;
   }
 

@@ -10,6 +10,14 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_mediatheque_list: Médiathèque
+    link_corpo_team_teams_list: Les équipes
+    link_corpo_team_departements_list: Les départements
+    link_corpo_team_list: Qui sommes nous
+    link_corpo_team_members_list: Les membres de l'équipe
+    link_corpo_who_are_we_list: Qui sommes nous
+    link_corpo_accredit_procedure_list: Participer
+    link_corpo_accredit_list: Participer
     link_media_pdf_list: Liste des médias Pdf
     link_f_d_c_page_participate_section_list: Liste des Strates Participer
     link_widget_mosaic_movie_list: Mosaïque de film
@@ -80,6 +88,8 @@ breadcrumb:
     link_orange_video_on_demand_list: Vidéo à la demande
     link_orange_studio_list: Orange Studio
     link_mobile_notification_list: Notifications mobiles
+    link_corpo_movie_inscription_list: Participer
+    link_corpo_movie_inscription_procedure_list  : Participer
     
 link:
     action_soif_refresh: Mettre à jour
@@ -169,6 +179,12 @@ group:
     mobile_notificaton:
         publish: Publication
 entity:
+    corpo_mediatheque: Médiathèque
+    corpo_team_departements: Départements
+    corpo_team: L'équipe
+    corpo_team_teams: Les équipes
+    corpo_team_members: Les membres de l'équipe
+    corpo_who_are_we: Qui sommes nous
     fdc_event_routes: Menu
     news_article: Articles
     news_video: Vidéos
@@ -228,6 +244,11 @@ entity:
     orange_vod: Vidéo à la demande
     orange_ocs: Programmation OCS
     orange_studio: Orange Studio
+    film_festival: Festival
+    corpo_movie_inscription: Inscrire un film
+    corpo_movie_inscription_procedure: Procédure d'inscription
+    corpo_accredit_procedure: Procédure d'accréditation
+    corpo_accredit: S'accréditer
 
 list:
     label_duplicate: Doublon
@@ -342,6 +363,11 @@ list:
         label_title: Nom de la section
     fdc_page_participate:
         label_title: Nom de la section
+    film_festival:
+        label_edition: Edition
+        label_year: Année de l'édition
+        label_startsat: Date de début du festival
+        label_endsat: Date de fin du festival
 
 filter:
     media_pdf:
@@ -405,6 +431,8 @@ filter:
     label_selection: Sélection
     label_festival-year: Année de sélection
     label_programmation_films: Film
+    label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
+    label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
@@ -465,13 +493,17 @@ dashboard:
         cinema_plage: Cinéma de la plage
         orange: Orange
     link:
+        retrospective: Retrospective
         settings: Paramètres
         bo_translation: Libellés
         homepage: Homepage
+        homepage_corporate: Homepage Institutionnel
+        corpo_mediatheque: Médiathèque
         FAQ: FAQ
         FAQTheme: Thèmes FAQ
         pages: Pages
         pages_libre: Pages libres
+        fdc_page_mediatheque: Médiathèque
         fdc_page_la_selection_cannes_classics_honor: Invité d'honneur
         fdc_page_la_selection_cannes_classics_hommages: Hommages
         fdc_page_la_selection_cannes_classics_copy: Copies Restaurées
@@ -533,9 +565,23 @@ dashboard:
         mentions_legales: Mentions légales
         confidentialite: Politique de confidentialité
         old_news_id: Référence article
-
+        film_inscription: Inscrire un film
+        film_procedure: Procédure d’inscription
 form:
+    label_level2: niveau d'arborescence 2
+    label_level3: niveau d'arborescence 3
+    label_evenmnt: Site évènementiel
+    label_information_display_instit: Publier sur le site institutionnel
+    label_arrive_display_instit: Publier sur le site institutionnel
+    label_meeting_display_instit: Publier sur le site institutionnel
+    label_service_display_instit: Publier sur le site institutionnel
+    label_accredit_procedure_movie: Choisissez les procédures d'inscription à afficher*
+    label_procedure_movie: Procédures
+    label_instit: Site institutionnel
+    label_evenmt: Site évènementiel
+    label_homepage_corpo_display: Remonter sur la homepage du site institutionnel
     label_hide_common_content: Ne pas afficher cette strate
+    label_our_selection: Notre Sélection
     label_pdf: Pdf
     media_pdf:
         helper_file: Format attendu : .pdf
@@ -572,6 +618,15 @@ form:
         helper_pushes : Format de l'image recommandé : 650x410
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
+    homepage_corporate:
+        label_title: Titre
+        label_subtitle: Sous-titre
+        label_subtitle_1: Sous-titre 1
+        label_subtitle_2: Sous-titre 2
+        label_url: URL de destination
+        label_banner: Bandeau
+        label_banner_text: Texte du bandeau
+
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -699,6 +754,7 @@ form:
     label_title: Titre
     label_subtitle: Sous-Titre
     label_publish_on: Publié sur
+    label_date: Date et heure
     label_published_at: Date de début de publication
     label_publish_ended_at: Date de fin de publication
     label_status: Statut
@@ -789,6 +845,7 @@ form:
     label_banner: Bannière
     label_list_event: Evènementiel
     label_list_press: Presse
+    label_list_corpo: Corporate
     label_image_main: Image principale
     label_image_cover: Image cover
     label_video_main: Vidéo principale
@@ -1040,6 +1097,10 @@ form:
         housing_url: URL Googlemaps - Hébergement
         more_title: Titre - Pour plus d'informations
         more_description: Contenu - Pour plus d'informations
+    film_festival:
+        label_media_image_associated: Les photos de l'édition
+        label_grid_media_image_associated: Photos
+        label_helper_media_image_associated: Sélectionnez 7 photos. Elles apparaitront dans le slider de la retrospective dans l'ordre des champs. La première photo apparaitra comme photo principale de l'édition
 nav:
     site_modal: Ouvrir la sélection des sites
 

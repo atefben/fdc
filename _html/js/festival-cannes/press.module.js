@@ -68,7 +68,7 @@ $(document).ready(function () {
 
   var count = 0;
 
-  if(('#timeline').length > 0) {
+  if($('#timeline').length > 0) {
     updateFilterCalendar();
   }
 
@@ -336,6 +336,7 @@ $(document).ready(function () {
           }
 
           var c       = event.eventColor;
+          var e = event.type;
           
           // $(element).css('width', 'auto');
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
@@ -367,6 +368,10 @@ $(document).ready(function () {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span></div>');
           } else {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
+          }
+
+          if ( e == "événement" ){
+            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_speacker"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
           }
         },
         eventClick: function (event, jsEvent, view) {
@@ -567,6 +572,7 @@ $(document).ready(function () {
           }
 
           var c       = event.eventColor;
+          var e = event.type;
           
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
@@ -581,7 +587,7 @@ $(document).ready(function () {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#fff") {
             $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_evt-personnel"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
-          } else {
+          } else{
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           }
 
@@ -596,6 +602,11 @@ $(document).ready(function () {
           } else {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           }
+
+          if ( e == "événement" ){
+            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_speacker"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
+          }
+
         },
         eventClick: function (event, jsEvent, view) {
           if ($(jsEvent.target).hasClass('del') || $(jsEvent.target).hasClass('icon_close')) {
@@ -911,7 +922,7 @@ $(document).ready(function () {
             success: function (data) {
               $('.v-wrapper').html(data);
               initDraggable();
-              updateFilterCalendar();
+              /*updateFilterCalendar();*/
             }
           });
           var date = $.fullCalendar.moment($(this).data('date'));
@@ -1392,22 +1403,46 @@ $(document).ready(function () {
       if ($(this).is(':not(.active)')) {
         var urlPath = $(this).data('cat');
 
-        $.get(urlPath, function (data) {
-          var matches = data.match(/<title>(.*?)<\/title>/);
-          var spUrlTitle = matches[1];
-          document.title = spUrlTitle;
+        $.ajax({
+          type:'GET',
+          url: urlPath,
 
-          $('.nav-container').remove();
-          $('.nav-popin').remove();
-          $('.nav-mediapress').after($(data).find('.nav-container'));
-          $('.nav-container').after($(data).find('.nav-popin'));
+          success:function(data){
 
-          history.pushState('', GLOBALS.texts.url.title, urlPath);
-          ajaxEvent();
-          menuMedia();
-          initSlideshows();
-          popinInit();
+
+            var matches = data.match(/<title>(.*?)<\/title>/);
+            var spUrlTitle = matches[1];
+            document.title = spUrlTitle;
+
+            setTimeout(function(){
+              $('.nav-container').removeClass('load');
+            }, 800);
+
+            setTimeout(function(){
+              $('.loader').remove();
+              $('.nav-container').remove();
+              $('.nav-popin').remove();
+              $('.nav-mediapress').after($(data).find('.nav-container'));
+              $('.nav-container').after($(data).find('.nav-popin'));
+
+            }, 1000);
+
+
+            history.pushState('', GLOBALS.texts.url.title, urlPath);
+            ajaxEvent();
+            menuMedia();
+            initSlideshows();
+            popinInit();
+
+
+          },
+          beforeSend: function(){
+            $('.nav-container').addClass('load');
+            $('.nav-container').append('<img class="loader" src="'+GLOBALS.baseUrl+'img/loading.svg" alt="">');
+          }
         });
+
+
 
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
         $(this).addClass('active');

@@ -8,7 +8,7 @@
         film: film,
         display_film_path: true,
         film_format: '2560x1103',
-        film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
         display_film_path: true
         }) %}
     {% endspaceless %}')">
@@ -43,7 +43,7 @@
                 {%- if loop.index != directors|length %}, {% endif -%}
             {%- endfor -%}
 
-        <p style="font-family: 'Camphor W01 Regular', Arial, Helvetica, sans-serif;color: #999999;font-size: 18px;margin-top: 8px;" >
+        <p style="font-family: 'Camphor W01 Bold', Arial, Helvetica, sans-serif;color: #999999;font-size: 18px;margin-top: 8px;" >
             {% set duration = [] %}
             {% if film.duration is not empty %}
                 {% set duration = film.duration|split('.') %}

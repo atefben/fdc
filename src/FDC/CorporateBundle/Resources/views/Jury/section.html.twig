@@ -1,0 +1,144 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}loading jury dark retrospective retrospective-home restrospective-init{% endblock %}
+
+{% block body %}
+<section class="s-slider-retrospective">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+
+    <div class="ajax-section"><div class="contain-ajax jury">
+
+    {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+
+    <nav class="navigation-sticky-02">
+        <ul>
+            {% for tab in pages %}
+                <li class="{% if app.request.attributes.get('slug') == (tab|trans_fallback('slug')) %}active {% endif %}ajax">
+                    <a href="{{ path('fdc_corporate_jury_juries', {year: app.request.attributes.get('year'), 'slug': tab|trans_fallback('slug')}) }}">
+                        {{ (tab|trans_fallback('overrideName'))?:(tab.juryType|trans_fallback('name')) }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <div class="all-contain">
+        <div class="block-jury">
+        {% if president %}
+            <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
+            {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
+                <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
+                </div>
+            {%- else -%}
+                {%- set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
+                {%- if media is empty -%}
+                    {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
+                {%- endif -%}
+                {%- if media is empty -%}
+                    {%- set photo = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
+                {%- endif -%}
+                {%- if media is not empty -%}
+                    <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
+                {%- else -%}
+                    <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
+                {%- endif -%}
+            {%- endif -%}
+            <div class="contain-txt">
+                <strong class="title-18">
+                    {% if president['jury'].person|person_gender == 'F' %}
+                        {{ 'juries.role.title.presidentedujury'|trans }}
+                    {% else %}
+                        {{ 'juries.role.title.presidentdujury'|trans }}
+                    {% endif %}
+                </strong>
+                <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}"><h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1></a>
+                <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
+                <p class="texte-01">
+                    {{ president['jury'].person|trans_fallback('biography') }}
+                </p>
+            </div>
+            </a>
+        {% endif %}
+        </div>
+
+        <div class="contain-title vFlexAlign ">
+            <strong class="title-01">
+                {% if page.id == admin_fdc_page_jury_certain_regard_id %}
+                    {{ 'juries.role.title.membresdujury.regard'|trans }}
+                {%  elseif page.id == admin_fdc_page_jury_camera_dor_id %}
+                    {{ 'juries.role.title.membresdujury.camera'|trans }}
+                {%  elseif page.id == admin_fdc_page_jury_long_metrages_id %}
+                    {{ 'juries.role.title.membresdujury.long'|trans }}
+                {%  elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
+                    {{ 'juries.role.title.membresdujury.court'|trans }}
+                {%  endif %}
+            </strong>
+        </div>
+
+        <div class="isotope-01 bright grid-jury">
+            <div class="grid-sizer"></div>
+
+            {% for member in members %}
+            <div class="item block-poster">
+                <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
+                    <div class="contain-img">
+                        {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
+                        {% if artistImage is not empty %}
+                            <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
+                        {% else %}
+                            <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
+                        {% endif %}
+                    </div>
+                    <div class="contain-txts vFlexAlign">
+                        <span class="title-11">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
+                        {% set profession =  member['jury'].person|profession_gender('profession') %}
+                        {% if profession %}
+                            <span class="title-12">{{ profession }}</span>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div> <!-- end all contain -->
+
+    </div></div>
+
+</section>
+
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.jury.home'|trans,
+    "url"  : path('fdc_corporate_jury_juries', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : (page|trans_fallback('overrideName'))?:(page.juryType|trans_fallback('name')),
+    "url"  : ''
+    }
+    ]
+    } %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    }))
+    }}
+{% endblock %}

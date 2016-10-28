@@ -109,6 +109,12 @@ class FilmFestival
     private $medias;
 
     /**
+     * @ORM\OneToMany(targetEntity="FilmFestivalMediaImageAssociated", mappedBy="festival", cascade={"all"}, orphanRemoval=true)
+     *
+     */
+    private $associatedMediaImages;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -513,5 +519,39 @@ class FilmFestival
     public function getStatements()
     {
         return $this->statements;
+    }
+
+    /**
+     * Add associatedMediaImages
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated $associatedMediaImages
+     * @return FilmFestival
+     */
+    public function addAssociatedMediaImage(\Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated $associatedMediaImages)
+    {
+        $associatedMediaImages->setFestival($this);
+        $this->associatedMediaImages[] = $associatedMediaImages;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedMediaImages
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated $associatedMediaImages
+     */
+    public function removeAssociatedMediaImage(\Base\CoreBundle\Entity\FilmFestivalMediaImageAssociated $associatedMediaImages)
+    {
+        $this->associatedMediaImages->removeElement($associatedMediaImages);
+    }
+
+    /**
+     * Get associatedMediaImages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedMediaImages()
+    {
+        return $this->associatedMediaImages;
     }
 }

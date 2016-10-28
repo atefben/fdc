@@ -38,13 +38,15 @@
 				{% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or 
 					  ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
 				%}
-	                <section class="content-manual content-partners item-manual" style="border-top: 1px solid #e0e0e0;">
+					{% if s.section.evenmt %}
+
+						<section class="content-manual content-partners item-manual" style="border-top: 1px solid #e0e0e0;">
 	                    <div class="contain-section contain-cinema contain-infos">
 	                        <h3 class="title-participate">
 	                            <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
 	                            {{ s.section|trans_fallback('title') }}
 	                        </h3>
-	                        <i class="icon accordion icon_plus"></i>
+	                        <i class="icon accordion icon_case-plus"></i>
 							<div class="item-manual">
 								<div class="contain-infos">
 	                        {% if s.section|trans_fallback('description') %}
@@ -74,6 +76,7 @@
 							</div></div>
 	                    </div>
 	                </section>
+				{% endif %}
 				{% endif %}
             {% endfor %}
         </div>

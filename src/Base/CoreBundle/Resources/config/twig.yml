@@ -50,6 +50,12 @@ services:
             - { name: twig.extension }
         arguments: [%locale_fallback%, @request_stack]
 
+    base.twig.icon_corpo_extension:
+        class: Base\CoreBundle\Twig\Extension\IconCorpoExtension
+        tags:
+            - { name: twig.extension }
+        arguments: [%locale_fallback%, @request_stack]
+
     base.twig.content_lang_extension:
         class: Base\CoreBundle\Twig\Extension\ContentLangExtension
         arguments: [%locale_fallback%, @request_stack]
@@ -150,3 +156,8 @@ services:
         tags:
             - { name: twig.extension }
         arguments: ["%locale_fallback%", "@request_stack"]
+
+    base.twig.retrospective_slider_extension:
+        class: Base\CoreBundle\Twig\Extension\RetrospectiveSliderExtension
+        tags:
+            - { name: twig.extension }

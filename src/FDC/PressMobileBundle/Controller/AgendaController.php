@@ -33,7 +33,7 @@ class AgendaController extends Controller
         $isPress = false;
         $locale = $this->getRequest()->getLocale();
 
-        $waitingPage = $this->isWaitingPage($request, 'fdc_press_agenda_scheduling');
+        $waitingPage = $this->isWaitingPagePress($request, 'fdc_press_agenda_scheduling');
         if ($waitingPage) {
             return $waitingPage;
         }
@@ -166,5 +166,22 @@ class AgendaController extends Controller
             'rooms' => $rooms
         );
 
+    }
+
+    public function isWaitingPagePress(Request $request)
+    {
+        // check if waiting page is enabled
+        $waitingPage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWaiting')
+            ->getSingleWaitingPageByRoute(str_replace('fdc_eventmobile', 'fdc_event', $request->get('_route')));
+        ;
+
+        if ($waitingPage) {
+            $waitingPage->getBanner()->findTranslationByLocale('fr')->getFile()->getContext();
+            return $this->render('FDCPressBundle:Global:waiting-page.html.twig', array(
+                'waitingPage' => $waitingPage
+            ));
+        }
     }
 }

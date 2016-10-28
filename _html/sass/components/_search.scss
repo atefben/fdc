@@ -94,7 +94,12 @@ header #searchContainer {
     outline: none;
     width: 100%;
 
+    &::-ms-clear {
+      visibility: hidden;
+    }
+
   }
+
   .icon_recherche{
     color: $gold;
     font-size: 1.5rem;
@@ -182,6 +187,13 @@ header #searchContainer {
   #results {
     overflow: hidden;
     padding-left: 120px;
+
+    #artistsResults .person.big {
+       display: inline-block;
+       float: none;
+       vertical-align: top;
+       margin-left: 24px;
+     }
 
     #filtered {
       display: none;

@@ -1,0 +1,52 @@
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}loading articles-list-medias dark retrospective retrospective-home restrospective-init{% endblock %}
+
+{% block body %}
+<section class="border-bottom s-slider-retrospective">
+
+    {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+
+    <div class="ajax-section"><div class="contain-ajax medias" id="main">
+
+    {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+
+    {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+
+        {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+
+        <div class="grid-01 isotope-01">
+            <div class="grid-sizer"></div>
+
+            {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
+
+    </div>
+
+    </div></div>
+</section>
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+{
+"name" : 'breadcrumb.69editions.home'|trans,
+"url"  : path('fdc_corporate_default_home')
+},
+{
+"name" : 'breadcrumb.retrospective.home'|trans,
+"url"  : path('fdc_corporate_editions_retrospective')
+},
+{
+"name" : app.request.attributes.get('year'),
+"url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+},
+{
+"name" : 'Les Médias',
+"url"  : ''
+},
+]} %}
+{{ render(controller('FDCCorporateBundle:Global:shareEmail',
+{'section': '',
+    'detail' : '',
+    'title'  : '',
+    'description': '',
+    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+}))
+}}
+{% endblock %}

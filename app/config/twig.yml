@@ -37,10 +37,16 @@ twig:
         social_twitter: "%social_twitter%"
         social_instagram: "%social_instagram%"
         social_tumblr: "%social_tumblr%"
-        social_rss: "%social_rss%"
+        social_rss_fr: "%social_rss_fr%"
+        social_rss_en: "%social_rss_en%"
+        social_rss_es: "%social_rss_es%"
+        social_rss_zh: "%social_rss_zh%"
         social_youtube: "%social_youtube%"
         social_dailymotion: "%social_dailymotion%"
-        social_podcast: "%social_podcast%"
+        social_podcast_fr: "%social_podcast_fr%"
+        social_podcast_en: "%social_podcast_en%"
+        social_podcast_es: "%social_podcast_es%"
+        social_podcast_zh: "%social_podcast_zh%"
         jwplayer_key: "%jwplayer_key%"
         fdc_event_domain: "%fdc_event_domain%"
         admin_routes_translation_legend_without_master: %admin_routes_translation_legend_without_master%
@@ -48,10 +54,15 @@ twig:
         admin_routes_translation_lock: %admin_routes_translation_lock%
         #homepage
         admin_homepage_id: %admin_homepage_id%
+        admin_homepage_corporate_id: %admin_homepage_corporate_id%
         # prepare / participate
         admin_fdc_page_prepare_id: %admin_fdc_page_prepare_id%
         admin_event_fdc_page_prepare_id: %admin_event_fdc_page_prepare_id%
         admin_event_fdc_page_participate_id: %admin_event_fdc_page_participate_id%
+        admin_corpo_movie_inscription_id: "%admin_corpo_movie_inscription_id%"
+        # corpo mediatheque
+        admin_fdc_page_mediatheque_id: %admin_fdc_page_mediatheque_id%
+        admin_corpo_mediatheque_id: %admin_corpo_mediatheque_id%
         #s3
         s3_server_global: http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com/
         s3_server_video: http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com/

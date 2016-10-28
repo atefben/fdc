@@ -3,10 +3,10 @@
 
 @font-face {
 	font-family:"icons";
-	src:url("../fonts/icons.eot?851398c17c9e7e1541eace453daf44bd");
+	src:url("../fonts/icons.eot?6b329b5fed30750a169723fe02097f8c");
 	src:url("../fonts/icons.eot?#iefix") format("embedded-opentype"),
-		url("../fonts/icons.woff?851398c17c9e7e1541eace453daf44bd") format("woff"),
-		url("../fonts/icons.ttf?851398c17c9e7e1541eace453daf44bd") format("truetype");
+		url("../fonts/icons.woff?6b329b5fed30750a169723fe02097f8c") format("woff"),
+		url("../fonts/icons.ttf?6b329b5fed30750a169723fe02097f8c") format("truetype");
 	font-weight:normal;
 	font-style:normal;
 }
@@ -366,203 +366,210 @@
 
 
 .icon_n-urgences:before {
-	 content:"\f144";
- }
-
-.icon_n-urgence:before {
 	content:"\f144";
 }
+
 
 .icon_objets-trouves:before {
 	content:"\f145";
 }
 
 
-.icon_palme:before {
+.icon_palme-bg:before {
 	content:"\f146";
 }
 
 
-.icon_participer:before {
+.icon_palme:before {
 	content:"\f147";
 }
 
 
-.icon_pause:before {
+.icon_participer:before {
 	content:"\f148";
 }
 
 
-.icon_pdf:before {
+.icon_pause:before {
 	content:"\f149";
 }
 
 
-.icon_photo:before {
+.icon_pdf:before {
 	content:"\f14a";
 }
 
 
-.icon_plateau-tv:before {
+.icon_photo:before {
 	content:"\f14b";
 }
 
 
-.icon_play:before {
+.icon_plateau-tv:before {
 	content:"\f14c";
 }
 
 
-.icon_player:before {
+.icon_play:before {
 	content:"\f14d";
 }
 
 
-.icon_playlist:before {
+.icon_player:before {
 	content:"\f14e";
 }
 
 
-.icon_podcast:before {
+.icon_playlist:before {
 	content:"\f14f";
 }
 
 
-.icon_point-infos:before {
+.icon_podcast:before {
 	content:"\f150";
 }
 
 
-.icon_print:before {
+.icon_point-infos:before {
 	content:"\f151";
 }
 
 
-.icon_programmation:before {
+.icon_print:before {
 	content:"\f152";
 }
 
 
-.icon_puce-big:before {
+.icon_programmation:before {
 	content:"\f153";
 }
 
 
-.icon_puce-small:before {
+.icon_puce-big:before {
 	content:"\f154";
 }
 
 
-.icon_recherche:before {
+.icon_puce-small:before {
 	content:"\f155";
 }
 
 
-.icon_rendez-vous-des-medias:before {
+.icon_recherche:before {
 	content:"\f156";
 }
 
 
-.icon_reverseFullScreen:before {
+.icon_rendez-vous-des-medias:before {
 	content:"\f157";
 }
 
 
-.icon_rss:before {
+.icon_reverseFullScreen:before {
 	content:"\f158";
 }
 
 
-.icon_safari:before {
+.icon_rss:before {
 	content:"\f159";
 }
 
 
-.icon_salle-presse:before {
+.icon_safari:before {
 	content:"\f15a";
 }
 
 
-.icon_se-rendre-a-cannes:before {
+.icon_salle-presse:before {
 	content:"\f15b";
 }
 
 
-.icon_selfie:before {
+.icon_se-rendre-a-cannes:before {
 	content:"\f15c";
 }
 
 
-.icon_service:before {
+.icon_selfie:before {
 	content:"\f15d";
 }
 
 
-.icon_share:before {
+.icon_service:before {
 	content:"\f15e";
 }
 
 
-.icon_son:before {
+.icon_share:before {
 	content:"\f15f";
 }
 
 
-.icon_taxi:before {
+.icon_son:before {
 	content:"\f160";
 }
 
 
-.icon_telecharger:before {
+.icon_speacker:before {
 	content:"\f161";
 }
 
 
-.icon_telephone:before {
+.icon_taxi:before {
 	content:"\f162";
 }
 
 
-.icon_train:before {
+.icon_telecharger:before {
 	content:"\f163";
 }
 
 
-.icon_transport:before {
+.icon_telephone:before {
 	content:"\f164";
 }
 
 
-.icon_tumblr:before {
+.icon_train:before {
 	content:"\f165";
 }
 
 
-.icon_twitter:before {
+.icon_transport:before {
 	content:"\f166";
 }
 
 
-.icon_video:before {
+.icon_tumblr:before {
 	content:"\f167";
 }
 
 
-.icon_voiture:before {
+.icon_twitter:before {
 	content:"\f168";
 }
 
 
-.icon_wifi:before {
+.icon_video:before {
 	content:"\f169";
 }
 
 
-.icon_youtube:before {
+.icon_voiture:before {
 	content:"\f16a";
 }
 
 
-.icon_zone-media:before {
+.icon_wifi:before {
 	content:"\f16b";
+}
+
+
+.icon_youtube:before {
+	content:"\f16c";
+}
+
+
+.icon_zone-media:before {
+	content:"\f16d";
 }

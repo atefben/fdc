@@ -45,6 +45,26 @@
   font-size: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
+
+.webtv #banner-top .banner-video p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    font-size: 25px;
+    line-height: 40px;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    letter-spacing: 0.5em;
+    text-align: center;
+    text-transform: uppercase;
+    max-width: 598px;
+}
+
+.webtv #banner-top .banner-video{
+    position: relative;
+}
+
 .webtv #banner-top .banner-img p{
   width: 100%;
   text-align: center;
@@ -254,6 +274,13 @@
 
   padding:30px 40px;
 }
+
+.ba .slideshow-img .images {
+    height: auto;
+}
+
+
+
 .ba .slideshow .container, .channel .slideshow .container{
 
  

@@ -80,7 +80,9 @@ section{
     margin-bottom: 50px;
 }
 .participate-page .description p strong {
+    /*
     color: #c29f5f;
+    */
 }
 #main{
     background-color: #fff;

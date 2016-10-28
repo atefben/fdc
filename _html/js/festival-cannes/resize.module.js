@@ -3,6 +3,10 @@ $(document).ready(function() {
     $('body').addClass('mob');
   }
 
+  if (window.matchMedia("(min-device-width : 768px) and (max-device-width : 1024px)").matches) {
+    $('body').addClass('tablette');
+  }
+
   $(window).on('resize', function() {
     if($('.home').length) {
       setHeightSlider();

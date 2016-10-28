@@ -19,25 +19,31 @@ window.twttr = (function (d, s, id) {
 
 
 var initRs = function () {
-
+    
     $('.print').on('click', function(e){
         e.preventDefault();
     })
 
-    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function () {
-        window.open(this.href, '', 'width=600,height=400');
+    //POPIN facebook SHARE
+    $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
+        e.preventDefault();
+        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
     });
 
 
-    //POPIN facebook SHARE
-    $('.block-social-network .facebook, .rs-slideshow .facebook').on('click', function () {
-        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
+    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
+        window.open(this.href, '', 'width=600,height=400');
         return false;
     });
 
     function initPopinMail(cls) {
         // check that fields are not empty
+        $(cls).find('#form').css('display','block');
+        $(cls).find('.info-popin').css('display','block');
+        $(cls).find('#msg').html('');
+
+
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
             var is_name = input.val();
@@ -58,14 +64,14 @@ var initRs = function () {
             }
         });
 
-        $('body').on('click', '.selectOptions span', function () {
+        $('body').off('click').on('click', '.selectOptions span', function () {
             var i = parseInt($(this).index()) + 1;
             $('select option').eq(i).prop('selected', 'selected');
             $('.select').removeClass('invalid');
         });
 
         // check valid email address
-        $(cls + ' input[type="email"]').on('input', function () {
+        $(cls + ' input[type="email"]').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             var is_email = re.test(input.val());
@@ -95,7 +101,7 @@ var initRs = function () {
         });
 
         // check valid email address
-        $('#contact_email').on('input', function () {
+        $('#contact_email').off('input').on('input', function () {
             var input = $(this);
             var re = /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$/i;
             var is_email = re.test(input.val());
@@ -125,7 +131,7 @@ var initRs = function () {
         });
 
         // on submit : check if there are errors in the form
-        $(cls + ' form').on('submit', function (e) {
+        $(cls + ' form').off('submit').on('submit', function (e) {
             e.preventDefault();
             var $that = $(this);
             var empty = false;
@@ -164,8 +170,8 @@ var initRs = function () {
                         }
                         else {
                             // TODO envoie du mail //
-                            $(cls).find('#form').remove();
-                            $(cls).find('.info-popin').remove();
+                            $(cls).find('#form').css('display','none');
+                            $(cls).find('.info-popin').css('display','none');
                             $(cls).find('#msg').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
                             $(cls).css('height', '31%');
                             return false;
@@ -195,18 +201,23 @@ var initRs = function () {
     }
 
     //LINK POPIN//
-    function linkPopinInit(link, cls) {
+    var linkPopinInit = function(link, cls) {
         var link = link || document.location.href;
         var cls = cls || '.link.self';
 
 
-        new Clipboard(cls);
-
+        clipboard = new Clipboard(cls);
+        
         $(cls).attr('data-clipboard-text', link);
 
-        $(cls).on('click touchstart', function (e) {
-            var that = $(this);
+        $(cls).off('click touchstart').on('click touchstart', function (e) {
+
             e.preventDefault();
+
+            $('#share-box').remove();
+
+            var that = $(this);
+
 
             if (!$('#share-box').length) {
 
@@ -223,12 +234,21 @@ var initRs = function () {
                 $('#share-box').remove();
             }
 
-/*           setTimeout(function () {
-                $('#share-box').animate({'opacity': 0}, 200, function () {
-                    $('#share-box').removeClass('show');
-                    $('#share-box').remove();
-                });
-            }, 3000);*/
+           setTimeout(function () {
+                $('#share-box').remove();
+                $('#share-box').remove();
+               //two time because first don't work...
+
+               setTimeout(function () {
+                   $('#share-box').remove();
+                   $('#share-box').remove();
+                   //two time because first don't work...
+
+                   linkPopinInit = 0;
+               }, 1000);
+
+            }, 3000);
+
         });
 
     }

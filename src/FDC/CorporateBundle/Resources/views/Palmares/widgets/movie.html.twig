@@ -1,0 +1,73 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+{% if award_association.award is defined and award_association.award.id not in palmares_award_mutual_get() %}
+    {% if award_association.award.filmMutual %}
+        {{ palmares_award_mutual_set(award_association.award) }}
+    {% endif %}
+
+    {% if movie is not defined %}
+        {% set movie = award_association.film %}
+    {% endif %}
+
+    {% set author = '' %}
+{% endif %}
+
+{% if movie is defined %}
+<article class="block-movie-preview" style='background-image: url("{% spaceless %}
+    {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
+    film: movie,
+    film_format: '976x535',
+    display_film_path: true,
+    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg'
+    }) %}
+{% endspaceless %}")'>
+    <div class="bck-hover">
+        <div class="wrapper-item">
+            <div class="poster">
+                {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
+                film: movie,
+                film_format: 'mobile',
+                film_attrs: {
+                alt: movie|trans_fallback('title')?:movie.titleVO,
+                'data-object-fit': 'cover'
+                },
+                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                }) %}
+            </div>
+            <div class="infos">
+                {% if award_association is defined and award_association %}
+                    {% if hidePalme is not defined or hidePalme == false %}
+                        <i class="icon icon-palme"></i>
+                        <strong class="name-award line">
+                            {{ award_association.award.prize|trans_fallback('title') }}
+                            {% if award_association.award.exAequo %}
+                                ({{ 'award.ex_aequo'|trans }})
+                            {% endif %}
+                            {% if award_association.award.unanimity %}
+                                ({{ 'award.unanimity'|trans }})
+                            {% endif %}
+                        </strong>
+                    {% endif %}
+                {% endif %}
+                <strong class="name-fb">{{ movie.selectionSection|trans_fallback('name') }}</strong>
+                <br />
+                <strong class="name-f">{{ movie|trans_fallback('title') }}</strong>
+                {% if movie|trans_fallback('title') != movie.titleVO %}<strong class="name-fb">({{ movie.titleVO }})</strong>{% endif %}
+                    {% spaceless %}
+                        {% set author = '' %}
+                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                            {% if loop.first == false %}
+                                {% set author = author ~ ', ' %}
+                            {% endif %}
+
+                            {% set author = author ~ '<a class="names-a" href="' ~ path('fdc_corporate_artist_get', {slug: director.slug }) ~ '">' %}
+                            {% set author = author ~ director.fullName %}
+                            {% set author = author ~ '</a>' %}
+                        {% endfor %}
+                        {{ author|raw }}
+                    {% endspaceless %}
+            </div>
+        </div>
+    </div>
+</article>
+{% endif %}

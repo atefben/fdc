@@ -28,6 +28,7 @@ module.exports = {
     'bower_components/nouislider/distribute/nouislider.js',
       'bower_components/chocolat/dist/js/jquery.chocolat.js',
       'bower_components/polyfill/dist/polyfill.js',
+        'bower_components/canvasloader/js/heartcode-canvasloader.js',
     appSrc + 'assets/js/vendors/*.js'],
     destSrc : appDest + '/js/app.js',
     dest: appDest + '/js/'

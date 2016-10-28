@@ -1,4 +1,28 @@
 .accreditation {
+
+  ul {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style: initial;
+      list-style-position: inside;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style: initial;
+    list-style-position: inside;
+
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style-type: decimal;
+    }
+  }
+
   #accreditation {
     border-top: 1px solid #e3e3e3;
 
@@ -75,6 +99,28 @@
       .container-small {
         width: 100%;
         margin: 0 auto;
+
+        em {
+          font-style:italic;
+        }
+        i {
+          font-style:italic;
+        }
+        ol, ul {
+          list-style:inherit;
+        }
+        strong {
+          font-family: $CamphorBold;
+        }
+        sub {
+          vertical-align: sub;
+          font-size: smaller;
+        }
+        sup {
+          font-size: smaller;
+          vertical-align: super;
+        }
+
 
         a {
           color: #c8a461;

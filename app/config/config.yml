@@ -77,7 +77,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle ]
     use_controller: true
     filters:
         cssrewrite:
@@ -130,7 +130,7 @@ misd_guzzle:
         configuration_file: "%kernel.root_dir%/config/webservices.json"
 
 eko_feed:
-    translation_domain: FDCEventBundle # Optional, if you want to use a custom translation domain
+    translation_domain: 'FDCEventBundle' # Optional, if you want to use a custom translation domain
     feeds:
         article:
             title:       'Festival de Cannes'

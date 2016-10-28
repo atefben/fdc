@@ -3,19 +3,16 @@ var owInitPopin = function(id) {
 
   if(id == 'popin-landing-e') {
 
-    console.log('popin-1');
 
     var $popin = $('.popin-landing-e');
 
     var visiblePopin = function() {
       var dateFestival = $('.compteur').data("date");
-      console.log(dateFestival);
-      
+
       var dateToday = new Date();
       dateFestival = new Date(dateFestival);
 
-      console.log(dateFestival);
-      
+
       var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
 
       var jours = Math.floor(timeLanding / (60 * 60 * 24));
@@ -26,10 +23,8 @@ var owInitPopin = function(id) {
 
       if(timeLanding < 0){
         //pas de compteur ?
-        console.log('popin-2');
 
       }else if(timeLanding > 0){
-        console.log('popin-3');
 
 
         var $day = $('.day').html(jours);
@@ -38,7 +33,6 @@ var owInitPopin = function(id) {
         var $secondes = $('.secondes').html(secondes);
 
       }else{
-        console.log('popin-4');
 
         //compteur terminé ! on ferme la popin
         $popin.addClass('animated fadeOut').removeClass('visible');
@@ -77,11 +71,9 @@ var owInitPopin = function(id) {
     };
 
     var fClosePopin = function() {
-      console.log('popin-5');
 
 
       $('.popin-landing-e').on('click', function(){
-        console.log('popin-6');
 
 
         $popin.addClass('animated fadeOut');
@@ -94,8 +86,6 @@ var owInitPopin = function(id) {
     // Verifier si les cookies existent
     if(typeof Cookies.get('popin-landing-e') === "undefined") {
       Cookies.set('popin-landing-e','0', { expires: 365 });
-      console.log('popin-7');
-
     }
 
     var closePopin = Cookies.get('popin-landing-e');
@@ -104,11 +94,7 @@ var owInitPopin = function(id) {
       $popin.addClass('animated fadeIn').addClass('visible');
       visiblePopin();
       fClosePopin();
-      console.log('popin-8');
-
     }else {
-      console.log('popin-9');
-
       Cookies.set('popin-landing-e','1', { expires: 365 });
     }
   }
@@ -202,9 +188,7 @@ var owInitPopin = function(id) {
     }
 
     var closePopin = Cookies.get('popin-banner');
-
-    console.log(closePopin);
-
+    
     if(closePopin == 0) {
       $popin.addClass('animated fadeIn').addClass('visible');
       visiblePopinB();
@@ -216,4 +200,23 @@ var owInitPopin = function(id) {
 
   }
 
+};
+
+/*  COOKIE BANNER
+ ----------------------------------------------------------------------------- */
+var owCookieBanner = function() {
+  if(typeof Cookies.get('cooki_banner') === "undefined"){
+    $('#cookies-banner').show();
+
+    $('.cookie-accept').click(function () { //on click event
+      days = 365; //number of days to keep the cookie
+      myDate = new Date();
+      myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
+      document.cookie = "cooki_banner = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
+      $("#cookies-banner").slideUp("slow"); //jquery to slide it up
+      $(".btnClose").hide();
+    });
+  } else {
+    $('#cookies-banner').hide();
+  }
 };

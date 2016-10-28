@@ -1,0 +1,7 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% set awardIds = [] %}
+{% for award_association in award_associations %}
+    {% if award_association.award not in awardIds %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' %}
+    {% endif %}
+{% endfor %}

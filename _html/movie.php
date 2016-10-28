@@ -40,14 +40,14 @@
             </div>
           </div>
         </div>
-        <a href="movie2.php" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
-        <a href="movie3.php" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+        <a href="movie2.php" class="nav prev ajax"><i class="icon icon-arrow-left"></i></a>
+        <a href="movie3.php" class="nav next ajax"><i class="icon icon-arrow-right"></i></a>
         <span id="plx"></span>
         <div class="main-image">
           <div class="img" style="background-image: url('img/movie/001.jpg')"></div>
           <div class="links">
             <div class="container">
-              <a class="movies" href="#"><i class="icon icon_flecheGauche"></i>Tous les films</a>
+              <a class="movies" href="#"><i class="icon icon-arrow-left"></i>Tous les films</a>
               <a class="programmation" href="#"><i class="icon icon_programmation"></i>Voir la programmation</a>
             </div>
           </div>
@@ -81,7 +81,7 @@
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
             <img src="img/movie/002.jpg" alt="" data-object-fit="cover">
           </div>
-          <div class="info-film">
+          <div class="info-film tetiere-movie">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>
             <h2>Adieu au langage</h2>
             <div class="title-original">(Adieu au langage)</div>
@@ -403,34 +403,27 @@
               </article>
             </div>
           </div>
-          <div class="audios" data-section="audios">
-            <div class="audio-player audio bigger" data-sound="img/article/sound.mp3">
-              <div class="image" style="background-image: url(img/slide001.jpg);"></div>
-              <a href="#" class="playpause"></a>
-              <div class="off">
-                <div class="vCenter">
-                  <div class="vCenterKid">
-                    <div class="picto"><i class="icon icon_audio"></i></div>
-                    <div class="info">
-                      <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                      <p>The Lobster de Yoros Lanthinos</p>
+          <div class="audios single-article" data-section="audios">
+            <div class="audio-container"
+                 data-file='[{"file":"./img/article/test.mp3"}]'
+                 data-img="./img/slide001.jpg"
+                 data-aid="2142">
+              <div class="audio-player">
+                <div id="audio-player-<?php echo time().'1'; ?>" class="audio-player-container"></div>
+                <div class="image" style="background-image: url(img/slide001.jpg);"></div>
+                <button class="play-btn play"><i class="icon icon_play"></i></button>
+                <div class="off">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <div class="picto"><i class="icon icon_audio"></i></div>
+                      <div class="info">
+                        <a href="#" class="category">Conférence de test</a><span class="date">11.03.15</span> . <span class="hour">09:00</span>
+                        <p>The Lobster de Yoros Lanthinos</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="on">
-                <div class="vCenter">
-                  <div class="vCenterKid">
-                    <div class="duration">
-                      <span class="curr">0:00</span>/<span class="total">0:00</span>
-                    </div>
-                    <div class="wave-container"></div>
-                    <div class="volume">
-                      <span></span>
-                    </div>
-                    <a href="#" class="fullscreen"></a>
-                  </div>
-                </div>
+                <div class="on"></div>
               </div>
             </div>
           </div>

@@ -95,7 +95,7 @@
      </div>
       <div id="content-channels">
         <div id="slider-trailer" class="owl-carousel sliderDrag">
-          <div class="channel shadow-bottom">
+          <div class="channel shadow-bottom" data-vid="21">
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -111,7 +111,7 @@
               </div>
             </div>
           </div>
-          <div class="channel shadow-bottom">
+          <div class="channel shadow-bottom"  data-vid="22">
             <img src="img/slider-channels/02.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -127,7 +127,7 @@
               </div>
             </div>
           </div>
-          <div class="channel shadow-bottom">
+          <div class="channel shadow-bottom"  data-vid="23">
             <img src="img/slider-channels/03.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -143,7 +143,7 @@
               </div>
             </div>
           </div>
-          <div class="channel shadow-bottom">
+          <div class="channel shadow-bottom"  data-vid="24">
             <img src="img/slider-channels/01.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -159,7 +159,7 @@
               </div>
             </div>
           </div>
-          <div class="channel shadow-bottom">
+          <div class="channel shadow-bottom"  data-vid="25">
             <img src="img/slider-channels/02.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -175,7 +175,7 @@
               </div>
             </div>
           </div>
-          <div class="channel shadow-bottom">
+          <div class="channel shadow-bottom"  data-vid="26">
             <img src="img/slider-channels/03.jpg" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">

@@ -67,10 +67,15 @@ class MediaVideoAdmin extends Admin
                 'label'      => 'filter.media_video.displayed_home',
 
             ))
+            ->add('displayedHomeCorpo', null, array(
+                'label'      => 'filter.label_homepage_corpo_displayed_videos',
+                'field_type' => 'checkbox',
+            ))
             ->add('displayedTrailer', null, array(
                 'label'      => 'filter.media_video.displayed_trailer',
                 'field_type' => 'checkbox',
             ))
+
         ;
     }
 
@@ -217,6 +222,25 @@ class MediaVideoAdmin extends Admin
                             'maxlength' => 200
                         )
                     ),
+                    'titleHomeCorpo'            => array(
+                        'label'              => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help'        => 'form.media_video.helper_title',
+                        'locale_options'     => array(
+                            'fr' => array(
+                                'required' => true,
+                            )
+                        ),
+                        'attr'               => array(
+                            'maxlength' => 200
+                        )
+                    ),
+                    'introductionHomeCorpo' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
                     'status'           => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
@@ -354,6 +378,21 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('excludeFromSearch', null, array(
                 'label' => 'form.label_exclude_from_search',
+            ))
+            ->add('displayedHomeCorpo', null, array(
+                'label' => 'form.label_homepage_corpo_display',
+            ))
+            ->add('themeHomeCorpo', 'sonata_type_model_list', array(
+                'label' => 'form.label_theme',
+                'btn_delete' => false
+            ))
+            ->add('dateHomeCorpo', 'sonata_type_datetime_picker', array(
+                'label'    => 'form.label_date',
+                'format'   => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr'     => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                )
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',

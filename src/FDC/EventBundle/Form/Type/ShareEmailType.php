@@ -23,13 +23,17 @@ class ShareEmailType extends AbstractType
 {
 
     private $translator;
+    private $artist;
 
     /**
+     * ShareEmailType constructor.
      * @param $translator
+     * @param null $artist
      */
-    public function __construct($translator)
+    public function __construct($translator, $artist = null)
     {
         $this->translator = $translator;
+        $this->artist = $artist;
     }
 
     /**
@@ -44,6 +48,7 @@ class ShareEmailType extends AbstractType
                 'pattern' => '^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$',
                 'attr' => array(
                     'placeholder' => 'sharemail.form.placeholder.email',
+                    'class'       => 'popin'
                 ),
                 'label' => false
             ))
@@ -105,14 +110,21 @@ class ShareEmailType extends AbstractType
             'detail' => array(),
             'title' => array(),
             'description' => array(),
-            'url' => array()
+            'url' => array(),
         ));
-
-        $resolver->setDefaults(array(
+        $defaults = array(
             'csrf_protection' => false,
             'constraints' => $collectionConstraint,
-            'translation_domain' => 'FDCEventBundle'
-        ));
+            'translation_domain' => 'messages'
+        );
+        if ($this->artist) {
+            $defaults['attr'] = array(
+                'artiste' => $this->artist,
+            );
+        }
+        $resolver->setDefaults($defaults);
+
+
     }
 
     /**

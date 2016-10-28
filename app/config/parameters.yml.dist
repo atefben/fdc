@@ -27,6 +27,7 @@ parameters:
 
     # admin
     admin_homepage_id: ~
+    admin_homepage_corporate_id: 1
     admin_press_homepage_id: ~
     admin_press_guide_id: ~
     admin_press_contact_id: ~
@@ -254,10 +255,16 @@ parameters:
     social_twitter: 'https://twitter.com/Festival_Cannes'
     social_instagram: 'https://instagram.com/festivaldecannes'
     social_tumblr: 'http://festivaldecannesofficiel.tumblr.com/'
-    social_rss: '#'
+    social_rss_fr: 'http://feeds.feedburner.com/festival-cannes/Ncqt'
+    social_rss_es: 'http://feeds.feedburner.com/festival-cannes/qeNK'
+    social_rss_en: 'http://feeds.feedburner.com/festival-cannes/wVhI'
+    social_rss_zh: 'http://feeds.feedburner.com/festival-cannes/GUGD'
+    social_podcast_fr: 'http://feeds.feedburner.com/festival-cannes/Zzqn'
+    social_podcast_es: 'http://feeds.feedburner.com/festival-cannes/tMRk'
+    social_podcast_en: 'http://feeds.feedburner.com/festival-cannes/awEq'
+    social_podcast_zh: 'http://feeds.feedburner.com/festival-cannes/sbgq'
     social_youtube: 'https://www.youtube.com/user/TVFestivaldeCannes'
     social_dailymotion: 'http://www.dailymotion.com/CannesFestTV'
-    social_podcast: '#'
     jwplayer_key: ~
     fdc_event_slug: ~
     fdc_year: ~
@@ -312,3 +319,6 @@ parameters:
     header_ccm_zh: 'http://www.cannescourtmetrage.com/en/'
     header_mdf_zh: 'http://www.marchedufilm.com/cn/'
     email_sysadmin_fdc: sysadmin@ohwee.fr
+    admin_corpo_movie_inscription_id: 1
+    admin_corpo_mediatheque_id: 1
+    admin_fdc_page_mediatheque_id: 1

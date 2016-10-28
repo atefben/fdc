@@ -31,7 +31,7 @@ class FDCPageParticipateHasSection
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="FDCPageParticipateSection", cascade={"persist"}, orphanRemoval=false)
+     * @ORM\ManyToOne(targetEntity="FDCPageParticipateSection", cascade={"persist"})
      */
     protected $section;
 

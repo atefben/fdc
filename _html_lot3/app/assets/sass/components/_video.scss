@@ -33,7 +33,6 @@
   }
 
   .top-bar {
-    background: url('../img/shadow-reverse.png') repeat-x;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     height: 80px;
     left: 0;
@@ -134,7 +133,6 @@
         font-size: 0.9rem;
         line-height: 20px;
         text-align: left;
-        width: auto;
       }
     }
 
@@ -246,6 +244,11 @@
     position: relative;
     z-index: 5;
 
+
+    &.hide-info {
+      display: none;
+    }
+
     .picto {
       bottom: 20px;
       left: 20px;
@@ -315,6 +318,10 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+
+    .mobile & {
+      display: none;
+    }
 
     .playstate {
       position: relative;
@@ -581,9 +588,12 @@
 
   &.state-init {
     .control-bar {
-      /*
-      opacity: 0;$*/
 
+      .single-movie &, .article-single &, .popin-video  & {
+        opacity: 0;
+      }
+
+      opacity: 1;
       @include transform(translateY(100%));
     }
 
@@ -661,6 +671,114 @@
       opacity: 1;
       @include transform(translate(0,0));
       @include transition(all .3s ease-in-out);
+    }
+  }
+}
+
+.popin-video {
+  background-color: #fff;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  width: 750px;
+  height: 590px;
+  margin: -290px 0 0 -375px;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 100;
+  @include transform(translateY(30px));
+  @include transition(all 1.2s $smoothTransition);
+
+  .video-container {
+    width: 710px;
+    height: calc(710px / 1.58);
+  }
+
+  &:after {
+    right: 50%;
+  }
+
+  &:before {
+    visibility: hidden;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    @include transform(translateY(0));
+  }
+
+  .popin-info {
+    position: absolute;
+    bottom: 20px;
+    height: 80px;
+    left: 20px;
+    margin: 0;
+    text-align: left;
+    width: 710px;
+
+    p {
+      color: #333;
+      font-size: 1rem;
+      line-height: normal;
+      margin-top: 5px;
+      width: 400px;
+    }
+
+    .category {
+      color: #c8a461;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      margin-right: 12px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: #969696;
+      display: inline-block;
+      font-size: 0.625rem;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  .popin-buttons {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+
+    .button.email {
+      border-right: 1px solid #dfdfdf;
+    }
+
+    a:hover {
+      background-color: #fff;
+      border-color: $gold !important;
+
+      + .button {
+        border-left-color: $gold;
+      }
+    }
+    a {
+      .icon {
+        font-size: .8rem;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+      }
+
+
+      .icon.icon-letter {
+        left: 27px;
+      }
+
+      &:hover {
+        color: $gold;
+      }
     }
   }
 }

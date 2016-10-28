@@ -1,0 +1,67 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}loading jury dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block body %}
+    <section class="s-slider-retrospective">
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        <div class="ajax-section"><div class="contain-ajax">
+
+        {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+
+        {% include 'FDCCorporateBundle:Palmares:components/nav.html.twig' %}
+
+        <div class="all-contain">
+
+            {% if page.id == 1 and waitingPage == null %}
+                {% set breadcrumbPage = 'competition' %}
+                {% include 'FDCCorporateBundle:Palmares:competition.html.twig' %}
+            {% elseif page.id == 4 %}
+                {% set breadcrumbPage = 'camerador' %}
+                {% include 'FDCCorporateBundle:Palmares:camerador.html.twig' %}
+            {% elseif page.id == 5 and waitingPage == null %}
+                {% set breadcrumbPage = 'all' %}
+                {% include 'FDCCorporateBundle:Palmares:all.html.twig' %}
+            {% elseif waitingPage == null %}
+                {% set breadcrumbPage = 'simple' %}
+                {% include 'FDCCorporateBundle:Palmares:simple.html.twig' %}
+            {% endif %}
+
+        </div> <!-- end all contain -->
+        </div>
+        </div>
+    </section>
+
+    {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.palmares.main'|trans,
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : page|trans_fallback('name'),
+    "url"  : ''
+    }
+    ]
+    } %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    }))
+    }}
+{% endblock %}

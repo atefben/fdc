@@ -58,6 +58,20 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
     /**
      * @var integer
      *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $instit;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $evenmt;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $page;
@@ -68,6 +82,7 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
      * @ORM\Column(type="integer", nullable=true)
      */
     private $stratePosition;
+
 
     /**
      * Constructor
@@ -239,5 +254,51 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
     public function getStratePosition()
     {
         return $this->stratePosition;
+    }
+
+    /**
+     * Set instit
+     *
+     * @param boolean $instit
+     * @return FDCPageParticipateSection
+     */
+    public function setInstit($instit)
+    {
+        $this->instit = $instit;
+
+        return $this;
+    }
+
+    /**
+     * Get instit
+     *
+     * @return boolean 
+     */
+    public function getInstit()
+    {
+        return $this->instit;
+    }
+
+    /**
+     * Set evenmt
+     *
+     * @param boolean $evenmt
+     * @return FDCPageParticipateSection
+     */
+    public function setEvenmt($evenmt)
+    {
+        $this->evenmt = $evenmt;
+
+        return $this;
+    }
+
+    /**
+     * Get evenmt
+     *
+     * @return boolean 
+     */
+    public function getEvenmt()
+    {
+        return $this->evenmt;
     }
 }

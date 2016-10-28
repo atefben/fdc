@@ -8,18 +8,33 @@ var owInitSliderSelect = function(id) {
     ];
 
 
+      ys = $('#s-yearstart').val();
+      ye = $('#s-yearend').val();
+
+      ys = parseInt(ys);
+      ye = parseInt(ye);
+
+      console.log(ys+' , '+ye);
+
     noUiSlider.create(slider, {
-    	start: [1946, GLOBALS.year],//todo script
+    	start: [ys, ye],//todo script
     	connect: true,
     	range: {
-    		'min': 1946,
-    		'max': GLOBALS.year
+            'min': 1946,
+            'max': GLOBALS.year
     	}
      });
 
     slider.noUiSlider.on('update', function( values, handle ) {
 
     	snapValues[handle].innerHTML = parseInt(values[handle]);
+
+        var lower = parseInt(values[0]);
+        var up = parseInt(values[1]);
+
+        $('#s-yearstart').val(lower);
+        $('#s-yearend').val(up);
+        
     });
   }
 

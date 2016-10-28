@@ -1,5 +1,11 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle::layout.html.twig' %}
+{% if 'CorporateBundle' in app.request.attributes.get("_controller") %}
+    {% set extended_layout = 'FDCCorporateBundle::layout.html.twig' %}
+{% else %}
+    {% set extended_layout = 'FDCEventBundle::layout.html.twig' %}
+{% endif %}
+
+{% extends extended_layout %}
 
 {% block body %}
 <div id="main" class="single-movie loading">
@@ -61,7 +67,7 @@
                     {% if loop.index != directors|length %}, {% endif %}
                 {% endfor %}
                 <div class="buttons square">
-                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
 						<i class="icon icon_facebook"></i>
 					</a>
 					<a href="https://twitter.com/intent/tweet?text={{ ('#Cannes' ~ festival_date.festivalStartsAt|date('Y'))|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ directorsName|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
@@ -91,7 +97,7 @@
                 </div>
             </div>
 			{% endif %}
-			
+
 			{% if movie.associatedMediaAudios|length > 0 %}
                 <div class="audios" data-section="audios">
                 {% for associatedMediaAudio in movie.associatedMediaAudios %}
@@ -113,7 +119,8 @@
     {'section': movie.selectionSection|trans_fallback('name')|trans,
         'detail' : directorsName,
         'title'  : mainTitle,
-        'description': movie|trans_fallback('synopsis')|truncate(150)
+        'description': movie|trans_fallback('synopsis')|truncate(150),
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     }))
 }}
 {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
@@ -129,25 +136,29 @@
         {% set mainTitle = movie.titleVO %}
     {% endif %}
 
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-    {
-    "name" : 'breadcrumb.webtv.home'|trans,
-    "url"  : path('fdc_event_news_index')
-    },
-    {
-    "name" : 'breadcrumb.la_selection'|trans,
-    "url"  : path('fdc_event_movie_selection')
-    },
-    {
-    "name" : movie.selectionSection|trans_fallback('name')|trans,
-    "url"  : path('fdc_event_movie_selection', {'slug': movie.selectionSection|trans_fallback('slug') })
-    },
-    {
-    "name" : mainTitle,
-    "url"  : ""
-    }
-    ]
-    } %}
+        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+        {"breadcrumb":
+        [
+        {
+        "name" : 'breadcrumb.69editions.home'|trans,
+        "url"  : ''
+        },
+        {
+        "name" : 'breadcrumb.retrospective.home'|trans,
+        "url"  : path('fdc_corporate_editions_retrospective')
+        },
+        {
+        "name" : 'breadcrumb.la_selection'|trans,
+        "url"  : path('fdc_event_movie_selection')
+        },
+        {
+        "name" : movie.selectionSection|trans_fallback('name')|trans,
+        "url"  : path('fdc_event_movie_selection', {'slug': movie.selectionSection|trans_fallback('slug') })
+        },
+        {
+        "name" : mainTitle,
+        "url"  : ""
+        }
+        ]
+        } %}
 {% endblock body %}

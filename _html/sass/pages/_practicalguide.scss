@@ -8,6 +8,32 @@
 // =========================
 
 .practicalguide {
+
+  ul {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style: initial;
+      list-style-position: inside;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style: initial;
+    list-style-position: inside;
+
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style-type: decimal;
+    }
+  }
+
+
+
   .header-press {
     border-bottom: 1px solid #e3e3e3 !important;
   }
@@ -85,6 +111,11 @@
               padding: 29px;
               border: 1px solid #d8c29f;
               padding-bottom: 22px;
+
+              strong {
+                font-family: $CamphorBold;
+                font-weight: bold;
+              }
 
               .container-title {
                 font-size: 0.75rem;

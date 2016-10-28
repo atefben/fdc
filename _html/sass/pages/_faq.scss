@@ -59,13 +59,35 @@
     width: 733px;
     display: none;
     vertical-align: top;
+    article {
+      strong {
+        font-family: $CamphorBold;
+      }
+      sub {
+        vertical-align: sub;
+        font-size: smaller;
+      }
+      sup {
+        font-size: smaller;
+        vertical-align: super;
+      }
+      em {
+        font-style:italic;
+      }
+      i {
+        font-style:italic;
+      }
+      ol, ul {
+        list-style:inherit;
+      }
+    }
   }
 
   .faq-active {
     display: inline-block;
   }
 
-  section[data-name="informations-generales"] {
+  section[data-name="informations-generales"], section[data-name="general-informations"], section[data-name="informaciones-generales"], section[data-name="chang-gui-xin-xi"] {
     top: 1px;
     opacity: 1;
     display: inline-block;

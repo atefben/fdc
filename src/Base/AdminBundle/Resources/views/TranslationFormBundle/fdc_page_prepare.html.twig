@@ -50,6 +50,7 @@
                                         <div class="sonata-ba-collapsed-fields">
                                             {{ form_row(translationsFields.arriveTitle) }}
                                             {{ form_row(form.parent.children.arriveIcon) }}
+                                            {{ form_row(form.parent.children.arriveDisplayInstit) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.arriveWidgets.children %}
@@ -85,6 +86,7 @@
                                             {{ form_row(translationsFields.informationTitle) }}
                                             {{ form_row(translationsFields.informationDescription) }}
                                             {{ form_row(form.parent.children.informationIcon) }}
+                                            {{ form_row(form.parent.children.informationDisplayInstit) }}
                                             <div id="fdc-information-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.informationWidgets.children %}
@@ -123,6 +125,7 @@
                                             {{ form_row(translationsFields.meetingUrl) }}
                                             {{ form_row(form.parent.children.meetingIcon) }}
                                             {{ form_row(form.parent.children.meetingPdf) }}
+                                            {{ form_row(form.parent.children.meetingDisplayInstit) }}
                                         </div>
                                     </div>
                                 </div>
@@ -137,6 +140,7 @@
                                             {{ form_row(translationsFields.serviceTitle) }}
                                             {{ form_row(translationsFields.serviceDescription) }}
                                             {{ form_row(form.parent.children.serviceIcon) }}
+                                            {{ form_row(form.parent.children.serviceDisplayInstit) }}
                                         </div>
                                     </div>
                                 </div>

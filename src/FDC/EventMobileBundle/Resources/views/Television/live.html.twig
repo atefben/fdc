@@ -101,7 +101,7 @@
                         <div class="info-container">
                             <div class="vCenter">
                                 <div class="vCenterKid">
-                                    <a href="#" class="category">{{ trailer.theme }}</a>
+                                    <a href="#" class="category">{{ trailer.theme|trans_fallback('name') }}</a>
                                     <a href="#" class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
                                     <a href="#" class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
                                     <a href="#" class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>

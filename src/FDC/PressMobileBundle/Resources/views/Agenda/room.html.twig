@@ -36,7 +36,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                {%- thumbnail file, '646x567' with {'alt': img|trans_fallback('alt'), 'class': 'map' } -%}
+                {%- thumbnail file, '646x567' with {'title': '', 'alt': img|trans_fallback('alt'), 'class': 'map' } -%}
                 <h3>{{ 'plandessalles.label.lazonedufestival'|trans }}</h3>
                 {% set roomActive = "room"~r.room.id %}
                 {% set active = "" %}
@@ -46,7 +46,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                {%- thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}
+                <a href="{% path file, '646x567' %}" target="_blank">{%- thumbnail file, '197x142' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
             </div>
             {%- endfor -%}
         </div>

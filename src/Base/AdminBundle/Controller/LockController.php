@@ -27,6 +27,8 @@ class LockController extends Controller
     private static $entityMapper = array(
         // General
         'homepage'                         => 'Homepage',
+        'homepagecorporate'                => 'HomepageCorporate',
+        'corpomediatheque'                 => 'CorpoMediatheque',
         'fdcpagewebtvlive'                 => 'FDCPageWebTvLive',
         'tag'                              => 'Tag',
         'webtv'                            => 'WebTv',
@@ -59,6 +61,8 @@ class LockController extends Controller
         'mediaaudio'                       => 'MediaAudio',
         'mediavideo'                       => 'MediaVideo',
         'mediapdf'                         => 'MediaPdf',
+        // Edition par année
+        'filmfestival'                     => 'FilmFestival',
         // Participer
         'fdcpageprepare'                   => 'FDCPagePrepare',
         'fdcpageparticipate'               => 'FDCPageParticipate',
@@ -91,13 +95,22 @@ class LockController extends Controller
         'fdcpagelaselectioncinemaplage'    => 'FDCPageLaSelectionCinemaPlage',
         'fdcpagejury'                      => 'FDCPageJury',
         'fdcpageaward'                     => 'FDCPageAward',
+        'fdcpagemediatheque'               => 'FDCPageMediatheque',
         // Orange
         'orangeseriesandcie'               => 'OrangeSeriesAndCie',
         'orangeprogrammationocs'           => 'OrangeProgrammationOCS',
         'orangevideoondemand'              => 'OrangeVideoOnDemand',
         'orangestudio'                     => 'OrangeStudio',
         // deprecrated ??
-        'presscinemaroom'                  => 'PressCinemaRoom'
+        'presscinemaroom'                  => 'PressCinemaRoom',
+        'corpomovieinscription'            => 'CorpoMovieInscription',
+        'corpomovieinscriptionprocedure'   => 'CorpoMovieInscriptionProcedure',
+        'corpowhoarewe'                    => 'CorpoWhoAreWe',
+        'corpoaccreditprocedure'           => 'CorpoAccreditProcedure',
+        'corpoaccredit'                    => 'CorpoAccredit',
+        'corpoteamteams'                   => 'CorpoTeamTeams',
+        'corpoteamdepartements'            => 'CorpoTeamDepartements',
+        'corpoteammembers'                 => 'CorpoTeamMembers',
     );
 
     /**

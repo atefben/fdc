@@ -36,8 +36,16 @@
     article {
       padding: 0;
       width: 29%;
-
       &:nth-child(2) {
+        margin: 0 6.5%;
+      }
+      &:nth-child(5) {
+        margin: 0 6.5%;
+      }
+      &:nth-child(8) {
+        margin: 0 6.5%;
+      }
+      &:nth-child(11) {
         margin: 0 6.5%;
       }
     }
@@ -261,6 +269,30 @@ article {
 // =========================
 .single-article {
   padding: 65px 0;
+
+  ul {
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style: initial;
+      list-style-position: inside;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style: initial;
+    list-style-position: inside;
+
+    li {
+      font-family: $CamphorRegular;
+      line-height: 30px;
+      font-size: 1rem;
+      list-style-type: decimal;
+    }
+  }
+
 
   .anim {
     display: block;

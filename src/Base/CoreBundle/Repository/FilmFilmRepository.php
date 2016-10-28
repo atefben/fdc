@@ -163,6 +163,31 @@ class FilmFilmRepository extends EntityRepository
     }
 
     /**
+     * @param $festival
+     * @param $locale
+     * @param $selectionSection
+     * @param integer|null $idBanned
+     * @return array
+     */
+    public function getFilmsReleases($dateTime)
+    {
+        /*$emConfig = $this->getEntityManager()->getConfiguration();
+        $emConfig->addCustomDatetimeFunction('YEAR', 'DoctrineExtensions\Query\Mysql\Year');
+        $emConfig->addCustomDatetimeFunction('MONTH', 'DoctrineExtensions\Query\Mysql\Month');
+        $emConfig->addCustomDatetimeFunction('DAY', 'DoctrineExtensions\Query\Mysql\Day');*/
+
+        $qb = $this->createQueryBuilder('f');
+        $qb->select('f')
+            ->andWhere('f.publishedAt BETWEEN :monthStart AND :monthEnd')
+        ;
+
+        $qb->setParameter('monthStart', $dateTime->format('Y-m-').'01');
+        $qb->setParameter('monthEnd', $dateTime->format('Y-m-').'31');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
      * @param int $festival
      * @param string $category
      * @return array

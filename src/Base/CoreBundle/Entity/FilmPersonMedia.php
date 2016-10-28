@@ -17,7 +17,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(
 uniqueConstraints = {@ORM\UniqueConstraint(name="film_person_media", columns={"person_id", "media_id"})}
 )
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmPersonMediaRepository")
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity({"person", "media"})
  *
@@ -45,7 +45,7 @@ class FilmPersonMedia implements FilmPersonMediaInterface
     /**
      * @var FilmMedia
      *
-     * @ORM\ManyToOne(targetEntity="FilmMedia", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmMedia", inversedBy="medias", cascade={"persist"})
      *
      * @Groups({
      *  "person_list", "person_show",

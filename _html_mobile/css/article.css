@@ -13,13 +13,24 @@ a{
 	padding-top: 50px;
 	font-size: 0;
 }
+
+.container em {
+    font-style: italic;
+}
+
+.chapeau em {
+    font-style: italic;
+}
+
 #player{
     margin-bottom: 40px;
 }
 .article-title{
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
+  /*
   max-height: 200px;
+  */
   margin-bottom: 40px;
   font-size: 20px;
   color: #666;
@@ -107,6 +118,9 @@ a{
     background-color: #f4f4f4;
     padding: 88px 0px;
     margin-bottom: 70px;
+    font-size: 13px;
+    padding: 50px;
+    font-style: italic;
 }
 
 .text-content  .txt-grey-bkg-container .content {
@@ -129,12 +143,13 @@ a{
 }
 
 .text-content .big-quote {
-    width: 697px;
+    width: 100.7%;
     margin: 0 auto;
     padding: 70px 70px;
     box-sizing: border-box;
     border: 1px solid #c8a461;
     margin-bottom: 70px;
+    color: #000;
 }
 
 .text-content .big-quote strong {
@@ -163,10 +178,22 @@ a{
     text-decoration: none;
 }
 
-
 .text-content .single-button {
     border-right: 1px solid #c8a461 !important;
     border-color: #c8a461;
+    width: 93%;
+    text-align: center;
+    color: #c8a461;
+    padding: 12px 21px;
+}
+
+.text-content .single-button a{
+    color: #c8a461;
+    font-size: 19px;
+}
+
+.text-content .single-button a strong{
+    color: #c8a461;
 }
 
 
@@ -231,10 +258,7 @@ a{
 }
 
 .section{
-
-
 	padding: 30px 0;
-
 }
 .title-section{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -255,6 +279,49 @@ a{
 	/*font-size: 1.5rem;*/
 	line-height: 30px;
 	font-size: 24px;
+}
+
+
+.m-video {
+    position: relative;
+}
+
+.m-video .legend-video {
+    position: absolute;
+    height: 40px;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+}
+
+/*
+.jw-icon  {
+    font-family: "icons";
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*/
+
+.jw-state-playing + .legend-video, .jw-state-paused + .legend-video{
+    display: none;
+}
+
+.m-video .legend-video p{
+    font-size: 24px;
+    color: #ffffff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    margin-bottom: 40px;
+    margin-left: 10px;
 }
 
 /*SLIDER*/
@@ -330,7 +397,9 @@ a{
 
 /*INFO FILM*/
 .film {
+    /*
     height: 730px;
+    */
     overflow: hidden;
     background-color: #2e2e2e;
     margin-top: 40px;
@@ -344,6 +413,7 @@ a{
     color: #fff;
     height: 50%;
     overflow: hidden;
+    margin: 30px 0px;
 }
 .film .info-film .wrapper{
 	height: 100%;
@@ -351,7 +421,7 @@ a{
 }
 .film .info-film .wrapper .poster {
     display: inline-block;
-    margin-right: 65px;
+    margin-right: 45px;
     vertical-align: middle;
 }
 .film .info-film .wrapper .text-container {
@@ -408,6 +478,7 @@ a{
 .film .programmation-film .wrapper {
     color: #fff;
     height: 100%;
+    margin: 30px 0px;
     margin-left: 70px;
 }
 .film .programmation-film .wrapper .category {
@@ -492,10 +563,15 @@ a{
 	margin: 20px auto;
 }
 .articles .owl-item{
-
 	width: 516px;
 	height: 490px;
 }
+
+.articles .articles-carousel .owl-item{
+    width: 516px;
+    height: auto;
+}
+
 .articles .img-container{
 
     position: relative;
@@ -622,7 +698,157 @@ a{
 
 
 
+/** APP **/
+
+#app {
+    background-color: #000;
+    background-image: url(../img/app.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50% 15%;
+}
+
+#app h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.875rem;
+    padding-top: 385px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#app h2 {
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    font-size: 1.125rem;
+    color: #fff;
+    padding-top: 25px;
+    text-align: center;
+    font-style: italic;
+}
+
+#app .logo-app {
+    margin-top: 50px;
+    text-align: center;
+    padding-bottom: 145px;
+}
 
 
 
+/** test fix **/
 
+.caption-article {
+    color: #333333;
+    font-size: 18px;
+    margin: 10px 0 0;
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+}
+
+.caption-article  .name {
+    color:#000;
+}
+
+
+.big-quote span.big-quote-paragraph {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: 28px;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.big-quote strong {
+    color: #c8a461 !important;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
+}
+
+.txt-grey-bkg-container {
+    color: #666;
+    font-size: 28px;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding: 70px 70px;
+}
+
+.txt-grey-bkg-container .content span {
+    font-size: 32px;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+}
+
+.blockquote {
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 27px;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.little-txt {
+    color: #969696;
+    font-size: 24px;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 18px;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+    display: block;
+}
+
+.quote blockquote {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
+.text-content h2 {
+    font-size: 48px;
+    text-align: center;
+    line-height: 60px;
+    color: #333;
+}
+
+.text-content h2.sub-title {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 28px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.text-content h2.sub-title2 {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 25px 0px;
+    text-align: left;
+}
+
+.text-content h3.sub-title {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 20px;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+}

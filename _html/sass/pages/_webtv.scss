@@ -109,7 +109,11 @@
     }
 
     .img {
-      background: center 0 no-repeat fixed;
+
+      body:not(.tablette) & {
+        background: center 0 no-repeat fixed;
+      }
+
       background-size: cover;
       opacity: 0.5;
       position: absolute;
@@ -998,6 +1002,7 @@
       top: 0;
       left: -1%;
       z-index: 1;
+      opacity: .6;
     }
 
     .channel:after{

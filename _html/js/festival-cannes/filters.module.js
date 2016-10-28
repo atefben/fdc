@@ -62,6 +62,7 @@ function filter() {
 
           var getVal = $this.data('filter');
           var numItems = $('#filteredArticles article[data-'+$id+'="'+getVal+'"]').length;
+
           if (numItems === 0) {
               $this.addClass('disabled');
           } else {
