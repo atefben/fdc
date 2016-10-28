@@ -25,14 +25,12 @@ class FilmFilmMediaRepository extends EntityRepository
             ->andWhere('f.titleVO LIKE :search OR ft.title LIKE :search OR fm.titleVf LIKE :search OR fm.titleVa LIKE :search')
             ->setParameter('search', '%'.$search.'%');
 
-        if($yearStart && $yearEnd) { dump('in');
+        if($yearStart && $yearEnd) {
             $qb->andWhere('f.productionYear BETWEEN :yearStart AND :yearEnd')
                 ->setParameter('yearStart', $yearStart)
                 ->setParameter('yearEnd', $yearEnd)
             ;
         }
-
-        dump($qb->getQuery()->getSQL());
 
         return $qb->getQuery()->getResult();
     }

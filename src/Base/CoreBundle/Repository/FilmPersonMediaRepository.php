@@ -25,14 +25,12 @@ class FilmPersonMediaRepository extends EntityRepository
             ->andWhere('p.firstname LIKE :search OR p.lastname LIKE :search OR p.asianName LIKE :search')
             ->setParameter('search', '%'.$search.'%');
 
-        if($yearStart && $yearEnd) { dump('in');
+        if($yearStart && $yearEnd) {
             $qb->andWhere('fpm.createdAt BETWEEN :yearStart AND :yearEnd')
                 ->setParameter('yearStart', $yearStart)
                 ->setParameter('yearEnd', $yearEnd)
             ;
         }
-
-        dump($qb->getQuery()->getSQL());
 
         return $qb->getQuery()->getResult();
     }
