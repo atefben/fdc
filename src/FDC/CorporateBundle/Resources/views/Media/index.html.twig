@@ -45,6 +45,11 @@
             <div class="contain-title vFlexAlign">
                 <h1 class="title-01">{{ 'mediatheque.title.nosresults'|trans }}</h1>
             </div>
+            {% if page.displayedSelection == false %}
+                <div class="contain-title vFlexAlign">
+                    <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
+                </div>
+            {% endif %}
         {% endif %}
 
         <div class="grid-01 isotope-03 block-01 padding-bottom block-mediatheque">
@@ -75,7 +80,7 @@
                     audio: $('input[name="audio"]').val(),
                     'year-start': $('input[name="year-start"]').val(),
                     'year-end': $('input[name="year-end"]').val(),
-                    pg: $('input[name="pg"]').val()+1
+                    pg: Integer.parseInt($('input[name="pg"]').val())+1
                 },
                 success: function(data) {
                     $('.block-mediatheque').append(data).isotope( 'addItems', data );
