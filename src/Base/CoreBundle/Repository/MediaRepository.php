@@ -117,8 +117,7 @@ class MediaRepository extends EntityRepository
     public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 30, $page = 1) {
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.theme', 't')
-            ->leftJoin('t.translations', 'tt')
-            ->andWhere('m.displayedAll = 1');
+            ->leftJoin('t.translations', 'tt');
 
         $searchOr = array('tt.name LIKE :search');
 
@@ -135,7 +134,7 @@ class MediaRepository extends EntityRepository
         if($video) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
                 ->leftJoin('mv.translations', 'mvt')
-                ->andWhere('mv.displayedWebTv = 1');
+                ->andWhere('m.displayedAll = 1 OR mv.displayedWebTv = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
@@ -144,7 +143,8 @@ class MediaRepository extends EntityRepository
 
         if($audio) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
-                ->leftJoin('ma.translations', 'mat');
+                ->leftJoin('ma.translations', 'mat')
+                ->andWhere('m.displayedAll = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mat', $locale);
 
