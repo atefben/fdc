@@ -4053,9 +4053,12 @@ a{
 }
 
 
+
+/** test fix **/
+
 .caption-article {
     color: #333333;
-    font-size: 12px;
+    font-size: 24px;
     margin: 10px 0 0;
     text-align: left;
     display: block;
@@ -4063,8 +4066,6 @@ a{
     width: 644px;
     padding-top: 10px;
     border-top: 1px solid #dfdfdf;
-
-
 }
 
 .caption-article  .name {
@@ -4072,13 +4073,10 @@ a{
 }
 
 
-/** test fix **/
-
-
 .big-quote span.big-quote-paragraph {
     color: #b1b1b1;
     text-align: center;
-    font-size: 14px;
+    font-size: 28px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     font-weight: bold;
     line-height: 26px;
@@ -4091,14 +4089,14 @@ a{
 
 .txt-grey-bkg-container {
     color: #666;
-    font-size: 16px;
+    font-size: 28px;
     line-height: 1.7em;
     margin-bottom: 5px;
     padding: 70px 70px;
 }
 
 .txt-grey-bkg-container .content span {
-    font-size: 16px;
+    font-size: 32px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     color: #666666;
     line-height: 26px;
@@ -4117,20 +4115,20 @@ a{
 .big-txt {
     color: #333333;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 28px;
     line-height: 40px;
     text-align: center;
 }
 
 .little-txt {
     color: #969696;
-    font-size: 12px;
+    font-size: 24px;
     margin: 10px 0 0;
     text-align: left;
 }
 
 .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
-    font-size: 16px;
+    font-size: 22px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     color: #666666;
     line-height: 26px;
