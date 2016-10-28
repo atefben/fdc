@@ -2925,19 +2925,19 @@ var owArrowDisplay = function () {
 
 var onInitParallax = function () {
 
-    if (!$('body').hasClass('mobile')) {
+    /*    if (!$('body').hasClass('mobile')) {
 
-        $(window).on('scroll', function () {
+     $(window).on('scroll', function () {
 
-            if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 100;
-                $('.block-push').css('background-position', '0px ' + s + 'px');
-            } else {
-                $('.block-push').css('background-position', '0px ' + '0px');
-            }
+     if ($('header.sticky').length) {
+     var s = $(this).scrollTop() - 100;
+     $('.block-push').css('background-position', '0px ' + s + 'px');
+     } else {
+     $('.block-push').css('background-position', '0px ' + '0px');
+     }
 
-        });
-    }
+     });
+     }*/
 
 };
 
