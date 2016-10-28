@@ -61,7 +61,7 @@
 
         {% if moreresults %}
         <div>
-            <a href="#" class="read-more block-01">{{ 'mediatheque.moreresults'|trans }}</a>
+            <a href="" class="read-more block-01">{{ 'mediatheque.moreresults'|trans }}</a>
         </div>
         {% endif %}
 
@@ -85,9 +85,10 @@
                 success: function(data) {
                     $('.block-mediatheque').append(data).isotope( 'addItems', data );
                     $('.block-mediatheque').isotope();
-                    $('input[name="pg"]').val($('input[name="pg"]').val()+1);
+                    $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                 }
             });
+            return false;
         })
     </script>
 {% endblock %}
