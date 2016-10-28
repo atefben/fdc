@@ -174,6 +174,37 @@ var owInitGrid = function (id) {
                     $grid.append(data).isotope( 'addItems', data );
                     $grid.isotope();
                     $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+
+                    owInitSliderSelect('timelapse');
+                    owInitSliderSelect('tab-selection');
+
+                    var grid = owInitGrid('isotope-03');
+
+                    owInitAleaGrid(grid, $('.grid-01'), true);
+
+                    var hash = window.location.hash;
+                    hash = hash.substring(1, hash.length);
+
+                    verif = hash.slice(0, 3);
+                    number = hash.slice(4);
+
+                    if (hash.length > 0 && verif == "pid") {
+                        owinitSlideShow(grid, hash);
+                    } else {
+                        owinitSlideShow(grid);
+                    }
+
+                    if (hash.length > 0 && verif == "vid") {
+                        initVideo(number);
+                    } else {
+                        initVideo();
+                    }
+
+                    if (hash.length > 0 && verif == "aid") {
+                        initAudio(number);
+                    } else {
+                        initAudio();
+                    }
                 }
             })
         });
