@@ -3102,8 +3102,8 @@ var owInitSliderSelect = function(id) {
     	start: [ys, ye],//todo script
     	connect: true,
     	range: {
-    		'min': ys,
-    		'max': ye
+            'min': 1946,
+            'max': GLOBALS.year
     	}
      });
 
