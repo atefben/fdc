@@ -34,8 +34,8 @@ class MediaController extends Controller
             $video = $request->get('video') ? true : false;
             $audio = $request->get('audio') ? true : false;
             $pg = $request->get('pg') ? $request->get('pg') : 1;
-            $yearStart = $request->query->get('year-start');
-            $yearEnd = $request->query->get('year-end');
+            $yearStart = $request->get('year-start');
+            $yearEnd = $request->get('year-end');
 
             if(!$photo && !$video && !$audio) {
                 $photo = true;

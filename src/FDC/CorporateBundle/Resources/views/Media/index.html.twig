@@ -16,9 +16,9 @@
             <form method="post">
                 <div class="vFlexAlign">
                     <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id="s-text" value="{% if app.request.get('search') is not null %}{{ app.request.get('search') }}{% endif %}" /></label>
-                    <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') is not null %} active{% endif %}"><i class="icon icon-photo"></i><span class="text">Photos</span><input class="choice" type="checkbox" name="photo" id="s-photo" {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
-                    <label for="s-video" class="icon-s vFlexAlign{% if app.request.get('video') is not null %} active{% endif %}"><i class="icon icon-video"></i><span class="text">Vidéos</span><input class="choice" type="checkbox" name="video" id="s-video" {% if app.request.get('video') is not null %}checked {% endif %}/></label>
-                    <label for="s-audio" class="icon-s vFlexAlign{% if app.request.get('audio') is not null %} active{% endif %}"><i class="icon icon-audio"></i><span class="text">Audios</span><input class="choice" type="checkbox" name="audio" id="s-audio" {% if app.request.get('audio') is not null %}checked {% endif %}/></label>
+                    <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') is not null %} active{% endif %}"><i class="icon icon-photo"></i><span class="text">{{ 'mediatheque.filters.photos'|trans }}</span><input class="choice" type="checkbox" name="photo" id="s-photo" {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
+                    <label for="s-video" class="icon-s vFlexAlign{% if app.request.get('video') is not null %} active{% endif %}"><i class="icon icon-video"></i><span class="text">{{ 'mediatheque.filters.videos'|trans }}</span><input class="choice" type="checkbox" name="video" id="s-video" {% if app.request.get('video') is not null %}checked {% endif %}/></label>
+                    <label for="s-audio" class="icon-s vFlexAlign{% if app.request.get('audio') is not null %} active{% endif %}"><i class="icon icon-audio"></i><span class="text">{{ 'mediatheque.filters.audios'|trans }}</span><input class="choice" type="checkbox" name="audio" id="s-audio" {% if app.request.get('audio') is not null %}checked {% endif %}/></label>
                 </div>
                 <div class="slider-selection">
                     <span id="slider-snap-value-lower" class="number"></span>
@@ -27,15 +27,15 @@
                     </div>
                     <span id="slider-snap-value-upper" class="number"></span>
                 </div>
-                <input type="hidden" for="s-yearstart" id="s-yearstart" name="year-start" value="1946">
-                <input type="hidden" for="s-yearend" id="s-yearend" name="year-end" value="2017">
+                <input type="hidden" for="s-yearstart" id="s-yearstart" name="year-start" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-start') }}{% else %}1946{% endif %}">
+                <input type="hidden" for="s-yearend" id="s-yearend" name="year-end" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-end') }}{% else %}2016{% endif %}">
                 <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>lancer la recherche</button>
             </form>
         </div>
 
         {% if app.request.method == 'GET' and page.displayedSelection == false %}
         <div class="contain-title vFlexAlign">
-            <h1 class="title-01">Notre sélection</h1>
+            <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
         </div>
         {% endif %}
 
@@ -89,7 +89,7 @@
 
         {% if medias|length > 30 %}
         <div>
-            <a href="#" class="read-more block-01">Afficher <strong>plus de résultats</strong></a>
+            <a href="#" class="read-more block-01">{{ 'mediatheque.moreresults'|trans }}</a>
         </div>
         {% endif %}
 
