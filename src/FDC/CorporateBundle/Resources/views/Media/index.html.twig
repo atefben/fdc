@@ -40,6 +40,12 @@
         </div>
         {% endif %}
 
+        {% if medias|length == 0 %}
+            <div class="contain-title vFlexAlign">
+                <h1 class="title-01">{{ 'mediatheque.title.nosresults'|trans }}</h1>
+            </div>
+        {% endif %}
+
         <div class="grid-01 isotope-03 block-01 padding-bottom block-mediatheque">
             <div class="grid-sizer"></div>
 

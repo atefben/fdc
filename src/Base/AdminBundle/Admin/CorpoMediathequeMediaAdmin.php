@@ -43,9 +43,9 @@ class CorpoMediathequeMediaAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('photo', 'sonata_type_model_list')
-            ->add('video', 'sonata_type_model_list')
-            ->add('audio', 'sonata_type_model_list')
+            ->add('photo', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('video', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('audio', 'sonata_type_model_list', array('btn_add' => false))
         ;
     }
 

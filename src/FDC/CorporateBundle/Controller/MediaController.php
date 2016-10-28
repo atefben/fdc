@@ -90,7 +90,14 @@ class MediaController extends Controller
             }
 
             $medias = $pageMedias;
-        } else {
+        }
+
+        $noresults = false;
+
+        if(count($medias) == 0 || !$request->isMethod('POST')) {
+            if(count($medias) == 0) {
+                $noresults = true;
+            }
             if(!$page->getDisplayedSelection()) {
                 $medias = $page->getMediasSelection();
             } else {
@@ -102,7 +109,7 @@ class MediaController extends Controller
         if($request->get('_route') == 'fdc_corporate_media_index_ajax') {
             return $this->render('FDCCorporateBundle:Media:medias.html.twig', array('medias' => $medias));
         } else {
-            return $this->render('FDCCorporateBundle:Media:index.html.twig', array('page' => $page, 'medias' => $medias));
+            return $this->render('FDCCorporateBundle:Media:index.html.twig', array('page' => $page, 'medias' => $medias, 'noresults' => $noresults));
         }
     }
 }

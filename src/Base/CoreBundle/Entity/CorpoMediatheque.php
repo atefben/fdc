@@ -72,6 +72,10 @@ class CorpoMediatheque implements TranslateMainInterface
         $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString() {
+        return 'Notre sélection';
+    }
+
     /**
      * Get id
      *

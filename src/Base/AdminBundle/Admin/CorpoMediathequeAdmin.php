@@ -158,7 +158,7 @@ class CorpoMediathequeAdmin extends Admin
             ))
             ->add('medias', 'sonata_type_collection', array(
                 'label' => 'Sélection médias',
-                'help' => 'Sélectionnez une sélection de médias sélectionnés',
+                'help' => 'Sélectionnez les médias que vous souhaitez afficher dans la sélection de la page Médiathèque',
                 'by_reference' => false,
                 'required' => false,
             ), array(
