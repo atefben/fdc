@@ -9,7 +9,10 @@
           <div class="vCenter">
             <div class="vCenterKid">
               <a href="webtv_trailer_video.php" class="category">Sils Maria</a>
-              <span>Olivier ASSAYAS</span>
+              <span>
+                                                                                                            Catalin ROTARU
+                                                                                                            , Gabi Virginia SARGA
+                                                                                                    </span>
             </div>
           </div>
         </div>

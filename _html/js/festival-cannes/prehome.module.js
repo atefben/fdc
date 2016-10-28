@@ -51,6 +51,10 @@ $(document).ready(function() {
 
   if(getCookie('comply_cookie=comply_yes') != 1) {
     if($("#cookies-banner").length > 0) {
+      $("#cookies-banner").css('display','block');
+    }
+  }else{
+    if($("#cookies-banner").length > 0) {
       $("#cookies-banner").hide();
     }
   }
