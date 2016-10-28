@@ -75,7 +75,7 @@ var owArrowDisplay = function () {
 
 var onInitParallax = function () {
 
-/*    if (!$('body').hasClass('mobile')) {
+   if (!$('body').hasClass('mobile') && $('.retrospective').length) {
 
         $(window).on('scroll', function () {
 
@@ -87,7 +87,7 @@ var onInitParallax = function () {
             }
 
         });
-    }*/
+    }
 
 };
 
