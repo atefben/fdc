@@ -228,6 +228,11 @@
   transition: $smoothTransition .7s;
   position: relative;
 
+  body:not(.who) & {
+    background-size: 130%;
+    background-position: 0px 0px;
+  }
+
   .coverLink {
     width: 100%;
     height: 100%;
@@ -446,6 +451,11 @@
   height: 300px;
   display: block;
   position: relative;
+  background-attachment: inherit;
+
+  .who &{
+    background-attachment: fixed;
+  }
 
   .vFlexAlign {
     height: 100%;
