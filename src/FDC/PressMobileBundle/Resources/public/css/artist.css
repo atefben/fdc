@@ -3464,12 +3464,13 @@ a{
 }
 
 .text-content .big-quote {
-    width: 697px;
+    width: 100.7%;
     margin: 0 auto;
     padding: 70px 70px;
     box-sizing: border-box;
     border: 1px solid #c8a461;
     margin-bottom: 70px;
+    color: #000;
 }
 
 .text-content .big-quote strong {
@@ -4058,7 +4059,7 @@ a{
 
 .caption-article {
     color: #333333;
-    font-size: 24px;
+    font-size: 18px;
     margin: 10px 0 0;
     text-align: left;
     display: block;
@@ -4128,7 +4129,7 @@ a{
 }
 
 .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
-    font-size: 22px;
+    font-size: 18px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     color: #666666;
     line-height: 26px;
@@ -4140,6 +4141,38 @@ a{
     margin-bottom: 40px;
 }
 
+.text-content h2 {
+    font-size: 48px;
+    text-align: center;
+    line-height: 60px;
+    color: #333;
+}
+
+.text-content h2.sub-title {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 28px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.text-content h2.sub-title2 {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 25px 0px;
+    text-align: left;
+}
+
+.text-content h3.sub-title {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 20px;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+}
 .slideshow .thumbnails .thumb {
   height: 210px;
   overflow: hidden;
