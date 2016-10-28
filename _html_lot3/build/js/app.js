@@ -2925,7 +2925,7 @@ var owArrowDisplay = function () {
 
 var onInitParallax = function () {
 
-    if (!$('body').hasClass('mobile')) {
+/*    if (!$('body').hasClass('mobile')) {
 
         $(window).on('scroll', function () {
 
@@ -2937,7 +2937,7 @@ var onInitParallax = function () {
             }
 
         });
-    }
+    }*/
 
 };
 
