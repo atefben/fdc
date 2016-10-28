@@ -734,7 +734,7 @@ a{
 
 .caption-article {
     color: #333333;
-    font-size: 0.750rem;
+    font-size: 12px;
     margin: 10px 0 0;
     text-align: left;
     display: block;
@@ -757,7 +757,7 @@ a{
 .big-quote span.big-quote-paragraph {
     color: #b1b1b1;
     text-align: center;
-    font-size: .875rem;
+    font-size: 14px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     font-weight: bold;
     line-height: 26px;
@@ -770,14 +770,14 @@ a{
 
 .txt-grey-bkg-container {
     color: #666;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.7em;
     margin-bottom: 5px;
     padding: 70px 70px;
 }
 
 .txt-grey-bkg-container .content span {
-    font-size: 1rem;
+    font-size: 16px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     color: #666666;
     line-height: 26px;
@@ -787,7 +787,7 @@ a{
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
     color: #666;
-    font-size: 1.688rem;
+    font-size: 27px;
     line-height: 1.4em;
     padding: 40px 15px;
     text-align: center;
@@ -796,20 +796,20 @@ a{
 .big-txt {
     color: #333333;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 1.25rem;
+    font-size: 20px;
     line-height: 40px;
     text-align: center;
 }
 
 .little-txt {
     color: #969696;
-    font-size: 0.750rem;
+    font-size: 12px;
     margin: 10px 0 0;
     text-align: left;
 }
 
 .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
-    font-size: 1rem;
+    font-size: 16px;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
     color: #666666;
     line-height: 26px;
