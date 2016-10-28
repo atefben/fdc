@@ -135,6 +135,7 @@ var owInitGrid = function (id) {
             });
         });
 
+
         return $grid;
     }
 
@@ -150,6 +151,20 @@ var owInitGrid = function (id) {
                     columnWidth: '.grid-sizer'
                 }
             });
+        });
+
+        $('.read-more.ajax-request').off('click').on('click', function(e){
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+
+
+            $.get( url, function( data ) {
+                data = $(data);
+                $grid.append(data).isotope( 'addItems', data );
+                $grid.isotope();
+            });
+
         });
 
         var trunTitle = function() {
