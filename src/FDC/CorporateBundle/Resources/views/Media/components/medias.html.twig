@@ -1,5 +1,5 @@
 {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
-{% for id, media in medias %}
+{% for id, media in medias if media.media.file is not null %}
     {% if media.type is not null %}
         {% set title = '' %}
         {% if media.film is defined %}

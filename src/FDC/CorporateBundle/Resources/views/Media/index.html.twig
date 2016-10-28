@@ -80,11 +80,12 @@
                     audio: $('input[name="audio"]').val(),
                     'year-start': $('input[name="year-start"]').val(),
                     'year-end': $('input[name="year-end"]').val(),
-                    pg: Integer.parseInt($('input[name="pg"]').val())+1
+                    pg: parseInt($('input[name="pg"]').val())+1
                 },
                 success: function(data) {
                     $('.block-mediatheque').append(data).isotope( 'addItems', data );
                     $('.block-mediatheque').isotope();
+                    $('input[name="pg"]').val($('input[name="pg"]').val()+1);
                 }
             });
         })
