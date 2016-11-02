@@ -52,7 +52,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     {
         $this
             ->setName('base:import:old_fdc')
-            ->setDescription('Impot old fdc database data')
+            ->setDescription('Import old fdc database data')
             ->addOption('associated-news', null, InputOption::VALUE_NONE, 'Import only associated news')
             ->addOption('count', null, InputOption::VALUE_NONE, 'Count entities total')
             ->addOption('only-create', null, InputOption::VALUE_NONE, 'Create only new entities')

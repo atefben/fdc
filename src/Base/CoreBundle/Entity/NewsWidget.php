@@ -76,7 +76,7 @@ abstract class NewsWidget
      */
     public function findTranslationByLocale($locale)
     {
-        
+
         foreach ($this->getTranslations() as $translation) {
             if ($translation->getLocale() == $locale) {
                 return $translation;

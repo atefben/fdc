@@ -229,5 +229,44 @@ class Importer
         }
     }
 
+    protected function getWidget($news, $pos, $entity)
+    {
+        if ($news->getWidgets()->get($pos - 1) !== null) {
+            return $news->getWidgets()->get($pos - 1);
+        }
+
+        return $entity;
+    }
+
+
+
+    protected function imagecreatefromfile($filename)
+    {
+        $file = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/image/' . md5($filename) . '.' . pathinfo($filename, PATHINFO_EXTENSION);
+        $content = @file_get_contents($filename);
+        $this->output->writeln('Creating file: ' . $filename);
+        if ($content === false) {
+            $this->output->writeln("<error>Cant get file: {$filename}</error>");
+            return;
+        }
+        $im = imagecreatefromstring($content);
+
+        switch (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
+            case 'jpeg':
+            case 'jpg':
+                imagejpeg($im, $file);
+                break;
+
+            case 'png':
+                imagepng($im, $file);
+                break;
+
+            default:
+                $this->output->writeln("extension doesnt exist {$filename}");
+                break;
+        }
+
+        return $file;
+    }
 
 }

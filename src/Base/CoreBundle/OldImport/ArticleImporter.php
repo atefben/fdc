@@ -76,7 +76,6 @@ class ArticleImporter extends Importer
             'association_film_setter' => 'setStatement',
             'acl_update'              => 'base.admin.statement_article',
         );
-
         $this->importLoop($oldArticles, $entitiesArray, 'isStatementMatching');
 
         return $this;
@@ -146,6 +145,7 @@ class ArticleImporter extends Importer
             'association_film_setter' => 'setNews',
             'acl_update'              => 'base.admin.info_article',
         );
+
 
         $this->importLoop($oldArticles, $entitiesArray, 'isNewsMatching');
 
@@ -219,6 +219,7 @@ class ArticleImporter extends Importer
             // set values
             if ($news == null) {
                 $news = clone $entitiesArray['main'];
+                $this->getManager()->persist($news);
             }
             $news->setOldNewsTable('OldNews');
             $news->setOldNewsId($oldArticle->getId());
@@ -253,11 +254,14 @@ class ArticleImporter extends Importer
                         $this->output->writeln('<comment>add Translation ' . $culture . '</comment>');
                         $newsTrans = $news->findTranslationByLocale($culture);
                         if (!$newsTrans) {
+                            dump('new');
                             $newsTrans = clone $entitiesArray['main_trans'];
                             $newsTrans->setLocale($culture);
                             $newsTrans->setCreatedAt($news->getCreatedAt());
                             $newsTrans->setUpdatedAt($news->getCreatedAt());
                             $newsTrans->setIsPublishedOnFDCEvent(true);
+                            $newsTrans->setTranslatable($news);
+                            $this->getManager()->persist($newsTrans);
                             $news->addTranslation($newsTrans);
 
                             if ($culture == 'fr') {
@@ -273,10 +277,10 @@ class ArticleImporter extends Importer
                         }
 
                         // Image header / image accroche
-                        if ($news->getHeader() == null) {
-                            $img = new MediaImage();
-                        } else {
+                        if ($news->getHeader()) {
                             $img = $news->getHeader();
+                        } else {
+                            $img = new MediaImage();
                         }
                         if ($img->getSites()->count() == 0) {
                             $img->addSite($siteFDCCorporate);
@@ -305,8 +309,10 @@ class ArticleImporter extends Importer
                             $this->getMediaManager()->save($media, 'media_image', 'sonata.media.provider.image');
                         }
                         $imgTrans = $img->findTranslationByLocale($culture);
-                        if ($imgTrans == null) {
+
+                        if (!$imgTrans) {
                             $imgTrans = new MediaImageTranslation();
+                            $img->addTranslation($imgTrans);
                         }
                         if ($culture == 'fr') {
                             $imgTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
@@ -339,20 +345,26 @@ class ArticleImporter extends Importer
                                 $widgetText->setPosition($widgetCount);
                             } else {
                                 $widgets = $news->getWidgets();
-                                $widgetText = $widgets->get(0);
+                                foreach ($widgets as $widgetTemp) {
+                                    if ($widgetTemp instanceof NewsWidgetText) {
+                                        $widgetText = $widgetTemp;
+                                    }
+                                }
                             }
 
-                            $widgetTextTranslation = clone $entitiesArray['widget_text_trans'];
-                            if ($widgetText->findTranslationByLocale($culture) != null) {
-                                $widgetTextTranslation = $widgetText->findTranslationByLocale($culture);
-                            }
-                            $widgetTextTranslation->setLocale($culture);
-                            $widgetTextTranslation->setContent($oldArticleTranslation->getBody());
-                            $widgetTextTranslation->setTranslatable($widgetText);
-                            $widgetText->addTranslation($widgetTextTranslation);
+                            if ($widgetText) {
+                                $widgetTextTranslation = clone $entitiesArray['widget_text_trans'];
+                                if ($widgetText->findTranslationByLocale($culture) != null) {
+                                    $widgetTextTranslation = $widgetText->findTranslationByLocale($culture);
+                                }
+                                $widgetTextTranslation->setLocale($culture);
+                                $widgetTextTranslation->setContent($oldArticleTranslation->getBody());
+                                $widgetTextTranslation->setTranslatable($widgetText);
+                                $widgetText->addTranslation($widgetTextTranslation);
 
-                            if ($widgetText->getId() == null) {
-                                $news->addWidget($widgetText);
+                                if ($widgetText->getId() == null) {
+                                    $news->addWidget($widgetText);
+                                }
                             }
                         }
 
@@ -360,7 +372,6 @@ class ArticleImporter extends Importer
                         if ($oldArticleTranslation->getYoutubeLink() != null ||
                             $oldArticleTranslation->getYoutubeLinkDescription() != null
                         ) {
-                            $widgetVideoYoutube = clone $entitiesArray['widget_yt'];
                             $widgetCount++;
                             $widgetVideoYoutube = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_yt_entity']);
                             $widgetVideoYoutube->setPosition($widgetCount);
@@ -389,9 +400,10 @@ class ArticleImporter extends Importer
                             $widgetCount++;
                             $widget = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_image']);
                             $widget->setPosition($widgetCount);
-                            if ($widget->getGallery() == null) {
+                            if (!$widget->getGallery()) {
                                 $gallery = new Gallery();
                                 $widget->setGallery($gallery);
+                                $gallery->setDisplayedHomeCorpo(false);
                             } else {
                                 $gallery = $widget->getGallery();
                             }
@@ -401,9 +413,16 @@ class ArticleImporter extends Importer
                             }
                             foreach ($oldArticleAssociations as $associationKey => $association) {
                                 $image = $this->getManager()->getRepository('BaseCoreBundle:OldMedia')->findOneById($association->getObjectId());
-                                $img = new MediaImage();
-                                if ($gallery->getMedias()->get($associationKey) != null) {
-                                    $img = $gallery->getMedias()->get($associationKey)->getMedia();
+                                $img = null;
+                                if ($gallery->getMedias()) {
+                                    foreach ($gallery->getMedias() as $media) {
+                                        if ($media->getMedia()->getOldId() == $association->getObjectId()) {
+                                            $img = $gallery->getMedias()->get($associationKey)->getMedia();
+                                        }
+                                    }
+                                }
+                                if (!$img) {
+                                    $img = new MediaImage();
                                 }
                                 if ($img != null) {
                                     $media = ($img->findTranslationByLocale($culture) != null && $img->findTranslationByLocale($culture)->getFile() != null) ? $img->findTranslationByLocale('fr')->getFile() : new Media();
@@ -416,7 +435,7 @@ class ArticleImporter extends Importer
                                 $img->setOldMediaId($association->getObjectId());
                                 $saved = false;
                                 if ($media->getId() == null && $culture == 'fr') {
-                                    $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . trim($image->getFilename()), $this->output);
+                                    $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . trim($image->getFilename()));
                                     $media->setName($image->getFilename());
                                     $media->setBinaryContent($file);
                                     $media->setEnabled(true);
@@ -433,7 +452,7 @@ class ArticleImporter extends Importer
                                     'culture' => $oldArticleTranslation->getCulture(),
                                 ))
                                 ;
-                                if ($imgTrans == null) {
+                                if (!$imgTrans) {
                                     $imgTrans = new MediaImageTranslation();
                                     $img->addTranslation($imgTrans);
                                 }
@@ -713,6 +732,8 @@ class ArticleImporter extends Importer
                     // must be set to avoid widgets duplication
                     $this->output->writeln("Saving lang: {$culture} of #{$oldArticle->getId()}");
                     $this->getManager()->flush();
+
+                    dump($newsTrans->getId());
                 }
             }
 
@@ -723,12 +744,13 @@ class ArticleImporter extends Importer
             $this->output->writeln('<info>To be saved...</info>');
             $totalSaved++;
 
-            if ($totalSaved % 100 == 0) {
+            //if ($totalSaved % 100 == 0) {
                 $this->output->writeln('<info>Saved !</info>');
+                dump(str_repeat('-', 100));
                 $this->getManager()->flush();
                 $this->updateAcl($entities, $entitiesArray['acl_update'], $this->output);
                 $entities = array();
-            }
+            //}
         }
 
         if ($optionCount) {
@@ -819,11 +841,11 @@ class ArticleImporter extends Importer
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2001;
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
         if ($isAvailable) {
-        $this->updateCount(__FUNCTION__, 1);
-        if ($optionCount == false) {
-            return true;
+            $this->updateCount(__FUNCTION__, 1);
+            if ($optionCount == false) {
+                return true;
+            }
         }
-    }
     }
 
     protected function isInfoMatching(OldArticle $oldArticle)
