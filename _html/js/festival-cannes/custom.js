@@ -41,19 +41,19 @@ $(document).ready(function() {
 
 /* BOX SERVICES */
 
-  	var servicesBoxes = $('.services-boxes');
-  	var selectedBox = $('.services-pictures div');
+    var servicesBoxes = $('.services-boxes');
+    var selectedBox = $('.services-pictures div');
 
-  	$(servicesBoxes).hover(function() {
-  	      $(selectedBox).toggleClass('hide')
-  	      $('#' + $(this).data('rel')).toggleClass('show');
-  	});
+    $(servicesBoxes).hover(function() {
+          $(selectedBox).toggleClass('hide')
+          $('#' + $(this).data('rel')).toggleClass('show');
+    });
 
 /* MENU */
 
 function menuMDF() {
 
-	var blackBckg = $(".blackBckg");
+  var blackBckg = $(".blackBckg");
 
     $('.seeSub').hover(function() {
       $('.liMargin').toggleClass('littleMargin');

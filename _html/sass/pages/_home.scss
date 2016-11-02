@@ -1805,7 +1805,8 @@
       font-size: 16px;
       margin-bottom: 100px;
       line-height: 40px;
-       @media screen and(max-width: $mobileWidth) {
+      opacity: 0.8;
+       @media screen and (max-width: $mobileWidth) {
             font-size: 90%;
         }
     }
@@ -1845,6 +1846,7 @@
       text-transform: uppercase;
       font-size: 12px;
       font-family: $CamphorHeavy;
+      letter-spacing: 1px;
     }
 
     h3 {
@@ -1894,7 +1896,10 @@
             color: #505050;
             opacity: 0.8;
             font-family: $CamphorItalic;
+          }
 
+          div:nth-child(3) {
+            font-size: 13px;
           }
 
         .glyphicon  {
@@ -2095,6 +2100,7 @@
         height: 320px;
         max-height: 320px;
         width: 230px;
+        padding: 0px 30px 0px 30px;
       }
 
       span {
@@ -2245,6 +2251,7 @@
       color: #fff481;
       font-family: $CamphorRegular;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
   }
   .owl-dot:after {
@@ -2352,11 +2359,11 @@
   .item {
     width: 400px;
     height: 380px;
-    overflow: hidden
+    overflow: hidden;
   }
 
   .owl-item {
-    margin-right: -10px;
+    margin-right: -10px!important;
   }
 
   .owl-next {
@@ -2386,7 +2393,7 @@
 
   .owl-Title {
     position: absolute;
-    width: 380px;
+    width: 400px;
     height: 380px;
     color: white;
     text-align: center;
@@ -2403,6 +2410,8 @@
       text-transform: uppercase;
       z-index: 1002!important;
       font-family: $CamphorHeavy;
+      letter-spacing: 2px;
+      font-size: 14.5px;
     }
   }
 
@@ -2439,6 +2448,7 @@
 
       h2 {
         margin: 100px 0px 35px 0px!important;
+        font-size: 14.5px;
       }
 
       .owl-controls {
@@ -2454,7 +2464,7 @@
 
       }
 
-      .owl-item { margin-right: 0px;}
+      .owl-item { margin-right: 0px!important;}
 
 
       .owl-item {
@@ -2462,7 +2472,7 @@
       }
 
       .item {
-        width: 310px;
+        width: 320px;
         height: 310px;
       }
 
@@ -2489,6 +2499,10 @@
  }
 
 header {  
+
+  #logo-wrapper {
+    height: 180px;
+  }
   
   #logo-wrapper #logo h1 {
     position: absolute;
