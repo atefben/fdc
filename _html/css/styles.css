@@ -10583,8 +10583,8 @@ header #searchContainer {
 }
 @media screen and (max-width: 1280px) {
   .innerWrapper {
-    max-width: 90% !important;
-    width: 90% !important;
+    max-width: 90%;
+    width: 90%;
   }
 }
 
@@ -10596,6 +10596,10 @@ header #searchContainer {
   vertical-align: middle;
   padding-top: 2%;
   width: 100%;
+}
+#our-services .innerWrapper {
+  width: 90% !important;
+  max-width: 90% !important;
 }
 #our-services span {
   color: #29afcf;
@@ -10697,8 +10701,12 @@ header #searchContainer {
   width: 100%;
 }
 @media screen and (max-width: 1279px) {
-  .our-news {
-    height: 1200px;
+  .our-news .innerWrapper {
+    width: 70% !important;
+    max-width: 70% !important;
+  }
+  .our-news .noShow {
+    display: none;
   }
 }
 .our-news span {

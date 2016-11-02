@@ -18,7 +18,7 @@
       <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
     </div>
   </div>
-  <div class="articles">
+  <div class="articles noShow">
     <div class="articles-content">
       <span>producers workshop <span class="article-date">26 jun 2016</span></span>
       <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
