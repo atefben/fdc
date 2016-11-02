@@ -27,17 +27,17 @@
                 
                 <div class="dropdown"> 
                   <span>AFFICHER</span>
-                  <select id="eventSelector">
-                     <option value="a">Producers Workshop</option>
-                     <option value="b">Producers Network</option>
-                     <option value="c">Doc Corner</option>
-                     <option value="d">Next</option>
-                     <option value="e">mixers</option>
-                     <option value="f">Goes To Cannes</option>
-                  </select>
+                  <div id="eventSelector">
+                    <div class="selectText" rel="a">Producers Network,</div>
+                    <div class="selectText" rel="b">Producers Workshop,</div>
+                    <div class="selectText" rel="c">Producers Workshop,</div>
+                    <div class="selectText" rel="d">Producers Workshop,</div>
+                    <div class="selectText" rel="e">Producers Workshop,</div>
+                    <div class="selectText" rel="f">Producers Workshop,</div>
+                  </div>
                 </div><br>
                 <div class="selector">
-                  <div class="active selectbtn" id="all">Show All</div>
+                  <div class="purpleBtn selectbtn" id="all">Tous</div>
                   <div class="selectbtn" id="b">Producers Workshop</div>
                   <div class="selectbtn" id="a">Producers Network</div>
                   <div class="selectbtn" id="c">Doc Corner</div>
@@ -330,6 +330,7 @@
             </div>
           </div>
       </div>
+    <?php include('box-secondary-nav.php'); ?>
     <?php include('box-accreditation.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

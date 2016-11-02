@@ -352,7 +352,8 @@ ul.tabs {
 }
 
 .read-more-state {
-  display: none;
+  height: 0px;
+  @include transition(all 0s $smoothTransition);
 }
 
 .read-more-target {
@@ -366,17 +367,20 @@ ul.tabs {
 }
 
 .read-more-wrap .read-more-target {
-  display: none;
-  width: 0%;
+  width: 80%;
   height: 0px;
+  opacity: 0;
   @include transition(all .5s $smoothTransition);
 }
 
+.read-more-state:checked {
+    @include transition(all 2s $smoothTransition); 
+}
+
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
-  display: block;
   opacity: 1;
   max-height: 999em;
-  width: 100%;
+  width: auto;
   height: auto;
   @include transition(all .5s $smoothTransition);
 }
@@ -445,9 +449,10 @@ ul.tabs {
 
 .floatingButton {
     position: absolute;
-    z-index: 1004;  
+    z-index: 1004;
+    z-index: 999;    
     right: 1%;
-    top: 27%;
+    top: 100%;
     
     span:first-child {
       background: black;
@@ -487,11 +492,20 @@ ul.tabs {
 }
 
 
+.showBtn {
+  display: block!important;
+}
+
 .floatingButtonRight {
-  position: absolute;
+  /*position: absolute;
   z-index: 1004;  
   right: 1%;
-  top: 40%;
+  top: 100%;*/
+  display: none;
+  position: fixed;
+  z-index: 999;  
+  right: 1%; 
+  top: 50%;
   @media screen and (max-width: $mobileWidth) {
     top: 48%;
   }      
@@ -532,20 +546,12 @@ ul.tabs {
     }
 }
 
-.message {
-  margin-left: 50px;
-  text-transform: initial;
-  font-size: 16px;
-  color: #505050;
-  font-family: $CamphorHeavy;
-  @include transition(all 1s $smoothTransition);
-}
-
 .floatingButtonLeft {
-  position: absolute;
-  z-index: 1004;  
+  display: none;
+  position: fixed;
+  z-index: 999;  
   left: 1%; 
-  top: 40%;
+  top: 50%;
 
   @media screen and (max-width: $mobileWidth) {
     top: 48%;
@@ -587,6 +593,15 @@ ul.tabs {
     }
 }
 
+.message {
+  margin-left: 50px;
+  text-transform: initial;
+  font-size: 16px;
+  color: #505050;
+  font-family: $CamphorHeavy;
+  @include transition(all 1s $smoothTransition);
+}
+
 .blueBtn {
     float: right;
     right: 5%;
@@ -594,7 +609,7 @@ ul.tabs {
     height: 50px;
     margin: 0 auto;
     text-align: center;
-    border: 2px solid #29afcf;
+    border: 1px solid #29afcf;
     color: #29afcf;
     line-height: 50px;
     text-decoration: none;
@@ -689,4 +704,24 @@ ul.tabs {
       font-size: 90%;
       padding: 0px 45px;
     }
+}
+
+#eventSelector {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.showeventSelector {
+  visibility: visible!important;
+  opacity: 1!important;
+}
+    
+.selectText {
+  width: auto;
+  float: left;
+  display: inline-block;
+  color: #ec3050;
+  font-size: 16px;
+  margin: 0px 5px;
+
 }

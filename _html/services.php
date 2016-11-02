@@ -29,6 +29,7 @@
                     <h6>Stands</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
@@ -42,6 +43,7 @@
                     <h6>Pavillons</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
@@ -55,6 +57,7 @@
                     <h6>Vos projections</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
@@ -68,6 +71,7 @@
                     <h6>Équipements et services</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
@@ -81,6 +85,7 @@
                     <h6>Opportunités publicitaires</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
@@ -96,7 +101,7 @@
             </div>
           </div><!--CONTAINER-->
         </div>
-
+    <?php include('box-secondary-nav.php'); ?>
     <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

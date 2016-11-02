@@ -18,7 +18,7 @@
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="#" class="active">stand</a>
+                    <a href="#">stand</a>
                   </li>
                   <li>
                     <a href="#">pavillons</a>
@@ -33,7 +33,7 @@
                     <a href="partenaires.php">partenaires</a>
                   </li>
                   <li>
-                    <a href="#">Opportunités publicitaires</a>
+                    <a href="#" class="active">Opportunités publicitaires</a>
                   </li>
                 </ul>
                </nav>
@@ -59,18 +59,6 @@
         </div>
         <div class="whiteBckg">
               <div class="tab_container ">
-                <div class="floatingButtonLeft">
-                  <div class="floatingButtonBckg">
-                    <span class="arrow"><i class='icon icon_flecheGauche'></i></span>
-                    <span class="floatingButtonText">nos conférences</span>
-                  </div>
-                </div>
-                <div class="floatingButtonRight">
-                  <div class="floatingButtonBckg">
-                    <span class="floatingButtonText">nos conférences</span>           
-                    <span class="arrow"><i class='icon icon_flecheGauche reverse'></i></span> 
-                  </div>
-                </div>
                 <div id="tab1" class="tab_content">
                     <div class="minTab">
                       <div class="tabPic">
@@ -415,8 +403,9 @@
             </div>
             <!-- .tab_container -->
           </div>
-
-
+        </div>
+      </div>
+    <?php include('box-secondary-nav.php'); ?>
     <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

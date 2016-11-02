@@ -13,6 +13,19 @@ $(document).ready(function() {
       paginationSpeed : 400
     });
 
+
+  $('#owl-accred').owlCarousel({
+      items:1,
+      navigation : true,
+      dots: false,
+      loop:true,
+      autoplay:true,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"]
+    });
+
+
   $('#owl-mid').owlCarousel({
       items:1,
       dots: false,
@@ -100,18 +113,26 @@ function hoverSearch() {
             $('.searchBox').addClass("showsearchBox");
             $('.icon_recherche').addClass("blackIcon");
 
-      }).mouseout(function() {
+      });
 
-            $('#navigation li').removeClass('marginli');
-            $('#searchBar').removeClass('marginLastli');
-            $('.searchBox').removeClass("showsearchBox");
-            $('.icon_recherche').removeClass("blackIcon");
-      
-    });
-
+    $("#main, #logo-wrapper, .text-presentation ").click(function(e){
+          $('#navigation li').removeClass('marginli');
+          $('#searchBar').removeClass('marginLastli');
+          $('.searchBox').removeClass("showsearchBox");
+          $('.icon_recherche').removeClass("blackIcon");
+      });
   }
 
 hoverSearch();
+
+
+$(window).scroll(function(){
+   if ($(this).scrollTop() > 400) {
+        $(".floatingButtonLeft, .floatingButtonRight").addClass("showBtn");
+    } else {
+      $(".floatingButtonLeft, .floatingButtonRight").removeClass("showBtn");
+    }
+});
 
 /* TABS */
 
@@ -177,13 +198,29 @@ $('#accordion-menu .content').hide();
 function click() {
     var el = [];
     var clicked;
+    var selectbtn = $('.selectbtn');
     
+    $('.dropdown span').click(function() {
+        $('#eventSelector').toggleClass("showeventSelector");
+    });
+
+    $(selectbtn).click(function() {
+          $('#' + $(this).data('rel')).toggle();
+    });
+
+
     $('.selectbtn').click(function() {
 
       var identification = $(this).attr('id'); 
 
         if($(this).hasClass('purpleBtn')) {
+            
             $(this).removeClass('purpleBtn');
+            
+            //var text = $(this).html();
+
+            //$('#eventSelector').html($("#eventSelector").html().split(text).join(""));
+
             console.log("class removed");
               var index = el.indexOf(identification);
               if (index > -1) {
@@ -194,8 +231,7 @@ function click() {
               console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
-                $('.parent > div').fadeOut(450);
-
+                  $('.parent > div').fadeOut(450);
                   $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
               } 
             
@@ -204,7 +240,24 @@ function click() {
       else {
 
         $('.events').addClass('hideContent');
-        $(this).addClass('purpleBtn'); 
+        
+        $(this).addClass('purpleBtn');
+        /*$("#all").removeClass('purpleBtn'); 
+
+            $('#all').click(function() {
+
+            if($(this).hasClass('purpleBtn')) { 
+                $(this).removeClass('purpleBtn');
+                $(this).sibblings().removeClass('purpleBtn');
+            } else {
+                $(this).addClass('purpleBtn'); 
+            }
+
+          });*/
+        
+        //var text = $(this).html();
+
+        //$('#eventSelector').append('<div class="selectText">' + text + '</div>');
 
         el.push(identification);  
            
@@ -213,10 +266,12 @@ function click() {
           if (this.id == 'all') {
             $('.parent > div').fadeIn(450);
             $('.message').empty();
-          } else if (el){
+            $(this).addClass('purpleBtn');
+            $(this).siblings().removeClass('purpleBtn');
+          } else if (el ){
               $.each(el, function(i, val) { 
-                /*$(this).closest('li').addClass('open-selected-conf');*/
                  $('.' + val).fadeIn(450); 
+                 $("#all").removeClass('purpleBtn');
                   console.log("here is " + val);
                   if ($(identification) != val) {
                     $("." + identification).addClass('hideContent');
@@ -224,7 +279,7 @@ function click() {
               });
           }
 
-      }
+        }
     });
 
     $('#accordion-conf .open').each(function() {
