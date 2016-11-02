@@ -10597,9 +10597,11 @@ header #searchContainer {
   padding-top: 2%;
   width: 100%;
 }
-#our-services .innerWrapper {
-  width: 90% !important;
-  max-width: 90% !important;
+@media screen and (max-width: 1280px) {
+  #our-services .innerWrapper {
+    width: 90% !important;
+    max-width: 90% !important;
+  }
 }
 #our-services span {
   color: #29afcf;

@@ -1840,10 +1840,12 @@
     vertical-align: middle;
     padding-top: 2%;
     width: 100%;
-
-    .innerWrapper {
-      width: 90%!important;
-      max-width: 90%!important;
+    
+     @media screen and (max-width: 1280px) {
+      .innerWrapper {
+        width: 90%!important;
+        max-width: 90%!important;
+      }
     }
 
     span {
