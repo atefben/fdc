@@ -124,7 +124,7 @@ class ArticleImporter extends Importer
         $oldArticles = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
-            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN, 'id'=>41291], ['id' => 'asc'])
+            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'])
         ;
 
         $entitiesArray = array(
@@ -269,9 +269,6 @@ class ArticleImporter extends Importer
                                 $newsTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                             }
                         }
-                        dump($newsTrans);
-                        die;
-
 
                         $newsTrans->setTitle(strip_tags($oldArticleTranslation->getTitle()));
                         foreach ($mapperFields as $oldField => $field) {
