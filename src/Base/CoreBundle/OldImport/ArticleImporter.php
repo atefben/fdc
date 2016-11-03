@@ -605,8 +605,10 @@ class ArticleImporter extends Importer
 
                                 if ($widget->getFile() != null) {
                                     $video = $widget->getFile();
+                                    $video->setDisplayedHomeCorpo(false);
                                 } else {
                                     $video = new MediaVideo();
+                                    $video->setDisplayedHomeCorpo(false);
                                     $widget->setFile($video);
                                     $this->getManager()->persist($video);
                                 }
