@@ -126,7 +126,7 @@ class EditionsController extends Controller
     public function historyAction(Request $request) {
         $em = $this->get('doctrine')->getManager();
 
-        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(6);
+        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(1);
         return array(
             'currentPage' => $page,
         );
@@ -134,7 +134,7 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/history")
+     * @Route("/palme")
      * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
      * @return array
      */
