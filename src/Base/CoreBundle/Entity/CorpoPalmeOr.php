@@ -17,7 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * CorpoPalmeOr
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\CorpoPalmeOrRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CorpoPalmeOr implements TranslateMainInterface
@@ -44,6 +44,14 @@ class CorpoPalmeOr implements TranslateMainInterface
      *
      */
     private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     *
+     */
+    private $weight;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
@@ -93,11 +101,34 @@ class CorpoPalmeOr implements TranslateMainInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     * @return CorpoPalmeOr
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 
     /**
@@ -116,7 +147,7 @@ class CorpoPalmeOr implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImage()
     {
@@ -139,7 +170,7 @@ class CorpoPalmeOr implements TranslateMainInterface
     /**
      * Get createdBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getCreatedBy()
     {
@@ -162,7 +193,7 @@ class CorpoPalmeOr implements TranslateMainInterface
     /**
      * Get updatedBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUpdatedBy()
     {
@@ -195,7 +226,7 @@ class CorpoPalmeOr implements TranslateMainInterface
     /**
      * Get widgets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWidgets()
     {

@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\CorpoPalmeOr;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -134,17 +135,42 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/palme")
+     * @Route("/palme/{slug}")
      * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
      * @return array
      */
-    public function PalmeAction(Request $request) {
-        $em = $this->get('doctrine')->getManager();
+    public function PalmeAction(Request $request, $slug = null) {
+        $locale = $request->getLocale();
 
-        $page = $em->getRepository('BaseCoreBundle:CorpoPalmeOr')->findAll();
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoPalmeOr')
+            ->findAll()
+        ;
+        if ($slug === null) {
+            foreach ($pages as $page) {
+                if ($page instanceof CorpoPalmeOr) {
+                    if ($page->findTranslationByLocale($locale)) {
+                        $slug = $page->findTranslationByLocale($locale)->getSlug();
+                    }
+                    if ($slug) {
+                        return $this->redirectToRoute('fdc_corporate_editions_palme', array('slug' => $slug));
+                    }
+                }
+            }
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoPalmeOr')
+            ->getPageBySlug($locale, $slug)
+        ;
+
         return array(
-            'currentPage' => $page,
+            'pages' => $pages,
+            'currentPage' => $page
         );
-
     }
+
 }

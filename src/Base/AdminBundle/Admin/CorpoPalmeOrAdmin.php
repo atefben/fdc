@@ -192,6 +192,9 @@ class CorpoPalmeOrAdmin extends Admin
                     ),
                 )
             ))
+            ->add('weight', null, array(
+                'label' => 'Position',
+            ))
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
