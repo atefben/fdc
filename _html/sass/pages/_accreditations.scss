@@ -58,7 +58,7 @@
     font-size: 16px;
     letter-spacing: 1px;
         @media screen and(max-width: $mobileWidth) {
-          font-size: 90%;
+          font-size: 70%;
         }
   }
 
@@ -74,6 +74,9 @@
     font-family: $CamphorHeavy;
     letter-spacing: 1px;
     text-align: center;
+        @media screen and(max-width: $mobileWidth) {
+          font-size: 80%;
+        }
 
     a {
       color: white;
@@ -212,11 +215,15 @@
 
 .plusPrices {
 
-    width: 100%;
+    width: 99.8%;
     height: 170px;
     padding: 50px 0px 30px 0px;
     background:#0e5554;
     border-top: 2px solid #5cb8b8;
+
+    @media screen and (max-width: 1280px) {
+          width: 99.3%;
+    }
 
     &:first-child {
       border-top: 0px solid transparent;

@@ -462,6 +462,9 @@ ul.tabs {
       opacity: 0;
       visibility: hidden;
       @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
     }
 
     .arrow {
@@ -474,6 +477,10 @@ ul.tabs {
       padding: 20px;
       font-size: 15px;
       border:1px solid #ECECEC;
+
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
       
     }
     
@@ -517,6 +524,9 @@ ul.tabs {
       opacity: 0;
       visibility: hidden;
       @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
     }
 
     .arrow {
@@ -529,7 +539,9 @@ ul.tabs {
       padding: 20px;
       font-size: 15px;
       border:1px solid #ECECEC;
-      
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
     }
     
     &:hover span:first-child {
@@ -564,6 +576,9 @@ ul.tabs {
       opacity: 0;
       visibility: hidden;
       @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
     }
 
     .arrow {
@@ -576,6 +591,9 @@ ul.tabs {
       padding: 20px;
       font-size: 15px;
       border:1px solid #ECECEC;
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
       
     }
     
@@ -699,16 +717,143 @@ ul.tabs {
     }
 }
 
+
+/* ACCORDION*/
+
+#accordion-menu {
+  
+  p, ul, ol,form, fieldset, input { margin:0; padding:0; }
+  ul, ol { list-style:none; }
+
+  a {
+    text-decoration:none; 
+    outline:none;
+    min-height: 80px;
+    color: #505050;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
+  .hide { display: none; }
+
+  li {
+      background:white;
+      padding: 10px 15px;
+      border-bottom: 2px solid #f8f8f8;
+      text-align: left;
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: 16px;
+      color: #505050;
+
+      &:before{
+        content: url(/img/checkMark.png);
+        position: relative;
+        top: 35px;
+        left: 0;
+        /* margin-right: 30px; */
+        width: 30px;
+      }
+
+      p {
+        text-transform: initial;
+        font-family: $CamphorRegular;
+        opacity: 0.8;
+        font-size: 14px;
+        line-height: 25px;
+      }
+    }
+  
+  .open {
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 35px;
+  }
+
+  .openPlus {
+    color: #333;
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    font-family: $CamphorHeavy;
+  }
+
+  .openMinus {
+    display: none;
+    color: white;
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    font-family: $CamphorHeavy;
+  }
+
+  .noDisplay {
+    display: none;
+  }
+
+  .doDisplay {
+    display: block;
+  }
+
+  .open-selected {
+    background-color: #0e5554;
+    color: #40acab;
+    @include transition(all .8s $smoothTransition);
+  }
+  .content {
+    padding:0px 10px 10px 15px;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  a {
+    color: #505050;
+  }
+}
+/***Accordion Menu [End]***/
+
+
+.dropArrow {
+  float:left;
+  width: 1%;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.dropArrowOpen {
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+
+
+.dropdown {
+  span {
+    float: left;
+  }
+}
+
 #accordion-menu {
    @media screen and(max-width: $mobileWidth) {
-      font-size: 90%;
+      font-size: 80%;
       padding: 0px 45px;
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+
     }
 }
 
 #eventSelector {
   visibility: hidden;
   opacity: 0;
+  width:80%;
+  float:left;
+  margin-top: -3px;
 }
 
 .showeventSelector {
@@ -721,7 +866,23 @@ ul.tabs {
   float: left;
   display: inline-block;
   color: #ec3050;
-  font-size: 16px;
+  font-size: 20px;
   margin: 0px 5px;
 
+  &:after {
+    content: ',';
+  }
+
+  &:last-child {
+      
+        &:after {
+        content: '';
+    }
+  }
+
+}
+
+.visibleSelectText {
+  visibility: visible;
+  opacity: 1;
 }

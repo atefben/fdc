@@ -165,6 +165,12 @@ $(window).scroll(function(){
 
     $('ul.tabs li').last().addClass("tab_last");
 
+
+    $(".dropdown").click(function() {
+
+        $('.dropArrow').toggleClass('dropArrowOpen');
+    });
+
 /* ACCORDION */
 
 $('#accordion-menu .open').each(function() {
@@ -204,79 +210,77 @@ function click() {
         $('#eventSelector').toggleClass("showeventSelector");
     });
 
-    $(selectbtn).click(function() {
+   /* $(selectbtn).click(function() {
           $('#' + $(this).data('rel')).toggle();
-    });
+    });*/
 
 
     $('.selectbtn').click(function() {
 
-      var identification = $(this).attr('id'); 
+      var identification = $(this).attr('id');
+      var attr = $(this).attr("rel");
+
 
         if($(this).hasClass('purpleBtn')) {
             
             $(this).removeClass('purpleBtn');
-            
-            //var text = $(this).html();
-
-            //$('#eventSelector').html($("#eventSelector").html().split(text).join(""));
 
             console.log("class removed");
               var index = el.indexOf(identification);
               if (index > -1) {
                   el.splice(index, 1);
               }
+              var indexRel = el.indexOf(attr);
+              if (indexRel > -1) {
+                  el.splice(indexRel, 1);
+              }
+
               $('.' + identification).fadeOut(450); 
+              $('#' + attr).hide(); 
               console.log("removed " + identification);
               console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
                   $('.parent > div').fadeOut(450);
                   $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
-              } 
+                  $('.selectText').hide();
+              } else if (this.id == 'all') {
+                  $('.selectText').hide();
+              }
             
           }
 
       else {
 
-        $('.events').addClass('hideContent');
-        
+        $('.events, .selectText').addClass('hideContent');
         $(this).addClass('purpleBtn');
-        /*$("#all").removeClass('purpleBtn'); 
 
-            $('#all').click(function() {
-
-            if($(this).hasClass('purpleBtn')) { 
-                $(this).removeClass('purpleBtn');
-                $(this).sibblings().removeClass('purpleBtn');
-            } else {
-                $(this).addClass('purpleBtn'); 
-            }
-
-          });*/
-        
-        //var text = $(this).html();
-
-        //$('#eventSelector').append('<div class="selectText">' + text + '</div>');
-
-        el.push(identification);  
+        el.push(identification);
+        el.push(attr);    
            
         console.log(el);
 
           if (this.id == 'all') {
             $('.parent > div').fadeIn(450);
+            $('.selectText').show();
             $('.message').empty();
             $(this).addClass('purpleBtn');
             $(this).siblings().removeClass('purpleBtn');
-          } else if (el ){
-              $.each(el, function(i, val) { 
-                 $('.' + val).fadeIn(450); 
-                 $("#all").removeClass('purpleBtn');
+            el = [];
+            console.log(el);
+          } else if (el){
+              $.each(el, function(i, val) {              
+                 $('.' + val).fadeIn(450);
+                 $('.' + val).removeClass('hideContent');
+                 $('#all').removeClass('purpleBtn');
+                 $('#' + attr).fadeIn(250);
                   console.log("here is " + val);
+                  console.log("here is " + attr);
                   if ($(identification) != val) {
                     $("." + identification).addClass('hideContent');
                   }
               });
+              $('#' + attr).show();
           }
 
         }

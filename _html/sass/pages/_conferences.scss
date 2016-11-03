@@ -136,7 +136,7 @@
   }
 
   .conf60, .conf70 {
-    width: 50%;
+    width: 47%;
     float: left;
     color: #505050;
     text-transform: initial;
@@ -144,6 +144,20 @@
     text-align: left;
     padding-top: 35px;
     height: 200px;
+    padding-right: 30px;
+
+    hr {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      margin-right: -85px;
+      width: 140px;
+      border-right: 1px solid #e7e7e7;
+      margin-top: -90px;
+      opacity: 0.2;
+    }
 
     .confButton {
       position: relative;

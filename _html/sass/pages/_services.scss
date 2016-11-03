@@ -6,6 +6,10 @@
 
   min-height: 1350px;
 
+  @media screen and (max-width: $mobileWidth) {
+    min-height: 1850px;
+  }
+
     p {
       font-size: 16px;
       font-family: $CamphorRegular;

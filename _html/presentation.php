@@ -15,8 +15,8 @@
       <?php include('box-producers-workshop.php'); ?>
       <div class="container">
               <div class="text-presentation marche">
-                <h3>Les clés pour bien débuter sur <br>le marché international !</h3>
-                <h4>Le Producers Workshop est un programme destiné aux producteurs qui commencent sur la scène internationale ou qui n’ont pas ou peu d’expérience du Marché du Film et du Festival de Cannes.<br> De la technique du pitch aux rouages de la co-production internationale, vous vous familiariserez avec tous les outils et compétences nécessaires à votre succès sur le marché cinématographique international.</h4> 
+                <h3>Le premier marché cinématographique du monde</h3>
+                <h4>C'est l'occasion de rencontrer, des professionnels, d'échanger et de faire avancer vos projets.<br>Le Marché du Film est l'événement le plus important de l'industrie cinématographique et le rendez-vous de plus de 10 000 professionnels dont 3 200 producteurs, 2 300 distributeurs salles, 1 500 vendeurs et 790 programmateurs de festivals.</h4> 
               </div>
               <div class="floatingButton">
                 <div class="floatingButtonBckg">
@@ -93,10 +93,19 @@
               </div> 
               
               <div class="text-presentation marche">
-                <h6>Workshops et networking pour une formation ciblée</h6>
-                <h5>En plus de tous les avantages d'un badge Marché du Film, vous bénéficiez, durant les premiers jours du Festival de Cannes et du Marché du Film, d’un accès au Producers Workshop: un programme ciblé, mené par des experts de l’industrie, destiné à soutenir les producteurs dans leurs démarches à l’international et à rendre plus efficace leur participation au Marché du Film et au Festival de Cannes.</h5> 
-                <h5>Un cocktail de networking inaugure le programme en toute convivialité ! Abordez le marché international avec confiance grâce à nos ateliers et séminaires sur le rôle de producteur, les techniques de pitch, la coproduction et le financement international, les stratégies marketing,  la distribution et les ventes internationales du mercredi 11 au samedi 14 mai 2016. Le dimanche 15 aura lieu une rencontre avec les marchés de coproduction internationaux et le mardi 17 un dernier atelier clôturera votre séjour.</h5> 
-                <h5>Pour plus de renseignements, merci de contacter Lisa Kermabon – Manager Producers Workshop / Industry Programs: <a href="mailto:lkermabon@festival-cannes.fr">lkermabon@festival-cannes.fr</a> Visitez notre FAQ où vous trouverez les réponses aux questions les plus fréquentes concernant ce programme. DATES 2016 : La 6ème édition du Producers Workshop se déroulera du mercredi 11 au dimanche 15 mai, avec une session additionnelle le 17 mai. </h5>
+                <h6>UN MARCHÉ INCONTOURNABLE</h6>
+                <ul>
+                  <li>• Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>
+                  <li>• Bénéficiez d'un accès gratuit pendant un an à Cinando</li>
+                  <li>• Rencontrez des experts du monde entier dans le cadre de nos Industry Programs</li>
+                  <li>• Participez aux conférences NEXT dédiées au futur du cinéma</li>
+                  <li>• Plus de 1000 projections</li>
+                  <li>• Accès aux zones du Marché (Palais des Festivals, Riviera, Lérins, Village International)</li>
+                  <li>• Assistez à la reprise des films de la Sélection Officielle en projection privée les jeudi 19 et vendredi 20 mai 2016 </li>
+                  <li>• Recevez le sac du Marché du Film et ses publications pour organiser votre séjour: le Pocket Guide, le Producers Guide, le Focus, le Funds Guide</li>
+                  <li>• Connectez vous en libre accès aux Web Points</li>
+                  <li>• Accèdez au Wi-Fi gratuitement et de façon illimitée</li>
+                </ul>
               </div>
 
           </div><!--CONTAINER-->

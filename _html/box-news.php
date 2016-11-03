@@ -7,7 +7,7 @@
     <div class="articles-content">
       <span>producers workshop <span class="article-date">26 jun 2016</span></span>
       <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-      <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans la tête d’un androïde à qui on a implanté la mémoire d'un humain. La réalité virtuelle, qui permet au spectateur d'un film d'en être aussi l'acteur, est une star à Cannes.</p>
+      <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans la tête d’un androïde à qui on a implanté la mémoire d'un humain. La réalité virtuelle, qui permet au spectateur d'un film d'en être aussi l'acteur, est une star à Cannes Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans la tête d’un androïde à qui on a implanté la mémoire d'un humain. La réalité virtuelle, qui permet au spectateur d'un film d'en être aussi l'acteur.</p>
       <div class="readMore">...</div>
     </div>
   </div>
@@ -24,7 +24,7 @@
     <div class="articles-content">
       <span>producers workshop <span class="article-date">26 jun 2016</span></span>
       <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-      <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans la tête d’un androïde à qui on a implanté la mémoire d'un humain. La réalité virtuelle, qui permet au spectateur d'un film d'en être aussi l'acteur, est une star à Cannes.</p>
+      <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans la tête d’un androïde à qui on a implanté la mémoire d'un humain. La réalité virtuelle, qui permet au spectateur d'un film d'en être aussi l'acteur, est une star à Cannes Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans la tête d’un androïde à qui on a implanté la mémoire d'un humain. La réalité virtuelle, qui permet au spectateur d'un film d'en être aussi l'acteur.</p>
       <div class="readMore">...</div>
     </div>
   </div>

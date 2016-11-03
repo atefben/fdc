@@ -1803,7 +1803,7 @@
     h5 {
       color: #2b2b2b;
       font-size: 16px;
-      margin-bottom: 100px;
+      margin-bottom: 80px;
       line-height: 40px;
       opacity: 0.8;
        @media screen and (max-width: $mobileWidth) {
@@ -1817,6 +1817,7 @@
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       opacity: 0.9;
+      padding-bottom: 100px;
     }
 }
 
@@ -2060,16 +2061,46 @@
 
 .marche {
   
-  text-align: left;
+  text-align: center;
   margin-bottom: 50px;
   padding-top:1%;
+
+  a {
+    color: #ec3050;
+    text-decoration: none;
+    text-transform: initial;
+    font-family: $CamphorRegular;
+  }
+
+  h4 {
+    color: #2b2b2b;
+    font-size: 16px;
+    line-height: 40px;
+    opacity: 0.8;
+    font-family: $CamphorRegular;
+  }
+
+  h3 {
+    text-transform: initial;
+    text-align: center;
+    font-family: $CamphorRegular;
+  }
+
   h6 {
     color: #141414;
     text-transform: uppercase;
     font-size: 16px;
-    opacity: 0.8;
-    font-family: $CamphorRegular;
+    opacity: 1;
+    letter-spacing: 1px;
+    font-family: $CamphorBold;
     margin-bottom: 30px;
+    text-align: left;
+  }
+
+  h5 {
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: $CamphorRegular;
   }
 
   li {
@@ -2079,6 +2110,7 @@
     font-family: $CamphorRegular;
     line-height: 40px;
     padding-right:50px;
+    text-align: left;
   }
 }
 
@@ -2254,379 +2286,6 @@
     }
 }
 
-/* CAROUSEL HOME */
-
-
-#owl-top, #owl-mid, #owl-accred {
-  height: 500px;
-  overflow: hidden;
-  text-align: center;
-  margin: 0 auto;
-
-  .item img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .owl-buttons {
-    display: none;
-  }
-
-  .owl-page {
-    display: inline-block;
-  }
-
-  .owl-controls {
-      display: block!important;
-      position: absolute;
-      top: 70%;
-      width: 100%;
-      z-index: 1004;
-  }
-
-.owl-page {
-    display: inline-block;
-    height: 7px;
-    margin: 0 5px;
-    vertical-align: middle;
-    position: relative;
-    width: 7px;
-    border-radius: 50px;
-    border: 3px solid transparent;
-    background: white;
-    @include transition(all .8s $smoothTransition);
-
-    &.active {
-      border: 5px solid white;
-      background: none;
-      @include transition(all .8s $smoothTransition);
-    }
-  }
-
-  .owl-Title {
-    text-align: center;
-    margin: 0 auto;
-    position: absolute;
-    top: 15%;
-    width: 100%;
-    
-    h2 {
-      font-size: 70px;
-      text-transform: uppercase;
-      color: white;
-      font-family: "Playfair Display",Times New Roman,Times,serif;
-    }
-
-    p, span {
-      font-size: 18px;
-      color: white;
-    }
-
-    p {
-      margin: 50px 0px;
-      font-family: "Playfair Display",Times New Roman,Times,serif;
-    }
-
-    span {
-      color: #fff481;
-      font-family: $CamphorRegular;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-  }
-  .owl-dot:after {
-      color: white;
-  }
-
-}
-
-#owl-accred {
-
-  height: auto;
-
-  .item img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .owl-controls {
-      display: block;
-      position: absolute;
-      top: 50%;
-      width: 100%;
-  }
-  .owl-buttons {
-    display: block;
-  }
-
-  .owl-next, .owl-prev {
-    border: 1px solid $gold;
-    color: $gold;
-    width: 65px;
-    height: 65px;
-  } 
-  .owl-next {
-    display: block!important;
-    float: right;
-    position: absolute;
-    right: 2%;
-  }
-
-  .owl-prev {
-    display: block!important;
-    float: left;
-    position: absolute;
-    left: 2%;
-  }
-  .goldarrowLeft, .goldarrowRight {
-    width: 65px;
-    height: 65px;
-    line-height: 60px;
-    font-size: 13px;
-  }
-}
-
-#owl-mid {
-  height: 600px;
-  .owl-controls {
-      display: block;
-      position: absolute;
-      top: 50%;
-      width: 100%;
-  }
-  .owl-buttons {
-    display: block;
-  }
-
-  .owl-pagination {
-    display: none;
-  }
-
-  .item {
-    width: 977px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .image-caption {
-    color: #666;
-    font-family: $CamphorRegular;
-    font-size: 0.750rem;
-    margin: 20px 0;
-    z-index: 1002;
-    text-align: left;
-  }
-
-  .owl-next {
-    display: block!important;
-    float: right;
-    position: absolute;
-    right: 0%;
-  }
-
-  .owl-prev {
-    display: block!important;
-    float: left;
-    position: absolute;
-    left: 0%;
-  }
-
-  .redarrowLeft, .redarrowRight{
-    width: 65px;
-    height: 65px;
-    background: #ec3050;
-    color: white;
-    line-height: 70px;
-    font-size: 13px;
-  }
-  
-  p {
-    color: #666666;
-    margin-top: -40px;
-    text-align: left;
-  }
-
-}
-
-#owl-second {
-  
-  height: 380px;
-  text-align: center;
-  margin: 0 auto;
-  overflow: hidden;
-  max-width: 1250px;
-  margin-top: -50px;
-  position: relative;
-
-  .owl-stage {
-    margin-left: 10px;
-  }
-
-  .owl-stage-outer {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .owl-wrapper-outer {
-    max-width: 1149px;
-    text-align: center;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .owl-controls {
-      display: block;
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      z-index: 1004;
-  }
-
-  .item {
-    width: 400px;
-    height: 380px;
-    overflow: hidden;
-  }
-
-  .owl-item {
-    margin-right: -10px!important;
-  }
-
-  .owl-next {
-    display: block!important;
-    float: right;
-    position: absolute;
-    right: 0%;
-  }
-
-  .owl-prev {
-    display: block!important;
-    float: left;
-    position: absolute;
-    left: 0%;
-  }
-
-  .fitImg {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    filter: brightness(70%);
-    -webkit-filter: brightness(70%);
-    -moz-filter: brightness(70%);
-    -o-filter: brightness(70%);
-    -ms-filter: brightness(70%);
-  }
-
-  .owl-Title {
-    position: absolute;
-    width: 400px;
-    height: 380px;
-    color: white;
-    text-align: center;
-    margin: 0 auto;
-    z-index: 1002;
-
-    img {
-      text-align: center;
-      margin: 0 auto;
-    }
-
-    h2 {
-      margin: 150px 0px 40px 0px;
-      text-transform: uppercase;
-      z-index: 1002!important;
-      font-family: $CamphorHeavy;
-      letter-spacing: 2px;
-      font-size: 14.5px;
-    }
-  }
-
-  .redarrowLeft, .redarrowRight{
-    width: 65px;
-    height: 65px;
-    background: #ec3050;
-    color: white;
-    line-height: 70px;
-    font-size: 13px;
-    z-index: 1003;
-  }
-
-
-}
-
-@media screen and (max-width: 1152px) { 
-
-
- #owl-second{
-    margin-top: -100px;      
-    width: 1000px!important;
-    max-width:1000px!important;
-    
-    .owl-stage-outer {
-      width: 950px!important;
-      max-width:950px!important;
-      margin: 0 auto;
-    }
-
-    .owl-stage {
-        margin-left: 0px;
-    }
-
-      h2 {
-        margin: 100px 0px 35px 0px!important;
-        font-size: 14.5px;
-      }
-
-      .owl-controls {
-        top: 40%!important;
-      }
-
-      .owl-wrapper-outer {
-        width: 950px!important;
-        max-width:950px!important;
-        text-align: center;
-        margin: 0 auto;
-        overflow: hidden;
-
-      }
-
-      .owl-item { margin-right: 0px!important;}
-
-
-      .owl-item {
-        width: 325px!important;
-      }
-
-      .item {
-        width: 320px;
-        height: 310px;
-      }
-
-      .owl-Title {
-        width: 100%;
-        height: 310px!important;
-    }
-  }   
-}
-
-.midContainer {
-  max-width: 1152px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.owlContainer {
-    width: 1211px;
-    height: auto;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 5%;
-    margin-bottom: 6%;
- }
-
 header {  
 
   #logo-wrapper {
@@ -2640,101 +2299,3 @@ header {
 
   }
 }
-
-
-
-/* ACCORDION*/
-
-#accordion-menu {
-  
-  p, ul, ol,form, fieldset, input { margin:0; padding:0; }
-  ul, ol { list-style:none; }
-
-  a {
-    text-decoration:none; 
-    outline:none;
-    min-height: 80px;
-    color: #505050;
-    font-size: 16px;
-    text-transform: uppercase;
-  }
-
-  .hide { display: none; }
-
-  li {
-      background:white;
-      padding: 10px 15px;
-      border-bottom: 2px solid #f8f8f8;
-      text-align: left;
-      text-transform: uppercase;
-      font-family: $CamphorHeavy;
-      font-size: 16px;
-      color: #505050;
-
-      &:before{
-        content: url(/img/checkMark.png);
-        position: relative;
-        top: 35px;
-        left: 0;
-        /* margin-right: 30px; */
-        width: 30px;
-      }
-
-      p {
-        text-transform: initial;
-        font-family: $CamphorRegular;
-        opacity: 0.8;
-        font-size: 14px;
-        line-height: 25px;
-      }
-    }
-  
-  .open {
-    cursor: pointer;
-    display: block;
-    height: 50px;
-    line-height: 50px;
-    margin-left: 35px;
-  }
-
-  .openPlus {
-    color: #333;
-    float: right;
-    margin-right: 30px;
-    font-size: 25px;
-    font-family: $CamphorHeavy;
-  }
-
-  .openMinus {
-    display: none;
-    color: white;
-    float: right;
-    margin-right: 30px;
-    font-size: 25px;
-    font-family: $CamphorHeavy;
-  }
-
-  .noDisplay {
-    display: none;
-  }
-
-  .doDisplay {
-    display: block;
-  }
-
-  .open-selected {
-    background-color: #0e5554;
-    color: #40acab;
-    @include transition(all .8s $smoothTransition);
-  }
-  .content {
-    padding:0px 10px 10px 15px;
-    color: #ffffff;
-    text-align: left;
-  }
-  
-  a {
-    color: #505050;
-  }
-}
-/***Accordion Menu [End]***/
