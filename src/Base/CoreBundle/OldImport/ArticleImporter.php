@@ -269,7 +269,8 @@ class ArticleImporter extends Importer
                                 $newsTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                             }
                         }
-                        dump('>>>>>>>>>>>>>>>><'.$newsTrans->getId());
+                        dump($newsTrans);
+                        die;
 
 
                         $newsTrans->setTitle(strip_tags($oldArticleTranslation->getTitle()));
