@@ -124,7 +124,7 @@ class ArticleImporter extends Importer
         $oldArticles = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
-            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'])
+            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN, 'id'=>41291], ['id' => 'asc'])
         ;
 
         $entitiesArray = array(
@@ -190,7 +190,6 @@ class ArticleImporter extends Importer
                 ->getRepository('BaseCoreBundle:OldArticleI18n')
                 ->findBy(['id' => $oldArticle->getId()])
             ;
-
             // has french translation
             $hasFrenchTranslation = $this->hasFrenchTranslation($oldArticleTranslations);
             if ($hasFrenchTranslation == false) {
@@ -261,8 +260,8 @@ class ArticleImporter extends Importer
                             $newsTrans->setUpdatedAt($news->getCreatedAt());
                             $newsTrans->setIsPublishedOnFDCEvent(true);
                             $newsTrans->setTranslatable($news);
-                            $this->getManager()->persist($newsTrans);
                             $news->addTranslation($newsTrans);
+                            $this->getManager()->persist($newsTrans);;
 
                             if ($culture == 'fr') {
                                 $newsTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
@@ -270,6 +269,8 @@ class ArticleImporter extends Importer
                                 $newsTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                             }
                         }
+                        dump('>>>>>>>>>>>>>>>><'.$newsTrans->getId());
+
 
                         $newsTrans->setTitle(strip_tags($oldArticleTranslation->getTitle()));
                         foreach ($mapperFields as $oldField => $field) {
