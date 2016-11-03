@@ -22,6 +22,7 @@ class FilmFilmMediaRepository extends EntityRepository
             ->leftJoin('f.translations', 'ft')
             ->andWhere('ffm.media IS NOT NULL')
             ->andWhere('ffm.film IS NOT NULL')
+            ->andWhere('ffm.type != 18') //PDF
             ->andWhere('f.titleVO LIKE :search OR ft.title LIKE :search OR fm.titleVf LIKE :search OR fm.titleVa LIKE :search')
             ->setParameter('search', '%'.$search.'%');
 

@@ -135,6 +135,7 @@ var owInitGrid = function (id) {
             });
         });
 
+
         return $grid;
     }
 
@@ -150,6 +151,36 @@ var owInitGrid = function (id) {
                     columnWidth: '.grid-sizer'
                 }
             });
+        });
+
+        $('.read-more.ajax-request').off('click').on('click', function(e){
+            e.preventDefault();
+            var url = $(this).attr('href');
+
+            $.post({
+                type: 'POST',
+                    url: url,
+                    data: {
+                    search: $('input[name="search"]').val(),
+                        photo: $('input[name="photo"]').val(),
+                        video: $('input[name="video"]').val(),
+                        audio: $('input[name="audio"]').val(),
+                        'year-start': $('input[name="year-start"]').val(),
+                        'year-end': $('input[name="year-end"]').val(),
+                        pg: parseInt($('input[name="pg"]').val())+1
+                },
+                success: function(data) {
+                    data = $(data);
+                    $grid.append(data).isotope( 'addItems', data );
+                    $grid.isotope();
+                    $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+
+                    owinitSlideShow($grid);
+                    initVideo();
+                    initAudio();
+
+                }
+            })
         });
 
         var trunTitle = function() {

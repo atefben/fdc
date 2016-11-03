@@ -28,6 +28,9 @@ class MediaController extends Controller
         $page = $em->getRepository('BaseCoreBundle:CorpoMediatheque')->find(1);
         $locale = $request->getLocale();
 
+        $noresults = false;
+        $moreresults = true;
+
         if($request->isMethod('POST')) {
             $search = $request->get('search');
             $photo = $request->get('photo') ? true : false;
@@ -89,27 +92,38 @@ class MediaController extends Controller
                 $pageMedias[] = $medias[$i];
             }
 
+            if($end == count($medias)-1) {
+                $moreresults = false;
+            }
+
             $medias = $pageMedias;
-        }
 
-        $noresults = false;
-
-        if(count($medias) == 0 || !$request->isMethod('POST')) {
             if(count($medias) == 0) {
                 $noresults = true;
             }
+        }
+
+        if($noresults || !$request->isMethod('POST')) {
             if(!$page->getDisplayedSelection()) {
                 $medias = $page->getMediasSelection();
             } else {
                 $medias = array();
             }
+            $moreresults = false;
         }
-        
 
         if($request->get('_route') == 'fdc_corporate_media_index_ajax') {
-            return $this->render('FDCCorporateBundle:Media:medias.html.twig', array('medias' => $medias));
+            return $this->render('FDCCorporateBundle:Media:components/medias.html.twig', array('medias' => $medias));
         } else {
-            return $this->render('FDCCorporateBundle:Media:index.html.twig', array('page' => $page, 'medias' => $medias, 'noresults' => $noresults));
+            return $this->render(
+                'FDCCorporateBundle:Media:index.html.twig',
+                array(
+                    'page' => $page,
+                    'medias' => $medias,
+                    'noresults' => $noresults,
+                    'moreresults' => $moreresults
+                )
+            );
         }
     }
 }

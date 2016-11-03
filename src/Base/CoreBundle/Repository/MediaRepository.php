@@ -118,9 +118,11 @@ class MediaRepository extends EntityRepository
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.theme', 't')
             ->leftJoin('t.translations', 'tt')
-            ->andWhere('m.displayedAll = 1');
+            ->leftJoin('m.tags', 'mediatags')
+            ->leftJoin('mediatags.tag', 'tag')
+            ->leftJoin('tag.translations', 'tagt');
 
-        $searchOr = array('tt.name LIKE :search');
+        $searchOr = array('tt.name LIKE :search', 'tagt.name LIKE :search');
 
         if($photo) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
@@ -135,16 +137,20 @@ class MediaRepository extends EntityRepository
         if($video) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
                 ->leftJoin('mv.translations', 'mvt')
-                ->andWhere('mv.displayedWebTv = 1');
+                ->leftJoin('mv.webTv', 'w')
+                ->leftJoin('w.translations', 'wt')
+                ->andWhere('m.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
             $searchOr[] = 'mvt.title LIKE :search';
+            $searchOr[] = 'wt.name LIKE :search';
         }
 
         if($audio) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
-                ->leftJoin('ma.translations', 'mat');
+                ->leftJoin('ma.translations', 'mat')
+                ->andWhere('m.displayedAll = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mat', $locale);
 
