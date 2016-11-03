@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 
 /**
- * @Route("/69-editions/retrospective")
+ * @Route("/69-editions")
  */
 class EditionsController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/retrospective/")
      * @Template("FDCCorporateBundle:Retrospective:years_slider.html.twig")
      */
     public function retrospectiveAction()
@@ -25,7 +25,7 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/menu")
+     * @Route("/retrospective/menu")
      * @Template("FDCCorporateBundle:Retrospective:components/menu.html.twig")
      * @return array
      */
@@ -64,7 +64,7 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/{year}/", requirements={"year" = "\d+"})
+     * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
      */
     public function yearAction(Request $request, $year)
     {
@@ -94,7 +94,7 @@ class EditionsController extends Controller
 
 
     /**
-     * @Route("/{year}/affiche", requirements={"year" = "\d+"})
+     * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
      * @Template("FDCCorporateBundle:Retrospective:affiche.html.twig")
      * @param Request $request
      * @param $year
@@ -116,5 +116,35 @@ class EditionsController extends Controller
         $results = $bitlyManager->bitly_get('shorten', $params);
 
         return array('posters' => $posters, 'festival' => $festival, 'festivals' => $festivals, 'urlshare' => $results['data']['url']);
+    }
+
+    /**
+     * @Route("/history")
+     * @Template("FDCCorporateBundle:Retrospective:history.html.twig")
+     * @return array
+     */
+    public function historyAction(Request $request) {
+        $em = $this->get('doctrine')->getManager();
+
+        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(6);
+        return array(
+            'currentPage' => $page,
+        );
+
+    }
+
+    /**
+     * @Route("/history")
+     * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
+     * @return array
+     */
+    public function PalmeAction(Request $request) {
+        $em = $this->get('doctrine')->getManager();
+
+        $page = $em->getRepository('BaseCoreBundle:CorpoPalmeOr')->findAll();
+        return array(
+            'currentPage' => $page,
+        );
+
     }
 }
