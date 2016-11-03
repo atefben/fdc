@@ -474,7 +474,7 @@ header {
 
       li {
         display: inline-block;
-        margin-left: 25px;
+        margin-left: 40px;
 
         @media screen and(max-width: $mobileWidth) {
           margin-left: 5px;
@@ -486,7 +486,7 @@ header {
         }
 
         &:first-child {
-          margin-left: 100px;
+          margin-left: 50px;
           @media screen and(max-width: $mobileWidth) {
             margin-left: 5px;
           }
@@ -712,7 +712,7 @@ header {
 }
 
 #searchBar {
-    margin-left: 50px;
+    margin-left: 80px!important;
     border-left: 1px solid #404040;
     padding-left: 20px;
   }  

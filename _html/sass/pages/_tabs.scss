@@ -827,6 +827,8 @@ ul.tabs {
     -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
+    float: right;
+    margin-right: 10%;
 }
 
 
@@ -851,7 +853,8 @@ ul.tabs {
 #eventSelector {
   visibility: hidden;
   opacity: 0;
-  width:80%;
+  width:0%;
+  height: 0px;
   float:left;
   margin-top: -3px;
 }
@@ -859,6 +862,8 @@ ul.tabs {
 .showeventSelector {
   visibility: visible!important;
   opacity: 1!important;
+  width:80%!important;
+  height: auto!important;
 }
     
 .selectText {

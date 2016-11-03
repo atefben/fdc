@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <?php include('head.html'); ?>
+  </head>
+
+
+  <body>
+    <div id="prehome-container">
+      <div id="prehome"></div>
+    </div>
+    <?php include('header.html'); ?>
+    <div id="main" class="home loading">
+      <div class="text-presentation producersWorkshop presses">
+          <h3>Presse</h3>
+            <div class="subNavigation">
+              <nav>
+                <ul class="main">
+                  <li>
+                    <a href="#" class="active" >Communiqués de presse</a>
+                  </li>
+                  <li>
+                    <a href="#">Retombées presse</a>
+                  </li>
+                  <li>
+                    <a href="#">Galerie Photos</a>
+                  </li>
+                  <li>
+                    <a href="#">Charte Graphique</a>
+                  </li>
+                </ul>
+               </nav>
+          </div>
+        </div>
+        <div class="bigContainer">
+              
+          <div class="text-presentation projection presse">
+            <h3>Nos communiqués</h3>
+            <h5>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte.</h5> 
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div> 
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div> 
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div>
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div> 
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div> 
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                </div>
+                <div>
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div>  
+          </div>
+
+      </div><!--CONTAINER-->
+    </div>
+    <?php include('box-news.php'); ?>
+    <?php include('footer.html'); ?>
+
+     <!-- cookie banner -->
+      <?php include('cookie-banner.php'); ?>
+    <!-- //// SCRIPTS \\\\ -->
+
+    <?php include('scripts.inc.php'); ?>
+  </body>
+</html>

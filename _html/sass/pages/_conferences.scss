@@ -1,9 +1,25 @@
 /* CONFERENCE PAGE */
 
 .calendar {
-  h3 {
-    text-transform: initial;
-  }
+    width: 100%;
+    height: 350px;
+    padding: 0px 0px;
+    background: url(/img/redBackg.png);
+    background-size: 100% 350px;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+    h3 {
+      color: white;
+      margin: 135px 0px 70px 0px;
+      text-transform: initial;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
 }
 
 .conference {
@@ -15,14 +31,15 @@
   h6 {
     text-align: left;
     margin-top: 10px;
-    font-family: $CamphorHeavy;
-    opacity: 0.5;
+    font-family: $CamphorRegular;
+    font-size: 12px;
+    color: #666666;
   }
 
   img {
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 550px;
   }
 }
 
@@ -36,13 +53,17 @@
     }
 
    .open-selected-conf{
-      background: #ec3050!important;
+      background: #c60e2d!important;
       color: white!important;
+      padding-bottom: 25px;
+      transition: opacity 500 ease-in-out;
       @include transition(all 1s $smoothTransition);
    } 
 
    .open {
     font-family: $CamphorBold;
+    padding: 20px 0px;
+    margin-left: 25px;
    }
 
   .dropdown {
@@ -61,14 +82,16 @@
   .conferencesMenu {
     width: 100%;
     margin-top: 200px;
+    margin-bottom: 50px;
   }
   .conferenceMenu {
     width: 100%;
-    margin-top: 400px;
+    margin-top: 550px;
+    margin-bottom: 50px;
   }
 
   li {
-    padding: 10px 40px;
+    padding: 0px 25px 0px 25px;
     text-transform: uppercase;
     color: #505050;
     background: #f8f8f8;
@@ -89,7 +112,7 @@
      appearance: none;
      background: transparent;
      border:none;
-     color: #ec3050!important;
+     color: #c60e2d!important;
      font-size: 22px;
   }
   select::-ms-expand, option::-ms-expand { /* for IE 11 */
@@ -133,6 +156,10 @@
     font-size: 12px;
     line-height: 20px;
     text-align: center;
+
+    @media screen and (max-width: 1280px) {
+      display: none;
+    }
   }
 
   .conf60, .conf70 {
@@ -146,6 +173,23 @@
     height: 200px;
     padding-right: 30px;
 
+
+    @media screen and (max-width: 1280px) {
+       width: 55%;
+       padding-left: 65px;
+    }
+
+    .conf60title {
+      display: none;
+      color: #505050;
+      font-size: 12px;
+      font-family: $CamphorHeavy;
+      text-transform: uppercase;
+      @media screen and (max-width: $mobileWidth) {
+         display: block;
+      }
+    }
+
     hr {
       -webkit-transform: rotate(90deg);
       -moz-transform: rotate(90deg);
@@ -157,6 +201,10 @@
       border-right: 1px solid #e7e7e7;
       margin-top: -90px;
       opacity: 0.2;
+      @media screen and (max-width: 1280px) {
+          margin-right: -95px;
+          margin-top: -70px;
+        }
     }
 
     .confButton {
@@ -177,7 +225,7 @@
   }
 
   .conf70 { 
-    width: 60%;
+    width: 55%;
     padding-left: 5%;
   }
 
@@ -195,6 +243,7 @@
     padding-top: 30px;
     font-size: 14px;
     color: #505050;
+
 
     p {
       margin-left: 30px;
@@ -246,7 +295,7 @@
   .box {
     min-height: 280px;
     height: auto;
-    border-bottom: 2px solid #ec3050!important;
+    border-bottom: 2px solid #c60e2d!important;
   }
 
   .confDetails {
@@ -275,17 +324,26 @@
     font-family: $CamphorHeavy;
     span {
       font-size: 12px!important;
+      text-align: left;
+    }
+
+    p {
+      text-align: left;
+      margin-left: 15px;
     }
   }
 }
 
 .minPadding {
-  padding: 50px 0px 5px 0px !important;
+  padding: 90px 0px 47px 0px !important;
   height: auto !important;
 }
 
 .minMargin {
     margin-bottom: 20px!important;
+    line-height: 40px;
+    padding: 0px 30px;
+    font-size: 17px!important;
 }
 
 

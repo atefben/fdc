@@ -397,18 +397,21 @@
       opacity: 0.8;
       margin-bottom: 50px;
       font-family: $CamphorHeavy;
+      text-transform: uppercase;
     }
 
     .blackBtn {
       font-family: $CamphorHeavy;
-      width: 180px;
-      height: 40px;
+      width: 190px;
+      height: 35px;
       background: black;
       color: white;
       text-transform: uppercase;
-      padding-top: 25px;
+      padding-top: 22px;
       margin: 0 auto;
       text-align: center;
+      font-size: 14px;
+      letter-spacing: 1px;
     }
 }
 

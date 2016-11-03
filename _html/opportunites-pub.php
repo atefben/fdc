@@ -46,7 +46,7 @@
                 <h5>Simplifiez votre travail et celui de vos partenaires en installant votre société en plein cœur du Marché.<br> Nos stands sont situés au niveau du Riviera, au Lérins et dans le Palais. Vous profiterez ainsi de la proximité des salles<br> de projections, du business center, des bars et de la Plage des Palmes.</h5> 
             </div>
           </div>
-        </diV>
+        </div>
         <div class="greyBckg"> 
           <div class="bigContainer">   
                   <ul class="tabs">

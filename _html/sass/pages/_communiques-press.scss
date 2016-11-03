@@ -1,0 +1,283 @@
+/* Projections */
+
+.projections {
+    
+    padding-top:3%;
+    height: 500px;
+    max-height: 500px;
+
+    @media screen and (max-width: 1366px){
+      height: 400px;
+      max-height:400px;
+    }
+
+    .text-presentation {
+      padding-top: 0%;
+    }
+
+    h3 {
+      color: white;
+      text-transform: initial;
+    }
+    
+    .blackBtn {
+      padding: 30px 20px 0px;
+      font-family: $CamphorHeavy;
+      font-size: 12px;
+    }
+    
+    width: 100%;
+    background: url("/img/salle.png");
+    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+}
+
+.projection {
+
+  
+  height: 800px;
+  padding-top:3%;
+
+  @media screen and (max-width: 1280px) {
+    padding:0% 2%;
+  }
+
+  h3 {
+    color: black;
+    text-transform: initial;
+  }
+
+  h5 {
+    line-height: 40px;
+  }
+  
+  .blackBtn {
+    padding: 30px 20px 0px;
+    font-family: $CamphorHeavy;
+    font-size: 12px;
+  }
+
+  .programme {
+    
+    border: 2px solid #ECECEC;
+    padding: 40px 20px 50px 20px;
+    text-align: left;
+
+    div {
+      float: left;
+      display: block;
+    }
+
+    div:first-child {
+      margin-right: 20px;
+      opacity: 0.6;
+    }
+
+    div:nth-child(2) {
+      width: 85%;
+    }
+     div:nth-child(3) {
+      float: right;
+      background: #505050;
+      padding: 20px 22px;
+      border-radius: 50px;
+      margin-top: -20px;
+    }
+
+    h6 {
+      color: #ec3050;
+      font-size: 20px;
+    }
+
+    &:hover {
+      background: #f1f0ee;
+          div:first-child {
+            opacity: 1;
+          }
+         div:nth-child(3) {
+          float: right;
+          background: #ec3050;
+        }
+    }
+
+  }
+}
+
+/* 4. PAGE COMMUNIQUES DE PRESSE */
+
+.presses {
+  background: url("/img/goldBackg.png");
+
+  .subNavigation {
+      .active {
+        color: #a1844f;
+      }
+  }
+}
+
+.presse {
+  height: auto;
+  min-height: 1000px;
+}
+
+
+/* PAGE QUI SOMMES NOUS */
+
+.whoarewe {
+
+    .caption {
+      text-align: left;
+    }
+
+    img {
+          width: 100%;
+    }
+
+    &:nth-child(2) {
+      min-height: 900px;
+      padding-bottom: 150px;
+    }
+}
+
+.mentionsLegales {
+  height: auto;
+  min-height: auto;
+} 
+
+.erreur404 {
+      width: 100%;
+      height: 600px;
+      max-height: 600px;
+      background: url(/img/erreur-404.png);
+      background-size: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      h5, h6, h3, a {
+        color: white;
+        letter-spacing: 1px;
+        text-decoration: none;
+      }
+
+      h5 {
+        font-family: $CamphorRegular;
+      }
+
+      .icon_flecheGauche {
+        color: $gold;
+        font-size: 12px;
+        margin-right: 10px;
+      }
+}
+
+/* PLAN DU SITE */
+
+.siteMap {
+
+  min-height: 1100px;
+
+  div {
+    min-height: 500px;
+  }
+
+  .thirdSection {
+    width: 24%;
+    float: left;
+    text-align: center;
+    padding-left: 100px;
+
+    @media screen and (max-width: $mobileWidth) {
+      padding-left: 90px;
+    }
+
+    h4 {
+      font-family: $Playfair;
+      padding-bottom:30px;
+      margin-bottom: 50px;
+      border-bottom: 2px solid #f3f3f3;
+      max-width: 200px;
+      font-size: 22px;
+      color: #ec3050;
+    }
+
+    .greenColor {
+      color: #40acab;
+    }
+
+    .goldColor {
+      color: $gold;
+    }
+
+    ul {
+      margin-bottom: 20px;
+      margin-left: 30px;
+      li, a {
+        line-height: 30px;
+        text-align:left;
+        color:#cdcdcd;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+/* RETOMBEES PRESSE */
+
+.pressReview {
+
+  min-height: 1100px;
+  
+  .articles {
+    height: 290px;
+  }
+
+  .readMore {
+      margin-top: 30px;
+  }
+
+  a {
+    font-size: 12px;
+    font-family: $CamphorHeavy;
+    color: #b1b1b1;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .reverse {
+    color: $gold;
+    font-size: 10px;
+  }
+}
+
+/* ACTUALITES */
+
+.actualites {
+  
+  img {
+    width: 100%;
+  }
+
+  h5, h6, .caption {
+    text-align: left;
+  }
+
+  h5, h6 {
+    padding: 0px 30px;
+  }
+
+  h6 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 30px;
+  }
+}

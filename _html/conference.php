@@ -77,20 +77,21 @@
                                   <span>Fanny-Laure Malo</span>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
-                              </div>     
+                              </div>
+                              <hr>     
                             </div>
                             <div class="conf30Sharp">
                               <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
-                              </div>
-                              <div>
                                 <span>heure</span>
-                                <p>De 9h15 à 11h30</p>
+                                <p>de 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -104,20 +105,21 @@
                                 <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                                 <h6 class="confDetails">intervenant(s)</h6>       
                                 <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
-                              </div>     
-                            </div>
-                            <div class="conf30Sharp">
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
+                              <hr>     
+                            </div>
+                           <div class="conf30Sharp">
                               <div>
                                 <span>heure</span>
-                                <p>De 9h15 à 11h30</p>
+                                <p>de 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>                
@@ -176,20 +178,21 @@
                                   <span>Fanny-Laure Malo</span>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
-                              </div>     
-                            </div>
-                            <div class="conf30Sharp">
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
+                              <hr>     
+                            </div>
+                           <div class="conf30Sharp">
                               <div>
                                 <span>heure</span>
-                                <p>De 9h15 à 11h30</p>
+                                <p>de 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -275,20 +278,21 @@
                                   <span>Fanny-Laure Malo</span>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
-                              </div>     
-                            </div>
-                            <div class="conf30Sharp">
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
+                              <hr>     
+                            </div>
+                           <div class="conf30Sharp">
                               <div>
                                 <span>heure</span>
-                                <p>De 9h15 à 11h30</p>
+                                <p>de 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -302,28 +306,43 @@
                                 <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                                 <h6 class="confDetails">intervenant(s)</h6>       
                                 <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
-                              </div>     
+                              </div> 
+                              <hr>    
                             </div>
                             <div class="conf30Sharp">
                               <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
-                              </div>
-                              <div>
                                 <span>heure</span>
-                                <p>De 9h15 à 11h30</p>
+                                <p>de 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
                               </div>
-                            </div>
-                          </div>                
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                            </div>             
                         </div>
                     </div>
                   </li>         
                 </ul>
               </div>
+            </div>
+           <div class="text-presentation projection">
+                <div class="programme">
+                  <div>
+                    <img src="img/trombonne.png">
+                  </div>
+                  <div>
+                    <h6>Le programme des projections</h6>
+                  </div>
+                  <div>
+                    <a href="">
+                      <img src="img/boutonDLRond.png">
+                    </a>
+                  </div>
+                </div> 
             </div>
           </div>
       </div>

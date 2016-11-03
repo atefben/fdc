@@ -291,7 +291,7 @@ function click() {
         $(this).click(function(){
           
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
-          $('#accordion-conf .open').removeClass('open-selected-conf');
+          setTimeout($('#accordion-conf .open').removeClass('open-selected-conf'), 5000);
           $('#accordion-conf .open').closest('li').removeClass('open-selected-conf');
           $(this).find('.openPlus').toggleClass('noDisplay');
           $(this).find('.openMinus').toggleClass('doDisplay');
