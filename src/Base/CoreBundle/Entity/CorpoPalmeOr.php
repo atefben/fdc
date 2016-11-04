@@ -233,4 +233,5 @@ class CorpoPalmeOr implements TranslateMainInterface
     {
         return $this->widgets;
     }
+
 }

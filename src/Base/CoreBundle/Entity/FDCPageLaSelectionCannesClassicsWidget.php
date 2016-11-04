@@ -28,7 +28,8 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "video_youtube" = "FDCPageLaSelectionCannesClassicsWidgetVideoYoutube",
  *  "introduction" = "FDCPageLaSelectionCannesClassicsWidgetIntro",
  *  "subtitle" = "FDCPageLaSelectionCannesClassicsWidgetSubtitle",
- *  "movie" = "FDCPageLaSelectionCannesClassicsWidgetMovie"
+ *  "movie" = "FDCPageLaSelectionCannesClassicsWidgetMovie",
+ *  "typeone" = "FDCPageLaSelectionCannesClassicsWidgetTypeone",
  *
  * })
  */

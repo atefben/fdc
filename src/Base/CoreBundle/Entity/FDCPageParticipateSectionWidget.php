@@ -61,7 +61,6 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
      */
     protected $pressDownload;
 
-
     public function __toString()
     {
         $string = substr(strrchr(get_class($this), '\\'), 1);
