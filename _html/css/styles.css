@@ -316,7 +316,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 #owl-accred {
-  height: 540px;
+  height: 600px;
 }
 #owl-accred .item img {
   display: block;
@@ -331,7 +331,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 540px;
+  min-height: 600px;
 }
 #owl-accred .owl-controls {
   display: block;
@@ -343,7 +343,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 #owl-accred .owl-next, #owl-accred .owl-prev {
-  border: 1px solid #c8a461;
   color: #c8a461;
   width: 65px;
   height: 65px;
@@ -363,8 +362,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #owl-accred .goldarrowLeft, #owl-accred .goldarrowRight {
   width: 65px;
   height: 65px;
-  line-height: 60px;
+  line-height: 65px;
   font-size: 13px;
+  border: 1px solid #c8a461;
 }
 
 #owl-mid {
@@ -4832,6 +4832,7 @@ header .bigContainer {
   max-width: 1152px;
   margin: 0 auto;
   text-align: center;
+  overflow: hidden !important;
 }
 header #navigation {
   background-color: #141414;
@@ -5185,7 +5186,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   background-attachment: fixed;
   background-position: middle;
   color: white !important;
-  margin-top: 40px;
+  margin-top: 0px;
   z-index: 999;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -10892,7 +10893,7 @@ header #searchContainer {
 }
 .text-presentation h5 {
   color: #2b2b2b;
-  font-size: 16px;
+  font-size: 17px;
   margin-bottom: 80px;
   line-height: 40px;
   opacity: 0.8;
@@ -11241,23 +11242,19 @@ header #searchContainer {
 /* CONTACT */
 .contact-box {
   width: 100%;
-  height: 600px;
-  max-height: 600px;
+  height: 660px;
   background: url("/img/plage-cannes.png");
-  background-size: 100%;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .contact-box img {
-  object-fit: cover;
   width: 100%;
-  height: 100%;
-  min-height: 600px;
+  max-width: 100%;
 }
 .contact-box .contact-details {
   background: white;
   width: 309px;
-  height: 500px;
+  height: 580px;
   float: right;
   margin-right: 150px;
   margin-top: 50px;
@@ -11285,14 +11282,12 @@ header #searchContainer {
   }*/
 }
 .contact-box .contact-details .getTo {
-  font-size: 25px;
+  font-size: 22px;
   margin-bottom: 30px;
   color: #141414;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
-  /*@media screen and (max-width: 1366px) {
-    margin-bottom: 25px;
-  }*/
+  opacity: 0.6;
 }
 .contact-box .contact-details .informations {
   font-size: 14px;
@@ -11309,7 +11304,7 @@ header #searchContainer {
   }*/
 }
 .contact-box .contact-details .knowMore {
-  margin-top: 95px;
+  margin-top: 80px;
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-decoration: none;
@@ -21811,11 +21806,11 @@ body:not(.tablette) .webtv #live .img {
 }
 /* AccreditationsPage*/
 .accredidationsDetails {
-  height: 300px;
+  height: 250px;
   margin: 0 auto;
   text-align: center;
   background: url(/img/bckgAccred.png);
-  background-size: 100% 300px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   padding-top: 0%;
 }
@@ -21827,7 +21822,7 @@ body:not(.tablette) .webtv #live .img {
 .accredidationsDetails h3 {
   color: white;
   position: absolute;
-  top: 40%;
+  top: 35%;
   margin: 0 auto;
   width: 100%;
   text-transform: initial;
@@ -21838,12 +21833,12 @@ body:not(.tablette) .webtv #live .img {
   color: #505050;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
-  margin-bottom: 0px;
+  margin-bottom: 50px;
 }
 
 .accredidationsMessage {
   width: 100%;
-  height: 90px;
+  height: 100px;
   position: absolute;
   z-index: 1000;
   text-align: center;
@@ -21853,13 +21848,13 @@ body:not(.tablette) .webtv #live .img {
 }
 .accredidationsMessage div:first-child {
   width: 90%;
-  height: 90px;
+  height: 100px;
   float: left;
   text-align: center;
   background: #40acab;
   color: white;
   text-transform: uppercase;
-  line-height: 90px;
+  line-height: 100px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
@@ -21871,12 +21866,12 @@ body:not(.tablette) .webtv #live .img {
 }
 .accredidationsMessage div:nth-child(2) {
   width: 10%;
-  height: 90px;
+  height: 100px;
   float: left;
   color: white;
   background: #0e5554;
   text-transform: uppercase;
-  line-height: 90px;
+  line-height: 100px;
   font-size: 16px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
@@ -21891,7 +21886,7 @@ body:not(.tablette) .webtv #live .img {
   color: white;
   text-decoration: none;
   width: 100%;
-  height: 90px;
+  height: 100px;
 }
 
 .pricesContainer {
@@ -21915,6 +21910,7 @@ body:not(.tablette) .webtv #live .img {
   margin: 85px 0px 70px 0px;
   font-size: 48px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
+  line-height: 80px;
 }
 .accreditations .articles {
   width: 33.2%;
@@ -21943,7 +21939,7 @@ body:not(.tablette) .webtv #live .img {
 }
 .accreditations .articles .articles-content .ht {
   color: inherit;
-  font-size: 25px !important;
+  font-size: 24px !important;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
 }
 .accreditations .articles .primo {
@@ -21989,7 +21985,8 @@ body:not(.tablette) .webtv #live .img {
 .upCase {
   color: white !important;
   text-transform: uppercase !important;
-  font-size: 16px !important;
+  font-size: 13px !important;
+  letter-spacing: 1px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   line-height: 45px !important;
 }
@@ -22034,7 +22031,7 @@ body:not(.tablette) .webtv #live .img {
 }
 .plusPrices .ht {
   font-size: 25px !important;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
   color: white !important;
 }
 .plusPrices .plusPricestext {
@@ -22046,7 +22043,8 @@ body:not(.tablette) .webtv #live .img {
 }
 .plusPrices .plusPricestext p {
   padding-left: 130px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  font-size: 13px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
@@ -22146,7 +22144,7 @@ body:not(.tablette) .webtv #live .img {
   padding-top: 5%;
 }
 .accreditation h3 {
-  margin: 10px 0px 30px 0px;
+  margin: 50px 0px 30px 0px;
   text-transform: initial;
 }
 .accreditation h3, .accreditation h5, .accreditation div {
@@ -22161,16 +22159,16 @@ body:not(.tablette) .webtv #live .img {
 }
 .accreditation .blackBtn {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  width: 190px;
+  width: 200px;
   height: 35px;
   background: black;
   color: white;
   text-transform: uppercase;
-  padding-top: 22px;
+  padding-top: 20px;
   margin: 0 auto;
   text-align: center;
-  font-size: 14px;
-  letter-spacing: 1px;
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 
 .hide {
@@ -22217,6 +22215,9 @@ body:not(.tablette) .webtv #live .img {
 .boxes h5 {
   margin-bottom: 0px;
 }
+.boxes a {
+  color: #ec3050;
+}
 
 .boxesHeight {
   min-height: 580px;
@@ -22227,6 +22228,7 @@ body:not(.tablette) .webtv #live .img {
   margin: 0 auto;
   max-width: 1152px;
   text-align: center;
+  overflow: hidden !important;
 }
 
 ul.tabs {
@@ -22236,7 +22238,7 @@ ul.tabs {
   list-style: none;
   height: 100px;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
   /* margin-top: -90px; */
 }
 ul.tabs li {
@@ -22336,6 +22338,7 @@ ul.tabs .quarterTab h4 {
 
 .whiteBckg {
   background: white;
+  padding-top: 50px;
 }
 
 .tab_container {
@@ -22347,7 +22350,7 @@ ul.tabs .quarterTab h4 {
   overflow: auto;
   margin: 0 auto;
   /* padding-top: 40px; */
-  margin-top: -60px;
+  margin-top: 60px;
 }
 @media screen and (max-width: 1279px) {
   .tab_container {
@@ -22429,6 +22432,14 @@ ul.tabs .quarterTab h4 {
 }
 .tab_container .tabBox .read-more-target span {
   padding-left: 0px;
+}
+
+.nopicTab {
+  width: 100%;
+}
+.nopicTab .tabBox {
+  width: 98%;
+  padding-right: 2% !important;
 }
 
 .speakersBox {
@@ -22970,6 +22981,10 @@ ul.tabs .quarterTab h4 {
   margin-right: 30px;
   font-size: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 #accordion-menu .openMinus {
   display: none;
@@ -22978,6 +22993,10 @@ ul.tabs .quarterTab h4 {
   margin-right: 30px;
   font-size: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 #accordion-menu .noDisplay {
   display: none;
@@ -23021,6 +23040,8 @@ ul.tabs .quarterTab h4 {
 
 .dropdown span {
   float: left;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -23039,7 +23060,7 @@ ul.tabs .quarterTab h4 {
   width: 0%;
   height: 0px;
   float: left;
-  margin-top: -3px;
+  margin-top: -7px;
 }
 
 .showeventSelector {
@@ -23054,19 +23075,41 @@ ul.tabs .quarterTab h4 {
   float: left;
   display: inline-block;
   color: #ec3050;
-  font-size: 20px;
+  font-size: 22px;
   margin: 0px 5px;
+  /*&:after {
+    content: ',';
+  }
+
+  &:last-child {
+      
+        &:after {
+        content: '';
+    }
+  }*/
 }
-.selectText:after {
+
+.virgule:after {
   content: ',';
 }
-.selectText:last-child:after {
+.virgule:last-child:after {
   content: '';
 }
 
 .visibleSelectText {
   visibility: visible;
   opacity: 1;
+}
+
+.seperator {
+  height: 100%;
+  width: 1px;
+  background: black;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
 }
 
 /*infosPage */
@@ -23172,18 +23215,19 @@ ul.tabs .quarterTab h4 {
 /* BOX PRODUCERS WORKSHOP */
 .producersWorkshop {
   width: 100%;
-  height: 330px;
+  height: 310px;
   padding: 0px 0px;
   background: url("/img/redBackg.png");
-  background-size: 100% 330px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
   overflow: hidden;
 }
 .producersWorkshop h3 {
   color: white;
-  margin: 85px 0px 125px 0px;
+  margin: 85px 0px 105px 0px;
   text-transform: initial;
+  letter-spacing: 1px;
 }
 .producersWorkshop img {
   object-fit: cover;
@@ -23193,23 +23237,19 @@ ul.tabs .quarterTab h4 {
 
 .opportunites {
   width: 100%;
-  height: 330px;
+  height: 310px;
   padding: 0px 0px;
   background: url("/img/ligthblueBckg.png");
-  background-size: 100% 330px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
   overflow: hidden;
 }
 .opportunites h3 {
   color: white;
-  margin: 85px 0px 125px 0px;
+  margin: 90px 0px 100px 0px;
   text-transform: initial;
-}
-.opportunites img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+  letter-spacing: 1px;
 }
 
 .subNavigation {
@@ -23225,7 +23265,7 @@ ul.tabs .quarterTab h4 {
 }
 .subNavigation ul li {
   display: inline-block;
-  margin-left: 50px;
+  margin-left: 40px;
 }
 .subNavigation ul li a {
   color: #fff;
@@ -23237,6 +23277,8 @@ ul.tabs .quarterTab h4 {
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  letter-spacing: 1px;
+  font-weight: normal;
 }
 
 .opportunites .subNavigation .active {
@@ -23247,17 +23289,17 @@ ul.tabs .quarterTab h4 {
 /* CONFERENCE PAGE */
 .calendar {
   width: 100%;
-  height: 350px;
+  height: 240px;
   padding: 0px 0px;
-  background: url(/img/redBackg.png);
-  background-size: 100% 350px;
+  background: url(/img/redBackg2.png);
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
   overflow: hidden;
 }
 .calendar h3 {
   color: white;
-  margin: 135px 0px 70px 0px;
+  margin: 75px 0px 0px 0px;
   text-transform: initial;
 }
 .calendar img {
@@ -23266,8 +23308,16 @@ ul.tabs .quarterTab h4 {
   height: 100%;
 }
 
+.events p {
+  color: #b1b1b1;
+}
+
+.conference {
+  height: auto !important;
+}
 .conference h5 {
   margin-bottom: 50px;
+  padding: 0px 90px;
 }
 .conference h6 {
   text-align: left;
@@ -23275,15 +23325,15 @@ ul.tabs .quarterTab h4 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #666666;
+  margin-left: 85px;
 }
 .conference img {
-  object-fit: cover;
+  max-width: 977px;
   width: 100%;
-  height: 550px;
 }
 
 .conferences {
-  padding: 30px;
+  padding: 0px;
   margin: 50px 0px 0px 0px;
   height: auto;
 }
@@ -23316,6 +23366,9 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   float: left;
 }
+.conferences .selectbtn {
+  letter-spacing: 2px;
+}
 .conferences .conferencesMenu {
   width: 100%;
   margin-top: 200px;
@@ -23323,7 +23376,7 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conferenceMenu {
   width: 100%;
-  margin-top: 550px;
+  margin-top: 0px;
   margin-bottom: 50px;
 }
 .conferences li {
@@ -23334,6 +23387,10 @@ ul.tabs .quarterTab h4 {
   line-height: 50px;
   border-bottom: 3px solid white;
   text-align: left;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 .conferences .dropdown span {
   color: #505050 !important;
@@ -23360,6 +23417,10 @@ ul.tabs .quarterTab h4 {
   margin-right: 30px;
   font-size: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 .conferences .openMinus {
   display: none;
@@ -23368,6 +23429,10 @@ ul.tabs .quarterTab h4 {
   margin-right: 30px;
   font-size: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 .conferences .noDisplay {
   display: none;
@@ -23383,7 +23448,6 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   line-height: 30px;
   padding-top: 100px;
-  opacity: 0.8;
   font-size: 12px;
   line-height: 20px;
   text-align: center;
@@ -23394,14 +23458,16 @@ ul.tabs .quarterTab h4 {
   }
 }
 .conferences .conf60, .conferences .conf70 {
+  display: block;
   width: 47%;
   float: left;
   color: #505050;
   text-transform: initial;
   line-height: 30px;
   text-align: left;
-  padding-top: 35px;
-  height: 200px;
+  padding-top: 15px;
+  min-height: 200px;
+  height: auto;
   padding-right: 30px;
 }
 @media screen and (max-width: 1280px) {
@@ -23428,10 +23494,10 @@ ul.tabs .quarterTab h4 {
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
-  margin-right: -85px;
+  margin-right: -100px;
   width: 140px;
   border-right: 1px solid #e7e7e7;
-  margin-top: -90px;
+  margin-top: -115px;
   opacity: 0.2;
 }
 @media screen and (max-width: 1280px) {
@@ -23442,21 +23508,52 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conf60 .confButton, .conferences .conf70 .confButton {
   position: relative;
-  bottom: -15%;
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 12px;
   opacity: 0.8;
+  margin-top: 50px;
+}
+.conferences .conf60 .confButton .ensavoirplus, .conferences .conf70 .confButton .ensavoirplus {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  color: #c60e2d;
+  margin-right: 5px;
 }
 .conferences .conf60 span, .conferences .conf70 span {
   text-transform: uppercase;
   font-size: 16px;
   color: #ec3050 !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 50px;
 }
 .conferences .conf70 {
   width: 55%;
   padding-left: 5%;
+  height: auto;
+}
+.conferences .conf70 hr {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  margin-right: -255px;
+  width: 440px;
+  border-right: 1px solid #e7e7e7;
+  margin-top: 70px;
+  margin-bottom: -27px;
+  opacity: 0.2;
+  float: right;
+}
+@media screen and (max-width: 1280px) {
+  .conferences .conf70 hr {
+    /*margin-right: -95px;
+    margin-top: -70px;*/
+  }
 }
 .conferences .conf30Sharp {
   width: 35% !important;
@@ -23470,15 +23567,16 @@ ul.tabs .quarterTab h4 {
   text-align: left;
   padding-top: 30px;
   font-size: 14px;
-  color: #505050;
 }
 .conferences .conf30 p, .conferences .conf30Sharp p {
   margin-left: 30px;
+  color: #505050;
+  opacity: 0.9;
 }
 .conferences .conf30 span, .conferences .conf30Sharp span {
   color: #505050;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.4;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .conferences .conf30 div, .conferences .conf30Sharp div {
@@ -23511,7 +23609,7 @@ ul.tabs .quarterTab h4 {
 .conferences .box {
   min-height: 280px;
   height: auto;
-  border-bottom: 2px solid #c60e2d !important;
+  border-bottom: 4px solid #c60e2d !important;
 }
 .conferences .confDetails {
   text-transform: uppercase;
@@ -23520,16 +23618,20 @@ ul.tabs .quarterTab h4 {
   color: #505050 !important;
   line-height: 50px;
 }
+.conferences .confDetailsTop {
+  color: #505050 !important;
+}
 
 .conferenceMenu .box {
   height: auto;
-  min-height: 800px;
+  min-height: 900px;
 }
 
 .confPeople .quarterWidth {
   width: 25%;
   float: left;
-  text-align: center;
+  min-height: 300px;
+  text-align: left;
   font-size: 10px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
@@ -23537,9 +23639,16 @@ ul.tabs .quarterTab h4 {
   font-size: 12px !important;
   text-align: left;
 }
-.confPeople .quarterWidth p {
+.confPeople .quarterWidth .name {
+  height: 50px;
+}
+.confPeople .quarterWidth .alignLeft {
   text-align: left;
   margin-left: 15px;
+}
+.confPeople .quarterWidth p {
+  text-align: left;
+  color: #505050;
 }
 
 .minPadding {
@@ -23550,8 +23659,14 @@ ul.tabs .quarterTab h4 {
 .minMargin {
   margin-bottom: 20px !important;
   line-height: 40px;
-  padding: 0px 30px;
+  padding: 0px 100px;
   font-size: 17px !important;
+}
+
+.producersProgramme {
+  height: auto !important;
+  display: block;
+  margin-bottom: 100px;
 }
 
 /* END CONFERENCE PAGE*/
@@ -23635,22 +23750,26 @@ ul.tabs .quarterTab h4 {
   top: 150px;
 }
 .servicesPage .articles:last-child .blackBtn {
-  width: 180px;
-  height: 40px;
+  width: 190px;
+  height: 35px;
   background: black;
   color: white;
   text-transform: uppercase;
-  padding-top: 30px;
+  padding-top: 25px;
   margin: 0 auto;
   text-align: center;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 12px;
+  letter-spacing: 2px;
 }
 .servicesPage .articles:last-child h6 {
   padding-top: 115px;
   font-size: 46px !important;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   opacity: 1;
+  line-height: 50px;
+  letter-spacing: 2px;
+  font-weight: lighter;
 }
 .servicesPage .articles:last-child p {
   height: 100px;
@@ -23688,6 +23807,17 @@ ul.tabs .quarterTab h4 {
 }
 .projections .text-presentation {
   padding-top: 0%;
+}
+.projections .blackBtn {
+  width: 180px;
+  height: 40px;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: 1px;
 }
 .projections h3 {
   color: white;
@@ -23766,6 +23896,8 @@ ul.tabs .quarterTab h4 {
 /* 4. PAGE COMMUNIQUES DE PRESSE */
 .presses {
   background: url("/img/goldBackg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .presses .subNavigation .active {
   color: #a1844f;
@@ -23897,6 +24029,365 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 30px;
+}
+
+/* PAGE EQUIPE */
+.team {
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+.team h3 {
+  text-transform: initial;
+}
+
+.teamBckg {
+  height: 170px;
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.contactInfo {
+  padding-top: 10px;
+  width: 50%;
+  height: 150px;
+  margin: 0 auto;
+  text-align: center;
+  float: left;
+}
+.contactInfo span {
+  color: #c3a05f;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  line-height: 50px;
+}
+.contactInfo h6 {
+  font-size: 16px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #505050;
+  line-height: 50px;
+}
+
+.teamPresentation .photoWrapper {
+  width: 155px;
+}
+.teamPresentation .textWrapper h6 {
+  color: #c3a05f;
+  font-size: 16px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+}
+.teamPresentation .textWrapper a {
+  color: #ec3050;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+/* PAGE STANDS */
+.tarifs {
+  padding-top: 2%;
+  background: url(/img/tarifsBckg.png) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.tarifs .text-presentation {
+  padding-top: 0%;
+}
+.tarifs .text-presentation h3 {
+  text-transform: initial;
+  color: white;
+}
+.tarifs ul {
+  width: 750px;
+  height: 415px;
+  background: #0e4755;
+  text-align: center;
+  margin: 0 auto;
+  padding: 85px 100px 0px 100px;
+}
+.tarifs ul li {
+  color: white;
+  opacity: 0.9;
+  text-align: left;
+  line-height: 40px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+/* PAGE GALERIE PHOTOS */
+.galeriePresentation {
+  padding-top: 3%;
+}
+.galeriePresentation h3 {
+  text-transform: initial;
+}
+
+.galeriePhotos .photoWrapper {
+  width: 340px;
+  height: 215px;
+}
+@media screen and (max-width: 1279px) {
+  .galeriePhotos .innerWrapper {
+    width: 95% !important;
+    max-width: 95% !important;
+  }
+}
+.galeriePhotos .articles {
+  height: 350px;
+  width: 32%;
+  margin-left: 1%;
+}
+.galeriePhotos .articles .articles-content {
+  padding: 0px;
+}
+.galeriePhotos .textWrapper {
+  width: 100%;
+  text-align: left;
+  max-width: 340px;
+}
+.galeriePhotos .textWrapper h6 {
+  line-height: 35px;
+  margin: 5px 0px 0px 0px;
+  color: #141414;
+  font-size: 15px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.galeriePhotos .textWrapper h6:after {
+  content: url("/img/goldDL.png");
+  float: right;
+}
+.galeriePhotos .textWrapper span {
+  color: #666666;
+  width: 100%;
+  float: left;
+  font-size: 12px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-transform: initial;
+  line-height: 20px;
+}
+.galeriePhotos .textWrapper span.upSpan {
+  text-transform: uppercase;
+}
+
+.galerieProg {
+  height: auto;
+  min-height: 200px !important;
+}
+.galerieProg .programme {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.results {
+  min-height: 1000px;
+  height: auto;
+}
+@media screen and (max-width: 1280px) {
+  .results .innerWrapper {
+    width: 90% !important;
+    max-width: 90% !important;
+  }
+}
+.results span {
+  color: #29afcf;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+.results .resultTitle {
+  border-bottom: 2px solid #e5e5e5;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: 80px;
+}
+.results .resultTitle h3 {
+  font-size: 36px;
+  text-transform: intitial;
+  color: #141414;
+  width: 340px;
+  margin: 0px 0px 0px 0px;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  border-right: 1px solid #e5e5e5;
+  padding: 0px 30px 0px 0px;
+  line-height: 45px;
+}
+.results .resultTitle span {
+  color: #e5e5e5;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  border-right: 1px solid #e5e5e5;
+  padding-right: 10px;
+  margin-top: -25px;
+  float: right;
+  width: 10%;
+  margin-right: 60px;
+  line-height: 25px;
+}
+.results .resultTitle span:after {
+  content: url(/img/loupegold.png);
+  position: relative;
+  top: 5px;
+  left: 50px;
+  width: 30px;
+}
+.results .results-sections {
+  width: 20%;
+  height: auto;
+  float: left;
+}
+.results .results-content {
+  width: 80%;
+  height: auto;
+  float: left;
+}
+.results .results-content .hide {
+  display: none !important;
+}
+.results .results-content .contents {
+  padding-bottom: 20px;
+  display: block;
+  float: left;
+  width: 100%;
+}
+.results .results-content .contents hr {
+  width: 95%;
+  border-top: 2px solid #e5e5e5;
+}
+.results .results-content .contents .projection {
+  display: block;
+  height: auto;
+  padding-top: 7%;
+}
+.results .results-content .contents .projection .programme {
+  margin-bottom: 20px !important;
+  width: 90%;
+  margin: 0 auto;
+}
+.results .results-content .resultsTitle {
+  line-height: 50px;
+}
+.results .results-content .resultsTitle h6 {
+  text-align: left;
+  width: 47%;
+  float: left;
+  text-transform: uppercase;
+  color: #141414;
+  font-size: 13px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  margin-left: 3%;
+}
+.results .results-content .resultsTitle .seeAll {
+  width: 45%;
+  float: left;
+  text-align: right;
+  text-transform: uppercase;
+  color: #c3a05f;
+  font-size: 13px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  margin-right: 1%;
+}
+.results .results-content .articles {
+  width: 27%;
+  height: 295px;
+  margin: 0% 3%;
+  float: left;
+}
+.results .results-content .articles .photoWrapper {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  display: block;
+}
+.results .results-content .articles .photoWrapper .mainPic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.results .results-content .articles .photoWrapper .floatingIcon {
+  position: absolute;
+  margin-top: 85px;
+  margin-left: 15px;
+}
+.results .results-content .articles .textWrapper {
+  text-align: left;
+  display: block;
+}
+.results .results-content .articles .textWrapper h6, .results .results-content .articles .textWrapper span {
+  font-size: 11px;
+  color: #c3a05f;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  line-height: 60px;
+  letter-spacing: 1px;
+}
+.results .results-content .articles .textWrapper span {
+  color: #505050;
+  margin-left: 5px;
+}
+.results .results-content .articles .textWrapper p {
+  font-size: 16px;
+  color: #141414;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  line-height: 22px;
+}
+.results .results-content .articles .textWrapper .redtitle {
+  color: #ec3050;
+}
+.results .results-content .articles .textWrapper .blackTitle {
+  color: #505050;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 22px;
+  margin-top: 20px;
+  font-size: 13px;
+}
+.results .hideOverflow {
+  overflow: hidden;
+}
+.results .results-boxes {
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  text-align: left;
+  width: 135px;
+  height: 40px;
+  float: left;
+  display: block;
+  background: #FFFFFF;
+  z-index: 1002;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 10px;
+}
+.results .results-boxes span {
+  color: #141414;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  width: 10%;
+  float: left;
+  line-height: 50px;
+}
+.results .results-boxes h6 {
+  color: #141414;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  line-height: 50px;
+  font-size: 14px;
+  width: 80%;
+  float: left;
+}
+.results .results-boxes h6:hover {
+  cursor: pointer;
+}
+.results .results-boxes .active {
+  color: #c3a05f;
 }
 
 html[lang="es"] header #navigation ul.main li a {

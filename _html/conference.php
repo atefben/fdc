@@ -33,52 +33,85 @@
                           <div class="box events">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
-                              <h6 class="confDetails">Présenté par EAVE</h6>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
+                              <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                               <div class="confPeople">
-                                <h6 class="confDetails">Présenté par EAVE</h6>
+                                <hr>   
+                                <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name alignLeft">
+                                    <span>Fanny-Laure Malo Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
-                                  <p>LA BOITE A FANNY</p>
+                                  <div class="name">
+                                    <span>Fanny-Laure Malo</span>
+                                  </div>
+                                  <div class="name">
+                                    <p>LA BOITE A FANNY</p>
+                                  </div>
                                 </div>
                               </div>
-                              <hr>     
+                             
                             </div>
                             <div class="conf30Sharp">
                               <div>
@@ -98,15 +131,16 @@
                           <div class="box events">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
-                              <h6 class="confDetails">Présenté par EAVE</h6>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
-                                <h6 class="confDetails">Présenté par EAVE</h6>
+                                <hr> 
+                                <h6 class="confDetails">Intervenants</h6>
                                 <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                                 <h6 class="confDetails">intervenant(s)</h6>       
                                 <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
                               </div>
-                              <hr>     
+                                  
                             </div>
                            <div class="conf30Sharp">
                               <div>
@@ -132,12 +166,13 @@
                         <div id="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
-                            <div class="conf70">
+                            <div class="conf70">  
                               <span>Breakfast Meeting</span><br>
-                              <h6 class="confDetails">Présenté par EAVE</h6>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
-                                <h6 class="confDetails">Présenté par EAVE</h6>
+                                <hr> 
+                                <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <span>Fanny-Laure Malo</span>
@@ -179,7 +214,7 @@
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                               </div>
-                              <hr>     
+       
                             </div>
                            <div class="conf30Sharp">
                               <div>
@@ -199,10 +234,11 @@
                           <div class="box events">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
-                              <h6 class="confDetails">Présenté par EAVE</h6>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
-                                <h6 class="confDetails">Présenté par EAVE</h6>
+                                <hr>  
+                                <h6 class="confDetails">Intervenants</h6>
                                 <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                                 <h6 class="confDetails">intervenant(s)</h6>       
                                 <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
@@ -234,10 +270,11 @@
                           <div class="box events">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
-                              <h6 class="confDetails">Présenté par EAVE</h6>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
-                                <h6 class="confDetails">Présenté par EAVE</h6>
+                                <hr> 
+                                <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <span>Fanny-Laure Malo</span>
@@ -279,7 +316,110 @@
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                               </div>
-                              <hr>     
+                                 
+                            </div>
+                           <div class="conf30Sharp">
+                              <div>
+                                <span>heure</span>
+                                <p>de 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="box events">
+                            <div class="conf70">
+                              
+                              <span>Breakfast Meeting</span><br>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confPeople">
+                                <hr>  
+                                <h6 class="confDetails">Intervenants</h6>
+                                <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
+                                <h6 class="confDetails">intervenant(s)</h6>       
+                                <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
+                              </div> 
+                                
+                            </div>
+                            <div class="conf30Sharp">
+                              <div>
+                                <span>heure</span>
+                                <p>de 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                            </div>             
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                    <div class="content">
+                        <div id="parent">
+                          <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
+                          <div class="box events">
+                            <div class="conf70">  
+                              <span>Breakfast Meeting</span><br>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confPeople">
+                                <hr> 
+                                <h6 class="confDetails">Intervenants</h6>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                              </div>
+       
                             </div>
                            <div class="conf30Sharp">
                               <div>
@@ -299,15 +439,119 @@
                           <div class="box events">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
-                              <h6 class="confDetails">Présenté par EAVE</h6>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
-                                <h6 class="confDetails">Présenté par EAVE</h6>
+                                <hr>  
+                                <h6 class="confDetails">Intervenants</h6>
+                                <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
+                                <h6 class="confDetails">intervenant(s)</h6>       
+                                <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
+                              </div>     
+                            </div>
+                            <div class="conf30Sharp">
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                              <div>
+                                <span>heure</span>
+                                <p>De 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                            </div>
+                          </div>                
+                        </div>
+                    </div>
+                  </li>  
+                  <li>
+                    <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                    <div class="content">
+                        <div id="parent">
+                          <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
+                          <div class="box events">
+                            <div class="conf70">
+                              <span>Breakfast Meeting</span><br>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confPeople">
+                                <hr> 
+                                <h6 class="confDetails">Intervenants</h6>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <span>Fanny-Laure Malo</span>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                              </div>
+                                 
+                            </div>
+                           <div class="conf30Sharp">
+                              <div>
+                                <span>heure</span>
+                                <p>de 9h15 à 11h30</p>
+                              </div>
+                              <div>
+                                <span>lieu</span>
+                                <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
+                              </div>
+                              <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="box events">
+                            <div class="conf70">
+                              
+                              <span>Breakfast Meeting</span><br>
+                              <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <div class="confPeople">
+                                <hr>  
+                                <h6 class="confDetails">Intervenants</h6>
                                 <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                                 <h6 class="confDetails">intervenant(s)</h6>       
                                 <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
                               </div> 
-                              <hr>    
+                                
                             </div>
                             <div class="conf30Sharp">
                               <div>
@@ -325,17 +569,17 @@
                             </div>             
                         </div>
                     </div>
-                  </li>         
+                  </li>                  
                 </ul>
               </div>
             </div>
-           <div class="text-presentation projection">
+           <div class="text-presentation projection producersProgramme">
                 <div class="programme">
                   <div>
                     <img src="img/trombonne.png">
                   </div>
                   <div>
-                    <h6>Le programme des projections</h6>
+                    <h6>Téléchargez le programme complet du Producers Workshop</h6>
                   </div>
                   <div>
                     <a href="">

@@ -26,6 +26,10 @@
   h5 {
     margin-bottom: 0px;
   }
+
+  a {
+    color: #ec3050;
+  }
 }
 
 .boxesHeight {
@@ -37,6 +41,7 @@
   margin: 0 auto;
   max-width: 1152px;
   text-align: center;
+  overflow: hidden!important;
 }
 
 ul.tabs {
@@ -46,7 +51,7 @@ ul.tabs {
     list-style: none;
     height: 100px;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     /* margin-top: -90px; */
   
   li {
@@ -166,6 +171,7 @@ ul.tabs {
 
 .whiteBckg {
   background: white;
+  padding-top: 50px;
 }  
 
 .tab_container {
@@ -177,7 +183,7 @@ ul.tabs {
     overflow: auto;
     margin: 0 auto;
     /* padding-top: 40px; */
-    margin-top: -60px;
+    margin-top: 60px;
 
    @media screen and(max-width: $mobileWidth) {
         max-width: 980px;
@@ -273,6 +279,14 @@ ul.tabs {
     }
   }
 
+}
+
+.nopicTab {
+  width: 100%;
+  .tabBox {
+    width: 98%;
+    padding-right:2%!important;
+  }
 }
 
 .speakersBox {
@@ -778,6 +792,10 @@ ul.tabs {
     margin-right: 30px;
     font-size: 25px;
     font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
   }
 
   .openMinus {
@@ -787,6 +805,10 @@ ul.tabs {
     margin-right: 30px;
     font-size: 25px;
     font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
   }
 
   .noDisplay {
@@ -836,6 +858,8 @@ ul.tabs {
 .dropdown {
   span {
     float: left;
+    font-family: $CamphorBold;
+    font-size: 16px;
   }
 }
 
@@ -856,7 +880,7 @@ ul.tabs {
   width:0%;
   height: 0px;
   float:left;
-  margin-top: -3px;
+  margin-top: -7px;
 }
 
 .showeventSelector {
@@ -871,10 +895,10 @@ ul.tabs {
   float: left;
   display: inline-block;
   color: #ec3050;
-  font-size: 20px;
+  font-size: 22px;
   margin: 0px 5px;
 
-  &:after {
+  /*&:after {
     content: ',';
   }
 
@@ -883,11 +907,34 @@ ul.tabs {
         &:after {
         content: '';
     }
-  }
+  }*/
 
+}
+
+.virgule {
+    &:after {
+    content: ',';
+  }
+  &:last-child {
+        
+          &:after {
+          content: '';
+      }
+  } 
 }
 
 .visibleSelectText {
   visibility: visible;
   opacity: 1;
+}
+
+.seperator {
+  height: 100%;
+  width: 1px;
+  background: black;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
 }

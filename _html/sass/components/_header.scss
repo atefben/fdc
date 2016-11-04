@@ -454,6 +454,7 @@ header {
     max-width: 1152px;
     margin: 0 auto;
     text-align: center;
+    overflow: hidden!important;
   }
 
   #navigation {
@@ -783,7 +784,7 @@ header {
     background-attachment: fixed;
     background-position: middle;
     color: white !important;
-    margin-top: 40px;
+    margin-top: 0px;
     z-index: 999;
     @include transition(all 0.8s $smoothTransition);
 

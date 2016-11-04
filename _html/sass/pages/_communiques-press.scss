@@ -15,6 +15,19 @@
       padding-top: 0%;
     }
 
+    .blackBtn{
+      
+        width: 180px;
+        height: 40px;
+        background: black;
+        color: white;
+        text-transform: uppercase;
+        padding-top: 30px;
+        margin: 0 auto;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
     h3 {
       color: white;
       text-transform: initial;
@@ -115,7 +128,8 @@
 
 .presses {
   background: url("/img/goldBackg.png");
-
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   .subNavigation {
       .active {
         color: #a1844f;
@@ -280,4 +294,192 @@
     letter-spacing: 1px;
     line-height: 30px;
   }
+}
+
+
+/* PAGE EQUIPE */
+
+.team {
+    padding-top: 3%;
+    padding-bottom: 1%;
+
+  h3 {
+    text-transform: initial;
+  }
+
+}
+
+.teamBckg {
+  height: 170px;
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.contactInfo {
+  padding-top:10px;
+  width: 50%;
+  height: 150px;
+  margin: 0 auto;
+  text-align: center;
+  float: left;
+  
+  span {
+    color: #c3a05f;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: $CamphorHeavy;
+    line-height: 50px;
+  }
+
+  h6 {
+    font-size: 16px;
+    font-family: $CamphorRegular;
+    color: #505050;
+    line-height: 50px;
+  }
+}
+
+.teamPresentation {
+
+  .photoWrapper {
+    width: 155px;
+  }
+
+  .textWrapper {
+     h6 {
+      color: #c3a05f;
+      font-size: 16px;
+      font-family: $CamphorHeavy;
+    } 
+
+    a {
+      color: #ec3050;
+      font-family: $CamphorRegular;
+    }
+  }
+}
+
+
+/* PAGE STANDS */
+
+
+.stands {
+
+}
+
+.tarifs {
+  padding-top: 2%;
+  background: url(/img/tarifsBckg.png) no-repeat;
+  background-size: 100% 100%;
+
+  .text-presentation {
+    padding-top: 0%;
+
+    h3 {
+      text-transform: initial;
+      color:white;
+    }
+  }
+  width: 100%;
+  height: 860px;
+  margin: 0 auto;
+  text-align:center;
+
+  ul {
+    width: 750px;
+    height: 415px;
+    background: #0e4755;
+    text-align: center;
+    margin: 0 auto;
+    padding: 85px 100px 0px 100px;
+
+    li {
+      color: white;
+      opacity: 0.9;
+      text-align: left;
+      line-height: 40px;
+      font-family: $CamphorRegular;
+      font-size: 16px;
+    } 
+
+  }
+}
+
+
+/* PAGE GALERIE PHOTOS */
+
+.galeriePresentation {
+  padding-top: 3%;
+
+  h3 {
+    text-transform: initial;
+  }
+}
+
+.galeriePhotos {
+
+  .photoWrapper {
+    width: 340px;
+    height: 215px;
+  }
+
+  .innerWrapper {
+    @media screen and (max-width: $mobileWidth) {
+        width: 95% !important;
+        max-width: 95% !important;
+    }
+  }
+
+  .articles {
+    height: 350px;
+    width: 32%;
+    margin-left: 1%;
+    .articles-content {
+      padding: 0px;
+    }
+  }
+
+  .textWrapper {
+    width: 100%;
+    text-align: left;
+    max-width: 340px;
+
+    h6 {
+      line-height: 35px;
+      margin: 5px 0px 0px 0px;
+      color: #141414;
+      font-size: 15px;
+      font-family: $CamphorBold;
+      &:after {
+          content: url('/img/goldDL.png');
+          float: right;
+      }
+
+    }
+
+    span {
+      color: #666666;
+      width: 100%;
+      float: left;
+      font-size: 12px;
+      font-family: $CamphorRegular;
+      text-transform: initial;
+      line-height: 20px;
+
+      &.upSpan {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.galerieProg {
+  height: auto;
+  min-height: 200px!important;
+
+  .programme {
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 40px;
+    }
 }

@@ -89,19 +89,22 @@
       .lastArticle {
         position: absolute;
         top: 150px;
+
       }
 
       .blackBtn {
-        width: 180px;
-        height: 40px;
+        width: 190px;
+        height: 35px;
         background: black;
         color: white;
         text-transform: uppercase;
-        padding-top: 30px;
+        padding-top: 25px;
         margin: 0 auto;
         text-align: center;
         font-family: $CamphorHeavy;
         font-size: 12px;
+        letter-spacing: 2px;
+
       }
 
       h6 {
@@ -109,6 +112,9 @@
         font-size: 46px!important;
         font-family: $Playfair;
         opacity: 1;
+        line-height: 50px;
+        letter-spacing: 2px;
+        font-weight: lighter;
       }
 
       p {

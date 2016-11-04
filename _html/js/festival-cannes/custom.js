@@ -52,7 +52,7 @@ $(document).ready(function() {
  
   });
 
-/* BOX SERVICES */
+/* BOX SERVICES and RESULTS*/
 
     var servicesBoxes = $('.services-boxes');
     var selectedBox = $('.services-pictures div');
@@ -60,6 +60,30 @@ $(document).ready(function() {
     $(servicesBoxes).hover(function() {
           $(selectedBox).toggleClass('hide')
           $('#' + $(this).data('rel')).toggleClass('show');
+    });
+
+    var searchResult = $('.resultClick');
+    var searchBox = $('.results-content .contents');
+
+    $(searchResult).each(function() {
+      $(this).click(function(event) {
+        event.stopPropagation();
+          $(searchBox).addClass('hide');
+          $(searchBox).removeClass('show');
+          $('.' + $(this).attr("rel")).removeClass('hide');
+          $('.' + $(this).attr("rel")).addClass('show');
+      });
+    });
+
+    $(".seeallResults").click(function() {
+          $(searchBox).removeClass('hide');
+          $(searchBox).removeClass('show');
+    });
+    $(".resultClick").click(function() {
+      $(this).find("h6").addClass("active");
+      $(this).find("span").addClass("active");
+      $(this).siblings().find("h6").removeClass("active");
+      $(this).siblings().find("span").removeClass("active");
     });
 
 /* MENU */
@@ -291,7 +315,7 @@ function click() {
         $(this).click(function(){
           
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
-          setTimeout($('#accordion-conf .open').removeClass('open-selected-conf'), 5000);
+          $('#accordion-conf .open').removeClass('open-selected-conf');
           $('#accordion-conf .open').closest('li').removeClass('open-selected-conf');
           $(this).find('.openPlus').toggleClass('noDisplay');
           $(this).find('.openMinus').toggleClass('doDisplay');
@@ -324,6 +348,14 @@ click();
     });
 });
 
+
+if ($('.selectText').length > 1) {
+    $('.selectText').addClass('virgule');
+} else if ($('.selectText').is(':last-child') && $('.selectText').is(":visible"))  {
+
+  $(this).removeClass('virgule');
+
+}
 
 /* FIX FOR OWL-PUB CARROUSEL 2, DO NOT ADD TO DOCUMENT.READY. pub page currently has carousel 1 / #2 wasn't working properly still in beta :) 
 

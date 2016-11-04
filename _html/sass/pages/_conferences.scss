@@ -2,16 +2,16 @@
 
 .calendar {
     width: 100%;
-    height: 350px;
+    height: 240px;
     padding: 0px 0px;
-    background: url(/img/redBackg.png);
-    background-size: 100% 350px;
+    background: url(/img/redBackg2.png);
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 0px solid #404040;
     overflow: hidden;
     h3 {
       color: white;
-      margin: 135px 0px 70px 0px;
+      margin: 75px 0px 0px 0px;
       text-transform: initial;
     }
 
@@ -22,10 +22,19 @@
     }
 }
 
+.events {
+  p {
+    color: #b1b1b1;
+  }
+}
+
 .conference {
+
+  height: auto!important;
 
   h5 {
     margin-bottom: 50px;
+    padding: 0px 90px;
   }
 
   h6 {
@@ -34,17 +43,17 @@
     font-family: $CamphorRegular;
     font-size: 12px;
     color: #666666;
+    margin-left: 85px;
   }
 
   img {
-    object-fit: cover;
+    max-width: 977px;
     width: 100%;
-    height: 550px;
   }
 }
 
 .conferences {
-  padding: 30px;
+  padding: 0px;
   margin: 50px 0px 0px 0px;
   height: auto;
 
@@ -78,6 +87,10 @@
     width: 100%;
     float: left;
   }
+
+  .selectbtn {
+    letter-spacing: 2px;
+  }
   
   .conferencesMenu {
     width: 100%;
@@ -86,7 +99,7 @@
   }
   .conferenceMenu {
     width: 100%;
-    margin-top: 550px;
+    margin-top: 0px;
     margin-bottom: 50px;
   }
 
@@ -98,6 +111,10 @@
     line-height: 50px;
     border-bottom: 3px solid white;
     text-align: left;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
   }
 
   .dropdown span {
@@ -125,6 +142,10 @@
     margin-right: 30px;
     font-size: 25px;
     font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
   }
 
   .openMinus {
@@ -134,6 +155,10 @@
     margin-right: 30px;
     font-size: 25px;
     font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
   }
 
   .noDisplay {
@@ -152,7 +177,6 @@
     text-transform: uppercase;
     line-height: 30px;
     padding-top: 100px;
-    opacity: 0.8;
     font-size: 12px;
     line-height: 20px;
     text-align: center;
@@ -163,14 +187,16 @@
   }
 
   .conf60, .conf70 {
+    display: block;
     width: 47%;
     float: left;
     color: #505050;
     text-transform: initial;
     line-height: 30px;
     text-align: left;
-    padding-top: 35px;
-    height: 200px;
+    padding-top: 15px;
+    min-height: 200px;
+    height: auto;
     padding-right: 30px;
 
 
@@ -196,10 +222,10 @@
       -o-transform: rotate(90deg);
       -ms-transform: rotate(90deg);
       transform: rotate(90deg);
-      margin-right: -85px;
+      margin-right: -100px;
       width: 140px;
       border-right: 1px solid #e7e7e7;
-      margin-top: -90px;
+      margin-top: -115px;
       opacity: 0.2;
       @media screen and (max-width: 1280px) {
           margin-right: -95px;
@@ -209,11 +235,21 @@
 
     .confButton {
       position: relative;
-      bottom: -15%;
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       font-size: 12px;
       opacity: 0.8;
+      margin-top: 50px;
+
+      .ensavoirplus {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+            color: #c60e2d;
+            margin-right: 5px;
+      }
     }
 
     span {
@@ -221,12 +257,33 @@
       font-size: 16px;
       color: #ec3050!important;
       font-family: $CamphorBold;
+      line-height: 50px;
     }
   }
 
   .conf70 { 
     width: 55%;
     padding-left: 5%;
+    height: auto;
+    
+    hr {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      margin-right: -255px;
+      width: 440px;
+      border-right: 1px solid #e7e7e7;
+      margin-top: 70px;
+      margin-bottom: -27px;
+      opacity: 0.2;
+      float: right;
+      @media screen and (max-width: 1280px) {
+          /*margin-right: -95px;
+          margin-top: -70px;*/
+        }
+    }
   }
 
   .conf30Sharp {
@@ -242,17 +299,18 @@
     text-align: left;
     padding-top: 30px;
     font-size: 14px;
-    color: #505050;
 
 
     p {
       margin-left: 30px;
+      color: #505050;
+      opacity: 0.9;
     }
 
     span {
       color: #505050;
       text-transform: uppercase;
-      opacity: 0.6;
+      opacity: 0.4;
       font-family: $CamphorBold;
     }
 
@@ -295,7 +353,7 @@
   .box {
     min-height: 280px;
     height: auto;
-    border-bottom: 2px solid #c60e2d!important;
+    border-bottom: 4px solid #c60e2d!important;
   }
 
   .confDetails {
@@ -305,12 +363,16 @@
     color: #505050!important;
     line-height: 50px;
   }
+
+  .confDetailsTop {
+    color: #505050!important;
+  }
 }
 
   .conferenceMenu {
     .box {
       height: auto;
-      min-height: 800px;
+      min-height: 900px;
     }
   }
 
@@ -319,7 +381,8 @@
   .quarterWidth {
     width: 25%;
     float: left;
-    text-align: center;
+    min-height: 300px;
+    text-align: left;
     font-size: 10px;
     font-family: $CamphorHeavy;
     span {
@@ -327,9 +390,18 @@
       text-align: left;
     }
 
+    .name {
+      height: 50px;
+    }
+
+    .alignLeft {
+        text-align: left;
+        margin-left: 15px;
+    }
+
     p {
       text-align: left;
-      margin-left: 15px;
+      color: #505050;
     }
   }
 }
@@ -342,9 +414,14 @@
 .minMargin {
     margin-bottom: 20px!important;
     line-height: 40px;
-    padding: 0px 30px;
+    padding: 0px 100px;
     font-size: 17px!important;
 }
 
+.producersProgramme {
+  height: auto!important;
+  display: block;
+  margin-bottom: 100px;
+}
 
 /* END CONFERENCE PAGE*/

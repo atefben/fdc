@@ -261,7 +261,7 @@
 
 #owl-accred {
 
-  height: 540px;
+  height: 600px;
 
   .item img {
     display: block;
@@ -276,7 +276,7 @@
     background-size: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 540px;
+    min-height: 600px;
   }
 
   .owl-controls {
@@ -290,7 +290,6 @@
   }
 
   .owl-next, .owl-prev {
-    border: 1px solid $gold;
     color: $gold;
     width: 65px;
     height: 65px;
@@ -311,8 +310,9 @@
   .goldarrowLeft, .goldarrowRight {
     width: 65px;
     height: 65px;
-    line-height: 60px;
+    line-height: 65px;
     font-size: 13px;
+    border: 1px solid $gold;
   }
 }
 

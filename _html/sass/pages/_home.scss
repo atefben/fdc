@@ -1802,7 +1802,7 @@
 
     h5 {
       color: #2b2b2b;
-      font-size: 16px;
+      font-size: 17px;
       margin-bottom: 80px;
       line-height: 40px;
       opacity: 0.8;
@@ -2182,24 +2182,20 @@
 
 .contact-box {
     width: 100%;
-    height: 600px;
-    max-height: 600px;
+    height: 660px;
     background: url("/img/plage-cannes.png");
-    background-size: 100%;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 
     img {
-      object-fit: cover;
       width: 100%;
-      height: 100%;
-      min-height: 600px;
+      max-width: 100%;
     }
 
     .contact-details {
       background: white;
       width: 309px;
-      height: 500px;
+      height: 580px;
       float: right;
       margin-right: 150px;
       margin-top: 50px;
@@ -2230,15 +2226,12 @@
       }
 
       .getTo {
-        font-size: 25px;
-        margin-bottom: 30px;
-        color:#141414;
-        letter-spacing: 1px;
-        font-family: "Playfair Display",Times New Roman,Times,serif;
-          /*@media screen and (max-width: 1366px) {
-            margin-bottom: 25px;
-          }*/
-        
+        font-size: 22px;
+            margin-bottom: 30px;
+            color: #141414;
+            letter-spacing: 2px;
+            font-family: "Playfair Display",Times New Roman,Times,serif;
+            opacity: 0.6;   
       }
 
       .informations {
@@ -2257,7 +2250,7 @@
       }
 
       .knowMore {
-        margin-top: 95px;
+        margin-top: 80px;
         text-transform: uppercase;
         font-family: $CamphorHeavy;
         text-decoration: none;
