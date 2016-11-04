@@ -208,6 +208,7 @@ class CorpoPalmeOr implements TranslateMainInterface
      */
     public function addWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
     {
+        $widgets->setCorpoPalmeOr($this);
         $this->widgets[] = $widgets;
 
         return $this;
