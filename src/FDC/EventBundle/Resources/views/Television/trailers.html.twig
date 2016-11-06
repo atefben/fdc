@@ -66,13 +66,7 @@
                                         <div class="vCenterKid">
                                             <a href="{{ path('fdc_event_television_gettrailer', {'slug': group.film.slug}) }}"
                                                class="category">{{ group.film.titleVO|truncate(16) }}</a>
-                                            {% spaceless %}
-                                                <span>
-                                                    {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                        {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
-                                                    {% endfor %}
-                                                </span>
-                                            {% endspaceless %}
+                                            {% spaceless %}<span>{% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}{{ loop.first == false ? ', ': '' }}{{ director.fullName }}{% endfor %}</span>{% endspaceless %}
                                         </div>
                                     </div>
                                 </div>
