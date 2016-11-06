@@ -507,3 +507,7 @@
 .chapeau em {
     font-style: italic;
 }
+
+.webtv-ba-video .informations-video .block {
+	height: 325px;
+}
