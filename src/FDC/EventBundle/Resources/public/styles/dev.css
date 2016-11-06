@@ -509,5 +509,5 @@
 }
 
 .webtv-ba-video .informations-video .block {
-	height: 325px;
+	height: 325px !important;
 }
