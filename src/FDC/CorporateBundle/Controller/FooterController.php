@@ -185,9 +185,10 @@ class FooterController extends Controller
                 if($menu['type'] == 1)
                 $displayedRoutes[] = $menu;
             }
+            if($menu['site'] == FDCEventRoutesInterface::PRESS){
+                $press[] = $menu;
+            }
         }
-
-
         // la selection
         $aboutUs = $this
             ->getDoctrineManager()

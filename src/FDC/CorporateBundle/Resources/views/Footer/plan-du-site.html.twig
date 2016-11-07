@@ -52,6 +52,58 @@
                             </li>
                         </ul>
                     </article>
+                {% elseif route.route == 'fdc_press_news_home' and route.enabled == true %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            {% for menu in press %}
+                                {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_news_home') }}">
+                                            {{ 'header.mainnav.nav.accueil'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% elseif menu.route == 'fdc_press_news_list' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_news_list') }}">
+                                            {{ 'header.mainnav.nav.communiques'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% elseif menu.route == 'fdc_press_accredit_main' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_accredit_main') }}">
+                                            {{ 'header.mainnav.nav.accrediter'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% elseif menu.route == 'fdc_press_guide_main' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_guide_main') }}">
+                                            {{ 'header.mainnav.nav.guide'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% elseif menu.route == 'fdc_press_agenda_scheduling' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_agenda_scheduling') }}">
+                                            {{ 'header.mainnav.nav.programmation'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_media_main', { 'sectionId': 3 }) }}">
+                                            {{ 'header.mainnav.nav.mediatheque'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
+                                    <li>
+                                        <a href="{{ path('fdc_press_media_download') }}">
+                                            {{ 'header.mainnav.nav.telecharger'|trans({}, 'FDCPressBundle') }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </article>
                 {% elseif route.route == 'fdc_corporate_participate_inscription' and route.enabled == true %}
                     <article class="sitemap-item">
                         <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
