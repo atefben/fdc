@@ -463,6 +463,57 @@
 
 .wysiwyg-article-02 {
 
+  table {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+
+    &:after {
+      content: '';
+      clear: both;
+    }
+
+    td, th {
+      font-weight: normal;
+      vertical-align: middle;
+      border: 1px solid #666;
+      padding: 15px 0px;
+      width: 320px;
+      text-align: center;
+      color: #666666;
+      font-size: .74rem;
+      font-family: $CamphorMedium;
+      text-align: center;
+      font-size: .74rem !important;
+
+      p {
+        font-size: .74rem !important;
+        font-family: $CamphorMedium;
+      }
+    }
+
+    th {
+      text-transform: uppercase;
+      color: #000;
+      font-family: $CamphorBold;
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25, .46, .45, .94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  .block-movie-preview p.description, .block-movie-preview p{
+    margin-top: 0px;
+  }
+
   .audio-container .audio-player .off .info p {
     margin-bottom: 0px;
   }
@@ -581,7 +632,7 @@
 
     p, ul, ol {
       font-size: 1rem;
-      font-family: $CamphorBold;
+      font-family: $CamphorRegular;
       color: #666666;
       display:block;
 

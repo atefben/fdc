@@ -694,6 +694,7 @@
 .block-movie-preview {
   background: center no-repeat fixed;
   background-size: cover;
+  min-height: 360px;
 
   .bck-hover {
     display: flex;
@@ -701,6 +702,7 @@
     justify-content: center;
     background-color: #141414;
     transition: .5s;
+    min-height: 360px;
 
     .ie & {
       width: 100%;
