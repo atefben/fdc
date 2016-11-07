@@ -35,7 +35,7 @@
                     <a onclick="javascript:window.print()" href="#" class="button print"><i
                                 class="icon icon_print"></i>{{ 'article.btn.imprimer'|trans }}</a>
                 </div>
-ICI
+
                 {% if news is news_article %}
                     {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
                 {% elseif news is news_audio %}
@@ -47,9 +47,7 @@ ICI
                         </div>
                     {% endif %}
                 {% elseif news is news_image %}
-                    LALA
                     <div class="single-gallery">
-                        LA
                         {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
                     </div>
                 {% endif %}
