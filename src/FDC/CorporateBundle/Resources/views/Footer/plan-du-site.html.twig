@@ -77,6 +77,8 @@
                             {% endif %}
                     </article>
                 {% elseif route.route == 'fdc_corporate_editions_retrospective' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
                     {% if route['__children'] is defined and route['__children']|length > 0  %}
                         <ul class="tcenter">
                             {% for child in route['__children'] %}
@@ -96,6 +98,7 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
+                </article>
                 {% else %}
                     <article class="sitemap-item">
                         <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
