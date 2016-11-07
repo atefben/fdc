@@ -5149,6 +5149,49 @@ body:not(.who) .block-push {
 .wysiwyg-article-02 .title-acces {
   text-transform: uppercase;
 }
+.wysiwyg-article-02 .title-article {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+}
+.wysiwyg-article-02 h2.sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.wysiwyg-article-02 h2.sub-title2 {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0px;
+}
+.wysiwyg-article-02 h3.sub-title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.wysiwyg-article-02 .descrip-participate {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+}
+.wysiwyg-article-02 .title-acces {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  padding-bottom: 20px;
+}
+.wysiwyg-article-02 .descript-acces {
+  padding-bottom: 20px;
+  font-size: .8125rem;
+  line-height: 24px;
+}
 .wysiwyg-article-02 h2, .wysiwyg-article-02 h3, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
   font-size: 1.125rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
@@ -5180,7 +5223,7 @@ body:not(.who) .block-push {
   line-height: 30px;
   list-style: inside;
   list-style-type: decimal;
-  color: #fff;
+  color: #666;
 }
 .wysiwyg-article-02 .text ol li a {
   color: #c8a461;
@@ -5193,7 +5236,6 @@ body:not(.who) .block-push {
   list-style: inherit;
   list-style-type: decimal;
   color: #fff;
-  margin-left: 30px;
 }
 .wysiwyg-article-02 .text p, .wysiwyg-article-02 .text ul, .wysiwyg-article-02 .text ol {
   font-size: 1rem;

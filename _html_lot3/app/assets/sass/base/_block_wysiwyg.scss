@@ -467,6 +467,56 @@
     text-transform: uppercase;
   }
 
+  .title-article {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin: 20px auto;
+  }
+
+  h2.sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  h2.sub-title2 {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 25px 0px;
+  }
+
+  h3.sub-title {
+    font-family: $CamphorBold;
+    font-size: 0.875rem;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .descrip-participate {
+    width: 607px;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+  }
+
+  .title-acces {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: $CamphorBold;
+    font-size: .75rem;
+    padding-bottom: 20px;
+  }
+
+  .descript-acces {
+    padding-bottom: 20px;
+    font-size: .8125rem;
+    line-height: 24px;
+  }
+
   h2, h3, .contain-title p, .contain-title h3, .contain-title h5 {
     font-size: 1.125rem;
     font-family:$CamphorMedium;
@@ -507,7 +557,7 @@
       line-height: 30px;
       list-style: inside;
       list-style-type: decimal;
-      color: #fff;
+      color: #666;
 
       a {
         color: $gold;
@@ -523,7 +573,6 @@
       list-style: inherit;
       list-style-type: decimal;
       color: #fff;
-      margin-left: 30px;
     }
 
     p, ul, ol {
