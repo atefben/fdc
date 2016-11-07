@@ -5146,7 +5146,56 @@ body:not(.who) .block-push {
   display: block;
 }
 
-.wysiwyg-article-02 h2, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
+.wysiwyg-article-02 .audio-container .audio-player .off .info p {
+  margin-bottom: 0px;
+}
+.wysiwyg-article-02 .title-acces {
+  text-transform: uppercase;
+}
+.wysiwyg-article-02 .title-article {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+}
+.wysiwyg-article-02 h2.sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.wysiwyg-article-02 h2.sub-title2 {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0px;
+}
+.wysiwyg-article-02 h3.sub-title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.wysiwyg-article-02 .descrip-participate {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+}
+.wysiwyg-article-02 .title-acces {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  padding-bottom: 20px;
+}
+.wysiwyg-article-02 .descript-acces {
+  padding-bottom: 20px;
+  font-size: .8125rem;
+  line-height: 24px;
+}
+.wysiwyg-article-02 h2, .wysiwyg-article-02 h3, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
   font-size: 1.125rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   color: #fff;
@@ -5154,13 +5203,13 @@ body:not(.who) .block-push {
   text-align: center;
   line-height: 36px;
 }
-.wysiwyg-article-02 h2 a, .wysiwyg-article-02 .contain-title p a, .wysiwyg-article-02 .contain-title h3 a, .wysiwyg-article-02 .contain-title h5 a {
+.wysiwyg-article-02 h2 a, .wysiwyg-article-02 h3 a, .wysiwyg-article-02 .contain-title p a, .wysiwyg-article-02 .contain-title h3 a, .wysiwyg-article-02 .contain-title h5 a {
   color: #c8a461;
 }
-.wysiwyg-article-02 h2 strong, .wysiwyg-article-02 .contain-title p strong, .wysiwyg-article-02 .contain-title h3 strong, .wysiwyg-article-02 .contain-title h5 strong {
+.wysiwyg-article-02 h2 strong, .wysiwyg-article-02 h3 strong, .wysiwyg-article-02 .contain-title p strong, .wysiwyg-article-02 .contain-title h3 strong, .wysiwyg-article-02 .contain-title h5 strong {
   color: #c8a461;
 }
-.wysiwyg-article-02 h2 span, .wysiwyg-article-02 .contain-title p span, .wysiwyg-article-02 .contain-title h3 span, .wysiwyg-article-02 .contain-title h5 span {
+.wysiwyg-article-02 h2 span, .wysiwyg-article-02 h3 span, .wysiwyg-article-02 .contain-title p span, .wysiwyg-article-02 .contain-title h3 span, .wysiwyg-article-02 .contain-title h5 span {
   color: #c8a461;
 }
 .wysiwyg-article-02 .contain-title ul, .wysiwyg-article-02 .contain-title ol {
@@ -5177,7 +5226,7 @@ body:not(.who) .block-push {
   line-height: 30px;
   list-style: inside;
   list-style-type: decimal;
-  color: #fff;
+  color: #666;
 }
 .wysiwyg-article-02 .text ol li a {
   color: #c8a461;
@@ -5190,7 +5239,50 @@ body:not(.who) .block-push {
   list-style: inherit;
   list-style-type: decimal;
   color: #fff;
-  margin-left: 30px;
+}
+.wysiwyg-article-02 .text p, .wysiwyg-article-02 .text ul, .wysiwyg-article-02 .text ol {
+  font-size: 1rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #666666;
+  display: block;
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  color: #666666;
+}
+.ie .wysiwyg-article-02 .text p, .ie .wysiwyg-article-02 .text ul, .ie .wysiwyg-article-02 .text ol {
+  margin-top: 67px;
+  width: 100%;
+}
+.wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
+  color: #c8a461;
+}
+.bright .wysiwyg-article-02 .text p, .bright .wysiwyg-article-02 .text ul, .bright .wysiwyg-article-02 .text ol {
+  color: #141414;
+}
+.wysiwyg-article-02 .text p a, .wysiwyg-article-02 .text ul a, .wysiwyg-article-02 .text ol a {
+  color: #c8a461;
+}
+.wysiwyg-article-02 .text p em, .wysiwyg-article-02 .text ul em, .wysiwyg-article-02 .text ol em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.wysiwyg-article-02 .text p sub, .wysiwyg-article-02 .text ul sub, .wysiwyg-article-02 .text ol sub {
+  vertical-align: text-bottom;
+  font-size: .5rem;
+}
+.wysiwyg-article-02 .text p sup, .wysiwyg-article-02 .text ul sup, .wysiwyg-article-02 .text ol sup {
+  vertical-align: super;
+  font-size: .5rem;
+}
+.wysiwyg-article-02 .text p a, .wysiwyg-article-02 .text ul a, .wysiwyg-article-02 .text ol a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.wysiwyg-article-02 .text p a:hover, .wysiwyg-article-02 .text ul a:hover, .wysiwyg-article-02 .text ol a:hover {
+  color: #8e6d30;
 }
 .wysiwyg-article-02 h4 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -15322,7 +15414,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding: 65px 0;
 }
 .legal-notice h3.sub-title {
-  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .875rem;
   margin: 50px 0;
   text-align: center;
@@ -15373,10 +15465,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: .74rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-size: 0.74rem !important;
+  font-size: .74rem !important;
 }
 .legal-notice table td p, .legal-notice table th p {
-  font-size: 0.74rem !important;
+  font-size: .74rem !important;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 .legal-notice table th {
