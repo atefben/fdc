@@ -194,6 +194,12 @@ class FooterController extends Controller
             ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
             ->findAll()
         ;
+        $about = array();
+        foreach($aboutUs as $n){
+            if($n->findTranslationByLocale('fr')->getStatus() == 1) {
+                $about[] = $n;
+            }
+        }
 
         //jury
         $jury = $em
@@ -229,7 +235,7 @@ class FooterController extends Controller
             'press'             => $press,
             'award'             => $award,
             'jury'              => $jury,
-            'aboutUs'          => $aboutUs,
+            'aboutUs'          => $about,
             'routes'            => $displayedRoutes
         );
     }
