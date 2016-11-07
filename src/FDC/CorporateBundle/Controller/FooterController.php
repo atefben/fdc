@@ -173,10 +173,10 @@ class FooterController extends Controller
         //routes from menu
         $routes = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
 
-        // Menu Participer
-        $participatePage    = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findByInstit(true);
+        $participatePage = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
+        $preparePage = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
 
-        $participateMenu = $participatePage;
+        $participateMenu = array_merge($preparePage, $participatePage);
 
         $displayedRoutes = array();
         $press = array();
@@ -224,7 +224,7 @@ class FooterController extends Controller
 
         return array(
             'events'            => $events,
-            'participate'       => $participateMenu,
+            'participateMenu'       => $participateMenu,
             'footer'            => $displayedFooterElements,
             'press'             => $press,
             'award'             => $award,
