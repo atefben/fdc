@@ -29,8 +29,6 @@ class SearchController extends Controller
 
     /**
      * @Route("/search", options={"expose"=true})
-     * @Template("FDCCorporateBundle:Search:search.html.twig")
-     * @return array
      */
     public function searchSubmitAction($_locale, Request $request)
     {
@@ -142,10 +140,7 @@ class SearchController extends Controller
 
         $searchForm = $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
 
-        return array('form' => $searchForm->createView());
-
-
-        $em = $this->get('doctrine')->getManager();
+        /*$em = $this->get('doctrine')->getManager();
         $professions = $em->createQueryBuilder()->select('fpt')
             ->from('BaseCoreBundle:FilmPrizeTranslation', 'fpt')
             ->where('fpt.locale = :locale')
@@ -153,47 +148,51 @@ class SearchController extends Controller
             ->distinct()
             //->setMaxResults(10)
             ->getQuery()
-            ->getResult();
+            ->getResult();*/
 
-        if($request->isMethod('POST')) {
-            $newsResults = $this->getSearchResults($_locale, 'news', $searchTerm, 4);
-            $infoResults = $this->getSearchResults($_locale, 'info', $searchTerm, 4);
-            $statementResults = $this->getSearchResults($_locale, 'statement', $searchTerm, 2);
-            $eventResults = $this->getSearchResults($_locale, 'event', $searchTerm, 2);
-            $mediaResults = $this->getSearchResults($_locale, 'media', $searchTerm, 2);
-            $participateResults = $this->getSearchResults($_locale, 'participate', $searchTerm, 2);
-            $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4, 1, $this->container->getParameter('fdc_year'));
-            $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6, 1, $this->container->getParameter('fdc_year'));
+        $searchForm->handleRequest($request);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $data = $searchForm->getData();
+
+            $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : array();
+            $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : array();
+            //$statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : array();
+            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : array();
+
+            if($data['photos'] || $data['videos'] || $data['audios']) {
+                //$mediaResults = $data['photos'] ? $this->getSearchResults($_locale, 'media', $data, 2) : array();
+                //$photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photo', $data, 2) : array();
+                //$videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'video', $data, 2) : array();
+                //$audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audio', $data, 2) : array();
+
+                //merging medias (photos,videos,audios)
+                //$mediaResults = array_merge($photoResults, $videoResults);
+                //$mediaResults = array_merge($mediaResults, $audioResults);
+            }
+
+            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 4, 1) : array();
+            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 6, 1) : array();
 
             $result = array(
-                'category' => array(
-                    'actualite' => $newsResults['items'],
-                    'artist' => $artistResults['items'],
-                    'film' => $filmResults['items'],
-                    'info' => $infoResults['items'],
-                    'statement' => $statementResults['items'],
-                    'media' => $mediaResults['items'],
-                    'event' => $eventResults['items'],
-                    'participate' => $participateResults['items'],
-                ),
-                'count' => array(
-                    'actualite' => $newsResults['count'],
-                    'artist' => $artistResults['count'],
-                    'film' => $filmResults['count'],
-                    'info' => $infoResults['count'],
-                    'statement' => $statementResults['count'],
-                    'media' => $mediaResults['count'],
-                    'event' => $eventResults['count'],
-                    'participate' => $participateResults['count'],
-                ),
+                'actualite' => $newsResults,
+                'artist' => $artistResults,
+                'film' => $filmResults,
+                'info' => $infoResults,
+                //'statement' => $statementResults,
+                //'media' => $mediaResults,
+                'event' => $eventResults,
             );
 
-            return array(
-                'searchResult' => $searchResult,
-                'searchTerm' => $searchTerm
-            );
+            return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
+                'result' => $result,
+                //'searchTerm' => $data['search'],
+                'form' => $searchForm->createView()
+            ));
         } else {
-
+            return $this->render('FDCCorporateBundle:Search:search.html.twig', array(
+                'form' => $searchForm->createView()
+            ));
         }
 
     }
@@ -233,17 +232,17 @@ class SearchController extends Controller
     }
 
 
-    private function getSearchResults($_locale, $type, $searchTerm, $range = 50, $page = 1, $fdcYear = 2016)
+    private function getSearchResults($_locale, $type, $data, $range = 50, $page = 1)
     {
         /** var FOS\ElasticaBundle\Manager\RepositoryManager */
         $repositoryManager = $this->container->get('fos_elastica.manager');
 
         // Get the events.
-        /** var FOS\ElasticaBundle\Repository */
+        /** var FOS\ElasticaBundle\Repositorchary */
         $repository = $repositoryManager->getRepository('BaseCoreBundle:' . self::$entityMapper[$type]);
 
         /** var array of Acme\UserBundle\Entity\User */
-        return $repository->findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear);
+        return $repository->findWithCustomQuery($_locale, $data['search'], $range, $page);
     }
 
     private function getSearchFilters($type, $items)

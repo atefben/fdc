@@ -12,7 +12,7 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
       
         $finalQuery = new \Elastica\Query\BoolQuery();
@@ -27,7 +27,7 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         $statusQuery
             ->addMust($this->getStatusFilterQuery($_locale))
             ->addMust($finalQuery)
-            ->addMust($this->getYearQuery($fdcYear))
+            //->addMust($this->getYearQuery($fdcYear))
         ;
 
 

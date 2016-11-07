@@ -12,14 +12,14 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class FilmPersonRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
 
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
             ->addShould($this->getFieldsQuery($searchTerm))
-            ->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
+            //->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
             ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
         ;
         

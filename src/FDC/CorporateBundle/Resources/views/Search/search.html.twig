@@ -7,14 +7,14 @@
 
 <section class="brigth search-page" id="main">
     <div class="block-search block-01">
-        <form action="search-result.html">
+        {{ form_start(form) }}
             <div class="vFlexAlign">
-                <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id='s-text'></label>
-                <label for="s-article" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
-                <label for="s-photo" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
-                <label for="s-video" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
-                <label for="s-audio" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
-                <label for="s-event" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
+                <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
+                <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
+                <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
+                <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
+                <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
+                <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
             </div>
             <div class="slider-selection">
                 <span id="slider-snap-value-lower" class="number"></span>
@@ -25,15 +25,14 @@
             </div>
 
             <div class="tabs-two vFlexAlign">
-                <label for="s-artist" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">Artistes</span><input type="checkbox" name="artist" id='s-artist'></label>
-                <label for="s-movie" class="icon-s tab-s vFlexAlign last"><i class="icon icon-movie-clap"></i><span class="text">Films</span><input type="checkbox" name="movie" id='s-movie'></label>
+                <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
+                <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i class="icon icon-movie-clap"></i><span class="text">{{ form_label(form.movies) }}</span>{{ form_widget(form.movies) }}</label>
             </div>
 
             <table class="more-search">
                 <tr>
                     <td>
                         <div class="tab-1 tab">
-
 
                             <div class="tab-selection" id='tab1'>
                                 <label for="select-country-1" id="format" class="selection filter">{{ 'search.form.label.country'|trans }} <i class="icon icon-arrow-down"></i></label>
@@ -141,7 +140,7 @@
         --><button type="submit" name="submit" class="button button-submit-02"><i class="icon icon-search"></i>{{ 'search.form.label.submitsearch'|trans }}</button>
             </div>
 
-        </form>
+        {{ form_end(form) }}
 
         <div class="block-push-03">
             <div class="half-div block-push block-push-item">

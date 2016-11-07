@@ -42,26 +42,27 @@ class SearchType extends AbstractType {
                     'value'       => $this->searchTerm,
                     'placeholder' => $this->translator->trans('header.search.input.entrezrecherche')
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false
             ))
             ->add('news', 'checkbox', array(
-                'label'    => $this->translator->trans('header.search.input.news'),
+                'label'    => $this->translator->trans('search.form.news'),
                 'required' => false,
             ))
             ->add('photos', 'checkbox', array(
-                'label'    => $this->translator->trans('header.search.input.photos'),
+                'label'    => $this->translator->trans('search.form.photos'),
                 'required' => false,
             ))
             ->add('videos', 'checkbox', array(
-                'label'    => $this->translator->trans('header.search.input.videos'),
+                'label'    => $this->translator->trans('search.form.videos'),
                 'required' => false,
             ))
             ->add('audios', 'checkbox', array(
-                'label'    => $this->translator->trans('header.search.input.audios'),
+                'label'    => $this->translator->trans('search.form.audios'),
                 'required' => false,
             ))
             ->add('events', 'checkbox', array(
-                'label'    => $this->translator->trans('header.search.input.events'),
+                'label'    => $this->translator->trans('search.form.events'),
                 'required' => false,
             ))
             ->add('artists', 'checkbox', array(
