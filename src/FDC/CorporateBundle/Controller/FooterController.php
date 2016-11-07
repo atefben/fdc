@@ -230,12 +230,12 @@ class FooterController extends Controller
 
         return array(
             'events'            => $events,
-            'participateMenu'       => $participateMenu,
+            'participateMenu'   => $participateMenu,
             'footer'            => $displayedFooterElements,
             'press'             => $press,
             'award'             => $award,
             'jury'              => $jury,
-            'aboutUs'          => $about,
+            'aboutUs'           => $about,
             'routes'            => $displayedRoutes
         );
     }
@@ -254,9 +254,8 @@ class FooterController extends Controller
         $hasErrors = false;
         $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
         $form = $this->createForm(new ContactType($themes, $translator));
-
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             $theme = $em->getRepository('BaseCoreBundle:ContactTheme')->findOneById($form->get('select')->getData());
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()
