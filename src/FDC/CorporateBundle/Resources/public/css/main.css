@@ -5188,7 +5188,7 @@ body:not(.who) .block-push {
 .wysiwyg-article-02 table a:hover {
   color: #8e6d30;
 }
-.wysiwyg-article-02 .block-movie-preview p.description {
+.wysiwyg-article-02 .block-movie-preview p.description, .wysiwyg-article-02 .block-movie-preview p {
   margin-top: 0px;
 }
 .wysiwyg-article-02 .audio-container .audio-player .off .info p {
