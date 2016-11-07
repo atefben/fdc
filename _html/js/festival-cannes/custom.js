@@ -234,9 +234,6 @@ function click() {
         $('#eventSelector').toggleClass("showeventSelector");
     });
 
-   /* $(selectbtn).click(function() {
-          $('#' + $(this).data('rel')).toggle();
-    });*/
 
 
     $('.selectbtn').click(function() {
@@ -259,13 +256,13 @@ function click() {
                   el.splice(indexRel, 1);
               }
 
-              $('.' + identification).fadeOut(450); 
+              $('.' + identification).fadeOut(200); 
               $('#' + attr).hide(); 
               console.log("removed " + identification);
               console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
-                  $('.parent > div').fadeOut(450);
+                  $('.parent > div').fadeOut(200);
                   $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
                   $('.selectText').hide();
               } else if (this.id == 'all') {
@@ -278,6 +275,8 @@ function click() {
 
         $('.events, .selectText').addClass('hideContent');
         $(this).addClass('purpleBtn');
+        $('.parent > div').fadeOut(200);
+
 
         el.push(identification);
         el.push(attr);    
@@ -285,19 +284,22 @@ function click() {
         console.log(el);
 
           if (this.id == 'all') {
-            $('.parent > div').fadeIn(450);
+            $('.parent > div').fadeIn(200);
             $('.selectText').show();
+            $('.selectText').removeClass('hideContent');
             $('.message').empty();
             $(this).addClass('purpleBtn');
             $(this).siblings().removeClass('purpleBtn');
+            $('.events').removeClass('hideContent');
             el = [];
             console.log(el);
           } else if (el){
-              $.each(el, function(i, val) {              
-                 $('.' + val).fadeIn(450);
+              $('.selectText').hide();
+              $.each(el, function(i, val) {       
+                 $('.' + val).fadeIn(200);
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
-                 $('#' + attr).fadeIn(250);
+                 $('#' + val).show();
                   console.log("here is " + val);
                   console.log("here is " + attr);
                   if ($(identification) != val) {
@@ -356,47 +358,3 @@ if ($('.selectText').length > 1) {
   $(this).removeClass('virgule');
 
 }
-
-/* FIX FOR OWL-PUB CARROUSEL 2, DO NOT ADD TO DOCUMENT.READY. pub page currently has carousel 1 / #2 wasn't working properly still in beta :) 
-
-$(window).load(function() {
-
-    var fixOwl = function(){
-          
-          var $stage = $('.owl-stage'),
-              stageW = $stage.width(),
-              $el = $('.owl-item'),
-              elW = 0;
-          
-          $el.each(function() {
-              elW += $(this).width()+ +($(this).css("margin-right").slice(0, -2))
-          });
-          if ( elW > stageW ) {
-              $stage.width( elW );
-          };
-      }
-
-      $('.owl-pub, #owl-pub').owlCarousel({
-          items:1,
-          dots: true,
-          onInitialized: fixOwl,
-          onRefreshed: fixOwl/*,
-          onInitialized: function() {
-            
-            if ($(window).width() < 1280) {
-              $('.owl-item').css({ 'width': '294px' });
-              $('.owl-dot').click(function(){
-                  $('.owl-pub .owl-stage').css({ transform: "translate3d(294px, 0, 0)" });
-              }); 
-            } else {
-              
-              $('.owl-item').css({ 'width': '346px' });
-              
-              $('.owl-dot').click(function(){
-                    $('.owl-pub .owl-stage').css({ transform: "translate3d(346px, 0, 0)" });
-                    alert('clicked');
-              });
-            }
-          }
-      });
-  });*/
