@@ -20,7 +20,7 @@
                    {% endfor %}
                 {% endspaceless %}
                 {% if prev.countries|length > 0 %}
-                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}{% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in prev.countries %}{% if loop.index != prev.countries|length %}{{ country.country|trans_fallback('name') ~ ',' }} {% else %}{{ country.country|trans_fallback('name') }}{% endif %}{% endfor %}</p>
                 {% endif %}
             </div>
         </div>
@@ -48,7 +48,7 @@
                     {% endfor %}
                 {% endspaceless %}
                 {% if next.countries|length > 0 %}
-                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }} {% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in next.countries %}{% if loop.index != next.countries|length %}{{ country.country|trans_fallback('name') ~ ',' }} {% else %}{{ country.country|trans_fallback('name') }}{% endif %}{% endfor %}</p>
                 {% endif %}
             </div>
         </div>

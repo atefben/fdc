@@ -12,7 +12,7 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class FDCPageParticipateRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery

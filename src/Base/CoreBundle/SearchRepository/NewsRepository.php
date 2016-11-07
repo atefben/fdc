@@ -12,7 +12,7 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class NewsRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
         
         // Fields (title, introduction) OR Theme

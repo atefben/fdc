@@ -1,0 +1,178 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}{% endblock %}
+
+{% block body %}
+
+<section class="brigth search-page" id="main">
+    <div class="block-search block-01">
+        {{ form_start(form) }}
+            <div class="vFlexAlign">
+                <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
+                <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
+                <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
+                <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
+                <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
+                <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
+            </div>
+            <div class="slider-selection">
+                <span id="slider-snap-value-lower" class="number"></span>
+                <div class="container-timelapse">
+                    <div class="timelapse" id="timelapse"></div>
+                </div>
+                <span id="slider-snap-value-upper" class="number"></span>
+            </div>
+
+            <div class="tabs-two vFlexAlign">
+                <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
+                <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i class="icon icon-movie-clap"></i><span class="text">{{ form_label(form.movies) }}</span>{{ form_widget(form.movies) }}</label>
+            </div>
+
+            <table class="more-search">
+                <tr>
+                    <td>
+                        <div class="tab-1 tab">
+
+                            <div class="tab-selection" id='tab1'>
+                                <label for="select-country-1" id="format" class="selection filter">{{ 'search.form.label.country'|trans }} <i class="icon icon-arrow-down"></i></label>
+
+                                <span class="select-span">
+                                  <span data-select="France">France </span>
+                                  <span data-select="Afghanistan">Afghanistan </span>
+                                  <span data-select="Afrique_Centrale">Afrique_Centrale </span>
+                                  <span data-select="Afrique_du_sud">Afrique_du_Sud </span>
+                                  <span data-select="Albanie">Albanie </span>
+                                  <span data-select="Algerie">Algerie </span>
+                                  <span data-select="Allemagne">Allemagne </span>
+                                  <i class="icon  icon-arrow-down"></i>
+                                </span>
+
+                                <select name="select-country-1" id="select-country-1" class="select">
+                                    <option value="France">France </option>
+                                    <option value="Afghanistan">Afghanistan </option>
+                                    <option value="Afrique_Centrale">Afrique_Centrale </option>
+                                    <option value="Afrique_du_sud">Afrique_du_Sud </option>
+                                    <option value="Albanie">Albanie </option>
+                                    <option value="Algerie">Algerie </option>
+                                    <option value="Allemagne">Allemagne </option>
+                                    <option value="Andorre">Andorre </option>
+                                </select>
+                            </div>
+
+                            <div class="sub-tab">
+                                <div class="jobs">
+                                    <div class="title-cont">{{ 'search.form.label.profession'|trans }} <i class="icon icon-create"></i></div>
+                                    {% for profession in form.professions %}
+                                        {{ form_widget(profession) }} <label for="{{ profession.vars.id }}">{{ form_label(profession) }}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="sub-tab">
+                                <div class="type">
+                                    <div class="title-cont">{{ 'search.form.label.genre'|trans }} <i class="icon icon-create"></i></div>
+                                    {% for genre in form.genres %}
+                                        {{ form_widget(genre) }} <label for="{{ genre.vars.id }}">{{ form_label(genre) }}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="tab-2 tab">
+
+                            <div class="tab-selection" id='tab2'>
+                                <label for="select-country-1" id="format2" class="selection filter">{{ 'search.form.label.country'|trans }} <i class="icon icon-arrow-down"></i></label>
+
+                                <span class="select-span">
+                                  <span data-select="France">France </span>
+                                  <span data-select="Afghanistan">Afghanistan </span>
+                                  <span data-select="Afrique_Centrale">Afrique_Centrale </span>
+                                  <span data-select="Afrique_du_sud">Afrique_du_Sud </span>
+                                  <span data-select="Albanie">Albanie </span>
+                                  <i class="icon  icon-arrow-down"></i>
+                                </span>
+
+                                <select name="select-country-1" id="select-country2" class="select">
+                                    <option value="France">France </option>
+                                    <option value="Afghanistan">Afghanistan </option>
+                                    <option value="Afrique_Centrale">Afrique_Centrale </option>
+                                    <option value="Afrique_du_sud">Afrique_du_Sud </option>
+                                    <option value="Albanie">Albanie </option>
+                                </select>
+                            </div>
+
+                            <div class="sub-tab">
+                                <div class="price">
+                                    <div class="title-cont">prix <i class="icon icon-create"></i></div>
+                                    {% for prize in form.prizes %}
+                                        {{ form_widget(prize) }} <label for="{{ prize.vars.id }}">{{ form_label(prize) }}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="sub-tab active">
+                                <div class="format">
+                                    <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-minus"></i></div>
+                                    {% for format in form.formats %}
+                                        {{ form_widget(format) }} <label for="{{ format.vars.id }}">{{ form_label(format) }}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="sub-tab active">
+                                <div class="selection-type">
+                                    <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i class="icon icon-minus"></i></div>
+                                    {% for selection in form.selections %}
+                                        {{ form_widget(selection) }} <label for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="buttons-02 buttons-two">
+                <button class="button b-grey"><i class="icon icon-create"></i>{{ 'search.form.label.orientedresearch'|trans }}</button><!--
+        --><button type="submit" name="submit" class="button button-submit-02"><i class="icon icon-search"></i>{{ 'search.form.label.submitsearch'|trans }}</button>
+            </div>
+
+        {{ form_end(form) }}
+
+        <div class="block-push-03">
+            <div class="half-div block-push block-push-item">
+                <div class="vFlexAlign">
+                    <div>
+                        <strong class="title">Les meilleurs interprètes masculins depuis 1960</strong>
+                        <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                    </div>
+                </div>
+                <img src="{{ asset('/bundles/fdccorporate/media/images/search-01.jpg') }}" alt="">
+            </div><!--
+      --><div class="half-div block-push block-push-item">
+                <div class="vFlexAlign">
+                    <div>
+                        <strong class="title">Les meilleures interprètes féminines depuis 1960</strong>
+                        <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                    </div>
+                </div>
+                <img src="{{ asset('/bundles/fdccorporate/media/images/search-02.jpg') }}" alt="">
+            </div>
+        </div>
+
+        <div class="block-push block-push-03-alone">
+            <div class="vFlexAlign">
+                <div>
+                    <strong class="title-2">Les jurys de l’édition 2010</strong>
+                    <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                </div>
+            </div>
+            <img src="{{ asset('/bundles/fdccorporate/media/images/search-03.jpg') }}" alt="">
+        </div>
+
+    </div>
+</section>
+{% endblock %}
