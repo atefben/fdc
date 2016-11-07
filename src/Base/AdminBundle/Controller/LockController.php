@@ -111,6 +111,8 @@ class LockController extends Controller
         'corpoteamteams'                   => 'CorpoTeamTeams',
         'corpoteamdepartements'            => 'CorpoTeamDepartements',
         'corpoteammembers'                 => 'CorpoTeamMembers',
+        'corpopalmeor'                     => 'CorpoPalmeOr',
+        'corpofestivalhistory'             => 'CorpoFestivalHistory',
     );
 
     /**
