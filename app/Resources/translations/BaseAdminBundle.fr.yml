@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_palme_or_list : Listes des pages Palme d'or
     link_corpo_festival_history_list: L'histoire du festival
     link_corpo_mediatheque_list: Médiathèque
     link_corpo_team_teams_list: Les équipes

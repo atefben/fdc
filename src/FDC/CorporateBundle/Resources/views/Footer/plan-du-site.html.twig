@@ -65,6 +65,19 @@
                             </li>
                         </ul>
                     </article>
+                {% elseif route.route == 'fdc_corporate_participate_inscription' and route.enabled == true %}
+                    <article class="sitemap-item">
+                        <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                        <ul>
+                            {% for k,child in participate %}
+                                {% if k == 0 %}
+                                    <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child|trans_fallback('title') }}</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </article>
                 {% else %}
                     <article class="sitemap-item">
                         <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>

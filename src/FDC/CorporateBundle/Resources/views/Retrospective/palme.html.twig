@@ -95,6 +95,32 @@
                                         <p class="title-item">{{ transWidget.paragraph }}</p>
                                     {% endif %}
                                 </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_typeone %}
+                                {% if widget.image is not null %}
+                                    {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = widget.image.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set image = trans.file %}
+                                {% endif %}
+                                <article class="block-movie-preview" style='background-image: url({% path image, '363x260' %}'>
+                                    <div class="bck-hover"   >
+                                        <div class="wrapper-item-big">
+                                            <div class="poster">
+                                                <figure>
+                                                    <img src="{% path image, '363x260' %}" alt="{{ widget.image|trans_fallback('alt') }}"  >
+                                                    <figcaption>Lorem ipsumt quia.</figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="infos"    >
+                                                <strong class="big-date">{{ widget|trans_fallback('title') }}</strong>
+                                                <p class="description">
+                                                   {{ widget|trans_fallback('content')|raw }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
                             {% endif %}
                         {% endfor %}
                     </div>
