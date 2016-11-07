@@ -58,7 +58,7 @@ class FilmJury implements TranslateMainInterface
     /**
      * @var FilmPerson
      *
-     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="juries", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="juries", cascade={"persist", "remove"})
      *
      * @Groups({"jury_list", "jury_show"})
      */

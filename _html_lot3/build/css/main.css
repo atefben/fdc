@@ -5146,7 +5146,7 @@ body:not(.who) .block-push {
   display: block;
 }
 
-.wysiwyg-article-02 h2 {
+.wysiwyg-article-02 h2, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
   font-size: 1.125rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   color: #fff;
@@ -5154,14 +5154,43 @@ body:not(.who) .block-push {
   text-align: center;
   line-height: 36px;
 }
-.wysiwyg-article-02 h2 a {
+.wysiwyg-article-02 h2 a, .wysiwyg-article-02 .contain-title p a, .wysiwyg-article-02 .contain-title h3 a, .wysiwyg-article-02 .contain-title h5 a {
   color: #c8a461;
 }
-.wysiwyg-article-02 h2 strong {
+.wysiwyg-article-02 h2 strong, .wysiwyg-article-02 .contain-title p strong, .wysiwyg-article-02 .contain-title h3 strong, .wysiwyg-article-02 .contain-title h5 strong {
   color: #c8a461;
 }
-.wysiwyg-article-02 h2 span {
+.wysiwyg-article-02 h2 span, .wysiwyg-article-02 .contain-title p span, .wysiwyg-article-02 .contain-title h3 span, .wysiwyg-article-02 .contain-title h5 span {
   color: #c8a461;
+}
+.wysiwyg-article-02 .contain-title ul, .wysiwyg-article-02 .contain-title ol {
+  color: #fff;
+}
+.wysiwyg-article-02 .contain-title ul a, .wysiwyg-article-02 .contain-title ol a {
+  color: #c8a461;
+}
+.wysiwyg-article-02 .contain-title ul strong, .wysiwyg-article-02 .contain-title ol strong {
+  color: #c8a461;
+}
+.wysiwyg-article-02 .text ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+  color: #fff;
+}
+.wysiwyg-article-02 .text ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.wysiwyg-article-02 .text ol li a:hover {
+  color: #8e6d30;
+}
+.wysiwyg-article-02 .text ol {
+  list-style: inherit;
+  list-style-type: decimal;
+  color: #fff;
+  margin-left: 30px;
 }
 .wysiwyg-article-02 h4 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
