@@ -5146,7 +5146,10 @@ body:not(.who) .block-push {
   display: block;
 }
 
-.wysiwyg-article-02 h2, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
+.wysiwyg-article-02 .title-acces {
+  text-transform: uppercase;
+}
+.wysiwyg-article-02 h2, .wysiwyg-article-02 h3, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
   font-size: 1.125rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   color: #fff;
@@ -5154,13 +5157,13 @@ body:not(.who) .block-push {
   text-align: center;
   line-height: 36px;
 }
-.wysiwyg-article-02 h2 a, .wysiwyg-article-02 .contain-title p a, .wysiwyg-article-02 .contain-title h3 a, .wysiwyg-article-02 .contain-title h5 a {
+.wysiwyg-article-02 h2 a, .wysiwyg-article-02 h3 a, .wysiwyg-article-02 .contain-title p a, .wysiwyg-article-02 .contain-title h3 a, .wysiwyg-article-02 .contain-title h5 a {
   color: #c8a461;
 }
-.wysiwyg-article-02 h2 strong, .wysiwyg-article-02 .contain-title p strong, .wysiwyg-article-02 .contain-title h3 strong, .wysiwyg-article-02 .contain-title h5 strong {
+.wysiwyg-article-02 h2 strong, .wysiwyg-article-02 h3 strong, .wysiwyg-article-02 .contain-title p strong, .wysiwyg-article-02 .contain-title h3 strong, .wysiwyg-article-02 .contain-title h5 strong {
   color: #c8a461;
 }
-.wysiwyg-article-02 h2 span, .wysiwyg-article-02 .contain-title p span, .wysiwyg-article-02 .contain-title h3 span, .wysiwyg-article-02 .contain-title h5 span {
+.wysiwyg-article-02 h2 span, .wysiwyg-article-02 h3 span, .wysiwyg-article-02 .contain-title p span, .wysiwyg-article-02 .contain-title h3 span, .wysiwyg-article-02 .contain-title h5 span {
   color: #c8a461;
 }
 .wysiwyg-article-02 .contain-title ul, .wysiwyg-article-02 .contain-title ol {
@@ -15366,7 +15369,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding: 65px 0;
 }
 .legal-notice h3.sub-title {
-  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: .875rem;
   margin: 50px 0;
   text-align: center;
@@ -15417,10 +15420,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: .74rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-size: 0.74rem !important;
+  font-size: .74rem !important;
 }
 .legal-notice table td p, .legal-notice table th p {
-  font-size: 0.74rem !important;
+  font-size: .74rem !important;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 .legal-notice table th {

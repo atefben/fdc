@@ -463,7 +463,11 @@
 
 .wysiwyg-article-02 {
 
-  h2, .contain-title p, .contain-title h3, .contain-title h5 {
+  .title-acces {
+    text-transform: uppercase;
+  }
+
+  h2, h3, .contain-title p, .contain-title h3, .contain-title h5 {
     font-size: 1.125rem;
     font-family:$CamphorMedium;
     color: #fff;
