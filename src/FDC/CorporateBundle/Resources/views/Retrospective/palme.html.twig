@@ -84,11 +84,67 @@
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
                                 {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
-                                    {% for film in widget.widgetMovie.films %}
-                                    <div class="block-01-xs">
-                                    {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film.film, 'restauration': true} %}
-                                    </div>
-                                    {% endfor %}
+                                    <article class="block-movie-preview"
+                                             style="background-image: url('{% spaceless %}
+                                                 {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                                 film: film.film,
+                                                 film_format: '976x535',
+                                                 film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                 display_film_path: true
+                                                 }) %}
+                                             {% endspaceless %}')">
+                                        <div class="bck-hover">
+                                            <div class="wrapper-item">
+                                                <div class="poster">
+                                                    <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                    film: film.film,
+                                                    film_format: '259x352',
+                                                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                    display_film_path: true
+                                                    }) %}"/>
+                                                </div>
+                                                <div class="infos">
+
+                                                    <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
+                                                                class="name-f">{{ film.film.titleVO }}</strong></a>
+                                                    <a href="#"><span class="names-a">
+                                                            {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {% for director in directors %}
+                                                                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                                                                {% if loop.index != directors|length %}
+                                                                    {{ ' - '  }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                            </span></a>
+                                                        <span class="date">
+                                                            {% set duration = [] %}
+                                                            {% if film.film.duration is not empty %}
+                                                                {% set duration = film.film.duration|split('.') %}
+                                                            {% endif %}
+                                                            {% if film.film.productionYear is not null and  film.film.productionYear != 0 %}{{ film.film.productionYear }}
+                                                                {% if duration|length > 0 and duration[0] > 0 %}
+                                                                    -
+                                                                {% endif %}
+                                                            {% endif %}
+                                                            {% if duration|length > 0 and duration[0] > 0 %}
+                                                                {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                                                                {% set minutes = duration[0] % 60 %}
+                                                                {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
+                                                            {% endif %}
+                                                        </span>
+                                                    <p class="description">
+                                                        {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
+                                                            {{ film.film|trans_fallback('infoRestauration')|nl2br|raw }}
+                                                        {% else %}
+                                                            {{ film.film|trans_fallback('synopsis')|nl2br|raw }}
+                                                        {% endif %}
+                                                    </p>
+                                                    <strong class="name-f">{{ film.film.copyright }}</strong>
+                                                    <!--span class="names-a">Pour “Rebel Without a Cause” (Warner Bros).</span-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
                                 {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
