@@ -109,11 +109,11 @@
                                                                 class="name-f">{{ film.film.titleVO }}</strong></a>
                                                     <a href="#"><span class="names-a">
                                                             {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {% set directorsName = '' %}
                                                             {% for director in directors %}
-                                                                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                                                                {% if loop.index != directors|length %}
-                                                                    {{ ' - '  }}
-                                                                {% endif %}
+                                                                {% set directorsName = directorsName ~ director.fullName %}
+                                                                {{ directorsName }}
+                                                                {% if loop.index != directors|length %} - {% endif %}
                                                             {% endfor %}
                                                             </span></a>
                                                         <span class="date">
