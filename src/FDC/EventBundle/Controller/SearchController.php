@@ -277,12 +277,6 @@ class SearchController extends Controller
  
         $artistQuerySearch = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
         $artistQueryDoublon = $repository->getFieldsKeywordQuery(array('persons.doublon'), 0);
-
-        $artistQuery = new \Elastica\Query\BoolQuery();
-        $artistQuery
-            ->addMust($artistQuerySearch)
-            ->addMust($artistQueryDoublon)
-        ;
         
         // Search for movie.
         $path = 'films.film.translations';
@@ -307,7 +301,8 @@ class SearchController extends Controller
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
             ->addShould($filmQuery)
-            ->addShould($artistQuery)
+            ->addShould($artistQuerySearch)
+            ->addShould($artistQueryDoublon)
         ;
         
         return $finalQuery;
