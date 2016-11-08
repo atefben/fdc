@@ -36,6 +36,10 @@ class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implemen
     {
         $className = new \ReflectionClass(get_class($media));
 
+        if(is_null($media->getTheme())) {
+            $media->setTheme(new Theme());
+        }
+
         switch ($className->getShortName()) {
           case 'MediaImage':
             // If Media image use legend instead of title.
