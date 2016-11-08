@@ -134,6 +134,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     if ($('.container-webtv-ba-video').length > 0) {
         var shareUrl = $('.video .video-container').attr('data-link');
+    } else if ($('.all-audios').length > 0) {
+        var shareUrl = GLOBALS.urls.audiosUrl + '#vid=' + $container.data('vid');
     } else {
         var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $container.data('vid');
     }
