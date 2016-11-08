@@ -150,6 +150,7 @@ class EditionsController extends Controller
         if($page->findTranslationByLocale('fr')->getStatus() == 1) {
             return array(
                 'currentPage' => $page,
+                'archives'    => true
             );
         } else {
             throw $this->createNotFoundException('There is not available selection.');
