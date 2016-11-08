@@ -302,7 +302,6 @@ class SearchController extends Controller
         $finalQuery
             ->addShould($filmQuery)
             ->addShould($artistQuerySearch)
-            ->addShould($artistQueryDoublon)
         ;
         
         return $finalQuery;
