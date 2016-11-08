@@ -60,6 +60,18 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
         return $this->getFieldsKeywordQuery($fields, $searchTerm, false);
      
     }
+
+    private function getFieldsQueryDoublon($searchTerm)
+    {
+        $fields = array(
+            'firstname',
+            'lastname',
+            'nationality',
+        );
+
+        return $this->getFieldsKeywordQuery($fields, $searchTerm, false);
+
+    }
     
     private function getFilmsQuery($_locale, $searchTerm, $fdcYear)
     {

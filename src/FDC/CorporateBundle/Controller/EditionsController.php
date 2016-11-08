@@ -145,7 +145,7 @@ class EditionsController extends Controller
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoPalmeOr')
-            ->findAll()
+            ->getAllPagesByLocale($locale)
         ;
         if ($slug === null) {
             foreach ($pages as $page) {

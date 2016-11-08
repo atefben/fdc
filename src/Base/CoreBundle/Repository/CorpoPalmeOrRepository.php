@@ -35,4 +35,27 @@ class CorpoPalmeOrRepository extends TranslationRepository
 
         return $output;
     }
+
+    /**
+     * @param $locale
+     * @param $slug
+     * @return FDCPageLaSelection
+     * @throws NonUniqueResultException
+     */
+    public function getAllPagesByLocale($locale)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb
+            ->join('p.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.status = 1')
+            ->setParameter('locale', $locale)
+        ;
+
+        $output = $qb->getQuery()->getResult();
+
+
+        return $output;
+    }
 }
