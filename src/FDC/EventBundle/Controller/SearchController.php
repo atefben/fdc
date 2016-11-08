@@ -276,7 +276,7 @@ class SearchController extends Controller
         );
 
         $artistQuerySearch = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
-        $artistQueryDoublon = $repository->getFieldsKeywordQuery(array('person.duplicate'), 0);
+        $artistQueryDoublon = $repository->getFieldsKeywordQuery(array('persons.duplicate'), 0);
 
         // Search for movie.
         $path = 'films.film.translations';
@@ -342,6 +342,7 @@ class SearchController extends Controller
 
         // Artist query.
         $artistQuery = $repository->getFieldsKeywordQuery(array('persons.name'), $searchTerm);
+        $artistQueryDoublon = $repository->getFieldsKeywordQuery(array('persons.duplicate'), 0);
 
         $filmQuery = new \Elastica\Query\BoolQuery();
         $filmQuery
@@ -350,6 +351,7 @@ class SearchController extends Controller
             ->addShould($filmPersonsQuery)
             ->addShould($filmCountryQuery)
             ->addShould($artistQuery)
+            ->addMust($artistQueryDoublon)
         ;
 
         $filmFinalQuery = new \Elastica\Query\BoolQuery();
