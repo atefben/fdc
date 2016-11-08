@@ -275,19 +275,7 @@ class SearchController extends Controller
           'nationality',
         );
  
-        $artistQuerySearch = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
-        $doublonQuery = $repository->getFieldsKeywordQuery('person.doublon', 0);
-        $doublonNestedQuery = new \Elastica\Query\Nested();
-        $doublonNestedQuery
-            ->setQuery($doublonQuery)
-            ->setPath('films')
-        ;
-        /*$artistQuery = new \Elastica\Query\BoolQuery();
-        $artistQuery
-            ->addMust($doublonNestedQuery)
-            ->addMust($artistQuerySearch)
-        ;*/
-        $artistQuery = $artistQuerySearch;
+        $artistQuery = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
         
         // Search for movie.
         $path = 'films.film.translations';
