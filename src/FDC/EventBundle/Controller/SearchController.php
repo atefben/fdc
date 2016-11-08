@@ -282,11 +282,12 @@ class SearchController extends Controller
             ->setQuery($doublonQuery)
             ->setPath('films')
         ;
-        $artistQuery = new \Elastica\Query\BoolQuery();
+        /*$artistQuery = new \Elastica\Query\BoolQuery();
         $artistQuery
             ->addMust($doublonNestedQuery)
             ->addMust($artistQuerySearch)
-        ;
+        ;*/
+        $artistQuery = $artistQuerySearch;
         
         // Search for movie.
         $path = 'films.film.translations';
