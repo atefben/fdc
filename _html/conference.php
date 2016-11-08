@@ -115,16 +115,16 @@
                             </div>
                             <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
-                              </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -143,17 +143,17 @@
                                   
                             </div>
                            <div class="conf30Sharp">
+                             <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
                               <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
-                              </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>                
@@ -218,16 +218,16 @@
                             </div>
                            <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
-                              </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -248,7 +248,7 @@
                               <div>
                                 <span>type d'accès</span>
                                 <p>Sur invitation uniquement</p>
-                              </div>
+                              </div>     
                               <div>
                                 <span>heure</span>
                                 <p>De 9h15 à 11h30</p>
@@ -320,16 +320,16 @@
                             </div>
                            <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
-                              </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -350,18 +350,18 @@
                             </div>
                             <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
                               </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
-                              </div>
-                            </div>             
+                            </div>          
                         </div>
                     </div>
                   </li>
@@ -423,16 +423,16 @@
                             </div>
                            <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
-                              </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -453,7 +453,7 @@
                               <div>
                                 <span>type d'accès</span>
                                 <p>Sur invitation uniquement</p>
-                              </div>
+                              </div>     
                               <div>
                                 <span>heure</span>
                                 <p>De 9h15 à 11h30</p>
@@ -525,16 +525,16 @@
                             </div>
                            <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
-                              </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
                               </div>
                             </div>
                           </div>
@@ -555,18 +555,18 @@
                             </div>
                             <div class="conf30Sharp">
                               <div>
+                                <span>type d'accès</span>
+                                <p>Sur invitation uniquement</p>
+                              </div>     
+                              <div>
                                 <span>heure</span>
-                                <p>de 9h15 à 11h30</p>
+                                <p>De 9h15 à 11h30</p>
                               </div>
                               <div>
                                 <span>lieu</span>
                                 <p>Les Ambassadeurs - Palais des Festivals - Level 4</p>
                               </div>
-                              <div>
-                                <span>type d'accès</span>
-                                <p>Sur invitation uniquement</p>
-                              </div>
-                            </div>             
+                            </div>          
                         </div>
                     </div>
                   </li>                  

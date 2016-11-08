@@ -23712,6 +23712,7 @@ ul.tabs .quarterTab h4 {
   color: #ec3050 !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 50px;
+  letter-spacing: 1px;
 }
 .conferences .conf70 {
   width: 59%;
@@ -23737,7 +23738,7 @@ ul.tabs .quarterTab h4 {
   margin-right: -255px;
   width: 440px;
   border-right: 1px solid #e7e7e7;
-  margin-top: 0px;
+  margin-top: 60px;
   margin-bottom: -27px;
   opacity: 0.2;
   float: right;
@@ -23834,7 +23835,7 @@ ul.tabs .quarterTab h4 {
   }
 }
 .conferenceMenu .minBox {
-  min-height: 600px;
+  min-height: 600px !important;
 }
 
 .confPeople .quarterWidth {
@@ -23853,7 +23854,7 @@ ul.tabs .quarterTab h4 {
   text-align: left;
   line-height: 25px;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 11px;
   color: #ec3050 !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 20px;
@@ -23866,14 +23867,14 @@ ul.tabs .quarterTab h4 {
   line-height: 20px;
 }
 .confPeople .quarterWidth .name h6 {
-  font-size: 10px;
+  font-size: 10px !important;
   letter-spacing: 1px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .confPeople .quarterWidth .name p {
   text-align: left;
   color: #505050;
-  font-size: 10px;
+  font-size: 10px !important;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .confPeople .quarterWidth .alignLeft {
