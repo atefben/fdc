@@ -276,7 +276,7 @@ class SearchController extends Controller
         );
  
         $artistQuerySearch = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
-        $artistQueryDoublon = $repository->getFieldsKeywordQuery(array('person.duplicate'), 0);
+        //$artistQueryDoublon = $repository->getFieldsKeywordQuery(array('person.duplicate'), 0);
         
         // Search for movie.
         $path = 'films.film.translations';
@@ -302,7 +302,6 @@ class SearchController extends Controller
         $finalQuery
             ->addShould($filmQuery)
             ->addShould($artistQuerySearch)
-            ->addShould($artistQueryDoublon)
         ;
         
         return $finalQuery;
