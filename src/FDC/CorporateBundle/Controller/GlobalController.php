@@ -35,7 +35,7 @@ class GlobalController extends Controller {
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null) {
+    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null, $color = false) {
         $email = array(
             'section' => $section,
             'detail' => $detail,
@@ -115,13 +115,15 @@ class GlobalController extends Controller {
                 'share_email' => $email,
                 'form' => $form,
                 'hasErrors' => $hasErrors,
-                'artist' => $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist)
+                'artist' => $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist),
+                'color'  => $color
             );
         } else {
             return array(
                 'share_email' => $email,
                 'form' => $form,
                 'hasErrors' => $hasErrors,
+                'color'  => $color
             );
         }
 

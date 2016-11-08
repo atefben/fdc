@@ -19,7 +19,8 @@
             </div>
         </div>
 
-        <div class="ajax-section"><div class="contain-ajax">
+        <div class="ajax-section">
+            <div class="contain-ajax">
                 <nav class="navigation-sticky">
                     <ul>
                         {% for page in pages %}
@@ -53,19 +54,19 @@
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="block-01-xs">
-                                {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
+                                    {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
-                                 <div class="block-01-xs">
-                                {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
-                                 </div>
+                                <div class="block-01-xs">
+                                    {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
+                                </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
                                 <div class="block-01-xs">
-                                {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
+                                    {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
                                 <div class="block-01-xs">
-                                {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                                    {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                                 </div>
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                                 <div class="contain-img-honneur block-01-xs">
@@ -111,7 +112,7 @@
                                                             {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                             {% set directorsName = '' %}
                                                             {% for director in directors %}
-                                                                {{ directorsName ~ director.fullName  }}
+                                                                {{ directorsName ~ director.fullName }}
                                                                 {% if loop.index != directors|length %} - {% endif %}
                                                             {% endfor %}
                                                             </span></a>
@@ -168,19 +169,21 @@
                                     {% endif %}
                                     {% set image = trans.file %}
                                 {% endif %}
-                                <article class="block-movie-preview" style='background-image: url({% path image, '363x260' %}'>
-                                    <div class="bck-hover"   >
+                                <article class="block-movie-preview"
+                                         style='background-image: url({% path image, '363x260' %}'>
+                                    <div class="bck-hover">
                                         <div class="wrapper-item-big">
                                             <div class="poster">
                                                 <figure>
-                                                    <img src="{% path image, '363x260' %}" alt="{{ widget.image|trans_fallback('alt') }}"  >
+                                                    <img src="{% path image, '363x260' %}"
+                                                         alt="{{ widget.image|trans_fallback('alt') }}">
                                                     <figcaption>Lorem ipsumt quia.</figcaption>
                                                 </figure>
                                             </div>
-                                            <div class="infos"    >
+                                            <div class="infos">
                                                 <strong class="big-date">{{ widget|trans_fallback('title') }}</strong>
                                                 <p class="description">
-                                                   {{ widget|trans_fallback('content')|raw }}
+                                                    {{ widget|trans_fallback('content')|raw }}
                                                 </p>
                                             </div>
                                         </div>
@@ -195,9 +198,14 @@
                         {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                         <div class="relative">
                             <div class="block-social-network block-social-network-all">
-                                <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'Palme d\'or - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
-                --><a class="twitter" href="https://twitter.com/intent/tweet?text={{ 'Qui sommes nous ? - '|url_encode(true)  ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i class="icon icon-twitter"></i></a><!--
-                --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentUrl }}"><i class="icon icon-link"></i></a><!--
+                                <a class="facebook"
+                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'Palme d\'or - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
+                                            class="icon icon-facebook"></i></a><!--
+                --><a class="twitter"
+                      href="https://twitter.com/intent/tweet?text={{ 'Palme d\'or - '|url_encode(true)  ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i
+                                            class="icon icon-twitter"></i></a><!--
+                --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentUrl }}"><i
+                                            class="icon icon-link"></i></a><!--
                 --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
                 --><a href="#" onclick="window.print()" class="print"><i class="icon icon-print"></i></a>
                             </div>
@@ -205,16 +213,17 @@
                         </div>
                     </div>
                 </div> <!-- end all contain -->
-            </div></div>
+            </div>
+        </div>
     </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': '',
-    'detail' : '',
-    'title'  : currentPage|trans_fallback('title'),
-    'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
-    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    }))
-    }}
+        'detail' : '',
+        'title'  : currentPage|trans_fallback('title'),
+        'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+        'color' : true
+    })) }}
 
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":

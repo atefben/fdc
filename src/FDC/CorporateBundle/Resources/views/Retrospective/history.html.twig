@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}
-    wysiwyg-article-02 article-single edition-69 story-movie dark not-mobile
+    article-single edition-69 story-movie dark not-mobile
 {% endblock bodyClass %}
 {% block body %}
 
@@ -20,7 +20,7 @@
         </div>
 
         <div class="ajax-section">
-            <div class="contain-ajax">
+            <div class="contain-ajax wysiwyg-article-02 ">
 
                 <div class="all-contain">
 
@@ -162,10 +162,10 @@
                         <div class="relative">
                             <div class="block-social-network block-social-network-all">
                                 <a class="facebook"
-                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'Qui sommes nous ? - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
+                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'L\'histoire du festival - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
                                             class="icon icon-facebook"></i></a><!--
                 --><a class="twitter"
-                      href="https://twitter.com/intent/tweet?text={{ 'Qui sommes nous ? - '|url_encode(true)  ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i
+                      href="https://twitter.com/intent/tweet?text={{ 'L\'histoire du festival - '|url_encode(true)  ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i
                                             class="icon icon-twitter"></i></a><!--
                 --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentUrl }}"><i
                                             class="icon icon-link"></i></a><!--
@@ -179,27 +179,29 @@
             </div>
         </div>
     </section>
-    {#{{ render(controller('FDCCorporateBundle:Global:shareEmail',#}
-    {#{'section': '',#}
-    {#'detail' : '',#}
-    {#'title'  : currentPage|trans_fallback('title'),#}
-    {#'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),#}
-    {#'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))#}
-    {#}))#}
-    {#}}#}
 
-    {#{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with#}
-    {#{"breadcrumb":#}
-    {#[#}
-    {#{#}
-    {#"name" : 'breadcrumb.69editions.home'|trans,#}
-    {#"url"  : path('fdc_corporate_default_home')#}
-    {#},#}
-    {#{#}
-    {#"name" :  currentPage|trans_fallback('title'),#}
-    {#"url"  :  path('fdc_corporate_whoarewe_show', {'slug': app.request.attributes.get('slug')})#}
-    {#},#}
-    {#]#}
-    {#} %}#}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+    'detail' : '',
+    'title'  : '69edition.festival.history'|trans,
+    'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
+    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+    'color' : true
+    }))
+    }}
+
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" :  '69edition.festival.history'|trans,
+    "url"  :  path('fdc_corporate_editions_history')
+    },
+    ]
+    } %}
 
 {% endblock %}
