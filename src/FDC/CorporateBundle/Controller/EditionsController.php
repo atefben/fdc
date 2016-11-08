@@ -139,6 +139,25 @@ class EditionsController extends Controller
     }
 
     /**
+     * @Route("/archives")
+     * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
+     * @return array
+     */
+    public function archivesAction(Request $request) {
+        $em = $this->get('doctrine')->getManager();
+
+        $page = $em->getRepository('BaseCoreBundle:CorpoPalmeOr')->find(3);
+        if($page->findTranslationByLocale('fr')->getStatus() == 1) {
+            return array(
+                'currentPage' => $page,
+            );
+        } else {
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
+    }
+
+    /**
      * @Route("/palme/{slug}")
      * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
      * @return array
