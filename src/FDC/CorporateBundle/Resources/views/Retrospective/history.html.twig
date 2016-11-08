@@ -6,6 +6,7 @@
 {% block body %}
 
     <section class="border-bottom">
+        {% if currentPage.image is defined and currentPage.image is not null %}
         {% set mainTrans = currentPage.image.findTranslationByLocale(app.request.locale) %}
         {% if mainTrans is null or mainTrans.file is null %}
             {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
@@ -18,6 +19,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
         <div class="ajax-section">
             <div class="contain-ajax wysiwyg-article-02 ">
