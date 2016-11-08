@@ -33,7 +33,7 @@
         {#                  #}
         {#     SECTIONS     #}
         {#                  #}
-        <div class="contain-participate">
+		<div class="contain-participate">
 			{% set i = 0 %}
             {% for s in participatePage.downloadSection %}
 				{% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or 
@@ -41,8 +41,8 @@
 				%}
 					{% if s.section.evenmt %}
 
-						<section class="content-manual content-partners item-manual{% if i == 0 %} participate-active{% endif %}" style="border-top: 1px solid #e0e0e0;">
-	                    <div class="contain-section contain-cinema contain-infos">
+						<section class="content-manual content-partners item-manual" style="border-top: 1px solid #e0e0e0;">
+	                    <div class="contain-section contain-cinema contain-infos{% if i == 0 %} participate-active{% endif %}">
 	                        <h3 class="title-participate">
 	                            <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
 	                            {{ s.section|trans_fallback('title') }}
