@@ -5301,7 +5301,6 @@ body:not(.who) .block-push {
 }
 .wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
   color: #c8a461;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .bright .wysiwyg-article-02 .text p, .bright .wysiwyg-article-02 .text ul, .bright .wysiwyg-article-02 .text ol {
   color: #141414;
@@ -15094,7 +15093,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .c-contact .contact h2.title {
   color: #333;
-  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 1.625rem;
   font-weight: 700;
   margin-bottom: 60px;
