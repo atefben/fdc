@@ -8,6 +8,7 @@
 
 namespace Base\CoreBundle\Transformer;
 
+use Base\CoreBundle\Entity\Theme;
 use Elastica\Document;
 use FOS\ElasticaBundle\Transformer\ModelToElasticaTransformerInterface;
 
