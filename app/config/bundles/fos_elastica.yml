@@ -83,7 +83,7 @@ fos_elastica:
                                     properties :
                                         name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         locale: ~
-                                
+
                 event:
                     persistence:
                         driver: orm
@@ -155,6 +155,8 @@ fos_elastica:
                         # the driver can be orm, mongodb, phpcr or propel
                         # listener and finder are not supported by
                         # propel and should be removed
+                        model_to_elastica_transformer:
+                            service: base.transformers.model.statement
                         driver: orm
                         model: Base\CoreBundle\Entity\Statement
                         provider: ~
@@ -171,11 +173,11 @@ fos_elastica:
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 status: ~
-                        #theme.translations:
-                        #    type: nested
-                        #    properties :
-                        #        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                        #        locale: ~
+                        theme.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
                         tags:
                             type: nested
                             properties :

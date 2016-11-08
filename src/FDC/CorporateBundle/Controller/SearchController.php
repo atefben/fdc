@@ -21,17 +21,44 @@ class SearchController extends Controller
         'news'        => 'News',
         'info'        => 'Info',
         'statement'   => 'Statement',
-        'media'       => 'Media',
+        'photos'      => 'MediaImage',
+        'videos'      => 'MediaVideo',
+        'audios'      => 'MediaAudio',
         'event'       => 'Event',
         'artist'      => 'FilmPerson',
         'film'        => 'FilmFilm'
     );
 
     /**
+     *
+     * @Route("/search/ajax/{searchFilter}/{searchTerm}")
+     * @param Request $request
+     * @param $searchTerm
+     * @return array
+     */
+    public function searchAjaxAction($_locale, $searchFilter, $searchTerm = null)
+    {
+        $searchResults = $this->getSearchResults($_locale, $searchFilter, $searchTerm, 50, 1);
+
+        return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
+            'items' => $searchResults['items'],
+            'searchFilters' => $this->getSearchFilters($searchFilter, $searchResults['items']),
+        ));
+    }
+
+    /**
      * @Route("/search", options={"expose"=true})
      */
     public function searchSubmitAction($_locale, Request $request)
     {
+        //$news = $this->getSearchResults($_locale, 'news', 'miller', 5);
+        //dump($news);
+
+        //$statements = $this->getSearchResults($_locale, 'statement', 'inter', 5);
+        //dump($statements);
+
+        //exit;
+
         $translator = $this->get('translator');
 
         $professions = array(
@@ -155,31 +182,31 @@ class SearchController extends Controller
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $data = $searchForm->getData();
 
-            $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : array();
-            $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : array();
-            //$statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : array();
-            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : array();
+            $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 5) : false;
+            $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 5) : false;
+            $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 5) : false;
+            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 5) : false;
 
             if($data['photos'] || $data['videos'] || $data['audios']) {
-                //$mediaResults = $data['photos'] ? $this->getSearchResults($_locale, 'media', $data, 2) : array();
-                //$photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photo', $data, 2) : array();
-                //$videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'video', $data, 2) : array();
-                //$audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audio', $data, 2) : array();
+                //$mediaResults = $data['photos'] ? $this->getSearchResults($_locale, 'media', $data, 2) : false;
+                //$photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photo', $data, 2) : false;
+                //$videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'video', $data, 2) : false;
+                //$audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audio', $data, 2) : false;
 
                 //merging medias (photos,videos,audios)
                 //$mediaResults = array_merge($photoResults, $videoResults);
                 //$mediaResults = array_merge($mediaResults, $audioResults);
             }
 
-            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 4, 1) : array();
-            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 6, 1) : array();
+            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
+            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
 
             $result = array(
                 'actualite' => $newsResults,
                 'artist' => $artistResults,
                 'film' => $filmResults,
                 'info' => $infoResults,
-                //'statement' => $statementResults,
+                'statement' => $statementResults,
                 //'media' => $mediaResults,
                 'event' => $eventResults,
             );
