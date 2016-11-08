@@ -21,7 +21,7 @@
             </div>
         </div>
         {% endif %}
-            {% if archives is defined %}
+            {% if archives is not defined %}
             <nav class="navigation-sticky">
                 <ul>
                     {% for page in pages %}
