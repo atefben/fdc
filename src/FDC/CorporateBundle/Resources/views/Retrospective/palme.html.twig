@@ -21,19 +21,6 @@
             </div>
         </div>
         {% endif %}
-                <nav class="navigation-sticky">
-                    <ul>
-                        {% for page in pages %}
-                            {% if page.id != 3 %}
-                            <li class="{% if slug == page|trans_fallback('slug') %}active{% endif %}">
-                                <a href="{{ path('fdc_corporate_editions_palme', {'slug': page|trans_fallback('slug')}) }}">
-                                    {{ page|trans_fallback('title') }}
-                                </a>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </nav>
                 <div class="all-contain">
                     <div class="contain-title vFlexAlign block-01-s">
                         {{ currentPage|trans_fallback('chapo')|raw }}
