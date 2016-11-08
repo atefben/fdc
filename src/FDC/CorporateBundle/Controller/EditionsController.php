@@ -127,10 +127,14 @@ class EditionsController extends Controller
     public function historyAction(Request $request) {
         $em = $this->get('doctrine')->getManager();
 
-        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(6);
-        return array(
-            'currentPage' => $page,
-        );
+        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(1);
+        if($page->findTranslationByLocale('fr')->getStatus() == 1) {
+            return array(
+                'currentPage' => $page,
+            );
+        } else {
+            throw $this->createNotFoundException('There is not available selection.');
+        }
 
     }
 
