@@ -42,10 +42,10 @@
             <h3>Un leadership incontesté</h3>
             <h5>Plus de 50 ans d’expertise !<br>Depuis sa première édition en 1946, le Festival de Cannes a toujours célébré la passion du cinéma.</h5> 
             <img src="/img/mdf.png" alt="Marché du film">
-            <h5 class="caption">Graphique - © Alexandra Fleurantin - 2015</h5>
+            <h5 class="caption">Riviera - © Alexandra Fleurantin - 2015</h5>
           </div>
           
-          <div class="text-presentation projection marche whoarewe">
+          <div class="text-presentation projection marche whoarewe mainBody">
             <h6>Workshops et networking pour une formation ciblée</h6>
             <h5>Au cours des années, l'augmentation constante de ses participants et l'apparition de nouveaux enjeux économiques vont faire du Festival le rendez-vous annuel des professionnels du cinéma. 
             C'est ainsi que le premier Marché du Film voit le jour en 1959 avec quelques dizaines de participants et une seule salle de projection construite en toile sur le toit de l'ancien Palais Croisette. Ce tout petit marché va peu à peu s'imposer comme un évènement international conçu, organisé et planifié avec un seul objectif : la réussite de tous les cinémas.

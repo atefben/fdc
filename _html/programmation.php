@@ -92,11 +92,13 @@
                 <p class="caption">Riviera - © Alexandra Fleurantin - 2015</p>
               </div> 
               
-              <div class="text-presentation marche">
+              <div class="text-presentation marche marcheBody">
                 <h6>Workshops et networking pour une formation ciblée</h6>
                 <h5>En plus de tous les avantages d'un badge Marché du Film, vous bénéficiez, durant les premiers jours du Festival de Cannes et du Marché du Film, d’un accès au Producers Workshop: un programme ciblé, mené par des experts de l’industrie, destiné à soutenir les producteurs dans leurs démarches à l’international et à rendre plus efficace leur participation au Marché du Film et au Festival de Cannes.</h5> 
                 <h5>Un cocktail de networking inaugure le programme en toute convivialité ! Abordez le marché international avec confiance grâce à nos ateliers et séminaires sur le rôle de producteur, les techniques de pitch, la coproduction et le financement international, les stratégies marketing,  la distribution et les ventes internationales du mercredi 11 au samedi 14 mai 2016. Le dimanche 15 aura lieu une rencontre avec les marchés de coproduction internationaux et le mardi 17 un dernier atelier clôturera votre séjour.</h5> 
-                <h5>Pour plus de renseignements, merci de contacter Lisa Kermabon – Manager Producers Workshop / Industry Programs: <a href="mailto:lkermabon@festival-cannes.fr">lkermabon@festival-cannes.fr</a> Visitez notre FAQ où vous trouverez les réponses aux questions les plus fréquentes concernant ce programme. DATES 2016 : La 6ème édition du Producers Workshop se déroulera du mercredi 11 au dimanche 15 mai, avec une session additionnelle le 17 mai. </h5>
+                <h5>Pour plus de renseignements, merci de contacter Lisa Kermabon – Manager Producers Workshop / Industry Programs: <a href="mailto:lkermabon@festival-cannes.fr">lkermabon@festival-cannes.fr</a></h5>
+                <h5>Visitez notre FAQ où vous trouverez les réponses aux questions les plus fréquentes concernant ce programme.</h5> 
+                <h5>DATES 2016 : La 6ème édition du Producers Workshop se déroulera du mercredi 11 au dimanche 15 mai, avec une session additionnelle le 17 mai. </h5>
               </div>
 
           </div><!--CONTAINER-->

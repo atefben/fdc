@@ -40,8 +40,17 @@
                                 <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <div class="name alignLeft">
-                                    <span>Fanny-Laure Malo Malo</span>
+                                  <div class="name">
+                                    <h6>Bernardo Arellano de la Cruz</h6>
+                                  </div>
+                                  <div class="name">
+                                    <p>FUEGO NEGRO AUDIOVISUAL</p>
+                                  </div>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <div class="name">
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -50,7 +59,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <span>Fanny-Laure Malo</span>
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -59,7 +68,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <span>Fanny-Laure Malo</span>
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -68,7 +77,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <span>Fanny-Laure Malo</span>
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -77,7 +86,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <span>Fanny-Laure Malo</span>
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -86,7 +95,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <span>Fanny-Laure Malo</span>
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -95,16 +104,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <span>Fanny-Laure Malo</span>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <span>Fanny-Laure Malo</span>
+                                    <h6>Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -128,7 +128,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="box events">
+                          <div class="box events minBox">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
@@ -175,42 +175,42 @@
                                 <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                               </div>
@@ -231,7 +231,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="box events">
+                          <div class="box events minBox">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
@@ -277,42 +277,42 @@
                                 <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                               </div>
@@ -333,7 +333,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="box events">
+                          <div class="box events minBox">
                             <div class="conf70">
                               
                               <span>Breakfast Meeting</span><br>
@@ -380,42 +380,42 @@
                                 <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                               </div>
@@ -436,7 +436,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="box events">
+                          <div class="box events minBox">
                             <div class="conf70">
                               <span>Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
@@ -482,42 +482,42 @@
                                 <h6 class="confDetails">Intervenants</h6>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
-                                  <span>Fanny-Laure Malo</span>
+                                  <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
                               </div>
@@ -538,7 +538,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="box events">
+                          <div class="box events minBox">
                             <div class="conf70">
                               
                               <span>Breakfast Meeting</span><br>

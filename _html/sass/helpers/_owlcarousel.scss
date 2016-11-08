@@ -244,6 +244,7 @@
     p {
       margin: 50px 0px;
       font-family: "Playfair Display",Times New Roman,Times,serif;
+      text-align: center;
     }
 
     span {
@@ -257,6 +258,19 @@
       color: white;
   }
 
+}
+
+#owl-top {
+  .owl-Title {
+    h2 {
+      letter-spacing: 4px;
+    } 
+
+    p {
+      font-size: 18px;
+      letter-spacing: 1px;
+    } 
+  }
 }
 
 #owl-accred {
@@ -340,7 +354,7 @@
   }
 
   .image-caption {
-    color: #666;
+    color: #666666;
     font-family: $CamphorRegular;
     font-size: 0.750rem;
     margin: 20px 0;

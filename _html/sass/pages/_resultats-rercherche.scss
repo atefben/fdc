@@ -93,8 +93,11 @@
 
             .programme {
                 margin-bottom: 20px!important;
+                font-family: $Playfair;
+                font-weight: bold!important;
                 width: 90%;
                 margin: 0 auto;
+                padding: 50px 20px 60px 20px;
             }
         }
     }
@@ -111,8 +114,9 @@
                 text-transform: uppercase;
                 color: #141414;
                 font-size: 13px;
-                font-family: $CamphorHeavy;
+                font-family: $CamphorBold;
                 margin-left: 3%;
+                letter-spacing: 1px;
             }
 
             .seeAll {
@@ -122,7 +126,7 @@
                 text-transform: uppercase;
                 color: #c3a05f;
                 font-size: 13px;
-                font-family: $CamphorHeavy;
+                font-family: $CamphorBold;
                 margin-right: 1%;
             }
         }
@@ -177,6 +181,7 @@
                 opacity: 0.9;
                 font-family: $Playfair;
                 line-height: 22px;
+                text-align: left;
             }
 
             .redtitle {

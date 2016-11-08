@@ -18,102 +18,102 @@
               <h3>Revues de presse</h3>
               <div class="innerWrapper">
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
                     </div>
+                  <div class="articles-content">
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
+                    <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+                    <span>producers workshop <span class="article-date">26 jun 2016</span></span>
                   </div>
                 </div>
               </div>

@@ -1783,12 +1783,13 @@
 
     span {
       color: #ec3050;
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       opacity: 0.9;
       font-weight: bold;
       letter-spacing: 1px;
+      text-align: center;
     }
 
     h3 {
@@ -1797,13 +1798,14 @@
       line-height: 70px;
       margin: 40px 0px 70px 0px;
       text-transform: uppercase;
+      letter-spacing: 7px;
       font-family: "Playfair Display",Times New Roman,Times,serif;
     }
 
     h5 {
       color: #2b2b2b;
       font-size: 17px;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
       line-height: 40px;
       opacity: 0.8;
        @media screen and (max-width: $mobileWidth) {
@@ -1818,6 +1820,7 @@
       font-family: $CamphorHeavy;
       opacity: 0.9;
       padding-bottom: 100px;
+      text-align: center;
     }
 }
 
@@ -1839,7 +1842,7 @@
     text-align:center;
     height: 850px;
     vertical-align: middle;
-    padding-top: 2%;
+    padding-top: 5%;
     width: 100%;
     
      @media screen and (max-width: 1280px) {
@@ -1861,7 +1864,9 @@
       font-size: 48px;
       text-transform: uppercase;
       color: #141414;
-      margin: 25px 0px 60px 0px;
+      margin: 25px 0px 80px 0px;
+      letter-spacing: 2px;
+      letter-spacing: 7px;
       font-family: "Playfair Display",Times New Roman,Times,serif;
     }
 
@@ -1915,7 +1920,7 @@
           margin-top: -75px;
           margin-right: 20px;
           color: #29afcf;
-          font-size: 20px!important;
+          font-size: 15px!important;
         }
               
         &:hover {
@@ -1933,7 +1938,7 @@
               }
 
               .glyphicon {
-                font-size: 30px!important;
+                font-size: 20px!important;
                 color: white;
               }
           }
@@ -1948,319 +1953,6 @@
           }
       }
 
-}
-
-.our-news {
-    background: url("/img/background-gold.png") no-repeat;
-    background-size: 100% 100%;
-    text-align:center;
-    height: 865px;
-    vertical-align: middle;
-    padding-top: 3%;
-    width: 100%;
-    
-    @media screen and (max-width: $mobileWidth) {
-
-          .innerWrapper {
-            width: 70%!important;
-            max-width: 70%!important;
-          }
-          .noShow {
-            display: none;
-          }
-      }
-    
-    span {
-      color:#533b0e;
-      text-transform: uppercase;
-      font-size: 12px;
-      font-family: $CamphorHeavy;
-    }
-
-    h3 {
-      font-size: 48px;
-      color: white;
-      text-transform: uppercase;
-      margin: 25px 0px 60px 0px;
-      font-family: "Playfair Display",Times New Roman,Times,serif;
-    }
-
-    .articles {
-      height: 500px;
-      background: #FFFFFF;
-      width:32.5%;
-      float:left;
-      text-align:left;
-
-      @media screen and (max-width: $mobileWidth) {
-          width: 49% !important;
-          margin-left: 0% !important;
-          margin: 0.5% !important;
-      }
-
-        .articles-content {
-          padding: 30px;
-        }
-
-        .articles-img {
-          height: 215px;
-          overflow: hidden;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-
-        &:nth-child(2), &:nth-child(3) {
-          margin-left: 1%;
-        }
-
-          span {
-            text-transform: uppercase;
-            color: #c3a05f;
-            font-size: 10px;
-            font-family: $CamphorHeavy;
-            letter-spacing: 1px;
-          }
-        
-        .article-date {
-            color: #333;
-          }
-
-        h6 {
-          margin: 25px 0px;
-          letter-spacing: 1px;
-          font-size:19px;
-          line-height: 35px;
-          opacity: 0.8;
-          color: #000000;
-          font-family: "Playfair Display","Times New Roman",Times,serif;
-        }
-
-        p {
-          font-size: 14px;
-          color: #b1b1b1;
-          overflow: hidden;
-          line-height: 30px;
-          overflow: hidden!important;
-          text-overflow: ellipsis!important;
-          opacity: 0.8;
-        }
-        .readMore {
-          font-size: 25px;
-          @media screen and (max-width: $mobileWidth) {
-          }
-
-        }
-    }
-}
-
-/* PAGE PROGRAMMATION */
-
-.marche {
-  
-  text-align: center;
-  margin-bottom: 50px;
-  padding-top:1%;
-
-  a {
-    color: #ec3050;
-    text-decoration: none;
-    text-transform: initial;
-    font-family: $CamphorRegular;
-  }
-
-  h4 {
-    color: #2b2b2b;
-    font-size: 16px;
-    line-height: 40px;
-    opacity: 0.8;
-    font-family: $CamphorRegular;
-  }
-
-  h3 {
-    text-transform: initial;
-    text-align: center;
-    font-family: $CamphorRegular;
-  }
-
-  h6 {
-    color: #141414;
-    text-transform: uppercase;
-    font-size: 16px;
-    opacity: 1;
-    letter-spacing: 1px;
-    font-family: $CamphorBold;
-    margin-bottom: 30px;
-    text-align: left;
-  }
-
-  h5 {
-    margin-bottom: 20px;
-    text-align: left;
-    font-family: $CamphorRegular;
-  }
-
-  li {
-    color: #505050;
-    font-size: 16px;
-    opacity: 0.8;
-    font-family: $CamphorRegular;
-    line-height: 40px;
-    padding-right:50px;
-    text-align: left;
-  }
-}
-
-/* PAGE NEWS */
-
-.newsPage {
-
-  background: white;
-  min-height: 1250px;
-
-  @media screen and (max-width: $mobileWidth) {
-    height: auto!important;
-    min-height: 1700px;
-  }
-
-  .articles {
-      background: #f8f8f8;
-      width:32.3%;
-      margin-left: 1%;
-      margin-bottom: 1%;
-      @include transition(all .5s $smoothTransition);
-
-      h6 {
-        margin: 20px 0px;
-      }
-
-      &:hover {
-        background: white;
-        -webkit-box-shadow: 0px 20px 34px 4px rgba(204,202,204,1);
-        -moz-box-shadow: 0px 20px 34px 4px rgba(204,202,204,1);
-        box-shadow: 0px 20px 34px 4px rgba(204,202,204,1);
-        @include transition(all .5s $smoothTransition);
-      }
-  }
-
-  h3 {
-    color: black;
-  }
-
-}
-
-.moreArticles {
-    margin-top: 0px;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-    height: 100px;
-
-    span {
-      @include transition(all .5s $smoothTransition);
-      text-transform: uppercase;
-      font-family: $CamphorHeavy;
-      font-size: 15px;
-      padding: 30px 30px;
-      border: 1px solid #ECECEC;
-      width: 120px;
-      height: 70px;
-      color:#080808!important;
-
-        &:hover {
-          @include transition(all .5s $smoothTransition);
-          background: #080808!important;
-          color: white!important;
-      }
-    }
-}
-
-/* CONTACT */
-
-.contact-box {
-    width: 100%;
-    height: 660px;
-    background: url("/img/plage-cannes.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
-
-    .contact-details {
-      background: white;
-      width: 309px;
-      height: 580px;
-      float: right;
-      margin-right: 150px;
-      margin-top: 50px;
-      padding: 0px 0px 0px 30px;
-
-      /*@media screen and (max-width: 1366px) {
-        height: 320px;
-        max-height: 320px;
-        width: 230px;
-        padding: 0px 30px 0px 30px;
-      }*/
-
-      span {
-        width: 300px;
-        float: left;
-        text-align: left;
-        line-height: 30px;
-      }
-
-      .howTo {
-        font-size: 15px;
-        color:#989898;
-        font-family: $CamphorRegular;
-        line-height: 45px;
-          /*@media screen and (max-width: 1366px) {
-            line-height: 25px;
-          }*/
-      }
-
-      .getTo {
-        font-size: 22px;
-            margin-bottom: 30px;
-            color: #141414;
-            letter-spacing: 2px;
-            font-family: "Playfair Display",Times New Roman,Times,serif;
-            opacity: 0.6;   
-      }
-
-      .informations {
-        font-size: 14px;
-        color: #141414;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        line-height: 45px;
-        margin-top: 30px;
-        margin-bottom: 20px;
-        font-family: $CamphorHeavy;
-          /*@media screen and (max-width: 1366px) {
-            margin-top: 15px;
-            margin-bottom: 10px;
-          }*/
-      }
-
-      .knowMore {
-        margin-top: 80px;
-        text-transform: uppercase;
-        font-family: $CamphorHeavy;
-        text-decoration: none;
-        color: #141414;
-        opacity: 0.8;
-          /*@media screen and (max-width: 1366px) {
-            margin-top: 25px;
-          }*/
-      }
-    }
 }
 
 header {  

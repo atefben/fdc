@@ -22,6 +22,7 @@
     margin: 0 auto;
     width: 100%;
     text-transform: initial;
+    letter-spacing: 1px;
   }
 
 
@@ -33,6 +34,7 @@
     font-family: $CamphorRegular;
     font-size: 16px;
     margin-bottom: 50px;
+    opacity: 0.8;
 }
 
 .accredidationsMessage {
@@ -100,7 +102,7 @@
     margin-top: 50px;
     vertical-align: middle;
     padding-top: 3%;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
     width: 100%;
 
   h3 {
@@ -136,6 +138,7 @@
           font-family: $CamphorHeavy!important;
           line-height: 40px;
           font-size: 12px;
+          letter-spacing: 2px
         }
         
         .ht {
@@ -206,6 +209,10 @@
 
 }
 
+.pricesContent {
+  margin-bottom: 50px;
+}
+
 .upCase {
   color: white!important;
   text-transform: uppercase!important;
@@ -213,6 +220,7 @@
   letter-spacing: 1px;
   font-family: $CamphorHeavy!important;
   line-height: 45px!important;
+  opacity: 1!important;
 }
 
 .plusPrices {
@@ -276,6 +284,8 @@
         margin-bottom: 25px;
         font-size: 13px;
         font-family: $CamphorRegular;
+        text-align: left;
+        color: white;
       }
 
     }

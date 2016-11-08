@@ -12,7 +12,6 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-      <?php include('box-producers-workshop.php'); ?>
       <div class="container">
               <div class="text-presentation marche">
                 <h3>Le premier marché cinématographique du monde</h3>
@@ -92,7 +91,7 @@
                 <p class="caption">Riviera - © Alexandra Fleurantin - 2015</p>
               </div> 
               
-              <div class="text-presentation marche">
+              <div class="text-presentation marche marcheBody">
                 <h6>UN MARCHÉ INCONTOURNABLE</h6>
                 <ul>
                   <li>• Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>

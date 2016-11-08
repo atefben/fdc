@@ -190,9 +190,30 @@ $(window).scroll(function(){
     $('ul.tabs li').last().addClass("tab_last");
 
 
+/* SELECTOR DROPDOWN FROM DROPWDOWNS */
+
     $(".dropdown").click(function() {
 
         $('.dropArrow').toggleClass('dropArrowOpen');
+    });
+
+    $(".select input").click(function() {
+
+        $('.selectArrow').addClass('selectArrowReversed');
+    });
+
+    $(".select option").click(function() {
+
+        $('.selectArrow').removeClass('selectArrowReversed');
+    });
+
+    $('.selection').change(function () {
+                $(this).find('option:selected').css('background-color', 'red');
+    });
+    
+    $(".formContainer input, .formContainer textarea").click(function() {
+
+        $(this).removeClass('redRequired');
     });
 
 /* ACCORDION */
@@ -222,6 +243,32 @@ $('#accordion-menu .open').each(function() {
   });
   
 $('#accordion-menu .content').hide();
+
+$('#accordion-infos .open').each(function() {
+    
+    $(this).click(function(){
+      
+      $('#accordion-infos .open').siblings().removeClass('open-selected');
+      $('#accordion-infos .open').removeClass('open-selected');
+      $('#accordion-infos .open').closest('li').removeClass('open-selected');
+      $(this).find('.openPlus').toggleClass('noDisplay');
+      $(this).find('.openMinus').toggleClass('doDisplay');
+      $('#accordion-infos .content').slideUp('normal');
+      
+      if($(this).next().is(':hidden') == true) {
+        $(this).closest('li').addClass('open-selected');
+        $(this).siblings().removeClass('open-selected');
+        $('.openPlus').removeClass('noDisplay');
+        $('.openMinus').removeClass('doDisplay');
+        $(this).find('.openPlus').addClass('noDisplay');
+        $(this).find('.openMinus').addClass('doDisplay');
+        $(this).next().slideDown('normal');
+       } 
+   });
+
+  });
+  
+$('#accordion-infos .content').hide();
 
 /* EVENT SELECTOR */
 
@@ -275,7 +322,7 @@ function click() {
 
         $('.events, .selectText').addClass('hideContent');
         $(this).addClass('purpleBtn');
-        $('.parent > div').fadeOut(200);
+        $('.parent > div').hide();
 
 
         el.push(identification);
@@ -296,7 +343,7 @@ function click() {
           } else if (el){
               $('.selectText').hide();
               $.each(el, function(i, val) {       
-                 $('.' + val).fadeIn(200);
+                 $('.' + val).show();
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
                  $('#' + val).show();

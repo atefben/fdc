@@ -304,6 +304,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #owl-top .owl-Title p, #owl-mid .owl-Title p, #owl-accred .owl-Title p {
   margin: 50px 0px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
+  text-align: center;
 }
 #owl-top .owl-Title span, #owl-mid .owl-Title span, #owl-accred .owl-Title span {
   color: #fff481;
@@ -313,6 +314,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 #owl-top .owl-dot:after, #owl-mid .owl-dot:after, #owl-accred .owl-dot:after {
   color: white;
+}
+
+#owl-top .owl-Title h2 {
+  letter-spacing: 4px;
+}
+#owl-top .owl-Title p {
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 #owl-accred {
@@ -389,7 +398,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-align: center;
 }
 #owl-mid .image-caption {
-  color: #666;
+  color: #666666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   margin: 20px 0;
@@ -10876,12 +10885,13 @@ header #searchContainer {
 }
 .text-presentation span {
   color: #ec3050;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   opacity: 0.9;
   font-weight: bold;
   letter-spacing: 1px;
+  text-align: center;
 }
 .text-presentation h3 {
   color: #141414;
@@ -10889,12 +10899,13 @@ header #searchContainer {
   line-height: 70px;
   margin: 40px 0px 70px 0px;
   text-transform: uppercase;
+  letter-spacing: 7px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
 }
 .text-presentation h5 {
   color: #2b2b2b;
   font-size: 17px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   line-height: 40px;
   opacity: 0.8;
 }
@@ -10910,6 +10921,7 @@ header #searchContainer {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   opacity: 0.9;
   padding-bottom: 100px;
+  text-align: center;
 }
 
 .innerWrapper {
@@ -10931,7 +10943,7 @@ header #searchContainer {
   text-align: center;
   height: 850px;
   vertical-align: middle;
-  padding-top: 2%;
+  padding-top: 5%;
   width: 100%;
 }
 @media screen and (max-width: 1280px) {
@@ -10951,7 +10963,9 @@ header #searchContainer {
   font-size: 48px;
   text-transform: uppercase;
   color: #141414;
-  margin: 25px 0px 60px 0px;
+  margin: 25px 0px 80px 0px;
+  letter-spacing: 2px;
+  letter-spacing: 7px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
 }
 #our-services .services-mid {
@@ -10999,7 +11013,7 @@ header #searchContainer {
   margin-top: -75px;
   margin-right: 20px;
   color: #29afcf;
-  font-size: 20px !important;
+  font-size: 15px !important;
 }
 #our-services .services-boxes:hover {
   background: #29afcf;
@@ -11020,7 +11034,7 @@ header #searchContainer {
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #our-services .services-boxes:hover .glyphicon {
-  font-size: 30px !important;
+  font-size: 20px !important;
   color: white;
 }
 #our-services .services-boxes div:nth-child(1), #our-services .services-boxes div:nth-child(3) {
@@ -11028,291 +11042,6 @@ header #searchContainer {
 }
 #our-services .services-boxes div:nth-child(3) {
   opacity: 0.8;
-}
-
-.our-news {
-  background: url("/img/background-gold.png") no-repeat;
-  background-size: 100% 100%;
-  text-align: center;
-  height: 865px;
-  vertical-align: middle;
-  padding-top: 3%;
-  width: 100%;
-}
-@media screen and (max-width: 1279px) {
-  .our-news .innerWrapper {
-    width: 70% !important;
-    max-width: 70% !important;
-  }
-  .our-news .noShow {
-    display: none;
-  }
-}
-.our-news span {
-  color: #533b0e;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-}
-.our-news h3 {
-  font-size: 48px;
-  color: white;
-  text-transform: uppercase;
-  margin: 25px 0px 60px 0px;
-  font-family: "Playfair Display",Times New Roman,Times,serif;
-}
-.our-news .articles {
-  height: 500px;
-  background: #FFFFFF;
-  width: 32.5%;
-  float: left;
-  text-align: left;
-}
-@media screen and (max-width: 1279px) {
-  .our-news .articles {
-    width: 49% !important;
-    margin-left: 0% !important;
-    margin: 0.5% !important;
-  }
-}
-.our-news .articles .articles-content {
-  padding: 30px;
-}
-.our-news .articles .articles-img {
-  height: 215px;
-  overflow: hidden;
-}
-.our-news .articles .articles-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.our-news .articles:nth-child(2), .our-news .articles:nth-child(3) {
-  margin-left: 1%;
-}
-.our-news .articles span {
-  text-transform: uppercase;
-  color: #c3a05f;
-  font-size: 10px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  letter-spacing: 1px;
-}
-.our-news .articles .article-date {
-  color: #333;
-}
-.our-news .articles h6 {
-  margin: 25px 0px;
-  letter-spacing: 1px;
-  font-size: 19px;
-  line-height: 35px;
-  opacity: 0.8;
-  color: #000000;
-  font-family: "Playfair Display","Times New Roman",Times,serif;
-}
-.our-news .articles p {
-  font-size: 14px;
-  color: #b1b1b1;
-  overflow: hidden;
-  line-height: 30px;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  opacity: 0.8;
-}
-.our-news .articles .readMore {
-  font-size: 25px;
-}
-
-/* PAGE PROGRAMMATION */
-.marche {
-  text-align: center;
-  margin-bottom: 50px;
-  padding-top: 1%;
-}
-.marche a {
-  color: #ec3050;
-  text-decoration: none;
-  text-transform: initial;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-.marche h4 {
-  color: #2b2b2b;
-  font-size: 16px;
-  line-height: 40px;
-  opacity: 0.8;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-.marche h3 {
-  text-transform: initial;
-  text-align: center;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-.marche h6 {
-  color: #141414;
-  text-transform: uppercase;
-  font-size: 16px;
-  opacity: 1;
-  letter-spacing: 1px;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  margin-bottom: 30px;
-  text-align: left;
-}
-.marche h5 {
-  margin-bottom: 20px;
-  text-align: left;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-.marche li {
-  color: #505050;
-  font-size: 16px;
-  opacity: 0.8;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 40px;
-  padding-right: 50px;
-  text-align: left;
-}
-
-/* PAGE NEWS */
-.newsPage {
-  background: white;
-  min-height: 1250px;
-}
-@media screen and (max-width: 1279px) {
-  .newsPage {
-    height: auto !important;
-    min-height: 1700px;
-  }
-}
-.newsPage .articles {
-  background: #f8f8f8;
-  width: 32.3%;
-  margin-left: 1%;
-  margin-bottom: 1%;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.newsPage .articles h6 {
-  margin: 20px 0px;
-}
-.newsPage .articles:hover {
-  background: white;
-  -webkit-box-shadow: 0px 20px 34px 4px #cccacc;
-  -moz-box-shadow: 0px 20px 34px 4px #cccacc;
-  box-shadow: 0px 20px 34px 4px #cccacc;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.newsPage h3 {
-  color: black;
-}
-
-.moreArticles {
-  margin-top: 0px;
-  text-align: center;
-  width: 100%;
-  margin: 0 auto;
-  height: 100px;
-}
-.moreArticles span {
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  text-transform: uppercase;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  padding: 30px 30px;
-  border: 1px solid #ECECEC;
-  width: 120px;
-  height: 70px;
-  color: #080808 !important;
-}
-.moreArticles span:hover {
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  background: #080808 !important;
-  color: white !important;
-}
-
-/* CONTACT */
-.contact-box {
-  width: 100%;
-  height: 660px;
-  background: url("/img/plage-cannes.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-.contact-box img {
-  width: 100%;
-  max-width: 100%;
-}
-.contact-box .contact-details {
-  background: white;
-  width: 309px;
-  height: 580px;
-  float: right;
-  margin-right: 150px;
-  margin-top: 50px;
-  padding: 0px 0px 0px 30px;
-  /*@media screen and (max-width: 1366px) {
-    height: 320px;
-    max-height: 320px;
-    width: 230px;
-    padding: 0px 30px 0px 30px;
-  }*/
-}
-.contact-box .contact-details span {
-  width: 300px;
-  float: left;
-  text-align: left;
-  line-height: 30px;
-}
-.contact-box .contact-details .howTo {
-  font-size: 15px;
-  color: #989898;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 45px;
-  /*@media screen and (max-width: 1366px) {
-    line-height: 25px;
-  }*/
-}
-.contact-box .contact-details .getTo {
-  font-size: 22px;
-  margin-bottom: 30px;
-  color: #141414;
-  letter-spacing: 2px;
-  font-family: "Playfair Display",Times New Roman,Times,serif;
-  opacity: 0.6;
-}
-.contact-box .contact-details .informations {
-  font-size: 14px;
-  color: #141414;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  line-height: 45px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  /*@media screen and (max-width: 1366px) {
-    margin-top: 15px;
-    margin-bottom: 10px;
-  }*/
-}
-.contact-box .contact-details .knowMore {
-  margin-top: 80px;
-  text-transform: uppercase;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  color: #141414;
-  opacity: 0.8;
-  /*@media screen and (max-width: 1366px) {
-    margin-top: 25px;
-  }*/
 }
 
 header #logo-wrapper {
@@ -21826,6 +21555,7 @@ body:not(.tablette) .webtv #live .img {
   margin: 0 auto;
   width: 100%;
   text-transform: initial;
+  letter-spacing: 1px;
 }
 
 .getMargin {
@@ -21834,6 +21564,7 @@ body:not(.tablette) .webtv #live .img {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   margin-bottom: 50px;
+  opacity: 0.8;
 }
 
 .accredidationsMessage {
@@ -21902,7 +21633,7 @@ body:not(.tablette) .webtv #live .img {
   margin-top: 50px;
   vertical-align: middle;
   padding-top: 3%;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   width: 100%;
 }
 .accreditations h3 {
@@ -21936,6 +21667,7 @@ body:not(.tablette) .webtv #live .img {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   line-height: 40px;
   font-size: 12px;
+  letter-spacing: 2px;
 }
 .accreditations .articles .articles-content .ht {
   color: inherit;
@@ -21982,6 +21714,10 @@ body:not(.tablette) .webtv #live .img {
   color: #505050;
 }
 
+.pricesContent {
+  margin-bottom: 50px;
+}
+
 .upCase {
   color: white !important;
   text-transform: uppercase !important;
@@ -21989,6 +21725,7 @@ body:not(.tablette) .webtv #live .img {
   letter-spacing: 1px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   line-height: 45px !important;
+  opacity: 1 !important;
 }
 
 .plusPrices {
@@ -22046,6 +21783,8 @@ body:not(.tablette) .webtv #live .img {
   margin-bottom: 25px;
   font-size: 13px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-align: left;
+  color: white;
 }
 
 /* ACCORDION*/
@@ -22211,9 +21950,12 @@ body:not(.tablette) .webtv #live .img {
 }
 .boxes h3 {
   text-transform: initial;
+  letter-spacing: 2px;
+  margin: 40px 0px 40px 0px;
 }
 .boxes h5 {
   margin-bottom: 0px;
+  padding: 0px 100px;
 }
 .boxes a {
   color: #ec3050;
@@ -22221,6 +21963,9 @@ body:not(.tablette) .webtv #live .img {
 
 .boxesHeight {
   min-height: 580px;
+}
+.boxesHeight h3 {
+  margin: 40px 0px 40px 0px;
 }
 
 .bigContainer {
@@ -22275,17 +22020,22 @@ ul.tabs p.active {
 ul.tabs .halfTab {
   width: 50%;
   height: 100px;
+  letter-spacing: 0px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 ul.tabs .halfTab h4 {
   text-transform: uppercase;
   line-height: 22px;
   padding-top: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
 }
 ul.tabs .thirdTab {
   width: 33.3%;
   height: 100px;
+  letter-spacing: 0px;
+  font-size: 12px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 ul.tabs .thirdTab h4 {
@@ -22293,10 +22043,13 @@ ul.tabs .thirdTab h4 {
   line-height: 22px;
   padding-top: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
 }
 ul.tabs .quarterTab {
   width: 25%;
   height: 100px;
+  font-size: 12px;
+  letter-spacing: 0px;
   font-size: 12px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
@@ -22305,6 +22058,7 @@ ul.tabs .quarterTab h4 {
   line-height: 22px;
   padding-top: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
 }
 
 .tabbing {
@@ -22376,8 +22130,9 @@ ul.tabs .quarterTab h4 {
   background-color: #f8f8f8;
   min-height: 270px;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
   padding-right: 2%;
+  letter-spacing: 2px;
 }
 .tab_container .tabBox .tabBoxleft {
   width: 80%;
@@ -22397,7 +22152,7 @@ ul.tabs .quarterTab h4 {
   font-size: 12px;
   color: #505050;
   line-height: 70px;
-  margin-bottom: -7px;
+  margin-bottom: 10px;
 }
 .tab_container .tabBox .fromPrice {
   color: #ec3050;
@@ -22418,7 +22173,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0;
   line-height: 25px;
   font-size: 14px;
-  margin-top: 0px;
+  margin-top: 50px;
 }
 .tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox p, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
   padding-left: 50px;
@@ -22429,9 +22184,20 @@ ul.tabs .quarterTab h4 {
 }
 .tab_container .tabBox p {
   margin-bottom: 15px;
+  text-align: left;
+  letter-spacing: 0px;
+  font-size: 14px;
+  line-height: 30px;
+  margin-bottom: -53px;
 }
 .tab_container .tabBox .read-more-target span {
   padding-left: 0px;
+}
+.tab_container .tabBox li {
+  letter-spacing: 0px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #505050;
+  opacity: 0.8;
 }
 
 .nopicTab {
@@ -22586,7 +22352,7 @@ ul.tabs .quarterTab h4 {
   color: #b1b1b1;
   opacity: 0.5;
   line-height: 25px;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
 }
 
@@ -22608,13 +22374,824 @@ ul.tabs .quarterTab h4 {
 }
 
 /* END TABS */
+.owl-carousel {
+  display: block !important;
+}
+
+.owl-pub {
+  text-align: center;
+  margin: 0 auto;
+}
+.owl-pub .owl-carousel {
+  overflow: hidden;
+}
+.owl-pub .owl-stage-outer {
+  height: auto !important;
+}
+.owl-pub .minowl-item {
+  min-width: 347px !important;
+}
+.owl-pub .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.owl-pub .owl-controls {
+  position: absolute;
+  width: 100%;
+  z-index: 1004;
+  text-align: center;
+  margin-top: -15%;
+  display: block !important;
+}
+.owl-pub .owl-buttons {
+  display: none;
+}
+.owl-pub .owl-dot:after {
+  color: white;
+}
+.owl-pub .owl-controls {
+  position: absolute;
+  width: 100%;
+  z-index: 1004;
+  text-align: center;
+  margin-top: 85% !important;
+  display: block !important;
+}
+.owl-pub .owl-page {
+  display: inline-block;
+  height: 3px;
+  margin: 0 8.5px;
+  vertical-align: middle;
+  position: relative;
+  width: 3px;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: white;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.owl-pub .owl-page.active {
+  border: 4px solid white;
+  width: 7px;
+  height: 7px;
+  background: none;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+/* ACCORDION*/
+#accordion-menu p, #accordion-menu ul, #accordion-menu ol, #accordion-menu form, #accordion-menu fieldset, #accordion-menu input {
+  margin: 0;
+  padding: 0;
+}
+#accordion-menu ul, #accordion-menu ol {
+  list-style: none;
+}
+#accordion-menu a {
+  text-decoration: none;
+  outline: none;
+  min-height: 80px;
+  color: #505050;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+#accordion-menu .hide {
+  display: none;
+}
+#accordion-menu li {
+  background: white;
+  padding: 10px 15px;
+  border-bottom: 2px solid #f8f8f8;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #505050;
+  font-size: 16px;
+  color: #505050;
+  letter-spacing: 2px;
+}
+#accordion-menu li:before {
+  content: url(/img/checkMark.png);
+  position: relative;
+  top: 35px;
+  left: 0;
+  /* margin-right: 30px; */
+  width: 30px;
+}
+#accordion-menu li p {
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  opacity: 0.8;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: left;
+  color: white;
+}
+#accordion-menu .open {
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 40px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 0px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#accordion-menu .openPlus {
+  color: #333;
+  float: right;
+  margin-right: 30px;
+  font-size: 25px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+#accordion-menu .openMinus {
+  display: none;
+  color: white;
+  float: right;
+  margin-right: 30px;
+  font-size: 25px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+#accordion-menu .noDisplay {
+  display: none;
+}
+#accordion-menu .doDisplay {
+  display: block;
+}
+#accordion-menu .open-selected {
+  background-color: #0e5554;
+  color: #40acab !important;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#accordion-menu .content {
+  padding: 0px 100px 10px 40px;
+  color: #ffffff;
+  text-align: left;
+  margin-bottom: 70px;
+  margin-top: 20px;
+}
+#accordion-menu a {
+  color: #505050;
+}
+
+/***Accordion Menu [End]***/
+.dropArrow {
+  float: left;
+  width: 1%;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.dropArrowOpen {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  float: right;
+  margin-right: 10%;
+}
+
+.dropdown span {
+  float: left;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1279px) {
+  #accordion-menu {
+    font-size: 80%;
+    padding: 0px 45px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+#eventSelector {
+  visibility: hidden;
+  opacity: 0;
+  width: 0%;
+  height: 0px;
+  float: left;
+  margin-top: -7px;
+}
+
+.showeventSelector {
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 80% !important;
+  height: auto !important;
+}
+
+.selectText {
+  width: auto;
+  float: left;
+  display: inline-block;
+  color: #ec3050;
+  font-size: 22px;
+  margin: 0px 5px;
+  /*&:after {
+    content: ',';
+  }
+
+  &:last-child {
+      
+        &:after {
+        content: '';
+    }
+  }*/
+}
+
+.virgule:after {
+  content: ',';
+}
+.virgule:last-child:after {
+  content: '';
+}
+
+.visibleSelectText {
+  visibility: visible;
+  opacity: 1;
+}
+
+.seperator {
+  height: 100%;
+  width: 1px;
+  background: black;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+}
+
+/* PAGE INFOS UTILES */
+.infosUtiles {
+  width: 100%;
+  height: 230px;
+  padding: 0px 0px;
+  background: url("/img/infosutilesBackg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: 0px solid #404040;
+  overflow: hidden;
+}
+.infosUtiles h3 {
+  color: white;
+  margin: 70px 0px 85px 0px;
+  text-transform: initial;
+  letter-spacing: 1px;
+}
+.infosUtiles img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.box-infosUtiles {
+  margin-top: 100px;
+}
+.box-infosUtiles .results-sections {
+  width: 25%;
+  float: left;
+}
+.box-infosUtiles .results-content {
+  width: 75%;
+  float: left;
+}
+.box-infosUtiles .results-boxes {
+  width: 100%;
+  height: 60px;
+  background: white;
+  text-align: left;
+}
+.box-infosUtiles .results-boxes h6 {
+  color: #cccccc;
+  font-size: 12px;
+  padding: 20px 0px 20px 30px;
+  text-transform: uppercase;
+  line-height: 25px;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.box-infosUtiles .results-boxes .active {
+  color: #141414;
+  background: #f8f8f8;
+}
+.box-infosUtiles .bigBox {
+  height: 80px;
+}
+
+#accordion-infos p, #accordion-infos ul, #accordion-infos ol, #accordion-infos form, #accordion-infos fieldset, #accordion-infos input {
+  margin: 0;
+  padding: 0;
+}
+#accordion-infos ul, #accordion-infos ol {
+  list-style: none;
+}
+#accordion-infos a {
+  text-decoration: none;
+  color: #ec3050 !important;
+  font-size: 14px;
+  text-transform: initial;
+}
+#accordion-infos .hide {
+  display: none;
+}
+#accordion-infos .bigLi {
+  padding: 30px 15px 20px !important;
+}
+#accordion-infos li {
+  background: #f8f8f8;
+  padding: 30px 15px 5px;
+  border-bottom: 3px solid white;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #505050;
+}
+#accordion-infos li:before {
+  content: "";
+  position: relative;
+  top: 35px;
+  left: 0;
+  width: 30px;
+}
+#accordion-infos li p {
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  opacity: 0.8;
+  font-size: 14px;
+  line-height: 25px;
+  margin-top: 40px;
+  text-align: left;
+}
+#accordion-infos .open {
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  line-height: 25px;
+  margin-left: 20px;
+  font-size: 15px;
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#accordion-infos .open h5 {
+  width: 80%;
+  float: left;
+}
+#accordion-infos .open span {
+  width: 0%;
+  float: left;
+  margin-left: 15%;
+}
+#accordion-infos .openPlus {
+  color: #333;
+  float: right;
+  margin-right: 30px;
+  font-size: 25px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+#accordion-infos .openMinus {
+  display: none;
+  color: #333;
+  float: right;
+  margin-right: 30px;
+  font-size: 25px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+#accordion-infos .noDisplay {
+  display: none;
+}
+#accordion-infos .doDisplay {
+  display: block;
+}
+#accordion-infos .open-selected {
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#accordion-infos .content {
+  padding: 0px 10px 35px 15px;
+  color: #ffffff;
+  text-align: left;
+}
+
+/*infosPage */
+.infosPage {
+  background: none !important;
+}
+.infosPage h3 {
+  color: #141414;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-size: 53px;
+  text-transform: initial;
+  letter-spacing: 2px;
+  margin: 0px 0px 50px 0px;
+}
+.infosPage h5 {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #505050;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0px 70px;
+}
+
+.infosPagePeople {
+  display: block;
+  padding-bottom: 100px;
+  min-height: 400px;
+}
+.infosPagePeople .articles {
+  width: 32% !important;
+  float: left;
+}
+.infosPagePeople .articles .articles-content .photoWrapper {
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.infosPagePeople .articles .articles-content .photoWrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.infosPagePeople .articles .articles-content .textWrapper {
+  width: 190px;
+  margin: 0 auto;
+  text-align: left;
+  margin-left: 80px;
+}
+.infosPagePeople .articles .articles-content .textWrapper h6, .infosPagePeople .articles .articles-content .textWrapper span {
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+.infosPagePeople .articles .articles-content .textWrapper h6 {
+  color: #ec3050;
+  font-size: 17px;
+  line-height: 25px;
+  margin: 40px 0px 40px 0px;
+  letter-spacing: 3px;
+}
+.infosPagePeople .articles .articles-content .textWrapper .littleMargin {
+  margin: 40px 0px 20px 0px;
+}
+.infosPagePeople .articles .articles-content .textWrapper span {
+  color: #505050;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  line-height: 25px;
+}
+.infosPagePeople .articles .articles-content .textWrapper a {
+  color: #ec3050;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+/* END infosPage*/
+/* EVENTS PAGE */
+.content {
+  display: none;
+}
+
+.showContent {
+  display: block;
+}
+
+.hideContent {
+  display: none;
+}
+
+.selectbtn {
+  background: white;
+  border: 2px solid #ECECEC;
+  padding: 20px 20px;
+  font-size: 12px;
+  color: #505050;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  min-width: 100px;
+  max-width: 240px;
+  margin: 1% 1%;
+  text-transform: uppercase;
+  display: inline-block;
+  float: left;
+}
+.selectbtn:focus {
+  outline: none;
+  border: none;
+}
+
+.purpleBtn {
+  background: #ec3050;
+  color: white;
+}
+
+/*END EVENT PAGE*/
+.our-news {
+  background: url("/img/background-gold.png") no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+  height: 865px;
+  vertical-align: middle;
+  padding-top: 5%;
+  width: 100%;
+}
+@media screen and (max-width: 1279px) {
+  .our-news .innerWrapper {
+    width: 70% !important;
+    max-width: 70% !important;
+  }
+  .our-news .noShow {
+    display: none !important;
+  }
+}
+.our-news span {
+  color: #533b0e;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+.our-news h3 {
+  font-size: 48px;
+  color: white;
+  text-transform: uppercase;
+  margin: 25px 0px 100px 0px;
+  letter-spacing: 7px;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+}
+.our-news .articles {
+  height: 560px;
+  background: #FFFFFF;
+  width: 32%;
+  display: block;
+  float: left;
+  text-align: left;
+}
+.our-news .articles .readMore {
+  position: absolute;
+  /* top: 1%; */
+  margin-top: 500px;
+  margin-left: 30px;
+  font-size: 25px;
+}
+@media screen and (max-width: 1279px) {
+  .our-news .articles {
+    width: 49% !important;
+    margin-left: 0% !important;
+    margin: 0.5% !important;
+  }
+}
+.our-news .articles .articles-content {
+  padding: 30px;
+  display: block;
+}
+.our-news .articles .articles-content .readMore {
+  font-size: 25px;
+  position: absolute;
+}
+.our-news .articles .articles-img {
+  height: 215px;
+  overflow: hidden;
+}
+.our-news .articles .articles-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.our-news .articles:nth-child(2), .our-news .articles:nth-child(3) {
+  margin-left: 2%;
+}
+.our-news .articles span {
+  text-transform: uppercase;
+  color: #c3a05f;
+  font-size: 10px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+}
+.our-news .articles .article-date {
+  color: #333;
+  padding-left: 5px;
+}
+.our-news .articles h6 {
+  margin: 25px 0px;
+  letter-spacing: 2px;
+  font-size: 20px;
+  line-height: 35px;
+  opacity: 0.8;
+  color: #000000;
+  font-family: "Playfair Display","Times New Roman",Times,serif;
+}
+.our-news .articles p {
+  font-size: 13px;
+  color: #b1b1b1;
+  overflow: hidden;
+  line-height: 30px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  opacity: 0.8;
+  text-align: left;
+}
+@-moz-document url-prefix() {
+  .our-news .articles p {
+    font-size: 13px;
+  }
+}
+/* BOX PRODUCERS WORKSHOP */
+.producersWorkshop {
+  width: 100%;
+  height: 310px;
+  padding: 0px 0px;
+  background: url("/img/redBackg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: 0px solid #404040;
+  overflow: hidden;
+}
+.producersWorkshop h3 {
+  color: white;
+  margin: 85px 0px 105px 0px;
+  text-transform: initial;
+  letter-spacing: 1px;
+}
+.producersWorkshop img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.opportunites {
+  width: 100%;
+  height: 310px;
+  padding: 0px 0px;
+  background: url("/img/ligthblueBckg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: 0px solid #404040;
+  overflow: hidden;
+}
+.opportunites h3 {
+  color: white;
+  margin: 90px 0px 100px 0px;
+  text-transform: initial;
+  letter-spacing: 3px;
+}
+
+.subNavigation {
+  background: black;
+  height: 50px;
+  line-height: 50px;
+}
+.subNavigation .active {
+  color: #ec3050;
+}
+.subNavigation ul {
+  font-size: 0.875rem;
+}
+.subNavigation ul li {
+  display: inline-block;
+  margin-left: 30px;
+}
+.subNavigation ul li a {
+  color: #fff;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  display: block;
+  padding-right: 20px;
+  text-transform: uppercase;
+  -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  letter-spacing: 1px;
+  font-weight: normal;
+}
+
+.opportunites .subNavigation .active {
+  color: #1bafd1;
+}
+
+/* END BOX PRODUCERS WORKSHOP */
+/* BOX CONTACT */
+.contact-box {
+  width: 100%;
+  height: 660px;
+  background: url("/img/plage-cannes.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.contact-box img {
+  width: 100%;
+  max-width: 100%;
+}
+.contact-box .contact-details {
+  background: white;
+  width: 309px;
+  height: 580px;
+  float: right;
+  margin-right: 150px;
+  margin-top: 50px;
+  padding: 0px 60px 0px 30px;
+  /*@media screen and (max-width: 1366px) {
+    height: 320px;
+    max-height: 320px;
+    width: 230px;
+    padding: 0px 30px 0px 30px;
+  }*/
+}
+.contact-box .contact-details span {
+  width: 300px;
+  float: left;
+  text-align: left;
+  line-height: 30px;
+}
+.contact-box .contact-details .howTo {
+  font-size: 15px;
+  color: #989898;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 45px;
+  /*@media screen and (max-width: 1366px) {
+    line-height: 25px;
+  }*/
+}
+.contact-box .contact-details .getTo {
+  font-size: 22px;
+  margin-bottom: 30px;
+  color: #141414;
+  letter-spacing: 2px;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  opacity: 0.6;
+}
+.contact-box .contact-details .informations {
+  font-size: 14px;
+  color: #141414;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 45px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  /*@media screen and (max-width: 1366px) {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }*/
+}
+.contact-box .contact-details .knowMore {
+  margin-top: 80px;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color: #141414;
+  opacity: 0.8;
+  /*@media screen and (max-width: 1366px) {
+    margin-top: 25px;
+  }*/
+}
+
 .reverse {
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-/* COMPONENTS */
+/* COMPONENTS : FLOATING BUTTONS*/
 .blackBtn {
   width: 180px;
   height: 50px;
@@ -22854,438 +23431,6 @@ ul.tabs .quarterTab h4 {
   cursor: pointer;
 }
 
-.owl-carousel {
-  display: block !important;
-}
-
-.owl-pub {
-  text-align: center;
-  margin: 0 auto;
-}
-.owl-pub .owl-carousel {
-  overflow: hidden;
-}
-.owl-pub .owl-stage-outer {
-  height: auto !important;
-}
-.owl-pub .minowl-item {
-  min-width: 347px !important;
-}
-.owl-pub .item img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.owl-pub .owl-controls {
-  position: absolute;
-  width: 100%;
-  z-index: 1004;
-  text-align: center;
-  margin-top: -15%;
-  display: block !important;
-}
-.owl-pub .owl-buttons {
-  display: none;
-}
-.owl-pub .owl-dot:after {
-  color: white;
-}
-.owl-pub .owl-controls {
-  position: absolute;
-  width: 100%;
-  z-index: 1004;
-  text-align: center;
-  margin-top: 85% !important;
-  display: block !important;
-}
-.owl-pub .owl-page {
-  display: inline-block;
-  height: 3px;
-  margin: 0 8.5px;
-  vertical-align: middle;
-  position: relative;
-  width: 3px;
-  border-radius: 50px;
-  border: 3px solid transparent;
-  background: white;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.owl-pub .owl-page.active {
-  border: 4px solid white;
-  width: 7px;
-  height: 7px;
-  background: none;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-
-/* ACCORDION*/
-#accordion-menu p, #accordion-menu ul, #accordion-menu ol, #accordion-menu form, #accordion-menu fieldset, #accordion-menu input {
-  margin: 0;
-  padding: 0;
-}
-#accordion-menu ul, #accordion-menu ol {
-  list-style: none;
-}
-#accordion-menu a {
-  text-decoration: none;
-  outline: none;
-  min-height: 80px;
-  color: #505050;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-#accordion-menu .hide {
-  display: none;
-}
-#accordion-menu li {
-  background: white;
-  padding: 10px 15px;
-  border-bottom: 2px solid #f8f8f8;
-  text-align: left;
-  text-transform: uppercase;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: #505050;
-}
-#accordion-menu li:before {
-  content: url(/img/checkMark.png);
-  position: relative;
-  top: 35px;
-  left: 0;
-  /* margin-right: 30px; */
-  width: 30px;
-}
-#accordion-menu li p {
-  text-transform: initial;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  opacity: 0.8;
-  font-size: 14px;
-  line-height: 25px;
-}
-#accordion-menu .open {
-  cursor: pointer;
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  margin-left: 35px;
-}
-#accordion-menu .openPlus {
-  color: #333;
-  float: right;
-  margin-right: 30px;
-  font-size: 25px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  -webkit-transition-delay: 0.4s;
-  -moz-transition-delay: 0.4s;
-  -o-transition-delay: 0.4s;
-  transition-delay: 0.4s;
-}
-#accordion-menu .openMinus {
-  display: none;
-  color: white;
-  float: right;
-  margin-right: 30px;
-  font-size: 25px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  -webkit-transition-delay: 0.4s;
-  -moz-transition-delay: 0.4s;
-  -o-transition-delay: 0.4s;
-  transition-delay: 0.4s;
-}
-#accordion-menu .noDisplay {
-  display: none;
-}
-#accordion-menu .doDisplay {
-  display: block;
-}
-#accordion-menu .open-selected {
-  background-color: #0e5554;
-  color: #40acab;
-  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#accordion-menu .content {
-  padding: 0px 10px 10px 15px;
-  color: #ffffff;
-  text-align: left;
-}
-#accordion-menu a {
-  color: #505050;
-}
-
-/***Accordion Menu [End]***/
-.dropArrow {
-  float: left;
-  width: 1%;
-  -ms-transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-
-.dropArrowOpen {
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  float: right;
-  margin-right: 10%;
-}
-
-.dropdown span {
-  float: left;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-@media screen and (max-width: 1279px) {
-  #accordion-menu {
-    font-size: 80%;
-    padding: 0px 45px;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-  }
-}
-
-#eventSelector {
-  visibility: hidden;
-  opacity: 0;
-  width: 0%;
-  height: 0px;
-  float: left;
-  margin-top: -7px;
-}
-
-.showeventSelector {
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 80% !important;
-  height: auto !important;
-}
-
-.selectText {
-  width: auto;
-  float: left;
-  display: inline-block;
-  color: #ec3050;
-  font-size: 22px;
-  margin: 0px 5px;
-  /*&:after {
-    content: ',';
-  }
-
-  &:last-child {
-      
-        &:after {
-        content: '';
-    }
-  }*/
-}
-
-.virgule:after {
-  content: ',';
-}
-.virgule:last-child:after {
-  content: '';
-}
-
-.visibleSelectText {
-  visibility: visible;
-  opacity: 1;
-}
-
-.seperator {
-  height: 100%;
-  width: 1px;
-  background: black;
-  margin: 0 auto;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  left: 50%;
-}
-
-/*infosPage */
-.infosPage {
-  background: white;
-}
-@media screen and (max-width: 1279px) {
-  .infosPage .articles {
-    width: 32% !important;
-  }
-}
-.infosPage .photoWrapper {
-  width: 150px;
-  height: 200px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.infosPage .photoWrapper img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-.infosPage h3 {
-  color: #141414;
-  font-family: "Playfair Display",Times New Roman,Times,serif;
-  font-size: 53px;
-  text-transform: initial;
-}
-.infosPage h5 {
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  color: #505050;
-  font-size: 16px;
-  line-height: 40px;
-}
-.infosPage .textWrapper {
-  width: 150px;
-  margin: 0 auto;
-}
-.infosPage .textWrapper h6, .infosPage .textWrapper span {
-  text-transform: uppercase;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-}
-.infosPage .textWrapper h6 {
-  color: #ec3050;
-  font-size: 16px;
-  line-height: 25px;
-  margin: 40px 0px 40px 0px;
-}
-.infosPage .textWrapper .littleMargin {
-  margin: 40px 0px 20px 0px;
-}
-.infosPage .textWrapper span {
-  color: #505050;
-  font-size: 12px;
-}
-.infosPage .textWrapper a {
-  color: #ec3050;
-  font-size: 12px;
-  text-decoration: none;
-  text-transform: initial;
-}
-
-/* END infosPage*/
-/* EVENTS PAGE */
-.content {
-  display: none;
-}
-
-.showContent {
-  display: block;
-}
-
-.hideContent {
-  display: none;
-}
-
-.selectbtn {
-  background: white;
-  border: 2px solid #ECECEC;
-  padding: 20px 20px;
-  font-size: 12px;
-  color: #505050;
-  text-transform: uppercase;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  min-width: 100px;
-  max-width: 240px;
-  margin: 1% 1%;
-  text-transform: uppercase;
-  display: inline-block;
-  float: left;
-}
-.selectbtn:focus {
-  outline: none;
-  border: none;
-}
-
-.purpleBtn {
-  background: #ec3050;
-  color: white;
-}
-
-/*END EVENT PAGE*/
-/* BOX PRODUCERS WORKSHOP */
-.producersWorkshop {
-  width: 100%;
-  height: 310px;
-  padding: 0px 0px;
-  background: url("/img/redBackg.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border: 0px solid #404040;
-  overflow: hidden;
-}
-.producersWorkshop h3 {
-  color: white;
-  margin: 85px 0px 105px 0px;
-  text-transform: initial;
-  letter-spacing: 1px;
-}
-.producersWorkshop img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.opportunites {
-  width: 100%;
-  height: 310px;
-  padding: 0px 0px;
-  background: url("/img/ligthblueBckg.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border: 0px solid #404040;
-  overflow: hidden;
-}
-.opportunites h3 {
-  color: white;
-  margin: 90px 0px 100px 0px;
-  text-transform: initial;
-  letter-spacing: 1px;
-}
-
-.subNavigation {
-  background: black;
-  height: 50px;
-  line-height: 50px;
-}
-.subNavigation .active {
-  color: #ec3050;
-}
-.subNavigation ul {
-  font-size: 0.875rem;
-}
-.subNavigation ul li {
-  display: inline-block;
-  margin-left: 40px;
-}
-.subNavigation ul li a {
-  color: #fff;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  display: block;
-  padding-right: 20px;
-  text-transform: uppercase;
-  -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  letter-spacing: 1px;
-  font-weight: normal;
-}
-
-.opportunites .subNavigation .active {
-  color: #1bafd1;
-}
-
-/* END BOX PRODUCERS WORKSHOP */
 /* CONFERENCE PAGE */
 .calendar {
   width: 100%;
@@ -23310,6 +23455,7 @@ ul.tabs .quarterTab h4 {
 
 .events p {
   color: #b1b1b1;
+  text-align: left;
 }
 
 .conference {
@@ -23323,7 +23469,7 @@ ul.tabs .quarterTab h4 {
   text-align: left;
   margin-top: 10px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   color: #666666;
   margin-left: 85px;
 }
@@ -23345,15 +23491,26 @@ ul.tabs .quarterTab h4 {
   color: white !important;
   padding-bottom: 25px;
   transition: opacity 500 ease-in-out;
-  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.conferences .open-selected-conf .open {
+  padding: 40px 0px;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .conferences .open {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 20px 0px;
   margin-left: 25px;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .conferences .dropdown {
   width: 100%;
@@ -23371,13 +23528,27 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conferencesMenu {
   width: 100%;
+  margin: 0 auto;
+  text-align: center;
   margin-top: 200px;
   margin-bottom: 50px;
+}
+@media screen and (max-width: 1279px) {
+  .conferences .conferencesMenu {
+    width: 90%;
+  }
 }
 .conferences .conferenceMenu {
   width: 100%;
   margin-top: 0px;
+  margin: 0 auto;
+  text-align: center;
   margin-bottom: 50px;
+}
+@media screen and (max-width: 1279px) {
+  .conferences .conferenceMenu {
+    width: 90%;
+  }
 }
 .conferences li {
   padding: 0px 25px 0px 25px;
@@ -23391,6 +23562,10 @@ ul.tabs .quarterTab h4 {
   -moz-transition-delay: 0.4s;
   -o-transition-delay: 0.4s;
   transition-delay: 0.4s;
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .conferences .dropdown span {
   color: #505050 !important;
@@ -23444,12 +23619,12 @@ ul.tabs .quarterTab h4 {
   width: 15%;
   float: left;
   color: #505050;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   line-height: 30px;
   padding-top: 100px;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 25px;
   text-align: center;
 }
 @media screen and (max-width: 1280px) {
@@ -23470,9 +23645,15 @@ ul.tabs .quarterTab h4 {
   height: auto;
   padding-right: 30px;
 }
+.conferences .conf60 p, .conferences .conf70 p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #505050;
+  text-align: left;
+}
 @media screen and (max-width: 1280px) {
   .conferences .conf60, .conferences .conf70 {
-    width: 55%;
+    width: 50%;
     padding-left: 65px;
   }
 }
@@ -23503,7 +23684,7 @@ ul.tabs .quarterTab h4 {
 @media screen and (max-width: 1280px) {
   .conferences .conf60 hr, .conferences .conf70 hr {
     margin-right: -95px;
-    margin-top: -70px;
+    margin-top: -140px;
   }
 }
 .conferences .conf60 .confButton, .conferences .conf70 .confButton {
@@ -23511,8 +23692,9 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 12px;
-  opacity: 0.8;
-  margin-top: 50px;
+  opacity: 0.7;
+  margin-top: 40px;
+  letter-spacing: 1px;
 }
 .conferences .conf60 .confButton .ensavoirplus, .conferences .conf70 .confButton .ensavoirplus {
   -webkit-transform: rotate(180deg);
@@ -23531,9 +23713,19 @@ ul.tabs .quarterTab h4 {
   line-height: 50px;
 }
 .conferences .conf70 {
-  width: 55%;
-  padding-left: 5%;
+  width: 59%;
+  padding-left: 3%;
   height: auto;
+}
+@media screen and (max-width: 1280px) {
+  .conferences .conf70 {
+    width: 55%;
+  }
+}
+.conferences .conf70 img {
+  max-width: 120px;
+  height: 160px;
+  text-align: left;
 }
 .conferences .conf70 hr {
   -webkit-transform: rotate(90deg);
@@ -23544,7 +23736,7 @@ ul.tabs .quarterTab h4 {
   margin-right: -255px;
   width: 440px;
   border-right: 1px solid #e7e7e7;
-  margin-top: 70px;
+  margin-top: 0px;
   margin-bottom: -27px;
   opacity: 0.2;
   float: right;
@@ -23572,33 +23764,21 @@ ul.tabs .quarterTab h4 {
   margin-left: 30px;
   color: #505050;
   opacity: 0.9;
+  text-align: left;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 .conferences .conf30 span, .conferences .conf30Sharp span {
   color: #505050;
   text-transform: uppercase;
   opacity: 0.4;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
 }
 .conferences .conf30 div, .conferences .conf30Sharp div {
   padding-left: 45px;
 }
 .conferences .conf30 div:first-child:before, .conferences .conf30Sharp div:first-child:before {
-  content: url(/img/clock.png);
-  position: relative;
-  top: 10px;
-  left: -10px;
-  /* margin-right: 30px; */
-  width: 20px;
-}
-.conferences .conf30 div:nth-child(2):before, .conferences .conf30Sharp div:nth-child(2):before {
-  content: url(/img/pin.png);
-  position: relative;
-  top: 10px;
-  left: -10px;
-  /* margin-right: 30px; */
-  width: 20px;
-}
-.conferences .conf30 div:nth-child(3):before, .conferences .conf30Sharp div:nth-child(3):before {
   content: url(/img/access.png);
   position: relative;
   top: 10px;
@@ -23606,10 +23786,31 @@ ul.tabs .quarterTab h4 {
   /* margin-right: 30px; */
   width: 20px;
 }
+.conferences .conf30 div:nth-child(2):before, .conferences .conf30Sharp div:nth-child(2):before {
+  content: url(/img/clock.png);
+  position: relative;
+  top: 10px;
+  left: -10px;
+  /* margin-right: 30px; */
+  width: 20px;
+}
+.conferences .conf30 div:nth-child(3):before, .conferences .conf30Sharp div:nth-child(3):before {
+  content: url(/img/pin.png);
+  position: relative;
+  top: 10px;
+  left: -10px;
+  /* margin-right: 30px; */
+  width: 20px;
+}
 .conferences .box {
-  min-height: 280px;
+  min-height: 290px;
   height: auto;
   border-bottom: 4px solid #c60e2d !important;
+}
+@media screen and (max-width: 1280px) {
+  .conferences .box {
+    min-height: 325px !important;
+  }
 }
 .conferences .confDetails {
   text-transform: uppercase;
@@ -23624,7 +23825,15 @@ ul.tabs .quarterTab h4 {
 
 .conferenceMenu .box {
   height: auto;
-  min-height: 900px;
+  min-height: 900px !important;
+}
+@media screen and (max-width: 1280px) {
+  .conferenceMenu .box {
+    min-height: 1000px !important;
+  }
+}
+.conferenceMenu .minBox {
+  min-height: 600px;
 }
 
 .confPeople .quarterWidth {
@@ -23639,8 +23848,32 @@ ul.tabs .quarterTab h4 {
   font-size: 12px !important;
   text-align: left;
 }
+.confPeople .quarterWidth h6 {
+  text-align: left;
+  line-height: 25px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #ec3050 !important;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 20px;
+}
 .confPeople .quarterWidth .name {
-  height: 50px;
+  height: 60px;
+  width: 130px;
+  text-align: left;
+  text-transform: uppercase;
+  line-height: 20px;
+}
+.confPeople .quarterWidth .name h6 {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+}
+.confPeople .quarterWidth .name p {
+  text-align: left;
+  color: #505050;
+  font-size: 10px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .confPeople .quarterWidth .alignLeft {
   text-align: left;
@@ -23649,6 +23882,7 @@ ul.tabs .quarterTab h4 {
 .confPeople .quarterWidth p {
   text-align: left;
   color: #505050;
+  font-size: 10px;
 }
 
 .minPadding {
@@ -23672,7 +23906,8 @@ ul.tabs .quarterTab h4 {
 /* END CONFERENCE PAGE*/
 /* SERVICES PAGE */
 .servicesPage {
-  min-height: 1350px;
+  min-height: 1450px;
+  display: block;
 }
 @media screen and (max-width: 1279px) {
   .servicesPage {
@@ -23683,28 +23918,16 @@ ul.tabs .quarterTab h4 {
   font-size: 16px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 40px;
+  text-align: center;
+  color: #505050;
+  padding: 0px 80px;
 }
 .servicesPage .innerWrapper {
   padding-top: 5%;
 }
 .servicesPage h3 {
   text-transform: initial;
-}
-.servicesPage h6 {
-  font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-weight: bold;
-  font-size: 28px !important;
-  color: #141414;
-  margin: 10px 0px;
-  margin: 10px 0px 20px 0px !important;
-  line-height: 40px;
-}
-.servicesPage span {
-  font-size: 14px !important;
-  color: #505050 !important;
-  text-transform: initial !important;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  line-height: 50px;
+  margin: 40px 0px;
 }
 .servicesPage .fitImg {
   object-fit: cover;
@@ -23726,6 +23949,36 @@ ul.tabs .quarterTab h4 {
   width: 12px !important;
   height: 12px !important;
 }
+.servicesPage .articles h6 {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: bold;
+  font-size: 28px !important;
+  color: #141414;
+  margin: 10px 0px;
+  margin: 10px 0px 20px 0px !important;
+  line-height: 40px;
+}
+.servicesPage .articles .articles-content {
+  display: block;
+}
+.servicesPage .articles .articles-content .readMore {
+  font-size: 25px;
+  position: absolute;
+}
+.servicesPage .articles .articles-content p {
+  opacity: 0.9;
+  text-align: left;
+  letter-spacing: 1px;
+  padding: 0px 0px !important;
+  margin-top: 15px;
+}
+.servicesPage .articles .articles-content span {
+  font-size: 13px !important;
+  color: #505050 !important;
+  text-transform: initial !important;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 30px;
+}
 .servicesPage .articles:hover {
   -webkit-box-shadow: 0px 20px 34px 4px #cccacc;
   -moz-box-shadow: 0px 20px 34px 4px #cccacc;
@@ -23734,7 +23987,13 @@ ul.tabs .quarterTab h4 {
 .servicesPage .articles:last-child {
   text-align: center;
   background: url("/img/blueBckg.png");
-  background-size: 100% 500px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.servicesPage .articles:last-child:hover {
+  text-align: center;
+  background: url("/img/blueBckg.png");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .servicesPage .articles:last-child img {
@@ -23742,28 +24001,38 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   height: 100%;
 }
+.servicesPage .articles:last-child p {
+  padding: 0px 30px;
+  opacity: 1 !important;
+}
 .servicesPage .articles:last-child .articles-content {
-  padding: 0px;
+  padding: 30px;
+  display: block;
 }
 .servicesPage .articles:last-child .lastArticle  {
   position: absolute;
   top: 150px;
 }
 .servicesPage .articles:last-child .blackBtn {
-  width: 190px;
+  padding-top: 25px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  width: 200px;
   height: 35px;
   background: black;
   color: white;
   text-transform: uppercase;
-  padding-top: 25px;
+  padding-top: 20px;
   margin: 0 auto;
   text-align: center;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 100px;
 }
 .servicesPage .articles:last-child h6 {
-  padding-top: 115px;
+  padding: 50px 0px;
   font-size: 46px !important;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   opacity: 1;
@@ -23773,6 +24042,7 @@ ul.tabs .quarterTab h4 {
 }
 .servicesPage .articles:last-child p {
   height: 100px;
+  text-align: center;
 }
 .servicesPage .articles:last-child h6, .servicesPage .articles:last-child p {
   color: white !important;
@@ -23791,47 +24061,33 @@ ul.tabs .quarterTab h4 {
 /* Projections */
 .projections {
   padding-top: 3%;
-  height: 500px;
-  max-height: 500px;
+  height: 550px;
   width: 100%;
   background: url("/img/salle.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
-@media screen and (max-width: 1366px) {
-  .projections {
-    height: 400px;
-    max-height: 400px;
-  }
-}
 .projections .text-presentation {
-  padding-top: 0%;
+  padding-top: 5%;
 }
 .projections .blackBtn {
-  width: 180px;
-  height: 40px;
+  width: 230px;
+  height: 33px;
   background: black;
   color: white;
   text-transform: uppercase;
-  padding-top: 30px;
+  padding-top: 22px !important;
   margin: 0 auto;
   text-align: center;
   letter-spacing: 1px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 .projections h3 {
   color: white;
   text-transform: initial;
-}
-.projections .blackBtn {
-  padding: 30px 20px 0px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 12px;
-}
-.projections img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+  letter-spacing: 2px;
 }
 
 .projection {
@@ -23843,12 +24099,19 @@ ul.tabs .quarterTab h4 {
     padding: 0% 2%;
   }
 }
+.projection a {
+  text-decoration: none;
+  color: #ec3050;
+}
 .projection h3 {
-  color: black;
+  color: #141414;
   text-transform: initial;
+  letter-spacing: 2px;
 }
 .projection h5 {
   line-height: 40px;
+  padding: 0px 100px;
+  margin-bottom: 30px;
 }
 .projection .blackBtn {
   padding: 30px 20px 0px;
@@ -23881,6 +24144,9 @@ ul.tabs .quarterTab h4 {
 .projection .programme h6 {
   color: #ec3050;
   font-size: 20px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  letter-spacing: 1px;
+  margin-top: -5px;
 }
 .projection .programme:hover {
   background: #f1f0ee;
@@ -23909,20 +24175,83 @@ ul.tabs .quarterTab h4 {
 }
 
 /* PAGE QUI SOMMES NOUS */
+.whoarewe {
+  min-height: 800px;
+  display: block;
+}
+.whoarewe h3 {
+  margin: 40px 0px 30px 0px;
+}
+.whoarewe h5 {
+  font-size: 17px;
+}
 .whoarewe .caption {
   text-align: left;
+  font-size: 12px;
+  margin-top: 30px;
+  padding: 0px;
 }
 .whoarewe img {
   width: 100%;
 }
 .whoarewe:nth-child(2) {
-  min-height: 900px;
-  padding-bottom: 150px;
+  padding: 0px 50px 150px;
+}
+
+.mainBody {
+  height: auto;
+  display: block;
+  text-align: left;
+}
+.mainBody h5, .mainBody h3 {
+  font-size: 17px;
+}
+.mainBody h5 {
+  color: #141414;
+  padding: 0px 0px;
+}
+.mainBody h3 {
+  margin: 0px 60px;
+}
+.mainBody ul {
+  margin-bottom: 50px;
+}
+.mainBody ul li {
+  font-size: 17px;
+}
+.mainBody ul li span {
+  color: #c3a05f;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.mainBody:nth-child(2) {
+  padding: 0px 50px 50px;
 }
 
 .mentionsLegales {
   height: auto;
   min-height: auto;
+  padding-top: 3%;
+}
+.mentionsLegales h3 {
+  text-transform: initial !important;
+  letter-spacing: 2px;
+}
+.mentionsLegales h5  {
+  padding: 0px 0px !important;
+}
+.mentionsLegales h6 {
+  margin: 70px 0px 30px 0px;
+}
+.mentionsLegales .boldH5 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #141414;
+  letter-spacing: 1px;
+}
+.mentionsLegales .boldH5 span {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #141414;
+  text-transform: initial !important;
+  font-size: 15px;
 }
 
 .erreur404 {
@@ -24000,8 +24329,8 @@ ul.tabs .quarterTab h4 {
 .pressReview .articles {
   height: 290px;
 }
-.pressReview .readMore {
-  margin-top: 30px;
+.pressReview .articles .readMore {
+  margin-top: 240px;
 }
 .pressReview a {
   font-size: 12px;
@@ -24016,28 +24345,124 @@ ul.tabs .quarterTab h4 {
 }
 
 /* ACTUALITES */
+.actualites span {
+  color: #c3a05f;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.actualites p {
+  text-align: center;
+}
+.actualites .date {
+  color: #505050;
+}
 .actualites img {
   width: 100%;
+}
+.actualites h3 {
+  text-transform: initial;
 }
 .actualites h5, .actualites h6, .actualites .caption {
   text-align: left;
 }
+.actualites .caption {
+  margin-bottom: 100px;
+  font-size: 12px;
+  padding-left: 0px !important;
+}
 .actualites h5, .actualites h6 {
   padding: 0px 30px;
+  margin: 0 auto;
+  font-size: 17px;
 }
-.actualites h6 {
+.actualites h5 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  line-height: 30px;
+  color: #141414;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+}
+.actualites h6 {
+  color: #505050;
+  line-height: 40px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+.share {
+  display: block;
+  padding: 50px 0px 200px 0px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 2px solid #dfdfdf;
+}
+.share p {
+  text-transform: uppercase;
+  color: #141414;
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.share .shareIcons {
+  width: 390px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
+}
+.share .shareIcons .fifth, .share .shareIcons .fullWidth {
+  display: block;
+  float: left;
+  border: 1px solid #dfdfdf;
+  width: 75px;
+  height: 75px;
+}
+.share .shareIcons .fifth .icon, .share .shareIcons .fullWidth .icon {
+  color: #d1ad70;
+  line-height: 75px;
+}
+.share .shareIcons .fifth:hover, .share .shareIcons .fullWidth:hover {
+  border: 1px solid #2b2b2b;
+  background: #2b2b2b;
+}
+.share .shareIcons .fifth:hover .icon, .share .shareIcons .fullWidth:hover .icon {
+  color: white;
+}
+.share .shareIcons .fifth {
+  border-left: 0px solid #dfdfdf;
+}
+.share .shareIcons .fifth:nth-child(1) {
+  border-left: 1px solid #dfdfdf;
+}
+.share .shareIcons .fifth:hover {
+  border-left: 0px solid #2b2b2b;
+}
+.share .shareIcons .fifth:hover:nth-child(1) {
+  border-left: 1px solid #2b2b2b;
+}
+.share .shareIcons .fullWidth {
+  margin-top: 20px;
+  width: 365px;
+  height: 30px;
+  font-size: 12px;
   line-height: 30px;
+  text-align: left;
+  padding-left: 15px;
+}
+.share .shareIcons .fullWidth:hover {
+  border: 1px solid #dfdfdf;
+  background: transparent;
 }
 
 /* PAGE EQUIPE */
 .team {
-  padding-top: 3%;
+  padding-top: 1%;
   padding-bottom: 1%;
 }
 .team h3 {
   text-transform: initial;
+  letter-spacing: 2px;
 }
 
 .teamBckg {
@@ -24060,6 +24485,7 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   line-height: 50px;
+  letter-spacing: 1px;
 }
 .contactInfo h6 {
   font-size: 16px;
@@ -24068,20 +24494,52 @@ ul.tabs .quarterTab h4 {
   line-height: 50px;
 }
 
-.teamPresentation .photoWrapper {
-  width: 155px;
+.teamPresentation .innerTeam {
+  margin: 0 auto;
+  text-align: center;
+  width: 875px !important;
+  padding-left: 15%;
+  padding-top: 100px;
 }
-.teamPresentation .textWrapper h6 {
+.teamPresentation .innerTeam .photoWrapper {
+  width: 155px;
+  text-align: center;
+}
+.teamPresentation .innerTeam .articles {
+  width: 290px;
+  height: 450px;
+  float: left;
+}
+.teamPresentation .innerTeam .textWrapper {
+  text-align: left;
+}
+.teamPresentation .innerTeam .textWrapper h6 {
   color: #c3a05f;
   font-size: 16px;
+  line-height: 25px;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  height: 45px;
+  margin-top: 40px;
+}
+.teamPresentation .innerTeam .textWrapper span {
+  color: #505050;
+  font-size: 12px;
+  line-height: 30px;
+  text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
-.teamPresentation .textWrapper a {
+.teamPresentation .innerTeam .textWrapper a {
   color: #ec3050;
+  text-transform: initial;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
 /* PAGE STANDS */
+.stands {
+  min-height: 440px !important;
+}
+
 .tarifs {
   padding-top: 2%;
   background: url(/img/tarifsBckg.png) no-repeat;
@@ -24121,6 +24579,8 @@ ul.tabs .quarterTab h4 {
 }
 .galeriePresentation h3 {
   text-transform: initial;
+  letter-spacing: 2px;
+  margin: 40px 0px 40px 0px;
 }
 
 .galeriePhotos .photoWrapper {
@@ -24135,8 +24595,13 @@ ul.tabs .quarterTab h4 {
 }
 .galeriePhotos .articles {
   height: 350px;
-  width: 32%;
-  margin-left: 1%;
+  width: 32% !important;
+  margin-left: 1% !important;
+}
+@media screen and (max-width: 1279px) {
+  .galeriePhotos .articles {
+    width: 31% !important;
+  }
 }
 .galeriePhotos .articles .articles-content {
   padding: 0px;
@@ -24151,6 +24616,8 @@ ul.tabs .quarterTab h4 {
   margin: 5px 0px 0px 0px;
   color: #141414;
   font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .galeriePhotos .textWrapper h6:after {
@@ -24178,6 +24645,512 @@ ul.tabs .quarterTab h4 {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 40px;
+}
+
+/* PAGE CONTACT */
+#contactForm {
+  width: 550px;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px 0px 100px 0px;
+}
+#contactForm textarea:focus, #contactForm input:focus {
+  outline: none;
+}
+
+.formContainer {
+  width: 520px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 60px;
+}
+
+#contactForm .formContainer form input,
+#contactForm .formContainer form textarea {
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: 16px;
+  color: #999999;
+  letter-spacing: 1px;
+  background: #FFF;
+  border: 2px solid #dfdfdf;
+  margin-bottom: 15px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  -ms-transition: all .1s ease-in-out;
+  -o-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+}
+
+#contactForm .formContainer form input:focus,
+#contactForm .formContainer form textarea:focus {
+  border: 2px solid #141414;
+}
+
+.bigHeight {
+  min-height: 250px;
+}
+
+p {
+  text-align: right;
+  color: #999999;
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+#contactForm .formContainer form .submit {
+  width: 130px;
+  float: left;
+  padding: 5px 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  background: #141414;
+  height: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #FFF;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  -ms-transition: all .1s ease-in-out;
+  -o-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+}
+
+#contactForm .formContainer form .submit:hover {
+  color: #FFF;
+  cursor: pointer;
+}
+
+#contactForm .formContainer form .required {
+  color: #b43838;
+}
+
+input::-webkit-input-placeholder {
+  color: #999999;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: #141414;
+}
+
+/* Firefox < 19 */
+input:-moz-placeholder {
+  color: #999999;
+}
+
+input:focus:-moz-placeholder {
+  color: #141414;
+}
+
+/* Firefox > 19 */
+input::-moz-placeholder {
+  color: #999999;
+}
+
+input:focus::-moz-placeholder {
+  color: #141414;
+}
+
+/* Internet Explorer 10 */
+input:-ms-input-placeholder {
+  color: #999;
+}
+
+input:focus:-ms-input-placeholder {
+  color: #999999;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+
+textarea:focus::-webkit-input-placeholder {
+  color: #141414;
+}
+
+/* Firefox < 19 */
+textarea:-moz-placeholder {
+  color: #999999;
+}
+
+textarea:focus:-moz-placeholder {
+  color: #141414;
+}
+
+/* Firefox > 19 */
+textarea::-moz-placeholder {
+  color: #999999;
+}
+
+textarea:focus::-moz-placeholder {
+  color: #141414;
+}
+
+/* Internet Explorer 10 */
+textarea:-ms-input-placeholder {
+  color: #999;
+}
+
+textarea:focus:-ms-input-placeholder {
+  color: #999999;
+}
+
+.redRequired {
+  border: 2px solid #e93939 !important;
+  color: #e93939 !important;
+}
+
+.redRequired::-webkit-input-placeholder {
+  color: #e93939 !important;
+}
+
+.errorMessage {
+  width: 520px;
+  display: block;
+  margin: 0 auto;
+  color: #e93939;
+  padding: 5px 0px;
+  text-align: left;
+  border: 2px solid #e93939;
+}
+.errorMessage .redMessage {
+  line-height: 30px;
+  font-size: 14px;
+  margin-left: 30px;
+}
+
+.select span {
+  position: relative;
+}
+
+.select select {
+  position: absolute;
+  padding-top: 10px;
+  left: 209px;
+  height: 320px;
+  display: none;
+  width: 315px;
+  margin-top: -68px;
+  border: 1px solid #cdcdcd;
+  -webkit-box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
+  -moz-box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
+  box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
+}
+
+.select input {
+  width: 250px;
+}
+
+.select select option {
+  color: #999999;
+  font-size: 12px;
+  background: white !important;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  line-height: 40px;
+  padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background: white !important;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+.select select option:hover {
+  color: #c3a05f;
+}
+.select select option:checked {
+  background: white !important;
+}
+
+option:hover,
+option:focus,
+option:active,
+option:checked,
+.select select::-internal-list-box > option:checked {
+  background-color: white !important;
+}
+
+.selectArrow {
+  position: absolute;
+  margin-top: -50px;
+  right: 5%;
+  font-size: 10px;
+  color: #c3a05f;
+  z-index: 1000;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.selectArrowReversed {
+  -ms-transform: rotate(90deg) !important;
+  -webkit-transform: rotate(90deg) !important;
+  transform: rotate(90deg) !important;
+}
+
+/* PAGE ACTUALITES DU MARCHE */
+.marketTitle {
+  padding-top: 3%;
+}
+.marketTitle h3 {
+  text-transform: initial;
+  margin: 40px 0px 30px 0px;
+  letter-spacing: 2px;
+}
+
+.marketNews {
+  background: white;
+  height: auto;
+  display: block;
+  padding-bottom: 100px;
+}
+.marketNews .articles {
+  background: #f8f8f8;
+  margin-left: 2%;
+  margin-bottom: 1%;
+  width: 31%;
+}
+.marketNews .articles:hover {
+  background: white;
+  -webkit-box-shadow: 0px 20px 34px 4px #cccacc;
+  -moz-box-shadow: 0px 20px 34px 4px #cccacc;
+  box-shadow: 0px 20px 34px 4px #cccacc;
+}
+
+.pagination {
+  display: block;
+  padding: 50px 0px 200px 0px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pagination .paginationContainer {
+  width: 485px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pagination .paginationContainer .paginationNavLeft, .pagination .paginationContainer .paginationNavRight {
+  display: block;
+  float: left;
+  border: 1px solid #dfdfdf;
+  width: 65px;
+  height: 65px;
+}
+.pagination .paginationContainer .paginationNavLeft i, .pagination .paginationContainer .paginationNavRight i {
+  line-height: 65px;
+}
+.pagination .paginationContainer .paginationNavLeft:hover, .pagination .paginationContainer .paginationNavRight:hover {
+  border: 1px solid #2b2b2b;
+  background: #2b2b2b;
+}
+.pagination .paginationContainer .paginationNavLeft:hover i, .pagination .paginationContainer .paginationNavRight:hover i {
+  color: white;
+}
+.pagination .paginationContainer .paginationNavRight {
+  float: right;
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.pagination .paginationContainer .paginationNavLeft {
+  margin-top: 20px;
+}
+.pagination .paginationContainer p {
+  text-transform: uppercase;
+  color: #141414;
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.pagination .paginationContainer .paginationBoxes {
+  width: 310px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
+}
+.pagination .paginationContainer .paginationBoxes .fifth, .pagination .paginationContainer .paginationBoxes .fullWidth {
+  display: block;
+  float: left;
+  border: 1px solid #dfdfdf;
+  width: 75px;
+  height: 65px;
+}
+.pagination .paginationContainer .paginationBoxes .fifth span, .pagination .paginationContainer .paginationBoxes .fullWidth span {
+  color: #141414;
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  line-height: 65px;
+}
+.pagination .paginationContainer .paginationBoxes .fifth:hover, .pagination .paginationContainer .paginationBoxes .fullWidth:hover {
+  border: 1px solid #2b2b2b;
+  background: #2b2b2b;
+}
+.pagination .paginationContainer .paginationBoxes .fifth:hover span, .pagination .paginationContainer .paginationBoxes .fullWidth:hover span {
+  color: white;
+}
+.pagination .paginationContainer .paginationBoxes .fifth {
+  border-left: 0px solid #dfdfdf;
+}
+.pagination .paginationContainer .paginationBoxes .fifth:nth-child(1) {
+  border-left: 1px solid #dfdfdf;
+}
+.pagination .paginationContainer .paginationBoxes .fifth:hover {
+  border-left: 0px solid #2b2b2b;
+}
+.pagination .paginationContainer .paginationBoxes .fifth:hover:nth-child(1) {
+  border-left: 1px solid #2b2b2b;
+}
+.pagination .paginationContainer .paginationBoxes .fullWidth {
+  margin-top: 20px;
+  width: 365px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: left;
+  padding-left: 15px;
+}
+.pagination .paginationContainer .paginationBoxes .fullWidth:hover {
+  border: 1px solid #dfdfdf;
+  background: transparent;
+}
+
+/* PAGE PROGRAMMATION */
+.marche {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-top: 1%;
+}
+.marche a {
+  color: #ec3050;
+  text-decoration: none;
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.marche h4 {
+  color: #2b2b2b;
+  font-size: 16px;
+  line-height: 40px;
+  opacity: 0.8;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  padding: 0px 100px;
+}
+.marche h3 {
+  text-transform: initial;
+  text-align: center;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  letter-spacing: 2px;
+  margin: 40px 0px 40px 0px;
+}
+.marche h6 {
+  color: #141414;
+  text-transform: uppercase;
+  font-size: 16px;
+  opacity: 1;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
+  text-align: left;
+}
+.marche h5 {
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.marche li {
+  color: #505050;
+  font-size: 16px;
+  opacity: 0.8;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 50px;
+  padding-right: 50px;
+  text-align: left;
+}
+
+.marcheBody {
+  padding: 0px 50px;
+}
+
+.slideshow .caption {
+  text-align: left;
+  color: #666666;
+  font-size: 12px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+/* PAGE NEWS */
+.newsPage {
+  background: white;
+  min-height: 1550px;
+}
+@media screen and (max-width: 1279px) {
+  .newsPage {
+    height: auto !important;
+    min-height: 1900px;
+  }
+}
+.newsPage .articles {
+  background: #f8f8f8;
+  width: 31%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.newsPage .articles h6 {
+  margin: 20px 0px;
+}
+.newsPage .articles:hover {
+  background: white;
+  -webkit-box-shadow: 0px 20px 34px 4px #cccacc;
+  -moz-box-shadow: 0px 20px 34px 4px #cccacc;
+  box-shadow: 0px 20px 34px 4px #cccacc;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.newsPage h3 {
+  color: #141414;
+  text-transform: initial;
+  letter-spacing: 2px;
+}
+
+.moreArticles {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 100px;
+  margin-top: -115px;
+  margin-bottom: 100px;
+}
+.moreArticles span {
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 30px 30px;
+  border: 1px solid #ECECEC;
+  width: 120px;
+  height: 70px;
+  color: #080808 !important;
+}
+.moreArticles span:hover {
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  background: #080808 !important;
+  color: white !important;
 }
 
 .results {
@@ -24263,8 +25236,11 @@ ul.tabs .quarterTab h4 {
 }
 .results .results-content .contents .projection .programme {
   margin-bottom: 20px !important;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: bold !important;
   width: 90%;
   margin: 0 auto;
+  padding: 50px 20px 60px 20px;
 }
 .results .results-content .resultsTitle {
   line-height: 50px;
@@ -24276,8 +25252,9 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   color: #141414;
   font-size: 13px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   margin-left: 3%;
+  letter-spacing: 1px;
 }
 .results .results-content .resultsTitle .seeAll {
   width: 45%;
@@ -24286,7 +25263,7 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   color: #c3a05f;
   font-size: 13px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   margin-right: 1%;
 }
 .results .results-content .articles {
@@ -24334,6 +25311,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0.9;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   line-height: 22px;
+  text-align: left;
 }
 .results .results-content .articles .textWrapper .redtitle {
   color: #ec3050;

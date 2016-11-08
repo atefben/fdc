@@ -120,7 +120,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="pricesContent">
                 <div class="innerWrapper">
                   <div class="plusPrices">
                     <div class="plusPricesdetails">

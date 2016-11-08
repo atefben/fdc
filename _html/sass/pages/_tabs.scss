@@ -21,10 +21,13 @@
 
   h3 {
     text-transform: initial;
+    letter-spacing: 2px;
+    margin: 40px 0px 40px 0px;
   }
 
   h5 {
     margin-bottom: 0px;
+    padding: 0px 100px
   }
 
   a {
@@ -34,6 +37,10 @@
 
 .boxesHeight {
   min-height: 580px;
+
+  h3 {
+    margin: 40px 0px 40px 0px;
+  }
 }
 
 .bigContainer {
@@ -97,13 +104,16 @@ ul.tabs {
   .halfTab {
     width: 50%;
     height: 100px;
+    letter-spacing: 0px;
     font-family: $CamphorRegular;
+    font-size: 12px;
     h4 {
 
       text-transform: uppercase;
       line-height:22px;
       padding-top: 25px;
       font-family: $CamphorHeavy;
+      letter-spacing: 2px;
 
     }
   }
@@ -111,20 +121,7 @@ ul.tabs {
   .thirdTab {
     width: 33.3%;
     height: 100px;
-    font-family: $CamphorRegular;
-    h4 {
-
-      text-transform: uppercase;
-      line-height:22px;
-      padding-top: 25px;
-      font-family: $CamphorHeavy;
-
-    }
-  }
-
-  .quarterTab {
-    width: 25%;
-    height: 100px;
+    letter-spacing: 0px;
     font-size: 12px;
     font-family: $CamphorRegular;
     h4 {
@@ -133,6 +130,25 @@ ul.tabs {
       line-height:22px;
       padding-top: 25px;
       font-family: $CamphorHeavy;
+      letter-spacing: 2px;
+
+    }
+  }
+
+  .quarterTab {
+    width: 25%;
+    height: 100px;
+    font-size: 12px;
+    letter-spacing: 0px;
+    font-size: 12px;
+    font-family: $CamphorRegular;
+    h4 {
+
+      text-transform: uppercase;
+      line-height:22px;
+      padding-top: 25px;
+      font-family: $CamphorHeavy;
+      letter-spacing: 2px;
 
     }
 
@@ -210,8 +226,9 @@ ul.tabs {
     background-color: #f8f8f8;
     min-height: 270px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     padding-right:2%;
+    letter-spacing: 2px;
 
     .tabBoxleft {
       width: 80%;
@@ -234,7 +251,7 @@ ul.tabs {
       font-size: 12px;
       color: #505050;
       line-height: 70px;
-      margin-bottom: -7px;
+      margin-bottom: 10px;
     }
 
     .fromPrice {
@@ -258,7 +275,7 @@ ul.tabs {
       opacity: 0;
       line-height: 25px;
       font-size: 14px;
-      margin-top: 0px;
+      margin-top: 50px;
     }
 
     span, h5, p, .read-more-wrap, .read-more-trigger {
@@ -272,10 +289,23 @@ ul.tabs {
 
     p {
       margin-bottom: 15px;
+      text-align: left;
+      letter-spacing: 0px;
+      font-size: 14px;
+      line-height: 30px;
+      margin-bottom: -53px;
+
     }
 
     .read-more-target span {
       padding-left: 0px;
+    }
+
+    li {
+      letter-spacing: 0px;
+      font-family: $CamphorRegular;
+      color: #505050;
+      opacity: 0.8;
     }
   }
 
@@ -418,7 +448,7 @@ ul.tabs {
     color: #b1b1b1;
     opacity: 0.5;
     line-height: 25px;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
 }
 
@@ -440,221 +470,6 @@ ul.tabs {
 }
 
 /* END TABS */
-
-.reverse {
-      -ms-transform: rotate(180deg); 
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-
-/* COMPONENTS */
-
-.blackBtn {
-  width: 180px;
-  height: 50px;
-  background: black;
-  color:white;
-  text-transform: uppercase;
-  padding-top: 30px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.floatingButton {
-    position: absolute;
-    z-index: 1004;
-    z-index: 999;    
-    right: 1%;
-    top: 100%;
-    
-    span:first-child {
-      background: black;
-      padding: 20px 30px;
-      color: white;
-      text-transform: uppercase;
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-      @media screen and (max-width: $mobileWidth) {
-        padding: 10px 20px;
-      }
-    }
-
-    .arrow {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    .icon_flecheGauche {
-      
-      padding: 20px;
-      font-size: 15px;
-      border:1px solid #ECECEC;
-
-      @media screen and (max-width: $mobileWidth) {
-        padding: 10px;
-      }
-      
-    }
-    
-    &:hover span:first-child {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    
-    &:hover .arrow {
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-
-    }
-}
-
-
-.showBtn {
-  display: block!important;
-}
-
-.floatingButtonRight {
-  /*position: absolute;
-  z-index: 1004;  
-  right: 1%;
-  top: 100%;*/
-  display: none;
-  position: fixed;
-  z-index: 999;  
-  right: 1%; 
-  top: 50%;
-  @media screen and (max-width: $mobileWidth) {
-    top: 48%;
-  }      
-    span:first-child {
-      background: black;
-      padding: 20px 30px;
-      color: white;
-      text-transform: uppercase;
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-      @media screen and (max-width: $mobileWidth) {
-        padding: 10px 20px;
-      }
-    }
-
-    .arrow {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    .icon_flecheGauche {
-      
-      padding: 20px;
-      font-size: 15px;
-      border:1px solid #ECECEC;
-      @media screen and (max-width: $mobileWidth) {
-        padding: 10px;
-      }
-    }
-    
-    &:hover span:first-child {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    
-    &:hover .arrow {
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-
-    }
-}
-
-.floatingButtonLeft {
-  display: none;
-  position: fixed;
-  z-index: 999;  
-  left: 1%; 
-  top: 50%;
-
-  @media screen and (max-width: $mobileWidth) {
-    top: 48%;
-  }  
-    span:nth-child(2) {
-      background: black;
-      padding: 20px 30px;
-      color: white;
-      text-transform: uppercase;
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-      @media screen and (max-width: $mobileWidth) {
-        padding: 10px 20px;
-      }
-    }
-
-    .arrow {
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    .icon_flecheGauche {
-      
-      padding: 20px;
-      font-size: 15px;
-      border:1px solid #ECECEC;
-      @media screen and (max-width: $mobileWidth) {
-        padding: 10px;
-      }
-      
-    }
-    
-    &:hover span:nth-child(2){
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    
-    &:hover .arrow {
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-
-    }
-}
-
-.message {
-  margin-left: 50px;
-  text-transform: initial;
-  font-size: 16px;
-  color: #505050;
-  font-family: $CamphorHeavy;
-  @include transition(all 1s $smoothTransition);
-}
-
-.blueBtn {
-    float: right;
-    right: 5%;
-    width: 139px;
-    height: 50px;
-    margin: 0 auto;
-    text-align: center;
-    border: 1px solid #29afcf;
-    color: #29afcf;
-    line-height: 50px;
-    text-decoration: none;
-    background: transparent;
-    z-index: 1005;
-    cursor: pointer;
-
-    &:hover {
-      background: #29afcf!important;
-      color: white!important;
-      cursor: pointer;
-    }
-}
 
 .owl-carousel {
   display: block !important;
@@ -756,9 +571,11 @@ ul.tabs {
       border-bottom: 2px solid #f8f8f8;
       text-align: left;
       text-transform: uppercase;
-      font-family: $CamphorHeavy;
+      font-family: $CamphorBold;
+      color: #505050;
       font-size: 16px;
       color: #505050;
+      letter-spacing: 2px;
 
       &:before{
         content: url(/img/checkMark.png);
@@ -774,7 +591,9 @@ ul.tabs {
         font-family: $CamphorRegular;
         opacity: 0.8;
         font-size: 14px;
-        line-height: 25px;
+        line-height: 30px;
+        text-align: left;
+        color: white;
       }
     }
   
@@ -783,7 +602,10 @@ ul.tabs {
     display: block;
     height: 50px;
     line-height: 50px;
-    margin-left: 35px;
+    margin-left: 40px;
+    font-family: $CamphorBold;
+    letter-spacing: 0px;
+     @include transition(all 0.5s $smoothTransition);
   }
 
   .openPlus {
@@ -821,13 +643,15 @@ ul.tabs {
 
   .open-selected {
     background-color: #0e5554;
-    color: #40acab;
-    @include transition(all .8s $smoothTransition);
+    color: #40acab!important;
+    @include transition(all 0.5s $smoothTransition);
   }
   .content {
-    padding:0px 10px 10px 15px;
+    padding: 0px 100px 10px 40px;
     color: #ffffff;
     text-align: left;
+    margin-bottom: 70px;
+    margin-top: 20px;
   }
   
   a {
@@ -937,4 +761,182 @@ ul.tabs {
   bottom: 0;
   position: absolute;
   left: 50%;
+}
+
+
+/* PAGE INFOS UTILES */
+
+.infosUtiles {
+    width: 100%;
+    height: 230px;
+    padding: 0px 0px;
+    background: url("/img/infosutilesBackg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+    h3 {
+      color: white;
+      margin: 70px 0px 85px 0px;
+      text-transform: initial;
+      letter-spacing: 1px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.box-infosUtiles {
+
+  margin-top: 100px;
+
+  .results-sections {
+    width: 25%;
+    float: left;
+  }
+
+  .results-content {
+    width: 75%;
+    float: left;
+  }
+
+  .results-boxes {
+      width: 100%;
+      height: 60px;
+      background: white;
+      text-align:left;
+    h6 {
+      color: #cccccc;
+      font-size: 12px;
+      padding: 20px 0px 20px 30px;
+      text-transform: uppercase;
+      line-height: 25px;
+      letter-spacing: 2px;
+      font-family: $CamphorBold;
+    }
+
+    .active {
+      color: #141414;
+      background: #f8f8f8;
+    }
+  }
+
+  .bigBox {
+    height: 80px;
+  }
+}
+
+#accordion-infos {
+  
+  p, ul, ol,form, fieldset, input { margin:0; padding:0; }
+  ul, ol { list-style:none; }
+
+  a {
+    text-decoration: none;
+    color: #ec3050!important;
+    font-size: 14px;
+    text-transform: initial;
+  }
+
+  .hide { display: none; }
+
+  .bigLi {
+    padding: 30px 15px 20px !important;
+  }
+
+  li {
+      background:#f8f8f8;
+      padding: 30px 15px 5px;
+      border-bottom: 3px solid white;
+      text-align: left;
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: 16px;
+      color: #505050;
+
+      &:before{
+        content: "";
+        position: relative;
+        top: 35px;
+        left: 0;
+        width: 30px;
+      }
+
+      p {
+        text-transform: initial;
+        font-family: $CamphorRegular;
+        opacity: 0.8;
+        font-size: 14px;
+        line-height: 25px;
+        margin-top: 40px;
+        text-align:left;
+      }
+    }
+  
+  .open {
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    line-height: 25px;
+    margin-left: 20px;
+    font-size: 15px;
+    @include transition(all 1s $smoothTransition);
+
+    h5 {
+      width: 80%;
+      float: left;
+    }
+
+    span {
+    width: 0%;
+    float: left;
+    margin-left: 15%;
+    }
+  }
+
+  .openPlus {
+    color: #333;
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+  }
+
+  .openMinus {
+    display: none;
+    color: #333;
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+  }
+
+  .noDisplay {
+    display: none;
+  }
+
+  .doDisplay {
+    display: block;
+  }
+
+  .open-selected {
+    @include transition(all 1s $smoothTransition);
+  }
+  .content {
+    padding:0px 10px 35px 15px;
+    color: #ffffff;
+    text-align: left;
+  }
+
 }

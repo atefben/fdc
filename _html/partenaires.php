@@ -17,9 +17,9 @@
           <div class="bigContainer">    
             <div class="text-presentation boxes boxesHeight">
                 <h3>Rencontrez nos partenaires</h3>
-                <h5>In 2016, no less than 10 companies, festivals and organizations have chosen to set up their Cannes base camp at the Doc Corner, with an ever-growing number of international documentary sales agents represented year after year.  
-                    For this 5th edition of the Doc Corner, we are glad to welcome 6 international sales agents (CAT & DOCS, CINEPHIL, FIRST HAND FILMS, RISE AND SHINE, THE FILM SALES COMPANY and UPSIDE DISTRIBUTION), 2 top-class festivals (CPH:DOX and IDFA), as well as the professional network EDN - EUROPEAN DOCUMENTARY NETWORK, the European training program EURODOC and the global initiative CONNECT4CLIMATE.
-                    To learn more about these exhibitors, click on their names above to access their Cinando profiles, or on their logos below to visit their official website.</h5>          
+                <h5>In 2016, no less than 10 companies, festivals and organizations have chosen to set up their Cannes base camp at the Doc Corner, with an ever-growing number of international documentary sales agents represented year after year.</h5>  
+                <h5>For this 5th edition of the Doc Corner, we are glad to welcome 6 international sales agents (CAT & DOCS, CINEPHIL, FIRST HAND FILMS, RISE AND SHINE, THE FILM SALES COMPANY and UPSIDE DISTRIBUTION), 2 top-class festivals (CPH:DOX and IDFA), as well as the professional network EDN - EUROPEAN DOCUMENTARY NETWORK, the European training program EURODOC and the global initiative CONNECT4CLIMATE.
+                <h5>To learn more about these exhibitors, click on their names above to access their Cinando profiles, or on their logos below to visit their official website.</h5>          
             </div>
           </div>
         </div>

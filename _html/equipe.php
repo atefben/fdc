@@ -56,8 +56,8 @@
         </div>
         <div class="bigContainer">
               
-           <div class="our-news infosPage teamPresentation">
-              <div class="innerWrapper">
+           <div class="infosPage teamPresentation">
+              <div class="innerTeam">
                 <div class="articles">
                   <div class="articles-content">
                     <div class="photoWrapper">
@@ -86,7 +86,7 @@
                       <img src="img/kevin-montero.png">
                     </div>
                     <div class="textWrapper">
-                      <h6 class="littleMargin">KEVIN MONTERO deschamps</h6>
+                      <h6>KEVIN MONTERO deschamps</h6>
                       <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
                     </div>
                   </div>
@@ -119,39 +119,38 @@
                       <img src="img/kevin-montero.png">
                     </div>
                     <div class="textWrapper">
-                      <h6 class="littleMargin">KEVIN MONTERO deschamps</h6>
+                      <h6>KEVIN MONTERO deschamps</h6>
                       <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="articles">
-                  <div class="articles-content">
-                    <div class="photoWrapper">
-                      <img src="img/clara-massot.png">
-                    </div>
-                    <div class="textWrapper">
-                      <h6>clara massot</h6>
-                      <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com">clara.massot@gmail.com</a></span>
                     </div>
                   </div>
                 </div>
                 <div class="articles">
-                  <div class="articles-content">
-                    <div class="photoWrapper">
-                      <img src="img/kevin-montero.png">
+                    <div class="articles-content">
+                      <div class="photoWrapper">
+                        <img src="img/clara-massot.png">
+                      </div>
+                      <div class="textWrapper">
+                        <h6>clara massot</h6>
+                        <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com">clara.massot@gmail.com</a></span>
+                      </div>
                     </div>
-                    <div class="textWrapper">
-                      <h6 class="littleMargin">KEVIN MONTERO deschamps</h6>
-                      <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
+                  </div>
+                  <div class="articles">
+                    <div class="articles-content">
+                      <div class="photoWrapper">
+                        <img src="img/kevin-montero.png">
+                      </div>
+                      <div class="textWrapper">
+                        <h6>KEVIN MONTERO deschamps</h6>
+                        <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-        </div><!--CONTAINER-->
-      </div>
-
+          </div><!--CONTAINER-->
+        </div>
+    <?php include('box-secondary-nav.php'); ?>
     <?php include('footer.html'); ?>
 
      <!-- cookie banner -->

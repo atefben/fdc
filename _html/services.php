@@ -19,6 +19,7 @@
               <p>Simplifiez votre travail et celui de vos partenaires en installant votre société en plein cœur du Marché. Nos stands sont situés au niveau du Riviera, au Lérins et dans le Palais. Vous profiterez ainsi de la proximité des salles de projections, du business center, des bars et de la Plage des Palmes …</p>
               <div class="innerWrapper">
                 <div class="articles">
+                  <div class="readMore">...</div>
                   <div class="articles-img">
                     <img class="fitImg" src="/img/slider/slider03.jpg">
                     <div class="normalImg">
@@ -27,12 +28,12 @@
                   </div>
                   <div class="articles-content">
                     <h6>Stands</h6>
-                    <span>producers workshop</span>
+                    <span>Le Marché du film met cette année à votre disposition 34 salles.</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
-                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
+                  <div class="readMore">...</div>
                   <div class="articles-img">
                     <img class="fitImg" src="/img/slider/slider03.jpg">
                     <div class="normalImg">
@@ -43,10 +44,10 @@
                     <h6>Pavillons</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
-                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
+                  <div class="readMore">...</div>
                   <div class="articles-img">
                     <img class="fitImg" src="/img/slider/slider03.jpg">
                     <div class="normalImg">
@@ -55,12 +56,12 @@
                   </div>
                   <div class="articles-content">
                     <h6>Vos projections</h6>
-                    <span>producers workshop</span>
+                    <span>Le Marché du film met cette année à votre disposition 34 salles.</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
-                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
+                  <div class="readMore">...</div>
                   <div class="articles-img">
                     <img class="fitImg" src="/img/slider/slider03.jpg">
                     <div class="normalImg">
@@ -71,10 +72,10 @@
                     <h6>Équipements et services</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
-                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
+                  <div class="readMore">...</div>
                   <div class="articles-img">
                     <img class="fitImg" src="/img/slider/slider03.jpg">
                     <div class="normalImg">
@@ -85,7 +86,6 @@
                     <h6>Opportunités publicitaires</h6>
                     <span>producers workshop</span>
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
-                    <div class="readMore">...</div>
                   </div>
                 </div>
                 <div class="articles">
