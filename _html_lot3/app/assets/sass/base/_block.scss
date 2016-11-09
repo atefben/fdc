@@ -773,11 +773,17 @@
     -ms-flex-pack: center;
 
     .ie & {
-      width: 72%;
+      width: 144%;
     }
 
     .description {
       width: auto;
+    }
+
+    .infos {
+      .ie & {
+        width: 39%;
+      }
     }
   }
 

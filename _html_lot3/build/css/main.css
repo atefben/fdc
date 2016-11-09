@@ -3610,10 +3610,13 @@ body:not(.who) .block-push {
   -ms-flex-pack: center;
 }
 .ie .block-movie-preview .wrapper-item-big {
-  width: 72%;
+  width: 144%;
 }
 .block-movie-preview .wrapper-item-big .description {
   width: auto;
+}
+.ie .block-movie-preview .wrapper-item-big .infos {
+  width: 39%;
 }
 .block-movie-preview figcaption {
   font-size: .75rem;
