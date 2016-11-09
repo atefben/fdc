@@ -188,7 +188,7 @@
     margin-top: 32px;
     margin-bottom: 66px;
 
-    a, strong, span{
+    a {
       color:$gold;
     }
   }
@@ -409,9 +409,6 @@
     text-align: center;
     line-height: 36px;
 
-    strong {
-      color: #c8a461;
-    }
   }
 
   p {
@@ -659,9 +656,6 @@
       color:$gold;
     }
 
-    strong {
-      color:$gold;
-    }
 
   }
 
@@ -700,10 +694,6 @@
         width: 100%;
       }
 
-      strong {
-        color:$gold;
-      }
-
       .bright & {
         color: #141414;
       }
@@ -718,6 +708,7 @@
 
       strong {
         font-family: $CamphorBold;
+        color: #fff;
       }
 
       sub {
@@ -760,9 +751,6 @@
       color:$gold;
     }
 
-    strong {
-      color:$gold;
-    }
 
     span {
       color:$gold;
@@ -781,9 +769,6 @@
       color:$gold;
     }
 
-    strong {
-      color:$gold;
-    }
 
     span {
       color:$gold;

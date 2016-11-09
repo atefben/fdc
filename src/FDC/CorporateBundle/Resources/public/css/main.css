@@ -1986,9 +1986,6 @@ blockquote, .quote {
   margin-top: 67px;
   width: 100%;
 }
-.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
-  color: #c8a461;
-}
 .bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol {
   color: #141414;
 }
@@ -4940,7 +4937,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: 32px;
   margin-bottom: 66px;
 }
-.block-p-register p a, .block-p-register p strong, .block-p-register p span {
+.block-p-register p a {
   color: #c8a461;
 }
 .block-p-register ol {
@@ -5120,9 +5117,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
   text-align: center;
   line-height: 36px;
-}
-.wysiwyg-article h4 strong {
-  color: #c8a461;
 }
 .wysiwyg-article p {
   color: #666666;
@@ -5325,9 +5319,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .wysiwyg-article-02 .contain-title ul a, .wysiwyg-article-02 .contain-title ol a {
   color: #c8a461;
 }
-.wysiwyg-article-02 .contain-title ul strong, .wysiwyg-article-02 .contain-title ol strong {
-  color: #c8a461;
-}
 .wysiwyg-article-02 .text ol li {
   font-size: 1rem;
   line-height: 30px;
@@ -5361,9 +5352,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: 67px;
   width: 100%;
 }
-.wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
-  color: #c8a461;
-}
 .bright .wysiwyg-article-02 .text p, .bright .wysiwyg-article-02 .text ul, .bright .wysiwyg-article-02 .text ol {
   color: #141414;
 }
@@ -5375,6 +5363,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
 }
 .wysiwyg-article-02 .text p sub, .wysiwyg-article-02 .text ul sub, .wysiwyg-article-02 .text ol sub {
   vertical-align: text-bottom;
@@ -5400,9 +5389,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .wysiwyg-article-02 h4 a {
   color: #c8a461;
 }
-.wysiwyg-article-02 h4 strong {
-  color: #c8a461;
-}
 .wysiwyg-article-02 h4 span {
   color: #c8a461;
 }
@@ -5415,9 +5401,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-bottom: 66px;
 }
 .wysiwyg-article-02 p a {
-  color: #c8a461;
-}
-.wysiwyg-article-02 p strong {
   color: #c8a461;
 }
 .wysiwyg-article-02 p span {
