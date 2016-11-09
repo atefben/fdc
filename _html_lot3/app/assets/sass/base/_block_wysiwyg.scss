@@ -470,6 +470,15 @@
     margin-bottom: 0px;
   }
 
+  .block-movie-preview .wrapper-item-big .description {
+    margin-bottom: 0px;
+  }
+
+  .block-movie-preview:hover .wrapper-item-big ol li, .block-movie-preview:hover ul li {
+    color: #fff;
+    transition: .5s;
+  }
+
   .block-movie-preview .wrapper-item-big {
     ul {
       font-size:1rem;
@@ -489,9 +498,7 @@
       }
     }
 
-    &:hover ol li, &:hover ul li {
-      color: #fff;
-    }
+
 
     ol li {
       font-size: 1rem;
