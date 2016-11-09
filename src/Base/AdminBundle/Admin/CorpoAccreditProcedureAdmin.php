@@ -132,6 +132,28 @@ class CorpoAccreditProcedureAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
+                    'firstColumnContact' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_column.first',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press',
+
+                    ),
+                    'secondColumnContact' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_column.second',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press'
+                    ),
+                    'contactTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
                 )
             ))
             ->add('pdf', 'sonata_type_model_list',

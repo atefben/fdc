@@ -54,30 +54,6 @@ class CorpoAccreditTranslation implements TranslateChildInterface
      */
     protected $btnText;
 
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
-     */
-    private $contactTitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     */
-    private $firstColumnContact;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     */
-    private $secondColumnContact;
-
     /**
      * Set commonContent
      *
@@ -170,72 +146,4 @@ class CorpoAccreditTranslation implements TranslateChildInterface
         return $this->btnText;
     }
 
-    /**
-     * Set contactTitle
-     *
-     * @param string $contactTitle
-     * @return CorpoAccreditTranslation
-     */
-    public function setContactTitle($contactTitle)
-    {
-        $this->contactTitle = $contactTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get contactTitle
-     *
-     * @return string 
-     */
-    public function getContactTitle()
-    {
-        return $this->contactTitle;
-    }
-
-    /**
-     * Set firstColumnContact
-     *
-     * @param string $firstColumnContact
-     * @return CorpoAccreditTranslation
-     */
-    public function setFirstColumnContact($firstColumnContact)
-    {
-        $this->firstColumnContact = $firstColumnContact;
-
-        return $this;
-    }
-
-    /**
-     * Get firstColumnContact
-     *
-     * @return string 
-     */
-    public function getFirstColumnContact()
-    {
-        return $this->firstColumnContact;
-    }
-
-    /**
-     * Set secondColumnContact
-     *
-     * @param string $secondColumnContact
-     * @return CorpoAccreditTranslation
-     */
-    public function setSecondColumnContact($secondColumnContact)
-    {
-        $this->secondColumnContact = $secondColumnContact;
-
-        return $this;
-    }
-
-    /**
-     * Get secondColumnContact
-     *
-     * @return string 
-     */
-    public function getSecondColumnContact()
-    {
-        return $this->secondColumnContact;
-    }
 }

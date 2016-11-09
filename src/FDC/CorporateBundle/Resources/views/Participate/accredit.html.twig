@@ -63,12 +63,12 @@
                             <br><span class="legend">{{ accredit|trans_fallback('btnText') }}</span>
                         </div>
                         <div class="block-contact block-01-ms">
-                            <strong class="title-25">{{ accredit|trans_fallback('contactTitle')|raw }}</strong>
+                            <strong class="title-25">{{  section.procedure|trans_fallback('contactTitle')|raw }}</strong>
                             <div class="item i-1">
-                                {{ accredit|trans_fallback('firstColumnContact')|raw }}
+                                {{  section.procedure|trans_fallback('firstColumnContact')|raw }}
                             </div>
                             <div class="item i-2">
-                                {{ accredit|trans_fallback('secondColumnContact')|raw }}
+                                {{  section.procedure|trans_fallback('secondColumnContact')|raw }}
                             </div>
                         </div>
                     </div>
