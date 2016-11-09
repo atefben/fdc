@@ -5164,6 +5164,7 @@ body:not(.who) .block-push {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: .875rem;
   line-height: 24px;
+  margin-bottom: 0px;
 }
 .wysiwyg-article-02 .block-movie-preview .wrapper-item-big ul {
   font-size: 1rem;
@@ -5171,9 +5172,7 @@ body:not(.who) .block-push {
   line-height: 30px;
   list-style-type: disc;
   list-style-position: inside;
-  margin-left: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 0px;
 }
 .wysiwyg-article-02 .block-movie-preview .wrapper-item-big ul a {
   color: #c8a461;
@@ -5181,6 +5180,9 @@ body:not(.who) .block-push {
 }
 .wysiwyg-article-02 .block-movie-preview .wrapper-item-big ul a:hover {
   color: #8e6d30;
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big:hover ol li, .wysiwyg-article-02 .block-movie-preview .wrapper-item-big:hover ul li {
+  color: #fff;
 }
 .wysiwyg-article-02 .block-movie-preview .wrapper-item-big ol li {
   font-size: 1rem;

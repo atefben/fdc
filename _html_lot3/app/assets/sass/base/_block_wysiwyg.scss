@@ -467,6 +467,7 @@
     font-family: $CamphorRegular;
     font-size: .875rem;
     line-height: 24px;
+    margin-bottom: 0px;
   }
 
   .block-movie-preview .wrapper-item-big {
@@ -476,9 +477,7 @@
       line-height: 30px;
       list-style-type: disc;
       list-style-position: inside;
-      margin-left: 30px;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin: 0px;
 
       a {
         color: $gold;
@@ -488,6 +487,10 @@
           color: #8e6d30;
         }
       }
+    }
+
+    &:hover ol li, &:hover ul li {
+      color: #fff;
     }
 
     ol li {
@@ -515,6 +518,8 @@
       color: #666666;
     }
   }
+
+
 
   table {
     text-align: center;
