@@ -857,8 +857,12 @@
     text-transform: uppercase;
     line-height: 18px;
     font-family: $CamphorBold;
-    width: 183px;
+    /*
+    width: 183px; ??
+    */
     text-align: center;
+    display: inline-block;
+    width: 190px;
   }
 
   .name-fb {
