@@ -24,7 +24,17 @@ $(document).ready(function() {
       paginationSpeed : 400,
       navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"]
     });
-
+  
+  $('#owl-projections').owlCarousel({
+      items:1,
+      navigation : true,
+      dots: false,
+      loop:true,
+      autoplay:true,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"]
+    });
 
   $('#owl-mid').owlCarousel({
       items:1,

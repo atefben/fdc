@@ -34,18 +34,9 @@
           </div>
 
       </div><!--CONTAINER-->
-
-      <div class="contact-box projections">
-          <div class="text-presentation">
-            <h3>Vous avez besoin d'une salle de projection<br> pour votre film ?</h3>
-            <div class="container">
-              <a href="">
-                <div class="blackBtn">Réservez votre salle</div>
-              </a>
-          </div>
-          </div>
-      </div>
+    
     </div>
+    <?php include('box-projections.php'); ?>
     <?php include('box-secondary-nav.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>
