@@ -5325,9 +5325,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .wysiwyg-article-02 .contain-title ul a, .wysiwyg-article-02 .contain-title ol a {
   color: #c8a461;
 }
-.wysiwyg-article-02 .contain-title ul strong, .wysiwyg-article-02 .contain-title ol strong {
-  color: #c8a461;
-}
 .wysiwyg-article-02 .text ol li {
   font-size: 1rem;
   line-height: 30px;
@@ -5360,9 +5357,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .ie .wysiwyg-article-02 .text p, .ie .wysiwyg-article-02 .text ul, .ie .wysiwyg-article-02 .text ol {
   margin-top: 67px;
   width: 100%;
-}
-.wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
-  color: #c8a461;
 }
 .bright .wysiwyg-article-02 .text p, .bright .wysiwyg-article-02 .text ul, .bright .wysiwyg-article-02 .text ol {
   color: #141414;
@@ -5400,9 +5394,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .wysiwyg-article-02 h4 a {
   color: #c8a461;
 }
-.wysiwyg-article-02 h4 strong {
-  color: #c8a461;
-}
 .wysiwyg-article-02 h4 span {
   color: #c8a461;
 }
@@ -5415,9 +5406,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-bottom: 66px;
 }
 .wysiwyg-article-02 p a {
-  color: #c8a461;
-}
-.wysiwyg-article-02 p strong {
   color: #c8a461;
 }
 .wysiwyg-article-02 p span {
