@@ -18,19 +18,19 @@
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="#" class="active" >Historique</a>
+                    <a href="historique.php" class="active" >Historique</a>
                   </li>
                   <li>
-                    <a href="#">L'Equipe</a>
+                    <a href="equipe.php">L'Equipe</a>
                   </li>
                   <li>
-                    <a href="#">Informations pratiques</a>
+                    <a href="infos-pratiques.php">Informations pratiques</a>
                   </li>
                   <li>
                     <a href="#">chiffres Clés</a>
                   </li>
                   <li>
-                    <a href="#">Démarches environnementales</a>
+                    <a href="demarches-environnementales.php">Démarches environnementales</a>
                   </li>
                 </ul>
                </nav>

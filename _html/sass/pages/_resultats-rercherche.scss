@@ -167,6 +167,11 @@
                 text-transform: uppercase;
                 line-height: 60px;
                 letter-spacing: 1px;
+                @media screen and (max-width:$mobileWidth) {
+                    font-size: 11px;
+                    line-height: 45px;
+                    letter-spacing: 0px;
+                }
             }
 
             span {

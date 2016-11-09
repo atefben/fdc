@@ -12,7 +12,31 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
-        <?php include('box-producers-workshop.php'); ?> 
+    <div id="main" class="home loading">
+      <div class="text-presentation producersWorkshop presses">
+          <h3>Presse</h3>
+            <div class="subNavigation">
+              <nav>
+                <ul class="main">
+                  <li>
+                    <a href="historique.php" class="active" >Historique</a>
+                  </li>
+                  <li>
+                    <a href="equipe.php">L'Equipe</a>
+                  </li>
+                  <li>
+                    <a href="infos-pratiques.php">Informations pratiques</a>
+                  </li>
+                  <li>
+                    <a href="#">chiffres Clés</a>
+                  </li>
+                  <li>
+                    <a href="demarches-environnementales.php">Démarches environnementales</a>
+                  </li>
+                </ul>
+               </nav>
+          </div>
+        </div>
           <div class="bigContainer">        
             <div class="our-news newsPage pressReview">
               <h3>Revues de presse</h3>
