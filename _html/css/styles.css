@@ -24326,7 +24326,7 @@ ul.tabs .quarterTab h4 {
 
 /* RETOMBEES PRESSE */
 .pressReview {
-  min-height: 1100px;
+  min-height: 1350px !important;
 }
 .pressReview .articles {
   height: 290px;

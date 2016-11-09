@@ -18,19 +18,16 @@
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="#" class="active" >Historique</a>
+                    <a href="communiques.php" class="active" >Communiqués de presse</a>
                   </li>
                   <li>
-                    <a href="#">L'Equipe</a>
+                    <a href="retombées-presse.php">Retombées presse</a>
                   </li>
                   <li>
-                    <a href="#">Informations pratiques</a>
+                    <a href="galerie-photos.php">Galerie Photos</a>
                   </li>
                   <li>
-                    <a href="#">chiffres Clés</a>
-                  </li>
-                  <li>
-                    <a href="#">Démarches environnementales</a>
+                    <a href="charte-grahique.php">Charte Graphique</a>
                   </li>
                 </ul>
                </nav>
