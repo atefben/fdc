@@ -5160,6 +5160,49 @@ body:not(.who) .block-push {
   display: block;
 }
 
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: .875rem;
+  line-height: 24px;
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ul {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ul a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ul a:hover {
+  color: #8e6d30;
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+  list-style-position: inside;
+  color: #666666;
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ol li a:hover {
+  color: #8e6d30;
+}
+.wysiwyg-article-02 .block-movie-preview .wrapper-item-big ol {
+  list-style: inherit;
+  list-style-type: decimal;
+  list-style-position: inside;
+  color: #666666;
+}
 .wysiwyg-article-02 table {
   text-align: center;
   display: block;
