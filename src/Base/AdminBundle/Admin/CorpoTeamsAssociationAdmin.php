@@ -51,7 +51,8 @@ class CorpoTeamsAssociationAdmin extends Admin
         $formMapper
             ->add('teams', 'sonata_type_model_list', array(
                 'required' => false,
-                'label' => 'Nom de l\'équipe'
+                'label' => 'Nom de l\'équipe',
+                'btn_delete' => false
             ))
             ->add('position', 'hidden', array('attr' => array("hidden" => true)));
     }

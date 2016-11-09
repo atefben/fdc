@@ -151,12 +151,13 @@ class CorpoTeamTeamsAdmin extends Admin
                     'cascade_validation' => true,
                     'by_reference' => false,
                     'label' => 'Département',
-                    'required' => false
+                    'required' => false,
                 ),
                 array(
                     'edit' => 'inline',
                     'inline' => 'table',
                     'sortable'  => 'position',
+                    'btn_delete' => false
                 )
             )
             ->add('translate')
