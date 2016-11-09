@@ -5169,7 +5169,7 @@ body:not(.who) .block-push {
 .wysiwyg-article-02 .block-movie-preview .wrapper-item-big .description {
   margin-bottom: 0px;
 }
-.wysiwyg-article-02 .bck-hover:hover.block-movie-preview .wrapper-item-big ol li, .wysiwyg-article-02:hover ul li {
+.wysiwyg-article-02 .block-movie-preview:hover .wrapper-item-big ol li, .wysiwyg-article-02 .block-movie-preview:hover ul li {
   color: #fff;
   transition: .5s;
 }

@@ -474,7 +474,7 @@
     margin-bottom: 0px;
   }
 
-  .bck-hover:hover.block-movie-preview .wrapper-item-big ol li, &:hover ul li {
+  .block-movie-preview:hover .wrapper-item-big ol li, .block-movie-preview:hover ul li {
     color: #fff;
     transition: .5s;
   }
