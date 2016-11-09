@@ -172,6 +172,9 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label' => 'Image cover du règlement'
             ))
+            ->add('displayReglement')
+            ->add('displayInscription')
+            ->add('displayContact')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices' => PressAccreditProcedure::getAvailableTranslateOptions(),

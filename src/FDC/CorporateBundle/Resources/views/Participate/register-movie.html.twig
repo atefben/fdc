@@ -49,6 +49,7 @@
             <div class="border-top">
             {% for key, section in accredit.procedure %}
             <div class="block-contain-txt-register-movie" data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                {% if section.procedure.displayReglement != true %}
                 <div class="block-01-ms">
                     <div class="buttons buttons-01">
                         <a href="#" class="button" onclick="window.print()"><i class="icon icon-print"></i>Imprimer</a>
@@ -56,28 +57,35 @@
                     <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                     {{ section.procedure|trans_fallback('procedureContent')|raw }}
                 </div>
-                <div class="block-s-info border-bottom border-top vFlexAlign">
+                    <div class="block-s-info border-bottom border-top vFlexAlign">
                     <strong class="title-25">{{ 'participate.submit.movie'|trans }}</strong>
                     <p>{{ 'participate.consult.rules'|trans }}</p>
                     <div class="buttons-02">
                         <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.id}) }}" class="button" target="_blank">{{ 'participate.see.rules'|trans }}</a>
                     </div>
                 </div>
-                {% if section.procedure.mainImage is not null and section.procedure|trans_fallback('inscriptionContent')|raw != '' %}
-                    {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
-                    {% if mainTrans is null or mainTrans.file is null %}
-                        {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
-                    {% endif %}
-                    {% set mainImage = mainTrans.file %}
-                    <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url({% path mainImage, '1280x808' %})">
-                        {{ section.procedure|trans_fallback('inscriptionContent')|raw  }}
-                        <div class="buttons-02">
-                            <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">
-                                {{ 'participate.see.form'|trans }}
-                            </a>
-                        </div>
-                    </div>
                 {% endif %}
+                {% if section.procedure.displayInscription != true%}
+
+                    {% if section.procedure.mainImage is not null and section.procedure|trans_fallback('inscriptionContent')|raw != '' %}
+                        {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
+                        {% if mainTrans is null or mainTrans.file is null %}
+                            {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set mainImage = mainTrans.file %}
+                        <div class="block-s-info-02 border-bottom vFlexAlign"
+                             style="background-image:url({% path mainImage, '1280x808' %})">
+                            {{ section.procedure|trans_fallback('inscriptionContent')|raw }}
+                            <div class="buttons-02">
+                                <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">
+                                    {{ 'participate.see.form'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if section.procedure.displayContact != true %}
                 <div class="block-contact block-01-ms">
                     <strong class="title-25">{{ section.procedure|trans_fallback('contactTitle')|raw }}</strong>
                     <div class="item i-1">
@@ -87,6 +95,7 @@
                         {{ section.procedure|trans_fallback('secondColumnContact')|raw }}
                     </div>
                 </div>
+                {% endif %}
             </div>
             {% endfor %}
             <!-- FIN border-top border-bottom-->
