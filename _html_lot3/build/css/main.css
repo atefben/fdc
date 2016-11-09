@@ -1986,9 +1986,6 @@ blockquote, .quote {
   margin-top: 67px;
   width: 100%;
 }
-.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
-  color: #c8a461;
-}
 .bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol {
   color: #141414;
 }
