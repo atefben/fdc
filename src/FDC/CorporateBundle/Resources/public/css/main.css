@@ -3333,7 +3333,7 @@ body:not(.who) .block-push {
   position: relative;
   background-attachment: inherit;
 }
-.who .block-push-top, .edition-69.story-movie .block-push-top {
+.who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top {
   background-attachment: fixed;
 }
 .block-push-top .vFlexAlign {
