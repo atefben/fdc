@@ -18,16 +18,16 @@
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="#" class="active" >Communiqués de presse</a>
+                    <a href="communiques.php" class="active" >Communiqués de presse</a>
                   </li>
                   <li>
-                    <a href="#">Retombées presse</a>
+                    <a href="retombées-presse.php">Retombées presse</a>
                   </li>
                   <li>
-                    <a href="#">Galerie Photos</a>
+                    <a href="galerie-photos.php">Galerie Photos</a>
                   </li>
                   <li>
-                    <a href="#">Charte Graphique</a>
+                    <a href="charte-grahique.php">Charte Graphique</a>
                   </li>
                 </ul>
                </nav>

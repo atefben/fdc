@@ -31,10 +31,12 @@
             </div>
         </div>
         <div class="bigContainer">
-          <h3>Précisez votre demande en complétant le formulaire ci-dessous.
+
+            <section id="contactForm">
+            
+            <h3>Précisez votre demande en complétant le formulaire ci-dessous.
               Seules les demandes formulées en français ou en anglais 
               peuvent être prises en compte.</h3>
-            <section id="contactForm">
               
               <div class="formContainer">
 

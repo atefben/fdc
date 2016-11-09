@@ -24265,13 +24265,19 @@ ul.tabs .quarterTab h4 {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.erreur404 h5, .erreur404 h6, .erreur404 h3, .erreur404 a {
+.erreur404 h5, .erreur404 h6, .erreur404 h3, .erreur404 h4, .erreur404 a {
   color: white;
   letter-spacing: 1px;
   text-decoration: none;
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .erreur404 h5 {
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 18px !important;
+}
+.erreur404 h4 {
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 .erreur404 .icon_flecheGauche {
   color: #c8a461;
@@ -24286,11 +24292,29 @@ ul.tabs .quarterTab h4 {
 .siteMap div {
   min-height: 500px;
 }
+.siteMap h3 {
+  margin: 30px 0px 60px 0px;
+}
 .siteMap .thirdSection {
   width: 24%;
   float: left;
-  text-align: center;
+  text-align: left;
   padding-left: 100px;
+}
+.siteMap .thirdSection hr {
+  width: 185px;
+  height: 0px;
+  text-align: left;
+  border-top: 2px solid #ec3050;
+  margin-left: 0px;
+  opacity: 0.1;
+  margin-bottom: 15px;
+}
+.siteMap .thirdSection .goldHr {
+  border-top: 2px solid #c8a461;
+}
+.siteMap .thirdSection .greenHr {
+  border-top: 2px solid #40acab;
 }
 @media screen and (max-width: 1279px) {
   .siteMap .thirdSection {
@@ -24299,10 +24323,10 @@ ul.tabs .quarterTab h4 {
 }
 .siteMap .thirdSection h4 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  padding-bottom: 30px;
-  margin-bottom: 50px;
-  border-bottom: 2px solid #f3f3f3;
-  max-width: 200px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  max-width: 240px;
+  letter-spacing: 2px;
   font-size: 22px;
   color: #ec3050;
 }
@@ -24314,12 +24338,16 @@ ul.tabs .quarterTab h4 {
 }
 .siteMap .thirdSection ul {
   margin-bottom: 20px;
-  margin-left: 30px;
+  margin-left: 0px;
 }
 .siteMap .thirdSection ul li, .siteMap .thirdSection ul a {
-  line-height: 30px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 35px;
   text-align: left;
   color: #cdcdcd;
+  letter-spacing: 2px;
+  opacity: 0.8;
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -24494,6 +24522,7 @@ ul.tabs .quarterTab h4 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #505050;
   line-height: 50px;
+  opacity: 0.8;
 }
 
 .teamPresentation .innerTeam {
@@ -24655,10 +24684,16 @@ ul.tabs .quarterTab h4 {
   height: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 30px 0px 100px 0px;
+  padding: 0px 0px 100px 0px;
 }
 #contactForm textarea:focus, #contactForm input:focus {
   outline: none;
+}
+#contactForm h3 {
+  padding: 20px 50px;
+  color: #666666;
+  font-size: 16px;
+  line-height: 35px;
 }
 
 .formContainer {
@@ -24731,73 +24766,60 @@ p {
   color: #b43838;
 }
 
-input::-webkit-input-placeholder {
+.select {
+  /* Firefox < 19 */
+  /* Firefox > 19 */
+  /* Internet Explorer 10 */
+  /* Firefox < 19 */
+  /* Firefox > 19 */
+  /* Internet Explorer 10 */
+}
+.select input::-webkit-input-placeholder {
   color: #999999;
 }
-
-input:focus::-webkit-input-placeholder {
+.select input:focus::-webkit-input-placeholder {
   color: #141414;
 }
-
-/* Firefox < 19 */
-input:-moz-placeholder {
+.select input:-moz-placeholder {
   color: #999999;
 }
-
-input:focus:-moz-placeholder {
+.select input:focus:-moz-placeholder {
   color: #141414;
 }
-
-/* Firefox > 19 */
-input::-moz-placeholder {
+.select input::-moz-placeholder {
   color: #999999;
 }
-
-input:focus::-moz-placeholder {
+.select input:focus::-moz-placeholder {
   color: #141414;
 }
-
-/* Internet Explorer 10 */
-input:-ms-input-placeholder {
+.select input:-ms-input-placeholder {
   color: #999;
 }
-
-input:focus:-ms-input-placeholder {
+.select input:focus:-ms-input-placeholder {
   color: #999999;
 }
-
-textarea::-webkit-input-placeholder {
+.select textarea::-webkit-input-placeholder {
   color: #999999;
 }
-
-textarea:focus::-webkit-input-placeholder {
+.select textarea:focus::-webkit-input-placeholder {
   color: #141414;
 }
-
-/* Firefox < 19 */
-textarea:-moz-placeholder {
+.select textarea:-moz-placeholder {
   color: #999999;
 }
-
-textarea:focus:-moz-placeholder {
+.select textarea:focus:-moz-placeholder {
   color: #141414;
 }
-
-/* Firefox > 19 */
-textarea::-moz-placeholder {
+.select textarea::-moz-placeholder {
   color: #999999;
 }
-
-textarea:focus::-moz-placeholder {
+.select textarea:focus::-moz-placeholder {
   color: #141414;
 }
-
-/* Internet Explorer 10 */
-textarea:-ms-input-placeholder {
+.select textarea:-ms-input-placeholder {
   color: #999;
 }
-
-textarea:focus:-ms-input-placeholder {
+.select textarea:focus:-ms-input-placeholder {
   color: #999999;
 }
 
@@ -24841,6 +24863,15 @@ textarea:focus:-ms-input-placeholder {
   -webkit-box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
   -moz-box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
   box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
+}
+@-moz-document url-prefix() {
+  .select select {
+    margin-top: -104px;
+  }
+}
+.sselection option .active {
+  color: #999999;
+  background: white !important;
 }
 
 .select input {
@@ -24887,7 +24918,11 @@ option:checked,
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
-
+@-moz-document url-prefix() {
+  .selectArrow {
+    margin-top: -70px;
+  }
+}
 .selectArrowReversed {
   -ms-transform: rotate(90deg) !important;
   -webkit-transform: rotate(90deg) !important;

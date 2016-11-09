@@ -208,7 +208,8 @@ $(window).scroll(function(){
     });
 
     $('.selection').change(function () {
-                $(this).find('option:selected').css('background-color', 'red');
+                $(this).find('option:selected').addClass('active');
+                $(this).find('option:checked').addClass('active');
     });
     
     $(".formContainer input, .formContainer textarea").click(function() {
@@ -216,6 +217,11 @@ $(window).scroll(function(){
         $(this).removeClass('redRequired');
     });
 
+    $(".selection option").click(function() {
+
+        $(this).addClass('active');
+        $(this).find('option:selected').addClass('active');
+    });
 /* ACCORDION */
 
 $('#accordion-menu .open').each(function() {

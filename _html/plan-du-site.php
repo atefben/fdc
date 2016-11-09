@@ -19,6 +19,7 @@
             <div>
               <div class="thirdSection">
                 <h4>Édition 2017</h4>
+                <hr>
                 <ul>
                   <li>présentation</li>
                   <li>actualités</li>
@@ -37,11 +38,12 @@
                 </ul>
               </div>
               <div class="thirdSection">
-                <h4 class="goldColor">Accréditations</h4>
-                
+                <h4 class="greenColor">Accréditations</h4>
+                <hr class="greenHr">
               </div>
               <div class="thirdSection">
-                <h4 class="greenColor">Qui sommes-nous ?</h4>
+                <h4 class="goldColor">Qui sommes-nous ?</h4>
+                <hr class="goldHr">
                 <ul>
                   <li>producers workshop</li>
                   <li>producers network</li>
@@ -55,6 +57,7 @@
             <div>
               <div class="thirdSection">
                 <h4 class="greenColor">Services</h4>
+                <hr class="greenHr">
                 <ul>
                   <li>producers workshop</li>
                   <li>producers network</li>
@@ -66,6 +69,7 @@
               </div>
               <div class="thirdSection">
                 <h4 class="goldColor">Presse</h4>
+                <hr class="goldHr">
                 <ul>
                   <li>producers workshop</li>
                   <li>producers network</li>
@@ -77,7 +81,7 @@
               </div>
               <div class="thirdSection">
                 <h4 class="goldColor">Informations utiles</h4>
-                
+                <hr class="goldHr">
               </div>
             </div>
           </div>

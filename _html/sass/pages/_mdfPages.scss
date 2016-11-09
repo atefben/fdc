@@ -248,14 +248,21 @@
       background-size: cover;
       background-repeat: no-repeat;
 
-      h5, h6, h3, a {
+      h5, h6, h3, h4, a {
         color: white;
         letter-spacing: 1px;
         text-decoration: none;
+        text-transform: initial;
+        font-family: $CamphorRegular;
       }
 
       h5 {
-        font-family: $CamphorRegular;
+        font-size: 18px!important;
+      }
+
+      h4 {
+        font-size: 12px;
+        letter-spacing: 2px;
       }
 
       .icon_flecheGauche {
@@ -275,11 +282,33 @@
     min-height: 500px;
   }
 
+  h3 {
+    margin: 30px 0px 60px 0px;
+  }
+
   .thirdSection {
     width: 24%;
     float: left;
-    text-align: center;
+    text-align: left;
     padding-left: 100px;
+
+    hr {
+      width: 185px;
+      height: 0px;
+      text-align:left;
+      border-top: 2px solid #ec3050;
+      margin-left: 0px;
+      opacity: 0.1;
+      margin-bottom: 15px;
+    }
+
+    .goldHr {
+      border-top: 2px solid $gold;
+    }
+
+    .greenHr {
+      border-top: 2px solid #40acab;
+    }
 
     @media screen and (max-width: $mobileWidth) {
       padding-left: 90px;
@@ -287,10 +316,10 @@
 
     h4 {
       font-family: $Playfair;
-      padding-bottom:30px;
-      margin-bottom: 50px;
-      border-bottom: 2px solid #f3f3f3;
-      max-width: 200px;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      max-width: 240px;
+      letter-spacing: 2px;
       font-size: 22px;
       color: #ec3050;
     }
@@ -305,11 +334,15 @@
 
     ul {
       margin-bottom: 20px;
-      margin-left: 30px;
+      margin-left: 0px;
       li, a {
-        line-height: 30px;
+        font-family: $CamphorBold;
+        font-size: 12px;
+        line-height: 35px;
         text-align:left;
         color:#cdcdcd;
+        letter-spacing: 2px;
+        opacity: 0.8;
         text-transform: uppercase;
         text-decoration: none;
       }
@@ -519,6 +552,7 @@
     font-family: $CamphorRegular;
     color: #505050;
     line-height: 50px;
+    opacity: 0.8;
   }
 }
 
@@ -671,6 +705,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       font-family: $CamphorBold;
+
       &:after {
           content: url('/img/goldDL.png');
           float: right;
@@ -713,10 +748,17 @@
   height:100%; 
   margin:0 auto; 
   text-align: center;
-  padding:30px 0px 100px 0px;
+  padding:0px 0px 100px 0px;
 
   textarea:focus, input:focus{
       outline: none;
+  }
+
+  h3 {
+    padding: 20px 50px;
+    color: #666666;
+    font-size: 16px;
+    line-height: 35px;
   }
 }
 
@@ -790,98 +832,101 @@ p {
   color:#b43838;
 }
 
-input::-webkit-input-placeholder {
-    color:#999999;
-}
-input:focus::-webkit-input-placeholder {
-    color:#141414;
-}
+.select {
 
-/* Firefox < 19 */
-input:-moz-placeholder {
-    color:#999999;
-}
-input:focus:-moz-placeholder {
-    color:#141414;
-}
+    input::-webkit-input-placeholder {
+        color:#999999;
+    }
+    input:focus::-webkit-input-placeholder {
+        color:#141414;
+    }
 
-/* Firefox > 19 */
-input::-moz-placeholder {
-    color:#999999;
-}
+    /* Firefox < 19 */
+    input:-moz-placeholder {
+        color:#999999;
+    }
+    input:focus:-moz-placeholder {
+        color:#141414;
+    }
 
-input:focus::-moz-placeholder {
-    color:#141414;
-}
+    /* Firefox > 19 */
+    input::-moz-placeholder {
+        color:#999999;
+    }
 
-/* Internet Explorer 10 */
-input:-ms-input-placeholder {
-    color: #999;
-}
+    input:focus::-moz-placeholder {
+        color:#141414;
+    }
 
-input:focus:-ms-input-placeholder {
-    color:#999999;
-}
+    /* Internet Explorer 10 */
+    input:-ms-input-placeholder {
+        color: #999;
+    }
 
-textarea::-webkit-input-placeholder {
-    color:#999999;
-}
+    input:focus:-ms-input-placeholder {
+        color:#999999;
+    }
 
-textarea:focus::-webkit-input-placeholder {
-    color:#141414;
-}
+    textarea::-webkit-input-placeholder {
+        color:#999999;
+    }
 
-/* Firefox < 19 */
-textarea:-moz-placeholder {
-    color:#999999;
-}
+    textarea:focus::-webkit-input-placeholder {
+        color:#141414;
+    }
 
-textarea:focus:-moz-placeholder {
-    color:#141414;
-}
+    /* Firefox < 19 */
+    textarea:-moz-placeholder {
+        color:#999999;
+    }
 
-/* Firefox > 19 */
-textarea::-moz-placeholder {
-    color:#999999;
-}
+    textarea:focus:-moz-placeholder {
+        color:#141414;
+    }
 
-textarea:focus::-moz-placeholder {
-    color:#141414;
-}
+    /* Firefox > 19 */
+    textarea::-moz-placeholder {
+        color:#999999;
+    }
 
-/* Internet Explorer 10 */
-textarea:-ms-input-placeholder {
-    color: #999;
-}
+    textarea:focus::-moz-placeholder {
+        color:#141414;
+    }
 
-textarea:focus:-ms-input-placeholder {
-    color:#999999;
+    /* Internet Explorer 10 */
+    textarea:-ms-input-placeholder {
+        color: #999;
+    }
+
+    textarea:focus:-ms-input-placeholder {
+        color:#999999;
+    }
 }
 
 .redRequired {
 
-    border: 2px solid #e93939!important;
-    color: #e93939!important;
-}
-
-.redRequired::-webkit-input-placeholder {
-  color: #e93939!important;
-}
-
-.errorMessage {
-  width:520px;
-  display: block;
-  margin: 0 auto;
-  color:#e93939;
-  padding: 5px 0px;
-  text-align: left;
-  border: 2px solid #e93939;
-
-  .redMessage {
-    line-height: 30px;
-    font-size: 14px;
-    margin-left: 30px;
+      border: 2px solid #e93939!important;
+      color: #e93939!important;
   }
+
+  .redRequired::-webkit-input-placeholder {
+    color: #e93939!important;
+  }
+
+  .errorMessage {
+    width:520px;
+    display: block;
+    margin: 0 auto;
+    color:#e93939;
+    padding: 5px 0px;
+    text-align: left;
+    border: 2px solid #e93939;
+
+    .redMessage {
+      line-height: 30px;
+      font-size: 14px;
+      margin-left: 30px;
+    }
 }
 
 
@@ -900,6 +945,16 @@ textarea:focus:-ms-input-placeholder {
   -webkit-box-shadow: 0px 7px 23px 0px rgba(0, 0, 0, 0.52);
   -moz-box-shadow:    0px 7px 23px 0px rgba(0, 0, 0, 0.52);
   box-shadow:         0px 7px 23px 0px rgba(0, 0, 0, 0.52);
+  @-moz-document url-prefix() {
+      margin-top:-104px;
+    }
+}
+
+.sselection option {
+  .active {
+    color: #999999;
+    background: white !important;
+  }
 }
 
 .select input {
@@ -946,7 +1001,10 @@ option:checked,
     z-index: 1000;
     -ms-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg)
+    transform: rotate(-90deg);
+    @-moz-document url-prefix() {
+      margin-top:-70px;
+    }
 }
 
 .selectArrowReversed {
