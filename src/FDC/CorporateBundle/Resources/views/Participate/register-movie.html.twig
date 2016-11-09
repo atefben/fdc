@@ -70,7 +70,7 @@
                     {% endif %}
                     {% set mainImage = mainTrans.file %}
                     <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url({% path mainImage, '1280x808' %})">
-                        {{ accredit|trans_fallback('inscriptionContent')|raw  }}
+                        {{ section.procedure|trans_fallback('inscriptionContent')|raw  }}
                         <div class="buttons-02">
                             <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">
                                 {{ 'participate.see.form'|trans }}
@@ -79,12 +79,12 @@
                     </div>
                 {% endif %}
                 <div class="block-contact block-01-ms">
-                    <strong class="title-25">{{ accredit|trans_fallback('contactTitle')|raw }}</strong>
+                    <strong class="title-25">{{ section.procedure|trans_fallback('contactTitle')|raw }}</strong>
                     <div class="item i-1">
-                        {{ accredit|trans_fallback('firstColumnContact')|raw }}
+                        {{ section.procedure|trans_fallback('firstColumnContact')|raw }}
                     </div>
                     <div class="item i-2">
-                        {{ accredit|trans_fallback('secondColumnContact')|raw }}
+                        {{ section.procedure|trans_fallback('secondColumnContact')|raw }}
                     </div>
                 </div>
             </div>
