@@ -63,7 +63,7 @@
                         <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.id}) }}" class="button" target="_blank">{{ 'participate.see.rules'|trans }}</a>
                     </div>
                 </div>
-                {% if section.procedure.mainImage is not null %}
+                {% if section.procedure.mainImage is not null and section.procedure|trans_fallback('inscriptionContent')|raw != '' %}
                     {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
                     {% if mainTrans is null or mainTrans.file is null %}
                         {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
