@@ -5363,6 +5363,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
 }
 .wysiwyg-article-02 .text p sub, .wysiwyg-article-02 .text ul sub, .wysiwyg-article-02 .text ol sub {
   vertical-align: text-bottom;
