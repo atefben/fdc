@@ -3596,9 +3596,18 @@ body:not(.who) .block-push {
 }
 .block-movie-preview .wrapper-item-big {
   width: 989px;
-  display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 30px auto;
+  height: auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
 }
 .ie .block-movie-preview .wrapper-item-big {
   width: 72%;

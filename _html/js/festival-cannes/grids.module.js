@@ -496,7 +496,7 @@ $(document).ready(function () {
             history.replaceState('', document.title, newURL);
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl+'#aid='+aid;
+            var shareUrl = GLOBALS.urls.audiosUrl+'#aid='+aid;
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));

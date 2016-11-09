@@ -134,6 +134,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     if ($('.container-webtv-ba-video').length > 0) {
         var shareUrl = $('.video .video-container').attr('data-link');
+    } else if ($('.audio-container').length > 0) {
+        var shareUrl = GLOBALS.urls.audiosUrl + '#vid=' + $container.data('vid');
     } else {
         var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $container.data('vid');
     }
@@ -231,6 +233,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             var url = window.location.href.split('#')[0];
             shareUrl = url + "#vid=" + $playlist[index].vid;
 
+        } else if ($('.audio-container').length > 0) {
+            var shareUrl = GLOBALS.urls.audiosUrl + '#vid=' + $playlist[index].vid;
         } else {
             var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $playlist[index].vid;
         }
