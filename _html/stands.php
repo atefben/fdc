@@ -18,22 +18,22 @@
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="#">stand</a>
+                    <a href="stands.php">stands</a>
                   </li>
                   <li>
                     <a href="#">pavillons</a>
                   </li>
                   <li>
-                    <a href="#">projections</a>
+                    <a href="projections.php">projections</a>
                   </li>
                   <li>
-                    <a href="#">équipements et services</a>
+                    <a href="equipements-services.php">équipements et services</a>
                   </li>
                   <li>
                     <a href="partenaires.php">partenaires</a>
                   </li>
                   <li>
-                    <a href="#" class="active">Opportunités publicitaires</a>
+                    <a href="opportunites-pub.php" class="active">Opportunités publicitaires</a>
                   </li>
                 </ul>
                </nav>

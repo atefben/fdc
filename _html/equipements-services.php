@@ -27,7 +27,7 @@
                     <a href="projections.php">projections</a>
                   </li>
                   <li>
-                    <a href="equipements-et-services.php">équipements et services</a>
+                    <a href="equipements-services.php">équipements et services</a>
                   </li>
                   <li>
                     <a href="partenaires.php">partenaires</a>

@@ -24,7 +24,7 @@
                     <a href="equipe.php">L'Equipe</a>
                   </li>
                   <li>
-                    <a href="infos-pratiques.php">Informations pratiques</a>
+                    <a href="infos-utiles.php">Informations pratiques</a>
                   </li>
                   <li>
                     <a href="#">chiffres Clés</a>
