@@ -3136,7 +3136,7 @@ video {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
   position: relative;
 }
-body:not(.who) .block-push {
+body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   background-size: 130%;
   background-position: 0px 0px;
 }

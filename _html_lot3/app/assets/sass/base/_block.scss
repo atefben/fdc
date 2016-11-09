@@ -228,7 +228,7 @@
   transition: $smoothTransition .7s;
   position: relative;
 
-  body:not(.who) & {
+  body:not(.who) &, body:not(.edition-69.story-movie) & {
     background-size: 130%;
     background-position: 0px 0px;
   }
