@@ -24073,6 +24073,9 @@ ul.tabs .quarterTab h4 {
 .projections .text-presentation {
   padding-top: 5%;
 }
+.projections .text-presentation h3 {
+  margin: 0px 0px 60px 0px;
+}
 .projections .blackBtn {
   width: 230px;
   height: 33px;
