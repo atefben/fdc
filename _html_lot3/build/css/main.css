@@ -4940,7 +4940,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: 32px;
   margin-bottom: 66px;
 }
-.block-p-register p a, .block-p-register p strong, .block-p-register p span {
+.block-p-register p a {
   color: #c8a461;
 }
 .block-p-register ol {
@@ -5120,9 +5120,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
   text-align: center;
   line-height: 36px;
-}
-.wysiwyg-article h4 strong {
-  color: #c8a461;
 }
 .wysiwyg-article p {
   color: #666666;
