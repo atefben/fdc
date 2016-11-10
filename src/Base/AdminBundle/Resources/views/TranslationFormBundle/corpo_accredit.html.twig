@@ -86,20 +86,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        Demande d’accréditation
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.btnLabel) }}
-                                        {{ form_row(translationsFields.btnLink) }}
-                                        {{ form_row(translationsFields.btnText) }}
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="box box-success">
@@ -120,49 +106,6 @@
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
                                             {{ form.children.fr.vars.value.commonContent|raw }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-body">
-                                    <h4 class="box-title">
-                                        Demande d’accréditation
-                                    </h4>
-                                    <div>
-                                        <label>
-                                            Libelle du bouton
-                                        </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.btnLabel }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                    </div>
-                                    <div>
-                                        <label>
-                                            Lien du bouton
-                                        </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.btnLink }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                    </div>
-                                    <div>
-                                        <label>
-                                            Texte sous le bouton
-                                        </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.btnText }}
                                         </div>
                                     {% endif %}
                                     </span>

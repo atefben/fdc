@@ -60,12 +60,15 @@
                             <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
                         </div>
+                        {% if section.procedure.displayAccredit != true %}
                         <div class="block-s-info border-bottom border-top vFlexAlign">
                             <div class="buttons-02">
-                                <a href="{{ accredit|trans_fallback('btnLink') }}" class="button" target="_blank">{{ accredit|trans_fallback('btnLabel') }}</a>
+                                <a href="{{ section.procedure|trans_fallback('btnLink') }}" class="button" target="_blank">{{ section.procedure|trans_fallback('btnLabel') }}</a>
                             </div>
-                            <br><span class="legend">{{ accredit|trans_fallback('btnText') }}</span>
+                            <br><span class="legend">{{ section.procedure|trans_fallback('btnText') }}</span>
                         </div>
+                        {% endif %}
+                        {% if section.procedure.displayAccredit != true %}
                         <div class="block-contact block-01-ms">
                             <strong class="title-25">{{  section.procedure|trans_fallback('contactTitle')|raw }}</strong>
                             <div class="item i-1">
@@ -75,6 +78,7 @@
                                 {{  section.procedure|trans_fallback('secondColumnContact')|raw }}
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
                 <!-- FIN border-top border-bottom-->

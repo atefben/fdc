@@ -63,6 +63,27 @@ class CorpoAccreditProcedureTranslation implements TranslateChildInterface
     private $secondColumnContact;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $btnLabel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $btnLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $btnText;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -184,4 +205,73 @@ class CorpoAccreditProcedureTranslation implements TranslateChildInterface
         return $this->secondColumnContact;
     }
 
+
+    /**
+     * Set btnLabel
+     *
+     * @param string $btnLabel
+     * @return CorpoAccreditProcedureTranslation
+     */
+    public function setBtnLabel($btnLabel)
+    {
+        $this->btnLabel = $btnLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get btnLabel
+     *
+     * @return string 
+     */
+    public function getBtnLabel()
+    {
+        return $this->btnLabel;
+    }
+
+    /**
+     * Set btnLink
+     *
+     * @param string $btnLink
+     * @return CorpoAccreditProcedureTranslation
+     */
+    public function setBtnLink($btnLink)
+    {
+        $this->btnLink = $btnLink;
+
+        return $this;
+    }
+
+    /**
+     * Get btnLink
+     *
+     * @return string 
+     */
+    public function getBtnLink()
+    {
+        return $this->btnLink;
+    }
+
+    /**
+     * Set btnText
+     *
+     * @param string $btnText
+     * @return CorpoAccreditProcedureTranslation
+     */
+    public function setBtnText($btnText)
+    {
+        $this->btnText = $btnText;
+
+        return $this;
+    }
+
+    /**
+     * Get btnText
+     *
+     * @return string 
+     */
+    public function getBtnText()
+    {
+        return $this->btnText;
+    }
 }
