@@ -52,6 +52,10 @@
                         <div class="block-01-ms">
                             <div class="buttons buttons-01">
                                 <a href="#" class="button" onclick="window.print()"><i class="icon icon-print"></i>Imprimer</a>
+                                {% if  section.procedure.pdf is not null %}
+                                    {% set pdfFile = section.procedure.pdf|trans_fallback('file') %}
+                                <a href="{% path pdfFile, 'reference' %}" class="button save"><i class="icon icon-pdf"></i>Enregistrer</a>
+                                {% endif %}
                             </div>
                             <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
