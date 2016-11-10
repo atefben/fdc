@@ -12597,6 +12597,17 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search .sub-tab.active .title-cont, .block-search .more-search .tab-selection.active .title-cont {
   color: #c8a461;
 }
+.block-search .more-search .country {
+  -webkit-appearance: none;
+  border: 0px solid #fff;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.3);
+  width: 360px;
+  outline: 0;
+  color: rgba(20, 20, 20, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .625rem;
+}
 .block-search .more-search [type="checkbox"]:not(:checked),
 .block-search .more-search [type="checkbox"]:checked {
   position: absolute;
