@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 {% endif %}
-                {% if section.procedure.displayInscription != true%}
+                {% if section.procedure.displayInscription != true %}
 
                     {% if section.procedure.mainImage is not null and section.procedure|trans_fallback('inscriptionContent')|raw != '' %}
                         {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
