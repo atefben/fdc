@@ -29,7 +29,6 @@ class CorpoPalmeOrRepository extends TranslationRepository
             ->andWhere('t.status = 1')
             ->setParameter('locale', $locale)
             ->setParameter('slug', $slug)
-            ->orderBy('p.weight')
         ;
 
         $output = $qb->getQuery()->getOneOrNullResult();
@@ -52,6 +51,7 @@ class CorpoPalmeOrRepository extends TranslationRepository
             ->andWhere('t.locale = :locale')
             ->andWhere('t.status = 1')
             ->setParameter('locale', $locale)
+            ->orderBy('p.weight','ASC')
         ;
 
         $output = $qb->getQuery()->getResult();
