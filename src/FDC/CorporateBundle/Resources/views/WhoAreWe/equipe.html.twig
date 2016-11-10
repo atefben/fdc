@@ -48,7 +48,7 @@
                         {% for departementAssociation in teamAssociation.teams.departement %}
                         <div class="block-01 border-bottom padding-bottom ">
                             <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
-                            <div class="isotope-02">
+                            <div class="container-items">
                                 <div class="grid-sizer"></div>
                                 {% for membersAssociation in departementAssociation.departement.members %}
                                 <div class="item block-poster festival-de-cannes">
