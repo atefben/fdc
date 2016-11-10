@@ -4813,9 +4813,9 @@ var owInitTab = function(id) {
 
       var dataTab = hash;
       var $block = $('.block-contain-txt-register-movie[data-article='+dataTab+']');
-      var $element = $('#tab1 tr[data-article='+dataTab+']');
+      var $element = $('td[data-tab='+dataTab+']');
 
-
+      console.log('td[data-tab='+dataTab+']');
 
       $tab.removeClass('active');
       $element.addClass('active');
@@ -4827,9 +4827,6 @@ var owInitTab = function(id) {
       var hashPush = '#tab='+dataTab;
       history.pushState(null, null, hashPush);
     }
-
-
-
 
     $tab.on('click', function(e) {
       var $element = $(this);
