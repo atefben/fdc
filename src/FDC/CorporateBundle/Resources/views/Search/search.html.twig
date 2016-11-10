@@ -7,6 +7,7 @@
 
 <section class="brigth search-page" id="main">
     <div class="block-search block-01">
+        {{ form_errors(form) }}
         {{ form_start(form) }}
             <div class="vFlexAlign">
                 <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
@@ -34,7 +35,7 @@
                     <td>
                         <div class="tab-1 tab">
 
-                            <div class="tab-selection" id='tab1'>
+                            <!--div class="tab-selection" id='tab1'>
                                 <label for="select-country-1" id="format" class="selection filter">{{ 'search.form.label.country'|trans }} <i class="icon icon-arrow-down"></i></label>
 
                                 <span class="select-span">
@@ -58,7 +59,7 @@
                                     <option value="Allemagne">Allemagne </option>
                                     <option value="Andorre">Andorre </option>
                                 </select>
-                            </div>
+                            </div-->
 
                             <div class="sub-tab">
                                 <div class="jobs">
@@ -83,7 +84,7 @@
                     <td>
                         <div class="tab-2 tab">
 
-                            <div class="tab-selection" id='tab2'>
+                            <!--div class="tab-selection" id='tab2'>
                                 <label for="select-country-1" id="format2" class="selection filter">{{ 'search.form.label.country'|trans }} <i class="icon icon-arrow-down"></i></label>
 
                                 <span class="select-span">
@@ -102,7 +103,7 @@
                                     <option value="Afrique_du_sud">Afrique_du_Sud </option>
                                     <option value="Albanie">Albanie </option>
                                 </select>
-                            </div>
+                            </div-->
 
                             <div class="sub-tab">
                                 <div class="price">

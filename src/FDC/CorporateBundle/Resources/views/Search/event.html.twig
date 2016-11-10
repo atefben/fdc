@@ -1,0 +1,24 @@
+<div class="top-texts">
+    <a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>
+    <h3>Évènements - {{ result.event.count }} résultats</h3>
+</div>
+
+<section class="events">
+    {% for event in result.event.items %}
+        <article class="block-poster-search medias">
+            <div class="item event conference-press">
+                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
+                    <div class="contain-img landscape">
+                        <img src="{% path event.header|trans_fallback('file'), '976x615' %}" alt="{{ event.header|trans_fallback('alt') }}"/>
+                        <i class="picto icon icon-event"></i>
+                    </div>
+                    <div class="contain-txts">
+                        <span class="title-type-media">{{ event.theme|trans_fallback('name') }}</span>
+                        <span class="title-dates">{{ event.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(event.publishedAt|date('H:i'), true, true) }}</span>
+                        <span class="title-media">{{ event|trans_fallback('title') }}</span>
+                    </div>
+                </a>
+            </div>
+        </article>
+    {% endfor %}
+</section>

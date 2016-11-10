@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -37,40 +37,41 @@ class SearchType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
+            ->setMethod('GET')
             ->add('search',  new TextType() , array(
                 'attr' => array(
                     'value'       => $this->searchTerm,
-                    'placeholder' => $this->translator->trans('header.search.input.entrezrecherche')
+                    'placeholder' => $this->translator->trans('header.search.input.entrezrecherche', array(), 'FDCCorporateBundle')
                 ),
                 'label' => false,
                 'required' => false
             ))
             ->add('news', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.news'),
+                'label'    => $this->translator->trans('search.form.news', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('photos', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.photos'),
+                'label'    => $this->translator->trans('search.form.photos', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('videos', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.videos'),
+                'label'    => $this->translator->trans('search.form.videos', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('audios', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.audios'),
+                'label'    => $this->translator->trans('search.form.audios', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('events', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.events'),
+                'label'    => $this->translator->trans('search.form.events', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('artists', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.artists'),
+                'label'    => $this->translator->trans('search.form.artists', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('movies', 'checkbox', array(
-                'label'    => $this->translator->trans('search.form.movies'),
+                'label'    => $this->translator->trans('search.form.movies', array(), 'FDCCorporateBundle'),
                 'required' => false,
             ))
             ->add('professions', 'choice', array(
@@ -93,8 +94,8 @@ class SearchType extends AbstractType {
             ))
             ->add('genres', 'choice', array(
                 'choices'  => array(
-                    $this->translator->trans('search.form.gender.male') => 'male',
-                    $this->translator->trans('search.form.gender.female') => 'female'
+                    $this->translator->trans('search.form.gender.male', array(), 'FDCCorporateBundle') => 'M',
+                    $this->translator->trans('search.form.gender.female', array(), 'FDCCorporateBundle') => 'F'
                 ),
                 'choices_as_values' => true,
                 'multiple' => true,
@@ -102,17 +103,8 @@ class SearchType extends AbstractType {
             ))
             ->add('formats', 'choice', array(
                 'choices'  => array(
-                    $this->translator->trans('search.form.format.longmetrage') => 'longmetrage',
-                    $this->translator->trans('search.form.format.courtmetrage') => 'courtmetrage'
-                ),
-                'choices_as_values' => true,
-                'multiple' => true,
-                'expanded' => true
-            ))
-            ->add('formats', 'choice', array(
-                'choices'  => array(
-                    $this->translator->trans('search.form.format.longmetrage') => 'longmetrage',
-                    $this->translator->trans('search.form.format.courtmetrage') => 'courtmetrage'
+                    $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle') => $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle'),
+                    $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle') => $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle')
                 ),
                 'choices_as_values' => true,
                 'multiple' => true,
@@ -127,10 +119,20 @@ class SearchType extends AbstractType {
 
     }
 
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'allow_extra_fields' => true,
+                'csrf_protection' => false
+            )
+        );
+    }
+
     /**
      * @return string
      */
     public function getName() {
-        return 'search';
+        return '';
     }
 }

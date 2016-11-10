@@ -1,0 +1,40 @@
+<div class="top-texts">
+    {% if 'searchsubmit' in app.request.attributes.get("_route") %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'film'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
+    <h3>Films - {% if result.film is not empty %}{{ result.film.count }}{% else %}0{% endif %} résultats</h3>
+</div>
+
+
+<section class="movies">
+    {% if result.film is not empty %}
+        {% for film in result.film.items %}
+            <article class="block-poster-search">
+                <div class="item">
+                    <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+                        <div class="contain-img portrait">
+                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                            film: film,
+                            film_format: 'search',
+                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                            }) %}
+                        </div>
+                        <div class="contain-txts">
+                            <span class="title-11">{{ film|trans_fallback('title')?:film.titleVo }}</span>
+                            <span class="title-type">{{ film.selectionSection|trans_fallback('name') }}</span>
+                            {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                {% for key,director in directors %}
+                                    {% if director %}
+                                        <a class="title-12" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}{{ loop.last == true ? '' : ',' }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            {% if film.productionYear != 0 %}
+                                <span class="title-date">{{ film.productionYear }}</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+    {% endif %}
+</section>

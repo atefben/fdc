@@ -14,14 +14,21 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
-            ->addShould($this->getFieldsQuery($searchTerm))
-            //->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
-            ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
-        ;
+
+        if(!empty($searchTerm['search'])) {
+            $finalQuery
+                ->addMust($this->getFieldsQuery($searchTerm['search']))
+                //->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
+            ;
+        }
+
+        if($searchTerm['professions']) {
+            foreach($searchTerm['professions'] as $profession) {
+                $finalQuery->addShould($this->getLocalizedFieldsQuery('fr', $profession)); //comparison done with 'fr'
+            }
+        }
         
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
