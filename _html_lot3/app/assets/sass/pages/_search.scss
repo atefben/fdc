@@ -391,6 +391,12 @@
 
       &.landscape {
         height: 133px;
+        width: 213px;
+        background-size: cover;
+
+        img {
+          height: 100%;
+        }
       }
 
       &.landscape:hover img {

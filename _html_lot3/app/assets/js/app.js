@@ -335,6 +335,7 @@ $(document).ready(function () {
         owInitAccordion('more-search');
         owInitFilterSearch();
         owInitFilter(true);
+        owFixImg();
     }
 
     if ($('.filters').length) {

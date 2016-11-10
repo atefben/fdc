@@ -12734,6 +12734,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .block-search .content-result .contain-img.landscape {
   height: 133px;
+  width: 213px;
+  background-size: cover;
+}
+.block-search .content-result .contain-img.landscape img {
+  height: 100%;
 }
 .block-search .content-result .contain-img.landscape:hover img {
   transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);

@@ -3151,7 +3151,7 @@ var owInitSliderSelect = function(id) {
 
 var autoComplete = function() {
   
-  $('.country').on('click', function () {
+  /*$('.country').on('click', function () {
     var value = $(this).val();
     var $suggest = $(this).next();
     var noWhitespaceValue = value.replace(/\s+/g, '');
@@ -3228,6 +3228,17 @@ var autoComplete = function() {
         });
       }
     });
+  }*/
+}
+
+var owFixImg = function(){
+
+  if($('body').hasClass('ie')){
+    $.each($('.contain-img.landscape'), function(i,e){
+      var imgSrc = $(e).find('img').attr('src');
+
+      $(e).css('background-image','url('+imgSrc+')');
+    })
   }
 }
 //setup twitter
@@ -5332,6 +5343,7 @@ $(document).ready(function () {
         owInitAccordion('more-search');
         owInitFilterSearch();
         owInitFilter(true);
+        owFixImg();
     }
 
     if ($('.filters').length) {
