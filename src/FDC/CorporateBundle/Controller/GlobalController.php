@@ -182,7 +182,8 @@ class GlobalController extends Controller {
 
         $displayedMenus = array();
         foreach($menus as $menu){
-            if($menu['site'] == FDCEventRoutesInterface::CORPO) {
+            dump($menu);
+            if($menu['site'] == FDCEventRoutesInterface::CORPO && $menu['type'] == 1) {
                 $displayedMenus[] = $menu;
             }
         }
