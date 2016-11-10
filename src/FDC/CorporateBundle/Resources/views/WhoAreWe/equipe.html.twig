@@ -72,7 +72,7 @@
                                             <span class="title-11">{{ membersAssociation.members|trans_fallback('firstname') }}
                                                 <br>{{ membersAssociation.members|trans_fallback('lastname') }}
                                             </span>
-                                            <span class="title-12">{{ membersAssociation.members|trans_fallback('function') }}</span>
+                                            <span class="title-12">{{ membersAssociation.members|trans_fallback('function')|truncate(60) }}</span>
                                         </div>
                                     </a>
                                 </div>
