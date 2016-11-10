@@ -1,0 +1,37 @@
+[
+  {
+    "type": "artiste",
+    "name": "Vincent Cassel",
+    "link": "#"
+  },
+  {
+    "type": "artiste",
+    "name": "Vincent Lindon",
+    "link": "#"
+  },
+  {
+    "type": "Actualité",
+    "name": "Vincent Cassel présent lors de la projection de Mon Roi",
+    "link": "#"
+  },
+  {
+    "type": "Actualité",
+    "name": "Vincent Lindon récompensé pour La Loi du Marché",
+    "link": "#"
+  },
+  {
+    "type": "Film",
+    "name": "Vincent n'a pas d'écailles",
+    "link": "#"
+  },
+  {
+    "type": "Actualité",
+    "name": "La montée des marches de Vincent Cassel",
+    "link": "#"
+  },
+  {
+    "type": "Actualité",
+    "name": "Les révélations de Vincent Lindon sur son dernier tournage",
+    "link": "#"
+  }
+]
