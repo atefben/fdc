@@ -18,4 +18,7 @@
 
 $(document).ready(function () {
 
+    if($('.slider-home').length) {
+        owInitSlider('home');
+    }
 });
