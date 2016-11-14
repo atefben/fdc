@@ -15,7 +15,7 @@
         <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %});">
             <div class="vFlexAlign">
                 <div class="txts">
-                    <h1 class="title-3">{{ '69edition.festival.history'|trans }}</h1>
+                    <h1 class="title-3">{{ currentPage|trans_fallback('title') }}</h1>
                 </div>
             </div>
         </div>
@@ -100,14 +100,15 @@
 
                                                         <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                     class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                        <a href="#"><span class="names-a">
                                                                 {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                                 {% set directorsName = '' %}
                                                                 {% for director in directors %}
+                                                                <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}"><span class="names-a">
                                                                     {{ directorsName ~ director.fullName  }}
                                                                     {% if loop.index != directors|length %} - {% endif %}
+                                                                </span></a>
+
                                                                 {% endfor %}
-                                                            </span></a>
                                                         <span class="date">
                                                             {% set duration = [] %}
                                                             {% if film.film.duration is not empty %}
@@ -164,7 +165,7 @@
                         <div class="relative">
                             <div class="block-social-network block-social-network-all">
                                 <a class="facebook"
-                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ '69edition.festival.history'|trans|url_encode(true)  }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
+                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ '69edition.festival.history'|trans|url_encode(true)  }}&picture={% path mainImage, '1280x808' %}&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
                                             class="icon icon-facebook"></i></a><!--
                 --><a class="twitter"
                       href="https://twitter.com/intent/tweet?text={{ '69edition.festival.history'|trans|url_encode(true)  ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i
