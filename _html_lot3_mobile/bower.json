@@ -1,0 +1,27 @@
+{
+  "name": "OhweeLot3",
+  "description": "Site festival de cannes institutionnel",
+  "main": "",
+  "authors": [
+    "Ohwee"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "imagesloaded": "^4.1.0",
+    "isotope": "^2.2.2",
+    "jquery": "^2.2.3",
+    "isotope-packery": "^1.1.3",
+    "js-cookie": "^2.1.1",
+    "nouislider": "^8.5.1",
+    "OwlCarousel": "^1.3.2"
+  }
+}
