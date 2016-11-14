@@ -103,7 +103,7 @@
                                                                 {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                                 {% set directorsName = '' %}
                                                                 {% for director in directors %}
-                                                                <a href="{{ path('fdc_event_artist_get', {'slug': directors.slug}) }}"><span class="names-a">
+                                                                <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}"><span class="names-a">
                                                                     {{ directorsName ~ director.fullName  }}
                                                                     {% if loop.index != directors|length %} - {% endif %}
                                                                 </span></a>
