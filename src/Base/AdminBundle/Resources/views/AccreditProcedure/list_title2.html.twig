@@ -1,0 +1,18 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+    {% set translationLocale = object.findTranslationByLocale('fr') %}
+    {% if translationLocale is not null %}
+        {% if translationLocale.title is defined %}
+            {{ translationLocale.title }}
+        {% elseif translationLocale.departementName is defined %}
+            {{ translationLocale.departementName }}
+        {% elseif translationLocale.teamName is defined %}
+            {{ translationLocale.teamName }}
+        {% elseif translationLocale.lastname is defined %}
+            {{ translationLocale.lastname }}
+        {% endif %}
+    {% endif %}
+        </div>
+{% endblock %}

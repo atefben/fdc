@@ -56,7 +56,7 @@ class CorpoTeamMembersAdmin extends Admin
     {
         $datagridMapper
         ->add('id')
-        ->add('title', 'doctrine_orm_callback', array(
+        ->add('lastname', 'doctrine_orm_callback', array(
             'callback'   => function ($queryBuilder, $alias, $field, $value) {
                 if (!$value['value']) {
                     return;
@@ -64,23 +64,38 @@ class CorpoTeamMembersAdmin extends Admin
                 $queryBuilder->join("{$alias}.translations", 't');
                 $queryBuilder->andWhere('t.locale = :locale');
                 $queryBuilder->setParameter('locale', 'fr');
-                $queryBuilder->andWhere('t.firstname LIKE :title');
-                $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                $queryBuilder->andWhere('t.lastname LIKE :lastname');
+                $queryBuilder->setParameter(':lastname', '%' . $value['value'] . '%');
                 return true;
             },
             'field_type' => 'text',
-            'label'      => 'Nom du membre'
+            'label'      => 'Nom'
+        ))
+        ->add('firstname', 'doctrine_orm_callback', array(
+            'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                if (!$value['value']) {
+                    return;
+                }
+                $queryBuilder->join("{$alias}.translations", 't1');
+                $queryBuilder->andWhere('t1.locale = :locale');
+                $queryBuilder->setParameter('locale', 'fr');
+                $queryBuilder->andWhere('t1.firstname LIKE :firstname');
+                $queryBuilder->setParameter(':firstname', '%' . $value['value'] . '%');
+                return true;
+            },
+            'field_type' => 'text',
+            'label'      => 'Prénom'
         ))
         ->add('function', 'doctrine_orm_callback', array(
             'callback'   => function ($queryBuilder, $alias, $field, $value) {
                 if (!$value['value']) {
                     return;
                 }
-                $queryBuilder->join("{$alias}.translations", 't');
-                $queryBuilder->andWhere('t.locale = :locale');
+                $queryBuilder->join("{$alias}.translations", 't2');
+                $queryBuilder->andWhere('t2.locale = :locale');
                 $queryBuilder->setParameter('locale', 'fr');
-                $queryBuilder->andWhere('t.function LIKE :title');
-                $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                $queryBuilder->andWhere('t2.function LIKE :function');
+                $queryBuilder->setParameter(':function', '%' . $value['value'] . '%');
                 return true;
             },
             'field_type' => 'text',
@@ -96,9 +111,13 @@ class CorpoTeamMembersAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'list.common.label_id'))
-            ->add('title', null, array(
+            ->add('firstname', null, array(
                 'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
-                'label'    => 'Nom du membre',
+                'label'    => 'Prénom',
+            ))
+            ->add('lastname', null, array(
+                'template' => 'BaseAdminBundle:AccreditProcedure:list_title2.html.twig',
+                'label'    => 'Nom',
             ))
             ->add('function', null, array(
                 'template' => 'BaseAdminBundle:CorpoTeamMembers:list_function.html.twig',
