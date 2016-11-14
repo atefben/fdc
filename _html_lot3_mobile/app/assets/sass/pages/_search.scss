@@ -1,0 +1,602 @@
+
+//BLOCK SEARCH
+
+.block-search {
+  margin-top: 50px;
+  margin-bottom: 80px;
+
+  .search-txt {
+    position: relative;
+    background-color: #fff;
+    color: #0c0c0c;
+    width: 489px;
+    height: 63px;
+    line-height: 63px;
+    padding-left: 24px;
+    box-sizing: padding-box;
+    display: block;
+    border-right: 0px solid #fff !important;
+
+    .brigth & {
+      color:#141414;
+      border:1px solid #f4f4f4;
+    }
+
+    input {
+      border: 0px solid #fff;
+      outline: none;
+      width: 80%;
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+
+      .brigth & {
+        color:#141414;
+        // border:1px solid #f4f4f4;
+      }
+
+    }
+
+    .icon {
+      margin-right: 15px;
+      font-size: .8rem;
+    }
+
+    ::-webkit-input-placeholder {
+       font-size: .875rem;
+       color: #141414;
+       font-family: $CamphorMedium;
+       letter-spacing: 1px;
+       font-style: italic;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    :-ms-input-placeholder {
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+  }
+
+  .icon-s {
+    height: 63px;
+    width: 166px;
+    color: #fff;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #181818;
+    flex-direction:row;
+    transition: .5s;
+    border-right: 0px solid #fff !important;
+
+    .icon.icon-photo, .icon.icon-event {
+      font-size: 1.25rem;
+    }
+
+    .icon.icon-movie-clap {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+
+    }
+
+    &.last {
+      border-right: 1px solid #181818 !important;
+
+      .brigth & {
+        border-right: 1px solid #f4f4f4 !important;
+      }
+    }
+
+    .brigth & {
+     color:#141414;
+     border:1px solid #f4f4f4;
+    }
+
+    .text {
+      font-family: $CamphorHeavy;
+      font-size: .5rem;
+      line-height: 18px;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      font-size: 1rem;
+      vertical-align: sub;
+      margin-right: 10px;
+    }
+
+    input {
+      opacity: 0;
+    }
+
+    &.active, .not-mobile &:hover {
+      color : $gold;
+      cursor: pointer;
+    }
+  }
+
+  .tabs-two {
+    label {
+      width: 50%;
+      border-top: 0px solid #fff !important;
+
+      .not-mobile &:hover, &.active {
+
+        i, span, strong {
+          color: $gold;
+        }
+      }
+
+      i, span, strong{
+        color: rgba(20, 20, 20, 0.5);
+        transition: .5s;
+      }
+    }
+  }
+
+  .tab-s .text{
+    font-size: .625rem;
+  }
+
+  .more-search {
+    display: none;
+    border:1px solid #f4f4f4;
+    border-top: 0px solid #000;
+    border-right: 0px solid #000;
+    width: 100%;
+
+    &.active {
+      display: table;
+    }
+
+    td {
+      width: 50%;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding: 60px;
+      height: 100%;
+      border-right:1px solid #f4f4f4;
+    }
+
+    .title-cont {
+      font-size: .625rem;
+      color: rgba(20, 20, 20, 0.5);
+      font-family: $CamphorBold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 18px;
+      padding-bottom: 30px;
+      transition: .5s;
+
+      .icon {
+        float: right;
+        font-size: .5rem;
+      }
+
+      .not-mobile &:hover {
+        color:$gold;
+        cursor: pointer;
+      }
+    }
+
+    .selection {
+      border-bottom:1px solid #f4f4f4;
+      padding-bottom: 5px;
+
+      .icon-arrow-down {
+        float: right;
+        font-size: .4rem;
+        margin-right: 2px;
+        margin-top: 3px;
+      }
+    }
+
+    label {
+      display: block;
+      color: rgba(20, 20, 20, 0.5);
+      font-size: .625rem;
+      font-family: $CamphorBold;
+      text-transform: uppercase;
+      margin-bottom:18px;
+    }
+
+    .sub-tab, .tab-selection{
+      margin-bottom: 30px;
+      max-height: 20px;
+      overflow: hidden;
+
+      &.active{
+        max-height: 10000px;
+
+        .title-cont {
+          color: $gold;
+        }
+      }
+    }
+
+    .country {
+      -webkit-appearance: none;
+      border: 0px solid #fff;
+      border-bottom: 1px solid rgba(20, 20, 20, 0.3);
+      width: 360px;
+      outline: 0;
+      color: rgba(20, 20, 20, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: .625rem;
+    }
+
+
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+      position: absolute;
+      left: -9999px;
+    }
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+      position: relative; /* permet de positionner les pseudo-éléments */
+      padding-left:  29px; /* fait un peu d'espace pour notre case à venir */
+      cursor: pointer;    /* affiche un curseur adapté */
+    }
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+      content: '';
+      position: absolute;
+      left:0; top: -3px;
+      width: 13px; height: 13px; /* dim. de la case */
+      border: 1px solid #e5e5e5;
+      background: #ffffff;
+    }
+    /* Aspect général de la coche */
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+      content: '\2713'; //attention à ce caractère//
+      position: absolute;
+      top: -1px;
+      left: 4px;
+      font-size: 12px;
+      color: $gold;
+      transition: all .2s; /* on prévoit une animation */
+    }
+    /* Aspect si "pas cochée" */
+    [type="checkbox"]:not(:checked) + label:after {
+      opacity: 0; /* coche invisible */
+      transform: scale(0); /* mise à l'échelle à 0 */
+    }
+    /* Aspect si "cochée" */
+    [type="checkbox"]:checked + label:after {
+      opacity: 1; /* coche opaque */
+      transform: scale(1); /* mise à l'échelle 1:1 */
+    }
+  }
+
+  .content-result {
+
+    .block-poster-search {
+      max-width: 218px;
+
+      .contain-img:not(.landscape) img {
+        height: 223px;
+      }
+    }
+
+    .block-poster-search.medias {
+      max-width: none;
+    }
+
+    &.result-more {
+
+      section {
+        flex-wrap: wrap;
+      }
+
+      article{
+        margin-right: 40px;
+        margin-bottom: 26px;
+      }
+    }
+
+    .top-texts {
+      margin-bottom: 25px;
+      margin-top: 25px;
+
+      &.first {
+        margin-top: 0px;
+      }
+    }
+
+    h3 {
+      color:#141414;
+      text-transform: uppercase;
+      line-height: 24px;
+      font-family: $CamphorMedium;
+      font-size: .75rem;
+    }
+
+    .see-all {
+      color:$gold;
+      float: right;
+      font-size: .75rem;
+      font-family: $CamphorMedium;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
+
+    section {
+      display: flex;
+      // justify-content: space-between;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 30px;
+
+      &.last {
+        border-bottom: 0px solid #e7e7e7;
+      }
+    }
+
+    .item {
+      margin-right: 42px;
+
+      &.last {
+        margin-right: 0px;
+      }
+
+
+    }
+    .contain-img{
+      position: relative;
+      margin-bottom: 20px;
+      overflow: hidden;
+
+      .picto {
+        text-align: center;
+        // font-size: .9rem;
+        line-height: 47px;
+      }
+
+      .picto.icon-release-press {
+        background-color: $gold;
+        color: #151515;
+      }
+
+      .read-later {
+        top: 10px;
+        right: 10px;
+      }
+
+      &:hover{
+        .read-later {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &.landscape {
+        height: 133px;
+        width: 213px;
+        background-size: cover;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      &.landscape:hover img {
+        @include transition(all 4s $linear);
+        @include transform(scale(1.08) translateZ(0));
+      }
+    }
+
+    .contain-txts {
+      text-align: center;
+
+      span {
+        display: block;
+      }
+
+      .title-11 {
+        color:#000;
+      }
+
+      .title-13 {
+        color: #999999;
+      }
+
+      .title-date {
+        font-size: .6875rem;
+        color:#999999;
+        letter-spacing: 0px;
+        line-height: 18px;
+        font-family: $CamphorRegular;
+      }
+
+      .title-type {
+        font-size: .75rem;
+        color: #a7a7a7;
+        font-family: $CamphorBold;
+        line-height: 17px;
+        text-transform: uppercase;
+      }
+
+      .title-type-media {
+        color: $gold;
+        font-size: .625rem;
+        font-family: $CamphorBold;
+        text-transform: uppercase;
+        letter-spacing: .75px;
+      }
+
+      .title-dates {
+        color: #666666;
+        font-size: .625rem;
+        font-family: $CamphorMedium;
+        margin-top: 5px;
+      }
+
+      .title-media {
+       color:#141414;
+       font-family: $CamphorMedium;
+       font-size: 1rem;
+       line-height: 22px;
+       width: 197px;
+       display: block;
+       margin: 0 auto;
+       margin-top: 15px;
+      }
+    }
+  }
+
+  .block-searh-more {
+    display: none;
+    margin-bottom: 20px;
+
+    &.visible {
+      display: block;
+    }
+  }
+}
+
+.slider-selection {
+  color:#fff;
+  font-size: 1rem;
+  font-family: $CamphorBold;
+  padding: 30px;
+  border: 1px solid #181818;
+  border-top: 0px solid #fff;
+
+  .brigth & {
+    color:#141414;
+    border:1px solid #f4f4f4;
+    border-top:0px;
+  }
+
+  .number {
+    opacity: .5;
+    display: inline-block;
+    color:#fff;
+
+    .brigth & {
+      opacity: .5;
+      color: #141414;
+    }
+  }
+
+  .container-timelapse{
+    width: 810px;
+    display: inline-block;
+    vertical-align: super;
+    margin: 0px 10px;
+    // margin-right: 0px;
+  }
+
+  .noUi-target {
+    border-radius: 0px;
+    border: 0px solid #D3D3D3;
+    box-shadow: none;
+  }
+
+  .noUi-base {
+    width: 99%;
+  }
+
+  .noUi-horizontal {
+
+    .portrait.mobile &{
+      height: 2px;
+    }
+
+    height: 1px;
+  }
+
+  .noUi-background {
+    background: #252525;
+    box-shadow: none;
+
+    .brigth & {
+      background: #e5e5e5;
+    }
+  }
+
+  .noUi-handle {
+    border: 2px solid $gold;
+    border-radius: 0px;
+    background: #0c0c0c;
+    cursor: default;
+    box-shadow: none;
+
+    .brigth & {
+      background: #fff;
+    }
+  }
+
+  .noUi-connect {
+    background: $gold;
+    box-shadow: none;
+    transition: background 450ms;
+
+    .brigth & {
+      box-shadow: none;
+    }
+  }
+
+  .noUi-horizontal .noUi-handle {
+    width: 10px;
+    height: 10px;
+    left: 0px;
+    top: -5px;
+
+    .mobile &{
+      width: 20px;
+      height: 20px;
+      top: -10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.noUi-handle-lower {
+      width: 10px;
+      height: 10px;
+      left: 0px;
+      top: -5px;
+
+      .mobile &{
+        width: 20px;
+        height: 20px;
+        top: -10px;
+      }
+
+
+    }
+  }
+
+  .noUi-handle:before, .noUi-handle:after {
+    content: "";
+    display: none;
+    position: absolute;
+    height: 14px;
+    width: 1px;
+    background: #E8E7E6;
+    left: 14px;
+    top: 6px;
+  }
+}
