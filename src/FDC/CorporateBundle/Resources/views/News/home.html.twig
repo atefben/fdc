@@ -620,6 +620,21 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
             </div>
             {% endif %}
 
+            <div class="block-01">
+                <div id="social-wall">
+                    <div class="container">
+                        <div id="wall">
+                            {% for i in 0..14 %}
+                                {% include 'FDCEventBundle:News:widgets/post.html.twig' %}
+                            {% endfor %}
+                        </div>
+
+                        {% include 'FDCEventBundle:News:components/socials.html.twig' %}
+
+                    </div>
+                </div>
+            </div>
+
             {% if homepage.displayedPushsSecondary == false %}
             <div class="block-05">
                 <div class="block-01">
@@ -668,6 +683,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                 </div> <!-- end block 01 -->
             </div> <!-- end block 05 -->
             {% endif %}
+
 
         </div> <!-- end content -->
 
