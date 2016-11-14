@@ -44,6 +44,9 @@ class SearchController extends Controller
 
         $searchResults = array('items' => array(), 'count' => 0);
         foreach($filters as $filter) {
+            if($filter == 'artist') {
+                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
+            }
             $results = $this->getSearchResults($_locale, $filter, $data, 50, 1);
             $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
             $searchResults['count'] = $searchResults['count'] + $results['count'];
@@ -55,15 +58,10 @@ class SearchController extends Controller
         ));
     }
 
-    /**
-     * @Route("/search", options={"expose"=true})
-     */
-    public function searchSubmitAction($_locale, Request $request)
-    {
-        $translator = $this->get('translator');
-
-        $professions = array(
-            'search.form.jobs.director' => array(
+    //get linked labels for each profession
+    private function _getProfessionsTab() {
+        return array(
+            'search.form.director' => array(
                 'Réalisa(teur/trice)',
                 'Réalisatrice, Société des Réalisateurs de Films - SRF',
                 'Réalisateur, scénariste',
@@ -82,7 +80,7 @@ class SearchController extends Controller
                 'Auteur, Réalisatrice',
                 'Société des Réalisateurs de Films'
             ),
-            'search.form.jobs.actor' => array(
+            'search.form.actor' => array(
                 'Acteur',
                 'Actrice',
                 'Acteur, Réalisateur, Producteur',
@@ -90,14 +88,14 @@ class SearchController extends Controller
                 'Actrice, Réalisatrice',
                 'Cinéaste, Actrice'
             ),
-            'search.form.jobs.writer' => array(
+            'search.form.writer' => array(
                 'Scénariste',
                 'Scénario / Dialogues',
                 'Réalisateur, Scénariste, Producteur',
                 'Réalisa(teur/trice), Scénariste, Produc(teur/trice)',
                 'Scénariste',
             ),
-            'search.form.jobs.producer' => array(
+            'search.form.producer' => array(
                 'Produc(teur/trice) exécutif',
                 'Co-Produc(teur/trice)',
                 'Acteur, Réalisateur, Producteur',
@@ -112,19 +110,78 @@ class SearchController extends Controller
                 'Producteur',
                 'Producteur, distributeur, exploitant',
             ),
-            'search.form.jobs.distributor' => array(
+            'search.form.distributor' => array(
                 'Distribu(teur/trice)',
                 'Producteur, distributeur, exploitant'
             ),
-            'search.form.jobs.composer' => array(
+            'search.form.composer' => array(
                 'Composi(teur/trice) de musique de films',
                 'Auteur, Compositeur, Interprète'
             ),
-            'search.form.jobs.operator' => array(
+            'search.form.operator' => array(
                 'Chef opérateur',
                 'Chef opérateur / direc(teur/trice) photo'
             )
         );
+    }
+
+    //returns a table with each labels linked to professions in array arg
+    private function _getLinkedProfessions($professions) {
+        $professionsLink = $this->_getProfessionsTab();
+        $professionLabels = array();
+        //for each profession, get every label linked to this profession
+        foreach($professions as $profession) {
+            foreach($professionsLink['search.form.'.$profession] as $label) {
+                $professionLabels[] = $label;
+            }
+        }
+
+        return $professionLabels;
+    }
+
+    //receive form data and returns a table of filters labels
+    private function _getFiltersFromData($data) {
+        $translator = $this->get('translator');
+        $filters = array();
+
+        foreach($data as $key => &$filter) {
+            if(is_bool($filter)) {
+                /** @Ignore */
+                $filters[] = $translator->trans('search.form.'.$key, array(), 'FDCCorporateBundle');
+            } elseif(is_numeric($filter)) {
+                //don't add year-start and year-end
+            } elseif(is_string($filter)) {
+                $filters[] = $filter;
+            } elseif(is_array($filter)) {
+                if($key == 'professions') {
+                    foreach($filter as $f) {
+                        /** @Ignore */
+                        $f = $translator->trans('search.form.'.$f, array(), 'FDCCorporateBundle');
+                        $filters[] = $f;
+                    }
+
+                } else {
+                    foreach($filter as &$f) {
+                        /** @Ignore */
+                        $f = $translator->trans('search.form.'.$f, array(), 'FDCCorporateBundle');
+                        $filters[] = $f;
+                    }
+                }
+
+            }
+        }
+
+        return $filters;
+    }
+
+    /**
+     * @Route("/search", options={"expose"=true})
+     */
+    public function searchSubmitAction($_locale, Request $request)
+    {
+        $translator = $this->get('translator');
+
+        $professions = $this->_getProfessionsTab();
 
         //creating table for checkboxes keys and values
         //array('director' => 'search.form.jobs.director', etc.
@@ -132,56 +189,48 @@ class SearchController extends Controller
         foreach($professions as $label => $profession) {
             $text = explode('.', $label);
             $text = $text[count($text)-1];
-            $professionsCheckBoxes[$label] = $text;
+            $translatedLabel = $translator->trans($label, array(), 'FDCCorporateBundle');
+            $professionsCheckBoxes[$translatedLabel] = $text;
         }
 
 
-
         $prizesCheckboxes = array(
-            $translator->trans('search.form.prize.palmedor', array(), 'FDCCorporateBundle') =>  $translator->trans('search.form.prize.palmedor', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.grandprix', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.grandprix', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.miseenscene', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.miseenscene', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.scenario', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.scenario', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.interpretefeminine', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.interpretefeminine', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.interpretemasculine', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.interpretemasculine', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.jury', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.jury', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.palmedorcourtmetrage', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.palmedorcourtmetrage', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.uncertainregard', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.uncertainregard', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.groupamagan', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.groupamagan', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.cinefondation', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.cinefondation', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.prize.camerador', array(), 'FDCCorporateBundle') => $translator->trans('search.form.prize.camerador', array(), 'FDCCorporateBundle')
+            $translator->trans('search.form.palmedor', array(), 'FDCCorporateBundle') =>  'palmedor',
+            $translator->trans('search.form.grandprix', array(), 'FDCCorporateBundle') => 'grandprix',
+            $translator->trans('search.form.prixmiseenscene', array(), 'FDCCorporateBundle') => 'miseenscene',
+            $translator->trans('search.form.prixscenario', array(), 'FDCCorporateBundle') => 'scenario',
+            $translator->trans('search.form.prixinterpretefeminine', array(), 'FDCCorporateBundle') => 'interpretefeminine',
+            $translator->trans('search.form.prixinterpretemasculine', array(), 'FDCCorporateBundle') => 'interpretemasculine',
+            $translator->trans('search.form.prixjury', array(), 'FDCCorporateBundle') => 'jury',
+            $translator->trans('search.form.palmedorcourtmetrage', array(), 'FDCCorporateBundle') => 'palmedorcourtmetrage',
+            $translator->trans('search.form.prixuncertainregard', array(), 'FDCCorporateBundle') => 'uncertainregard',
+            $translator->trans('search.form.groupamagan', array(), 'FDCCorporateBundle') => 'groupamagan',
+            $translator->trans('search.form.prixcinefondation', array(), 'FDCCorporateBundle') => 'cinefondation',
+            $translator->trans('search.form.camerador', array(), 'FDCCorporateBundle') => 'camerador',
         );
 
         $selectionsCheckboxes = array(
-            $translator->trans('search.form.selection.competition', array(), 'FDCCorporateBundle') =>  $translator->trans('search.form.selection.competition', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.uncertainregard', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.uncertainregard', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.horscompetition', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.horscompetition', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.seancesspeciales', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.seancesspeciales', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.courtmetrage', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.courtmetrage', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.cinefondation', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.cinefondation', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.invitedhonneur', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.invitedhonneur', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.hommages', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.hommages', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.copiesrestaurees', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.copiesrestaurees', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.worldcinemaproject', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.worldcinemaproject', array(), 'FDCCorporateBundle'),
-            $translator->trans('search.form.selection.documentaires', array(), 'FDCCorporateBundle') => $translator->trans('search.form.selection.documentaires', array(), 'FDCCorporateBundle')
+            $translator->trans('search.form.competition', array(), 'FDCCorporateBundle') => 'competition',
+            $translator->trans('search.form.uncertainregard', array(), 'FDCCorporateBundle') => 'uncertainregard',
+            $translator->trans('search.form.horscompetition', array(), 'FDCCorporateBundle') => 'horscompetition',
+            $translator->trans('search.form.seancesspeciales', array(), 'FDCCorporateBundle') => 'seancesspeciales',
+            $translator->trans('search.form.courtmetrage', array(), 'FDCCorporateBundle') => 'courtmetrage',
+            $translator->trans('search.form.cinefondation', array(), 'FDCCorporateBundle') => 'cinefondation',
+            $translator->trans('search.form.invitedhonneur', array(), 'FDCCorporateBundle') => 'invitedhonneur',
+            $translator->trans('search.form.hommages', array(), 'FDCCorporateBundle') => 'hommages',
+            $translator->trans('search.form.copiesrestaurees', array(), 'FDCCorporateBundle') => 'copiesrestaurees',
+            $translator->trans('search.form.worldcinemaproject', array(), 'FDCCorporateBundle') => 'worldcinemaproject',
+            $translator->trans('search.form.documentaires', array(), 'FDCCorporateBundle') => 'documentaires'
         );
 
         $searchForm = $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
-
-        /*$em = $this->get('doctrine')->getManager();
-        $professions = $em->createQueryBuilder()->select('fpt')
-            ->from('BaseCoreBundle:FilmPrizeTranslation', 'fpt')
-            ->where('fpt.locale = :locale')
-            ->setParameter('locale', $_locale)
-            ->distinct()
-            //->setMaxResults(10)
-            ->getQuery()
-            ->getResult();*/
 
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $data = $searchForm->getData();
+
+            $filters = $this->_getFiltersFromData($data);
 
             $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
             $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
@@ -191,7 +240,7 @@ class SearchController extends Controller
             if($data['news']) {
                 $infoStatementsResults = array();
                 $infoStatementsResults['items'] = array_merge($infoResults['items'], $statementResults['items']);
-                $infoStatementsResults['count'] = $infoResults['count'] + $infoResults['count'];
+                $infoStatementsResults['count'] = $infoResults['count'] + $statementResults['count'];
             } else {
                 $infoStatementsResults = false;
             }
@@ -207,19 +256,11 @@ class SearchController extends Controller
                 //$mediaResults = array_merge($mediaResults, $audioResults);
             }
 
-            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
-
             if($data['professions']) {
-                $professionLabels = array();
-                //for each profession checked, add every label linked to this profession
-                foreach($data['professions'] as $profession) {
-                    foreach($professions['search.form.jobs.'.$profession] as $label) {
-                        $professionLabels[] = $label;
-                    }
-                }
-                $data['professions'] = $professionLabels;
+                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
 
+            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
 
             $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
 
@@ -230,11 +271,12 @@ class SearchController extends Controller
                 'info_statement' => $infoStatementsResults,
                 //'media' => $mediaResults,
                 'event' => $eventResults,
+
             );
 
             return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
                 'result' => $result,
-                //'searchTerm' => $data['search'],
+                'filters' => $filters,
                 'form' => $searchForm->createView()
             ));
         } else {

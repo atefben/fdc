@@ -14,14 +14,15 @@ class NewsRepository extends SearchRepository implements SearchRepositoryInterfa
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         if(!empty($searchTerm['search'])) {
             $finalQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getThemeQuery($_locale, $searchTerm['search']))
-                ->addShould($this->getTagsQuery($_locale, $searchTerm['search']));
+                ->addShould($this->getTagsQuery($_locale, $searchTerm['search']))
+                //->addShould($this->getDateQuery($searchTerm['year-start'], $searchTerm['year-end']))
+            ;
         }
 
         $statusQuery = new \Elastica\Query\BoolQuery();
@@ -43,6 +44,16 @@ class NewsRepository extends SearchRepository implements SearchRepositoryInterfa
             'items' => $paginatedResults->getCurrentPageResults(),
             'count' => $paginatedResults->getNbResults()
         );
+    }
+
+    private function getDateQuery($yearStart, $yearEnd) {
+        $filter = new \Elastica\Filter\Range('publishedAt', array(
+            'gte' => strtotime($yearStart),
+            'lte' => strtotime($yearEnd),
+            'format' => 'dd/MM/yyyy'
+        ));
+
+        return new \Elastica\Query\Filtered(null, $filter);
     }
 
 

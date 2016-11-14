@@ -13,42 +13,50 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
-    {
+    { dump($searchTerm);
         $finalQuery = new \Elastica\Query\BoolQuery();
 
+        //string query
         if(!empty($searchTerm['search'])) {
-            $finalQuery
+            $stringQuery = new \Elastica\Query\BoolQuery();
+            $stringQuery
                 ->addShould($this->getFieldsQuery($searchTerm['search']))
                 ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getPersonsQuery($searchTerm['search']))
                 ->addShould($this->getCountryQuery($_locale, $searchTerm['search']))
-                ->addShould($this->getDateQuery($searchTerm['year-start'], $searchTerm['year-end']))
+                //->addShould($this->getDateQuery($searchTerm['year-start'], $searchTerm['year-end']))
             ;
+
+            $finalQuery->addMust($stringQuery);
         }
-        
+
+        //status query
         $statusQuery = new \Elastica\Query\BoolQuery();
-        $statusQuery
-            ->addMust($this->getStatusFilterQuery($_locale))
-            ->addMust($finalQuery)
-            //->addMust($this->getYearQuery($fdcYear))
-        ;
+        $statusQuery->addMust($this->getStatusFilterQuery($_locale));
+        $finalQuery->addMust($statusQuery);
 
-        if(isset($searchTerm['formats'])) {
+        //formats query
+        if(!empty($searchTerm['formats'])) {
+            $formatsQuery = new \Elastica\Query\BoolQuery();
             foreach($searchTerm['formats'] as $format) {
-                $statusQuery->addShould($this->getSelectionQuery($format));
+                $formatsQuery->addShould($this->getSelectionQuery($format));
             }
+            $finalQuery->addMust($formatsQuery);
         }
 
-        if(isset($searchTerm['selections'])) {
+        //selections query
+        if(!empty($searchTerm['selections'])) {
+            $selectionsQuery = new \Elastica\Query\BoolQuery();
             foreach($searchTerm['selections'] as $format) {
-                $statusQuery->addShould($this->getSelectionQuery($format));
+                $selectionsQuery->addShould($this->getSelectionQuery($format));
             }
+            $finalQuery->addMust($selectionsQuery);
         }
 
 
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($statusQuery)
+            ->setQuery($finalQuery)
             ->addSort('_score')
             ->addSort(array('title' => array('order' => 'asc')))
         ;
@@ -57,7 +65,7 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         //dump($yo); exit;
         
         $paginatedResults = $this->getPaginatedResults($sortedQuery, $range, $page);
-        
+
         return array(
           'items' => $paginatedResults->getCurrentPageResults(),
           'count' => $paginatedResults->getNbResults()

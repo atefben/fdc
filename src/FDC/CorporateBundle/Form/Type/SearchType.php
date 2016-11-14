@@ -103,8 +103,8 @@ class SearchType extends AbstractType {
             ))
             ->add('formats', 'choice', array(
                 'choices'  => array(
-                    $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle') => $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle'),
-                    $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle') => $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle')
+                    $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle') => 'longmetrage',
+                    $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle') => 'courtmetrage'
                 ),
                 'choices_as_values' => true,
                 'multiple' => true,
