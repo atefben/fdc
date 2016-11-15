@@ -21977,7 +21977,6 @@ body:not(.tablette) .webtv #live .img {
   max-width: 1152px;
   text-align: center;
   overflow: hidden !important;
-  padding-bottom: 50px;
 }
 
 ul.tabs {
