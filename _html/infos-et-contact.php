@@ -57,7 +57,15 @@
         </div>
       </div>
 
-    <?php include('box-secondary-nav.php'); ?>
+      <div class="floatingButtonLeft">
+          <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+          </div>
+          <a href="partenaires.php">
+            <div class="floatingButtonText showLeft">partenaires</div>
+          </a>
+      </div>
+
     <?php include('box-contact.php'); ?>
     <?php include('box-accreditation.php'); ?>
     <?php include('footer.html'); ?>

@@ -21,13 +21,13 @@
                     <a href="communiques.php" class="active" >Communiqués de presse</a>
                   </li>
                   <li>
-                    <a href="retombées-presse.php">Retombées presse</a>
+                    <a href="retombees-presse.php">Retombées presse</a>
                   </li>
                   <li>
                     <a href="galerie-photos.php">Galerie Photos</a>
                   </li>
                   <li>
-                    <a href="charte-grahique.php">Charte Graphique</a>
+                    <a href="charte-graphique.php">Charte Graphique</a>
                   </li>
                 </ul>
                </nav>
@@ -162,6 +162,23 @@
           </div>
         </div>
     </div>
+
+        <div class="floatingButtonLeft">
+          <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+          </div>
+          <a href="retombees-presse.php">
+            <div class="floatingButtonText showLeft">retombees presse</div>
+          </a>
+      </div>
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="charte-graphique.php">
+            <div class="floatingButtonText showRight">Charte graphique</div>
+          </a>   
+      </div>
 
     <?php include('footer.html'); ?>
 

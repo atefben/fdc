@@ -82,6 +82,10 @@ $(document).ready(function() {
           $(searchBox).removeClass('show');
           $('.' + $(this).attr("rel")).removeClass('hide');
           $('.' + $(this).attr("rel")).addClass('show');
+          $(searchBox).addClass('activeContent');
+          $(searchBox).removeClass('activeContent');
+          $('.' + $(this).attr("rel")).removeClass('activeContent');
+          $('.' + $(this).attr("rel")).addClass('activeContent');
       });
     });
 
@@ -89,6 +93,7 @@ $(document).ready(function() {
           $(searchBox).removeClass('hide');
           $(searchBox).removeClass('show');
     });
+
     $(".resultClick").click(function() {
       $(this).find("h6").addClass("active");
       $(this).find("span").addClass("active");
@@ -161,11 +166,27 @@ hoverSearch();
 
 
 $(window).scroll(function(){
-   if ($(this).scrollTop() > 400) {
+   if ($(this).scrollTop() > 400 && $(this).scrollTop() < 2000) {
         $(".floatingButtonLeft, .floatingButtonRight").addClass("showBtn");
-    } else {
+    }
+    else {
       $(".floatingButtonLeft, .floatingButtonRight").removeClass("showBtn");
     }
+});
+
+$(window).scroll(function(){
+    if ($("body").scrollTop() > $(".contact-box").offset().top) {
+            $(".floatingButtonLeft, .floatingButtonRight").hide();
+    }
+
+});
+
+$('.floatingButtonLeft').hover(function() {
+    $('.showLeft').toggle();
+});
+
+$('.floatingButtonRight').hover(function() {
+    $('.showRight').toggle();
 });
 
 /* TABS */
@@ -260,16 +281,16 @@ $('#accordion-menu .open').each(function() {
   
 $('#accordion-menu .content').hide();
 
-$('#accordion-infos .open').each(function() {
+$('.accordion-infos .open').each(function() {
     
     $(this).click(function(){
       
-      $('#accordion-infos .open').siblings().removeClass('open-selected');
-      $('#accordion-infos .open').removeClass('open-selected');
-      $('#accordion-infos .open').closest('li').removeClass('open-selected');
+      $('.accordion-infos .open').siblings().removeClass('open-selected');
+      $('.accordion-infos .open').removeClass('open-selected');
+      $('.accordion-infos .open').closest('li').removeClass('open-selected');
       $(this).find('.openPlus').toggleClass('noDisplay');
       $(this).find('.openMinus').toggleClass('doDisplay');
-      $('#accordion-infos .content').slideUp('normal');
+      $('.accordion-infos .content').slideUp('normal');
       
       if($(this).next().is(':hidden') == true) {
         $(this).closest('li').addClass('open-selected');
@@ -284,7 +305,7 @@ $('#accordion-infos .open').each(function() {
 
   });
   
-$('#accordion-infos .content').hide();
+$('.accordion-infos .content').hide();
 
 /* EVENT SELECTOR */
 

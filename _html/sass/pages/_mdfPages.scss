@@ -62,12 +62,13 @@
     color: #141414;
     text-transform: initial;
     letter-spacing: 2px;
+    margin:40px 0px 40px 0px!important;
   }
 
   h5 {
     line-height: 40px;
     padding: 0px 100px;
-    margin-bottom: 30px;
+    margin-bottom: 60px!important;
   }
   
   .blackBtn {
@@ -121,11 +122,24 @@
           background: #ec3050;
         }
     }
+  }
+  .communique {
+    border: 0px solid #ECECEC;
+    border-top: 1px solid #ECECEC;
+    border-left: 1px solid #ECECEC;
+    border-right: 1px solid #ECECEC;
 
+    &:last-child {
+      border-top: 1px solid #ECECEC;
+      border-left: 1px solid #ECECEC;
+      border-right: 1px solid #ECECEC;
+      border-bottom: 1px solid #ECECEC;
+    }
   }
 }
 
 /* 4. PAGE COMMUNIQUES DE PRESSE */
+
 
 .presses {
   background: url("/img/goldBackg.png");
@@ -156,13 +170,15 @@
     }
 
     h5 {
+      line-height: 35px;
       font-size: 17px;
+      margin-bottom: 90px !important;
     }
 
     .caption {
       text-align: left;
       font-size: 12px;
-      margin-top: 30px;
+      margin-top: 0px;
       padding: 0px
     }
 
@@ -171,7 +187,7 @@
     }
 
     &:nth-child(2) {
-      padding: 0px 50px 150px;
+      padding: 25px 50px 150px;
     }
 }
 
@@ -186,6 +202,7 @@
     h5 {
       color: #141414;
       padding: 0px 0px;
+      margin-bottom: 20px!important;
     }
 
     h3 {
@@ -207,7 +224,7 @@
       }
     }
     &:nth-child(2) {
-      padding: 0px 50px 50px;
+      padding: 25px 50px 50px;
     }
 }
 
@@ -367,6 +384,16 @@
       .readMore {
           margin-top: 240px;
       }
+
+    .articles-content {
+      span {
+        color: #333!important;
+      }
+
+      .article-date {
+        color: #c3a05f!important;
+      }
+    }
   }
 
   a {
@@ -583,6 +610,7 @@
 
     .textWrapper {
       text-align: left;
+      max-width: 240px;
 
        h6 {
         color: #c3a05f;
@@ -590,14 +618,14 @@
         line-height: 25px;
         text-transform: uppercase;
         font-family: $CamphorHeavy;
-        height: 45px;
+        height: 50px;
         margin-top: 40px;
       } 
 
       span {
         color: #505050;
         font-size: 12px;
-        line-height: 30px;
+        line-height: 25px;
         text-transform: uppercase;
         font-family: $CamphorHeavy;
       }
@@ -605,6 +633,12 @@
       a {
         color: #ec3050;
         text-transform: initial;
+        font-family: $CamphorRegular;
+      }
+
+      .teamTel {
+        color: #505050;
+        font-size: 14px;
         font-family: $CamphorRegular;
       }
     }
@@ -771,6 +805,10 @@
   height:auto; 
   margin: 0 auto; 
   margin-bottom: 60px;
+
+  p {
+    font-family: $CamphorRegular;
+  }
 }
 
 #contactForm .formContainer form input,
@@ -783,7 +821,7 @@
   color:#999999;
   letter-spacing:1px;
   background: #FFF;
-  border:2px solid #dfdfdf;
+  border:1px solid #dfdfdf;
   margin-bottom:15px;
   -webkit-transition:all .1s ease-in-out;
   -moz-transition:all .1s ease-in-out;
@@ -794,7 +832,7 @@
 
 #contactForm .formContainer form input:focus,
 #contactForm .formContainer form textarea:focus {
-  border:2px solid #141414;
+  border:1px solid #141414;
 }
 
 .bigHeight {
@@ -817,6 +855,7 @@ p {
   letter-spacing:1px;
   background:#141414;
   height:50px;
+  border: none;
   text-transform:uppercase;
   letter-spacing:1px;
   color:#FFF;
@@ -909,7 +948,7 @@ p {
 
 .redRequired {
 
-      border: 2px solid #e93939!important;
+      border: 1px solid #e93939!important;
       color: #e93939!important;
   }
 
@@ -924,7 +963,7 @@ p {
     color:#e93939;
     padding: 5px 0px;
     text-align: left;
-    border: 2px solid #e93939;
+    border: 1px solid #e93939;
 
     .redMessage {
       line-height: 30px;
@@ -1217,7 +1256,7 @@ option:checked,
     font-size: 16px;
     opacity: 0.8;
     font-family: $CamphorRegular;
-    line-height: 50px;
+    line-height: 40px;
     padding-right:50px;
     text-align: left;
   }

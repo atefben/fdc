@@ -1,4 +1,4 @@
-<div class="contact-box">
+<div class="contact-box" id="contact-box">
     <div class="contact-details">
         <span class="informations">informations pratiques</span>
         <span class="getTo">Se rendre à Cannes</span>

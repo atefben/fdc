@@ -21,13 +21,13 @@
                     <a href="communiques.php" class="active" >Communiqués de presse</a>
                   </li>
                   <li>
-                    <a href="retombées-presse.php">Retombées presse</a>
+                    <a href="retombees-presse.php">Retombées presse</a>
                   </li>
                   <li>
                     <a href="galerie-photos.php">Galerie Photos</a>
                   </li>
                   <li>
-                    <a href="charte-grahique.php">Charte Graphique</a>
+                    <a href="charte-graphique.php">Charte Graphique</a>
                   </li>
                 </ul>
                </nav>
@@ -38,7 +38,7 @@
           <div class="text-presentation projection presse">
             <h3>Nos communiqués</h3>
             <h5>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte.</h5> 
-              <div class="programme">
+              <div class="programme communique">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
@@ -51,7 +51,7 @@
                   </a>
                 </div>
               </div> 
-              <div class="programme">
+              <div class="programme communique">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
@@ -64,7 +64,7 @@
                   </a>
                 </div>
               </div> 
-              <div class="programme">
+              <div class="programme communique">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
@@ -77,7 +77,7 @@
                   </a>
                 </div>
               </div>
-              <div class="programme">
+              <div class="programme communique">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
@@ -90,7 +90,7 @@
                   </a>
                 </div>
               </div> 
-              <div class="programme">
+              <div class="programme communique">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
@@ -103,7 +103,7 @@
                   </a>
                 </div>
               </div> 
-              <div class="programme">
+              <div class="programme communique">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
@@ -120,6 +120,18 @@
 
       </div><!--CONTAINER-->
     </div>
+      
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="retombees-presse.php">
+            <div class="floatingButtonText showRight">retombées presse</div>
+          </a>   
+      </div>
+
+
+
     <?php include('box-news.php'); ?>
     <?php include('footer.html'); ?>
 

@@ -59,7 +59,7 @@
               <div class="fifth"><i class="icon icon_facebook"></i></div>
               <div class="fifth"><i class="icon icon_twitter"></i></div>
               <div class="fifth"><i class="icon icon_link"></i></div>
-              <div class="fifth"><i class="icon icon_envelope"></i></div>
+              <div class="fifth"><i class="icon icon_lettre"></i></div>
               <div class="fifth"><i class="icon icon_print"></i></div>
               <div class="fullWidth">http://www.marchedufilm.com/fr/actualite/62054.html</div>
             </div>

@@ -60,6 +60,17 @@
 
       </div><!--CONTAINER-->
     </div>
+
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="equipe.php">
+            <div class="floatingButtonText showRight">L'Equipe</div>
+          </a>   
+      </div>
+
+
     <?php include('footer.html'); ?>
 
      <!-- cookie banner -->

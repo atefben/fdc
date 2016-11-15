@@ -86,15 +86,17 @@
                       <img src="img/kevin-montero.png">
                     </div>
                     <div class="textWrapper">
-                      <h6>KEVIN MONTERO deschamps</h6>
-                      <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
+                      <h6>KEVIN MONTERO deschamps Massot Bergeron</h6>
+                      <span>Coordination Asst. NEXT of the industry cinema<br>
+                      <a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span><br>
+                      <span class="teamTel">(0)1 43 58 29 55</span>
                     </div>
                   </div>
                 </div>
                 <div class="articles">
                   <div class="articles-content">
                     <div class="photoWrapper">
-                      <img src="img/julie-bergeron.png">
+                      <img src="img/avatar.png">
                     </div>
                     <div class="textWrapper">
                       <h6>JULIE BERGERON</h6>
@@ -150,7 +152,24 @@
               </div>
           </div><!--CONTAINER-->
         </div>
-    <?php include('box-secondary-nav.php'); ?>
+        
+      <div class="floatingButtonLeft">
+          <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+          </div>
+          <a href="historique.php">
+            <div class="floatingButtonText showLeft">historique</div>
+          </a>
+      </div>
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="infos-utiles.php">
+            <div class="floatingButtonText showRight">infos utiles</div>
+          </a>   
+      </div>
+
     <?php include('footer.html'); ?>
 
      <!-- cookie banner -->

@@ -103,7 +103,7 @@
                       <div class="tabBox speakersBox">
                         <span>entre chien et loup (belgium)</span>
                         <h5>lucius barre & company <span class="fromCountry">(usa)</span></h5>
-                        <p>Diana Elbaum has produced a wide range of award-winning films since becoming a producer in 1989, initially in advertising and then in motion pictures. Her films span all genres and cultures and have received critical acclaim on all continents. She is known for masterfully bringing together international talent and financing. Diana is deeply committed to growing Europe’s film industry and, to this effect, devotes time to EAVE training young film producers. In 2009 she received the Eurimages Award, awarded to producers who play an active role in European co-productions. In 1989, Diana founded her production company, Entre Chien et Loup, which has produced more than 90 films, including: Thomas in Love, The Rashevski Tango, La Raison du Plus Faible, Daratt, Irina Palm, La Marea, Les Barons, Rapt, Winds of Sand, Women of Rock, Quartier Lointain, A Screaming Man, The Congress, Tu veux ou tu veux pas, Brabançonne, Bethlehem, La Marche, Un moment d’égarement, Elle, Nos Femmes, La Tierra Roja, etc. Diana Elbaum is also the co-owner of Liaison Cinématographique, a Paris based production company. In 2009, with Sébastien Delloye, she initiated the EP2C Workshop, a project based workshop mainly designed for producers and dedicated to post-production management. Her work and curiosity have taken her around the world several times, enabling her to enroll cutting-edge writers, directors and talents from all continents: Sam Garbarski, Nabil Ben Yadir, Mahamat-Saleh Haroun, Nathalie Borgers, Nic Balthazar, Ari Folman, Raoul Peck, Diego Martinez Vignatti, Miel Van Hoogenbemt, Peter Brosens and Jessica Woodworth, Solange Cicurel. She is a graduate of NYU.</p>
+                        <p>Diana Elbaum has produced a wide range of award-winning films since becoming a producer in 1989, initially in advertising and then in motion pictures. Her films span all genres and cultures and have received critical acclaim on all continents. She is known for masterfully bringing together international talent and financing. Diana is deeply committed to growing Europe’s film industry and, to this effect, devotes time to EAVE training young film producers. In 2009 she received the Eurimages Award, awarded to producers who play an active role in European co-productions. In 1989, Diana founded her production company, Entre Chien et Loup, which has produced more than 90 films, including: Thomas in Love, The Rashevski Tango, La Raison du Plus Faible, Daratt, Irina Palm, La Marea, Les Barons, Rapt, Winds of Sand, Women of Rock. She is a graduate of NYU.</p>
                       </div>
                     </div>
                 </div>
@@ -112,7 +112,24 @@
             <!-- .tab_container -->
           </div>
         </div>
-    <?php include('box-secondary-nav.php'); ?>
+      
+        <div class="floatingButtonLeft">
+            <div class="arrow showLeft">
+              <i class='icon icon_flecheGauche'></i>
+            </div>
+            <a href="conferences.php">
+              <div class="floatingButtonText showLeft">conférences</div>
+            </a>
+        </div>
+        <div class="floatingButtonRight">
+            <div class="arrow showRight">
+              <i class='icon icon_flecheGauche reverse'></i>
+            </div> 
+            <a href="news.php">
+              <div class="floatingButtonText showRight">news</div>
+            </a>   
+        </div>
+        
     <?php include('box-accreditation.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

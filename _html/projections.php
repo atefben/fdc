@@ -36,8 +36,26 @@
       </div><!--CONTAINER-->
     
     </div>
+
+      <div class="floatingButtonLeft">
+          <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+          </div>
+          <a href="pavillons.php">
+            <div class="floatingButtonText showLeft">pavillons</div>
+          </a>
+      </div>
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="equipements-et-services.php">
+            <div class="floatingButtonText showRight">equipements et services</div>
+          </a>   
+      </div>
+
+
     <?php include('box-projections.php'); ?>
-    <?php include('box-secondary-nav.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>
 

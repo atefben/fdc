@@ -590,7 +590,16 @@
             </div>
           </div>
       </div>
-    <?php include('box-secondary-nav.php'); ?>
+    
+    <div class="floatingButtonRight">
+        <div class="arrow showRight">
+          <i class='icon icon_flecheGauche reverse'></i>
+        </div> 
+        <a href="conferences.php">
+          <div class="floatingButtonText showRight">conférences</div>
+        </div>   
+    </div>
+
     <?php include('box-accreditation.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

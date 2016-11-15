@@ -276,7 +276,8 @@
 #owl-accred, #owl-projections {
 
   height: 600px;
-
+  z-index: 1005;
+  
   .item img {
     display: block;
     width: 100%;

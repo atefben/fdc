@@ -971,7 +971,24 @@
             </div>
           </div>
       </div>
-    <?php include('box-secondary-nav.php'); ?>
+      
+      <div class="floatingButtonLeft">
+          <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+          </div>
+          <a href="conference.php">
+            <div class="floatingButtonText showLeft">conférences</div>
+          </a>
+      </div>
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="intervenants.php">
+            <div class="floatingButtonText showRight">intervenants</div>
+          </a>   
+      </div>
+      
     <?php include('box-accreditation.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

@@ -167,6 +167,16 @@
       </div>
     </div>
 
+
+    <div class="floatingButtonLeft">
+      <div class="arrow showLeft">
+        <i class='icon icon_flecheGauche'></i>
+      </div> 
+      <a href="galerie-photos.php">
+        <div class="floatingButtonText showLeft">Galerie photos</div>
+      </a>   
+    </div>
+
     <?php include('footer.html'); ?>
 
      <!-- cookie banner -->

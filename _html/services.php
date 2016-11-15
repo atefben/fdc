@@ -101,7 +101,7 @@
             </div>
           </div><!--CONTAINER-->
         </div>
-    <?php include('box-secondary-nav.php'); ?>
+
     <?php include('box-news.php'); ?>
     <?php include('box-accreditation.php'); ?>
     <?php include('box-contact.php'); ?>

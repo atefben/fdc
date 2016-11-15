@@ -208,6 +208,10 @@
 
 /* BOX CONTACT */
 
+#contact-box {
+  z-index: 1005!important;
+}
+
 .contact-box {
     width: 100%;
     height: 660px;
@@ -335,6 +339,7 @@
     .arrow {
       opacity: 1;
       visibility: visible;
+      float: right;
       @include transition(all .5s $smoothTransition);
     }
     .icon_flecheGauche {
@@ -349,7 +354,7 @@
       
     }
     
-    &:hover span:first-child {
+    .icon_flecheGauche:hover span:first-child {
       opacity: 1;
       visibility: visible;
       @include transition(all .5s $smoothTransition);
@@ -378,16 +383,25 @@
   z-index: 999;  
   right: 1%; 
   top: 50%;
+  @include transition(all .5s $smoothTransition);
+
   @media screen and (max-width: $mobileWidth) {
     top: 48%;
   }      
-    span:first-child {
+
+    span {
+      float: left;
+    }
+
+    .floatingButtonText{
       background: black;
       padding: 20px 30px;
       color: white;
       text-transform: uppercase;
-      opacity: 0;
-      visibility: hidden;
+      display: none;
+      float: left;
+      max-width: 200px;
+      @include transition(all .5s $smoothTransition);
       @include transition(all .5s $smoothTransition);
       @media screen and (max-width: $mobileWidth) {
         padding: 10px 20px;
@@ -397,6 +411,9 @@
     .arrow {
       opacity: 1;
       visibility: visible;
+      width: 70px;
+      height: 70px;
+      float: right;
       @include transition(all .5s $smoothTransition);
     }
     .icon_flecheGauche {
@@ -409,17 +426,8 @@
       }
     }
     
-    &:hover span:first-child {
-      opacity: 1;
-      visibility: visible;
+    &:hover {
       @include transition(all .5s $smoothTransition);
-    }
-    
-    &:hover .arrow {
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
-
     }
 }
 
@@ -429,18 +437,25 @@
   z-index: 999;  
   left: 1%; 
   top: 50%;
+  @include transition(all .5s $smoothTransition);
 
   @media screen and (max-width: $mobileWidth) {
     top: 48%;
   }  
-    span:nth-child(2) {
+    span {
+      float: left;
+    }
+
+    .floatingButtonText {
       background: black;
       padding: 20px 30px;
       color: white;
+      max-width: 200px;
       text-transform: uppercase;
-      opacity: 0;
-      visibility: hidden;
+      display: none;
+      float: left;
       @include transition(all .5s $smoothTransition);
+
       @media screen and (max-width: $mobileWidth) {
         padding: 10px 20px;
       }
@@ -449,6 +464,9 @@
     .arrow {
       opacity: 1;
       visibility: visible;
+      width: 70px;
+      height: 70px;
+      float: left;
       @include transition(all .5s $smoothTransition);
     }
     .icon_flecheGauche {
@@ -461,18 +479,9 @@
       }
       
     }
-    
-    &:hover span:nth-child(2){
-      opacity: 1;
-      visibility: visible;
-      @include transition(all .5s $smoothTransition);
-    }
-    
-    &:hover .arrow {
-      opacity: 0;
-      visibility: hidden;
-      @include transition(all .5s $smoothTransition);
 
+    &:hover {
+      @include transition(all .5s $smoothTransition);
     }
 }
 

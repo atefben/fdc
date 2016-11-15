@@ -167,7 +167,14 @@
             </div>
           </div>
       </div>
-    <?php include('box-secondary-nav.php'); ?>
+      <div class="floatingButtonRight">
+          <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+          </div> 
+          <a href="pavillons.php">
+            <div class="floatingButtonText showRight">pavillons</div>
+          </a>   
+      </div>
     <?php include('box-news.php'); ?>
     <?php include('box-contact.php'); ?>
     <?php include('footer.html'); ?>

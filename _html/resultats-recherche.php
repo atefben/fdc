@@ -14,8 +14,12 @@
     <div id="main" class="home loading">
         <div class="bigContainer results">
           <div class="resultTitle">
-            <h3>Producers workshop</h3>
-            <span>733 résultats</span>
+            <form action="">
+              <input type="text" name="search" placeholder="Producers workshop">
+              <input class="loupe" type="submit" value="">
+              <span>733 résultats</span>
+
+            </form>      
           </div>
           <div class="innerWrapper container">
               <div class="results-sections">

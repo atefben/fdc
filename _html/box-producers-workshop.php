@@ -10,7 +10,7 @@
             <a href="conferences.php">conférences</a>
           </li>
           <li>
-            <a href="speakers.php">intervenants</a>
+            <a href="intervenants.php">intervenants</a>
           </li>
           <li>
             <a href="news.php">news</a>
@@ -19,7 +19,7 @@
             <a href="partenaires.php">partenaires</a>
           </li>
           <li>
-            <a href="infos.php">infos et contact</a>
+            <a href="infos-et-contact.php">infos et contact</a>
           </li>
         </ul>
        </nav>

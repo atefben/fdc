@@ -49,6 +49,7 @@
   max-width: 1152px;
   text-align: center;
   overflow: hidden!important;
+  padding-bottom: 50px;
 }
 
 ul.tabs {
@@ -200,6 +201,7 @@ ul.tabs {
     margin: 0 auto;
     /* padding-top: 40px; */
     margin-top: 60px;
+    padding-bottom: 50px;
 
    @media screen and(max-width: $mobileWidth) {
         max-width: 980px;
@@ -336,6 +338,10 @@ ul.tabs {
     font-size: 12px!important;
     padding-left: 0px!important;
   }
+  p {
+
+    margin-bottom: 10px!important;
+  }
 }
 
 .speakersPicture {
@@ -397,6 +403,7 @@ ul.tabs {
 
 .read-more-state {
   height: 0px;
+  display: none;
   @include transition(all 0s $smoothTransition);
 }
 
@@ -418,7 +425,7 @@ ul.tabs {
 }
 
 .read-more-state:checked {
-    @include transition(all 2s $smoothTransition); 
+    @include transition(all 2s $smoothTransition);
 }
 
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
@@ -801,6 +808,14 @@ ul.tabs {
   .results-content {
     width: 75%;
     float: left;
+
+    .contents {
+      display: none;
+    }
+
+    .activeContent {
+      display: block;
+    }
   }
 
   .results-boxes {
@@ -829,7 +844,7 @@ ul.tabs {
   }
 }
 
-#accordion-infos {
+.accordion-infos {
   
   p, ul, ol,form, fieldset, input { margin:0; padding:0; }
   ul, ol { list-style:none; }

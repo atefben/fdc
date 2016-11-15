@@ -326,6 +326,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 #owl-accred, #owl-projections {
   height: 600px;
+  z-index: 1005;
 }
 #owl-accred .item img, #owl-projections .item img {
   display: block;
@@ -21569,7 +21570,7 @@ body:not(.tablette) .webtv #live .img {
 
 .accredidationsMessage {
   width: 100%;
-  height: 100px;
+  height: 90px;
   position: absolute;
   z-index: 1000;
   text-align: center;
@@ -21579,7 +21580,7 @@ body:not(.tablette) .webtv #live .img {
 }
 .accredidationsMessage div:first-child {
   width: 90%;
-  height: 100px;
+  height: 90px;
   float: left;
   text-align: center;
   background: #40acab;
@@ -21592,12 +21593,12 @@ body:not(.tablette) .webtv #live .img {
 }
 @media screen and (max-width: 1279px) {
   .accredidationsMessage div:first-child {
-    font-size: 70%;
+    font-size: 72%;
   }
 }
 .accredidationsMessage div:nth-child(2) {
   width: 10%;
-  height: 100px;
+  height: 90px;
   float: left;
   color: white;
   background: #0e5554;
@@ -21617,7 +21618,7 @@ body:not(.tablette) .webtv #live .img {
   color: white;
   text-decoration: none;
   width: 100%;
-  height: 100px;
+  height: 90px;
 }
 
 .pricesContainer {
@@ -21666,7 +21667,7 @@ body:not(.tablette) .webtv #live .img {
 .accreditations .articles .articles-content span {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   line-height: 40px;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 2px;
 }
 .accreditations .articles .articles-content .ht {
@@ -21721,7 +21722,7 @@ body:not(.tablette) .webtv #live .img {
 .upCase {
   color: white !important;
   text-transform: uppercase !important;
-  font-size: 13px !important;
+  font-size: 16px !important;
   letter-spacing: 1px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   line-height: 45px !important;
@@ -21749,25 +21750,26 @@ body:not(.tablette) .webtv #live .img {
   text-align: center;
 }
 .plusPrices .plusPricesdetails h6 {
-  font-size: 60px;
+  font-size: 35px;
   color: white;
   margin-top: 20px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .plusPrices .plusPricesdetails span {
   color: #23ea93;
-  font-size: 22px;
+  font-size: 29px;
   line-height: 30px;
+  letter-spacing: 2px;
   text-transform: none !important;
   font-family: "Playfair Display", Times New Roman, Times, serif;
 }
 .plusPrices .plusColor {
   color: #23ea93;
-  font-size: 59px !important;
+  font-size: 35px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
 .plusPrices .ht {
-  font-size: 25px !important;
+  font-size: 15px !important;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
   color: white !important;
 }
@@ -21781,7 +21783,7 @@ body:not(.tablette) .webtv #live .img {
 .plusPrices .plusPricestext p {
   padding-left: 130px;
   margin-bottom: 25px;
-  font-size: 13px;
+  font-size: 16px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   text-align: left;
   color: white;
@@ -21975,6 +21977,7 @@ body:not(.tablette) .webtv #live .img {
   max-width: 1152px;
   text-align: center;
   overflow: hidden !important;
+  padding-bottom: 50px;
 }
 
 ul.tabs {
@@ -22106,6 +22109,7 @@ ul.tabs .quarterTab h4 {
   margin: 0 auto;
   /* padding-top: 40px; */
   margin-top: 60px;
+  padding-bottom: 50px;
 }
 @media screen and (max-width: 1279px) {
   .tab_container {
@@ -22225,6 +22229,9 @@ ul.tabs .quarterTab h4 {
   font-size: 12px !important;
   padding-left: 0px !important;
 }
+.speakersBox p {
+  margin-bottom: 10px !important;
+}
 
 .speakersPicture {
   width: 15%;
@@ -22285,6 +22292,7 @@ ul.tabs .quarterTab h4 {
 }
 .read-more-state {
   height: 0px;
+  display: none;
   -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -22679,6 +22687,12 @@ ul.tabs .quarterTab h4 {
   width: 75%;
   float: left;
 }
+.box-infosUtiles .results-content .contents {
+  display: none;
+}
+.box-infosUtiles .results-content .activeContent {
+  display: block;
+}
 .box-infosUtiles .results-boxes {
   width: 100%;
   height: 60px;
@@ -22702,26 +22716,26 @@ ul.tabs .quarterTab h4 {
   height: 80px;
 }
 
-#accordion-infos p, #accordion-infos ul, #accordion-infos ol, #accordion-infos form, #accordion-infos fieldset, #accordion-infos input {
+.accordion-infos p, .accordion-infos ul, .accordion-infos ol, .accordion-infos form, .accordion-infos fieldset, .accordion-infos input {
   margin: 0;
   padding: 0;
 }
-#accordion-infos ul, #accordion-infos ol {
+.accordion-infos ul, .accordion-infos ol {
   list-style: none;
 }
-#accordion-infos a {
+.accordion-infos a {
   text-decoration: none;
   color: #ec3050 !important;
   font-size: 14px;
   text-transform: initial;
 }
-#accordion-infos .hide {
+.accordion-infos .hide {
   display: none;
 }
-#accordion-infos .bigLi {
+.accordion-infos .bigLi {
   padding: 30px 15px 20px !important;
 }
-#accordion-infos li {
+.accordion-infos li {
   background: #f8f8f8;
   padding: 30px 15px 5px;
   border-bottom: 3px solid white;
@@ -22731,14 +22745,14 @@ ul.tabs .quarterTab h4 {
   font-size: 16px;
   color: #505050;
 }
-#accordion-infos li:before {
+.accordion-infos li:before {
   content: "";
   position: relative;
   top: 35px;
   left: 0;
   width: 30px;
 }
-#accordion-infos li p {
+.accordion-infos li p {
   text-transform: initial;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   opacity: 0.8;
@@ -22747,7 +22761,7 @@ ul.tabs .quarterTab h4 {
   margin-top: 40px;
   text-align: left;
 }
-#accordion-infos .open {
+.accordion-infos .open {
   cursor: pointer;
   display: block;
   height: 50px;
@@ -22759,16 +22773,16 @@ ul.tabs .quarterTab h4 {
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#accordion-infos .open h5 {
+.accordion-infos .open h5 {
   width: 80%;
   float: left;
 }
-#accordion-infos .open span {
+.accordion-infos .open span {
   width: 0%;
   float: left;
   margin-left: 15%;
 }
-#accordion-infos .openPlus {
+.accordion-infos .openPlus {
   color: #333;
   float: right;
   margin-right: 30px;
@@ -22779,7 +22793,7 @@ ul.tabs .quarterTab h4 {
   -o-transition-delay: 0.4s;
   transition-delay: 0.4s;
 }
-#accordion-infos .openMinus {
+.accordion-infos .openMinus {
   display: none;
   color: #333;
   float: right;
@@ -22791,19 +22805,19 @@ ul.tabs .quarterTab h4 {
   -o-transition-delay: 0.4s;
   transition-delay: 0.4s;
 }
-#accordion-infos .noDisplay {
+.accordion-infos .noDisplay {
   display: none;
 }
-#accordion-infos .doDisplay {
+.accordion-infos .doDisplay {
   display: block;
 }
-#accordion-infos .open-selected {
+.accordion-infos .open-selected {
   -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#accordion-infos .content {
+.accordion-infos .content {
   padding: 0px 10px 35px 15px;
   color: #ffffff;
   text-align: left;
@@ -23111,6 +23125,10 @@ ul.tabs .quarterTab h4 {
 
 /* END BOX PRODUCERS WORKSHOP */
 /* BOX CONTACT */
+#contact-box {
+  z-index: 1005 !important;
+}
+
 .contact-box {
   width: 100%;
   height: 660px;
@@ -23231,6 +23249,7 @@ ul.tabs .quarterTab h4 {
 .floatingButton .arrow {
   opacity: 1;
   visibility: visible;
+  float: right;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -23246,7 +23265,7 @@ ul.tabs .quarterTab h4 {
     padding: 10px;
   }
 }
-.floatingButton:hover span:first-child {
+.floatingButton .icon_flecheGauche:hover span:first-child {
   opacity: 1;
   visibility: visible;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -23277,32 +23296,47 @@ ul.tabs .quarterTab h4 {
   z-index: 999;
   right: 1%;
   top: 50%;
-}
-@media screen and (max-width: 1279px) {
-  .floatingButtonRight {
-    top: 48%;
-  }
-}
-.floatingButtonRight span:first-child {
-  background: black;
-  padding: 20px 30px;
-  color: white;
-  text-transform: uppercase;
-  opacity: 0;
-  visibility: hidden;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 @media screen and (max-width: 1279px) {
-  .floatingButtonRight span:first-child {
+  .floatingButtonRight {
+    top: 48%;
+  }
+}
+.floatingButtonRight span {
+  float: left;
+}
+.floatingButtonRight .floatingButtonText {
+  background: black;
+  padding: 20px 30px;
+  color: white;
+  text-transform: uppercase;
+  display: none;
+  float: left;
+  max-width: 200px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+@media screen and (max-width: 1279px) {
+  .floatingButtonRight .floatingButtonText {
     padding: 10px 20px;
   }
 }
 .floatingButtonRight .arrow {
   opacity: 1;
   visibility: visible;
+  width: 70px;
+  height: 70px;
+  float: right;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -23318,17 +23352,7 @@ ul.tabs .quarterTab h4 {
     padding: 10px;
   }
 }
-.floatingButtonRight:hover span:first-child {
-  opacity: 1;
-  visibility: visible;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.floatingButtonRight:hover .arrow {
-  opacity: 0;
-  visibility: hidden;
+.floatingButtonRight:hover {
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -23341,32 +23365,43 @@ ul.tabs .quarterTab h4 {
   z-index: 999;
   left: 1%;
   top: 50%;
-}
-@media screen and (max-width: 1279px) {
-  .floatingButtonLeft {
-    top: 48%;
-  }
-}
-.floatingButtonLeft span:nth-child(2) {
-  background: black;
-  padding: 20px 30px;
-  color: white;
-  text-transform: uppercase;
-  opacity: 0;
-  visibility: hidden;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 @media screen and (max-width: 1279px) {
-  .floatingButtonLeft span:nth-child(2) {
+  .floatingButtonLeft {
+    top: 48%;
+  }
+}
+.floatingButtonLeft span {
+  float: left;
+}
+.floatingButtonLeft .floatingButtonText {
+  background: black;
+  padding: 20px 30px;
+  color: white;
+  max-width: 200px;
+  text-transform: uppercase;
+  display: none;
+  float: left;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+@media screen and (max-width: 1279px) {
+  .floatingButtonLeft .floatingButtonText {
     padding: 10px 20px;
   }
 }
 .floatingButtonLeft .arrow {
   opacity: 1;
   visibility: visible;
+  width: 70px;
+  height: 70px;
+  float: left;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -23382,17 +23417,7 @@ ul.tabs .quarterTab h4 {
     padding: 10px;
   }
 }
-.floatingButtonLeft:hover span:nth-child(2) {
-  opacity: 1;
-  visibility: visible;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.floatingButtonLeft:hover .arrow {
-  opacity: 0;
-  visibility: hidden;
+.floatingButtonLeft:hover {
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -24112,11 +24137,12 @@ ul.tabs .quarterTab h4 {
   color: #141414;
   text-transform: initial;
   letter-spacing: 2px;
+  margin: 40px 0px 40px 0px !important;
 }
 .projection h5 {
   line-height: 40px;
   padding: 0px 100px;
-  margin-bottom: 30px;
+  margin-bottom: 60px !important;
 }
 .projection .blackBtn {
   padding: 30px 20px 0px;
@@ -24163,6 +24189,18 @@ ul.tabs .quarterTab h4 {
   float: right;
   background: #ec3050;
 }
+.projection .communique {
+  border: 0px solid #ECECEC;
+  border-top: 1px solid #ECECEC;
+  border-left: 1px solid #ECECEC;
+  border-right: 1px solid #ECECEC;
+}
+.projection .communique:last-child {
+  border-top: 1px solid #ECECEC;
+  border-left: 1px solid #ECECEC;
+  border-right: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
+}
 
 /* 4. PAGE COMMUNIQUES DE PRESSE */
 .presses {
@@ -24188,19 +24226,21 @@ ul.tabs .quarterTab h4 {
   margin: 40px 0px 30px 0px;
 }
 .whoarewe h5 {
+  line-height: 35px;
   font-size: 17px;
+  margin-bottom: 90px !important;
 }
 .whoarewe .caption {
   text-align: left;
   font-size: 12px;
-  margin-top: 30px;
+  margin-top: 0px;
   padding: 0px;
 }
 .whoarewe img {
   width: 100%;
 }
 .whoarewe:nth-child(2) {
-  padding: 0px 50px 150px;
+  padding: 25px 50px 150px;
 }
 
 .mainBody {
@@ -24214,6 +24254,7 @@ ul.tabs .quarterTab h4 {
 .mainBody h5 {
   color: #141414;
   padding: 0px 0px;
+  margin-bottom: 20px !important;
 }
 .mainBody h3 {
   margin: 0px 60px;
@@ -24229,7 +24270,7 @@ ul.tabs .quarterTab h4 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .mainBody:nth-child(2) {
-  padding: 0px 50px 50px;
+  padding: 25px 50px 50px;
 }
 
 .mentionsLegales {
@@ -24364,6 +24405,12 @@ ul.tabs .quarterTab h4 {
 }
 .pressReview .articles .readMore {
   margin-top: 240px;
+}
+.pressReview .articles .articles-content span {
+  color: #333 !important;
+}
+.pressReview .articles .articles-content .article-date {
+  color: #c3a05f !important;
 }
 .pressReview a {
   font-size: 12px;
@@ -24546,6 +24593,7 @@ ul.tabs .quarterTab h4 {
 }
 .teamPresentation .innerTeam .textWrapper {
   text-align: left;
+  max-width: 240px;
 }
 .teamPresentation .innerTeam .textWrapper h6 {
   color: #c3a05f;
@@ -24553,19 +24601,24 @@ ul.tabs .quarterTab h4 {
   line-height: 25px;
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  height: 45px;
+  height: 50px;
   margin-top: 40px;
 }
 .teamPresentation .innerTeam .textWrapper span {
   color: #505050;
   font-size: 12px;
-  line-height: 30px;
+  line-height: 25px;
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .teamPresentation .innerTeam .textWrapper a {
   color: #ec3050;
   text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.teamPresentation .innerTeam .textWrapper .teamTel {
+  color: #505050;
+  font-size: 14px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
@@ -24705,6 +24758,9 @@ ul.tabs .quarterTab h4 {
   margin: 0 auto;
   margin-bottom: 60px;
 }
+.formContainer p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
 
 #contactForm .formContainer form input,
 #contactForm .formContainer form textarea {
@@ -24716,7 +24772,7 @@ ul.tabs .quarterTab h4 {
   color: #999999;
   letter-spacing: 1px;
   background: #FFF;
-  border: 2px solid #dfdfdf;
+  border: 1px solid #dfdfdf;
   margin-bottom: 15px;
   -webkit-transition: all .1s ease-in-out;
   -moz-transition: all .1s ease-in-out;
@@ -24727,7 +24783,7 @@ ul.tabs .quarterTab h4 {
 
 #contactForm .formContainer form input:focus,
 #contactForm .formContainer form textarea:focus {
-  border: 2px solid #141414;
+  border: 1px solid #141414;
 }
 
 .bigHeight {
@@ -24750,6 +24806,7 @@ p {
   letter-spacing: 1px;
   background: #141414;
   height: 50px;
+  border: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #FFF;
@@ -24827,7 +24884,7 @@ p {
 }
 
 .redRequired {
-  border: 2px solid #e93939 !important;
+  border: 1px solid #e93939 !important;
   color: #e93939 !important;
 }
 
@@ -24842,7 +24899,7 @@ p {
   color: #e93939;
   padding: 5px 0px;
   text-align: left;
-  border: 2px solid #e93939;
+  border: 1px solid #e93939;
 }
 .errorMessage .redMessage {
   line-height: 30px;
@@ -25105,7 +25162,7 @@ option:checked,
   font-size: 16px;
   opacity: 0.8;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 50px;
+  line-height: 40px;
   padding-right: 50px;
   text-align: left;
 }
@@ -25216,16 +25273,51 @@ option:checked,
   margin-bottom: 50px;
   margin-top: 80px;
 }
-.results .resultTitle h3 {
+.results .resultTitle input[type=text] {
+  color: #141414 !important;
+}
+.results .resultTitle h3, .results .resultTitle input {
   font-size: 36px;
   text-transform: intitial;
   color: #141414;
   width: 340px;
   margin: 0px 0px 0px 0px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
-  border-right: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5 !important;
   padding: 0px 30px 0px 0px;
   line-height: 45px;
+  float: left;
+  margin-top: -35px;
+  border: none;
+  /* FF 4-18 */
+  /* FF 19+ */
+  /* IE 10+ */
+}
+.results .resultTitle h3::-webkit-input-placeholder, .results .resultTitle input::-webkit-input-placeholder {
+  color: #141414 !important;
+}
+.results .resultTitle h3:-moz-placeholder, .results .resultTitle input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #141414 !important;
+}
+.results .resultTitle h3::-moz-placeholder, .results .resultTitle input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #141414 !important;
+}
+.results .resultTitle h3:-ms-input-placeholder, .results .resultTitle input:-ms-input-placeholder {
+  color: #141414 !important;
+}
+.results .resultTitle h3:focus::-webkit-input-placeholder, .results .resultTitle input:focus::-webkit-input-placeholder {
+  color: transparent !important;
+}
+.results .resultTitle h3:focus:-moz-placeholder, .results .resultTitle input:focus:-moz-placeholder {
+  color: transparent !important;
+}
+.results .resultTitle h3:focus::-moz-placeholder, .results .resultTitle input:focus::-moz-placeholder {
+  color: transparent !important;
+}
+.results .resultTitle h3:focus:-ms-input-placeholder, .results .resultTitle input:focus:-ms-input-placeholder {
+  color: transparent !important;
 }
 .results .resultTitle span {
   color: #e5e5e5;
@@ -25233,18 +25325,28 @@ option:checked,
   font-size: 10px;
   border-right: 1px solid #e5e5e5;
   padding-right: 10px;
-  margin-top: -25px;
+  margin-top: -10px;
   float: right;
   width: 10%;
-  margin-right: 60px;
+  margin-right: 25px;
   line-height: 25px;
+  cursor: pointer;
 }
-.results .resultTitle span:after {
+.results .resultTitle .loupe {
+  float: right;
+  width: 10px;
+  background: transparent;
+  border: none !important;
+  background: url(/img/loupegold.png) no-repeat;
+  margin-top: -10px;
+}
+.results .resultTitle .loupe:after {
   content: url(/img/loupegold.png);
   position: relative;
   top: 5px;
   left: 50px;
   width: 30px;
+  cursor: pointer;
 }
 .results .results-sections {
   width: 20%;
