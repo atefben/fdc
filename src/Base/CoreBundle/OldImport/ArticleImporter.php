@@ -121,7 +121,7 @@ class ArticleImporter extends Importer
         $oldArticles = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
-            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'], 1)
+            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'])
         ;
 
         $entitiesArray = array(
@@ -189,18 +189,16 @@ class ArticleImporter extends Importer
             ;
             // has french translation
             $hasFrenchTranslation = $this->hasFrenchTranslation($oldArticleTranslations);
-            if ($hasFrenchTranslation == false) {
+            if (!$hasFrenchTranslation) {
                 continue;
             }
 
             // is valid matching
             $this->output->writeln('<comment>#' . $oldArticle->getId() . ' verify matching.</comment>');
-
             $matching = $this->{$getterMatching}($oldArticle, $oldArticleTranslations);
-            if ($matching == false || $optionCount == true) {
+            if (!$matching|| $optionCount == true) {
                 continue;
             }
-
             $this->output->writeln('<info>#' . $oldArticle->getId() . ' is matching.</info>');
 
             // old news
@@ -217,6 +215,7 @@ class ArticleImporter extends Importer
                 $news = clone $entitiesArray['main'];
                 $this->getManager()->persist($news);
             }
+
 
             if ($news instanceof Info) {
                 $news->setHideSameDay(false);
@@ -752,7 +751,6 @@ class ArticleImporter extends Importer
 
             //if ($totalSaved % 100 == 0) {
             $this->output->writeln('<info>Saved !</info>');
-            dump(str_repeat('-', 100));
             $this->getManager()->flush();
             $this->updateAcl($entities, $entitiesArray['acl_update'], $this->output);
             $entities = array();
@@ -836,6 +834,7 @@ class ArticleImporter extends Importer
                 }
             }
         }
+        return false;
     }
 
     protected function isStatementMatching(OldArticle $oldArticle)

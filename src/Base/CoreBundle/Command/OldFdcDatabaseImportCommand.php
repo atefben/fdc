@@ -70,7 +70,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $onlyMedias = $input->getOption('only-medias');
 
         $articleImporter = $this->getContainer()->get('old_import.article_importer');
-        $newsImporter = $this->getContainer()->get('old_import.news_importer');
 
         $articleImporter
             ->setInput($input)
@@ -80,8 +79,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         if ($onlyArticles) {
             $articleImporter
                 ->importNews()
-                //->importInfos()
-                //->importStatements()
+                ->importInfos()
+                ->importStatements()
             ;
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);

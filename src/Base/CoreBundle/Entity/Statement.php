@@ -48,7 +48,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="Theme")
+     * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
