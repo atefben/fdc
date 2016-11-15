@@ -32,14 +32,12 @@
                  <table class="tab1">
                     <tbody>
                     <tr>
-                        {% for key,sectionFilter in accredit.procedure %}
-                            {% if ( sectionFilter.procedure is not null and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
-                            ( sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
-                            %}
-                                <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
-                                    {{ sectionFilter.procedure|trans_fallback('title') }}
-                                </td>
-                            {% endif %}
+                        {% for sectionFilter in accredit.procedure ( sectionFilter.procedure is not null and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
+                        ( sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
+                        %}
+                            <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                                {{ sectionFilter.procedure|trans_fallback('title') }}
+                            </td>
                         {% if  loop.index % 3 == 0 %}
                     </tr>
                     <tr>
