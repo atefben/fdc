@@ -28,78 +28,79 @@
             <div class="block-tab-switch block-01">
                 <h3 class="title-tab-swich">{{ 'participate.register.procedure'|trans }}</h3>
 
-            {% if accredit.procedure|length > 0 %}
-                 <table class="tab1">
-                    <tbody>
-                    <tr>
-                        {% for key,sectionFilter in accredit.procedure %}
-                            {% if ( sectionFilter.procedure is not null and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
-                            ( sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
-                            %}
-                                <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
-                                    {{ sectionFilter.procedure|trans_fallback('title') }}
-                                </td>
+                {% if accredit.procedure|length > 0 %}
+                    <table class="tab1">
+                        <tbody>
+                        <tr>
+                            {% for sectionFilter in accredit.procedure  if ( sectionFilter.procedure is not null and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
+                            ( sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED')) %}
+
+                            <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                                {{ sectionFilter.procedure|trans_fallback('title') }}
+                            </td>
+                            {% if  loop.index % 3 == 0 %}
+                        </tr>
+                        <tr>
                             {% endif %}
-                        {% if  loop.index % 3 == 0 %}
-                    </tr>
-                    <tr>
-                        {% endif %}
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
             </div>
 
             <div class="border-top">
-            {% for key, section in accredit.procedure %}
-            <div class="block-contain-txt-register-movie" data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
-                {% if section.procedure.displayReglement != true %}
-                <div class="block-01-ms">
-                    <h4>{{ section.procedure|trans_fallback('title') }}</h4>
-                    {{ section.procedure|trans_fallback('procedureContent')|raw }}
-                </div>
-                    <div class="block-s-info border-bottom border-top vFlexAlign">
-                    <strong class="title-25">{{ 'participate.submit.movie'|trans }}</strong>
-                    <p>{{ 'participate.consult.rules'|trans }}</p>
-                    <div class="buttons-02">
-                        <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.procedure.id}) }}" class="button" target="_blank">{{ 'participate.see.rules'|trans }}</a>
-                    </div>
-                </div>
-                {% endif %}
-                {% if section.procedure.displayInscription != true %}
-
-                    {% if section.procedure.mainImage is not null %}
-                        {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
-                        {% if mainTrans is null or mainTrans.file is null %}
-                            {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {% set mainImage = mainTrans.file %}
-                        <div class="block-s-info-02 border-bottom vFlexAlign"
-                             style="background-image:url({% path mainImage, '1280x808' %})">
-                            {{ section.procedure|trans_fallback('inscriptionContent')|raw }}
-                            <div class="buttons-02">
-                                <a href="{{ section.procedure|trans_fallback('btnLink') }}" class="button" target="_blanck">
-                                    {{ section.procedure|trans_fallback('btnLabel') }}
-                                </a>
+                {% for key, section in accredit.procedure %}
+                    <div class="block-contain-txt-register-movie"
+                         data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                        {% if section.procedure.displayReglement != true %}
+                            <div class="block-01-ms">
+                                <h4>{{ section.procedure|trans_fallback('title') }}</h4>
+                                {{ section.procedure|trans_fallback('procedureContent')|raw }}
                             </div>
-                        </div>
-                    {% endif %}
-                {% endif %}
+                            <div class="block-s-info border-bottom border-top vFlexAlign">
+                                <strong class="title-25">{{ 'participate.submit.movie'|trans }}</strong>
+                                <p>{{ 'participate.consult.rules'|trans }}</p>
+                                <div class="buttons-02">
+                                    <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.procedure.id}) }}"
+                                       class="button" target="_blank">{{ 'participate.see.rules'|trans }}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if section.procedure.displayInscription != true %}
 
-                {% if section.procedure.displayContact != true %}
-                <div class="block-contact block-01-ms">
-                    <strong class="title-25">{{ section.procedure|trans_fallback('contactTitle')|raw }}</strong>
-                    <div class="item i-1">
-                        {{ section.procedure|trans_fallback('firstColumnContact')|raw }}
+                            {% if section.procedure.mainImage is not null %}
+                                {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
+                                {% if mainTrans is null or mainTrans.file is null %}
+                                    {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set mainImage = mainTrans.file %}
+                                <div class="block-s-info-02 border-bottom vFlexAlign"
+                                     style="background-image:url({% path mainImage, '1280x808' %})">
+                                    {{ section.procedure|trans_fallback('inscriptionContent')|raw }}
+                                    <div class="buttons-02">
+                                        <a href="{{ section.procedure|trans_fallback('btnLink') }}" class="button"
+                                           target="_blanck">
+                                            {{ section.procedure|trans_fallback('btnLabel') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if section.procedure.displayContact != true %}
+                            <div class="block-contact block-01-ms">
+                                <strong class="title-25">{{ section.procedure|trans_fallback('contactTitle')|raw }}</strong>
+                                <div class="item i-1">
+                                    {{ section.procedure|trans_fallback('firstColumnContact')|raw }}
+                                </div>
+                                <div class="item i-2">
+                                    {{ section.procedure|trans_fallback('secondColumnContact')|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
-                    <div class="item i-2">
-                        {{ section.procedure|trans_fallback('secondColumnContact')|raw }}
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-            <!-- FIN border-top border-bottom-->
+                {% endfor %}
+                <!-- FIN border-top border-bottom-->
             </div>
         </div>
     </section>
