@@ -77,13 +77,19 @@
   .info {
     font-family: $CamphorMedium;
     text-align: center;
-    height: 44px;
+    height: 127px;
+
+    a {
+      font-size: 20px;
+    }
 
     .category {
       color: $gold;
       display: inline-block;
-      font-size: 0.625rem;
-      letter-spacing: 0.1em;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 1.8;
+      letter-spacing: 2px;
       margin-right: 12px;
       text-transform: uppercase;
     }
@@ -91,7 +97,7 @@
     span {
       color: #666;
       display: inline-block;
-      font-size: 0.625rem;
+      font-size: 15px;
     }
 
     strong {
@@ -114,17 +120,30 @@
     padding-left: 0;
     width: 68%;
 
+    .info {
+      font-size: 20px;
+
+      .category , .date, .hour{
+        font-size: 20px;
+      }
+    }
+
     strong {
       font-size: 1.875rem;
       line-height: 1.3em;
-      margin-top: 20px;
-      max-width: 74%;
+      margin-top: 10px;
+      max-width: 84%;
 
       .evenements &, .articles-list &  {
         font-size: 2.25rem;
         font-family: $CamphorThin;
         font-weight: normal;
       }
+
+      a {
+        font-size: 35px;
+      }
+
     }
 
     .image {
@@ -246,7 +265,7 @@
     z-index: 3;
 
     strong {
-      font-size: .875rem;
+      font-size: 20px;
       margin: 0px 0px;
       max-width: 100%;
       font-family: $CamphorMedium;
@@ -259,6 +278,7 @@
 
       a {
         color: #fff;
+        font-size: 20px;
       }
     }
 

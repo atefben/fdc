@@ -3666,8 +3666,8 @@ var owInitSlider = function (sliderName) {
             var textTrunc = $(e).find('.text-trunc p');
             var textI = textTrunc[0].innerText;
 
-            title.html(text.trunc(30, true));
-            textTrunc.html(textI.trunc(400, false));
+            title.html(text.trunc(35, true));
+            textTrunc.html(textI.trunc(120, false));
         });
     }
 
@@ -5139,4 +5139,10 @@ $(document).ready(function () {
     if($('.slider-home').length) {
         owInitSlider('home');
     }
+
+    if($('.filter').length) {
+        owInitFilter();
+    }
+
+
 });

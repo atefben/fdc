@@ -21,4 +21,10 @@ $(document).ready(function () {
     if($('.slider-home').length) {
         owInitSlider('home');
     }
+
+    if($('.filter').length) {
+        owInitFilter();
+    }
+
+
 });
