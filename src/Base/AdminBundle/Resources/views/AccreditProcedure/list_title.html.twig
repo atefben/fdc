@@ -10,8 +10,8 @@
             {{ translationLocale.departementName }}
             {% elseif translationLocale.teamName is defined %}
             {{ translationLocale.teamName }}
-            {% elseif translationLocale.firstname is defined and translationLocale.lastname is defined %}
-                {{ translationLocale.firstname ~ ' ' ~ translationLocale.lastname }}
+            {% elseif translationLocale.firstname is defined %}
+                {{ translationLocale.firstname }}
             {% endif %}
         {% endif %}
     </div>

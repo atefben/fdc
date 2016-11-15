@@ -3094,15 +3094,12 @@ var owInitSliderSelect = function(id) {
     	document.getElementById('slider-snap-value-upper')
     ];
 
-
       ys = $('#s-yearstart').val();
       ye = $('#s-yearend').val();
 
       ys = parseInt(ys);
       ye = parseInt(ye);
-
-      console.log(ys+' , '+ye);
-
+    
     noUiSlider.create(slider, {
     	start: [ys, ye],//todo script
     	connect: true,
@@ -3130,11 +3127,20 @@ var owInitSliderSelect = function(id) {
 
     $tab.on('click', function(){
       var input = $(this).find('input');
+      var classTab = $tab[0].className;
+
+      console.log(classTab);
+
+      //faire deux class différente
+      //verifier la class et en fonction mettre en opacity 0 !
 
       if(input[0].checked){
+
         input[0].checked = false;
         $(this).removeClass('active');
+
       }else{
+
         $('.more-search').addClass('active');
         input[0].checked = true;
         $(this).addClass('active');
@@ -4785,6 +4791,7 @@ $(document).ready(function() {
             var count = Math.min(data.length, 15);
             for (var i = 0; i < count; i++) {
               posts.push({'type': 'instagram', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': data[i].content});
+              console.log(data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true));
               
               if(i == count - 1) {
                 callback();
