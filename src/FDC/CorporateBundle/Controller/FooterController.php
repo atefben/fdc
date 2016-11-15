@@ -173,9 +173,8 @@ class FooterController extends Controller
         //routes from menu
         $routes = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
 
-        // Menu Participer
-        $participatePage    = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
-        $preparePage        = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
+        $participatePage = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
+        $preparePage = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
 
         $participateMenu = array_merge($preparePage, $participatePage);
 
@@ -186,15 +185,22 @@ class FooterController extends Controller
                 if($menu['type'] == 1)
                 $displayedRoutes[] = $menu;
             }
+            if($menu['site'] == FDCEventRoutesInterface::PRESS){
+                $press[] = $menu;
+            }
         }
-
-
         // la selection
         $aboutUs = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
             ->findAll()
         ;
+        $about = array();
+        foreach($aboutUs as $n){
+            if($n->findTranslationByLocale('fr')->getStatus() == 1) {
+                $about[] = $n;
+            }
+        }
 
         //jury
         $jury = $em
@@ -225,12 +231,12 @@ class FooterController extends Controller
 
         return array(
             'events'            => $events,
-            'participate'       => $participateMenu,
+            'participateMenu'   => $participateMenu,
             'footer'            => $displayedFooterElements,
             'press'             => $press,
             'award'             => $award,
             'jury'              => $jury,
-            'aboutUs'          => $aboutUs,
+            'aboutUs'           => $about,
             'routes'            => $displayedRoutes
         );
     }
@@ -249,9 +255,8 @@ class FooterController extends Controller
         $hasErrors = false;
         $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
         $form = $this->createForm(new ContactType($themes, $translator));
-
         if ($request->isMethod('POST')) {
-            $form->submit($request);
+            $form->handleRequest($request);
             $theme = $em->getRepository('BaseCoreBundle:ContactTheme')->findOneById($form->get('select')->getData());
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()

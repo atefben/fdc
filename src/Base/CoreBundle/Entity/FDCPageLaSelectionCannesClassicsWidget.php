@@ -28,7 +28,8 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "video_youtube" = "FDCPageLaSelectionCannesClassicsWidgetVideoYoutube",
  *  "introduction" = "FDCPageLaSelectionCannesClassicsWidgetIntro",
  *  "subtitle" = "FDCPageLaSelectionCannesClassicsWidgetSubtitle",
- *  "movie" = "FDCPageLaSelectionCannesClassicsWidgetMovie"
+ *  "movie" = "FDCPageLaSelectionCannesClassicsWidgetMovie",
+ *  "typeone" = "FDCPageLaSelectionCannesClassicsWidgetTypeone",
  *
  * })
  */
@@ -66,6 +67,20 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
      * @ORM\ManyToOne(targetEntity="CorpoWhoAreWe", inversedBy="widgets")
      */
     protected $corpoWhoAreWe;
+
+    /**
+     * @var FDCPageLaSelectionCannesClassics
+     *
+     * @ORM\ManyToOne(targetEntity="CorpoFestivalHistory", inversedBy="widgets")
+     */
+    protected $corpoFestivalHistory;
+
+    /**
+     * @var FDCPageLaSelectionCannesClassics
+     *
+     * @ORM\ManyToOne(targetEntity="CorpoPalmeOr", inversedBy="widgets")
+     */
+    protected $corpoPalmeOr;
 
     /**
      * Get the class type in the Api
@@ -173,5 +188,51 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
     public function getCorpoWhoAreWe()
     {
         return $this->corpoWhoAreWe;
+    }
+
+    /**
+     * Set corpoFestivalHistory
+     *
+     * @param \Base\CoreBundle\Entity\CorpoFestivalHistory $corpoFestivalHistory
+     * @return FDCPageLaSelectionCannesClassicsWidget
+     */
+    public function setCorpoFestivalHistory(\Base\CoreBundle\Entity\CorpoFestivalHistory $corpoFestivalHistory = null)
+    {
+        $this->corpoFestivalHistory = $corpoFestivalHistory;
+
+        return $this;
+    }
+
+    /**
+     * Get corpoFestivalHistory
+     *
+     * @return \Base\CoreBundle\Entity\CorpoFestivalHistory 
+     */
+    public function getCorpoFestivalHistory()
+    {
+        return $this->corpoFestivalHistory;
+    }
+
+    /**
+     * Set corpoPalmeOr
+     *
+     * @param \Base\CoreBundle\Entity\CorpoPalmeOr $corpoPalmeOr
+     * @return FDCPageLaSelectionCannesClassicsWidget
+     */
+    public function setCorpoPalmeOr(\Base\CoreBundle\Entity\CorpoPalmeOr $corpoPalmeOr = null)
+    {
+        $this->corpoPalmeOr = $corpoPalmeOr;
+
+        return $this;
+    }
+
+    /**
+     * Get corpoPalmeOr
+     *
+     * @return \Base\CoreBundle\Entity\CorpoPalmeOr 
+     */
+    public function getCorpoPalmeOr()
+    {
+        return $this->corpoPalmeOr;
     }
 }

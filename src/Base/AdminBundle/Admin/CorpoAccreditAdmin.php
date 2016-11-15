@@ -90,45 +90,6 @@ class CorpoAccreditAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
-                    'btnLabel' => array(
-                        'label' => 'form.label_btn',
-                        'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                    ),
-                    'btnLink' => array(
-                        'label' => 'form.label_btn_link',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                    ),
-                    'btnText' => array(
-                        'label' => 'form.label_btn_text',
-                        'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                    ),
-                    'firstColumnContact' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_column.first',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press',
-
-                    ),
-                    'secondColumnContact' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_column.second',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
-                    ),
-                    'contactTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',

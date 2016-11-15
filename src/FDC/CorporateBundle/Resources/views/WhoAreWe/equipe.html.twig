@@ -48,7 +48,7 @@
                         {% for departementAssociation in teamAssociation.teams.departement %}
                         <div class="block-01 border-bottom padding-bottom ">
                             <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
-                            <div class="isotope-02">
+                            <div class="container-items">
                                 <div class="grid-sizer"></div>
                                 {% for membersAssociation in departementAssociation.departement.members %}
                                 <div class="item block-poster festival-de-cannes">
@@ -72,7 +72,7 @@
                                             <span class="title-11">{{ membersAssociation.members|trans_fallback('firstname') }}
                                                 <br>{{ membersAssociation.members|trans_fallback('lastname') }}
                                             </span>
-                                            <span class="title-12">{{ membersAssociation.members|trans_fallback('function') }}</span>
+                                            <span class="title-12">{{ membersAssociation.members|trans_fallback('function')|truncate(60) }}</span>
                                         </div>
                                     </a>
                                 </div>
@@ -91,7 +91,7 @@
     {"breadcrumb":
     [
     {
-    "name" : 'breadcrumb.69editions.home'|trans,
+    "name" : 'header.nav.qui'|trans,
     "url"  : path('fdc_corporate_default_home')
     },
     {

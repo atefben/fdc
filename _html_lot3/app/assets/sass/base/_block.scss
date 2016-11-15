@@ -228,7 +228,7 @@
   transition: $smoothTransition .7s;
   position: relative;
 
-  body:not(.who) & {
+  body:not(.who) &, body:not(.edition-69.story-movie) & {
     background-size: 130%;
     background-position: 0px 0px;
   }
@@ -453,7 +453,7 @@
   position: relative;
   background-attachment: inherit;
 
-  .who &{
+  .who &, .edition-69.story-movie &, .palm-gold &{
     background-attachment: fixed;
   }
 
@@ -694,6 +694,7 @@
 .block-movie-preview {
   background: center no-repeat fixed;
   background-size: cover;
+  min-height: 360px;
 
   .bck-hover {
     display: flex;
@@ -701,6 +702,7 @@
     justify-content: center;
     background-color: #141414;
     transition: .5s;
+    min-height: 360px;
 
     .ie & {
       width: 100%;
@@ -756,12 +758,32 @@
     display: flex;
     margin: 0 auto;
 
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 30px auto;
+    height: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+
     .ie & {
-      width: 72%;
+      width: 144%;
     }
 
     .description {
       width: auto;
+    }
+
+    .infos {
+      .ie & {
+        width: 39%;
+      }
     }
   }
 
@@ -835,8 +857,12 @@
     text-transform: uppercase;
     line-height: 18px;
     font-family: $CamphorBold;
-    width: 183px;
+    /*
+    width: 183px; ??
+    */
     text-align: center;
+    display: inline-block;
+    width: 190px;
   }
 
   .name-fb {

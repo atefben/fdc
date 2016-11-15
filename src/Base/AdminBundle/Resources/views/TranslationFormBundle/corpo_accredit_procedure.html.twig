@@ -34,6 +34,41 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Contact
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
+                                    <style>
+                                        #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
+                                            display: none;
+                                        }
+                                    </style>
+                                    {{ form_row(translationsFields.contactTitle) }}
+                                    {{ form_row(translationsFields.firstColumnContact) }}
+                                    {{ form_row(translationsFields.secondColumnContact) }}
+                                    {{ form_row(form.parent.children.displayContact) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Demande d’accréditation
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.btnLabel) }}
+                                    {{ form_row(translationsFields.btnLink) }}
+                                    {{ form_row(translationsFields.btnText) }}
+                                    {{ form_row(form.parent.children.displayAccredit) }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         {% if form.vars.default_locale == locale %}
@@ -72,6 +107,49 @@
                                                 </div>
                                             {% endif %}
                                             </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <h4 class="box-title">
+                                        Demande d’accréditation
+                                    </h4>
+                                    <div>
+                                        <label>
+                                            Libelle du bouton
+                                        </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.btnLabel }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Lien du bouton
+                                        </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.btnLink }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Texte sous le bouton
+                                        </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.btnText }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
                                     </div>
                                 </div>
                             </div>

@@ -12,23 +12,38 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-      
         $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
-            ->addShould($this->getFieldsQuery($searchTerm))
-            ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
-            ->addShould($this->getPersonsQuery($searchTerm))
-            ->addShould($this->getCountryQuery($_locale, $searchTerm))
-        ;
+
+        if(!empty($searchTerm['search'])) {
+            $finalQuery
+                ->addShould($this->getFieldsQuery($searchTerm['search']))
+                ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm['search']))
+                ->addShould($this->getPersonsQuery($searchTerm['search']))
+                ->addShould($this->getCountryQuery($_locale, $searchTerm['search']))
+                ->addShould($this->getDateQuery($searchTerm['year-start'], $searchTerm['year-end']))
+            ;
+        }
         
         $statusQuery = new \Elastica\Query\BoolQuery();
         $statusQuery
             ->addMust($this->getStatusFilterQuery($_locale))
             ->addMust($finalQuery)
-            ->addMust($this->getYearQuery($fdcYear))
+            //->addMust($this->getYearQuery($fdcYear))
         ;
+
+        if(isset($searchTerm['formats'])) {
+            foreach($searchTerm['formats'] as $format) {
+                $statusQuery->addShould($this->getSelectionQuery($format));
+            }
+        }
+
+        if(isset($searchTerm['selections'])) {
+            foreach($searchTerm['selections'] as $format) {
+                $statusQuery->addShould($this->getSelectionQuery($format));
+            }
+        }
 
 
         $sortedQuery = new \Elastica\Query();
@@ -37,6 +52,9 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
             ->addSort('_score')
             ->addSort(array('title' => array('order' => 'asc')))
         ;
+
+        //$yo = $sortedQuery->getQuery()->toArray();
+        //dump($yo); exit;
         
         $paginatedResults = $this->getPaginatedResults($sortedQuery, $range, $page);
         
@@ -45,14 +63,30 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
           'count' => $paginatedResults->getNbResults()
         );
     }
-    
+
+    private function getDateQuery($yearStart, $yearEnd) {
+        $filter = new \Elastica\Filter\Range('publishedAt', array(
+            'gte' => strtotime($yearStart),
+            'lte' => strtotime($yearEnd),
+            'format' => 'dd/MM/yyyy'
+        ));
+
+        return new \Elastica\Query\Filtered(null, $filter);
+    }
     
     private function getCountryQuery($_locale, $searchTerm)
     {
         $path = 'countries.country.translations';
         $fields = array('name');
-        
+
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+    }
+
+    private function getSelectionQuery($searchTerm)
+    {
+        $fields = array('selectionSection');
+
+        return $this->getFieldsKeywordQuery($fields, $searchTerm);
     }
     
     private function getFieldsQuery($searchTerm)

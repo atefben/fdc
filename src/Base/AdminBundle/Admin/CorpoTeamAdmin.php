@@ -170,6 +170,7 @@ class CorpoTeamAdmin extends Admin
                    'edit' => 'inline',
                    'inline' => 'table',
                    'sortable'  => 'position',
+                   'btn_delete' => false
                )
             )
             ->add('seoFile', 'sonata_media_type', array(

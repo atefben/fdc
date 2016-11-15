@@ -10,6 +10,8 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_corpo_palme_or_list : Listes des pages Palme d'or
+    link_corpo_festival_history_list: L'histoire du festival
     link_corpo_mediatheque_list: Médiathèque
     link_corpo_team_teams_list: Les équipes
     link_corpo_team_departements_list: Les départements
@@ -179,6 +181,8 @@ group:
     mobile_notificaton:
         publish: Publication
 entity:
+    corpo_festival_history: L'histoire du festival
+    corpo_palme_or: La palme d'or
     corpo_mediatheque: Médiathèque
     corpo_team_departements: Départements
     corpo_team: L'équipe
@@ -568,6 +572,10 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    label_display_accredit: Désactiver cette strate
+    label_display_reglement: Désactiver cette strate
+    label_display_inscription: Désactiver cette strate
+    label_display_contact: Désactiver cette strate
     label_level2: niveau d'arborescence 2
     label_level3: niveau d'arborescence 3
     label_evenmnt: Site évènementiel

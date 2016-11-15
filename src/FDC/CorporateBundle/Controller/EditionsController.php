@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\CorpoPalmeOr;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -9,12 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 
 /**
- * @Route("/69-editions/retrospective")
+ * @Route("/69-editions")
  */
 class EditionsController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/retrospective/")
      * @Template("FDCCorporateBundle:Retrospective:years_slider.html.twig")
      */
     public function retrospectiveAction()
@@ -25,7 +26,7 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/menu")
+     * @Route("/retrospective/menu")
      * @Template("FDCCorporateBundle:Retrospective:components/menu.html.twig")
      * @return array
      */
@@ -64,7 +65,7 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/{year}/", requirements={"year" = "\d+"})
+     * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
      */
     public function yearAction(Request $request, $year)
     {
@@ -94,7 +95,7 @@ class EditionsController extends Controller
 
 
     /**
-     * @Route("/{year}/affiche", requirements={"year" = "\d+"})
+     * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
      * @Template("FDCCorporateBundle:Retrospective:affiche.html.twig")
      * @param Request $request
      * @param $year
@@ -117,4 +118,83 @@ class EditionsController extends Controller
 
         return array('posters' => $posters, 'festival' => $festival, 'festivals' => $festivals, 'urlshare' => $results['data']['url']);
     }
+
+    /**
+     * @Route("/history")
+     * @Template("FDCCorporateBundle:Retrospective:history.html.twig")
+     * @return array
+     */
+    public function historyAction(Request $request) {
+        $em = $this->get('doctrine')->getManager();
+
+        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(1);
+        if($page->findTranslationByLocale('fr')->getStatus() == 1) {
+            return array(
+                'currentPage' => $page,
+            );
+        } else {
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
+    }
+
+    /**
+     * @Route("/archives")
+     * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
+     * @return array
+     */
+    public function archivesAction(Request $request) {
+        $em = $this->get('doctrine')->getManager();
+
+        $page = $em->getRepository('BaseCoreBundle:CorpoPalmeOr')->find(3);
+        if($page->findTranslationByLocale('fr')->getStatus() == 1) {
+            return array(
+                'currentPage' => $page,
+                'archives'    => true
+            );
+        } else {
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
+    }
+
+    /**
+     * @Route("/palme/{slug}")
+     * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
+     * @return array
+     */
+    public function PalmeAction(Request $request, $slug = null) {
+        $locale = $request->getLocale();
+
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoPalmeOr')
+            ->getAllPagesByLocale($locale)
+        ;
+        if ($slug === null) {
+            foreach ($pages as $page) {
+                if ($page instanceof CorpoPalmeOr) {
+                    if ($page->findTranslationByLocale($locale)) {
+                        $slug = $page->findTranslationByLocale($locale)->getSlug();
+                    }
+                    if ($slug) {
+                        return $this->redirectToRoute('fdc_corporate_editions_palme', array('slug' => $slug));
+                    }
+                }
+            }
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoPalmeOr')
+            ->getPageBySlug($locale, $slug)
+        ;
+
+        return array(
+            'pages' => $pages,
+            'currentPage' => $page
+        );
+    }
+
 }
