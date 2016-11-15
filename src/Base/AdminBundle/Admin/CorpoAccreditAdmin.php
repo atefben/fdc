@@ -115,7 +115,24 @@ class CorpoAccreditAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
 
-                    )
+                    ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnLink' => array(
+                        'label' => 'form.label_btn_link',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnText' => array(
+                        'label' => 'form.label_btn_text',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
                 )
             ))
             ->add('hideCommonContent')
@@ -128,6 +145,7 @@ class CorpoAccreditAdmin extends Admin
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label' => 'Image cover'
             ))
+
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(
