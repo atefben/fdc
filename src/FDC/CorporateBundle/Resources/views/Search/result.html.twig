@@ -8,19 +8,7 @@
 <section class="brigth search-page-result search-page" id="main">
     <div>
 
-        <div class="c-filters">
-            <div class="filters-02">
-                <div class="block-01 container">
-                    <ul>
-                        {% for filter in filters %}
-                            <li>{{ filter }}  <i class="icon icon-close"></i></li>
-                        {% endfor %}
-                        <!--li class="more" data-url="ajax-result-more-filter.html">...</li-->
-                    </ul>
-                </div>
-                <a href="#" class="submit result-more">Filtrer les résultats</a>
-            </div>
-        </div>
+        {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
 
         <div class="block-search block-01">
 
@@ -141,9 +129,9 @@
                     {% include 'FDCCorporateBundle:Search:film.html.twig' with {'result': result} %}
                 {% endif %}
 
-                {# if result.media %}
+                {% if result.media %}
                     {% include 'FDCCorporateBundle:Search:media.html.twig' with {'result': result} %}
-                {% endif #}
+                {% endif %}
 
                 {% if result.news %}
                     {% include 'FDCCorporateBundle:Search:news.html.twig' with {'result': result} %}
@@ -157,7 +145,7 @@
                     {% include 'FDCCorporateBundle:Search:event.html.twig' with {'result': result} %}
                 {% endif %}
 
-                <div class="top-texts">
+                <!--div class="top-texts">
                     <a href="search-result-more.html" class="see-all">Tout voir</a>
                     <h3>Autres résultats - 6 résultats</h3>
                 </div>
@@ -215,7 +203,7 @@
                         </div>
                     </article>
                 </section>
-            </div>
+            </div-->
 
             <div class="block-push-03">
                 <div class="half-div block-push block-push-item">
