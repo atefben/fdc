@@ -53,6 +53,15 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
             $finalQuery->addMust($selectionsQuery);
         }
 
+        //prizes query
+        if(!empty($searchTerm['prizes'])) {
+            $selectionsQuery = new \Elastica\Query\BoolQuery();
+            foreach($searchTerm['prizes'] as $format) {
+                $selectionsQuery->addShould($this->getSelectionQuery($format));
+            }
+            $finalQuery->addMust($selectionsQuery);
+        }
+
 
         $sortedQuery = new \Elastica\Query();
         $sortedQuery

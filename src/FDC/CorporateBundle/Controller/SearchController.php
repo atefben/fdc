@@ -39,22 +39,26 @@ class SearchController extends Controller
     public function searchFilterAction($_locale, $searchFilter, Request $request)
     {
         $data = $request->query->all();
+        $filters = $this->_getFiltersFromData($data);
 
-        $filters = explode('_', $searchFilter);
+        $searchFilter = $searchFilter!='media'?:'photos_videos_audios';
+        $items = explode('_', $searchFilter);
+        $searchFilter = 'media'; //back to "media" for the url
 
         $searchResults = array('items' => array(), 'count' => 0);
-        foreach($filters as $filter) {
-            if($filter == 'artist') {
+        foreach($items as $item) {
+            if($item == 'artist') {
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
-            $results = $this->getSearchResults($_locale, $filter, $data, 50, 1);
+            $results = $this->getSearchResults($_locale, $item, $data, 50, 1);
+            
             $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
             $searchResults['count'] = $searchResults['count'] + $results['count'];
         }
 
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
-            'result' => array($searchFilter => $searchResults)
-            //'searchFilters' => $this->getSearchFilters($searchFilter, $searchResults['items']),
+            'result' => array($searchFilter => $searchResults),
+            'filters' => $filters
         ));
     }
 
@@ -145,12 +149,12 @@ class SearchController extends Controller
         $filters = array();
 
         foreach($data as $key => &$filter) {
-            if(is_bool($filter)) {
+            if(is_bool($filter) && $filter) {
                 /** @Ignore */
                 $filters[] = $translator->trans('search.form.'.$key, array(), 'FDCCorporateBundle');
             } elseif(is_numeric($filter)) {
                 //don't add year-start and year-end
-            } elseif(is_string($filter)) {
+            } elseif(is_string($filter) && !empty($filter)) {
                 $filters[] = $filter;
             } elseif(is_array($filter)) {
                 if($key == 'professions') {
@@ -174,13 +178,8 @@ class SearchController extends Controller
         return $filters;
     }
 
-    /**
-     * @Route("/search", options={"expose"=true})
-     */
-    public function searchSubmitAction($_locale, Request $request)
-    {
+    private function _getFormFilters() {
         $translator = $this->get('translator');
-
         $professions = $this->_getProfessionsTab();
 
         //creating table for checkboxes keys and values
@@ -223,8 +222,15 @@ class SearchController extends Controller
             $translator->trans('search.form.documentaires', array(), 'FDCCorporateBundle') => 'documentaires'
         );
 
-        $searchForm = $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
+        return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
+    }
 
+    /**
+     * @Route("/search", options={"expose"=true})
+     */
+    public function searchSubmitAction($_locale, Request $request)
+    {
+        $searchForm = $this->_getFormFilters();
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
@@ -246,14 +252,28 @@ class SearchController extends Controller
             }
 
             if($data['photos'] || $data['videos'] || $data['audios']) {
-                //$mediaResults = $data['photos'] ? $this->getSearchResults($_locale, 'media', $data, 2) : false;
-                //$photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photo', $data, 2) : false;
-                //$videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'video', $data, 2) : false;
-                //$audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audio', $data, 2) : false;
+                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, 2) : false;
+                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, 2) : false;
+                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, 2) : false;
 
                 //merging medias (photos,videos,audios)
-                //$mediaResults = array_merge($photoResults, $videoResults);
-                //$mediaResults = array_merge($mediaResults, $audioResults);
+                $mediaResults = array('items' => array(), 'count' => 0);
+
+                //photos
+                $mediaResults['items'] = is_array($photoResults)?array_merge($mediaResults['items'], $photoResults['items']):$mediaResults['items'];
+                $mediaResults['count'] = is_array($photoResults)?$mediaResults['count']+$photoResults['count']:$mediaResults['count'];
+
+                //videos
+                $mediaResults['items'] = is_array($videoResults)?array_merge($mediaResults['items'], $videoResults['items']):$mediaResults['items'];
+                $mediaResults['count'] = is_array($videoResults)?$mediaResults['count']+$videoResults['count']:$mediaResults['count'];
+
+                //audios
+                $mediaResults['items'] = is_array($audioResults)?array_merge($mediaResults['items'], $audioResults['items']):$mediaResults['items'];
+                $mediaResults['count'] = is_array($audioResults)?$mediaResults['count']+$audioResults['count']:$mediaResults['count'];
+
+
+            } else {
+                $mediaResults = false;
             }
 
             if($data['professions']) {
@@ -269,7 +289,7 @@ class SearchController extends Controller
                 'artist' => $artistResults,
                 'film' => $filmResults,
                 'info_statement' => $infoStatementsResults,
-                //'media' => $mediaResults,
+                'media' => $mediaResults,
                 'event' => $eventResults,
 
             );

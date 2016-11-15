@@ -7,19 +7,8 @@
 
 <section class="brigth search-page-result" id="main">
     <div>
-        <div class="filters-02">
-            <div class="block-01 container">
-                <ul>
-                    <li>Vincent cassel <i class="icon icon-close"></i></li>
-                    <li>Réalisateur <i class="icon icon-close"></i></li>
-                    <li>prix de l’interprétation masculine <i class="icon icon-close"></i></li>
-                    <li>évènements <i class="icon icon-close"></i></li>
-                    <li class="more">...</li>
 
-                </ul>
-            </div>
-            <a href="#" class="submit">Filtrer les résultats</a>
-        </div>
+        {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
 
         <div class="block-search block-01">
             <div class="content-result result-more">
