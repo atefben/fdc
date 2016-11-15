@@ -97,7 +97,7 @@ trait TranslateChild
     }
 
     /**
-     * @param $isPublishedOnFDCEvent
+     * @param bool $isPublishedOnFDCEvent
      * @return $this
      */
     public function setisPublishedOnFDCEvent($isPublishedOnFDCEvent)

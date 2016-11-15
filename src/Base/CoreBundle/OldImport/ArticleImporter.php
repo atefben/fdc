@@ -5,6 +5,7 @@ namespace Base\CoreBundle\OldImport;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
+use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
@@ -50,8 +51,6 @@ class ArticleImporter extends Importer
     public function importStatements()
     {
         $this->output->writeln('<info>Import Statements...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60596);
-        $oldArticles[0] = $element;*/
 
         $oldArticles = $this->getManager()->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_COMMUNIQUE,
@@ -85,8 +84,6 @@ class ArticleImporter extends Importer
     public function importInfos()
     {
         $this->output->writeln('<info>Import infos...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56075);
-        $oldArticles[0] = $element;*/
 
         $oldArticles = $this->getManager()->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_NEWS_FESTIVAL,
@@ -124,7 +121,7 @@ class ArticleImporter extends Importer
         $oldArticles = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
-            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'])
+            ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'], 1)
         ;
 
         $entitiesArray = array(
@@ -219,6 +216,10 @@ class ArticleImporter extends Importer
             if ($news == null) {
                 $news = clone $entitiesArray['main'];
                 $this->getManager()->persist($news);
+            }
+
+            if ($news instanceof Info) {
+                $news->setHideSameDay(false);
             }
             $news->setOldNewsTable('OldNews');
             $news->setOldNewsId($oldArticle->getId());
@@ -351,7 +352,7 @@ class ArticleImporter extends Importer
                                 }
                             }
 
-                            if ($widgetText) {
+                            if (isset($widgetText) && $widgetText) {
                                 $widgetTextTranslation = clone $entitiesArray['widget_text_trans'];
                                 if ($widgetText->findTranslationByLocale($culture) != null) {
                                     $widgetTextTranslation = $widgetText->findTranslationByLocale($culture);
@@ -451,35 +452,39 @@ class ArticleImporter extends Importer
                                     'culture' => $oldArticleTranslation->getCulture(),
                                 ))
                                 ;
-                                if (!$imgTrans) {
-                                    $imgTrans = new MediaImageTranslation();
-                                    $img->addTranslation($imgTrans);
-                                }
-                                if ($culture == 'fr') {
-                                    $imgTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
-                                } else {
-                                    $imgTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
-                                }
-                                if ($saved == true) {
-                                    $imgTrans->setFile($media);
-                                }
-                                $imgTrans->setTranslatable($img);
-                                $imgTitle = array(
-                                    'fr' => 'photo',
-                                    'en' => 'photo',
-                                    'es' => 'foto',
-                                    'zh' => '照片',
-                                );
-                                $imgTrans->setLegend(($oldMediaTrans->getLabel() != null) ? $oldMediaTrans->getLabel() : $imgTitle[$culture]);
-                                $imgTrans->setCopyright($oldMediaTrans->getCopyright());
-                                $imgTrans->setLocale($culture);
-                                $imgTrans->setisPublishedOnFDCEvent(1);
-                                if ($gallery->getMedias()->count() != count($oldArticleAssociations)) {
-                                    $galleryMedia = new GalleryMedia();
-                                    $galleryMedia->setGallery($gallery);
-                                    $galleryMedia->setMedia($img);
-                                    $galleryMedia->setPosition($associationKey + 1);
-                                    $gallery->addMedia($galleryMedia);
+
+                                if ($oldMediaTrans) {
+
+                                    if (!$imgTrans) {
+                                        $imgTrans = new MediaImageTranslation();
+                                        $img->addTranslation($imgTrans);
+                                    }
+                                    if ($culture == 'fr') {
+                                        $imgTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                                    } else {
+                                        $imgTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                                    }
+                                    if ($saved == true) {
+                                        $imgTrans->setFile($media);
+                                    }
+                                    $imgTrans->setTranslatable($img);
+                                    $imgTitle = array(
+                                        'fr' => 'photo',
+                                        'en' => 'photo',
+                                        'es' => 'foto',
+                                        'zh' => '照片',
+                                    );
+                                    $imgTrans->setLegend(($oldMediaTrans->getLabel() != null) ? $oldMediaTrans->getLabel() : $imgTitle[$culture]);
+                                    $imgTrans->setCopyright($oldMediaTrans->getCopyright());
+                                    $imgTrans->setLocale($culture);
+                                    $imgTrans->setisPublishedOnFDCEvent(1);
+                                    if ($gallery->getMedias()->count() != count($oldArticleAssociations)) {
+                                        $galleryMedia = new GalleryMedia();
+                                        $galleryMedia->setGallery($gallery);
+                                        $galleryMedia->setMedia($img);
+                                        $galleryMedia->setPosition($associationKey + 1);
+                                        $gallery->addMedia($galleryMedia);
+                                    }
                                 }
                             }
                             if ($widget->getId() == null) {
@@ -500,7 +505,7 @@ class ArticleImporter extends Importer
                                 $widget = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_audio']);
                                 $widget->setPosition($widgetCount);
 
-                                if ($widget->getFile() != null) {
+                                if (method_exists($widget, 'getFile')  && $widget->getFile() != null) {
                                     $audio = $widget->getFile();
                                 } else {
                                     $audio = new MediaAudio();
@@ -746,11 +751,11 @@ class ArticleImporter extends Importer
             $totalSaved++;
 
             //if ($totalSaved % 100 == 0) {
-                $this->output->writeln('<info>Saved !</info>');
-                dump(str_repeat('-', 100));
-                $this->getManager()->flush();
-                $this->updateAcl($entities, $entitiesArray['acl_update'], $this->output);
-                $entities = array();
+            $this->output->writeln('<info>Saved !</info>');
+            dump(str_repeat('-', 100));
+            $this->getManager()->flush();
+            $this->updateAcl($entities, $entitiesArray['acl_update'], $this->output);
+            $entities = array();
             //}
         }
 
