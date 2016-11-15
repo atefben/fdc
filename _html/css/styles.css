@@ -22946,6 +22946,8 @@ ul.tabs .quarterTab h4 {
   vertical-align: middle;
   padding-top: 5%;
   width: 100%;
+  position: relative;
+  z-index: 1005;
 }
 @media screen and (max-width: 1279px) {
   .our-news .innerWrapper {
@@ -23129,6 +23131,7 @@ ul.tabs .quarterTab h4 {
 }
 
 .contact-box {
+  position: relative;
   width: 100%;
   height: 660px;
   background: url("/img/plage-cannes.png");
@@ -24309,18 +24312,29 @@ ul.tabs .quarterTab h4 {
   background-repeat: no-repeat;
 }
 .erreur404 h5, .erreur404 h6, .erreur404 h3, .erreur404 h4, .erreur404 a {
-  color: white;
+  color: #ffffff;
   letter-spacing: 1px;
   text-decoration: none;
   text-transform: initial;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.erreur404 h3 {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 48px;
 }
 .erreur404 h5 {
   font-size: 18px !important;
+  opacity: 0.8;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .erreur404 h4 {
   font-size: 12px;
   letter-spacing: 2px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.erreur404 a {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  font-size: 12px;
 }
 .erreur404 .icon_flecheGauche {
   color: #c8a461;

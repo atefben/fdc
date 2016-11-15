@@ -270,20 +270,34 @@
       background-repeat: no-repeat;
 
       h5, h6, h3, h4, a {
-        color: white;
+        color: #ffffff;
         letter-spacing: 1px;
         text-decoration: none;
         text-transform: initial;
-        font-family: $CamphorRegular;
+      }
+
+      h3 {
+        font-family: $Playfair;
+        font-size: 48px;
       }
 
       h5 {
         font-size: 18px!important;
+        opacity: 0.8;
+        font-family: $CamphorRegular;
+        
       }
 
       h4 {
         font-size: 12px;
         letter-spacing: 2px;
+        font-family: $CamphorRegular;
+      }
+
+      a {
+        font-family: $CamphorHeavy;
+        letter-spacing: 2px;
+        font-size: 12px;
       }
 
       .icon_flecheGauche {
