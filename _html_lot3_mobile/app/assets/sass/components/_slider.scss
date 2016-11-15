@@ -38,7 +38,7 @@
 
   .owl-dots {
     position: absolute;
-    bottom: 96px;
+    bottom: 70px;
     width: 100%;
     text-align: center;
   }
@@ -108,9 +108,19 @@
     }
 
     .title-4a {
-      width: 310px;
       margin-bottom: 16px;
+      width: 427px;
       color:#141414;
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .title-2a {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.8;
+      letter-spacing: 2px;
     }
 
     p {
@@ -119,8 +129,8 @@
       color: #838383;
       margin-top: 29px;
       padding-bottom: 72px;
-      font-size:.875rem;
-      line-height: 24px;
+      font-size: 20px;
+      line-height: 36px;
       font-family: $CamphorMedium;
 
       a {

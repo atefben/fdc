@@ -1,255 +1,209 @@
-//       SUMMARY TABLE
-// =========================
-// 1. Global
-// =========================
-
-
-// 1. Global
-// =========================
-.filters {
+/*FILTERS*/
+.filters{
+  width: 110%;
+  margin-left: -30px;
+  padding-bottom: 75px;
   text-align: center;
-  padding-bottom: 24px;
-
-  .icon{
-    font-size: .4rem;
-    vertical-align: baseline;
-  }
-
-  div {
-    display: inline-block;
-    font-family: $CamphorHeavy;
-    font-size: 0.625rem;
-    margin-right: 40px;
-    text-transform: uppercase;
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-    .label {
-      color: #141414;
-      margin-right: 15px;
-      letter-spacing: 0.1em;
-    }
-
-    .select {
-      color: $gold;
-      cursor: pointer;
-      @include transition(opacity .9s $smoothTransition);
-
-      &:hover {
-        opacity: 0.5;
-      }
-
-      span {
-        display: none;
-        padding-right: 10px;
-
-        &.active {
-          display: inline-block;
-        }
-      }
-    }
-  }
+}
+.filters div,.filters-slider .filter, .filters-slider .select {
+  display: inline-block;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.filters .filter{
+  margin:0 20px;
 }
 
-#filters {
-  background-color: rgba(0, 0, 0, 0.9);
+.filters div .label, .filters-slider .filter .label {
+  color: #333;
+  margin-right: 5px;
+  letter-spacing: 0.1em;
+}
+.filters div .select, .filters-slider .filter .select{
+  color: #c8a461;
+  cursor: pointer;
+}
+.filters div .select i, .filters-slider .filter .select i{
+  font-size: 1rem;
+  margin-top: -2px;
+}
+.filters-slider .filter .select span.active{
+  display: inline-block;
+  height: 28px;
+  line-height: 36px;
+  vertical-align: bottom;
+}
+.filters div .select span, .filters-slider .filter .select span  {
+  /*    background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
+      background-size: 6px;*/
+  display: none;
+  padding-right: 13px;
+  max-width: 110px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.filters div .select span.active{
+  display: inline-block;
+  height: 28px;
+  line-height: 36px;
+  vertical-align: bottom;
+}
+
+
+.filters-slider{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.filters-slider .filter{
   height: 100%;
+  margin: 0;
+}
+.filters-slider .owl-stage{
+  /*margin-left:40px;*/
+}
+
+.vCenter {
+  display: inline-table;
+  height: 100%;
+  width: 100%;
+}
+.vCenterKid {
+  display: table-cell;
+  vertical-align: middle;
+}
+.close-button{
+
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+}
+#filters.show .close-button{
+  opacity: 1;
+  visibility: visible;
+}
+#filters{
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100.1vh;
+  overflow-y: auto;
   left: 0;
   opacity: 0;
   position: fixed;
-  visibility: hidden;
+  -webkit-text-size-adjust: 100%;
+  /*  visibility: hidden;*/
   top: 0;
   width: 100%;
-  z-index: 15;
-  @include transition(opacity 0.7s $smoothTransition, visibility 0.7s $smoothTransition);
-  overflow-y:auto;
-
-  &.show {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  span {
-    color: #fff;
-    display: block;
-    font-family: $CamphorBold;
-    letter-spacing: 0.4em;
-    opacity: 0;
-    margin: 30px auto;
-    text-align: center;
-    text-transform: uppercase;
-    visibility: hidden;
-    @include transform(translateY(20px) translateZ(0));
-
-    &.show {
-      opacity: 1;
-      visibility: visible;
-      @include transform(translateY(0) translateZ(0));
-    }
-
-    &.active {
-      color: $gold;
-    }
-
-    &:hover {
-      color: $gold;
-      cursor: pointer;
-    }
-
-    &:nth-child(1) {
-      @include transition(opacity .5s $smoothTransition 0.1s, transform .5s $smoothTransition 0.1s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(2) {
-      @include transition(opacity .5s $smoothTransition 0.15s, transform .5s $smoothTransition 0.15s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(3) {
-      @include transition(opacity .5s $smoothTransition 0.2s, transform .5s $smoothTransition 0.2s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(4) {
-      @include transition(opacity .5s $smoothTransition 0.25s, transform .5s $smoothTransition 0.25s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(5) {
-      @include transition(opacity .5s $smoothTransition 0.3s, transform .5s $smoothTransition 0.3s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(6) {
-      @include transition(opacity .5s $smoothTransition 0.35s, transform .5s $smoothTransition 0.35s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(7) {
-      @include transition(opacity .5s $smoothTransition 0.4s, transform .5s $smoothTransition 0.4s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(8) {
-      @include transition(opacity .5s $smoothTransition 0.45s, transform .5s $smoothTransition 0.45s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(9) {
-      @include transition(opacity .5s $smoothTransition 0.5s, transform .5s $smoothTransition 0.5s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(10) {
-      @include transition(opacity .5s $smoothTransition 0.55s, transform .5s $smoothTransition 0.55s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(11) {
-      @include transition(opacity .5s $smoothTransition 0.6s, transform .5s $smoothTransition 0.6s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(12) {
-      @include transition(opacity .5s $smoothTransition 0.65s, transform .5s $smoothTransition 0.65s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(13) {
-      @include transition(opacity .5s $smoothTransition 0.7s, transform .5s $smoothTransition 0.7s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(14) {
-      @include transition(opacity .5s $smoothTransition 0.75s, transform .5s $smoothTransition 0.75s, color .9s $smoothTransition);
-    }
-
-    &:nth-child(15) {
-      @include transition(opacity .5s $smoothTransition 0.8s, transform .5s $smoothTransition 0.8s, color .9s $smoothTransition);
-    }
-  }
-}
-
-.close-button {
-  border: 1px solid $gold;
+  z-index: 55;
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   cursor: pointer;
-  height: 85px;
-  opacity: 0.6;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  width: 85px;
-  @include transition(all 0.9s $smoothTransition);
+
+}
+#filters.show{
+
+  opacity: 1;
+  /*    visibility: visible;*/
+
+}
+#filters span {
+  color: #fff;
+  display: block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.4em;
+  opacity: 0;
+  margin: 70px auto;
   text-align: center;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  .icon{
-    color:$gold;
-    line-height: 85px;
-  }
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+  -moz-transform: translateY(20px) translateZ(0);
+  -ms-transform: translateY(20px) translateZ(0);
+  -webkit-transform: translateY(20px) translateZ(0);
+  transform: translateY(20px) translateZ(0);
+}
+#filters span.active {
+  color: #c8a461;
 }
 
-.filters-02 {
-  border-bottom: 1px solid #eaeaea;
-  position: relative;
-
-  .container {
-    min-height: 77px;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    max-width: 134vw;
-  }
-
-  &.sticky {
-    position: fixed;
-    top: 91px;
-    background-color: #fff;
-    width: 100vw;
-    z-index: 4;
-
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      top: 69px;
-    }
-  }
-
-  ul{
-    padding: 30px 0;
-    display: inline-block;
-  }
-
-  li {
-    color: $gold;
-    text-transform: uppercase;
-    font-family: $CamphorHeavy;
-    font-size: .625rem;
-    display: inline-block;
-    margin-right: 45px;
-    letter-spacing: 1px;
-    transition: .4s;
-
-    &:hover{
-      opacity: .8;
-      cursor: pointer;
-    }
-  }
-
-  .submit {
-    display: inline-block;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: $CamphorHeavy;
-    font-size: .625rem;
-    display: inline-block;
-    letter-spacing: 1px;
-    position: absolute;
-    top: 0px;
-    right:0px;
-    background-color: $gold;
-    height: 100%;
-    line-height: 80px;
-    width: 199px;
-    text-align: center;
-  }
-
-  .icon-close {
-    font-size: .4rem;
-    vertical-align: super;
-    margin: 5px;
-  }
+#filters span.show {
+  opacity: 1;
+  -moz-transform: translateY(0) translateZ(0);
+  -ms-transform: translateY(0) translateZ(0);
+  -webkit-transform: translateY(0) translateZ(0);
+  transform: translateY(0) translateZ(0);
+  line-height: 45px;
 }
+#filters span:nth-child(1) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.1s, 0.1s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(2) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.15s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.15s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.15s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.15s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.15s, 0.15s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.15s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.15s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(3) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.2s, 0.2s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(4) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.25s, 0.25s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(5) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.3s, 0.3s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.3s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(6) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.35s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.35s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.35s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.35s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.35s, 0.35s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.35s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.35s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(7) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.4s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.4s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.4s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.4s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.4s, 0.4s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.4s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.4s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(8) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.45s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.45s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.45s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.45s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.45s, 0.45s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.45s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.45s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#filters span:nth-child(9) {
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition-delay: 0.5s, 0.5s, 0s;
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+/* ************** */

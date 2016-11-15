@@ -8,7 +8,6 @@
 // 1. Global
 // =========================
 
-
 @font-face {
   font-family: 'mobile';
   src: url('../fonts/mobile.eot?63083474');
@@ -19,6 +18,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
@@ -29,12 +29,13 @@
   }
 }
 */
-[class^="icon-mobile-"], [class*=" icon-mobile-"]{
+[class^="icon-mobile-"], [class*=" icon-mobile-"] {
   font-style: normal;
   font-weight: normal;
   speak: none;
   /*line-height: 1;*/
 }
+
 [class^="icon-mobile-"]:before, [class*=" icon-mobile-"]:before {
   font-family: "mobile";
   font-style: normal;
@@ -57,7 +58,6 @@
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
 
-
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
 
@@ -69,16 +69,53 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-mobile-agenda-personal:before { content: '\e800'; } /* '' */
-.icon-mobile-return:before { content: '\e801'; } /* '' */
-.icon-mobile-web-tv-play:before { content: '\e802'; } /* '' */
-.icon-mobile-burger:before { content: '\e803'; } /* '' */
-.icon-mobile-minus:before { content: '\e804'; } /* '' */
-.icon-mobile-plus:before { content: '\e805'; } /* '' */
-.icon-mobile-dailymotion:before { content: '\e806';  } /* '' */
-.icon-mobile-participer:before { content: '\e807'; vertical-align: middle;} /* '' */
+.icon-mobile-agenda-personal:before {
+  content: '\e800';
+}
 
-.icon-mobile-chaines:before { content: '\e808'; } /* '' */
+/* '' */
+.icon-mobile-return:before {
+  content: '\e801';
+}
+
+/* '' */
+.icon-mobile-web-tv-play:before {
+  content: '\e802';
+}
+
+/* '' */
+.icon-mobile-burger:before {
+  content: '\e803';
+}
+
+/* '' */
+.icon-mobile-minus:before {
+  content: '\e804';
+}
+
+/* '' */
+.icon-mobile-plus:before {
+  content: '\e805';
+}
+
+/* '' */
+.icon-mobile-dailymotion:before {
+  content: '\e806';
+}
+
+/* '' */
+.icon-mobile-participer:before {
+  content: '\e807';
+  vertical-align: middle;
+}
+
+/* '' */
+
+.icon-mobile-chaines:before {
+  content: '\e808';
+}
+
+/* '' */
 
 html {
   font-size: 16px;
@@ -113,15 +150,15 @@ body {
 }
 
 ::-moz-selection {
-    background: #fff;
-    color: #000;
-    text-shadow: none;
+  background: #fff;
+  color: #000;
+  text-shadow: none;
 }
 
 ::selection {
-    background: #fff;
-    color: #000;
-    text-shadow: none;
+  background: #fff;
+  color: #000;
+  text-shadow: none;
 }
 
 #main {
@@ -194,17 +231,16 @@ body {
   }
 }
 
-
 // 2. Icon
 // =========================
-html body .icon:before{
+html body .icon:before {
   vertical-align: baseline;
 }
 
-body .icon{
+body .icon {
   vertical-align: baseline; //todocss
 
-  &:before{
+  &:before {
     font-family: "icon";
     display: inline-block;
     vertical-align: middle;
@@ -223,17 +259,17 @@ body .icon{
   color: $gold;
   line-height: 39px;
 
-  .icon{
+  .icon {
     margin-left: 17px;
     margin-top: 17px;
-    font-size: .7rem;
+    font-size: 1.7rem;
   }
 }
 
 .video .picto {
   color: $gold;
-  .icon{
-    font-size: 0.8rem;
+  .icon {
+    font-size: 1.7rem;
     margin-top: 16px;
     margin-left: 16px;
   }
@@ -241,8 +277,8 @@ body .icon{
 
 .audio .picto {
   color: $gold;
- .icon{
-    font-size: 1rem;
+  .icon {
+    font-size: 1.7rem;
     margin-top: 14px;
     margin-left: 14px;
   }
@@ -250,8 +286,8 @@ body .icon{
 
 .photo .picto {
   color: $gold;
- .icon{
-    font-size: 1rem;
+  .icon {
+    font-size: 1.7rem;
     margin-top: 14px;
     margin-left: 14px;
   }
@@ -259,7 +295,7 @@ body .icon{
 
 .playlist .picto {
   color: $gold;
-  .icon{
+  .icon {
     font-size: .8rem;
     margin-top: 16px;
     margin-left: 15px;
@@ -271,16 +307,23 @@ body .icon{
   background-position: center;
   background-repeat: no-repeat;
   bottom: 8px;
-  height: 44px;
   left: 10px;
   position: absolute;
   pointer-events: none;
-  width: 44px;
   line-height: 49px;
+
+  width: 70px;
+  height: 70px;
+
+  .icon {
+    font-size: 1.7rem;
+    top: 12px;
+    left: 4px;
+    position: relative;
+  }
 }
 
-
-video{
+video {
   padding: 30px 0;
   padding-top: 23px;
   width: 100%;
@@ -289,8 +332,8 @@ video{
 // 2. Style
 // =========================
 
-.black{
-  background-color:#0c0c0c;
+.black {
+  background-color: #0c0c0c;
   position: relative;
 }
 
@@ -319,22 +362,22 @@ video{
   vertical-align: top;
 }
 
-.vFlexAlign{
+.vFlexAlign {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-.left{
+.left {
   float: left;
 }
 
-.right{
+.right {
   float: right;
 }
 
-.clear:after{
+.clear:after {
   content: '';
   clear: both;
   display: block;
@@ -342,14 +385,14 @@ video{
 
 .shadow-bottom {
   &:before {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     background: -moz-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(70%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
     background: -webkit-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
     background: -o-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
     background: -ms-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 70%, rgba(20, 20, 20, 0.8) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#141414', GradientType=0);
     content: '';
     display: block;
     height: 100%;
@@ -361,29 +404,29 @@ video{
   }
 }
 
-.border-bottom{
-  border-bottom:  1px solid #2C2C2C;
+.border-bottom {
+  border-bottom: 1px solid #2C2C2C;
 
   .bright & {
     border-color: #e5e5e5;
   }
 }
 
-.border-top{
-  border-top:  1px solid #2C2C2C;
+.border-top {
+  border-top: 1px solid #2C2C2C;
 
   .bright & {
     border-color: #e5e5e5;
   }
 }
 
-.padding-bottom{
+.padding-bottom {
   padding-bottom: 70px;
   display: block;
 }
 
 .padding-top {
-  padding-top: 70px;
+  padding-top: 40px;
   display: block;
 }
 
@@ -392,15 +435,15 @@ video{
   display: block;
 }
 
-.padding-small-top{
+.padding-small-top {
   padding-top: 40px;
 }
 
-.small-padding{
+.small-padding {
   padding-bottom: 25px;
 }
 
-.big-padding{
+.big-padding {
   padding: 120px;
 }
 
@@ -468,7 +511,7 @@ video{
 
 }
 
-.center{
+.center {
   text-align: center;
 }
 
@@ -498,11 +541,11 @@ video{
 }
 
 //POPIN LINK//
-.share{
+.share {
   position: relative;
 }
 
-#share-box{
+#share-box {
   position: absolute;
   top: 188px;
   z-index: 2;
@@ -513,26 +556,25 @@ video{
   @include transition(all 0.3s $smoothTransition);
   opacity: 0;
 
-
-  .retrospective .small-h  & {
+  .retrospective .small-h & {
     top: 184px !important;
   }
 
-  &.show{
+  &.show {
     opacity: 1;
   }
 
-  a{
-    color:#666666;
+  a {
+    color: #666666;
     font-size: 0.75rem;
   }
 
-  .home &, .retrospective &, .story-movie &, .dark &, .who &{
+  .home &, .retrospective &, .story-movie &, .dark &, .who & {
     top: 84px !important;
     opacity: 1;
   }
 
-  .top-bar &{
+  .top-bar & {
     right: 0px;
     left: inherit;
     top: 87px !important;
@@ -548,12 +590,12 @@ video{
     border: 0px;
   }
 
-  .black &, .c-fullscreen-slider &, .top-bar &{
+  .black &, .c-fullscreen-slider &, .top-bar & {
     top: 187px;
     z-index: 3;
     width: 295px;
 
-    .bubble{
+    .bubble {
       background-color: #141414;
       border: 1px solid #2C2C2C;
       padding: 5px;
@@ -579,19 +621,21 @@ video{
       color: #999999;
       font-size: 0.75rem;
     }
-    & a:hover{
+    & a:hover {
       color: #999999;
       background-color: #141414;
     }
   }
 }
-.bubble{
+
+.bubble {
   background: #fff;
   border: 1px solid #dfdfdf;
   padding: 5px;
   text-align: center;
   position: relative;
 }
+
 .bubble:before {
   content: "";
   position: absolute;
@@ -609,7 +653,6 @@ video{
 
 // 3. Responsive 768
 // =========================
-
 
 @include breakpoint(768px) {
   header, footer, #breadcrumb, .navigation-sticky-02 { //attention modifier JS si ajout de class ici !

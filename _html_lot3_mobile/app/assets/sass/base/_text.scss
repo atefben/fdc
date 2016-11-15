@@ -42,9 +42,9 @@ sub {
 
 .title, .title-item {
   font-family: $CamphorRegular;
-  font-weight: 700;
-  font-size: 1.125rem;//18px
-  letter-spacing: 0.5em;//500
+  font-size: 20px;
+  line-height: 1.8;
+  letter-spacing: 10px;
   margin-bottom: 23px;
   text-align: center;
   text-transform: uppercase;
