@@ -132,6 +132,10 @@ class EntityListener
         }
 
         $this->setPublishedOn($entity, $args);
+
+        if ($entity instanceof Media && !$entity->getIgnoreListener()) {
+            $entity->setThumbsGenerated(false);
+        }
     }
 
     private function setPublishedOn($entity, $args)
@@ -216,6 +220,10 @@ class EntityListener
         }
 
         $this->setPublishedOn($entity, $args);
+
+        if ($entity instanceof Media && !$entity->getIgnoreListener()) {
+            $entity->setThumbsGenerated(false);
+        }
     }
 
     protected function applyChanges(PreUpdateEventArgs $args)
