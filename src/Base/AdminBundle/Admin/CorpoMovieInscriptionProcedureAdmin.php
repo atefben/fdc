@@ -161,6 +161,26 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnLink' => array(
+                        'label' => 'form.label_btn_link',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnText' => array(
+                        'label' => 'Titre',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    )
                 )
             ))
             ->add('pdf', 'sonata_type_model_list',

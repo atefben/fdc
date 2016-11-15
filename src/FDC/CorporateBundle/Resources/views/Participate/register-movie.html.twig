@@ -74,8 +74,8 @@
                              style="background-image:url({% path mainImage, '1280x808' %})">
                             {{ section.procedure|trans_fallback('inscriptionContent')|raw }}
                             <div class="buttons-02">
-                                <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">
-                                    {{ 'participate.see.form'|trans }}
+                                <a href="{{ section.procedure|trans_fallback('btnLink') }}" class="button" target="_blanck">
+                                    {{ section.procedure|trans_fallback('btnLabel') }}
                                 </a>
                             </div>
                         </div>

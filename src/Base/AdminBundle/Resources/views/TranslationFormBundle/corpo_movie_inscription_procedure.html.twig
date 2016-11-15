@@ -71,8 +71,16 @@
                                             display: none;
                                         }
                                     </style>
+                                    {{ form_row(translationsFields.btnText) }}
                                     {{ form_row(translationsFields.inscriptionContent) }}
+                                    <div class="col-md-5">
+                                    {{ form_row(translationsFields.btnLabel) }}
                                     {{ form_row(form.parent.children.displayInscription) }}
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-5">
+                                    {{ form_row(translationsFields.btnLink) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
