@@ -19,6 +19,9 @@
         
         <field name="soifId" type="string" column="soif_id" nullable="true">
         </field>
+
+        <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="false">
+        </field>
         
         <one-to-many field="filmMedias" target-entity="Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
         </one-to-many>
