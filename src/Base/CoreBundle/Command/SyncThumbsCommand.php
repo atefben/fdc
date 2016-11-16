@@ -96,6 +96,11 @@ class SyncThumbsCommand extends BaseCommand
                 $this->log(sprintf('<error>Unable to generated new thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
                 continue;
             }
+            $media
+                ->setIgnoreListener(true)
+                ->setThumbsGenerated(true)
+            ;
+            $this->getDoctrineManager()->flush();
         }
 
         $this->log('Done.');
@@ -111,5 +116,17 @@ class SyncThumbsCommand extends BaseCommand
         if (false === $this->quiet) {
             $this->output->writeln($message);
         }
+    }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectManager|object
+     */
+    private function getDoctrineManager()
+    {
+        return $this
+            ->getContainer()
+            ->get('doctrine')
+            ->getManager()
+            ;
     }
 }
