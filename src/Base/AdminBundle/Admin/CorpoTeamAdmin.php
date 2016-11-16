@@ -23,7 +23,6 @@ class CorpoTeamAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('list');
-        $collection->remove('create');
         $collection->remove('show');
         $collection->remove('batch');
         $collection->remove('delete');
