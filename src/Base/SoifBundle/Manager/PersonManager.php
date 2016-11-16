@@ -62,7 +62,8 @@ class PersonManager extends CoreManager
             'setId' => $this->entityIdKey,
             'setAsianName' => 'IsAsianName',
             'setLastname' => 'Nom',
-            'setFirstname' => 'Prenom'
+            'setFirstname' => 'Prenom',
+            'setSelfkit' => 'IdSelfkit',
         );
         $this->mapperTranslations = array(
             'CiviliteTraductions' => array(
