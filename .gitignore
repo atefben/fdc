@@ -108,3 +108,4 @@ app/Resources/translations/routes.en.xliff
 app/config/bundles/fos_elastica.yml
 
 app/config/bundles/fos_elastica.yml
+/cron_thumbs_lock
