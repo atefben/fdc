@@ -13,7 +13,7 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
-    { //dump($searchTerm);
+    {
         $finalQuery = new \Elastica\Query\BoolQuery();
 
         //string query
