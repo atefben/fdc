@@ -324,6 +324,7 @@ list:
     label_page: Titre de la page d'attente
     label_film_jury_type_name:  Type de jury
     displayed_mobile: Visible sur mobile
+    label_selfkit: Selfkit
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
@@ -437,6 +438,7 @@ filter:
     label_programmation_films: Film
     label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
     label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
+    label_selfkit: Selfkit
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le

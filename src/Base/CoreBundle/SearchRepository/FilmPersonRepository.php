@@ -17,6 +17,10 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
 
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+
         if(!empty($searchTerm['search'])) {
             $finalQuery
                 ->addMust($this->getFieldsQuery($searchTerm['search']))
@@ -24,7 +28,7 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
             ;
         }
 
-        if($searchTerm['professions']) {
+        if(isset($searchTerm['professions']) && $searchTerm['professions']) {
             foreach($searchTerm['professions'] as $profession) {
                 $finalQuery->addShould($this->getLocalizedFieldsQuery('fr', $profession)); //comparison done with 'fr'
             }

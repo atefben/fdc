@@ -14,9 +14,15 @@ class InfoRepository extends SearchRepository implements SearchRepositoryInterfa
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
+        $finalQuery = new \Elastica\Query\BoolQuery();
+
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+        
         // Fields (title, introduction) OR Theme
         if(!empty($searchTerm['search'])) {
-            $finalQuery = new \Elastica\Query\BoolQuery();
+
             $finalQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getThemeQuery($_locale, $searchTerm['search']))

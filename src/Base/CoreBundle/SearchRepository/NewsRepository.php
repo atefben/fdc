@@ -14,6 +14,10 @@ class NewsRepository extends SearchRepository implements SearchRepositoryInterfa
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         if(!empty($searchTerm['search'])) {
