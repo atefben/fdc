@@ -325,7 +325,7 @@ class FilmManager extends CoreManager
                 $entityRelated->setPosition($filmFilmMedia->Ordre);
 
                 // get the related media
-                $filmMedia = $this->mediaManager->getById($filmFilmMedia->Id);
+                $filmMedia = $this->mediaManager->getById($filmFilmMedia->Id, false);
                 $entityRelated->setMedia($filmMedia);
 
                 // add media
