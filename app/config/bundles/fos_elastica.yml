@@ -243,6 +243,8 @@ fos_elastica:
                         # the driver can be orm, mongodb, phpcr or propel
                         # listener and finder are not supported by
                         # propel and should be removed
+                        model_to_elastica_transformer:
+                            service: base.transformers.model.info
                         driver: orm
                         model: Base\CoreBundle\Entity\Info
                         provider: ~
@@ -376,6 +378,8 @@ fos_elastica:
                 news:
                     indexable_callback: 'isElasticable'
                     persistence:
+                        model_to_elastica_transformer:
+                            service: base.transformers.model.news
                         driver: orm
                         model: Base\CoreBundle\Entity\News
                         provider: ~
