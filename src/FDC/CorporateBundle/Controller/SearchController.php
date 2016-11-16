@@ -41,15 +41,21 @@ class SearchController extends Controller
         $data = $request->query->all();
         $filters = $this->_getFiltersFromData($data);
 
-        $searchFilter = $searchFilter!='media'?:'photos_videos_audios';
+        //if filter is media, query on photos, videos and audios
+        $searchFilter = $searchFilter!='media'?$searchFilter:'photos_videos_audios';
+
         $items = explode('_', $searchFilter);
-        $searchFilter = 'media'; //back to "media" for the url
+
+        $searchFilter = $searchFilter!='photos_videos_audios'?$searchFilter:'media'; //back to "media" for the url
 
         $searchResults = array('items' => array(), 'count' => 0);
+
         foreach($items as $item) {
             if($item == 'artist') {
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
+
+            $data = $this->_translateData($data);
             $results = $this->getSearchResults($_locale, $item, $data, 50, 1);
             
             $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
@@ -196,15 +202,15 @@ class SearchController extends Controller
         $prizesCheckboxes = array(
             $translator->trans('search.form.palmedor', array(), 'FDCCorporateBundle') =>  'palmedor',
             $translator->trans('search.form.grandprix', array(), 'FDCCorporateBundle') => 'grandprix',
-            $translator->trans('search.form.prixmiseenscene', array(), 'FDCCorporateBundle') => 'miseenscene',
-            $translator->trans('search.form.prixscenario', array(), 'FDCCorporateBundle') => 'scenario',
-            $translator->trans('search.form.prixinterpretefeminine', array(), 'FDCCorporateBundle') => 'interpretefeminine',
-            $translator->trans('search.form.prixinterpretemasculine', array(), 'FDCCorporateBundle') => 'interpretemasculine',
-            $translator->trans('search.form.prixjury', array(), 'FDCCorporateBundle') => 'jury',
+            $translator->trans('search.form.prixmiseenscene', array(), 'FDCCorporateBundle') => 'prixmiseenscene',
+            $translator->trans('search.form.prixscenario', array(), 'FDCCorporateBundle') => 'prixscenario',
+            $translator->trans('search.form.prixinterpretefeminine', array(), 'FDCCorporateBundle') => 'prixinterpretefeminine',
+            $translator->trans('search.form.prixinterpretemasculine', array(), 'FDCCorporateBundle') => 'prixinterpretemasculine',
+            $translator->trans('search.form.prixjury', array(), 'FDCCorporateBundle') => 'prixjury',
             $translator->trans('search.form.palmedorcourtmetrage', array(), 'FDCCorporateBundle') => 'palmedorcourtmetrage',
-            $translator->trans('search.form.prixuncertainregard', array(), 'FDCCorporateBundle') => 'uncertainregard',
+            $translator->trans('search.form.prixuncertainregard', array(), 'FDCCorporateBundle') => 'prixuncertainregard',
             $translator->trans('search.form.groupamagan', array(), 'FDCCorporateBundle') => 'groupamagan',
-            $translator->trans('search.form.prixcinefondation', array(), 'FDCCorporateBundle') => 'cinefondation',
+            $translator->trans('search.form.prixcinefondation', array(), 'FDCCorporateBundle') => 'prixcinefondation',
             $translator->trans('search.form.camerador', array(), 'FDCCorporateBundle') => 'camerador',
         );
 
@@ -225,6 +231,19 @@ class SearchController extends Controller
         return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
     }
 
+    private function _translateData($data) {
+        $translator = $this->get('translator');
+        foreach($data as &$value) {
+            if(is_array($value)) {
+                foreach($value as &$label) {
+                    $label = $translator->trans('search.form.'.$label, array(), 'FDCCorporateBundle');
+                }
+            }
+        }
+
+        return $data;
+    }
+
     /**
      * @Route("/search", options={"expose"=true})
      */
@@ -237,7 +256,9 @@ class SearchController extends Controller
             $data = $searchForm->getData();
 
             $filters = $this->_getFiltersFromData($data);
-
+            dump($data);
+            $data = $this->_translateData($data);
+            dump($data);
             $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
             $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
             $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
