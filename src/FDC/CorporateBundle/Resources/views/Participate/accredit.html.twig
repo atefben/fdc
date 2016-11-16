@@ -25,10 +25,10 @@
                 {{ accredit|trans_fallback('commonContent')|raw }}
             </div>
 
+            {% if accredit.procedure|length > 0 and accredit.procedure is not null %}
             <div class="block-tab-switch block-01">
                 <h3 class="title-tab-swich">{{ 'participate.register.procedure'|trans }}</h3>
 
-                {% if accredit.procedure|length > 0 %}
                     <table class="tab1">
                         <tbody>
                         <tr>
@@ -43,8 +43,8 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                {% endif %}
             </div>
+            {% endif %}
 
             <div class="border-top">
                 {% for key, section in accredit.procedure %}
