@@ -256,9 +256,9 @@ class SearchController extends Controller
             $data = $searchForm->getData();
 
             $filters = $this->_getFiltersFromData($data);
-            dump($data);
+            
             $data = $this->_translateData($data);
-            dump($data);
+            
             $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
             $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
             $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
