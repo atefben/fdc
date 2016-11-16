@@ -249,6 +249,8 @@ class SearchController extends Controller
      */
     public function searchSubmitAction($_locale, Request $request)
     {
+        $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
+
         $searchForm = $this->_getFormFilters();
         $searchForm->handleRequest($request);
 
@@ -318,11 +320,13 @@ class SearchController extends Controller
             return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
                 'result' => $result,
                 'filters' => $filters,
-                'form' => $searchForm->createView()
+                'form' => $searchForm->createView(),
+                'page' => $page
             ));
         } else {
             return $this->render('FDCCorporateBundle:Search:search.html.twig', array(
-                'form' => $searchForm->createView()
+                'form' => $searchForm->createView(),
+                'page' => $page
             ));
         }
 

@@ -1,0 +1,136 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
+            {% set locale = translationsFields.vars.name %}
+            {% if is_granted('ROLE_TRANSLATOR_FR') %}
+                {% set currentLocale = 'fr' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+                {% set currentLocale = 'en' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ES') %}
+                {% set currentLocale = 'es' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+                {% set currentLocale = 'zh' %}
+            {% endif %}
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                {% if form.vars.default_locale == locale %}
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Pushs
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-md-4">
+                                    <h4 class="box-title">
+                                        Push 1
+                                    </h4>
+                                    {{  form_row(translationsFields.pushTitle1) }}
+                                    {{  form_row(form.parent.children.pushImage1) }}
+                                    {{  form_row(translationsFields.pushUrl1) }}
+                                    <hr>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="box-title">
+                                        Push 2
+                                    </h4>
+                                    {{  form_row(translationsFields.pushTitle2) }}
+                                    {{  form_row(form.parent.children.pushImage2) }}
+                                    {{  form_row(translationsFields.pushUrl2) }}
+                                    <hr>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="box-title">
+                                        Push 3
+                                    </h4>
+                                    {{  form_row(translationsFields.pushTitle3) }}
+                                    {{  form_row(form.parent.children.pushImage3) }}
+                                    {{  form_row(translationsFields.pushUrl3) }}
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Pushs
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="col-md-4">
+                                        <h4 class="box-title">
+                                            Push 1
+                                        </h4>
+                                        {{  form_row(translationsFields.pushTitle1) }}
+                                        {{  form_row(translationsFields.pushUrl1) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="box-title">
+                                            Push 2
+                                        </h4>
+                                        {{  form_row(translationsFields.pushTitle2) }}
+                                        {{  form_row(translationsFields.pushUrl2) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="box-title">
+                                            Push 3
+                                        </h4>
+                                        {{  form_row(translationsFields.pushTitle3) }}
+                                        {{  form_row(translationsFields.pushUrl3) }}
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
