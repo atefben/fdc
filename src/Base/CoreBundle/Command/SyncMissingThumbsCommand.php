@@ -44,6 +44,11 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        if ($this->isLocked()) {
+            $output->writeln('The sync is locked');
+            die;
+        }
+        $this->lock();
         $this->output = $output;
         $medias = $this->getMedias();
 
@@ -73,6 +78,7 @@ class SyncMissingThumbsCommand extends BaseCommand
         }
         $progress->finish();
         $output->writeln('');
+        $this->unlock();
     }
 
     /**
@@ -106,5 +112,37 @@ class SyncMissingThumbsCommand extends BaseCommand
     protected function log($message)
     {
         $this->output->writeln($message);
+    }
+
+    /**
+     * @return string
+     */
+    private function getLockFile()
+    {
+        return $this->getContainer()->get('kernel')->getRootDir() . '/../cron_thumbs_lock';
+    }
+
+    /**
+     * @return string
+     */
+    private function isLocked()
+    {
+        return is_file($this->getLockFile()) && file_get_contents($this->getLockFile()) == '1';
+    }
+
+    /**
+     * @return string
+     */
+    private function lock()
+    {
+        file_put_contents($this->getLockFile(), '1');
+    }
+
+    /**
+     * @return string
+     */
+    private function unlock()
+    {
+        file_put_contents($this->getLockFile(), '0');
     }
 }

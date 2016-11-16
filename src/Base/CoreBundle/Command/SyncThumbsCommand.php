@@ -19,7 +19,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * This command can be used to re-generate the thumbnails for all uploaded medias.
- *
  * Useful if you have existing media content and added new formats.
  */
 class SyncThumbsCommand extends BaseCommand
@@ -33,13 +32,14 @@ class SyncThumbsCommand extends BaseCommand
     public function configure()
     {
         $this->setName('base:media:sync-thumbnails')
-            ->setDescription('Sync uploaded image thumbs with new media formats')
-            ->setDefinition(array(
-                    new InputArgument('providerName', InputArgument::OPTIONAL, 'The provider'),
-                    new InputArgument('context', InputArgument::OPTIONAL, 'The context'),
-                    new InputOption('id', null, InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'The media identifier')
-                )
-            );
+             ->setDescription('Sync uploaded image thumbs with new media formats')
+             ->setDefinition(array(
+                     new InputArgument('providerName', InputArgument::OPTIONAL, 'The provider'),
+                     new InputArgument('context', InputArgument::OPTIONAL, 'The context'),
+                     new InputOption('id', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'The media identifier'),
+                 )
+             )
+        ;
     }
 
     /**
@@ -47,6 +47,7 @@ class SyncThumbsCommand extends BaseCommand
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+
         $provider = $input->getArgument('providerName');
         if (null === $provider) {
             $providers = array_keys($this->getMediaPool()->getProviders());
@@ -54,7 +55,7 @@ class SyncThumbsCommand extends BaseCommand
             $provider = $providers[$providerKey];
         }
 
-        $context  = $input->getArgument('context');
+        $context = $input->getArgument('context');
         if (null === $context) {
             $contexts = array_keys($this->getMediaPool()->getContexts());
             $contextKey = $this->getHelperSet()->get('dialog')->select($output, 'Please select the context', $contexts);
@@ -69,7 +70,7 @@ class SyncThumbsCommand extends BaseCommand
             'context'      => $context,
         );
 
-        $id  = $input->getOption('id');
+        $id = $input->getOption('id');
         if ($id !== null) {
             $args['id'] = $id;
         };
@@ -81,7 +82,7 @@ class SyncThumbsCommand extends BaseCommand
         foreach ($medias as $media) {
             $provider = $this->getMediaPool()->getProvider($media->getProviderName());
 
-            $this->log('Generating thumbs for '.$media->getName().' - '.$media->getId());
+            $this->log('Generating thumbs for ' . $media->getName() . ' - ' . $media->getId());
 
             try {
                 $provider->removeThumbnails($media);
@@ -108,7 +109,6 @@ class SyncThumbsCommand extends BaseCommand
 
     /**
      * Write a message to the output.
-     *
      * @param string $message
      */
     protected function log($message)
