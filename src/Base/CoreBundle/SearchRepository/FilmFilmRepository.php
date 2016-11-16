@@ -14,6 +14,9 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
         $finalQuery = new \Elastica\Query\BoolQuery();
 
         //string query
