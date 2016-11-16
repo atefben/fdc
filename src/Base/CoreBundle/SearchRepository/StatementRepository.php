@@ -16,6 +16,11 @@ class StatementRepository extends SearchRepository implements SearchRepositoryIn
     {
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
+
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+        
         if(!empty($searchTerm['search'])) {
             $finalQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))

@@ -13,7 +13,7 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
-    { dump($searchTerm);
+    { //dump($searchTerm);
         $finalQuery = new \Elastica\Query\BoolQuery();
 
         //string query
@@ -55,11 +55,11 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
 
         //prizes query
         if(!empty($searchTerm['prizes'])) {
-            $selectionsQuery = new \Elastica\Query\BoolQuery();
-            foreach($searchTerm['prizes'] as $format) {
-                $selectionsQuery->addShould($this->getSelectionQuery($format));
+            $prizesQuery = new \Elastica\Query\BoolQuery();
+            foreach($searchTerm['prizes'] as $prize) {
+                $prizesQuery->addShould($this->getPrizesQuery($_locale, $prize));
             }
-            $finalQuery->addMust($selectionsQuery);
+            $finalQuery->addMust($prizesQuery);
         }
 
 
@@ -134,6 +134,13 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         $fields = array('festival.year');
  
         return $this->getFieldsKeywordQuery($fields, $fdcYear);
+    }
+
+    private function getPrizesQuery($_locale, $searchTerm) {
+        $path = 'awards.award.prize.translations';
+        $fields = array('title');
+
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
     }
     
 }
