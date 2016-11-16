@@ -52,12 +52,12 @@
                 {% for key, section in accredit.procedure %}
                     <div class="block-contain-txt-register-movie"
                          data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
-                            <div class="block-01-ms">
-                                <h4>{{ section.procedure|trans_fallback('title') }}</h4>
-                                {{ section.procedure|trans_fallback('procedureContent')|raw }}
-                            </div>
+                        <div class="block-01-ms">
+                            <h4>{{ section.procedure|trans_fallback('title') }}</h4>
+                            {{ section.procedure|trans_fallback('procedureContent')|raw }}
+                        </div>
                         {% if section.procedure.displayReglement != true %}
-                        <div class="block-s-info border-bottom border-top vFlexAlign">
+                            <div class="block-s-info border-bottom border-top vFlexAlign">
                                 <strong class="title-25">{{ 'participate.submit.movie'|trans }}</strong>
                                 <p>{{ 'participate.consult.rules'|trans }}</p>
                                 <div class="buttons-02">
