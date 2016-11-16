@@ -52,7 +52,7 @@
                                 <div class="grid-sizer"></div>
                                 {% for membersAssociation in departementAssociation.departement.members %}
                                 <div class="item block-poster festival-de-cannes">
-                                    <div>
+                                    <a>
                                         <div class="contain-img">
                                             {% set mainImage = null %}
                                             {% if  membersAssociation.members is not null and membersAssociation.members.mainImage is not null %}
@@ -75,7 +75,7 @@
                                             <span class="title-12">{{ membersAssociation.members|trans_fallback('function')|truncate(69,false,'') }}</span>
                                         </div>
                                     </a>
-                                </div>
+                                </a>
                                 {% endfor %}
                             </div>
 
