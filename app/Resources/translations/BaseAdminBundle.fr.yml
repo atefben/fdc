@@ -500,7 +500,8 @@ dashboard:
         orange: Orange
     link:
         retrospective: Retrospective
-        corpo_search: Recherche
+        corpo_search: Rechercher
+        corpo_search_pushs: Pushs
         settings: Paramètres
         bo_translation: Libellés
         homepage: Homepage
