@@ -22,7 +22,7 @@
         {% endif %}
 
         <div class="block-contain-txt-register-movie active all-contain block-01-ms padding-top block-rules">
-            <h4>
+            <h4 style="margin-top: -55px;">
                 <strong>
                     {{ procedure|trans_fallback('title') }}
                 </strong>
@@ -33,11 +33,13 @@
         <div class="border-top border-bottom block-button-bottom">
             <div class="block-01-ms">
                 <div class="align-flex">
-                    <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" target="_blank" style="margin-top: 0px;"
+                    <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" target="_blank"
+                       style="margin-top: 0px;"
 
                        class="button button-half">{{ procedure|trans_fallback('btnSelectionLabel') }}</a>
                     {% if procedure.pdf is defined and procedure.pdf is not null %}
-                        <a href="{% path procedure.pdf|trans_fallback('file'), 'reference' %}" class="button button-half" style="margin-top: 0px;"><i
+                        <a href="{% path procedure.pdf|trans_fallback('file'), 'reference' %}"
+                           class="button button-half" style="margin-top: 0px;"><i
                                     class="icon icon-download"></i>{{ 'download.pdf'|trans }}</a>
                     {% endif %}
                 </div>
