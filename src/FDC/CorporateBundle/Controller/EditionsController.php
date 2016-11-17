@@ -127,7 +127,7 @@ class EditionsController extends Controller
     public function historyAction(Request $request) {
         $em = $this->get('doctrine')->getManager();
 
-        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(6);
+        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(1);
         if($page->findTranslationByLocale('fr')->getStatus() == 1) {
             return array(
                 'currentPage' => $page,
