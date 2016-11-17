@@ -40,6 +40,7 @@ class SearchController extends Controller
     {
         $data = $request->query->all();
         $filters = $this->_getFiltersFromData($data);
+        $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
 
         //if filter is media, query on photos, videos and audios
         $searchFilter = $searchFilter!='media'?$searchFilter:'photos_videos_audios';
@@ -64,7 +65,8 @@ class SearchController extends Controller
 
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
             'result' => array($searchFilter => $searchResults),
-            'filters' => $filters
+            'filters' => $filters,
+            'page' => $page
         ));
     }
 
