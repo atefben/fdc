@@ -7,7 +7,6 @@
 
 <section class="brigth search-page-result search-page" id="main">
     <div>
-
         {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
 
         <div class="block-search block-01">
@@ -145,68 +144,23 @@
                     {% include 'FDCCorporateBundle:Search:event.html.twig' with {'result': result} %}
                 {% endif %}
 
-                <!--div class="top-texts">
-                    <a href="search-result-more.html" class="see-all">Tout voir</a>
-                    <h3>Autres résultats - 6 résultats</h3>
-                </div>
-
-                <section class="events last">
-                    <article class="block-poster-search medias">
-                        <div class="item audio conference-press">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-10.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Interview de Vincent Cassel dans la Salle Bazin</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="block-poster-search medias">
-                        <div class="item video photocall">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-06.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="block-poster-search medias">
-                        <div class="item video">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-06.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="block-poster-search medias">
-                        <div class="item last audio">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-06.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-                </section>
-            </div-->
-
-            {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
+                {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
+            </div>
         </div>
     </div>
 </section>
+
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : path('fdc_corporate_search_searchsubmit')
+},
+{
+"name" : 'breadcrumb.search.result'|trans,
+"url"  : ''
+}
+]
+} %}
 {% endblock %}

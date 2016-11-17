@@ -9,7 +9,7 @@
     <div class="block-search block-01">
         {{ form_errors(form) }}
         {{ form_start(form) }}
-            <div class="vFlexAlign">{{ 'search.form.entrezrecherche'|trans }}
+            <div class="vFlexAlign">
                 <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
                 <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
                 <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
@@ -109,4 +109,14 @@
         {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
     </div>
 </section>
+
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : ''
+}
+]
+} %}
 {% endblock %}
