@@ -202,7 +202,7 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     {
         return $this->btnSelectionLink;
     }
-    
+
     /**
      * Set rulesContent
      *
