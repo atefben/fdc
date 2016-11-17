@@ -322,4 +322,5 @@ parameters:
     admin_corpo_movie_inscription_id: 1
     admin_corpo_mediatheque_id: 1
     admin_fdc_page_mediatheque_id: 1
+    admin_corpo_search_id: 1
     sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider

@@ -1515,3 +1515,8 @@ services:
         calls:
           - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.corpo_search:
+        class: Base\AdminBundle\Admin\CorpoSearchAdmin
+        arguments: [~, Base\CoreBundle\Entity\CorpoSearch, BaseAdminBundle:CorpoSearchAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoSearch}

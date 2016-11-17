@@ -254,11 +254,10 @@ class PersonManager extends CoreManager
                 $entityRelated->setPosition($filmPersonMedia->Ordre);
 
                 // get the related media
-                $filmMedia = $this->mediaManager->getById($filmPersonMedia->Id);
+                $filmMedia = $this->mediaManager->getById($filmPersonMedia->Id, false);
                 $entityRelated->setMedia($filmMedia);
 
                 // add media
-                $entity->addMedia($entityRelated);
                 $collection->add($entityRelated);
             }
             // remove old relations
