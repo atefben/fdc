@@ -42,7 +42,7 @@ class SearchController extends Controller
         $filters = $this->_getFiltersFromData($data);
         $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
         $form = $this->_getFormFilters();
-        $form = $form->handRequest($request);
+        $form = $form->handleRequest($request);
 
         //if filter is media, query on photos, videos and audios
         $searchFilter = $searchFilter!='media'?$searchFilter:'photos_videos_audios';
@@ -54,7 +54,7 @@ class SearchController extends Controller
         $searchResults = array('items' => array(), 'count' => 0);
 
         foreach($items as $item) {
-            if($item == 'artist') {
+            if($item == 'artist' && isset($data['professions'])) {
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
 
