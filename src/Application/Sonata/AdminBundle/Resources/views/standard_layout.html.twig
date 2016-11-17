@@ -281,15 +281,6 @@ file that was distributed with this source code.
                                                                 </a>
                                                             </li>
                                                         {% endif %}
-                                                        {% if is_granted('ROLE_BASE_ADMIN_CORPO_SEARCH_ADMIN') %}
-                                                            <li>
-                                                                <a data-edit="true" class="fdc-check-lock-list"
-                                                                   href="{{ path('admin_base_core_corposearch_edit', {id: admin_corpo_search_id}) }}">
-                                                                    <i class="fa fa-angle-double-right"></i>
-                                                                    {{ 'dashboard.link.corpo_search'|trans({}, 'BaseAdminBundle') }}
-                                                                </a>
-                                                            </li>
-                                                        {% endif %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_WEB_TV_ADMIN') %}
                                                             <li>
                                                                 <a data-edit="true" class="fdc-check-lock-list"
@@ -654,6 +645,27 @@ file that was distributed with this source code.
                                             </ul>
                                         </li>
                                     {% endif %}
+
+                                    {% if is_granted('ROLE_BASE_ADMIN_CORPO_SEARCH_ADMIN') %}
+                                    <li class="treeview {% if active %} active{% endif %}">
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i>
+                                            <span>{{ 'dashboard.link.corpo_search'|trans({}, 'BaseAdminBundle') }}</span>
+                                            <i class="fa pull-right fa-angle-left"></i>
+                                        </a>
+                                        <ul class="treeview-menu {% if active %} active{% endif %}">
+                                            {% if is_granted('ROLE_BASE_ADMIN_CORPO_SEARCH_ADMIN') %}
+                                                <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corposearch_edit'] %} active{% endif %}">
+                                                    <a href="{{ path('admin_base_core_corposearch_edit', {id: admin_corpo_search_id}) }}">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                        {{ 'dashboard.link.corpo_search_pushs'|trans({}, 'BaseAdminBundle') }}
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+
                                     {% include 'ApplicationSonataAdminBundle::group_footer_pages.html.twig' %}
                                     {% include 'ApplicationSonataAdminBundle::group_seo.html.twig' %}
                                     {% include 'ApplicationSonataAdminBundle::group_orange.html.twig' %}
