@@ -41,6 +41,8 @@ class SearchController extends Controller
         $data = $request->query->all();
         $filters = $this->_getFiltersFromData($data);
         $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
+        $form = $this->_getFormFilters();
+        $form = $form->handRequest($request);
 
         //if filter is media, query on photos, videos and audios
         $searchFilter = $searchFilter!='media'?$searchFilter:'photos_videos_audios';
@@ -66,6 +68,7 @@ class SearchController extends Controller
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
             'result' => array($searchFilter => $searchResults),
             'filters' => $filters,
+            'form' => $form,
             'page' => $page
         ));
     }
@@ -259,6 +262,20 @@ class SearchController extends Controller
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $data = $searchForm->getData();
 
+            //if none checked, check all
+            $hasCheckedItem = false;
+            foreach($data as $filter) {
+                $hasCheckedItem = $hasCheckedItem?:$filter === true;
+            }
+            if(!$hasCheckedItem) {
+                foreach($data as &$filter) {
+                    if(is_bool($filter)) {
+                        $filter = !$filter;
+                    }
+                }
+            }
+
+
             $filters = $this->_getFiltersFromData($data);
             
             $data = $this->_translateData($data);
@@ -303,7 +320,12 @@ class SearchController extends Controller
                 $mediaResults['items'] = is_array($audioResults)?array_merge($mediaResults['items'], $audioResults['items']):$mediaResults['items'];
                 $mediaResults['count'] = is_array($audioResults)?$mediaResults['count']+$audioResults['count']:$mediaResults['count'];
 
-
+                //may have too many (4 infos + 4 statements). reduce to 4 items
+                if(count($mediaResults['items']) > 4) {
+                    for($i=count($mediaResults['items'])-1; $i>=4; $i--) {
+                        unset($mediaResults['items'][$i]);
+                    }
+                }
             } else {
                 $mediaResults = false;
             }
@@ -323,7 +345,6 @@ class SearchController extends Controller
                 'info_statement' => $infoStatementsResults,
                 'media' => $mediaResults,
                 'event' => $eventResults,
-
             );
 
             return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
