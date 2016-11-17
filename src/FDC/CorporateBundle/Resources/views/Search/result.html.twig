@@ -206,36 +206,50 @@
             </div-->
 
             <div class="block-push-03">
-                <div class="half-div block-push block-push-item">
-                    <div class="vFlexAlign">
-                        <div>
-                            <strong class="title">Les meilleurs interprètes masculins depuis 1960</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>
-                    </div>
-                    <img src="{{ asset('/bundles/fdccorporate/media/images/search-01.jpg') }}" alt="">
-                </div><!--
-        --><div class="half-div block-push block-push-item">
-                    <div class="vFlexAlign">
-                        <div>
-                            <strong class="title">Les meilleures interprètes féminines depuis 1960</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>
-                    </div>
-                    <img src="{{ asset('/bundles/fdccorporate/media/images/search-02.jpg') }}" alt="">
-                </div>
-            </div>
 
+                {% if page.pushImage1 is not null %}<div class="half-div block-push block-push-item">
+                    <div class="vFlexAlign">
+                        <div>
+                            <strong class="title">{{ page|trans_fallback('pushTitle1') }}</strong>
+                            <a class="link" href="{{ page|trans_fallback('pushUrl1') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
+                        </div>
+                    </div>
+                    {% set trans = page.pushImage1.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = page.pushImage1.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <img src="{% path trans.file , '325x205' %}" alt="">
+                </div>{% endif %}<!--
+        -->{% if page.pushImage2 is not null %}<div class="half-div block-push block-push-item">
+                    <div class="vFlexAlign">
+                        <div>
+                            <strong class="title">{{ page|trans_fallback('pushTitle2') }}</strong>
+                            <a class="link" href="{{ page|trans_fallback('pushUrl2') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
+                        </div>
+                    </div>
+                    {% set trans = page.pushImage2.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = page.pushImage2.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <img src="{% path trans.file , '325x205' %}" alt="">
+                </div>
+            </div>{% endif %}
+
+            {% if page.pushImage3 is not null %}
             <div class="block-push block-push-03-alone">
                 <div class="vFlexAlign">
                     <div>
-                        <strong class="title-2">Les jurys de l’édition 2010</strong>
-                        <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
+                        <strong class="title-2">{{ page|trans_fallback('pushTitle3') }}</strong>
+                        <a class="link" href="{{ page|trans_fallback('pushUrl3') }}"><i class="icon icon-arrow-right"></i> découvrir</a>
                     </div>
                 </div>
-                <img src="{{ asset('/bundles/fdccorporate/media/images/search-03.jpg') }}" alt="">
+                {% set trans = page.pushImage3.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = page.pushImage3.findTranslationByLocale('fr') %}
+                {% endif %}
+                <img src="{% path trans.file , '325x205' %}" alt="">
             </div>
-
+            {% endif %}
         </div>
     </div>
 </section>

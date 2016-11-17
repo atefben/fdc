@@ -110,12 +110,29 @@ class SearchType extends AbstractType {
                 'multiple' => true,
                 'expanded' => true
             ))
-            ->add('year-start', 'hidden', array(
+            ->add('yearStart', 'hidden', array(
                 'data' => '1946',
             ))
-            ->add('year-end', 'hidden', array(
+            ->add('yearEnd', 'hidden', array(
                 'data' => '2016',
-            ));
+            ))
+            ->add('artistCountry',  new TextType() , array(
+                'attr' => array(
+                    'class'       => 'country',
+                    'placeholder' => $this->translator->trans('search.form.country', array(), 'FDCCorporateBundle')
+                ),
+                'label' => false,
+                'required' => false
+            ))
+            ->add('movieCountry',  new TextType() , array(
+                'attr' => array(
+                    'class'       => 'country',
+                    'placeholder' => $this->translator->trans('search.form.country', array(), 'FDCCorporateBundle')
+                ),
+                'label' => false,
+                'required' => false
+            ))
+        ;
 
     }
 
