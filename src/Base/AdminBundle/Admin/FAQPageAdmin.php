@@ -161,6 +161,9 @@ class FAQPageAdmin extends Admin
         ;
     }
 
+    /**
+     * @return array
+     */
     public function getExportFields()
     {
         return array(

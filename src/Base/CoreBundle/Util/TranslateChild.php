@@ -43,7 +43,6 @@ trait TranslateChild
      *
      * @access public
      * @static
-     * @return void
      */
     public static function getStatuses()
     {
@@ -64,7 +63,6 @@ trait TranslateChild
      *
      * @access public
      * @static
-     * @return void
      */
     public static function getMainStatuses()
     {

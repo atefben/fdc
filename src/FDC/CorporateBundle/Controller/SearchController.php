@@ -264,12 +264,19 @@ class SearchController extends Controller
             $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
             $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
             $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
-            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 5) : false;
+            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : false;
 
             if($data['news']) {
                 $infoStatementsResults = array();
                 $infoStatementsResults['items'] = array_merge($infoResults['items'], $statementResults['items']);
                 $infoStatementsResults['count'] = $infoResults['count'] + $statementResults['count'];
+
+                //may have too many (4 infos + 4 statements). reduce to 4 items
+                if(count($infoStatementsResults['items']) > 4) {
+                    for($i=count($infoStatementsResults['items'])-1; $i>=4; $i--) {
+                        unset($infoStatementsResults['items'][$i]);
+                    }
+                }
             } else {
                 $infoStatementsResults = false;
             }
