@@ -49,20 +49,6 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     /**
      * @var string
      *
-     * @ORM\Column(name="btn_inscription_label", type="string", length=255, nullable=true)
-     */
-    protected $btnInscriptionLabel;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="btn_inscription_link", type="string", length=255, nullable=true)
-     */
-    protected $btnInscriptionLink;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="procedure_content", type="text", nullable=true)
      */
     protected $procedureContent;
@@ -216,53 +202,7 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     {
         return $this->btnSelectionLink;
     }
-
-    /**
-     * Set btnInscriptionLabel
-     *
-     * @param string $btnInscriptionLabel
-     * @return CorpoMovieInscriptionProcedureTranslation
-     */
-    public function setBtnInscriptionLabel($btnInscriptionLabel)
-    {
-        $this->btnInscriptionLabel = $btnInscriptionLabel;
-
-        return $this;
-    }
-
-    /**
-     * Get btnInscriptionLabel
-     *
-     * @return string 
-     */
-    public function getBtnInscriptionLabel()
-    {
-        return $this->btnInscriptionLabel;
-    }
-
-    /**
-     * Set btnInscriptionLink
-     *
-     * @param string $btnInscriptionLink
-     * @return CorpoMovieInscriptionProcedureTranslation
-     */
-    public function setBtnInscriptionLink($btnInscriptionLink)
-    {
-        $this->btnInscriptionLink = $btnInscriptionLink;
-
-        return $this;
-    }
-
-    /**
-     * Get btnInscriptionLink
-     *
-     * @return string 
-     */
-    public function getBtnInscriptionLink()
-    {
-        return $this->btnInscriptionLink;
-    }
-
+    
     /**
      * Set rulesContent
      *
