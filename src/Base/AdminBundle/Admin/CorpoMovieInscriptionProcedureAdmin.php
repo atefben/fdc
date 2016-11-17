@@ -125,14 +125,6 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'field_type' => 'text',
                         'label' => 'Lien du bouton 1 (gauche)'
                     ),
-                    'btnInscriptionLabel' => array(
-                        'field_type' => 'text',
-                        'label' => 'Libellé du bouton 2 (droite)'
-                    ),
-                    'btnInscriptionLink' => array(
-                        'field_type' => 'text',
-                        'label' => 'Lien du bouton 2 (droite)'
-                    ),
                     'firstColumnContact' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.first',
