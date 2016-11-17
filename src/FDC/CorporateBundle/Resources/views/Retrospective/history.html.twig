@@ -7,18 +7,18 @@
 
     <section class="border-bottom">
         {% if currentPage.image is defined and currentPage.image is not null %}
-        {% set mainTrans = currentPage.image.findTranslationByLocale(app.request.locale) %}
-        {% if mainTrans is null or mainTrans.file is null %}
-            {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
-        {% endif %}
-        {% set mainImage = mainTrans.file %}
-        <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %});">
-            <div class="vFlexAlign">
-                <div class="txts">
-                    <h1 class="title-3">{{ currentPage|trans_fallback('title') }}</h1>
+            {% set mainTrans = currentPage.image.findTranslationByLocale(app.request.locale) %}
+            {% if mainTrans is null or mainTrans.file is null %}
+                {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set mainImage = mainTrans.file %}
+            <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %});">
+                <div class="vFlexAlign">
+                    <div class="txts">
+                        <h1 class="title-3">{{ currentPage|trans_fallback('title') }}</h1>
+                    </div>
                 </div>
             </div>
-        </div>
         {% endif %}
 
         <div class="ajax-section">
@@ -90,26 +90,27 @@
                                                 <div class="wrapper-item">
                                                     <div class="poster">
                                                         <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}">
-                                                        <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                                        film: film.film,
-                                                        film_format: '259x352',
-                                                        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                                                        display_film_path: true
-                                                        }) %}"/>
+                                                            <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                            film: film.film,
+                                                            film_format: '259x352',
+                                                            film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                            display_film_path: true
+                                                            }) %}"/>
                                                         </a>
                                                     </div>
                                                     <div class="infos">
                                                         <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                     class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                                {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                                {% set directorsName = '' %}
-                                                                {% for director in directors %}
-                                                                <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}"><span class="names-a">
-                                                                    {{ directorsName ~ director.fullName  }}
+                                                        {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                        {% set directorsName = '' %}
+                                                        {% for director in directors %}
+                                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}"><span
+                                                                        class="names-a">
+                                                                    {{ directorsName ~ director.fullName }}
                                                                     {% if loop.index != directors|length %} - {% endif %}
                                                                 </span></a>
 
-                                                                {% endfor %}
+                                                        {% endfor %}
                                                         <span class="date">
                                                             {% set duration = [] %}
                                                             {% if film.film.duration is not empty %}
@@ -166,7 +167,7 @@
                         <div class="relative">
                             <div class="block-social-network block-social-network-all">
                                 <a class="facebook"
-                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ '69edition.festival.history'|trans|url_encode(true)  }}&picture={% path mainImage, '1280x808' %}&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
+                                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ '69edition.festival.history'|trans|url_encode(true) }}&picture={% path mainImage, '1280x808' %}&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
                                             class="icon icon-facebook"></i></a><!--
                 --><a class="twitter"
                       href="https://twitter.com/intent/tweet?text={{ '69edition.festival.history'|trans|url_encode(true)  ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i
@@ -186,13 +187,12 @@
 
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': '',
-    'detail' : '',
-    'title'  : '69edition.festival.history'|trans,
-    'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
-    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
-    'color' : true
-    }))
-    }}
+        'detail' : '',
+        'title'  : '69edition.festival.history'|trans,
+        'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+        'color' : true
+    })) }}
 
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
