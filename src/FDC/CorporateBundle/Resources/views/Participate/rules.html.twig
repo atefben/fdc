@@ -40,7 +40,7 @@
                     {% if procedure.pdf is defined and procedure.pdf is not null %}
                         <a href="{% path procedure.pdf|trans_fallback('file'), 'reference' %}"
                            class="button button-half" style="margin-top: 0px;"><i
-                                    class="icon icon-download"></i>{{ 'download.pdf'|trans }}</a>
+                                    class="icon icon-download" style="margin-right: 10px;"></i>{{ 'download.pdf'|trans }}</a>
                     {% endif %}
                 </div>
             </div>
