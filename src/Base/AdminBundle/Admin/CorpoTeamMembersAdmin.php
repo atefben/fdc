@@ -55,53 +55,52 @@ class CorpoTeamMembersAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-        ->add('id')
-        ->add('lastname', 'doctrine_orm_callback', array(
-            'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                if (!$value['value']) {
-                    return;
-                }
-                $queryBuilder->join("{$alias}.translations", 't');
-                $queryBuilder->andWhere('t.locale = :locale');
-                $queryBuilder->setParameter('locale', 'fr');
-                $queryBuilder->andWhere('t.lastname LIKE :lastname');
-                $queryBuilder->setParameter(':lastname', '%' . $value['value'] . '%');
-                return true;
-            },
-            'field_type' => 'text',
-            'label'      => 'Nom'
-        ))
-        ->add('firstname', 'doctrine_orm_callback', array(
-            'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                if (!$value['value']) {
-                    return;
-                }
-                $queryBuilder->join("{$alias}.translations", 't1');
-                $queryBuilder->andWhere('t1.locale = :locale');
-                $queryBuilder->setParameter('locale', 'fr');
-                $queryBuilder->andWhere('t1.firstname LIKE :firstname');
-                $queryBuilder->setParameter(':firstname', '%' . $value['value'] . '%');
-                return true;
-            },
-            'field_type' => 'text',
-            'label'      => 'Prénom'
-        ))
-        ->add('function', 'doctrine_orm_callback', array(
-            'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                if (!$value['value']) {
-                    return;
-                }
-                $queryBuilder->join("{$alias}.translations", 't2');
-                $queryBuilder->andWhere('t2.locale = :locale');
-                $queryBuilder->setParameter('locale', 'fr');
-                $queryBuilder->andWhere('t2.function LIKE :function');
-                $queryBuilder->setParameter(':function', '%' . $value['value'] . '%');
-                return true;
-            },
-            'field_type' => 'text',
-            'label'      => 'Nom de la fonction'
-        ))
-        ;
+            ->add('id')
+            ->add('lastname', 'doctrine_orm_callback', array(
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.lastname LIKE :lastname');
+                    $queryBuilder->setParameter(':lastname', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'Nom'
+            ))
+            ->add('firstname', 'doctrine_orm_callback', array(
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't1');
+                    $queryBuilder->andWhere('t1.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t1.firstname LIKE :firstname');
+                    $queryBuilder->setParameter(':firstname', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'Prénom'
+            ))
+            ->add('function', 'doctrine_orm_callback', array(
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't2');
+                    $queryBuilder->andWhere('t2.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t2.function LIKE :function');
+                    $queryBuilder->setParameter(':function', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'Nom de la fonction'
+            ));
     }
 
     /**
@@ -113,15 +112,15 @@ class CorpoTeamMembersAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('firstname', null, array(
                 'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
-                'label'    => 'Prénom',
+                'label' => 'Prénom',
             ))
             ->add('lastname', null, array(
                 'template' => 'BaseAdminBundle:AccreditProcedure:list_title2.html.twig',
-                'label'    => 'Nom',
+                'label' => 'Nom',
             ))
             ->add('function', null, array(
                 'template' => 'BaseAdminBundle:CorpoTeamMembers:list_function.html.twig',
-                'label'    => 'Nom du membre',
+                'label' => 'Nom du membre',
             ))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
@@ -129,8 +128,7 @@ class CorpoTeamMembersAdmin extends Admin
             ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
-            ))
-        ;
+            ));
     }
 
     /**
@@ -148,23 +146,23 @@ class CorpoTeamMembersAdmin extends Admin
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label'              => false,
+                'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales'   => $requiredLocales,
-                'fields'             => array(
+                'required_locales' => $requiredLocales,
+                'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
-                        'attr' => array (
+                        'attr' => array(
                             'class' => 'hidden'
                         )
                     ),
-                    'status'         => array(
-                        'label'                     => 'form.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
-                        'required'                  => false
+                        'required' => false
                     ),
                     'firstname' => array(
                         'label' => 'Prénom',
@@ -176,19 +174,20 @@ class CorpoTeamMembersAdmin extends Admin
                     ),
                     'function' => array(
                         'label' => 'Fonction',
-                        'field_type' => 'text'
+                        'field_type' => 'text',
+                        'required' => false
                     ),
-                    'createdAt'      => array(
+                    'createdAt' => array(
                         'display' => false
                     ),
-                    'updatedAt'      => array(
+                    'updatedAt' => array(
                         'display' => false
                     ),
                 )
             ))
             ->add('mainImage', 'sonata_type_model_list', array(
-                'label'    => 'Photo du membre',
-                'help'     => 'Dimensions attendues : 326x442. Format attendu : .jpg, .png, .gif',
+                'label' => 'Photo du membre',
+                'help' => 'Dimensions attendues : 326x442. Format attendu : .jpg, .png, .gif',
                 'required' => false,
                 'btn_delete' => false
             ))
@@ -200,10 +199,9 @@ class CorpoTeamMembersAdmin extends Admin
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
+                'choices' => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
-            ))
-            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ))// must be added to display informations about creation user / date, update user / date (top of right sidebar)
         ;
     }
 
@@ -217,7 +215,6 @@ class CorpoTeamMembersAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
             ->add('translate')
-            ->add('translateOptions')
-        ;
+            ->add('translateOptions');
     }
 }
