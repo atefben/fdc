@@ -7982,38 +7982,38 @@ header #searchContainer {
   position: relative;
 }
 
-.tab-2 {
+.tab-2, .tab-1 {
   position: relative;
 }
-.tab-2 .close-suggest {
+.tab-2 .close-suggest, .tab-1 .close-suggest {
   position: absolute;
   right: 6px;
   top: 3px;
   color: #c8a461;
   font-size: .7rem;
 }
-.tab-2 .suggest {
+.tab-2 .suggest, .tab-1 .suggest {
   position: absolute;
   background-color: #fff;
   color: #8a8a8a;
   z-index: 3;
   width: 367px;
 }
-.tab-2 .suggest li {
+.tab-2 .suggest li, .tab-1 .suggest li {
   height: 40px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
       align-items: center;
 }
-.tab-2 .suggest li strong {
+.tab-2 .suggest li strong, .tab-1 .suggest li strong {
   font-weight: 700;
   color: #c8a461;
 }
-.tab-2 .suggest li:nth-child(even) {
+.tab-2 .suggest li:nth-child(even), .tab-1 .suggest li:nth-child(even) {
   background-color: #fbfbfb;
 }
-.tab-2 .suggest a {
+.tab-2 .suggest a, .tab-1 .suggest a {
   color: #8a8a8a;
 }
 
