@@ -146,16 +146,17 @@
 .slider-01 {
   margin-bottom: 9px;
 
-  .owl-stage {
-    margin-left: -147px;
-  }
-
   & .owl-stage-outer {
     overflow: visible;
   }
 
+  .owl-item {
+    margin-left: -37px;
+  }
+
   .item {
     position:relative;
+    width: 80vw;
 
     &:after {
       content:'';
@@ -183,7 +184,7 @@
 
   figcaption {
     opacity:0;
-    transition:.5s;
+    transition:opacity .5s;
   }
 }
 

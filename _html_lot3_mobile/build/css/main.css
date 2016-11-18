@@ -2899,7 +2899,7 @@ video {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 20px;
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
@@ -2913,7 +2913,7 @@ video {
 .info span {
   color: #969696;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 20px;
 }
 .info strong {
   color: #333;
@@ -3515,6 +3515,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-legend {
   padding: 25px 0;
   padding-bottom: 33px;
+  width: 90vw;
+  margin: 0 auto;
 }
 .block-legend .info, .block-legend .info h2 {
   text-align: left;
@@ -3524,24 +3526,21 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #141414;
 }
 .block-legend .texts {
-  display: -ms-flexbox;
-  display: flex;
   margin-top: 22px;
 }
 .block-legend .texts h2 {
-  width: 38%;
-  box-sizing: border-box;
-  padding-right: 100px;
-  line-height: 24px;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #141414;
+  margin-bottom: 28px;
 }
 .block-legend .texts .text-01 {
-  width: 62%;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 24px;
   color: #868686;
-  font-size: .875rem;
-  box-sizing: border-box;
-  padding-right: 65px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #868686;
 }
 
 .block-videos {
@@ -8941,14 +8940,15 @@ body#home .isotope-01 .item .contain-img {
 .slider-01 {
   margin-bottom: 9px;
 }
-.slider-01 .owl-stage {
-  margin-left: -147px;
-}
 .slider-01 .owl-stage-outer {
   overflow: visible;
 }
+.slider-01 .owl-item {
+  margin-left: -37px;
+}
 .slider-01 .item {
   position: relative;
+  width: 80vw;
 }
 .slider-01 .item:after {
   content: '';
@@ -8969,7 +8969,7 @@ body#home .isotope-01 .item .contain-img {
 }
 .slider-01 figcaption {
   opacity: 0;
-  transition: .5s;
+  transition: opacity .5s;
 }
 
 .slider-02 .owl-stage {
