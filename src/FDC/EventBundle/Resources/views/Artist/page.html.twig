@@ -45,9 +45,9 @@
                         {% if artistImage %}
                             {% if artistImage %}
                                 {% if artistImage.file.width > artistImage.file.height %}
-                                    <img src="{% path artistImage.file, 'mobile' %}" alt="{{ artist.fullName }}"/>
+                                    <img src="{% path artistImage.file, 'mobile' %}" height="485"  alt="{{ artist.fullName }}"/>
                                 {%  else  %}
-                                    <img src="{% path artistImage.file, '384x485' %}" height="485" alt="{{ artist.fullName }}"/>
+                                    <img src="{% path artistImage.file, '384x485' %}" alt="{{ artist.fullName }}"/>
                                 {% endif %}
                                 {%  set shareMedia = artistImage %}
                                 {% if copyright is not empty %}
