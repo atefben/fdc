@@ -9,6 +9,8 @@ namespace Base\CoreBundle\SearchRepository;
  */
 use Base\CoreBundle\Component\Repository\SearchRepository;
 use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
+use Elastica\Filter\Range;
+use Elastica\Query\Filtered;
 
 class NewsRepository extends SearchRepository implements SearchRepositoryInterface
 {
@@ -21,12 +23,35 @@ class NewsRepository extends SearchRepository implements SearchRepositoryInterfa
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         if(!empty($searchTerm['search'])) {
-            $finalQuery
+            $stringQuery = new \Elastica\Query\BoolQuery();
+
+            $stringQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getThemeQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getTagsQuery($_locale, $searchTerm['search']))
-                //->addShould($this->getDateQuery($searchTerm['year-start'], $searchTerm['year-end']))
             ;
+
+            $finalQuery->addMust($stringQuery);
+        }
+
+        if(!empty($searchTerm['yearStart']) && !empty($searchTerm['yearEnd'])) {
+            $dateQuery = new \Elastica\Query\BoolQuery();
+
+            $rangeLower = new Filtered(
+                $dateQuery,
+                new Range('publishedAt', array(
+                    'gte' => $searchTerm['yearStart'].'-01-01',
+                ))
+            );
+
+            $rangeUpper = new Filtered(
+                $rangeLower,
+                new Range('publishedAt', array(
+                    'lte' => $searchTerm['yearEnd'].'-12-31'
+                ))
+            );
+
+            $finalQuery->addMust($rangeUpper);
         }
 
         $statusQuery = new \Elastica\Query\BoolQuery();
@@ -51,13 +76,16 @@ class NewsRepository extends SearchRepository implements SearchRepositoryInterfa
     }
 
     private function getDateQuery($yearStart, $yearEnd) {
-        $filter = new \Elastica\Filter\Range('publishedAt', array(
+        /*$filter = new \Elastica\Filter\Range('publishedAt', array(
             'gte' => strtotime($yearStart),
             'lte' => strtotime($yearEnd),
             'format' => 'dd/MM/yyyy'
         ));
 
-        return new \Elastica\Query\Filtered(null, $filter);
+        return new \Elastica\Query\Filtered(null, $filter);*/
+
+
+        return new \Elastica\Query\BoolQuery($rangeUpper);
     }
 
 

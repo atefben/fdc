@@ -9,6 +9,8 @@ namespace Base\CoreBundle\SearchRepository;
  */
 use Base\CoreBundle\Component\Repository\SearchRepository;
 use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
+use Elastica\Filter\Range;
+use Elastica\Query\Filtered;
 
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
@@ -22,15 +24,36 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         //string query
         if(!empty($searchTerm['search'])) {
             $stringQuery = new \Elastica\Query\BoolQuery();
+            
             $stringQuery
                 ->addShould($this->getFieldsQuery($searchTerm['search']))
                 ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getPersonsQuery($searchTerm['search']))
                 ->addShould($this->getCountryQuery($_locale, $searchTerm['search']))
-                //->addShould($this->getDateQuery($searchTerm['year-start'], $searchTerm['year-end']))
             ;
 
             $finalQuery->addMust($stringQuery);
+        }
+
+        //date query
+        if(!empty($searchTerm['yearStart']) && !empty($searchTerm['yearEnd'])) {
+            $dateQuery = new \Elastica\Query\BoolQuery();
+
+            $rangeLower = new Filtered(
+                $dateQuery,
+                new Range('festival.year', array(
+                    'gte' => $searchTerm['yearStart'],
+                ))
+            );
+
+            $rangeUpper = new Filtered(
+                $rangeLower,
+                new Range('festival.year', array(
+                    'lte' => $searchTerm['yearEnd'],
+                ))
+            );
+
+            $finalQuery->addMust($rangeUpper);
         }
 
         //status query

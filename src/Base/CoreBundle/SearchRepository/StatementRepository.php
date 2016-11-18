@@ -9,6 +9,8 @@ namespace Base\CoreBundle\SearchRepository;
  */
 use Base\CoreBundle\Component\Repository\SearchRepository;
 use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
+use Elastica\Filter\Range;
+use Elastica\Query\Filtered;
 
 class StatementRepository extends SearchRepository implements SearchRepositoryInterface
 {
@@ -20,13 +22,37 @@ class StatementRepository extends SearchRepository implements SearchRepositoryIn
         if(!is_array($searchTerm)) {
             $searchTerm = array('search' => $searchTerm);
         }
-        
+
         if(!empty($searchTerm['search'])) {
-            $finalQuery
+            $stringQuery = new \Elastica\Query\BoolQuery();
+
+            $stringQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getThemeQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getTagsQuery($_locale, $searchTerm['search']))
             ;
+
+            $finalQuery->addMust($stringQuery);
+        }
+
+        if(!empty($searchTerm['yearStart']) && !empty($searchTerm['yearEnd'])) {
+            $dateQuery = new \Elastica\Query\BoolQuery();
+
+            $rangeLower = new Filtered(
+                $dateQuery,
+                new Range('publishedAt', array(
+                    'gte' => $searchTerm['yearStart'].'-01-01',
+                ))
+            );
+
+            $rangeUpper = new Filtered(
+                $rangeLower,
+                new Range('publishedAt', array(
+                    'lte' => $searchTerm['yearEnd'].'-12-31'
+                ))
+            );
+
+            $finalQuery->addMust($rangeUpper);
         }
         
         $statusQuery = new \Elastica\Query\BoolQuery();

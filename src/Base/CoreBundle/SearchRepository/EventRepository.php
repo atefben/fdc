@@ -22,10 +22,14 @@ class EventRepository extends SearchRepository implements SearchRepositoryInterf
         $finalQuery = new \Elastica\Query\BoolQuery();
 
         if(!empty($searchTerm['search'])) {
-            $finalQuery
+            $stringQuery = new \Elastica\Query\BoolQuery();
+
+            $stringQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getThemeQuery($_locale, $searchTerm['search']))
                 ->addShould($this->getTagsQuery($_locale, $searchTerm['search']));
+
+            $finalQuery->addMust($stringQuery);
         }
         
         $statusQuery = new \Elastica\Query\BoolQuery();
