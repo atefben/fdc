@@ -176,7 +176,7 @@ class CorpoTeamMembersAdmin extends Admin
                         'label' => 'Fonction',
                         'field_type' => 'text',
                         'required' => false,
-                        'help' => 'Texte tronqué à partir de 70 caractères.'
+                        'sonata_help' => 'Texte tronqué à partir de 70 caractères.'
                     ),
                     'createdAt' => array(
                         'display' => false
