@@ -310,9 +310,18 @@
       }
 
       article{
-        margin-right: 40px;
+        margin-right: 0px;
         margin-bottom: 26px;
       }
+
+      .item {
+        margin-right:31px;
+      }
+
+      .block-poster-search:not(.landscape-more) {
+        max-width: 195px;
+      }
+
     }
 
     .top-texts {

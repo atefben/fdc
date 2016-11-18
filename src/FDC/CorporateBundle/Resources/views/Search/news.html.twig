@@ -5,7 +5,7 @@
 
 <section class="news">
     {% for article in result.news.items %}
-        <article class="block-poster-search medias">
+        <article class="block-poster-search medias landscape-more">
             <div class="item {{ article.newsType|get_news_type }} release-press">
                 <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
                     <div class="contain-img landscape">
