@@ -56,8 +56,12 @@
                                     </p>
                                 {% endif %}
                             {%- elseif artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
-                                <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '384x485' %}"
-                                     alt="{{ artist.fullName }}"/>
+                                {% if artist.presidentJuryImage|trans_fallback('file').width > artist.presidentJuryImage|trans_fallback('file').height %}
+                                    <img src="{% path artist.presidentJuryImage|trans_fallback('file'), 'mobile' %}" height="485" alt="{{ artist.fullName }}"/>
+                                {%  else  %}
+                                    <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
+
                                 {%  set shareMedia = artist.presidentJuryImage|trans_fallback('file') %}
                                 {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
                                 <p class="caption" id="captionCopyright">
@@ -66,8 +70,11 @@
                                 {%- endif -%}
                             {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                                 {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
-                                <img src="{% path artistMedia.file, '384x485' %}"
-                                     alt="{{ artist.fullName }}"/>
+                                {% if artistMedia.file.width > artistMedia.file.height %}
+                                    <img src="{% path artistMedia.file, 'mobile' %}" height="485"  alt="{{ artist.fullName }}"/>
+                                {%  else  %}
+                                    <img src="{% path artistMedia.file, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
                                 {%  set shareMedia = artistMedia.file %}
                                 {%- if artistMedia.copyright is not empty -%}
                                     <p class="caption" id="captionCopyright">
@@ -76,8 +83,11 @@
                                 {% endif %}
                             {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                                 {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
-                                <img src="{% path artistMedia.file, '384x485' %}"
-                                     alt="{{ artist.fullName }}"/>
+                                {% if artistMedia.file.width > artistMedia.file.height %}
+                                    <img src="{% path artistMedia.file, 'mobile' %}" height="485"  alt="{{ artist.fullName }}"/>
+                                {%  else  %}
+                                    <img src="{% path artistMedia.file, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
                                 {%  set shareMedia = artistMedia.file %}
                                 {%- if artistMedia.copyright is not empty -%}
                                     <p class="caption" id="captionCopyright">
@@ -85,14 +95,22 @@
                                     </p>
                                 {%- endif -%}
                             {%- elseif class(artistImage) == 'FilmMedia' -%}
-                                <img src="{% path artistImage.file, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% if artistMedia.file.width > artistMedia.file.height %}
+                                    <img src="{% path artistMedia.file, 'mobile' %}" height="485"  alt="{{ artist.fullName }}"/>
+                                {%  else  %}
+                                    <img src="{% path artistMedia.file, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
                                 {%  set shareMedia = artistImage.file %}
                                 {% set legend = artistImage.credits %}
                                 {% set copyright = artistImage.copyright %}
                                 <p class="caption"
                                    id="captionCopyright">{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                             {% else %}
-                                <img src="{% path artistImage, '384x485 ' %}" alt="{{ artist.fullName }}"/>
+                                {% if artistImage.width > artistImage.height %}
+                                    <img src="{% path artistImage, 'mobile' %}" height="485"  alt="{{ artist.fullName }}"/>
+                                {%  else  %}
+                                    <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
                                 {%  set shareMedia = artistImage %}
                             {%- endif -%}
                         {% else %}
