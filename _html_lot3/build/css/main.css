@@ -12711,8 +12711,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
       flex-wrap: wrap;
 }
 .block-search .content-result.result-more article {
-  margin-right: 40px;
+  margin-right: 0px;
   margin-bottom: 26px;
+}
+.block-search .content-result.result-more .item {
+  margin-right: 31px;
 }
 .block-search .content-result .top-texts {
   margin-bottom: 25px;
