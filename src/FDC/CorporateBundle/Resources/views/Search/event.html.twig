@@ -5,7 +5,7 @@
 
 <section class="events">
     {% for event in result.event.items %}
-        <article class="block-poster-search medias">
+        <article class="block-poster-search medias landscape-more">
             <div class="item event conference-press">
                 <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
                     <div class="contain-img landscape">
