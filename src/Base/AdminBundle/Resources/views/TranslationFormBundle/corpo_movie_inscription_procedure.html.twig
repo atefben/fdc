@@ -43,6 +43,8 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.pushTitle) }}
+                                    {{ form_row(translationsFields.pushSubTitle) }}
                                     {{ form_row(translationsFields.rulesContent) }}
                                     {{ form_row(form.parent.children.pdf) }}
                                     <div class="col-md-5">
@@ -146,8 +148,32 @@
                             <div class="box box-success">
                                 <div class="box-body">
                                     <h4 class="box-title">
-                                        Procédures d’inscription
+                                        Règlement de la procédure
                                     </h4>
+                                    <div>
+                                        <label>
+                                            Titre du push
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.pushTitle }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Sous-titre du push
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.pushSubTitle }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
                                     <div>
                                         <label>
                                             Règlement contenu

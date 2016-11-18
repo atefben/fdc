@@ -35,6 +35,20 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     /**
      * @var string
      *
+     * @ORM\Column(name="push_title", type="string", length=255, nullable=true)
+     */
+    protected $pushTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="push_sub_title", type="string", length=255, nullable=true)
+     */
+    protected $pushSubTitle;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="btn_selection_label", type="string", length=255, nullable=true)
      */
     protected $btnSelectionLabel;
@@ -385,5 +399,51 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     public function getBtnText()
     {
         return $this->btnText;
+    }
+
+    /**
+     * Set pushTitle
+     *
+     * @param string $pushTitle
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setPushTitle($pushTitle)
+    {
+        $this->pushTitle = $pushTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get pushTitle
+     *
+     * @return string 
+     */
+    public function getPushTitle()
+    {
+        return $this->pushTitle;
+    }
+
+    /**
+     * Set pushSubTitle
+     *
+     * @param string $pushSubTitle
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setPushSubTitle($pushSubTitle)
+    {
+        $this->pushSubTitle = $pushSubTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get pushSubTitle
+     *
+     * @return string 
+     */
+    public function getPushSubTitle()
+    {
+        return $this->pushSubTitle;
     }
 }

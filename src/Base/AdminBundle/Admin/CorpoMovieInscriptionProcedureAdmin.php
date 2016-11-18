@@ -103,6 +103,24 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                             )
                         )
                     ),
+                    'pushTitle' => array(
+                        'label' => 'Titre du push',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'pushSubTitle' => array(
+                        'label' => 'Sous-titre du push',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
                     'procedureContent' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Description de la procédure',
