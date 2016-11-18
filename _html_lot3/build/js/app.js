@@ -3190,13 +3190,28 @@ var autoComplete = function() {
             var chaine = txt.indexOf(valueTrunc);
 
             if(chaine > -1) {
-              $suggest.append('<li><span>' + txt + '</span></li>');
+              $suggest.append('<li data-country='+name+'><span>' + txt + '</span></li>');
 
               $('.sub-tab').css('opacity', '0.2');
               $suggest.addClass('open');
             }
 
           }
+
+          $('.suggest li').off('click').on('click', function(){
+
+            var data = $(this).data('country');
+            console.log($(this).parent().prev().prev());
+            $(this).parent().parent().parent().find('.country').val(data.toLowerCase());
+
+            $('.sub-tab').css('opacity', '1');
+            $('.suggest').empty();
+            $('.suggest').removeClass('open');
+
+            $('.close-suggest').css("display","none");
+
+          });
+
         } else {
           $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
         }
