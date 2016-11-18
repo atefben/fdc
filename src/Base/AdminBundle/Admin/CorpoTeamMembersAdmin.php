@@ -175,7 +175,8 @@ class CorpoTeamMembersAdmin extends Admin
                     'function' => array(
                         'label' => 'Fonction',
                         'field_type' => 'text',
-                        'required' => false
+                        'required' => false,
+                        'help' => 'Texte tronqué à partir de 70 caractères.'
                     ),
                     'createdAt' => array(
                         'display' => false
