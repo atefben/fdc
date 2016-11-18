@@ -109,4 +109,18 @@
         {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
     </div>
 </section>
+
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.home'|trans,
+"url"  : path('fdc_corporate_default_home')
+},
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : ''
+}
+]
+} %}
 {% endblock %}

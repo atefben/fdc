@@ -5144,5 +5144,8 @@ $(document).ready(function () {
         owInitFilter();
     }
 
+    if($('.block-diaporama').length) {
+        owInitSlider('slider-01');
+    }
 
 });

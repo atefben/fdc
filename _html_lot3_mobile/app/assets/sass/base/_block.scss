@@ -548,6 +548,8 @@
 .block-legend {
   padding: 25px 0;
   padding-bottom: 33px;
+  width: 90vw;
+  margin: 0 auto;
 
   .info, .info h2 {
     text-align: left;
@@ -561,24 +563,22 @@
   }
 
   .texts {
-    display: flex;
     margin-top: 22px;
 
     h2 {
-      width: 38%;
-      box-sizing: border-box;
-      padding-right: 100px;
-      line-height: 24px;
+      font-size: 35px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #141414;
+      margin-bottom:28px;
     }
 
     .text-01 {
-      width: 62%;
       font-family: $CamphorRegular;
-      line-height: 24px;
       color: #868686;
-      font-size: .875rem;
-      box-sizing: border-box;
-      padding-right: 65px;
+      font-size: 20px;
+      line-height: 1.5;
+      color: #868686;
     }
   }
 }
