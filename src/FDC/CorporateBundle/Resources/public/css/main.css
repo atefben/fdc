@@ -12717,7 +12717,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .content-result.result-more .item {
   margin-right: 31px;
 }
-.block-search .content-result.result-more .block-poster-search {
+.block-search .content-result.result-more .block-poster-search:not(.landscape-more) {
   max-width: 195px;
 }
 .block-search .content-result .top-texts {

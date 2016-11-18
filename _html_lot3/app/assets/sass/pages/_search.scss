@@ -318,7 +318,7 @@
         margin-right:31px;
       }
 
-      .block-poster-search {
+      .block-poster-search:not(.landscape-more) {
         max-width: 195px;
       }
 
