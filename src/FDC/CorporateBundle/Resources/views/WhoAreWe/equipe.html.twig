@@ -45,12 +45,12 @@
 
                     {% for teamAssociation in datas.teams %}
                     <div class="pages {{ teamAssociation.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}" data-filter="{{ teamAssociation.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}">
-                        {% for departementAssociation in teamAssociation.teams.departement if departementAssociation is defined and departementAssociation is not null %}
+                        {% for departementAssociation in teamAssociation.teams.departement %}
                         <div class="block-01 border-bottom padding-bottom ">
                             <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
                             <div class="container-items">
                                 <div class="grid-sizer"></div>
-                                {% for membersAssociation in departementAssociation.departement.members if membersAssociation.members is defined and membersAssociation.members is not null %}
+                                {% for membersAssociation in departementAssociation.departement.members if membersAssociation.members is not null %}
                                 <div class="item block-poster festival-de-cannes">
                                     <a>
                                         <div class="contain-img">
