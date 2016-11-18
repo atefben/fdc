@@ -210,8 +210,8 @@
         </div>
         <span id="slider-snap-value-upper" class="number"></span>
       </div>
-      <input type="hidden" for="s-yearstart" id="s-yearstart" value="1980">
-      <input type="hidden" for="s-yearend" id="s-yearend" value="1990">
+      <input type="hidden" for="s-yearstart" id="s-yearstart" class="s-yearstart" value="1946">
+      <input type="hidden" for="s-yearend" id="s-yearend" class="s-yearend" value="2016">
 
       <div class="tabs-two vFlexAlign">
         <label for="s-artist" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">Artistes</span><input type="checkbox" name="artist" id='s-artist'></label>
@@ -224,19 +224,16 @@
             <div class="tab-1 tab">
 
 
-              <div class="tab-selection" id='tab1'>
-    <!--            <label for="select-country-1" id="format" class="selection filter">Pays </label>
+              <div class="tab-country" id='tab1'>
+                <span class="suggest-counter">
+                  <input type="text" for="select-country-2" id="format1" class="country" placeholder="Pays">
+                  <span class="close-suggest">✕</span>
+                    <div>
+                      <ul class="suggest">
 
-                <select name="select-country-1" id="select-country-1" class="select">
-
-                </select>-->
-
-                <input type="text" for="select-country-1" id="format" class="country" placeholder="Pays">
-                <div>
-                  <ul class="suggest">
-
-                  </ul>
-                </div>
+                      </ul>
+                    </div>
+                </span>
               </div>
 
               <div class="sub-tab">

@@ -7,8 +7,8 @@ var owInitSliderSelect = function(id) {
     	document.getElementById('slider-snap-value-upper')
     ];
 
-      ys = $('#s-yearstart').val();
-      ye = $('#s-yearend').val();
+      ys = $('.s-yearstart').val();
+      ye = $('.s-yearend').val();
 
       ys = parseInt(ys);
       ye = parseInt(ye);
@@ -29,8 +29,8 @@ var owInitSliderSelect = function(id) {
         var lower = parseInt(values[0]);
         var up = parseInt(values[1]);
 
-        $('#s-yearstart').val(lower);
-        $('#s-yearend').val(up);
+        $('.s-yearstart').val(lower);
+        $('.s-yearend').val(up);
         
     });
   }
