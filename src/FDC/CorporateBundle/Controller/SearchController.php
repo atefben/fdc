@@ -30,6 +30,119 @@ class SearchController extends Controller
     );
 
     /**
+     * @Route("/search", options={"expose"=true})
+     */
+    public function searchSubmitAction($_locale, Request $request)
+    {
+        $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
+
+        $searchForm = $this->_getFormFilters();
+        $searchForm->handleRequest($request);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $data = $searchForm->getData();
+
+            //if none checked, check all
+            $hasCheckedItem = false;
+            foreach($data as $filter) {
+                $hasCheckedItem = $hasCheckedItem?:$filter === true;
+            }
+            if(!$hasCheckedItem) {
+                foreach($data as &$filter) {
+                    if(is_bool($filter)) {
+                        $filter = !$filter;
+                    }
+                }
+            }
+
+
+            $filters = $this->_getFiltersFromData($data);
+
+
+            if($data['professions']) { //must be done before translation
+                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
+            }
+
+            $data = $this->_translateData($data);
+
+            $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
+            $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
+            $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
+            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : false;
+
+            if($data['news']) {
+                $infoStatementsResults = array();
+                $infoStatementsResults['items'] = array_merge($infoResults['items'], $statementResults['items']);
+                $infoStatementsResults['count'] = $infoResults['count'] + $statementResults['count'];
+
+                //may have too many (4 infos + 4 statements). reduce to 4 items
+                if(count($infoStatementsResults['items']) > 4) {
+                    for($i=count($infoStatementsResults['items'])-1; $i>=4; $i--) {
+                        unset($infoStatementsResults['items'][$i]);
+                    }
+                }
+            } else {
+                $infoStatementsResults = false;
+            }
+
+            if($data['photos'] || $data['videos'] || $data['audios']) {
+                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, 2) : false;
+                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, 2) : false;
+                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, 2) : false;
+
+                //merging medias (photos,videos,audios)
+                $mediaResults = array('items' => array(), 'count' => 0);
+
+                //photos
+                $mediaResults['items'] = is_array($photoResults)?array_merge($mediaResults['items'], $photoResults['items']):$mediaResults['items'];
+                $mediaResults['count'] = is_array($photoResults)?$mediaResults['count']+$photoResults['count']:$mediaResults['count'];
+
+                //videos
+                $mediaResults['items'] = is_array($videoResults)?array_merge($mediaResults['items'], $videoResults['items']):$mediaResults['items'];
+                $mediaResults['count'] = is_array($videoResults)?$mediaResults['count']+$videoResults['count']:$mediaResults['count'];
+
+                //audios
+                $mediaResults['items'] = is_array($audioResults)?array_merge($mediaResults['items'], $audioResults['items']):$mediaResults['items'];
+                $mediaResults['count'] = is_array($audioResults)?$mediaResults['count']+$audioResults['count']:$mediaResults['count'];
+
+                //may have too many. reduce to 4 items
+                if(count($mediaResults['items']) > 4) {
+                    for($i=count($mediaResults['items'])-1; $i>=4; $i--) {
+                        unset($mediaResults['items'][$i]);
+                    }
+                }
+            } else {
+                $mediaResults = false;
+            }
+
+            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
+            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
+
+            $result = array(
+                'news' => $newsResults,
+                'artist' => $artistResults,
+                'film' => $filmResults,
+                'info_statement' => $infoStatementsResults,
+                'media' => $mediaResults,
+                'event' => $eventResults,
+            );
+
+            return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
+                'result' => $result,
+                'filters' => $filters,
+                'form' => $searchForm->createView(),
+                'page' => $page
+            ));
+        } else {
+            return $this->render('FDCCorporateBundle:Search:search.html.twig', array(
+                'form' => $searchForm->createView(),
+                'page' => $page
+            ));
+        }
+
+    }
+
+    /**
      *
      * @Route("/search/{searchFilter}")
      * @param Request $request
@@ -249,118 +362,7 @@ class SearchController extends Controller
         return $data;
     }
 
-    /**
-     * @Route("/search", options={"expose"=true})
-     */
-    public function searchSubmitAction($_locale, Request $request)
-    {
-        $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
 
-        $searchForm = $this->_getFormFilters();
-        $searchForm->handleRequest($request);
-
-        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $data = $searchForm->getData();
-
-            //if none checked, check all
-            $hasCheckedItem = false;
-            foreach($data as $filter) {
-                $hasCheckedItem = $hasCheckedItem?:$filter === true;
-            }
-            if(!$hasCheckedItem) {
-                foreach($data as &$filter) {
-                    if(is_bool($filter)) {
-                        $filter = !$filter;
-                    }
-                }
-            }
-
-
-            $filters = $this->_getFiltersFromData($data);
-            
-            $data = $this->_translateData($data);
-            
-            $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
-            $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
-            $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
-            $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : false;
-
-            if($data['news']) {
-                $infoStatementsResults = array();
-                $infoStatementsResults['items'] = array_merge($infoResults['items'], $statementResults['items']);
-                $infoStatementsResults['count'] = $infoResults['count'] + $statementResults['count'];
-
-                //may have too many (4 infos + 4 statements). reduce to 4 items
-                if(count($infoStatementsResults['items']) > 4) {
-                    for($i=count($infoStatementsResults['items'])-1; $i>=4; $i--) {
-                        unset($infoStatementsResults['items'][$i]);
-                    }
-                }
-            } else {
-                $infoStatementsResults = false;
-            }
-
-            if($data['photos'] || $data['videos'] || $data['audios']) {
-                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, 2) : false;
-                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, 2) : false;
-                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, 2) : false;
-
-                //merging medias (photos,videos,audios)
-                $mediaResults = array('items' => array(), 'count' => 0);
-
-                //photos
-                $mediaResults['items'] = is_array($photoResults)?array_merge($mediaResults['items'], $photoResults['items']):$mediaResults['items'];
-                $mediaResults['count'] = is_array($photoResults)?$mediaResults['count']+$photoResults['count']:$mediaResults['count'];
-
-                //videos
-                $mediaResults['items'] = is_array($videoResults)?array_merge($mediaResults['items'], $videoResults['items']):$mediaResults['items'];
-                $mediaResults['count'] = is_array($videoResults)?$mediaResults['count']+$videoResults['count']:$mediaResults['count'];
-
-                //audios
-                $mediaResults['items'] = is_array($audioResults)?array_merge($mediaResults['items'], $audioResults['items']):$mediaResults['items'];
-                $mediaResults['count'] = is_array($audioResults)?$mediaResults['count']+$audioResults['count']:$mediaResults['count'];
-
-                //may have too many (4 infos + 4 statements). reduce to 4 items
-                if(count($mediaResults['items']) > 4) {
-                    for($i=count($mediaResults['items'])-1; $i>=4; $i--) {
-                        unset($mediaResults['items'][$i]);
-                    }
-                }
-            } else {
-                $mediaResults = false;
-            }
-
-            if($data['professions']) {
-                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
-            }
-
-            $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
-
-            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
-
-            $result = array(
-                'news' => $newsResults,
-                'artist' => $artistResults,
-                'film' => $filmResults,
-                'info_statement' => $infoStatementsResults,
-                'media' => $mediaResults,
-                'event' => $eventResults,
-            );
-
-            return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
-                'result' => $result,
-                'filters' => $filters,
-                'form' => $searchForm->createView(),
-                'page' => $page
-            ));
-        } else {
-            return $this->render('FDCCorporateBundle:Search:search.html.twig', array(
-                'form' => $searchForm->createView(),
-                'page' => $page
-            ));
-        }
-
-    }
 
     /**
      * @Route("/searchautocomplete/{searchTerm}", options={"expose"=true})
@@ -380,6 +382,38 @@ class SearchController extends Controller
             ->addShould($this->getFilmQuery($repository, $searchTerm, $_locale))
             ->addShould($this->getContentQuery($repository, $searchTerm, $_locale))
             ->addShould($this->getArtistQuery($repository, $searchTerm, $_locale))
+        ;
+
+        $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
+
+        $response = array();
+        foreach ($paginatedResults as $result) {
+            $response[] = (object) array(
+                'type' => $this->renderView("FDCEventBundle:Search:components/type.html.twig", array('object' => $result)),
+                'name' => $this->renderView("FDCEventBundle:Search:components/name.html.twig", array('object' => $result)),
+                'link' => $this->renderView("FDCEventBundle:Search:components/link.html.twig", array('object' => $result)),
+            );
+        }
+
+        return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/countryautocomplete/{searchTerm}", options={"expose"=true})
+     * @param $searchTerm
+     * @return JsonResponse
+     */
+    public function countryAutocompleteAction($_locale, $searchTerm = null)
+    {
+        if ($searchTerm === null) {
+            throw $this->createNotFoundException();
+        }
+
+        $repository = $this->get('base.search.repository');
+
+        $finalQuery = new \Elastica\Query\BoolQuery();
+        $finalQuery
+            ->addMust($this->getCountryQuery($repository, $searchTerm, $_locale))
         ;
 
         $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
