@@ -228,10 +228,15 @@
     <!--            <label for="select-country-1" id="format" class="selection filter">Pays </label>
 
                 <select name="select-country-1" id="select-country-1" class="select">
-                  
+
                 </select>-->
 
                 <input type="text" for="select-country-1" id="format" class="country" placeholder="Pays">
+                <div>
+                  <ul class="suggest">
+
+                  </ul>
+                </div>
               </div>
 
               <div class="sub-tab">
@@ -257,9 +262,16 @@
           <td>
             <div class="tab-2 tab">
 
-              <div class="tab-selection" id='tab2'>
-                <input type="text" for="select-country-1" id="format2" class="country" placeholder="Pays">
-                <div class="suggest"></div>
+              <div class="tab-country" id='tab2'>
+                <span class="suggest-counter">
+                  <input type="text" for="select-country-1" id="format2" class="country" placeholder="Pays">
+                  <span class="close-suggest">✕</span>
+                    <div>
+                      <ul class="suggest">
+
+                      </ul>
+                    </div>
+                </span>
               </div>
 
 

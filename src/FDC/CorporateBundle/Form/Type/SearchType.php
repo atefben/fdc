@@ -40,7 +40,6 @@ class SearchType extends AbstractType {
             ->setMethod('GET')
             ->add('search',  new TextType() , array(
                 'attr' => array(
-                    'value'       => $this->searchTerm,
                     'placeholder' => $this->translator->trans('search.form.entrezrecherche', array(), 'FDCCorporateBundle')
                 ),
                 'label' => false,
