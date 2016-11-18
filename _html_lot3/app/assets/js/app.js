@@ -336,6 +336,8 @@ $(document).ready(function () {
         owInitFilterSearch();
         owInitFilter(true);
         owFixImg();
+
+        autoComplete();
     }
 
     if ($('.filters').length) {
