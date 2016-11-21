@@ -3229,6 +3229,78 @@ var autoComplete = function() {
 
   });
 
+  $('.close-suggest').css("display","none");
+
+  $('.searchBar').on('input', function(){
+
+    $('.close-suggest').css("display","block");
+
+    var value = $(this).val();
+    var $suggest = $(this).next().next().find('.suggest');
+    var noWhitespaceValue = value.replace(/\s+/g, '');
+    var noWhitespaceCount = noWhitespaceValue.length;
+
+    if (GLOBALS.env == "html") {
+      searchUrl = GLOBALS.urls.searchUrl;
+    } else {
+      searchUrl = GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value);
+    }
+
+    $.ajax({
+      type: "GET",
+      url: searchUrl,
+      success: function (data) {
+        $suggest.empty();
+
+        if (data.length > 0) {
+
+
+          for (var i = 0; i < data.length; i++) {
+            var name = data[i].name;
+            var txt = name.toLowerCase();
+
+
+            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+
+            var valueTrunc = value.substring(0, 3)
+            var chaine = txt.indexOf(valueTrunc);
+
+            if(chaine > -1) {
+              $suggest.append('<li data-country="'+name+'"><span>' + txt + '</span></li>');
+
+              $('.sub-tab').css('opacity', '0.2');
+              $suggest.addClass('open');
+            }
+
+          }
+
+          $('.suggest li').off('click').on('click', function(){
+
+            var data = $(this).data('country');
+            console.log($(this).parent().prev().prev());
+            $(this).parent().parent().parent().find('.searchBar').val(data.toLowerCase());
+
+            $('.sub-tab').css('opacity', '1');
+            $('.suggest').empty();
+            $('.suggest').removeClass('open');
+
+            $('.close-suggest').css("display","none");
+
+          });
+
+        } else {
+          $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+        }
+      },
+      error: function () {
+        $suggest.empty();
+        $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+      }
+    });
+
+
+  });
+
 
   $('.close-suggest').on('click', function(e){
 

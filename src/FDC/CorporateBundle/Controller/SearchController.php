@@ -413,7 +413,7 @@ class SearchController extends Controller
 
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
-            ->addMust($this->getCountryQuery($repository, $searchTerm, $_locale))
+            ->addMust($this->getContentQuery($repository, $searchTerm, $_locale))
         ;
 
         $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
@@ -429,7 +429,6 @@ class SearchController extends Controller
 
         return new JsonResponse($response);
     }
-
 
     private function getSearchResults($_locale, $type, $data, $range = 50, $page = 1)
     {
