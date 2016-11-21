@@ -1,12 +1,18 @@
 {{ form_errors(form) }}
 {{ form_start(form) }}
 <div class="vFlexAlign">
-    <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
-    <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
-    <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
-    <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
-    <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
-    <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
+    <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i
+                class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
+    <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span
+                class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
+    <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span
+                class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
+    <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span
+                class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
+    <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span
+                class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
+    <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span
+                class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
 </div>
 <div class="slider-selection">
     <span id="slider-snap-value-lower" class="number"></span>
@@ -18,8 +24,11 @@
 {{ form_widget(form.yearStart) }}
 {{ form_widget(form.yearEnd) }}
 <div class="tabs-two vFlexAlign">
-    <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
-    <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i class="icon icon-movie-clap"></i><span class="text">{{ form_label(form.movies) }}</span>{{ form_widget(form.movies) }}</label>
+    <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span
+                class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
+    <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i
+                class="icon icon-movie-clap"></i><span
+                class="text">{{ form_label(form.movies) }}</span>{{ form_widget(form.movies) }}</label>
 </div>
 
 <table class="more-search">
@@ -29,20 +38,28 @@
 
                 <div class="tab-selection" id='tab1'>
                     {{ form_widget(form.artistCountry) }}
+                    <span class="close-suggest">✕</span>
+                    <div>
+                        <ul class="suggest">
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="sub-tab">
                     <div class="jobs">
-                        <div class="title-cont">{{ 'search.form.label.profession'|trans }} <i class="icon icon-create"></i></div>
+                        <div class="title-cont">{{ 'search.form.label.profession'|trans }} <i
+                                    class="icon icon-create"></i></div>
                         {% for profession in form.professions %}
-                            {{ form_widget(profession) }} <label for="{{ profession.vars.id }}">{{ form_label(profession) }}</label>
+                            {{ form_widget(profession) }} <label
+                                for="{{ profession.vars.id }}">{{ form_label(profession) }}</label>
                         {% endfor %}
                     </div>
                 </div>
 
                 <div class="sub-tab">
                     <div class="type">
-                        <div class="title-cont">{{ 'search.form.label.genre'|trans }} <i class="icon icon-create"></i></div>
+                        <div class="title-cont">{{ 'search.form.label.genre'|trans }} <i class="icon icon-create"></i>
+                        </div>
                         {% for genre in form.genres %}
                             {{ form_widget(genre) }} <label for="{{ genre.vars.id }}">{{ form_label(genre) }}</label>
                         {% endfor %}
@@ -56,7 +73,11 @@
 
                 <div class="tab-selection" id="tab2">
                     {{ form_widget(form.movieCountry) }}
-                    <div class="suggest"></div>
+                    <span class="close-suggest">✕</span>
+                    <div>
+                        <ul class="suggest">
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="sub-tab">
@@ -70,7 +91,8 @@
 
                 <div class="sub-tab active">
                     <div class="format">
-                        <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-minus"></i></div>
+                        <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-minus"></i>
+                        </div>
                         {% for format in form.formats %}
                             {{ form_widget(format) }} <label for="{{ format.vars.id }}">{{ form_label(format) }}</label>
                         {% endfor %}
@@ -79,9 +101,11 @@
 
                 <div class="sub-tab active">
                     <div class="selection-type">
-                        <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i class="icon icon-minus"></i></div>
+                        <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i
+                                    class="icon icon-minus"></i></div>
                         {% for selection in form.selections %}
-                            {{ form_widget(selection) }} <label for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
+                            {{ form_widget(selection) }} <label
+                                for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
                         {% endfor %}
                     </div>
                 </div>
@@ -91,7 +115,8 @@
 </table>
 
 <div class="buttons-02">
-    <button type="submit" class="button button-submit-02"><i class="icon icon-search"></i>{{ 'search.form.label.submitsearch'|trans }}</button>
+    <button type="submit" class="button button-submit-02"><i
+                class="icon icon-search"></i>{{ 'search.form.label.submitsearch'|trans }}</button>
 </div>
 
 {{ form_end(form) }}

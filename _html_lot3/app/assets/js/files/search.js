@@ -81,7 +81,11 @@ var autoComplete = function() {
     var noWhitespaceValue = value.replace(/\s+/g, '');
     var noWhitespaceCount = noWhitespaceValue.length;
 
-    var searchUrl = GLOBALS.urls.searchUrl;
+    if (GLOBALS.env == "html") {
+      searchUrl = GLOBALS.urls.searchUrl;
+    } else {
+      searchUrl = GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value);
+    }
 
     $.ajax({
       type: "GET",
