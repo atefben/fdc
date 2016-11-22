@@ -71,6 +71,16 @@ body {
   width: 977px;
 }
 
+.maxContainer {
+  @include align();
+  max-width: 100%;
+  width: 1366px;
+
+  @media screen and (max-width: 1024px) {
+    width: 1024px;
+  }
+}
+
 #main {
   background-color: #fff;
   clear: both;

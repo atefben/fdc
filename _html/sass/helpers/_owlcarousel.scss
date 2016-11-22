@@ -170,3 +170,548 @@
     }
   }
 }
+
+#featured
+
+#slider-movies, #featured-movies {
+  height: 600px!important;
+  overflow: hidden;
+
+  .whiteBar {
+    height: 80px;
+    width: 3px;
+    display: block;
+    color: white;
+    position: absolute;
+    right: 100px;
+    float: right;
+    z-index: 1000;
+    background: white;
+    top: 2%;
+
+  }
+
+  .video .img {
+    display: block!important;
+  }
+
+  .owl-stage-outer {
+    height: 600px!important;
+    overflow: hidden;
+  }
+
+    .owl-dots {
+        counter-reset: dots;
+        right: 100px!important;
+        font-family: $CamphorHeavy;
+        top: 33%!important;
+    }
+    
+    .owl-dot {
+      display: inline-block;
+      height: 30px;
+      margin: 20px 0!important;
+      vertical-align: middle;
+      position: relative;
+      width: 25px;
+      counter-increment: dots;
+      margin-bottom: 30px;
+      text-align: right;
+      font-family: $CamphorHeavy;
+
+
+      &:before {
+        content: counter(dots, decimal-leading-zero);
+        font-size: 14px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        @include transform(translateZ(0));
+        @include transition(all 0.4s $smoothTransition);
+        color:#fff;
+        line-height: 13px;
+        font-family: $CamphorHeavy;
+      }
+
+      &:after {
+        content: counter(dots, decimal-leading-zero);
+        font-size: 30px;
+        color:$gold;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        @include transform(translateZ(0));
+        @include transform(scale(0.4));
+        @include transition(all 0.4s $smoothTransition);
+        font-family: $CamphorHeavy;
+      }
+
+      &:hover {
+        &:after,
+        &:before {
+          opacity: 0.7;
+          font-family: $CamphorHeavy;
+        }
+      }
+
+      &.active {
+        &:before {
+          content: counter(dots, decimal-leading-zero);
+          opacity: 0;
+          visibility: hidden;
+          @include transform(scale(0.4));
+          font-family: $CamphorHeavy;
+        }
+
+        &:after {
+          font-size: 30px;
+          content: counter(dots, decimal-leading-zero);
+          opacity: 1;
+          visibility: visible;
+          @include transform(scale(1));
+          font-family: $CamphorHeavy;
+        }
+      }
+    }
+}
+
+.vCenterKid {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 100px;
+
+    h2 {
+     max-width: 700px;
+     padding-top: 50px;
+     padding-bottom: 100px;
+    }
+
+    .alignButton {
+      text-align: left;
+      position: relative;
+      /* left: -100px; */
+      max-width: 245px;
+    }
+
+    .programmButton {
+      width: 235px;
+      height: 50px;
+      text-transform: uppercase;
+      border: 1px solid #c3a05f;
+      font-size: 12px;
+      font-family: $CamphorBold;
+      @include align();
+      color: white;
+      line-height: 50px;
+      letter-spacing: 1px;
+    }
+
+    .goldColor {
+      color: #c3a05f;
+    }
+}
+
+// SLIDER DISCOVER
+
+
+.discover {
+  height: 500px;
+  @include align();
+}
+
+#slider-discover {
+  height: 500px;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
+  z-index: 3;
+
+
+  .item img {
+      object-fit: cover;
+      width: 100%;
+      height: 390px;
+  }
+
+  .owl-stage-outer {
+    height: 390px;
+    overflow: hidden;
+  }
+
+  .owl-buttons {
+    display: none;
+  }
+
+  .owl-page {
+    display: inline-block;
+  }
+
+  .owl-controls {
+      display: block!important;
+      position: absolute;
+      top: 70%;
+      width: 100%;
+      z-index: 1004;
+  }
+
+.owl-page {
+    display: inline-block;
+    height: 7px;
+    margin: 0 5px;
+    vertical-align: middle;
+    position: relative;
+    width: 7px;
+    border-radius: 50px;
+    border: 3px solid transparent;
+    background: white;
+    @include transition(all .8s $smoothTransition);
+
+    &.active {
+      border: 5px solid white;
+      background: none;
+      @include transition(all .8s $smoothTransition);
+    }
+  }
+
+  .owl-Title {
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    
+    h2 {
+      font-size: 70px;
+      text-transform: uppercase;
+      color: white;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+    }
+
+    p, span {
+      font-size: 18px;
+      color: white;
+    }
+
+    p {
+      margin: 50px 0px;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+      text-align: center;
+    }
+
+    span {
+      color: #fff481;
+      font-family: $CamphorRegular;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  .owl-dots{
+    margin-top: 75px;
+  } 
+
+  .owl-dot {
+    display: inline-block;
+    height: 15px;
+    margin: 0 5px;
+    vertical-align: middle;
+    position: relative;
+    width: 15px;
+
+    &:before {
+      //attention if add new picto font number, nedd change the number of content //
+      content: "\f155";
+      font-family: icons;
+      font-size: .5rem;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      @include transform(translateZ(0));
+      @include transition(all 0.6s $smoothTransition);
+      color:#c6b5b5;
+      line-height: 13px;
+    }
+
+    &:after {
+      //attention if add new picto font number, nedd change the number of content //
+      content: "\f154";
+      font-family: icons;
+      font-size: .8rem;
+      color:$gold;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      @include transform(translateZ(0));
+      @include transform(scale(0.6));
+      @include transition(all 0.6s $smoothTransition);
+    }
+
+    &:hover {
+      &:after,
+      &:before {
+        opacity: 0.7;
+      }
+    }
+
+    &.active {
+      &:before {
+        opacity: 0;
+        visibility: hidden;
+        @include transform(scale(0.6));
+      }
+
+      &:after {
+        opacity: 1;
+        visibility: visible;
+        @include transform(scale(1));
+      }
+    }
+  }
+
+  .title {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    @include align();
+    z-index: 1002;
+    color: #ffffff;
+    font-size: 16px;
+
+    h5 {
+      text-transform: lowercase;
+      color: #c3a05f;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      font-family: $Playfair;
+    }
+
+    h4 {
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      letter-spacing: 1px;
+    }
+  }
+
+}
+
+// SLIDER competition
+
+#slider-competition {
+  
+  height: 365px;
+  margin-bottom: 100px!important;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
+
+  .owl-item {
+    margin-right: 45px!important;
+    @media screen and (max-width: 1024px) {
+        margin-right: 90px !important;
+    }
+      
+  }
+
+  .item {
+    overflow: hidden!important;
+    width: 215px!important;
+  }
+
+  .owl-buttons {
+    display: none;
+  }
+
+  .owl-Title {
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    
+    h2 {
+      font-size: 70px;
+      text-transform: uppercase;
+      color: white;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+    }
+
+    p, span {
+      font-size: 18px;
+      color: white;
+    }
+
+    p {
+      margin: 50px 0px;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+      text-align: center;
+    }
+
+    span {
+      color: #fff481;
+      font-family: $CamphorRegular;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  img {
+    max-height: 310px;
+    overflow: hidden;
+  }
+
+  .title {
+    width: 100%;
+    @include align();
+    z-index: 1002;
+    font-size: 14px;
+    letter-spacing: 0px;
+    height: 60px;
+    padding-top: 30px;
+
+    h4 {
+      text-transform: lowercase;
+      color: #c3a05f;
+      font-family: $CamphorItalic;
+    }
+
+    h5 {
+      text-transform: uppercase;
+      font-family: $CamphorBold;
+      font-size: 13px;
+      color: #2c2c2c;
+      line-height: 25px;
+    }
+  }
+}
+
+
+/* CAROUSEL ABOUT */
+
+.aboutPhotos {
+
+ .slideshow {
+    height: 500px;
+    width: 725px;
+    border-bottom: 0px solid #e5e5e5;
+
+    .slideshow-img {
+      height: 500px;
+    }
+    
+    .slideshow-img .images .img a {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      right: 0px;
+  }
+    .slideshow-img .images .img img { 
+      object-fit: cover!important;
+    }
+
+    .caption {
+      text-align: left;
+    }
+  } 
+}
+
+#slider-aboutVideos {
+
+  .video-container .infos-bar .info {
+    left: 0px!important;
+  }
+
+  .video-container .infos-bar .picto {
+      bottom: 20px;
+      left: 20px;
+      cursor: pointer;
+      pointer-events: auto;
+      z-index: 1000;
+  }
+
+ .owl-dots{
+    margin-top: 20px;
+  } 
+
+  .owl-dot {
+    display: inline-block;
+    height: 15px;
+    margin: 0 5px;
+    vertical-align: middle;
+    position: relative;
+    width: 15px;
+
+    &:before {
+      //attention if add new picto font number, nedd change the number of content //
+      content: "\f155";
+      font-family: icons;
+      font-size: .5rem;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      @include transform(translateZ(0));
+      @include transition(all 0.6s $smoothTransition);
+      color:#c6b5b5;
+      line-height: 13px;
+    }
+
+    &:after {
+      //attention if add new picto font number, nedd change the number of content //
+      content: "\f154";
+      font-family: icons;
+      font-size: .8rem;
+      color:$gold;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      @include transform(translateZ(0));
+      @include transform(scale(0.6));
+      @include transition(all 0.6s $smoothTransition);
+    }
+
+    &:hover {
+      &:after,
+      &:before {
+        opacity: 0.7;
+      }
+    }
+
+    &.active {
+      &:before {
+        opacity: 0;
+        visibility: hidden;
+        @include transform(scale(0.6));
+      }
+
+      &:after {
+        opacity: 1;
+        visibility: visible;
+        @include transform(scale(1));
+      }
+    }
+  }  
+}

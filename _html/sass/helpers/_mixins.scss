@@ -48,3 +48,12 @@
     bottom: 0;
   }
 }
+
+
+@mixin align() {
+
+  margin: 0 auto;
+  text-align:center;
+  display: block;
+
+}
