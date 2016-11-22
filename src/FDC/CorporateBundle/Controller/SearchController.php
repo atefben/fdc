@@ -418,7 +418,7 @@ class SearchController extends Controller
         $response = array();
         foreach ($index->find($query) as $result) {
             $response[] = (object) array(
-                'type' => $this->renderView("FDCEventBundle:Search:components/country.html.twig", array('object' => $result)),
+                'type' => $this->renderView("FDCEventBundle:Search:components/country.html.twig", array('name' => $result)),
 
             );
         }
