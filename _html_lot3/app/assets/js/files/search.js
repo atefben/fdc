@@ -82,9 +82,9 @@ var autoComplete = function() {
     var noWhitespaceCount = noWhitespaceValue.length;
 
     if (GLOBALS.env == "html") {
-      searchUrl = GLOBALS.urls.searchUrl;
+      searchUrl = GLOBALS.urls.searchUrlCountry;
     } else {
-      searchUrl = GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value);
+      searchUrl = GLOBALS.urls.searchUrlCountry+'/'+encodeURIComponent(value);
     }
 
     $.ajax({
