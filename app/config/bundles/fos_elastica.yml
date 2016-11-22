@@ -413,7 +413,7 @@ fos_elastica:
                                     properties :
                                         name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         locale: ~
-                                
+
                 artist:
                     indexable_callback: 'isElasticable'
                     persistence:
@@ -441,5 +441,22 @@ fos_elastica:
                             type: nested
                             properties :
                                 profession: { boost: 5, search_analyzer: artist_search_analyzer, index_analyzer: artist_search_analyzer, type: string }
+                                locale: ~
+                                status: ~
+
+                country:
+                    persistence:
+                        driver: orm
+                        model: Base\CoreBundle\Entity\Country
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\CountryRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                name: { boost: 5, search_analyzer: custom_search_analyzer, index_analyzer: custom_search_analyzer, type: string }
                                 locale: ~
                                 status: ~

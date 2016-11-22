@@ -2,6 +2,8 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Elastica\Query;
+use Elastica\Query\QueryString;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -55,9 +57,7 @@ class SearchController extends Controller
                 }
             }
 
-
             $filters = $this->_getFiltersFromData($data);
-
 
             if($data['professions']) { //must be done before translation
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
@@ -405,29 +405,26 @@ class SearchController extends Controller
      */
     public function countryAutocompleteAction($_locale, $searchTerm = null)
     {
-        if ($searchTerm === null) {
-            throw $this->createNotFoundException();
-        }
 
-        $repository = $this->get('base.search.repository');
+        $index = $this->container->get('fos_elastica.finder.fdc.country');
 
-        $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
-            ->addMust($this->getContentQuery($repository, $searchTerm, $_locale))
-        ;
+        $keywordQuery = new QueryString();
+        $keywordQuery->setQuery("*".$searchTerm."*");
 
-        $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
+        $query = new Query();
+        $query->setQuery($keywordQuery);
+
 
         $response = array();
-        foreach ($paginatedResults as $result) {
+        foreach ($index->find($query) as $result) {
             $response[] = (object) array(
-                'type' => $this->renderView("FDCEventBundle:Search:components/type.html.twig", array('object' => $result)),
-                'name' => $this->renderView("FDCEventBundle:Search:components/name.html.twig", array('object' => $result)),
-                'link' => $this->renderView("FDCEventBundle:Search:components/link.html.twig", array('object' => $result)),
+                'type' => $this->renderView("FDCEventBundle:Search:components/country.html.twig", array('object' => $result)),
+
             );
         }
 
         return new JsonResponse($response);
+
     }
 
     private function getSearchResults($_locale, $type, $data, $range = 50, $page = 1)
@@ -649,6 +646,30 @@ class SearchController extends Controller
         $filmFinalQuery
             ->addMust($filmQuery)
             ->addMust($productionYearQuery)
+        ;
+
+        return $filmFinalQuery;
+    }
+
+    private function getCountryQuery($repository, $searchTerm, $_locale)
+    {
+        // Get translations query.
+        $translationsPath = 'translations';
+        $translationsFields = array(
+            'name',
+        );
+
+        $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
+
+
+        $filmQuery = new \Elastica\Query\BoolQuery();
+        $filmQuery
+            ->addShould($translationsQuery)
+        ;
+
+        $filmFinalQuery = new \Elastica\Query\BoolQuery();
+        $filmFinalQuery
+            ->addMust($filmQuery)
         ;
 
         return $filmFinalQuery;
