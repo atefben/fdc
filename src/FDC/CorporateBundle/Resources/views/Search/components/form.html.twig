@@ -58,7 +58,7 @@
                                     class="icon icon-create"></i></div>
                         {% for profession in form.professions %}
                             {{ form_widget(profession) }} <label
-                                for="{{ profession.vars.id }}">{{ form_label(profession) }}</label>
+                                for="{{ profession.vars.id }}">{{ form_label(profession)|trans }}</label>
                         {% endfor %}
                     </div>
                 </div>
