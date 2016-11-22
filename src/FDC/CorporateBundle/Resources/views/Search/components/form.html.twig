@@ -28,8 +28,8 @@
     </div>
     <span id="slider-snap-value-upper" class="number"></span>
 </div>
-{{ form_widget(form.yearStart) }}
-{{ form_widget(form.yearEnd) }}
+{{ form_widget(form.yearStart,{ 'attr': {'class': 's-yearstart'} }) }}
+{{ form_widget(form.yearEnd, { 'attr': {'class': 's-yearend'} }) }}
 <div class="tabs-two vFlexAlign">
     <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span
                 class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
