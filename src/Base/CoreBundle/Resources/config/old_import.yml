@@ -3,3 +3,7 @@ services:
         class: Base\CoreBundle\OldImport\ArticleImporter
         arguments:
             -  "@service_container"
+    old_import.news_importer:
+        class: Base\CoreBundle\OldImport\NewsImporter
+        arguments:
+            -  "@service_container"

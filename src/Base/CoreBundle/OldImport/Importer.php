@@ -2,6 +2,9 @@
 
 namespace Base\CoreBundle\OldImport;
 
+use Base\CoreBundle\Entity\FilmFestival;
+use Base\CoreBundle\Entity\OldArticle;
+use Base\CoreBundle\Entity\Site;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Component\Console\Input\InputInterface;
@@ -239,7 +242,6 @@ class Importer
     }
 
 
-
     protected function imagecreatefromfile($filename)
     {
         $file = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/image/' . md5($filename) . '.' . pathinfo($filename, PATHINFO_EXTENSION);
@@ -267,6 +269,53 @@ class Importer
         }
 
         return $file;
+    }
+
+    /**
+     * @return Site
+     */
+    protected function getSiteCorporate()
+    {
+        static $siteCorporate = null;
+
+        if (!$siteCorporate) {
+            $siteCorporate = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:Site')
+                ->findOneBy(['slug' => 'site-institutionnel'])
+            ;
+        }
+    }
+
+    /**
+     * @return Site
+     */
+    protected function getSiteEvent()
+    {
+        static $siteEvent = null;
+
+        if (!$siteEvent) {
+            $siteEvent = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:Site')
+                ->findOneBy(['slug' => 'site-evenementiel'])
+            ;
+        }
+
+        return $siteEvent;
+    }
+
+    /**
+     * @param OldArticle $oldArticle
+     * @return FilmFestival
+     */
+    protected function getFestival(OldArticle $oldArticle)
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FilmFestival')
+            ->findOneBy(['year' => $oldArticle->getCreatedAt()->format('Y')])
+            ;
     }
 
 }
