@@ -767,22 +767,6 @@ class ArticleImporter extends Importer
     }
 
     /**
-     * @param OldArticleI18n[] $oldArticleTranslations
-     * @return bool
-     */
-    private function hasFrenchTranslation($oldArticleTranslations)
-    {
-        foreach ($oldArticleTranslations as $trans) {
-            if ($trans->getCulture() == 'fr') {
-                return true;
-            }
-        }
-
-        $this->output->writeln('<error>Doesn\'t have french translation</error>');
-        return false;
-    }
-
-    /**
      * @param OldArticle $oldArticle
      * @param OldArticleI18n[] $oldArticleTranslations
      * @return bool

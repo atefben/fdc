@@ -56,6 +56,13 @@ abstract class InfoWidget
      */
     protected $info;
 
+
+    /**
+     * @var string
+     * @ORM\Column(name="old_import_reference", type="string", length=255, nullable=true)
+     */
+    protected $oldImportReference;
+
     /**
      * Get id
      *
@@ -139,5 +146,28 @@ abstract class InfoWidget
     public function getInfo()
     {
         return $this->info;
+    }
+
+    /**
+     * Set oldImportReference
+     *
+     * @param string $oldImportReference
+     * @return InfoWidget
+     */
+    public function setOldImportReference($oldImportReference)
+    {
+        $this->oldImportReference = $oldImportReference;
+
+        return $this;
+    }
+
+    /**
+     * Get oldImportReference
+     *
+     * @return string 
+     */
+    public function getOldImportReference()
+    {
+        return $this->oldImportReference;
     }
 }

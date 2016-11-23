@@ -49,7 +49,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="Theme")
+     * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @Groups({"home", "news_list", "search", "news_show"})
      */
     private $theme;

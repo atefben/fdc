@@ -56,6 +56,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
       * @var Theme
       *
       * @ORM\ManyToOne(targetEntity="Theme")
+      * @ORM\JoinColumn(nullable=true)
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
       */
@@ -908,11 +909,12 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * Set hideSameDay
      *
      * @param boolean $hideSameDay
-     * @return News
+     * @return $this
      */
     public function setHideSameDay($hideSameDay)
     {
         $this->hideSameDay = $hideSameDay;
+        return $this;
     }
 
     /**

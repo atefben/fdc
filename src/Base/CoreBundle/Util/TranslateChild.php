@@ -1,6 +1,7 @@
 <?php
 
 namespace Base\CoreBundle\Util;
+use Application\Sonata\UserBundle\Entity\User;
 
 /**
  * TranslateChild trait.
@@ -25,7 +26,7 @@ trait TranslateChild
     private $lockedBy;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */

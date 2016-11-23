@@ -7,3 +7,11 @@ services:
         class: Base\CoreBundle\OldImport\NewsImporter
         arguments:
             -  "@service_container"
+    old_import.info_importer:
+        class: Base\CoreBundle\OldImport\InfoImporter
+        arguments:
+            -  "@service_container"
+    old_import.statement_importer:
+        class: Base\CoreBundle\OldImport\StatementImporter
+        arguments:
+            -  "@service_container"

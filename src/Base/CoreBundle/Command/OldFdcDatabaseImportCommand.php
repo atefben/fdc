@@ -14,7 +14,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
-use Doctrine\ORM\Query\ResultSetMapping;
 
 class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 {
@@ -69,17 +68,18 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $onlyArticles = $input->getOption('only-articles');
         $onlyMedias = $input->getOption('only-medias');
 
-        $articleImporter = $this->getContainer()->get('old_import.news_importer');
+        $newsImporter = $this->getContainer()->get('old_import.news_importer');
+        $infoImporter = $this->getContainer()->get('old_import.info_importer');
+        $statementImporter = $this->getContainer()->get('old_import.statement_importer');
 
-        $articleImporter
-            ->setInput($input)
-            ->setOutput($output)
-        ;
+        $newsImporter->setInput($input)->setOutput($output);
+        $infoImporter->setInput($input)->setOutput($output);
+        $statementImporter->setInput($input)->setOutput($output);
 
         if ($onlyArticles) {
-            $articleImporter
-                ->importNews()
-            ;
+//            $newsImporter->importNews();
+            $infoImporter->importInfos();
+//            $statementImporter->importStatements();
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);
             $this->importMediaAudio($dm, $mediaManager, $output, $input);
@@ -97,12 +97,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Publier dans "Quotidien - Audios"
         // Film associé
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-                        ->where('m.fileClass = :file_class')
-                        ->andWhere('m.published = :published')
-                        ->setParameter('file_class', self::MEDIA_TYPE_AUDIO)
-                        ->setParameter('published', self::MEDIA_QUOTIDIEN_AUDIO)
-                        ->getQuery()
-                        ->getResult()
+            ->where('m.fileClass = :file_class')
+            ->andWhere('m.published = :published')
+            ->setParameter('file_class', self::MEDIA_TYPE_AUDIO)
+            ->setParameter('published', self::MEDIA_QUOTIDIEN_AUDIO)
+            ->getQuery()
+            ->getResult()
         ;
 
         $oldMediasSelected = array();
@@ -316,13 +316,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Galerie Quotidien - Diaporama
         // id > 7816
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-                        ->where('m.id >= 7816')
-                        ->andWhere('m.fileClass = :file_class')
-                        ->andWhere('m.published = :published')
-                        ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
-                        ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
-                        ->getQuery()
-                        ->getResult()
+            ->where('m.id >= 7816')
+            ->andWhere('m.fileClass = :file_class')
+            ->andWhere('m.published = :published')
+            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+            ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
+            ->getQuery()
+            ->getResult()
         ;
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
 
@@ -330,13 +330,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Galerie Oeil du photographe
         // id > 11802
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-                        ->where('m.id >= 11802')
-                        ->andWhere('m.published = :published')
-                        ->andWhere('m.fileClass = :file_class')
-                        ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
-                        ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
-                        ->getQuery()
-                        ->getResult()
+            ->where('m.id >= 11802')
+            ->andWhere('m.published = :published')
+            ->andWhere('m.fileClass = :file_class')
+            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+            ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
+            ->getQuery()
+            ->getResult()
         ;
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
 
@@ -344,13 +344,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Galerie Oeil du photographe
         // id < 11802
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-                        ->where('m.id < 11802')
-                        ->andWhere('m.published = :published')
-                        ->andWhere('m.fileClass = :file_class')
-                        ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
-                        ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
-                        ->getQuery()
-                        ->getResult()
+            ->where('m.id < 11802')
+            ->andWhere('m.published = :published')
+            ->andWhere('m.fileClass = :file_class')
+            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+            ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
+            ->getQuery()
+            ->getResult()
         ;
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input, false);
     }

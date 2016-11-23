@@ -5,36 +5,36 @@ namespace Base\CoreBundle\OldImport;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
+use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoArticleTranslation;
+use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
+use Base\CoreBundle\Entity\InfoInfoAssociated;
+use Base\CoreBundle\Entity\InfoWidgetAudio;
+use Base\CoreBundle\Entity\InfoWidgetImage;
+use Base\CoreBundle\Entity\InfoWidgetText;
+use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
+use Base\CoreBundle\Entity\InfoWidgetVideo;
+use Base\CoreBundle\Entity\InfoWidgetVideoYoutube;
+use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\NewsArticle;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
-use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
-use Base\CoreBundle\Entity\NewsNewsAssociated;
-use Base\CoreBundle\Entity\NewsWidgetAudio;
-use Base\CoreBundle\Entity\NewsWidgetImage;
-use Base\CoreBundle\Entity\NewsWidgetText;
-use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
-use Base\CoreBundle\Entity\NewsWidgetVideo;
-use Base\CoreBundle\Entity\NewsWidgetVideoYoutube;
-use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-class NewsImporter extends Importer
+class InfoImporter extends Importer
 {
     protected $widgetPosition = 0;
 
-    public function importNews()
+    public function importInfos()
     {
-        $this->output->writeln('<info>Import news...</info>');
+        $this->output->writeln('<info>Import infos...</info>');
 
-        $count = $this->countNews();
+        $count = $this->countInfos();
 
         $pages = ceil($count / 50);
 
@@ -46,15 +46,15 @@ class NewsImporter extends Importer
             $oldArticles = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:OldArticle')
-                ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'], 50, ($page - 1) * 50)
+                ->findBy(['articleTypeId' => static::TYPE_NEWS_FESTIVAL], ['id' => 'asc'], 50, ($page - 1) * 50)
             ;
 
             foreach ($oldArticles as $oldArticle) {
                 $progress->advance();
-                $news = $this->importItem($oldArticle);
-                if ($news) {
+                $info = $this->importItem($oldArticle);
+                if ($info) {
                     foreach ($this->langs as $lang) {
-                        $translation = $news->findTranslationByLocale($lang);
+                        $translation = $info->findTranslationByLocale($lang);
                     }
                 }
             }
@@ -69,7 +69,7 @@ class NewsImporter extends Importer
         return $this;
     }
 
-    protected function countNews()
+    protected function countInfos()
     {
         return $this
             ->getManager()
@@ -77,7 +77,7 @@ class NewsImporter extends Importer
             ->createQueryBuilder('o')
             ->select('count(o)')
             ->andWhere('o.articleTypeId = :type')
-            ->setParameter(':type', static::TYPE_QUOTIDIEN)
+            ->setParameter(':type', static::TYPE_NEWS_FESTIVAL)
             ->getQuery()
             ->getSingleScalarResult()
             ;
@@ -85,7 +85,7 @@ class NewsImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return NewsArticle
+     * @return InfoArticle
      */
     protected function importItem(OldArticle $oldArticle)
     {
@@ -98,79 +98,81 @@ class NewsImporter extends Importer
         if (!$oldTranslations) {
             return null;
         }
-
         // has french translation
         $hasFrenchTranslation = $this->hasFrenchTranslation($oldTranslations);
         if (!$hasFrenchTranslation) {
             return null;
         }
 
-        $matching = $this->isNewsMatching($oldArticle, $oldTranslations);
+        $matching = $this->isInfoMatching($oldArticle);
         if (!$matching) {
             return null;
         }
-
-        $news = $this->buildNewsArticle($oldArticle);
+        $info = $this->buildInfoArticle($oldArticle);
 
         foreach ($oldTranslations as $oldTranslation) {
-            $translation = $this->buildNewsArticleTranslation($news, $oldTranslation);
+            $translation = $this->buildInfoArticleTranslation($info, $oldTranslation);
             if ($translation) {
-                $this->buildNewsWidgetText($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetYoutube($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetImage($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetsAudio($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
-                $this->buildAssociatedFilms($news, $oldArticle);
-                $this->buildAssociatedNews($news, $oldArticle);
+                $this->buildInfoWidgetText($info, $translation, $oldTranslation);
+                $this->buildInfoWidgetYoutube($info, $translation, $oldTranslation);
+                $this->buildInfoWidgetImage($info, $translation, $oldTranslation);
+                $this->buildInfoWidgetsAudio($info, $translation, $oldTranslation);
+                $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
+                $this->buildAssociatedFilms($info, $oldArticle);
+                $this->buildAssociatedInfos($info, $oldArticle);
             }
         }
 
-        return $news;
+        return $info;
     }
 
     /**
      * @param OldArticle $oldArticle
-     * @return NewsArticle
+     * @return InfoArticle
      */
-    protected function buildNewsArticle(OldArticle $oldArticle)
+    protected function buildInfoArticle(OldArticle $oldArticle)
     {
-        $news = $this
+        $info = $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:NewsArticle')
+            ->getRepository('BaseCoreBundle:InfoArticle')
             ->findOneBy(['oldNewsId' => $oldArticle->getId()])
         ;
 
-        if (!$news) {
-            $news = new NewsArticle();
-            $news
+        if (!$info) {
+            $info = new InfoArticle();
+            $info
                 ->setOldNewsId($oldArticle->getId())
                 ->setOldNewsTable('OldNews')
                 ->setPublishedAt($oldArticle->getStartDate() ?: $oldArticle->getUpdatedAt())
                 ->setCreatedAt($oldArticle->getCreatedAt())
                 ->setUpdatedAt($oldArticle->getUpdatedAt())
                 ->setFestival($this->getFestival($oldArticle))
-                ->setIsPublishedOnFDCEvent(true) // test if works
+                ->setHideSameDay(false)
+                ->setDisplayedHome(false)
             ;
-            $this->getManager()->persist($news);
+            $this->getManager()->persist($info);
         }
 
 
         if ($this->doNotPublish) {
-            if (!$news->getSites()->contains($this->getSiteCorporate())) {
-                $news->addSite($this->getSiteCorporate());
+            if (!$info->getSites()->contains($this->getSiteCorporate())) {
+                $info->addSite($this->getSiteCorporate());
             }
-            if (!$news->getSites()->contains($this->getSiteEvent())) {
-                $news->addSite($this->getSiteEvent());
+            if (!$info->getSites()->contains($this->getSiteEvent())) {
+                $info->addSite($this->getSiteEvent());
             }
         }
-
         $this->getManager()->flush();
-
-        return $news;
+        return $info;
     }
 
 
-    protected function buildNewsArticleTranslation(NewsArticle $news, OldArticleI18n $oldTranslation)
+    /**
+     * @param InfoArticle $info
+     * @param OldArticleI18n $oldTranslation
+     * @return InfoArticleTranslation
+     */
+    protected function buildInfoArticleTranslation(InfoArticle $info, OldArticleI18n $oldTranslation)
     {
         $mapperFields = array(
             'resume' => 'introduction',
@@ -180,25 +182,25 @@ class NewsImporter extends Importer
         if (in_array($locale, $this->langs)) {
             $translation = $this
                 ->getManager()
-                ->getRepository('BaseCoreBundle:NewsArticleTranslation')
-                ->findOneBy(['locale' => $locale, 'translatable' => $news])
+                ->getRepository('BaseCoreBundle:InfoArticleTranslation')
+                ->findOneBy(['locale' => $locale, 'translatable' => $info])
             ;
 
             if (!$translation) {
-                $translation = new NewsArticleTranslation();
+                $translation = new InfoArticleTranslation();
                 $translation
-                    ->setCreatedAt($news->getCreatedAt())
-                    ->setUpdatedAt($news->getCreatedAt())
-                    ->setTranslatable($news)
+                    ->setCreatedAt($info->getCreatedAt())
+                    ->setUpdatedAt($info->getCreatedAt())
+                    ->setTranslatable($info)
                     ->setLocale($locale)
-                    ->setIsPublishedOnFDCEvent(true)
+                    ->setIsPublishedOnFDCEvent(false)
                 ;
                 $this->getManager()->persist($translation);
 
                 if ($locale == 'fr') {
-                    $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                    $translation->setStatus(InfoArticleTranslation::STATUS_PUBLISHED);
                 } else {
-                    $translation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                    $translation->setStatus(InfoArticleTranslation::STATUS_TRANSLATED);
                 }
             }
 
@@ -212,22 +214,22 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildNewsWidgetText(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetText(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getBody()) {
             return null;
         }
         $widget = null;
-        foreach ($news->getWidgets() as $item) {
-            if ($item instanceof NewsWidgetText && $item->getOldImportReference() == 'body') {
+        foreach ($info->getWidgets() as $item) {
+            if ($item instanceof InfoWidgetText && $item->getOldImportReference() == 'body') {
                 $widget = $item;
             }
         }
 
         if (!$widget) {
-            $widget = new NewsWidgetText();
+            $widget = new InfoWidgetText();
             $widget
-                ->setNews($news)
+                ->setInfo($info)
                 ->setOldImportReference('body')
                 ->setPosition($this->getWidgetPosition())
             ;
@@ -236,7 +238,7 @@ class NewsImporter extends Importer
 
         $widgetTranslation = $widget->findTranslationByLocale($translation->getLocale());
         if (!$widgetTranslation) {
-            $widgetTranslation = new NewsWidgetTextTranslation();
+            $widgetTranslation = new InfoWidgetTextTranslation();
             $widgetTranslation
                 ->setTranslatable($widget)
                 ->setLocale($translation->getLocale())
@@ -250,23 +252,29 @@ class NewsImporter extends Importer
         return $widget;
     }
 
-    protected function buildNewsWidgetYoutube(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    /**
+     * @param InfoArticle $info
+     * @param InfoArticleTranslation $translation
+     * @param OldArticleI18n $oldTranslation
+     * @return InfoWidgetVideoYoutube|mixed|null
+     */
+    protected function buildInfoWidgetYoutube(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getYoutubeLink() || !$oldTranslation->getYoutubeLinkDescription()) {
             return null;
         }
 
         $widget = null;
-        foreach ($news->getWidgets() as $item) {
-            if ($item instanceof NewsWidgetVideoYoutube && $item->getOldImportReference() == 'youtube') {
+        foreach ($info->getWidgets() as $item) {
+            if ($item instanceof InfoWidgetVideoYoutube && $item->getOldImportReference() == 'youtube') {
                 $widget = $item;
             }
         }
 
         if (!$widget) {
-            $widget = new NewsWidgetVideoYoutube();
+            $widget = new InfoWidgetVideoYoutube();
             $widget
-                ->setNews($news)
+                ->setInfo($info)
                 ->setOldImportReference('youtube')
                 ->setPosition($this->getWidgetPosition())
             ;
@@ -275,7 +283,7 @@ class NewsImporter extends Importer
 
         $widgetTranslation = $widget->findTranslationByLocale($translation->getLocale());
         if (!$widgetTranslation) {
-            $widgetTranslation = new NewsWidgetVideoYoutubeTranslation();
+            $widgetTranslation = new InfoWidgetVideoYoutubeTranslation();
             $widgetTranslation
                 ->setTranslatable($widget)
                 ->setLocale($translation->getLocale())
@@ -291,7 +299,7 @@ class NewsImporter extends Importer
         return $widget;
     }
 
-    protected function buildNewsWidgetImage(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetImage(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
         $imgTitle = array(
             'fr' => 'photo',
@@ -311,16 +319,16 @@ class NewsImporter extends Importer
         }
 
         $widget = null;
-        foreach ($news->getWidgets() as $item) {
-            if ($item instanceof NewsWidgetImage && $item->getOldImportReference() == 'image') {
+        foreach ($info->getWidgets() as $item) {
+            if ($item instanceof InfoWidgetImage && $item->getOldImportReference() == 'image') {
                 $widget = $item;
             }
         }
 
         if (!$widget) {
-            $widget = new NewsWidgetImage();
+            $widget = new InfoWidgetImage();
             $widget
-                ->setNews($news)
+                ->setInfo($info)
                 ->setOldImportReference('image')
                 ->setPosition($this->getWidgetPosition())
             ;
@@ -410,9 +418,9 @@ class NewsImporter extends Importer
             }
 
             if ($translation->getLocale() == 'fr') {
-                $mediaImageTranslation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                $mediaImageTranslation->setStatus(InfoArticleTranslation::STATUS_PUBLISHED);
             } else {
-                $mediaImageTranslation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                $mediaImageTranslation->setStatus(InfoArticleTranslation::STATUS_TRANSLATED);
             }
 
             $mediaImageTranslation
@@ -437,7 +445,7 @@ class NewsImporter extends Importer
         return $widget;
     }
 
-    protected function buildNewsWidgetsAudio(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetsAudio(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
         $audioTitle = array(
             'fr' => 'audio',
@@ -501,16 +509,16 @@ class NewsImporter extends Importer
 
             $widget = null;
             $reference = 'audio' . $oldArticleAssociation->getObjectId();
-            foreach ($news->getWidgets() as $item) {
-                if ($item instanceof NewsWidgetAudio && $item->getOldImportReference() == $reference) {
+            foreach ($info->getWidgets() as $item) {
+                if ($item instanceof InfoWidgetAudio && $item->getOldImportReference() == $reference) {
                     $widget = $item;
                 }
             }
 
             if (!$widget) {
-                $widget = new NewsWidgetAudio();
+                $widget = new InfoWidgetAudio();
                 $widget
-                    ->setNews($news)
+                    ->setInfo($info)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
@@ -563,7 +571,7 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildNewsWidgetsVideo(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetsVideo(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
         $videoTitle = array(
             'fr' => 'video',
@@ -606,16 +614,16 @@ class NewsImporter extends Importer
 
             $widget = null;
             $reference = 'video' . $oldArticleAssociation->getObjectId();
-            foreach ($news->getWidgets() as $item) {
-                if ($item instanceof NewsWidgetVideo && $item->getOldImportReference() == $reference) {
+            foreach ($info->getWidgets() as $item) {
+                if ($item instanceof InfoWidgetVideo && $item->getOldImportReference() == $reference) {
                     $widget = $item;
                 }
             }
 
             if (!$widget) {
-                $widget = new NewsWidgetVideo();
+                $widget = new InfoWidgetVideo();
                 $widget
-                    ->setNews($news)
+                    ->setInfo($info)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
@@ -671,7 +679,7 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildAssociatedFilms(NewsArticle $news, OldArticle $oldArticle)
+    protected function buildAssociatedFilms(InfoArticle $info, OldArticle $oldArticle)
     {
         // association film
         $oldArticleAssociations = $this
@@ -687,20 +695,20 @@ class NewsImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                if (!$news->getAssociatedFilm()) {
-                    $news->setAssociatedFilm($film);
+                if (!$info->getAssociatedFilm()) {
+                    $info->setAssociatedFilm($film);
                 }
 
                 $found = false;
-                foreach ($news->getAssociatedFilms() as $associatedFilm) {
+                foreach ($info->getAssociatedFilms() as $associatedFilm) {
                     if ($associatedFilm->getAssociation()->getId() == $film->getId()) {
                         $found = true;
                     }
                 }
                 if (!$found) {
-                    $associatedFilm = new NewsFilmFilmAssociated();
+                    $associatedFilm = new InfoFilmFilmAssociated();
                     $associatedFilm
-                        ->setNews($news)
+                        ->setInfo($info)
                         ->setAssociation($film)
                     ;
                     $this->getManager()->persist($film);
@@ -710,7 +718,7 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildAssociatedNews(NewsArticle $news, OldArticle $oldArticle)
+    protected function buildAssociatedInfos(InfoArticle $info, OldArticle $oldArticle)
     {
         // association film
         $oldArticleAssociations = $this
@@ -722,23 +730,23 @@ class NewsImporter extends Importer
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
             $item = $this
                 ->getManager()
-                ->getRepository('BaseCoreBundle:News')
+                ->getRepository('BaseCoreBundle:Info')
                 ->findOneBy(['oldNewsId' => $oldArticleAssociation->getObjectId()])
             ;
             if ($item) {
                 $found = false;
-                foreach ($news->getAssociatedNews() as $associatedNews) {
-                    if ($associatedNews->getAssociation()->getId() == $item->getId()) {
+                foreach ($info->getAssociatedInfo() as $associatedInfo) {
+                    if ($associatedInfo->getAssociation()->getId() == $item->getId()) {
                         $found = true;
                     }
                 }
                 if (!$found) {
-                    $associatedNews = new NewsNewsAssociated();
-                    $associatedNews
-                        ->setNews($news)
+                    $associatedInfo = new InfoInfoAssociated();
+                    $associatedInfo
+                        ->setInfo($info)
                         ->setAssociation($item)
                     ;
-                    $this->getManager()->persist($associatedNews);
+                    $this->getManager()->persist($associatedInfo);
                 }
             }
             $this->getManager()->flush();
@@ -751,51 +759,15 @@ class NewsImporter extends Importer
         return $this->widgetPosition++;
     }
 
-    /**
-     * @param OldArticle $oldArticle
-     * @param OldArticleI18n[] $oldArticleTranslations
-     * @return bool
-     */
-    protected function isNewsMatching(OldArticle $oldArticle, $oldArticleTranslations)
+    protected function isInfoMatching(OldArticle $oldArticle)
     {
-        $this->doNotPublish = false;
 
-        // case one
-        // Communiqués-Festival de 2001 > 2006
-        $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
-        $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2001;
-        $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2006;
-        if ($condIsAvailable) {
-            return true;
-        }
-
-        // case two
-        // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
-        // "conférence" dans le titre + film associé
+        // Actualités-Festival de 2010 > 2015
         $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
-        $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2007;
+        $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2010;
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
         if ($isAvailable) {
-            $hasConference = false;
-            foreach ($oldArticleTranslations as $trans) {
-                $title = $this->removeAccents($trans->getTitle());
-                if ($trans->getCulture() == 'fr' && (stripos($title, 'conference') !== false)) {
-                    $hasConference = true;
-                }
-            }
-
-            if ($hasConference == true) {
-                $oldArticleAssociations = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:OldArticleAssociation')
-                    ->findOneBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'])
-                ;
-
-                if (count($oldArticleAssociations) > 0) {
-                    return true;
-                }
-            }
+                return true;
         }
-        return false;
     }
 }

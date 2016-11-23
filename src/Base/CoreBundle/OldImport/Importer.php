@@ -4,6 +4,7 @@ namespace Base\CoreBundle\OldImport;
 
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\OldArticle;
+use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\Site;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\MediaBundle\Entity\MediaManager;
@@ -242,43 +243,64 @@ class Importer
     }
 
 
-    protected function imagecreatefromfile($filename)
+    protected function createImage($url)
     {
-        $file = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/image/' . md5($filename) . '.' . pathinfo($filename, PATHINFO_EXTENSION);
-        $content = @file_get_contents($filename);
-        $this->output->writeln('Creating file: ' . $filename);
-        if ($content === false) {
-            $this->output->writeln("<error>Cant get file: {$filename}</error>");
-            return;
-        }
-        $im = imagecreatefromstring($content);
+        $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/image/';
+        $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
-        switch (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
-            case 'jpeg':
-            case 'jpg':
-                imagejpeg($im, $file);
-                break;
-
-            case 'png':
-                imagepng($im, $file);
-                break;
-
-            default:
-                $this->output->writeln("extension doesnt exist {$filename}");
-                break;
+        $output = shell_exec("wget $url -O $folder$file");
+        if (!is_file($folder . $file)) {
+            return null;
         }
 
-        return $file;
+        return $folder . $file;
+    }
+
+
+    /**
+     * @param $url
+     * @return string|void
+     */
+    protected function createAudio($url)
+    {
+        $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/audio/';
+        $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
+
+        $output = shell_exec("wget $url -O $folder$file");
+        if (!is_file($folder . $file)) {
+            return null;
+        }
+
+        return $folder . $file;
     }
 
     /**
+     * @param $url
+     * @return null|string
+     */
+    protected function createVideo($url)
+    {
+        $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/video/';
+        $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
+
+        $output = shell_exec("wget $url -O $folder$file");
+
+        if (!is_file($folder . $file)) {
+            return null;
+        }
+
+        return $folder . $file;
+    }
+
+    /**
+     * @param bool $force
      * @return Site
      */
-    protected function getSiteCorporate()
+    protected function getSiteCorporate($force = false)
     {
         static $siteCorporate = null;
 
-        if (!$siteCorporate) {
+        if (!$siteCorporate || $force) {
             $siteCorporate = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:Site')
@@ -290,13 +312,14 @@ class Importer
     }
 
     /**
+     * @param bool $force
      * @return Site
      */
-    protected function getSiteEvent()
+    protected function getSiteEvent($force = true)
     {
         static $siteEvent = null;
 
-        if (!$siteEvent) {
+        if (!$siteEvent || $force) {
             $siteEvent = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:Site')
@@ -320,4 +343,18 @@ class Importer
             ;
     }
 
+
+    /**
+     * @param OldArticleI18n[] $oldArticleTranslations
+     * @return bool
+     */
+    protected function hasFrenchTranslation($oldArticleTranslations)
+    {
+        foreach ($oldArticleTranslations as $trans) {
+            if ($trans->getCulture() == 'fr') {
+                return true;
+            }
+        }
+        return false;
+    }
 }
