@@ -62,7 +62,8 @@ class PersonManager extends CoreManager
             'setId' => $this->entityIdKey,
             'setAsianName' => 'IsAsianName',
             'setLastname' => 'Nom',
-            'setFirstname' => 'Prenom'
+            'setFirstname' => 'Prenom',
+            'setSelfkit' => 'IdSelfkit',
         );
         $this->mapperTranslations = array(
             'CiviliteTraductions' => array(
@@ -253,11 +254,10 @@ class PersonManager extends CoreManager
                 $entityRelated->setPosition($filmPersonMedia->Ordre);
 
                 // get the related media
-                $filmMedia = $this->mediaManager->getById($filmPersonMedia->Id);
+                $filmMedia = $this->mediaManager->getById($filmPersonMedia->Id, false);
                 $entityRelated->setMedia($filmMedia);
 
                 // add media
-                $entity->addMedia($entityRelated);
                 $collection->add($entityRelated);
             }
             // remove old relations

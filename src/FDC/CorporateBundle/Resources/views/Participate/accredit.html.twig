@@ -25,14 +25,15 @@
                 {{ accredit|trans_fallback('commonContent')|raw }}
             </div>
 
+            {% if accredit.procedure|length > 0 and accredit.procedure is not null %}
             <div class="block-tab-switch block-01">
                 <h3 class="title-tab-swich">{{ 'participate.register.procedure'|trans }}</h3>
 
-                {% if accredit.procedure|length > 0 %}
                     <table class="tab1">
                         <tbody>
                         <tr>
-                            {% for key,sectionFilter in accredit.procedure %}
+                            {% for key,sectionFilter in accredit.procedure if ( sectionFilter.procedure is not null and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
+                            ( sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED')) %}
                             <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
                                 {{ sectionFilter.procedure|trans_fallback('title') }}
                             </td>
@@ -43,8 +44,8 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                {% endif %}
             </div>
+            {% endif %}
 
             <div class="border-top">
                 {% for key, section in accredit.procedure %}
@@ -60,7 +61,7 @@
                             <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
                         </div>
-                        {% if section.procedure.displayAccredit != true %}
+                        {% if not section.procedure.displayAccredit and section.procedure|trans_fallback('btnLabel') != '' %}
                         <div class="block-s-info border-bottom border-top vFlexAlign">
                             <div class="buttons-02">
                                 <a href="{{ section.procedure|trans_fallback('btnLink') }}" class="button" target="_blank">{{ section.procedure|trans_fallback('btnLabel') }}</a>
@@ -68,7 +69,7 @@
                             <br><span class="legend">{{ section.procedure|trans_fallback('btnText') }}</span>
                         </div>
                         {% endif %}
-                        {% if section.procedure.displayAccredit != true %}
+                        {% if section.procedure.displayContact != true %}
                         <div class="block-contact block-01-ms">
                             <strong class="title-25">{{  section.procedure|trans_fallback('contactTitle')|raw }}</strong>
                             <div class="item i-1">

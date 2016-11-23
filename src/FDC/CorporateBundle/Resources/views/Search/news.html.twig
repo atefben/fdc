@@ -1,11 +1,11 @@
 <div class="top-texts">
-    {% if 'searchsubmit' in app.request.attributes.get("_route") %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'news'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
+    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.news.count > 4 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'news'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
     <h3>Actualités - {{ result.news.count }} résultats</h3>
 </div>
 
 <section class="news">
     {% for article in result.news.items %}
-        <article class="block-poster-search medias">
+        <article class="block-poster-search medias landscape-more">
             <div class="item {{ article.newsType|get_news_type }} release-press">
                 <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
                     <div class="contain-img landscape">

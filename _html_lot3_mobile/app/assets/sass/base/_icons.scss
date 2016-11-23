@@ -1,0 +1,466 @@
+@font-face {
+	font-family: "icon";
+	src: url('../fonts/icon.eot');
+	src: url('../fonts/icon.eot?#iefix') format('eot'),
+		url('../fonts/icon.woff2') format('woff2'),
+		url('../fonts/icon.woff') format('woff'),
+		url('../fonts/icon.ttf') format('truetype'),
+		url('../fonts/icon.svg#icon') format('svg');
+}
+
+.icon:before {
+	font-family: "icon";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-add-person:before {
+	content: "\E001";
+}
+
+.icon-app:before {
+	content: "\E002";
+}
+
+.icon-arrow-down:before {
+	content: "\E003";
+}
+
+.icon-arrow-fill:before {
+	content: "\E004";
+}
+
+.icon-arrow-left:before {
+	content: "\E005";
+}
+
+.icon-arrow-right:before {
+	content: "\E006";
+}
+
+.icon-arrow-top:before {
+	content: "\E007";
+}
+
+.icon-article:before {
+	content: "\E008";
+}
+
+.icon-audio:before {
+	content: "\E009";
+}
+
+.icon-badge-card-dark:before {
+	content: "\E00A";
+}
+
+.icon-badge:before {
+	content: "\E00B";
+}
+
+.icon-bag:before {
+	content: "\E00C";
+}
+
+.icon-books:before {
+	content: "\E00D";
+}
+
+.icon-bus-fill:before {
+	content: "\E00E";
+}
+
+.icon-bus:before {
+	content: "\E00F";
+}
+
+.icon-calendar:before {
+	content: "\E010";
+}
+
+.icon-camera-photo:before {
+	content: "\E011";
+}
+
+.icon-camera-press:before {
+	content: "\E012";
+}
+
+.icon-camera-round:before {
+	content: "\E013";
+}
+
+.icon-camera:before {
+	content: "\E014";
+}
+
+.icon-car-fill:before {
+	content: "\E015";
+}
+
+.icon-car:before {
+	content: "\E016";
+}
+
+.icon-card-access:before {
+	content: "\E017";
+}
+
+.icon-check:before {
+	content: "\E018";
+}
+
+.icon-chrome:before {
+	content: "\E019";
+}
+
+.icon-close-big-square:before {
+	content: "\E01A";
+}
+
+.icon-close-square:before {
+	content: "\E01B";
+}
+
+.icon-close:before {
+	content: "\E01C";
+}
+
+.icon-create:before {
+	content: "\E01D";
+}
+
+.icon-dailymotion:before {
+	content: "\E01E";
+}
+
+.icon-documen-acces:before {
+	content: "\E01F";
+}
+
+.icon-document-black:before {
+	content: "\E020";
+}
+
+.icon-door:before {
+	content: "\E021";
+}
+
+.icon-dot-big:before {
+	content: "\E022";
+}
+
+.icon-dot-small:before {
+	content: "\E023";
+}
+
+.icon-download:before {
+	content: "\E024";
+}
+
+.icon-drag-hand:before {
+	content: "\E025";
+}
+
+.icon-drag:before {
+	content: "\E026";
+}
+
+.icon-dress-code:before {
+	content: "\E027";
+}
+
+.icon-emergency:before {
+	content: "\E028";
+}
+
+.icon-event:before {
+	content: "\E029";
+}
+
+.icon-facebook:before {
+	content: "\E02A";
+}
+
+.icon-finder:before {
+	content: "\E02B";
+}
+
+.icon-firefox:before {
+	content: "\E02C";
+}
+
+.icon-fullscreen:before {
+	content: "\E02D";
+}
+
+.icon-hand-drag:before {
+	content: "\E02E";
+}
+
+.icon-hands:before {
+	content: "\E02F";
+}
+
+.icon-hours-black:before {
+	content: "\E030";
+}
+
+.icon-hours:before {
+	content: "\E031";
+}
+
+.icon-information:before {
+	content: "\E032";
+}
+
+.icon-instagram:before {
+	content: "\E033";
+}
+
+.icon-internet-explorer:before {
+	content: "\E034";
+}
+
+.icon-language:before {
+	content: "\E035";
+}
+
+.icon-letter-open:before {
+	content: "\E036";
+}
+
+.icon-letter:before {
+	content: "\E037";
+}
+
+.icon-link:before {
+	content: "\E038";
+}
+
+.icon-lodging:before {
+	content: "\E039";
+}
+
+.icon-map:before {
+	content: "\E03A";
+}
+
+.icon-marker-black:before {
+	content: "\E03B";
+}
+
+.icon-media:before {
+	content: "\E03C";
+}
+
+.icon-mike-fill:before {
+	content: "\E03D";
+}
+
+.icon-mike-white:before {
+	content: "\E03E";
+}
+
+.icon-mike:before {
+	content: "\E03F";
+}
+
+.icon-minus:before {
+	content: "\E040";
+}
+
+.icon-more-square:before {
+	content: "\E041";
+}
+
+.icon-movie-clap:before {
+	content: "\E042";
+}
+
+.icon-padlock:before {
+	content: "\E043";
+}
+
+.icon-palme-bg:before {
+	content: "\E044";
+}
+
+.icon-palme:before {
+	content: "\E045";
+}
+
+.icon-pause:before {
+	content: "\E046";
+}
+
+.icon-pdf:before {
+	content: "\E047";
+}
+
+.icon-pencil:before {
+	content: "\E048";
+}
+
+.icon-personal-calendar:before {
+	content: "\E049";
+}
+
+.icon-persons:before {
+	content: "\E04A";
+}
+
+.icon-phone-fill:before {
+	content: "\E04B";
+}
+
+.icon-photo-support:before {
+	content: "\E04C";
+}
+
+.icon-photo:before {
+	content: "\E04D";
+}
+
+.icon-plane:before {
+	content: "\E04E";
+}
+
+.icon-play:before {
+	content: "\E04F";
+}
+
+.icon-player:before {
+	content: "\E050";
+}
+
+.icon-playlist:before {
+	content: "\E051";
+}
+
+.icon-podcast:before {
+	content: "\E052";
+}
+
+.icon-print:before {
+	content: "\E053";
+}
+
+.icon-read-latter:before {
+	content: "\E054";
+}
+
+.icon-release-press:before {
+	content: "\E055";
+}
+
+.icon-reverseFullscreen:before {
+	content: "\E056";
+}
+
+.icon-rss:before {
+	content: "\E057";
+}
+
+.icon-safari:before {
+	content: "\E058";
+}
+
+.icon-search:before {
+	content: "\E059";
+}
+
+.icon-selfie:before {
+	content: "\E05A";
+}
+
+.icon-share:before {
+	content: "\E05B";
+}
+
+.icon-slideshow:before {
+	content: "\E05C";
+}
+
+.icon-sound:before {
+	content: "\E05D";
+}
+
+.icon-stool:before {
+	content: "\E05E";
+}
+
+.icon-taxi-fill:before {
+	content: "\E05F";
+}
+
+.icon-tools:before {
+	content: "\E060";
+}
+
+.icon-trailer-player:before {
+	content: "\E061";
+}
+
+.icon-trailer:before {
+	content: "\E062";
+}
+
+.icon-train:before {
+	content: "\E063";
+}
+
+.icon-truck:before {
+	content: "\E064";
+}
+
+.icon-tumblr:before {
+	content: "\E065";
+}
+
+.icon-tv:before {
+	content: "\E066";
+}
+
+.icon-twitter:before {
+	content: "\E067";
+}
+
+.icon-user-fill:before {
+	content: "\E068";
+}
+
+.icon-user-round:before {
+	content: "\E069";
+}
+
+.icon-video:before {
+	content: "\E06A";
+}
+
+.icon-wen-fill:before {
+	content: "\E06B";
+}
+
+.icon-wen-minus:before {
+	content: "\E06C";
+}
+
+.icon-wen-more:before {
+	content: "\E06D";
+}
+
+.icon-wifi:before {
+	content: "\E06E";
+}
+
+.icon-youtube:before {
+	content: "\E06F";
+}

@@ -28,8 +28,8 @@
                     </div>
                     <span id="slider-snap-value-upper" class="number"></span>
                 </div>
-                <input type="hidden" for="s-yearstart" id="s-yearstart" name="year-start" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-start') }}{% else %}1946{% endif %}">
-                <input type="hidden" for="s-yearend" id="s-yearend" name="year-end" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-end') }}{% else %}2016{% endif %}">
+                <input type="hidden" for="s-yearstart" class="s-yearstart" name="year-start" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-start') }}{% else %}1946{% endif %}">
+                <input type="hidden" for="s-yearend" class="s-yearend" name="year-end" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-end') }}{% else %}2016{% endif %}">
                 <input type="hidden" name="pg" value="1">
                 <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}</button>
             </form>

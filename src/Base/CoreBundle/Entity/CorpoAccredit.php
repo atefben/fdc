@@ -42,6 +42,7 @@ class CorpoAccredit implements TranslateMainInterface
      * @var CorpoAccreditProcedure
      *
      * @ORM\OneToMany(targetEntity="CorpoAccreditHasProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $procedure;
 

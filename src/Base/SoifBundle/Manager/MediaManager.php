@@ -2,14 +2,12 @@
 
 namespace Base\SoifBundle\Manager;
 
-use \Exception;
-
-use Base\CoreBundle\Entity\FilmMedia;
 use Base\CoreBundle\Entity\FilmFilmMedia;
+use Base\CoreBundle\Entity\FilmMedia;
+use Exception;
 
 /**
  * MediaManager class.
- * 
  * @extends CoreManager
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
@@ -18,33 +16,30 @@ class MediaManager extends CoreManager
 {
     /**
      * festivalManager
-     * 
      * @var mixed
      * @access private
      */
     private $festivalManager;
-    
+
     /**
      * mediaStreamManager
-     * 
      * @var mixed
      * @access private
      */
     private $mediaStreamManager;
-    
+
     /**
      * mediaCategoryManager
-     * 
      * @var mixed
      * @access private
      */
     private $mediaCategoryManager;
 
     /**
-     * __construct function.
-     * 
-     * @access public
-     * @return void
+     * MediaManager constructor.
+     * @param $festivalManager
+     * @param $mediaStreamManager
+     * @param $mediaCategoryManager
      */
     public function __construct($festivalManager, $mediaStreamManager, $mediaCategoryManager)
     {
@@ -56,37 +51,35 @@ class MediaManager extends CoreManager
         $this->wsParameterKey = 'idElementMultimedia';
         $this->entityIdKey = 'IdSoif';
         $this->mapper = array(
-            'setId' => $this->entityIdKey,
-            'setCopyright' => 'Copyright',
+            'setId'          => $this->entityIdKey,
+            'setCopyright'   => 'Copyright',
             'setContentType' => 'ContentType',
-            'setTitleVf' => 'LibelleFr',
-            'setTitleVa' => 'LibelleEn',
-            'setType' => 'Type'
+            'setTitleVf'     => 'LibelleFr',
+            'setTitleVa'     => 'LibelleEn',
+            'setType'        => 'Type',
         );
         $this->mapperEntity = array(
             array(
                 'repository' => 'BaseCoreBundle:FilmFestival',
-                'soapKey' => 'IdFestival',
-                'setter' => 'setFestival',
-                'manager' => $this->festivalManager
+                'soapKey'    => 'IdFestival',
+                'setter'     => 'setFestival',
+                'manager'    => $this->festivalManager,
             ),
             array(
                 'repository' => 'BaseCoreBundle:FilmMediaCategory',
-                'soapKey' => 'IdType',
-                'setter' => 'setCategory',
-                'manager' => $this->mediaCategoryManager
-            )
+                'soapKey'    => 'IdType',
+                'setter'     => 'setCategory',
+                'manager'    => $this->mediaCategoryManager,
+            ),
         );
     }
-    
+
     /**
-     * getById function.
-     * 
-     * @access public
-     * @param mixed $id
-     * @return void
+     * @param $id
+     * @param bool $update
+     * @return \Base\CoreBundle\Entity\FilmMedia|null
      */
-    public function getById($id)
+    public function getById($id, $update = true)
     {
         $this->wsMethod = 'GetElementMultimedia';
         $this->wsResultKey = 'GetElementMultimediaResult';
@@ -102,22 +95,21 @@ class MediaManager extends CoreManager
         }
 
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-        
+
         // set entity
-        $entity = $this->set($resultObject, $result);
-        
+        $entity = $this->set($resultObject, $result, $update);
+
         // save entity
         $this->update($entity);
-        
+
         // end timer
         $this->end(__METHOD__);
-        
+
         return $entity;
     }
-    
+
     /**
      * getModified function.
-     * 
      * @access public
      * @param mixed $from
      * @param mixed $to
@@ -151,14 +143,13 @@ class MediaManager extends CoreManager
             $this->update($entity);
         }
 
-        
+
         // end timer
         $this->end(__METHOD__);
     }
 
     /**
      * getRemoved function.
-     * 
      * @access public
      * @param mixed $from
      * @param mixed $to
@@ -168,56 +159,91 @@ class MediaManager extends CoreManager
     {
         $this->wsMethod = 'GetRemovedElementMultimedia';
         $this->wsResultKey = 'GetRemovedElementMultimediaResult';
-         
+
         // start timer
         $this->start(__METHOD__);
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
-        
+
         // delete objects
         $this->deleteMultiple($resultObjects);
-        
+
         // save entities
         $this->em->flush();
-        
+
         // end timer
         $this->end(__METHOD__);
     }
 
     /**
-     * set function.
-     * 
-     * @access private
-     * @param mixed $resultObject
-     * @param mixed $result
-     * @return void
+     * @param $from
+     * @param $to
      */
-    private function set($resultObject, $result)
+    public function getModifiedMedia($from, $to)
+    {
+        $this->wsMethod = 'GetModifiedElementMultimedia';
+        $this->wsResultKey = 'GetModifiedElementMultimediaResult';
+
+        // start timer
+        $this->start(__METHOD__);
+
+        // call the ws
+        $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
+        $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
+
+        // updateElement
+
+        foreach ($resultObjects as $temp) {
+            foreach ($temp as $subTemp) {
+                foreach ($subTemp as $item) {
+                    $this->getById($item->IdSoif);
+                }
+            }
+        }
+
+        // save entities
+        $this->em->flush();
+
+        // end timer
+        $this->end(__METHOD__);
+    }
+
+    /**
+     * @param $resultObject
+     * @param $result
+     * @param bool $update
+     * @return \Base\CoreBundle\Entity\FilmMedia
+     */
+    private function set($resultObject, $result, $update = true)
     {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmMedia();
-        $persist = ($entity->getId() === null) ? true : false;
+
+        if ($entity->getId() && !$update) {
+            return $entity;
+        }
 
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
 
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
-        
+
         // set related entity
         $this->setEntityRelated($resultObject, $entity);
-        
+
         // set related media
-        $this->mediaStreamManager->getById($entity, $resultObject->{$this->entityIdKey}, $this->mimeToExtension($resultObject->ContentType),'sonata.media.provider.image',$this->typeToContext($resultObject->IdType));
+        $this->mediaStreamManager->getById($entity, $resultObject->{$this->entityIdKey}, $this->mimeToExtension($resultObject->ContentType), 'sonata.media.provider.image', $this->typeToContext($resultObject->IdType));
 
         return $entity;
     }
 
-    private function typeToContext($type){
+    private function typeToContext($type)
+    {
         $context = 'film_film';
-        switch($type) {
+        switch ($type) {
             case FilmFilmMedia::TYPE_DIRECTOR:
                 $context = 'film_director';
                 break;

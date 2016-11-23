@@ -17,14 +17,22 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
 
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+
         if(!empty($searchTerm['search'])) {
-            $finalQuery
+            $stringQuery = new \Elastica\Query\BoolQuery();
+
+            $stringQuery
                 ->addMust($this->getFieldsQuery($searchTerm['search']))
                 //->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
             ;
+
+            $finalQuery->addMust($stringQuery);
         }
 
-        if($searchTerm['professions']) {
+        if(isset($searchTerm['professions']) && $searchTerm['professions']) {
             foreach($searchTerm['professions'] as $profession) {
                 $finalQuery->addShould($this->getLocalizedFieldsQuery('fr', $profession)); //comparison done with 'fr'
             }

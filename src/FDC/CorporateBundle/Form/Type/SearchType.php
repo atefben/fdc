@@ -40,8 +40,7 @@ class SearchType extends AbstractType {
             ->setMethod('GET')
             ->add('search',  new TextType() , array(
                 'attr' => array(
-                    'value'       => $this->searchTerm,
-                    'placeholder' => $this->translator->trans('header.search.input.entrezrecherche', array(), 'FDCCorporateBundle')
+                    'placeholder' => $this->translator->trans('search.form.entrezrecherche', array(), 'FDCCorporateBundle')
                 ),
                 'label' => false,
                 'required' => false
@@ -103,19 +102,36 @@ class SearchType extends AbstractType {
             ))
             ->add('formats', 'choice', array(
                 'choices'  => array(
-                    $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle') => $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle'),
-                    $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle') => $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle')
+                    $this->translator->trans('search.form.format.longmetrage', array(), 'FDCCorporateBundle') => 'longmetrage',
+                    $this->translator->trans('search.form.format.courtmetrage', array(), 'FDCCorporateBundle') => 'courtmetrage'
                 ),
                 'choices_as_values' => true,
                 'multiple' => true,
                 'expanded' => true
             ))
-            ->add('year-start', 'hidden', array(
+            ->add('yearStart', 'hidden', array(
                 'data' => '1946',
             ))
-            ->add('year-end', 'hidden', array(
+            ->add('yearEnd', 'hidden', array(
                 'data' => '2016',
-            ));
+            ))
+            ->add('artistCountry',  new TextType() , array(
+                'attr' => array(
+                    'class'       => 'country',
+                    'placeholder' => $this->translator->trans('search.form.country', array(), 'FDCCorporateBundle')
+                ),
+                'label' => false,
+                'required' => false
+            ))
+            ->add('movieCountry',  new TextType() , array(
+                'attr' => array(
+                    'class'       => 'country',
+                    'placeholder' => $this->translator->trans('search.form.country', array(), 'FDCCorporateBundle')
+                ),
+                'label' => false,
+                'required' => false
+            ))
+        ;
 
     }
 

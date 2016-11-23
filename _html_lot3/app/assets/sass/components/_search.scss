@@ -620,3 +620,48 @@ header #searchContainer {
     }
   }
 }
+
+
+.tab-2, .tab-1 {
+  position: relative;
+
+  .close-suggest {
+    position: absolute;
+    right: 6px;
+    top: 3px;
+    color: #c8a461;
+    font-size: .7rem;
+  }
+
+  .suggest {
+    position: absolute;
+    background-color: #fff;
+    color: #8a8a8a;
+    z-index: 3;
+    width: 367px;
+
+    li {
+      height: 40px;
+      display: flex;
+      align-items: center;
+
+      strong {
+        font-weight: 700;
+        color: #c8a461;
+      }
+    }
+
+    li:nth-child(even) {
+      background-color: #fbfbfb;
+    }
+
+    a {
+      color: #8a8a8a;
+    }
+  }
+}
+
+.tab-country {
+  margin-bottom: 31px;
+  display: block;
+}

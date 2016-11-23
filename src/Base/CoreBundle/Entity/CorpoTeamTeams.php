@@ -54,7 +54,13 @@ class CorpoTeamTeams implements TranslateMainInterface
     }
 
     public function __toString() {
-        return 'Les équipes';
+        $string = 'Les équipes';
+
+        if ($this->getId()) {
+            $string = ' "'. $this->findTranslationByLocale('fr')->getTeamName()  .'"';
+        }
+
+        return $string;
     }
 
     /**

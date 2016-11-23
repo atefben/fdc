@@ -1,74 +1,71 @@
 <div class="top-texts">
-    <a href="search-result-more.html" class="see-all">Tout voir</a>
-    <h3>Médias - 12 résultats</h3>
+    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.media.count > 5 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'media'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
+    <h3>Médias - {{ result.media.count }} résultats</h3>
 </div>
 
 <section class="medias">
-    <article class="block-poster-search medias">
-        <div class="item video">
-            <a href="#">
-                <div class="contain-img landscape">
-                    <img src="media/images/search-06.jpg" alt=""  >
-                    <i class="picto icon icon-video"></i>
-                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                </div>
-                <div class="contain-txts">
-                    <span class="title-type-media">montée des marches</span>
-                    <span class="title-dates">18.05.15  .  09:00</span>
-                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                </div>
-            </a>
-        </div>
-    </article>
+    {% for media in result.media.items %}
+        {% if class(media) == "MediaImage" %}
+            {% set title = media|trans_fallback('legend') %}
+            {% set format = 'photo' %}
+            {% set link = path('fdc_event_news_getphotos') ~ '#pid=' ~ media.id %}
+        {% elseif class(media) == "MediaVideo" %}
+            {% set title = media|trans_fallback('title') %}
+            {% set format = 'video' %}
+            {% set link = '' %}
+            {% if media.displayedAll == true %}
+                {% set link = path('fdc_event_news_getvideos') ~ '#vid=' ~ media.id %}
+            {% elseif media.displayedTrailer == true and media.associatedFilms|length > 0 %}
+                {% set link = path('fdc_event_television_gettrailer', {slug: media.associatedFilms[0].association.slug, video: media.id }) %}
+            {% elseif media.displayedWebTv == true and media.webTv is not empty %}
+                {% set link = path('fdc_event_television_getchannel_1', {slug: media.webTv.findTranslationByLocale(app.request.locale).slug, videoId: media.id }) %}
+            {% endif %}
+        {% elseif class(media) == "MediaAudio" %}
+            {% set title = media|trans_fallback('title') %}
+            {% set format = 'audio' %}
+            {% set link = path('fdc_event_news_getaudios') ~ '#aid=' ~ media.id %}
+        {% endif %}
+        <article class="block-poster-search medias landscape-more">
+            <div class="item {{ format }}">
+                <a href="{{ link }}">
+                    <div class="contain-img landscape">
+                        {% set trans = media.findTranslationByLocale(app.request.locale) %}
+                        {% set transImage = null %}
+                        {% set amazonImage = null %}
 
-    <article class="block-poster-search medias">
-        <div class="item video">
-            <a href="#">
-                <div class="contain-img landscape">
-                    <img src="media/images/search-06.jpg" alt=""  >
-                    <i class="picto icon icon-audio"></i>
-                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                </div>
-                <div class="contain-txts">
-                    <span class="title-type-media">montée des marches</span>
-                    <span class="title-dates">18.05.15  .  09:00</span>
-                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                </div>
-            </a>
-        </div>
-    </article>
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = media.findTranslationByLocale('fr') %}
+                        {% endif %}
 
-    <article class="block-poster-search medias">
-        <div class="item video">
-            <a href="#">
-                <div class="contain-img landscape">
-                    <img src="media/images/search-06.jpg" alt=""  >
-                    <i class="picto icon icon-video"></i>
-                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                </div>
-                <div class="contain-txts">
-                    <span class="title-type-media">montée des marches</span>
-                    <span class="title-dates">18.05.15  .  09:00</span>
-                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                </div>
-            </a>
-        </div>
-    </article>
+                        {% if media.header is not null %}
+                            {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
+                            {% if transImage is null or transImage.file is null  %}
+                                {% set transImage = media.header.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% elseif media.image %}
+                            {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
+                            {% if transImage is null or transImage.file is null %}
+                                {% set transImage = media.image.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
+                            {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
+                        {% endif %}
 
-    <article class="block-poster-search medias">
-        <div class="item last audio">
-            <a href="#">
-                <div class="contain-img landscape">
-                    <img src="media/images/search-06.jpg" alt=""  >
-                    <i class="picto icon icon-audio"></i>
-                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                </div>
-                <div class="contain-txts">
-                    <span class="title-type-media">montée des marches</span>
-                    <span class="title-dates">18.05.15  .  09:00</span>
-                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                </div>
-            </a>
-        </div>
-    </article>
+                        {% if transImage or amazonImage %}
+                            <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
+                        {% else %}
+                            <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
+                        {% endif %}
+                        <i class="picto icon icon-{{ format }}"></i>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                    </div>
+                    <div class="contain-txts">
+                        <span class="title-type-media">{{ media.theme|trans_fallback('name') }}</span>
+                        <span class="title-dates">{{ media.publishedAt|date('d.m.y') }}  .  {{ agenda_leftbar_translate_hour(media.publishedAt|date('H:i'), true, true) }}</span>
+                        <span class="title-media">{{ title }}</span>
+                    </div>
+                </a>
+            </div>
+        </article>
+    {% endfor %}
 </section>

@@ -49,6 +49,10 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:homepage_corporate.html.twig' %}
 {% endblock %}
 
+{% block base_admin_corpo_search_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_search.html.twig' %}
+{% endblock %}
+
 {% block base_admin_gallery_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:gallery.html.twig' %}
 {% endblock %}
@@ -357,6 +361,11 @@
                     {% else %}
                         <strong>{{ value.name }}</strong>
                     {% endif %}
+                {% elseif not value.thumbsGenerated %}
+                    <div class="pull-left" style="margin-right: 5px">
+                        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object" style="width: 85px; height: 85px"/>
+                    </div>
+                    <strong>Miniature en cours de création.</strong> <br />
                 {% else %}
                     <div class="pull-left" style="margin-right: 5px">
                         {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}

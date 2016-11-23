@@ -115,7 +115,7 @@ class CorpoAccreditAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
 
-                    )
+                    ),
                 )
             ))
             ->add('hideCommonContent')
@@ -128,6 +128,7 @@ class CorpoAccreditAdmin extends Admin
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label' => 'Image cover'
             ))
+
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(

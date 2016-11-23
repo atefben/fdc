@@ -103,6 +103,24 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                             )
                         )
                     ),
+                    'pushTitle' => array(
+                        'label' => 'Titre du push',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'pushSubTitle' => array(
+                        'label' => 'Sous-titre du push',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
                     'procedureContent' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Description de la procédure',
@@ -124,14 +142,6 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                     'btnSelectionLink' => array(
                         'field_type' => 'text',
                         'label' => 'Lien du bouton 1 (gauche)'
-                    ),
-                    'btnInscriptionLabel' => array(
-                        'field_type' => 'text',
-                        'label' => 'Libellé du bouton 2 (droite)'
-                    ),
-                    'btnInscriptionLink' => array(
-                        'field_type' => 'text',
-                        'label' => 'Lien du bouton 2 (droite)'
                     ),
                     'firstColumnContact' => array(
                         'field_type' => 'ckeditor',
@@ -161,6 +171,26 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnLink' => array(
+                        'label' => 'form.label_btn_link',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnText' => array(
+                        'label' => 'Titre',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    )
                 )
             ))
             ->add('pdf', 'sonata_type_model_list',

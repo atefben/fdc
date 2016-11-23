@@ -2218,7 +2218,7 @@ a {
 }
 
 .button-submit-02 {
-  width: 712px;
+  width: 100%;
   background-color: transparent;
   height: 55px;
   margin-top: 46px;
@@ -7982,6 +7982,46 @@ header #searchContainer {
   position: relative;
 }
 
+.tab-2, .tab-1 {
+  position: relative;
+}
+.tab-2 .close-suggest, .tab-1 .close-suggest {
+  position: absolute;
+  right: 6px;
+  top: 3px;
+  color: #c8a461;
+  font-size: .7rem;
+}
+.tab-2 .suggest, .tab-1 .suggest {
+  position: absolute;
+  background-color: #fff;
+  color: #8a8a8a;
+  z-index: 3;
+  width: 367px;
+}
+.tab-2 .suggest li, .tab-1 .suggest li {
+  height: 40px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.tab-2 .suggest li strong, .tab-1 .suggest li strong {
+  font-weight: 700;
+  color: #c8a461;
+}
+.tab-2 .suggest li:nth-child(even), .tab-1 .suggest li:nth-child(even) {
+  background-color: #fbfbfb;
+}
+.tab-2 .suggest a, .tab-1 .suggest a {
+  color: #8a8a8a;
+}
+
+.tab-country {
+  margin-bottom: 31px;
+  display: block;
+}
+
 .filters {
   text-align: center;
   padding-bottom: 24px;
@@ -12468,6 +12508,37 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   letter-spacing: 1px;
   font-style: italic;
 }
+.block-search .search-txt .close-suggest {
+  position: absolute;
+  right: 6px;
+  top: 3px;
+  color: #c8a461;
+  font-size: .7rem;
+}
+.block-search .search-txt .suggest {
+  position: absolute;
+  background-color: #fff;
+  color: #8a8a8a;
+  z-index: 3;
+  width: 367px;
+}
+.block-search .search-txt .suggest li {
+  height: 40px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.block-search .search-txt .suggest li strong {
+  font-weight: 700;
+  color: #c8a461;
+}
+.block-search .search-txt .suggest li:nth-child(even) {
+  background-color: #fbfbfb;
+}
+.block-search .search-txt .suggest a {
+  color: #8a8a8a;
+}
 .block-search .icon-s {
   height: 63px;
   width: 166px;
@@ -12671,8 +12742,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
       flex-wrap: wrap;
 }
 .block-search .content-result.result-more article {
-  margin-right: 40px;
+  margin-right: 0px;
   margin-bottom: 26px;
+}
+.block-search .content-result.result-more .item {
+  margin-right: 31px;
+}
+.block-search .content-result.result-more .block-poster-search:not(.landscape-more) {
+  max-width: 195px;
 }
 .block-search .content-result .top-texts {
   margin-bottom: 25px;

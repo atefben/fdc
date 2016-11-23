@@ -6,10 +6,10 @@
 {% block body %}
     <section id="main">
         {% set corpo = true %}
-        {% if content.mainImage is defined and content.mainImage is not null %}
-            {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
+        {% if datas.image is defined and datas.image is not null %}
+            {% set mainTrans = datas.image.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
-                {% set mainTrans = content.mainImage.findTranslationByLocale('fr') %}
+                {% set mainTrans = datas.image.findTranslationByLocale('fr') %}
             {% endif %}
             {% set mainImage = mainTrans.file %}
             <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %})">

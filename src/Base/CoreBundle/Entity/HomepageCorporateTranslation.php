@@ -162,7 +162,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get popinSubtitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPopinSubtitle1()
     {
@@ -185,7 +185,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get popinSubtitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPopinSubtitle2()
     {
@@ -208,7 +208,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get bannerText
      *
-     * @return string 
+     * @return string
      */
     public function getBannerText()
     {
@@ -231,7 +231,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushEditionTitle
      *
-     * @return string 
+     * @return string
      */
     public function getPushEditionTitle()
     {
@@ -254,7 +254,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushMainTitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPushMainTitle1()
     {
@@ -277,7 +277,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushMainTitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPushMainTitle2()
     {
@@ -300,7 +300,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushSecondaryTitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPushSecondaryTitle1()
     {
@@ -323,7 +323,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushSecondaryTitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPushSecondaryTitle2()
     {
@@ -346,7 +346,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushSecondaryTitle3
      *
-     * @return string 
+     * @return string
      */
     public function getPushSecondaryTitle3()
     {
@@ -369,7 +369,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushMainUrl1
      *
-     * @return string 
+     * @return string
      */
     public function getPushMainUrl1()
     {
@@ -392,7 +392,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushMainUrl2
      *
-     * @return string 
+     * @return string
      */
     public function getPushMainUrl2()
     {
@@ -415,7 +415,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushSecondaryUrl1
      *
-     * @return string 
+     * @return string
      */
     public function getPushSecondaryUrl1()
     {
@@ -438,7 +438,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushSecondaryUrl2
      *
-     * @return string 
+     * @return string
      */
     public function getPushSecondaryUrl2()
     {
@@ -461,7 +461,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushSecondaryUrl3
      *
-     * @return string 
+     * @return string
      */
     public function getPushSecondaryUrl3()
     {
@@ -484,7 +484,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushEditionUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPushEditionUrl()
     {
@@ -507,7 +507,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushMainSubtitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPushMainSubtitle1()
     {
@@ -530,7 +530,7 @@ class HomepageCorporateTranslation implements TranslateChildInterface
     /**
      * Get pushMainSubtitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPushMainSubtitle2()
     {

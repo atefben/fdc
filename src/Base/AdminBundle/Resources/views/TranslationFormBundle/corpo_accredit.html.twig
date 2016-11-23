@@ -30,8 +30,8 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.commonContent) }}
                                         {{ form_row(form.parent.children.mainImage) }}
+                                        {{ form_row(translationsFields.commonContent) }}
                                         <div class="form-group">
                                             {{ form_widget(form.parent.children.hideCommonContent) }}
                                             {{ form_label(form.parent.children.hideCommonContent) }}
@@ -42,7 +42,7 @@
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
-                                        Procédure d'accréditation par type de média
+                                        Accréditation par type
                                     </h4>
                                 </div>
                                 <div class="box-body">
@@ -53,20 +53,6 @@
                                             }
                                         </style>
                                         {{ form_row(form.parent.children.procedure) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        Demande d’accréditation
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.btnLabel) }}
-                                        {{ form_row(translationsFields.btnLink) }}
-                                        {{ form_row(translationsFields.btnText) }}
                                     </div>
                                 </div>
                             </div>

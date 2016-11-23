@@ -56,7 +56,9 @@ _html_mobile/node_modules
 _html_mobile/.tmp
 _html_lot3/node_modules
 _html_lot3/bower_components
-_html_mobile/dist/
+_html_mobile/dist
+_html_lot3_mobile/node_modules
+_html_lot3_mobile/bower_components
 
 #OS junk files
 # Exclude generated files
@@ -106,3 +108,4 @@ app/Resources/translations/routes.en.xliff
 app/config/bundles/fos_elastica.yml
 
 app/config/bundles/fos_elastica.yml
+/cron_thumbs_lock

@@ -31,6 +31,7 @@ class FilmPersonAdmin extends SoifAdmin
     {
         $datagridMapper
             ->add('id')
+            ->add('selfkit')
             ->add('lastname')
             ->add('firstname')
             ->add('asianName')
@@ -49,6 +50,7 @@ class FilmPersonAdmin extends SoifAdmin
     {
         $listMapper
             ->add('id')
+            ->add('selfkit')
             ->add('lastname')
             ->add('firstname')
             ->add('asianName')

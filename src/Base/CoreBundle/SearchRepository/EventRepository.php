@@ -14,13 +14,23 @@ class EventRepository extends SearchRepository implements SearchRepositoryInterf
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
-            ->addShould($this->getFieldsQuery($_locale, $searchTerm))
-            ->addShould($this->getThemeQuery($_locale, $searchTerm))
-            ->addShould($this->getTagsQuery($_locale, $searchTerm))
-        ;
+
+        if(!empty($searchTerm['search'])) {
+            $stringQuery = new \Elastica\Query\BoolQuery();
+
+            $stringQuery
+                ->addShould($this->getFieldsQuery($_locale, $searchTerm['search']))
+                ->addShould($this->getThemeQuery($_locale, $searchTerm['search']))
+                ->addShould($this->getTagsQuery($_locale, $searchTerm['search']));
+
+            $finalQuery->addMust($stringQuery);
+        }
         
         $statusQuery = new \Elastica\Query\BoolQuery();
         $statusQuery

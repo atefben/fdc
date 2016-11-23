@@ -37,6 +37,21 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
+                                    Demande d’accréditation
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.btnLabel) }}
+                                    {{ form_row(translationsFields.btnLink) }}
+                                    {{ form_row(translationsFields.btnText) }}
+                                    {{ form_row(form.parent.children.displayAccredit) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
                                     Contact
                                 </h4>
                             </div>
@@ -51,21 +66,6 @@
                                     {{ form_row(translationsFields.firstColumnContact) }}
                                     {{ form_row(translationsFields.secondColumnContact) }}
                                     {{ form_row(form.parent.children.displayContact) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    Demande d’accréditation
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.btnLabel) }}
-                                    {{ form_row(translationsFields.btnLink) }}
-                                    {{ form_row(translationsFields.btnText) }}
-                                    {{ form_row(form.parent.children.displayAccredit) }}
                                 </div>
                             </div>
                         </div>

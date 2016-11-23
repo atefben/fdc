@@ -3094,15 +3094,12 @@ var owInitSliderSelect = function(id) {
     	document.getElementById('slider-snap-value-upper')
     ];
 
-
-      ys = $('#s-yearstart').val();
-      ye = $('#s-yearend').val();
+      ys = $('.s-yearstart').val();
+      ye = $('.s-yearend').val();
 
       ys = parseInt(ys);
       ye = parseInt(ye);
-
-      console.log(ys+' , '+ye);
-
+    
     noUiSlider.create(slider, {
     	start: [ys, ye],//todo script
     	connect: true,
@@ -3119,8 +3116,8 @@ var owInitSliderSelect = function(id) {
         var lower = parseInt(values[0]);
         var up = parseInt(values[1]);
 
-        $('#s-yearstart').val(lower);
-        $('#s-yearend').val(up);
+        $('.s-yearstart').val(lower);
+        $('.s-yearend').val(up);
         
     });
   }
@@ -3130,11 +3127,20 @@ var owInitSliderSelect = function(id) {
 
     $tab.on('click', function(){
       var input = $(this).find('input');
+      var classTab = $tab[0].className;
+
+      console.log(classTab);
+
+      //faire deux class différente
+      //verifier la class et en fonction mettre en opacity 0 !
 
       if(input[0].checked){
+
         input[0].checked = false;
         $(this).removeClass('active');
+
       }else{
+
         $('.more-search').addClass('active');
         input[0].checked = true;
         $(this).addClass('active');
@@ -3150,85 +3156,161 @@ var owInitSliderSelect = function(id) {
 
 
 var autoComplete = function() {
-  
-  /*$('.country').on('click', function () {
+
+  $('.close-suggest').css("display","none");
+
+  $('.country').on('input', function(){
+
+    $('.close-suggest').css("display","block");
+
     var value = $(this).val();
-    var $suggest = $(this).next();
+    var $suggest = $(this).next().next().find('.suggest');
     var noWhitespaceValue = value.replace(/\s+/g, '');
     var noWhitespaceCount = noWhitespaceValue.length;
 
-  })
-  
-  
-  var value = $(this).val();
+    if (GLOBALS.env == "html") {
+      searchUrl = GLOBALS.urls.searchUrlCountry;
+    } else {
+      searchUrl = GLOBALS.urls.searchUrlCountry+'/'+encodeURIComponent(value);
+    }
 
-
-
-  if ($('.searchpage').length) {
-    $suggest = $('#main #suggest');
-  }
-  
-  if (value == '') {
-    $suggest.empty();
-    return false;
-  }
-
-  if (GLOBALS.env == "html") {
-    searchUrl = GLOBALS.urls.searchUrl;
-  } else {
-    searchUrl = GLOBALS.urls.searchUrl + '/' + encodeURIComponent(value);
-  }
-
-  if (noWhitespaceCount >= 3) {
-    $('.suggestSearch').on('input', function (e) {
-      var value = $(this).val();
-      var $suggest = $(this).parent().next();
-      var noWhitespaceValue = value.replace(/\s+/g, '');
-      var noWhitespaceCount = noWhitespaceValue.length;
-
-      if ($('.searchpage').length) {
-        $suggest = $('#main #suggest');
-      }
-      if (value == '') {
+    $.ajax({
+      type: "GET",
+      url: searchUrl,
+      success: function (data) {
         $suggest.empty();
-        return false;
-      }
 
-      if (GLOBALS.env == "html") {
-        searchUrl = GLOBALS.urls.searchUrl;
-      } else {
-        searchUrl = GLOBALS.urls.searchUrl + '/' + encodeURIComponent(value);
-      }
+        if (data.length > 0) {
 
-      if (noWhitespaceCount >= 3) {
-        $.ajax({
-          type: "GET",
-          url: searchUrl,
-          success: function (data) {
-            $suggest.empty();
 
-            if (data.length > 0) {
-              for (var i = 0; i < data.length; i++) {
-                var type = data[i].type,
-                    name = data[i].name,
-                    link = data[i].link;
+          for (var i = 0; i < data.length; i++) {
+            var name = data[i].name;
+            var txt = name.toLowerCase();
 
-                var txt = name.toLowerCase();
-                txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-                $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
-              }
-            } else {
-              $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+
+            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+
+            var valueTrunc = value.substring(0, 3)
+            var chaine = txt.indexOf(valueTrunc);
+
+            if(chaine > -1) {
+              $suggest.append('<li data-country='+name+'><span>' + txt + '</span></li>');
+
+              $('.sub-tab').css('opacity', '0.2');
+              $suggest.addClass('open');
             }
-          },
-          error: function () {
-            $suggest.empty();
-            $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+
           }
-        });
+
+          $('.suggest li').off('click').on('click', function(){
+
+            var data = $(this).data('country');
+            console.log($(this).parent().prev().prev());
+            $(this).parent().parent().parent().find('.country').val(data.toLowerCase());
+
+            $('.sub-tab').css('opacity', '1');
+            $('.suggest').empty();
+            $('.suggest').removeClass('open');
+
+            $('.close-suggest').css("display","none");
+
+          });
+
+        } else {
+          $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+        }
+      },
+      error: function () {
+        $suggest.empty();
+        $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
       }
     });
-  }*/
+
+
+  });
+
+  $('.close-suggest').css("display","none");
+
+  $('.searchBar').on('input', function(){
+
+    $('.close-suggest').css("display","block");
+
+    var value = $(this).val();
+    var $suggest = $(this).next().next().find('.suggest');
+    var noWhitespaceValue = value.replace(/\s+/g, '');
+    var noWhitespaceCount = noWhitespaceValue.length;
+
+    if (GLOBALS.env == "html") {
+      searchUrl = GLOBALS.urls.searchUrl;
+    } else {
+      searchUrl = GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value);
+    }
+
+    $.ajax({
+      type: "GET",
+      url: searchUrl,
+      success: function (data) {
+        $suggest.empty();
+
+        if (data.length > 0) {
+
+
+          for (var i = 0; i < data.length; i++) {
+            var name = data[i].name;
+            var txt = name.toLowerCase();
+
+
+            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+
+            var valueTrunc = value.substring(0, 3)
+            var chaine = txt.indexOf(valueTrunc);
+
+            if(chaine > -1) {
+              $suggest.append('<li data-country="'+name+'"><span>' + txt + '</span></li>');
+
+              $('.sub-tab').css('opacity', '0.2');
+              $suggest.addClass('open');
+            }
+
+          }
+
+          $('.suggest li').off('click').on('click', function(){
+
+            var data = $(this).data('country');
+            console.log($(this).parent().prev().prev());
+            $(this).parent().parent().parent().find('.searchBar').val(data.toLowerCase());
+
+            $('.sub-tab').css('opacity', '1');
+            $('.suggest').empty();
+            $('.suggest').removeClass('open');
+
+            $('.close-suggest').css("display","none");
+
+          });
+
+        } else {
+          $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+        }
+      },
+      error: function () {
+        $suggest.empty();
+        $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
+      }
+    });
+
+
+  });
+
+
+  $('.close-suggest').on('click', function(e){
+
+     $('.sub-tab').css('opacity', '1');
+     $('.suggest').empty();
+     $('.suggest').removeClass('open');
+
+    $('.close-suggest').css("display","none");
+
+  });
 }
 
 var owFixImg = function(){
@@ -4785,6 +4867,7 @@ $(document).ready(function() {
             var count = Math.min(data.length, 15);
             for (var i = 0; i < count; i++) {
               posts.push({'type': 'instagram', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': data[i].content});
+              console.log(data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true));
               
               if(i == count - 1) {
                 callback();
@@ -5344,6 +5427,8 @@ $(document).ready(function () {
         owInitFilterSearch();
         owInitFilter(true);
         owFixImg();
+
+        autoComplete();
     }
 
     if ($('.filters').length) {

@@ -8,132 +8,13 @@
 <section class="brigth search-page-result search-page" id="main">
     <div>
 
-        <div class="c-filters">
-            <div class="filters-02">
-                <div class="block-01 container">
-                    <ul>
-                        <li>Vincent cassel <i class="icon icon-close"></i></li>
-                        <li>Réalisateur <i class="icon icon-close"></i></li>
-                        <!-- 3 sur tablette et 4 sur desktop
-                                    <li>prix de l’interprétation masculine <i class="icon icon-close"></i></li>
-                        -->
-                        <li>évènements <i class="icon icon-close"></i></li>
-                        <li class="more" data-url="ajax-result-more-filter.html">...</li>
-                    </ul>
-                </div>
-                <a href="#" class="submit result-more">Filtrer les résultats</a>
-            </div>
-        </div>
+        {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
 
         <div class="block-search block-01">
 
             <div class="block-searh-more">
-                {{ form_start(form) }}
-                    <div class="vFlexAlign">
-                        <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i class="icon icon-search"></i>{{ form_widget(form.search) }}</label>
-                        <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
-                        <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
-                        <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
-                        <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
-                        <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
-                    </div>
-                    <div class="slider-selection">
-                        <span id="slider-snap-value-lower" class="number"></span>
-                        <div class="container-timelapse">
-                            <div class="timelapse" id="timelapse"></div>
-                        </div>
-                        <span id="slider-snap-value-upper" class="number"></span>
-                    </div>
-
-                    <div class="tabs-two vFlexAlign">
-                        <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
-                        <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i class="icon icon-movie-clap"></i><span class="text">{{ form_label(form.movies) }}</span>{{ form_widget(form.movies) }}</label>
-                    </div>
-
-                    <table class="more-search">
-                        <tr>
-                            <td>
-                                <div class="tab-1 tab">
-
-                                    <div class="tab-selection">
-                                        <label for="select-country-1" class="selection">Pays <i class="icon icon-arrow-down"></i></label>
-                                        <!-- <select name="select-country-1" id="select-country-1">
-                                          <option value="fr">France</option>
-                                          <option value="eng">Angleterre</option>
-                                        </select> -->
-                                    </div>
-
-                                    <div class="sub-tab">
-                                        <div class="jobs">
-                                            <div class="title-cont">{{ 'search.form.label.profession'|trans }} <i class="icon icon-create"></i></div>
-                                            {% for profession in form.professions %}
-                                                {{ form_widget(profession) }} <label for="{{ profession.vars.id }}">{{ form_label(profession) }}</label>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-
-                                    <div class="sub-tab">
-                                        <div class="type">
-                                            <div class="title-cont">{{ 'search.form.label.genre'|trans }} <i class="icon icon-create"></i></div>
-                                            {% for genre in form.genres %}
-                                                {{ form_widget(genre) }} <label for="{{ genre.vars.id }}">{{ form_label(genre) }}</label>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </td>
-                            <td>
-                                <div class="tab-2 tab">
-
-                                    <div class="tab-selection">
-                                        <label for="select-country-2" class="selection">{{ 'search.form.label.country'|trans }} <i class="icon icon-arrow-down"></i></label>
-                                        <!-- <select name="select-country-2" id="select-country-2">
-                                          <option value="fr">France</option>
-                                          <option value="eng">Angleterre</option>
-                                        </select> -->
-                                    </div>
-
-                                    <div class="sub-tab">
-                                        <div class="price">
-                                            <div class="title-cont">{{ 'search.form.label.award'|trans }} <i class="icon icon-create"></i></div>
-                                            {% for prize in form.prizes %}
-                                                {{ form_widget(prize) }} <label for="{{ prize.vars.id }}">{{ form_label(prize) }}</label>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-
-                                    <div class="sub-tab active">
-                                        <div class="format">
-                                            <div class="title-cont">Fo{{ 'search.form.label.format'|trans }}rmat <i class="icon icon-minus"></i></div>
-                                            {% for format in form.formats %}
-                                                {{ form_widget(format) }} <label for="{{ format.vars.id }}">{{ form_label(format) }}</label>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-
-                                    <div class="sub-tab active">
-                                        <div class="selection-type">
-                                            <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i class="icon icon-minus"></i></div>
-                                            {% for selection in form.selections %}
-                                                {{ form_widget(selection) }} <label for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div class="buttons-02 buttons-two">
-                        <button class="button b-grey"><i class="icon icon-create"></i>{{ 'search.form.label.orientedresearch'|trans }}</button><!--
-        --><button type="submit" name="submit" class="button button-submit-02"><i class="icon icon-search"></i>{{ 'search.form.label.submitsearch'|trans }}</button>
-                    </div>
-
-                </form>
-
+                {% include 'FDCCorporateBundle:Search:components/form.html.twig' %}
             </div>
-
 
             <div class="content-result">
                 {% if result.artist %}
@@ -144,9 +25,9 @@
                     {% include 'FDCCorporateBundle:Search:film.html.twig' with {'result': result} %}
                 {% endif %}
 
-                {# if result.media %}
+                {% if result.media %}
                     {% include 'FDCCorporateBundle:Search:media.html.twig' with {'result': result} %}
-                {% endif #}
+                {% endif %}
 
                 {% if result.news %}
                     {% include 'FDCCorporateBundle:Search:news.html.twig' with {'result': result} %}
@@ -160,98 +41,27 @@
                     {% include 'FDCCorporateBundle:Search:event.html.twig' with {'result': result} %}
                 {% endif %}
 
-                <div class="top-texts">
-                    <a href="search-result-more.html" class="see-all">Tout voir</a>
-                    <h3>Autres résultats - 6 résultats</h3>
-                </div>
-
-                <section class="events last">
-                    <article class="block-poster-search medias">
-                        <div class="item audio conference-press">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-10.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Interview de Vincent Cassel dans la Salle Bazin</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="block-poster-search medias">
-                        <div class="item video photocall">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-06.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="block-poster-search medias">
-                        <div class="item video">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-06.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="block-poster-search medias">
-                        <div class="item last audio">
-                            <a href="#">
-                                <div class="contain-img landscape">
-                                    <img src="media/images/search-06.jpg" alt=""  >
-                                </div>
-                                <div class="contain-txts">
-                                    <span class="title-media">Vincent Cassel dans Tale<br>of Tales</span>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-                </section>
+                {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
             </div>
-
-            <div class="block-push-03">
-                <div class="half-div block-push block-push-item">
-                    <div class="vFlexAlign">
-                        <div>
-                            <strong class="title">Les meilleurs interprètes masculins depuis 1960</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>
-                    </div>
-                    <img src="media/images/search-01.jpg" alt="">
-                </div><!--
-        --><div class="half-div block-push block-push-item">
-                    <div class="vFlexAlign">
-                        <div>
-                            <strong class="title">Les meilleures interprètes féminines depuis 1960</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>
-                    </div>
-                    <img src="media/images/search-02.jpg" alt="">
-                </div>
-            </div>
-
-            <div class="block-push block-push-03-alone">
-                <div class="vFlexAlign">
-                    <div>
-                        <strong class="title-2">Les jurys de l’édition 2010</strong>
-                        <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                    </div>
-                </div>
-                <img src="media/images/search-03.jpg" alt="">
-            </div>
-
         </div>
     </div>
 </section>
+
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.home'|trans,
+"url"  : path('fdc_corporate_default_home')
+},
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : path('fdc_corporate_search_searchsubmit')
+},
+{
+"name" : 'breadcrumb.search.result'|trans,
+"url"  : ''
+}
+]
+} %}
 {% endblock %}

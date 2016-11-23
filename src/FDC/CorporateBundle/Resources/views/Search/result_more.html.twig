@@ -7,19 +7,8 @@
 
 <section class="brigth search-page-result" id="main">
     <div>
-        <div class="filters-02">
-            <div class="block-01 container">
-                <ul>
-                    <li>Vincent cassel <i class="icon icon-close"></i></li>
-                    <li>Réalisateur <i class="icon icon-close"></i></li>
-                    <li>prix de l’interprétation masculine <i class="icon icon-close"></i></li>
-                    <li>évènements <i class="icon icon-close"></i></li>
-                    <li class="more">...</li>
 
-                </ul>
-            </div>
-            <a href="#" class="submit">Filtrer les résultats</a>
-        </div>
+        {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
 
         <div class="block-search block-01">
             <div class="content-result result-more">
@@ -30,39 +19,26 @@
 
             </div>
 
-            <div class="block-push-03">
-                <div class="half-div block-push block-push-item">
-                    <div class="vFlexAlign">
-                        <div>
-                            <strong class="title">Les meilleurs interprètes masculins depuis 1960</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>
-                    </div>
-                    <img src="media/images/search-01.jpg" alt="">
-                </div><!--
-    --><div class="half-div block-push block-push-item">
-                    <div class="vFlexAlign">
-                        <div>
-                            <strong class="title">Les meilleures interprètes féminines depuis 1960</strong>
-                            <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                        </div>
-                    </div>
-                    <img src="media/images/search-02.jpg" alt="">
-                </div>
-            </div>
-
-            <div class="block-push block-push-03-alone">
-                <div class="vFlexAlign">
-                    <div>
-                        <strong class="title-2">Les jurys de l’édition 2010</strong>
-                        <a class="link" href="#"><i class="icon icon-arrow-right"></i> découvrir</a>
-                    </div>
-                </div>
-                <img src="media/images/search-03.jpg" alt="">
-            </div>
+            {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
 
         </div>
     </div>
 </section>
-
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : path('fdc_corporate_search_searchsubmit')
+},
+{
+"name" : 'breadcrumb.search.result'|trans,
+"url"  : '',
+},
+{
+"name" : ('breadcrumb.search.result.'~itemType)|trans,
+"url"  : '',
+}
+]
+} %}
 {% endblock %}

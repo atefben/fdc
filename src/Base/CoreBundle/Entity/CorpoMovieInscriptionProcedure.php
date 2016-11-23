@@ -79,7 +79,13 @@ class CorpoMovieInscriptionProcedure implements TranslateMainInterface
     protected $translations;
 
     public function __toString() {
-        return 'Procédure d\'inscription';
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = ' "' . $this->findTranslationByLocale('fr')->getTitle()  .'"';
+        }
+
+        return $string;
     }
 
     /**

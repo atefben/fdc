@@ -50,9 +50,9 @@
                             <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
                             <div class="container-items">
                                 <div class="grid-sizer"></div>
-                                {% for membersAssociation in departementAssociation.departement.members %}
+                                {% for membersAssociation in departementAssociation.departement.members if membersAssociation.members is not null %}
                                 <div class="item block-poster festival-de-cannes">
-                                    <a href="#">
+                                    <a>
                                         <div class="contain-img">
                                             {% set mainImage = null %}
                                             {% if  membersAssociation.members is not null and membersAssociation.members.mainImage is not null %}
@@ -72,7 +72,7 @@
                                             <span class="title-11">{{ membersAssociation.members|trans_fallback('firstname') }}
                                                 <br>{{ membersAssociation.members|trans_fallback('lastname') }}
                                             </span>
-                                            <span class="title-12">{{ membersAssociation.members|trans_fallback('function')|truncate(60) }}</span>
+                                            <span class="title-12">{{ membersAssociation.members|trans_fallback('function')|truncate(69,false,'') }}</span>
                                         </div>
                                     </a>
                                 </div>

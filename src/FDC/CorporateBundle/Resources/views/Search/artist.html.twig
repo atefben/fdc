@@ -1,5 +1,5 @@
 <div class="top-texts first">
-    {% if 'searchsubmit' in app.request.attributes.get("_route") %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'artist'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
+    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.artist.count > 5 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'artist'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
     <h3>Artistes - {% if result.artist is not empty %}{{ result.artist.count }}{% else %}0{% endif %} résultats</h3>
 </div>
 

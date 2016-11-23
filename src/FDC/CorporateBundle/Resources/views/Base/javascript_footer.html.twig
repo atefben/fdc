@@ -14,7 +14,7 @@
         <script>
             {% set globalsCurrentPage = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
             var GLOBALS = {
-                "env" : "html",
+                "env" : "{{ app.environment }}",
                 "locale" : "fr",
                 "defaultDate" : "2016-05-12",
                 "dateStart": "2016-05-12",
@@ -36,7 +36,8 @@
                     "audiosUrl": "{{ globalsCurrentPage }}",
                     "photosUrl": "{{ globalsCurrentPage }}",
                     "videosUrl": "{{ globalsCurrentPage }}",
-                    "searchUrl": "searchsuggest.json",
+                    "searchUrl": "{{ url('fdc_corporate_search_searchautocomplete') }}",
+                    "searchUrlCountry": "{{ url('fdc_corporate_search_countryautocomplete') }}",
                     "resultUrl": "results.json",
                     "shareEmailUrl": "{{ url('fdc_corporate_global_shareemail') }}"
                 },

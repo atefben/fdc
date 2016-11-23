@@ -63,6 +63,8 @@ twig:
         # corpo mediatheque
         admin_fdc_page_mediatheque_id: %admin_fdc_page_mediatheque_id%
         admin_corpo_mediatheque_id: %admin_corpo_mediatheque_id%
+        # corpo search
+        admin_corpo_search_id: %admin_corpo_mediatheque_id%
         #s3
         s3_server_global: http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com/
         s3_server_video: http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com/
