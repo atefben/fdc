@@ -285,6 +285,8 @@ class Importer
                 ->findOneBy(['slug' => 'site-institutionnel'])
             ;
         }
+
+        return $siteCorporate;
     }
 
     /**

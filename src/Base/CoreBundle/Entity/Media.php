@@ -365,7 +365,7 @@ abstract class Media implements TranslateMainInterface
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaImageTranslation
+     * @return $this
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {

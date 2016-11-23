@@ -476,7 +476,7 @@ class ArticleImporter extends Importer
                                     $imgTrans->setLegend(($oldMediaTrans->getLabel() != null) ? $oldMediaTrans->getLabel() : $imgTitle[$culture]);
                                     $imgTrans->setCopyright($oldMediaTrans->getCopyright());
                                     $imgTrans->setLocale($culture);
-                                    $imgTrans->setisPublishedOnFDCEvent(1);
+                                    $imgTrans->setIsPublishedOnFDCEvent(1);
                                     if ($gallery->getMedias()->count() != count($oldArticleAssociations)) {
                                         $galleryMedia = new GalleryMedia();
                                         $galleryMedia->setGallery($gallery);
