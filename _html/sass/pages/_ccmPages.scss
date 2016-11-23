@@ -3,14 +3,15 @@
 }
 
 .subHeader {
-    background: url("/img/camera.png") no-repeat;
+    background: url("/img/oldCam.png") no-repeat;
     background-size: 100% 100%;
     text-align:center;
     height: 250px;
+    margin-bottom: 110px!important;
     vertical-align: middle;
     width: 100%;
     position: relative;
-    z-index: 1005;
+    z-index: 999;
     @include align();
 
     h3 {
@@ -30,10 +31,154 @@
     }
 }
 
+.eventsHeader{
+  background: url("/img/eventBckg.png") no-repeat;
+    background-size: 100% 100%;
+    text-align:center;
+    height: 250px;
+    margin-bottom: 110px!important;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    z-index: 999;
+    @include align();
+    h3 {
+      font-size: 40px;
+      font-family: $CamphorHeavy;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-top: 0px;
+      letter-spacing: 1px;
+    }
+
+    @media screen and (min-width: 1600px) {
+      height: 350px;
+       h3 {
+        margin-top: 0px;
+       }
+    }
+}  
+
+.formBtn {
+
+  color: #c8a461!important;
+  text-align: center;
+  font-size: 12px;
+  width: 235px;
+  height: 50px;
+  line-height: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid #c8a461;
+}
+
 .smallWrapper {
-  width: 665px;
+  width: 670px;
+  padding-bottom: 50px;
   @include align();
   text-align: left;
+
+  a {
+   color: #c3a05f;
+  }
+
+  ul {
+    margin-left: 30px;
+  }
+
+  h3 {
+    color: #0c0c0c;
+    text-transform: uppercase;
+    font-family: $CamphorBold;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+
+  li, p {
+    font-family: $CamphorRegular;
+  }
+
+  li {
+    color: #666666;
+    list-style-type: none!important;
+    list-style-position: inside;
+    padding: 0px 0 0px 0px;
+    text-indent: -1em;
+    line-height: 25px;
+    font-size: 14px!important;
+    list-style: initial;
+    list-style-position: inside;
+    letter-spacing: 2px;
+  }
+
+  ul {
+    padding: 25px 0px;
+  }
+
+  .upUl {
+    text-transform: uppercase;
+    padding: 35px 0px;
+    line-height: 40px;
+    font-size: 14px!important;
+  }
+
+  p {
+    font-size: 16px;
+    color: #666666;
+    line-height: 35px;
+    letter-spacing: 1px;
+
+    span {
+      font-family: $CamphorBold;
+      color: #0c0c0c;
+    }
+  }
+
+  .underlined {
+      font-family: $CamphorBold;
+      color: #0c0c0c;
+      text-decoration: underline;
+  }
+
+  .numbers {
+    color: #c8a461;
+  }
+
+  .centeredTitle {
+    color:#0c0c0c;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 125px 0px 60px 0px;
+    line-height: 30px;
+  }
+
+  h5 {
+    text-transform: uppercase;
+    color: #666666;
+    letter-spacing: 2px;
+    font-size: 14px;
+  }
+  .goldTitle {
+    color: #c8a461;
+    padding: 130px 0px 70px 0px;
+  }
+}
+
+.reducedPadding {
+  padding-bottom:0px;
+} 
+
+.wideWrapper {
+  width: 705px;
+  padding-bottom: 50px;
+  @include align();
+  text-align: left;
+  
+  a {
+   color: #c3a05f;
+  }
 
   h3 {
     color: #0c0c0c;
@@ -49,22 +194,112 @@
   li {
     font-size: 12px;
     text-transform: uppercase;
-    list-style-type: none;
+    list-style-type: none!important;
   }
 
   p {
     font-size: 16px;
+    color: #666666;
+    line-height: 35px;
   }
 
   .numbers {
     color: #c8a461;
   }
+  .formBtn {
+    @include align();
+    color: #c8a461;
+    font-size: 12px;
+    width: 180px;
+    height: 50px;
+    line-height: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #c8a461;
+  }
+}
+  
+.goldBorders  {
+    width: 705px;
+    height: 320px;
+    padding: 40px;
+    border: 2px solid #c8a461;
+
+    a {
+     color: #c3a05f;
+    }
+
+    h3 {
+      margin-bottom: 30px;
+    }
+
+    p {
+      margin-bottom: 25px;
+    }
+
+    .specs {
+      width: 50%;
+      float: left;
+
+      i {
+        margin-right: 10px;
+      }
+
+      h2 {
+        font-family: $CamphorBold;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #c8a461;
+        padding-bottom:35px;
+      }
+
+      h3 {
+        color: #0c0c0c;
+        font-family: $CamphorRegular!important;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: 25px;
+        margin-bottom: 10px!important;
+        
+      }
+
+      span {
+        color: #666666;
+        font-family: $CamphorRegular;
+        font-size: 12px;
+        line-height: 30px;
+      }
+    }
+} 
+
+.greyHr {
+  width: 100%;
+  height: 0px;
+  border-top: 2px solid #cfcfcf;
+}
+
+.movieOnline {
+  padding-top: 60px;
+  padding-bottom:70px;
+  text-align: center;
+  .centered {
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .formBtn {
+    line-height: 50px;
+  }
 }
 
 .mediumWrapper {
   width: 1020px;
+  padding-bottom:170px;
   @include align();
-
+  a {
+   color: #c3a05f;
+  }
   h6 {
     height: 55px;
     border: 1px solid #e5e5e5;
@@ -75,7 +310,20 @@
     line-height: 50px;
     font-family: $CamphorRegular;
     color: #0c0c0c;
+    letter-spacing: 2px;
     font-size: 12px;
+  }
+
+  .formBtn {
+    @include align();
+    color: #c8a461;
+    font-size: 12px;
+    width: 180px;
+    height: 50px;
+    line-height: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #c8a461;
   }
 }
 
@@ -84,7 +332,7 @@
   background: url("/img/registerBckg.png") no-repeat;
   background-size: 100% 100%;
   text-align:center;
-  height: 360px;
+  height: 400px;
   vertical-align: middle;
   width: 100%;
   position: relative;
@@ -107,8 +355,8 @@
 
   h3 {
     text-transform: uppercase;
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding-top: 50px;
+    padding-bottom: 20px;
     font-family: $CamphorRegular;
     letter-spacing: 4px;
   }
@@ -133,6 +381,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     border: 1px solid #c8a461;
+    margin-top: 20px;
   }
 }
 
@@ -154,19 +403,28 @@
     display: block;
     font-size: 14px;
     line-height: 25px;
+    color: #666666!important;
     h5 {
+      font-family: $CamphorBold;
       color: #0c0c0c;
-      font-size: 14px;
+      font-size: 15px!important;
+      text-transform: initial;
       padding-bottom:30px;
+      letter-spacing: 0px;
     } 
 
     h6 {
-      color: #666666;
+      color: #666666!important;
       font-size: 14px;
+      opacity: 0.9;
     }
 
     a {
       color: #c8a461;
+    }
+
+    .formBtn {
+      margin-top: 35px;
     }
   }
 
@@ -175,16 +433,102 @@
     padding-bottom:50px;
     letter-spacing: 4px;
   }
-  .formBtn {
-
-    color: #c8a461!important;
-    text-align: center;
-    font-size: 12px;
-    width: 235px;
-    height: 50px;
-    line-height: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid #c8a461;
-  }
 } 
+
+
+/* 1. Ensure this sits above everything when visible */
+.modal {
+    position: absolute;
+    z-index: 10000; /* 1 */
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.modal.is-visible {
+    visibility: visible;
+}
+
+.modal-overlay {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s;
+}
+
+.modal.is-visible .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.modal-wrapper {
+  @include align();
+  position: relative;
+  z-index: 9999;
+  width: 1034px;
+  height: auto;
+  overflow-y:visible;
+  min-height: 1000px;
+  background-color: #fff;
+  box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35);
+}
+
+.modal-transition {
+  transition: all 0.3s 0.12s;
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+.modal.is-visible .modal-transition {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-header,
+.modal-content {
+  padding: 1em;
+}
+
+.modal-header {
+  position: relative;
+  background-color: #fff;
+  padding: 90px 0px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  color: #aaa;
+  background: none;
+  border: 0;
+}
+
+.modal-close:hover {
+  color: #777;
+}
+
+.modal-heading {
+  font-size: 1.125em;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.modal-content > *:first-child {
+  margin-top: 0;
+}
+
+.modal-content > *:last-child {
+  margin-bottom: 0;
+}

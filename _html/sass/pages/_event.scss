@@ -96,6 +96,7 @@
 
   .selectbtn {
     letter-spacing: 2px;
+    float: none;
   }
   
   .conferencesMenu {
@@ -192,7 +193,7 @@
   .conf10 {
     width: 15%;
     float: left;
-    color: #505050;
+    color: #c3a05f;
     font-family: $CamphorHeavy;
     text-transform: uppercase;
     line-height: 30px;
@@ -234,7 +235,7 @@
 
     .conf60title {
       display: none;
-      color: #505050;
+      color: #c3a05f;
       font-size: 12px;
       font-family: $CamphorHeavy;
       text-transform: uppercase;
@@ -276,7 +277,7 @@
             -o-transform: rotate(180deg);
             -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-            color: #c60e2d;
+            color: #c3a05f;
             margin-right: 5px;
       }
     }
@@ -284,7 +285,7 @@
     span {
       text-transform: uppercase;
       font-size: 16px;
-      color: #ec3050!important;
+      color:#312f2f!important;
       font-family: $CamphorBold;
       line-height: 50px;
       letter-spacing: 1px;

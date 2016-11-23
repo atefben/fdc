@@ -715,3 +715,16 @@
     }
   }  
 }
+
+.slideshow .slideshow-img .thumbnails .thumb:after {
+      border: 0px solid #FFFFFF!important;
+}
+
+.slideshow .slideshow-img .thumbnails .thumb.active:after {
+    border: 6px solid #FFFFFF!important;
+}
+div.chocolat-wrapper.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1006;
+}

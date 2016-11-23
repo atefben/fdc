@@ -1,3 +1,14 @@
+.navBckg {
+    background: url("/img/oldCam.png") no-repeat;
+    background-size: 100% 100%;
+    text-align:center;
+    height: 400px;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    z-index: 1000;  
+}
+
 .our-news {
     background: url("/img/newsBckg.png") no-repeat;
     background-size: 100% 100%;
@@ -180,6 +191,10 @@
   background: black;
   height: 50px;
   line-height: 50px;
+  text-align: center;
+    bottom: 0%;
+    position: absolute;
+    width: 100%;
 
     .active {
       color: #ec3050;
