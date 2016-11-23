@@ -13,7 +13,7 @@
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
     <div id="main" class="home loading">
-      <div class="text-presentation producersWorkshop presses">
+      <div class="text-presentation producersWorkshop presses mdf">
           <h3>Presse</h3>
             <div class="subNavigation">
               <nav>

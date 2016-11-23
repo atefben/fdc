@@ -17,7 +17,7 @@
         <div>Les accréditations en ligne fermeront le 26 avril 2017  -  Participez à la 70ème édition du Marché du Film !  10 au 17 mai 2017</div>
         <div>S'inscrire</div></a>
       </div>  
-      <div class="text-presentation accredidationsDetails greyBckg">
+      <div class="text-presentation accredidationsDetails greyBckg mdf">
         <h3>Le badge du marché</h3>
       </div>
         <div class="greyBckg">  

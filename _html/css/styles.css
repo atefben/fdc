@@ -326,7 +326,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 #owl-accred, #owl-projections {
   height: 600px;
-  z-index: 1005;
+  z-index: 1000;
 }
 #owl-accred .item img, #owl-projections .item img {
   display: block;
@@ -4536,6 +4536,10 @@ header .user-nav {
   float: right;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0 15px 0 10px;
+  -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header .user-nav li {
   display: inline-block;
@@ -5412,6 +5416,17 @@ header #navigation {
     margin-left: 75px;
   }
 }
+.minifiedBar {
+  display: block !important;
+  height: 0px !important;
+}
+
+.minifiedNav {
+  position: absolute !important;
+  right: 0% !important;
+  z-index: 1000 !important;
+}
+
 footer * {
   box-sizing: border-box;
 }
@@ -10973,6 +10988,7 @@ header #searchContainer {
   width: 50%;
   height: 600px;
   float: left;
+  overflow: auto;
 }
 #our-services .hideOverflow {
   overflow: hidden;
@@ -22947,7 +22963,7 @@ ul.tabs .quarterTab h4 {
   padding-top: 5%;
   width: 100%;
   position: relative;
-  z-index: 1005;
+  z-index: 1000;
 }
 @media screen and (max-width: 1279px) {
   .our-news .innerWrapper {
@@ -23127,7 +23143,7 @@ ul.tabs .quarterTab h4 {
 /* END BOX PRODUCERS WORKSHOP */
 /* BOX CONTACT */
 #contact-box {
-  z-index: 1005 !important;
+  z-index: 1000 !important;
 }
 
 .contact-box {
@@ -24205,6 +24221,27 @@ ul.tabs .quarterTab h4 {
 }
 
 /* 4. PAGE COMMUNIQUES DE PRESSE */
+.subNavigation {
+  position: relative;
+  z-index: 1002;
+  top: 0px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.subNavigationFixed {
+  position: fixed;
+  z-index: 1002;
+  width: 100%;
+  top: 90px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
 .presses {
   background: url("/img/goldBackg.png");
   background-size: 100% 100%;
@@ -25128,6 +25165,40 @@ option:checked,
   background: transparent;
 }
 
+.marketActu {
+  background: white !important;
+  height: auto;
+  display: block;
+  margin-top: 200px;
+  z-index: 2;
+}
+.marketActu .articles {
+  background: #f8f8f8;
+  margin-left: 2%;
+  margin-bottom: 1%;
+  width: 31%;
+}
+.marketActu .articles:hover {
+  background: white;
+  -webkit-box-shadow: 0px 20px 34px 4px #cccacc;
+  -moz-box-shadow: 0px 20px 34px 4px #cccacc;
+  box-shadow: 0px 20px 34px 4px #cccacc;
+}
+
+.marketnewsSelector {
+  width: 100%;
+  float: left;
+  margin-top: 50px;
+}
+
+.hideAll {
+  display: none;
+}
+
+.showButton {
+  display: block;
+}
+
 /* PAGE PROGRAMMATION */
 .marche {
   text-align: center;
@@ -25195,6 +25266,7 @@ option:checked,
 .newsPage {
   background: white;
   min-height: 1550px;
+  z-index: 2;
 }
 @media screen and (max-width: 1279px) {
   .newsPage {
@@ -25352,6 +25424,7 @@ option:checked,
   border: none !important;
   background: url(/img/loupegold.png) no-repeat;
   margin-top: -10px;
+  margin-right: 25px !important;
 }
 .results .resultTitle .loupe:after {
   content: url(/img/loupegold.png);

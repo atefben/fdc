@@ -151,7 +151,62 @@
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
                       </div>
+                     <div class="services-boxes firstBox" data-rel="firstPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes" data-rel="secondPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes" data-rel="thirdPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes firstBox" data-rel="firstPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes" data-rel="secondPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes" data-rel="thirdPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                     <div class="services-boxes firstBox" data-rel="firstPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes" data-rel="secondPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
+                      <div class="services-boxes" data-rel="thirdPic">
+                          <div>stand</div>
+                          <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
+                          <div>voir le détail</div>
+                          <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                      </div>
                     </div>
+
                     <div class="services-mid hideOverflow services-pictures">
                       <div id="firstPic"><img src="img/photo.png"/></div>
                       <div id="secondPic"><img src="img/photo2.png"/></div>

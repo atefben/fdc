@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-      <div class="text-presentation producersWorkshop presses">
+      <div class="text-presentation producersWorkshop presses mdf">
           <h3>Qui sommes nous ?</h3>
             <div class="subNavigation">
               <nav>
@@ -27,7 +27,7 @@
                     <a href="infos-utiles.php">Informations pratiques</a>
                   </li>
                   <li>
-                    <a href="#">chiffres Clés</a>
+                    <a href="chiffres-cles.php">chiffres Clés</a>
                   </li>
                   <li>
                     <a href="demarches-environnementales.php">Démarches environnementales</a>

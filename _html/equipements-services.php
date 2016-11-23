@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-        <div class="text-presentation producersWorkshop opportunites">
+        <div class="text-presentation producersWorkshop opportunites mdf">
           <h3>Services</h3>
             <div class="subNavigation">
               <nav>

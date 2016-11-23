@@ -148,7 +148,7 @@ header {
     float: right;
     font-family: $CamphorBold;
     padding: 0 15px 0 10px;
-
+    @include transition(all 0s $smoothTransition);
     li {
       display: inline-block;
 
@@ -985,4 +985,15 @@ header {
         margin-left: 75px;
       }
     }
+}
+
+.minifiedBar {
+  display: block!important;
+  height: 0px!important;
+}
+
+.minifiedNav {
+    position: absolute!important;
+    right: 0%!important;
+    z-index: 1000!important;
 }

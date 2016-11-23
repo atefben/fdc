@@ -14,7 +14,7 @@
     <div id="main" class="home loading">    
         <?php include('box-producers-workshop.php'); ?> 
           <div class="bigContainer">        
-            <div class="our-news newsPage">
+            <div class="our-news newsPage mdf">
               <h3>Dernières parutions</h3>
               <div class="innerWrapper">
                 <div class="articles">

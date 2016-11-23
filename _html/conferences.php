@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
-          <div class="text-presentation calendar">
+          <div class="text-presentation calendar mdf">
             <div class="bigContainer">
               <h3>Calendrier des événements</h3>
             </div>
@@ -28,11 +28,11 @@
                 <div class="dropdown"> 
                   <span>AFFICHER</span>
                   <div id="eventSelector">
-                    <div class="selectText" id="producers-network">Producers Workshop</div>
-                    <div class="selectText" id="producers-workshop">Producers Network</div>
-                    <div class="selectText" id="doc-corner">Doc Corner</div>
-                    <div class="selectText" id="next">Next</div>
-                    <div class="selectText" id="mixers">Mixers</div>
+                    <div class="selectText" id="producers-network">Producers Workshop,</div>
+                    <div class="selectText" id="producers-workshop">Producers Network,</div>
+                    <div class="selectText" id="doc-corner">Doc Corner,</div>
+                    <div class="selectText" id="next">Next,</div>
+                    <div class="selectText" id="mixers">Mixers,</div>
                     <div class="selectText" id="goes-to-cannes">Goes To Cannes</div>
                   </div>
                   <div class="dropArrow">
@@ -40,13 +40,13 @@
                   </div>
                 </div><br>
                 <div class="selector">
-                  <div class="purpleBtn selectbtn" id="all">Tous</div>
-                  <div class="selectbtn" id="b" rel="producers-workshop">Producers Workshop</div>
-                  <div class="selectbtn" id="a" rel="producers-network">Producers Network</div>
-                  <div class="selectbtn" id="c" rel="doc-corner">Doc Corner</div>
-                  <div class="selectbtn" id="d" rel="next">Next</div>
-                  <div class="selectbtn" id="e" rel="mixers">Mixers</div>
-                  <div class="selectbtn" id="f" rel="goes-to-cannes">Goes To Cannes</div>
+                  <div class="purpleBtn selectbtn confBtn" id="all">Tous</div>
+                  <div class="selectbtn confBtn" id="b" rel="producers-workshop">Producers Workshop</div>
+                  <div class="selectbtn confBtn" id="a" rel="producers-network">Producers Network</div>
+                  <div class="selectbtn confBtn" id="c" rel="doc-corner">Doc Corner</div>
+                  <div class="selectbtn confBtn" id="d" rel="next">Next</div>
+                  <div class="selectbtn confBtn" id="e" rel="mixers">Mixers</div>
+                  <div class="selectbtn confBtn" id="f" rel="goes-to-cannes">Goes To Cannes</div>
                 </div>
               <div class="conferencesMenu">
                 <ul>

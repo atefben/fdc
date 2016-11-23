@@ -7,7 +7,7 @@
     padding-top: 5%;
     width: 100%;
     position: relative;
-    z-index: 1005;
+    z-index: 1000;
     
     @media screen and (max-width: $mobileWidth) {
 
@@ -211,7 +211,7 @@
 /* BOX CONTACT */
 
 #contact-box {
-  z-index: 1005!important;
+  z-index: 1000!important;
 }
 
 .contact-box {

@@ -1,4 +1,4 @@
-<div class="text-presentation producersWorkshop">
+<div class="text-presentation producersWorkshop mdf">
 	<h3>Producers Workshop</h3>
   	<div class="subNavigation">
       <nav>
