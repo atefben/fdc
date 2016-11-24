@@ -234,10 +234,8 @@ class PersonManager extends CoreManager
         } else {
             $entity->setNationality2($country);
         }
-        
         // set translations
-        $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
-
+        //$this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
         // set multimedias
         if (property_exists($resultObject, 'PersonneElementsMultimedias') && property_exists($resultObject->PersonneElementsMultimedias, 'ElementMultimediaRefDto')) {
             $collection = new ArrayCollection();
@@ -339,15 +337,16 @@ class PersonManager extends CoreManager
         }
 
         // duplicates
-        if (property_exists($resultObject, 'LinkedDeletedPersonnes') && property_exists($resultObject->LinkedDeletedPersonnes, 'LinkedDeletedPersonneDto')) {
+        if (property_exists($resultObject, 'LinkedDeletedPersonnes')) {
             $collection = new ArrayCollection();
             $duplicates = clone $entity->getDuplicates();
-            $resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
-            foreach ($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto as $obj) {
-                $person = $this->em->getRepository('BaseCoreBundle:FilmPerson')->findOneById($obj->PersonneId);
+            $objects = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
+            foreach ($objects as $obj) {
+                $person = $this->em->getRepository('BaseCoreBundle:FilmPerson')->find($obj->PersonneId);
                 if ($person !== null) {
                     $person->setDuplicate(1);
                     $person->setOwner($entity);
+                    $person->setSelfkit($obj->PersonneSelfkitId);
                     $collection->add($person);
 
                     /* link owner to the duplicate person films */
