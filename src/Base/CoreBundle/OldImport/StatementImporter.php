@@ -743,7 +743,7 @@ class StatementImporter extends Importer
             if ($item) {
                 $found = false;
                 foreach ($statement->getAssociatedStatement() as $associatedStatement) {
-                    if ($associatedStatement->getAssociation()->getId() == $item->getId()) {
+                    if ($associatedStatement->getAssociation() && $associatedStatement->getAssociation()->getId() == $item->getId()) {
                         $found = true;
                     }
                 }

@@ -747,7 +747,7 @@ class InfoImporter extends Importer
             if ($item) {
                 $found = false;
                 foreach ($info->getAssociatedInfo() as $associatedInfo) {
-                    if ($associatedInfo->getAssociation()->getId() == $item->getId()) {
+                    if ($associatedInfo->getAssociation() && $associatedInfo->getAssociation()->getId() == $item->getId()) {
                         $found = true;
                     }
                 }

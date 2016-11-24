@@ -739,7 +739,7 @@ class NewsImporter extends Importer
             if ($item) {
                 $found = false;
                 foreach ($news->getAssociatedNews() as $associatedNews) {
-                    if ($associatedNews->getAssociation()->getId() == $item->getId()) {
+                    if ($associatedNews->getAssociation() && $associatedNews->getAssociation()->getId() == $item->getId()) {
                         $found = true;
                     }
                 }
