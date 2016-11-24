@@ -16,22 +16,23 @@
         <div id="featured-movies">
           <div class="whiteBar"></div>
           <div id="slider-movies" class="owl-carousel">
-
             <div>
               <div class="video">
                 <video preload>
                   <source src="#">
                   <source src="#" type="video/webm">
                 </video>
-                <div class="img" style="background-image:url(/img/slider2.png)"></div>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
               </div>
               <div class="textVideo">
                 <div class="info">
                   <div class="vCenter">
-                    <div class="vCenterKid">
-                      <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
-                      <div class="alignButton">
-                        <a href=""><div class="programmButton">Le Programme</div></a>
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -44,15 +45,17 @@
                   <source src="#">
                   <source src="#" type="video/webm">
                 </video>
-                <div class="img" style="background-image:url(/img/slider3.png)"></div>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
               </div>
               <div class="textVideo">
                 <div class="info">
                   <div class="vCenter">
-                    <div class="vCenterKid">
-                      <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
-                      <div class="alignButton">
-                        <a href=""><div class="programmButton">Le Programme</div></a>
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -65,15 +68,86 @@
                   <source src="#">
                   <source src="#" type="video/webm">
                 </video>
-                <div class="img" style="background-image:url(/img/slider2.png)"></div>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
               </div>
               <div class="textVideo">
                 <div class="info">
                   <div class="vCenter">
-                    <div class="vCenterKid">
-                      <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
-                      <div class="alignButton">
-                        <a href=""><div class="programmButton">Le Programme</div></a>
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="video">
+                <video preload>
+                  <source src="#">
+                  <source src="#" type="video/webm">
+                </video>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
+              </div>
+              <div class="textVideo">
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="video">
+                <video preload>
+                  <source src="#">
+                  <source src="#" type="video/webm">
+                </video>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
+              </div>
+              <div class="textVideo">
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="video">
+                <video preload>
+                  <source src="#">
+                  <source src="#" type="video/webm">
+                </video>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
+              </div>
+              <div class="textVideo">
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -83,70 +157,63 @@
           </div>
         </div>
 
-        <div class="maxContainer discover">
+        <div class="discover">
           <div id="slider-discover" class="owl-carousel">
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider1.png">
+                <a href=""><img src="img/slider1.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                 <a href=""> <h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider2.png">
+                <a href=""><img src="img/slider2.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider3.png">
+                <a href=""><img src="img/slider3.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider2.png">
+                <a href=""><img src="img/slider2.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider3.png">
+                <a href=""><img src="img/slider2.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider1.png">
+                <a href=""><img src="img/slider2.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider2.png">
+                <a href=""><img src="img/slider2.png"></a>
               </div>
               <div class="item">
                 <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <img src="img/slider1.png">
-              </div>
-              <div class="item">
-                <div class="title">
-                  <h5>Short film corner</h5>
-                  <h4>le programme 2017</h4>
-                </div>
-                <img src="img/slider3.png">
+                <a href=""><img src="img/slider2.png"></a>
               </div>
           </div>
         </div>
@@ -161,10 +228,9 @@
                   <?php include('exemple-video.php'); ?>
                 </div>
                 <div class="item">
-                  <img src="img/slide001.jpg" alt="" />
+                  <?php include('exemple-video2.php'); ?>
                 </div>
                 <div class="item">
-                  <img src="img/slide001.jpg" alt="" />
                 </div>
             </div>
               
@@ -224,108 +290,109 @@
       <h3>courts en compétition</h3>
       <div id="slider-competition" class="owl-carousel">
         <div class="item">
-          <img src="img/film2.png">
+         <a href="#"> <img src="img/film2.png"></a>
           <div class="title">
-            <h5>IL SILENZIO</h5>
-            <h4>Farnoosh SAMADI, Ali ASGARI</h4>
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h6>(le silence)</h6></a>
+            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film4.png">
+          <a href="#"><img src="img/film4.png"></a>
           <div class="title">
-            <h5>IL SILENZIO</h5>
-            <h4>Farnoosh SAMADI, Ali ASGARI</h4>
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film2.png">
+          <a href="#"><img src="img/film2.png"></a>
           <div class="title">
-            <h5>IL SILENZIO</h5>
-            <h4>Farnoosh SAMADI, Ali ASGARI</h4>
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film4.png">
+          <a href="#"><img src="img/film4.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI, Farnoosh SAMADI, Ali ASGARI</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film1.png">
+         <a href="#"> <img src="img/film1.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film2.png">
+          <a href="#"><img src="img/film2.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film5.png">
+          <a href="#"><img src="img/film5.png">
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film4.png">
+          <a href="#"><img src="img/film4.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film1.png">
+          <a href="#"><img src="img/film1.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film1.png">
+          <a href="#"><img src="img/film1.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film2.png">
+          <a href="#"><img src="img/film2.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film5.png">
+          <a href="#"><img src="img/film5.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film2.png">
+          <a href="#"><img src="img/film2.png">
           <div class="title">
-            <h5>IL SILENZIO</h5>
-            <h4>Farnoosh SAMADI, Ali ASGARI</h4>
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film4.png">
+          <img src="img/film4.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
           </div>
         </div>
         <div class="item">
-          <img src="img/film1.png">
+          <a href="#"><img src="img/film1.png"></a>
           <div class="title">
-            <h5>Short film corner</h5>
-            <h4>le programme 2017</h4>
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
           </div>
         </div>
       </div>
@@ -336,22 +403,26 @@
         <img class="img" style="background-image:url(/img/catalogueImg.png)">
       </div>
       <h5>le catalogue</h5>
-      <div><h6>en compétition</h6><div class="plusSign"><img src="img/plusSign.png"/></div></div>
-      <div><h6>en compétition</h6><div class="plusSign"><img src="img/plusSign.png"/></div></div>
-      <div><h6>en compétition</h6><div class="plusSign"><img src="img/plusSign.png"/></div></div>
-      <div><h6>en compétition</h6><div class="plusSign"><img src="img/plusSign.png"/></div></div>
+      <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
+      <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
+      <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
+      <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
     </div>
 
       <div class="socialBox competition">
         <h3>suivez Cannes court métrages</h3>
           <div class="firstBox">
-            <div class="bigBox">
+            <div class="bigBox imgShown">
               <div class="socialIcon">
                 <i class="icon icon_instagram"></i>
               </div>
+              <div class="socialContent">
+                <h6>le 21mars à 19h @FdC_officiel</h6>
+                <h5>An article about my time at <a href="#">#Cannes2016</a>, the <a href="#">#ShortFilmCorner</a> and how much I'm willing to pay for a pint.</h5> 
+              </div>
               <img src="img/twitimg.png">
             </div>
-            <div class="bigBox">
+            <div class="bigBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_twitter"></i>
               </div>
@@ -359,84 +430,105 @@
                 <h6>le 21mars à 19h @FdC_officiel</h6>
                 <h5>An article about my time at <a href="#">#Cannes2016</a>, the <a href="#">#ShortFilmCorner</a> and how much I'm willing to pay for a pint.</h5>
               </div>
+              <img src="img/twitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_twitter"></i>
               </div>
               <div class="socialContent">
                 <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
               </div>
+              <img src="img/twitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgShown">
               <div class="socialIcon">
                 <i class="icon icon_instagram"></i>
+              </div>
+              <div class="socialContent imgHidden">
+                <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
               </div>
               <img src="img/smallTwitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgShown">
               <div class="socialIcon">
                 <i class="icon icon_instagram"></i>
               </div>
+              <div class="socialContent">
+                <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
+              </div>
               <img src="img/twitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_instagram"></i>
+              </div>
+              <div class="socialContent">
+                <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
               </div>
               <img src="img/twitimg.png">
             </div>
           </div>
           <div class="secondBox">
-            <div class="smallBox">
+            <div class="smallBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_twitter"></i>
               </div>
               <div class="socialContent">
                 <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
-              </div>
-            </div>
-            <div class="smallBox">
-              <div class="socialIcon">
-                <i class="icon icon_instagram"></i>
               </div>
               <img src="img/twitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgShown">
               <div class="socialIcon">
                 <i class="icon icon_instagram"></i>
               </div>
+              <div class="socialContent">
+                <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
+              </div>
               <img src="img/twitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgShown">
               <div class="socialIcon">
-                <i class="icon icon_twitter"></i>
+                <i class="icon icon_instagram"></i>
               </div>
               <div class="socialContent">
                 <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
               </div>
+              <img src="img/twitimg.png">
             </div>
-            <div class="smallBox">
+            <div class="smallBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_twitter"></i>
               </div>
               <div class="socialContent">
                 <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
               </div>
+              <img src="img/twitimg.png">
+            </div>
+            <div class="smallBox imgHidden">
+              <div class="socialIcon">
+                <i class="icon icon_twitter"></i>
+              </div>
+              <div class="socialContent">
+                <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
+              </div>
+              <img src="img/twitimg.png">
             </div>
             <div class="smallBox empty"></div>
           </div>
           <div class="thirdBox">
             <div class="smallBox empty"></div>
-            <div class="smallBox">
+            <div class="smallBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_twitter"></i>
               </div>
               <div class="socialContent">
                 <h5>Loin de mon père, 3e film de Keren Yedaya, Un Certain Regard <a href="#">#Cannes2016</a> en salles en France demain. </h5>
               </div>
+              <img src="img/twitimg.png">
             </div>
-            <div class="biggerBox">
+            <div class="biggerBox imgHidden">
               <div class="socialIcon">
                 <i class="icon icon_twitter"></i>
               </div>
@@ -444,6 +536,7 @@
                 <h6>le 21mars à 19h @FdC_officiel</h6>
                 <h5>Snow in Paradise presented at Un Certain Regard in <a href="#">#Cannes2016</a> is on release in France today <a href="#">@SnowIP_Film http://youtu.be/AMaW3njDiQ8</a> </h5>
               </div>
+              <img src="img/twitimg.png">
             </div>
           </div>
       </div>

@@ -6,13 +6,13 @@
     data-email="//www.gmail.com"
     data-playlist='[
       {
-        "sources":[{"file":"./files/mov_bbb.mp4"}],
-        "vid": 21,
-        "image":"//dummyimage.com/960x540/000/c8a461.png",
+        "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
+        "vid": 23,
+        "image":"img/slider-channels/03.jpg",
         "name":"Sils Maria",
-        "category":"Photocall",
-        "date":"11.03.2016",
-        "hour":"12:00"
+        "category":"Conférence de presse",
+        "date":"14.03.2016",
+        "hour":"15:00"
       }
     ]'
     data-img="/img/article/004.jpg">

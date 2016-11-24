@@ -183,7 +183,7 @@
     display: block;
     color: white;
     position: absolute;
-    right: 100px;
+    right: 200px;
     float: right;
     z-index: 1000;
     background: white;
@@ -202,7 +202,7 @@
 
     .owl-dots {
         counter-reset: dots;
-        right: 100px!important;
+        right: 200px!important;
         font-family: $CamphorHeavy;
         top: 33%!important;
     }
@@ -283,41 +283,44 @@
     }
 }
 
-.vCenterKid {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: left;
-    padding-left: 100px;
+#slider-movies, #featured-movies {
 
-    h2 {
-     max-width: 700px;
-     padding-top: 50px;
-     padding-bottom: 100px;
-    }
-
-    .alignButton {
+  .vCenterKid {
+      display: table-cell;
+      vertical-align: middle;
       text-align: left;
-      position: relative;
-      /* left: -100px; */
-      max-width: 245px;
-    }
 
-    .programmButton {
-      width: 235px;
-      height: 50px;
-      text-transform: uppercase;
-      border: 1px solid #c3a05f;
-      font-size: 12px;
-      font-family: $CamphorBold;
-      @include align();
-      color: white;
-      line-height: 50px;
-      letter-spacing: 1px;
-    }
+      h2 {
+       max-width: 700px;
+       padding-top: 100px;
+       padding-bottom: 100px;
+      }
 
-    .goldColor {
-      color: #c3a05f;
-    }
+      .alignButton {
+        text-align: left;
+        position: relative;
+        /* left: -100px; */
+        max-width: 245px;
+      }
+
+      .programmButton {
+        width: 235px;
+        height: 50px;
+        text-transform: uppercase;
+        border: 1px solid #c3a05f;
+        font-size: 12px;
+        font-family: $CamphorBold;
+        @include align();
+        color: white;
+        line-height: 50px;
+        letter-spacing: 1px;
+      }
+
+      .goldColor {
+        color: #c3a05f;
+      }
+  }
+
 }
 
 // SLIDER DISCOVER
@@ -334,8 +337,44 @@
   text-align: center;
   margin: 0 auto;
   z-index: 3;
+  .owl-next, .owl-prev {
+    color: $gold;
+    width: 65px;
+    height: 65px;
+  } 
+  .owl-next {
+    @include transition(all 0.9s $smoothTransition);
+    float: right;
+    position: absolute;
+    right: 31%;
+    top: -200%;
+  }
 
+  .owl-prev {
+    @include transition(all 0.9s $smoothTransition);
+    float: left;
+    position: absolute;
+    left: 31%;
+    top: -200%;
+  }
+  .goldarrowLeft, .goldarrowRight {
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 13px;
+    border: 1px solid white;
+  }
 
+  &:hover {
+    .owl-prev, .owl-next {
+      display: block!important;
+      @include transition(all 0.9s $smoothTransition);
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
   .item img {
       object-fit: cover;
       width: 100%;
@@ -506,6 +545,7 @@
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       letter-spacing: 1px;
+      color: white;
     }
   }
 
@@ -515,7 +555,7 @@
 
 #slider-competition {
   
-  height: 365px;
+  height: 370px;
   margin-bottom: 100px!important;
   overflow: hidden;
   text-align: center;
@@ -591,12 +631,16 @@
       font-family: $CamphorItalic;
     }
 
-    h5 {
+    h5, h6 {
       text-transform: uppercase;
       font-family: $CamphorBold;
       font-size: 13px;
       color: #2c2c2c;
-      line-height: 25px;
+      line-height: 20px;
+    }
+
+    h6 {
+      font-size: 11px;
     }
   }
 }
@@ -633,6 +677,13 @@
 
 #slider-aboutVideos {
 
+  .vCenterKid {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: left;
+      padding-left: 100px;
+    }
+
   .video-container .infos-bar .info {
     left: 0px!important;
   }
@@ -648,6 +699,10 @@
  .owl-dots{
     margin-top: 20px;
   } 
+  
+  .top-bar {
+    opacity: 1!important;
+  }
 
   .owl-dot {
     display: inline-block;

@@ -1,8 +1,9 @@
 
   $('#slider-discover').owlCarousel({
       dots: true,
-      navigation : false,
+      navigation : true,
       slideSpeed : 600,
+      navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"],
       paginationSpeed : 400,
       items : 3
   });
@@ -282,3 +283,16 @@ $('.modal-toggle').on('click', function(e) {
   e.preventDefault();
   $('.modal').toggleClass('is-visible');
 });
+
+
+// CATALOGUE
+
+var len = $(".blocks");
+  if($(len).length === 3) {
+    $(".blocks").addClass("thirdBlocks");
+  } else if ($(len).length === 4){
+    $(".blocks").addClass("quarterBlocks");
+  } else if ($(len).length === 5) {
+    $(".blocks").addClass("fifthBlocks");
+  }
+  
