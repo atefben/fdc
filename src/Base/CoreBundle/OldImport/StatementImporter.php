@@ -205,7 +205,7 @@ class StatementImporter extends Importer
                 }
             }
 
-            $translation->setTitle(strip_tags($oldTranslation->getTitle()));
+            $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
             foreach ($mapperFields as $oldField => $field) {
                 $translation->{'set' . ucfirst($field)}($oldTranslation->{'get' . ucfirst($oldField)}());
