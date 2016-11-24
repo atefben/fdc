@@ -65,6 +65,7 @@ class Importer
      * @var Theme
      */
     protected $defaultTheme;
+    protected $defaultThemeId;
 
     public function __construct(ContainerInterface $container)
     {
@@ -365,16 +366,24 @@ class Importer
     }
 
     /**
-     * @param $id
+     * @param bool $force
      * @return $this
      */
-    public function setDefaultThemeById($id)
+    public function getDefaultTheme($force = false)
     {
-        $this->defaultTheme = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:Theme')
-            ->find($id)
-        ;
-        return $this;
+        if (!$this->defaultTheme || $force) {
+            $this->defaultTheme = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:Theme')
+                ->find($this->defaultThemeId)
+            ;
+        }
+
+        return $this->defaultTheme;
+    }
+
+    public function setDefaultThemeId($id)
+    {
+        $this->defaultThemeId = $id;
     }
 }
