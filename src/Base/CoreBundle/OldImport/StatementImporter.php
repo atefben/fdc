@@ -58,8 +58,6 @@ class StatementImporter extends Importer
                     }
                 }
             }
-            $this->getManager()->clear();
-            unset($oldArticles);
             $this->getSiteEvent(true);
             $this->getSiteCorporate(true);
         }
