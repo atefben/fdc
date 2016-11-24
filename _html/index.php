@@ -541,8 +541,8 @@
           </div>
       </div>
       <div class="shareSocial">
-        <div>facebook <i class="icon icon_facebook"></i></div>
-        <div>twitter <i class="icon icon_twitter"></i></div>
+        <a href="https://www.facebook.com/cannescourtmetrage/?fref=ts" target="_blank"><div>facebook <i class="icon icon_facebook"></i></div></a>
+        <a href="https://twitter.com/cannes_court?lang=fr" target="_blank"><div>twitter <i class="icon icon_twitter"></i></div></a>
       </div>
 
   <?php include('box-news.php'); ?>

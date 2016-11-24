@@ -1994,6 +1994,12 @@
     width: 50%;
     @include align();
     float: left;
+    color: #999999;
+  }
+
+  a, i {
+    text-decoration: none;
+    color: #999999;
   }
 }
 

@@ -10991,6 +10991,11 @@ header #searchContainer {
   text-align: center;
   display: block;
   float: left;
+  color: #999999;
+}
+.shareSocial a, .shareSocial i {
+  text-decoration: none;
+  color: #999999;
 }
 
 .catalogue {
