@@ -149,6 +149,7 @@ class StatementImporter extends Importer
                 ->setCreatedAt($oldArticle->getCreatedAt())
                 ->setUpdatedAt($oldArticle->getUpdatedAt())
                 ->setFestival($this->getFestival($oldArticle))
+                ->setTheme($this->defaultTheme)
                 ->setIsPublishedOnFDCEvent(true) // test if works
             ;
             $this->getManager()->persist($statement);
@@ -377,6 +378,7 @@ class StatementImporter extends Importer
                 $mediaImage
                     ->addSite($this->getSiteCorporate())
                     ->setOldMediaId($oldArticleAssociation->getObjectId())
+                    ->setTheme($this->defaultTheme)
                 ;
                 $this->getManager()->persist($mediaImage);
                 $mediaImage->setPublishedAt($translation->getTranslatable()->getCreatedAt());
@@ -526,7 +528,10 @@ class StatementImporter extends Importer
                 $mediaAudio = new MediaAudio();
                 $widget->setFile($mediaAudio);
                 $this->getManager()->persist($mediaAudio);
-                $mediaAudio->setOldMediaId($oldArticleAssociation->getObjectId());
+                $mediaAudio
+                    ->setOldMediaId($oldArticleAssociation->getObjectId())
+                    ->setTheme($this->defaultTheme)
+                ;
             }
 
             $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
@@ -632,7 +637,10 @@ class StatementImporter extends Importer
                 $mediaVideo->setDisplayedHomeCorpo(false);
                 $widget->setFile($mediaVideo);
                 $this->getManager()->persist($mediaVideo);
-                $mediaVideo->setOldMediaId($oldArticleAssociation->getObjectId());
+                $mediaVideo
+                    ->setOldMediaId($oldArticleAssociation->getObjectId())
+                    ->setTheme($this->defaultTheme)
+                ;
             }
 
             $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());

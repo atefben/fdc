@@ -6,6 +6,7 @@ use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\Site;
+use Base\CoreBundle\Entity\Theme;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Component\Console\Input\InputInterface;
@@ -59,6 +60,11 @@ class Importer
      * @var OutputInterface
      */
     protected $output;
+
+    /**
+     * @var Theme
+     */
+    protected $defaultTheme;
 
     public function __construct(ContainerInterface $container)
     {
@@ -356,5 +362,19 @@ class Importer
             }
         }
         return false;
+    }
+
+    /**
+     * @param $id
+     * @return $this
+     */
+    public function setDefaultThemeById($id)
+    {
+        $this->defaultTheme = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Theme')
+            ->find($id)
+        ;
+        return $this;
     }
 }

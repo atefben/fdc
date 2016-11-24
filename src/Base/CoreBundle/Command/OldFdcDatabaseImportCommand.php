@@ -57,6 +57,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('only-create', null, InputOption::VALUE_NONE, 'Create only new entities')
             ->addOption('only-articles', null, InputOption::VALUE_NONE, 'Only import articles')
             ->addOption('only-medias', null, InputOption::VALUE_NONE, 'Only import medias')
+            ->addOption('theme', null, InputOption::VALUE_OPTIONAL, 'Default Theme')
         ;
     }
 
@@ -65,6 +66,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $dm = $this->getContainer()->get('doctrine')->getManager();
         $mediaManager = $this->getContainer()->get('sonata.media.manager.media');
 
+        $themeId = $input->getOption('theme');
+
         $onlyArticles = $input->getOption('only-articles');
         $onlyMedias = $input->getOption('only-medias');
 
@@ -72,14 +75,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $infoImporter = $this->getContainer()->get('old_import.info_importer');
         $statementImporter = $this->getContainer()->get('old_import.statement_importer');
 
-        $newsImporter->setInput($input)->setOutput($output);
-        $infoImporter->setInput($input)->setOutput($output);
-        $statementImporter->setInput($input)->setOutput($output);
+        $newsImporter->setInput($input)->setOutput($output)->setDefaultThemeById($themeId);
+        $infoImporter->setInput($input)->setOutput($output)->setDefaultThemeById($themeId);
+        $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeById($themeId);
 
         if ($onlyArticles) {
-//            $newsImporter->importNews();
+            $newsImporter->importNews();
             $infoImporter->importInfos();
-//            $statementImporter->importStatements();
+            $statementImporter->importStatements();
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);
             $this->importMediaAudio($dm, $mediaManager, $output, $input);
