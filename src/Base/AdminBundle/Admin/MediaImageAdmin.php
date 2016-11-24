@@ -209,7 +209,8 @@ class MediaImageAdmin extends Admin
                 )
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'btn_delete' => false
+                'btn_delete' => false,
+                'required'   => false
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label' => 'form.label_article_tags',

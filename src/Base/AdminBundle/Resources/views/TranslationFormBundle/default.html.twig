@@ -25,8 +25,36 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:press_download_section.html.twig' %}
 {% endblock %}
 
+{% block base_admin_corpo_team_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_team.html.twig' %}
+{% endblock %}
+
+{% block base_admin_corpo_palme_or_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_palme_or.html.twig' %}
+{% endblock %}
+
+{% block base_admin_corpo_team_members_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_team_members.html.twig' %}
+{% endblock %}
+
+{% block base_admin_corpo_festival_history_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_festival_history.html.twig' %}
+{% endblock %}
+
+{% block base_admin_corpo_team_departements_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_team_departements.html.twig' %}
+{% endblock %}
+
 {% block base_admin_homepage_corporate_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:homepage_corporate.html.twig' %}
+{% endblock %}
+
+{% block base_admin_corpo_search_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_search.html.twig' %}
+{% endblock %}
+
+{% block base_admin_gallery_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:gallery.html.twig' %}
 {% endblock %}
 
 {% block base_admin_press_download_translations_a2lix_translations_widget %}
@@ -39,6 +67,10 @@
 
 {% block base_admin_fdc_page_participate_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:fdc_page_participate.html.twig' %}
+{% endblock %}
+
+{% block base_admin_corpo_team_teams_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_team_teams.html.twig' %}
 {% endblock %}
 
 {% block base_admin_press_media_library_translations_a2lix_translations_widget %}
@@ -193,6 +225,10 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:fdc_page_event.html.twig' %}
 {% endblock %}
 
+{% block base_admin_corpo_mediatheque_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:corpo_mediatheque.html.twig' %}
+{% endblock %}
+
 {% block base_admin_web_tv_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:web_tv.html.twig' %}
 {% endblock %}
@@ -325,6 +361,11 @@
                     {% else %}
                         <strong>{{ value.name }}</strong>
                     {% endif %}
+                {% elseif not value.thumbsGenerated %}
+                    <div class="pull-left" style="margin-right: 5px">
+                        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object" style="width: 85px; height: 85px"/>
+                    </div>
+                    <strong>Miniature en cours de création.</strong> <br />
                 {% else %}
                     <div class="pull-left" style="margin-right: 5px">
                         {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}

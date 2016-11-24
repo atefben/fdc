@@ -1,0 +1,680 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
+            {% set locale = translationsFields.vars.name %}
+            {% if is_granted('ROLE_TRANSLATOR_FR') %}
+                {% set currentLocale = 'fr' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+                {% set currentLocale = 'en' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ES') %}
+                {% set currentLocale = 'es' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+                {% set currentLocale = 'zh' %}
+            {% endif %}
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                <div class="row">
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'form.fdc_page_web_tv_trailers.content_page'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.title) }}
+                                        {{ form_row(translationsFields.chapo) }}
+                                        {{ form_row(form.parent.children.image) }}
+                                        {{ form_row(form.parent.children.weight) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' %}
+                        </div>
+                    {% else %}
+                        <div class="col-md-6">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'form.fdc_page_la_selection_cannes_classics.page_title'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.title) }}
+                                        {{ form_row(translationsFields.chapo) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <div>
+                                                <label>
+                                                    Chapo
+                                                </label>
+                                                {% if form.children.fr.vars.value is not null %}
+                                                    <div>
+                                                        {{ form.children.fr.vars.value.chapo|raw }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    Contenu
+                                                </label>
+                                                {% if form.children.fr.vars.value is not null %}
+                                                    <div>
+                                                        {{ form.children.fr.vars.value.content|raw }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="row">
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.widgets'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {% for widget in form.parent.children.widgets.children %}
+                                            <div class="item base-widget">
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_text_type' %}
+                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_type' %}
+                                                    <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' %}
+                                                    <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_audio_type' %}
+                                                    <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_type' %}
+                                                    <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_dual_align_type' %}
+                                                    <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' %}
+                                                    <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' %}
+                                                    <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_movie_type' %}
+                                                    <h4><strong>{{ 'form.widget.movie'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' %}
+                                                    <h4><strong>{{ 'form.widget.intro'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                    <h4><strong>Image + texte</strong></h4>
+                                                {% endif %}
+
+                                                {{ form_row(widget._type) }}
+                                                {{ form_row(widget.position) }}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_text_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type'
+                                                %}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                    {{ form_label(widget.image) }}
+                                                    <span class="help-block sonata-ba-field-help">Dimensions attendues : 726x518 - ratio paysage. Format attendu : .jpg, .png, .gif</span>
+                                                    {{ form_widget(widget.image) }}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_movie_type' %}
+                                                    {{ form_row(widget.widgetMovie) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_audio_type'
+                                                %}
+                                                    {{ form_row(widget.file) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' %}
+                                                    {{ form_row(widget.image) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_dual_align_type'
+                                                %}
+                                                    {{ form_row(widget.gallery) }}
+                                                {% endif %}
+                                                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    {{ 'form.news.helper_widgets'|trans }}<br/>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_subtitle_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.subtitle'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_intro_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.intro'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_movie_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.movie'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget"
+                                       data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_typeone_type)| escape }}"><i
+                                                class="icon-plus"></i>Image + texte</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-md-6">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.widgets'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {% for widget in form.parent.children.widgets.children %}
+                                            <div class="item base-widget">
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_text_type' %}
+                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_type' %}
+                                                    <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' %}
+                                                    <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_audio_type' %}
+                                                    <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_type' %}
+                                                    <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_dual_align_type' %}
+                                                    <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' %}
+                                                    <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' %}
+                                                    <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_movie_type' %}
+                                                    <h4><strong>{{ 'form.widget.movie'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' %}
+                                                    <h4><strong>{{ 'form.widget.intro'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                    <h4><strong>Texte + image</strong></h4>
+                                                {% endif %}
+
+                                                {{ form_row(widget._type) }}
+                                                {{ form_row(widget.position) }}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_text_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type'
+                                                %}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_type' %}
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_file'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_title'|trans }}:</b>
+                                                                    {% if fileTranslations and fileTranslations.get(locale) is not null %}
+                                                                        {{ fileTranslations.get(locale).title }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            {% if widget.children.file.vars.value is not null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediavideo_edit', {'id': widget.children.file.vars.value}) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                    {{ form_label(widget.image) }}
+                                                    <span class="help-block sonata-ba-field-help">Dimensions attendues : 726x518 - ratio paysage. Format attendu : .jpg, .png, .gif</span>
+                                                    {{ form_widget(widget.image) }}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' %}
+                                                    {% set imageTranslations = (widget.children.image.vars.data is not null) ? widget.children.image.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_image'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                    {% if imageTranslations is not null and imageTranslations.get(locale) is not null %}
+                                                                        {{ imageTranslations.get(locale).alt }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            {% if widget.children.image.vars.value is not null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediaimagesimple_edit', {'id': widget.children.image.vars.value}) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_audio_type' %}
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_file'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_title'|trans }}:</b>
+                                                                    {% if fileTranslations and fileTranslations.get(locale) is not null %}
+                                                                        {{ fileTranslations.get(locale).title }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            {% if widget.children.file.vars.value is not null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediaaudio_edit', {'id': widget.children.file.vars.value}) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_dual_align_type'
+                                                %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_header_gallery'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            {% if widget.children.gallery.vars.data.medias is defined and widget.children.gallery.vars.data.medias is not null %}
+                                                                {% for media in widget.children.gallery.vars.data.medias %}
+                                                                    {% if media and media.media %}
+                                                                        <div class="form-group">
+                                                                            <label>Media {{ loop.index }}</label>
+                                                                            {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                            <div>
+                                                                                <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                                {% if mediaTranslations.get(locale) is not null %}
+                                                                                    {{ mediaTranslations.get(locale).legend }}
+                                                                                {% endif %}
+                                                                            </div>
+                                                                            <div>
+                                                                                <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                                {% if mediaTranslations.get(locale) is not null %}
+                                                                                    {{ mediaTranslations.get(locale).alt }}
+                                                                                {% endif %}
+                                                                            </div>
+                                                                            <div>
+                                                                                <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                                {% if mediaTranslations.get(locale) is not null %}
+                                                                                    {{ mediaTranslations.get(locale).copyright }}
+                                                                                {% endif %}
+                                                                            </div>
+                                                                            <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': media.media.id }) }}">
+                                                                                modifier les traductions
+                                                                            </a>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {% for widget in form.parent.children.widgets.children %}
+                                            {% if widget.children._type.vars.value != 'fdc_page_la_selection_cannes_classics_widget_movie_type' %}
+                                                <div class="item base-widget">
+                                                    {% if
+                                                    widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_text_type' or
+                                                    widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type'
+                                                    %}
+                                                        {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_text_type' %}
+                                                            <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                        {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' %}
+                                                            <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                        {% endif %}
+                                                        <div class="form-group">
+                                                            <label>
+                                                                Texte
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.translations.fr.vars.value is not null %}
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_type' %}
+                                                        <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
+                                                        {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                {{ 'form.label_file'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <b>{{ 'form.label_title'|trans }}:</b>
+                                                                        {% if fileTranslations and fileTranslations.get('fr') is not null %}
+                                                                            {{ fileTranslations.get('fr').title }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' %}
+                                                        <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                {{ 'form.label_fdc_page_la_selection_cannes_classics_widget_video_youtube_url'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.translations.fr.vars.value is not null %}
+                                                                    {{ widget.children.translations.fr.vars.value.url }}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                {{ 'form.label_fdc_page_la_selection_cannes_classics_widget_video_youtube_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.translations.fr.vars.value is not null %}
+                                                                    {{ widget.children.translations.fr.vars.value.title }}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+
+
+                                                            {% set imageTranslations = (widget.vars.data.image is not null) ? widget.vars.data.image.translations : null %}
+                                                            <label>
+                                                                Informations image
+                                                            </label>
+                                                            <div>
+                                                                <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                {% if imageTranslations is not null and imageTranslations.get('fr') is not null %}
+                                                                    {{ imageTranslations.get('fr').alt }}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_audio_type' %}
+                                                        <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                                        {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                {{ 'form.label_file'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <b>{{ 'form.label_title'|trans }}:</b>
+                                                                        {% if fileTranslations and fileTranslations.get('fr') is not null %}
+                                                                            {{ fileTranslations.get('fr').title }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type'%}
+                                                        <h4><strong>Module Image + texte</strong></h4>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                Titre
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.translations.fr.vars.value is not null %}
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                Content
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.translations.fr.vars.value is not null %}
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_type' %}
+                                                        <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                {{ 'form.label_header_gallery'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.gallery.vars.data.medias is defined and widget.children.gallery.vars.data.medias is not null %}
+                                                                    {% for media in widget.children.gallery.vars.data.medias %}
+                                                                        {% if media and media.media %}
+                                                                            <div class="form-group">
+                                                                                <label>Media {{ loop.index }}</label>
+                                                                                {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                                <div>
+                                                                                    <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                                    {% if mediaTranslations.get('fr') is not null %}
+                                                                                        {{ mediaTranslations.get('fr').legend }}
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                                <div>
+                                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                                    {% if mediaTranslations.get('fr') is not null %}
+                                                                                        {{ mediaTranslations.get('fr').alt }}
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                                <div>
+                                                                                    <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                                    {% if mediaTranslations.get('fr') is not null %}
+                                                                                        {{ mediaTranslations.get('fr').copyright }}
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_image_dual_align_type' %}
+                                                        <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                {{ 'form.label_header_gallery'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {% if widget.children.gallery.vars.data is not null %}
+                                                                    {% for media in widget.children.gallery.vars.data.medias %}
+                                                                        {% if media and media.media %}
+                                                                            <div class="form-group">
+                                                                                <label>Media {{ loop.index }}</label>
+                                                                                {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                                <div>
+                                                                                    <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                                    {% if mediaTranslations.get('fr') is not null %}
+                                                                                        {{ mediaTranslations.get('fr').legend }}
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                                <div>
+                                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                                    {% if mediaTranslations.get('fr') is not null %}
+                                                                                        {{ mediaTranslations.get('fr').alt }}
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                                <div>
+                                                                                    <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                                    {% if mediaTranslations.get('fr') is not null %}
+                                                                                        {{ mediaTranslations.get('fr').copyright }}
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endif %}
+
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' %}
+                                                        <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <b>Sous-titre</b>
+                                                                        {% if widget.children.translations.fr.vars.value is not null %}
+                                                                            {{ widget.children.translations.fr.vars.value.subtitle }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>Paragraphe de texte</b>
+                                                                        {% if widget.children.translations.fr.vars.value is not null %}
+                                                                            {{ widget.children.translations.fr.vars.value.paragraph }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' %}
+                                                        <h4><strong>{{ 'form.widget.intro'|trans }}</strong></h4>
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <b>Chapeau</b>
+                                                                        {% if widget.children.translations.fr.vars.value is not null %}
+                                                                            {{ widget.children.translations.fr.vars.value.introduction|raw }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {% if form.vars.default_locale == locale %}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if form.vars.default_locale != locale %}
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            {% if form.parent.children.translations.children.fr is not null %}
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            {% if form.parent.children.translations.children.fr is not null %}
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value|raw }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if form.vars.default_locale != locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

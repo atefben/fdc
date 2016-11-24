@@ -486,9 +486,15 @@ grunt.initConfig({
 				            './js/vendors/jquery-1.12.0.min.js', 
 				            './js/vendors/jwplayer.js',
 				            './js/vendors/owl.carousel.min.js',
-				            './js/include/*.js',
+						    './js/vendors/isotope.pkgd.min.js',
+						'js/vendors/packery-mode.pkgd.min.js',
+
+						'./js/include/*.js',
 				            './js/filters.js',
-				            './js/fullscreenplayer.js'
+				            './js/fullscreenplayer.js',
+						'js/grid-isotope.js'
+
+
 				        ],
 			        './js-concat/webtv.js':[
 				            './js/vendors/jquery-1.12.0.min.js', 

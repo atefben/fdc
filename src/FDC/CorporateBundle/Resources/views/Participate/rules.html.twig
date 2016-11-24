@@ -4,48 +4,60 @@
     participate bright
 {% endblock bodyClass %}
 {% block body %}
-<section id="main">
+    <section id="main">
+        {% if procedure.mainImage is not null %}
+            {% set mainTrans = procedure.mainImage.findTranslationByLocale(app.request.locale) %}
+            {% if mainTrans is null or mainTrans.file is null %}
+                {% set mainTrans = procedure.mainImage.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set mainImage = mainTrans.file %}
+            <div class="block-push block-push-top"
+                 style="background-image: url({% path mainImage, '1280x808' %}); background-position: 0px 0px;">
+                <div class="vFlexAlign">
+                    <div class="txts">
+                        <strong class="title-3">{{ 'participate.rules'|trans }}</strong>
+                    </div>
+                </div>
+            </div> <!-- end block push -->
+        {% endif %}
 
-    {% set mainTrans = procedure.mainImage.findTranslationByLocale(app.request.locale) %}
-    {% if mainTrans is null or mainTrans.file is null %}
-        {% set mainTrans = procedure.mainImage.findTranslationByLocale('fr') %}
-    {% endif %}
-    {% set mainImage = mainTrans.file %}
-    <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %}); background-position: 0px 0px;">
-        <div class="vFlexAlign">
-            <div class="txts">
-                <strong class="title-3">{{ 'participate.rules'|trans }}</strong>
+        <div class="block-contain-txt-register-movie active all-contain block-01-ms padding-top block-rules">
+            <h4 style="margin-top: -55px;">
+                <strong>
+                    {{ procedure|trans_fallback('title') }}
+                </strong>
+            </h4>
+            {{ procedure|trans_fallback('rulesContent')|raw }}
+        </div> <!-- fin de all-contain block-01-xs padding-top -->
+
+        <div class="border-top border-bottom block-button-bottom">
+            <div class="block-01-ms">
+                <div class="align-flex">
+                    <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" target="_blank"
+                       style="margin-top: 0px;"
+
+                       class="button button-half">{{ procedure|trans_fallback('btnSelectionLabel') }}</a>
+                    {% if procedure.pdf is defined and procedure.pdf is not null %}
+                        <a href="{% path procedure.pdf|trans_fallback('file'), 'reference' %}"
+                           class="button button-half" style="margin-top: 0px;"><i
+                                    class="icon icon-download" style="margin-right: 10px;"></i>{{ 'download.pdf'|trans }}</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div> <!-- end block push -->
 
-
-    <div class="block-contain-txt-register-movie active all-contain block-01-ms padding-top block-rules">
-        {{ procedure|trans_fallback('procedureContent')|raw }}
-    </div> <!-- fin de all-contain block-01-xs padding-top -->
-
-    <div class="border-top border-bottom block-button-bottom">
-        <div class="block-01-ms">
-            <a href="#" class="button button-long"><i class="icon icon-download"></i>{{ 'download.pdf'|trans}}</a>
-            <div class="align-flex">
-                <a href="{{ procedure|trans_fallback('btnSelectionLink') }}" target="_blank" class="button button-half">{{ procedure|trans_fallback('btnSelectionLabel') }}</a>
-                <a href="{{ procedure|trans_fallback('btnInscriptionlink') }}" target="_blank" class="button button-half">{{ procedure|trans_fallback('btnInscriptionLabel') }}</a>
+        <div class="block-contact block-01-ms">
+            <strong class="title-25">{{ procedure|trans_fallback('contactTitle')|raw }}</strong>
+            <div class="item i-1">
+                {{ procedure|trans_fallback('firstColumnContact')|raw }}
             </div>
-        </div>
-    </div>
 
-    <div class="block-contact block-01-ms">
-        <strong class="title-25">{{ registerMovie|trans_fallback('contactTitle')|raw }}</strong>
-        <div class="item i-1">
-            {{ registerMovie|trans_fallback('firstColumnContact')|raw }}
+            <div class="item i-2">
+                {{ procedure|trans_fallback('secondColumnContact')|raw }}
+            </div>
+
         </div>
 
-        <div class="item i-2">
-            {{ registerMovie|trans_fallback('secondColumnContact')|raw }}
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 {% endblock body %}

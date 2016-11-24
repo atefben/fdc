@@ -359,7 +359,7 @@ class FilmPerson implements TranslateMainInterface
     private $films;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person", cascade={"remove"}))
      *
      * @Groups({"person_list", "person_show"})
      * @ORM\OrderBy({"festival" = "DESC"})
@@ -414,6 +414,12 @@ class FilmPerson implements TranslateMainInterface
      * @Groups({"person_list", "person_show"})
      */
     private $owner;
+
+    /**
+     * @var string
+     * @ORM\Column(name="selfkit", type="string", length=255, nullable=true)
+     */
+    private $selfkit;
 
     /**
      * Constructor
@@ -1019,7 +1025,9 @@ class FilmPerson implements TranslateMainInterface
     {
         $isElasticable = false;
         if (count($this->getFilms()) || count($this->getAwards()) || count($this->getJuries())) {
-            $isElasticable = true;
+            if (!$this->getDuplicate()) {
+                $isElasticable = true;
+            }
         }
 
         return $isElasticable;
@@ -1102,5 +1110,28 @@ class FilmPerson implements TranslateMainInterface
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set selfkit
+     *
+     * @param string $selfkit
+     * @return FilmPerson
+     */
+    public function setSelfkit($selfkit)
+    {
+        $this->selfkit = trim($selfkit);
+
+        return $this;
+    }
+
+    /**
+     * Get selfkit
+     *
+     * @return string 
+     */
+    public function getSelfkit()
+    {
+        return $this->selfkit;
     }
 }

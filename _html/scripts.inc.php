@@ -6,8 +6,18 @@ var GLOBALS = {
   "dateStart": "2016-05-12",
   "dateEnd": "2016-05-24",
   "api" : {
-    "instagramUrl" : "https://api.instagram.com/v1/tags/Cannes2016/media/recent/?access_token=2480568612.1677ed0.e6bd83eae8a74220ad07059c7b3ab5bc",
-    "twitterUrl" : "./json/twitter.json"
+      "instagram" : {
+          "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
+          "hashtag" : "Cannes2016",
+      },
+      "twitter" : {
+          "hashtag" : "%23Cannes2016",
+          "count" : 15,
+          "uri" : "search_tweets",
+          "url" : "twitter.php"
+      },
+      "instagramUrl" : "/api/social_wall/instagram",
+      "twitterUrl" : "/api/social_wall/twitter"
   },
   "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
   "urls" : {

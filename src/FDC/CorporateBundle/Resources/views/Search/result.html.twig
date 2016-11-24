@@ -1,0 +1,67 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}{% endblock %}
+
+{% block body %}
+
+<section class="brigth search-page-result search-page" id="main">
+    <div>
+
+        {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
+
+        <div class="block-search block-01">
+
+            <div class="block-searh-more">
+                {% include 'FDCCorporateBundle:Search:components/form.html.twig' %}
+            </div>
+
+            <div class="content-result">
+                {% if result.artist %}
+                    {% include 'FDCCorporateBundle:Search:artist.html.twig' with {'result': result} %}
+                {% endif %}
+
+                {% if result.film %}
+                    {% include 'FDCCorporateBundle:Search:film.html.twig' with {'result': result} %}
+                {% endif %}
+
+                {% if result.media %}
+                    {% include 'FDCCorporateBundle:Search:media.html.twig' with {'result': result} %}
+                {% endif %}
+
+                {% if result.news %}
+                    {% include 'FDCCorporateBundle:Search:news.html.twig' with {'result': result} %}
+                {% endif %}
+
+                {% if result.info_statement %}
+                    {% include 'FDCCorporateBundle:Search:info_statement.html.twig' with {'result': result} %}
+                {% endif %}
+
+                {% if result.event %}
+                    {% include 'FDCCorporateBundle:Search:event.html.twig' with {'result': result} %}
+                {% endif %}
+
+                {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.home'|trans,
+"url"  : path('fdc_corporate_default_home')
+},
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : path('fdc_corporate_search_searchsubmit')
+},
+{
+"name" : 'breadcrumb.search.result'|trans,
+"url"  : ''
+}
+]
+} %}
+{% endblock %}

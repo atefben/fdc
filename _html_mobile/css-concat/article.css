@@ -4025,12 +4025,13 @@ a{
 }
 
 .text-content .big-quote {
-    width: 697px;
+    width: 100.7%;
     margin: 0 auto;
     padding: 70px 70px;
     box-sizing: border-box;
     border: 1px solid #c8a461;
     margin-bottom: 70px;
+    color: #000;
 }
 
 .text-content .big-quote strong {
@@ -4302,7 +4303,7 @@ a{
 }
 .film .info-film .wrapper .poster {
     display: inline-block;
-    margin-right: 65px;
+    margin-right: 45px;
     vertical-align: middle;
 }
 .film .info-film .wrapper .text-container {
@@ -4444,10 +4445,15 @@ a{
 	margin: 20px auto;
 }
 .articles .owl-item{
-
 	width: 516px;
 	height: 490px;
 }
+
+.articles .articles-carousel .owl-item{
+    width: 516px;
+    height: auto;
+}
+
 .articles .img-container{
 
     position: relative;
@@ -4606,6 +4612,127 @@ a{
     margin-top: 50px;
     text-align: center;
     padding-bottom: 145px;
+}
+
+
+
+/** test fix **/
+
+.caption-article {
+    color: #333333;
+    font-size: 18px;
+    margin: 10px 0 0;
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+}
+
+.caption-article  .name {
+    color:#000;
+}
+
+
+.big-quote span.big-quote-paragraph {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: 28px;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.big-quote strong {
+    color: #c8a461 !important;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
+}
+
+.txt-grey-bkg-container {
+    color: #666;
+    font-size: 28px;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding: 70px 70px;
+}
+
+.txt-grey-bkg-container .content span {
+    font-size: 32px;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+}
+
+.blockquote {
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 27px;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.little-txt {
+    color: #969696;
+    font-size: 24px;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 18px;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+    display: block;
+}
+
+.quote blockquote {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
+.text-content h2 {
+    font-size: 48px;
+    text-align: center;
+    line-height: 60px;
+    color: #333;
+}
+
+.text-content h2.sub-title {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 28px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.text-content h2.sub-title2 {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 25px 0px;
+    text-align: left;
+}
+
+.text-content h3.sub-title {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 20px;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
 }
 /*SECTION AUDIOS*/
 .main-audio-player{

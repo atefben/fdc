@@ -242,7 +242,7 @@ abstract class CoreManager
      * 
      * @access public
      * @param mixed $finder
-     * @return void
+     * @return object
      */
     public function findOneById($finder)
     {
@@ -702,18 +702,14 @@ abstract class CoreManager
     }
 
     /**
-     * mixedToArray function.
-     * 
-     * @access public
-     * @param mixed $mixed
-     * @return void
+     * @param $mixed
+     * @return array
      */
     public function mixedToArray($mixed)
     {
         if (gettype($mixed) !== 'array') {
             $mixed = array($mixed);
         }
-        
         return $mixed;
     }
     

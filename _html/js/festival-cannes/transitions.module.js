@@ -45,7 +45,7 @@ $(document).ready(function() {
     $('p.stick').removeClass('noTrans');
   }, 0);
 
-  $('body').on('click', "a[target!='_blank']:not(.ajax, .link)", function(e) {
+  $('body').on('click', "a[target!='_blank']:not(.ajax, .link)" , function(e) {
     var href = $(this).attr('href');
 
     if((href.indexOf('#') == -1 || (href.indexOf('#') > -1 && href.length > 1)) || $(this).hasClass('ajaxi')) {

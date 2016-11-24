@@ -103,6 +103,24 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                             )
                         )
                     ),
+                    'pushTitle' => array(
+                        'label' => 'Titre du push',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'pushSubTitle' => array(
+                        'label' => 'Sous-titre du push',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
                     'procedureContent' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Description de la procédure',
@@ -125,13 +143,53 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'field_type' => 'text',
                         'label' => 'Lien du bouton 1 (gauche)'
                     ),
-                    'btnInscriptionLabel' => array(
-                        'field_type' => 'text',
-                        'label' => 'Libellé du bouton 2 (droite)'
+                    'firstColumnContact' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_column.first',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press',
+
                     ),
-                    'btnInscriptionLink' => array(
-                        'field_type' => 'text',
-                        'label' => 'Lien du bouton 2 (droite)'
+                    'secondColumnContact' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_column.second',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press'
+                    ),
+                    'contactTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'inscriptionContent' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'Contenu de la strate',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press'
+                    ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnLink' => array(
+                        'label' => 'form.label_btn_link',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'btnText' => array(
+                        'label' => 'Titre',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
                     )
                 )
             ))
@@ -144,6 +202,9 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label' => 'Image cover du règlement'
             ))
+            ->add('displayReglement')
+            ->add('displayInscription')
+            ->add('displayContact')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices' => PressAccreditProcedure::getAvailableTranslateOptions(),

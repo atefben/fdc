@@ -19,7 +19,6 @@ body {
   font-size: 16px;
   overflow-x: hidden;
 
-
   &:before {
     background-color: $black;
     content: '';
@@ -58,6 +57,10 @@ body {
   clear: both;
   position: relative;
   overflow-x: hidden;
+
+  &.block-mediatheque {
+    background-color: $black;
+  }
 
   &:after {
     background-color: $black;
@@ -101,7 +104,6 @@ body {
 
   &.overlay {
     cursor: pointer;
-
     width: auto;
     height: auto;
     z-index: auto;
@@ -112,6 +114,10 @@ body {
     opacity: 1;
     display: block;
     transition: 0s;
+
+    &.block-mediatheque {
+      width: 1280px;
+    }
 
   }
 }
@@ -301,6 +307,11 @@ video{
 
 .padding-bottom{
   padding-bottom: 70px;
+  display: block;
+}
+
+.padding-top {
+  padding-top: 70px;
   display: block;
 }
 

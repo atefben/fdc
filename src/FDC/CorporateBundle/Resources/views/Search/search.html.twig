@@ -1,0 +1,31 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% block bodyClass %}{% endblock %}
+
+{% block body %}
+
+<section class="brigth search-page" id="main">
+    <div class="block-search block-01">
+
+        {% include 'FDCCorporateBundle:Search:components/form.html.twig' %}
+
+        {% include 'FDCCorporateBundle:Search:components/pushs.html.twig' %}
+
+    </div>
+</section>
+
+{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+"name" : 'breadcrumb.home'|trans,
+"url"  : path('fdc_corporate_default_home')
+},
+{
+"name" : 'breadcrumb.search.home'|trans,
+"url"  : ''
+}
+]
+} %}
+{% endblock %}

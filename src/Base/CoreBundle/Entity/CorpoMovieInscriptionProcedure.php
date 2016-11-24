@@ -57,13 +57,35 @@ class CorpoMovieInscriptionProcedure implements TranslateMainInterface
      */
     private $procedureSecondFile;
 
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $displayReglement;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $displayInscription;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $displayContact;
+
     /**
      * ArrayCollection
      */
     protected $translations;
 
     public function __toString() {
-        return 'Procédure d\'inscription';
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = ' "' . $this->findTranslationByLocale('fr')->getTitle()  .'"';
+        }
+
+        return $string;
     }
 
     /**
@@ -166,5 +188,74 @@ class CorpoMovieInscriptionProcedure implements TranslateMainInterface
     public function getMainImage()
     {
         return $this->mainImage;
+    }
+
+    /**
+     * Set displayReglement
+     *
+     * @param boolean $displayReglement
+     * @return CorpoMovieInscriptionProcedure
+     */
+    public function setDisplayReglement($displayReglement)
+    {
+        $this->displayReglement = $displayReglement;
+
+        return $this;
+    }
+
+    /**
+     * Get displayReglement
+     *
+     * @return boolean 
+     */
+    public function getDisplayReglement()
+    {
+        return $this->displayReglement;
+    }
+
+    /**
+     * Set displayInscription
+     *
+     * @param boolean $displayInscription
+     * @return CorpoMovieInscriptionProcedure
+     */
+    public function setDisplayInscription($displayInscription)
+    {
+        $this->displayInscription = $displayInscription;
+
+        return $this;
+    }
+
+    /**
+     * Get displayInscription
+     *
+     * @return boolean 
+     */
+    public function getDisplayInscription()
+    {
+        return $this->displayInscription;
+    }
+
+    /**
+     * Set displayContact
+     *
+     * @param boolean $displayContact
+     * @return CorpoMovieInscriptionProcedure
+     */
+    public function setDisplayContact($displayContact)
+    {
+        $this->displayContact = $displayContact;
+
+        return $this;
+    }
+
+    /**
+     * Get displayContact
+     *
+     * @return boolean 
+     */
+    public function getDisplayContact()
+    {
+        return $this->displayContact;
     }
 }

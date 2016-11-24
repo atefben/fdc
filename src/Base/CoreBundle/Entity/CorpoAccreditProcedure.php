@@ -60,6 +60,17 @@ class CorpoAccreditProcedure implements TranslateMainInterface
     private $procedureSecondFile;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $displayContact;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $displayAccredit;
+
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -73,7 +84,13 @@ class CorpoAccreditProcedure implements TranslateMainInterface
     }
 
     public function __toString() {
-        return 'Procédure d\'accréditation';
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = ' "' . $this->findTranslationByLocale('fr')->getTitle()  .'"';
+        }
+
+        return $string;
     }
 
     /**
@@ -176,5 +193,51 @@ class CorpoAccreditProcedure implements TranslateMainInterface
     public function getPdf()
     {
         return $this->pdf;
+    }
+
+    /**
+     * Set displayAccredit
+     *
+     * @param boolean $displayAccredit
+     * @return CorpoAccreditProcedure
+     */
+    public function setDisplayAccredit($displayAccredit)
+    {
+        $this->displayAccredit = $displayAccredit;
+
+        return $this;
+    }
+
+    /**
+     * Get displayAccredit
+     *
+     * @return boolean 
+     */
+    public function getDisplayAccredit()
+    {
+        return $this->displayAccredit;
+    }
+
+    /**
+     * Set displayContact
+     *
+     * @param boolean $displayContact
+     * @return CorpoAccreditProcedure
+     */
+    public function setDisplayContact($displayContact)
+    {
+        $this->displayContact = $displayContact;
+
+        return $this;
+    }
+
+    /**
+     * Get displayContact
+     *
+     * @return boolean 
+     */
+    public function getDisplayContact()
+    {
+        return $this->displayContact;
     }
 }

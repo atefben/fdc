@@ -8,6 +8,7 @@
 
 namespace Base\CoreBundle\Transformer;
 
+use Base\CoreBundle\Entity\Theme;
 use Elastica\Document;
 use FOS\ElasticaBundle\Transformer\ModelToElasticaTransformerInterface;
 
@@ -35,6 +36,10 @@ class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implemen
     public function transform($media, array $fields)
     {
         $className = new \ReflectionClass(get_class($media));
+
+        if(is_null($media->getTheme())) {
+            $media->setTheme(new Theme());
+        }
 
         switch ($className->getShortName()) {
           case 'MediaImage':

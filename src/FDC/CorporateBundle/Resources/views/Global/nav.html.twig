@@ -29,6 +29,17 @@
                                 {{ child.transName|trans }}
                             </a>
                         {% endif %}
+                    {% elseif menu.route == 'fdc_corporate_media_index' and menu.enabled == true%}
+                        {% if menu.route != '#' %}
+                            <a href="{{ path(menu.route) }}"
+                               class="{% if route == 'fdc_corporate_media_index' %}active{% endif %}">
+                                {{ menu.transName|trans }}
+                            </a>
+                        {% elseif menu.route == '#' %}
+                            <a href="#">
+                                {{ child.transName|trans }}
+                            </a>
+                        {% endif %}
                     {% endif %}
                     {% if menu['__children'] is defined and menu['__children']|length > 0  %}
                         <ul class="tcenter">
@@ -57,8 +68,8 @@
 
     <ul class="user">
         {% for menu in menus %}
-            {% if menu.route == 'fdc_corporate_press_show' or menu.route == 'fdc_corporate_participate_inscription' %}
-                {% if menu.route == 'fdc_corporate_press_show' and menu.enabled == true %}
+            {% if menu.route == 'fdc_press_news_home' or menu.route == 'fdc_corporate_participate_inscription' %}
+                {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
                     <li class="programmation-wrapper">
                         <a href="{{ path(menu.route) }}" class="programmation">
                             <i class="icon icon_programmation"></i>{{ menu.transName|trans }}
@@ -86,23 +97,26 @@
                 {% elseif menu.route == 'fdc_corporate_participate_inscription' %}
                     {% if menu.enabled == true %}
                         <li class="participate-wrapper">
-                            <a href="{{ path(menu.route) }}" class="participate">
+                            <a href="{{ path(menu.route) }}" {% if route in ['fdc_corporate_participate_inscription','fdc_corporate_participate_guide','fdc_corporate_participate_accredit'] or route == 'fdc_corporate_participate_getpage' %}style="color: #c8a461;"{% endif %} class="participate">
                                 <i class="icon icon_participer"></i>{{ menu.transName|trans }}
                             </a>
                             {% if menu['__children'] is defined and menu['__children']|length > 0  %}
                                 <ul>
-                                    {% for k,child in participateMenu %}
-                                        {% if menu['__children'][k].enabled  %}
-                                            {% if k == 0 %}
-                                                <li><a href="{{ path('fdc_corporate_participate_inscription') }}">{{ 'header.nav.inscription'|trans }}</a></li>
-                                            {% elseif k == 2 %}
-                                                <li><a href="{{ path('fdc_corporate_participate_guide') }}">{{ 'header.nav.guide'|trans }}</a></li>
-                                            {% elseif k == 1 %}
-                                                <li><a href="{{ path('fdc_corporate_participate_accredit') }}">{{ 'header.nav.accredit'|trans }}</a></li>
-                                            {% else %}
-                                                <li><a href="{{ path('fdc_corporate_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                    {% for child in menu['__children'] %}
+                                        {% if child.enabled %}
+                                            {% if loop.index0 == 0 %}
+                                                <li><a {% if route == 'fdc_corporate_participate_inscription' %}style="color: #c8a461;"{% endif %} href="{{ path('fdc_corporate_participate_inscription') }}">{{ 'header.nav.inscription'|trans }}</a></li>
+                                            {% elseif loop.index0 == 2 %}
+                                                <li><a {% if route == 'fdc_corporate_participate_guide' %}style="color: #c8a461;"{% endif %} href="{{ path('fdc_corporate_participate_guide') }}">{{ 'header.nav.guide'|trans }}</a></li>
+                                            {% elseif loop.index0 == 1 %}
+                                                <li><a {% if route == 'fdc_corporate_participate_accredit' %}style="color: #c8a461;"{% endif %} href="{{ path('fdc_corporate_participate_accredit') }}">{{ 'header.nav.accredit'|trans }}</a></li>
                                             {% endif %}
                                         {% endif %}
+                                    {% endfor %}
+                                    {% for k,child in participateMenu %}
+                                            {% if child.level2 %}
+                                                <li><a href="{{ path('fdc_corporate_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                            {% endif %}
                                     {% endfor %}
                                 </ul>
                             {% endif %}

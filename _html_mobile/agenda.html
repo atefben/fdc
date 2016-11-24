@@ -324,7 +324,7 @@
 		        <div class="time">02H</div>
 		        <div class="time">03H</div>
 		      </div>
-		      <div class="venues">
+		      <div class="venues" id="touchsurface">
 
 		        <div class="v-wrapper">
 		          <div class="v-wrapper-content list">
@@ -407,6 +407,106 @@
 	</div>
 </div>
 <!-- FIN POPIN -->
+
+
+
+<script>
+	var GLOBALS = {
+		"env" : "prod",
+		"locale" : "fr",
+		"defaultDate" : "2016-05-22",
+		"dateStart": "2016-05-11",
+		"dateEnd": "2016-05-22",
+		"api" : {
+			"instagram" : {
+				"token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
+				"hashtag" : "Cannes2016",
+			},
+			"twitter" : {
+				"hashtag" : "%23Cannes2016",
+				"count" : 15,
+				"uri" : "search_tweets",
+				"url" : "twitter.php"
+			},
+			"instagramUrl" : "/api/social_wall/instagram",
+			"twitterUrl" : "/api/social_wall/twitter"
+		},
+		"baseUrl" : "http://www.festival-cannes.com/fr/",
+		"urls" : {
+			"calendarProgrammationUrl" : "http://www.festival-cannes.com/fr/programmation/day",
+			"programmationUrl" : "http://www.festival-cannes.com/fr/press/programmation/",
+			"eventUrl" : "load-evenements.php",
+			"newsUrl" : "http://www.festival-cannes.com/fr/homepage-articles",
+			"loadPressReleaseUrl" : "http://www.festival-cannes.com/fr/press/press-actu-ajax",
+			"selectionUrl" : "http://www.festival-cannes.com/fr/suggestion",
+			"newsletterUrl": "http://www.festival-cannes.com/fr/register/newsletter",
+			"shareEmailUrl": "http://www.festival-cannes.com/fr/share-email",
+			"shareEmailMediaUrl": "http://www.festival-cannes.com/fr/share-email-media",
+			"pressDownloadTrailerUrl": "http://www.festival-cannes.com/fr/press/trailer-download",
+			"pressMediaSection": "http://www.festival-cannes.com/fr/press/media-section",
+			"audiosUrl": "http://www.festival-cannes.com/fr/audios",
+			"photosUrl": "http://www.festival-cannes.com/fr/photos",
+			"videosUrl": "http://www.festival-cannes.com/fr/videos",
+			"searchUrl": "http://www.festival-cannes.com/fr/searchautocomplete"
+		},
+		"news" : {
+			"count" : 5
+		},
+		"texts" : {
+			"url" : {
+				"title" : "http://www.festival-cannes.com/fr/press/media-section"
+			},
+			"search" : {
+				"noresult" : "Aucun résultat"
+			},
+			"popin" : {
+				"error" : "valide",
+				"empty" : "renseignée",
+				"copy"  : "Lien copié !",
+				"valid" : "Votre message a bien été envoyé!"
+			},
+			"googleMap" : {
+				"title" : "Festival de Cannes"
+			},
+			"readMore" : {
+				"more" : "Afficher <strong>plus d'actualités</strong>",
+				"nextDay" : "Passer au <strong>jour précédent</strong>"
+			},
+			"newsletter" : {
+				"errorsNotValide" : "L'adresse e-mail n'est pas valide",
+				"errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+			},
+			'agenda' : {
+				'delete' : "Supprimer de votre agenda"
+			}
+		},
+		"player": {
+			"file" : "./files/mov_bbb.mp4",
+			"image" : "//dummyimage.com/960x540/c8a461/000.png",
+			"title" : "Video 1"
+		},
+		"calendar": {
+			"labelFormat": {
+				"fr" : "H [H]",
+				"default" : "h A"
+			},
+			"i18n": {
+				"months": ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+				"weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+				"weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
+				"labelFormat": {
+					"fr" : "H\\hi",
+					"default" : "g:ia"
+				}
+			}
+		},
+		"socialWall": {
+			"points": [146771300,198156200,203147600,173369600,224635500,216587900,218774300,184153200,223717600,254485300,254485300,321330700],
+			"heightGraph" : 200
+		}
+	}
+</script>
+
 
 <!-- build:[src]:prod js-concat/calendar.min.js -->
     <script charset="utf-8" src="js-concat/calendar.js"></script>

@@ -83,22 +83,30 @@ class CorpoWhoAreWeAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
+                'label' => 'Titre'
+            ))
             ->add('weight',null,array('label' => 'Position'))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
+                'label' => 'Date de création'
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaVideo::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
+                'label' => 'Priorité'
             ))
             ->add('statusMain', 'choice', array(
                 'choices'   => MediaVideoTranslation::getStatuses(),
                 'catalogue' => 'BaseAdminBundle',
+                'label' => 'Statut'
             ))
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'Editer'
+
             ))
         ;
     }
@@ -138,12 +146,6 @@ class CorpoWhoAreWeAdmin extends Admin
                     'chapo' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Chapô',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
-                    ),
-                    'content' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
@@ -236,30 +238,6 @@ class CorpoWhoAreWeAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
-            ->add('createdAt', null, array(
-                'label' => false,
-                'attr' => array (
-                    'class' => 'hidden'
-                )
-            ))
-            ->add('createdBy', null, array(
-                'label' => false,
-                'attr' => array (
-                    'class' => 'hidden'
-                )
-            ))
-            ->add('updatedAt', null, array(
-                'label' => false,
-                'attr' => array (
-                    'class' => 'hidden'
-                )
-            ))
-            ->add('updatedBy', null, array(
-                'label' => false,
-                'attr' => array (
-                    'class' => 'hidden'
-                )
-            ))
         ;
     }
 

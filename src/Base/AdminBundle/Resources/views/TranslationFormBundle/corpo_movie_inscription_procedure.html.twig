@@ -43,17 +43,64 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.pushTitle) }}
+                                    {{ form_row(translationsFields.pushSubTitle) }}
                                     {{ form_row(translationsFields.rulesContent) }}
                                     {{ form_row(form.parent.children.pdf) }}
                                     <div class="col-md-5">
-                                    {{ form_row(translationsFields.btnSelectionLabel) }}
-                                    {{ form_row(translationsFields.btnSelectionLink) }}
+                                        {{ form_row(translationsFields.btnSelectionLabel) }}
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-5">
-                                    {{ form_row(translationsFields.btnInscriptionLabel) }}
-                                    {{ form_row(translationsFields.btnInscriptionLink) }}
+                                        {{ form_row(translationsFields.btnSelectionLink) }}
                                     </div>
+                                    {{ form_row(form.parent.children.displayReglement) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Strate Formulaire d'inscription 2017
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
+                                    <style>
+                                        #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
+                                            display: none;
+                                        }
+                                    </style>
+                                    {{ form_row(translationsFields.btnText) }}
+                                    {{ form_row(translationsFields.inscriptionContent) }}
+                                    <div class="col-md-5">
+                                        {{ form_row(translationsFields.btnLabel) }}
+                                        {{ form_row(form.parent.children.displayInscription) }}
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-5">
+                                        {{ form_row(translationsFields.btnLink) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Contact
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
+                                    <style>
+                                        #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
+                                            display: none;
+                                        }
+                                    </style>
+                                    {{ form_row(translationsFields.contactTitle) }}
+                                    {{ form_row(translationsFields.firstColumnContact) }}
+                                    {{ form_row(translationsFields.secondColumnContact) }}
+                                    {{ form_row(form.parent.children.displayContact) }}
                                 </div>
                             </div>
                         </div>
@@ -101,8 +148,32 @@
                             <div class="box box-success">
                                 <div class="box-body">
                                     <h4 class="box-title">
-                                        Procédures d’inscription
+                                        Règlement de la procédure
                                     </h4>
+                                    <div>
+                                        <label>
+                                            Titre du push
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.pushTitle }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Sous-titre du push
+                                        </label>
+                                            <span>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.pushSubTitle }}
+                                                </div>
+                                            {% endif %}
+                                            </span>
+                                    </div>
                                     <div>
                                         <label>
                                             Règlement contenu
@@ -129,18 +200,6 @@
                                     </div>
                                     <div>
                                         <label>
-                                            Bouton 2 Label
-                                        </label>
-                                            <span>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.btnInscriptionLabel|raw }}
-                                                </div>
-                                            {% endif %}
-                                            </span>
-                                    </div>
-                                    <div>
-                                        <label>
                                             Bouton 1 Lien
                                         </label>
                                             <span>
@@ -151,17 +210,72 @@
                                             {% endif %}
                                             </span>
                                     </div>
-                                    <div>
-                                        <label>
-                                            Bouton 2 lien
-                                        </label>
-                                            <span>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.btnInscriptionLink|raw }}
-                                                </div>
-                                            {% endif %}
-                                            </span>
+                                    <div class="box box-success">
+                                        <div class="box-body">
+                                            <h4 class="box-title">
+                                                Contenu bloc inscription
+                                            </h4>
+                                            <div>
+                                                <label>
+                                                    Contenu
+                                                </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.inscriptionContent|raw }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <h4 class="box-title">
+                                            Informations bloc formulaire
+                                        </h4>
+                                        <div class="box-body">
+                                            <h4 class="box-title">
+                                                Contact
+                                            </h4>
+                                            <div>
+                                                <label>
+                                                    Titre
+                                                </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.contactTitle|raw }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
+                                            </div>
+
+                                            <div>
+                                                <label>
+                                                    -> Première colonne <-
+                                                </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.firstColumnContact|raw }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
+                                            </div>
+
+                                            <div>
+                                                <label>
+                                                    -> Deuxième colonne <-
+                                                </label>
+                                    <span>
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.secondColumnContact|raw }}
+                                        </div>
+                                    {% endif %}
+                                    </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

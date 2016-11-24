@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class HomepageCorporateAdmin extends Admin
 {
@@ -25,6 +26,16 @@ class HomepageCorporateAdmin extends Admin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('list');
+        $collection->remove('create');
+        $collection->remove('show');
+        $collection->remove('batch');
+        $collection->remove('delete');
+        $collection->remove('export');
     }
 
     /**
@@ -51,7 +62,8 @@ class HomepageCorporateAdmin extends Admin
             ->add('displayedPopin')
             ->add('displayedBanner')
             ->add('displayedSlider')
-            ->add('displayedSliderFilters')
+            ->add('displayedFeaturedContents')
+            ->add('displayedFeaturedContentsFilters')
             ->add('displayedCannesReleases')
             ->add('createdAt')
             ->add('updatedAt')
@@ -100,92 +112,106 @@ class HomepageCorporateAdmin extends Admin
                         'display' => false
                     ),
                     'popinSubtitle1' => array(
-                        'label' => 'Sous-titre 1',
+                        'label' => 'form.homepage_corporate.label_subtitle_1',
                         'sonata_help' => 'X caractères max. Couleur blanche',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'popinSubtitle2' => array(
-                        'label' => 'Sous-titre 2',
+                        'label' => 'form.homepage_corporate.label_subtitle_2',
                         'sonata_help' => 'X caractères max. Couleur dorée',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'bannerText' => array(
-                        'label' => 'Texte du bandeau',
+                        'label' => 'form.homepage_corporate.label_banner_text',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushEditionTitle' => array(
-                        'label' => 'Titre',
+                        'label' => 'form.homepage_corporate.label_title',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushEditionUrl' => array(
-                        'label' => 'URL de destination',
+                        'label' => 'form.homepage_corporate.label_url',
                         'sonata_help' => 'Interne ou externe. Commence par http://',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushMainTitle1' => array(
-                        'label' => 'Titre',
+                        'label' => 'form.homepage_corporate.label_title',
+                        'sonata_help' => 'X caractères max.',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+
+                    ),
+                    'pushMainSubtitle1' => array(
+                        'label' => 'form.homepage_corporate.label_subtitle',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
 
                     ),
                     'pushMainUrl1' => array(
-                        'label' => 'URL de destination',
+                        'label' => 'form.homepage_corporate.label_url',
                         'sonata_help' => 'Interne ou externe. Commence par http://',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushMainTitle2' => array(
-                        'label' => 'Titre',
+                        'label' => 'form.homepage_corporate.label_subtitle',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
+                    'pushMainSubtitle2' => array(
+                        'label' => 'form.homepage_corporate.label_subtitle',
+                        'sonata_help' => 'X caractères max.',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+
+                    ),
                     'pushMainUrl2' => array(
-                        'label' => 'URL de destination',
+                        'label' => 'form.homepage_corporate.label_url',
                         'sonata_help' => 'Interne ou externe. Commence par http://',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushSecondaryTitle1' => array(
-                        'label' => 'Titre',
+                        'label' => 'form.homepage_corporate.label_title',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushSecondaryUrl1' => array(
-                        'label' => 'URL de destination',
+                        'label' => 'form.homepage_corporate.label_url',
                         'sonata_help' => 'Interne ou externe. Commence par http://',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushSecondaryTitle2' => array(
-                        'label' => 'Titre',
+                        'label' => 'form.homepage_corporate.label_title',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushSecondaryUrl2' => array(
-                        'label' => 'URL de destination',
+                        'label' => 'form.homepage_corporate.label_url',
                         'sonata_help' => 'Interne ou externe. Commence par http://',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushSecondaryTitle3' => array(
-                        'label' => 'Titre',
+                        'label' => 'form.homepage_corporate.label_title',
                         'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
                     'pushSecondaryUrl3' => array(
-                        'label' => 'URL de destination',
+                        'label' => 'form.homepage_corporate.label_url',
                         'sonata_help' => 'Interne ou externe. Commence par http://',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
@@ -211,6 +237,10 @@ class HomepageCorporateAdmin extends Admin
                 'label'    => 'Ne pas afficher la pop-in',
                 'required' => false,
             ))
+            ->add('displayedVideo', 'checkbox', array(
+                'label'    => 'Ne pas afficher cette strate',
+                'required' => false,
+            ))
             ->add('displayedBanner', 'checkbox', array(
                 'label'    => 'Ne pas afficher le bandeau',
                 'required' => false,
@@ -219,8 +249,12 @@ class HomepageCorporateAdmin extends Admin
                 'label'    => 'Ne pas afficher cette strate',
                 'required' => false,
             ))
-            ->add('displayedSliderFilters', 'checkbox', array(
+            ->add('displayedFeaturedContentsFilters', 'checkbox', array(
                 'label'    => 'Ne pas afficher les filtres',
+                'required' => false,
+            ))
+            ->add('displayedFeaturedContents', 'checkbox', array(
+                'label'    => 'Ne pas afficher cette strate',
                 'required' => false,
             ))
             ->add('displayedCannesReleases', 'checkbox', array(
@@ -236,6 +270,10 @@ class HomepageCorporateAdmin extends Admin
                 'required' => false,
             ))
             ->add('displayedPushsSecondary', 'checkbox', array(
+                'label'    => 'Ne pas afficher cette strate',
+                'required' => false,
+            ))
+            ->add('displayedGallery', 'checkbox', array(
                 'label'    => 'Ne pas afficher cette strate',
                 'required' => false,
             ))

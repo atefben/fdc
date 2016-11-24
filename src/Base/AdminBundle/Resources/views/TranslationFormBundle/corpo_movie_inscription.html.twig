@@ -30,8 +30,8 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.commonContent) }}
                                         {{ form_row(form.parent.children.mainImage) }}
+                                        {{ form_row(translationsFields.commonContent) }}
                                         <span class="help-block sonata-ba-field-help">Dimensions attendues : 2560x1103. Format attendu : .jpg, .png, .gif</span>
                                     </div>
                                 </div>
@@ -53,42 +53,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        Strate Formulaire d'inscription 2017
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
-                                        <style>
-                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
-                                                display: none;
-                                            }
-                                        </style>
-                                        {{ form_row(translationsFields.inscriptionContent) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        Contact
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
-                                        <style>
-                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
-                                                display: none;
-                                            }
-                                        </style>
-                                        {{ form_row(translationsFields.contactTitle) }}
-                                        {{ form_row(translationsFields.firstColumnContact) }}
-                                        {{ form_row(translationsFields.secondColumnContact) }}
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     {% else %}
                         <div class="col-md-8">
@@ -101,42 +65,6 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.commonContent) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.content'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
-                                        <style>
-                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
-                                                display: none;
-                                            }
-                                        </style>
-                                        {{ form_row(translationsFields.inscriptionContent) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        Contact
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
-                                        <style>
-                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
-                                                display: none;
-                                            }
-                                        </style>
-                                        {{ form_row(translationsFields.contactTitle) }}
-                                        {{ form_row(translationsFields.firstColumnContact) }}
-                                        {{ form_row(translationsFields.secondColumnContact) }}
                                     </div>
                                 </div>
                             </div>
@@ -167,74 +95,8 @@
                                 </div>
                             </div>
                             <div class="box box-success">
-                                <div class="box-body">
-                                    <h4 class="box-title">
-                                        Contenu bloc inscription
-                                    </h4>
-                                    <div>
-                                        <label>
-                                            Contenu
-                                        </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.inscriptionContent|raw }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-body">
-                                    <h4 class="box-title">
-                                        Informations bloc formulaire
-                                    </h4>
-                                    <div class="box-body">
-                                        <h4 class="box-title">
-                                            Contact
-                                        </h4>
-                                        <div>
-                                            <label>
-                                                Titre
-                                            </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.contactTitle|raw }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                        </div>
 
-                                        <div>
-                                            <label>
-                                                -> Première colonne <-
-                                            </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.firstColumnContact|raw }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                        </div>
-
-                                        <div>
-                                            <label>
-                                                -> Deuxième colonne <-
-                                            </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.secondColumnContact|raw }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
-                                        </div>
-                                </div>
                             </div>
-                        </div>
                     {% endif %}
                 </div>
                 <div class="row">

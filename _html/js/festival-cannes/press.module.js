@@ -68,7 +68,7 @@ $(document).ready(function () {
 
   var count = 0;
 
-  if(('#timeline').length > 0) {
+  if($('#timeline').length > 0) {
     updateFilterCalendar();
   }
 

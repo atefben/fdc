@@ -18,7 +18,7 @@
     data-link="//www.example.com"
     data-email="//www.gmail.com"
     data-vid="{{ widget.id }}"
-    data-file='[{"file":"{{ trans.url }}"}]'
+    data-file="[{&quot;file&quot;:&quot;{{ trans.url }}&quot;}]"
     data-img="{% if image is defined %}{% path image, 'reference' %}{% endif %}"
     data-name="{{ trans.title }}">
     <div id="video-player-0{{ widget.id }}" class="video-player">
@@ -35,3 +35,4 @@
         </div>
     </div>
 </div>
+

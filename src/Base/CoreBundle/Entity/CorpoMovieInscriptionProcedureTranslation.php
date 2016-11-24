@@ -35,6 +35,20 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     /**
      * @var string
      *
+     * @ORM\Column(name="push_title", type="string", length=255, nullable=true)
+     */
+    protected $pushTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="push_sub_title", type="string", length=255, nullable=true)
+     */
+    protected $pushSubTitle;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="btn_selection_label", type="string", length=255, nullable=true)
      */
     protected $btnSelectionLabel;
@@ -49,20 +63,6 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     /**
      * @var string
      *
-     * @ORM\Column(name="btn_inscription_label", type="string", length=255, nullable=true)
-     */
-    protected $btnInscriptionLabel;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="btn_inscription_link", type="string", length=255, nullable=true)
-     */
-    protected $btnInscriptionLink;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="procedure_content", type="text", nullable=true)
      */
     protected $procedureContent;
@@ -73,6 +73,57 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
      * @ORM\Column(name="rules_content", type="text", nullable=true)
      */
     protected $rulesContent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="contactTitle", type="string", length=255, nullable=true)
+     */
+    private $contactTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     *
+     */
+    private $firstColumnContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     *
+     */
+    private $secondColumnContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $inscriptionContent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $btnLabel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $btnLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $btnText;
 
     /**
      * Set title
@@ -167,52 +218,6 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     }
 
     /**
-     * Set btnInscriptionLabel
-     *
-     * @param string $btnInscriptionLabel
-     * @return CorpoMovieInscriptionProcedureTranslation
-     */
-    public function setBtnInscriptionLabel($btnInscriptionLabel)
-    {
-        $this->btnInscriptionLabel = $btnInscriptionLabel;
-
-        return $this;
-    }
-
-    /**
-     * Get btnInscriptionLabel
-     *
-     * @return string 
-     */
-    public function getBtnInscriptionLabel()
-    {
-        return $this->btnInscriptionLabel;
-    }
-
-    /**
-     * Set btnInscriptionLink
-     *
-     * @param string $btnInscriptionLink
-     * @return CorpoMovieInscriptionProcedureTranslation
-     */
-    public function setBtnInscriptionLink($btnInscriptionLink)
-    {
-        $this->btnInscriptionLink = $btnInscriptionLink;
-
-        return $this;
-    }
-
-    /**
-     * Get btnInscriptionLink
-     *
-     * @return string 
-     */
-    public function getBtnInscriptionLink()
-    {
-        return $this->btnInscriptionLink;
-    }
-
-    /**
      * Set rulesContent
      *
      * @param string $rulesContent
@@ -233,5 +238,212 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
     public function getRulesContent()
     {
         return $this->rulesContent;
+    }
+
+    /**
+     * Set contactTitle
+     *
+     * @param string $contactTitle
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setContactTitle($contactTitle)
+    {
+        $this->contactTitle = $contactTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get contactTitle
+     *
+     * @return string 
+     */
+    public function getContactTitle()
+    {
+        return $this->contactTitle;
+    }
+
+    /**
+     * Set firstColumnContact
+     *
+     * @param string $firstColumnContact
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setFirstColumnContact($firstColumnContact)
+    {
+        $this->firstColumnContact = $firstColumnContact;
+
+        return $this;
+    }
+
+    /**
+     * Get firstColumnContact
+     *
+     * @return string 
+     */
+    public function getFirstColumnContact()
+    {
+        return $this->firstColumnContact;
+    }
+
+    /**
+     * Set secondColumnContact
+     *
+     * @param string $secondColumnContact
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setSecondColumnContact($secondColumnContact)
+    {
+        $this->secondColumnContact = $secondColumnContact;
+
+        return $this;
+    }
+
+    /**
+     * Get secondColumnContact
+     *
+     * @return string 
+     */
+    public function getSecondColumnContact()
+    {
+        return $this->secondColumnContact;
+    }
+
+    /**
+     * Set inscriptionContent
+     *
+     * @param string $inscriptionContent
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setInscriptionContent($inscriptionContent)
+    {
+        $this->inscriptionContent = $inscriptionContent;
+
+        return $this;
+    }
+
+    /**
+     * Get inscriptionContent
+     *
+     * @return string 
+     */
+    public function getInscriptionContent()
+    {
+        return $this->inscriptionContent;
+    }
+
+    /**
+     * Set btnLabel
+     *
+     * @param string $btnLabel
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setBtnLabel($btnLabel)
+    {
+        $this->btnLabel = $btnLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get btnLabel
+     *
+     * @return string 
+     */
+    public function getBtnLabel()
+    {
+        return $this->btnLabel;
+    }
+
+    /**
+     * Set btnLink
+     *
+     * @param string $btnLink
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setBtnLink($btnLink)
+    {
+        $this->btnLink = $btnLink;
+
+        return $this;
+    }
+
+    /**
+     * Get btnLink
+     *
+     * @return string 
+     */
+    public function getBtnLink()
+    {
+        return $this->btnLink;
+    }
+
+    /**
+     * Set btnText
+     *
+     * @param string $btnText
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setBtnText($btnText)
+    {
+        $this->btnText = $btnText;
+
+        return $this;
+    }
+
+    /**
+     * Get btnText
+     *
+     * @return string 
+     */
+    public function getBtnText()
+    {
+        return $this->btnText;
+    }
+
+    /**
+     * Set pushTitle
+     *
+     * @param string $pushTitle
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setPushTitle($pushTitle)
+    {
+        $this->pushTitle = $pushTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get pushTitle
+     *
+     * @return string 
+     */
+    public function getPushTitle()
+    {
+        return $this->pushTitle;
+    }
+
+    /**
+     * Set pushSubTitle
+     *
+     * @param string $pushSubTitle
+     * @return CorpoMovieInscriptionProcedureTranslation
+     */
+    public function setPushSubTitle($pushSubTitle)
+    {
+        $this->pushSubTitle = $pushSubTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get pushSubTitle
+     *
+     * @return string 
+     */
+    public function getPushSubTitle()
+    {
+        return $this->pushSubTitle;
     }
 }

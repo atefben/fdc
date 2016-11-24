@@ -5,6 +5,7 @@
 {% endblock bodyClass %}
 {% block body %}
     <section id="main">
+        {% set corpo = true %}
         {% if content.mainImage is defined and content.mainImage is not null %}
             {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
@@ -14,7 +15,7 @@
             <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %})">
                 <div class="vFlexAlign">
                     <div class="txts">
-                        <h1 class="title-3">{{ 'participate.guide.pratique' }}</h1>
+                        <h1 class="title-3">{{ 'participate.guide.pratique'|trans }}</h1>
                     </div>
                 </div>
             </div> <!-- end block push -->
@@ -24,94 +25,102 @@
 
                 <nav class="navigation-sticky">
                     <ul>
+                        <li class="{% if app.request.attributes.get('slug') == 'prepare' %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : 'prepare' }) }}">{{ 'participate.prepare.sejour'|trans }}</a></li>
                         {% for data in pages %}
-                            <li class="{% if app.request.attributes.get('slug') == data|trans_fallback('slug') %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : data|trans_fallback('slug')}) }}">{{ data|trans_fallback('title') }}</a></li>
+                            {% if data.level3 %}
+                                <li class="{% if app.request.attributes.get('slug') == data|trans_fallback('slug') %}active{% endif %}"><a href="{{ path('fdc_corporate_participate_guide', {'slug' : data|trans_fallback('slug')}) }}">{{ data|trans_fallback('title') }}</a></li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </nav>
-
-
                 <div class="all-contain">
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
+                        {% if app.request.attributes.get('slug') == 'prepare' %}
+                            {% if content.arriveDisplayInstit %}
+                                <div class="item i-transport active">
+                                    <div class="block-01">
+                                        <div class="title-contain border-top">
+                                            <strong class="title-22">
+                                                <i class="noFloat icon {{ content.arriveIcon|icon_corpo }}"></i>{{ content|trans_fallback('arriveTitle') }}
+                                            </strong>
+                                            <i class="icon icon-nav-accordion icon-minus"></i>
+                                        </div>
+                                        <div class="item-manual">
+                                            <div class="contain-infos">
+                                                {% for widget in content.arriveWidgets %}
+                                                    {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
+                                                        <div class="item-infos">
+                                                            {% if widget.picto is not null %}
+                                                                <i class="icon {{ widget.picto|icon_corpo }}"></i>
+                                                            {% endif %}
+                                                            <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
+                                                            {{ widget|trans_fallback('content')|raw }}
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                             {% if content.informationDisplayInstit %}
                             <div class="item">
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
-                                        <i class="noFloat icon {{ content.informationIcon }}"></i>{{ content|trans_fallback('informationTitle') }}
+                                        <i class="noFloat icon {{ content.informationIcon|icon_corpo }}"></i>{{ content|trans_fallback('informationTitle') }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
                                     <div class="item-manual">
                                         <div class="contain-infos">
                                             <div class="descrip-section">
                                                 {{ content|trans_fallback('informationDescription')|raw }}
+                                                {% for widget in content.informationWidgets %}
+                                                    {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
+                                                        {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
+                                                    {% endif %}
+                                                {% endfor %}
                                             </div>
                                         </div>
-                                        {% for widget in content.informationWidgets %}
-                                            {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
-                                                {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
-                                            {% endif %}
-                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
                             {% endif %}
-                            {% if content.arriveDisplayInstit %}
                             <div class="item">
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
-                                            <i class="noFloat icon {{ content.arriveIcon }}"></i>{{ content|trans_fallback('arriveTitle') }}
+                                            <i class="noFloat icon {{ content.meetingIcon|icon_corpo }}"></i>{{ content|trans_fallback('meetingTitle') }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
                                     <div class="item-manual">
                                         <div class="contain-infos">
-                                            {% for widget in content.arriveWidgets %}
-                                                {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
-                                                    {% include 'FDCEventBundle:Participate:widgets/picto.html.twig' %}
-                                                {% endif %}
-                                            {% endfor %}
+                                            <div class="descrip-section">
+                                                {{ content|trans_fallback('meetingDescription')|raw }}
+                                            </div>
+                                            {% if content.meetingPdf is not null %}
+                                                {% set pdfFile = content.meetingPdf|trans_fallback('file') %}
+                                                <a href="{% path pdfFile, 'reference' %}" target="_blank" download>
+                                                    {{ content|trans_fallback('meetingLabel') }}
+                                                </a>
+                                            {% endif %}
+                                            <div id="google-map"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% endif %}
-                            {#<div class="item">#}
-                                {#<div class="block-01">#}
-                                    {#<div class="title-contain border-top">#}
-                                        {#<strong class="title-22">#}
-                                            {#<i class="noFloat icon {{ content.meetingIcon }}"></i>{{ content|trans_fallback('meetingTitle') }}#}
-                                        {#</strong>#}
-                                        {#<i class="icon icon-nav-accordion icon-minus"></i>#}
-                                    {#</div>#}
-                                    {#<div class="item-manual">#}
-                                        {#<div class="contain-infos">#}
-                                            {#<div class="descrip-section">#}
-                                                {#{{ content|trans_fallback('meetingDescription')|raw }}#}
-                                            {#</div>#}
-                                            {#{% if content.meetingPdf is not null %}#}
-                                                {#{% set pdfFile = content.meetingPdf|trans_fallback('file') %}#}
-                                                {#<a href="{% path pdfFile, 'reference' %}" target="_blank" download>#}
-                                                    {#{{ content|trans_fallback('meetingLabel') }}#}
-                                                {#</a>#}
-                                            {#{% endif %}#}
-                                            {#<div id="google-map"></div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
                              {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
                              {% if content.serviceDisplayInstit %}
                              <div class="item">
                                 <div class="block-01">
                                     <div class="title-contain border-top">
                                         <strong class="title-22">
-                                            <i class="noFloat icon {{ content.serviceIcon }}"></i>{{ content|trans_fallback('serviceTitle') }}
+                                            <i class="noFloat icon {{ content.serviceIcon|icon_corpo }}"></i>{{ content|trans_fallback('serviceTitle') }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion icon-create"></i>
                                     </div>
                                     <div class="item-manual">
                                         <div class="contain-infos">
@@ -122,21 +131,26 @@
                                     </div>
                                 </div>
                             </div>
-                             {% endif %}
-                             {% endif %}
 
-                                {% for s in datas.downloadSection %}
+
+                             {% endif %}
+                             {% endif %}
+                        {% else %}
+                            {% set corpo = true %}
+                            {% set i = 0 %}
+
+                            {% for s in datas.downloadSection %}
                                     {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
                                     ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
                                     %}
                                         {% if s.section.instit %}
-                                        <div class="item">
+                                        <div class="item {% if i == 0 %}active{% endif %}">
                                             <div class="block-01">
                                                 <div class="title-contain border-top">
                                                     <strong class="title-22">
-                                                        <i class="noFloat icon {{ s.section|trans_fallback('icon') }}"></i>{{ s.section|trans_fallback('title') }}
+                                                        <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
                                                     </strong>
-                                                    <i class="icon icon-nav-accordion icon-minus"></i>
+                                                    <i class="icon icon-nav-accordion {% if i == 0 %}icon-minus{% else %}icon-create{% endif %}"></i>
                                                 </div>
                                                 <div class="item-manual">
                                                     <div class="contain-infos">
@@ -171,8 +185,9 @@
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
+                        {% endif %}
 
-                     </div> <!-- fin de accordion -->
+                        </div> <!-- fin de accordion -->
                     </div>
                 </div>
             </div>
@@ -180,3 +195,5 @@
     </section>
 
 {% endblock body %}
+{% block js_end %}<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>{% endblock %}
+

@@ -4,7 +4,15 @@
     <div>
         {% set translationLocale = object.findTranslationByLocale('fr') %}
         {% if translationLocale is not null %}
+            {% if translationLocale.title is defined %}
             {{ translationLocale.title }}
+            {% elseif translationLocale.departementName is defined %}
+            {{ translationLocale.departementName }}
+            {% elseif translationLocale.teamName is defined %}
+            {{ translationLocale.teamName }}
+            {% elseif translationLocale.firstname is defined %}
+                {{ translationLocale.firstname }}
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}

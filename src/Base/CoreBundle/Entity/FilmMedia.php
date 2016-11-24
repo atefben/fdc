@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmMedia
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
 class FilmMedia
@@ -272,6 +272,34 @@ class FilmMedia
      * @ORM\ManyToOne(targetEntity="CinefPerson", inversedBy="medias")
      */
     private $cinefPerson;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="media")
+     */
+    private $filmMedias;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FilmPersonMedia", mappedBy="media")
+     */
+    private $personMedias;
+
+
+    public function getFilmMedias() {
+        return $this->filmMedia;
+    }
+
+    public function getPersonMedias() {
+        return $this->personMedia;
+    }
+
+    public function getMedia() {
+        if($this->filmMedia) {
+            return $this->filmMedia;
+        }
+        if($this->personMedia) {
+            return $this->personMedia;
+        }
+    }
 
     /**
      * Set id

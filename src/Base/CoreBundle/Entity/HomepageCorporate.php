@@ -63,7 +63,12 @@ class HomepageCorporate implements TranslateMainInterface
      **/
     private $displayedBanner;
 
-    //gallery
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     **/
+    private $displayedGallery;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
@@ -97,7 +102,14 @@ class HomepageCorporate implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedSliderFilters;
+    private $displayedFeaturedContents;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     **/
+    private $displayedFeaturedContentsFilters;
 
     /**
      * @var MediaImageSimple
@@ -182,7 +194,8 @@ class HomepageCorporate implements TranslateMainInterface
         $this->displayedCannesReleases = false;
         $this->displayedPopin = false;
         $this->displayedSlider = false;
-        $this->displayedSliderFilters = false;
+        $this->displayedFeaturedContents = false;
+        $this->displayedFeaturedContentsFilters = false;
         $this->displayedPushsMain = false;
     }
 
@@ -196,7 +209,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -219,7 +232,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get festivalStartsAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFestivalStartsAt()
     {
@@ -242,7 +255,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get festivalEndsAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFestivalEndsAt()
     {
@@ -265,7 +278,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get popinSubtitle1
      *
-     * @return string 
+     * @return string
      */
     public function getPopinSubtitle1()
     {
@@ -288,7 +301,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get popinSubtitle2
      *
-     * @return string 
+     * @return string
      */
     public function getPopinSubtitle2()
     {
@@ -311,7 +324,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get bannerText
      *
-     * @return string 
+     * @return string
      */
     public function getBannerText()
     {
@@ -334,7 +347,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedPopin
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPopin()
     {
@@ -357,7 +370,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedBanner
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedBanner()
     {
@@ -380,7 +393,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedSlider
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedSlider()
     {
@@ -403,7 +416,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedSliderFilters
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedSliderFilters()
     {
@@ -426,7 +439,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedCannesReleases
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedCannesReleases()
     {
@@ -449,7 +462,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get videoMain
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getVideoMain()
     {
@@ -472,7 +485,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get pushEditionImage
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushEditionImage()
     {
@@ -495,7 +508,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get pushMainImage1
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushMainImage1()
     {
@@ -518,7 +531,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get pushMainImage2
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushMainImage2()
     {
@@ -541,7 +554,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get pushSecondaryImage1
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushSecondaryImage1()
     {
@@ -564,7 +577,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get pushSecondaryImage2
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushSecondaryImage2()
     {
@@ -587,7 +600,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get pushSecondaryImage3
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPushSecondaryImage3()
     {
@@ -610,7 +623,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedVideo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedVideo()
     {
@@ -633,7 +646,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedPushEdition
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushEdition()
     {
@@ -656,7 +669,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedPushsMain
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushsMain()
     {
@@ -679,7 +692,7 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get displayedPushsSecondary
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedPushsSecondary()
     {
@@ -694,6 +707,7 @@ class HomepageCorporate implements TranslateMainInterface
      */
     public function addHomepageSlide(\Base\CoreBundle\Entity\HomepageCorporateSlide $homepageSlide)
     {
+        $homepageSlide->setHomepage($this);
         $this->homepageSlide[] = $homepageSlide;
 
         return $this;
@@ -712,10 +726,80 @@ class HomepageCorporate implements TranslateMainInterface
     /**
      * Get homepageSlide
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getHomepageSlide()
     {
         return $this->homepageSlide;
+    }
+
+
+    /**
+     * Set displayedFeaturedContents
+     *
+     * @param boolean $displayedFeaturedContents
+     * @return HomepageCorporate
+     */
+    public function setDisplayedFeaturedContents($displayedFeaturedContents)
+    {
+        $this->displayedFeaturedContents = $displayedFeaturedContents;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedFeaturedContents
+     *
+     * @return boolean 
+     */
+    public function getDisplayedFeaturedContents()
+    {
+        return $this->displayedFeaturedContents;
+    }
+
+    /**
+     * Set displayedFeaturedContentsFilters
+     *
+     * @param boolean $displayedFeaturedContentsFilters
+     * @return HomepageCorporate
+     */
+    public function setDisplayedFeaturedContentsFilters($displayedFeaturedContentsFilters)
+    {
+        $this->displayedFeaturedContentsFilters = $displayedFeaturedContentsFilters;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedFeaturedContentsFilters
+     *
+     * @return boolean 
+     */
+    public function getDisplayedFeaturedContentsFilters()
+    {
+        return $this->displayedFeaturedContentsFilters;
+    }
+
+    /**
+     * Set displayedGallery
+     *
+     * @param boolean $displayedGallery
+     * @return HomepageCorporate
+     */
+    public function setDisplayedGallery($displayedGallery)
+    {
+        $this->displayedGallery = $displayedGallery;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedGallery
+     *
+     * @return boolean 
+     */
+    public function getDisplayedGallery()
+    {
+        return $this->displayedGallery;
     }
 }

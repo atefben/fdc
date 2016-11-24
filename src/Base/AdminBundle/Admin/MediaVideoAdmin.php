@@ -2,11 +2,9 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\NewsNewsAssociated;
-
-use Base\AdminBundle\Component\Admin\Admin;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -17,7 +15,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class MediaVideoAdmin extends Admin
 {
     protected $formOptions = array(
-        'cascade_validation' => true
+        'cascade_validation' => true,
     );
 
     protected $translationDomain = 'BaseAdminBundle';
@@ -51,7 +49,7 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('theme')
             ->add('webTv', null, array(
-                'label' => 'filter.media_video.label_web_tv'
+                'label' => 'filter.media_video.label_web_tv',
             ))
         ;
 
@@ -66,6 +64,10 @@ class MediaVideoAdmin extends Admin
                 'field_type' => 'checkbox',
                 'label'      => 'filter.media_video.displayed_home',
 
+            ))
+            ->add('displayedHomeCorpo', null, array(
+                'label'      => 'filter.label_homepage_corpo_displayed_videos',
+                'field_type' => 'checkbox',
             ))
             ->add('displayedTrailer', null, array(
                 'label'      => 'filter.media_video.displayed_trailer',
@@ -107,7 +109,7 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaVideo::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
             ))
             ->add('statusMain', 'choice', array(
                 'choices'   => MediaVideoTranslation::getStatuses(),
@@ -147,137 +149,152 @@ class MediaVideoAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => $requiredLocales,
                 'fields'             => array(
-                    'applyChanges' => array(
+                    'applyChanges'          => array(
                         'field_type' => 'hidden',
-                        'attr' => array (
-                            'class' => 'hidden'
-                        )
+                        'attr'       => array(
+                            'class' => 'hidden',
+                        ),
                     ),
-                    'createdAt'        => array(
-                        'display' => false
+                    'createdAt'             => array(
+                        'display' => false,
                     ),
-                    'updatedAt'        => array(
-                        'display' => false
+                    'updatedAt'             => array(
+                        'display' => false,
                     ),
-                    'imageAmazonUrl'   => array(
-                        'display' => false
+                    'imageAmazonUrl'        => array(
+                        'display' => false,
                     ),
-                    'jobWebmState'     => array(
-                        'display' => false
+                    'jobWebmState'          => array(
+                        'display' => false,
                     ),
-                    'jobMp4State'      => array(
-                        'display' => false
+                    'jobMp4State'           => array(
+                        'display' => false,
                     ),
-                    'jobMp4Id'         => array(
-                        'display' => false
+                    'jobMp4Id'              => array(
+                        'display' => false,
                     ),
-                    'jobWebmId'        => array(
-                        'display' => false
+                    'jobWebmId'             => array(
+                        'display' => false,
                     ),
-                    'mp4Url'           => array(
-                        'display' => false
+                    'mp4Url'                => array(
+                        'display' => false,
                     ),
-                    'webmUrl'          => array(
-                        'display' => false
+                    'webmUrl'               => array(
+                        'display' => false,
                     ),
-                    'file'             => array(
+                    'file'                  => array(
                         'required'           => false,
                         'field_type'         => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
                         'provider'           => 'sonata.media.provider.video',
                         'context'            => 'media_video',
                     ),
-                    'amazonRemoteFile' => array(
+                    'amazonRemoteFile'      => array(
                         'required'      => false,
                         'field_type'    => 'entity',
                         'class'         => 'BaseCoreBundle:AmazonRemoteFile',
                         'label'         => 'Fichiers Amazon',
                         'query_builder' => function (EntityRepository $er) {
                             return $er->createQueryBuilder('arf')
-                                ->andWhere('arf.type = :type')
-                                ->setParameter('type', 'video')
+                                      ->andWhere('arf.type = :type')
+                                      ->setParameter('type', 'video')
                                 ;
                         },
-                        'read_only' => true,
-                        'attr' => $amazonRemoteFileAttrs,
+                        'read_only'     => true,
+                        'attr'          => $amazonRemoteFileAttrs,
                     ),
-                    'title'            => array(
+                    'title'                 => array(
                         'label'              => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media_video.helper_title',
                         'locale_options'     => array(
                             'fr' => array(
                                 'required' => true,
-                            )
+                            ),
                         ),
                         'attr'               => array(
-                            'maxlength' => 200
-                        )
+                            'maxlength' => 200,
+                        ),
                     ),
-                    'status'           => array(
+                    'titleHomeCorpo'        => array(
+                        'required'           => false,
+                        'label'              => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help'        => 'form.media_video.helper_title',
+                        'attr'               => array(
+                            'maxlength' => 200,
+                        ),
+                    ),
+                    'introductionHomeCorpo' => array(
+                        'field_type'         => 'ckeditor',
+                        'label'              => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                    ),
+                    'status'                => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => MediaVideoTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                         'constraints'               => array(
-                            new NotBlank()
-                        )
+                            new NotBlank(),
+                        ),
                     ),
-                    'seoTitle'         => array(
+                    'seoTitle'              => array(
                         'attr'               => array(
-                            'placeholder' => 'form.placeholder_seo_title'
+                            'placeholder' => 'form.placeholder_seo_title',
                         ),
                         'label'              => 'form.label_seo_title',
                         'sonata_help'        => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false
+                        'required'           => false,
                     ),
-                    'seoDescription'   => array(
+                    'seoDescription'        => array(
                         'attr'               => array(
-                            'placeholder' => 'form.placeholder_seo_description'
+                            'placeholder' => 'form.placeholder_seo_description',
                         ),
                         'label'              => 'form.label_seo_description',
                         'sonata_help'        => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false
-                    )
-                )
+                        'required'           => false,
+                    ),
+                ),
             ))
             ->add('webTv', 'sonata_type_model_list', array(
                 'label'    => 'form.label_webTv_required',
                 'required' => false,
                 'attr'     => array(
-                    'class' => 'webTvField'
-                )
+                    'class' => 'webTvField',
+                ),
             ))
             ->add('sites', null, array(
                 'label'    => 'form.label_publish_on',
                 'class'    => 'BaseCoreBundle:Site',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => false,
                 'attr'     => array(
                     'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
+                ),
             ))
             ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => false,
                 'attr'     => array(
                     'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
+                ),
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.label_media_video_image',
                 'help'     => 'form.media_image.helper_file',
-                'required' => false
+                'required' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'btn_delete' => false
+                'btn_delete' => false,
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label'        => 'form.label_tags',
@@ -286,7 +303,7 @@ class MediaVideoAdmin extends Admin
                 'required'     => false,
             ), array(
                     'edit'   => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
                 )
             )
             ->add('associatedFilms', 'sonata_type_collection', array(
@@ -302,20 +319,20 @@ class MediaVideoAdmin extends Admin
             ->add('translate')
             ->add('displayedMobile')
             ->add('displayedAll', null, array(
-                'label' => 'form.media_video.displayed_all'
+                'label' => 'form.media_video.displayed_all',
             ))
             ->add('displayedHome', null, array(
-                'label' => 'form.media_video.displayed_home'
+                'label' => 'form.media_video.displayed_home',
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help'     => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add'  => true
+                'btn_add'  => true,
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help'     => 'form.news.helper_event_associated',
                 'required' => false,
-                'btn_add'  => false
+                'btn_add'  => false,
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label'        => 'form.label_news_film_projection_associated',
@@ -324,64 +341,80 @@ class MediaVideoAdmin extends Admin
                 'required'     => false,
             ), array(
                     'edit'   => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
                 )
             )
             ->add('translateOptions', 'choice', array(
                 'choices'            => MediaVideo::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple'           => true,
-                'expanded'           => true
+                'expanded'           => true,
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => MediaVideo::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->add('displayedWebTv', null, array(
                 'label' => 'form.media_video.displayed_webTv',
                 'attr'  => array(
-                    'class' => 'displayWebTvChannels'
-                )
+                    'class' => 'displayWebTvChannels',
+                ),
             ))
             ->add('displayedTrailer', null, array(
-                'label' => 'form.media_video.displayed_trailer'
+                'label' => 'form.media_video.displayed_trailer',
             ))
             ->add('displayedMobile', null, array(
-                'label' => 'form.media_video.displayed_mobile'
+                'label' => 'form.media_video.displayed_mobile',
             ))
             ->add('excludeFromSearch', null, array(
                 'label' => 'form.label_exclude_from_search',
+            ))
+            ->add('displayedHomeCorpo', null, array(
+                'label' => 'form.label_homepage_corpo_display',
+            ))
+            ->add('themeHomeCorpo', 'sonata_type_model_list', array(
+                'label'      => 'form.label_theme',
+                'btn_delete' => false,
+                'required'   => false,
+            ))
+            ->add('dateHomeCorpo', 'sonata_type_datetime_picker', array(
+                'label'    => 'form.label_date',
+                'format'   => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr'     => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'help'     => 'form.seo.helper_file',
-                'required' => false
+                'required' => false,
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(
                 'label' => false,
                 'attr'  => array(
-                    'class' => 'hidden'
-                )
+                    'class' => 'hidden',
+                ),
             ))
             ->add('createdBy', null, array(
                 'label' => false,
                 'attr'  => array(
-                    'class' => 'hidden'
-                )
+                    'class' => 'hidden',
+                ),
             ))
             ->add('updatedAt', null, array(
                 'label' => false,
                 'attr'  => array(
-                    'class' => 'hidden'
-                )
+                    'class' => 'hidden',
+                ),
             ))
             ->add('updatedBy', null, array(
                 'label' => false,
                 'attr'  => array(
-                    'class' => 'hidden'
-                )
+                    'class' => 'hidden',
+                ),
             ))
             ->end()
         ;

@@ -14,6 +14,58 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class WhoAreWeController extends Controller
 {
+
+    /**
+     * @Route("/equipe")
+     * @param Request $request
+     * @return Response
+     */
+    public function equipeAction(Request $request)
+    {
+        $equipes = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoTeam')
+            ->findOneById(1);
+
+        if(!$equipes) {
+            throw $this->createNotFoundException('There is not available Team.');
+        }
+
+        if($equipes->findTranslationByLocale('fr')->getStatus() == 1) {
+            return $this->render('FDCCorporateBundle:WhoAreWe:equipe.html.twig', array(
+                'datas' => $equipes,
+            ));
+        } else {
+            throw $this->createNotFoundException('There is not available Team.');
+        }
+
+    }
+
+    /**
+     * @Route("/nav")
+     * @param Request $request
+     * @return Response
+     */
+    public function navAction(Request $request, $slug = null)
+    {
+        $nav = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
+            ->findBy([], ['weight' => 'asc'])
+        ;
+
+        $pages = array();
+        foreach($nav as $n){
+            if($n->findTranslationByLocale('fr')->getStatus() == 1) {
+                $pages[] = $n;
+            }
+        }
+        return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', array(
+            'pages' => $pages,
+            'slug'  => $slug
+        ));
+    }
+
     /**
      * @Route("/{slug}")
      * @param Request $request
@@ -21,9 +73,7 @@ class WhoAreWeController extends Controller
      */
     public function showAction(Request $request, $slug = null)
     {
-        $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
-        $festival = $this->getFestival()->getId();
 
         $pages = $this
             ->getDoctrineManager()
@@ -50,11 +100,12 @@ class WhoAreWeController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
-        $localeSlugs = $page->getLocaleSlugs();
-
         return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', array(
             'pages' => $pages,
             'currentPage' => $page
         ));
     }
+
 }
+
+

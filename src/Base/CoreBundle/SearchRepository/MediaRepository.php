@@ -12,9 +12,9 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class MediaRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-        
+
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
@@ -23,60 +23,60 @@ class MediaRepository extends SearchRepository implements SearchRepositoryInterf
             ->addShould($this->getWebTvQuery($_locale, $searchTerm))
             ->addShould($this->getTagsQuery($_locale, $searchTerm))
         ;
-        
+
         $statusQuery = new \Elastica\Query\BoolQuery();
         $statusQuery
             ->addMust($this->getStatusFilterQuery($_locale))
             ->addMust($finalQuery)
         ;
-        
+
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
             ->setQuery($statusQuery)
             ->addSort('_score')
             ->addSort(array('publishedAt' => array('order' => 'desc')))
         ;
-        
+
         $paginatedResults = $this->getPaginatedResults($sortedQuery, $range, $page);
-        
+
         return array(
-          'items' => $paginatedResults->getCurrentPageResults(),
-          'count' => $paginatedResults->getNbResults()
+            'items' => $paginatedResults->getCurrentPageResults(),
+            'count' => $paginatedResults->getNbResults()
         );
     }
-    
-    
+
+
     private function getThemeQuery($_locale, $searchTerm)
     {
         $path = 'theme.translations';
         $fields = array('name');
-        
+
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
     }
-    
+
     private function getWebTvQuery($_locale, $searchTerm)
     {
         $path = 'webTv.translations';
         $fields = array('name');
-        
+
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
     }
-    
+
     private function getFieldsQuery($_locale, $searchTerm)
     {
         $path = 'translations';
         $fields = array(
-          'title',
-          'legend',
+            'title',
+            'legend',
         );
- 
+
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
-     
+
     }
 
     public function getElementsToIndex()
     {
-        
+
     }
-    
+
 }

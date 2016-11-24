@@ -35,7 +35,7 @@ class GlobalController extends Controller {
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null) {
+    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null, $color = false) {
         $email = array(
             'section' => $section,
             'detail' => $detail,
@@ -115,16 +115,53 @@ class GlobalController extends Controller {
                 'share_email' => $email,
                 'form' => $form,
                 'hasErrors' => $hasErrors,
-                'artist' => $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist)
+                'artist' => $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->find($artist),
+                'color'  => $color
             );
         } else {
             return array(
                 'share_email' => $email,
                 'form' => $form,
                 'hasErrors' => $hasErrors,
+                'color'  => $color
             );
         }
 
+    }
+
+    /**
+     * @Route("/landing")
+     * @Template("FDCCorporateBundle:Global:landing.html.twig")
+     * @return array
+     */
+    public function landingAction() {
+        $em = $this->get('doctrine')->getManager();
+        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'date' => $homepage->getFestivalStartsAt(),
+            'homepage' => $homepage
+        );
+    }
+
+    /**
+     * @Route("/timer")
+     * @Template("FDCCorporateBundle:Global:timer.html.twig")
+     * @return array
+     */
+    public function timerAction() {
+        $em = $this->get('doctrine')->getManager();
+        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'homepage' => $homepage
+        );
     }
 
     /**
@@ -145,7 +182,7 @@ class GlobalController extends Controller {
 
         $displayedMenus = array();
         foreach($menus as $menu){
-            if($menu['site'] == FDCEventRoutesInterface::CORPO) {
+            if($menu['site'] == FDCEventRoutesInterface::CORPO && $menu['type'] == 1) {
                 $displayedMenus[] = $menu;
             }
         }

@@ -42,6 +42,7 @@ class CorpoAccredit implements TranslateMainInterface
      * @var CorpoAccreditProcedure
      *
      * @ORM\OneToMany(targetEntity="CorpoAccreditHasProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $procedure;
 
@@ -67,10 +68,7 @@ class CorpoAccredit implements TranslateMainInterface
     }
 
     public function __toString() {
-
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        return $string;
+        return 'S\'accréditer';
     }
 
     /**

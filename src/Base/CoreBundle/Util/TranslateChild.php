@@ -43,7 +43,6 @@ trait TranslateChild
      *
      * @access public
      * @static
-     * @return void
      */
     public static function getStatuses()
     {
@@ -64,11 +63,11 @@ trait TranslateChild
      *
      * @access public
      * @static
-     * @return void
      */
     public static function getMainStatuses()
     {
         return array(
+            '' => '',
             self::STATUS_DRAFT => 'form.status.draft',
             self::STATUS_VALIDATING => 'form.status.validating',
             self::STATUS_PUBLISHED => 'form.status.published',

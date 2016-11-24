@@ -122,7 +122,7 @@ class ParticipateController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function guideAction(Request $request, $slug = null)
+    public function guideAction(Request $request, $slug = 'prepare')
     {
         $this->isPageEnabled($request->get('_route'));
         $em = $this->getDoctrine()->getManager();
@@ -134,20 +134,6 @@ class ParticipateController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
             ->findAll();
 
-        if ($slug === null) {
-            foreach ($pages as $page) {
-                if ($page instanceof FDCPageParticipate) {
-                    if ($page) {
-                        $slug = $page->findTranslationByLocale($locale)->getSlug();
-                    }
-                    if ($slug) {
-                        return $this->redirectToRoute('fdc_corporate_participate_guide', array('slug' => $slug));
-                    }
-                }
-            }
-            throw $this->createNotFoundException('There is not available selection.');
-        }
-
         if ($content === null) {
             throw new NotFoundHttpException();
         }
@@ -156,6 +142,17 @@ class ParticipateController extends Controller
         $datas = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
             ->getFDCPageParticipateBySlug($slug, $locale);
+
+        if ($slug === 'prepare') {
+
+            return $this->render('FDCCorporateBundle:Participate:prepare.html.twig',array(
+                'content' => $content,
+                'datas' => $datas,
+                'pages' => $pages,
+                'prepare' => true
+            ));
+
+        }
 
         // SEO
         //$this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);

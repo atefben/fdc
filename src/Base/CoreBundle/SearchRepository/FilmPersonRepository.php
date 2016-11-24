@@ -12,16 +12,31 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class FilmPersonRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
-            ->addShould($this->getFieldsQuery($searchTerm))
-            ->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
-            ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
-        ;
+
+        if(!is_array($searchTerm)) {
+            $searchTerm = array('search' => $searchTerm);
+        }
+
+        if(!empty($searchTerm['search'])) {
+            $stringQuery = new \Elastica\Query\BoolQuery();
+
+            $stringQuery
+                ->addMust($this->getFieldsQuery($searchTerm['search']))
+                //->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
+            ;
+
+            $finalQuery->addMust($stringQuery);
+        }
+
+        if(isset($searchTerm['professions']) && $searchTerm['professions']) {
+            foreach($searchTerm['professions'] as $profession) {
+                $finalQuery->addShould($this->getLocalizedFieldsQuery('fr', $profession)); //comparison done with 'fr'
+            }
+        }
         
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
@@ -59,6 +74,18 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
  
         return $this->getFieldsKeywordQuery($fields, $searchTerm, false);
      
+    }
+
+    private function getFieldsQueryDoublon($searchTerm)
+    {
+        $fields = array(
+            'firstname',
+            'lastname',
+            'nationality',
+        );
+
+        return $this->getFieldsKeywordQuery($fields, $searchTerm, false);
+
     }
     
     private function getFilmsQuery($_locale, $searchTerm, $fdcYear)

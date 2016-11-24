@@ -50,7 +50,7 @@ trait TranslateMain
      *
      * @access public
      * @static
-     * @return void
+     * @return array
      */
     public static function getAvailableTranslateOptions()
     {
@@ -66,7 +66,7 @@ trait TranslateMain
      *
      * @access public
      * @static
-     * @return void
+     * @return array
      */
     public static function getPriorityStatuses()
     {
@@ -83,7 +83,7 @@ trait TranslateMain
      *
      * @access public
      * @static
-     * @return void
+     * @return array
      */
     public static function getPriorityStatusesList()
     {
@@ -101,7 +101,7 @@ trait TranslateMain
      *
      * @access public
      * @param mixed $locale
-     * @return void
+     * @return array
      */
     public function findTranslationByLocale($locale)
     {
@@ -141,9 +141,8 @@ trait TranslateMain
     }
 
     /**
-     * Set translateOptions
-     *
-     * @param array $translateOptions
+     * @param $translateOptions
+     * @return $this
      */
     public function setTranslateOptions($translateOptions)
     {
@@ -153,7 +152,7 @@ trait TranslateMain
     }
 
     /**
-     * Get translateOptions
+     * @return array
      */
     public function getTranslateOptions()
     {
@@ -161,9 +160,8 @@ trait TranslateMain
     }
 
     /**
-     * Set translate
-     *
-     * @param boolean $translate
+     * @param $translate
+     * @return $this
      */
     public function setTranslate($translate)
     {
@@ -173,9 +171,7 @@ trait TranslateMain
     }
 
     /**
-     * Get translate
-     *
-     * @return boolean
+     * @return bool
      */
     public function getTranslate()
     {
@@ -183,9 +179,8 @@ trait TranslateMain
     }
 
     /**
-     * Set priorityStatus
-     *
-     * @param integer $priorityStatus
+     * @param $priorityStatus
+     * @return $this
      */
     public function setPriorityStatus($priorityStatus)
     {
@@ -195,9 +190,7 @@ trait TranslateMain
     }
 
     /**
-     * Get priorityStatus
-     *
-     * @return integer
+     * @return int
      */
     public function getPriorityStatus()
     {

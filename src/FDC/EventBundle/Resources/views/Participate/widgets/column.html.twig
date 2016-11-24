@@ -21,7 +21,7 @@
             <a href="{% path pdfFile, 'reference' %}" target="_blank"><img src="{% path image, format %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" /></a>
             <a href="{% path pdfFile, 'reference' %}"
                class="btn telecharger" target="_blank" download>
-                <i class="icon icon_telecharger"></i>
+                <i class="icon icon-download"></i>
                 {{ 'mediatheque.label.btn.telecharger'|trans }}
             </a>
         {% else %}
@@ -29,9 +29,9 @@
         {% endif %}
     {% endif %}
     
-    {% if widget.btnLabel is not null %}
+    {% if widget.btnLabel is not null%}
         <div class="link">
-            <i class="icon icon_a-votre-service"></i>
+            <i class="icon icon-marker-black"></i>
             <a href="{{ widget.btnLabel }}" target="_blank">
                 {{ 'participate.link.sereperer'|trans }}
             </a>
