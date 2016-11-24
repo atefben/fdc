@@ -28,9 +28,47 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $output->writeln('<info>Generate ACL for infos</info>');
         $infos = $this->getInfos();
-        dump(count($infos));
+        $output->writeln('<comment>'.count($infos).' items</comment>');
         $this->updateAcl($infos, 'base.admin.info_article');
+        $this->getManager()->clear();
+        unset($infos);
+
+        $output->writeln('<info>Generate ACL for statements</info>');
+        $statements = $this->getStatements();
+        $output->writeln('<comment>'.count($statements).' items</comment>');
+        $this->updateAcl($statements, 'base.admin.statement_article');
+        $this->getManager()->clear();
+        unset($statements);
+
+        $output->writeln('<info>Generate ACL for news</info>');
+        $news = $this->getNews();
+        $output->writeln('<comment>'.count($news).' items</comment>');
+        $this->updateAcl($news, 'base.admin.news_article');
+        $this->getManager()->clear();
+        unset($news);
+
+        $output->writeln('<info>Generate ACL for images</info>');
+        $images = $this->getImages();
+        $output->writeln('<comment>'.count($images).' items</comment>');
+        $this->updateAcl($images, 'base.admin.media_image');
+        $this->getManager()->clear();
+        unset($images);
+
+        $output->writeln('<info>Generate ACL for audios/info>');
+        $audios = $this->getAudios();
+        $output->writeln('<comment>'.count($audios).' items</comment>');
+        $this->updateAcl($audios, 'base.admin.media_image');
+        $this->getManager()->clear();
+        unset($audios);
+
+        $output->writeln('<info>Generate ACL for videos</info>');
+        $videos = $this->getVideos();
+        $output->writeln('<comment>'.count($videos).' items</comment>');
+        $this->updateAcl($videos, 'base.admin.media_image');
+        $this->getManager()->clear();
+        unset($videos);
     }
 
     private function updateAcl($entities, $service)
@@ -69,6 +107,81 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getRepository('BaseCoreBundle:InfoArticle')
             ->createQueryBuilder('i')
             ->andWhere('i.oldNewsId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return InfoArticle[]
+     */
+    protected function getStatements()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:StatementArticle')
+            ->createQueryBuilder('i')
+            ->andWhere('i.oldNewsId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return InfoArticle[]
+     */
+    protected function getNews()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:NewsArticle')
+            ->createQueryBuilder('i')
+            ->andWhere('i.oldNewsId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return MediaImage[]
+     */
+    protected function getImages()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->createQueryBuilder('m')
+            ->andWhere('m.oldMediaId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return MediaAudio[]
+     */
+    protected function getAudios()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaAudio')
+            ->createQueryBuilder('m')
+            ->andWhere('m.oldMediaId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return MediaVideo[]
+     */
+    protected function getVideos()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->createQueryBuilder('m')
+            ->andWhere('m.oldMediaId is not null')
             ->getQuery()
             ->getResult()
             ;
