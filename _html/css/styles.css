@@ -827,6 +827,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   transform: scale(1);
 }
 
+.slideshow {
+  border-bottom: 0px solid #e5e5e5 !important;
+  margin-bottom: 40px;
+}
+
 .slideshow .slideshow-img .thumbnails .thumb:after {
   border: 0px solid #FFFFFF !important;
 }
@@ -839,6 +844,11 @@ div.chocolat-wrapper.show {
   opacity: 1;
   visibility: visible;
   z-index: 1006;
+}
+
+.slideshow .slideshow-img .images .img img {
+  object-fit: cover !important;
+  width: 100%;
 }
 
 /*!
@@ -11201,7 +11211,7 @@ header #searchContainer {
   width: 100%;
   height: 100%;
 }
-.about .aboutVideos {
+.about .aboutPhotos {
   display: none;
 }
 .about .aboutVideos article, .about .aboutVideos img {
@@ -21919,7 +21929,7 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
 }
 .subNavigation .active {
-  color: #ec3050;
+  color: #c3a05f;
 }
 .subNavigation ul {
   font-size: 0.875rem;
@@ -23715,6 +23725,7 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   margin-top: 0px;
   letter-spacing: 1px;
+  line-height: 200px;
 }
 @media screen and (min-width: 1600px) {
   .eventsHeader {
@@ -23722,6 +23733,7 @@ ul.tabs .quarterTab h4 {
   }
   .eventsHeader h3 {
     margin-top: 0px;
+    line-height: 300px;
   }
 }
 
@@ -23835,6 +23847,14 @@ ul.tabs .quarterTab h4 {
 .wideWrapper a {
   color: #c3a05f;
 }
+.wideWrapper h2 {
+  color: #0c0c0c;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding-bottom: 30px;
+}
 .wideWrapper h3 {
   color: #0c0c0c;
   text-transform: uppercase;
@@ -23854,6 +23874,7 @@ ul.tabs .quarterTab h4 {
   font-size: 16px;
   color: #666666;
   line-height: 35px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .wideWrapper .numbers {
   color: #c8a461;
@@ -23870,6 +23891,25 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px solid #c8a461;
+}
+
+.centerWrapper {
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+.centerWrapper h2 {
+  font-size: 48px;
+  color: #141414;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  letter-spacing: 1px;
+  padding-bottom: 80px;
+  text-transform: initial;
+}
+.centerWrapper p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #505050;
 }
 
 .goldBorders {

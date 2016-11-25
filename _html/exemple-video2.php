@@ -6,6 +6,24 @@
     data-email="//www.gmail.com"
     data-playlist='[
       {
+        "sources":[{"file":"./files/mov_bbb.mp4"}],
+        "vid": 21,
+        "image":"//dummyimage.com/960x540/000/c8a461.png",
+        "name":"Sils Maria",
+        "category":"Photocall",
+        "date":"11.03.2016",
+        "hour":"12:00"
+      },
+      {
+        "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
+        "vid": 22,
+        "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
+        "name":"Interviews des réalisateurs",
+        "category":"Montée des marches",
+        "date":"13.03.2016",
+        "hour":"13:00"
+      },
+      {
         "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
         "vid": 23,
         "image":"img/slider-channels/03.jpg",

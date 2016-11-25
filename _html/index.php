@@ -228,9 +228,10 @@
                   <?php include('exemple-video.php'); ?>
                 </div>
                 <div class="item">
-                  <?php include('exemple-video2.php'); ?>
+                  <img src="img/slide001.jpg" alt="" />
                 </div>
                 <div class="item">
+                  <?php include('exemple-video2.php'); ?>
                 </div>
             </div>
               

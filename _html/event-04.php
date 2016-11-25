@@ -18,26 +18,27 @@
                 <nav>
                   <ul class="main">
                     <li>
-                      <a href="stands.php">stands</a>
+                      <a href="stands.php">screening</a>
                     </li>
                     <li>
-                      <a href="#">pavillons</a>
+                      <a href="#">ateliers</a>
                     </li>
                     <li>
                       <a href="projections.php">projections</a>
                     </li>
                     <li>
-                      <a href="equipements-services.php">équipements et services</a>
+                      <a href="equipements-services.php">petits dejeuners</a>
                     </li>
                     <li>
-                      <a href="partenaires.php">partenaires</a>
-                    </li>
-                    <li>
-                      <a href="opportunites-pub.php" class="active">Opportunités publicitaires</a>
+                      <a href="opportunites-pub.php" class="active">conférences</a>
                     </li>
                   </ul>
                  </nav>
             </div>
+          </div>
+          <div class="wideWrapper centerWrapper">
+            <h2>Screening</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
           </div>
           <div class="container">
             <div class="slideshow">
@@ -110,8 +111,11 @@
               </div> 
           <div class="minPadding">   
               <div class="wideWrapper">
-                <h3>Caractéristiques du fichier :</h3>
-                <p>Seuls les fichiers multiplexés seront acceptés (vidéo, audio et sous-titres dans un seul et même fichier). La taille maximum du fichier doit être de 8 GO pour chaque film. Plus la résolution est importante, meilleure sera la qualité de numérisation. Vous pouvez mettre en ligne des films avec une résolution allant jusqu’à 1920x1080 pixels (HD), tout en respectant le critère de taille évoqué plus haut.</p>
+                <h2>Workshops et networking pour une formation ciblée</h2>
+                <p>En plus de tous les avantages d'un badge Marché du Film, vous bénéficiez, durant les premiers jours du Festival de Cannes et du Marché du Film, d’un accès au Producers Workshop: un programme ciblé, mené par des experts de l’industrie, destiné à soutenir les producteurs dans leurs démarches à l’international et à rendre plus efficace leur participation au Marché du Film et au Festival de Cannes.</p><br>
+                <p>Un cocktail de networking inaugure le programme en toute convivialité ! Abordez le marché international avec confiance grâce à nos ateliers et séminaires sur le rôle de producteur, les techniques de pitch, la coproduction et le financement international, les stratégies marketing,  la distribution et les ventes internationales du mercredi 11 au samedi 14 mai 2016. Le dimanche</p><br>
+                <p>Pour plus de renseignements, merci de contacter Lisa Kermabon – Manager Producers Workshop / Industry Programs: <a href="mailto:lkermabon@festival-cannes.fr">lkermabon@festival-cannes.fr</a></p><br>
+                <p>Visitez notre FAQ où vous trouverez les réponses aux questions les plus fréquentes concernant ce programme.</p>
               </div>     
           </div>
     </div>

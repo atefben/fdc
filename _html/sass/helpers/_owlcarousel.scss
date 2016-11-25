@@ -771,6 +771,11 @@
   }  
 }
 
+.slideshow {
+    border-bottom: 0px solid #e5e5e5!important;
+    margin-bottom: 40px;
+}
+
 .slideshow .slideshow-img .thumbnails .thumb:after {
       border: 0px solid #FFFFFF!important;
 }
@@ -782,4 +787,9 @@ div.chocolat-wrapper.show {
     opacity: 1;
     visibility: visible;
     z-index: 1006;
+}
+
+.slideshow .slideshow-img .images .img img {
+  object-fit: cover!important;
+  width: 100%;
 }
