@@ -24224,6 +24224,10 @@ ul.tabs .quarterTab h4 {
   margin-bottom: 0;
 }
 
+.shortFilm {
+  display: none;
+}
+
 html[lang="es"] header #navigation ul.main li a {
   padding-right: 15px;
 }

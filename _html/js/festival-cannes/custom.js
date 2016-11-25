@@ -295,4 +295,18 @@ var len = $(".blocks");
   } else if ($(len).length === 5) {
     $(".blocks").addClass("fifthBlocks");
   }
+
+$('.showCourts').on('click', function(e) {
+  e.preventDefault();
+  $('.shortFilm').show();
+  $('.coursMetrages').hide();
+});
+
+$('.showShorts').on('click', function(e) {
+  e.preventDefault();
+  $('.shortFilm').hide();
+  $('.coursMetrages').show();
+});
+
+
   
