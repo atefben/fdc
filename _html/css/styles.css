@@ -628,7 +628,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 #slider-competition {
-  height: 370px;
+  height: 390px;
   margin-bottom: 100px !important;
   overflow: hidden;
   text-align: center;
@@ -641,6 +641,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   #slider-competition .owl-item {
     margin-right: 90px !important;
   }
+}
+#slider-competition .owl-stage {
+  width: 5000px !important;
 }
 #slider-competition .item {
   overflow: hidden !important;
@@ -700,9 +703,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #slider-competition .title h5, #slider-competition .title h6 {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: #2c2c2c;
-  line-height: 20px;
+  line-height: 25px;
 }
 #slider-competition .title h6 {
   font-size: 11px;
@@ -5552,6 +5555,7 @@ footer .footer-menu ul li a:hover {
 #breadcrumb {
   border-bottom: 1px solid #2c2c2c;
   position: relative;
+  background: #141414;
 }
 #breadcrumb:after {
   background-color: #141414;

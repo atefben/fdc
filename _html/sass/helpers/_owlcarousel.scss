@@ -555,7 +555,7 @@
 
 #slider-competition {
   
-  height: 370px;
+  height: 390px;
   margin-bottom: 100px!important;
   overflow: hidden;
   text-align: center;
@@ -567,6 +567,10 @@
         margin-right: 90px !important;
     }
       
+  }
+
+  .owl-stage {
+    width: 5000px!important;
   }
 
   .item {
@@ -634,9 +638,9 @@
     h5, h6 {
       text-transform: uppercase;
       font-family: $CamphorBold;
-      font-size: 13px;
+      font-size: 14px;
       color: #2c2c2c;
-      line-height: 20px;
+      line-height: 25px;
     }
 
     h6 {
