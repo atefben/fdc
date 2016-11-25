@@ -137,10 +137,7 @@
                                                 </p>
                                             {% endif %}
                                             <p>
-                                                {% spaceless %}{% for index,country in associatedFilm.countries %}
-                                                {% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}
-                                                    {% if index == 4 %}...{% endif %}
-                                                {% endfor %}{% endspaceless %}
+                                                {% spaceless %}{% for index,country in associatedFilm.countries %}{% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}{% if index == 4 %}...{% endif %}{% endfor %}{% endspaceless %}
                                                 {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
                                                     - {{ associatedFilm.productionYear }}
                                                 {% endif %}
