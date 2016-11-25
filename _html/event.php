@@ -11,10 +11,29 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
-    <div id="main" class="home loading">    
-          <div class="subHeader">
-            <div class="bigContainer">
-              <h3>programme 2017</h3>
+    <div id="main" class="home loading list-article whiteBckg">
+          <div class="subHeader eventsHeader" data-parallax="true" data-speed="5">
+              <h3>événements</h3>
+              <div class="subNavigation">
+                <nav>
+                  <ul class="main">
+                    <li>
+                      <a href="stands.php">screening</a>
+                    </li>
+                    <li>
+                      <a href="#">ateliers</a>
+                    </li>
+                    <li>
+                      <a href="projections.php">projections</a>
+                    </li>
+                    <li>
+                      <a href="equipements-services.php">petits dejeuners</a>
+                    </li>
+                    <li>
+                      <a href="opportunites-pub.php" class="active">conférences</a>
+                    </li>
+                  </ul>
+                 </nav>
             </div>
           </div>
           <div class="minPadding">   
@@ -44,9 +63,9 @@
                 </div>
               <div class="conferencesMenu">
                 <ul>
-                  <li>
-                    <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
-                    <div class="content">
+                  <li class="open-selected-conf">
+                    <div class="open">12 mai 2016<span class="openPlus noDisplay">+</span><span class="openMinus doDisplay">-</span></div>
+                    <div class="content firstContent">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">

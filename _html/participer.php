@@ -11,13 +11,15 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
-    <div id="main" class="home loading participate">    
+    <div id="main" class="home loading participate list-article whiteBackg">    
           
-          <div class="subHeader">
-            <div class="bigContainer">
-              <h3>inscrire un film</h3>
+        <div class="bandeau-list">
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('img/oldCam.png')">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header">Longs Métrages</h2>
+                </div>
             </div>
-          </div>
+        </div>
           
           <div class="smallWrapper reducedPadding">
             <h3>Pour inscrire un film, vous devez :</h3>

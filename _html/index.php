@@ -171,13 +171,6 @@
                  <a href=""> <h5>Short film corner</h5></a>
                   <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <a href=""><img src="img/slider2.png"></a>
-              </div>
-              <div class="item">
-                <div class="title">
-                  <a href=""><h5>Short film corner</h5></a>
-                  <a href=""><h4>le programme 2017</h4></a>
-                </div>
                 <a href=""><img src="img/slider3.png"></a>
               </div>
               <div class="item">
@@ -185,7 +178,7 @@
                   <a href=""><h5>Short film corner</h5></a>
                   <a href=""><h4>le programme 2017</h4></a>
                 </div>
-                <a href=""><img src="img/slider2.png"></a>
+                <a href=""><img src="img/slider1.png"></a>
               </div>
               <div class="item">
                 <div class="title">
@@ -207,6 +200,20 @@
                   <a href=""><h4>le programme 2017</h4></a>
                 </div>
                 <a href=""><img src="img/slider2.png"></a>
+              </div>
+              <div class="item">
+                <div class="title">
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
+                </div>
+                <a href=""><img src="img/slider1.png"></a>
+              </div>
+              <div class="item">
+                <div class="title">
+                  <a href=""><h5>Short film corner</h5></a>
+                  <a href=""><h4>le programme 2017</h4></a>
+                </div>
+                <a href=""><img src="img/slider3.png"></a>
               </div>
               <div class="item">
                 <div class="title">
@@ -228,16 +235,16 @@
                   <?php include('exemple-video.php'); ?>
                 </div>
                 <div class="item">
-                  <img src="img/slide001.jpg" alt="" />
+                  <?php include('exemple-video.php'); ?>
                 </div>
                 <div class="item">
-                  <?php include('exemple-video2.php'); ?>
+                  <?php include('exemple-video.php'); ?>
                 </div>
             </div>
               
           </div>
           <div class="aboutPhotos">
-              <div class="slideshow">
+              <div class="slideshow goldSlideshow">
                 <div class="slideshow-img">
                   <div class="images">
                     <div class="img active">
@@ -280,9 +287,9 @@
           </div>
           <div class="aboutContent">
             <span>A propos</span>
-            <h5>Le reflet de la volonté du Festival de Cannes d’affirmer son action auprès de la jeune création</h5>
-            <p>Inventif, souvent talentueux, libre et sans contrainte, le format court est porteur des valeurs que Cannes soutient depuis toujours. Accueillir les générations émergentes est une tâche primordiale et constitue l’un des moteurs du Festival.</p>
-            <div class="aboutMore">En Savoir plus</div>
+            <a href="#"><h5>Le reflet de la volonté du Festival de Cannes d’affirmer son action auprès de la jeune création</h5></a>
+            <a href="#"><p>Inventif, souvent talentueux, libre et sans contrainte, le format court est porteur des valeurs que Cannes soutient depuis toujours. Accueillir les générations émergentes est une tâche primordiale et constitue l’un des moteurs du Festival.</p></a>
+            <a href="#"><div class="aboutMore">En Savoir plus</div></a>
           </div>
         </div>
       </div>
@@ -293,9 +300,9 @@
         <div class="item">
          <a href="#"> <img src="img/film2.png"></a>
           <div class="title">
-            <a href="#"><h5>IL SILENZIO</h5></a>
-            <a href="#"><h6>(le silence)</h6></a>
-            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI</h4></a>
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh SAMADI, Ali ASGARI,Farnoosh SAMADI, Ali ASGARI</h4></a>
           </div>
         </div>
         <div class="item">
@@ -404,6 +411,7 @@
         <img class="img" style="background-image:url(/img/catalogueImg.png)">
       </div>
       <h5>le catalogue</h5>
+      <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
       <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
       <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
       <div class="blocks"><h6>en compétition</h6><a href="competiton.php" target="_blank"><div class="plusSign"><img src="img/plusSign.png"/></div></a></div>
@@ -542,8 +550,8 @@
           </div>
       </div>
       <div class="shareSocial">
-        <a href="https://www.facebook.com/cannescourtmetrage/?fref=ts" target="_blank"><div>facebook <i class="icon icon_facebook"></i></div></a>
-        <a href="https://twitter.com/cannes_court?lang=fr" target="_blank"><div>twitter <i class="icon icon_twitter"></i></div></a>
+        <a href="https://www.facebook.com/cannescourtmetrage/?fref=ts" target="_blank"><div>Facebook <i class="icon icon_facebook"></i></div></a>
+        <a href="https://twitter.com/cannes_court?lang=fr" target="_blank"><div>Twitter <i class="icon icon_twitter"></i></div></a>
       </div>
 
   <?php include('box-news.php'); ?>

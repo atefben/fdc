@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-          <div class="subHeader eventsHeader">
+          <div class="subHeader eventsHeader" data-parallax="true" data-speed="5">
               <h3>événements</h3>
               <div class="subNavigation">
                 <nav>

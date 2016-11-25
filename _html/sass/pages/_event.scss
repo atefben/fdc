@@ -134,6 +134,9 @@
     -o-transition-delay: 0.4s;
     transition-delay: 0.4s;
     @include transition(all 1s $smoothTransition);
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .dropdown span {

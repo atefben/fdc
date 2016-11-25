@@ -2,9 +2,31 @@
   min-height: 2000px;
 }
 
+.whiteBckg {
+  background: white!important;
+}
+
+body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
+    background: center 0 no-repeat fixed;
+    background-size: cover;
+    transition: all 1s cubic-bezier(.25,.46,.45,.94);
+    height: 270px;
+}
+
+@media screen and (min-width: 1920px) {
+  .participate .bandeau-list, .participate .bandeau-list-img {
+    height: 277px !important;
+  }
+}
+
+.whiteBackg {
+  background: white!important;
+}
+
+
 .subHeader {
-    background: url("/img/oldCam.png") no-repeat;
-    background-size: 100% 100%;
+    background: url("/img/oldCam.png") fixed;
+    background-size: 100% 250px;
     text-align:center;
     height: 250px;
     margin-bottom: 110px!important;
@@ -32,7 +54,7 @@
 }
 
 .eventsHeader{
-  background: url("/img/eventBckg.png") no-repeat;
+    background: url("/img/eventBckg.png") fixed;
     background-size: 100% 90%;
     text-align:center;
     height: 300px;

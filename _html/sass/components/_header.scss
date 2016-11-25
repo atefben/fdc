@@ -505,7 +505,7 @@ header {
 
           &.tcenter {
             text-align: center;
-            width: 639px;
+            width: 977px;
             padding-left: 0;
             left: 0;
 
@@ -689,7 +689,21 @@ header {
       line-height: 63px;
   }
 
+  &:hover {
+    border: 1px solid $gold;
+
+    i {
+      color: $gold;
+    }
+  }
+
   &:first-child, &:nth-child(2) {
     border-right: 0px solid #404040;
+    &:hover {
+      border-right: 1px solid $gold;
+      &:nth-child(2) {
+        border-left: 0px solid $gold;
+      }
+    }
   }
 }

@@ -240,6 +240,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #slider-movies, #featured-movies {
   height: 600px !important;
   overflow: hidden;
+  position: relative;
 }
 #featured
 #slider-movies .whiteBar, #featured-movies .whiteBar {
@@ -248,11 +249,68 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
   color: white;
   position: absolute;
-  right: 200px;
   float: right;
   z-index: 1000;
   background: white;
-  top: 2%;
+  top: 18%;
+}
+@media screen and (min-width: 1024px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 8% !important;
+  }
+}
+@media screen and (min-width: 1152px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 10% !important;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 15% !important;
+  }
+}
+@media screen and (min-width: 1366px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 16% !important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 20% !important;
+  }
+}
+@media screen and (min-width: 1520px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 21% !important;
+  }
+}
+@media screen and (min-width: 1620px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 23% !important;
+  }
+}
+@media screen and (min-width: 1680px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 25% !important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  #featured
+  #slider-movies .whiteBar, #featured-movies .whiteBar {
+    right: 27% !important;
+  }
+}
+#featured
+#slider-movies .owl-dots, #featured-movies .owl-dots {
+  right: 30px;
 }
 #featured
 #slider-movies .video .img, #featured-movies .video .img {
@@ -266,9 +324,62 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #featured
 #slider-movies .owl-dots, #featured-movies .owl-dots {
   counter-reset: dots;
-  right: 200px !important;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   top: 33% !important;
+}
+@media screen and (min-width: 1024px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 8% !important;
+  }
+}
+@media screen and (min-width: 1152px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 10% !important;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 15% !important;
+  }
+}
+@media screen and (min-width: 1366px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 16% !important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 20% !important;
+  }
+}
+@media screen and (min-width: 1520px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 21% !important;
+  }
+}
+@media screen and (min-width: 1620px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 23% !important;
+  }
+}
+@media screen and (min-width: 1680px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 25% !important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  #featured
+  #slider-movies .owl-dots, #featured-movies .owl-dots {
+    right: 27% !important;
+  }
 }
 #featured
 #slider-movies .owl-dot, #featured-movies .owl-dot {
@@ -378,6 +489,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* left: -100px; */
   max-width: 245px;
 }
+#slider-movies .vCenterKid .alignButton:hover, #featured-movies .vCenterKid .alignButton:hover {
+  background: #c8a461;
+}
 #slider-movies .vCenterKid .programmButton, #featured-movies .vCenterKid .programmButton {
   width: 235px;
   height: 50px;
@@ -397,14 +511,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .discover {
-  height: 500px;
+  padding-bottom: 100px;
   margin: 0 auto;
   text-align: center;
   display: block;
 }
 
 #slider-discover {
-  height: 500px;
   overflow: hidden;
   text-align: center;
   margin: 0 auto;
@@ -443,7 +556,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border: 1px solid white;
 }
 #slider-discover:hover .owl-prev, #slider-discover:hover .owl-next {
-  display: block !important;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -452,14 +564,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #slider-discover a {
   text-decoration: none;
 }
+#slider-discover .item {
+  overflow: hidden;
+}
 #slider-discover .item img {
   object-fit: cover;
   width: 100%;
-  height: 390px;
+  height: 100%;
 }
-#slider-discover .owl-stage-outer {
-  height: 390px;
-  overflow: hidden;
+#slider-discover .item img:hover {
+  -webkit-transition: all 5s;
+  -ms-transform: scale(1.1);
+  /* IE 9 */
+  -webkit-transform: scale(1.1);
+  /* Safari */
+  transform: scale(1.1);
+  -moz-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #slider-discover .owl-buttons {
   display: none;
@@ -469,10 +592,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 #slider-discover .owl-controls {
   display: block !important;
-  position: absolute;
-  top: 70%;
+  position: relative;
   width: 100%;
   z-index: 1004;
+  padding-top: 10px;
 }
 #slider-discover .owl-page {
   display: inline-block;
@@ -526,7 +649,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: 1px;
 }
 #slider-discover .owl-dots {
-  margin-top: 75px;
+  margin-top: 25px;
 }
 #slider-discover .owl-dot {
   display: inline-block;
@@ -628,26 +751,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 #slider-competition {
-  height: 390px;
+  height: 450px;
   margin-bottom: 100px !important;
   overflow: hidden;
   text-align: center;
   margin: 0 auto;
 }
 #slider-competition .owl-item {
-  margin-right: 45px !important;
+  width: 235px !important;
+  margin-right: 50px !important;
 }
 @media screen and (max-width: 1024px) {
   #slider-competition .owl-item {
-    margin-right: 90px !important;
+    margin-right: 50px !important;
   }
 }
 #slider-competition .owl-stage {
   width: 5000px !important;
 }
 #slider-competition .item {
-  overflow: hidden !important;
-  width: 215px !important;
+  width: 235px !important;
 }
 #slider-competition .owl-buttons {
   display: none;
@@ -681,8 +804,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: 1px;
 }
 #slider-competition img {
-  max-height: 310px;
   overflow: hidden;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 #slider-competition .title {
   width: 100%;
@@ -692,11 +817,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1002;
   font-size: 14px;
   letter-spacing: 0px;
-  height: 60px;
   padding-top: 30px;
 }
 #slider-competition .title h4 {
-  text-transform: lowercase;
+  text-transform: initial;
   color: #c3a05f;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
@@ -705,10 +829,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #2c2c2c;
-  line-height: 25px;
+  line-height: 22px;
+  padding-bottom: 5px;
 }
 #slider-competition .title h6 {
   font-size: 11px;
+  line-height: 20px;
 }
 
 /* CAROUSEL ABOUT */
@@ -737,10 +863,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: table-cell;
   vertical-align: middle;
   text-align: left;
-  padding-left: 100px;
-}
-#slider-aboutVideos .video-container .infos-bar .info {
-  left: 0px !important;
 }
 #slider-aboutVideos .video-container .infos-bar .picto {
   bottom: 20px;
@@ -839,8 +961,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border: 0px solid #FFFFFF !important;
 }
 
+.goldSlideshow .slideshow-img .thumbnails .thumb:after {
+  border-bottom: 0px solid #c3a05f !important;
+}
+
 .slideshow .slideshow-img .thumbnails .thumb.active:after {
   border: 6px solid #FFFFFF !important;
+}
+
+.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {
+  border: 6px solid #c3a05f !important;
 }
 
 div.chocolat-wrapper.show {
@@ -852,6 +982,21 @@ div.chocolat-wrapper.show {
 .slideshow .slideshow-img .images .img img {
   object-fit: cover !important;
   width: 100%;
+}
+
+.video-container .aboutPlayer {
+  z-index: 2;
+  width: 726px !important;
+  height: calc(726px / 1.58) !important;
+}
+
+.aboutplayer .vcenter {
+  margin-left: 75px;
+}
+.aboutplayer .video .picto .icon {
+  font-size: 0.8rem;
+  margin-top: 16px;
+  margin-left: 5px !important;
 }
 
 /*!
@@ -5174,7 +5319,7 @@ header #navigation ul li ul li {
 }
 header #navigation ul li ul.tcenter {
   text-align: center;
-  width: 639px;
+  width: 977px;
   padding-left: 0;
   left: 0;
 }
@@ -5327,8 +5472,20 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   width: 100%;
   line-height: 63px;
 }
+.topIcons:hover {
+  border: 1px solid #c8a461;
+}
+.topIcons:hover i {
+  color: #c8a461;
+}
 .topIcons:first-child, .topIcons:nth-child(2) {
   border-right: 0px solid #404040;
+}
+.topIcons:first-child:hover, .topIcons:nth-child(2):hover {
+  border-right: 1px solid #c8a461;
+}
+.topIcons:first-child:hover:nth-child(2), .topIcons:nth-child(2):hover:nth-child(2) {
+  border-left: 0px solid #c8a461;
 }
 
 footer * {
@@ -5461,7 +5618,8 @@ footer .newsletter #submit:hover {
   border-color: #fff;
 }
 footer .social {
-  border: 1px solid #2b2b2b;
+  border: none;
+  border-bottom: 1px solid #2b2b2b;
   border-left: none;
   border-right: none;
   overflow: hidden;
@@ -9143,6 +9301,10 @@ header #searchContainer {
   display: block;
 }
 
+a {
+  cursor: pointer;
+}
+
 #prehome-container {
   background-color: #fff;
   height: 0px;
@@ -11024,7 +11186,20 @@ header #searchContainer {
   width: 100%;
   position: relative;
   z-index: 1000;
+  overflow: hidden;
   padding-top: 70px;
+}
+.catalogue:hover img {
+  -webkit-transition: all 2s;
+  -ms-transform: scale(1.1);
+  /* IE 9 */
+  -webkit-transform: scale(1.1);
+  /* Safari */
+  transform: scale(1.1);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .catalogue .imgIllustration {
   height: 100%;
@@ -11080,7 +11255,10 @@ header #searchContainer {
   z-index: 1000;
 }
 .catalogue div:hover .plusSign img {
-  transition: all 0.5s;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s;
   -ms-transform: scale(1.2);
   /* IE 9 */
@@ -11104,6 +11282,24 @@ header #searchContainer {
   transition: all 0.5s;
   width: 100%;
   margin-top: 250px;
+}
+
+.blocks:hover .plusSign img {
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s;
+  -ms-transform: scale(1.5);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+  /* Safari */
+  transform: scale(1.5);
+  -ms-transform: rotate(360deg);
+  /* IE 9 */
+  -webkit-transform: rotate(360deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(360deg);
 }
 
 /* three items */
@@ -11136,7 +11332,7 @@ header #searchContainer {
   margin: 0 auto;
   text-align: center;
   display: block;
-  height: 730px;
+  height: 710px;
   width: 100%;
   z-index: 3;
 }
@@ -11197,6 +11393,7 @@ header #searchContainer {
   font-size: 12px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
+  color: white;
 }
 .about .aboutVideos, .about .aboutPhotos {
   z-index: 3;
@@ -11240,7 +11437,7 @@ header #searchContainer {
   overflow: hidden;
   position: absolute;
   text-align: center;
-  top: 17.8%;
+  top: 800px;
   z-index: 2;
   margin-top: 0px;
   width: 100%;
@@ -21813,6 +22010,18 @@ body:not(.tablette) .webtv #live .img {
   float: left;
   text-align: center;
 }
+.our-news .articles:hover img {
+  -webkit-transition: all 2s;
+  -ms-transform: scale(1.1);
+  /* IE 9 */
+  -webkit-transform: scale(1.1);
+  /* Safari */
+  transform: scale(1.1);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 .our-news .articles .readMore {
   position: absolute;
   /* top: 1%; */
@@ -21970,9 +22179,11 @@ body:not(.tablette) .webtv #live .img {
   position: relative;
   width: 100%;
   height: 350px;
-  background: url("/img/plageCannes.png");
+  /*background: url("/img/plageCannes.png");
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
+  background: url("/img/plageCannes.png") fixed;
+  background-size: 100%;
   margin: 0 auto;
   text-align: center;
   display: block;
@@ -23320,6 +23531,9 @@ ul.tabs .quarterTab h4 {
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.conferences li:hover {
+  cursor: pointer;
+}
 .conferences .dropdown span {
   color: #505050 !important;
   font-size: 16px !important;
@@ -23677,9 +23891,29 @@ ul.tabs .quarterTab h4 {
   min-height: 2000px;
 }
 
+.whiteBckg {
+  background: white !important;
+}
+
+body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
+  background: center 0 no-repeat fixed;
+  background-size: cover;
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 270px;
+}
+
+@media screen and (min-width: 1920px) {
+  .participate .bandeau-list, .participate .bandeau-list-img {
+    height: 277px !important;
+  }
+}
+.whiteBackg {
+  background: white !important;
+}
+
 .subHeader {
-  background: url("/img/oldCam.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("/img/oldCam.png") fixed;
+  background-size: 100% 250px;
   text-align: center;
   height: 250px;
   margin-bottom: 110px !important;
@@ -23709,7 +23943,7 @@ ul.tabs .quarterTab h4 {
 }
 
 .eventsHeader {
-  background: url("/img/eventBckg.png") no-repeat;
+  background: url("/img/eventBckg.png") fixed;
   background-size: 100% 90%;
   text-align: center;
   height: 300px;

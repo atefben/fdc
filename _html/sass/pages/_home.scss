@@ -15,6 +15,10 @@
 // 1. Prehome
 // =========================
 
+a {
+  cursor: pointer;
+}
+
 #prehome-container {
   background-color: #fff;
   height: 0px;
@@ -2013,7 +2017,16 @@
   width: 100%;
   position: relative;
   z-index: 1000;
+  overflow: hidden;
   padding-top:70px;
+
+  &:hover img {
+    -webkit-transition: all 2s;
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari */
+    transform: scale(1.1);
+    @include transition(all 0.9s $smoothTransition);
+    }
 
   .imgIllustration {
     height: 100%;
@@ -2072,7 +2085,7 @@
     z-index: 1000;
 
     &:hover .plusSign img {
-      transition: all 0.5s;
+      @include transition(all 0.9s $smoothTransition);
       -webkit-transition: all 0.5s;
       -ms-transform: scale(1.2); /* IE 9 */
       -webkit-transform: scale(1.2); /* Safari */
@@ -2097,6 +2110,18 @@
     width: 100%;
     margin-top: 250px;
   }
+}
+
+
+.blocks:hover .plusSign img {
+  @include transition(all 0.9s $smoothTransition);
+  -webkit-transition: all 0.5s;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari */
+  transform: scale(1.5);
+  -ms-transform: rotate(360deg); /* IE 9 */
+  -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+  transform: rotate(360deg);
 }
 
   /* three items */
@@ -2129,15 +2154,16 @@
 
 .about {
   @include align();
-  height: 730px;
+  height: 710px;
   width: 100%;
   z-index: 3;
+
 
   .innerWrapper {
     width: 1152px;
     @include align();
     z-index: 3;
-    @media screen and(max-width: 1024px) {
+    @media screen and (max-width: 1024px) {
       width: 1024px;
     }
   }
@@ -2188,6 +2214,7 @@
         font-size: 12px;
         font-family: $CamphorBold;
         letter-spacing: 1px;
+        color: white;
     }
   }
 
@@ -2208,7 +2235,7 @@
       }
     }
 
-  .aboutVideos {
+  .aboutVideos{
     display: none;
   }
 
@@ -2236,7 +2263,7 @@
     overflow: hidden;
     position: absolute;
     text-align: center;
-    top: 17.8%;
+    top: 800px;
     z-index: 2;
     margin-top: 0px;
     width: 100%;
