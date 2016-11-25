@@ -554,3 +554,17 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.orange_widget_film_ocs_dummy']]
             - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]
+
+    base.admin.form.service_widget_type:
+            class: FDC\MarcheDuFilmBundle\Form\Type\ServiceWidgetType
+            tags:
+                - { name: form.type, alias: 'service_widget_type'}
+
+    base.admin.form.service_widget_type_product:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ServiceWidgetProductType
+        tags:
+            - { name: form.type, alias: 'service_widget_product_type'}
+        calls:
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
+            - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]

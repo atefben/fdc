@@ -1,0 +1,100 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="text-presentation producersWorkshop opportunites mdf">
+            <h3>{{ service|trans_fallback('title')|raw }}</h3>
+            <div class="subNavigation">
+                <nav>
+                    <ul class="main">
+                        <li>
+                            <a href="stands.php">stands</a>
+                        </li>
+                        <li>
+                            <a href="#">pavillons</a>
+                        </li>
+                        <li>
+                            <a href="projections.php">projections</a>
+                        </li>
+                        <li>
+                            <a href="equipements-services.php">équipements et services</a>
+                        </li>
+                        <li>
+                            <a href="partenaires.php">partenaires</a>
+                        </li>
+                        <li>
+                            <a href="opportunites-pub.php" class="active">Opportunités publicitaires</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="bigContainer">
+            <div class="text-presentation boxes stands">
+                <h3>{{ service|trans_fallback('subTitle')|raw }}</h3>
+                <h5>{{ (service|trans_fallback('header'))|raw }}</h5>
+            </div>
+        </div>
+        <div class="whiteBckg">
+            <div class="tab_container ">
+                <div id="tab1" class="tab_content">
+                    {% for widget in service.widgets if widget.getWidgetType() == 'ServiceWidgetProduct' %}
+                        <div class="minTab{% if not widget.gallery or not widget.gallery.medias.count() %} nopicTab{% endif %}">
+                            {% if widget.gallery and widget.gallery.medias.count() %}
+                                <div class="tabPic">
+                                    <div class="owl-pub owl-carousel owl-theme">
+                                        {% for mediaGallery in widget.gallery.medias %}
+                                            <div class="item">
+                                                <img src="{% path mediaGallery.media|trans_fallback('file'), '346x346' %}"
+                                                     alt="" style="width: 346px; height: 346px;">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="tabBox">
+                                <span>{{ (widget|trans_fallback('title'))|raw }}</span>
+                                <h5>{{ (widget|trans_fallback('subTitle'))|raw }}</h5>
+                                <div>{{ (widget|trans_fallback('body'))|raw }}</div>
+                                <input type="checkbox" class="read-more-state" id="post-1" style="opacity:0;"/>
+                                <div class="read-more-wrap">
+                                    <div class="read-more-target">
+                                        {{ (widget|trans_fallback('toggledBody'))|raw }}
+                                    </div>
+                                </div>
+                                <i class='icon icon_flecheGauche opportuniteArrow'></i>
+                                <label for="post-1" class="read-more-trigger">
+                                    <a href="{{ widget|trans_fallback('url') }}">
+                                        <div class="blueBtn">Réserver</div>
+                                    </a>
+                                </label>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- #tab1 -->
+            </div>
+            <!-- .tab_container -->
+        </div>
+        {% if service|trans_fallback('showContentBlock') %}
+            <div class="tarifs">
+                <div class="text-presentation">
+                    <h3>{{ service|trans_fallback('contentBlockTitle') }}</h3>
+                    <ul>
+                        {{ service|trans_fallback('contentBlockBody')|raw }}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+    <div class="floatingButtonRight">
+        <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+        </div>
+        <a href="pavillons.php">
+            <div class="floatingButtonText showRight">pavillons</div>
+        </a>
+    </div>
+{% endblock main %}

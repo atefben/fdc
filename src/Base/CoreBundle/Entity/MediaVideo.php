@@ -93,7 +93,7 @@ class MediaVideo extends Media
     /**
      * @var NewsVideo
      *
-     * @ORM\OneToOne(targetEntity="NewsVideo", cascade={"all"})
+     * @ORM\OneToOne(targetEntity="NewsVideo", cascade={"all"}, mappedBy="homepageMediaVideo")
      */
     private $homepageNews;
 

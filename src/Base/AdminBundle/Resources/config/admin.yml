@@ -1520,3 +1520,15 @@ services:
         arguments: [~, Base\CoreBundle\Entity\CorpoSearch, BaseAdminBundle:CorpoSearchAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoSearch}
+
+    base.admin.service:
+        class: Base\AdminBundle\Admin\ServiceAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Service, BaseAdminBundle:ServiceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Service}
+
+    base.admin.service_widget_product:
+        class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct, BaseAdminBundle:ServiceWidgetProductAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ServiceWidgetProduct}
