@@ -98,6 +98,15 @@
             <p>N.B. : Il est possible de présenter une copie de travail du film. En remplissant la fiche d’inscription vous devrez préciser s’il s’agit de la version définitive ou d’une version de travail. La présentation d’une copie de travail ne permet pas la présentation ultérieure d’une copie définitive.</p>
 
           </div>
+          
+          <div class="smallWrapper">
+            <h3>sous-titrage</h3>
+            <p>Le Comité de Sélection pourra visionner un film : </p>
+            <ul>
+              <li>• SANS sous-titres si la langue originale du film est le français ou l'anglais.</li>
+              <li>• AVEC des sous-titres en français ou en anglais pour les autres langues.</li>
+            </ul>
+          </div>
 
           <div class="smallWrapper">
             <h3>envoi</h3>
@@ -150,14 +159,14 @@
             <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
 
             <p>Nous acceptons à peu près tous les types de fichiers sources. Si le fichier de votre film est sur votre ordinateur, il est très probable que vous puissiez le télécharger rapidement et simplement.</p>
-            <a href="#"><div class="formBtn centered">voir le formulaire</div></a>
+            <a href="#"><div class="formBtn modal-toggle centered">voir le formulaire</div></a>
           </div>
 
           <hr class="greyHr">
           <div class="smallWrapper movieOnline">
             <h3>avant de soumettre votre film</h3>
             <p>Merci de consulter le règlement 2017</p>
-            <a href="#"><div class="formBtn centered">voir les caractéristiques</div></a>
+            <a href="#"><div class="formBtn modal-toggle centered">voir les caractéristiques</div></a>
           </div>
           
           <div class="formRegister">
@@ -165,7 +174,7 @@
             <div class="smallWrapper">
               <p>Pour soumettre un film, rendez-vous sur le formulaire d’inscription du <a href="#">site dédié</a>.</p>
               <p>La validation finale de ce formulaire, vaut pour acceptation du règlement et des conditions de présélection du Festival de Cannes 2017.</p>
-              <a href="#"><div class="formBtn">voir le réglement</div></a>
+              <a href="#"><div class="formBtn modal-toggle">voir le réglement</div></a>
             </div>
           </div>
 
