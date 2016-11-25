@@ -317,7 +317,7 @@ function simpleParallax() {
 
     //Every element with the class "scroll" will have parallax background 
     //Change the "0.3" for adjusting scroll speed.
-    $('.contact-box').css('background-position', '0' + -(scrolled * 0.3) + 'px');
+    $('').css('background-position', '0' + -(scrolled * 0.3) + 'px');
 }
 //Everytime we scroll, it will fire the function
 $(window).scroll(function (e) {

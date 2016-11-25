@@ -260,9 +260,11 @@
     height: 350px;
     /*background: url("/img/plageCannes.png");
     background-size: 100% 100%;
-    background-repeat: no-repeat;*/
-    background: url("/img/plageCannes.png") fixed;
+    background-repeat: no-repeat;
+    background-image: url("/img/plageCannes.png");
     background-size: 100%;
+    background: center 0 no-repeat fixed;
+    background-size: cover;*/
     @include align();
     padding-top:100px;
 
