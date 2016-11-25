@@ -33,9 +33,9 @@
 
 .eventsHeader{
   background: url("/img/eventBckg.png") no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 90%;
     text-align:center;
-    height: 250px;
+    height: 300px;
     margin-bottom: 110px!important;
     vertical-align: middle;
     width: 100%;
@@ -48,12 +48,13 @@
       color: #ffffff;
       text-transform: uppercase;
       margin-top: 0px;
-      letter-spacing: 1px;
-      line-height: 200px;
+      letter-spacing: 2px;
+      line-height: 270px;
     }
 
     @media screen and (min-width: 1600px) {
       height: 350px;
+      background-size: 100% 100%;
        h3 {
         margin-top: 0px;
         line-height: 300px;
