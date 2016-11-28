@@ -423,15 +423,15 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var array
-     * @ORM\Column(name="duplicate_ids", type="array")
+     * @ORM\Column(name="duplicate_ids", type="text")
      */
-    private $duplicateIds = array();
+    private $duplicateIds;
 
     /**
      * @var array
-     * @ORM\Column(name="duplicate_selfkits", type="array")
+     * @ORM\Column(name="duplicate_selfkits", type="text")
      */
-    private $duplicateSelfkits = array();
+    private $duplicateSelfkits;
 
     /**
      * Constructor
@@ -1155,7 +1155,7 @@ class FilmPerson implements TranslateMainInterface
      */
     public function setDuplicateIds($duplicateIds)
     {
-        $this->duplicateIds = $duplicateIds;
+        $this->duplicateIds = json_encode($duplicateIds);
 
         return $this;
     }
@@ -1167,7 +1167,7 @@ class FilmPerson implements TranslateMainInterface
      */
     public function getDuplicateIds()
     {
-        return $this->duplicateIds;
+        return json_decode($this->duplicateIds, true);
     }
 
     /**
@@ -1178,7 +1178,7 @@ class FilmPerson implements TranslateMainInterface
      */
     public function setDuplicateSelfkits($duplicateSelfkits)
     {
-        $this->duplicateSelfkits = $duplicateSelfkits;
+        $this->duplicateSelfkits = json_encode($duplicateSelfkits);
 
         return $this;
     }
@@ -1190,6 +1190,6 @@ class FilmPerson implements TranslateMainInterface
      */
     public function getDuplicateSelfkits()
     {
-        return $this->duplicateSelfkits;
+        return json_decode($this->duplicateSelfkits, true);
     }
 }
