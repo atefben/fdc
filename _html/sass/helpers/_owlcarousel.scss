@@ -183,12 +183,12 @@
     width: 3px;
     display: block;
     color: white;
-    position: absolute;
+    position: relative;
     float: right;
     z-index: 1000;
     background: white;
-    top: 18%;
-      @media screen and (min-width: 1024px) {
+    margin-top: 12%;
+      /*@media screen and (min-width: 1024px) {
           right: 8%!important;
       }
 
@@ -205,11 +205,11 @@
       }
 
       @media screen and (min-width: 1440px) {
-          right: 20%!important;
+          right: 19%!important;
       }
 
       @media screen and (min-width: 1520px) {
-          right: 21%!important;
+          right: 20%!important;
       }
 
       @media screen and (min-width: 1620px) {
@@ -222,11 +222,11 @@
 
       @media screen and (min-width: 1920px) {
           right: 27%!important;
-      }
+      }*/
   } 
 
   .owl-dots { 
-    right: 30px;
+    right: 0px;
 
   }
 
@@ -243,7 +243,8 @@
         counter-reset: dots;
         font-family: $CamphorHeavy;
         top: 33%!important;
-        @media screen and (min-width: 1024px) {
+        right: 0px;
+        /*@media screen and (min-width: 1024px) {
             right: 8%!important;
         }
 
@@ -260,11 +261,11 @@
         }
 
         @media screen and (min-width: 1440px) {
-            right: 20%!important;
+            right: 19%!important;
         }
 
         @media screen and (min-width: 1520px) {
-            right: 21%!important;
+            right: 20%!important;
         }
 
         @media screen and (min-width: 1620px) {
@@ -277,7 +278,7 @@
 
         @media screen and (min-width: 1920px) {
             right: 27%!important;
-        }
+        }*/
     }
     
     .owl-dot {
@@ -354,6 +355,19 @@
         }
       }
     }
+
+    .owl-nav, .owl-controls {
+      position: relative;
+    }
+    
+    .owl-dots {
+    right: 0px!important;
+    text-align: center;
+    position: relative;
+    margin-top: -42%!important;
+    float: right;
+    }
+
 }
 
 #slider-movies, #featured-movies {
@@ -881,19 +895,17 @@
 }
 
 .slideshow .slideshow-img .thumbnails .thumb:after {
-      border: 0px solid #FFFFFF!important;
+  @include transition(all 0.1s $smoothTransition);
 }
 
 .goldSlideshow .slideshow-img .thumbnails .thumb:after {
-      border-bottom: 0px solid #c3a05f!important;
-}
-
-.slideshow .slideshow-img .thumbnails .thumb.active:after {
-    border: 6px solid #FFFFFF!important;
+  border: 0px solid #c3a05f!important;
+  @include transition(all 0.1s $smoothTransition);
 }
 
 .goldSlideshow .slideshow-img .thumbnails .thumb.active:after {    
   border: 6px solid #c3a05f!important;
+  @include transition(all 0.1s $smoothTransition);
 }
 
 div.chocolat-wrapper.show {

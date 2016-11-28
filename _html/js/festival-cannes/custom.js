@@ -22,7 +22,7 @@
 
   $('#slider-movies').owlCarousel({
     loop: true,
-    autoplay: true,
+
     items: 1,
     nav: true,
     autoplayHoverPause: true,
@@ -323,3 +323,6 @@ function simpleParallax() {
 $(window).scroll(function (e) {
     simpleParallax();
 });
+
+
+$( "#slider-movies > .owl-controls" ).wrap( "<div class='container'></div>" );

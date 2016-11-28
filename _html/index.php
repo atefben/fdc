@@ -14,7 +14,6 @@
     <div id="main" class="home loading">
 
         <div id="featured-movies">
-          <div class="whiteBar"></div>
           <div id="slider-movies" class="owl-carousel">
             <div>
               <div class="video">
@@ -28,6 +27,7 @@
                 <div class="info">
                   <div class="vCenter">
                     <div class="container">
+                      <div class="whiteBar"></div>
                       <div class="vCenterKid">
                         <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
                         <div class="alignButton">
