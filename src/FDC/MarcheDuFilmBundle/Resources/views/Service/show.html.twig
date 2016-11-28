@@ -57,14 +57,14 @@
                                 <span>{{ (widget|trans_fallback('title'))|raw }}</span>
                                 <h5>{{ (widget|trans_fallback('subTitle'))|raw }}</h5>
                                 <div>{{ (widget|trans_fallback('body'))|raw }}</div>
-                                <input type="checkbox" class="read-more-state" id="post-1" style="opacity:0;"/>
+                                <input type="checkbox" class="read-more-state" id="post-{{ widget.id }}" style="opacity:0;"/>
                                 <div class="read-more-wrap">
                                     <div class="read-more-target">
                                         {{ (widget|trans_fallback('toggledBody'))|raw }}
                                     </div>
                                 </div>
                                 <i class='icon icon_flecheGauche opportuniteArrow'></i>
-                                <label for="post-1" class="read-more-trigger">
+                                <label for="post-{{ widget.id }}" class="read-more-trigger">
                                     <a href="{{ widget|trans_fallback('url') }}">
                                         <div class="blueBtn">Réserver</div>
                                     </a>
