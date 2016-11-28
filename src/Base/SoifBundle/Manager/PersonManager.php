@@ -372,16 +372,16 @@ class PersonManager extends CoreManager
                 }
             }
 
-            // unset old duplicates when we have data
-            if ($duplicates->count() > 0) {
-                foreach ($duplicates as $duplicate) {
-                    if (!$collection->contains($duplicate)) {
-                        $duplicate->setDuplicate(false);
-                        $duplicate->setOwner(null);
-                        $entity->removeDuplicate($duplicate);
-                    }
-                }
-            }
+            //// unset old duplicates when we have data
+            //if ($duplicates->count() > 0) {
+            //    foreach ($duplicates as $duplicate) {
+            //        if (!$collection->contains($duplicate)) {
+            //            $duplicate->setDuplicate(false);
+            //            $duplicate->setOwner(null);
+            //            $entity->removeDuplicate($duplicate);
+            //        }
+            //    }
+            //}
 
         }
 
