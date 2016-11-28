@@ -367,7 +367,7 @@ class FilmPerson implements TranslateMainInterface
     private $juries;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="person", orphanRemoval=true)
      *
      * @Groups({"person_list", "person_show"})
      */
