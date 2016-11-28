@@ -2020,6 +2020,14 @@ a {
   overflow: hidden;
   padding-top:70px;
 
+  img {
+      @include transition(all 0.9s $smoothTransition);
+    -webkit-transition: all 2s;
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Safari */
+    transform: scale(1);
+  }
+
   &:hover img {
     -webkit-transition: all 2s;
     -ms-transform: scale(1.1); /* IE 9 */
@@ -2083,8 +2091,9 @@ a {
     margin-top: 180px;
     position: relative;
     z-index: 1000;
+    @include transition(all 0.9s $smoothTransition);
 
-    &:hover .plusSign img {
+    &:hover .plusSign {
       @include transition(all 0.9s $smoothTransition);
       -webkit-transition: all 0.5s;
       -ms-transform: scale(1.2); /* IE 9 */
@@ -2106,7 +2115,7 @@ a {
   }
 
   .plusSign {
-    transition: all 0.5s;
+    @include transition(all 0.9s $smoothTransition);
     width: 100%;
     margin-top: 250px;
   }
@@ -2124,12 +2133,10 @@ a {
   transform: rotate(360deg);
 }
 
-  /* three items */
   .thirdBlocks {
     width: 33.3333%;
   }
 
-  /* four items */
   .quarterBlocks {
     width: 25%;
   }

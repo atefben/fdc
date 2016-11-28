@@ -571,6 +571,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   object-fit: cover;
   width: 100%;
   height: 100%;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 2s;
+  -ms-transform: scale(1);
+  /* IE 9 */
+  -webkit-transform: scale(1);
+  /* Safari */
+  transform: scale(1);
 }
 #slider-discover .item img:hover {
   -webkit-transition: all 5s;
@@ -632,6 +642,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: uppercase;
   color: white;
   font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-weight: normal;
 }
 #slider-discover .owl-Title p, #slider-discover .owl-Title span {
   font-size: 18px;
@@ -742,11 +753,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: 2px;
   margin-bottom: 30px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: normal !important;
 }
 #slider-discover .title h4 {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: white;
 }
 
@@ -823,6 +835,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: initial;
   color: #c3a05f;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 #slider-competition .title h5, #slider-competition .title h6 {
   text-transform: uppercase;
@@ -4957,7 +4970,7 @@ header.sticky #logo-wrapper #partners, header.sticky #logo-wrapper #search {
 }
 header .user-nav {
   background-color: #141414;
-  border-left: 1px solid #404040;
+  border-left: 0px solid #404040;
   float: right;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0 15px 0 10px;
@@ -11189,6 +11202,18 @@ a {
   overflow: hidden;
   padding-top: 70px;
 }
+.catalogue img {
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 2s;
+  -ms-transform: scale(1);
+  /* IE 9 */
+  -webkit-transform: scale(1);
+  /* Safari */
+  transform: scale(1);
+}
 .catalogue:hover img {
   -webkit-transition: all 2s;
   -ms-transform: scale(1.1);
@@ -11253,8 +11278,12 @@ a {
   margin-top: 180px;
   position: relative;
   z-index: 1000;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.catalogue div:hover .plusSign img {
+.catalogue div:hover .plusSign {
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11279,7 +11308,10 @@ a {
   text-transform: uppercase;
 }
 .catalogue .plusSign {
-  transition: all 0.5s;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   width: 100%;
   margin-top: 250px;
 }
@@ -11302,12 +11334,10 @@ a {
   transform: rotate(360deg);
 }
 
-/* three items */
 .thirdBlocks {
   width: 33.3333%;
 }
 
-/* four items */
 .quarterBlocks {
   width: 25%;
 }
@@ -22070,7 +22100,7 @@ body:not(.tablette) .webtv #live .img {
 .our-news .articles h6 {
   margin: 25px 0px;
   letter-spacing: 2px;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 35px;
   opacity: 0.8;
   color: #000000;
