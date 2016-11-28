@@ -20,6 +20,7 @@ a {
 }
 
 #prehome-container {
+  display: none!important;
   background-color: #fff;
   height: 0px;
   position: relative;
@@ -29,6 +30,7 @@ a {
   }
 
   #prehome {
+    display: none!important;
     position:fixed;
     top:0;
     bottom:0;

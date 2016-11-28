@@ -65,7 +65,7 @@ $(document).ready(function() {
   // 1. Prehome
   // =========================
 
-  if($('.home').length) {
+  /*if($('.home').length) {
 
     // if cookie doesn't exist
     if(!$.cookie('prehome')) {
@@ -87,7 +87,7 @@ $(document).ready(function() {
       // remove prehome, we don't need to see it
       $('#prehome-container').remove();
     }
-  }
+  }*/
 
   // 2. Main menu
   // =========================

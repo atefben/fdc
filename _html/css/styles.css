@@ -9306,6 +9306,7 @@ a {
 }
 
 #prehome-container {
+  display: none !important;
   background-color: #fff;
   height: 0px;
   position: relative;
@@ -9314,6 +9315,7 @@ a {
   min-height: 600px;
 }
 #prehome-container #prehome {
+  display: none !important;
   position: fixed;
   top: 0;
   bottom: 0;
