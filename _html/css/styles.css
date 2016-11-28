@@ -5077,13 +5077,13 @@ header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
 }
 header #logo-wrapper #logo h1 {
   position: absolute;
-  top: 93px;
+  top: 100px;
   left: 0px;
 }
 header #logo-wrapper #logo h2 {
   position: absolute;
-  top: 130px;
-  left: 44px;
+  top: 140px;
+  left: 0px;
 }
 header #logo-wrapper #logo p.stick {
   opacity: 0;
@@ -5126,7 +5126,6 @@ header #logo-wrapper #logo h2 a {
 }
 header #logo-wrapper #logo img.palm {
   display: block;
-  margin: 0 auto;
   width: 105px;
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);

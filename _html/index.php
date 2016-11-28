@@ -232,13 +232,13 @@
           <div class="aboutVideos">
               <div id="slider-aboutVideos" class="owl-carousel">
                 <div class="item">
-                  <?php include('exemple-video.php'); ?>
+                  <?php include('exemple-video2.php'); ?>
                 </div>
                 <div class="item">
-                  <?php include('exemple-video.php'); ?>
+                  <?php include('exemple-video2.php'); ?>
                 </div>
                 <div class="item">
-                  <?php include('exemple-video.php'); ?>
+                  <?php include('exemple-video2.php'); ?>
                 </div>
             </div>
               
