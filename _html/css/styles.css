@@ -5630,6 +5630,9 @@ div.chocolat-wrapper .zoomCursor {
   -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.tablet div.chocolat-wrapper .zoomCursor {
+  display: none !important;
+}
 div.chocolat-wrapper .zoomCursor.hide {
   opacity: 0;
 }
@@ -5638,15 +5641,21 @@ div.chocolat-wrapper .zoomCursor .icon {
   line-height: 80px;
 }
 
+.chocolat-zoomable.tablet .zoomCursor {
+  display: none !important;
+}
 .chocolat-zoomable .zoomCursor {
   background: url("../img/svg/zoomIn.svg") no-repeat center;
   background-size: 20px;
   display: block !important;
 }
 .chocolat-zoomable .chocolat-content, .chocolat-zoomable .chocolat-img {
-  cursor: none;
+  cursor: none !important;
 }
 
+.chocolat-zoomed.tablet .zoomCursor {
+  display: none !important;
+}
 .chocolat-zoomed .zoomCursor {
   background: url("../img/svg/zoomOut.svg") no-repeat center;
   background-size: 20px;

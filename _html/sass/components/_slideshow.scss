@@ -668,6 +668,10 @@ div.chocolat-wrapper {
     text-align: center;
     @include transition(opacity 0.3s $smoothTransition);
 
+    .tablet & {
+      display: none !important;
+    }
+
     &.hide {
       opacity: 0;
     }
@@ -680,19 +684,26 @@ div.chocolat-wrapper {
 }
 
 .chocolat-zoomable {
+  &.tablet .zoomCursor {
+    display: none !important;
+  }
 
   .zoomCursor {
     background: url('../img/svg/zoomIn.svg') no-repeat center;
     background-size: 20px;
-    display: block!important;
+    display: block !important;
   }
 
   .chocolat-content, .chocolat-img {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
 .chocolat-zoomed {
+  &.tablet .zoomCursor {
+    display: none !important;
+  }
+
   .zoomCursor {
     background: url('../img/svg/zoomOut.svg') no-repeat center;
     background-size: 20px;
