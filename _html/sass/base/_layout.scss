@@ -107,7 +107,7 @@ body {
     top: 0;
     visibility: hidden;
     width: 100%;
-    z-index: 7;
+    z-index: 5;
     @include transition(all 0.9s $smoothTransition);
   }
 
