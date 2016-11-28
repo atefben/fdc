@@ -14,7 +14,7 @@
     <a href="test.php"><div class="articles-img"><img src="/img/slider/slider03.jpg"></div></a>
     <div class="articles-content">
       <span>producers workshop<br><span class="article-date">26 jun 2016</span></span>
-      <a href="test.php"><h6>Rencontrez des experts du monde entier dans le cadre de nos Industry Pro</h6></a>
+      <a href="test.php"><h6>Rencontrez des experts du monde entier dans le cadre de nos Industry</h6></a>
       <a href="test.php"><p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p></a>
     </div>
   </div>

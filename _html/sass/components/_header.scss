@@ -112,7 +112,7 @@ header {
 
         img.palm {
           float: left;
-          margin-top: -5px;
+          margin-top: -25px;
           width: 72px;
         }
 
@@ -123,7 +123,7 @@ header {
         p.stick {
           float: left;
           font-size: 1.1rem;
-          margin: 12px 0 0 30px;
+          margin: -10px 0 0 30px;
           opacity: 1;
           visibility: visible;
 
@@ -284,7 +284,8 @@ header {
 
     #logo {
       display: inline-block;
-      padding: 5px 100px 0 0;
+      padding: 7px 100px 0 0;
+      padding: 30px 100px 0 0;
       text-align: center;
       vertical-align: middle;
       width: 200px;
@@ -292,7 +293,6 @@ header {
 
       h1, p.stick {
         font-family: $CamphorBold;
-        font-size: 1.250rem;
         font-weight: normal;
 
         a {
@@ -303,7 +303,7 @@ header {
 
       h1 {
         position: absolute;
-        top: 108px;
+        top: 93px;
         left: 0px;
       }
 
@@ -340,9 +340,8 @@ header {
 
       h2 {
         font-family: $CamphorRegular;
-        font-size: 0.875rem;
         font-weight: normal;
-        margin-top: 5px;
+        margin-top: -20px;
 
         a {
           color: $gold;
@@ -353,7 +352,7 @@ header {
       img.palm {
         display: block;
         margin: 0 auto;
-        width: 145px;
+        width: 105px;
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
       }
@@ -458,7 +457,7 @@ header {
         a {
           color: #fff;
           display: block;
-          padding-right: 36px;
+          padding-right: 34px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
@@ -662,48 +661,92 @@ header {
 
 .topiconsContainer {
   float: right;
-  width: 200px;
-}
+  width: 193px;
 
-.topIcons {
-    border: 1px solid #404040;
-    display: block;
-    float: left;
-    height: 63px;
-    position: relative;
-    margin-top: 55px;
-    width: 63px;
-    line-height: 63px;
-    text-align: center;
-    -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  a {
-      color: #fff;
-      position: relative;
-      background-size: 20px;
+  .topIcons {
       display: block;
-      height: 100%;
-      width: 100%;
+      float: left;
+      height: 63px;
+      position: relative;
+      margin-top: 35px;
+      width: 63px;
       line-height: 63px;
-  }
-
-  &:hover {
-    border: 1px solid $gold;
-
-    i {
-      color: $gold;
+      text-align: center;
+    a {
+        color: #fff;
+        position: relative;
+        background-size: 20px;
+        display: block;
+        height: 100%;
+        width: 100%;
+        line-height: 63px;
     }
-  }
 
-  &:first-child, &:nth-child(2) {
-    border-right: 0px solid #404040;
     &:hover {
-      border-right: 1px solid $gold;
-      &:nth-child(2) {
-        border-left: 0px solid $gold;
+      i {
+        color: $gold;
       }
     }
   }
+}
+
+.first {
+  position: relative;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  border-left: 1px solid #404040;
+  z-index: 900;
+  overflow: hidden;
+}
+.second {
+  position: relative;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  border-left: 1px solid #404040;
+  border-right: 1px solid #404040;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.third {
+  position: relative;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  border-right: 1px solid #404040;
+  overflow: hidden;
+  z-index: 1002;
+}
+
+.goldBdrs {
+    border-top: 1px solid $gold!important;
+    border-bottom: 1px solid $gold!important;
+    border-right: 1px solid $gold!important;
+    border-left: 1px solid $gold!important;
+    margin-right: -1px!important;
+    z-index: 1005!important;
+    overflow: hidden;
+  } 
+
+.middlegoldBdrs {
+    border-top: 1px solid $gold!important;
+    border-bottom: 1px solid $gold!important;
+    border-right: 1px solid $gold!important;
+    border-left: 1px solid $gold!important;
+    z-index: 1005!important;
+    overflow: hidden;
+} 
+
+.lastgoldBorders {
+    border-top: 1px solid $gold!important;
+    border-bottom: 1px solid $gold!important;
+    border-right: 1px solid $gold!important;
+    border-left: 1px solid $gold!important;
+    margin-left: -1px!important;
+    z-index: 1005!important;
+    overflow: hidden;
+}
+
+.noBdrs {
+  position: relative!important;
+  z-index: 1!important;
 }

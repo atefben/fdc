@@ -1705,6 +1705,7 @@ a {
 }
 
 .prehome-01 {
+  display: none;
   background-image: url('../img/prehome01.jpg');
   background-size: cover;
   height: 100vh;
@@ -2021,7 +2022,7 @@ a {
   padding-top:70px;
 
   img {
-      @include transition(all 0.9s $smoothTransition);
+      @include transition(all 8s $smoothTransition);
     -webkit-transition: all 2s;
     -ms-transform: scale(1); /* IE 9 */
     -webkit-transform: scale(1); /* Safari */
@@ -2033,7 +2034,7 @@ a {
     -ms-transform: scale(1.1); /* IE 9 */
     -webkit-transform: scale(1.1); /* Safari */
     transform: scale(1.1);
-    @include transition(all 0.9s $smoothTransition);
+    @include transition(all 8s $smoothTransition);
     }
 
   .imgIllustration {

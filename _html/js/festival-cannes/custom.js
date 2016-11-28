@@ -326,3 +326,24 @@ $(window).scroll(function (e) {
 
 
 $( "#slider-movies > .owl-controls" ).wrap( "<div class='container'></div>" );
+
+$(window).scroll(function (e) {
+  if($(window).scrollTop() > 100) {
+        $(".topiconsContainer").hide();
+      } else {
+        $(".topiconsContainer").show();
+      }
+});
+
+$(".topiconsContainer .first").hover(function () {
+    $(this).toggleClass("goldBdrs");
+    $(".topiconsContainer .second").toggleClass("noBdrs");
+});
+
+$(".topiconsContainer .second").hover(function () {
+    $(this).toggleClass("middlegoldBdrs");
+});
+
+$(".topiconsContainer .third").hover(function () {
+    $(this).toggleClass("lastgoldBorders");
+});
