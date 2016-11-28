@@ -5629,6 +5629,7 @@ footer .social {
   border-right: none;
   overflow: hidden;
   padding: 50px 0 45px 0;
+  width: 100%;
 }
 footer .social p {
   color: #fff;
