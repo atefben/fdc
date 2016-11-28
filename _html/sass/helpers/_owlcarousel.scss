@@ -183,11 +183,12 @@
     width: 3px;
     display: block;
     color: white;
-    position: relative;
+    position: absolute;
     float: right;
     z-index: 1000;
     background: white;
-    margin-top: 12%;
+    margin-top: 5%;
+    margin-left: 977px;
       /*@media screen and (min-width: 1024px) {
           right: 8%!important;
       }
