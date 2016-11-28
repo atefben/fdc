@@ -3,7 +3,7 @@
 {% extends 'FDCEventBundle:Search:base.html.twig' %}
 {% block content %}
     {% for artist in items %}
-        <div class="thumb active">
+        <div class="person big">
             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
                 {% set artistImage = artist|person_image(true) %}
                 {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
