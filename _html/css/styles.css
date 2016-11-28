@@ -814,12 +814,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   vertical-align: middle;
   text-align: left;
 }
+#slider-aboutVideos .owl-item, #slider-aboutVideos .item {
+  width: 726px !important;
+}
 #slider-aboutVideos .video-container .infos-bar .picto {
   bottom: 20px;
   left: 20px;
   cursor: pointer;
   pointer-events: auto;
   z-index: 1000;
+}
+#slider-aboutVideos .owl-stage {
+  width: 5000px !important;
 }
 #slider-aboutVideos .owl-dots {
   margin-top: 20px;

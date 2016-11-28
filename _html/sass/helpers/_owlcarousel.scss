@@ -746,6 +746,10 @@
       text-align: left;
     }
 
+  .owl-item, .item {
+    width: 726px !important;
+  }
+
   .video-container .infos-bar .info {
 
   }
@@ -756,6 +760,10 @@
       cursor: pointer;
       pointer-events: auto;
       z-index: 1000;
+  }
+
+  .owl-stage {
+    width: 5000px!important;
   }
 
  .owl-dots{

@@ -31,12 +31,32 @@
  
   });
 
+
+  var fixOwl = function(){
+        var $stage = $('.owl-stage'),
+            stageW = $stage.width(),
+            $el = $('.owl-item'),
+            elW = 0;
+        $el.each(function() {
+            elW += $(this).width()+ +($(this).css("margin-right").slice(0, -2))
+        });
+        if ( elW > stageW ) {
+            $stage.width( elW );
+        };
+    }
+
   $('#slider-aboutVideos').owlCarousel({
       dots: true,
+      autoWidth:true,
+      video:true,
+      videoHeight: 450,
+      videoWidth: 725, 
       navigation : false,
       slideSpeed : 600,
       paginationSpeed : 400,
-      items : 1
+      items : 1,
+      onInitialized: fixOwl,
+      onRefreshed: fixOwl
   });
 
 
