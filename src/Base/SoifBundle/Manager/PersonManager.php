@@ -341,6 +341,14 @@ class PersonManager extends CoreManager
             $collection = new ArrayCollection();
             $duplicates = clone $entity->getDuplicates();
             $objects = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
+            $duplicateIds = array();
+            $duplicateSelfkits = array();
+            foreach ($objects as $obj) {
+                $duplicateIds[] = $obj->PersonneId;
+                $duplicateSelfkits[] = $obj->PersonneSelfkitId;
+            }
+            $entity->setDuplicateIds($duplicateIds);
+            $entity->setDuplicateSelfkits($duplicateSelfkits);
             foreach ($objects as $obj) {
                 $person = $this->em->getRepository('BaseCoreBundle:FilmPerson')->find($obj->PersonneId);
                 if ($person !== null) {

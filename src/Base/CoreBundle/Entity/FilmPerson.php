@@ -409,7 +409,7 @@ class FilmPerson implements TranslateMainInterface
     private $duplicates;
 
     /**
-     * @ORM\OneToOne(targetEntity="FilmPerson")
+     * @ORM\ManyToOne(targetEntity="FilmPerson")
      *
      * @Groups({"person_list", "person_show"})
      */
@@ -420,6 +420,18 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\Column(name="selfkit", type="string", length=255, nullable=true)
      */
     private $selfkit;
+
+    /**
+     * @var array
+     * @ORM\Column(name="duplicate_ids", type="array")
+     */
+    private $duplicateIds = array();
+
+    /**
+     * @var array
+     * @ORM\Column(name="duplicate_selfkits", type="array")
+     */
+    private $duplicateSelfkits = array();
 
     /**
      * Constructor
@@ -1133,5 +1145,51 @@ class FilmPerson implements TranslateMainInterface
     public function getSelfkit()
     {
         return $this->selfkit;
+    }
+
+    /**
+     * Set duplicateIds
+     *
+     * @param array $duplicateIds
+     * @return FilmPerson
+     */
+    public function setDuplicateIds($duplicateIds)
+    {
+        $this->duplicateIds = $duplicateIds;
+
+        return $this;
+    }
+
+    /**
+     * Get duplicateIds
+     *
+     * @return array 
+     */
+    public function getDuplicateIds()
+    {
+        return $this->duplicateIds;
+    }
+
+    /**
+     * Set duplicateSelfkits
+     *
+     * @param array $duplicateSelfkits
+     * @return FilmPerson
+     */
+    public function setDuplicateSelfkits($duplicateSelfkits)
+    {
+        $this->duplicateSelfkits = $duplicateSelfkits;
+
+        return $this;
+    }
+
+    /**
+     * Get duplicateSelfkits
+     *
+     * @return array 
+     */
+    public function getDuplicateSelfkits()
+    {
+        return $this->duplicateSelfkits;
     }
 }
