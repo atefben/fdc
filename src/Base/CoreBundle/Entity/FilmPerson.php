@@ -456,10 +456,10 @@ class FilmPerson implements TranslateMainInterface
     public function getFullName()
     {
         if ($this->asianName) {
-            return $this->getLastname() . ' ' . $this->getFirstname();
+            return (string)$this->getLastname() . ' ' . (string)$this->getFirstname();
         }
         else {
-            return $this->getFirstname(). ' '. $this->getLastname();
+            return (string)$this->getFirstname(). ' '. (string)$this->getLastname();
         }
 
     }
