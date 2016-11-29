@@ -103,9 +103,9 @@
                                     {% set trans = article.findTranslationByLocale('fr') %}
                                 {% endif %}
                                 {% if type == 'news' %}
-                                <a href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                <a href="{{ url('fdc_event_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                     {% else %}
-                                    <a href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                    <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                         {% endif %}
                                         <div class="img" style="background-image:url({% path file , '926x584' %})"></div>
                                     </a>
@@ -114,15 +114,15 @@
                                 <span class="category">{{ article.theme|trans_fallback('name') }}</span>
 
                             {% if type == 'news' %}
-                                    <h2><a href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
+                                    <h2><a href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
                                 </div>
                                 <a class="linkArticle"
-                                   href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                   href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% else %}
-                                    <h2><a href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
+                                    <h2><a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
                                 </div>
                                 <a class="linkArticle"
-                                   href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                   href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% endif %}
                         </div>
                     {% endfor %}
