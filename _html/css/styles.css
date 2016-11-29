@@ -22563,6 +22563,10 @@ body:not(.tablette) .webtv #live .img {
   line-height: 73px;
 }
 
+.buttons i {
+  margin-right: 5px;
+}
+
 /* TABS */
 .pub {
   height: 480px;

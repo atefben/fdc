@@ -368,6 +368,13 @@ $(".topiconsContainer .third").hover(function () {
     $(this).toggleClass("lastgoldBorders");
 });
 
+
+$("#share-article").click(function(){
+   $('html, body').animate({
+        scrollTop: $("#share").offset().top - 400
+    }, 2000);
+});
+
 var fixed = false;
  var topTrigger = $('.subNavigation').offset().top;
  $(document).scroll(function() {
@@ -383,3 +390,4 @@ var fixed = false;
      }
    }
  });
+

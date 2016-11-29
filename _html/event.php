@@ -47,6 +47,10 @@
               <h5 class="minMargin">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960.</h5>
             </div>
           </div>
+          <div class="buttons">
+              <a id="share-article" class="button"><i class="icon icon_share"></i>Partager</a>
+              <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
+          </div>
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
                 
@@ -838,7 +842,7 @@
                         </div>
                     </div>
                   </li>         
- <li>
+                <li>
                   <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
                         <div class="parent">
@@ -991,7 +995,7 @@
               </div>
             </div>
           </div>
-          <div class="share">
+          <div class="share" id="share" >
               <p>Partagez l'article</p>
               <div class="buttons square">
                 <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
@@ -999,7 +1003,7 @@
                 </a>
                 <a href="#" class="button link self"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
-                <a href="#" class="button print"><i class="icon icon_print"></i></a>
+                <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i></a>
               </div>
           </div>
         <?php include('box-catalogue.php'); ?>  
