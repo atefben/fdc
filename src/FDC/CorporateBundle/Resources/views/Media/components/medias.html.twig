@@ -4,7 +4,12 @@
         {% if media.media.file is not null %}
             {% set title = '' %}
             {% if media.film is defined %}
-                {% set title = media.film|trans_fallback('title')?:media.film.titleVO %}
+                {% set title = media.film.titleVO  %}
+                {% if title is defined and title is not null %}
+                    {% if media.film|trans_fallback('title') != null and title != media.film|trans_fallback('title') %}
+                        {% set title = title ~ ' (' ~ media.film|trans_fallback('title') ~ ')' %}
+                    {% endif %}
+                {% endif %}
                 {% set dateMedia = media.film.festival.year %}
             {% elseif media.person is defined %}
                 {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
