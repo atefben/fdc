@@ -40,11 +40,21 @@
              </nav>
         </div>
        </div>
-      <div class="wideWrapper centerWrapper">
+      <!--<div class="wideWrapper centerWrapper">
         <h2>Screening</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
-      </div>
-      <div class="container">
+      </div>-->
+      <div class="content-article">
+        <div class="container small-container">
+          <div class="info">
+            <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+            <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
+          </div>
+          <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
+          <div class="buttons">
+            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+            <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>Imprimer</a>
+          </div>
           <div class="slideshow eventSlideshow">
             <div class="slideshow-img">
               <div class="images">
@@ -279,7 +289,7 @@
               </article>                                                                                                                            
             </div>
           </section>
-        
+        </div>
 
         <?php include('box-catalogue.php'); ?>  
         <?php include('box-social.php'); ?>  
