@@ -24101,7 +24101,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .smallWrapper {
-  width: 700px;
+  width: 650px;
   padding-bottom: 50px;
   margin: 0 auto;
   text-align: center;
@@ -24126,6 +24126,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 12px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
+  margin-bottom: 25px;
 }
 .smallWrapper li, .smallWrapper p {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -24158,11 +24159,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #666666;
   line-height: 30px;
   letter-spacing: 0px;
-  opacity: 0.9;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .smallWrapper p span {
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #666666;
 }
 .smallWrapper .underlined {

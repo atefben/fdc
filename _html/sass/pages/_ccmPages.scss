@@ -95,8 +95,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .smallWrapper {
-  width: 700px;
-  padding-bottom: 50px;
+  width: 650px;
+  padding-bottom: 40px;
   @include align();
   text-align: left;
 
@@ -121,6 +121,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     font-size: 12px;
     font-family: $CamphorBold;
     letter-spacing: 2px;
+     margin-bottom: 25px;
   }
 
   li, p {
@@ -159,11 +160,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     color: #666666;
     line-height: 30px;
     letter-spacing: 0px;
-    opacity: 0.9;
     font-family: $CamphorRegular;
 
     span {
-      font-family: $CamphorRegular;
+      font-family: $CamphorBold;
       color: #666666;
     }
   }
