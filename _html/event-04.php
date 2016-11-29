@@ -113,13 +113,48 @@
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
           </div>
           <div class="minPadding">   
-              <div class="wideWrapper">
+              <div class="wideWrapper wysiwygBlocks">
                 <h2>Workshops et networking pour une formation ciblée</h2>
                 <p>En plus de tous les avantages d'un badge Marché du Film, vous bénéficiez, durant les premiers jours du Festival de Cannes et du Marché du Film, d’un accès au Producers Workshop: un programme ciblé, mené par des experts de l’industrie, destiné à soutenir les producteurs dans leurs démarches à l’international et à rendre plus efficace leur participation au Marché du Film et au Festival de Cannes.</p><br>
                 <p>Un cocktail de networking inaugure le programme en toute convivialité ! Abordez le marché international avec confiance grâce à nos ateliers et séminaires sur le rôle de producteur, les techniques de pitch, la coproduction et le financement international, les stratégies marketing,  la distribution et les ventes internationales du mercredi 11 au samedi 14 mai 2016. Le dimanche</p><br>
                 <p>Pour plus de renseignements, merci de contacter Lisa Kermabon – Manager Producers Workshop / Industry Programs: <a href="mailto:lkermabon@festival-cannes.fr">lkermabon@festival-cannes.fr</a></p><br>
                 <p>Visitez notre FAQ où vous trouverez les réponses aux questions les plus fréquentes concernant ce programme.</p>
               </div>     
+          </div>
+
+          <div class="wideWrapper wysiwygBlocks">
+            <h3>- renvoi</h3>
+            <p>Presse écrite et multimédia – Agences de presse : presse@festival-cannes.fr<br>
+                Média web : <a href="">webmedia@festival-cannes.fr</a><br>
+                Télévision – Radio – Agences de presse audiovisuelle : <a href="">presseaudio@festival-cannes.fr</a><br>
+                Photographes de presse – Agences photo : <a href="">presseaudio@festival-cannes.fr</a></p>
+          </div>
+
+          <div class="wideWrapper wysiwygBlocks">
+              <h3>-  par courrier :</h3>
+              <p>Festival de Cannes - Service de Presse<br>
+              3, rue Amélie, 75007 Paris, France<br>
+              En février, à réception des pièces demandées, le service de presse vous communiquera<br>
+              l'adresse Internet d’un portail de pré-inscription ainsi qu'une référence personnalisée<br>
+              donnant accès à un formulaire d'accréditation en ligne que vous devez compléter et valider.<br>
+              Ce portail vous permettra également de suivre le traitement de votre inscription en ligne.</p>
+          </div>
+          <div class="wideWrapper wysiwygBlocks">
+          <h3 class="goldTitle">comment déposer votre demande ?</h3>
+          <p>Dès janvier, vous pouvez faire votre demande d'accréditation en envoyant au service de<br>
+          presse les pièces justificatives listées dans la rubrique vous concernant : Presse écrite et<br>
+          multimédia, Média web, Agence de presse, Agence de presse audiovisuelle, Agence Photo,<br>
+          Photographe de presse, Télévision, Radio.<br>
+          Les documents peuvent être adressés :</p>
+          </div>
+
+          <div class="wideWrapper wysiwygBlocks goldwysiwygBlocks">
+            <div class="goldBorders">
+              <h3>La date limite pour déposer votre demande d’accréditation est fixée au 31 mars.</h3>
+              <p>Pour préserver votre confort et vos conditions de travail le nombre d'accréditations est
+                  limité. Nous insistons donc sur la nécessité de nous adresser votre demande avant la date
+                  limite.</p>
+            </div>
           </div>
 
           <!-- EXEMPLE ARTICLE-->
@@ -218,6 +253,34 @@
             </div>
             <div class="author">Rédigé par Morgane Urbain</div>
           </div>
+          <section class="categorie-items honneur-invit">
+            <div class="contain-article-invit">
+               <article style="background-image:url('http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_main/0001/02/thumb_1319_film_main_976x535.jpeg')">
+                  <div class="bck-hover">
+                      <div class="contain_item">
+                          <div class="image">
+                              <a href="/fr/films/close-encounters-with-vilmos-zsigmond">
+                                  <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1981_film_poster_259x352.jpeg" alt="CLOSE ENCOUNTERS WITH VILMOS ZSIGMOND" data-object-fit="cover">                </a>
+                          </div>
+                            <div class="infos-item-list">
+                                <h3 class="title-item">
+                                    <a href="/fr/films/close-encounters-with-vilmos-zsigmond">
+                                        CLOSE ENCOUNTERS WITH VILMOS ZSIGMOND
+                                    </a>
+                                </h3>
+                                  <a href="/fr/artiste/pierre-filmon-1"><span class="nom-item">Pierre FILMON</span></a><br>
+                                    <span class="date-item">2016 - 01:20</span>
+                                <p class="description-item">
+                                    CLOSE ENCOUNTERS WITH VILMOS ZSIGMOND est une rencontre d’un autre type. Une rencontre entre le dernier des Mohicans, Vilmos Zsigmond 83 ans, un chef opérateur américain légendaire et un jeune réalisateur français, Pierre Filmon qui voulait tourner avec lui son premier long métrage de fiction. En attendant le financement, au gré de leurs rencontres, un autre film va voir le jour. Un film, où le cameraman passe cette fois devant l’objectif. <br>
+                                    Tourné à Paris, en Californie et dans son pays d’origine, la Hongrie, de mai 2014 à mars 2016, CLOSE ENCOUNTERS WITH VILMOS ZSIGMOND est un documentaire sur un chef opérateur. Un voyage avec le plus brillant homme de l’ombre et en compagnie de ses amis réalisateurs, acteurs et chefs opérateurs.<br></p>
+                            </div>
+                        </div>
+                    </div>
+              </article>                                                                                                                            
+            </div>
+          </section>
+        
+
         <?php include('box-catalogue.php'); ?>  
         <?php include('box-social.php'); ?>  
         <?php include('box-news.php'); ?>

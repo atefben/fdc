@@ -236,7 +236,9 @@
       font-size: 14px;
       color: #505050;
       text-align: left;
-      padding-bottom: 50px;
+      padding-bottom: 30px;
+      color: #505050;
+      line-height: 25px;
     }
 
 
@@ -278,7 +280,7 @@
       opacity: 0.7;
       letter-spacing: 1px;
       color: #b1b1b1;
-      bottom: 5%;
+      bottom: 10%;
 
       &:hover {
         color: $gold;
@@ -422,7 +424,7 @@
   }
 
 .box {
-  min-height: 290px;
+  min-height: 270px;
   height: auto;
   cursor: default;
   position: relative;
