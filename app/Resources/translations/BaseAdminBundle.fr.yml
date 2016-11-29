@@ -373,6 +373,8 @@ list:
         label_year: Année de l'édition
         label_startsat: Date de début du festival
         label_endsat: Date de fin du festival
+    person_duplicates: IDs doublon SOIF
+    person_selfkit: IDs doublon Selfkit
 
 filter:
     media_pdf:

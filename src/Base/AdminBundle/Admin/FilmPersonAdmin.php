@@ -50,13 +50,21 @@ class FilmPersonAdmin extends SoifAdmin
     {
         $listMapper
             ->add('id')
-            ->add('selfkit')
+            ->add('duplicate', null, array(
+                'template' => 'BaseAdminBundle:FilmPerson:list_duplicate.html.twig',
+                'sortable' => false,
+                'label'    => 'list.person_duplicates'
+            ))
+            ->add('selfkit', null, array(
+                'template' => 'BaseAdminBundle:FilmPerson:list_selfkit.html.twig',
+                'sortable' => false,
+                'label'    => 'list.person_selfkit'
+            ))
             ->add('lastname')
             ->add('firstname')
             ->add('asianName')
             ->add('nationality')
             ->add('nationality2')
-            ->add('duplicate')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('soifUpdatedAt')
@@ -143,5 +151,16 @@ class FilmPersonAdmin extends SoifAdmin
             ->add('updatedAt')
             ->add('soifUpdatedAt')
         ;
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.duplicate', ':duplicate')
+        );
+        $query->setParameter('duplicate', false);
+        return $query;
+
     }
 }

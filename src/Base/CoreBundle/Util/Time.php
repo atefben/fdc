@@ -2,16 +2,11 @@
 
 namespace Base\CoreBundle\Util;
 
-use \DateTime;
-
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Exclude;
-use JMS\Serializer\Annotation\Expose;
+use DateTime;
 use JMS\Serializer\Annotation\Groups;
 
 /**
  * Time trait.
- *
  * @author  Antoine Mineau
  * @company Ohwee
  */
@@ -19,18 +14,14 @@ trait Time
 {
     /**
      * @var \DateTime
-     *
      * @ORM\Column(type="datetime", nullable=true)
-     *
      * @Groups({"time"})
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     *
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"time"})
      */
     private $updatedAt;
@@ -54,13 +45,11 @@ trait Time
      */
     public function preUpdate()
     {
-        if ($this->getUpdatedAt() == null) {
-            $this->updatedAt = new DateTime();
-        }
+        $this->updatedAt = new DateTime();
     }
+
     /**
      * Set createdAt
-     *
      * @param \DateTime $createdAt
      * @return FilmPrize
      */
@@ -73,8 +62,7 @@ trait Time
 
     /**
      * Get createdAt
-     *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -83,7 +71,6 @@ trait Time
 
     /**
      * Set updatedAt
-     *
      * @param \DateTime $updatedAt
      * @return FilmPrize
      */
@@ -96,8 +83,7 @@ trait Time
 
     /**
      * Get updatedAt
-     *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
