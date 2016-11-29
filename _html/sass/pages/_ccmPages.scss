@@ -55,6 +55,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
  position: relative;
  z-index: 1002;
  top: 0px; 
+ background: #141414;
  @include transition(all .5s $smoothTransition);
 }
 

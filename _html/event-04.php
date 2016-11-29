@@ -189,7 +189,15 @@
             “J’ai découvert que Lambert avait une passion pour le film de genre”
           </blockquote>
         </div>
-                  <div class="single-photo">
+
+          <div class="categorie-items blackBcgk">
+           <div class="title-list-cat">
+              <h2 class="title">Hommage a manoel de oliveira</h2>
+              <p class="title-item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.</p>
+            </div>
+          </div>        
+
+        <div class="single-photo">
             <div class="photo-container">
               <img src="img/article/003.jpg" alt="" />
               <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
@@ -210,6 +218,8 @@
             </div>
             <div class="author">Rédigé par Morgane Urbain</div>
           </div>
+
+
   <!-- END MAIN-->
     </div>
 

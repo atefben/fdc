@@ -81,7 +81,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping hand</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
@@ -105,7 +105,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
