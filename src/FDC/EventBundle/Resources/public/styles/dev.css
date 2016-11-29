@@ -515,3 +515,7 @@
 #prefooter {
     background: #1f1f1f !important;
 }
+
+.faq-question a {
+    color: #c8a461;
+}
