@@ -235,7 +235,7 @@ class PersonManager extends CoreManager
             $entity->setNationality2($country);
         }
         // set translations
-        //$this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
+        $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
         // set multimedias
         if (property_exists($resultObject, 'PersonneElementsMultimedias') && property_exists($resultObject->PersonneElementsMultimedias, 'ElementMultimediaRefDto')) {
             $collection = new ArrayCollection();
