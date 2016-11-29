@@ -280,6 +280,10 @@
       color: #b1b1b1;
       bottom: 5%;
 
+      &:hover {
+        color: $gold;
+      }
+
       .ensavoirplus {
             -webkit-transform: rotate(180deg);
             -moz-transform: rotate(180deg);

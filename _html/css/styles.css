@@ -23761,6 +23761,9 @@ ul.tabs .quarterTab h4 {
   color: #b1b1b1;
   bottom: 5%;
 }
+.conferences .conf60 .confButton:hover, .conferences .conf70 .confButton:hover {
+  color: #c8a461;
+}
 .conferences .conf60 .confButton .ensavoirplus, .conferences .conf70 .confButton .ensavoirplus {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -24102,7 +24105,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .smallWrapper {
   width: 650px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   margin: 0 auto;
   text-align: center;
   display: block;
