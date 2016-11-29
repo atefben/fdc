@@ -213,6 +213,48 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom:0px;
 } 
 
+.text {
+
+  p {
+    .italic {
+      font-style: italic;
+      color:#666666;
+      font-family: $CamphorBold;
+    }  
+  }
+
+}
+
+.bio {
+  padding-bottom: 40px;
+  a {
+    color: $gold;
+  }
+  h2 {
+    font-size: 22px;
+    padding: 50px 0px;
+    color: #333333;
+    font-family: $Playfair;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 18px;
+    padding: 40px 0px;
+    color: #333333;
+    font-family: $Playfair;
+    text-align: left;  
+  }
+
+  h4 {
+    font-size: 14px;
+    padding: 50px 0px;
+    color: #333333;
+    font-family: $Playfair;
+    text-align: center;     
+  }
+}
+
 .wideWrapper {
   width: 705px;
   padding-bottom: 50px;
@@ -299,11 +341,43 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     }
   }
 
+  h6 {
+    font-size: 20px;
+    line-height: 40px;
+    color: #333333;
+    text-align: center;
+    font-family: $CamphorRegular;
+  }
+
   .goldTitle {
     color: $gold;
     font-family: $CamphorRegular;
     letter-spacing: 2px;
     font-size: 14px;
+  }
+}
+
+.wysiwygGreyblock {
+  @include align();
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+  background: #f4f4f4;
+  text-align: center!important;
+  margin-bottom: 50px;
+
+  h4 {
+    padding: 90px 0px 20px 0px;
+    color: #333333;
+    font-size: 16px;
+    font-family: $CamphorRegular;
+  }
+
+  p {
+    color: #666666;
+    font-size: 16px;
+    font-family: $CamphorRegular;
+    line-height: 25px!important;
   }
 }
 
@@ -329,6 +403,45 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     opacity: 0.9;
   }
 }
+
+.tableau {
+  width: 636px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+
+    .tableauArticle {
+      width: 310px;
+      height: 120px;
+      margin: 0 auto;
+      float: left;
+      text-align: center;
+      border: 1px solid #e5e5e5;
+      border-bottom: 0px solid #e5e5e5;
+
+    h3 {
+      border-bottom: 1px solid #e5e5e5;
+      line-height: 40px;
+      color: #000000;
+      font-family: $CamphorRegular;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    h4 {
+      border-bottom: 1px solid #e5e5e5;
+      line-height: 40px;
+      font-family: $CamphorRegular;
+      font-size: 12px;
+    }
+
+    &:nth-child(2) {
+      border-left: 0px solid #e5e5e5;
+    }
+  }
+}
+
+
 
 .greyHr {
   width: 100%;
@@ -517,6 +630,31 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     }
   }
 } 
+
+.goldQuote {
+
+  text-align: center;
+
+  .goldBorders {
+    min-height: 350px;
+    height: auto;
+      h3 {
+      color: #c8a461;
+      padding: 80px 0px 50px 0px;
+      font-size: 16px;
+      letter-spacing: 2px;
+      font-family: $CamphorRegular;
+    }
+      p {
+        font-size: 14px;
+        color: #b1b1b1;
+        line-height: 30px;
+        padding: 0px 80px;
+        font-family: $CamphorRegular;
+      }
+  }
+
+}
   
 .modalgoldBorders  {
   width: 745px;

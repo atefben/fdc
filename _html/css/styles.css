@@ -24215,6 +24215,40 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom: 0px;
 }
 
+.text p .italic {
+  font-style: italic;
+  color: #666666;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+.bio {
+  padding-bottom: 40px;
+}
+.bio a {
+  color: #c8a461;
+}
+.bio h2 {
+  font-size: 22px;
+  padding: 50px 0px;
+  color: #333333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  text-align: center;
+}
+.bio h3 {
+  font-size: 18px;
+  padding: 40px 0px;
+  color: #333333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  text-align: left;
+}
+.bio h4 {
+  font-size: 14px;
+  padding: 50px 0px;
+  color: #333333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  text-align: center;
+}
+
 .wideWrapper {
   width: 705px;
   padding-bottom: 50px;
@@ -24298,11 +24332,42 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 16px;
   line-height: 30px;
 }
+.wysiwygBlocks h6 {
+  font-size: 20px;
+  line-height: 40px;
+  color: #333333;
+  text-align: center;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
 .wysiwygBlocks .goldTitle {
   color: #c8a461;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
   font-size: 14px;
+}
+
+.wysiwygGreyblock {
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+  background: #f4f4f4;
+  text-align: center !important;
+  margin-bottom: 50px;
+}
+.wysiwygGreyblock h4 {
+  padding: 90px 0px 20px 0px;
+  color: #333333;
+  font-size: 16px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.wysiwygGreyblock p {
+  color: #666666;
+  font-size: 16px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 25px !important;
 }
 
 .goldwysiwygBlocks {
@@ -24327,6 +24392,39 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 16px;
   color: #505050;
   opacity: 0.9;
+}
+
+.tableau {
+  width: 636px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+}
+.tableau .tableauArticle {
+  width: 310px;
+  height: 120px;
+  margin: 0 auto;
+  float: left;
+  text-align: center;
+  border: 1px solid #e5e5e5;
+  border-bottom: 0px solid #e5e5e5;
+}
+.tableau .tableauArticle h3 {
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 40px;
+  color: #000000;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.tableau .tableauArticle h4 {
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 40px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+.tableau .tableauArticle:nth-child(2) {
+  border-left: 0px solid #e5e5e5;
 }
 
 .greyHr {
@@ -24503,6 +24601,28 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 30px;
+}
+
+.goldQuote {
+  text-align: center;
+}
+.goldQuote .goldBorders {
+  min-height: 350px;
+  height: auto;
+}
+.goldQuote .goldBorders h3 {
+  color: #c8a461;
+  padding: 80px 0px 50px 0px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.goldQuote .goldBorders p {
+  font-size: 14px;
+  color: #b1b1b1;
+  line-height: 30px;
+  padding: 0px 80px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
 .modalgoldBorders {
