@@ -32,6 +32,7 @@ class MediaController extends Controller
         $moreresults = true;
 
         if($request->isMethod('POST')) {
+
             $search = $request->request->get('search');
             $photo = $request->request->get('photo') ? true : false;
             $video = $request->request->get('video') ? true : false;
@@ -40,7 +41,13 @@ class MediaController extends Controller
             $yearStart = $request->request->get('year-start');
             $yearEnd = $request->request->get('year-end');
 
-            if(!$request->get('_route') == 'fdc_corporate_media_index_ajax') {
+            if(!$photo && !$video && !$audio) {
+                $photo = true;
+                $video = true;
+                $audio = true;
+            }
+
+            if(!$request->get('ajax')) {
                 return $this->redirectToRoute('fdc_corporate_media_index', array(
                     'search' => $search,
                     'photo' => $photo,
@@ -51,12 +58,6 @@ class MediaController extends Controller
                     'yearEnd' => $yearEnd,
                     'getsearch' => true
                 ));
-            }
-
-            if(!$photo && !$video && !$audio) {
-                $photo = true;
-                $video = true;
-                $audio = true;
             }
 
             //multi type does not work, doing it manually with single type
@@ -114,6 +115,8 @@ class MediaController extends Controller
             if(count($medias) == 0) {
                 $noresults = true;
             }
+
+
         }
 
         if($noresults) {
