@@ -28,8 +28,8 @@
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
-                            {% if film.productionYear != 0 %}
-                                <span class="title-date">{{ film.productionYear }}</span>
+                            {% if film.festival.year != 0 %}
+                                <span class="title-date">{{ film.festival.year }}</span>
                             {% endif %}
                         </div>
                     </a>
