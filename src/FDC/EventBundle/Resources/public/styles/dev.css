@@ -519,3 +519,7 @@
 .faq-container p a {
     color: #c8a461 !important;
 }
+
+.faq section article .icon_case-plus {
+    font-style: normal !important;
+}
