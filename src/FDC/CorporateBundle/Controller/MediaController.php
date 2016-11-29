@@ -40,6 +40,35 @@ class MediaController extends Controller
             $yearStart = $request->get('year-start');
             $yearEnd = $request->get('year-end');
 
+            return $this->redirectToRoute('fdc_corporate_media_index', array(
+                'search' => $search,
+                'photo' => $photo,
+                'video' => $video,
+                'audio' => $audio,
+                'pg' => $pg,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
+                'getsearch' => true
+            ));
+        }
+
+        if($noresults) {
+            if(!$page->getDisplayedSelection()) {
+                $medias = $page->getMediasSelection();
+            } else {
+                $medias = array();
+            }
+            $moreresults = false;
+        } elseif(!$request->isMethod('POST')) {
+
+            $search = $request->get('search');
+            $photo = $request->get('photo') ? true : false;
+            $video = $request->get('video') ? true : false;
+            $audio = $request->get('audio') ? true : false;
+            $pg = $request->get('pg') ? $request->get('pg') : 1;
+            $yearStart = $request->get('year-start');
+            $yearEnd = $request->get('year-end');
+
             if(!$photo && !$video && !$audio) {
                 $photo = true;
                 $video = true;
@@ -66,8 +95,8 @@ class MediaController extends Controller
                 foreach($photosPerson as $p) {
                     $medias[] = $p;
                 }
-                
-                
+
+
             }
 
             if($video) {
@@ -101,15 +130,6 @@ class MediaController extends Controller
             if(count($medias) == 0) {
                 $noresults = true;
             }
-        }
-
-        if($noresults || !$request->isMethod('POST')) {
-            if(!$page->getDisplayedSelection()) {
-                $medias = $page->getMediasSelection();
-            } else {
-                $medias = array();
-            }
-            $moreresults = false;
         }
 
         if($request->get('_route') == 'fdc_corporate_media_index_ajax') {
