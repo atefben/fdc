@@ -5,7 +5,7 @@
             {% set title = '' %}
             {% if media.film is defined %}
                 {% set title = media.film|trans_fallback('title')?:media.film.titleVO %}
-                {% set dateMedia = media.film.productionYear %}
+                {% set dateMedia = media.film.festival.year %}
             {% elseif media.person is defined %}
                 {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
                 {% set dateMedia = '' %}
