@@ -198,7 +198,8 @@
             <h3>Sous-titre 2</h3>
             <p>Acteur dans la majorité de ses films, Nanni Moretti fonde en 1986 la maison de production Sacher film avec Angelo Barbagallo et produit, outre ses propres films, Notte Italiana (1987) de Carlo Mazzacurati.</p>
             <h4>Sous-titre 3</h4>
-            <p>Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie. Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : Sogni d'Oro (Prix spécial du jury à Venise en 1981), La Messa e' finita (Ours d'Argent à Berlin en 1986) ou sélectionnés en compétition officielle à Cannes: Ecce Bombo en 1978, Aprile en 1998, Caro Diario qui remporte le prix de la mise en scène en 1994 et La Stanza del figlio, palme d'or au Festival 2001.</p>
+            <p>Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie</p>
+            <p>Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : Sogni d'Oro (Prix spécial du jury à Venise en 1981), La Messa e' finita (Ours d'Argent à Berlin en 1986) ou sélectionnés en compétition officielle à Cannes: Ecce Bombo en 1978, Aprile en 1998, Caro Diario qui remporte le prix de la mise en scène en 1994 et La Stanza del figlio, palme d'or au Festival 2001.</p>
           </div>
           
           <div class="text">

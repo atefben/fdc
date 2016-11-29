@@ -92,6 +92,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px solid #c8a461;
+
+  &:hover {
+    background: #c8a461;
+    color: white!important;
+  }
 }
 
 .smallWrapper {
@@ -226,13 +231,13 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .bio {
-  padding-bottom: 40px;
+
   a {
     color: $gold;
   }
   h2 {
     font-size: 22px;
-    padding: 50px 0px;
+    padding: 5px 0px 50px 0px;
     color: #333333;
     font-family: $Playfair;
     text-align: center;
@@ -240,7 +245,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
   h3 {
     font-size: 18px;
-    padding: 40px 0px;
+    padding: 5px 0px 30px 0px;
     color: #333333;
     font-family: $Playfair;
     text-align: left;  
@@ -248,10 +253,15 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
   h4 {
     font-size: 14px;
-    padding: 50px 0px;
+    padding: 5px 0px 40px 0px;
     color: #333333;
     font-family: $Playfair;
-    text-align: center;     
+    text-align: center;
+    text-transform: uppercase;     
+  }
+
+  p {
+    padding-bottom: 25px;
   }
 }
 

@@ -24108,6 +24108,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   letter-spacing: 1px;
   border: 1px solid #c8a461;
 }
+.formBtn:hover {
+  background: #c8a461;
+  color: white !important;
+}
 
 .smallWrapper {
   width: 650px;
@@ -24229,24 +24233,28 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .bio h2 {
   font-size: 22px;
-  padding: 50px 0px;
+  padding: 5px 0px 50px 0px;
   color: #333333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   text-align: center;
 }
 .bio h3 {
   font-size: 18px;
-  padding: 40px 0px;
+  padding: 5px 0px 30px 0px;
   color: #333333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   text-align: left;
 }
 .bio h4 {
   font-size: 14px;
-  padding: 50px 0px;
+  padding: 5px 0px 40px 0px;
   color: #333333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   text-align: center;
+  text-transform: uppercase;
+}
+.bio p {
+  padding-bottom: 25px;
 }
 
 .wideWrapper {
