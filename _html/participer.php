@@ -363,7 +363,7 @@
             <div class="modal-body">
               <div class="modal-content">
                   <div class="wideWrapper">
-                    <div class="goldBorders">
+                    <div class="modalgoldBorders">
                       <div class="specs">
                        <h2><i class="icon icon_camera"></i> Spécifications vidéo</h2>
                         <h3>Formats acceptés</h3>

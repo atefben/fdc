@@ -233,6 +233,9 @@
           transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
           letter-spacing: 1px;
           font-weight: normal;
+          &:hover {
+            color: $gold;
+          }
         }
       }
     }
