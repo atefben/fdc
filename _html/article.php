@@ -8,7 +8,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="single-article loading ">
+    <div id="main" class="single-article loading">
       <span id="addtext">Ajouter à ma sélection</span>
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-article">
@@ -74,7 +74,7 @@
                 <div data-id="photo2" class="thumb">
                   <img src="http://ohwee-symfony-test.s3-website-eu-west-1.amazonaws.com/media_image/0001/01/thumb_873_media_image_194x128.jpg" />
                 </div>
-                <div data-id="photo3" class="thumb">
+                <div data-id="photo3" class="thumb" data-caption="Riviera - © Fleurantin - 2015">
                   <img src="img/thumb01.jpg" />
                 </div>
                 <div class="thumb">

@@ -367,3 +367,19 @@ $(".topiconsContainer .second").hover(function () {
 $(".topiconsContainer .third").hover(function () {
     $(this).toggleClass("lastgoldBorders");
 });
+
+var fixed = false;
+ var topTrigger = $('.subNavigation').offset().top;
+ $(document).scroll(function() {
+   if( $(this).scrollTop() >= topTrigger ) {
+     if( !fixed ) {
+       fixed = true;
+       $('.subNavigation').addClass("subNavigationFixed");
+     }
+   } else {
+     if( fixed ) {
+       fixed = false;
+       $('.subNavigation').removeClass("subNavigationFixed");
+     }
+   }
+ });

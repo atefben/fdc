@@ -936,6 +936,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+.goldSlideshow .slideshow-img .thumbnails .thumb:after {
+  border: 0px solid #FFFFFF !important;
+  -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.eventSlideshow {
+  width: 880px;
+  height: 550px;
+  margin: 0 auto;
+}
+.eventSlideshow .slideshow-img {
+  height: 550px !important;
+  width: 880px;
+}
+
 div.chocolat-wrapper.show {
   opacity: 1;
   visibility: visible;
@@ -22165,12 +22183,12 @@ body:not(.tablette) .webtv #live .img {
 
 .subNavigation {
   background: black;
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   text-align: center;
-  bottom: -8%;
   position: absolute;
   width: 100%;
+  margin-bottom: 100px;
 }
 .subNavigation .active {
   color: #c3a05f;
@@ -22184,7 +22202,8 @@ body:not(.tablette) .webtv #live .img {
 }
 .subNavigation ul li a {
   color: #fff;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 12px;
   display: block;
   padding-right: 20px;
   text-transform: uppercase;
@@ -22518,6 +22537,27 @@ body:not(.tablette) .webtv #live .img {
   background: #29afcf !important;
   color: white !important;
   cursor: pointer;
+}
+
+.eventsPage .share {
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 70px 0;
+}
+.eventsPage .share p {
+  font-size: .75rem;
+  letter-spacing: .2em;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+}
+.eventsPage .buttons.square .button {
+  line-height: 73px;
 }
 
 /* TABS */
@@ -23441,6 +23481,14 @@ ul.tabs .quarterTab h4 {
 }
 
 /* EVENT PAGE */
+.noPadding {
+  padding: 0px 0;
+}
+
+.single-article .half-div {
+  margin: 0 auto;
+}
+
 .calendar {
   width: 100%;
   height: 240px;
@@ -23641,11 +23689,6 @@ ul.tabs .quarterTab h4 {
   line-height: 25px;
   text-align: center;
 }
-@media screen and (max-width: 1280px) {
-  .conferences .conf10 {
-    display: none;
-  }
-}
 .conferences .conf60, .conferences .conf70 {
   display: block;
   width: 47%;
@@ -23667,8 +23710,7 @@ ul.tabs .quarterTab h4 {
 }
 @media screen and (max-width: 1280px) {
   .conferences .conf60, .conferences .conf70 {
-    width: 50%;
-    padding-left: 65px;
+    width: 44%;
   }
 }
 .conferences .conf60 .conf60title, .conferences .conf70 .conf60title {
@@ -23677,11 +23719,6 @@ ul.tabs .quarterTab h4 {
   font-size: 12px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
-}
-@media screen and (max-width: 1279px) {
-  .conferences .conf60 .conf60title, .conferences .conf70 .conf60title {
-    display: block;
-  }
 }
 .conferences .conf60 hr, .conferences .conf70 hr {
   display: none;
@@ -23710,6 +23747,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0.7;
   margin-top: 40px;
   letter-spacing: 1px;
+  color: #b1b1b1;
 }
 .conferences .conf60 .confButton .ensavoirplus, .conferences .conf70 .confButton .ensavoirplus {
   -webkit-transform: rotate(180deg);
@@ -23831,6 +23869,7 @@ ul.tabs .quarterTab h4 {
 .conferences .box {
   min-height: 290px;
   height: auto;
+  cursor: default;
   overflow: hidden !important;
   border-bottom: 20px solid #333333 !important;
 }
@@ -23924,6 +23963,10 @@ ul.tabs .quarterTab h4 {
 .minMargin {
   margin-bottom: 20px !important;
   padding: 0px 100px;
+  color: #2b2b2b;
+  font-size: 14px;
+  line-height: 25px;
+  opacity: 0.8;
 }
 
 .producersProgramme {
@@ -23957,11 +24000,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .subHeader {
-  background: url("/img/oldCam.png") fixed;
-  background-size: 100% 250px;
   text-align: center;
   height: 250px;
-  margin-bottom: 110px !important;
   vertical-align: middle;
   width: 100%;
   position: relative;
@@ -23975,49 +24015,51 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   color: #ffffff;
   text-transform: uppercase;
-  margin-top: 90px;
   letter-spacing: 1px;
+  line-height: 250px;
 }
 @media screen and (min-width: 1600px) {
   .subHeader {
     height: 350px;
   }
   .subHeader h3 {
-    margin-top: 140px;
+    line-height: 300px;
   }
 }
 
-.eventsHeader {
-  background: url("/img/eventBckg.png") fixed;
-  background-size: 100% 90%;
-  text-align: center;
-  height: 300px;
-  margin-bottom: 110px !important;
-  vertical-align: middle;
-  width: 100%;
+.subNavigation {
   position: relative;
-  z-index: 999;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
+  z-index: 1002;
+  top: 0px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.subNavigationFixed {
+  position: fixed;
+  z-index: 1002;
+  width: 100%;
+  top: 90px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.eventsHeader {
+  height: 230px !important;
 }
 .eventsHeader h3 {
-  font-size: 40px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  text-transform: uppercase;
-  margin-top: 0px;
-  letter-spacing: 2px;
-  line-height: 270px;
+  line-height: 230px !important;
 }
 @media screen and (min-width: 1600px) {
   .eventsHeader {
-    height: 350px;
-    background-size: 100% 100%;
+    height: 300px !important;
   }
   .eventsHeader h3 {
-    margin-top: 0px;
-    line-height: 300px;
+    line-height: 300px !important;
   }
 }
 
@@ -24186,14 +24228,15 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 48px;
   color: #141414;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  letter-spacing: 1px;
-  padding-bottom: 80px;
+  letter-spacing: 2px;
+  padding-bottom: 70px;
   text-transform: initial;
 }
 .centerWrapper p {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #505050;
+  opacity: 0.9;
 }
 
 .goldBorders {

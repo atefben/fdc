@@ -204,12 +204,12 @@
 
 .subNavigation {
     background: black;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     text-align: center;
-    bottom: -8%;
     position: absolute;
     width: 100%;
+    margin-bottom: 100px;
 
     .active {
       color: #c3a05f;
@@ -222,7 +222,8 @@
         margin-left: 30px;
         a {
           color: #fff;
-          font-family: $CamphorHeavy;
+          font-family: $CamphorRegular;
+          font-size: 12px;
           display: block;
           padding-right: 20px;
           text-transform: uppercase;
@@ -534,4 +535,28 @@
       color: white!important;
       cursor: pointer;
     }
+}
+
+
+.eventsPage {
+   .share {
+    @include align();
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 70px 0;
+
+    p {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+      text-transform: uppercase;
+    }
+  }
+
+  .buttons.square .button {
+    line-height: 73px;
+  } 
 }

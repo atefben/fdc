@@ -860,6 +860,22 @@
   @include transition(all 0.1s $smoothTransition);
 }
 
+.goldSlideshow .slideshow-img .thumbnails .thumb:after {
+  border: 0px solid #FFFFFF!important;
+  @include transition(all 0.1s $smoothTransition);
+}
+
+.eventSlideshow {
+    width: 880px;
+    height: 550px;
+    margin: 0 auto;
+
+    .slideshow-img {
+        height: 550px!important;
+        width: 880px;
+      }    
+}
+
 div.chocolat-wrapper.show {
     opacity: 1;
     visibility: visible;
