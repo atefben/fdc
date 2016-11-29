@@ -2,6 +2,10 @@
   min-height: 2000px;
 }
 
+.padded {
+  padding-top: 100px;
+}
+
 .whiteBckg {
   background: white!important;
 }
@@ -103,11 +107,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     margin-left: 30px;
   }
 
-  h3 {
+  h2, h3{
     color: #0c0c0c;
     text-transform: uppercase;
-    font-family: $CamphorBold;
+    font-family: $CamphorRegular;
     margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-size: 16px;
+  }
+
+  h3 {
+    font-size: 12px;
+    font-family: $CamphorBold;
     letter-spacing: 2px;
   }
 
@@ -119,13 +130,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     color: #666666;
     list-style-type: none!important;
     list-style-position: inside;
-    padding: 0px 0 0px 0px;
-    text-indent: -1em;
+    padding: 0px 35px 0px 0px;
     line-height: 25px;
-    font-size: 16px!important;
+    font-size: 16px !important;
     list-style: initial;
     list-style-position: inside;
-    letter-spacing: 2px;
   }
 
   ul {
@@ -136,14 +145,21 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     text-transform: uppercase;
     padding: 35px 0px;
     line-height: 40px;
-    font-size: 14px!important;
+    li {
+      font-size: 12px!important;
+      letter-spacing: 2px;
+      text-indent: -1.5em;
+    }
+
   }
 
   p {
     font-size: 16px;
     color: #666666;
-    line-height: 35px;
-    letter-spacing: 1px;
+    line-height: 30px;
+    letter-spacing: 0px;
+    opacity: 0.9;
+    font-family: $CamphorRegular;
 
     span {
       font-family: $CamphorBold;
@@ -175,11 +191,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     text-transform: uppercase;
     color: #666666;
     letter-spacing: 2px;
-    font-size: 14px;
+    font-size: 12px;
   }
   .goldTitle {
+    font-size: 14px;
     color: #c8a461;
     padding: 130px 0px 70px 0px;
+  }
+}
+
+.modalWrapper {
+  p {
+    letter-spacing: 2px;
   }
 }
 
@@ -210,6 +233,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     color: #0c0c0c;
     text-transform: uppercase;
     font-family: $CamphorBold;
+    font-size: 12px;
   }
 
   li, p {
@@ -266,10 +290,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
   
 .goldBorders  {
-    width: 705px;
-    height: 320px;
-    padding: 40px;
-    border: 2px solid #c8a461;
+    width: 745px;
+    height: 460px;
+    border: 1px solid #c8a461;
 
     a {
      color: #c3a05f;
@@ -277,15 +300,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
     h3 {
       margin-bottom: 30px;
+      letter-spacing: 1px;
     }
 
     p {
       margin-bottom: 25px;
+      font-size: 16px;
     }
 
     .specs {
-      width: 50%;
+      width: 40%;
       float: left;
+      padding: 5%;
 
       i {
         margin-right: 10px;
@@ -296,23 +322,25 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
         font-size: 16px;
         text-transform: uppercase;
         color: #c8a461;
-        padding-bottom:35px;
+        padding-bottom: 0px;
       }
 
       h3 {
         color: #0c0c0c;
-        font-family: $CamphorRegular!important;
+        font-family: $CamphorBold!important;
         font-size: 12px;
         text-transform: uppercase;
         line-height: 25px;
-        margin-bottom: 10px!important;
+        margin-bottom: 0px!important;
+        margin-top: 40px;
+        letter-spacing: 0px;
         
       }
 
       span {
         color: #666666;
         font-family: $CamphorRegular;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 30px;
       }
     }
@@ -321,7 +349,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .greyHr {
   width: 100%;
   height: 0px;
-  border-top: 2px solid #cfcfcf;
+  border-top: 1px solid #cfcfcf;
 }
 
 .movieOnline {
@@ -332,6 +360,14 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     margin: 0 auto;
     margin-top: 50px;
     text-align: center;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    margin-bottom: 50px;
   }
 
   .formBtn {
@@ -356,8 +392,13 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     line-height: 50px;
     font-family: $CamphorRegular;
     color: #0c0c0c;
-    letter-spacing: 2px;
+    letter-spacing: 0px;
+    opacity: 0.9;
     font-size: 12px;
+
+    &:nth-child(2) {
+      border-left: 0px solid #e5e5e5;
+    }
   }
 
   .formBtn {
@@ -570,10 +611,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .modal-heading {
-  font-size: 1.125em;
+  font-size: 16px;
+  font-weight: $CamphorBold;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .modal-content > *:first-child {

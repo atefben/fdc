@@ -970,6 +970,9 @@ ul.tabs {
   text-transform: uppercase;
   display: inline-block;
   float: left;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .selectbtn:focus {
   outline: none;
