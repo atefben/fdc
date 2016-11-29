@@ -11,7 +11,7 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
-    <div id="main" class="home loading noPadding">
+    <div id="main" class="home loading noPadding whiteBckg">
           <div class="list-article"> 
             <div class="bandeau-list">
               <div class="bandeau-list-img bandeau-head vCenter subHeader eventsHeader" style="background-image:url('img/skyCam7.png')">
@@ -350,6 +350,10 @@
               </div>
             </div>
           </div>
+        <?php include('box-catalogue.php'); ?>  
+        <?php include('box-social.php'); ?>  
+        <?php include('box-news.php'); ?>
+        <?php include('box-contact.php'); ?>  
       </div>
 
       <div class="modal">
@@ -383,7 +387,7 @@
                       </div>
                     </div>
                   </div>       
-                  <div class="smallWrapper modalWrapper modalWrapper">
+                  <div class="smallWrapper modalWrapper">
                     <h3>Caractéristiques du fichier :</h3>
                     <p>Seuls les fichiers multiplexés seront acceptés (vidéo, audio et sous-titres dans un seul et même fichier). La taille maximum du fichier doit être de 8 GO pour chaque film. Plus la résolution est importante, meilleure sera la qualité de numérisation. Vous pouvez mettre en ligne des films avec une résolution allant jusqu’à 1920x1080 pixels (HD), tout en respectant le critère de taille évoqué plus haut.</p>
                   </div>     
@@ -401,11 +405,6 @@
                     <p>Vous trouverez ci-contre le manuel expliquant comment extraire votre film d’un DVD ou réencoder un fichier vidéo dans un format adapté au téléchargement sur notre site. Outre les logiciels professionnels type Final Cut ou Premiere, les logiciels que nous recommandons (gratuits et simples d’utilisation) sont <a href="#">HandBrake</a> et MPEG Streamclip.</p>
 
                      <p>Navigateur et connexion Internet :</p>
-                  </div>     
-                  <div class="smallWrapper modalWrapper">
-                    <h3>Sous-titres :</h3>
-                    <p>Vous serez prévenu avant la conférence de presse officielle, qui a lieu vers la mi-avril.</p>
-                    <p>Les sous-titres doivent être incrustés dans l’image.</p>
                   </div>         
                   <!--<button class="modal-toggle">Update</button>-->
               </div>

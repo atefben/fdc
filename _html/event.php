@@ -1002,6 +1002,10 @@
                 <a href="#" class="button print"><i class="icon icon_print"></i></a>
               </div>
           </div>
+        <?php include('box-catalogue.php'); ?>  
+        <?php include('box-social.php'); ?>  
+        <?php include('box-news.php'); ?>
+        <?php include('box-contact.php'); ?>  
       </div>
 <!-- POPIN MAIL SHARE -->
     <div class="popin-mail popin">

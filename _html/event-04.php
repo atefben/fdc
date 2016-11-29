@@ -218,7 +218,10 @@
             </div>
             <div class="author">Rédigé par Morgane Urbain</div>
           </div>
-
+        <?php include('box-catalogue.php'); ?>  
+        <?php include('box-social.php'); ?>  
+        <?php include('box-news.php'); ?>
+        <?php include('box-contact.php'); ?>  
 
   <!-- END MAIN-->
     </div>
