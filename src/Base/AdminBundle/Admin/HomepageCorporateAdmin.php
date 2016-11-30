@@ -292,6 +292,10 @@ class HomepageCorporateAdmin extends Admin
                 'help' => 'form.homepage.helper_pushes',
                 'required' => false,
             ))
+            ->add('VideoUne', 'sonata_type_model_list', array(
+                'label' => 'Vidéo à la une',
+                'required' => false,
+            ))
             ->add('pushSecondaryImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
                 'help' => 'form.homepage.helper_pushes',
