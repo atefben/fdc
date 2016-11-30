@@ -111,10 +111,10 @@ class NewsImporter extends Importer
             return null;
         }
 
-        $matching = $this->isNewsMatching($oldArticle, $oldTranslations);
-        if (!$matching) {
-            return null;
-        }
+            $matching = $this->isNewsMatching($oldArticle, $oldTranslations);
+            if (!$matching) {
+                return null;
+            }
 
         $news = $this->buildNewsArticle($oldArticle);
 
@@ -813,14 +813,34 @@ class NewsImporter extends Importer
                     }
                 }
             }
-
             if ($hasWord) {
                 $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-            }
-            else {
+            } else {
                 $this->status = TranslateChildInterface::STATUS_PUBLISHED;
             }
             return true;
+        }
+
+
+        $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
+        if ($condIsAvailable) {
+            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+            return true;
+        }
+
+
+        $words = ['le savez-vous', 'présence à Cannes'];
+        $condIsAvailable = !$oldArticle->getIsOnline();
+        if ($condIsAvailable) {
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                foreach ($words as $word) {
+                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
+                        $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }
