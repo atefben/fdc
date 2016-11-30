@@ -49,7 +49,14 @@ class NewsImporter extends Importer
             $oldArticles = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:OldArticle')
-                ->findBy(['articleTypeId' => static::TYPE_QUOTIDIEN], ['id' => 'asc'], 50, ($page - 1) * 50)
+                ->createQueryBuilder('o')
+                ->andWhere('o.articleTypeId in (:types)')
+                ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+                ->addOrderBy('o.id', 'asc')
+                ->setMaxResults(50)
+                ->setFirstResult(($page - 1) * 50)
+                ->getQuery()
+                ->getResult()
             ;
 
             foreach ($oldArticles as $oldArticle) {
@@ -82,8 +89,8 @@ class NewsImporter extends Importer
             ->getRepository('BaseCoreBundle:OldArticle')
             ->createQueryBuilder('o')
             ->select('count(o)')
-            ->andWhere('o.articleTypeId = :type')
-            ->setParameter(':type', static::TYPE_QUOTIDIEN)
+            ->andWhere('o.articleTypeId in (:types)')
+            ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
             ->getQuery()
             ->getSingleScalarResult()
             ;
@@ -111,10 +118,10 @@ class NewsImporter extends Importer
             return null;
         }
 
-            $matching = $this->isNewsMatching($oldArticle, $oldTranslations);
-            if (!$matching) {
-                return null;
-            }
+        $matching = $this->isNewsMatching($oldArticle, $oldTranslations);
+        if (!$matching) {
+            return null;
+        }
 
         $news = $this->buildNewsArticle($oldArticle);
 
@@ -778,66 +785,71 @@ class NewsImporter extends Importer
     {
         $this->doNotPublish = false;
 
-        // case one
-        // Communiqués-Festival de 2001 > 2006
-        $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
-        $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2001;
-        $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2006;
-        if ($condIsAvailable) {
-            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-            return 6;
-        }
+        if ($oldArticle->getArticleTypeId() == static::TYPE_QUOTIDIEN) {
+            // case one
+            // Communiqués-Festival de 2001 > 2006
+            $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
+            $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2001;
+            $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2006;
+            if ($condIsAvailable) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                return 6;
+            }
 
-        // case two
-        // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
-        // "conférence" dans le titre + film associé
-        $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
-        $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2007;
-        $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
+            // case two
+            // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
+            // "conférence" dans le titre + film associé
+            $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
+            $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2007;
+            $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
 
-        $words = [
-            'marches',
-            'le savez-vous',
-            'le saviez-vous',
-            'phrase du jour',
-            'presence a cannes',
-        ];
+            $words = [
+                'marches',
+                'le savez-vous',
+                'le saviez-vous',
+                'phrase du jour',
+                'presence a cannes',
+            ];
 
-        if ($isAvailable) {
-            $hasWord = false;
-            foreach ($oldArticleTranslations as $trans) {
-                $title = $this->removeAccents($trans->getTitle());
-                foreach ($words as $word) {
-                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
-                        $hasWord = true;
+            if ($isAvailable) {
+                $hasWord = false;
+                foreach ($oldArticleTranslations as $trans) {
+                    $title = $this->removeAccents($trans->getTitle());
+                    foreach ($words as $word) {
+                        if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
+                            $hasWord = true;
+                        }
                     }
                 }
+                if ($hasWord) {
+                    $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                } else {
+                    $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+                }
+                return true;
             }
-            if ($hasWord) {
+
+        }
+        if ($oldArticle->getArticleTypeId() == static::TYPE_WALL) {
+            $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
+            if ($condIsAvailable) {
                 $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-            } else {
-                $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+                return true;
             }
-            return true;
         }
 
 
-        $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
-        if ($condIsAvailable) {
-            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-            return true;
-        }
-
-
-        $words = ['le savez-vous', 'présence à Cannes'];
-        $condIsAvailable = !$oldArticle->getIsOnline();
-        if ($condIsAvailable) {
-            foreach ($oldArticleTranslations as $trans) {
-                $title = $this->removeAccents($trans->getTitle());
-                foreach ($words as $word) {
-                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
-                        $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-                        return true;
+        if (in_array($oldArticle->getArticleTypeId(), [static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])) {
+            $words = ['le savez-vous', 'présence à Cannes'];
+            $condIsAvailable = !$oldArticle->getIsOnline();
+            if ($condIsAvailable) {
+                foreach ($oldArticleTranslations as $trans) {
+                    $title = $this->removeAccents($trans->getTitle());
+                    foreach ($words as $word) {
+                        if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
+                            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                            return true;
+                        }
                     }
                 }
             }
