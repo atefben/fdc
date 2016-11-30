@@ -24,11 +24,14 @@ use Base\CoreBundle\Entity\NewsWidgetVideoYoutube;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class NewsImporter extends Importer
 {
     protected $widgetPosition = 0;
+
+    protected $status;
 
     public function importNews()
     {
@@ -112,9 +115,6 @@ class NewsImporter extends Importer
         if (!$matching) {
             return null;
         }
-
-        $news = $this->buildNewsArticle($oldArticle);
-
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildNewsArticleTranslation($news, $oldTranslation);
             if ($translation) {
@@ -200,6 +200,9 @@ class NewsImporter extends Importer
                 $this->getManager()->persist($translation);
 
                 if ($locale == 'fr') {
+                    if ($this->status) {
+
+                    }
                     $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
                 } else {
                     $translation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
@@ -777,7 +780,8 @@ class NewsImporter extends Importer
         $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2001;
         $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2006;
         if ($condIsAvailable) {
-            return true;
+            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+            return 6;
         }
 
         // case two
@@ -786,26 +790,32 @@ class NewsImporter extends Importer
         $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2007;
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
+
+        $words = [
+            'marches',
+            'le savez-vous',
+            'le saviez-vous',
+            'phrase du jour',
+            'présence à Cannes',
+        ];
+
         if ($isAvailable) {
-            $hasConference = false;
+            $hasWord = false;
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
-                if ($trans->getCulture() == 'fr' && (stripos($title, 'conference') !== false)) {
-                    $hasConference = true;
+                foreach ($words as $word) {
+                    if ($trans->getCulture() == 'fr' && (stripos($title, 'marches') !== false)) {
+                        $hasWord = true;
+                    }
                 }
             }
-
-            if ($hasConference == true) {
-                $oldArticleAssociations = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:OldArticleAssociation')
-                    ->findOneBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'])
-                ;
-
-                if (count($oldArticleAssociations) > 0) {
-                    return true;
-                }
+            if ($hasWord) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
             }
+            else {
+                $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+            }
+            return true;
         }
         return false;
     }
