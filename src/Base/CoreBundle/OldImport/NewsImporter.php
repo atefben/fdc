@@ -115,6 +115,9 @@ class NewsImporter extends Importer
         if (!$matching) {
             return null;
         }
+
+        $news = $this->buildNewsArticle($oldArticle);
+
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildNewsArticleTranslation($news, $oldTranslation);
             if ($translation) {
