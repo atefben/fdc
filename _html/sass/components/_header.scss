@@ -662,33 +662,6 @@ header {
   float: right;
   width: 193px;
 
-  .topIcons {
-      display: block;
-      float: left;
-      height: 63px;
-      position: relative;
-      margin-top: 35px;
-      width: 63px;
-      line-height: 63px;
-      text-align: center;
-    a {
-        color: #fff;
-        position: relative;
-        background-size: 20px;
-        display: block;
-        height: 100%;
-        width: 100%;
-        line-height: 63px;
-    }
-
-    &:hover {
-      i {
-        color: $gold;
-      }
-    }
-  }
-}
-
 .first {
   position: relative;
   border-top: 1px solid #404040;
@@ -714,6 +687,33 @@ header {
   border-right: 1px solid #404040;
   overflow: hidden;
   z-index: 1002;
+}
+
+  .topIcons {
+      display: block;
+      float: left;
+      height: 63px;
+      position: relative;
+      margin-top: 35px;
+      width: 63px;
+      line-height: 63px;
+      text-align: center;
+    a {
+        color: #fff;
+        position: relative;
+        background-size: 20px;
+        display: block;
+        height: 100%;
+        width: 100%;
+        line-height: 63px;
+    }
+
+    &:hover {
+      i {
+        color: $gold;
+      }
+    }
+  }
 }
 
 .goldBdrs {

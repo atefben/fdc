@@ -25,7 +25,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .whiteBackg {
   background: white!important;
-}.subHeader {
+}
+
+.subHeader {
     text-align:center;
     height: 250px;
     vertical-align: middle;
@@ -394,6 +396,19 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .goldwysiwygBlocks {
   width: 705px;
 }
+
+.wysiwyg-categorie-items {
+
+   .title-list-cat {
+      border-bottom: #202020 0px solid;
+      border-top: #202020 0px solid;
+   }
+
+   h2, p {
+    color: #202020;
+   }
+
+ }
 
 .centerWrapper {
   @include align();

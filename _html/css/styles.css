@@ -986,6 +986,12 @@ div.chocolat-wrapper.show {
   margin-left: 5px !important;
 }
 
+.slide-artist .first {
+  border-top: 0px solid #404040;
+  border-bottom: 0px solid #404040;
+  border-left: 0px solid #404040;
+}
+
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
@@ -3991,49 +3997,51 @@ body.fix {
   background-color: #fff;
   clear: both;
   position: relative;
-  /*&:after {
-    background-color: $black;
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    width: 100%;
-    z-index: 5;
-    @include transition(all 0.5s $smoothTransition);
-  }
-
-  &.overlay:after {
-    opacity: 0.8;
-    visibility: visible;
-  }
-
-  &:before {
-    background-color: $black;
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    width: 100%;
-    z-index: 5;
-    @include transition(all 0.9s $smoothTransition);
-  }
-
-  &.loading:before {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &.overlay {
-    cursor: pointer;
-  }*/
+}
+#main:after {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#main.overlay:after {
+  opacity: 0.8;
+  visibility: visible;
+}
+#main:before {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#main.loading:before {
+  opacity: 1;
+  visibility: visible;
+}
+#main.overlay {
+  cursor: pointer;
 }
 
 .shadow-bottom:before {
@@ -5430,6 +5438,31 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   float: right;
   width: 193px;
 }
+.topiconsContainer .first {
+  position: relative;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  border-left: 1px solid #404040;
+  z-index: 900;
+  overflow: hidden;
+}
+.topiconsContainer .second {
+  position: relative;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  border-left: 1px solid #404040;
+  border-right: 1px solid #404040;
+  overflow: hidden;
+  z-index: 1;
+}
+.topiconsContainer .third {
+  position: relative;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  border-right: 1px solid #404040;
+  overflow: hidden;
+  z-index: 1002;
+}
 .topiconsContainer .topIcons {
   display: block;
   float: left;
@@ -5451,34 +5484,6 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 .topiconsContainer .topIcons:hover i {
   color: #c8a461;
-}
-
-.first {
-  position: relative;
-  border-top: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  border-left: 1px solid #404040;
-  z-index: 900;
-  overflow: hidden;
-}
-
-.second {
-  position: relative;
-  border-top: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  border-left: 1px solid #404040;
-  border-right: 1px solid #404040;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.third {
-  position: relative;
-  border-top: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  border-right: 1px solid #404040;
-  overflow: hidden;
-  z-index: 1002;
 }
 
 .goldBdrs {
@@ -5524,48 +5529,51 @@ footer {
   padding: 0px 0 0 0;
   position: relative;
   z-index: 2;
-  /*&:after {
-    background-color: $black;
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    width: 100%;
-    z-index: 5;
-    @include transition(all 0.3s $smoothTransition);
-  }
-
-  &:before {
-    background-color: $black;
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    width: 100%;
-    z-index: 5;
-    @include transition(all 0.9s $smoothTransition);
-  }
-
-  &.loading:before {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &.overlay:after {
-    opacity: 0.6;
-    visibility: visible;
-  }*/
 }
 footer .subtitle {
   padding-right: 7px;
+}
+footer:after {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer:before {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+footer.loading:before {
+  opacity: 1;
+  visibility: visible;
+}
+footer.overlay:after {
+  opacity: 0.6;
+  visibility: visible;
 }
 footer h2 {
   color: #fff;
@@ -5739,45 +5747,48 @@ footer .footer-menu ul li a:hover {
   border-bottom: 1px solid #2c2c2c;
   position: relative;
   background: #141414;
-  /*&:after {
-    background-color: $black;
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    width: 100%;
-    z-index: 5;
-    @include transition(all 0.3s $smoothTransition);
-  }
-
-  &:before {
-    background-color: $black;
-    content: '';
-    display: block;
-    height: 110%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: -2px;
-    visibility: hidden;
-    width: 100%;
-    z-index: 5;
-    @include transition(all 0.9s $smoothTransition);
-  }
-
-  &.loading:before {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &.overlay:after {
-    opacity: 0.6;
-    visibility: visible;
-  }*/
+}
+#breadcrumb:after {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#breadcrumb:before {
+  background-color: #141414;
+  content: '';
+  display: block;
+  height: 110%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: -2px;
+  visibility: hidden;
+  width: 100%;
+  z-index: 5;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#breadcrumb.loading:before {
+  opacity: 1;
+  visibility: visible;
+}
+#breadcrumb.overlay:after {
+  opacity: 0.6;
+  visibility: visible;
 }
 #breadcrumb .container {
   width: 979px;
@@ -10991,7 +11002,7 @@ a {
   text-align: left;
   margin-left: 10px;
   margin-top: 100px;
-  z-index: 1002;
+  z-index: 2;
 }
 
 .bigBox .socialIcon, .biggerBox .socialIcon {
@@ -11210,7 +11221,7 @@ a {
   text-align: center;
   width: 100%;
   position: relative;
-  z-index: 1000;
+  z-index: 2;
   overflow: hidden;
   padding-top: 70px;
 }
@@ -11366,7 +11377,7 @@ a {
   letter-spacing: 12px;
   text-transform: uppercase;
   position: relative;
-  z-index: 1000;
+  z-index: 2;
   margin-bottom: 70px;
 }
 
@@ -22022,7 +22033,7 @@ body:not(.tablette) .webtv #live .img {
   vertical-align: middle;
   width: 100%;
   position: relative;
-  z-index: 1000;
+  z-index: 2;
 }
 .our-news .innerWrapper {
   width: 1072px;
@@ -22239,7 +22250,7 @@ body:not(.tablette) .webtv #live .img {
 /* END BOX PRODUCERS WORKSHOP */
 /* BOX CONTACT */
 #contact-box {
-  z-index: 1000 !important;
+  z-index: 2;
 }
 
 .contact-box {
@@ -24391,6 +24402,14 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .goldwysiwygBlocks {
   width: 705px;
+}
+
+.wysiwyg-categorie-items .title-list-cat {
+  border-bottom: #202020 0px solid;
+  border-top: #202020 0px solid;
+}
+.wysiwyg-categorie-items h2, .wysiwyg-categorie-items p {
+  color: #202020;
 }
 
 .centerWrapper {

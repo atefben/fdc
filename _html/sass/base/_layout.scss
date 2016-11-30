@@ -86,7 +86,7 @@ body {
   clear: both;
   position: relative;
 
-  /*&:after {
+  &:after {
     background-color: $black;
     content: '';
     display: block;
@@ -128,7 +128,7 @@ body {
 
   &.overlay {
     cursor: pointer;
-  }*/
+  }
 }
 
 .shadow-bottom {

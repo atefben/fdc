@@ -17,7 +17,7 @@
     vertical-align: middle;
     width: 100%;
     position: relative;
-    z-index: 1000;
+    z-index: 2;
 
     .innerWrapper {
       width: 1072px;
@@ -255,7 +255,7 @@
 /* BOX CONTACT */
 
 #contact-box {
-  z-index: 1000!important; 
+  z-index: 2; 
 }
 
 .contact-box {
