@@ -44,7 +44,7 @@ class FilmFilmToElasticaTransformer extends ModelToElasticaAutoTransformer imple
       else {
         foreach ($film->getPersons() as $person) {
           if ($person->getPerson()) {
-            $value[] = array('name' => (string) $person->getPerson());
+            $value[] = array('name' => (string) $person->getPerson()->getFullName());
           }
         }
       }

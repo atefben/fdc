@@ -32,6 +32,11 @@ class FDCPageParticipateSectionWidgetTypeone extends FDCPageParticipateSectionWi
     protected $translations;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $picto;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -61,5 +66,28 @@ class FDCPageParticipateSectionWidgetTypeone extends FDCPageParticipateSectionWi
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set picto
+     *
+     * @param string $picto
+     * @return FDCPageParticipateSectionWidgetTypeone
+     */
+    public function setPicto($picto)
+    {
+        $this->picto = $picto;
+
+        return $this;
+    }
+
+    /**
+     * Get picto
+     *
+     * @return string 
+     */
+    public function getPicto()
+    {
+        return $this->picto;
     }
 }

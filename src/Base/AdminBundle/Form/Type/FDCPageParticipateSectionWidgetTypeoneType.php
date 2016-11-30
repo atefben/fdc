@@ -100,6 +100,9 @@ class FDCPageParticipateSectionWidgetTypeoneType extends FDCPageParticipateSecti
                 'model_manager' => $this->FDCPageParticipateSectionWidgetTypeoneDummyAdmin->getModelManager(),
                 'class' => $this->FDCPageParticipateSectionWidgetTypeoneDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
+            ->add('picto', 'choice', array(
+                'choices' => ['' => 'Aucun', 'icon_acces-libre' => 'Porte', 'icon_badge' => 'Badge', 'icon_invitation' => 'Invitation']
+            ))
             ;
 
     }
