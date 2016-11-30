@@ -168,8 +168,11 @@ class NewsController extends Controller
                 $filters['themes']['content'][] = $homeArticle->getTheme();
             }
 
-            if (!in_array($homeArticle->getNewsType(), $filters['format'])) {
-                $filters['format'][] = $homeArticle->getNewsType();
+            if (!empty($homeArticles)) {
+                $format = $homeArticles[0]->getTypes();
+                $filters['format'] = array_merge($filters['format'], array_values($format));
+            //if (!in_array($homeArticle->getNewsType(), $filters['format'])) {
+              //  $filters['format'][] = $homeArticle->getNewsType();
             }
         }
 
