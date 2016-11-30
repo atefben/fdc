@@ -142,6 +142,7 @@ class MediaRepository extends EntityRepository
                 ->andWhere('mv.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+            $qb = $this->addTranslationQueries($qb, 'wt', $locale);
 
             $searchOr[] = 'mvt.title LIKE :search';
             $searchOr[] = 'wt.name LIKE :search';
