@@ -15,3 +15,7 @@ services:
         class: Base\CoreBundle\OldImport\StatementImporter
         arguments:
             -  "@service_container"
+    old_import.classics_importer:
+        class: Base\CoreBundle\OldImport\ClassicsImporter
+        arguments:
+            -  "@service_container"

@@ -74,15 +74,18 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $newsImporter = $this->getContainer()->get('old_import.news_importer');
         $infoImporter = $this->getContainer()->get('old_import.info_importer');
         $statementImporter = $this->getContainer()->get('old_import.statement_importer');
+        $classicsImporter = $this->getContainer()->get('old_import.classics_importer');
 
         $newsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
         $infoImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
         $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+        $classicsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
 
         if ($onlyArticles) {
-            //$infoImporter->importInfos();
-            //$statementImporter->importStatements();
+            $infoImporter->importInfos();
+            $statementImporter->importStatements();
             $newsImporter->importNews();
+            $classicsImporter->importClassics();
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);
             $this->importMediaAudio($dm, $mediaManager, $output, $input);

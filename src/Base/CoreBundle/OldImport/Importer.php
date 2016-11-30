@@ -23,6 +23,7 @@ class Importer
     const TYPE_WALL = 23123;
     const TYPE_TOO = 23118;
     const TYPE_PHOTOPGRAH_EYE = 23135;
+    const TYPE_WEB_PAGE = 1;
 
     const MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA = 1;
     const MEDIA_GALLERY_PHOTOGRAPHER_EYES = 2;
@@ -272,7 +273,7 @@ class Importer
 
     /**
      * @param $url
-     * @return string|void
+     * @return string
      */
     protected function createAudio($url)
     {
