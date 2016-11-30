@@ -110,7 +110,7 @@ class InfoImporter extends Importer
             return null;
         }
 
-        $matching = $this->isInfoMatching($oldArticle);
+        $matching = $this->isInfoMatching($oldArticle, $oldTranslations);
         if (!$matching) {
             return null;
         }
