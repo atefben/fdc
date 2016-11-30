@@ -381,11 +381,11 @@
                                      data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                      data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                     {% if featuredVideo.image|trans_fallback('file') %}
-                                        data-img="{% path featuredVideo.image|trans_fallback('file'), '463x292' %}"
+                                        data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
                                     {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
                                         data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
                                     {% else %}
-                                        data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                        data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
                                     {% endif %}
                                      data-name="{{ featuredVideo|trans_fallback('title') }}">
                                     <div id="video-player" class="jwplayer jw-reset">
