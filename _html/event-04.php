@@ -71,7 +71,7 @@
           </div>
           
           <div class="text">
-          <a href="#"><div class="formBtn modal-toggle centered">voir le formulaire</div></a>
+          <a href="programmation-evenementiel.php" class="button single-button">Toute la programmation</a>
           </div>
 
           <div class="quote">
@@ -85,11 +85,13 @@
             <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
           </div>
           
-          <div class="wideWrapper goldQuote">
-            <div class="goldBorders">
-              <h3>Dans quel sens ?</h3>
-              <p>Je voulais être libre au niveau dans la narration et la forme. Le film tire sa singularité du fait que nous l’avons tourné aux États-Unis avec un casting français. Je ne souhaitais pas rester dans le schéma classique, avec les méchants d’un côté et les gentils de l’autre, mais que ce</p>
-            </div>
+          <div class="big-quote">
+            <strong>Dans quel sens ?</strong>
+
+            <p>
+              Je voulais être libre au niveau dans la narration et la forme. Le film tire sa singularité du fait que nous l’avons tourné aux États-Unis avec un casting français. Je ne souhaitais pas rester dans le schéma classique, avec les méchants d’un côté et les gentils de l’autre, mais que ce soit plus obscur et complexe.
+            </p>
+
           </div>
           
           <div class="text">
@@ -102,12 +104,14 @@
           </div>
         </div>
 
-          <div class="wysiwygGreyblock">
-            <div class="smallWrapper">
-            <h4>Enragés est l’adaptation d’un film</h4>
-            <p>Cela fait vingt ans que je travaille l’image par le biais du reportage ou du documentaire pour me rapprocher de plus en plus de cette envie de cinéma qui ne m’a jamais quittée depuis l’adolescence.</p>
-            </div>
+        <div class="txt-grey-bkg-container">
+          <div class="content">
+            <strong>Enragés est l’adaptation d’un film </strong>
+            <p>
+              Cela fait vingt ans que je travaille l’image par le biais du reportage ou du documentaire pour me rapprocher de plus en plus de cette envie de cinéma qui ne m’a jamais quittée depuis l’adolescence.
+            </p>
           </div>
+        </div>
 
         <div class="container">
 
@@ -179,28 +183,81 @@
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
           </div>
 
-          <div class="tableau">
-            <div class="tableauArticle">
-              <h3>compétition long métrages (25)</h3>
-              <h4>un certain regard (10)</h4>
-              <h4>un certain regard (10)</h4>
-            </div>
-            <div class="tableauArticle">
-              <h3>compétition court métrages (3)</h3>
-              <h4>un certain regard (10)</h4>
-              <h4>un certain regard (10)</h4>
-            </div>
-          </div>
+          <table class="table-article">
+                    <tbody><tr>
+                      <th>
+                        compétition long métrages (25)
+                      </th>
+                      <th>
+                         compétition court métrages (3)
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+                        un certain regard (10)
+                      </td>
+                      <td>
+                        séances de minuit
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        cinéfondation (9)
+                      </td>
+                      <td>
+                        cannes classics (5)
+                      </td>
+                    </tr>
+                </tbody></table>
 
-          <div class="text bio">
-            <h2>Sous-titre 1</h2>
-            <p>Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie. Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : <a href="">Sogni d'Oro (Prix spécial du jury à Venise en 1981)</a>, La Messa e' finita (Ours d'Argent à Berlin en 1986) ou sélectionnés en compétition officielle à Cannes: Ecce Bombo en 1978, Aprile en 1998, Caro Diario qui remporte le prix de la mise en scène en 1994 et La Stanza del figlio, palme d'or au Festival 2001.</p>
-            <h3>Sous-titre 2</h3>
-            <p>Acteur dans la majorité de ses films, Nanni Moretti fonde en 1986 la maison de production Sacher film avec Angelo Barbagallo et produit, outre ses propres films, Notte Italiana (1987) de Carlo Mazzacurati.</p>
-            <h4>Sous-titre 3</h4>
-            <p>Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie</p>
-            <p>Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : Sogni d'Oro (Prix spécial du jury à Venise en 1981), La Messa e' finita (Ours d'Argent à Berlin en 1986) ou sélectionnés en compétition officielle à Cannes: Ecce Bombo en 1978, Aprile en 1998, Caro Diario qui remporte le prix de la mise en scène en 1994 et La Stanza del figlio, palme d'or au Festival 2001.</p>
-          </div>
+            <div class="text">
+
+              <!-- texte -->
+
+              <p>
+                Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie. Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : Sogni d'Oro (Prix spécial du jury à Venise en 1981), La Messa e' finita (Ours d'Argent à Berlin en 1986) ou sélectionnés en compétition officielle à Cannes: Ecce Bombo en 1978, Aprile en 1998, Caro Diario qui remporte le prix de la mise en scène en 1994 et La Stanza del figlio, palme d'or au Festival 2001.
+              </p>
+
+
+              <!-- sous titre 2 -->
+
+              <h2 class="sub-title2">Sous titre 2</h2>
+
+
+              <!-- texte -->
+
+              <p>
+                Acteur dans la majorité de ses films, Nanni Moretti fonde en 1986 la maison de production Sacher film avec Angelo Barbagallo et produit, outre ses propres films, Notte Italiana (1987) de Carlo Mazzacurati.
+              </p>
+
+              <!-- sous titre 3 -->
+
+              <h3 class="sub-title">Sous titre 3</h3>
+
+              <!-- texte avec un a -->
+
+              <p>
+                <a href="#">Domani Accadra</a> (1988) et <a href="#">Il Portaborse</a> (1991) de Daniele Luchetti puis La Seconda Volta (1995) de Mimmo Calopresti dans lequel il est aussi acteur.
+              </p>
+
+              <p>
+                En 1991, il inaugure le cinéma Nuovo Sacher et depuis 1996, il dirige le Festival Sacher dédié aux courts métrages.
+              </p>
+
+              <!-- sous titre 2 -->
+
+              <h2 class="sub-title2">Sous titre 2</h2>
+
+
+              <!-- texte -->
+
+              <p>
+                La Messa e' finita (Ours d'Argent à Berlin en 1986) ou sélectionnés en compétition officielle à Cannes: Ecce Bombo en 1978, Aprile en 1998, Caro Diario qui remporte le prix de la mise en scène en 1994 et La Stanza del figlio, palme d'or au Festival 2001.
+              </p>
+
+            </div>
+
+            <!-- fin textes -->
           
           <div class="text">
             <div class="author">Rédigé par Morgane Urbain</div>

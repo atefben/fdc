@@ -88,6 +88,9 @@
 
       img {
         display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
       }
     }
 
@@ -853,6 +856,9 @@
 
           &.active {
             width: 100%;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             margin: 0 -100%;
             display: inline-block;
 
@@ -984,8 +990,21 @@
   .audios {
     padding: 45px 0;
 
+    .audio-container {
+      width: 100%;
+    }
+
     .audio-container + .audio-container {
       margin-top: 30px;
+    }
+
+    .audio-player {
+      width: 970px;
+      height: 115px;
+
+      .play-btn {
+        top: 15px;
+      }
     }
   }
 
@@ -1165,7 +1184,7 @@
 
   .competition {
     background-color: #f6f6f6;
-    padding: 70px 0 100px 0;
+    padding: 70px 0 0px 0;
 
     #slider-competition {
       margin-top: 65px;

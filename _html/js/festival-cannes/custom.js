@@ -25,6 +25,7 @@
     autoplay: true,
     items: 1,
     nav: true,
+    video:true,
     autoplayHoverPause: true,
     animateOut: 'slideOutUp',
     animateIn: 'slideInUp'

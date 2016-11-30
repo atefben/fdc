@@ -257,9 +257,9 @@
                 <div class="item">
 
                     <div class="video-container state-init video"
-                      data-file='[{"file":"./files/mov_bbb.webm"},
-                      {"file":"./files/mov_bbb.mp4"}]'
-                      data-img="/img/article/004.jpg">
+                      data-file='[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"},
+                      {"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}]'
+                      data-img="img/slider-channels/02.jpg">
                       <div id="video-player" class="video-player v_<?php echo time();?>">
                       </div>
                       <div class="video-overlay"></div>
@@ -280,9 +280,9 @@
                 <div class="item">
 
                     <div class="video-container state-init video"
-                      data-file='[{"file":"./files/mov_bbb.webm"},
-                      {"file":"./files/mov_bbb.mp4"}]'
-                      data-img="/img/article/004.jpg">
+                      data-file='[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"},
+                      {"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}]'
+                      data-img="img/slider-channels/01.jpg">
                       <div id="video-player" class="video-player v_<?php echo time();?>">
                       </div>
                       <div class="video-overlay"></div>
