@@ -80,7 +80,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
 
         if ($onlyArticles) {
-            //$infoImporter->importInfos();
+            $infoImporter->importInfos();
             //$statementImporter->importStatements();
             $newsImporter->importNews();
         } elseif ($onlyMedias) {

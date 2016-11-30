@@ -204,9 +204,10 @@ class NewsImporter extends Importer
 
                 if ($locale == 'fr') {
                     if ($this->status) {
-
+                        $translation->setStatus($this->status);
+                    } else {
+                        $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
                     }
-                    $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
                 } else {
                     $translation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                 }
@@ -799,11 +800,18 @@ class NewsImporter extends Importer
             'le savez-vous',
             'le saviez-vous',
             'phrase du jour',
-            'présence à Cannes',
+            'presence a cannes',
         ];
 
         if ($isAvailable) {
-            $hasWord = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                foreach ($words as $word) {
+                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
+                        $hasWord = true;
+                    }
+                }
+            }
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
                 foreach ($words as $word) {

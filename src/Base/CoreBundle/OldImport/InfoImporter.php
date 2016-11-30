@@ -24,11 +24,14 @@ use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class InfoImporter extends Importer
 {
     protected $widgetPosition = 0;
+
+    protected $status;
 
     public function importInfos()
     {
@@ -202,7 +205,11 @@ class InfoImporter extends Importer
                 $this->getManager()->persist($translation);
 
                 if ($locale == 'fr') {
-                    $translation->setStatus(InfoArticleTranslation::STATUS_PUBLISHED);
+                    if ($this->status) {
+                        $translation->setStatus($this->status);
+                    } else {
+                        $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                    }
                 } else {
                     $translation->setStatus(InfoArticleTranslation::STATUS_TRANSLATED);
                 }
@@ -770,7 +777,7 @@ class InfoImporter extends Importer
         return $this->widgetPosition++;
     }
 
-    protected function isInfoMatching(OldArticle $oldArticle)
+    protected function isInfoMatching(OldArticle $oldArticle, $oldArticleTranslations)
     {
 
         // Actualités-Festival de 2010 > 2015
@@ -778,7 +785,43 @@ class InfoImporter extends Importer
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2010;
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
         if ($isAvailable) {
-                return true;
+            $hasWord = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'marches') !== false)) {
+                    $hasWord = true;
+                }
+            }
+            if ($hasWord) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+            } else {
+                $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+            }
+
+            return true;
+        }
+
+        $isAvailable = !$oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
+        $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2010;
+        $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
+        $words = [
+            'marches',
+            'le savez-vous',
+            'le saviez-vous',
+            'phrase du jour',
+            'presence a cannes',
+        ];
+
+        if ($isAvailable) {
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                foreach ($words as $word) {
+                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
+                        $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                        return true;
+                    }
+                }
+            }
         }
     }
 }
