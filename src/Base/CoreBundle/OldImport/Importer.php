@@ -258,6 +258,9 @@ class Importer
         $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/image/';
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
+        if (is_file("$folder$file")) {
+            return true;
+        }
         $output = shell_exec("wget $url -O $folder$file");
         if (!is_file($folder . $file)) {
             return null;
@@ -276,6 +279,9 @@ class Importer
         $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/audio/';
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
+        if (is_file("$folder$file")) {
+            return true;
+        }
         $output = shell_exec("wget $url -O $folder$file");
         if (!is_file($folder . $file)) {
             return null;
@@ -293,6 +299,9 @@ class Importer
         $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/video/';
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
+        if (is_file("$folder$file")) {
+            return true;
+        }
         $output = shell_exec("wget $url -O $folder$file");
 
         if (!is_file($folder . $file)) {
