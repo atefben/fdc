@@ -80,21 +80,13 @@
 
         .loupe {
             float: right;
-            width: 10px;
+            width: 50px;
             background: transparent;
-            border: none!important;
-            background: url(/img/loupegold.png) no-repeat;
+            border: none !important;
+            background: url(/img/loupeGold.png) no-repeat;
             margin-top: -10px;
-            margin-right: 25px!important;
-
-            &:after {
-                content: url(/img/loupegold.png);
-                position: relative;
-                top: 5px;
-                left: 50px;
-                width: 30px;
-                cursor:pointer;
-            }
+            margin-right: 25px !important;
+            display: block;
         }
     }
 

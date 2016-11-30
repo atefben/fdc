@@ -316,7 +316,10 @@ function click() {
     
     $('.dropdown span').click(function() {
         $('#eventSelector').toggleClass("showeventSelector");
+        $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
     });
+
+    
 
 /* CONFERENCES */
 

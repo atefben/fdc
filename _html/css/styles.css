@@ -25188,7 +25188,13 @@ option:checked,
 .marketnewsSelector {
   width: 100%;
   float: left;
-  margin-top: 50px;
+  margin-top: 0px;
+  display: none;
+}
+
+.showmarketnewsSelector {
+  display: block !important;
+  margin-top: 30px;
 }
 
 .hideAll {
@@ -25419,20 +25425,13 @@ option:checked,
 }
 .results .resultTitle .loupe {
   float: right;
-  width: 10px;
+  width: 50px;
   background: transparent;
   border: none !important;
-  background: url(/img/loupegold.png) no-repeat;
+  background: url(/img/loupeGold.png) no-repeat;
   margin-top: -10px;
   margin-right: 25px !important;
-}
-.results .resultTitle .loupe:after {
-  content: url(/img/loupegold.png);
-  position: relative;
-  top: 5px;
-  left: 50px;
-  width: 30px;
-  cursor: pointer;
+  display: block;
 }
 .results .results-sections {
   width: 20%;
