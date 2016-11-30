@@ -804,7 +804,7 @@ class NewsImporter extends Importer
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
                 foreach ($words as $word) {
-                    if ($trans->getCulture() == 'fr' && (stripos($title, 'marches') !== false)) {
+                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
                         $hasWord = true;
                     }
                 }
