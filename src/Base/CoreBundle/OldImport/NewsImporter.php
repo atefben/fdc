@@ -804,6 +804,7 @@ class NewsImporter extends Importer
         ];
 
         if ($isAvailable) {
+            $hasWord = false;
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
                 foreach ($words as $word) {
@@ -812,14 +813,7 @@ class NewsImporter extends Importer
                     }
                 }
             }
-            foreach ($oldArticleTranslations as $trans) {
-                $title = $this->removeAccents($trans->getTitle());
-                foreach ($words as $word) {
-                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
-                        $hasWord = true;
-                    }
-                }
-            }
+
             if ($hasWord) {
                 $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
             }
