@@ -59,7 +59,7 @@ class NewsCommonAdmin extends BaseAdmin
                     if (!$value['value']) {
                         return;
                     }
-                    if (!$value['value']) {
+                    if ($value['value']) {
                         $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
                         $queryBuilder->andWhere('t2.status = :translation_pending');
                         $queryBuilder->setParameter('translation_pending', NewsArticleTranslation::STATUS_TRANSLATION_PENDING);
