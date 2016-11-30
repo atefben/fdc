@@ -38,8 +38,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb->setMaxResults(100)
-            ->orderBy('mi.publishedAt', 'DESC')
+        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -283,8 +282,7 @@ class MediaRepository extends EntityRepository
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        return $qb->setMaxResults(100)
-            ->orderBy('mi.publishedAt', 'DESC')
+        return $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -307,8 +305,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb->setMaxResults(100)
-            ->orderBy('mi.publishedAt', 'DESC')
+        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 

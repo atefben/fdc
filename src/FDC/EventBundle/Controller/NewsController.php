@@ -168,11 +168,8 @@ class NewsController extends Controller
                 $filters['themes']['content'][] = $homeArticle->getTheme();
             }
 
-            if (!empty($homeArticles)) {
-                $format = $homeArticles[0]->getTypes();
-                $filters['format'] = array_merge($filters['format'], array_values($format));
-            //if (!in_array($homeArticle->getNewsType(), $filters['format'])) {
-              //  $filters['format'][] = $homeArticle->getNewsType();
+            if (!in_array($homeArticle->getNewsType(), $filters['format'])) {
+                $filters['format'][] = $homeArticle->getNewsType();
             }
         }
 
@@ -645,7 +642,7 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
         //GET ALL MEDIA PHOTOS
-        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
+        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId());
 
         //set default filters
         $filters = array();
@@ -672,7 +669,6 @@ class NewsController extends Controller
                 $filters['themes']['content'][] = $photo->getTheme();
             }
         }
-
         return array(
             'photos'  => $photos,
             'filters' => $filters,
