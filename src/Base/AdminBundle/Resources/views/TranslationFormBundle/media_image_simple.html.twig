@@ -40,7 +40,6 @@
                 </div>
                 <div class="col-md-4">
                     {% if form.vars.default_locale == locale %}
-                        {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' %}
                     {% else %}
                     <div class="box box-success">
                         <div class="box-header">
@@ -65,15 +64,25 @@
                     </div>
                     {% endif %}
                 </div>
-            </div>
-
-            {% if form.vars.default_locale != locale %}
                 <div class="row">
-                    <div class="col-md-4">
-                        {{ form_row(translationsFields.status) }}
+                    <div class="col-md-12">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
-            {% endif %}
+            </div>
+
         </div>
     {% endfor %}
     </div>
