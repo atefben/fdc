@@ -946,11 +946,17 @@ div.chocolat-wrapper.show {
 
 #slider-news {
   overflow: hidden;
+  
+  .owl-item {
+    margin-right: 50px;
+  }
+
   .owl-stage {
     margin-left: 472px;
   }
   
   .sliderDrag {
+    
     .owl-item {
         opacity: 1!important;
       }

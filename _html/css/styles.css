@@ -1009,6 +1009,9 @@ div.chocolat-wrapper.show {
 #slider-news {
   overflow: hidden;
 }
+#slider-news .owl-item {
+  margin-right: 50px;
+}
 #slider-news .owl-stage {
   margin-left: 472px;
 }
