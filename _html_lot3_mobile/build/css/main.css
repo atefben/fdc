@@ -1512,7 +1512,7 @@ sub {
 
 .title, .title-item {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 10px;
   line-height: 1.8;
   letter-spacing: 10px;
   margin-bottom: 23px;
@@ -1546,14 +1546,14 @@ sub {
 
 .title-3 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: .875rem;
+  font-size: 20px;
   color: #c8a461;
   text-transform: uppercase;
 }
 
 .title-4 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 1.125rem;
+  font-size: 35px;
   color: #141414;
   text-transform: uppercase;
   line-height: 24px;
@@ -1571,12 +1571,13 @@ sub {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-style: italic;
   color: #c8a461;
-  font-size: .75rem;
+  font-size: 20px;
   line-height: 24px;
+  margin-top: 34px;
 }
 
 .title-6 {
-  font-size: .6875rem;
+  font-size: 20px;
   text-transform: uppercase;
   line-height: 24px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -1584,11 +1585,12 @@ sub {
 }
 
 .title-7 {
-  font-size: .875rem;
+  font-size: 20px;
   text-transform: uppercase;
   line-height: 24px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #141414;
+  margin-top: 15px;
 }
 .block-infos .title-7 {
   width: 150px;
@@ -1597,7 +1599,7 @@ sub {
 
 .title-8 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: .875rem;
+  font-size: 22px;
   letter-spacing: .5rem;
   text-transform: uppercase;
   line-height: 18px;
@@ -2359,15 +2361,17 @@ a {
   clear: both;
   color: #666666;
   display: block;
-  height: 55px;
+  height: 75px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 0.625rem;
-  line-height: 55px;
-  margin-top: 71px;
+  font-size: 16px;
+  line-height: 75px;
   letter-spacing: 0.2em;
   text-align: center;
   text-transform: uppercase;
-  width: 100%;
+  width: 87vw;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .read-more strong {
@@ -2899,7 +2903,7 @@ video {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   display: inline-block;
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
@@ -2913,7 +2917,7 @@ video {
 .info span {
   color: #969696;
   display: inline-block;
-  font-size: 20px;
+  font-size: 17px;
 }
 .info strong {
   color: #333;
@@ -3080,8 +3084,8 @@ video {
 }
 
 .half-div {
-  height: 100%;
-  width: 50%;
+  height: 402px;
+  width: 100%;
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -3119,9 +3123,9 @@ video {
 }
 
 .block-01 {
-  margin: 0 auto;
+  margin: 0px 21px;
   max-width: 100%;
-  width: 977px;
+  width: auto;
   position: relative;
 }
 .block-01 img {
@@ -3206,12 +3210,11 @@ video {
 }
 
 .block-03 {
-  height: 600px;
+  height: 400px;
 }
 
 .block-05 {
   color: #fff;
-  background-color: #141414;
 }
 .block-05 a {
   color: #fff;
@@ -3219,6 +3222,7 @@ video {
 
 .block-diaporama {
   padding-top: 10px;
+  margin-left: 26px;
 }
 
 /*.contain-card + .block-diaporama {
@@ -3234,6 +3238,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   background-size: 130%;
   background-position: 0px 0px;
 }
+.block-push .vFlexAlign div {
+  text-align: center;
+}
+.block-push .title-2 {
+  display: block;
+  margin: 0 auto;
+  line-height: 48px;
+}
 .block-push .coverLink {
   width: 100%;
   height: 100%;
@@ -3247,7 +3259,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
   text-align: center;
   text-transform: uppercase;
-  font-size: .75rem;
+  font-size: 18px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   transition: .5s;
 }
@@ -3255,7 +3267,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   opacity: .8;
 }
 .block-push .link .icon {
-  font-size: .5rem;
+  font-size: 1rem;
   vertical-align: top;
   margin-right: 4px;
 }
@@ -3268,13 +3280,13 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push.half-div {
   text-align: center;
-  height: 325px;
+  height: 402px;
 }
 .block-push.half-div strong {
-  font-size: 1.25rem;
+  font-size: 30px;
 }
 .block-push.half-div p {
-  font-size: .875rem;
+  font-size: 20px;
   color: #f6f6f6;
   padding-bottom: 6px;
 }
@@ -3308,7 +3320,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding: 70px 0;
 }
 .block-push-02 .small-push, .block-push-02 .long-push {
-  height: 206px;
+  height: 280px;
+  width: 446px;
 }
 .block-push-02 .small-push:hover .image-wrapper img, .block-push-02 .long-push:hover .image-wrapper img {
   transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -3317,6 +3330,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-02 .right, .block-push-02 .left {
   display: block;
+  float: none;
 }
 .block-push-02 .left {
   width: 100%;
@@ -3340,8 +3354,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-02 strong {
   z-index: 0;
-  width: 221px;
+  width: 253px;
   text-align: center;
+  line-height: 30px;
 }
 
 .block-push-03 {
@@ -3515,7 +3530,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-legend {
   padding: 25px 0;
   padding-bottom: 33px;
-  width: 90vw;
+  width: 87vw;
   margin: 0 auto;
 }
 .block-legend .info, .block-legend .info h2 {
@@ -3529,7 +3544,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: 22px;
 }
 .block-legend .texts h2 {
-  font-size: 35px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.4;
   color: #141414;
@@ -3538,7 +3553,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-legend .texts .text-01 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #868686;
-  font-size: 20px;
+  font-size: 10px;
   line-height: 1.5;
   color: #868686;
 }
@@ -3546,11 +3561,13 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-videos {
   padding-top: 25px;
   padding-bottom: 25px;
+  width: 87vw;
+  height: calc( 87vw / 1.75);
+  margin-left: 21px;
 }
 
 .block-films {
   padding-top: 15px;
-  height: 382px;
 }
 .block-films video {
   height: 382px;
@@ -3558,21 +3575,25 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   background-color: #000;
 }
 .block-films .left {
-  width: 69%;
+  width: 84.3vw;
   box-sizing: border-box;
-  display: inline-block;
+  display: block;
   height: 382px;
   overflow: hidden;
+  float: none;
+  margin: 0 auto;
 }
 .block-films .right {
-  display: inline-block;
+  display: block;
   vertical-align: top;
-  width: 31%;
+  width: 84.3vw;
   box-sizing: border-box;
   height: 99.8%;
   font-size: .75rem;
   color: #a4a4a4;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  float: none;
+  margin: 0 auto;
 }
 .block-films .right ::-webkit-scrollbar {
   width: 5px;
@@ -3585,20 +3606,18 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   background-color: #c8a461;
 }
 .block-films .block-infos {
-  border-top: 1px solid #dfdfdf;
-  border-right: 1px solid #dfdfdf;
+  border: 1px solid #dfdfdf;
   -ms-flex-direction: column;
       flex-direction: column;
-  height: calc(100% - 76px);
-  overflow: scroll;
-  overflow-x: hidden;
+  height: 100%;
+  padding-bottom: 69px;
 }
 .block-films .block-infos .title-3 {
   padding-bottom: 30px;
 }
 .block-films .block-infos .date {
   color: #999999;
-  font-size: .6875rem;
+  font-size: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .block-films .text-infos {
@@ -3611,6 +3630,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   -ms-flex-pack: center;
       justify-content: center;
   position: relative;
+  margin-top: 63px;
 }
 .block-films .text-infos:after {
   content: '';
@@ -3626,8 +3646,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: none;
 }
 .block-films .icon-palme {
-  padding-top: 22px;
-  font-size: 2.5rem;
+  display: block;
+  padding-top: 44px;
+  font-size: 3.5rem;
   color: #c8a461;
   max-height: 39px;
   margin-bottom: 10px;
@@ -3864,6 +3885,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-bottom: 13px;
   position: relative;
   cursor: pointer;
+  width: 195px;
+  height: 265px;
 }
 .block-list-img .item:after {
   content: '';
@@ -3922,12 +3945,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 
 .block-social-network {
-  height: 76px;
   box-sizing: padding-box;
 }
 .block-social-network a {
   line-height: 76px;
-  height: 76px;
+  height: 134px;
+  line-height: 134px;
   color: #c8a461;
   width: 25%;
   display: inline-block;
@@ -3937,6 +3960,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   border-bottom: 1px solid #dfdfdf;
   box-sizing: border-box;
   transition: .5s;
+  font-size: 1.6rem;
 }
 .block-social-network a:first-child {
   border-left: 0px solid #fff;
@@ -8939,12 +8963,10 @@ body#home .isotope-01 .item .contain-img {
 
 .slider-01 {
   margin-bottom: 9px;
+  margin-left: -30px;
 }
 .slider-01 .owl-stage-outer {
   overflow: visible;
-}
-.slider-01 .owl-item {
-  margin-left: -37px;
 }
 .slider-01 .item {
   position: relative;
@@ -8973,12 +8995,7 @@ body#home .isotope-01 .item .contain-img {
 }
 
 .slider-02 .owl-stage {
-  margin-left: -419px;
-}
-@media screen and (max-width: 1024px) {
-  .slider-02 .owl-stage-outer {
-    overflow: hidden !important;
-  }
+  margin-left: -174px;
 }
 .slider-02 .owl-stage-outer {
   overflow: visible;
@@ -10679,8 +10696,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .video-container {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  height: calc(977px / 1.58);
+  width: 87vw;
+  height: calc( 87vw / 1.75);
 }
 .video-container.video-playlist {
   height: 382px;

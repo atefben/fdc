@@ -39,10 +39,7 @@ trait TranslateChild
     private $isPublishedOnFDCEvent;
 
     /**
-     * getStatuses function.
-     *
-     * @access public
-     * @static
+     * @return array
      */
     public static function getStatuses()
     {

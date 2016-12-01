@@ -38,8 +38,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb->setMaxResults(100)
-            ->orderBy('mi.publishedAt', 'DESC')
+        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -115,6 +114,7 @@ class MediaRepository extends EntityRepository
     }
 
     public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 30, $page = 1) {
+
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.theme', 't')
             ->leftJoin('t.translations', 'tt')
@@ -139,9 +139,10 @@ class MediaRepository extends EntityRepository
                 ->leftJoin('mv.translations', 'mvt')
                 ->leftJoin('mv.webTv', 'w')
                 ->leftJoin('w.translations', 'wt')
-                ->andWhere('m.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1');
+                ->andWhere('mv.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1');
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+            $qb = $this->addTranslationQueries($qb, 'wt', $locale);
 
             $searchOr[] = 'mvt.title LIKE :search';
             $searchOr[] = 'wt.name LIKE :search';
@@ -283,8 +284,7 @@ class MediaRepository extends EntityRepository
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        return $qb->setMaxResults(100)
-            ->orderBy('mi.publishedAt', 'DESC')
+        return $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -307,8 +307,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb->setMaxResults(100)
-            ->orderBy('mi.publishedAt', 'DESC')
+        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 

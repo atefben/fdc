@@ -103,7 +103,7 @@ class DefaultController extends Controller
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      FEATURED VIDEO      //////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////
-        $featuredVideo = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+        $featuredVideo = $homepage->getVideoUne();
 
 
         $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));

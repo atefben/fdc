@@ -130,16 +130,14 @@
                                                 <p>
                                             {% else %}
                                                 <p class="director">
-                                                    {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                        {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != director|length %},{% endif %}{% endif %}
+                                                    {% spaceless %}{% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{% if loop.index != 1 %}, {% endif %}{{ director.fullName }}</a>{% endif %}
                                                         {% if index == 4 %}...{% endif %}
-                                                    {% endfor %}
+                                                    {% endfor %}{% endspaceless %}
                                                 </p>
                                             {% endif %}
                                             <p>
-                                                {% for index,country in associatedFilm.countries %}
-                                                    {{ country.country|trans_fallback('name') }}{% if loop.index != country|length %},{% endif %}
-                                                {% endfor %}
+                                                {% spaceless %}{% for index,country in associatedFilm.countries %}{% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}{% if index == 4 %}...{% endif %}{% endfor %}{% endspaceless %}
                                                 {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
                                                     - {{ associatedFilm.productionYear }}
                                                 {% endif %}

@@ -61,7 +61,7 @@
 
         {% if moreresults %}
         <div>
-            <a href="{{ path('fdc_corporate_media_index_ajax') }}" class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
+            <a href="{{ path('fdc_corporate_media_index_ajax', {'ajax' : true }) }}" class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
         </div>
         {% endif %}
     </section>

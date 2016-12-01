@@ -11,7 +11,7 @@
     </div>
     <div class="text-manual">
         {% if widget|trans_fallback('title') is not null %}
-            <h4 class="title-manual">{{ widget|trans_fallback('title') }}</h4>
+            <h4 class="title-manual">{% if widget.picto is not null %}<i class="icon {{ widget.picto }}"></i> {% endif %}{{ widget|trans_fallback('title') }}</h4>
         {% endif %}
         {{ widget|trans_fallback('content')|raw }}
     </div>

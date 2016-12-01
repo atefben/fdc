@@ -30,4 +30,8 @@ $(document).ready(function () {
         owInitSlider('slider-01');
     }
 
+    if($('.block-videos').length) {
+        initVideo();
+    }
+
 });

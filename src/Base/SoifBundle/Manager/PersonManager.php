@@ -235,7 +235,7 @@ class PersonManager extends CoreManager
             $entity->setNationality2($country);
         }
         // set translations
-        //$this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
+        $this->setEntityTranslations($resultObject, $entity, new FilmPersonTranslation());
         // set multimedias
         if (property_exists($resultObject, 'PersonneElementsMultimedias') && property_exists($resultObject->PersonneElementsMultimedias, 'ElementMultimediaRefDto')) {
             $collection = new ArrayCollection();
@@ -341,6 +341,14 @@ class PersonManager extends CoreManager
             $collection = new ArrayCollection();
             $duplicates = clone $entity->getDuplicates();
             $objects = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
+            $duplicateIds = array();
+            $duplicateSelfkits = array();
+            foreach ($objects as $obj) {
+                $duplicateIds[] = $obj->PersonneId;
+                $duplicateSelfkits[] = $obj->PersonneSelfkitId;
+            }
+            $entity->setDuplicateIds($duplicateIds);
+            $entity->setDuplicateSelfkits($duplicateSelfkits);
             foreach ($objects as $obj) {
                 $person = $this->em->getRepository('BaseCoreBundle:FilmPerson')->find($obj->PersonneId);
                 if ($person !== null) {
@@ -372,16 +380,16 @@ class PersonManager extends CoreManager
                 }
             }
 
-            // unset old duplicates when we have data
-            if ($duplicates->count() > 0) {
-                foreach ($duplicates as $duplicate) {
-                    if (!$collection->contains($duplicate)) {
-                        $duplicate->setDuplicate(false);
-                        $duplicate->setOwner(null);
-                        $entity->removeDuplicate($duplicate);
-                    }
-                }
-            }
+            //// unset old duplicates when we have data
+            //if ($duplicates->count() > 0) {
+            //    foreach ($duplicates as $duplicate) {
+            //        if (!$collection->contains($duplicate)) {
+            //            $duplicate->setDuplicate(false);
+            //            $duplicate->setOwner(null);
+            //            $entity->removeDuplicate($duplicate);
+            //        }
+            //    }
+            //}
 
         }
 

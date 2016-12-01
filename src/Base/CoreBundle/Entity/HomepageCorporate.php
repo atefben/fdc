@@ -175,6 +175,13 @@ class HomepageCorporate implements TranslateMainInterface
     private $pushSecondaryImage3;
 
     /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     */
+    private $VideoUne;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -801,5 +808,28 @@ class HomepageCorporate implements TranslateMainInterface
     public function getDisplayedGallery()
     {
         return $this->displayedGallery;
+    }
+
+    /**
+     * Set VideoUne
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $videoUne
+     * @return HomepageCorporate
+     */
+    public function setVideoUne(\Base\CoreBundle\Entity\MediaVideo $videoUne = null)
+    {
+        $this->VideoUne = $videoUne;
+
+        return $this;
+    }
+
+    /**
+     * Get VideoUne
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideo 
+     */
+    public function getVideoUne()
+    {
+        return $this->VideoUne;
     }
 }

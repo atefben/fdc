@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        {% for duplicateSelfkit in object.duplicateSelfkits %}
+            {{ loop.index0 ? ', ' : '' }}{{ duplicateSelfkit }}
+        {% endfor %}
+    </div>
+{% endblock %}

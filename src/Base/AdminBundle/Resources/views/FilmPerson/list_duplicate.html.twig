@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        {% for duplicateId in object.duplicateIds %}
+            {{ loop.index0 ? ', ' : '' }}{{ duplicateId }}
+        {% endfor %}
+    </div>
+{% endblock %}
