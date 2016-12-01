@@ -325,7 +325,11 @@ $(document).ready(function () {
                 $('.nav').removeClass('hide');
             }
 
-            if ($('div.press').length > 0 && (s > 50 && s < $('div.press').offset().top - $('div.press').height())) {
+            var test = $('.tablette').length > 0 ? -1 : 50 ;
+
+            console.log(s);
+
+            if ($('div.press').length > 0 && (s > test && s < $('div.press').offset().top - $('div.press').height())) {
                 $('.nav, .prevmovie, .nextmovie').addClass('black');
             } else {
                 $('.nav, .prevmovie, .nextmovie').removeClass('black');

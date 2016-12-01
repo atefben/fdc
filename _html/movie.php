@@ -40,8 +40,8 @@
             </div>
           </div>
         </div>
-        <a href="movie2.php" class="nav prev ajax"><i class="icon icon-arrow-left"></i></a>
-        <a href="movie3.php" class="nav next ajax"><i class="icon icon-arrow-right"></i></a>
+        <a href="movie2.php" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+        <a href="movie3.php" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
         <span id="plx"></span>
         <div class="main-image">
           <div class="img" style="background-image: url('img/movie/001.jpg')"></div>
@@ -403,28 +403,26 @@
               </article>
             </div>
           </div>
-          <div class="audios single-article" data-section="audios">
-            <div class="audio-container"
-                 data-file='[{"file":"./img/article/test.mp3"}]'
-                 data-img="./img/slide001.jpg"
-                 data-aid="2142">
-              <div class="audio-player">
-                <div id="audio-player-<?php echo time().'1'; ?>" class="audio-player-container"></div>
-                <div class="image" style="background-image: url(img/slide001.jpg);"></div>
-                <button class="play-btn play"><i class="icon icon_play"></i></button>
-                <div class="off">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <div class="picto"><i class="icon icon_audio"></i></div>
-                      <div class="info">
-                        <a href="#" class="category">Conférence de test</a><span class="date">11.03.15</span> . <span class="hour">09:00</span>
-                        <p>The Lobster de Yoros Lanthinos</p>
-                      </div>
+          <div class="audio-container"
+               data-file='[{"file":"./img/article/test.mp3"}]'
+               data-img="./img/slide001.jpg"
+               data-aid="2142">
+            <div class="audio-player">
+              <div id="audio-player-<?php echo time().'1'; ?>" class="audio-player-container"></div>
+              <div class="image" style="background-image: url(img/slide001.jpg);"></div>
+              <button class="play-btn play"><i class="icon icon_play"></i></button>
+              <div class="off">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="picto"><i class="icon icon_audio"></i></div>
+                    <div class="info">
+                      <a href="#" class="category">Conférence de test</a><span class="date">11.03.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster de Yoros Lanthinos</p>
                     </div>
                   </div>
                 </div>
-                <div class="on"></div>
               </div>
+              <div class="on"></div>
             </div>
           </div>
         </div>
