@@ -13,7 +13,7 @@
 
     <div id="main" class="list-article jurys-list loading">
       <div class="bandeau-list">
-           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(http://dummyimage.com/1920x450/454545/fff&text=+)">
+           <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(img/jurys/bandeau.jpg)">
               <div class="vCenterKid">
                <h2 class="title title-list-header">Les jurys</h2>
               </div>
@@ -142,7 +142,7 @@
           </section>
         </div>
         <div class="bandeau-list push-footer vCenter">
-          <div class="bandeau-list-img  bandeau-list-footer vCenterKid" style="background-image:url(http://dummyimage.com/1920x450/9e6844/fff&text=+);">
+          <div class="bandeau-list-img  bandeau-list-footer vCenterKid" style="background-image:url(img/jurys/push.jpg);">
                <h2 class="title title-list-header">Rétrospective</h2>
                <a href="#" class="bandeau-lien"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
           </div>

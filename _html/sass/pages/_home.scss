@@ -1876,6 +1876,11 @@ a {
         font-family: $CamphorBold !important;
       }
     }
+    &:hover .socialIcon {
+      visibility: hidden;
+      opacity: 0;
+      @include transition(all .9s $smoothTransition);
+    }
   }
 
   .bigBox {
@@ -1910,6 +1915,12 @@ a {
         font-size: 17px !important;
         font-family: $CamphorBold !important;
       }
+    }
+
+    &:hover .socialIcon {
+      visibility: hidden;
+      opacity: 0;
+      @include transition(all .9s $smoothTransition);
     }
   }
 
@@ -1981,6 +1992,11 @@ a {
         font-family: $CamphorMedium !important;
         text-align: left!important;
       }
+    }
+    &:hover .socialIcon {
+      visibility: hidden;
+      opacity: 0;
+      @include transition(all .9s $smoothTransition);
     }
   }
 

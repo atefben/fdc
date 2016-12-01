@@ -398,6 +398,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 }
 
+#slider-movies .owl-item .item img , #featured-movies .owl-item .item img  {
+  width: 100% !important;
+}
+#slider-movies .owl-item:after, #featured-movies .owl-item:after {
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#slider-movies .fullWidth, #featured-movies .fullWidth {
+  width: 100% !important;
+}
 #slider-movies .vCenterKid, #featured-movies .vCenterKid {
   display: table-cell;
   vertical-align: middle;
@@ -11077,6 +11092,14 @@ a {
   font-size: 17px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
+.biggerBox:hover .socialIcon {
+  visibility: hidden;
+  opacity: 0;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 
 .bigBox {
   display: block;
@@ -11108,6 +11131,14 @@ a {
   color: #000000 !important;
   font-size: 17px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
+}
+.bigBox:hover .socialIcon {
+  visibility: hidden;
+  opacity: 0;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .imgShown .socialContent {
@@ -11181,6 +11212,14 @@ a {
   line-height: 15px;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif !important;
   text-align: left !important;
+}
+.smallBox:hover .socialIcon {
+  visibility: hidden;
+  opacity: 0;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .empty {
@@ -15290,6 +15329,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-portrait {
   margin: 0 auto;
   padding-bottom: 10px;
+  width: 50px;
+  height: 70px;
 }
 .palmares-list .categorie-items article .infos-item-list .logo-palme-dor-container .palme-dor-text {
   display: block;
