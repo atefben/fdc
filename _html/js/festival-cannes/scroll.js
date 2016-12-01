@@ -327,8 +327,6 @@ $(document).ready(function () {
 
             var test = $('.tablette').length > 0 ? -1 : 50 ;
 
-            console.log(s);
-
             if ($('div.press').length > 0 && (s > test && s < $('div.press').offset().top - $('div.press').height())) {
                 $('.nav, .prevmovie, .nextmovie').addClass('black');
             } else {
