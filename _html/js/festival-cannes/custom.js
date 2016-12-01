@@ -19,19 +19,6 @@
  
   });
 
-  $('#slider-news').owlCarousel({
-      dots: false,
-      navigation : false,
-      slideSpeed : 600,
-      paginationSpeed : 400,
-      items : 6,
-      autoWidth:true,
-      margin: 50,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: true
- 
-  });
 
   $('#slider-movies').owlCarousel({
     loop: true,

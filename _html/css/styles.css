@@ -1014,6 +1014,10 @@ div.chocolat-wrapper.show {
 }
 #slider-news .owl-stage {
   margin-left: 472px;
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #slider-news .sliderDrag .owl-item {
   opacity: 1 !important;

@@ -953,6 +953,7 @@ div.chocolat-wrapper.show {
 
   .owl-stage {
     margin-left: 472px;
+    @include transition(all 1s $smoothTransition);
   }
   
   .sliderDrag {
