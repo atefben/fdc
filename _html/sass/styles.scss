@@ -16,6 +16,8 @@
 // 2. Base & helpers
 // =========================
 @import "base/variables";
+@import "base/block";
+@import "base/block_wysiwyg";
 @import "helpers/mixins";
 @import "helpers/owlcarousel";
 @import "helpers/animate";
@@ -68,6 +70,7 @@
 @import "pages/tabs";
 @import "pages/event";
 @import "pages/ccmPages";
+
 
 // 5. Specs
 // =========================

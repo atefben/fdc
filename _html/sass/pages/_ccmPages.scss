@@ -209,10 +209,20 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 }
 
-.modalWrapper {
+.onlineWrapper {
   width: 650px;
   p, h3 {
     letter-spacing: 1px;
+  }
+
+  h1 {
+      padding-top: 100px;
+      color: #0c0c0c;
+      text-transform: uppercase;
+      font-family: $CamphorBold;
+      font-size: 16px;
+      letter-spacing: 1px;
+      padding-bottom: 30px;
   }
 }
 
@@ -681,7 +691,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 }
   
-.modalgoldBorders  {
+.onlinegoldBorders  {
   width: 745px;
   height: 460px;
   border: 1px solid #c8a461;
