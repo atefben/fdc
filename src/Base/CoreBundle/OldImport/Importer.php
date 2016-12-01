@@ -260,7 +260,7 @@ class Importer
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
         if (is_file("$folder$file")) {
-            return true;
+            return $folder . $file;
         }
         $output = shell_exec("wget $url -O $folder$file");
         if (!is_file($folder . $file)) {
@@ -281,7 +281,7 @@ class Importer
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
         if (is_file("$folder$file")) {
-            return true;
+            return $folder . $file;
         }
         $output = shell_exec("wget $url -O $folder$file");
         if (!is_file($folder . $file)) {
@@ -301,7 +301,7 @@ class Importer
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
         if (is_file("$folder$file")) {
-            return true;
+            return $folder . $file;
         }
         $output = shell_exec("wget $url -O $folder$file");
 

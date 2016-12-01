@@ -40,7 +40,7 @@ class ClassicsImporter extends Importer
 
     public function importClassics()
     {
-        $this->output->writeln('<info>Import statements...</info>');
+        $this->output->writeln('<info>Import classics...</info>');
 
         $count = $this->countClassics();
 
