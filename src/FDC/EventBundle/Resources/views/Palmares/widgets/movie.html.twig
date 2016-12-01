@@ -90,8 +90,8 @@
                 {% endif %}
                 <span class="nom-item">{% spaceless %}
                     {% set author = '' %}
-                    {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                        {% if loop.first == false %}
+                    {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) if not director.duplicate %}
+                        {% if author != '' %}
                             {% set author = author ~ ', ' %}
                         {% endif %}
 

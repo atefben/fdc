@@ -40,6 +40,15 @@
                 <div class="single-photo">
                     <div class="photo-container">
                         {% set artistImage = artist|person_image(true) %}
+                        {% if not artistImage %}
+                            {% set break = false %}
+                            {% for duplicate in artist.duplicates if not break %}
+                                {% set artistImage = duplicate|person_image(true) %}
+                                {% if artistImage %}
+                                    {% set break = true %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                         {% set legend = null %}
                         {% set copyright = null %}
                         {% if artistImage %}
