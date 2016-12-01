@@ -712,7 +712,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 #slider-competition {
   height: 450px;
-  margin-bottom: 100px !important;
   overflow: hidden;
   text-align: center;
   margin: 0 auto;
@@ -1005,6 +1004,16 @@ div.chocolat-wrapper.show {
   border-top: 0px solid #404040;
   border-bottom: 0px solid #404040;
   border-left: 0px solid #404040;
+}
+
+#slider-news {
+  overflow: hidden;
+}
+#slider-news .owl-stage {
+  margin-left: 472px;
+}
+#slider-news .sliderDrag .owl-item {
+  opacity: 1 !important;
 }
 
 /*!
@@ -11253,6 +11262,7 @@ a {
   text-align: center;
   display: block;
   margin-bottom: 100px;
+  margin-top: 70px;
   /*background: url("/img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align: center;
@@ -12466,7 +12476,7 @@ article .read-later.rAlign span:after {
   opacity: .6;
 }
 .single-movie .slide-video:after {
-  border: 0px solid #c8a461;
+  /*border: 0px solid #c8a461;*/
   box-sizing: border-box;
   content: '';
   display: block;
@@ -13170,7 +13180,7 @@ article .read-later.rAlign span:after {
   visibility: visible;
 }
 .single-movie .videos #slider-movie-videos .active .slide-video:after {
-  border: 4px solid #c8a461;
+  /*border: 4px solid $gold;*/
   box-sizing: border-box;
   content: '';
   display: block;

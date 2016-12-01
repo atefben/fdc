@@ -128,7 +128,7 @@
             <div class="buttons square">
               <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
               <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
-              <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+              <a href="#" class="button self"><i class="icon icon_link"></i></a>
               <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
               <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
             </div>
@@ -371,38 +371,126 @@
               <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
             </div>
           </div>
+        </div>
           <div class="news" data-section="news">
             <div class="articles center">
-              <article class="article" data-format="article" data-theme="competition">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                  <span class="picto"><i class="icon icon_article"></i></span>
+              <div id="slider-news" class="owl-carousel">
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
-                <div class="info">
-                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
-              </article>
-              <article class="photo" data-format="photo" data-theme="competition">
-                <div class="image">
-                  <div class="image-wrapper">
-                    <img src="img/articles/03.jpg" alt="" />
-                  </div>
-                  <a href="article.php" class="linkImage"></a>
-                  <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                  <span class="picto"><i class="icon icon_photo"></i></span>
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
-                <div class="info">
-                  <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                  <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
                 </div>
-              </article>
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                </div>
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                </div>
+                <div class="item">
+                  <article class="article" data-format="article" data-theme="competition">
+                    <div class="image">
+                      <div class="image-wrapper">
+                        <img src="img/articles/03.jpg" alt="" />
+                      </div>
+                      <a href="article.php" class="linkImage"></a>
+                      <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+                      <span class="picto"><i class="icon icon_article"></i></span>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
+                    </div>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
+        <div class="container">
           <div class="audios single-article" data-section="audios">
             <div class="audio-container"
                  data-file='[{"file":"./img/article/test.mp3"}]'

@@ -633,7 +633,6 @@
 #slider-competition {
   
   height: 450px;
-  margin-bottom: 100px!important;
   overflow: hidden;
   text-align: center;
   margin: 0 auto;
@@ -943,4 +942,18 @@ div.chocolat-wrapper.show {
     border-bottom: 0px solid #404040;
     border-left: 0px solid #404040;
   }
+}
+
+#slider-news {
+  overflow: hidden;
+  .owl-stage {
+    margin-left: 472px;
+  }
+  
+  .sliderDrag {
+    .owl-item {
+        opacity: 1!important;
+      }
+
+    }
 }

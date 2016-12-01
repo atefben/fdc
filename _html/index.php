@@ -17,26 +17,6 @@
           <div class="container"><div class="whiteBar"></div></div>
           <div id="slider-movies" class="owl-carousel">
             <div>
-              <!-- PHOTO-->
-              <div class="item video">
-                <img class="fullWidth" src="/img/slider2.png">    
-              </div>
-              <div>
-                <div class="info">
-                  <div class="vCenter">
-                    <div class="container">
-                      <div class="vCenterKid">
-                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
-                        <div class="alignButton">
-                          <a href="/"><div class="programmButton">Le Programme</div></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
               <!-- PHOTO + VIDEO-->
               <div class="video">
                 <video preload>
@@ -152,6 +132,49 @@
                 </div>
               </div>
             </div>
+            <div>
+              <div class="video">
+                <video preload>
+                  <source src="#">
+                  <source src="#" type="video/webm">
+                </video>
+                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
+              </div>
+              <div class="textVideo">
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- WITH PHOTO ONLY
+            <div>    
+              <div class="item video">
+                <img class="fullWidth" src="/img/slider2.png">    
+              </div>
+              <div>
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="container">
+                      <div class="vCenterKid">
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <div class="alignButton">
+                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>-->
           </div>
         </div>
 
