@@ -42,7 +42,7 @@ sub {
 
 .title, .title-item {
   font-family: $CamphorRegular;
-  font-size: 20px;
+  font-size: 10px;
   line-height: 1.8;
   letter-spacing: 10px;
   margin-bottom: 23px;
@@ -77,14 +77,14 @@ sub {
 
 .title-3 {
   font-family: $CamphorBold;
-  font-size: .875rem;//14px
+  font-size: 20px;//14px
   color:$gold;
   text-transform: uppercase;
 }
 
 .title-4 {
   font-family: $CamphorBold;
-  font-size: 1.125rem; //18px
+  font-size: 35px; //18px
   color:#141414;
   text-transform: uppercase;
   line-height: 24px;
@@ -102,12 +102,13 @@ sub {
   font-family: $CamphorMedium;
   font-style: italic;
   color:$gold;
-  font-size: .75rem; //12px
+  font-size: 20px; //12px
   line-height: 24px;
+  margin-top: 34px;
 }
 
 .title-6 {
-  font-size: .6875rem;//11px
+  font-size: 20px;//11px
   text-transform: uppercase;
   line-height: 24px;
   font-family: $CamphorBold;
@@ -115,11 +116,12 @@ sub {
 }
 
 .title-7 {
-  font-size: .875rem;//14px
+  font-size: 20px;//14px
   text-transform: uppercase;
   line-height: 24px;
   font-family: $CamphorBold;
   color:#141414;
+  margin-top: 15px;
 
   .block-infos & {
     width: 150px;
@@ -129,7 +131,7 @@ sub {
 
 .title-8 {
   font-family: $CamphorBold;
-  font-size: .875rem; //14px
+  font-size: 22px; //14px
   letter-spacing: .5rem; //500
   text-transform: uppercase;
   line-height: 18px;
@@ -985,15 +987,17 @@ a {
   clear: both;
   color: #666666;
   display: block;
-  height: 55px;
+  height: 75px;
   font-family: $CamphorHeavy;
-  font-size: 0.625rem;
-  line-height: 55px;
-  margin-top: 71px;
+  font-size: 16px;
+  line-height: 75px;
   letter-spacing: 0.2em;
   text-align: center;
   text-transform: uppercase;
-  width: 100%;
+  width: 87vw;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
   @include transition(all 0.9s $smoothTransition);
 
   strong {

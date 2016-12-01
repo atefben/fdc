@@ -40,8 +40,8 @@
 
 // - HALF DIV
 .half-div {
-  height: 100%;
-  width: 50%;
+  height: 402px;
+  width: 100%;
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -85,9 +85,9 @@
 
 // - BLOCK 01
 .block-01 {
-  margin: 0 auto;
+  margin: 0px 21px;
   max-width: 100%;
-  width: 977px;
+  width: auto;
   position: relative;
 
   img {
@@ -196,13 +196,12 @@
 
 // - BLOCK 03
 .block-03 {
-  height: 600px;
+  height: 400px;
 }
 
 // - BLOCK 05
 .block-05 {
   color: #fff;
-  background-color: $black;
 
   a {
     color: #fff;
@@ -210,7 +209,8 @@
 }
 
 .block-diaporama {
-  padding-top:10px;
+  padding-top: 10px;
+  margin-left: 26px;
 }
 
 /*.contain-card + .block-diaporama {
@@ -229,6 +229,18 @@
     background-position: 0px 0px;
   }
 
+  .vFlexAlign {
+    div {
+      text-align: center;
+    }
+  }
+
+  .title-2 {
+    display: block;
+    margin: 0 auto;
+    line-height: 48px;
+  }
+
   .coverLink {
     width: 100%;
     height: 100%;
@@ -243,7 +255,7 @@
     display: block;
     text-align: center;
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: 18px;
     font-family: $CamphorHeavy;
     transition: .5s;
 
@@ -252,7 +264,7 @@
     }
 
     .icon {
-      font-size: .5rem;
+      font-size: 1rem;
       vertical-align: top;
       margin-right: 4px;
     }
@@ -268,14 +280,14 @@
 
   &.half-div {
     text-align: center;
-    height: 325px;
+    height: 402px;
 
     strong {
-      font-size: 1.25rem;
+      font-size: 30px;
     }
 
     p {
-      font-size: .875rem;
+      font-size: 20px;
       color: #f6f6f6;
       padding-bottom: 6px;
     }
@@ -313,7 +325,8 @@
   padding: 70px 0;
 
   .small-push, .long-push {
-    height: 206px;
+    height: 280px;
+    width: 446px;
 
     &:hover .image-wrapper img {
       @include transition(all 4s $linear);
@@ -324,6 +337,7 @@
 
   .right, .left {
     display: block;
+    float: none;
   }
 
   .left {
@@ -351,8 +365,9 @@
 
   strong {
     z-index: 0;
-    width: 221px;
+    width: 253px;
     text-align: center;
+    line-height: 30px;
   }
 }
 
@@ -548,7 +563,7 @@
 .block-legend {
   padding: 25px 0;
   padding-bottom: 33px;
-  width: 90vw;
+  width: 87vw;
   margin: 0 auto;
 
   .info, .info h2 {
@@ -566,7 +581,7 @@
     margin-top: 22px;
 
     h2 {
-      font-size: 35px;
+      font-size: 17px;
       font-weight: 500;
       line-height: 1.4;
       color: #141414;
@@ -576,7 +591,7 @@
     .text-01 {
       font-family: $CamphorRegular;
       color: #868686;
-      font-size: 20px;
+      font-size: 10px;
       line-height: 1.5;
       color: #868686;
     }
@@ -589,12 +604,14 @@
 .block-videos {
   padding-top: 25px;
   padding-bottom: 25px;
+  width: 87vw;
+  height: calc( 87vw / 1.75);
+  margin-left: 21px;
 }
 
 // - BLOCK FILMS
 .block-films {
   padding-top: 15px;
-  height: 382px;
 
   video {
     height: 382px;
@@ -603,22 +620,26 @@
   }
 
   .left {
-    width: 69%;
+    width: 84.3vw;
     box-sizing: border-box;
-    display: inline-block;
+    display: block;
     height: 382px;
     overflow: hidden;
+    float: none;
+    margin: 0 auto;
   }
 
   .right {
-    display: inline-block;
+    display: block;
     vertical-align: top;
-    width: 31%;
+      width: 84.3vw;
     box-sizing: border-box;
     height: 99.8%;
     font-size: .75rem;
     color: #a4a4a4;
     font-family: $CamphorMedium;
+    float: none;
+    margin: 0 auto;
 
     ::-webkit-scrollbar {
       width: 5px;
@@ -636,12 +657,10 @@
   }
 
   .block-infos {
-    border-top: 1px solid #dfdfdf;
-    border-right: 1px solid #dfdfdf;
+    border: 1px solid #dfdfdf;
     flex-direction: column;
-    height: calc(100% - 76px);
-    overflow: scroll;
-    overflow-x: hidden;
+    height: 100%;
+    padding-bottom: 69px;
 
     .title-3 {
       padding-bottom: 30px;
@@ -649,7 +668,7 @@
 
     .date {
       color: #999999;
-      font-size: .6875rem;
+      font-size: 20px;
       font-family: $CamphorRegular;
     }
   }
@@ -660,6 +679,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-top: 63px;
 
     &:after {
       content: '';
@@ -678,8 +698,9 @@
   }
 
   .icon-palme {
-    padding-top: 22px;
-    font-size: 2.5rem;
+    display: block;
+    padding-top: 44px;
+    font-size: 3.5rem;
     color: $gold;
     max-height: 39px;
     margin-bottom: 10px;
@@ -958,6 +979,8 @@
     margin-bottom: 13px;
     position: relative;
     cursor: pointer;
+    width: 195px;
+    height: 265px;
 
     &:after {
       content: '';
@@ -1041,12 +1064,12 @@
 
 // - BLOCK SOCIAL NETWORK
 .block-social-network {
-  height: 76px;
   box-sizing: padding-box;
 
   a {
     line-height: 76px;
-    height: 76px;
+    height: 134px;
+    line-height: 134px;
     color: $gold;
     width: 25%;
     display: inline-block;
@@ -1056,6 +1079,7 @@
     border-bottom: 1px solid #dfdfdf;
     box-sizing: border-box;
     transition: .5s;
+    font-size: 1.6rem;
 
     &:first-child {
       border-left: 0px solid #fff;
