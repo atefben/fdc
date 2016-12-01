@@ -87,6 +87,19 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     protected $translations;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldNewsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $oldNewsTable;
+
+    /**
      * FDCPageLaSelection constructor.
      */
     public function __construct()
@@ -285,5 +298,51 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Set oldNewsId
+     *
+     * @param integer $oldNewsId
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setOldNewsId($oldNewsId)
+    {
+        $this->oldNewsId = $oldNewsId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsId
+     *
+     * @return integer 
+     */
+    public function getOldNewsId()
+    {
+        return $this->oldNewsId;
+    }
+
+    /**
+     * Set oldNewsTable
+     *
+     * @param string $oldNewsTable
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setOldNewsTable($oldNewsTable)
+    {
+        $this->oldNewsTable = $oldNewsTable;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsTable
+     *
+     * @return string 
+     */
+    public function getOldNewsTable()
+    {
+        return $this->oldNewsTable;
     }
 }

@@ -49,7 +49,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="Theme")
+     * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "live", "event_show", "home", "search"})
      */
@@ -365,7 +365,7 @@ abstract class Media implements TranslateMainInterface
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaImageTranslation
+     * @return $this
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {

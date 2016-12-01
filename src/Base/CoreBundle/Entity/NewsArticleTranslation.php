@@ -75,7 +75,6 @@ class NewsArticleTranslation implements TranslateChildInterface
     public function setSlug($slug)
     {
         $this->slug = $slug;
-
         return $this;
     }
 

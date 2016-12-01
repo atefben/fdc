@@ -574,6 +574,7 @@ dashboard:
         credits: Crédits
         mentions_legales: Mentions légales
         confidentialite: Politique de confidentialité
+        old_news_id: Référence article
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:

@@ -51,7 +51,7 @@ trait Time
     /**
      * Set createdAt
      * @param \DateTime $createdAt
-     * @return FilmPrize
+     * @return $this
      */
     public function setCreatedAt($createdAt)
     {
@@ -72,7 +72,7 @@ trait Time
     /**
      * Set updatedAt
      * @param \DateTime $updatedAt
-     * @return FilmPrize
+     * @return $this
      */
     public function setUpdatedAt($updatedAt)
     {

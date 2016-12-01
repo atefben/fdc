@@ -143,6 +143,9 @@ class NewsCommonAdmin extends BaseAdmin
             ->add('_preview', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
             ))
+            ->add('oldNewsId', null, array(
+                'label'    => 'dashboard.link.old_news_id',
+            ))
         ;
     }
 

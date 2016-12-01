@@ -107,7 +107,7 @@ class NewsAdmin extends Admin
         $datagridMapper
             ->add('status_translation_pending', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
+                    if (!$value['value']) {
                         return;
                     }
                     if ($value['value']) {
@@ -120,7 +120,7 @@ class NewsAdmin extends Admin
             ))
             ->add('status_translation_validating', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
+                    if (!$value['value']) {
                         return;
                     }
 
@@ -134,7 +134,7 @@ class NewsAdmin extends Admin
             ))
             ->add('status_translated', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
+                    if (!$value['value']) {
                         return;
                     }
                     if ($value['value']) {

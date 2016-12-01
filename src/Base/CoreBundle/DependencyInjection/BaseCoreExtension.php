@@ -27,7 +27,8 @@ class BaseCoreExtension extends Extension
             'manager.yml',
             'twig.yml',
             'validator.yml',
-            'transformer.yml'
+            'transformer.yml',
+            'old_import.yml',
         );
         
         foreach ($configFiles as $configFile) {
