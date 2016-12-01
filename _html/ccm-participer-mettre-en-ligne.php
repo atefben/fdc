@@ -83,7 +83,10 @@
         </div>         
         <!--<button class="modal-toggle">Update</button>-->
     </div>
-      
+    <?php include('box-catalogue.php'); ?>  
+    <?php include('box-social.php'); ?>  
+    <?php include('box-news.php'); ?>
+    <?php include('box-contact.php'); ?>  
     <?php include('footer.html'); ?>
 
      <!-- cookie banner -->

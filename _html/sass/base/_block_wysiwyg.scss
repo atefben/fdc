@@ -361,10 +361,10 @@
     font-family: $CamphorBold;
   }
 
-  u {
+  /*u {
     margin-bottom: 24px;
     display: block;
-  }
+  }*/
 
   .block-contact {
     ul,p {
@@ -376,7 +376,18 @@
       line-height: 20px;
       list-style: none;
       list-style-type: none;
+    }
+    p {
+      margin-bottom: 15px;
+    }
 
+    h5 {
+      color: #0c0c0c;
+      font-size: .75rem;
+      text-transform: uppercase;
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+      line-height: 24px;
     }
   }
 

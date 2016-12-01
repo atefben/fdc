@@ -2068,6 +2068,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-contain-txt-register-movie {
   padding-top: 55px;
   display: none;
+  /*u {
+    margin-bottom: 24px;
+    display: block;
+  }*/
 }
 .block-contain-txt-register-movie em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
@@ -2173,10 +2177,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-contain-txt-register-movie strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.block-contain-txt-register-movie u {
-  margin-bottom: 24px;
-  display: block;
-}
 .block-contain-txt-register-movie .block-contact ul, .block-contain-txt-register-movie .block-contact p {
   color: #666666;
   margin-bottom: 42px;
@@ -2186,6 +2186,17 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   line-height: 20px;
   list-style: none;
   list-style-type: none;
+}
+.block-contain-txt-register-movie .block-contact p {
+  margin-bottom: 15px;
+}
+.block-contain-txt-register-movie .block-contact h5 {
+  color: #0c0c0c;
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  line-height: 24px;
 }
 .block-contain-txt-register-movie .block-s-info-02 p {
   line-height: 30px;
