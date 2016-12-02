@@ -922,6 +922,7 @@ $(document).ready(function () {
             success: function (data) {
               $('.v-wrapper').html(data);
               initDraggable();
+              filter();
               /*updateFilterCalendar();*/
             }
           });
