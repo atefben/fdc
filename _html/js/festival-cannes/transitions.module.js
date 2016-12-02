@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#main').removeClass('loading');
   if(window.location.href.indexOf("wishlist") > -1) {
     $('a').on('click', function(e) {
       if($('.mob').length > 0) {
