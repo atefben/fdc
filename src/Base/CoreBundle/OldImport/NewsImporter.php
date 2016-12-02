@@ -42,7 +42,7 @@ class NewsImporter extends Importer
             $count = $this->countNews($paginate);
         } else {
             $count = $this->countNews();
-            $pages = ceil($count / 100);
+            $pages = ceil($count / 10);
         }
         $progress = new ProgressBar($this->output, $count);
         $progress->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
@@ -56,8 +56,8 @@ class NewsImporter extends Importer
                 ->andWhere('o.articleTypeId in (:types)')
                 ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
                 ->addOrderBy('o.id', 'asc')
-                ->setMaxResults(100)
-                ->setFirstResult((($paginate ?: $page) - 1) * 100)
+                ->setMaxResults(10)
+                ->setFirstResult((($paginate ?: $page) - 1) * 10)
                 ->getQuery()
                 ->getResult()
             ;
@@ -99,8 +99,8 @@ class NewsImporter extends Importer
         if ($paginate) {
             return count($qb
                 ->select('o')
-                ->setFirstResult(($paginate - 1) * 100)
-                ->setMaxResults(100)
+                ->setFirstResult(($paginate - 1) * 10)
+                ->setMaxResults(10)
                 ->getQuery()
                 ->getResult()
             );
