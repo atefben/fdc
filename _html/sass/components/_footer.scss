@@ -53,8 +53,6 @@ footer {
   }
 
   &.loading:before {
-    opacity: 1;
-    visibility: visible;
   }
 
   &.overlay:after {
@@ -279,13 +277,11 @@ footer {
   }
 
   &.loading:before {
-    opacity: 1;
-    visibility: visible;
+
   }
 
   &.overlay:after {
-    opacity: 0.6;
-    visibility: visible;
+
   }
 
   .container{
