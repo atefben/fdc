@@ -33,13 +33,18 @@ class NewsImporter extends Importer
 
     protected $status;
 
-    public function importNews()
+    public function importNews($paginate = null)
     {
         $this->output->writeln('<info>Import news...</info>');
 
         $count = $this->countNews();
 
-        $pages = ceil($count / 50);
+        if ($paginate) {
+            $pages = 1;
+        }
+        else {
+            $pages = ceil($count / 100);
+        }
 
         $progress = new ProgressBar($this->output, $count);
         $progress->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
@@ -53,8 +58,8 @@ class NewsImporter extends Importer
                 ->andWhere('o.articleTypeId in (:types)')
                 ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
                 ->addOrderBy('o.id', 'asc')
-                ->setMaxResults(50)
-                ->setFirstResult(($page - 1) * 50)
+                ->setMaxResults(100)
+                ->setFirstResult((($paginate ?: $page) - 1) * 100)
                 ->getQuery()
                 ->getResult()
             ;
@@ -82,9 +87,9 @@ class NewsImporter extends Importer
         return $this;
     }
 
-    protected function countNews()
+    public function countNews()
     {
-        return $this
+        dump( $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
             ->createQueryBuilder('o')
@@ -93,7 +98,7 @@ class NewsImporter extends Importer
             ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
             ->getQuery()
             ->getSingleScalarResult()
-            ;
+        );
     }
 
     /**

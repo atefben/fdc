@@ -79,7 +79,7 @@ class ClassicsImporter extends Importer
         return $this;
     }
 
-    protected function countClassics()
+    public function countClassics()
     {
         return $this
             ->getManager()

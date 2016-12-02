@@ -72,7 +72,7 @@ class StatementImporter extends Importer
         return $this;
     }
 
-    protected function countStatements()
+    public function countStatements()
     {
         return $this
             ->getManager()
