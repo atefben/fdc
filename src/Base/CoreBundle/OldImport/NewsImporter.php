@@ -36,9 +36,8 @@ class NewsImporter extends Importer
     public function importNews($paginate = null)
     {
         $this->output->writeln('<info>Import news...</info>');
-
-
         if ($paginate) {
+            $this->output->write("<comment>Page $paginate</comment>");
             $pages = 1;
             $count = $this->countNews($paginate);
         } else {
