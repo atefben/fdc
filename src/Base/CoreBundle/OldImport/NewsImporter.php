@@ -36,16 +36,14 @@ class NewsImporter extends Importer
     public function importNews($paginate = null)
     {
         $this->output->writeln('<info>Import news...</info>');
-
-        $count = $this->countNews();
-
         if ($paginate) {
+            $this->output->writeln("<comment>Page $paginate</comment>");
             $pages = 1;
-        }
-        else {
+            $count = $this->countNews($paginate);
+        } else {
+            $count = $this->countNews();
             $pages = ceil($count / 100);
         }
-
         $progress = new ProgressBar($this->output, $count);
         $progress->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
         $progress->start();
@@ -87,18 +85,31 @@ class NewsImporter extends Importer
         return $this;
     }
 
-    public function countNews()
+    public function countNews($paginate = null)
     {
-        dump( $this
+        $qb = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
             ->createQueryBuilder('o')
             ->select('count(o)')
             ->andWhere('o.articleTypeId in (:types)')
             ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+        ;
+
+        if ($paginate) {
+            return count($qb
+                ->select('o')
+                ->setFirstResult(($paginate - 1) * 100)
+                ->setMaxResults(100)
+                ->getQuery()
+                ->getResult()
+            );
+        }
+
+        return $qb
             ->getQuery()
             ->getSingleScalarResult()
-        );
+            ;
     }
 
     /**

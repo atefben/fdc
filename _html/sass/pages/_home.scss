@@ -279,8 +279,6 @@
     @include transition(opacity 0.8s $smoothTransition, max-height 2s $smoothTransition);
 
     &.loading {
-      opacity: 0;
-      visibility: hidden;
     }
   }
 

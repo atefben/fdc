@@ -94,7 +94,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 $output->writeln('News to import ' . $newsImporter->countNews());
             }
             else {
-                $newsImporter->importNews();
+                $newsImporter->importNews($input->getOption('page'));
             }
 
         } elseif ($onlyStatements) {
