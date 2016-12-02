@@ -75,13 +75,27 @@ $(document).ready(function () {
                     }
                 },
                 onInitialized: function () {
-                    var m = ($(window).width() - $('.container').width()) / 2;
-                    $('#slider-trailers .owl-stage').css({'margin-left': m});
+
+                    if($('body').hasClass('tablette')){
+                        $('#slider-trailers  .owl-stage').css({ 'margin-left': "26px" });
+                    }else{
+                        var m = ($(window).width() - $('.container').width()) / 2;
+                        $('#slider-trailers .owl-stage').css({'margin-left': m});
+                    }
+
+
                     setActiveTrailers();
                 },
                 onResized: function () {
-                    var m = ($(window).width() - $('.container').width()) / 2;
-                    $('#slider-trailers .owl-stage').css({'margin-left': m});
+
+                    if($('body').hasClass('tablette')){
+                        $('#slider-trailers  .owl-stage').css({ 'margin-left': "26px" });
+                    }else{
+                        var m = ($(window).width() - $('.container').width()) / 2;
+                        $('#slider-trailers .owl-stage').css({'margin-left': m});
+                    }
+
+
                 },
                 onTranslated: function () {
                     setActiveTrailers();

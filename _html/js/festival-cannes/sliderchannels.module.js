@@ -26,13 +26,33 @@ $(document).ready(function() {
         }
       },
       onInitialized: function() {
-        var m = ($(window).width() - $('.container').width()) / 2;
-        $('#slider-channels .owl-stage').css({ 'margin-left': m });
+
+        if($('body').hasClass('tablette')){
+          $('#slider-channels  .owl-stage').css({ 'margin-left': "26px" });
+
+          var x = 0;
+          var nbSLide = $('#slider-channels .owl-item').size();
+          var wSlider = $('#slider-channels .owl-item').outerWidth();
+          x = nbSLide * wSlider + 1000;
+          x = x + "px";
+
+          $('#slider-channels  .owl-stage').css('width',x);
+        }else{
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-channels .owl-stage').css({ 'margin-left': m });
+        }
+
         setActiveChannels();
       },
       onResized: function() {
-        var m = ($(window).width() - $('.container').width()) / 2;
-        $('#slider-channels .owl-stage').css({ 'margin-left': m });
+
+        if($('body').hasClass('tablette')){
+          $('#slider-channels  .owl-stage').css({ 'margin-left': "26px" });
+        }else{
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-channels .owl-stage').css({ 'margin-left': m });
+        }
+
       },
       onTranslated: function() {
         setActiveChannels();
