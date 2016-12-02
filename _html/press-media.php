@@ -5,10 +5,10 @@
   <?php include('head.html'); ?>
 </head>
 
-<body class="b-press-media lock">
+<body class="b-press-media connected">
   <?php include('header-press.html'); ?>
 
-    <div id="main" class="press loading press-media lock">
+    <div id="main" class="press loading press-media ">
       <div class="header-press">
         <div class="head">
           <span><i class="icon icon_espace-presse"></i>Espace presse</span>
