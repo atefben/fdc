@@ -275,15 +275,11 @@ footer {
     z-index: 5;
     @include transition(all 0.9s $smoothTransition);
   }
-
   &.loading:before {
-
   }
 
   &.overlay:after {
-
   }
-
   .container{
     width: 979px;
     margin: 0 auto;

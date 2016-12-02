@@ -3267,10 +3267,6 @@ body.fix {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#main.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
 #main.overlay {
   cursor: pointer;
 }
@@ -4700,10 +4696,6 @@ footer:before {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-footer.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
 footer.overlay:after {
   opacity: 0.6;
   visibility: visible;
@@ -4911,14 +4903,6 @@ footer .footer-menu ul li a:hover {
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#breadcrumb.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
-#breadcrumb.overlay:after {
-  opacity: 0.6;
-  visibility: visible;
 }
 #breadcrumb .container {
   width: 979px;
@@ -8733,10 +8717,6 @@ header #searchContainer {
   -o-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#news #articles-wrapper.loading {
-  opacity: 0;
-  visibility: hidden;
 }
 #news .title {
   margin-bottom: 20px;
@@ -13482,10 +13462,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.list-article .bandeau-list .sub-nav-list.loading:before {
-  opacity: 1;
-  visibility: visible;
 }
 .list-article .bandeau-list .sub-nav-list.overlay:after {
   opacity: 0.6;
