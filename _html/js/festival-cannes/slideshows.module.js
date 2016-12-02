@@ -136,17 +136,12 @@ $('body').on('click', '.chocolat-pagination', function() {
 });
 
 $('body').on('click', '.chocolat-bottom .share', function() {
-
-  console.log($(this));
-
   $('.chocolat-bottom .buttons').toggleClass('show');
 });
 
 // zoom
 $('body').on('click', '.chocolat-image', function() {
   var $that = $(this);
-
-  console.log($that);
 
   $('.chocolat-wrapper .chocolat-bottom').append('<div class="thumbnails"></div>');
   $('.chocolat-left, .chocolat-right').appendTo('.chocolat-bottom');
