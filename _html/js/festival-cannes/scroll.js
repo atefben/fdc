@@ -370,7 +370,7 @@ $(document).ready(function () {
                 w = w + "px";
 
                 $('.filters').css('top', '' + w + '');
-                $('#timeline').css('top', '' + w + '').css('z-index', 3);
+                $('#timeline').css('top', '' + w + '').css('z-index', 4);
                 $('.calendar .v-head').css('transform', 'translateY(' + y + ')');
                 $('.calendar .nav').css('transform', 'translateY(' + y + ')').css('z-index', 3);
 
@@ -378,7 +378,7 @@ $(document).ready(function () {
             } else {
 
                 $('.filters').css('top', '' + 0 + '');
-                $('#timeline').css('top', '' + 0 + '').css('z-index', 3);
+                $('#timeline').css('top', '' + 0 + '').css('z-index', 4);
 
                 $('.calendar .v-head').css('transform', 'translateY(' + 0 + ')');
                 $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
