@@ -334,9 +334,7 @@ class PersonManager extends CoreManager
         if (property_exists($resultObject, 'LinkedDeletedPersonnes')) {
             $collection = new ArrayCollection();
             $duplicates = clone $entity->getDuplicates();
-            $linkedDeteletedPersonDto = @$resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto;
-            if (!$linkedDeteletedPersonDto) {
-
+            if (property_exists($resultObject->LinkedDeletedPersonnes, 'LinkedDeletedPersonneDto')) {
                 $objects = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
                 $duplicateIds = array();
                 $duplicateSelfkits = array();
