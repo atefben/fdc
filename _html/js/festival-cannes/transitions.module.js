@@ -46,7 +46,7 @@ $(document).ready(function() {
   }, 0);
 
   $('body').on('click', "a[target!='_blank']:not(.ajax, .link)" , function(e) {
-    var href = $(this).attr('href');
+    /*var href = $(this).attr('href');
 
     if((href.indexOf('#') == -1 || (href.indexOf('#') > -1 && href.length > 1)) || $(this).hasClass('ajaxi')) {
       if(!isiPad() && href.indexOf('mailto') == -1) {
@@ -78,7 +78,7 @@ $(document).ready(function() {
 
     if(!isiPad() && href.indexOf('mailto') == -1) {
       return false;
-    }
+    }*/
   });
 });
 /*
