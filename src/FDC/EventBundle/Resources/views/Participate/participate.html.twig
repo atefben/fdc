@@ -47,7 +47,7 @@
 	                            <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
 	                            {{ s.section|trans_fallback('title') }}
 	                        </h3>
-	                        <i class="icon accordion {% if i == 0 %}icon_case-moins{% else %}icon_case-plus{% endif %}"></i>
+	                        <i class="icon accordion {% if i == 0 %}icon_case-moins icon_moins{% else %}icon_case-plus{% endif %}"></i>
 							<div class="item-manual">
 								<div class="contain-infos">
 	                        {% if s.section|trans_fallback('description') %}
