@@ -59,6 +59,12 @@ abstract class StatementWidget
     protected $statement;
 
     /**
+     * @var string
+     * @ORM\Column(name="old_import_reference", type="string", length=255, nullable=true)
+     */
+    protected $oldImportReference;
+
+    /**
      * Get the class type in the Api
      *
      * @VirtualProperty
@@ -141,5 +147,28 @@ abstract class StatementWidget
     public function getStatement()
     {
         return $this->statement;
+    }
+
+    /**
+     * Set oldImportReference
+     *
+     * @param string $oldImportReference
+     * @return StatementWidget
+     */
+    public function setOldImportReference($oldImportReference)
+    {
+        $this->oldImportReference = $oldImportReference;
+
+        return $this;
+    }
+
+    /**
+     * Get oldImportReference
+     *
+     * @return string 
+     */
+    public function getOldImportReference()
+    {
+        return $this->oldImportReference;
     }
 }

@@ -56,6 +56,13 @@ abstract class NewsWidget
      */
     protected $news;
 
+
+    /**
+     * @var string
+     * @ORM\Column(name="old_import_reference", type="string", length=255, nullable=true)
+     */
+    protected $oldImportReference;
+
     /**
      * Get the class type in the Api
      *
@@ -76,7 +83,7 @@ abstract class NewsWidget
      */
     public function findTranslationByLocale($locale)
     {
-        
+
         foreach ($this->getTranslations() as $translation) {
             if ($translation->getLocale() == $locale) {
                 return $translation;
@@ -123,7 +130,7 @@ abstract class NewsWidget
      * Set news
      *
      * @param \Base\CoreBundle\Entity\News $news
-     * @return News
+     * @return $this
      */
     public function setNews(\Base\CoreBundle\Entity\News $news = null)
     {
@@ -140,5 +147,28 @@ abstract class NewsWidget
     public function getNews()
     {
         return $this->news;
+    }
+
+    /**
+     * Set oldImportReference
+     *
+     * @param string $oldImportReference
+     * @return NewsWidget
+     */
+    public function setOldImportReference($oldImportReference)
+    {
+        $this->oldImportReference = $oldImportReference;
+
+        return $this;
+    }
+
+    /**
+     * Get oldImportReference
+     *
+     * @return string 
+     */
+    public function getOldImportReference()
+    {
+        return $this->oldImportReference;
     }
 }

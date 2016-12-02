@@ -1,6 +1,7 @@
 <?php
 
 namespace Base\CoreBundle\Util;
+use Application\Sonata\UserBundle\Entity\User;
 
 /**
  * TranslateChild trait.
@@ -25,7 +26,7 @@ trait TranslateChild
     private $lockedBy;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -94,10 +95,10 @@ trait TranslateChild
     }
 
     /**
-     * @param $isPublishedOnFDCEvent
+     * @param bool $isPublishedOnFDCEvent
      * @return $this
      */
-    public function setisPublishedOnFDCEvent($isPublishedOnFDCEvent)
+    public function setIsPublishedOnFDCEvent($isPublishedOnFDCEvent)
     {
         $this->isPublishedOnFDCEvent = $isPublishedOnFDCEvent;
 
