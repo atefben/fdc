@@ -3256,6 +3256,11 @@ body.fix {
   border-bottom: 1px solid #2C2C2C;
 }
 
+.tablette .list-article .bandeau-list .bandeau-list-img {
+  background-size: cover;
+  background-position: 0px -64px;
+}
+
 @media screen and (max-width: 768px) {
   #main, header, footer {
     width: 1024px;
