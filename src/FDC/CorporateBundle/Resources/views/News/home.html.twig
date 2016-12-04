@@ -21,7 +21,7 @@
                         {% set file = trans.file %}
                         <div class="item animated active" data-item="{{ dataItem }}" style="background-image:url('{% path file , '1280x808' %}')"></div>
 
-                        {% if class(homeSlide) starts with 'S' %}
+                        {% if attribute(homeSlide, class) is defined and class(homeSlide) starts with 'S' %}
                             {% set type = 'communique' %}
                         {% else %}
                             {% set type = 'info' %}
@@ -80,7 +80,7 @@
                         <div class="grid-sizer"></div>
                     {% for i in 0..2 %}
                         {% set article = homeContents[i] %}
-                        {% if class(article) starts with 'S' %}
+                        {% if attribute(article, class) is defined and class(article) starts with 'S' %}
                             {% set type = 'communique' %}
                         {% else %}
                             {% set type = 'info' %}
