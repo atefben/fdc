@@ -22,7 +22,7 @@
 
                         {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                         {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
-                        <img src="{% path trans.file , resolution %}" srcset="{% path trans.file , resolution %} 1x, {% path trans.file , resolutionRetina %} 2x" alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}">
+                        <img src="{% path trans.file , resolution %}" srcset="{% path trans.file , resolution %} 1x, {% path trans.file , resolutionRetina %} 2x" alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}" class="lazy">
                         <div class="picto"><i class="icon icon_photo"></i></div>
                         <div class="info">
                             <div class="vCenter">
