@@ -76,12 +76,10 @@ function setGrid(grid, dom, init){
         i++;
       }
 
-      console.log('1');
 
 
 
       if($('#gridWebtv').length > 0 ){
-        console.log('ok');
 
         $.each($('.item'), function (i, e) {
 
@@ -103,23 +101,19 @@ function setGrid(grid, dom, init){
       
       $(dom).find('div.item:not(.w2)').each(function() {
 
-        console.log('2');
 
         if(typeof $(this).find('.info p').data('title') != 'undefined') {
           $(this).find('.info p').text($(this).find('.info p').data('title').trunc(20,true));
 
-          console.log('3');
         }
 
       });
 
       $(dom).find('div.item.w2').each(function() {
 
-        console.log('4');
 
         if(typeof $(this).find('.info p').data('title') != 'undefined') {
 
-          console.log('5');
 
           $(this).find('.info p').text($(this).find('.info p').data('title').trunc(50,true));
         }
@@ -127,7 +121,7 @@ function setGrid(grid, dom, init){
 
       if($('#gridPhotos').length > 0) {
 
-        console.log('6');
+
 
         $('#gridPhotos div.item:not(.w2)').each(function() {
           if(typeof $(this).find('.info .category').data('category') != 'undefined') {
@@ -144,7 +138,7 @@ function setGrid(grid, dom, init){
       }
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
 
-      console.log('7');
+
 
       while (i < $img.length) {
         if (j < 10) {
@@ -189,7 +183,7 @@ function setGrid(grid, dom, init){
 
 
       if($('#gridWebtv').length > 0 ){
-        console.log('ok');
+
 
         $.each($('.item'), function (i, e) {
 
@@ -210,7 +204,7 @@ function setGrid(grid, dom, init){
 
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
 
-      console.log('8');
+
 
       while (i < $img.length) {
         if (j < 30) {
@@ -253,7 +247,6 @@ function setGrid(grid, dom, init){
       }
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
 
-      console.log('9');
 
       while (i < $img.length) {
         if (j < 15) {
@@ -282,7 +275,6 @@ function setGrid(grid, dom, init){
 
       if($('#gridPhotos').length > 0) {
 
-        console.log('10');
 
         $('#gridPhotos div.item:not(.w2)').each(function() {
           if(typeof $(this).find('.info .category').data('category') != 'undefined') {
@@ -374,13 +366,14 @@ $(document).ready(function () {
   if($('.grid').length) {
     if($('#gridPhotos').length) {
       var $container = $('#gridPhotos'),
-          $grid;
+          $imgs = $('img.lazy'),
+          $grid = $('#gridPhotos');
+      setGrid($grid, $('#gridPhotos'), true);
 
-      $grid = $('#gridPhotos').imagesLoaded(function() {
-        setImages($grid, $('#gridPhotos'), true);
-        $grid.isotope({
+      $container.isotope({
           itemSelector    : '.item',
           percentPosition : true,
+          transformsEnabled: false,
           // sortBy          : 'original-order',
           layoutMode      : 'packery',
           packery         : {
@@ -389,7 +382,10 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
-      });
+        $imgs.lazyload({
+          'failure_limit' : Math.max($imgs.length - 1, 0)
+        });
+
     }
 
     if($('#gridChannels').length) {
