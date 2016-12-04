@@ -366,14 +366,13 @@ $(document).ready(function () {
   if($('.grid').length) {
     if($('#gridPhotos').length) {
       var $container = $('#gridPhotos'),
-          $imgs = $('img.lazy'),
-          $grid = $('#gridPhotos');
-      setGrid($grid, $('#gridPhotos'), true);
+          $grid;
 
-      $container.isotope({
+      $grid = $('#gridPhotos').imagesLoaded(function() {
+        setImages($grid, $('#gridPhotos'), true);
+        $grid.isotope({
           itemSelector    : '.item',
           percentPosition : true,
-          transformsEnabled: false,
           // sortBy          : 'original-order',
           layoutMode      : 'packery',
           packery         : {
@@ -382,10 +381,7 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
-        $imgs.lazyload({
-          'failure_limit' : Math.max($imgs.length - 1, 0)
-        });
-
+      });
     }
 
     if($('#gridChannels').length) {
