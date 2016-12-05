@@ -129,8 +129,7 @@
                                  data-id="{{ seance.id }}" data-picto='.seance' data-color='{{ dataColor }}'
                                  data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H') < 4 ? '23:59:59' : seance.startsAt|date('H:i:s') }}"
                                  data-end="{{ seance.endsAt|date('Y-m-d') }}T{{ seance.endsAt|date('H:i:s') }}"
-                                 data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
-                            >
+                                 data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true">
                                 <span class="category">
                                     <i class="icon icon_evt-seance-presse"></i>
                                     {% set trans_slug = 'programmation.type.' ~ seance.type|remove_accents|sonata_slugify %}
@@ -157,10 +156,7 @@
                                             <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                             <strong>
-                                                {%- for director in directors -%}
-                                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
-                                                    {%- if loop.index != directors|length -%}, {%- endif -%}
-                                                {%- endfor -%}
+                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
                                             </strong>
                                         </div>
                                     {%- else -%}
@@ -238,8 +234,7 @@
                                  data-id="{{ conference.id }}" data-picto='.seance' data-color='{{ dataColor }}'
                                  data-start="{{ conference.startsAt|date('Y-m-d') }}T{{ conference.startsAt|date('H:i:s') }}"
                                  data-end="{{ conference.endsAt|date('Y-m-d') }}T{{ conference.endsAt|date('H:i:s') }}"
-                                 data-time="{{ conference.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
-                            >
+                                 data-time="{{ conference.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true">
                                     <span class="category">
                                         <i class="icon icon_evt-seance-conference"></i>
                                         {% set trans_slug = 'programmation.type.' ~ conference.type|remove_accents|sonata_slugify %}
@@ -266,10 +261,7 @@
                                             <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                             <strong>
-                                                {%- for director in directors -%}
-                                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
-                                                    {%- if loop.index != directors|length -%}, {%- endif -%}
-                                                {%- endfor -%}
+                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
                                             </strong>
                                         </div>
                                     {%- else -%}
@@ -342,8 +334,7 @@
                                  data-id="{{ relatedProjection.id }}" data-picto='.seance' data-color='{{ dataColor }}'
                                  data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H') < 4 ? '23:59:59' : relatedProjection.startsAt|date('H:i:s') }}"
                                  data-end="{{ relatedProjection.endsAt|date('Y-m-d') }}T{{ relatedProjection.endsAt|date('H:i:s') }}"
-                                 data-time="{{ relatedProjection.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
-                                    >
+                                 data-time="{{ relatedProjection.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true">
                                     <span class="category">
                                         <i class="icon icon_evt-seance"></i>
                                         {% set trans_slug = 'programmation.type.' ~ relatedProjection.type|remove_accents|sonata_slugify %}
@@ -370,10 +361,7 @@
                                             <span>{{ film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                             <strong>
-                                                {%- for director in directors -%}
-                                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
-                                                    {%- if loop.index != directors|length -%}, {%- endif -%}
-                                                {%- endfor -%}
+                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
                                             </strong>
                                         </div>
                                     {%- else -%}
