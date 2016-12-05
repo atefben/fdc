@@ -370,6 +370,8 @@ $(document).ready(function () {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           }
 
+          console.log(e);
+
           if ( e == "événement" ){
             $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_speacker"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
           }
