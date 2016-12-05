@@ -227,12 +227,12 @@ abstract class Media implements TranslateMainInterface
             if ($string != 'MediaImage') {
                 if ($this->findTranslationByLocale('fr') != null) {
                     $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
-                    $string = $this->truncate($string, 40, '..."', true);
+                    $string = $this->truncate($string, 80, '..."', true);
                 }
             } else {
                 if ($this->findTranslationByLocale('fr') != null) {
                     $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
-                    $string = $this->truncate($string, 40, '..."', true);
+                    $string = $this->truncate($string, 80, '..."', true);
                 }
             }
         }
