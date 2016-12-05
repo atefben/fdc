@@ -179,6 +179,7 @@ class MediaImageSimpleAdmin extends Admin
     public function prePersist($object)
     {
         session_write_close();
+        $object->findTranslationByLocale('fr')->setStatus(1);
         $object->preUpdate($object);
     }
 
