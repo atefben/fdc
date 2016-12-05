@@ -98,7 +98,7 @@ class SearchController extends Controller
                 $displayNb = 4;
                 switch ($i) {
                     case 1:
-                        $displayNb = 4
+                        $displayNb = 4;
                         break;
                     case 2:
                         $displayNb = 3;
