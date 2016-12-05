@@ -1450,7 +1450,7 @@ $(document).ready(function () {
           },
           beforeSend: function(){
             $('.nav-container').addClass('load');
-            $('.nav-container').append('<img class="loader" src="'+GLOBALS.baseUrl+'img/loading.svg" alt="">');
+            $('.nav-container').append('<img class="loader" src="'+GLOBALS.urls.loadingImg+'" alt="">');
           }
         });
 

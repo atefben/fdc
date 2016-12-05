@@ -33,6 +33,7 @@ var GLOBALS = {
     "videosUrl": "videos.php",
     "searchUrl": "searchsuggest.json",
     "resultUrl": "results.json",
+    "loadingImg": "./img/loading.svg"
   },
   "texts" : {
     "url" : {
