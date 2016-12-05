@@ -1,6 +1,8 @@
 // Filters
 // =========================
 function filter() {
+  console.log('init filter');
+
   var id = $('#filters').data('id');
   var filters = [];
 
