@@ -743,10 +743,10 @@
 
   }
 
-  .communiques {
+  .wrapper > .communiques {
     overflow: hidden;
     clear: both;
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 0px solid #e3e3e3;
 
     .grid-container {
       overflow: hidden;
