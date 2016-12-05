@@ -724,7 +724,7 @@ form:
         helper_film_film_associated_info: Sélectionnez une ou plusieurs infos associées au film.
         helper_film_film_associated_statement: Sélectionnez un ou plusieurs communiqués associés au film.
         helper_film_film_associated_news: Sélectionnez une ou plusieurs actualités associées au film.
-    placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
+    placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
     label_films: Films
@@ -777,7 +777,7 @@ form:
     label_seo_title: Titre
     label_seo_description: Description
     label_seo_file: Vignette partage
-    label_theme_name: Nom du thème FAQ
+    label_theme_name: Nom du thème
     label_file: Fichier
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
