@@ -22,8 +22,6 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->factorizeWidgetText($this->getManager()->getRepository('BaseCoreBundle:NewsArticle')->find(2085));
-die;
         $count = $this->getNewsCount();
         $pages = ceil($count / 50);
 
