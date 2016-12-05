@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // init array of events
+
   var events = [];
 
   // get local storage
@@ -337,7 +338,7 @@ $(document).ready(function () {
 
           var c       = event.eventColor;
           var e = event.type;
-          
+
           // $(element).css('width', 'auto');
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
@@ -346,7 +347,9 @@ $(document).ready(function () {
           $(element).attr('data-url',event.url);
           $(element).empty();
 
-          if (c == '#000') {
+          if ( e == "événement" || e == "Event"){
+            $(element).append('<span class="category" style="background-color:' + c + ';color:#fff;"><i class="icon icon_speacker"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close" style="color:#fff;"></i></a></span>');
+          }else if (c == '#000') {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#9b9b9b") {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
@@ -369,8 +372,6 @@ $(document).ready(function () {
           } else {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           }
-
-          console.log(e);
 
           if ( e == "événement" ){
             $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_speacker"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
@@ -522,6 +523,7 @@ $(document).ready(function () {
         });
       }
     } else {
+
       // if cookie drag doesn't exist, add class to show message
       if (!$.cookie('drag') && events.length == 0) {
         $('#calendar-wrapper').addClass('drag');
@@ -559,6 +561,7 @@ $(document).ready(function () {
         eventOverlap: false,
         slotEventOverlap: false,
         eventAfterRender: function (event, element, view) {
+
           // atfer render of each event : change html with all the info
           if (event.duration / 60 < 1 || (event.duration / 60 < 2 && event.duration % 60 < 45)) {
             $(element).addClass('one-hour');
@@ -573,15 +576,19 @@ $(document).ready(function () {
             case 'zh': var dur     = heures + '点' + minutes; break
           }
 
-          var c       = event.eventColor;
+          var c = event.eventColor;
           var e = event.type;
-          
+
+          console.log(e);
+
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
           $(element).addClass(event.eventPictogram).addClass('ajax');
           $(element).attr('data-id', event.id);
 
-          if (c == '#000') {
+          if ( e == "événement" || e == "Event"){
+            $(element).append('<span class="category" style="background-color:' + c + ';color:#fff;"><i class="icon icon_speacker"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close" style="color:#fff;"></i></a></span>');
+          }else if (c == '#000') {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
           } else if (c == "#9b9b9b") {
             $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"><i class="icon icon_close"></i></a></span>');
@@ -605,9 +612,9 @@ $(document).ready(function () {
             $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
           }
 
-          if ( e == "événement" ){
-            $(element).append('<span class="category" style="background-color:' + c + ';color:#000;"><i class="icon icon_speacker"></i>' + event.title + '<a href="#" class="del"><i class="icon icon_close" style="color:#000;"></i></a></span>');
-          }
+
+
+
 
         },
         eventClick: function (event, jsEvent, view) {
@@ -926,7 +933,7 @@ $(document).ready(function () {
               initDraggable();
 
               filter();
-              
+
               /*updateFilterCalendar();*/
             }
           });
@@ -1091,7 +1098,7 @@ $(document).ready(function () {
     if($('.press.lock').length && !$('.connected').length) {
       if($('#popin-press').length) {
         $('.buttons:not(".active-btn")').on('click', function () {
-          
+
           if($('#popin-press').hasClass('visible-popin')) {
             $('#popin-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');

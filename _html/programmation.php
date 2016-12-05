@@ -126,8 +126,8 @@
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-category="hors_competition" data-type="reprise" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:35:00" data-time="9" data-duration="155">
-                        <span class="category"><i class="icon icon_espace-presse"></i>séance de reprise</span>
+                      <div class="fc-event" data-category="hors_competition" data-type="événement" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#9b9b9b' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:35:00" data-time="9" data-duration="155">
+                        <span class="category"><i class="icon icon_speacker"></i>Event</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>

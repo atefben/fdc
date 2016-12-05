@@ -4571,6 +4571,12 @@ header #navigation ul.user .participate-wrapper ul {
   margin-left: -762px;
   text-align: right;
 }
+html[lang="es"] header #navigation ul.user .participate-wrapper ul {
+  left: auto;
+  margin-left: -812px;
+  text-align: left;
+  width: 100%;
+}
 header #navigation ul.user .participate-wrapper ul li a {
   font-size: 0.688rem;
 }
@@ -18625,7 +18631,7 @@ body:not(.tablette) .webtv #live .img {
   font-size: 0.750rem;
   line-height: 1.5em;
   margin: 0 auto;
-  width: 85% !important;
+  width: 87% !important;
 }
 .popin-event .film p a {
   color: #c8a461;
