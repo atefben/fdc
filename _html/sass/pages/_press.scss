@@ -1373,6 +1373,10 @@
     overflow: hidden;
     padding: 40px 0;
 
+    & + .communiques {
+      border-top: 1px solid #e3e3e3;
+    }
+
     .container {
       width: 885px;
     }

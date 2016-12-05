@@ -18010,6 +18010,9 @@ body:not(.tablette) .webtv #live .img {
   overflow: hidden;
   padding: 40px 0;
 }
+.press .affiche + .communiques {
+  border-top: 1px solid #e3e3e3;
+}
 .press .affiche .container {
   width: 885px;
 }
