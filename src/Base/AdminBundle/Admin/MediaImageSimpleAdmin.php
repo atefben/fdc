@@ -187,8 +187,8 @@ class MediaImageSimpleAdmin extends Admin
     {
         session_write_close();
         $object->findTranslationByLocale('fr')->setStatus(1);
-        $object->findTranslationByLocale('en')->setStatus(1);
-        $object->findTranslationByLocale('zh')->setStatus(1);
-        $object->findTranslationByLocale('es')->setStatus(1);
+//        $object->findTranslationByLocale('en')->setStatus(1);
+//        $object->findTranslationByLocale('zh')->setStatus(1);
+//        $object->findTranslationByLocale('es')->setStatus(1);
     }
 }
