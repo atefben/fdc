@@ -1588,7 +1588,6 @@
     z-index: 0;
     @include transform(translate3d(0px, -70px, 0px));
     @include transition(all 0.8s $smoothTransition);
-
     img {
       display: block;
       margin: 0 auto;
