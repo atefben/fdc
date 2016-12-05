@@ -243,6 +243,7 @@
     }
 
     hr {
+      display: none;
       -webkit-transform: rotate(90deg);
       -moz-transform: rotate(90deg);
       -o-transform: rotate(90deg);
@@ -305,6 +306,7 @@
     }
     
     hr {
+      display: none;
       -webkit-transform: rotate(90deg);
       -moz-transform: rotate(90deg);
       -o-transform: rotate(90deg);
@@ -326,8 +328,33 @@
 
   .conf30Sharp {
       width: 35%!important;
-    }
 
+      &:before {
+        height: 445px;
+        display: block;
+        width: 1px;
+        background: #ececec;
+        border-right: 1px white;
+        content: '';
+        position: relative;
+        float: left;
+        margin-top: 45px;
+      }
+    }
+  .conf30 {
+      &:before {
+        height: 200px;
+        display: block;
+        width: 1px;
+        background: #ececec;
+        border-right: 1px white;
+        content: '';
+        position: relative;
+        float: left;
+        margin-top: 20px;
+      }
+
+  }
   .conf30, .conf30Sharp {
     width: 35%;
     float:left;
@@ -337,7 +364,6 @@
     text-align: left;
     padding-top: 30px;
     font-size: 14px;
-
 
     p {
       margin-left: 30px;
@@ -395,6 +421,10 @@
 .box {
   min-height: 290px;
   height: auto;
+  cursor: default;
+  position: relative;
+  overflow: hidden !important;
+  padding-bottom: 15px;
   border-bottom: 4px solid #c60e2d!important;
     
     @media screen and (max-width: 1280px) {
@@ -419,6 +449,10 @@
     .box {
       height: auto;
       min-height: 900px!important;
+      cursor: default;
+      position: relative;
+      overflow: hidden !important;
+      padding-bottom: 15px;
         @media screen and (max-width: 1280px) {
             min-height: 1000px!important;
         }

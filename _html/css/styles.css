@@ -23714,6 +23714,7 @@ ul.tabs .quarterTab h4 {
   }
 }
 .conferences .conf60 hr, .conferences .conf70 hr {
+  display: none;
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
@@ -23773,6 +23774,7 @@ ul.tabs .quarterTab h4 {
   text-align: left;
 }
 .conferences .conf70 hr {
+  display: none;
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
@@ -23794,6 +23796,28 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conf30Sharp {
   width: 35% !important;
+}
+.conferences .conf30Sharp:before {
+  height: 445px;
+  display: block;
+  width: 1px;
+  background: #ececec;
+  border-right: 1px white;
+  content: '';
+  position: relative;
+  float: left;
+  margin-top: 45px;
+}
+.conferences .conf30:before {
+  height: 200px;
+  display: block;
+  width: 1px;
+  background: #ececec;
+  border-right: 1px white;
+  content: '';
+  position: relative;
+  float: left;
+  margin-top: 20px;
 }
 .conferences .conf30, .conferences .conf30Sharp {
   width: 35%;
@@ -23850,6 +23874,10 @@ ul.tabs .quarterTab h4 {
 .conferences .box {
   min-height: 290px;
   height: auto;
+  cursor: default;
+  position: relative;
+  overflow: hidden !important;
+  padding-bottom: 15px;
   border-bottom: 4px solid #c60e2d !important;
 }
 @media screen and (max-width: 1280px) {
@@ -23871,6 +23899,10 @@ ul.tabs .quarterTab h4 {
 .conferenceMenu .box {
   height: auto;
   min-height: 900px !important;
+  cursor: default;
+  position: relative;
+  overflow: hidden !important;
+  padding-bottom: 15px;
 }
 @media screen and (max-width: 1280px) {
   .conferenceMenu .box {
