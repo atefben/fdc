@@ -434,7 +434,7 @@
                 {% if trans is null or trans.file is null %}
                     {% set trans = homepage.pushEditionImage.findTranslationByLocale('fr') %}
                 {% endif %}
-                <div class="block-push block-03 block-scale" style="background-image: url('{% path trans.file , '325x205' %}')">
+                <div class="block-push block-03 block-scale" style="background-image: url('{% path trans.file , '1600x903' %}')">
                     <a href="{{ homepage|trans_fallback('pushEditionUrl') }}" class="coverLink"></a>
                     <div class="vFlexAlign">
                         <div>
