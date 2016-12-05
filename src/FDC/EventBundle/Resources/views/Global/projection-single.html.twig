@@ -43,10 +43,7 @@
                         <p>
                             {{- 'movie.label.realisepar'|trans }} :{{ ' ' }}
                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                            {%- for director in directors -%}
-                                {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
-                                {%- if loop.index != directors|length -%}, {%- endif -%}
-                            {%- endfor -%}
+                            {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}{%- if loop.index != directors|length -%}, {%- endif -%}{%- endfor -%}
                         </p>
                         {%- if film.productionYear is not null and film.productionYear != 0 -%}
                             <p>
