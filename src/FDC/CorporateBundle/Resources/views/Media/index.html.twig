@@ -28,8 +28,6 @@
                     </div>
                     <span id="slider-snap-value-upper" class="number"></span>
                 </div>
-                {% dump(app.request.get('yearStart')) %}
-                {% dump(app.request.get('year-start')) %}
                 <input type="hidden" for="s-yearstart" class="s-yearstart" name="year-start" value="{% if app.request.get('yearStart') is not null %}{{ app.request.get('yearStart') }}{% else %}1946{% endif %}">
                 <input type="hidden" for="s-yearend" class="s-yearend" name="year-end" value="{% if app.request.get('yearEnd') is not null %}{{ app.request.get('yearEnd') }}{% else %}2016{% endif %}">
                 <input type="hidden" name="pg" value="1">
