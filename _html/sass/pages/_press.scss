@@ -862,7 +862,7 @@
           float: left;
           position: relative;
           width: 60px;
-          z-index: 5;
+          z-index: 4;
 
           .empty {
             border-bottom: 1px solid #e5e5e5;
@@ -2146,6 +2146,7 @@
         color: #adadad;
         margin-right: 10px;
         display: inline-block;
+        margin: 0 2px 0 0;
       }
 
       .nom-item {
