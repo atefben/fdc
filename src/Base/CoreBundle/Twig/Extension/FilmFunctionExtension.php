@@ -33,6 +33,9 @@ class FilmFunctionExtension extends Twig_Extension
         $tmp = array();
         if (method_exists($film, 'getPersons')) {
             foreach ($film->getPersons() as $person) {
+                if (!$person || !$person->getPerson() || $person->getPerson()->getDuplicate()) {
+                    continue;
+                }
                 foreach ($person->getFunctions() as $function) {
                     if ($function->getFunction() != null && $function->getFunction()->getId() == $functionId) {
                         $tmp[] = $person->getPerson();
@@ -48,7 +51,6 @@ class FilmFunctionExtension extends Twig_Extension
      * getName function.
      *
      * @access public
-     * @return void
      */
     public function getName()
     {
