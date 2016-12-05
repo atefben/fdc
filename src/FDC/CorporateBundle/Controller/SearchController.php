@@ -371,10 +371,7 @@ class SearchController extends Controller
      */
     public function searchAutocompleteAction($_locale, $searchTerm = null)
     {
-        if ($searchTerm === null) {
-            throw $this->createNotFoundException();
-        }
-
+        
         $repository = $this->get('base.search.repository');
 
         $finalQuery = new \Elastica\Query\BoolQuery();
