@@ -21,7 +21,7 @@
                         {% set file = trans.file %}
                         <div class="item animated active" data-item="{{ dataItem }}" style="background-image:url('{% path file , '1280x808' %}')"></div>
 
-                        {% if attribute(homeSlide, class) is defined and class(homeSlide) starts with 'S' %}
+                        {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'S' %}
                             {% set type = 'communique' %}
                         {% else %}
                             {% set type = 'info' %}
@@ -80,7 +80,7 @@
                         <div class="grid-sizer"></div>
                     {% for i in 0..2 %}
                         {% set article = homeContents[i] %}
-                        {% if attribute(article, class) is defined and class(article) starts with 'S' %}
+                        {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
                             {% set type = 'communique' %}
                         {% else %}
                             {% set type = 'info' %}
@@ -241,7 +241,7 @@
                         {% if homeContents|length > 3 %}
                         {% for i in 3..(homeContents|length)-1 %}
                             {% set article = homeContents[i] %}
-                            {% if attribute(article, class) is defined and class(article) starts with 'S' %}
+                            {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
                                 {% set type = 'communique' %}
                             {% else %}
                                 {% set type = 'info' %}
@@ -434,7 +434,7 @@
                 {% if trans is null or trans.file is null %}
                     {% set trans = homepage.pushEditionImage.findTranslationByLocale('fr') %}
                 {% endif %}
-                <div class="block-push block-03 block-scale" style="background-image: url('{% path trans.file , '1600x903' %}')">
+                <div class="block-push block-03 block-scale" style="background-image: url('{% path trans.file , '1954x1200' %}')">
                     <a href="{{ homepage|trans_fallback('pushEditionUrl') }}" class="coverLink"></a>
                     <div class="vFlexAlign">
                         <div>
