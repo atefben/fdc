@@ -155,9 +155,7 @@
                                         <div class="txt">
                                             <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                            <strong>
-                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
-                                            </strong>
+                                            <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
                                         </div>
                                     {%- else -%}
                                         <span> {{ seance.programmationSection }}</span>
@@ -360,9 +358,7 @@
                                         <div class="txt">
                                             <span>{{ film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                            <strong>
-                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
-                                            </strong>
+                                            <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
                                         </div>
                                     {%- else -%}
                                         <span> {{ relatedProjection.programmationSection }}</span>
