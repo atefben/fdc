@@ -9903,7 +9903,7 @@ header #searchContainer {
 }
 #prefooter .imgSlide {
   text-align: center;
-  height: 100%;
+  height: 108%;
   width: 100%;
   z-index: 0;
   -moz-transform: translate3d(0px, -70px, 0px);
@@ -9948,10 +9948,10 @@ header #searchContainer {
 }
 @media screen and (max-width: 1400px) {
   #prefooter .bottom img {
-    margin-bottom: -200px;
+    /*margin-bottom: -200px;*/
   }
   #prefooter .top img {
-    margin-top: -200px;
+    /*margin-top: -200px;*/
   }
 }
 #prefooter h2 {
