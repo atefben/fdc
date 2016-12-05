@@ -17,7 +17,7 @@
                     {% endfor %}
 
                     <li data-maps="zone-festival" id='more-map'>
-                        <strong>{{ 'plandessalles.label.lazonedufestival'|trans }}</strong>
+                        <strong>{{ rooms|trans_fallback('mapZone') }}</strong>
                         {% for key,r in rooms.mapRoom %}
                             {% if key == 0 %}
                                 {% set img = rooms.defaultZoneImage %}

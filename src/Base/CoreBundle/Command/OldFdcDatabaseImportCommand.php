@@ -55,9 +55,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('associated-news', null, InputOption::VALUE_NONE, 'Import only associated news')
             ->addOption('count', null, InputOption::VALUE_NONE, 'Count entities total')
             ->addOption('only-create', null, InputOption::VALUE_NONE, 'Create only new entities')
-            ->addOption('only-articles', null, InputOption::VALUE_NONE, 'Only import articles')
+            ->addOption('only-infos', null, InputOption::VALUE_NONE, 'Only import infos')
+            ->addOption('only-news', null, InputOption::VALUE_NONE, 'Only import news')
+            ->addOption('only-statements', null, InputOption::VALUE_NONE, 'Only import statements')
+            ->addOption('only-classics', null, InputOption::VALUE_NONE, 'Only import classics')
             ->addOption('only-medias', null, InputOption::VALUE_NONE, 'Only import medias')
             ->addOption('theme', null, InputOption::VALUE_OPTIONAL, 'Default Theme')
+            ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination')
         ;
     }
 
@@ -68,24 +72,49 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         $themeId = $input->getOption('theme');
 
-        $onlyArticles = $input->getOption('only-articles');
+        $onlyInfos = $input->getOption('only-infos');
+        $onlyNews = $input->getOption('only-news');
+        $onlyStatements = $input->getOption('only-statements');
+        $onlyClassics = $input->getOption('only-classics');
         $onlyMedias = $input->getOption('only-medias');
 
-        $newsImporter = $this->getContainer()->get('old_import.news_importer');
-        $infoImporter = $this->getContainer()->get('old_import.info_importer');
-        $statementImporter = $this->getContainer()->get('old_import.statement_importer');
-        $classicsImporter = $this->getContainer()->get('old_import.classics_importer');
+        if ($onlyInfos) {
+            $infoImporter = $this->getContainer()->get('old_import.info_importer');
+            $infoImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Infos to import '. $infoImporter->countInfos());
+            }
+            else {
+                $infoImporter->importInfos();
+            }
+        } elseif ($onlyNews) {
+            $newsImporter = $this->getContainer()->get('old_import.news_importer');
+            $newsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('News to import ' . $newsImporter->countNews());
+            }
+            else {
+                $newsImporter->importNews($input->getOption('page'));
+            }
 
-        $newsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
-        $infoImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
-        $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
-        $classicsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
-
-        if ($onlyArticles) {
-            $infoImporter->importInfos();
-            $statementImporter->importStatements();
-            $newsImporter->importNews();
-            $classicsImporter->importClassics();
+        } elseif ($onlyStatements) {
+            $statementImporter = $this->getContainer()->get('old_import.statement_importer');
+            $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Statements to import :' . $statementImporter->countStatements());
+            }
+            else {
+                $statementImporter->importStatements();
+            }
+        } elseif ($onlyClassics) {
+            $classicsImporter = $this->getContainer()->get('old_import.classics_importer');
+            $classicsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Classics to import :' . $classicsImporter->countClassics());
+            }
+            else {
+                $classicsImporter->importClassics();
+            }
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);
             $this->importMediaAudio($dm, $mediaManager, $output, $input);
@@ -103,12 +132,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Publier dans "Quotidien - Audios"
         // Film associé
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-            ->where('m.fileClass = :file_class')
-            ->andWhere('m.published = :published')
-            ->setParameter('file_class', self::MEDIA_TYPE_AUDIO)
-            ->setParameter('published', self::MEDIA_QUOTIDIEN_AUDIO)
-            ->getQuery()
-            ->getResult()
+                        ->where('m.fileClass = :file_class')
+                        ->andWhere('m.published = :published')
+                        ->setParameter('file_class', self::MEDIA_TYPE_AUDIO)
+                        ->setParameter('published', self::MEDIA_QUOTIDIEN_AUDIO)
+                        ->getQuery()
+                        ->getResult()
         ;
 
         $oldMediasSelected = array();
@@ -322,13 +351,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Galerie Quotidien - Diaporama
         // id > 7816
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-            ->where('m.id >= 7816')
-            ->andWhere('m.fileClass = :file_class')
-            ->andWhere('m.published = :published')
-            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
-            ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
-            ->getQuery()
-            ->getResult()
+                        ->where('m.id >= 7816')
+                        ->andWhere('m.fileClass = :file_class')
+                        ->andWhere('m.published = :published')
+                        ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+                        ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
+                        ->getQuery()
+                        ->getResult()
         ;
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
 
@@ -336,13 +365,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Galerie Oeil du photographe
         // id > 11802
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-            ->where('m.id >= 11802')
-            ->andWhere('m.published = :published')
-            ->andWhere('m.fileClass = :file_class')
-            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
-            ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
-            ->getQuery()
-            ->getResult()
+                        ->where('m.id >= 11802')
+                        ->andWhere('m.published = :published')
+                        ->andWhere('m.fileClass = :file_class')
+                        ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+                        ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
+                        ->getQuery()
+                        ->getResult()
         ;
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
 
@@ -350,13 +379,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // Galerie Oeil du photographe
         // id < 11802
         $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
-            ->where('m.id < 11802')
-            ->andWhere('m.published = :published')
-            ->andWhere('m.fileClass = :file_class')
-            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
-            ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
-            ->getQuery()
-            ->getResult()
+                        ->where('m.id < 11802')
+                        ->andWhere('m.published = :published')
+                        ->andWhere('m.fileClass = :file_class')
+                        ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+                        ->setParameter('published', self::MEDIA_GALLERY_PHOTOGRAPHER_EYES)
+                        ->getQuery()
+                        ->getResult()
         ;
         $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input, false);
     }

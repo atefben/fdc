@@ -4,7 +4,6 @@ var displayed     = false,
     graphRendered = false;
 
 $(document).ready(function() {
-	jQuery("img.lazy").lazyload();
   // overlay on main menu : show submenu and overlay
   if(isiPad()) {
     $('body').addClass('tablet');

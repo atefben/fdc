@@ -75,7 +75,7 @@ class InfoImporter extends Importer
         return $this;
     }
 
-    protected function countInfos()
+    public function countInfos()
     {
         return $this
             ->getManager()

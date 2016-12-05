@@ -3229,48 +3229,6 @@ body.fix {
   clear: both;
   position: relative;
 }
-#main:after {
-  background-color: #141414;
-  content: '';
-  display: block;
-  height: 100%;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  visibility: hidden;
-  width: 100%;
-  z-index: 5;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#main.overlay:after {
-  opacity: 0.8;
-  visibility: visible;
-}
-#main:before {
-  background-color: #141414;
-  content: '';
-  display: block;
-  height: 100%;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  visibility: hidden;
-  width: 100%;
-  z-index: 5;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#main.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
 #main.overlay {
   cursor: pointer;
 }
@@ -3296,6 +3254,11 @@ body.fix {
 
 .push-footer {
   border-bottom: 1px solid #2C2C2C;
+}
+
+.tablette .list-article .bandeau-list .bandeau-list-img {
+  background-size: cover;
+  background-position: 0px -64px;
 }
 
 @media screen and (max-width: 768px) {
@@ -4700,10 +4663,6 @@ footer:before {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-footer.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
 footer.overlay:after {
   opacity: 0.6;
   visibility: visible;
@@ -4911,14 +4870,6 @@ footer .footer-menu ul li a:hover {
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#breadcrumb.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
-#breadcrumb.overlay:after {
-  opacity: 0.6;
-  visibility: visible;
 }
 #breadcrumb .container {
   width: 979px;
@@ -8733,10 +8684,6 @@ header #searchContainer {
   -o-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95), max-height 2s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-#news #articles-wrapper.loading {
-  opacity: 0;
-  visibility: hidden;
 }
 #news .title {
   margin-bottom: 20px;
@@ -13483,10 +13430,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.list-article .bandeau-list .sub-nav-list.loading:before {
-  opacity: 1;
-  visibility: visible;
-}
 .list-article .bandeau-list .sub-nav-list.overlay:after {
   opacity: 0.6;
   visibility: visible;
@@ -17745,7 +17688,7 @@ body:not(.tablette) .webtv #live .img {
   line-height: 38px;
   z-index: 3;
   background-color: #fff;
-  width: 55%;
+  width: 87%;
   text-align: left;
   padding-left: 54px;
 }
