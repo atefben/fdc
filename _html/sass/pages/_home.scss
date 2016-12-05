@@ -1583,12 +1583,11 @@
 
   .imgSlide {
     text-align: center;
-    height: 100%;
+    height: 108%;
     width: 100%;
     z-index: 0;
     @include transform(translate3d(0px, -70px, 0px));
     @include transition(all 0.8s $smoothTransition);
-
     img {
       display: block;
       margin: 0 auto;
@@ -1622,11 +1621,11 @@
 
   @include breakpoint(1400px) {
     .bottom img {
-      margin-bottom: -200px;
+      /*margin-bottom: -200px;*/
     }
 
     .top img {
-      margin-top: -200px;
+      /*margin-top: -200px;*/
     }
   }
 

@@ -1303,7 +1303,7 @@ $(document).ready(function () {
             $('#create-event-pop').removeClass("visible-popin");
 
             id = guid();
-            var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 35).split(" ").slice(0, -1).join(" ") + "..." : data.title;
+            var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 40).split(" ").slice(0, -1).join(" ") + "..." : data.title;
              //Création de l'évènement et affichage sur le calendrier
             var myEvent = {
                  "title": titleEvent,
