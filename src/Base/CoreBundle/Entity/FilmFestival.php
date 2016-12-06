@@ -110,7 +110,7 @@ class FilmFestival
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFestivalMediaImageAssociated", mappedBy="festival", cascade={"all"}, orphanRemoval=true)
-     *
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $associatedMediaImages;
 
