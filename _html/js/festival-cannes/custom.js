@@ -190,18 +190,15 @@ function click() {
     $('.dropdown span').click(function() {
         $('#eventSelector').toggleClass("showeventSelector");
     });
-
-
+    
 
     $('.selectbtn').click(function() {
-
       var identification = $(this).attr('id');
       var attr = $(this).attr("rel");
 
-
         if($(this).hasClass('purpleBtn')) {
-            
             $(this).removeClass('purpleBtn');
+
 
             console.log("class removed");
               var index = el.indexOf(identification);
@@ -233,10 +230,8 @@ function click() {
         $('.events, .selectText').addClass('hideContent');
         $(this).addClass('purpleBtn');
         $('.parent > div').hide();
-
-
         el.push(identification);
-        el.push(attr);    
+        el.push(attr);
            
         console.log(el);
 
@@ -252,7 +247,7 @@ function click() {
             console.log(el);
           } else if (el){
               $('.selectText').hide();
-              $.each(el, function(i, val) {       
+              $.each(el, function(i, val) {  
                  $('.' + val).show();
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
@@ -263,7 +258,7 @@ function click() {
                     $("." + identification).addClass('hideContent');
                   }
               });
-              $('#' + attr).show();
+             $('#' + attr).show();
           }
 
         }
@@ -375,7 +370,7 @@ $("#share-article").click(function(){
         scrollTop: $("#share").offset().top - 400
     }, 2000);
 });
-
+/*
 var fixed = false;
  var topTrigger = $('.subNavigation').offset().top;
  $(document).scroll(function() {
@@ -390,4 +385,16 @@ var fixed = false;
        $('.subNavigation').removeClass("subNavigationFixed");
      }
    }
- });
+ });*/
+
+/* PROS DU COURT : ADD BORDERS 
+
+$(".selectbtn").click(function(){
+  $(".box:visible").each(function() {
+    if ($(this).index(1)){
+        $(this).addClass('redBorder');
+    } else if ($(this).index(2)){
+        $(this).addClass('greyBorder');
+    } 
+  });
+});*/
