@@ -136,7 +136,9 @@
       position: relative;
       color: #c29f5f;
       border-color: #c29f5f;
-    }
+      margin: 2px 0 0 0;
+      border-bottom: 1px solid #c29f5f;
+  }
 
     .button:hover {
       color: #fff;
@@ -397,7 +399,6 @@
         }
 
         .large:first-child {
-          border-bottom: 0px solid #fff;
         }
 
         .infos {

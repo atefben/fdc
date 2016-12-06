@@ -160,15 +160,10 @@ class InfoImporter extends Importer
             $this->getManager()->persist($info);
         }
 
-
-        if ($this->doNotPublish) {
-            if (!$info->getSites()->contains($this->getSiteCorporate())) {
-                $info->addSite($this->getSiteCorporate());
-            }
-            if (!$info->getSites()->contains($this->getSiteEvent())) {
-                $info->addSite($this->getSiteEvent());
-            }
+        if (!$info->getSites()->contains($this->getSiteCorporate())) {
+            $info->addSite($this->getSiteCorporate());
         }
+
         $this->getManager()->flush();
         return $info;
     }

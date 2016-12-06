@@ -18028,7 +18028,7 @@ body:not(.tablette) .webtv #live .img {
 }
 .press .affiche .buttons .button {
   border-color: #c8a461;
-  border-right: 2px solid #c8a461;
+  border-right: 1px solid #c8a461;
   position: relative;
 }
 .press .affiche .caption {
@@ -18164,7 +18164,7 @@ body:not(.tablette) .webtv #live .img {
   border-color: #b0b0b0;
   color: #b0b0b0;
   pointer-events: none;
-  border-right: 2px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
 }
 .press.lock .fc-event.private {
   display: none;
@@ -19774,6 +19774,8 @@ body:not(.tablette) .webtv #live .img {
   position: relative;
   color: #c29f5f;
   border-color: #c29f5f;
+  margin: 2px 0 0 0;
+  border-bottom: 1px solid #c29f5f;
 }
 .downloading-press .buttons .button:hover {
   color: #fff;
@@ -19995,9 +19997,6 @@ body:not(.tablette) .webtv #live .img {
 }
 .downloading-press .block .container .contain-dp .large:hover a {
   color: #fff;
-}
-.downloading-press .block .container .contain-dp .large:first-child {
-  border-bottom: 0px solid #fff;
 }
 .downloading-press .block .container .contain-dp .infos {
   margin-top: 9px;

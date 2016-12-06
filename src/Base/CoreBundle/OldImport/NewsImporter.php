@@ -185,13 +185,8 @@ class NewsImporter extends Importer
         }
 
 
-        if ($this->doNotPublish) {
-            if (!$news->getSites()->contains($this->getSiteCorporate())) {
-                $news->addSite($this->getSiteCorporate());
-            }
-            if (!$news->getSites()->contains($this->getSiteEvent())) {
-                $news->addSite($this->getSiteEvent());
-            }
+        if (!$news->getSites()->contains($this->getSiteCorporate())) {
+            $news->addSite($this->getSiteCorporate());
         }
 
         $this->getManager()->flush();
