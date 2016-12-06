@@ -531,3 +531,11 @@
 .popin-event .film p span.nom-item {
     margin:0 0 0 0 !important;
 }
+
+.categorie-items article .infos-item-list .title-item {
+    margin: 0 auto 0;
+}
+
+.categorie-items article .infos-item-list .sub-title-item {
+    padding-bottom: 14px;
+}
