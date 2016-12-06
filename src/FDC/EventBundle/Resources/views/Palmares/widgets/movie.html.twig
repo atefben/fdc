@@ -71,7 +71,9 @@
                             {% endif %}
                         {% endif %}
                     </div>
+                    {% if award_association.award.prize.id == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::ID_CAMERADOR') %}
                     <h4 class="sub-title-item">{{ movie.selectionSection|trans_fallback('name') }}</h4>
+                    {% endif %}
                 {% endif %}
                 <h3 class="title-item">
                     <a class="palmares-color-white"
