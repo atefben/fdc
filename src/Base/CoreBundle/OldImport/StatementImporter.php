@@ -158,14 +158,8 @@ class StatementImporter extends Importer
             $this->getManager()->persist($statement);
         }
 
-
-        if ($this->doNotPublish) {
-            if (!$statement->getSites()->contains($this->getSiteCorporate())) {
-                $statement->addSite($this->getSiteCorporate());
-            }
-            if (!$statement->getSites()->contains($this->getSiteEvent())) {
-                $statement->addSite($this->getSiteEvent());
-            }
+        if (!$statement->getSites()->contains($this->getSiteCorporate())) {
+            $statement->addSite($this->getSiteCorporate());
         }
 
         $this->getManager()->flush();
