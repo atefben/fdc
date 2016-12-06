@@ -92,7 +92,7 @@
 
                 <div class="vFlexAlign">
                     {% if festival.associatedMediaImages[0] is defined %}
-                        <img src="{% if festival.associatedMediaImages[0] is defined %}{{- _self.sliderImage(festival.associatedMediaImages[0])|trim -}}{% endif %}" alt="" />
+                        <img src="{% if festival.associatedMediaImages[0] is defined and festival.associatedMediaImages[0].association.findTranslationByLocale(app.request.locale).status == 1 %}{{- _self.sliderImage(festival.associatedMediaImages[0])|trim -}}{% endif %}" alt="" />
                     {% endif %}
                     <div class="texts">
                         <span class="title-edition">{{ yearEdition }}<sub>E</sub> {{ 'retrospective.edition'|trans }}</span>
