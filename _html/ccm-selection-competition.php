@@ -15,33 +15,18 @@
       <div class="bandeau-list">
            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url(img/films/selection-officielle/selection-bandeau.jpg)">
               <div class="vCenterKid">
-               <h2 class="title title-list-header">Sélection officielle</h2>
+               <h2 class="title title-list-header">Les courts en compétition</h2>
               </div>
            </div>
- <ul class="sub-nav-list nav-list">
+            <ul class="sub-nav-list nav-list">
              <li>
-               <a href="selectionofficielle_competition.php" class='active ajax'>En Compétition</a>
+               <a href="selectionofficielle_competition.php" class='active ajax'>Sélection</a>
              </li>
              <li>
-               <a href="selectionofficielle_uncertainregard.php" class="ajax">Un certain regard</a>
+               <a href="selectionofficielle_uncertainregard.php" class="ajax">Jury</a>
              </li>
              <li>
-               <a href="selectionofficielle_horscompetition.php" class="ajax">Hors compétition</a>
-             </li>
-             <li>
-               <a href="selectionofficielle_seancespeciales.php" class="ajax">Séances spéciales</a>
-             </li>
-             <li>
-               <a href="selectionofficielle_cinefondation.php" class="ajax">Cinéfondation</a>
-             </li>
-             <li>
-               <a href="selectionofficielle_courtsmetrages.php" class="ajax">Courts métrages</a>
-             </li>
-             <li>
-               <a href="films_invitedhonneur.php" class="ajax">Cannes classics</a>
-             </li>
-             <li>
-               <a href="films_cinemadelaplage.php" class="ajax">Cinéma de la plage</a>
+               <a href="selectionofficielle_horscompetition.php" class="ajax">Palmarès</a>
              </li>
            </ul>
       </div>
@@ -67,8 +52,8 @@
                      <a href="movie.php"> <img src="http://dummyimage.com/293x434/000/fff.png" alt=""></a>
                    </div>
                    <figcaption>
-                     <a href="movie.php"><span class="name">Chronic</span></a>
-                     <a href="artist_page.php"><span class="author">Michel FRANCO</span></a>
+                     <a href="movie.php"><span class="name">Chronic, Chronic, Chronic, Chronic</span></a>
+                     <a href="artist_page.php"><span class="author">Michel FRANCO, Todd HAYNES, Todd HAYNES, Todd HAYNES</span></a>
                    </figcaption>
                  </figure>
                 </div>
@@ -90,7 +75,7 @@
                    </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales), (Tale of tales) (Tale of tales), (Tale of tales)</span></a>
                      <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
@@ -179,9 +164,9 @@
                      <a href="movie.php"> <img src="img/films/selection-officielle/cover-film4.jpg" alt=""></a>
                    </div>
                    <figcaption>
-                     <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI</span></a>
-                     <a href="movie.php"><span class="sub-name">(Tale of tales)</span></a>
-                     <a href="artist_page.php"><span class="author">Matteo GARRONE</span></a>
+                     <a href="movie.php"><span class="name">IL RACCONTO DEI RACCONTI, IL RACCONTO DEI, IL RACCONTO DEI, IL RACCONTO DEI</span></a>
+                     <a href="movie.php"><span class="sub-name">(Tale of tales, Tale of tales, Tale of tales, Tale of tales, Tale of tales)</span></a>
+                     <a href="artist_page.php"><span class="author">Matteo GARRONE, Matteo GARRONE, Matteo GARRONE, Matteo GARRONE, Matteo GARRONE</span></a>
                    </figcaption>
                  </figure>
                 </div>
@@ -191,8 +176,8 @@
       </div>
       <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
            <div class="bandeau-list-img vCenterKid" style="background-image:url(img/films/selection-officielle/push.jpg);">
-               <h2 class="title title-list-header">Un certain regard</h2>
-               <a href="selectionofficielle_uncertainregard.php" class="bandeau-lien"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
+               <h2 class="title title-list-header">Retrospective</h2>
+               <a href="http://www.festival-cannes-2016.com.ohwee.fr/fr/corporate/69-editions/retrospective/2016/selection/courts-metrages" class="bandeau-lien"><i class="icon icon_fleche-right"></i> Découvrir la rubrique</a>
            </div>
       </div>
     </div>
