@@ -11,6 +11,11 @@ class DoctrineListener
     {
         $object = $args->getObject();
         if ($object instanceof FilmFilm) {
+            if ($object->getNews()->count()) {
+                foreach ($object->getNews() as $news) {
+                    $object->removeNews($news);
+                }
+            }
             $object
                 ->setNews(null)
             ;
