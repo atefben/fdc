@@ -1994,6 +1994,7 @@
     text-align: center;
     display: block;
     margin-bottom: 42px;
+    text-transform: uppercase;
   }
 
   a {
@@ -2082,9 +2083,11 @@
 .block-s-info {
   flex-direction: column;
   height: 255px;
+  text-align: center;
 
   .title-25 {
     margin-bottom: 4px;
+    text-transform: uppercase;
   }
 
   p {
@@ -2107,9 +2110,10 @@
 
 .block-s-info-02 {
   flex-direction: column;
-  height: 362px;
+  height: 300px;
+  padding-top: 62px;
   color: #fff;
-  // background-size: cover;
+  text-align: center;
   text-align: center;
   background: center 0 no-repeat fixed;
   background-size: cover;

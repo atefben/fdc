@@ -27,8 +27,7 @@
 
       <div class="buttons">
         <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
-        <a href="#" class="button print"><i class="icon icon_print"></i>
-Imprimer</a>
+        <a href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
       </div>
 
       <!-- texte intro -->

@@ -1724,6 +1724,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: center;
   display: block;
   margin-bottom: 42px;
+  text-transform: uppercase;
 }
 .block-contact a {
   color: #c8a461;
@@ -1798,9 +1799,11 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-s-info {
   flex-direction: column;
   height: 255px;
+  text-align: center;
 }
 .block-s-info .title-25 {
   margin-bottom: 4px;
+  text-transform: uppercase;
 }
 .block-s-info p {
   color: #666666;
@@ -1820,8 +1823,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 .block-s-info-02 {
   flex-direction: column;
-  height: 362px;
+  height: 300px;
+  padding-top: 62px;
   color: #fff;
+  text-align: center;
   text-align: center;
   background: center 0 no-repeat fixed;
   background-size: cover;
@@ -26549,6 +26554,14 @@ ul.tabs .quarterTab h4 {
   margin-bottom: 100px;
 }
 
+a.button {
+  height: 50px;
+  line-height: 50px;
+  width: auto !important;
+  text-align: center;
+  padding: 0px 20px !important;
+}
+
 .participate {
   min-height: 2000px;
 }
@@ -27012,9 +27025,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .movieOnline h3 {
   font-size: 16px;
-}
-.movieOnline p {
-  margin-bottom: 50px;
+  line-height: 50px;
 }
 .movieOnline .formBtn {
   line-height: 50px;
@@ -27132,6 +27143,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .goldBorders h3 {
   letter-spacing: 1px;
   padding: 30px 0px 30px 40px;
+  color: #0c0c0c;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 .goldBorders p {
   margin-bottom: 25px;

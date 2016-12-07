@@ -13,7 +13,7 @@ var owInitTab = function(id) {
       var $block = $('.block-contain-txt-register-movie[data-article='+dataTab+']');
       var $element = $('td[data-tab='+dataTab+']');
 
-      console.log('td[data-tab='+dataTab+']');
+      //console.log('td[data-tab='+dataTab+']');
 
       $tab.removeClass('active');
       $element.addClass('active');
@@ -34,7 +34,7 @@ var owInitTab = function(id) {
       $tab.removeClass('active');
       $element.addClass('active');
 
-      alert('td[data-tab='+dataTab+']');
+      //alert('td[data-tab='+dataTab+']');
 
       $('.block-contain-txt-register-movie').removeClass('active animated fadeInUp');
 
@@ -47,3 +47,5 @@ var owInitTab = function(id) {
 
   }
 };
+
+owInitTab('tab1')
