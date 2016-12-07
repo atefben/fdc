@@ -178,6 +178,26 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                     ),
                 )
             ))
+            ->add('sites', null, array(
+                'label'    => 'form.label_publish_on',
+                'class'    => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true,
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format'   => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr'     => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format'   => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr'     => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
+            ))
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',

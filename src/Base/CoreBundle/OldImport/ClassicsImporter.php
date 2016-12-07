@@ -156,6 +156,7 @@ class ClassicsImporter extends Importer
                 ->setCreatedAt($oldArticle->getCreatedAt())
                 ->setUpdatedAt($oldArticle->getUpdatedAt())
                 ->setWeight(0)
+                ->addSite($this->getSiteCorporate())
             ;
             $this->getManager()->persist($classics);
         }
@@ -202,6 +203,48 @@ class ClassicsImporter extends Importer
                 }
             }
 
+            if ($oldTranslation->getImageResume()) {
+                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/Pages/' . trim($oldTranslation->getImageResume()));
+                if ($file) {
+                    $header = $classics->getImage();
+                    if (!$header) {
+                        $header = new MediaImage();
+                        $header
+                            ->addSite($this->getSiteCorporate())
+                            ->setTheme($this->getDefaultTheme())
+                            ->setPublishedAt($classics->getCreatedAt())
+                            ->setPublishEndedAt($classics->getCreatedAt())
+                            ->setFestival($classics->getFestival())
+                            ->setDisplayedAll(true)
+                        ;
+                        $this->getManager()->persist($header);
+                        $classics->setImage($header);
+                    }
+                    $headerTrans = $header->findTranslationByLocale($locale);
+                    if (!$headerTrans) {
+                        $headerTrans = new MediaImageTranslation();
+                        $headerTrans->setTranslatable($header);
+                        $this->getManager()->persist($headerTrans);
+                    }
+
+                    $media = $headerTrans->getFile();
+                    if (!$media) {
+                        $media = new Media();
+                        $media->setName($translation->getTitle());
+                        $media->setBinaryContent($file);
+                        $media->setEnabled(true);
+                        $media->setProviderReference($oldTranslation->getImageResume());
+                        $media->setContext('media_image');
+                        $media->setProviderStatus(1);
+                        $media->setProviderName('sonata.media.provider.image');
+                        $media->setCreatedAt($classics->getCreatedAt());
+                        $this->getMediaManager()->save($media, false);
+
+                        $headerTrans->setFile($media);
+                    }
+                }
+            }
+
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
             $translation->setTitleNav(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
@@ -228,10 +271,10 @@ class ClassicsImporter extends Importer
         if (!$widget) {
             $widget = new FDCPageLaSelectionCannesClassicsWidgetText();
             $widget
-                ->setFDCPageLaSelectionCannesClassics($classics)
                 ->setOldImportReference('body')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $classics->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -267,10 +310,10 @@ class ClassicsImporter extends Importer
         if (!$widget) {
             $widget = new FDCPageLaSelectionCannesClassicsWidgetVideoYoutube();
             $widget
-                ->setFDCPageLaSelectionCannesClassics($classics)
                 ->setOldImportReference('youtube')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $classics->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -321,10 +364,10 @@ class ClassicsImporter extends Importer
         if (!$widget) {
             $widget = new FDCPageLaSelectionCannesClassicsWidgetImage();
             $widget
-                ->setFDCPageLaSelectionCannesClassics($classics)
                 ->setOldImportReference('image')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $classics->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -375,6 +418,7 @@ class ClassicsImporter extends Importer
                     ->addSite($this->getSiteCorporate())
                     ->setOldMediaId($oldArticleAssociation->getObjectId())
                     ->setTheme($this->defaultTheme)
+                    ->setDisplayedAll(true)
                 ;
                 $this->getManager()->persist($mediaImage);
                 $mediaImage->setPublishedAt($translation->getTranslatable()->getCreatedAt());
@@ -512,21 +556,25 @@ class ClassicsImporter extends Importer
             if (!$widget) {
                 $widget = new FDCPageLaSelectionCannesClassicsWidgetAudio();
                 $widget
-                    ->setFDCPageLaSelectionCannesClassics($classics)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $classics->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 
             $mediaAudio = $widget->getFile();
             if (!$mediaAudio) {
                 $mediaAudio = new MediaAudio();
-                $widget->setFile($mediaAudio);
+                $widget
+                    ->setFile($mediaAudio)
+                ;
                 $this->getManager()->persist($mediaAudio);
                 $mediaAudio
                     ->setOldMediaId($oldArticleAssociation->getObjectId())
                     ->setTheme($this->defaultTheme)
+                    ->addSite($this->getSiteCorporate())
+                    ->setDisplayedAll(true)
                 ;
             }
 
@@ -620,10 +668,10 @@ class ClassicsImporter extends Importer
             if (!$widget) {
                 $widget = new FDCPageLaSelectionCannesClassicsWidgetVideo();
                 $widget
-                    ->setFDCPageLaSelectionCannesClassics($classics)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $classics->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 
@@ -688,7 +736,12 @@ class ClassicsImporter extends Importer
 
     protected function isClassicMatching(OldArticle $oldArticle)
     {
-        $ids = [61333, 60588, 59714, 59046, 58130, 57154];
+        // copies restaurees
+        $ids = [61333, 60588, 59714, 59046, 58130, 57154, 61336, 60589, 59713, 59047, 58129, 57157, 61332, 58131, 59715, 59048, 58186, 57156, 61331];
+        //  Titre et id 61336, 60589, 59713, 59047, 58129, 57157
+        //Titre et id 61332, 58131
+        //Titre et id 59715, 59048, 58186, 57156
+        //Titre et id 61331
         return in_array($oldArticle->getId(), $ids);
     }
 }
