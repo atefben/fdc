@@ -3,12 +3,14 @@
 namespace Base\CoreBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
+use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -69,6 +71,13 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
         $this->updateAcl($videos, 'base.admin.media_image');
         $this->getManager()->clear();
         unset($videos);
+
+        $output->writeln('<info>Generate ACL for classics</info>');
+        $classics = $this->getClassics();
+        $output->writeln('<comment>'.count($classics).' items</comment>');
+        $this->updateAcl($classics, 'base.admin.fdc_page_la_selection_cannes_classics');
+        $this->getManager()->clear();
+        unset($classics);
     }
 
     private function updateAcl($entities, $service)
@@ -182,6 +191,21 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getRepository('BaseCoreBundle:MediaVideo')
             ->createQueryBuilder('m')
             ->andWhere('m.oldMediaId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return FDCPageLaSelectionCannesClassics[]
+     */
+    protected function getClassics()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
+            ->createQueryBuilder('m')
+            ->andWhere('m.oldNewsId is not null')
             ->getQuery()
             ->getResult()
             ;

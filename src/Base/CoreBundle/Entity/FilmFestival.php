@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmFestival
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmFestivalRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmFestival

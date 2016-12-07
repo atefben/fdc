@@ -1337,7 +1337,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * Set festival
      *
      * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return FilmAward
+     * @return $this
      */
     public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
     {
