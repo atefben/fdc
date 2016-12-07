@@ -874,6 +874,57 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
+    public function getNewsRetrospective($locale, $festival, $startsAt, $endAt)
+    {
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftJoin('na1.translations', 'na1t')
+            ->where('s.slug = :site_slug')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :endAt) AND (n.publishedAt IS NULL OR n.publishedAt >= :startsAt)')
+        ;
+
+        $qb = $qb
+            ->andWhere(
+                '(na1t.locale = :locale_fr AND na1t.status = :status)'
+            )
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->leftJoin('na1.translations', 'na2t')
+                ->andWhere(
+                    '(na2t.locale = :locale AND na2t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        // add query for video encoder
+        $qb
+            ->leftJoin('na1.video', 'na1v')
+            ->leftJoin('na1v.translations', 'na1vt')
+        ;
+        $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
+
+
+        $qb = $qb
+            ->setParameter('festival', $festival)
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endAt', $endAt)
+            ->setParameter('site_slug', 'site-evenementiel')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
     public function getNewsAudios($locale, $festival, $dateTime)
     {
         $qb = $this

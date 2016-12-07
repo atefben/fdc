@@ -46,9 +46,8 @@ class NewsController extends Controller
         }
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
-
         //GET ALL NEWS ARTICLES
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $festival->getId());
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
         $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
         if ($newsArticles === null || count($newsArticles) == 0) {
             throw new NotFoundHttpException();
@@ -100,7 +99,6 @@ class NewsController extends Controller
      */
     public function getMediasAction(Request $request, $year)
     {
-
         $this->isPageEnabled($request->get('_route'));
 
         $em = $this->getDoctrine()->getManager();
@@ -132,9 +130,9 @@ class NewsController extends Controller
             $medias = $em->getRepository('BaseCoreBundle:Media')->getMedia($locale, $festival->getId(), null);
         }*/
 
-        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), null);
-        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), null);
-        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), null);
+        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
 
         $medias = array();
         $medias = array_merge($medias, $images);

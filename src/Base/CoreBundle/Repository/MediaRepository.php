@@ -26,19 +26,23 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getImageMedia($locale, $festival)
+    public function getImageMedia($locale, $festival, $startsAt = null, $endAt = null)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
-            ->andWhere('m.displayedAll = 1');
+            ->andWhere('m.displayedAll = 1')
+            ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb->orderBy('mi.publishedAt', 'DESC')
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endAt', $endAt)
             ->getQuery()
             ->getResult();
 
@@ -272,21 +276,28 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getVideoMedia($locale, $festival)
+    public function getVideoMedia($locale, $festival, $startsAt = null, $endAt = null)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
-            ->andWhere('m.displayedAll = 1');
+            ->andWhere('m.displayedAll = 1')
+            ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
+        ;
 
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        return $qb->orderBy('mi.publishedAt', 'DESC')
+        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endAt', $endAt)
             ->getQuery()
             ->getResult();
+
+        return $qb;
+
     }
 
     /**
@@ -295,19 +306,23 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getAudioMedia($locale, $festival)
+    public function getAudioMedia($locale, $festival, $startsAt = null, $endAt = null)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
-            ->andWhere('m.displayedAll = 1');
+            ->andWhere('m.displayedAll = 1')
+            ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb->orderBy('mi.publishedAt', 'DESC')
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endAt', $endAt)
             ->getQuery()
             ->getResult();
 
