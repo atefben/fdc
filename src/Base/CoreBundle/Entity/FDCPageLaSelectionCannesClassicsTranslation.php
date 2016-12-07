@@ -9,6 +9,7 @@ use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
+use Base\CoreBundle\Util\TranslationChanges;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -29,7 +30,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
 {
     use Time;
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
     use TranslateChild;
     use Seo;
 
@@ -155,7 +156,5 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
         $this->hideTitle = $hideTitle;
         return $this;
     }
-
-
 
 }

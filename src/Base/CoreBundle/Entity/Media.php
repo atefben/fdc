@@ -308,7 +308,7 @@ abstract class Media implements TranslateMainInterface
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
-     * @return MediaImageTranslation
+     * @return $this
      */
     public function setPublishedAt($publishedAt)
     {
@@ -341,7 +341,7 @@ abstract class Media implements TranslateMainInterface
      * Set publishEndedAt
      *
      * @param \DateTime $publishEndedAt
-     * @return MediaImageTranslation
+     * @return $this
      */
     public function setPublishEndedAt($publishEndedAt)
     {
