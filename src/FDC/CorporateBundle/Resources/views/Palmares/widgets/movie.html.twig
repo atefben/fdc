@@ -51,8 +51,10 @@
                 {% endif %}
                 <strong class="name-fb">{{ movie.selectionSection|trans_fallback('name') }}</strong>
                 <br />
-                <strong class="name-f">{{ movie|trans_fallback('title') }}</strong>
-                {% if movie|trans_fallback('title') != movie.titleVO %}<strong class="name-fb">({{ movie.titleVO }})</strong>{% endif %}
+                <a href="{{ path('fdc_corporate_movie_get', {slug: movie.slug}) }}">
+                    <strong class="name-f">{{ movie.titleVO }}</strong>
+                {% if movie|trans_fallback('title') != movie.titleVO %}<strong class="name-fb">({{ movie|trans_fallback('title') }})</strong>{% endif %}
+                </a>
                     {% spaceless %}
                         {% set author = '' %}
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
