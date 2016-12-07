@@ -247,9 +247,9 @@ $(document).ready(function () {
             }
         }
 
-/*        if ($('.artist-page').length > 0) {
+        if ($('.artist-page').length > 0) {
             owInitSlider('slider-03');
-        }*/
+        }
     }
 
 
