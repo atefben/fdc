@@ -83,7 +83,7 @@
                     <div class="box a events modal-toggle">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/person.png" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -107,7 +107,7 @@
                     <div class="box c events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/person.png" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -131,7 +131,6 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -143,7 +142,7 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/person.png" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -155,7 +154,6 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -167,7 +165,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/person.png" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -191,7 +189,6 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -203,7 +200,6 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -237,13 +233,13 @@
                     <img src="img/person.png" alt="">
                   </div>
                 </div>
-                <div class="bigTitle"><h2>"Soyez professionnels, exigeants et originaux !"</h2></div>
+                <div class="bigTitle"><h2 class="bigTitle">"Soyez professionnels, exigeants et originaux !"</h2></div>
                 <div class="contactInfo">
-                    <h3><img src="img/world.png" alt=""> Japan</h3>
-                    <h3><img src="img/computer.png" alt=""> www.shortshorts.org/en/</h3>
-                    <h3><img src="img/flyingPaper.png" alt=""> aki@shortshorts.org</h3>
-                    <h3><img src="img/flyingPaper.png" alt=""> jessica@shortshorts.org</h3>
-                    <h3><img src="img/flyingPaper.png" alt=""> clairechauvat@shortshorts.org</h3>
+                    <div><h3><img src="img/world.png" alt=""> Japan</h3></div>
+                    <div><h3><img src="img/computer.png" alt=""> www.shortshorts.org/en/</h3></div>
+                    <div><h3><img src="img/flyingPaper.png" alt=""> aki@shortshorts.org</h3></div>
+                    <div><h3><img src="img/flyingPaper.png" alt=""> jessica@shortshorts.org</h3></div>
+                    <div><h3><img src="img/flyingPaper.png" alt=""> clairechauvat@shortshorts.org</h3></div>
                 </div>
               </div>
               <div class="half">

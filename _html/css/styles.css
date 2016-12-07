@@ -25054,7 +25054,7 @@ body:not(.tablette) .webtv #live .img {
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
-.message {
+.eventMessage {
   margin-left: 50px;
   text-transform: initial;
   font-size: 16px;
@@ -27453,7 +27453,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .confcourt .eventPhoto .eventPhotoContainer img {
   max-width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 .confcourt .eventPhoto .sfcLogo {
   width: 45px;
@@ -27531,6 +27533,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-align: left;
   padding: 20px 0px 20px 0px;
   text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .modal-content .half .titleHalf {
   width: 100%;
@@ -27542,6 +27545,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 50px;
   text-align: left;
   line-height: 60px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
 }
 .modal-content .half .authors {
   width: 100%;
@@ -27554,11 +27558,13 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 12px;
   letter-spacing: 2px;
   line-height: 20px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .modal-content .half .authors h4 span {
   color: #141414;
   padding-left: 20px;
   letter-spacing: 0px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .modal-content .half .content {
   text-align: left;
@@ -27567,7 +27573,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .modal-content .half .content h5 {
   line-height: 25px;
   color: #141414;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
 .modal-content .half .content p {
@@ -27589,6 +27595,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background: #f0eeee;
   width: 290px;
   height: 290px;
+  margin-top: 50px;
 }
 .modal-content .half .photo .photoContainer img {
   object-fit: cover;
@@ -27605,37 +27612,25 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 20px;
   color: #141414;
 }
-.modal-content .half .bigTitle  {
+.modal-content .half .contactInfo h3 img {
+  position: relative;
+  margin-right: 30px;
+  margin-top: 0px;
+}
+
+.bigTitle  {
   width: 100%;
   text-align: center;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   font-size: 30px !important;
   color: #141414 !important;
 }
-.modal-content .half .bigTitle  h2 {
+.bigTitle  h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 30px;
   color: #141414;
 }
 
-/*.hidden {
-  display: none!important;
-} 
-
-.firstBorder {
-  border-left: 1px solid #ECECEC!important;
-}
-
-.nthBorder { 
-  border: 0px solid #ECECEC;
-  border-top: 1px solid #ECECEC;
-  border-bottom: 1px solid #ECECEC;
-  border-right: 1px solid #ECECEC;
-}
-
-.borderTest {
-    border-left: 1px solid #ECECEC!important;
-}*/
 html[lang="es"] header #navigation ul.main li a {
   padding-right: 15px;
 }

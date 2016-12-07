@@ -43,6 +43,7 @@
                   </div>
                   <a href="">
                     <h3 class="title-item">Dheepan</h3>
+                    <h4 class="sub-title-item">(Le fils de paul)</h4>
                     <span class="nom-item">Jacques AUDIARD, Jacques AUDIARD, Jacques AUDIARD</span>
                    </a>
                 </div>

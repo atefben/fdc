@@ -217,7 +217,7 @@ function click() {
 
               if (this.id == 'all' || el.length < 1 ) {
                   $('.parent > div').fadeOut(200);
-                  $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
+                  $('.parent').append('<div class="events eventMessage">aucun évenement sélectionné</div>');
                   $('.selectText').hide();
               } else if (this.id == 'all') {
                   $('.selectText').hide();
@@ -239,7 +239,7 @@ function click() {
             $('.parent > div').fadeIn(200);
             $('.selectText').show();
             $('.selectText').removeClass('hideContent');
-            $('.message').empty();
+            $('.eventMessage').empty();
             $(this).addClass('purpleBtn');
             $(this).siblings().removeClass('purpleBtn');
             $('.events').removeClass('hideContent');

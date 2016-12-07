@@ -23,10 +23,10 @@
                <a href="selectionofficielle_competition.php" class='active ajax'>Sélection</a>
              </li>
              <li>
-               <a href="selectionofficielle_uncertainregard.php" class="ajax">Jury</a>
+               <a href="ccm-jury.php" class="ajax">Jury</a>
              </li>
              <li>
-               <a href="selectionofficielle_horscompetition.php" class="ajax">Palmarès</a>
+               <a href="ccm-palmares-competition.php" class="ajax">Palmarès</a>
              </li>
            </ul>
       </div>
