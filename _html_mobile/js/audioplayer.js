@@ -21,9 +21,16 @@ function initAudioPlayers(autoplay) {
     wave.load($(this).data('sound'));
 
 
+    $('.picto.playpause').css('pointer-events',false);
+    $('.picto.playpause').css('opacity','0.6');
 
+    console.log("pas ready");
     // once it's ready
     wave.on('ready', function() {
+      console.log("ready");
+      $('.picto.playpause').css('pointer-events',true);
+      $('.picto.playpause').css('opacity','1');
+
       $(wave.container).parents('.audio-player').removeClass('loading');
 
       if(autoplay) {

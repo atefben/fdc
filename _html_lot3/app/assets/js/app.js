@@ -164,7 +164,7 @@ $(document).ready(function () {
         owInitNavSticky(1);
     }
 
-    if ($('.retrospective-home').length) {
+    if ($('.retrospective-home').length && $('.slides').length) {
         owInitSlider('timelapse-01');
         onInitParallax();
     }

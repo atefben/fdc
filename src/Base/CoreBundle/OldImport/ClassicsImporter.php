@@ -23,14 +23,6 @@ use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
-use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
-use Base\CoreBundle\Entity\StatementStatementAssociated;
-use Base\CoreBundle\Entity\StatementWidgetAudio;
-use Base\CoreBundle\Entity\StatementWidgetImage;
-use Base\CoreBundle\Entity\StatementWidgetText;
-use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
-use Base\CoreBundle\Entity\StatementWidgetVideo;
-use Base\CoreBundle\Entity\StatementWidgetVideoYoutube;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
 use Symfony\Component\Console\Helper\ProgressBar;
 
@@ -160,6 +152,7 @@ class ClassicsImporter extends Importer
             ;
             $this->getManager()->persist($classics);
         }
+        $classics->setFestival($this->getFestival($oldArticle));
 
         $this->getManager()->flush();
 
@@ -173,8 +166,7 @@ class ClassicsImporter extends Importer
      */
     protected function buildClassicsArticleTranslation(FDCPageLaSelectionCannesClassics $classics, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(
-            //'resume' => 'introduction',
+        $mapperFields = array(//'resume' => 'introduction',
         );
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
@@ -566,9 +558,7 @@ class ClassicsImporter extends Importer
             $mediaAudio = $widget->getFile();
             if (!$mediaAudio) {
                 $mediaAudio = new MediaAudio();
-                $widget
-                    ->setFile($mediaAudio)
-                ;
+                $widget->setFile($mediaAudio);
                 $this->getManager()->persist($mediaAudio);
                 $mediaAudio
                     ->setOldMediaId($oldArticleAssociation->getObjectId())
@@ -726,7 +716,6 @@ class ClassicsImporter extends Importer
             $this->getManager()->flush();
         }
     }
-
 
 
     protected function getWidgetPosition()
