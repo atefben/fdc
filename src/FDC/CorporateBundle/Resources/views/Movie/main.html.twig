@@ -5,8 +5,6 @@
 {% block body %}
     <section class="s-slider-retrospective">
 
-    {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
-
     <div class="ajax-section bright"><div class="contain-ajax single-movie bright" id="main">
 
     <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
@@ -17,7 +15,7 @@
         <span id="plx"></span>
 
         {% include 'FDCCorporateBundle:Movie:components/banner.html.twig' %}
-
+        
         <div id="nav-movie">
             <div class="container">
                 <ul>
@@ -68,16 +66,17 @@
                 {% endfor %}
                 <div class="relative">
                     <div class="block-social-network block-social-network-all">
-                        <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
+                        <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{  url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}&;caption=&amp;description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&amp;redirect_uri=http://www.festival-cannes.com/fr/sharing&amp;display=popup">
                             <i class="icon icon-facebook"></i>
-                        </a>
-                        <a class="twitter" href="https://twitter.com/intent/tweet?text={{ ('#Cannes' ~ festival_date.festivalStartsAt|date('Y'))|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ directorsName|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
+                        </a><!--
+                --><a class="twitter" href="https://twitter.com/intent/tweet?text={{ ('#Cannes' ~ festival_date.festivalStartsAt|date('Y'))|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ directorsName|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
                             <i class="icon icon-twitter"></i>
-                        </a>
-                        <a href="#" rel="nofollow" class="button link self"><i class="icon icon-link"></i></a>
-                        <a href="#" rel="nofollow" class="button email self"><i class="icon icon-letter"></i></a>
-                        <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon-print"></i></a>
+                        </a><!--
+                --><a href="#" rel="nofollow" class="link self" data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-link"></i></a><!--
+                --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
+                --><a href="#" onclick="window.print()" class="print"><i class="icon icon-print"></i></a>
                     </div>
+                    <div class="texts-clipboard"></div>
                 </div>
             </div>
         </div>
@@ -103,7 +102,7 @@
 			{% if movie.associatedMediaAudios|length > 0 %}
                 <div class="audios" data-section="audios">
                 {% for associatedMediaAudio in movie.associatedMediaAudios %}
-                    {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
+                    {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio, 'corpo' : true } %}
                 {% endfor %}
                 </div>
 			{% endif %}
