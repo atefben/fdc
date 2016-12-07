@@ -544,6 +544,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->associatedInfo = new ArrayCollection();
         $this->associatedStatement = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->news = new ArrayCollection();
     }
 
     public function __toString()
@@ -2629,6 +2630,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function removeNews(\Base\CoreBundle\Entity\News $news)
     {
+        $news->setAssociatedFilm(null);
         $this->news->removeElement($news);
     }
 
