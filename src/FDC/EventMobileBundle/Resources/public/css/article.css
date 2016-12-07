@@ -4775,6 +4775,10 @@ a{
 
 }
 
+.audio-player .volume {
+    display: none;
+}
+
 .audio-player:after{
     content: '';
     height: 112px;

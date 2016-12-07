@@ -138,7 +138,7 @@
       border-color: #c29f5f;
       margin: 2px 0 0 0;
       border-bottom: 1px solid #c29f5f;
-  }
+    }
 
     .button:hover {
       color: #fff;
@@ -239,11 +239,11 @@
       padding-top: 60px;
       border-top: 1px solid #dfdfdf;
 
-      & .item{
+      & .item {
         overflow: hidden;
       }
 
-      & .item a img{
+      & .item a img {
         @include transition(all 4s $linear);
       }
 
@@ -385,7 +385,7 @@
 
           a {
             color: #c8a461;
-   
+
             &:hover {
               color: #fff;
             }
