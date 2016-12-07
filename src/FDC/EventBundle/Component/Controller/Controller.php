@@ -33,7 +33,7 @@ class Controller extends BaseController
     }
 
     /**
-     * @return ObjectManager
+     * @return \Doctrine\Common\Persistence\ObjectManager
      */
     public function getDoctrineManager()
     {
@@ -152,8 +152,8 @@ class Controller extends BaseController
     }
 
     /**
-     * @return Settings
-     * @throws NotFoundHttpException
+     * @param null $year
+     * @return \Base\CoreBundle\Entity\FilmFestival
      */
     public function getFestival($year = null)
     {

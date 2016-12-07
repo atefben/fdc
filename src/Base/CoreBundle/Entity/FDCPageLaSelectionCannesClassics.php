@@ -106,6 +106,13 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      */
     private $sites;
 
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
+
 
     /**
      * FDCPageLaSelection constructor.
@@ -393,5 +400,28 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }
