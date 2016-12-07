@@ -126,9 +126,15 @@
       .infos-item-list {
         position: relative;
         width: 450px;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
       
         .sub-title-item {
           font-family: $CamphorBold;
+          color: white;
         }
 
         .logo-palme-dor-container {

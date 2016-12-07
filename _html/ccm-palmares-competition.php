@@ -29,19 +29,22 @@
       <div class="container container-list">
         <section class="categorie-items">
             <div class="title-list-cat">
-                <h2 class="title">Longs métrages</h2>
+                <h2 class="title">Courts métrages</h2>
             </div>
-            <article style="background-image:url(img/palmares/cover-film-compet1.jpg)">
+              <article style="background-image:url(img/palmares/cover-film-compet1.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
-                <img src="img/palmares/cover-film-compet1.jpg" alt="images films">
+                <a href=""><img src="img/palmares/cover-film-compet1.jpg" alt="images films"></a>
+                
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
                       <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Palme d'or</strong>
                   </div>
+                  <a href="">
                     <h3 class="title-item">Dheepan</h3>
-                    <span class="nom-item">Jacques AUDIARD</span>
+                    <span class="nom-item">Jacques AUDIARD, Jacques AUDIARD, Jacques AUDIARD</span>
+                   </a>
                 </div>
                </div>
             </div>
@@ -49,15 +52,17 @@
             <article style="background-image:url(img/films/cover-film-cdo.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
-                <img src="img/films/cover-film-cdo.jpg" alt="images films">
+                <a href=""><img src="img/films/cover-film-cdo.jpg" alt="images films"></a>
                 <div class="infos-item-list">
                   <div class="logo-palme-dor-container">
                       <i class="icon icon_palme palme-dor-img"></i>
                       <strong class="palme-dor-text verticalline">Grand prix</strong>
                   </div>
-                    <h3 class="title-item">Saul Fia</h3>
-                    <h4 class="sub-title-item">(Le fils de paul)</h4>
-                    <span class="nom-item">László NEMES</span>
+                    <a href="">
+                      <h3 class="title-item">Saul Fia</h3>
+                      <h4 class="sub-title-item">(Le fils de paul)</h4>
+                      <span class="nom-item">László NEMES</span>
+                    </a>
                 </div>
                </div>
             </div>
@@ -85,8 +90,8 @@
                   <div class="logo-palme-dor-container">
                     <i class="icon icon_palme palme-dor-img"></i>
                     <strong class="palme-dor-text verticalline">Prix d'interprétation féminine ex-aequo</strong>
-                    <img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">
-                    <h3 class="title-item verticalline">Emmanuelle bercot</h3>
+                    <!--<img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">-->
+                    <!--<h3 class="title-item verticalline">Emmanuelle bercot</h3>-->
                     <h3 class="title-item">Mon roi</h3>
                     <span class="nom-item">Maïwenn</span>
                   </div>
@@ -96,9 +101,9 @@
             </article>
         </section>
         <section class="categorie-items">
-            <div class="title-list-cat">
+            <!--<div class="title-list-cat">
                 <h2 class="title">Courts métrages</h2>
-            </div>
+            </div>-->
             <article style="background-image:url(img/palmares/cover-film-compet5.jpg)">
             <div class="bck-hover">
                <div class="contain_item">
