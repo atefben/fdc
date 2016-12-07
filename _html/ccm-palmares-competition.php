@@ -92,7 +92,7 @@
                     <i class="icon icon_palme palme-dor-img"></i>
                     <strong class="palme-dor-text verticalline">Prix d'interprétation féminine ex-aequo</strong>
                     <!--<img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">-->
-                    <!--<h3 class="title-item verticalline">Emmanuelle bercot</h3>-->
+                    <a href=""><h3 class="title-item verticalline">Emmanuelle bercot</h3></a>
                     <h3 class="title-item">Mon roi</h3>
                     <span class="nom-item">Maïwenn</span>
                   </div>
