@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmFestival
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmFestivalRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmFestival
@@ -110,7 +110,7 @@ class FilmFestival
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFestivalMediaImageAssociated", mappedBy="festival", cascade={"all"}, orphanRemoval=true)
-     *
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $associatedMediaImages;
 

@@ -145,13 +145,10 @@
 // =========================
 .slider-01 {
   margin-bottom: 9px;
+  margin-left: -30px;
 
   & .owl-stage-outer {
     overflow: visible;
-  }
-
-  .owl-item {
-    margin-left: -37px;
   }
 
   .item {
@@ -192,13 +189,7 @@
 // =========================
 .slider-02 {
   .owl-stage {
-    margin-left: -419px;
-  }
-
-  @media screen and (max-width: 1024px) {
-    & .owl-stage-outer {
-      overflow: hidden !important;
-    }
+    margin-left: -174px;
   }
 
   & .owl-stage-outer {
@@ -239,26 +230,16 @@
 
   .timelapse {
     height: 20px;
-    width: 977px;
+    width: 90vw;
     margin-top: 0px;
     margin-bottom: 30px;
     position: absolute;
-    bottom: 1px;
+    bottom: 68px;
     z-index: 3;
+    margin-left: 8px;
 
     .portrait.mobile &{
       left: 20px;
-    }
-
-    @media screen and (max-width: 768px) {
-      height: 20px;
-      width: 975px;
-      left: -10px;
-      margin-top: 0px;
-      margin-bottom: 30px;
-      position: absolute;
-      bottom: 1px;
-      z-index: 3;
     }
 
     .avance{

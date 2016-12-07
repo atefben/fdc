@@ -226,13 +226,13 @@ abstract class Media implements TranslateMainInterface
         if ($this->getId()) {
             if ($string != 'MediaImage') {
                 if ($this->findTranslationByLocale('fr') != null) {
-                    $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
-                    $string = $this->truncate($string, 40, '..."', true);
+                    $string = 'Image : ' . $this->findTranslationByLocale('fr')->getTitle() . '';
+                    $string = $this->truncate($string, 80, '..."', true);
                 }
             } else {
                 if ($this->findTranslationByLocale('fr') != null) {
-                    $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
-                    $string = $this->truncate($string, 40, '..."', true);
+                    $string = 'Image : ' . $this->findTranslationByLocale('fr')->getLegend() . '';
+                    $string = $this->truncate($string, 80, '..."', true);
                 }
             }
         }
@@ -308,7 +308,7 @@ abstract class Media implements TranslateMainInterface
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
-     * @return MediaImageTranslation
+     * @return $this
      */
     public function setPublishedAt($publishedAt)
     {
@@ -341,7 +341,7 @@ abstract class Media implements TranslateMainInterface
      * Set publishEndedAt
      *
      * @param \DateTime $publishEndedAt
-     * @return MediaImageTranslation
+     * @return $this
      */
     public function setPublishEndedAt($publishEndedAt)
     {

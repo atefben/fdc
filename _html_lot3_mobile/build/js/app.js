@@ -3817,9 +3817,11 @@ var owInitSlider = function (sliderName) {
         slider.noUiSlider.on('update', function (values, handle) {
 
             //drag
-            var w = $(window).width() + 4;
-            var number = 0;
+            var nm = 0;
+            var w = $('body').width() + nm;
 
+
+            var number = 0;
 
             valuesFloat = parseFloat(values[handle]);
             valuesInt = parseInt(values[handle]);
@@ -3874,7 +3876,7 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('end', function (values, handle) { //end drag
 
-            var nm = isMac ? 4 : 21;
+            var nm = 0;
             var w = $('body').width() + nm;
             valuesFloat = parseFloat(values[handle]);
             values = Math.round(valuesFloat);
@@ -3882,6 +3884,10 @@ var owInitSlider = function (sliderName) {
 
 
             var val = -w * (number); //todo script ?
+
+            console.log(val);
+
+            val = val + 11;
 
             $slide.css('transform', 'translate(' + val + 'px)');
 
@@ -3945,7 +3951,7 @@ var owInitSlider = function (sliderName) {
 
         var stopAnimation = function () {
 
-            var nm = isMac ? 4 : 21;
+            var nm = 25;
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
@@ -3982,7 +3988,7 @@ var owInitSlider = function (sliderName) {
 
         var animationOpen = function () {
 
-            var nm = isMac ? 4 : 21;
+            var nm = 25;
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
@@ -4064,7 +4070,7 @@ var owInitSlider = function (sliderName) {
 
         if ($('.restrospective-init').length) {
 
-            var nm = isMac ? 4 : 21;
+            var nm = 25;
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').data('date');
 
@@ -4087,7 +4093,7 @@ $(window).resize(function () {
         var $slide = $('.slides');
         var $slideCalc1 = $('.slides-calc1');
 
-        var nm = isMac ? 4 : 21;
+        var nm = 25;
         var w = $('body').width() + nm;
         var numberSlide = $('.slider-restropective').size() + 1;
         var sizeSlide = $('.slider-restropective').width();
@@ -5146,6 +5152,15 @@ $(document).ready(function () {
 
     if($('.block-diaporama').length) {
         owInitSlider('slider-01');
+    }
+
+    if($('.block-videos').length) {
+        initVideo();
+    }
+
+    if ($('.retrospective-home').length) {
+        owInitSlider('timelapse-01');
+        onInitParallax();
     }
 
 });

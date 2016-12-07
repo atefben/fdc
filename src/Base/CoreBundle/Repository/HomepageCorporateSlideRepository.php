@@ -23,6 +23,9 @@ class HomepageCorporateSlideRepository extends EntityRepository
             ->leftJoin('hcs.statement', 's')
             ->leftJoin('hcs.info', 'i')
 
+            ->leftJoin('i.sites', 'iss')
+            ->leftJoin('s.sites', 'ss')
+
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 's1', 'WITH', 's1.id = s.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 's2', 'WITH', 's2.id = s.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementImage', 's3', 'WITH', 's3.id = s.id')
@@ -43,14 +46,14 @@ class HomepageCorporateSlideRepository extends EntityRepository
         ;
         $qb
             ->andWhere(
-                '(s1t.locale = :locale) OR
-                 (s2t.locale = :locale) OR
-                 (s3t.locale = :locale) OR
-                 (s4t.locale = :locale) OR
-                 (i1t.locale = :locale) OR
-                 (i2t.locale = :locale) OR
-                 (i3t.locale = :locale) OR
-                 (i4t.locale = :locale)'
+                 '(s1t.locale = :locale AND s1t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (s2t.locale = :locale AND s2t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (s3t.locale = :locale AND s3t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (s4t.locale = :locale AND s4t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (i1t.locale = :locale AND i1t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 ) OR
+                 (i2t.locale = :locale AND i2t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 ) OR
+                 (i3t.locale = :locale AND i3t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 ) OR
+                 (i4t.locale = :locale AND i4t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 )'
             )
         ;
 
@@ -62,6 +65,7 @@ class HomepageCorporateSlideRepository extends EntityRepository
             )*/
             $qb->orderBy('hcs.position')
             ->setParameter('locale', $locale)
+            ->setParameter('site3', 3)
             //->setParameter('datetime', $dateTime)
         ;
 

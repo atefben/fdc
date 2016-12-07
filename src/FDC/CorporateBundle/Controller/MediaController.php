@@ -32,6 +32,7 @@ class MediaController extends Controller
         $moreresults = true;
 
         if($request->isMethod('POST')) {
+
             $search = $request->request->get('search');
             $photo = $request->request->get('photo') ? true : false;
             $video = $request->request->get('video') ? true : false;
@@ -40,7 +41,13 @@ class MediaController extends Controller
             $yearStart = $request->request->get('year-start');
             $yearEnd = $request->request->get('year-end');
 
-            if(!$request->get('_route') == 'fdc_corporate_media_index_ajax') {
+            if(!$photo && !$video && !$audio) {
+                $photo = true;
+                $video = true;
+                $audio = true;
+            }
+
+            if(!$request->get('ajax')) {
                 return $this->redirectToRoute('fdc_corporate_media_index', array(
                     'search' => $search,
                     'photo' => $photo,
@@ -51,12 +58,6 @@ class MediaController extends Controller
                     'yearEnd' => $yearEnd,
                     'getsearch' => true
                 ));
-            }
-
-            if(!$photo && !$video && !$audio) {
-                $photo = true;
-                $video = true;
-                $audio = true;
             }
 
             //multi type does not work, doing it manually with single type
@@ -114,8 +115,8 @@ class MediaController extends Controller
             if(count($medias) == 0) {
                 $noresults = true;
             }
-        }
 
+        }
         if($noresults) {
             if(!$page->getDisplayedSelection()) {
                 $medias = $page->getMediasSelection();
@@ -130,8 +131,8 @@ class MediaController extends Controller
             $video = $request->get('video') ? true : false;
             $audio = $request->get('audio') ? true : false;
             $pg = $request->get('pg') ? $request->get('pg') : 1;
-            $yearStart = $request->get('year-start');
-            $yearEnd = $request->get('year-end');
+            $yearStart = $request->get('yearStart');
+            $yearEnd = $request->get('yearEnd');
 
             if(!$photo && !$video && !$audio) {
                 $photo = true;
@@ -194,6 +195,22 @@ class MediaController extends Controller
             if(count($medias) == 0) {
                 $noresults = true;
             }
+
+
+//            $finalMedias = array();
+//            foreach ($medias as $media) {
+//                if(get_class($media) == 'Base\CoreBundle\Entity\FilmFilmMedia') {
+//                    $finalMedias[$media->getFilm()->getFestival()->getFestivalStartsAt()->getTimestamp().'-'.$media->getId().'-'.get_class($media)] = $media;
+//                }
+//                if(get_class($media) == 'Base\CoreBundle\Entity\FilmPersonMedia') {
+//                    $finalMedias[$media->getMedia()->getFestival()->getFestivalStartsAt()->getTimestamp().'-'.$media->getId().'-'.get_class($media)] = $media;
+//                }
+//                if(get_class($media) == 'Base\CoreBundle\Entity\MediaVideo') {
+//                    $finalMedias[$media->getPublishedAt()->getTimestamp().'-'.$media->getId().'-'.get_class($media)] = $media;
+//                }
+//            }
+//            ksort($finalMedias);
+//            dump($finalMedias);exit;
         }
 
         if($request->get('_route') == 'fdc_corporate_media_index_ajax') {

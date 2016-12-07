@@ -72,7 +72,7 @@ class StatementImporter extends Importer
         return $this;
     }
 
-    protected function countStatements()
+    public function countStatements()
     {
         return $this
             ->getManager()
@@ -158,14 +158,8 @@ class StatementImporter extends Importer
             $this->getManager()->persist($statement);
         }
 
-
-        if ($this->doNotPublish) {
-            if (!$statement->getSites()->contains($this->getSiteCorporate())) {
-                $statement->addSite($this->getSiteCorporate());
-            }
-            if (!$statement->getSites()->contains($this->getSiteEvent())) {
-                $statement->addSite($this->getSiteEvent());
-            }
+        if (!$statement->getSites()->contains($this->getSiteCorporate())) {
+            $statement->addSite($this->getSiteCorporate());
         }
 
         $this->getManager()->flush();
@@ -210,6 +204,48 @@ class StatementImporter extends Importer
                 }
             }
 
+
+            if ($oldTranslation->getImageResume()) {
+                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/Pages/' . trim($oldTranslation->getImageResume()));
+                if ($file) {
+                    $header = $statement->getHeader();
+                    if (!$header) {
+                        $header = new MediaImage();
+                        $header
+                            ->addSite($this->getSiteCorporate())
+                            ->setTheme($this->getDefaultTheme())
+                            ->setPublishedAt($statement->getPublishedAt())
+                            ->setPublishEndedAt($statement->getPublishEndedAt())
+                            ->setFestival($statement->getFestival())
+                        ;
+                        $this->getManager()->persist($header);
+                        $statement->setHeader($header);
+                    }
+                    $headerTrans = $header->findTranslationByLocale($locale);
+                    if (!$headerTrans) {
+                        $headerTrans = new MediaImageTranslation();
+                        $headerTrans->setTranslatable($header);
+                        $this->getManager()->persist($headerTrans);
+                    }
+
+                    $media = $headerTrans->getFile();
+                    if (!$media) {
+                        $media = new Media();
+                        $media->setName($translation->getTitle());
+                        $media->setBinaryContent($file);
+                        $media->setEnabled(true);
+                        $media->setProviderReference($oldTranslation->getImageResume());
+                        $media->setContext('media_image');
+                        $media->setProviderStatus(1);
+                        $media->setProviderName('sonata.media.provider.image');
+                        $media->setCreatedAt($statement->getCreatedAt());
+                        $this->getMediaManager()->save($media, false);
+
+                        $headerTrans->setFile($media);
+                    }
+                }
+            }
+
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
             foreach ($mapperFields as $oldField => $field) {
@@ -235,10 +271,10 @@ class StatementImporter extends Importer
         if (!$widget) {
             $widget = new StatementWidgetText();
             $widget
-                ->setStatement($statement)
                 ->setOldImportReference('body')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $statement->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -274,10 +310,10 @@ class StatementImporter extends Importer
         if (!$widget) {
             $widget = new StatementWidgetVideoYoutube();
             $widget
-                ->setStatement($statement)
                 ->setOldImportReference('youtube')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $statement->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -328,10 +364,10 @@ class StatementImporter extends Importer
         if (!$widget) {
             $widget = new StatementWidgetImage();
             $widget
-                ->setStatement($statement)
                 ->setOldImportReference('image')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $statement->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -519,10 +555,10 @@ class StatementImporter extends Importer
             if (!$widget) {
                 $widget = new StatementWidgetAudio();
                 $widget
-                    ->setStatement($statement)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $statement->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 
@@ -627,10 +663,10 @@ class StatementImporter extends Importer
             if (!$widget) {
                 $widget = new StatementWidgetVideo();
                 $widget
-                    ->setStatement($statement)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $statement->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 

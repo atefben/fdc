@@ -393,7 +393,7 @@ class MovieController extends Controller
     /**
      * @Route("/69-editions/retrospective/{year}/selection/cannes-classics/{slug}")
      * @Template("FDCCorporateBundle:Movie:classics.html.twig")
-     * @param $year
+     * @param Request $request
      * @param $slug
      * @return array
      */

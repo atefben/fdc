@@ -92,10 +92,8 @@
         <p>
             {{ 'movie.label.realisepar'|trans }} :
             {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-            {% for director in directors %}
-                <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>
-                {% if loop.index != directors|length %}, {% endif %}
-            {% endfor %}
+            {% set comma = false %}
+            {% for key, director in directors if not director.duplicate %}{% if comma %},&nbsp;{% endif %}<a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>{% set comma = true %}{% endfor %}
         </p>
         <p class="information-movie">
             {% if movie.productionYear is not null and movie.productionYear != 0 %}

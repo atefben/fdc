@@ -128,12 +128,7 @@ class MediaImageSimpleAdmin extends Admin
                 'choices'                   => MediaImageSimple::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('sites', null, array(
-                'label'    => 'form.label_publish_on',
-                'class'    => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true
-            ))
+
             ->add('createdAt', null, array(
                 'label' => false,
                 'attr'  => array(
@@ -184,10 +179,16 @@ class MediaImageSimpleAdmin extends Admin
     public function prePersist($object)
     {
         session_write_close();
+        $object->findTranslationByLocale('fr')->setStatus(1);
+        $object->preUpdate($object);
     }
 
     public function preUpdate($object)
     {
         session_write_close();
+        $object->findTranslationByLocale('fr')->setStatus(1);
+//        $object->findTranslationByLocale('en')->setStatus(1);
+//        $object->findTranslationByLocale('zh')->setStatus(1);
+//        $object->findTranslationByLocale('es')->setStatus(1);
     }
 }

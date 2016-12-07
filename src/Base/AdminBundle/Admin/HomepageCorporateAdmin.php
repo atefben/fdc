@@ -279,7 +279,7 @@ class HomepageCorporateAdmin extends Admin
             ))
             ->add('pushEditionImage', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_prefooter',
                 'required' => false,
             ))
             ->add('pushMainImage1', 'sonata_type_model_list', array(
@@ -290,6 +290,10 @@ class HomepageCorporateAdmin extends Admin
             ->add('pushMainImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
                 'help' => 'form.homepage.helper_pushes',
+                'required' => false,
+            ))
+            ->add('VideoUne', 'sonata_type_model_list', array(
+                'label' => 'Vidéo à la une',
                 'required' => false,
             ))
             ->add('pushSecondaryImage1', 'sonata_type_model_list', array(

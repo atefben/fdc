@@ -17,9 +17,9 @@
             <form method="post">
                 <div class="vFlexAlign">
                     <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id="s-text" value="{% if app.request.get('search') is not null %}{{ app.request.get('search') }}{% endif %}" /></label>
-                    <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') is not null %} active{% endif %}"><i class="icon icon-photo"></i><span class="text">{{ 'mediatheque.filters.photos'|trans }}</span><input class="choice" type="checkbox" name="photo" id="s-photo" {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
-                    <label for="s-video" class="icon-s vFlexAlign{% if app.request.get('video') is not null %} active{% endif %}"><i class="icon icon-video"></i><span class="text">{{ 'mediatheque.filters.videos'|trans }}</span><input class="choice" type="checkbox" name="video" id="s-video" {% if app.request.get('video') is not null %}checked {% endif %}/></label>
-                    <label for="s-audio" class="icon-s vFlexAlign{% if app.request.get('audio') is not null %} active{% endif %}"><i class="icon icon-audio"></i><span class="text">{{ 'mediatheque.filters.audios'|trans }}</span><input class="choice" type="checkbox" name="audio" id="s-audio" {% if app.request.get('audio') is not null %}checked {% endif %}/></label>
+                    <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') == 1 %} active{% endif %}"><i class="icon icon-photo"></i><span class="text">{{ 'mediatheque.filters.photos'|trans }}</span><input class="choice" type="checkbox" name="photo" id="s-photo" {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
+                    <label for="s-video" class="icon-s vFlexAlign{% if app.request.get('video') == 1 %} active{% endif %}"><i class="icon icon-video"></i><span class="text">{{ 'mediatheque.filters.videos'|trans }}</span><input class="choice" type="checkbox" name="video" id="s-video" {% if app.request.get('video') is not null %}checked {% endif %}/></label>
+                    <label for="s-audio" class="icon-s vFlexAlign{% if app.request.get('audio') == 1 %} active{% endif %}"><i class="icon icon-audio"></i><span class="text">{{ 'mediatheque.filters.audios'|trans }}</span><input class="choice" type="checkbox" name="audio" id="s-audio" {% if app.request.get('audio') is not null %}checked {% endif %}/></label>
                 </div>
                 <div class="slider-selection">
                     <span id="slider-snap-value-lower" class="number"></span>
@@ -28,14 +28,13 @@
                     </div>
                     <span id="slider-snap-value-upper" class="number"></span>
                 </div>
-                <input type="hidden" for="s-yearstart" class="s-yearstart" name="year-start" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-start') }}{% else %}1946{% endif %}">
-                <input type="hidden" for="s-yearend" class="s-yearend" name="year-end" value="{% if app.request.get('year-start') is not null %}{{ app.request.get('year-end') }}{% else %}2016{% endif %}">
+                <input type="hidden" for="s-yearstart" class="s-yearstart" name="year-start" value="{% if app.request.get('yearStart') is not null %}{{ app.request.get('yearStart') }}{% else %}1946{% endif %}">
+                <input type="hidden" for="s-yearend" class="s-yearend" name="year-end" value="{% if app.request.get('yearEnd') is not null %}{{ app.request.get('yearEnd') }}{% else %}2016{% endif %}">
                 <input type="hidden" name="pg" value="1">
                 <button type="submit" name="submit" class="button button-submit"><i class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}</button>
             </form>
         </div>
-
-        {% if app.request.method == 'GET' and page.displayedSelection == false %}
+        {% if app.request.method == 'GET' and page.displayedSelection == false and app.request.query.all is empty %}
         <div class="contain-title vFlexAlign">
             <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
         </div>
@@ -61,7 +60,7 @@
 
         {% if moreresults %}
         <div>
-            <a href="{{ path('fdc_corporate_media_index_ajax') }}" class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
+            <a href="{{ path('fdc_corporate_media_index_ajax', {'ajax' : true }) }}" class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
         </div>
         {% endif %}
     </section>

@@ -33,14 +33,17 @@ class NewsImporter extends Importer
 
     protected $status;
 
-    public function importNews()
+    public function importNews($paginate = null)
     {
         $this->output->writeln('<info>Import news...</info>');
-
-        $count = $this->countNews();
-
-        $pages = ceil($count / 50);
-
+        if ($paginate) {
+            $this->output->writeln("<comment>Page $paginate</comment>");
+            $pages = 1;
+            $count = $this->countNews($paginate);
+        } else {
+            $count = $this->countNews();
+            $pages = ceil($count / 100);
+        }
         $progress = new ProgressBar($this->output, $count);
         $progress->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
         $progress->start();
@@ -53,8 +56,8 @@ class NewsImporter extends Importer
                 ->andWhere('o.articleTypeId in (:types)')
                 ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
                 ->addOrderBy('o.id', 'asc')
-                ->setMaxResults(50)
-                ->setFirstResult(($page - 1) * 50)
+                ->setMaxResults(100)
+                ->setFirstResult((($paginate ?: $page) - 1) * 100)
                 ->getQuery()
                 ->getResult()
             ;
@@ -69,8 +72,8 @@ class NewsImporter extends Importer
                 }
             }
 
-            $this->getManager()->clear();
-            unset($oldArticles);
+            //$this->getManager()->clear();
+            //unset($oldArticles);
 
             $this->getSiteEvent(true);
             $this->getSiteCorporate(true);
@@ -82,15 +85,28 @@ class NewsImporter extends Importer
         return $this;
     }
 
-    protected function countNews()
+    public function countNews($paginate = null)
     {
-        return $this
+        $qb = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
             ->createQueryBuilder('o')
             ->select('count(o)')
             ->andWhere('o.articleTypeId in (:types)')
             ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+        ;
+
+        if ($paginate) {
+            return count($qb
+                ->select('o')
+                ->setFirstResult(($paginate - 1) * 100)
+                ->setMaxResults(100)
+                ->getQuery()
+                ->getResult()
+            );
+        }
+
+        return $qb
             ->getQuery()
             ->getSingleScalarResult()
             ;
@@ -169,13 +185,8 @@ class NewsImporter extends Importer
         }
 
 
-        if ($this->doNotPublish) {
-            if (!$news->getSites()->contains($this->getSiteCorporate())) {
-                $news->addSite($this->getSiteCorporate());
-            }
-            if (!$news->getSites()->contains($this->getSiteEvent())) {
-                $news->addSite($this->getSiteEvent());
-            }
+        if (!$news->getSites()->contains($this->getSiteCorporate())) {
+            $news->addSite($this->getSiteCorporate());
         }
 
         $this->getManager()->flush();
@@ -220,6 +231,47 @@ class NewsImporter extends Importer
                 }
             }
 
+            if ($oldTranslation->getImageResume()) {
+                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/Pages/' . trim($oldTranslation->getImageResume()));
+                if ($file) {
+                    $header = $news->getHeader();
+                    if (!$header) {
+                        $header = new MediaImage();
+                        $header
+                            ->addSite($this->getSiteCorporate())
+                            ->setTheme($this->getDefaultTheme())
+                            ->setPublishedAt($news->getPublishedAt())
+                            ->setPublishEndedAt($news->getPublishEndedAt())
+                            ->setFestival($news->getFestival())
+                        ;
+                        $this->getManager()->persist($header);
+                        $news->setHeader($header);
+                    }
+                    $headerTrans = $header->findTranslationByLocale($locale);
+                    if (!$headerTrans) {
+                        $headerTrans = new MediaImageTranslation();
+                        $headerTrans->setTranslatable($header);
+                        $this->getManager()->persist($headerTrans);
+                    }
+
+                    $media = $headerTrans->getFile();
+                    if (!$media) {
+                        $media = new Media();
+                        $media->setName($translation->getTitle());
+                        $media->setBinaryContent($file);
+                        $media->setEnabled(true);
+                        $media->setProviderReference($oldTranslation->getImageResume());
+                        $media->setContext('media_image');
+                        $media->setProviderStatus(1);
+                        $media->setProviderName('sonata.media.provider.image');
+                        $media->setCreatedAt($news->getCreatedAt());
+                        $this->getMediaManager()->save($media, false);
+
+                        $headerTrans->setFile($media);
+                    }
+                }
+            }
+
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
             foreach ($mapperFields as $oldField => $field) {
@@ -245,10 +297,10 @@ class NewsImporter extends Importer
         if (!$widget) {
             $widget = new NewsWidgetText();
             $widget
-                ->setNews($news)
                 ->setOldImportReference('body')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $news->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -284,10 +336,10 @@ class NewsImporter extends Importer
         if (!$widget) {
             $widget = new NewsWidgetVideoYoutube();
             $widget
-                ->setNews($news)
                 ->setOldImportReference('youtube')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $news->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -338,10 +390,10 @@ class NewsImporter extends Importer
         if (!$widget) {
             $widget = new NewsWidgetImage();
             $widget
-                ->setNews($news)
                 ->setOldImportReference('image')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $news->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -529,10 +581,10 @@ class NewsImporter extends Importer
             if (!$widget) {
                 $widget = new NewsWidgetAudio();
                 $widget
-                    ->setNews($news)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $news->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 
@@ -637,10 +689,10 @@ class NewsImporter extends Importer
             if (!$widget) {
                 $widget = new NewsWidgetVideo();
                 $widget
-                    ->setNews($news)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $news->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 

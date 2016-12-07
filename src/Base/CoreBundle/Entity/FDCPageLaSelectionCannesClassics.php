@@ -9,13 +9,13 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
  * FDCPageLaSelectionCannesClassics
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageLaSelectionCannesClassicsRepository")
  * @ORM\HasLifecycleCallbacks
@@ -29,7 +29,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -39,48 +38,38 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * @var MediaImageSimple
-     *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     *
      */
     private $image;
 
     /**
      * @var NewsWidget
-     *
-     * @ORM\OneToMany(targetEntity="FDCPageLaSelectionCannesClassicsWidget", mappedBy="FDCPageLaSelectionCannesClassics", cascade={"all"}, orphanRemoval=true)
-     *
+     * @ORM\OneToMany(targetEntity="FDCPageLaSelectionCannesClassicsWidget", mappedBy="FDCPageLaSelectionCannesClassics",
+     *     cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $widgets;
 
     /**
      * @var integer
-     *
      * @ORM\Column(type="integer", nullable=false)
-     *
      */
     private $weight;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
-     *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
-     *
      */
     private $createdBy;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
-     *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
-     *
      */
     private $updatedBy;
 
     /**
      * @var ArrayCollection
-     *
      * @Assert\Valid()
      * @Groups({"classics"})
      */
@@ -93,11 +82,30 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", nullable=true)
-     *
      */
     private $oldNewsTable;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     */
+    private $publishedAt;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     */
+    private $publishEndedAt;
+
+    /**
+     * @var Site
+     *
+     * @ORM\ManyToMany(targetEntity="Site")
+     *
+     */
+    private $sites;
+
 
     /**
      * FDCPageLaSelection constructor.
@@ -106,6 +114,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     {
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->sites = new ArrayCollection();
     }
 
     /**
@@ -127,7 +136,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -137,9 +145,8 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Set image
-     *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $image
-     * @return FDCPageLaSelection
+     * @return $this
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
     {
@@ -150,7 +157,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get image
-     *
      * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImage()
@@ -160,7 +166,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Add widgets
-     *
      * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets
      * @return FDCPageLaSelectionCannesClassics
      */
@@ -174,7 +179,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Remove widgets
-     *
      * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets
      */
     public function removeWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
@@ -184,8 +188,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get widgets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWidgets()
     {
@@ -210,9 +213,8 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Set createdBy
-     *
      * @param \Application\Sonata\UserBundle\Entity\User $createdBy
-     * @return FDCPageLaSelectionCannesClassics
+     * @return $this
      */
     public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
     {
@@ -223,8 +225,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get createdBy
-     *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getCreatedBy()
     {
@@ -233,7 +234,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Set updatedBy
-     *
      * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
      * @return FDCPageLaSelectionCannesClassics
      */
@@ -246,8 +246,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get updatedBy
-     *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUpdatedBy()
     {
@@ -255,31 +254,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     }
 
     /**
-     * Set position
-     *
-     * @param integer $position
-     * @return FDCPageLaSelectionCannesClassics
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer 
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
      * Set weight
-     *
      * @param integer $weight
      * @return FDCPageLaSelectionCannesClassics
      */
@@ -292,8 +267,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get weight
-     *
-     * @return integer 
+     * @return integer
      */
     public function getWeight()
     {
@@ -302,7 +276,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Set oldNewsId
-     *
      * @param integer $oldNewsId
      * @return FDCPageLaSelectionCannesClassics
      */
@@ -315,8 +288,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get oldNewsId
-     *
-     * @return integer 
+     * @return integer
      */
     public function getOldNewsId()
     {
@@ -325,7 +297,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Set oldNewsTable
-     *
      * @param string $oldNewsTable
      * @return FDCPageLaSelectionCannesClassics
      */
@@ -338,11 +309,89 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
 
     /**
      * Get oldNewsTable
-     *
-     * @return string 
+     * @return string
      */
     public function getOldNewsTable()
     {
         return $this->oldNewsTable;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return $this
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * Set publishEndedAt
+     *
+     * @param \DateTime $publishEndedAt
+     * @return $this
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishEndedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * Add sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     * @return $this
+     */
+    public function addSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites[] = $sites;
+
+        return $this;
+    }
+
+    /**
+     * Remove sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     */
+    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites->removeElement($sites);
+    }
+
+    /**
+     * Get sites
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSites()
+    {
+        return $this->sites;
     }
 }

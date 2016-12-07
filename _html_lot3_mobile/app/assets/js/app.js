@@ -30,4 +30,13 @@ $(document).ready(function () {
         owInitSlider('slider-01');
     }
 
+    if($('.block-videos').length) {
+        initVideo();
+    }
+
+    if ($('.retrospective-home').length) {
+        owInitSlider('timelapse-01');
+        onInitParallax();
+    }
+
 });

@@ -75,7 +75,7 @@ class InfoImporter extends Importer
         return $this;
     }
 
-    protected function countInfos()
+    public function countInfos()
     {
         return $this
             ->getManager()
@@ -160,15 +160,10 @@ class InfoImporter extends Importer
             $this->getManager()->persist($info);
         }
 
-
-        if ($this->doNotPublish) {
-            if (!$info->getSites()->contains($this->getSiteCorporate())) {
-                $info->addSite($this->getSiteCorporate());
-            }
-            if (!$info->getSites()->contains($this->getSiteEvent())) {
-                $info->addSite($this->getSiteEvent());
-            }
+        if (!$info->getSites()->contains($this->getSiteCorporate())) {
+            $info->addSite($this->getSiteCorporate());
         }
+
         $this->getManager()->flush();
         return $info;
     }
@@ -215,6 +210,47 @@ class InfoImporter extends Importer
                 }
             }
 
+            if ($oldTranslation->getImageResume()) {
+                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/Pages/' . trim($oldTranslation->getImageResume()));
+                if ($file) {
+                    $header = $info->getHeader();
+                    if (!$header) {
+                        $header = new MediaImage();
+                        $header
+                            ->addSite($this->getSiteCorporate())
+                            ->setTheme($this->getDefaultTheme())
+                            ->setPublishedAt($info->getPublishedAt())
+                            ->setPublishEndedAt($info->getPublishEndedAt())
+                            ->setFestival($info->getFestival())
+                        ;
+                        $this->getManager()->persist($header);
+                        $info->setHeader($header);
+                    }
+                    $headerTrans = $header->findTranslationByLocale($locale);
+                    if (!$headerTrans) {
+                        $headerTrans = new MediaImageTranslation();
+                        $headerTrans->setTranslatable($header);
+                        $this->getManager()->persist($headerTrans);
+                    }
+
+                    $media = $headerTrans->getFile();
+                    if (!$media) {
+                        $media = new Media();
+                        $media->setName($translation->getTitle());
+                        $media->setBinaryContent($file);
+                        $media->setEnabled(true);
+                        $media->setProviderReference($oldTranslation->getImageResume());
+                        $media->setContext('media_image');
+                        $media->setProviderStatus(1);
+                        $media->setProviderName('sonata.media.provider.image');
+                        $media->setCreatedAt($info->getCreatedAt());
+                        $this->getMediaManager()->save($media, false);
+
+                        $headerTrans->setFile($media);
+                    }
+                }
+            }
+
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
             foreach ($mapperFields as $oldField => $field) {
@@ -240,10 +276,10 @@ class InfoImporter extends Importer
         if (!$widget) {
             $widget = new InfoWidgetText();
             $widget
-                ->setInfo($info)
                 ->setOldImportReference('body')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $info->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -285,10 +321,10 @@ class InfoImporter extends Importer
         if (!$widget) {
             $widget = new InfoWidgetVideoYoutube();
             $widget
-                ->setInfo($info)
                 ->setOldImportReference('youtube')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $info->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -339,10 +375,10 @@ class InfoImporter extends Importer
         if (!$widget) {
             $widget = new InfoWidgetImage();
             $widget
-                ->setInfo($info)
                 ->setOldImportReference('image')
                 ->setPosition($this->getWidgetPosition())
             ;
+            $info->addWidget($widget);
             $this->getManager()->persist($widget);
         }
 
@@ -530,10 +566,10 @@ class InfoImporter extends Importer
             if (!$widget) {
                 $widget = new InfoWidgetAudio();
                 $widget
-                    ->setInfo($info)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $info->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 
@@ -638,10 +674,10 @@ class InfoImporter extends Importer
             if (!$widget) {
                 $widget = new InfoWidgetVideo();
                 $widget
-                    ->setInfo($info)
                     ->setOldImportReference($reference)
                     ->setPosition($this->getWidgetPosition())
                 ;
+                $info->addWidget($widget);
                 $this->getManager()->persist($widget);
             }
 

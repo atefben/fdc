@@ -575,6 +575,8 @@ $(document).ready(function () {
                                     url: $(this).data('url')
                                 };
 
+                                console.log(eventObject);
+
                                 // store the Event Object in the DOM element so we can get to it later
                                 $(this).data('eventObject', eventObject);
 

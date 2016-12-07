@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation\Since;
  * NewsWidgetTextTranslation
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\NewsWidgetTextTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class NewsWidgetTextTranslation
