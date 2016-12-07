@@ -1634,7 +1634,7 @@ function initAudioPlayers(autoplay) {
 
 
     $('.picto.playpause').css('pointer-events',false);
-    $('.picto.playpause').css('opacity','0');
+    $('.picto.playpause').css('opacity','0.6');
 
     console.log("pas ready");
     // once it's ready
