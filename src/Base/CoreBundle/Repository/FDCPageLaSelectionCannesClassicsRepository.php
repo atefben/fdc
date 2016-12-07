@@ -2,8 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Component\Repository\EntityRepository;
-use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
  * Class FDCPageJuryTranslationRepository
@@ -27,56 +26,66 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
 
     }
 
-    public function getBySlug($locale, $slug)
+    public function getBySlug($locale, $slug, $festival)
     {
         $qb = $this
             ->createQueryBuilder('cc')
             ->join('cc.translations', 't')
             ->join('cc.translations', 't3')
-            ->where('t3.slug = :slug')
-            ->andWhere('t.status = :status_published AND t.locale = :locale_fr')
-            ->setParameter('locale_fr', 'fr')
+            ->andWhere('t3.slug = :slug')
             ->setParameter('slug', $slug)
-            ->setParameter('status_published', FDCPageLaSelectionCannesClassicsTranslation::STATUS_PUBLISHED);
+            ->andWhere('t.status = :status_published')
+            ->setParameter('status_published', TranslateChildInterface::STATUS_PUBLISHED)
+            ->andWhere('t.locale = :locale_fr')
+            ->setParameter('locale_fr', 'fr')
+            ->andWhere('cc.festival = :festival')
+            ->setParameter(':festival', $festival)
+        ;
 
         if ($locale != 'fr') {
             $qb
                 ->join('cc.translations', 't2')
                 ->andWhere('t2.status = :status_translated AND t2.locale = :locale')
-                ->setParameter('status_translated', FDCPageLaSelectionCannesClassicsTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
         }
 
         return $qb
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
 
-    public function getAll($locale, $position = false)
+    public function getAll($locale, $festival , $position = false)
     {
         $qb = $this
             ->createQueryBuilder('cc')
             ->join('cc.translations', 't')
-            ->where('t.status = :status_published AND t.locale = :locale_fr')
-            ->setParameter('status_published', FDCPageLaSelectionCannesClassicsTranslation::STATUS_PUBLISHED)
-            ->setParameter('locale_fr', 'fr');
+            ->andWhere('t.status = :status_published')
+            ->andWhere('t.locale = :locale_fr')
+            ->setParameter('status_published', TranslateChildInterface::STATUS_PUBLISHED)
+            ->setParameter('locale_fr', 'fr')
+            ->andWhere('cc.festival = :festival')
+            ->setParameter(':festival', $festival)
+        ;
         if ($locale != 'fr') {
             $qb
                 ->join('cc.translations', 't2')
                 ->andWhere('t2.status = :status_translated AND t2.locale = :locale')
-                ->setParameter('status_translated', FDCPageLaSelectionCannesClassicsTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
         }
 
-        if($position){
-            $qb ->orderBy('cc.weight','asc');
+        if ($position) {
+            $qb->orderBy('cc.weight', 'asc');
         }
 
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
 }
