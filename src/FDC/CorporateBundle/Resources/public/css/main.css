@@ -4644,8 +4644,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #000;
 }
 .block-contact .bold-1, .block-contact h3 {
-  line-height: 20px;
-  font-size: 0.875rem;
+  font-size: .85rem;
+  line-height: 1.6em;
+  margin-bottom: 30px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .block-contact strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;

@@ -2020,8 +2020,10 @@
   }
 
   .bold-1, h3 {
-    line-height: 20px;
-    font-size: .875rem
+    font-size: .85rem;
+    line-height: 1.6em;
+    margin-bottom: 30px;
+    font-family: $CamphorBold;
   }
 
   strong {
