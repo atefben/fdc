@@ -49,6 +49,21 @@
                         </strong>
                     {% endif %}
                 {% endif %}
+                {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
+                    {% if award_association.award.filmMutual %}
+                        <strong class="name-f line">
+                            {% for assocationMutual in award_association.award.associations %}
+                                {% set person = assocationMutual.person %}
+                                    {{ person.fullName }}{{ loop.last == true ? '' : ',' }}
+                            {% endfor %}
+                        </strong>
+                    {% else %}
+                        {% set person = award_association.person %}
+                        <strong class="name-f line">
+                                {{ person.fullName }}
+                        </strong>
+                    {% endif %}
+                {% endif %}
                 {% if camera is defined %}
                 <strong class="name-fb">{{ movie.selectionSection|trans_fallback('name') }}</strong>
                 {% endif %}
