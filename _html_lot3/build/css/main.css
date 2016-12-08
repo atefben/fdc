@@ -9126,6 +9126,7 @@ body#home .isotope-01 .item .contain-img {
   margin-bottom: 29px;
   transition: height .5s;
   overflow: hidden;
+  cursor: pointer;
 }
 .slider-home .coverLink {
   width: 100%;

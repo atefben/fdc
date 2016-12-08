@@ -212,6 +212,7 @@ class ClassicsImporter extends Importer
                         $this->getManager()->persist($header);
                         $classics->setImage($header);
                     }
+                    $header->setDisplayedAll(true);
                     $headerTrans = $header->findTranslationByLocale($locale);
                     if (!$headerTrans) {
                         $headerTrans = new MediaImageTranslation();
@@ -417,6 +418,7 @@ class ClassicsImporter extends Importer
                 $mediaImage->setCreatedAt($translation->getTranslatable()->getCreatedAt());
                 $mediaImage->setUpdatedAt($translation->getTranslatable()->getCreatedAt());
             }
+            $mediaImage->setDisplayedAll(true);
 
             $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
 
@@ -568,6 +570,7 @@ class ClassicsImporter extends Importer
                     ->setDisplayedAll(true)
                 ;
             }
+            $mediaAudio->setDisplayedAll(true);
 
             $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
 
@@ -677,7 +680,7 @@ class ClassicsImporter extends Importer
                     ->setTheme($this->defaultTheme)
                 ;
             }
-
+            $mediaVideo->setDisplayedAll(true);
             $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
 
             if (!$mediaVideoTranslation) {

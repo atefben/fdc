@@ -226,6 +226,7 @@ class InfoImporter extends Importer
                         $this->getManager()->persist($header);
                         $info->setHeader($header);
                     }
+                    $header->setDisplayedAll(true);
                     $headerTrans = $header->findTranslationByLocale($locale);
                     if (!$headerTrans) {
                         $headerTrans = new MediaImageTranslation();
@@ -435,6 +436,7 @@ class InfoImporter extends Importer
                 $mediaImage->setCreatedAt($translation->getTranslatable()->getCreatedAt());
                 $mediaImage->setUpdatedAt($translation->getTranslatable()->getCreatedAt());
             }
+            $mediaImage->setDisplayedAll(true);
 
             $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
 
@@ -583,6 +585,7 @@ class InfoImporter extends Importer
                     ->setTheme($this->defaultTheme)
                 ;
             }
+            $mediaAudio->setDisplayedAll(true);
 
             $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
 
@@ -692,6 +695,7 @@ class InfoImporter extends Importer
                     ->setTheme($this->defaultTheme)
                 ;
             }
+            $mediaVideo->setDisplayedAll(true);
 
             $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
 

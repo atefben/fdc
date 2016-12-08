@@ -247,6 +247,7 @@ class NewsImporter extends Importer
                         $this->getManager()->persist($header);
                         $news->setHeader($header);
                     }
+                    $header->setDisplayedAll(true);
                     $headerTrans = $header->findTranslationByLocale($locale);
                     if (!$headerTrans) {
                         $headerTrans = new MediaImageTranslation();
@@ -451,6 +452,8 @@ class NewsImporter extends Importer
                 $mediaImage->setUpdatedAt($translation->getTranslatable()->getCreatedAt());
             }
 
+            $mediaImage->setDisplayedAll(true);
+
             $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
 
             if (!$mediaImageTranslation) {
@@ -599,6 +602,8 @@ class NewsImporter extends Importer
                 ;
             }
 
+            $mediaAudio->setDisplayedAll(true);
+
             $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
 
             if (!$mediaAudioTranslation) {
@@ -707,6 +712,7 @@ class NewsImporter extends Importer
                     ->setTheme($this->defaultTheme)
                 ;
             }
+            $mediaVideo->getDisplayedAll(true);
 
             $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
 

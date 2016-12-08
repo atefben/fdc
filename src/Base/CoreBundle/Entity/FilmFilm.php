@@ -544,6 +544,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->associatedInfo = new ArrayCollection();
         $this->associatedStatement = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->news = new ArrayCollection();
     }
 
     public function __toString()
@@ -2084,8 +2085,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_show"
      * })
-     *
-     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIsOpenningFilm()
     {
@@ -2106,8 +2105,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_show"
      * })
-     *
-     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIsClosingFilm()
     {
@@ -2629,6 +2626,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function removeNews(\Base\CoreBundle\Entity\News $news)
     {
+        $news->setAssociatedFilm(null);
         $this->news->removeElement($news);
     }
 
