@@ -100,7 +100,7 @@
           <div class="buttons square">
             <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
             <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
-  </a>
+            </a>
             <a href="#" class="button link self"><i class="icon icon_link"></i></a>
             <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
             <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>

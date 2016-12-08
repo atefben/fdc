@@ -43,6 +43,7 @@
   .content {
     max-width: 1366px;
     padding: 70px 0px;
+    min-height: 1000px;
     @include align();
   }
 

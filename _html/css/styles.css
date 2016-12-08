@@ -27720,16 +27720,15 @@ ul.tabs .quarterTab h4 {
   display: block;
 }
 
-a.button {
+/*a.button {
   height: 50px;
   line-height: 50px;
-  width: auto !important;
+  width: auto!important;
   text-align: center;
-  padding: 0px 20px !important;
-}
-
+  padding: 0px 20px!important;
+}*/
 .participate {
-  min-height: 2000px;
+  /*min-height: 2000px;*/
 }
 
 .padded {
@@ -28620,6 +28619,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .confcourt .content {
   max-width: 1366px;
   padding: 70px 0px;
+  min-height: 1000px;
   margin: 0 auto;
   text-align: center;
   display: block;
