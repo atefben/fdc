@@ -476,7 +476,7 @@ String.prototype.trunc = function (n, useWordBoundary) {
 
 
 
-/*
+
 var fixed = false;
  var topTrigger = $('.subNavigation').offset().top;
  $(document).scroll(function() {
@@ -491,7 +491,7 @@ var fixed = false;
        $('.subNavigation').removeClass("subNavigationFixed");
      }
    }
- });*/
+ });
 
 /* PROS DU COURT : ADD BORDERS 
 

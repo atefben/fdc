@@ -431,12 +431,19 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   height: 300px;
   display: block;
   position: relative;
-  background-attachment: inherit;
+  background-attachment: fixed;
 }
 .who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top {
   background-attachment: fixed;
 }
 .block-push-top .vFlexAlign {
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   height: 100%;
 }
 .block-push-top .txts {
@@ -1151,6 +1158,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
     max-height: 603px;
     min-height: 603px;
     max-width: 512px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -1171,6 +1181,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
     max-height: 603px;
     min-height: 603px;
     max-width: 512px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1186,7 +1199,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: 26px;
 }
 .block-accordion .title-contain, .block-accordion .title-contain strong {
-  padding: 38px 0;
+  padding: 47px 0;
   transition: .5s;
 }
 .block-accordion .title-contain:hover, .block-accordion .title-contain strong:hover {
@@ -1250,6 +1263,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   width: 99.8%;
   text-align: center;
   height: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .block-accordion .caption {
   font-size: .875rem;
@@ -1274,7 +1290,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   opacity: .8;
 }
 .block-accordion .item {
-  padding-bottom: 42px;
+  padding-bottom: 52px;
   max-height: 56px;
   overflow: hidden;
   transition: .5s;
@@ -1319,8 +1335,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-accordion .three-images .item-img {
   width: 295px;
-  margin: 0px 21px;
+  margin: 0px 15px;
   margin-bottom: 25px;
+  float: left;
 }
 .block-accordion .three-images .title-img {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -1337,6 +1354,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   border: 1px solid #e7e7e7;
   margin-top: 22px;
   margin-bottom: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .block-accordion .two-images {
   display: flex;
@@ -1887,6 +1907,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .half-photo img {
   margin-bottom: 10px !important;
+}
+
+.contain-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .block-p-register {
@@ -6409,6 +6435,1020 @@ a {
 .canvasloader.show {
   opacity: 1;
   visibility: visible;
+}
+
+sub {
+  vertical-align: super;
+  font-size: .5rem;
+}
+
+.italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+
+.dark figcaption {
+  color: #666666;
+}
+.dark .italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  color: #666666;
+}
+
+.bright .quote .italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  color: #141414 !important;
+}
+
+.title, .title-item {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  letter-spacing: 10px;
+  margin-bottom: 23px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #141414;
+}
+.dark .title, .dark .title-item {
+  color: #fff;
+}
+
+.title-2 {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  letter-spacing: 0.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.title-2a {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #c8a461;
+}
+
+.title-3 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .875rem;
+  color: #c8a461;
+  text-transform: uppercase;
+}
+
+.title-4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  color: #141414;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+
+.title-4a {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1.75rem;
+  color: #000;
+  text-transform: uppercase;
+  line-height: 36px;
+}
+
+.title-5 {
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  font-style: italic;
+  color: #c8a461;
+  font-size: .75rem;
+  line-height: 24px;
+}
+
+.title-6 {
+  font-size: .6875rem;
+  text-transform: uppercase;
+  line-height: 24px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #333333;
+}
+
+.title-7 {
+  font-size: .875rem;
+  text-transform: uppercase;
+  line-height: 24px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #141414;
+}
+.block-infos .title-7 {
+  width: 150px;
+  text-align: center;
+}
+
+.title-8 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .875rem;
+  letter-spacing: .5rem;
+  text-transform: uppercase;
+  line-height: 18px;
+}
+
+.title-9 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  line-height: 18px;
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin-bottom: 19px;
+  padding-top: 60px;
+}
+.bright .title-9 {
+  color: #4f4f4f;
+}
+
+.title-10 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #fff;
+}
+
+.title-11 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-size: .875rem;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.title-12 {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  color: #c8a461;
+  font-size: .8125rem;
+  line-height: 18px;
+}
+
+.title-13 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-size: .625rem;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.title-14 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c8a461;
+  font-size: .625rem;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 39px;
+}
+.title-14 .date {
+  color: #666666;
+  margin-left: 3px;
+}
+
+.title-15 {
+  color: #0c0c0c;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+}
+.dark .title-15 {
+  color: #fff;
+}
+.brigth .title-15 {
+  color: #0C0C0C;
+}
+
+.title-16 {
+  color: #0c0c0c;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1.375rem;
+  line-height: 36px;
+  display: block;
+  text-align: center;
+  margin-bottom: 54px;
+  margin-top: 70px;
+}
+
+.title-17 {
+  color: #999999;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: .6875rem;
+  line-height: 18px;
+}
+
+.title-18 {
+  color: #141414;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: .625rem;
+  line-height: 17.75px;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 2px;
+}
+
+.title-19 {
+  color: #141414;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 2.25rem;
+  line-height: 36px;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 3px;
+}
+
+.title-20 {
+  color: #c8a461;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  line-height: 14px;
+  display: block;
+  letter-spacing: .1rem;
+}
+
+.title-21 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #141414;
+  line-height: 24px;
+}
+
+.title-22 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #141414;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.title-23 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .875rem;
+  color: #c8a461;
+  letter-spacing: 2px;
+  line-height: 26px;
+  text-transform: uppercase;
+  width: 500px;
+  display: block;
+}
+
+.title-24 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  color: #141414;
+  letter-spacing: 2px;
+  line-height: 24px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.title-25 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0c0c0c;
+  line-height: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title-26 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.title-palmares-co {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #999;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 30px;
+}
+.title-palmares-co strong {
+  color: #fff;
+}
+
+.contain-title-grey {
+  background-color: #202020;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  height: 72px !important;
+}
+.contain-title-grey .title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+.text-list {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  padding-left: 28px;
+  margin-bottom: 23px;
+}
+.text-list li {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.text-list-01 {
+  font-size: 1rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #141414;
+  line-height: 30px;
+  padding-left: 28px;
+  margin-bottom: 23px;
+}
+.text-list-01 li {
+  list-style-position: inside;
+}
+
+.text-list-02 {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin-top: 50px;
+  margin-bottom: 46px;
+}
+.text-list-02 li {
+  list-style-position: inside;
+  list-style: decimal;
+}
+.text-list-02 .gold {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+}
+
+.gold {
+  color: #c8a461;
+}
+
+.bold {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+.bold-1 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #0c0c0c;
+  margin-bottom: 16px;
+  display: block;
+}
+
+blockquote, .quote {
+  padding: 30px 90px;
+  color: #141414;
+  text-align: center;
+  font-size: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 69px;
+  margin-bottom: 69px;
+  line-height: 32px;
+}
+
+.quote-important, .p-register .info {
+  padding: 25px 40px;
+  border: 1px solid #c8a461;
+  margin: 50px 0px;
+  margin-left: -40px;
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+}
+.quote-important a, .p-register .info a {
+  color: #c8a461;
+  transition: .5s;
+}
+.quote-important a:hover, .p-register .info a:hover {
+  opacity: .8;
+}
+.quote-important strong, .p-register .info strong {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.quote-02 {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+}
+
+.by-author {
+  font-size: .75rem;
+  color: #666666;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  margin-top: 59px;
+  padding-top: 11px;
+  border-top: 1px solid #e5e5e5;
+  display: block;
+}
+.by-author strong {
+  color: #141414;
+}
+
+.texte-01 {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-size: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-top: 32px;
+  margin-bottom: 66px;
+}
+.texte-01 a, .texte-01 strong, .texte-01 span {
+  color: #c8a461;
+}
+
+.subtitle {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.return-back {
+  color: #fff;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: .625rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding-top: 20px;
+  display: block;
+  transition: .5s;
+}
+.mobile.portrait .return-back {
+  left: 130px;
+}
+.return-back .icon {
+  font-size: .4rem;
+  margin-right: 10px;
+}
+.return-back:hover {
+  opacity: .75;
+}
+
+.contain-title {
+  min-height: 152px;
+  flex-direction: column;
+}
+.contain-title p, .contain-title ul, .contain-title ol {
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  color: #666666;
+}
+.ie .contain-title p, .ie .contain-title ul, .ie .contain-title ol {
+  margin-top: 67px;
+  width: 100%;
+}
+.bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol {
+  color: #141414;
+}
+.contain-title p a, .contain-title ul a, .contain-title ol a {
+  color: #c8a461;
+}
+.contain-title p em, .contain-title ul em, .contain-title ol em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.contain-title p strong, .contain-title ul strong, .contain-title ol strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.contain-title p sub, .contain-title ul sub, .contain-title ol sub {
+  vertical-align: text-bottom;
+  font-size: .5rem;
+}
+.contain-title p sup, .contain-title ul sup, .contain-title ol sup {
+  vertical-align: super;
+  font-size: .5rem;
+}
+.contain-title p a, .contain-title ul a, .contain-title ol a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.contain-title p a:hover, .contain-title ul a:hover, .contain-title ol a:hover {
+  color: #8e6d30;
+}
+.contain-title ul {
+  list-style: inherit;
+  color: #666666;
+}
+.contain-title ol li {
+  font-size: 1rem;
+  line-height: 30px;
+  list-style: inside;
+  list-style-type: decimal;
+  color: #666666;
+}
+.contain-title ol li a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.contain-title ol li a:hover {
+  color: #8e6d30;
+}
+.contain-title ol {
+  list-style: inherit;
+  list-style-type: decimal;
+  color: #666666;
+  margin-left: 30px;
+}
+.contain-title.contain-title-small {
+  min-height: 100px;
+}
+.contain-title.contain-title-top {
+  padding: 10px 0px;
+}
+.contain-title .title-01 {
+  font-size: 1.125rem;
+  color: #fff;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  text-align: center;
+  line-height: 30px;
+}
+.ie .contain-title .title-01 {
+  margin-top: 67px;
+}
+.ie .contain-title .title-01.two {
+  margin-top: 28px;
+}
+.contain-title .title-02 {
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+}
+.ie .contain-title .title-02 {
+  margin-top: 67px;
+  width: 100%;
+}
+.contain-title .title-02 strong {
+  color: #c8a461;
+}
+.bright .contain-title .title-02 {
+  color: #141414;
+}
+.contain-title .title-03 {
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  width: 977px;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  color: #fff;
+}
+.contain-title .title-04 {
+  color: #999;
+  width: 958px;
+  margin: 0 auto;
+  text-align: center;
+}
+.ie .contain-title .title-04 {
+  margin-top: 30px;
+}
+
+.small-pres ul, .small-pres ol, .pres-honneur ul, .pres-honneur ol {
+  list-style: inside;
+  color: #666666;
+}
+
+figcaption, .caption {
+  color: #868686;
+  font-size: .625rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  z-index: 11;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.83);
+}
+.canvasloader.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.button {
+  border: 1px solid #dfdfdf;
+  border-right: none;
+  color: #c8a461;
+  display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 19px 0 19px;
+  text-transform: uppercase;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.button:last-child {
+  border-right: 1px solid #dfdfdf;
+}
+.button:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+
+.buttons {
+  font-size: 0;
+  text-align: center;
+}
+.buttons .icon {
+  margin-right: 12px;
+  font-size: .85rem;
+  vertical-align: sub;
+}
+.buttons.square .button {
+  height: 73px;
+  position: relative;
+  padding: 0;
+  text-align: center;
+  width: 73px;
+}
+.buttons.square .button:hover {
+  border-color: #dfdfdf;
+}
+
+.buttons-01 {
+  margin-bottom: 94px;
+}
+.buttons-01 .button {
+  border-color: #292929;
+  color: #c8a461;
+}
+.bright .buttons-01 .button {
+  border-color: #e8e8e8;
+}
+.buttons-01 .button:hover {
+  border-color: #c8a461;
+  background-color: rgba(255, 255, 255, 0);
+}
+.buttons-01 .button:hover + a {
+  border-left-color: #c8a461;
+}
+
+.buttons-02 .button {
+  border-color: #c8a461;
+}
+
+.button-submit {
+  width: 100%;
+  background-color: transparent;
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+}
+.dark .button-submit {
+  border: 1px solid #181818;
+}
+.button-submit .icon {
+  margin-right: 24px;
+  vertical-align: middle;
+}
+.button-submit:hover {
+  background-color: transparent;
+  border-color: #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+}
+
+.button-submit-02 {
+  width: 712px;
+  background-color: transparent;
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+}
+.dark .button-submit-02 {
+  border: 1px solid #181818;
+}
+.button-submit-02 .icon {
+  margin-right: 24px;
+  vertical-align: middle;
+}
+.button-submit-02:hover {
+  background-color: transparent;
+  border-color: #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+}
+
+.buttons-two .b-grey {
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  color: rgba(20, 20, 20, 0.5);
+  height: 55px;
+  width: 265px;
+  outline: none;
+}
+.buttons-two .b-grey:hover {
+  color: #c8a461;
+  cursor: pointer;
+  border-color: #c8a461;
+  border-right: 0px solid #fff;
+}
+.buttons-two .b-grey .icon {
+  font-size: .5rem;
+  margin-right: 5px;
+}
+
+.button-long {
+  display: block;
+  text-align: center;
+  border-right: 1px solid #dfdfdf;
+}
+.button-long .icon {
+  margin-right: 5px;
+}
+
+.align-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-half {
+  width: 42%;
+  text-align: center;
+  border-right: 1px solid #dfdfdf;
+  margin-top: 25px;
+}
+
+.block-button-bottom {
+  padding: 58px 0px;
+}
+
+.arrows {
+  opacity: 0;
+  transition: .3s;
+  z-index: 1;
+  position: relative;
+}
+.ie .arrows {
+  display: none;
+}
+.ie .arrows.visible {
+  display: block;
+}
+.arrows.visible {
+  opacity: 1;
+}
+.arrows .next, .arrows .prev {
+  font-size: .55rem;
+  color: #030303;
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  position: fixed;
+  transition: .5s;
+}
+.arrows .next:hover, .arrows .prev:hover {
+  border-color: #030303;
+}
+.arrows .next {
+  top: 42%;
+  right: 1%;
+}
+.arrows .prev {
+  left: 1%;
+  top: 42%;
+}
+
+.single-button {
+  border-right: 1px solid #c8a461 !important;
+  border-color: #c8a461;
+}
+
+.button-02 {
+  border: 1px solid #ebebeb;
+  height: 39px;
+  color: #c8a461;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 41px;
+  text-align: center;
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  transition: .5s;
+  letter-spacing: .1px;
+}
+.button-02 .icon {
+  vertical-align: middle;
+  margin-right: 10px;
+  font-size: .8rem;
+}
+.button-02:hover {
+  border-color: #c8a461;
+}
+
+.read-more {
+  border: 1px solid #e5e5e5;
+  clear: both;
+  color: #666666;
+  display: block;
+  height: 55px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 0.625rem;
+  line-height: 55px;
+  margin-top: 71px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.read-more strong {
+  color: #141414;
+  font-weight: normal;
+}
+.read-more:hover {
+  opacity: 0.5;
+}
+.bright .read-more {
+  border: 1px solid #e5e5e5 !important;
+}
+.bright .read-more strong {
+  color: #141414 !important;
+}
+.dark .read-more {
+  border: 1px solid #252525;
+}
+.dark .read-more strong {
+  color: #fff;
+  font-weight: normal;
+}
+
+.read-later {
+  content: '';
+  display: block;
+  height: 40px;
+  opacity: 0;
+  visibility: hidden;
+  width: 40px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+}
+.read-later .icon {
+  line-height: 46px;
+}
+.read-later span {
+  background-color: #141414;
+  position: fixed;
+  display: block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.625rem;
+  opacity: 0;
+  visibility: hidden;
+  height: 48px;
+  line-height: 48px;
+  width: 200px;
+  color: #fff;
+  letter-spacing: 0.1em;
+  top: -59px;
+  left: -80px;
+  z-index: 5;
+  text-align: center;
+  text-transform: uppercase;
+  -moz-transform: translateY(6px) translateZ(0);
+  -ms-transform: translateY(6px) translateZ(0);
+  -webkit-transform: translateY(6px) translateZ(0);
+  transform: translateY(6px) translateZ(0);
+  -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.read-later span:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 7px solid transparent;
+  border-top-color: #141414;
+  top: 100%;
+  left: 92px;
+}
+
+.article-single .small-pres p, .article-single .pres-honneur p {
+  margin-bottom: 51px;
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-align: left;
+  margin-top: 32px;
+}
+.article-single .small-pres p strong, .article-single .pres-honneur p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #141414;
+  line-height: 24px;
+  text-align: left;
+}
+.article-single .small-pres p a, .article-single .pres-honneur p a {
+  color: #c8a461;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.article-single .small-pres p a:hover, .article-single .pres-honneur p a:hover {
+  color: #8e6d30;
+}
+.article-single .small-pres .big-quote p, .article-single .pres-honneur .big-quote p {
+  color: #b1b1b1;
+  text-align: center;
+  font-size: .875rem;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 26px;
+}
+.article-single .small-pres .big-quote p strong, .article-single .pres-honneur .big-quote p strong {
+  color: #b1b1b1;
+  font-size: .875rem;
+}
+.article-single .small-pres .big-quote strong, .article-single .pres-honneur .big-quote strong {
+  color: #c8a461 !important;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  display: block;
+  margin-bottom: 25px;
 }
 
 .icon {
@@ -11824,6 +12864,86 @@ header #searchContainer {
   font-size: 0.75rem;
   margin-top: 23px;
   display: block;
+}
+
+.navigation-sticky {
+  background-color: #0c0c0c;
+  height: 45px;
+  line-height: 45px;
+  z-index: 7;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.navigation-sticky a {
+  color: #999999;
+  transition: .5s;
+}
+.navigation-sticky ul {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.navigation-sticky li {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  padding: 0px 7.5px;
+}
+.navigation-sticky li.active a {
+  color: #c8a461;
+}
+.navigation-sticky li a:hover {
+  color: #c8a461;
+}
+.navigation-sticky.sticky {
+  position: fixed;
+  top: 91px;
+  width: 100%;
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .navigation-sticky.sticky {
+    top: 68px;
+  }
+}
+
+.navigation-sticky-02 {
+  background-color: #141414;
+  height: 45px;
+  line-height: 45px;
+  z-index: 2;
+}
+.navigation-sticky-02 a {
+  color: #fff;
+  transition: .5s;
+  letter-spacing: 1.1px;
+}
+.navigation-sticky-02 ul {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.navigation-sticky-02 li {
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  padding: 0px 7px;
+}
+@media screen and (max-width: 768px) {
+  .navigation-sticky-02 li {
+    font-size: .55rem;
+  }
+}
+.navigation-sticky-02 li.active a {
+  color: #c8a461;
+}
+.navigation-sticky-02 li a:hover {
+  color: #c8a461;
+}
+.navigation-sticky-02.sticky {
+  position: fixed;
+  top: 91px;
+  width: 100%;
 }
 
 a {
@@ -26552,6 +27672,54 @@ ul.tabs .quarterTab h4 {
   height: auto !important;
   display: block;
   margin-bottom: 100px;
+}
+
+.who .block-01-xs img {
+  margin-bottom: 55px;
+}
+.who .block-01-xs figure {
+  margin-bottom: 55px;
+}
+.who .block-01-xs figure img {
+  margin-bottom: 0px;
+}
+.who .block-01-xs figure figcaption {
+  font-size: .75rem;
+}
+.who .buttons-01 {
+  margin-bottom: 65px;
+}
+.who .texte-01 {
+  margin-bottom: 51px;
+}
+
+.who-staff .title-11 {
+  padding: 0 24px;
+}
+.who-staff .title-12 {
+  padding: 0 0px;
+}
+.who-staff .block-poster .contain-txts {
+  padding-top: 25px;
+  height: 121px;
+}
+.who-staff .item img, .who-staff .item .contain-img {
+  width: 163px;
+  object-fit: cover;
+}
+.who-staff .block-01 {
+  margin-bottom: 68px;
+}
+
+.who-staff .block-poster {
+  width: 163px;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 29px;
+}
+.who-staff .title-22 {
+  margin-bottom: 20px;
+  display: block;
 }
 
 a.button {
