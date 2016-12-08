@@ -650,7 +650,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     <div class="block-push-02 clear">
                         <div class="right three-quarts-div">
                             <div class="small-push half-div">
-                                <a {{ homepage|trans_fallback('pushSecondaryUrl1'|external_link)}} href="{{ homepage|trans_fallback('pushSecondaryUrl1')}}"><div class="image-wrapper">
+                                <a {{ homepage|trans_fallback('pushSecondaryUrl1')|external_link}} href="{{ homepage|trans_fallback('pushSecondaryUrl1')}}"><div class="image-wrapper">
                                         {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale(app.request.locale) %}
                                         {% if trans is null or trans.file is null %}
                                             {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
@@ -662,7 +662,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </div></a>
                             </div><!--
             --><div class="small-push half-div">
-                                <a {{ homepage|trans_fallback('pushSecondaryUrl2'|external_link)}} href="{{ homepage|trans_fallback('pushSecondaryUrl2')}}"><div class="image-wrapper">
+                                <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link}} href="{{ homepage|trans_fallback('pushSecondaryUrl2')}}"><div class="image-wrapper">
                                         {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale(app.request.locale) %}
                                         {% if trans is null or trans.file is null %}
                                             {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale('fr') %}
@@ -676,7 +676,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                         </div><!--
         --><div class="left">
                             <div class="long-push three-quarts-div">
-                                <a {{ homepage|trans_fallback('pushSecondaryUrl3'|external_link)}} href="{{ homepage|trans_fallback('pushSecondaryUrl3')}}"><div class="image-wrapper">
+                                <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link}} href="{{ homepage|trans_fallback('pushSecondaryUrl3')}}"><div class="image-wrapper">
                                         {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale(app.request.locale) %}
                                         {% if trans is null or trans.file is null %}
                                             {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
