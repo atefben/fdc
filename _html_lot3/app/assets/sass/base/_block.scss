@@ -2013,15 +2013,24 @@
   }
 
   ul, p {
-    color: #666666;
-    margin-bottom: 42px;
-    font-size: .875rem;
-    line-height: 20px;
+    font-size: .85rem;
+    line-height: 1.8em;
+    margin-bottom: 30px;
+    color: #000;
   }
 
-  .bold-1 {
+  .bold-1, h3 {
     line-height: 20px;
     font-size: .875rem
+  }
+
+  strong {
+    font-family: $CamphorBold;
+    color: #000;
+  }
+
+  .button {
+    border-color: $gold;
   }
 
   .item {
