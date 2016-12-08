@@ -470,28 +470,45 @@ var owInitSlider = function (sliderName) {
     }
 };
 
-$(window).resize(function () {
 
-    if ($('.retrospective').length) {
-
-        var $slide = $('.slides');
-        var $slideCalc1 = $('.slides-calc1');
-
-        var nm = isMac ? 4 : 21;
-        var w = $('body').width() + nm;
-        var numberSlide = $('.slider-restropective').size() + 1;
-        var sizeSlide = $('.slider-restropective').width();
-        var finalSizeSlider = numberSlide * sizeSlide;
-
-        $slide.css('width', finalSizeSlider); // change size slider
-        /*$slideCalc1.css('width',finalSizeSlider); // change size slider*/
-
-        values = $('.slides-calc1 .date').html();
-        number = values - 1945;
-        var val = -w * (values - 1945); //todo script ?
-
-
-        $slide.css('transform', 'translate(' + val + 'px)');
-
+var rtime;
+var timeout = false;
+var delta = 200;
+$(window).resize(function() {
+    rtime = new Date();
+    if (timeout === false) {
+        timeout = true;
+        setTimeout(resizeend, delta);
     }
 });
+
+function resizeend() {
+    if (new Date() - rtime < delta) {
+        setTimeout(resizeend, delta);
+    } else {
+        timeout = false;
+        if ($('.retrospective').length) {
+
+            var $slide = $('.slides');
+            var $slideCalc1 = $('.slides-calc1');
+
+            var nm = isMac ? 4 : 21;
+            var w = $('body').width() + nm;
+            var numberSlide = $('.slider-restropective').size() + 1;
+            var sizeSlide = $('.slider-restropective').width();
+            var finalSizeSlider = numberSlide * sizeSlide;
+
+            $slide.css('transition','0s');
+            $slide.css('width', finalSizeSlider); // change size slider
+            //$slideCalc1.css('width',finalSizeSlider); // change size slider*/
+
+            values = $('.slides-calc1 .date').html();
+            number = values - 1945;
+            var val = -w * (values - 1945); //todo script ?
+
+
+            $slide.css('transform', 'translate(' + val + 'px)');
+
+        }
+    }
+}
