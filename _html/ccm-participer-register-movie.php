@@ -235,7 +235,7 @@
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
-              <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">Voir le formulaire Voir le formulaire Voir le formulaire Voir le formulaire</a>
+              <a href="http://sub.festival-cannes.fr/" class="button autoBtn" target="_blank">Voir le formulaire Voir le formulaire Voir le formulaire Voir le formulaire</a>
             </div>
           </div>
 

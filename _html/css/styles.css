@@ -7451,6 +7451,14 @@ a {
   margin-bottom: 25px;
 }
 
+.autoBtn {
+  height: 50px;
+  line-height: 50px;
+  width: auto !important;
+  text-align: center;
+  padding: 0px 20px !important;
+}
+
 .icon {
   vertical-align: baseline !important;
 }
@@ -27720,13 +27728,6 @@ ul.tabs .quarterTab h4 {
   display: block;
 }
 
-/*a.button {
-  height: 50px;
-  line-height: 50px;
-  width: auto!important;
-  text-align: center;
-  padding: 0px 20px!important;
-}*/
 .participate {
   /*min-height: 2000px;*/
 }
