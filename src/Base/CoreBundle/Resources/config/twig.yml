@@ -50,6 +50,17 @@ services:
             - { name: twig.extension }
         arguments: [%locale_fallback%, @request_stack]
 
+    base.twig.external_link_extension:
+        class: Base\CoreBundle\Twig\Extension\ExternalLinkExtension
+        tags:
+            - { name: twig.extension }
+        arguments: [%locale_fallback%, @request_stack]
+        calls:
+            - ['setEventDomain', ['%fdc_event_domain%']]
+            - ['setPressDomain', ['%fdc_press_domain%']]
+            - ['setCorpoDomain', ['%fdc_corporate_domain%']]
+            - ['setEventMobileDomain', ['%fdc_event_mobile_domain%']]
+
     base.twig.icon_corpo_extension:
         class: Base\CoreBundle\Twig\Extension\IconCorpoExtension
         tags:
