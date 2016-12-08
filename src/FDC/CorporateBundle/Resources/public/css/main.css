@@ -4655,14 +4655,15 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-contact .button {
   border-color: #c8a461;
+  margin-bottom: 20px;
 }
 .block-contact .item {
   display: inline-block;
-  width: 247px;
+  width: 277px;
   vertical-align: top;
 }
 .block-contact .i-1 {
-  margin-right: 160px;
+  margin-right: 105px;
 }
 
 .block-tab-switch .title-tab-swich {
