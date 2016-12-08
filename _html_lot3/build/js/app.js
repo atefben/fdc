@@ -5312,15 +5312,14 @@ $(document).ready(function () {
         }
     }
 
-    if ($('.retrospective.palmares').length) {
-        owInitNavSticky(2);
-    }
-
     if ($('.retrospective.selection').length) {
         owInitNavSticky(2);
         owInitGrid('isotope-01');
     }
 
+    if ($('.retrospective.palmares').length) {
+        owInitNavSticky(2);
+    }
 
     if ($('.single-movie').length) {
         var slider = $('.slideshow-img .images');
