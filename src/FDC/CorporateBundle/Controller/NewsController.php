@@ -79,6 +79,10 @@ class NewsController extends Controller
                     $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
+
+                if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
+                    $filters['format'][] = $newsArticle->getNewsType();
+                }
             } else {
                 unset($newsArticles[$key]);
             }
