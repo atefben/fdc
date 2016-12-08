@@ -451,6 +451,8 @@ class NewsImporter extends Importer
                 $mediaImage->setUpdatedAt($translation->getTranslatable()->getCreatedAt());
             }
 
+            $mediaImage->setDisplayedAll(true);
+
             $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
 
             if (!$mediaImageTranslation) {

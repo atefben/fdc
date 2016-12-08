@@ -2085,8 +2085,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_show"
      * })
-     *
-     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIsOpenningFilm()
     {
@@ -2107,8 +2105,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_show"
      * })
-     *
-     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIsClosingFilm()
     {
