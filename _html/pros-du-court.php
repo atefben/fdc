@@ -233,9 +233,11 @@
                     <img src="img/person.png" alt="">
                   </div>
                 </div>
-                <div class="bigTitle"><h2 class="bigTitle">"Soyez professionnels, exigeants et originaux !"</h2></div>
+                <div class="htitle">
+                  <h2>"Soyez professionnels, exigeants et originaux !"</h2>
+                </div>
                 <div class="contactInfo">
-                    <div><h3><img src="img/world.png" alt=""> Japan</h3></div>
+                    <div><img src="img/world.png" alt=""> <h3>Japan</h3></div>
                     <div><h3><img src="img/computer.png" alt=""> www.shortshorts.org/en/</h3></div>
                     <div><h3><img src="img/flyingPaper.png" alt=""> aki@shortshorts.org</h3></div>
                     <div><h3><img src="img/flyingPaper.png" alt=""> jessica@shortshorts.org</h3></div>

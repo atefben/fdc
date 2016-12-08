@@ -475,8 +475,6 @@ String.prototype.trunc = function (n, useWordBoundary) {
 
 
 
-
-
 var fixed = false;
  var topTrigger = $('.subNavigation').offset().top;
  $(document).scroll(function() {
@@ -492,15 +490,3 @@ var fixed = false;
      }
    }
  });
-
-/* PROS DU COURT : ADD BORDERS 
-
-$(".selectbtn").click(function(){
-  $(".box:visible").each(function() {
-    if ($(this).index(1)){
-        $(this).addClass('redBorder');
-    } else if ($(this).index(2)){
-        $(this).addClass('greyBorder');
-    } 
-  });
-});*/

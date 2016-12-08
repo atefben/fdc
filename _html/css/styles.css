@@ -28703,6 +28703,21 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   width: 50%;
   float: left;
 }
+.modal-content .half .htitle  {
+  width: 100%;
+  text-align: center;
+  font-family: "Playfair Display", Times New Roman, Times, serif !important;
+  font-size: 30px !important;
+  color: #141414 !important;
+  letter-spacing: 0px !important;
+}
+.modal-content .half .htitle  h2 {
+  font-family: "Playfair Display", Times New Roman, Times, serif !important;
+  letter-spacing: 0px !important;
+  font-size: 30px;
+  color: #141414;
+  max-width: 300px !important;
+}
 .modal-content .half .maj {
   width: 100%;
   color: #666666;
@@ -28790,28 +28805,22 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 40px;
   text-align: left;
 }
-.modal-content .half .contactInfo h3 {
+.modal-content .half .contactInfo div {
+  width: 100%;
+  float: left;
+}
+.modal-content .half .contactInfo div h3 {
+  position: relative;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 20px;
   color: #141414;
+  float: left;
 }
-.modal-content .half .contactInfo h3 img {
+.modal-content .half .contactInfo div img {
   position: relative;
+  float: left;
+  padding-top: 10px;
   margin-right: 30px;
-  margin-top: 0px;
-}
-
-.bigTitle  {
-  width: 100%;
-  text-align: center;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
-  font-size: 30px !important;
-  color: #141414 !important;
-}
-.bigTitle  h2 {
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 30px;
-  color: #141414;
 }
 
 html[lang="es"] header #navigation ul.main li a {
