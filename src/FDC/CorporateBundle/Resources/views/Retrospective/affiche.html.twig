@@ -19,7 +19,7 @@
                 {% set affiche = poster %}
             {% endif %}
             <div class="contain-title vFlexAlign border-bottom">
-                <h1 class="title-01">{{ poster|trans_fallback('title') }}</h1>
+                <h1 class="title-01">{{ 'affiche.festival'|trans }}</h1>
             </div>
 
             <article class="block-movie-preview" style="background-image: url('{% path poster.file, '976x535' %}')">
@@ -34,7 +34,8 @@
                             <p class="description">
                                 {{ poster|trans_fallback('description') }}
                             </p>
-                            <strong class="name-f">{{ poster.copyright }}</strong>
+                            <strong class="name-f">{{ poster|trans_fallback('title') }}</strong>
+                            <a href="#" class="names-a">{{ poster.copyright }}</a>
                             <!--span class="names-a">Pour “Rebel Without a Cause” (Warner Bros).</span-->
                         </div>
                     </div>
