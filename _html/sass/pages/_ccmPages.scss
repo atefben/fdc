@@ -853,6 +853,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   min-height: 1000px;
   background-color: #fff;
   box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35);
+  
+  @media screen and (max-width: 1024px) {
+      width: 1000px;
+  }
 }
 
 .modal-transition {

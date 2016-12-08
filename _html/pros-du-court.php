@@ -233,8 +233,8 @@
                     <img src="img/person.png" alt="">
                   </div>
                 </div>
-                <div class="htitle">
-                  <h2>"Soyez professionnels, exigeants et originaux !"</h2>
+                <div class="titleBig">
+                  <h2><span>"</span>Soyez professionnels, exigeants et originaux !<span>"</span></h2>
                 </div>
                 <div class="contactInfo">
                     <div><img src="img/world.png" alt=""> <h3>Japan</h3></div>
@@ -250,8 +250,8 @@
                 <div class="titleHalf"><h3>L’agence du court métrage</h3></div>
                 <div class="authors">
                   <h4>Florence KELLER<span>productrice</span></h4>
-                  <h4>Florence KELLER<span>productrice</span></h4>
-                  <h4>Florence KELLER<span>productrice</span></h4>
+                  <h4>Nathalie LEBEL<span>fondatrice</span></h4>
+                  <h4>Claire CHAUVAT<span>acheteuse</span></h4>
                 </div>
                 <div class="content">
                   <h5>title ergezrg</h5>

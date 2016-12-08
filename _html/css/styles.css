@@ -26909,7 +26909,6 @@ ul.tabs .quarterTab h4 {
   width: 0%;
   height: 0px;
   margin-top: 10px;
-  padding: 0px 300px;
 }
 
 .showeventSelector {
@@ -26921,7 +26920,6 @@ ul.tabs .quarterTab h4 {
 
 .selectText {
   width: auto;
-  float: left;
   display: inline-block;
   color: #c3a05f;
   font-size: 22px;
@@ -28518,6 +28516,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background-color: #fff;
   box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.35);
 }
+@media screen and (max-width: 1024px) {
+  .modal-wrapper {
+    width: 1000px;
+  }
+}
 
 .modal-transition {
   transition: all 0.3s 0.12s;
@@ -28580,6 +28583,19 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .confcourtaccordion .selectbtn {
   float: left;
 }
+@media screen and (max-width: 1024px) {
+  .confcourtaccordion .selectbtn {
+    float: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .confcourtaccordion #eventSelector  {
+    padding: 0px 160px !important;
+  }
+}
+.confcourtaccordion .dropdown {
+  height: 60px;
+}
 .confcourtaccordion .bigSelectbtn {
   position: relative;
   width: 350px !important;
@@ -28609,13 +28625,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   display: block;
 }
 .confcourt .box {
-  width: 272px;
+  width: 270px;
   height: 340px;
   float: left;
   position: relative;
   border: 1px solid #ECECEC;
   margin-right: -1px;
   margin-top: -1px;
+}
+@media screen and (max-width: 1280px) {
+  .confcourt .box {
+    width: 255px;
+  }
 }
 .confcourt .eventPhoto {
   position: relative;
@@ -28695,13 +28716,19 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .modal-content {
   min-height: 1000px;
   z-index: 1005;
-  padding: 3% 10%;
+  padding: 3% 0%;
   background: white;
   position: relative;
 }
 .modal-content .half {
-  width: 50%;
+  width: 439px;
   float: left;
+  margin-left: 5%;
+}
+@media screen and (max-width: 1024px) {
+  .modal-content .half {
+    margin-left: 4%;
+  }
 }
 .modal-content .half .htitle  {
   width: 100%;
@@ -28745,6 +28772,22 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 60px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
 }
+.modal-content .half .titleBig {
+  width: 100%;
+  text-align: center;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 30px;
+  color: #141414;
+  letter-spacing: 1px;
+  padding-bottom: 50px;
+}
+.modal-content .half .titleBig h2 {
+  line-height: 40px;
+  letter-spacing: 1px;
+}
+.modal-content .half .titleBig h2 span {
+  color: #c8a461;
+}
 .modal-content .half .authors {
   width: 100%;
   text-align: left;
@@ -28756,7 +28799,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 12px;
   letter-spacing: 2px;
   line-height: 20px;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .modal-content .half .authors h4 span {
   color: #141414;
@@ -28783,7 +28826,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .modal-content .half .photo {
   width: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 45px;
 }
 .modal-content .half .photo .photoContainer {
   position: relative;
@@ -28808,10 +28851,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .modal-content .half .contactInfo div {
   width: 100%;
   float: left;
+  margin-bottom: 10px;
+  padding-left: 10%;
 }
 .modal-content .half .contactInfo div h3 {
   position: relative;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 20px;
   color: #141414;
   float: left;
