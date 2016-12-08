@@ -2042,6 +2042,7 @@ var owInitFilterSearch = function () {
         block.toggleClass('visible');
     })
 }
+
 var owFixMobile = function() {
 
   $('header .hasSubNav').on('click', function(){

@@ -4750,9 +4750,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-s-info-02 a.button {
   height: 50px;
   line-height: 50px;
-  width: 178px;
+  width: auto;
   text-align: center;
-  padding: 0px;
+  padding: 0px 21px;
 }
 .block-s-info-02 .title-25 {
   margin-bottom: 18px;
@@ -12436,6 +12436,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .who-staff .item img, .who-staff .item .contain-img {
   width: 163px;
   object-fit: cover;
+  min-height: 220px;
+  max-height: 220px;
 }
 .who-staff .block-01 {
   margin-bottom: 68px;
