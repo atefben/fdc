@@ -12436,6 +12436,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .who-staff .item img, .who-staff .item .contain-img {
   width: 163px;
   object-fit: cover;
+  min-height: 220px;
+  max-height: 220px;
 }
 .who-staff .block-01 {
   margin-bottom: 68px;
