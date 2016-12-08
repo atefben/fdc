@@ -59,6 +59,13 @@ var owInitSlider = function (sliderName) {
             title.html(text.trunc(30, true));
             textTrunc.html(textI.trunc(400, false));
         });
+
+        $('.slider-home').on('click', function(){
+            var href = $('.owl-item.active .coverLink').attr('href');
+            window.location.href = href;
+        })
+
+
     }
 
 
