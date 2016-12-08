@@ -4641,7 +4641,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .85rem;
   line-height: 1.8em;
   margin-bottom: 30px;
-  color: #000;
+  color: #000 !important;
 }
 .block-contact .bold-1, .block-contact h3 {
   font-size: .85rem;
