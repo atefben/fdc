@@ -7,7 +7,7 @@
     </div>
     {% endif %}
     {% for award_association in award_associations['camerador'] %}
-        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' with({'camera' : true }) %}
     {% endfor %}
 
 
