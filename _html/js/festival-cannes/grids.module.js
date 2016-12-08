@@ -12,6 +12,8 @@ Isotope.Item.prototype.hide = function () {
   $(this.element).addClass('isotope-hidden');
 };
 
+var totalload = 0;
+
 function resizeGrid() {
   if ("matchMedia" in window) {
     if($('#gridAudios').length) {
@@ -310,6 +312,15 @@ function setGrid(grid, dom, init){
 }
 
 function setImages(grid, dom, init) {
+  $("img.lazy").lazyload();
+  /*$('img.lazy').on('appear',function(){
+    totalload++;
+    if(totalload > 15) {
+      var totalload = 0;
+      console.log('a');
+      $(window).trigger('resize');
+    }
+  });*/
   var $img            = $(dom).find('.item:not(.portrait) img'),
       pourcentage     = 0.50,
       nbImgAAgrandir  = $img.length * pourcentage,
