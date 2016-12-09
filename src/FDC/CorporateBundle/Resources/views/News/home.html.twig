@@ -697,4 +697,10 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
         </div> <!-- end content -->
 
     </section>
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {
+    "name" : 'header.mainnav.nav.jourapresjour'|trans,
+    "url"  : path('fdc_event_news_index')
+    }
+    ]} %}
 {% endblock %}
