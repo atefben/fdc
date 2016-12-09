@@ -3,25 +3,17 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
-
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
 use Gedmo\Mapping\Annotation as Gedmo;
-
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Exclude;
-use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 
 /**
  * FilmPerson
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmPersonRepository")
  * @ORM\HasLifecycleCallbacks
@@ -35,10 +27,8 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var string
-     *
      * @ORM\Column(type="integer")
      * @ORM\Id
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -130,7 +120,6 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -154,7 +143,6 @@ class FilmPerson implements TranslateMainInterface
      * Image to use: false = portaitImage, true landscapeImage
      * @var bool
      * @ORM\Column(type="bigint")
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -177,7 +165,6 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -199,7 +186,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var string
-     *
      * @Gedmo\Slug(fields={"firstname", "lastname"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
@@ -207,16 +193,13 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="duplicate", type="boolean", options={"default" : 0})
      */
     private $duplicate;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=40, nullable=true)
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -242,9 +225,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=40, nullable=true)
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -267,12 +248,10 @@ class FilmPerson implements TranslateMainInterface
      * })
      */
     private $firstname;
-    
+
     /**
      * @var string
-     *
      * @ORM\Column(type="boolean", nullable=true)
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -298,7 +277,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="Country")
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -318,7 +296,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="Country")
-     *
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -335,32 +312,25 @@ class FilmPerson implements TranslateMainInterface
      * })
      */
     private $nationality2;
-    
+
     /**
      * @var string
-     *
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
-     *
-    private $function;
-    
-    /**
+     * private $function;
+     * /**
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
-     *
      */
     private $address;
 
     /**
      * @var FilmFilmPerson
-     *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"all"})
-     *
      * @Groups({"person_list", "person_show"})
      */
     private $films;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person", cascade={"remove"}))
-     *
      * @Groups({"person_list", "person_show"})
      * @ORM\OrderBy({"festival" = "DESC"})
      */
@@ -368,49 +338,43 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="person", orphanRemoval=true)
-     *
      * @Groups({"person_list", "person_show"})
      */
     private $awards;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmPersonMedia", mappedBy="person", cascade={"all"})
-     *
      * @Groups({
      *  "person_list", "person_show",
      *  "jury_list", "jury_show"
      * })
      */
     private $medias;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="CinefPerson", mappedBy="person")
-     *
      * @Groups({"person_list", "person_show"})
      */
     private $cinefPersons;
 
     /**
      * @var ArrayCollection
-     *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+    "person_list", "person_show",
+    "film_list", "film_show",
+    "jury_list", "jury_show"
+    })
      */
     protected $translations;
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmPerson")
-     *
      * @Groups({"person_list", "person_show"})
      */
     private $duplicates;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmPerson")
-     *
      * @Groups({"person_list", "person_show"})
      */
     private $owner;
@@ -447,26 +411,24 @@ class FilmPerson implements TranslateMainInterface
         $this->duplicates = new ArrayCollection();
         $this->duplicate = false;
     }
-    
+
     public function __toString()
     {
         return $this->getFullname();
     }
-    
+
     public function getFullName()
     {
         if ($this->asianName) {
             return (string)$this->getLastname() . ' ' . (string)$this->getFirstname();
-        }
-        else {
-            return (string)$this->getFirstname(). ' '. (string)$this->getLastname();
+        } else {
+            return (string)$this->getFirstname() . ' ' . (string)$this->getLastname();
         }
 
     }
 
     /**
      * Set id
-     *
      * @param integer $id
      * @return FilmPerson
      */
@@ -479,8 +441,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get id
-     *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -489,7 +450,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set slug
-     *
      * @param string $slug
      * @return Settings
      */
@@ -502,7 +462,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get slug
-     *
      * @return string
      */
     public function getSlug()
@@ -512,7 +471,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set lastname
-     *
      * @param string $lastname
      * @return FilmPerson
      */
@@ -525,8 +483,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get lastname
-     *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -535,7 +492,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set firstname
-     *
      * @param string $firstname
      * @return FilmPerson
      */
@@ -548,8 +504,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get firstname
-     *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -558,7 +513,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set function
-     *
      * @param \Base\CoreBundle\Entity\FilmFunction $function
      * @return FilmPerson
      */
@@ -571,7 +525,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get function
-     *
      * @return \Base\CoreBundle\Entity\FilmFunction
      */
     public function getFunction()
@@ -581,7 +534,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set address
-     *
      * @param \Base\CoreBundle\Entity\FilmAddress $address
      * @return FilmPerson
      */
@@ -594,7 +546,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get address
-     *
      * @return \Base\CoreBundle\Entity\FilmAddress
      */
     public function getAddress()
@@ -604,7 +555,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Add film
-     *
      * @param \Base\CoreBundle\Entity\FilmFilmPerson $films
      * @return FilmPerson
      */
@@ -622,7 +572,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Remove film
-     *
      * @param \Base\CoreBundle\Entity\FilmFilmPerson $films
      */
     public function removeFilm(\Base\CoreBundle\Entity\FilmFilmPerson $films)
@@ -636,18 +585,16 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get films
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getFilms()
     {
         return $this->films;
     }
-    
+
 
     /**
      * Add juries
-     *
      * @param \Base\CoreBundle\Entity\FilmJury $juries
      * @return FilmPerson
      */
@@ -664,7 +611,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Remove juries
-     *
      * @param \Base\CoreBundle\Entity\FilmJury $juries
      */
     public function removeJury(\Base\CoreBundle\Entity\FilmJury $juries)
@@ -678,17 +624,45 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get juries
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getJuries()
     {
-        return $this->juries;
+        $done = [];
+        foreach ($this->juries as $jury) {
+            if ($jury instanceof FilmJury) {
+                $identifier = 't' . $jury->getType()->getId()
+                    . 'f' . $jury->getFestival()->getId()
+                    . 'fu' . $jury->getFunction()->getId();
+                $done[] = $identifier;
+            }
+        }
+        $juries = $this->juries;
+
+        foreach ($this->getDuplicates() as $duplicate) {
+            if ($duplicate instanceof FilmPerson) {
+                foreach ($duplicate->getJuries() as $jury) {
+                    if ($jury instanceof FilmJury) {
+                        $identifier = 't' . $jury->getType()->getId()
+                            . 'f' . $jury->getFestival()->getId()
+                            . 'fu' . $jury->getFunction()->getId();
+                        if (!in_array($identifier, $done)) {
+                            $done[] = $identifier;
+                            $juries->add($jury);
+                        }
+                    }
+                }
+            }
+        }
+
+        dump($this->duplicates->toArray());
+        dump($juries->count());
+        dump($juries->toArray());
+        return $juries;
     }
 
     /**
      * Add awards
-     *
      * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
      * @return FilmPerson
      */
@@ -705,7 +679,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Remove awards
-     *
      * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
      */
     public function removeAward(\Base\CoreBundle\Entity\FilmAwardAssociation $awards)
@@ -719,8 +692,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get awards
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAwards()
     {
@@ -729,7 +701,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Add cinefPersons
-     *
      * @param \Base\CoreBundle\Entity\CinefPerson $cinefPersons
      * @return FilmPerson
      */
@@ -738,7 +709,7 @@ class FilmPerson implements TranslateMainInterface
         if ($this->cinefPersons->contains($cinefPersons)) {
             return;
         }
-        
+
         $this->cinefPersons[] = $cinefPersons;
 
         return $this;
@@ -746,7 +717,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Remove cinefPersons
-     *
      * @param \Base\CoreBundle\Entity\CinefPerson $cinefPersons
      */
     public function removeCinefPerson(\Base\CoreBundle\Entity\CinefPerson $cinefPersons)
@@ -760,8 +730,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get cinefPersons
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCinefPersons()
     {
@@ -770,7 +739,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Add medias
-     *
      * @param \Base\CoreBundle\Entity\FilmPersonMedia $medias
      * @return FilmPerson
      */
@@ -788,7 +756,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Remove medias
-     *
      * @param \Base\CoreBundle\Entity\FilmPersonMedia $medias
      */
     public function removeMedia(\Base\CoreBundle\Entity\FilmPersonMedia $medias)
@@ -802,8 +769,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get medias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedias()
     {
@@ -812,7 +778,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set asianName
-     *
      * @param boolean $asianName
      * @return FilmPerson
      */
@@ -825,8 +790,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get asianName
-     *
-     * @return boolean 
+     * @return boolean
      */
     public function getAsianName()
     {
@@ -835,7 +799,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set nationality
-     *
      * @param \Base\CoreBundle\Entity\Country $nationality
      * @return FilmPerson
      */
@@ -848,7 +811,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get nationality
-     *
      * @return \Base\CoreBundle\Entity\Country
      */
     public function getNationality()
@@ -858,7 +820,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set nationality2
-     *
      * @param \Base\CoreBundle\Entity\Country $nationality2
      * @return FilmPerson
      */
@@ -871,7 +832,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get nationality2
-     *
      * @return \Base\CoreBundle\Entity\Country
      */
     public function getNationality2()
@@ -881,7 +841,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set displayedImage
-     *
      * @param integer $displayedImage
      * @return FilmPerson
      */
@@ -894,8 +853,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get displayedImage
-     *
-     * @return integer 
+     * @return integer
      */
     public function getDisplayedImage()
     {
@@ -904,7 +862,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set portraitImage
-     *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $portraitImage
      * @return FilmPerson
      */
@@ -917,8 +874,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get portraitImage
-     *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPortraitImage()
     {
@@ -927,7 +883,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set landscapeImage
-     *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $landscapeImage
      * @return FilmPerson
      */
@@ -940,8 +895,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get landscapeImage
-     *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getLandscapeImage()
     {
@@ -950,7 +904,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set presidentJuryImage
-     *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $presidentJuryImage
      * @return FilmPerson
      */
@@ -963,17 +916,23 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get presidentJuryImage
-     *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getPresidentJuryImage()
     {
-        return $this->presidentJuryImage;
+        if ($this->presidentJuryImage) {
+            return $this->presidentJuryImage;
+        } else {
+            foreach ($this->duplicates as $duplicate) {
+                if ($duplicate instanceof FilmPerson && $duplicate->getPresidentJuryImage()) {
+                    return $duplicate->getPresidentJuryImage();
+                }
+            }
+        }
     }
 
     /**
      * Set credits
-     *
      * @param string $credits
      * @return FilmPerson
      */
@@ -986,8 +945,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get credits
-     *
-     * @return string 
+     * @return string
      */
     public function getCredits()
     {
@@ -996,7 +954,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set presidentJuryCredits
-     *
      * @param string $presidentJuryCredits
      * @return FilmPerson
      */
@@ -1004,17 +961,25 @@ class FilmPerson implements TranslateMainInterface
     {
         $this->presidentJuryCredits = $presidentJuryCredits;
 
+
         return $this;
     }
 
     /**
      * Get presidentJuryCredits
-     *
-     * @return string 
+     * @return string
      */
     public function getPresidentJuryCredits()
     {
-        return $this->presidentJuryCredits;
+        if ($this->presidentJuryCredits) {
+            return $this->presidentJuryCredits;
+        } else {
+            foreach ($this->duplicates as $duplicate) {
+                if ($duplicate instanceof FilmPerson && $duplicate->getPresidentJuryCredits()) {
+                    return $duplicate->getPresidentJuryCredits();
+                }
+            }
+        }
     }
 
     public function getFilmPersonOrderedByFilmFestivalYearAsc()
@@ -1032,7 +997,7 @@ class FilmPerson implements TranslateMainInterface
         krsort($output);
         return new ArrayCollection(array_values($output));
     }
-    
+
     public function isElasticable()
     {
         $isElasticable = false;
@@ -1047,7 +1012,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Add duplicates
-     *
      * @param \Base\CoreBundle\Entity\FilmPerson $duplicates
      * @return FilmPerson
      */
@@ -1060,7 +1024,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Remove duplicates
-     *
      * @param \Base\CoreBundle\Entity\FilmPerson $duplicates
      */
     public function removeDuplicate(\Base\CoreBundle\Entity\FilmPerson $duplicates)
@@ -1070,8 +1033,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get duplicates
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDuplicates()
     {
@@ -1080,7 +1042,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set duplicate
-     *
      * @param boolean $duplicate
      * @return FilmPerson
      */
@@ -1093,8 +1054,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get duplicate
-     *
-     * @return boolean 
+     * @return boolean
      */
     public function getDuplicate()
     {
@@ -1103,7 +1063,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set owner
-     *
      * @param \Base\CoreBundle\Entity\FilmPerson $owner
      * @return FilmPerson
      */
@@ -1116,8 +1075,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get owner
-     *
-     * @return \Base\CoreBundle\Entity\FilmPerson 
+     * @return \Base\CoreBundle\Entity\FilmPerson
      */
     public function getOwner()
     {
@@ -1126,7 +1084,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set selfkit
-     *
      * @param string $selfkit
      * @return FilmPerson
      */
@@ -1139,8 +1096,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get selfkit
-     *
-     * @return string 
+     * @return string
      */
     public function getSelfkit()
     {
@@ -1149,7 +1105,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set duplicateIds
-     *
      * @param array $duplicateIds
      * @return FilmPerson
      */
@@ -1162,8 +1117,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get duplicateIds
-     *
-     * @return array 
+     * @return array
      */
     public function getDuplicateIds()
     {
@@ -1172,7 +1126,6 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Set duplicateSelfkits
-     *
      * @param array $duplicateSelfkits
      * @return FilmPerson
      */
@@ -1185,8 +1138,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * Get duplicateSelfkits
-     *
-     * @return array 
+     * @return array
      */
     public function getDuplicateSelfkits()
     {
