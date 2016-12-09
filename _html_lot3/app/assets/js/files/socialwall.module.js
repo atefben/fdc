@@ -333,11 +333,11 @@ $(document).ready(function() {
           var c = p.splice(r, 1)[0];
 
           $(c).addClass(item.type);
-          $(c).find('.side').addClass('flip');
+          $(c).addClass('flip');
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
-
+          
           console.log(c);
 
           $(c).append(item.text);
