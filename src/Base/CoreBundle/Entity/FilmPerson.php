@@ -655,9 +655,6 @@ class FilmPerson implements TranslateMainInterface
             }
         }
 
-        dump($this->duplicates->toArray());
-        dump($juries->count());
-        dump($juries->toArray());
         return $juries;
     }
 
