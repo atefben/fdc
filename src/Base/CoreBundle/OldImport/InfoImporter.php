@@ -216,21 +216,31 @@ class InfoImporter extends Importer
                     $header = $info->getHeader();
                     if (!$header) {
                         $header = new MediaImage();
-                        $header
-                            ->addSite($this->getSiteCorporate())
-                            ->setTheme($this->getDefaultTheme())
-                            ->setPublishedAt($info->getPublishedAt())
-                            ->setPublishEndedAt($info->getPublishEndedAt())
-                            ->setFestival($info->getFestival())
-                        ;
                         $this->getManager()->persist($header);
                         $info->setHeader($header);
                     }
-                    $header->setDisplayedAll(true);
+
+                    $header
+                        ->setTheme($this->getDefaultTheme())
+                        ->setFestival($info->getFestival())
+                        ->setCreatedAt($info->getCreatedAt())
+                        ->setUpdatedAt($info->getUpdatedAt())
+                        ->setDisplayedAll(true)
+                        ->setPublishedAt($info->getPublishedAt())
+                        ->setPublishEndedAt($info->getPublishEndedAt())
+                    ;
+
+                    if (!$header->getSites()->contains($this->getSiteCorporate())) {
+                        $header->addSite($this->getSiteCorporate());
+                    }
+
                     $headerTrans = $header->findTranslationByLocale($locale);
                     if (!$headerTrans) {
                         $headerTrans = new MediaImageTranslation();
-                        $headerTrans->setTranslatable($header);
+                        $headerTrans
+                            ->setTranslatable($header)
+                            ->setLocale($locale)
+                        ;
                         $this->getManager()->persist($headerTrans);
                     }
 
@@ -426,17 +436,21 @@ class InfoImporter extends Importer
             }
             if (!$mediaImage) {
                 $mediaImage = new MediaImage();
-                $mediaImage
-                    ->addSite($this->getSiteCorporate())
-                    ->setOldMediaId($oldArticleAssociation->getObjectId())
-                    ->setTheme($this->defaultTheme)
-                ;
+                $mediaImage->setOldMediaId($oldArticleAssociation->getObjectId());
                 $this->getManager()->persist($mediaImage);
-                $mediaImage->setPublishedAt($translation->getTranslatable()->getCreatedAt());
-                $mediaImage->setCreatedAt($translation->getTranslatable()->getCreatedAt());
-                $mediaImage->setUpdatedAt($translation->getTranslatable()->getCreatedAt());
             }
-            $mediaImage->setDisplayedAll(true);
+
+            $mediaImage
+                ->setTheme($this->defaultTheme)
+                ->setDisplayedAll(true)
+                ->setPublishedAt($oldMedia->getPublishFor())
+                ->setCreatedAt($oldMedia->getCreatedAt())
+                ->setUpdatedAt($oldMedia->getUpdatedAt())
+            ;
+
+            if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
+                $mediaImage->addSite($this->getSiteCorporate());
+            }
 
             $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
 
@@ -523,7 +537,13 @@ class InfoImporter extends Importer
                 ])
             ;
 
-            if (!$oldAudioTrans) {
+            $oldMedia = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldMedia')
+                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
+            ;
+
+            if (!$oldAudioTrans || !$oldMedia) {
                 continue;
             }
 
@@ -578,14 +598,23 @@ class InfoImporter extends Importer
             $mediaAudio = $widget->getFile();
             if (!$mediaAudio) {
                 $mediaAudio = new MediaAudio();
-                $widget->setFile($mediaAudio);
+                $mediaAudio->setOldMediaId($oldArticleAssociation->getObjectId());
                 $this->getManager()->persist($mediaAudio);
-                $mediaAudio
-                    ->setOldMediaId($oldArticleAssociation->getObjectId())
-                    ->setTheme($this->defaultTheme)
-                ;
+
+                $widget->setFile($mediaAudio);
             }
-            $mediaAudio->setDisplayedAll(true);
+
+            $mediaAudio
+                ->setTheme($this->defaultTheme)
+                ->setDisplayedAll(true)
+                ->setPublishedAt($oldMedia->getPublishFor())
+                ->setCreatedAt($oldMedia->getCreatedAt())
+                ->setUpdatedAt($oldMedia->getUpdatedAt())
+            ;
+
+            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
+                $mediaAudio->addSite($this->getSiteCorporate());
+            }
 
             $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
 
@@ -618,7 +647,6 @@ class InfoImporter extends Importer
 
                 $this->getManager()->persist($media);
                 $mediaAudioTranslation->setFile($media);
-
             }
 
             $this->getManager()->flush();
@@ -654,7 +682,13 @@ class InfoImporter extends Importer
                 ])
             ;
 
-            if (!$oldVideoTrans) {
+            $oldMedia = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldMedia')
+                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
+            ;
+
+            if (!$oldVideoTrans || !$oldMedia) {
                 continue;
             }
 
@@ -687,15 +721,25 @@ class InfoImporter extends Importer
             $mediaVideo = $widget->getFile();
             if (!$mediaVideo) {
                 $mediaVideo = new MediaVideo();
-                $mediaVideo->setDisplayedHomeCorpo(false);
-                $widget->setFile($mediaVideo);
+                $mediaVideo->setOldMediaId($oldArticleAssociation->getObjectId());
                 $this->getManager()->persist($mediaVideo);
-                $mediaVideo
-                    ->setOldMediaId($oldArticleAssociation->getObjectId())
-                    ->setTheme($this->defaultTheme)
-                ;
+
+                $widget->setFile($mediaVideo);
             }
-            $mediaVideo->setDisplayedAll(true);
+
+            $mediaVideo
+                ->setDisplayedHomeCorpo(false)
+                ->setTheme($this->defaultTheme)
+                ->setDisplayedAll(true)
+                ->setPublishedAt($oldMedia->getPublishFor())
+                ->setCreatedAt($oldMedia->getCreatedAt())
+                ->setUpdatedAt($oldMedia->getUpdatedAt())
+            ;
+
+            if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
+                $mediaVideo->addSite($this->getSiteCorporate());
+            }
+
 
             $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
 

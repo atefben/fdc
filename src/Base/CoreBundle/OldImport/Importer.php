@@ -262,7 +262,7 @@ class Importer
         if (is_file("$folder$file")) {
             return $folder . $file;
         }
-        $output = shell_exec("wget $url -O $folder$file");
+        exec("wget $url -O $folder$file");
         if (!is_file($folder . $file)) {
             return null;
         }
@@ -283,7 +283,7 @@ class Importer
         if (is_file("$folder$file")) {
             return $folder . $file;
         }
-        $output = shell_exec("wget $url -O $folder$file");
+        exec("wget $url -O $folder$file");
         if (!is_file($folder . $file)) {
             return null;
         }
@@ -303,7 +303,7 @@ class Importer
         if (is_file("$folder$file")) {
             return $folder . $file;
         }
-        $output = shell_exec("wget $url -O $folder$file");
+        exec("wget $url -O $folder$file");
 
         if (!is_file($folder . $file)) {
             return null;

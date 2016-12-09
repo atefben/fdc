@@ -9,7 +9,6 @@ use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoWidget;
 use Base\CoreBundle\Entity\InfoWidgetImage;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
-use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsWidgetImage;
 use Base\CoreBundle\Entity\NewsWidgetText;
