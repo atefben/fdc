@@ -192,12 +192,13 @@ class ClassicsImporter extends Importer
                     ->setIsPublishedOnFDCEvent(true)
                 ;
                 $this->getManager()->persist($translation);
+            }
 
-                if ($locale == 'fr') {
-                    $translation->setStatus(StatementArticleTranslation::STATUS_DEACTIVATED);
-                } else {
-                    $translation->setStatus(StatementArticleTranslation::STATUS_TRANSLATED);
-                }
+
+            if ($locale == 'fr') {
+                $translation->setStatus(StatementArticleTranslation::STATUS_DEACTIVATED);
+            } else {
+                $translation->setStatus(StatementArticleTranslation::STATUS_TRANSLATED);
             }
 
             if ($oldTranslation->getImageResume()) {
