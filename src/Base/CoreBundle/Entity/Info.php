@@ -420,7 +420,7 @@ abstract class Info implements TranslateMainInterface
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return InfoArticleTranslation
+     * @return $this
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {

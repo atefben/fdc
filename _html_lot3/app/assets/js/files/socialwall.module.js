@@ -1,3 +1,36 @@
+// HELPERS ================ //
+// parse URL in string
+String.prototype.parseURL = function() {
+  return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
+    return url.link(url);
+  });
+};
+
+// parse twitter username in String
+String.prototype.parseUsername = function(twitter) {
+  return this.replace(/[@]+[A-Za-z0-9-_]+/g, function(u) {
+    var username = u.replace("@","")
+    if(twitter == true) {
+      return u.link("http://twitter.com/"+username);
+    } else {
+      return '<strong>' + username + '</strong>';
+    }
+  });
+};
+
+// parse Twitter hashtag in String
+String.prototype.parseHashtag = function(twitter) {
+  return this.replace(/[#]+[A-Za-z0-9-_]+/g, function(t) {
+    var tag = t.replace("#","%23")
+    if(twitter == true) {
+      return t.link("http://search.twitter.com/search?q="+tag);
+    } else {
+      return '<strong>' + t + '</strong>';
+    }
+
+  });
+};
+
 // selection of points for the graph
 var posts = [],
     s = null;
@@ -156,6 +189,7 @@ function displayGrid() {
 
 $(document).ready(function() {
   if($('.home').length) {
+
     // Social Wall
     // =========================
     // GRAPH SVG
@@ -167,7 +201,7 @@ $(document).ready(function() {
     // load Instagram pictures and build array
     function loadInstagram(callback) {
       if (GLOBALS.env == "html") {
-        instagramDatatype = "jsonp";
+        instagramDatatype = "json";
         instagramRequest  = {};
       } else {
         instagramDatatype = "json";
@@ -182,6 +216,7 @@ $(document).ready(function() {
         data     : instagramRequest,
         dataType : instagramDatatype,
         success: function(data) {
+
           if (GLOBALS.env == "html") {
             var count = 15; 
             for (var i = 0; i < count; i++) {
@@ -197,13 +232,16 @@ $(document).ready(function() {
             var count = Math.min(data.length, 15);
             for (var i = 0; i < count; i++) {
               posts.push({'type': 'instagram', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': data[i].content});
-              console.log(data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true));
-              
+
               if(i == count - 1) {
                 callback();
               }
             }
           }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+          alert(thrownError);
         }
       });
     }
@@ -299,6 +337,9 @@ $(document).ready(function() {
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
+
+          console.log(item.text);
+
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
         }
