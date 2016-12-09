@@ -145,14 +145,19 @@ class ClassicsImporter extends Importer
             $classics
                 ->setOldNewsId($oldArticle->getId())
                 ->setOldNewsTable('OldNews')
-                ->setCreatedAt($oldArticle->getCreatedAt())
-                ->setUpdatedAt($oldArticle->getUpdatedAt())
                 ->setWeight(0)
-                ->addSite($this->getSiteCorporate())
             ;
             $this->getManager()->persist($classics);
         }
-        $classics->setFestival($this->getFestival($oldArticle));
+        if (!$classics->getSites()->contains($this->getSiteCorporate())) {
+            $classics->addSite($this->getSiteCorporate());
+        }
+        $classics
+            ->setFestival($this->getFestival($oldArticle))
+            ->setPublishedAt($oldArticle->getStartDate() ?: $oldArticle->getUpdatedAt())
+            ->setCreatedAt($oldArticle->getCreatedAt())
+            ->setUpdatedAt($oldArticle->getUpdatedAt())
+        ;
 
         $this->getManager()->flush();
 
@@ -189,7 +194,7 @@ class ClassicsImporter extends Importer
                 $this->getManager()->persist($translation);
 
                 if ($locale == 'fr') {
-                    $translation->setStatus(StatementArticleTranslation::STATUS_PUBLISHED);
+                    $translation->setStatus(StatementArticleTranslation::STATUS_DEACTIVATED);
                 } else {
                     $translation->setStatus(StatementArticleTranslation::STATUS_TRANSLATED);
                 }
