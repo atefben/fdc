@@ -156,6 +156,7 @@ function displayGrid() {
 
 $(document).ready(function() {
   if($('.home').length) {
+
     // Social Wall
     // =========================
     // GRAPH SVG
@@ -167,7 +168,7 @@ $(document).ready(function() {
     // load Instagram pictures and build array
     function loadInstagram(callback) {
       if (GLOBALS.env == "html") {
-        instagramDatatype = "jsonp";
+        instagramDatatype = "json";
         instagramRequest  = {};
       } else {
         instagramDatatype = "json";
@@ -176,12 +177,17 @@ $(document).ready(function() {
         }
       }
 
+      console.log(GLOBALS.api.instagramUrl);
+
       $.ajax({
         url      : GLOBALS.api.instagramUrl,
         type     : "GET",
         data     : instagramRequest,
         dataType : instagramDatatype,
         success: function(data) {
+
+          console.log(data);
+
           if (GLOBALS.env == "html") {
             var count = 15; 
             for (var i = 0; i < count; i++) {
@@ -204,6 +210,10 @@ $(document).ready(function() {
               }
             }
           }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+          alert(thrownError);
         }
       });
     }

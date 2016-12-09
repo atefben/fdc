@@ -104,9 +104,6 @@ var initVideo = function(hash) {
         } else {
             tmp = [];
             $("."+cls).each(function(i,v) {
-                // console.log("",this);
-                // console.log("",this.className);
-                // console.log("",this.id);
                 var videoPlayer  = jwplayer(this.id);
                 if(!$(videoPlayer).data('loaded')) {
                     playerLoad(this, videoPlayer, havePlaylist, live, function(vid) {
@@ -125,16 +122,12 @@ var initVideo = function(hash) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
 
-        console.log('container');
-        console.log($container);
-
         if($container.find('.control-bar').length <= 0) {
             $container.append(controlBar);
         }
         if($container.find('.top-bar').length <= 0) {
             $(topBar).insertAfter($container.find('#'+vid.id));
         }
-
 
         var $infoBar      = $container.find('.infos-bar'),
             $stateBtn     = $container.find('.play-btn'),
@@ -148,9 +141,6 @@ var initVideo = function(hash) {
 
         $topBar.find('.info').append($infoBar.find('.info').html());
 
-        console.log('topbar');
-        console.log($topBar);
-
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
@@ -160,9 +150,6 @@ var initVideo = function(hash) {
         // CUSTOM LINK FACEBOOK
         var fbHref = $topBar.find('.buttons .facebook').attr('href');
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-
-        console.log('fbHref');
-        console.log(fbHref);
 
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
@@ -4850,6 +4837,7 @@ function displayGrid() {
 
 $(document).ready(function() {
   if($('.home').length) {
+
     // Social Wall
     // =========================
     // GRAPH SVG
@@ -4861,7 +4849,7 @@ $(document).ready(function() {
     // load Instagram pictures and build array
     function loadInstagram(callback) {
       if (GLOBALS.env == "html") {
-        instagramDatatype = "jsonp";
+        instagramDatatype = "json";
         instagramRequest  = {};
       } else {
         instagramDatatype = "json";
@@ -4870,12 +4858,17 @@ $(document).ready(function() {
         }
       }
 
+      console.log(GLOBALS.api.instagramUrl);
+
       $.ajax({
         url      : GLOBALS.api.instagramUrl,
         type     : "GET",
         data     : instagramRequest,
         dataType : instagramDatatype,
         success: function(data) {
+
+          console.log(data);
+
           if (GLOBALS.env == "html") {
             var count = 15; 
             for (var i = 0; i < count; i++) {
@@ -4898,6 +4891,10 @@ $(document).ready(function() {
               }
             }
           }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+          alert(thrownError);
         }
       });
     }
