@@ -387,13 +387,13 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var array
-     * @ORM\Column(name="duplicate_ids", type="text")
+     * @ORM\Column(name="duplicate_ids", type="text", nullable=true)
      */
     private $duplicateIds;
 
     /**
      * @var array
-     * @ORM\Column(name="duplicate_selfkits", type="text")
+     * @ORM\Column(name="duplicate_selfkits", type="text", nullable=true)
      */
     private $duplicateSelfkits;
 
