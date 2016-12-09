@@ -770,7 +770,17 @@ class FilmPerson implements TranslateMainInterface
      */
     public function getMedias()
     {
-        return $this->medias;
+        $medias = $this->medias;
+        foreach ($this->duplicates as $duplicate) {
+            if ($duplicate instanceof FilmPerson) {
+                foreach ($duplicate->getMedias() as $media) {
+                    if ($media instanceof FilmPersonMedia) {
+                        $medias->add($media);
+                    }
+                }
+            }
+        }
+        return $medias;
     }
 
     /**
