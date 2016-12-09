@@ -5014,12 +5014,12 @@ $(document).ready(function() {
           var c = p.splice(r, 1)[0];
 
           $(c).addClass(item.type);
-          $(c).find('.side').addClass('flip');
+          $(c).addClass('flip');
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
-
-          console.log(item.text);
+          
+          console.log(c);
 
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
@@ -5442,10 +5442,8 @@ $(document).ready(function () {
         owInitSliderSelect('timelapse');
         owInitSliderSelect('tab-selection');
 
-        var grid = owInitGrid('isotope-03');
-
-        owInitAleaGrid(grid, $('.grid-01'), true);
-
+        var grid = owInitGrid('isotope-01');
+        
         var hash = window.location.hash;
         hash = hash.substring(1, hash.length);
 
