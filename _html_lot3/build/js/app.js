@@ -5442,10 +5442,8 @@ $(document).ready(function () {
         owInitSliderSelect('timelapse');
         owInitSliderSelect('tab-selection');
 
-        var grid = owInitGrid('isotope-03');
-
-        owInitAleaGrid(grid, $('.grid-01'), true);
-
+        var grid = owInitGrid('isotope-01');
+        
         var hash = window.location.hash;
         hash = hash.substring(1, hash.length);
 
