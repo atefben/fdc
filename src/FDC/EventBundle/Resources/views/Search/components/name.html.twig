@@ -10,7 +10,7 @@
         {% if class(object) == "MediaImage" %}
             {{ object|trans_fallback('legend') }}
         {% else %}
-            {{ object|trans_fallback('title') }}
+            {{ object|trans_fallback('title')|truncate(40) }}
         {% endif %}
     {% elseif class(object) == 'FDCPageParticipate' %}
         {{ object|trans_fallback('title')|truncate(40) }}
