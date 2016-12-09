@@ -5019,7 +5019,7 @@ $(document).ready(function() {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
 
-          console.log(item.text);
+          console.log(c);
 
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
