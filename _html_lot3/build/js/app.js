@@ -4891,8 +4891,6 @@ $(document).ready(function() {
         }
       }
 
-      console.log(GLOBALS.api.instagramUrl);
-
       $.ajax({
         url      : GLOBALS.api.instagramUrl,
         type     : "GET",
@@ -4915,8 +4913,7 @@ $(document).ready(function() {
             var count = Math.min(data.length, 15);
             for (var i = 0; i < count; i++) {
               posts.push({'type': 'instagram', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': data[i].content});
-              console.log(data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true));
-              
+
               if(i == count - 1) {
                 callback();
               }
@@ -5021,6 +5018,9 @@ $(document).ready(function() {
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
+
+          console.log(item.text);
+
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
         }
