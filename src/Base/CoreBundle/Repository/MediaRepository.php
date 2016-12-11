@@ -26,23 +26,19 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getImageMedia($locale, $festival, $startsAt = null, $endAt = null)
+    public function getImageMedia($locale, $festival)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
-            ->andWhere('m.displayedAll = 1')
-            ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
-        ;
+            ->andWhere('m.displayedAll = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb->orderBy('mi.publishedAt', 'DESC')
-            ->setParameter('startsAt', $startsAt)
-            ->setParameter('endAt', $endAt)
             ->getQuery()
             ->getResult();
 
@@ -101,12 +97,12 @@ class MediaRepository extends EntityRepository
             ->leftJoin('t.translations', 'tt')
             ->andWhere('m.displayedAll = 1');
 
-            $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
-                ->leftJoin('mi.translations', 'mit');
-            $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
-                ->leftJoin('mv.translations', 'mvt');
-            $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
-                ->leftJoin('ma.translations', 'mat');
+        $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+            ->leftJoin('mi.translations', 'mit');
+        $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
+            ->leftJoin('mv.translations', 'mvt');
+        $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
+            ->leftJoin('ma.translations', 'mat');
 
         $qb = $qb->andWhere("m.publishEndedAt IS NULL")
             ->orderBy('m.publishedAt', 'DESC')
@@ -276,28 +272,21 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getVideoMedia($locale, $festival, $startsAt = null, $endAt = null)
+    public function getVideoMedia($locale, $festival)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
-            ->andWhere('m.displayedAll = 1')
-            ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
-        ;
+            ->andWhere('m.displayedAll = 1');
 
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
-            ->setParameter('startsAt', $startsAt)
-            ->setParameter('endAt', $endAt)
+        return $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
-
-        return $qb;
-
     }
 
     /**
@@ -306,23 +295,19 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @return \Doctrine\ORM\Query
      */
-    public function getAudioMedia($locale, $festival, $startsAt = null, $endAt = null)
+    public function getAudioMedia($locale, $festival)
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
-            ->andWhere('m.displayedAll = 1')
-            ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
-        ;
+            ->andWhere('m.displayedAll = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb->orderBy('mi.publishedAt', 'DESC')
-            ->setParameter('startsAt', $startsAt)
-            ->setParameter('endAt', $endAt)
             ->getQuery()
             ->getResult();
 
