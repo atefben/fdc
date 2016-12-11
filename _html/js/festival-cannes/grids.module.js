@@ -388,9 +388,16 @@ $(document).ready(function () {
           }
         });
         $grid.isotope('layout');
-        window.setInterval(function(){
-          $grid.isotope('layout');
-        }, 500);
+
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
       });
 
     }
