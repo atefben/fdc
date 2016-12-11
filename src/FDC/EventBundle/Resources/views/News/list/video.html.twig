@@ -31,7 +31,7 @@
                          data-vid="{{ video.id }}"
                          data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                          data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}">
-                        <img src="{% if transImage is not null %}{% path transImage.file , '640x404' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}" class="lazy">
+                        <img data-original="{% if transImage is not null %}{% path transImage.file , '640x404' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}" class="lazy">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info">
                             <div class="vCenter">

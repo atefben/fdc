@@ -19,7 +19,6 @@
                            href="{% path trans.file , 'reference' %}"
                            title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
                            data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"></a>
-
                         {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                         {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
                         <img data-original="{% path trans.file , resolution %}"  alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}" class="lazy">

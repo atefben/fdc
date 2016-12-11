@@ -50,7 +50,7 @@ function resizeGrid() {
 }
 
 function setGrid(grid, dom, init){
-
+  $("img.lazy").lazyload();
   var $img            = $(dom).find('.item img'),
       pourcentage     = 0.30,
       nbImgAAgrandir  = $img.length * pourcentage,
@@ -388,7 +388,6 @@ $(document).ready(function () {
           }
         });
         $grid.isotope('layout');
-
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -416,6 +415,16 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
+
       });
     }
 
@@ -488,6 +497,15 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
 
         if($('#audio-player-popin').length > 0) {
           $('body').on('click', '#gridAudios .item', function(e) {
@@ -582,7 +600,15 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
-
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
         $('body').on('click', '#gridVideos .item', function(e) {
           var $popinVideo = $('.popin-video'),
               vid         = $(e.target).data('vid'),
@@ -674,6 +700,15 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
       });
 
       $('.read-more').on('click', function (e) {
