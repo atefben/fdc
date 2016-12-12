@@ -9025,33 +9025,33 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   line-height: 63px;
 }
 .topiconsContainer .topIcons:hover i {
-  color: #c8a461;
+  color: white;
 }
 
 .goldBdrs {
-  border-top: 1px solid #c8a461 !important;
-  border-bottom: 1px solid #c8a461 !important;
-  border-right: 1px solid #c8a461 !important;
-  border-left: 1px solid #c8a461 !important;
+  border-top: 1px solid white !important;
+  border-bottom: 1px solid white !important;
+  border-right: 1px solid white !important;
+  border-left: 1px solid white !important;
   margin-right: -1px !important;
   z-index: 1005 !important;
   overflow: hidden;
 }
 
 .middlegoldBdrs {
-  border-top: 1px solid #c8a461 !important;
-  border-bottom: 1px solid #c8a461 !important;
-  border-right: 1px solid #c8a461 !important;
-  border-left: 1px solid #c8a461 !important;
+  border-top: 1px solid white !important;
+  border-bottom: 1px solid white !important;
+  border-right: 1px solid white !important;
+  border-left: 1px solid white !important;
   z-index: 1005 !important;
   overflow: hidden;
 }
 
 .lastgoldBorders {
-  border-top: 1px solid #c8a461 !important;
-  border-bottom: 1px solid #c8a461 !important;
-  border-right: 1px solid #c8a461 !important;
-  border-left: 1px solid #c8a461 !important;
+  border-top: 1px solid white !important;
+  border-bottom: 1px solid white !important;
+  border-right: 1px solid white !important;
+  border-left: 1px solid white !important;
   margin-left: -1px !important;
   z-index: 1005 !important;
   overflow: hidden;
