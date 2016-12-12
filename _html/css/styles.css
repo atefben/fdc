@@ -13892,6 +13892,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #999;
   display: block;
   margin-top: 4px;
+  min-width: 352px;
 }
 .camerador .title-item {
   width: 250px;
