@@ -13873,12 +13873,17 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   width: 674px;
 }
 .camerador .categorie-items article .contain_item img {
-  margin: 40px 0 0 0;
-  height: 341px;
+  float: none;
+  display: inline-block;
+  margin-left: 190px;
+  margin-top: 50px;
+  margin-right: 86px;
   width: 256px;
+  height: 348px;
   object-fit: cover;
 }
 .camerador .categorie-items article img {
+  margin: 40px 0 0;
   margin-left: 74px;
   margin-right: 150px;
 }

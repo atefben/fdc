@@ -180,16 +180,21 @@
 
   .categorie-items article .contain_item {
     width: 674px;
-    
+
     img {
-      margin: 40px 0 0 0;
-      height:341px;
-      width:256px;
+      float: none;
+      display: inline-block;
+      margin-left: 190px;
+      margin-top: 50px;
+      margin-right: 86px;
+      width: 256px;
+      height: 348px;
       object-fit: cover;
     }
   }
 
   .categorie-items article img {
+    margin: 40px 0 0;
     margin-left: 74px;
     margin-right: 150px;
   }
