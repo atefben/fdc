@@ -1746,6 +1746,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-bottom: 42px;
   text-transform: uppercase;
   letter-spacing: 5px;
+  font-size: 16px;
 }
 .block-contact a {
   color: #c8a461;
