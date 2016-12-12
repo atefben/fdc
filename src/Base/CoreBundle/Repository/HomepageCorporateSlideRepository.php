@@ -16,7 +16,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 class HomepageCorporateSlideRepository extends EntityRepository
 {
 
-    public function getAllSlide($locale)
+    public function getAllSlide($locale,$dateTime)
     {
         $qb = $this
             ->createQueryBuilder('hcs')
@@ -57,16 +57,15 @@ class HomepageCorporateSlideRepository extends EntityRepository
             )
         ;
 
-        /*$qb
+         $qb
             ->andWhere(
-                '(n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime) OR
-                 (s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
+                '(s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
                  (i.publishedAt <= :datetime) AND (i.publishEndedAt IS NULL OR i.publishEndedAt >= :datetime)'
-            )*/
-            $qb->orderBy('hcs.position')
+            )
+            ->orderBy('hcs.position')
             ->setParameter('locale', $locale)
             ->setParameter('site3', 3)
-            //->setParameter('datetime', $dateTime)
+            ->setParameter('datetime', $dateTime)
         ;
 
         $qb = $qb

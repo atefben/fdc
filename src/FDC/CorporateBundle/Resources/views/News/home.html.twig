@@ -18,9 +18,12 @@
                         {% if trans is null or trans.file is null %}
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
-                        {% set file = trans.file %}
-                        <div class="item animated active" data-item="{{ dataItem }}" style="background-image:url('{% path file , '1280x808' %}')"></div>
+                        {% set file = '' %}
+                        {% if trans.status == 1 and img.publishedAt and img.publishedAt.getTimestamp() <= "now"|date('U')%}
+                            {% set file = trans.file %}
+                        {% endif %}
 
+                        <div class="item animated active" data-item="{{ dataItem }}" style="background-image:url('{% path file , '1280x808' %}')"></div>
                         {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'S' %}
                             {% set type = 'communique' %}
                         {% else %}
@@ -198,14 +201,15 @@
 
                     <div class="slider-01">
                         {% for image in gallery.medias %}
-                            {% set photo = image.media %}
-                            {% set trans = photo.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = photo.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                            {% set copyright = photo|trans_fallback('copyright') %}
-                            {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
+                            {% if image.media is defined and image.media is not null %}
+                                {% set photo = image.media %}
+                                {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = photo.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                                {% set copyright = photo|trans_fallback('copyright') %}
+                                {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
 
                             <div class="item">
                                 <figure>
@@ -213,6 +217,7 @@
                                     <figcaption>{% if copyright is not empty %} © {{ copyright }}{% endif %}</figcaption>
                                 </figure>
                             </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
 
