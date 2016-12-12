@@ -42,8 +42,8 @@
                       <strong class="palme-dor-text verticalline">Palme d'or</strong>
                   </div>
                   <a href="">
-                    <h3 class="title-item">Dheepan</h3>
-                    <h4 class="sub-title-item">(Le fils de paul)</h4>
+                    <h3 class="title-item">Dheepan, Dheepan, DheepanDheepan Dheepan Dheepan</h3>
+                    <h4 class="sub-title-item">(Le fils de paul, Le fils de paul Le fils de paul, Le fils de paul Le fils de paul)</h4>
                     <span class="nom-item">Jacques AUDIARD, Jacques AUDIARD, Jacques AUDIARD</span>
                    </a>
                 </div>

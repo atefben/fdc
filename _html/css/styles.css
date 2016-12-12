@@ -1745,6 +1745,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
   margin-bottom: 42px;
   text-transform: uppercase;
+  letter-spacing: 5px;
 }
 .block-contact a {
   color: #c8a461;
@@ -6344,99 +6345,6 @@ Copyright (c) 2015 Daniel Eden
   animation-name: slideOutUp;
 }
 
-a {
-  outline: none;
-  text-decoration: none;
-}
-
-.button {
-  /*border: 1px solid #dfdfdf;*/
-  border: 1px solid #c8a461;
-  border-right: none;
-  color: #c8a461;
-  display: inline-block;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 0.688rem;
-  height: 38px;
-  line-height: 38px;
-  margin: 0 0 0 0;
-  padding: 0 19px 0 19px;
-  text-transform: uppercase;
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.button:last-child {
-  /*border-right: 1px solid #dfdfdf;*/
-  border-right: 1px solid #c8a461;
-}
-.button:hover {
-  background-color: #c8a461;
-  border-color: #c8a461;
-  color: #fff;
-}
-
-.buttons {
-  font-size: 0;
-  text-align: center;
-}
-.buttons.square .button {
-  height: 73px;
-  position: relative;
-  padding: 0;
-  text-align: center;
-  width: 73px;
-}
-.buttons.square .button:hover {
-  border-color: #dfdfdf;
-}
-
-.single-button {
-  border-right: 1px solid #c8a461 !important;
-  border-color: #c8a461;
-}
-
-.quote.italic {
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-}
-
-.title {
-  font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: 0.5em;
-  margin-bottom: 15px;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.subtitle {
-  font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-style: italic;
-  font-size: 0.875rem;
-  font-weight: normal;
-  text-align: center;
-}
-
-.canvasloader {
-  opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: -10px 0 0 -10px;
-  z-index: 11;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.canvasloader.show {
-  opacity: 1;
-  visibility: visible;
-}
-
 sub {
   vertical-align: super;
   font-size: .5rem;
@@ -6463,8 +6371,8 @@ sub {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 20px;
   line-height: 1.8;
-  letter-spacing: 10px;
-  margin-bottom: 23px;
+  /*letter-spacing: 10px;
+  margin-bottom: 23px;*/
   text-align: center;
   text-transform: uppercase;
   color: #141414;
@@ -7457,6 +7365,99 @@ a {
   width: auto !important;
   text-align: center;
   padding: 0px 20px !important;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.button {
+  /*border: 1px solid #dfdfdf;*/
+  border: 1px solid #c8a461;
+  border-right: none;
+  color: #c8a461;
+  display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 19px 0 19px;
+  text-transform: uppercase;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.button:last-child {
+  /*border-right: 1px solid #dfdfdf;*/
+  border-right: 1px solid #c8a461;
+}
+.button:hover {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  color: #fff;
+}
+
+.buttons {
+  font-size: 0;
+  text-align: center;
+}
+.buttons.square .button {
+  height: 73px;
+  position: relative;
+  padding: 0;
+  text-align: center;
+  width: 73px;
+}
+.buttons.square .button:hover {
+  border-color: #dfdfdf;
+}
+
+.single-button {
+  border-right: 1px solid #c8a461 !important;
+  border-color: #c8a461;
+}
+
+.quote.italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+
+.title {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  z-index: 11;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.canvasloader.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .icon {
@@ -8535,7 +8536,7 @@ header .user-nav li a.language:hover {
 }
 header .user-nav li .sub-languages {
   height: 0;
-  margin-left: 10px;
+  margin-left: 32px;
   opacity: 0;
   position: absolute;
   top: 23px;
@@ -18882,6 +18883,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   margin: 0 auto;
   line-height: 24px;
 }
+.palmares-list .title-list-cat h2 {
+  color: white;
+}
 .palmares-list .title-list-cat strong {
   color: #fff;
 }
@@ -28196,6 +28200,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .movieOnline .formBtn {
   line-height: 50px;
 }
+.movieOnline p {
+  padding: 0px 34%;
+}
 
 .mediumWrapper {
   width: 1020px;
@@ -28582,6 +28589,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .confcourtaccordion .selectbtn {
   float: left;
+  min-width: 0px !important;
+  max-width: 500px !important;
+  width: auto !important;
 }
 @media screen and (max-width: 1024px) {
   .confcourtaccordion .selectbtn {
@@ -28598,12 +28608,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .confcourtaccordion .bigSelectbtn {
   position: relative;
-  width: 350px !important;
-  max-width: 350px !important;
+  padding: 20px 50px 20px 20px;
 }
 .confcourtaccordion .bigSelectbtn img {
   position: absolute;
-  right: 7%;
+  right: 4%;
   width: 24px;
   top: 18%;
   z-index: 1000;
@@ -28626,7 +28635,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   display: block;
 }
 .confcourt .box {
-  width: 270px;
+  width: 19.9%;
   height: 340px;
   float: left;
   position: relative;
@@ -28634,10 +28643,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   margin-right: -1px;
   margin-top: -1px;
 }
-@media screen and (max-width: 1280px) {
-  .confcourt .box {
-    width: 255px;
-  }
+.confcourt .box:hover {
+  background: #ECECEC;
 }
 .confcourt .eventPhoto {
   position: relative;
@@ -28662,6 +28669,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   object-fit: cover;
   width: 100%;
 }
+.confcourt .eventPhoto .eventPhotoContainer:hover {
+  cursor: pointer;
+}
 .confcourt .eventPhoto .sfcLogo {
   width: 45px;
   height: 45px;
@@ -28678,16 +28688,23 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   border: 5px solid white;
   border-radius: 100px;
 }
-.confcourt .eventTitle {
-  margin-bottom: 60px;
-}
 .confcourt .eventTitle h3 {
   color: #141414;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 20px;
+  line-height: 24px;
+}
+.confcourt .eventTitle:hover {
+  cursor: pointer;
 }
 .confcourt .eventCat {
-  position: relative;
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  width: 100%;
+  bottom: 7%;
+  height: 25px;
   margin: 0 auto;
   text-align: center;
   display: block;
@@ -28698,6 +28715,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   letter-spacing: 1px;
   font-size: 10px;
   text-transform: uppercase;
+}
+.confcourt .eventCat:hover {
+  cursor: pointer;
 }
 
 .modal-wrapper {
@@ -28710,8 +28730,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   height: 480px;
   position: absolute;
   left: -2%;
-  top: -2%;
+  top: -0.5%;
   z-index: 2;
+}
+
+.modal-overlay {
+  min-height: 10000px;
 }
 
 .modal-content {
@@ -28720,6 +28744,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding: 3% 0%;
   background: white;
   position: relative;
+  overflow: auto;
 }
 .modal-content .half {
   width: 439px;
@@ -28773,6 +28798,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 60px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
 }
+.modal-content .half .titleHalf a {
+  text-decoration: none;
+  color: #141414 !important;
+}
 .modal-content .half .titleBig {
   width: 100%;
   text-align: center;
@@ -28794,6 +28823,36 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-align: left;
   padding-bottom: 25px;
 }
+.modal-content .half .authors .full {
+  width: 100%;
+  float: left;
+  margin-left: 0%;
+  margin-bottom: 2%;
+}
+.modal-content .half .authors .full:last-child {
+  margin-bottom: 5%;
+}
+.modal-content .half .authors .full div {
+  width: 50%;
+  float: left;
+}
+.modal-content .half .authors .full div img {
+  position: relative;
+  float: left;
+}
+.modal-content .half .authors .full div h4 {
+  color: #141414;
+  font-size: 12px;
+  letter-spacing: 0px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  float: left;
+  text-transform: uppercase;
+  position: relative;
+}
+.modal-content .half .authors .full div h4 a {
+  text-decoration: none;
+  color: #141414 !important;
+}
 .modal-content .half .authors h4 {
   text-transform: uppercase;
   color: #c3a05f;
@@ -28801,12 +28860,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   letter-spacing: 2px;
   line-height: 20px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-}
-.modal-content .half .authors h4 span {
-  color: #141414;
-  padding-left: 20px;
-  letter-spacing: 0px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  width: 50%;
+  float: left;
 }
 .modal-content .half .content {
   text-align: left;
@@ -28861,6 +28916,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 20px;
   color: #141414;
   float: left;
+}
+.modal-content .half .contactInfo div h3 a {
+  text-decoration: none;
+  color: #141414 !important;
 }
 .modal-content .half .contactInfo div img {
   position: relative;

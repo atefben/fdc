@@ -211,24 +211,28 @@
               <p><a href="#">La Quinzaine des Réalisateurs</a> et <a href="#">la Semaine de la Critique</a> sont des organismes indépendants du Festival de Cannes, leur sélection est entièrement autonome.</p>
             </div>
           </div><br>
+
         
-        <hr class="greyHr">
-          <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-            <strong class="title-25"><h3>Avant de soumettre votre film</h3></strong>
-            <p>Merci de consulter le règlement 2017</p>
-            <div class="buttons-02">
-              <a href="participate-rules.html" class="button" target="_blank">Voir le règlement</a>
-            </div>
-          </div>
-        
-        <hr class="greyHr">
          <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+            <hr class="greyHr">
             <strong class="title-25"><h3>COMMENT METTRE EN LIGNE VOTRE FILM ?</h3></strong>
             <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
 
             <p>Nous acceptons à peu près tous les types de fichiers sources. Si le fichier de votre film est sur votre ordinateur, il est très probable que vous puissiez le télécharger rapidement et simplement.</p>
-            <a href="#"><div class="formBtn modal-toggle centered">voir le formulaire</div></a>
+            <a href="ccm-participer-mettre-en-ligne.php" target="_blank"><div class="formBtn centered">voir le formulaire</div></a>
           </div>
+        
+        
+          <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+            <hr class="greyHr">
+            <strong class="title-25"><h3>Avant de soumettre votre film</h3></strong>
+            <p>Merci de consulter le règlement 2017</p>
+            <div class="buttons-02">
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+            </div>
+          </div>
+        
+
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
             <strong class="title-25">Formulaire d'inscription 2017</strong>
@@ -382,7 +386,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -537,7 +541,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -692,7 +696,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -847,7 +851,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -1002,7 +1006,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
