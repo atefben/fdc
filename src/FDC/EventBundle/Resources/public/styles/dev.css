@@ -540,10 +540,10 @@
     padding-bottom: 14px;
 }
 
-.notloaded:before {
-    background-color:#000;
+.notloaded:before, .notloaded {
+    background:#000 !important;
 }
 
-.article .notloaded:before {
-    background-color:#FFF;
+.article .notloaded:before, .notloaded {
+    background:#FFF !important;
 }
