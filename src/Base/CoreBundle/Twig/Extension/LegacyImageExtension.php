@@ -42,7 +42,7 @@ class LegacyImageExtension extends Twig_Extension
      * @param \Doctrine\Bundle\DoctrineBundle\Registry $doctrine
      * @return \Doctrine\Bundle\DoctrineBundle\Registry
      */
-    public function setDotrine(Registry $doctrine)
+    public function setDoctrine(Registry $doctrine)
     {
         return $this->doctrine = $doctrine;
     }
