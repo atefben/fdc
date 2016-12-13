@@ -365,11 +365,11 @@ $(".topiconsContainer .third").hover(function () {
 });
 
 
-$("#share-article").click(function(){
+/*$("#share-article").click(function(){
    $('html, body').animate({
-        scrollTop: $("#share").offset().top - 400
+        scrollTop: $("#share").offset().top - 200
     }, 2000);
-});
+});*/
 
 /*$(window).resize(function(){
 

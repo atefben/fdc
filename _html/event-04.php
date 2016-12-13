@@ -46,14 +46,20 @@
       </div>-->
       <div class="content-article">
         <div class="container small-container">
-            <div class="info">
+          
+          <!--<div class="info">
             <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
             <span class="update">Mise à jour :</span><span class="date">18.05.15</span> . <span class="hour">10:00</span>
-          </div>
+          </div>-->
+          
           <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
+
+          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
+
+          
           <div class="buttons">
-            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
-            <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>Imprimer</a>
+              <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+              <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
           </div>
 
           <div class="single-photo">
@@ -63,7 +69,6 @@
             </div>
           </div>
 
-          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
           
           <div class="text">
             <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
@@ -270,11 +275,7 @@
             </div>
 
             <!-- fin textes -->
-          
-          <div class="text">
-            <div class="author">Rédigé par Morgane Urbain</div>
-          </div>
-  
+        
 
 
 
@@ -367,14 +368,14 @@
           Les documents peuvent être adressés :</p>
           </div>
 
-          <div class="wideWrapper wysiwygBlocks goldwysiwygBlocks">
+          <!--<div class="wideWrapper wysiwygBlocks goldwysiwygBlocks">
             <div class="goldBorders">
               <h3>La date limite pour déposer votre demande d’accréditation est fixée au 31 mars.</h3>
               <p>Pour préserver votre confort et vos conditions de travail le nombre d'accréditations est
                   limité. Nous insistons donc sur la nécessité de nous adresser votre demande avant la date
                   limite.</p>
             </div>
-          </div>
+          </div>-->
 
           <div class="categorie-items wysiwyg-categorie-items">
            <div class="title-list-cat">
@@ -389,7 +390,7 @@
               <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
             </div>
           </div>
-          <div class="half-div">
+          <div class="container small-container">
             <div class="half-photo">
               <div class="photo-container">
                 <img src="img/article/005.jpg" alt="" />
@@ -418,6 +419,7 @@
                                         CLOSE ENCOUNTERS WITH VILMOS ZSIGMOND
                                     </a>
                                 </h3>
+                                <h4 class="sub-title-item"><a href="/fr/films/close-encounters-with-vilmos-zsigmond">(Le fils de paul, Le fils de paul Le fils de paul, Le fils de paul Le fils de paul)</a></h4>
                                   <a href="/fr/artiste/pierre-filmon-1"><span class="nom-item">Pierre FILMON</span></a><br>
                                     <span class="date-item">2016 - 01:20</span>
                                 <p class="description-item">
@@ -429,7 +431,7 @@
               </article>                                                                                                                            
             </div>
           </section>
-        </div>
+        </div><br><br>
           <div class="share" id="share" >
               <p>Partagez l'article</p>
               <div class="buttons square">

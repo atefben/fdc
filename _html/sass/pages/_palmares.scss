@@ -97,6 +97,22 @@
         height: 447px;
         padding: 0px;
       }
+
+      .contain-article-invit {
+        .image {
+          height: 177px;
+          margin-bottom: 20px;
+          position: relative;
+          width: 100%;
+          padding-top: 45px;
+        }
+
+        .infos-item-list {
+          .title-item {
+            color: white;
+          }
+        }
+      }
       
       .infos-item-list {
         text-align: center;
@@ -285,5 +301,19 @@
 
   .palmares-list .title-list-header {
     // padding-top: 143px !important;
+  }
+}
+
+.contain-article-invit {
+
+  .infos-item-list {
+    .title-item, .sub-title-item {
+      a {
+        color: white!important;
+      }
+    }
+  }
+  .image {
+    padding-top: 50px;
   }
 }
