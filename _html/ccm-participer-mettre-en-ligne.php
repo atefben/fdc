@@ -71,20 +71,19 @@
           </div>     
           <div class="block-s-info">
             <div class="block-01-ms vFlexAlign">
-            <strong class="title-25"><h6>Sous-titres :</h6></strong>
-            <p>Vous serez prévenu avant la conférence de presse officielle, qui a lieu vers la mi-avril.</p>
-            <p>Les sous-titres doivent être incrustés dans l’image.</p>
+            <h6>Sous-titres :</h6>
+            <p>Vous serez prévenu avant la conférence de presse officielle, qui a lieu vers la mi-avril.Les sous-titres doivent être incrustés dans l’image.</p>
             </div>
           </div>   
           <div class="block-s-info">
             <div class="block-01-ms vFlexAlign">
-            <strong class="title-25"><h6>Préparation du film :</h6></strong>
+            <h6>Préparation du film :</h6>
             <p>Assurez-vous que votre film ne comporte pas de barres de couleurs ou de séquence noire avant le début ou après la fin du film. Assurez-vous également que votre film ne soit pas entrelacé (c’est-à-dire avec des lignes horizontales striant l’image, particulièrement visibles lors des séquences avec du mouvement rapide).</p>
             </div>
           </div>     
           <div class="block-s-info">
             <div class="block-01-ms vFlexAlign">
-            <strong class="title-25"><h6>Renseignement utile :</h6></strong>
+            <h6>Renseignement utile :</h6>
             <p>Vous trouverez ci-contre le manuel expliquant comment extraire votre film d’un DVD ou réencoder un fichier vidéo dans un format adapté au téléchargement sur notre site. Outre les logiciels professionnels type Final Cut ou Premiere, les logiciels que nous recommandons (gratuits et simples d’utilisation) sont <a href="#">HandBrake</a> et MPEG Streamclip.</p>
             </div>
           </div>

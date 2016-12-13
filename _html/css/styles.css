@@ -1821,6 +1821,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-s-info {
   flex-direction: column;
   height: 255px;
+  height: auto;
   text-align: center;
 }
 .block-s-info .title-25 {
@@ -1846,7 +1847,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 .block-s-info-02 {
   flex-direction: column;
-  height: 300px;
+  /*height: 300px;*/
+  height: auto;
   padding-top: 62px;
   color: #fff;
   text-align: center;
@@ -27965,8 +27967,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 16px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   padding-bottom: 30px;
+  text-align: center;
+  padding-bottom: 100px;
 }
 
 .reducedPadding {
@@ -28397,7 +28401,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .onlinegoldBorders {
   width: 745px;
-  height: 460px;
+  min-height: 450px;
+  height: auto;
   border: 1px solid #c8a461;
 }
 .onlinegoldBorders a {
@@ -28433,7 +28438,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-transform: uppercase;
   line-height: 25px;
   margin-bottom: 0px !important;
-  margin-top: 40px;
+  margin-top: 30px;
   letter-spacing: 0px !important;
 }
 .onlinegoldBorders .specs span {

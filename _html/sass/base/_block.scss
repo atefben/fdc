@@ -2106,6 +2106,7 @@
 .block-s-info {
   flex-direction: column;
   height: 255px;
+  height: auto;
   text-align: center;
 
   .title-25 {
@@ -2134,7 +2135,8 @@
 
 .block-s-info-02 {
   flex-direction: column;
-  height: 300px;
+  /*height: 300px;*/
+  height: auto;
   padding-top: 62px;
   color: #fff;
   text-align: center;
