@@ -28666,13 +28666,33 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   display: block;
 }
 .confcourt .box {
-  width: 19.9%;
+  width: 19.88888%;
   height: 340px;
   float: left;
   position: relative;
   border: 1px solid #ECECEC;
   margin-right: -1px;
   margin-top: -1px;
+}
+@media screen and (min-width: 1024px) {
+  .confcourt .box {
+    width: 24.9%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .confcourt .box {
+    width: 19.9%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .confcourt .box {
+    width: 15.9%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .confcourt .box {
+    width: 13.9%;
+  }
 }
 .confcourt .box:hover {
   background: #ECECEC;

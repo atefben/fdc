@@ -50,7 +50,20 @@
   }
 
   .box {
+    width: 19.88888%;
+
+    @media screen and (min-width: 1024px) {
+      width: 24.9%;
+    }
+    @media screen and (min-width: 1280px) {
       width: 19.9%;
+    }   
+    @media screen and (min-width: 1600px) {
+      width: 15.9%;
+    } 
+    @media screen and (min-width: 1920px) {
+      width: 13.9%;
+    }
       height: 340px;
       float: left;
       position: relative;
