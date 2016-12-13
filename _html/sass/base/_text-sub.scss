@@ -876,12 +876,12 @@ a {
 
 
 .button-long {
-  display: block;
+  display: block!important;
   text-align: center;
-  border-right: 1px solid #dfdfdf;
+  border: 1px solid #dfdfdf!important;
 
   .icon {
-    margin-right: 5px;
+    margin-right: 5px!important;
   }
 }
 
@@ -892,10 +892,10 @@ a {
 }
 
 .button-half {
-  width: 42%;
+  width: 42%!important;
   text-align: center;
-  border-right: 1px solid #dfdfdf;
-  margin-top: 25px;
+  border: 1px solid #dfdfdf!important;
+  margin-top: 25px!important;
 }
 
 .block-button-bottom {
@@ -1133,11 +1133,15 @@ a {
   }
 }
 
+.button {
+  height: 50px!important;
+  line-height: 50px!important;
+}
 
 .autoBtn {
   height: 50px;
   line-height: 50px;
   width: auto!important;
   text-align: center;
-  padding: 0px 20px!important;
+  padding: 0px 30px!important;
 }

@@ -495,7 +495,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   
   .centered {
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
   }
 
@@ -505,6 +505,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     text-align: center;
     padding: 40px 0px 30px 0px;
 
+  }
+
+  .reducedPadding {
+    padding: 40px 0px 0px 0px;
   }
   .formBtn {
     line-height: 50px;

@@ -7138,12 +7138,12 @@ a {
 }
 
 .button-long {
-  display: block;
+  display: block !important;
   text-align: center;
-  border-right: 1px solid #dfdfdf;
+  border: 1px solid #dfdfdf !important;
 }
 .button-long .icon {
-  margin-right: 5px;
+  margin-right: 5px !important;
 }
 
 .align-flex {
@@ -7153,10 +7153,10 @@ a {
 }
 
 .button-half {
-  width: 42%;
+  width: 42% !important;
   text-align: center;
-  border-right: 1px solid #dfdfdf;
-  margin-top: 25px;
+  border: 1px solid #dfdfdf !important;
+  margin-top: 25px !important;
 }
 
 .block-button-bottom {
@@ -7377,12 +7377,17 @@ a {
   margin-bottom: 25px;
 }
 
+.button {
+  height: 50px !important;
+  line-height: 50px !important;
+}
+
 .autoBtn {
   height: 50px;
   line-height: 50px;
   width: auto !important;
   text-align: center;
-  padding: 0px 20px !important;
+  padding: 0px 30px !important;
 }
 
 a {
@@ -28212,7 +28217,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .movieOnline .centered {
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 15px;
   text-align: center;
 }
 .movieOnline h3 {
@@ -28220,6 +28225,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 50px;
   text-align: center;
   padding: 40px 0px 30px 0px;
+}
+.movieOnline .reducedPadding {
+  padding: 40px 0px 0px 0px;
 }
 .movieOnline .formBtn {
   line-height: 50px;
