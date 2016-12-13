@@ -239,7 +239,7 @@
                 <strong class="title-25"><h3 class="reducedPadding">Avant de soumettre votre film</h3></strong>
                 <p class="centered">Merci de consulter le règlement 2017</p>
                 <div class="buttons-02 centered">
-                  <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn centered" target="_blank">Voir le règlement</a>
+                  <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
                 </div>
               </div>
             </div>
@@ -399,7 +399,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn centered" target="_blank">Voir le règlement</a>
+              <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -554,7 +554,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02 centered autoBtn">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
+              <a href="ccm-participate-rules.php" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -709,7 +709,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02 centered">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn centered" target="_blank">Voir le règlement</a>
+              <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -864,7 +864,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02 centered">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn centered" target="_blank">Voir le règlement</a>
+              <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -1019,7 +1019,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
+              <a href="ccm-participate-rules.php" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
