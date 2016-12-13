@@ -1,7 +1,7 @@
 .confcourtaccordion {
 
   .selectbtn {
-    float: left;
+    float: none!important;
     min-width: 0px!important;
     max-width: 500px!important;
     width: auto!important;
@@ -265,7 +265,8 @@
 
           img {
             position: relative;
-            float: left;
+            float: right;
+            right: 40%;
           }
           h4 {
             color: #141414;

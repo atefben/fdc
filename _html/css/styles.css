@@ -28188,6 +28188,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-top: 60px;
   padding-bottom: 70px;
   text-align: center;
+  height: auto;
 }
 .movieOnline .centered {
   margin: 0 auto;
@@ -28200,9 +28201,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .movieOnline .formBtn {
   line-height: 50px;
-}
-.movieOnline p {
-  padding: 0px 34%;
 }
 
 .mediumWrapper {
@@ -28589,7 +28587,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .confcourtaccordion .selectbtn {
-  float: left;
+  float: none !important;
   min-width: 0px !important;
   max-width: 500px !important;
   width: auto !important;
@@ -28839,7 +28837,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .modal-content .half .authors .full div img {
   position: relative;
-  float: left;
+  float: right;
+  right: 40%;
 }
 .modal-content .half .authors .full div h4 {
   color: #141414;

@@ -215,20 +215,34 @@
         
          <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
             <hr class="greyHr">
-            <strong class="title-25"><h3>COMMENT METTRE EN LIGNE VOTRE FILM ?</h3></strong>
-            <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+            <div class="block-01-ms">
+              <strong class="title-25"><h3>COMMENT METTRE EN LIGNE VOTRE FILM ?</h3></strong>
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
 
-            <p>Nous acceptons à peu près tous les types de fichiers sources. Si le fichier de votre film est sur votre ordinateur, il est très probable que vous puissiez le télécharger rapidement et simplement.</p>
-            <a href="ccm-participer-mettre-en-ligne.php" target="_blank"><div class="formBtn centered">voir le formulaire</div></a>
-          </div>
-        
-        
-          <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-            <hr class="greyHr">
-            <strong class="title-25"><h3>Avant de soumettre votre film</h3></strong>
-            <p>Merci de consulter le règlement 2017</p>
-            <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+
+
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription. Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription. Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription. Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription. Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+
+
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+              <p>Comme les années précédentes, les films sont directement mis en ligne lors du processus de votre inscription.</p>
+
+
+              <p>Nous acceptons à peu près tous les types de fichiers sources. Si le fichier de votre film est sur votre ordinateur, il est très probable que vous puissiez le télécharger rapidement et simplement.</p>
+              <a href="ccm-participer-mettre-en-ligne.php" target="_blank"><div class="formBtn centered">voir le formulaire</div></a>
+            </div>
+          
+          
+              <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+              <hr class="greyHr">
+              <strong class="title-25"><h3>Avant de soumettre votre film</h3></strong>
+              <p>Merci de consulter le règlement 2017 Merci de consulter le règlement 2017 Merci de consulter le règlement 2017 Merci de consulter le règlement 2017Merci de consulter le règlement 2017Merci de consulter le règlement 2017Merci de consulter le règlement 2017</p>
+              <div class="buttons-02">
+                <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement Voir le règlement Voir le règlement Voir le règlement</a>
+              </div>
             </div>
           </div>
         
@@ -267,7 +281,7 @@
               <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
               <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
               <div class="buttons-02">
-                <a href="#" class="button">Formulaire de contact</a>
+                <a href="#" class="button autoBtn">Formulaire de contact</a>
               </div>
             </div>
 
@@ -386,7 +400,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -395,7 +409,7 @@
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
-              <a href="http://sub.festival-cannes.fr/" class="button" target="_blank">Voir le formulaire</a>
+              <a href="http://sub.festival-cannes.fr/" class="button autoBtn" target="_blank">Voir le formulaire</a>
             </div>
           </div>
 
@@ -422,7 +436,7 @@
               <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
               <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
               <div class="buttons-02">
-                <a href="#" class="button">Formulaire de contact</a>
+                <a href="#" class="button autoBtn">Formulaire de contact</a>
               </div>
             </div>
 
@@ -541,7 +555,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -550,7 +564,7 @@
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
-              <a href="http://sub.festival-cannes.fr/" class="button" target="_blanck">Voir le formulaire</a>
+              <a href="http://sub.festival-cannes.fr/" class="button autoBtn" target="_blanck">Voir le formulaire</a>
             </div>
           </div>
 
@@ -577,7 +591,7 @@
               <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
               <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
               <div class="buttons-02">
-                <a href="#" class="button">Formulaire de contact</a>
+                <a href="#" class="button autoBtn">Formulaire de contact</a>
               </div>
             </div>
 
@@ -696,7 +710,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -705,7 +719,7 @@
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
-              <a href="http://sub.festival-cannes.fr/" class="button" target="_blank">Voir le formulaire</a>
+              <a href="http://sub.festival-cannes.fr/" class="button autoBtn" target="_blank">Voir le formulaire</a>
             </div>
           </div>
 
@@ -732,7 +746,7 @@
               <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
               <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
               <div class="buttons-02">
-                <a href="#" class="button">Formulaire de contact</a>
+                <a href="#" class="button autoBtn">Formulaire de contact</a>
               </div>
             </div>
 
@@ -851,7 +865,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -860,7 +874,7 @@
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
-              <a href="http://sub.festival-cannes.fr/" class="button" target="_blank">Voir le formulaire</a>
+              <a href="http://sub.festival-cannes.fr/" class="button autoBtn" target="_blank">Voir le formulaire</a>
             </div>
           </div>
 
@@ -887,7 +901,7 @@
               <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
               <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
               <div class="buttons-02">
-                <a href="#" class="button">Formulaire de contact</a>
+                <a href="#" class="button autoBtn">Formulaire de contact</a>
               </div>
             </div>
 
@@ -1006,7 +1020,7 @@
             <strong class="title-25">Avant de soumettre votre film</strong>
             <p>Merci de consulter le règlement 2017</p>
             <div class="buttons-02">
-              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button" target="_blank">Voir le règlement</a>
+              <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
           </div>
 
@@ -1015,7 +1029,7 @@
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
-              <a href="http://sub.festival-cannes.fr/" class="button" target="_blank">Voir le formulaire</a>
+              <a href="http://sub.festival-cannes.fr/" class="button autoBtn" target="_blank">Voir le formulaire</a>
             </div>
           </div>
 
@@ -1042,7 +1056,7 @@
               <strong class="bold-1">Vous avez une demande à formuler ou souhaitez faire une suggestion ?</strong>
               <p>Identifiez votre interlocuteur pour un meilleur traitement de votre demande</p>
               <div class="buttons-02">
-                <a href="#" class="button">Formulaire de contact</a>
+                <a href="#" class="button autoBtn">Formulaire de contact</a>
               </div>
             </div>
 

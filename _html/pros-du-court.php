@@ -95,7 +95,7 @@
                     <div class="box b events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -116,7 +116,7 @@
                     <div class="box c events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -156,7 +156,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/person.png" alt="">
+                          <img src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -168,7 +168,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="http://blog-photocontact.vellozzi.com/wp-content/uploads/2011/10/Martin-Schoeller-Barack-Obama-portrait.jpeg" alt="">
+                          <img src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -222,6 +222,7 @@
                 <div class="photo">
                   <div class="photoContainer">
                     <img src="img/person.png" alt="">
+                    <img src="img/member.jpg" alt="">
                   </div>
                 </div>
                 <div class="titleBig">
@@ -242,15 +243,15 @@
                 <div class="authors">
                   <div class="full">
                     <h4>Florence KELLER von midtag</h4>
-                    <div class="job"><img src="img/flyingPaper.png" alt=""><h4><a href="mailto:aki@shortshorts.org">productrice</a></h4></div>
+                    <div class="job"><h4>productrice</h4><a href="mailto:aki@shortshorts.org"><img src="img/flyingPaper.png" alt=""></a></div>
                   </div>
                   <div class="full">
                     <h4>Augustin Keller von Keller</h4>
-                    <div class="job"><img src="img/flyingPaper.png" alt=""><h4><a href="mailto:aki@shortshorts.org">acheteuse</a></h4></div>
+                    <div class="job"><h4>acheteuse</h4><a href="mailto:aki@shortshorts.org"><img src="img/flyingPaper.png" alt=""></a></div>
                   </div>
                   <div class="full">
                     <h4>Gertrude von Munchen</h4>
-                    <div class="job"><img src="img/flyingPaper.png" alt=""><h4><a href="mailto:aki@shortshorts.org">actrice</a></h4></div>
+                    <div class="job"><h4>actrice</h4><a href="mailto:aki@shortshorts.org"><img src="img/flyingPaper.png" alt=""></a></div>
                   </div>
                 </div>
                 <div class="content">
