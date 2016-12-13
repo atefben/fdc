@@ -539,3 +539,6 @@
 .categorie-items article .infos-item-list .sub-title-item {
     padding-bottom: 14px;
 }
+.notloaded {
+    background-color:#000;
+}

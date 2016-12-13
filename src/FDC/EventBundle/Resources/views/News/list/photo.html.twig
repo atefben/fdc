@@ -21,7 +21,7 @@
                            data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"></a>
                         {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                         {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
-                        <img data-original="{% path trans.file , resolution %}"  alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}" class="lazy">
+                        <img data-original="{% path trans.file , resolution %}"  alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}" class="lazy notloaded">
                         <div class="picto"><i class="icon icon_photo"></i></div>
                         <div class="info">
                             <div class="vCenter">
