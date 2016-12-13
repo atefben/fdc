@@ -238,10 +238,12 @@
           
               <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
               <hr class="greyHr">
-              <strong class="title-25"><h3>Avant de soumettre votre film</h3></strong>
-              <p>Merci de consulter le règlement 2017 Merci de consulter le règlement 2017 Merci de consulter le règlement 2017 Merci de consulter le règlement 2017Merci de consulter le règlement 2017Merci de consulter le règlement 2017Merci de consulter le règlement 2017</p>
-              <div class="buttons-02">
-                <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement Voir le règlement Voir le règlement Voir le règlement</a>
+              <div class="block-01-ms">
+                <strong class="title-25"><h3>Avant de soumettre votre film</h3></strong>
+                <p>Merci de consulter le règlement 2017 Merci de consulter le règlement 2017 Merci de consulter le règlement 2017 Merci de consulter le règlement 2017Merci de consulter le règlement 2017Merci de consulter le règlement 2017Merci de consulter le règlement 2017</p>
+                <div class="buttons-02">
+                  <a href="http://l3-html.festival-cannes-2016.com.ohwee.fr/build/participate-rules.html" class="button autoBtn" target="_blank">Voir le règlement Voir le règlement Voir le règlement Voir le règlement</a>
+                </div>
               </div>
             </div>
           </div>
