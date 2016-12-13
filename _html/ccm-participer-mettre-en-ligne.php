@@ -62,29 +62,31 @@
             </div>
           </div>
         </div>       
-        <div class="block-s-info">
-          <div class="block-01-ms vFlexAlign">
-          <strong class="title-25"><h3>Caractéristiques du fichier :</h3></strong>
-          <p>Seuls les fichiers multiplexés seront acceptés (vidéo, audio et sous-titres dans un seul et même fichier). La taille maximum du fichier doit être de 8 GO pour chaque film. Plus la résolution est importante, meilleure sera la qualité de numérisation. Vous pouvez mettre en ligne des films avec une résolution allant jusqu’à 1920x1080 pixels (HD), tout en respectant le critère de taille évoqué plus haut.</p>
-          </div>
-        </div>     
-        <div class="block-s-info">
-          <div class="block-01-ms vFlexAlign">
-          <strong class="title-25"><h3>Sous-titres :</h3></strong>
-          <p>Vous serez prévenu avant la conférence de presse officielle, qui a lieu vers la mi-avril.</p>
-          <p>Les sous-titres doivent être incrustés dans l’image.</p>
-          </div>
-        </div>   
-        <div class="block-s-info">
-          <div class="block-01-ms vFlexAlign">
-          <strong class="title-25"><h3>Préparation du film :</h3></strong>
-          <p>Assurez-vous que votre film ne comporte pas de barres de couleurs ou de séquence noire avant le début ou après la fin du film. Assurez-vous également que votre film ne soit pas entrelacé (c’est-à-dire avec des lignes horizontales striant l’image, particulièrement visibles lors des séquences avec du mouvement rapide).</p>
-          </div>
-        </div>     
-        <div class="block-s-info">
-          <div class="block-01-ms vFlexAlign">
-          <strong class="title-25"><h3>Renseignement utile :</h3></strong>
-          <p>Vous trouverez ci-contre le manuel expliquant comment extraire votre film d’un DVD ou réencoder un fichier vidéo dans un format adapté au téléchargement sur notre site. Outre les logiciels professionnels type Final Cut ou Premiere, les logiciels que nous recommandons (gratuits et simples d’utilisation) sont <a href="#">HandBrake</a> et MPEG Streamclip.</p>
+        <div class="block-register-pop">
+          <div class="block-s-info">
+            <div class="block-01-ms vFlexAlign">
+            <h6>Caractéristiques du fichier :</h6>
+            <p>Seuls les fichiers multiplexés seront acceptés (vidéo, audio et sous-titres dans un seul et même fichier). La taille maximum du fichier doit être de 8 GO pour chaque film. Plus la résolution est importante, meilleure sera la qualité de numérisation. Vous pouvez mettre en ligne des films avec une résolution allant jusqu’à 1920x1080 pixels (HD), tout en respectant le critère de taille évoqué plus haut.</p>
+            </div>
+          </div>     
+          <div class="block-s-info">
+            <div class="block-01-ms vFlexAlign">
+            <strong class="title-25"><h6>Sous-titres :</h6></strong>
+            <p>Vous serez prévenu avant la conférence de presse officielle, qui a lieu vers la mi-avril.</p>
+            <p>Les sous-titres doivent être incrustés dans l’image.</p>
+            </div>
+          </div>   
+          <div class="block-s-info">
+            <div class="block-01-ms vFlexAlign">
+            <strong class="title-25"><h6>Préparation du film :</h6></strong>
+            <p>Assurez-vous que votre film ne comporte pas de barres de couleurs ou de séquence noire avant le début ou après la fin du film. Assurez-vous également que votre film ne soit pas entrelacé (c’est-à-dire avec des lignes horizontales striant l’image, particulièrement visibles lors des séquences avec du mouvement rapide).</p>
+            </div>
+          </div>     
+          <div class="block-s-info">
+            <div class="block-01-ms vFlexAlign">
+            <strong class="title-25"><h6>Renseignement utile :</h6></strong>
+            <p>Vous trouverez ci-contre le manuel expliquant comment extraire votre film d’un DVD ou réencoder un fichier vidéo dans un format adapté au téléchargement sur notre site. Outre les logiciels professionnels type Final Cut ou Premiere, les logiciels que nous recommandons (gratuits et simples d’utilisation) sont <a href="#">HandBrake</a> et MPEG Streamclip.</p>
+            </div>
           </div>
         </div>         
         <!--<button class="modal-toggle">Update</button>-->
