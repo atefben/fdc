@@ -24,15 +24,17 @@
     <div class="bck-hover">
         <div class="wrapper-item">
             <div class="poster">
-                {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
-                film: movie,
-                film_format: 'mobile',
-                film_attrs: {
-                alt: movie|trans_fallback('title')?:movie.titleVO,
-                'data-object-fit': 'cover'
-                },
-                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                }) %}
+                <a href="{{ path('fdc_corporate_movie_get', {slug: movie.slug}) }}">
+                    {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
+                    film: movie,
+                    film_format: 'mobile',
+                    film_attrs: {
+                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                    'data-object-fit': 'cover'
+                    },
+                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                    }) %}
+                </a>
             </div>
             <div class="infos">
                 {% if award_association is defined and award_association %}
