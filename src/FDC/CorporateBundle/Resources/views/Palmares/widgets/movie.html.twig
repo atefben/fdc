@@ -51,7 +51,7 @@
                         </strong>
                     {% endif %}
                 {% endif %}
-                {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
+                {% if award_association != '' and award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
                     {% if award_association.award.filmMutual %}
                         <strong class="name-f line">
                             {% for assocationMutual in award_association.award.associations %}
