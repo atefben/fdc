@@ -1849,9 +1849,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   flex-direction: column;
   /*height: 300px;*/
   height: auto;
-  padding-top: 62px;
+  padding: 50px 0px;
   color: #fff;
-  text-align: center;
   text-align: center;
   background: center 0 no-repeat fixed;
   background-size: cover;
@@ -28205,22 +28204,26 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .movieOnline {
-  padding-top: 60px;
-  padding-bottom: 70px;
+  padding-bottom: 70px !important;
+  margin-top: 50px !important;
   text-align: left;
   height: auto;
+  border-top: 2px solid #ececec;
 }
 .movieOnline .centered {
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 10px;
   text-align: center;
 }
 .movieOnline h3 {
   font-size: 16px;
   line-height: 50px;
+  text-align: center;
+  padding: 40px 0px 30px 0px;
 }
 .movieOnline .formBtn {
   line-height: 50px;
+  text-align: center;
 }
 
 .mediumWrapper {
