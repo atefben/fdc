@@ -28629,6 +28629,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     float: none;
   }
 }
+.confcourtaccordion .selectbtn:hover {
+  background: #c3a05f;
+  border: 2px solid #c3a05f;
+  color: white;
+}
 @media screen and (max-width: 1024px) {
   .confcourtaccordion #eventSelector  {
     padding: 0px 160px !important;
@@ -28657,6 +28662,16 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   height: auto;
   margin: 0 auto;
 }
+@media screen and (min-width: 1600px) {
+  .confcourt {
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .confcourt {
+    max-width: 100%;
+  }
+}
 .confcourt .content {
   max-width: 1366px;
   padding: 70px 0px;
@@ -28664,6 +28679,16 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   margin: 0 auto;
   text-align: center;
   display: block;
+}
+@media screen and (min-width: 1600px) {
+  .confcourt .content {
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .confcourt .content {
+    max-width: 100%;
+  }
 }
 .confcourt .box {
   width: 19.88888%;
@@ -28686,12 +28711,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 @media screen and (min-width: 1600px) {
   .confcourt .box {
-    width: 15.9%;
+    width: 16.6%;
   }
 }
 @media screen and (min-width: 1920px) {
   .confcourt .box {
-    width: 13.9%;
+    width: 14.222222%;
   }
 }
 .confcourt .box:hover {

@@ -9,6 +9,12 @@
     @media screen and (max-width: 1024px) {
       float: none;
     }
+
+    &:hover {
+      background: #c3a05f; 
+      border: 2px solid #c3a05f; 
+      color: white;
+    }
   }
 
   #eventSelector {
@@ -41,12 +47,24 @@
   position: relative;
   height: auto;
   margin: 0 auto;
+  @media screen and (min-width: 1600px) {
+    max-width: 100%;
+  } 
+  @media screen and (min-width: 1920px) {
+    max-width: 100%;
+  }
 
   .content {
     max-width: 1366px;
     padding: 70px 0px;
     min-height: 1000px;
     @include align();
+    @media screen and (min-width: 1600px) {
+      max-width: 100%;
+    } 
+    @media screen and (min-width: 1920px) {
+      max-width: 100%;
+    }
   }
 
   .box {
@@ -59,10 +77,10 @@
       width: 19.9%;
     }   
     @media screen and (min-width: 1600px) {
-      width: 15.9%;
+      width: 16.6%;
     } 
     @media screen and (min-width: 1920px) {
-      width: 13.9%;
+      width: 14.222222%;
     }
       height: 340px;
       float: left;
