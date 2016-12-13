@@ -67,20 +67,45 @@ class SearchController extends Controller
         $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4, 1, $this->container->getParameter('fdc_year'));
         $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6, 1, $this->container->getParameter('fdc_year'));
 
-        $arrays = ['newsResults', 'infoResults', 'statementResults'];
-        foreach ($arrays as $array) {
-            foreach (${$array} as $key => $item) {
-                $exclude = true;
-                if ($item && $this->getEventSite()) {
-                    if ($item->getSites()->contains($this->getEventSite())) {
-                        $exclude = false;
-                    }
-                    if ($item->getSites()->contains($this->getPressSite())) {
-                        $exclude = false;
-                    }
-                    if ($exclude) {
-                        unset($newsResults[$key]);
-                    }
+        foreach ($newsResults['items'] as $key => $item) {
+            $exclude = true;
+            if ($item && $this->getEventSite()) {
+                if ($item->getSites()->contains($this->getEventSite())) {
+                    $exclude = false;
+                }
+                if ($item->getSites()->contains($this->getPressSite())) {
+                    $exclude = false;
+                }
+                if ($exclude) {
+                    unset($newsResults[$key]);
+                }
+            }
+        }
+        foreach ($infoResults['items'] as $key => $item) {
+            $exclude = true;
+            if ($item && $this->getEventSite()) {
+                if ($item->getSites()->contains($this->getEventSite())) {
+                    $exclude = false;
+                }
+                if ($item->getSites()->contains($this->getPressSite())) {
+                    $exclude = false;
+                }
+                if ($exclude) {
+                    unset($infoResults[$key]);
+                }
+            }
+        }
+        foreach ($statementResults['items'] as $key => $item) {
+            $exclude = true;
+            if ($item && $this->getEventSite()) {
+                if ($item->getSites()->contains($this->getEventSite())) {
+                    $exclude = false;
+                }
+                if ($item->getSites()->contains($this->getPressSite())) {
+                    $exclude = false;
+                }
+                if ($exclude) {
+                    unset($statementResults[$key]);
                 }
             }
         }
