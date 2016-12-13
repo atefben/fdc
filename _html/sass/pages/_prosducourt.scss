@@ -10,9 +10,13 @@
       float: none;
     }
 
+    .purpleBtn {
+      /*border: 2px solid #c3a05f!important;*/
+    }
+
     &:hover {
       background: #c3a05f; 
-      border: 2px solid #c3a05f; 
+      /*border: 2px solid #c3a05f;*/
       color: white;
     }
   }

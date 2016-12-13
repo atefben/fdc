@@ -28629,9 +28629,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     float: none;
   }
 }
+.confcourtaccordion .selectbtn .purpleBtn {
+  /*border: 2px solid #c3a05f!important;*/
+}
 .confcourtaccordion .selectbtn:hover {
   background: #c3a05f;
-  border: 2px solid #c3a05f;
+  /*border: 2px solid #c3a05f;*/
   color: white;
 }
 @media screen and (max-width: 1024px) {
