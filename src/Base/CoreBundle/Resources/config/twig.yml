@@ -150,11 +150,13 @@ services:
             - { name: twig.extension }
         arguments: ["%locale_fallback%", "@request_stack"]
 
-    base.twig.legacy_film_image_extension:
-        class: Base\CoreBundle\Twig\Extension\LegacyFilmImageExtension
+    base.twig.legacy_image_extension:
+        class: Base\CoreBundle\Twig\Extension\LegacyImageExtension
         arguments: ['@database_connection']
         tags:
             - { name: twig.extension }
+        calls:
+          - ['setDoctrine', ['@doctrine']]
 
     base.twig.remove_accents_extension:
         class: Base\CoreBundle\Twig\Extension\RemoveAccentsExtension
