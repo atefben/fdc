@@ -390,7 +390,7 @@ $(document).ready(function () {
 
         window.setTimeout(function() {
           $grid.isotope('layout');
-        }, 2000);
+        }, 5000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -420,7 +420,7 @@ $(document).ready(function () {
         $grid.isotope('layout');
         window.setTimeout(function() {
           $grid.isotope('layout');
-        }, 2000);
+        }, 5000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -505,7 +505,7 @@ $(document).ready(function () {
         $grid.isotope('layout');
         window.setTimeout(function() {
           $grid.isotope('layout');
-        }, 2000);
+        }, 5000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -611,7 +611,7 @@ $(document).ready(function () {
         $grid.isotope('layout');
         window.setTimeout(function() {
           $grid.isotope('layout');
-        }, 2000);
+        }, 5000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
