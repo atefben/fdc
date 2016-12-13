@@ -114,7 +114,7 @@ class DefaultController extends Controller
             }
         }
 
-        
+
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      CANNES RELEASES      /////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ class DefaultController extends Controller
             'featuredVideo'      => $featuredVideo,
             'festivalStartsAt'   => $homepage->getFestivalStartsAt(),
             'gallery'            => $gallery,
-            'glry'              => $glry,
+            'glry'               => $glry,
             'filters'            => $filters
         );
     }
