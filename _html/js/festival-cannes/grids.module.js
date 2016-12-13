@@ -53,7 +53,7 @@ function setGrid(grid, dom, init){
   $("img.lazy").lazyload({
     load : function()
     {
-      $(this).removeClass('notloaded');
+      $(this).parent().removeClass('notloaded');
     }
   });
   var $img            = $(dom).find('.item img'),
@@ -324,7 +324,7 @@ function setImages(grid, dom, init) {
   $("img.lazy").lazyload({
     load : function()
     {
-      $(this).removeClass('notloaded');
+      $(this).parent().removeClass('notloaded');
     }
   });
 
