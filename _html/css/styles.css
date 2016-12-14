@@ -7055,6 +7055,9 @@ a {
   text-align: center;
   width: 73px;
 }
+.buttons.square .button .icon {
+  margin-right: 0px !important;
+}
 .buttons.square .button:hover {
   border-color: #dfdfdf;
 }

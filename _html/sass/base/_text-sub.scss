@@ -767,6 +767,9 @@ a {
     padding: 0;
     text-align: center;
     width: 73px;
+    .icon {
+      margin-right: 0px!important;
+    }
 
     &:hover {
       border-color: #dfdfdf;
