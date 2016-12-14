@@ -73,27 +73,13 @@ class LegacyImageExtension extends Twig_Extension
     public function getLegacyFilmImage(FilmFilm $movie)
     {
         if ((int)$movie->getProductionYear() < 2014) {
+            $output = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                ->getLegacyFilmImage($movie)
+            ;
 
-            $query = 'SELECT DISTINCT p.*
-            FROM
-              legacy_mapping_film_photo p
-            LEFT JOIN legacy_mapping_film_festival_poster fp ON p.IDPOSTER = fp.IDPOSTER
-            WHERE
-              IDFILM = :id_film
-              AND TYPE = :type
-              AND (TITRE = "Photo du Film" OR IDTYPEPHOTO IN (51, 14))
-              ORDER BY IDTYPEPHOTO DESC, fp.DATEMODIFICATION ASC, IDPHOTO DESC';
-            $stmt = $this->connection->prepare($query);
-            $stmt->bindValue('id_film', $movie->getId());
-            $stmt->bindValue('type', 'I');
-            $stmt->execute();
-            $results = $stmt->fetchAll(Query::HYDRATE_ARRAY);
-            foreach ($results as $result) {
-                if (is_array($result) && array_key_exists('FICHIER', $result) && $result['FICHIER']) {
-                    return $result;
-                }
-            }
-            return false;
+            return $output;
         }
     }
 

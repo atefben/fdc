@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * OldFilmPhoto
  *
  * @ORM\Table(name="old_FILM_PHOTO", indexes={@ORM\Index(name="INDFPIDPERS", columns={"IDPERSONNE"}), @ORM\Index(name="FILM_PHOTO_FI_3", columns={"IDGENERIQUE"}), @ORM\Index(name="FILM_PHOTO_FI_4", columns={"IDJURY"}), @ORM\Index(name="FILM_PHOTO_FI_5", columns={"IDEVENEMENT"}), @ORM\Index(name="IDFILM", columns={"IDFILM"}), @ORM\Index(name="IDFESTIVAL", columns={"IDFESTIVAL"}), @ORM\Index(name="INTERNET", columns={"INTERNET"}), @ORM\Index(name="DATEMODIFICATION", columns={"DATEMODIFICATION"}), @ORM\Index(name="TITRE", columns={"TITRE"}), @ORM\Index(name="TITRE_VA", columns={"TITRE_VA"}), @ORM\Index(name="TYPE", columns={"TYPE"}), @ORM\Index(name="FICHIER", columns={"FICHIER"}), @ORM\Index(name="IDX_81E862413A195133", columns={"IDGENERIQUEATELIER"}), @ORM\Index(name="IDX_81E8624193F7B0E0", columns={"IDFILMATELIER"}), @ORM\Index(name="IDX_81E86241793FAD3", columns={"IDPERSONNECINEF"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\OldFilmPhotoRepository")
  */
 class OldFilmPhoto
 {
