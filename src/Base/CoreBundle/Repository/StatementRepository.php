@@ -498,7 +498,7 @@ class StatementRepository extends EntityRepository
      * @param $endAt
      * @return array|\Doctrine\ORM\QueryBuilder
      */
-    public function getStatementRetrospective($locale, $festival, $startsAt, $endAt)
+    public function getStatementRetrospective($locale, $festival, $startsAt, $endsAt)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -542,7 +542,7 @@ class StatementRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('startsAt', $startsAt)
-            ->setParameter('endAt', $endAt)
+            ->setParameter('endsAt', $endsAt)
             ->setParameter('site', 'site-institutionnel')
             ->getQuery()
             ->getResult()

@@ -881,7 +881,7 @@ class NewsRepository extends EntityRepository
      * @param $endAt
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getNewsRetrospective($locale, $festival, $startsAt, $endAt)
+    public function getNewsRetrospective($locale, $festival, $startsAt, $endsAt)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -931,7 +931,7 @@ class NewsRepository extends EntityRepository
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('startsAt', $startsAt)
-            ->setParameter('endAt', $endAt)
+            ->setParameter('endsAt', $endsAt)
             ->setParameter('site_slug', 'site-institutionnel')
         ;
 
