@@ -2189,6 +2189,18 @@ a {
   width: 100%;
   z-index: 3;
 
+  &:before {
+    content: " ";
+    background: url(/img/palmeBckg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    height: 1000px;
+    width: 100%;
+    left: 0;
+    top: 8%;
+  }
+
 
   .innerWrapper {
     width: 1152px;
@@ -2287,7 +2299,6 @@ a {
 }
 
 .palmeBckg {
-    height: 550px;
     width: 1366px;
     @include align();
     left: 0;
@@ -2298,6 +2309,7 @@ a {
     z-index: 2;
     margin-top: 0px;
     width: 100%;
+    margin-top: -500px;
 
     .img {
       position: absolute;

@@ -250,7 +250,7 @@
           </div>
         </div>
 
-        <img class="palmeBckg" src="img/palmeBckg.png">
+        <!--<img class="palmeBckg" src="img/palmeBckg.png">-->
 
       <div class="about">
         <div class="innerWrapper">
