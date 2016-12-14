@@ -925,7 +925,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('startsAt', $startsAt)
             ->setParameter('endAt', $endAt)
-            ->setParameter('site_slug', 'site-institutionnel')
+            ->setParameter('site_slug', 'site-evenementiel')
         ;
 
         $this->addMasterQueries($qb, 'n', $festival, true);
