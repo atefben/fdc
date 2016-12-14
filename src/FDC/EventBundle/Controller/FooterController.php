@@ -5,17 +5,13 @@ namespace FDC\EventBundle\Controller;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
-
 use Eko\FeedBundle\Field\Channel\ChannelField;
 use FDC\EventBundle\Component\Controller\Controller;
+use FDC\EventBundle\Form\Type\ContactType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
-use FDC\EventBundle\Form\Type\ContactType;
-use FDC\EventBundle\Form\Type\NewsletterType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -27,7 +23,6 @@ class FooterController extends Controller
 {
     /**
      * @Route("/static-{page}")
-     *
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -49,15 +44,17 @@ class FooterController extends Controller
      * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
-    public function privacyAction(Request $request) {
+    public function privacyAction(Request $request)
+    {
 
-        $locale   = $request->getLocale();
+        $locale = $request->getLocale();
         $pageId = $this->getParameter('admin_fdc_footer_confidentialite_id');
         $em = $this->get('doctrine')->getManager();
 
         $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
             array('id' => $pageId)
-        );
+        )
+        ;
 
         // SEO
         $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
@@ -72,15 +69,17 @@ class FooterController extends Controller
      * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
-    public function mentionsLegalesAction(Request $request) {
+    public function mentionsLegalesAction(Request $request)
+    {
 
-        $locale   = $request->getLocale();
+        $locale = $request->getLocale();
         $pageId = $this->getParameter('admin_fdc_footer_mentions_legales_id');
         $em = $this->get('doctrine')->getManager();
 
         $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
             array('id' => $pageId)
-        );
+        )
+        ;
 
         // SEO
         $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
@@ -95,15 +94,17 @@ class FooterController extends Controller
      * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
-    public function creditsAction(Request $request) {
+    public function creditsAction(Request $request)
+    {
 
-        $locale   = $request->getLocale();
+        $locale = $request->getLocale();
         $pageId = $this->getParameter('admin_fdc_footer_credits_id');
         $em = $this->get('doctrine')->getManager();
 
         $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
             array('id' => $pageId)
-        );
+        )
+        ;
 
         // SEO
         $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
@@ -118,9 +119,10 @@ class FooterController extends Controller
      * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
-    public function pageLibresAction(Request $request, $slug) {
+    public function pageLibresAction(Request $request, $slug)
+    {
 
-        $locale   = $request->getLocale();
+        $locale = $request->getLocale();
         $em = $this->get('doctrine')->getManager();
 
         $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->getPageBySlug($slug, $locale);
@@ -133,7 +135,7 @@ class FooterController extends Controller
         $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
 
         return array(
-            'page' => $content,
+            'page'        => $content,
             'localeSlugs' => $localeSlugs,
         );
     }
@@ -143,20 +145,22 @@ class FooterController extends Controller
      * @Template("FDCEventBundle:Footer:faq.html.twig")
      * @return array
      */
-    public function faqAction(Request $request) {
+    public function faqAction(Request $request)
+    {
 
         $em = $this->get('doctrine')->getManager();
         $themes = $em->getRepository('BaseCoreBundle:FAQTheme')->findAll();
         $faq = array();
-        foreach($themes as $key => $theme) {
+        foreach ($themes as $key => $theme) {
             $faq[$key]['faq'] = $em->getRepository('BaseCoreBundle:FAQPage')->findby(
                 array('theme' => $theme)
-            );
+            )
+            ;
             $faq[$key]['theme'] = $theme;
         }
 
         return array(
-            'faq' => $faq
+            'faq' => $faq,
         );
     }
 
@@ -165,84 +169,103 @@ class FooterController extends Controller
      * @Template("FDCEventBundle:Footer:plan-du-site.html.twig")
      * @return array
      */
-    public function siteMapAction(Request $request) {
+    public function siteMapAction(Request $request)
+    {
 
         $locale = $request->getLocale();
-        $em     = $this->get('doctrine')->getManager();
+        $festival = $this->getFestival();
 
         //routes from menu
-        $routes = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+        $routes = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCEventRoutes')
+            ->childrenHierarchy()
+        ;
 
         // Menu Participer
-        $participatePage    = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
-        $preparePage        = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
+        $participatePage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageParticipate')
+            ->findAll();
+
+        $preparePage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPagePrepare')
+            ->findBy(['id' => $this->getParameter('admin_fdc_page_prepare_id')])
+        ;
 
         $participateMenu = array_merge($preparePage, $participatePage);
 
         $displayedRoutes = array();
         $press = array();
-        foreach($routes as $menu){
-            if($menu['site'] == FDCEventRoutesInterface::EVENT){
+        foreach ($routes as $menu) {
+            if ($menu['site'] == FDCEventRoutesInterface::EVENT) {
                 $displayedRoutes[] = $menu;
             }
 
-            if($menu['site'] == FDCEventRoutesInterface::PRESS){
+            if ($menu['site'] == FDCEventRoutesInterface::PRESS) {
                 $press[] = $menu;
             }
         }
 
         // la selection
-        $selectionTabs = $em
+        $selectionTabs = $this
+            ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageLaSelection')
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
-        $cannesClassics = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+        $cannesClassics = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
+            ->getAll($locale, $festival, true)
+        ;
 
         //jury
-        $jury = $em
-            ->getRepository('BaseCoreBundle:FDCPageJury')
-            ->getPages($locale)
+        $jury = $this->getDoctrineManager()
+                     ->getRepository('BaseCoreBundle:FDCPageJury')
+                     ->getPages($locale)
         ;
 
         //palmares
-        $award = $em
-            ->getRepository('BaseCoreBundle:FDCPageAward')
-            ->getPages($locale)
+        $award = $this->getDoctrineManager()
+                      ->getRepository('BaseCoreBundle:FDCPageAward')
+                      ->getPages($locale)
         ;
 
         //footer
-        $displayedFooterElements = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
+        $displayedFooterElements = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
             array('type' => 2, 'site' => 1),
             array('position' => 'asc'),
             null,
             null
-        );
+        )
+        ;
 
         //events
         $festival = $this->getFestival()->getId();
-        $events = $em
-                ->getRepository('BaseCoreBundle:Event')
-                ->getEvents($festival, $locale)
+        $events = $this->getDoctrineManager()
+                       ->getRepository('BaseCoreBundle:Event')
+                       ->getEvents($festival, $locale)
         ;
 
         return array(
-            'events'            => $events,
-            'participate'       => $participateMenu,
-            'footer'            => $displayedFooterElements,
-            'press'             => $press,
-            'award'             => $award,
-            'jury'              => $jury,
-            'cannesClassics'    => $cannesClassics,
-            'selectionTabs'     => $selectionTabs,
-            'routes'            => $displayedRoutes
+            'events'         => $events,
+            'participate'    => $participateMenu,
+            'footer'         => $displayedFooterElements,
+            'press'          => $press,
+            'award'          => $award,
+            'jury'           => $jury,
+            'cannesClassics' => $cannesClassics,
+            'selectionTabs'  => $selectionTabs,
+            'routes'         => $displayedRoutes,
         );
     }
 
     /**
      * @Route("/contact")
      * @Template("FDCEventBundle:Footer:contact.html.twig")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return array
      */
     public function contactAction(Request $request)
     {
@@ -258,23 +281,24 @@ class FooterController extends Controller
             $theme = $em->getRepository('BaseCoreBundle:ContactTheme')->findOneById($form->get('select')->getData());
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()
-                    ->setSubject($form->get('subject')->getData())
-                    ->setFrom('noreply@festival-cannes.com')
-                    ->setTo($theme->getEmail())
-                    ->setContentType('text/html')
-                    ->setBody(
-                        $this->renderView(
-                            'FDCEventBundle:Mail:contact.html.twig',
-                            array(
-                                'contact_email' => $form->get('email')->getData(),
-                                'contact_ip' => $request->getClientIp(),
-                                'contact_name' => $form->get('name')->getData(),
-                                'contact_subject' => $form->get('subject')->getData(),
-                                'contact_theme' => $form->get('select')->getData(),
-                                'contact_message' => $form->get('message')->getData()
-                            )
-                        )
-                    );
+                                         ->setSubject($form->get('subject')->getData())
+                                         ->setFrom('noreply@festival-cannes.com')
+                                         ->setTo($theme->getEmail())
+                                         ->setContentType('text/html')
+                                         ->setBody(
+                                             $this->renderView(
+                                                 'FDCEventBundle:Mail:contact.html.twig',
+                                                 array(
+                                                     'contact_email'   => $form->get('email')->getData(),
+                                                     'contact_ip'      => $request->getClientIp(),
+                                                     'contact_name'    => $form->get('name')->getData(),
+                                                     'contact_subject' => $form->get('subject')->getData(),
+                                                     'contact_theme'   => $form->get('select')->getData(),
+                                                     'contact_message' => $form->get('message')->getData(),
+                                                 )
+                                             )
+                                         )
+                ;
 
                 $this->get('mailer')->send($message);
                 $this->get('session')->getFlashBag()->add('success', 'Email sent');
@@ -284,8 +308,8 @@ class FooterController extends Controller
         }
 
         return array(
-            'form' => $form->createView(),
-            'hasErrors' => $hasErrors
+            'form'      => $form->createView(),
+            'hasErrors' => $hasErrors,
         );
 
     }

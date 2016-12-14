@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\News;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -65,6 +66,57 @@ class SearchController extends Controller
         $participateResults = $this->getSearchResults($_locale, 'participate', $searchTerm, 2);
         $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4, 1, $this->container->getParameter('fdc_year'));
         $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6, 1, $this->container->getParameter('fdc_year'));
+
+        foreach ($newsResults['items'] as $key => $item) {
+            $exclude = true;
+            if ($item) {
+                if ($this->getEventSite() && $item->getSites()->contains($this->getEventSite())) {
+                    $exclude = false;
+                }
+                if ($this->getPressSite() && $item->getSites()->contains($this->getPressSite())) {
+                    $exclude = false;
+                }
+                if ($exclude) {
+                    unset($newsResults['items'][$key]);
+                    --$newsResults['count'];
+                }
+            }
+        }
+        $newsResults['items'] = array_values($newsResults['items']);
+
+        foreach ($infoResults['items'] as $key => $item) {
+            $exclude = true;
+            if ($item) {
+                if ($this->getEventSite() && $item->getSites()->contains($this->getEventSite())) {
+                    $exclude = false;
+                }
+                if ($this->getPressSite() && $item->getSites()->contains($this->getPressSite())) {
+                    $exclude = false;
+                }
+                if ($exclude) {
+                    unset($infoResults['items'][$key]);
+                    --$infoResults['count'];
+                }
+            }
+        }
+        $infoResults['items'] = array_values($infoResults['items']);
+
+        foreach ($statementResults['items'] as $key => $item) {
+            $exclude = true;
+            if ($item) {
+                if ($this->getEventSite() && $item->getSites()->contains($this->getEventSite())) {
+                    $exclude = false;
+                }
+                if ($this->getPressSite() && $item->getSites()->contains($this->getPressSite())) {
+                    $exclude = false;
+                }
+                if ($exclude) {
+                    unset($statementResults['items'][$key]);
+                    --$infoResults['count'];
+                }
+            }
+        }
+        $statementResults['items'] = array_values($statementResults['items']);
 
         $result = array(
             'category' => array(

@@ -27,7 +27,7 @@
                     {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                 {%- endif -%}
                 {% if transImage is defined or amazonImage is defined %}
-                    <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
+                    <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video notloaded"
                          data-vid="{{ video.id }}"
                          data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                          data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}">

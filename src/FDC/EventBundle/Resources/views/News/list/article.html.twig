@@ -19,7 +19,7 @@
                         <span class="picto">
                             <i class="icon icon_{{ article.newsType|get_news_type  }}"></i>
                         </span>
-                        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
+                        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}" class="notloaded">
                             {% if article is news_article %}
                                 {% set img = article.header %}
                                 {% set trans = img.findTranslationByLocale(app.request.locale) %}

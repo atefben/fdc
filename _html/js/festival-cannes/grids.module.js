@@ -50,7 +50,12 @@ function resizeGrid() {
 }
 
 function setGrid(grid, dom, init){
-  $("img.lazy").lazyload();
+  $("img.lazy").lazyload({
+    load : function()
+    {
+      $(this).parent().removeClass('notloaded');
+    }
+  });
   var $img            = $(dom).find('.item img'),
       pourcentage     = 0.30,
       nbImgAAgrandir  = $img.length * pourcentage,
@@ -316,7 +321,12 @@ function setGrid(grid, dom, init){
 }
 
 function setImages(grid, dom, init) {
-  $("img.lazy").lazyload();
+  $("img.lazy").lazyload({
+    load : function()
+    {
+      $(this).parent().removeClass('notloaded');
+    }
+  });
 
   var $img            = $(dom).find('.item:not(.portrait) img'),
       pourcentage     = 0.50,
@@ -387,7 +397,10 @@ $(document).ready(function () {
             columnWidth : '.grid-sizer'
           }
         });
-        $grid.isotope('layout');
+
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -415,6 +428,9 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -497,6 +513,9 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
         var timer;
         $(window).scroll(function() {
           if(timer) {
@@ -600,6 +619,9 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
         var timer;
         $(window).scroll(function() {
           if(timer) {

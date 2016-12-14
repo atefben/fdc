@@ -5,7 +5,6 @@ namespace FDC\EventBundle\Component\Controller;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\Settings;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,9 +12,9 @@ class Controller extends BaseController
 {
     public function createDateRangeArrayEvent($strDateFrom, $strDateTo, $reverse = true)
     {
-        $aryRange  = array();
+        $aryRange = array();
         $iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
-        $iDateTo   = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
+        $iDateTo = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
         if ($iDateTo >= $iDateFrom) {
             array_push($aryRange, date('Y-m-d', $iDateFrom));
             while ($iDateFrom < $iDateTo) {
@@ -50,7 +49,7 @@ class Controller extends BaseController
             'InfoAudio'      => 'getAudio',
             'StatementAudio' => 'getAudio',
             'InfoVideo'      => 'getVideo',
-            'StatementVideo' => 'getVideo'
+            'StatementVideo' => 'getVideo',
         );
 
         foreach ($newsTypes as $newsType) {
@@ -114,7 +113,7 @@ class Controller extends BaseController
     public function isPageEnabled($route)
     {
         $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
-            'route' => $route
+            'route' => $route,
         ))
         ;
 
@@ -158,7 +157,7 @@ class Controller extends BaseController
     public function getFestival($year = null)
     {
 
-        if(is_null($year)) {
+        if (is_null($year)) {
             if (!$this->getSettings() || $this->getSettings()->getFestival() === null) {
                 throw $this->createNotFoundException();
             }
@@ -166,7 +165,7 @@ class Controller extends BaseController
             return $this->getSettings()->getFestival();
         } else {
             $festival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($year);
-            if(!$festival) {
+            if (!$festival) {
                 throw $this->createNotFoundException();
             } else {
                 return $festival;
@@ -189,11 +188,11 @@ class Controller extends BaseController
             $debug = debug_backtrace();
             if (isset($debug[1]) && isset($debug[1]['class']) && strpos($debug[1]['class'], 'Mobile')) {
                 return $this->render('FDCEventMobileBundle:Global:waiting-page.html.twig', array(
-                    'waitingPage' => $waitingPage
+                    'waitingPage' => $waitingPage,
                 ));
             } else {
                 return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
-                    'waitingPage' => $waitingPage
+                    'waitingPage' => $waitingPage,
                 ));
             }
         }
@@ -204,6 +203,24 @@ class Controller extends BaseController
         if (!$object) {
             throw $this->createNotFoundException($message);
         }
+    }
+
+    public function getEventSite()
+    {
+        static $site = null;
+        if (!$site) {
+            $site = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Site')->findOneBy(['slug' => 'site-evenementiel']);
+        }
+        return $site;
+    }
+
+    public function getPressSite()
+    {
+        static $site = null;
+        if (!$site) {
+            $site = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Site')->findOneBy(['slug' => 'site-press']);
+        }
+        return $site;
     }
 
 }

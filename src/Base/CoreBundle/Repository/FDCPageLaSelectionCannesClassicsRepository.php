@@ -57,7 +57,7 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
             ;
     }
 
-    public function getAll($locale, $festival , $position = false)
+    public function getAll($locale, $festival, $position = false)
     {
         $qb = $this
             ->createQueryBuilder('cc')

@@ -14,7 +14,7 @@
                     {% endif %}
                     {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
                     {% set copyright = photo|trans_fallback('copyright') %}
-                    <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo.publishedAt|date('d-m-y') }} shadow-bottom photo {{ format }}">
+                    <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo.publishedAt|date('d-m-y') }} shadow-bottom photo {{ format }} notloaded">
                         <a id="photo{{ photo.id }}" class="ajax chocolat-image" data-pid="{{ photo.id }}"
                            href="{% path trans.file , 'reference' %}"
                            title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
