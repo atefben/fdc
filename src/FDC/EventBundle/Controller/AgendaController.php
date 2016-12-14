@@ -123,7 +123,7 @@ class AgendaController extends Controller
         $date = $request->get('date');
         $isPress = false;
 
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER') &&
+        if ($this->getUser() && $this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER') &&
             strpos($request->headers->get('referer'), 'press') !== false) {
             $isPress = true;
         }

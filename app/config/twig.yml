@@ -140,3 +140,4 @@ twig:
         header_cine_zh: '%header_cine_zh%'
         header_ccm_zh: '%header_ccm_zh%'
         header_mdf_zh: '%header_mdf_zh%'
+        selfkit_amazon_url: "%selfkit_amazon_url%"
