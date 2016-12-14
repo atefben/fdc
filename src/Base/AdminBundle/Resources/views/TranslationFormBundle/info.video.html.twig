@@ -262,6 +262,16 @@
                                                     {% endif %}
                                                 </span>
                                             </div>
+                                            <div>
+                                                <label>
+                                                    Chapeau
+                                                </label>
+                                                <div>
+                                                    {% if form.children.fr.vars.value is not null %}
+                                                        {{ form.children.fr.vars.value.introduction|raw }}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
                                             {% if form.parent.children.image.vars.value is not null %}
                                                 <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.image.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
