@@ -131,7 +131,7 @@
                     <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage">
                 {% endif %}
                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                <span class="picto"><i class="icon icon-{{ article.newsType|get_news_type }}"></i></span>
+                <span class="picto"><i class="icon icon-{{ article|get_news_type }}"></i></span>
 
             </div>
             <div class="info">

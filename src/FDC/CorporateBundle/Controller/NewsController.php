@@ -50,7 +50,7 @@ class NewsController extends Controller
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
         $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
         $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
-        $newsArticles = array_merge($newsArticles, $statementArticles, $infoArticles);
+        $newsArticles = array_merge($newsArticles,$statementArticles,$infoArticles);
 
         $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
         if ($newsArticles === null || count($newsArticles) == 0) {

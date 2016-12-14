@@ -496,8 +496,7 @@ class InfoRepository extends EntityRepository
             ->leftJoin('nv.translations', 'nvt')
             ->leftJoin('ni.translations', 'nit')
             ->andWhere('s.slug = :site')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :endAt)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :endAt) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
         ;
 
         $qb = $qb
