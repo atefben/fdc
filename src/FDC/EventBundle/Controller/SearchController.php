@@ -69,48 +69,54 @@ class SearchController extends Controller
 
         foreach ($newsResults['items'] as $key => $item) {
             $exclude = true;
-            if ($item && $this->getEventSite()) {
-                if ($item->getSites()->contains($this->getEventSite())) {
+            if ($item) {
+                if ($this->getEventSite() && $item->getSites()->contains($this->getEventSite())) {
                     $exclude = false;
                 }
-                if ($item->getSites()->contains($this->getPressSite())) {
+                if ($this->getPressSite() && $item->getSites()->contains($this->getPressSite())) {
                     $exclude = false;
                 }
                 if ($exclude) {
-                    unset($newsResults[$key]);
+                    unset($newsResults['items'][$key]);
+                    --$newsResults['count'];
                 }
             }
         }
+        $newsResults['items'] = array_values($newsResults['items']);
+
         foreach ($infoResults['items'] as $key => $item) {
             $exclude = true;
-            if ($item && $this->getEventSite()) {
-                if ($item->getSites()->contains($this->getEventSite())) {
+            if ($item) {
+                if ($this->getEventSite() && $item->getSites()->contains($this->getEventSite())) {
                     $exclude = false;
                 }
-                if ($item->getSites()->contains($this->getPressSite())) {
+                if ($this->getPressSite() && $item->getSites()->contains($this->getPressSite())) {
                     $exclude = false;
                 }
                 if ($exclude) {
-                    unset($infoResults[$key]);
+                    unset($infoResults['items'][$key]);
+                    --$infoResults['count'];
                 }
             }
         }
+        $infoResults['items'] = array_values($infoResults['items']);
+
         foreach ($statementResults['items'] as $key => $item) {
             $exclude = true;
-            if ($item && $this->getEventSite()) {
-                if ($item->getSites()->contains($this->getEventSite())) {
+            if ($item) {
+                if ($this->getEventSite() && $item->getSites()->contains($this->getEventSite())) {
                     $exclude = false;
                 }
-                if ($item->getSites()->contains($this->getPressSite())) {
+                if ($this->getPressSite() && $item->getSites()->contains($this->getPressSite())) {
                     $exclude = false;
                 }
                 if ($exclude) {
-                    unset($statementResults[$key]);
+                    unset($statementResults['items'][$key]);
+                    --$infoResults['count'];
                 }
             }
         }
-
-        $newsResults = array_values($newsResults);
+        $statementResults['items'] = array_values($statementResults['items']);
 
         $result = array(
             'category' => array(
