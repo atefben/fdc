@@ -512,8 +512,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('ni.translations', 'nit')
             ->where('n.festival = :festival')
             ->andWhere('s.slug = :site')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :endAt)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
+            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
             ->andWhere(
                 "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)

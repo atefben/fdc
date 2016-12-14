@@ -896,7 +896,7 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :endAt) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
+            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
         ;
 
         $qb = $qb
