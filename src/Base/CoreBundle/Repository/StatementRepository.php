@@ -492,6 +492,67 @@ class StatementRepository extends EntityRepository
     }
 
     /**
+     * @param $locale
+     * @param $festival
+     * @param $startsAt
+     * @param $endAt
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function getStatementRetrospective($locale, $festival, $startsAt, $endAt)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftjoin('na.translations', 'nat')
+            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('nv.translations', 'nvt')
+            ->leftjoin('ni.translations', 'nit')
+            ->where('n.festival = :festival')
+            ->andWhere('s.slug = :site')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :endAt)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
+            ->andWhere(
+                "(nat.locale = 'fr' AND nat.status = :status)
+                OR (nit.locale = 'fr' AND nit.status = :status)
+                OR (naat.locale = 'fr' AND naat.status = :status)
+                OR (nvt.locale = 'fr' AND nvt.status = :status)"
+            )
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->leftjoin('na.translations', 'na5t')
+                ->leftjoin('naa.translations', 'na6t')
+                ->leftjoin('nv.translations', 'na7t')
+                ->leftjoin('ni.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                        (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                        (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                        (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('locale', $locale)
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
+        }
+
+        $qb = $qb
+            ->setParameter('festival', $festival)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endAt', $endAt)
+            ->setParameter('site', 'site-institutionnel')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
      *  Get the $locale version of Statement of current $festival by $id and verify publish date is between $dateTime
      *
      * @param $id

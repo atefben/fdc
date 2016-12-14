@@ -48,6 +48,10 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+        $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+        $newsArticles = array_merge($newsArticles, $statementArticles, $infoArticles);
+        dump($newsArticles);exit;
         $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
         if ($newsArticles === null || count($newsArticles) == 0) {
             throw new NotFoundHttpException();

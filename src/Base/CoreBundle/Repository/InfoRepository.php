@@ -477,6 +477,64 @@ class InfoRepository extends EntityRepository
     }
 
     /**
+     * @param $locale
+     * @param $festival
+     * @param $startsAt
+     * @param $endAt
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function getInfoRetrospective($locale, $festival, $startsAt, $endAt )
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('s.slug = :site')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :endAt)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
+        ;
+
+        $qb = $qb
+            ->andWhere(
+                '(nat.locale = :locale_fr AND nat.status = :status)
+                OR (nit.locale = :locale_fr AND nit.status = :status)
+                OR (naat.locale = :locale_fr AND naat.status = :status)
+                OR (nvt.locale = :locale_fr AND nvt.status = :status)')
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->andWhere(
+                    '(nat.locale = :locale AND nat.status = :status_translated)
+                    OR (nit.locale = :locale AND nit.status = :status_translated)
+                    OR (naat.locale = :locale AND naat.status = :status_translated)
+                    OR (nvt.locale = :locale AND nvt.status = :status_translated)')
+                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        $qb = $this->addMasterQueries($qb, 'n', $festival);
+        $qb = $qb
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endAt', $endAt)
+            ->setParameter('site', 'site-institutionnel')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
      * get an array of only the $count last Info of $locale version of current
      * $festival and verify publish date is between $dateTime
      *

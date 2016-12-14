@@ -874,6 +874,13 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $startsAt
+     * @param $endAt
+     * @return \Doctrine\ORM\QueryBuilder
+     */
     public function getNewsRetrospective($locale, $festival, $startsAt, $endAt)
     {
         $qb = $this
@@ -925,7 +932,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('startsAt', $startsAt)
             ->setParameter('endAt', $endAt)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-institutionnel')
         ;
 
         $this->addMasterQueries($qb, 'n', $festival, true);
