@@ -124,6 +124,12 @@ class InfoRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $locale
+     * @param FilmFestival $festival
+     * @param \DateTime $dateTime
+     * @return array
+     */
     public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime)
     {
         $qb = $this
@@ -480,10 +486,10 @@ class InfoRepository extends EntityRepository
      * @param $locale
      * @param $festival
      * @param $startsAt
-     * @param $endAt
+     * @param $endsAt
      * @return array|\Doctrine\ORM\QueryBuilder
      */
-    public function getInfoRetrospective($locale, $festival, $startsAt, $endAt )
+    public function getInfoRetrospective($locale, $festival, $startsAt, $endsAt )
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -496,7 +502,7 @@ class InfoRepository extends EntityRepository
             ->leftJoin('nv.translations', 'nvt')
             ->leftJoin('ni.translations', 'nit')
             ->andWhere('s.slug = :site')
-            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :endAt) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :startsAt)')
+            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
         ;
 
         $qb = $qb
@@ -524,7 +530,7 @@ class InfoRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'n', $festival);
         $qb = $qb
             ->setParameter('startsAt', $startsAt)
-            ->setParameter('endAt', $endAt)
+            ->setParameter('endsAt', $endsAt)
             ->setParameter('site', 'site-institutionnel')
             ->getQuery()
             ->getResult()

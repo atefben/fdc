@@ -15,7 +15,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class NewsController extends Controller
 {
-    
+    public function compareArticle($a, $b)
+    {
+        if ($a->getPublishedAt()->getTimestamp() == $b->getPublishedAt()->getTimestamp()) {
+            return 0;
+        }
+        return ($a->getPublishedAt()->getTimestamp() > $b->getPublishedAt()->getTimestamp()) ? -1 : 1;
+    }
     /**
      * @Route("/{year}/articles")
      * @Template("FDCCorporateBundle:News/list:article.html.twig")
@@ -50,10 +56,13 @@ class NewsController extends Controller
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
         $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
         $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
-        $newsArticles = array_merge($newsArticles,$statementArticles,$infoArticles);
 
-        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
-        if ($newsArticles === null || count($newsArticles) == 0) {
+        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
+        usort($articles, [$this, 'compareArticle']);
+
+
+        $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
+        if ($articles === null || count($articles) == 0) {
             throw new NotFoundHttpException();
         }
 
@@ -66,8 +75,8 @@ class NewsController extends Controller
         $filters['format'][0] = 'all';
 
 
-        foreach ($newsArticles as $key => $newsArticle) {
-            $isPublished = ($newsArticles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
+        foreach ($articles as $key => $newsArticle) {
+            $isPublished = ($articles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
             if ($isPublished) {
                 if (($key % 3) == 0) {
                     $newsArticle->double = true;
@@ -88,12 +97,12 @@ class NewsController extends Controller
                     $filters['format'][] = $newsArticle->getNewsType();
                 }
             } else {
-                unset($newsArticles[$key]);
+                unset($articles[$key]);
             }
         }
 
         return array(
-            'articles' => $newsArticles,
+            'articles' => $articles,
             'filters'  => $filters,
             'festivals'  => $festivals,
         );
