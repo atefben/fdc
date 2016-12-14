@@ -22,7 +22,7 @@
 
   $('#slider-movies').owlCarousel({
     loop: true,
-    autoplay: true,
+
     items: 1,
     nav: true,
     video:true,
@@ -216,9 +216,9 @@ function click() {
               console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
-                  $('.parent > div').fadeOut(200);
-                  $('.parent').append('<div class="events eventMessage">aucun évenement sélectionné</div>');
-                  $('.selectText').hide();
+                  $('.parent > div').fadeIn(200);
+                  /*$('.parent').append('<div class="events eventMessage">aucun évenement sélectionné</div>');*/
+                  /*$('.selectText').hide();*/
               } else if (this.id == 'all') {
                   $('.selectText').hide();
               }
@@ -365,11 +365,11 @@ $(".topiconsContainer .third").hover(function () {
 });
 
 
-/*$("#share-article").click(function(){
+$("#share-article").click(function(){
    $('html, body').animate({
-        scrollTop: $("#share").offset().top - 200
+        scrollTop: $("#share").offset().top - 400
     }, 2000);
-});*/
+});
 
 /*$(window).resize(function(){
 

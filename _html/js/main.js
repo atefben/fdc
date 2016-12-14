@@ -1116,7 +1116,7 @@ $(document).ready(function() {
       e.preventDefault();
 
       $('html, body').animate({
-        scrollTop: $(".share").offset().top - $('header').height() - $('.share').height()
+        scrollTop: $(".share").offset().top - $('header').height() - $('.share').height() - 300
       }, 500);
     });
 

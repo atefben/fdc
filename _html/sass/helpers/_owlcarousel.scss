@@ -174,7 +174,7 @@
 #featured
 
 #slider-movies, #featured-movies {
-  height: 600px!important;
+  height: 538px!important;
   overflow: hidden;
   position: relative;
 
@@ -204,7 +204,7 @@
   }
 
   .owl-stage-outer {
-    height: 600px!important;
+    height: 538px!important;
     overflow: hidden;
   }
 
@@ -274,6 +274,7 @@
       }
 
       &.active {
+          right: 5px;
         &:before {
           content: counter(dots, decimal-leading-zero);
           opacity: 0;
@@ -301,7 +302,7 @@
     right: 0px!important;
     text-align: center;
     position: relative;
-    margin-top: -42%!important;
+    margin-top: -35%!important;
     float: right;
         @media screen and (max-width: 1024px) {
             right: 20px!important;
@@ -350,6 +351,7 @@
        padding-bottom: 100px;
        letter-spacing: 1px!important;
        font-size: 60px!important;
+       font-family: $CamphorHeavy!important;
       }
 
       .alignButton {

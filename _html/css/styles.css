@@ -2744,7 +2744,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 #featured
 #slider-movies, #featured-movies {
-  height: 600px !important;
+  height: 538px !important;
   overflow: hidden;
   position: relative;
 }
@@ -2777,7 +2777,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 #featured
 #slider-movies .owl-stage-outer, #featured-movies .owl-stage-outer {
-  height: 600px !important;
+  height: 538px !important;
   overflow: hidden;
 }
 #featured
@@ -2862,6 +2862,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 #featured
+#slider-movies .owl-dot.active, #featured-movies .owl-dot.active {
+  right: 5px;
+}
+#featured
 #slider-movies .owl-dot.active:before, #featured-movies .owl-dot.active:before {
   content: counter(dots,decimal-leading-zero);
   opacity: 0;
@@ -2894,7 +2898,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   right: 0px !important;
   text-align: center;
   position: relative;
-  margin-top: -42% !important;
+  margin-top: -35% !important;
   float: right;
 }
 @media screen and (max-width: 1024px) {
@@ -2930,6 +2934,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-bottom: 100px;
   letter-spacing: 1px !important;
   font-size: 60px !important;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
 }
 #slider-movies .vCenterKid .alignButton, #featured-movies .vCenterKid .alignButton {
   text-align: left;
@@ -7639,10 +7644,6 @@ body.fix {
     height: 576px !important;
   }
 }
-#cookie-banner {
-  z-index: 1005;
-}
-
 @font-face {
   font-family: "icons";
   src: url("../fonts/icons.eot?6b329b5fed30750a169723fe02097f8c");
@@ -8421,7 +8422,7 @@ header #sticky-user {
   position: absolute;
   pointer-events: none;
   bottom: 18px;
-  right: 0;
+  right: 40px;
   -moz-transform: translate3d(0, 5px, 0);
   -ms-transform: translate3d(0, 5px, 0);
   -webkit-transform: translate3d(0, 5px, 0);
@@ -12708,6 +12709,7 @@ header #searchContainer {
   padding: 17px;
   font-size: 0.75rem;
   display: none;
+  z-index: 1005;
 }
 
 #cookies-banner p {
@@ -12717,8 +12719,8 @@ header #searchContainer {
 
 #cookies-banner .cookie-accept {
   position: fixed;
-  bottom: 16px;
-  right: 12px;
+  bottom: 10px;
+  right: 50px;
   font-size: 30px;
 }
 #cookies-banner .cookie-accept .icon {
@@ -14691,16 +14693,16 @@ a {
 
 .biggerBox {
   display: block;
-  width: 270px;
+  width: 250px;
   height: 250px;
   float: left;
   position: relative;
 }
 .biggerBox .socialIcon {
-  margin-left: 30px;
+  /*margin-left: 30px;*/
 }
 .biggerBox .socialContent {
-  padding: 30px 25px 0px 30px;
+  padding: 30px 15px 0px 30px;
   text-align: left;
   line-height: 27px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
@@ -14710,6 +14712,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
 }
 .biggerBox .socialContent h6 {
   color: #bdbdbd !important;
@@ -14957,7 +14960,7 @@ a {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: bold !important;
   color: #ffffff;
-  letter-spacing: 12px;
+  letter-spacing: 10px;
   text-transform: uppercase;
   position: relative;
   z-index: 1000;
@@ -15042,7 +15045,7 @@ a {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: bold !important;
   color: #000000;
-  letter-spacing: 12px;
+  letter-spacing: 10px;
   text-transform: uppercase;
   position: relative;
   z-index: 2;
@@ -25761,7 +25764,7 @@ body:not(.tablette) .webtv #live .img {
   text-transform: uppercase;
   padding-top: 70px;
   margin: 0px 0px 50px 0px;
-  letter-spacing: 12px;
+  letter-spacing: 10px;
   text-align: center;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: bold !important;
@@ -25839,10 +25842,9 @@ body:not(.tablette) .webtv #live .img {
 }
 .our-news .articles h6 {
   margin: 20px 0px 40px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-size: 25px;
   line-height: 27px;
-  opacity: 0.8;
   color: #000000;
   font-family: "Playfair Display","Times New Roman",Times,serif;
 }
@@ -27314,8 +27316,21 @@ ul.tabs .quarterTab h4 {
   float: left;
 }
 .conferences .selectbtn {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   float: none;
+  border: 1px solid #ECECEC;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.conferences .selectbtn:hover {
+  background: #c3a05f;
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  color: white;
 }
 .conferences .conferencesMenu {
   width: 100%;
@@ -27422,6 +27437,18 @@ ul.tabs .quarterTab h4 {
   font-size: 12px;
   line-height: 25px;
   text-align: center;
+}
+.conferences .conf10 p {
+  text-align: right;
+  margin-right: 50px;
+  color: #c3a05f;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+  text-transform: uppercase;
+  line-height: 30px;
+  font-size: 12px;
+  line-height: 25px;
+  width: 50px;
+  float: right;
 }
 .conferences .conf60, .conferences .conf70 {
   display: block;
@@ -27547,18 +27574,18 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conf30, .conferences .conf30Sharp {
   position: absolute;
-  width: 35%;
+  width: 36%;
   float: right;
   color: #505050;
   text-transform: initial;
   line-height: 30px;
   text-align: left;
   padding-top: 30px;
-  font-size: 14px;
+  font-size: 12px;
   background: #f6f6f6;
   height: 100%;
   /* min-height: 590px; */
-  border-left: 3px solid #e7e7e7;
+  border-left: 2px solid #e7e7e7;
   overflow: hidden;
   z-index: 1;
   /* display: table-cell; */
@@ -27571,11 +27598,13 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conf30 p, .conferences .conf30Sharp p {
   margin-left: 30px;
+  margin-top: -5px;
   color: #505050;
   opacity: 0.9;
   text-align: left;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 14px;
+  text-transform: initial;
 }
 .conferences .conf30 span, .conferences .conf30Sharp span {
   color: #505050;
@@ -27590,7 +27619,7 @@ ul.tabs .quarterTab h4 {
 .conferences .conf30 div:first-child:before, .conferences .conf30Sharp div:first-child:before {
   content: url(/img/access.png);
   position: relative;
-  top: 10px;
+  top: 20px;
   left: -10px;
   /* margin-right: 30px; */
   width: 20px;
@@ -27598,7 +27627,7 @@ ul.tabs .quarterTab h4 {
 .conferences .conf30 div:nth-child(2):before, .conferences .conf30Sharp div:nth-child(2):before {
   content: url(/img/clock.png);
   position: relative;
-  top: 10px;
+  top: 20px;
   left: -10px;
   /* margin-right: 30px; */
   width: 20px;
@@ -27606,13 +27635,13 @@ ul.tabs .quarterTab h4 {
 .conferences .conf30 div:nth-child(3):before, .conferences .conf30Sharp div:nth-child(3):before {
   content: url(/img/pin.png);
   position: relative;
-  top: 10px;
+  top: 20px;
   left: -10px;
   /* margin-right: 30px; */
   width: 20px;
 }
 .conferences .box {
-  min-height: 270px;
+  min-height: 250px;
   height: auto;
   cursor: default;
   position: relative;
@@ -27714,7 +27743,6 @@ ul.tabs .quarterTab h4 {
   color: #2b2b2b;
   font-size: 14px;
   line-height: 25px;
-  opacity: 0.8;
 }
 
 .producersProgramme {

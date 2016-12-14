@@ -123,7 +123,7 @@
               </div>
               <div class="socialContent">
                 <h6>le 21mars à 19h @FdC_officiel</h6>
-                <h5>Snow in Paradise presented at Un Certain Regard in <a href="#">#Cannes2016</a> is on release in France today <a href="#">@SnowIP_Film http://youtu.be/AMaW3njDiQ8</a> </h5>
+                <h5>Snow in Paradise presented at Un Certain Regard in <a href="#">#Cannes2016</a> is on release in France today <a href="#">@SnowIP_Film http://youtu.be/AMaW</a> </h5>
               </div>
               <img src="img/twitimg.png">
             </div>

@@ -1842,17 +1842,17 @@ a {
 }
   .biggerBox {
     display: block;
-    width: 270px;
+    width: 250px;
     height: 250px;
     float: left;
     position: relative;
 
     .socialIcon {
-      margin-left: 30px;
+      /*margin-left: 30px;*/
     }
 
     .socialContent {
-      padding: 30px 25px 0px 30px;
+      padding: 30px 15px 0px 30px;
       text-align: left;
       line-height: 27px;
       font-family: $CamphorBold !important;
@@ -1862,6 +1862,7 @@ a {
       left: 0;
       right: 0;
       bottom: 0;
+      overflow: hidden;
 
       h6 {
         color: #bdbdbd !important;
@@ -2097,7 +2098,7 @@ a {
     font-family: $Playfair;
     font-weight: bold!important;
     color: #ffffff;
-    letter-spacing: 12px;
+    letter-spacing: 10px;
     text-transform: uppercase;
     position: relative;
     z-index: 1000;
@@ -2171,7 +2172,7 @@ a {
     font-family: $Playfair;
     font-weight: bold!important;
     color: #000000;
-    letter-spacing: 12px;
+    letter-spacing: 10px;
     text-transform: uppercase;
     position: relative;
     z-index: 2;

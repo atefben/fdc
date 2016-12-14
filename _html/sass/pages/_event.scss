@@ -107,8 +107,16 @@
   }
 
   .selectbtn {
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     float: none;
+    border: 1px solid #ECECEC;
+    @include transition(all 0.3s $smoothTransition);
+
+    &:hover {
+      background: #c3a05f;
+      @include transition(all 0.3s $smoothTransition);
+      color: white;
+    }
   }
   
   .conferencesMenu {
@@ -216,6 +224,18 @@
     font-size: 12px;
     line-height: 25px;
     text-align: center;
+    p {
+      text-align: right;
+      margin-right: 50px;
+      color: #c3a05f;
+      font-family: $CamphorHeavy!important;
+      text-transform: uppercase;
+      line-height: 30px;
+      font-size: 12px;
+      line-height: 25px;
+      width: 50px;
+      float: right;
+    }
   }
 
   .conf60, .conf70 {
@@ -349,18 +369,18 @@
 
   .conf30, .conf30Sharp {
     position: absolute;
-    width: 35%;
+    width: 36%;
     float: right;
     color: #505050;
     text-transform: initial;
     line-height: 30px;
     text-align: left;
     padding-top: 30px;
-    font-size: 14px;
+    font-size: 12px;
     background: #f6f6f6;
     height: 100%;
     /* min-height: 590px; */
-    border-left: 3px solid #e7e7e7;
+    border-left: 2px solid #e7e7e7;
     overflow: hidden;
     z-index: 1;
     /* display: table-cell; */
@@ -372,11 +392,13 @@
 
     p {
       margin-left: 30px;
+      margin-top: -5px;
       color: #505050;
       opacity: 0.9;
       text-align: left;
       font-family: $CamphorRegular;
       font-size: 14px;
+      text-transform: initial;
     }
 
     span {
@@ -394,7 +416,7 @@
           &:before {  
             content: url(/img/access.png);
             position: relative;
-            top: 10px;
+            top: 20px;
             left: -10px;
             /* margin-right: 30px; */
             width: 20px;
@@ -405,7 +427,7 @@
       &:before {
             content: url(/img/clock.png);
             position: relative;
-            top: 10px;
+            top: 20px;
             left: -10px;
             /* margin-right: 30px; */
             width: 20px;
@@ -415,7 +437,7 @@
       &:before {
             content: url(/img/pin.png);
             position: relative;
-            top: 10px;
+            top: 20px;
             left: -10px;
             /* margin-right: 30px; */
             width: 20px;
@@ -424,7 +446,7 @@
   }
 
 .box {
-  min-height: 270px;
+  min-height: 250px;
   height: auto;
   cursor: default;
   position: relative;
@@ -538,7 +560,6 @@
     color: #2b2b2b;
     font-size: 14px;
     line-height: 25px;
-    opacity: 0.8;
 }
 
 .producersProgramme {

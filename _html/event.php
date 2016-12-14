@@ -47,10 +47,10 @@
               <h5 class="minMargin">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960.</h5>
             </div>
           </div>
-          <div class="buttons">
+          <!--<div class="buttons">
               <a id="share-article" class="button"><i class="icon icon_share"></i>Partager</a>
               <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
-          </div>
+          </div>-->
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
                 
@@ -81,7 +81,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Helping Hand</div>
+                            <div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping hand</span>
@@ -105,7 +105,7 @@
                             </div>
                           </div>
                           <div class="box b events">
-                            <div class="conf10">Screening</div>
+                            <div class="conf10"><p>Screening</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
@@ -129,7 +129,7 @@
                             </div>                         
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Pitching Training</div>
+                            <div class="conf10"><p>Pitching Training</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
@@ -152,7 +152,7 @@
                               </div>
                             </div>                        
                           </div>
-                          <div class="box c events"><div class="conf10">Pitching Training</div>
+                          <div class="box c events"><div class="conf10"><p>Pitching Training</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
@@ -175,7 +175,7 @@
                               </div>
                             </div>       
                           </div>
-                          <div class="box a events"><div class="conf10">Helping Hand</div>
+                          <div class="box a events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping Hand</span>
@@ -198,7 +198,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box a events"><div class="conf10">Helping Hand</div>
+                          <div class="box a events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping Hand</span>
@@ -221,7 +221,7 @@
                               </div>
                             </div>              
                           </div>
-                          <div class="box a events"><div class="conf10">Helping Hand</div>
+                          <div class="box a events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping Hand</span>
