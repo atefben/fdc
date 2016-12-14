@@ -66,7 +66,7 @@
                   </div>-->
                 </div><br>
                 <div class="selector">
-                  <div class="purpleBtn selectbtn" id="all">Tous</div>
+                  <!--<div class="purpleBtn selectbtn" id="all">Tous</div>-->
                   <div class="selectbtn" id="a" rel="helping-hand">Helping Hand</div>
                   <div class="selectbtn" id="b" rel="screening">Screening</div>
                   <div class="selectbtn" id="c" rel="pitching-training">Pitching Training</div>
@@ -90,7 +90,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>
                     </div>
                     <div class="box b events">
                       <div class="eventPhoto">
@@ -102,7 +102,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>                  
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>                 
                     </div>
                     <div class="box c events">
                       <div class="eventPhoto">
@@ -111,7 +111,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>               
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>             
                     </div>
                     <div class="box c events">
                       <div class="eventPhoto">
@@ -123,15 +123,16 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>                
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>              
                     </div>
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat •</span><span> vente </span><br><span>achat •</span><span> vente •</span></div>                    
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><span>vente</span><span>vente</span><span>vente</span></div>                   
                     </div>
                     <div class="box a events">
                       <div class="eventPhoto">
@@ -143,15 +144,16 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>           
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>           
                     </div>
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>          
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>         
                     </div>
                     <div class="box d events">
                       <div class="eventPhoto">
@@ -163,7 +165,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>          
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>          
                     </div>
                     <div class="box d events">
                       <div class="eventPhoto">
@@ -175,33 +177,47 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>           
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>          
                     </div>
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>        
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>         
                     </div>
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
-                      <div class="eventCat"><span>distribution •</span><span>achat</span><span>• vente</span></div>          
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>          
                     </div>
                   </div>
                 </div>
               </div>
+
+          <div class="share" id="share" >
+              <p>Partagez l'article</p>
+              <div class="buttons square">
+                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
+                </a>
+                <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i></a>
+              </div>
+          </div>
 
         <?php include('box-catalogue.php'); ?>  
         <?php include('box-social.php'); ?>  
@@ -224,6 +240,9 @@
                     <img src="img/person.png" alt="">
                     <img src="img/member.jpg" alt="">
                   </div>
+                  <!--<div class="sfcLogo">
+                      <img src="img/sfcLogo.png" alt="">
+                  </div>-->
                 </div>
                 <div class="titleBig">
                   <h2><span>"</span>Soyez professionnels, exigeants et originaux !<span>"</span></h2>
@@ -240,18 +259,19 @@
                 <div class="maj">Dernière mise à jour le 27 oct. 2016</div>
                 <div class="cats">distribution • achat • vente</div>
                 <div class="titleHalf"><h3>L’agence du court métrage</h3></div>
+                <!--<div class="cats">distribution • achat • vente</div>-->
                 <div class="authors">
                   <div class="full">
-                    <h4>Florence KELLER von midtag</h4>
-                    <div class="job"><h4>productrice</h4><a href="mailto:aki@shortshorts.org"><img src="img/flyingPaper.png" alt=""></a></div>
+                    <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Florence KELLER von midtag</h4></a>
+                    <div class="job"><h4>productrice</h4></div>
                   </div>
                   <div class="full">
-                    <h4>Augustin Keller von Keller</h4>
-                    <div class="job"><h4>acheteuse</h4><a href="mailto:aki@shortshorts.org"><img src="img/flyingPaper.png" alt=""></a></div>
+                    <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Augustin Keller von Keller</h4></a>
+                    <div class="job"><h4>acheteuse</h4></div>
                   </div>
                   <div class="full">
-                    <h4>Gertrude von Munchen</h4>
-                    <div class="job"><h4>actrice</h4><a href="mailto:aki@shortshorts.org"><img src="img/flyingPaper.png" alt=""></a></div>
+                    <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Gertrude von Munchen</h4></a>
+                    <div class="job"><h4>actrice</h4></div>
                   </div>
                 </div>
                 <div class="content">
@@ -271,6 +291,22 @@
                   <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
 
                   <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
+                </div>
+                <div class="content">
+                  <h5>title ergezrg</h5>
+                  <p>Pacific Voice Inc..</p>
+                </div>
+                <div class="content">
+                  <h5>title ergezrg</h5>
+                  <p>Pacific Voice Inc..</p>
+                </div>
+                <div class="content">
+                  <h5>title ergezrg</h5>
+                  <p>Pacific Voice Inc..</p>
+                </div>
+                <div class="content">
+                  <h5>title ergezrg</h5>
+                  <p>Pacific Voice Inc..</p>
                 </div>
                 <div class="content">
                   <h5>title ergezrg</h5>

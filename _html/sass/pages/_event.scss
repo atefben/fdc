@@ -220,7 +220,7 @@
     font-family: $CamphorHeavy;
     text-transform: uppercase;
     line-height: 30px;
-    padding-top: 100px;
+    padding-top: 75px;
     font-size: 12px;
     line-height: 25px;
     text-align: center;
@@ -243,7 +243,7 @@
     width: 47%;
     float: left;
     color: #505050;
-    text-transform: initial;
+    text-transform: initial!important;
     line-height: 30px;
     text-align: left;
     padding-top: 15px;
@@ -257,8 +257,10 @@
       color: #505050;
       text-align: left;
       padding-bottom: 30px;
+      padding-top: 10px;
       color: #505050;
       line-height: 25px;
+      text-transform: initial!important;
     }
 
 
@@ -300,7 +302,7 @@
       opacity: 0.7;
       letter-spacing: 1px;
       color: #b1b1b1;
-      bottom: 10%;
+      bottom: 8%;
 
       &:hover {
         color: $gold;
@@ -372,7 +374,7 @@
     width: 36%;
     float: right;
     color: #505050;
-    text-transform: initial;
+    text-transform: initial!important;
     line-height: 30px;
     text-align: left;
     padding-top: 30px;
@@ -391,14 +393,14 @@
         }
 
     p {
-      margin-left: 30px;
+      margin-left: 22px;
       margin-top: -5px;
       color: #505050;
       opacity: 0.9;
       text-align: left;
       font-family: $CamphorRegular;
       font-size: 14px;
-      text-transform: initial;
+      text-transform: initial!important;
     }
 
     span {
@@ -411,6 +413,7 @@
 
     div {
           padding-left: 45px;
+          margin-bottom: 5px;
     }
     div:first-child {
           &:before {  
@@ -446,7 +449,7 @@
   }
 
 .box {
-  min-height: 250px;
+  min-height: 270px;
   height: auto;
   cursor: default;
   position: relative;

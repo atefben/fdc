@@ -68,7 +68,7 @@
                   </div>-->
                 </div><br>
                 <div class="selector">
-                  <div class="purpleBtn selectbtn" id="all">Tous</div>
+                  <!--<div class="purpleBtn selectbtn" id="all">Tous</div>-->
                   <div class="selectbtn" id="a" rel="helping-hand">Helping Hand</div>
                   <div class="selectbtn" id="b" rel="screening">Screening</div>
                   <div class="selectbtn" id="c" rel="pitching-training">Pitching Training</div>

@@ -237,7 +237,7 @@
               <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
               <div class="block-01-ms">
                 <strong class="title-25"><h3 class="reducedPadding">Avant de soumettre votre film</h3></strong>
-                <p class="centered">Merci de consulter le règlement 2017</p>
+                <p class="centered">Merci de consulter le règlement 2017</p><br>
                 <div class="buttons-02 centered">
                   <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
                 </div>
@@ -397,7 +397,7 @@
 
           <div class="block-s-info border-bottom border-top vFlexAlign">
             <strong class="title-25">Avant de soumettre votre film</strong>
-            <p>Merci de consulter le règlement 2017</p>
+            <p>Merci de consulter le règlement 2017</p><br><br>
             <div class="buttons-02">
               <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
             </div>
@@ -552,7 +552,7 @@
 
           <div class="block-s-info border-bottom border-top vFlexAlign">
             <strong class="title-25">Avant de soumettre votre film</strong>
-            <p>Merci de consulter le règlement 2017</p>
+            <p>Merci de consulter le règlement 2017</p><br><br>
             <div class="buttons-02 centered autoBtn">
               <a href="ccm-participate-rules.php" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>
@@ -862,7 +862,7 @@
 
           <div class="block-s-info border-bottom border-top vFlexAlign">
             <strong class="title-25">Avant de soumettre votre film</strong>
-            <p>Merci de consulter le règlement 2017</p>
+            <p>Merci de consulter le règlement 2017</p><br><br>
             <div class="buttons-02 centered">
               <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
             </div>
@@ -1017,7 +1017,7 @@
 
           <div class="block-s-info border-bottom border-top vFlexAlign">
             <strong class="title-25">Avant de soumettre votre film</strong>
-            <p>Merci de consulter le règlement 2017</p>
+            <p>Merci de consulter le règlement 2017</p><br><br>
             <div class="buttons-02">
               <a href="ccm-participate-rules.php" class="button autoBtn" target="_blank">Voir le règlement</a>
             </div>

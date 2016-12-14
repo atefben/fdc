@@ -18,50 +18,54 @@
           <div id="slider-movies" class="owl-carousel">
             <div>
               <!-- PHOTO + VIDEO-->
+              <a href="/">
               <div class="video">
                 <video preload>
                   <source src="#">
                   <source src="#" type="video/webm">
                 </video>
-                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
+                <div class="img" style="background-image:url(/img/slider2.png)"></div>
               </div>
               <div class="textVideo">
                 <div class="info">
                   <div class="vCenter">
                     <div class="container">
                       <div class="vCenterKid">
-                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
                         <div class="alignButton">
-                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                          <div class="programmButton">Le Programme</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
             <div>
+            <a href="/">
               <div class="video">
                 <video preload>
                   <source src="#">
                   <source src="#" type="video/webm">
                 </video>
-                <a href="/"><div class="img" style="background-image:url(/img/slider2.png)"></div></a>
+                <div class="img" style="background-image:url(/img/slider2.png)"></div>
               </div>
               <div class="textVideo">
                 <div class="info">
                   <div class="vCenter">
                     <div class="container">
                       <div class="vCenterKid">
-                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
                         <div class="alignButton">
-                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                          <div class="programmButton">Le Programme</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
             <div>
               <div class="video">

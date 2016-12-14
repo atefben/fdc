@@ -1,5 +1,5 @@
       <div class="socialBox competition">
-        <h3>suivez Cannes court métrages</h3>
+        <h3>Suivez Cannes Court Métrage</h3>
           <div class="firstBox">
             <div class="bigBox imgShown">
               <div class="socialIcon">

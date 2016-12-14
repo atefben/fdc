@@ -22,7 +22,7 @@
 
   $('#slider-movies').owlCarousel({
     loop: true,
-
+    autoplay: true,
     items: 1,
     nav: true,
     video:true,
@@ -264,11 +264,22 @@ function click() {
         }
     });
 
+    /*$('.conferencesMenu li').click(function() {   
+      $('html, body').animate({
+          scrollTop: $(this).offset().top
+        }, 500);
+    });*/
+
     $('#accordion-conf .open').each(function() {
 
-
-        
         $(this).click(function(){
+
+          $this = $(this);
+
+          $('html, body').animate({
+              scrollTop: $this.offset().top - 100
+            }, 500);
+        
           
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
           $('#accordion-conf .open').removeClass('open-selected-conf');
@@ -285,6 +296,7 @@ function click() {
             $(this).find('.openPlus').addClass('noDisplay');
             $(this).find('.openMinus').addClass('doDisplay');
             $(this).next().slideDown('normal');
+        
            } 
        });
 

@@ -634,7 +634,7 @@
 
 #slider-competition {
   
-  height: 450px;
+  height: 470px;
   overflow: hidden;
   text-align: center;
   margin: 0 auto;
@@ -884,6 +884,8 @@
   @include transition(all 0.1s $smoothTransition);
 }
 
+/*.
+
 .goldSlideshow .slideshow-img .thumbnails .thumb:after {
   border: 0px solid #c3a05f!important;
   @include transition(all 0.1s $smoothTransition);
@@ -897,7 +899,7 @@
 .goldSlideshow .slideshow-img .thumbnails .thumb:after {
   border: 0px solid #FFFFFF!important;
   @include transition(all 0.1s $smoothTransition);
-}
+}*/
 
 .eventSlideshow {
     width: 880px;
