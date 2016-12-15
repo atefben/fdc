@@ -663,11 +663,12 @@ class NewsController extends Controller
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
-            if ($photo->geTheme() && !in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $photo->getTheme()->getId();
+            if (!in_array($photo->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $photo->getTheme()->getName();
                 $filters['themes']['content'][] = $photo->getTheme();
             }
         }
+
         return array(
             'photos'  => $photos,
             'filters' => $filters,
