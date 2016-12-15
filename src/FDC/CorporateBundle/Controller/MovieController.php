@@ -185,6 +185,7 @@ class MovieController extends Controller
             'nextProjectionDate' => $nextProjectionDate,
             'festivals'          => $festivals,
         );
+
     }
 
     protected function isPublished($article, $locale)
