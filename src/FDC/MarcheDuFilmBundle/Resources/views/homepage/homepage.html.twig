@@ -1,0 +1,15 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="content-news">
+            {% include 'FDCMarcheDuFilmBundle::homepage/partials/topSliders.html.twig' %}
+            <div id="articles-wrapper">
+                {% include 'FDCMarcheDuFilmBundle::homepage/partials/content.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle::homepage/partials/services.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
