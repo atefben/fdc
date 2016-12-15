@@ -10,6 +10,7 @@ namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmPerson;
+use Base\CoreBundle\Entity\OldFilmPhoto;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\Query;
@@ -62,6 +63,7 @@ class LegacyImageExtension extends Twig_Extension
     {
         return array(
             new Twig_SimpleFunction('get_legacy_film_image', array($this, 'getLegacyFilmImage')),
+            new Twig_SimpleFunction('get_legacy_film_images', array($this, 'getLegacyFilmImages')),
             //new Twig_SimpleFunction('get_legacy_person_image', array($this, 'getLegacyPersonImage')),
         );
     }
@@ -77,6 +79,23 @@ class LegacyImageExtension extends Twig_Extension
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:OldFilmPhoto')
                 ->getLegacyFilmImage($movie)
+            ;
+
+            return $output;
+        }
+    }
+
+    /**
+     * @param FilmFilm $movie
+     * @return OldFilmPhoto[]
+     */
+    public function getLegacyFilmImages(FilmFilm $movie)
+    {
+        if ((int)$movie->getProductionYear() < 2014) {
+            $output = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                ->getLegacyFilmImages($movie)
             ;
 
             return $output;
