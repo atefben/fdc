@@ -551,3 +551,7 @@
 a.notloaded {
     opacity: 0;
 }
+
+.jw-icon-playlist {
+    display:none !important;
+}
