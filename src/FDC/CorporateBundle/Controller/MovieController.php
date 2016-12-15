@@ -268,7 +268,6 @@ class MovieController extends Controller
             }
 
             $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival());
-
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
@@ -396,13 +395,13 @@ class MovieController extends Controller
      * @param $slug
      * @return array
      */
-    public function classicsAction(Request $request, $slug)
+    public function classicsAction(Request $request, $slug, $year)
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug, $this->getFestival());
+        $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug, $this->getFestival($year));
 
         if ($classic == null) {
             throw new NotFoundHttpException('Cannes Classic not found');
