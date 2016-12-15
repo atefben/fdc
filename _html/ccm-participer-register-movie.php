@@ -60,12 +60,16 @@
         </p>
       </div>
 
-      <div class="block-tab-switch block-01">
+      <div class="block-tab-switch block-01-ms">
         <h3 class="title-tab-swich">Consultez la procédure d’inscription en<br>fonction de la catégorie :</h3>
 
         <table class="tab1">
           <tbody>
             <tr>
+              <td data-tab="lm-hc-cr" class="half">Long métrage en compétition,<br>hors compétition, un certain regard</td>
+              <td data-tab="cm" class="half">COURTS MÉTRAGES EN COMPÉTITION</td>
+            </tr>
+            <!--<tr>
               <td data-tab="lm-hc-cr">Long métrage en compétition,<br>hors compétition, un certain regard</td>
               <td data-tab="cm">COURTS MÉTRAGES EN COMPÉTITION</td>
               <td data-tab="cf">CINÉFONDATION</td>
@@ -74,7 +78,7 @@
               <td data-tab="sfc">SHORT FILM CORNER</td>
               <td data-tab="cd">CAMÉRA D'OR</td>
               <td data-tab="mdf">MARCHÉ DU FILM</td>
-            </tr>
+            </tr>-->
           </tbody>
         </table>
       </div>
@@ -248,7 +252,7 @@
 
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
-            <strong class="title-25">Formulaire d'inscription 2017</strong>
+            <strong class="title-25">Formulaire d'inscription 2017</strong></br><br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
@@ -404,7 +408,7 @@
           </div>
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
-            <strong class="title-25">Formulaire d'inscription 2017</strong>
+            <strong class="title-25">Formulaire d'inscription 2017</strong></br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
@@ -559,7 +563,7 @@
           </div>
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
-            <strong class="title-25">Formulaire d'inscription 2017</strong>
+            <strong class="title-25">Formulaire d'inscription 2017</strong></br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
@@ -714,7 +718,7 @@
           </div>
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
-            <strong class="title-25">Formulaire d'inscription 2017</strong>
+            <strong class="title-25">Formulaire d'inscription 2017</strong></br><br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
@@ -869,7 +873,7 @@
           </div>
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
-            <strong class="title-25">Formulaire d'inscription 2017</strong>
+            <strong class="title-25">Formulaire d'inscription 2017</strong></br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
@@ -1024,7 +1028,7 @@
           </div>
 
           <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
-            <strong class="title-25">Formulaire d'inscription 2017</strong>
+            <strong class="title-25">Formulaire d'inscription 2017</strong></br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
             <div class="buttons-02">
@@ -1067,6 +1071,10 @@
 
     </div>
   </section>
+  <?php include('box-catalogue.php'); ?>  
+  <?php include('box-social.php'); ?>  
+  <?php include('box-news.php'); ?>
+  <?php include('box-contact.php'); ?>  
 
     <?php include( 'footer.html'); ?>
 

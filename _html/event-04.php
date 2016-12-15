@@ -20,7 +20,7 @@
         </div>
         <div class="subNavigation">
             <nav>
-              <ul class="main">
+              <ul class="main sub-nav-list sticky">
                 <li>
                   <a href="stands.php">screening</a>
                 </li>

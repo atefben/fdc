@@ -274,7 +274,7 @@
       }
 
       &.active {
-          right: 5px;
+          right: -2px;
         &:before {
           content: counter(dots, decimal-leading-zero);
           opacity: 0;

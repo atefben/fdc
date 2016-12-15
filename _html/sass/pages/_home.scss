@@ -1800,7 +1800,6 @@ a {
 }
 
 .socialBox {
-  border-bottom: 1px solid #ececec;
   width: 1020px;
   height: 500px;
   @include align();
@@ -1808,6 +1807,11 @@ a {
     color: #c8a461;
     text-decoration: none;
   }
+
+  h3 {
+    margin-bottom: 0px!important;
+  }
+
   img {
     object-fit: cover;
     width: 100%;
@@ -2011,7 +2015,7 @@ a {
   width: 200px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 45px;
+  margin-top: 50px;
   height: 100px;
 
   div {
@@ -2054,9 +2058,9 @@ a {
 
   &:hover img {
     -webkit-transition: all 2s;
-    -ms-transform: scale(1.1); /* IE 9 */
-    -webkit-transform: scale(1.1); /* Safari */
-    transform: scale(1.1);
+    /*-ms-transform: scale(1.1); 
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);*/
     @include transition(all 8s $smoothTransition);
     }
 
@@ -2070,19 +2074,19 @@ a {
     z-index: 2;
     margin-top: 0px;
       &:after {
-          content:'\A';
-          width:100%; height:100%;
-          top:0; left:0;
-          background:rgba(0,0,0,0.6);
-          position:absolute;
-          opacity:1;
-          transition: all 0.5s;
-          -webkit-transition: all 0.5s;
+        content:'\A';
+        width:100%; height:100%;
+        top:0; left:0;
+        background:rgba(0,0,0,0.6);
+        position:absolute;
+        opacity:1;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
       }
   }
 
   &:hover .imgIllustration:after {
-    opacity: 0.6;
+    /*opacity: 0.6;*/
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
   }
@@ -2112,21 +2116,22 @@ a {
     float: left;
     display: block;
     text-align: center;
-    margin-top: 180px;
+    margin-top: 130px;
+    height: 550px;
     position: relative;
     z-index: 1000;
     @include transition(all 0.9s $smoothTransition);
 
-    &:hover .plusSign {
+    /*&:hover .plusSign {
       @include transition(all 0.9s $smoothTransition);
       -webkit-transition: all 0.5s;
-      -ms-transform: scale(1.2); /* IE 9 */
-      -webkit-transform: scale(1.2); /* Safari */
+      -ms-transform: scale(1.2); 
+      -webkit-transform: scale(1.2); 
       transform: scale(1.2);
-      -ms-transform: rotate(360deg); /* IE 9 */
-      -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+      -ms-transform: rotate(360deg); 
+      -webkit-transform: rotate(360deg); 
       transform: rotate(360deg);
-    }
+    }*/
 
     h6 {
       font-family: $CamphorHeavy;
@@ -2134,17 +2139,70 @@ a {
       color: #ffffff;
       letter-spacing: 2px;
       text-transform: uppercase;
+      padding-top: 30px;
     }
 
   }
 
-  .plusSign {
-    @include transition(all 0.9s $smoothTransition);
+  .plusSignContainer {
     width: 100%;
-    margin-top: 250px;
+    @include align();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -40px;
+  }
+
+  .plusSign {
+    cursor: pointer;
+    @include transition(all 0.9s $smoothTransition);
+    width: 42px;
+    height: 42px;
   }
 }
 
+
+.blocks {
+  @include transition(all 0.9s $smoothTransition);
+  &:after {
+    height: 1px;
+    display: block;
+    width: 100%;
+    /* transform: rotate(90deg); */
+    top: -2%;
+    position: absolute;
+    opacity: 0.4;
+    content: url(/img/trait.png);
+    z-index: -1;
+  }
+
+  &:hover {
+    &:after {
+      height: 1px;
+      display: block;
+      width: 100%;
+      /* transform: rotate(90deg); */
+      top: -2%;
+      position: absolute;
+      opacity: 0;
+      content: url(/img/trait.png);
+      z-index: 0;
+    }  
+  }
+
+  hr {
+    transform: rotate(90deg);
+    height: 1px;
+    top: 21%;
+    position: absolute;
+    width: 100%;
+    /* border-bottom: 1px solid #ECECEC; */
+    opacity: 0.2;
+    /* border-right: 1px white; */
+    background: #ECECE2;
+    border-width: 0px;
+  }
+}
 
 .blocks:hover .plusSign img {
   @include transition(all 0.9s $smoothTransition);
@@ -2157,17 +2215,35 @@ a {
   transform: rotate(360deg);
 }
 
-  .thirdBlocks {
-    width: 33.3333%;
-  }
+.rotationplusSign {
+    @include transition(all 0.3s $smoothTransition);
+  -webkit-transition: all 0.3s;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari */
+  transform: scale(1.5);
+  -ms-transform: rotate(360deg); /* IE 9 */
+  -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+  transform: rotate(360deg);
+}
 
-  .quarterBlocks {
-    width: 25%;
-  }
+.opacity {
+    -moz-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+  @include transition(all 0.3s $smoothTransition);
+}
 
-  .fifthBlocks {
-    width: 20%;
-  } 
+.thirdBlocks {
+  width: 33.3333%;
+}
+
+.quarterBlocks {
+  width: 25%;
+}
+
+.fifthBlocks {
+  width: 20%;
+} 
 
 .competition {
   h3 {

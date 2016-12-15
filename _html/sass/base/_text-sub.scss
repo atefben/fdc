@@ -898,11 +898,13 @@ a {
   width: 42%!important;
   text-align: center;
   border: 1px solid #dfdfdf!important;
-  margin-top: 25px!important;
+  margin-top: 0px!important;
 }
 
 .block-button-bottom {
   padding: 58px 0px;
+  border-top: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
 }
 
 .arrows {

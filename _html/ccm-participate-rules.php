@@ -152,10 +152,10 @@
 
     <div class="border-top border-bottom block-button-bottom">
       <div class="block-01-ms">
-          <a href="#" class="button button-long"><i class="icon icon_telecharger"></i> Télécharger la version imprimable en pdf</a>
+          <!--<a href="#" class="button button-long"><i class="icon icon_telecharger"></i> Télécharger la version imprimable en pdf</a>-->
           <div class="align-flex">
-            <a href="#" class="button button-half">Condition de présélection</a>
             <a href="#" class="button button-half">Formulaire d'inscription</a>
+            <a href="#" class="button button-half"><i class="icon icon_telecharger"></i> Télécharger le pdf</a>
           </div>
       </div>
     </div>

@@ -1817,6 +1817,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   background-color: #c8a461;
   border-color: #c8a461;
 }
+.block-tab-switch table .half {
+  width: 488.5px !important;
+}
 
 .block-s-info {
   flex-direction: column;
@@ -2863,7 +2866,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 #featured
 #slider-movies .owl-dot.active, #featured-movies .owl-dot.active {
-  right: 5px;
+  right: -2px;
 }
 #featured
 #slider-movies .owl-dot.active:before, #featured-movies .owl-dot.active:before {
@@ -7156,11 +7159,13 @@ a {
   width: 42% !important;
   text-align: center;
   border: 1px solid #dfdfdf !important;
-  margin-top: 25px !important;
+  margin-top: 0px !important;
 }
 
 .block-button-bottom {
   padding: 58px 0px;
+  border-top: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
 }
 
 .arrows {
@@ -12986,6 +12991,341 @@ header #searchContainer {
   width: 100%;
 }
 
+#news + #social-wall {
+  padding-top: 0px;
+}
+
+#social-wall {
+  padding-top: 80px;
+}
+#social-wall #graph {
+  border-bottom: 1px solid #eaeaea;
+  height: 200px;
+  margin-bottom: 20px;
+  position: relative;
+}
+#social-wall #graph #tipGraph {
+  background-color: #c8a461;
+  color: #fff;
+  font-size: 0.625rem;
+  padding: 2px 10px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -moz-transition: -moz-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: -o-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: transform 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#social-wall #graph #tipGraph.show {
+  opacity: 1;
+  visibility: visible;
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+#social-wall #graph #tipGraph:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 4px solid transparent;
+  border-top-color: #c8a461;
+  top: 100%;
+  left: 35%;
+}
+#social-wall #graph circle {
+  cursor: pointer;
+}
+#social-wall #graph ul {
+  left: 52px;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 30px);
+}
+#social-wall #graph ul li {
+  color: #f3f3f3;
+  display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.688rem;
+  text-align: center;
+  width: 76px;
+}
+#social-wall #graph ul li:last-child {
+  width: 65px;
+}
+@media screen and (max-width: 1024px) {
+  #social-wall #graph ul li:last-child {
+    width: 45px;
+    text-align: right;
+  }
+}
+#social-wall #graph ul li.active {
+  color: #000;
+}
+#social-wall #graph ul li span {
+  display: block;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+#social-wall #graph #hashtag {
+  color: #c8a461;
+  float: left;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  height: 100%;
+  width: 86px;
+}
+#social-wall #graph #hashtag img {
+  display: block;
+}
+#social-wall #graph .icon {
+  color: #c8a461;
+  font-size: 4rem;
+  margin-left: 5px;
+}
+#social-wall #graph svg {
+  display: block;
+  float: left;
+  width: 891px;
+}
+#social-wall #wall {
+  border-bottom: 1px solid #eaeaea;
+  overflow: hidden;
+  padding-bottom: 45px;
+}
+#social-wall #wall .post {
+  float: left;
+  height: 125px;
+  max-width: 12.5%;
+  position: relative;
+  width: 125px;
+}
+#social-wall #wall .post .instagram:after {
+  background: url("../img/svg/instagram-white.svg") no-repeat;
+  background-size: contain;
+  bottom: 5px;
+  content: '';
+  display: block;
+  left: 10px;
+  position: absolute;
+  height: 17px;
+  width: 17px;
+}
+#social-wall #wall .post .twitter:after {
+  background: url("../img/svg/twitter-white.svg") no-repeat;
+  background-size: contain;
+  bottom: 5px;
+  content: '';
+  display: block;
+  left: 10px;
+  position: absolute;
+  height: 16px;
+  width: 16px;
+}
+#social-wall #wall .post p {
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#social-wall #wall .post .twitter.hasimg:after {
+  background-image: url("../img/svg/twitter-white.svg");
+}
+#social-wall #wall .post .side {
+  backface-visibility: hidden;
+  background-size: cover;
+  cursor: default;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform-origin: 50% 50% 0px;
+  -moz-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  width: 100%;
+}
+#social-wall #wall .post .side .ov {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#social-wall #wall .post .side.overlay .ov {
+  opacity: 0.7;
+  visibility: visible;
+}
+#social-wall #wall .post .side.hasimg {
+  cursor: pointer;
+}
+#social-wall #wall .post .side.hasimg .txt {
+  opacity: 0;
+  visibility: hidden;
+}
+#social-wall #wall .post .side.hasimg:hover .txt {
+  opacity: 1;
+  visibility: visible;
+}
+#social-wall #wall .post .side .txt {
+  background-color: #fff;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  font-size: 0.625rem;
+  height: 100%;
+  width: 100%;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#social-wall #wall .post .side a, #social-wall #wall .post .side strong {
+  color: #c8a461;
+  font-weight: normal;
+}
+#social-wall #wall .post .side.side-1 {
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+#social-wall #wall .post .side.side-1.flip {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+#social-wall #wall .post .side.side-2 {
+  background-color: #f6f6f6;
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+#social-wall #wall .post .side.side-2.flip {
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+#social-wall #wall .post img {
+  height: 100%;
+  width: 100%;
+}
+#social-wall #wall .post.big {
+  height: 250px;
+  max-width: 25%;
+  width: 250px;
+}
+#social-wall #wall .post.big .side .txt {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+#social-wall #wall .post.big .side p {
+  font-size: 1rem;
+  padding: 0 25px;
+  width: 250px;
+}
+#social-wall #wall .post.big .side.twitter:after {
+  bottom: 25px;
+  left: 25px;
+}
+#social-wall #wall .post.big .side.twitter.hasimg:after {
+  bottom: 10px;
+  left: 10px;
+}
+#social-wall #wall .post.right {
+  float: right;
+}
+
+#networks {
+  overflow: hidden;
+  padding: 40px 0 50px 0;
+}
+#networks p {
+  color: #333;
+  float: left;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+#networks ul {
+  float: right;
+}
+#networks ul li {
+  display: inline-block;
+  margin-left: 15px;
+}
+#networks ul li a {
+  color: #999;
+  display: block;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  line-height: 16px;
+  position: relative;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#networks ul li a:hover {
+  color: #c8a461;
+}
+#networks ul li a:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+#networks ul li a:after {
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#networks ul li .icon {
+  margin-left: 10px;
+}
+#networks ul li .icon.icon_youtube {
+  font-size: 1.15rem;
+  vertical-align: bottom !important;
+}
+#networks ul li .icon.icon_dailymotion {
+  vertical-align: text-top !important;
+}
+#networks ul li .icon.icon_tumblr {
+  vertical-align: text-top !important;
+}
+
 a {
   cursor: pointer;
 }
@@ -13609,7 +13949,7 @@ a {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("../img/svg/instagram.svg") no-repeat;
+  background: url("../img/svg/instagram-white.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13620,7 +13960,7 @@ a {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("../img/svg/twitter-gold.svg") no-repeat;
+  background: url("../img/svg/twitter-white.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13638,7 +13978,7 @@ a {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("../img/svg/twitter.svg");
+  background-image: url("../img/svg/twitter-white.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
@@ -14663,7 +15003,6 @@ a {
 }
 
 .socialBox {
-  border-bottom: 1px solid #ececec;
   width: 1020px;
   height: 500px;
   margin: 0 auto;
@@ -14673,6 +15012,9 @@ a {
 .socialBox a {
   color: #c8a461;
   text-decoration: none;
+}
+.socialBox h3 {
+  margin-bottom: 0px !important;
 }
 .socialBox img {
   object-fit: cover;
@@ -14871,7 +15213,7 @@ a {
   width: 200px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 45px;
+  margin-top: 50px;
   height: 100px;
 }
 .shareSocial div {
@@ -14920,11 +15262,9 @@ a {
 }
 .catalogue:hover img {
   -webkit-transition: all 2s;
-  -ms-transform: scale(1.1);
-  /* IE 9 */
+  /*-ms-transform: scale(1.1); 
   -webkit-transform: scale(1.1);
-  /* Safari */
-  transform: scale(1.1);
+  transform: scale(1.1);*/
   -moz-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -14953,7 +15293,7 @@ a {
   -webkit-transition: all 0.5s;
 }
 .catalogue:hover .imgIllustration:after {
-  opacity: 0.6;
+  /*opacity: 0.6;*/
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
 }
@@ -14979,30 +15319,24 @@ a {
   float: left;
   display: block;
   text-align: center;
-  margin-top: 180px;
+  margin-top: 130px;
+  height: 550px;
   position: relative;
   z-index: 1000;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
-.catalogue div:hover .plusSign {
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s;
-  -ms-transform: scale(1.2);
-  /* IE 9 */
-  -webkit-transform: scale(1.2);
-  /* Safari */
-  transform: scale(1.2);
-  -ms-transform: rotate(360deg);
-  /* IE 9 */
-  -webkit-transform: rotate(360deg);
-  /* Chrome, Safari, Opera */
-  transform: rotate(360deg);
+  /*&:hover .plusSign {
+    @include transition(all 0.9s $smoothTransition);
+    -webkit-transition: all 0.5s;
+    -ms-transform: scale(1.2); 
+    -webkit-transform: scale(1.2); 
+    transform: scale(1.2);
+    -ms-transform: rotate(360deg); 
+    -webkit-transform: rotate(360deg); 
+    transform: rotate(360deg);
+  }*/
 }
 .catalogue div h6 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -15010,14 +15344,67 @@ a {
   color: #ffffff;
   letter-spacing: 2px;
   text-transform: uppercase;
+  padding-top: 30px;
+}
+.catalogue .plusSignContainer {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -40px;
 }
 .catalogue .plusSign {
+  cursor: pointer;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  width: 42px;
+  height: 42px;
+}
+
+.blocks {
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.blocks:after {
+  height: 1px;
+  display: block;
   width: 100%;
-  margin-top: 250px;
+  /* transform: rotate(90deg); */
+  top: -2%;
+  position: absolute;
+  opacity: 0.4;
+  content: url(/img/trait.png);
+  z-index: -1;
+}
+.blocks:hover:after {
+  height: 1px;
+  display: block;
+  width: 100%;
+  /* transform: rotate(90deg); */
+  top: -2%;
+  position: absolute;
+  opacity: 0;
+  content: url(/img/trait.png);
+  z-index: 0;
+}
+.blocks hr {
+  transform: rotate(90deg);
+  height: 1px;
+  top: 21%;
+  position: absolute;
+  width: 100%;
+  /* border-bottom: 1px solid #ECECEC; */
+  opacity: 0.2;
+  /* border-right: 1px white; */
+  background: #ECECE2;
+  border-width: 0px;
 }
 
 .blocks:hover .plusSign img {
@@ -15036,6 +15423,34 @@ a {
   -webkit-transform: rotate(360deg);
   /* Chrome, Safari, Opera */
   transform: rotate(360deg);
+}
+
+.rotationplusSign {
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s;
+  -ms-transform: scale(1.5);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+  /* Safari */
+  transform: scale(1.5);
+  -ms-transform: rotate(360deg);
+  /* IE 9 */
+  -webkit-transform: rotate(360deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(360deg);
+}
+
+.opacity {
+  -moz-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .thirdBlocks {
@@ -27886,10 +28301,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   z-index: 1002;
   top: 0px;
   background: #141414;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .subNavigationFixed {
@@ -27897,10 +28312,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   z-index: 1002;
   width: 100%;
   top: 90px;
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .eventsHeader {
