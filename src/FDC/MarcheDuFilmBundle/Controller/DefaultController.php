@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FDCMarcheDuFilmBundle::base.html.twig');
+        return $this->render('FDCMarcheDuFilmBundle::homepage/homepage.html.twig');
     }
 }
