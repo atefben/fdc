@@ -35,10 +35,8 @@
                         <div class="title-list-cat">
                             <h2 class="title-big">{{ transClassic.title }}</h2>
                             <div class="buttons">
-                                <a id="share-article" href="#" class="button"><i
-                                            class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
-                                <a href="#" onclick="javascript:window.print()" class="button print"><i
-                                            class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                                <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
                             </div>
                         </div>
                     {% endif %}
@@ -132,11 +130,11 @@
         {% endif %}
     </div>
     {{ render(controller('FDCEventBundle:Global:shareEmail',
-    {'section': transClassic.title ,
+    {'section': {{ trans.titleNav }} ,
         'detail': '',
         'title': transClassic.title,
         'description': '',
-        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+        'url': currentUrl
     })) }}
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
