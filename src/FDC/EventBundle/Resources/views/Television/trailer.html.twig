@@ -15,20 +15,7 @@
                     <div class="video-container state-init video"
                          data-link="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}"
                          data-email="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}"
-                         data-playlist='[{%- set first = true -%}
-                            {%- for video in videos %}
-                            {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
-                            {%- if video.image -%}
-								{% set videoImage = media_public_url(video.image|trans_fallback('file'), '975x616') %}
-                            {%- elseif video|trans_fallback('imageAmazonUrl') -%}
-                                {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
-                            {%- endif -%}
-                            {%- if trans is null -%}
-                                {%- set trans = video.file.findTranslationByLocale('fr') -%}
-                            {%- endif -%}
-                            {%- if videoImage is defined -%}
-                                {%- if first == false -%},{%- endif -%}{"sources":[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.id }}","title":"{{ video|trans_fallback('title') }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
-                            {%- endfor -%}]'
+                         
                          data-file=""
                          {%- if videos[0].image -%}
                          data-img="{%- path videos[0].image|trans_fallback('file'), '975x616' -%}"
