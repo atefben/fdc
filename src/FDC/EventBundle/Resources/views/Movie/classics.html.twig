@@ -129,9 +129,8 @@
             </div>
         {% endif %}
     </div>
-    {% set trans = filter.findTranslationByLocale(app.request.locale) %}
     {{ render(controller('FDCEventBundle:Global:shareEmail',
-    {'section': trans.titleNav ,
+    {'section': 'selection.title.selectionofficielle'|trans ,
         'detail': '',
         'title': transClassic.title,
         'description': '',
