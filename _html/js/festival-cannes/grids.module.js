@@ -851,6 +851,9 @@ $(document).ready(function () {
       if($('#gridPhotos').length > 0 && $('.all-photos').length > 0) {
         initSlideshows();
       }
+
+      $grid.isotope('layout');
+      $("img.lazy").trigger('appear');
     });
   }
 
