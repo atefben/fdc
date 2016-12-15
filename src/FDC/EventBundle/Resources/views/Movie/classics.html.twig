@@ -104,9 +104,8 @@
                             <p>{{ 'juries.artiste.title.share'|trans }}</p>
                             {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                             <div class="buttons square">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"
-                                   class="button facebook"><i class="icon icon_facebook"></i></a>
-                                <a href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}" class="button facebook"><i class="icon icon_facebook"></i></a>
+                                <a href="https://twitter.com/intent/tweet?url={{ ucurrentUrl}}"
                                    class="button twitter"><i class="icon icon_twitter"></i></a>
                                 <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
                                 <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
