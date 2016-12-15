@@ -131,7 +131,13 @@
             </div>
         {% endif %}
     </div>
-
+    {{ render(controller('FDCEventBundle:Global:shareEmail',
+    {'section': news.theme|trans_fallback('name'),
+        'detail': news.publishedAt|date('d.m.y'),
+        'title': news|trans_fallback('title'),
+        'description': news|trans_fallback('introduction')|raw,
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
