@@ -408,7 +408,7 @@ $(document).ready(function () {
           }
           timer = window.setTimeout(function() {
             $grid.isotope('layout');
-          }, 100);
+          }, 250);
         });
       });
 
