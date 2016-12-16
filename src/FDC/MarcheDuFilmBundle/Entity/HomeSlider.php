@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 15.12.2016
- * Time: 16:53
- */
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
