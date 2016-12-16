@@ -551,12 +551,3 @@ a.notloaded {
 .jw-icon-playlist {
     display:none !important;
 }
-
-.popin-plan-div {
-    display:none;
-    position: absolute;
-    height: 560px;
-    width: 420px;
-    top: 20px;
-    z-index: 10000;
-}
