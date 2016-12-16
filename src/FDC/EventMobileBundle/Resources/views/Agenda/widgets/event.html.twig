@@ -37,6 +37,7 @@
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- elseif isEvenement -%}icon_speacker{%- else -%}icon_evt-seance{%- endif -%}"></i>
             {%- set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify|lower -%}
+            {{ event.type|remove_accents|sonata_slugify|lower }}
             {%- set trans = trans_slug|trans -%}
             {%- if trans_slug != trans -%}
                 {{- trans -}}
