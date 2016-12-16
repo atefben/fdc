@@ -49,11 +49,12 @@
 <div id="prehome-container">
     <div id="prehome"></div>
 </div>
-{% include 'FDCMarcheDuFilmBundle:shared:header.html.twig' %}
+
+{{ render(controller('FDCMarcheDuFilmBundle:Transverse:header')) }}
 
 {% block main %}{% endblock main %}
 
-{% include 'FDCMarcheDuFilmBundle:shared:footer.html.twig' %}
+{{ render(controller('FDCMarcheDuFilmBundle:Transverse:footer')) }}
 
 {% include 'FDCMarcheDuFilmBundle:shared:javascripts.html.twig' %}
 </body>
