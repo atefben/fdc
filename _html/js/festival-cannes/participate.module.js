@@ -2,11 +2,7 @@
 // =========================
 $(document).ready(function() {
 
-
   if($('.participate').length) {
-      $('.popin-plan').click(function() {
-          $('#popin-participate').show();
-      });
       //open issue
     if(!$('.content-contractor').length){
       $(".contain-section h3, .contain-section .accordion").click(function(){

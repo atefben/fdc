@@ -16837,6 +16837,14 @@ body:not(.tablette) .webtv #live .img {
   overflow: hidden;
   padding-top: 0 !important;
 }
+.press .popin-plan-div {
+  display: none;
+  position: absolute;
+  height: 560px;
+  width: 420px;
+  top: 20px;
+  z-index: 10000;
+}
 .press .download .icon.icon_telecharger {
   margin-right: 10px !important;
   vertical-align: middle !important;
