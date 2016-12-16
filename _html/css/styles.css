@@ -9860,7 +9860,7 @@ header #searchContainer {
 }
 
 #prefooter {
-  background: #fff url("../img/svg/palme-bg.svg") no-repeat center 20%;
+  background: #1f1f1f url("../img/svg/palme-bg.svg") no-repeat center 20%;
   background-size: 900px auto;
   box-sizing: border-box;
   height: 535px;
@@ -9906,7 +9906,6 @@ header #searchContainer {
   height: 108%;
   width: 100%;
   z-index: 0;
-  background-color: #1f1f1f;
   -moz-transform: translate3d(0px, -70px, 0px);
   -ms-transform: translate3d(0px, -70px, 0px);
   -webkit-transform: translate3d(0px, -70px, 0px);
