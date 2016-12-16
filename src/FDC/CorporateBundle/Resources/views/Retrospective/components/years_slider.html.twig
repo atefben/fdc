@@ -80,7 +80,7 @@
 
                 {% macro sliderImage(mediaImage) %}
                     {% spaceless %}
-                        {% if mediaImage is defined %}
+                        {% if mediaImage is defined and mediaImage.association is defined and mediaImage.association %}
                             {% set mainTrans = mediaImage.association.findTranslationByLocale(app.request.locale) %}
                             {% if mainTrans is null or mainTrans.file is null %}
                                 {% set mainTrans = mediaImage.association.findTranslationByLocale('fr') %}
