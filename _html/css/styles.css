@@ -9930,7 +9930,6 @@ header #searchContainer {
 #prefooter .imgSlide img {
   display: block;
   margin: 0 auto;
-  max-height: 100%;
   width: 100%;
   bottom: -10%;
   left: 0;
