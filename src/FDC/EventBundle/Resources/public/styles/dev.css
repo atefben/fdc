@@ -551,3 +551,7 @@ a.notloaded {
 .jw-icon-playlist {
     display:none !important;
 }
+
+#popin-participate {
+    display:none;
+}
