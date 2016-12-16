@@ -1525,10 +1525,16 @@ services:
         class: Base\AdminBundle\Admin\ServiceAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Service, BaseAdminBundle:ServiceAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Service}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Service}
 
     base.admin.service_widget_product:
         class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct, BaseAdminBundle:ServiceWidgetProductAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: ServiceWidgetProduct}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct}
+
+    base.admin.mdf_header_footer:
+            class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin
+            arguments: [~, FDC\MarcheDuFilmBundle\Entity\HeaderFooter, ~]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: HeaderFooter}

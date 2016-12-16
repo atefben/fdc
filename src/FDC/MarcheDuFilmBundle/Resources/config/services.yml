@@ -1,4 +1,6 @@
 services:
-#    fdc_marche_du_film.example:
-#        class: FDC\MarcheDuFilmBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    mdf.manager.header_footer:
+        class: FDC\MarcheDuFilmBundle\Manager\HeaderFooterManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
