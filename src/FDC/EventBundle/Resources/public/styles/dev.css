@@ -558,5 +558,5 @@ a.notloaded {
     height: 560px;
     width: 420px;
     top: 20px;
-    z-index: 100000;
+    z-index: 10000;
 }
