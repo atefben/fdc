@@ -30,7 +30,8 @@ class EditionsController extends Controller
      * @Template("FDCCorporateBundle:Retrospective:components/menu.html.twig")
      * @return array
      */
-    public function menuAction(Request $request, $year, $route) {
+    public function menuAction(Request $request, $year, $route)
+    {
         $em = $this->get('doctrine')->getManager();
         $festival = $this->getFestival($year);
         $locale = $request->getLocale();
@@ -45,14 +46,13 @@ class EditionsController extends Controller
         //news
         $news = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $festival->getId());
         $news = $this->removeUnpublishedNewsAudioVideo($news, $locale, null, true);
-        
+
         //events
         $events =
             $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Event')
-                ->getEvents($festival, $locale)
-        ;
+                ->getEvents($festival, $locale);
 
         return array(
             'posters' => $posters,
@@ -116,7 +116,12 @@ class EditionsController extends Controller
         $params['longUrl'] = $request->getUri();
         $results = $bitlyManager->bitly_get('shorten', $params);
 
-        return array('posters' => $posters, 'festival' => $festival, 'festivals' => $festivals, 'urlshare' => $results['data']['url']);
+        return array(
+            'posters' => $posters,
+            'festival' => $festival,
+            'festivals' => $festivals,
+            'urlshare' => $results['data']['url']
+        );
     }
 
     /**
@@ -124,11 +129,12 @@ class EditionsController extends Controller
      * @Template("FDCCorporateBundle:Retrospective:history.html.twig")
      * @return array
      */
-    public function historyAction(Request $request) {
+    public function historyAction(Request $request)
+    {
         $em = $this->get('doctrine')->getManager();
 
         $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(1);
-        if($page->findTranslationByLocale('fr')->getStatus() == 1) {
+        if ($page->findTranslationByLocale('fr')->getStatus() == 1) {
             return array(
                 'currentPage' => $page,
             );
@@ -143,14 +149,15 @@ class EditionsController extends Controller
      * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
      * @return array
      */
-    public function archivesAction(Request $request) {
+    public function archivesAction(Request $request)
+    {
         $em = $this->get('doctrine')->getManager();
 
         $page = $em->getRepository('BaseCoreBundle:CorpoPalmeOr')->find(3);
-        if($page->findTranslationByLocale('fr')->getStatus() == 1) {
+        if ($page->findTranslationByLocale('fr')->getStatus() == 1) {
             return array(
                 'currentPage' => $page,
-                'archives'    => true
+                'archives' => true
             );
         } else {
             throw $this->createNotFoundException('There is not available selection.');
@@ -163,14 +170,14 @@ class EditionsController extends Controller
      * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
      * @return array
      */
-    public function PalmeAction(Request $request, $slug = null) {
+    public function PalmeAction(Request $request, $slug = null)
+    {
         $locale = $request->getLocale();
 
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoPalmeOr')
-            ->getAllPagesByLocale($locale)
-        ;
+            ->getAllPagesByLocale($locale);
         if ($slug === null) {
             foreach ($pages as $page) {
                 if ($page instanceof CorpoPalmeOr) {
@@ -188,8 +195,7 @@ class EditionsController extends Controller
         $page = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoPalmeOr')
-            ->getPageBySlug($locale, $slug)
-        ;
+            ->getPageBySlug($locale, $slug);
 
         return array(
             'pages' => $pages,
