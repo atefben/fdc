@@ -516,10 +516,6 @@
 	height: 325px !important;
 }
 
-#prefooter {
-    background: #1f1f1f !important;
-}
-
 .faq-container p a {
     color: #c8a461 !important;
 }
@@ -550,4 +546,17 @@
 
 a.notloaded {
     opacity: 0;
+}
+
+.jw-icon-playlist {
+    display:none !important;
+}
+
+#popin-participate {
+    display:none;
+    position: absolute;
+    height: 560px;
+    width: 420px;
+    top: 20px;
+    z-index: 100000;
 }
