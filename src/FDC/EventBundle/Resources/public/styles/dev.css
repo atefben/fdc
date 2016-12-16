@@ -552,7 +552,7 @@ a.notloaded {
     display:none !important;
 }
 
-#popin-participate {
+.popin-plan-div {
     display:none;
     position: absolute;
     height: 560px;
