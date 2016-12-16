@@ -1,6 +1,11 @@
 $(document).ready(function () {
   // init array of events
 
+  $('.popin-plan').click(function() {
+    $('#popin-participate-' + $(this).attr('data-id')).show();
+    console.log('#popin-participate-' + $(this).attr('data-id'));
+  });
+
   var events = [];
 
   // get local storage

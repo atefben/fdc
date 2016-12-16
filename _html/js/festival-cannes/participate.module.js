@@ -2,11 +2,6 @@
 // =========================
 $(document).ready(function() {
 
-    $('.popin-plan').click(function() {
-        $('#popin-participate-' + $(this).attr('data-id')).show();
-        console.log('#popin-participate-' + $(this).attr('data-id'));
-    });
-
   if($('.participate').length) {
       //open issue
     if(!$('.content-contractor').length){
