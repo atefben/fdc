@@ -1217,8 +1217,11 @@
           }
           @include breakpoint(1279px) {
             span {
-              font-size: 7px;
+              font-size: 9px;
             }
+          }
+          @include breakpoint(1279px) {
+            margin-right:25px;
           }
         }
 
