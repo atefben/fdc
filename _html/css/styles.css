@@ -9906,6 +9906,7 @@ header #searchContainer {
   height: 108%;
   width: 100%;
   z-index: 0;
+  background-color: #1f1f1f;
   -moz-transform: translate3d(0px, -70px, 0px);
   -ms-transform: translate3d(0px, -70px, 0px);
   -webkit-transform: translate3d(0px, -70px, 0px);
