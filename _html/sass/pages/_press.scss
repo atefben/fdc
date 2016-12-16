@@ -12,15 +12,6 @@
   overflow: hidden;
   padding-top: 0!important;
 
-  .popin-plan-div {
-    display:none;
-    position: absolute;
-    height: 560px;
-    width: 420px;
-    top: 20px;
-    z-index: 10000;
-  }
-
   .download {
     .icon.icon_telecharger {
       margin-right: 10px !important;
@@ -2654,4 +2645,13 @@
     margin: 0 0 0 65px;
     width: 64%;
   }
+}
+
+.popin-plan-div {
+  display:none;
+  position: absolute;
+  height: 560px;
+  width: 420px;
+  top: 20px;
+  z-index: 1000;
 }
