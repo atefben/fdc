@@ -5,7 +5,7 @@
     {%- set isSeancePress = (event.type == 'Séance de presse') ? true : false -%}
     {%- set isSeanceDuJour = (event.type == 'Séance du jour') ? true : false -%}
     {%- set isSeanceDuLendemain = (event.type == 'Séance du lendemain') ? true : false -%}
-    {%- set isEvenement = (event.type == 'Événement') ? true : false -%}
+    {%- set isEvenement = (event.type|remove_accents|sonata_slugify|lower == 'evenement') ? true : false -%}
 
     {%- set difference = date(event.endsAt).diff(date(event.startsAt)) -%}
     {%- set minutes = difference.i -%}
@@ -35,7 +35,7 @@
              data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
              data-time="{% if event.startsAt|date('H') >= 0 and event.startsAt|date('H') <= 3 %}{{ 24 + event.startsAt|date('H') }}{% else %}{{ event.startsAt|date('H') }}{% endif %}" data-duration="{{ minutes }}">
         <span class="category">
-            <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isEvenement -%}icon_evt-conference{%- elseif isEvenement -%}icon_speacker{%- else -%}icon_evt-seance{%- endif -%}"></i>
+            <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- elseif isEvenement -%}icon_speacker{%- else -%}icon_evt-seance{%- endif -%}"></i>
             {%- set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify|lower -%}
             {%- set trans = trans_slug|trans -%}
             {%- if trans_slug != trans -%}
