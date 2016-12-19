@@ -1544,3 +1544,12 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfHomepage, BaseAdminBundle:MdfHomepageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Homepage}
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HeaderFooter, ~]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: HeaderFooter}
+
+    base.admin.mdf_news:
+        class: Base\AdminBundle\Admin\MdfNewsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\News, BaseAdminBundle:MdfNewsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: News}
