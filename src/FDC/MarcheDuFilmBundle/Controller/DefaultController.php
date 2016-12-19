@@ -19,11 +19,13 @@ class DefaultController extends Controller
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
         $contentBlock = $homepageManager->getContentBlock();
+        $contentBlockSlider = $homepageManager->getContentBlockSlider();
 
         return $this->render('FDCMarcheDuFilmBundle::homepage/homepage.html.twig', array(
-            'slidersTop' => $slidersTop,
-            'sliders' => $sliders,
-            'contentBlock' => $contentBlock
+            'sliderTop' => $slidersTop,
+            'slider' => $sliders,
+            'contentBlock' => $contentBlock,
+            'contentBlockSlider' => $contentBlockSlider
         ));
     }
 }

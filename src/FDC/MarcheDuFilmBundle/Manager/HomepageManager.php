@@ -11,6 +11,7 @@ namespace FDC\MarcheDuFilmBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use FDC\MarcheDuFilmBundle\Entity\HomeSliderTopTranslation;
 use FDC\MarcheDuFilmBundle\Entity\HomeSliderTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfHomeContentSliderTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfHomepageTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -53,6 +54,17 @@ class HomepageManager
         return $this->em
             ->getRepository(MdfHomepageTranslation::class)
             ->findOneBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+
+    public function getContentBlockSlider()
+    {
+        return $this->em
+            ->getRepository(MdfHomeContentSliderTranslation::class)
+            ->findBy(
                 array(
                     'locale' => $this->requestStack->getMasterRequest()->get('_locale')
                 )
