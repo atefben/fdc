@@ -23,7 +23,9 @@ class NewsTranslationRepository extends EntityRepository
             ->select('nt, n')
             ->join('nt.translatable', 'n')
             ->where('nt.locale = :locale')
+            ->andWhere('n.publishedAt <= :today')
             ->setParameter('locale', $locale)
+            ->setParameter('today', new \DateTime())
             ->setMaxResults(3)
             ->orderBy('n.publishedAt', 'DESC')
         ;
