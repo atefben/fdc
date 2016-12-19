@@ -16,3 +16,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.contact:
+        class: FDC\MarcheDuFilmBundle\Manager\ContactManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
