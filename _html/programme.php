@@ -253,7 +253,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Helping Hand</div>
+                            <div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <span>Helping hand</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -276,7 +276,7 @@
                             </div>
                           </div>
                           <div class="box b events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10"><p>Producers<br>NetWork</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
@@ -300,7 +300,7 @@
                             </div>                            
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Doc Corner</div>
+                            <div class="conf10"><p>Doc Corner</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
@@ -323,7 +323,7 @@
                               </div>
                             </div>                            
                           </div>
-                          <div class="box d events"><div class="conf10">Next</div>
+                          <div class="box d events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -346,7 +346,7 @@
                               </div>
                             </div>           
                           </div>
-                          <div class="box e events"><div class="conf10">Next</div>
+                          <div class="box e events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -369,7 +369,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box f events"><div class="conf10">Helping Hand</div>
+                          <div class="box f events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -401,7 +401,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Producers<br>Workshop</div>
+                            <div class="conf10"><p>Producers<br>Workshop</p></div>
                             <div class="conf60">
                               <span>Helping hand</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -424,7 +424,7 @@
                             </div>
                           </div>
                           <div class="box b events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10"><p>Producers<br>NetWork</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
@@ -472,7 +472,7 @@
                             </div>                            
                             
                           </div>
-                          <div class="box d events"><div class="conf10">Next</div>
+                          <div class="box d events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -495,7 +495,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box e events"><div class="conf10">Next</div>
+                          <div class="box e events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -518,7 +518,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box f events"><div class="conf10">Helping Hand</div>
+                          <div class="box f events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -550,7 +550,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Producers<br>Workshop</div>
+                            <div class="conf10"><p>Producers<br>Workshop</p></div>
                             <div class="conf60">
                               <span>Helping hand</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -597,7 +597,7 @@
                             </div>                            
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Doc Corner</div>
+                            <div class="conf10"><p>Doc Corner</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
@@ -621,7 +621,7 @@
                             </div>                            
                             
                           </div>
-                          <div class="box d events"><div class="conf10">Next</div>
+                          <div class="box d events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -644,7 +644,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box e events"><div class="conf10">Next</div>
+                          <div class="box e events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -667,7 +667,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box f events"><div class="conf10">Helping Hand</div>
+                          <div class="box f events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -699,7 +699,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Producers<br>Workshop</div>
+                            <div class="conf10"><p>Producers<br>Workshop</p></div>
                             <div class="conf60">
                               <span>Helping hand</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -722,7 +722,7 @@
                             </div>
                           </div>
                           <div class="box b events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10"><p>Producers<br>NetWork</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
@@ -746,7 +746,7 @@
                             </div>                            
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Doc Corner</div>
+                            <div class="conf10"><p>Doc Corner</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
@@ -770,7 +770,7 @@
                             </div>                            
                             
                           </div>
-                          <div class="box d events"><div class="conf10">Next</div>
+                          <div class="box d events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -793,7 +793,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box e events"><div class="conf10">Next</div>
+                          <div class="box e events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -816,7 +816,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box f events"><div class="conf10">Helping Hand</div>
+                          <div class="box f events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -848,7 +848,7 @@
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box a events">
-                            <div class="conf10">Producers<br>Workshop</div>
+                            <div class="conf10"><p>Producers<br>Workshop</p></div>
                             <div class="conf60">
                               <span>Helping hand</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
@@ -871,7 +871,7 @@
                             </div>
                           </div>
                           <div class="box b events">
-                            <div class="conf10">Producers<br>NetWork</div>
+                            <div class="conf10"><p>Producers<br>NetWork</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
@@ -895,7 +895,7 @@
                             </div>                            
                           </div>
                           <div class="box c events">
-                            <div class="conf10">Doc Corner</div>
+                            <div class="conf10"><p>Doc Corner</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
@@ -919,7 +919,7 @@
                             </div>                            
                             
                           </div>
-                          <div class="box d events"><div class="conf10">Next</div>
+                          <div class="box d events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -942,7 +942,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box e events"><div class="conf10">Next</div>
+                          <div class="box e events"><div class="conf10"><p>Next</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>
@@ -965,7 +965,7 @@
                               </div>
                             </div>               
                           </div>
-                          <div class="box f events"><div class="conf10">Helping Hand</div>
+                          <div class="box f events"><div class="conf10"><p>Helping Hand</p></div>
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Breakfast Meeting</span>

@@ -132,7 +132,7 @@
       img {
         max-width: 100%;
         height: auto;
-        border: 5px solid white;
+        border: 3px solid white;
         border-radius: 100px;
       }
     }
@@ -173,7 +173,7 @@
         content: "•";
         margin-left: 5px;
       }
-      &:last-child {
+      &:last-child, &:nth-child(3) {
         &:after {
           content: "";
         }

@@ -64,7 +64,8 @@
         @include transition(all 0.6s $linear);
 
         &:after {
-          border: 0px solid $gold;
+          /*border: 0px solid $gold;*/
+          border: 0px solid white;
           box-sizing: border-box;
           content: '';
           display: block;

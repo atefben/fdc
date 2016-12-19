@@ -785,8 +785,12 @@
       color:$gold;
     }
   }
-
-
-
-
 }
+
+.all-contain {
+  .border-top {
+    border-top: 1px solid #ECECEC;
+  }
+}
+
+

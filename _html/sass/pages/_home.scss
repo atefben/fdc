@@ -2246,6 +2246,16 @@ a {
 } 
 
 .competition {
+  @media screen and (max-width: 1366px) {
+    width: 1330px;
+  }
+  @media screen and (max-width: 1280px) {
+    width: 1200px;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 1000px;
+  }
+  
   h3 {
     font-size: 18px;
     font-family: $Playfair;
@@ -2314,7 +2324,7 @@ a {
       line-height: 35px;
       color: white;
       font-family: $Playfair;
-      font-weight: bold!important;
+      /*font-weight: bold!important;*/
       letter-spacing: 2px;
     }
 

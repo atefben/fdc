@@ -152,7 +152,15 @@ footer {
       float: left;
       font-family: $CamphorBold;
       font-size: 1.250rem;
-      text-transform: uppercase;
+      text-transform: uppercase;;
+    }
+
+
+    .footerLogo {
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      color: white;
+      letter-spacing: 1px;
     }
 
     ul {

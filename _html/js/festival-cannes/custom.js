@@ -472,7 +472,7 @@ if (window.matchMedia("(max-width: 1279px)").matches) {
         var text = title.attr('data-title');
       }
 
-        title.html(text.trunc(35, true));
+        title.html(text.trunc(60, true));
 
     });
   }
@@ -515,7 +515,7 @@ if (window.matchMedia("(max-width: 1279px)").matches) {
         var text = title.attr('data-title');
       }
 
-        title.html(text.trunc(45, true));
+        title.html(text.trunc(60, true));
 
     });
   }

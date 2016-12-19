@@ -55,11 +55,11 @@
                   <span>AFFICHER</span>
                   <div id="eventSelector">
 
-                    
+                    <div class="selectText" id="short-fim-corner">Présent au short fim corner</div>
                     <div class="selectText" id="helping-hand">Helping hand,</div>
                     <div class="selectText" id="screening">Screening,</div>
                     <div class="selectText" id="pitching-training">Pitching Training</div>
-                    <div class="selectText" id="short-fim-corner">Présent au short fim corner</div>
+                    
                   </div>
                   <!--<div class="dropArrow">
                     <i class="icon icon_flecheGauche"></i>
@@ -67,12 +67,13 @@
                 </div><br>
                 <div class="selector">
                   <!--<div class="purpleBtn selectbtn" id="all">Tous</div>-->
-                  <div class="selectbtn" id="a" rel="helping-hand">Helping Hand</div>
-                  <div class="selectbtn" id="b" rel="screening">Screening</div>
-                  <div class="selectbtn" id="c" rel="pitching-training">Pitching Training</div>
                   <div class="selectbtn bigSelectbtn" id="d" rel="short-fim-corner">
                     Présent au short fim corner <img src="img/sfcLogo.png" alt="">
                   </div>
+                  <div class="selectbtn" id="a" rel="helping-hand">Helping Hand</div>
+                  <div class="selectbtn" id="b" rel="screening">Screening</div>
+                  <div class="selectbtn" id="c" rel="pitching-training">Pitching Training</div>
+
                 </div>
               </div>
             </div>
@@ -132,7 +133,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
-                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><span>vente</span><span>vente</span><span>vente</span></div>                   
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><span>distribution</span><span>vente</span><span>vente</span></div>                   
                     </div>
                     <div class="box a events">
                       <div class="eventPhoto">

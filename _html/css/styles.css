@@ -2564,6 +2564,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
 }
 
+.all-contain .border-top {
+  border-top: 1px solid #ECECEC;
+}
+
 .owl-carousel {
   display: none;
   width: 100%;
@@ -3318,11 +3322,13 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 /* CAROUSEL ABOUT */
 .aboutPhotos .slideshow {
   height: 500px;
+  height: 459px !important;
   width: 725px;
   border-bottom: 0px solid #e5e5e5;
 }
 .aboutPhotos .slideshow .slideshow-img {
   height: 500px;
+  height: 459px !important;
 }
 .aboutPhotos .slideshow .slideshow-img .images .img a {
   width: 100%;
@@ -9241,6 +9247,12 @@ footer .social p {
   font-size: 1.250rem;
   text-transform: uppercase;
 }
+footer .social .footerLogo {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
+  letter-spacing: 1px;
+}
 footer .social ul {
   float: right;
 }
@@ -9471,7 +9483,8 @@ footer .footer-menu ul li a:hover {
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .slideshow .slideshow-img .thumbnails .thumb:after {
-  border: 0px solid #c8a461;
+  /*border: 0px solid $gold;*/
+  border: 0px solid white;
   box-sizing: border-box;
   content: '';
   display: block;
@@ -13949,7 +13962,7 @@ a {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("../img/svg/instagram-white.svg") no-repeat;
+  background: url("../img/svg/instagram.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13960,7 +13973,7 @@ a {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("../img/svg/twitter-white.svg") no-repeat;
+  background: url("../img/svg/twitter-gold.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13978,7 +13991,7 @@ a {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("../img/svg/twitter-white.svg");
+  background-image: url("../img/svg/twitter.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
@@ -15465,6 +15478,21 @@ a {
   width: 20%;
 }
 
+@media screen and (max-width: 1366px) {
+  .competition {
+    width: 1330px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .competition {
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .competition {
+    width: 1000px;
+  }
+}
 .competition h3 {
   font-size: 18px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -15536,7 +15564,7 @@ a {
   line-height: 35px;
   color: white;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-weight: bold !important;
+  /*font-weight: bold!important;*/
   letter-spacing: 2px;
 }
 .about .aboutContent p {
@@ -27878,14 +27906,14 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conf10 p {
   text-align: right;
-  margin-right: 50px;
+  margin-right: 25px;
   color: #c3a05f;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
   text-transform: uppercase;
   line-height: 30px;
   font-size: 12px;
   line-height: 25px;
-  width: 50px;
+  width: 70px;
   float: right;
 }
 .conferences .conf60, .conferences .conf70 {
@@ -27911,6 +27939,7 @@ ul.tabs .quarterTab h4 {
   color: #505050;
   line-height: 25px;
   text-transform: initial !important;
+  text-transform: none !important;
 }
 @media screen and (max-width: 1280px) {
   .conferences .conf60, .conferences .conf70 {
@@ -28025,7 +28054,7 @@ ul.tabs .quarterTab h4 {
   background: #f6f6f6;
   height: 100%;
   /* min-height: 590px; */
-  border-left: 2px solid #e7e7e7;
+  border-left: 1px solid #e7e7e7;
   overflow: hidden;
   z-index: 1;
   /* display: table-cell; */
@@ -28045,6 +28074,7 @@ ul.tabs .quarterTab h4 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 14px;
   text-transform: initial !important;
+  text-transform: none !important;
 }
 .conferences .conf30 span, .conferences .conf30Sharp span {
   color: #505050;
@@ -28900,6 +28930,17 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   min-height: 450px;
   height: auto;
   border: 1px solid #c8a461;
+  position: relative;
+}
+.onlinegoldBorders:after {
+  content: '';
+  width: 200px;
+  height: 1px;
+  border-right: 1px solid #c8a461;
+  left: 170px;
+  position: absolute;
+  min-height: 450px;
+  height: 100%;
 }
 .onlinegoldBorders a {
   color: #c3a05f;
@@ -29249,7 +29290,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .confcourt .eventPhoto .sfcLogo img {
   max-width: 100%;
   height: auto;
-  border: 5px solid white;
+  border: 3px solid white;
   border-radius: 100px;
 }
 .confcourt .eventTitle h3 {
@@ -29286,7 +29327,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   content: "•";
   margin-left: 5px;
 }
-.confcourt .eventCat span:last-child:after {
+.confcourt .eventCat span:last-child:after, .confcourt .eventCat span:nth-child(3):after {
   content: "";
 }
 .confcourt .eventCat:hover {

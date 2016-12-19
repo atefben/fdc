@@ -709,6 +709,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   min-height: 450px;
   height: auto;
   border: 1px solid #c8a461;
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 200px;
+    height: 1px;
+    border-right: 1px solid #c8a461;
+    left: 170px;
+    position: absolute;
+    min-height: 450px;
+    height: 100%;
+  }
 
   a {
    color: #c3a05f;

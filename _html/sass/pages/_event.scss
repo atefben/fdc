@@ -226,14 +226,14 @@
     text-align: center;
     p {
       text-align: right;
-      margin-right: 50px;
+      margin-right: 25px;
       color: #c3a05f;
       font-family: $CamphorHeavy!important;
       text-transform: uppercase;
       line-height: 30px;
       font-size: 12px;
       line-height: 25px;
-      width: 50px;
+      width: 70px;
       float: right;
     }
   }
@@ -261,6 +261,7 @@
       color: #505050;
       line-height: 25px;
       text-transform: initial!important;
+      text-transform: none!important;
     }
 
 
@@ -382,7 +383,7 @@
     background: #f6f6f6;
     height: 100%;
     /* min-height: 590px; */
-    border-left: 2px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
     overflow: hidden;
     z-index: 1;
     /* display: table-cell; */
@@ -401,6 +402,7 @@
       font-family: $CamphorRegular;
       font-size: 14px;
       text-transform: initial!important;
+      text-transform: none!important;
     }
 
     span {
