@@ -5,7 +5,7 @@
     <?php include('head.html'); ?>
 </head>
 
-<body clas="who who-fdc bright article-single not-mobile slideshow-open">
+<body class="who who-fdc bright article-single not-mobile slideshow-open">
 <?php include('header.html'); ?>
   <section id="main">
     <div class="block-push block-push-top" style="background-image: url('img/media/who-fdc-01.jpg')">

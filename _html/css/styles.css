@@ -437,7 +437,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   background-attachment: fixed;
 }
 .block-push-top .vFlexAlign {
-  height: 100%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -445,6 +444,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   -ms-flex-pack: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
 }
 .block-push-top .txts {
   text-align: center;
@@ -8498,7 +8498,7 @@ header.sticky #logo-wrapper #logo {
 }
 header.sticky #logo-wrapper #logo img.palm {
   float: left;
-  margin-top: -25px;
+  margin-top: -30px;
   width: 72px;
 }
 header.sticky #logo-wrapper #logo h2 {
@@ -8507,9 +8507,13 @@ header.sticky #logo-wrapper #logo h2 {
 header.sticky #logo-wrapper #logo p.stick {
   float: left;
   font-size: 1.1rem;
-  margin: -10px 0 0 30px;
+  /*margin: -10px 0 0 30px;*/
+  margin: -32px 0 0 100px;
   opacity: 1;
   visibility: visible;
+}
+header.sticky #logo-wrapper #logo p.stick img {
+  width: 210px;
 }
 header.sticky #logo-wrapper #logo p.stick:after {
   transition-delay: 0.4s;
@@ -8695,13 +8699,13 @@ header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
 }
 header #logo-wrapper #logo h1 {
   position: absolute;
-  top: 100px;
+  top: 105px;
   left: 0px;
 }
 header #logo-wrapper #logo h2 {
   position: absolute;
   top: 140px;
-  left: 0px;
+  left: 3px;
 }
 header #logo-wrapper #logo p.stick {
   opacity: 0;
@@ -13122,7 +13126,7 @@ header #searchContainer {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("../img/svg/instagram-white.svg") no-repeat;
+  background: url("../img/svg/instagram.svg");
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13133,7 +13137,7 @@ header #searchContainer {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("../img/svg/twitter-white.svg") no-repeat;
+  background: url("../img/svg/twitter.svg");
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13151,7 +13155,7 @@ header #searchContainer {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("../img/svg/twitter-white.svg");
+  background-image: url("../img/svg/twitter.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
@@ -13962,7 +13966,7 @@ a {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("../img/svg/instagram-white.svg") no-repeat;
+  background: url("../img/svg/instagram.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13973,7 +13977,7 @@ a {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("../img/svg/twitter-white.svg") no-repeat;
+  background: url("../img/svg/twitter.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13991,7 +13995,7 @@ a {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("../img/svg/twitter-white.svg");
+  background-image: url("../img/svg/twitter.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
@@ -15230,7 +15234,7 @@ a {
   height: 100px;
 }
 .shareSocial div {
-  width: 47%;
+  width: 50%;
   margin: 0 auto;
   text-align: center;
   display: block;
@@ -15242,7 +15246,7 @@ a {
   color: #999999;
 }
 .shareSocial i {
-  padding-left: 5px;
+  padding-left: 2px;
 }
 
 .catalogue {
@@ -26739,6 +26743,11 @@ body:not(.tablette) .webtv #live .img {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
   padding: 70px 0;
+  /* height: 120px; */
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 50px 0px;
 }
 .eventsPage .share p {
   font-size: .75rem;

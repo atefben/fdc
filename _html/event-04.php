@@ -45,7 +45,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
       </div>-->
       <div class="content-article">
-        <div class="container small-container">
+        <div class="container "><!--small-container maybe ?-->
           
           <!--<div class="info">
             <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -299,12 +299,38 @@
               </div>
             </div>
           </div>
+          <div class="video-container state-init video"
+                  data-facebook="//www.facebook.com"
+                  data-twitter="//www.twitter.com"
+                  data-link="//www.example.com"
+                  data-email="//www.gmail.com"
+                  data-name="test"
+                  data-file='[{"file":"https://www.youtube.com/watch?v=rqslRZooFzk"}]'>
+                  <!-- data-img="//dummyimage.com/960x540/000/c8a461.png"> -->
+                  <div id="v_<?php echo 1+time();?>" class="video-player">
+                  </div>
+                  <div class="video-overlay"></div>
+                  <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                      <div class="vCenter">
+                        <div class="vCenterKid">
+                          <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                          <p>The Lobster</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
           <div class="text">
             <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
             <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
           </div>
 
       <!-- EXEMPLE PLAYER AUDIO -->
+
         <div class="audio-container"
             data-file='[{"file":"./img/article/test.mp3"}]'
             data-img="./img/slide001.jpg"

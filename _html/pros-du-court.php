@@ -43,7 +43,7 @@
 
 
           <div class="minPadding">   
-            <div class="bigContainer">    
+            <div class="container">    
               <h5 class="minMargin">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960.</h5>
             </div>
           </div>
@@ -92,6 +92,117 @@
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
                       <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>
+                    </div>
+                    <div class="box b events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>                 
+                    </div>
+                    <div class="box c events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/person.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>             
+                    </div>
+                    <div class="box c events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>              
+                    </div>
+                    <div class="box a events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><span>distribution</span><span>vente</span><span>vente</span></div>                   
+                    </div>
+                    <div class="box a events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/person.png" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>           
+                    </div>
+                    <div class="box a events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>         
+                    </div>
+                    <div class="box d events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>          
+                    </div>
+                    <div class="box d events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>          
+                    </div>
+                    <div class="box d events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>         
+                    </div>
+                    <div class="box d events">
+                      <div class="eventPhoto">
+                        <div class="eventPhotoContainer">
+                          <img src="img/member.jpg" alt="">
+                        </div>
+                        <div class="sfcLogo">
+                          <img src="img/sfcLogo.png" alt="">
+                        </div>
+                      </div>
+                      <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span></div>          
                     </div>
                     <div class="box b events">
                       <div class="eventPhoto">

@@ -5,7 +5,7 @@
     <?php include('head.html'); ?>
 </head>
 
-<body clas="who who-fdc bright article-single not-mobile slideshow-open">
+<body class="who who-fdc bright article-single not-mobile slideshow-open">
 <?php include('header.html'); ?>
 
       

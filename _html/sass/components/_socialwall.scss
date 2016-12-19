@@ -123,7 +123,7 @@
       width: 125px;
 
       .instagram:after {
-        background: url('../img/svg/instagram-white.svg') no-repeat;
+        background: url('../img/svg/instagram.svg');
         background-size: contain;
         bottom: 5px;
         content: '';
@@ -135,7 +135,7 @@
       }
 
       .twitter:after {
-        background: url('../img/svg/twitter-white.svg') no-repeat;
+        background: url('../img/svg/twitter.svg');
         background-size: contain;
         bottom: 5px;
         content: '';
@@ -155,7 +155,7 @@
       }
 
       .twitter.hasimg:after {
-        background-image: url('../img/svg/twitter-white.svg');
+        background-image: url('../img/svg/twitter.svg');
       }
 
       .side {

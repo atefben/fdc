@@ -528,19 +528,43 @@ String.prototype.trunc = function (n, useWordBoundary) {
 };
 
 
+if ( $("body").hasClass( "who" ) ) {
 
-var fixed = false;
- var topTrigger = $('.list-article').offset().top;
- $(document).scroll(function() {
-   if( $(this).scrollTop() >= topTrigger ) {
-     if( !fixed ) {
-       fixed = true;
-       $('.subNavigation').addClass("subNavigationFixed");
+  var fixedNav = false;
+   var topTriggerNav = $('.navigation-sticky').offset().top - 210;
+   $(document).scroll(function() {
+     if( $(this).scrollTop() >= topTriggerNav ) {
+       if( !fixedNav ) {
+         fixedNav = true;
+         $('.navigation-sticky').addClass("subNavigationFixed");
+       }
+     } else {
+       if( fixedNav ) {
+         fixedNav = false;
+         $('.navigation-sticky').removeClass("subNavigationFixed");
+       }
      }
-   } else {
-     if( fixed ) {
-       fixed = false;
-       $('.subNavigation').removeClass("subNavigationFixed");
+  });
+
+}
+
+if ( $("#main").hasClass( "single-article" ) ) {
+  var fixed = false;
+   var topTrigger = $('.list-article').offset().top +10;
+   $(document).scroll(function() {
+     if( $(this).scrollTop() >= topTrigger ) {
+       if( !fixed ) {
+         fixed = true;
+         $('.subNavigation').addClass("subNavigationFixed");
+       }
+     } else {
+       if( fixed ) {
+         fixed = false;
+         $('.subNavigation').removeClass("subNavigationFixed");
+       }
      }
-   }
- });
+   });
+}
+
+
+ 
