@@ -60,6 +60,14 @@ class HomepageCorporate implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     */
+    private $displayedSocialWall;
+
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
      **/
     private $displayedBanner;
 
@@ -69,6 +77,20 @@ class HomepageCorporate implements TranslateMainInterface
      * @ORM\Column(type="boolean")
      **/
     private $displayedGallery;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $socialGraphHashtagTwitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $socialWallHashtags;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
@@ -831,5 +853,74 @@ class HomepageCorporate implements TranslateMainInterface
     public function getVideoUne()
     {
         return $this->VideoUne;
+    }
+
+    /**
+     * Set socialGraphHashtagTwitter
+     *
+     * @param string $socialGraphHashtagTwitter
+     * @return HomepageCorporate
+     */
+    public function setSocialGraphHashtagTwitter($socialGraphHashtagTwitter)
+    {
+        $this->socialGraphHashtagTwitter = $socialGraphHashtagTwitter;
+
+        return $this;
+    }
+
+    /**
+     * Get socialGraphHashtagTwitter
+     *
+     * @return string 
+     */
+    public function getSocialGraphHashtagTwitter()
+    {
+        return $this->socialGraphHashtagTwitter;
+    }
+
+    /**
+     * Set socialWallHashtags
+     *
+     * @param string $socialWallHashtags
+     * @return HomepageCorporate
+     */
+    public function setSocialWallHashtags($socialWallHashtags)
+    {
+        $this->socialWallHashtags = $socialWallHashtags;
+
+        return $this;
+    }
+
+    /**
+     * Get socialWallHashtags
+     *
+     * @return string 
+     */
+    public function getSocialWallHashtags()
+    {
+        return $this->socialWallHashtags;
+    }
+
+    /**
+     * Set displayedSocialWall
+     *
+     * @param boolean $displayedSocialWall
+     * @return HomepageCorporate
+     */
+    public function setDisplayedSocialWall($displayedSocialWall)
+    {
+        $this->displayedSocialWall = $displayedSocialWall;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedSocialWall
+     *
+     * @return boolean 
+     */
+    public function getDisplayedSocialWall()
+    {
+        return $this->displayedSocialWall;
     }
 }

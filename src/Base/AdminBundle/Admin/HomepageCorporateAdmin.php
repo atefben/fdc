@@ -311,6 +311,18 @@ class HomepageCorporateAdmin extends Admin
                 'help' => 'form.homepage.helper_pushes',
                 'required' => false,
             ))
+            ->add('displayedSocialWall','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('socialGraphHashtagTwitter', null, array(
+                'sonata_help' => 'form.homepage.helper_social_graph',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('socialWallHashtags', null, array(
+                'sonata_help' => 'form.homepage.helper_social_graph',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->add('homepageSlide', 'sonata_type_collection', array(
                 'label' => 'Communiqués et infos associées',
                 'help' => 'Sélectionnez de 3 à 6 communiqués ou infos. Ils apparaitront en front-office dans l\'ordre des lignes',
