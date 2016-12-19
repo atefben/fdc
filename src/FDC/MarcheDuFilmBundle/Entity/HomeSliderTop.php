@@ -40,6 +40,12 @@ class HomeSliderTop
     protected $translations;
 
     /**
+     * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="slidersTop")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
+     */
+    protected $homepage;
+
+    /**
      * HomeSliderTop constructor.
      */
     public function __construct()
@@ -71,6 +77,26 @@ class HomeSliderTop
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
+    }
+
+    /**
+     * @param $homepage
+     *
+     * @return $this
+     */
+    public function setHomepage($homepage)
+    {
+        $this->homepage = $homepage;
 
         return $this;
     }

@@ -35,11 +35,10 @@ class HomeSlider
     protected $image;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="sliders")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
      */
-    protected $url;
+    protected $homepage;
 
     /**
      * @var ArrayCollection
@@ -83,21 +82,21 @@ class HomeSlider
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getUrl()
+    public function getHomepage()
     {
-        return $this->url;
+        return $this->homepage;
     }
 
     /**
-     * @param $url
+     * @param $homepage
      *
      * @return $this
      */
-    public function setUrl($url)
+    public function setHomepage($homepage)
     {
-        $this->url = $url;
+        $this->homepage = $homepage;
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class HomeSliderTopTranslation
 {
     use Translation;
+    use TranslationChanges;
 
     /**
      * @var string

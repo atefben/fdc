@@ -568,3 +568,13 @@ services:
         calls:
             - ['setGalleryAdmin', ['@base.admin.gallery']]
             - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]
+
+    base.admin.form.home_slider_top_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderTopType
+        tags:
+            - { name: form.type, alias: 'home_slider_top_type'}
+
+    base.admin.form.home_slider_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderType
+        tags:
+            - { name: form.type, alias: 'home_slider_type'}
