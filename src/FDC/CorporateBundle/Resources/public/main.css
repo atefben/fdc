@@ -14211,7 +14211,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .single-movie .competition #slider-competition .owl-item img {
   height: 284px;
   width: 210px;
-  object-fit: cover;
 }
 .single-movie .competition #slider-competition .owl-item .linkVid {
   height: 284px;

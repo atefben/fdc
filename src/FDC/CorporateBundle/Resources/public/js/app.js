@@ -5442,10 +5442,8 @@ $(document).ready(function () {
         owInitSliderSelect('timelapse');
         owInitSliderSelect('tab-selection');
 
-        var grid = owInitGrid('isotope-03');
-
-        owInitAleaGrid(grid, $('.grid-01'), true);
-
+        var grid = owInitGrid('isotope-01');
+        
         var hash = window.location.hash;
         hash = hash.substring(1, hash.length);
 
@@ -5510,4 +5508,15 @@ $(document).ready(function () {
         $('body').removeClass('loading');
     }, 1000);
 
+
+
+    //FIX IE
+
+    if($('body').hasClass('ie')){
+        $.each($('.slide'),function (i, e) {
+           var src = $(e).find('img').attr('src');
+            $(e).find('.linkVid').css('background-image','url('+src+')');
+            $(e).find('.linkVid').css('background-size','cover');
+        })
+    }
 });
