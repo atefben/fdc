@@ -103,6 +103,20 @@ $(document).ready(function() {
         }
     });
 
+    if ($("input[id*='sites_1']").is(':checked')) {
+        $('.form-group[id$="displayedHomepageLabel"]').show();
+    } else {
+        $('.form-group[id$="displayedHomepageLabel"]').hide();
+    }
+
+    $("input[id*='sites_1']").on('ifChanged', function() {
+        if (!$(this).is(':checked')) {
+            $('.form-group[id$="displayedHomepageLabel"]').hide();
+        } else {
+            $('.form-group[id$="displayedHomepageLabel"]').show();
+        }
+    });
+
     //change link to original edit for home
     if( $('#homepageSlide').length > 0) {
         $(document).on('change', '#homepageSlide table', function() {
