@@ -365,4 +365,15 @@ $(document).ready(function () {
         $('body').removeClass('loading');
     }, 1000);
 
+
+
+    //FIX IE
+
+    if($('body').hasClass('ie')){
+        $.each($('.slide'),function (i, e) {
+            var src = $(e).find('img').attr('src');
+            $(e).find('.linkVid').css('background-image','url('+src+')');
+            $(e).find('.linkVid').css('background-size','cover');
+        })
+    }
 });
