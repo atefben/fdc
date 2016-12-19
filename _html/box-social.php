@@ -156,15 +156,16 @@
           <div class="post">
               <div class="side side-1 flip"></div>
               <div class="side side-2 twitter hasimg flip" style="background-image: url(&quot;http://pbs.twimg.com/media/CjIRzs2XIAE9nDT.jpg&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>Congrats <strong>#KenLoach</strong> "The most depressing thing is the pol. slogan: there is no alternative. But there is" <strong>#Cannes2016</strong> <strong>https://t.co/jrf1IgRtNW</strong></p></div></div></div><span class="ov"></span></div>
-          </div>                                                    
+          </div>
           <div class="post empty">
               <div class="side side-1 flip"></div>
               <div class="side side-2 flip"></div>
-          </div>                                                    
+          </div>  
           <div class="post">
-              <div class="side side-1 twitter hasimg" style="z-index: 5; background-image: url(&quot;http://pbs.twimg.com/media/CjGEh1UVEAUmVP2.jpg&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>RT <strong>@women_direct</strong>: Andrea Arnold + <strong>@SashaBianca23</strong> celebrating after Arnold's Jury Prize for American Honey. <strong>#Cannes2016</strong> <strong>https://t.co/f9y2bzJ</strong>…</p></div></div></div></div>
-              <div class="side side-2 twitter hasimg " style="background-image: url(img/twitimg.png);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>RT <strong>@DisneyStudios</strong>: <strong>#GiantsAreComing</strong> <strong>#TheBFG</strong> <strong>#Cannes2016</strong> <strong>https://t.co/VRNAiiivgb</strong></p></div></div></div><span class="ov"></span></div>
-          </div>                                                    
+              <div class="side side-1 flip"></div>
+              <div class="side side-2 twitter hasimg flip" style="background-image: url(&quot;http://pbs.twimg.com/media/CjIRzs2XIAE9nDT.jpg&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>Congrats <strong>#KenLoach</strong> "The most depressing thing is the pol. slogan: there is no alternative. But there is" <strong>#Cannes2016</strong> <strong>https://t.co/jrf1IgRtNW</strong></p></div></div></div><span class="ov"></span></div>
+          </div>                                                       
+                                                                                                    
           <div class="post">
               <div class="side side-1 flip"></div>
               <div class="side side-2 instagram hasimg flip" style="background-image: url(&quot;https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/13181556_282021758802976_1105662250_n.jpg?ig_cache_key=MTI1NDg2NTE2MzY2MzkwOTk2MA%3D%3D.2&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>Elle Fanning.
@@ -189,10 +190,10 @@
 
           <strong>@paovaal</strong> <strong>@colebrax</strong> <strong>@MovieFilmCrew</strong> <strong>@Qui_cinema</strong> <strong>@Mara1937</strong> h…</p></div></div></div><span class="ov"></span></div>
           </div>                                                    
-          <div class="post empty">
+          <div class="post">
               <div class="side side-1 flip"></div>
-              <div class="side side-2 flip"></div>
-          </div>                                                    
+              <div class="side side-2 instagram hasimg flip" style="background-image: url(&quot;https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/13256693_1707776349480337_1261148560_n.jpg?ig_cache_key=MTI1NDg2NTU5NDI2NzkzNTgyNQ%3D%3D.2&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>Javier Bardem à la projection de <strong>#TheLastFace</strong> de Sean Penn <strong>#Cannes2016</strong></p></div></div></div><span class="ov"></span></div>
+          </div>                                                      
           <div class="post">
               <div class="side side-1 instagram hasimg" style="z-index: 5; background-image: url(&quot;https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/13260888_659705910860626_1577006836_n.jpg?ig_cache_key=MTI1NjQwODEyNzYzNTU4MjYzNw%3D%3D.2.l&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>Hier s'est terminé le <strong>@festivaldecannes</strong> ! Qu'en avez-vous pensé ? </p></div></div></div></div>
               <div class="side side-2 twitter hasimg " style="background-image: url(&quot;http://pbs.twimg.com/media/CjGNsv-UoAAavAQ.jpg&quot;);"><div class="txt"><div class="vCenter"><div class="vCenterKid"><p>RT <strong>@empiremagazine</strong>: Ken Loach triumphs at <strong>#Cannes2016</strong>: <strong>https://t.co/VMVoo7BYAK</strong> <strong>https://t.co/XzcNWQUuBI</strong></p></div></div></div><span class="ov"></span></div>

@@ -13962,7 +13962,7 @@ a {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("../img/svg/instagram.svg") no-repeat;
+  background: url("../img/svg/instagram-white.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13973,7 +13973,7 @@ a {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("../img/svg/twitter-gold.svg") no-repeat;
+  background: url("../img/svg/twitter-white.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -13991,7 +13991,7 @@ a {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("../img/svg/twitter.svg");
+  background-image: url("../img/svg/twitter-white.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
