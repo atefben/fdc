@@ -34,6 +34,11 @@ class MdfHomepage
     protected $sliders;
 
     /**
+     * @ORM\OneToMany(targetEntity="MdfHomeContentSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     */
+    protected $contentSliders;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -120,6 +125,43 @@ class MdfHomepage
     {
         if ($this->sliders->contains($homeSlider)) {
             $this->sliders->removeElement($homeSlider);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContentSliders()
+    {
+        return $this->contentSliders;
+    }
+
+    /**
+     * @param MdfHomeContentSlider $homeContentSlider
+     *
+     * @return $this
+     */
+    public function addContentSlider(MdfHomeContentSlider $homeContentSlider)
+    {
+        if (!$this->contentSliders->contains($homeContentSlider)) {
+            $this->contentSliders->add($homeContentSlider);
+            $homeContentSlider->setHomepage($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param MdfHomeContentSlider $homeContentSlider
+     *
+     * @return $this
+     */
+    public function removeContentSlider(MdfHomeContentSlider $homeContentSlider)
+    {
+        if ($this->contentSliders->contains($homeContentSlider)) {
+            $this->contentSliders->removeElement($homeContentSlider);
         }
 
         return $this;

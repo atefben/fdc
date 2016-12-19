@@ -60,7 +60,20 @@ class MdfHomepageAdmin extends Admin
                         ),
                     ),
                     'category'          => array(
-                        'label'              => 'form.label.content_category',
+                        'label'              => 'form.label.category',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'title'          => array(
+                        'label'              => 'form.label.title',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'description'          => array(
+                        'label'              => 'form.label.description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type'         => 'ckeditor',
+                    ),
+                    'url'          => array(
+                        'label'              => 'form.label.url',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 )
@@ -79,6 +92,16 @@ class MdfHomepageAdmin extends Admin
                 'label'        => false,
                 'types'        => array(
                     'home_slider_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
+            ->add('contentSliders', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'home_content_slider_type',
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,

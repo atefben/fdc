@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 19.12.2016
+ * Time: 12:51
+ */
 
 namespace FDC\MarcheDuFilmBundle\Form\Type;
 
@@ -6,12 +12,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class HomeSliderType extends AbstractType
+class HomeContentSliderType extends AbstractType
 {
     /**
      * @var string
      */
-    protected $dataClass = 'FDC\MarcheDuFilmBundle\Entity\HomeSlider';
+    protected $dataClass = 'FDC\MarcheDuFilmBundle\Entity\MdfHomeContentSlider';
 
     /**
      * @param FormBuilderInterface $builder
@@ -34,13 +40,9 @@ class HomeSliderType extends AbstractType
                             'class' => 'hidden',
                         ),
                     ),
-                    'title'          => array(
-                        'label'              => 'form.label.title',
+                    'legend'          => array(
+                        'label'              => 'form.label.legend',
                         'translation_domain' => 'BaseAdminBundle'
-                    ),
-                    'url'          => array(
-                        'label'              => 'form.label.url',
-                        'translation_domain' => 'BaseAdminBundle',
                     )
                 )
             ));
@@ -63,6 +65,6 @@ class HomeSliderType extends AbstractType
      */
     public function getName()
     {
-        return 'home_slider_type';
+        return 'home_content_slider_type';
     }
 }

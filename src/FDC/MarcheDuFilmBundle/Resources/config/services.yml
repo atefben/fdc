@@ -4,3 +4,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.homepage:
+        class: FDC\MarcheDuFilmBundle\Manager\HomepageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

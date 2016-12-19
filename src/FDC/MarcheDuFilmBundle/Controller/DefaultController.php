@@ -14,6 +14,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FDCMarcheDuFilmBundle::homepage/homepage.html.twig');
+        $homepageManager = $this->get('mdf.manager.homepage');
+
+        $slidersTop = $homepageManager->getSlidersTop();
+        $sliders = $homepageManager->getSliders();
+        $contentBlock = $homepageManager->getContentBlock();
+
+        return $this->render('FDCMarcheDuFilmBundle::homepage/homepage.html.twig', array(
+            'slidersTop' => $slidersTop,
+            'sliders' => $sliders,
+            'contentBlock' => $contentBlock
+        ));
     }
 }

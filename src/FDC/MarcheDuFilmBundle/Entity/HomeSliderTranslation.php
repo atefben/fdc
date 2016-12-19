@@ -19,7 +19,7 @@ class HomeSliderTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $title;
 
