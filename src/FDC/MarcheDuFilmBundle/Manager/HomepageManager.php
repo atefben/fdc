@@ -13,6 +13,7 @@ use FDC\MarcheDuFilmBundle\Entity\HomeSliderTopTranslation;
 use FDC\MarcheDuFilmBundle\Entity\HomeSliderTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfHomeContentSliderTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfHomepageTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfHomeServiceTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class HomepageManager
@@ -49,7 +50,7 @@ class HomepageManager
             );
     }
 
-    public function getContentBlock()
+    public function getHomepageContent()
     {
         return $this->em
             ->getRepository(MdfHomepageTranslation::class)
@@ -64,6 +65,17 @@ class HomepageManager
     {
         return $this->em
             ->getRepository(MdfHomeContentSliderTranslation::class)
+            ->findBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+
+    public function getHomepageServices()
+    {
+        return $this->em
+            ->getRepository(MdfHomeServiceTranslation::class)
             ->findBy(
                 array(
                     'locale' => $this->requestStack->getMasterRequest()->get('_locale')

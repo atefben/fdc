@@ -5,8 +5,8 @@
         <div class="content-news">
             {% include 'FDCMarcheDuFilmBundle::homepage/partials/topSliders.html.twig' with {'sliderTop': sliderTop, 'slider' : slider} %}
             <div id="articles-wrapper">
-                {% include 'FDCMarcheDuFilmBundle::homepage/partials/content.html.twig' with { 'contentBlock': contentBlock, 'slider': contentBlockSlider } %}
-                {% include 'FDCMarcheDuFilmBundle::homepage/partials/services.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle::homepage/partials/content.html.twig' with { 'contentBlock': homepageContent, 'slider': contentBlockSlider } %}
+                {% include 'FDCMarcheDuFilmBundle::homepage/partials/services.html.twig' with { 'content': homepageContent, 'services': services } %}
                 {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
                 {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
             </div>
