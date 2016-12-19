@@ -8,11 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HomeSlider
- * @ORM\Table(name="mdf_home_slider")
+ * MdfHomeContentSlider
+ * @ORM\Table(name="mdf_home_content_slider")
  * @ORM\Entity
  */
-class HomeSlider
+class MdfHomeContentSlider
 {
     use Translatable;
 
@@ -35,7 +35,7 @@ class HomeSlider
     protected $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="sliders")
+     * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="contentSliders")
      * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
      */
     protected $homepage;
@@ -46,7 +46,7 @@ class HomeSlider
     protected $translations;
 
     /**
-     * HomeSlider constructor.
+     * MdfHomeContentSlider constructor.
      */
     public function __construct()
     {

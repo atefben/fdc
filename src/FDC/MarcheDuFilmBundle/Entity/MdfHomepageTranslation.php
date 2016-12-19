@@ -8,13 +8,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * HomeSliderTopTranslation
- * @ORM\Table(name="mdf_home_slider_top_translation")
+ * @ORM\Table(name="mdf_homepage_translation")
  * @ORM\Entity
  */
-class HomeSliderTopTranslation
+class MdfHomepageTranslation
 {
     use Translation;
     use TranslationChanges;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $category;
 
     /**
      * @var string
@@ -28,14 +35,30 @@ class HomeSliderTopTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $subTitle;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $dateText;
+    protected $url;
+
+    /**
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
 
     /**
      * @return string
@@ -60,19 +83,19 @@ class HomeSliderTopTranslation
     /**
      * @return string
      */
-    public function getSubTitle()
+    public function getDescription()
     {
-        return $this->subTitle;
+        return $this->description;
     }
 
     /**
-     * @param $subTitle
+     * @param $description
      *
      * @return $this
      */
-    public function setSubTitle($subTitle)
+    public function setDescription($description)
     {
-        $this->subTitle = $subTitle;
+        $this->description = $description;
 
         return $this;
     }
@@ -80,20 +103,21 @@ class HomeSliderTopTranslation
     /**
      * @return string
      */
-    public function getDateText()
+    public function getUrl()
     {
-        return $this->dateText;
+        return $this->url;
     }
 
     /**
-     * @param $dateText
+     * @param $url
      *
      * @return $this
      */
-    public function setDateText($dateText)
+    public function setUrl($url)
     {
-        $this->dateText = $dateText;
+        $this->url = $url;
 
         return $this;
     }
+
 }
