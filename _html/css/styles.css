@@ -8512,9 +8512,6 @@ header.sticky #logo-wrapper #logo p.stick {
   opacity: 1;
   visibility: visible;
 }
-header.sticky #logo-wrapper #logo p.stick img {
-  width: 210px;
-}
 header.sticky #logo-wrapper #logo p.stick:after {
   transition-delay: 0.4s;
   width: 0;
