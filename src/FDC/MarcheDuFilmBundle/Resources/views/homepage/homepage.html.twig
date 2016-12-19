@@ -7,7 +7,7 @@
             <div id="articles-wrapper">
                 {% include 'FDCMarcheDuFilmBundle::homepage/partials/content.html.twig' with { 'contentBlock': contentBlock, 'slider': contentBlockSlider } %}
                 {% include 'FDCMarcheDuFilmBundle::homepage/partials/services.html.twig' %}
-                {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
                 {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' %}
             </div>
         </div>
