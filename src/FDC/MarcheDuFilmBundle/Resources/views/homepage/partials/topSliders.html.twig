@@ -1,25 +1,25 @@
 <div id="owl-top" class="owl-carousel owl-theme">
 
-    {% for slider in slidersTop %}
+    {% for item in sliderTop %}
         <div class="item">
-            <img src="{{ slider.translatable.image }}" alt="">
+            <img src="{{ item.translatable.image }}" alt="">
             <div class="owl-Title">
-                <h2>{{ slider.title }}</h2>
-                <p>{{ slider.subTitle }}</p>
-                <span>{{ slider.dateText }}</span>
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.subTitle }}</p>
+                <span>{{ item.dateText }}</span>
             </div>
         </div>
     {% endfor %}
 </div>
 
 <div id="owl-second" class="owl-carousel owl-theme">
-    {% for slider in sliders %}
+    {% for item in slider %}
         <div class="item">
             <div class="owl-Title">
-                <a href="{{ slider.url }}"><h2>{{ slider.title|raw }}</h2></a>
-                <a href="{{ slider.url }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt=""></a>
+                <a href="{{ item.url }}"><h2>{{ item.title|raw }}</h2></a>
+                <a href="{{ item.url }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt=""></a>
             </div>
-            <img class="fitImg" src="{{ slider.translatable.image }}" alt="">
+            <img class="fitImg" src="{{ item.translatable.image }}" alt="">
         </div>
     {% endfor %}
 </div>
