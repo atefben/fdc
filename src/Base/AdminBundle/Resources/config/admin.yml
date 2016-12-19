@@ -1550,3 +1550,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\News, BaseAdminBundle:MdfNewsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: News}
+
+    base.admin.mdf_contact:
+        class: Base\AdminBundle\Admin\MdfContactAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Contact, BaseAdminBundle:MdfContactAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Contact}
