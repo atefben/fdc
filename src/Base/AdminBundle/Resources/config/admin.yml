@@ -1525,7 +1525,7 @@ services:
         class: Base\AdminBundle\Admin\ServiceAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Service, BaseAdminBundle:ServiceAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Service}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Services}
 
     base.admin.service_widget_product:
         class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin

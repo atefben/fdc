@@ -129,7 +129,6 @@ fdc_press_mobile:
 
 # marche du film
 fdc_marche_du_film:
-
     resource: "@FDCMarcheDuFilmBundle/Controller"
     type:     annotation
     prefix:   /
