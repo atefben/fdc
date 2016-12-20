@@ -11,18 +11,20 @@
                 <div class="innerWrapper">
                     {% for serviceWidget in serviceWidgets %}
                         <div class="articles">
-                            <div class="readMore">...</div>
-                            <div class="articles-img">
-                                <img class="fitImg" src="/img/slider/slider03.jpg">
-                                <div class="normalImg">
-                                    <img src="/img/plus.png" alt="Marché du film">
+                            <a href="{{ serviceWidget.seeMoreUrl }}">
+                                <div class="readMore">...</div>
+                                <div class="articles-img">
+                                    <img class="fitImg" src="/img/slider/slider03.jpg">
+                                    <div class="normalImg">
+                                        <img src="/img/plus.png" alt="Marché du film">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="articles-content">
-                                <h6>{{ serviceWidget.title }}</h6>
-                                <span>{{ serviceWidget.subTitle }}</span>
-                                <p>{{ serviceWidget.description }}</p>
-                            </div>
+                                <div class="articles-content">
+                                    <h6>{{ serviceWidget.title }}</h6>
+                                    <span>{{ serviceWidget.subTitle }}</span>
+                                    <p>{{ serviceWidget.description }}</p>
+                                </div>
+                            </a>
                         </div>
                     {% endfor %}
                     <div class="articles">
@@ -30,7 +32,9 @@
                             <div class="lastArticle">
                                 <h6>{{ serviceContact.title|raw }}</h6>
                                 <p>{{ serviceContact.description }}</p>
-                                <div class="blackBtn">En Savoir Plus</div>
+                                <a href="{{ serviceContact.seeMoreUrl }}">
+                                    <div class="blackBtn">En Savoir Plus</div>
+                                </a>
                             </div>
                         </div>
                     </div>
