@@ -3670,6 +3670,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   line-height: 24px;
 }
+.block-movie-preview a {
+  text-align: center;
+}
+.block-movie-preview a .name-f {
+  display: block;
+}
 .block-movie-preview .name-f {
   color: #fff;
   font-size: .875rem;
