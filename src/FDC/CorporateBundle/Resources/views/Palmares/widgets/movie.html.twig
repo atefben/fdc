@@ -72,7 +72,7 @@
                 <br />
                 <a href="{{ path('fdc_corporate_movie_get', {slug: movie.slug}) }}">
                     <strong class="name-f">{{ movie.titleVO }}</strong>
-                {% if movie|trans_fallback('title') != movie.titleVO %}<strong class="name-fb">({{ movie|trans_fallback('title') }})</strong>{% endif %}
+                {% if movie|trans_fallback('title') != movie.titleVO and movie|trans_fallback('title') %}<strong class="name-fb">({{ movie|trans_fallback('title') }})</strong>{% endif %}
                 </a>
                     {% spaceless %}
                         {% set author = '' %}
