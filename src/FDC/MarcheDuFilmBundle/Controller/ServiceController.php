@@ -10,14 +10,22 @@ use Symfony\Component\HttpFoundation\Request;
 class ServiceController extends Controller
 {
     /**
-     * @Route("service/{slug}")
+     * @Route("services", name="fdc_marche_du_film_services")
      */
-    public function indexAction(Request $request, $slug)
+    public function indexAction(Request $request)
+    {
+        return $this->render('FDCMarcheDuFilmBundle:services:show.html.twig');
+    }
+
+    /**
+     * @Route("services/{slug}")
+     */
+    public function serviceAction(Request $request, $slug)
     {
         $locale = $request->getLocale();
         $service = $this->getServiceRepository()->getOnePublished($locale, $slug);
 
-        return $this->render('FDCMarcheDuFilmBundle:Service:show.html.twig', ['service' => $service]);
+        return $this->render('FDCMarcheDuFilmBundle:services:show_service.html.twig', ['service' => $service]);
     }
 
     /**
