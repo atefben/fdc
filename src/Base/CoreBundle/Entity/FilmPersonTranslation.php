@@ -108,7 +108,23 @@ class FilmPersonTranslation implements TranslateChildInterface
      */
     public function getProfession()
     {
-        return $this->profession;
+        if ($this->translatable instanceof FilmPerson && $this->translatable->getDuplicate()) {
+            return $this->profession;
+        }
+        $profession = $this->profession;
+        if (!$profession) {
+            foreach ($this->getTranslatable()->getDuplicates() as $duplicate) {
+                foreach ($duplicate->getTranslations() as $translation) {
+                    if ($profession) {
+                        continue;
+                    }
+                    if ($this->locale == $translation->getLocale() && $translation->getProfession()) {
+                        $profession = $translation->getProfession();
+                    }
+                }
+            }
+        }
+        return $profession;
     }
 
     /**
@@ -142,7 +158,23 @@ class FilmPersonTranslation implements TranslateChildInterface
      */
     public function getBiography()
     {
-        return $this->biography;
+        if ($this->translatable->getDuplicate()) {
+            return $this->biography;
+        }
+        $biography = $this->biography;
+        if (!$biography) {
+            foreach ($this->getTranslatable()->getDuplicates() as $duplicate) {
+                foreach ($duplicate->getTranslations() as $translation) {
+                    if ($biography) {
+                        continue;
+                    }
+                    if ($this->locale == $translation->getLocale() && $translation->getBiography()) {
+                        $biography = $translation->getBiography();
+                    }
+                }
+            }
+        }
+        return $biography;
     }
 
     /**
