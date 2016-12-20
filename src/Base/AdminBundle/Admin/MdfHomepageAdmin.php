@@ -108,6 +108,16 @@ class MdfHomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('services', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'home_service_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
         ;
     }
 

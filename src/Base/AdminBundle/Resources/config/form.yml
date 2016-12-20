@@ -583,3 +583,8 @@ services:
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeContentSliderType
         tags:
             - { name: form.type, alias: 'home_content_slider_type'}
+
+    base.admin.form.home_service_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeServiceType
+        tags:
+            - { name: form.type, alias: 'home_service_type'}

@@ -20,18 +20,20 @@ class DefaultController extends Controller
 
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
-        $contentBlock = $homepageManager->getContentBlock();
+        $homepageContent = $homepageManager->getHomepageContent();
         $contentBlockSlider = $homepageManager->getContentBlockSlider();
         $news = $newsManager->getHomepageNews();
         $contact = $contactManager->getContactInfo();
+        $services = $homepageManager->getHomepageServices();
 
         return $this->render('FDCMarcheDuFilmBundle::homepage/homepage.html.twig', array(
             'sliderTop' => $slidersTop,
             'slider' => $sliders,
-            'contentBlock' => $contentBlock,
+            'homepageContent' => $homepageContent,
             'contentBlockSlider' => $contentBlockSlider,
             'news' => $news,
-            'contact' => $contact
+            'contact' => $contact,
+            'services' => $services
         ));
     }
 }
