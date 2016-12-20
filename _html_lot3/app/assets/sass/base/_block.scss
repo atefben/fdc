@@ -851,6 +851,14 @@
 
   }
 
+  a {
+    text-align: center;
+
+    .name-f {
+      display: block;
+    }
+  }
+
   .name-f {
     color: #fff;
     font-size: .875rem; //14px
