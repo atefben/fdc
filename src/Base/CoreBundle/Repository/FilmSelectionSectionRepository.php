@@ -3,6 +3,8 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmFestival;
+use Base\CoreBundle\Entity\FilmSelectionSection;
 
 class FilmSelectionSectionRepository extends EntityRepository
 {
