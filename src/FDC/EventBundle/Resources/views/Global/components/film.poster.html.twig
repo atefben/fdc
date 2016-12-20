@@ -13,6 +13,9 @@
     {% if media is empty %}
         {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
     {% endif %}
+    {% if media is empty %}
+        {% set media = film.getSelfkitImages()|first %}
+    {% endif %}
 
     {% if film_attrs is not defined %}
         {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
