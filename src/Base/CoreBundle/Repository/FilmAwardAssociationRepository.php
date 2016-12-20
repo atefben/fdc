@@ -12,7 +12,6 @@ class FilmAwardAssociationRepository extends EntityRepository
             ->createQueryBuilder('aa')
             ->join('aa.film', 'f')
             ->join('f.selectionSection', 'ss')
-            ->join('f.medias', 'm')
             ->join('aa.award', 'a')
             ->join('a.prize', 'p')
             ->join('p.translations', 'pt')
