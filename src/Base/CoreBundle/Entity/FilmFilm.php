@@ -525,6 +525,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $tags;
 
     /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinTable(name="film_film_selfkit_images",
+     *      joinColumns={@ORM\JoinColumn(name="film", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
+     *      )
+     */
+    private $selfkitImages;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -545,6 +555,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->associatedStatement = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->news = new ArrayCollection();
+        $this->selfkitImages = new ArrayCollection();
     }
 
     public function __toString()
@@ -2638,5 +2649,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getNews()
     {
         return $this->news;
+    }
+
+    /**
+     * Add selfkitImages
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $selfkitImages
+     * @return FilmFilm
+     */
+    public function addSelfkitImage(\Application\Sonata\MediaBundle\Entity\Media $selfkitImages)
+    {
+        $this->selfkitImages[] = $selfkitImages;
+
+        return $this;
+    }
+
+    /**
+     * Remove selfkitImages
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $selfkitImages
+     */
+    public function removeSelfkitImage(\Application\Sonata\MediaBundle\Entity\Media $selfkitImages)
+    {
+        $this->selfkitImages->removeElement($selfkitImages);
+    }
+
+    /**
+     * Get selfkitImages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSelfkitImages()
+    {
+        return $this->selfkitImages;
     }
 }

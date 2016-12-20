@@ -195,7 +195,7 @@ class FilmPerson implements TranslateMainInterface
      * @var boolean
      * @ORM\Column(name="duplicate", type="boolean", options={"default" : 0})
      */
-    private $duplicate;
+    private $duplicate = false;
 
     /**
      * @var string
@@ -398,6 +398,16 @@ class FilmPerson implements TranslateMainInterface
     private $duplicateSelfkits;
 
     /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinTable(name="film_person_selfkit_images",
+     *      joinColumns={@ORM\JoinColumn(name="person", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
+     *      )
+     */
+    private $selfkitImages;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -409,7 +419,7 @@ class FilmPerson implements TranslateMainInterface
         $this->cinefPersons = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->duplicates = new ArrayCollection();
-        $this->duplicate = false;
+        $this->selfkitImages = new ArrayCollection();
     }
 
     public function __toString()
@@ -1219,5 +1229,38 @@ class FilmPerson implements TranslateMainInterface
     public function getDuplicateSelfkits()
     {
         return json_decode($this->duplicateSelfkits, true);
+    }
+
+    /**
+     * Add selfkitImages
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $selfkitImages
+     * @return FilmPerson
+     */
+    public function addSelfkitImage(\Application\Sonata\MediaBundle\Entity\Media $selfkitImages)
+    {
+        $this->selfkitImages[] = $selfkitImages;
+
+        return $this;
+    }
+
+    /**
+     * Remove selfkitImages
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $selfkitImages
+     */
+    public function removeSelfkitImage(\Application\Sonata\MediaBundle\Entity\Media $selfkitImages)
+    {
+        $this->selfkitImages->removeElement($selfkitImages);
+    }
+
+    /**
+     * Get selfkitImages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSelfkitImages()
+    {
+        return $this->selfkitImages;
     }
 }
