@@ -1,0 +1,30 @@
+services:
+    mdf.manager.header_footer:
+        class: FDC\MarcheDuFilmBundle\Manager\HeaderFooterManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.homepage:
+        class: FDC\MarcheDuFilmBundle\Manager\HomepageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.news:
+        class: FDC\MarcheDuFilmBundle\Manager\NewsManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.contact:
+        class: FDC\MarcheDuFilmBundle\Manager\ContactManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.services:
+        class: FDC\MarcheDuFilmBundle\Manager\ServicesManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

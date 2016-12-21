@@ -1,0 +1,13 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="bigContainer">
+            <div class="text-presentation projection">
+                {% include 'FDCMarcheDuFilmBundle:contentTemplate:blockTitleHeader.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle:contentTemplate:blockDownload.html.twig' %}
+                {% include 'FDCMarcheDuFilmBundle:contentTemplate:blockImage.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

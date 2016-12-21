@@ -1,0 +1,20 @@
+<div class="our-news">
+    <span>DECOUVREZ</span>
+    <h3>les derniÈrEs actualités</h3>
+    <div class="innerWrapper">
+        {% for newsItem in news %}
+            <div class="articles">
+                <div class="readMore">...</div>
+                {% if newsItem.translatable.newsImage is not empty %}
+                    <div class="articles-img"><img src="/img/slider/slider03.jpg"></div>
+                {% endif %}
+                <div class="articles-content">
+                    <span>{{ newsItem.newsTheme }} <span class="article-date">{{ newsItem.translatable.publishedAt|date("d M Y") }}</span></span>
+                    <h6>{{ newsItem.newsTitle }}</h6>
+                    <p>{{ newsItem.description|raw }}</p>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+</div>

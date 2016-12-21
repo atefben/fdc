@@ -26,7 +26,7 @@
         <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="false">
         </field>
         
-        <one-to-many field="filmMedias" target-entity="Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
+        <one-to-many field="filmMedias" target-entity="\Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
         </one-to-many>
 
         <one-to-one field="parentVideoTranslation" target-entity="Base\CoreBundle\Entity\MediaVideoTranslation" mapped-by="file">
