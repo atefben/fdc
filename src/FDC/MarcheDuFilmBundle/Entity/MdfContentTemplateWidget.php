@@ -88,4 +88,9 @@ abstract class MdfContentTemplateWidget
 
         return $this;
     }
+
+    public function isWidgetText()
+    {
+        return $this instanceof MdfContentTemplateWidgetText;
+    }
 }

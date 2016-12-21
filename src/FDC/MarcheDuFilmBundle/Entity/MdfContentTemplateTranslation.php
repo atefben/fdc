@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MdfContentTemplateTranslation
  * @ORM\Table(name="mdf_content_template_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateTranslationRepository")
  */
 class MdfContentTemplateTranslation
 {
