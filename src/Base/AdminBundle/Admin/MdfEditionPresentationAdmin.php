@@ -110,7 +110,6 @@ class MdfEditionPresentationAdmin extends Admin
     public function prePersist($page)
     {
         parent::prePersist($page);
-
         $page->setType(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
     }
 }
