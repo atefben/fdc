@@ -15,6 +15,8 @@ class MdfEditionPresentation
 {
     use Translatable;
 
+    const TYPE_EDITION_PRESENTATION = 'edition_presentation';
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +24,13 @@ class MdfEditionPresentation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $type;
 
     /**
      * @var ArrayCollection
@@ -76,5 +85,25 @@ class MdfEditionPresentation
     public function getContentTemplateWidgets()
     {
         return $this->contentTemplateWidgets;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param $type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }
