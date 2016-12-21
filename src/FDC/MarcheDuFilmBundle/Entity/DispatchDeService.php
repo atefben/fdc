@@ -29,18 +29,12 @@ class DispatchDeService
     protected $dispatchDeServiceWidgets;
 
     /**
-     * @ORM\OneToMany(targetEntity="DispatchDeServiceContact", mappedBy="dispatchDeService", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
-     */
-    protected $dispatchDeServiceContacts;
-
-    /**
      * @var ArrayCollection
      */
     protected $translations;
 
     public function __construct() {
         $this->dispatchDeServiceWidgets = new ArrayCollection();
-        $this->dispatchDeServiceContacts = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -84,43 +78,6 @@ class DispatchDeService
     {
         if ($this->dispatchDeServiceWidgets->contains($dispatchDeServiceWidget)) {
             $this->dispatchDeServiceWidgets->removeElement($dispatchDeServiceWidget);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDispatchDeServiceContacts()
-    {
-        return $this->dispatchDeServiceContacts;
-    }
-
-    /**
-     * @param DispatchDeServiceContact $dispatchDeServiceContact
-     *
-     * @return $this
-     */
-    public function addDispatchDeServiceContact(DispatchDeServiceContact $dispatchDeServiceContact)
-    {
-        if (!$this->dispatchDeServiceContacts->contains($dispatchDeServiceContact)) {
-            $this->dispatchDeServiceContacts->add($dispatchDeServiceContact);
-            $dispatchDeServiceContact->setDispatchDeService($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param DispatchDeServiceContact $dispatchDeServiceContact
-     *
-     * @return $this
-     */
-    public function removeDispatchDeServiceContact(DispatchDeServiceContact $dispatchDeServiceContact)
-    {
-        if ($this->dispatchDeServiceContacts->contains($dispatchDeServiceContact)) {
-            $this->dispatchDeServiceContacts->removeElement($dispatchDeServiceContact);
         }
 
         return $this;

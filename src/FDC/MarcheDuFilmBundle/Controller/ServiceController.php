@@ -20,7 +20,6 @@ class ServiceController extends Controller
 
         $dispatchDeServiceContent = $dispatchDeServiceManager->getDispatchDeServiceContent();
         $dispatchDeServiceWidgets = $dispatchDeServiceManager->getDispatchDeServiceWidgets();
-        $dispatchDeServiceContact = $dispatchDeServiceManager->getDispatchDeServiceContact();
         $news = $newsManager->getHomepageNews();
         $contact = $contactManager->getContactInfo();
 
@@ -28,7 +27,6 @@ class ServiceController extends Controller
         return $this->render('FDCMarcheDuFilmBundle:services:show.html.twig', array(
             'serviceContent' => $dispatchDeServiceContent,
             'serviceWidgets' => $dispatchDeServiceWidgets,
-            'serviceContact' => $dispatchDeServiceContact,
             'news' => $news,
             'contact' => $contact
         ));

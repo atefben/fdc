@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 19.12.2016
- * Time: 10:32
- */
 
 namespace FDC\MarcheDuFilmBundle\Manager;
 
@@ -24,17 +18,6 @@ class DispatchDeServiceManager
     {
         $this->em = $entityManager;
         $this->requestStack = $requestStack;
-    }
-
-    public function getDispatchDeServiceContact()
-    {
-        return $this->em
-            ->getRepository(DispatchDeServiceContactTranslation::class)
-            ->findOneBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
     }
 
     public function getDispatchDeServiceWidgets()

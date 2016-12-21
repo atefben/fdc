@@ -38,7 +38,7 @@ class DispatchDeServiceWidgetType extends AbstractType
                         'label'              => 'form.label.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
-                    'subTitle'          => array(
+                    'subtitle'          => array(
                         'label'              => 'form.label.subTitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),

@@ -31,6 +31,34 @@ class DispatchDeServiceTranslation
     protected $description;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="show_contact_block", type="boolean", nullable=true)
+     */
+    protected $showContactBlock = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $contactTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $contactDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $contactSeeMoreUrl;
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -66,6 +94,86 @@ class DispatchDeServiceTranslation
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowContactBlock()
+    {
+        return $this->showContactBlock;
+    }
+
+    /**
+     * @param $showContactBlock
+     *
+     * @return $this
+     */
+    public function setShowContactBlock($showContactBlock)
+    {
+        $this->showContactBlock = $showContactBlock;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactTitle()
+    {
+        return $this->contactTitle;
+    }
+
+    /**
+     * @param $contactTitle
+     *
+     * @return $this
+     */
+    public function setContactTitle($contactTitle)
+    {
+        $this->contactTitle = $contactTitle;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactDescription()
+    {
+        return $this->contactDescription;
+    }
+
+    /**
+     * @param $contactDescription
+     *
+     * @return $this
+     */
+    public function setContactDescription($contactDescription)
+    {
+        $this->contactDescription = $contactDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactSeeMoreUrl()
+    {
+        return $this->contactSeeMoreUrl;
+    }
+
+    /**
+     * @param $contactSeeMoreUrl
+     *
+     * @return $this
+     */
+    public function setContactSeeMoreUrl($contactSeeMoreUrl)
+    {
+        $this->contactSeeMoreUrl = $contactSeeMoreUrl;
 
         return $this;
     }

@@ -28,7 +28,7 @@ class DispatchDeServiceWidgetTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $subTitle;
+    protected $subtitle;
 
     /**
      * @var string
@@ -74,19 +74,19 @@ class DispatchDeServiceWidgetTranslation
     /**
      * @return string
      */
-    public function getSubTitle()
+    public function getSubtitle()
     {
-        return $this->subTitle;
+        return $this->subtitle;
     }
 
     /**
-     * @param $subTitle
+     * @param $subtitle
      *
      * @return $this
      */
-    public function setSubTitle($subTitle)
+    public function setSubtitle($subtitle)
     {
-        $this->subTitle = $subTitle;
+        $this->subtitle = $subtitle;
 
         return $this;
     }

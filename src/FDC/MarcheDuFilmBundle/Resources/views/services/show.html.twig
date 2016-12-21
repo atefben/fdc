@@ -21,23 +21,25 @@
                                 </div>
                                 <div class="articles-content">
                                     <h6>{{ serviceWidget.title }}</h6>
-                                    <span>{{ serviceWidget.subTitle }}</span>
+                                    <span>{{ serviceWidget.subtitle }}</span>
                                     <p>{{ serviceWidget.description }}</p>
                                 </div>
                             </a>
                         </div>
                     {% endfor %}
-                    <div class="articles">
-                        <div class="articles-content">
-                            <div class="lastArticle">
-                                <h6>{{ serviceContact.title|raw }}</h6>
-                                <p>{{ serviceContact.description }}</p>
-                                <a href="{{ serviceContact.seeMoreUrl }}">
-                                    <div class="blackBtn">En Savoir Plus</div>
-                                </a>
+                    {% if serviceContent.showContactBlock %}
+                        <div class="articles">
+                            <div class="articles-content">
+                                <div class="lastArticle">
+                                    <h6>{{ serviceContent.contactTitle|raw }}</h6>
+                                    <p>{{ serviceContent.contactDescription }}</p>
+                                    <a href="{{ serviceContent.contactSeeMoreUrl }}">
+                                        <div class="blackBtn">En Savoir Plus</div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

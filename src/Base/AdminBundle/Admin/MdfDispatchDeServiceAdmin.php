@@ -66,6 +66,23 @@ class MdfDispatchDeServiceAdmin extends Admin
                     'description'          => array(
                         'label'              => 'form.label.description',
                         'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'showContactBlock'  => array(
+                        'label'              => 'form.label.show_contact_block',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false
+                    ),
+                    'contactTitle'          => array(
+                        'label'              => 'form.label.contact_title',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'contactDescription'          => array(
+                        'label'              => 'form.label.contact_description',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'contactSeeMoreUrl'          => array(
+                        'label'              => 'form.label.contact_see_more_url',
+                        'translation_domain' => 'BaseAdminBundle'
                     )
                 )
             ))
@@ -73,16 +90,6 @@ class MdfDispatchDeServiceAdmin extends Admin
                 'label'        => false,
                 'types'        => array(
                     'dispatch_de_service_widget_type',
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false,
-            ))
-            ->add('dispatchDeServiceContacts', 'infinite_form_polycollection', array(
-                'label'        => false,
-                'types'        => array(
-                    'dispatch_de_service_contact_type',
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,
