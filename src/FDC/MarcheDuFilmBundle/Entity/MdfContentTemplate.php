@@ -7,11 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MdfEditionPresentation
- * @ORM\Table(name="mdf_edition_presentation")
+ * MdfContentTemplate
+ * @ORM\Table(name="mdf_content_template")
  * @ORM\Entity
  */
-class MdfEditionPresentation
+class MdfContentTemplate
 {
     use Translatable;
 
@@ -46,7 +46,7 @@ class MdfEditionPresentation
     private $contentTemplateWidgets;
 
     /**
-     * MdfEditionPresentation constructor.
+     * MdfContentTemplate constructor.
      */
     public function __construct()
     {

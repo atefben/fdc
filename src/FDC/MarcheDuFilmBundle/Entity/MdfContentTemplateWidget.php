@@ -28,9 +28,9 @@ abstract class MdfContentTemplateWidget
     protected $id;
 
     /**
-     * @var MdfEditionPresentation
+     * @var MdfContentTemplate
      *
-     * @ORM\ManyToOne(targetEntity="MdfEditionPresentation", inversedBy="contentTemplateWidgets")
+     * @ORM\ManyToOne(targetEntity="MdfContentTemplate", inversedBy="contentTemplateWidgets")
      */
     protected $contentTemplate;
 
@@ -50,7 +50,7 @@ abstract class MdfContentTemplateWidget
     }
 
     /**
-     * @return MdfEditionPresentation
+     * @return MdfContentTemplate
      */
     public function getContentTemplate()
     {

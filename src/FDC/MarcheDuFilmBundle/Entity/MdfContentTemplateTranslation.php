@@ -7,11 +7,11 @@ use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MdfEditionPresentationTranslation
- * @ORM\Table(name="mdf_edition_presentation_translation")
+ * MdfContentTemplateTranslation
+ * @ORM\Table(name="mdf_content_template_translation")
  * @ORM\Entity
  */
-class MdfEditionPresentationTranslation
+class MdfContentTemplateTranslation
 {
     use Translation;
     use TranslationChanges;

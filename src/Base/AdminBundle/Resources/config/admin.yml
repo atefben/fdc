@@ -1559,6 +1559,6 @@ services:
 
     base.admin.mdf_edition_presentation:
         class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
-        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfEditionPresentation, BaseAdminBundle:MdfEditionPresentationAdmin]
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionPresentationAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionPresentation}
