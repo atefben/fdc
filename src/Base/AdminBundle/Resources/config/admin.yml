@@ -1556,3 +1556,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Contact, BaseAdminBundle:MdfContactAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Contact}
+
+    base.admin.mdf_edition_presentation:
+        class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfEditionPresentation, BaseAdminBundle:MdfEditionPresentationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionPresentation}
