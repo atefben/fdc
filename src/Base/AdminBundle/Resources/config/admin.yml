@@ -1525,10 +1525,40 @@ services:
         class: Base\AdminBundle\Admin\ServiceAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Service, BaseAdminBundle:ServiceAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Service}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Services}
 
     base.admin.service_widget_product:
         class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct, BaseAdminBundle:ServiceWidgetProductAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: ServiceWidgetProduct}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct}
+
+    base.admin.mdf_header_footer:
+        class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HeaderFooter, BaseAdminBundle:MdfHeaderFooterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: HeaderFooter}
+
+    base.admin.mdf_homepage:
+        class: Base\AdminBundle\Admin\MdfHomepageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfHomepage, BaseAdminBundle:MdfHomepageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Homepage}
+
+    base.admin.mdf_news:
+        class: Base\AdminBundle\Admin\MdfNewsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\News, BaseAdminBundle:MdfNewsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: News}
+
+    base.admin.mdf_contact:
+        class: Base\AdminBundle\Admin\MdfContactAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Contact, BaseAdminBundle:MdfContactAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Contact}
+
+    base.admin.mdf_edition_presentation:
+        class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfEditionPresentation, BaseAdminBundle:MdfEditionPresentationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionPresentation}

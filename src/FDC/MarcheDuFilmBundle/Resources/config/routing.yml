@@ -1,0 +1,5 @@
+fdc_marche_du_film_services:
+    resource: "@FDCMarcheDuFilmBundle/Controller/ServiceController"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_marche_du_film_domain%"

@@ -568,3 +568,38 @@ services:
         calls:
             - ['setGalleryAdmin', ['@base.admin.gallery']]
             - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]
+
+    base.admin.form.home_slider_top_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderTopType
+        tags:
+            - { name: form.type, alias: 'home_slider_top_type'}
+
+    base.admin.form.home_slider_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderType
+        tags:
+            - { name: form.type, alias: 'home_slider_type'}
+
+    base.admin.form.home_content_slider_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeContentSliderType
+        tags:
+            - { name: form.type, alias: 'home_content_slider_type'}
+
+    base.admin.form.home_service_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeServiceType
+        tags:
+            - { name: form.type, alias: 'home_service_type'}
+
+    base.admin.form.content_template_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_type'}
+
+    base.admin.form.content_template_widget_text_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetTextType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_text_type'}
+
+    base.admin.form.content_template_widget_image_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetImageType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_image_type'}
