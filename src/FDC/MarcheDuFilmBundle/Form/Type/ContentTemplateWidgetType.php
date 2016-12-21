@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 20.12.2016
- * Time: 12:00
- */
 
 namespace FDC\MarcheDuFilmBundle\Form\Type;
 
@@ -40,10 +34,12 @@ class ContentTemplateWidgetType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-                                   'data_class'  => $this->dataClass,
-                                   'model_class' => $this->dataClass,
-                               ));
+        $resolver->setDefaults(
+            array(
+               'data_class'  => $this->dataClass,
+               'model_class' => $this->dataClass,
+            )
+        );
     }
 
     /**

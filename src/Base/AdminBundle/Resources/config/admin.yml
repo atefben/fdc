@@ -965,7 +965,7 @@ services:
         class: Base\AdminBundle\Admin\PressGuideAdmin
         arguments: [~, Base\CoreBundle\Entity\PressGuide, BaseAdminBundle:PressGuideAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.press_guide, group: admin.group.mdf, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_guide, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
