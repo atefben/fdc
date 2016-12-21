@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% if movie.persons|length > 0 %}
-    <div class="casting" data-section="casting">
+    <div class="casting" data-section="casting" style="margin-top:1px;">
         {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'), true) %}
         {% if medias|length > 0 %}
         <div class="gallery">

@@ -3,45 +3,47 @@
 <div class="main-image">
     <div class="img" style="background-image: url('{% spaceless %}
         {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-            film: movie,
-            film_format: '976x535',
-            display_film_path: true,
-            film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+        film: movie,
+        film_format: '976x535',
+        display_film_path: true,
+        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
         }) %}
     {% endspaceless %}')"></div>
     <div class="links">
         <div class="container">
-            <a class="movies" href="{{ path('fdc_event_movie_selection') }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
-            <a class="programmation" href="{{ path('fdc_event_agenda_scheduling') }}"><i class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
+            <a class="movies" href="{{ path('fdc_event_movie_selection') }}"><i
+                        class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
+            <a class="programmation" href="{{ path('fdc_event_agenda_scheduling') }}"><i
+                        class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
         </div>
     </div>
     <div class="trailer">
         {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
             {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
-        <div class="video-container state-init video"
-             data-file='[{%  if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-             data-vid="{{ trans.id }}"
-             data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+            <div class="video-container state-init video"
+                 data-file='[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                 data-vid="{{ trans.id }}"
+                 data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
                  film: movie,
                  film_format: '976x535',
                  display_film_path: true,
                  film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-             }) %}{% endspaceless %}"
-        >
-            <div id="video-movie-trailer" class="video-player"></div>
-            <div class="video-overlay"></div>
-            <div class="infos-bar">
-                <div class="picto"><i class="icon icon_video"></i></div>
-                <div class="info">
-                    <div class="vCenter">
-                        <div class="vCenterKid">
-                            <a href="#" class="category"></a><span class="date"></span><span class="hour"></span>
-                            <p></p>
+                 }) %}{% endspaceless %}"
+            >
+                <div id="video-movie-trailer" class="video-player"></div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category"></a><span class="date"></span><span class="hour"></span>
+                                <p></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         {% endif %}
     </div>
 </div>
@@ -51,20 +53,20 @@
         {% set hasVideo = true %}
     {% endif %}
 
-        <div class="poster video">	
-            {% if hasVideo == true %}
-                <a href="#" class="picto"><i class="icon icon_video"></i></a>
-            {% endif %}
-            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                film: movie,
-                film_format: '293x397',
-                film_attrs: {
-                    alt: movie|trans_fallback('title')?:movie.titleVO,
-                    'data-object-fit': 'cover'
-                },
-                film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
-            }) %}
-        </div>
+    <div class="poster video">
+        {% if hasVideo == true %}
+            <a href="#" class="picto"><i class="icon icon_video"></i></a>
+        {% endif %}
+        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+        film: movie,
+        film_format: '293x397',
+        film_attrs: {
+        alt: movie|trans_fallback('title')?:movie.titleVO,
+        'data-object-fit': 'cover'
+        },
+        film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
+        }) %}
+    </div>
     <div class="info-film tetiere-movie">
         <div class="categories">
             <span>{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
@@ -80,7 +82,7 @@
         {% set secondTitle = null %}
         {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}
             {% set mainTitle = movie.titleVO %}
-			{% set secondTitle = movie|trans_fallback_movie('title') %}
+            {% set secondTitle = movie|trans_fallback_movie('title') %}
         {% else %}
             {% set mainTitle = movie.titleVO %}
         {% endif %}
@@ -88,45 +90,54 @@
         {% if secondTitle != '' and secondTitle != null and mainTitle != secondTitle %}
             <div class="title-original">({{ secondTitle }})</div>
         {% endif %}
+        {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+        {% if directors|length > 0 %}
         <p>
             {{ 'movie.label.realisepar'|trans }} :
-            {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
             {% set comma = false %}
-            {% for key, director in directors if not director.duplicate %}{% if comma %},&nbsp;{% endif %}<a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>{% set comma = true %}{% endfor %}
+            {% for key, director in directors if not director.duplicate %}{% if comma %},&nbsp;{% endif %}<a
+                href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>{% set comma = true %}{% endfor %}
         </p>
+        {% endif %}
         <p class="information-movie">
             {% if movie.productionYear is not null and movie.productionYear != 0 %}
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
             {% if movie.countries|length > 0 %}
-                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}<span id="TetiereMovieCountry">{{ country.country|trans_fallback('name') ~ ',' }} </span>{% else %}<span>{{ country.country|trans_fallback('name') }}</span>{% endif %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}
+                <span id="TetiereMovieCountry">{{ country.country|trans_fallback('name') ~ ',' }} </span>{% else %}
+                <span>{{ country.country|trans_fallback('name') }}</span>{% endif %}
             {% endfor %}
-            {% endif  %}
+            {% endif %}
             {% if movie.duration is not null and movie.duration > 0 %}
                 {% set duration = movie.duration|split('.') %}
-                {{ 'movie.label.duree'|trans }} : {% if duration|length >= 1 %}<span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>{% endif %}
+                {{ 'movie.label.duree'|trans }} : {% if duration|length >= 1 %}
+                <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>{% endif %}
             {% endif %}
-            {%  if movie.publishedAt is not null and app.request.locale == 'fr' %}
-                {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
+            {% if movie.publishedAt is not null and app.request.locale == 'fr' %}
+                {{ 'movie.label.datedesortie'|trans }} :
+                <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
             {% endif %}
         </p>
     </div>
-	{% if movie.awards|length > 0 %}
-    <div class="palmares">
-        {% set awardsUnique = [] %}
-        {% for movieAward in movie.awards %}
-            {% if movieAward.award and movieAward.award.prize %}
-                {% if movieAward.award.id not in awardsUnique %}
-                    {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                    <div class="palmares-item"><i class="icon icon_palme"></i><p>{{ movieAward.award.prize|trans_fallback('title')|trim }}{%- if movieAward.award.exAequo == 1 -%}{{ ' ' }}({{ 'award.ex_aequo'|trans }}){% endif %}, {{  movieAward.award.festival.year }}</p></div>
+    {% if movie.awards|length > 0 %}
+        <div class="palmares">
+            {% set awardsUnique = [] %}
+            {% for movieAward in movie.awards %}
+                {% if movieAward.award and movieAward.award.prize %}
+                    {% if movieAward.award.id not in awardsUnique %}
+                        {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                        <div class="palmares-item"><i class="icon icon_palme"></i>
+                            <p>{{ movieAward.award.prize|trans_fallback('title')|trim }}{%- if movieAward.award.exAequo == 1 -%}{{ ' ' }}({{ 'award.ex_aequo'|trans }}){% endif %}
+                                , {{ movieAward.award.festival.year }}</p></div>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
-	{% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
     <div class="info-film">
-        <div  class="synopsis">
-            <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
+        <div class="synopsis">
+            <h3 class="title-section">{% if movie|trans_fallback('synopsis') %}{{ 'movie.title.synopsis'|trans }}{% endif %}</h3>
             <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
         </div>
     </div>
