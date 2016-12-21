@@ -1,5 +1,6 @@
 <div class="container">
     <div class="text-presentation">
+        {% if contentBlock %}
         <span>{{ contentBlock.category }}</span>
         <h3>{{ contentBlock.title }}</h3>
         <h5>{{ contentBlock.description|raw }}</h5>
@@ -9,6 +10,7 @@
                 <a href="{{ contentBlock.url }}"><p>en savoir plus</p></a>
             {% endif %}
         </div>
+        {% endif %}
     </div>
 </div>
 

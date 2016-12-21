@@ -49,7 +49,10 @@ class MdfHomepage
     protected $translations;
 
     public function __construct() {
+        $this->sliders = new ArrayCollection();
         $this->slidersTop = new ArrayCollection();
+        $this->contentSliders = new ArrayCollection();
+        $this->services = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
