@@ -2073,6 +2073,7 @@ a {
     width: 100%;
     z-index: 2;
     margin-top: 0px;
+    @include transition(all 8s $smoothTransition);
       &:after {
         content:'\A';
         width:100%; height:100%;
@@ -2080,15 +2081,13 @@ a {
         background:rgba(0,0,0,0.6);
         position:absolute;
         opacity:1;
-        transition: all 0.5s;
-        -webkit-transition: all 0.5s;
+        @include transition(all 8s $smoothTransition);
       }
   }
 
   &:hover .imgIllustration:after {
     /*opacity: 0.6;*/
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
+    @include transition(all 8s $smoothTransition);
   }
   
   .img {
@@ -2116,7 +2115,7 @@ a {
     float: left;
     display: block;
     text-align: center;
-    margin-top: 130px;
+    margin-top: 132px;
     height: 550px;
     position: relative;
     z-index: 1000;
@@ -2174,6 +2173,7 @@ a {
     opacity: 0.4;
     content: url(/img/trait.png);
     z-index: -1;
+    @include transition(all 0s $smoothTransition);
   }
 
   &:hover {
@@ -2186,7 +2186,8 @@ a {
       position: absolute;
       opacity: 0;
       content: url(/img/trait.png);
-      z-index: 0;
+      z-index: -1;
+      @include transition(all 0s $smoothTransition);
     }  
   }
 

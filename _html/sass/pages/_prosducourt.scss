@@ -116,6 +116,13 @@
         object-fit: cover;
         width: 100%;
       }
+
+      /* FOR IE*/
+      .containerFit {
+        width: 155px!important;
+        height: auto!important;
+      }
+
       &:hover { 
         cursor: pointer;
       }

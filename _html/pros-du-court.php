@@ -96,7 +96,7 @@
                     <div class="box b events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -117,7 +117,7 @@
                     <div class="box c events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -129,7 +129,7 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
@@ -150,7 +150,7 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
@@ -159,7 +159,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -171,7 +171,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -183,7 +183,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -195,7 +195,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -207,7 +207,7 @@
                     <div class="box b events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -228,7 +228,7 @@
                     <div class="box c events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -240,7 +240,7 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
@@ -261,7 +261,7 @@
                     <div class="box a events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage</h3></div>
@@ -270,7 +270,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -282,7 +282,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -294,7 +294,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -306,7 +306,7 @@
                     <div class="box d events">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
-                          <img src="img/member.jpg" alt="">
+                          <img class="containerFit" src="img/member.jpg" alt="">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
@@ -350,7 +350,7 @@
                 <div class="photo">
                   <div class="photoContainer">
                     <img src="img/person.png" alt="">
-                    <img src="img/member.jpg" alt="">
+                    <img class="containerFit" src="img/member.jpg" alt="">
                   </div>
                   <!--<div class="sfcLogo">
                       <img src="img/sfcLogo.png" alt="">
@@ -375,15 +375,15 @@
                 <div class="authors">
                   <div class="full">
                     <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Florence KELLER von midtag</h4></a>
-                    <div class="job"><h4>productrice</h4></div>
+                    <div class="job"><h4>productrice</h4><a href="mailto:test@gmail.com"><img src="img/flyingPaper.png" alt=""></a></div>
                   </div>
                   <div class="full">
                     <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Augustin Keller von Keller</h4></a>
-                    <div class="job"><h4>acheteuse</h4></div>
+                    <div class="job"><h4>acheteuse</h4><a href="mailto:test@gmail.com"><img src="img/flyingPaper.png" alt=""></a></div>
                   </div>
                   <div class="full">
                     <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Gertrude von Munchen</h4></a>
-                    <div class="job"><h4>actrice</h4></div>
+                    <div class="job"><h4>actrice</h4><a href="mailto:test@gmail.com"><img src="img/flyingPaper.png" alt=""></a></div>
                   </div>
                 </div>
                 <div class="content">
