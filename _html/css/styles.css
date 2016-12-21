@@ -3216,14 +3216,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 #slider-discover .title h5 {
   text-transform: lowercase;
   color: #c3a05f;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: normal !important;
 }
 #slider-discover .title h4 {
   text-transform: uppercase;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
   color: white;
 }
@@ -16105,12 +16105,15 @@ article .read-later.rAlign span:after {
   float: right;
 }
 .single-article .chapeau {
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #333;
   font-size: 1.125rem;
   line-height: 2em;
-  margin-bottom: 70px;
+  padding-bottom: 50px;
+  margin-top: 20px;
   text-align: center;
+  width: 774px !important;
+  margin: 0 auto;
 }
 .single-article .chapeau a {
   color: #c8a461;
@@ -16134,12 +16137,14 @@ article .read-later.rAlign span:after {
   height: 84px;
 }
 .single-article .quote {
-  width: 630px;
-  margin: 30px auto 70px;
+  width: 774px;
+  margin: 0 auto;
+  border-bottom: 0px solid #e5e5e5;
+  border-top: 0px solid #e5e5e5;
 }
 .single-article .quote blockquote {
-  border-bottom: 1px solid #e5e5e5;
-  border-top: 1px solid #e5e5e5;
+  /*border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;*/
   color: #666;
   font-size: 1.688rem;
   line-height: 1.4em;
@@ -16147,7 +16152,7 @@ article .read-later.rAlign span:after {
   text-align: center;
 }
 .single-article .big-quote {
-  width: 630px;
+  width: 774px;
   margin: 0 auto;
   padding: 70px 70px;
   box-sizing: border-box;
@@ -16173,7 +16178,8 @@ article .read-later.rAlign span:after {
   line-height: 26px;
 }
 .single-article .text {
-  width: 630px;
+  /*width: 630px;*/
+  width: 774px;
   margin: 0 auto 70px;
 }
 .single-article .text p {
@@ -27824,7 +27830,7 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 200px;
+  margin-top: 160px;
   margin-bottom: 50px;
 }
 @media screen and (max-width: 1279px) {

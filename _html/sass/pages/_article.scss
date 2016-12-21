@@ -521,12 +521,15 @@ article {
   }
 
   .chapeau {
-    font-family: $CamphorBold;
+    font-family: $CamphorRegular;
     color: #333;
     font-size: 1.125rem;
     line-height: 2em;
-    margin-bottom: 70px;
+    padding-bottom: 50px;
+    margin-top: 20px;
     text-align: center;
+    width: 774px!important;
+    margin: 0 auto;
 
     a {
       color: $gold;
@@ -561,12 +564,14 @@ article {
   }
 
   .quote {
-    width: 630px;
-    margin: 30px auto 70px;
+    width: 774px;
+    margin: 0 auto;
+    border-bottom: 0px solid #e5e5e5;
+    border-top: 0px solid #e5e5e5;
 
     blockquote {
-      border-bottom: 1px solid #e5e5e5;
-      border-top: 1px solid #e5e5e5;
+      /*border-bottom: 1px solid #e5e5e5;
+      border-top: 1px solid #e5e5e5;*/ 
       color: #666;
       font-size: 1.688rem;
       line-height: 1.4em;
@@ -576,7 +581,7 @@ article {
   }
 
   .big-quote {
-    width: 630px;
+    width: 774px;
     margin: 0 auto;
     padding: 70px 70px;
     box-sizing: border-box;
@@ -605,7 +610,8 @@ article {
   }
 
   .text {
-    width: 630px;
+    /*width: 630px;*/
+    width: 774px;
     margin: 0 auto 70px;
 
     p {

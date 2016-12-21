@@ -60,65 +60,8 @@
           <div class="buttons">
               <a id="share-article" class="button"><i class="icon icon_share"></i>Partager</a>
               <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
-          </div>
+          </div><br><br>
 
-          <div class="single-photo">
-            <div class="photo-container">
-              <img src="img/article/003.jpg" alt="" />
-              <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
-            </div>
-          </div>
-
-          
-          <div class="text">
-            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
-            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. <span class="italic">C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible</span>. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
-          </div>
-          
-          <div class="text">
-          <a href="programmation-evenementiel.php" class="button single-button">Toute la programmation</a>
-          </div>
-
-          <div class="quote">
-            <blockquote>
-              “J’ai découvert que Lambert avait une passion pour le film de genre”
-            </blockquote>
-          </div>
-
-          <div class="text">
-            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
-            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
-          </div>
-          
-          <div class="big-quote">
-            <strong>Dans quel sens ?</strong>
-
-            <p>
-              Je voulais être libre au niveau dans la narration et la forme. Le film tire sa singularité du fait que nous l’avons tourné aux États-Unis avec un casting français. Je ne souhaitais pas rester dans le schéma classique, avec les méchants d’un côté et les gentils de l’autre, mais que ce soit plus obscur et complexe.
-            </p>
-
-          </div>
-          
-          <div class="text">
-            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
-            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
-          </div>
-          
-          <div class="text wysiwygBlocks">
-            <h6>Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie. Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : Sogni d'Oro (Prix spécial du jury à Venise).</h6>
-          </div>
-        </div>
-
-        <div class="txt-grey-bkg-container">
-          <div class="content">
-            <strong>Enragés est l’adaptation d’un film </strong>
-            <p>
-              Cela fait vingt ans que je travaille l’image par le biais du reportage ou du documentaire pour me rapprocher de plus en plus de cette envie de cinéma qui ne m’a jamais quittée depuis l’adolescence.
-            </p>
-          </div>
-        </div>
-
-        <div class="container">
 
           <div class="slideshow eventSlideshow">
             <div class="slideshow-img">
@@ -186,6 +129,65 @@
               </div>
             </div>
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
+          </div>
+
+
+          
+          <div class="text">
+            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
+            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. <span class="italic">C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible</span>. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
+          </div>
+          
+          <div class="text">
+          <a href="programmation-evenementiel.php" class="button single-button">Toute la programmation</a>
+          </div>
+
+          <div class="quote">
+            <blockquote>
+              “J’ai découvert que Lambert avait une passion pour le film de genre”
+            </blockquote>
+          </div>
+
+          <div class="text">
+            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
+            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
+          </div>
+          
+          <div class="big-quote">
+            <strong>Dans quel sens ?</strong>
+
+            <p>
+              Je voulais être libre au niveau dans la narration et la forme. Le film tire sa singularité du fait que nous l’avons tourné aux États-Unis avec un casting français. Je ne souhaitais pas rester dans le schéma classique, avec les méchants d’un côté et les gentils de l’autre, mais que ce soit plus obscur et complexe.
+            </p>
+
+          </div>
+          
+          <div class="text">
+            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
+            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
+          </div>
+          
+          <div class="text wysiwygBlocks">
+            <h6>Cinéaste, producteur, distributeur et acteur italien, Nanni Moretti est né en 1953 à Brunico en Italie. Il réalise un certain nombre de courts métrages avant de terminer son premier long métrage Io Sono un Autarchico en 1976 et de jouer dans Padre Padrone des frères Taviani présenté à Cannes en 1977. Plusieurs de ses films suivants sont primés à travers le monde : Sogni d'Oro (Prix spécial du jury à Venise).</h6>
+          </div>
+        </div>
+
+        <div class="txt-grey-bkg-container">
+          <div class="content">
+            <strong>Enragés est l’adaptation d’un film </strong>
+            <p>
+              Cela fait vingt ans que je travaille l’image par le biais du reportage ou du documentaire pour me rapprocher de plus en plus de cette envie de cinéma qui ne m’a jamais quittée depuis l’adolescence.
+            </p>
+          </div>
+        </div>
+
+        <div class="container">
+
+          <div class="single-photo">
+            <div class="photo-container">
+              <img src="img/article/003.jpg" alt="" />
+              <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+            </div>
           </div>
 
           <table class="table-article">
