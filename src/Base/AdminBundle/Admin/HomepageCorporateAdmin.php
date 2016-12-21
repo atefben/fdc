@@ -279,7 +279,7 @@ class HomepageCorporateAdmin extends Admin
             ))
             ->add('pushEditionImage', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_prefooter',
                 'required' => false,
             ))
             ->add('pushMainImage1', 'sonata_type_model_list', array(
@@ -310,6 +310,18 @@ class HomepageCorporateAdmin extends Admin
                 'label' => 'form.label_image_push',
                 'help' => 'form.homepage.helper_pushes',
                 'required' => false,
+            ))
+            ->add('displayedSocialWall','checkbox',array(
+                'label' => 'form.label_display',
+                'required' => false
+            ))
+            ->add('socialGraphHashtagTwitter', null, array(
+                'sonata_help' => 'form.homepage.helper_social_graph',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('socialWallHashtags', null, array(
+                'sonata_help' => 'form.homepage.helper_social_graph',
+                'translation_domain' => 'BaseAdminBundle'
             ))
             ->add('homepageSlide', 'sonata_type_collection', array(
                 'label' => 'Communiqués et infos associées',

@@ -585,6 +585,13 @@ header {
           left: auto;
           margin-left: -762px;
           text-align: right;
+          html[lang="es"] & {
+            left: auto;
+            margin-left: -812px;
+            text-align: left;
+            width: 100%;
+          }
+
           li{
             a{
               font-size: 0.688rem;

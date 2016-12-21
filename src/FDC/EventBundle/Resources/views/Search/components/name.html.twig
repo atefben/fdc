@@ -8,9 +8,9 @@
         {{ object|trans_fallback('title')|truncate(40) }}
     {% elseif class(object) starts with 'Media' %}
         {% if class(object) == "MediaImage" %}
-            {{ object|trans_fallback('legend') }}
+            {{ object|trans_fallback('legend')|truncate(40) }}
         {% else %}
-            {{ object|trans_fallback('title') }}
+            {{ object|trans_fallback('title')|truncate(40) }}
         {% endif %}
     {% elseif class(object) == 'FDCPageParticipate' %}
         {{ object|trans_fallback('title')|truncate(40) }}

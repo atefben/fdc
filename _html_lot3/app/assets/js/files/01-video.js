@@ -104,9 +104,6 @@ var initVideo = function(hash) {
         } else {
             tmp = [];
             $("."+cls).each(function(i,v) {
-                // console.log("",this);
-                // console.log("",this.className);
-                // console.log("",this.id);
                 var videoPlayer  = jwplayer(this.id);
                 if(!$(videoPlayer).data('loaded')) {
                     playerLoad(this, videoPlayer, havePlaylist, live, function(vid) {
@@ -125,16 +122,12 @@ var initVideo = function(hash) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
 
-        console.log('container');
-        console.log($container);
-
         if($container.find('.control-bar').length <= 0) {
             $container.append(controlBar);
         }
         if($container.find('.top-bar').length <= 0) {
             $(topBar).insertAfter($container.find('#'+vid.id));
         }
-
 
         var $infoBar      = $container.find('.infos-bar'),
             $stateBtn     = $container.find('.play-btn'),
@@ -148,9 +141,6 @@ var initVideo = function(hash) {
 
         $topBar.find('.info').append($infoBar.find('.info').html());
 
-        console.log('topbar');
-        console.log($topBar);
-
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
@@ -160,9 +150,6 @@ var initVideo = function(hash) {
         // CUSTOM LINK FACEBOOK
         var fbHref = $topBar.find('.buttons .facebook').attr('href');
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-
-        console.log('fbHref');
-        console.log(fbHref);
 
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER

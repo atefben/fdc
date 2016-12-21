@@ -13,4 +13,5 @@ interface FilmPrizeInterface
 {
     const TYPE_FILM       = 0;
     const TYPE_PERSON     = 1;
+    const ID_CAMERADOR  = 47;
 }

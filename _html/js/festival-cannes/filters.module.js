@@ -1,6 +1,8 @@
 // Filters
 // =========================
 function filter() {
+  console.log('init filter');
+
   var id = $('#filters').data('id');
   var filters = [];
 
@@ -73,6 +75,9 @@ function filter() {
     }
 
     if($('#calendar-programmation').length > 0) {
+
+      console.log('ok');
+
       $('.filter .select').each(function() {
         $that = $(this);
         $id   = $(this).closest('.filter').attr('id');

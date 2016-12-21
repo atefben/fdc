@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * OldArticle
  *
  * @ORM\Table(name="old_article", indexes={@ORM\Index(name="article_type_id", columns={"article_type_id"}), @ORM\Index(name="start_date", columns={"start_date"}), @ORM\Index(name="end_date", columns={"end_date"}), @ORM\Index(name="isHomePage", columns={"isHomePage"}), @ORM\Index(name="isNewsLetter", columns={"isNewsLetter"}), @ORM\Index(name="home_priority", columns={"home_priority"}), @ORM\Index(name="home_end_pub_date", columns={"home_end_pub_date"}), @ORM\Index(name="priority", columns={"priority"}), @ORM\Index(name="website_section_id", columns={"website_section_id"}), @ORM\Index(name="is_online", columns={"is_online"})})
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\OldArticleRepository")
  * @ORM\Entity
  */
 class OldArticle

@@ -15,7 +15,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class NewsController extends Controller
 {
-    
+    public function compareArticle($a, $b)
+    {
+        if ($a->getPublishedAt()->getTimestamp() == $b->getPublishedAt()->getTimestamp()) {
+            return 0;
+        }
+        return ($a->getPublishedAt()->getTimestamp() > $b->getPublishedAt()->getTimestamp()) ? -1 : 1;
+    }
     /**
      * @Route("/{year}/articles")
      * @Template("FDCCorporateBundle:News/list:article.html.twig")
@@ -46,11 +52,17 @@ class NewsController extends Controller
         }
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
-
         //GET ALL NEWS ARTICLES
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $festival->getId());
-        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
-        if ($newsArticles === null || count($newsArticles) == 0) {
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+        $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+
+        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
+        usort($articles, [$this, 'compareArticle']);
+
+
+        $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
+        if ($articles === null || count($articles) == 0) {
             throw new NotFoundHttpException();
         }
 
@@ -63,8 +75,8 @@ class NewsController extends Controller
         $filters['format'][0] = 'all';
 
 
-        foreach ($newsArticles as $key => $newsArticle) {
-            $isPublished = ($newsArticles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
+        foreach ($articles as $key => $newsArticle) {
+            $isPublished = ($articles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
             if ($isPublished) {
                 if (($key % 3) == 0) {
                     $newsArticle->double = true;
@@ -80,13 +92,17 @@ class NewsController extends Controller
                     $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
+
+                if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
+                    $filters['format'][] = $newsArticle->getNewsType();
+                }
             } else {
-                unset($newsArticles[$key]);
+                unset($articles[$key]);
             }
         }
 
         return array(
-            'articles' => $newsArticles,
+            'articles' => $articles,
             'filters'  => $filters,
             'festivals'  => $festivals,
         );
@@ -100,7 +116,6 @@ class NewsController extends Controller
      */
     public function getMediasAction(Request $request, $year)
     {
-
         $this->isPageEnabled($request->get('_route'));
 
         $em = $this->getDoctrine()->getManager();
@@ -132,9 +147,9 @@ class NewsController extends Controller
             $medias = $em->getRepository('BaseCoreBundle:Media')->getMedia($locale, $festival->getId(), null);
         }*/
 
-        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), null);
-        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), null);
-        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), null);
+        $images = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
 
         $medias = array();
         $medias = array_merge($medias, $images);

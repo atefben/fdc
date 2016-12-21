@@ -35,10 +35,8 @@
                         <div class="title-list-cat">
                             <h2 class="title-big">{{ transClassic.title }}</h2>
                             <div class="buttons">
-                                <a id="share-article" href="#" class="button"><i
-                                            class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
-                                <a href="#" onclick="javascript:window.print()" class="button print"><i
-                                            class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                                <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
                             </div>
                         </div>
                     {% endif %}
@@ -100,10 +98,23 @@
                                 </div>
                             {% endif %}
                         {% endfor %}
+                        <div class="share">
+                            <p>{{ 'juries.artiste.title.share'|trans }}</p>
+                            {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                            <div class="buttons square">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}" class="button facebook"><i class="icon icon_facebook"></i></a>
+                                <a href="https://twitter.com/intent/tweet?url={{ currentUrl}}"
+                                   class="button twitter"><i class="icon icon_twitter"></i></a>
+                                <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
+                                <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
+                                <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
         </div>
+
 
         {% if next %}
             <div class="bandeau-list push-footer vCenter">
@@ -118,7 +129,13 @@
             </div>
         {% endif %}
     </div>
-
+    {{ render(controller('FDCEventBundle:Global:shareEmail',
+    {'section': 'selection.title.selectionofficielle'|trans ,
+        'detail': '',
+        'title': transClassic.title,
+        'description': '',
+        'url': currentUrl
+    })) }}
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [

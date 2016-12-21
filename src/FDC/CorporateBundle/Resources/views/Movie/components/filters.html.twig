@@ -14,11 +14,11 @@
         {% if cannesClassics is defined and cannesClassics|length > 0 %}
             {% set transClassics = cannesClassics[0].findTranslationByLocale(app.request.locale) %}
             {% if transClassics is not empty and transClassics.slug is not empty %}
-                <!--li class="{% if app.request.attributes.get('_route') == 'fdc_corporate_movie_classics' %}active{% endif %}">
+                <li class="{% if app.request.attributes.get('_route') == 'fdc_corporate_movie_classics' %}active{% endif %}">
                     <a href="{{ path('fdc_corporate_movie_classics', {'slug': transClassics.slug, 'year': app.request.attributes.get('year')}) }}">
                         {{ 'selection.nav.cannes-classics'|trans }}
                     </a>
-                </li-->
+                </li>
             {% endif %}
         {% endif %}
 

@@ -643,7 +643,6 @@ class NewsController extends Controller
 
         //GET ALL MEDIA PHOTOS
         $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId());
-
         //set default filters
         $filters = array();
         $filters['dates'][0] = 'all';
@@ -664,11 +663,12 @@ class NewsController extends Controller
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
-            if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $photo->getTheme()->getId();
+            if ($photo->getTheme() && !in_array($photo->getTheme()->getName(), $filters['themes']['content'])) {
+                $filters['themes']['slug'][] = $photo->getTheme()->getName();
                 $filters['themes']['content'][] = $photo->getTheme();
             }
         }
+
         return array(
             'photos'  => $photos,
             'filters' => $filters,

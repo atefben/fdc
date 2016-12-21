@@ -7,6 +7,8 @@
 
 {% extends extended_layout %}
 
+{% set selfkits = get_legacy_film_images(movie) %}
+
 {% block body %}
 <div id="main" class="single-movie loading">
     <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
@@ -42,7 +44,7 @@
                     {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
                         <li><a href="#casting" class="link">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
                     {% endif %}
-                    {% if movie.getMedias()|length > 0 %}
+                    {% if movie.getMedias()|length > 0  or selfkits|length %}
                         <li><a href="#photos" class="link">{{ 'movie.middlenav.photos'|trans }}</a></li>
                     {% endif %}
                     {% if articles|length > 0 %}
@@ -86,7 +88,7 @@
 
             {% include 'FDCEventBundle:Movie:widgets/casting.html.twig' %}
 
-            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
+            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias, 'selfkits': selfkits} %}
 
 			{% if articles|length %}
             <div class="news" data-section="news">

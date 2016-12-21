@@ -34,4 +34,9 @@ $(document).ready(function () {
         initVideo();
     }
 
+    if ($('.retrospective-home').length) {
+        owInitSlider('timelapse-01');
+        onInitParallax();
+    }
+
 });

@@ -3670,6 +3670,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   line-height: 24px;
 }
+.block-movie-preview a {
+  text-align: center;
+}
+.block-movie-preview a .name-f {
+  display: block;
+}
 .block-movie-preview .name-f {
   color: #fff;
   font-size: .875rem;
@@ -3912,6 +3918,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .ie .block-poster .contain-txts {
   padding-top: 0px !important;
+}
+.block-poster .contain-txts br {
+  display: none;
 }
 .bright .block-poster {
   background-color: #fff;
@@ -4638,22 +4647,32 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding: 0px;
 }
 .block-contact ul, .block-contact p {
-  color: #666666;
-  margin-bottom: 42px;
-  font-size: .875rem;
-  line-height: 20px;
+  font-size: .85rem;
+  line-height: 1.8em;
+  margin-bottom: 30px;
+  color: #000 !important;
 }
-.block-contact .bold-1 {
-  line-height: 20px;
-  font-size: 0.875rem;
+.block-contact .bold-1, .block-contact h3 {
+  font-size: .85rem;
+  line-height: 1.6em;
+  margin-bottom: 30px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-contact strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #000;
+}
+.block-contact .button {
+  border-color: #c8a461;
+  margin-bottom: 20px;
 }
 .block-contact .item {
   display: inline-block;
-  width: 247px;
+  width: 277px;
   vertical-align: top;
 }
 .block-contact .i-1 {
-  margin-right: 160px;
+  margin-right: 105px;
 }
 
 .block-tab-switch .title-tab-swich {
@@ -4740,9 +4759,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-s-info-02 a.button {
   height: 50px;
   line-height: 50px;
-  width: 178px;
+  width: auto;
   text-align: center;
-  padding: 0px;
+  padding: 0px 21px;
 }
 .block-s-info-02 .title-25 {
   margin-bottom: 18px;
@@ -8770,10 +8789,17 @@ body#home .isotope-01 .item .contain-img {
     width: calc(100% / 3);
   }
   body#home .isotope-01 .item {
-    width: calc(100% / 3);
+    width: 305px;
   }
   body#home .isotope-01 .item.w2 {
-    width: calc(200% / 3);
+    width: 614px;
+  }
+  body#home .isotope-01 .item.three-cards {
+    width: 305px;
+    padding: 0px 25px;
+  }
+  body#home .isotope-01 .first-card {
+    padding-left: 0px !important;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -8784,10 +8810,17 @@ body#home .isotope-01 .item .contain-img {
     width: calc(100% / 3);
   }
   body#home .isotope-01 .item {
-    width: calc(100% / 3);
+    width: 305px;
   }
   body#home .isotope-01 .item.w2 {
-    width: calc(200% / 3);
+    width: 614px;
+  }
+  body#home .isotope-01 .item.three-cards {
+    width: 305px;
+    padding: 0px 25px;
+  }
+  body#home .isotope-01 .first-card {
+    padding-left: 0px !important;
   }
 }
 @media screen and (min-width: 1600px) {
@@ -8798,10 +8831,17 @@ body#home .isotope-01 .item .contain-img {
     width: calc(100% / 3);
   }
   body#home .isotope-01 .item {
-    width: calc(100% / 3);
+    width: 305px;
   }
   body#home .isotope-01 .item.w2 {
-    width: calc(200% / 3);
+    width: 614px;
+  }
+  body#home .isotope-01 .three-cards {
+    width: 305px;
+    padding: 0px 25px;
+  }
+  body#home .isotope-01 .first-card {
+    padding-left: 0px !important;
   }
 }
 @media screen and (min-width: 1920px) {
@@ -8812,10 +8852,17 @@ body#home .isotope-01 .item .contain-img {
     width: calc(100% / 3);
   }
   body#home .isotope-01 .item {
-    width: calc(100% / 3);
+    width: 305px;
   }
   body#home .isotope-01 .item.w2 {
-    width: calc(200% / 3);
+    width: 614px;
+  }
+  body#home .isotope-01 .item.three-cards {
+    width: 305px;
+    padding: 0px 25px;
+  }
+  body#home .isotope-01 .first-card {
+    padding-left: 0px !important;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -9116,6 +9163,7 @@ body#home .isotope-01 .item .contain-img {
   margin-bottom: 29px;
   transition: height .5s;
   overflow: hidden;
+  cursor: pointer;
 }
 .slider-home .coverLink {
   width: 100%;
@@ -9169,6 +9217,7 @@ body#home .isotope-01 .item .contain-img {
   background: center 0 no-repeat fixed;
   background-size: cover;
   display: none;
+  background-position-x: -310px;
 }
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {
@@ -12425,6 +12474,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .who-staff .item img, .who-staff .item .contain-img {
   width: 163px;
   object-fit: cover;
+  min-height: 220px;
+  max-height: 220px;
 }
 .who-staff .block-01 {
   margin-bottom: 68px;
@@ -14166,6 +14217,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .single-movie .competition #slider-competition .owl-item img {
   height: 284px;
   width: 210px;
+  object-fit: cover;
 }
 .single-movie .competition #slider-competition .owl-item .linkVid {
   height: 284px;

@@ -56,7 +56,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -64,16 +64,15 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                     $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
 
                     return true;
                 },
                 'field_type' => 'text'
-            ))
-        ;
-		$datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-		$datagridMapper = $this->addStatusFilter($datagridMapper);
-		$datagridMapper = $this->addPriorityFilter($datagridMapper);		
+            ));
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addStatusFilter($datagridMapper);
+        $datagridMapper = $this->addPriorityFilter($datagridMapper);
     }
 
     /**
@@ -84,23 +83,22 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
-            ->add('weight',null,array('label' => 'Position'))
-      	  	->add('createdAt', null, array(
-            'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
-            'sortable' => 'createdAt',
-       	 	))
+            ->add('weight', null, array('label' => 'Position'))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('priorityStatus', 'choice', array(
-                'choices'   => MediaVideo::getPriorityStatusesList(),
+                'choices' => MediaVideo::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-	        ->add('statusMain', 'choice', array(
-	             'choices'   => MediaVideoTranslation::getStatuses(),
-	             'catalogue' => 'BaseAdminBundle',
-	        ))
+            ->add('statusMain', 'choice', array(
+                'choices' => MediaVideoTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle',
+            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-        ;
+            ));
     }
 
     /**
@@ -118,69 +116,89 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label'              => false,
+                'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales'   => $requiredLocales,
-                'fields'             => array(
+                'required_locales' => $requiredLocales,
+                'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
-                        'attr' => array (
+                        'attr' => array(
                             'class' => 'hidden'
                         )
                     ),
-                    'status'         => array(
-                        'label'                     => 'form.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'titleNav'       => array(
-                        'label'              => 'form.fdc_page_la_selection_cannes_classics.title_nav',
+                    'titleNav' => array(
+                        'label' => 'form.fdc_page_la_selection_cannes_classics.title_nav',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
-                        'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_titleNav'
+                        'required' => false,
+                        'sonata_help' => 'form.fdc_page_la_selection_cannes_classics.helper_titleNav'
                     ),
-                    'title'       => array(
-                        'label'              => 'form.fdc_page_la_selection_cannes_classics.title',
+                    'title' => array(
+                        'label' => 'form.fdc_page_la_selection_cannes_classics.title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
+                        'required' => false,
                     ),
-                    'hideTitle'       => array(
-                        'label'              => 'form.fdc_page_la_selection_cannes_classics.hide_title',
+                    'hideTitle' => array(
+                        'label' => 'form.fdc_page_la_selection_cannes_classics.hide_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
-                        'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_hide_title'
+                        'required' => false,
+                        'sonata_help' => 'form.fdc_page_la_selection_cannes_classics.helper_hide_title'
                     ),
-                    'seoTitle'       => array(
-                        'attr'               => array(
+                    'seoTitle' => array(
+                        'attr' => array(
                             'placeholder' => 'form.fdc_page_web_tv_trailers.placeholder_seo_title'
                         ),
-                        'label'              => 'form.label_seo_title',
-                        'sonata_help'        => 'form.news.helper_seo_title',
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
+                        'required' => false,
                     ),
                     'seoDescription' => array(
-                        'attr'               => array(
+                        'attr' => array(
                             'placeholder' => 'form.fdc_page_web_tv_trailers.placeholder_seo_description'
                         ),
-                        'label'              => 'form.label_seo_description',
-                        'sonata_help'        => 'form.news.helper_description',
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
+                        'required' => false,
                     ),
-                    'createdAt'      => array(
+                    'createdAt' => array(
                         'display' => false
                     ),
-                    'updatedAt'      => array(
+                    'updatedAt' => array(
                         'display' => false
                     ),
                 )
             ))
+            ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
+                'class' => 'BaseCoreBundle:Site',
+                'multiple' => true,
+                'expanded' => true,
+            ))
+            ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
+            ))
+            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
+                'format' => 'dd/MM/yyyy HH:mm',
+                'required' => false,
+                'attr' => array(
+                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                ),
+            ))
             ->add('image', 'sonata_type_model_list', array(
-                'label'    => 'form.fdc_page_web_tv_trailers.image',
-                'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
+                'label' => 'form.fdc_page_web_tv_trailers.image',
+                'help' => 'form.fdc_page_web_tv_trailers.helper_image',
                 'required' => false,
             ))
             ->add('weight', null, array(
@@ -208,8 +226,8 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'seo_file',
-                'help'     => 'form.seo.helper_file',
+                'context' => 'seo_file',
+                'help' => 'form.seo.helper_file',
                 'required' => false
             ))
             ->add('translate')
@@ -220,35 +238,34 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
+                'choices' => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(
                 'label' => false,
-                'attr' => array (
+                'attr' => array(
                     'class' => 'hidden'
                 )
             ))
             ->add('createdBy', null, array(
                 'label' => false,
-                'attr' => array (
+                'attr' => array(
                     'class' => 'hidden'
                 )
             ))
             ->add('updatedAt', null, array(
                 'label' => false,
-                'attr' => array (
+                'attr' => array(
                     'class' => 'hidden'
                 )
             ))
             ->add('updatedBy', null, array(
                 'label' => false,
-                'attr' => array (
+                'attr' => array(
                     'class' => 'hidden'
                 )
-            ))
-        ;
+            ));
     }
 
     /**
@@ -257,7 +274,21 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-        ;
+            ->add('id');
     }
+
+    public function prePersist($object)
+    {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object)
+    {
+        $date = $object->getPublishedAt()->format('Y');
+        $em = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager();
+        $result = $em->getRepository('BaseCoreBundle:FilmFestival')->findOneBy(array('year' => $date));
+        $object->setFestival($result);
+    }
+
+
 }

@@ -107,6 +107,12 @@ class DefaultController extends Controller
 
 
         $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+        $glry = array();
+        foreach($gallery->getMedias() as $m) {
+            if( $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr')->getStatus() == 1 && $m->getMedia()->getPublishedAt() <= new \DateTime()) {
+                $glry['medias'][] = $m;
+            }
+        }
 
 
         /////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +130,7 @@ class DefaultController extends Controller
             'featuredVideo'      => $featuredVideo,
             'festivalStartsAt'   => $homepage->getFestivalStartsAt(),
             'gallery'            => $gallery,
+            'glry'               => $glry,
             'filters'            => $filters
         );
     }

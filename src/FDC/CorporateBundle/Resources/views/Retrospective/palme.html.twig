@@ -5,44 +5,45 @@
 {% endblock bodyClass %}
 {% block body %}
     <section class="border-bottom  wysiwyg-article-02">
-    <div class="ajax-section">
-        <div class="contain-ajax">
-        {% if currentPage.image is defined and currentPage.image is not null %}
-        {% set mainTrans = currentPage.image.findTranslationByLocale(app.request.locale) %}
-        {% if mainTrans is null or mainTrans.file is null %}
-            {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
-        {% endif %}
-        {% set mainImage = mainTrans.file %}
-        <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %});">
-            <div class="vFlexAlign">
-                <div class="txts">
-                    <h1 class="title-3">
-                    {% if archives is not defined %}
-                        {{ 'header.nav.69editions.palme'|trans }}
-                    {% else %}
-                        {{ 'header.nav.archive'|trans }}
+        <div class="ajax-section">
+            <div class="contain-ajax">
+                {% if currentPage.image is defined and currentPage.image is not null %}
+                    {% set mainTrans = currentPage.image.findTranslationByLocale(app.request.locale) %}
+                    {% if mainTrans is null or mainTrans.file is null %}
+                        {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
                     {% endif %}
-                    </h1>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-            {% if archives is not defined %}
-            <nav class="navigation-sticky">
-                <ul>
-                    {% for page in pages %}
-                        {% if page.id != 3 %}
-                            <li class="{% if slug == page|trans_fallback('slug') %}active{% endif %}">
-                                <a href="{{ path('fdc_corporate_editions_palme', {'slug': page|trans_fallback('slug')}) }}">
-                                    {{ page|trans_fallback('title') }}
-                                </a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </nav>
-            {% endif %}
-            <div class="all-contain">
+                    {% set mainImage = mainTrans.file %}
+                    <div class="block-push block-push-top"
+                         style="background-image: url({% path mainImage, '1280x808' %});">
+                        <div class="vFlexAlign">
+                            <div class="txts">
+                                <h1 class="title-3">
+                                    {% if archives is not defined %}
+                                        {{ 'header.nav.69editions.palme'|trans }}
+                                    {% else %}
+                                        {{ 'header.nav.archive'|trans }}
+                                    {% endif %}
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if archives is not defined %}
+                    <nav class="navigation-sticky">
+                        <ul>
+                            {% for page in pages %}
+                                {% if page.id != 3 %}
+                                    <li class="{% if slug == page|trans_fallback('slug') %}active{% endif %}">
+                                        <a href="{{ path('fdc_corporate_editions_palme', {'slug': page|trans_fallback('slug')}) }}">
+                                            {{ page|trans_fallback('title') }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% endif %}
+                <div class="all-contain">
                     <div class="contain-title vFlexAlign block-01-s">
                         {{ currentPage|trans_fallback('chapo')|raw }}
                     </div>
@@ -93,36 +94,36 @@
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
                                 {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
                                     {% for film in widget.widgetMovie.films %}
-                                    <article class="block-movie-preview"
-                                             style="background-image: url('{% spaceless %}
-                                                 {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-                                                 film: film.film,
-                                                 film_format: '976x535',
-                                                 film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                                                 display_film_path: true
-                                                 }) %}
-                                             {% endspaceless %}')">
-                                        <div class="bck-hover">
-                                            <div class="wrapper-item">
-                                                <div class="poster">
-                                                    <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                                    film: film.film,
-                                                    film_format: '259x352',
-                                                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                                                    display_film_path: true
-                                                    }) %}"/>
-                                                </div>
-                                                <div class="infos">
+                                        <article class="block-movie-preview"
+                                                 style="background-image: url('{% spaceless %}
+                                                     {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                                     film: film.film,
+                                                     film_format: '976x535',
+                                                     film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                     display_film_path: true
+                                                     }) %}
+                                                 {% endspaceless %}')">
+                                            <div class="bck-hover">
+                                                <div class="wrapper-item">
+                                                    <div class="poster">
+                                                        <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                        film: film.film,
+                                                        film_format: '259x352',
+                                                        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                        display_film_path: true
+                                                        }) %}"/>
+                                                    </div>
+                                                    <div class="infos">
 
-                                                    <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
-                                                                class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                    <a href="#"><span class="names-a">
+                                                        <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
+                                                                    class="name-f">{{ film.film.titleVO }}</strong></a>
+                                                        <a href="#"><span class="names-a">
                                                             {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            {% set directorsName = '' %}
-                                                            {% for director in directors %}
-                                                                {{ directorsName ~ director.fullName }}
-                                                                {% if loop.index != directors|length %} - {% endif %}
-                                                            {% endfor %}
+                                                                {% set directorsName = '' %}
+                                                                {% for director in directors %}
+                                                                    {{ directorsName ~ director.fullName }}
+                                                                    {% if loop.index != directors|length %} - {% endif %}
+                                                                {% endfor %}
                                                             </span></a>
                                                         <span class="date">
                                                             {% set duration = [] %}
@@ -140,19 +141,19 @@
                                                                 {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
                                                             {% endif %}
                                                         </span>
-                                                    <p class="description">
-                                                        {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
-                                                            {{ film.film|trans_fallback('infoRestauration')|nl2br|raw }}
-                                                        {% else %}
-                                                            {{ film.film|trans_fallback('synopsis')|nl2br|raw }}
-                                                        {% endif %}
-                                                    </p>
-                                                    <strong class="name-f">{{ film.film.copyright }}</strong>
-                                                    <!--span class="names-a">Pour “Rebel Without a Cause” (Warner Bros).</span-->
+                                                        <p class="description">
+                                                            {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
+                                                                {{ film.film|trans_fallback('infoRestauration')|nl2br|raw }}
+                                                            {% else %}
+                                                                {{ film.film|trans_fallback('synopsis')|nl2br|raw }}
+                                                            {% endif %}
+                                                        </p>
+                                                        <strong class="name-f">{{ film.film.copyright }}</strong>
+                                                        <!--span class="names-a">Pour “Rebel Without a Cause” (Warner Bros).</span-->
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
+                                        </article>
                                     {% endfor %}
                                 {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}

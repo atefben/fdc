@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading article-single dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block bodyClass %}article-single dark retrospective retrospective-home restrospective-init not-mobile{% endblock %}
 
 {% block body %}
 <section class="s-slider-retrospective">
@@ -16,12 +16,12 @@
                 {% if profession %}
                     <strong class="title-14">{{ artist|profession_gender('profession') }}</strong>
                 {% endif %}
-                {% if artist.nationality %}
-                    <span class="city" {{ artist.nationality|content_lang('name') }}>
-                        {{ artist.nationality|trans_fallback('name') }}
-                        {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}
-                    </span>
-                {% endif %}
+                {#{% if artist.nationality %}#}
+                    {#<span class="city" {{ artist.nationality|content_lang('name') }}>#}
+                        {#{{ artist.nationality|trans_fallback('name') }}#}
+                        {#{% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}#}
+                    {#</span>#}
+                {#{% endif %}#}
 
                 <h1 class="title-15">{{ artist.fullName }}</h1>
             </div>
@@ -104,25 +104,27 @@
 
                 <p class="texte-01">{{ biography|raw }}</p>
 
-                <strong class="title-16">Principaux films</strong>
             </div> <!-- fin block 01 xs -->
             {% endif %}
+            <div class="block-01-xs">
+                <strong class="title-16">{{ 'juries.artiste.title.filmspresentes'|trans }}</strong>
+            </div>
             <div class="block-poster-01">
                 {% if artist.films|length > 0 %}
                     {% set countera = 0 %}
                     {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
-                        {% if countera == 0 %}
-                            <strong class="title-16">{{ 'juries.artiste.title.filmspresentes'|trans }}</strong>
-                            {% set countera = countera+1 %}
-                        {% endif %}
-                        <div class="item">
+                        {#{% if countera == 0 %}#}
+                            {#<strong class="title-16">{{ 'juries.artiste.title.filmspresentes'|trans }}</strong>#}
+                            {#{% set countera = countera+1 %}#}
+                        {#{% endif %}#}
+                        <div class="item" style="line-height: 18px;display: inline-block;min-height: 418px;vertical-align: bottom;width: 181px;">
                             {% if filmPerson.film.festival.id == festival %}
                             <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
                             {% endif %}
                                 {% set legacy = get_legacy_film_image(filmPerson.film) %}
                                 {% if legacy %}
                                     <img src="http://www.festival-cannes.fr/thumb.php?sourceDirectory=/assets/Image/Direct/&sourceFile={{ legacy['FICHIER'] }}&predefinedSize=fiche_film_header"
-                                         alt="{{ legacy['TITRE']?:'Affiche du film' }}" data-object-fit="cover">
+                                         alt="{{ legacy['TITRE']?:'Affiche du film' }}" data-object-fit="cover" style="width: 183px;height: 244px;object-fit: cover;">
                                 {% else %}
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                     film: filmPerson.film,
@@ -131,7 +133,8 @@
                                     alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
                                     'data-object-fit': 'cover'
                                     },
-                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                    corpo: 'true'
                                     }) %}
                                 {% endif %}
                             </a>
@@ -193,6 +196,37 @@
                 <div class="texts-clipboard"></div>
             </div>
         </div>
+        <div class="real block-02">
+            <h2 class="title">Réalisateur</h2>
+            <div id="slider-real" class="slider-03">
+                {% for director in directors %}
+                <div class="slide item">
+                    {% set directorImage = director|person_image_portait %}
+                    {% if directorImage %}
+                        <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}"
+                             data-object-fit="cover">
+                    {% else %}
+                        {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                        {% if media is empty %}
+                            {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                        {% endif %}
+                        {% if media is empty %}
+                            {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                        {% endif %}
+                        {% if media is not empty %}
+                            <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"
+                                 data-object-fit="cover">
+                        {% endif %}
+                    {% endif %}
+                    <a class="linkVid" href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}"></a>
+                    <div class="info-movie">
+                        <p>{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</p>
+                        <a class="director" href="#">{{ director|profession_gender('profession') }}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 </section>
@@ -204,4 +238,31 @@
     'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
 }))
 }}
+
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    }))
+    }}
+
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : ''
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : 'breadcrumb.la_selection'|trans,
+    "url"  : path('fdc_event_movie_selection')
+    },
+    ]
+    } %}
 {% endblock %}

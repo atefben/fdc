@@ -86,9 +86,31 @@ class SearchController extends Controller
             }
 
             if($data['photos'] || $data['videos'] || $data['audios']) {
-                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, 2) : false;
-                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, 2) : false;
-                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, 2) : false;
+
+                $i = 0;
+                if($data['photos'])
+                    $i += 1;
+                if($data['videos'])
+                    $i += 1;
+                if($data['audios'])
+                    $i += 1;
+
+                $displayNb = 4;
+                switch ($i) {
+                    case 1:
+                        $displayNb = 4;
+                        break;
+                    case 2:
+                        $displayNb = 3;
+                        break;
+                    case 3:
+                        $displayNb = 2;
+                        break;
+                }
+
+                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : false;
+                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, $displayNb) : false;
+                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, $displayNb) : false;
 
                 //merging medias (photos,videos,audios)
                 $mediaResults = array('items' => array(), 'count' => 0);
@@ -371,10 +393,7 @@ class SearchController extends Controller
      */
     public function searchAutocompleteAction($_locale, $searchTerm = null)
     {
-        if ($searchTerm === null) {
-            throw $this->createNotFoundException();
-        }
-
+        
         $repository = $this->get('base.search.repository');
 
         $finalQuery = new \Elastica\Query\BoolQuery();

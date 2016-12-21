@@ -41,6 +41,7 @@ class Media extends SonataBaseMedia
 
     private $thumbsGenerated = false;
     private $ignoreListener = false;
+    private $oldMediaPhoto;
 
     public function __construct()
     {
@@ -219,5 +220,24 @@ class Media extends SonataBaseMedia
         return $this;
     }
 
+    /**
+     * Set oldMediaPhoto
+     * @param string $oldMediaPhoto
+     * @return $this
+     */
+    public function setOldMediaPhoto($oldMediaPhoto)
+    {
+        $this->oldMediaPhoto = $oldMediaPhoto;
 
+        return $this;
+    }
+
+    /**
+     * Get oldMediaPhoto
+     * @return string
+     */
+    public function getOldMediaPhoto()
+    {
+        return $this->oldMediaPhoto;
+    }
 }

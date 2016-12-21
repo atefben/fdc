@@ -14,7 +14,7 @@
                     </div>
                     <div class="contain-txts">
                         <span class="title-type-media">{{ event.theme|trans_fallback('name') }}</span>
-                        <span class="title-dates">{{ event.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(event.publishedAt|date('H:i'), true, true) }}</span>
+                        <span class="title-dates">{{ event.publishedAt|date('Y') }}</span>
                         <span class="title-media">{{ event|trans_fallback('title') }}</span>
                     </div>
                 </a>

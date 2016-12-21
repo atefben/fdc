@@ -1,0 +1,5 @@
+services:
+    base.soif.doctrine_listner:
+        class: Base\SoifBundle\Listener\DoctrineListener
+        tags:
+            - { name: doctrine.event_listener, event: preRemove }

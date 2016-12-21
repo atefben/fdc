@@ -83,6 +83,12 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
     protected $corpoPalmeOr;
 
     /**
+     * @var string
+     * @ORM\Column(name="old_import_reference", type="string", length=255, nullable=true)
+     */
+    protected $oldImportReference;
+
+    /**
      * Get the class type in the Api
      *
      * @VirtualProperty
@@ -234,5 +240,28 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
     public function getCorpoPalmeOr()
     {
         return $this->corpoPalmeOr;
+    }
+
+    /**
+     * Set oldImportReference
+     *
+     * @param string $oldImportReference
+     * @return FDCPageLaSelectionCannesClassicsWidget
+     */
+    public function setOldImportReference($oldImportReference)
+    {
+        $this->oldImportReference = $oldImportReference;
+
+        return $this;
+    }
+
+    /**
+     * Get oldImportReference
+     *
+     * @return string 
+     */
+    public function getOldImportReference()
+    {
+        return $this->oldImportReference;
     }
 }

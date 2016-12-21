@@ -48,6 +48,8 @@
     img, .contain-img{
       width: 163px;
       object-fit: cover;
+      min-height: 220px;
+      max-height: 220px;
     }
   }
 

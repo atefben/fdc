@@ -7,14 +7,14 @@
     </div>
     {% endif %}
     {% for award_association in award_associations['camerador'] %}
-        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' %}
+        {% include 'FDCCorporateBundle:Palmares:widgets/movie.html.twig' with({'camera' : true }) %}
     {% endfor %}
 
 
     {% if all is not defined %}
         {% if displayOnylCameraDorWinner is not defined or displayOnylCameraDorWinner == false %}
             <div class="contain-title vFlexAlign border-bottom border-top">
-                <h1 class="title-01">{{ 'palmares.camerador.title.lesfilmsenlice'|trans }}</h1>
+                <h1 class="title-01">{{ 'palmares.camerador.title.lesfilmsenlice'|trans|raw }}</h1>
             </div>
         {% endif %}
         {% for movie in award_associations['competition'] %}

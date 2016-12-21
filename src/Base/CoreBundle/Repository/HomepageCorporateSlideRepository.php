@@ -16,12 +16,15 @@ use JMS\DiExtraBundle\Annotation as DI;
 class HomepageCorporateSlideRepository extends EntityRepository
 {
 
-    public function getAllSlide($locale)
+    public function getAllSlide($locale,$dateTime)
     {
         $qb = $this
             ->createQueryBuilder('hcs')
             ->leftJoin('hcs.statement', 's')
             ->leftJoin('hcs.info', 'i')
+
+            ->leftJoin('i.sites', 'iss')
+            ->leftJoin('s.sites', 'ss')
 
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 's1', 'WITH', 's1.id = s.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 's2', 'WITH', 's2.id = s.id')
@@ -43,26 +46,26 @@ class HomepageCorporateSlideRepository extends EntityRepository
         ;
         $qb
             ->andWhere(
-                 '(s1t.locale = :locale AND s1t.isPublishedOnFDCEvent = 1) OR
-                 (s2t.locale = :locale AND s2t.isPublishedOnFDCEvent = 1) OR
-                 (s3t.locale = :locale AND s3t.isPublishedOnFDCEvent = 1) OR
-                 (s4t.locale = :locale AND s4t.isPublishedOnFDCEvent = 1) OR
-                 (i1t.locale = :locale AND i1t.isPublishedOnFDCEvent = 1) OR
-                 (i2t.locale = :locale AND i2t.isPublishedOnFDCEvent = 1) OR
-                 (i3t.locale = :locale AND i3t.isPublishedOnFDCEvent = 1) OR
-                 (i4t.locale = :locale AND i4t.isPublishedOnFDCEvent = 1)'
+                 '(s1t.locale = :locale AND s1t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (s2t.locale = :locale AND s2t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (s3t.locale = :locale AND s3t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (s4t.locale = :locale AND s4t.isPublishedOnFDCEvent = 1 AND ss.id = :site3 ) OR
+                 (i1t.locale = :locale AND i1t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 ) OR
+                 (i2t.locale = :locale AND i2t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 ) OR
+                 (i3t.locale = :locale AND i3t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 ) OR
+                 (i4t.locale = :locale AND i4t.isPublishedOnFDCEvent = 1 AND iss.id = :site3 )'
             )
         ;
 
-        /*$qb
+         $qb
             ->andWhere(
-                '(n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime) OR
-                 (s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
+                '(s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
                  (i.publishedAt <= :datetime) AND (i.publishEndedAt IS NULL OR i.publishEndedAt >= :datetime)'
-            )*/
-            $qb->orderBy('hcs.position')
+            )
+            ->orderBy('hcs.position')
             ->setParameter('locale', $locale)
-            //->setParameter('datetime', $dateTime)
+            ->setParameter('site3', 3)
+            ->setParameter('datetime', $dateTime)
         ;
 
         $qb = $qb

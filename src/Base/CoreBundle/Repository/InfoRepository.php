@@ -124,6 +124,12 @@ class InfoRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $locale
+     * @param FilmFestival $festival
+     * @param \DateTime $dateTime
+     * @return array
+     */
     public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime)
     {
         $qb = $this
@@ -469,6 +475,63 @@ class InfoRepository extends EntityRepository
         $qb = $this->addMasterQueries($qb, 'n', $festival);
         $qb = $qb
             ->setParameter('site', 'site-press')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $startsAt
+     * @param $endsAt
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function getInfoRetrospective($locale, $festival, $startsAt, $endsAt )
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('s.slug = :site')
+            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
+        ;
+
+        $qb = $qb
+            ->andWhere(
+                '(nat.locale = :locale_fr AND nat.status = :status)
+                OR (nit.locale = :locale_fr AND nit.status = :status)
+                OR (naat.locale = :locale_fr AND naat.status = :status)
+                OR (nvt.locale = :locale_fr AND nvt.status = :status)')
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->andWhere(
+                    '(nat.locale = :locale AND nat.status = :status_translated)
+                    OR (nit.locale = :locale AND nit.status = :status_translated)
+                    OR (naat.locale = :locale AND naat.status = :status_translated)
+                    OR (nvt.locale = :locale AND nvt.status = :status_translated)')
+                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        $qb = $this->addMasterQueries($qb, 'n', $festival);
+        $qb = $qb
+            ->setParameter('startsAt', $startsAt)
+            ->setParameter('endsAt', $endsAt)
+            ->setParameter('site', 'site-institutionnel')
             ->getQuery()
             ->getResult()
         ;

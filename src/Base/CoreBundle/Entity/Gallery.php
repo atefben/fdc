@@ -75,6 +75,7 @@ class Gallery implements TranslateMainInterface
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateHomeCorpo;
+
     /**
      * ArrayCollection
      */

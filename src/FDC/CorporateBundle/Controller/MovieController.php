@@ -185,6 +185,7 @@ class MovieController extends Controller
             'nextProjectionDate' => $nextProjectionDate,
             'festivals'          => $festivals,
         );
+
     }
 
     protected function isPublished($article, $locale)
@@ -267,8 +268,7 @@ class MovieController extends Controller
                 $next = $selectionTabs[0];
             }
 
-            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
-
+            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
@@ -354,7 +354,7 @@ class MovieController extends Controller
         if ($next === true) {
             $filters = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true)
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
             ;
             if ($filters) {
                 $next = $filters[0];
@@ -372,11 +372,10 @@ class MovieController extends Controller
             ->getFilmsBySelectionSection($festival, $locale, $page->getSelectionSection()->getId())
         ;
 
-
-
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
+
 
         return $this->render('FDCCorporateBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,
@@ -393,17 +392,17 @@ class MovieController extends Controller
     /**
      * @Route("/69-editions/retrospective/{year}/selection/cannes-classics/{slug}")
      * @Template("FDCCorporateBundle:Movie:classics.html.twig")
-     * @param $year
+     * @param Request $request
      * @param $slug
      * @return array
      */
-    public function classicsAction(Request $request, $slug)
+    public function classicsAction(Request $request, $slug, $year)
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug);
+        $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug, $this->getFestival($year));
 
         if ($classic == null) {
             throw new NotFoundHttpException('Cannes Classic not found');
@@ -417,7 +416,7 @@ class MovieController extends Controller
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
+        $filters = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);

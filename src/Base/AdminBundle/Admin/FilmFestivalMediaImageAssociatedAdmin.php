@@ -55,6 +55,7 @@ class FilmFestivalMediaImageAssociatedAdmin extends Admin
                 'btn_delete' => false,
                 'required' => false
             ))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 

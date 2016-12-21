@@ -743,10 +743,10 @@
 
   }
 
-  .communiques {
+  .wrapper > .communiques {
     overflow: hidden;
     clear: both;
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 0px solid #e3e3e3;
 
     .grid-container {
       overflow: hidden;
@@ -862,7 +862,7 @@
           float: left;
           position: relative;
           width: 60px;
-          z-index: 5;
+          z-index: 4;
 
           .empty {
             border-bottom: 1px solid #e5e5e5;
@@ -1004,7 +1004,7 @@
         line-height: 38px;
         z-index: 3;
         background-color: #fff;
-        width: 55%;
+        width: 87%;
         text-align: left;
         padding-left: 54px;
 
@@ -1217,8 +1217,11 @@
           }
           @include breakpoint(1279px) {
             span {
-              display: none;
+              font-size: 9px;
             }
+          }
+          @include breakpoint(1279px) {
+            margin-right:25px;
           }
         }
 
@@ -1373,6 +1376,10 @@
     overflow: hidden;
     padding: 40px 0;
 
+    & + .communiques {
+      border-top: 1px solid #e3e3e3;
+    }
+
     .container {
       width: 885px;
     }
@@ -1391,7 +1398,7 @@
 
       .button {
         border-color: $gold;
-        border-right: 2px solid $gold;
+        border-right: 1px solid $gold;
         position: relative;
       }
     }
@@ -1554,7 +1561,7 @@
       border-color: #b0b0b0;
       color: #b0b0b0;
       pointer-events: none;
-      border-right: 2px solid #b0b0b0;
+      border-right: 1px solid #b0b0b0;
     }
 
     .fc-event.private {
@@ -2136,7 +2143,7 @@
       font-size: 0.750rem;
       line-height: 1.5em;
       margin: 0 auto;
-      width: 85% !important;
+      width: 87% !important;
 
       a {
         color: $gold;
@@ -2146,6 +2153,7 @@
         color: #adadad;
         margin-right: 10px;
         display: inline-block;
+        margin: 0 2px 0 0;
       }
 
       .nom-item {

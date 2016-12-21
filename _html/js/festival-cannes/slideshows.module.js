@@ -136,10 +136,16 @@ $('body').on('click', '.chocolat-pagination', function() {
 });
 
 $('body').on('click', '.chocolat-bottom .share', function() {
-  $('.chocolat-bottom .buttons').toggleClass('show');
+
+  if(!$(this).hasClass('download')){
+    $('.chocolat-bottom .buttons').toggleClass('show');
+  }else{
+    $('.chocolat-bottom .buttons').removeClass('show');
+  }
+
 });
 
-// zoom
+
 $('body').on('click', '.chocolat-image', function() {
   var $that = $(this);
 
@@ -152,7 +158,7 @@ $('body').on('click', '.chocolat-image', function() {
     if($('.lock').length){
       $('<a href="#" class="share cadenas"><i class="icon icon_cadenas"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
     }else{
-      $('<a href="#" class="share download"><i class="icon icon_telecharger"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
+      $('<a href="'+$that.attr('href')+'" class="share download"><i class="icon icon_telecharger"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
     }
   }else{
     $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');

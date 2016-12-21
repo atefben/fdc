@@ -366,6 +366,25 @@ class FilmJury implements TranslateMainInterface
      */
     public function getMedias()
     {
-        return $this->medias;
+        $medias = $this->medias;
+
+        foreach ($this->getPerson()->getDuplicates() as $duplicate) {
+            if ($duplicate instanceof FilmPerson) {
+                foreach ($duplicate->getJuries() as $jury) {
+                    if ($jury instanceof FilmJury) {
+                        if (!$jury->getType() || !$this->type || !$jury->getFestival() || !$this->festival) {
+                            continue;
+                        }
+                        if ($jury->getType()->getId() == $this->type->getId() && $jury->getFestival()->getId() == $this->festival->getId()) {
+                            foreach ($jury->getMedias() as $media) {
+                                $medias->add($media);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $medias;
     }
 }

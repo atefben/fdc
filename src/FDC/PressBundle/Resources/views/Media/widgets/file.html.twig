@@ -12,7 +12,7 @@
             {{ widget|trans_fallback('secondBtnLabel') }}
         </a>
         {% else %}
-        <a href="{% if widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) %}{% path widget.file, 'reference' %}{% endif %}" class="button large" style="border-bottom: 1px solid #b0b0b0;" target="_blank" download>
+        <a href="{% if widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) %}{% path widget.file, 'reference' %}{% endif %}" class="button large" target="_blank" download>
             <i class="icon icon_{{ widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'telecharger' : 'cadenas' }}"></i>
             {{ widget|trans_fallback('btnLabel') }}
         </a>

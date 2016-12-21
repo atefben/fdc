@@ -372,7 +372,7 @@ class MediaVideo extends Media
      * Set displayedHomeCorpo
      *
      * @param boolean $displayedHomeCorpo
-     * @return MediaVideo
+     * @return $this
      */
     public function setDisplayedHomeCorpo($displayedHomeCorpo)
     {

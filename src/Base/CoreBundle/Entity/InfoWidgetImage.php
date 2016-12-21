@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Groups;
 class InfoWidgetImage extends InfoWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery")
+     * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
      * @Groups({"news_show"})
      */
     private $gallery;

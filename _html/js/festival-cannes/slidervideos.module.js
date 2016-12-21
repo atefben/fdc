@@ -29,13 +29,22 @@ $(document).ready(function() {
         }
       },
       onInitialized: function() {
-        var m = ($(window).width() - $('.container').width()) / 2;
-        $('#slider-videos .owl-stage').css({ 'margin-left': m });
+
+        if($('body').hasClass('tablette')){
+          $('#slider-videos .owl-stage').css({ 'margin-left': "26px" });
+        }else{
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-videos .owl-stage').css({ 'margin-left': m });
+        }
         setActiveVideos();
       },
       onResized: function() {
-        var m = ($(window).width() - $('.container').width()) / 2;
-        $('#slider-videos .owl-stage').css({ 'margin-left': m });
+        if($('body').hasClass('tablette')){
+          $('#slider-videos .owl-stage').css({ 'margin-left': "26px" });
+        }else {
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-videos .owl-stage').css({'margin-left': m});
+        }
       },
       onTranslated: function() {
         setActiveVideos();

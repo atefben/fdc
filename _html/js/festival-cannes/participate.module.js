@@ -2,9 +2,7 @@
 // =========================
 $(document).ready(function() {
 
-
   if($('.participate').length) {
-
       //open issue
     if(!$('.content-contractor').length){
       $(".contain-section h3, .contain-section .accordion").click(function(){

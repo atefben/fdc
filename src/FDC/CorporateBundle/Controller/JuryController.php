@@ -34,11 +34,23 @@ class JuryController extends Controller
             return $waitingPage;
         }
 
+        $juryTypes = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmJuryType')
+            ->getJuryTypeByFestival($festival);
+
+
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageJury')
-            ->getPages($locale)
+            ->getPages($locale, $festival)
         ;
+
+        $pageToDisplay = array();
+        foreach($juryTypes as $key => $juryType) {
+            if($juryType->getId() == $pages[$key]->getJuryType()->getId())
+              $pageToDisplay[] = $pages[$key];
+        }
 
         if ($slug === null) {
             foreach ($pages as $page) {
@@ -124,9 +136,11 @@ class JuryController extends Controller
             }
         }
 
+
+
         return array(
             'page'      => $page,
-            'pages'     => $pages,
+            'pages'     => $pageToDisplay,
             'next'      => is_object($next) ? $next : false,
             'members'   => $members,
             'president' => $president,

@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmJuryType
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmJuryTypeRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmJuryType implements TranslateMainInterface

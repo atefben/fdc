@@ -16,7 +16,7 @@
                     <h3>{{ homepage|trans_fallback('primaryPushTitle1')|raw }}</h3>
                 </div>
             </div>
-            <a href="{{ homepage|trans_fallback('primaryPushUrl1') }}"></a>
+            <a {{ homepage|trans_fallback('primaryPushUrl1')|external_link }} href="{{ homepage|trans_fallback('primaryPushUrl1') }}"></a>
         </div>
 
         <div class="push">
@@ -34,7 +34,7 @@
                     <h3>{{ homepage|trans_fallback('primaryPushTitle2')|raw }}</h3>
                 </div>
             </div>
-            <a href="{{ homepage|trans_fallback('primaryPushUrl2') }}"></a>
+            <a {{ homepage|trans_fallback('primaryPushUrl2')|external_link }} href="{{ homepage|trans_fallback('primaryPushUrl2') }}"></a>
         </div>
 
         <div class="push">
@@ -52,7 +52,7 @@
                     <h3>{{ homepage|trans_fallback('primaryPushTitle3')|raw }}</h3>
                 </div>
             </div>
-            <a href="{{ homepage|trans_fallback('primaryPushUrl3') }}"></a>
+            <a {{ homepage|trans_fallback('primaryPushUrl3')|external_link }} href="{{ homepage|trans_fallback('primaryPushUrl3') }}"></a>
         </div>
 
     </div>

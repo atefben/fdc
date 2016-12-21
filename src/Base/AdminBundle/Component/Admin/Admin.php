@@ -164,7 +164,7 @@ class Admin extends BaseAdmin
         return $mapper
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null || $value['value'] === '') {
                         return;
                     }
                     $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);

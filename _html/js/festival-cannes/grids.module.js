@@ -12,7 +12,10 @@ Isotope.Item.prototype.hide = function () {
   $(this.element).addClass('isotope-hidden');
 };
 
+
+
 function resizeGrid() {
+
   if ("matchMedia" in window) {
     if($('#gridAudios').length) {
       setGrid(false, $('#gridAudios'), true);
@@ -47,6 +50,12 @@ function resizeGrid() {
 }
 
 function setGrid(grid, dom, init){
+  $("img.lazy").lazyload({
+    load : function()
+    {
+      $(this).parent().removeClass('notloaded');
+    }
+  });
   var $img            = $(dom).find('.item img'),
       pourcentage     = 0.30,
       nbImgAAgrandir  = $img.length * pourcentage,
@@ -59,6 +68,7 @@ function setGrid(grid, dom, init){
       nbImage         = $img.length;
 
   function buildGrid() {
+
     $($img).closest('div.item').removeClass('w2');
 
     if (window.matchMedia("(max-width: 1279px)").matches) {
@@ -76,12 +86,10 @@ function setGrid(grid, dom, init){
         i++;
       }
 
-      console.log('1');
 
 
 
       if($('#gridWebtv').length > 0 ){
-        console.log('ok');
 
         $.each($('.item'), function (i, e) {
 
@@ -103,23 +111,19 @@ function setGrid(grid, dom, init){
       
       $(dom).find('div.item:not(.w2)').each(function() {
 
-        console.log('2');
 
         if(typeof $(this).find('.info p').data('title') != 'undefined') {
           $(this).find('.info p').text($(this).find('.info p').data('title').trunc(20,true));
 
-          console.log('3');
         }
 
       });
 
       $(dom).find('div.item.w2').each(function() {
 
-        console.log('4');
 
         if(typeof $(this).find('.info p').data('title') != 'undefined') {
 
-          console.log('5');
 
           $(this).find('.info p').text($(this).find('.info p').data('title').trunc(50,true));
         }
@@ -127,7 +131,7 @@ function setGrid(grid, dom, init){
 
       if($('#gridPhotos').length > 0) {
 
-        console.log('6');
+
 
         $('#gridPhotos div.item:not(.w2)').each(function() {
           if(typeof $(this).find('.info .category').data('category') != 'undefined') {
@@ -144,7 +148,7 @@ function setGrid(grid, dom, init){
       }
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
 
-      console.log('7');
+
 
       while (i < $img.length) {
         if (j < 10) {
@@ -189,7 +193,7 @@ function setGrid(grid, dom, init){
 
 
       if($('#gridWebtv').length > 0 ){
-        console.log('ok');
+
 
         $.each($('.item'), function (i, e) {
 
@@ -210,7 +214,7 @@ function setGrid(grid, dom, init){
 
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
 
-      console.log('8');
+
 
       while (i < $img.length) {
         if (j < 30) {
@@ -253,7 +257,6 @@ function setGrid(grid, dom, init){
       }
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
 
-      console.log('9');
 
       while (i < $img.length) {
         if (j < 15) {
@@ -282,7 +285,6 @@ function setGrid(grid, dom, init){
 
       if($('#gridPhotos').length > 0) {
 
-        console.log('10');
 
         $('#gridPhotos div.item:not(.w2)').each(function() {
           if(typeof $(this).find('.info .category').data('category') != 'undefined') {
@@ -315,9 +317,17 @@ function setGrid(grid, dom, init){
   }
 
   buildGrid();
+
 }
 
 function setImages(grid, dom, init) {
+  $("img.lazy").lazyload({
+    load : function()
+    {
+      $(this).parent().removeClass('notloaded');
+    }
+  });
+
   var $img            = $(dom).find('.item:not(.portrait) img'),
       pourcentage     = 0.50,
       nbImgAAgrandir  = $img.length * pourcentage,
@@ -388,8 +398,20 @@ $(document).ready(function () {
           }
         });
 
-        $grid.isotope('layout');
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 250);
+        });
       });
+
     }
 
     if($('#gridChannels').length) {
@@ -406,6 +428,19 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
+
       });
     }
 
@@ -478,6 +513,18 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
 
         if($('#audio-player-popin').length > 0) {
           $('body').on('click', '#gridAudios .item', function(e) {
@@ -572,7 +619,18 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
-
+        window.setTimeout(function() {
+          $grid.isotope('layout');
+        }, 1000);
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
         $('body').on('click', '#gridVideos .item', function(e) {
           var $popinVideo = $('.popin-video'),
               vid         = $(e.target).data('vid'),
@@ -664,6 +722,15 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
+        var timer;
+        $(window).scroll(function() {
+          if(timer) {
+            window.clearTimeout(timer);
+          }
+          timer = window.setTimeout(function() {
+            $grid.isotope('layout');
+          }, 100);
+        });
       });
 
       $('.read-more').on('click', function (e) {
@@ -784,6 +851,15 @@ $(document).ready(function () {
       if($('#gridPhotos').length > 0 && $('.all-photos').length > 0) {
         initSlideshows();
       }
+      $("img.lazy").trigger('appear');
+      $("img.lazy").lazyload({
+        load : function()
+        {
+          $(this).parent().removeClass('notloaded');
+        }
+      });
+      $grid.isotope('layout');
+      console.log('filter');
     });
   }
 

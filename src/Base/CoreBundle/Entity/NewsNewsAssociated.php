@@ -84,7 +84,7 @@ class NewsNewsAssociated
      * Set news
      *
      * @param \Base\CoreBundle\Entity\News $news
-     * @return NewsAssociatedNews
+     * @return $this
      */
     public function setNews(\Base\CoreBundle\Entity\News $news = null)
     {
@@ -107,7 +107,7 @@ class NewsNewsAssociated
      * Set association
      *
      * @param \Base\CoreBundle\Entity\News $association
-     * @return NewsNewsAssociated
+     * @return $this
      */
     public function setAssociation(\Base\CoreBundle\Entity\News $association = null)
     {

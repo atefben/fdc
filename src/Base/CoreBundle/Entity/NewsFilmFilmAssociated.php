@@ -87,7 +87,7 @@ class NewsFilmFilmAssociated
      * Set news
      *
      * @param \Base\CoreBundle\Entity\News $news
-     * @return NewsAssociatedNews
+     * @return $this
      */
     public function setNews(\Base\CoreBundle\Entity\News $news = null)
     {
@@ -110,7 +110,7 @@ class NewsFilmFilmAssociated
      * Set association
      *
      * @param \Base\CoreBundle\Entity\FilmFilm $association
-     * @return NewsFilmFilmAssociated
+     * @return $this
      */
     public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
     {

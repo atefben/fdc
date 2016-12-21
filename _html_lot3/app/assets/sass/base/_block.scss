@@ -851,6 +851,14 @@
 
   }
 
+  a {
+    text-align: center;
+
+    .name-f {
+      display: block;
+    }
+  }
+
   .name-f {
     color: #fff;
     font-size: .875rem; //14px
@@ -1146,6 +1154,10 @@
 
     .ie & {
       padding-top: 0px !important;
+    }
+
+    br {
+      display: none;
     }
   }
 
@@ -2013,25 +2025,37 @@
   }
 
   ul, p {
-    color: #666666;
-    margin-bottom: 42px;
-    font-size: .875rem;
-    line-height: 20px;
+    font-size: .85rem;
+    line-height: 1.8em;
+    margin-bottom: 30px;
+    color: #000 !important;
   }
 
-  .bold-1 {
-    line-height: 20px;
-    font-size: .875rem
+  .bold-1, h3 {
+    font-size: .85rem;
+    line-height: 1.6em;
+    margin-bottom: 30px;
+    font-family: $CamphorBold;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+    color: #000;
+  }
+
+  .button {
+    border-color: $gold;
+    margin-bottom: 20px;
   }
 
   .item {
     display: inline-block;
-    width: 247px;
+    width: 277px;
     vertical-align: top;
   }
 
   .i-1 {
-    margin-right: 160px;
+    margin-right: 105px;
   }
 }
 
@@ -2130,9 +2154,9 @@
   a.button {
     height: 50px;
     line-height: 50px;
-    width: 178px;
+    width: auto;
     text-align: center;
-    padding: 0px;
+    padding: 0px 21px;
   }
 
   .title-25 {

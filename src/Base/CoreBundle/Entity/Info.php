@@ -49,7 +49,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="Theme")
+     * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @Groups({"home", "news_list", "search", "news_show"})
      */
     private $theme;
@@ -420,7 +420,7 @@ abstract class Info implements TranslateMainInterface
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return InfoArticleTranslation
+     * @return $this
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {
