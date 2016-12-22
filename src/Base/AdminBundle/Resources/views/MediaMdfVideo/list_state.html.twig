@@ -1,0 +1,23 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block field %}
+    <div>
+        {% for translationLocale in object.translations %}
+            <div>
+                {% if translationLocale is not null %}
+                    {{ translationLocale.locale|upper }} :
+                    {% if  translationLocale.jobMp4State == 2  %}
+                        {{ 'form.encoding_state.error'|trans }}
+                    {% elseif  translationLocale.jobMp4State == 1  %}
+                        {{ 'form.encoding_state.in_progress'|trans }}
+                    {% elseif  translationLocale.jobMp4State == 3 %}
+                        {{ 'form.encoding_state.ready'|trans }}{% if translationLocale.jobWebmState != 3 %} (WEBM en cours){% endif %}
+                    {% else %}
+                        n/a
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

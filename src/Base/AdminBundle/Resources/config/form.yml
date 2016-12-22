@@ -566,7 +566,7 @@ services:
         tags:
             - { name: form.type, alias: 'service_widget_product_type'}
         calls:
-            - ['setGalleryAdmin', ['@base.admin.gallery']]
+            - ['setGalleryAdmin', ['@base.admin.mdf_gallery']]
             - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]
 
     base.admin.form.home_slider_top_type:

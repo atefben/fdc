@@ -2,8 +2,8 @@
 
 namespace FDC\MarcheDuFilmBundle\Form\Type;
 
-use Base\AdminBundle\Admin\GalleryAdmin;
-use Base\AdminBundle\Admin\MediaImageAdmin;
+use Base\AdminBundle\Admin\GalleryMdfAdmin;
+use Base\AdminBundle\Admin\MediaMdfImageAdmin;
 use Base\AdminBundle\Admin\ServiceWidgetProductAdmin;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -28,7 +28,7 @@ class ServiceWidgetProductType extends ServiceWidgetType
     private $serviceWidgetProductAdmin;
 
     /**
-     * @var GalleryAdmin
+     * @var GalleryMdfAdmin
      */
     private $galleryAdmin;
 

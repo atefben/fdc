@@ -3,8 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\Gallery;
-use Base\CoreBundle\Entity\MediaImage;
+use FDC\MarcheDuFilmBundle\Entity\GalleryMdf;
+use FDC\MarcheDuFilmBundle\Entity\MediaMdfImage;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,8 +20,8 @@ class ServiceWidgetProduct extends ServiceWidget
     use Translatable;
 
     /**
-     * @var Gallery
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery", cascade={"all"})
+     * @var GalleryMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\GalleryMdf", cascade={"all"})
      */
     private $gallery;
 
@@ -57,10 +57,10 @@ class ServiceWidgetProduct extends ServiceWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @param \FDC\MarcheDuFilmBundle\Entity\GalleryMdf $gallery
      * @return ServiceWidgetProduct
      */
-    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    public function setGallery(\FDC\MarcheDuFilmBundle\Entity\GalleryMdf $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -70,7 +70,7 @@ class ServiceWidgetProduct extends ServiceWidget
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\Gallery 
+     * @return \FDC\MarcheDuFilmBundle\Entity\GalleryMdf 
      */
     public function getGallery()
     {
