@@ -36,7 +36,7 @@ class MediaMdfAudio extends MediaMdf implements RoutedItemInterface
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="mediaAudio", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="MediaMdfAudioFilmFilmAssociated", mappedBy="mediaAudio", cascade={"all"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */

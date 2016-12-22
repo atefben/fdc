@@ -570,9 +570,13 @@ services:
             - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]
 
     base.admin.form.home_slider_top_type:
+        scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderTopType
         tags:
             - { name: form.type, alias: 'home_slider_top_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_slider_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
     base.admin.form.home_slider_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderType

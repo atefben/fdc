@@ -1676,3 +1676,11 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated, BaseAdminBundle:MediaMdfFilmProjectionAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfFilmProjectionAssociated, show_in_dashboard: false}
+
+    base.admin.home_slider_top_dummy:
+        class: Base\AdminBundle\Admin\HomeSliderTopDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HomeSliderTop, BaseAdminBundle:HomeSliderTopDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Slider Top, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
