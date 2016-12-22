@@ -17,9 +17,10 @@ class ContentTemplateController extends Controller
 
         $titleHeader = $contentTemplateManager->getTitleHeaderContent(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
         $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
 
         $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets);
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets);
 
         return $this->render('FDCMarcheDuFilmBundle:contentTemplate:editionPresentation.html.twig', array(
             'titleHeader' => $titleHeader,

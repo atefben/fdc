@@ -93,4 +93,9 @@ abstract class MdfContentTemplateWidget
     {
         return $this instanceof MdfContentTemplateWidgetText;
     }
+
+    public function isWidgetImage()
+    {
+        return $this instanceof MdfContentTemplateWidgetImage;
+    }
 }

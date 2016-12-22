@@ -2,15 +2,13 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Doctrine\Common\Collections\ArrayCollection;
 use FDC\MarcheDuFilmBundle\Entity\MediaMdf;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MdfContentTemplateWidgetImage
  * @ORM\Table(name="mdf_content_template_widget_image")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateWidgetImageRepository")
  */
 class MdfContentTemplateWidgetImage extends MdfContentTemplateWidget
 {

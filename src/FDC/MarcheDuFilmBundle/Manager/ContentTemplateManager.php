@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -30,5 +31,11 @@ class ContentTemplateManager
         return $this->em
             ->getRepository(MdfContentTemplateWidgetTextTranslation::class)
             ->getTextWidgetsByLocaleAndPageType($this->requestStack->getMasterRequest()->get('_locale'), $pageType);
+    }
+
+    public function getContentTemplateImageWidgets($pageType) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetImage::class)
+            ->getImageWidgetsByPageType($pageType);
     }
 }
