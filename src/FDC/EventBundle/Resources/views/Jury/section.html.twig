@@ -1,5 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventBundle::layout.html.twig' %}
+{% import 'BaseCoreBundle:Macro/Person:image.html.twig' as personMacro %}
 
 {% block body %}
 
@@ -27,30 +28,17 @@
                 <section class="categorie-items contain-jury">
                     {% if president %}
                         <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
-                            {% if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') %}
-                                <div class="photo-jury"
-                                     style="background-image:url({% path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' %})">
-                                    <p class="caption" id="captionJuryCopyright" >{{ '© ' ~  president['jury'].person.presidentJuryCredits }}</p>
-                                </div>
-                            {% else %}
-                                {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                                {% if media is empty %}
-                                    {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                            {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
+                                {% set media = president['jury'].person.presidentJuryImage|trans_fallback('file') %}
+                            {%- else -%}
+                                {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
+                            {%- endif -%}
+                            <div class="photo-jury" style="background-image:url('{% path media, '976x535' %}')">
+                                {% if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') %}
+                                    <p class="caption"
+                                       id="captionJuryCopyright">{{ '© ' ~  president['jury'].person.presidentJuryCredits }}</p>
                                 {% endif %}
-                                {% if media is empty %}
-                                    {% set photo = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                                {% endif %}
-
-                                {% if media is not empty %}
-                                    <div class="photo-jury"
-                                        style="background-image:url({% path media, '976x535' %})">
-                                    </div>
-                                {% else %}
-                                    <div class="photo-jury"
-                                         style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');">
-                                    </div>
-                                {% endif %}
-                            {% endif %}
+                            </div>
                         </a>
                         <div class="contain-descript">
                             <h3 class="descript-title jury-president-color">
@@ -63,7 +51,7 @@
                             <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 <h2 class="descript-name">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h2>
                             </a>
-                            <span class="descript-rank">{{ president['jury'].person|profession_gender('profession')   }} </span>
+                            <span class="descript-rank">{{ president['jury'].person|profession_gender('profession') }} </span>
                             <p> {{ president['jury'].person|trans_fallback('biography') }}</p>
                         </div>
                     {% endif %}
@@ -72,13 +60,13 @@
                     <h1 class="title-list-cat title">
                         {% if page.id == admin_fdc_page_jury_certain_regard_id %}
                             {{ 'juries.role.title.membresdujury.regard'|trans }}
-                        {%  elseif page.id == admin_fdc_page_jury_camera_dor_id %}
+                        {% elseif page.id == admin_fdc_page_jury_camera_dor_id %}
                             {{ 'juries.role.title.membresdujury.camera'|trans }}
-                        {%  elseif page.id == admin_fdc_page_jury_long_metrages_id %}
+                        {% elseif page.id == admin_fdc_page_jury_long_metrages_id %}
                             {{ 'juries.role.title.membresdujury.long'|trans }}
-                        {%  elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
+                        {% elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
                             {{ 'juries.role.title.membresdujury.court'|trans }}
-                        {%  endif %}
+                        {% endif %}
                     </h1>
                     <div id="gridJurys" class="grid-wrapper">
                         <div class="grid-sizer"></div>
@@ -86,13 +74,13 @@
                             <div class="jury-box item">
                                 <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
                                     <div class="image">
-                                        {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
-                                            {% if artistImage is not empty %}
-                                                 <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
-                                            {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
-                                            {% endif %}
-                                        {#{% endif %}#}
+                                        {% set artistImage = jury_page_media(member['jury'], app.request.locale, festival) %}
+                                        {% if artistImage is not empty %}
+                                            <img src="{% path artistImage, '384x485' %}"
+                                                 alt="{{ member['jury'].person.fullName }}"/>
+                                        {% else %}
+                                            <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
+                                        {% endif %}
                                     </div>
                                     <div class="legend">
                                         <span class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
@@ -114,7 +102,8 @@
                     <div class="bandeau-list-img  bandeau-list-footer vCenterKid"
                          style="background-image:url({% path next.image|trans_fallback('file'), '976x535' %})">
                         <h2 class="title title-list-header">{{ (next|trans_fallback('overrideName'))?:(next.juryType|trans_fallback('name')) }}</h2>
-                        <a href="{{ path('fdc_event_jury_get', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
+                        <a href="{{ path('fdc_event_jury_get', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"
+                           class="bandeau-lien">
                             <i class="icon icon_fleche-right"></i>
                             {{ 'juries.btn.decouvrirrubrique'|trans }}
                         </a>

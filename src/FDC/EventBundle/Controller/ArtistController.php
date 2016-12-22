@@ -2,9 +2,9 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmPerson;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -14,25 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ArtistController extends Controller
 {
-    /**
-     * Sort objects by firstname char
-     *
-     * @param $a
-     * @param $b
-     * @return int
-     */
-    private function sortByFirstname($a, $b)
-    {
-        if (ord($a->getFirstname()[0]) == ord($b->getFirstname()[0])) {
-            return 0;
-        }
-
-        return (ord($a->getFirstname()[0]) < ord($b->getFirstname()[0])) ? -1 : 1;
-    }
 
     /**
      * @Route("/{slug}")
-     * @Template("FDCEventBundle:Artist:page.html.twig")
      * @param  string $slug
      * @return Response
      */
@@ -46,28 +30,38 @@ class ArtistController extends Controller
             ->getRepository('BaseCoreBundle:FilmPerson')
             ->getArtist($slug)
         ;
-        if ($artist === null) {
+        if (!$artist) {
             throw $this->createNotFoundException();
         }
 
-        if ($artist->getDuplicate() === true && $artist->getOwner() !== null) {
-            return $this->redirectToRoute('fdc_event_artist_get', array('slug' => $artist->getOwner()->getSlug()));
+        if ($artist->getDuplicate() && !$artist->getOwner()) {
+            return $this->redirectToRoute('fdc_event_artist_get', ['slug' => $artist->getOwner()->getSlug()], 301);
         }
-        
+
         // find directors randomly, order them after by firstname
-        // (cant use mysql, doesnt work)
         $directors = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmPerson')
-            ->getDirectorsRandomly($festival,  $count, $artist->getId())
+            ->getDirectorsRandomly($festival, $count, $artist->getId())
         ;
         usort($directors, array($this, 'sortByFirstname'));
 
-        return array(
-            'festival'    => $festival,
+        return $this->render('FDCEventBundle:Artist:page.html.twig', [
+            'festival'  => $festival,
             'artist'    => $artist,
             'directors' => $directors,
-        );
+        ]);
 
+    }
+
+    /**
+     * Sort objects by firstname char
+     * @param FilmPerson $a
+     * @param FilmPerson $b
+     * @return int
+     */
+    private function sortByFirstname(FilmPerson $a, FilmPerson $b)
+    {
+        return strcasecmp($a->getFirstname()[0], $b->getFirstname()[0]);
     }
 }

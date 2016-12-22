@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use \Twig_Extension;
@@ -51,6 +52,13 @@ class FilmMediaExtension extends Twig_Extension
         $medias = array();
         if ($film && method_exists($film, 'getMedias') && count($film->getMedias()) > 0) {
             foreach ($film->getMedias() as $media) {
+                if ($media instanceof FilmFilmMedia) {
+                    if ($parent == true) {
+                        $medias[$media->getCreatedAt()->getTimestamp() . '-' . $media->getId()] = $media->getMedia();
+                    } else {
+                        $medias[] = $media->getMedia()->getFile();
+                    }
+                }
                 if ($media->getMedia() !== null && $media->getType() == $type) {
                     if ($parent == true) {
                         $medias[] = $media->getMedia();

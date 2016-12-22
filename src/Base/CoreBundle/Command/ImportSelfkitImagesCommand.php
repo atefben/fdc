@@ -27,8 +27,8 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->output = $output;
-        $this->importFilmImages();
         $this->importPersonImages();
+        $this->importFilmImages();
     }
 
     private function importPersonImages()
@@ -54,7 +54,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
                 }
                 if (!(@is_array(getimagesize($filename)))) {
-                    dump('Ignore ' . $filename);
+                    $this->output->writeln("<info>Ingnore filename.</info>");
                     continue;
                 }
 
@@ -70,10 +70,14 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setContext('film_director');
                     $media->setProviderStatus(1);
                     $media->setProviderName('sonata.media.provider.image');
-                    $media->setCreatedAt(new \DateTime());
+                    $media->setCreatedAt($oldImage->getDatemodification() ?: $oldImage->getDatecreation());
+                    $media->setUpdatedAt($oldImage->getDatemodification() ?: $oldImage->getDatecreation());
                     $media->setBinaryContent($filename);
                     $media->setEnabled(true);
                     $media->setOldMediaPhoto((string)$oldImage->getIdphoto());
+                    $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
+                    $media->setOldMediaPhotoJury($oldImage->getIdjury());
+                    $media->setCopyright($oldImage->getCopyright());
                 }
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
@@ -91,7 +95,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     }
                 }
             } catch (\Exception $e) {
-                dump($e->getMessage());
+                $this->output->writeln('<error>' . $e->getMessage() . '</error>');
             }
         }
         $bar->finish();
@@ -142,6 +146,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setBinaryContent($filename);
                     $media->setEnabled(true);
                     $media->setOldMediaPhoto((string)$oldImage->getIdphoto());
+                    $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
+                    $media->setOldMediaPhotoJury($oldImage->getIdjury());
+                    $media->setCopyright($oldImage->getCopyright());
                 }
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
@@ -188,7 +195,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
      */
     private function getAmazonDirectory()
     {
-        return $this->getContainer()->getParameter('selfkit_amazon_url');
+        return $this->getContainer()->getParameter('selfkit_amazon_url_hd');
     }
 
     /**

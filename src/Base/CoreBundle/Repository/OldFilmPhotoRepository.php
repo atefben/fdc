@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\OldFilmPhoto;
 
@@ -70,14 +71,26 @@ class OldFilmPhotoRepository extends EntityRepository
      */
     public function getLegacyPersonImages(FilmPerson $filmPerson = null)
     {
+        $types = [
+            FilmFilmMedia::TYPE_JURY,
+            FilmFilmMedia::TYPE_DIRECTOR,
+            FilmFilmMedia::TYPE_PERSON,
+        ];
+
         $qb = $this->createQueryBuilder('fp');
+
+        $qb
+            ->andWhere('fp.idtypephoto in (:types)')
+            ->setParameter(':types', $types)
+        ;
+
         if ($filmPerson) {
             $qb
                 ->andWhere('fp.idpersonne = :idperson')
                 ->setParameter(':idperson', $filmPerson->getId())
             ;
         } else {
-            $qb->andWhere('fp.idpersonne is not null');
+            $qb->andWhere('fp.idpersonne IS NOT NULL');
         }
 
         return $qb

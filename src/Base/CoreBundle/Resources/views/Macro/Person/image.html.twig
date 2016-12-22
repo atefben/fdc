@@ -1,0 +1,85 @@
+{% macro image_arts(person, format, attrs, president) %}
+
+{% endmacro %}
+
+{% macro image(person, format, attrs, president) %}
+    {% if attrs is not defined %}
+        {% set attrs = [] %}
+    {% endif %}
+    {%- if president is not defined -%}
+        {% set president = false %}
+    {%- endif -%}
+
+    {%- if president and person.presidentJuryImage is defined and person.presidentJuryImage|trans_fallback('file') -%}
+        {%- set media = person.presidentJuryImage|trans_fallback('file') -%}
+    {%- endif -%}
+    {%- if person.portraitImage is defined and person.portraitImage|trans_fallback('file') -%}
+        {%- set media = person.portraitImage|trans_fallback('file') -%}
+    {%- endif -%}
+    {%- if person.landscapeImage is defined and person.landscapeImage|trans_fallback('file') -%}
+        {%- set media = person.landscapeImage|trans_fallback('file') -%}
+    {%- endif -%}
+
+    {%- if media is not defined -%}
+        {%- set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
+    {%- endif -%}
+    {%- if media is not defined -%}
+        {% set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
+    {%- endif -%}
+    {%- if media is not defined -%}
+        {%- set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
+    {%- endif -%}
+    {%- if media is not defined -%}
+        {%- set media = person.getSelfkitImages()|first -%}
+    {%- endif -%}
+    {%- if media is defined -%}
+        <img src="{% path media, format %}"{% for key, val in attrs %} {{ key }}="{{ val }}"{% endfor %}>
+    {%- else -%}
+        {%- if president -%}
+            <img src="{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}">
+        {%- else -%}
+            <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
+        {%- endif -%}
+    {%- endif -%}
+{% endmacro %}
+
+{% macro imageUrl(person, format, president) %}
+    {%- if attrs is not defined -%}
+        {% set attrs = [] %}
+    {%- endif -%}
+    {%- if president is not defined -%}
+        {% set president = false %}
+    {%- endif -%}
+
+    {%- if president and person.presidentJuryImage is defined and person.presidentJuryImage|trans_fallback('file') -%}
+        {%- set media = person.presidentJuryImage|trans_fallback('file') -%}
+    {%- endif -%}
+    {%- if person.portraitImage is defined and person.portraitImage|trans_fallback('file') -%}
+        {%- set media = person.portraitImage|trans_fallback('file') -%}
+    {%- endif -%}
+    {%- if person.landscapeImage is defined and person.landscapeImage|trans_fallback('file') -%}
+        {%- set media = person.landscapeImage|trans_fallback('file') -%}
+    {%- endif -%}
+
+    {%- if media is not defined -%}
+        {%- set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
+    {%- endif -%}
+    {%- if media is not defined -%}
+        {% set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
+    {%- endif -%}
+    {%- if media is not defined -%}
+        {%- set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
+    {%- endif -%}
+    {%- if media is not defined -%}
+        {%- set media = person.getSelfkitImages()|first -%}
+    {%- endif -%}
+    {%- if media is defined -%}
+        {% path media, format %}
+    {%- else -%}
+        {%- if president -%}
+            {{ asset('bundles/fdcevent/img/jurys/president.jpg') }}
+        {%- else -%}
+            {{ asset('bundles/fdcevent/img/jurys/member.jpg') }}
+        {%- endif -%}
+    {%- endif -%}
+{% endmacro %}
