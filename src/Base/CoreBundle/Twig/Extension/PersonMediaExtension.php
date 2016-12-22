@@ -384,7 +384,6 @@ class PersonMediaExtension extends Twig_Extension
                 $image = array_values($medias)[0];
             }
         }
-        dump($image);
         return $image;
     }
 
