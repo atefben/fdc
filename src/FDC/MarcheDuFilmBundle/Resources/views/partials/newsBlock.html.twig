@@ -5,8 +5,8 @@
         {% for newsItem in news %}
             <div class="articles">
                 <div class="readMore">...</div>
-                {% if newsItem.translatable.newsImage is not empty %}
-                    <div class="articles-img"><img src="/img/slider/slider03.jpg"></div>
+                {% if newsItem.translatable.image is not empty %}
+                    <div class="articles-img"><img src="{% path newsItem.translatable.image|trans_fallback('file'), 'reference' %}"></div>
                 {% endif %}
                 <div class="articles-content">
                     <span>{{ newsItem.newsTheme }} <span class="article-date">{{ newsItem.translatable.publishedAt|date("d M Y") }}</span></span>
