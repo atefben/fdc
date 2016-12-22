@@ -29,6 +29,12 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
 
+    mdf.manager.content_template:
+        class: FDC\MarcheDuFilmBundle\Manager\ContentTemplateManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
     mdf.manager.dispatch_de_service:
         class: FDC\MarcheDuFilmBundle\Manager\DispatchDeServiceManager
         arguments:

@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MdfContentTemplateWidgetTextTranslation
  * @ORM\Table(name="mdf_content_template_widget_text_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateWidgetTextTranslationRepository")
  */
 class MdfContentTemplateWidgetTextTranslation
 {
