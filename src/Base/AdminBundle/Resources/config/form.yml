@@ -603,3 +603,8 @@ services:
         class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetImageType
         tags:
             - { name: form.type, alias: 'content_template_widget_image_type'}
+
+    base.admin.form.dispatch_de_service_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\DispatchDeServiceWidgetType
+        tags:
+            - { name: form.type, alias: 'dispatch_de_service_widget_type'}

@@ -14,7 +14,22 @@ class ServiceController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('FDCMarcheDuFilmBundle:services:show.html.twig');
+        $dispatchDeServiceManager = $this->get('mdf.manager.dispatch_de_service');
+        $newsManager = $this->get('mdf.manager.news');
+        $contactManager = $this->get('mdf.manager.contact');
+
+        $dispatchDeServiceContent = $dispatchDeServiceManager->getDispatchDeServiceContent();
+        $dispatchDeServiceWidgets = $dispatchDeServiceManager->getDispatchDeServiceWidgets();
+        $news = $newsManager->getHomepageNews();
+        $contact = $contactManager->getContactInfo();
+
+
+        return $this->render('FDCMarcheDuFilmBundle:services:show.html.twig', array(
+            'serviceContent' => $dispatchDeServiceContent,
+            'serviceWidgets' => $dispatchDeServiceWidgets,
+            'news' => $news,
+            'contact' => $contact
+        ));
     }
 
     /**

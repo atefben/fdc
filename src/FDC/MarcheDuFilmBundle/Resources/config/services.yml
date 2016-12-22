@@ -34,3 +34,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.dispatch_de_service:
+        class: FDC\MarcheDuFilmBundle\Manager\DispatchDeServiceManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
