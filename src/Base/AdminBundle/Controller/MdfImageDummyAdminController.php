@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Controller;
 
 use Application\Sonata\AdminBundle\Controller\CRUDController;
 
-class HomeSliderTopDummyAdminController extends CRUDController
+class MdfImageDummyAdminController extends CRUDController
 {
 
 }

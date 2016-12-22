@@ -14,26 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MdfContentTemplateWidgetImage extends MdfContentTemplateWidget
 {
-    use Translatable;
-
     /**
      * @var MediaMdf
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
     protected $image;
-
-    /**
-     * ArrayCollection
-     */
-    protected $translations;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
 
     /**
      * @return MediaMdf

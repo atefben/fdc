@@ -50,22 +50,6 @@ class ContentTemplateWidgetImageType extends ContentTemplateWidgetType
     {
         parent::buildForm($builder, $options);
         $builder
-            ->add('translations', 'a2lix_translations', array(
-                'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array('fr'),
-                'fields' => array(
-                    'applyChanges' => array(
-                        'field_type' => 'hidden',
-                        'attr'       => array(
-                            'class' => 'hidden',
-                        ),
-                    ),
-                    'legendCopyRight'          => array(
-                        'label'              => 'form.label.legend_copy_right',
-                        'translation_domain' => 'BaseAdminBundle',
-                    )
-                ),
-            ))
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],

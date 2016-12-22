@@ -42,7 +42,6 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
                                                             {{ form_row(widget.image) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -92,7 +91,6 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
                                                             {{ form_row(widget.image) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -140,9 +138,9 @@
                                                 </div>
                                             </div>
                                             {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                            {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
                                                 <div class="item base-widget"
                                                      data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
-                                                    {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
                                                         <div class="form-group">
                                                             <h4>{{ 'form.content_template.text_widget'|trans }}</h4>
                                                             <label>
@@ -158,18 +156,8 @@
                                                                 {{ widget.children.translations.fr.vars.value.contentText|raw }}
                                                             </div>
                                                         </div>
-                                                    {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
-                                                        <div class="form-group">
-                                                            <h4>{{ 'form.content_template.image_widget'|trans }}</h4>
-                                                            <label>
-                                                                {{ 'form.content_template.image_widget_legend_copy_right'|trans }}
-                                                            </label>
-                                                            <div>
-                                                                {{ widget.children.translations.fr.vars.value.legendCopyRight|raw }}
-                                                            </div>
-                                                        </div>
-                                                    {% endif %}
                                                 </div>
+                                            {% endif %}
                                             {% endfor %}
                                         </div>
                                     {% endif %}
