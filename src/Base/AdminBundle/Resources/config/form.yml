@@ -570,9 +570,13 @@ services:
             - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]
 
     base.admin.form.home_slider_top_type:
+        scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderTopType
         tags:
             - { name: form.type, alias: 'home_slider_top_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_slider_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
     base.admin.form.home_slider_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderType
@@ -600,9 +604,13 @@ services:
             - { name: form.type, alias: 'content_template_widget_text_type'}
 
     base.admin.form.content_template_widget_image_type:
+        scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetImageType
         tags:
             - { name: form.type, alias: 'content_template_widget_image_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
     base.admin.form.dispatch_de_service_widget_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\DispatchDeServiceWidgetType
