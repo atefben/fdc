@@ -41,6 +41,7 @@
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
+                                                            {{ form_row(widget.image) }}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
@@ -90,6 +91,7 @@
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
+                                                            {{ form_row(widget.image) }}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
