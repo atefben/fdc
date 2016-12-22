@@ -45,6 +45,7 @@
                                 <div class="tabPic">
                                     <div class="owl-pub owl-carousel owl-theme">
                                         {% for mediaGallery in widget.gallery.medias %}
+
                                             <div class="item">
                                                 <img src="{% path mediaGallery.media|trans_fallback('file'), '346x346' %}"
                                                      alt="" style="width: 346px; height: 346px;">
@@ -97,4 +98,8 @@
             <div class="floatingButtonText showRight">pavillons</div>
         </a>
     </div>
+
+    {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' %}
+
 {% endblock main %}

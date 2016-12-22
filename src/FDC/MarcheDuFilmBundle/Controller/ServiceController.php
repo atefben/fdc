@@ -37,10 +37,21 @@ class ServiceController extends Controller
      */
     public function serviceAction(Request $request, $slug)
     {
+        $newsManager = $this->get('mdf.manager.news');
+        $contactManager = $this->get('mdf.manager.contact');
+
+        $news = $newsManager->getHomepageNews();
+        $contact = $contactManager->getContactInfo();
+
         $locale = $request->getLocale();
         $service = $this->getServiceRepository()->getOnePublished($locale, $slug);
 
-        return $this->render('FDCMarcheDuFilmBundle:services:show_service.html.twig', ['service' => $service]);
+        return $this->render('FDCMarcheDuFilmBundle:services:show_service.html.twig',
+            [
+                'service' => $service,
+                'news' => $news,
+                'contact' => $contact,
+            ]);
     }
 
     /**
