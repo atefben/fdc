@@ -616,3 +616,8 @@ services:
         class: FDC\MarcheDuFilmBundle\Form\Type\DispatchDeServiceWidgetType
         tags:
             - { name: form.type, alias: 'dispatch_de_service_widget_type'}
+
+    base.admin.form.accreditation_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\AccreditationWidgetType
+        tags:
+            - { name: form.type, alias: 'accreditation_widget_type'}
