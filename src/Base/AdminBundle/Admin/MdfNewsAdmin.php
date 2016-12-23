@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Base\AdminBundle\Admin\MediaMdfImageAdmin;
 
 class MdfNewsAdmin extends Admin
 {
@@ -88,6 +89,12 @@ class MdfNewsAdmin extends Admin
                 'attr'     => array(
                     'data-date-format' => 'dd/MM/yyyy HH:mm',
                 ),
+            ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => false
             ))
         ;
     }

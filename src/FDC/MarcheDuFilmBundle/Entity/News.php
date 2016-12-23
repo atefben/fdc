@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use Application\Sonata\MediaBundle\Entity\Media;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
+use FDC\MarcheDuFilmBundle\Entity\MediaMdf;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,14 +27,11 @@ class News
     protected $id;
 
     /**
-     * @var Media
+     * @var MediaMdf
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="newsImage", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
-    protected $newsImage;
+    protected $image;
 
     /**
      * @var \DateTime
@@ -73,19 +71,19 @@ class News
     /**
      * @return Media
      */
-    public function getNewsImage()
+    public function getImage()
     {
-        return $this->newsImage;
+        return $this->image;
     }
 
     /**
-     * @param $newsImage
+     * @param $image
      *
      * @return $this
      */
-    public function setNewsImage($newsImage)
+    public function setImage($image)
     {
-        $this->newsImage = $newsImage;
+        $this->image = $image;
 
         return $this;
     }

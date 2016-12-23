@@ -3,3 +3,9 @@ fdc_marche_du_film_services:
     type:     annotation
     prefix:   /
     host: "%fdc_marche_du_film_domain%"
+
+fdc_marche_du_film_accreditations:
+    resource: "@FDCMarcheDuFilmBundle/Controller/AccreditationController"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_marche_du_film_domain%"

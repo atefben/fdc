@@ -2,45 +2,24 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Application\Sonata\MediaBundle\Entity\Media;
+use FDC\MarcheDuFilmBundle\Entity\MediaMdf;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MdfContentTemplateWidgetImage
  * @ORM\Table(name="mdf_content_template_widget_image")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateWidgetImageRepository")
  */
 class MdfContentTemplateWidgetImage extends MdfContentTemplateWidget
 {
-    use Translatable;
-
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="image", referencedColumnName="id")
-     * })
+     * @var MediaMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
     protected $image;
 
     /**
-     * ArrayCollection
-     */
-    protected $translations;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return Media
+     * @return MediaMdf
      */
     public function getImage()
     {

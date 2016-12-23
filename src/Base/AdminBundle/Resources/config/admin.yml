@@ -1559,6 +1559,150 @@ services:
 
     base.admin.mdf_edition_presentation:
         class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
-        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfEditionPresentation, BaseAdminBundle:MdfEditionPresentationAdmin]
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionPresentationAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionPresentation}
+
+    base.admin.mdf_dispatch_de_service:
+        class: Base\AdminBundle\Admin\MdfDispatchDeServiceAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\DispatchDeService, BaseAdminBundle:MdfDispatchDeServiceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch De Service}
+
+    base.admin.mdf_gallery:
+        class: Base\AdminBundle\Admin\GalleryMdfAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdf, BaseAdminBundle:GalleryMdfAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gallery}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media:
+        class: Base\AdminBundle\Admin\MediaMdfAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdf, BaseAdminBundle:MediaMdfAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Media, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_image:
+        class: Base\AdminBundle\Admin\MediaMdfImageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfImage, BaseAdminBundle:MediaMdfImageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_image_simple:
+        class: Base\AdminBundle\Admin\MediaMdfImageSimpleAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfImageSimple, BaseAdminBundle:MediaMdfImageSimpleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_image_simple, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery_media:
+        class: Base\AdminBundle\Admin\GalleryMdfMediaAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia, BaseAdminBundle:GalleryMdfMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GalleryMdfMediaAdmin, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery_dual_align:
+        class: Base\AdminBundle\Admin\GalleryMdfDualAlignAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdfDualAlign, BaseAdminBundle:GalleryMdfDualAlignAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GalleryMdfDualAlign, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery_dual_align_media:
+        class: Base\AdminBundle\Admin\GalleryMdfDualAlignMediaAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdfDualAlignMedia, BaseAdminBundle:GalleryMdfDualAlignMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GalleryMdfDualAlignMediaAdmin, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_audio:
+        class: Base\AdminBundle\Admin\MediaMdfAudioAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfAudio, BaseAdminBundle:MediaMdfAudioAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_video:
+        class: Base\AdminBundle\Admin\MediaMdfVideoAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfVideo, BaseAdminBundle:MediaMdfVideoAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+           - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_pdf:
+        class: Base\AdminBundle\Admin\MediaMdfPdfAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf, BaseAdminBundle:MediaMdfPdfAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_pdf, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_tag:
+        class: Base\AdminBundle\Admin\MediaMdfTagAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfTag, BaseAdminBundle:MediaMdfTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfTag, show_in_dashboard: false}
+
+    base.admin.mdf_media_video_film_film_associated:
+        class: Base\AdminBundle\Admin\MediaMdfVideoFilmFilmAssociatedAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfVideoFilmFilmAssociated, BaseAdminBundle:MediaMdfVideoFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfVideoFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_audio_film_film_associated:
+        class: Base\AdminBundle\Admin\MediaMdfAudioFilmFilmAssociatedAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfAudioFilmFilmAssociated, BaseAdminBundle:MediaMdfAudioFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfAudioFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base_admin.mdf_media_film_projection_associated:
+        class: Base\AdminBundle\Admin\MediaMdfFilmProjectionAssociatedAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated, BaseAdminBundle:MediaMdfFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfFilmProjectionAssociated, show_in_dashboard: false}
+
+    base.admin.home_slider_top_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HomeSliderTop, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Slider Top, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.dispatch_de_service_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch De Service Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_content_template_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Content Template Widget Image, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_accreditation:
+        class: Base\AdminBundle\Admin\MdfAccreditationAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Accreditation, BaseAdminBundle:MdfAccreditationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Accreditation}

@@ -7,11 +7,11 @@ use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MdfEditionPresentationTranslation
- * @ORM\Table(name="mdf_edition_presentation_translation")
- * @ORM\Entity
+ * AccreditationWidgetTranslation
+ * @ORM\Table(name="mdf_accreditation_widget_translation")
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\AccreditationWidgetTranslationRepository")
  */
-class MdfEditionPresentationTranslation
+class AccreditationWidgetTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -23,12 +23,13 @@ class MdfEditionPresentationTranslation
      */
     protected $title;
 
+
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $header;
+    protected $description;
 
     /**
      * @return string
@@ -53,19 +54,19 @@ class MdfEditionPresentationTranslation
     /**
      * @return string
      */
-    public function getHeader()
+    public function getDescription()
     {
-        return $this->header;
+        return $this->description;
     }
 
     /**
-     * @param $header
+     * @param $description
      *
      * @return $this
      */
-    public function setHeader($header)
+    public function setDescription($description)
     {
-        $this->header = $header;
+        $this->description = $description;
 
         return $this;
     }

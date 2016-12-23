@@ -7,13 +7,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MdfEditionPresentation
- * @ORM\Table(name="mdf_edition_presentation")
+ * MdfContentTemplate
+ * @ORM\Table(name="mdf_content_template")
  * @ORM\Entity
  */
-class MdfEditionPresentation
+class MdfContentTemplate
 {
     use Translatable;
+
+    const TYPE_EDITION_PRESENTATION = 'edition_presentation';
 
     /**
      * @var integer
@@ -22,6 +24,13 @@ class MdfEditionPresentation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $type;
 
     /**
      * @var ArrayCollection
@@ -37,7 +46,7 @@ class MdfEditionPresentation
     private $contentTemplateWidgets;
 
     /**
-     * MdfEditionPresentation constructor.
+     * MdfContentTemplate constructor.
      */
     public function __construct()
     {
@@ -76,5 +85,25 @@ class MdfEditionPresentation
     public function getContentTemplateWidgets()
     {
         return $this->contentTemplateWidgets;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param $type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }
