@@ -1175,22 +1175,7 @@
     <div class="item base-widget">
         <h4>{{ 'form.home_slider'|trans }}</h4>
         {{ form_widget(form.children._type) }}
-        {{ form_widget(attribute(form.children.translations, locale)) }}
-        <div class="clearfix">
-            <div class="fdc-widget-remove-btn">
-                <a class="btn btn-danger btn-sm btn-outline remove_item">
-                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                </a>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-
-{% block home_content_slider_type_widget %}
-    {% set locale = locale_default_translation %}
-    <div class="item base-widget">
-        <h4>{{ 'form.home_content_slider'|trans }}</h4>
-        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -1207,6 +1192,7 @@
     <div class="item base-widget">
         <h4>{{ 'form.home_service'|trans }}</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -1257,6 +1243,7 @@
     <div class="item base-widget">
         <h4>{{ 'form.dispatch_de_service_widget'|trans }}</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">

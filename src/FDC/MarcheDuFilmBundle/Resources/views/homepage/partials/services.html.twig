@@ -17,7 +17,7 @@
 
         <div class="services-mid hideOverflow services-pictures">
             {% for service in services %}
-                <div id="{{ 'pic' ~ loop.index }}"><img src="{{ service.translatable.image }}"/></div>
+                <div id="{{ 'pic' ~ loop.index }}"><img src="{% path service.translatable.image|trans_fallback('file'), 'reference' %}"/></div>
             {% endfor %}
         </div>
     </div>

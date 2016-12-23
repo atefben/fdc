@@ -51,7 +51,7 @@ class ContentTemplateWidgetImageType extends ContentTemplateWidgetType
         parent::buildForm($builder, $options);
         $builder
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_image',
+                'label' => 'form.label_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),

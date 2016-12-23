@@ -25,12 +25,8 @@ class HomeSlider
     protected $id;
 
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="image", referencedColumnName="id")
-     * })
+     * @var MediaMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
     protected $image;
 
@@ -62,7 +58,7 @@ class HomeSlider
     }
 
     /**
-     * @return Media
+     * @return MediaMdf
      */
     public function getImage()
     {

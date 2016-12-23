@@ -73,6 +73,13 @@ class MdfHeaderFooterAdmin extends Admin
                     ),
                 ),
             ))
+            ->add('headerBanner', 'sonata_type_model_list', array(
+                'label' => 'form.label.header_banner',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
+            ))
+
         ;
     }
 

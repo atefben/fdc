@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ContentTemplateController extends Controller
 {
     /**
-     * @Route("presentation", name="fdc_marche_du_film_presentation")
+     * @Route("presentation", name="fdc_marche_du_film_edition_presentation")
      */
     public function indexAction()
     {

@@ -61,17 +61,6 @@ class HomepageManager
             );
     }
 
-    public function getContentBlockSlider()
-    {
-        return $this->em
-            ->getRepository(MdfHomeContentSliderTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
-    }
-
     public function getHomepageServices()
     {
         return $this->em
