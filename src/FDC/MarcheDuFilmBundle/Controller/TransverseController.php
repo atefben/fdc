@@ -9,11 +9,12 @@ class TransverseController extends Controller
     public function headerAction()
     {
         $headerFooterManager = $this->get('mdf.manager.header_footer');
+        $banner = $headerFooterManager->getHeaderBanner();
 
         return $this->render(
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
-                'banner' => $headerFooterManager->getHeaderBanner()
+                'banner' => $banner[0]
             ]
         );
     }

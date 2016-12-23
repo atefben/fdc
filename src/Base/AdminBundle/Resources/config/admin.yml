@@ -1689,6 +1689,14 @@ services:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidget, BaseAdminBundle:MdfImageDummyAdmin]
         tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dispatch De Service Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.dispatch_de_service_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch De Service Widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
@@ -1697,7 +1705,23 @@ services:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage, BaseAdminBundle:MdfImageDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Content Template Widget Image, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Image, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.home_slider_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HomeSlider, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Slider Top, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.home_service_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfHomeService, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Slider Top, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

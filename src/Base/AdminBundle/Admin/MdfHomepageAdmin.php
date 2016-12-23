@@ -98,16 +98,6 @@ class MdfHomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
-            ->add('contentSliders', 'infinite_form_polycollection', array(
-                'label'        => false,
-                'types'        => array(
-                    'home_content_slider_type',
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false,
-            ))
             ->add('services', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
@@ -117,6 +107,12 @@ class MdfHomepageAdmin extends Admin
                 'allow_delete' => true,
                 'prototype'    => true,
                 'by_reference' => false,
+            ))
+            ->add('gallery', 'sonata_type_model_list', array(
+                'label' => 'form.label.content_gallery',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
             ))
         ;
     }
