@@ -1,4 +1,5 @@
 <div class="presse whoarewe">
-    <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="Marché du film">
-    <h5 class="caption">Terrasse d'un pavillon au Village International- © Alexandra Fleurantin - 2015</h5>
+    {% set translations = widget.image.findTranslationByLocale(app.request.locale) %}
+    <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}">
+    <h5 class="caption">{{ translations.legend ~ '-' ~ translations.copyright }}</h5>
 </div>
