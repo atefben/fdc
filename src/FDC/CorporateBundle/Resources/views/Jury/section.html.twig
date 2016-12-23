@@ -33,13 +33,7 @@
                                          style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
                                     </div>
                                 {%- else -%}
-                                    {%- set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first -%}
-                                    {%- if media is empty -%}
-                                        {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first -%}
-                                    {%- endif -%}
-                                    {%- if media is empty -%}
-                                        {%- set photo = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first -%}
-                                    {%- endif -%}
+                                    {% set media = jury_page_media(member['jury'], app.request.locale, festival) %}
                                     {%- if media is not empty -%}
                                         <div class="contain-img"
                                              style="background-image:url('{% path media, '976x535' %}');"></div>
@@ -89,7 +83,7 @@
                             <div class="item block-poster">
                                 <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
                                     <div class="contain-img">
-                                        {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
+                                        {% set artistImage = jury_page_media(member['jury'], app.request.locale, festival) %}
                                         {% if artistImage is not empty %}
                                             <img src="{% path artistImage, '384x485' %}"
                                                  alt="{{ member['jury'].person.fullName }}"/>

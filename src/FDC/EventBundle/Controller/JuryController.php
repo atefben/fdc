@@ -2,13 +2,11 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
-use FDC\EventBundle\Component\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Acl\Exception\Exception;
 
 class JuryController extends Controller
 {
@@ -17,7 +15,7 @@ class JuryController extends Controller
      * @Template("FDCEventBundle:Jury:section.html.twig")
      * @param Request $request
      * @param type
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return array()
      */
     public function getAction(Request $request, $slug = null)
     {
@@ -121,12 +119,13 @@ class JuryController extends Controller
         }
 
         return array(
-            'page'      => $page,
-            'pages'     => $pages,
-            'next'      => is_object($next) ? $next : false,
-            'members'   => $members,
-            'president' => $president,
-            'localeSlugs' => $localeSlugs
+            'festival'    => $this->getFestival(),
+            'page'        => $page,
+            'pages'       => $pages,
+            'next'        => is_object($next) ? $next : false,
+            'members'     => $members,
+            'president'   => $president,
+            'localeSlugs' => $localeSlugs,
         );
 
     }

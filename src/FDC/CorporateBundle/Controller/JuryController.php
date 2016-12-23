@@ -139,6 +139,7 @@ class JuryController extends Controller
 
 
         return array(
+            'festival'      => $this->getFestival($year),
             'page'      => $page,
             'pages'     => $pageToDisplay,
             'next'      => is_object($next) ? $next : false,

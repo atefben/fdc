@@ -604,29 +604,29 @@ class FilmPerson implements TranslateMainInterface
         }
 
         $films = $this->films;
-        //$done = [];
-        //
-        //foreach ($films as $filmFilmPerson) {
-        //    if ($filmFilmPerson instanceof FilmFilmPerson) {
-        //        $done[] = $filmFilmPerson->getFilm()->getId();
-        //    }
-        //}
-        //
-        //foreach ($this->duplicates as $duplicate) {
-        //    foreach ($duplicate->getFilms() as $filmFilmPerson) {
-        //        if ($filmFilmPerson instanceof FilmFilmPerson) {
-        //            $add = false;
-        //            $identifier = $filmFilmPerson->getFilm()->getId();
-        //            if (!in_array($identifier, $done)) {
-        //                $done[] = $identifier;
-        //                $add = true;
-        //            }
-        //            if ($add) {
-        //                $films->add($filmFilmPerson);
-        //            }
-        //        }
-        //    }
-        //}
+        $done = [];
+
+        foreach ($films as $filmFilmPerson) {
+            if ($filmFilmPerson instanceof FilmFilmPerson) {
+                $done[] = $filmFilmPerson->getFilm()->getId();
+            }
+        }
+
+        foreach ($this->duplicates as $duplicate) {
+            foreach ($duplicate->getFilms() as $filmFilmPerson) {
+                if ($filmFilmPerson instanceof FilmFilmPerson) {
+                    $add = false;
+                    $identifier = $filmFilmPerson->getFilm()->getId();
+                    if (!in_array($identifier, $done)) {
+                        $done[] = $identifier;
+                        $add = true;
+                    }
+                    if ($add) {
+                        $films->add($filmFilmPerson);
+                    }
+                }
+            }
+        }
 
         return $films;
     }
@@ -736,27 +736,27 @@ class FilmPerson implements TranslateMainInterface
             return $this->awards;
         }
         $awards = $this->awards;
-        //$done = [];
-        //
-        //foreach ($awards as $award) {
-        //    if ($award instanceof FilmAwardAssociation) {
-        //        $identifier = $award->getFilm() . '-' . $award->getAward()->getPrize()->getId();
-        //        $done[] = $identifier;
-        //    }
-        //}
-        //
-        //foreach ($this->duplicates as $duplicate) {
-        //    if ($duplicate instanceof FilmPerson) {
-        //        foreach ($duplicate->getAwards() as $award) {
-        //            if ($award instanceof FilmAwardAssociation) {
-        //                $identifier = $award->getFilm() . '-' . $award->getAward()->getPrize()->getId();
-        //                if (in_array($identifier, $done)) {
-        //                    $awards->add($award);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        $done = [];
+
+        foreach ($awards as $award) {
+            if ($award instanceof FilmAwardAssociation) {
+                $identifier = $award->getFilm() . '-' . $award->getAward()->getPrize()->getId();
+                $done[] = $identifier;
+            }
+        }
+
+        foreach ($this->duplicates as $duplicate) {
+            if ($duplicate instanceof FilmPerson) {
+                foreach ($duplicate->getAwards() as $award) {
+                    if ($award instanceof FilmAwardAssociation) {
+                        $identifier = $award->getFilm() . '-' . $award->getAward()->getPrize()->getId();
+                        if (in_array($identifier, $done)) {
+                            $awards->add($award);
+                        }
+                    }
+                }
+            }
+        }
 
         return $awards;
     }
@@ -891,16 +891,16 @@ class FilmPerson implements TranslateMainInterface
             return $this->nationality;
         }
         $nationality = $this->nationality;
-        //foreach ($this->duplicates as $duplicate) {
-        //    if ($duplicate instanceof FilmPerson) {
-        //        if ($nationality) {
-        //            continue;
-        //        }
-        //        if ($duplicate->getNationality()) {
-        //            $nationality = $duplicate->getNationality();
-        //        }
-        //    }
-        //}
+        foreach ($this->duplicates as $duplicate) {
+            if ($duplicate instanceof FilmPerson) {
+                if ($nationality) {
+                    continue;
+                }
+                if ($duplicate->getNationality()) {
+                    $nationality = $duplicate->getNationality();
+                }
+            }
+        }
         return $nationality;
     }
 
