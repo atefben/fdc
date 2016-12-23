@@ -33,7 +33,7 @@ class PressGuide implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -48,7 +48,7 @@ class PressGuide implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideArrive", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $arriveWidgets;
+    protected $arriveWidgets;
 
     /**
      * @var string
@@ -63,7 +63,7 @@ class PressGuide implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideMeeting", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $meetingWidgets;
+    protected $meetingWidgets;
 
     /**
      * @var string
@@ -78,7 +78,7 @@ class PressGuide implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideInformation", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $informationWidgets;
+    protected $informationWidgets;
 
     /**
      * @var string
@@ -93,7 +93,7 @@ class PressGuide implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="PressGuideWidget", mappedBy="PressGuideService", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $serviceWidgets;
+    protected $serviceWidgets;
 
     /**
      * ArrayCollection

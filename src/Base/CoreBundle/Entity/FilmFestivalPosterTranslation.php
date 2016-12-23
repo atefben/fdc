@@ -29,14 +29,14 @@ class FilmFestivalPosterTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $title;
+    protected $title;
     
     /**
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $description;
+    protected $description;
 
     public function __construct()
     {

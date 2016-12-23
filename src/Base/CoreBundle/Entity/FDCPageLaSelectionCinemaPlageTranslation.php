@@ -35,7 +35,7 @@ class FDCPageLaSelectionCinemaPlageTranslation implements TranslateChildInterfac
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $subtitle;
+    protected $subtitle;
 
 
     /**

@@ -19,42 +19,42 @@ class OldFilmCategorie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idcategorie;
+    protected $idcategorie;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CATEGORIE_VF", type="string", length=50, nullable=true)
      */
-    private $categorieVf;
+    protected $categorieVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CATEGORIE_VA", type="string", length=50, nullable=true)
      */
-    private $categorieVa;
+    protected $categorieVa;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="ORDRE", type="integer", nullable=false)
      */
-    private $ordre;
+    protected $ordre;
 
 
 

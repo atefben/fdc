@@ -19,28 +19,28 @@ class OldSyncJob
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $syncJobId;
+    protected $syncJobId;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start_time", type="datetime", nullable=false)
      */
-    private $startTime;
+    protected $startTime;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_time", type="datetime", nullable=true)
      */
-    private $endTime;
+    protected $endTime;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="completed", type="integer", nullable=true)
      */
-    private $completed;
+    protected $completed;
 
 
 

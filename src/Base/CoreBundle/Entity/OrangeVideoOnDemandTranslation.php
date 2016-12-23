@@ -34,7 +34,7 @@ class OrangeVideoOnDemandTranslation implements TranslateChildInterface
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      * @Groups({"orange_video_on_demand"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -42,7 +42,7 @@ class OrangeVideoOnDemandTranslation implements TranslateChildInterface
      * @ORM\Column(name="introduction", type="text", nullable=true)
      * @Groups({"orange_video_on_demand"})
      */
-    private $introduction;
+    protected $introduction;
     
     /**
      * @var string
@@ -50,7 +50,7 @@ class OrangeVideoOnDemandTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Set title

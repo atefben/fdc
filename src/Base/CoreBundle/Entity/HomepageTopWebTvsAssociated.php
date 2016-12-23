@@ -46,7 +46,7 @@ class HomepageTopWebTvsAssociated
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
 
     /**
      * @var WebTv

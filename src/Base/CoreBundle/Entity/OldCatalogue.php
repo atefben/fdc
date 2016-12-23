@@ -19,49 +19,49 @@ class OldCatalogue
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $catId;
+    protected $catId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source_lang", type="string", length=100, nullable=true)
      */
-    private $sourceLang;
+    protected $sourceLang;
 
     /**
      * @var string
      *
      * @ORM\Column(name="target_lang", type="string", length=100, nullable=true)
      */
-    private $targetLang;
+    protected $targetLang;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="date_created", type="integer", nullable=true)
      */
-    private $dateCreated;
+    protected $dateCreated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="date_modified", type="integer", nullable=true)
      */
-    private $dateModified;
+    protected $dateModified;
 
     /**
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255, nullable=true)
      */
-    private $author;
+    protected $author;
 
 
 

@@ -19,7 +19,7 @@ class OldFestivalLogoI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,28 +28,28 @@ class OldFestivalLogoI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="legend", type="string", length=255, nullable=true)
      */
-    private $legend;
+    protected $legend;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $image;
+    protected $image;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
 
 

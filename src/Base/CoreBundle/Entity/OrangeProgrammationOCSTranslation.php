@@ -36,7 +36,7 @@ class OrangeProgrammationOCSTranslation implements TranslateChildInterface
      *     "orange_programmation_ocs"
      * })
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class OrangeProgrammationOCSTranslation implements TranslateChildInterface
      *     "orange_programmation_ocs"
      * })
      */
-    private $introduction;
+    protected $introduction;
     
     /**
      * @var string
@@ -54,7 +54,7 @@ class OrangeProgrammationOCSTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Set title

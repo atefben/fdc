@@ -24,17 +24,17 @@ class FDCPageParticipateSectionWidgetTypefour extends FDCPageParticipateSectionW
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $imageBig;
+    protected $imageBig;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaPdf")
      */
-    private $pdf;
+    protected $pdf;
 
     /**
      * ArrayCollection

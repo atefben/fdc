@@ -32,231 +32,231 @@ class HomepageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $primaryPushTitle1;
+    protected $primaryPushTitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $primaryPushTitle2;
+    protected $primaryPushTitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $primaryPushTitle3;
+    protected $primaryPushTitle3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle1;
+    protected $secondaryPushTitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle2;
+    protected $secondaryPushTitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle3;
+    protected $secondaryPushTitle3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle4;
+    protected $secondaryPushTitle4;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle5;
+    protected $secondaryPushTitle5;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle6;
+    protected $secondaryPushTitle6;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle7;
+    protected $secondaryPushTitle7;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushTitle8;
+    protected $secondaryPushTitle8;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $primaryPushUrl1;
+    protected $primaryPushUrl1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $primaryPushUrl2;
+    protected $primaryPushUrl2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $primaryPushUrl3;
+    protected $primaryPushUrl3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl1;
+    protected $secondaryPushUrl1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl2;
+    protected $secondaryPushUrl2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl3;
+    protected $secondaryPushUrl3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl4;
+    protected $secondaryPushUrl4;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl5;
+    protected $secondaryPushUrl5;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl6;
+    protected $secondaryPushUrl6;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl7;
+    protected $secondaryPushUrl7;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $secondaryPushUrl8;
+    protected $secondaryPushUrl8;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterTitle1;
+    protected $prefooterTitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterTitle2;
+    protected $prefooterTitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterTitle3;
+    protected $prefooterTitle3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterTitle4;
+    protected $prefooterTitle4;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterTitle5;
+    protected $prefooterTitle5;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterUrl1;
+    protected $prefooterUrl1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterUrl2;
+    protected $prefooterUrl2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterUrl3;
+    protected $prefooterUrl3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterUrl4;
+    protected $prefooterUrl4;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $prefooterUrl5;
+    protected $prefooterUrl5;
 
     /**
      * @var Prefooter
      *
      * @ORM\OneToMany(targetEntity="Prefooter", mappedBy="homepageTranslation")
      */
-    private $prefooters;
+    protected $prefooters;
 
     /**
      * Constructor

@@ -19,28 +19,28 @@ class OldPressKitSousCategorie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="categorie_vf", type="string", length=50, nullable=true)
      */
-    private $categorieVf;
+    protected $categorieVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="categorie_en", type="string", length=50, nullable=true)
      */
-    private $categorieEn;
+    protected $categorieEn;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="ordre", type="integer", nullable=false)
      */
-    private $ordre;
+    protected $ordre;
 
 
 

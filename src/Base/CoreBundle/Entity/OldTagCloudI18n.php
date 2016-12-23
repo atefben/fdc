@@ -19,7 +19,7 @@ class OldTagCloudI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,70 +28,70 @@ class OldTagCloudI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link", type="string", length=255, nullable=true)
      */
-    private $link;
+    protected $link;
 
     /**
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=255, nullable=true)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="tag_color", type="integer", nullable=true)
      */
-    private $tagColor;
+    protected $tagColor;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="tag_order", type="integer", nullable=true)
      */
-    private $tagOrder;
+    protected $tagOrder;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="tag_size", type="integer", nullable=true)
      */
-    private $tagSize;
+    protected $tagSize;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="i18n_translation_status", type="integer", nullable=false)
      */
-    private $i18nTranslationStatus;
+    protected $i18nTranslationStatus;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="font_style", type="integer", nullable=true)
      */
-    private $fontStyle;
+    protected $fontStyle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="font_name", type="string", length=255, nullable=true)
      */
-    private $fontName;
+    protected $fontName;
 
 
 

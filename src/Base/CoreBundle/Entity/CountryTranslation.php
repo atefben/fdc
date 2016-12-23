@@ -44,7 +44,7 @@ class CountryTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -67,7 +67,7 @@ class CountryTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $lang;
+    protected $lang;
 
     public function __construct()
     {

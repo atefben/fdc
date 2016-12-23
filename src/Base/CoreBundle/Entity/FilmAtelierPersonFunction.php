@@ -29,14 +29,14 @@ class FilmAtelierPersonFunction
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FilmFunction
      *
      * @ORM\ManyToOne(targetEntity="FilmFunction", cascade={"persist"})
      */
-    private $function;
+    protected $function;
 
     /**
      * @var FilmFunction
@@ -44,7 +44,7 @@ class FilmAtelierPersonFunction
      * @ORM\ManyToOne(targetEntity="FilmAtelierPerson", inversedBy="functions", cascade={"persist"})
      * @ORM\JoinColumn(name="film_atelier_id", referencedColumnName="id", nullable=false)
      */
-    private $filmAtelier;
+    protected $filmAtelier;
 
     /**
      * Get id

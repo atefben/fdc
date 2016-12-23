@@ -19,35 +19,35 @@ class OldMosaiquePosition
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="mosaique_id", type="integer", nullable=true)
      */
-    private $mosaiqueId;
+    protected $mosaiqueId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="article_id", type="integer", nullable=true)
      */
-    private $articleId;
+    protected $articleId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="position", type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publication_date", type="datetime", nullable=true)
      */
-    private $publicationDate;
+    protected $publicationDate;
 
 
 

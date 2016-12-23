@@ -34,13 +34,13 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Groups({"classics"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @var NewsWidget
@@ -48,25 +48,25 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      *     cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * @var integer
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $weight;
+    protected $weight;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @var ArrayCollection
@@ -78,25 +78,25 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $oldNewsId;
+    protected $oldNewsId;
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $oldNewsTable;
+    protected $oldNewsTable;
 
     /**
      * @var \DateTime
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
      */
-    private $publishEndedAt;
+    protected $publishEndedAt;
 
     /**
      * @var Site
@@ -104,14 +104,14 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      * @ORM\ManyToMany(targetEntity="Site")
      *
      */
-    private $sites;
+    protected $sites;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
 
     /**

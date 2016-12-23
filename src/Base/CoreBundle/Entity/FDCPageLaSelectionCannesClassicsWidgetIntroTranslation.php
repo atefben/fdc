@@ -32,7 +32,7 @@ class FDCPageLaSelectionCannesClassicsWidgetIntroTranslation
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $introduction;
+    protected $introduction;
 
     /**
      * Set introduction

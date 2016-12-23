@@ -19,7 +19,7 @@ class EventWidgetImage extends EventWidget
      * @ORM\ManyToOne(targetEntity="Gallery")
      * @Groups({"event_show"})
      */
-    private $gallery;
+    protected $gallery;
 
     /**
      * Set gallery

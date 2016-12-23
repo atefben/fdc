@@ -40,7 +40,7 @@ class CorpoTeamMembersTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
@@ -49,7 +49,7 @@ class CorpoTeamMembersTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @var string
@@ -58,7 +58,7 @@ class CorpoTeamMembersTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $function;
+    protected $function;
 
     /**
      * Set firstname

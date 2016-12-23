@@ -19,42 +19,42 @@ class OldMobileVersion
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_reset", type="datetime", nullable=true)
      */
-    private $dateReset;
+    protected $dateReset;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="platform", type="integer", nullable=true)
      */
-    private $platform;
+    protected $platform;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="reset_device", type="boolean", nullable=true)
      */
-    private $resetDevice;
+    protected $resetDevice;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
-    private $dateCreation;
+    protected $dateCreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime", nullable=true)
      */
-    private $dateModification;
+    protected $dateModification;
 
 
 

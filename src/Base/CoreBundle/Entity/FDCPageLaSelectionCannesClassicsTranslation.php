@@ -41,7 +41,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      * @Groups({"classics"})
      *
      */
-    private $titleNav;
+    protected $titleNav;
 
     /**
      * @var string
@@ -50,7 +50,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      * @Groups({"classics"})
      *
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -59,7 +59,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      * @Groups({"classics"})
      *
      */
-    private $hideTitle = false;
+    protected $hideTitle = false;
 
     /**
      * @var string
@@ -68,7 +68,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"classics"})
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Set titleNav

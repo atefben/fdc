@@ -33,7 +33,7 @@ class PressAccreditProcedure implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -45,19 +45,19 @@ class PressAccreditProcedure implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
      */
-    private $pdf;
+    protected $pdf;
 
     /**
      * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $procedureFile;
+    protected $procedureFile;
 
     /**
      * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $procedureSecondFile;
+    protected $procedureSecondFile;
 
     /**
      * ArrayCollection

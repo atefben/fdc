@@ -19,7 +19,7 @@ class OldHomepageBlockI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,77 +28,77 @@ class OldHomepageBlockI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="news_online", type="boolean", nullable=true)
      */
-    private $newsOnline;
+    protected $newsOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="news_priority", type="integer", nullable=true)
      */
-    private $newsPriority;
+    protected $newsPriority;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="cinema_online", type="boolean", nullable=true)
      */
-    private $cinemaOnline;
+    protected $cinemaOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cinema_priority", type="integer", nullable=true)
      */
-    private $cinemaPriority;
+    protected $cinemaPriority;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="the_wall_online", type="boolean", nullable=true)
      */
-    private $theWallOnline;
+    protected $theWallOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="the_wall_priority", type="integer", nullable=true)
      */
-    private $theWallPriority;
+    protected $theWallPriority;
 
     /**
      * @var string
      *
      * @ORM\Column(name="the_wall_filename", type="string", length=255, nullable=true)
      */
-    private $theWallFilename;
+    protected $theWallFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="the_wall_no_video_link", type="string", length=255, nullable=true)
      */
-    private $theWallNoVideoLink;
+    protected $theWallNoVideoLink;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="resonances_online", type="boolean", nullable=true)
      */
-    private $resonancesOnline;
+    protected $resonancesOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="resonances_priority", type="integer", nullable=true)
      */
-    private $resonancesPriority;
+    protected $resonancesPriority;
 
 
 

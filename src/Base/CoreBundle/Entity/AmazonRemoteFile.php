@@ -18,27 +18,27 @@ class AmazonRemoteFile
      * @ORM\Column(type="string", length=255)
      * @ORM\Id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="text")
      */
-    private $url;
+    protected $url;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
-    private $type = 'video';
+    protected $type = 'video';
 
 
     /**

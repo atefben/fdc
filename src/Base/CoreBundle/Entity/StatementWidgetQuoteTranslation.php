@@ -32,7 +32,7 @@ class StatementWidgetQuoteTranslation
      *
      * @Groups({"statement_list", "statement_show", "news_show"})
      */
-    private $content;
+    protected $content;
 
     /**
      * Set content

@@ -19,42 +19,42 @@ class OldFilmTypejury
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idtypejury;
+    protected $idtypejury;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPEJURY_VF", type="string", length=30, nullable=true)
      */
-    private $typejuryVf;
+    protected $typejuryVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPEJURY_VA", type="string", length=30, nullable=true)
      */
-    private $typejuryVa;
+    protected $typejuryVa;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="ORDRE", type="integer", nullable=true)
      */
-    private $ordre;
+    protected $ordre;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
 
 

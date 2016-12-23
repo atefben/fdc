@@ -36,7 +36,7 @@ class Country implements TranslateMainInterface
      * @ORM\Id
      *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -58,32 +58,32 @@ class Country implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $iso;
+    protected $iso;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAddress", mappedBy="country")
      */
-    private $addresses;
+    protected $addresses;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="country")
      */
-    private $countryFilms;
+    protected $countryFilms;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmAtelierCountry", mappedBy="country")
      */
-    private $countryFilmAteliers;
+    protected $countryFilmAteliers;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmLanguage", mappedBy="country")
      */
-    private $languageFilms;
+    protected $languageFilms;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmAtelierLanguage", mappedBy="country")
      */
-    private $languageFilmAteliers;
+    protected $languageFilmAteliers;
 
     /**
      * @var ArrayCollection

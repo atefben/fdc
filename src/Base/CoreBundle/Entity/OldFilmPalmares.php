@@ -17,7 +17,7 @@ class OldFilmPalmares
      *
      * @ORM\Column(name="IDPALMARES", type="integer", nullable=false)
      */
-    private $idpalmares;
+    protected $idpalmares;
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class OldFilmPalmares
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var string
@@ -35,7 +35,7 @@ class OldFilmPalmares
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idfilm;
+    protected $idfilm;
 
     /**
      * @var integer
@@ -44,7 +44,7 @@ class OldFilmPalmares
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var integer
@@ -53,49 +53,49 @@ class OldFilmPalmares
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idprix;
+    protected $idprix;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IMPORTANCE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $importance;
+    protected $importance;
 
     /**
      * @var string
      *
      * @ORM\Column(name="MENTIONEX", type="string", length=20, nullable=true)
      */
-    private $mentionex;
+    protected $mentionex;
 
     /**
      * @var string
      *
      * @ORM\Column(name="MENTIONUNA", type="string", length=20, nullable=true)
      */
-    private $mentionuna;
+    protected $mentionuna;
 
     /**
      * @var string
      *
      * @ORM\Column(name="COMMENTAIRES", type="text", nullable=true)
      */
-    private $commentaires;
+    protected $commentaires;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
 
 

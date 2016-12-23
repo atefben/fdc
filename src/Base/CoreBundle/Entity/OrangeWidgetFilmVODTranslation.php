@@ -26,7 +26,7 @@ class OrangeWidgetFilmVODTranslation
      * @ORM\Column(name="title", type="text", nullable=true)
      * @Groups({"orange_video_on_demand"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -34,7 +34,7 @@ class OrangeWidgetFilmVODTranslation
      * @ORM\Column(name="description", type="text", nullable=true)
      * @Groups({"orange_video_on_demand"})
      */
-    private $description;
+    protected $description;
 
     /**
      * Set title

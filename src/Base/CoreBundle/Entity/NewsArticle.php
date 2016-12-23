@@ -31,7 +31,7 @@ class NewsArticle extends News
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
-    private $header;
+    protected $header;
 
 
     public function getNewsFormat()

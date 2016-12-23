@@ -19,238 +19,238 @@ class OldMedia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="file_class", type="integer", nullable=true)
      */
-    private $fileClass;
+    protected $fileClass;
 
     /**
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
-    private $filename;
+    protected $filename;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publish_for", type="datetime", nullable=false)
      */
-    private $publishFor;
+    protected $publishFor;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start_date", type="datetime", nullable=true)
      */
-    private $startDate;
+    protected $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
-    private $endDate;
+    protected $endDate;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="hour_order", type="integer", nullable=false)
      */
-    private $hourOrder;
+    protected $hourOrder;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_online", type="boolean", nullable=false)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var string
      *
      * @ORM\Column(name="created_by", type="string", length=255, nullable=false)
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="hasThumbnail", type="boolean", nullable=true)
      */
-    private $hasthumbnail;
+    protected $hasthumbnail;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="published", type="integer", nullable=true)
      */
-    private $published;
+    protected $published;
 
     /**
      * @var string
      *
      * @ORM\Column(name="language", type="string", length=10, nullable=true)
      */
-    private $language;
+    protected $language;
 
     /**
      * @var string
      *
      * @ORM\Column(name="extension", type="string", length=10, nullable=true)
      */
-    private $extension;
+    protected $extension;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="ispodcast", type="boolean", nullable=true)
      */
-    private $ispodcast;
+    protected $ispodcast;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="view_on_dashboard", type="boolean", nullable=true)
      */
-    private $viewOnDashboard;
+    protected $viewOnDashboard;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="pin_on_dashboard", type="boolean", nullable=true)
      */
-    private $pinOnDashboard;
+    protected $pinOnDashboard;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_smil", type="boolean", nullable=true)
      */
-    private $isSmil;
+    protected $isSmil;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="video_type", type="integer", nullable=true)
      */
-    private $videoType;
+    protected $videoType;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="quality", type="integer", nullable=true)
      */
-    private $quality;
+    protected $quality;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_download", type="boolean", nullable=true)
      */
-    private $isDownload;
+    protected $isDownload;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="profile", type="integer", nullable=true)
      */
-    private $profile;
+    protected $profile;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dashboard_priority", type="integer", nullable=false)
      */
-    private $dashboardPriority;
+    protected $dashboardPriority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="translation_status", type="integer", nullable=false)
      */
-    private $translationStatus;
+    protected $translationStatus;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="publish_to_mobile", type="boolean", nullable=false)
      */
-    private $publishToMobile;
+    protected $publishToMobile;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="royalty_free_image", type="boolean", nullable=false)
      */
-    private $royaltyFreeImage;
+    protected $royaltyFreeImage;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="event_type_id", type="integer", nullable=true)
      */
-    private $eventTypeId;
+    protected $eventTypeId;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="push_to_quotidien", type="boolean", nullable=false)
      */
-    private $pushToQuotidien;
+    protected $pushToQuotidien;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_locked", type="boolean", nullable=false)
      */
-    private $isLocked;
+    protected $isLocked;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_pro", type="boolean", nullable=false)
      */
-    private $isPro;
+    protected $isPro;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="interview", type="boolean", nullable=false)
      */
-    private $interview;
+    protected $interview;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="show_on_filmfiles", type="boolean", nullable=false)
      */
-    private $showOnFilmfiles;
+    protected $showOnFilmfiles;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="prehome_app", type="boolean", nullable=false)
      */
-    private $prehomeApp;
+    protected $prehomeApp;
 
 
 

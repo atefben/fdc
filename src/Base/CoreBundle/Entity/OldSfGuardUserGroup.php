@@ -19,7 +19,7 @@ class OldSfGuardUserGroup
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $groupId;
+    protected $groupId;
 
     /**
      * @var integer
@@ -28,7 +28,7 @@ class OldSfGuardUserGroup
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $userId;
+    protected $userId;
 
 
 

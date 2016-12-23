@@ -19,7 +19,7 @@ class OldPartenaireI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,84 +28,84 @@ class OldPartenaireI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="logo", type="string", length=255, nullable=true)
      */
-    private $logo;
+    protected $logo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $image;
+    protected $image;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_title", type="string", length=500, nullable=true)
      */
-    private $imageTitle;
+    protected $imageTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="paragraph", type="string", length=1000, nullable=true)
      */
-    private $paragraph;
+    protected $paragraph;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_1", type="string", length=255, nullable=true)
      */
-    private $link1;
+    protected $link1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_1_label", type="string", length=255, nullable=true)
      */
-    private $link1Label;
+    protected $link1Label;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_2", type="string", length=255, nullable=true)
      */
-    private $link2;
+    protected $link2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_2_label", type="string", length=255, nullable=true)
      */
-    private $link2Label;
+    protected $link2Label;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="i18n_translation_status", type="integer", nullable=false)
      */
-    private $i18nTranslationStatus;
+    protected $i18nTranslationStatus;
 
 
 

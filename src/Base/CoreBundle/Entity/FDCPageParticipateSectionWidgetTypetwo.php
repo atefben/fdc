@@ -24,12 +24,12 @@ class FDCPageParticipateSectionWidgetTypetwo extends FDCPageParticipateSectionWi
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $sponsorImage;
+    protected $sponsorImage;
 
     /**
      * ArrayCollection

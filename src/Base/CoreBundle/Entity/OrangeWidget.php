@@ -32,14 +32,14 @@ abstract class OrangeWidget
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Orange", inversedBy="widgets")
      */
-    private $parent;
+    protected $parent;
     
     /**
      * @var integer

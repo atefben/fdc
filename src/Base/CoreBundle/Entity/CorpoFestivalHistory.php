@@ -35,7 +35,7 @@ class CorpoFestivalHistory implements TranslateMainInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Groups({"classics"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -43,7 +43,7 @@ class CorpoFestivalHistory implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $image;
+    protected $image;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
@@ -51,7 +51,7 @@ class CorpoFestivalHistory implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
@@ -59,7 +59,7 @@ class CorpoFestivalHistory implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @var NewsWidget
@@ -68,7 +68,7 @@ class CorpoFestivalHistory implements TranslateMainInterface
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * @var ArrayCollection

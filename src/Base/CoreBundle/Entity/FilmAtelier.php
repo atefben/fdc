@@ -39,7 +39,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -47,7 +47,7 @@ class FilmAtelier implements TranslateMainInterface
      * @Gedmo\Slug(fields={"titleVO"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
@@ -56,7 +56,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $titleVO;
+    protected $titleVO;
     
     /**
      * @var string
@@ -65,7 +65,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $productionYear;
+    protected $productionYear;
     
     /**
      * @var string
@@ -74,7 +74,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $budgetEstimation;
+    protected $budgetEstimation;
     
     /**
      * @var datetime
@@ -83,7 +83,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $filmingDate;
+    protected $filmingDate;
 
     /**
      * @var text
@@ -92,7 +92,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $filmingPlace;
+    protected $filmingPlace;
 
     /**
      * @var string
@@ -101,7 +101,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $duration;
+    protected $duration;
     
     /**
      * @var string
@@ -110,7 +110,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})s
      */
-    private $sessionName;
+    protected $sessionName;
     
     /**
      * @var string
@@ -119,7 +119,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $budgetAcquired;
+    protected $budgetAcquired;
 
     /**
      * @var string
@@ -128,7 +128,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $cinandoUrl;
+    protected $cinandoUrl;
     
     /**
      * @var FilmSelectionSection
@@ -137,7 +137,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $selectionSection;
+    protected $selectionSection;
     
     /**
      * @var FilmFestival
@@ -146,7 +146,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $festival;
+    protected $festival;
     
     /**
      * @var FilmAtelierPerson
@@ -155,7 +155,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $persons;
+    protected $persons;
 
     /**
      * @var FilmAtelierProductionCompany
@@ -164,7 +164,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $productionCompany;
+    protected $productionCompany;
 
     /**
      * @var FilmMedia
@@ -173,7 +173,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $medias;
+    protected $medias;
     
     /**
      * @var FilmCountry
@@ -182,7 +182,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $countries;
+    protected $countries;
     
     /**
      * @var FilmCountry
@@ -191,7 +191,7 @@ class FilmAtelier implements TranslateMainInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $languages;
+    protected $languages;
     
     /**
      * @var ArrayCollection

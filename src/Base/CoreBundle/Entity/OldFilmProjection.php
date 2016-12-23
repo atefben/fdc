@@ -19,203 +19,203 @@ class OldFilmProjection
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idprojection;
+    protected $idprojection;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFESTIVAL", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFILM", type="string", length=36, nullable=true)
      */
-    private $idfilm;
+    protected $idfilm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="COMMENTAIRES", type="string", length=250, nullable=true)
      */
-    private $commentaires;
+    protected $commentaires;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NUMERO", type="decimal", precision=2, scale=0, nullable=true)
      */
-    private $numero;
+    protected $numero;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CODEJOUR", type="string", length=2, nullable=true)
      */
-    private $codejour;
+    protected $codejour;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLEHORRAIRE", type="string", length=50, nullable=true)
      */
-    private $libellehorraire;
+    protected $libellehorraire;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FICHIER", type="string", length=40, nullable=true)
      */
-    private $fichier;
+    protected $fichier;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BLOQUE", type="string", length=1, nullable=true)
      */
-    private $bloque;
+    protected $bloque;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDMODELE", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $idmodele;
+    protected $idmodele;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CONTROLINFO", type="string", length=1, nullable=true)
      */
-    private $controlinfo;
+    protected $controlinfo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="POINT", type="decimal", precision=3, scale=0, nullable=true)
      */
-    private $point;
+    protected $point;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ADMIN", type="string", length=1, nullable=true)
      */
-    private $admin;
+    protected $admin;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LISTEATTENTE", type="decimal", precision=3, scale=0, nullable=true)
      */
-    private $listeattente;
+    protected $listeattente;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PRESENCEEQUIPE", type="string", length=1, nullable=true)
      */
-    private $presenceequipe;
+    protected $presenceequipe;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLE", type="string", length=40, nullable=true)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEPROJECTION", type="datetime", nullable=true)
      */
-    private $dateprojection;
+    protected $dateprojection;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DEBUT", type="string", length=5, nullable=true)
      */
-    private $debut;
+    protected $debut;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FIN", type="string", length=5, nullable=true)
      */
-    private $fin;
+    protected $fin;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDSALLE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idsalle;
+    protected $idsalle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPEPROJ", type="string", length=40, nullable=true)
      */
-    private $typeproj;
+    protected $typeproj;
 
     /**
      * @var string
      *
      * @ORM\Column(name="AVERTISSEMENT", type="string", length=1, nullable=true)
      */
-    private $avertissement;
+    protected $avertissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SPECIALE", type="string", length=1, nullable=true)
      */
-    private $speciale;
+    protected $speciale;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TENU", type="string", length=25, nullable=true)
      */
-    private $tenu;
+    protected $tenu;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="AGENDA", type="string", length=50, nullable=true)
      */
-    private $agenda;
+    protected $agenda;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SECTIONPROGRAMMATION_VF", type="string", length=255, nullable=true)
      */
-    private $sectionprogrammationVf;
+    protected $sectionprogrammationVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SECTIONPROGRAMMATION_VA", type="string", length=255, nullable=true)
      */
-    private $sectionprogrammationVa;
+    protected $sectionprogrammationVa;
 
 
 

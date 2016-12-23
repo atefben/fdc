@@ -39,7 +39,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
@@ -47,7 +47,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"live"})
      */
-    private $live;
+    protected $live;
 
     /**
      * @var boolean
@@ -55,7 +55,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\Column(type="boolean")
      * @Groups({"live"})
      */
-    private $doNotDisplayWebTvArea = false;
+    protected $doNotDisplayWebTvArea = false;
 
     /**
      * @var boolean
@@ -63,7 +63,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\Column(type="boolean")
      * @Groups({"live"})
      */
-    private $doNotDisplayTrailerArea = false;
+    protected $doNotDisplayTrailerArea = false;
 
     /**
      * @var boolean
@@ -71,7 +71,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\Column(type="boolean")
      * @Groups({"live"})
      */
-    private $doNotDisplayLastVideosArea = false;
+    protected $doNotDisplayLastVideosArea = false;
 
     /**
      * @var MediaImageSimple
@@ -80,7 +80,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      *
      * @Groups({"live"})
      */
-    private $image;
+    protected $image;
 
     /**
      * @var FDCPageWebTvLiveWebTvAssociated
@@ -88,7 +88,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"live"})
      */
-    private $associatedWebTvs;
+    protected $associatedWebTvs;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
@@ -96,7 +96,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @Groups({"live"})
      * @Serializer\Accessor(getter="getApiAssociatedMediaVideos")
      */
-    private $associatedMediaVideos;
+    protected $associatedMediaVideos;
 
     /**
      * @var ArrayCollection

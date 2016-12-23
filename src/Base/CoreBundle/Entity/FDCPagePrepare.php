@@ -33,7 +33,7 @@ class FDCPagePrepare implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -45,7 +45,7 @@ class FDCPagePrepare implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $mainImage;
+    protected $mainImage;
 
     /**
      * @var string
@@ -89,7 +89,7 @@ class FDCPagePrepare implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FDCPagePrepareWidget", mappedBy="FDCPagePrepareArrive", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $arriveWidgets;
+    protected $arriveWidgets;
 
     /**
      * @var string
@@ -104,7 +104,7 @@ class FDCPagePrepare implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FDCPagePrepareWidget", mappedBy="FDCPagePrepareMeeting", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $meetingWidgets;
+    protected $meetingWidgets;
 
     /**
      * @var string
@@ -119,7 +119,7 @@ class FDCPagePrepare implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FDCPagePrepareWidget", mappedBy="FDCPagePrepareInformation", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $informationWidgets;
+    protected $informationWidgets;
 
     /**
      * @var string
@@ -134,18 +134,18 @@ class FDCPagePrepare implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FDCPagePrepareWidget", mappedBy="FDCPagePrepareService", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      */
-    private $serviceWidgets;
+    protected $serviceWidgets;
 
     /**
      * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $meetingFile;
+    protected $meetingFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
      */
-    private $meetingPdf;
+    protected $meetingPdf;
 
     /**
      * ArrayCollection

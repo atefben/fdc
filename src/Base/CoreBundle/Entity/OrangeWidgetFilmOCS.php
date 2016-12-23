@@ -28,7 +28,7 @@ class OrangeWidgetFilmOCS extends OrangeWidget
      * })
      *
      */
-    private $image;
+    protected $image;
     
     /**
      * @var integer
@@ -38,7 +38,7 @@ class OrangeWidgetFilmOCS extends OrangeWidget
      *     "orange_programmation_ocs"
      * })
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -49,7 +49,7 @@ class OrangeWidgetFilmOCS extends OrangeWidget
      *     "orange_programmation_ocs"
      * })
      */
-    private $producer;
+    protected $producer;
 
 
     /**

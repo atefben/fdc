@@ -32,7 +32,7 @@ class FDCPageFooter implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var ArrayCollection

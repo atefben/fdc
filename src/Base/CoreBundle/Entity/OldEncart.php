@@ -19,56 +19,56 @@ class OldEncart
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="mosaique_id", type="integer", nullable=true)
      */
-    private $mosaiqueId;
+    protected $mosaiqueId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="position", type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="integer", nullable=true)
      */
-    private $priority;
+    protected $priority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="image_size", type="integer", nullable=false)
      */
-    private $imageSize;
+    protected $imageSize;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_created", type="datetime", nullable=true)
      */
-    private $dateCreated;
+    protected $dateCreated;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modified", type="datetime", nullable=true)
      */
-    private $dateModified;
+    protected $dateModified;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="mosaique_picto", type="boolean", nullable=true)
      */
-    private $mosaiquePicto;
+    protected $mosaiquePicto;
 
 
 

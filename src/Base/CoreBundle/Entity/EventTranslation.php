@@ -38,7 +38,7 @@ class EventTranslation implements TranslateChildInterface
      *
      * @Groups({"event_list", "search", "event_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -47,7 +47,7 @@ class EventTranslation implements TranslateChildInterface
      *
      * @Groups({"event_show"})
      */
-    private $introduction;
+    protected $introduction;
 
 
     /**
@@ -57,7 +57,7 @@ class EventTranslation implements TranslateChildInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"event_show"})
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Constructor

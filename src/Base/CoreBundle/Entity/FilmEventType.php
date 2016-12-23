@@ -24,35 +24,35 @@ class FilmEventType
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=20, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $position;
+    protected $position;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $program;
+    protected $program;
 
     /**
      * Get id

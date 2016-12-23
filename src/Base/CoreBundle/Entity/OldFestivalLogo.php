@@ -19,49 +19,49 @@ class OldFestivalLogo
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="year", type="integer", nullable=true)
      */
-    private $year;
+    protected $year;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_online", type="integer", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="display_right_block", type="boolean", nullable=false)
      */
-    private $displayRightBlock;
+    protected $displayRightBlock;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="live_tv_mode", type="integer", nullable=false)
      */
-    private $liveTvMode;
+    protected $liveTvMode;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
-    private $dateCreation;
+    protected $dateCreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime", nullable=true)
      */
-    private $dateModification;
+    protected $dateModification;
 
 
 

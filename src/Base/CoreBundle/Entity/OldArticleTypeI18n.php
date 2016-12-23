@@ -19,7 +19,7 @@ class OldArticleTypeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,14 +28,14 @@ class OldArticleTypeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=200, nullable=false)
      */
-    private $name;
+    protected $name;
 
 
 

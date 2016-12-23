@@ -34,7 +34,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
      * @ORM\Column(name="title", type="text", nullable=true)
      * @Groups({"orange_series_and_cie"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -42,7 +42,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
      * @ORM\Column(name="introduction", type="text", nullable=true)
      * @Groups({"orange_series_and_cie"})
      */
-    private $introduction;
+    protected $introduction;
     
     /**
      * @var string
@@ -51,7 +51,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"orange_series_and_cie"})
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Set title

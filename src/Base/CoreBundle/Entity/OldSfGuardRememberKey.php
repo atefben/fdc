@@ -19,7 +19,7 @@ class OldSfGuardRememberKey
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $userId;
+    protected $userId;
 
     /**
      * @var string
@@ -28,21 +28,21 @@ class OldSfGuardRememberKey
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $ipAddress;
+    protected $ipAddress;
 
     /**
      * @var string
      *
      * @ORM\Column(name="remember_key", type="string", length=32, nullable=true)
      */
-    private $rememberKey;
+    protected $rememberKey;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
-    private $createdAt;
+    protected $createdAt;
 
 
 

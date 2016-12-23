@@ -22,7 +22,7 @@ class StatementWidgetAudio extends StatementWidget
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      * @Groups({"news_show"})
      */
-    private $file;
+    protected $file;
 
     /**
      * Set file

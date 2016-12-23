@@ -28,7 +28,7 @@ class OrangeWidgetMovieYoutube extends OrangeWidget
      *     "orange_series_and_cie"
      * })
      */
-    private $url;
+    protected $url;
 
     /**
      * Set url

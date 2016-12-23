@@ -40,7 +40,7 @@ class MediaPdfTranslation implements TranslateChildInterface
      * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
      *     "search"})
      */
-    private $file;
+    protected $file;
 
     /**
      * @var string
@@ -49,14 +49,14 @@ class MediaPdfTranslation implements TranslateChildInterface
      * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
      *     "search"})
      */
-    private $name;
+    protected $name;
 
     /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
-    private $sites;
+    protected $sites;
 
     /**
      * Constructor

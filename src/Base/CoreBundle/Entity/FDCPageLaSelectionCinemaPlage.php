@@ -33,7 +33,7 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -41,7 +41,7 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $image;
+    protected $image;
     
     /**
      * @var User
@@ -49,7 +49,7 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var User
@@ -57,7 +57,7 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @var ArrayCollection
@@ -69,7 +69,7 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
     /**
      * @ORM\Column(name="title", type="string", length=255)
      */
-    private $title = 'Cinéma de la plage';
+    protected $title = 'Cinéma de la plage';
 
     /**
      * @var string
@@ -77,7 +77,7 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * FDCPageLaSelection constructor.

@@ -28,7 +28,7 @@ class FilmMedia
      * @ORM\Column(type="string", length=60)
      * @ORM\Id
      */
-    private $id;
+    protected $id;
     
      /**
       * @var string
@@ -50,7 +50,7 @@ class FilmMedia
       *     "search"
       * })
       */
-    private $contentType;
+    protected $contentType;
 
     /**
      * @var string
@@ -72,7 +72,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $noteVf;
+    protected $noteVf;
 
     /**
      * @var string
@@ -94,7 +94,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $noteVa;
+    protected $noteVa;
 
     /**
      * @var string
@@ -116,7 +116,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $copyright;
+    protected $copyright;
 
     /**
      * @var string
@@ -138,7 +138,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $credits;
+    protected $credits;
 
     /**
      * @var integer
@@ -160,7 +160,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
@@ -181,7 +181,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
@@ -201,7 +201,7 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $titleVf;
+    protected $titleVf;
 
     /**
      * @var string
@@ -221,12 +221,12 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $titleVa;
+    protected $titleVa;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="medias")
      */
-    private $festival;
+    protected $festival;
     
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="filmMedias")
@@ -246,42 +246,42 @@ class FilmMedia
      *     "search"
      * })
      */
-    private $file;
+    protected $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmMediaCategory", inversedBy="medias")
      */
-    private $category;
+    protected $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmJury", inversedBy="medias")
      */
-    private $jury;
+    protected $jury;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmEvent", inversedBy="medias")
      */
-    private $event;
+    protected $event;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="medias")
      */
-    private $filmAtelier;
+    protected $filmAtelier;
 
     /**
      * @ORM\ManyToOne(targetEntity="CinefPerson", inversedBy="medias")
      */
-    private $cinefPerson;
+    protected $cinefPerson;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="media")
      */
-    private $filmMedias;
+    protected $filmMedias;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmPersonMedia", mappedBy="media")
      */
-    private $personMedias;
+    protected $personMedias;
 
 
     public function getFilmMedias() {

@@ -19,49 +19,49 @@ class OldFilmTypeevenement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idtypeevenement;
+    protected $idtypeevenement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLE", type="string", length=20, nullable=true)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ORDRE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $ordre;
+    protected $ordre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PROGRAMME", type="string", length=1, nullable=true)
      */
-    private $programme;
+    protected $programme;
 
 
 

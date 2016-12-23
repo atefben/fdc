@@ -25,25 +25,25 @@ class GalleryMedia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      */
-    private $media;
+    protected $media;
     
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="medias")
      */
-    private $gallery;
+    protected $gallery;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
 
 
     /**

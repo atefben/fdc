@@ -28,40 +28,40 @@ class MobileNotification implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $token;
+    protected $token;
 
     /**
      * @var DateTime
      *
      * @ORM\Column(name="send_at", type="datetime", nullable=true)
      */
-    private $sendAt;
+    protected $sendAt;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $sendTest = false;
+    protected $sendTest = false;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $sendToAll = false;
+    protected $sendToAll = false;
 
     /**
      * @var ArrayCollection
      */
-    private $translations;
+    protected $translations;
 
 
     public function __construct()

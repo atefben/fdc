@@ -56,7 +56,7 @@ class SocialGraph
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     public function __construct()
     {

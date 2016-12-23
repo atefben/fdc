@@ -33,7 +33,7 @@ class FAQPage implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Theme
@@ -42,7 +42,7 @@ class FAQPage implements TranslateMainInterface
      *
      * @Assert\NotNull()
      */
-    private $theme;
+    protected $theme;
 
     /**
      * @var ArrayCollection

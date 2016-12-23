@@ -19,7 +19,7 @@ class OldWebsiteSectionI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,28 +28,28 @@ class OldWebsiteSectionI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="menu_template", type="string", length=250, nullable=true)
      */
-    private $menuTemplate;
+    protected $menuTemplate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="display_name", type="string", length=100, nullable=false)
      */
-    private $displayName;
+    protected $displayName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tooltip", type="string", length=250, nullable=false)
      */
-    private $tooltip;
+    protected $tooltip;
 
 
 

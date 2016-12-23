@@ -31,7 +31,7 @@ class StatementArticle extends Statement
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $header;
+    protected $header;
 
 
     public function getNewsFormat()

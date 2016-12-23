@@ -24,7 +24,7 @@ class OrangeWidgetFilmStudio extends OrangeWidget
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      * @Groups({"orange_studio"})
      */
-    private $image;
+    protected $image;
 
     /**
      * @var string
@@ -32,7 +32,7 @@ class OrangeWidgetFilmStudio extends OrangeWidget
      * @ORM\Column(name="producer", type="text", nullable=true)
      * @Groups({"orange_studio"})
      */
-    private $producer;
+    protected $producer;
 
     /**
      * Set image

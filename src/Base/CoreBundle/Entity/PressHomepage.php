@@ -32,7 +32,7 @@ class PressHomepage implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var PressHomepageSection
@@ -119,7 +119,7 @@ class PressHomepage implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * ArrayCollection

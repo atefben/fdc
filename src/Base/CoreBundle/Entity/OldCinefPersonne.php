@@ -19,91 +19,91 @@ class OldCinefPersonne
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDSESSION", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $idsession;
+    protected $idsession;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SEXE", type="string", length=20, nullable=true)
      */
-    private $sexe;
+    protected $sexe;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOMUSAGE", type="string", length=60, nullable=true)
      */
-    private $nomusage;
+    protected $nomusage;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PRENOMUSAGE", type="string", length=60, nullable=true)
      */
-    private $prenomusage;
+    protected $prenomusage;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATERECEPTION", type="datetime", nullable=true)
      */
-    private $datereception;
+    protected $datereception;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DUREE", type="decimal", precision=5, scale=2, nullable=true)
      */
-    private $duree;
+    protected $duree;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SELECTION", type="string", length=1, nullable=true)
      */
-    private $selection;
+    protected $selection;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VF", type="string", length=1, nullable=true)
      */
-    private $bioFilmoVf;
+    protected $bioFilmoVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VA", type="string", length=1, nullable=true)
      */
-    private $bioFilmoVa;
+    protected $bioFilmoVa;
 
 
 

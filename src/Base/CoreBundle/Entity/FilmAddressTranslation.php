@@ -32,7 +32,7 @@ class FilmAddressTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"film_show"})
      */
-    private $state;
+    protected $state;
 
     public function __construct()
     {

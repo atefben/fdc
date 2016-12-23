@@ -19,27 +19,27 @@ class CorpoMediathequeMedia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="CorpoMediatheque", inversedBy="medias")
      */
-    private $mediatheque;
+    protected $mediatheque;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
      */
-    private $photo;
+    protected $photo;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo", cascade={"all"})
      */
-    private $video;
+    protected $video;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"all"})
      */
-    private $audio;
+    protected $audio;
 
     /**
      * Get id

@@ -19,56 +19,56 @@ class OldPushandroidconsumers
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="token", type="string", length=255, nullable=false)
      */
-    private $token;
+    protected $token;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lang", type="string", length=2, nullable=false)
      */
-    private $lang;
+    protected $lang;
 
     /**
      * @var string
      *
      * @ORM\Column(name="device", type="string", length=255, nullable=false)
      */
-    private $device;
+    protected $device;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=false)
      */
-    private $source;
+    protected $source;
 
     /**
      * @var string
      *
      * @ORM\Column(name="key", type="string", length=255, nullable=false)
      */
-    private $key;
+    protected $key;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
 
 

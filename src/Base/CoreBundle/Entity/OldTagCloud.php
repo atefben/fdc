@@ -19,77 +19,77 @@ class OldTagCloud
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_online", type="integer", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="integer", nullable=true)
      */
-    private $priority;
+    protected $priority;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publication_date", type="datetime", nullable=true)
      */
-    private $publicationDate;
+    protected $publicationDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="unpublication_date", type="datetime", nullable=true)
      */
-    private $unpublicationDate;
+    protected $unpublicationDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
-    private $dateCreation;
+    protected $dateCreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime", nullable=true)
      */
-    private $dateModification;
+    protected $dateModification;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="view_on_dashboard", type="integer", nullable=false)
      */
-    private $viewOnDashboard;
+    protected $viewOnDashboard;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="pin_on_dashboard", type="integer", nullable=false)
      */
-    private $pinOnDashboard;
+    protected $pinOnDashboard;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dashboard_priority", type="integer", nullable=false)
      */
-    private $dashboardPriority;
+    protected $dashboardPriority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="translation_status", type="integer", nullable=false)
      */
-    private $translationStatus;
+    protected $translationStatus;
 
 
 

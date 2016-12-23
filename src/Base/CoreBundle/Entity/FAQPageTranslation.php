@@ -37,7 +37,7 @@ class FAQPageTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -45,7 +45,7 @@ class FAQPageTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $content;
+    protected $content;
 
     /**
      * @var string
@@ -53,7 +53,7 @@ class FAQPageTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
 
     /**

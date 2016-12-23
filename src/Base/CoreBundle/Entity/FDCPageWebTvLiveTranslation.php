@@ -41,7 +41,7 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *     "live"
      * })
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -53,7 +53,7 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *     "live"
      * })
      */
-    private $firstSubHead;
+    protected $firstSubHead;
 
     /**
      * @var string
@@ -65,7 +65,7 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *     "live"
      * })
      */
-    private $secondSubHead;
+    protected $secondSubHead;
 
     /**
      * @var string
@@ -77,7 +77,7 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *     "live"
      * })
      */
-    private $directUrl;
+    protected $directUrl;
 
     /**
      * @var string
@@ -89,7 +89,7 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *     "live"
      * })
      */
-    private $teaserUrl;
+    protected $teaserUrl;
 
 
     /**

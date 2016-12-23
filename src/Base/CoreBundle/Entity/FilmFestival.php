@@ -35,7 +35,7 @@ class FilmFestival
        })
      * 
      */
-    private $id;
+    protected $id;
 
    /**
      * @var integer
@@ -48,71 +48,71 @@ class FilmFestival
        })
      * 
      */
-    private $year;
+    protected $year;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $festivalStartsAt;
+    protected $festivalStartsAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $festivalEndsAt;
+    protected $festivalEndsAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $marcheDuFilmStartsAt;
+    protected $marcheDuFilmStartsAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $marcheduFilmEndsAt;
+    protected $marcheduFilmEndsAt;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="festival")
      */
-    private $awards;
+    protected $awards;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="festival")
      */
-    private $juries;
+    protected $juries;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="festival")
      */
-    private $films;
+    protected $films;
 
     /**
      * @ORM\OneToMany(targetEntity="Event", mappedBy="festival")
      */
-    private $events;
+    protected $events;
 
     /**
      * @ORM\OneToMany(targetEntity="Statement", mappedBy="festival")
      */
-    private $statements;
+    protected $statements;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFestivalMediaImageAssociated", mappedBy="festival", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $associatedMediaImages;
+    protected $associatedMediaImages;
 
     /**
      * Constructor

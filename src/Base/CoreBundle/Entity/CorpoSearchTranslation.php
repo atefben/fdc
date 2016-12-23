@@ -32,42 +32,42 @@ class CorpoSearchTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushTitle1;
+    protected $pushTitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushTitle2;
+    protected $pushTitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushTitle3;
+    protected $pushTitle3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushUrl1;
+    protected $pushUrl1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushUrl2;
+    protected $pushUrl2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushUrl3;
+    protected $pushUrl3;
 
 
 

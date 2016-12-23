@@ -19,161 +19,161 @@ class OldFilmPhoto
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idphoto;
+    protected $idphoto;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFILM", type="string", length=36, nullable=true)
      */
-    private $idfilm;
+    protected $idfilm;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPERSONNE", type="integer", nullable=true)
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDGENERIQUE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idgenerique;
+    protected $idgenerique;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFESTIVAL", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDJURY", type="integer", nullable=true)
      */
-    private $idjury;
+    protected $idjury;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDEVENEMENT", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idevenement;
+    protected $idevenement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPOSTER", type="integer", nullable=true)
      */
-    private $idposter;
+    protected $idposter;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDGENERIQUEATELIER", type="integer", nullable=true)
      */
-    private $idgeneriqueatelier;
+    protected $idgeneriqueatelier;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDFILMATELIER", type="integer", nullable=true)
      */
-    private $idfilmatelier;
+    protected $idfilmatelier;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FICHIER", type="string", length=80, nullable=true)
      */
-    private $fichier;
+    protected $fichier;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOTE", type="text", nullable=true)
      */
-    private $note;
+    protected $note;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOTE_VA", type="text", nullable=true)
      */
-    private $noteVa;
+    protected $noteVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="COPYRIGHT", type="string", length=80, nullable=true)
      */
-    private $copyright;
+    protected $copyright;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CREDITS", type="string", length=80, nullable=true)
      */
-    private $credits;
+    protected $credits;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPE", type="string", length=1, nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE", type="string", length=80, nullable=true)
      */
-    private $titre;
+    protected $titre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VA", type="string", length=80, nullable=true)
      */
-    private $titreVa;
+    protected $titreVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDPERSONNECINEF", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idpersonnecinef;
+    protected $idpersonnecinef;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDTYPEPHOTO", type="integer", nullable=true)
      */
-    private $idtypephoto;
+    protected $idtypephoto;
 
 
 

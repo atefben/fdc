@@ -19,35 +19,35 @@ class OldTranslations
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=false)
      */
-    private $source;
+    protected $source;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="date_created", type="integer", nullable=false)
      */
-    private $dateCreated;
+    protected $dateCreated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="date_modified", type="integer", nullable=false)
      */
-    private $dateModified;
+    protected $dateModified;
 
     /**
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255, nullable=false)
      */
-    private $author;
+    protected $author;
 
 
 

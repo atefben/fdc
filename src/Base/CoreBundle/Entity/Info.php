@@ -44,7 +44,7 @@ abstract class Info implements TranslateMainInterface
      * @Groups({"home", "news_list", "search", "news_show"})
      *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Theme
@@ -52,21 +52,21 @@ abstract class Info implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @Groups({"home", "news_list", "search", "news_show"})
      */
-    private $theme;
+    protected $theme;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="infos")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage")
      */
-    private $homepage;
+    protected $homepage;
 
     /**
      * @var boolean
@@ -74,14 +74,14 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(type="boolean", options={"default":0})
      *
      */
-    private $displayedHome;
+    protected $displayedHome;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $displayedMobile;
+    protected $displayedMobile;
 
     /**
      * @var string
@@ -89,7 +89,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(type="string", nullable=true)
      * @Groups({"news_show"})
      */
-    private $signature;
+    protected $signature;
 
     /**
      * @var string
@@ -97,7 +97,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $typeClone;
+    protected $typeClone;
 
     /**
      * @var InfoTag
@@ -105,37 +105,37 @@ abstract class Info implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"all"}, orphanRemoval=true)
      *
      */
-    private $tags;
+    protected $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoInfoAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      */
-    private $associatedInfo;
+    protected $associatedInfo;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
      */
-    private $associatedFilm;
+    protected $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
      */
-    private $associatedEvent;
+    protected $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoFilmProjectionAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      */
-    private $associatedProjections;
+    protected $associatedProjections;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      * @Groups({"news_show"})
      */
-    private $associatedFilms;
+    protected $associatedFilms;
 
     /**
      * @var ArrayCollection
@@ -145,7 +145,7 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * @var Site
@@ -153,7 +153,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\ManyToMany(targetEntity="Site")
      *
      */
-    private $sites;
+    protected $sites;
 
     /**
      * @var \DateTime
@@ -161,7 +161,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
@@ -169,7 +169,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $publishEndedAt;
+    protected $publishEndedAt;
 
     /**
      * ArrayCollection
@@ -184,7 +184,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
@@ -192,7 +192,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @var boolean
@@ -200,19 +200,19 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(type="boolean", options={"default":0})
      * @Groups({"news_show"})
      */
-    private $hideSameDay;
+    protected $hideSameDay;
 
     /**
      * @var string
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $hidden = 0;
+    protected $hidden = 0;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $oldNewsId;
+    protected $oldNewsId;
 
     /**
      * @var string
@@ -220,7 +220,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $oldNewsTable;
+    protected $oldNewsTable;
 
     public function __construct()
     {

@@ -19,7 +19,7 @@ class OldArticleI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,154 +28,154 @@ class OldArticleI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_url", type="string", length=255, nullable=false)
      */
-    private $linkUrl;
+    protected $linkUrl;
 
     /**
      * @var string
      *
      * @ORM\Column(name="resume", type="text", nullable=true)
      */
-    private $resume;
+    protected $resume;
 
     /**
      * @var string
      *
      * @ORM\Column(name="body", type="text", nullable=true)
      */
-    private $body;
+    protected $body;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobile_body", type="text", nullable=true)
      */
-    private $mobileBody;
+    protected $mobileBody;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="enable_mobile_body", type="boolean", nullable=false)
      */
-    private $enableMobileBody;
+    protected $enableMobileBody;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_resume", type="string", length=255, nullable=true)
      */
-    private $imageResume;
+    protected $imageResume;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title_image_resume", type="string", length=256, nullable=true)
      */
-    private $titleImageResume;
+    protected $titleImageResume;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="enable_image_in_body", type="boolean", nullable=false)
      */
-    private $enableImageInBody;
+    protected $enableImageInBody;
 
     /**
      * @var string
      *
      * @ORM\Column(name="modified_by", type="string", length=255, nullable=true)
      */
-    private $modifiedBy;
+    protected $modifiedBy;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mosaique_image", type="string", length=255, nullable=true)
      */
-    private $mosaiqueImage;
+    protected $mosaiqueImage;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cArticle", type="integer", nullable=true)
      */
-    private $carticle;
+    protected $carticle;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="uid", type="integer", nullable=true)
      */
-    private $uid;
+    protected $uid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mosaique_title", type="string", length=500, nullable=false)
      */
-    private $mosaiqueTitle;
+    protected $mosaiqueTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mosaique_resume", type="text", nullable=false)
      */
-    private $mosaiqueResume;
+    protected $mosaiqueResume;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mosaique_tag", type="string", length=255, nullable=true)
      */
-    private $mosaiqueTag;
+    protected $mosaiqueTag;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="i18n_translation_status", type="integer", nullable=false)
      */
-    private $i18nTranslationStatus;
+    protected $i18nTranslationStatus;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="mosaique_image_active", type="boolean", nullable=true)
      */
-    private $mosaiqueImageActive;
+    protected $mosaiqueImageActive;
 
     /**
      * @var string
      *
      * @ORM\Column(name="youtube_link", type="string", length=255, nullable=false)
      */
-    private $youtubeLink;
+    protected $youtubeLink;
 
     /**
      * @var string
      *
      * @ORM\Column(name="youtube_link_description", type="string", length=255, nullable=false)
      */
-    private $youtubeLinkDescription;
+    protected $youtubeLinkDescription;
 
 
 

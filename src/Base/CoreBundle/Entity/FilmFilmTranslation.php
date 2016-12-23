@@ -53,7 +53,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      * })
      * @Serializer\Accessor(getter="getApiTitle")
      */
-    private $title;
+    protected $title;
     
     /**
      * @var string
@@ -69,7 +69,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "film_selection_section_show"
      * })
      */
-    private $dialog;
+    protected $dialog;
 
     /**
      * @var string
@@ -86,7 +86,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $synopsis;
+    protected $synopsis;
 
     /**
      * @var string
@@ -102,7 +102,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "film_selection_section_show"
      * })
      */
-    private $infoRestauration;
+    protected $infoRestauration;
     
     /**
      * @var string
@@ -117,7 +117,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "projection_list"
      * })
      */
-    private $programSection;
+    protected $programSection;
 
     /**
      * @var string
@@ -125,7 +125,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=false)
      */
-    private $slug;
+    protected $slug;
 
     public function __construct()
     {

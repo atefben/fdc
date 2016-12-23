@@ -40,7 +40,7 @@ class CorpoPalmeOrTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $titleNav;
+    protected $titleNav;
 
     /**
      * @var string
@@ -49,7 +49,7 @@ class CorpoPalmeOrTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -58,7 +58,7 @@ class CorpoPalmeOrTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $content;
+    protected $content;
 
     /**
      * @var string
@@ -67,7 +67,7 @@ class CorpoPalmeOrTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $chapo;
+    protected $chapo;
 
     /**
      * @var string
@@ -76,7 +76,7 @@ class CorpoPalmeOrTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $hideTitle = false;
+    protected $hideTitle = false;
 
     /**
      * @var string
@@ -85,7 +85,7 @@ class CorpoPalmeOrTranslation implements TranslateChildInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"classics"})
      */
-    private $slug;
+    protected $slug;
 
 
 

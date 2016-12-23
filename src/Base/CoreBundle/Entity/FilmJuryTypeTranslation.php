@@ -41,7 +41,7 @@ class FilmJuryTypeTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=true)
      */
-    private $slug;
+    protected $slug;
 
     public function __construct()
     {

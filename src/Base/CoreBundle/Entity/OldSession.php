@@ -19,49 +19,49 @@ class OldSession
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="numsession", type="integer", nullable=false)
      */
-    private $numsession;
+    protected $numsession;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="annee", type="integer", nullable=false)
      */
-    private $annee;
+    protected $annee;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_deb", type="datetime", nullable=true)
      */
-    private $dateDeb;
+    protected $dateDeb;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin", type="datetime", nullable=true)
      */
-    private $dateFin;
+    protected $dateFin;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_online", type="boolean", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var string
      *
      * @ORM\Column(name="president", type="string", length=255, nullable=true)
      */
-    private $president;
+    protected $president;
 
 
 

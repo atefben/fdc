@@ -19,63 +19,63 @@ class OldUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=100, nullable=false)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="organisation", type="string", length=250, nullable=true)
      */
-    private $organisation;
+    protected $organisation;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=100, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=250, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=250, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="receive_email_alerts", type="integer", nullable=true)
      */
-    private $receiveEmailAlerts;
+    protected $receiveEmailAlerts;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
-    private $lastLogin;
+    protected $lastLogin;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_login_ip", type="string", length=15, nullable=true)
      */
-    private $lastLoginIp;
+    protected $lastLoginIp;
 
 
 

@@ -27,7 +27,7 @@ class OrangeVideoOnDemand extends Orange
      * @Groups({"orange_video_on_demand"})
      *
      */
-    private $header;
+    protected $header;
 
     /**
      * @var MediaImage
@@ -36,7 +36,7 @@ class OrangeVideoOnDemand extends Orange
      * @Groups({"orange_video_on_demand"})
      *
      */
-    private $video;
+    protected $video;
 
 
     /**

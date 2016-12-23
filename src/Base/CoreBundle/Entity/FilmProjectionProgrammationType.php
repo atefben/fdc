@@ -28,7 +28,7 @@ class FilmProjectionProgrammationType
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $id;
+    protected $id;
     
     /**
      * @var integer
@@ -37,7 +37,7 @@ class FilmProjectionProgrammationType
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class FilmProjectionProgrammationType
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $name;
+    protected $name;
 
     /**
      * Set id

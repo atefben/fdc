@@ -19,7 +19,7 @@ class OldSfGuardGroupPermission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $groupId;
+    protected $groupId;
 
     /**
      * @var integer
@@ -28,7 +28,7 @@ class OldSfGuardGroupPermission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $permissionId;
+    protected $permissionId;
 
 
 

@@ -56,7 +56,7 @@ class FDCPageWebTvLiveWebTvAssociated
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position = 0;
+    protected $position = 0;
     
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

@@ -36,7 +36,7 @@ class NewsImage extends News
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
-    private $header;
+    protected $header;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
@@ -44,7 +44,7 @@ class NewsImage extends News
      *
      * @Assert\NotNull()
      */
-    private $gallery;
+    protected $gallery;
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

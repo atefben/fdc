@@ -19,35 +19,35 @@ class OldFestivalDate
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="year", type="integer", nullable=true)
      */
-    private $year;
+    protected $year;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_online", type="integer", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
-    private $dateCreation;
+    protected $dateCreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime", nullable=true)
      */
-    private $dateModification;
+    protected $dateModification;
 
 
 

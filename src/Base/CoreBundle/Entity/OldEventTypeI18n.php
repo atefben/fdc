@@ -19,7 +19,7 @@ class OldEventTypeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,14 +28,14 @@ class OldEventTypeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="label", type="string", length=100, nullable=true)
      */
-    private $label;
+    protected $label;
 
 
 

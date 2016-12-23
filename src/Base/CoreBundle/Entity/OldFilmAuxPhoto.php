@@ -17,7 +17,7 @@ class OldFilmAuxPhoto
      *
      * @ORM\Column(name="ID", type="integer", nullable=true)
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class OldFilmAuxPhoto
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idsoif;
+    protected $idsoif;
 
 
 

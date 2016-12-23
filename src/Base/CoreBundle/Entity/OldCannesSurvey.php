@@ -19,168 +19,168 @@ class OldCannesSurvey
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="md5", type="string", length=250, nullable=false)
      */
-    private $md5;
+    protected $md5;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=250, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="init_language", type="string", length=50, nullable=false)
      */
-    private $initLanguage;
+    protected $initLanguage;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=250, nullable=true)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=250, nullable=true)
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="req_language", type="string", length=50, nullable=true)
      */
-    private $reqLanguage;
+    protected $reqLanguage;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="pro_accredite", type="boolean", nullable=false)
      */
-    private $proAccredite;
+    protected $proAccredite;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pro_profile", type="string", length=250, nullable=true)
      */
-    private $proProfile;
+    protected $proProfile;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="pro_is_present", type="boolean", nullable=false)
      */
-    private $proIsPresent;
+    protected $proIsPresent;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pro_nbdays", type="string", length=250, nullable=true)
      */
-    private $proNbdays;
+    protected $proNbdays;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="pro_cinema", type="boolean", nullable=true)
      */
-    private $proCinema;
+    protected $proCinema;
 
     /**
      * @var string
      *
      * @ORM\Column(name="company", type="string", length=250, nullable=true)
      */
-    private $company;
+    protected $company;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="smartphone_owner", type="boolean", nullable=true)
      */
-    private $smartphoneOwner;
+    protected $smartphoneOwner;
 
     /**
      * @var string
      *
      * @ORM\Column(name="smartphone", type="string", length=250, nullable=true)
      */
-    private $smartphone;
+    protected $smartphone;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="mobile_newsletter", type="boolean", nullable=true)
      */
-    private $mobileNewsletter;
+    protected $mobileNewsletter;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="mobile_pushmail", type="boolean", nullable=true)
      */
-    private $mobilePushmail;
+    protected $mobilePushmail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobile_howmanypush", type="string", length=5, nullable=true)
      */
-    private $mobileHowmanypush;
+    protected $mobileHowmanypush;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobile_pushtype", type="string", length=250, nullable=true)
      */
-    private $mobilePushtype;
+    protected $mobilePushtype;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobile_number", type="string", length=50, nullable=true)
      */
-    private $mobileNumber;
+    protected $mobileNumber;
 
     /**
      * @var string
      *
      * @ORM\Column(name="read_festival_content", type="string", length=10, nullable=true)
      */
-    private $readFestivalContent;
+    protected $readFestivalContent;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="read_off_content", type="boolean", nullable=true)
      */
-    private $readOffContent;
+    protected $readOffContent;
 
     /**
      * @var string
      *
      * @ORM\Column(name="read_contenttype", type="string", length=250, nullable=true)
      */
-    private $readContenttype;
+    protected $readContenttype;
 
     /**
      * @var string
      *
      * @ORM\Column(name="wishes", type="string", length=250, nullable=true)
      */
-    private $wishes;
+    protected $wishes;
 
 
 

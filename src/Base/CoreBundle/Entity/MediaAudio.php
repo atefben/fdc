@@ -33,14 +33,14 @@ class MediaAudio extends Media implements RoutedItemInterface
      *
      * @Groups({"news_show", "news_list", "search", "trailer_list", "trailer_show", "web_tv_show", "live", "film_show", "event_show", "home"})
      */
-    private $image;
+    protected $image;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="mediaAudio", cascade={"all"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
-    private $associatedFilms;
+    protected $associatedFilms;
 
     /**
      * @var NewsAudio
@@ -48,7 +48,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      * @ORM\OneToOne(targetEntity="NewsAudio", cascade={"all"}, mappedBy="homepageMediaAudio", orphanRemoval=true)
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
-    private $homepageNews;
+    protected $homepageNews;
 
     public function __construct()
     {

@@ -40,7 +40,7 @@ class CorpoTeamDepartementsTranslation implements TranslateChildInterface
      * @Groups({"classics"})
      *
      */
-    private $departementName;
+    protected $departementName;
 
 
     /**

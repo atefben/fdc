@@ -28,7 +28,7 @@ class WidgetMosaicMovieFilmFilmTranslation
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"event_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * Set title

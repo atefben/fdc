@@ -33,7 +33,7 @@ class FilmAward
      *  "award_list", "award_show",
      * })
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
@@ -45,7 +45,7 @@ class FilmAward
      *  "film_list", "film_show"
      * })
      */
-    private $position;
+    protected $position;
     
     /**
      * @var boolean
@@ -57,7 +57,7 @@ class FilmAward
      *  "film_list", "film_show"
      * })
      */
-    private $filmMutual;
+    protected $filmMutual;
     
     /**
      * @var boolean
@@ -68,7 +68,7 @@ class FilmAward
      *  "award_list", "award_show"
      * })
      */
-    private $personMutual;
+    protected $personMutual;
 
     /**
      * @var string
@@ -79,7 +79,7 @@ class FilmAward
      *  "award_list", "award_show",
      * })
      */
-    private $exAequo;
+    protected $exAequo;
 
     /**
      * @var string
@@ -90,7 +90,7 @@ class FilmAward
      *  "award_list", "award_show",
      * })
      */
-    private $unanimity;
+    protected $unanimity;
 
     /**
      * @var string
@@ -101,14 +101,14 @@ class FilmAward
      *  "award_list", "award_show",
      * })
      */
-    private $comment;
+    protected $comment;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="awards")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var FilmPrize
@@ -120,7 +120,7 @@ class FilmAward
      * "film_list", "film_show"
      * })
      */
-    private $prize;
+    protected $prize;
 
     /**
      * @var FilmAwardAssociation
@@ -129,7 +129,7 @@ class FilmAward
      *
      * @Groups({"award_list", "award_show"})
      */
-    private $associations;
+    protected $associations;
 
     /**
      * Constructor

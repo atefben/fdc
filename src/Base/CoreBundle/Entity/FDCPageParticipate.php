@@ -34,21 +34,21 @@ class FDCPageParticipate implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $instit;
+    protected $instit;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $evenmnt;
+    protected $evenmnt;
 
 
     /**
@@ -56,19 +56,19 @@ class FDCPageParticipate implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $level2;
+    protected $level2;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $level3;
+    protected $level3;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @var FDCPageParticipateHasSection

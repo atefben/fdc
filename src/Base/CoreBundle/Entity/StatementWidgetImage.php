@@ -21,7 +21,7 @@ class StatementWidgetImage extends StatementWidget
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
      * @Groups({"news_show"})
      */
-    private $gallery;
+    protected $gallery;
 
     /**
      * Set gallery

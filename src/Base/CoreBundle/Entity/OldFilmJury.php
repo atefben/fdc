@@ -19,105 +19,105 @@ class OldFilmJury
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idjury;
+    protected $idjury;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFESTIVAL", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPERSONNE", type="integer", nullable=true)
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPEJURY", type="string", length=30, nullable=true)
      */
-    private $typejury;
+    protected $typejury;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FONCTION_VF", type="string", length=50, nullable=true)
      */
-    private $fonctionVf;
+    protected $fonctionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FONCTION_VA", type="string", length=50, nullable=true)
      */
-    private $fonctionVa;
+    protected $fonctionVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CLEDETRI", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $cledetri;
+    protected $cledetri;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VF", type="text", nullable=true)
      */
-    private $bioFilmoVf;
+    protected $bioFilmoVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VA", type="text", nullable=true)
      */
-    private $bioFilmoVa;
+    protected $bioFilmoVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VF2", type="text", nullable=true)
      */
-    private $bioFilmoVf2;
+    protected $bioFilmoVf2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VA2", type="text", nullable=true)
      */
-    private $bioFilmoVa2;
+    protected $bioFilmoVa2;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDTYPEJURY", type="integer", nullable=true)
      */
-    private $idtypejury;
+    protected $idtypejury;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDFONCTIONJURY", type="integer", nullable=true)
      */
-    private $idfonctionjury;
+    protected $idfonctionjury;
 
 
 

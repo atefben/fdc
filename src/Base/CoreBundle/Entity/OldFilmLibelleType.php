@@ -19,49 +19,49 @@ class OldFilmLibelleType
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idtype;
+    protected $idtype;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLE", type="string", length=200, nullable=false)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TABLEDEST", type="string", length=50, nullable=true)
      */
-    private $tabledest;
+    protected $tabledest;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TABLEORIG", type="string", length=50, nullable=true)
      */
-    private $tableorig;
+    protected $tableorig;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TABLECLE", type="string", length=50, nullable=true)
      */
-    private $tablecle;
+    protected $tablecle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TABLECOLUMN", type="string", length=50, nullable=false)
      */
-    private $tablecolumn;
+    protected $tablecolumn;
 
 
 

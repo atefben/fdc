@@ -29,7 +29,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -37,7 +37,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(type="string", nullable=false)
      *
      */
-    private $route;
+    protected $route;
 
     /**
      * @var string
@@ -45,7 +45,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(type="boolean", nullable=false)
      *
      */
-    private $hasWaitingPage;
+    protected $hasWaitingPage;
 
     /**
      * @var string
@@ -53,7 +53,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(type="integer", nullable=false)
      *
      */
-    private $site;
+    protected $site;
 
     /**
      * @var string
@@ -61,7 +61,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(type="integer", nullable=false)
      *
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
@@ -69,7 +69,7 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(type="string", nullable=false)
      *
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -77,53 +77,53 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(type="string", nullable=false)
      *
      */
-    private $transName;
+    protected $transName;
 
     /**
      * @var string
      *
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $enabled;
+    protected $enabled;
 
     /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      */
-    private $lft;
+    protected $lft;
     /**
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer")
      */
-    private $lvl;
+    protected $lvl;
     /**
      * @Gedmo\TreeRight
      * @ORM\Column(name="rgt", type="integer")
      */
-    private $rgt;
+    protected $rgt;
     /**
      * @Gedmo\TreeRoot
      * @ORM\Column(name="root", type="integer", nullable=true)
      */
-    private $root;
+    protected $root;
 
     /**
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $hidden;
+    protected $hidden;
 
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="FDCEventRoutes", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $parent;
+    protected $parent;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCEventRoutes", mappedBy="parent")
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $children;
+    protected $children;
 
     /**
      * @Gedmo\Slug(handlers={
@@ -134,12 +134,12 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * }, fields={"route"})
      * @Doctrine\ORM\Mapping\Column(length=255, nullable=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @ORM\Column(name="position", type="integer", nullable=false, options={"default" = 0})
      */
-    private $position = 0;
+    protected $position = 0;
 
 
     public function __construct()

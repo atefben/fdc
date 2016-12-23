@@ -19,42 +19,42 @@ class OldSessionParticipant
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=500, nullable=true)
      */
-    private $image;
+    protected $image;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="session_id", type="integer", nullable=true)
      */
-    private $sessionId;
+    protected $sessionId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="order", type="integer", nullable=true)
      */
-    private $order;
+    protected $order;
 
 
 

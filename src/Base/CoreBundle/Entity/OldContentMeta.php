@@ -19,7 +19,7 @@ class OldContentMeta
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,14 +28,14 @@ class OldContentMeta
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $contentType;
+    protected $contentType;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="count_translated", type="integer", nullable=false)
      */
-    private $countTranslated;
+    protected $countTranslated;
 
 
 

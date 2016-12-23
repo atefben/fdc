@@ -30,7 +30,7 @@ class GalleryTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $titleHomeCorpo;
+    protected $titleHomeCorpo;
 
     /**
      * @var string

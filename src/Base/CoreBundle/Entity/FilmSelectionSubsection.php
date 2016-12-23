@@ -46,7 +46,7 @@ class FilmSelectionSubsection implements TranslateMainInterface
      *     "home"
      * })
      */
-    private $id;
+    protected $id;
     
     
     /**
@@ -70,7 +70,7 @@ class FilmSelectionSubsection implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="subsections", cascade={"persist"})
      */
-    private $selection;
+    protected $selection;
 
     /**
      * Constructor

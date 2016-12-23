@@ -79,7 +79,7 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
      *
      * @ORM\Column(name="contactTitle", type="string", length=255, nullable=true)
      */
-    private $contactTitle;
+    protected $contactTitle;
 
     /**
      * @var string
@@ -87,7 +87,7 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $firstColumnContact;
+    protected $firstColumnContact;
 
     /**
      * @var string
@@ -95,7 +95,7 @@ class CorpoMovieInscriptionProcedureTranslation implements TranslateChildInterfa
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $secondColumnContact;
+    protected $secondColumnContact;
 
     /**
      * @var string

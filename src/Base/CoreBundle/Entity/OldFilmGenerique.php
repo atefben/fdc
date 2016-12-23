@@ -19,119 +19,119 @@ class OldFilmGenerique
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idgenerique;
+    protected $idgenerique;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPERSONNE", type="integer", nullable=true)
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFILM", type="string", length=36, nullable=true)
      */
-    private $idfilm;
+    protected $idfilm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FONCTION_VF", type="string", length=40, nullable=true)
      */
-    private $fonctionVf;
+    protected $fonctionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FONCTION_VA", type="string", length=40, nullable=true)
      */
-    private $fonctionVa;
+    protected $fonctionVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VF", type="string", length=50, nullable=true)
      */
-    private $roleVf;
+    protected $roleVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VA", type="string", length=50, nullable=true)
      */
-    private $roleVa;
+    protected $roleVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ORDRE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $ordre;
+    protected $ordre;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDFONCTION", type="integer", nullable=true)
      */
-    private $idfonction;
+    protected $idfonction;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VARE", type="string", length=255, nullable=true)
      */
-    private $roleVare;
+    protected $roleVare;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VCHI", type="string", length=255, nullable=true)
      */
-    private $roleVchi;
+    protected $roleVchi;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VESP", type="string", length=255, nullable=true)
      */
-    private $roleVesp;
+    protected $roleVesp;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VJPN", type="string", length=255, nullable=true)
      */
-    private $roleVjpn;
+    protected $roleVjpn;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VPRT", type="string", length=255, nullable=true)
      */
-    private $roleVprt;
+    protected $roleVprt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ROLE_VRUS", type="string", length=255, nullable=true)
      */
-    private $roleVrus;
+    protected $roleVrus;
 
 
 

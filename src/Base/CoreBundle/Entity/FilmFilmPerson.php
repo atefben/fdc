@@ -42,7 +42,7 @@ class FilmFilmPerson implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
     
     /**
      * @var FilmFilm
@@ -50,7 +50,7 @@ class FilmFilmPerson implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="persons", cascade={"persist"})
      * @ORM\JoinColumn(name="film_id", referencedColumnName="id", nullable=false)
      */
-    private $film;
+    protected $film;
 
     /**
      * @var FilmPerson
@@ -75,7 +75,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $person;
+    protected $person;
 
     /**
      * @var int
@@ -95,7 +95,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $position;
+    protected $position;
 
     /**
      * @var FilmFilmPersonFunction
@@ -111,7 +111,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "orange_studio"
      * })
      */
-    private $functions;
+    protected $functions;
 
     /**
      * @var ArrayCollection

@@ -80,7 +80,7 @@ class MediaImageSimple implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var User
@@ -88,7 +88,7 @@ class MediaImageSimple implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $updatedBy;
+    protected $updatedBy;
 
 
     /**
@@ -123,7 +123,7 @@ class MediaImageSimple implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
-    private $sites;
+    protected $sites;
 
     /**
      * Get id

@@ -25,91 +25,91 @@ class CinefPerson
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
     
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="cinefPersons")
      */
-    private $person;
+    protected $person;
     
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="CinefSession", inversedBy="cinefPersons")
      */
-    private $session;
+    protected $session;
     
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $gender;
+    protected $gender;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=60, nullable=true)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=60, nullable=true)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $receptionDate;
+    protected $receptionDate;
 
     /**
      * @var string
      *
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      */
-    private $duration;
+    protected $duration;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $selection;
+    protected $selection;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $bioFilmVf;
+    protected $bioFilmVf;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $bioFilmVa;
+    protected $bioFilmVa;
     
     /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="cinefPerson")
      */
-    private $medias;
+    protected $medias;
     /**
      * Constructor
      */

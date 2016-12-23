@@ -49,7 +49,7 @@ class FilmPerson implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -71,7 +71,7 @@ class FilmPerson implements TranslateMainInterface
      *     "jury_show"
      * })
      */
-    private $portraitImage;
+    protected $portraitImage;
 
     /**
      * @var MediaImageSimple
@@ -93,7 +93,7 @@ class FilmPerson implements TranslateMainInterface
      *     "jury_show"
      * })
      */
-    private $credits;
+    protected $credits;
 
     /**
      * @var MediaImageSimple
@@ -115,7 +115,7 @@ class FilmPerson implements TranslateMainInterface
      *     "jury_show"
      * })
      */
-    private $presidentJuryCredits;
+    protected $presidentJuryCredits;
 
     /**
      * @var MediaImageSimple
@@ -137,7 +137,7 @@ class FilmPerson implements TranslateMainInterface
      *     "jury_show"
      * })
      */
-    private $landscapeImage;
+    protected $landscapeImage;
 
     /**
      * Image to use: false = portaitImage, true landscapeImage
@@ -160,7 +160,7 @@ class FilmPerson implements TranslateMainInterface
      *     "jury_show"
      * })
      */
-    private $displayedImage = false;
+    protected $displayedImage = false;
 
     /**
      * @var MediaImageSimple
@@ -182,20 +182,20 @@ class FilmPerson implements TranslateMainInterface
      *     "jury_show"
      * })
      */
-    private $presidentJuryImage;
+    protected $presidentJuryImage;
 
     /**
      * @var string
      * @Gedmo\Slug(fields={"firstname", "lastname"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var boolean
      * @ORM\Column(name="duplicate", type="boolean", options={"default" : 0})
      */
-    private $duplicate = false;
+    protected $duplicate = false;
 
     /**
      * @var string
@@ -221,7 +221,7 @@ class FilmPerson implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @var string
@@ -247,7 +247,7 @@ class FilmPerson implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
@@ -273,7 +273,7 @@ class FilmPerson implements TranslateMainInterface
      *     "search"
      * })
      */
-    private $asianName;
+    protected $asianName;
 
     /**
      * @ORM\ManyToOne(targetEntity="Country")
@@ -292,7 +292,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      * })
      */
-    private $nationality;
+    protected $nationality;
 
     /**
      * @ORM\ManyToOne(targetEntity="Country")
@@ -311,36 +311,36 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list"
      * })
      */
-    private $nationality2;
+    protected $nationality2;
 
     /**
      * @var string
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
-     * private $function;
+     * protected $function;
      * /**
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
      */
-    private $address;
+    protected $address;
 
     /**
      * @var FilmFilmPerson
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"all"})
      * @Groups({"person_list", "person_show"})
      */
-    private $films;
+    protected $films;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person", cascade={"remove"}))
      * @Groups({"person_list", "person_show"})
      * @ORM\OrderBy({"festival" = "DESC"})
      */
-    private $juries;
+    protected $juries;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="person", orphanRemoval=true)
      * @Groups({"person_list", "person_show"})
      */
-    private $awards;
+    protected $awards;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmPersonMedia", mappedBy="person", cascade={"all"})
@@ -349,13 +349,13 @@ class FilmPerson implements TranslateMainInterface
      *  "jury_list", "jury_show"
      * })
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @ORM\OneToMany(targetEntity="CinefPerson", mappedBy="person")
      * @Groups({"person_list", "person_show"})
      */
-    private $cinefPersons;
+    protected $cinefPersons;
 
     /**
      * @var ArrayCollection
@@ -371,31 +371,31 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\ManyToMany(targetEntity="FilmPerson")
      * @Groups({"person_list", "person_show"})
      */
-    private $duplicates;
+    protected $duplicates;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmPerson")
      * @Groups({"person_list", "person_show"})
      */
-    private $owner;
+    protected $owner;
 
     /**
      * @var string
      * @ORM\Column(name="selfkit", type="string", length=255, nullable=true)
      */
-    private $selfkit;
+    protected $selfkit;
 
     /**
      * @var array
      * @ORM\Column(name="duplicate_ids", type="text", nullable=true)
      */
-    private $duplicateIds;
+    protected $duplicateIds;
 
     /**
      * @var array
      * @ORM\Column(name="duplicate_selfkits", type="text", nullable=true)
      */
-    private $duplicateSelfkits;
+    protected $duplicateSelfkits;
 
     /**
      * @var ArrayCollection
@@ -405,7 +405,7 @@ class FilmPerson implements TranslateMainInterface
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
      *      )
      */
-    private $selfkitImages;
+    protected $selfkitImages;
 
     /**
      * Constructor

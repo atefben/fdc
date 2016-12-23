@@ -31,7 +31,7 @@ class PressDownloadSection implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var PressDownloadSectionWidget
@@ -40,7 +40,7 @@ class PressDownloadSection implements TranslateMainInterface
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * ArrayCollection

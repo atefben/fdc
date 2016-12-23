@@ -33,7 +33,7 @@ class FilmFilmPersonFunction
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
@@ -51,7 +51,7 @@ class FilmFilmPersonFunction
      *     "orange_studio"
      * })
      */
-    private $position;
+    protected $position;
 
     /**
      * @var FilmFunction
@@ -68,7 +68,7 @@ class FilmFilmPersonFunction
      *     "orange_studio"
      * })
      */
-    private $function;
+    protected $function;
 
     /**
      * @var FilmFilmPerson
@@ -77,7 +77,7 @@ class FilmFilmPersonFunction
      * @ORM\JoinColumn(name="film_person_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      *
      */
-    private $filmPerson;
+    protected $filmPerson;
 
     /**
      * __construct function.

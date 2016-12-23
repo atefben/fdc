@@ -30,14 +30,14 @@ class FilmMediaCategory implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      */
-    private $id;
+    protected $id;
     
     /**
      * @var Film
      *
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="category")
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @var ArrayCollection

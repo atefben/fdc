@@ -27,7 +27,7 @@ class FilmFilmCountry
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
@@ -46,7 +46,7 @@ class FilmFilmCountry
      *     "search"
      * })
      */
-    private $position;
+    protected $position;
     
     /**
      * @var Country
@@ -65,14 +65,14 @@ class FilmFilmCountry
      *     "search"
      * })
      */
-    private $country;
+    protected $country;
 
     /**
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="countries")
      */
-    private $film;
+    protected $film;
 
     /**
      * Get id

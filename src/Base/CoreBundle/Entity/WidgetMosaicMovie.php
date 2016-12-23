@@ -28,14 +28,14 @@ class WidgetMosaicMovie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var Media
@@ -43,7 +43,7 @@ class WidgetMosaicMovie
      * @ORM\OneToMany(targetEntity="WidgetMosaicMovieFilmFilm", mappedBy="widgetMosaicMovie", cascade={"persist"})
      * @Groups({"event_show"})
      */
-    private $films;
+    protected $films;
 
     /**
      * Constructor

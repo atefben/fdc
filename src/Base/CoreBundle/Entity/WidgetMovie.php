@@ -28,13 +28,13 @@ class WidgetMovie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    protected $title;
 
 
     /**
@@ -43,7 +43,7 @@ class WidgetMovie
      * @ORM\OneToMany(targetEntity="WidgetMovieFilmFilm", mappedBy="widgetMovie", cascade={"persist"}, orphanRemoval=true)
      * @Groups({"classics"})
      */
-    private $films;
+    protected $films;
 
     /**
      * Constructor

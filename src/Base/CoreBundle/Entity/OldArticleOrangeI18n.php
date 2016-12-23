@@ -19,7 +19,7 @@ class OldArticleOrangeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,35 +28,35 @@ class OldArticleOrangeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=500, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_filename", type="string", length=255, nullable=true)
      */
-    private $imageFilename;
+    protected $imageFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_copyright", type="string", length=255, nullable=true)
      */
-    private $imageCopyright;
+    protected $imageCopyright;
 
 
 

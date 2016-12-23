@@ -25,35 +25,35 @@ class HomepageCorporateSlide
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Info
      *
      * @ORM\ManyToOne(targetEntity="Info")
      */
-    private $info;
+    protected $info;
 
     /**
      * @var Info
      *
      * @ORM\ManyToOne(targetEntity="Statement")
      */
-    private $statement;
+    protected $statement;
 
     /**
      * @var HomepageCorporate
      *
      * @ORM\ManyToOne(targetEntity="HomepageCorporate")
      */
-    private $homepage;
+    protected $homepage;
 
     /**
      * @var position
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
 
 
     /**

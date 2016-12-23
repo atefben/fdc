@@ -19,63 +19,63 @@ class OldArticleExtraFieldI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $autoincrement;
+    protected $autoincrement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="culture", type="string", length=7, nullable=false)
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pdf_file_label", type="string", length=255, nullable=false)
      */
-    private $pdfFileLabel;
+    protected $pdfFileLabel;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pdf_file", type="string", length=255, nullable=false)
      */
-    private $pdfFile;
+    protected $pdfFile;
 
     /**
      * @var string
      *
      * @ORM\Column(name="external_file_label", type="string", length=255, nullable=false)
      */
-    private $externalFileLabel;
+    protected $externalFileLabel;
 
     /**
      * @var string
      *
      * @ORM\Column(name="external_file", type="string", length=255, nullable=false)
      */
-    private $externalFile;
+    protected $externalFile;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=true)
      */
-    private $source;
+    protected $source;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="article_date", type="datetime", nullable=false)
      */
-    private $articleDate;
+    protected $articleDate;
 
 
 

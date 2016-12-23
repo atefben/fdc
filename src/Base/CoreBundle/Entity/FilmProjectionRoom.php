@@ -34,7 +34,7 @@ class FilmProjectionRoom
      *     "home",
      *     "news_list", "search"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -51,7 +51,7 @@ class FilmProjectionRoom
      * })
      * @Serializer\Accessor(getter="getApiName")
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -61,7 +61,7 @@ class FilmProjectionRoom
      *  "projection_list", "projection_show"
      * })
      */
-    private $projections;
+    protected $projections;
 
     /**
      * Constructor

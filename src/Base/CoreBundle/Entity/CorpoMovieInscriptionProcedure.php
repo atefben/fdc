@@ -33,45 +33,45 @@ class CorpoMovieInscriptionProcedure implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
      */
-    private $pdf;
+    protected $pdf;
 
     /**
      * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $procedureFile;
+    protected $procedureFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $mainImage;
+    protected $mainImage;
 
     /**
      * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $procedureSecondFile;
+    protected $procedureSecondFile;
 
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $displayReglement;
+    protected $displayReglement;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $displayInscription;
+    protected $displayInscription;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $displayContact;
+    protected $displayContact;
 
     /**
      * ArrayCollection

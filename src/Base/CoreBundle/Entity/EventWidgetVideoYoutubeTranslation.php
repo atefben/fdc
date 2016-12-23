@@ -34,7 +34,7 @@ class EventWidgetVideoYoutubeTranslation
      *
      * @Groups({"event_show"})
      */
-    private $url;
+    protected $url;
 
     /**
      * @var string
@@ -43,7 +43,7 @@ class EventWidgetVideoYoutubeTranslation
      *
      * @Groups({"event_show"})
      */
-    private $title;
+    protected $title;
 
     
 

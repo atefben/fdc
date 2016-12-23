@@ -19,7 +19,7 @@ class OldFilmProjectionFilm
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idprojection;
+    protected $idprojection;
 
     /**
      * @var string
@@ -28,7 +28,7 @@ class OldFilmProjectionFilm
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $idfilm;
+    protected $idfilm;
 
 
 

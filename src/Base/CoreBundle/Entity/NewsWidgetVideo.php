@@ -20,7 +20,7 @@ class NewsWidgetVideo extends NewsWidget
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $file;
+    protected $file;
 
     /**
      * Set file

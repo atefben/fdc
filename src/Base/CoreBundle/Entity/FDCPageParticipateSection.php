@@ -32,7 +32,7 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FDCPageParticipateSectionWidget
@@ -41,7 +41,7 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * ArrayCollection
@@ -53,35 +53,35 @@ class FDCPageParticipateSection implements TranslateMainInterface,FDCPagePartici
      *
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $mobile;
+    protected $mobile;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $instit;
+    protected $instit;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $evenmt;
+    protected $evenmt;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $page;
+    protected $page;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $stratePosition;
+    protected $stratePosition;
 
 
     /**

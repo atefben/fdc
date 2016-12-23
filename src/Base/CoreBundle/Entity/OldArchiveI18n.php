@@ -19,7 +19,7 @@ class OldArchiveI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,77 +28,77 @@ class OldArchiveI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var string
      *
      * @ORM\Column(name="text1", type="text", nullable=true)
      */
-    private $text1;
+    protected $text1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="text2", type="text", nullable=true)
      */
-    private $text2;
+    protected $text2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="text3", type="text", nullable=true)
      */
-    private $text3;
+    protected $text3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="poster", type="string", length=500, nullable=true)
      */
-    private $poster;
+    protected $poster;
 
     /**
      * @var string
      *
      * @ORM\Column(name="selection", type="string", length=500, nullable=true)
      */
-    private $selection;
+    protected $selection;
 
     /**
      * @var string
      *
      * @ORM\Column(name="jury", type="string", length=500, nullable=true)
      */
-    private $jury;
+    protected $jury;
 
     /**
      * @var string
      *
      * @ORM\Column(name="award", type="string", length=500, nullable=true)
      */
-    private $award;
+    protected $award;
 
     /**
      * @var string
      *
      * @ORM\Column(name="around_the_selection", type="string", length=500, nullable=true)
      */
-    private $aroundTheSelection;
+    protected $aroundTheSelection;
 
     /**
      * @var string
      *
      * @ORM\Column(name="daily", type="string", length=500, nullable=true)
      */
-    private $daily;
+    protected $daily;
 
 
 

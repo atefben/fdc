@@ -34,7 +34,7 @@ class StatementAudio extends Statement
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $header;
+    protected $header;
 
     /**
      * @var MediaAudio
@@ -43,7 +43,7 @@ class StatementAudio extends Statement
      * @Groups({"news_list", "search", "news_show", "home"})
      * @Assert\NotNull()
      */
-    private $audio;
+    protected $audio;
 
 
     public function __toString() {

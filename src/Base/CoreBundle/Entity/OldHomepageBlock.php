@@ -19,42 +19,42 @@ class OldHomepageBlock
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_online", type="boolean", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="file_class", type="integer", nullable=true)
      */
-    private $fileClass;
+    protected $fileClass;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="integer", nullable=true)
      */
-    private $priority;
+    protected $priority;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
 
 

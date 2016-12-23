@@ -19,98 +19,98 @@ class OldWebsiteSection
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="relative_position", type="integer", nullable=true)
      */
-    private $relativePosition;
+    protected $relativePosition;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="child_of", type="integer", nullable=true)
      */
-    private $childOf;
+    protected $childOf;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="landing_page", type="integer", nullable=true)
      */
-    private $landingPage;
+    protected $landingPage;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="main_menu", type="boolean", nullable=true)
      */
-    private $mainMenu;
+    protected $mainMenu;
 
     /**
      * @var string
      *
      * @ORM\Column(name="discrete_url", type="string", length=255, nullable=true)
      */
-    private $discreteUrl;
+    protected $discreteUrl;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_online", type="boolean", nullable=false)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="view_on_dashboard", type="boolean", nullable=false)
      */
-    private $viewOnDashboard;
+    protected $viewOnDashboard;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="pin_on_dashboard", type="boolean", nullable=false)
      */
-    private $pinOnDashboard;
+    protected $pinOnDashboard;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dashboard_priority", type="integer", nullable=false)
      */
-    private $dashboardPriority;
+    protected $dashboardPriority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="translation_status", type="integer", nullable=false)
      */
-    private $translationStatus;
+    protected $translationStatus;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
 
 

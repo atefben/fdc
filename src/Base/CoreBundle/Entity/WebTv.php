@@ -42,21 +42,21 @@ class WebTv implements TranslateMainInterface
      *
      * @Groups({"live", "web_tv_show", "live"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="webTv")
      *
      * @Groups({"live", "web_tv_show", "live"})
      */
-    private $mediaVideos;
+    protected $mediaVideos;
 
     /**
      * @var Homepage
@@ -64,20 +64,20 @@ class WebTv implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topWebTvs")
      * @ORM\JoinColumn(name="homepage")
      */
-    private $homepage;
+    protected $homepage;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      * @Groups({"live", "web_tv_show", "live"})
      */
-    private $image;
+    protected $image;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="association")
      *
      */
-    private $associatedWebTvs;
+    protected $associatedWebTvs;
 
     /**
      * @var ArrayCollection

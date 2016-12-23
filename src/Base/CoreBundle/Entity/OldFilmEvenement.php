@@ -17,7 +17,7 @@ class OldFilmEvenement
      *
      * @ORM\Column(name="DATEEVENT", type="datetime", nullable=true)
      */
-    private $dateevent;
+    protected $dateevent;
 
     /**
      * @var string
@@ -26,126 +26,126 @@ class OldFilmEvenement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idevenement;
+    protected $idevenement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFESTIVAL", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VF", type="string", length=80, nullable=true)
      */
-    private $titreVf;
+    protected $titreVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VA", type="string", length=80, nullable=true)
      */
-    private $titreVa;
+    protected $titreVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDPERSONNE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPEEVENEMENT", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $typeevenement;
+    protected $typeevenement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VF", type="text", nullable=true)
      */
-    private $descriptionVf;
+    protected $descriptionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VA", type="text", nullable=true)
      */
-    private $descriptionVa;
+    protected $descriptionVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VF2", type="text", nullable=true)
      */
-    private $descriptionVf2;
+    protected $descriptionVf2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VA2", type="text", nullable=true)
      */
-    private $descriptionVa2;
+    protected $descriptionVa2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VF3", type="text", nullable=true)
      */
-    private $descriptionVf3;
+    protected $descriptionVf3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VA3", type="text", nullable=true)
      */
-    private $descriptionVa3;
+    protected $descriptionVa3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VF4", type="text", nullable=true)
      */
-    private $descriptionVf4;
+    protected $descriptionVf4;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VA4", type="text", nullable=true)
      */
-    private $descriptionVa4;
+    protected $descriptionVa4;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ORDRE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $ordre;
+    protected $ordre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
 
 

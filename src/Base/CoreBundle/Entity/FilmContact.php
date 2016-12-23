@@ -26,7 +26,7 @@ class FilmContact implements FilmContactInterface
      * @ORM\Column(type="integer")
      * @ORM\Id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -34,7 +34,7 @@ class FilmContact implements FilmContactInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"film_show"})
      */
-    private $companyName;
+    protected $companyName;
 
     /**
      * @var string
@@ -42,7 +42,7 @@ class FilmContact implements FilmContactInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"film_show"})
      */
-    private $type;
+    protected $type;
 
     /**
      * @var integer
@@ -50,14 +50,14 @@ class FilmContact implements FilmContactInterface
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"film_show"})
      */
-    private $position;
+    protected $position;
 
     /**
      * @var FilmAddress
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="contacts", cascade={"persist"})
      * @Groups({"film_show"})
      */
-    private $address;
+    protected $address;
 
     /**
      * @var FilmContactPerson
@@ -65,21 +65,21 @@ class FilmContact implements FilmContactInterface
      * @ORM\ManyToOne(targetEntity="FilmContactPerson", cascade={"persist"})
      * @Groups({"film_show"})
      */
-    private $person;
+    protected $person;
     
     /**
      * @var FilmFilm
      *
      * @ORM\ManyToMany(targetEntity="FilmFilm", mappedBy="contacts")
      */ 
-    private $films;
+    protected $films;
     
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact")
      * @Groups({"film_show"})
      * @ORM\OrderBy({"position"="asc"})
      */
-    private $subordinates;
+    protected $subordinates;
 
     /**
      * Constructor

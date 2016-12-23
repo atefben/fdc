@@ -39,7 +39,7 @@ class FilmProjection
      *     "news_list", "search"
      * })
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
@@ -56,7 +56,7 @@ class FilmProjection
      *     "news_list", "search"
      * })
      */
-    private $startsAt;
+    protected $startsAt;
 
     /**
      * @var \DateTime
@@ -72,7 +72,7 @@ class FilmProjection
      *     "news_list", "search"
      * })
      */
-    private $endsAt;
+    protected $endsAt;
 
     /**
      * @var string
@@ -89,7 +89,7 @@ class FilmProjection
      *     "news_list", "search"
      * })
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
@@ -101,7 +101,7 @@ class FilmProjection
      *     "projection_show",
      * })
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -113,14 +113,14 @@ class FilmProjection
      *     "projection_show",
      * })
      */
-    private $programmationSection;
+    protected $programmationSection;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var FilmProjectionRoom
@@ -135,7 +135,7 @@ class FilmProjection
      *     "news_list", "search"
      * })
      */
-    private $room;
+    protected $room;
 
     /**
      * @var FilmProjectionProgrammationFilm
@@ -144,7 +144,7 @@ class FilmProjection
      *
      * @Groups({"projection_list", "projection_show", "home", "news_list", "search"})
      */
-    private $programmationFilms;
+    protected $programmationFilms;
 
     /**
      * @var FilmProjectionProgrammationDynamic
@@ -152,7 +152,7 @@ class FilmProjection
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationDynamic", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
      */
-    private $programmationDynamics;
+    protected $programmationDynamics;
 
     /**
      * @var FilmProjectionProgrammationFilmList
@@ -160,7 +160,7 @@ class FilmProjection
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
      */
-    private $programmationFilmsList;
+    protected $programmationFilmsList;
 
     /**
      * @var FilmProjectionMedia
@@ -169,7 +169,7 @@ class FilmProjection
      *
      * @Groups({"projection_list", "projection_show", "news_list", "search"})
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @var ArrayCollection

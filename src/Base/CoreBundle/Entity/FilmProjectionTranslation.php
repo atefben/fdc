@@ -37,7 +37,7 @@ class FilmProjectionTranslation implements TranslateChildInterface
      *  "film_list", "film_show",
      * })
      */
-    private $programSection;
+    protected $programSection;
 
     public function __construct()
     {

@@ -31,7 +31,7 @@ class CorpoMediatheque implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -39,7 +39,7 @@ class CorpoMediatheque implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $image;
+    protected $image;
 
     /**
      * @var ArrayCollection
@@ -53,14 +53,14 @@ class CorpoMediatheque implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="CorpoMediathequeMedia", mappedBy="mediatheque", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="displayedSelection", type="boolean")
      */
-    private $displayedSelection;
+    protected $displayedSelection;
 
 
     /**

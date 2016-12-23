@@ -25,18 +25,18 @@ class GalleryDualAlignMedia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImage")
      * @Groups({"news_show"})
      */
-    private $media;
+    protected $media;
 
     /**
      * @ORM\ManyToOne(targetEntity="GalleryDualAlign", inversedBy="medias")
      */
-    private $gallery;
+    protected $gallery;
 
     /**
      * Get id

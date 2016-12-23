@@ -37,21 +37,21 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"news_list", "search", "news_show", "film_show", "event_show", "home"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
-    private $jobMp3State;
+    protected $jobMp3State;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $jobMp3Id;
+    protected $jobMp3Id;
 
     /**
      * @var string
@@ -59,7 +59,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      * @Groups({"news_list", "search", "news_show", "film_show", "event_show", "home"})
      */
-    private $mp3Url;
+    protected $mp3Url;
 
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
@@ -68,14 +68,14 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      */
-    private $file;
+    protected $file;
 
     /**
      * @var AmazonRemoteFile
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\AmazonRemoteFile")
      * @ORM\JoinColumn(name="amazon_remote_file_id", referencedColumnName="id")
      */
-    private $amazonRemoteFile;
+    protected $amazonRemoteFile;
 
     /**
      * Set title

@@ -19,7 +19,7 @@ class OldSfGuardUserPermission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $userId;
+    protected $userId;
 
     /**
      * @var integer
@@ -28,7 +28,7 @@ class OldSfGuardUserPermission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $permissionId;
+    protected $permissionId;
 
 
 

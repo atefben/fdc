@@ -19,42 +19,42 @@ class OldLanguage
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="culture", type="string", length=5, nullable=true)
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="label", type="string", length=100, nullable=true)
      */
-    private $label;
+    protected $label;
 
     /**
      * @var string
      *
      * @ORM\Column(name="label_en", type="string", length=100, nullable=true)
      */
-    private $labelEn;
+    protected $labelEn;
 
     /**
      * @var string
      *
      * @ORM\Column(name="dir", type="string", length=3, nullable=true)
      */
-    private $dir;
+    protected $dir;
 
     /**
      * @var string
      *
      * @ORM\Column(name="codeiso", type="string", length=3, nullable=false)
      */
-    private $codeiso;
+    protected $codeiso;
 
 
 
