@@ -50,7 +50,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      *
      * @Groups({"news_list", "search", "news_show", "home", "film_show"})
      */
-    private $id;
+    protected $id;
 
      /**
       * @var Theme
@@ -60,21 +60,21 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
       */
-    private $theme;
+    protected  $theme;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage", cascade={"all"})
      */
-    private $homepage;
+    protected $homepage;
 
     /**
      * @var boolean
@@ -82,7 +82,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Column(type="boolean", options={"default":0})
      * @Groups({"news_show"})
      */
-    private $hideSameDay;
+    protected $hideSameDay;
 
     /**
      * @var boolean
@@ -90,21 +90,21 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Column(type="boolean", options={"default":0})
      *
      */
-    private $displayedHome;
+    protected $displayedHome;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $displayedMobile;
+    protected $displayedMobile;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
      */
-    private $excludeFromSearch;
+    protected $excludeFromSearch;
 
     /**
      * @var string
@@ -113,7 +113,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      *
      * @Groups({"news_show", "film_show"})
      */
-    private $signature;
+    protected $signature;
 
     /**
      * @var string
@@ -121,14 +121,14 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $typeClone;
+    protected $typeClone;
 
     /**
      * @var string
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $hidden = 0;
+    protected $hidden = 0;
 
     /**
      * @var NewsTag
@@ -136,38 +136,38 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      */
-    private $tags;
+    protected $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $associatedNews;
+    protected $associatedNews;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="news")
      */
-    private $associatedFilm;
+    protected $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
      */
-    private $associatedEvent;
+    protected $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmProjectionAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      */
-    private $associatedProjections;
+    protected $associatedProjections;
 
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_show"})
      */
-    private $associatedFilms;
+    protected $associatedFilms;
 
     /**
      * @var NewsWidget
@@ -177,7 +177,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"news_show"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * @var Site
@@ -185,7 +185,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\ManyToMany(targetEntity="Site")
      *
      */
-    private $sites;
+    protected $sites;
 
     /**
      * @var \DateTime
@@ -193,7 +193,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      * @Groups({"news_list", "search", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
@@ -201,7 +201,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
      * @Groups({"news_list", "search", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
      */
-    private $publishEndedAt;
+    protected $publishEndedAt;
 
     /**
      * ArrayCollection
@@ -217,7 +217,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      *
      * @Groups({"news_show"})
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var User
@@ -225,7 +225,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @var MediaVideo
@@ -233,7 +233,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\OneToOne(targetEntity="MediaAudio", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
-    private $homepageMediaAudio;
+    protected $homepageMediaAudio;
 
     /**
      * @var MediaVideo
@@ -241,12 +241,12 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\OneToOne(targetEntity="MediaVideo", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
-    private $homepageMediaVideo;
+    protected $homepageMediaVideo;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $oldNewsId;
+    protected $oldNewsId;
 
     /**
      * @var string
@@ -254,7 +254,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $oldNewsTable;
+    protected $oldNewsTable;
 
     public function __construct()
     {
