@@ -52,7 +52,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    public $theme;
+    protected $theme;
 
     /**
      * @var FilmFestival

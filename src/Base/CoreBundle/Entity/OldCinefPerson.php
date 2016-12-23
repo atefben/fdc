@@ -19,98 +19,98 @@ class OldCinefPerson
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="person_id", type="integer", nullable=true)
      */
-    private $personId;
+    protected $personId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="session_id", type="integer", nullable=true)
      */
-    private $sessionId;
+    protected $sessionId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="gender", type="string", length=20, nullable=true)
      */
-    private $gender;
+    protected $gender;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=60, nullable=true)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=60, nullable=true)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="reception_date", type="datetime", nullable=true)
      */
-    private $receptionDate;
+    protected $receptionDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="duration", type="decimal", precision=5, scale=2, nullable=true)
      */
-    private $duration;
+    protected $duration;
 
     /**
      * @var string
      *
      * @ORM\Column(name="internet", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var string
      *
      * @ORM\Column(name="selection", type="string", length=1, nullable=true)
      */
-    private $selection;
+    protected $selection;
 
     /**
      * @var string
      *
      * @ORM\Column(name="bio_film_vf", type="string", length=1, nullable=true)
      */
-    private $bioFilmVf;
+    protected $bioFilmVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="bio_film_va", type="string", length=1, nullable=true)
      */
-    private $bioFilmVa;
+    protected $bioFilmVa;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
 
 

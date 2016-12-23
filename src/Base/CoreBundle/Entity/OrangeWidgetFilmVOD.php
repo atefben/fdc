@@ -26,7 +26,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @Groups({"orange_video_on_demand"})
      *
      */
-    private $image;
+    protected $image;
 
     /**
      * @var string
@@ -34,7 +34,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @ORM\Column(name="copy", type="text", nullable=true)
      * @Groups({"orange_video_on_demand"})
      */
-    private $copy;
+    protected $copy;
     
     /**
      * @var string
@@ -42,7 +42,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @ORM\Column(name="producer", type="text", nullable=true)
      * @Groups({"orange_video_on_demand"})
      */
-    private $producer;
+    protected $producer;
     
     /**
      * @var string
@@ -50,14 +50,14 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @ORM\Column(name="section", type="integer")
      * @Groups({"orange_video_on_demand"})
      */
-    private $section;
+    protected $section;
     
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="OrangeVideoOnDemand", inversedBy="widgets")
      */
-    private $parent;
+    protected $parent;
     
     /**
      * Set image

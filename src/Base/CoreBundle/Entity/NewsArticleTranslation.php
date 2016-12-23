@@ -38,7 +38,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
-    private $title;
+    protected $title;
     
     /**
      * @var string
@@ -47,7 +47,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      *
      * @Groups({"news_show"})
      */
-    private $introduction;
+    protected $introduction;
 
     /**
      * @var string
@@ -56,7 +56,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Constructor

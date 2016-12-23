@@ -30,7 +30,7 @@ class FDCPageWebTvChannels implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
 
     /**
@@ -54,12 +54,12 @@ class FDCPageWebTvChannels implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="WebTv")
      */
-    private $sticky;
+    protected $sticky;
 
     /**
      * Set sticky

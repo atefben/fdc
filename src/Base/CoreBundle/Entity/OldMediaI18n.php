@@ -19,7 +19,7 @@ class OldMediaI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,126 +28,126 @@ class OldMediaI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="label", type="string", length=255, nullable=true)
      */
-    private $label;
+    protected $label;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=255, nullable=true)
      */
-    private $code;
+    protected $code;
 
     /**
      * @var string
      *
      * @ORM\Column(name="wmv_format_filename", type="string", length=255, nullable=true)
      */
-    private $wmvFormatFilename;
+    protected $wmvFormatFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rm_format_filename", type="string", length=255, nullable=true)
      */
-    private $rmFormatFilename;
+    protected $rmFormatFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="hd_format_filename", type="string", length=255, nullable=true)
      */
-    private $hdFormatFilename;
+    protected $hdFormatFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="bd_format_filename", type="string", length=255, nullable=true)
      */
-    private $bdFormatFilename;
+    protected $bdFormatFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="filename_thumbnail", type="string", length=255, nullable=true)
      */
-    private $filenameThumbnail;
+    protected $filenameThumbnail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="thumbnail_copyright", type="string", length=255, nullable=true)
      */
-    private $thumbnailCopyright;
+    protected $thumbnailCopyright;
 
     /**
      * @var string
      *
      * @ORM\Column(name="copyright", type="string", length=255, nullable=true)
      */
-    private $copyright;
+    protected $copyright;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="i18n_translation_status", type="integer", nullable=false)
      */
-    private $i18nTranslationStatus;
+    protected $i18nTranslationStatus;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="akamai_status", type="boolean", nullable=true)
      */
-    private $akamaiStatus;
+    protected $akamaiStatus;
 
     /**
      * @var string
      *
      * @ORM\Column(name="delivery_url", type="string", length=255, nullable=true)
      */
-    private $deliveryUrl;
+    protected $deliveryUrl;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
      */
-    private $imageUrl;
+    protected $imageUrl;
 
     /**
      * @var string
      *
      * @ORM\Column(name="akamai_thumbnail", type="string", length=255, nullable=true)
      */
-    private $akamaiThumbnail;
+    protected $akamaiThumbnail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="error_code", type="string", length=255, nullable=true)
      */
-    private $errorCode;
+    protected $errorCode;
 
 
 

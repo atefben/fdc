@@ -23,40 +23,40 @@ class CinefSession
      * @ORM\Column(type="integer")
      * @ORM\Id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $startsAt;
+    protected $startsAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $endsAt;
+    protected $endsAt;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=60, nullable=true)
      */
-    private $season;
+    protected $season;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=4, nullable=true)
      */
-    private $number;
+    protected $number;
     
     /**
      * @ORM\OneToMany(targetEntity="CinefPerson", mappedBy="session")
      */
-    private $cinefPersons;
+    protected $cinefPersons;
 
     /**
      * Constructor

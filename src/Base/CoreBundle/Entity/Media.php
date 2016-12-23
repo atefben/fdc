@@ -53,7 +53,7 @@ abstract class Media implements TranslateMainInterface
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "live", "event_show", "home", "search"})
      */
-    public $theme;
+    protected $theme;
 
     /**
      * @var MediaTag

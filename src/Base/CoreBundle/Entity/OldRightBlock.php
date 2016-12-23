@@ -19,91 +19,91 @@ class OldRightBlock
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="right_block_type_id", type="integer", nullable=false)
      */
-    private $rightBlockTypeId;
+    protected $rightBlockTypeId;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="page_shape_id", type="boolean", nullable=true)
      */
-    private $pageShapeId;
+    protected $pageShapeId;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="locked", type="boolean", nullable=false)
      */
-    private $locked;
+    protected $locked;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="view_on_dashboard", type="integer", nullable=false)
      */
-    private $viewOnDashboard;
+    protected $viewOnDashboard;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_online", type="boolean", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start_date", type="datetime", nullable=true)
      */
-    private $startDate;
+    protected $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
-    private $endDate;
+    protected $endDate;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="integer", nullable=true)
      */
-    private $priority;
+    protected $priority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="pin_on_dashboard", type="integer", nullable=false)
      */
-    private $pinOnDashboard;
+    protected $pinOnDashboard;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dashboard_priority", type="integer", nullable=false)
      */
-    private $dashboardPriority;
+    protected $dashboardPriority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="translation_status", type="integer", nullable=false)
      */
-    private $translationStatus;
+    protected $translationStatus;
 
 
 

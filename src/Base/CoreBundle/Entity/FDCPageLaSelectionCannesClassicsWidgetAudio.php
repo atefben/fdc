@@ -24,7 +24,7 @@ class FDCPageLaSelectionCannesClassicsWidgetAudio extends FDCPageLaSelectionCann
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $file;
+    protected $file;
 
     /**
      * Set file

@@ -25,7 +25,7 @@ class HomepageSlide
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var News
@@ -33,7 +33,7 @@ class HomepageSlide
      * @ORM\ManyToOne(targetEntity="News")
      * @Groups("home")
      */
-    private $news;
+    protected $news;
 
     /**
      * @var Info
@@ -41,7 +41,7 @@ class HomepageSlide
      * @ORM\ManyToOne(targetEntity="Info")
      * @Groups("home")
      */
-    private $infos;
+    protected $infos;
 
     /**
      * @var Info
@@ -49,21 +49,21 @@ class HomepageSlide
      * @ORM\ManyToOne(targetEntity="Statement")
      * @Groups("home")
      */
-    private $statement;
+    protected $statement;
 
     /**
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="homepageSlide")
      */
-    private $homepage;
+    protected $homepage;
 
     /**
      * @var position
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
   
 
     /**

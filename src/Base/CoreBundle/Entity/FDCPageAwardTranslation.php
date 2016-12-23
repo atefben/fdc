@@ -33,31 +33,31 @@ class FDCPageAwardTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $nameLongsMetrages;
+    protected $nameLongsMetrages;
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $nameCourtsMetrages;
+    protected $nameCourtsMetrages;
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $nameEnCompetition;
+    protected $nameEnCompetition;
 
     /**
      * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    private $header;
+    protected $header;
 
     /**
      * @var string
@@ -65,7 +65,7 @@ class FDCPageAwardTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=true)
      */
-    private $slug;
+    protected $slug;
 
 
     /**

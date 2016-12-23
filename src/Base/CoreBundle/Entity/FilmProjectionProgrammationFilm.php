@@ -27,7 +27,7 @@ class FilmProjectionProgrammationFilm
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FilmProjectionProgrammationType
@@ -36,7 +36,7 @@ class FilmProjectionProgrammationFilm
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $type;
+    protected $type;
 
     /**
      * @var FilmFilm
@@ -45,7 +45,7 @@ class FilmProjectionProgrammationFilm
      *
      * @Groups({"projection_list", "projection_show", "home", "news_list", "search"})
      */
-    private $film;
+    protected $film;
 
     /**
      * @var FilmProjection
@@ -55,7 +55,7 @@ class FilmProjectionProgrammationFilm
      *
      * @Groups({"film_list", "film_show"})
      */
-    private $projection;
+    protected $projection;
 
     public function __toString()
     {

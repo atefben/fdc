@@ -41,14 +41,14 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      */
-    private $file;
+    protected $file;
 
     /**
      * @var AmazonRemoteFile
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\AmazonRemoteFile")
      * @ORM\JoinColumn(name="amazon_remote_file_id", referencedColumnName="id")
      */
-    private $amazonRemoteFile;
+    protected $amazonRemoteFile;
 
     /**
      * @var string
@@ -69,7 +69,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -90,35 +90,35 @@ class MediaVideoTranslation implements TranslateChildInterface
      * })
      * @Serializer\Accessor(getter="getEncodeImageAmazonUrl")
      */
-    private $imageAmazonUrl;
+    protected $imageAmazonUrl;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
-    private $jobWebmState;
+    protected $jobWebmState;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
-    private $jobMp4State;
+    protected $jobMp4State;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $jobMp4Id;
+    protected $jobMp4Id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $jobWebmId;
+    protected $jobWebmId;
 
     /**
      * @var string
@@ -138,7 +138,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $mp4Url;
+    protected $mp4Url;
 
     /**
      * @var string
@@ -158,7 +158,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $webmUrl;
+    protected $webmUrl;
 
     /**
      * @var Theme
@@ -171,14 +171,14 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "home"
      * })
      */
-    private $theme;
+    protected $theme;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $titleHomeCorpo;
+    protected $titleHomeCorpo;
 
     /**
      * @var string

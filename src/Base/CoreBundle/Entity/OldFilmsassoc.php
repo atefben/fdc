@@ -19,21 +19,21 @@ class OldFilmsassoc
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="idsoif", type="string", length=36, nullable=false)
      */
-    private $idsoif;
+    protected $idsoif;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="idselfkit", type="integer", nullable=false)
      */
-    private $idselfkit;
+    protected $idselfkit;
 
 
 

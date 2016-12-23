@@ -31,7 +31,7 @@ class InfoWidgetTextTranslation
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"news_show"})
      */
-    private $content;
+    protected $content;
 
     /**
      * Set content

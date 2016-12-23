@@ -29,7 +29,7 @@ class OrangeWidgetMovieYoutubeTranslation
      *     "orange_series_and_cie"
      * })
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -39,7 +39,7 @@ class OrangeWidgetMovieYoutubeTranslation
      *     "orange_series_and_cie"
      * })
      */
-    private $subtitle;
+    protected $subtitle;
 
     /**
      * Set title

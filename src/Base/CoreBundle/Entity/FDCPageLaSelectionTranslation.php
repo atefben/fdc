@@ -39,7 +39,7 @@ class FDCPageLaSelectionTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $overrideName;
+    protected $overrideName;
 
     /**
      * @var string
@@ -47,7 +47,7 @@ class FDCPageLaSelectionTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"overrideName"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @ORM\PreUpdate()

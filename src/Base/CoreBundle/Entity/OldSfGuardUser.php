@@ -19,63 +19,63 @@ class OldSfGuardUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=128, nullable=false)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="algorithm", type="string", length=128, nullable=false)
      */
-    private $algorithm;
+    protected $algorithm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=128, nullable=false)
      */
-    private $salt;
+    protected $salt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=128, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
-    private $lastLogin;
+    protected $lastLogin;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_active", type="integer", nullable=false)
      */
-    private $isActive;
+    protected $isActive;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_super_admin", type="integer", nullable=false)
      */
-    private $isSuperAdmin;
+    protected $isSuperAdmin;
 
 
 

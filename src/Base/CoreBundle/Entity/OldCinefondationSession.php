@@ -19,49 +19,49 @@ class OldCinefondationSession
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $numsession;
+    protected $numsession;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="annee", type="smallint", nullable=false)
      */
-    private $annee;
+    protected $annee;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_deb", type="date", nullable=false)
      */
-    private $dateDeb;
+    protected $dateDeb;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin", type="date", nullable=false)
      */
-    private $dateFin;
+    protected $dateFin;
 
     /**
      * @var string
      *
      * @ORM\Column(name="president", type="string", length=255, nullable=false)
      */
-    private $president;
+    protected $president;
 
     /**
      * @var string
      *
      * @ORM\Column(name="content_vf", type="text", nullable=false)
      */
-    private $contentVf;
+    protected $contentVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="content_va", type="text", nullable=false)
      */
-    private $contentVa;
+    protected $contentVa;
 
 
 

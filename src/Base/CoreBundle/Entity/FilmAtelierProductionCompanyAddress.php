@@ -32,70 +32,70 @@ class FilmAtelierProductionCompanyAddress implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $postalCode;
+    protected $postalCode;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $email;
+    protected $email;
     
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $fax;
+    protected $fax;
     
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-     private $street;
+     protected $street;
      
      /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-     private $website;
+     protected $website;
      
      /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-     private $mobilePhone;
+     protected $mobilePhone;
      
      /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-     private $phone;
+     protected $phone;
      
      /**
       * @var string
       *
       * @ORM\Column(type="string", nullable=true)
       */
-     private $city;
+     protected $city;
 
     /**
      * @var Country
      *
      * @ORM\ManyToOne(targetEntity="Country")
      */
-    private $country;
+    protected $country;
 
     /**
      * @var ArrayCollection

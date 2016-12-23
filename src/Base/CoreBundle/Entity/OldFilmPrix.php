@@ -19,49 +19,49 @@ class OldFilmPrix
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idprix;
+    protected $idprix;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLE", type="string", length=255, nullable=true)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IMPORTANCE", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $importance;
+    protected $importance;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLEUS", type="string", length=255, nullable=true)
      */
-    private $libelleus;
+    protected $libelleus;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IMPORTANCE2", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $importance2;
+    protected $importance2;
 
 
 

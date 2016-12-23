@@ -33,7 +33,7 @@ class FilmFilmPersonTranslation implements TranslateChildInterface
      *
      * @Groups({"person_list", "person_show", "film_list", "film_show", "classics"})
      */
-    private $role;
+    protected $role;
 
     public function __construct()
     {

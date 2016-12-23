@@ -23,22 +23,22 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
-    private $video;
+    protected $video;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $file;
+    protected $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $secondFile;
+    protected $secondFile;
 
     /**
      * ArrayCollection

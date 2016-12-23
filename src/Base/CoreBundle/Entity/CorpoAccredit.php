@@ -31,12 +31,12 @@ class CorpoAccredit implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $mainImage;
+    protected $mainImage;
 
     /**
      * @var CorpoAccreditProcedure
@@ -51,7 +51,7 @@ class CorpoAccredit implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $hideCommonContent;
+    protected $hideCommonContent;
 
     /**
      * ArrayCollection

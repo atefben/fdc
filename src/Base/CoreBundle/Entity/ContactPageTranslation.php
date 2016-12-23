@@ -28,7 +28,7 @@ class ContactPageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -36,7 +36,7 @@ class ContactPageTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $firstColumn;
+    protected $firstColumn;
 
     /**
      * @var string
@@ -44,7 +44,7 @@ class ContactPageTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $secondColumn;
+    protected $secondColumn;
 
     /**
      * @var string
@@ -52,7 +52,7 @@ class ContactPageTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $thirdColumn;
+    protected $thirdColumn;
 
     /**
      * Set title

@@ -19,42 +19,42 @@ class OldSfGuardUserProfile
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="user_id", type="integer", nullable=false)
      */
-    private $userId;
+    protected $userId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="complete_name", type="string", length=255, nullable=false)
      */
-    private $completeName;
+    protected $completeName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="referent_language", type="string", length=10, nullable=false)
      */
-    private $referentLanguage;
+    protected $referentLanguage;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=15, nullable=false)
      */
-    private $telephone;
+    protected $telephone;
 
 
 

@@ -35,17 +35,17 @@ class FilmFunction implements TranslateMainInterface, FilmFunctionInterface
      *
      * @Groups({"film_list", "film_show"})
      */
-    private $id;
+    protected $id;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmPerson", mappedBy="function")
      */
-    private $persons;
+    protected $persons;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="function")
      */
-    private $filmPersons;
+    protected $filmPersons;
 
     /**
      * @var ArrayCollection

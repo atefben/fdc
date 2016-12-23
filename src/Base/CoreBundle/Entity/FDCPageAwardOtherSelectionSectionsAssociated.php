@@ -19,7 +19,7 @@ class FDCPageAwardOtherSelectionSectionsAssociated
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FDCPageAward
@@ -40,7 +40,7 @@ class FDCPageAwardOtherSelectionSectionsAssociated
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position = 0;
+    protected $position = 0;
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

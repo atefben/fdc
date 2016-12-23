@@ -23,7 +23,7 @@ class FDCPagePrepareWidgetImage extends FDCPagePrepareWidget
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $gallery;
+    protected $gallery;
 
 
     /**

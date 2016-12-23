@@ -19,35 +19,35 @@ class OldSuppression
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idsuppression;
+    protected $idsuppression;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOMTABLE", type="string", length=20, nullable=true)
      */
-    private $nomtable;
+    protected $nomtable;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOMCHAMP1", type="string", length=20, nullable=true)
      */
-    private $nomchamp1;
+    protected $nomchamp1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDCLE1", type="integer", nullable=true)
      */
-    private $idcle1;
+    protected $idcle1;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATESUPPRESSION", type="datetime", nullable=true)
      */
-    private $datesuppression;
+    protected $datesuppression;
 
 
 

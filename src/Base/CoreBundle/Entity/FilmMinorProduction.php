@@ -24,28 +24,28 @@ class FilmMinorProduction
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Country
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="minorProductions")
      */
-    private $film;
+    protected $film;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer")
      */
-    private $position;
+    protected $position;
     
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="integer")
      */
-    private $value;
+    protected $value;
 
     /**
      * Get id

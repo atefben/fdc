@@ -32,118 +32,118 @@ class HomepageCorporateTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $popinSubtitle1;
+    protected $popinSubtitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $popinSubtitle2;
+    protected $popinSubtitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $bannerText;
+    protected $bannerText;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushEditionTitle;
+    protected $pushEditionTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushEditionUrl;
+    protected $pushEditionUrl;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushMainTitle1;
+    protected $pushMainTitle1;
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushMainSubtitle1;
+    protected $pushMainSubtitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushMainUrl1;
+    protected $pushMainUrl1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushMainTitle2;
+    protected $pushMainTitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushMainSubtitle2;
+    protected $pushMainSubtitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushMainUrl2;
+    protected $pushMainUrl2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushSecondaryTitle1;
+    protected $pushSecondaryTitle1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushSecondaryUrl1;
+    protected $pushSecondaryUrl1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushSecondaryTitle2;
+    protected $pushSecondaryTitle2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushSecondaryUrl2;
+    protected $pushSecondaryUrl2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushSecondaryTitle3;
+    protected $pushSecondaryTitle3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $pushSecondaryUrl3;
+    protected $pushSecondaryUrl3;
 
 
     /**

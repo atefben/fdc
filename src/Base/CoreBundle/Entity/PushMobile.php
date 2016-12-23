@@ -19,28 +19,28 @@ class PushMobile
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="uuid", type="string", length=255)
      */
-    private $uuid;
+    protected $uuid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="os", type="string", length=255)
      */
-    private $os;
+    protected $os;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lang", type="string", length=255)
      */
-    private $lang;
+    protected $lang;
 
 
     /**

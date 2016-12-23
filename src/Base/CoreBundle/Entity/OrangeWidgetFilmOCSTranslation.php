@@ -28,7 +28,7 @@ class OrangeWidgetFilmOCSTranslation
      *     "orange_programmation_ocs"
      * })
      */
-    private $legend;
+    protected $legend;
 
     /**
      * @var string
@@ -38,7 +38,7 @@ class OrangeWidgetFilmOCSTranslation
      *     "orange_programmation_ocs"
      * })
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -48,7 +48,7 @@ class OrangeWidgetFilmOCSTranslation
      *     "orange_programmation_ocs"
      * })
      */
-    private $description;
+    protected $description;
 
     /**
      * Set legend

@@ -29,7 +29,7 @@ class FilmAtelierProductionCompanyAddressTranslation implements TranslateChildIn
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $state;
+    protected $state;
 
     public function __construct()
     {

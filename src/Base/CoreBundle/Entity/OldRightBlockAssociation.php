@@ -19,7 +19,7 @@ class OldRightBlockAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
@@ -28,7 +28,7 @@ class OldRightBlockAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $objectId;
+    protected $objectId;
 
     /**
      * @var string
@@ -37,7 +37,7 @@ class OldRightBlockAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $objectClass;
+    protected $objectClass;
 
     /**
      * @var string
@@ -46,14 +46,14 @@ class OldRightBlockAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $useFor;
+    protected $useFor;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="order", type="integer", nullable=false)
      */
-    private $order;
+    protected $order;
 
 
 

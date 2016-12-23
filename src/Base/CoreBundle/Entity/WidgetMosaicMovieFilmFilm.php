@@ -31,13 +31,13 @@ class WidgetMosaicMovieFilmFilm
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
      * @Groups({"event_show"})
      */
-    private $image;
+    protected $image;
 
     /**
      * @var string
@@ -45,7 +45,7 @@ class WidgetMosaicMovieFilmFilm
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"event_show"})
      */
-    private $titleOriginal;
+    protected $titleOriginal;
 
     /**
      * @var string
@@ -53,12 +53,12 @@ class WidgetMosaicMovieFilmFilm
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"event_show"})
      */
-    private $year;
+    protected $year;
 
     /**
      * @ORM\ManyToOne(targetEntity="WidgetMosaicMovie", inversedBy="films")
      */
-    private $widgetMosaicMovie;
+    protected $widgetMosaicMovie;
 
     /**
      * @var ArrayCollection

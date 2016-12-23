@@ -24,126 +24,126 @@ class FilmEvent
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
     
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $startsAt;
+    protected $startsAt;
 
     /**
      * @var string
      *
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
-    private $festivalYear;
+    protected $festivalYear;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
      */
-    private $titleVf;
+    protected $titleVf;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
      */
-    private $titleVa;
+    protected $titleVa;
 
     /**
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $personId;
+    protected $personId;
 
     /**
      * @var FilmAddress
      *
      * @ORM\ManyToOne(targetEntity="FilmEventType")
      */
-    private $eventType;
+    protected $eventType;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVf;
+    protected $descriptionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVa;
+    protected $descriptionVa;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVf2;
+    protected $descriptionVf2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVa2;
+    protected $descriptionVa2;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVf3;
+    protected $descriptionVf3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVa3;
+    protected $descriptionVa3;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVf4;
+    protected $descriptionVf4;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $descriptionVa4;
+    protected $descriptionVa4;
 
     /**
      * @var decimal
      *
      * @ORM\Column(type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $position;
+    protected $position;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
     
     /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="event")
      */
-    private $medias;
+    protected $medias;
     /**
      * Constructor
      */

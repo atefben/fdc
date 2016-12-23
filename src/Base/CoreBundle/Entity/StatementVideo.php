@@ -35,7 +35,7 @@ class StatementVideo extends Statement
      *
      * @Assert\NotNull()
      */
-    private $video;
+    protected $video;
 
     /**
      * @var MediaImage
@@ -44,7 +44,7 @@ class StatementVideo extends Statement
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $image;
+    protected $image;
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

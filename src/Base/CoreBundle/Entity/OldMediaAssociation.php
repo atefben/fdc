@@ -19,7 +19,7 @@ class OldMediaAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,7 +28,7 @@ class OldMediaAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $objectId;
+    protected $objectId;
 
     /**
      * @var string
@@ -37,14 +37,14 @@ class OldMediaAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $objectClass;
+    protected $objectClass;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="order", type="integer", nullable=false)
      */
-    private $order;
+    protected $order;
 
 
 

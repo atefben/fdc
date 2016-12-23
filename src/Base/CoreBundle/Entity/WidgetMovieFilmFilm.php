@@ -25,18 +25,18 @@ class WidgetMovieFilmFilm
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      * @Groups({"classics"})
      */
-    private $film;
+    protected $film;
 
     /**
      * @ORM\ManyToOne(targetEntity="WidgetMovie", inversedBy="films")
      */
-    private $widgetMovie;
+    protected $widgetMovie;
 
     /**
      * Get id

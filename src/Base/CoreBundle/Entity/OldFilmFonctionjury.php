@@ -19,42 +19,42 @@ class OldFilmFonctionjury
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idfonctionjury;
+    protected $idfonctionjury;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FONCTION_VF", type="string", length=30, nullable=true)
      */
-    private $fonctionVf;
+    protected $fonctionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FONCTION_VA", type="string", length=30, nullable=true)
      */
-    private $fonctionVa;
+    protected $fonctionVa;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="ORDRE", type="integer", nullable=true)
      */
-    private $ordre;
+    protected $ordre;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
 
 

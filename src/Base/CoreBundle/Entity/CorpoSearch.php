@@ -32,28 +32,28 @@ class CorpoSearch implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushImage1;
+    protected $pushImage1;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushImage2;
+    protected $pushImage2;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushImage3;
+    protected $pushImage3;
 
     /**
      * @var ArrayCollection

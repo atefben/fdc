@@ -28,7 +28,7 @@ class FilmProjectionProgrammationDynamic
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
     
     /**
      * @var integer
@@ -37,7 +37,7 @@ class FilmProjectionProgrammationDynamic
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $duration;
+    protected $duration;
 
     /**
      * @var FilmProjectionProgrammationType
@@ -46,14 +46,14 @@ class FilmProjectionProgrammationDynamic
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $type;
+    protected $type;
     
     /**
      * @var FilmProjection
      *
      * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="programmationDynamics")
      */
-    private $projection;
+    protected $projection;
 
     /**
      * Get id

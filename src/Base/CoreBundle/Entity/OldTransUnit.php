@@ -19,70 +19,70 @@ class OldTransUnit
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $msgId;
+    protected $msgId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cat_id", type="integer", nullable=true)
      */
-    private $catId;
+    protected $catId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="id", type="string", length=255, nullable=true)
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source", type="text", nullable=true)
      */
-    private $source;
+    protected $source;
 
     /**
      * @var string
      *
      * @ORM\Column(name="target", type="text", nullable=true)
      */
-    private $target;
+    protected $target;
 
     /**
      * @var string
      *
      * @ORM\Column(name="comments", type="text", nullable=true)
      */
-    private $comments;
+    protected $comments;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="date_added", type="integer", nullable=true)
      */
-    private $dateAdded;
+    protected $dateAdded;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="date_modified", type="integer", nullable=true)
      */
-    private $dateModified;
+    protected $dateModified;
 
     /**
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255, nullable=true)
      */
-    private $author;
+    protected $author;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="translated", type="boolean", nullable=true)
      */
-    private $translated;
+    protected $translated;
 
 
 

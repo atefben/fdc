@@ -28,7 +28,7 @@ class GalleryDualAlign
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Media
@@ -36,7 +36,7 @@ class GalleryDualAlign
      * @ORM\OneToMany(targetEntity="GalleryDualAlignMedia", mappedBy="gallery", cascade={"persist"})
      * @Groups({"news_show"})
      */
-    private $medias;
+    protected $medias;
 
     /**
      * Constructor

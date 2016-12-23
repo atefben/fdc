@@ -36,14 +36,14 @@ class Gallery implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var GalleryMedia
@@ -52,14 +52,14 @@ class Gallery implements TranslateMainInterface
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
-    private $displayedHomeCorpo;
+    protected $displayedHomeCorpo;
 
     /**
      * @var Theme
@@ -67,14 +67,14 @@ class Gallery implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Theme")
      *
      */
-    private $themeHomeCorpo;
+    protected $themeHomeCorpo;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $dateHomeCorpo;
+    protected $dateHomeCorpo;
 
     /**
      * ArrayCollection

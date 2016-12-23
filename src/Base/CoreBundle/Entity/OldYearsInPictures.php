@@ -19,35 +19,35 @@ class OldYearsInPictures
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $image;
+    protected $image;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="edition", type="smallint", nullable=false)
      */
-    private $edition;
+    protected $edition;
 
     /**
      * @var string
      *
      * @ORM\Column(name="copyright", type="string", length=255, nullable=false)
      */
-    private $copyright;
+    protected $copyright;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="order_number", type="smallint", nullable=true)
      */
-    private $orderNumber;
+    protected $orderNumber;
 
 
 

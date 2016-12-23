@@ -19,49 +19,49 @@ class OldMoviesToCome
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="show_date", type="datetime", nullable=false)
      */
-    private $showDate;
+    protected $showDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publication_date", type="datetime", nullable=false)
      */
-    private $publicationDate;
+    protected $publicationDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="unpublication_date", type="datetime", nullable=true)
      */
-    private $unpublicationDate;
+    protected $unpublicationDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="film_id", type="string", length=255, nullable=false)
      */
-    private $filmId;
+    protected $filmId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="artist_id", type="string", length=255, nullable=false)
      */
-    private $artistId;
+    protected $artistId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=false)
      */
-    private $photo;
+    protected $photo;
 
 
 

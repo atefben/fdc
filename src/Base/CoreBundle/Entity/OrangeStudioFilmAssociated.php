@@ -48,7 +48,7 @@ class OrangeStudioFilmAssociated
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position = 0;
+    protected $position = 0;
 
     public function __toString()
     {

@@ -90,28 +90,28 @@ class PressHomepageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      **/
-    private $pushMainTitle;
+    protected $pushMainTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      **/
-    private $pushMainLink;
+    protected $pushMainLink;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      **/
-    private $pushSecondaryTitle;
+    protected $pushSecondaryTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      **/
-    private $pushSecondaryLink;
+    protected $pushSecondaryLink;
 
 
     /**

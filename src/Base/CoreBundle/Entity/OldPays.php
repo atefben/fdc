@@ -19,49 +19,49 @@ class OldPays
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $codeiso;
+    protected $codeiso;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS", type="string", length=35, nullable=true)
      */
-    private $pays;
+    protected $pays;
 
     /**
      * @var string
      *
      * @ORM\Column(name="COUNTRY", type="string", length=35, nullable=true)
      */
-    private $country;
+    protected $country;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUE", type="string", length=35, nullable=true)
      */
-    private $langue;
+    protected $langue;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUAGE", type="string", length=35, nullable=true)
      */
-    private $language;
+    protected $language;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="ID", type="integer", nullable=false)
      */
-    private $id;
+    protected $id;
 
 
 

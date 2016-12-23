@@ -19,7 +19,7 @@ class OldNewsFeedI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,49 +28,49 @@ class OldNewsFeedI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=40, nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
      *
      * @ORM\Column(name="libelle", type="text", nullable=true)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="i18n_translation_status", type="integer", nullable=false)
      */
-    private $i18nTranslationStatus;
+    protected $i18nTranslationStatus;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
-    private $url;
+    protected $url;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="target_blank", type="boolean", nullable=false)
      */
-    private $targetBlank;
+    protected $targetBlank;
 
 
 

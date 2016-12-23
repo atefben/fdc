@@ -31,7 +31,7 @@ class PressAccredit implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var PressAccreditProcedure
@@ -45,7 +45,7 @@ class PressAccredit implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $hideCommonContent;
+    protected $hideCommonContent;
 
     /**
      * ArrayCollection

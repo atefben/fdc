@@ -36,7 +36,7 @@ class CorpoMediathequeTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $title;
+    protected $title;
 
 
     /**

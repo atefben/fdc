@@ -19,70 +19,70 @@ class OldFilmFestivalPoster
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idposter;
+    protected $idposter;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFESTIVAL", type="decimal", precision=10, scale=0, nullable=false)
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VF", type="string", length=255, nullable=true)
      */
-    private $titreVf;
+    protected $titreVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VA", type="string", length=255, nullable=true)
      */
-    private $titreVa;
+    protected $titreVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPEPOSTER", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $typeposter;
+    protected $typeposter;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VF", type="text", nullable=true)
      */
-    private $descriptionVf;
+    protected $descriptionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VA", type="text", nullable=true)
      */
-    private $descriptionVa;
+    protected $descriptionVa;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
 
 

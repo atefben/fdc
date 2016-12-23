@@ -49,7 +49,7 @@ abstract class Orange implements TranslateMainInterface
      *     "orange_studio"
      * })
      */
-    private $id;
+    protected $id;
 
     /**
      * @var OrangeWidget

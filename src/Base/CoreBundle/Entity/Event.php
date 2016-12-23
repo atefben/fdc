@@ -42,7 +42,7 @@ class Event implements TranslateMainInterface
      *
      * @Groups({"event_list", "search", "event_list", "search"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Theme
@@ -51,14 +51,14 @@ class Event implements TranslateMainInterface
      *
      * @Groups({"event_list", "search", "event_show"})
      */
-    private $theme;
+    protected $theme;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $displayedMobile;
+    protected $displayedMobile;
 
     /**
      * @var ArrayCollection
@@ -66,7 +66,7 @@ class Event implements TranslateMainInterface
      * @ORM\ManyToMany(targetEntity="Site")
      *
      */
-    private $sites;
+    protected $sites;
 
     /**
      * @var MediaImage
@@ -76,7 +76,7 @@ class Event implements TranslateMainInterface
      * @Groups({"event_list", "search", "event_show"})
      * @Assert\NotNull()
      */
-    private $header;
+    protected $header;
 
 
     /**
@@ -84,7 +84,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="events")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var \DateTime
@@ -93,7 +93,7 @@ class Event implements TranslateMainInterface
      *
      * @Groups({"event_list", "search", "event_show"})
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
@@ -102,14 +102,14 @@ class Event implements TranslateMainInterface
      *
      * @Groups({"event_list", "search", "event_show"})
      */
-    private $publishEndedAt;
+    protected $publishEndedAt;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="EventTag", mappedBy="event", cascade={"all"}, orphanRemoval=true)
      */
-    private $tags;
+    protected $tags;
 
     /**
      * @var string
@@ -118,7 +118,7 @@ class Event implements TranslateMainInterface
      *
      * @Groups({"event_show"})
      */
-    private $signature;
+    protected $signature;
 
     /**
      * @var EventWidget
@@ -127,14 +127,14 @@ class Event implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"event_show"})
      */
-    private $widgets;
+    protected $widgets;
 
     /**
      * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
      *
      *
      */
-    private $associatedProjections;
+    protected $associatedProjections;
 
     /**
      * @var User
@@ -142,7 +142,7 @@ class Event implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var User
@@ -150,7 +150,7 @@ class Event implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * ArrayCollection

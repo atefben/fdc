@@ -20,7 +20,7 @@ class PressDownloadSectionWidgetPhoto extends PressDownloadSectionWidget
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      */
-    private $gallery;
+    protected $gallery;
 
 
     /**

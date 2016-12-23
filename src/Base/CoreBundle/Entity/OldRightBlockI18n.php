@@ -19,7 +19,7 @@ class OldRightBlockI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,70 +28,70 @@ class OldRightBlockI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="resume", type="text", nullable=true)
      */
-    private $resume;
+    protected $resume;
 
     /**
      * @var string
      *
      * @ORM\Column(name="body", type="text", nullable=true)
      */
-    private $body;
+    protected $body;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_name", type="string", length=255, nullable=true)
      */
-    private $linkName;
+    protected $linkName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link_url", type="string", length=255, nullable=true)
      */
-    private $linkUrl;
+    protected $linkUrl;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_logo", type="string", length=255, nullable=true)
      */
-    private $imageLogo;
+    protected $imageLogo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_resume", type="string", length=255, nullable=true)
      */
-    private $imageResume;
+    protected $imageResume;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_translated", type="boolean", nullable=true)
      */
-    private $isTranslated;
+    protected $isTranslated;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="i18n_translation_status", type="integer", nullable=false)
      */
-    private $i18nTranslationStatus;
+    protected $i18nTranslationStatus;
 
 
 

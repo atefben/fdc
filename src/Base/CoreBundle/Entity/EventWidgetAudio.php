@@ -23,7 +23,7 @@ class EventWidgetAudio extends EventWidget
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      * @Groups({"event_show"})
      */
-    private $file;
+    protected $file;
 
     /**
      * Set file

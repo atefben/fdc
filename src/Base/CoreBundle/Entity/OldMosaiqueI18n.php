@@ -19,7 +19,7 @@ class OldMosaiqueI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,28 +28,28 @@ class OldMosaiqueI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="no_video_link", type="string", length=255, nullable=true)
      */
-    private $noVideoLink;
+    protected $noVideoLink;
 
     /**
      * @var string
      *
      * @ORM\Column(name="big_image", type="string", length=500, nullable=true)
      */
-    private $bigImage;
+    protected $bigImage;
 
     /**
      * @var string
      *
      * @ORM\Column(name="big_flash", type="string", length=500, nullable=true)
      */
-    private $bigFlash;
+    protected $bigFlash;
 
 
 

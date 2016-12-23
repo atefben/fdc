@@ -32,7 +32,7 @@ class FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $subtitle;
+    protected $subtitle;
 
     /**
      * @var string
@@ -41,7 +41,7 @@ class FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $paragraph;
+    protected $paragraph;
 
     /**
      * Set subtitle

@@ -35,14 +35,14 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Groups({"film_list", "film_show"})
      */
-    private $id;
+    protected $id;
     
     /**
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="medias", cascade={"persist"})
      */
-    private $film;
+    protected $film;
     
     /**
      * @var FilmMedia
@@ -62,14 +62,14 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "search"
      * })
      */
-    private $media;
+    protected $media;
     
     /**
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
     
     /**
      * @var string
@@ -89,7 +89,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "search"
      * })
      */
-    private $filename;
+    protected $filename;
     
     /**
      * @var string
@@ -109,7 +109,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "search"
      * })
      */
-    private $type;
+    protected $type;
 
     /**
      * Get id

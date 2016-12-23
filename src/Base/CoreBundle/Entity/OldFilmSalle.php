@@ -19,28 +19,28 @@ class OldFilmSalle
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idsalle;
+    protected $idsalle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLE", type="string", length=80, nullable=true)
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
 
 

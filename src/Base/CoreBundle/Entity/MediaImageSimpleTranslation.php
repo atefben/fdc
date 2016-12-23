@@ -58,7 +58,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $file;
+    protected $file;
 
     /**
      * @var string
@@ -90,14 +90,14 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "search"
      * })
      */
-    private $alt;
+    protected $alt;
     
     /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
-    private $sites;
+    protected $sites;
 
     /**
      * Set alt

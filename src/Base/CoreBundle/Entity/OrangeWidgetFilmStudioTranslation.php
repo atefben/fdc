@@ -27,7 +27,7 @@ class OrangeWidgetFilmStudioTranslation
      * @ORM\Column(name="title", type="text", nullable=true)
      * @Groups({"orange_studio"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -35,7 +35,7 @@ class OrangeWidgetFilmStudioTranslation
      * @ORM\Column(name="description", type="text", nullable=true)
      * @Groups({"orange_studio"})
      */
-    private $description;
+    protected $description;
 
     /**
      * Set title

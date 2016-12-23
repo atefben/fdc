@@ -33,7 +33,7 @@ class FDCPageAward implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -41,35 +41,35 @@ class FDCPageAward implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $image;
+    protected $image;
 
     /**
      * @var FilmSelectionSection
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $selectionLongsMetrages;
+    protected $selectionLongsMetrages;
 
     /**
      * @var FilmSelectionSection
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $selectionCourtsMetrages;
+    protected $selectionCourtsMetrages;
 
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDCPageAwardOtherSelectionSectionsAssociated", mappedBy="FDCPageAward", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
-    private $otherSelectionSectionsAssociated;
+    protected $otherSelectionSectionsAssociated;
 
     /**
      * @var FDCPageWaiting
      * @ORM\ManyToOne(targetEntity="FDCPageWaiting")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $waitingPage;
+    protected $waitingPage;
 
     protected $translations;
 

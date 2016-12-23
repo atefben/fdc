@@ -61,7 +61,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -82,7 +82,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "classics"
      * })
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var boolean
@@ -102,7 +102,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $directorFirst;
+    protected $directorFirst;
 
     /**
      * @var boolean
@@ -110,7 +110,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="boolean")
      *
      */
-    private $restored;
+    protected $restored;
 
     /**
      * @var \DateTime
@@ -118,7 +118,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      * @Groups({"film_list", "film_show", "classics"})
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var string
@@ -143,7 +143,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $titleVO;
+    protected $titleVO;
 
     /**
      * @var string
@@ -166,7 +166,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $titleVOAlphabet;
+    protected $titleVOAlphabet;
 
     /**
      * @var string
@@ -187,7 +187,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $productionYear;
+    protected $productionYear;
 
     /**
      * @var string
@@ -208,7 +208,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $duration;
+    protected $duration;
 
     /**
      * @var string
@@ -216,7 +216,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="text", nullable=true)
      *
      */
-    private $castingCommentary;
+    protected $castingCommentary;
 
     /**
      * @var string
@@ -224,7 +224,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    private $website;
+    protected $website;
 
     /**
      * @var string
@@ -232,7 +232,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    private $facebook;
+    protected $facebook;
 
     /**
      * @var string
@@ -240,7 +240,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    private $twitter;
+    protected $twitter;
 
     /**
      * @var integer
@@ -258,7 +258,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show"
      * })
      */
-    private $galaId;
+    protected $galaId;
 
     /**
      * @var string
@@ -277,7 +277,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    private $galaName;
+    protected $galaName;
 
     /**
      * @var FilmSelection
@@ -287,7 +287,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({"film_list", "film_show"})
      *
      */
-    private $selection;
+    protected $selection;
 
     /**
      * @var FilmSelectionSection
@@ -297,7 +297,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({"film_list", "film_show", "news_list", "search", "news_show", "home", "orange_studio", "search"})
      *
      */
-    private $selectionSection;
+    protected $selectionSection;
 
     /**
      * @var FilmSelectionSubsection
@@ -307,7 +307,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({"film_list", "film_show", "news_list", "search", "news_show", "home"})
      *
      */
-    private $selectionSubsection;
+    protected $selectionSubsection;
 
     /**
      * @var FilmFestival
@@ -315,7 +315,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films", cascade={"persist"})
      *
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var FilmFilmPerson
@@ -324,12 +324,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $persons;
+    protected $persons;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmLanguage", mappedBy="film", cascade={"persist"})
      */
-    private $languages;
+    protected $languages;
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
@@ -338,7 +338,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      * @ORM\OrderBy({"position"="ASC"})
      */
-    private $contacts;
+    protected $contacts;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"}, orphanRemoval=true)
@@ -358,12 +358,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "search"
      * })
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMinorProduction", mappedBy="film", cascade={"persist"})
      */
-    private $minorProductions;
+    protected $minorProductions;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
@@ -381,7 +381,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * })
      */
-    private $countries;
+    protected $countries;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film", cascade={"persist", "merge"})
@@ -430,13 +430,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @Groups({"film_show"})
      */
-    private $associatedNews;
+    protected $associatedNews;
 
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="News", mappedBy="associatedFilm")
      */
-    private $news;
+    protected $news;
 
 
     /**
@@ -446,7 +446,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show"
      * })
      */
-    private $associatedMediaVideos;
+    protected $associatedMediaVideos;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
@@ -455,21 +455,21 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *  "film_show"
      * })
      */
-    private $associatedMediaAudios;
+    protected $associatedMediaAudios;
 
     /**
      * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"statement_list", "statement_show"})
      */
-    private $associatedStatement;
+    protected $associatedStatement;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"info_list", "info_show"})
      */
-    private $associatedInfo;
+    protected $associatedInfo;
 
     /**
      * @var MediaImageSimple
@@ -488,7 +488,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      * @Serializer\Accessor(getter="getApiImageMain")
      */
-    private $imageMain;
+    protected $imageMain;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
@@ -504,7 +504,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      * })
      */
-    private $imageCover;
+    protected $imageCover;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
@@ -514,7 +514,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show"
      * })
      */
-    private $videoMain;
+    protected $videoMain;
 
     /**
      * @var NewsTag
@@ -522,7 +522,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FilmFilmTag", mappedBy="film", cascade={"all"}, orphanRemoval=true)
      *
      */
-    private $tags;
+    protected $tags;
 
     /**
      * @var ArrayCollection
@@ -532,7 +532,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
      *      )
      */
-    private $selfkitImages;
+    protected $selfkitImages;
 
     /**
      * Constructor

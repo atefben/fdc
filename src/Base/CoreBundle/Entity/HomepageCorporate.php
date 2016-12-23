@@ -33,35 +33,35 @@ class HomepageCorporate implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $festivalStartsAt;
+    protected $festivalStartsAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $festivalEndsAt;
+    protected $festivalEndsAt;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedPopin;
+    protected $displayedPopin;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedSocialWall;
+    protected $displayedSocialWall;
 
     
     /**
@@ -69,40 +69,40 @@ class HomepageCorporate implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedBanner;
+    protected $displayedBanner;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedGallery;
+    protected $displayedGallery;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $socialGraphHashtagTwitter;
+    protected $socialGraphHashtagTwitter;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $socialWallHashtags;
+    protected $socialWallHashtags;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
-    private $videoMain;
+    protected $videoMain;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedVideo;
+    protected $displayedVideo;
 
     /**
      * @var HomepageCorporateSlide
@@ -110,105 +110,105 @@ class HomepageCorporate implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="HomepageCorporateSlide", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $homepageSlide;
+    protected $homepageSlide;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedSlider;
+    protected $displayedSlider;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedFeaturedContents;
+    protected $displayedFeaturedContents;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedFeaturedContentsFilters;
+    protected $displayedFeaturedContentsFilters;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushEditionImage;
+    protected $pushEditionImage;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedPushEdition;
+    protected $displayedPushEdition;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedCannesReleases;
+    protected $displayedCannesReleases;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushMainImage1;
+    protected $pushMainImage1;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushMainImage2;
+    protected $pushMainImage2;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedPushsMain;
+    protected $displayedPushsMain;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushSecondaryImage1;
+    protected $pushSecondaryImage1;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushSecondaryImage2;
+    protected $pushSecondaryImage2;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushSecondaryImage3;
+    protected $pushSecondaryImage3;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
-    private $VideoUne;
+    protected $VideoUne;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedPushsSecondary;
+    protected $displayedPushsSecondary;
 
     /**
      * ArrayCollection

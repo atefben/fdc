@@ -36,7 +36,7 @@ class StatementImage extends Statement
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $header;
+    protected $header;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
@@ -44,7 +44,7 @@ class StatementImage extends Statement
      *
      * @Assert\NotNull()
      */
-    private $gallery;
+    protected $gallery;
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

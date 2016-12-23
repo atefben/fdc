@@ -35,7 +35,7 @@ class FilmSelection implements TranslateMainInterface
      *
      * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show", "film_list", "film_show"})})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -44,7 +44,7 @@ class FilmSelection implements TranslateMainInterface
      *
      * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show", "film_list", "film_show"})
      */
-    private $codeSignup;
+    protected $codeSignup;
 
     /**
      * @var FilmSelectionSection
@@ -53,7 +53,7 @@ class FilmSelection implements TranslateMainInterface
      *
      * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
-    private $sections;
+    protected $sections;
     
     /**
      * @var FilmSelectionSubsection
@@ -62,12 +62,12 @@ class FilmSelection implements TranslateMainInterface
      *
      * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
-    private $subsections;
+    protected $subsections;
     
     /**
      * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="selection")
      */
-    private $films;
+    protected $films;
 
     /**
      * Constructor

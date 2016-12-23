@@ -74,7 +74,7 @@ class HomepageFilmsAssociated
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);

@@ -19,49 +19,49 @@ class OldFilmLibelle
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="date", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUE", type="string", length=3, nullable=true)
      */
-    private $langue;
+    protected $langue;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDUTILISATEUR", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $idutilisateur;
+    protected $idutilisateur;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDTYPE", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $idtype;
+    protected $idtype;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDENREG", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $idenreg;
+    protected $idenreg;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIBELLE", type="string", length=2000, nullable=false)
      */
-    private $libelle;
+    protected $libelle;
 
 
 

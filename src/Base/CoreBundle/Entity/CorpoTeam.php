@@ -31,12 +31,12 @@ class CorpoTeam implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $mainImage;
+    protected $mainImage;
 
     /**
      * @ORM\OneToMany(targetEntity="CorpoTeamsAssociation", mappedBy="team", cascade={"persist"}, orphanRemoval=true)

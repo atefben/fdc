@@ -28,7 +28,7 @@ class MediaVideo extends Media
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
-    private $displayedWebTv;
+    protected $displayedWebTv;
 
     /**
      * @var boolean
@@ -38,14 +38,14 @@ class MediaVideo extends Media
      *  "film_show"
      * })
      */
-    private $displayedTrailer;
+    protected $displayedTrailer;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
      */
-    private $displayedHomeCorpo;
+    protected $displayedHomeCorpo;
 
     /**
      * @var Theme
@@ -53,21 +53,21 @@ class MediaVideo extends Media
      * @ORM\ManyToOne(targetEntity="Theme")
      *
      */
-    private $themeHomeCorpo;
+    protected $themeHomeCorpo;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $dateHomeCorpo;
+    protected $dateHomeCorpo;
 
     /**
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topVideos")
      */
-    private $homepage;
+    protected $homepage;
 
     /**
      * @var WebTv
@@ -78,7 +78,7 @@ class MediaVideo extends Media
      *     message="Cette valeur ne doit pas être nulle."
      * )
      */
-    private $webTv;
+    protected $webTv;
 
     /**
      * @var Media
@@ -88,21 +88,21 @@ class MediaVideo extends Media
      * @Groups({"trailer_list", "trailer_show", "live", "web_tv_show", "live", "film_show", "news_list", "search", "news_show", "event_show", "home", "orange_video_on_demand",
      *     "search"})
      */
-    private $image;
+    protected $image;
 
     /**
      * @var NewsVideo
      *
      * @ORM\OneToOne(targetEntity="NewsVideo", cascade={"all"})
      */
-    private $homepageNews;
+    protected $homepageNews;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
-    private $associatedFilms;
+    protected $associatedFilms;
 
     public function __construct()
     {

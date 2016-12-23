@@ -34,7 +34,7 @@ class FilmAtelierTranslation implements TranslateChildInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $title;
+    protected $title;
     
     /**
      * @var text
@@ -43,7 +43,7 @@ class FilmAtelierTranslation implements TranslateChildInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $synopsis;
+    protected $synopsis;
     
     /**
      * @var text
@@ -52,7 +52,7 @@ class FilmAtelierTranslation implements TranslateChildInterface
      *
      * @Groups({"film_atelier_list", "film_atelier_show"})
      */
-    private $applicantNote;
+    protected $applicantNote;
 
     public function __construct()
     {

@@ -46,7 +46,7 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "search"
      * })
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -66,21 +66,21 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "search"
      * })
      */
-    private $position;
+    protected $position;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="sections", cascade={"persist"})
      */
-    private $selection;
+    protected $selection;
 
     /**
      * @var ArrayCollection
@@ -90,7 +90,7 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_section_show"
      * })
      */
-    private $films;
+    protected $films;
 
     /**
      * @var ArrayCollection

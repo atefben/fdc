@@ -19,21 +19,21 @@ class OldPersonsassoc
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="idsoif", type="integer", nullable=false)
      */
-    private $idsoif;
+    protected $idsoif;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="idselfkit", type="integer", nullable=false)
      */
-    private $idselfkit;
+    protected $idselfkit;
 
 
 

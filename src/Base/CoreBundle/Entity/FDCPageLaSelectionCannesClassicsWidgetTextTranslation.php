@@ -32,7 +32,7 @@ class FDCPageLaSelectionCannesClassicsWidgetTextTranslation
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $content;
+    protected $content;
 
     /**
      * Set content

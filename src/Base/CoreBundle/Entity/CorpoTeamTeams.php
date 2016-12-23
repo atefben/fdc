@@ -31,7 +31,7 @@ class CorpoTeamTeams implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * ArrayCollection

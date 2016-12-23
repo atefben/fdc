@@ -32,7 +32,7 @@ class EventWidgetSubtitleTranslation
      * @ORM\Column(type="text", nullable=false)
      * @Groups({"news_show", "event_show"})
      */
-    private $content;
+    protected $content;
 
     /**
      * Set content

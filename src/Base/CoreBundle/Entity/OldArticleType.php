@@ -19,14 +19,14 @@ class OldArticleType
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="old_id", type="integer", nullable=true)
      */
-    private $oldId;
+    protected $oldId;
 
 
 

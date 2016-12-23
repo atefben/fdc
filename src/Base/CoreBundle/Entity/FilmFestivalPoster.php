@@ -32,33 +32,33 @@ class FilmFestivalPoster implements FilmFestivalPosterInterface, TranslateMainIn
      * @ORM\Column(type="integer")
      * @ORM\Id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $copyright;
+    protected $copyright;
 
     /**
      * @var int
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $file;
+    protected $file;
     
     /**
      * @var ArrayCollection

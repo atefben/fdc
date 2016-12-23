@@ -19,7 +19,7 @@ class OldEncartI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,42 +28,42 @@ class OldEncartI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=500, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="legende", type="text", nullable=true)
      */
-    private $legende;
+    protected $legende;
 
     /**
      * @var string
      *
      * @ORM\Column(name="link", type="text", nullable=true)
      */
-    private $link;
+    protected $link;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tag", type="string", length=255, nullable=true)
      */
-    private $tag;
+    protected $tag;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $image;
+    protected $image;
 
 
 

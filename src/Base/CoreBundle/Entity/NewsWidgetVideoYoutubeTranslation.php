@@ -34,7 +34,7 @@ class NewsWidgetVideoYoutubeTranslation
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $url;
+    protected $url;
 
     /**
      * @var string
@@ -43,7 +43,7 @@ class NewsWidgetVideoYoutubeTranslation
      *
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * Set title

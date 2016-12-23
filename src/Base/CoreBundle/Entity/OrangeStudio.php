@@ -27,7 +27,7 @@ class OrangeStudio extends Orange
      * @Groups({"orange_studio"})
      * 
      */
-    private $associatedFilms;
+    protected $associatedFilms;
     
     public function __construct()
     {

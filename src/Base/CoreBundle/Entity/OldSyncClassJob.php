@@ -19,84 +19,84 @@ class OldSyncClassJob
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $syncClassJobId;
+    protected $syncClassJobId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="sync_job_id", type="integer", nullable=true)
      */
-    private $syncJobId;
+    protected $syncJobId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="class_name", type="string", length=255, nullable=false)
      */
-    private $className;
+    protected $className;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="update_count", type="integer", nullable=false)
      */
-    private $updateCount;
+    protected $updateCount;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="last_deleted_pk", type="integer", nullable=false)
      */
-    private $lastDeletedPk;
+    protected $lastDeletedPk;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_deleted_time", type="datetime", nullable=true)
      */
-    private $lastDeletedTime;
+    protected $lastDeletedTime;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="last_updated_pk", type="integer", nullable=false)
      */
-    private $lastUpdatedPk;
+    protected $lastUpdatedPk;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_updated_time", type="datetime", nullable=true)
      */
-    private $lastUpdatedTime;
+    protected $lastUpdatedTime;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="delete_count", type="integer", nullable=false)
      */
-    private $deleteCount;
+    protected $deleteCount;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start_time", type="datetime", nullable=false)
      */
-    private $startTime;
+    protected $startTime;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_time", type="datetime", nullable=true)
      */
-    private $endTime;
+    protected $endTime;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="completed", type="integer", nullable=true)
      */
-    private $completed;
+    protected $completed;
 
 
 

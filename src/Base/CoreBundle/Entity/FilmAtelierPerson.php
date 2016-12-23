@@ -28,7 +28,7 @@ class FilmAtelierPerson
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
     
     /**
      * @var FilmFilm
@@ -36,7 +36,7 @@ class FilmAtelierPerson
      * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="persons", cascade={"persist"})
      * @ORM\JoinColumn(name="film_id", referencedColumnName="id", nullable=false)
      */
-    private $film;
+    protected $film;
 
     /**
      * @var FilmPerson
@@ -44,14 +44,14 @@ class FilmAtelierPerson
      * @ORM\ManyToOne(targetEntity="FilmPerson", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=false)
      */
-    private $person;
+    protected $person;
     
     /**
      * @var FilmAtelierPersonFunction
      *
      * @ORM\OneToMany(targetEntity="FilmAtelierPersonFunction", mappedBy="filmAtelier", cascade={"persist"})
      */
-    private $functions;
+    protected $functions;
     
     /**
      * Constructor

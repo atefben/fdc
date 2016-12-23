@@ -40,7 +40,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
      *     "search"})
      */
-    private $file;
+    protected $file;
 
     /**
      * @var string
@@ -49,7 +49,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
      *     "search"})
      */
-    private $legend;
+    protected $legend;
 
     /**
      * @var string
@@ -58,7 +58,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
      *     "search"})
      */
-    private $alt;
+    protected $alt;
 
     /**
      * @var string
@@ -68,14 +68,14 @@ class MediaImageTranslation implements TranslateChildInterface
      *     "search"})
      * @Serializer\Accessor(getter="getApiCopyright")
      */
-    private $copyright;
+    protected $copyright;
 
    /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
-    private $sites;
+    protected $sites;
 
     /**
      * Constructor

@@ -65,7 +65,7 @@ abstract class PressDownloadSectionWidget implements TranslateMainInterface
      * @ORM\Column(type="boolean", options={"default":0})
      *
      */
-    private $lockedContent;
+    protected $lockedContent;
 
 
     public function __toString() {

@@ -19,49 +19,49 @@ class OldContentLock
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="content_id", type="integer", nullable=true)
      */
-    private $contentId;
+    protected $contentId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="content_type", type="string", length=100, nullable=true)
      */
-    private $contentType;
+    protected $contentType;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lock_type", type="string", length=7, nullable=true)
      */
-    private $lockType;
+    protected $lockType;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="user_id", type="integer", nullable=true)
      */
-    private $userId;
+    protected $userId;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="expires", type="bigint", nullable=false)
      */
-    private $expires;
+    protected $expires;
 
 
 

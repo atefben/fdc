@@ -19,21 +19,21 @@ class OldFilmCredits
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="fonction", type="integer", nullable=false)
      */
-    private $fonction;
+    protected $fonction;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_active", type="boolean", nullable=true)
      */
-    private $isActive;
+    protected $isActive;
 
 
 

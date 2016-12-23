@@ -32,7 +32,7 @@ class FDCPageLaSelection implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -40,14 +40,14 @@ class FDCPageLaSelection implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $image;
+    protected $image;
 
     /**
      * @var FilmSelectionSection
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
      */
-    private $selectionSection;
+    protected $selectionSection;
 
     /**
      * @var ArrayCollection

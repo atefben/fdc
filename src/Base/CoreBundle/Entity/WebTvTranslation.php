@@ -48,7 +48,7 @@ class WebTvTranslation implements TranslateChildInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"live", "web_tv_show", "live"})
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Set name

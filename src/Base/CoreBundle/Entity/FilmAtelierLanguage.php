@@ -24,21 +24,21 @@ class FilmAtelierLanguage
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Country
      *
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="languageFilmAteliers")
      */
-    private $country;
+    protected $country;
 
     /**
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmAtelier", inversedBy="languages")
      */
-    private $film;
+    protected $film;
 
     /**
      * Get id

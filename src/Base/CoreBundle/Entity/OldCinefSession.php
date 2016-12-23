@@ -19,42 +19,42 @@ class OldCinefSession
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idsession;
+    protected $idsession;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEDEBUT", type="datetime", nullable=true)
      */
-    private $datedebut;
+    protected $datedebut;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEFIN", type="datetime", nullable=true)
      */
-    private $datefin;
+    protected $datefin;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SAISON", type="string", length=60, nullable=true)
      */
-    private $saison;
+    protected $saison;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NUMERO", type="string", length=4, nullable=true)
      */
-    private $numero;
+    protected $numero;
 
 
 

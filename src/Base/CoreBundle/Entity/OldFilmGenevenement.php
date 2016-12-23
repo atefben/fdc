@@ -19,56 +19,56 @@ class OldFilmGenevenement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idgenevenement;
+    protected $idgenevenement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDEVENEMENT", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idevenement;
+    protected $idevenement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDPARTICIPANT", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idparticipant;
+    protected $idparticipant;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFILM", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idfilm;
+    protected $idfilm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VF", type="text", nullable=true)
      */
-    private $descriptionVf;
+    protected $descriptionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DESCRIPTION_VA", type="text", nullable=true)
      */
-    private $descriptionVa;
+    protected $descriptionVa;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
 
 

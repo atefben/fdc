@@ -34,7 +34,7 @@ class InfoAudio extends Info
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      */
-    private $header;
+    protected $header;
 
     /**
      * @var MediaAudio
@@ -44,7 +44,7 @@ class InfoAudio extends Info
      *
      * @Assert\NotNull()
      */
-    private $audio;
+    protected $audio;
 
 
     public function __toString() {

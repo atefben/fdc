@@ -33,119 +33,119 @@ class Homepage implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsMainImage1;
+    protected $pushsMainImage1;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsMainImage2;
+    protected $pushsMainImage2;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsMainImage3;
+    protected $pushsMainImage3;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage1;
+    protected $pushsSecondaryImage1;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage2;
+    protected $pushsSecondaryImage2;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage3;
+    protected $pushsSecondaryImage3;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage4;
+    protected $pushsSecondaryImage4;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage5;
+    protected $pushsSecondaryImage5;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage6;
+    protected $pushsSecondaryImage6;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage7;
+    protected $pushsSecondaryImage7;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $pushsSecondaryImage8;
+    protected $pushsSecondaryImage8;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $prefooterImage1;
+    protected $prefooterImage1;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $prefooterImage2;
+    protected $prefooterImage2;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $prefooterImage3;
+    protected $prefooterImage3;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $prefooterImage4;
+    protected $prefooterImage4;
 
     /**
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $prefooterImage5;
+    protected $prefooterImage5;
 
     /**
      * @var HomepageSlide
@@ -154,14 +154,14 @@ class Homepage implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups("home")
      */
-    private $homepageSlide;
+    protected $homepageSlide;
 
     /**
      * @var WebTv
      *
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="homepage")
      */
-    private $topVideos;
+    protected $topVideos;
 
     /**
      * @var WebTv
@@ -169,119 +169,119 @@ class Homepage implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="WebTv", mappedBy="homepage")
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $topWebTvs;
+    protected $topWebTvs;
 
     /**
      * @var HomepageTopVideosAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $topVideosAssociated;
+    protected $topVideosAssociated;
 
     /**
      * @var HomepageTopWebTvsAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $topWebTvsAssociated;
+    protected $topWebTvsAssociated;
 
     /**
      * @var HomepageFilmsAssociated
      * @ORM\OneToMany(targetEntity="HomepageFilmsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $filmsAssociated;
+    protected $filmsAssociated;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
      **/
-    private $topNewsType;
+    protected $topNewsType;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $socialGraphHashtagTwitter;
+    protected $socialGraphHashtagTwitter;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      **/
-    private $socialWallHashtags;
+    protected $socialWallHashtags;
     
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedSlider;
+    protected $displayedSlider;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      **/
-    private $displayedTopNews;
+    protected $displayedTopNews;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedSocialWall;
+    protected $displayedSocialWall;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedTopVideos;
+    protected $displayedTopVideos;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedTopWebTv;
+    protected $displayedTopWebTv;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedFilms;
+    protected $displayedFilms;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedPushsMain;
+    protected $displayedPushsMain;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedPushsSecondary;
+    protected $displayedPushsSecondary;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    private $displayedPrefooters;
+    protected $displayedPrefooters;
 
 
     /**

@@ -19,7 +19,7 @@ class OldFicheFilmOrangeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -28,98 +28,98 @@ class OldFicheFilmOrangeI18n
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $culture;
+    protected $culture;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=500, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="director", type="string", length=100, nullable=true)
      */
-    private $director;
+    protected $director;
 
     /**
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=100, nullable=true)
      */
-    private $country;
+    protected $country;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="year", type="integer", nullable=true)
      */
-    private $year;
+    protected $year;
 
     /**
      * @var string
      *
      * @ORM\Column(name="length", type="string", length=10, nullable=true)
      */
-    private $length;
+    protected $length;
 
     /**
      * @var string
      *
      * @ORM\Column(name="program", type="text", nullable=true)
      */
-    private $program;
+    protected $program;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rerun", type="text", nullable=true)
      */
-    private $rerun;
+    protected $rerun;
 
     /**
      * @var string
      *
      * @ORM\Column(name="synopsis", type="text", nullable=true)
      */
-    private $synopsis;
+    protected $synopsis;
 
     /**
      * @var string
      *
      * @ORM\Column(name="casting", type="text", nullable=true)
      */
-    private $casting;
+    protected $casting;
 
     /**
      * @var string
      *
      * @ORM\Column(name="detail_image_filename", type="string", length=255, nullable=true)
      */
-    private $detailImageFilename;
+    protected $detailImageFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="detail_image_copyright", type="string", length=255, nullable=true)
      */
-    private $detailImageCopyright;
+    protected $detailImageCopyright;
 
     /**
      * @var string
      *
      * @ORM\Column(name="poster_image_filename", type="string", length=255, nullable=true)
      */
-    private $posterImageFilename;
+    protected $posterImageFilename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="poster_image_copyright", type="string", length=255, nullable=true)
      */
-    private $posterImageCopyright;
+    protected $posterImageCopyright;
 
 
 

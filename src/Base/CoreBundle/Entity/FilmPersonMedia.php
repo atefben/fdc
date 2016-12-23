@@ -33,14 +33,14 @@ class FilmPersonMedia implements FilmPersonMediaInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="medias", cascade={"persist"})
      */
-    private $person;
+    protected $person;
 
     /**
      * @var FilmMedia
@@ -52,7 +52,7 @@ class FilmPersonMedia implements FilmPersonMediaInterface
      *  "jury_list", "jury_show"
      * })
      */
-    private $media;
+    protected $media;
 
     /**
      * @var string
@@ -64,7 +64,7 @@ class FilmPersonMedia implements FilmPersonMediaInterface
      *  "jury_list", "jury_show"
      * })
      */
-    private $position;
+    protected $position;
 
     /**
      * @var string
@@ -76,7 +76,7 @@ class FilmPersonMedia implements FilmPersonMediaInterface
      *  "jury_list", "jury_show"
      * })
      */
-    private $filename;
+    protected $filename;
 
     /**
      * @var string
@@ -88,7 +88,7 @@ class FilmPersonMedia implements FilmPersonMediaInterface
      *  "jury_list", "jury_show"
      * })
      */
-    private $type;
+    protected $type;
 
     /**
      * Get id

@@ -21,7 +21,7 @@ class EventWidgetVideo extends EventWidget
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      * @Groups({"event_show"})
      */
-    private $file;
+    protected $file;
 
     /**
      * Set file

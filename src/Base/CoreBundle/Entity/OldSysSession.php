@@ -19,28 +19,28 @@ class OldSysSession
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sesid", type="string", length=40, nullable=false)
      */
-    private $sesid;
+    protected $sesid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="data", type="blob", nullable=false)
      */
-    private $data;
+    protected $data;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="time", type="integer", nullable=false)
      */
-    private $time;
+    protected $time;
 
 
 

@@ -23,7 +23,7 @@ class PressGuideWidgetColumn extends PressGuideWidget
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $gallery;
+    protected $gallery;
 
 
     /**

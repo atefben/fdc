@@ -19,42 +19,42 @@ class OldPushandroiderrors
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="token", type="string", length=255, nullable=false)
      */
-    private $token;
+    protected $token;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="article_id", type="integer", nullable=true)
      */
-    private $articleId;
+    protected $articleId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="push_error", type="string", length=255, nullable=false)
      */
-    private $pushError;
+    protected $pushError;
 
     /**
      * @var string
      *
      * @ORM\Column(name="obj", type="text", nullable=true)
      */
-    private $obj;
+    protected $obj;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
 
 

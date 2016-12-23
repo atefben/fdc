@@ -26,7 +26,7 @@ class FilmContactPerson
      * @ORM\Column(type="integer")
      * @ORM\Id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -34,7 +34,7 @@ class FilmContactPerson
      * @ORM\Column(type="string", nullable=true)
      * @Groups({"film_show"})
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
@@ -42,25 +42,25 @@ class FilmContactPerson
      * @ORM\Column(type="string", nullable=true)
      * @Groups({"film_show"})
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Groups({"film_show"})
      */
-    private $lastname;
+    protected $lastname;
     
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Groups({"film_show"})
      */
-    private $mobilePhone;
+    protected $mobilePhone;
     
     /**
      * @ORM\ManyToMany(targetEntity="FilmContactPerson", cascade={"persist"})
      * @Groups({"film_show"})
      */
-    private $subordinates;
+    protected $subordinates;
 
     /**
      * Constructor

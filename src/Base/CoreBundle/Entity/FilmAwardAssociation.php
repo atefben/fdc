@@ -29,7 +29,7 @@ class FilmAwardAssociation
      *
      * @Groups({"award_list", "award_show"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var FilmAward
@@ -45,7 +45,7 @@ class FilmAwardAssociation
      * })
      *
      */
-    private $award;
+    protected $award;
     
     /**
      * @var FilmFilm
@@ -57,7 +57,7 @@ class FilmAwardAssociation
      *  "person_list", "person_show"
      * })
      */
-    private $film;
+    protected $film;
 
     /**
      * @var FilmPerson
@@ -66,7 +66,7 @@ class FilmAwardAssociation
      *
      * @Groups({"award_list", "award_show"})
      */
-    private $person;
+    protected $person;
 
     /**
      * @var integer
@@ -75,7 +75,7 @@ class FilmAwardAssociation
      *
      * @Groups({"award_list", "award_show"})
      */
-    private $position;
+    protected $position;
 
     /**
      * Get id

@@ -20,7 +20,7 @@ class EventWidgetMosaicMovie extends EventWidget
      * @ORM\ManyToOne(targetEntity="WidgetMosaicMovie")
      * @Groups({"event_show"})
      */
-    private $widgetMosaicMovie;
+    protected $widgetMosaicMovie;
 
     /**
      * Set widgetMosaicMovie

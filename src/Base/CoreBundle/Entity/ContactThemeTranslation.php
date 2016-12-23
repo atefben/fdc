@@ -32,7 +32,7 @@ class ContactThemeTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $theme;
+    protected $theme;
 
     public function __construct()
     {

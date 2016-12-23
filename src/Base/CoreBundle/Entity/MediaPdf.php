@@ -86,7 +86,7 @@ class MediaPdf implements TranslateMainInterface
      * })
      * @Serializer\Accessor(getter="getApiPublishedAt")
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
@@ -106,35 +106,35 @@ class MediaPdf implements TranslateMainInterface
      * })
      *
      */
-    private $publishEndedAt;
+    protected $publishEndedAt;
 
     /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
-    private $sites;
+    protected $sites;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     public function getApiTranslations()
     {

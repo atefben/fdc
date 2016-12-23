@@ -32,7 +32,7 @@ class EventWidgetQuoteTranslation
      *
      * @Groups({"event_show"})
      */
-    private $content;
+    protected $content;
 
     /**
      * Set content

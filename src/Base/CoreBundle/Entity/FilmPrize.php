@@ -41,7 +41,7 @@ class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
      *  "film_list", "film_show"
      * })
      */
-    private $id;
+    protected $id;
     
     /**
      * @var integer
@@ -54,7 +54,7 @@ class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
      *  "film_list", "film_show"
      * })
      */
-    private $type;
+    protected $type;
     
     /**
      * @var string
@@ -66,12 +66,12 @@ class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
      *  "film_list", "film_show"
      * })
      */
-    private $position;
+    protected $position;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="prize")
      */
-    private $awards;
+    protected $awards;
     
     /**
      * @var ArrayCollection

@@ -25,40 +25,40 @@ class Prefooter
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=false)
      **/
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=false)
      **/
-    private $alt;
+    protected $alt;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=false)
      **/
-    private $url;
+    protected $url;
 
     /**
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $file;
+    protected $file;
 
     /**
      *
      * @ORM\ManyToOne(targetEntity="HomepageTranslation", inversedBy="prefooters")
      */
-    private $homepageTranslation;
+    protected $homepageTranslation;
 
     /**
      * Get id

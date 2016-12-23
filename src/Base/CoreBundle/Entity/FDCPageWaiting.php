@@ -36,19 +36,19 @@ class FDCPageWaiting implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="enabled", type="boolean")
      */
-    private $enabled;
+    protected $enabled;
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $banner;
+    protected $banner;
 
     /**
      * @var ArrayCollection

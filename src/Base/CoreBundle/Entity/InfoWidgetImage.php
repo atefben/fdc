@@ -21,7 +21,7 @@ class InfoWidgetImage extends InfoWidget
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
      * @Groups({"news_show"})
      */
-    private $gallery;
+    protected $gallery;
 
     /**
      * Set gallery

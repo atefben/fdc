@@ -23,21 +23,21 @@ class FilmProjectionMedia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="projectionMedias", cascade={"persist"})
      *
      * @Groups({"projection_list", "projection_show", "news_list", "search"})
      */
-    private $file;
+    protected $file;
     
     /**
      * @var FilmProjection
      *
      * @ORM\ManyToOne(targetEntity="FilmProjection", inversedBy="medias", cascade={"persist"})
      */
-    private $projection;
+    protected $projection;
     
     /**
      * @var string
@@ -46,7 +46,7 @@ class FilmProjectionMedia
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $position;
+    protected $position;
     
     /**
      * @var string
@@ -55,7 +55,7 @@ class FilmProjectionMedia
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $filename;
+    protected $filename;
     
     /**
      * @var string
@@ -64,7 +64,7 @@ class FilmProjectionMedia
      *
      * @Groups({"projection_list", "projection_show"})
      */
-    private $type;
+    protected $type;
 
     /**
      * Get id

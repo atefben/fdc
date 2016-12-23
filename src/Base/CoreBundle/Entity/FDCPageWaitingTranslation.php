@@ -37,7 +37,7 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -45,14 +45,14 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="text", type="text", nullable=true)
      */
-    private $text;
+    protected $text;
 
     /**
      * Get id

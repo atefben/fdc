@@ -156,7 +156,7 @@ class NewsController extends Controller
         $filters['themes']['id'][0] = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
-            $homeArticle->theme = $homeArticle->getTheme();
+            $homeArticle->setTheme($homeArticle->getTheme());
 
             if (($key % 3) == 0) {
                 $homeArticle->double = true;

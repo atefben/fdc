@@ -20,273 +20,273 @@ class OldArticle
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="article_type_id", type="integer", nullable=false)
      */
-    private $articleTypeId;
+    protected $articleTypeId;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="created_at_time", type="string", length=6, nullable=false)
      */
-    private $createdAtTime;
+    protected $createdAtTime;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="published", type="integer", nullable=true)
      */
-    private $published;
+    protected $published;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start_date", type="datetime", nullable=true)
      */
-    private $startDate;
+    protected $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
-    private $endDate;
+    protected $endDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="created_by", type="string", length=255, nullable=true)
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="isNewsLetter", type="boolean", nullable=true)
      */
-    private $isnewsletter;
+    protected $isnewsletter;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="isHomePage", type="boolean", nullable=true)
      */
-    private $ishomepage;
+    protected $ishomepage;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="home_priority", type="boolean", nullable=false)
      */
-    private $homePriority;
+    protected $homePriority;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="home_end_pub_date", type="datetime", nullable=true)
      */
-    private $homeEndPubDate;
+    protected $homeEndPubDate;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="resume_parent_visibility", type="boolean", nullable=false)
      */
-    private $resumeParentVisibility;
+    protected $resumeParentVisibility;
 
     /**
      * @var string
      *
      * @ORM\Column(name="imageLogo", type="string", length=250, nullable=true)
      */
-    private $imagelogo;
+    protected $imagelogo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_top_home", type="string", length=256, nullable=true)
      */
-    private $imageTopHome;
+    protected $imageTopHome;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image_top_home_copyright", type="string", length=256, nullable=true)
      */
-    private $imageTopHomeCopyright;
+    protected $imageTopHomeCopyright;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="integer", nullable=true)
      */
-    private $priority;
+    protected $priority;
 
     /**
      * @var string
      *
      * @ORM\Column(name="template_name", type="string", length=255, nullable=true)
      */
-    private $templateName;
+    protected $templateName;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="list_shape_id", type="boolean", nullable=true)
      */
-    private $listShapeId;
+    protected $listShapeId;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="page_shape_id", type="boolean", nullable=true)
      */
-    private $pageShapeId;
+    protected $pageShapeId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="website_section_id", type="integer", nullable=true)
      */
-    private $websiteSectionId;
+    protected $websiteSectionId;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_online", type="smallint", nullable=false)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="isMosaique", type="integer", nullable=false)
      */
-    private $ismosaique;
+    protected $ismosaique;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="mosaique_priority", type="integer", nullable=false)
      */
-    private $mosaiquePriority;
+    protected $mosaiquePriority;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="mosaique_picto", type="boolean", nullable=true)
      */
-    private $mosaiquePicto;
+    protected $mosaiquePicto;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="view_on_dashboard", type="integer", nullable=false)
      */
-    private $viewOnDashboard;
+    protected $viewOnDashboard;
 
     /**
      * @var string
      *
      * @ORM\Column(name="temporary_link", type="string", length=255, nullable=true)
      */
-    private $temporaryLink;
+    protected $temporaryLink;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="pin_on_dashboard", type="integer", nullable=false)
      */
-    private $pinOnDashboard;
+    protected $pinOnDashboard;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dashboard_priority", type="integer", nullable=false)
      */
-    private $dashboardPriority;
+    protected $dashboardPriority;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="translation_status", type="integer", nullable=false)
      */
-    private $translationStatus;
+    protected $translationStatus;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="publish_to_mobile", type="boolean", nullable=false)
      */
-    private $publishToMobile;
+    protected $publishToMobile;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="emphasis_on_mobile", type="boolean", nullable=false)
      */
-    private $emphasisOnMobile;
+    protected $emphasisOnMobile;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="push_state_iphone", type="boolean", nullable=false)
      */
-    private $pushStateIphone;
+    protected $pushStateIphone;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="push_state_android", type="boolean", nullable=false)
      */
-    private $pushStateAndroid;
+    protected $pushStateAndroid;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="publish_to_wall", type="boolean", nullable=false)
      */
-    private $publishToWall;
+    protected $publishToWall;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="push_to_quotidien", type="boolean", nullable=false)
      */
-    private $pushToQuotidien;
+    protected $pushToQuotidien;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="publish_to_cinema", type="boolean", nullable=false)
      */
-    private $publishToCinema;
+    protected $publishToCinema;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="display_as_portfolio", type="boolean", nullable=false)
      */
-    private $displayAsPortfolio;
+    protected $displayAsPortfolio;
 
 
 

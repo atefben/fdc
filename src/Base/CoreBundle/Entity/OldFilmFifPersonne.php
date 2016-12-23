@@ -19,133 +19,133 @@ class OldFilmFifPersonne
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idpersonne;
+    protected $idpersonne;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CIVILITE", type="string", length=10, nullable=true)
      */
-    private $civilite;
+    protected $civilite;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOM", type="string", length=40, nullable=true)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PRENOM", type="string", length=40, nullable=true)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NATIONALITE", type="string", length=3, nullable=true)
      */
-    private $nationalite;
+    protected $nationalite;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NATIONALITE2", type="string", length=3, nullable=true)
      */
-    private $nationalite2;
+    protected $nationalite2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PROFESSION_VF", type="string", length=80, nullable=true)
      */
-    private $professionVf;
+    protected $professionVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PROFESSION_VA", type="string", length=80, nullable=true)
      */
-    private $professionVa;
+    protected $professionVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="QUALIFICATION", type="string", length=10, nullable=true)
      */
-    private $qualification;
+    protected $qualification;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LIEUNAISSANCE", type="string", length=80, nullable=true)
      */
-    private $lieunaissance;
+    protected $lieunaissance;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VF", type="text", nullable=true)
      */
-    private $bioFilmoVf;
+    protected $bioFilmoVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="BIO_FILMO_VA", type="text", nullable=true)
      */
-    private $bioFilmoVa;
+    protected $bioFilmoVa;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATENAISSANCE", type="datetime", nullable=true)
      */
-    private $datenaissance;
+    protected $datenaissance;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INVERSIONNOM", type="string", length=1, nullable=true)
      */
-    private $inversionnom;
+    protected $inversionnom;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDADRESSE", type="integer", nullable=true)
      */
-    private $idadresse;
+    protected $idadresse;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPROFESSION", type="integer", nullable=true)
      */
-    private $idprofession;
+    protected $idprofession;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=false)
      */
-    private $internet;
+    protected $internet;
 
 
 

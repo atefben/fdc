@@ -36,14 +36,14 @@ class FilmJuryType implements TranslateMainInterface
      *
      * @Groups({"film_jury_type_list", "film_jury_type_show", "jury_list", "jury_show"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="type")
      */
-    private $juries;
+    protected $juries;
 
     /**
      * @var ArrayCollection

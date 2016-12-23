@@ -23,12 +23,12 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $file;
+    protected $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $secondFile;
+    protected $secondFile;
 
     /**
      * ArrayCollection

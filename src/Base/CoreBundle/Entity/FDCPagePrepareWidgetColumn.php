@@ -24,19 +24,19 @@ class FDCPagePrepareWidgetColumn extends FDCPagePrepareWidget
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
-    private $file;
+    protected $file;
 
 
     /**
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
      */
-    private $pdf;
+    protected $pdf;
 
 
     /**

@@ -19,21 +19,21 @@ class OldPressKitAssociation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idArticle;
+    protected $idArticle;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_categorie", type="integer", nullable=false)
      */
-    private $idCategorie;
+    protected $idCategorie;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_sous_categorie", type="integer", nullable=false)
      */
-    private $idSousCategorie;
+    protected $idSousCategorie;
 
 
 

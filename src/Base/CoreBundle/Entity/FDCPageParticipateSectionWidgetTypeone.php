@@ -24,7 +24,7 @@ class FDCPageParticipateSectionWidgetTypeone extends FDCPageParticipateSectionWi
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * ArrayCollection

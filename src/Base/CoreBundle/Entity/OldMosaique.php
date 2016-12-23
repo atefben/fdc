@@ -19,56 +19,56 @@ class OldMosaique
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="type", type="integer", nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=500, nullable=false)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="image_size", type="integer", nullable=false)
      */
-    private $imageSize;
+    protected $imageSize;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="is_online", type="integer", nullable=true)
      */
-    private $isOnline;
+    protected $isOnline;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publication_date", type="datetime", nullable=true)
      */
-    private $publicationDate;
+    protected $publicationDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
-    private $dateCreation;
+    protected $dateCreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime", nullable=true)
      */
-    private $dateModification;
+    protected $dateModification;
 
 
 

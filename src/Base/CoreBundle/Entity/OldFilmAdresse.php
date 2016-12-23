@@ -17,21 +17,21 @@ class OldFilmAdresse
      *
      * @ORM\Column(name="BLOCADRESSE", type="text", nullable=true)
      */
-    private $blocadresse;
+    protected $blocadresse;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var integer
@@ -40,21 +40,21 @@ class OldFilmAdresse
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idadresse;
+    protected $idadresse;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS", type="string", length=3, nullable=true)
      */
-    private $pays;
+    protected $pays;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CONTACTSECS", type="text", nullable=true)
      */
-    private $contactsecs;
+    protected $contactsecs;
 
 
 

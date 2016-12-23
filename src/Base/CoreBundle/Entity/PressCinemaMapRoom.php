@@ -26,7 +26,7 @@ class PressCinemaMapRoom
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var PressCinemaRoom

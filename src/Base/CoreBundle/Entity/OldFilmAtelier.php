@@ -19,455 +19,455 @@ class OldFilmAtelier
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idfilm;
+    protected $idfilm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="IDFESTIVAL", type="decimal", precision=22, scale=0, nullable=true)
      */
-    private $idfestival;
+    protected $idfestival;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VO", type="string", length=100, nullable=true)
      */
-    private $titreVo;
+    protected $titreVo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VF", type="string", length=100, nullable=true)
      */
-    private $titreVf;
+    protected $titreVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TITRE_VA", type="string", length=100, nullable=true)
      */
-    private $titreVa;
+    protected $titreVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="COURTLONG", type="string", length=30, nullable=true)
      */
-    private $courtlong;
+    protected $courtlong;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DUREE", type="decimal", precision=22, scale=2, nullable=true)
      */
-    private $duree;
+    protected $duree;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS1", type="string", length=3, nullable=true)
      */
-    private $pays1;
+    protected $pays1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS2", type="string", length=3, nullable=true)
      */
-    private $pays2;
+    protected $pays2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS3", type="string", length=3, nullable=true)
      */
-    private $pays3;
+    protected $pays3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS4", type="string", length=3, nullable=true)
      */
-    private $pays4;
+    protected $pays4;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYS5", type="string", length=3, nullable=true)
      */
-    private $pays5;
+    protected $pays5;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUE1", type="string", length=3, nullable=true)
      */
-    private $langue1;
+    protected $langue1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUE2", type="string", length=3, nullable=true)
      */
-    private $langue2;
+    protected $langue2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUE3", type="string", length=3, nullable=true)
      */
-    private $langue3;
+    protected $langue3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PREMIERFILM", type="string", length=1, nullable=true)
      */
-    private $premierfilm;
+    protected $premierfilm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PREMIEREMONDIALE", type="string", length=1, nullable=true)
      */
-    private $premieremondiale;
+    protected $premieremondiale;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ANNEEPRODUCTION", type="string", length=4, nullable=true)
      */
-    private $anneeproduction;
+    protected $anneeproduction;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CATEGORIE", type="string", length=50, nullable=true)
      */
-    private $categorie;
+    protected $categorie;
 
     /**
      * @var string
      *
      * @ORM\Column(name="GENRE", type="string", length=50, nullable=true)
      */
-    private $genre;
+    protected $genre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SECTION", type="string", length=50, nullable=true)
      */
-    private $section;
+    protected $section;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SYNOPSIS_VF", type="text", nullable=true)
      */
-    private $synopsisVf;
+    protected $synopsisVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SYNOPSIS_VF2", type="text", nullable=true)
      */
-    private $synopsisVf2;
+    protected $synopsisVf2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SYNOPSIS_VF3", type="text", nullable=true)
      */
-    private $synopsisVf3;
+    protected $synopsisVf3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SYNOPSIS_VA", type="text", nullable=true)
      */
-    private $synopsisVa;
+    protected $synopsisVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SYNOPSIS_VA2", type="text", nullable=true)
      */
-    private $synopsisVa2;
+    protected $synopsisVa2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SYNOPSIS_VA3", type="text", nullable=true)
      */
-    private $synopsisVa3;
+    protected $synopsisVa3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DIALOGUE_VF", type="text", nullable=true)
      */
-    private $dialogueVf;
+    protected $dialogueVf;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DIALOGUE_VF2", type="text", nullable=true)
      */
-    private $dialogueVf2;
+    protected $dialogueVf2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DIALOGUE_VF3", type="text", nullable=true)
      */
-    private $dialogueVf3;
+    protected $dialogueVf3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DIALOGUE_VA", type="text", nullable=true)
      */
-    private $dialogueVa;
+    protected $dialogueVa;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DIALOGUE_VA2", type="text", nullable=true)
      */
-    private $dialogueVa2;
+    protected $dialogueVa2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="DIALOGUE_VA3", type="text", nullable=true)
      */
-    private $dialogueVa3;
+    protected $dialogueVa3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PREVIOUSEVENT", type="string", length=250, nullable=true)
      */
-    private $previousevent;
+    protected $previousevent;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PAYSEXPLOITATION", type="string", length=200, nullable=true)
      */
-    private $paysexploitation;
+    protected $paysexploitation;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNETDIFFUSION", type="string", length=1, nullable=true)
      */
-    private $internetdiffusion;
+    protected $internetdiffusion;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INTERNET", type="string", length=1, nullable=true)
      */
-    private $internet;
+    protected $internet;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDADRESSEPRODUCTION", type="integer", nullable=true)
      */
-    private $idadresseproduction;
+    protected $idadresseproduction;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDADRESSEDISTRIBUTION", type="integer", nullable=true)
      */
-    private $idadressedistribution;
+    protected $idadressedistribution;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRESSEFRANCAISE", type="integer", nullable=true)
      */
-    private $idpressefrancaise;
+    protected $idpressefrancaise;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRESSEINTERNAT", type="integer", nullable=true)
      */
-    private $idpresseinternat;
+    protected $idpresseinternat;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDADRESSEVENTE", type="integer", nullable=true)
      */
-    private $idadressevente;
+    protected $idadressevente;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDECOLE1", type="integer", nullable=true)
      */
-    private $idecole1;
+    protected $idecole1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDECOLE2", type="integer", nullable=true)
      */
-    private $idecole2;
+    protected $idecole2;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDECOLE3", type="integer", nullable=true)
      */
-    private $idecole3;
+    protected $idecole3;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDADRESSEREALISATEUR", type="integer", nullable=true)
      */
-    private $idadresserealisateur;
+    protected $idadresserealisateur;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRODUCTIONMINORITAIRE1", type="integer", nullable=true)
      */
-    private $idproductionminoritaire1;
+    protected $idproductionminoritaire1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRODUCTIONMINORITAIRE2", type="integer", nullable=true)
      */
-    private $idproductionminoritaire2;
+    protected $idproductionminoritaire2;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRODUCTIONMINORITAIRE3", type="integer", nullable=true)
      */
-    private $idproductionminoritaire3;
+    protected $idproductionminoritaire3;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRODUCTIONMINORITAIRE4", type="integer", nullable=true)
      */
-    private $idproductionminoritaire4;
+    protected $idproductionminoritaire4;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRODUCTIONMINORITAIRE5", type="integer", nullable=true)
      */
-    private $idproductionminoritaire5;
+    protected $idproductionminoritaire5;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDPRODUCTIONMINORITAIRE6", type="integer", nullable=true)
      */
-    private $idproductionminoritaire6;
+    protected $idproductionminoritaire6;
 
     /**
      * @var string
      *
      * @ORM\Column(name="LANGUESOUSTITRE", type="string", length=3, nullable=true)
      */
-    private $languesoustitre;
+    protected $languesoustitre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="RESTAURATEUR", type="text", nullable=true)
      */
-    private $restaurateur;
+    protected $restaurateur;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TYPERESTAURATION", type="string", length=40, nullable=true)
      */
-    private $typerestauration;
+    protected $typerestauration;
 
     /**
      * @var string
      *
      * @ORM\Column(name="SANSDIALOGUE", type="string", length=1, nullable=true)
      */
-    private $sansdialogue;
+    protected $sansdialogue;
 
     /**
      * @var string
      *
      * @ORM\Column(name="COULEUR", type="string", length=10, nullable=true)
      */
-    private $couleur;
+    protected $couleur;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATECREATION", type="datetime", nullable=true)
      */
-    private $datecreation;
+    protected $datecreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATEMODIFICATION", type="datetime", nullable=true)
      */
-    private $datemodification;
+    protected $datemodification;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="IDCATEGORIE", type="integer", nullable=true)
      */
-    private $idcategorie;
+    protected $idcategorie;
 
     /**
      * @var string
      *
      * @ORM\Column(name="GALA", type="string", length=10, nullable=true)
      */
-    private $gala;
+    protected $gala;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TRANSITAIREDEPART", type="string", length=100, nullable=true)
      */
-    private $transitairedepart;
+    protected $transitairedepart;
 
     /**
      * @var string
      *
      * @ORM\Column(name="TRANSITAIREARRIVEE", type="string", length=100, nullable=true)
      */
-    private $transitairearrivee;
+    protected $transitairearrivee;
 
     /**
      * @var string
      *
      * @ORM\Column(name="URL_CINANDO", type="string", length=255, nullable=true)
      */
-    private $urlCinando;
+    protected $urlCinando;
 
     /**
      * @var string
      *
      * @ORM\Column(name="PRODUCTION_INFOS", type="text", nullable=true)
      */
-    private $productionInfos;
+    protected $productionInfos;
 
 
 

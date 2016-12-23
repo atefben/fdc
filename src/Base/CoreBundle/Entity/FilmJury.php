@@ -37,7 +37,7 @@ class FilmJury implements TranslateMainInterface
      *
      * @Groups({"jury_list", "jury_show", "person_list", "person_show"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
@@ -46,14 +46,14 @@ class FilmJury implements TranslateMainInterface
      *
      * @Groups({"jury_list", "jury_show", "person_list", "person_show"})
      */
-    private $position;
+    protected $position;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="juries", cascade={"persist"})
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var FilmPerson
@@ -62,7 +62,7 @@ class FilmJury implements TranslateMainInterface
      *
      * @Groups({"jury_list", "jury_show"})
      */
-    private $person;
+    protected $person;
 
     /**
      * @var FilmJuryType
@@ -71,7 +71,7 @@ class FilmJury implements TranslateMainInterface
      *
      * @Groups({"jury_list", "jury_show"})
      */
-    private $type;
+    protected $type;
     
     /**
      * @var FilmJuryFunction
@@ -80,12 +80,12 @@ class FilmJury implements TranslateMainInterface
      *
      * @Groups({"jury_list", "jury_show"})
      */
-    private $function;
+    protected $function;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="jury", cascade={"persist"})
      */
-    private $medias;
+    protected $medias;
 
     /**
      * @var ArrayCollection

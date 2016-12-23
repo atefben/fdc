@@ -19,7 +19,7 @@ class NewsWidgetImage extends NewsWidget
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"all"})
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $gallery;
+    protected $gallery;
 
     /**
      * Set gallery

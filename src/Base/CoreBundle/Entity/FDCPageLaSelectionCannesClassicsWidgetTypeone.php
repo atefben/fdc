@@ -24,7 +24,7 @@ class FDCPageLaSelectionCannesClassicsWidgetTypeone extends FDCPageLaSelectionCa
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
-    private $image;
+    protected $image;
 
     /**
      * ArrayCollection

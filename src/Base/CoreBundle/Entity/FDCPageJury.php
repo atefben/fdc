@@ -32,7 +32,7 @@ class FDCPageJury implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var MediaImageSimple
@@ -40,14 +40,14 @@ class FDCPageJury implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $image;
+    protected $image;
 
     /**
      * @var FilmJuryType
      *
      * @ORM\ManyToOne(targetEntity="FilmJuryType")
      */
-    private $juryType;
+    protected $juryType;
 
     /**
      * @var ArrayCollection

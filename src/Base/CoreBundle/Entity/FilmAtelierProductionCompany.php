@@ -27,28 +27,28 @@ class FilmAtelierProductionCompany
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $name;
+    protected $name;
     
     /**
      * @var FilmAtelierProductionCompanyAddress
      *
      * @ORM\OneToOne(targetEntity="FilmAtelierProductionCompanyAddress", cascade={"persist"})
      */
-    private $address;
+    protected $address;
     
     /**
      * @var FilmAtelier
      *
      * @ORM\OneToMany(targetEntity="FilmAtelier", mappedBy="productionCompany")
      */
-    private $filmAtelier;
+    protected $filmAtelier;
 
     /**
      * Constructor

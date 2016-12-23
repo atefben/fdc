@@ -58,7 +58,7 @@ class NewsVideoTranslation implements TranslateChildInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"news_list", "search", "news_show"})
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Constructor
