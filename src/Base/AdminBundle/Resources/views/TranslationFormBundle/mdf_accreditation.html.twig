@@ -23,67 +23,85 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    Content block
+                                    Informations de base
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.state) }}
                                     {{ form_row(translationsFields.title) }}
+                                    {{ form_row(translationsFields.subtitle) }}
                                     {{ form_row(translationsFields.description) }}
-                                    {{ form_row(translationsFields.showContactBlock) }}
-                                    {{ form_row(translationsFields.contactTitle) }}
-                                    {{ form_row(translationsFields.contactDescription) }}
-                                    {{ form_row(translationsFields.contactSeeMoreUrl) }}
+                                    {{ form_row(translationsFields.activeUrl) }}
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    {{ 'group.french_version'|trans }}
+                                    Accréditations
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            {{ 'form.label.home_content_title'|trans }}
-                                        </label>
-                                        {% if form.children.fr.vars.value is not null %}
-                                            <div>
-                                                {{ form.children.fr.vars.value.title }}
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            {{ 'form.label.home_content_description'|trans }}
-                                        </label>
-                                        {% if form.children.fr.vars.value is not null %}
-                                            <div>
-                                                {{ form.children.fr.vars.value.description }}
-                                            </div>
-                                        {% endif %}
-                                    </div>
+                                    {{ form_row(translationsFields.promotionsTitle) }}
+                                    {{ form_row(translationsFields.promotionTitle1) }}
+                                    {{ form_row(translationsFields.promotionPrice1) }}
+                                    {{ form_row(translationsFields.promotionInformation1) }}
+                                    {{ form_row(translationsFields.promotionState1) }}
+                                    {{ form_row(translationsFields.promotionTitle2) }}
+                                    {{ form_row(translationsFields.promotionPrice2) }}
+                                    {{ form_row(translationsFields.promotionInformation2) }}
+                                    {{ form_row(translationsFields.promotionState2) }}
+                                    {{ form_row(translationsFields.promotionTitle3) }}
+                                    {{ form_row(translationsFields.promotionPrice3) }}
+                                    {{ form_row(translationsFields.promotionInformation3) }}
+                                    {{ form_row(translationsFields.promotionState3) }}
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Accréditations détails
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.promotionDetailsTitle1) }}
+                                    {{ form_row(translationsFields.promotionDetailsPricePrefix1) }}
+                                    {{ form_row(translationsFields.promotionDetailsPrice1) }}
+                                    {{ form_row(translationsFields.promotionDetailsPriceSuffix1) }}
+                                    {{ form_row(translationsFields.promotionDetailsInformation1) }}
+                                    {{ form_row(translationsFields.promotionDetailsTitle2) }}
+                                    {{ form_row(translationsFields.promotionDetailsPricePrefix2) }}
+                                    {{ form_row(translationsFields.promotionDetailsPrice2) }}
+                                    {{ form_row(translationsFields.promotionDetailsPriceSuffix2) }}
+                                    {{ form_row(translationsFields.promotionDetailsInformation2) }}
+                                    {{ form_row(translationsFields.promotionDetailsTitle3) }}
+                                    {{ form_row(translationsFields.promotionDetailsPricePrefix3) }}
+                                    {{ form_row(translationsFields.promotionDetailsPrice3) }}
+                                    {{ form_row(translationsFields.promotionDetailsPriceSuffix3) }}
+                                    {{ form_row(translationsFields.promotionDetailsInformation3) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
-                                    {% for widget in form.parent.children.dispatchDeServiceWidgets.children %}
+                                    {% for widget in form.parent.children.accreditationWidgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'dispatch_de_service_widget_type' %}
-                                                <h4><strong>{{ 'form.widget.dispatch_de_service_widget'|trans }}</strong></h4>
+                                            {% if widget.children._type.vars.value == 'accreditation_widget_type' %}
+                                                <h4><strong>{{ 'form.widget.accreditation_widget_type'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
-                                            {{ form_row(widget.image) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
 
                                             <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -92,23 +110,23 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                {{ 'form.dispatch_de_service_widget.helper_widgets'|trans }}<br/>
+                                {{ 'form.accreditation_widget.helper_widgets'|trans }}<br/>
                                 <a class="btn btn-primary btn-add-base-widget"
-                                   data-prototype="{{ form_widget(form.parent.children.dispatchDeServiceWidgets.vars.prototypes.dispatch_de_service_widget_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.widget.dispatch_de_service_widget'|trans }}</a>
+                                   data-prototype="{{ form_widget(form.parent.children.accreditationWidgets.vars.prototypes.accreditation_widget_type)|escape }}"><i
+                                            class="icon-plus"></i>{{ 'form.widget.accreditation_widget'|trans }}</a>
                             </div>
                         </div>
                     {% else %}
                         <div class="col-md-8">
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
-                                    {% for widget in form.parent.children.dispatchDeServiceWidgets.children %}
+                                    {% for widget in form.parent.children.accreditationWidgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'dispatch_de_service_widget_type' %}
-                                                <h4><strong>{{ 'form.widget.dispatch_de_service_widget'|trans }}</strong></h4>
+                                            {% if widget.children._type.vars.value == 'accreditation_widget_type' %}
+                                                <h4><strong>{{ 'form.widget.accreditation_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
-                                            {{ form_row(widget.image) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}
@@ -125,13 +143,13 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {% for widget in form.parent.children.dispatchDeServiceWidgets.children %}
+                                        {% for widget in form.parent.children.accreditationWidgets.children %}
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'dispatch_de_service_widget_type' %}
-                                                    <h4><strong>{{ 'form.widget.dispatch_de_service_widget'|trans }}</strong></h4>
+                                                {% if widget.children._type.vars.value == 'accreditation_widget_type' %}
+                                                    <h4><strong>{{ 'form.widget.accreditation_widget'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_title'|trans }}
+                                                            {{ 'form.label.accreditation_widget_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -141,41 +159,11 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_sub_title'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.subtitle }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_description'|trans }}
+                                                            {{ 'form.label.accreditation_widget_description'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
                                                                 {{ widget.children.translations.fr.vars.value.description }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_image_url'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.imageUrl }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_see_more_url'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.seeMoreUrl }}
                                                             {% endif %}
                                                         </div>
                                                     </div>

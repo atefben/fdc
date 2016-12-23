@@ -40,3 +40,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.accreditation:
+        class: FDC\MarcheDuFilmBundle\Manager\AccreditationManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
