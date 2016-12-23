@@ -25,12 +25,8 @@ class MdfHomeService
     protected $id;
 
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="image", referencedColumnName="id")
-     * })
+     * @var MediaMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
     protected $image;
 
@@ -46,9 +42,7 @@ class MdfHomeService
     protected $translations;
 
     /**
-     * MdfHomeServices constructor.
-     *
-     * @param ArrayCollection $translations
+     * MdfHomeService constructor.
      */
     public function __construct()
     {
@@ -64,7 +58,7 @@ class MdfHomeService
     }
 
     /**
-     * @return Media
+     * @return MediaMdf
      */
     public function getImage()
     {

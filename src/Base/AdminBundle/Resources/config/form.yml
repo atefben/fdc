@@ -579,9 +579,13 @@ services:
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
     base.admin.form.home_slider_type:
+        scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderType
         tags:
             - { name: form.type, alias: 'home_slider_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_slider_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
     base.admin.form.home_content_slider_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeContentSliderType
@@ -589,9 +593,13 @@ services:
             - { name: form.type, alias: 'home_content_slider_type'}
 
     base.admin.form.home_service_type:
+        scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\HomeServiceType
         tags:
             - { name: form.type, alias: 'home_service_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_service_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
     base.admin.form.content_template_widget_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetType
