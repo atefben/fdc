@@ -21,7 +21,7 @@ class DefaultController extends Controller
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
         $homepageContent = $homepageManager->getHomepageContent();
-        $contentBlockSlider = $homepageManager->getContentBlockSlider();
+//        $contentBlockSlider = $homepageManager->getContentBlockSlider();
         $news = $newsManager->getHomepageNews();
         $contact = $contactManager->getContactInfo();
         $services = $homepageManager->getHomepageServices();
@@ -30,7 +30,7 @@ class DefaultController extends Controller
             'sliderTop' => $slidersTop,
             'slider' => $sliders,
             'homepageContent' => $homepageContent,
-            'contentBlockSlider' => $contentBlockSlider,
+            'contentBlockSlider' => null,
             'news' => $news,
             'contact' => $contact,
             'services' => $services

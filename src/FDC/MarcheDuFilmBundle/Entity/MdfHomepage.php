@@ -34,14 +34,15 @@ class MdfHomepage
     protected $sliders;
 
     /**
-     * @ORM\OneToMany(targetEntity="MdfHomeContentSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
-     */
-    protected $contentSliders;
-
-    /**
      * @ORM\OneToMany(targetEntity="MdfHomeService", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      */
     protected $services;
+
+    /**
+     * @var GalleryMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\GalleryMdf", cascade={"all"})
+     */
+    protected $gallery;
 
     /**
      * @var ArrayCollection
@@ -51,7 +52,6 @@ class MdfHomepage
     public function __construct() {
         $this->sliders = new ArrayCollection();
         $this->slidersTop = new ArrayCollection();
-        $this->contentSliders = new ArrayCollection();
         $this->services = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
@@ -62,6 +62,22 @@ class MdfHomepage
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return GalleryMdf
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param GalleryMdf $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
     }
 
     /**
@@ -133,43 +149,6 @@ class MdfHomepage
     {
         if ($this->sliders->contains($homeSlider)) {
             $this->sliders->removeElement($homeSlider);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContentSliders()
-    {
-        return $this->contentSliders;
-    }
-
-    /**
-     * @param MdfHomeContentSlider $homeContentSlider
-     *
-     * @return $this
-     */
-    public function addContentSlider(MdfHomeContentSlider $homeContentSlider)
-    {
-        if (!$this->contentSliders->contains($homeContentSlider)) {
-            $this->contentSliders->add($homeContentSlider);
-            $homeContentSlider->setHomepage($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param MdfHomeContentSlider $homeContentSlider
-     *
-     * @return $this
-     */
-    public function removeContentSlider(MdfHomeContentSlider $homeContentSlider)
-    {
-        if ($this->contentSliders->contains($homeContentSlider)) {
-            $this->contentSliders->removeElement($homeContentSlider);
         }
 
         return $this;
