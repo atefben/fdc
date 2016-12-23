@@ -17,9 +17,21 @@ class ContentTemplateController extends Controller
 
         $titleHeader = $contentTemplateManager->getTitleHeaderContent(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
         $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
 
         $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets);
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets);
+
+        usort($widgets, function($a, $b)
+        {
+            if (property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
+                return strcmp($a->getTranslatable()->getPosition(), $b->getTranslatable()->getPosition());
+            } else if (property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
+                return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
+            } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
+                return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
+            }
+        });
 
         return $this->render('FDCMarcheDuFilmBundle:contentTemplate:editionPresentation.html.twig', array(
             'titleHeader' => $titleHeader,

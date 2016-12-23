@@ -6,12 +6,14 @@
             <div class="text-presentation projection presse">
                 {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockTitleHeader.html.twig' with {'titleHeader': titleHeader} %}
                 {% for widget in widgets %}
-                    {% if widget.translatable.isWidgetText() %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetText() %}
                         {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockText.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetImage() is defined and widget.isWidgetImage() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockImage.html.twig' with {'widget': widget} %}
                     {% endif %}
                 {% endfor %}
 
-                {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockImage.html.twig' %}
                 {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockDownload.html.twig' %}
             </div>
         </div>
