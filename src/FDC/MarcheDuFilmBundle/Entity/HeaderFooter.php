@@ -29,12 +29,8 @@ class HeaderFooter
     protected $id;
 
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="headerBanner", referencedColumnName="id")
-     * })
+     * @var MediaMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
     protected $headerBanner;
 

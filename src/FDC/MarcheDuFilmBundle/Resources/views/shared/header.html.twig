@@ -39,7 +39,7 @@
                 <p class="stick"><a href="/"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
             </div>
             <div id="leaderBoard">
-                <span>banner</span>
+                <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
             </div>
         </div>
     </div>
