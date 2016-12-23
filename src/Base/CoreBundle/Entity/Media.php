@@ -53,14 +53,14 @@ abstract class Media implements TranslateMainInterface
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "live", "event_show", "home", "search"})
      */
-    private $theme;
+    public $theme;
 
     /**
      * @var MediaTag
      *
      * @ORM\OneToMany(targetEntity="MediaTag", mappedBy="media", cascade={"persist"})
      */
-    private $tags;
+    protected $tags;
 
     /**
      * @var \DateTime
@@ -80,7 +80,7 @@ abstract class Media implements TranslateMainInterface
      * })
      * @Serializer\Accessor(getter="getApiPublishedAt")
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
@@ -100,49 +100,49 @@ abstract class Media implements TranslateMainInterface
      * })
      *
      */
-    private $publishEndedAt;
+    protected $publishEndedAt;
 
     /**
      * @var Site
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
-    private $sites;
+    protected $sites;
 
     /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
-    private $festival;
+    protected $festival;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $displayedAll;
+    protected $displayedAll;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $displayedHome;
+    protected $displayedHome;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $displayedMobile;
+    protected $displayedMobile;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
      */
-    private $excludeFromSearch;
+    protected $excludeFromSearch;
 
     /**
      * @var ArrayCollection
@@ -174,40 +174,40 @@ abstract class Media implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
      * @Groups({"news_show"})
      */
-    private $associatedFilm;
+    protected $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
      * @Groups({"news_show"})
      */
-    private $associatedEvent;
+    protected $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaFilmProjectionAssociated", mappedBy="media", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_show"})
      */
-    private $associatedProjections;
+    protected $associatedProjections;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $oldMediaId;
+    protected $oldMediaId;
 
     public function __construct()
     {

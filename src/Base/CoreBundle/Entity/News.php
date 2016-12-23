@@ -60,7 +60,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
       */
-    protected  $theme;
+    public $theme;
 
     /**
      * @var FilmFestival

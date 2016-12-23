@@ -52,7 +52,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @Groups({"home", "news_list", "search", "news_show"})
      */
-    protected $theme;
+    public $theme;
 
     /**
      * @var FilmFestival
