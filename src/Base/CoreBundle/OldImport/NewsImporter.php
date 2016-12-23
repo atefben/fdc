@@ -796,6 +796,14 @@ class NewsImporter extends Importer
 
     protected function buildAssociatedFilms(NewsArticle $news, OldArticle $oldArticle)
     {
+        if (!$this->associateMovie) {
+            foreach ($news->getAssociatedFilms() as $associatedFilm) {
+                $news->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
+            $this->getManager()->flush();
+            return;
+        }
         // association film
         $oldArticleAssociations = $this
             ->getManager()
@@ -882,6 +890,7 @@ class NewsImporter extends Importer
     protected function isNewsMatching(OldArticle $oldArticle, $oldArticleTranslations)
     {
         $this->doNotPublish = false;
+        $this->associateMovie = true;
 
         if ($oldArticle->getArticleTypeId() == static::TYPE_QUOTIDIEN) {
             // case one
@@ -891,7 +900,8 @@ class NewsImporter extends Importer
             $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2006;
             if ($condIsAvailable) {
                 $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-                return 6;
+                $this->associateMovie = false;
+                return;
             }
 
             // case two

@@ -756,6 +756,15 @@ class StatementImporter extends Importer
 
     protected function buildAssociatedFilms(StatementArticle $statement, OldArticle $oldArticle)
     {
+        if (!$this->associateMovie) {
+            foreach ($statement->getAssociatedFilms() as $associatedFilm) {
+                $statement->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
+            $this->getManager()->flush();
+            return;
+        }
+
         // association film
         $oldArticleAssociations = $this
             ->getManager()

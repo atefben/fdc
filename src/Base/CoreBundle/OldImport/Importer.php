@@ -71,6 +71,8 @@ class Importer
     protected $defaultTheme;
     protected $defaultThemeId;
 
+    protected $associateMovie = true;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;

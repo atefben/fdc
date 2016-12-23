@@ -783,6 +783,15 @@ class InfoImporter extends Importer
 
     protected function buildAssociatedFilms(InfoArticle $info, OldArticle $oldArticle)
     {
+        if (!$this->associateMovie) {
+            foreach ($info->getAssociatedFilms() as $associatedFilm) {
+                $info->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
+            $this->getManager()->flush();
+            return;
+        }
+
         // association film
         $oldArticleAssociations = $this
             ->getManager()
