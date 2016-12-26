@@ -246,7 +246,7 @@ class ProjectionManager extends CoreManager
         // set section programmation
         if (property_exists($resultObject, 'SectionProgrammation')) {
             $entity->setProgrammationSection($resultObject->SectionProgrammation->Libelle);
-            if (property_exists($resultObject->SectionProgrammation->Traductions, 'SectionProgrammationTraductionDto')) {
+                if (property_exists($resultObject->SectionProgrammation->Traductions, 'SectionProgrammationTraductionDto')) {
                 foreach ($resultObject->SectionProgrammation->Traductions->SectionProgrammationTraductionDto as $translation) {
                     $entityTranslation = $entity->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
                     $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmProjectionTranslation();
