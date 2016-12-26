@@ -859,7 +859,6 @@ $(document).ready(function () {
         }
       });
       $grid.isotope('layout');
-      console.log('filter');
     });
   }
 
