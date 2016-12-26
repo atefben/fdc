@@ -982,13 +982,12 @@ class NewsImporter extends Importer
             if ($condIsAvailable) {
                 $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
                 $this->associateMovie = false;
-                return;
+                return true;
             }
 
             // case two
             // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
-            // "conférence" dans le titre + film associé
-            $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
+            $isAvailable = $oldArticle->getCreatedAt();
             $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2007;
             $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
 
@@ -1010,7 +1009,7 @@ class NewsImporter extends Importer
                         }
                     }
                 }
-                if ($hasWord) {
+                if ($hasWord || !$oldArticle->getIsOnline()) {
                     $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
                 } else {
                     $this->status = TranslateChildInterface::STATUS_PUBLISHED;
