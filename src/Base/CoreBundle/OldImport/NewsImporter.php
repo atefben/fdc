@@ -80,7 +80,7 @@ class NewsImporter extends Importer
             $this->getDefaultTheme(true);
         }
         $progress->finish();
-
+        $this->output->writeln('');
 
         return $this;
     }
