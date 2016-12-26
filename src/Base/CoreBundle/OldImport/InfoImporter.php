@@ -424,6 +424,42 @@ class InfoImporter extends Importer
                 ->getRepository('BaseCoreBundle:OldMedia')
                 ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
             ;
+
+            $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/General/' . trim($oldMedia->getFilename()));
+            if (!$file) {
+                $mediaImage = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaImage')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                ;
+
+                if ($mediaImage) {
+                    foreach ($mediaImage->getGalleries() as $galleryMedia) {
+                        if ($galleryMedia instanceof GalleryMedia) {
+                            $galleryMedia->setMedia(null);
+                            $gallery = $galleryMedia->getGallery();
+                            $gallery->removeMedia($galleryMedia);
+                            if (!$gallery->getMedias()->count()) {
+                                $widget = $this
+                                    ->getManager()
+                                    ->getRepository('BaseCoreBundle:InfoWidgetImage')
+                                    ->findOneBy(['gallery' => $gallery->getId()])
+                                ;
+                                if ($widget) {
+                                    $widget->setGallery(null);
+                                    $this->getManager()->remove($mediaImage);
+                                }
+                                $this->getManager()->remove($gallery);
+                            }
+                        }
+                    }
+
+                    $this->getManager()->remove($mediaImage);
+                    $this->getManager()->flush();
+                }
+                continue;
+            }
+
             $mediaImage = null;
             $galleryMedia = null;
             if ($gallery->getMedias()->count()) {
@@ -467,7 +503,6 @@ class InfoImporter extends Importer
 
             if (!$media) {
                 $media = new Media();
-                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/General/' . trim($oldMedia->getFilename()));
                 $media->setName($oldMedia->getFilename());
                 $media->setBinaryContent($file);
                 $media->setEnabled(true);
@@ -574,6 +609,29 @@ class InfoImporter extends Importer
 
             $file = $this->createAudio($audioPath);
             if (!$file) {
+                $mediaAudio = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaAudio')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                ;
+
+                if ($mediaAudio) {
+                    $widgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:InfoWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
+
+                    if ($widgets) {
+                        foreach ($widgets as $widgetToRemove) {
+                            $widgetToRemove->setFile(null);
+                            $this->getManager()->remove($widgetToRemove);
+                        }
+                    }
+
+                    $this->getManager()->remove($mediaAudio);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
@@ -697,6 +755,29 @@ class InfoImporter extends Importer
             $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
             $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
             if ($file == null) {
+                $mediaVideo = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                ;
+
+                if ($mediaVideo) {
+                    $widgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:InfoWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
+
+                    if ($widgets) {
+                        foreach ($widgets as $widgetToRemove) {
+                            $widgetToRemove->setFile(null);
+                            $this->getManager()->remove($widgetToRemove);
+                        }
+                    }
+
+                    $this->getManager()->remove($mediaVideo);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 

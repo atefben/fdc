@@ -258,18 +258,7 @@ class Importer
 
     protected function createImage($url)
     {
-        $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/image/';
-        $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
-
-        if (is_file("$folder$file")) {
-            return $folder . $file;
-        }
-        exec("wget $url -O $folder$file");
-        if (!is_file($folder . $file)) {
-            return null;
-        }
-
-        return $folder . $file;
+        return $this->createFile($url, 'image');
     }
 
 
@@ -279,18 +268,7 @@ class Importer
      */
     protected function createAudio($url)
     {
-        $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/audio/';
-        $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
-
-        if (is_file("$folder$file")) {
-            return $folder . $file;
-        }
-        exec("wget $url -O $folder$file");
-        if (!is_file($folder . $file)) {
-            return null;
-        }
-
-        return $folder . $file;
+        return $this->createFile($url, 'audio');
     }
 
     /**
@@ -299,15 +277,25 @@ class Importer
      */
     protected function createVideo($url)
     {
-        $folder = $this->container->get('kernel')->getRootDir() . '/../web/uploads/old/video/';
+        return $this->createFile($url, 'video');
+    }
+
+    /**
+     * @param string $url
+     * @param string $type
+     * @return null|string
+     */
+    private function createFile($url, $type)
+    {
+        $folder = $this->container->get('kernel')->getRootDir() . "/../web/uploads/old/$type/";
+        exec("mkdir -p $folder");
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
-        if (is_file("$folder$file")) {
+        if (is_file("$folder$file") && filesize("$folder$file")) {
             return $folder . $file;
         }
         exec("wget $url -O $folder$file");
-
-        if (!is_file($folder . $file)) {
+        if (!is_file($folder . $file) || !filesize("$folder$file")) {
             return null;
         }
 
