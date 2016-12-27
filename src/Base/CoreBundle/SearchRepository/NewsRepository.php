@@ -14,7 +14,7 @@ use Elastica\Query\Filtered;
 
 class NewsRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear = false)
     {
         if(!is_array($searchTerm)) {
             $searchTerm = array('search' => $searchTerm);

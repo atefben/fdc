@@ -14,7 +14,7 @@ use Elastica\Query\Filtered;
 
 class MediaImageRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear = false)
     {
         $finalQuery = new \Elastica\Query\BoolQuery();
 
