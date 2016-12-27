@@ -61,6 +61,9 @@
 	margin-left:-420px;
 	z-index: 1000;
 }
+.popin-plan-div img {
+	width: 740px;
+}
 .ov {
 	content: '';
 	display: block;
