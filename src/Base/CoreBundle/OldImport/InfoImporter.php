@@ -523,6 +523,7 @@ class InfoImporter extends Importer
             }
 
             $mediaImageTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setLegend($oldMediaTrans->getLabel() ?: $imgTitle[$translation->getLocale()])
                 ->setCopyright($oldMediaTrans->getCopyright())
                 ->setIsPublishedOnFDCEvent(true)
@@ -685,6 +686,7 @@ class InfoImporter extends Importer
                 $this->getManager()->persist($mediaAudioTranslation);
             }
             $mediaAudioTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setTitle($oldAudioTrans->getLabel() ?: $audioTitle[$translation->getLocale()])
                 ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
             ;
@@ -833,6 +835,7 @@ class InfoImporter extends Importer
                 $this->getManager()->persist($mediaVideoTranslation);
             }
             $mediaVideoTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setTitle($oldVideoTrans->getLabel() ?: $videoTitle[$translation->getLocale()])
                 ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
                 ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)

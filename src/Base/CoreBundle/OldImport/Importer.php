@@ -5,8 +5,10 @@ namespace Base\CoreBundle\OldImport;
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
+use Base\CoreBundle\Entity\OldMedia;
 use Base\CoreBundle\Entity\Site;
 use Base\CoreBundle\Entity\Theme;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Component\Console\Input\InputInterface;
@@ -388,5 +390,21 @@ class Importer
     public function setDefaultThemeId($id)
     {
         $this->defaultThemeId = $id;
+    }
+
+    /**
+     * @param OldMedia $oldMedia
+     * @param $locale
+     * @return int
+     */
+    protected function getStatusMedia(OldMedia $oldMedia, $locale)
+    {
+        if ($oldMedia->getIsOnline() && 'fr' == $locale) {
+            return TranslateChildInterface::STATUS_PUBLISHED;
+        } elseif ($oldMedia->getIsOnline()) {
+            return TranslateChildInterface::STATUS_VALIDATING;
+        } else {
+            return TranslateChildInterface::STATUS_DEACTIVATED;
+        }
     }
 }

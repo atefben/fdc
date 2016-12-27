@@ -24,6 +24,7 @@ use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class ClassicsImporter extends Importer
@@ -508,6 +509,7 @@ class ClassicsImporter extends Importer
             }
 
             $mediaImageTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setLegend($oldMediaTrans->getLabel() ?: $imgTitle[$translation->getLocale()])
                 ->setCopyright($oldMediaTrans->getCopyright())
                 ->setIsPublishedOnFDCEvent(true)
@@ -671,6 +673,7 @@ class ClassicsImporter extends Importer
                 $this->getManager()->persist($mediaAudioTranslation);
             }
             $mediaAudioTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setTitle($oldAudioTrans->getLabel() ?: $audioTitle[$translation->getLocale()])
                 ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
             ;
@@ -819,6 +822,7 @@ class ClassicsImporter extends Importer
                 $this->getManager()->persist($mediaVideoTranslation);
             }
             $mediaVideoTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setTitle($oldVideoTrans->getLabel() ?: $videoTitle[$translation->getLocale()])
                 ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
                 ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)

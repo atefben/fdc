@@ -511,6 +511,7 @@ class StatementImporter extends Importer
             }
 
             $mediaImageTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setLegend($oldMediaTrans->getLabel() ?: $imgTitle[$translation->getLocale()])
                 ->setCopyright($oldMediaTrans->getCopyright())
                 ->setIsPublishedOnFDCEvent(true)
@@ -671,6 +672,7 @@ class StatementImporter extends Importer
                 $this->getManager()->persist($mediaAudioTranslation);
             }
             $mediaAudioTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setTitle($oldAudioTrans->getLabel() ?: $audioTitle[$translation->getLocale()])
                 ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
             ;
@@ -727,7 +729,13 @@ class StatementImporter extends Importer
                 ])
             ;
 
-            if (!$oldVideoTrans) {
+            $oldMedia = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldMedia')
+                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
+            ;
+
+            if (!$oldVideoTrans || !$oldMedia) {
                 continue;
             }
 
@@ -804,6 +812,7 @@ class StatementImporter extends Importer
                 $this->getManager()->persist($mediaVideoTranslation);
             }
             $mediaVideoTranslation
+                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
                 ->setTitle($oldVideoTrans->getLabel() ?: $videoTitle[$translation->getLocale()])
                 ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
                 ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)
