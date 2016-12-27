@@ -33,7 +33,7 @@
                                          style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
                                     </div>
                                 {%- else -%}
-                                    {% set media = jury_page_media(member['jury'], app.request.locale, festival) %}
+                                    {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
                                     {%- if media is not empty -%}
                                         <div class="contain-img"
                                              style="background-image:url('{% path media, '976x535' %}');"></div>
