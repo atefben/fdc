@@ -19,7 +19,7 @@
                     }) -%}
                     <div class="content">
                         <div class="categories">
-                            <span>{{ film.selectionSection|trans_fallback('name') }} {{ dump(programmationFilm.projection.name) }}{%- if programmationFilm -%}ICI{%- elseif film.selectionSubsection -%}{{ ' - ' ~ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
+                            <span>{%- if programmationFilm.projection.name -%}{{ programmationFilm.projection.name }}{%- elseif  film.selectionSection|trans_fallback('name') -%}{{ film.selectionSection|trans_fallback('name') }}{%- elseif film.selectionSubsection -%}{{ ' - ' ~ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
                             {%- if 'Ouverture' in film.galaName -%}
                                 <span>{{ 'movie.fdc_open'|trans }}</span>
                             {%- elseif 'Fermeture' in film.galaName or 'Clôture' in film.galaName -%}
