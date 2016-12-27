@@ -543,9 +543,10 @@ a.notloaded {
     display:none;
     position: absolute;
     height: 560px;
-    top: 20%;
-    margin: auto;
-    width: 50%;
+    width: 420px;
+    top: 50%;
+    left: 50%
+    transform: translate(-50%, -50%);
     z-index: 1000;
 }
 
