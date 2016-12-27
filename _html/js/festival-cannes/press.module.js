@@ -3,12 +3,12 @@ $(document).ready(function () {
 
   $('.popin-plan').click(function() {
     $('#popin-participate-' + $(this).attr('data-id')).show();
-    $('.ov').show();
+    $('.ov').addClass('show');
   });
 
   $('.ov').click(function() {
     $('.popin-plan-div').hide();
-    $('.ov').hide();
+    $('.ov').removeClass('show');
   });
 
   var events = [];
