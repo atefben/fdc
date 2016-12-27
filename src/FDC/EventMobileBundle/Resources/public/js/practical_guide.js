@@ -287,6 +287,17 @@ $(function() {
   });
 });
 $(document).ready(function() {
+  
+  $('.popin-plan').click(function() {
+    $('#popin-participate-' + $(this).attr('data-id')).show();
+    $('.ov').addClass('show');
+  });
+
+  $('.ov').click(function() {
+    $('.popin-plan-div').hide();
+    $('.ov').removeClass('show');
+  });
+
   var sliderCommuniques = $(".communiques-carousel").owlCarousel({ 
     nav          : false,
     dots         : false,
