@@ -442,7 +442,7 @@ class MediaVideoAdmin extends Admin
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
-        $pcode = $this->getRequest()->get('pcode') === 'base.admin.fdc_page_web_tv_live_media_video_associated';
+        $pcode = $this->getRequestParameterOrNull('pcode') === 'base.admin.fdc_page_web_tv_live_media_video_associated';
         if ($pcode && $context == 'list') {
             $query->andWhere($query->getRootAlias() . '.displayedTrailer = 1');
         }
