@@ -14,7 +14,7 @@ use Elastica\Query\Filtered;
 
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
     {
         if(!is_array($searchTerm)) {
             $searchTerm = array('search' => $searchTerm);
@@ -36,25 +36,33 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         }
 
         //date query
-        if(!empty($searchTerm['yearStart']) && !empty($searchTerm['yearEnd'])) {
-            $dateQuery = new \Elastica\Query\BoolQuery();
+        //if(!empty($searchTerm['yearStart']) && !empty($searchTerm['yearEnd'])) {
+            //$dateQuery = new \Elastica\Query\BoolQuery();
+            //
+            //$rangeLower = new Filtered(
+            //    $dateQuery,
+            //    new Range('festival.year', array(
+            //        'gte' => $searchTerm['yearStart'],
+            //    ))
+            //);
+            //
+            //$rangeUpper = new Filtered(
+            //    $rangeLower,
+            //    new Range('festival.year', array(
+            //        'lte' => $searchTerm['yearEnd'],
+            //    ))
+            //);
 
-            $rangeLower = new Filtered(
-                $dateQuery,
-                new Range('festival.year', array(
-                    'gte' => $searchTerm['yearStart'],
-                ))
-            );
+            //$finalQuery->addMust($rangeUpper);
 
-            $rangeUpper = new Filtered(
-                $rangeLower,
-                new Range('festival.year', array(
-                    'lte' => $searchTerm['yearEnd'],
-                ))
-            );
 
-            $finalQuery->addMust($rangeUpper);
-        }
+            $statusQuery = new \Elastica\Query\BoolQuery();
+            $statusQuery
+                ->addMust($this->getStatusFilterQuery($_locale))
+                ->addMust($finalQuery)
+                ->addMust($this->getYearQuery($fdcYear))
+            ;
+        //}
 
         //status query
         $statusQuery = new \Elastica\Query\BoolQuery();
