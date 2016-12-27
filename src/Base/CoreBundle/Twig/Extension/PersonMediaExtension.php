@@ -222,8 +222,15 @@ class PersonMediaExtension extends Twig_Extension
             foreach ($film->getMedias() as $filmFilmMedia) {
                 if ($filmFilmMedia instanceof FilmFilmMedia) {
                     $isCurrent = $filmFilmMedia->getType() == FilmFilmMedia::TYPE_DIRECTOR && $filmFilmMedia->getMedia();
-                    $isCurrent = $isCurrent && $filmFilmMedia->getMedia()->getPerson();
-                    $isCurrent = $isCurrent && $filmFilmMedia->getMedia()->getPerson()->getId() == $person->getId();
+                    $in = false;
+                    foreach ($filmFilmMedia->getMedia()->getPersonMedias() as $personMedia) {
+                        if ($personMedia instanceof FilmPersonMedia) {
+                            if ($personMedia->getPerson()->getId() == $person->getId()) {
+                                $in = true;
+                            }
+                        }
+                    }
+                    $isCurrent = $isCurrent && $in;
                     if ($isCurrent) {
                         $image[] = $filmFilmMedia->getMedia();
                     }
