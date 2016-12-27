@@ -889,7 +889,7 @@ $(document).ready(function () {
 );
 
 $(document).ready(function() {
-  
+
   $('.popin-plan').click(function() {
     $('#popin-participate-' + $(this).attr('data-id')).show();
     $('.ov').addClass('show');
