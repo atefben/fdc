@@ -414,7 +414,7 @@ class Importer
         if ($oldMedia->getIsOnline() && 'fr' == $locale) {
             return TranslateChildInterface::STATUS_PUBLISHED;
         } elseif ($oldMedia->getIsOnline()) {
-            return TranslateChildInterface::STATUS_VALIDATING;
+            return TranslateChildInterface::STATUS_TRANSLATED;
         } else {
             return TranslateChildInterface::STATUS_DEACTIVATED;
         }
