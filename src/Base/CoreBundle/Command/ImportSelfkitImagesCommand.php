@@ -15,6 +15,11 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 {
 
     /**
+     * @var InputInterface
+     */
+    protected $input;
+
+    /**
      * @var OutputInterface
      */
     protected $output;
@@ -30,6 +35,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->output = $output;
+        $this->input = $input;
         $this->importPersonImages();
         $this->importFilmImages();
     }
@@ -82,7 +88,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
                 }
-                else {
+                elseif($this->input->getOption('force-reupload')) {
                     $media->setBinaryContent($filename);
                     $media->setThumbsGenerated(false);
                 }
