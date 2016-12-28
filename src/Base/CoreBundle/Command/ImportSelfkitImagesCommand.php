@@ -8,6 +8,7 @@ use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportSelfkitImagesCommand extends ContainerAwareCommand
@@ -21,7 +22,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('base:import:selfkit-images');
+            ->setName('base:import:selfkit-images')
+            ->addOption('force-reupload', null, InputOption::VALUE_NONE, 'Force repload')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -78,6 +81,10 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
+                }
+                else {
+                    $media->setBinaryContent($filename);
+                    $media->setThumbsGenerated(false);
                 }
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
