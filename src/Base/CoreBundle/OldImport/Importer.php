@@ -2,10 +2,20 @@
 
 namespace Base\CoreBundle\OldImport;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\FilmFestival;
+use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated;
+use Base\CoreBundle\Entity\MediaAudioTranslation;
+use Base\CoreBundle\Entity\MediaImage;
+use Base\CoreBundle\Entity\MediaImageTranslation;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\OldMedia;
+use Base\CoreBundle\Entity\OldMediaI18n;
 use Base\CoreBundle\Entity\Site;
 use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
@@ -74,10 +84,12 @@ class Importer
     protected $defaultThemeId;
 
     protected $associateMovie = true;
+    protected $selfkitAmazonUrl;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, $selfkitAmazonUrl)
     {
         $this->container = $container;
+        $this->selfkitAmazonUrl= $selfkitAmazonUrl;
     }
 
     /**
@@ -405,6 +417,513 @@ class Importer
             return TranslateChildInterface::STATUS_VALIDATING;
         } else {
             return TranslateChildInterface::STATUS_DEACTIVATED;
+        }
+    }
+
+    /**
+     * @param int $oldMediaId
+     * @param string $locale
+     * @return MediaImage
+     */
+    protected function createMediaImageFromOldMedia($oldMediaId, $locale)
+    {
+        $imgTitle = array(
+            'fr' => 'photo',
+            'en' => 'photo',
+            'es' => 'foto',
+            'zh' => '照片',
+        );
+
+        $oldLocale = $locale == 'zh' ? 'cn' : $locale;
+
+        $oldMedia = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMedia')
+            ->findOneBy(['id' => $oldMediaId])
+        ;
+
+        $oldMediaI18n = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaI18n')
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMedia->getId()])
+        ;
+
+        if (!$oldMediaI18n) {
+            return null;
+        }
+
+        $oldUrl = 'http://www.festival-cannes.fr/assets/Image/General/';
+        $file = $this->createImage($oldUrl . trim($oldMedia->getFilename()));
+
+        if (!$file) {
+            return null;
+        }
+
+        $mediaImage = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+
+        if (!$mediaImage) {
+            $mediaImage = new MediaImage();
+            $mediaImage->setOldMediaId($oldMedia->getId());
+            $this->getManager()->persist($mediaImage);
+        }
+
+        $mediaImage
+            ->setTheme($this->defaultTheme)
+            ->setDisplayedAll(true)
+            ->setPublishedAt($oldMedia->getPublishFor())
+            ->setCreatedAt($oldMedia->getCreatedAt())
+            ->setUpdatedAt($oldMedia->getUpdatedAt())
+        ;
+
+        if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
+            $mediaImage->addSite($this->getSiteCorporate());
+        }
+
+        $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+
+        if (!$mediaImageTranslation) {
+            $mediaImageTranslation = new MediaImageTranslation();
+            $mediaImageTranslation
+                ->setLocale($locale)
+                ->setTranslatable($mediaImage)
+            ;
+            $this->getManager()->persist($mediaImageTranslation);
+        }
+
+
+        $mediaImageTranslation
+            ->setStatus($this->getStatusMedia($oldMedia, $locale))
+            ->setLegend($oldMediaI18n->getLabel() ?: $imgTitle[$locale])
+            ->setCopyright($oldMediaI18n->getCopyright())
+            ->setIsPublishedOnFDCEvent(true)
+        ;
+
+        $media = $mediaImageTranslation->getFile();
+        if (!$media) {
+            $media = new Media();
+            $media->setName($oldMedia->getFilename());
+            $media->setEnabled(true);
+            $media->setBinaryContent($file);
+            $media->setProviderReference($oldMedia->getFilename());
+            $media->setContext('media_image');
+            $media->setProviderStatus(1);
+            $media->setProviderName('sonata.media.provider.image');
+            $media->setCreatedAt($oldMedia->getCreatedAt());
+            $this->getMediaManager()->save($media, false);
+
+            $mediaImageTranslation->setFile($media);
+
+        } elseif ($this->input->getOption('force-reupload')) {
+            $media->setBinaryContent($file);
+            $media->setThumbsGenerated(false);
+            $this->getMediaManager()->save($media, false);
+        }
+
+        $this->getManager()->flush();
+
+        return $mediaImage;
+    }
+
+    /**
+     * @param int $oldMediaId
+     * @param string $locale
+     * @return MediaAudio
+     */
+    protected function createMediaAudioFromOldMedia($oldMediaId, $locale)
+    {
+        $audioTitle = array(
+            'fr' => 'audio',
+            'en' => 'audio',
+            'es' => 'audio',
+            'zh' => '音频',
+        );
+
+        $oldLocale = $locale == 'zh' ? 'cn' : $locale;
+
+        $oldMedia = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMedia')
+            ->findOneBy(['id' => $oldMediaId])
+        ;
+
+        $oldMediaI18n = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaI18n')
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMedia->getId()])
+        ;
+
+        if (!$oldMediaI18n) {
+            return null;
+        }
+
+        $code = $oldMediaI18n->getCode();
+
+        if (!$code) {
+            $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
+                'id'      => $oldMedia->getId(),
+                'culture' => 'bi',
+            ))
+            ;
+            if ($duplicate && $duplicate->getCode()) {
+                $code = $duplicate->getCode();
+                $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
+            }
+            if ($duplicate && !$duplicate->getCode() && $oldMediaI18n->getHdFormatFilename()) {
+                $code = $oldMediaI18n->getCode();
+                $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
+            }
+            if (!$code) {
+                return null;
+            }
+        } else {
+            $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
+        }
+
+        $file = $this->createAudio($audioPath);
+
+        if (!$file) {
+            return null;
+        }
+
+        $mediaAudio = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaAudio')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+
+        if (!$mediaAudio) {
+            $mediaAudio = new MediaAudio();
+            $mediaAudio->setOldMediaId($oldMedia->getId());
+            $this->getManager()->persist($mediaAudio);
+        }
+
+        $mediaAudio
+            ->setTheme($this->defaultTheme)
+            ->setDisplayedAll(true)
+            ->setPublishedAt($oldMedia->getPublishFor())
+            ->setCreatedAt($oldMedia->getCreatedAt())
+            ->setUpdatedAt($oldMedia->getUpdatedAt())
+        ;
+
+        if ($oldMediaI18n->getFilenameThumbnail()) {
+            $mediaAudio->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'audio', $locale));
+        }
+
+        if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
+            $mediaAudio->addSite($this->getSiteCorporate());
+        }
+
+        $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($locale);
+
+        if (!$mediaAudioTranslation) {
+            $mediaAudioTranslation = new MediaAudioTranslation();
+            $mediaAudioTranslation
+                ->setLocale($locale)
+                ->setTranslatable($mediaAudio)
+            ;
+            $this->getManager()->persist($oldMediaI18n);
+        }
+
+        $mediaAudioTranslation
+            ->setStatus($this->getStatusMedia($oldMedia, $locale))
+            ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
+            ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
+        ;
+
+        $media = $mediaAudioTranslation->getFile();
+        if (!$media) {
+            $media = new Media();
+            $media->setName($mediaAudioTranslation->getTitle());
+            $media->setBinaryContent($file);
+            $media->setEnabled(true);
+            $media->setProviderReference($mediaAudioTranslation->getTitle());
+            $media->setContext('media_audio');
+            $media->setProviderStatus(1);
+            $media->setProviderName('sonata.media.provider.audio');
+            if ($media->getId() == null) {
+                $this->getMediaManager()->save($media, 'media_audio', 'sonata.media.provider.audio');
+            }
+
+            $this->getManager()->persist($media);
+            $mediaAudioTranslation->setFile($media);
+
+        }
+
+        $this->setMediaAudioFilmFilmAssociations($mediaAudio);
+
+        $this->getManager()->flush();
+
+        return $mediaAudio;
+    }
+
+    /**
+     * @param int $oldMediaId
+     * @param string $locale
+     * @return MediaAudio
+     */
+    protected function createMediaVideoFromOldMedia($oldMediaId, $locale)
+    {
+        $videoTitle = array(
+            'fr' => 'video',
+            'en' => 'video',
+            'es' => 'video',
+            'zh' => '视频',
+        );
+
+        $oldLocale = $locale == 'zh' ? 'cn' : $locale;
+
+        $oldMedia = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMedia')
+            ->findOneBy(['id' => $oldMediaId])
+        ;
+
+        $oldMediaI18n = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaI18n')
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMedia->getId()])
+        ;
+
+        if (!$oldMediaI18n) {
+            return null;
+        }
+
+        $path = $oldMediaI18n->getDeliveryUrl();
+        $pathArray = explode(',', $path);
+        $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
+        $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+
+        if (!$file) {
+            return null;
+        }
+
+        $mediaVideo = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+
+        if (!$mediaVideo) {
+            $mediaVideo = new MediaVideo();
+            $mediaVideo->setOldMediaId($oldMedia->getId());
+            $this->getManager()->persist($mediaVideo);
+        }
+
+        $mediaVideo
+            ->setDisplayedHomeCorpo(false)
+            ->setTheme($this->defaultTheme)
+            ->setDisplayedAll(true)
+            ->setPublishedAt($oldMedia->getPublishFor())
+            ->setCreatedAt($oldMedia->getCreatedAt())
+            ->setUpdatedAt($oldMedia->getUpdatedAt())
+        ;
+
+        if ($oldMediaI18n->getFilenameThumbnail()) {
+            $mediaVideo->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'video', $locale));
+        }
+
+        if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
+            $mediaVideo->addSite($this->getSiteCorporate());
+        }
+
+        $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+
+        if (!$mediaVideoTranslation) {
+            $mediaVideoTranslation = new MediaVideoTranslation();
+            $mediaVideoTranslation
+                ->setLocale($locale)
+                ->setTranslatable($mediaVideo)
+            ;
+            $this->getManager()->persist($oldMediaI18n);
+        }
+
+        $mediaVideoTranslation
+            ->setStatus($this->getStatusMedia($oldMedia, $locale))
+            ->setTitle($oldMediaI18n->getLabel() ?: $videoTitle[$locale])
+            ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
+            ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)
+        ;
+
+        $media = $mediaVideoTranslation->getFile();
+        if (!$media) {
+            $media = new Media();
+            $media->setName($oldMediaI18n->getLabel());
+            $media->setBinaryContent($file);
+            $media->setEnabled(true);
+            $media->setProviderReference($oldMediaI18n->getLabel());
+            $media->setContext('media_video');
+            $media->setProviderStatus(1);
+            $media->setProviderName('sonata.media.provider.video');
+            if ($media->getId() == null) {
+                $this->getMediaManager()->save($media);
+            }
+            $mediaVideoTranslation->setFile($media);
+
+            $this->getManager()->persist($media);
+            $mediaVideoTranslation->setFile($media);
+
+        }
+        $this->setMediaVideoFilmFilmAssociations($mediaVideo);
+        $this->getManager()->flush();
+
+        return $mediaVideo;
+    }
+
+    private function getMediaImageThumbnail(OldMedia $oldMedia, OldMediaI18n $oldMediaI18n, $mediaType = 'audio', $locale)
+    {
+        $folders = [
+            'audio' => 'http://www.festival-cannes.fr/assets/Audio/General/thumbnails/',
+            'video' => 'http://www.festival-cannes.fr/assets/Video/General/thumbnails/',
+        ];
+
+        $thumbPath = $folders[$mediaType] . $oldMediaI18n->getFilenameThumbnail();
+        $fileThumb = $this->createImage($thumbPath);
+        if ($fileThumb) {
+            $oldReference = 'audio-thumb-' . $oldMediaI18n->getId();
+            $mediaImage = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:MediaImage')
+                ->findOneBy(['oldReference' => $oldReference])
+            ;
+
+            if (!$mediaImage) {
+                if (!$mediaImage) {
+                    $mediaImage = new MediaImage();
+                    $mediaImage->setOldReference($oldReference);
+                    $this->getManager()->persist($mediaImage);
+                }
+
+                $mediaImage
+                    ->setTheme($this->defaultTheme)
+                    ->setDisplayedAll(true)
+                    ->setPublishedAt($oldMedia->getPublishFor())
+                    ->setCreatedAt($oldMedia->getCreatedAt())
+                    ->setUpdatedAt($oldMedia->getUpdatedAt())
+                ;
+            }
+
+            $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+            if (!$mediaImageTranslation) {
+                $mediaImageTranslation = new MediaImageTranslation();
+                $mediaImageTranslation
+                    ->setLocale($locale)
+                    ->setTranslatable($mediaImage)
+                ;
+                $this->getManager()->persist($mediaImageTranslation);
+            }
+
+            $media = $mediaImageTranslation->getFile();
+
+            if (!$media) {
+                $media = new Media();
+                $media->setName($oldMedia->getFilename());
+                $media->setBinaryContent($fileThumb);
+                $media->setEnabled(true);
+                $media->setProviderReference($oldMedia->getFilename());
+                $media->setContext('media_image');
+                $media->setProviderStatus(1);
+                $media->setProviderName('sonata.media.provider.image');
+                $media->setCreatedAt($oldMedia->getCreatedAt());
+            }
+            $media->setThumbsGenerated(false);
+            $media->setBinaryContent($fileThumb);
+            $this->getMediaManager()->save($media, false);
+            $mediaImageTranslation->setFile($media);
+            return $mediaImage;
+        }
+    }
+
+    private function setMediaAudioFilmFilmAssociations(MediaAudio $mediaAudio)
+    {
+        $oldMediaAssociations = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaAssociation')
+            ->findBy(['id' => $mediaAudio->getOldMediaId()], ['order' => 'asc'])
+        ;
+        $excludeFromRemove = [];
+        foreach ($oldMediaAssociations as $oldMediaAssociation) {
+            $filmFilm = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->find($oldMediaAssociation->getObjectId())
+            ;
+
+            if ($filmFilm) {
+                $excludeFromRemove[] = $filmFilm->getId();
+                $mediaAudioFilmFilmAssociated = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaAudioFilmFilmAssociated')
+                    ->findOneBy(['mediaAudio' => $mediaAudio->getId(), 'association' => $filmFilm->getId()])
+                ;
+
+                if (!$mediaAudioFilmFilmAssociated) {
+                    $mediaAudioFilmFilmAssociated = new MediaAudioFilmFilmAssociated();
+                    $mediaAudioFilmFilmAssociated
+                        ->setAssociation($filmFilm)
+                    ;
+                    $this->getManager()->persist($mediaAudioFilmFilmAssociated);
+                    $mediaAudio->addAssociatedFilm($mediaAudioFilmFilmAssociated);
+
+                }
+            }
+        }
+
+        foreach ($mediaAudio->getAssociatedFilms() as $mediaAudioFilmFilmAssociated) {
+            if ($mediaAudioFilmFilmAssociated instanceof MediaAudioFilmFilmAssociated) {
+                if (!in_array($mediaAudioFilmFilmAssociated->getAssociation()->getId(), $excludeFromRemove)) {
+                    $mediaAudio->removeAssociatedFilm($mediaAudioFilmFilmAssociated);
+                    $this->getManager()->remove($mediaAudioFilmFilmAssociated);
+                }
+            }
+        }
+    }
+
+    private function setMediaVideoFilmFilmAssociations(MediaVideo $mediaVideo)
+    {
+        $oldMediaAssociations = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaAssociation')
+            ->findBy(['id' => $mediaVideo->getOldMediaId()], ['order' => 'asc'])
+        ;
+        $excludeFromRemove = [];
+        foreach ($oldMediaAssociations as $oldMediaAssociation) {
+            $filmFilm = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->find($oldMediaAssociation->getObjectId())
+            ;
+
+            if ($filmFilm) {
+                $excludeFromRemove[] = $filmFilm->getId();
+                $mediaVideoFilmFilmAssociated = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaVideoFilmFilmAssociated')
+                    ->findOneBy(['mediaAudio' => $mediaVideo->getId(), 'association' => $filmFilm->getId()])
+                ;
+
+                if (!$mediaVideoFilmFilmAssociated) {
+                    $mediaVideoFilmFilmAssociated = new MediaVideoFilmFilmAssociated();
+                    $mediaVideoFilmFilmAssociated
+                        ->setAssociation($filmFilm)
+                    ;
+                    $this->getManager()->persist($mediaVideoFilmFilmAssociated);
+                    $mediaVideo->addAssociatedFilm($mediaVideoFilmFilmAssociated);
+
+                }
+            }
+        }
+
+        foreach ($mediaVideo->getAssociatedFilms() as $mediaVideoFilmFilmAssociated) {
+            if ($mediaVideoFilmFilmAssociated instanceof MediaVideoFilmFilmAssociated) {
+                if (!in_array($mediaVideoFilmFilmAssociated->getAssociation()->getId(), $excludeFromRemove)) {
+                    $mediaVideo->removeAssociatedFilm($mediaVideoFilmFilmAssociated);
+                    $this->getManager()->remove($mediaVideoFilmFilmAssociated);
+                }
+            }
         }
     }
 }

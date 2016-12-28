@@ -209,6 +209,11 @@ abstract class Media implements TranslateMainInterface
      */
     protected $oldMediaId;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $oldReference;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -693,5 +698,28 @@ abstract class Media implements TranslateMainInterface
     public function getOldMediaId()
     {
         return $this->oldMediaId;
+    }
+
+    /**
+     * Set oldReference
+     *
+     * @param string $oldReference
+     * @return Media
+     */
+    public function setOldReference($oldReference)
+    {
+        $this->oldReference = $oldReference;
+
+        return $this;
+    }
+
+    /**
+     * Get oldReference
+     *
+     * @return string 
+     */
+    public function getOldReference()
+    {
+        return $this->oldReference;
     }
 }

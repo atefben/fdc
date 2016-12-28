@@ -1,21 +1,21 @@
 services:
-    old_import.article_importer:
-        class: Base\CoreBundle\OldImport\ArticleImporter
-        arguments:
-            -  "@service_container"
     old_import.news_importer:
         class: Base\CoreBundle\OldImport\NewsImporter
         arguments:
             -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"
     old_import.info_importer:
         class: Base\CoreBundle\OldImport\InfoImporter
         arguments:
             -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"
     old_import.statement_importer:
         class: Base\CoreBundle\OldImport\StatementImporter
         arguments:
             -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"
     old_import.classics_importer:
         class: Base\CoreBundle\OldImport\ClassicsImporter
         arguments:
             -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"

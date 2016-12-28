@@ -5,12 +5,8 @@ namespace Base\CoreBundle\OldImport;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
@@ -32,6 +28,32 @@ class NewsImporter extends Importer
     protected $widgetPosition = 0;
 
     protected $status;
+
+    public function importOneNews($id)
+    {
+        $oldArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldArticle')
+            ->createQueryBuilder('o')
+            ->andWhere('o.articleTypeId in (:types)')
+            ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+            ->andWhere('o.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        $news = $this->importItem($oldArticle);
+        if ($news) {
+            foreach ($this->langs as $lang) {
+                $news->findTranslationByLocale($lang);
+            }
+        }
+
+        $this->getSiteEvent(true);
+        $this->getSiteCorporate(true);
+        $this->getDefaultTheme(true);
+    }
 
     public function importNews($paginate = null)
     {
@@ -372,13 +394,6 @@ class NewsImporter extends Importer
 
     protected function buildNewsWidgetImage(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $imgTitle = array(
-            'fr' => 'photo',
-            'en' => 'photo',
-            'es' => 'foto',
-            'zh' => '照片',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -423,23 +438,10 @@ class NewsImporter extends Importer
 
 
         foreach ($oldArticleAssociations as $position => $oldArticleAssociation) {
-            $oldMediaTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId(), 'culture' => $oldTranslation->getCulture()])
-            ;
-            if (!$oldMediaTrans) {
-                continue;
-            }
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaImage = $this->createMediaImageFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-
-            $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/General/' . trim($oldMedia->getFilename()));
-            if (!$file) {
+            if (!$mediaImage) {
                 $mediaImage = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:MediaImage')
@@ -473,84 +475,25 @@ class NewsImporter extends Importer
                 continue;
             }
 
-            $mediaImage = null;
             $galleryMedia = null;
             if ($gallery->getMedias()->count()) {
                 foreach ($gallery->getMedias() as $galleryMediaItem) {
                     if ($galleryMediaItem->getMedia()->getOldMediaId() == $oldArticleAssociation->getObjectId()) {
-                        $mediaImage = $galleryMediaItem->getMedia();
                         $galleryMedia = $galleryMediaItem;
                     }
                 }
             }
-            if (!$mediaImage) {
-                $mediaImage = new MediaImage();
-                $mediaImage->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaImage);
-            }
-
-            $mediaImage
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
-                $mediaImage->addSite($this->getSiteCorporate());
-            }
-
-            $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaImageTranslation) {
-                $mediaImageTranslation = new MediaImageTranslation();
-                $mediaImageTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaImage)
-                ;
-                $this->getManager()->persist($mediaImageTranslation);
-            }
-
-            $media = $mediaImageTranslation->getFile();
-
-            if (!$media) {
-                $media = new Media();
-                $media->setName($oldMedia->getFilename());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($oldMedia->getFilename());
-                $media->setContext('media_image');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.image');
-                $media->setCreatedAt($translation->getTranslatable()->getCreatedAt());
-                $this->getMediaManager()->save($media, false);
-
-                $mediaImageTranslation->setFile($media);
-            }
-
-            if ($translation->getLocale() == 'fr') {
-                $mediaImageTranslation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
-            } else {
-                $mediaImageTranslation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
-            }
-
-            $mediaImageTranslation
-                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
-                ->setLegend($oldMediaTrans->getLabel() ?: $imgTitle[$translation->getLocale()])
-                ->setCopyright($oldMediaTrans->getCopyright())
-                ->setIsPublishedOnFDCEvent(true)
-            ;
 
             if (!$galleryMedia) {
                 $galleryMedia = new GalleryMedia();
                 $galleryMedia
-                    ->setMedia($mediaImage)
                     ->setPosition($position)
                     ->setGallery($gallery)
                 ;
                 $this->getManager()->persist($galleryMedia);
             }
+
+            $galleryMedia->setMedia($mediaImage);
         }
 
         $this->getManager()->flush();
@@ -560,12 +503,6 @@ class NewsImporter extends Importer
 
     protected function buildNewsWidgetsAudio(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $audioTitle = array(
-            'fr' => 'audio',
-            'en' => 'audio',
-            'es' => 'audio',
-            'zh' => '音频',
-        );
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -577,56 +514,14 @@ class NewsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $oldAudioTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy([
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => $translation->getLocale(),
-                ])
-            ;
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaAudio = $this->createMediaAudioFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-
-            if (!$oldAudioTrans || !$oldMedia) {
-                continue;
-            }
-
-            $code = $oldAudioTrans->getCode();
-
-            if (!$code) {
-                $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => 'bi',
-                ))
-                ;
-                if ($duplicate && $duplicate->getCode()) {
-                    $code = $duplicate->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-                }
-                if ($duplicate && !$duplicate->getCode() && $oldAudioTrans->getHdFormatFilename()) {
-                    $code = $oldAudioTrans->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
-                }
-                if (!$code) {
-                    continue;
-                }
-
-
-            } else {
-                $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-            }
-
-            $file = $this->createAudio($audioPath);
-            if (!$file) {
+            if (!$mediaAudio) {
                 $mediaAudio = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:MediaAudio')
-                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                    ->findOneBy(['oldMediaId' => $objectId])
                 ;
 
                 if ($mediaAudio) {
@@ -650,7 +545,7 @@ class NewsImporter extends Importer
             }
 
             $widget = null;
-            $reference = 'audio' . $oldArticleAssociation->getObjectId();
+            $reference = 'audio' . $objectId;
             foreach ($news->getWidgets() as $item) {
                 if ($item instanceof NewsWidgetAudio && $item->getOldImportReference() == $reference) {
                     $widget = $item;
@@ -667,75 +562,13 @@ class NewsImporter extends Importer
                 $this->getManager()->persist($widget);
             }
 
-            $mediaAudio = $widget->getFile();
-            if (!$mediaAudio) {
-                $mediaAudio = new MediaAudio();
-                $mediaAudio->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaAudio);
-
-                $widget->setFile($mediaAudio);
-            }
-
-            $mediaAudio
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
-                $mediaAudio->addSite($this->getSiteCorporate());
-            }
-
-            $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaAudioTranslation) {
-                $mediaAudioTranslation = new MediaAudioTranslation();
-                $mediaAudioTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaAudio)
-                ;
-                $this->getManager()->persist($mediaAudioTranslation);
-            }
-            $mediaAudioTranslation
-                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
-                ->setTitle($oldAudioTrans->getLabel() ?: $audioTitle[$translation->getLocale()])
-                ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
-            ;
-
-            $media = $mediaAudioTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($mediaAudioTranslation->getTitle());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($mediaAudioTranslation->getTitle());
-                $media->setContext('media_audio');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.audio');
-                if ($media->getId() == null) {
-                    $this->getMediaManager()->save($media, 'media_audio', 'sonata.media.provider.audio');
-                }
-
-                $this->getManager()->persist($media);
-                $mediaAudioTranslation->setFile($media);
-
-            }
-
+            $widget->setFile($mediaAudio);
             $this->getManager()->flush();
         }
     }
 
     protected function buildNewsWidgetsVideo(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $videoTitle = array(
-            'fr' => 'video',
-            'en' => 'video',
-            'es' => 'video',
-            'zh' => '视频',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -747,43 +580,14 @@ class NewsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $oldVideoTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy([
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => $translation->getLocale(),
-                ])
-            ;
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaVideo = $this->createMediaVideoFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-
-            if (!$oldVideoTrans || !$oldMedia) {
-                continue;
-            }
-
-
-            $widget = null;
-            $reference = 'video' . $oldArticleAssociation->getObjectId();
-            foreach ($news->getWidgets() as $item) {
-                if ($item instanceof NewsWidgetVideo && $item->getOldImportReference() == $reference) {
-                    $widget = $item;
-                }
-            }
-
-            $path = $oldVideoTrans->getDeliveryUrl();
-            $pathArray = explode(',', $path);
-            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
-            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
-            if (!$file) {
+            if (!$mediaVideo) {
                 $mediaVideo = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:MediaVideo')
-                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                    ->findOneBy(['oldMediaId' => $objectId])
                 ;
                 if ($mediaVideo) {
                     $widgets = $this
@@ -805,6 +609,14 @@ class NewsImporter extends Importer
                 continue;
             }
 
+            $widget = null;
+            $reference = 'video' . $oldArticleAssociation->getObjectId();
+            foreach ($news->getWidgets() as $item) {
+                if ($item instanceof NewsWidgetVideo && $item->getOldImportReference() == $reference) {
+                    $widget = $item;
+                }
+            }
+
             if (!$widget) {
                 $widget = new NewsWidgetVideo();
                 $widget
@@ -815,65 +627,7 @@ class NewsImporter extends Importer
                 $this->getManager()->persist($widget);
             }
 
-            $mediaVideo = $widget->getFile();
-            if (!$mediaVideo) {
-                $mediaVideo = new MediaVideo();
-                $mediaVideo->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaVideo);
-
-                $widget->setFile($mediaVideo);
-            }
-
-            $mediaVideo
-                ->setDisplayedHomeCorpo(false)
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
-                $mediaVideo->addSite($this->getSiteCorporate());
-            }
-
-            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaVideoTranslation) {
-                $mediaVideoTranslation = new MediaVideoTranslation();
-                $mediaVideoTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaVideo)
-                ;
-                $this->getManager()->persist($mediaVideoTranslation);
-            }
-            $mediaVideoTranslation
-                ->setStatus($this->getStatusMedia($oldMedia, $translation->getLocale()))
-                ->setTitle($oldVideoTrans->getLabel() ?: $videoTitle[$translation->getLocale()])
-                ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
-                ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)
-            ;
-
-            $media = $mediaVideoTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($oldVideoTrans->getLabel());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($oldVideoTrans->getLabel());
-                $media->setContext('media_video');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.video');
-                if ($media->getId() == null) {
-                    $this->getMediaManager()->save($media);
-                }
-                $mediaVideoTranslation->setFile($media);
-
-                $this->getManager()->persist($media);
-                $mediaVideoTranslation->setFile($media);
-
-            }
-
+            $widget->setFile($mediaVideo);
             $this->getManager()->flush();
         }
     }

@@ -62,6 +62,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('only-medias', null, InputOption::VALUE_NONE, 'Only import medias')
             ->addOption('theme', null, InputOption::VALUE_OPTIONAL, 'Default Theme')
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination')
+            ->addOption('id', null, InputOption::VALUE_OPTIONAL, 'The id')
+            ->addOption('force-reupload', null, InputOption::VALUE_OPTIONAL, 'Force upload image again')
         ;
     }
 
@@ -90,7 +92,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         } elseif ($onlyNews) {
             $newsImporter = $this->getContainer()->get('old_import.news_importer');
             $newsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
-            if ($input->getOption('count')) {
+            if ($input->getOption('id')) {
+                $newsImporter->importOneNews($input->getOption('id'));
+            }
+            elseif ($input->getOption('count')) {
                 $output->writeln('News to import ' . $newsImporter->countNews());
             }
             else {

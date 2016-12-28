@@ -160,7 +160,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaImage')
             ->createQueryBuilder('m')
-            ->andWhere('m.oldMediaId is not null')
+            ->andWhere('m.oldMediaId is not null or m.oldReference is not null')
             ->getQuery()
             ->getResult()
             ;
@@ -175,7 +175,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaAudio')
             ->createQueryBuilder('m')
-            ->andWhere('m.oldMediaId is not null')
+            ->andWhere('m.oldMediaId is not null or m.oldReference is not null')
             ->getQuery()
             ->getResult()
             ;
@@ -190,7 +190,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaVideo')
             ->createQueryBuilder('m')
-            ->andWhere('m.oldMediaId is not null')
+            ->andWhere('m.oldMediaId is not null or m.oldReference is not null')
             ->getQuery()
             ->getResult()
             ;
