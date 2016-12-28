@@ -902,7 +902,7 @@ class Importer
                 $mediaVideoFilmFilmAssociated = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:MediaVideoFilmFilmAssociated')
-                    ->findOneBy(['mediaAudio' => $mediaVideo->getId(), 'association' => $filmFilm->getId()])
+                    ->findOneBy(['mediaVideo' => $mediaVideo->getId(), 'association' => $filmFilm->getId()])
                 ;
 
                 if (!$mediaVideoFilmFilmAssociated) {
