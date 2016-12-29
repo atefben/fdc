@@ -88,7 +88,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyPersonImages(null, $this->firstResult, $this->firstResult ? $this->maxResults : null)
+            ->getLegacyPersonImages(null, $this->firstResult, $this->firstResult !== null ? $this->maxResults : null)
         ;
         if (!$oldImages) {
             $this->output->writeln('<info>There is no images to import with these options</info>');
@@ -166,7 +166,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyFilmImages(null, $this->firstResult, $this->firstResult ? $this->maxResults : null)
+            ->getLegacyFilmImages(null, $this->firstResult, $this->firstResult !== null ? $this->maxResults : null)
         ;
 
         if (!$oldImages) {
