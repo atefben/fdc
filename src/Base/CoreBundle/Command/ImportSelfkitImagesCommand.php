@@ -100,6 +100,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         foreach ($oldImages as $oldImage) {
             try {
+
+                $person = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:FilmPerson')
+                    ->find($oldImage->getIdpersonne())
+                ;
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
@@ -119,6 +125,13 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('ApplicationSonataMediaBundle:Media')
                     ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
                 ;
+                if ($this->input->getOption('force-reupload') && $media && $person) {
+                    if ($person->getSelfkitImages()->contains($media)) {
+                        $person->removeSelfkitImage($media);
+                        $this->getManager()->flush();
+                    }
+                    $media = null;
+                }
                 if (!$media) {
                     $media = new Media();
                     $media->setContext('film_director');
@@ -139,12 +152,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
                 $this->getMediaManager()->save($media, false);
-
-                $person = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:FilmPerson')
-                    ->find($oldImage->getIdpersonne())
-                ;
                 if ($person) {
                     if (!$person->getSelfkitImages()->contains($media)) {
                         $person->addSelfkitImage($media);
@@ -222,7 +229,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                 if ($this->input->getOption('force-reupload') && $media && $film) {
                     if ($film->getSelfkitImages()->contains($media)) {
                         $film->removeSelfkitImage($media);
-                        $this->getManager()->remove($media);
                         $this->getManager()->flush();
                     }
                     $media = null;
