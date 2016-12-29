@@ -173,7 +173,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $maxResults = null;
         if (null !== $this->firstResult) {
             $maxResults = $this->maxResults;
-            $pages = ceil($this->importPersonImagesCount() / $maxResults);
+            $pages = ceil($this->importFilmImagesCount() / $maxResults);
             $this->output->writeln($this->input->getOption('page') . "/$pages");
         }
         $oldImages = $this
