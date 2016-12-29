@@ -51,7 +51,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $this->output = $output;
         $this->input = $input;
         if ($input->getOption('page')) {
-            $this->firstResult = ((int)$input->getOption('page') -1) * $this->maxResults;
+            $this->firstResult = ((int)$input->getOption('page') - 1) * $this->maxResults;
         }
 
         if ($input->getOption('persons')) {
@@ -73,8 +73,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getLegacyFilmImagesCount()
                 ;
                 $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items  for film to import</info>");
-            }
-            else {
+            } else {
                 $this->importFilmImages();
             }
         } else {
@@ -89,7 +88,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyPersonImages(null, $this->firstResult, $this->maxResults)
+            ->getLegacyPersonImages(null, $this->firstResult, $this->firstResult ? $this->maxResults : null)
         ;
         if (!$oldImages) {
             $this->output->writeln('<info>There is no images to import with these options</info>');
@@ -167,7 +166,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyFilmImages(null, $this->firstResult, $this->maxResults)
+            ->getLegacyFilmImages(null, $this->firstResult, $this->firstResult ? $this->maxResults : null)
         ;
 
         if (!$oldImages) {
