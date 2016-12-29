@@ -35,7 +35,7 @@
                                class="chocolat-image ajax"
                                href="{% path selfkit, selfkit.context ~ '_big' %}"
                                title='<span>{{ selfkit.name?:'Affiche du film' }}"</span>'
-                               data-credit="{{ selfkit.copyright ? ' © ' ~ selfkit.credits : '' }}">
+                               data-credit="{{ selfkit.copyright ? ' © ' ~ selfkit.copyright : '' }}">
                                 <img src="{% path selfkit, selfkit.context ~ '_big' %}" alt=""/>
                             </a>
                         </div>
@@ -64,7 +64,7 @@
                     {% endfor %}
                     {% for selfkit in selfkits %}
                         <div class="thumb {% if firstPicture == true %}active{% endif %}"
-                             data-caption="{{ selfkit.titre?:'Affiche du film' }}{{ selfkit.credits ? ' © ' ~ selfkit.credits : '' }}">
+                             data-caption="{{ selfkit.name?:'Affiche du film' }}{{ selfkit.copyright ? ' © ' ~ selfkit.copyright : '' }}">
                             <img src="{% path selfkit, selfkit.context ~ '_small' %}"/>
                         </div>
                         {% set firstPicture = false %}
