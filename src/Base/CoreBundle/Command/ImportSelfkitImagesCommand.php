@@ -24,11 +24,25 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
      */
     protected $output;
 
+    /**
+     * @var int|null
+     */
+    protected $firstResult;
+
+    /**
+     * @var int
+     */
+    protected $maxResults = 100;
+
     protected function configure()
     {
         $this
             ->setName('base:import:selfkit-images')
             ->addOption('force-reupload', null, InputOption::VALUE_NONE, 'Force repload')
+            ->addOption('films', null, InputOption::VALUE_NONE, 'Only films')
+            ->addOption('persons', null, InputOption::VALUE_NONE, 'Only films')
+            ->addOption('count', null, InputOption::VALUE_NONE, 'Count element (works if film or persons is selected)')
+            ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination (works if film or persons is selected)')
         ;
     }
 
@@ -36,8 +50,38 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     {
         $this->output = $output;
         $this->input = $input;
-        $this->importPersonImages();
-        $this->importFilmImages();
+        if ($input->getOption('page')) {
+            $this->firstResult = ((int)$input->getOption('page') -1) * $this->maxResults;
+        }
+
+        if ($input->getOption('persons')) {
+            if ($input->getOption('count')) {
+                $count = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                    ->getLegacyPersonImagesCount()
+                ;
+                $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items for persons to import</info>");
+            } else {
+                $this->importPersonImages();
+            }
+        } elseif ($input->getOption('films')) {
+            if ($input->getOption('count')) {
+                $count = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                    ->getLegacyFilmImagesCount()
+                ;
+                $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items  for film to import</info>");
+            }
+            else {
+                $this->importFilmImages();
+            }
+        } else {
+            $this->importPersonImages();
+            $this->importFilmImages();
+        }
+
     }
 
     private function importPersonImages()
@@ -45,8 +89,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyPersonImages()
+            ->getLegacyPersonImages(null, $this->firstResult, $this->maxResults)
         ;
+        if (!$oldImages) {
+            $this->output->writeln('<info>There is no images to import with these options</info>');
+            return;
+        }
         $this->output->writeln('<info>Import persons</info>');
         $bar = new ProgressBar($this->output, count($oldImages));
         $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
@@ -87,8 +135,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
-                }
-                elseif($this->input->getOption('force-reupload')) {
+                } elseif ($this->input->getOption('force-reupload')) {
                     $media->setBinaryContent($filename);
                     $media->setThumbsGenerated(false);
                 }
@@ -120,9 +167,13 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyFilmImages()
+            ->getLegacyFilmImages(null, $this->firstResult, $this->maxResults)
         ;
 
+        if (!$oldImages) {
+            $this->output->writeln('<info>There is no images to import with these options</info>');
+            return;
+        }
         $this->output->writeln('<info>Import films</info>');
         $bar = new ProgressBar($this->output, count($oldImages));
         $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
