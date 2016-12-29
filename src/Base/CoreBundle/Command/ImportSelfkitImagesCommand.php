@@ -219,7 +219,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('ApplicationSonataMediaBundle:Media')
                     ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
                 ;
-                if ($this->input->getOption('force-reupload') && $media) {
+                if ($this->input->getOption('force-reupload') && $media && $film) {
                     if ($film->getSelfkitImages()->contains($media)) {
                         $film->removeSelfkitImage($media);
                         $this->getManager()->remove($media);
