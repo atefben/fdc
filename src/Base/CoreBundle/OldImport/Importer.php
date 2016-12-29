@@ -445,10 +445,10 @@ class Importer
         $oldMediaI18n = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldMediaI18n')
-            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMedia->getId()])
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMediaId])
         ;
 
-        if (!$oldMediaI18n) {
+        if (!$oldMedia || !$oldMediaI18n) {
             return null;
         }
 
@@ -553,10 +553,10 @@ class Importer
         $oldMediaI18n = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldMediaI18n')
-            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMedia->getId()])
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMediaId])
         ;
 
-        if (!$oldMediaI18n) {
+        if (!$oldMedia || !$oldMediaI18n) {
             return null;
         }
 
@@ -628,6 +628,7 @@ class Importer
             $this->getManager()->persist($oldMediaI18n);
         }
 
+        dump($this->getStatusMedia($oldMedia, $locale));
         $mediaAudioTranslation
             ->setStatus($this->getStatusMedia($oldMedia, $locale))
             ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
@@ -685,10 +686,10 @@ class Importer
         $oldMediaI18n = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldMediaI18n')
-            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMedia->getId()])
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMediaId])
         ;
 
-        if (!$oldMediaI18n) {
+        if (!$oldMedia || !$oldMediaI18n) {
             return null;
         }
 
