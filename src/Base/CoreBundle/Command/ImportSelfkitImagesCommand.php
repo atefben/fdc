@@ -56,22 +56,14 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         if ($input->getOption('persons')) {
             if ($input->getOption('count')) {
-                $count = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
-                    ->getLegacyPersonImagesCount()
-                ;
+                $count = $this->importPersonImagesCount();
                 $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items for persons to import</info>");
             } else {
                 $this->importPersonImages();
             }
         } elseif ($input->getOption('films')) {
             if ($input->getOption('count')) {
-                $count = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
-                    ->getLegacyFilmImagesCount()
-                ;
+                $count = $this->importFilmImagesCount();
                 $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items  for film to import</info>");
             } else {
                 $this->importFilmImages();
@@ -85,10 +77,16 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
     private function importPersonImages()
     {
+        $maxResults = null;
+        if (null !== $this->firstResult) {
+            $maxResults = $this->maxResults;
+            $pages = ceil($this->importPersonImagesCount() / $maxResults);
+            $this->output->writeln($this->input->getOption('page') . "/$pages");
+        }
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyPersonImages(null, $this->firstResult, $this->firstResult !== null ? $this->maxResults : null)
+            ->getLegacyPersonImages(null, $this->firstResult, $maxResults)
         ;
         if (!$oldImages) {
             $this->output->writeln('<info>There is no images to import with these options</info>');
@@ -161,12 +159,27 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $this->output->writeln('');
     }
 
+    private function importPersonImagesCount()
+    {
+        return $count = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldFilmPhoto')
+            ->getLegacyPersonImagesCount()
+            ;
+    }
+
     private function importFilmImages()
     {
+        $maxResults = null;
+        if (null !== $this->firstResult) {
+            $maxResults = $this->maxResults;
+            $pages = ceil($this->importPersonImagesCount() / $maxResults);
+            $this->output->writeln($this->input->getOption('page') . "/$pages");
+        }
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyFilmImages(null, $this->firstResult, $this->firstResult !== null ? $this->maxResults : null)
+            ->getLegacyFilmImages(null, $this->firstResult, $maxResults)
         ;
 
         if (!$oldImages) {
@@ -234,6 +247,15 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         }
         $bar->finish();
         $this->output->writeln('');
+    }
+
+    protected function importFilmImagesCount()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldFilmPhoto')
+            ->getLegacyFilmImagesCount()
+            ;
     }
 
     /**
