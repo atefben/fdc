@@ -60,6 +60,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('only-statements', null, InputOption::VALUE_NONE, 'Only import statements')
             ->addOption('only-classics', null, InputOption::VALUE_NONE, 'Only import classics')
             ->addOption('only-medias', null, InputOption::VALUE_NONE, 'Only import medias')
+            ->addOption('only-events', null, InputOption::VALUE_NONE, 'Only import events')
             ->addOption('theme', null, InputOption::VALUE_OPTIONAL, 'Default Theme')
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination')
             ->addOption('id', null, InputOption::VALUE_OPTIONAL, 'The id')
@@ -79,6 +80,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $onlyStatements = $input->getOption('only-statements');
         $onlyClassics = $input->getOption('only-classics');
         $onlyMedias = $input->getOption('only-medias');
+        $onlyEvents = $input->getOption('only-events');
 
         if ($onlyInfos) {
             $infoImporter = $this->getContainer()->get('old_import.info_importer');
@@ -101,7 +103,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             else {
                 $newsImporter->importNews($input->getOption('page'));
             }
-
         } elseif ($onlyStatements) {
             $statementImporter = $this->getContainer()->get('old_import.statement_importer');
             $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
@@ -119,6 +120,15 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
             else {
                 $classicsImporter->importClassics();
+            }
+        }  elseif ($onlyEvents) {
+            $eventImporter = $this->getContainer()->get('old_import.events_importer');
+            $eventImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Classics to import :' . $eventImporter->countEvents());
+            }
+            else {
+                $eventImporter->importEvents();
             }
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);

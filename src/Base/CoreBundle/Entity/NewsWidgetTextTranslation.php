@@ -3,18 +3,13 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
-
 use Base\CoreBundle\Util\Time;
-
-use Doctrine\Common\Collections\ArrayCollection;
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
-
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 
 /**
  * NewsWidgetTextTranslation
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\NewsWidgetTextTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -22,23 +17,20 @@ use JMS\Serializer\Annotation\Since;
 class NewsWidgetTextTranslation
 {
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
     use Time;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="text", nullable=false)
-     *
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $content;
 
     /**
      * Set content
-     *
      * @param string $content
-     * @return NewsWidgetText
+     * @return $this
      */
     public function setContent($content)
     {
@@ -49,8 +41,7 @@ class NewsWidgetTextTranslation
 
     /**
      * Get content
-     *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {

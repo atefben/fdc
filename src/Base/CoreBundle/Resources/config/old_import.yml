@@ -19,3 +19,8 @@ services:
         arguments:
             -  "@service_container"
             -  "%selfkit_amazon_url_hd%"
+    old_import.events_importer:
+        class: Base\CoreBundle\OldImport\EventImporter
+        arguments:
+            -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"

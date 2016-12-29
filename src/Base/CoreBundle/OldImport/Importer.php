@@ -36,6 +36,7 @@ class Importer
     const TYPE_TOO = 23118;
     const TYPE_PHOTOPGRAH_EYE = 23135;
     const TYPE_WEB_PAGE = 1;
+    const TYPE_EVENT = 23115;
 
     const MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA = 1;
     const MEDIA_GALLERY_PHOTOGRAPHER_EYES = 2;
@@ -628,7 +629,6 @@ class Importer
             $this->getManager()->persist($oldMediaI18n);
         }
 
-        dump($this->getStatusMedia($oldMedia, $locale));
         $mediaAudioTranslation
             ->setStatus($this->getStatusMedia($oldMedia, $locale))
             ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
@@ -664,7 +664,7 @@ class Importer
     /**
      * @param int $oldMediaId
      * @param string $locale
-     * @return MediaAudio
+     * @return MediaVideo
      */
     protected function createMediaVideoFromOldMedia($oldMediaId, $locale)
     {
