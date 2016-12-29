@@ -2,7 +2,7 @@
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
-{% set selfkits = get_legacy_film_images(movie) %}
+{% set selfkits = movie.selfkitImages %}
 
 {% block body %}
     <section class="s-slider-retrospective">

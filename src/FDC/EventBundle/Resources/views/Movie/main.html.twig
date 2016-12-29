@@ -7,7 +7,7 @@
 
 {% extends extended_layout %}
 
-{% set selfkits = get_legacy_film_images(movie) %}
+{% set selfkits = movie.selfkitImages %}
 
 {% block body %}
 <div id="main" class="single-movie loading">
