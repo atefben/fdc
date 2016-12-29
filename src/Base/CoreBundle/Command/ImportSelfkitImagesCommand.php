@@ -194,6 +194,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         foreach ($oldImages as $oldImage) {
             try {
+                $film = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:FilmFilm')
+                    ->find($oldImage->getIdfilm())
+                ;
+
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
@@ -213,6 +219,14 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('ApplicationSonataMediaBundle:Media')
                     ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
                 ;
+                if ($this->input->getOption('force-reupload') && $media) {
+                    if ($film->getSelfkitImages()->contains($media)) {
+                        $film->removeSelfkitImage($media);
+                        $this->getManager()->remove($media);
+                        $this->getManager()->flush();
+                    }
+                    $media = null;
+                }
                 if (!$media) {
                     $media = new Media();
                     $media->setContext('film_film');
@@ -226,19 +240,10 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
                 }
-                elseif ($this->input->getOption('force-reupload')) {
-                    $media->setBinaryContent($filename);
-                    $media->setThumbsGenerated(false);
-                }
+
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
                 $this->getMediaManager()->save($media, false);
-
-                $film = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:FilmFilm')
-                    ->find($oldImage->getIdfilm())
-                ;
                 if ($film) {
                     if (!$film->getSelfkitImages()->contains($media)) {
                         $film->addSelfkitImage($media);
