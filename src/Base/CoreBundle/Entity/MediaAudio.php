@@ -151,7 +151,7 @@ class MediaAudio extends Media implements RoutedItemInterface
 
     public function getExportAuthor()
     {
-        return $this->getCreatedBy()->getId();
+        return $this->getCreatedBy() ? $this->getCreatedBy()->getId() : '';
     }
 
     public function getExportCreatedAt()
