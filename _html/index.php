@@ -129,76 +129,77 @@
               </div>
 
               <div id="our-services"> 
-                <div class="innerWrapper container">
+                <div class="container">
                   <span>marché du film</span>
                   <h3>Nos Services</h3>
+                    <div class="services-container">
                     <div class="services-mid">
-                      <div class="services-boxes firstBox" data-rel="firstPic">
+                      <a href="#"><div class="services-boxes firstBox" data-rel="firstPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="secondPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="secondPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="thirdPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="thirdPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                     <div class="services-boxes firstBox" data-rel="firstPic">
+                      </div></a>
+                     <a href="#"><div class="services-boxes firstBox" data-rel="firstPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="secondPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="secondPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="thirdPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="thirdPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes firstBox" data-rel="firstPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes firstBox" data-rel="firstPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="secondPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="secondPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="thirdPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="thirdPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                     <div class="services-boxes firstBox" data-rel="firstPic">
+                      </div></a>
+                     <a href="#"><div class="services-boxes firstBox" data-rel="firstPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
-                      <div class="services-boxes" data-rel="secondPic">
+                      </div></a>
+                      <a href="#"><div class="services-boxes" data-rel="secondPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
-                      </div>
+                      </div></a>
                       <div class="services-boxes" data-rel="thirdPic">
                           <div>stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
@@ -211,6 +212,7 @@
                       <div id="firstPic"><img src="img/photo.png"/></div>
                       <div id="secondPic"><img src="img/photo2.png"/></div>
                       <div id="thirdPic"><img src="img/photo.png"/></div>
+                    </div>
                     </div>
                 </div>
               </div>

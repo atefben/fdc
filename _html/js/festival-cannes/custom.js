@@ -518,6 +518,125 @@ click();
 });
 
 
+if (window.matchMedia("(max-width: 1279px)").matches) {
+
+    $.each($('.item'), function (i, e) {
+
+      var title = $(e).find('.name');
+      var subtitle = $(e).find('.sub-name');
+      var author = $(e).find('.author');
+
+      if (!title.hasClass('init')) {
+        var text = $(e).find('.name').text();
+        var subtext = $(e).find('.sub-name').text();
+        var authorResult = $(e).find('.author').text();
+        title.addClass('init');
+        title.attr('data-title', text);
+      } else {
+        var text = title.attr('data-title');
+        var subtext = subtitle.attr('data-title');
+        var authorResult = author.attr('data-title');
+      }
+
+        title.html(text.trunc(70, true));
+        subtitle.html(subtext.trunc(70, true));
+        author.html(authorResult.trunc(70, true));
+
+    });
+  }
+
+  else if (window.matchMedia("(max-width: 1600px)").matches) {
+
+    $.each($('.item'), function (i, e) {
+
+      var title = $(e).find('.name');
+      var subtitle = $(e).find('.sub-name');
+      var author = $(e).find('.author');
+
+      if (!title.hasClass('init')) {
+        var text = $(e).find('.name').text();
+        var subtext = $(e).find('.sub-name').text();
+        var authorResult = $(e).find('.author').text();
+        title.addClass('init');
+        title.attr('data-title', text);
+      } else {
+        var text = title.attr('data-title');
+        var subtext = subtitle.attr('data-title');
+        var authorResult = author.attr('data-title');
+      }
+
+        title.html(text.trunc(35, true));
+        subtitle.html(subtext.trunc(35, true));
+        author.html(authorResult.trunc(35, true));
+
+    });
+    $.each($('.dynamic .articles-content'), function (i, e) {
+
+      var title = $(e).find('h6');
+
+      if (!title.hasClass('init')) {
+        var text = $(e).find('h6').text();
+        title.addClass('init');
+        title.attr('data-title', text);
+      } else {
+        var text = title.attr('data-title');
+      }
+
+        title.html(text.trunc(70, true));
+
+    });
+  }
+
+  else if (window.matchMedia("(max-width: 2000px)").matches) {
+
+    $.each($('.item'), function (i, e) {
+
+      var title = $(e).find('.name');
+      var subtitle = $(e).find('.sub-name');
+      var author = $(e).find('.author');
+
+      if (!title.hasClass('init')) {
+        var text = $(e).find('.name').text();
+        var subtext = $(e).find('.sub-name').text();
+        var subtext = $(e).find('.author').text();
+        var authorResult = $(e).find('.author').text();
+        title.addClass('init');
+        title.attr('data-title', text);
+      } else {
+        var text = title.attr('data-title');
+        var subtext = subtitle.attr('data-title');
+        var authorResult = author.attr('data-title');
+      }
+
+        title.html(text.trunc(60, true));
+        subtitle.html(subtext.trunc(60, true));
+        author.html(authorResult.trunc(60, true));
+
+    });
+    $.each($('.dynamic .articles-content'), function (i, e) {
+
+      var title = $(e).find('h6');
+
+      if (!title.hasClass('init')) {
+        var text = $(e).find('h6').text();
+        title.addClass('init');
+        title.attr('data-title', text);
+      } else {
+        var text = title.attr('data-title');
+      }
+
+        title.html(text.trunc(70, true));
+
+    });
+  }
+
+String.prototype.trunc = function (n, useWordBoundary) {
+    var isTooLong = this.length > n,
+        s_ = isTooLong ? this.substr(0, n - 1) : this;
+    s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
+    return isTooLong ? s_ + '...' : s_;
+};
+
 var fixed = false;
  var topTrigger = $('.subNavigation').offset().top;
  $(document).scroll(function() {
@@ -534,19 +653,11 @@ var fixed = false;
    }
  });
 
-var $document = $(document);
 
-$document.scroll(function() {
-  if ($document.scrollTop() >= 50) {
-    $("#top-bar").addClass("minifiedBar");
-    $(".user-nav").addClass("minifiedNav");
-    $(".main-nav").hide();
-  } else {
-    $("#top-bar").removeClass("minifiedBar");
-    $(".user-nav").removeClass("minifiedNav");
-    $(".main-nav").show();
-  }
-});
+
+
+
+
 
 /*if ($('.selectText').length > 1) {
     $('.selectText').addClass('virgule');

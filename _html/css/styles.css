@@ -322,6 +322,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #owl-top .owl-Title p {
   font-size: 18px;
   letter-spacing: 1px;
+  max-width: 1152px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 0px;
+  line-height: 30px;
 }
 
 #owl-accred, #owl-projections {
@@ -10962,6 +10967,15 @@ header #searchContainer {
   padding-top: 5%;
   width: 100%;
 }
+#our-services .container {
+  position: relative;
+  width: 1152px;
+}
+@media screen and (max-width: 1024px) {
+  #our-services .container {
+    width: 1000px;
+  }
+}
 @media screen and (max-width: 1280px) {
   #our-services .innerWrapper {
     width: 90% !important;
@@ -10984,14 +10998,52 @@ header #searchContainer {
   letter-spacing: 7px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
 }
+#our-services .services-container {
+  height: 600px;
+  width: 1152px;
+  overflow: scroll;
+}
+#our-services .services-container::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  #our-services .services-container {
+    width: 1000px;
+  }
+}
 #our-services .services-mid {
   width: 50%;
   height: 600px;
   float: left;
-  overflow: auto;
+}
+#our-services .services-mid::-webkit-scrollbar {
+  display: none;
 }
 #our-services .hideOverflow {
   overflow: hidden;
+  overflow: hidden;
+  position: absolute;
+  right: 0%;
+  /*@media screen and (max-width: 1680px) {
+      right: 16%;
+  }
+  @media screen and (max-width: 1366px) {
+      right: 8%;
+      width: 488px;
+  }
+  @media screen and (max-width: 1280px) {
+      right: 5%;
+      width: 488px;
+  }
+  @media screen and (max-width: 1024px) {
+      right: 5%;
+       width: 488px;
+  }*/
+}
+@-moz-document url-prefix() {
+  #our-services .hideOverflow {
+    top: 22%;
+  }
 }
 #our-services .services-boxes {
   -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -22180,7 +22232,7 @@ ul.tabs .quarterTab h4 {
   font-family: inherit;
   font-size: 12px;
 }
-.tab_container .tabBox p, .tab_container .tabBox .read-more-target span {
+.tab_container .tabBox p, .tab_container .tabBox .read-more-target span, .tab_container .tabBox .tabContent {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #505050;
   opacity: 0.8;
@@ -22195,14 +22247,14 @@ ul.tabs .quarterTab h4 {
   font-size: 14px;
   margin-top: 50px;
 }
-.tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox p, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
+.tab_container .tabBox .tabContent, .tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox p, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
   padding-left: 50px;
   border: 0px solid #ddd;
 }
 .tab_container .tabBox .read-more-wrap {
   margin-bottom: 30px;
 }
-.tab_container .tabBox p {
+.tab_container .tabBox p, .tab_container .tabBox .tabContent {
   margin-bottom: 15px;
   text-align: left;
   letter-spacing: 0px;
@@ -22321,6 +22373,13 @@ ul.tabs .quarterTab h4 {
 }
 .read-more-target ul {
   z-index: 999;
+}
+.read-more-target div {
+  text-align: left;
+  letter-spacing: 0px;
+  font-size: 14px;
+  line-height: 30px;
+  opacity: 0.8;
 }
 
 .read-more-wrap .read-more-target {
@@ -23052,15 +23111,17 @@ ul.tabs .quarterTab h4 {
   font-family: "Playfair Display","Times New Roman",Times,serif;
 }
 .our-news .articles p {
-  font-size: 13px;
+  /*font-size: 13px;
   color: #b1b1b1;
   overflow: hidden;
-  line-height: 30px;
+  line-height: 30px;*/
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  opacity: 0.8;
   text-align: left;
+  line-height: 30px;
+  /*overflow: hidden!important;
+  text-overflow: ellipsis!important;
+  opacity: 0.8;
+  text-align: left;*/
 }
 @-moz-document url-prefix() {
   .our-news .articles p {
@@ -24067,30 +24128,43 @@ ul.tabs .quarterTab h4 {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+.servicesPage .articles:last-child h6, .servicesPage .articles:last-child span, .servicesPage .articles:last-child p {
+  color: white !important;
+  opacity: 1 !important;
+}
 .servicesPage .articles:last-child:hover {
   text-align: center;
   background: url("/img/blueBckg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.servicesPage .articles:last-child img {
+.servicesPage .articles:last-child .articles-content {
+  text-align: left;
+}
+.servicesPage .lastServicesArticle .articles-content {
+  text-align: center !important;
+}
+.servicesPage .lastServicesArticle h6, .servicesPage .lastServicesArticle p, .servicesPage .lastServicesArticle div {
+  text-align: center !important;
+}
+.servicesPage .lastServicesArticle img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.servicesPage .articles:last-child p {
+.servicesPage .lastServicesArticle p {
   padding: 0px 30px;
   opacity: 1 !important;
 }
-.servicesPage .articles:last-child .articles-content {
+.servicesPage .lastServicesArticle .articles-content {
   padding: 30px;
   display: block;
 }
-.servicesPage .articles:last-child .lastArticle  {
+.servicesPage .lastServicesArticle .lastArticle  {
   position: absolute;
   top: 150px;
 }
-.servicesPage .articles:last-child .blackBtn {
+.servicesPage .lastServicesArticle .blackBtn {
   padding-top: 25px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   width: 200px;
@@ -24108,7 +24182,7 @@ ul.tabs .quarterTab h4 {
   text-align: center;
   margin-top: 100px;
 }
-.servicesPage .articles:last-child h6 {
+.servicesPage .lastServicesArticle h6 {
   padding: 50px 0px;
   font-size: 46px !important;
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -24117,14 +24191,14 @@ ul.tabs .quarterTab h4 {
   letter-spacing: 2px;
   font-weight: lighter;
 }
-.servicesPage .articles:last-child p {
+.servicesPage .lastServicesArticle p {
   height: 100px;
   text-align: center;
 }
-.servicesPage .articles:last-child h6, .servicesPage .articles:last-child p {
+.servicesPage .lastServicesArticle h6, .servicesPage .lastServicesArticle p {
   color: white !important;
 }
-.servicesPage .articles:last-child .fitImgLast {
+.servicesPage .lastServicesArticle .fitImgLast {
   object-fit: cover;
   width: 100%;
   height: 100%;

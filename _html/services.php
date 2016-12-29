@@ -88,7 +88,7 @@
                     <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
                   </div>
                 </div>
-                <div class="articles">
+                <div class="articles lastServicesArticle">
                   <div class="articles-content">
                     <div class="lastArticle">
                       <h6>Nous<br>contacter</h6>

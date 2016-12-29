@@ -1,5 +1,5 @@
 
-<div class="our-news">
+<div class="our-news dynamic">
 <span>DECOUVREZ</span>
 <h3>les derniÈrEs actualités</h3>
 <div class="innerWrapper">
@@ -17,8 +17,8 @@
     <div class="articles-img"><img src="/img/slider/slider03.jpg"></div>
     <div class="articles-content">
       <span>producers workshop <span class="article-date">26 jun 2016</span></span>
-      <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-      <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+      <h6>Participez aux conférences NEXT dédiées au futur du cinéma, Participez aux conférences NEXT dédiées au futur du cinéma</h6>
+      <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dansu dans</p>
     </div>
   </div>
   <div class="articles noShow">

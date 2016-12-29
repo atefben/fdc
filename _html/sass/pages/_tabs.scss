@@ -262,7 +262,7 @@ ul.tabs {
       font-size: 12px;
     }
 
-    p, .read-more-target span {
+    p, .read-more-target span, .tabContent {
       font-family: $CamphorRegular;
       color: #505050;
       opacity: 0.8;
@@ -279,7 +279,7 @@ ul.tabs {
       margin-top: 50px;
     }
 
-    span, h5, p, .read-more-wrap, .read-more-trigger {
+    .tabContent, span, h5, p, .read-more-wrap, .read-more-trigger {
       padding-left: 50px;
       border: 0px solid #ddd;
     }
@@ -288,7 +288,7 @@ ul.tabs {
       margin-bottom: 30px;
     }
 
-    p {
+    p, .tabContent {
       margin-bottom: 15px;
       text-align: left;
       letter-spacing: 0px;
@@ -413,6 +413,14 @@ ul.tabs {
 
   ul {
     z-index:999;
+  }
+
+  div {
+    text-align: left;
+    letter-spacing: 0px;
+    font-size: 14px;
+    line-height: 30px;
+    opacity: 0.8;
   }
 }
 

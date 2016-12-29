@@ -1844,6 +1844,15 @@
     vertical-align: middle;
     padding-top: 5%;
     width: 100%;
+
+    .container {
+      position: relative;
+      width: 1152px;
+        @media screen and (max-width: 1024px) {
+            width: 1000px;
+
+        }
+    }
     
      @media screen and (max-width: 1280px) {
       .innerWrapper {
@@ -1870,15 +1879,53 @@
       font-family: "Playfair Display",Times New Roman,Times,serif;
     }
 
+    .services-container {
+        height: 600px;
+        width: 1152px;
+        overflow: scroll;
+        &::-webkit-scrollbar { 
+            display: none; 
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 1000px;
+
+        }
+    }
+
     .services-mid {
       width: 50%;
       height: 600px;
       float: left;
-      overflow: auto;
+      &::-webkit-scrollbar { 
+          display: none; 
+      }
     }
 
     .hideOverflow {
       overflow: hidden;
+      overflow: hidden;
+      position: absolute;
+      right: 0%;
+      @-moz-document url-prefix() {
+          top: 22%;
+
+      }
+        /*@media screen and (max-width: 1680px) {
+            right: 16%;
+        }
+        @media screen and (max-width: 1366px) {
+            right: 8%;
+            width: 488px;
+        }
+        @media screen and (max-width: 1280px) {
+            right: 5%;
+            width: 488px;
+        }
+        @media screen and (max-width: 1024px) {
+            right: 5%;
+             width: 488px;
+        }*/
     }
 
       .services-boxes {

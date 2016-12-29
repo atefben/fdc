@@ -103,11 +103,31 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
 
+      h6, span, p {
+        color: white!important;
+        opacity: 1!important;
+      }
+
       &:hover {
         text-align: center;
         background: url("/img/blueBckg.png");
         background-size: 100% 100%;
         background-repeat: no-repeat;
+      }
+
+      .articles-content {
+        text-align: left;
+      }
+    }
+
+    .lastServicesArticle {
+      
+      .articles-content {
+        text-align: center!important;
+      }
+
+      h6,p,div {
+        text-align: center!important;
       }
 
       img {
