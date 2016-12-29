@@ -31,11 +31,11 @@
                     {% endfor %}
                     {% for selfkit in selfkits %}
                         <div class="img {% if firstPicture == true %}active{% endif %}">
-                            <a id="photo-selfkit-{{ selfkit.idphoto }}" data-pid="selfkit-{{ selfkit.idphoto }}"
+                            <a id="photo-selfkit-{{ selfkit.id }}" data-pid="selfkit-{{ selfkit.id }}"
                                class="chocolat-image ajax"
                                href="{% path selfkit, selfkit.context ~ '_big' %}"
-                               title='<span>{{ selfkit.titre?:'Affiche du film' }}"</span>'
-                               data-credit="{{ selfkit.credits ? ' © ' ~ selfkit.credits : '' }}">
+                               title='<span>{{ selfkit.name?:'Affiche du film' }}"</span>'
+                               data-credit="{{ selfkit.copyright ? ' © ' ~ selfkit.credits : '' }}">
                                 <img src="{% path selfkit, selfkit.context ~ '_big' %}" alt=""/>
                             </a>
                         </div>
