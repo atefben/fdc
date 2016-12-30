@@ -189,7 +189,10 @@
 
     </div>
   </section>
-
+  <?php include('box-catalogue.php'); ?>  
+  <?php include('box-social.php'); ?>  
+  <?php include('box-news.php'); ?>
+  <?php include('box-contact.php'); ?>  
     <?php include( 'footer.html'); ?>
 
     <!-- cookie banner -->

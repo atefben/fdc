@@ -7424,7 +7424,7 @@ a {
   border-right: 1px solid #c8a461;
 }
 .button:hover {
-  background-color: #c8a461;
+  /*background-color: $gold;*/
   border-color: #c8a461;
   color: #fff;
 }
