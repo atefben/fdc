@@ -57,6 +57,20 @@ class EventAdmin extends Admin
             ->add('translate')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('oldNewsId', 'doctrine_orm_callback', array(
+                'label'    => 'dashboard.link.old_news_id',
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $references = explode(',', $value['value']);
+                    $queryBuilder->andWhere("{$alias}.oldNewsId in (:references)");
+                    $queryBuilder->setParameter(':references', $references);
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
         ;
     }
 
@@ -78,6 +92,9 @@ class EventAdmin extends Admin
             ))
             ->add('_preview', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_preview_event.html.twig'
+            ))
+            ->add('oldNewsId', null, array(
+                'label'    => 'dashboard.link.old_news_id',
             ))
         ;
     }

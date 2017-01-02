@@ -127,6 +127,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             if ($input->getOption('count')) {
                 $output->writeln('Classics to import :' . $eventImporter->countEvents());
             }
+            else if ($input->getOption('id')) {
+                $eventImporter->importOneEvent($input->getOption('id'));
+            }
             else {
                 $eventImporter->importEvents();
             }

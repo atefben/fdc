@@ -29,9 +29,36 @@ class EventImporter extends Importer
 
     protected $status;
 
+    public function importOneEvent($id)
+    {
+        $this->getSiteEvent(true);
+        $this->getSiteCorporate(true);
+        $this->getDefaultTheme(true);
+
+        $oldArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldArticle')
+            ->createQueryBuilder('o')
+            ->andWhere('o.articleTypeId in (:types)')
+            ->setParameter(':types', [static::TYPE_WEB_PAGE])
+            ->andWhere('o.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        $news = $this->importItem($oldArticle);
+        if ($news) {
+            foreach ($this->langs as $lang) {
+                $news->findTranslationByLocale($lang);
+            }
+        }
+    }
+
     public function importEvents()
     {
         $this->output->writeln('<event>Import events...</event>');
+        $this->getDefaultTheme(true);
 
         $count = $this->countEvents();
 
@@ -45,7 +72,7 @@ class EventImporter extends Importer
             $oldArticles = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:OldArticle')
-                ->findBy(['articleTypeId' => static::TYPE_EVENT], ['id' => 'asc'], 50, ($page - 1) * 50)
+                ->findBy(['articleTypeId' => static::TYPE_WEB_PAGE], ['id' => 'asc'], 50, ($page - 1) * 50)
             ;
 
             foreach ($oldArticles as $oldArticle) {
@@ -58,12 +85,12 @@ class EventImporter extends Importer
                 }
             }
 
-            $this->getManager()->clear();
+            //$this->getManager()->clear();
             unset($oldArticles);
 
-            $this->getSiteEvent(true);
-            $this->getSiteCorporate(true);
-            $this->getDefaultTheme(true);
+            //$this->getSiteEvent(true);
+            //$this->getSiteCorporate(true);
+            //$this->getDefaultTheme(true);
         }
         $progress->finish();
 
@@ -79,7 +106,7 @@ class EventImporter extends Importer
             ->createQueryBuilder('o')
             ->select('count(o)')
             ->andWhere('o.articleTypeId = :type')
-            ->setParameter(':type', static::TYPE_EVENT)
+            ->setParameter(':type', static::TYPE_WEB_PAGE)
             ->getQuery()
             ->getSingleScalarResult()
             ;
@@ -110,6 +137,9 @@ class EventImporter extends Importer
         if (!$matching) {
             return null;
         }
+        static $countEvents = 0;
+        ++$countEvents;
+        echo PHP_EOL;
         $event = $this->buildEvent($oldArticle);
 
         foreach ($oldTranslations as $oldTranslation) {
@@ -286,7 +316,6 @@ class EventImporter extends Importer
             $this->getManager()->persist($widget);
         }
 
-        dump($translation->getLocale());
         $widgetTranslation = $widget->findTranslationByLocale($translation->getLocale());
         if (!$widgetTranslation) {
             $widgetTranslation = new EventWidgetTextTranslation();
@@ -419,14 +448,26 @@ class EventImporter extends Importer
                                 ;
                                 if ($widget) {
                                     $widget->setGallery(null);
-                                    $this->getManager()->remove($mediaImage);
+                                    $this->getManager()->remove($widget);
                                 }
+
                                 $this->getManager()->remove($gallery);
                             }
+                            $mediaImage->removeGallery($galleryMedia);
+                            $this->getManager()->remove($galleryMedia);
                         }
                     }
 
-                    $this->getManager()->remove($mediaImage);
+                    $newsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:GalleryMedia')
+                        ->findBy(['media' => $mediaImage->getId()])
+                    ;
+
+                    if (!$newsWidgets) {
+                        $this->getManager()->remove($mediaImage);
+                    }
+
                     $this->getManager()->flush();
                 }
                 continue;
@@ -494,8 +535,31 @@ class EventImporter extends Importer
                             $this->getManager()->remove($widgetToRemove);
                         }
                     }
+                    $newsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:NewsWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
+                    $infosWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:InfoWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
+                    $statementsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:StatementWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
+                    $classicsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassicsWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
 
-                    $this->getManager()->remove($mediaAudio);
+                    if (!$newsWidgets && !$infosWidgets && !$statementsWidgets && !$classicsWidgets) {
+                        $this->getManager()->remove($mediaAudio);
+                    }
+
                     $this->getManager()->flush();
                 }
                 continue;
@@ -561,7 +625,30 @@ class EventImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaVideo);
+                    $newsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:NewsWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
+                    $infosWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:InfoWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
+                    $statementsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:StatementWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
+                    $classicsWidgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassicsWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
+
+                    if (!$newsWidgets && !$infosWidgets && !$statementsWidgets && !$classicsWidgets) {
+                        $this->getManager()->remove($mediaVideo);
+                    }
                     $this->getManager()->flush();
                 }
                 continue;
@@ -597,14 +684,19 @@ class EventImporter extends Importer
 
     protected function isEventMatching(OldArticle $oldArticle, $oldArticleTranslations)
     {
-        $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
+        static $countEvents = 0;
+        $isAvailable = $oldArticle->getCreatedAt();
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2010;
+
         if ($isAvailable) {
+
             // published
             if (in_array($oldArticle->getId(), [57610, 58049, 59042, 59675, 60062, 61390, 58232])) {
+
                 foreach ($oldArticleTranslations as $trans) {
-                    if ($trans->getCulture() == 'fr') {
+                    if ($trans->getCulture() == 'fr' && $oldArticle->getIsOnline() ) {
                         $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+                        ++$countEvents;
                         return true;
                     }
                 }
@@ -615,8 +707,9 @@ class EventImporter extends Importer
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
                 foreach ($words as $word) {
-                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
+                    if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false) && $oldArticle->getIsOnline()) {
                         $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+                        ++$countEvents;
                         return true;
                     }
                 }
@@ -628,6 +721,7 @@ class EventImporter extends Importer
                 foreach ($words as $word) {
                     if ($trans->getCulture() == 'fr' && (stripos($title, $word) !== false)) {
                         $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                        ++$countEvents;
                         return true;
                     }
                 }
