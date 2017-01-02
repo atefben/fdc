@@ -29,14 +29,33 @@ class NewsImporter extends Importer
 
     protected $status;
 
+    protected function getTypes()
+    {
+        return [
+            static::TYPE_QUOTIDIEN,
+            static::TYPE_WALL,
+            static::TYPE_TOO,
+            static::TYPE_PHOTOPGRAH_EYE,
+            static::TYPE_EDITO,
+        ];
+    }
+
     public function importOneNews($id)
     {
+
+        $types = [
+            static::TYPE_QUOTIDIEN,
+            static::TYPE_WALL,
+            static::TYPE_TOO,
+            static::TYPE_PHOTOPGRAH_EYE,
+            static::TYPE_EDITO,
+        ];
         $oldArticle = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
             ->createQueryBuilder('o')
             ->andWhere('o.articleTypeId in (:types)')
-            ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+            ->setParameter(':types', $this->getTypes())
             ->andWhere('o.id = :id')
             ->setParameter(':id', $id)
             ->getQuery()
@@ -76,7 +95,7 @@ class NewsImporter extends Importer
                 ->getRepository('BaseCoreBundle:OldArticle')
                 ->createQueryBuilder('o')
                 ->andWhere('o.articleTypeId in (:types)')
-                ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+                ->setParameter(':types', $this->getTypes())
                 ->addOrderBy('o.id', 'asc')
                 ->setMaxResults(100)
                 ->setFirstResult((($paginate ?: $page) - 1) * 100)
@@ -115,7 +134,7 @@ class NewsImporter extends Importer
             ->createQueryBuilder('o')
             ->select('count(o)')
             ->andWhere('o.articleTypeId in (:types)')
-            ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+            ->setParameter(':types', $this->getTypes())
         ;
 
         if ($paginate) {
@@ -730,6 +749,21 @@ class NewsImporter extends Importer
         $this->doNotPublish = false;
         $this->associateMovie = true;
 
+        if ($oldArticle->getArticleTypeId() == static::TYPE_EDITO) {
+            if ($oldArticle->getIsOnline()) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                return true;
+            }
+        }
+
+        if ($oldArticle->getArticleTypeId() == static::TYPE_WALL) {
+            $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
+            if ($condIsAvailable) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                return true;
+            }
+        }
+
         if ($oldArticle->getArticleTypeId() == static::TYPE_QUOTIDIEN) {
             // case one
             // Communiqués-Festival de 2001 > 2006
@@ -775,16 +809,9 @@ class NewsImporter extends Importer
             }
 
         }
-        if ($oldArticle->getArticleTypeId() == static::TYPE_WALL) {
-            $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
-            if ($condIsAvailable) {
-                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-                return true;
-            }
-        }
 
 
-        if (in_array($oldArticle->getArticleTypeId(), [static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])) {
+        if ($oldArticle->getArticleTypeId() == static::TYPE_TOO) {
             $words = ['le savez-vous', 'présence à Cannes'];
             $condIsAvailable = !$oldArticle->getIsOnline();
             if ($condIsAvailable) {
@@ -798,6 +825,11 @@ class NewsImporter extends Importer
                     }
                 }
             }
+        }
+
+        if ($oldArticle->getArticleTypeId() == static::TYPE_PHOTOPGRAH_EYE) {
+            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+            return true;
         }
         return false;
     }

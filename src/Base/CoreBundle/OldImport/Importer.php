@@ -32,6 +32,7 @@ class Importer
     const TYPE_NEWS_FESTIVAL = 23120;
     const TYPE_NEWS_CONFERENCE = 23121;
     const TYPE_COMMUNIQUE = 23109;
+    const TYPE_EDITO = 23119;
     const TYPE_WALL = 23123;
     const TYPE_TOO = 23118;
     const TYPE_PHOTOPGRAH_EYE = 23135;
