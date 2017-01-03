@@ -60,6 +60,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('only-statements', null, InputOption::VALUE_NONE, 'Only import statements')
             ->addOption('only-classics', null, InputOption::VALUE_NONE, 'Only import classics')
             ->addOption('only-media-images', null, InputOption::VALUE_NONE, 'Only import media images')
+            ->addOption('only-media-audios', null, InputOption::VALUE_NONE, 'Only import media audios')
+            ->addOption('only-media-videos', null, InputOption::VALUE_NONE, 'Only import media videos')
             ->addOption('only-medias', null, InputOption::VALUE_NONE, 'Only import medias')
             ->addOption('only-events', null, InputOption::VALUE_NONE, 'Only import events')
             ->addOption('theme', null, InputOption::VALUE_OPTIONAL, 'Default Theme')
@@ -81,6 +83,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $onlyStatements = $input->getOption('only-statements');
         $onlyClassics = $input->getOption('only-classics');
         $onlyMediaImages = $input->getOption('only-media-images');
+        $onlyMediaAudios = $input->getOption('only-media-audios');
+        $onlyMediaVideos = $input->getOption('only-media-videos');
         $onlyMedias = $input->getOption('only-medias');
         $onlyEvents = $input->getOption('only-events');
 
@@ -106,7 +110,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $statementImporter = $this->getContainer()->get('old_import.statement_importer');
             $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
-                $output->writeln('Statements to import :' . $statementImporter->countStatements());
+                $output->writeln('Statements to import: ' . $statementImporter->countStatements());
             } else {
                 $statementImporter->importStatements();
             }
@@ -114,7 +118,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $classicsImporter = $this->getContainer()->get('old_import.classics_importer');
             $classicsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
-                $output->writeln('Classics to import :' . $classicsImporter->countClassics());
+                $output->writeln('Classics to import: ' . $classicsImporter->countClassics());
             } else {
                 $classicsImporter->importClassics();
             }
@@ -122,7 +126,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $eventImporter = $this->getContainer()->get('old_import.events_importer');
             $eventImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
-                $output->writeln('Events to import :' . $eventImporter->countEvents());
+                $output->writeln('Events to import: ' . $eventImporter->countEvents());
             } else if ($input->getOption('id')) {
                 $eventImporter->importOneEvent($input->getOption('id'));
             } else {
@@ -132,11 +136,31 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $mediaImageImporter = $this->getContainer()->get('old_import.media_image_importer');
             $mediaImageImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
-                $output->writeln('Media Images to import :' . $mediaImageImporter->countMediaImages());
+                $output->writeln('Media Images to import: ' . $mediaImageImporter->countMediaImages());
             } else if ($input->getOption('id')) {
                 $mediaImageImporter->importOneMediaImage($input->getOption('id'));
             } else {
                 $mediaImageImporter->importMediaImages($input->getOption('page'));
+            }
+        }  elseif ($onlyMediaAudios) {
+            $mediaAudioImporter = $this->getContainer()->get('old_import.media_audio_importer');
+            $mediaAudioImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Media Audios to import: ' . $mediaAudioImporter->countMediaAudios());
+            } else if ($input->getOption('id')) {
+                $mediaAudioImporter->importOneMediaAudio($input->getOption('id'));
+            } else {
+                $mediaAudioImporter->importMediaAudios($input->getOption('page'));
+            }
+        }  elseif ($onlyMediaVideos) {
+            $mediaVideoImporter = $this->getContainer()->get('old_import.media_video_importer');
+            $mediaVideoImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Media Videos to import: ' . $mediaVideoImporter->countMediaVideos());
+            } else if ($input->getOption('id')) {
+                $mediaVideoImporter->importOneMediaVideo($input->getOption('id'));
+            } else {
+                $mediaVideoImporter->importMediaVideos($input->getOption('page'));
             }
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);

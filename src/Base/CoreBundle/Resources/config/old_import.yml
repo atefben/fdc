@@ -29,3 +29,13 @@ services:
         arguments:
             -  "@service_container"
             -  "%selfkit_amazon_url_hd%"
+    old_import.media_audio_importer:
+        class: Base\CoreBundle\OldImport\MediaAudioImporter
+        arguments:
+            -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"
+    old_import.media_video_importer:
+        class: Base\CoreBundle\OldImport\MediaVideoImporter
+        arguments:
+            -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"

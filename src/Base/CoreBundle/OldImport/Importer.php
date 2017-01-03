@@ -42,9 +42,11 @@ class Importer
     const MEDIA_GALLERY_PHOTOGRAPHER_EYES = 2;
 
     const MEDIA_TYPE_IMAGE = 1;
+    const MEDIA_TYPE_VIDEO = 2;
     const MEDIA_TYPE_AUDIO = 3;
 
     const MEDIA_QUOTIDIEN_AUDIO = 1;
+    const MEDIA_QUOTIDIEN_VIDEO = 1;
 
     const VIDEO_TYPE_FESTIVAL_TV = 1;
 
@@ -542,9 +544,10 @@ class Importer
      * @param int $oldMediaId
      * @param string $locale
      * @param int|null $status
+     * @param boolean $setCorporate
      * @return MediaAudio
      */
-    protected function createMediaAudioFromOldMedia($oldMediaId, $locale, $status = null)
+    protected function createMediaAudioFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
         $audioTitle = array(
             'fr' => 'audio',
@@ -624,8 +627,10 @@ class Importer
             $mediaAudio->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'audio', $locale));
         }
 
-        if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
-            $mediaAudio->addSite($this->getSiteCorporate());
+        if ($setCorporate) {
+            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
+                $mediaAudio->addSite($this->getSiteCorporate());
+            }
         }
 
         $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($locale);
@@ -680,9 +685,10 @@ class Importer
      * @param int $oldMediaId
      * @param string $locale
      * @param int|null $status
+     * @param boolean $setCorporate
      * @return MediaVideo
      */
-    protected function createMediaVideoFromOldMedia($oldMediaId, $locale, $status = null)
+    protected function createMediaVideoFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
         $videoTitle = array(
             'fr' => 'video',
@@ -743,8 +749,10 @@ class Importer
             $mediaVideo->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'video', $locale));
         }
 
-        if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
-            $mediaVideo->addSite($this->getSiteCorporate());
+        if ($setCorporate) {
+            if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
+                $mediaVideo->addSite($this->getSiteCorporate());
+            }
         }
 
         $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
