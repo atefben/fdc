@@ -59,6 +59,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('only-news', null, InputOption::VALUE_NONE, 'Only import news')
             ->addOption('only-statements', null, InputOption::VALUE_NONE, 'Only import statements')
             ->addOption('only-classics', null, InputOption::VALUE_NONE, 'Only import classics')
+            ->addOption('only-media-images', null, InputOption::VALUE_NONE, 'Only import media images')
             ->addOption('only-medias', null, InputOption::VALUE_NONE, 'Only import medias')
             ->addOption('only-events', null, InputOption::VALUE_NONE, 'Only import events')
             ->addOption('theme', null, InputOption::VALUE_OPTIONAL, 'Default Theme')
@@ -79,6 +80,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $onlyNews = $input->getOption('only-news');
         $onlyStatements = $input->getOption('only-statements');
         $onlyClassics = $input->getOption('only-classics');
+        $onlyMediaImages = $input->getOption('only-media-images');
         $onlyMedias = $input->getOption('only-medias');
         $onlyEvents = $input->getOption('only-events');
 
@@ -86,9 +88,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $infoImporter = $this->getContainer()->get('old_import.info_importer');
             $infoImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
-                $output->writeln('Infos to import '. $infoImporter->countInfos());
-            }
-            else {
+                $output->writeln('Infos to import ' . $infoImporter->countInfos());
+            } else {
                 $infoImporter->importInfos();
             }
         } elseif ($onlyNews) {
@@ -96,11 +97,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $newsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('id')) {
                 $newsImporter->importOneNews($input->getOption('id'));
-            }
-            elseif ($input->getOption('count')) {
+            } elseif ($input->getOption('count')) {
                 $output->writeln('News to import ' . $newsImporter->countNews());
-            }
-            else {
+            } else {
                 $newsImporter->importNews($input->getOption('page'));
             }
         } elseif ($onlyStatements) {
@@ -108,8 +107,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $statementImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
                 $output->writeln('Statements to import :' . $statementImporter->countStatements());
-            }
-            else {
+            } else {
                 $statementImporter->importStatements();
             }
         } elseif ($onlyClassics) {
@@ -117,21 +115,28 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $classicsImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
                 $output->writeln('Classics to import :' . $classicsImporter->countClassics());
-            }
-            else {
+            } else {
                 $classicsImporter->importClassics();
             }
-        }  elseif ($onlyEvents) {
+        } elseif ($onlyEvents) {
             $eventImporter = $this->getContainer()->get('old_import.events_importer');
             $eventImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
             if ($input->getOption('count')) {
-                $output->writeln('Classics to import :' . $eventImporter->countEvents());
-            }
-            else if ($input->getOption('id')) {
+                $output->writeln('Events to import :' . $eventImporter->countEvents());
+            } else if ($input->getOption('id')) {
                 $eventImporter->importOneEvent($input->getOption('id'));
-            }
-            else {
+            } else {
                 $eventImporter->importEvents();
+            }
+        } elseif ($onlyMediaImages) {
+            $mediaImageImporter = $this->getContainer()->get('old_import.media_image_importer');
+            $mediaImageImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
+            if ($input->getOption('count')) {
+                $output->writeln('Media Images to import :' . $mediaImageImporter->countMediaImages());
+            } else if ($input->getOption('id')) {
+                $mediaImageImporter->importOneMediaImage($input->getOption('id'));
+            } else {
+                $mediaImageImporter->importMediaImages($input->getOption('page'));
             }
         } elseif ($onlyMedias) {
             $this->importMediaImage($dm, $mediaManager, $output, $input);

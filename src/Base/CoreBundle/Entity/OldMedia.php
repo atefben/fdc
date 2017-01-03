@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * OldMedia
  *
  * @ORM\Table(name="old_media", indexes={@ORM\Index(name="file_class", columns={"file_class"}), @ORM\Index(name="publish_for", columns={"publish_for"}), @ORM\Index(name="published", columns={"published"}), @ORM\Index(name="language", columns={"language"}), @ORM\Index(name="media_FK_1", columns={"event_type_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\OldMediaRepository")
  */
 class OldMedia
 {

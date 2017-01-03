@@ -24,3 +24,8 @@ services:
         arguments:
             -  "@service_container"
             -  "%selfkit_amazon_url_hd%"
+    old_import.media_image_importer:
+        class: Base\CoreBundle\OldImport\MediaImageImporter
+        arguments:
+            -  "@service_container"
+            -  "%selfkit_amazon_url_hd%"
