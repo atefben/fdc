@@ -27,6 +27,11 @@ services:
         arguments: [{}, '@event_dispatcher']
         calls:
             - [setPropertyAccessor, ['@fos_elastica.property_accessor']]
+    base.transformers.model.event:
+        class: Base\CoreBundle\Transformer\EventToElasticaTransformer
+        arguments: [{}, '@event_dispatcher']
+        calls:
+            - [setPropertyAccessor, ['@fos_elastica.property_accessor']]
     base.transformers.model.quiet_property_accessor:
         class: Base\CoreBundle\Transformer\QuietPropertyAccessor
     base.transformers.model.nullable:

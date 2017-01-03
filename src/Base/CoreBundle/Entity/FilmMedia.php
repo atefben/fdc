@@ -285,11 +285,11 @@ class FilmMedia
 
 
     public function getFilmMedias() {
-        return $this->filmMedia;
+        return $this->filmMedias;
     }
 
     public function getPersonMedias() {
-        return $this->personMedia;
+        return $this->personMedias;
     }
 
     public function getMedia() {

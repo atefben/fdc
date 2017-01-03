@@ -44,14 +44,6 @@
                                     class="icon icon-print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
                     </div>
 
-                    <div class="contain-title vFlexAlign border-bottom border-top contain-title-top">
-                        <h1 class="title-01 two">EN AVANT-PREMIERE MONDIALE</h1>
-                        <h2 class="title-03 italic">Une coproduction Little Bear-Gaumont-Pathé, avec la participation de
-                            CANAL+, CINE+, de la SACEM. Et avec le soutien de la Région Ile-de-France, en partenariat
-                            avec le CNC. Ventes internationales : Gaumont. Distribution France : Pathé. Le film sortira
-                            en salles en octobre 2016.</h2>
-                    </div>
-
                     {% for widget in classic.widgets %}
                         {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}

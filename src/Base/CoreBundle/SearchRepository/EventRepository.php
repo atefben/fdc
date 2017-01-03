@@ -12,7 +12,7 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class EventRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear = false)
     {
         if(!is_array($searchTerm)) {
             $searchTerm = array('search' => $searchTerm);

@@ -58,7 +58,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    protected $displayedMobile;
+    protected $displayedMobile = false;
 
     /**
      * @var ArrayCollection
@@ -158,6 +158,20 @@ class Event implements TranslateMainInterface
      * @Groups({"event_list", "search", "event_show"})
      */
     protected $translations;
+
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $oldNewsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    protected $oldNewsTable;
 
     public function __toString()
     {
@@ -526,5 +540,51 @@ class Event implements TranslateMainInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set oldNewsId
+     *
+     * @param integer $oldNewsId
+     * @return Event
+     */
+    public function setOldNewsId($oldNewsId)
+    {
+        $this->oldNewsId = $oldNewsId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsId
+     *
+     * @return integer 
+     */
+    public function getOldNewsId()
+    {
+        return $this->oldNewsId;
+    }
+
+    /**
+     * Set oldNewsTable
+     *
+     * @param string $oldNewsTable
+     * @return Event
+     */
+    public function setOldNewsTable($oldNewsTable)
+    {
+        $this->oldNewsTable = $oldNewsTable;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsTable
+     *
+     * @return string 
+     */
+    public function getOldNewsTable()
+    {
+        return $this->oldNewsTable;
     }
 }

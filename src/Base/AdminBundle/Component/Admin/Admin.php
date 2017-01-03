@@ -210,4 +210,13 @@ class Admin extends BaseAdmin
         );
     }
 
+    public function getRequestParameterOrNull( $key, $default = null ){
+        try{
+            return $this->getRequest()->get($key, $default);
+        }catch(\Exception $e){
+            return null;
+        }
+    }
+
+
 }

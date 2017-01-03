@@ -208,6 +208,8 @@ fos_elastica:
                                         locale: ~
                 event:
                     persistence:
+                        model_to_elastica_transformer:
+                            service: base.transformers.model.event
                         driver: orm
                         model: Base\CoreBundle\Entity\Event
                         provider: ~

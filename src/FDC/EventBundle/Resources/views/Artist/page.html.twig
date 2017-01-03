@@ -43,7 +43,7 @@
                         {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
                         {% if artistImage %}
                             {% if artistImage.width > artistImage.height %}
-                                <img src="{% path artistImage.file, 'mobile' %}" height="485"
+                                <img src="{% path artistImage, 'mobile' %}" height="485"
                                      alt="{{ artist.fullName }}"/>
                             {% else %}
                                 <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
@@ -152,22 +152,15 @@
                                         <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
                                             {% endif %}
                                             <div class="image">
-                                                {% set legacy = get_legacy_film_image(filmPerson.film) %}
-                                                {% if legacy %}
-                                                    <img src="{{ selfkit_amazon_url }}{{ legacy['FICHIER'] }}"
-                                                         alt="{{ legacy['TITRE']?:'Affiche du film' }}"
-                                                         data-object-fit="cover">
-                                                {% else %}
-                                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                                    film: filmPerson.film,
-                                                    film_format: '366x488',
-                                                    film_attrs: {
-                                                    alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
-                                                    'data-object-fit': 'cover'
-                                                    },
-                                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
-                                                    }) %}
-                                                {% endif %}
+                                                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                film: filmPerson.film,
+                                                film_format: '366x488',
+                                                film_attrs: {
+                                                alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
+                                                'data-object-fit': 'cover'
+                                                },
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                                }) %}
                                             </div>
 
                                             <div class="content-text">

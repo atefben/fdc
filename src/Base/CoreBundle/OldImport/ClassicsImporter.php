@@ -24,6 +24,7 @@ use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class ClassicsImporter extends Importer
@@ -345,13 +346,6 @@ class ClassicsImporter extends Importer
 
     protected function buildClassicsWidgetImage(FDCPageLaSelectionCannesClassics $classics, FDCPageLaSelectionCannesClassicsTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $imgTitle = array(
-            'fr' => 'photo',
-            'en' => 'photo',
-            'es' => 'foto',
-            'zh' => '照片',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -395,98 +389,62 @@ class ClassicsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $position => $oldArticleAssociation) {
-            $oldMediaTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId(), 'culture' => $oldTranslation->getCulture()])
-            ;
-            if (!$oldMediaTrans) {
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaImage = $this->createMediaImageFromOldMedia($objectId, $translation->getLocale());
+
+            if (!$mediaImage) {
+                $mediaImage = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaImage')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                ;
+
+                if ($mediaImage) {
+                    foreach ($mediaImage->getGalleries() as $galleryMedia) {
+                        if ($galleryMedia instanceof GalleryMedia) {
+                            $galleryMedia->setMedia(null);
+                            $gallery = $galleryMedia->getGallery();
+                            $gallery->removeMedia($galleryMedia);
+                            if (!$gallery->getMedias()->count()) {
+                                $widget = $this
+                                    ->getManager()
+                                    ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassicsWidgetImage')
+                                    ->findOneBy(['gallery' => $gallery->getId()])
+                                ;
+                                if ($widget) {
+                                    $widget->setGallery(null);
+                                    $this->getManager()->remove($mediaImage);
+                                }
+                                $this->getManager()->remove($gallery);
+                            }
+                        }
+                    }
+
+                    $this->getManager()->remove($mediaImage);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-            $mediaImage = null;
             $galleryMedia = null;
             if ($gallery->getMedias()->count()) {
                 foreach ($gallery->getMedias() as $galleryMediaItem) {
                     if ($galleryMediaItem->getMedia()->getOldMediaId() == $oldArticleAssociation->getObjectId()) {
-                        $mediaImage = $galleryMediaItem->getMedia();
                         $galleryMedia = $galleryMediaItem;
                     }
                 }
             }
-            if (!$mediaImage) {
-                $mediaImage = new MediaImage();
-                $mediaImage->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaImage);
-            }
-
-            $mediaImage
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
-                $mediaImage->addSite($this->getSiteCorporate());
-            }
-
-            $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaImageTranslation) {
-                $mediaImageTranslation = new MediaImageTranslation();
-                $mediaImageTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaImage)
-                ;
-                $this->getManager()->persist($mediaImageTranslation);
-            }
-
-            $media = $mediaImageTranslation->getFile();
-
-            if (!$media) {
-                $media = new Media();
-                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/General/' . trim($oldMedia->getFilename()));
-                $media->setName($oldMedia->getFilename());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($oldMedia->getFilename());
-                $media->setContext('media_image');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.image');
-                $media->setCreatedAt($translation->getTranslatable()->getCreatedAt());
-                $this->getMediaManager()->save($media, false);
-
-                $mediaImageTranslation->setFile($media);
-            }
-
-            if ($translation->getLocale() == 'fr') {
-                $mediaImageTranslation->setStatus(StatementArticleTranslation::STATUS_PUBLISHED);
-            } else {
-                $mediaImageTranslation->setStatus(StatementArticleTranslation::STATUS_TRANSLATED);
-            }
-
-            $mediaImageTranslation
-                ->setLegend($oldMediaTrans->getLabel() ?: $imgTitle[$translation->getLocale()])
-                ->setCopyright($oldMediaTrans->getCopyright())
-                ->setIsPublishedOnFDCEvent(true)
-            ;
 
             if (!$galleryMedia) {
                 $galleryMedia = new GalleryMedia();
                 $galleryMedia
-                    ->setMedia($mediaImage)
                     ->setPosition($position)
                     ->setGallery($gallery)
                 ;
                 $this->getManager()->persist($galleryMedia);
             }
+
+            $galleryMedia->setMedia($mediaImage);
         }
 
         $this->getManager()->flush();
@@ -496,13 +454,6 @@ class ClassicsImporter extends Importer
 
     protected function buildClassicsWidgetsAudio(FDCPageLaSelectionCannesClassics $classics, FDCPageLaSelectionCannesClassicsTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $audioTitle = array(
-            'fr' => 'audio',
-            'en' => 'audio',
-            'es' => 'audio',
-            'zh' => '音频',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -514,52 +465,33 @@ class ClassicsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $oldAudioTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy([
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => $translation->getLocale(),
-                ])
-            ;
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaAudio = $this->createMediaAudioFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-
-            if (!$oldAudioTrans || !$oldMedia) {
-                continue;
-            }
-
-            $code = $oldAudioTrans->getCode();
-
-            if (!$code) {
-                $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => 'bi',
-                ))
+            if (!$mediaAudio) {
+                $mediaAudio = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaAudio')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
                 ;
-                if ($duplicate && $duplicate->getCode()) {
-                    $code = $duplicate->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-                }
-                if ($duplicate && !$duplicate->getCode() && $oldAudioTrans->getHdFormatFilename()) {
-                    $code = $oldAudioTrans->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
-                }
-                if (!$code) {
-                    continue;
-                }
 
+                if ($mediaAudio) {
+                    $widgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassicsWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
 
-            } else {
-                $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-            }
+                    if ($widgets) {
+                        foreach ($widgets as $widgetToRemove) {
+                            $widgetToRemove->setFile(null);
+                            $this->getManager()->remove($widgetToRemove);
+                        }
+                    }
 
-            $file = $this->createAudio($audioPath);
-            if (!$file) {
+                    $this->getManager()->remove($mediaAudio);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
@@ -581,74 +513,13 @@ class ClassicsImporter extends Importer
                 $this->getManager()->persist($widget);
             }
 
-            $mediaAudio = $widget->getFile();
-            if (!$mediaAudio) {
-                $mediaAudio = new MediaAudio();
-                $mediaAudio->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaAudio);
-
-                $widget->setFile($mediaAudio);
-            }
-
-            $mediaAudio
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
-                $mediaAudio->addSite($this->getSiteCorporate());
-            }
-
-            $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaAudioTranslation) {
-                $mediaAudioTranslation = new MediaAudioTranslation();
-                $mediaAudioTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaAudio)
-                ;
-                $this->getManager()->persist($mediaAudioTranslation);
-            }
-            $mediaAudioTranslation
-                ->setTitle($oldAudioTrans->getLabel() ?: $audioTitle[$translation->getLocale()])
-                ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
-            ;
-
-            $media = $mediaAudioTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($mediaAudioTranslation->getTitle());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($mediaAudioTranslation->getTitle());
-                $media->setContext('media_audio');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.audio');
-                if ($media->getId() == null) {
-                    $this->getMediaManager()->save($media, 'media_audio', 'sonata.media.provider.audio');
-                }
-
-                $this->getManager()->persist($media);
-                $mediaAudioTranslation->setFile($media);
-
-            }
-
+            $widget->setFile($mediaAudio);
             $this->getManager()->flush();
         }
     }
 
     protected function buildClassicsWidgetsVideo(FDCPageLaSelectionCannesClassics $classics, FDCPageLaSelectionCannesClassicsTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $videoTitle = array(
-            'fr' => 'video',
-            'en' => 'video',
-            'es' => 'video',
-            'zh' => '视频',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -660,30 +531,33 @@ class ClassicsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $oldVideoTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy([
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => $translation->getLocale(),
-                ])
-            ;
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaVideo = $this->createMediaVideoFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
+            if (!$mediaVideo) {
+                $mediaVideo = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                ;
 
-            if (!$oldVideoTrans || !$oldMedia) {
-                continue;
-            }
+                if ($mediaVideo) {
+                    $widgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassicsWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
 
-            $path = $oldVideoTrans->getDeliveryUrl();
-            $pathArray = explode(',', $path);
-            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
-            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
-            if ($file == null) {
+                    if ($widgets) {
+                        foreach ($widgets as $widgetToRemove) {
+                            $widgetToRemove->setFile(null);
+                            $this->getManager()->remove($widgetToRemove);
+                        }
+                    }
+
+                    $this->getManager()->remove($mediaVideo);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
@@ -705,64 +579,7 @@ class ClassicsImporter extends Importer
                 $this->getManager()->persist($widget);
             }
 
-            $mediaVideo = $widget->getFile();
-            if (!$mediaVideo) {
-                $mediaVideo = new MediaVideo();
-                $mediaVideo->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaVideo);
-
-                $widget->setFile($mediaVideo);
-            }
-
-            $mediaVideo
-                ->setDisplayedHomeCorpo(false)
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
-                $mediaVideo->addSite($this->getSiteCorporate());
-            }
-
-            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaVideoTranslation) {
-                $mediaVideoTranslation = new MediaVideoTranslation();
-                $mediaVideoTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaVideo)
-                ;
-                $this->getManager()->persist($mediaVideoTranslation);
-            }
-            $mediaVideoTranslation
-                ->setTitle($oldVideoTrans->getLabel() ?: $videoTitle[$translation->getLocale()])
-                ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
-                ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)
-            ;
-
-            $media = $mediaVideoTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($oldVideoTrans->getLabel());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($oldVideoTrans->getLabel());
-                $media->setContext('media_video');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.video');
-                if ($media->getId() == null) {
-                    $this->getMediaManager()->save($media);
-                }
-                $mediaVideoTranslation->setFile($media);
-
-                $this->getManager()->persist($media);
-                $mediaVideoTranslation->setFile($media);
-
-            }
-
+            $widget->setFile($mediaVideo);
             $this->getManager()->flush();
         }
     }

@@ -25,9 +25,8 @@ class MediaAudio extends Media implements RoutedItemInterface
 
     public static $localeTemp = 'fr';
 
-
     /**
-     * @var Media
+     * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
      *
@@ -50,6 +49,9 @@ class MediaAudio extends Media implements RoutedItemInterface
      */
     protected $homepageNews;
 
+    /**
+     * MediaAudio constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -59,10 +61,10 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * Set image
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @param MediaImage $image
      * @return MediaAudio
      */
-    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    public function setImage(MediaImage $image = null)
     {
         $this->image = $image;
 
@@ -72,7 +74,7 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImage
+     * @return MediaImage
      */
     public function getImage()
     {
@@ -83,10 +85,10 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * Add associatedFilms
      *
-     * @param \Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedFilms
+     * @param MediaAudioFilmFilmAssociated $associatedFilms
      * @return MediaAudio
      */
-    public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedFilms)
+    public function addAssociatedFilm(MediaAudioFilmFilmAssociated $associatedFilms)
     {
         $associatedFilms->setMediaAudio($this);
         $this->associatedFilms[] = $associatedFilms;
@@ -97,9 +99,9 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * Remove associatedFilms
      *
-     * @param \Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedFilms
+     * @param MediaAudioFilmFilmAssociated $associatedFilms
      */
-    public function removeAssociatedFilm(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedFilms)
+    public function removeAssociatedFilm(MediaAudioFilmFilmAssociated $associatedFilms)
     {
         $this->associatedFilms->removeElement($associatedFilms);
     }
@@ -117,10 +119,10 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * Set homepageNews
      *
-     * @param \Base\CoreBundle\Entity\NewsAudio $homepageNews
+     * @param NewsAudio $homepageNews
      * @return MediaAudio
      */
-    public function setHomepageNews(\Base\CoreBundle\Entity\NewsAudio $homepageNews = null)
+    public function setHomepageNews(NewsAudio $homepageNews = null)
     {
         $this->homepageNews = $homepageNews;
 
@@ -130,7 +132,7 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * Get homepageNews
      *
-     * @return \Base\CoreBundle\Entity\NewsAudio
+     * @return NewsAudio
      */
     public function getHomepageNews()
     {
@@ -149,7 +151,7 @@ class MediaAudio extends Media implements RoutedItemInterface
 
     public function getExportAuthor()
     {
-        return $this->getCreatedBy()->getId();
+        return $this->getCreatedBy() ? $this->getCreatedBy()->getId() : '';
     }
 
     public function getExportCreatedAt()
@@ -267,7 +269,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      *
      * @abstract
      *
-     * @return \DateTime
+     * @return array
      */
     public function getFeedItemPubDate() {
         return array('date' => $this->getUpdatedAt());

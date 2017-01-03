@@ -28,7 +28,7 @@ class GalleryMedia
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"}, inversedBy="galleries")
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      */
     protected $media;
@@ -80,10 +80,8 @@ class GalleryMedia
     }
 
     /**
-     * Set widget
-     *
-     * @param \Base\CoreBundle\Entity\Gallery $widget
-     * @return GalleryMedia
+     * @param \Base\CoreBundle\Entity\Gallery|null $gallery
+     * @return $this
      */
     public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
     {

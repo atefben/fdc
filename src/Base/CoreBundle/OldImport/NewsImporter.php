@@ -5,12 +5,8 @@ namespace Base\CoreBundle\OldImport;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
@@ -33,6 +29,51 @@ class NewsImporter extends Importer
 
     protected $status;
 
+    protected function getTypes()
+    {
+        return [
+            static::TYPE_QUOTIDIEN,
+            static::TYPE_WALL,
+            static::TYPE_TOO,
+            static::TYPE_PHOTOPGRAH_EYE,
+            static::TYPE_EDITO,
+        ];
+    }
+
+    public function importOneNews($id)
+    {
+
+        $types = [
+            static::TYPE_QUOTIDIEN,
+            static::TYPE_WALL,
+            static::TYPE_TOO,
+            static::TYPE_PHOTOPGRAH_EYE,
+            static::TYPE_EDITO,
+        ];
+        $oldArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldArticle')
+            ->createQueryBuilder('o')
+            ->andWhere('o.articleTypeId in (:types)')
+            ->setParameter(':types', $this->getTypes())
+            ->andWhere('o.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        $news = $this->importItem($oldArticle);
+        if ($news) {
+            foreach ($this->langs as $lang) {
+                $news->findTranslationByLocale($lang);
+            }
+        }
+
+        $this->getSiteEvent(true);
+        $this->getSiteCorporate(true);
+        $this->getDefaultTheme(true);
+    }
+
     public function importNews($paginate = null)
     {
         $this->output->writeln('<info>Import news...</info>');
@@ -54,7 +95,7 @@ class NewsImporter extends Importer
                 ->getRepository('BaseCoreBundle:OldArticle')
                 ->createQueryBuilder('o')
                 ->andWhere('o.articleTypeId in (:types)')
-                ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+                ->setParameter(':types', $this->getTypes())
                 ->addOrderBy('o.id', 'asc')
                 ->setMaxResults(100)
                 ->setFirstResult((($paginate ?: $page) - 1) * 100)
@@ -80,7 +121,7 @@ class NewsImporter extends Importer
             $this->getDefaultTheme(true);
         }
         $progress->finish();
-
+        $this->output->writeln('');
 
         return $this;
     }
@@ -93,7 +134,7 @@ class NewsImporter extends Importer
             ->createQueryBuilder('o')
             ->select('count(o)')
             ->andWhere('o.articleTypeId in (:types)')
-            ->setParameter(':types', [static::TYPE_QUOTIDIEN, static::TYPE_WALL, static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])
+            ->setParameter(':types', $this->getTypes())
         ;
 
         if ($paginate) {
@@ -372,13 +413,6 @@ class NewsImporter extends Importer
 
     protected function buildNewsWidgetImage(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $imgTitle = array(
-            'fr' => 'photo',
-            'en' => 'photo',
-            'es' => 'foto',
-            'zh' => '照片',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -423,98 +457,62 @@ class NewsImporter extends Importer
 
 
         foreach ($oldArticleAssociations as $position => $oldArticleAssociation) {
-            $oldMediaTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId(), 'culture' => $oldTranslation->getCulture()])
-            ;
-            if (!$oldMediaTrans) {
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaImage = $this->createMediaImageFromOldMedia($objectId, $translation->getLocale());
+
+            if (!$mediaImage) {
+                $mediaImage = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaImage')
+                    ->findOneBy(['oldMediaId' => $oldArticleAssociation->getObjectId()])
+                ;
+
+                if ($mediaImage) {
+                    foreach ($mediaImage->getGalleries() as $galleryMedia) {
+                        if ($galleryMedia instanceof GalleryMedia) {
+                            $galleryMedia->setMedia(null);
+                            $gallery = $galleryMedia->getGallery();
+                            $gallery->removeMedia($galleryMedia);
+                            if (!$gallery->getMedias()->count()) {
+                                $widget = $this
+                                    ->getManager()
+                                    ->getRepository('BaseCoreBundle:NewsWidgetImage')
+                                    ->findOneBy(['gallery' => $gallery->getId()])
+                                ;
+                                if ($widget) {
+                                    $widget->setGallery(null);
+                                    $this->getManager()->remove($mediaImage);
+                                }
+                                $this->getManager()->remove($gallery);
+                            }
+                        }
+                    }
+
+                    $this->getManager()->remove($mediaImage);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-            $mediaImage = null;
             $galleryMedia = null;
             if ($gallery->getMedias()->count()) {
                 foreach ($gallery->getMedias() as $galleryMediaItem) {
                     if ($galleryMediaItem->getMedia()->getOldMediaId() == $oldArticleAssociation->getObjectId()) {
-                        $mediaImage = $galleryMediaItem->getMedia();
                         $galleryMedia = $galleryMediaItem;
                     }
                 }
             }
-            if (!$mediaImage) {
-                $mediaImage = new MediaImage();
-                $mediaImage->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaImage);
-            }
-
-            $mediaImage
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
-                $mediaImage->addSite($this->getSiteCorporate());
-            }
-
-            $mediaImageTranslation = $mediaImage->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaImageTranslation) {
-                $mediaImageTranslation = new MediaImageTranslation();
-                $mediaImageTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaImage)
-                ;
-                $this->getManager()->persist($mediaImageTranslation);
-            }
-
-            $media = $mediaImageTranslation->getFile();
-
-            if (!$media) {
-                $media = new Media();
-                $file = $this->createImage('http://www.festival-cannes.fr/assets/Image/General/' . trim($oldMedia->getFilename()));
-                $media->setName($oldMedia->getFilename());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($oldMedia->getFilename());
-                $media->setContext('media_image');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.image');
-                $media->setCreatedAt($translation->getTranslatable()->getCreatedAt());
-                $this->getMediaManager()->save($media, false);
-
-                $mediaImageTranslation->setFile($media);
-            }
-
-            if ($translation->getLocale() == 'fr') {
-                $mediaImageTranslation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
-            } else {
-                $mediaImageTranslation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
-            }
-
-            $mediaImageTranslation
-                ->setLegend($oldMediaTrans->getLabel() ?: $imgTitle[$translation->getLocale()])
-                ->setCopyright($oldMediaTrans->getCopyright())
-                ->setIsPublishedOnFDCEvent(true)
-            ;
 
             if (!$galleryMedia) {
                 $galleryMedia = new GalleryMedia();
                 $galleryMedia
-                    ->setMedia($mediaImage)
                     ->setPosition($position)
                     ->setGallery($gallery)
                 ;
                 $this->getManager()->persist($galleryMedia);
             }
+
+            $galleryMedia->setMedia($mediaImage);
         }
 
         $this->getManager()->flush();
@@ -524,12 +522,6 @@ class NewsImporter extends Importer
 
     protected function buildNewsWidgetsAudio(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $audioTitle = array(
-            'fr' => 'audio',
-            'en' => 'audio',
-            'es' => 'audio',
-            'zh' => '音频',
-        );
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -541,57 +533,38 @@ class NewsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $oldAudioTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy([
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => $translation->getLocale(),
-                ])
-            ;
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaAudio = $this->createMediaAudioFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
-
-            if (!$oldAudioTrans || !$oldMedia) {
-                continue;
-            }
-
-            $code = $oldAudioTrans->getCode();
-
-            if (!$code) {
-                $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => 'bi',
-                ))
+            if (!$mediaAudio) {
+                $mediaAudio = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaAudio')
+                    ->findOneBy(['oldMediaId' => $objectId])
                 ;
-                if ($duplicate && $duplicate->getCode()) {
-                    $code = $duplicate->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-                }
-                if ($duplicate && !$duplicate->getCode() && $oldAudioTrans->getHdFormatFilename()) {
-                    $code = $oldAudioTrans->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
-                }
-                if (!$code) {
-                    continue;
-                }
 
+                if ($mediaAudio) {
+                    $widgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:NewsWidgetAudio')
+                        ->findBy(['file' => $mediaAudio->getId()])
+                    ;
 
-            } else {
-                $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-            }
+                    if ($widgets) {
+                        foreach ($widgets as $widgetToRemove) {
+                            $widgetToRemove->setFile(null);
+                            $this->getManager()->remove($widgetToRemove);
+                        }
+                    }
 
-            $file = $this->createAudio($audioPath);
-            if (!$file) {
+                    $this->getManager()->remove($mediaAudio);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
             $widget = null;
-            $reference = 'audio' . $oldArticleAssociation->getObjectId();
+            $reference = 'audio' . $objectId;
             foreach ($news->getWidgets() as $item) {
                 if ($item instanceof NewsWidgetAudio && $item->getOldImportReference() == $reference) {
                     $widget = $item;
@@ -608,74 +581,13 @@ class NewsImporter extends Importer
                 $this->getManager()->persist($widget);
             }
 
-            $mediaAudio = $widget->getFile();
-            if (!$mediaAudio) {
-                $mediaAudio = new MediaAudio();
-                $mediaAudio->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaAudio);
-
-                $widget->setFile($mediaAudio);
-            }
-
-            $mediaAudio
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
-                $mediaAudio->addSite($this->getSiteCorporate());
-            }
-
-            $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaAudioTranslation) {
-                $mediaAudioTranslation = new MediaAudioTranslation();
-                $mediaAudioTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaAudio)
-                ;
-                $this->getManager()->persist($mediaAudioTranslation);
-            }
-            $mediaAudioTranslation
-                ->setTitle($oldAudioTrans->getLabel() ?: $audioTitle[$translation->getLocale()])
-                ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
-            ;
-
-            $media = $mediaAudioTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($mediaAudioTranslation->getTitle());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($mediaAudioTranslation->getTitle());
-                $media->setContext('media_audio');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.audio');
-                if ($media->getId() == null) {
-                    $this->getMediaManager()->save($media, 'media_audio', 'sonata.media.provider.audio');
-                }
-
-                $this->getManager()->persist($media);
-                $mediaAudioTranslation->setFile($media);
-
-            }
-
+            $widget->setFile($mediaAudio);
             $this->getManager()->flush();
         }
     }
 
     protected function buildNewsWidgetsVideo(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
     {
-        $videoTitle = array(
-            'fr' => 'video',
-            'en' => 'video',
-            'es' => 'video',
-            'zh' => '视频',
-        );
-
         $oldArticleAssociations = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
@@ -687,30 +599,32 @@ class NewsImporter extends Importer
         }
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $oldVideoTrans = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMediaI18n')
-                ->findOneBy([
-                    'id'      => $oldArticleAssociation->getObjectId(),
-                    'culture' => $translation->getLocale(),
-                ])
-            ;
+            $objectId = $oldArticleAssociation->getObjectId();
+            $mediaVideo = $this->createMediaVideoFromOldMedia($objectId, $translation->getLocale());
 
-            $oldMedia = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:OldMedia')
-                ->findOneBy(['id' => $oldArticleAssociation->getObjectId()])
-            ;
+            if (!$mediaVideo) {
+                $mediaVideo = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->findOneBy(['oldMediaId' => $objectId])
+                ;
+                if ($mediaVideo) {
+                    $widgets = $this
+                        ->getManager()
+                        ->getRepository('BaseCoreBundle:NewsWidgetVideo')
+                        ->findBy(['file' => $mediaVideo->getId()])
+                    ;
 
-            if (!$oldVideoTrans || !$oldMedia) {
-                continue;
-            }
+                    if ($widgets) {
+                        foreach ($widgets as $widgetToRemove) {
+                            $widgetToRemove->setFile(null);
+                            $this->getManager()->remove($widgetToRemove);
+                        }
+                    }
 
-            $path = $oldVideoTrans->getDeliveryUrl();
-            $pathArray = explode(',', $path);
-            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
-            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
-            if ($file == null) {
+                    $this->getManager()->remove($mediaVideo);
+                    $this->getManager()->flush();
+                }
                 continue;
             }
 
@@ -732,70 +646,21 @@ class NewsImporter extends Importer
                 $this->getManager()->persist($widget);
             }
 
-            $mediaVideo = $widget->getFile();
-            if (!$mediaVideo) {
-                $mediaVideo = new MediaVideo();
-                $mediaVideo->setOldMediaId($oldArticleAssociation->getObjectId());
-                $this->getManager()->persist($mediaVideo);
-
-                $widget->setFile($mediaVideo);
-            }
-
-            $mediaVideo
-                ->setDisplayedHomeCorpo(false)
-                ->setTheme($this->defaultTheme)
-                ->setDisplayedAll(true)
-                ->setPublishedAt($oldMedia->getPublishFor())
-                ->setCreatedAt($oldMedia->getCreatedAt())
-                ->setUpdatedAt($oldMedia->getUpdatedAt())
-            ;
-
-            if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
-                $mediaVideo->addSite($this->getSiteCorporate());
-            }
-
-            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($translation->getLocale());
-
-            if (!$mediaVideoTranslation) {
-                $mediaVideoTranslation = new MediaVideoTranslation();
-                $mediaVideoTranslation
-                    ->setLocale($translation->getLocale())
-                    ->setTranslatable($mediaVideo)
-                ;
-                $this->getManager()->persist($mediaVideoTranslation);
-            }
-            $mediaVideoTranslation
-                ->setTitle($oldVideoTrans->getLabel() ?: $videoTitle[$translation->getLocale()])
-                ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
-                ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)
-            ;
-
-            $media = $mediaVideoTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($oldVideoTrans->getLabel());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($oldVideoTrans->getLabel());
-                $media->setContext('media_video');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.video');
-                if ($media->getId() == null) {
-                    $this->getMediaManager()->save($media);
-                }
-                $mediaVideoTranslation->setFile($media);
-
-                $this->getManager()->persist($media);
-                $mediaVideoTranslation->setFile($media);
-
-            }
-
+            $widget->setFile($mediaVideo);
             $this->getManager()->flush();
         }
     }
 
     protected function buildAssociatedFilms(NewsArticle $news, OldArticle $oldArticle)
     {
+        if (!$this->associateMovie) {
+            foreach ($news->getAssociatedFilms() as $associatedFilm) {
+                $news->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
+            $this->getManager()->flush();
+            return;
+        }
         // association film
         $oldArticleAssociations = $this
             ->getManager()
@@ -882,6 +747,22 @@ class NewsImporter extends Importer
     protected function isNewsMatching(OldArticle $oldArticle, $oldArticleTranslations)
     {
         $this->doNotPublish = false;
+        $this->associateMovie = true;
+
+        if ($oldArticle->getArticleTypeId() == static::TYPE_EDITO) {
+            if ($oldArticle->getIsOnline()) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                return true;
+            }
+        }
+
+        if ($oldArticle->getArticleTypeId() == static::TYPE_WALL) {
+            $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
+            if ($condIsAvailable) {
+                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+                return true;
+            }
+        }
 
         if ($oldArticle->getArticleTypeId() == static::TYPE_QUOTIDIEN) {
             // case one
@@ -891,13 +772,13 @@ class NewsImporter extends Importer
             $condIsAvailable = $condIsAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2006;
             if ($condIsAvailable) {
                 $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-                return 6;
+                $this->associateMovie = false;
+                return true;
             }
 
             // case two
             // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
-            // "conférence" dans le titre + film associé
-            $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
+            $isAvailable = $oldArticle->getCreatedAt();
             $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2007;
             $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') <= 2015;
 
@@ -919,7 +800,7 @@ class NewsImporter extends Importer
                         }
                     }
                 }
-                if ($hasWord) {
+                if ($hasWord || !$oldArticle->getIsOnline()) {
                     $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
                 } else {
                     $this->status = TranslateChildInterface::STATUS_PUBLISHED;
@@ -928,16 +809,9 @@ class NewsImporter extends Importer
             }
 
         }
-        if ($oldArticle->getArticleTypeId() == static::TYPE_WALL) {
-            $condIsAvailable = $oldArticle->getIsOnline() && $oldArticle->getId() >= 58030 && $oldArticle->getId() <= 60452;
-            if ($condIsAvailable) {
-                $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
-                return true;
-            }
-        }
 
 
-        if (in_array($oldArticle->getArticleTypeId(), [static::TYPE_TOO, static::TYPE_PHOTOPGRAH_EYE])) {
+        if ($oldArticle->getArticleTypeId() == static::TYPE_TOO) {
             $words = ['le savez-vous', 'présence à Cannes'];
             $condIsAvailable = !$oldArticle->getIsOnline();
             if ($condIsAvailable) {
@@ -951,6 +825,11 @@ class NewsImporter extends Importer
                     }
                 }
             }
+        }
+
+        if ($oldArticle->getArticleTypeId() == static::TYPE_PHOTOPGRAH_EYE) {
+            $this->status = TranslateChildInterface::STATUS_DEACTIVATED;
+            return true;
         }
         return false;
     }

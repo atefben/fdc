@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Entity\Event;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\MediaAudio;
@@ -78,6 +79,13 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
         $this->updateAcl($classics, 'base.admin.fdc_page_la_selection_cannes_classics');
         $this->getManager()->clear();
         unset($classics);
+
+        $output->writeln('<info>Generate ACL for events</info>');
+        $events = $this->getEvents();
+        $output->writeln('<comment>'.count($events).' items</comment>');
+        $this->updateAcl($events, 'base.admin.event');
+        $this->getManager()->clear();
+        unset($events);
     }
 
     private function updateAcl($entities, $service)
@@ -160,7 +168,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaImage')
             ->createQueryBuilder('m')
-            ->andWhere('m.oldMediaId is not null')
+            ->andWhere('m.oldMediaId is not null or m.oldReference is not null')
             ->getQuery()
             ->getResult()
             ;
@@ -175,7 +183,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaAudio')
             ->createQueryBuilder('m')
-            ->andWhere('m.oldMediaId is not null')
+            ->andWhere('m.oldMediaId is not null or m.oldReference is not null')
             ->getQuery()
             ->getResult()
             ;
@@ -190,7 +198,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaVideo')
             ->createQueryBuilder('m')
-            ->andWhere('m.oldMediaId is not null')
+            ->andWhere('m.oldMediaId is not null or m.oldReference is not null')
             ->getQuery()
             ->getResult()
             ;
@@ -206,6 +214,21 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
             ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
             ->createQueryBuilder('m')
             ->andWhere('m.oldNewsId is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return Event[]
+     */
+    protected function getEvents()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Event')
+            ->createQueryBuilder('e')
+            ->andWhere('e.oldNewsId is not null')
             ->getQuery()
             ->getResult()
             ;

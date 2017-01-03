@@ -59,6 +59,30 @@ abstract class EventWidget
     protected $events;
 
     /**
+     * @var string
+     * @ORM\Column(name="old_import_reference", type="string", length=255, nullable=true)
+     */
+    protected $oldImportReference;
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Get the class type in the Api
      *
      * @VirtualProperty
@@ -123,5 +147,28 @@ abstract class EventWidget
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Set oldImportReference
+     *
+     * @param string $oldImportReference
+     * @return EventWidget
+     */
+    public function setOldImportReference($oldImportReference)
+    {
+        $this->oldImportReference = $oldImportReference;
+
+        return $this;
+    }
+
+    /**
+     * Get oldImportReference
+     *
+     * @return string 
+     */
+    public function getOldImportReference()
+    {
+        return $this->oldImportReference;
     }
 }

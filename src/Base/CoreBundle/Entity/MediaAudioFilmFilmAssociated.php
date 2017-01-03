@@ -37,7 +37,7 @@ class MediaAudioFilmFilmAssociated
     protected $id;
 
     /**
-     * @var News
+     * @var MediaAudio
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio", inversedBy="associatedFilms")
      * @Groups("film_show")
@@ -82,7 +82,7 @@ class MediaAudioFilmFilmAssociated
      * Set mediaAudio
      *
      * @param \Base\CoreBundle\Entity\MediaAudio $mediaAudio
-     * @return MediaAudioFilmFilmAssociated
+     * @return $this
      */
     public function setMediaAudio(\Base\CoreBundle\Entity\MediaAudio $mediaAudio = null)
     {
@@ -105,7 +105,7 @@ class MediaAudioFilmFilmAssociated
      * Set association
      *
      * @param \Base\CoreBundle\Entity\FilmFilm $association
-     * @return MediaAudioFilmFilmAssociated
+     * @return $this
      */
     public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
     {

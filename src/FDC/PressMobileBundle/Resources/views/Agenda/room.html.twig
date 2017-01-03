@@ -46,7 +46,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                <a href="{% path file, '420x560' %}" class="popin-plan">{%- thumbnail file, '197x142' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
+                <a href="#" class="popin-plan" data-id="{{ r.room.id }}">{%- thumbnail file, '197x142' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
             </div>
             {%- endfor -%}
         </div>
@@ -90,6 +90,18 @@
             </div>
         </div>#}
     </div>
+    {% for key,r in rooms.mapRoom %}
+        {% set roomActive = "room"~r.room.id %}
+        {% set active = "" %}
+        {% set img = r.room.zoneImage %}
+        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+        {% if trans is null or trans.file is null %}
+            {% set trans = img.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set file = trans.file %}
+        <div id="popin-participate-{{  r.room.id }}" class="popin-plan-div"><img src="{% path file, '420x560' %}" alt="" /></div>
+    {% endfor %}
+    <div class="ov"></div>
 {% endblock body %}
 
 {% block javascripts %}

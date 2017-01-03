@@ -533,6 +533,9 @@
 a.notloaded {
     opacity: 0;
 }
+.item img.notloaded {
+    opacity: 0;
+}
 .jw-icon-playlist {
     display:none !important;
 }
@@ -541,10 +544,11 @@ a.notloaded {
     position: absolute;
     height: 560px;
     width: 420px;
-    top: 20px;
+    top: 20%;
+    left: 50%;
+    margin-left:-420px;
     z-index: 1000;
 }
-
 .popin-event .film p span.nom-item {
     margin:0 0 0 0 !important;
 }

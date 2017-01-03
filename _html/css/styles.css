@@ -17892,7 +17892,7 @@ body:not(.tablette) .webtv #live .img {
 }
 @media screen and (max-width: 1279px) {
   .press .mediatheque .table .line .media {
-    margin-right: 25px;
+    margin-right: 15px;
   }
 }
 .press .mediatheque .table .line .button {

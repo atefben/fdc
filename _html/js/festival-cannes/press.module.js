@@ -1,15 +1,7 @@
 $(document).ready(function () {
   // init array of events
 
-  $('.popin-plan').click(function() {
-    $('#popin-participate-' + $(this).attr('data-id')).show();
-    $('.ov').show();
-  });
-
-  $('.ov').click(function() {
-    $('.popin-plan-div').hide();
-    $('.ov').hide();
-  });
+  popin-plan-div
 
   var events = [];
 

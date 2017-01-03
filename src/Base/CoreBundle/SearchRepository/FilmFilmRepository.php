@@ -14,7 +14,7 @@ use Elastica\Query\Filtered;
 
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear = false)
     {
         if(!is_array($searchTerm)) {
             $searchTerm = array('search' => $searchTerm);
@@ -35,31 +35,12 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
             $finalQuery->addMust($stringQuery);
         }
 
-        //date query
-        if(!empty($searchTerm['yearStart']) && !empty($searchTerm['yearEnd'])) {
-            $dateQuery = new \Elastica\Query\BoolQuery();
-
-            $rangeLower = new Filtered(
-                $dateQuery,
-                new Range('festival.year', array(
-                    'gte' => $searchTerm['yearStart'],
-                ))
-            );
-
-            $rangeUpper = new Filtered(
-                $rangeLower,
-                new Range('festival.year', array(
-                    'lte' => $searchTerm['yearEnd'],
-                ))
-            );
-
-            $finalQuery->addMust($rangeUpper);
-        }
-
         //status query
         $statusQuery = new \Elastica\Query\BoolQuery();
         $statusQuery->addMust($this->getStatusFilterQuery($_locale));
-        $finalQuery->addMust($statusQuery);
+        $finalQuery
+            ->addMust($statusQuery)
+            ->addMust($this->getYearQuery($fdcYear));
 
         //formats query
         if(!empty($searchTerm['formats'])) {

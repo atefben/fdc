@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Application\Sonata\MediaBundle\Entity\Media as File;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
@@ -17,7 +18,7 @@ use JMS\Serializer\Annotation\Groups;
 class EventWidgetAudio extends EventWidget
 {
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @var File
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
@@ -26,12 +27,10 @@ class EventWidgetAudio extends EventWidget
     protected $file;
 
     /**
-     * Set file
-     *
-     * @param MediaAudio $file
-     * @return EventWidgetAudio
+     * @param MediaAudio
+     * @return $this
      */
-    public function setFile(MediaAudio $file)
+    public function setFile(MediaAudio $file = null)
     {
         $this->file = $file;
 
@@ -39,9 +38,7 @@ class EventWidgetAudio extends EventWidget
     }
 
     /**
-     * Get file
-     *
-     * @return MediaAudio
+     * @return File
      */
     public function getFile()
     {

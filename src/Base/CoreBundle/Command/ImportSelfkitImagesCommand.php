@@ -8,36 +8,90 @@ use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportSelfkitImagesCommand extends ContainerAwareCommand
 {
 
     /**
+     * @var InputInterface
+     */
+    protected $input;
+
+    /**
      * @var OutputInterface
      */
     protected $output;
 
+    /**
+     * @var int|null
+     */
+    protected $firstResult;
+
+    /**
+     * @var int
+     */
+    protected $maxResults = 100;
+
     protected function configure()
     {
         $this
-            ->setName('base:import:selfkit-images');
+            ->setName('base:import:selfkit-images')
+            ->addOption('force-reupload', null, InputOption::VALUE_NONE, 'Force repload')
+            ->addOption('films', null, InputOption::VALUE_NONE, 'Only films')
+            ->addOption('persons', null, InputOption::VALUE_NONE, 'Only films')
+            ->addOption('count', null, InputOption::VALUE_NONE, 'Count element (works if film or persons is selected)')
+            ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination (works if film or persons is selected)')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->output = $output;
-        $this->importPersonImages();
-        $this->importFilmImages();
+        $this->input = $input;
+        if ($input->getOption('page')) {
+            $this->firstResult = ((int)$input->getOption('page') - 1) * $this->maxResults;
+        }
+
+        if ($input->getOption('persons')) {
+            if ($input->getOption('count')) {
+                $count = $this->importPersonImagesCount();
+                $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items for persons to import</info>");
+            } else {
+                $this->importPersonImages();
+            }
+        } elseif ($input->getOption('films')) {
+            if ($input->getOption('count')) {
+                $count = $this->importFilmImagesCount();
+                $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items  for film to import</info>");
+            } else {
+                $this->importFilmImages();
+            }
+        } else {
+            $this->importPersonImages();
+            $this->importFilmImages();
+        }
+
     }
 
     private function importPersonImages()
     {
+        $maxResults = null;
+        if (null !== $this->firstResult) {
+            $maxResults = $this->maxResults;
+            $pages = ceil($this->importPersonImagesCount() / $maxResults);
+            $this->output->writeln($this->input->getOption('page') . "/$pages");
+        }
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyPersonImages()
+            ->getLegacyPersonImages(null, $this->firstResult, $maxResults)
         ;
+        if (!$oldImages) {
+            $this->output->writeln('<info>There is no images to import with these options</info>');
+            return;
+        }
         $this->output->writeln('<info>Import persons</info>');
         $bar = new ProgressBar($this->output, count($oldImages));
         $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
@@ -46,6 +100,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         foreach ($oldImages as $oldImage) {
             try {
+
+                $person = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:FilmPerson')
+                    ->find($oldImage->getIdpersonne())
+                ;
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
@@ -65,6 +125,13 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('ApplicationSonataMediaBundle:Media')
                     ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
                 ;
+                if ($this->input->getOption('force-reupload') && $media && $person) {
+                    if ($person->getSelfkitImages()->contains($media)) {
+                        $person->removeSelfkitImage($media);
+                        $this->getManager()->flush();
+                    }
+                    $media = null;
+                }
                 if (!$media) {
                     $media = new Media();
                     $media->setContext('film_director');
@@ -78,16 +145,13 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
+                } elseif ($this->input->getOption('force-reupload')) {
+                    $media->setBinaryContent($filename);
+                    $media->setThumbsGenerated(false);
                 }
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
                 $this->getMediaManager()->save($media, false);
-
-                $person = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:FilmPerson')
-                    ->find($oldImage->getIdpersonne())
-                ;
                 if ($person) {
                     if (!$person->getSelfkitImages()->contains($media)) {
                         $person->addSelfkitImage($media);
@@ -102,14 +166,33 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $this->output->writeln('');
     }
 
+    private function importPersonImagesCount()
+    {
+        return $count = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldFilmPhoto')
+            ->getLegacyPersonImagesCount()
+            ;
+    }
+
     private function importFilmImages()
     {
+        $maxResults = null;
+        if (null !== $this->firstResult) {
+            $maxResults = $this->maxResults;
+            $pages = ceil($this->importFilmImagesCount() / $maxResults);
+            $this->output->writeln($this->input->getOption('page') . "/$pages");
+        }
         $oldImages = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyFilmImages()
+            ->getLegacyFilmImages(null, $this->firstResult, $maxResults)
         ;
 
+        if (!$oldImages) {
+            $this->output->writeln('<info>There is no images to import with these options</info>');
+            return;
+        }
         $this->output->writeln('<info>Import films</info>');
         $bar = new ProgressBar($this->output, count($oldImages));
         $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
@@ -118,6 +201,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         foreach ($oldImages as $oldImage) {
             try {
+                $film = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:FilmFilm')
+                    ->find($oldImage->getIdfilm())
+                ;
+
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
@@ -137,6 +226,13 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('ApplicationSonataMediaBundle:Media')
                     ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
                 ;
+                if ($this->input->getOption('force-reupload') && $media && $film) {
+                    if ($film->getSelfkitImages()->contains($media)) {
+                        $film->removeSelfkitImage($media);
+                        $this->getManager()->flush();
+                    }
+                    $media = null;
+                }
                 if (!$media) {
                     $media = new Media();
                     $media->setContext('film_film');
@@ -150,15 +246,10 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
                 }
+
                 $media->setName($oldImage->getTitre());
                 $media->setProviderReference($oldImage->getTitre());
                 $this->getMediaManager()->save($media, false);
-
-                $film = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:FilmFilm')
-                    ->find($oldImage->getIdfilm())
-                ;
                 if ($film) {
                     if (!$film->getSelfkitImages()->contains($media)) {
                         $film->addSelfkitImage($media);
@@ -171,6 +262,15 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         }
         $bar->finish();
         $this->output->writeln('');
+    }
+
+    protected function importFilmImagesCount()
+    {
+        return $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldFilmPhoto')
+            ->getLegacyFilmImagesCount()
+            ;
     }
 
     /**

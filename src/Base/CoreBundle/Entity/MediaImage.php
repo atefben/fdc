@@ -53,8 +53,19 @@ class MediaImage extends Media
      * @Serializer\Accessor(getter="getApiTranslations")
      */
     protected $translations;
-    
-    
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="media")
+     */
+    protected $galleries;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->galleries = new ArrayCollection();
+    }
+
 
     public function getApiTranslations()
     {
@@ -136,6 +147,37 @@ class MediaImage extends Media
         return Export::yesOrNo($this->getDisplayedAll());
     }
 
+    /**
+     * Add galleries
+     *
+     * @param \Base\CoreBundle\Entity\GalleryMedia $galleries
+     * @return MediaImage
+     */
+    public function addGallery(\Base\CoreBundle\Entity\GalleryMedia $galleries)
+    {
+        $this->galleries[] = $galleries;
+        $galleries->setMedia($this);
 
+        return $this;
+    }
 
+    /**
+     * Remove galleries
+     *
+     * @param \Base\CoreBundle\Entity\GalleryMedia $galleries
+     */
+    public function removeGallery(\Base\CoreBundle\Entity\GalleryMedia $galleries)
+    {
+        $this->galleries->removeElement($galleries);
+    }
+
+    /**
+     * Get galleries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGalleries()
+    {
+        return $this->galleries;
+    }
 }
