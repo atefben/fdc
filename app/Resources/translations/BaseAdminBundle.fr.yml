@@ -472,6 +472,10 @@ filter:
     fdc_page_participate:
         label_section: Nom de la section
 
+admin:
+    group:
+        mdf: Marché du film
+
 dashboard:
     translator:
         object:
