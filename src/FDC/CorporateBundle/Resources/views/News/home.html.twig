@@ -82,7 +82,7 @@
                     <div class="contain-card">
                         <div class="cards grid-01 isotope-01">
                             <div class="grid-sizer"></div>
-                            {% for i in 0..2 %}
+                            {% for i in 0..2 if homeContents|length %}
                                 {% set article = homeContents[i] %}
                                 {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
                                     {% set type = 'communique' %}
@@ -540,10 +540,11 @@
                                 </article>
                             </div><!--
             -->
+                            {% if filmReleases|length %}
                             <div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
-                                        {% set movie = filmReleases[0] %}
+                                        {% set movie = filmReleases|first %}
                                         <strong class="title-3">Sortie
                                             le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
                                         <strong class='title-4'>{{ movie.titleVO }}</strong>
@@ -594,6 +595,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 </div>
 
                             </div> <!-- end info 02 -->
+                                {% endif %}
                         </div> <!-- end block film -->
 
                         <div class="block-list-img slider-02 s-video-playlist">
@@ -654,11 +656,13 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             class="icon icon-arrow-right"></i> découvrir</a>
                             </div>
                         </div>
-                        {% set trans = homepage.pushMainImage1.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = homepage.pushMainImage1.findTranslationByLocale('fr') %}
+                        {%  if homepage.pushMainImage1 %}
+                            {% set trans = homepage.pushMainImage1.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = homepage.pushMainImage1.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
-                        <img src="{% path trans.file , '650x410' %}" alt=""/>
                     </div><!--
       -->
                     <div class="half-div block-push">
@@ -673,11 +677,13 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             class="icon icon-arrow-right"></i> découvrir</a>
                             </div>
                         </div>
-                        {% set trans = homepage.pushMainImage2.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = homepage.pushMainImage2.findTranslationByLocale('fr') %}
+                        {%  if homepage.pushMainImage2 %}
+                            {% set trans = homepage.pushMainImage2.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = homepage.pushMainImage2.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
-                        <img src="{% path trans.file , '650x410' %}" alt=""/>
                     </div>
                 </div>
             {% endif %}
@@ -726,11 +732,14 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl1')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl1') }}">
                                         <div class="image-wrapper">
+                                            {% if homepage.pushSecondaryImage1 %}
                                             {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale(app.request.locale) %}
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
                                             {% endif %}
+
                                             <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                            {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle1')|raw }}</strong>
                                             </div>
@@ -742,11 +751,13 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
+                                            {% if homepage.pushSecondaryImage2 %}
                                             {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale(app.request.locale) %}
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale('fr') %}
                                             {% endif %}
                                             <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                            {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle2')|raw }}</strong>
                                             </div>
@@ -760,11 +771,13 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">
                                         <div class="image-wrapper">
+                                            {% if homepage.pushSecondaryImage3 %}
                                             {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale(app.request.locale) %}
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
                                             {% endif %}
                                             <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                            {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle3')|raw }}</strong>
                                             </div>
