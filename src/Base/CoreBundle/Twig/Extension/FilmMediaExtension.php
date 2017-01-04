@@ -52,7 +52,7 @@ class FilmMediaExtension extends Twig_Extension
         $medias = array();
         if ($film && method_exists($film, 'getMedias') && count($film->getMedias()) > 0) {
             foreach ($film->getMedias() as $media) {
-                if ($media instanceof FilmFilmMedia) {
+                if ($media instanceof FilmFilmMedia && !$type) {
                     if ($parent == true) {
                         $medias[$media->getCreatedAt()->getTimestamp() . '-' . $media->getId()] = $media->getMedia();
                     } else {
