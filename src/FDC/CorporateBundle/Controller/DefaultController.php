@@ -83,7 +83,7 @@ class DefaultController extends Controller
         $filters['themes']['id'][0] = 'all';
 
         foreach ($homeContents as $key => $homeContent) {
-            $homeContent->theme = $homeContent->getTheme();
+            $homeContent->setTheme($homeContent->getTheme());
 
             if (($key % 3) == 0) {
                 $homeContent->double = true;
