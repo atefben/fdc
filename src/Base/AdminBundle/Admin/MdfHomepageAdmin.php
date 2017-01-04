@@ -50,6 +50,26 @@ class MdfHomepageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('slidersTop', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'home_slider_top_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
+            ->add('sliders', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'home_slider_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
                 'fields' => array(
@@ -78,25 +98,11 @@ class MdfHomepageAdmin extends Admin
                     )
                 )
             ))
-            ->add('slidersTop', 'infinite_form_polycollection', array(
-                'label'        => false,
-                'types'        => array(
-                    'home_slider_top_type',
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false,
-            ))
-            ->add('sliders', 'infinite_form_polycollection', array(
-                'label'        => false,
-                'types'        => array(
-                    'home_slider_type',
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false,
+            ->add('gallery', 'sonata_type_model_list', array(
+                'label' => 'form.label.content_gallery',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
             ))
             ->add('services', 'infinite_form_polycollection', array(
                 'label'        => false,
@@ -107,12 +113,6 @@ class MdfHomepageAdmin extends Admin
                 'allow_delete' => true,
                 'prototype'    => true,
                 'by_reference' => false,
-            ))
-            ->add('gallery', 'sonata_type_model_list', array(
-                'label' => 'form.label.content_gallery',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
             ))
         ;
     }
