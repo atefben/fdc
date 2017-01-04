@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  *  "text" = "MdfContentTemplateWidgetText",
  *  "image" = "MdfContentTemplateWidgetImage",
  *  "gallery" = "MdfContentTemplateWidgetGallery",
+ *  "file" = "MdfContentTemplateWidgetFile",
  * })
  */
 abstract class MdfContentTemplateWidget
