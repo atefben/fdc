@@ -5,7 +5,7 @@
     {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
-        {% for translationsFields in form if translationsFields.vars.name != 'es' %}
+        {% for translationsFields in form %}
             {{ form_row(translationsFields.applyChanges) }}
             {% set locale = translationsFields.vars.name %}
             {% if is_granted('ROLE_TRANSLATOR_FR') %}
