@@ -66,15 +66,15 @@ class HomeServiceType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.label.service.title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'description'          => array(
-                        'label'              => 'form.label.description',
+                        'label'              => 'form.mdf.label.service.description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'url'          => array(
-                        'label'              => 'form.label.url',
+                        'label'              => 'form.mdf.label.service.url',
                         'translation_domain' => 'BaseAdminBundle'
                     )
                 )
