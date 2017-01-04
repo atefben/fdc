@@ -66,11 +66,11 @@ class HomeSliderType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.label.slider.title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'url'          => array(
-                        'label'              => 'form.label.url',
+                        'label'              => 'form.mdf.label.slider.url',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 )

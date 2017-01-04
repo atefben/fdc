@@ -50,6 +50,42 @@ class MdfHomepageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('translations', 'a2lix_translations', array(
+                'label'  => false,
+                'fields' => array(
+                    'applyChanges'      => array(
+                        'field_type' => 'hidden',
+                        'attr'       => array(
+                            'class' => 'hidden',
+                        ),
+                    ),
+                    'category'          => array(
+                        'label'              => 'form.mdf.label.content_block.category',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'title'          => array(
+                        'label'              => 'form.mdf.label.content_block.title',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'description'          => array(
+                        'label'              => 'form.mdf.label.content_block.description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type'         => 'ckeditor',
+                    ),
+                    'url'          => array(
+                        'label'              => 'form.mdf.label.content_block.url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'servicesCategory'          => array(
+                        'label'              => 'form.mdf.home.service.category',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'servicesTitle'          => array(
+                        'label'              => 'form.mdf.home.service.title',
+                        'translation_domain' => 'BaseAdminBundle',
+                    )
+                )
+            ))
             ->add('slidersTop', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
@@ -70,36 +106,8 @@ class MdfHomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
-            ->add('translations', 'a2lix_translations', array(
-                'label'  => false,
-                'fields' => array(
-                    'applyChanges'      => array(
-                        'field_type' => 'hidden',
-                        'attr'       => array(
-                            'class' => 'hidden',
-                        ),
-                    ),
-                    'category'          => array(
-                        'label'              => 'form.label.category',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
-                    'title'          => array(
-                        'label'              => 'form.label.title',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
-                    'description'          => array(
-                        'label'              => 'form.label.description',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type'         => 'ckeditor',
-                    ),
-                    'url'          => array(
-                        'label'              => 'form.label.url',
-                        'translation_domain' => 'BaseAdminBundle',
-                    )
-                )
-            ))
             ->add('gallery', 'sonata_type_model_list', array(
-                'label' => 'form.label.content_gallery',
+                'label' => 'form.mdf.gallery',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true

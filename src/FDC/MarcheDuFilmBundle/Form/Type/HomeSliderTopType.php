@@ -67,15 +67,15 @@ class HomeSliderTopType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.label.top_slider.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.label.subTitle',
+                        'label'              => 'form.mdf.label.top_slider.subTitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'dateText'          => array(
-                        'label'              => 'form.label.dateText',
+                        'label'              => 'form.mdf.label.top_slider.dateText',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
