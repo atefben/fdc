@@ -1,4 +1,4 @@
-<div class="presse whoarewe">
+<div>
     {% set translations = widget.image.findTranslationByLocale(app.request.locale) %}
     <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}">
     <h5 class="caption">{{ translations.legend ~ '-' ~ translations.copyright }}</h5>

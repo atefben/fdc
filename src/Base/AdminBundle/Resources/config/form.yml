@@ -628,3 +628,21 @@ services:
         class: FDC\MarcheDuFilmBundle\Form\Type\AccreditationWidgetType
         tags:
             - { name: form.type, alias: 'accreditation_widget_type'}
+
+    base.admin.form.content_template_widget_gallery_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetGalleryType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_gallery_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_gallery_dummy']]
+            - ['setMediaGalleryAdmin', ['@base.admin.mdf_gallery']]
+
+    base.admin.form.content_template_widget_file_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetFileType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_file_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_file_dummy']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
