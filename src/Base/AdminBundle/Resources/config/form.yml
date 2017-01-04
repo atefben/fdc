@@ -628,3 +628,12 @@ services:
         class: FDC\MarcheDuFilmBundle\Form\Type\AccreditationWidgetType
         tags:
             - { name: form.type, alias: 'accreditation_widget_type'}
+
+    base.admin.form.content_template_widget_gallery_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetGalleryType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_gallery_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_gallery_dummy']]
+            - ['setMediaGalleryAdmin', ['@base.admin.mdf_gallery']]

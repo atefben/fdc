@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *  "text" = "MdfContentTemplateWidgetText",
  *  "image" = "MdfContentTemplateWidgetImage",
+ *  "gallery" = "MdfContentTemplateWidgetGallery",
  * })
  */
 abstract class MdfContentTemplateWidget
