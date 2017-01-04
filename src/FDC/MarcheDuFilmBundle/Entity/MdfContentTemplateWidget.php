@@ -100,4 +100,14 @@ abstract class MdfContentTemplateWidget
     {
         return $this instanceof MdfContentTemplateWidgetImage;
     }
+
+    public function isWidgetGallery()
+    {
+        return $this instanceof MdfContentTemplateWidgetGallery;
+    }
+
+    public function isWidgetFile()
+    {
+        return $this instanceof MdfContentTemplateWidgetFile;
+    }
 }

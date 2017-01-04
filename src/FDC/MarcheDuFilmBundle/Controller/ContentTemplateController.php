@@ -18,9 +18,11 @@ class ContentTemplateController extends Controller
         $titleHeader = $contentTemplateManager->getTitleHeaderContent(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
         $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
         $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $galleryWidgets = $contentTemplateManager->getContentTemplateGalleryWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $fileWidgets = $contentTemplateManager->getContentTemplateFileWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
 
         $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets);
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
 
         usort($widgets, function($a, $b)
         {
@@ -30,6 +32,8 @@ class ContentTemplateController extends Controller
                 return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
             } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
                 return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
+            } else if (!property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
+                return strcmp($a->getPosition(), $b->getPosition());
             }
         });
 
