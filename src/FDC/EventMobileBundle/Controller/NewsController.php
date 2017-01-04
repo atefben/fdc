@@ -354,7 +354,7 @@ class NewsController extends Controller
         $filters['themes']['id'][0] = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
-            $homeArticle->theme = $homeArticle->getTheme();
+            $homeArticle->setTheme($homeArticle->getTheme());
 
             if (($key % 3) == 0) {
                 $homeArticle->double = true;
@@ -648,7 +648,7 @@ class NewsController extends Controller
         $filters['themes']['id'][0] = 'all';
 
         foreach ($photos as $key => $photo) {
-            $photo->theme = $photo->getTheme();
+            $photo->setTheme($photo->getTheme());
 
             if (($key % 3) == 0) {
                 $photo->double = true;
@@ -715,7 +715,7 @@ class NewsController extends Controller
         $filters['themes']['slug'][0] = 'all';
 
         foreach ($videos as $key => $video) {
-            $video->theme = $video->getTheme();
+            $video->setTheme($video->getTheme());
 
             if (($key % 3) == 0) {
                 $video->double = true;
@@ -783,7 +783,7 @@ class NewsController extends Controller
         $filters['themes']['slug'][0] = 'all';
 
         foreach ($audios as $key => $audio) {
-            $audio->theme = $audio->getTheme();
+            $audio->setTheme($audio->getTheme());
 
             if (($key % 3) == 0) {
                 $audio->double = true;
