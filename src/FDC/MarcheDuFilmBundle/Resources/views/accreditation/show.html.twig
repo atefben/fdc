@@ -3,7 +3,7 @@
 {% block main %}
     <div id="main" class="home loading">
         {% if accreditationContent is not empty %}
-            {% if accreditationContent.state == 1 %}
+            {% if accreditationContent.state == 0 %}
                 <div class="accredidationsMessage">
                     <a href="{{ accreditationContent.activeUrl }}">
                         <div>{{ accreditationContent.subtitle }}</div>
@@ -35,10 +35,10 @@
                         <div class="pricesContainer">
                             <div class="innerWrapper">
                                 <div class="articles">
-                                    {% if accreditationContent.promotionState1 == 3 %}
+                                    {% if accreditationContent.isEarlyBird %}
                                         <span class="earlyBird"><img src="{{ asset('bundles/fdcmarchedufilm/img/early-bird.png') }}"></span>
                                     {% endif %}
-                                    <div class="articles-content {% if accreditationContent.promotionState1 == 3 %}primo{% endif %}">
+                                    <div class="articles-content {% if accreditationContent.isEarlyBird %}primo{% endif %}">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle1 }}</span>
                                             <h6>{{ accreditationContent.promotionPrice1 }} <span class="ht">{{ accreditationContent.promotionInformation1 }}</span></h6>
@@ -46,10 +46,7 @@
                                     </div>
                                 </div>
                                 <div class="articles">
-                                    {% if accreditationContent.promotionState2 == 3 %}
-                                        <span class="earlyBird"><img src="{{ asset('bundles/fdcmarchedufilm/img/early-bird.png') }}"></span>
-                                    {% endif %}
-                                    <div class="articles-content {% if accreditationContent.promotionState2 == 3 %}primo{% endif %}">
+                                    <div class="articles-content">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle2 }}</span>
                                             <h6>{{ accreditationContent.promotionPrice2 }} <span class="ht">{{ accreditationContent.promotionInformation2 }}</span></h6>
@@ -57,10 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="articles">
-                                    {% if accreditationContent.promotionState3 == 3 %}
-                                        <span class="earlyBird"><img src="{{ asset('bundles/fdcmarchedufilm/img/early-bird.png') }}"></span>
-                                    {% endif %}
-                                    <div class="articles-content {% if accreditationContent.promotionState3 == 3 %}primo{% endif %}">
+                                    <div class="articles-content">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle3 }}</span>
                                             <h6>{{ accreditationContent.promotionPrice3 }} <span class="ht">{{ accreditationContent.promotionInformation3 }}</span></h6>

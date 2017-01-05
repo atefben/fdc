@@ -58,6 +58,13 @@ class AccreditationTranslation implements MdfStateInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isEarlyBird = false;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=true)
      */
     protected $promotionTitle1;
@@ -353,6 +360,26 @@ class AccreditationTranslation implements MdfStateInterface
     public function setPromotionsTitle($promotionsTitle)
     {
         $this->promotionsTitle = $promotionsTitle;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsEarlyBird()
+    {
+        return $this->isEarlyBird;
+    }
+
+    /**
+     * @param $isEarlyBird
+     *
+     * @return $this
+     */
+    public function setIsEarlyBird($isEarlyBird)
+    {
+        $this->isEarlyBird = $isEarlyBird;
 
         return $this;
     }
