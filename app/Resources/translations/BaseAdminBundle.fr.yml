@@ -472,6 +472,10 @@ filter:
     fdc_page_participate:
         label_section: Nom de la section
 
+admin:
+    group:
+        mdf: Marché du film
+
 dashboard:
     translator:
         object:
@@ -597,6 +601,33 @@ form:
     label_hide_common_content: Ne pas afficher cette strate
     label_our_selection: Notre Sélection
     label_pdf: Pdf
+    mdf:
+        gallery: Galeries
+        home:
+            top_sliders: Slider principale
+            top_slider.widget: Module slider principal
+            sliders: Slider secondaire
+            slider.widget: Module slider secondaire
+            service.category: Strate Services - label
+            service.title: Strate Services - titre
+            service.widget: Module Services
+        label:
+            content_block:
+                category: Strate 1 - Label
+                title: Strate 1 - Titre
+                description: Strate 1 - Chapô
+                url: Strate 1 - Lien de redirection
+            top_slider:
+                title: Titre du slide
+                subTitle: Sous-titre du slide
+                dateText:  Description du slide
+            slider:
+                title: Titre du slide
+                url: Lien de redirection
+            service:
+                title: Nom du service
+                description: Description du service
+                url: Lien de redirection du service
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

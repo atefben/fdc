@@ -5,6 +5,7 @@ namespace Base\AdminBundle\Admin;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class MdfHomepageAdmin extends Admin
@@ -60,20 +61,28 @@ class MdfHomepageAdmin extends Admin
                         ),
                     ),
                     'category'          => array(
-                        'label'              => 'form.label.category',
+                        'label'              => 'form.mdf.label.content_block.category',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.label.content_block.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
-                        'label'              => 'form.label.description',
+                        'label'              => 'form.mdf.label.content_block.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                     ),
                     'url'          => array(
-                        'label'              => 'form.label.url',
+                        'label'              => 'form.mdf.label.content_block.url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'servicesCategory'          => array(
+                        'label'              => 'form.mdf.home.service.category',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'servicesTitle'          => array(
+                        'label'              => 'form.mdf.home.service.title',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 )
@@ -98,6 +107,12 @@ class MdfHomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('gallery', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.gallery',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
+            ))
             ->add('services', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
@@ -108,13 +123,15 @@ class MdfHomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
-            ->add('gallery', 'sonata_type_model_list', array(
-                'label' => 'form.label.content_gallery',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
-            ))
         ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 
     /**

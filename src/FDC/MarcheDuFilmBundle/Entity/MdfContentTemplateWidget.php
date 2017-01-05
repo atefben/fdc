@@ -14,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *  "text" = "MdfContentTemplateWidgetText",
  *  "image" = "MdfContentTemplateWidgetImage",
+ *  "gallery" = "MdfContentTemplateWidgetGallery",
+ *  "file" = "MdfContentTemplateWidgetFile",
  * })
  */
 abstract class MdfContentTemplateWidget
@@ -97,5 +99,15 @@ abstract class MdfContentTemplateWidget
     public function isWidgetImage()
     {
         return $this instanceof MdfContentTemplateWidgetImage;
+    }
+
+    public function isWidgetGallery()
+    {
+        return $this instanceof MdfContentTemplateWidgetGallery;
+    }
+
+    public function isWidgetFile()
+    {
+        return $this instanceof MdfContentTemplateWidgetFile;
     }
 }

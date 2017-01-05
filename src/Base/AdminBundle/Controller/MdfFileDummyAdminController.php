@@ -5,11 +5,11 @@ namespace Base\AdminBundle\Controller;
 use Application\Sonata\AdminBundle\Controller\CRUDController;
 
 /**
- * Class MdfHeaderFooterAdminController
+ * Class MdfGalleryDummyAdminController
  *
  * @package Base\AdminBundle\Controller
  */
-class MdfHeaderFooterAdminController extends CRUDController
+class MdfFileDummyAdminController extends CRUDController
 {
 
 }

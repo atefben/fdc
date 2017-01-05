@@ -2,7 +2,7 @@
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
-    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
+    {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
@@ -12,8 +12,6 @@
                 {% set currentLocale = 'fr' %}
             {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
                 {% set currentLocale = 'en' %}
-            {% elseif is_granted('ROLE_TRANSLATOR_ES') %}
-                {% set currentLocale = 'es' %}
             {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
                 {% set currentLocale = 'zh' %}
             {% endif %}
@@ -42,6 +40,12 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
                                                             {{ form_row(widget.image) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
+                                                            <h4><strong>Gallery widget</strong></h4>
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
+                                                            <h4><strong>File widget</strong></h4>
+                                                            {{ form_row(widget.file) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -52,11 +56,17 @@
                                                 {% endfor %}
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}"><i
-                                                        class="icon-plus"></i>Module texte</a>
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
+                                                <i class="icon-plus"></i>Module texte</a>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}"><i
-                                                        class="icon-plus"></i>Module image</a>
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
+                                                <i class="icon-plus"></i>Module image</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
+                                                <i class="icon-plus"></i>Module gallery</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
+                                                <i class="icon-plus"></i>Module file</a>
 
                                         </div>
                                     </div>
@@ -91,6 +101,12 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
                                                             {{ form_row(widget.image) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
+                                                            <h4><strong>Gallery widget</strong></h4>
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
+                                                            <h4><strong>File widget</strong></h4>
+                                                            {{ form_row(widget.file) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -101,11 +117,17 @@
                                                 {% endfor %}
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}"><i
-                                                        class="icon-plus"></i>Module texte</a>
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
+                                                <i class="icon-plus"></i>Module texte</a>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}"><i
-                                                        class="icon-plus"></i>Module image</a>
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
+                                                <i class="icon-plus"></i>Module image</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
+                                                <i class="icon-plus"></i>Module image</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
+                                                <i class="icon-plus"></i>Module file</a>
                                         </div>
                                     </div>
                                 </div>
@@ -138,26 +160,26 @@
                                                 </div>
                                             </div>
                                             {% for widget in form.parent.children.contentTemplateWidgets.children %}
-                                            {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
-                                                <div class="item base-widget"
-                                                     data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
-                                                        <div class="form-group">
-                                                            <h4>{{ 'form.content_template.text_widget'|trans }}</h4>
-                                                            <label>
-                                                                {{ 'form.content_template.text_widget_title'|trans }}
-                                                            </label>
-                                                            <div>
-                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
+                                                    <div class="item base-widget"
+                                                         data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.content_template.text_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.content_template.text_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.content_template.text_widget_text'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.contentText|raw }}
+                                                                </div>
                                                             </div>
-                                                            <label>
-                                                                {{ 'form.content_template.text_widget_text'|trans }}
-                                                            </label>
-                                                            <div>
-                                                                {{ widget.children.translations.fr.vars.value.contentText|raw }}
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                            {% endif %}
+                                                    </div>
+                                                {% endif %}
                                             {% endfor %}
                                         </div>
                                     {% endif %}
