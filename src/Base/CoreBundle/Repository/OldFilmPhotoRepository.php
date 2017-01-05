@@ -47,10 +47,7 @@ class OldFilmPhotoRepository extends EntityRepository
         $qb = $this->createQueryBuilder('fp');
         $qb
             ->andWhere('fp.type = :type')
-            ->andWhere('fp.titre = :titre OR fp.idtypephoto IN (:type_photo)')
             ->setParameter(':type', 'I')
-            ->setParameter(':titre', 'Photo du Film')
-            ->setParameter(':type_photo', [51, 14])
             ->addOrderBy('fp.idtypephoto', 'desc')
             ->addOrderBy('fp.idphoto', 'desc')
         ;

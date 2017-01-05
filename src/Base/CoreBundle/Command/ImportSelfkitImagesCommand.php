@@ -43,6 +43,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             ->addOption('persons', null, InputOption::VALUE_NONE, 'Only films')
             ->addOption('count', null, InputOption::VALUE_NONE, 'Count element (works if film or persons is selected)')
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination (works if film or persons is selected)')
+            ->addOption('id', null, InputOption::VALUE_OPTIONAL, 'Film or Person soif id')
         ;
     }
 
@@ -65,6 +66,8 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             if ($input->getOption('count')) {
                 $count = $this->importFilmImagesCount();
                 $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items  for film to import</info>");
+            } else if ($input->getOption('id')) {
+                $this->importFilmImages($input->getOption('id'));
             } else {
                 $this->importFilmImages();
             }
@@ -175,23 +178,36 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             ;
     }
 
-    private function importFilmImages()
+    private function importFilmImages($id = null)
     {
-        $maxResults = null;
-        if (null !== $this->firstResult) {
-            $maxResults = $this->maxResults;
-            $pages = ceil($this->importFilmImagesCount() / $maxResults);
-            $this->output->writeln($this->input->getOption('page') . "/$pages");
-        }
-        $oldImages = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyFilmImages(null, $this->firstResult, $maxResults)
-        ;
+        if ($id) {
+            $oldImages = [];
+            $movie = $this->getManager()->getRepository('BaseCoreBundle:FilmFilm')->find($id);
+            if ($movie) {
+                $oldImages = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                    ->getLegacyFilmImages($movie)
+                ;
+            }
 
-        if (!$oldImages) {
-            $this->output->writeln('<info>There is no images to import with these options</info>');
-            return;
+        } else {
+            $maxResults = null;
+            if (null !== $this->firstResult) {
+                $maxResults = $this->maxResults;
+                $pages = ceil($this->importFilmImagesCount() / $maxResults);
+                $this->output->writeln($this->input->getOption('page') . "/$pages");
+            }
+            $oldImages = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                ->getLegacyFilmImages(null, $this->firstResult, $maxResults)
+            ;
+
+            if (!$oldImages) {
+                $this->output->writeln('<info>There is no images to import with these options</info>');
+                return;
+            }
         }
         $this->output->writeln('<info>Import films</info>');
         $bar = new ProgressBar($this->output, count($oldImages));
