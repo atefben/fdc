@@ -88,6 +88,11 @@ class MdfAccreditationAdmin extends Admin
                         'label'              => 'form.mdf.accreditation.promotions_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'isEarlyBird'  => array(
+                        'label'              => 'form.mdf.accreditation.is_early_bird',
+                        'required'           => false,
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
                     'promotionTitle1'          => array(
                         'label'              => 'form.mdf.accreditation.promotion_title_1',
                         'translation_domain' => 'BaseAdminBundle',
