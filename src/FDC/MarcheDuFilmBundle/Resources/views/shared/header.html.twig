@@ -22,11 +22,11 @@
                 <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
             </li>
             <li class="lang">
-                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }}</a>
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
                     {% for locale in locales if locale != app.request.locale and locale != 'es' %}
                         <li>
-                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
+                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -53,11 +53,11 @@
                         <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
                     </li>
                     <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
                             {% for locale in locales if locale != app.request.locale and locale != 'es' %}
                                 <li>
-                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
