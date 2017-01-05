@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MdfHomepage
@@ -25,6 +26,13 @@ class MdfHomepage
 
     /**
      * @ORM\OneToMany(targetEntity="HomeSliderTop", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "At least one top slider must be added.",
+     *      max = "6",
+     *      maxMessage = "At most 6 top sliders could be added."
+     * )
+     * @Assert\Valid
      */
     protected $slidersTop;
 
