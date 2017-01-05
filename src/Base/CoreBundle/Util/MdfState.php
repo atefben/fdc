@@ -18,9 +18,9 @@ trait MdfState
     {
         return array(
             '' => '',
-            self::STATE_INACTIVE => 'form.status.inactive',
-            self::STATE_ACTIVE => 'form.status.active',
-            self::STATE_EARLY_BIRD => 'form.status.early_bird'
+            self::STATE_INACTIVE => 'form.mdf.status.inactive',
+            self::STATE_ACTIVE => 'form.mdf.status.active',
+            self::STATE_EARLY_BIRD => 'form.mdf.status.early_bird'
         );
     }
 
@@ -34,9 +34,9 @@ trait MdfState
     {
         return array(
             '' => '',
-            self::STATE_INACTIVE => 'form.status.inactive',
-            self::STATE_ACTIVE => 'form.status.active',
-            self::STATE_DEACTIVATED => 'form.status.deactivated'
+            self::STATE_INACTIVE => 'form.mdf.status.inactive',
+            self::STATE_ACTIVE => 'form.mdf.status.active',
+            self::STATE_DEACTIVATED => 'form.mdf.status.deactivated'
         );
     }
 

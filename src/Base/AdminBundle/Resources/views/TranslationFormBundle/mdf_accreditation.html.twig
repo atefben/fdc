@@ -21,16 +21,29 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    Informations de base
+                                    Bandeau accréditation
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.state) }}
-                                    {{ form_row(translationsFields.title) }}
                                     {{ form_row(translationsFields.subtitle) }}
-                                    {{ form_row(translationsFields.description) }}
                                     {{ form_row(translationsFields.activeUrl) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Informations de page
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.title) }}
+                                    {{ form_row(translationsFields.description) }}
                                 </div>
                             </div>
                         </div>
@@ -96,7 +109,7 @@
                                     {% for widget in form.parent.children.accreditationWidgets.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'accreditation_widget_type' %}
-                                                <h4><strong>{{ 'form.widget.accreditation_widget_type'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.mdf.accreditation.widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -108,10 +121,9 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                {{ 'form.accreditation_widget.helper_widgets'|trans }}<br/>
                                 <a class="btn btn-primary btn-add-base-widget"
                                    data-prototype="{{ form_widget(form.parent.children.accreditationWidgets.vars.prototypes.accreditation_widget_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.widget.accreditation_widget'|trans }}</a>
+                                            class="icon-plus"></i>{{ 'form.mdf.accreditation.widget_button'|trans }}</a>
                             </div>
                         </div>
                     {% else %}
@@ -121,7 +133,7 @@
                                     {% for widget in form.parent.children.accreditationWidgets.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'accreditation_widget_type' %}
-                                                <h4><strong>{{ 'form.widget.accreditation_widget'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.mdf.accreditation.widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -144,10 +156,10 @@
                                         {% for widget in form.parent.children.accreditationWidgets.children %}
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'accreditation_widget_type' %}
-                                                    <h4><strong>{{ 'form.widget.accreditation_widget'|trans }}</strong></h4>
+                                                    <h4><strong>{{ 'form.mdf.accreditation.widget'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.accreditation_widget_title'|trans }}
+                                                            {{ 'form.mdf.accreditation.widget_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -157,7 +169,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.accreditation_widget_description'|trans }}
+                                                            {{ 'form.mdf.accreditation.widget_description'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}

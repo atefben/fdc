@@ -61,19 +61,20 @@ class MdfAccreditationAdmin extends Admin
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.itle',
+                        'label'              => 'form.mdf.accreditation.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subtitle'          => array(
-                        'label'              => 'form.label.subtitle',
+                        'label'              => 'form.mdf.accreditation.subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
-                        'label'              => 'form.label.information',
+                        'label'              => 'form.mdf.accreditation.information',
                         'translation_domain' => 'BaseAdminBundle',
+                        'field_type'         => 'ckeditor',
                     ),
                     'activeUrl'          => array(
-                        'label'              => 'form.label.see_more_url',
+                        'label'              => 'form.mdf.accreditation.see_more_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'state'            => array(
@@ -84,126 +85,126 @@ class MdfAccreditationAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionsTitle'          => array(
-                        'label'              => 'form.label.promotions_title',
+                        'label'              => 'form.mdf.accreditation.promotions_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionTitle1'          => array(
-                        'label'              => 'form.label.promotion_title_1',
+                        'label'              => 'form.mdf.accreditation.promotion_title_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionPrice1'          => array(
-                        'label'              => 'form.label.promotion_price_1',
+                        'label'              => 'form.mdf.accreditation.promotion_price_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionInformation1'          => array(
-                        'label'              => 'form.label.promotion_suffix_1',
+                        'label'              => 'form.mdf.accreditation.promotion_suffix_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionState1'            => array(
-                        'label'                     => 'form.promotion_state_1',
+                        'label'                     => 'form.mdf.accreditation.promotion_state_1',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => AccreditationTranslation::getPromotionStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionTitle2'          => array(
-                        'label'              => 'form.label.promotion_title_2',
+                        'label'              => 'form.mdf.accreditation.promotion_title_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionPrice2'          => array(
-                        'label'              => 'form.label.promotion_price_2',
+                        'label'              => 'form.mdf.accreditation.promotion_price_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionInformation2'          => array(
-                        'label'              => 'form.label.promotion_suffix_2',
+                        'label'              => 'form.mdf.accreditation.promotion_suffix_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionState2'            => array(
-                        'label'                     => 'form.promotion_state_2',
+                        'label'                     => 'form.mdf.accreditation.promotion_state_2',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => AccreditationTranslation::getPromotionStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionTitle3'          => array(
-                        'label'              => 'form.label.promotion_title_3',
+                        'label'              => 'form.mdf.accreditation.promotion_title_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionPrice3'          => array(
-                        'label'              => 'form.label.promotion_price_3',
+                        'label'              => 'form.mdf.accreditation.promotion_price_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionInformation3'          => array(
-                        'label'              => 'form.label.promotion_suffix_3',
+                        'label'              => 'form.mdf.accreditation.promotion_suffix_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionState3'            => array(
-                        'label'                     => 'form.promotion_state_3',
+                        'label'                     => 'form.mdf.accreditation.promotion_state_3',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => AccreditationTranslation::getPromotionStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsTitle1'          => array(
-                        'label'              => 'form.label.promotion_details_title_1',
+                        'label'              => 'form.mdf.accreditation.promotion_details_title_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPricePrefix1'          => array(
-                        'label'              => 'form.label.promotion_details_price_prefix_1',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_prefix_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPrice1'          => array(
-                        'label'              => 'form.label.promotion_details_price_1',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPriceSuffix1'          => array(
-                        'label'              => 'form.label.promotion_details_price_suffix_1',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_suffix_1',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsInformation1'          => array(
-                        'label'              => 'form.label.promotion_details_information_1',
+                        'label'              => 'form.mdf.accreditation.promotion_details_information_1',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor'
                     ),
                     'promotionDetailsTitle2'          => array(
-                        'label'              => 'form.label.promotion_details_title_2',
+                        'label'              => 'form.mdf.accreditation.promotion_details_title_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPricePrefix2'          => array(
-                        'label'              => 'form.label.promotion_details_price_prefix_2',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_prefix_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPrice2'          => array(
-                        'label'              => 'form.label.promotion_details_price_2',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPriceSuffix2'          => array(
-                        'label'              => 'form.label.promotion_details_price_suffix_2',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_suffix_2',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsInformation2'          => array(
-                        'label'              => 'form.label.promotion_details_information_2',
+                        'label'              => 'form.mdf.accreditation.promotion_details_information_2',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                     ),
                     'promotionDetailsTitle3'          => array(
-                        'label'              => 'form.label.promotion_details_title_3',
+                        'label'              => 'form.mdf.accreditation.promotion_details_title_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPricePrefix3'          => array(
-                        'label'              => 'form.label.promotion_details_price_prefix_3',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_prefix_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPrice3'          => array(
-                        'label'              => 'form.label.promotion_details_price_3',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsPriceSuffix3'          => array(
-                        'label'              => 'form.label.promotion_details_price_suffix_3',
+                        'label'              => 'form.mdf.accreditation.promotion_details_price_suffix_3',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionDetailsInformation3'          => array(
-                        'label'              => 'form.label.promotion_details_information_3',
+                        'label'              => 'form.mdf.accreditation.promotion_details_information_3',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                     ),
