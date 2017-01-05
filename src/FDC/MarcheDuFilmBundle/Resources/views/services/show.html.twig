@@ -8,7 +8,7 @@
             <div class="our-news newsPage servicesPage">
                 {% if serviceContent is not empty %}
                     <h3>{{ serviceContent.title  }}</h3>
-                    <p>{{ serviceContent.description }}</p>
+                    <p>{{ serviceContent.description|raw }}</p>
                     <div class="innerWrapper">
                         {% for serviceWidget in serviceWidgets %}
                             <div class="articles">
