@@ -8,7 +8,9 @@
             <div class="our-news newsPage servicesPage">
                 {% if serviceContent is not empty %}
                     <h3>{{ serviceContent.title  }}</h3>
-                    <p>{{ serviceContent.description|raw }}</p>
+                    {# Content formated in ckeditor#}
+                    {{ serviceContent.description|raw }}
+                    {# End #}
                     <div class="innerWrapper">
                         {% for serviceWidget in serviceWidgets %}
                             <div class="articles">
@@ -25,7 +27,9 @@
                                     <div class="articles-content">
                                         <h6>{{ serviceWidget.title }}</h6>
                                         <span>{{ serviceWidget.subtitle }}</span>
-                                        <p>{{ serviceWidget.description|raw }}</p>
+                                        {# Content formated in ckeditor#}
+                                        {{ serviceWidget.description|raw }}
+                                        {# End #}
                                     </div>
                                 </a>
                             </div>
@@ -35,7 +39,9 @@
                                 <div class="articles-content">
                                     <div class="lastArticle">
                                         <h6>{{ serviceContent.contactTitle }}</h6>
-                                        <p>{{ serviceContent.contactDescription|raw }}</p>
+                                        {# Content formated in ckeditor#}
+                                        {{ serviceContent.contactDescription|raw }}
+                                        {# End #}
                                         <a href="{{ serviceContent.contactSeeMoreUrl }}">
                                             <div class="blackBtn">En Savoir Plus</div>
                                         </a>

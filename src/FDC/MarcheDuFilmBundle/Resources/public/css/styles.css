@@ -6419,7 +6419,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 
 .chocolat-zoomable .zoomCursor {
-  background: url("..../img/svg/zoomIn.svg") no-repeat center;
+  background: url("../img/svg/zoomIn.svg") no-repeat center;
   background-size: 20px;
   display: block !important;
 }
@@ -6428,7 +6428,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 
 .chocolat-zoomed .zoomCursor {
-  background: url("..../img/svg/zoomOut.svg") no-repeat center;
+  background: url("../img/svg/zoomOut.svg") no-repeat center;
   background-size: 20px;
   display: block !important;
 }
@@ -7214,7 +7214,7 @@ video {
   background-size: cover;
 }
 .video-container .top-bar {
-  background: url("..../img/shadow-reverse.png") repeat-x;
+  background: url("../img/shadow-reverse.png") repeat-x;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   height: 80px;
   left: 0;
@@ -7502,7 +7502,7 @@ video {
   font-size: 14px;
 }
 .video-container .control-bar .playstate .play-btn.pause {
-  background-image: url("..../img/player/pause.png");
+  background-image: url("../img/player/pause.png");
 }
 .video-container .control-bar .time {
   display: inline-block;
@@ -8005,7 +8005,7 @@ video {
   visibility: hidden;
 }
 #selection #slider-selection .article .delete, #selection #slider-suggestion .article .delete {
-  background: #fff url("..../img/svg/close.svg") no-repeat center;
+  background: #fff url("../img/svg/close.svg") no-repeat center;
   background-size: 12px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   content: '';
@@ -8282,7 +8282,7 @@ header #searchContainer {
   height: 100%;
   opacity: 0.3;
   width: 100%;
-  background: url("..../img/search/footer.jpg") no-repeat top center;
+  background: url("../img/search/footer.jpg") no-repeat top center;
   background-size: cover;
 }
 #searchContainer #footerSearch .txtFooter {
@@ -9257,7 +9257,7 @@ header #searchContainer {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(..../img/prehome.jpg) top center;
+  background: url(../img/prehome.jpg) top center;
   background-size: cover;
   pointer-events: none;
   width: 100%;
@@ -9860,7 +9860,7 @@ header #searchContainer {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("..../img/svg/instagram.svg") no-repeat;
+  background: url("../img/svg/instagram.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -9871,7 +9871,7 @@ header #searchContainer {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("..../img/svg/twitter-gold.svg") no-repeat;
+  background: url("../img/svg/twitter-gold.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -9889,7 +9889,7 @@ header #searchContainer {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("..../img/svg/twitter.svg");
+  background-image: url("../img/svg/twitter.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
@@ -10677,7 +10677,7 @@ header #searchContainer {
 }
 
 #prefooter {
-  background: #1f1f1f url("..../img/svg/palme-bg.svg") no-repeat center 20%;
+  background: #1f1f1f url("../img/svg/palme-bg.svg") no-repeat center 20%;
   background-size: 900px auto;
   box-sizing: border-box;
   height: 535px;
@@ -10731,17 +10731,17 @@ header #searchContainer {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  /*&:after {
-    height: 100%;
-    content: '';
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    opacity: 0.3;
-  }
+    /*&:after {
+      height: 100%;
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.3;
+    }
 */
 }
 #prefooter .imgSlide img {
@@ -10834,7 +10834,7 @@ header #searchContainer {
 }
 
 .prehome-01 {
-  background-image: url("..../img/prehome01.jpg");
+  background-image: url("../img/prehome01.jpg");
   background-size: cover;
   height: 100vh;
   background-position: center;
@@ -15254,7 +15254,7 @@ body:not(.tablette) .webtv #live .img {
 }
 
 .list-channels #live {
-  background: #000 url("..../img/webtv/picto.png") no-repeat center 40%;
+  background: #000 url("../img/webtv/picto.png") no-repeat center 40%;
   padding-top: 70px;
   box-sizing: border-box;
 }
@@ -16949,7 +16949,7 @@ body:not(.tablette) .webtv #live .img {
 .app {
   height: 533px;
   background-color: #000 !important;
-  background-image: url(..../img/app.png);
+  background-image: url(../img/app.png);
   background-repeat: no-repeat;
   background-position: 133px 113px;
   transition: .5s;
@@ -17993,7 +17993,7 @@ body:not(.tablette) .webtv #live .img {
   display: block;
   width: 8px;
   height: 13px;
-  background: url("..../img/press/drag-icon.png") no-repeat center;
+  background: url("../img/press/drag-icon.png") no-repeat center;
   position: absolute;
   top: 7px;
   right: 5px;
@@ -18691,7 +18691,7 @@ body:not(.tablette) .webtv #live .img {
   z-index: 1;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container {
-  background: url("..../img/press/bg.jpg") repeat-x;
+  background: url("../img/press/bg.jpg") repeat-x;
   border-right: 1px solid #e5e5e5;
   height: calc(100% - 42px);
   position: relative;
@@ -19026,11 +19026,11 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
 }
 .press .section.participate .img {
-  background: url("..../img/press/001.jpg") no-repeat center;
+  background: url("../img/press/001.jpg") no-repeat center;
   background-size: cover;
 }
 .press .section.accrediter .img {
-  background: url("..../img/press/002.jpg") no-repeat center;
+  background: url("../img/press/002.jpg") no-repeat center;
   background-size: cover;
 }
 .press .section .txt {
@@ -21432,7 +21432,7 @@ body:not(.tablette) .webtv #live .img {
   }
 }
 .error-not-found {
-  background-image: url("..../img/error-bck.jpg");
+  background-image: url("../img/error-bck.jpg");
   height: 593px;
   background-size: cover;
 }
@@ -22697,7 +22697,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-
+      
         &:after {
         content: '';
     }
@@ -23367,7 +23367,7 @@ ul.tabs .quarterTab h4 {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;
+  z-index: 1004;  
   right: 1%;
   top: 100%;*/
   display: none;
@@ -24160,7 +24160,7 @@ ul.tabs .quarterTab h4 {
   padding: 30px;
   display: block;
 }
-.servicesPage .lastServicesArticle .lastArticle  {
+.servicesPage .lastServicesArticle .lastArticle  {
   position: absolute;
   top: 150px;
 }
@@ -24427,7 +24427,7 @@ ul.tabs .quarterTab h4 {
   text-transform: initial !important;
   letter-spacing: 2px;
 }
-.mentionsLegales h5  {
+.mentionsLegales h5  {
   padding: 0px 0px !important;
 }
 .mentionsLegales h6 {
