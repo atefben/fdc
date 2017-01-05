@@ -228,12 +228,12 @@ class PersonMediaExtension extends Twig_Extension
             $image = $this->getPortraitImage($person, $locale);
         }
         if ($image) {
-            $image = [
+            $image = [[
                 'file'      => $image,
                 'copyright' => $person->getCredits(),
                 'titleVa'   => '',
                 'titleVf'   => '',
-            ];
+            ]];
         } else {
             $image = [];
         }
@@ -568,7 +568,7 @@ class PersonMediaExtension extends Twig_Extension
      */
     protected function getPortraitImage(FilmPerson $person, $locale)
     {
-        $portrait = $person->getDisplayedImage() && $person->getPortraitImage();
+        $portrait = !$person->getDisplayedImage() && $person->getPortraitImage();
         $portrait = $portrait && $person->getPortraitImage()->findTranslationByLocale($locale);
         if ($portrait && $person->getPortraitImage()->findTranslationByLocale($locale)->getFile()) {
             return $person->getPortraitImage()->findTranslationByLocale($locale)->getFile();
