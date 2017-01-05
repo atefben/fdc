@@ -25,7 +25,6 @@
                 <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
                 <ul class="sub-languages">
                     <li><a href="#">EN</a></li>
-                    <li><a href="#">ES</a></li>
                     <li><a href="#">CHN</a></li>
                 </ul>
             </li>
@@ -43,6 +42,20 @@
                     <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
                 </a>
             </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                    </li>
+                    <li class="lang">
+                        <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                        <ul class="sub-languages">
+                            <li><a href="#">EN</a></li>
+                            <li><a href="#">CHN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div id="navigation">
@@ -50,10 +63,10 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="/" class="active" >Edition 2017</a>
+                        <a href="/" class="active" >Édition 2017</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}">ACCREDITATIONS</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}">ACCRÉDITATIONS</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_services') }}">SERVICES</a>
@@ -88,13 +101,11 @@
                     <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
                     <li><a href="news.php">Actualités</a></li>
                     <li class="seeSub">
-                        <a href="conference.php">
-                            <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
-                            <div class="prog">Programme</div>
-                        </a>
+                        <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
+                        <div class="prog">Programme</div>
                         <ul class="subsubMenu">
                             <li><a href="projections.php">Projections</a></li>
-                            <li><a href="conferences.php">évenements</a></li>
+                            <li><a href="conferences.php">Événements</a></li>
                         </ul>
                     </li>
                     <li class="liMargin"><a href="videos.php">producers workshop</a></li>
@@ -103,8 +114,8 @@
                 <ul class="tright">
                     <li><a href="conferences.php">Doc corner</a></li>
                     <li><a href="conferences.php">Next</a></li>
-                    <li><a href="conferences.php">Goes to Cannes</a></li>
                     <li><a href="">Mixers</a></li>
+                    <li><a href="conferences.php">Goes to Cannes</a></li>
                 </ul>
             </div>
         </div>
