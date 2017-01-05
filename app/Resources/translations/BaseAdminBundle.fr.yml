@@ -689,6 +689,7 @@ form:
             dispatch_de_service_widget_see_more_url: Redirection du service
             dispatch_de_service_widget_helper_widgets: Helper du service
             header_image: Image du service
+            contact_image: Image du contact
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

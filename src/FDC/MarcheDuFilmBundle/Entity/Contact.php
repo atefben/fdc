@@ -6,9 +6,7 @@ use Application\Sonata\MediaBundle\Entity\Media;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Util\SeoMain;
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslateMain;
+use FDC\MarcheDuFilmBundle\Entity\MediaMdf;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,14 +27,11 @@ class Contact
     protected $id;
 
     /**
-     * @var Media
+     * @var MediaMdf
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="backgroundImage", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
-    protected $backgroundImage;
+    protected $image;
 
     /**
      * @var ArrayCollection
@@ -62,19 +57,19 @@ class Contact
     /**
      * @return Media
      */
-    public function getBackgroundImage()
+    public function getImage()
     {
-        return $this->backgroundImage;
+        return $this->image;
     }
 
     /**
-     * @param $backgroundImage
+     * @param $image
      *
      * @return $this
      */
-    public function setBackgroundImage($backgroundImage)
+    public function setImage($image)
     {
-        $this->backgroundImage = $backgroundImage;
+        $this->image = $image;
 
         return $this;
     }
