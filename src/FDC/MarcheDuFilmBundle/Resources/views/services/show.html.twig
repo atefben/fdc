@@ -25,7 +25,7 @@
                                     <div class="articles-content">
                                         <h6>{{ serviceWidget.title }}</h6>
                                         <span>{{ serviceWidget.subtitle }}</span>
-                                        <p>{{ serviceWidget.description }}</p>
+                                        <p>{{ serviceWidget.description|raw }}</p>
                                     </div>
                                 </a>
                             </div>
@@ -34,8 +34,8 @@
                             <div class="articles lastServicesArticle">
                                 <div class="articles-content">
                                     <div class="lastArticle">
-                                        <h6>{{ serviceContent.contactTitle|raw }}</h6>
-                                        <p>{{ serviceContent.contactDescription }}</p>
+                                        <h6>{{ serviceContent.contactTitle }}</h6>
+                                        <p>{{ serviceContent.contactDescription|raw }}</p>
                                         <a href="{{ serviceContent.contactSeeMoreUrl }}">
                                             <div class="blackBtn">En Savoir Plus</div>
                                         </a>
