@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TransverseController extends Controller
 {
-    public function headerAction($routeName)
+    public function headerAction($routeName, $routeParams)
     {
         $headerFooterManager = $this->get('mdf.manager.header_footer');
         $banner = $headerFooterManager->getHeaderBanner();
@@ -15,7 +15,8 @@ class TransverseController extends Controller
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
                 'banner' => $banner,
-                'routeName' => $routeName
+                'routeName' => $routeName,
+                'routeParams' => $routeParams
             ]
         );
     }
