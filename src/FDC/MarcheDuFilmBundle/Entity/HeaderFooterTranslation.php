@@ -38,6 +38,13 @@ class HeaderFooterTranslation
     protected $footerYoutubeUrl;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $headerBannerUrl;
+
+    /**
      * @return string
      */
     public function getFooterFacebookUrl()
@@ -93,6 +100,26 @@ class HeaderFooterTranslation
     public function setFooterYoutubeUrl($footerYoutubeUrl)
     {
         $this->footerYoutubeUrl = $footerYoutubeUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHeaderBannerUrl()
+    {
+        return $this->headerBannerUrl;
+    }
+
+    /**
+     * @param $headerBannerUrl
+     *
+     * @return $this
+     */
+    public function setHeaderBannerUrl($headerBannerUrl)
+    {
+        $this->headerBannerUrl = $headerBannerUrl;
 
         return $this;
     }

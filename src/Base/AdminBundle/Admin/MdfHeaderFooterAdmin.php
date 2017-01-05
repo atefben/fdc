@@ -71,6 +71,10 @@ class MdfHeaderFooterAdmin extends Admin
                         'label'              => 'form.label.youtube_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'headerBannerUrl'          => array(
+                        'label'              => 'form.label.header_banner_url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    )
                 ),
             ))
             ->add('headerBanner', 'sonata_type_model_list', array(
