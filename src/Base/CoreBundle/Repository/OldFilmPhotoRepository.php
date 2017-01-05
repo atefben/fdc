@@ -48,6 +48,8 @@ class OldFilmPhotoRepository extends EntityRepository
         $qb
             ->andWhere('fp.type = :type')
             ->setParameter(':type', 'I')
+            ->andWhere('fp.internet = :internet')
+            ->setParameter(':internet', 'O')
             ->addOrderBy('fp.idtypephoto', 'desc')
             ->addOrderBy('fp.idphoto', 'desc')
         ;
