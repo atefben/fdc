@@ -14,7 +14,7 @@ class TransverseController extends Controller
         return $this->render(
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
-                'banner' => $banner[0]
+                'banner' => $banner
             ]
         );
     }
