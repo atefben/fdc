@@ -603,6 +603,11 @@ form:
     label_pdf: Pdf
     mdf:
         gallery: Galeries
+        status:
+            inactive: Actif
+            active: Inactif
+            deactivated: Désactivé
+            early_bird: Early bird
         home:
             top_sliders: Slider principale
             top_slider.widget: Module slider principal
@@ -611,6 +616,43 @@ form:
             service.category: Strate Services - label
             service.title: Strate Services - titre
             service.widget: Module Services
+        accreditation:
+            widget: Module accordéon aide
+            widget_button: Ajouter un accordéon d'aide
+            widget_title: Titre de l'accordéon
+            widget_description: Description de l'accordéon
+            title: Titre de page
+            subtitle: Titre de bandeau
+            information: Chapô
+            see_more_url: Redirection du bandeau
+            promotions_title: Titre de section accréditations
+            promotion_title_1: Date bloc 1
+            promotion_price_1: Prix bloc 1
+            promotion_suffix_1: Suffixe bloc 1
+            promotion_state_1: Etat du bloc
+            promotion_title_2: Date bloc 2
+            promotion_price_2: Prix bloc 2
+            promotion_suffix_2: Suffixe bloc 2
+            promotion_state_2: Etat du bloc
+            promotion_title_3: Date bloc 3
+            promotion_price_3: Prix bloc 3
+            promotion_suffix_3: Suffixe bloc 3
+            promotion_state_3: Etat du bloc
+            promotion_details_title_1: Titre de ligne 1
+            promotion_details_price_prefix_1: Préfixe de prix 1
+            promotion_details_price_1: Prix 1
+            promotion_details_price_suffix_1: Suffixe du prix 1
+            promotion_details_information_1: Description de la ligne 1
+            promotion_details_title_2: Titre de ligne 2
+            promotion_details_price_prefix_2: Préfixe de prix 2
+            promotion_details_price_2: Prix 2
+            promotion_details_price_suffix_2: Suffixe du prix 2
+            promotion_details_information_2: Description de la ligne 2
+            promotion_details_title_3: Titre de ligne 3
+            promotion_details_price_prefix_3: Préfixe de prix 3
+            promotion_details_price_3: Prix 3
+            promotion_details_price_suffix_3: Suffixe du prix 3
+            promotion_details_information_3: Description de la ligne 3
         label:
             content_block:
                 category: Strate 1 - Label
@@ -647,6 +689,7 @@ form:
             dispatch_de_service_widget_see_more_url: Redirection du service
             dispatch_de_service_widget_helper_widgets: Helper du service
             header_image: Image du service
+            contact_image: Image du contact
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

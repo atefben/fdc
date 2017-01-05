@@ -52,6 +52,7 @@ class DispatchDeServiceWidgetType extends AbstractType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
+            ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),

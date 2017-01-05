@@ -5,7 +5,7 @@
         {% if accreditationContent is not empty %}
             {% if accreditationContent.state == 1 %}
                 <div class="accredidationsMessage">
-                    <a href="">
+                    <a href="{{ accreditationContent.activeUrl }}">
                         <div>{{ accreditationContent.subtitle }}</div>
                         <div>S'inscrire</div></a>
                 </div>

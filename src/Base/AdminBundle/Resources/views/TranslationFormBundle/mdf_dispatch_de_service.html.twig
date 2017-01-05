@@ -28,7 +28,6 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.title) }}
                                     {{ form_row(translationsFields.description) }}
-                                    {{ form_row(translationsFields.showContactBlock) }}
                                     {{ form_row(translationsFields.contactTitle) }}
                                     {{ form_row(translationsFields.contactDescription) }}
                                     {{ form_row(translationsFields.contactSeeMoreUrl) }}
@@ -81,6 +80,7 @@
                                                 <h4><strong>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
 
@@ -106,6 +106,7 @@
                                                 <h4><strong>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>

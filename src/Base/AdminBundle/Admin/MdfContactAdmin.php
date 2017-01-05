@@ -77,6 +77,12 @@ class MdfContactAdmin extends Admin
                     ),
                 ),
             ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.label.contact_image',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => false
+            ));
         ;
     }
 

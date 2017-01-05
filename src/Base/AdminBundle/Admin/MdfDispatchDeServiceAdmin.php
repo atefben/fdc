@@ -75,21 +75,19 @@ class MdfDispatchDeServiceAdmin extends Admin
                         'label'              => 'form.mdf.label.description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
-                    'showContactBlock'  => array(
-                        'label'              => 'form.mdf.label.show_contact_block',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false
-                    ),
                     'contactTitle'          => array(
+                        'required' => false,
                         'label'              => 'form.mdf.label.contact_title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'contactDescription'          => array(
+                        'required' => false,
                         'field_type' => 'ckeditor',
                         'label'              => 'form.mdf.label.contact_description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'contactSeeMoreUrl'          => array(
+                        'required' => false,
                         'label'              => 'form.mdf.label.contact_see_more_url',
                         'translation_domain' => 'BaseAdminBundle'
                     )
