@@ -24,7 +24,7 @@
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                {{ 'form.content_template'|trans }}
+                                                {{ 'form.mdf.content_template.form_name'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
@@ -35,16 +35,16 @@
                                                 {% for widget in form.parent.children.contentTemplateWidgets.children %}
                                                     <div class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
-                                                            <h4><strong>Text widget</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.text'|trans }}</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.image'|trans }}</strong></h4>
                                                             {{ form_row(widget.image) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
-                                                            <h4><strong>Gallery widget</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.gallery'|trans }}</strong></h4>
                                                             {{ form_row(widget.gallery) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
-                                                            <h4><strong>File widget</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.file'|trans }}</strong></h4>
                                                             {{ form_row(widget.file) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
@@ -57,16 +57,16 @@
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
-                                                <i class="icon-plus"></i>Module texte</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
-                                                <i class="icon-plus"></i>Module image</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
-                                                <i class="icon-plus"></i>Module gallery</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
-                                                <i class="icon-plus"></i>Module file</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
 
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@
                                                     <div id="{{ locale}}-translation-content-template-widget-{{ loop.index }}"
                                                          class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
-                                                            <h4><strong>Text widget</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.text'|trans }}</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
@@ -118,16 +118,16 @@
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
-                                                <i class="icon-plus"></i>Module texte</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
-                                                <i class="icon-plus"></i>Module image</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
-                                                <i class="icon-plus"></i>Module image</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
-                                                <i class="icon-plus"></i>Module file</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
                                         </div>
                                     </div>
                                 </div>
