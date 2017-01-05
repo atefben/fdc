@@ -3,10 +3,11 @@
 namespace FDC\MarcheDuFilmBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class TransverseController extends Controller
 {
-    public function headerAction()
+    public function headerAction($routeName)
     {
         $headerFooterManager = $this->get('mdf.manager.header_footer');
         $banner = $headerFooterManager->getHeaderBanner();
@@ -14,7 +15,8 @@ class TransverseController extends Controller
         return $this->render(
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
-                'banner' => $banner
+                'banner' => $banner,
+                'routeName' => $routeName
             ]
         );
     }

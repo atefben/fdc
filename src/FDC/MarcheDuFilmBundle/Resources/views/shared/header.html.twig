@@ -50,13 +50,13 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="/" class="active" >Edition 2017</a>
+                        <a href="/" {% if routeName == 'fdc_marchedufilm_default_index' or routeName == 'fdc_marche_du_film_edition_presentation' %} class="active" {% endif %}>Edition 2017</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}">ACCREDITATIONS</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}" {% if routeName == 'fdc_marche_du_film_accreditations' %} class="active" {% endif %}>ACCREDITATIONS</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}">SERVICES</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active" {% endif %}>SERVICES</a>
                     </li>
                     <li>
                         <a href="equipe.php">QUI SOMMES-NOUS ?</a>

@@ -49,8 +49,7 @@
 <div id="prehome-container">
     <div id="prehome"></div>
 </div>
-
-{{ render(controller('FDCMarcheDuFilmBundle:Transverse:header')) }}
+{{ render(controller('FDCMarcheDuFilmBundle:Transverse:header', { 'routeName': app.request.get('_route')})) }}
 
 {% block main %}{% endblock main %}
 
