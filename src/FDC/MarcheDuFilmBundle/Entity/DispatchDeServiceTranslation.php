@@ -31,13 +31,6 @@ class DispatchDeServiceTranslation
     protected $description;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="show_contact_block", type="boolean", nullable=true)
-     */
-    protected $showContactBlock = false;
-
-    /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
@@ -94,26 +87,6 @@ class DispatchDeServiceTranslation
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getShowContactBlock()
-    {
-        return $this->showContactBlock;
-    }
-
-    /**
-     * @param $showContactBlock
-     *
-     * @return $this
-     */
-    public function setShowContactBlock($showContactBlock)
-    {
-        $this->showContactBlock = $showContactBlock;
 
         return $this;
     }
