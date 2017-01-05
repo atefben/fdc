@@ -30,7 +30,7 @@
                                 </a>
                             </div>
                         {% endfor %}
-                        {% if serviceContent.showContactBlock %}
+                        {% if serviceContent.contactTitle is not null and serviceContent.contactDescription is not null and serviceContent.contactSeeMoreUrl is not null %}
                             <div class="articles lastServicesArticle">
                                 <div class="articles-content">
                                     <div class="lastArticle">
