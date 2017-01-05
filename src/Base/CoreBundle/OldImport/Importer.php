@@ -829,7 +829,7 @@ class Importer
 
                 $mediaImage
                     ->setTheme($this->defaultTheme)
-                    ->setDisplayedAll(true)
+                    ->setDisplayedAll(false)
                     ->setPublishedAt($oldMedia->getPublishFor())
                     ->setCreatedAt($oldMedia->getCreatedAt())
                     ->setUpdatedAt($oldMedia->getUpdatedAt())
