@@ -3,7 +3,6 @@
 namespace FDC\MarcheDuFilmBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class TransverseController extends Controller
 {
