@@ -54,7 +54,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         if ($input->getOption('page')) {
             $this->firstResult = ((int)$input->getOption('page') - 1) * $this->maxResults;
         }
-
         if ($input->getOption('persons')) {
             if ($input->getOption('count')) {
                 $count = $this->importPersonImagesCount();
@@ -167,6 +166,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         }
         $bar->finish();
         $this->output->writeln('');
+        $this->finalizeImport();
     }
 
     private function importPersonImagesCount()
@@ -278,6 +278,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         }
         $bar->finish();
         $this->output->writeln('');
+        $this->finalizeImport();
     }
 
     protected function importFilmImagesCount()
@@ -326,5 +327,18 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         }
 
         return $directory;
+    }
+
+    private function finalizeImport()
+    {
+        $sql = 'update media__media m ' .
+            'INNER join old_FILM_PHOTO p on p.IDPHOTO = m.old_media_photo SET' .
+            ' m.created_at = p.DATECREATION, m.updated_at = p.DATEMODIFICATION';
+        $stmt = $this
+            ->getContainer()
+            ->get('database_connection')
+            ->prepare($sql)
+        ;
+        return $stmt->execute();
     }
 }
