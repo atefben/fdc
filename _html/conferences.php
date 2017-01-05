@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
-          <div class="text-presentation calendar mdf">
+          <div class="text-presentation calendar mdf customClass1Bckg">
             <div class="bigContainer">
               <h3>Calendrier des événements</h3>
             </div>
@@ -40,7 +40,7 @@
                   </div>
                 </div><br>
                 <div class="selector">
-                  <div class="purpleBtn selectbtn confBtn" id="all">Tous</div>
+                  <div class="purpleBtn selectbtn confBtn customClass1" id="all">Tous</div>
                   <div class="selectbtn confBtn" id="b" rel="producers-workshop">Producers Workshop</div>
                   <div class="selectbtn confBtn" id="a" rel="producers-network">Producers Network</div>
                   <div class="selectbtn confBtn" id="c" rel="doc-corner">Doc Corner</div>
@@ -59,7 +59,7 @@
                             <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -83,7 +83,7 @@
                             <div class="conf10">Producers<br>NetWork</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -107,7 +107,7 @@
                             <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -130,7 +130,7 @@
                           <div class="box d events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -153,7 +153,7 @@
                           <div class="box e events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -176,7 +176,7 @@
                           <div class="box f events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -199,7 +199,7 @@
                           <div class="box g events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -230,7 +230,7 @@
                           <div class="box a events">
                             <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -254,7 +254,7 @@
                             <div class="conf10">Producers<br>NetWork</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -278,7 +278,7 @@
                             <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -301,7 +301,7 @@
                           <div class="box d events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -324,7 +324,7 @@
                           <div class="box e events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -347,7 +347,7 @@
                           <div class="box f events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -378,7 +378,7 @@
                           <div class="box a events">
                             <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -402,7 +402,7 @@
                             <div class="conf10">Producers<br>NetWork</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -426,7 +426,7 @@
                             <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -450,7 +450,7 @@
                           <div class="box d events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -473,7 +473,7 @@
                           <div class="box e events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -496,7 +496,7 @@
                           <div class="box f events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -527,7 +527,7 @@
                           <div class="box a events">
                             <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -551,7 +551,7 @@
                             <div class="conf10">Producers<br>NetWork</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -575,7 +575,7 @@
                             <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -599,7 +599,7 @@
                           <div class="box d events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -622,7 +622,7 @@
                           <div class="box e events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -645,7 +645,7 @@
                           <div class="box f events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -676,7 +676,7 @@
                           <div class="box a events">
                             <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -700,7 +700,7 @@
                             <div class="conf10">Producers<br>NetWork</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -724,7 +724,7 @@
                             <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -748,7 +748,7 @@
                           <div class="box d events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -771,7 +771,7 @@
                           <div class="box e events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -794,7 +794,7 @@
                           <div class="box f events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -825,7 +825,7 @@
                           <div class="box a events">
                             <div class="conf10">Producers<br>Workshop</div>
                             <div class="conf60">
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -849,7 +849,7 @@
                             <div class="conf10">Producers<br>NetWork</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -873,7 +873,7 @@
                             <div class="conf10">Doc Corner</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -897,7 +897,7 @@
                           <div class="box d events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -920,7 +920,7 @@
                           <div class="box e events"><div class="conf10">Next</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>
@@ -943,7 +943,7 @@
                           <div class="box f events"><div class="conf10">Goes to Cannes</div>
                             <div class="conf60">
                               <h6 class="conf60title">Producers Workshop</h6>
-                              <span>Breakfast Meeting</span>
+                              <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
                               <hr>

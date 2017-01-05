@@ -26,7 +26,7 @@
       <div class="greyBckg">
         <div class="bigContainer">      
             <ul class="tabs tabsMargin">
-              <li class="active thirdTab" rel="tab1"><h4 class="redActive">Sales agents</h4>Le Lorem Ipsum est simplement du faux texte</li>
+              <li class="active thirdTab" rel="tab1"><h4 class="redActive customClassRed">Sales agents</h4>Le Lorem Ipsum est simplement du faux texte</li>
               <li class="thirdTab" rel="tab2"><h4 class="redActive">Festivals</h4>Le Lorem Ipsum est simplement du faux texte</li>
               <li class="thirdTab" rel="tab3"><h4 class="redActive">Specialized organisations</h4>Le Lorem Ipsum est simplement du faux texte</li>
             </ul>

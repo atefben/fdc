@@ -32,7 +32,7 @@
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
                             <div class="conf70">
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
                               <div class="confPeople">
@@ -41,7 +41,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Bernardo Arellano de la Cruz</h6>
+                                    <h6 class="customClass1">Bernardo Arellano de la Cruz</h6>
                                   </div>
                                   <div class="name">
                                     <p>FUEGO NEGRO AUDIOVISUAL</p>
@@ -50,7 +50,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -59,7 +59,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -68,7 +68,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -77,7 +77,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -86,7 +86,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -95,7 +95,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -104,7 +104,7 @@
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <div class="name">
-                                    <h6>Fanny-Laure Malo</h6>
+                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
                                   </div>
                                   <div class="name">
                                     <p>LA BOITE A FANNY</p>
@@ -130,7 +130,7 @@
                           </div>
                           <div class="box events minBox">
                             <div class="conf70">
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -167,7 +167,7 @@
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
                             <div class="conf70">  
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -233,7 +233,7 @@
                           </div>
                           <div class="box events minBox">
                             <div class="conf70">
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -269,7 +269,7 @@
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
                             <div class="conf70">
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -336,7 +336,7 @@
                           <div class="box events minBox">
                             <div class="conf70">
                               
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -372,7 +372,7 @@
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
                             <div class="conf70">  
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -438,7 +438,7 @@
                           </div>
                           <div class="box events minBox">
                             <div class="conf70">
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -474,7 +474,7 @@
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                           <div class="box events">
                             <div class="conf70">
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -541,7 +541,7 @@
                           <div class="box events minBox">
                             <div class="conf70">
                               
-                              <span>Breakfast Meeting</span><br>
+                              <span class="customClass1">Breakfast Meeting</span><br>
                               <h6 class="confDetails confDetailsTop">Presenté par Eave</h6>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
@@ -579,9 +579,9 @@
                     <img src="img/trombonne.png">
                   </div>
                   <div>
-                    <h6>Téléchargez le programme complet du Producers Workshop</h6>
+                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
                   </div>
-                  <div>
+                  <div class="customClass1">
                     <a href="">
                       <img src="img/boutonDLRond.png">
                     </a>

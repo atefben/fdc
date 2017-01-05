@@ -1,10 +1,10 @@
-<div class="text-presentation producersWorkshop mdf">
+<div class="text-presentation producersWorkshop mdf customClass1Bckg">
 	<h3>Producers Workshop</h3>
   	<div class="subNavigation">
       <nav>
         <ul class="main">
           <li>
-            <a href="programmation.php" class="active">Accueil</a>
+            <a href="programmation.php" class="active customClass1">Accueil</a>
           </li>
           <li>
             <a href="conferences.php">conférences</a>

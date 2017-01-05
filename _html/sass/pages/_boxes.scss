@@ -214,13 +214,23 @@
 
 #contact-box {
   z-index: 1000!important;
+  position: relative;
+}
+
+.backgroundImg {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  min-height: 660px;
 }
 
 .contact-box {
     position: relative;
     width: 100%;
     height: 660px;
-    background: url("/img/plage-cannes.png");
+    overflow: hidden;
+    /*background: url("/img/plage-cannes.png");*/
     background-size: 100% 100%;
     background-repeat: no-repeat;
 
@@ -231,6 +241,7 @@
 
     .contact-details {
       background: white;
+      position: relative;
       width: 309px;
       height: 580px;
       float: right;

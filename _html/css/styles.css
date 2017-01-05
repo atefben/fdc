@@ -21646,7 +21646,7 @@ body:not(.tablette) .webtv #live .img {
   -moz-box-shadow: 0px 10px 60px -6px rgba(0, 0, 0, 0.65);
   box-shadow: 0px 10px 60px -6px rgba(0, 0, 0, 0.65);
 }
-.accredidationsMessage div:first-child {
+.accredidationsMessage .accredMsg {
   width: 90%;
   height: 90px;
   float: left;
@@ -21660,11 +21660,11 @@ body:not(.tablette) .webtv #live .img {
   letter-spacing: 1px;
 }
 @media screen and (max-width: 1279px) {
-  .accredidationsMessage div:first-child {
+  .accredidationsMessage .accredMsg {
     font-size: 72%;
   }
 }
-.accredidationsMessage div:nth-child(2) {
+.accredidationsMessage .accredRegister {
   width: 10%;
   height: 90px;
   float: left;
@@ -21678,20 +21678,58 @@ body:not(.tablette) .webtv #live .img {
   text-align: center;
 }
 @media screen and (max-width: 1279px) {
-  .accredidationsMessage div:nth-child(2) {
+  .accredidationsMessage .accredRegister {
     font-size: 80%;
   }
 }
-.accredidationsMessage div:nth-child(2) a {
+.accredidationsMessage .accredRegister a {
   color: white;
   text-decoration: none;
   width: 100%;
   height: 90px;
 }
+.accredidationsMessage .noAvail {
+  width: 100%;
+  height: 90px;
+  float: left;
+  text-align: center;
+  background: #f8f8f8;
+  color: white;
+  text-transform: normal;
+  line-height: 100px;
+  color: #505050;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+@media screen and (max-width: 1279px) {
+  .accredidationsMessage .noAvail {
+    font-size: 72%;
+  }
+}
+.accredidationsMessage .pricesNoavail {
+  background: #ECECEC;
+}
+
+.articlesOverlay {
+  display: block;
+  position: absolute;
+  background-color: #ECECEC;
+  width: 100%;
+  height: 200px;
+  margin-left: 0% !important;
+  overflow: hidden !important;
+  float: left;
+  opacity: .7;
+  z-index: 1;
+}
 
 .pricesContainer {
   height: 200px;
   overflow: hidden;
+}
+.pricesContainer .articles {
+  position: relative;
 }
 
 .accreditations {
@@ -21774,6 +21812,12 @@ body:not(.tablette) .webtv #live .img {
     left: -128px;
   }
 }
+.accreditations .pricesNoavail span, .accreditations .pricesNoavail h6 {
+  color: #cdcdcd !important;
+}
+.accreditations .pricesNoavail img {
+  opacity: 0.3;
+}
 .accreditations .textWrapper {
   text-align: center;
   text-transform: uppercase;
@@ -21802,7 +21846,7 @@ body:not(.tablette) .webtv #live .img {
   height: 170px;
   padding: 50px 0px 30px 0px;
   background: #0e5554;
-  border-top: 2px solid #5cb8b8;
+  border-top: 1px solid #5cb8b8;
 }
 @media screen and (max-width: 1280px) {
   .plusPrices {
@@ -23205,13 +23249,23 @@ ul.tabs .quarterTab h4 {
 /* BOX CONTACT */
 #contact-box {
   z-index: 1000 !important;
+  position: relative;
+}
+
+.backgroundImg {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  min-height: 660px;
 }
 
 .contact-box {
   position: relative;
   width: 100%;
   height: 660px;
-  background: url("/img/plage-cannes.png");
+  overflow: hidden;
+  /*background: url("/img/plage-cannes.png");*/
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -23221,6 +23275,7 @@ ul.tabs .quarterTab h4 {
 }
 .contact-box .contact-details {
   background: white;
+  position: relative;
   width: 309px;
   height: 580px;
   float: right;

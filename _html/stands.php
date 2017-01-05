@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-        <div class="text-presentation producersWorkshop opportunites mdf">
+        <div class="text-presentation producersWorkshop opportunites mdf customClass2Bckg">
           <h3>Stands</h3>
             <div class="subNavigation">
               <nav>
@@ -33,7 +33,7 @@
                     <a href="partenaires.php">partenaires</a>
                   </li>
                   <li>
-                    <a href="opportunites-pub.php" class="active">Opportunités publicitaires</a>
+                    <a href="opportunites-pub.php" class="active customClass2">Opportunités publicitaires</a>
                   </li>
                 </ul>
                </nav>
@@ -44,8 +44,8 @@
           <div class="text-presentation boxes stands">
               <h3>Votre stand au coeur<br>du Marché du Film</h3>
               <h5>Simplifiez votre travail et celui de vos partenaires en installant votre société en plein cœur du Marché. Nos stands sont situés au niveau du Riviera, au Lérins et dans le Palais. Vous profiterez ainsi de la proximité des salles de projections, du business center, des bars et de la Plage des Palmes … </h5>
-              <h5>Contactez nous pour plus de détails : <a href="mailto:sales@festival-cannes.fr">sales@festival-cannes.fr</a></h5>
-              <h5>Plus d'infos sur le Marina Club <a href="">ici</a>. </h5>
+              <h5>Contactez nous pour plus de détails : <a href="mailto:sales@festival-cannes.fr" class="customClass1">sales@festival-cannes.fr</a></h5>
+              <h5>Plus d'infos sur le Marina Club <a href="" class="customClass1">ici</a>. </h5>
           </div>
         </div>
         <div class="whiteBckg">
@@ -67,7 +67,7 @@
                           </div>
                       </div>
                       <div class="tabBox">
-                          <span>stands du palais</span>
+                          <span class="customClass2">stands du palais</span>
                           <h5>à partir de <span class="fromPrice">4500 euros</span></h5>
                         <div class="tabContent">directors and talents from all continents: S enabling her to enroll cutting-edge writers, directors and talents from all continents: Sam Garbarski, Nabil Ben Yadir, Mahamat-Saleh Haroun, Nathalie Borgers, Nic Balthazar, Ari Folman, Raoul Peck, Diego Martinez Vignatti, Miel Van Hoogenbemt, Peter Brosens and Jessica Woodworth, Solange Cicurel. She is a graduate of NYU.</div>
                           <input type="checkbox" class="read-more-state" id="post-1" style="opacity:0;"/>
@@ -93,7 +93,7 @@
                               </div>       
                             </div>
                             <i class='icon icon_flecheGauche opportuniteArrow'></i>
-                            <label for="post-1" class="read-more-trigger"><a href=""><div  class="blueBtn">Réserver</div></a></label>  
+                            <label for="post-1" class="read-more-trigger"><a href=""><div  class="blueBtn customClass2">Réserver</div></a></label>  
                       </div>     
                     </div>
                     <div class="minTab">
@@ -111,7 +111,7 @@
                           </div>
                       </div>
                       <div class="tabBox">
-                        <span>sarah calderon</span>
+                        <span class="customClass2">sarah calderon</span>
                         <h5>à partir de <span class="fromPrice">4500 euros</span></h5>
                         <div class="tabContent">Diana Elbaum has produced a wide range of award-winning films since becoming a producer in 1989, initially in advertising and then in motion pictures. Her films span all genres and cultures and have received critical acclaim on all continents. She is known for masterfully bringing together international talent and financing. Diana is deeply committed to growing Europe’s film industry and, to this effect, devotes time to EAVE training young film producers. In 2009 she received the Eurimages Award, awarded to producers who play an active role in European co-productions. In 1989, Diana founded her production company, Entre Chien et Loup, which has produced more than 90 films, including: Thomas in Love, The Rashevski Tango, La Raison du Plus Faible, Daratt, Irina Palm, La Marea, Les Barons, Rapt, Winds of Sand, Women of Rock, Quartier Lointain, A Screaming Man, The Congress, Tu veux ou tu veux pas, Brabançonne, Bethlehem, La Marche, Un moment d’égarement, Elle, Nos Femmes, La Tierra Roja, etc. Diana Elbaum is also the co-owner of Liaison Cinématographique, a Paris based production company. In 2009, with Sébastien Delloye, she initiated the EP2C Workshop, a project based workshop mainly designed for producers and dedicated to post-production management. Her work and curiosity have taken her around the world several times, enabling her to enroll cutting-edge writers, directors and talents from all continents: Sam Garbarski, Nabil Ben Yadir, Mahamat-Saleh Haroun, Nathalie Borgers, Nic Balthazar, Ari Folman, Raoul Peck, Diego Martinez Vignatti, Miel Van Hoogenbemt, Peter Brosens and Jessica Woodworth, Solange Cicurel. She is a graduate of NYU.</div>
                       <input type="checkbox" class="read-more-state" id="post-2" style="opacity:0;"/>
@@ -128,12 +128,12 @@
                           </div>       
                         </div> 
                             <i class='icon icon_flecheGauche opportuniteArrow'></i>
-                            <label for="post-2" class="read-more-trigger"><a href=""><div  class="blueBtn">Réserver</div></a></label>  
+                            <label for="post-2" class="read-more-trigger"><a href=""><div  class="blueBtn customClass2">Réserver</div></a></label>  
                       </div>     
                     </div>
                     <div class="minTab nopicTab">
                       <div class="tabBox">
-                        <span>entre chien et loup (belgium)</span>
+                        <span class="customClass2">entre chien et loup (belgium)</span>
                         <h5>à partir de <span class="fromPrice">4500 euros</span></h5>
                         <div class="tabContent">Diana Elbaum has produced a wide range of award-winning films since becoming a producer in 1989, initially in advertising and then in motion pictures. Her films span all genres and cultures and have received critical acclaim on all continents. She is known for masterfully bringing together international talent and financing. Diana is deeply committed to growing Europe’s film industry and, to this effect, devotes time to EAVE training young film producers. In 2009 she received the Eurimages Award, awarded to producers who play an active role in European co-productions. In 1989, Diana founded her production company, Entre Chien et Loup, which has produced more than 90 films, including: Thomas in Love, The Rashevski Tango, La Raison du Plus Faible, Daratt, Irina Palm, La Marea, Les Barons, Rapt, Winds of Sand, Women of Rock, Quartier Lointain, A Screaming Man, The Congress, Tu veux ou tu veux pas, Brabançonne, Bethlehem, La Marche, Un moment d’égarement, Elle, Nos Femmes, La Tierra Roja, etc. Diana Elbaum is also the co-owner of Liaison Cinématographique, a Paris based production company. In 2009, with Sébastien Delloye, she initiated the EP2C Workshop, a project based workshop mainly designed for producers and dedicated to post-production management. Her work and curiosity have taken her around the world several times, enabling her to enroll cutting-edge writers, directors and talents from all continents: Sam Garbarski, Nabil Ben Yadir, Mahamat-Saleh Haroun, Nathalie Borgers, Nic Balthazar, Ari Folman, Raoul Peck, Diego Martinez Vignatti, Miel Van Hoogenbemt, Peter Brosens and Jessica Woodworth, Solange Cicurel. She is a graduate of NYU.</div>
                       <input type="checkbox" class="read-more-state" id="post-3" style="opacity:0;" />
@@ -151,7 +151,7 @@
                           </div>       
                         </div> 
                         <i class='icon icon_flecheGauche opportuniteArrow'></i>
-                        <label for="post-3" class="read-more-trigger"><a href=""><div  class="blueBtn">Réserver</div></a></label>  
+                        <label for="post-3" class="read-more-trigger"><a href=""><div  class="blueBtn customClass2">Réserver</div></a></label>  
                       </div>     
                     </div>
                 </div>

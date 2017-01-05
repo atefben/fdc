@@ -18,7 +18,7 @@
             <h3>Plan du site</h3>
             <div>
               <div class="thirdSection">
-                <h4>Édition 2017</h4>
+                <h4 class="customClass1">Édition 2017</h4>
                 <hr>
                 <ul>
                   <li>présentation</li>
@@ -42,7 +42,7 @@
                 <hr class="greenHr">
               </div>
               <div class="thirdSection">
-                <h4 class="goldColor">Qui sommes-nous ?</h4>
+                <h4 class="goldColor customClass3">Qui sommes-nous ?</h4>
                 <hr class="goldHr">
                 <ul>
                   <li>producers workshop</li>
@@ -68,7 +68,7 @@
                 </ul>     
               </div>
               <div class="thirdSection">
-                <h4 class="goldColor">Presse</h4>
+                <h4 class="goldColor customClass3">Presse</h4>
                 <hr class="goldHr">
                 <ul>
                   <li>producers workshop</li>
@@ -80,7 +80,7 @@
                 </ul>        
               </div>
               <div class="thirdSection">
-                <h4 class="goldColor">Informations utiles</h4>
+                <h4 class="goldColor customClass3">Informations utiles</h4>
                 <hr class="goldHr">
               </div>
             </div>

@@ -12,12 +12,13 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">  
-      <div class="accredidationsMessage">
-        <a href="">
-        <div>Les accréditations en ligne fermeront le 26 avril 2017  -  Participez à la 70ème édition du Marché du Film !  10 au 17 mai 2017</div>
-        <div>S'inscrire</div></a>
+      <div class="accredidationsMessage customClass5Bckg">
+        
+        <div class="accredMsg">Les accréditations en ligne fermeront le 26 avril 2017  -  Participez à la 70ème édition du Marché du Film !  10 au 17 mai 2017</div>
+        <a href=""><div class="accredRegister">S'inscrire</div></a>
+        <div class="noAvail">Les accréditations pour la 70ème édition du Marché du Film ne sont plus disponibles !</div>
       </div>  
-      <div class="text-presentation accredidationsDetails greyBckg mdf">
+      <div class="text-presentation accredidationsDetails greyBckg mdf customClass5">
         <h3>Le badge du marché</h3>
       </div>
         <div class="greyBckg">  
@@ -88,7 +89,7 @@
             </ul>
             </div>
           </div>
-          <div class="accreditations">
+          <div class="accreditations customClass5Bckg">
             <div class="bigContainer">
               <h3>Pensez à prendre <br>vos places avant le 26 avril !</h3>
               <div class="pricesContainer">
@@ -102,7 +103,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="articles">
+                  <div class="articles pricesNoavail">
+                    <div class="articlesOverlay"></div>
                     <div class="articles-content">
                       <div class="textWrapper">
                         <span>Du 27/02 au 29/04</span>

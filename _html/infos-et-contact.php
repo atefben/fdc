@@ -25,7 +25,7 @@
                     <img src="img/julie-bergeron.png">
                   </div>
                   <div class="textWrapper">
-                    <h6>JULIE BERGERON</h6>
+                    <h6 class="customClass1">JULIE BERGERON</h6>
                     <span>head of industry programs</span>
                   </div>
                 </div>
@@ -36,8 +36,8 @@
                     <img src="img/clara-massot.png">
                   </div>
                   <div class="textWrapper">
-                    <h6>clara massot</h6>
-                    <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com">clara.massot@gmail.com</a></span>
+                    <h6 class="customClass1">clara massot</h6>
+                    <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com" class="customClass1">clara.massot@gmail.com</a></span>
                   </div>
                 </div>
               </div>
@@ -47,8 +47,8 @@
                     <img src="img/kevin-montero.png">
                   </div>
                   <div class="textWrapper">
-                    <h6 class="littleMargin">KEVIN MONTERO deschamps</h6>
-                    <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com">km.deschamps@gmail.com</a></span>
+                    <h6 class="littleMargin customClass1">KEVIN MONTERO deschamps</h6>
+                    <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com" class="customClass1">km.deschamps@gmail.com</a></span>
                   </div>
                 </div>
               </div>

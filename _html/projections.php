@@ -17,15 +17,15 @@
           <div class="text-presentation projection">
             <h3>Vos projections<br>au Marché du Film</h3>
             <h5>Avant de commencer votre demande de projection en ligne, merci de lire notre GUIDE DES PROJECTIONS et notre GUIDE TECHNIQUE qui vous donneront toutes les informations nécessaires.<h5>
-            <h5>Les demandes de projection peuvent être faites par les sociétés inscrites au Marché à partir de début février. L’accès aux demandes se fait sur le site dans le compte de la société, accessible avec adresse email et mot de passe. Les demandes sont traitées par ordre d’arrivée. Les films produits avant le 1er janvier 2014 et ceux ayant déjà été projetés à un précédent Marché du Film ne sont pas acceptés. Les courts-métrages de moins de 35 minutes doivent être inscrits au Short Film Corner sur <a href="#">www.cannescourtmetrage.com</a>.</h5> 
+            <h5>Les demandes de projection peuvent être faites par les sociétés inscrites au Marché à partir de début février. L’accès aux demandes se fait sur le site dans le compte de la société, accessible avec adresse email et mot de passe. Les demandes sont traitées par ordre d’arrivée. Les films produits avant le 1er janvier 2014 et ceux ayant déjà été projetés à un précédent Marché du Film ne sont pas acceptés. Les courts-métrages de moins de 35 minutes doivent être inscrits au Short Film Corner sur <a href="#" class="customClass1">www.cannescourtmetrage.com</a>.</h5> 
               <div class="programme">
                 <div>
                   <img src="img/trombonne.png">
                 </div>
                 <div>
-                  <h6>Le programme des projections</h6>
+                  <h6 class="customClass1">Le programme des projections</h6>
                 </div>
-                <div>
+                <div class="customClass1">
                   <a href="">
                     <img src="img/boutonDLRond.png">
                   </a>

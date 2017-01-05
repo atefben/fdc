@@ -13,13 +13,13 @@
     <?php include('header.html'); ?>
     <div id="main" class="home loading">    
     <div id="main" class="home loading">
-      <div class="text-presentation producersWorkshop presses mdf">
+      <div class="text-presentation producersWorkshop presses mdf customClass3Bckg">
           <h3>Presse</h3>
             <div class="subNavigation">
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="communiques.php" class="active" >Communiqués de presse</a>
+                    <a href="communiques.php" class="active customClass3">Communiqués de presse</a>
                   </li>
                   <li>
                     <a href="retombees-presse.php">Retombées presse</a>
@@ -44,9 +44,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -55,9 +55,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -66,9 +66,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -77,9 +77,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -88,9 +88,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -99,9 +99,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -110,9 +110,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -121,9 +121,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
                 <div class="articles">
@@ -132,9 +132,9 @@
                       <a href="">Lire l'article</a>
                     </div>
                   <div class="articles-content">
-                    <span>publié le <span class="article-date">26 jun 2016</span></span>
+                    <span>publié le <span class="article-date customClass4">26 jun 2016</span></span>
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
-                    <span>Par <span class="article-date">denis lemarchal - le monde</span></span>
+                    <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
                 </div>
               </div>

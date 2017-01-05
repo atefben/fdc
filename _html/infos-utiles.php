@@ -12,7 +12,7 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-        <div class="text-presentation infosUtiles mdf">
+        <div class="text-presentation infosUtiles mdf customClass3Bckg">
             <h3>Informations Utiles</h3>
         </div>
         <div class="bigContainer">
@@ -73,7 +73,7 @@
                           <div class="content">
                             <p>Chaque année, vous êtes environ 34 % de professionnels à participer au Marché du Film pour la première fois. Pour optimiser votre séjour, suivez notre programme d'aide en 3 points.</p> 
                             <p>Consultez notre <a href="#">guide</a> spécialement conçu pour une première fois au Marché du Film.</p>
-                            <p>Donnez-vous un aperçu de l'événement à travers notre <a href="#">vidéo de présentation</a> Découvrez également une <a href="#">présentation du Marché du Film par Jérôme Paillard, le Directeur Délégué du Marché du Film</a>.</p> 
+                            <p>Donnez-vous un aperçu de l'événement à travers notre <a href="#" class="customClass1">vidéo de présentation</a> Découvrez également une <a href="#" class="customClass1">présentation du Marché du Film par Jérôme Paillard, le Directeur Délégué du Marché du Film</a>.</p> 
                             <p>Prenez garde aux prestataires indélicats!</p>
                           </div>
                         </li>

@@ -12,13 +12,13 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-      <div class="text-presentation producersWorkshop presses">
+      <div class="text-presentation producersWorkshop presses customClass3Bckg">
           <h3>Qui sommes nous ?</h3>
             <div class="subNavigation">
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="historique.php" class="active" >Historique</a>
+                    <a href="historique.php" class="active customClass3Bckg" >Historique</a>
                   </li>
                   <li>
                     <a href="equipe.php">L'Equipe</a>

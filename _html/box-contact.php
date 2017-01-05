@@ -1,4 +1,5 @@
 <div class="contact-box" id="contact-box">
+	<img src="/img/plage-cannes.png" class="backgroundImg">
     <div class="contact-details">
         <span class="informations">informations pratiques</span>
         <span class="getTo">Se rendre à Cannes</span>
