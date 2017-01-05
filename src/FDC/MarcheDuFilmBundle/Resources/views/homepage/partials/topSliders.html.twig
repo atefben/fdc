@@ -15,10 +15,10 @@
 <div id="owl-second" class="owl-carousel owl-theme">
     {% for item in slider %}
         {% set translations = item.translatable.image.findTranslationByLocale(app.request.locale) %}
-        <div class="item">
+        <div class="item" onClick="window.open('{{ item.url }}');">
             <div class="owl-Title">
-                <a href="{{ item.url }}"><h2>{{ item.title|raw }}</h2></a>
-                <a href="{{ item.url }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt=""></a>
+                <h2>{{ item.title|raw }}</h2>
+                <img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt="">
             </div>
             <img class="fitImg" src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}">
         </div>
