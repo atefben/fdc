@@ -628,6 +628,25 @@ form:
                 title: Nom du service
                 description: Description du service
                 url: Lien de redirection du service
+            facebook_url: URL Facebook
+            twitter_url: URL Twitter
+            youtube_url: URL Youtube
+            header_banner: Image bannière publicitaire (728x90)
+            header_banner_url: URL redirection publicitaire
+            title: Titre
+            content_block_dispatch_du_service: Bloc de contenu
+            description: Chapô
+            show_contact_block: Afficher le bloc de contact
+            contact_title: Titre du bloc de contact
+            contact_description: Description du bloc de contact
+            contact_see_more_url: Redirection du bloc de contact
+            dispatch_de_service_widget: Bloc de service
+            dispatch_de_service_widget_title: Titre du service
+            dispatch_de_service_widget_sub_title: Sous titre du service
+            dispatch_de_service_widget_description: Description du service
+            dispatch_de_service_widget_see_more_url: Redirection du service
+            dispatch_de_service_widget_helper_widgets: Helper du service
+            header_image: Image du service
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

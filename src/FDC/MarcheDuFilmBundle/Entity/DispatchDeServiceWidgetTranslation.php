@@ -42,13 +42,6 @@ class DispatchDeServiceWidgetTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $imageUrl;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
     protected $seeMoreUrl;
 
     /**
@@ -107,26 +100,6 @@ class DispatchDeServiceWidgetTranslation
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->imageUrl;
-    }
-
-    /**
-     * @param $imageUrl
-     *
-     * @return $this
-     */
-    public function setImageUrl($imageUrl)
-    {
-        $this->imageUrl = $imageUrl;
 
         return $this;
     }

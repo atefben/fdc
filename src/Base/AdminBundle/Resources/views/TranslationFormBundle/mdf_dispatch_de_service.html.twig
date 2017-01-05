@@ -21,7 +21,7 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    Content block
+                                    {{ 'form.mdf.label.content_block_dispatch_du_service'|trans }}
                                 </h4>
                             </div>
                             <div class="box-body">
@@ -48,7 +48,7 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     <div class="form-group">
                                         <label class="control-label">
-                                            {{ 'form.label.home_content_title'|trans }}
+                                            {{ 'form.mdf.label.title'|trans }}
                                         </label>
                                         {% if form.children.fr.vars.value is not null %}
                                             <div>
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">
-                                            {{ 'form.label.home_content_description'|trans }}
+                                            {{ 'form.mdf.label.description'|trans }}
                                         </label>
                                         {% if form.children.fr.vars.value is not null %}
                                             <div>
@@ -78,7 +78,7 @@
                                     {% for widget in form.parent.children.dispatchDeServiceWidgets.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'dispatch_de_service_widget_type' %}
-                                                <h4><strong>{{ 'form.widget.dispatch_de_service_widget'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
@@ -90,10 +90,10 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                {{ 'form.dispatch_de_service_widget.helper_widgets'|trans }}<br/>
+                                {{ 'form.mdf.label.dispatch_de_service_widget_helper_widgets'|trans }}<br/>
                                 <a class="btn btn-primary btn-add-base-widget"
                                    data-prototype="{{ form_widget(form.parent.children.dispatchDeServiceWidgets.vars.prototypes.dispatch_de_service_widget_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.widget.dispatch_de_service_widget'|trans }}</a>
+                                            class="icon-plus"></i>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</a>
                             </div>
                         </div>
                     {% else %}
@@ -103,7 +103,7 @@
                                     {% for widget in form.parent.children.dispatchDeServiceWidgets.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'dispatch_de_service_widget_type' %}
-                                                <h4><strong>{{ 'form.widget.dispatch_de_service_widget'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
@@ -126,10 +126,10 @@
                                         {% for widget in form.parent.children.dispatchDeServiceWidgets.children %}
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'dispatch_de_service_widget_type' %}
-                                                    <h4><strong>{{ 'form.widget.dispatch_de_service_widget'|trans }}</strong></h4>
+                                                    <h4><strong>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_title'|trans }}
+                                                            {{ 'form.mdf.label.dispatch_de_service_widget_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -139,7 +139,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_sub_title'|trans }}
+                                                            {{ 'form.mdf.label.dispatch_de_service_widget_sub_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -149,7 +149,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_description'|trans }}
+                                                            {{ 'form.mdf.label.dispatch_de_service_widget_description'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -159,17 +159,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_image_url'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.imageUrl }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.label.dispatch_de_service_widget_see_more_url'|trans }}
+                                                            {{ 'form.mdf.label.dispatch_de_service_widget_see_more_url'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}

@@ -60,21 +60,25 @@ class MdfHeaderFooterAdmin extends Admin
                         ),
                     ),
                     'footerFacebookUrl'          => array(
-                        'label'              => 'form.label.facebook_url',
+                        'label'              => 'form.mdf.label.facebook_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'footerTwitterUrl'          => array(
-                        'label'              => 'form.label.twitter_url',
+                        'label'              => 'form.mdf.label.twitter_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'footerYoutubeUrl'          => array(
-                        'label'              => 'form.label.youtube_url',
+                        'label'              => 'form.mdf.label.youtube_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'headerBannerUrl'          => array(
+                        'label'              => 'form.mdf.label.header_banner_url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    )
                 ),
             ))
             ->add('headerBanner', 'sonata_type_model_list', array(
-                'label' => 'form.label.header_banner',
+                'label' => 'form.mdf.label.header_banner',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true

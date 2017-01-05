@@ -6,6 +6,8 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
+
 
 class MdfDispatchDeServiceAdmin extends Admin
 {
@@ -25,6 +27,11 @@ class MdfDispatchDeServiceAdmin extends Admin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 
     /**
@@ -60,28 +67,30 @@ class MdfDispatchDeServiceAdmin extends Admin
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.label.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
-                        'label'              => 'form.label.description',
+                        'field_type' => 'ckeditor',
+                        'label'              => 'form.mdf.label.description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'showContactBlock'  => array(
-                        'label'              => 'form.label.show_contact_block',
+                        'label'              => 'form.mdf.label.show_contact_block',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),
                     'contactTitle'          => array(
-                        'label'              => 'form.label.contact_title',
+                        'label'              => 'form.mdf.label.contact_title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'contactDescription'          => array(
-                        'label'              => 'form.label.contact_description',
+                        'field_type' => 'ckeditor',
+                        'label'              => 'form.mdf.label.contact_description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'contactSeeMoreUrl'          => array(
-                        'label'              => 'form.label.contact_see_more_url',
+                        'label'              => 'form.mdf.label.contact_see_more_url',
                         'translation_domain' => 'BaseAdminBundle'
                     )
                 )

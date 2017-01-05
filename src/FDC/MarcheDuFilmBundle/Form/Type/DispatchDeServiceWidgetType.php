@@ -63,29 +63,26 @@ class DispatchDeServiceWidgetType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.label.dispatch_de_service_widget_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subtitle'          => array(
-                        'label'              => 'form.label.subTitle',
+                        'label'              => 'form.mdf.label.dispatch_de_service_widget_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
-                        'label'              => 'form.label.description',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
-                    'imageUrl'          => array(
-                        'label'              => 'form.label.imageUrl',
+                        'field_type' => 'ckeditor',
+                        'label'              => 'form.mdf.label.dispatch_de_service_widget_description',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'seeMoreUrl'          => array(
-                        'label'              => 'form.label.seeMoreUrl',
+                        'label'              => 'form.mdf.label.dispatch_de_service_widget_see_more_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_image',
+                'label' => 'form.mdf.label.header_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),

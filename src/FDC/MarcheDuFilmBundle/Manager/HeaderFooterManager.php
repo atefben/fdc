@@ -21,8 +21,12 @@ class HeaderFooterManager
 
     public function getHeaderBanner() {
         return $this->em
-            ->getRepository(HeaderFooter::class)
-            ->findAll();
+            ->getRepository(HeaderFooterTranslation::class)
+            ->findOneBy(
+                [
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                ]
+            );
     }
 
     public function getFooterUrls() {
