@@ -50,7 +50,11 @@
     <div id="prehome"></div>
 </div>
 
-{{ render(controller('FDCMarcheDuFilmBundle:Transverse:header')) }}
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') %}
+{% set params = route_params|merge(app.request.query.all) %}
+
+{{ render(controller('FDCMarcheDuFilmBundle:Transverse:header', { 'routeName': app.request.get('_route'), 'routeParams': params })) }}
 
 {% block main %}{% endblock main %}
 

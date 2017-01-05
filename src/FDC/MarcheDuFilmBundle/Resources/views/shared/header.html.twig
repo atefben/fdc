@@ -22,10 +22,13 @@
                 <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
             </li>
             <li class="lang">
-                <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    <li><a href="#">EN</a></li>
-                    <li><a href="#">CHN</a></li>
+                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                        <li>
+                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>
@@ -38,9 +41,11 @@
                 <p class="stick"><a href="/"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
             </div>
             <div id="leaderBoard">
-                <a href="{{ banner.headerBannerUrl }}" target="_blank">
-                    <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
-                </a>
+                {% if banner %}
+                    <a href="{{ banner.headerBannerUrl }}" target="_blank">
+                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
+                    </a>
+                {% endif %}
             </div>
             <div id="sticky-user">
                 <ul class="user-nav">
@@ -48,10 +53,13 @@
                         <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
                     </li>
                     <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            <li><a href="#">EN</a></li>
-                            <li><a href="#">CHN</a></li>
+                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                                <li>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>
@@ -63,13 +71,13 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="/" class="active" >Édition 2017</a>
+                        <a href="/" {% if routeName == 'fdc_marchedufilm_default_index' or routeName == 'fdc_marche_du_film_edition_presentation' %} class="active" {% endif %}>Édition 2017</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}">ACCRÉDITATIONS</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}" {% if routeName == 'fdc_marche_du_film_accreditations' %} class="active" {% endif %}>ACCRÉDITATIONS</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}">SERVICES</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active" {% endif %}>SERVICES</a>
                     </li>
                     <li>
                         <a href="#">QUI SOMMES-NOUS ?</a>
