@@ -36,11 +36,11 @@ class AccreditationWidgetType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.accreditation.widget_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
-                        'label'              => 'form.label.description',
+                        'label'              => 'form.mdf.accreditation.widget_description',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
