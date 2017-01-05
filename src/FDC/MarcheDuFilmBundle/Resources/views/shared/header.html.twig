@@ -2,30 +2,29 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="/">Festival 2017</a>
+                <a href={{ header_fdc_com }}>Festival 2017</a>
             </li>
             <li>
-                <a href="http://www.festival-cannes.com/fr.html" target="_blank">Festival de Cannes</a>
+                <a href="{{ header_fdc_fr }}" target="_blank">Festival de Cannes</a>
             </li>
             <li>
-                <a href="http://www.cinefondation.com/fr/" target="_blank">Cinéfondation</a>
+                <a href="{{ header_cine_fr }}" target="_blank">Cinéfondation</a>
             </li>
             <li>
-                <a href="http://www.cannescourtmetrage.com/fr/" target="_blank">Cannes Court Métrage</a>
+                <a href="{{ header_ccm_fr }}" target="_blank">Cannes Court Métrage</a>
             </li>
             <li>
-                <a href="http://www.marchedufilm.com/fr/" target="_blank" class="active">Marché du film</a>
+                <a href="{{ header_mdf_fr }}" target="_blank" class="active">Marché du film</a>
             </li>
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
             </li>
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
                 <ul class="sub-languages">
                     <li><a href="#">EN</a></li>
-                    <li><a href="#">ES</a></li>
                     <li><a href="#">CHN</a></li>
                 </ul>
             </li>
@@ -43,6 +42,20 @@
                     <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
                 </a>
             </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                    </li>
+                    <li class="lang">
+                        <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                        <ul class="sub-languages">
+                            <li><a href="#">EN</a></li>
+                            <li><a href="#">CHN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div id="navigation">
@@ -50,27 +63,27 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="/" class="active" >Edition 2017</a>
+                        <a href="/" class="active" >Édition 2017</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}">ACCREDITATIONS</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}">ACCRÉDITATIONS</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_services') }}">SERVICES</a>
                     </li>
                     <li>
-                        <a href="equipe.php">QUI SOMMES-NOUS ?</a>
+                        <a href="#">QUI SOMMES-NOUS ?</a>
                     </li>
                     <li>
-                        <a href="presse.php">PRESSE</a>
+                        <a href="#">PRESSE</a>
                     </li>
                     <li>
-                        <a href="infos-utiles.php">INFORMATIONS UTILES</a>
+                        <a href="#">INFORMATIONS UTILES</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
                             <form action="action.php">
-                                <input type="text" name="name" id="searchInput" placeholder="rechercher"/>
+                                <input type="text" name="name" id="searchInput" placeholder="Recherchez"/>
                             </form>
                         </div>
                     </li>
@@ -86,25 +99,23 @@
             <div class="bigContainer">
                 <ul class="tleft">
                     <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
-                    <li><a href="news.php">Actualités</a></li>
+                    <li><a href="#">Actualités</a></li>
                     <li class="seeSub">
-                        <a href="conference.php">
-                            <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
-                            <div class="prog">Programme</div>
-                        </a>
+                        <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
+                        <div class="prog">Programme</div>
                         <ul class="subsubMenu">
-                            <li><a href="projections.php">Projections</a></li>
-                            <li><a href="conferences.php">évenements</a></li>
+                            <li><a href="#">Projections</a></li>
+                            <li><a href="#">Événements</a></li>
                         </ul>
                     </li>
-                    <li class="liMargin"><a href="videos.php">producers workshop</a></li>
-                    <li><a href="videos.php">producers network</a></li>
+                    <li class="liMargin"><a href="#">producers workshop</a></li>
+                    <li><a href="#">producers network</a></li>
                 </ul>
                 <ul class="tright">
-                    <li><a href="conferences.php">Doc corner</a></li>
-                    <li><a href="conferences.php">Next</a></li>
-                    <li><a href="conferences.php">Goes to Cannes</a></li>
-                    <li><a href="">Mixers</a></li>
+                    <li><a href="#">Doc corner</a></li>
+                    <li><a href="#">Next</a></li>
+                    <li><a href="#">Mixers</a></li>
+                    <li><a href="#">Goes to Cannes</a></li>
                 </ul>
             </div>
         </div>

@@ -304,6 +304,7 @@ parameters:
     amazon_remote_file_audio: 'media_audio_direct_upload'
     #satellite
     header_account: 'http://sub.festival-cannes.fr/'
+    header_fdc_com: 'http://www.festival-cannes.com'
     header_fdc_fr: 'http://www.festival-cannes.fr/fr.html'
     header_cine_fr: 'http://www.cinefondation.com/fr/'
     header_ccm_fr: 'http://www.cannescourtmetrage.com/fr/'
