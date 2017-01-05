@@ -168,7 +168,12 @@ class PersonMediaExtension extends Twig_Extension
         $persons = [];
         foreach ($film->getDirectors() as $filmFilmPerson) {
             if ($filmFilmPerson instanceof FilmFilmPerson) {
-                if (in_array($filmFilmPerson->getPerson()->getId(), $persons)) {
+                if ($filmFilmPerson->getPerson()->getDuplicate()) {
+                    $ownerId = $filmFilmPerson->getPerson()->getOwner()->getId();
+                } else {
+                    $ownerId = $filmFilmPerson->getPerson()->getId();
+                }
+                if (in_array($ownerId, $persons)) {
                     continue;
                 }
                 $subMedias = $this->getDirectorFilmMedia($filmFilmPerson->getPerson(), $film, $locale);
@@ -176,11 +181,7 @@ class PersonMediaExtension extends Twig_Extension
                     $subMedias = array_slice($subMedias, 0, 1);
                     $medias = array_merge($medias, $subMedias);
                 }
-                if ($filmFilmPerson->getPerson()->getDuplicate()) {
-                    $persons[] = $filmFilmPerson->getPerson()->getOwner()->getId();
-                } else {
-                    $persons[] = $filmFilmPerson->getPerson()->getId();
-                }
+                $persons[] = $ownerId;
             }
         }
         return $medias;
@@ -229,11 +230,12 @@ class PersonMediaExtension extends Twig_Extension
         }
         if ($image) {
             $image = [[
-                'file'      => $image,
-                'copyright' => $person->getCredits(),
-                'titleVa'   => '',
-                'titleVf'   => '',
-            ]];
+                          'file'      => $image,
+                          'copyright' => $person->getCredits(),
+                          'titleVa'   => '',
+                          'titleVf'   => '',
+                      ],
+            ];
         } else {
             $image = [];
         }
