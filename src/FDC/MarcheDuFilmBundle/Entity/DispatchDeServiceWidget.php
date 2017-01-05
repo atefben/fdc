@@ -26,6 +26,12 @@ class DispatchDeServiceWidget
     protected $id;
 
     /**
+     * @var integer
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $position;
+
+    /**
      * @var MediaMdf
      *
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
@@ -97,5 +103,21 @@ class DispatchDeServiceWidget
         $this->dispatchDeService = $dispatchDeService;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 }

@@ -24,11 +24,7 @@ class DispatchDeServiceManager
     {
         return $this->em
             ->getRepository(DispatchDeServiceWidgetTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+            ->getSortedServices($this->requestStack->getMasterRequest()->get('_locale'));
     }
 
     public function getDispatchDeServiceContent()

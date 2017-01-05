@@ -25,6 +25,7 @@ class DispatchDeService
 
     /**
      * @ORM\OneToMany(targetEntity="DispatchDeServiceWidget", mappedBy="dispatchDeService", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $dispatchDeServiceWidgets;
 

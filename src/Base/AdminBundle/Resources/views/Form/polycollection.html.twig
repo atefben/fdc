@@ -1243,6 +1243,7 @@
     <div class="item base-widget">
         <h4>{{ 'form.mdf.label.dispatch_de_service_widget'|trans }}</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
         {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
