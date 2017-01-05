@@ -13,7 +13,10 @@ class MdfImageDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('image', 'sonata_type_model_list')
+            ->add('image', 'sonata_type_model_list', array(
+                    'required' => true,
+                )
+            )
         ;
     }
 }
