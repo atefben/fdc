@@ -42,9 +42,11 @@ class Importer
     const MEDIA_GALLERY_PHOTOGRAPHER_EYES = 2;
 
     const MEDIA_TYPE_IMAGE = 1;
+    const MEDIA_TYPE_VIDEO = 2;
     const MEDIA_TYPE_AUDIO = 3;
 
     const MEDIA_QUOTIDIEN_AUDIO = 1;
+    const MEDIA_QUOTIDIEN_VIDEO = 1;
 
     const VIDEO_TYPE_FESTIVAL_TV = 1;
 
@@ -90,7 +92,7 @@ class Importer
     public function __construct(ContainerInterface $container, $selfkitAmazonUrl)
     {
         $this->container = $container;
-        $this->selfkitAmazonUrl= $selfkitAmazonUrl;
+        $this->selfkitAmazonUrl = $selfkitAmazonUrl;
     }
 
     /**
@@ -424,9 +426,11 @@ class Importer
     /**
      * @param int $oldMediaId
      * @param string $locale
+     * @param int|null $status
+     * @param boolean $setCorporate
      * @return MediaImage
      */
-    protected function createMediaImageFromOldMedia($oldMediaId, $locale)
+    protected function createMediaImageFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
         $imgTitle = array(
             'fr' => 'photo',
@@ -480,8 +484,10 @@ class Importer
             ->setUpdatedAt($oldMedia->getUpdatedAt())
         ;
 
-        if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
-            $mediaImage->addSite($this->getSiteCorporate());
+        if ($setCorporate) {
+            if (!$mediaImage->getSites()->contains($this->getSiteCorporate())) {
+                $mediaImage->addSite($this->getSiteCorporate());
+            }
         }
 
         $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
@@ -497,11 +503,16 @@ class Importer
 
 
         $mediaImageTranslation
-            ->setStatus($this->getStatusMedia($oldMedia, $locale))
             ->setLegend($oldMediaI18n->getLabel() ?: $imgTitle[$locale])
             ->setCopyright($oldMediaI18n->getCopyright())
             ->setIsPublishedOnFDCEvent(true)
         ;
+
+        if ($status) {
+            $mediaImageTranslation->setStatus($status);
+        } else {
+            $mediaImageTranslation->setStatus($this->getStatusMedia($oldMedia, $locale));
+        }
 
         $media = $mediaImageTranslation->getFile();
         if (!$media) {
@@ -532,9 +543,11 @@ class Importer
     /**
      * @param int $oldMediaId
      * @param string $locale
+     * @param int|null $status
+     * @param boolean $setCorporate
      * @return MediaAudio
      */
-    protected function createMediaAudioFromOldMedia($oldMediaId, $locale)
+    protected function createMediaAudioFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
         $audioTitle = array(
             'fr' => 'audio',
@@ -614,8 +627,10 @@ class Importer
             $mediaAudio->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'audio', $locale));
         }
 
-        if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
-            $mediaAudio->addSite($this->getSiteCorporate());
+        if ($setCorporate) {
+            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
+                $mediaAudio->addSite($this->getSiteCorporate());
+            }
         }
 
         $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($locale);
@@ -630,10 +645,15 @@ class Importer
         }
 
         $mediaAudioTranslation
-            ->setStatus($this->getStatusMedia($oldMedia, $locale))
             ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
             ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
         ;
+
+        if ($status) {
+            $mediaAudioTranslation->setStatus($status);
+        } else {
+            $mediaAudioTranslation->setStatus($this->getStatusMedia($oldMedia, $locale));
+        }
 
         $media = $mediaAudioTranslation->getFile();
         if (!$media) {
@@ -664,9 +684,11 @@ class Importer
     /**
      * @param int $oldMediaId
      * @param string $locale
+     * @param int|null $status
+     * @param boolean $setCorporate
      * @return MediaVideo
      */
-    protected function createMediaVideoFromOldMedia($oldMediaId, $locale)
+    protected function createMediaVideoFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
         $videoTitle = array(
             'fr' => 'video',
@@ -727,8 +749,10 @@ class Importer
             $mediaVideo->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'video', $locale));
         }
 
-        if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
-            $mediaVideo->addSite($this->getSiteCorporate());
+        if ($setCorporate) {
+            if (!$mediaVideo->getSites()->contains($this->getSiteCorporate())) {
+                $mediaVideo->addSite($this->getSiteCorporate());
+            }
         }
 
         $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
@@ -743,11 +767,16 @@ class Importer
         }
 
         $mediaVideoTranslation
-            ->setStatus($this->getStatusMedia($oldMedia, $locale))
             ->setTitle($oldMediaI18n->getLabel() ?: $videoTitle[$locale])
             ->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY)
             ->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY)
         ;
+
+        if ($status) {
+            $mediaVideoTranslation->setStatus($status);
+        } else {
+            $mediaVideoTranslation->setStatus($this->getStatusMedia($oldMedia, $locale));
+        }
 
         $media = $mediaVideoTranslation->getFile();
         if (!$media) {
@@ -864,8 +893,7 @@ class Importer
                 if (!$mediaAudioFilmFilmAssociated) {
                     $mediaAudioFilmFilmAssociated = new MediaAudioFilmFilmAssociated();
                     $mediaAudioFilmFilmAssociated
-                        ->setAssociation($filmFilm)
-                    ;
+                        ->setAssociation($filmFilm);
                     $this->getManager()->persist($mediaAudioFilmFilmAssociated);
                     $mediaAudio->addAssociatedFilm($mediaAudioFilmFilmAssociated);
 
@@ -909,8 +937,7 @@ class Importer
                 if (!$mediaVideoFilmFilmAssociated) {
                     $mediaVideoFilmFilmAssociated = new MediaVideoFilmFilmAssociated();
                     $mediaVideoFilmFilmAssociated
-                        ->setAssociation($filmFilm)
-                    ;
+                        ->setAssociation($filmFilm);
                     $this->getManager()->persist($mediaVideoFilmFilmAssociated);
                     $mediaVideo->addAssociatedFilm($mediaVideoFilmFilmAssociated);
 

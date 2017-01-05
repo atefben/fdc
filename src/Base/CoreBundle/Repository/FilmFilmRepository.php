@@ -2,16 +2,11 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\FilmFilm;
-use Base\CoreBundle\Entity\FilmFilmMediaInterface;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
-
 use Base\CoreBundle\Component\Repository\EntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
+use Base\CoreBundle\Entity\FilmFilm;
 
 /**
  * FilmFilmRepository class.
- *
  * \@extends EntityRepository
  * @author   Antoine Mineau
  * \@company Ohwee
@@ -21,13 +16,13 @@ class FilmFilmRepository extends EntityRepository
     public function getApiFilms($festival, $selection)
     {
         $query = $this->createQueryBuilder('f')
-            ->where('f.festival = :festival')
-            ->setParameter('festival', $festival)
+                      ->where('f.festival = :festival')
+                      ->setParameter('festival', $festival)
         ;
 
         if ($selection !== null) {
             $query = $query->andWhere('f.selection = :selection')
-                ->setParameter('selection', $selection)
+                           ->setParameter('selection', $selection)
             ;
         }
 
@@ -43,23 +38,23 @@ class FilmFilmRepository extends EntityRepository
     public function getApiFilm($id, $festival)
     {
         return $this->createQueryBuilder('f')
-            ->where('f.festival = :festival')
-            ->andWhere('f.id = :id')
-            ->setParameter('festival', $festival)
-            ->setParameter('id', $id)
-            ->getQuery()
-            ->getOneOrNullResult()
+                    ->where('f.festival = :festival')
+                    ->andWhere('f.id = :id')
+                    ->setParameter('festival', $festival)
+                    ->setParameter('id', $id)
+                    ->getQuery()
+                    ->getOneOrNullResult()
             ;
     }
 
     public function getApiFilmTrailers($festival, $locale)
     {
         $qb = $this->createQueryBuilder('f')
-            ->join('f.associatedMediaVideos', 'fa')
-            ->join('fa.mediaVideo', 'mv')
-            ->join('mv.translations', 'mvt')
-            ->where('mv.displayedTrailer = :displayedTrailer')
-            ->setParameter('displayedTrailer', true)
+                   ->join('f.associatedMediaVideos', 'fa')
+                   ->join('fa.mediaVideo', 'mv')
+                   ->join('mv.translations', 'mvt')
+                   ->where('mv.displayedTrailer = :displayedTrailer')
+                   ->setParameter('displayedTrailer', true)
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
@@ -72,13 +67,13 @@ class FilmFilmRepository extends EntityRepository
     public function getApiTrailers($id, $festival, $locale)
     {
         $qb = $this->createQueryBuilder('f')
-            ->join('f.associatedMediaVideos', 'fa')
-            ->join('fa.mediaVideo', 'mv')
-            ->join('mv.translations', 'mvt')
-            ->where('f.id = :id')
-            ->andWhere('mv.displayedTrailer = :displayed_trailer')
-            ->setParameter('id', $id)
-            ->setParameter('displayed_trailer', true)
+                   ->join('f.associatedMediaVideos', 'fa')
+                   ->join('fa.mediaVideo', 'mv')
+                   ->join('mv.translations', 'mvt')
+                   ->where('f.id = :id')
+                   ->andWhere('mv.displayedTrailer = :displayed_trailer')
+                   ->setParameter('id', $id)
+                   ->setParameter('displayed_trailer', true)
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
@@ -92,15 +87,15 @@ class FilmFilmRepository extends EntityRepository
     public function getFilmsThatHaveTrailers($festival, $locale, $selectionSection = null)
     {
         $qb = $this->createQueryBuilder('f')
-            ->join('f.translations', 't')
-            ->join('f.associatedMediaVideos', 'fa')
-            ->join('fa.mediaVideo', 'mv')
-            ->join('mv.sites', 's')
-            ->join('mv.translations', 'mvt')
-            ->where('mv.displayedTrailer = :displayed_trailer')
-            ->andWhere('t.slug IS NOT NULL')
-            ->andWhere("t.slug != ''")
-            ->setParameter('displayed_trailer', true)
+                   ->join('f.translations', 't')
+                   ->join('f.associatedMediaVideos', 'fa')
+                   ->join('fa.mediaVideo', 'mv')
+                   ->join('mv.sites', 's')
+                   ->join('mv.translations', 'mvt')
+                   ->where('mv.displayedTrailer = :displayed_trailer')
+                   ->andWhere('t.slug IS NOT NULL')
+                   ->andWhere("t.slug != ''")
+                   ->setParameter('displayed_trailer', true)
         ;
 
         $this->addMasterQueries($qb, 'mv', $festival);
@@ -151,7 +146,7 @@ class FilmFilmRepository extends EntityRepository
 
         if ($idBanned !== null) {
             $qb->andWhere('f.id != :idBanned')
-                ->setParameter('idBanned', $idBanned)
+               ->setParameter('idBanned', $idBanned)
             ;
         }
 
@@ -163,28 +158,20 @@ class FilmFilmRepository extends EntityRepository
     }
 
     /**
-     * @param $festival
-     * @param $locale
-     * @param $selectionSection
-     * @param integer|null $idBanned
+     * @param $dateTime
      * @return array
      */
-    public function getFilmsReleases($dateTime)
+    public function getFilmsReleases(\DateTime $dateTime)
     {
-        /*$emConfig = $this->getEntityManager()->getConfiguration();
-        $emConfig->addCustomDatetimeFunction('YEAR', 'DoctrineExtensions\Query\Mysql\Year');
-        $emConfig->addCustomDatetimeFunction('MONTH', 'DoctrineExtensions\Query\Mysql\Month');
-        $emConfig->addCustomDatetimeFunction('DAY', 'DoctrineExtensions\Query\Mysql\Day');*/
-
-        $qb = $this->createQueryBuilder('f');
-        $qb->select('f')
+        return $this
+            ->createQueryBuilder('f')
+            ->select('f')
             ->andWhere('f.publishedAt BETWEEN :monthStart AND :monthEnd')
-        ;
-
-        $qb->setParameter('monthStart', $dateTime->format('Y-m-').'01');
-        $qb->setParameter('monthEnd', $dateTime->format('Y-m-').'31');
-
-        return $qb->getQuery()->getResult();
+            ->setParameter('monthStart', $dateTime->format('Y-m-') . '01')
+            ->setParameter('monthEnd', $dateTime->format('Y-m-') . '31')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
     /**

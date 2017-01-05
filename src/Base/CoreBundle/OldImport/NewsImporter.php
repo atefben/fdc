@@ -42,14 +42,6 @@ class NewsImporter extends Importer
 
     public function importOneNews($id)
     {
-
-        $types = [
-            static::TYPE_QUOTIDIEN,
-            static::TYPE_WALL,
-            static::TYPE_TOO,
-            static::TYPE_PHOTOPGRAH_EYE,
-            static::TYPE_EDITO,
-        ];
         $oldArticle = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:OldArticle')
