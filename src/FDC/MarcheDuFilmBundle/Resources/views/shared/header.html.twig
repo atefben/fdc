@@ -53,10 +53,13 @@
                         <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
                     </li>
                     <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            <li><a href="#">EN</a></li>
-                            <li><a href="#">CHN</a></li>
+                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                                <li>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>
