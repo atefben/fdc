@@ -28,9 +28,9 @@ class MdfHomepage
      * @ORM\OneToMany(targetEntity="HomeSliderTop", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      min = "1",
-     *      minMessage = "At least one top slider must be added.",
+     *      minMessage = "validation.home_top_slider_min",
      *      max = "6",
-     *      maxMessage = "At most 6 top sliders could be added."
+     *      maxMessage = "validation.home_top_slider_max"
      * )
      * @Assert\Valid
      */
