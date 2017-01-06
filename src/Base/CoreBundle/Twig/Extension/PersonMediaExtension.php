@@ -54,6 +54,7 @@ class PersonMediaExtension extends Twig_Extension
             new \Twig_SimpleFilter('jury_page_media', array($this, 'getJuryPageMedia')),
             new \Twig_SimpleFilter('director_film_media', array($this, 'getDirectorFilmMedia')),
             new \Twig_SimpleFilter('director_film_media_all', array($this, 'getDirectorFilmCreditsAll')),
+            new \Twig_SimpleFilter('search_person_media', array($this, 'getSearchPersonMedia')),
         );
     }
 
@@ -68,6 +69,7 @@ class PersonMediaExtension extends Twig_Extension
             new \Twig_SimpleFunction('jury_page_media', array($this, 'getJuryPageMedia')),
             new \Twig_SimpleFunction('director_film_media', array($this, 'getDirectorFilmMedia')),
             new \Twig_SimpleFunction('director_film_media_all', array($this, 'getDirectorFilmMediaAll')),
+            new \Twig_SimpleFunction('search_person_media', array($this, 'getSearchPersonMedia')),
         ];
     }
 
@@ -340,6 +342,76 @@ class PersonMediaExtension extends Twig_Extension
                     $image = array_values($subMedias);
                 }
             }
+            if ($medias && !$image) {
+                ksort($medias);
+                foreach ($medias as $subMedias) {
+                    if ($image) {
+                        continue;
+                    }
+                    krsort($subMedias);
+                    $image = array_values($subMedias);
+                }
+            }
+        }
+
+        return $image;
+    }
+
+    /**
+     * @param FilmPerson $person
+     * @param string $locale
+     * @return Media[]
+     */
+    public function getSearchPersonMedia(FilmPerson $person, $locale)
+    {
+        $image = $this->getLandscapeImage($person, $locale);
+        if (!$image) {
+            $image = $this->getPortraitImage($person, $locale);
+        }
+        if ($image) {
+            $image = [[
+                          'file'      => $image,
+                          'copyright' => $person->getCredits(),
+                          'titleVa'   => '',
+                          'titleVf'   => '',
+                      ],
+            ];
+        } else {
+            $image = [];
+        }
+
+        if (!$image) {
+            $medias = [];
+            $types = [
+                FilmFilmMedia::TYPE_DIRECTOR,
+                FilmFilmMedia::TYPE_JURY,
+                FilmFilmMedia::TYPE_PERSON,
+            ];
+
+            foreach ($person->getMedias() as $filmPersonMedia) {
+                if ($filmPersonMedia instanceof FilmPersonMedia) {
+                    if ($filmPersonMedia->getMedia() && $filmPersonMedia->getMedia()->getFile()) {
+                        if (in_array($filmPersonMedia->getType(), $types)) {
+                            $key = $filmPersonMedia->getMedia()->getCreatedAt()->getTimestamp() . '-1-'
+                                . $filmPersonMedia->getMedia()->getId();
+                            $medias[$filmPersonMedia->getType()][$key] = $filmPersonMedia->getMedia();
+                        }
+                    }
+                }
+            }
+
+            foreach ($person->getSelfkitImages() as $selfkitImage) {
+                if ($selfkitImage instanceof Media && $selfkitImage->getOldMediaPhotoType() == FilmFilmMedia::TYPE_DIRECTOR) {
+                    $key = $selfkitImage->getCreatedAt()->getTimestamp() . '-0-' . $selfkitImage->getId();
+                    $medias[$selfkitImage->getOldMediaPhotoType()][$key] = [
+                        'file'      => $selfkitImage,
+                        'copyright' => $selfkitImage->getCopyright(),
+                        'titleVa'   => '',
+                        'titleVf'   => '',
+                    ];
+                }
+            }
+
             if ($medias && !$image) {
                 ksort($medias);
                 foreach ($medias as $subMedias) {
