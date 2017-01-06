@@ -18,8 +18,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * This command can be used to re-generate the thumbnails for all uploaded medias.
- * Useful if you have existing media content and added new formats.
+ * Class SyncMissingThumbsCommand
+ * @package Base\CoreBundle\Command
  */
 class SyncMissingThumbsCommand extends BaseCommand
 {
@@ -48,6 +48,7 @@ class SyncMissingThumbsCommand extends BaseCommand
             $output->writeln('The sync is locked');
             die;
         }
+
         $this->lock();
         $this->output = $output;
         $medias = $this->getMedias();
@@ -60,16 +61,21 @@ class SyncMissingThumbsCommand extends BaseCommand
             try {
                 $provider->removeThumbnails($media);
             } catch (\Exception $e) {
-                $this->log(sprintf('<error>Unable to remove old thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
+                $message = 'Unable to remove old thumbnails, media: %s - %s';
+                $logMessage = sprintf($message, $media->getId(), $e->getMessage());
+                $this->log($e, $logMessage);
                 continue;
             }
 
             try {
                 $provider->generateThumbnails($media);
             } catch (\Exception $e) {
-                $this->log(sprintf('<error>Unable to generated new thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
+                $message = 'Unable to generated new thumbnails, media: %s - %s';
+                $logMessage = sprintf($message, $media->getId(), $e->getMessage());
+                $this->log($e, $logMessage);
                 continue;
             }
+
             $media
                 ->setIgnoreListener(true)
                 ->setThumbsGenerated(true)
@@ -106,12 +112,14 @@ class SyncMissingThumbsCommand extends BaseCommand
     }
 
     /**
-     * Write a message to the output.
-     * @param string $message
+     * @param \Exception $e
+     * @param $message
      */
-    protected function log($message)
+    protected function log(\Exception $e, $message)
     {
-        $this->output->writeln($message);
+        $this->output->writeln("<error>$message</error>");
+        $monologMessage = 'Error message: ' . $message . PHP_EOL . 'Error Trace: ' . $e->getTraceAsString();
+        $this->getContainer()->get('logger')->addError($monologMessage);
     }
 
     /**

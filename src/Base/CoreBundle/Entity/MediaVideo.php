@@ -98,6 +98,7 @@ class MediaVideo extends Media
     protected $homepageNews;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"trailer_list", "trailer_show"})
@@ -107,6 +108,7 @@ class MediaVideo extends Media
     public function __construct()
     {
         parent::__construct();
+        $this->associatedFilms = new ArrayCollection();
         $this->displayedWebTv = false;
         $this->displayedTrailer = false;
     }
