@@ -17,4 +17,16 @@ class MdfContentTemplateWidgetImageRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getImageWidgetsByPageId($pageId)
+    {
+        $qb = $this->createQueryBuilder('ctiw')
+            ->join('ctiw.contentTemplate', 'ct')
+            ->where('ct.id = :pageId')
+            ->setParameter('pageId', $pageId)
+            ->orderBy('ctiw.position', 'ASC')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

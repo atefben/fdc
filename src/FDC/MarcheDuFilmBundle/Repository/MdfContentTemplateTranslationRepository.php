@@ -23,4 +23,19 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    public function getTitleHeaderByLocaleAndTypeAndSlug($locale, $type, $slug)
+    {
+        $qb = $this->createQueryBuilder('ctt')
+            ->join('ctt.translatable', 'ct')
+            ->where('ctt.locale = :locale')
+            ->andWhere('ctt.slug = :slug')
+            ->andWhere('ct.type = :type')
+            ->setParameter('locale', $locale)
+            ->setParameter('type', $type)
+            ->setParameter('slug', $slug)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

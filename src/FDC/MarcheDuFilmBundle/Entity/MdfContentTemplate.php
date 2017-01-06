@@ -23,6 +23,7 @@ class MdfContentTemplate
     const TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES = 'who_are_we_environmental_approaches';
     const TYPE_LEGAL_MENTIONS = 'legal_mentions';
     const TYPE_GENERAL_CONDITIONS = 'general_conditions';
+    const TYPE_NEWS_DETAILS = 'news_details';
 
     /**
      * @var integer
@@ -38,6 +39,20 @@ class MdfContentTemplate
      * @ORM\Column(type="string", nullable=false)
      */
     protected $type;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     */
+    protected $publishedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     */
+    protected $publishEndedAt;
 
     /**
      * @var ArrayCollection
@@ -110,6 +125,46 @@ class MdfContentTemplate
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @param $publishedAt
+     *
+     * @return $this
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPublishEndedAt()
+    {
+        return $this->publishEndedAt;
+    }
+
+    /**
+     * @param $publishEndedAt
+     *
+     * @return $this
+     */
+    public function setPublishEndedAt($publishEndedAt)
+    {
+        $this->publishEndedAt = $publishEndedAt;
 
         return $this;
     }

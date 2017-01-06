@@ -118,4 +118,34 @@ class ContentTemplateManager
             ->getRepository(MdfContentTemplateWidgetFile::class)
             ->getFileWidgetsByPageType($pageType);
     }
+
+    public function getTitleHeaderContentBySlug($pageType, $slug) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getTitleHeaderByLocaleAndTypeAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $pageType, $slug);
+    }
+
+    public function getContentTemplateTextWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetTextTranslation::class)
+            ->getTextWidgetsByLocaleAndPageId($this->requestStack->getMasterRequest()->get('_locale'), $pageId);
+    }
+
+    public function getContentTemplateImageWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetImage::class)
+            ->getImageWidgetsByPageId($pageId);
+    }
+
+    public function getContentTemplateGalleryWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetGallery::class)
+            ->getGalleryWidgetsByPageId($pageId);
+    }
+
+    public function getContentTemplateFileWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetFile::class)
+            ->getFileWidgetsByPageId($pageId);
+    }
 }
