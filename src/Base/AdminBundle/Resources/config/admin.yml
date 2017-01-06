@@ -1750,3 +1750,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Industry program home}
+
+    base.admin.mdf_who_are_we_history:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeHistoryAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeHistoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Historique}

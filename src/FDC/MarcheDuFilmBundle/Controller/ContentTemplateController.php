@@ -12,6 +12,7 @@ class ContentTemplateController extends Controller
      * @Route("presentation", name="fdc_marche_du_film_edition_presentation")
      * @Route("projections", name="fdc_marche_du_film_edition_projections")
      * @Route("industryprogram", name="fdc_marche_du_film_industry_program_home")
+     * @Route("quisommesnous/historique", name="fdc_marche_du_film_who_are_we_history")
      */
     public function indexAction()
     {
@@ -21,6 +22,9 @@ class ContentTemplateController extends Controller
         $routeName = $request->get('_route');
 
         $pageType = '';
+        $isWhoAreWe = false;
+        $nextRoute = null;
+        $backRoute = null;
         switch ($routeName) {
             case 'fdc_marche_du_film_edition_presentation':
                 $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
@@ -31,6 +35,9 @@ class ContentTemplateController extends Controller
             case 'fdc_marche_du_film_industry_program_home':
                 $pageType = MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME;
                 break;
+            case 'fdc_marche_du_film_who_are_we_history':
+                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_HISTORY;
+                $isWhoAreWe = true;
         }
 
         $titleHeader = $contentTemplateManager->getTitleHeaderContent($pageType);
@@ -57,7 +64,10 @@ class ContentTemplateController extends Controller
 
         return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', array(
             'titleHeader' => $titleHeader,
-            'widgets' => $widgets
+            'widgets' => $widgets,
+            'isWhoAreWe' => $isWhoAreWe,
+            'nextRoute' => $nextRoute,
+            'backRoute' => $backRoute
         ));
     }
 }

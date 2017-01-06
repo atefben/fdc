@@ -18,6 +18,7 @@ class MdfContentTemplate
     const TYPE_EDITION_PRESENTATION = 'edition_presentation';
     const TYPE_EDITION_PROJECTIONS = 'edition_projections';
     const TYPE_INDUSTRY_PROGRAM_HOME = 'industry_program_home';
+    const TYPE_WHO_ARE_WE_HISTORY = 'who_are_we_history';
 
     /**
      * @var integer

@@ -2,6 +2,9 @@
 
 {% block main %}
     <div id="main" class="home loading">
+        {% if isWhoAreWe %}
+            {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
+        {% endif %}
         <div class="bigContainer">
             <div class="text-presentation projection presse whoarewe">
                 {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockTitleHeader.html.twig' with {'titleHeader': titleHeader} %}
@@ -22,4 +25,7 @@
             </div>
         </div>
     </div>
+    {% if isWhoAreWe %}
+        {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRoute': nextRoute, 'backRoute': backRoute} %}
+    {% endif %}
 {% endblock %}
