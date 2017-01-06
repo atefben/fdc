@@ -71,11 +71,11 @@ class MdfEditionPresentationAdmin extends Admin
                         )
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.content_template.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'header'          => array(
-                        'label'              => 'form.label.header',
+                        'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                     )

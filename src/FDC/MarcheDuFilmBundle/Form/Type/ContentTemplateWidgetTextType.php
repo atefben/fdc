@@ -30,12 +30,12 @@ class ContentTemplateWidgetTextType extends ContentTemplateWidgetType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.title',
+                        'label'              => 'form.mdf.content_template.label.title',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
                     ),
                     'contentText'        => array(
-                        'label'              => 'form.label.text',
+                        'label'              => 'form.mdf.content_template.label.text',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
                     )

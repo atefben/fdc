@@ -654,6 +654,19 @@ form:
             promotion_details_price_3: Prix 3
             promotion_details_price_suffix_3: Suffixe du prix 3
             promotion_details_information_3: Description de la ligne 3
+        content_template:
+            form_name: Présentation de l'édition - gabarit de contenu
+            title: Titre de page
+            header: Chapô
+            label:
+                title: Titre du paragraphe
+                text: Contenu texte
+                gallery: Nom du diaporama
+            widget:
+                text: Module de texte
+                image: Module image
+                gallery: Module slider
+                file: Module téléchargement de fichiers
         label:
             content_block:
                 category: Strate 1 - Label
