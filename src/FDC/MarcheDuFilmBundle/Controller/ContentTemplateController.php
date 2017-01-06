@@ -14,6 +14,7 @@ class ContentTemplateController extends Controller
      * @Route("industryprogram", name="fdc_marche_du_film_industry_program_home")
      * @Route("quisommesnous/historique", name="fdc_marche_du_film_who_are_we_history")
      * @Route("quisommesnous/chiffrescles", name="fdc_marche_du_film_who_are_we_key_figures")
+     * @Route("quisommesnous/demarchesenvironnementales", name="fdc_marche_du_film_who_are_we_environmental_approaches")
      */
     public function indexAction()
     {
@@ -42,6 +43,10 @@ class ContentTemplateController extends Controller
                 break;
             case 'fdc_marche_du_film_who_are_we_key_figures':
                 $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_KEY_FIGURES;
+                $isWhoAreWe = true;
+                break;
+            case 'fdc_marche_du_film_who_are_we_environmental_approaches':
+                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES;
                 $isWhoAreWe = true;
                 break;
         }
