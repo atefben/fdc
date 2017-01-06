@@ -437,24 +437,55 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-align: left;
 }
 
+.owlsecondContainer {
+  max-width: 1250px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: -3%;
+}
+@media screen and (max-width: 1366px) {
+  .owlsecondContainer {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .owlsecondContainer {
+    margin-top: -11%;
+  }
+}
+
 #owl-second {
   height: 380px;
   text-align: center;
   margin: 0 auto;
-  overflow: hidden;
-  max-width: 1250px;
+  /*max-width: 1250px;*/
+  width: 100%;
   margin-top: -50px;
   position: relative;
+  /*
+
+  .item {
+    width: 400px;
+    height: 380px;
+    overflow: hidden;
+  } 
+
+  .owl-item {
+    margin-right: -10px!important;
+  }*/
 }
 #owl-second .owl-stage {
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 #owl-second .owl-stage-outer {
-  max-width: 1200px;
+  /*max-width: 1200px;*/
+  max-width: 100%;
   margin: 0 auto;
 }
 #owl-second .owl-wrapper-outer {
-  max-width: 1149px;
+  /*max-width: 1149px;*/
   text-align: center;
   margin: 0 auto;
   overflow: hidden;
@@ -467,24 +498,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1004;
 }
 #owl-second .item {
-  width: 400px;
   height: 380px;
-  overflow: hidden;
 }
-#owl-second .owl-item {
-  margin-right: -10px !important;
+#owl-second .owl-item, #owl-second .item {
+  position: relative;
 }
 #owl-second .owl-next {
   display: block !important;
   float: right;
   position: absolute;
-  right: 0%;
+  right: -2%;
 }
 #owl-second .owl-prev {
   display: block !important;
   float: left;
   position: absolute;
-  left: 0%;
+  left: -2%;
 }
 #owl-second .fitImg {
   object-fit: cover;
@@ -498,7 +527,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 #owl-second .owl-Title {
   position: absolute;
-  width: 400px;
+  /*width: 400px;*/
+  width: 100%;
   height: 380px;
   color: white;
   text-align: center;
@@ -527,49 +557,61 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1003;
 }
 
-@media screen and (max-width: 1152px) {
-  #owl-second {
-    margin-top: -100px;
-    width: 1000px !important;
-    max-width: 1000px !important;
-  }
-  #owl-second .owl-stage-outer {
-    width: 950px !important;
-    max-width: 950px !important;
-    margin: 0 auto;
-  }
-  #owl-second .owl-stage {
-    margin-left: 0px;
-  }
-  #owl-second h2 {
-    margin: 100px 0px 35px 0px !important;
-    font-size: 14.5px;
-  }
-  #owl-second .owl-controls {
-    top: 40% !important;
-  }
-  #owl-second .owl-wrapper-outer {
-    width: 950px !important;
-    max-width: 950px !important;
-    text-align: center;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  #owl-second .owl-item {
-    margin-right: 0px !important;
-  }
-  #owl-second .owl-item {
-    width: 325px !important;
-  }
-  #owl-second .item {
-    width: 320px;
-    height: 310px;
-  }
-  #owl-second .owl-Title {
-    width: 100%;
-    height: 310px !important;
-  }
-}
+/*
+@media screen and (max-width: 1152px) { 
+
+
+ #owl-second{
+    margin-top: -100px;      
+    width: 1000px!important;
+    max-width:1000px!important;
+    
+    .owl-stage-outer {
+      width: 950px!important;
+      max-width:950px!important;
+      margin: 0 auto;
+    }
+
+    .owl-stage {
+        margin-left: 0px;
+    }
+
+      h2 {
+        margin: 100px 0px 35px 0px!important;
+        font-size: 14.5px;
+      }
+
+      .owl-controls {
+        top: 40%!important;
+      }
+
+      .owl-wrapper-outer {
+        width: 950px!important;
+        max-width:950px!important;
+        text-align: center;
+        margin: 0 auto;
+        overflow: hidden;
+
+      }
+
+      .owl-item { margin-right: 0px!important;}
+
+
+      .owl-item {
+        width: 325px!important;
+      }
+
+      .item {
+        width: 320px;
+        height: 310px;
+      }
+
+      .owl-Title {
+        width: 100%;
+        height: 310px!important;
+    }
+  }   
+}*/
 .midContainer {
   max-width: 1152px;
   margin: 0 auto;

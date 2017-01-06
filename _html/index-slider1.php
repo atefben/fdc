@@ -57,41 +57,6 @@
                   </div>
                   <img class="fitImg" src="/img/slider/slider02.jpg" alt="Marché du film">
                 </div>
-                <div class="item">
-                  <div class="owl-Title">
-                    <h2>les actualités</h2>
-                    <img src="/img/plus.png" alt="Marché du film">
-                  </div>
-                  <img class="fitImg" src="/img/slider/slider02.jpg" alt="Marché du film">
-                </div>
-                <div class="item">
-                  <div class="owl-Title">
-                    <h2>liste des exposants 2017</h2>
-                    <img src="/img/plus.png" alt="Marché du film">
-                  </div>
-                  <img class="fitImg" src="/img/slider/slider02.jpg" alt="Marché du film">
-                </div>
-                <div class="item">
-                  <div class="owl-Title">
-                    <h2>Le Marché du Film</h2>
-                    <img src="/img/plus.png" alt="Marché du film">
-                  </div>
-                  <img class="fitImg" src="/img/slider/slider03.jpg" alt="Marché du film">
-                </div>
-                <div class="item">
-                  <div class="owl-Title">
-                    <h2>Le Marché du Film</h2>
-                    <img src="/img/plus.png" alt="Marché du film">
-                  </div>
-                  <img class="fitImg"  src="/img/slider/slider03.jpg" alt="Marché du film">
-                </div>
-                <div class="item">
-                  <div class="owl-Title">
-                    <h2>Le Marché du Film</h2>
-                    <img src="/img/plus.png" alt="Marché du film">
-                  </div>
-                  <img class="fitImg" src="/img/slider/slider03.jpg" alt="Marché du film">
-                </div>
               </div>
             </div>
 

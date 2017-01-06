@@ -399,27 +399,44 @@
 
 }
 
+.owlsecondContainer {
+    max-width: 1250px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -3%;
+    @media screen and (max-width: 1366px) { 
+      width: 90%;
+    }
+
+    @media screen and (max-width: 1170px) { 
+      margin-top: -11%;
+    }
+}
+
 #owl-second {
   
   height: 380px;
   text-align: center;
   margin: 0 auto;
-  overflow: hidden;
-  max-width: 1250px;
+  /*max-width: 1250px;*/
+  width: 100%;
   margin-top: -50px;
   position: relative;
 
   .owl-stage {
-    margin-left: 10px;
+    /*margin-left: 10px;*/
   }
 
   .owl-stage-outer {
-    max-width: 1200px;
+    /*max-width: 1200px;*/
+    max-width: 100%;
     margin: 0 auto;
   }
 
   .owl-wrapper-outer {
-    max-width: 1149px;
+    /*max-width: 1149px;*/
     text-align: center;
     margin: 0 auto;
     overflow: hidden;
@@ -434,27 +451,37 @@
   }
 
   .item {
+    height: 380px;
+  }
+
+  /*
+
+  .item {
     width: 400px;
     height: 380px;
     overflow: hidden;
-  }
+  } 
 
   .owl-item {
     margin-right: -10px!important;
+  }*/
+
+  .owl-item, .item {
+    position: relative;
   }
 
   .owl-next {
     display: block!important;
     float: right;
     position: absolute;
-    right: 0%;
+    right: -2%;
   }
 
   .owl-prev {
     display: block!important;
     float: left;
     position: absolute;
-    left: 0%;
+    left: -2%;
   }
 
   .fitImg {
@@ -470,7 +497,8 @@
 
   .owl-Title {
     position: absolute;
-    width: 400px;
+    /*width: 400px;*/
+    width: 100%;
     height: 380px;
     color: white;
     text-align: center;
@@ -505,6 +533,7 @@
 
 }
 
+/*
 @media screen and (max-width: 1152px) { 
 
 
@@ -558,7 +587,7 @@
         height: 310px!important;
     }
   }   
-}
+}*/
 
 .midContainer {
   max-width: 1152px;

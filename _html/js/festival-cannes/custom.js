@@ -51,6 +51,43 @@ $(document).ready(function() {
           singleItem:true,
           dots: true
   });
+
+  if ($('#owl-second .item').length === 1) { 
+      $('#owl-second').owlCarousel({
+        dots: false,
+        navigation : false,
+        slideSpeed : 600,
+        paginationSpeed : 400,
+        items : 1,
+        margin: 10,
+        navText: ["<div></div>","<div></div>"]
+
+      });
+  }
+  else if ($('#owl-second .item').length === 2) { 
+      $('#owl-second').owlCarousel({
+        dots: false,
+        navigation : false,
+        slideSpeed : 600,
+        paginationSpeed : 400,
+        items : 2,
+        margin: 10,
+        navText: ["<div></div>","<div></div>"]
+      });
+  }
+  else if ($('#owl-second .item').length === 3) { 
+      $('#owl-second').owlCarousel({
+        dots: false,
+        navigation : false,
+        slideSpeed : 600,
+        paginationSpeed : 400,
+        items : 3,
+        margin: 10,
+        navText: ["<div></div>","<div></div>"]
+      });
+  }
+
+  else {
   
   $('#owl-second').owlCarousel({
       dots: false,
@@ -58,9 +95,12 @@ $(document).ready(function() {
       slideSpeed : 600,
       paginationSpeed : 400,
       items : 3,
+      margin:10,
       navText: ["<div class='redarrowLeft customClass1'><i class='icon icon_flecheGauche customClass1'></div>","<div class='redarrowRight customClass1'><i class='icon icon_flecheGauche reverse customClass1'></div>"]
  
   });
+
+    }
 
 /* BOX SERVICES and RESULTS*/
 
