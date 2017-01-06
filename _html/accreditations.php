@@ -23,7 +23,8 @@
       </div>
         <div class="greyBckg">  
           <div class="midContainer">
-            <h5 class="getMargin">L'accréditation au Marché du Film vous donne accès à tous les services suivants : </h5>
+            <!--<h5 class="getMargin">L'accréditation au Marché du Film vous donne accès à tous les services suivants : </h5>-->
+            <p class="getMargin">L'accréditation au Marché du Film vous donne accès à tous les services suivants :</p>
             <div id="accordion-menu">
             <ul>
               <li>
