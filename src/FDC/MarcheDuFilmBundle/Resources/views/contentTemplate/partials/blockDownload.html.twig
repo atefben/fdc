@@ -1,18 +1,16 @@
 <div class="marche">
-<div class="programme">
-    <div>
-        <a href="{% path widget.file|trans_fallback('file'), 'reference' %}" target="_blank">
-            <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
-        </a>
-    </div>
-    <div>
-        {% set translations = widget.file.findTranslationByLocale(app.request.locale) %}
-        <h6>{{ translations.name }}</h6>
-    </div>
-    <div>
-        <a href="{% path widget.file|trans_fallback('file'), 'reference' %}" target="_blank">
-            <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
-        </a>
-    </div>
-</div>
+    <a href="{% path widget.file|trans_fallback('file'), 'reference' %}" target="_blank">
+        <div class="programme">
+            <div>
+                <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
+            </div>
+            <div>
+                {% set translations = widget.file.findTranslationByLocale(app.request.locale) %}
+                <h6>{{ translations.name }}</h6>
+            </div>
+            <div>
+                <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
+            </div>
+        </div>
+    </a>
 </div>

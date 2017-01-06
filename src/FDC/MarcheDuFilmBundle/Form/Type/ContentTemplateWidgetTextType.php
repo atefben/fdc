@@ -29,15 +29,23 @@ class ContentTemplateWidgetTextType extends ContentTemplateWidgetType
                             'class' => 'hidden',
                         ),
                     ),
-                    'title'          => array(
-                        'label'              => 'form.mdf.content_template.label.title',
-                        'translation_domain' => 'BaseAdminBundle',
+                    'title' => array(
+                        'label' => 'form.mdf.content_template.label.title',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
+                        'required' => true,
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget'
                     ),
-                    'contentText'        => array(
-                        'label'              => 'form.mdf.content_template.label.text',
-                        'translation_domain' => 'BaseAdminBundle',
+                    'contentText' => array(
+                        'label' => 'form.mdf.content_template.label.text',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
+                        'required' => true,
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget'
                     )
                 ),
             ));
