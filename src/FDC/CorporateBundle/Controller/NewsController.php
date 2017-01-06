@@ -166,7 +166,7 @@ class NewsController extends Controller
         $filters['format'][0] = 'all';
 
         foreach ($medias as $key => $media) {
-            $media->theme = $media->getTheme();
+            $media->setTheme($media->getTheme());
 
             if (($key % 3) == 0) {
                 $media->double = true;

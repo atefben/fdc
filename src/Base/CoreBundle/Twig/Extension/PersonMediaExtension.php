@@ -165,12 +165,23 @@ class PersonMediaExtension extends Twig_Extension
     public function getDirectorFilmMediaAll(FilmFilm $film, $locale)
     {
         $medias = [];
+        $persons = [];
         foreach ($film->getDirectors() as $filmFilmPerson) {
             if ($filmFilmPerson instanceof FilmFilmPerson) {
+                if ($filmFilmPerson->getPerson()->getDuplicate()) {
+                    $ownerId = $filmFilmPerson->getPerson()->getOwner()->getId();
+                } else {
+                    $ownerId = $filmFilmPerson->getPerson()->getId();
+                }
+                if (in_array($ownerId, $persons)) {
+                    continue;
+                }
                 $subMedias = $this->getDirectorFilmMedia($filmFilmPerson->getPerson(), $film, $locale);
                 if ($subMedias) {
+                    $subMedias = array_slice($subMedias, 0, 1);
                     $medias = array_merge($medias, $subMedias);
                 }
+                $persons[] = $ownerId;
             }
         }
         return $medias;
@@ -184,11 +195,21 @@ class PersonMediaExtension extends Twig_Extension
     public function getDirectorFilmCreditsAll(FilmFilm $film, $locale)
     {
         $credits = [];
+        $persons = [];
         foreach ($film->getDirectors() as $filmFilmPerson) {
             if ($filmFilmPerson instanceof FilmFilmPerson) {
+                if (in_array($filmFilmPerson->getPerson()->getId(), $persons)) {
+                    continue;
+                }
                 $subCredits = $this->getDirectorFilmCredits($filmFilmPerson->getPerson(), $film, $locale);
                 if ($subCredits) {
+                    $subCredits = array_slice($subCredits, 0, 1);
                     $credits = array_merge($credits, $subCredits);
+                }
+                if ($filmFilmPerson->getPerson()->getDuplicate()) {
+                    $persons[] = $filmFilmPerson->getPerson()->getOwner()->getId();
+                } else {
+                    $persons[] = $filmFilmPerson->getPerson()->getId();
                 }
             }
         }
@@ -208,11 +229,12 @@ class PersonMediaExtension extends Twig_Extension
             $image = $this->getPortraitImage($person, $locale);
         }
         if ($image) {
-            $image = [
-                'file'      => $image,
-                'copyright' => $person->getCredits(),
-                'titleVa'   => '',
-                'titleVf'   => '',
+            $image = [[
+                          'file'      => $image,
+                          'copyright' => $person->getCredits(),
+                          'titleVa'   => '',
+                          'titleVf'   => '',
+                      ],
             ];
         } else {
             $image = [];
@@ -256,9 +278,10 @@ class PersonMediaExtension extends Twig_Extension
 
         if (!$image) {
             $medias = [];
+            $mediasMovies = [];
             $types = [
-                FilmFilmMedia::TYPE_JURY,
                 FilmFilmMedia::TYPE_DIRECTOR,
+                FilmFilmMedia::TYPE_JURY,
                 FilmFilmMedia::TYPE_PERSON,
             ];
 
@@ -268,23 +291,56 @@ class PersonMediaExtension extends Twig_Extension
                         if (in_array($filmPersonMedia->getType(), $types)) {
                             $key = $filmPersonMedia->getMedia()->getCreatedAt()->getTimestamp() . '-1-'
                                 . $filmPersonMedia->getMedia()->getId();
-                            $medias[$filmPersonMedia->getType()][$key] = $filmPersonMedia->getMedia();
+                            $movieAdded = false;
+                            foreach ($film->getMedias() as $filmFilmMedia) {
+                                if ($filmFilmMedia instanceof FilmFilmMedia) {
+                                    if ($filmFilmMedia->getMedia() == $filmFilmMedia->getMedia()) {
+                                        $mediasMovies[$filmPersonMedia->getType()][$key] = $filmPersonMedia->getMedia();
+                                        $movieAdded = true;
+                                    }
+                                }
+                            }
+                            if (!$movieAdded) {
+                                $medias[$filmPersonMedia->getType()][$key] = $filmPersonMedia->getMedia();
+                            }
                         }
                     }
                 }
             }
 
             foreach ($person->getSelfkitImages() as $selfkitImage) {
-                $key = $selfkitImage->getCreatedAt()->getTimestamp() . '-0-' . $selfkitImage->getId();
-                $medias[$selfkitImage->getOldMediaPhotoType()][$key] = [
-                    'file'      => $selfkitImage,
-                    'copyright' => $selfkitImage->getCopyright(),
-                    'titleVa'   => '',
-                    'titleVf'   => '',
-                ];
+                if ($selfkitImage instanceof Media && $selfkitImage->getOldMediaPhotoType() == FilmFilmMedia::TYPE_DIRECTOR) {
+                    $key = $selfkitImage->getCreatedAt()->getTimestamp() . '-0-' . $selfkitImage->getId();
+                    //$medias[$selfkitImage->getOldMediaPhotoType()][$key] = [
+                    $toAdd = [
+                        'file'      => $selfkitImage,
+                        'copyright' => $selfkitImage->getCopyright(),
+                        'titleVa'   => '',
+                        'titleVf'   => '',
+                    ];
+                    $movieAdded = false;
+                    foreach ($film->getSelfkitImages() as $movieSelfkitImage) {
+                        if ($selfkitImage->getId() == $movieSelfkitImage->getId()) {
+                            $mediasMovies[$selfkitImage->getOldMediaPhotoType()][$key] = $toAdd;
+                            $movieAdded = true;
+                        }
+                    }
+                    if (!$movieAdded) {
+                        $medias[$selfkitImage->getOldMediaPhotoType()][$key] = $toAdd;
+                    }
+                }
             }
-
-            if ($medias) {
+            if ($mediasMovies) {
+                ksort($mediasMovies);
+                foreach ($mediasMovies as $subMedias) {
+                    if ($image) {
+                        continue;
+                    }
+                    krsort($subMedias);
+                    $image = array_values($subMedias);
+                }
+            }
+            if ($medias && !$image) {
                 ksort($medias);
                 foreach ($medias as $subMedias) {
                     if ($image) {
@@ -514,7 +570,7 @@ class PersonMediaExtension extends Twig_Extension
      */
     protected function getPortraitImage(FilmPerson $person, $locale)
     {
-        $portrait = $person->getDisplayedImage() && $person->getPortraitImage();
+        $portrait = !$person->getDisplayedImage() && $person->getPortraitImage();
         $portrait = $portrait && $person->getPortraitImage()->findTranslationByLocale($locale);
         if ($portrait && $person->getPortraitImage()->findTranslationByLocale($locale)->getFile()) {
             return $person->getPortraitImage()->findTranslationByLocale($locale)->getFile();
