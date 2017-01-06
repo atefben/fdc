@@ -16,6 +16,7 @@ class MdfContentTemplate
     use Translatable;
 
     const TYPE_EDITION_PRESENTATION = 'edition_presentation';
+    const TYPE_EDITION_PROJECTIONS = 'edition_projections';
 
     /**
      * @var integer
