@@ -228,7 +228,7 @@ class MediaMdfImageAdmin extends Admin
                 'required' => false
             ))
             ->add('translate')
-            ->add('displayedMobile')
+            //->add('displayedMobile')
             ->add('excludeFromSearch', null, array(
                 'label' => 'form.label_exclude_from_search',
             ))
