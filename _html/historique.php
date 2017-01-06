@@ -51,6 +51,13 @@
           
           <div class="text-presentation projection marche whoarewe mainBody">
             <h6>Workshops et networking pour une formation ciblée</h6>
+
+                            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+
+                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+
+                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+
             <h5>Au cours des années, l'augmentation constante de ses participants et l'apparition de nouveaux enjeux économiques vont faire du Festival le rendez-vous annuel des professionnels du cinéma. 
             C'est ainsi que le premier Marché du Film voit le jour en 1959 avec quelques dizaines de participants et une seule salle de projection construite en toile sur le toit de l'ancien Palais Croisette. Ce tout petit marché va peu à peu s'imposer comme un évènement international conçu, organisé et planifié avec un seul objectif : la réussite de tous les cinémas.
 
@@ -99,6 +106,12 @@
             <h5>Le leadership mondial du Marché du Film de Cannes a ses exigences, faire toujours mieux pour servir l'industrie et pour cela, rester à l’écoute des besoins de la profession, adapter ses outils aux nouveaux standards du marché, privilégier toujours plus les rencontres et contribuer à la santé économique du cinéma.</h5>
             <img src="/img/graph.png" alt="Marché du film">
             <h5 class="caption">Graphique - © Alexandra Fleurantin - 2015</h5>
+
+                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+
+            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+
           </div>
 
       </div><!--CONTAINER-->

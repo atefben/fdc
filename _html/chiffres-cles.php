@@ -58,6 +58,8 @@
             <h5>Au cours des années, l'augmentation constante de ses participants et l'apparition de nouveaux enjeux économiques vont faire du Festival le rendez-vous annuel des professionnels du cinéma. 
             C'est ainsi que le premier Marché du Film voit le jour en 1959 avec quelques dizaines de participants et une seule salle de projection construite en toile sur le toit de l'ancien Palais Croisette. Ce tout petit marché va peu à peu s'imposer comme un évènement international conçu, organisé et planifié avec un seul objectif : la réussite de tous les cinémas.
             <h5>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</h5>
+            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+
           </div>
 
       </div><!--CONTAINER-->

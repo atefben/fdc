@@ -99,6 +99,7 @@
                 <h5>Pour plus de renseignements, merci de contacter Lisa Kermabon – Manager Producers Workshop / Industry Programs: <a href="mailto:lkermabon@festival-cannes.fr">lkermabon@festival-cannes.fr</a></h5>
                 <h5>Visitez notre FAQ où vous trouverez les réponses aux questions les plus fréquentes concernant ce programme.</h5> 
                 <h5>DATES 2016 : La 6ème édition du Producers Workshop se déroulera du mercredi 11 au dimanche 15 mai, avec une session additionnelle le 17 mai. </h5>
+                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
               </div>
 
           </div><!--CONTAINER-->

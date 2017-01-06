@@ -3552,6 +3552,13 @@ a {
   visibility: visible;
 }
 
+p {
+  color: #505050;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
 .icon {
   vertical-align: baseline !important;
 }
@@ -10977,7 +10984,7 @@ header #searchContainer {
     font-size: 90%;
   }
 }
-.text-presentation p {
+.text-presentation .savoirPlus {
   color: #2b2b2b;
   font-size: 16px;
   text-transform: uppercase;
@@ -24906,11 +24913,11 @@ ul.tabs .quarterTab h4 {
 }
 .tarifs ul li {
   color: white;
-  opacity: 0.9;
   text-align: left;
   line-height: 40px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
+  list-style-type: circle;
 }
 
 /* PAGE GALERIE PHOTOS */
@@ -25043,14 +25050,13 @@ ul.tabs .quarterTab h4 {
   min-height: 250px;
 }
 
-p {
+/*p {
   text-align: right;
   color: #999999;
   font-size: 12px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-family: $CamphorHeavy;
   letter-spacing: 1px;
-}
-
+}*/
 #contactForm .formContainer form .submit {
   width: 130px;
   float: left;
@@ -25410,7 +25416,7 @@ option:checked,
 
 /* PAGE PROGRAMMATION */
 .marche {
-  text-align: center;
+  text-align: left;
   margin-bottom: 50px;
   padding-top: 1%;
 }
@@ -25424,7 +25430,6 @@ option:checked,
   color: #2b2b2b;
   font-size: 16px;
   line-height: 40px;
-  opacity: 0.8;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   padding: 0px 100px;
 }
@@ -25453,11 +25458,11 @@ option:checked,
 .marche li {
   color: #505050;
   font-size: 16px;
-  opacity: 0.8;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 40px;
   padding-right: 50px;
   text-align: left;
+  list-style-type: disc;
 }
 
 .marcheBody {

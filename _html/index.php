@@ -103,7 +103,7 @@
                   <h3>Le premier marché<br>cinématographique au monde</h3>
                   <h5>C'est l'occasion de rencontrer, des professionnels, d'échanger et de faire avancer vos projets. Le Marché du Film est l'événement le plus important de l'industrie cinématographique et le rendez-vous de plus de 10 000 professionnels dont 3 200 producteurs, 2 300 distributeurs salles, 1 500 vendeurs et 790 programmateurs de festivals.</h5> 
                   <div class="">
-                    <p>en savoir plus</p>
+                    <a href=""><p class="savoirPlus">en savoir plus</p></a>
                   </div>
                 </div>
               </div>

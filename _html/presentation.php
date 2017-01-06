@@ -91,20 +91,45 @@
                 <p class="caption">Riviera - © Alexandra Fleurantin - 2015</p>
               </div> 
               
-              <div class="text-presentation marche marcheBody">
+              <div class="marche marcheBody contentBody">
                 <h6>UN MARCHÉ INCONTOURNABLE</h6>
                 <ul>
-                  <li>• Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>
-                  <li>• Bénéficiez d'un accès gratuit pendant un an à Cinando</li>
-                  <li>• Rencontrez des experts du monde entier dans le cadre de nos Industry Programs</li>
-                  <li>• Participez aux conférences NEXT dédiées au futur du cinéma</li>
-                  <li>• Plus de 1000 projections</li>
-                  <li>• Accès aux zones du Marché (Palais des Festivals, Riviera, Lérins, Village International)</li>
-                  <li>• Assistez à la reprise des films de la Sélection Officielle en projection privée les jeudi 19 et vendredi 20 mai 2016 </li>
-                  <li>• Recevez le sac du Marché du Film et ses publications pour organiser votre séjour: le Pocket Guide, le Producers Guide, le Focus, le Funds Guide</li>
-                  <li>• Connectez vous en libre accès aux Web Points</li>
-                  <li>• Accèdez au Wi-Fi gratuitement et de façon illimitée</li>
+                  <li>Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>
+                  <li>Bénéficiez d'un accès gratuit pendant un an à Cinando</li>
+                  <li>Rencontrez des experts du monde entier dans le cadre de nos Industry Programs</li>
+                  <li>Participez aux conférences NEXT dédiées au futur du cinéma</li>
+                  <li>Plus de 1000 projections</li>
+                  <li>Accès aux zones du Marché (Palais des Festivals, Riviera, Lérins, Village International)</li>
+                  <li>Assistez à la reprise des films de la Sélection Officielle en projection privée les jeudi 19 et vendredi 20 mai 2016 </li>
+                  <li>Recevez le sac du Marché du Film et ses publications pour organiser votre séjour: le Pocket Guide, le Producers Guide, le Focus, le Funds Guide</li>
+                  <li>Connectez vous en libre accès aux Web Points</li>
+                  <li>Accèdez au Wi-Fi gratuitement et de façon illimitée</li>
                 </ul>
+              <p>Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</p>
+              <div class="video-container state-init video"
+                  data-facebook="//www.facebook.com"
+                  data-twitter="//www.twitter.com"
+                  data-link="//www.example.com"
+                  data-email="//www.gmail.com"
+                  data-name="test"
+                  data-file='[{"file":"https://www.youtube.com/watch?v=YWNWi-ZWL3c"}]'>
+                  <!-- data-img="//dummyimage.com/960x540/000/c8a461.png"> -->
+                  <div id="v_<?php echo "100".time();?>" class="video-player">
+                  <!-- <div id="vtest"> -->
+                  </div>
+                  <div class="video-overlay"></div>
+                  <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                      <div class="vCenter">
+                        <div class="vCenterKid">
+                          <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                          <p>The Lobster</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
               </div>
 
           </div><!--CONTAINER-->

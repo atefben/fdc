@@ -709,11 +709,11 @@
 
     li {
       color: white;
-      opacity: 0.9;
       text-align: left;
       line-height: 40px;
       font-family: $CamphorRegular;
       font-size: 16px;
+      list-style-type: circle;
     } 
 
   }
@@ -867,13 +867,13 @@
   min-height:250px;
 }
 
-p {
+/*p {
   text-align: right;
   color: #999999;
   font-size: 12px;
   font-family: $CamphorHeavy;
   letter-spacing: 1px;
-}
+}*/
 
 #contactForm .formContainer form .submit {
   width:130px;
@@ -1276,8 +1276,7 @@ option:checked,
 /* PAGE PROGRAMMATION */
 
 .marche {
-  
-  text-align: center;
+  text-align: left;
   margin-bottom: 50px;
   padding-top:1%;
 
@@ -1292,7 +1291,6 @@ option:checked,
     color: #2b2b2b;
     font-size: 16px;
     line-height: 40px;
-    opacity: 0.8;
     font-family: $CamphorRegular;
     padding: 0px 100px;
   }
@@ -1325,11 +1323,11 @@ option:checked,
   li {
     color: #505050;
     font-size: 16px;
-    opacity: 0.8;
     font-family: $CamphorRegular;
     line-height: 40px;
     padding-right:50px;
     text-align: left;
+    list-style-type: disc;
   }
 }
 
