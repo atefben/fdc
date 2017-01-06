@@ -19,12 +19,12 @@
         <div class="teamBckg">
           <div class="bigContainer">
               <div class="contactInfo">
-                <span>du 2 sept au 15 jan 2016</span>
+                <span class="customClass4">du 2 sept au 15 jan 2016</span>
                 <h6>3, rue Amélie 75007 Paris - France</h6>
                 <h6>Tel: +33 (0) 1 53 59 61 00</h6>
               </div>
               <div class="contactInfo">
-                <span>du 26 juin au 6 fév 2016</span>
+                <span class="customClass4">du 26 juin au 6 fév 2016</span>
                 <h6>3, rue Amélie 75007 Paris - France</h6>
                 <h6>Tel: +33 (0) 1 53 59 61 00</h6></div>
               </div>

@@ -12,13 +12,13 @@
     </div>
     <?php include('header.html'); ?>
     <div id="main" class="home loading">
-      <div class="text-presentation producersWorkshop presses">
+      <div class="text-presentation producersWorkshop presses customClass3Bckg">
           <h3>Presse</h3>
             <div class="subNavigation">
               <nav>
                 <ul class="main">
                   <li>
-                    <a href="communiques.php" class="active" >Communiqués de presse</a>
+                    <a href="communiques.php" class="active customClass3" >Communiqués de presse</a>
                   </li>
                   <li>
                     <a href="retombees-presse.php">Retombées presse</a>
@@ -149,9 +149,9 @@
                     <img src="img/trombonne.png">
                   </div>
                   <div>
-                    <h6>Téléchargez la galerie photos</h6>
+                    <h6 class="customClass1">Téléchargez la galerie photos</h6>
                   </div>
-                  <div>
+                  <div class="customClass1">
                     <a href="">
                       <img src="img/boutonDLRond.png">
                     </a>

@@ -24,7 +24,7 @@
           <div class="innerWrapper container">
               <div class="results-sections">
                 <div class="results-boxes firstBox resultClick seeallResults">
-                    <h6 class="active">Tout</h6>
+                    <h6 class="active customClass4">Tout</h6>
                     <span class="active">536</span>
                 </div>
                 <div class="results-boxes resultClick" rel="contenu">
@@ -44,7 +44,7 @@
                 <div class="contenu contents">
                   <div class="resultsTitle">
                     <h6>Contenu</h6>
-                    <div class="seeAll">tout voir</div>
+                    <div class="seeAll customClass3">tout voir</div>
                   </div>
                   <div class="articles">
                     <div class="articles-content">
@@ -53,7 +53,7 @@
                         <img class="mainPic" src="img/search.png">
                       </div>
                       <div class="textWrapper">
-                        <h6>producers workshop <span>26 jun 2016</span></h6>
+                        <h6 class="customClass4">producers workshop <span>26 jun 2016</span></h6>
                         <p>Rencontrez des experts du monde entier dans le cadre de nos Industry Programs</p>
                       </div>
                     </div>
@@ -65,7 +65,7 @@
                         <img class="mainPic" src="img/no-image.png">
                       </div>
                       <div class="textWrapper">
-                        <h6 class="redtitle">producers workshop</h6>
+                        <h6 class="redtitle customClass1">producers workshop</h6>
                         <p>Rencontrez des experts du monde entier dans le cadre de nos Industry Programs</p>
                       </div>
                     </div>
@@ -99,7 +99,7 @@
                 <div class="medias contents">
                   <div class="resultsTitle">
                     <h6>Médias</h6>
-                    <div class="seeAll">tout voir</div>
+                    <div class="seeAll customClass4">tout voir</div>
                   </div>
                   <div class="articles">
                     <div class="articles-content">
@@ -140,52 +140,52 @@
                   </div>
                   <div class="projection">
                     <div class="programme">
-                      <div>
+                      <div class="customClass1">
                         <img src="img/trombonne.png">
                       </div>
                       <div>
-                        <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                        <h6 class="customClass1">22 mai 2016 - Marché Closes with Record Attendance</h6>
                       </div>
-                      <div>
+                      <div class="customClass1">
                         <a href="">
                           <img src="img/boutonDLRond.png">
                         </a>
                       </div>
                     </div> 
                     <div class="programme">
-                      <div>
+                      <div class="customClass1">
                         <img src="img/trombonne.png">
                       </div>
                       <div>
-                        <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                        <h6 class="customClass1">22 mai 2016 - Marché Closes with Record Attendance</h6>
                       </div>
-                      <div>
+                      <div class="customClass1">
                         <a href="">
                           <img src="img/boutonDLRond.png">
                         </a>
                       </div>
                     </div> 
                     <div class="programme">
-                      <div>
+                      <div class="customClass1">
                         <img src="img/trombonne.png">
                       </div>
                       <div>
-                        <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                        <h6 class="customClass1">22 mai 2016 - Marché Closes with Record Attendance</h6>
                       </div>
-                      <div>
+                      <div class="customClass1">
                         <a href="">
                           <img src="img/boutonDLRond.png">
                         </a>
                       </div>
                     </div> 
                     <div class="programme">
-                      <div>
+                      <div class="customClass1">
                         <img src="img/trombonne.png">
                       </div>
                       <div>
-                        <h6>22 mai 2016 - Marché Closes with Record Attendance</h6>
+                        <h6 class="customClass1">22 mai 2016 - Marché Closes with Record Attendance</h6>
                       </div>
-                      <div>
+                      <div class="customClass1">
                         <a href="">
                           <img src="img/boutonDLRond.png">
                         </a>
