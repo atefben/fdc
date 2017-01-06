@@ -799,7 +799,7 @@ class Importer
         }
         $this->setMediaVideoFilmFilmAssociations($mediaVideo);
         $this->getManager()->flush();
-        unset($file);
+        unlink($file);
         return $mediaVideo;
     }
 
