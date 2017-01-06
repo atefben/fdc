@@ -2,7 +2,6 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FDCPageJury;
 use Doctrine\ORM\NonUniqueResultException;
 
