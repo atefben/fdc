@@ -84,7 +84,10 @@
                         <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active" {% endif %}>SERVICES</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_history' %} class="active" {% endif %}>QUI SOMMES-NOUS ?</a>
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}"
+                                {% if routeName == 'fdc_marche_du_film_who_are_we_history'
+                                or routeName =='fdc_marche_du_film_who_are_we_key_figures'%} class="active"{% endif %}>QUI SOMMES-NOUS ?
+                        </a>
                     </li>
                     <li>
                         <a href="#">PRESSE</a>

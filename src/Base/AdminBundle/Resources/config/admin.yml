@@ -1756,3 +1756,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeHistoryAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Historique}
+
+    base.admin.mdf_who_are_we_key_figures:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeKeyFiguresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeKeyFiguresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Chiffres clés}

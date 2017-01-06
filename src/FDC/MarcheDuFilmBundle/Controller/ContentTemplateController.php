@@ -13,6 +13,7 @@ class ContentTemplateController extends Controller
      * @Route("projections", name="fdc_marche_du_film_edition_projections")
      * @Route("industryprogram", name="fdc_marche_du_film_industry_program_home")
      * @Route("quisommesnous/historique", name="fdc_marche_du_film_who_are_we_history")
+     * @Route("quisommesnous/chiffrescles", name="fdc_marche_du_film_who_are_we_key_figures")
      */
     public function indexAction()
     {
@@ -38,6 +39,11 @@ class ContentTemplateController extends Controller
             case 'fdc_marche_du_film_who_are_we_history':
                 $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_HISTORY;
                 $isWhoAreWe = true;
+                break;
+            case 'fdc_marche_du_film_who_are_we_key_figures':
+                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_KEY_FIGURES;
+                $isWhoAreWe = true;
+                break;
         }
 
         $titleHeader = $contentTemplateManager->getTitleHeaderContent($pageType);
