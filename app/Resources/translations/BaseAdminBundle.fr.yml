@@ -655,7 +655,8 @@ form:
             promotion_details_price_suffix_3: Suffixe du prix 3
             promotion_details_information_3: Description de la ligne 3
         content_template:
-            form_name: Présentation de l'édition - gabarit de contenu
+            edition_presentation: Présentation de l'édition - gabarit de contenu
+            edition_projections: Projections de l'édition - gabarit de contenu
             title: Titre de page
             header: Chapô
             label:

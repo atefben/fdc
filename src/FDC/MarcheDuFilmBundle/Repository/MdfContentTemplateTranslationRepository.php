@@ -16,7 +16,7 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('ctt')
                    ->join('ctt.translatable', 'ct')
                    ->where('ctt.locale = :locale')
-                   ->andWhere('ct.type <= :type')
+                   ->andWhere('ct.type = :type')
                    ->setParameter('locale', $locale)
                    ->setParameter('type', $type)
         ;

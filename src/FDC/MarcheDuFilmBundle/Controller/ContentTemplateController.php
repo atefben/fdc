@@ -10,16 +10,29 @@ class ContentTemplateController extends Controller
 {
     /**
      * @Route("presentation", name="fdc_marche_du_film_edition_presentation")
+     * @Route("projections", name="fdc_marche_du_film_edition_projections")
      */
     public function indexAction()
     {
         $contentTemplateManager = $this->get('mdf.manager.content_template');
 
-        $titleHeader = $contentTemplateManager->getTitleHeaderContent(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $galleryWidgets = $contentTemplateManager->getContentTemplateGalleryWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $fileWidgets = $contentTemplateManager->getContentTemplateFileWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $request = $this->container->get('request');
+        $routeName = $request->get('_route');
+
+        $pageType = '';
+        switch ($routeName) {
+            case 'fdc_marche_du_film_edition_presentation':
+                $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
+                break;
+            case 'fdc_marche_du_film_edition_projections':
+                $pageType = MdfContentTemplate::TYPE_EDITION_PROJECTIONS;
+        }
+
+        $titleHeader = $contentTemplateManager->getTitleHeaderContent($pageType);
+        $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets($pageType);
+        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets($pageType);
+        $galleryWidgets = $contentTemplateManager->getContentTemplateGalleryWidgets($pageType);
+        $fileWidgets = $contentTemplateManager->getContentTemplateFileWidgets($pageType);
 
         $widgets = [];
         $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
