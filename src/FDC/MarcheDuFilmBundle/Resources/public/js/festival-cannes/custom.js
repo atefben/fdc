@@ -22,7 +22,7 @@ $(document).ready(function() {
       autoplay:true,
       slideSpeed : 300,
       paginationSpeed : 400,
-      navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='goldarrowLeft customClass3'><i class='icon icon_flecheGauche customClass3'></div>","<div class='goldarrowLeft customClass3'><i class='icon icon_flecheGauche reverse customClass3'></div>"]
     });
   
   $('#owl-projections').owlCarousel({
@@ -33,7 +33,7 @@ $(document).ready(function() {
       autoplay:true,
       slideSpeed : 300,
       paginationSpeed : 400,
-      navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='goldarrowLeft customClass3'><i class='icon icon_flecheGauche customClass3'></div>","<div class='goldarrowLeft customClass3'><i class='icon icon_flecheGauche reverse customClass3'></div>"]
     });
 
   $('#owl-mid').owlCarousel({
@@ -43,7 +43,7 @@ $(document).ready(function() {
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:true,
-      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='redarrowLeft customClass3'><i class='icon icon_flecheGauche customClass3'></div>","<div class='redarrowRight customClass3'><i class='icon icon_flecheGauche reverse customClass3'></div>"]
    
   });
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
       slideSpeed : 600,
       paginationSpeed : 400,
       items : 3,
-      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='redarrowLeft customClass3'><i class='icon icon_flecheGauche customClass3'></div>","<div class='redarrowRight customClass3'><i class='icon icon_flecheGauche reverse customClass3'></div>"]
  
   });
 
@@ -638,7 +638,7 @@ String.prototype.trunc = function (n, useWordBoundary) {
 };
 
 var fixed = false;
- var topTrigger = $('.subNavigation').offset().top;
+ var topTrigger = $('.subNavigation').offset().top - 250;
  $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {

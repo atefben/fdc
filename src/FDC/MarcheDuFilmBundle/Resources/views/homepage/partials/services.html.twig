@@ -1,7 +1,7 @@
 <div id="our-services">
     <div class="container">
         {% if content %}
-            <span>{{ content.servicesCategory }}</span>
+            <span class="customClass2">{{ content.servicesCategory }}</span>
             <h3>{{ content.servicesTitle }}</h3>
         {% endif %}
         <div class="services-container">
@@ -9,10 +9,10 @@
                 {% for service in services %}
                 <a href="{{ service.url }}">
                     <div class="services-boxes" data-rel="{{ 'pic' ~ loop.index }}">
-                        <div>{{ service.title }}</div>
+                        <div class="customClass2">{{ service.title }}</div>
                         <div>{{ service.description|length > 95 ? service.description|slice(0, 95) ~ '...' : service.description  }}</div>
                         <div>voir le détail</div>
-                        <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
+                        <span class="glyphicon glyphicon-menu-right customClass2"><i class="icon icon_flecheGauche reverse"></i></span>
                     </div>
                 </a>
                 {% endfor %}
