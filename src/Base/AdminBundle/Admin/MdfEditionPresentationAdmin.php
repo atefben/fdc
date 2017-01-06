@@ -5,7 +5,6 @@ namespace Base\AdminBundle\Admin;
 use Base\AdminBundle\Component\Admin\Admin;
 
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
-use FDC\MarcheDuFilmBundle\Entity\MdfEditionPresentation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;

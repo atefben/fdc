@@ -9,14 +9,14 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class MdfEditionProjectionsAdmin
+ * Class MdfIndustryProgramHomeAdmin
  *
  * @package Base\AdminBundle\Admin
  */
-class MdfEditionProjectionsAdmin extends Admin
+class MdfIndustryProgramHomeAdmin extends Admin
 {
-    protected $baseRoutePattern = 'mdfeditionprojections';
-    protected $baseRouteName = 'mdf_edition_projections';
+    protected $baseRoutePattern = 'mdfindustryprogramhome';
+    protected $baseRouteName = 'mdf_industry_program_home';
 
     public function configure()
     {
@@ -102,7 +102,7 @@ class MdfEditionProjectionsAdmin extends Admin
         $query->andWhere(
             $query->expr()->eq($query->getRootAlias().'.type', ':type')
         );
-        $query->setParameter('type', MdfContentTemplate::TYPE_EDITION_PROJECTIONS);
+        $query->setParameter('type', MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME);
 
         return $query;
     }
@@ -110,6 +110,6 @@ class MdfEditionProjectionsAdmin extends Admin
     public function prePersist($page)
     {
         parent::prePersist($page);
-        $page->setType(MdfContentTemplate::TYPE_EDITION_PROJECTIONS);
+        $page->setType(MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME);
     }
 }

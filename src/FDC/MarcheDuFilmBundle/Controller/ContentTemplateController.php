@@ -11,6 +11,7 @@ class ContentTemplateController extends Controller
     /**
      * @Route("presentation", name="fdc_marche_du_film_edition_presentation")
      * @Route("projections", name="fdc_marche_du_film_edition_projections")
+     * @Route("industryprogram", name="fdc_marche_du_film_industry_program_home")
      */
     public function indexAction()
     {
@@ -26,6 +27,10 @@ class ContentTemplateController extends Controller
                 break;
             case 'fdc_marche_du_film_edition_projections':
                 $pageType = MdfContentTemplate::TYPE_EDITION_PROJECTIONS;
+                break;
+            case 'fdc_marche_du_film_industry_program_home':
+                $pageType = MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME;
+                break;
         }
 
         $titleHeader = $contentTemplateManager->getTitleHeaderContent($pageType);
@@ -50,7 +55,7 @@ class ContentTemplateController extends Controller
             }
         });
 
-        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:editionPresentation.html.twig', array(
+        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', array(
             'titleHeader' => $titleHeader,
             'widgets' => $widgets
         ));
