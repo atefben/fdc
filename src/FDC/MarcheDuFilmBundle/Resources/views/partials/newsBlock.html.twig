@@ -1,17 +1,19 @@
-<div class="our-news dynamic">
+<div class="our-news dynamic customClass3Bckg">
     <span>DECOUVREZ</span>
     <h3>les derniÈrEs actualités</h3>
     <div class="innerWrapper">
         {% for newsItem in news %}
-            <div class="articles">
-                <div class="readMore">...</div>
-                {% if newsItem.translatable.image is not empty %}
-                    <div class="articles-img"><img src="{% path newsItem.translatable.image|trans_fallback('file'), 'reference' %}"></div>
+            <div class="articles {% if loop.index == 3 %}noShow{% endif %}">
+                <a class="color-inherit" href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}"><div class="readMore">...</div></a>
+                {% if newsItem['image'] is not empty %}
+                    <div class="articles-img"><img src="{% path newsItem['image'][0].image|trans_fallback('file'), 'reference' %}"></div>
                 {% endif %}
                 <div class="articles-content">
-                    <span>{{ newsItem.newsTheme }} <span class="article-date">{{ newsItem.translatable.publishedAt|date("d M Y") }}</span></span>
-                    <h6>{{ newsItem.newsTitle }}</h6>
-                    <p>{{ newsItem.description|raw }}</p>
+                    {% if newsItem['image'] is not empty %}<a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">{% endif %}
+                    <span class="customClass4">{{ newsItem['content'].theme }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
+                    <h6>{{ newsItem['content'].title }}</h6>
+                    <p>{{ newsItem['content'].header|raw }}</p>
+                    {% if newsItem.image is not empty %}</a>{% endif %}
                 </div>
             </div>
         {% endfor %}

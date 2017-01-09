@@ -4,7 +4,10 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Sluggable\Util\Urlizer;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * MdfContentTemplateTranslation
@@ -22,6 +25,22 @@ class MdfContentTemplateTranslation
      * @ORM\Column(type="string", nullable=true)
      */
     protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $theme;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"}, updatable=false)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Groups({"classics"})
+     */
+    protected $slug;
 
     /**
      * @var string
@@ -53,6 +72,26 @@ class MdfContentTemplateTranslation
     /**
      * @return string
      */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param $theme
+     *
+     * @return $this
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getHeader()
     {
         return $this->header;
@@ -66,6 +105,28 @@ class MdfContentTemplateTranslation
     public function setHeader($header)
     {
         $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param $slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }

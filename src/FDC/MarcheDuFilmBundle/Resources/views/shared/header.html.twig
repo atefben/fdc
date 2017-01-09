@@ -74,14 +74,13 @@
                         <a href="/"
                                 {% if routeName == 'fdc_marchedufilm_default_index'
                                 or routeName == 'fdc_marche_du_film_edition_presentation'
-                                or routeName =='fdc_marche_du_film_edition_projections' %} class="active"{% endif %}>Édition 2017
-                        </a>
+                                or routeName =='fdc_marche_du_film_edition_projections' %} class="active customClass1"{% endif %}>Édition 2017</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}" {% if routeName == 'fdc_marche_du_film_accreditations' %} class="active" {% endif %}>ACCRÉDITATIONS</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}" {% if routeName == 'fdc_marche_du_film_accreditations' %} class="active customClass1" {% endif %}>ACCRÉDITATIONS</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active" {% endif %}>SERVICES</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active customClass1" {% endif %}>SERVICES</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}"
@@ -110,7 +109,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="subMenu" id="subMenu">
+        <div class="subMenu customClass1" id="subMenu">
             <div class="bigContainer">
                 <ul class="tleft">
                     <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>

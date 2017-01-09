@@ -2,7 +2,7 @@
 
 {% block main %}
     <div id="main" class="home loading">
-        <div class="text-presentation producersWorkshop opportunites mdf">
+        <div class="text-presentation producersWorkshop opportunites mdf customClass2ckg">
             <h3>{{ service|trans_fallback('title')|raw }}</h3>
             <div class="subNavigation">
                 <nav>
@@ -55,7 +55,7 @@
                                 </div>
                             {% endif %}
                             <div class="tabBox">
-                                <span>{{ (widget|trans_fallback('title'))|raw }}</span>
+                                <span class="customClassBlue">{{ (widget|trans_fallback('title'))|raw }}</span>
                                 <h5>{{ (widget|trans_fallback('subTitle'))|raw }}</h5>
                                 <div>{{ (widget|trans_fallback('body'))|raw }}</div>
                                 <input type="checkbox" class="read-more-state" id="post-{{ widget.id }}" style="opacity:0;"/>
@@ -67,7 +67,7 @@
                                 <i class='icon icon_flecheGauche opportuniteArrow'></i>
                                 <label for="post-{{ widget.id }}" class="read-more-trigger">
                                     <a href="{{ widget|trans_fallback('url') }}">
-                                        <div class="blueBtn">Réserver</div>
+                                        <div class="blueBtn customClassBlue">Réserver</div>
                                     </a>
                                 </label>
                             </div>

@@ -89,6 +89,56 @@ class ContentTemplateManager
         );
     }
 
+    public function getNewsPageData($slug) {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+        $titleHeader = $this->getTitleHeaderContentBySlug($pageType, $slug);
+
+        if (empty($titleHeader))
+            throw $this->createNotFoundException('Empty content');
+
+        $pageId = $titleHeader->getTranslatable()->getId();
+
+        $textWidgets = $this->getContentTemplateTextWidgetsByPageId($pageId);
+        $imageWidgets = $this->getContentTemplateImageWidgetsByPageId($pageId);
+        $galleryWidgets = $this->getContentTemplateGalleryWidgetsByPageId($pageId);
+        $fileWidgets = $this->getContentTemplateFileWidgetsByPageId($pageId);
+
+        $widgets = [];
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
+
+        usort($widgets, function($a, $b)
+        {
+            if (property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
+                return strcmp($a->getTranslatable()->getPosition(), $b->getTranslatable()->getPosition());
+            } else if (property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
+                return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
+            } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
+                return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
+            } else if (!property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
+                return strcmp($a->getPosition(), $b->getPosition());
+            }
+        });
+
+        return array(
+            'titleHeader' => $titleHeader,
+            'widgets' => $widgets,
+            'isWhoAreWe' => false
+        );
+    }
+
+    public function getHomepageNewsContent() {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        $news = $this->getHomepageNews($pageType);
+
+        foreach ($news as $key => $newsItem) {
+            $newsContent[$key]['content'] = $newsItem;
+            $newsContent[$key]['image'] = $this->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+        }
+
+        return isset($newsContent) ? $newsContent : [];
+    }
+
     public function getTitleHeaderContent($pageType) {
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)
@@ -117,5 +167,44 @@ class ContentTemplateManager
         return $this->em
             ->getRepository(MdfContentTemplateWidgetFile::class)
             ->getFileWidgetsByPageType($pageType);
+    }
+
+    public function getTitleHeaderContentBySlug($pageType, $slug) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getTitleHeaderByLocaleAndTypeAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $pageType, $slug);
+    }
+
+    public function getContentTemplateTextWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetTextTranslation::class)
+            ->getTextWidgetsByLocaleAndPageId($this->requestStack->getMasterRequest()->get('_locale'), $pageId);
+    }
+
+    public function getContentTemplateImageWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetImage::class)
+            ->getImageWidgetsByPageId($pageId);
+    }
+
+    public function getContentTemplateGalleryWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetGallery::class)
+            ->getGalleryWidgetsByPageId($pageId);
+    }
+
+    public function getContentTemplateFileWidgetsByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetFile::class)
+            ->getFileWidgetsByPageId($pageId);
+    }
+
+    public function getHomepageNews($pageType) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getHomepageNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
+                $pageType
+            );
     }
 }

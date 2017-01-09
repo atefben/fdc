@@ -3,14 +3,15 @@
 {% block main %}
     <div id="main" class="home loading">
         {% if accreditationContent is not empty %}
-            {% if accreditationContent.state == 0 %}
-                <div class="accredidationsMessage">
-                    <a href="{{ accreditationContent.activeUrl }}">
-                        <div>{{ accreditationContent.subtitle }}</div>
-                        <div>S'inscrire</div></a>
-                </div>
-            {% endif %}
-            <div class="text-presentation accredidationsDetails greyBckg mdf">
+            <div class="accredidationsMessage customClass5Bckg">
+                {% if accreditationContent.state == 0 %}
+                    <div class="accredMsg">{{ accreditationContent.subtitle }}</div>
+                    <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">S'inscrire</div></a>
+                {% elseif accreditationContent.state == 1 %}
+                    <div class="noAvail">{{ accreditationContent.subtitle }}</div>
+                {% endif %}
+            </div>
+            <div class="text-presentation accredidationsDetails greyBckg mdf customClass5">
                 <h3>{{ accreditationContent.title }}</h3>
             </div>
             <div class="greyBckg">
@@ -29,12 +30,15 @@
                         </ul>
                     </div>
                 </div>
-                <div class="accreditations">
+                <div class="accreditations customClass5Bckg">
                     <div class="bigContainer">
                         <h3>{{ accreditationContent.promotionsTitle|raw }}</h3>
                         <div class="pricesContainer">
                             <div class="innerWrapper">
-                                <div class="articles">
+                                <div class="articles {% if accreditationContent.promotionState1 %}pricesNoavail{% endif %}">
+                                    {% if accreditationContent.promotionState1 %}
+                                        <div class="articlesOverlay"></div>
+                                    {% endif %}
                                     {% if accreditationContent.isEarlyBird %}
                                         <span class="earlyBird"><img src="{{ asset('bundles/fdcmarchedufilm/img/early-bird.png') }}"></span>
                                     {% endif %}
@@ -45,7 +49,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="articles">
+                                <div class="articles {% if accreditationContent.promotionState2 %}pricesNoavail{% endif %}">
+                                    {% if accreditationContent.promotionState2 %}
+                                        <div class="articlesOverlay"></div>
+                                    {% endif %}
                                     <div class="articles-content">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle2 }}</span>
@@ -53,7 +60,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="articles">
+                                <div class="articles {% if accreditationContent.promotionState3 %}pricesNoavail{% endif %}">
+                                    {% if accreditationContent.promotionState3 %}
+                                        <div class="articlesOverlay"></div>
+                                    {% endif %}
                                     <div class="articles-content">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle3 }}</span>

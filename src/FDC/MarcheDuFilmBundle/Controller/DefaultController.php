@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -15,13 +16,13 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $homepageManager = $this->get('mdf.manager.homepage');
-        $newsManager = $this->get('mdf.manager.news');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
 
+        $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
         $homepageContent = $homepageManager->getHomepageContent();
-        $news = $newsManager->getHomepageNews();
         $contact = $contactManager->getContactInfo();
         $services = $homepageManager->getHomepageServices();
 
@@ -29,7 +30,7 @@ class DefaultController extends Controller
             'sliderTop' => $slidersTop,
             'slider' => $sliders,
             'homepageContent' => $homepageContent,
-            'news' => $news,
+            'news' => $newsContent,
             'contact' => $contact,
             'services' => $services
         ));

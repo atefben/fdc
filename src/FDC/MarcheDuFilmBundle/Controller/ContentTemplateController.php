@@ -27,4 +27,17 @@ class ContentTemplateController extends Controller
 
         return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $contentTemplateManager->getPageData($routeName));
     }
+
+    /**
+     * @Route("actualite/{slug}", name="fdc_marche_du_film_news_details")
+     */
+    public function newsAction($slug)
+    {
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
+
+        return $this->render(
+            'FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig',
+            $contentTemplateManager->getNewsPageData($slug)
+        );
+    }
 }
