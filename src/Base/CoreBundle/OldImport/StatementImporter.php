@@ -602,9 +602,7 @@ class StatementImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                if (!$statement->getAssociatedFilm()) {
-                    $statement->setAssociatedFilm($film);
-                }
+                $statement->setAssociatedFilm(null);
 
                 $found = false;
                 foreach ($statement->getAssociatedFilms() as $associatedFilm) {

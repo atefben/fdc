@@ -667,9 +667,7 @@ class NewsImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                if (!$news->getAssociatedFilm()) {
-                    $news->setAssociatedFilm($film);
-                }
+                $news->setAssociatedFilm(null);
 
                 $found = false;
                 foreach ($news->getAssociatedFilms() as $associatedFilm) {
@@ -680,13 +678,14 @@ class NewsImporter extends Importer
                 if (!$found) {
                     $associatedFilm = new NewsFilmFilmAssociated();
                     $associatedFilm
-                        ->setNews($news)
                         ->setAssociation($film)
                     ;
+                    $news->addAssociatedFilm($associatedFilm);
                     $this->getManager()->persist($film);
+                    $this->getManager()->flush();
                 }
             }
-            $this->getManager()->flush();
+
         }
     }
 
