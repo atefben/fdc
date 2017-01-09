@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
+use Base\CoreBundle\Entity\InfoInfoAssociated;
 use Base\CoreBundle\Entity\InfoWidget;
 use Base\CoreBundle\Entity\InfoWidgetAudio;
 use Base\CoreBundle\Entity\InfoWidgetImage;
@@ -14,6 +15,7 @@ use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideo;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
+use Base\CoreBundle\Entity\NewsNewsAssociated;
 use Base\CoreBundle\Entity\NewsWidgetAudio;
 use Base\CoreBundle\Entity\NewsWidgetImage;
 use Base\CoreBundle\Entity\NewsWidgetText;
@@ -21,6 +23,7 @@ use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideo;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
+use Base\CoreBundle\Entity\StatementStatementAssociated;
 use Base\CoreBundle\Entity\StatementWidget;
 use Base\CoreBundle\Entity\StatementWidgetAudio;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
@@ -276,6 +279,26 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
+    protected function factorizeNewsAssociated(NewsArticle $news)
+    {
+        $done = array();
+        foreach ($news->getAssociatedNews() as $associatedNews) {
+            if ($associatedNews instanceof NewsNewsAssociated) {
+                if (!$associatedNews->getAssociation()) {
+                    $news->removeAssociatedNew($associatedNews);
+                    $this->getManager()->remove($associatedNews);
+                } else if (in_array($associatedNews->getAssociation()->getId(), $done)) {
+                    $news->removeAssociatedNew($associatedNews);
+                    $associatedNews->setAssociation(null);
+                    $this->getManager()->remove($associatedNews);
+                } else {
+                    $done[] = $associatedNews->getAssociation()->getId();
+                }
+            }
+        }
+        $this->getManager()->flush();
+    }
+
     protected function factorizeInfoWidgetText(InfoArticle $info)
     {
         /**
@@ -379,6 +402,26 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->getManager()->remove($associatedFilm);
                 } else {
                     $done[] = $associatedFilm->getAssociation()->getId();
+                }
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    protected function factorizeInfoAssociated(InfoArticle $info)
+    {
+        $done = array();
+        foreach ($info->getAssociatedInfo() as $associatedInfo) {
+            if ($associatedInfo instanceof InfoInfoAssociated) {
+                if (!$associatedInfo->getAssociation()) {
+                    $info->removeAssociatedInfo($associatedInfo);
+                    $this->getManager()->remove($associatedInfo);
+                } else if (in_array($associatedInfo->getAssociation()->getId(), $done)) {
+                    $info->removeAssociatedInfo($associatedInfo);
+                    $associatedInfo->setAssociation(null);
+                    $this->getManager()->remove($associatedInfo);
+                } else {
+                    $done[] = $associatedInfo->getAssociation()->getId();
                 }
             }
         }
@@ -554,6 +597,26 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->getManager()->remove($associatedFilm);
                 } else {
                     $done[] = $associatedFilm->getAssociation()->getId();
+                }
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    protected function factorizeStatementAssociated(StatementArticle $statement)
+    {
+        $done = array();
+        foreach ($statement->getAssociatedStatement() as $associatedStatement) {
+            if ($associatedStatement instanceof StatementStatementAssociated) {
+                if (!$associatedStatement->getAssociation()) {
+                    $statement->removeAssociatedStatement($associatedStatement);
+                    $this->getManager()->remove($associatedStatement);
+                } else if (in_array($associatedStatement->getAssociation()->getId(), $done)) {
+                    $statement->removeAssociatedStatement($associatedStatement);
+                    $associatedStatement->setAssociation(null);
+                    $this->getManager()->remove($associatedStatement);
+                } else {
+                    $done[] = $associatedStatement->getAssociation()->getId();
                 }
             }
         }
