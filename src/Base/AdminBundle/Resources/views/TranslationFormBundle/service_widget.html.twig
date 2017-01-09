@@ -31,9 +31,9 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="col-md-12">
+                                            {{ form_row(translationsFields.url) }}
                                             {{ form_row(translationsFields.title) }}
                                             {{ form_row(translationsFields.subTitle) }}
-                                            {{ form_row(translationsFields.header) }}
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(form.parent.children.widgetCollections) }}
+                                {{ form_row(form.parent.children.productCollections) }}
                             </div>
                         </div>
                     </div>
@@ -59,6 +59,16 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         <div class="form-group">
                                             <label class="control-label">
+                                                {{ 'form.label_alt_img'|trans }}
+                                            </label>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.url }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
                                                 {{ 'form.label_title'|trans }}
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
@@ -74,16 +84,6 @@
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
                                                     {{ form.children.fr.vars.value.subTitle }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label_alt_img'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.header }}
                                                 </div>
                                             {% endif %}
                                         </div>

@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ServiceWidgetProductAdmin extends Admin
+class ServiceWidgetAdmin extends Admin
 {
 
     protected $datagridValues = array(
@@ -65,9 +65,11 @@ class ServiceWidgetProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'sonata_type_model_list',array(
-                'btn_delete' => true
+            ->add('_type', 'hidden', array(
+                'data'   => 'service_widget_type',
+                'mapped' => false
             ))
+            ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
@@ -79,45 +81,28 @@ class ServiceWidgetProductAdmin extends Admin
                         ),
                     ),
                     'url'          => array(
-                        'label'              => 'form.label.service_widget_product_url',
+                        'label'              => 'form.label.service_widget_tab_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'title'        => array(
-                        'label'              => 'form.label.service_widget_product_title',
+                        'label'              => 'form.label.service_widget_tab_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subTitle'     => array(
-                        'label'              => 'form.label.service_widget_product_sub_title',
+                        'label'              => 'form.label.service_widget_tab_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
-                    ),
-                    'body'         => array(
-                        'label'              => 'form.label.service_widget_product_body',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'attr'               => array(
-                            'class' => 'ckeditor',
-                        ),
-                        'required'           => false,
-                        'field_type'         => 'ckeditor',
-                        'config_name'        => 'widget',
-                    ),
-                    'toggledBody'  => array(
-                        'label'              => 'form.label.service_widget_product_toggled_body',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'attr'               => array(
-                            'class' => 'ckeditor',
-                        ),
-                        'required'           => false,
-                        'field_type'         => 'ckeditor',
-                        'config_name'        => 'widget',
-                    ),
-                    'createdAt'    => array(
-                        'display' => false,
-                    ),
-                    'updatedAt'    => array(
-                        'display' => false,
-                    ),
+                    )
                 ),
-            ));
+            ))
+            ->add('productCollections', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.gallery.medias',
+                'translation_domain' => 'BaseAdminBundle',
+            ), array(
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
+            ))
         ;
     }
 

@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use FDC\MarcheDuFilmBundle\Entity\Service;
 use FDC\MarcheDuFilmBundle\Entity\ServiceTranslation;
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -14,23 +14,13 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class ServiceAdmin extends Admin
 {
 
-    protected $translationDomain = 'BaseAdminBundle';
-    protected $formOptions = array(
-        'cascade_validation' => true,
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
     );
 
-    public function configure()
-    {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
-    }
-
-    public function getFormTheme()
-    {
-        return array_merge(
-            parent::getFormTheme(),
-            array('BaseAdminBundle:Form:polycollection.html.twig')
-        );
-    }
+    protected $translationDomain = 'BaseAdminBundle';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -38,10 +28,18 @@ class ServiceAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('title', null, array(
+                'translation_domain' => 'BaseAdminBundle',
+            ))
         ;
+
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
 
     /**
@@ -50,15 +48,16 @@ class ServiceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('name')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
-                    'edit'   => array(),
-                    'delete' => array(),
-                ),
+                    'edit' => array(),
+                )
             ))
         ;
     }
@@ -126,15 +125,14 @@ class ServiceAdmin extends Admin
                     ),
                 ),
             ))
-            ->add('widgets', 'infinite_form_polycollection', array(
-                'label'        => false,
-                'types'        => array(
-                    'service_widget_product_type',
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false,
+            ->add('widgetCollections', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.gallery.medias',
+                'translation_domain' => 'BaseAdminBundle',
+            ), array(
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
@@ -171,11 +169,6 @@ class ServiceAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
         ;
     }
 }

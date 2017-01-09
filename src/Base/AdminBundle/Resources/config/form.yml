@@ -556,9 +556,13 @@ services:
             - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]
 
     base.admin.form.service_widget_type:
-            class: FDC\MarcheDuFilmBundle\Form\Type\ServiceWidgetType
-            tags:
-                - { name: form.type, alias: 'service_widget_type'}
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ServiceWidgetType
+        tags:
+            - { name: form.type, alias: 'service_widget_type'}
+        calls:
+            - ['setServiceWidgetAdmin', ['@base.admin.service_widget']]
+            - ['setServiceWidgetProductAdmin  ', ['@base.admin.service_widget_product']]
 
     base.admin.form.service_widget_type_product:
         scope: prototype
