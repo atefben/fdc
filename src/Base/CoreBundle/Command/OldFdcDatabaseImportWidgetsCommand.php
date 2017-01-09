@@ -6,18 +6,21 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
 use Base\CoreBundle\Entity\InfoWidget;
 use Base\CoreBundle\Entity\InfoWidgetAudio;
 use Base\CoreBundle\Entity\InfoWidgetImage;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideo;
 use Base\CoreBundle\Entity\NewsArticle;
+use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
 use Base\CoreBundle\Entity\NewsWidgetAudio;
 use Base\CoreBundle\Entity\NewsWidgetImage;
 use Base\CoreBundle\Entity\NewsWidgetText;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideo;
 use Base\CoreBundle\Entity\StatementArticle;
+use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
 use Base\CoreBundle\Entity\StatementWidget;
 use Base\CoreBundle\Entity\StatementWidgetAudio;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
@@ -85,6 +88,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $bar->advance();
                     $this->factorizeInfoWidgetText($item);
                     $this->factorizeInfoWidgetImage($item);
+                    $this->factorizeInfoWidgetAudio($item);
+                    $this->factorizeInfoWidgetVideo($item);
+                    $this->factorizeInfoWidgetFilms($item);
                 }
             }
 
@@ -109,6 +115,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $bar->advance();
                     $this->factorizeStatementWidgetText($item);
                     $this->factorizeStatementWidgetImage($item);
+                    $this->factorizeStatementWidgetAudio($item);
+                    $this->factorizeStatementWidgetVideo($item);
+                    $this->factorizeStatementWidgetFilms($item);
                 }
             }
 
@@ -131,6 +140,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->factorizeNewsWidgetImage($item);
                     $this->factorizeNewsWidgetAudio($item);
                     $this->factorizeNewsWidgetVideo($item);
+                    $this->factorizeNewsWidgetFilms($item);
                 }
             } else {
                 $count = $this->getNewsCount();
@@ -148,6 +158,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                         $this->factorizeNewsWidgetImage($item);
                         $this->factorizeNewsWidgetAudio($item);
                         $this->factorizeNewsWidgetVideo($item);
+                        $this->factorizeNewsWidgetFilms($item);
                     }
                 }
                 $bar->finish();
@@ -245,6 +256,26 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
+    protected function factorizeNewsWidgetFilms(NewsArticle $news)
+    {
+        $done = array();
+        foreach ($news->getAssociatedFilms() as $associatedFilm) {
+            if ($associatedFilm instanceof NewsFilmFilmAssociated) {
+                if (!$associatedFilm->getAssociation()) {
+                    $news->removeAssociatedFilm($associatedFilm);
+                    $this->getManager()->remove($associatedFilm);
+                } else if (in_array($associatedFilm->getAssociation()->getId(), $done)) {
+                    $news->removeAssociatedFilm($associatedFilm);
+                    $associatedFilm->setAssociation(null);
+                    $this->getManager()->remove($associatedFilm);
+                } else {
+                    $done[] = $associatedFilm->getAssociation()->getId();
+                }
+            }
+        }
+        $this->getManager()->flush();
+    }
+
     protected function factorizeInfoWidgetText(InfoArticle $info)
     {
         /**
@@ -329,6 +360,26 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                 }
                 $widget->setFile(null);
                 $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    protected function factorizeInfoWidgetFilms(InfoArticle $info)
+    {
+        $done = array();
+        foreach ($info->getAssociatedFilms() as $associatedFilm) {
+            if ($associatedFilm instanceof InfoFilmFilmAssociated) {
+                if (!$associatedFilm->getAssociation()) {
+                    $info->removeAssociatedFilm($associatedFilm);
+                    $this->getManager()->remove($associatedFilm);
+                } else if (in_array($associatedFilm->getAssociation()->getId(), $done)) {
+                    $info->removeAssociatedFilm($associatedFilm);
+                    $associatedFilm->setAssociation(null);
+                    $this->getManager()->remove($associatedFilm);
+                } else {
+                    $done[] = $associatedFilm->getAssociation()->getId();
+                }
             }
         }
         $this->getManager()->flush();
@@ -489,6 +540,26 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
+    protected function factorizeStatementWidgetFilms(StatementArticle $statement)
+    {
+        $done = array();
+        foreach ($statement->getAssociatedFilms() as $associatedFilm) {
+            if ($associatedFilm instanceof StatementFilmFilmAssociated) {
+                if (!$associatedFilm->getAssociation()) {
+                    $statement->removeAssociatedFilm($associatedFilm);
+                    $this->getManager()->remove($associatedFilm);
+                } else if (in_array($associatedFilm->getAssociation()->getId(), $done)) {
+                    $statement->removeAssociatedFilm($associatedFilm);
+                    $associatedFilm->setAssociation(null);
+                    $this->getManager()->remove($associatedFilm);
+                } else {
+                    $done[] = $associatedFilm->getAssociation()->getId();
+                }
+            }
+        }
+        $this->getManager()->flush();
+    }
+
 
     /**
      * @param $page
@@ -530,8 +601,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                 ->setFirstResult(($page - 1) * 50)
                 ->setMaxResults(50)
                 ->getQuery()
-                ->getResult())
-            ;
+                ->getResult());
 
         }
 
