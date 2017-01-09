@@ -7,15 +7,21 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoWidget;
+use Base\CoreBundle\Entity\InfoWidgetAudio;
 use Base\CoreBundle\Entity\InfoWidgetImage;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
+use Base\CoreBundle\Entity\InfoWidgetVideo;
 use Base\CoreBundle\Entity\NewsArticle;
+use Base\CoreBundle\Entity\NewsWidgetAudio;
 use Base\CoreBundle\Entity\NewsWidgetImage;
 use Base\CoreBundle\Entity\NewsWidgetText;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
+use Base\CoreBundle\Entity\NewsWidgetVideo;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementWidget;
+use Base\CoreBundle\Entity\StatementWidgetAudio;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
+use Base\CoreBundle\Entity\StatementWidgetVideo;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
@@ -113,6 +119,8 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                 $bar->advance();
                 $this->factorizeNewsWidgetText($item);
                 $this->factorizeNewsWidgetImage($item);
+                $this->factorizeNewsWidgetAudio($item);
+                $this->factorizeNewsWidgetVideo($item);
             }
         }
 
@@ -177,6 +185,38 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
+    protected function factorizeNewsWidgetAudio(NewsArticle $news)
+    {
+        $first = array();
+        foreach ($news->getWidgets() as $widget) {
+            if ($widget instanceof NewsWidgetAudio) {
+                if (!array_key_exists($widget->getOldImportReference(), $first)) {
+                    $first[$widget->getOldImportReference()] = $widget;
+                    continue;
+                }
+                $widget->setFile(null);
+                $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    protected function factorizeNewsWidgetVideo(NewsArticle $news)
+    {
+        $first = array();
+        foreach ($news->getWidgets() as $widget) {
+            if ($widget instanceof NewsWidgetVideo) {
+                if (!array_key_exists($widget->getOldImportReference(), $first)) {
+                    $first[$widget->getOldImportReference()] = $widget;
+                    continue;
+                }
+                $widget->setFile(null);
+                $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
     protected function factorizeInfoWidgetText(InfoArticle $info)
     {
         /**
@@ -228,6 +268,38 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->getManager()->remove($media);
                 }
                 $this->getManager()->remove($widget->getGallery());
+                $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    protected function factorizeInfoWidgetAudio(InfoArticle $info)
+    {
+        $first = array();
+        foreach ($info->getWidgets() as $widget) {
+            if ($widget instanceof InfoWidgetAudio) {
+                if (!array_key_exists($widget->getOldImportReference(), $first)) {
+                    $first[$widget->getOldImportReference()] = $widget;
+                    continue;
+                }
+                $widget->setFile(null);
+                $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    protected function factorizeInfoWidgetVideo(InfoArticle $info)
+    {
+        $first = array();
+        foreach ($info->getWidgets() as $widget) {
+            if ($widget instanceof InfoWidgetVideo) {
+                if (!array_key_exists($widget->getOldImportReference(), $first)) {
+                    $first[$widget->getOldImportReference()] = $widget;
+                    continue;
+                }
+                $widget->setFile(null);
                 $this->getManager()->remove($widget);
             }
         }
@@ -329,6 +401,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
+    /**
+     * @param FDCPageLaSelectionCannesClassics $classics
+     */
     protected function factorizeClassicsWidgetImage(FDCPageLaSelectionCannesClassics $classics)
     {
         $first = array();
@@ -347,6 +422,45 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         }
         $this->getManager()->flush();
     }
+
+    /**
+     * @param StatementArticle $statement
+     */
+    protected function factorizeStatementWidgetAudio(StatementArticle $statement)
+    {
+        $first = array();
+        foreach ($statement->getWidgets() as $widget) {
+            if ($widget instanceof StatementWidgetAudio) {
+                if (!array_key_exists($widget->getOldImportReference(), $first)) {
+                    $first[$widget->getOldImportReference()] = $widget;
+                    continue;
+                }
+                $widget->setFile(null);
+                $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
+    /**
+     * @param StatementArticle $statement
+     */
+    protected function factorizeStatementWidgetVideo(StatementArticle $statement)
+    {
+        $first = array();
+        foreach ($statement->getWidgets() as $widget) {
+            if ($widget instanceof StatementWidgetVideo) {
+                if (!array_key_exists($widget->getOldImportReference(), $first)) {
+                    $first[$widget->getOldImportReference()] = $widget;
+                    continue;
+                }
+                $widget->setFile(null);
+                $this->getManager()->remove($widget);
+            }
+        }
+        $this->getManager()->flush();
+    }
+
 
     /**
      * @return NewsArticle[]
