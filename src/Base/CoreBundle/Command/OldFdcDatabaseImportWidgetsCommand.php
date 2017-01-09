@@ -93,7 +93,8 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->factorizeInfoWidgetImage($item);
                     $this->factorizeInfoWidgetAudio($item);
                     $this->factorizeInfoWidgetVideo($item);
-                    $this->factorizeInfoWidgetFilms($item);
+                    $this->factorizeInfoAssociatedFilms($item);
+                    $this->factorizeInfoAssociated($item);
                 }
             }
 
@@ -120,7 +121,8 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->factorizeStatementWidgetImage($item);
                     $this->factorizeStatementWidgetAudio($item);
                     $this->factorizeStatementWidgetVideo($item);
-                    $this->factorizeStatementWidgetFilms($item);
+                    $this->factorizeStatementAssociatedFilms($item);
+                    $this->factorizeStatementAssociated($item);
                 }
             }
 
@@ -143,7 +145,8 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     $this->factorizeNewsWidgetImage($item);
                     $this->factorizeNewsWidgetAudio($item);
                     $this->factorizeNewsWidgetVideo($item);
-                    $this->factorizeNewsWidgetFilms($item);
+                    $this->factorizeNewsAssociatedFilms($item);
+                    $this->factorizeNewsAssociated($item);
                 }
             } else {
                 $count = $this->getNewsCount();
@@ -161,7 +164,8 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                         $this->factorizeNewsWidgetImage($item);
                         $this->factorizeNewsWidgetAudio($item);
                         $this->factorizeNewsWidgetVideo($item);
-                        $this->factorizeNewsWidgetFilms($item);
+                        $this->factorizeNewsAssociatedFilms($item);
+                        $this->factorizeNewsAssociated($item);
                     }
                 }
                 $bar->finish();
@@ -259,7 +263,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeNewsWidgetFilms(NewsArticle $news)
+    protected function factorizeNewsAssociatedFilms(NewsArticle $news)
     {
         $done = array();
         foreach ($news->getAssociatedFilms() as $associatedFilm) {
@@ -388,7 +392,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoWidgetFilms(InfoArticle $info)
+    protected function factorizeInfoAssociatedFilms(InfoArticle $info)
     {
         $done = array();
         foreach ($info->getAssociatedFilms() as $associatedFilm) {
@@ -583,7 +587,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeStatementWidgetFilms(StatementArticle $statement)
+    protected function factorizeStatementAssociatedFilms(StatementArticle $statement)
     {
         $done = array();
         foreach ($statement->getAssociatedFilms() as $associatedFilm) {
