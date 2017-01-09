@@ -71,28 +71,27 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="{{ path('fdc_marchedufilm_default_index') }}"
-                                {% if routeName == 'fdc_marchedufilm_default_index'
-                                or routeName == 'fdc_marche_du_film_edition_presentation'
-                                or routeName =='fdc_marche_du_film_edition_projections' %} class="active customClass1"{% endif %}>Édition 2017</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}" {% if routeName == 'fdc_marche_du_film_accreditations' %} class="active customClass1" {% endif %}>ACCRÉDITATIONS</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active customClass1" {% endif %}>SERVICES</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}"
-                                {% if routeName == 'fdc_marche_du_film_who_are_we_history'
-                                or routeName =='fdc_marche_du_film_who_are_we_key_figures'%} class="active"{% endif %}>QUI SOMMES-NOUS ?
+                        <a href="{{ path('fdc_marchedufilm_default_index') }}" class="{{ routeName == 'fdc_marchedufilm_default_index'
+                        or routeName == 'fdc_marche_du_film_edition_presentation'
+                        or routeName =='fdc_marche_du_film_edition_projections' ? 'active ' : '' }}red">Édition 2017
                         </a>
                     </li>
                     <li>
-                        <a href="#">PRESSE</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="{{routeName =='fdc_marche_du_film_accreditations' ? 'active ' : '' }}blue">ACCRÉDITATIONS</a>
                     </li>
                     <li>
-                        <a href="#">INFORMATIONS UTILES</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' ? 'active ' : '' }}blue">SERVICES</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="{{ routeName == 'fdc_marche_du_film_who_are_we_history'
+                        or routeName =='fdc_marche_du_film_who_are_we_key_figures' ? 'active ' : '' }}golden">QUI SOMMES-NOUS ?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="golden">PRESSE</a>
+                    </li>
+                    <li>
+                        <a href="#" class="golden">INFORMATIONS UTILES</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">

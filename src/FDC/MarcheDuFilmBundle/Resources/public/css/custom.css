@@ -1,0 +1,14 @@
+header #navigation ul li a.red:hover,
+header #navigation ul li a.red.active {
+    color: #ec3050;
+}
+
+header #navigation ul li a.blue:hover,
+header #navigation ul li a.blue.active {
+    color: #1bafd1;
+}
+
+header #navigation ul li a.golden:hover,
+header #navigation ul li a.golden.active {
+    color: #a1844f;
+}
