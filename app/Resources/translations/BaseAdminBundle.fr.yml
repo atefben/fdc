@@ -665,6 +665,7 @@ form:
             legal_mentions: Mentions légales
             general_conditions: Conditions générales
             title: Titre de page
+            theme: Thème
             header: Chapô
             label:
                 title: Titre du paragraphe

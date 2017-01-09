@@ -15,4 +15,3 @@ fdc_marche_du_film_edition_presentation:
     type:     annotation
     prefix:   /
     host: "%fdc_marche_du_film_domain%"
-

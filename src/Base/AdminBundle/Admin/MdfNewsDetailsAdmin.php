@@ -72,6 +72,10 @@ class MdfNewsDetailsAdmin extends Admin
                         'label'              => 'form.mdf.content_template.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'theme'          => array(
+                        'label'              => 'form.mdf.content_template.theme',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
                     'header'          => array(
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',

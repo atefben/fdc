@@ -29,6 +29,13 @@ class MdfContentTemplateTranslation
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $theme;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"classics"})
@@ -58,6 +65,26 @@ class MdfContentTemplateTranslation
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param $theme
+     *
+     * @return $this
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
 
         return $this;
     }

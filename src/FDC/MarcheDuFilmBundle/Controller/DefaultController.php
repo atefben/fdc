@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -14,14 +15,22 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $newsContent = [];
         $homepageManager = $this->get('mdf.manager.homepage');
-        $newsManager = $this->get('mdf.manager.news');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        $news = $contentTemplateManager->getHomepageNews($pageType);
+
+        foreach ($news as $key => $newsItem) {
+            $newsContent[$key]['content'] = $newsItem;
+            $newsContent[$key]['image'] = $contentTemplateManager->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+        }
 
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
         $homepageContent = $homepageManager->getHomepageContent();
-        $news = $newsManager->getHomepageNews();
         $contact = $contactManager->getContactInfo();
         $services = $homepageManager->getHomepageServices();
 
@@ -29,7 +38,7 @@ class DefaultController extends Controller
             'sliderTop' => $slidersTop,
             'slider' => $sliders,
             'homepageContent' => $homepageContent,
-            'news' => $news,
+            'news' => $newsContent,
             'contact' => $contact,
             'services' => $services
         ));

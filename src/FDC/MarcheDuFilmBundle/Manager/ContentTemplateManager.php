@@ -148,4 +148,13 @@ class ContentTemplateManager
             ->getRepository(MdfContentTemplateWidgetFile::class)
             ->getFileWidgetsByPageId($pageId);
     }
+
+    public function getHomepageNews($pageType) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getHomepageNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
+                $pageType
+            );
+    }
 }
