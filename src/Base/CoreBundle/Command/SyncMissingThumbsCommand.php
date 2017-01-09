@@ -73,7 +73,6 @@ class SyncMissingThumbsCommand extends BaseCommand
                 $message = 'Unable to generated new thumbnails, media: %s - %s';
                 $logMessage = sprintf($message, $media->getId(), $e->getMessage());
                 $this->log($e, $logMessage);
-                continue;
             }
 
             $media
