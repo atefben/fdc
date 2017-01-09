@@ -25,6 +25,7 @@ use Base\CoreBundle\Entity\StatementWidgetVideo;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
@@ -33,99 +34,128 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('base:import:old_fdc_widgets');
+            ->setName('base:import:old_fdc_widgets')
+            ->addOption('classics', null, InputOption::VALUE_NONE, 'Remove double widgets of classics')
+            ->addOption('infos', null, InputOption::VALUE_NONE, 'Remove double widgets of infos')
+            ->addOption('statements', null, InputOption::VALUE_NONE, 'Remove double widgets of statements')
+            ->addOption('news', null, InputOption::VALUE_NONE, 'Remove double widgets of news')
+            ->addOption('news-page', null, InputOption::VALUE_OPTIONAL, 'Pagination for news (50 items per page)')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // Classics
-        $output->writeln('<info>classics</info>');
-        $count = $this->getClassicsCount();
-        $pages = ceil($count / 50);
+        if ($input->getOption('classics')) {
+            // Classics
+            $output->writeln('<info>classics</info>');
+            $count = $this->getClassicsCount();
+            $pages = ceil($count / 50);
 
-        $bar = new ProgressBar($output, $count);
-        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
-        $bar->start();
+            $bar = new ProgressBar($output, $count);
+            $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+            $bar->start();
 
-        for ($page = 1; $page <= $pages; $page++) {
-            $infos = $this->getClassics($page);
-            foreach ($infos as $item) {
-                $bar->advance();
-                $this->factorizeClassicsWidgetText($item);
-                $this->factorizeClassicsWidgetImage($item);
+            for ($page = 1; $page <= $pages; $page++) {
+                $infos = $this->getClassics($page);
+                foreach ($infos as $item) {
+                    $bar->advance();
+                    $this->factorizeClassicsWidgetText($item);
+                    $this->factorizeClassicsWidgetImage($item);
+                }
             }
+
+            $bar->finish();
+            $output->writeln('');
         }
 
-        $bar->finish();
-        $output->writeln('');
 
+        if ($input->getOption('infos')) {
+            // Infos
+            $output->writeln('<info>infos</info>');
+            $count = $this->getInfosCount();
+            $pages = ceil($count / 50);
 
-        // Infos
-        $output->writeln('<info>infos</info>');
-        $count = $this->getInfosCount();
-        $pages = ceil($count / 50);
+            $bar = new ProgressBar($output, $count);
+            $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+            $bar->start();
 
-        $bar = new ProgressBar($output, $count);
-        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
-        $bar->start();
-
-        for ($page = 1; $page <= $pages; $page++) {
-            $infos = $this->getInfos($page);
-            foreach ($infos as $item) {
-                $bar->advance();
-                $this->factorizeInfoWidgetText($item);
-                $this->factorizeInfoWidgetImage($item);
+            for ($page = 1; $page <= $pages; $page++) {
+                $infos = $this->getInfos($page);
+                foreach ($infos as $item) {
+                    $bar->advance();
+                    $this->factorizeInfoWidgetText($item);
+                    $this->factorizeInfoWidgetImage($item);
+                }
             }
+
+            $bar->finish();
+            $output->writeln('');
         }
 
-        $bar->finish();
-        $output->writeln('');
 
+        if ($input->getOption('statements')) {
+            // Statement
+            $output->writeln('<info>statements</info>');
+            $count = $this->getStatementsCount();
+            $pages = ceil($count / 50);
 
-        // Statement
-        $output->writeln('<info>statements</info>');
-        $count = $this->getStatementsCount();
-        $pages = ceil($count / 50);
+            $bar = new ProgressBar($output, $count);
+            $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+            $bar->start();
 
-        $bar = new ProgressBar($output, $count);
-        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
-        $bar->start();
-
-        for ($page = 1; $page <= $pages; $page++) {
-            $statements = $this->getStatements($page);
-            foreach ($statements as $item) {
-                $bar->advance();
-                $this->factorizeStatementWidgetText($item);
-                $this->factorizeStatementWidgetImage($item);
+            for ($page = 1; $page <= $pages; $page++) {
+                $statements = $this->getStatements($page);
+                foreach ($statements as $item) {
+                    $bar->advance();
+                    $this->factorizeStatementWidgetText($item);
+                    $this->factorizeStatementWidgetImage($item);
+                }
             }
+
+            $bar->finish();
+            $output->writeln('');
         }
 
-        $bar->finish();
-        $output->writeln('');
+        if ($input->getOption('news')) {
+            // News
+            $output->writeln('<info>news</info>');
+            if ($input->getOption('news-page')) {
+                dump('test');
+                $count = $this->getNewsCount($input->getOption('news-page'));
+                dump($count);
+                $news = $this->getNews($input->getOption('news-page'));
+                $bar = new ProgressBar($output, $count);
+                $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+                $bar->start();
+                foreach ($news as $item) {
+                    $bar->advance();
+                    $this->factorizeNewsWidgetText($item);
+                    $this->factorizeNewsWidgetImage($item);
+                    $this->factorizeNewsWidgetAudio($item);
+                    $this->factorizeNewsWidgetVideo($item);
+                }
+            } else {
+                $count = $this->getNewsCount();
+                $pages = ceil($count / 50);
 
+                $bar = new ProgressBar($output, $count);
+                $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+                $bar->start();
 
-        // News
-        $output->writeln('<info>news</info>');
-        $count = $this->getNewsCount();
-        $pages = ceil($count / 50);
-
-        $bar = new ProgressBar($output, $count);
-        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
-        $bar->start();
-
-        for ($page = 1; $page <= $pages; $page++) {
-            $news = $this->getNews($page);
-            foreach ($news as $item) {
-                $bar->advance();
-                $this->factorizeNewsWidgetText($item);
-                $this->factorizeNewsWidgetImage($item);
-                $this->factorizeNewsWidgetAudio($item);
-                $this->factorizeNewsWidgetVideo($item);
+                for ($page = 1; $page <= $pages; $page++) {
+                    $news = $this->getNews($page);
+                    foreach ($news as $item) {
+                        $bar->advance();
+                        $this->factorizeNewsWidgetText($item);
+                        $this->factorizeNewsWidgetImage($item);
+                        $this->factorizeNewsWidgetAudio($item);
+                        $this->factorizeNewsWidgetVideo($item);
+                    }
+                }
+                $bar->finish();
+                $output->writeln('');
             }
         }
-
-        $bar->finish();
-        $output->writeln('');
     }
 
     protected function factorizeNewsWidgetText(NewsArticle $news)
@@ -463,9 +493,10 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
 
 
     /**
+     * @param $page
      * @return NewsArticle[]
      */
-    protected function getNews($offset)
+    protected function getNews($page)
     {
         return $this
             ->getManager()
@@ -473,7 +504,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
             ->createQueryBuilder('n')
             ->distinct()
             ->andWhere('n.oldNewsId is not null')
-            ->setFirstResult(($offset - 1) * 50)
+            ->setFirstResult(($page - 1) * 50)
             ->setMaxResults(50)
             ->getQuery()
             ->getResult()
@@ -481,17 +512,32 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     }
 
     /**
+     * @param null $page
      * @return int
      */
-    protected function getNewsCount()
+    protected function getNewsCount($page = null)
     {
-        return (int) $this
+        $qb = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:NewsArticle')
             ->createQueryBuilder('n')
             ->select('count(n)')
             ->distinct()
             ->andWhere('n.oldNewsId is not null')
+        ;
+
+        if ($page) {
+            return count($qb
+                ->select('n')
+                ->setFirstResult(($page - 1) * 50)
+                ->setMaxResults(50)
+                ->getQuery()
+                ->getResult())
+            ;
+
+        }
+
+        return (int)$qb
             ->getQuery()
             ->getSingleScalarResult()
             ;
@@ -520,7 +566,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
      */
     protected function getInfosCount()
     {
-        return (int) $this
+        return (int)$this
             ->getManager()
             ->getRepository('BaseCoreBundle:InfoArticle')
             ->createQueryBuilder('n')
@@ -555,7 +601,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
      */
     protected function getStatementsCount()
     {
-        return (int) $this
+        return (int)$this
             ->getManager()
             ->getRepository('BaseCoreBundle:StatementArticle')
             ->createQueryBuilder('n')
@@ -590,7 +636,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
      */
     protected function getClassicsCount()
     {
-        return (int) $this
+        return (int)$this
             ->getManager()
             ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
             ->createQueryBuilder('n')
