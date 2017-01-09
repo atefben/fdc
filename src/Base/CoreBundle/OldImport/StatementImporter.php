@@ -118,13 +118,17 @@ class StatementImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildStatementArticleTranslation($statement, $oldTranslation);
             if ($translation) {
-                $this->buildStatementWidgetText($statement, $translation, $oldTranslation);
-                $this->buildStatementWidgetYoutube($statement, $translation, $oldTranslation);
-                $this->buildStatementWidgetImage($statement, $translation, $oldTranslation);
-                $this->buildStatementWidgetsAudio($statement, $translation, $oldTranslation);
-                $this->buildStatementWidgetsVideo($statement, $translation, $oldTranslation);
-                $this->buildAssociatedFilms($statement, $oldArticle);
-                $this->buildAssociatedStatements($statement, $oldArticle);
+                if ($this->input->getOption('update-films-only')) {
+                    $this->buildAssociatedFilms($statement, $oldArticle);
+                } else {
+                    $this->buildStatementWidgetText($statement, $translation, $oldTranslation);
+                    $this->buildStatementWidgetYoutube($statement, $translation, $oldTranslation);
+                    $this->buildStatementWidgetImage($statement, $translation, $oldTranslation);
+                    $this->buildStatementWidgetsAudio($statement, $translation, $oldTranslation);
+                    $this->buildStatementWidgetsVideo($statement, $translation, $oldTranslation);
+                    $this->buildAssociatedFilms($statement, $oldArticle);
+                    $this->buildAssociatedStatements($statement, $oldArticle);
+                }
             }
         }
 

@@ -115,13 +115,17 @@ class InfoImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildInfoArticleTranslation($info, $oldTranslation);
             if ($translation) {
-                $this->buildInfoWidgetText($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetYoutube($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetImage($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetsAudio($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
-                $this->buildAssociatedFilms($info, $oldArticle);
-                $this->buildAssociatedInfos($info, $oldArticle);
+                if ($this->input->getOption('update-films-only')) {
+                    $this->buildAssociatedFilms($info, $oldArticle);
+                } else {
+                    $this->buildInfoWidgetText($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetYoutube($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetImage($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetsAudio($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
+                    $this->buildAssociatedFilms($info, $oldArticle);
+                    $this->buildAssociatedInfos($info, $oldArticle);
+                }
             }
         }
 

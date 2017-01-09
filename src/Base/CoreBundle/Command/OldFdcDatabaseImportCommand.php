@@ -30,6 +30,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination')
             ->addOption('id', null, InputOption::VALUE_OPTIONAL, 'The id')
             ->addOption('force-reupload', null, InputOption::VALUE_OPTIONAL, 'Force upload image again')
+            ->addOption('update-films-only', null, InputOption::VALUE_NONE, 'Upload films only')
         ;
     }
 

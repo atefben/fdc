@@ -177,13 +177,18 @@ class NewsImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildNewsArticleTranslation($news, $oldTranslation);
             if ($translation) {
-                $this->buildNewsWidgetText($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetYoutube($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetImage($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetsAudio($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
-                $this->buildAssociatedFilms($news, $oldArticle);
-                $this->buildAssociatedNews($news, $oldArticle);
+                if ($this->input->getOption('update-films-only')) {
+                    $this->buildAssociatedFilms($news, $oldArticle);
+                } else {
+                    $this->buildNewsWidgetText($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetYoutube($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetImage($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetsAudio($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
+                    $this->buildAssociatedFilms($news, $oldArticle);
+                    $this->buildAssociatedNews($news, $oldArticle);
+                }
+
             }
         }
 
@@ -659,8 +664,10 @@ class NewsImporter extends Importer
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
             ->findBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'], ['order' => 'asc'])
         ;
+        $list = [];
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
+            $list[$oldArticleAssociation->getObjectId()] = '';
             $film = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:FilmFilm')
@@ -678,8 +685,7 @@ class NewsImporter extends Importer
                 if (!$found) {
                     $associatedFilm = new NewsFilmFilmAssociated();
                     $associatedFilm
-                        ->setAssociation($film)
-                    ;
+                        ->setAssociation($film);
                     $news->addAssociatedFilm($associatedFilm);
                     $this->getManager()->persist($film);
                     $this->getManager()->flush();
@@ -687,6 +693,7 @@ class NewsImporter extends Importer
             }
 
         }
+        dump('"' . implode('", "', array_keys($list)) . '""');
     }
 
     protected function buildAssociatedNews(NewsArticle $news, OldArticle $oldArticle)
