@@ -113,24 +113,36 @@ class MediaImage extends Media
 
     public function getExportStatusMaster()
     {
+        if (!$this->findTranslationByLocale('fr')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('fr')->getStatus();
         return Export::formatTranslationStatus($status);
     }
 
     public function getExportStatusEn()
     {
+        if (!$this->findTranslationByLocale('en')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('en')->getStatus();
         return Export::formatTranslationStatus($status);
     }
 
     public function getExportStatusEs()
     {
+        if (!$this->findTranslationByLocale('es')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('es')->getStatus();
         return Export::formatTranslationStatus($status);
     }
 
     public function getExportStatusZh()
     {
+        if (!$this->findTranslationByLocale('zh')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('zh')->getStatus();
         return Export::formatTranslationStatus($status);
     }
