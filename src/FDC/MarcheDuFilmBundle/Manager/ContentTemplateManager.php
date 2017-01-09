@@ -23,6 +23,69 @@ class ContentTemplateManager
         $this->requestStack = $requestStack;
     }
 
+    public function getPageData($routeName) {
+        $pageType = '';
+        $isWhoAreWe = false;
+        $nextRoute = null;
+        $backRoute = null;
+        switch ($routeName) {
+            case 'fdc_marche_du_film_edition_presentation':
+                $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
+                break;
+            case 'fdc_marche_du_film_edition_projections':
+                $pageType = MdfContentTemplate::TYPE_EDITION_PROJECTIONS;
+                break;
+            case 'fdc_marche_du_film_industry_program_home':
+                $pageType = MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME;
+                break;
+            case 'fdc_marche_du_film_who_are_we_history':
+                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_HISTORY;
+                $isWhoAreWe = true;
+                break;
+            case 'fdc_marche_du_film_who_are_we_key_figures':
+                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_KEY_FIGURES;
+                $isWhoAreWe = true;
+                break;
+            case 'fdc_marche_du_film_who_are_we_environmental_approaches':
+                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES;
+                $isWhoAreWe = true;
+                break;
+            case 'fdc_marche_du_film_legal_mentions':
+                $pageType = MdfContentTemplate::TYPE_LEGAL_MENTIONS;
+                break;
+        }
+
+        $titleHeader = $this->getTitleHeaderContent($pageType);
+        $textWidgets = $this->getContentTemplateTextWidgets($pageType);
+        $imageWidgets = $this->getContentTemplateImageWidgets($pageType);
+        $galleryWidgets = $this->getContentTemplateGalleryWidgets($pageType);
+        $fileWidgets = $this->getContentTemplateFileWidgets($pageType);
+
+        $widgets = [];
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
+
+        usort($widgets, function($a, $b)
+        {
+            if (property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
+                return strcmp($a->getTranslatable()->getPosition(), $b->getTranslatable()->getPosition());
+            } else if (property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
+                return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
+            } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
+                return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
+            } else if (!property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
+                return strcmp($a->getPosition(), $b->getPosition());
+            }
+        });
+
+        return array(
+            'titleHeader' => $titleHeader,
+            'widgets' => $widgets,
+            'isWhoAreWe' => $isWhoAreWe,
+            'nextRoute' => $nextRoute,
+            'backRoute' => $backRoute
+        );
+    }
+
     public function getTitleHeaderContent($pageType) {
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)

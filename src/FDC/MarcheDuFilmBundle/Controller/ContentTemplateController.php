@@ -15,6 +15,7 @@ class ContentTemplateController extends Controller
      * @Route("quisommesnous/historique", name="fdc_marche_du_film_who_are_we_history")
      * @Route("quisommesnous/chiffrescles", name="fdc_marche_du_film_who_are_we_key_figures")
      * @Route("quisommesnous/demarchesenvironnementales", name="fdc_marche_du_film_who_are_we_environmental_approaches")
+     * @Route("mentionslegales", name="fdc_marche_du_film_legal_mentions")
      */
     public function indexAction()
     {
@@ -23,62 +24,6 @@ class ContentTemplateController extends Controller
         $request = $this->container->get('request');
         $routeName = $request->get('_route');
 
-        $pageType = '';
-        $isWhoAreWe = false;
-        $nextRoute = null;
-        $backRoute = null;
-        switch ($routeName) {
-            case 'fdc_marche_du_film_edition_presentation':
-                $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
-                break;
-            case 'fdc_marche_du_film_edition_projections':
-                $pageType = MdfContentTemplate::TYPE_EDITION_PROJECTIONS;
-                break;
-            case 'fdc_marche_du_film_industry_program_home':
-                $pageType = MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME;
-                break;
-            case 'fdc_marche_du_film_who_are_we_history':
-                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_HISTORY;
-                $isWhoAreWe = true;
-                break;
-            case 'fdc_marche_du_film_who_are_we_key_figures':
-                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_KEY_FIGURES;
-                $isWhoAreWe = true;
-                break;
-            case 'fdc_marche_du_film_who_are_we_environmental_approaches':
-                $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES;
-                $isWhoAreWe = true;
-                break;
-        }
-
-        $titleHeader = $contentTemplateManager->getTitleHeaderContent($pageType);
-        $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets($pageType);
-        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets($pageType);
-        $galleryWidgets = $contentTemplateManager->getContentTemplateGalleryWidgets($pageType);
-        $fileWidgets = $contentTemplateManager->getContentTemplateFileWidgets($pageType);
-
-        $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
-
-        usort($widgets, function($a, $b)
-        {
-            if (property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
-                return strcmp($a->getTranslatable()->getPosition(), $b->getTranslatable()->getPosition());
-            } else if (property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
-                return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
-            } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
-                return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
-            } else if (!property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
-                return strcmp($a->getPosition(), $b->getPosition());
-            }
-        });
-
-        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', array(
-            'titleHeader' => $titleHeader,
-            'widgets' => $widgets,
-            'isWhoAreWe' => $isWhoAreWe,
-            'nextRoute' => $nextRoute,
-            'backRoute' => $backRoute
-        ));
+        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $contentTemplateManager->getPageData($routeName));
     }
 }

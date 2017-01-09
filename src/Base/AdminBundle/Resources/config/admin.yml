@@ -1768,3 +1768,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeEnvironmentalApproachesAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Démarches environnementales}
+
+    base.admin.mdf_legal_mentions:
+        class: Base\AdminBundle\Admin\MdfLegalMentionsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfLegalMentionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Mentions légales}
