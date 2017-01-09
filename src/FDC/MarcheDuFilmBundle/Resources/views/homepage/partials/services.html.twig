@@ -10,7 +10,7 @@
                 <a href="{{ service.url }}">
                     <div class="services-boxes" data-rel="{{ 'pic' ~ loop.index }}">
                         <div>{{ service.title }}</div>
-                        <div>{{ service.description }}</div>
+                        <div>{{ service.description|length > 95 ? service.description|slice(0, 95) ~ '...' : service.description  }}</div>
                         <div>voir le détail</div>
                         <span class="glyphicon glyphicon-menu-right"><i class="icon icon_flecheGauche reverse"></i></span>
                     </div>
