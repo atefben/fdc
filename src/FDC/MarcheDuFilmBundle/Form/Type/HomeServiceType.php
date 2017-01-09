@@ -86,7 +86,7 @@ class HomeServiceType extends AbstractType
                 'class' => $this->mediaImageAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
-                'required' => false
+                'required' => true
             ));
     }
 
