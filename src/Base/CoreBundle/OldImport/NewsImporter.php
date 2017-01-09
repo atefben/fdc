@@ -664,10 +664,8 @@ class NewsImporter extends Importer
             ->getRepository('BaseCoreBundle:OldArticleAssociation')
             ->findBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'], ['order' => 'asc'])
         ;
-        $list = [];
 
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
-            $list[$oldArticleAssociation->getObjectId()] = '';
             $film = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:FilmFilm')
@@ -693,7 +691,6 @@ class NewsImporter extends Importer
             }
 
         }
-        dump('"' . implode('", "', array_keys($list)) . '""');
     }
 
     protected function buildAssociatedNews(NewsArticle $news, OldArticle $oldArticle)
