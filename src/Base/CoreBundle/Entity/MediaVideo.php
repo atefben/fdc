@@ -313,6 +313,9 @@ class MediaVideo extends Media
 
     public function getExportAuthor()
     {
+        if (!$this->getCreatedBy()) {
+            return '';
+        }
         return $this->getCreatedBy()->getId();
     }
 
