@@ -120,9 +120,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
             // News
             $output->writeln('<info>news</info>');
             if ($input->getOption('news-page')) {
-                dump('test');
                 $count = $this->getNewsCount($input->getOption('news-page'));
-                dump($count);
                 $news = $this->getNews($input->getOption('news-page'));
                 $bar = new ProgressBar($output, $count);
                 $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
