@@ -10,36 +10,21 @@ class ContentTemplateController extends Controller
 {
     /**
      * @Route("presentation", name="fdc_marche_du_film_edition_presentation")
+     * @Route("projections", name="fdc_marche_du_film_edition_projections")
+     * @Route("industryprogram", name="fdc_marche_du_film_industry_program_home")
+     * @Route("quisommesnous/historique", name="fdc_marche_du_film_who_are_we_history")
+     * @Route("quisommesnous/chiffrescles", name="fdc_marche_du_film_who_are_we_key_figures")
+     * @Route("quisommesnous/demarchesenvironnementales", name="fdc_marche_du_film_who_are_we_environmental_approaches")
+     * @Route("mentionslegales", name="fdc_marche_du_film_legal_mentions")
+     * @Route("generalconditions", name="fdc_marche_du_film_general_conditions")
      */
     public function indexAction()
     {
         $contentTemplateManager = $this->get('mdf.manager.content_template');
 
-        $titleHeader = $contentTemplateManager->getTitleHeaderContent(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $textWidgets = $contentTemplateManager->getContentTemplateTextWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $galleryWidgets = $contentTemplateManager->getContentTemplateGalleryWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
-        $fileWidgets = $contentTemplateManager->getContentTemplateFileWidgets(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $request = $this->container->get('request');
+        $routeName = $request->get('_route');
 
-        $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
-
-        usort($widgets, function($a, $b)
-        {
-            if (property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
-                return strcmp($a->getTranslatable()->getPosition(), $b->getTranslatable()->getPosition());
-            } else if (property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
-                return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
-            } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
-                return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
-            } else if (!property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
-                return strcmp($a->getPosition(), $b->getPosition());
-            }
-        });
-
-        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:editionPresentation.html.twig', array(
-            'titleHeader' => $titleHeader,
-            'widgets' => $widgets
-        ));
+        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $contentTemplateManager->getPageData($routeName));
     }
 }

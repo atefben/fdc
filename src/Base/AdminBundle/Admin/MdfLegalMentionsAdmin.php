@@ -2,20 +2,17 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\AdminBundle\Admin\MdfContentTemplateAdmin;
+
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-/**
- * Class MdfEditionPresentationAdmin
- *
- * @package Base\AdminBundle\Admin
- */
-class MdfEditionPresentationAdmin extends MdfContentTemplateAdmin
+class MdfLegalMentionsAdmin extends MdfContentTemplateAdmin
 {
-    protected $baseRoutePattern = 'mdfeditionpresentation';
-    protected $baseRouteName = 'mdf_edition_presentation';
+    protected $baseRoutePattern = 'mdflegalmentions';
+    protected $baseRouteName = 'mdf_legal_mentions';
 
     public function createQuery($context = 'list')
     {
@@ -23,7 +20,7 @@ class MdfEditionPresentationAdmin extends MdfContentTemplateAdmin
         $query->andWhere(
             $query->expr()->eq($query->getRootAlias().'.type', ':type')
         );
-        $query->setParameter('type', MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $query->setParameter('type', MdfContentTemplate::TYPE_LEGAL_MENTIONS);
 
         return $query;
     }
@@ -31,6 +28,6 @@ class MdfEditionPresentationAdmin extends MdfContentTemplateAdmin
     public function prePersist($page)
     {
         parent::prePersist($page);
-        $page->setType(MdfContentTemplate::TYPE_EDITION_PRESENTATION);
+        $page->setType(MdfContentTemplate::TYPE_LEGAL_MENTIONS);
     }
 }

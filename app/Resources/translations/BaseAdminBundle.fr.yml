@@ -655,7 +655,14 @@ form:
             promotion_details_price_suffix_3: Suffixe du prix 3
             promotion_details_information_3: Description de la ligne 3
         content_template:
-            form_name: Présentation de l'édition - gabarit de contenu
+            edition_presentation: Présentation de l'édition - gabarit de contenu
+            edition_projections: Projections de l'édition - gabarit de contenu
+            industry_program_home: Industry Program - Accueil
+            who_are_we_history: Qui sommes-nous ? – Historique
+            who_are_we_key_figures: Qui sommes-nous ? – Chiffres clés
+            who_are_we_environmental_approaches: Qui sommes-nous ? – Démarches environnementales
+            legal_mentions: Mentions légales
+            general_conditions: Conditions générales
             title: Titre de page
             header: Chapô
             label:

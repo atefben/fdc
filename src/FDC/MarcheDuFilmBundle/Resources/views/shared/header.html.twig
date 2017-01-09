@@ -71,7 +71,11 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="/" {% if routeName == 'fdc_marchedufilm_default_index' or routeName == 'fdc_marche_du_film_edition_presentation' %} class="active" {% endif %}>Édition 2017</a>
+                        <a href="/"
+                                {% if routeName == 'fdc_marchedufilm_default_index'
+                                or routeName == 'fdc_marche_du_film_edition_presentation'
+                                or routeName =='fdc_marche_du_film_edition_projections' %} class="active"{% endif %}>Édition 2017
+                        </a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_accreditations') }}" {% if routeName == 'fdc_marche_du_film_accreditations' %} class="active" {% endif %}>ACCRÉDITATIONS</a>
@@ -80,7 +84,10 @@
                         <a href="{{ path('fdc_marche_du_film_services') }}" {% if routeName == 'fdc_marche_du_film_services' %} class="active" {% endif %}>SERVICES</a>
                     </li>
                     <li>
-                        <a href="#">QUI SOMMES-NOUS ?</a>
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}"
+                                {% if routeName == 'fdc_marche_du_film_who_are_we_history'
+                                or routeName =='fdc_marche_du_film_who_are_we_key_figures'%} class="active"{% endif %}>QUI SOMMES-NOUS ?
+                        </a>
                     </li>
                     <li>
                         <a href="#">PRESSE</a>
@@ -112,7 +119,7 @@
                         <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
                         <div class="prog">Programme</div>
                         <ul class="subsubMenu">
-                            <li><a href="#">Projections</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">Projections</a></li>
                             <li><a href="#">Événements</a></li>
                         </ul>
                     </li>
