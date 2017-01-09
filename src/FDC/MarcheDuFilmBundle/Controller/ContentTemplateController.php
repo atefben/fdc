@@ -16,6 +16,7 @@ class ContentTemplateController extends Controller
      * @Route("quisommesnous/chiffrescles", name="fdc_marche_du_film_who_are_we_key_figures")
      * @Route("quisommesnous/demarchesenvironnementales", name="fdc_marche_du_film_who_are_we_environmental_approaches")
      * @Route("mentionslegales", name="fdc_marche_du_film_legal_mentions")
+     * @Route("generalconditions", name="fdc_marche_du_film_general_conditions")
      */
     public function indexAction()
     {

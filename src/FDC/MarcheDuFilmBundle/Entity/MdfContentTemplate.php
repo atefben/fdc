@@ -22,6 +22,7 @@ class MdfContentTemplate
     const TYPE_WHO_ARE_WE_KEY_FIGURES = 'who_are_we_key_figures';
     const TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES = 'who_are_we_environmental_approaches';
     const TYPE_LEGAL_MENTIONS = 'legal_mentions';
+    const TYPE_GENERAL_CONDITIONS = 'general_conditions';
 
     /**
      * @var integer

@@ -53,6 +53,9 @@ class ContentTemplateManager
             case 'fdc_marche_du_film_legal_mentions':
                 $pageType = MdfContentTemplate::TYPE_LEGAL_MENTIONS;
                 break;
+            case 'fdc_marche_du_film_general_conditions':
+                $pageType = MdfContentTemplate::TYPE_GENERAL_CONDITIONS;
+                break;
         }
 
         $titleHeader = $this->getTitleHeaderContent($pageType);

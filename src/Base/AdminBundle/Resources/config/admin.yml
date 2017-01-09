@@ -1774,3 +1774,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfLegalMentionsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Mentions légales}
+
+    base.admin.mdf_general_conditions:
+        class: Base\AdminBundle\Admin\MdfGeneralConditionsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfGeneralConditionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conditions générales}
