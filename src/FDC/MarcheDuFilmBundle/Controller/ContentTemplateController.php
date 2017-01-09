@@ -34,39 +34,10 @@ class ContentTemplateController extends Controller
     public function newsAction($slug)
     {
         $contentTemplateManager = $this->get('mdf.manager.content_template');
-        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
-        $titleHeader = $contentTemplateManager->getTitleHeaderContentBySlug($pageType, $slug);
 
-        if (empty($titleHeader))
-            throw $this->createNotFoundException('Empty content');
-
-        $pageId = $titleHeader->getTranslatable()->getId();
-
-        $textWidgets = $contentTemplateManager->getContentTemplateTextWidgetsByPageId($pageId);
-        $imageWidgets = $contentTemplateManager->getContentTemplateImageWidgetsByPageId($pageId);
-        $galleryWidgets = $contentTemplateManager->getContentTemplateGalleryWidgetsByPageId($pageId);
-        $fileWidgets = $contentTemplateManager->getContentTemplateFileWidgetsByPageId($pageId);
-
-        $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
-
-        usort($widgets, function($a, $b)
-        {
-            if (property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
-                return strcmp($a->getTranslatable()->getPosition(), $b->getTranslatable()->getPosition());
-            } else if (property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
-                return strcmp($a->getTranslatable()->getPosition(), $b->getPosition());
-            } else if (!property_exists($a, 'translatable') && property_exists($b, 'translatable')) {
-                return strcmp($a->getPosition(), $b->getTranslatable()->getPosition());
-            } else if (!property_exists($a, 'translatable') && !property_exists($b, 'translatable')) {
-                return strcmp($a->getPosition(), $b->getPosition());
-            }
-        });
-
-        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', array(
-            'titleHeader' => $titleHeader,
-            'widgets' => $widgets,
-            'isWhoAreWe' => false
-        ));
+        return $this->render(
+            'FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig',
+            $contentTemplateManager->getNewsPageData($slug)
+        );
     }
 }

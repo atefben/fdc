@@ -15,19 +15,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $newsContent = [];
         $homepageManager = $this->get('mdf.manager.homepage');
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
-        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
 
-        $news = $contentTemplateManager->getHomepageNews($pageType);
-
-        foreach ($news as $key => $newsItem) {
-            $newsContent[$key]['content'] = $newsItem;
-            $newsContent[$key]['image'] = $contentTemplateManager->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
-        }
-
+        $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
         $homepageContent = $homepageManager->getHomepageContent();
