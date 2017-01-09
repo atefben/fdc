@@ -2,7 +2,7 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href={{ header_fdc_com }}>Festival 2017</a>
+                <a href={{ header_fdc_com }} target="_blank">Festival 2017</a>
             </li>
             <li>
                 <a href="{{ header_fdc_fr }}" target="_blank">Festival de Cannes</a>
@@ -14,7 +14,7 @@
                 <a href="{{ header_ccm_fr }}" target="_blank">Cannes Court Métrage</a>
             </li>
             <li>
-                <a href="{{ header_mdf_fr }}" target="_blank" class="active">Marché du film</a>
+                <a href="{{ path('fdc_marchedufilm_default_index') }}" class="active">Marché du film</a>
             </li>
         </ul>
         <ul class="user-nav">
@@ -36,9 +36,9 @@
     <div id="logo-wrapper">
         <div class="container">
             <div id="logo">
-                <a href="/"><img src="{{ asset('bundles/fdcmarchedufilm/img/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
-                <h1><a href="/"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-du-film.png') }}" alt="Festival de Cannes" /></a></h1>
-                <p class="stick"><a href="/"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
+                <a href="{{ path('fdc_marchedufilm_default_index') }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
+                <h1><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-du-film.png') }}" alt="Festival de Cannes" /></a></h1>
+                <p class="stick"><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
             </div>
             <div id="leaderBoard">
                 {% if banner %}
@@ -71,7 +71,7 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="/"
+                        <a href="{{ path('fdc_marchedufilm_default_index') }}"
                                 {% if routeName == 'fdc_marchedufilm_default_index'
                                 or routeName == 'fdc_marche_du_film_edition_presentation'
                                 or routeName =='fdc_marche_du_film_edition_projections' %} class="active customClass1"{% endif %}>Édition 2017</a>
