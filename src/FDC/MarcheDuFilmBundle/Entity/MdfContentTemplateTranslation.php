@@ -6,8 +6,6 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Sluggable\Util\Urlizer;
-use JMS\Serializer\Annotation\Groups;
 
 /**
  * MdfContentTemplateTranslation
@@ -38,7 +36,6 @@ class MdfContentTemplateTranslation
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     * @Groups({"classics"})
      */
     protected $slug;
 

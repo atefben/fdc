@@ -69,7 +69,7 @@ class DispatchDeServiceWidget
     }
 
     /**
-     * @return Media
+     * @return \FDC\MarcheDuFilmBundle\Entity\MediaMdf
      */
     public function getImage()
     {

@@ -2,7 +2,6 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
-use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
