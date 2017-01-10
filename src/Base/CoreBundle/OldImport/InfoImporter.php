@@ -16,12 +16,8 @@ use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideo;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutube;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
@@ -119,13 +115,17 @@ class InfoImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildInfoArticleTranslation($info, $oldTranslation);
             if ($translation) {
-                $this->buildInfoWidgetText($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetYoutube($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetImage($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetsAudio($info, $translation, $oldTranslation);
-                $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
-                $this->buildAssociatedFilms($info, $oldArticle);
-                $this->buildAssociatedInfos($info, $oldArticle);
+                if ($this->input->getOption('update-films-only')) {
+                    $this->buildAssociatedFilms($info, $oldArticle);
+                } else {
+                    $this->buildInfoWidgetText($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetYoutube($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetImage($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetsAudio($info, $translation, $oldTranslation);
+                    $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
+                    $this->buildAssociatedFilms($info, $oldArticle);
+                    $this->buildAssociatedInfos($info, $oldArticle);
+                }
             }
         }
 
@@ -622,9 +622,7 @@ class InfoImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                if (!$info->getAssociatedFilm()) {
-                    $info->setAssociatedFilm($film);
-                }
+                $info->setAssociatedFilm(null);
 
                 $found = false;
                 foreach ($info->getAssociatedFilms() as $associatedFilm) {

@@ -6,42 +6,13 @@
         <div class="person big">
             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
                 <div class="image">
-
-                    {% set artistImage = artist|person_image(true) %}
-                    {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
-                        <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}"
-                             alt="{{ artist.firstname }} {{ artist.lastname }}"
-                             data-object-fit="cover">
-                    {% elseif artistImage %}
-                        {% if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') %}
-                            <img src="{% path artist.presidentJuryImage|trans_fallback('file'), 'search' %}" alt="{{ artist.fullName }}"/>
-                        {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                            <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, 'search' %}" alt="{{ artist.fullName }}"/>
-                        {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                            <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, 'search' %}" alt="{{ artist.fullName }}"/>
-                        {% elseif class(artistImage) == 'FilmMedia' %}
-                            <img src="{% path artistImage.file, 'search' %}" alt="{{ artist.fullName }}"/>
-                        {% else %}
-                            <img src="{% path artistImage, 'search' %}" alt="{{ artist.fullName }}"/>
-                        {% endif %}
+                    {% set artistImage = search_person_media(artist, app.request.locale)|first %}
+                    {% if artistImage %}
+                        <img width="170" height="231" src="{% path artistImage.file, 'search' %}" alt="{{ artist.fullName }}" data-object-fit="cover"/>
                     {% else %}
-                        {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                        {% if media is empty %}
-                            {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
-                        {% endif %}
-                        {% if media is empty %}
-                            {% set photo = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                        {% endif %}
-
-                        {% if media is not empty %}
-                            <img src="{% path media, 'search' %}"
-                                 alt="{{ artist.firstname }} {{ artist.lastname }}"
-                                 data-object-fit="cover">
-                        {% else %}
-                            <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
-                                 alt="{{ artist.firstname }} {{ artist.lastname }}"
-                                 data-object-fit="cover">
-                        {% endif %}
+                        <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
+                             alt="{{ artist.fullName }}"
+                             data-object-fit="cover">
                     {% endif %}
                 </div>
             </a>
@@ -52,7 +23,6 @@
                         <h2>
                             {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': artist} %}
                         </h2>
-
                         {% set profession = artist|trans_fallback('profession') %}
                         {% if profession %}
                             <span class="category">

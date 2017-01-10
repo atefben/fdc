@@ -177,13 +177,18 @@ class NewsImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildNewsArticleTranslation($news, $oldTranslation);
             if ($translation) {
-                $this->buildNewsWidgetText($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetYoutube($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetImage($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetsAudio($news, $translation, $oldTranslation);
-                $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
-                $this->buildAssociatedFilms($news, $oldArticle);
-                $this->buildAssociatedNews($news, $oldArticle);
+                if ($this->input->getOption('update-films-only')) {
+                    $this->buildAssociatedFilms($news, $oldArticle);
+                } else {
+                    $this->buildNewsWidgetText($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetYoutube($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetImage($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetsAudio($news, $translation, $oldTranslation);
+                    $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
+                    $this->buildAssociatedFilms($news, $oldArticle);
+                    $this->buildAssociatedNews($news, $oldArticle);
+                }
+
             }
         }
 
@@ -667,9 +672,7 @@ class NewsImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                if (!$news->getAssociatedFilm()) {
-                    $news->setAssociatedFilm($film);
-                }
+                $news->setAssociatedFilm(null);
 
                 $found = false;
                 foreach ($news->getAssociatedFilms() as $associatedFilm) {
@@ -680,13 +683,13 @@ class NewsImporter extends Importer
                 if (!$found) {
                     $associatedFilm = new NewsFilmFilmAssociated();
                     $associatedFilm
-                        ->setNews($news)
-                        ->setAssociation($film)
-                    ;
+                        ->setAssociation($film);
+                    $news->addAssociatedFilm($associatedFilm);
                     $this->getManager()->persist($film);
+                    $this->getManager()->flush();
                 }
             }
-            $this->getManager()->flush();
+
         }
     }
 

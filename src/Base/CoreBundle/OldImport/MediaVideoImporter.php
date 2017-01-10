@@ -44,7 +44,7 @@ class MediaVideoImporter extends Importer
             $count = $this->countMediaVideos($paginate);
         } else {
             $count = $this->countMediaVideos();
-            $pages = ceil($count / 100);
+            $pages = ceil($count / 10);
         }
         $progress = new ProgressBar($this->output, $count);
         $progress->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
@@ -57,8 +57,8 @@ class MediaVideoImporter extends Importer
                 ->createQueryBuilder('m')
                 ->andWhere('m.fileClass = :file_class')
                 ->setParameter(':file_class', self::MEDIA_TYPE_VIDEO)
-                ->setMaxResults(100)
-                ->setFirstResult((($paginate ?: $page) - 1) * 100)
+                ->setMaxResults(10)
+                ->setFirstResult((($paginate ?: $page) - 1) * 10)
                 ->getQuery()
                 ->getResult()
             ;
@@ -96,8 +96,8 @@ class MediaVideoImporter extends Importer
         if ($paginate) {
             return count($qb
                 ->select('m')
-                ->setFirstResult(($paginate - 1) * 100)
-                ->setMaxResults(100)
+                ->setFirstResult(($paginate - 1) * 10)
+                ->setMaxResults(10)
                 ->getQuery()
                 ->getResult()
             );

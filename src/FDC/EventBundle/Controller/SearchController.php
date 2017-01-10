@@ -30,11 +30,11 @@ class SearchController extends Controller
     );
 
     /**
-     *
      * @Route("/search/ajax/{searchFilter}/{searchTerm}")
-     * @param Request $request
-     * @param $searchTerm
-     * @return array
+     * @param $_locale
+     * @param $searchFilter
+     * @param null $searchTerm
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function searchAjaxAction($_locale, $searchFilter, $searchTerm = null)
     {

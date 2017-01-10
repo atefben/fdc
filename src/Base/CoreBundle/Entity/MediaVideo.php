@@ -98,6 +98,7 @@ class MediaVideo extends Media
     protected $homepageNews;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"trailer_list", "trailer_show"})
@@ -107,6 +108,7 @@ class MediaVideo extends Media
     public function __construct()
     {
         parent::__construct();
+        $this->associatedFilms = new ArrayCollection();
         $this->displayedWebTv = false;
         $this->displayedTrailer = false;
     }
@@ -311,6 +313,9 @@ class MediaVideo extends Media
 
     public function getExportAuthor()
     {
+        if (!$this->getCreatedBy()) {
+            return '';
+        }
         return $this->getCreatedBy()->getId();
     }
 
@@ -331,24 +336,36 @@ class MediaVideo extends Media
 
     public function getExportStatusMaster()
     {
+        if (!$this->findTranslationByLocale('fr')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('fr')->getStatus();
         return Export::formatTranslationStatus($status);
     }
 
     public function getExportStatusEn()
     {
+        if (!$this->findTranslationByLocale('en')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('en')->getStatus();
         return Export::formatTranslationStatus($status);
     }
 
     public function getExportStatusEs()
     {
+        if (!$this->findTranslationByLocale('es')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('es')->getStatus();
         return Export::formatTranslationStatus($status);
     }
 
     public function getExportStatusZh()
     {
+        if (!$this->findTranslationByLocale('zh')) {
+            return '';
+        }
         $status = $this->findTranslationByLocale('zh')->getStatus();
         return Export::formatTranslationStatus($status);
     }
