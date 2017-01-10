@@ -12,8 +12,8 @@
                     {% if newsItem['image'] is not empty %}<a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">{% endif %}
                     <span class="customClass4">{{ newsItem['content'].theme }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
                     <h6>{{ newsItem['content'].title }}</h6>
-                        {% if newsItem['content'].header|striptags|length > 95 %}
-                            {% set description = newsItem['content'].header|truncate(150, true, "...</p>") %}
+                        {% if newsItem['content'].header|striptags|length > 210 %}
+                            {% set description = newsItem['content'].header|truncate(210, true, "...</p>") %}
                         {% else %}
                             {% set description = newsItem['content'].header %}
                         {% endif %}
