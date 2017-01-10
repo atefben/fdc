@@ -2,9 +2,9 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
-use Application\Sonata\MediaBundle\Entity\Media;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
+use FDC\MarcheDuFilmBundle\Entity\MediaMdf;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
