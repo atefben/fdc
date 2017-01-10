@@ -3,14 +3,16 @@
 {% block main %}
     <div id="main" class="home loading">
         {% if accreditationContent is not empty %}
-            <div class="accredidationsMessage customClass5Bckg">
-                {% if accreditationContent.state == 0 %}
-                    <div class="accredMsg">{{ accreditationContent.subtitle }}</div>
-                    <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">S'inscrire</div></a>
-                {% elseif accreditationContent.state == 1 %}
-                    <div class="noAvail">{{ accreditationContent.subtitle }}</div>
-                {% endif %}
-            </div>
+            {% if accreditationContent.state != 2 %}
+                <div class="accredidationsMessage customClass5Bckg">
+                    {% if accreditationContent.state == 0 %}
+                        <div class="accredMsg">{{ accreditationContent.subtitle }}</div>
+                        <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">S'inscrire</div></a>
+                    {% elseif accreditationContent.state == 1 %}
+                        <div class="noAvail">{{ accreditationContent.subtitle }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
             <div class="text-presentation accredidationsDetails greyBckg mdf customClass5">
                 <h3>{{ accreditationContent.title }}</h3>
             </div>
