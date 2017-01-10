@@ -24,7 +24,7 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
             'Statement' => 'getStatement',
             'News' => 'getNews',
         ];
-        $translation = [
+        $translations = [
             'Event' => 'Événement',
             'Classics' => 'Cannes classics',
             'Info' => 'Info',
@@ -60,7 +60,7 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
                         else {
                             $title = $widget->$getter()->getTranslations()[0]->getTitle();
                         }
-                        $itemTranslation = $translation[$item];
+                        $itemTranslation = $translations[$item];
                         $widget->getGallery()->setName("Gallerie - {$title} - {$itemTranslation} - {$id}");
                     }
                     $this->getManager()->flush();
