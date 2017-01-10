@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation\Since;
  * FDCPageLaSelectionCannesClassicsWidgetImage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageLaSelectionCannesClassicsWidgetImageRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class FDCPageLaSelectionCannesClassicsWidgetImage extends FDCPageLaSelectionCannesClassicsWidget
