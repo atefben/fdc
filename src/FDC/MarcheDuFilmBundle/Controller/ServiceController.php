@@ -15,19 +15,19 @@ class ServiceController extends Controller
     public function indexAction(Request $request)
     {
         $dispatchDeServiceManager = $this->get('mdf.manager.dispatch_de_service');
-        $newsManager = $this->get('mdf.manager.news');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
 
         $dispatchDeServiceContent = $dispatchDeServiceManager->getDispatchDeServiceContent();
         $dispatchDeServiceWidgets = $dispatchDeServiceManager->getDispatchDeServiceWidgets();
-        $news = $newsManager->getHomepageNews();
+        $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
 
 
         return $this->render('FDCMarcheDuFilmBundle:services:show.html.twig', array(
             'serviceContent' => $dispatchDeServiceContent,
             'serviceWidgets' => $dispatchDeServiceWidgets,
-            'news' => $news,
+            'news' => $newsContent,
             'contact' => $contact
         ));
     }
@@ -37,10 +37,10 @@ class ServiceController extends Controller
      */
     public function serviceAction(Request $request, $slug)
     {
-        $newsManager = $this->get('mdf.manager.news');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
 
-        $news = $newsManager->getHomepageNews();
+        $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
 
         $locale = $request->getLocale();
@@ -49,7 +49,7 @@ class ServiceController extends Controller
         return $this->render('FDCMarcheDuFilmBundle:services:show_service.html.twig',
             [
                 'service' => $service,
-                'news' => $news,
+                'news' => $newsContent,
                 'contact' => $contact,
             ]);
     }

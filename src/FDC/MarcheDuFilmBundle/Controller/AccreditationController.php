@@ -13,18 +13,18 @@ class AccreditationController extends Controller
     public function indexAction()
     {
         $accreditationManager = $this->get('mdf.manager.accreditation');
-        $newsManager = $this->get('mdf.manager.news');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
 
         $accreditationContent = $accreditationManager->getAccreditationContent();
         $accreditationWidgets = $accreditationManager->getAccreditationWidgets();
-        $news = $newsManager->getHomepageNews();
+        $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
 
         return $this->render('FDCMarcheDuFilmBundle::accreditation/show.html.twig', array(
             'accreditationContent' => $accreditationContent,
             'accreditationWidgets' => $accreditationWidgets,
-            'news' => $news,
+            'news' => $newsContent,
             'contact' => $contact
         ));
     }
