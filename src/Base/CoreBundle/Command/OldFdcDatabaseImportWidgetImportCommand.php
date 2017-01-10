@@ -24,6 +24,13 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
             'Statement' => 'getStatement',
             'News' => 'getNews',
         ];
+        $translation = [
+            'Event' => 'Événement',
+            'Classics' => 'Cannes classics',
+            'Info' => 'Info',
+            'Statement' => 'Communiqué',
+            'News' => 'Actualité',
+        ];
 
         foreach ($items as $item => $getter) {
             $output->writeln("<info>$getter</info>");
@@ -53,7 +60,8 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
                         else {
                             $title = $widget->$getter()->getTranslations()[0]->getTitle();
                         }
-                        $widget->getGallery()->setName("Gallerie - {$title} - {$item} - {$id}");
+                        $itemTranslation = $translation[$item];
+                        $widget->getGallery()->setName("Gallerie - {$title} - {$itemTranslation} - {$id}");
                     }
                     $this->getManager()->flush();
                 }
