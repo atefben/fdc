@@ -382,7 +382,7 @@ class ClassicsImporter extends Importer
                 ->setDisplayedHomeCorpo(false);
         }
 
-        if ($translation->getLocale() == 'fr') {
+        if ($translation->getLocale() == 'fr' && $oldTranslation->getMosaiqueTitle()) {
             $gallery->setName($oldTranslation->getMosaiqueTitle());
         } else {
             $gallery->setName('Gallerie');
