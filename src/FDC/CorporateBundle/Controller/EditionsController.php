@@ -3,11 +3,12 @@
 namespace FDC\CorporateBundle\Controller;
 
 use Base\CoreBundle\Entity\CorpoPalmeOr;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Base\CoreBundle\Entity\FDCPageLaSelection;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/69-editions")
@@ -16,58 +17,77 @@ class EditionsController extends Controller
 {
     /**
      * @Route("/retrospective/")
-     * @Template("FDCCorporateBundle:Retrospective:years_slider.html.twig")
+     * @return Response
      */
     public function retrospectiveAction()
     {
-        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
-
-        return array('festivals' => $festivals);
+        $festivals = $this
+            ->getDoctrine()
+            ->getRepository('BaseCoreBundle:FilmFestival')
+            ->findAll()
+        ;
+        return $this->render('FDCCorporateBundle:Retrospective:years_slider.html.twig', [
+            'festivals' => $festivals,
+        ]);
     }
 
     /**
      * @Route("/retrospective/menu")
-     * @Template("FDCCorporateBundle:Retrospective:components/menu.html.twig")
-     * @return array
+     * @param Request $request
+     * @param $year
+     * @param $route
+     * @return Response
      */
     public function menuAction(Request $request, $year, $route)
     {
-        $em = $this->get('doctrine')->getManager();
         $festival = $this->getFestival($year);
         $locale = $request->getLocale();
 
         //posters
-        $posters = $em->getRepository('BaseCoreBundle:FilmFestivalPoster')
-            ->findByFestival($festival);
+        $posters = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFestivalPoster')
+            ->findBy(['festival' => $festival])
+        ;
 
         //photos
-        $medias = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $festival->getId());
+        $medias = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Media')
+            ->getImageMedia($locale, $festival->getId())
+        ;
 
         //news
-        $news = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $festival->getId());
+        $news = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getAllNews($locale, $festival->getId())
+        ;
         $news = $this->removeUnpublishedNewsAudioVideo($news, $locale, null, true);
 
         //events
-        $events =
-            $this
-                ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:Event')
-                ->getEvents($festival, $locale);
+        $events = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Event')
+            ->getEvents($festival, $locale)
+        ;
 
-        return array(
+        return $this->render('FDCCorporateBundle:Retrospective:components/menu.html.twig', [
             'posters' => $posters,
-            'medias' => $medias,
-            'news' => $news,
-            'events' => $events,
-            'route' => $route
-        );
+            'medias'  => $medias,
+            'news'    => $news,
+            'events'  => $events,
+            'route'   => $route,
+        ]);
 
     }
 
     /**
      * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
+     * @param $year
+     * @return RedirectResponse
      */
-    public function yearAction(Request $request, $year)
+    public function yearAction($year)
     {
         /*$locale = $request->getLocale();
 
@@ -96,79 +116,92 @@ class EditionsController extends Controller
 
     /**
      * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
-     * @Template("FDCCorporateBundle:Retrospective:affiche.html.twig")
      * @param Request $request
      * @param $year
-     * @return array
+     * @return Response
      */
     public function afficheAction(Request $request, $year)
     {
-        $em = $this->get('doctrine')->getManager();
-
         $festival = $this->getFestival($year);
-        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        $posters = $em->getRepository('BaseCoreBundle:FilmFestivalPoster')
-            ->findByFestival($festival);
+        $festivals = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFestival')
+            ->findAll()
+        ;
+
+        $posters = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFestivalPoster')
+            ->findBy(['festival' => $festival])
+        ;
 
         $bitlyManager = $this->get('base.manager.bitly');
-        $params['access_token'] = '1471b10911b48ad79ad042b02a15711ea71fc6c0';
-        $params['longUrl'] = $request->getUri();
+        $params = [
+            'access_token' => '1471b10911b48ad79ad042b02a15711ea71fc6c0',
+            'longUrl'      => $request->getUri(),
+        ];
         $results = $bitlyManager->bitly_get('shorten', $params);
 
-        return array(
-            'posters' => $posters,
-            'festival' => $festival,
+        return $this->render('FDCCorporateBundle:Retrospective:affiche.html.twig', [
+            'posters'   => $posters,
+            'festival'  => $festival,
             'festivals' => $festivals,
-            'urlshare' => $results['data']['url']
-        );
+            'urlshare'  => $results['data']['url'],
+        ]);
     }
 
     /**
      * @Route("/history")
-     * @Template("FDCCorporateBundle:Retrospective:history.html.twig")
-     * @return array
+     * @return Response
      */
-    public function historyAction(Request $request)
+    public function historyAction()
     {
-        $em = $this->get('doctrine')->getManager();
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoFestivalHistory')
+            ->find(1)
+        ;
 
-        $page = $em->getRepository('BaseCoreBundle:CorpoFestivalHistory')->find(1);
         if ($page->findTranslationByLocale('fr')->getStatus() == 1) {
-            return array(
+            return $this->render('FDCCorporateBundle:Retrospective:history.html.twig', [
                 'currentPage' => $page,
-            );
+            ]);
         } else {
             throw $this->createNotFoundException('There is not available selection.');
         }
-
     }
 
     /**
      * @Route("/archives")
-     * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
-     * @return array
+     * @param Request $request
+     * @return Response
      */
     public function archivesAction(Request $request)
     {
-        $em = $this->get('doctrine')->getManager();
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoPalmeOr')
+            ->find(3)
+        ;
 
-        $page = $em->getRepository('BaseCoreBundle:CorpoPalmeOr')->find(3);
-        if ($page->findTranslationByLocale('fr')->getStatus() == 1) {
-            return array(
-                'currentPage' => $page,
-                'archives' => true
-            );
-        } else {
+        $cond = !$page || !$page->findTranslationByLocale('fr');
+        $cond = $cond || $page->findTranslationByLocale('fr')->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED;
+        if ($cond) {
             throw $this->createNotFoundException('There is not available selection.');
         }
 
+        return $this->render('FDCCorporateBundle:Retrospective:palme.html.twig', [
+            'currentPage' => $page,
+            'archives'    => true,
+        ]);
     }
 
     /**
      * @Route("/palme/{slug}")
-     * @Template("FDCCorporateBundle:Retrospective:palme.html.twig")
-     * @return array
+     * @param Request $request
+     * @param null $slug
+     * @return RedirectResponse|Response
      */
     public function PalmeAction(Request $request, $slug = null)
     {
@@ -177,7 +210,9 @@ class EditionsController extends Controller
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoPalmeOr')
-            ->getAllPagesByLocale($locale);
+            ->getAllPagesByLocale($locale)
+        ;
+
         if ($slug === null) {
             foreach ($pages as $page) {
                 if ($page instanceof CorpoPalmeOr) {
@@ -195,12 +230,13 @@ class EditionsController extends Controller
         $page = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoPalmeOr')
-            ->getPageBySlug($locale, $slug);
+            ->getPageBySlug($locale, $slug)
+        ;
 
-        return array(
-            'pages' => $pages,
-            'currentPage' => $page
-        );
+        return $this->render('FDCCorporateBundle:Retrospective:palme.html.twig', [
+            'pages'       => $pages,
+            'currentPage' => $page,
+        ]);
     }
 
 }

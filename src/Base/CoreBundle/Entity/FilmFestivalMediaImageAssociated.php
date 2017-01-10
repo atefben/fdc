@@ -51,7 +51,7 @@ class FilmFestivalMediaImageAssociated
     protected $association;
 
     /**
-     * @var position
+     * @var int
      *
      * @ORM\Column(type="integer", nullable=true)
      */
