@@ -1207,7 +1207,7 @@
 {% block content_template_widget_text_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.widget.content_template_text'|trans }}</h4>
+        <h4>{{ 'form.mdf.content_template.widget.text'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
@@ -1224,7 +1224,7 @@
 {% block content_template_widget_image_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.widget.content_template_image'|trans }}</h4>
+        <h4>{{ 'form.mdf.content_template.widget.image'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_row(form.children.image) }}
         {{ form_widget(form.children.position) }}
@@ -1276,7 +1276,7 @@
 {% block content_template_widget_gallery_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.widget.content_template_gallery'|trans }}</h4>
+        <h4>{{ 'form.mdf.content_template.widget.gallery'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_row(form.children.gallery) }}
         {{ form_widget(form.children.position) }}
@@ -1293,7 +1293,7 @@
 {% block content_template_widget_file_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.widget.content_template_file'|trans }}</h4>
+        <h4>{{ 'form.mdf.content_template.widget.file'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_row(form.children.file) }}
         {{ form_widget(form.children.position) }}
