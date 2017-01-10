@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\Groups;
  * NewsWidgetImage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\NewsWidgetImageRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class NewsWidgetImage extends NewsWidget
