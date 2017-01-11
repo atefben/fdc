@@ -13,6 +13,7 @@ use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class MovieController extends Controller
@@ -224,7 +225,7 @@ class MovieController extends Controller
      * @Route("/selection/{slug}")
      * @param Request $request
      * @param $slug
-     * @return array
+     * @return Response
      */
     public function selectionAction(Request $request, $slug = null)
     {
