@@ -10,19 +10,34 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ServiceWidgetProduct
  *
- * @ORM\Table(name="service_widget_product")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceWidgetProductRepository")
+ * @ORM\Table(name="mdf_service_widget_product")
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class ServiceWidgetProduct extends ServiceWidget
+class ServiceWidgetProduct
 {
     use Translatable;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
     /**
      * @var GalleryMdf
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\GalleryMdf", cascade={"all"})
      */
     private $gallery;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $position;
 
     /**
      * @var ArrayCollection
@@ -54,6 +69,15 @@ class ServiceWidgetProduct extends ServiceWidget
     }
 
     /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
      * Set gallery
      *
      * @param \FDC\MarcheDuFilmBundle\Entity\GalleryMdf $gallery
@@ -69,10 +93,26 @@ class ServiceWidgetProduct extends ServiceWidget
     /**
      * Get gallery
      *
-     * @return \FDC\MarcheDuFilmBundle\Entity\GalleryMdf 
+     * @return \FDC\MarcheDuFilmBundle\Entity\GalleryMdf
      */
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 }

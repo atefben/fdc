@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class ServiceWidgetProductAdmin extends Admin
+class ServiceWidgetAdmin extends Admin
 {
 
     protected $datagridValues = array(
@@ -46,10 +46,11 @@ class ServiceWidgetProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'sonata_type_model_list',array(
-                'btn_delete' => true,
-                'required' => false
+            ->add('_type', 'hidden', array(
+                'data'   => 'service_widget_type',
+                'mapped' => false
             ))
+            ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
@@ -60,63 +61,33 @@ class ServiceWidgetProductAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
-                    'url'          => array(
-                        'label'              => 'form.label.service_widget_product_url',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
-                    ),
                     'title'        => array(
-                        'label'              => 'form.label.service_widget_product_title',
+                        'label'              => 'form.mdf.label.service_widget_tab_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
                         ),
                         'required' => true
                     ),
-                    'grayText'     => array(
-                        'label'              => 'form.label.service_widget_product_gray_text',
+                    'subTitle'     => array(
+                        'label'              => 'form.mdf.label.service_widget_tab_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
                         ),
                         'required' => true
-                    ),
-                    'colorText'     => array(
-                        'label'              => 'form.label.service_widget_product_color_text',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
-                    ),
-                    'body'         => array(
-                        'label'              => 'form.label.service_widget_product_body',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
-                    ),
-                    'toggledBody'  => array(
-                        'label'              => 'form.label.service_widget_product_toggled_body',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
-//                        'field_type'         => 'ckeditor',
-                    ),
-                    'createdAt'    => array(
-                        'display' => false,
-                    ),
-                    'updatedAt'    => array(
-                        'display' => false,
-                    ),
+                    )
                 ),
-            ));
+            ))
+            ->add('productCollections', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.mdf.label.service_widget_product',
+                'translation_domain' => 'BaseAdminBundle',
+            ), array(
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
+            ))
         ;
     }
 
