@@ -16,7 +16,7 @@
                 <div class="vCenter">
                     <div class="vCenterKidTop">
                         <h3 class="gold">{{ 'movie.presse.title.infospresse'|trans }}</h3>
-                        {% if medias|length > 0 %}
+                        {% if (hidePressBlock is not defined or not hidePressBlock) and medias|length %}
                             <div class="folder">
                                 <div class="vCenter">
                                     <div class="vCenterKid">

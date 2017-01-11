@@ -14,7 +14,7 @@
     <div class="content-movie">
         {% include 'FDCCorporateBundle:Movie:components/pagination.html.twig' %}
 
-        <span id="plx"></span>
+        <span id="pl@x"></span>
 
         {% include 'FDCCorporateBundle:Movie:components/banner.html.twig' %}
 
@@ -51,9 +51,11 @@
                     {% if movie.associatedMediaAudios(app.request.get('_locale'))|length > 0 %}
                         <li><a href="#audios" class="link">{{ 'movie.middlenav.audios'|trans }}</a></li>
                     {% endif %}
-                     {% if movie.getMedias()|length > 0 or movie.contacts|length > 0 %}
-                        <li><a href="#press" class="link">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
-                     {% endif %}
+                    {% if (hidePressBlock is not defined or not hidePressBlock) %}
+                        {% if movie.getMedias()|length > 0 or movie.contacts|length > 0 %}
+                            <li><a href="#press" class="link">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
+                        {% endif %}
+                    {% endif %}
                 </ul>
                 {% set secondTitle = null %}
                 {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}

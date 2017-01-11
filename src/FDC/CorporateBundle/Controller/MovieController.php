@@ -22,38 +22,22 @@ class MovieController extends Controller
 {
     /**
      * @Route("/films/{slug}")
-     * @Template("FDCCorporateBundle:Movie:main.html.twig")
      * @param $slug
      * @param Request $request
-     * @return array
+     * @return Response
      */
     public function getAction(Request $request, $slug)
     {
-        $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
-
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        try {
-            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
-        } catch (\Exception $e) {
-            $isAdmin = false;
-        }
-
-        // GET MOVIE
-        //if ($isAdmin) {
-        $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-            'slug' => $slug,
-        ))
+        $movie = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->findOneBy([
+                'slug' => $slug,
+            ])
         ;
-        /*} else {
-            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-                'slug'     => $slug,
-                'festival' => $this->getFestival()
-            ))
-            ;
-
-        }*/
 
         if ($movie === null) {
             throw new NotFoundHttpException('Movie not found');
@@ -176,7 +160,7 @@ class MovieController extends Controller
             $nextProjectionDate = $projections[0];
         }
 
-        return array(
+        return $this->render('FDCCorporateBundle:Movie:main.html.twig', [
             'movies'             => $movies,
             'movie'              => $movie,
             'articles'           => $articles,
@@ -184,8 +168,8 @@ class MovieController extends Controller
             'next'               => $next,
             'nextProjectionDate' => $nextProjectionDate,
             'festivals'          => $festivals,
-        );
-
+            'hidePressBlock'     => true,
+        ]);
     }
 
     protected function isPublished($article, $locale)
