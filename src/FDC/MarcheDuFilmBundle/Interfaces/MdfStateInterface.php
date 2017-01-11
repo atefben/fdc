@@ -1,11 +1,7 @@
 <?php
 
-namespace Base\CoreBundle\Interfaces;
+namespace FDC\MarcheDuFilmBundle\Interfaces;
 
-/**
- * Interface TranslateChildInterface
- * @package Base\CoreBundle\Entity
- */
 interface MdfStateInterface
 {
     const STATE_INACTIVE = 0;

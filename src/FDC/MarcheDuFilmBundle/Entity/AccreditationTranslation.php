@@ -3,8 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
-use Base\CoreBundle\Interfaces\MdfStateInterface;
-use Base\CoreBundle\Util\MdfState;
+use FDC\MarcheDuFilmBundle\Interfaces\MdfStateInterface;
+use FDC\MarcheDuFilmBundle\Util\MdfState;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
