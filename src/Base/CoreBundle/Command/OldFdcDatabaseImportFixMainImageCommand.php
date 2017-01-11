@@ -10,6 +10,7 @@ use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\StatementArticle;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -107,11 +108,18 @@ class OldFdcDatabaseImportFixMainImageCommand extends ContainerAwareCommand
             $bar->advance();
             $mediaImage = $item->$getter();
             if ($mediaImage instanceof MediaImage) {
+                $mediaImage->setExcludeFromSearch(true);
+                $mediaImage->setDisplayedAll(false);
                 $olds = $this->getOldArticlesI18n($item->getOldNewsId());
                 foreach ($olds as $lang => $old) {
                     $miTrans = $mediaImage->findTranslationByLocale($lang);
                     if ($miTrans instanceof MediaImageTranslation) {
                         $miTrans->setLegend($old->getTitleImageResume());
+                        if ($miTrans->getLocale() == 'fr') {
+                            $miTrans->setStatus(TranslateChildInterface::STATUS_PUBLISHED);
+                        } else {
+                            $miTrans->setStatus(TranslateChildInterface::STATUS_TRANSLATED);
+                        }
                     }
                 }
                 $this->getDoctrineManager()->flush();
