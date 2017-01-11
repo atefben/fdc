@@ -15,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * ServiceTranslation
  *
- * @ORM\Table(name="mdf_Zservice_translation")
+ * @ORM\Table(name="mdf_service_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  * 

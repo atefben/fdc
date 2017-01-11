@@ -32,7 +32,6 @@ class ServiceWidgetAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
