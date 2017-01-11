@@ -3,6 +3,14 @@
     <h3>les derniÈrEs actualités</h3>
     <div class="innerWrapper">
         {% for newsItem in news %}
+            {% set newsDecription = '' %}
+
+            {% if newsItem['content'].header is not empty %}
+                {% set newsDecription = newsItem['content'].header %}
+            {% elseif newsItem['text'] is not empty %}
+                {% set newsDecription = newsItem['text'][0].contentText %}
+            {% endif %}
+
             <div class="articles {% if loop.index == 3 %}noShow{% endif %}">
                 <a class="color-inherit" href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}"><div class="readMore">...</div></a>
                 {% if newsItem['image'] is not empty %}
@@ -12,11 +20,11 @@
                     {% if newsItem['image'] is not empty %}<a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">{% endif %}
                     <span class="customClass4">{{ newsItem['content'].theme }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
                     <h6>{{ newsItem['content'].title }}</h6>
-                        {% if newsItem['content'].header|striptags|length > 210 %}
-                            {% set description = newsItem['content'].header|truncate(210, true, "...</p>") %}
-                        {% else %}
-                            {% set description = newsItem['content'].header %}
-                        {% endif %}
+                    {% if newsDecription|striptags|length > 210 %}
+                        {% set description = newsDecription|truncate(210, true, "...</p>") %}
+                    {% else %}
+                        {% set description = newsDecription %}
+                    {% endif %}
                     {{ description|raw }}
                     {% if newsItem.image is not empty %}</a>{% endif %}
                 </div>
