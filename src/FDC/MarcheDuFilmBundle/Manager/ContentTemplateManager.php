@@ -134,6 +134,7 @@ class ContentTemplateManager
         foreach ($news as $key => $newsItem) {
             $newsContent[$key]['content'] = $newsItem;
             $newsContent[$key]['image'] = $this->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+            $newsContent[$key]['text'] = $this->getContentTemplateTextWidgetsByPageId($newsItem->getTranslatable()->getId());
         }
 
         return isset($newsContent) ? $newsContent : [];
