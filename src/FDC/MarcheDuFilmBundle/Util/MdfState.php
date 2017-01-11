@@ -1,6 +1,6 @@
 <?php
 
-namespace Base\CoreBundle\Util;
+namespace FDC\MarcheDuFilmBundle\Util;
 
 trait MdfState
 {
