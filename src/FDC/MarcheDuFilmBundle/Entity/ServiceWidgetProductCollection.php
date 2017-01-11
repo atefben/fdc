@@ -5,12 +5,11 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
-use JMS\Serializer\Annotation\Groups;
 
 /**
  * ServiceWidgetProductCollection
  *
- * @ORM\Table()
+ * @ORM\Table(name="mdf_service_widget_product_collection")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */

@@ -437,24 +437,55 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-align: left;
 }
 
+.owlsecondContainer {
+  max-width: 1250px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: -3%;
+}
+@media screen and (max-width: 1366px) {
+  .owlsecondContainer {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .owlsecondContainer {
+    margin-top: -11%;
+  }
+}
+
 #owl-second {
   height: 380px;
   text-align: center;
   margin: 0 auto;
-  overflow: hidden;
-  max-width: 1250px;
+  /*max-width: 1250px;*/
+  width: 100%;
   margin-top: -50px;
   position: relative;
+  /*
+
+  .item {
+    width: 400px;
+    height: 380px;
+    overflow: hidden;
+  }
+
+  .owl-item {
+    margin-right: -10px!important;
+  }*/
 }
 #owl-second .owl-stage {
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 #owl-second .owl-stage-outer {
-  max-width: 1200px;
+  /*max-width: 1200px;*/
+  max-width: 100%;
   margin: 0 auto;
 }
 #owl-second .owl-wrapper-outer {
-  max-width: 1149px;
+  /*max-width: 1149px;*/
   text-align: center;
   margin: 0 auto;
   overflow: hidden;
@@ -467,24 +498,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1004;
 }
 #owl-second .item {
-  width: 400px;
   height: 380px;
-  overflow: hidden;
 }
-#owl-second .owl-item {
-  margin-right: -10px !important;
+#owl-second .owl-item, #owl-second .item {
+  position: relative;
 }
 #owl-second .owl-next {
   display: block !important;
   float: right;
   position: absolute;
-  right: 0%;
+  right: -2%;
 }
 #owl-second .owl-prev {
   display: block !important;
   float: left;
   position: absolute;
-  left: 0%;
+  left: -2%;
 }
 #owl-second .fitImg {
   object-fit: cover;
@@ -498,7 +527,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 #owl-second .owl-Title {
   position: absolute;
-  width: 400px;
+  /*width: 400px;*/
+  width: 100%;
   height: 380px;
   color: white;
   text-align: center;
@@ -527,49 +557,61 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1003;
 }
 
+/*
 @media screen and (max-width: 1152px) {
-  #owl-second {
+
+
+ #owl-second{
     margin-top: -100px;
-    width: 1000px !important;
-    max-width: 1000px !important;
+    width: 1000px!important;
+    max-width:1000px!important;
+
+    .owl-stage-outer {
+      width: 950px!important;
+      max-width:950px!important;
+      margin: 0 auto;
+    }
+
+    .owl-stage {
+        margin-left: 0px;
+    }
+
+      h2 {
+        margin: 100px 0px 35px 0px!important;
+        font-size: 14.5px;
+      }
+
+      .owl-controls {
+        top: 40%!important;
+      }
+
+      .owl-wrapper-outer {
+        width: 950px!important;
+        max-width:950px!important;
+        text-align: center;
+        margin: 0 auto;
+        overflow: hidden;
+
+      }
+
+      .owl-item { margin-right: 0px!important;}
+
+
+      .owl-item {
+        width: 325px!important;
+      }
+
+      .item {
+        width: 320px;
+        height: 310px;
+      }
+
+      .owl-Title {
+        width: 100%;
+        height: 310px!important;
+    }
   }
-  #owl-second .owl-stage-outer {
-    width: 950px !important;
-    max-width: 950px !important;
-    margin: 0 auto;
-  }
-  #owl-second .owl-stage {
-    margin-left: 0px;
-  }
-  #owl-second h2 {
-    margin: 100px 0px 35px 0px !important;
-    font-size: 14.5px;
-  }
-  #owl-second .owl-controls {
-    top: 40% !important;
-  }
-  #owl-second .owl-wrapper-outer {
-    width: 950px !important;
-    max-width: 950px !important;
-    text-align: center;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  #owl-second .owl-item {
-    margin-right: 0px !important;
-  }
-  #owl-second .owl-item {
-    width: 325px !important;
-  }
-  #owl-second .item {
-    width: 320px;
-    height: 310px;
-  }
-  #owl-second .owl-Title {
-    width: 100%;
-    height: 310px !important;
-  }
-}
+}*/
 .midContainer {
   max-width: 1152px;
   margin: 0 auto;
@@ -3510,6 +3552,13 @@ a {
   visibility: visible;
 }
 
+p {
+  color: #505050;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
 .icon {
   vertical-align: baseline !important;
 }
@@ -5345,7 +5394,7 @@ header #navigation {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   /*.tleft:before {
-  background: url("../img/purpleBackg.png");
+  background: url("/img/purpleBackg.png");
   background-size: 100% 450px;
   border-bottom: 0px solid #404040;
   border: 0px solid #404040;
@@ -6092,7 +6141,7 @@ div.chocolat-wrapper .thumbnails .thumb.compat-object-fit {
   background: #000 !important;
 }
 div.chocolat-wrapper .chocolat-bottom {
-  background: url("..../img/shadow-slideshow.png") repeat-x;
+  background: url("../img/shadow-slideshow.png") repeat-x;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 16px;
   line-height: initial;
@@ -10731,17 +10780,17 @@ header #searchContainer {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    /*&:after {
-      height: 100%;
-      content: '';
-      display: block;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: #000;
-      opacity: 0.3;
-    }
+  /*&:after {
+    height: 100%;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.3;
+  }
 */
 }
 #prefooter .imgSlide img {
@@ -10935,7 +10984,7 @@ header #searchContainer {
     font-size: 90%;
   }
 }
-.text-presentation p {
+.text-presentation .savoirPlus {
   color: #2b2b2b;
   font-size: 16px;
   text-transform: uppercase;
@@ -22741,7 +22790,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-      
+
         &:after {
         content: '';
     }
@@ -23265,7 +23314,7 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   height: 660px;
   overflow: hidden;
-  /*background: url("../img/plage-cannes.png");*/
+  /*background: url("/img/plage-cannes.png");*/
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -23422,7 +23471,7 @@ ul.tabs .quarterTab h4 {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;  
+  z-index: 1004;
   right: 1%;
   top: 100%;*/
   display: none;
@@ -24215,7 +24264,7 @@ ul.tabs .quarterTab h4 {
   padding: 30px;
   display: block;
 }
-.servicesPage .lastServicesArticle .lastArticle  {
+.servicesPage .lastServicesArticle .lastArticle  {
   position: absolute;
   top: 150px;
 }
@@ -24482,7 +24531,7 @@ ul.tabs .quarterTab h4 {
   text-transform: initial !important;
   letter-spacing: 2px;
 }
-.mentionsLegales h5  {
+.mentionsLegales h5  {
   padding: 0px 0px !important;
 }
 .mentionsLegales h6 {
@@ -24864,11 +24913,11 @@ ul.tabs .quarterTab h4 {
 }
 .tarifs ul li {
   color: white;
-  opacity: 0.9;
   text-align: left;
   line-height: 40px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
+  list-style-type: circle;
 }
 
 /* PAGE GALERIE PHOTOS */
@@ -25001,14 +25050,13 @@ ul.tabs .quarterTab h4 {
   min-height: 250px;
 }
 
-p {
+/*p {
   text-align: right;
   color: #999999;
   font-size: 12px;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-family: $CamphorHeavy;
   letter-spacing: 1px;
-}
-
+}*/
 #contactForm .formContainer form .submit {
   width: 130px;
   float: left;
@@ -25368,7 +25416,7 @@ option:checked,
 
 /* PAGE PROGRAMMATION */
 .marche {
-  text-align: center;
+  text-align: left;
   margin-bottom: 50px;
   padding-top: 1%;
 }
@@ -25382,7 +25430,6 @@ option:checked,
   color: #2b2b2b;
   font-size: 16px;
   line-height: 40px;
-  opacity: 0.8;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   padding: 0px 100px;
 }
@@ -25411,11 +25458,11 @@ option:checked,
 .marche li {
   color: #505050;
   font-size: 16px;
-  opacity: 0.8;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 40px;
   padding-right: 50px;
   text-align: left;
+  list-style-type: disc;
 }
 
 .marcheBody {
@@ -25500,6 +25547,11 @@ option:checked,
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   background: #080808 !important;
   color: white !important;
+}
+
+.p-Padding  {
+  padding: 100px 0px 50px 0px !important;
+  margin: 100px 0px 50px 0px !important;
 }
 
 .results {
@@ -25765,9 +25817,4 @@ option:checked,
 
 html[lang="es"] header #navigation ul.main li a {
   padding-right: 15px;
-}
-
-/* helpers */
-.color-inherit {
-  color: inherit;
 }

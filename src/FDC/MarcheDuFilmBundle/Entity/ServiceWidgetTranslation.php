@@ -3,23 +3,19 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
-use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ServiceTranslation
  *
- * @ORM\Table(name="service_widget_translation")
- * @ORM\Entity
+ * @ORM\Table(name="mdf_service_widget_translation")
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceWidgetTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class ServiceWidgetTranslation
 {
-//    use Seo;
     use Time;
     use Translation;
     use TranslationChanges;
@@ -37,14 +33,6 @@ class ServiceWidgetTranslation
      * @ORM\Column(name="subTitle", type="string", length=255, nullable=true)
      */
     protected $subTitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", nullable=true)
-     */
-    protected $url;
-
 
     /**
      * Set title
@@ -90,21 +78,5 @@ class ServiceWidgetTranslation
     public function getSubTitle()
     {
         return $this->subTitle;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
     }
 }

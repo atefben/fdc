@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Service
- * @ORM\Table(name="service")
+ * @ORM\Table(name="mdf_service")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceRepository")
  * @ORM\HasLifecycleCallbacks()
  */

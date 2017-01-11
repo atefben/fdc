@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ServiceWidgetProductAdmin extends Admin
 {
@@ -18,25 +19,6 @@ class ServiceWidgetProductAdmin extends Admin
     );
 
     protected $translationDomain = 'BaseAdminBundle';
-
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('title', null, array(
-                'translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('displayedHomeCorpo', null, array(
-                'label'      => 'filter.label_homepage_corpo_displayed_galleries',
-                'field_type' => 'checkbox',
-            ))
-        ;
-
-        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-    }
 
     public function configure()
     {
@@ -66,7 +48,8 @@ class ServiceWidgetProductAdmin extends Admin
     {
         $formMapper
             ->add('gallery', 'sonata_type_model_list',array(
-                'btn_delete' => true
+                'btn_delete' => true,
+                'required' => false
             ))
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
@@ -81,34 +64,51 @@ class ServiceWidgetProductAdmin extends Admin
                     'url'          => array(
                         'label'              => 'form.label.service_widget_product_url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     ),
                     'title'        => array(
                         'label'              => 'form.label.service_widget_product_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     ),
-                    'subTitle'     => array(
-                        'label'              => 'form.label.service_widget_product_sub_title',
+                    'grayText'     => array(
+                        'label'              => 'form.label.service_widget_product_gray_text',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
+                    ),
+                    'colorText'     => array(
+                        'label'              => 'form.label.service_widget_product_color_text',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     ),
                     'body'         => array(
                         'label'              => 'form.label.service_widget_product_body',
                         'translation_domain' => 'BaseAdminBundle',
-                        'attr'               => array(
-                            'class' => 'ckeditor',
+                        'constraints'        => array(
+                            new NotBlank(),
                         ),
-                        'required'           => false,
-                        'field_type'         => 'ckeditor',
-                        'config_name'        => 'widget',
+                        'required' => true
                     ),
                     'toggledBody'  => array(
                         'label'              => 'form.label.service_widget_product_toggled_body',
                         'translation_domain' => 'BaseAdminBundle',
-                        'attr'               => array(
-                            'class' => 'ckeditor',
+                        'constraints'        => array(
+                            new NotBlank(),
                         ),
-                        'required'           => false,
-                        'field_type'         => 'ckeditor',
-                        'config_name'        => 'widget',
+                        'required' => true,
+//                        'field_type'         => 'ckeditor',
                     ),
                     'createdAt'    => array(
                         'display' => false,

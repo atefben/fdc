@@ -1537,7 +1537,7 @@ services:
         class: Base\AdminBundle\Admin\ServiceWidgetAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidget, BaseAdminBundle:ServiceWidgetAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidget}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidget,show_in_dashboard: false}
 
     base.admin.service_widget_product_collection:
         class: Base\AdminBundle\Admin\ServiceWidgetProductCollectionAdmin
@@ -1549,7 +1549,7 @@ services:
         class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct, BaseAdminBundle:ServiceWidgetProductAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct, show_in_dashboard: false}
 
     base.admin.mdf_header_footer:
         class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin

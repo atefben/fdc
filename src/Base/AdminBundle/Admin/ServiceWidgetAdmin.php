@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ServiceWidgetAdmin extends Admin
 {
@@ -18,25 +19,6 @@ class ServiceWidgetAdmin extends Admin
     );
 
     protected $translationDomain = 'BaseAdminBundle';
-
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('title', null, array(
-                'translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('displayedHomeCorpo', null, array(
-                'label'      => 'filter.label_homepage_corpo_displayed_galleries',
-                'field_type' => 'checkbox',
-            ))
-        ;
-
-        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-    }
 
     public function configure()
     {
@@ -80,23 +62,27 @@ class ServiceWidgetAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
-                    'url'          => array(
-                        'label'              => 'form.label.service_widget_tab_url',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
                     'title'        => array(
-                        'label'              => 'form.label.service_widget_tab_title',
+                        'label'              => 'form.mdf.label.service_widget_tab_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     ),
                     'subTitle'     => array(
-                        'label'              => 'form.label.service_widget_tab_sub_title',
+                        'label'              => 'form.mdf.label.service_widget_tab_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     )
                 ),
             ))
             ->add('productCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.gallery.medias',
+                'label'              => 'form.mdf.label.service_widget_product',
                 'translation_domain' => 'BaseAdminBundle',
             ), array(
                 'edit'     => 'inline',

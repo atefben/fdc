@@ -22,21 +22,6 @@ class ServiceAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('title', null, array(
-                'translation_domain' => 'BaseAdminBundle',
-            ))
-        ;
-
-        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-    }
-
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -78,24 +63,26 @@ class ServiceAdmin extends Admin
                         ),
                     ),
                     'title'             => array(
-                        'label'              => 'form.label.service_title',
+                        'label'              => 'form.mdf.label.service_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.theme.helper_service_title',
                         'constraints'        => array(
                             new NotBlank(),
                         ),
-                        'attr'               => array(
-                            'maxlength' => 30,
-                        ),
+                        'required' => true
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.label.service_sub_title',
+                        'label'              => 'form.mdf.label.service_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     ),
                     'header'            => array(
-                        'label'              => 'form.label.service_header',
+                        'label'              => 'form.mdf.label.service_header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'required' => false
                     ),
                     'createdAt'         => array(
                         'display' => false,
@@ -104,60 +91,33 @@ class ServiceAdmin extends Admin
                         'display' => false,
                     ),
                     'status'            => array(
-                        'label'                     => 'form.label_status',
+                        'label'                     => 'form.mdf.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => ServiceTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
-                    'showContentBlock'  => array(
-                        'label'              => 'form.label.service_content_block_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
                     'contentBlockTitle' => array(
-                        'label'              => 'form.label.service_content_block_title',
+                        'label'              => 'form.mdf.label.service_content_block_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'contentBlockBody'  => array(
-                        'label'              => 'form.label.service_content_block_body',
+                        'label'              => 'form.mdf.label.service_content_block_body',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'required' => false
                     ),
                 ),
             ))
             ->add('widgetCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.gallery.medias',
+                'label'              => 'form.mdf.label.new_service_widget',
                 'translation_domain' => 'BaseAdminBundle',
             ), array(
                 'edit'     => 'inline',
                 'inline'   => 'table',
                 'sortable' => 'position',
-            ))
-            ->add('translate')
-            ->add('translateOptions', 'choice', array(
-                'choices'            => Service::getAvailableTranslateOptions(),
-                'translation_domain' => 'BaseAdminBundle',
-                'multiple'           => true,
-                'expanded'           => true,
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'                   => Service::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr'     => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                ),
-            ))
-            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
-                'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr'     => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                ),
             ))
         ;
     }

@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\Groups;
 /**
  * ServiceWidgetCollection
  *
- * @ORM\Table()
+ * @ORM\Table(name="mdf_service_widget_collection")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */

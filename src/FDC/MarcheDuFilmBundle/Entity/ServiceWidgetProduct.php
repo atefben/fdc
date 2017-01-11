@@ -3,16 +3,13 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use FDC\MarcheDuFilmBundle\Entity\GalleryMdf;
-use FDC\MarcheDuFilmBundle\Entity\MediaMdfImage;
-use FDC\MarcheDuFilmBundle\Entity\ServiceWidget;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ServiceWidgetProduct
  *
- * @ORM\Table(name="service_widget_product")
+ * @ORM\Table(name="mdf_service_widget_product")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */

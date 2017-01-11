@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ServiceWidget
- * @ORM\Table(name="service_widget")
+ * @ORM\Table(name="mdf_service_widget")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
