@@ -1521,17 +1521,35 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoSearch}
 
-    base.admin.service:
+    base.admin.mdf_service:
         class: Base\AdminBundle\Admin\ServiceAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Service, BaseAdminBundle:ServiceAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Services}
 
-    base.admin.service_widget_product:
+    base.admin.mdf_service_widget_collection:
+        class: Base\AdminBundle\Admin\ServiceWidgetCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection, BaseAdminBundle:ServiceWidgetCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetCollection, show_in_dashboard: false}
+
+    base.admin.mdf_service_widget:
+        class: Base\AdminBundle\Admin\ServiceWidgetAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidget, BaseAdminBundle:ServiceWidgetAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidget, show_in_dashboard: false}
+
+    base.admin.mdf_service_widget_product_collection:
+        class: Base\AdminBundle\Admin\ServiceWidgetProductCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection, BaseAdminBundle:ServiceWidgetProductCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProductCollection, show_in_dashboard: false}
+
+    base.admin.mdf_service_widget_product:
         class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct, BaseAdminBundle:ServiceWidgetProductAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct, show_in_dashboard: false}
 
     base.admin.mdf_header_footer:
         class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin

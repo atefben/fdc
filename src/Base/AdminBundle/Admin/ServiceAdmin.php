@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use FDC\MarcheDuFilmBundle\Entity\Service;
 use FDC\MarcheDuFilmBundle\Entity\ServiceTranslation;
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -14,34 +14,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class ServiceAdmin extends Admin
 {
 
-    protected $translationDomain = 'BaseAdminBundle';
-    protected $formOptions = array(
-        'cascade_validation' => true,
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
     );
+
+    protected $translationDomain = 'BaseAdminBundle';
 
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
-    }
-
-    public function getFormTheme()
-    {
-        return array_merge(
-            parent::getFormTheme(),
-            array('BaseAdminBundle:Form:polycollection.html.twig')
-        );
-    }
-
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-        ;
     }
 
     /**
@@ -50,15 +33,16 @@ class ServiceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('name')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
-                    'edit'   => array(),
-                    'delete' => array(),
-                ),
+                    'edit' => array(),
+                )
             ))
         ;
     }
@@ -79,24 +63,26 @@ class ServiceAdmin extends Admin
                         ),
                     ),
                     'title'             => array(
-                        'label'              => 'form.label.service_title',
+                        'label'              => 'form.mdf.label.service_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.theme.helper_service_title',
                         'constraints'        => array(
                             new NotBlank(),
                         ),
-                        'attr'               => array(
-                            'maxlength' => 30,
-                        ),
+                        'required' => true
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.label.service_sub_title',
+                        'label'              => 'form.mdf.label.service_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
                     ),
                     'header'            => array(
-                        'label'              => 'form.label.service_header',
+                        'label'              => 'form.mdf.label.service_header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'required' => false
                     ),
                     'createdAt'         => array(
                         'display' => false,
@@ -105,61 +91,33 @@ class ServiceAdmin extends Admin
                         'display' => false,
                     ),
                     'status'            => array(
-                        'label'                     => 'form.label_status',
+                        'label'                     => 'form.mdf.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => ServiceTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
-                    'showContentBlock'  => array(
-                        'label'              => 'form.label.service_content_block_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
                     'contentBlockTitle' => array(
-                        'label'              => 'form.label.service_content_block_title',
+                        'label'              => 'form.mdf.label.service_content_block_title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'contentBlockBody'  => array(
-                        'label'              => 'form.label.service_content_block_body',
+                        'label'              => 'form.mdf.label.service_content_block_body',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'required' => false
                     ),
                 ),
             ))
-            ->add('widgets', 'infinite_form_polycollection', array(
-                'label'        => false,
-                'types'        => array(
-                    'service_widget_product_type',
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false,
-            ))
-            ->add('translate')
-            ->add('translateOptions', 'choice', array(
-                'choices'            => Service::getAvailableTranslateOptions(),
+            ->add('widgetCollections', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.mdf.label.new_service_widget',
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple'           => true,
-                'expanded'           => true,
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'                   => Service::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr'     => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                ),
-            ))
-            ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
-                'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr'     => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                ),
+            ), array(
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
             ))
         ;
     }
@@ -171,11 +129,6 @@ class ServiceAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
         ;
     }
 }

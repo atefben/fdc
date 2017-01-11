@@ -2,100 +2,112 @@
 
 {% block main %}
     <div id="main" class="home loading">
-        <div class="text-presentation producersWorkshop opportunites mdf customClass2ckg">
-            <h3>{{ service|trans_fallback('title')|raw }}</h3>
+        <div class="text-presentation producersWorkshop opportunites mdf customClass2Bckg">
+            <h3>Opportunités publicitaires</h3>
             <div class="subNavigation">
                 <nav>
                     <ul class="main">
                         <li>
-                            <a href="stands.php">stands</a>
+                            <a href="#">stands</a>
                         </li>
                         <li>
                             <a href="#">pavillons</a>
                         </li>
                         <li>
-                            <a href="projections.php">projections</a>
+                            <a href="#">projections</a>
                         </li>
                         <li>
-                            <a href="equipements-services.php">équipements et services</a>
+                            <a href="#">équipements et services</a>
                         </li>
                         <li>
-                            <a href="partenaires.php">partenaires</a>
+                            <a href="#">partenaires</a>
                         </li>
                         <li>
-                            <a href="opportunites-pub.php" class="active">Opportunités publicitaires</a>
+                            <a href="#" class="active customClass2">Opportunités publicitaires</a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </div>
-
-        <div class="bigContainer">
-            <div class="text-presentation boxes stands">
-                <h3>{{ service|trans_fallback('subTitle')|raw }}</h3>
-                <h5>{{ (service|trans_fallback('header'))|raw }}</h5>
+    {% if serviceWidgets and serviceWidgets|length > 1 %}
+        <div class="greyBckg">
+    {% endif %}
+            <div class="bigContainer">
+                <div class="text-presentation boxes">
+                    <h3>{{ service.subTitle }}</h3>
+                    {# Formated in BO #}
+                    {{ service.header|raw }}
+                    {# End #}
+                </div>
+            </div>
+    {% if serviceWidgets and serviceWidgets|length > 1 %}
+        </div>
+        <div class="greyBckg">
+            <div class="bigContainer">
+                <ul class="tabs">
+                    {% for widget in serviceWidgets %}
+                        <li class="{% if (serviceWidgets|first).id == widget.id %}active{% endif %} quarterTab" rel="tab{{ widget.translatable.id }}"><h4>{{ widget.title }}</h4>{{ widget.subTitle }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
+    {% endif %}
         <div class="whiteBckg">
             <div class="tab_container ">
-                <div id="tab1" class="tab_content">
-                    {% for widget in service.widgets if widget.getWidgetType() == 'ServiceWidgetProduct' %}
-                        <div class="minTab{% if not widget.gallery or not widget.gallery.medias.count() %} nopicTab{% endif %}">
-                            {% if widget.gallery and widget.gallery.medias.count() %}
-                                <div class="tabPic">
-                                    <div class="owl-pub owl-carousel owl-theme">
-                                        {% for mediaGallery in widget.gallery.medias %}
-
-                                            <div class="item">
-                                                <img src="{% path mediaGallery.media|trans_fallback('file'), '346x346' %}"
-                                                     alt="" style="width: 346px; height: 346px;">
-                                            </div>
-                                        {% endfor %}
+                {% for widgetId, serviceProducts in serviceWidgetProducts %}
+                    <div id="tab{{ widgetId }}" class="tab_content">
+                        {% for product in serviceProducts %}
+                            <div class="minTab{% if not product.translatable.gallery or not product.translatable.gallery.medias.count() %} nopicTab{% endif %}">
+                                {% if product.translatable.gallery and product.translatable.gallery.medias.count() %}
+                                    <div class="tabPic">
+                                        <div class="owl-pub owl-carousel owl-theme">
+                                            {% for mediaGallery in product.translatable.gallery.medias %}
+                                                <div class="item">
+                                                    <img src="{% path mediaGallery.media|trans_fallback('file'), 'reference' %}" alt="Marché du film" style="width: 346px; height: 346px;">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
                                     </div>
-                                </div>
-                            {% endif %}
-                            <div class="tabBox">
-                                <span class="customClassBlue">{{ (widget|trans_fallback('title'))|raw }}</span>
-                                <h5>{{ (widget|trans_fallback('subTitle'))|raw }}</h5>
-                                <div>{{ (widget|trans_fallback('body'))|raw }}</div>
-                                <input type="checkbox" class="read-more-state" id="post-{{ widget.id }}" style="opacity:0;"/>
-                                <div class="read-more-wrap">
-                                    <div class="read-more-target">
-                                        {{ (widget|trans_fallback('toggledBody'))|raw }}
+                                {% endif %}
+                                <div class="tabBox">
+                                    <span class="customClass2">{{ product.title }}</span>
+                                    <h5>{{ product.grayText }} <span class="fromPrice">{{ product.colorText }}</span></h5>
+                                    <p>{{ product.body }}</p>
+                                    <input type="checkbox" class="read-more-state" id="post-{{ product.id }}" style="opacity:0;"/>
+                                    <div class="read-more-wrap">
+                                        <div class="read-more-target">
+                                            {# Formated in BO #}
+                                            {{ product.toggledBody|raw }}
+                                            {# End #}
+                                        </div>
                                     </div>
+                                    <i class='icon icon_flecheGauche opportuniteArrow'></i>
+                                    <label for="post-{{ product.id }}" class="read-more-trigger"><a href="{{ product.url }}"><div  class="blueBtn customClass2">Réserver</div></a></label>
                                 </div>
-                                <i class='icon icon_flecheGauche opportuniteArrow'></i>
-                                <label for="post-{{ widget.id }}" class="read-more-trigger">
-                                    <a href="{{ widget|trans_fallback('url') }}">
-                                        <div class="blueBtn customClassBlue">Réserver</div>
-                                    </a>
-                                </label>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <!-- #tab1 -->
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
-            <!-- .tab_container -->
         </div>
-        {% if service|trans_fallback('showContentBlock') %}
-            <div class="tarifs">
-                <div class="text-presentation">
-                    <h3>{{ service|trans_fallback('contentBlockTitle') }}</h3>
-                    <ul>
-                        {{ service|trans_fallback('contentBlockBody')|raw }}
-                    </ul>
-                </div>
+    </div>
+    {% if service.contentBlockTitle is not null and service.contentBlockBody is not null %}
+        <div class="tarifs">
+            <div class="text-presentation">
+                <h3>{{ service.contentBlockTitle }}</h3>
+                <ul>
+                    {{ service.contentBlockBody|raw }}
+                </ul>
             </div>
-        {% endif %}
-    </div>
-    </div>
-    <div class="floatingButtonRight">
-        <div class="arrow showRight">
-            <i class='icon icon_flecheGauche reverse'></i>
         </div>
-        <a href="pavillons.php">
-            <div class="floatingButtonText showRight">pavillons</div>
+    {% endif %}
+
+    <div class="floatingButtonLeft">
+        <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+        </div>
+        <a href="#">
+            <div class="floatingButtonText showLeft">partenaires</div>
         </a>
     </div>
 

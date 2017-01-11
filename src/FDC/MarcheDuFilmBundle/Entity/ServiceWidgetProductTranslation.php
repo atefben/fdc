@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ServiceWidgetProductTranslation
  *
- * @ORM\Table(name="service_widget_product_translation")
+ * @ORM\Table(name="mdf_service_widget_product_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceWidgetProductTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -30,9 +30,16 @@ class ServiceWidgetProductTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="subTitle", type="string", length=255, nullable=true)
+     * @ORM\Column(name="grayText", type="string", length=255, nullable=true)
      */
-    private $subTitle;
+    private $grayText;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="colorText", type="string", length=255, nullable=true)
+     */
+    private $colorText;
 
     /**
      * @var string
@@ -76,29 +83,6 @@ class ServiceWidgetProductTranslation
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set subTitle
-     *
-     * @param string $subTitle
-     * @return ServiceWidgetProductTranslation
-     */
-    public function setSubTitle($subTitle)
-    {
-        $this->subTitle = $subTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get subTitle
-     *
-     * @return string 
-     */
-    public function getSubTitle()
-    {
-        return $this->subTitle;
     }
 
     /**
@@ -169,4 +153,37 @@ class ServiceWidgetProductTranslation
     {
         return $this->url;
     }
+
+    /**
+     * @return string
+     */
+    public function getGrayText()
+    {
+        return $this->grayText;
+    }
+
+    /**
+     * @param string $gray
+     */
+    public function setGrayText($grayText)
+    {
+        $this->grayText = $grayText;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorText()
+    {
+        return $this->colorText;
+    }
+
+    /**
+     * @param string $colorText
+     */
+    public function setColorText($colorText)
+    {
+        $this->colorText = $colorText;
+    }
 }
+

@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Service
- * @ORM\Table(name="service")
+ * @ORM\Table(name="mdf_service")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -49,15 +49,15 @@ class Service implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\ServiceWidget", mappedBy="service", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection", mappedBy="service", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    protected $widgets;
+    protected $widgetCollections;
 
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->widgets = new ArrayCollection();
+        $this->widgetCollections = new ArrayCollection();
     }
 
     public function __toString()
@@ -128,13 +128,13 @@ class Service implements TranslateMainInterface
     /**
      * Add widgets
      *
-     * @param \FDC\MarcheDuFilmBundle\Entity\ServiceWidget $widgets
+     * @param \FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection $widgets
      * @return Service
      */
-    public function addWidget(\FDC\MarcheDuFilmBundle\Entity\ServiceWidget $widgets)
+    public function addWidgetCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection $widgets)
     {
         $widgets->setService($this);
-        $this->widgets[] = $widgets;
+        $this->widgetCollections[] = $widgets;
 
         return $this;
     }
@@ -142,11 +142,11 @@ class Service implements TranslateMainInterface
     /**
      * Remove widgets
      *
-     * @param \FDC\MarcheDuFilmBundle\Entity\ServiceWidget $widgets
+     * @param \FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection $widgets
      */
-    public function removeWidget(\FDC\MarcheDuFilmBundle\Entity\ServiceWidget $widgets)
+    public function removeWidgetCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection $widgets)
     {
-        $this->widgets->removeElement($widgets);
+        $this->widgetCollections->removeElement($widgets);
     }
 
     /**
@@ -154,8 +154,8 @@ class Service implements TranslateMainInterface
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getWidgets()
+    public function getWidgetCollections()
     {
-        return $this->widgets;
+        return $this->widgetCollections;
     }
 }

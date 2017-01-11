@@ -7,6 +7,8 @@ use Base\AdminBundle\Admin\MediaMdfImageAdmin;
 use Base\AdminBundle\Admin\ServiceWidgetProductAdmin;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * NewsWidgetTextType class.
@@ -15,7 +17,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class ServiceWidgetProductType extends ServiceWidgetType
+class ServiceWidgetProductType extends AbstractType
 {
     /**
      * @var string
@@ -59,6 +61,11 @@ class ServiceWidgetProductType extends ServiceWidgetType
                 'label' => 'form.label.service._widget_product_gallery'
 
             ))
+            ->add('_type', 'hidden', array(
+                'data'   => $this->getName(),
+                'mapped' => false
+            ))
+            ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
@@ -108,6 +115,17 @@ class ServiceWidgetProductType extends ServiceWidgetType
                     'display' => false,
                 ),
             ),
+        ));
+    }
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class'  => $this->dataClass,
+            'model_class' => $this->dataClass,
         ));
     }
 

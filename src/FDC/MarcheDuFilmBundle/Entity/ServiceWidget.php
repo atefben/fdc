@@ -2,23 +2,23 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ServiceWidget
- * @ORM\Table(name="service_widget")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceWidgetRepository")
+ * @ORM\Table(name="mdf_service_widget")
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({
- *  "product" = "ServiceWidgetProduct",
- * })
  */
-abstract class ServiceWidget
+class ServiceWidget
 {
     use Time;
+    use Translatable;
+    use SeoMain;
 
     /**
      * @var integer
@@ -36,10 +36,35 @@ abstract class ServiceWidget
     protected $position;
 
     /**
-     * @var Service
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\Service", inversedBy="widgets")
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection", mappedBy="serviceWidget", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
-    protected $service;
+    protected $productCollections;
+    
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $this->productCollections = new ArrayCollection();
+    }
+
+//    public function __toString()
+//    {
+//        $string = substr(strrchr(get_class($this), '\\'), 1);
+//
+//        if ($this->getId()) {
+//            $string .= ' "' . $this->getTranslationEntityClass()->getTitle() . '"';
+//            $string = $this->truncate($string, 40, '..."', true);
+//        }
+//
+//        return $string;
+//    }
 
 
     public function getWidgetType()
@@ -80,25 +105,41 @@ abstract class ServiceWidget
     }
 
     /**
-     * Set service
+     * Add products
      *
-     * @param \FDC\MarcheDuFilmBundle\Entity\Service $service
+     * @param \FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection $products
      * @return ServiceWidget
      */
-    public function setService(\FDC\MarcheDuFilmBundle\Entity\Service $service = null)
+    public function addProductCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection $product)
     {
-        $this->service = $service;
+        $product->setServiceWidget($this);
+        $this->productCollections[] = $product;
 
         return $this;
     }
 
     /**
-     * Get service
+     * Remove products
      *
-     * @return \FDC\MarcheDuFilmBundle\Entity\Service 
+     * @param \FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection $products
      */
-    public function getService()
+    public function removeProductCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection $products)
     {
-        return $this->service;
+        $this->productCollections->removeElement($products);
+    }
+
+//    public function setProducts($product)
+//    {
+//        $this->products = $product;
+//    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductCollections()
+    {
+        return $this->productCollections;
     }
 }

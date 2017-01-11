@@ -4,6 +4,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 
 use FDC\MarcheDuFilmBundle\Repository\ServiceRepository;
 use FOS\RestBundle\Controller\Annotations\Route;
+use Sonata\AdminBundle\Tests\Datagrid\PagerTest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -33,32 +34,27 @@ class ServiceController extends Controller
     }
 
     /**
-     * @Route("services/{slug}")
+     * @Route("services/{slug}", name="fdc_marche_du_film_services_widgets")
      */
     public function serviceAction(Request $request, $slug)
     {
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
+        $servicesManager = $this->get('mdf.manager.services');
 
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
-
-        $locale = $request->getLocale();
-        $service = $this->getServiceRepository()->getOnePublished($locale, $slug);
+        $service = $servicesManager->getService($slug);
+        $serviceWidgets = $servicesManager->getServiceWidgets($service);
+        $serviceWidgetProducts = $servicesManager->getServiceWidgetProducts($serviceWidgets);
 
         return $this->render('FDCMarcheDuFilmBundle:services:show_service.html.twig',
             [
                 'service' => $service,
+                'serviceWidgets' => $serviceWidgets,
+                'serviceWidgetProducts' => $serviceWidgetProducts,
                 'news' => $newsContent,
                 'contact' => $contact,
             ]);
-    }
-
-    /**
-     * @return ServiceRepository
-     */
-    protected function getServiceRepository()
-    {
-        return $this->getDoctrine()->getRepository('FDCMarcheDuFilmBundle:Service');
     }
 }
