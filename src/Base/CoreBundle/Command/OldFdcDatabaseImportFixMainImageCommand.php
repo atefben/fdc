@@ -121,6 +121,7 @@ class OldFdcDatabaseImportFixMainImageCommand extends ContainerAwareCommand
                             ->setTranslatable($mediaImage)
                             ->setLocale($lang)
                         ;
+                        $this->getDoctrineManager()->persist($miTrans);
                     }
                     if ($miTrans instanceof MediaImageTranslation) {
                         $miTrans->setLegend($old->getTitleImageResume());
