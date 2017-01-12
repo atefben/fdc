@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Command;
 
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetImage;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\GalleryMedia;
 use Base\CoreBundle\Entity\InfoArticle;
@@ -353,6 +354,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     continue;
                 }
                 foreach ($widget->getGallery()->getMedias() as $media) {
+                    $media->setMedia(null);
                     $this->getManager()->remove($media);
                 }
                 $this->getManager()->remove($widget->getGallery());
@@ -537,7 +539,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     {
         $first = array();
         foreach ($classics->getWidgets() as $widget) {
-            if ($widget instanceof InfoWidgetImage) {
+            if ($widget instanceof FDCPageLaSelectionCannesClassicsWidgetImage) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
                     $first[$widget->getOldImportReference()] = $widget;
                     continue;
