@@ -60,7 +60,7 @@
                         {% for filmPerson in movie.getCredits(true) if filmPerson.person and not filmPerson.person.duplicate %}
                             {% if filmPerson.person is not empty %}
                                 {% for personFunction in filmPerson.functions %}
-                                    {% if personFunction.id not in [65, 30] %}
+                                    {% if personFunction.function.id not in [65, 30, 4] %}
                                         <p>
                                             {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': filmPerson.person} %}
                                             -
