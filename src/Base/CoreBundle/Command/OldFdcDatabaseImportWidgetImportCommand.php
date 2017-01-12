@@ -2,6 +2,8 @@
 
 namespace Base\CoreBundle\Command;
 
+use Base\CoreBundle\Entity\Gallery;
+use Base\CoreBundle\Entity\GalleryMedia;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
@@ -63,11 +65,30 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
                         $itemTranslation = $translations[$item];
                         $widget->getGallery()->setName("Gallerie - {$title} - {$itemTranslation} - {$id}");
                     }
+                    $this->removeDuplicateImageFromGallery($widget->getGallery());
                     $this->getManager()->flush();
                 }
             }
             $progress->finish();
             $output->writeln('');
+        }
+    }
+
+    private function removeDuplicateImageFromGallery(Gallery $gallery)
+    {
+        $done = [];
+        foreach ($gallery->getMedias() as $galleryMedia) {
+            if ($galleryMedia instanceof GalleryMedia) {
+                if (in_array($galleryMedia->getMedia()->getId(), $done)) {
+                    $galleryMedia
+                        ->setGallery(null)
+                        ->setMedia(null)
+                    ;
+                    $this->getManager()->remove($galleryMedia);
+                } else {
+                    $done[] = $galleryMedia->getMedia()->getId();
+                }
+            }
         }
     }
 
