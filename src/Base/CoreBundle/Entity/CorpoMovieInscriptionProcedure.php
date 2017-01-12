@@ -50,6 +50,11 @@ class CorpoMovieInscriptionProcedure implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     protected $mainImage;
+   
+    /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    protected $backgroundImage;
 
     /**
      * @deprecated
@@ -257,5 +262,28 @@ class CorpoMovieInscriptionProcedure implements TranslateMainInterface
     public function getDisplayContact()
     {
         return $this->displayContact;
+    }
+
+    /**
+     * Set backgroundImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $backgroundImage
+     * @return CorpoMovieInscriptionProcedure
+     */
+    public function setBackgroundImage(\Base\CoreBundle\Entity\MediaImageSimple $backgroundImage = null)
+    {
+        $this->backgroundImage = $backgroundImage;
+
+        return $this;
+    }
+
+    /**
+     * Get backgroundImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getBackgroundImage()
+    {
+        return $this->backgroundImage;
     }
 }
