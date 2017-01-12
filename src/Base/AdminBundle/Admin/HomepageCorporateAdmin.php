@@ -113,25 +113,25 @@ class HomepageCorporateAdmin extends Admin
                     ),
                     'popinSubtitle1' => array(
                         'label' => 'form.homepage_corporate.label_subtitle_1',
-                        'sonata_help' => 'X caractères max. Couleur blanche',
+                        'sonata_help' => 'Couleur blanche',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'popinSubtitle2' => array(
                         'label' => 'form.homepage_corporate.label_subtitle_2',
-                        'sonata_help' => 'X caractères max. Couleur dorée',
+                        'sonata_help' => 'Couleur dorée',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'bannerText' => array(
                         'label' => 'form.homepage_corporate.label_banner_text',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushEditionTitle' => array(
                         'label' => 'form.homepage_corporate.label_title',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
@@ -143,14 +143,14 @@ class HomepageCorporateAdmin extends Admin
                     ),
                     'pushMainTitle1' => array(
                         'label' => 'form.homepage_corporate.label_title',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
 
                     ),
                     'pushMainSubtitle1' => array(
                         'label' => 'form.homepage_corporate.label_subtitle',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
 
@@ -163,13 +163,13 @@ class HomepageCorporateAdmin extends Admin
                     ),
                     'pushMainTitle2' => array(
                         'label' => 'form.homepage_corporate.label_subtitle',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushMainSubtitle2' => array(
                         'label' => 'form.homepage_corporate.label_subtitle',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
 
@@ -182,7 +182,7 @@ class HomepageCorporateAdmin extends Admin
                     ),
                     'pushSecondaryTitle1' => array(
                         'label' => 'form.homepage_corporate.label_title',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
@@ -194,7 +194,7 @@ class HomepageCorporateAdmin extends Admin
                     ),
                     'pushSecondaryTitle2' => array(
                         'label' => 'form.homepage_corporate.label_title',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
@@ -206,7 +206,7 @@ class HomepageCorporateAdmin extends Admin
                     ),
                     'pushSecondaryTitle3' => array(
                         'label' => 'form.homepage_corporate.label_title',
-                        'sonata_help' => 'X caractères max.',
+//                        'sonata_help' => 'X caractères max.',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
