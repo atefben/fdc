@@ -86,7 +86,7 @@ ehthumbs.db
 config.codekit
 .codekit-cache
 
-/nbproject/private/
+/nbproject
 
 app/config/bundles/fos_elastica.yml
 
