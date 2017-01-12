@@ -57,7 +57,7 @@
                 <div class="vCenterKid">
                     {% if movie.getCredits()|length > 0 %}
                         <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
-                        {% for filmPerson in movie.getCredits() if filmPerson.person and not filmPerson.person.duplicate %}
+                        {% for filmPerson in movie.getCredits(true) if filmPerson.person and not filmPerson.person.duplicate %}
                             {% if filmPerson.person is not empty %}
                                 {% for personFunction in filmPerson.functions %}
                                     {% if personFunction.id not in [65, 30] %}
