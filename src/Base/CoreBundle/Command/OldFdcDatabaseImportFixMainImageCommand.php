@@ -113,6 +113,16 @@ class OldFdcDatabaseImportFixMainImageCommand extends ContainerAwareCommand
                 $olds = $this->getOldArticlesI18n($item->getOldNewsId());
                 foreach ($olds as $lang => $old) {
                     $miTrans = $mediaImage->findTranslationByLocale($lang);
+                    if (!$miTrans) {
+                        $miTrans = new MediaImageTranslation();
+                        $miTrans
+                            ->setCreatedAt($mediaImage->getCreatedAt())
+                            ->setUpdatedAt($mediaImage->getUpdatedAt())
+                            ->setTranslatable($mediaImage)
+                            ->setLocale($lang)
+                        ;
+                        $this->getDoctrineManager()->persist($miTrans);
+                    }
                     if ($miTrans instanceof MediaImageTranslation) {
                         $miTrans->setLegend($old->getTitleImageResume());
                         if ($miTrans->getLocale() == 'fr') {
