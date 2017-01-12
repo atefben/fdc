@@ -30,11 +30,8 @@
                                     <div class="box-body">
                                         <div class="col-md-12">
                                             {{ form_row(translationsFields.title) }}
-                                            {{ form_row(translationsFields.subTitle) }}
+                                            {{ form_row(translationsFields.name) }}
                                             {{ form_row(translationsFields.description) }}
-                                            {{ form_row(translationsFields.eventHour) }}
-                                            {{ form_row(translationsFields.eventPlace) }}
-                                            {{ form_row(translationsFields.eventAccessType) }}
                                         </div>
                                     </div>
                                 </div>
@@ -42,29 +39,7 @@
                         </div>
                     </div>
                     {% if form.vars.default_locale == locale %}
-                        <div class="col-md-12">
-                            <div class="box-body">
-                                <div class="fdc-widgets" data-form-widget="collection">
-                                    <div class="item base-widget">
-                                        <h4><strong>{{ 'form.mdf.label.program_speakers'|trans }}</strong></h4>
-                                        {{ form_row(form.parent.children.speakersCollections) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     {% else %}
-
-                        <div class="col-md-8">
-                            <div class="box-body">
-                                <div class="fdc-widgets" data-form-widget="collection">
-                                    <div class="item base-widget">
-                                        <h4><strong>{{ 'form.mdf.label.program_speakers'|trans }}</strong></h4>
-                                        {{ form_row(form.parent.children.speakersCollections) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-md-4">
                             <div class="box box-success">
                                 <div class="box-header">
@@ -76,7 +51,7 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                {{ 'form.label.conference_event_title'|trans }}
+                                                {{ 'form.label.program_speakers_title'|trans }}
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
@@ -86,51 +61,21 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                {{ 'form.label.form.label.conference_event_subtitle'|trans }}
+                                                {{ 'form.label.form.label.program_speakers_name'|trans }}
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
-                                                    {{ form.children.fr.vars.value.subTitle }}
+                                                    {{ form.children.fr.vars.value.name }}
                                                 </div>
                                             {% endif %}
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                {{ 'form.label.conference_event_description'|trans }}
+                                                {{ 'form.label.program_speakers_description'|trans }}
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
                                                     {{ form.children.fr.vars.value.description }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label.conference_event_hour'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.eventHour }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label.conference_event_place'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.eventPlace }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label.conference_event_access_type'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.eventAccessType }}
                                                 </div>
                                             {% endif %}
                                         </div>

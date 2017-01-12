@@ -3,10 +3,12 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
-class MdfConferenceProgramEventAdmin extends Admin
+class MdfProgramSpeakersAdmin extends Admin
 {
     public function configure()
     {
@@ -63,37 +65,22 @@ class MdfConferenceProgramEventAdmin extends Admin
                         'label'              => 'form.mdf.conference_program.title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
-                    'subTitle'          => array(
+                    'name'          => array(
                         'label'              => 'form.mdf.conference_program.subTitle',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'description'          => array(
                         'label'              => 'form.mdf.conference_program.description',
                         'translation_domain' => 'BaseAdminBundle'
-                    ),
-                    'eventHour'          => array(
-                        'label'              => 'form.mdf.conference_program.eventHour',
-                        'translation_domain' => 'BaseAdminBundle'
-                    ),
-                    'eventPlace'          => array(
-                        'label'              => 'form.mdf.conference_program.eventPlace',
-                        'translation_domain' => 'BaseAdminBundle'
-                    ),
-                    'eventAccessType'          => array(
-                        'label'              => 'form.mdf.conference_program.eventAccessType',
-                        'translation_domain' => 'BaseAdminBundle'
                     )
                 )
             ))
-            ->add('speakersCollections', 'sonata_type_collection', array(
-                'by_reference'       => false,
-                'label'              => 'form.mdf.label.speakers',
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.image',
                 'translation_domain' => 'BaseAdminBundle',
-            ), array(
-                      'edit'     => 'inline',
-                      'inline'   => 'table',
-                      'sortable' => 'position',
-                  ))
+                'btn_delete' => false,
+                'required' => true
+            ))
         ;
 
     }

@@ -1858,6 +1858,18 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection, BaseAdminBundle:MdfConferenceProgramEventCollectionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Event Collection, show_in_dashboard: false}
+
+    base.admin.mdf_program_speakers:
+        class: Base\AdminBundle\Admin\MdfProgramSpeakersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakers, BaseAdminBundle:MdfProgramSpeakersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Program Speakers, show_in_dashboard: false}
+
+    base.admin.mdf_program_speakers_collection:
+        class: Base\AdminBundle\Admin\MdfProgramSpeakersCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakersCollection, BaseAdminBundle:MdfProgramSpeakersCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Program Speakers Collection, show_in_dashboard: false}
     base.admin.mdf_news_page:
         class: Base\AdminBundle\Admin\MdfNewsPageAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfNewsPage, BaseAdminBundle:MdfNewsPageAdmin]
