@@ -482,6 +482,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
                     continue;
                 }
                 foreach ($widget->getGallery()->getMedias() as $media) {
+                    $media->setMedia(null);
                     $this->getManager()->remove($media);
                 }
                 $this->getManager()->remove($widget->getGallery());
