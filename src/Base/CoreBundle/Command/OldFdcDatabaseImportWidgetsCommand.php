@@ -26,6 +26,7 @@ use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 use Base\CoreBundle\Entity\StatementWidget;
 use Base\CoreBundle\Entity\StatementWidgetAudio;
+use Base\CoreBundle\Entity\StatementWidgetImage;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideo;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -474,7 +475,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     {
         $first = array();
         foreach ($statement->getWidgets() as $widget) {
-            if ($widget instanceof InfoWidgetImage) {
+            if ($widget instanceof StatementWidgetImage) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
                     $first[$widget->getOldImportReference()] = $widget;
                     continue;
