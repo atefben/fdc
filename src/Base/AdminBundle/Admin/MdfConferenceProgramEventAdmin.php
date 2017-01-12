@@ -6,7 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class MdfConferenceProgramAdmin extends Admin
+class MdfConferenceProgramEventAdmin extends Admin
 {
     public function configure()
     {
@@ -47,6 +47,7 @@ class MdfConferenceProgramAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
@@ -60,46 +61,30 @@ class MdfConferenceProgramAdmin extends Admin
                     ),
                     'title'          => array(
                         'label'              => 'form.mdf.conference_program.title',
-                        'translation_domain' => 'BaseAdminBundle',
+                        'translation_domain' => 'BaseAdminBundle'
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.mdf.conference_program.subtitle',
-                        'translation_domain' => 'BaseAdminBundle',
+                        'label'              => 'form.mdf.conference_program.subTitle',
+                        'translation_domain' => 'BaseAdminBundle'
                     ),
-                    'header'          => array(
-                        'label'              => 'form.mdf.conference_program.header',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type'         => 'ckeditor',
+                    'description'          => array(
+                        'label'              => 'form.mdf.conference_program.description',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'eventHour'          => array(
+                        'label'              => 'form.mdf.conference_program.eventHour',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'eventPlace'          => array(
+                        'label'              => 'form.mdf.conference_program.eventPlace',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'eventAccessType'          => array(
+                        'label'              => 'form.mdf.conference_program.eventAccessType',
+                        'translation_domain' => 'BaseAdminBundle'
                     )
                 )
             ))
-            ->add('contentTemplateConferenceWidgets', 'infinite_form_polycollection', array(
-                'label' => false,
-                'types' => array(
-                    'content_template_widget_text_type',
-                    'content_template_widget_image_type',
-                    'content_template_widget_gallery_type'
-                ),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-            ))
-            ->add('file', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.file',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
-            ))
-            ->add('dayWidgetCollections', 'sonata_type_collection', array(
-                'by_reference'       => false,
-                'label'              => 'form.mdf.label.new_program_day',
-                'translation_domain' => 'BaseAdminBundle',
-            ), array(
-                      'edit'     => 'inline',
-                      'inline'   => 'table',
-                      'sortable' => 'position',
-                  ))
         ;
 
     }

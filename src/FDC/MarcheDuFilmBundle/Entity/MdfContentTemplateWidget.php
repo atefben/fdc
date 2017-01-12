@@ -37,6 +37,13 @@ abstract class MdfContentTemplateWidget
     protected $contentTemplate;
 
     /**
+     * @var MdfConferenceProgram
+     *
+     * @ORM\ManyToOne(targetEntity="MdfConferenceProgram", inversedBy="contentTemplateConferenceWidgets")
+     */
+    protected $conferenceProgram;
+
+    /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
@@ -50,6 +57,27 @@ abstract class MdfContentTemplateWidget
     {
         return $this->id;
     }
+
+    /**
+     * @return MdfConferenceProgram
+     */
+    public function getConferenceProgram()
+    {
+        return $this->conferenceProgram;
+    }
+
+    /**
+     * @param $conferenceProgram
+     *
+     * @return $this
+     */
+    public function setConferenceProgram($conferenceProgram)
+    {
+        $this->conferenceProgram = $conferenceProgram;
+
+        return $this;
+    }
+
 
     /**
      * @return MdfContentTemplate

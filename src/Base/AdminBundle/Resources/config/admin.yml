@@ -1835,6 +1835,29 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program}
 
+    base.admin.mdf_conference_program_day:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramDayAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDay, BaseAdminBundle:MdfConferenceProgramDayAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Day, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_day_collection:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramDayCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection, BaseAdminBundle:MdfConferenceProgramDayCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Day Collection, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_event:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramEventAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEvent, BaseAdminBundle:MdfConferenceProgramEventAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Event, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_event_collection:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramEventCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection, BaseAdminBundle:MdfConferenceProgramEventCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Event Collection, show_in_dashboard: false}
     base.admin.mdf_news_page:
         class: Base\AdminBundle\Admin\MdfNewsPageAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfNewsPage, BaseAdminBundle:MdfNewsPageAdmin]

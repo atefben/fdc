@@ -33,7 +33,7 @@
                                             {{ form_row(form.parent.children.file) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
-                                                {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                                {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                     <div class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
                                                             <h4><strong>{{ 'form.mdf.content_template.widget.text'|trans }}</strong></h4>
@@ -54,14 +54,25 @@
                                                 {% endfor %}
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
+
+                                            <div class="col-md-12">
+                                                <div class="box-body">
+                                                    <div class="fdc-widgets" data-form-widget="collection">
+                                                        <div class="item base-widget">
+                                                            <h4><strong>{{ 'form.mdf.label.conference_day_widget'|trans }}</strong></h4>
+                                                            {{ form_row(form.parent.children.dayWidgetCollections) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -89,7 +100,7 @@
                                             </div>
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
-                                                {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                                {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                     <div id="{{ locale}}-translation-content-template-widget-{{ loop.index }}"
                                                          class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
@@ -111,14 +122,26 @@
                                                 {% endfor %}
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
-                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
+
+                                            <div class="col-md-8">
+                                                <div class="box-body">
+                                                    <div class="fdc-widgets" data-form-widget="collection">
+                                                        <div class="item base-widget">
+                                                            <h4><strong>{{ 'form.mdf.label.service_widget'|trans }}</strong></h4>
+                                                            {{ form_row(form.parent.children.dayWidgetCollections) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +183,7 @@
                                                     {{ form.parent.children.translations.children.fr.vars.value.header }}
                                                 </div>
                                             </div>
-                                            {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                            {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                 {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
                                                     <div class="item base-widget"
                                                          data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">

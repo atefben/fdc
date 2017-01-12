@@ -36,7 +36,14 @@ class MdfConferenceProgram
      * @ORM\OneToMany(targetEntity="MdfContentTemplateWidget", mappedBy="conferenceProgram", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $contentTemplateWidgets;
+    private $contentTemplateConferenceWidgets;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection", mappedBy="conferenceProgram", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $dayWidgetCollections;
 
     /**
      * @var ArrayCollection
@@ -49,7 +56,16 @@ class MdfConferenceProgram
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->contentTemplateWidgets = new ArrayCollection();
+        $this->contentTemplateConferenceWidgets = new ArrayCollection();
+        $this->dayWidgetCollections = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -71,26 +87,26 @@ class MdfConferenceProgram
     /**
      * @param MdfContentTemplateWidget $contentTemplateWidget
      */
-    public function addContentTemplateWidget(MdfContentTemplateWidget $contentTemplateWidget)
+    public function addContentTemplateConferenceWidget(MdfContentTemplateWidget $contentTemplateWidget)
     {
-        $contentTemplateWidget->setContentTemplate($this);
-        $this->contentTemplateWidgets->add($contentTemplateWidget);
+        $contentTemplateWidget->setConferenceProgram($this);
+        $this->contentTemplateConferenceWidgets->add($contentTemplateWidget);
     }
 
     /**
      * @param MdfContentTemplateWidget $contentTemplateWidget
      */
-    public function removeContentTemplateWidget(MdfContentTemplateWidget $contentTemplateWidget)
+    public function removeContentTemplateConferenceWidget(MdfContentTemplateWidget $contentTemplateWidget)
     {
-        $this->contentTemplateWidgets->removeElement($contentTemplateWidget);
+        $this->contentTemplateConferenceWidgets->removeElement($contentTemplateWidget);
     }
 
     /**
      * @return ArrayCollection|MdfContentTemplateWidget
      */
-    public function getContentTemplateWidgets()
+    public function getContentTemplateConferenceWidgets()
     {
-        return $this->contentTemplateWidgets;
+        return $this->contentTemplateConferenceWidgets;
     }
 
     /**
@@ -107,5 +123,34 @@ class MdfConferenceProgram
     public function setFile($file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @param MdfConferenceProgramDayCollection $widgets
+     *
+     * @return $this
+     */
+    public function addDayWidgetCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection $widgets)
+    {
+        $widgets->setConferenceProgram($this);
+        $this->dayWidgetCollections[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfConferenceProgramDayCollection $widgets
+     */
+    public function removeDayWidgetCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection $widgets)
+    {
+        $this->dayWidgetCollections->removeElement($widgets);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDayWidgetCollections()
+    {
+        return $this->dayWidgetCollections;
     }
 }
