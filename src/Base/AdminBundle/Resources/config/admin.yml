@@ -1829,6 +1829,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Actualité}
 
+    base.admin.mdf_conference_program:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program}
+
     base.admin.mdf_news_page:
         class: Base\AdminBundle\Admin\MdfNewsPageAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfNewsPage, BaseAdminBundle:MdfNewsPageAdmin]
