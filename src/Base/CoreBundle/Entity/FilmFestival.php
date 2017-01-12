@@ -79,36 +79,43 @@ class FilmFestival
     protected $marcheduFilmEndsAt;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FilmAward", mappedBy="festival")
      */
     protected $awards;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="festival")
      */
     protected $juries;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="festival")
      */
     protected $films;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Event", mappedBy="festival")
      */
     protected $events;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Statement", mappedBy="festival")
      */
     protected $statements;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FilmMedia", mappedBy="festival")
      */
     protected $medias;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FilmFestivalMediaImageAssociated", mappedBy="festival", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -122,8 +129,10 @@ class FilmFestival
         $this->awards = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->juries = new ArrayCollection();
+        $this->films = new ArrayCollection();
         $this->medias = new ArrayCollection();
         $this->statements = new ArrayCollection();
+        $this->associatedMediaImages = new ArrayCollection();
     }
 
     public function __toString()

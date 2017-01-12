@@ -12,7 +12,7 @@ use JMS\Serializer\Annotation\Groups;
  * StatementWidgetImage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\StatementWidgetImageRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class StatementWidgetImage extends StatementWidget

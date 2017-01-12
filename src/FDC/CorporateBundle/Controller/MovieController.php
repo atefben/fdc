@@ -2,7 +2,6 @@
 
 namespace FDC\CorporateBundle\Controller;
 
-use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -13,6 +12,7 @@ use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -22,38 +22,22 @@ class MovieController extends Controller
 {
     /**
      * @Route("/films/{slug}")
-     * @Template("FDCCorporateBundle:Movie:main.html.twig")
      * @param $slug
      * @param Request $request
-     * @return array
+     * @return Response
      */
     public function getAction(Request $request, $slug)
     {
-        $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
-
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        try {
-            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
-        } catch (\Exception $e) {
-            $isAdmin = false;
-        }
-
-        // GET MOVIE
-        //if ($isAdmin) {
-        $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-            'slug' => $slug
-        ))
+        $movie = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->findOneBy([
+                'slug' => $slug,
+            ])
         ;
-        /*} else {
-            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-                'slug'     => $slug,
-                'festival' => $this->getFestival()
-            ))
-            ;
-
-        }*/
 
         if ($movie === null) {
             throw new NotFoundHttpException('Movie not found');
@@ -176,7 +160,7 @@ class MovieController extends Controller
             $nextProjectionDate = $projections[0];
         }
 
-        return array(
+        return $this->render('FDCCorporateBundle:Movie:main.html.twig', [
             'movies'             => $movies,
             'movie'              => $movie,
             'articles'           => $articles,
@@ -184,8 +168,8 @@ class MovieController extends Controller
             'next'               => $next,
             'nextProjectionDate' => $nextProjectionDate,
             'festivals'          => $festivals,
-        );
-
+            'hidePressBlock'     => true,
+        ]);
     }
 
     protected function isPublished($article, $locale)
@@ -203,7 +187,7 @@ class MovieController extends Controller
             }
         }
     }
-    
+
     protected function isNewsPublished(News $news = null, $locale)
     {
         if ($news) {
@@ -230,11 +214,10 @@ class MovieController extends Controller
      * @Route("/69-editions/retrospective/{year}/selection/{slug}", requirements={"year" = "\d+"})
      * @param Request $request
      * @param $slug
-     * @return array
+     * @return Response
      */
     public function selectionAction(Request $request, $slug = null, $year)
     {
-        $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
@@ -243,7 +226,11 @@ class MovieController extends Controller
         $this->isPageEnabled($request->get('_route'));
 
         if ($slug == 'cinema-de-la-plage') {
-            $page = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCinemaPlage')->getBySlug($locale, 'cinema-de-la-plage');
+            $page = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCinemaPlage')
+                ->getBySlug($locale, 'cinema-de-la-plage')
+            ;
 
             if ($page == null) {
                 throw new NotFoundHttpException('Cinema de la plage not found');
@@ -268,7 +255,12 @@ class MovieController extends Controller
                 $next = $selectionTabs[0];
             }
 
-            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
+            $cannesClassics = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
+                ->getAll($request->getLocale(), $this->getFestival($year))
+            ;
+
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
@@ -278,7 +270,7 @@ class MovieController extends Controller
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs'  => $selectionTabs,
                 'next'           => $next,
-                'festivals'      => $festivals
+                'festivals'      => $festivals,
             ));
         }
 
@@ -296,35 +288,21 @@ class MovieController extends Controller
 
         $selectionTabs = array();
         $defaultSlug = null;
-        foreach($pages as $p) {
+        foreach ($pages as $p) {
             $movies = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFilm')
                 ->getFilmsBySelectionSection($festival, $locale, $p->getSelectionSection()->getId())
             ;
-            if($defaultSlug === null) {
+            if ($defaultSlug === null) {
                 $defaultSlug = $p->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
             }
-            if(count($movies) > 0) {
+            if (count($movies)) {
                 $selectionTabs[] = $p;
             }
         }
 
         if ($slug === null) {
-            /*foreach ($pages as $page) {
-                if ($page instanceof FDCPageLaSelection) {
-                    if ($page->findTranslationByLocale($locale)) {
-                        $slug = $page->findTranslationByLocale($locale)->getSlug();
-                    }
-                    if (!$slug) {
-                        $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
-                    }
-                    if ($slug) {
-
-                    }
-                }
-            }
-            throw $this->createNotFoundException('There is not available selection.');*/
             return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $defaultSlug, 'year' => $year));
         }
 
@@ -354,7 +332,8 @@ class MovieController extends Controller
         if ($next === true) {
             $filters = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
+                ->getAll($request->getLocale(), $this->getFestival($year))
             ;
             if ($filters) {
                 $next = $filters[0];
@@ -374,18 +353,55 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
+        $cannesClassics = null;
+        $selectionSectionTrans = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmSelectionSectionTranslation')
+            ->findOneBy(['name' => 'Cannes Classics', 'locale' => 'fr'])
+        ;
+        if ($selectionSectionTrans) {
+            $movies = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTrans->getTranslatable()->getId())
+            ;
+            if (count($movies)) {
+                $cannesClassics = $this
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
+                    ->getAll($request->getLocale(), $this->getFestival($year))
+                ;
+            }
+        }
+
+        $cinemaDelaPlage = false;
+        $selectionSectionTrans = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmSelectionSectionTranslation')
+            ->findOneBy(['name' => 'Cinéma de la plage', 'locale' => 'fr'])
+        ;
+        if ($selectionSectionTrans) {
+            $movies = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTrans->getTranslatable()->getId())
+            ;
+            if (count($movies)) {
+                $cinemaDelaPlage = true;
+            }
+        }
 
 
         return $this->render('FDCCorporateBundle:Movie:selection.html.twig', array(
-            'cannesClassics' => $cannesClassics,
-            'selectionTabs'  => $selectionTabs,
-            'page'           => $page,
-            'movies'         => $movies,
-            'next'           => is_object($next) ? $next : false,
-            'next_classics'  => !empty($nextClassics),
-            'localeSlugs'    => $localeSlugs,
-            'festivals'      => $festivals
+            'cannesClassics'  => $cannesClassics,
+            'cinemaDeLaPlage' => $cinemaDelaPlage,
+            'selectionTabs'   => $selectionTabs,
+            'page'            => $page,
+            'movies'          => $movies,
+            'next'            => is_object($next) ? $next : false,
+            'next_classics'   => !empty($nextClassics),
+            'localeSlugs'     => $localeSlugs,
+            'festivals'       => $festivals,
         ));
     }
 
@@ -416,7 +432,7 @@ class MovieController extends Controller
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(),$this->getFestival($year));
+        $filters = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($request->getLocale(), $this->getFestival($year));
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
@@ -444,7 +460,7 @@ class MovieController extends Controller
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
             'localeSlugs'    => $localeSlugs,
-            'festivals'      => $festivals
+            'festivals'      => $festivals,
         );
     }
 }

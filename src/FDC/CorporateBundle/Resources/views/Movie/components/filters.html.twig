@@ -22,10 +22,12 @@
             {% endif %}
         {% endif %}
 
+        {% if cinemaDeLaPlage is defined and cinemaDeLaPlage %}
         <li class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %}">
             <a href="{{ path('fdc_corporate_movie_selection', {'slug': 'cinema-de-la-plage', 'year':app.request.attributes.get('year')}) }}">
                 {{ 'selection.nav.cinema-la-plage'|trans }}
             </a>
         </li>
+        {% endif %}
     </ul>
 </nav>
