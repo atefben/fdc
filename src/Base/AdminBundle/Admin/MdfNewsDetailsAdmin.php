@@ -72,16 +72,18 @@ class MdfNewsDetailsAdmin extends Admin
                         'label'              => 'form.mdf.content_template.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
-                    'theme'          => array(
-                        'label'              => 'form.mdf.content_template.theme',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
                     'header'          => array(
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                     )
                 )
+            ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.content_template.theme',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => false
             ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',

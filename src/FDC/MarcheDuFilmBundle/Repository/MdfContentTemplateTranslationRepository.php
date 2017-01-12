@@ -56,4 +56,24 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getNewsByLocaleAndType($locale, $type)
+    {
+        $qb = $this->createQueryBuilder('ctt')
+            ->select('ctt, ct, tt')
+            ->join('ctt.translatable', 'ct')
+            ->join('ct.theme', 't')
+            ->join('t.translations', 'tt')
+            ->where('ctt.locale = :locale')
+            ->andWhere('ct.type = :type')
+            ->andWhere('ct.publishedAt <= :today')
+            ->andWhere('tt.locale = :locale')
+            ->setParameter('locale', $locale)
+            ->setParameter('type', $type)
+            ->setParameter('today', new \DateTime())
+            ->orderBy('ct.publishedAt', 'DESC')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }
