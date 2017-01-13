@@ -32,6 +32,27 @@ class ThemeController extends Controller
                 'speakersList' => $speakersList,
                 'news' => $newsContent,
                 'contact' => $contact,
-            ]);
+            ]
+        );
+    }
+
+    /**
+     * @Route("/{theme}/programme")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function programAction(Request $request, $theme)
+    {
+        $conferenceProgramManager = $this->get('mdf.manager.conference_program');
+
+        $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageByTheme($theme);
+        $contentTemplateWidgets = $conferenceProgramManager->getContentTemplateConferenceProgramePageData($conferenceProgramPage);
+
+        return $this->render('FDCMarcheDuFilmBundle:themes:program.html.twig',
+             [
+                 'conferenceProgram' => $conferenceProgramPage,
+                 'contentTemplateWidgets' => $contentTemplateWidgets
+             ]
+        );
     }
 }

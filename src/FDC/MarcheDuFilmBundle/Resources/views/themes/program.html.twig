@@ -1,0 +1,28 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    {#{{ dump() }}#}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': conferenceProgram.title} %}
+        <div class="bigContainer">
+            <div class="text-presentation boxes conference mdf">
+                <h3>{{ conferenceProgram.subtitle }}</h3>
+                {{ conferenceProgram.header|raw }}
+            </div>
+            <div class="text-presentation projection presse whoarewe">
+                {% for widget in contentTemplateWidgets %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetText() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockText.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetImage() is defined and widget.isWidgetImage() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockImage.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetGallery() is defined and widget.isWidgetGallery() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockGallery.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% include 'FDCMarcheDuFilmBundle:themes:accordion.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
