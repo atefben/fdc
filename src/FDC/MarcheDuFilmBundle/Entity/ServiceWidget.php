@@ -54,17 +54,40 @@ class ServiceWidget
         $this->productCollections = new ArrayCollection();
     }
 
-//    public function __toString()
-//    {
-//        $string = substr(strrchr(get_class($this), '\\'), 1);
-//
-//        if ($this->getId()) {
-//            $string .= ' "' . $this->getTranslationEntityClass()->getTitle() . '"';
-//            $string = $this->truncate($string, 40, '..."', true);
-//        }
-//
-//        return $string;
-//    }
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
 
 
     public function getWidgetType()

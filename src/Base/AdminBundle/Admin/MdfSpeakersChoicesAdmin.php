@@ -12,12 +12,6 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class MdfSpeakersChoicesAdmin extends Admin
 {
 
-    protected $datagridValues = array(
-        '_page' => 1,
-        '_sort_order' => 'DESC',
-        '_sort_by' => 'id'
-    );
-
     protected $translationDomain = 'BaseAdminBundle';
 
     public function configure()
@@ -32,9 +26,12 @@ class MdfSpeakersChoicesAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'edit' => array(),
+                    'show'   => array(),
+                    'edit'   => array(),
+                    'delete' => array(),
                 )
             ))
         ;
@@ -92,6 +89,7 @@ class MdfSpeakersChoicesAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id');
+            ->add('id')
+            ->add('title');
     }
 }

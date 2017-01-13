@@ -62,12 +62,26 @@ class Service implements TranslateMainInterface
 
     public function __toString()
     {
-        foreach ($this->translations as $translation) {
-            if ($translation->getLocale() == 'fr' && $translation->getTitle()) {
-                return (string)$translation->getTitle();
-            }
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        } else {
+            $string = strval($this->getId());
         }
-        return 'Service';
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        }
+
+        return $string;
     }
 
     /**

@@ -34,7 +34,7 @@ class ServiceAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
+            ->add('title')
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
@@ -129,6 +129,7 @@ class ServiceAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('title')
         ;
     }
 }
