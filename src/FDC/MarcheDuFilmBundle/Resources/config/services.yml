@@ -58,3 +58,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.speakers:
+        class: FDC\MarcheDuFilmBundle\Manager\SpeakersManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
