@@ -49,7 +49,7 @@ abstract class MediaMdf implements TranslateMainInterface
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MdfTheme")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "live", "event_show", "home", "search"})
      */
@@ -443,10 +443,10 @@ abstract class MediaMdf implements TranslateMainInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme
      * @return Media
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -456,7 +456,7 @@ abstract class MediaMdf implements TranslateMainInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      */
     public function getTheme()
     {
