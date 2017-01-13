@@ -55,6 +55,13 @@ class MdfContentTemplate
     protected $publishEndedAt;
 
     /**
+     * @var Theme
+     *
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
+     */
+    private $theme;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -167,5 +174,28 @@ class MdfContentTemplate
         $this->publishEndedAt = $publishEndedAt;
 
         return $this;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme
+     * @return MdfTheme
+     */
+    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 }

@@ -140,6 +140,20 @@ class ContentTemplateManager
         return isset($newsContent) ? $newsContent : [];
     }
 
+    public function getNewsContent() {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        $news = $this->getNews($pageType);
+
+        foreach ($news as $key => $newsItem) {
+            $newsContent[$key]['content'] = $newsItem;
+            $newsContent[$key]['image'] = $this->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+            $newsContent[$key]['text'] = $this->getContentTemplateTextWidgetsByPageId($newsItem->getTranslatable()->getId());
+        }
+
+        return isset($newsContent) ? $newsContent : [];
+    }
+
     public function getTitleHeaderContent($pageType) {
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)
@@ -204,6 +218,15 @@ class ContentTemplateManager
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)
             ->getHomepageNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
+                $pageType
+            );
+    }
+
+    public function getNews($pageType) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getNewsByLocaleAndType(
                 $this->requestStack->getMasterRequest()->get('_locale'),
                 $pageType
             );

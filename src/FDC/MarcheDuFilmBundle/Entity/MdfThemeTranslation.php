@@ -8,11 +8,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MdfContentTemplateTranslation
- * @ORM\Table(name="mdf_content_template_translation")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateTranslationRepository")
+ * ThemeTranslation
+ * @ORM\Table(name="mdf_theme_translation")
+ * @ORM\Entity
  */
-class MdfContentTemplateTranslation
+class MdfThemeTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -33,13 +33,6 @@ class MdfContentTemplateTranslation
     protected $slug;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $header;
-
-    /**
      * @return string
      */
     public function getTitle()
@@ -55,26 +48,6 @@ class MdfContentTemplateTranslation
     public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHeader()
-    {
-        return $this->header;
-    }
-
-    /**
-     * @param $header
-     *
-     * @return $this
-     */
-    public function setHeader($header)
-    {
-        $this->header = $header;
 
         return $this;
     }

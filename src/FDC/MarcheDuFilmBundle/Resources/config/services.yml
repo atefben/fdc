@@ -46,3 +46,15 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.news:
+        class: FDC\MarcheDuFilmBundle\Manager\NewsManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.theme:
+        class: FDC\MarcheDuFilmBundle\Manager\ThemeManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
