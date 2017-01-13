@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MdfConferenceProgramDay
  * @ORM\Table(name="mdf_conference_program_day")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfConferenceProgramDayRepository")
  */
 class MdfConferenceProgramDay
 {

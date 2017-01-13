@@ -39,6 +39,9 @@ class ThemeController extends Controller
     /**
      * @Route("/{theme}/programme")
      *
+     * @param Request $request
+     * @param         $theme
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function programAction(Request $request, $theme)
@@ -48,10 +51,17 @@ class ThemeController extends Controller
         $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageByTheme($theme);
         $contentTemplateWidgets = $conferenceProgramManager->getContentTemplateConferenceProgramePageData($conferenceProgramPage);
 
+        $programDays = $conferenceProgramManager->getConferenceProgramDaysWidgets($conferenceProgramPage);
+        $programDaysEvents = $conferenceProgramManager->getEventsPerDays($programDays);
+        $eventsSpeakers = $conferenceProgramManager->getSpeakersPerEvent($programDaysEvents);
+
         return $this->render('FDCMarcheDuFilmBundle:themes:program.html.twig',
              [
                  'conferenceProgram' => $conferenceProgramPage,
-                 'contentTemplateWidgets' => $contentTemplateWidgets
+                 'contentTemplateWidgets' => $contentTemplateWidgets,
+                 'programDays' => $programDays,
+                 'programDaysEvents' => $programDaysEvents,
+                 'eventsSpeakers' => $eventsSpeakers
              ]
         );
     }

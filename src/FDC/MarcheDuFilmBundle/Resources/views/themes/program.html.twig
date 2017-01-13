@@ -1,7 +1,6 @@
 {% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
 
 {% block main %}
-    {#{{ dump() }}#}
     <div id="main" class="home loading">
         {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': conferenceProgram.title} %}
         <div class="bigContainer">
@@ -22,7 +21,7 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            {% include 'FDCMarcheDuFilmBundle:themes:accordion.html.twig' %}
+            {% include 'FDCMarcheDuFilmBundle:themes:accordion.html.twig' with {'programDays': programDays, 'programDaysEvents': programDaysEvents, 'eventsSpeakers': eventsSpeakers} %}
         </div>
     </div>
 {% endblock %}

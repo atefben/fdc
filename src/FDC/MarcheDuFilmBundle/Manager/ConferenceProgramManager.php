@@ -4,6 +4,10 @@ namespace FDC\MarcheDuFilmBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDay;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
@@ -11,6 +15,8 @@ use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakersCollection;
+use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakersTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfThemeTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -67,6 +73,117 @@ class ConferenceProgramManager
                 ->getConferenceProgramPageByLocaleAndTheme($this->requestStack->getMasterRequest()->get('_locale'), $theme);
         }
         return null;
+    }
+
+    public function getConferenceProgramDaysWidgets($page)
+    {
+        if ($page) {
+            $programDayCollectionRepo = $this->em->getRepository(MdfConferenceProgramDayCollection::class);
+            $programDayRepo = $this->em->getRepository(MdfConferenceProgramDay::class);
+
+            $programDayCollection = $programDayCollectionRepo
+                ->findBy(
+                    array(
+                        'conferenceProgram' => $page->getTranslatable()->getId()
+                    )
+                );
+
+            if ($programDayCollection) {
+                $programDays = [];
+                foreach ($programDayCollection as $widget) {
+                    $dayWidget = $programDayRepo
+                        ->findOneBy(
+                            array(
+                                'id' => $widget->getConferenceProgramDay()
+                            )
+                        );
+
+                    if ($dayWidget) {
+                        $programDays[] = $dayWidget;
+                    }
+                }
+                return $programDays;
+            }
+            return [];
+        }
+        return [];
+    }
+
+    public function getEventsPerDays($days)
+    {
+        if ($days) {
+            $eventsCollection = [];
+            $eventCollectionRepo = $this->em->getRepository(MdfConferenceProgramEventCollection::class);
+            $eventRepo = $this->em->getRepository(MdfConferenceProgramEventTranslation::class);
+
+            foreach ($days as $widget) {
+                $dayId = $widget->getId();
+                $eventCollection = $eventCollectionRepo
+                    ->findBy(
+                        array(
+                            'conferenceProgramDay' => $dayId
+                        )
+                    );
+
+                if ($eventCollection) {
+                    $eventsCollection[$dayId] = [];
+
+                    foreach ($eventCollection as $eventCollectionItem) {
+                        $event = $eventRepo
+                            ->getEventByLocaleAndEventId(
+                                $this->requestStack->getMasterRequest()->get('_locale'),
+                                $eventCollectionItem->getConferenceProgramEvent()
+                            );
+
+                        if ($event) {
+                            $eventsCollection[$dayId][] = $event;
+                        }
+                    }
+                }
+            }
+            return $eventsCollection;
+        }
+        return [];
+    }
+
+    public function getSpeakersPerEvent($events)
+    {
+        if ($events) {
+            $speakersCollection = [];
+            $speakerCollectionRepo = $this->em->getRepository(MdfProgramSpeakersCollection::class);
+            $speakerRepo = $this->em->getRepository(MdfProgramSpeakersTranslation::class);
+
+            foreach ($events as $widget) {
+                foreach ($widget as $item)
+                {
+                    $eventId = $item->getTranslatable()->getId();
+                    $speakerCollection = $speakerCollectionRepo
+                        ->findBy(
+                            array(
+                                'programEvent' => $eventId
+                            )
+                        );
+
+                    if ($speakerCollection) {
+                        $speakersCollection[$eventId] = [];
+
+                        foreach ($speakerCollection as $speakerCollectionItem) {
+                            $speaker = $speakerRepo
+                                ->getSpeakerByLocaleAndSpeakerId(
+                                    $this->requestStack->getMasterRequest()->get('_locale'),
+                                    $speakerCollectionItem->getProgramSpeakers()
+                                );
+
+                            if ($speaker) {
+                                $speakersCollection[$eventId][] = $speaker;
+                            }
+                        }
+                    }
+                }
+            }
+            return $speakersCollection;
+        }
+        return [];
     }
 
     public function getContentTemplateTextWidgets($page) {
