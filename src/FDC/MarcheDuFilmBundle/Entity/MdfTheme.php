@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_theme")
  * @ORM\Entity
  */
-class Theme implements TranslateMainInterface
+class MdfTheme implements TranslateMainInterface
 {
     use Translatable;
     use TranslateMain;

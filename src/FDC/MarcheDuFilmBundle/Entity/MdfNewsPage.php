@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_news_page")
  * @ORM\Entity
  */
-class NewsPage
+class MdfNewsPage
 {
     use Translatable;
 

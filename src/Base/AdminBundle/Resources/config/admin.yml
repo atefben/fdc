@@ -1801,12 +1801,12 @@ services:
 
     base.admin.mdf_news_page:
         class: Base\AdminBundle\Admin\MdfNewsPageAdmin
-        arguments: [~, FDC\MarcheDuFilmBundle\Entity\NewsPage, BaseAdminBundle:MdfNewsPageAdmin]
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfNewsPage, BaseAdminBundle:MdfNewsPageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: L’actualité du Marché}
 
     base.admin.mdf_theme:
         class: Base\AdminBundle\Admin\MdfThemeAdmin
-        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Theme, BaseAdminBundle:MdfThemeAdmin]
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfTheme, BaseAdminBundle:MdfThemeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Thème}

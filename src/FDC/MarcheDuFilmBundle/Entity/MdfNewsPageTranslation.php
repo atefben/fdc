@@ -4,15 +4,14 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ThemeTranslation
- * @ORM\Table(name="mdf_theme_translation")
+ * NewsPageTranslation
+ * @ORM\Table(name="mdf_news_page_translation")
  * @ORM\Entity
  */
-class ThemeTranslation
+class MdfNewsPageTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -23,14 +22,6 @@ class ThemeTranslation
      * @ORM\Column(type="string", nullable=true)
      */
     protected $title;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Slug(fields={"title"}, updatable=false)
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     */
-    protected $slug;
 
     /**
      * @return string
@@ -48,28 +39,6 @@ class ThemeTranslation
     public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param $slug
-     *
-     * @return $this
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
 
         return $this;
     }

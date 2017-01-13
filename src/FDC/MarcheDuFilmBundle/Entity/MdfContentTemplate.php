@@ -57,7 +57,7 @@ class MdfContentTemplate
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
      */
     private $theme;
 
@@ -179,10 +179,10 @@ class MdfContentTemplate
     /**
      * Set theme
      *
-     * @param \FDC\MarcheDuFilmBundle\Entity\Theme $theme
-     * @return Theme
+     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme
+     * @return MdfTheme
      */
-    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\Theme $theme = null)
+    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -192,7 +192,7 @@ class MdfContentTemplate
     /**
      * Get theme
      *
-     * @return \FDC\MarcheDuFilmBundle\Entity\Theme
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      */
     public function getTheme()
     {
