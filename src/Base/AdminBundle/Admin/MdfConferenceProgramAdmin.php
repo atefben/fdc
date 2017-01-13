@@ -73,6 +73,12 @@ class MdfConferenceProgramAdmin extends Admin
                     )
                 )
             ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.conference_program.theme',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
+            ))
             ->add('contentTemplateConferenceWidgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(

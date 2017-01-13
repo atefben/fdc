@@ -46,6 +46,13 @@ class MdfConferenceProgram
     protected $dayWidgetCollections;
 
     /**
+     * @var MdfTheme
+     *
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
+     */
+    private $theme;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -152,5 +159,27 @@ class MdfConferenceProgram
     public function getDayWidgetCollections()
     {
         return $this->dayWidgetCollections;
+    }
+
+    /**
+     * @param MdfTheme|null $theme
+     *
+     * @return $this
+     */
+    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 }
