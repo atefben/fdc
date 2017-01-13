@@ -50,6 +50,18 @@ class MdfSpeakersDetails
         $this->translations = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
     /**
      * findTranslationByLocale function.
      *
@@ -66,6 +78,18 @@ class MdfSpeakersDetails
         }
 
         return null;
+    }
+
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        }
+
+        return $string;
     }
 
     /**

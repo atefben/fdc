@@ -32,6 +32,7 @@ class MdfSpeakersDetailsAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -105,6 +106,7 @@ class MdfSpeakersDetailsAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id');
+            ->add('id')
+            ->add('name');
     }
 }

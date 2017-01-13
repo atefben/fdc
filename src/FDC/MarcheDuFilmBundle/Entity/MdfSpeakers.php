@@ -59,12 +59,26 @@ class MdfSpeakers implements TranslateMainInterface
 
     public function __toString()
     {
-        foreach ($this->translations as $translation) {
-            if ($translation->getLocale() == 'fr' && $translation->getSubTitle()) {
-                return (string)$translation->getSubTitle();
-            }
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getSubTitle();
+        } else {
+            $string = strval($this->getId());
         }
-        return 'MdfSpeakers';
+        return (string) $string;
+    }
+
+    public function getSubTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getSubTitle();
+        }
+
+        return $string;
     }
 
     /**

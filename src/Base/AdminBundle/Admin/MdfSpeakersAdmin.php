@@ -38,7 +38,7 @@ class MdfSpeakersAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
+            ->add('subTitle')
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
@@ -120,6 +120,7 @@ class MdfSpeakersAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('subTitle')
         ;
     }
 }
