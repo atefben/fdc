@@ -11,7 +11,7 @@ use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use FDC\MarcheDuFilmBundle\Entity\Theme;
+use FDC\MarcheDuFilmBundle\Entity\MdfTheme;
 
 use Base\CoreBundle\Util\Time;
 use JMS\Serializer\Annotation\Groups;
@@ -63,9 +63,9 @@ class GalleryMdf implements TranslateMainInterface
     private $displayedHomeCorpo;
 
     /**
-     * @var Theme
+     * @var MdfTheme
      *
-     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MdfTheme")
      *
      */
     private $themeHomeCorpo;
@@ -229,10 +229,10 @@ class GalleryMdf implements TranslateMainInterface
     /**
      * Set themeHomeCorpo
      *
-     * @param \FDC\MarcheDuFilmBundle\Entity\Theme $themeHomeCorpo
+     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo
      * @return GalleryMdf
      */
-    public function setThemeHomeCorpo(\FDC\MarcheDuFilmBundle\Entity\Theme $themeHomeCorpo = null)
+    public function setThemeHomeCorpo(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo = null)
     {
         $this->themeHomeCorpo = $themeHomeCorpo;
 
@@ -242,7 +242,7 @@ class GalleryMdf implements TranslateMainInterface
     /**
      * Get themeHomeCorpo
      *
-     * @return \FDC\MarcheDuFilmBundle\Entity\Theme
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      */
     public function getThemeHomeCorpo()
     {

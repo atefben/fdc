@@ -48,9 +48,9 @@ class MediaMdfVideo extends MediaMdf
     private $displayedHomeCorpo;
 
     /**
-     * @var \Base\CoreBundle\Entity\Theme
+     * @var \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      *
-     * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MdfTheme")
      *
      */
     private $themeHomeCorpo;
@@ -394,10 +394,10 @@ class MediaMdfVideo extends MediaMdf
     /**
      * Set themeHomeCorpo
      *
-     * @param \Base\CoreBundle\Entity\Theme $themeHomeCorpo
+     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo
      * @return MediaVideo
      */
-    public function setThemeHomeCorpo(\Base\CoreBundle\Entity\Theme $themeHomeCorpo = null)
+    public function setThemeHomeCorpo(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo = null)
     {
         $this->themeHomeCorpo = $themeHomeCorpo;
 
@@ -407,7 +407,7 @@ class MediaMdfVideo extends MediaMdf
     /**
      * Get themeHomeCorpo
      *
-     * @return \Base\CoreBundle\Entity\Theme 
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      */
     public function getThemeHomeCorpo()
     {

@@ -161,9 +161,9 @@ class MediaMdfVideoTranslation implements TranslateChildInterface
     private $webmUrl;
 
     /**
-     * @var \Base\CoreBundle\Entity\Theme
+     * @var \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      *
-     * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MdfTheme")
      * @Groups({
      *     "live",
      *     "web_tv_show",
@@ -338,10 +338,10 @@ class MediaMdfVideoTranslation implements TranslateChildInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme
      * @return MediaMdfVideoTranslation
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -351,7 +351,7 @@ class MediaMdfVideoTranslation implements TranslateChildInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
      */
     public function getTheme()
     {
