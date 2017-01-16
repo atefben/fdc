@@ -1,6 +1,7 @@
 {% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
 
 {% block main %}
+    {#{{ dump(conferenceProgram.translatable.file) }}#}
     <div id="main" class="home loading">
         {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': conferenceProgram.title} %}
         <div class="bigContainer">
@@ -22,6 +23,9 @@
                 {% endfor %}
             </div>
             {% include 'FDCMarcheDuFilmBundle:themes:accordion.html.twig' with {'programDays': programDays, 'programDaysEvents': programDaysEvents, 'eventsSpeakers': eventsSpeakers} %}
+            {% if conferenceProgram.translatable.file %}
+                {% include 'FDCMarcheDuFilmBundle:themes:blockDownload.html.twig' with {'widget': conferenceProgram.translatable}  %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

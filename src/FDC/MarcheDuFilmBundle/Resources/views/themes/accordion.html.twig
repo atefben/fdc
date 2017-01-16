@@ -15,15 +15,17 @@
                                         <div class="confPeople">
                                             <hr>
                                             <h6 class="confDetails">Intervenants</h6>
-                                            <div class="quarterWidth">
-                                                <img src="/img/intervenant1.png">
-                                                <div class="name">
-                                                    <h6 class="customClass1">Bernardo Arellano de la Cruz</h6>
+                                            {% for item in eventsSpeakers[event.id] %}
+                                                <div class="quarterWidth">
+                                                    <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
+                                                    <div class="name">
+                                                        <h6 class="customClass1">{{ item.name }}</h6>
+                                                    </div>
+                                                    <div class="name">
+                                                        <p>{{ item.description }}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="name">
-                                                    <p>FUEGO NEGRO AUDIOVISUAL</p>
-                                                </div>
-                                            </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <div class="conf30Sharp">

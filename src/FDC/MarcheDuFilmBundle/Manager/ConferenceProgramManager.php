@@ -102,6 +102,12 @@ class ConferenceProgramManager
                         $programDays[] = $dayWidget;
                     }
                 }
+
+                usort($programDays, function($a, $b)
+                {
+                    return $a > $b;
+                });
+
                 return $programDays;
             }
             return [];

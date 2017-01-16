@@ -94,8 +94,8 @@ class MdfConferenceProgramAdmin extends Admin
             ->add('file', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.file',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
+                'btn_delete' => true,
+                'required' => false
             ))
             ->add('dayWidgetCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
