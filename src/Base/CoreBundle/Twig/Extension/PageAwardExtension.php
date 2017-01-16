@@ -95,7 +95,7 @@ class PageAwardExtension extends Twig_Extension
         if ($page->getId() == 5) {
             return true;
         }
-    }s
+    }
 
     /**
      * @return string
