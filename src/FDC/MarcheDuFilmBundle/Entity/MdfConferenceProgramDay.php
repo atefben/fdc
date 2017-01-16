@@ -114,4 +114,9 @@ class MdfConferenceProgramDay
     {
         return $this->eventWidgetCollections;
     }
+
+    public function __toString()
+    {
+        return (string) $this->date->format('Y-m-d');
+    }
 }

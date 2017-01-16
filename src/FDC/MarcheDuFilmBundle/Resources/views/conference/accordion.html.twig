@@ -3,7 +3,7 @@
         <ul>
             {% for day in programDays %}
                 <li>
-                    <div class="open">{{ day.date|localizeddate('long', 'short') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                    <div class="open">{{ day.date|date('m-d-y') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
                         <div class="parent">
                             {% for event in programDaysEvents[day.id] %}

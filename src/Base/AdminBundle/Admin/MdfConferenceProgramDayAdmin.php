@@ -31,6 +31,7 @@ class MdfConferenceProgramDayAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('date', null, array('label' => 'filter.common.label_date'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
