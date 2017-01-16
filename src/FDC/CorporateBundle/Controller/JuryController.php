@@ -2,13 +2,12 @@
 
 namespace FDC\CorporateBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use FDC\EventBundle\Component\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Acl\Exception\Exception;
 
 /**
  * @Route("/69-editions/retrospective")
@@ -17,10 +16,10 @@ class JuryController extends Controller
 {
     /**
      * @Route("/{year}/juries/{slug}", requirements={"year" = "\d+"})
-     * @Template("FDCCorporateBundle:Jury:section.html.twig")
      * @param Request $request
      * @param $slug
-     * @return array
+     * @param $year
+     * @return Response|RedirectResponse
      */
     public function juriesAction(Request $request, $year = null, $slug = null)
     {
@@ -37,8 +36,13 @@ class JuryController extends Controller
         $juryTypes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmJuryType')
-            ->getJuryTypeByFestival($festival);
+            ->getJuryTypeByFestival($festival)
+        ;
+        $availables = [];
 
+        foreach ($juryTypes as $juryType) {
+            $availables[] = $juryType->getId();
+        }
 
         $pages = $this
             ->getDoctrineManager()
@@ -46,10 +50,10 @@ class JuryController extends Controller
             ->getPages($locale, $festival)
         ;
 
-        $pageToDisplay = array();
-        foreach($juryTypes as $key => $juryType) {
-            if($juryType->getId() == $pages[$key]->getJuryType()->getId())
-              $pageToDisplay[] = $pages[$key];
+        foreach ($pages as $page) {
+            if (!in_array($page->getJuryType()->getId(), $availables)) {
+                $pages = array_diff($pages, array($page));
+            }
         }
 
         if ($slug === null) {
@@ -136,18 +140,16 @@ class JuryController extends Controller
             }
         }
 
-
-
-        return array(
-            'festival'      => $this->getFestival($year),
-            'page'      => $page,
-            'pages'     => $pageToDisplay,
-            'next'      => is_object($next) ? $next : false,
-            'members'   => $members,
-            'president' => $president,
+        return $this->render('FDCCorporateBundle:Jury:section.html.twig', [
+            'festival'    => $this->getFestival($year),
+            'page'        => $page,
+            'pages'       => $pages,
+            'next'        => is_object($next) ? $next : false,
+            'members'     => $members,
+            'president'   => $president,
             'localeSlugs' => $localeSlugs,
-            'festivals'      => $festivals
-        );
+            'festivals'   => $festivals,
+        ]);
 
     }
 }

@@ -36,19 +36,19 @@ class FDCPageJuryRepository extends TranslationRepository
 
     /**
      * @param string $locale
+     * @param $festival
      * @return FDCPageJury[]
      */
-    public function getPages($locale)
+    public function getPages($locale, $festival = null)
     {
-        return $this
+        $qb = $this
             ->createQueryBuilder('p')
             ->join('p.translations', 't')
             ->andWhere('t.locale = :locale AND t.slug IS NOT NULL AND t.slug <> \'\'')
-            ->andWhere('p.image IS NOT NULL')
             ->setParameter('locale', $locale)
             ->orderBy('p.id', 'asc')
-            ->getQuery()
-            ->getResult()
         ;
+
+        return $qb->getQuery()->getResult();
     }
 }
