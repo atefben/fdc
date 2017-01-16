@@ -25,8 +25,9 @@
                 </nav>
 
                 <div class="all-contain">
-                    <div class="block-jury">
-                        {% if president %}
+
+                    {% if president %}
+                        <div class="block-jury">
                             <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                                     <div class="contain-img"
@@ -59,8 +60,9 @@
                                     </p>
                                 </div>
                             </a>
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
+
 
                     <div class="contain-title vFlexAlign ">
                         <strong class="title-01">

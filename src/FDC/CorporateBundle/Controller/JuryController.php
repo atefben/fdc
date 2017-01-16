@@ -92,10 +92,14 @@ class JuryController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageJurySeo($page, $locale);
 
         // find all juries by type
+        $juryTypeId = $page->getJuryType()->getId();
+        if (in_array($juryTypeId, [3, 5])) {
+            $juryTypeId = [3, 5];
+        }
         $juries = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmJury')
-            ->getJurysByType($festival, $locale, $page->getJuryType()->getId())
+            ->getJurysByType($festival, $locale, $juryTypeId)
         ;
 
         $members = array();
