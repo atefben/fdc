@@ -85,7 +85,7 @@ class MdfConferenceProgramEventAdmin extends Admin
                     )
                 )
             ))
-            ->add('speakersCollections', 'sonata_type_collection', array(
+            ->add('speakerCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.speakers',
                 'translation_domain' => 'BaseAdminBundle',

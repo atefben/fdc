@@ -40,7 +40,7 @@ class MdfConferenceProgramEvent
      * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection", mappedBy="programEvent", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    protected $speakersCollections;
+    protected $speakerCollections;
 
     /**
      * MdfContentTemplate constructor.
@@ -55,10 +55,10 @@ class MdfConferenceProgramEvent
      *
      * @return $this
      */
-    public function addSpeakersCollection(\FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection $widgets)
+    public function addSpeakerCollection(\FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection $widgets)
     {
         $widgets->setProgramEvent($this);
-        $this->speakersCollections[] = $widgets;
+        $this->speakerCollections[] = $widgets;
 
         return $this;
     }
@@ -66,17 +66,17 @@ class MdfConferenceProgramEvent
     /**
      * @param MdfProgramSpeakerCollection $widgets
      */
-    public function removeSpeakersCollection(\FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection $widgets)
+    public function removeSpeakerCollection(\FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection $widgets)
     {
-        $this->speakersCollections->removeElement($widgets);
+        $this->speakerCollections->removeElement($widgets);
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getSpeakersCollections()
+    public function getSpeakerCollections()
     {
-        return $this->speakersCollections;
+        return $this->speakerCollections;
     }
 
     /**
