@@ -171,8 +171,6 @@
   }
 }
 
-#featured
-
 #slider-movies, #featured-movies {
   height: 538px!important;
   overflow: hidden;
@@ -275,6 +273,7 @@
 
       &.active {
           right: -2px;
+          top: -10px;
         &:before {
           content: counter(dots, decimal-leading-zero);
           opacity: 0;
@@ -649,7 +648,8 @@
   }
 
   .owl-stage {
-    width: 5000px!important;
+    /*width: 5000px!important;*/
+    margin-left: 471px; 
   }
 
   .item {

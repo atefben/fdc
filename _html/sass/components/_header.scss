@@ -145,7 +145,7 @@ header {
 
   .user-nav {
     background-color: $black;
-    border-left: 0px solid #404040;
+    border-left: 1px solid #404040;
     float: right;
     font-family: $CamphorBold;
     padding: 0 15px 0 10px;
@@ -226,15 +226,16 @@ header {
   }
 
   #top-bar {
-    border-bottom: 0px solid #080808;
-    background-color: #141414;
-    font-size: 0.750rem;
-    height: 35px;
-    line-height: 30px;
+    border-bottom: 1px solid #404040;
+    font-size: .75rem;
+    height: 28px;
+    line-height: 28px;
     @include transition(all .6s $smoothTransition);
 
     .main-nav {
       float: left;
+      height: 28px;
+      line-height: 28px;
       font-family: $CamphorBold;
       background-color: #080808;
       @include transition(all .6s $smoothTransition);
@@ -243,14 +244,12 @@ header {
         margin-left: 0px;
         display: inline-block;
         /*background-color: #141414;*/
-        margin-left: -4px;
         background-color: #080808;
         border-left: 0px solid #404040;
         border-right: 0px solid #404040;
-        border-bottom: 1px solid #404040;
 
         &:last-child {
-          border-bottom: 1px solid #141414 !important;
+          
         }
 
         a {
@@ -262,14 +261,16 @@ header {
           @include transition(all 0.3s $smoothTransition);
 
           &:hover, &.active {
-            color: $gold;
+            color: $gold; 
             /*background-color: #141414!important;*/
           }
 
           &.active {
             /*border: 1px solid #404040!important;*/
             border-left: 1px solid #404040 !important;
+            border-right: 1px solid #404040 !important;
             background-color: #141414 !important;
+            padding-bottom: 1px;
           }
         }
       }
@@ -286,7 +287,8 @@ header {
 
   #logo-wrapper {
     background-color: $black;
-    height: 160px;
+    /*height: 160px;*/
+    height: 155px;
     overflow: hidden;
     @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));

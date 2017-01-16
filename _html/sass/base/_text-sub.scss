@@ -40,7 +40,7 @@ sub {
   }
 }
 
-.title, .title-item {
+.title {
   font-family: $CamphorRegular;
   font-size: 20px;
   line-height: 1.8;
@@ -54,6 +54,23 @@ sub {
     color:#fff;
   }
 }
+
+.categorie-items{
+  .title-list-cat{
+    .title-item {
+      font-family: $CamphorRegular;
+      font-size: 20px;
+      line-height: 1.8;
+      /*letter-spacing: 10px;
+      margin-bottom: 23px;*/
+      text-align: center;
+      color:#141414;
+      .dark & {
+        color:#fff;
+      }
+    }
+  }
+} 
 
 .title-2 {
   font-family: $CamphorHeavy;

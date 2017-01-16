@@ -110,12 +110,12 @@
       background: #f0eeee;
       width: 155px;
       height: 155px;
-      img {
+      /*img {
         max-width: 100%;
         height: 100%;
         object-fit: cover;
         width: 100%;
-      }
+      }*/
 
       /* FOR IE*/
       .containerFit {
@@ -180,7 +180,7 @@
         content: "•";
         margin-left: 5px;
       }
-      &:last-child, &:nth-child(3) {
+      &:last-child {
         &:after {
           content: "";
         }

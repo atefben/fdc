@@ -55,7 +55,7 @@
                   <span>AFFICHER</span>
                   <div id="eventSelector">
 
-                    <div class="selectText" id="short-fim-corner">Présent au short fim corner</div>
+                    <div class="selectText" id="short-fim-corner">Présent au short film corner</div>
                     <div class="selectText" id="helping-hand">Helping hand,</div>
                     <div class="selectText" id="screening">Screening,</div>
                     <div class="selectText" id="pitching-training">Pitching Training</div>
@@ -133,7 +133,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
-                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><span>distribution</span><span>vente</span><span>vente</span></div>                   
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><br><span>distribution</span><span>vente</span><span>vente</span></div>                   
                     </div>
                     <div class="box a events">
                       <div class="eventPhoto">
@@ -244,7 +244,7 @@
                         </div>
                       </div>
                       <div class="eventTitle"><h3>L’agence du court métrage, agence spécialisée</h3></div>
-                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><span>distribution</span><span>vente</span><span>vente</span></div>                   
+                      <div class="eventCat"><span>distribution</span><span>achat</span><span>vente</span><br><span>distribution</span><span>vente</span><span>vente</span></div>                   
                     </div>
                     <div class="box a events">
                       <div class="eventPhoto">
