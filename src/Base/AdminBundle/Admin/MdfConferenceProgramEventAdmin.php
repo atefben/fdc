@@ -90,10 +90,10 @@ class MdfConferenceProgramEventAdmin extends Admin
                 'label'              => 'form.mdf.label.speakers',
                 'translation_domain' => 'BaseAdminBundle',
             ), array(
-                      'edit'     => 'inline',
-                      'inline'   => 'table',
-                      'sortable' => 'position',
-                  ))
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
+            ))
         ;
 
     }

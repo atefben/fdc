@@ -107,6 +107,5 @@ class MdfConferenceProgramAdmin extends Admin
                 'sortable' => 'position',
             ))
         ;
-
     }
 }

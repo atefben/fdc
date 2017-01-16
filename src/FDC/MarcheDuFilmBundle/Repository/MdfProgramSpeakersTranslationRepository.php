@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 13.01.2017
- * Time: 14:16
- */
 
 namespace FDC\MarcheDuFilmBundle\Repository;
 

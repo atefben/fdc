@@ -7,11 +7,11 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MdfProgramSpeakers
+ * MdfProgramSpeaker
  * @ORM\Table(name="mdf_program_speakers")
  * @ORM\Entity
  */
-class MdfProgramSpeakers
+class MdfProgramSpeaker
 {
     use Translatable;
 
@@ -69,26 +69,6 @@ class MdfProgramSpeakers
     public function setPosition($position)
     {
         $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProgramEvent()
-    {
-        return $this->programEvent;
-    }
-
-    /**
-     * @param $programEvent
-     *
-     * @return $this
-     */
-    public function setProgramEvent($programEvent)
-    {
-        $this->programEvent = $programEvent;
 
         return $this;
     }

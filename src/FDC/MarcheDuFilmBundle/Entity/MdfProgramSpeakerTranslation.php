@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_program_speakers_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfProgramSpeakersTranslationRepository")
  */
-class MdfProgramSpeakersTranslation
+class MdfProgramSpeakerTranslation
 {
     use Translation;
     use TranslationChanges;

@@ -25,7 +25,7 @@ class ThemeController extends Controller
         $speakersTabs = $speakersManager->getSpeakersTabOnPage($speakersPage);
         $speakersList = $speakersManager->getSpeakersList($speakersTabs);
 
-        return $this->render('FDCMarcheDuFilmBundle:themes:speakers.html.twig',
+        return $this->render('FDCMarcheDuFilmBundle:conference:speakers.html.twig',
             [
                 'speakersPage' => $speakersPage,
                 'speakersTabs' => $speakersTabs,
@@ -55,7 +55,7 @@ class ThemeController extends Controller
         $programDaysEvents = $conferenceProgramManager->getEventsPerDays($programDays);
         $eventsSpeakers = $conferenceProgramManager->getSpeakersPerEvent($programDaysEvents);
 
-        return $this->render('FDCMarcheDuFilmBundle:themes:program.html.twig',
+        return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig',
              [
                  'conferenceProgram' => $conferenceProgramPage,
                  'contentTemplateWidgets' => $contentTemplateWidgets,

@@ -9,7 +9,7 @@ use Application\Sonata\AdminBundle\Controller\CRUDController;
  *
  * @package Base\AdminBundle\Controller
  */
-class MdfProgramSpeakersAdminController extends CRUDController
+class MdfProgramSpeakerAdminController extends CRUDController
 {
 
 }

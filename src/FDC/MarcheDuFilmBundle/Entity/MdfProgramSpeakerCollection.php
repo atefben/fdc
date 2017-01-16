@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_program_speakers_collection")
  * @ORM\Entity
  */
-class MdfProgramSpeakersCollection
+class MdfProgramSpeakerCollection
 {
     /**
      * @var integer
@@ -21,7 +21,7 @@ class MdfProgramSpeakersCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfProgramSpeakers", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="MdfProgramSpeaker", cascade={"all"})
      */
     protected $programSpeakers;
 

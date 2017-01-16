@@ -1,8 +1,8 @@
 <div id="accordion-conf" class="conferences">
     <div class="conferenceMenu">
         <ul>
-            <li>
-                {% for day in programDays %}
+            {% for day in programDays %}
+                <li>
                     <div class="open">{{ day.date|localizeddate('long', 'short') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
                     <div class="content">
                         <div class="parent">
@@ -46,8 +46,8 @@
                             {% endfor %}
                         </div>
                     </div>
-                {% endfor %}
-            </li>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

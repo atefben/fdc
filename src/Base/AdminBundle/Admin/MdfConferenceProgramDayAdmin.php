@@ -58,9 +58,9 @@ class MdfConferenceProgramDayAdmin extends Admin
                 'label'              => 'form.mdf.label.new_program_event',
                 'translation_domain' => 'BaseAdminBundle',
             ), array(
-                      'edit'     => 'inline',
-                      'inline'   => 'table',
-                      'sortable' => 'position',
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
             ))
         ;
     }

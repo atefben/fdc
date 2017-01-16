@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class MdfProgramSpeakersAdmin extends Admin
+class MdfProgramSpeakerAdmin extends Admin
 {
     public function configure()
     {

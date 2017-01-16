@@ -3,20 +3,16 @@
 namespace FDC\MarcheDuFilmBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDay;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
-use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
-use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
-use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
-use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakersCollection;
-use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakersTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection;
+use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfThemeTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -156,8 +152,8 @@ class ConferenceProgramManager
     {
         if ($events) {
             $speakersCollection = [];
-            $speakerCollectionRepo = $this->em->getRepository(MdfProgramSpeakersCollection::class);
-            $speakerRepo = $this->em->getRepository(MdfProgramSpeakersTranslation::class);
+            $speakerCollectionRepo = $this->em->getRepository(MdfProgramSpeakerCollection::class);
+            $speakerRepo = $this->em->getRepository(MdfProgramSpeakerTranslation::class);
 
             foreach ($events as $widget) {
                 foreach ($widget as $item)
