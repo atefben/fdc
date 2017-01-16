@@ -3,7 +3,14 @@ $(document).ready(function() {
 
 /*CAROUSSELS OWL*/
  
-  $('#owl-top').owlCarousel({
+
+  if ($('#owl-top .item').length === 1) {  
+      $('#owl-top').owlCarousel({
+          items:1,
+          dots: false,
+        });
+  } else {
+      $('#owl-top').owlCarousel({
       items:1,
       navigation : true,
       dots: true,
@@ -12,7 +19,7 @@ $(document).ready(function() {
       slideSpeed : 300,
       paginationSpeed : 400
     });
-
+  }
 
   $('#owl-accred').owlCarousel({
       items:1,

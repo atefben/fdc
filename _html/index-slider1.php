@@ -18,8 +18,6 @@
 
         
           <div class="content-news">
-            
-
               <div id="owl-top" class="owl-carousel owl-theme">
                   <div class="item">
                     <img src="/img/home.png" alt="Marché du film">
@@ -29,22 +27,7 @@
                       <span>Du 12 au 19 mai 2017 à Cannes</span>
                     </div>
                   </div>
-                  <div class="item">
-                    <img src="/img/home.png" alt="Marché du film">
-                    <div class="owl-Title">
-                      <h2>Le Marché du Film</h2>
-                      <p>L’événement annuel de l’industrie cinématographique internationale</p>
-                      <span>Du 12 au 19 mai 2017 à Cannes</span>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="/img/home.png" alt="Marché du film">
-                    <div class="owl-Title">
-                      <h2>Le Marché du Film</h2>
-                      <p>L’événement annuel de l’industrie cinématographique internationale</p>
-                      <span>Du 12 au 19 mai 2017 à Cannes</span>
-                    </div>
-                  </div>
+                  
               </div>
             
             <div class="owlsecondContainer">
