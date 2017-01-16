@@ -105,6 +105,7 @@ class NewsController extends Controller
             'articles' => $articles,
             'filters'  => $filters,
             'festivals'  => $festivals,
+            'festival'              => $festival,
         );
     }
 

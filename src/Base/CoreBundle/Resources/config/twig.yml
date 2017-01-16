@@ -174,3 +174,10 @@ services:
         class: Base\CoreBundle\Twig\Extension\RetrospectiveSliderExtension
         tags:
             - { name: twig.extension }
+    base.twig.page_award_extension:
+        class: Base\CoreBundle\Twig\Extension\PageAwardExtension
+        arguments: ['@database_connection']
+        tags:
+            - { name: twig.extension }
+        calls:
+          - ['setDoctrine', ['@doctrine']]

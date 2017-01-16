@@ -2,16 +2,14 @@
 
 <nav class="navigation-sticky-02">
     <ul>
-        {% for tab in pages %}
-            {% if tab.selectionLongsMetrages and tab.selectionCourtsMetrages %}
-                {% set tabActive = (app.request.attributes.get('slug') == tab|trans_fallback('slug')) ? true : false %}
-                {% set tabPath = path('fdc_corporate_palmares_get', {'year': app.request.attributes.get('year'), 'slug': tab|trans_fallback('slug') }) %}
-                <li class="{% if tabActive %}active{% endif %}">
-                    <a href="{{ tabPath }}">
-                        {{ tab|trans_fallback('name') }}
-                    </a>
-                </li>
-            {% endif %}
+        {% for tab in pages if page_award_is_available(tab, festival) %}
+            {% set tabActive = (app.request.attributes.get('slug') == tab|trans_fallback('slug')) ? true : false %}
+            {% set tabPath = path('fdc_corporate_palmares_get', {'year': app.request.attributes.get('year'), 'slug': tab|trans_fallback('slug') }) %}
+            <li class="{% if tabActive %}active{% endif %}">
+                <a href="{{ tabPath }}">
+                    {{ tab|trans_fallback('name') }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 </nav>
