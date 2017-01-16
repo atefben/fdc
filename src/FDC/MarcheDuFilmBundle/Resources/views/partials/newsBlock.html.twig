@@ -17,16 +17,20 @@
                     <div class="articles-img"><img src="{% path newsItem['image'][0].image|trans_fallback('file'), 'reference' %}"></div>
                 {% endif %}
                 <div class="articles-content">
-                    {% if newsItem['image'] is not empty %}<a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">{% endif %}
-                    <span class="customClass4">{{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).title }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
-                    <h6>{{ newsItem['content'].title }}</h6>
-                    {% if newsDecription|striptags|length > 210 %}
-                        {% set description = newsDecription|truncate(210, true, "...</p>") %}
-                    {% else %}
-                        {% set description = newsDecription %}
-                    {% endif %}
-                    {{ description|raw }}
-                    {% if newsItem.image is not empty %}</a>{% endif %}
+                    <a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">
+                        <span class="customClass4">{{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).title }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
+                        <h6>{{ newsItem['content'].title }}</h6>
+                        {% if newsDecription|striptags|length > 225 %}
+                            {% if newsItem['image'] is not empty %}
+                                {% set description = newsDecription|truncate(225, true, "...</p>") %}
+                            {% else %}
+                                {% set description = newsDecription|truncate(550, true, "...</p>") %}
+                            {% endif %}
+                        {% else %}
+                            {% set description = newsDecription %}
+                        {% endif %}
+                        {{ description|raw }}
+                    </a>
                 </div>
             </div>
         {% endfor %}

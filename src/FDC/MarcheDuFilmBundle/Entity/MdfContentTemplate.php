@@ -3,6 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,9 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_content_template")
  * @ORM\Entity
  */
-class MdfContentTemplate
+class MdfContentTemplate implements TranslateMainInterface
 {
     use Translatable;
+    use TranslateMain;
 
     const TYPE_EDITION_PRESENTATION = 'edition_presentation';
     const TYPE_EDITION_PROJECTIONS = 'edition_projections';
@@ -81,6 +84,30 @@ class MdfContentTemplate
     {
         $this->translations = new ArrayCollection();
         $this->contentTemplateWidgets = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        }
+
+        return $string;
     }
 
     /**
