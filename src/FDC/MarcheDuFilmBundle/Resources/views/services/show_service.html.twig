@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    {% if service.contentBlockTitle is not null and service.contentBlockBody is not null %}
+    {% if service.contentBlockTitle is not null or service.contentBlockBody is not null %}
         <div class="tarifs">
             <div class="text-presentation">
                 <h3>{{ service.contentBlockTitle }}</h3>
