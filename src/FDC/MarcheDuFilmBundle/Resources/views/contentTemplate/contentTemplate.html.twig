@@ -28,4 +28,8 @@
     {% if isWhoAreWe %}
         {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRoute': nextRoute, 'backRoute': backRoute} %}
     {% endif %}
+    {% if isPresentation %}
+        {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
+        {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+    {% endif %}
 {% endblock %}

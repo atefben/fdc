@@ -12,15 +12,17 @@
     {% endfor %}
 </div>
 
-<div id="owl-second" class="owl-carousel owl-theme">
-    {% for item in slider %}
-        {% set translations = item.translatable.image.findTranslationByLocale(app.request.locale) %}
-        <div class="item" onClick="window.open('{{ item.url }}');">
-            <div class="owl-Title">
-                <h2>{{ item.title|raw }}</h2>
-                <img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt="">
+<div class="owlsecondContainer">
+    <div id="owl-second" class="owl-carousel owl-theme">
+        {% for item in slider %}
+            {% set translations = item.translatable.image.findTranslationByLocale(app.request.locale) %}
+            <div class="item" onClick="window.open('{{ item.url }}');">
+                <div class="owl-Title">
+                    <h2>{{ item.title|raw }}</h2>
+                    <img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt="">
+                </div>
+                <img class="fitImg" src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}">
             </div>
-            <img class="fitImg" src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}">
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
