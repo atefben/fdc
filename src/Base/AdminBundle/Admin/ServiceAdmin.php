@@ -81,7 +81,11 @@ class ServiceAdmin extends Admin
                     'header'            => array(
                         'label'              => 'form.mdf.label.service_header',
                         'translation_domain' => 'BaseAdminBundle',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
                         'field_type'         => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false
                     ),
                     'createdAt'         => array(
@@ -105,7 +109,11 @@ class ServiceAdmin extends Admin
                     'contentBlockBody'  => array(
                         'label'              => 'form.mdf.label.service_content_block_body',
                         'translation_domain' => 'BaseAdminBundle',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
                         'field_type'         => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false
                     ),
                 ),
