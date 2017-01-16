@@ -229,8 +229,10 @@ $(window).scroll(function(){
 
     if ($("header").hasClass("sticky")) {
       $("#leaderBoard").hide();
+      $("#logo-wrapper").css("overflow", "visible");
     } else {
       $("#leaderBoard").show();
+      $("#logo-wrapper").css("overflow", "hidden");
     }
 
 });

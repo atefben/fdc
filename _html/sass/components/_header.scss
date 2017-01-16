@@ -51,7 +51,7 @@ header {
     opacity: 0;
     position: absolute;
     pointer-events: none;
-    bottom: 18px;
+    bottom: 12px;
     right: 0;
     @include transform(translate3d(0, 5px, 0));
     @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
@@ -80,6 +80,7 @@ header {
       pointer-events: auto;
       margin-top: 18px;
       transition-delay: 0.5s;
+      margin-right: 85px;
 
       .user-nav {
         border: none;
@@ -104,17 +105,18 @@ header {
     }
 
     #logo-wrapper {
-      height: 50px;
+      height: 50px!important;
       @include transition(all 0.5s $smoothTransition);
 
       #logo {
-        width: 290px;
+        width:310px;
 
         img.palm {
           float: left;
           margin-top: -5px;
           width: 72px;
           margin-left: 35px;
+          margin-left: 50px;
         }
 
         h2 {
@@ -124,7 +126,7 @@ header {
         p.stick {
           float: left;
           font-size: 1.1rem;
-          margin: 12px 0 0 30px;
+          margin: 7px 0 0 30px;
           opacity: 1;
           visibility: visible;
 
@@ -280,14 +282,17 @@ header {
 
   #logo-wrapper {
     background-color: $black;
-    height: 160px;
-    /*overflow: hidden;*/
+    height: 160px!important;
     @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
       height: 100%;
       position: relative;
+      width: 1152px;
+      @media screen and (max-width: 1024px) {
+        width: 1152px;
+      }
     }
 
     #logo {
@@ -311,8 +316,10 @@ header {
 
       h1 {
         position: absolute;
-        top: 108px;
-        left: 0px;
+        /*top: 108px;
+        left: 0px;*/
+        top: 90px!important;
+        left: 10px!important;
       }
 
       h2 {
@@ -362,6 +369,7 @@ header {
         display: block;
         margin: 0 auto;
         width: 165px;
+        width: 123px;
         margin-left: 35px;
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
@@ -413,8 +421,8 @@ header {
       width: 720px;
       height: 90px;
       @include transition(all 0.5s $smoothTransition);
-      top: 50px;
-      left: 480px;
+      top: 30px;
+      left: 405px;
       background: #333333;
       text-align: center;
       color: white;
