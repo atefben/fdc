@@ -60,7 +60,7 @@ class PageAwardExtension extends Twig_Extension
                 return true;
             }
         }
-        if ($page->getSelectionLongsMetrages()){
+        if ($page->getSelectionLongsMetrages()) {
             $selectionSection = $page->getSelectionLongsMetrages()->getId();
             $awards = $this
                 ->getDoctrineManager()
@@ -82,7 +82,20 @@ class PageAwardExtension extends Twig_Extension
                 return true;
             }
         }
-    }
+        if ($page->getId() == 4) {
+            $awards = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+                ->getCameraDorWithAward($festival)
+            ;
+            if ($awards) {
+                return true;
+            }
+        }
+        if ($page->getId() == 5) {
+            return true;
+        }
+    }s
 
     /**
      * @return string
