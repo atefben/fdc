@@ -28,6 +28,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+            - '@mdf.manager.contact'
 
     mdf.manager.dispatch_de_service:
         class: FDC\MarcheDuFilmBundle\Manager\DispatchDeServiceManager

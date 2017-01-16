@@ -23314,7 +23314,7 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   height: 660px;
   overflow: hidden;
-  /*background: url("/img/plage-cannes.png");*/
+  /*background: url("../img/plage-cannes.png");*/
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -24208,7 +24208,9 @@ ul.tabs .quarterTab h4 {
   position: absolute;
 }
 .servicesPage .articles .articles-content p {
-  opacity: 0.9;
+  color: #b1b1b1;
+  font-size: 13px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   text-align: left;
   letter-spacing: 1px;
   padding: 0px 0px !important;
@@ -24219,24 +24221,24 @@ ul.tabs .quarterTab h4 {
   color: #505050 !important;
   text-transform: initial !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  line-height: 30px;
+  line-height: 25px;
 }
 .servicesPage .articles:hover {
   -webkit-box-shadow: 0px 20px 34px 4px #cccacc;
   -moz-box-shadow: 0px 20px 34px 4px #cccacc;
   box-shadow: 0px 20px 34px 4px #cccacc;
 }
-.servicesPage .articles:last-child {
+.servicesPage .lastServicesArticle {
+  background: url("../img/blueBckg.png") !important;
   text-align: center;
-  background: url("../img/blueBckg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.servicesPage .articles:last-child h6, .servicesPage .articles:last-child span, .servicesPage .articles:last-child p {
+.servicesPage .lastServicesArticle h6, .servicesPage .lastServicesArticle span, .servicesPage .lastServicesArticle p {
   color: white !important;
   opacity: 1 !important;
 }
-.servicesPage .articles:last-child:hover {
+.servicesPage .lastServicesArticle:hover {
   text-align: center;
   background: url("../img/blueBckg.png");
   background-size: 100% 100%;

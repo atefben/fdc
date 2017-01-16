@@ -17,20 +17,25 @@ class ContentTemplateManager
 
     protected $requestStack;
 
-    public function __construct(EntityManager $entityManager, RequestStack $requestStack)
+    protected $contactManager;
+
+    public function __construct(EntityManager $entityManager, RequestStack $requestStack, ContactManager $contactManager)
     {
         $this->em = $entityManager;
         $this->requestStack = $requestStack;
+        $this->contactManager = $contactManager;
     }
 
     public function getPageData($routeName) {
         $pageType = '';
         $isWhoAreWe = false;
+        $isPresentation = false;
         $nextRoute = null;
         $backRoute = null;
         switch ($routeName) {
             case 'fdc_marche_du_film_edition_presentation':
                 $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
+                $isPresentation = true;
                 break;
             case 'fdc_marche_du_film_edition_projections':
                 $pageType = MdfContentTemplate::TYPE_EDITION_PROJECTIONS;
@@ -80,12 +85,16 @@ class ContentTemplateManager
             }
         });
 
+        $contact = $this->contactManager->getContactInfo();
+
         return array(
             'titleHeader' => $titleHeader,
             'widgets' => $widgets,
             'isWhoAreWe' => $isWhoAreWe,
             'nextRoute' => $nextRoute,
-            'backRoute' => $backRoute
+            'backRoute' => $backRoute,
+            'isPresentation' => $isPresentation,
+            'contact' => $contact
         );
     }
 
