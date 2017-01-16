@@ -32,7 +32,7 @@ $(document).ready(function() {
   }
 
   function getNews() {
-    $(".articles").each(function(index, element) {
+    $(".global-news").each(function(index, element) {
       if (!($(this).data('index') >= pageIndex * pageLimit && $(this).data('index') < (pageIndex * pageLimit) + pageLimit)) {
         $(this).hide();
       } else {
