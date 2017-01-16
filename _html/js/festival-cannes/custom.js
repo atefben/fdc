@@ -222,8 +222,15 @@ $(window).scroll(function(){
 });
 
 $(window).scroll(function(){
+    
     if ($("body").scrollTop() > $(".contact-box").offset().top) {
             $(".floatingButtonLeft, .floatingButtonRight").hide();
+    }
+
+    if ($("header").hasClass("sticky")) {
+      $("#leaderBoard").hide();
+    } else {
+      $("#leaderBoard").show();
     }
 
 });

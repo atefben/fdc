@@ -102,10 +102,10 @@
                   <li>Accès aux zones du Marché (Palais des Festivals, Riviera, Lérins, Village International)</li>
                   <li>Assistez à la reprise des films de la Sélection Officielle en projection privée les jeudi 19 et vendredi 20 mai 2016 </li>
                   <li>Recevez le sac du Marché du Film et ses publications pour organiser votre séjour: le Pocket Guide, le Producers Guide, le Focus, le Funds Guide</li>
-                  <li>Connectez vous en libre accès aux Web Points</li>
+                  <li><strong>Connectez</strong> vous en libre accès aux Web Points</li>
                   <li>Accèdez au Wi-Fi gratuitement et de façon illimitée</li>
                 </ul>
-              <p>Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</p>
+              <p>Référencez votre <strong>société</strong> et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</p>
               <div class="video-container state-init video"
                   data-facebook="//www.facebook.com"
                   data-twitter="//www.twitter.com"

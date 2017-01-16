@@ -82,14 +82,35 @@
                                   <li>• Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
                                   <li>• Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails).</li>
                                 </ul>
+
+                                <p>Le tarif forfaitaire comprend :
+                                Équipement du stand: construction de base, mobilier, moquette, alimentation électrique, éclairage, enseigne, nettoyage (sauf en cas de cocktails) et tri sélectif, gardiennage de nuit des zones d’exposition ; ainsi que montage et démontage du stand, recyclage des moquettes.</li>
+                                 Inscription au marché du film : 3 badges marché
+                                  10 % de remise sur les tarifs de réservation des projections au Marché du Film
+                                 Abonnement d’1 an à la base de données Cinando
+                                  Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
+                                 Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails)
+                                </p>
+                                
+                                <div>
+                                  <p>Le tarif forfaitaire comprend :
+                                  Équipement du stand: construction de base, mobilier, moquette, alimentation électrique, éclairage, enseigne, nettoyage (sauf en cas de cocktails) et tri sélectif, gardiennage de nuit des zones d’exposition ; ainsi que montage et démontage du stand, recyclage des moquettes.</li>
+                                   Inscription au marché du film : 3 badges marché
+                                    10 % de remise sur les tarifs de réservation des projections au Marché du Film
+                                   Abonnement d’1 an à la base de données Cinando
+                                    Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
+                                   Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails)
+                                  </p>
+                                </div>
+                                
                                 <div>Le tarif forfaitaire comprend :
-                            Équipement du stand: construction de base, mobilier, moquette, alimentation électrique, éclairage, enseigne, nettoyage (sauf en cas de cocktails) et tri sélectif, gardiennage de nuit des zones d’exposition ; ainsi que montage et démontage du stand, recyclage des moquettes.</li>
-                             Inscription au marché du film : 3 badges marché
-                              10 % de remise sur les tarifs de réservation des projections au Marché du Film
-                             Abonnement d’1 an à la base de données Cinando
-                              Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
-                             Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails)
-                            </div>
+                                Équipement du stand: construction de base, mobilier, moquette, alimentation électrique, éclairage, enseigne, nettoyage (sauf en cas de cocktails) et tri sélectif, gardiennage de nuit des zones d’exposition ; ainsi que montage et démontage du stand, recyclage des moquettes.</li>
+                                 Inscription au marché du film : 3 badges marché
+                                  10 % de remise sur les tarifs de réservation des projections au Marché du Film
+                                 Abonnement d’1 an à la base de données Cinando
+                                  Présentation de votre société en tant qu’exposant dans le guide du marché, le Pocket Guide, la map, sur Cinando et le site du Marché du Film.</li>
+                                 Accès permanent à la plage des palmes de 9h00 à 18h00 (sauf heures de cocktails)
+                                </div>
                               </div>       
                             </div>
                             <i class='icon icon_flecheGauche opportuniteArrow'></i>

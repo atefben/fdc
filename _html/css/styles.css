@@ -3559,6 +3559,10 @@ p {
   margin-bottom: 20px;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .icon {
   vertical-align: baseline !important;
 }
@@ -3568,6 +3572,10 @@ html {
   overflow-x: hidden;
 }
 
+/*strong, b, em {
+  font: normal;
+  font-weight:bold!important;
+}*/
 body {
   background-color: #FFFFFF;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -4726,7 +4734,7 @@ header #top-bar .icon_langue {
 header #logo-wrapper {
   background-color: #141414;
   height: 160px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5040,7 +5048,7 @@ header #navigation ul.main {
   border-right: 1px solid #404040;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.78rem;
-  position: relative;
+  /*position: relative;*/
 }
 header #navigation ul.user {
   float: right;
@@ -22325,10 +22333,9 @@ ul.tabs .quarterTab h4 {
   font-family: inherit;
   font-size: 12px;
 }
-.tab_container .tabBox p, .tab_container .tabBox .read-more-target span, .tab_container .tabBox .tabContent {
+.tab_container .tabBox .read-more-target span, .tab_container .tabBox .tabContent {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #505050;
-  opacity: 0.8;
   line-height: 25px;
   font-size: 14px;
   text-transform: initial;
@@ -22340,20 +22347,28 @@ ul.tabs .quarterTab h4 {
   font-size: 14px;
   margin-top: 50px;
 }
-.tab_container .tabBox .tabContent, .tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox p, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
+.tab_container .tabBox .tabContent, .tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
   padding-left: 50px;
   border: 0px solid #ddd;
 }
 .tab_container .tabBox .read-more-wrap {
   margin-bottom: 30px;
 }
-.tab_container .tabBox p, .tab_container .tabBox .tabContent {
+.tab_container .tabBox .tabContent {
   margin-bottom: 15px;
   text-align: left;
   letter-spacing: 0px;
   font-size: 14px;
   line-height: 30px;
   margin-bottom: -40px;
+}
+.tab_container .tabBox p {
+  color: #505050;
+  margin-bottom: 15px;
+  text-align: left;
+  letter-spacing: 0px;
+  font-size: 14px;
+  line-height: 30px;
 }
 .tab_container .tabBox .read-more-target span {
   padding-left: 0px;
@@ -22362,7 +22377,6 @@ ul.tabs .quarterTab h4 {
   letter-spacing: 0px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #505050;
-  opacity: 0.8;
 }
 
 .nopicTab {
@@ -22467,12 +22481,13 @@ ul.tabs .quarterTab h4 {
 .read-more-target ul {
   z-index: 999;
 }
-.read-more-target div {
+.read-more-target div, .read-more-target p {
   text-align: left;
   letter-spacing: 0px;
   font-size: 14px;
   line-height: 30px;
-  opacity: 0.8;
+  margin-bottom: 0px;
+  padding-left: 0px;
 }
 
 .read-more-wrap .read-more-target {
@@ -22662,7 +22677,6 @@ ul.tabs .quarterTab h4 {
 #accordion-menu li p {
   text-transform: initial;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  opacity: 0.8;
   font-size: 14px;
   line-height: 30px;
   text-align: left;
@@ -22922,7 +22936,6 @@ ul.tabs .quarterTab h4 {
 .accordion-infos li p {
   text-transform: initial;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  opacity: 0.8;
   font-size: 14px;
   line-height: 25px;
   margin-top: 40px;

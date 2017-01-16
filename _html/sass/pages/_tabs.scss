@@ -262,10 +262,9 @@ ul.tabs {
       font-size: 12px;
     }
 
-    p, .read-more-target span, .tabContent {
+    .read-more-target span, .tabContent {
       font-family: $CamphorRegular;
       color: #505050;
-      opacity: 0.8;
       line-height: 25px;
       font-size: 14px;
       text-transform: initial;
@@ -279,7 +278,7 @@ ul.tabs {
       margin-top: 50px;
     }
 
-    .tabContent, span, h5, p, .read-more-wrap, .read-more-trigger {
+    .tabContent, span, h5, .read-more-wrap, .read-more-trigger {
       padding-left: 50px;
       border: 0px solid #ddd;
     }
@@ -288,7 +287,7 @@ ul.tabs {
       margin-bottom: 30px;
     }
 
-    p, .tabContent {
+    .tabContent {
       margin-bottom: 15px;
       text-align: left;
       letter-spacing: 0px;
@@ -296,6 +295,15 @@ ul.tabs {
       line-height: 30px;
       margin-bottom: -40px;
 
+    }
+
+    p {
+      color: #505050;
+      margin-bottom: 15px;
+      text-align: left;
+      letter-spacing: 0px;
+      font-size: 14px;
+      line-height: 30px;
     }
 
     .read-more-target span {
@@ -306,7 +314,6 @@ ul.tabs {
       letter-spacing: 0px;
       font-family: $CamphorRegular;
       color: #505050;
-      opacity: 0.8;
     }
   }
 
@@ -415,12 +422,13 @@ ul.tabs {
     z-index:999;
   }
 
-  div {
+  div, p {
     text-align: left;
     letter-spacing: 0px;
     font-size: 14px;
     line-height: 30px;
-    opacity: 0.8;
+    margin-bottom: 0px;
+    padding-left: 0px;
   }
 }
 
@@ -603,7 +611,6 @@ ul.tabs {
       p {
         text-transform: initial;
         font-family: $CamphorRegular;
-        opacity: 0.8;
         font-size: 14px;
         line-height: 30px;
         text-align: left;
@@ -890,7 +897,6 @@ ul.tabs {
       p {
         text-transform: initial;
         font-family: $CamphorRegular;
-        opacity: 0.8;
         font-size: 14px;
         line-height: 25px;
         margin-top: 40px;
