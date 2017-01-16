@@ -202,6 +202,9 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
             ->add('mainImage', 'sonata_type_model_list', array(
                 'label' => 'Image cover du règlement'
             ))
+            ->add('backgroundImage', 'sonata_type_model_list', array(
+                'label' => 'Image cover de la strate formulaire'
+            ))
             ->add('displayReglement')
             ->add('displayInscription')
             ->add('displayContact')

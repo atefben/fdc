@@ -689,6 +689,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
     /**
+     * @param bool $avoidRemoveMultipleFunctions
      * @return array|ArrayCollection
      * @VirtualProperty()
      * @Groups({
@@ -699,12 +700,11 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      */
-    public function getCredits()
+    public function getCredits($avoidRemoveMultipleFunctions = false)
     {
         $collection = new ArrayCollection();
         if ($this->getPersons()->count() > 0) {
             foreach ($this->getPersons() as $person) {
-                $hasCredit = false;
                 if ($person->getFunctions()->count() > 0) {
                     foreach ($person->getFunctions() as $personFunction) {
                         if ($personFunction->getFunction() &&
@@ -722,7 +722,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 }
             }
 
-            $collection = $this->removeMultipleFunctions($collection);
+            if (!$avoidRemoveMultipleFunctions) {
+                $collection = $this->removeMultipleFunctions($collection);
+            }
             $collection = $this->orderByNullLast($collection, 'ASC');
         }
 

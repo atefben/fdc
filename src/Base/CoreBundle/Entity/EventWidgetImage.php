@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\Groups;
  * EventWidgetImage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\EventWidgetImageRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class EventWidgetImage extends EventWidget

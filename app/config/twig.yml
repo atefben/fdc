@@ -49,6 +49,7 @@ twig:
         social_podcast_zh: "%social_podcast_zh%"
         jwplayer_key: "%jwplayer_key%"
         fdc_event_domain: "%fdc_event_domain%"
+        fdc_event_scheme: "%fdc_event_scheme%"
         admin_routes_translation_legend_without_master: %admin_routes_translation_legend_without_master%
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%

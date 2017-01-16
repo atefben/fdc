@@ -12,7 +12,7 @@ use JMS\Serializer\Annotation\Groups;
  * InfoWidgetImage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\InfoWidgetImageRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class InfoWidgetImage extends InfoWidget
