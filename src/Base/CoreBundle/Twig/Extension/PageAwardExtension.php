@@ -57,7 +57,6 @@ class PageAwardExtension extends Twig_Extension
                 ->getByCategoryWithAward($festival, $category, $selectionSection)
             ;
             if ($awards) {
-                dump('yes court: ' . $page->findTranslationByLocale('fr')->getName());
                 return true;
             }
         }
@@ -69,7 +68,6 @@ class PageAwardExtension extends Twig_Extension
                 ->getByCategoryWithAward($festival, $category, $selectionSection)
             ;
             if ($awards) {
-                dump('yes long : ' . $page->findTranslationByLocale('fr')->getName());
                 return true;
             }
         }
@@ -81,11 +79,9 @@ class PageAwardExtension extends Twig_Extension
                 ->getByCategoryWithAward($festival, $category, $selectionSection)
             ;
             if ($awards) {
-                dump('yes other : ' . $page->findTranslationByLocale('fr')->getName());
                 return true;
             }
         }
-        dump('no: ' . $page->findTranslationByLocale('fr')->getName());
     }
 
     /**
