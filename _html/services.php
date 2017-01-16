@@ -93,7 +93,7 @@
                     <div class="lastArticle">
                       <h6>Nous<br>contacter</h6>
                       <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
-                      <div class="blackBtn">En Savoir Plus</div>
+                      <a href="#"><div class="blackBtn">En Savoir Plus</div></a>
                     </div>
                   </div>
                 </div>

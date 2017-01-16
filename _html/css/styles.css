@@ -24226,24 +24226,20 @@ ul.tabs .quarterTab h4 {
   -moz-box-shadow: 0px 20px 34px 4px #cccacc;
   box-shadow: 0px 20px 34px 4px #cccacc;
 }
-.servicesPage .articles:last-child {
+.servicesPage .lastServicesArticle {
+  background: url("/img/blueBckg.png") !important;
   text-align: center;
-  background: url("/img/blueBckg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.servicesPage .articles:last-child h6, .servicesPage .articles:last-child span, .servicesPage .articles:last-child p {
+.servicesPage .lastServicesArticle h6, .servicesPage .lastServicesArticle span, .servicesPage .lastServicesArticle p {
   color: white !important;
   opacity: 1 !important;
 }
-.servicesPage .articles:last-child:hover {
+.servicesPage .lastServicesArticle:hover {
   text-align: center;
-  background: url("/img/blueBckg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-}
-.servicesPage .articles:last-child .articles-content {
-  text-align: left;
 }
 .servicesPage .lastServicesArticle .articles-content {
   text-align: center !important;
