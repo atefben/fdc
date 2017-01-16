@@ -55,7 +55,7 @@
                                     </a>
                                     <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
                                     <p class="texte-01">
-                                        {{ president['jury'].person|trans_fallback('biography') }}
+                                        {{ president['jury'].person|trans_fallback('biography')|raw }}
                                     </p>
                                 </div>
                             </a>
