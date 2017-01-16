@@ -38,10 +38,17 @@ class JuryController extends Controller
             ->getRepository('BaseCoreBundle:FilmJuryType')
             ->getJuryTypeByFestival($festival)
         ;
-        $availables = [];
+        $available = [];
 
         foreach ($juryTypes as $juryType) {
-            $availables[] = $juryType->getId();
+            if (in_array($juryType->getId(), [3, 5])) {
+                $available[] = 3;
+                $available[] = 5;
+            }
+            else {
+                $available[] = $juryType->getId();
+            }
+
         }
 
         $pages = $this
@@ -51,7 +58,7 @@ class JuryController extends Controller
         ;
 
         foreach ($pages as $page) {
-            if (!in_array($page->getJuryType()->getId(), $availables)) {
+            if (!in_array($page->getJuryType()->getId(), $available)) {
                 $pages = array_diff($pages, array($page));
             }
         }
