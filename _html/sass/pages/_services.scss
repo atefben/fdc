@@ -72,8 +72,9 @@
         }
 
         p {
-          
-          opacity: 0.9;
+          color: #b1b1b1;
+          font-size: 13px;
+          font-family: $CamphorRegular;
           text-align: left;
           letter-spacing: 1px;
           padding: 0px 0px !important;
@@ -85,7 +86,7 @@
           color: #505050!important;
           text-transform: initial!important;
           font-family: $CamphorBold;
-          line-height: 30px;
+          line-height: 25px;
         }
       }
     }

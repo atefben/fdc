@@ -85,7 +85,7 @@
                   <div class="articles-content">
                     <h6>Opportunités publicitaires</h6>
                     <span>producers workshop</span>
-                    <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans...</p>
+                    <p>Vous entrez dans la peau d'un lapin bataillant contre des aliens ou dans contre des aliens ou dans...</p>
                   </div>
                 </div>
                 <div class="articles lastServicesArticle">
