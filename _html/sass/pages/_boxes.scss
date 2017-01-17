@@ -107,15 +107,14 @@
         }
 
         p {
-          /*font-size: 13px;
+          font-size: 13px;
           color: #b1b1b1;
           overflow: hidden;
-          line-height: 30px;*/
           font-family: $CamphorRegular;
-          text-align: left;
           line-height: 30px;
           /*overflow: hidden!important;
           text-overflow: ellipsis!important;
+          text-align: left;
           opacity: 0.8;
           text-align: left;*/
           @-moz-document url-prefix() { 
