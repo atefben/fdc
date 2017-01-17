@@ -65,3 +65,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.conference_program:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferenceProgramManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

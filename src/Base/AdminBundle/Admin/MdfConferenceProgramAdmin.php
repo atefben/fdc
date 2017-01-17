@@ -3,23 +3,13 @@
 namespace Base\AdminBundle\Admin;
 
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
-use FDC\MarcheDuFilmBundle\Entity\MdfSpeakers;
-use FDC\MarcheDuFilmBundle\Entity\MdfSpeakersTranslation;
-use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
-/**
- * Class MdfSpeakersAdmin
- * @package Base\AdminBundle\Admin
- */
-class MdfSpeakersAdmin extends MdfSpeakersMain
+class MdfConferenceProgramAdmin extends MdfConferenceProgramMain
 {
-    protected $baseRoutePattern = 'mdfconferencespeakerspw';
-    protected $baseRouteName = 'mdf_conference_speakers_pw';
+    protected $baseRoutePattern = 'mdfconferenceprogrampw';
+    protected $baseRouteName = 'mdf_conference_program_pw';
 
     public function createQuery($context = 'list')
     {

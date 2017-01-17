@@ -1,0 +1,53 @@
+<div id="accordion-conf" class="conferences">
+    <div class="conferenceMenu">
+        <ul>
+            {% for day in programDays %}
+                <li>
+                    <div class="open">{{ day.date|date('m-d-y') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                    <div class="content">
+                        <div class="parent">
+                            {% for event in programDaysEvents[day.id] %}
+                                <div class="box events">
+                                    <div class="conf70">
+                                        <span class="customClass1">{{ event.title }}</span><br>
+                                        <h6 class="confDetails confDetailsTop">{{ event.subTitle }}</h6>
+                                        {{ event.description }}
+                                        <div class="confPeople">
+                                            <hr>
+                                            <h6 class="confDetails">Intervenants</h6>
+                                            {% for item in eventsSpeakers[event.id] %}
+                                                <div class="quarterWidth">
+                                                    <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
+                                                    <div class="name">
+                                                        <h6 class="customClass1">{{ item.name }}</h6>
+                                                    </div>
+                                                    <div class="name">
+                                                        <p>{{ item.description }}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="conf30Sharp">
+                                        <div>
+                                            <span>type d'accès</span>
+                                            <p>{{ event.eventAccessType }}</p>
+                                        </div>
+                                        <div>
+                                            <span>heure</span>
+                                            <p>{{ event.eventHour }}</p>
+                                        </div>
+                                        <div>
+                                            <span>lieu</span>
+                                            <p>{{ event.eventPlace }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
