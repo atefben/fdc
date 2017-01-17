@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MdfGlobalEventsScheduleTranslation
  *
  * @ORM\Table(name="mdf_global_events_schedule_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfGlobalEventsScheduleTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MdfGlobalEventsScheduleTranslation
