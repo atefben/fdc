@@ -699,7 +699,7 @@
   margin: 0 auto;
   text-align:center;
 
-  ul {
+  /*ul {
     width: 750px;
     height: 415px;
     background: #0e4755;
@@ -716,6 +716,24 @@
       list-style-type: circle;
     } 
 
+  }*/
+
+  .tarifsBody {
+    width: 750px;
+    height: 415px;
+    background: #0e4755;
+    text-align: center;
+    margin: 0 auto;
+    padding: 85px 100px 0px 100px;
+
+    p {
+      color: white;
+      text-align: left;
+      line-height: 40px;
+      font-family: $CamphorRegular;
+      font-size: 16px;
+      list-style-type: circle;
+    }
   }
 }
 
