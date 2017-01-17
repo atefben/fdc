@@ -53,22 +53,11 @@ class ConferenceProgramManager
         return $widgets;
     }
 
-    public function getConferenceProgramPageByTheme($theme)
+    public function getConferenceProgramPageBySlug($slug)
     {
-        $theme = $this->em
-            ->getRepository(MdfThemeTranslation::class)
-            ->findBy(
-                array(
-                    'slug' => $theme
-                )
-            );
-
-        if ($theme) {
-            return $this->em
-                ->getRepository(MdfConferenceProgramTranslation::class)
-                ->getConferenceProgramPageByLocaleAndTheme($this->requestStack->getMasterRequest()->get('_locale'), $theme);
-        }
-        return null;
+        return $this->em
+            ->getRepository(MdfConferenceProgramTranslation::class)
+            ->getConferenceProgramPageByLocaleAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $slug);
     }
 
     public function getConferenceProgramDaysWidgets($page)

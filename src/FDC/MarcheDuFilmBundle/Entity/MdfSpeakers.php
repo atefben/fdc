@@ -24,6 +24,13 @@ class MdfSpeakers implements TranslateMainInterface
     use Translatable;
     use TranslateMain;
 
+    const TYPE_PRODUCERS_WORKSHOP = 'producers-workshop';
+    const TYPE_PRODUCERS_NETWORK = 'producers-network';
+    const TYPE_DOC_CORNER = 'doc-corner';
+    const TYPE_NEXT = 'next';
+    const TYPE_MIXERS = 'mixers';
+    const TYPE_GOES_TO_CANNES = 'goes-to-cannes';
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -38,11 +45,11 @@ class MdfSpeakers implements TranslateMainInterface
     protected $translations;
 
     /**
-     * @var MdfTheme
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
+     * @ORM\Column(type="string", nullable=false)
      */
-    private $theme;
+    protected $type;
 
     /**
      * @var ArrayCollection
@@ -90,10 +97,9 @@ class MdfSpeakers implements TranslateMainInterface
     }
 
     /**
-     * Add speakersChoicesCollection
+     * @param MdfSpeakersChoicesCollection $speakersChoicesCollection
      *
-     * @param \FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoicesCollection $speakersChoicesCollection
-     * @return Service
+     * @return $this
      */
     public function addSpeakersChoicesCollection(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoicesCollection $speakersChoicesCollection)
     {
@@ -124,25 +130,34 @@ class MdfSpeakers implements TranslateMainInterface
     }
 
     /**
-     * Set theme
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme
-     * @return MdfTheme
+     * @return string
      */
-    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
+    public function getType()
     {
-        $this->theme = $theme;
-
-        return $this;
+        return $this->type;
     }
 
     /**
-     * Get theme
-     *
-     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
+     * @param string $type
      */
-    public function getTheme()
+    public function setType($type)
     {
-        return $this->theme;
+        $this->type = $type;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
     }
 }

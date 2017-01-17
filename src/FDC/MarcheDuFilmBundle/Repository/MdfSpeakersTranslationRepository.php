@@ -12,15 +12,15 @@ use FDC\MarcheDuFilmBundle\Entity\Service;
 class MdfSpeakersTranslationRepository extends EntityRepository
 {
     
-    public function getSpeakersPageByLocaleAndTheme($locale, $theme)
+    public function getSpeakersPageByLocaleAndSlug($locale, $slug)
     {
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.locale = :locale')
             ->innerJoin('s.translatable', 't')
-            ->andWhere('t.theme = :theme')
+            ->andWhere('t.type = :slug')
             ->setParameter(':locale', $locale)
-            ->setParameter(':theme', $theme)
+            ->setParameter(':slug', $slug)
         ;
 
         return $qb->getQuery()->getOneOrNullResult();

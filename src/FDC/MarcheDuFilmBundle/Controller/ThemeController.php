@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 class ThemeController extends Controller
 {
     /**
-     * @Route("/{theme}/speakers")
+     * @Route("/{slug}/speakers")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function speakersAction(Request $request, $theme)
+    public function speakersAction(Request $request, $slug)
     {
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
@@ -21,7 +21,7 @@ class ThemeController extends Controller
 
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
-        $speakersPage = $speakersManager->getSpeakersPageByLocale($theme);
+        $speakersPage = $speakersManager->getSpeakersPageByLocale($slug);
         $speakersTabs = $speakersManager->getSpeakersTabOnPage($speakersPage);
         $speakersList = $speakersManager->getSpeakersList($speakersTabs);
 
@@ -37,18 +37,17 @@ class ThemeController extends Controller
     }
 
     /**
-     * @Route("/{theme}/programme")
-     *
+     * @Route("/{slug}/programme")
      * @param Request $request
-     * @param         $theme
+     * @param         $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function programAction(Request $request, $theme)
+    public function programAction(Request $request, $slug)
     {
         $conferenceProgramManager = $this->get('mdf.manager.conference_program');
 
-        $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageByTheme($theme);
+        $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageBySlug($slug);
         $contentTemplateWidgets = $conferenceProgramManager->getContentTemplateConferenceProgramePageData($conferenceProgramPage);
 
         $programDays = $conferenceProgramManager->getConferenceProgramDaysWidgets($conferenceProgramPage);

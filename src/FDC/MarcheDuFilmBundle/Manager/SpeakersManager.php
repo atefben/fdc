@@ -29,22 +29,11 @@ class SpeakersManager
     /**
      * @return mixed
      */
-    public function getSpeakersPageByLocale($theme)
+    public function getSpeakersPageByLocale($slug)
     {
-        $theme = $this->em
-            ->getRepository(MdfThemeTranslation::class)
-            ->findBy(
-                array(
-                    'slug' => $theme
-                )
-            );
-        
-        if ($theme) {
-            return $this->em
-                ->getRepository(MdfSpeakersTranslation::class)
-                ->getSpeakersPageByLocaleAndTheme($this->requestStack->getMasterRequest()->get('_locale'), $theme);
-        }
-        return null;
+        return $this->em
+            ->getRepository(MdfSpeakersTranslation::class)
+            ->getSpeakersPageByLocaleAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $slug);
     }
     
     
@@ -57,9 +46,10 @@ class SpeakersManager
             $speakersChoicesCollection = $speakersChoicesCollectionRepo
                 ->findBy(
                     array(
-                        'speakersPage' => $speakersPage->getId()
+                        'speakersPage' => $speakersPage->getTranslatable()->getId()
                     )
                 );
+
 
             if ($speakersChoicesCollection) {
                 $speakersChoices = [];

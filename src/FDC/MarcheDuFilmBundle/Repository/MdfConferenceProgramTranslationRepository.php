@@ -6,15 +6,15 @@ use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
 
 class MdfConferenceProgramTranslationRepository extends EntityRepository
 {
-    public function getConferenceProgramPageByLocaleAndTheme($locale, $theme)
+    public function getConferenceProgramPageByLocaleAndSlug($locale, $slug)
     {
         $qb = $this->createQueryBuilder('cpt');
         $qb
             ->where('cpt.locale = :locale')
             ->innerJoin('cpt.translatable', 'cp')
-            ->andWhere('cp.theme = :theme')
+            ->andWhere('cp.type = :slug')
             ->setParameter(':locale', $locale)
-            ->setParameter(':theme', $theme)
+            ->setParameter(':slug', $slug)
         ;
 
         return $qb->getQuery()->getOneOrNullResult();

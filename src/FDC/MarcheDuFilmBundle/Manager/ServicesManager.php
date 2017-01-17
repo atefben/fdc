@@ -45,7 +45,7 @@ class ServicesManager
             $serviceWidgetCollection = $serviceWidgetCollectionRepo
                 ->findBy(
                     array(
-                        'service' => $service->getId()
+                        'service' => $service->getTranslatable()->getId()
                     )
                 );
 

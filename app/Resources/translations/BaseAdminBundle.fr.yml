@@ -475,6 +475,8 @@ filter:
 admin:
     group:
         mdf: Marché du film
+        mdf_producers_workshop: Producers Workshop
+
 
 dashboard:
     translator:

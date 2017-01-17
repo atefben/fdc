@@ -16,6 +16,13 @@ class MdfConferenceProgram
 {
     use Translatable;
 
+    const TYPE_PRODUCERS_WORKSHOP = 'producers-workshop';
+    const TYPE_PRODUCERS_NETWORK = 'producers-network';
+    const TYPE_DOC_CORNER = 'doc-corner';
+    const TYPE_NEXT = 'next';
+    const TYPE_MIXERS = 'mixers';
+    const TYPE_GOES_TO_CANNES = 'goes-to-cannes';
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -31,6 +38,13 @@ class MdfConferenceProgram
     protected $file;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $type;
+
+    /**
      * @var MdfContentTemplateWidget
      *
      * @ORM\OneToMany(targetEntity="MdfContentTemplateWidget", mappedBy="conferenceProgram", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -44,13 +58,6 @@ class MdfConferenceProgram
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $dayWidgetCollections;
-
-    /**
-     * @var MdfTheme
-     *
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
-     */
-    private $theme;
 
     /**
      * @var ArrayCollection
@@ -162,24 +169,18 @@ class MdfConferenceProgram
     }
 
     /**
-     * @param MdfTheme|null $theme
-     *
-     * @return $this
+     * @return string
      */
-    public function setTheme(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme = null)
+    public function getType()
     {
-        $this->theme = $theme;
-
-        return $this;
+        return $this->type;
     }
 
     /**
-     * Get theme
-     *
-     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
+     * @param string $type
      */
-    public function getTheme()
+    public function setType($type)
     {
-        return $this->theme;
+        $this->type = $type;
     }
 }
