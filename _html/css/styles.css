@@ -21700,7 +21700,15 @@ body:not(.tablette) .webtv #live .img {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   margin-bottom: 50px;
-  opacity: 0.8;
+  opacity: 1;
+}
+.getMargin a {
+  text-decoration: none;
+  color: #ec3050 !important;
+  font-size: 14px;
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .accredidationsMessage {
@@ -21720,7 +21728,6 @@ body:not(.tablette) .webtv #live .img {
   text-align: center;
   background: #40acab;
   color: white;
-  text-transform: uppercase;
   line-height: 100px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -21737,7 +21744,6 @@ body:not(.tablette) .webtv #live .img {
   float: left;
   color: white;
   background: #0e5554;
-  text-transform: uppercase;
   line-height: 100px;
   font-size: 16px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
