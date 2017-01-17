@@ -176,7 +176,6 @@ function setNews() {
     var pagesLength = $('div.fifth').length;
 
     if (pageIndex < pagesLength - 1) {
-      console.log(pageIndex);
       pageIndex = pageIndex + 1;
       setPaginationTabs();
       getNews();
