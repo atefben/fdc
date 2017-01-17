@@ -24,13 +24,6 @@ class MdfSpeakers implements TranslateMainInterface
     use Translatable;
     use TranslateMain;
 
-    const TYPE_PRODUCERS_WORKSHOP = 'producers-workshop';
-    const TYPE_PRODUCERS_NETWORK = 'producers-network';
-    const TYPE_DOC_CORNER = 'doc-corner';
-    const TYPE_NEXT = 'next';
-    const TYPE_MIXERS = 'mixers';
-    const TYPE_GOES_TO_CANNES = 'goes-to-cannes';
-
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")

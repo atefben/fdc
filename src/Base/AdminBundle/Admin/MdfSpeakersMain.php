@@ -86,7 +86,14 @@ class MdfSpeakersMain extends Admin
                     ),
                     'updatedAt'         => array(
                         'display' => false,
-                    )
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfSpeakersTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                    ),
                 ),
             ))
             ->add('speakersChoicesCollections', 'sonata_type_collection', array(

@@ -17,10 +17,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfSpeakersTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class MdfSpeakersTranslation
+class MdfSpeakersTranslation implements TranslateChildInterface
 {
 
     use Seo;
+    use TranslateChild;
     use Time;
     use Translation;
     use TranslationChanges;

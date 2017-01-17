@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use FDC\MarcheDuFilmBundle\Entity\MdfSpeakers;
 use FDC\MarcheDuFilmBundle\Entity\MdfSpeakersTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
@@ -26,7 +27,7 @@ class MdfSpeakersAdmin extends MdfSpeakersMain
         $query->andWhere(
             $query->expr()->eq($query->getRootAlias().'.type', ':type')
         );
-        $query->setParameter('type', MdfSpeakers::TYPE_PRODUCERS_WORKSHOP);
+        $query->setParameter('type', MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP);
 
         return $query;
     }
@@ -34,6 +35,6 @@ class MdfSpeakersAdmin extends MdfSpeakersMain
     public function prePersist($page)
     {
         parent::prePersist($page);
-        $page->setType(MdfSpeakers::TYPE_PRODUCERS_WORKSHOP);
+        $page->setType(MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP);
     }
 }
