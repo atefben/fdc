@@ -12,3 +12,7 @@ header #navigation ul li a.golden:hover,
 header #navigation ul li a.golden.active {
     color: #a1844f;
 }
+
+.color-inherit {
+    color: inherit;
+}

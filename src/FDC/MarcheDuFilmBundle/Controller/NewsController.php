@@ -4,6 +4,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class NewsController extends Controller
 {
@@ -18,7 +19,8 @@ class NewsController extends Controller
         $themeManager = $this->get('mdf.manager.theme');
 
         $newsPageContent = $newsManager->getNewsPageTitle();
-        $newsContent = $contentTemplateManager->getHomepageNewsContent();
+        $newsContent = $contentTemplateManager->getNewsContent();
+        $numberOfNews = $contentTemplateManager->countNews(['all']);
         $filters = $themeManager->getAllThemes();
         $contact = $contactManager->getContactInfo();
 
@@ -26,7 +28,29 @@ class NewsController extends Controller
             'newsPageContent' => $newsPageContent,
             'news' => $newsContent,
             'filters' => $filters,
-            'contact' => $contact
+            'contact' => $contact,
+            'numberOfNews' => $numberOfNews
+        ));
+    }
+
+    /**
+     * @Route("get_news", options = { "expose" = true }, name="fdc_marche_du_film_get_news")
+     */
+    public function getNewsAction(Request $request)
+    {
+        $filtersData = json_decode($request->request->get('filtersData'), true);
+
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
+        $themeManager = $this->get('mdf.manager.theme');
+
+        $newsContent = $contentTemplateManager->getNewsContent($filtersData);
+        $numberOfNews = $contentTemplateManager->countNews($filtersData);
+        $filters = $themeManager->getAllThemes();
+
+        return $this->render('FDCMarcheDuFilmBundle::news/partials/filterListNews.html.twig', array(
+            'news' => $newsContent,
+            'filters' => $filters,
+            'numberOfNews' => $numberOfNews
         ));
     }
 }

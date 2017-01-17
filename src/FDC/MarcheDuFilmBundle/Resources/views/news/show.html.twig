@@ -7,41 +7,7 @@
                 <h3>{{ newsPageContent.title }}</h3>
             </div>
         </div>
-        <div class="bigContainer">
-            <div id="accordion-conf" class="conferences">
-                <div class="dropdown">
-                    <span>AFFICHER</span>
-                    <div id="eventSelector">
-                        <div class="selectText" id="showAll">Tous</div>
-                        {% for filter in filters %}
-                            <div class="selectText hideAll" id="{{ filter.slug }}">{{ filter.title }}</div>
-                        {% endfor %}
-                    </div>
-                    <div class="dropArrow">
-                        <i class="icon icon_flecheGauche"></i>
-                    </div>
-                </div><br>
-                <div class="selector marketnewsSelector">
-                    <div class="purpleBtn selectbtn marketnewsBtn" id="all">Tous</div>
-                    {% for filter in filters %}
-                        <div class="selectbtn marketnewsBtn" id="{{ filter.slug }}-filter" rel="{{ filter.slug }}">{{ filter.title }}</div>
-                    {% endfor %}
-                </div>
-                {% include 'FDCMarcheDuFilmBundle::news/partials/newsBlock.html.twig' with { 'news': news } %}
-            </div>
-        </div>
-        <div class="pagination">
-            <div class="paginationContainer">
-                <div class="paginationNavLeft"><i class="icon icon_flecheGauche"></i></div>
-                <div class="paginationBoxes">
-                    <div class="fifth"><span>1</span></div>
-                    <div class="fifth"><span>2</span></div>
-                    <div class="fifth"><span>3</span></div>
-                    <div class="fifth"><span>4</span></div>
-                </div>
-                <div class="paginationNavRight"><i class="icon icon_flecheGauche"></i></div>
-            </div>
-        </div>
+        {% include 'FDCMarcheDuFilmBundle::news/partials/filterListNews.html.twig' %}
     </div>
 
     {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}

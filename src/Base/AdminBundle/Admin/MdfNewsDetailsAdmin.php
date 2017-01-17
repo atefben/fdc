@@ -40,7 +40,9 @@ class MdfNewsDetailsAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            ->add('title')
+            ->add('publishedAt')
+            ->add('publishEndedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -83,7 +85,7 @@ class MdfNewsDetailsAdmin extends Admin
                 'label' => 'form.mdf.content_template.theme',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
-                'required' => false
+                'required' => true
             ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',

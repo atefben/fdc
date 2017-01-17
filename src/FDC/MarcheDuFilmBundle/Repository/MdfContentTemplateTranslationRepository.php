@@ -57,17 +57,36 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getNewsByLocaleAndType($locale, $type)
+    public function getNewsByLocaleAndType($locale, $type, $filters)
     {
         $qb = $this->createQueryBuilder('ctt')
-            ->select('ctt, ct, tt')
+            ->select('ctt, ct')
             ->join('ctt.translatable', 'ct')
             ->join('ct.theme', 't')
             ->join('t.translations', 'tt')
             ->where('ctt.locale = :locale')
+            ->andWhere('tt.locale = :locale')
+            ->andWhere('ct.type = :type')
+            ->andWhere('tt.slug IN (:filters)')
+            ->andWhere('ct.publishedAt <= :today')
+            ->setParameter('locale', $locale)
+            ->setParameter('type', $type)
+            ->setParameter('filters', $filters)
+            ->setParameter('today', new \DateTime())
+            ->orderBy('ct.publishedAt', 'DESC')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getAllNewsByLocaleAndType($locale, $type)
+    {
+        $qb = $this->createQueryBuilder('ctt')
+            ->select('ctt, ct')
+            ->join('ctt.translatable', 'ct')
+            ->where('ctt.locale = :locale')
             ->andWhere('ct.type = :type')
             ->andWhere('ct.publishedAt <= :today')
-            ->andWhere('tt.locale = :locale')
             ->setParameter('locale', $locale)
             ->setParameter('type', $type)
             ->setParameter('today', new \DateTime())
@@ -75,5 +94,44 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
         ;
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function countAllNewsByLocaleAndType($locale, $type)
+    {
+        $qb = $this->createQueryBuilder('ctt')
+            ->select('COUNT(ctt)')
+            ->join('ctt.translatable', 'ct')
+            ->where('ctt.locale = :locale')
+            ->andWhere('ct.type = :type')
+            ->andWhere('ct.publishedAt <= :today')
+            ->setParameter('locale', $locale)
+            ->setParameter('type', $type)
+            ->setParameter('today', new \DateTime())
+            ->orderBy('ct.publishedAt', 'DESC')
+        ;
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function countNewsByLocaleAndType($locale, $type, $filters)
+    {
+        $qb = $this->createQueryBuilder('ctt')
+            ->select('COUNT(ctt)')
+            ->join('ctt.translatable', 'ct')
+            ->join('ct.theme', 't')
+            ->join('t.translations', 'tt')
+            ->where('ctt.locale = :locale')
+            ->andWhere('tt.locale = :locale')
+            ->andWhere('ct.type = :type')
+            ->andWhere('tt.slug IN (:filters)')
+            ->andWhere('ct.publishedAt <= :today')
+            ->setParameter('locale', $locale)
+            ->setParameter('type', $type)
+            ->setParameter('filters', $filters)
+            ->setParameter('today', new \DateTime())
+            ->orderBy('ct.publishedAt', 'DESC')
+        ;
+
+        return $qb->getQuery()->getSingleScalarResult();
     }
 }

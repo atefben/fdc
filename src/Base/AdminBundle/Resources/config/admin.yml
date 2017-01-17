@@ -1827,7 +1827,7 @@ services:
         class: Base\AdminBundle\Admin\MdfNewsDetailsAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfNewsDetailsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Actualité}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Actualités}
 
     base.admin.mdf_news_page:
         class: Base\AdminBundle\Admin\MdfNewsPageAdmin

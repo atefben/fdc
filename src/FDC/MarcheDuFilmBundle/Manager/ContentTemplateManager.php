@@ -149,10 +149,15 @@ class ContentTemplateManager
         return isset($newsContent) ? $newsContent : [];
     }
 
-    public function getNewsContent() {
+    public function getNewsContent($filters = ['all']) {
         $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
 
-        $news = $this->getNews($pageType);
+        if (in_array("all", $filters)) {
+            $filters = array_diff($filters, array('all'));
+            $news = $this->getAllNews($pageType);
+        } else {
+            $news = $this->getNews($pageType, $filters);
+        }
 
         foreach ($news as $key => $newsItem) {
             $newsContent[$key]['content'] = $newsItem;
@@ -232,12 +237,45 @@ class ContentTemplateManager
             );
     }
 
-    public function getNews($pageType) {
+    public function getNews($pageType, $filters) {
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)
             ->getNewsByLocaleAndType(
                 $this->requestStack->getMasterRequest()->get('_locale'),
+                $pageType,
+                $filters
+            );
+    }
+
+    public function getAllNews($pageType) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getAllNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
                 $pageType
             );
+    }
+
+    public function countNews($filters) {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        if (in_array("all", $filters)) {
+            $nrOfRows = $this->em
+                ->getRepository(MdfContentTemplateTranslation::class)
+                ->countAllNewsByLocaleAndType(
+                    $this->requestStack->getMasterRequest()->get('_locale'),
+                    $pageType
+                );
+        } else {
+            $nrOfRows = $this->em
+                ->getRepository(MdfContentTemplateTranslation::class)
+                ->countNewsByLocaleAndType(
+                    $this->requestStack->getMasterRequest()->get('_locale'),
+                    $pageType,
+                    $filters
+                );
+        }
+
+        return intval($nrOfRows);
     }
 }
