@@ -28,10 +28,6 @@ class FilmJuryTypeRepository extends EntityRepository
             ->setParameter(':festival', $festival)
         ;
 
-//        $this->addMasterQueries($qb, 'j', $festival, false);
-
-//        $qb->addOrderBy('j.position', 'asc');
-
         return $qb->getQuery()->getResult();
     }
 }

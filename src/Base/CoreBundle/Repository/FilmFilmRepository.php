@@ -145,8 +145,9 @@ class FilmFilmRepository extends EntityRepository
         ;
 
         if ($idBanned !== null) {
-            $qb->andWhere('f.id != :idBanned')
-               ->setParameter('idBanned', $idBanned)
+            $qb
+                ->andWhere('f.id != :idBanned')
+                ->setParameter('idBanned', $idBanned)
             ;
         }
 

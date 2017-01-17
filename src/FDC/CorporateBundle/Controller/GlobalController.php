@@ -107,7 +107,6 @@ class GlobalController extends Controller {
                     }
                 }
             } else {
-                dump($form->getErrorsAsString());exit;
                 $response['success'] = false;
             }
             return new JsonResponse($response);
