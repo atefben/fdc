@@ -105,7 +105,7 @@
                   <li><strong>Connectez</strong> vous en libre accès aux Web Points</li>
                   <li>Accèdez au Wi-Fi gratuitement et de façon illimitée</li>
                 </ul>
-              <p>Référencez votre <strong>société</strong> et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</p>
+              <p>Référencez votre <strong>société</strong> et votre équipe dans <a href="#">Le Guide du Marché du Film distribué</a> à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</p>
               <div class="video-container state-init video"
                   data-facebook="//www.facebook.com"
                   data-twitter="//www.twitter.com"
@@ -130,6 +130,25 @@
                     </div>
                   </div>
                 </div><br>
+
+                <div class="single-photo">
+                  <div class="photo-container">
+                    <img src="img/slide001.jpg" alt="" />
+                    <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+                  </div>
+                </div>
+
+                <div class="block-s-info-02 border-bottom vFlexAlign">
+                  <div class="buttons-02">
+                    <a href="http://sub.festival-cannes.fr/" class="button autoBtn centered" target="_blank">bouton de telechargement</a>
+                  </div>
+                </div><br>
+                
+                <div class="text">
+                <a href="programmation-evenementiel.php" class="button single-button">Bouton de téléchargement</a>
+                </div>
+
+
               </div>
 
           </div><!--CONTAINER-->

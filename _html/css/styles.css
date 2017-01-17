@@ -3469,7 +3469,7 @@ a {
 .button {
   border: 1px solid #dfdfdf;
   border-right: none;
-  color: #c8a461;
+  color: #c8a461 !important;
   display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
@@ -3489,7 +3489,7 @@ a {
 .button:hover {
   background-color: #c8a461;
   border-color: #c8a461;
-  color: #fff;
+  color: #fff !important;
 }
 
 .buttons {
@@ -3510,6 +3510,9 @@ a {
 .single-button {
   border-right: 1px solid #c8a461 !important;
   border-color: #c8a461;
+}
+.single-button a {
+  color: #c8a461;
 }
 
 .quote.italic {
