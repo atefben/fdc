@@ -4,15 +4,24 @@ npm install
 gulp install
 bower install
 
+## Gulp task
+
+
+`gulp`
+<br><br>
+Lance la copy + server + compilation + prefix ... 
+<br><br>
+`gulp dump`
+<br><br>
+Permet de copier le CSS et le JS dans le symfo
+
+
 ## CSS - HTML - JS
 
 Il faut juste lancer la commande gulp qui lancera un serveur et toutex les modifications CSS-HTML-JS seront modifier dans le dossier build
 Attention le HTML utilise un templating, il faut uniquement modifier les fichiers présents dans le dossier app/ ! Les fichiers se trouvant dans le build/ seront automatiquement écrasé par le gulp !
 
 CLI : gulp
-
-
-À faire : modifier le gulp pour copier dans le symphony
 
 
 ## WYSIWYG

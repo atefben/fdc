@@ -10,3 +10,8 @@ requireDir('./gulp/tasks');
 gulp.task('default', function(){
   runSequence('iconfont', 'copy:fonts', 'server');
 });
+
+
+gulp.task('dump', function(){
+  runSequence('copy:sfcss', 'copy:sfjs');
+});
