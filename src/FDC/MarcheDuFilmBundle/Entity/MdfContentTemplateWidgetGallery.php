@@ -15,7 +15,8 @@ class MdfContentTemplateWidgetGallery extends MdfContentTemplateWidget
 {
     /**
      * @var GalleryMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\GalleryMdf", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\GalleryMdf", inversedBy="contentTemplate")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $gallery;
 

@@ -35,6 +35,13 @@ class GalleryMdfTranslation implements TranslateChildInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      *
      */
@@ -92,5 +99,28 @@ class GalleryMdfTranslation implements TranslateChildInterface
     public function getIntroductionHomeCorpo()
     {
         return $this->introductionHomeCorpo;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return GalleryMdf
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

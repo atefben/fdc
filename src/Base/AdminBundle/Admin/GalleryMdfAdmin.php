@@ -27,25 +27,6 @@ class GalleryMdfAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name', null, array(
-                'translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('displayedHomeCorpo', null, array(
-                'label'      => 'filter.label_homepage_corpo_displayed_galleries',
-                'field_type' => 'checkbox',
-            ))
-        ;
-
-        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-    }
-
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -88,6 +69,14 @@ class GalleryMdfAdmin extends Admin
                             'class' => 'hidden'
                         )
                     ),
+                    'name'          => array(
+                        'label'              => 'form.mdf.label.gallery',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -113,9 +102,6 @@ class GalleryMdfAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                 )
-            ))
-            ->add('name', null, array(
-                'required' => true,
             ))
             ->add('medias', 'sonata_type_collection', array(
                 'by_reference'       => false,
@@ -162,7 +148,9 @@ class GalleryMdfAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id');
+            ->add('id')
+            ->add('name')
+        ;
     }
 
 

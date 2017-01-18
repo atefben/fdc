@@ -40,13 +40,6 @@ class GalleryMdf implements TranslateMainInterface
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-    /**
      * @var GalleryMdfMedia
      *
      * @ORM\OneToMany(targetEntity="GalleryMdfMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -54,6 +47,30 @@ class GalleryMdf implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $medias;
+
+    /**
+     * @var GalleryMdfMedia
+     *
+     * @ORM\OneToMany(targetEntity="ServiceWidgetProduct", mappedBy="gallery")
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $product;
+
+    /**
+     * @var GalleryMdfMedia
+     *
+     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidgetGallery", mappedBy="gallery")
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $contentTemplate;
+
+    /**
+     * @var GalleryMdfMedia
+     *
+     * @ORM\OneToMany(targetEntity="MdfHomepage", mappedBy="gallery")
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    private $homepage;
 
     /**
      * @var boolean
@@ -88,20 +105,35 @@ class GalleryMdf implements TranslateMainInterface
     {
         $this->translations = new ArrayCollection();
         $this->medias = new ArrayCollection();
+        $this->product = new ArrayCollection();
+        $this->contentTemplate = new ArrayCollection();
+        $this->homepage = new ArrayCollection();
     }
-    
+
     public function __toString()
     {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
+        $translation = $this->findTranslationByLocale('fr');
 
-        if ($this->getId()) {
-            $string .= ' "' . $this->getName() . '"';
-            $string = $this->truncate($string, 40, '..."', true);
+        if ($translation !== null) {
+            $string = $translation->getName();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
         }
 
         return $string;
     }
-
+    
     /**
      * Get id
      *
@@ -110,6 +142,90 @@ class GalleryMdf implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param ServiceWidgetProduct $product
+     * @return $this
+     */
+    public function addProduct(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct $product)
+    {
+        $product->setGallery($this);
+        $this->product[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * @param ServiceWidgetProduct $product
+     */
+    public function removeProduct(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct $product)
+    {
+        $this->product->removeElement($product);
+    }
+
+    /**
+     * @return ArrayCollection|GalleryMdfMedia
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param MdfContentTemplateWidgetGallery $contentTemplate
+     * @return $this
+     */
+    public function addContentTemplate(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery $contentTemplate)
+    {
+        $contentTemplate->setGallery($this);
+        $this->contentTemplate[] = $contentTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfContentTemplateWidgetGallery $contentTemplate
+     */
+    public function removeContentTemplate(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery $contentTemplate)
+    {
+        $this->contentTemplate->removeElement($contentTemplate);
+    }
+
+    /**
+     * @return GalleryMdfMedia
+     */
+    public function getContentTemplate()
+    {
+        return $this->contentTemplate;
+    }
+
+    /**
+     * @param MdfHomepage $homepage
+     * @return $this
+     */
+    public function addHomepage(\FDC\MarcheDuFilmBundle\Entity\MdfHomepage $homepage)
+    {
+        $homepage->setGallery($this);
+        $this->homepage[] = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfHomepage $homepage
+     */
+    public function removeHomepage(\FDC\MarcheDuFilmBundle\Entity\MdfHomepage $homepage)
+    {
+        $this->homepage->removeElement($homepage);
+    }
+
+    /**
+     * @return GalleryMdfMedia
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
     }
 
     /**
@@ -144,29 +260,6 @@ class GalleryMdf implements TranslateMainInterface
     public function getMedias()
     {
         return $this->medias;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return GalleryMdf
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     public function getExportCreatedAt()
