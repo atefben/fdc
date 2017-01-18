@@ -50,7 +50,10 @@ class ServiceWidgetProductCollectionAdmin extends Admin
     {
         $formMapper
          //   ->add('id')
-            ->add('product', 'sonata_type_model_list')
+            ->add('product', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.label.widget_product_service_tab',
+                )
+            )
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }

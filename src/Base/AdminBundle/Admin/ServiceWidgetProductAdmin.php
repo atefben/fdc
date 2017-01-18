@@ -49,7 +49,8 @@ class ServiceWidgetProductAdmin extends Admin
         $formMapper
             ->add('gallery', 'sonata_type_model_list',array(
                 'btn_delete' => true,
-                'required' => false
+                'required' => false,
+                'label' => 'form.mdf.label.service_product_gallery'
             ))
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
@@ -62,7 +63,7 @@ class ServiceWidgetProductAdmin extends Admin
                         ),
                     ),
                     'url'          => array(
-                        'label'              => 'form.label.service_widget_product_url',
+                        'label'              => 'form.mdf.label.service_widget_product_url',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
@@ -70,7 +71,7 @@ class ServiceWidgetProductAdmin extends Admin
                         'required' => true
                     ),
                     'title'        => array(
-                        'label'              => 'form.label.service_widget_product_title',
+                        'label'              => 'form.mdf.label.service_widget_product_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
@@ -78,7 +79,7 @@ class ServiceWidgetProductAdmin extends Admin
                         'required' => true
                     ),
                     'grayText'     => array(
-                        'label'              => 'form.label.service_widget_product_gray_text',
+                        'label'              => 'form.mdf.label.service_widget_product_gray_text',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
@@ -86,7 +87,7 @@ class ServiceWidgetProductAdmin extends Admin
                         'required' => true
                     ),
                     'colorText'     => array(
-                        'label'              => 'form.label.service_widget_product_color_text',
+                        'label'              => 'form.mdf.label.service_widget_product_color_text',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
@@ -94,7 +95,7 @@ class ServiceWidgetProductAdmin extends Admin
                         'required' => true
                     ),
                     'body'         => array(
-                        'label'              => 'form.label.service_widget_product_body',
+                        'label'              => 'form.mdf.label.service_widget_product_body',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
@@ -102,7 +103,7 @@ class ServiceWidgetProductAdmin extends Admin
                         'required' => true
                     ),
                     'toggledBody'  => array(
-                        'label'              => 'form.label.service_widget_product_toggled_body',
+                        'label'              => 'form.mdf.label.service_widget_product_toggled_body',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
