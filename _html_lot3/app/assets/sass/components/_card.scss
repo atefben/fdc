@@ -217,6 +217,10 @@
   //height: 202px;
   position: relative;
 
+  .image .image-wrapper img {
+    min-height: auto;
+  }
+
   &.double {
     .image {
       margin-bottom: 0px;
