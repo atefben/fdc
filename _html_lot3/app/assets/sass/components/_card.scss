@@ -218,7 +218,7 @@
   position: relative;
   height: auto;
 
-  .image .image-wrapper {
+  .image .image-wrapper, &.card.w2.double {
     height: auto;
   }
 
