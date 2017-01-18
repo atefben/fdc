@@ -63,7 +63,6 @@ class ShareEmailType extends AbstractType
                 'attr' => array(
                     'class'       => 'popin',
                     'id'          => 'mail-copy',
-                    'label'       => 'Envoyer une copie par email',
                 ),
                 'data' => false,
                 'required' => false
