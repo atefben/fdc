@@ -216,6 +216,11 @@
   padding-top: 0px;
   //height: 202px;
   position: relative;
+  height: auto;
+
+  .image .image-wrapper {
+    height: auto;
+  }
 
   .image .image-wrapper img {
     min-height: initial;
