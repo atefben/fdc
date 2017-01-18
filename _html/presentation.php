@@ -138,7 +138,7 @@
                   </div>
                 </div>
 
-                <div class="block-s-info-02 border-bottom vFlexAlign">
+                <!--<div class="block-s-info-02 border-bottom vFlexAlign">
                   <div class="buttons-02">
                     <a href="http://sub.festival-cannes.fr/" class="button autoBtn centered" target="_blank">bouton de telechargement</a>
                   </div>
@@ -146,7 +146,7 @@
                 
                 <div class="text">
                 <a href="programmation-evenementiel.php" class="button single-button">Bouton de téléchargement</a>
-                </div>
+                </div>-->
                 <div class="text-presentation projection producersProgramme">
                 <div class="programme">
                       <div>
