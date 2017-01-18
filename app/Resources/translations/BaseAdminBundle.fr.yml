@@ -476,6 +476,7 @@ admin:
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
+        mdf_producers_network: Producers Network
 
 
 dashboard:

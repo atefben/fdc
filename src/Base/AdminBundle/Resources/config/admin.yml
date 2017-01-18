@@ -1947,3 +1947,15 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection, BaseAdminBundle:MdfConferencePartnerLogoCollectionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Partner Logo Collection, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Conference Program}
+
+    base.admin.mdf_speakers_producers_network:
+        class: Base\AdminBundle\Admin\MdfSpeakersProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Speakers}

@@ -23,6 +23,11 @@ class ThemeController extends Controller
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
         $speakersPage = $speakersManager->getSpeakersPageByLocale($slug);
+
+        if(!$speakersPage) {
+            throw new NotFoundHttpException();
+        }
+
         $speakersTabs = $speakersManager->getSpeakersTabOnPage($speakersPage);
         $speakersList = $speakersManager->getSpeakersList($speakersTabs);
 
