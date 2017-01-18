@@ -1959,3 +1959,15 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersProducersNetworkAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Speakers}
+
+    base.admin.mdf_conference_partner_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Conference Partners}
+
+    base.admin.mdf_conference_program_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Conference Program}
