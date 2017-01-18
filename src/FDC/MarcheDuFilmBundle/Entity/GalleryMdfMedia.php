@@ -28,7 +28,7 @@ class GalleryMdfMedia
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaMdfImage", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="MediaMdfImage")
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      */
     private $media;
