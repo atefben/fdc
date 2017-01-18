@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ThemeController extends Controller
 {
@@ -25,8 +26,7 @@ class ThemeController extends Controller
         $speakersTabs = $speakersManager->getSpeakersTabOnPage($speakersPage);
         $speakersList = $speakersManager->getSpeakersList($speakersTabs);
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:speakers.html.twig',
-            [
+        return $this->render('FDCMarcheDuFilmBundle:conference:speakers.html.twig', [
                 'speakersPage' => $speakersPage,
                 'speakersTabs' => $speakersTabs,
                 'speakersList' => $speakersList,
@@ -48,14 +48,18 @@ class ThemeController extends Controller
         $conferenceProgramManager = $this->get('mdf.manager.conference_program');
 
         $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageBySlug($slug);
+
+        if(!$conferenceProgramPage) {
+            throw new NotFoundHttpException();
+        }
+
         $contentTemplateWidgets = $conferenceProgramManager->getContentTemplateConferenceProgramePageData($conferenceProgramPage);
 
         $programDays = $conferenceProgramManager->getConferenceProgramDaysWidgets($conferenceProgramPage);
         $programDaysEvents = $conferenceProgramManager->getEventsPerDays($programDays);
         $eventsSpeakers = $conferenceProgramManager->getSpeakersPerEvent($programDaysEvents);
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig',
-             [
+        return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig', [
                  'conferenceProgram' => $conferenceProgramPage,
                  'contentTemplateWidgets' => $contentTemplateWidgets,
                  'programDays' => $programDays,
@@ -70,9 +74,27 @@ class ThemeController extends Controller
      *
      * @param Request $request
      * @param         $slug
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function partnerAction(Request $request, $slug)
     {
         $conferencePartnerManager = $this->get('mdf.manager.conference_partner');
+
+        $conferencePartnersPage = $conferencePartnerManager->getConferencePartnerPageBySlug($slug);
+
+        if(!$conferencePartnersPage) {
+            throw new NotFoundHttpException();
+        }
+
+        $conferencePartnersTabs = $conferencePartnerManager->getConferencePartnerTabWidgets($conferencePartnersPage);
+        $conferencePartnersLogos = $conferencePartnerManager->getLogosPerTabs($conferencePartnersTabs);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:partners.html.twig', [
+                 'conferencePartnersPage' => $conferencePartnersPage,
+                 'conferencePartnersTabs' => $conferencePartnersTabs,
+                 'conferencePartnersLogos' => $conferencePartnersLogos
+             ]
+        );
     }
 }

@@ -116,4 +116,39 @@ class MdfConferencePartnerLogo
 
         return $this;
     }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getUrl();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getUrl()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getUrl();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
 }

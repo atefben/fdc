@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MdfConferencePartnerLogoTranslation
  * @ORM\Table(name="mdf_conference_partner_logo_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfConferencePartnerLogoTranslationRepository")
  */
 class MdfConferencePartnerLogoTranslation
 {
