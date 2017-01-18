@@ -16,10 +16,10 @@ class ProgrammeController extends Controller
     {
         $contactManager = $this->get('mdf.manager.contact');
         $programmeManager = $this->get('mdf.manager.programme');
-        $themeManager = $this->get('mdf.manager.theme');
+        $conferenceManager = $this->get('mdf.manager.conference_program');
 
         $contact = $contactManager->getContactInfo();
-        $themes = $themeManager->getAllThemes();
+        $conferences = $conferenceManager->getAllConferenceTypes();
         $globalEventsPage = $programmeManager->getGlobalEventsPage();
         $globalEventsDays = $programmeManager->getGlobalEventsDays($globalEventsPage);
         $globalEventsSchedules = $programmeManager->getGlobalEventsSchedulesSorted($globalEventsDays);
@@ -28,7 +28,7 @@ class ProgrammeController extends Controller
             'globalEventsPage' => $globalEventsPage,
             'globalEventsDays' => $globalEventsDays,
             'globalEventsSchedules' => $globalEventsSchedules,
-            'themes' => $themes,
+            'conferences' => $conferences,
             'contact' => $contact
         ));
     }

@@ -23,6 +23,13 @@ class MdfGlobalEventsScheduleTranslation
     /**
      * @var string
      *
+     * @ORM\Column(name="conference", type="string", length=255, nullable=true)
+     */
+    private $conference;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="event_type", type="string", length=255, nullable=true)
      */
     private $eventType;
@@ -133,6 +140,22 @@ class MdfGlobalEventsScheduleTranslation
     public function setLocation($location)
     {
         $this->location = $location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getConference()
+    {
+        return $this->conference;
+    }
+
+    /**
+     * @param string $conference
+     */
+    public function setConference($conference)
+    {
+        $this->conference = $conference;
     }
 }
 

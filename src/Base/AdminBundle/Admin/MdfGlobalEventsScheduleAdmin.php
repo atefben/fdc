@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -40,12 +41,6 @@ class MdfGlobalEventsScheduleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('theme', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.content_template.theme',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => true,
-                'required' => true,
-            ))
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
@@ -55,6 +50,13 @@ class MdfGlobalEventsScheduleAdmin extends Admin
                         'attr'       => array(
                             'class' => 'hidden',
                         ),
+                    ),
+                    'conference'            => array(
+                        'label'                     => 'form.mdf.label.global_events_event_conference',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfConferenceProgram::getConferences(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'eventType'          => array(
                         'label'              => 'form.mdf.label.global_events_event_type',

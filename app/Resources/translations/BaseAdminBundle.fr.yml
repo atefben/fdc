@@ -739,6 +739,12 @@ form:
             service_widget_product_color_text: Prix
             service_widget_product_body: Description courte
             service_widget_product_toggled_body: Description longue
+            conference_doc_corner: Doc Corner
+            conference_goes_to_cannes: Goes to Cannes
+            conference_mixers: Mixers
+            conference_next: Next
+            conference_producers_network: Producers Network
+            conference_producers_workshop: Producers Workshop
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

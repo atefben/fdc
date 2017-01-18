@@ -27,13 +27,6 @@ class MdfGlobalEventsSchedule
     protected $id;
 
     /**
-     * @var MdfTheme
-     *
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
-     */
-    private $theme;
-
-    /**
      * @var \DateTime
      * @ORM\Column(name="start_time_event", type="datetime", nullable=true)
      */
@@ -104,22 +97,6 @@ class MdfGlobalEventsSchedule
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return MdfTheme
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * @param MdfTheme $theme
-     */
-    public function setTheme($theme)
-    {
-        $this->theme = $theme;
     }
 
     /**

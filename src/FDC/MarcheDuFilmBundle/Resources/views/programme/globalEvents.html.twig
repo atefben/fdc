@@ -20,8 +20,8 @@
                 <div class="dropdown">
                     <span>AFFICHER</span>
                     <div id="eventSelector">
-                        {% for theme in themes %}
-                            <div class="selectText" id="{{ theme.slug }}">{{ theme.title }}{% if loop.last ==false %},{% endif %}</div>
+                        {% for key, item in conferences %}
+                            <div class="selectText" id="{{ key }}">{{ key|replace({'-': ' '}) }}{% if loop.last ==false %},{% endif %}</div>
                         {% endfor %}
                     </div>
                     <div class="dropArrow">
@@ -30,12 +30,12 @@
                 </div><br>
                 <div class="selector">
                     <div class="purpleBtn selectbtn confBtn customClass1" id="all">Tous</div>
-                    {% for theme in themes %}
-                        <div class="selectbtn confBtn" id="{{ theme.translatable.id }}" rel="{{ theme.slug }}">{{ theme.title }}</div>
+                    {% for key, item in conferences %}
+                        <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ key|replace({'-': ' '}) }}</div>
                     {% endfor %}
                 </div>
                 <div class="conferencesMenu">
-                    {% include 'FDCMarcheDuFilmBundle::programme/partials/days.html.twig' with { 'days': globalEventsDays, 'events' : globalEventsSchedules, 'themes' : themes } %}
+                    {% include 'FDCMarcheDuFilmBundle::programme/partials/days.html.twig' with { 'days': globalEventsDays, 'events' : globalEventsSchedules } %}
                 </div>
             </div>
         </div>

@@ -6,15 +6,9 @@
                 <div class="parent">
                     <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
                     {% for event in events[day.id] %}
-                        <div class="box {{ event.translatable.theme.id }} events">
-                            {% set textArray = [] %}
+                        <div class="box {{ event.conference }} events">
+                            {% set textArray = event.conference|split("-") %}
                             {% set eventTheme = null %}
-                            {% for theme in themes %}
-                                {% if theme.translatable.id  == event.translatable.theme.id %}
-                                    {% set textArray = theme.title|split(" ") %}
-                                    {% set eventTheme = theme %}
-                                {% endif %}
-                            {% endfor %}
                             {% if textArray is defined and textArray is not null %}
                                 {% if textArray|length > 2 %}
                                     <div class="conf10">{{ textArray[0] }}<br>{{ textArray[1] }}<br>{{ textArray[2] }}</div>
@@ -25,9 +19,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="conf60">
-                                {% if eventTheme is defined and eventTheme is not null %}
-                                    <h6 class="conf60title">{{ eventTheme.title }}</h6>
-                                {% endif %}
+                                <h6 class="conf60title">{{ event.conference|replace({'-': ' '}) }}</h6>
                                 <span class="customClass1">{{ event.eventType }}</span>
                                 <p>{{ event.eventDescription }}</p>
                                 {# MISSING URL TAG. FO ISSUE #}
