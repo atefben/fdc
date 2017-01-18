@@ -218,7 +218,8 @@
   position: relative;
 
   .image .image-wrapper img {
-    min-height: auto;
+    min-height: initial;
+    position: relative;
   }
 
   &.double {
