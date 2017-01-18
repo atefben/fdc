@@ -8503,11 +8503,11 @@ header.sticky #logo-wrapper {
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header.sticky #logo-wrapper #logo {
-  width: 290px;
+  width: 350px;
 }
 header.sticky #logo-wrapper #logo img.palm {
   float: left;
-  margin-top: -30px;
+  margin-top: -5px;
   width: 72px;
 }
 header.sticky #logo-wrapper #logo h2 {
@@ -8516,10 +8516,11 @@ header.sticky #logo-wrapper #logo h2 {
 header.sticky #logo-wrapper #logo p.stick {
   float: left;
   font-size: 1.1rem;
-  /*margin: -10px 0 0 30px;*/
-  margin: -32px 0 0 100px;
+  margin: 12px 0 0 30px;
+  margin: 14px 0px 0px 0px;
   opacity: 1;
   visibility: visible;
+  padding-left: 20px;
 }
 header.sticky #logo-wrapper #logo p.stick:after {
   transition-delay: 0.4s;
@@ -8688,8 +8689,7 @@ header #logo-wrapper .container {
 }
 header #logo-wrapper #logo {
   display: inline-block;
-  padding: 7px 100px 0 0;
-  padding: 30px 100px 0 0;
+  padding: 5px 100px 0 0;
   text-align: center;
   vertical-align: middle;
   width: 200px;
@@ -8746,7 +8746,8 @@ header #logo-wrapper #logo p.stick.noTrans:after {
 header #logo-wrapper #logo h2 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-weight: normal;
-  margin-top: -20px;
+  margin-top: -15px;
+  margin-left: 45px;
 }
 header #logo-wrapper #logo h2 a {
   color: #c8a461;
@@ -8754,7 +8755,8 @@ header #logo-wrapper #logo h2 a {
 }
 header #logo-wrapper #logo img.palm {
   display: block;
-  width: 105px;
+  width: 145px;
+  margin: 0 auto;
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -28109,7 +28111,7 @@ ul.tabs .quarterTab h4 {
   }
 }
 .conferences .conf30 p, .conferences .conf30Sharp p {
-  margin-left: 22px;
+  margin-left: 28px;
   margin-top: -5px;
   color: #505050;
   opacity: 0.9;

@@ -109,11 +109,11 @@ header {
       @include transition(all 0.5s $smoothTransition);
 
       #logo {
-        width: 290px;
+        width: 350px;
 
         img.palm {
           float: left;
-          margin-top: -30px;
+          margin-top: -5px;
           width: 72px;
         }
 
@@ -124,10 +124,11 @@ header {
         p.stick {
           float: left;
           font-size: 1.1rem;
-          /*margin: -10px 0 0 30px;*/
-          margin: -32px 0 0 100px;
+          margin: 12px 0 0 30px;
+          margin: 14px 0px 0px 0px;
           opacity: 1;
           visibility: visible;
+          padding-left: 20px;
 
           &:after {
             transition-delay: 0.4s;
@@ -301,8 +302,7 @@ header {
 
     #logo {
       display: inline-block;
-      padding: 7px 100px 0 0;
-      padding: 30px 100px 0 0;
+      padding: 5px 100px 0 0;
       text-align: center;
       vertical-align: middle;
       width: 200px;
@@ -358,7 +358,8 @@ header {
       h2 {
         font-family: $CamphorRegular;
         font-weight: normal;
-        margin-top: -20px;
+        margin-top: -15px;
+        margin-left: 45px;
 
         a {
           color: $gold;
@@ -368,7 +369,8 @@ header {
 
       img.palm {
         display: block;
-        width: 105px;
+        width: 145px;
+        margin: 0 auto;
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
       }
