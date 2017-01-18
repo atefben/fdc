@@ -15142,6 +15142,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-color: #2c2c2c;
   color: #999999;
 }
+.article-single.dark .table-article td p, .article-single .dark .table-article th p, .single-movie.dark .table-article td p, .single-movie .dark .table-article th p {
+  color: #999999;
+  text-align: center;
+}
 .article-single.dark .table-article th, .single-movie.dark .table-article th {
   color: #fff;
   font-size: 1.3rem;
@@ -15153,6 +15157,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #fff;
   font-size: 1rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+}
+.article-single.dark caption strong, .single-movie.dark caption strong {
+  color: #fff;
 }
 .article-single.dark .copy, .single-movie.dark .copy {
   color: #fff;
