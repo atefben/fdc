@@ -43,7 +43,7 @@
 
 
           <div class="minPadding">   
-            <div class="bigContainer">    
+            <div class="container">    
               <h5 class="minMargin">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960.</h5>
             </div>
           </div>
@@ -76,7 +76,7 @@
               <div class="conferencesMenu">
                 <ul>
                   <li class="open-selected-conf">
-                    <div class="open">12 mai 2016<span class="openPlus noDisplay">+</span><span class="openMinus doDisplay">-</span></div>
+                    <div class="open">12 mai 2016<span class="openPlus noDisplay"><i class="icon icon_creer"></i></span><span class="openMinus doDisplay"><i class="icon icon_moins"></i></span></div>
                     <div class="content firstContent">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
@@ -248,7 +248,7 @@
                     </div>
                   </li>
                   <li>
-                  <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                  <div class="open">12 mai 2016<span class="openPlus"><i class="icon icon_creer"></i></span><span class="openMinus"><i class="icon icon_moins"></i></span></div>
                     <div class="content">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
@@ -396,7 +396,7 @@
                     </div>
                   </li>
                   <li>
-                  <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                  <div class="open">12 mai 2016<span class="openPlus"><i class="icon icon_creer"></i></span><span class="openMinus"><i class="icon icon_moins"></i></span></div>
                     <div class="content">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
@@ -545,7 +545,7 @@
                     </div>
                   </li>         
                   <li>
-                  <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                  <div class="open">12 mai 2016<span class="openPlus"><i class="icon icon_creer"></i></span><span class="openMinus"><i class="icon icon_moins"></i></span></div>
                     <div class="content">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
@@ -694,7 +694,7 @@
                     </div>
                   </li>         
  <li>
-                  <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                  <div class="open">12 mai 2016<span class="openPlus"><i class="icon icon_creer"></i></span><span class="openMinus"><i class="icon icon_moins"></i></span></div>
                     <div class="content">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
@@ -843,7 +843,7 @@
                     </div>
                   </li>         
                 <li>
-                  <div class="open">12 mai 2016<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                  <div class="open">12 mai 2016<span class="openPlus"><i class="icon icon_creer"></i></span><span class="openMinus"><i class="icon icon_moins"></i></span></div>
                     <div class="content">
                         <div class="parent">
                           <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->

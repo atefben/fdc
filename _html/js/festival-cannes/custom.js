@@ -301,7 +301,7 @@ function click() {
 
               $('html, body').animate({
               scrollTop: $('.conferencesMenu').offset().top - 2
-            }, 1000);
+            }, 3000);
            } 
        });
 

@@ -62,6 +62,9 @@
 
       <div class="block-tab-switch block-01-ms">
         <h3 class="title-tab-swich">Consultez la procédure d’inscription en<br>fonction de la catégorie :</h3>
+      </div>
+      
+      <div class="block-tab-switch">
 
         <table class="tab1">
           <tbody>
@@ -82,7 +85,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="border-top">
 
         <div class="block-contain-txt-register-movie" data-article="lm-hc-cr">

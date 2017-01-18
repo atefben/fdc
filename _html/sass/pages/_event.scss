@@ -184,7 +184,7 @@
     color: #333;
     float: right;
     margin-right: 30px;
-    font-size: 25px;
+    font-size: 15px;
     font-family: $CamphorHeavy;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
@@ -197,7 +197,7 @@
     color: white;
     float: right;
     margin-right: 30px;
-    font-size: 25px;
+    font-size: 15px;
     font-family: $CamphorHeavy;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
@@ -561,10 +561,12 @@
 
 .minMargin {
     margin-bottom: 20px!important;
-    padding: 0px 100px;
     color: #2b2b2b;
     font-size: 14px;
     line-height: 25px;
+    width: 766px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .producersProgramme {
