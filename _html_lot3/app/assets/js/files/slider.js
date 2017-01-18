@@ -159,19 +159,22 @@ var owInitSlider = function (sliderName) {
                 e.preventDefault();
                 var url = $(this).data('url');
 
+                $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
+                $('.timelapse').css('display', 'none');
+                $('.discover').css('display', 'none');
+                $('.slides-calc2').css('display', 'none');
+                $('.title-big-date').addClass('title-2').removeClass('title-big-date');
+                $('.title-edition').addClass('title-4').removeClass('title-edition');
+
+                var imgurl = $('.block-push-top.big .container img').attr('src');
+                $('.block-push-top.big .container img').css('display', 'none');
+
+                $('.block-push').css('background-position', '0px -30px');
+                $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
+
                 $.get(url, function (data) {
 
-                    $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
-                    $('.timelapse').css('display', 'none');
-                    $('.discover').css('display', 'none');
-                    $('.slides-calc2').css('display', 'none');
-                    $('.title-big-date').addClass('title-2').removeClass('title-big-date');
-                    $('.title-edition').addClass('title-4').removeClass('title-edition');
 
-                    var imgurl = $('.block-push-top.big .container img').attr('src');
-                    $('.block-push-top.big .container img').css('display', 'none');
-
-                    $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                     var data = $(data).find('.contain-ajax');
 

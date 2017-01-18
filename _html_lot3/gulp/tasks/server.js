@@ -3,7 +3,7 @@ var gulp          = require('gulp'),
     browserSync   = require('browser-sync').create(),
     reload        = browserSync.reload;
 
-gulp.task('server', ['styles', 'views', 'jshint', 'scripts:vendors', 'scripts:app', 'images'], function(){
+gulp.task('server', ['styles', 'views', 'jshint', 'scripts:vendors', 'scripts:app', 'images', 'copy:sfcss', 'copy:sfjs'], function(){
   browserSync.init(config.browserSync);
   gulp.watch(config.styles.watchSrc, ['styles', reload]);
   gulp.watch(config.views.watchSrc, ['views', reload]);
