@@ -51,6 +51,7 @@ class ThemeController extends Controller
     public function programAction(Request $request, $slug)
     {
         $conferenceProgramManager = $this->get('mdf.manager.conference_program');
+        $contactManager = $this->get('mdf.manager.contact');
 
         $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageBySlug($slug);
 
@@ -64,12 +65,15 @@ class ThemeController extends Controller
         $programDaysEvents = $conferenceProgramManager->getEventsPerDays($programDays);
         $eventsSpeakers = $conferenceProgramManager->getSpeakersPerEvent($programDaysEvents);
 
+        $contact = $contactManager->getContactInfo();
+
         return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig', [
                  'conferenceProgram' => $conferenceProgramPage,
                  'contentTemplateWidgets' => $contentTemplateWidgets,
                  'programDays' => $programDays,
                  'programDaysEvents' => $programDaysEvents,
-                 'eventsSpeakers' => $eventsSpeakers
+                 'eventsSpeakers' => $eventsSpeakers,
+                 'contact' => $contact
              ]
         );
     }
@@ -85,6 +89,7 @@ class ThemeController extends Controller
     public function partnerAction(Request $request, $slug)
     {
         $conferencePartnerManager = $this->get('mdf.manager.conference_partner');
+        $contactManager = $this->get('mdf.manager.contact');
 
         $conferencePartnersPage = $conferencePartnerManager->getConferencePartnerPageBySlug($slug);
 
@@ -95,10 +100,13 @@ class ThemeController extends Controller
         $conferencePartnersTabs = $conferencePartnerManager->getConferencePartnerTabWidgets($conferencePartnersPage);
         $conferencePartnersLogos = $conferencePartnerManager->getLogosPerTabs($conferencePartnersTabs);
 
+        $contact = $contactManager->getContactInfo();
+
         return $this->render('FDCMarcheDuFilmBundle:conference:partners.html.twig', [
                  'conferencePartnersPage' => $conferencePartnersPage,
                  'conferencePartnersTabs' => $conferencePartnersTabs,
-                 'conferencePartnersLogos' => $conferencePartnersLogos
+                 'conferencePartnersLogos' => $conferencePartnersLogos,
+                 'contact' => $contact
              ]
         );
     }
