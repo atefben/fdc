@@ -105,7 +105,7 @@
     {'section': 'qui sommes nous ?',
         'detail' : '',
         'title'  : currentPage|trans_fallback('title'),
-        'description': currentPage|trans_fallback('chapo')|striptags,
+        'description': currentPage|trans_fallback('chapo')|striptags|truncate(250),
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     }))
     }}

@@ -1,7 +1,7 @@
 {% trans_default_domain "FDCCorporateBundle" %}
 <p style="margin-bottom:10.0pt">
     <span style="font-size:8.0pt;font-family:'Arial','sans-serif';color:#c8a461">
-        {% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }} - {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ section|upper }} - {{ detail }}{% endif %}
+        {% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }} - {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ section|upper }} {{ detail }}{% endif %}
     </span>
 </p>
 
