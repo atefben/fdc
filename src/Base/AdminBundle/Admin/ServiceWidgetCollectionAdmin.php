@@ -50,7 +50,10 @@ class ServiceWidgetCollectionAdmin extends Admin
     {
         $formMapper
          //   ->add('id')
-            ->add('widget', 'sonata_type_model_list')
+            ->add('widget', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.label.widget_service_page',
+                )
+            )
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }

@@ -715,6 +715,30 @@ form:
             dispatch_de_service_widget_helper_widgets: Helper du service
             header_image: Image du service
             contact_image: Image du contact
+            service_info: Informations générales détail de service
+            service_title: Titre de page
+            service_sub_title: Sous-titre de page
+            service_header: Chapô
+            service_widget: Liste des onglets disponibles
+            new_service_widget: Administration des onglets de la page de service
+            widget_service_page: Nom des onglets
+            service_content_block: Bloc de contenu bas de page
+            service_content_block_title: Titre du bloc de contenu bas de page
+            service_content_block_body: Corps du bloc de contenu bas de page
+            service_widget_info: Informations générales de l'onglet service
+            service_widget_tab_title: Titre de l'onglet
+            service_widget_tab_sub_title: Sous-titre de l'onglet
+            service_products: Liste des blocs de produits dans l'onglet
+            service_widget_product: Administrez la liste des produits disponible dans l'onglet
+            widget_product_service_tab: Nom du produit
+            service_product_gallery: Slider de produit
+            service_product_info: Informations bloc de produit
+            service_widget_product_title: Titre du produit
+            service_widget_product_url: Lien pour réservation
+            service_widget_product_gray_text: A partir de
+            service_widget_product_color_text: Prix
+            service_widget_product_body: Description courte
+            service_widget_product_toggled_body: Description longue
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:
