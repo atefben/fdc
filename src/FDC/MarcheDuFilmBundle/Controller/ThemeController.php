@@ -64,4 +64,15 @@ class ThemeController extends Controller
              ]
         );
     }
+
+    /**
+     * @Route("/{slug}/partenaires")
+     *
+     * @param Request $request
+     * @param         $slug
+     */
+    public function partnerAction(Request $request, $slug)
+    {
+        $conferencePartnerManager = $this->get('mdf.manager.conference_partner');
+    }
 }

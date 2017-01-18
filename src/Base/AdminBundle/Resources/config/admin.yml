@@ -1881,3 +1881,33 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfTheme, BaseAdminBundle:MdfThemeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Thème}
+
+    base.admin.mdf_conference_partner_producers_workshop:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerProducersWorkshopAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerProducersWorkshopAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference Partners}
+
+    base.admin.mdf_conference_partner_tab:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerTabAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTab, BaseAdminBundle:MdfConferencePartnerTabAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference partner tab, show_in_dashboard: false}
+
+    base.admin.mdf_conference_partner_logo:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerLogoAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogo, BaseAdminBundle:MdfConferencePartnerLogoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference partner logo, show_in_dashboard: false}
+
+    base.admin.mdf_conference_partner_tab_collection:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerTabCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection, BaseAdminBundle:MdfConferencePartnerTabCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Partner Tab Collection, show_in_dashboard: false}
+
+    base.admin.mdf_conference_partner_logo_collection:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerLogoCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection, BaseAdminBundle:MdfConferencePartnerLogoCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Partner Logo Collection, show_in_dashboard: false}
