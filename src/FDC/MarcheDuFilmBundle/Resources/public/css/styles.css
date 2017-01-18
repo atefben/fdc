@@ -3469,7 +3469,7 @@ a {
 .button {
   border: 1px solid #dfdfdf;
   border-right: none;
-  color: #c8a461;
+  color: #c8a461 !important;
   display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
@@ -3489,7 +3489,7 @@ a {
 .button:hover {
   background-color: #c8a461;
   border-color: #c8a461;
-  color: #fff;
+  color: #fff !important;
 }
 
 .buttons {
@@ -3510,6 +3510,9 @@ a {
 .single-button {
   border-right: 1px solid #c8a461 !important;
   border-color: #c8a461;
+}
+.single-button a {
+  color: #c8a461;
 }
 
 .quote.italic {
@@ -3559,6 +3562,10 @@ p {
   margin-bottom: 20px;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .icon {
   vertical-align: baseline !important;
 }
@@ -3568,6 +3575,10 @@ html {
   overflow-x: hidden;
 }
 
+/*strong, b, em {
+  font: normal;
+  font-weight:bold!important;
+}*/
 body {
   background-color: #FFFFFF;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -4492,7 +4503,7 @@ header #sticky-user {
   opacity: 0;
   position: absolute;
   pointer-events: none;
-  bottom: 18px;
+  bottom: 12px;
   right: 0;
   -moz-transform: translate3d(0, 5px, 0);
   -ms-transform: translate3d(0, 5px, 0);
@@ -4530,6 +4541,7 @@ header.sticky #sticky-user {
   pointer-events: auto;
   margin-top: 18px;
   transition-delay: 0.5s;
+  margin-right: 85px;
 }
 header.sticky #sticky-user .user-nav {
   border: none;
@@ -4551,20 +4563,21 @@ header.sticky #sticky-user .user-nav a.selection {
   min-width: 71px;
 }
 header.sticky #logo-wrapper {
-  height: 50px;
+  height: 50px !important;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header.sticky #logo-wrapper #logo {
-  width: 290px;
+  width: 310px;
 }
 header.sticky #logo-wrapper #logo img.palm {
   float: left;
   margin-top: -5px;
   width: 72px;
   margin-left: 35px;
+  margin-left: 50px;
 }
 header.sticky #logo-wrapper #logo h2 {
   display: none;
@@ -4572,7 +4585,7 @@ header.sticky #logo-wrapper #logo h2 {
 header.sticky #logo-wrapper #logo p.stick {
   float: left;
   font-size: 1.1rem;
-  margin: 12px 0 0 30px;
+  margin: 7px 0 0 30px;
   opacity: 1;
   visibility: visible;
 }
@@ -4725,8 +4738,7 @@ header #top-bar .icon_langue {
 }
 header #logo-wrapper {
   background-color: #141414;
-  height: 160px;
-  overflow: hidden;
+  height: 160px !important;
   -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4739,6 +4751,12 @@ header #logo-wrapper {
 header #logo-wrapper .container {
   height: 100%;
   position: relative;
+  width: 1152px;
+}
+@media screen and (max-width: 1024px) {
+  header #logo-wrapper .container {
+    width: 1152px;
+  }
 }
 header #logo-wrapper #logo {
   display: inline-block;
@@ -4759,8 +4777,10 @@ header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
 }
 header #logo-wrapper #logo h1 {
   position: absolute;
-  top: 108px;
-  left: 0px;
+  /*top: 108px;
+  left: 0px;*/
+  top: 90px !important;
+  left: 10px !important;
 }
 header #logo-wrapper #logo h2 {
   position: absolute;
@@ -4811,6 +4831,7 @@ header #logo-wrapper #logo img.palm {
   display: block;
   margin: 0 auto;
   width: 165px;
+  width: 123px;
   margin-left: 35px;
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4861,8 +4882,8 @@ header #logo-wrapper #leaderBoard {
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  top: 50px;
-  left: 480px;
+  top: 30px;
+  left: 405px;
   background: #333333;
   text-align: center;
   color: white;
@@ -5040,7 +5061,7 @@ header #navigation ul.main {
   border-right: 1px solid #404040;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.78rem;
-  position: relative;
+  /*position: relative;*/
 }
 header #navigation ul.user {
   float: right;
@@ -5394,7 +5415,7 @@ header #navigation {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   /*.tleft:before {
-  background: url("/img/purpleBackg.png");
+  background: url("../img/purpleBackg.png");
   background-size: 100% 450px;
   border-bottom: 0px solid #404040;
   border: 0px solid #404040;
@@ -6141,7 +6162,7 @@ div.chocolat-wrapper .thumbnails .thumb.compat-object-fit {
   background: #000 !important;
 }
 div.chocolat-wrapper .chocolat-bottom {
-  background: url("../img/shadow-slideshow.png") repeat-x;
+  background: url("..../img/shadow-slideshow.png") repeat-x;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 16px;
   line-height: initial;
@@ -6468,7 +6489,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 
 .chocolat-zoomable .zoomCursor {
-  background: url("../img/svg/zoomIn.svg") no-repeat center;
+  background: url("..../img/svg/zoomIn.svg") no-repeat center;
   background-size: 20px;
   display: block !important;
 }
@@ -6477,7 +6498,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 
 .chocolat-zoomed .zoomCursor {
-  background: url("../img/svg/zoomOut.svg") no-repeat center;
+  background: url("..../img/svg/zoomOut.svg") no-repeat center;
   background-size: 20px;
   display: block !important;
 }
@@ -7263,7 +7284,7 @@ video {
   background-size: cover;
 }
 .video-container .top-bar {
-  background: url("../img/shadow-reverse.png") repeat-x;
+  background: url("..../img/shadow-reverse.png") repeat-x;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   height: 80px;
   left: 0;
@@ -7551,7 +7572,7 @@ video {
   font-size: 14px;
 }
 .video-container .control-bar .playstate .play-btn.pause {
-  background-image: url("../img/player/pause.png");
+  background-image: url("..../img/player/pause.png");
 }
 .video-container .control-bar .time {
   display: inline-block;
@@ -8054,7 +8075,7 @@ video {
   visibility: hidden;
 }
 #selection #slider-selection .article .delete, #selection #slider-suggestion .article .delete {
-  background: #fff url("../img/svg/close.svg") no-repeat center;
+  background: #fff url("..../img/svg/close.svg") no-repeat center;
   background-size: 12px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   content: '';
@@ -8331,7 +8352,7 @@ header #searchContainer {
   height: 100%;
   opacity: 0.3;
   width: 100%;
-  background: url("../img/search/footer.jpg") no-repeat top center;
+  background: url("..../img/search/footer.jpg") no-repeat top center;
   background-size: cover;
 }
 #searchContainer #footerSearch .txtFooter {
@@ -9306,7 +9327,7 @@ header #searchContainer {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(../img/prehome.jpg) top center;
+  background: url(..../img/prehome.jpg) top center;
   background-size: cover;
   pointer-events: none;
   width: 100%;
@@ -9909,7 +9930,7 @@ header #searchContainer {
   width: 125px;
 }
 #social-wall #wall .post .instagram:after {
-  background: url("../img/svg/instagram.svg") no-repeat;
+  background: url("..../img/svg/instagram.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -9920,7 +9941,7 @@ header #searchContainer {
   width: 17px;
 }
 #social-wall #wall .post .twitter:after {
-  background: url("../img/svg/twitter-gold.svg") no-repeat;
+  background: url("..../img/svg/twitter-gold.svg") no-repeat;
   background-size: contain;
   bottom: 5px;
   content: '';
@@ -9938,7 +9959,7 @@ header #searchContainer {
   text-overflow: ellipsis;
 }
 #social-wall #wall .post .twitter.hasimg:after {
-  background-image: url("../img/svg/twitter.svg");
+  background-image: url("..../img/svg/twitter.svg");
 }
 #social-wall #wall .post .side {
   backface-visibility: hidden;
@@ -10726,7 +10747,7 @@ header #searchContainer {
 }
 
 #prefooter {
-  background: #1f1f1f url("../img/svg/palme-bg.svg") no-repeat center 20%;
+  background: #1f1f1f url("..../img/svg/palme-bg.svg") no-repeat center 20%;
   background-size: 900px auto;
   box-sizing: border-box;
   height: 535px;
@@ -10780,17 +10801,17 @@ header #searchContainer {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  /*&:after {
-    height: 100%;
-    content: '';
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    opacity: 0.3;
-  }
+    /*&:after {
+      height: 100%;
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.3;
+    }
 */
 }
 #prefooter .imgSlide img {
@@ -10883,7 +10904,7 @@ header #searchContainer {
 }
 
 .prehome-01 {
-  background-image: url("../img/prehome01.jpg");
+  background-image: url("..../img/prehome01.jpg");
   background-size: cover;
   height: 100vh;
   background-position: center;
@@ -15303,7 +15324,7 @@ body:not(.tablette) .webtv #live .img {
 }
 
 .list-channels #live {
-  background: #000 url("../img/webtv/picto.png") no-repeat center 40%;
+  background: #000 url("..../img/webtv/picto.png") no-repeat center 40%;
   padding-top: 70px;
   box-sizing: border-box;
 }
@@ -16998,7 +17019,7 @@ body:not(.tablette) .webtv #live .img {
 .app {
   height: 533px;
   background-color: #000 !important;
-  background-image: url(../img/app.png);
+  background-image: url(..../img/app.png);
   background-repeat: no-repeat;
   background-position: 133px 113px;
   transition: .5s;
@@ -18042,7 +18063,7 @@ body:not(.tablette) .webtv #live .img {
   display: block;
   width: 8px;
   height: 13px;
-  background: url("../img/press/drag-icon.png") no-repeat center;
+  background: url("..../img/press/drag-icon.png") no-repeat center;
   position: absolute;
   top: 7px;
   right: 5px;
@@ -18740,7 +18761,7 @@ body:not(.tablette) .webtv #live .img {
   z-index: 1;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container {
-  background: url("../img/press/bg.jpg") repeat-x;
+  background: url("..../img/press/bg.jpg") repeat-x;
   border-right: 1px solid #e5e5e5;
   height: calc(100% - 42px);
   position: relative;
@@ -19075,11 +19096,11 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
 }
 .press .section.participate .img {
-  background: url("../img/press/001.jpg") no-repeat center;
+  background: url("..../img/press/001.jpg") no-repeat center;
   background-size: cover;
 }
 .press .section.accrediter .img {
-  background: url("../img/press/002.jpg") no-repeat center;
+  background: url("..../img/press/002.jpg") no-repeat center;
   background-size: cover;
 }
 .press .section .txt {
@@ -21481,7 +21502,7 @@ body:not(.tablette) .webtv #live .img {
   }
 }
 .error-not-found {
-  background-image: url("../img/error-bck.jpg");
+  background-image: url("..../img/error-bck.jpg");
   height: 593px;
   background-size: cover;
 }
@@ -21682,7 +21703,15 @@ body:not(.tablette) .webtv #live .img {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   margin-bottom: 50px;
-  opacity: 0.8;
+  opacity: 1;
+}
+.getMargin a {
+  text-decoration: none;
+  color: #ec3050 !important;
+  font-size: 14px;
+  text-transform: initial;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .accredidationsMessage {
@@ -21702,7 +21731,6 @@ body:not(.tablette) .webtv #live .img {
   text-align: center;
   background: #40acab;
   color: white;
-  text-transform: uppercase;
   line-height: 100px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -21719,7 +21747,6 @@ body:not(.tablette) .webtv #live .img {
   float: left;
   color: white;
   background: #0e5554;
-  text-transform: uppercase;
   line-height: 100px;
   font-size: 16px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -21940,6 +21967,7 @@ body:not(.tablette) .webtv #live .img {
   color: white;
   opacity: 0.9;
   text-align: left;
+  margin-top: -30px;
 }
 .plusPrices .plusPricestext p {
   padding-left: 130px;
@@ -22325,10 +22353,9 @@ ul.tabs .quarterTab h4 {
   font-family: inherit;
   font-size: 12px;
 }
-.tab_container .tabBox p, .tab_container .tabBox .read-more-target span, .tab_container .tabBox .tabContent {
+.tab_container .tabBox .read-more-target span, .tab_container .tabBox .tabContent {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #505050;
-  opacity: 0.8;
   line-height: 25px;
   font-size: 14px;
   text-transform: initial;
@@ -22340,20 +22367,28 @@ ul.tabs .quarterTab h4 {
   font-size: 14px;
   margin-top: 50px;
 }
-.tab_container .tabBox .tabContent, .tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox p, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
+.tab_container .tabBox .tabContent, .tab_container .tabBox span, .tab_container .tabBox h5, .tab_container .tabBox .read-more-wrap, .tab_container .tabBox .read-more-trigger {
   padding-left: 50px;
   border: 0px solid #ddd;
 }
 .tab_container .tabBox .read-more-wrap {
   margin-bottom: 30px;
 }
-.tab_container .tabBox p, .tab_container .tabBox .tabContent {
+.tab_container .tabBox .tabContent {
   margin-bottom: 15px;
   text-align: left;
   letter-spacing: 0px;
   font-size: 14px;
   line-height: 30px;
   margin-bottom: -40px;
+}
+.tab_container .tabBox p {
+  color: #505050;
+  margin-bottom: 15px;
+  text-align: left;
+  letter-spacing: 0px;
+  font-size: 14px;
+  line-height: 30px;
 }
 .tab_container .tabBox .read-more-target span {
   padding-left: 0px;
@@ -22362,7 +22397,6 @@ ul.tabs .quarterTab h4 {
   letter-spacing: 0px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #505050;
-  opacity: 0.8;
 }
 
 .nopicTab {
@@ -22467,12 +22501,13 @@ ul.tabs .quarterTab h4 {
 .read-more-target ul {
   z-index: 999;
 }
-.read-more-target div {
+.read-more-target div, .read-more-target p {
   text-align: left;
   letter-spacing: 0px;
   font-size: 14px;
   line-height: 30px;
-  opacity: 0.8;
+  margin-bottom: 0px;
+  padding-left: 0px;
 }
 
 .read-more-wrap .read-more-target {
@@ -22662,7 +22697,6 @@ ul.tabs .quarterTab h4 {
 #accordion-menu li p {
   text-transform: initial;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  opacity: 0.8;
   font-size: 14px;
   line-height: 30px;
   text-align: left;
@@ -22922,7 +22956,6 @@ ul.tabs .quarterTab h4 {
 .accordion-infos li p {
   text-transform: initial;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  opacity: 0.8;
   font-size: 14px;
   line-height: 25px;
   margin-top: 40px;
@@ -23204,15 +23237,14 @@ ul.tabs .quarterTab h4 {
   font-family: "Playfair Display","Times New Roman",Times,serif;
 }
 .our-news .articles p {
-  /*font-size: 13px;
+  font-size: 13px;
   color: #b1b1b1;
   overflow: hidden;
-  line-height: 30px;*/
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  text-align: left;
   line-height: 30px;
   /*overflow: hidden!important;
   text-overflow: ellipsis!important;
+  text-align: left;
   opacity: 0.8;
   text-align: left;*/
 }
@@ -24240,12 +24272,8 @@ ul.tabs .quarterTab h4 {
 }
 .servicesPage .lastServicesArticle:hover {
   text-align: center;
-  background: url("../img/blueBckg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-}
-.servicesPage .articles:last-child .articles-content {
-  text-align: left;
 }
 .servicesPage .lastServicesArticle .articles-content {
   text-align: center !important;
@@ -24266,7 +24294,7 @@ ul.tabs .quarterTab h4 {
   padding: 30px;
   display: block;
 }
-.servicesPage .lastServicesArticle .lastArticle  {
+.servicesPage .lastServicesArticle .lastArticle  {
   position: absolute;
   top: 150px;
 }
@@ -24408,6 +24436,7 @@ ul.tabs .quarterTab h4 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   letter-spacing: 1px;
   margin-top: -5px;
+  text-transform: none !important;
 }
 .projection .programme:hover {
   background: #f1f0ee;
@@ -24533,7 +24562,7 @@ ul.tabs .quarterTab h4 {
   text-transform: initial !important;
   letter-spacing: 2px;
 }
-.mentionsLegales h5  {
+.mentionsLegales h5  {
   padding: 0px 0px !important;
 }
 .mentionsLegales h6 {
@@ -24897,6 +24926,24 @@ ul.tabs .quarterTab h4 {
   height: 860px;
   margin: 0 auto;
   text-align: center;
+  /*ul {
+    width: 750px;
+    height: 415px;
+    background: #0e4755;
+    text-align: center;
+    margin: 0 auto;
+    padding: 85px 100px 0px 100px;
+
+    li {
+      color: white;
+      text-align: left;
+      line-height: 40px;
+      font-family: $CamphorRegular;
+      font-size: 16px;
+      list-style-type: circle;
+    }
+
+  }*/
 }
 .tarifs .text-presentation {
   padding-top: 0%;
@@ -24905,7 +24952,7 @@ ul.tabs .quarterTab h4 {
   text-transform: initial;
   color: white;
 }
-.tarifs ul {
+.tarifs .tarifsBody {
   width: 750px;
   height: 415px;
   background: #0e4755;
@@ -24913,7 +24960,7 @@ ul.tabs .quarterTab h4 {
   margin: 0 auto;
   padding: 85px 100px 0px 100px;
 }
-.tarifs ul li {
+.tarifs .tarifsBody p {
   color: white;
   text-align: left;
   line-height: 40px;
@@ -25551,7 +25598,7 @@ option:checked,
   color: white !important;
 }
 
-.p-Padding  {
+.p-Padding  {
   padding: 100px 0px 50px 0px !important;
   margin: 100px 0px 50px 0px !important;
 }

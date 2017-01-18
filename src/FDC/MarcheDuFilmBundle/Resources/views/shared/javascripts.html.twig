@@ -81,12 +81,36 @@
 </script>
 
 <!-- build:js js/vendor.min.js -->
-{% javascripts
-'bundles/fdcmarchedufilm/js/vendor.min.js'
-%}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/owl.carousel/src/js/owl.carousel.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/fullcalendar/dist/lang-all.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/chocolat/src/js/jquery.chocolat.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/Snap.svg/dist/snap.svg-min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/jquery-cookie/jquery.cookie.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/wavesurfer.js/dist/wavesurfer.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/isotope/dist/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/isotope-packery/packery-mode.pkgd.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/infinite-scroll/jquery.infinitescroll.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/canvasloader/js/heartcode-canvasloader-min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/snap.svg.easing.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/FileSaver.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/ics.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/fullscreenjs.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/object-fit-polyfill.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/jwplayer.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/clipboard.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/pikaday.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/jquery.timepicker.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/components/jquery.lazyload.min.js') }}"></script>
+<script src="{{ asset('bundles/fdcmarchedufilm/js/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
+<!-- endbuild -->
 
+<!-- build:js js/app.min.js -->
+<!-- festival-cannes tags start -->
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/helpers.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/article.module.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/audio.module.js') }}"></script>
@@ -101,7 +125,6 @@
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/movie.module.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/news.module.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/newsletter.module.js') }}"></script>
-<script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/palmares.module.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/participate.module.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/playeraudio.module.js') }}"></script>
@@ -128,7 +151,8 @@
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/scroll.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/custom.js') }}"></script>
 <script src="{{ asset('bundles/fdcmarchedufilm/js/custom.js') }}"></script>
+<!-- festival-cannes tags end -->
+<!-- endbuild -->
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
-<script>jwplayer.key = "DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
+<script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
