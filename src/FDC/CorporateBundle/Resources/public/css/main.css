@@ -15138,6 +15138,40 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 644px;
   padding-bottom: 50px;
 }
+.article-single.dark .table-article td, .article-single .dark .table-article th, .single-movie.dark .table-article td, .single-movie .dark .table-article th {
+  border-color: #2c2c2c;
+  color: #999999;
+}
+.article-single.dark .table-article th, .single-movie.dark .table-article th {
+  color: #fff;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.article-single.dark caption, .single-movie.dark caption {
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.article-single.dark .copy, .single-movie.dark .copy {
+  color: #fff;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  margin-top: 15px;
+}
+.article-single.dark .slideshow, .single-movie.dark .slideshow {
+  border-color: #2c2c2c;
+}
+.article-single.dark .quote, .single-movie.dark .quote {
+  border-color: #2c2c2c;
+}
+.article-single .italic, .single-movie .italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif !important;
+}
+.article-single .quote p, .single-movie .quote p {
+  margin-top: 0px;
+}
 .article-single .text a strong, .single-movie .text a strong {
   color: #c8a461;
   font-weight: 400;
