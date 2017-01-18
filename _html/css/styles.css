@@ -24436,6 +24436,7 @@ ul.tabs .quarterTab h4 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   letter-spacing: 1px;
   margin-top: -5px;
+  text-transform: none !important;
 }
 .projection .programme:hover {
   background: #f1f0ee;

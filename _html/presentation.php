@@ -147,7 +147,22 @@
                 <div class="text">
                 <a href="programmation-evenementiel.php" class="button single-button">Bouton de téléchargement</a>
                 </div>
-
+                <div class="text-presentation projection producersProgramme">
+                <div class="programme">
+                      <div>
+                        <img src="img/trombonne.png">
+                      </div>
+                      <div>
+                        <h6 class="customClass1">Téléchargez le programme</h6>
+                      </div>
+                      <div class="customClass1">
+                        <a href="">
+                          <img src="img/boutonDLRond.png">
+                        </a>
+                      </div>
+                    </div> 
+                </div>
+              </div>
 
               </div>
 
