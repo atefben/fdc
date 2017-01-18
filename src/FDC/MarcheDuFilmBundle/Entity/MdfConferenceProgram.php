@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_conference_program")
  * @ORM\Entity
  */
-
 class MdfConferenceProgram
 {
     use Translatable;
