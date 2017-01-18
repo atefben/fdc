@@ -231,7 +231,7 @@
   &.double {
     .image {
       margin-bottom: 0px;
-      height: 100%;
+      height: auto;
     }
   }
 
@@ -240,13 +240,13 @@
     padding-left: 0px;
 
     .image {
-      height: 100%;
+      height: auto;
     }
   }
 
   .image {
     margin-bottom: 0px;
-    height: 100%;
+    height: auto;
   }
 
   .info {
@@ -289,7 +289,7 @@
   }
 
   &.portrait {
-    height: 402px;
+    height: auto;
   }
 }
 

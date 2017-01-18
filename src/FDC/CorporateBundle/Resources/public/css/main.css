@@ -8708,17 +8708,17 @@ header #searchContainer {
 }
 .card-01.double .image {
   margin-bottom: 0px;
-  height: 100%;
+  height: auto;
 }
 .card-01.double.w2 {
   padding-left: 0px;
 }
 .card-01.double.w2 .image {
-  height: 100%;
+  height: auto;
 }
 .card-01 .image {
   margin-bottom: 0px;
-  height: 100%;
+  height: auto;
 }
 .card-01 .info {
   position: absolute;
@@ -8753,7 +8753,7 @@ header #searchContainer {
   bottom: 0px;
 }
 .card-01.portrait {
-  height: 402px;
+  height: auto;
 }
 
 .mob .read-later {
