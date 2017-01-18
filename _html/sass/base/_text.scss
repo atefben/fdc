@@ -29,7 +29,7 @@ a {
 
   &:last-child {
     /*border-right: 1px solid #dfdfdf;*/
-    border-right: 1px solid #dfdfdf;
+    border-right: 1px solid $gold;
   }
 
   &:hover {
@@ -49,6 +49,11 @@ a {
     padding: 0;
     text-align: center;
     width: 73px;
+
+    &:last-child {
+      /*border-right: 1px solid #dfdfdf;*/
+      border-right: 1px solid #dfdfdf;
+    }
 
     &:hover {
       border-color: $gold;

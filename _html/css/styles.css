@@ -7422,7 +7422,7 @@ a {
 }
 .button:last-child {
   /*border-right: 1px solid #dfdfdf;*/
-  border-right: 1px solid #dfdfdf;
+  border-right: 1px solid #c8a461;
 }
 .button:hover {
   /*background-color: $gold;*/
@@ -7439,6 +7439,10 @@ a {
   padding: 0;
   text-align: center;
   width: 73px;
+}
+.buttons.square .button:last-child {
+  /*border-right: 1px solid #dfdfdf;*/
+  border-right: 1px solid #dfdfdf;
 }
 .buttons.square .button:hover {
   border-color: #c8a461;
