@@ -2149,7 +2149,7 @@ var owInitGrid = function (id) {
                         }
     
                     } else {
-                        title.html(text.trunc(10, true));
+                        title.html(text.trunc(30, true));
                     }
                 });
             }
