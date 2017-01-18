@@ -32,6 +32,47 @@
     width: 644px;
     padding-bottom: 50px;
   }
+  
+  .dark .table-article td, .dark .table-article th{
+    border-color: #2c2c2c;
+    color: #999999;
+  }
+  .dark .table-article th {
+    color: #fff;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-family: $CamphorBold;
+    font-weight: bold;
+  }
+
+  .dark caption {
+    color: #fff;
+    font-size: 1rem;
+    font-family: $CamphorBold;
+  }
+
+  .dark .copy {
+    color: #fff;
+    font-family: $CamphorRegular;
+    font-weight: 200;
+    margin-top: 15px;
+  }
+
+  .dark .slideshow {
+    border-color: #2c2c2c;
+  }
+
+  .dark .quote {
+    border-color: #2c2c2c;
+  }
+
+  .italic {
+    font-family: $CamphorItalic !important;
+  }
+
+  .quote p {
+    margin-top: 0px;
+  }
 
   .text a strong {
     color: #c8a461;
