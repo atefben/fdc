@@ -8704,6 +8704,7 @@ header #searchContainer {
 .card-01 .image .image-wrapper img {
   min-height: initial;
   position: relative;
+  display: block;
 }
 .card-01.double .image {
   margin-bottom: 0px;

@@ -225,6 +225,7 @@
   .image .image-wrapper img {
     min-height: initial;
     position: relative;
+    display: block;
   }
 
   &.double {
