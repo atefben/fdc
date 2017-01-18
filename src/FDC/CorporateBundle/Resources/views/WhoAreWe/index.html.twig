@@ -102,10 +102,10 @@
         </div></div>
 </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-    {'section': '',
+    {'section': 'qui sommes nous ?',
         'detail' : '',
         'title'  : currentPage|trans_fallback('title'),
-        'description': currentPage|trans_fallback('chapo')|striptags|truncate(100),
+        'description': currentPage|trans_fallback('chapo')|striptags,
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     }))
     }}
