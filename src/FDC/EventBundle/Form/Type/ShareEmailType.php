@@ -62,7 +62,8 @@ class ShareEmailType extends AbstractType
             ->add('copy', new CheckboxType() , array(
                 'attr' => array(
                     'class'       => 'popin',
-                    'id'          => 'mail-copy'
+                    'id'          => 'mail-copy',
+                    'label'       => 'Envoyer une copie par email',
                 ),
                 'data' => false,
                 'required' => false
