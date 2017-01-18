@@ -1,6 +1,6 @@
 <div class="contact-box" id="contact-box">
     {% if contact is not empty %}
-        <img src="{% path contact.translatable.image|trans_fallback('file'), 'reference' %}" class="backgroundImg">
+        <img src="{% path contact.translatable.image|trans_fallback('file'), '1366x660' %}" class="backgroundImg">
         {% set contactInfos = contact.information|split('\n') %}
         <div class="contact-details">
             <span class="informations">{{ contact.title }}</span>
