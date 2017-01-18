@@ -8716,8 +8716,8 @@ header #searchContainer {
 .card-01 .info {
   position: absolute;
   text-align: left;
-  bottom: 20px;
-  left: 20px;
+  bottom: 15px;
+  left: 15px;
   z-index: 3;
 }
 .card-01 .info strong {
