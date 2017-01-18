@@ -33,11 +33,11 @@
     padding-bottom: 50px;
   }
   
-  .dark .table-article td, .dark .table-article th{
+  &.dark .table-article td, .dark .table-article th{
     border-color: #2c2c2c;
     color: #999999;
   }
-  .dark .table-article th {
+  &.dark .table-article th {
     color: #fff;
     font-size: 1.3rem;
     text-transform: uppercase;
@@ -45,24 +45,24 @@
     font-weight: bold;
   }
 
-  .dark caption {
+  &.dark caption {
     color: #fff;
     font-size: 1rem;
     font-family: $CamphorBold;
   }
 
-  .dark .copy {
+  &.dark .copy {
     color: #fff;
     font-family: $CamphorRegular;
     font-weight: 200;
     margin-top: 15px;
   }
 
-  .dark .slideshow {
+  &.dark .slideshow {
     border-color: #2c2c2c;
   }
 
-  .dark .quote {
+  &.dark .quote {
     border-color: #2c2c2c;
   }
 
