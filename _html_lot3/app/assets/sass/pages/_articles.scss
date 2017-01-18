@@ -42,6 +42,7 @@
       text-align: center;
     }
   }
+
   &.dark .table-article th {
     color: #fff;
     font-size: 1.3rem;
@@ -50,7 +51,7 @@
     font-weight: bold;
   }
 
-  &.dark caption {
+  &.dark caption, &.dark .caption{
     color: #fff;
     font-size: 1rem;
     font-family: $CamphorBold;
