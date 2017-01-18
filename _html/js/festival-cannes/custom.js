@@ -270,6 +270,12 @@ function click() {
         }, 500);
     });*/
 
+}
+
+click();
+
+function smoothScrolling() {
+
     $('#accordion-conf .open').each(function() {
 
         $(this).click(function(){
@@ -291,6 +297,10 @@ function click() {
         
           
           if($(this).next().is(':hidden') == true) {
+            $('html, body').animate({
+              scrollTop: $('.conferencesMenu').offset().top - 2
+            }, 1000);
+
             $(this).closest('li').addClass('open-selected-conf');
             $(this).siblings().removeClass('open-selected-conf');
             $('.openPlus').removeClass('noDisplay');
@@ -298,10 +308,6 @@ function click() {
             $(this).find('.openPlus').addClass('noDisplay');
             $(this).find('.openMinus').addClass('doDisplay');
             $(this).next().slideDown('normal');
-
-              $('html, body').animate({
-              scrollTop: $('.conferencesMenu').offset().top - 2
-            }, 3000);
            } 
        });
 
@@ -309,9 +315,10 @@ function click() {
       
     $('#accordion-conf .content').hide();
     $('#accordion-conf .firstContent').show();
+
 }
 
-click();
+smoothScrolling();
 
 
 // Quick & dirty toggle to demonstrate modal toggle behavior
