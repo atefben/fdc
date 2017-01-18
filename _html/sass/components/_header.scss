@@ -289,7 +289,7 @@ header {
   #logo-wrapper {
     background-color: $black;
     /*height: 160px;*/
-    height: 155px;
+    height: 160px;
     overflow: hidden;
     @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));

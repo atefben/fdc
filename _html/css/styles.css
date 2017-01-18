@@ -7404,7 +7404,7 @@ a {
 
 .button {
   /*border: 1px solid #dfdfdf;*/
-  border: 1px solid #c8a461;
+  border: 1px solid #dfdfdf;
   border-right: none;
   color: #c8a461;
   display: inline-block;
@@ -7422,12 +7422,11 @@ a {
 }
 .button:last-child {
   /*border-right: 1px solid #dfdfdf;*/
-  border-right: 1px solid #c8a461;
+  border-right: 1px solid #dfdfdf;
 }
 .button:hover {
   /*background-color: $gold;*/
   border-color: #c8a461;
-  color: #fff;
 }
 
 .buttons {
@@ -7442,7 +7441,12 @@ a {
   width: 73px;
 }
 .buttons.square .button:hover {
-  border-color: #dfdfdf;
+  border-color: #c8a461;
+  color: #c8a461;
+  background: white;
+}
+.buttons.square .button:hover + a {
+  border-left-color: #c8a461;
 }
 
 .single-button {
@@ -8663,7 +8667,7 @@ header #top-bar .icon_langue {
 header #logo-wrapper {
   background-color: #141414;
   /*height: 160px;*/
-  height: 155px;
+  height: 160px;
   overflow: hidden;
   -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);

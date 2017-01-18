@@ -14,7 +14,7 @@ a {
 
 .button {
   /*border: 1px solid #dfdfdf;*/
-  border: 1px solid #c8a461;
+  border: 1px solid #dfdfdf;
   border-right: none;
   color: $gold;
   display: inline-block;
@@ -29,13 +29,12 @@ a {
 
   &:last-child {
     /*border-right: 1px solid #dfdfdf;*/
-    border-right: 1px solid #c8a461;
+    border-right: 1px solid #dfdfdf;
   }
 
   &:hover {
     /*background-color: $gold;*/
     border-color: $gold;
-    color: #fff;
   }
 }
 
@@ -52,7 +51,12 @@ a {
     width: 73px;
 
     &:hover {
-      border-color: #dfdfdf;
+      border-color: $gold;
+      color: $gold;
+      background: white;
+    }
+    &:hover + a {
+      border-left-color: $gold;
     }
   }
 }
