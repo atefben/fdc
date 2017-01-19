@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 var el = [];
 var filtersData = ['all'];
-var pageLimit = 3;
+var pageLimit = 9;
 var paginationLimit = 4;
 var pageIndex = 0;
 
