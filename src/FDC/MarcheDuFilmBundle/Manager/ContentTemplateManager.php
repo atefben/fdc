@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile;
@@ -60,6 +61,9 @@ class ContentTemplateManager
                 break;
             case 'fdc_marche_du_film_general_conditions':
                 $pageType = MdfContentTemplate::TYPE_GENERAL_CONDITIONS;
+                break;
+            case 'producers-workshop':
+                $pageType = MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP;
                 break;
         }
 

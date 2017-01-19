@@ -112,6 +112,16 @@ class ThemeController extends Controller
     }
 
     /**
+     * @Route("/{slug}/home")
+     */
+    public function homeAction(Request $request, $slug)
+    {
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
+
+        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $contentTemplateManager->getPageData($slug));
+    }
+
+    /**
      * @Route("/{slug}/actualite")
      *
      * @return \Symfony\Component\HttpFoundation\Response

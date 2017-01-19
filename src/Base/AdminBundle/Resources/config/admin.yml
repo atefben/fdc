@@ -1821,7 +1821,7 @@ services:
         class: Base\AdminBundle\Admin\MdfIndustryProgramHomeAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Industry program home}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Industry program home}
 
     base.admin.mdf_who_are_we_history:
         class: Base\AdminBundle\Admin\MdfWhoAreWeHistoryAdmin
