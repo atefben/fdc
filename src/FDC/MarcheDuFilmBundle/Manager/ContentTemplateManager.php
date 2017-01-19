@@ -33,6 +33,7 @@ class ContentTemplateManager
         $isPresentation = false;
         $nextRoute = null;
         $backRoute = null;
+        $isConference = null;
         switch ($routeName) {
             case 'fdc_marche_du_film_edition_presentation':
                 $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
@@ -64,6 +65,7 @@ class ContentTemplateManager
                 break;
             case 'producers-workshop':
                 $pageType = MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP;
+                $isConference = true;
                 break;
         }
 
@@ -98,7 +100,8 @@ class ContentTemplateManager
             'nextRoute' => $nextRoute,
             'backRoute' => $backRoute,
             'isPresentation' => $isPresentation,
-            'contact' => $contact
+            'contact' => $contact,
+            'isConference' => $isConference
         );
     }
 

@@ -112,7 +112,7 @@ class ThemeController extends Controller
     }
 
     /**
-     * @Route("/{slug}/home")
+     * @Route("/{slug}/home", name="fdc_marche_du_film_conference_home")
      */
     public function homeAction(Request $request, $slug)
     {

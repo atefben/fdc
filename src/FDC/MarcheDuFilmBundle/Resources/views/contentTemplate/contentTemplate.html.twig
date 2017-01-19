@@ -5,6 +5,9 @@
         {% if isWhoAreWe %}
             {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
         {% endif %}
+        {% if isConference %}
+            {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': titleHeader.title} %}
+        {% endif %}
         <div class="bigContainer">
             <div class="text-presentation projection presse whoarewe">
                 {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockTitleHeader.html.twig' with {'titleHeader': titleHeader} %}
