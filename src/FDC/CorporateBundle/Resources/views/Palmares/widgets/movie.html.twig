@@ -76,6 +76,7 @@
                 </a>
                     {% spaceless %}
                         {% set author = '' %}
+                        <span class="wrapper-author">
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                             {% if loop.first == false %}
                                 {% set author = author ~ ', ' %}
@@ -85,6 +86,7 @@
                             {% set author = author ~ director.fullName %}
                             {% set author = author ~ '</a>' %}
                         {% endfor %}
+                        </span>
                         {{ author|raw }}
                     {% endspaceless %}
             </div>
