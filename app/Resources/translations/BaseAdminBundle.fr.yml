@@ -587,7 +587,9 @@ form:
         mobile_redirect: Redirection mobile
         mobile_redirect_url: URL site mobile
         save: Enregistrer
-    label_is_main: Mettre la news en Une de l'app
+    label_mobile_display: Affichage mobile
+    label_mobile_display_big: En une
+    label_mobile_display_main: Grand format
     label_is_big: Afficher la news grand format dans l'app
     label_display_accredit: Désactiver cette strate
     label_display_reglement: Désactiver cette strate

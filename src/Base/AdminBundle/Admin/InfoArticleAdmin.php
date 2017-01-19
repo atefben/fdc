@@ -113,8 +113,14 @@ class InfoArticleAdmin extends Admin
                     )
                 )
             ))
-            ->add('isMain')
-            ->add('isBig')
+            ->add('mobileDisplay', 'choice', array(
+                'required' => false,
+                'choices'  => [
+                    'big'                       => 'form.label_mobile_display_big',
+                    'main'                      => 'form.label_mobile_display_main',
+                ],
+                'choice_translation_domain' => 'BaseAdminBundle',
+            ))
             ->add('sites', null, array(
                 'label'    => 'form.label_publish_on',
                 'class'    => 'BaseCoreBundle:Site',

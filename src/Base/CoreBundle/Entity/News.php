@@ -259,18 +259,10 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="is_main", type="boolean", nullable=true)
-     *
+     * @ORM\Column(name="mobile_display", type="string", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
-    protected $isMain = false;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="is_big", type="boolean", nullable=true)
-     *
-     */
-    protected $isBig = false;
+    protected $mobileDisplay;
 
     public function __construct()
     {
@@ -1199,48 +1191,25 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     }
 
     /**
-     * Set isMain
+     * Set mobileDisplay
      *
-     * @param boolean $isMain
+     * @param string $mobileDisplay
      * @return News
      */
-    public function setIsMain($isMain)
+    public function setMobileDisplay($mobileDisplay)
     {
-        $this->isMain = $isMain;
+        $this->mobileDisplay = $mobileDisplay;
 
         return $this;
     }
 
     /**
-     * Get isMain
+     * Get mobileDisplay
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getIsMain()
+    public function getMobileDisplay()
     {
-        return $this->isMain;
-    }
-
-    /**
-     * Set isBig
-     *
-     * @param boolean $isBig
-     * @return News
-     */
-    public function setIsBig($isBig)
-    {
-        $this->isBig = $isBig;
-
-        return $this;
-    }
-
-    /**
-     * Get isBig
-     *
-     * @return boolean 
-     */
-    public function getIsBig()
-    {
-        return $this->isBig;
+        return $this->mobileDisplay;
     }
 }

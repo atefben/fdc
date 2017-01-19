@@ -225,18 +225,10 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="is_main", type="boolean", nullable=true)
+     * @ORM\Column(name="mobile_display", type="string", nullable=true)
      *
      */
-    protected $isMain = false;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="is_big", type="boolean", nullable=true)
-     *
-     */
-    protected $isBig = false;
+    protected $mobileDisplay = false;
 
     public function __construct()
     {
@@ -984,48 +976,25 @@ abstract class Info implements TranslateMainInterface
     }
 
     /**
-     * Set isMain
+     * Set mobileDisplay
      *
-     * @param boolean $isMain
+     * @param string $mobileDisplay
      * @return Info
      */
-    public function setIsMain($isMain)
+    public function setMobileDisplay($mobileDisplay)
     {
-        $this->isMain = $isMain;
+        $this->mobileDisplay = $mobileDisplay;
 
         return $this;
     }
 
     /**
-     * Get isMain
+     * Get mobileDisplay
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getIsMain()
+    public function getMobileDisplay()
     {
-        return $this->isMain;
-    }
-
-    /**
-     * Set isBig
-     *
-     * @param boolean $isBig
-     * @return Info
-     */
-    public function setIsBig($isBig)
-    {
-        $this->isBig = $isBig;
-
-        return $this;
-    }
-
-    /**
-     * Get isBig
-     *
-     * @return boolean 
-     */
-    public function getIsBig()
-    {
-        return $this->isBig;
+        return $this->mobileDisplay;
     }
 }

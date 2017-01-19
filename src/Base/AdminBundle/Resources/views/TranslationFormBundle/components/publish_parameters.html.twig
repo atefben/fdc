@@ -10,17 +10,8 @@
         </h4>
     </div>
     <div class="box-body">
-        {% if form.parent.children.isMain is defined %}
-            <div>
-                {{ form_widget(form.parent.children.isMain) }}
-                {{ form_label(form.parent.children.isMain) }}
-            </div>
-        {% endif %}
-        {% if form.parent.children.isBig is defined %}
-            <div>
-                {{ form_widget(form.parent.children.isBig) }}
-                {{ form_label(form.parent.children.isBig) }}
-            </div>
+        {% if form.parent.children.mobileDisplay is defined %}
+            {{ form_row(form.parent.children.mobileDisplay) }}
         {% endif %}
         {% if participate_section is defined %}
             <div class="fdc-help form-group">

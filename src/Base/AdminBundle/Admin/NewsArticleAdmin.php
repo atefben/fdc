@@ -211,8 +211,14 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table',
                 )
             )
-            ->add('isMain')
-            ->add('isBig')
+            ->add('mobileDisplay', 'choice', array(
+                'required' => false,
+                'choices'  => [
+                    'big'                       => 'form.label_mobile_display_big',
+                    'main'                      => 'form.label_mobile_display_main',
+                ],
+                'choice_translation_domain' => 'BaseAdminBundle',
+            ))
             ->add('hideSameDay')
             ->add('displayedHome')
             ->add('displayedMobile')
