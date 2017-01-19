@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\News;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -112,11 +113,18 @@ class SearchController extends Controller
                 }
                 if ($exclude) {
                     unset($statementResults['items'][$key]);
-                    --$infoResults['count'];
+                    --$statementResults['count'];
                 }
             }
         }
         $statementResults['items'] = array_values($statementResults['items']);
+
+        foreach ($filmResults['items'] as $film) {
+            if ($film instanceof FilmFilm && $film->getFestival()->getYear() != $this->container->getParameter('fdc_year')) {
+                $filmResults['items'] = array_diff($filmResults['items'], [$film]);
+                --$filmResults['count'];
+            }
+        }
 
         $result = array(
             'category' => array(
