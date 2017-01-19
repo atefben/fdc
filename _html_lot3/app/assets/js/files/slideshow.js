@@ -106,8 +106,6 @@ var openSlideShow = function (slider, hash) {
                 isPortrait: isPortrait
             };
 
-            console.log(image);
-
             images.push(image);
         }
     });
@@ -202,7 +200,7 @@ var openSlideShow = function (slider, hash) {
         w = $(window).width();
 
         centerElement = parseInt(id);
-        translate = -(w + 1) * centerElement;
+        translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
 
         setTimeout(function () {
@@ -287,7 +285,7 @@ var openSlideShow = function (slider, hash) {
         }
     }
 
-    var translate = (w + 1) * centerElement;
+    var translate = (w + 0) * centerElement;
     translate = -translate + "px";
 
 
@@ -494,7 +492,7 @@ var openSlideShow = function (slider, hash) {
 
     $(window).resize(function () {
         w = $(window).width();
-        translate = -(w + 1) * centerElement;
+        translate = -(w + 0) * centerElement;
         $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
     });
 
