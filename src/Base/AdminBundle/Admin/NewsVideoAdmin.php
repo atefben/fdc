@@ -117,8 +117,8 @@ class NewsVideoAdmin extends Admin
             ->add('mobileDisplay', 'choice', array(
                 'required' => false,
                 'choices' => [
-                    'big' => 'big',
-                    'main' => 'main',
+                    'big'                       => 'form.label_mobile_display_big',
+                    'main'                      => 'form.label_mobile_display_main',
                 ],
             ))
             ->add('sites', null, array(
