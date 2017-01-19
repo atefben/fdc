@@ -60,9 +60,15 @@ var owInitSlider = function (sliderName) {
             textTrunc.html(textI.trunc(400, false));
         });
 
-        $('.slider-home').on('click', function(){
-            var href = $('.owl-item.active .coverLink').attr('href');
-            window.location.href = href;
+        $('.slider-home').on('click', function(e){
+
+            if($(e.target).hasClass('owl-dot')){
+                return false;
+            }else{
+                var href = $('.owl-item.active .coverLink').attr('href');
+                window.location.href = href;
+            }
+
         })
 
 
