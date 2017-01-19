@@ -9883,6 +9883,7 @@ body#home .isotope-01 .item .contain-img {
 }
 .navigation-sticky li.active a {
   color: #c8a461;
+  pointer-events: none;
 }
 .navigation-sticky li a:hover {
   color: #c8a461;

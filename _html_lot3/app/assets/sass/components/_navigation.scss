@@ -33,6 +33,7 @@
      &.active {
        a {
          color:$gold;
+         pointer-events: none;
        }
      }
 

@@ -957,7 +957,7 @@ b
 
 var owInitAjax = function() {
 
-  $('.ajax-section nav a').on('click', function(e){
+  $('.ajax-section nav li:not(.active) a').on('click', function(e){
     e.preventDefault;
 
     var url = $(this).attr('href');
