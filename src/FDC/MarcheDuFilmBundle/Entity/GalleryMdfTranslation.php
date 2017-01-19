@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,7 +23,7 @@ class GalleryMdfTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
     use TranslateChild;
 
     /**
