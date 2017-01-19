@@ -15,7 +15,7 @@ class ServiceTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.locale = :locale')
-            ->andWhere('s.slug = :slug')
+            ->andWhere('s.url = :slug')
             ->innerJoin('s.translatable', 't')
             ->setParameter(':locale', $locale)
             ->setParameter(':slug', $slug)

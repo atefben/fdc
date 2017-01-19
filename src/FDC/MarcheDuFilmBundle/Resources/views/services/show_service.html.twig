@@ -3,28 +3,19 @@
 {% block main %}
     <div id="main" class="home loading">
         <div class="text-presentation producersWorkshop opportunites mdf customClass2Bckg">
-            <h3>Opportunités publicitaires</h3>
+            {% if navServices[route_params["slug"]] is defined %}
+                <h3>{{ navServices[route_params["slug"]] }}</h3>
+            {% endif %}
             <div class="subNavigation">
                 <nav>
                     <ul class="main">
-                        <li>
-                            <a href="#">stands</a>
-                        </li>
-                        <li>
-                            <a href="#">pavillons</a>
-                        </li>
-                        <li>
-                            <a href="#">projections</a>
-                        </li>
-                        <li>
-                            <a href="#">équipements et services</a>
-                        </li>
-                        <li>
-                            <a href="#">partenaires</a>
-                        </li>
-                        <li>
-                            <a href="#" class="active customClass2">Opportunités publicitaires</a>
-                        </li>
+                        {% if navServices is defined and navServices is not null %}
+                            {% for url, service in navServices %}
+                                <li>
+                                    <a href="{{ url }}" {% if url == route_params["slug"] %} class="active customClass2" {% endif %}>{{ service }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -102,14 +93,28 @@
         </div>
     {% endif %}
 
-    <div class="floatingButtonLeft">
-        <div class="arrow showLeft">
-            <i class='icon icon_flecheGauche'></i>
-        </div>
-        <a href="#">
-            <div class="floatingButtonText showLeft">partenaires</div>
-        </a>
-    </div>
+    {% if navArrowsServices is defined and navArrowsServices is not null %}
+        {% if navArrowsServices[0][route_params["slug"]] is defined and navArrowsServices[1][navArrowsServices[0][route_params["slug"]] - 1] is defined %}
+            <div class="floatingButtonLeft">
+                <div class="arrow showLeft">
+                    <i class='icon icon_flecheGauche'></i>
+                </div>
+                <a href="{{ navArrowsServices[1][navArrowsServices[0][route_params["slug"]] - 1] }}">
+                    <div class="floatingButtonText showLeft">{{ navServices[navArrowsServices[1][navArrowsServices[0][route_params["slug"]] - 1]] }}</div>
+                </a>
+            </div>
+        {% endif %}
+        {% if navArrowsServices[0][route_params["slug"]] is defined and navArrowsServices[1][navArrowsServices[0][route_params["slug"]] + 1] is defined  %}
+            <div class="floatingButtonRight">
+                <div class="arrow showRight">
+                    <i class='icon icon_flecheGauche reverse'></i>
+                </div>
+                <a href="{{ navArrowsServices[1][navArrowsServices[0][route_params["slug"]] + 1] }}">
+                    <div class="floatingButtonText showRight">{{ navServices[navArrowsServices[1][navArrowsServices[0][route_params["slug"]] + 1]] }}</div>
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
 
     {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' %}
     {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' %}

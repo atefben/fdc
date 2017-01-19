@@ -24,6 +24,45 @@ class ServicesManager
         $this->em = $entityManager;
         $this->requestStack = $requestStack;
     }
+    
+    public function getNavServices() {
+        $services = $this->em->getRepository(ServiceTranslation::class)
+            ->findBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')    
+                )
+            );
+        
+        if ($services) {
+            $navServices = [];
+            foreach ($services as $service) {
+                $navServices[$service->getUrl()] = $service->getTitle();
+            }
+            
+            return $navServices;
+        }
+        
+        return [];
+    }
+    
+    public function getNavArrowsServices($navServices)
+    {
+        if ($navServices) {
+            $navArrowsServices = [];
+
+            $position = 0;
+            $navArrowsServices[0] = [];
+            $navArrowsServices[1] = [];
+            foreach ($navServices as $url => $service) {
+                $navArrowsServices[0][$url] = $position++;
+                $navArrowsServices[1][] = $url;
+            }
+            
+            return $navArrowsServices;
+        }
+        
+        return [];
+    }
 
     public function getService($slug)
     {

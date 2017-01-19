@@ -70,6 +70,14 @@ class ServiceAdmin extends Admin
                         ),
                         'required' => true
                     ),
+                    'url'             => array(
+                        'label'              => 'form.mdf.label.service_url',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
+                    ),
                     'subTitle'          => array(
                         'label'              => 'form.mdf.label.service_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
