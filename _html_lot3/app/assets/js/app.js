@@ -264,6 +264,9 @@ $(document).ready(function () {
 
     if ($('.articles-list-medias').length) {
 
+        owInitNavSticky(1);
+
+
         var grid = owInitGrid('isotope-01');
 
         owInitAleaGrid(grid, $('.grid-01'), true);

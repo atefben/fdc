@@ -144,7 +144,7 @@ var initVideo = function(hash) {
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
-            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
+            var shareUrl = document.location.href;
         }
 
         // CUSTOM LINK FACEBOOK
@@ -263,7 +263,7 @@ var initVideo = function(hash) {
             if($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref   = facebookLink;
@@ -672,7 +672,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -774,7 +774,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -957,7 +957,7 @@ b
 
 var owInitAjax = function() {
 
-  $('.ajax-section nav a').on('click', function(e){
+  $('.ajax-section nav li:not(.active) a').on('click', function(e){
     e.preventDefault;
 
     var url = $(this).attr('href');
@@ -1442,7 +1442,7 @@ var initAudio = function (hash) {
 
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -1537,7 +1537,7 @@ var initAudio = function (hash) {
             }, 900);
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -2183,6 +2183,15 @@ var owInitGrid = function (id) {
             });
         });
 
+
+        if($('.who-filter').length) {
+            var active = $('.filter .select span.active').data('filter');
+
+            $('.pages:not(.'+active+')').css('display','none');
+            $('.pages.'+active).css('display','block');
+
+            console.log(active);
+        }
 
         return $grid;
     }
@@ -2953,7 +2962,7 @@ var onInitParallax = function () {
                 var s = $(this).scrollTop() - 100;
                 $('.block-push').css('background-position', '0px ' + s + 'px');
             } else {
-                $('.block-push').css('background-position', '0px ' + '-70px');
+                $('.block-push').css('background-position', '0px ' + '-240px');
             }
 
         });
@@ -3741,7 +3750,7 @@ var owInitSlider = function (sliderName) {
                 var imgurl = $('.block-push-top.big .container img').attr('src');
                 $('.block-push-top.big .container img').css('display', 'none');
 
-                $('.block-push').css('background-position', '0px -70px');
+                $('.block-push').css('background-position', '0px -240px');
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                 $.get(url, function (data) {
@@ -5410,6 +5419,9 @@ $(document).ready(function () {
     }
 
     if ($('.articles-list-medias').length) {
+
+        owInitNavSticky(1);
+
 
         var grid = owInitGrid('isotope-01');
 

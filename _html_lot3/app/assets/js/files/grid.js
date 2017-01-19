@@ -136,6 +136,15 @@ var owInitGrid = function (id) {
         });
 
 
+        if($('.who-filter').length) {
+            var active = $('.filter .select span.active').data('filter');
+
+            $('.pages:not(.'+active+')').css('display','none');
+            $('.pages.'+active).css('display','block');
+
+            console.log(active);
+        }
+
         return $grid;
     }
 

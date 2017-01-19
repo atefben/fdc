@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block content %}
+    <h3>{{ 'form.mobile_settings.title'|trans }}</h3>
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <button type="submit" class="btn btn-default">{{ 'form.mobile_settings.save'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}
