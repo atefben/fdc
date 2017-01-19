@@ -114,6 +114,8 @@ class StatementVideoAdmin extends Admin
                     )
                 )
             ))
+            ->add('isMain')
+            ->add('isBig')
             ->add('sites', null, array(
                 'label' => 'form.label_publish_on',
                 'class' => 'BaseCoreBundle:Site',

@@ -256,6 +256,22 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      */
     protected $oldNewsTable;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_main", type="boolean", nullable=true)
+     *
+     */
+    protected $isMain = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_big", type="boolean", nullable=true)
+     *
+     */
+    protected $isBig = false;
+
     public function __construct()
     {
         $this->hideSameDay = false;
@@ -1180,5 +1196,51 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     public function getOldNewsTable()
     {
         return $this->oldNewsTable;
+    }
+
+    /**
+     * Set isMain
+     *
+     * @param boolean $isMain
+     * @return News
+     */
+    public function setIsMain($isMain)
+    {
+        $this->isMain = $isMain;
+
+        return $this;
+    }
+
+    /**
+     * Get isMain
+     *
+     * @return boolean 
+     */
+    public function getIsMain()
+    {
+        return $this->isMain;
+    }
+
+    /**
+     * Set isBig
+     *
+     * @param boolean $isBig
+     * @return News
+     */
+    public function setIsBig($isBig)
+    {
+        $this->isBig = $isBig;
+
+        return $this;
+    }
+
+    /**
+     * Get isBig
+     *
+     * @return boolean 
+     */
+    public function getIsBig()
+    {
+        return $this->isBig;
     }
 }

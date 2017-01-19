@@ -222,6 +222,22 @@ abstract class Info implements TranslateMainInterface
      */
     protected $oldNewsTable;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_main", type="boolean", nullable=true)
+     *
+     */
+    protected $isMain = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_big", type="boolean", nullable=true)
+     *
+     */
+    protected $isBig = false;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -965,5 +981,51 @@ abstract class Info implements TranslateMainInterface
     public function getOldNewsTable()
     {
         return $this->oldNewsTable;
+    }
+
+    /**
+     * Set isMain
+     *
+     * @param boolean $isMain
+     * @return Info
+     */
+    public function setIsMain($isMain)
+    {
+        $this->isMain = $isMain;
+
+        return $this;
+    }
+
+    /**
+     * Get isMain
+     *
+     * @return boolean 
+     */
+    public function getIsMain()
+    {
+        return $this->isMain;
+    }
+
+    /**
+     * Set isBig
+     *
+     * @param boolean $isBig
+     * @return Info
+     */
+    public function setIsBig($isBig)
+    {
+        $this->isBig = $isBig;
+
+        return $this;
+    }
+
+    /**
+     * Get isBig
+     *
+     * @return boolean 
+     */
+    public function getIsBig()
+    {
+        return $this->isBig;
     }
 }

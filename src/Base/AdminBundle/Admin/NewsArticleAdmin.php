@@ -211,6 +211,8 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table',
                 )
             )
+            ->add('isMain')
+            ->add('isBig')
             ->add('hideSameDay')
             ->add('displayedHome')
             ->add('displayedMobile')

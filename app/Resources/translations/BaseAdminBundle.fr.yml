@@ -578,6 +578,8 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    label_is_main: Mettre la news en Une de l'app
+    label_is_big: Afficher la news grand format dans l'app
     label_display_accredit: Désactiver cette strate
     label_display_reglement: Désactiver cette strate
     label_display_inscription: Désactiver cette strate
