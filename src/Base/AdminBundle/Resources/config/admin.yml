@@ -1581,6 +1581,36 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersDetails, show_in_dashboard: false}
 
+    base.admin.mdf_global_events:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEvents, BaseAdminBundle:MdfGlobalEventsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEvents}
+
+    base.admin.mdf_global_events_days_collection:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsDaysCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDaysCollection, BaseAdminBundle:MdfGlobalEventsDaysCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsDaysCollection, show_in_dashboard: false}
+
+    base.admin.mdf_global_events_day:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsDayAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDay, BaseAdminBundle:MdfGlobalEventsDayAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsDay, show_in_dashboard: false}
+
+    base.admin.mdf_global_events_schedules_collection:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsSchedulesCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedulesCollection, BaseAdminBundle:MdfGlobalEventsSchedulesCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsSchedulesCollection, show_in_dashboard: false}
+
+    base.admin.mdf_global_events_schedule:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsScheduleAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule, BaseAdminBundle:MdfGlobalEventsScheduleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsSchedule, show_in_dashboard: false}
+
     base.admin.mdf_header_footer:
         class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\HeaderFooter, BaseAdminBundle:MdfHeaderFooterAdmin]

@@ -2,6 +2,7 @@ $(document).ready(function() {
   initNews();
   initPagination();
   setNews();
+    initGlobalEvents();
 
   $("#owl-demo").owlCarousel({
 
@@ -233,4 +234,14 @@ function setPaginationTabs() {
       }
     });
   }
+}
+
+/** Open accordion depending on day **/
+function initGlobalEvents() {
+    var currentDay = new Date($.now());
+    var currentDayString = currentDay.getDate() + '-' + (((currentDay.getMonth().length+1) === 1) ? (currentDay.getMonth()+1) : '0' + (currentDay.getMonth()+1)) + '-' + currentDay.getFullYear();
+
+    if (typeof $("div[data-date='" + currentDayString + "']") != 'undefined') {
+        $("div[data-date='" + currentDayString + "']").trigger('click');
+    }
 }

@@ -182,4 +182,16 @@ class MdfConferenceProgram
     {
         $this->type = $type;
     }
+    
+    public static function getConferences()
+    {
+        return array(
+            self::TYPE_DOC_CORNER => 'form.mdf.label.conference_doc_corner',
+            self::TYPE_GOES_TO_CANNES => 'form.mdf.label.conference_goes_to_cannes',
+            self::TYPE_MIXERS => 'form.mdf.label.conference_mixers',
+            self::TYPE_NEXT => 'form.mdf.label.conference_next',
+            self::TYPE_PRODUCERS_NETWORK => 'form.mdf.label.conference_producers_network',
+            self::TYPE_PRODUCERS_WORKSHOP => 'form.mdf.label.conference_producers_workshop',
+        );
+    }
 }

@@ -77,3 +77,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.programme:
+        class: FDC\MarcheDuFilmBundle\Manager\ProgrammeManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

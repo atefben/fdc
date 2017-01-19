@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDay;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection;
@@ -193,5 +194,10 @@ class ConferenceProgramManager
         return $this->em
             ->getRepository(MdfContentTemplateWidgetGallery::class)
             ->getConferenceProgramGalleryWidgetsByPageId($page->getTranslatable()->getId());
+    }
+    
+    public function getAllConferenceTypes()
+    {
+        return MdfConferenceProgram::getConferences();
     }
 }
