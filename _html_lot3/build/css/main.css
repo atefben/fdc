@@ -8666,6 +8666,7 @@ header #searchContainer {
 }
 .evenements .card .image .image-wrapper img, .articles-list .card .image .image-wrapper img {
   min-height: initial !important;
+  display: block;
 }
 .evenements .card .image, .articles-list .card .image {
   width: 79.1%;

@@ -158,6 +158,7 @@
 
         .evenements &, .articles-list &  {
           min-height: initial !important;
+          display: block;
         }
 
         max-width: 100%;
