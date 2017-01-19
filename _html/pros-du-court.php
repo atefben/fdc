@@ -363,7 +363,7 @@
                 </div>
                 <div class="contactInfo">
                     <div><img src="img/world.png" alt=""> <h3>Japan</h3></div>
-                    <div><img src="img/computer.png" alt=""><h3><a href="www.shortshorts.org/en/" target="blank">www.shortshorts.org/en/</a></h3></div>
+                    <div><img src="img/computer.png" alt=""><h3><a href="www.shortshorts.org/en/" target="blank">shortshorts.org</a></h3></div>
                     <!--<div><img src="img/flyingPaper.png" alt=""><h3><a href="mailto:aki@shortshorts.org" >aki@shortshorts.org</h3></a></div>
                     <div><img src="img/flyingPaper.png" alt=""><h3>jessica@shortshorts.org</h3></div>
                     <div><img src="img/flyingPaper.png" alt=""><h3>clairechauvat@shortshorts.org</h3></div>-->
@@ -373,7 +373,7 @@
                 <div class="maj">Dernière mise à jour le 27 oct. 2016</div>
                  <!--<div class="cats">distribution • achat • vente</div>-->
                 <div class="titleHalf"><h3>L’agence du court métrage</h3></div>
-                <div class="cats">distribution • achat • vente</div>
+                <div class="cats"><span>distribution</span><span>achat</span><span>vente</span></div>
                 <div class="authors">
                   <div class="full">
                     <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Florence KELLER von midtag</h4></a>

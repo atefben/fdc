@@ -740,8 +740,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     float: left;
     padding: 5%;
 
-    i {
-      margin-right: 10px;
+    .specsImg{
+      width: 20px!important;
+      margin-right: 10px!important;
+      position: relative;
+      top: 2px;
     }
 
     h2 {
@@ -750,6 +753,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       text-transform: uppercase;
       color: #c8a461;
       padding-bottom: 0px;
+      position: relative;
     }
 
     h3 {

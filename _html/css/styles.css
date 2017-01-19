@@ -27493,6 +27493,7 @@ ul.tabs .quarterTab h4 {
   color: #c3a05f;
   font-size: 22px;
   margin: 0px 5px;
+  line-height: 30px;
   /*&:after {
     content: ',';
   }
@@ -27825,11 +27826,14 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   float: left;
   text-align: center;
-  height: 50px;
+  height: auto;
+  min-height: 70px;
 }
 .conferences .selector {
   width: 100%;
   float: left;
+  min-height: 200px;
+  height: auto;
 }
 .conferences .selectbtn {
   letter-spacing: 1px;
@@ -27852,8 +27856,9 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 160px;
+  margin-top: 220px;
   margin-bottom: 50px;
+  padding-top: 20px;
 }
 @media screen and (max-width: 1279px) {
   .conferences .conferencesMenu {
@@ -29009,8 +29014,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   float: left;
   padding: 5%;
 }
-.onlinegoldBorders .specs i {
-  margin-right: 10px;
+.onlinegoldBorders .specs .specsImg {
+  width: 20px !important;
+  margin-right: 10px !important;
+  position: relative;
+  top: 2px;
 }
 .onlinegoldBorders .specs h2 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -29018,6 +29026,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-transform: uppercase;
   color: #c8a461;
   padding-bottom: 0px;
+  position: relative;
 }
 .onlinegoldBorders .specs h3 {
   color: #0c0c0c;
@@ -29395,7 +29404,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .modal-goldBackg {
-  background: #c3a05f;
+  /*background: #c3a05f;*/
+  background: #bf9f64;
   width: 450px;
   height: 480px;
   position: absolute;
@@ -29421,10 +29431,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   margin-left: 5%;
 }
 .modal-content .half:first-child {
-  width: 30%;
+  width: 25%;
 }
 .modal-content .half:nth-child(2) {
-  width: 50%;
+  width: 55%;
 }
 @media screen and (max-width: 1024px) {
   .modal-content .half {
@@ -29460,6 +29470,16 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding: 10px 0px 50px 0px;
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.modal-content .half .cats span {
+  margin-right: 10px;
+}
+.modal-content .half .cats span:after {
+  content: '•';
+  margin-left: 10px;
+}
+.modal-content .half .cats span:last-child:after {
+  content: '';
 }
 .modal-content .half .titleHalf {
   width: 100%;
@@ -29556,7 +29576,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 12px;
   letter-spacing: 2px;
   line-height: 20px;
-  width: 42%;
+  width: 50%;
   float: left;
   padding-left: 8%;
 }
@@ -29566,7 +29586,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background-image: url(/img/flyingPaper.png);
   position: absolute;
   height: 20px;
-  left: 40%;
+  left: 35%;
+}
+.modal-content .half .authors .job {
+  width: 15% !important;
 }
 .modal-content .half .content {
   text-align: left;
@@ -29599,8 +29622,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   overflow: hidden;
   margin: 0 auto;
   background: #f0eeee;
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   border-radius: 500px;
   margin-top: 50px;
 }

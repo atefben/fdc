@@ -44,7 +44,7 @@
           <h1>COMMENT METTRE EN LIGNE VOTRE FILM ?</h1>
           <div class="onlinegoldBorders">
             <div class="specs">
-             <h2><i class="icon icon_camera"></i> Spécifications vidéo</h2>
+             <h2><img class="specsImg" src="img/camera.svg"> Spécifications vidéo</h2>
               <h3>Formats acceptés</h3>
                 <span>.mp[e]g  -   .avi  -   .vob  -   .mov  - 
                 .mp4  -   .m4v</span>
@@ -56,7 +56,7 @@
                 <span>PAL  -   NTSC (ou SECAM) de 720x400 pixels au format HD (1920x1080 pixels)</span>
             </div>
             <div class="specs">
-              <h2><i class="icon icon_son"></i> Spécifications audio</h2>
+              <h2><img class="specsImg" src="img/sound.svg"> Spécifications audio</h2>
                 <h3>Formats acceptés</h3>
                 <span>48kHz PCM (seulement non compressé) MP3 AAC (si possible > 160 kBit/s)</span>
             </div>

@@ -199,7 +199,8 @@
 
 
 .modal-goldBackg {
-  background: #c3a05f;
+  /*background: #c3a05f;*/
+  background: #bf9f64;
   width: 450px;
   height: 480px;
   position: absolute;
@@ -223,11 +224,11 @@
   .half {
 
     &:first-child {
-      width: 30%;
+      width: 25%;
     }
 
     &:nth-child(2) {
-      width: 50%;
+      width: 55%;
     }
 
     float: left;
@@ -268,7 +269,23 @@
       text-align: left;
       padding: 10px 0px 50px 0px;
       text-transform: uppercase;     
-      font-family: $CamphorBold;  
+      font-family: $CamphorBold;
+
+      span {
+        
+        margin-right: 10px;
+
+        &:after {
+          content: '•';
+          margin-left: 10px;
+        }
+      } 
+
+      span:last-child {
+          &:after {
+          content: '';
+        }
+      } 
     }
 
     .titleHalf {
@@ -376,7 +393,7 @@
           font-size: 12px;
           letter-spacing: 2px;
           line-height: 20px;
-          width: 42%;
+          width: 50%;
           float: left;
           padding-left: 8%;
         &:before {
@@ -385,8 +402,12 @@
           background-image: url(/img/flyingPaper.png);
           position: absolute;
           height: 20px;
-          left: 40%;
+          left: 35%;
         }
+      }
+
+      .job {
+        width: 15%!important;
       }
     }
 
@@ -424,8 +445,8 @@
           overflow: hidden;
           margin: 0 auto;
           background: #f0eeee;
-          width: 250px;
-          height: 250px;
+          width: 230px;
+          height: 230px;
           border-radius: 500px;
           margin-top: 50px;
         img {

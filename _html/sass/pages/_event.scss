@@ -98,12 +98,15 @@
     width: 100%;
     float: left;
     text-align: center;
-    height: 50px;
+    height: auto;
+    min-height: 70px;
   }
   
   .selector {
     width: 100%;
     float: left;
+    min-height: 200px;
+    height: auto;
   }
 
   .selectbtn {
@@ -123,8 +126,9 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 160px;
+    margin-top: 220px;
     margin-bottom: 50px;
+    padding-top: 20px;
 
     @media screen and (max-width: $mobileWidth) {
       width: 90%;

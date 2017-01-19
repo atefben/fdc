@@ -300,6 +300,7 @@ function smoothScrolling() {
         
           
           if($(this).next().is(':hidden') == true) {
+
             /*$('html, body').animate({
               scrollTop: $('.conferencesMenu').offset().top - 1
             }, 1000);*/
@@ -311,6 +312,7 @@ function smoothScrolling() {
             $(this).find('.openPlus').addClass('noDisplay');
             $(this).find('.openMinus').addClass('doDisplay');
             $(this).next().slideDown('normal');
+            
            } 
        });
 
@@ -324,16 +326,10 @@ function smoothScrolling() {
 smoothScrolling();
 
 
-$('.conferencesMenu li').click(function(){
-
-  $('.conferencesMenu li').removeClass('current');
-
-  $(this).addClass('current');
-    
-    $('html,body').animate({
-        scrollTop: $('.current').offset().top - 1 },
-        'slow');
-  });
+$(".conferencesMenu li").click(function() {
+  $('html,body').animate({ scrollTop:$(this).prev().offset().top}, 'slow');
+    return false;
+ });
 
 
 // Quick & dirty toggle to demonstrate modal toggle behavior
