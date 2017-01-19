@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 var el = [];
 var filtersData = ['all'];
-var pageLimit = 3;
+var pageLimit = 9;
 var paginationLimit = 4;
 var pageIndex = 0;
 
@@ -73,6 +73,7 @@ function setNews() {
 
           if (this.id == 'all' || el.length < 1 ) {
             $('.parent > div').fadeOut(200);
+            $('#empty-news-list').hide();
             $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
             $('.selectText').hide();
 
