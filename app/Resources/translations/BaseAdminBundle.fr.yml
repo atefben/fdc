@@ -478,6 +478,9 @@ admin:
         mdf_producers_workshop: Producers Workshop
         mdf_producers_network: Producers Network
         mdf_doc_corner: Doc Corner
+        mdf_next: Next
+        mdf_mixers: Mixers
+        mdf_goes_to_cannes: Goes to Cannes
 
 
 dashboard:

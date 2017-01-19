@@ -1971,3 +1971,69 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramDocCornerAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Conference Program}
+
+    base.admin.mdf_speakers_doc_corner:
+        class: Base\AdminBundle\Admin\MdfSpeakersDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Speakers}
+
+    base.admin.mdf_conference_partner_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Conference Partners}
+
+    base.admin.mdf_conference_program_next:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Conference Program}
+
+    base.admin.mdf_speakers_next:
+        class: Base\AdminBundle\Admin\MdfSpeakersNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Speakers}
+
+    base.admin.mdf_conference_partner_next:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Conference Partners}
+
+    base.admin.mdf_conference_program_mixers:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Conference Program}
+
+    base.admin.mdf_speakers_mixers:
+        class: Base\AdminBundle\Admin\MdfSpeakersMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Speakers}
+
+    base.admin.mdf_conference_partner_mixers:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Conference Partners}
+
+    base.admin.mdf_conference_program_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Conference Program}
+
+    base.admin.mdf_speakers_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfSpeakersGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Speakers}
+
+    base.admin.mdf_conference_partner_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Conference Partners}
