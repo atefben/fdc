@@ -17,6 +17,9 @@ class MdfNewsDetailsAdmin extends Admin
 {
     protected $baseRoutePattern = 'mdfnewsdetails';
     protected $baseRouteName = 'mdf_news_details';
+    protected $formOptions = array(
+        'validation_groups' => array('news'),
+    );
 
     public function configure()
     {
@@ -84,8 +87,7 @@ class MdfNewsDetailsAdmin extends Admin
             ->add('theme', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.content_template.theme',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
+                'btn_delete' => false
             ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
@@ -96,7 +98,7 @@ class MdfNewsDetailsAdmin extends Admin
             ))
             ->add('publishEndedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => true,
+                'required' => false,
                 'attr'     => array(
                     'data-date-format' => 'dd/MM/yyyy HH:mm',
                 ),

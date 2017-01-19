@@ -72,6 +72,7 @@ function setNews() {
 
           if (this.id == 'all' || el.length < 1 ) {
             $('.parent > div').fadeOut(200);
+            $('#empty-news-list').hide();
             $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
             $('.selectText').hide();
 
