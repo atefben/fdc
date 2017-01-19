@@ -2145,11 +2145,11 @@ var owInitGrid = function (id) {
                         if (window.matchMedia("(max-width: 1405px)").matches) {
                             title.html(text.trunc(25, true));
                         }else{
-                            title.html(text.trunc(40, true));
+                            title.html(text.trunc(30, true));
                         }
     
                     } else {
-                        title.html(text.trunc(60, true));
+                        title.html(text.trunc(30, true));
                     }
                 });
             }

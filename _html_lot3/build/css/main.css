@@ -2733,8 +2733,7 @@ video {
 
 .shadow-bottom:before {
   background: transparent;
-  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(70%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 70%, rgba(20, 20, 20, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
   content: '';
   display: block;
@@ -3905,6 +3904,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-poster {
   width: 256px;
   overflow: hidden;
+}
+.block-poster .title-11 {
+  display: block;
 }
 .block-poster .contain-txts {
   box-sizing: border-box;
@@ -8692,29 +8694,36 @@ header #searchContainer {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-  height: 201px;
   position: relative;
+  height: auto;
+}
+.card-01 .image .image-wrapper, .card-01.card.w2.double {
+  height: auto;
+}
+.card-01 .image .image-wrapper img {
+  min-height: initial;
+  position: relative;
+  display: block;
 }
 .card-01.double .image {
   margin-bottom: 0px;
-  height: 100%;
+  height: auto;
 }
 .card-01.double.w2 {
-  height: 402px;
   padding-left: 0px;
 }
 .card-01.double.w2 .image {
-  height: 100%;
+  height: auto;
 }
 .card-01 .image {
   margin-bottom: 0px;
-  height: 100%;
+  height: auto;
 }
 .card-01 .info {
   position: absolute;
   text-align: left;
-  bottom: 20px;
-  left: 20px;
+  bottom: 15px;
+  left: 15px;
   z-index: 3;
 }
 .card-01 .info strong {
@@ -8743,7 +8752,7 @@ header #searchContainer {
   bottom: 0px;
 }
 .card-01.portrait {
-  height: 402px;
+  height: auto;
 }
 
 .mob .read-later {
