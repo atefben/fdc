@@ -9460,10 +9460,32 @@ body#home .isotope-01 .item .contain-img {
   box-shadow: none;
 }
 .s-slider-retrospective .timelapse .noUi-origin {
+  cursor: pointer;
+}
+.s-slider-retrospective .timelapse .noUi-origin:after {
+  content: '';
+  height: 1px;
+  width: 100%;
+  display: block;
+  left: 0px;
+  top: 20px;
   background-color: #222121;
+  position: absolute;
 }
 .s-slider-retrospective .timelapse .noUi-base {
   width: 99%;
+  padding: 20px 0px;
+  position: relative;
+  top: -20px;
+  cursor: pointer;
+}
+.s-slider-retrospective .timelapse .noUi-base:after {
+  content: '';
+  height: 1px;
+  width: 100%;
+  display: block;
+  left: 0px;
+  top: 0px;
   background-color: #c8a461;
 }
 .s-slider-retrospective .timelapse .noUi-horizontal {
@@ -9507,7 +9529,7 @@ body#home .isotope-01 .item .contain-img {
   width: 14px;
   height: 14px;
   left: 0px;
-  top: -7px;
+  top: 13px;
 }
 @media only screen and (max-width: 768px) {
   .s-slider-retrospective .timelapse .noUi-horizontal .noUi-handle.noUi-handle-lower {
