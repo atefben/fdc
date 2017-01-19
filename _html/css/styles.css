@@ -2423,7 +2423,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.3em;
-  margin: 20px auto;
+  margin: 0 auto;
+  margin-bottom: 80px;
 }
 .wysiwyg-article-02 h2.sub-title {
   font-size: 1.5rem;
@@ -7082,6 +7083,9 @@ a {
   border-left-color: #c8a461;
 }
 
+.buttons-02 {
+  padding-top: 30px;
+}
 .buttons-02 .button {
   border-color: #c8a461;
 }
@@ -8577,8 +8581,7 @@ header .user-nav li a.language:hover {
 }
 header .user-nav li .sub-languages {
   height: 0;
-  /*margin-left: 32px;*/
-  margin-left: 0px;
+  margin-left: 32px;
   opacity: 0;
   position: absolute;
   top: 23px;
@@ -9078,6 +9081,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 .topiconsContainer .topIcons img {
   width: 16px;
+  height: 63px;
 }
 .topiconsContainer .topIcons:hover i {
   color: white;
@@ -16039,9 +16043,10 @@ article .read-later.rAlign span:after {
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.3em;
-  margin: 20px auto;
+  margin: 0 auto;
   max-width: 775px;
   text-align: center;
+  margin-bottom: 80px;
 }
 .single-article .info {
   color: #969696;
@@ -28779,7 +28784,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .movieOnline .centered {
   margin: 0 auto;
-  margin-top: 15px;
   text-align: center;
 }
 .movieOnline h3 {

@@ -194,8 +194,7 @@ header {
 
       .sub-languages {
         height: 0;
-        /*margin-left: 32px;*/
-        margin-left: 0px;
+        margin-left: 32px;
         opacity: 0;
         position: absolute;
         top: 23px;
@@ -681,32 +680,32 @@ header {
   float: right;
   width: 193px;
 
-.first {
-  position: relative;
-  border-top: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  border-left: 1px solid #404040;
-  z-index: 900;
-  overflow: hidden;
-}
-.second {
-  position: relative;
-  border-top: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  border-left: 1px solid #404040;
-  border-right: 1px solid #404040;
-  overflow: hidden;
-  z-index: 1;
-}
+  .first {
+    position: relative;
+    border-top: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    border-left: 1px solid #404040;
+    z-index: 900;
+    overflow: hidden;
+  }
+  .second {
+    position: relative;
+    border-top: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    border-left: 1px solid #404040;
+    border-right: 1px solid #404040;
+    overflow: hidden;
+    z-index: 1;
+  }
 
-.third {
-  position: relative;
-  border-top: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  border-right: 1px solid #404040;
-  overflow: hidden;
-  z-index: 1002;
-}
+  .third {
+    position: relative;
+    border-top: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    border-right: 1px solid #404040;
+    overflow: hidden;
+    z-index: 1002;
+  }
 
   .topIcons {
       display: block;
@@ -729,6 +728,7 @@ header {
 
     img {
       width: 16px;
+      height: 63px;
     }
 
     &:hover {
