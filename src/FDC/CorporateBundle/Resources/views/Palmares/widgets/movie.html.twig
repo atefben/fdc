@@ -74,9 +74,9 @@
                     <strong class="name-f">{{ movie.titleVO }}</strong>
                 {% if movie|trans_fallback('title') != movie.titleVO and movie|trans_fallback('title') %}<strong class="name-fb">({{ movie|trans_fallback('title') }})</strong>{% endif %}
                 </a>
+                <div class="wrapper-author">
                     {% spaceless %}
                         {% set author = '' %}
-                        <div class="wrapper-author">
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                             {% if loop.first == false %}
                                 {% set author = author ~ ', ' %}
@@ -86,9 +86,9 @@
                             {% set author = author ~ director.fullName %}
                             {% set author = author ~ '</a>' %}
                         {% endfor %}
-                        </div>
                         {{ author|raw }}
                     {% endspaceless %}
+                </div>
             </div>
         </div>
     </div>
