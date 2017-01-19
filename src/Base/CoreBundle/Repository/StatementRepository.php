@@ -5,14 +5,13 @@ namespace Base\CoreBundle\Repository;
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-use JMS\DiExtraBundle\Annotation as DI;
-
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use JMS\DiExtraBundle\Annotation as DI;
 
 /**
  * StatementRepository class.
- *
  * \@extends EntityRepository
  * @author   Antoine Mineau
  * \@company Ohwee
@@ -60,7 +59,7 @@ class StatementRepository extends EntityRepository
         }
 
         if (!empty($params['sortField']) && !empty($params['sortValue'])) {
-            $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
+            $qb->orderBy('n.' . $params['sortField'], $params['sortValue']);
         }
 
         return $qb->getQuery()->getResult();
@@ -68,7 +67,6 @@ class StatementRepository extends EntityRepository
 
     /**
      *  Get the $locale version of Statement of current $festival by $id and verify publish date is between $dateTime
-     *
      * @param $id
      * @param $festival
      * @param $dateTime
@@ -78,17 +76,17 @@ class StatementRepository extends EntityRepository
     public function getApiStatementById($id, $festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-            ->leftJoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\StatementImage', 'nai', 'WITH', 'nai.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\StatementVideo', 'nav', 'WITH', 'nav.id = n.id')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('nai.translations', 'nait')
-            ->leftJoin('nav.translations', 'navt')
-            ->where('n.festival = :festival')
-            ->andWhere('n.id = :id')
-            ->andWhere('n.displayedMobile = :displayed_mobile')
+                   ->leftJoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\StatementImage', 'nai', 'WITH', 'nai.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\StatementVideo', 'nav', 'WITH', 'nav.id = n.id')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('nai.translations', 'nait')
+                   ->leftJoin('nav.translations', 'navt')
+                   ->where('n.festival = :festival')
+                   ->andWhere('n.id = :id')
+                   ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $qb = $qb
@@ -155,8 +153,8 @@ class StatementRepository extends EntityRepository
             $qb
                 ->andWhere(':festivalEndAt < n.publishedAt')
                 //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
-                ->setParameter('festivalEndAt', '2016-05-23 00:00:00');
-            ;
+                ->setParameter('festivalEndAt', '2016-05-23 00:00:00')
+            ;;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -331,7 +329,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getStatementByDate($locale, $festival, $dateTime, $count=null)
+    public function getStatementByDate($locale, $festival, $dateTime, $count = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -431,8 +429,8 @@ class StatementRepository extends EntityRepository
     }
 
     /**
-     * get an array of only the $locale version Statement of current $festival and verify publish date is between $dateTime
-     *
+     * get an array of only the $locale version Statement of current $festival and verify publish date is between
+     * $dateTime
      * @param $festival
      * @param $dateTime
      * @param $locale
@@ -441,25 +439,25 @@ class StatementRepository extends EntityRepository
     public function getStatements($festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftjoin('na.translations', 'nat')
-            ->leftjoin('naa.translations', 'naat')
-            ->leftjoin('nv.translations', 'nvt')
-            ->leftjoin('ni.translations', 'nit')
-            ->where('n.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
-            ->andWhere(
-                "(nat.locale = 'fr' AND nat.status = :status)
+                   ->join('n.sites', 's')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftjoin('na.translations', 'nat')
+                   ->leftjoin('naa.translations', 'naat')
+                   ->leftjoin('nv.translations', 'nvt')
+                   ->leftjoin('ni.translations', 'nit')
+                   ->where('n.festival = :festival')
+                   ->andWhere('s.slug = :site')
+                   ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+                   ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                   ->andWhere(
+                       "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)
                 OR (naat.locale = 'fr' AND naat.status = :status)
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
-            )
+                   )
         ;
 
         if ($locale != 'fr') {
@@ -501,24 +499,24 @@ class StatementRepository extends EntityRepository
     public function getStatementRetrospective($locale, $festival, $startsAt, $endsAt)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftjoin('na.translations', 'nat')
-            ->leftjoin('naa.translations', 'naat')
-            ->leftjoin('nv.translations', 'nvt')
-            ->leftjoin('ni.translations', 'nit')
-            ->where('n.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
-            ->andWhere(
-                "(nat.locale = 'fr' AND nat.status = :status)
+                   ->join('n.sites', 's')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftjoin('na.translations', 'nat')
+                   ->leftjoin('naa.translations', 'naat')
+                   ->leftjoin('nv.translations', 'nvt')
+                   ->leftjoin('ni.translations', 'nit')
+                   ->where('n.festival = :festival')
+                   ->andWhere('s.slug = :site')
+                   ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
+                   ->andWhere(
+                       "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)
                 OR (naat.locale = 'fr' AND naat.status = :status)
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
-            )
+                   )
         ;
 
         if ($locale != 'fr') {
@@ -553,7 +551,6 @@ class StatementRepository extends EntityRepository
 
     /**
      *  Get the $locale version of Statement of current $festival by $id and verify publish date is between $dateTime
-     *
      * @param $id
      * @param $festival
      * @param $dateTime
@@ -563,15 +560,15 @@ class StatementRepository extends EntityRepository
     public function getStatementById($id, $festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('wt')
-            ->join('wt.mediaVideos', 'mv')
-            ->join('mv.sites', 's')
-            ->join('wt.translations', 'wtt')
-            ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('mv.inWebTv = :inWebTv')
-            ->andWhere('(mvt.locale = :locale AND mvt.status = :status)')
-            ->andWhere("(wtt.locale = 'fr' AND wtt.status = :status)")
+                   ->join('wt.mediaVideos', 'mv')
+                   ->join('mv.sites', 's')
+                   ->join('wt.translations', 'wtt')
+                   ->join('mv.translations', 'mvt')
+                   ->where('mv.festival = :festival')
+                   ->andWhere('s.slug = :site')
+                   ->andWhere('mv.inWebTv = :inWebTv')
+                   ->andWhere('(mvt.locale = :locale AND mvt.status = :status)')
+                   ->andWhere("(wtt.locale = 'fr' AND wtt.status = :status)")
         ;
 
         if ($locale != 'fr') {
@@ -584,16 +581,16 @@ class StatementRepository extends EntityRepository
         }
 
         $qb = $qb->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
-            ->andWhere('mv.id = :id')
-            ->setParameter('festival', $festival)
-            ->setParameter('id', $id)
-            ->setParameter('inWebTv', true)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery()
-            ->getOneOrNullResult()
+                 ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
+                 ->andWhere('mv.id = :id')
+                 ->setParameter('festival', $festival)
+                 ->setParameter('id', $id)
+                 ->setParameter('inWebTv', true)
+                 ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+                 ->setParameter('datetime', $dateTime)
+                 ->setParameter('site', 'flux-mobiles')
+                 ->getQuery()
+                 ->getOneOrNullResult()
         ;
 
         return $qb;
@@ -602,7 +599,6 @@ class StatementRepository extends EntityRepository
     /**
      * get an array of only the $count last Statement of $locale version of current
      * $festival and verify publish date is between $dateTime
-     *
      * @param $festival
      * @param $dateTime
      * @param $count
@@ -612,6 +608,70 @@ class StatementRepository extends EntityRepository
     public function getLastStatements($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
+                   ->join('n.sites', 's')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftjoin('na.translations', 'nat')
+                   ->leftjoin('naa.translations', 'naat')
+                   ->leftjoin('nv.translations', 'nvt')
+                   ->leftjoin('ni.translations', 'nit')
+                   ->andWhere('n.festival = :festival')
+                   ->andWhere('s.slug = :site')
+                   ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+                   ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                   ->andWhere(
+                       "(nat.locale = 'fr' AND nat.status = :status)
+                OR (nit.locale = 'fr' AND nit.status = :status)
+                OR (naat.locale = 'fr' AND naat.status = :status)
+                OR (nvt.locale = 'fr' AND nvt.status = :status)"
+                   )
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->leftjoin('na.translations', 'na5t')
+                ->leftjoin('naa.translations', 'na6t')
+                ->leftjoin('nv.translations', 'na7t')
+                ->leftjoin('ni.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('locale', $locale)
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
+        }
+
+        $qb = $qb->addOrderBy('n.publishedAt', 'DESC')
+                 ->setMaxResults($count)
+                 ->setParameter('festival', $festival)
+                 ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+                 ->setParameter('datetime', $dateTime)
+                 ->setParameter('site', 'site-press')
+                 ->getQuery()
+                 ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $since
+     * @param int $page
+     * @param int $count
+     * @return Statement[]
+     */
+    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    {
+        $now = new \DateTime();
+        $qb = $this
+            ->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
@@ -621,20 +681,26 @@ class StatementRepository extends EntityRepository
             ->leftjoin('naa.translations', 'naat')
             ->leftjoin('nv.translations', 'nvt')
             ->leftjoin('ni.translations', 'nit')
+            ->andWhere('n.displayedMobile = :displayedMobile')
+            ->setParameter('displayedMobile', true)
             ->andWhere('n.festival = :festival')
+            ->setParameter('festival', $festival)
             ->andWhere('s.slug = :site')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->setParameter('site', 'site-press')
+            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt <= :now)')
+            ->setParameter('since', $since)
+            ->setParameter('now', $now)
             ->andWhere(
                 "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)
                 OR (naat.locale = 'fr' AND naat.status = :status)
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
             )
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na.translations', 'na5t')
                 ->leftjoin('naa.translations', 'na6t')
                 ->leftjoin('nv.translations', 'na7t')
@@ -650,23 +716,23 @@ class StatementRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb->addOrderBy('n.publishedAt', 'DESC')
-            ->setMaxResults($count)
-            ->setParameter('festival', $festival)
-            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'site-press')
+        if (null !== $page && null !== $count) {
+            $qb
+                ->setMaxResults($count)
+                ->setFirstResult(($page - 1) * $count)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
-        ;
-
-        return $qb;
+            ;
     }
 
     /**
      * get an array of only the $count last Statement of $locale version of current
      * $festival and verify publish date is between $dateTime
-     *
      * @param $festival
      * @param $dateTime
      * @param $count
@@ -676,24 +742,24 @@ class StatementRepository extends EntityRepository
     public function getApiLastStatements($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
-            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftjoin('na.translations', 'nat')
-            ->leftjoin('naa.translations', 'naat')
-            ->leftjoin('nv.translations', 'nvt')
-            ->leftjoin('ni.translations', 'nit')
-            ->andWhere('n.displayedMobile = :displayedMobile')
-            ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
-            ->andWhere(
-                "(nat.locale = 'fr' AND nat.status = :status)
+                   ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftjoin('na.translations', 'nat')
+                   ->leftjoin('naa.translations', 'naat')
+                   ->leftjoin('nv.translations', 'nvt')
+                   ->leftjoin('ni.translations', 'nit')
+                   ->andWhere('n.displayedMobile = :displayedMobile')
+                   ->andWhere('n.festival = :festival')
+                   ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+                   ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                   ->andWhere(
+                       "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)
                 OR (naat.locale = 'fr' AND naat.status = :status)
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
-            )
+                   )
         ;
 
         if ($locale != 'fr') {
@@ -714,13 +780,13 @@ class StatementRepository extends EntityRepository
         }
 
         $qb = $qb->addOrderBy('n.publishedAt', 'DESC')
-            ->setMaxResults($count)
-            ->setParameter('festival', $festival)
-            ->setParameter('displayedMobile', true)
-            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
-            ->setParameter('datetime', $dateTime)
-            ->getQuery()
-            ->getResult()
+                 ->setMaxResults($count)
+                 ->setParameter('festival', $festival)
+                 ->setParameter('displayedMobile', true)
+                 ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+                 ->setParameter('datetime', $dateTime)
+                 ->getQuery()
+                 ->getResult()
         ;
 
         return $qb;
