@@ -22,6 +22,10 @@
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+.cke_editable a {
+    color: #c8a461;
+    text-decoration: none;
+}
 /* Separator */
 .cke_editable hr {
     height: 0;
