@@ -97,4 +97,32 @@ class ThemeController extends Controller
              ]
         );
     }
+
+    /**
+     * @Route("/{slug}/actualite")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newsAction(Request $request, $slug)
+    {
+        $conferenceNewsPageManager = $this->get('mdf.manager.conference_news_page');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
+        $contactManager = $this->get('mdf.manager.contact');
+
+        $conferenceNewsPage = $conferenceNewsPageManager->getConferenceNewsPageBySlug($slug);
+        $newsContent = $contentTemplateManager->getNewsContent([$slug]);
+        $contact = $contactManager->getContactInfo();
+
+        if(!$conferenceNewsPage) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:news/show.html.twig', [
+                'newsPageContent' => $conferenceNewsPage,
+                'news' => $newsContent,
+                'conferenceTitle' => $slug,
+                'contact' => $contact,
+            ]
+        );
+    }
 }

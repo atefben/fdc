@@ -1,0 +1,38 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': conferenceTitle} %}
+        <div class="bigContainer">
+            <div class="our-news newsPage mdf">
+                <h3>{{ newsPageContent.title }}</h3>
+                {% include 'FDCMarcheDuFilmBundle::conference/news/partials/newsBlock.html.twig' with { 'news': news } %}
+            </div>
+            <a href="#">
+                <div class="moreArticles">
+                    <span>Plus d'articles</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="floatingButtonLeft">
+        <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+        </div>
+        <a href="#">
+            <div class="floatingButtonText showLeft">intervenants</div>
+        </a>
+    </div>
+    <div class="floatingButtonRight">
+        <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+        </div>
+        <a href="#">
+            <div class="floatingButtonText showRight">partenaires</div>
+        </a>
+    </div>
+
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+
+{% endblock main %}
