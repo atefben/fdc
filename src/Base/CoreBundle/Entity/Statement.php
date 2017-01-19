@@ -228,6 +228,7 @@ abstract class Statement implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(name="mobile_display", type="string", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
      *
      */
     protected $mobileDisplay = false;
