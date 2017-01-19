@@ -144,7 +144,7 @@ var initVideo = function(hash) {
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
-            var shareUrl = document.location.href+'#vid='+$container.data('vid');
+            var shareUrl = document.location.href;
         }
 
         // CUSTOM LINK FACEBOOK
@@ -263,7 +263,7 @@ var initVideo = function(hash) {
             if($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = document.location.href+'#vid='+$playlist[index].vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref   = facebookLink;
@@ -672,7 +672,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = document.location.href + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -774,7 +774,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = document.location.href + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;

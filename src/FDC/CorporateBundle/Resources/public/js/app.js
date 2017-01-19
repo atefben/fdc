@@ -144,7 +144,7 @@ var initVideo = function(hash) {
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
-            var shareUrl = document.location.href+'#vid='+$container.data('vid');
+            var shareUrl = document.location.href;
         }
 
         // CUSTOM LINK FACEBOOK
@@ -263,7 +263,7 @@ var initVideo = function(hash) {
             if($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = document.location.href+'#vid='+$playlist[index].vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref   = facebookLink;
@@ -672,7 +672,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = document.location.href + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -774,7 +774,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = document.location.href + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -1442,7 +1442,7 @@ var initAudio = function (hash) {
 
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = document.location.href + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -1537,7 +1537,7 @@ var initAudio = function (hash) {
             }, 900);
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = document.location.href + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
