@@ -55,7 +55,6 @@ class SettingsController extends FOSRestController
      * @param ParamFetcher $paramFetcher
      * @return View
      */
-
     public function countdownAction(Request $request, ParamFetcher $paramFetcher)
     {
         //core manager shortcut
