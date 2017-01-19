@@ -97,3 +97,7 @@ push_mobile:
 api_search:
     type:       rest
     resource:   Base\ApiBundle\Controller\SearchController
+
+api_settings:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\SettingsController

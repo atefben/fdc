@@ -1,6 +1,10 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %}
 {% trans_default_domain 'BaseAdminBundle' %}
 
+{% form_theme formFDCYear 'bootstrap_3_layout.html.twig' %}
+{% form_theme formFDCApiYear 'bootstrap_3_layout.html.twig' %}
+{% form_theme formPressPassword 'bootstrap_3_layout.html.twig' %}
+
 {% block content %}
     <h3>{{ 'settings.fdc'|trans }}</h3>
     {{ form_start(formFDCYear) }}
@@ -25,9 +29,11 @@
         {{ form_errors(formPressPassword.plainPassword.first) }}
         {{ form_errors(formPressPassword.plainPassword.second) }}
     </div>
-    <div>
+    <div class="form-group">
         {{ form_label(formPressPassword.plainPassword.first) }}
         {{ form_widget(formPressPassword.plainPassword.first) }}
+    </div>
+    <div class="form-group">
         {{ form_label(formPressPassword.plainPassword.second) }}
         {{ form_widget(formPressPassword.plainPassword.second) }}
     </div>
