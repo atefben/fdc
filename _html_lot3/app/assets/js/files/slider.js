@@ -169,7 +169,7 @@ var owInitSlider = function (sliderName) {
                 var imgurl = $('.block-push-top.big .container img').attr('src');
                 $('.block-push-top.big .container img').css('display', 'none');
 
-                $('.block-push').css('background-position', '0px -70px');
+                $('.block-push').css('background-position', '0px -240px');
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                 $.get(url, function (data) {
