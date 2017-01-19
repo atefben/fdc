@@ -3446,6 +3446,11 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-right: 65px;
 }
 
+.text-01 a {
+  color: #c8a461;
+  text-decoration: none;
+}
+
 .block-videos {
   padding-top: 25px;
   padding-bottom: 25px;
