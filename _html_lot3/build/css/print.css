@@ -9,8 +9,29 @@
     background-color: #fff !important;
   }
 
-  nav, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
-    display: none;
+  nav, #cookies-banner, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
+    display: none !important;
+  }
+
+  .dark {
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+  .dark .block-movie-preview .name-f, .dark .wysiwyg-article-02 h2, .dark .wysiwyg-article-02 h3, .dark .wysiwyg-article-02 .contain-title p, .dark .wysiwyg-article-02 .contain-title h3, .dark .wysiwyg-article-02 .contain-title h5 {
+    color: #000 !important;
+  }
+  .dark .wysiwyg-article-02 .text p strong, .dark .wysiwyg-article-02 .text ul strong, .dark .wysiwyg-article-02 .text ol strong {
+    color: #000 !important;
+  }
+  .dark .title, .dark .title-item, .dark .caption {
+    color: #000 !important;
+  }
+  .dark .quote, .dark .article-single.dark .table-article td, .dark .article-single .dark .table-article th, .dark .single-movie.dark .table-article td, .dark .single-movie .dark .table-article th {
+    border-color: #ccc !important;
+  }
+
+  .block-movie-preview .bck-hover {
+    background-color: #fff !important;
   }
 
   .slides {

@@ -125,4 +125,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         }
     }
 
+    protected function getManager()
+    {
+        return $this->getContainer()->get('doctrine')->getManager();
+    }
+
 }
