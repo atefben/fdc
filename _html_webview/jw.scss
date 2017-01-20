@@ -1,5 +1,9 @@
 .jwplayer {
 	&.jw-skin-fdc.jw-state-playing {
+		.jw-title {
+			display: block;
+			top: .7rem;
+		}
 		.jw-icon-playback {
 			background: url(img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
 			background-position: 2rem center;
@@ -109,10 +113,11 @@
 
 				&-slider-container {
 					vertical-align: top;
+					height: 100%;
 				}
 
 				&-slider-horizontal {
-					height: 1rem;
+					height: 0.5rem;
 					overflow: hidden;
 					width: 85%;
 					float: right;
