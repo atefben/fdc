@@ -1,2 +1,4 @@
 validation.home_top_slider_max: At most 6 top sliders can be added.
 validation.home_top_slider_min: At least 1 top slider must be added.
+validation.service_product_image_max: At most 3 images can be added per product.
+validation.service_widget_max: At most 5 tabs can be added per service.

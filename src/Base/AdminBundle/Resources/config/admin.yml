@@ -1641,6 +1641,22 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch De Service}
 
+    base.admin.mdf_service_gallery:
+        class: Base\AdminBundle\Admin\MdfServiceGalleryAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery, BaseAdminBundle:MdfServiceGalleryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MdfServiceGallery, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_service_gallery_media:
+        class: Base\AdminBundle\Admin\MdfServiceGalleryMediaAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfServiceGalleryMedia, BaseAdminBundle:MdfServiceGalleryMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MdfServiceGalleryMediaAdmin, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.mdf_gallery:
         class: Base\AdminBundle\Admin\GalleryMdfAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdf, BaseAdminBundle:GalleryMdfAdmin]

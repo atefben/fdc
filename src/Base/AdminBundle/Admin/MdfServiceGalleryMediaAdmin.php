@@ -10,11 +10,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 
 /**
- * ServiceWidgetCollectionAdmin class.
+ * MdfServiceGalleryMediaAdmin class.
  * 
  * \@extends Admin
  */
-class ServiceWidgetCollectionAdmin extends Admin
+class MdfServiceGalleryMediaAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -49,9 +49,8 @@ class ServiceWidgetCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('widget', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.label.widget_service_page',
-                 'btn_delete' => false,
+            ->add('media', 'sonata_type_model_list', array(
+                    'btn_delete' => false,
                 )
             )
             ->add('position','hidden',array('attr'=>array("hidden" => true)))

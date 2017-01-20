@@ -17,13 +17,13 @@ use Base\CoreBundle\Util\Time;
 use JMS\Serializer\Annotation\Groups;
 
 /**
- * GalleryMdf
+ * MdfServiceGallery
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class GalleryMdf implements TranslateMainInterface
+class MdfServiceGallery implements TranslateMainInterface
 {
 
     use Translatable;
@@ -42,7 +42,7 @@ class GalleryMdf implements TranslateMainInterface
     /**
      * @var GalleryMdfMedia
      *
-     * @ORM\OneToMany(targetEntity="GalleryMdfMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="MdfServiceGalleryMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -51,18 +51,10 @@ class GalleryMdf implements TranslateMainInterface
     /**
      * @var GalleryMdfMedia
      *
-     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidgetGallery", mappedBy="gallery")
+     * @ORM\OneToMany(targetEntity="ServiceWidgetProduct", mappedBy="gallery")
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $contentTemplate;
-
-    /**
-     * @var GalleryMdfMedia
-     *
-     * @ORM\OneToMany(targetEntity="MdfHomepage", mappedBy="gallery")
-     * @ORM\OrderBy({"position" = "ASC"})
-     */
-    private $homepage;
+    private $product;
 
     /**
      * @var boolean
@@ -97,8 +89,7 @@ class GalleryMdf implements TranslateMainInterface
     {
         $this->translations = new ArrayCollection();
         $this->medias = new ArrayCollection();
-        $this->contentTemplate = new ArrayCollection();
-        $this->homepage = new ArrayCollection();
+        $this->product = new ArrayCollection();
     }
 
     public function __toString()
@@ -136,68 +127,38 @@ class GalleryMdf implements TranslateMainInterface
     }
 
     /**
-     * @param MdfContentTemplateWidgetGallery $contentTemplate
+     * @param ServiceWidgetProduct $product
      * @return $this
      */
-    public function addContentTemplate(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery $contentTemplate)
+    public function addProduct(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct $product)
     {
-        $contentTemplate->setGallery($this);
-        $this->contentTemplate[] = $contentTemplate;
+        $product->setGallery($this);
+        $this->product[] = $product;
 
         return $this;
     }
 
     /**
-     * @param MdfContentTemplateWidgetGallery $contentTemplate
+     * @param ServiceWidgetProduct $product
      */
-    public function removeContentTemplate(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery $contentTemplate)
+    public function removeProduct(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct $product)
     {
-        $this->contentTemplate->removeElement($contentTemplate);
+        $this->product->removeElement($product);
     }
 
     /**
-     * @return GalleryMdfMedia
+     * @return ArrayCollection|GalleryMdfMedia
      */
-    public function getContentTemplate()
+    public function getProduct()
     {
-        return $this->contentTemplate;
+        return $this->product;
     }
 
     /**
-     * @param MdfHomepage $homepage
+     * @param MdfServiceGalleryMedia $medias
      * @return $this
      */
-    public function addHomepage(\FDC\MarcheDuFilmBundle\Entity\MdfHomepage $homepage)
-    {
-        $homepage->setGallery($this);
-        $this->homepage[] = $homepage;
-
-        return $this;
-    }
-
-    /**
-     * @param MdfHomepage $homepage
-     */
-    public function removeHomepage(\FDC\MarcheDuFilmBundle\Entity\MdfHomepage $homepage)
-    {
-        $this->homepage->removeElement($homepage);
-    }
-
-    /**
-     * @return GalleryMdfMedia
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
-    }
-
-    /**
-     * Add medias
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia $medias
-     * @return MediaGallery
-     */
-    public function addMedia(\FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia $medias)
+    public function addMedia(\FDC\MarcheDuFilmBundle\Entity\MdfServiceGalleryMedia $medias)
     {
         $medias->setGallery($this);
         $this->medias[] = $medias;
@@ -206,11 +167,9 @@ class GalleryMdf implements TranslateMainInterface
     }
 
     /**
-     * Remove medias
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia $medias
+     * @param MdfServiceGalleryMedia $medias
      */
-    public function removeMedia(\FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia $medias)
+    public function removeMedia(\FDC\MarcheDuFilmBundle\Entity\MdfServiceGalleryMedia $medias)
     {
         $this->medias->removeElement($medias);
     }

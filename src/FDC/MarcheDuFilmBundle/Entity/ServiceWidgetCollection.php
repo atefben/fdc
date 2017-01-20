@@ -3,9 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\Time;
-use JMS\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ServiceWidgetCollection
@@ -29,7 +28,10 @@ class ServiceWidgetCollection
 
     /**
      * @ORM\ManyToOne(targetEntity="ServiceWidget", cascade={"all"})
-     * @Groups({"news_list", "search", "news_show", "event_show", "home"})
+     * @Assert\Count(
+     *      max = "5",
+     *      maxMessage = "validation.service_widget_max"
+     * )
      */
     private $widget;
 

@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Count;
 
 class ServiceAdmin extends Admin
 {
@@ -130,6 +131,14 @@ class ServiceAdmin extends Admin
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.new_service_widget',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new Count(
+                        array(
+                            'max' => 5,
+                            'maxMessage' => "validation.service_widget_max"
+                        )
+                    ),
+                ),
             ), array(
                 'edit'     => 'inline',
                 'inline'   => 'table',
