@@ -12553,6 +12553,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 100px;
 }
 
+.who .contain-title {
+  min-height: auto;
+  margin-top: 19px;
+}
 .who .title-list-cat {
   color: #fff;
   padding: 42px;
