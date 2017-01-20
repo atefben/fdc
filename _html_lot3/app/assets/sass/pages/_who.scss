@@ -1,12 +1,32 @@
 .who {
 
-  .title-item {
+  .title-list-cat {
+    color: #fff;
+    padding: 42px;
+    border-bottom: #202020 1px solid;
+    border-top: #202020 1px solid;
+    font-size: 1rem;
     text-align: center;
-    font-size: 1.125rem;
-    line-height: 36px;
-    padding-bottom: 40px;
-    text-transform: none;
-    letter-spacing: normal;
+
+    .title {
+      width: 549px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 30px;
+      font-weight: 700;
+    }
+
+    .title-item {
+
+      text-align: center;
+      padding: 20px 20px 0;
+      font-size: .875rem;
+      margin: 10px auto 2px;
+      line-height: 26px;
+      font-family: $CamphorItalic;
+      text-transform: none;
+      letter-spacing: normal;
+    }
   }
 
   .block-01-xs {

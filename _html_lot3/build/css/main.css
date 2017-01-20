@@ -12552,11 +12552,28 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 100px;
 }
 
-.who .title-item {
+.who .title-list-cat {
+  color: #fff;
+  padding: 42px;
+  border-bottom: #202020 1px solid;
+  border-top: #202020 1px solid;
+  font-size: 1rem;
   text-align: center;
-  font-size: 1.125rem;
-  line-height: 36px;
-  padding-bottom: 40px;
+}
+.who .title-list-cat .title {
+  width: 549px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 30px;
+  font-weight: 700;
+}
+.who .title-list-cat .title-item {
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
   letter-spacing: normal;
 }
