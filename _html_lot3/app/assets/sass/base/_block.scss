@@ -459,6 +459,8 @@
 
   .vFlexAlign {
     height: 100%;
+    max-width: 100%;
+    width: 977px !important;
   }
 
   .txts {
@@ -493,7 +495,7 @@
 
     a {
       color: #fff;
-      font-size: .75rem;
+      font-size: .8rem;
       font-family: $CamphorHeavy;
     }
 
@@ -504,18 +506,20 @@
   }
 
   .date-back {
-    left: 28px;
+    left: 13px;
     top: 50%;
     transform: rotate(-90deg);
+    transition: left .4s ease;
 
     i {
       transform: rotate(-180deg);
       font-size: 1.4rem;
     }
+
   }
 
   .date-next {
-    right: 28px;
+    right: -8px;
     top: 50%;
     transform: rotate(90deg);
 

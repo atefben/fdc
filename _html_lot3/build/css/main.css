@@ -3334,6 +3334,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-top .vFlexAlign {
   height: 100%;
+  max-width: 100%;
+  width: 977px !important;
 }
 .block-push-top .txts {
   text-align: center;
@@ -3363,7 +3365,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-top .date-back a, .block-push-top .date-next a {
   color: #fff;
-  font-size: .75rem;
+  font-size: .8rem;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .block-push-top .date-back i, .block-push-top .date-next i {
@@ -3371,16 +3373,17 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #383738;
 }
 .block-push-top .date-back {
-  left: 28px;
+  left: 13px;
   top: 50%;
   transform: rotate(-90deg);
+  transition: left .4s ease;
 }
 .block-push-top .date-back i {
   transform: rotate(-180deg);
   font-size: 1.4rem;
 }
 .block-push-top .date-next {
-  right: 28px;
+  right: -8px;
   top: 50%;
   transform: rotate(90deg);
 }
