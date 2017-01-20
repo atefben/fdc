@@ -12552,6 +12552,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 100px;
 }
 
+.who .title-item {
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 36px;
+  padding-bottom: 40px;
+  text-transform: none;
+  letter-spacing: normal;
+}
 .who .block-01-xs img {
   margin-bottom: 55px;
 }
