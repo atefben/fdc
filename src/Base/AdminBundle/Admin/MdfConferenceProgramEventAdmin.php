@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -82,6 +83,13 @@ class MdfConferenceProgramEventAdmin extends Admin
                     'eventAccessType'          => array(
                         'label'              => 'form.mdf.conference_program.eventAccessType',
                         'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfConferenceProgramEventTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     )
                 )
             ))

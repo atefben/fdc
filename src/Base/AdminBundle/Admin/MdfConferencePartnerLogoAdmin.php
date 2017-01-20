@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -62,6 +63,13 @@ class MdfConferencePartnerLogoAdmin extends Admin
                     'url'          => array(
                         'label'              => 'form.mdf.conference_partner.url',
                         'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfConferencePartnerLogoTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     )
                 )
             ))

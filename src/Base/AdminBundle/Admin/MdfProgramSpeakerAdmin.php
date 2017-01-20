@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -72,6 +73,13 @@ class MdfProgramSpeakerAdmin extends Admin
                     'description'          => array(
                         'label'              => 'form.mdf.conference_program.description',
                         'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfProgramSpeakerTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     )
                 )
             ))

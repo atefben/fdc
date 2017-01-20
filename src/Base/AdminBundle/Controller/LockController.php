@@ -125,6 +125,11 @@ class LockController extends Controller
         'gallerymdf' => 'GalleryMdf',
         'servicewidget' => 'ServiceWidget',
         'servicewidgetproduct' => 'ServiceWidgetProduct',
+        'mdfconferenceprogramday' => 'MdfConferenceProgramDay',
+        'mdfconferenceprogramevent' => 'MdfConferenceProgramEvent',
+        'mdfprogramspeaker' => 'MdfProgramSpeaker',
+        'mdfconferencepartnertab' => 'MdfConferencePartnerTab',
+        'mdfconferencepartnerlogo' => 'MdfConferencePartnerLogo'
     );
 
     /**
@@ -264,23 +269,31 @@ class LockController extends Controller
             ));
         }
 
-        $trans = $master->findTranslationByLocale($locale);
-        if ($trans === null) {
-            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
-            $response->setStatusCode(400);
-            return $response->setData(array(
-                'message' => 'Impossible de vérifier l\'existence du verrou.'
-            ));
-        }
+        if(method_exists($master,'findTranslationByLocale')) {
+            $trans = $master->findTranslationByLocale($locale);
+            if ($trans === null) {
+                $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
+                $response->setStatusCode(400);
 
-        if ($trans->getLockedBy()) {
-            $data = array(
-                'locked' => true,
-                'lockedBy' => ($trans->getLockedBy()->getFullName() != ' ') ? $trans->getLockedBy()->getFullName() : $trans->getLockedBy()->getUsername()
-            );
+                return $response->setData(array(
+                                              'message' => 'Impossible de vérifier l\'existence du verrou.'
+                                          ));
+            }
+
+            if ($trans->getLockedBy()) {
+                $data = array(
+                    'locked'   => TRUE,
+                    'lockedBy' => ($trans->getLockedBy()->getFullName() != ' ') ? $trans->getLockedBy()->getFullName() : $trans->getLockedBy()->getUsername()
+                );
+            } else {
+                $data = array(
+                    'locked'   => FALSE,
+                    'lockedBy' => null
+                );
+            }
         } else {
             $data = array(
-                'locked' => false,
+                'locked'   => FALSE,
                 'lockedBy' => null
             );
         }
