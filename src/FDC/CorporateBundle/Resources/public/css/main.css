@@ -1993,8 +1993,7 @@ blockquote, .quote {
   color: #c8a461;
 }
 .contain-title p em, .contain-title ul em, .contain-title ol em {
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-family: "Camphor W01 Bold Italic", Arial, Helvetica, sans-serif;
 }
 .contain-title p strong, .contain-title ul strong, .contain-title ol strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -2526,14 +2525,14 @@ a {
   margin: 10px 0 0;
   text-align: left;
 }
-.text .cke_editable .big-txt {
+.text .big-txt {
   color: #333333;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   line-height: 40px;
   text-align: center;
 }
-.text .cke_editable .caption-article {
+.text .caption-article {
   color: #333333;
   font-size: 0.750rem;
   margin: 10px 0 0;
@@ -2541,6 +2540,13 @@ a {
   display: block;
   padding-top: 10px;
   border-top: 1px solid #dfdfdf;
+}
+.text .descrip-participate {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
 }
 
 html {
