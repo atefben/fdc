@@ -46,6 +46,7 @@ class WebviewController extends Controller
         $repository = $repositories[$type][$variant];
 
         $object = $this->getDoctrineManager()->getRepository($repository)->find($id);
+
         if (!$object) {
             throw $this->createNotFoundException("$repository ($id) not found");
         }
