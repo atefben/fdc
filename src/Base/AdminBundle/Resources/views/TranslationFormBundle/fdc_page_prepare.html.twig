@@ -32,8 +32,8 @@
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
                                             {{ form_row(form.parent.children.mainImage) }}
-                                            {{ form_row(translationsFields.title) }}
                                             {{ form_row(form.parent.children.mainIcon) }}
+                                            {{ form_row(translationsFields.title) }}
                                             {{ form_row(translationsFields.mainDescription) }}
                                             <span class="help-block sonata-ba-field-help">Dimensions attendues : 2560x1103. Format attendu : .jpg, .png, .gif</span>
                                         </div>
@@ -48,8 +48,8 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.arriveTitle) }}
                                             {{ form_row(form.parent.children.arriveIcon) }}
+                                            {{ form_row(translationsFields.arriveTitle) }}
                                             {{ form_row(form.parent.children.arriveDisplayInstit) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
@@ -83,9 +83,9 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(form.parent.children.informationIcon) }}
                                             {{ form_row(translationsFields.informationTitle) }}
                                             {{ form_row(translationsFields.informationDescription) }}
-                                            {{ form_row(form.parent.children.informationIcon) }}
                                             {{ form_row(form.parent.children.informationDisplayInstit) }}
                                             <div id="fdc-information-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
@@ -119,11 +119,11 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(form.parent.children.meetingIcon) }}
                                             {{ form_row(translationsFields.meetingTitle) }}
                                             {{ form_row(translationsFields.meetingDescription) }}
                                             {{ form_row(translationsFields.meetingLabel) }}
                                             {{ form_row(translationsFields.meetingUrl) }}
-                                            {{ form_row(form.parent.children.meetingIcon) }}
                                             {{ form_row(form.parent.children.meetingPdf) }}
                                             {{ form_row(form.parent.children.meetingDisplayInstit) }}
                                         </div>
@@ -137,9 +137,9 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.serviceTitle) }}
-                                            {{ form_row(translationsFields.serviceDescription) }}
                                             {{ form_row(form.parent.children.serviceIcon) }}
+                                            {{ form_row(translationsFields.serviceTitle) }}
+                                            {{ form_row(translationsFields.serviceDescription) }}                    
                                             {{ form_row(form.parent.children.serviceDisplayInstit) }}
                                         </div>
                                     </div>
@@ -217,10 +217,10 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(form.parent.children.arriveIcon) }}
                                             <div id="{{ locale }}-translation-arrivee-title">
                                                 {{ form_row(translationsFields.arriveTitle) }}
                                             </div>
-                                            {{ form_row(form.parent.children.arriveIcon) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.arriveWidgets.children %}
@@ -307,13 +307,13 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(form.parent.children.informationIcon) }}
                                             <div id="{{ locale }}-translation-information-title">
                                                 {{ form_row(translationsFields.informationTitle) }}
                                             </div>
                                             <div id="{{ locale }}-translation-information-description">
                                                 {{ form_row(translationsFields.informationDescription) }}
                                             </div>
-                                            {{ form_row(form.parent.children.informationIcon) }}
                                             <div id="fdc-information-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.informationWidgets.children %}
@@ -409,7 +409,9 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
+                                            
                                             <div id="{{ locale }}-translation-housing-title">
+                                                {{ form_row(form.parent.children.meetingIcon) }}
                                                 {{ form_row(translationsFields.meetingTitle) }}
                                             </div>
                                             <div id="{{ locale }}-translation-housing-description">
@@ -421,7 +423,6 @@
                                             <div id="{{ locale }}-translation-housing-url">
                                                 {{ form_row(translationsFields.meetingUrl) }}
                                             </div>
-                                            {{ form_row(form.parent.children.meetingIcon) }}
                                             {{ form_row(form.parent.children.meetingPdf) }}
                                         </div>
                                     </div>
@@ -492,12 +493,12 @@
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
                                             <div id="{{ locale }}-translation-more-title">
+                                            {{ form_row(form.parent.children.serviceIcon) }}
                                             {{ form_row(translationsFields.serviceTitle) }}
                                                 </div>
                                             <div id="{{ locale }}-translation-more-description">
                                             {{ form_row(translationsFields.serviceDescription) }}
                                                 </div>
-                                            {{ form_row(form.parent.children.serviceIcon) }}
                                         </div>
                                     </div>
                                 </div>
