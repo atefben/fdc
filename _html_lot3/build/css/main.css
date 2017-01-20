@@ -3398,6 +3398,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   height: 100%;
   max-width: 100%;
   width: 977px !important;
+  margin: 0 auto;
 }
 .block-push-top .txts {
   text-align: center;
