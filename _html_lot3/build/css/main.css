@@ -1994,6 +1994,7 @@ blockquote, .quote {
 }
 .contain-title p em, .contain-title ul em, .contain-title ol em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 .contain-title p strong, .contain-title ul strong, .contain-title ol strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -2485,6 +2486,61 @@ a {
   text-align: center;
   display: block;
   margin-bottom: 25px;
+}
+
+.text em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+.text .title-article {
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+}
+.text .sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.text .sub-title2 {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0px;
+}
+.text h3.sub-title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.text .little-txt {
+  color: #969696;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+}
+.text .cke_editable .big-txt {
+  color: #333333;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  line-height: 40px;
+  text-align: center;
+}
+.text .cke_editable .caption-article {
+  color: #333333;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+  display: block;
+  padding-top: 10px;
+  border-top: 1px solid #dfdfdf;
 }
 
 html {
