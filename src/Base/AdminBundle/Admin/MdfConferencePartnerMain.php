@@ -74,6 +74,10 @@ class MdfConferencePartnerMain extends Admin
                     )
                 )
             ))
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('partnerTabCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.partner_tab',

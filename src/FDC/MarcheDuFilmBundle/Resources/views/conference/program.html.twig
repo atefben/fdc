@@ -28,4 +28,7 @@
             {% endif %}
         </div>
     </div>
+    {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
 {% endblock %}

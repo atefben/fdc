@@ -31,6 +31,13 @@ class MdfConferencePartner
     protected $type;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isActive = false;
+
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection", mappedBy="conferencePartner", cascade={"persist", "remove"},orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
@@ -48,6 +55,26 @@ class MdfConferencePartner
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param $isActive
+     *
+     * @return $this
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 
     /**

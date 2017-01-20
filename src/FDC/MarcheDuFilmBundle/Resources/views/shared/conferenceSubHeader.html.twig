@@ -1,23 +1,32 @@
+{% set routeName = app.request.get('_route') %}
 <div class="text-presentation producersWorkshop mdf customClass1Bckg">
     <h3>{{ title }}</h3>
     <div class="subNavigation">
         <nav>
             <ul class="main">
                 <li>
-                    <a href="#" class="active customClass1">Accueil</a>
+                    <a href="{{ path('fdc_marche_du_film_conference_home', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_home' ? 'active customClass1' : '' }}">Accueil</a>
                 </li>
-                <li>
-                    <a href="#">conférences</a>
-                </li>
-                <li>
-                    <a href="#">intervenants</a>
-                </li>
-                <li>
-                    <a href="#">news</a>
-                </li>
-                <li>
-                    <a href="#">partenaires</a>
-                </li>
+                {% if programIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_program', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_program' ? 'active customClass1' : '' }}">conférences</a>
+                    </li>
+                {% endif %}
+                {% if speakersIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_speakers', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_speakers' ? 'active customClass1' : '' }}">intervenants</a>
+                    </li>
+                {% endif %}
+                {% if newsIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_news', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_news' ? 'active customClass1' : '' }}">news</a>
+                    </li>
+                {% endif %}
+                {% if partnersIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_partners', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_partners' ? 'active customClass1' : '' }}">partenaires</a>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="#">infos et contact</a>
                 </li>

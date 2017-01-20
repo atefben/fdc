@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ThemeController extends Controller
 {
     /**
-     * @Route("/{slug}/speakers")
+     * @Route("/{slug}/speakers", name="fdc_marche_du_film_conference_speakers")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -19,25 +19,37 @@ class ThemeController extends Controller
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
         $speakersManager = $this->get('mdf.manager.speakers');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
         $speakersPage = $speakersManager->getSpeakersPageByLocale($slug);
+
+        if(!$speakersPage) {
+            throw new NotFoundHttpException();
+        }
+
         $speakersTabs = $speakersManager->getSpeakersTabOnPage($speakersPage);
         $speakersList = $speakersManager->getSpeakersList($speakersTabs);
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:speakers.html.twig', [
-                'speakersPage' => $speakersPage,
-                'speakersTabs' => $speakersTabs,
-                'speakersList' => $speakersList,
-                'news' => $newsContent,
-                'contact' => $contact,
-            ]
+        $pageData = array(
+            'speakersPage' => $speakersPage,
+            'speakersTabs' => $speakersTabs,
+            'speakersList' => $speakersList,
+            'news' => $newsContent,
+            'contact' => $contact,
         );
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'speakersIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:speakers.html.twig', $pageData);
     }
 
     /**
-     * @Route("/{slug}/programme")
+     * @Route("/{slug}/programme", name="fdc_marche_du_film_conference_program")
      * @param Request $request
      * @param         $slug
      *
@@ -46,6 +58,8 @@ class ThemeController extends Controller
     public function programAction(Request $request, $slug)
     {
         $conferenceProgramManager = $this->get('mdf.manager.conference_program');
+        $contactManager = $this->get('mdf.manager.contact');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
         $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageBySlug($slug);
 
@@ -59,18 +73,26 @@ class ThemeController extends Controller
         $programDaysEvents = $conferenceProgramManager->getEventsPerDays($programDays);
         $eventsSpeakers = $conferenceProgramManager->getSpeakersPerEvent($programDaysEvents);
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig', [
-                 'conferenceProgram' => $conferenceProgramPage,
-                 'contentTemplateWidgets' => $contentTemplateWidgets,
-                 'programDays' => $programDays,
-                 'programDaysEvents' => $programDaysEvents,
-                 'eventsSpeakers' => $eventsSpeakers
-             ]
+        $contact = $contactManager->getContactInfo();
+        $pageData = array(
+            'conferenceProgram' => $conferenceProgramPage,
+            'contentTemplateWidgets' => $contentTemplateWidgets,
+            'programDays' => $programDays,
+            'programDaysEvents' => $programDaysEvents,
+            'eventsSpeakers' => $eventsSpeakers,
+            'contact' => $contact
         );
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'programIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig', $pageData);
     }
 
     /**
-     * @Route("/{slug}/partenaires")
+     * @Route("/{slug}/partenaires", name="fdc_marche_du_film_conference_partners")
      *
      * @param Request $request
      * @param         $slug
@@ -80,6 +102,8 @@ class ThemeController extends Controller
     public function partnerAction(Request $request, $slug)
     {
         $conferencePartnerManager = $this->get('mdf.manager.conference_partner');
+        $contactManager = $this->get('mdf.manager.contact');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
         $conferencePartnersPage = $conferencePartnerManager->getConferencePartnerPageBySlug($slug);
 
@@ -90,16 +114,41 @@ class ThemeController extends Controller
         $conferencePartnersTabs = $conferencePartnerManager->getConferencePartnerTabWidgets($conferencePartnersPage);
         $conferencePartnersLogos = $conferencePartnerManager->getLogosPerTabs($conferencePartnersTabs);
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:partners.html.twig', [
-                 'conferencePartnersPage' => $conferencePartnersPage,
-                 'conferencePartnersTabs' => $conferencePartnersTabs,
-                 'conferencePartnersLogos' => $conferencePartnersLogos
-             ]
+        $contact = $contactManager->getContactInfo();
+
+        $pageData = array(
+            'conferencePartnersPage' => $conferencePartnersPage,
+            'conferencePartnersTabs' => $conferencePartnersTabs,
+            'conferencePartnersLogos' => $conferencePartnersLogos,
+            'contact' => $contact
         );
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'partnersIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:partners.html.twig', $pageData);
     }
 
     /**
-     * @Route("/{slug}/actualite")
+     * @Route("/{slug}/home", name="fdc_marche_du_film_conference_home")
+     */
+    public function homeAction(Request $request, $slug)
+    {
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextUrl = $conferencePagesManager->getHomeNextUrl($pagesStatus);
+
+        $pageData = array_merge($contentTemplateManager->getPageData($slug), $pagesStatus, $nextUrl);
+
+        return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $pageData);
+    }
+
+    /**
+     * @Route("/{slug}/actualite", name="fdc_marche_du_film_conference_news")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -108,6 +157,7 @@ class ThemeController extends Controller
         $conferenceNewsPageManager = $this->get('mdf.manager.conference_news_page');
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
         $conferenceNewsPage = $conferenceNewsPageManager->getConferenceNewsPageBySlug($slug);
         $newsContent = $contentTemplateManager->getNewsContent([$slug]);
@@ -117,12 +167,18 @@ class ThemeController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:news/show.html.twig', [
-                'newsPageContent' => $conferenceNewsPage,
-                'news' => $newsContent,
-                'conferenceTitle' => $slug,
-                'contact' => $contact,
-            ]
+        $pageData = array(
+            'newsPageContent' => $conferenceNewsPage,
+            'news' => $newsContent,
+            'conferenceTitle' => $slug,
+            'contact' => $contact,
         );
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'newsIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:news/show.html.twig', $pageData);
     }
 }

@@ -5,6 +5,9 @@
         {% if isWhoAreWe %}
             {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
         {% endif %}
+        {% if isConference %}
+            {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': titleHeader.title} %}
+        {% endif %}
         <div class="bigContainer">
             <div class="text-presentation projection presse whoarewe">
                 {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockTitleHeader.html.twig' with {'titleHeader': titleHeader} %}
@@ -27,6 +30,18 @@
     </div>
     {% if isWhoAreWe %}
         {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRoute': nextRoute, 'backRoute': backRoute} %}
+    {% endif %}
+    {% if isConference %}
+        {% if nextRouteName %}
+            <div class="floatingButtonRight">
+                <div class="arrow showRight">
+                    <i class='icon icon_flecheGauche reverse'></i>
+                </div>
+                <a href="{{ path(nextRouteName, {'slug': slug}) }}">
+                    <div class="floatingButtonText showRight">{{ nextRouteLabel }}</div>
+                </a>
+            </div>
+        {% endif %}
     {% endif %}
     {% if isPresentation %}
         {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}

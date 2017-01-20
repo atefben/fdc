@@ -36,6 +36,13 @@ class MdfConferenceNewsPage
     protected $translations;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isActive = false;
+
+    /**
      * MdfConferencePartner constructor.
      */
     public function __construct()
@@ -50,6 +57,26 @@ class MdfConferenceNewsPage
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param $isActive
+     *
+     * @return $this
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 
     /**

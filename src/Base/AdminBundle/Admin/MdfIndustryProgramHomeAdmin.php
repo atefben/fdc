@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -15,8 +16,8 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class MdfIndustryProgramHomeAdmin extends MdfContentTemplateAdmin
 {
-    protected $baseRoutePattern = 'mdfindustryprogramhome';
-    protected $baseRouteName = 'mdf_industry_program_home';
+    protected $baseRoutePattern = 'mdfindustryprogramhomepw';
+    protected $baseRouteName = 'mdf_industry_program_home_pw';
 
     public function createQuery($context = 'list')
     {
@@ -24,7 +25,7 @@ class MdfIndustryProgramHomeAdmin extends MdfContentTemplateAdmin
         $query->andWhere(
             $query->expr()->eq($query->getRootAlias().'.type', ':type')
         );
-        $query->setParameter('type', MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME);
+        $query->setParameter('type', MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP);
 
         return $query;
     }
@@ -32,6 +33,6 @@ class MdfIndustryProgramHomeAdmin extends MdfContentTemplateAdmin
     public function prePersist($page)
     {
         parent::prePersist($page);
-        $page->setType(MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME);
+        $page->setType(MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP);
     }
 }

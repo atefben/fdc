@@ -65,6 +65,10 @@ class MdfConferenceNewsPageMain extends Admin
                     )
                 )
             ))
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
         ;
     }
 }

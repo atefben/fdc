@@ -476,6 +476,11 @@ admin:
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
+        mdf_producers_network: Producers Network
+        mdf_doc_corner: Doc Corner
+        mdf_next: Next
+        mdf_mixers: Mixers
+        mdf_goes_to_cannes: Goes to Cannes
 
 
 dashboard:
@@ -604,6 +609,7 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     mdf:
+        active: Is Active?
         gallery: Galeries
         status:
             inactive: Actif

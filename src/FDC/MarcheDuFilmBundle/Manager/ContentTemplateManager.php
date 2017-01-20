@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile;
@@ -32,6 +33,7 @@ class ContentTemplateManager
         $isPresentation = false;
         $nextRoute = null;
         $backRoute = null;
+        $isConference = null;
         switch ($routeName) {
             case 'fdc_marche_du_film_edition_presentation':
                 $pageType = MdfContentTemplate::TYPE_EDITION_PRESENTATION;
@@ -60,6 +62,30 @@ class ContentTemplateManager
                 break;
             case 'fdc_marche_du_film_general_conditions':
                 $pageType = MdfContentTemplate::TYPE_GENERAL_CONDITIONS;
+                break;
+            case 'producers-workshop':
+                $pageType = MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP;
+                $isConference = true;
+                break;
+            case 'producers-network':
+                $pageType = MdfConferenceProgram::TYPE_PRODUCERS_NETWORK;
+                $isConference = true;
+                break;
+            case 'doc-corner':
+                $pageType = MdfConferenceProgram::TYPE_DOC_CORNER;
+                $isConference = true;
+                break;
+            case 'next':
+                $pageType = MdfConferenceProgram::TYPE_NEXT;
+                $isConference = true;
+                break;
+            case 'mixers':
+                $pageType = MdfConferenceProgram::TYPE_MIXERS;
+                $isConference = true;
+                break;
+            case 'goes-to-cannes':
+                $pageType = MdfConferenceProgram::TYPE_GOES_TO_CANNES;
+                $isConference = true;
                 break;
         }
 
@@ -94,7 +120,8 @@ class ContentTemplateManager
             'nextRoute' => $nextRoute,
             'backRoute' => $backRoute,
             'isPresentation' => $isPresentation,
-            'contact' => $contact
+            'contact' => $contact,
+            'isConference' => $isConference
         );
     }
 
