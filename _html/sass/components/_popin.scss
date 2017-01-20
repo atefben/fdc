@@ -11,7 +11,20 @@
     opacity: 0.8;
     visibility: visible;
     cursor: pointer;
+    opacity: 0.8;
+    visibility: visible;
+    background-color: $black;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    @include transition(all 0.5s $smoothTransition);
 }
+
 .popin-mail{
   visibility: hidden;
   opacity: 0;
