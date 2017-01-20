@@ -16078,7 +16078,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   .dark .title, .dark .title-item, .dark .caption {
     color: #000 !important;
   }
-  .dark .quote, .dark .article-single.dark .table-article td, .dark .article-single .dark .table-article th, .dark .single-movie.dark .table-article td, .dark .single-movie .dark .table-article th {
+  .dark .quote, .dark .table-article td, .dark .table-article th, .dark .table-article td, .dark .table-article th {
     border-color: #ccc !important;
   }
 
