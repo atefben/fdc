@@ -67,6 +67,26 @@ class ContentTemplateManager
                 $pageType = MdfConferenceProgram::TYPE_PRODUCERS_WORKSHOP;
                 $isConference = true;
                 break;
+            case 'producers-network':
+                $pageType = MdfConferenceProgram::TYPE_PRODUCERS_NETWORK;
+                $isConference = true;
+                break;
+            case 'doc-corner':
+                $pageType = MdfConferenceProgram::TYPE_DOC_CORNER;
+                $isConference = true;
+                break;
+            case 'next':
+                $pageType = MdfConferenceProgram::TYPE_NEXT;
+                $isConference = true;
+                break;
+            case 'mixers':
+                $pageType = MdfConferenceProgram::TYPE_MIXERS;
+                $isConference = true;
+                break;
+            case 'goes-to-cannes':
+                $pageType = MdfConferenceProgram::TYPE_GOES_TO_CANNES;
+                $isConference = true;
+                break;
         }
 
         $titleHeader = $this->getTitleHeaderContent($pageType);
