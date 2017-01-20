@@ -89,3 +89,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.conference_pages:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferencePagesManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

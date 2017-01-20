@@ -4,20 +4,28 @@
         <nav>
             <ul class="main">
                 <li>
-                    <a href="#" class="active customClass1">Accueil</a>
+                    <a href="{{ path('fdc_marche_du_film_conference_home', {'slug': slug}) }}" class="active customClass1">Accueil</a>
                 </li>
-                <li>
-                    <a href="#">conférences</a>
-                </li>
-                <li>
-                    <a href="#">intervenants</a>
-                </li>
-                <li>
-                    <a href="#">news</a>
-                </li>
-                <li>
-                    <a href="#">partenaires</a>
-                </li>
+                {% if programIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_program', {'slug': slug}) }}">conférences</a>
+                    </li>
+                {% endif %}
+                {% if speakersIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_speakers', {'slug': slug}) }}">intervenants</a>
+                    </li>
+                {% endif %}
+                {% if newsIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_news', {'slug': slug}) }}">news</a>
+                    </li>
+                {% endif %}
+                {% if partnersIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_partners', {'slug': slug}) }}">partenaires</a>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="#">infos et contact</a>
                 </li>
