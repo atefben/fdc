@@ -15,7 +15,7 @@
                                         <div class="confPeople">
                                             <hr>
                                             <h6 class="confDetails">Intervenants</h6>
-                                            {% for item in eventsSpeakers[event.id] %}
+                                            {% for item in eventsSpeakers[event.translatable.id] %}
                                                 <div class="quarterWidth">
                                                     <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
                                                     <div class="name">

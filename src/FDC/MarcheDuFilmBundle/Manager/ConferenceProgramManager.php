@@ -91,7 +91,7 @@ class ConferenceProgramManager
 
                 usort($programDays, function($a, $b)
                 {
-                    return $a > $b;
+                    return $a->getDate() > $b->getDate();
                 });
 
                 return $programDays;
