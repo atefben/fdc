@@ -10,8 +10,30 @@
     background-color: #fff !important;
   }
 
-  nav, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
+  nav, #cookies-banner, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
     display: none;
+  }
+
+  .dark {
+    color: #000 !important;
+    background-color: #fff !important;
+
+    .block-movie-preview .name-f, .wysiwyg-article-02 h2, .wysiwyg-article-02 h3, .wysiwyg-article-02 .contain-title p, .wysiwyg-article-02 .contain-title h3, .wysiwyg-article-02 .contain-title h5 {
+      color: #000 !important;
+    }
+
+    .wysiwyg-article-02 .text p strong, .wysiwyg-article-02 .text ul strong, .wysiwyg-article-02 .text ol strong {
+      color: #000 !important;
+    }
+
+    .title,  .title-item, .caption {
+      color: #000 !important;
+    }
+
+  }
+
+  .block-movie-preview .bck-hover {
+    background-color: #fff !important;
   }
 
   .slides {
