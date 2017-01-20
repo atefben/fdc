@@ -181,3 +181,7 @@ services:
             - { name: twig.extension }
         calls:
           - ['setDoctrine', ['@doctrine']]
+    base.twig.site_extension:
+        class: Base\CoreBundle\Twig\Extension\SiteExtension
+        tags:
+            - { name: twig.extension }
