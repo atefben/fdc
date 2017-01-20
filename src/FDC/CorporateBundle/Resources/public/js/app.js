@@ -4372,8 +4372,8 @@ var openSlideShow = function (slider, hash) {
     }
 
     /* Initiliasion du slideshow fullscreen*/
-    $('body').prepend('<div class="c-fullscreen-slider"><div class="fullscreen-slider"> </div></div>');
-    var fullscreen = $('body').find(".fullscreen-slider");
+    $('body').prepend('<div class="c-fullscreen-slider animated fadeIn"><div class="fullscreen-slider"> </div></div>');
+    var fullscreen = $('body').find(".fullscreen-slider");s
 
     var wSlide = w * images.length + 100;
     var wSlide = wSlide + "px";
