@@ -58,7 +58,7 @@
     padding-left: 21px;
 
     .image {
-      height: 363px;
+      height: 362px;
 
       .evenements &, .articles-list &  {
         width: 89.9%;
@@ -158,6 +158,7 @@
 
         .evenements &, .articles-list &  {
           min-height: initial !important;
+          display: block;
         }
 
         max-width: 100%;
@@ -214,35 +215,46 @@
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-  height: 201px;
+  //height: 202px;
   position: relative;
+  height: auto;
+
+  .image .image-wrapper, &.card.w2.double {
+    height: auto;
+  }
+
+  .image .image-wrapper img {
+    min-height: initial;
+    position: relative;
+    display: block;
+  }
 
   &.double {
     .image {
       margin-bottom: 0px;
-      height: 100%;
+      height: auto;
     }
   }
 
   &.double.w2 {
-    height: 402px;
+    //height: 404px;
     padding-left: 0px;
 
     .image {
-      height: 100%;
+      height: auto;
     }
   }
 
   .image {
     margin-bottom: 0px;
-    height: 100%;
+    height: auto;
   }
 
   .info {
     position: absolute;
     text-align: left;
-    bottom: 20px;
-    left: 20px;
+    bottom: 15px;
+    left: 15px;
     z-index: 3;
 
     strong {
@@ -278,7 +290,7 @@
   }
 
   &.portrait {
-    height: 402px;
+    height: auto;
   }
 }
 

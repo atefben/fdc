@@ -308,7 +308,7 @@ class NewsController extends Controller
                 $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-
+                
                 $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
                 $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             }
@@ -387,8 +387,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
-     *     options={"expose"=true})
+     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},options={"expose"=true})
      * @Template("FDCEventBundle:News:main.html.twig")
      * @param $slug
      * @return array

@@ -2,26 +2,48 @@
 
 {% block field %}
     <div>
-        {% set trans = object.findTranslationByLocale('fr') %}
-        {% if trans and trans.slug %}
-            {% if
+        {% if object|is_published_on('site-evenementiel') %}
+            {% set trans = object.findTranslationByLocale('fr') %}
+            {% if trans and trans.slug and trans.status == 1 %}
+                {% if
                 object is news_article or
                 object is news_video or
                 object is news_audio or
-                object is news_image
-            %}
-                <a target="_blank" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
-                    <i class="fa fa-search"></i>
-                </a>
-            {% else %}
-                {% if class(object) starts with 'S' %}
-                    {% set type = 'communique' %}
+                object is news_image %}
+                    <p>
+                        <a target="_blank"
+                           href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                            <i class="fa fa-search"></i>
+                            Site événementiel
+                        </a>
+                    </p>
+                {% else %}
+                    {% if class(object) starts with 'S' %}
+                        {% set type = 'communique' %}
                     {% else %}
-                    {% set type = 'info' %}
+                        {% set type = 'info' %}
+                    {% endif %}
+                    <p>
+                        <a target="_blank"
+                           href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                            <i class="fa fa-search"></i>
+                            Site événementiel
+                        </a>
+                    </p>
                 {% endif %}
-                    <a target="_blank" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+            {% endif %}
+        {% endif %}
+        {% if object|is_published_on('site-institutionnel') %}
+            {% set trans = object.findTranslationByLocale('fr') %}
+            {% set format = object|get_news_format_slug %}
+            {% if trans and trans.slug and format and trans.status == 1 %}
+                <p>
+                    <a target="_blank"
+                       href="{{ path('fdc_corporate_news_get', {'year': object.festival.year, 'format': format, 'slug': trans.slug}) }}">
                         <i class="fa fa-search"></i>
+                        Site institutionnel
                     </a>
+                </p>
             {% endif %}
         {% endif %}
     </div>

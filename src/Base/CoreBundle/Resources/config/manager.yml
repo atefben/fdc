@@ -20,3 +20,8 @@ services:
 
     base.manager.bitly:
         class: Base\CoreBundle\Manager\BitlyManager
+
+    base.variable:
+        class: Base\CoreBundle\Manager\VariableManager
+        calls:
+            - ['setDoctrine', ['@doctrine']]

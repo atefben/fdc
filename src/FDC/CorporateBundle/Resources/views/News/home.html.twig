@@ -394,14 +394,13 @@
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
                     
-                <a href="ajax_more_news.html"
-               data-reverse="ajax_more_news-reverse.html" class="read-more ajax-request">Afficher
+                <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse="" class="read-more ajax-request">Afficher
                 <strong>plus d'infos</strong></a>
                 {% endif %}
             </div> <!-- end block 01-->
 
             {% if homepage.displayedVideo == false %}
-                {% if featuredVideo is defined and featuredVideo != null %}
+               {% if featuredVideo is defined and featuredVideo != null %} 
                     {# if featuredVideo is not null and featuredVideo.jobMp4State == 3 #}
                     <div class="block-02">
 

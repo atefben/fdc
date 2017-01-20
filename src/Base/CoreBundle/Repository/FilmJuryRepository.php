@@ -47,14 +47,17 @@ class FilmJuryRepository extends EntityRepository
 
     public function getJurysByType($festival, $locale, $type)
     {
+        if (!is_array($type)) {
+            $type = array($type);
+        }
         $qb = $this->createQueryBuilder('j');
 
         $qb
             ->join('j.person', 'p')
             ->andWhere('p.firstname IS NOT NULL')
             ->andWhere('p.lastname IS NOT NULL')
-            ->andWhere('j.type = :type')
-            ->setParameter('type', $type)
+            ->andWhere('j.type in (:type)')
+            ->setParameter(':type', $type)
         ;
 
         $this->addMasterQueries($qb, 'j', $festival, false);

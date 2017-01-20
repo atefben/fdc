@@ -6,3 +6,9 @@ services:
             - ['setApiVersion', ['%api_version%']]
             - ['setApiPageOffset', ['%api_page_offset%']]
             - ['setKnpPaginator', ['@knp_paginator']]
+    base.api.serialization_listener:
+        class: Base\ApiBundle\EventListener\SerializationListener
+        tags:
+            - {name: jms_serializer.event_subscriber}
+        calls:
+            - ['setMediaImageProvider', ['@sonata.media.provider.image']]

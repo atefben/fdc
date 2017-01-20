@@ -25,7 +25,7 @@
     text-decoration: none;
 }
 .cke_editable ul {
-    list-style: none;
+    list-style: circle;
 }
 
 .cke_editable ul li strong {

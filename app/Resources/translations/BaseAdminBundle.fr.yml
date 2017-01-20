@@ -578,6 +578,19 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    mobile_settings:
+        title: Applications mobiles
+        ios_version: Numéro de version iOS
+        android_version: Numéro de version Android
+        countdown: Décompte
+        countdown_time: Date décompte
+        mobile_redirect: Redirection mobile
+        mobile_redirect_url: URL site mobile
+        save: Enregistrer
+    label_mobile_display: Affichage mobile
+    label_mobile_display_big: Grand format
+    label_mobile_display_main: En une
+    label_is_big: Afficher la news grand format dans l'app
     label_display_accredit: Désactiver cette strate
     label_display_reglement: Désactiver cette strate
     label_display_inscription: Désactiver cette strate
@@ -1185,3 +1198,4 @@ FDCPageLaSelection: Page la sélection
 FilmJuryType: Type des jurys
 FilmSelectionSection: Sélections
 mobile_notification: Notifications mobiles
+Statement: Communiqué

@@ -105,6 +105,7 @@ class NewsController extends Controller
             'articles' => $articles,
             'filters'  => $filters,
             'festivals'  => $festivals,
+            'festival'              => $festival,
         );
     }
 
@@ -371,7 +372,10 @@ class NewsController extends Controller
         }
 
         // GET NEWS
-        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format]);
+        $siteSlug = 'site-institutionnel';
+        $news = $this->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format], $siteSlug);
 
         if ($news === null) {
             throw new NotFoundHttpException();

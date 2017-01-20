@@ -76,6 +76,7 @@ var owArrowDisplay = function () {
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
+       $('.block-push').css('background-position', '0px -10px');
 
         $(window).on('scroll', function () {
 
@@ -83,7 +84,7 @@ var onInitParallax = function () {
                 var s = $(this).scrollTop() - 100;
                 $('.block-push').css('background-position', '0px ' + s + 'px');
             } else {
-                $('.block-push').css('background-position', '0px ' + '0px');
+                $('.block-push').css('background-position', '0px ' + '-240px');
             }
 
         });

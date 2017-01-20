@@ -21,18 +21,6 @@ var gulp          = require('gulp'),
 gulp.task('jshint', function(){
   return gulp.src(config.destSrc)
     .pipe(jshint('.jshintrc'))
-    .pipe(notify(function(file){
-      if(file.jshint.success){
-        return false;
-      }
-
-      var errors = file.jshint.results.map(function(data){
-        if(data.error){
-          return "(" + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
-        }
-      }).join('\n');
-      return file.relative + " (" + file.jshint.results.length + " errors)\n" + errors;
-    }));
 });
 
 gulp.task('scripts:vendors', function(){
@@ -46,5 +34,5 @@ gulp.task('scripts:app', function(){
   return gulp.src(config.src)
     .pipe(concat('app.js'))
     .pipe(options.production ? uglify() : gutil.noop())
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
 });

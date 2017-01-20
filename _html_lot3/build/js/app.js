@@ -144,7 +144,7 @@ var initVideo = function(hash) {
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
-            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
+            var shareUrl = document.location.href;
         }
 
         // CUSTOM LINK FACEBOOK
@@ -263,7 +263,7 @@ var initVideo = function(hash) {
             if($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref   = facebookLink;
@@ -672,7 +672,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -774,7 +774,7 @@ var initVideo = function(hash) {
             if ($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
             } else {
-                var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + vid;
+                var shareUrl = document.location.href;
             }
 
             var fbHref = facebookLink;
@@ -957,7 +957,7 @@ b
 
 var owInitAjax = function() {
 
-  $('.ajax-section nav a').on('click', function(e){
+  $('.ajax-section nav li:not(.active) a').on('click', function(e){
     e.preventDefault;
 
     var url = $(this).attr('href');
@@ -1442,7 +1442,7 @@ var initAudio = function (hash) {
 
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -1537,7 +1537,7 @@ var initAudio = function (hash) {
             }, 900);
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -2138,6 +2138,16 @@ var owInitGrid = function (id) {
                     } else {
                         var text = title.attr('data-title');
                     }
+
+                    var cat = $(e).find('.info .category');
+
+                    if (!cat.hasClass('init')) {
+                        var text2 = cat.text();
+                        cat.addClass('init');
+                        cat.attr('data-cat', text2);
+                    } else {
+                        var text2 = cat.attr('data-title');
+                    }
     
     
                     if($('.medias').length > 0) {
@@ -2145,11 +2155,12 @@ var owInitGrid = function (id) {
                         if (window.matchMedia("(max-width: 1405px)").matches) {
                             title.html(text.trunc(25, true));
                         }else{
-                            title.html(text.trunc(40, true));
+                            title.html(text.trunc(30, true));
                         }
     
                     } else {
-                        title.html(text.trunc(60, true));
+                        title.html(text.trunc(30, true));
+                        cat.html(text2.trunc(30, true));
                     }
                 });
             }
@@ -2183,6 +2194,15 @@ var owInitGrid = function (id) {
             });
         });
 
+
+        if($('.who-filter').length) {
+            var active = $('.filter .select span.active').data('filter');
+
+            $('.pages:not(.'+active+')').css('display','none');
+            $('.pages.'+active).css('display','block');
+
+            console.log(active);
+        }
 
         return $grid;
     }
@@ -2945,6 +2965,7 @@ var owArrowDisplay = function () {
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
+       $('.block-push').css('background-position', '0px -10px');
 
         $(window).on('scroll', function () {
 
@@ -2952,7 +2973,7 @@ var onInitParallax = function () {
                 var s = $(this).scrollTop() - 100;
                 $('.block-push').css('background-position', '0px ' + s + 'px');
             } else {
-                $('.block-push').css('background-position', '0px ' + '0px');
+                $('.block-push').css('background-position', '0px ' + '-240px');
             }
 
         });
@@ -3631,9 +3652,15 @@ var owInitSlider = function (sliderName) {
             textTrunc.html(textI.trunc(400, false));
         });
 
-        $('.slider-home').on('click', function(){
-            var href = $('.owl-item.active .coverLink').attr('href');
-            window.location.href = href;
+        $('.slider-home').on('click', function(e){
+
+            if($(e.target).hasClass('owl-dot')){
+                return false;
+            }else{
+                var href = $('.owl-item.active .coverLink').attr('href');
+                window.location.href = href;
+            }
+
         })
 
 
@@ -3730,19 +3757,22 @@ var owInitSlider = function (sliderName) {
                 e.preventDefault();
                 var url = $(this).data('url');
 
+                $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
+                $('.timelapse').css('display', 'none');
+                $('.discover').css('display', 'none');
+                $('.slides-calc2').css('display', 'none');
+                $('.title-big-date').addClass('title-2').removeClass('title-big-date');
+                $('.title-edition').addClass('title-4').removeClass('title-edition');
+
+                var imgurl = $('.block-push-top.big .container img').attr('src');
+                $('.block-push-top.big .container img').css('display', 'none');
+
+                $('.block-push').css('background-position', '0px -240px');
+                $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
+
                 $.get(url, function (data) {
 
-                    $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
-                    $('.timelapse').css('display', 'none');
-                    $('.discover').css('display', 'none');
-                    $('.slides-calc2').css('display', 'none');
-                    $('.title-big-date').addClass('title-2').removeClass('title-big-date');
-                    $('.title-edition').addClass('title-4').removeClass('title-edition');
 
-                    var imgurl = $('.block-push-top.big .container img').attr('src');
-                    $('.block-push-top.big .container img').css('display', 'none');
-
-                    $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                     var data = $(data).find('.contain-ajax');
 
@@ -3954,7 +3984,7 @@ var owInitSlider = function (sliderName) {
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = -w * (values - 1945) - 10; //todo script ?
+            var val = -w * (values - 1945); //todo script ?
             var slideElement = $('.slider-restropective[data-slide=' + number + ']');
             var slideElementText = $('.slider-restropective[data-slide=' + number + '] .texts');
 
@@ -4032,18 +4062,22 @@ var owInitSlider = function (sliderName) {
 
         if ($('.restrospective-init').length) {
 
-            var nm = isMac ? 4 : 21;
-            var w = $('body').width() + nm;
-            values = $('.slides-calc1 .date').data('date');
+            setTimeout(function(){
+                var nm = isMac ? 4 : 21;
+                var w = $('body').width() + nm;
+                values = $('.slides-calc1 .date').data('date');
 
-            slider.noUiSlider.set([values]);
+                slider.noUiSlider.set([values]);
 
-            number = values - 1945;
-            var val = -w * (values - 1945) - 10; //todo script
+                number = values - 1945;
+                var val = -w * (values - 1945); //todo script
 
-            $slide.css('transform', 'translate(' + val + 'px)');
+                $slide.css('transform', 'translate(' + val + 'px)');
 
-            animationOpen();
+                animationOpen();
+
+            }, 1000);
+
         }
     }
 };
@@ -4198,8 +4232,6 @@ var openSlideShow = function (slider, hash) {
                 isPortrait: isPortrait
             };
 
-            console.log(image);
-
             images.push(image);
         }
     });
@@ -4294,7 +4326,7 @@ var openSlideShow = function (slider, hash) {
         w = $(window).width();
 
         centerElement = parseInt(id);
-        translate = -(w + 1) * centerElement;
+        translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
 
         setTimeout(function () {
@@ -4379,7 +4411,7 @@ var openSlideShow = function (slider, hash) {
         }
     }
 
-    var translate = (w + 1) * centerElement;
+    var translate = (w + 0) * centerElement;
     translate = -translate + "px";
 
 
@@ -4586,7 +4618,7 @@ var openSlideShow = function (slider, hash) {
 
     $(window).resize(function () {
         w = $(window).width();
-        translate = -(w + 1) * centerElement;
+        translate = -(w + 0) * centerElement;
         $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
     });
 
@@ -4921,8 +4953,7 @@ $(document).ready(function() {
           }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status);
-          alert(thrownError);
+
         }
       });
     }
@@ -5406,6 +5437,9 @@ $(document).ready(function () {
     }
 
     if ($('.articles-list-medias').length) {
+
+        owInitNavSticky(1);
+
 
         var grid = owInitGrid('isotope-01');
 

@@ -318,7 +318,7 @@ var initAudio = function (hash) {
 
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -413,7 +413,7 @@ var initAudio = function (hash) {
             }, 900);
 
             // CUSTOM LINK FACEBOOK
-            var shareUrl = GLOBALS.urls.videosUrl + '#aid=' + aid;
+            var shareUrl = document.location.href;
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));

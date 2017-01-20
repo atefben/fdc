@@ -360,12 +360,12 @@ class MovieController extends Controller
             ->findOneBy(['name' => 'Cannes Classics', 'locale' => 'fr'])
         ;
         if ($selectionSectionTrans) {
-            $movies = $this
+            $temp = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFilm')
                 ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTrans->getTranslatable()->getId())
             ;
-            if (count($movies)) {
+            if (count($temp)) {
                 $cannesClassics = $this
                     ->getDoctrineManager()
                     ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')
@@ -381,12 +381,12 @@ class MovieController extends Controller
             ->findOneBy(['name' => 'Cinéma de la plage', 'locale' => 'fr'])
         ;
         if ($selectionSectionTrans) {
-            $movies = $this
+            $temp = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFilm')
                 ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTrans->getTranslatable()->getId())
             ;
-            if (count($movies)) {
+            if (count($temp)) {
                 $cinemaDelaPlage = true;
             }
         }
