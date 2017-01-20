@@ -1,0 +1,294 @@
+html {
+	font-size: 62.5%;
+}
+
+.Article {
+	&-wrapper {
+		font-family: "Open Sans";
+	}
+
+	&-video {
+		&-play {
+			position: absolute;
+			width: 3.8rem;
+			height: 5rem;
+			left: 50%;
+			margin-left: -1.9rem;
+			margin-top: 9.5rem;
+			z-index: 1;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	&-header {
+		video {
+			width: 100%;
+			display: block;
+			background: transparent 50% 50% / cover no-repeat;
+			height: 240px;
+		}
+
+		&-meta {
+			display: block;
+			height: 18px;
+			line-height: 18px;
+			font-size: 0.8rem;
+
+			&-category {
+				display: inline-block;
+				height: 100%;
+				text-transform: uppercase;
+				color: #fff;
+				background: #c9a45e;
+				padding: 0px 15px;
+			}
+
+			&-date {
+				text-transform: uppercase;
+				color: #bfbfbf;
+				padding-left: 10px;
+			}
+
+			&-misc {
+				font-size: 0.6rem;
+				float: right;
+				padding-right: 12px;
+				color: #666666;
+
+				strong {
+					color: #212121;
+				}
+			}
+		}
+	}
+
+	&-content {
+		padding: 25px 20px 15px 20px;
+		font-size: 1.4em;
+
+		h1 {
+			font-family: "Playfair Display";
+			font-weight: bold;
+			font-size: 2.8rem;
+			line-height: 3rem;
+			padding-bottom: 4rem;
+		}
+
+		p, strong {
+			display: block;
+			font-family: "Open Sans";
+			padding-bottom: 1.6rem;
+			line-height: 2.2rem;
+		}
+	}
+
+	&-slider {
+		&-wrapper {
+			position: relative;
+		}
+
+		&-prev, &-next {
+			position: absolute;
+			width: 21px;
+			height: 40px;
+			background: url(img/article/slider-prev.png) no-repeat top left;
+			background-size: 100%;
+			z-index: 1;
+			top: 50%;
+			left: 0;
+			margin-top: -20px;
+		}
+
+		 &-next {
+		 	background: url(img/article/slider-next.png) no-repeat top left;
+		 	background-size: 100%;
+		 	left: auto;
+		 	right: 0;
+		 }
+
+		&-item {
+			float: left;
+			width: 100vw;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		&-caption {
+			height: 25px;
+			line-height: 25px;
+			font-size: 0.8rem;
+
+			strong {
+				display: inline;
+			}
+		}
+
+		&-count {
+			position: absolute;
+			font-size: 1.1rem;
+			color: #bfbfbf;
+			right: 0px;
+			bottom: 0px;
+			strong {
+				display: inline;
+				color: #212121;
+			}
+		}
+	}
+
+	&-push {
+		background: #141414;
+
+		> * {
+			width: 50%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&-image {
+			text-align: center;
+			padding: 35px 0;
+			img {
+				display: inline-block;
+				width: 80%;
+			}
+		}
+
+		&-content {
+			font-family: "Camphor W01 Heavy";
+			strong {
+				color: #919191;
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				display: block;
+				padding-bottom: 1.3rem;
+				letter-spacing: 1px;
+			}
+
+			h3 {
+				color: #fff;
+				font-size: 1.8rem;
+				line-height: 2.2rem;
+				text-transform: uppercase;
+				padding-bottom: 1.3rem;
+			}
+
+			span {
+				display: block;
+				font-style: italic;
+				color: #c8a461;
+				font-size: 0.9rem;
+
+				&:after {
+					content: "";
+					width: 25px;
+					display: block;
+					height: 1px;
+					margin-top: 1.3rem;
+					background: #2a2a2a;
+				}
+			}
+
+			p {
+				display: block;
+				font-size: 0.9rem;
+				line-height: 1.5rem;
+				color: #919191;
+				padding-top: 1.3rem;
+			}
+		}
+	}
+
+	&-related {
+		h2 {
+			padding-top: 80px;
+			padding-bottom: 70px;
+			font-size: 1.2rem;
+			letter-spacing: 0.5rem;
+			text-transform: uppercase;
+			font-family: "Playfair Display";
+			font-weight: bold;
+			text-align: center;
+		}
+
+		&-slider {
+			&-item {
+				float: left;
+				display: inline-block;
+				width: 85vw;
+				padding-left: 1.5rem;
+
+				&:last-child {
+					padding-right: 3.3rem;
+				}
+				&-pictureWrap {
+					height: 16.25rem;
+					position: relative;
+					overflow: hidden;
+
+					img {
+						width: 100%;
+						display: block;
+					}
+
+					i {
+						width: 3.5rem;
+						height: 3.5rem;
+						border-radius: 1.75rem;
+						background: #fff;
+						display: inline-block;
+						position: absolute;
+						bottom: 1rem;
+						left: 1rem;
+
+						&.icon-article:after {
+							content: "";
+							width: 1.2rem;
+							height: 1rem;
+							display: block;
+							background: url(img/article/icons/icon-article.png) no-repeat left top;
+							background-size: 100%;
+							position: absolute; 
+							top: 1.2rem;
+							left: 1.1rem;
+						}
+					}
+				}
+			}
+
+			&-caption {
+				h4 {
+					display: inline-block;
+					color: #c9a45e;
+					text-transform: uppercase;
+					font-size: 1rem;
+					font-family: "Camphor W01 Heavy";
+					height: 3.5rem;
+					line-height: 3.5rem;
+				}
+
+				p {
+					display: inline-block;
+					font-family: "Camphor W01 Regular";
+					height: 3.5rem;
+					line-height: 3.5rem;
+					font-size: 1rem;
+					color: #b8b8b8;
+				}
+
+				strong {
+					display: block;
+					font-weight: normal;
+					font-family: "Playfair Display";
+					padding-bottom: 3.7rem;
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+}
