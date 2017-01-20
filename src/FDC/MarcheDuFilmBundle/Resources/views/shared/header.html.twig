@@ -73,7 +73,13 @@
                     <li id="edition">
                         <a href="{{ path('fdc_marchedufilm_default_index') }}" class="{{ routeName == 'fdc_marchedufilm_default_index'
                         or routeName == 'fdc_marche_du_film_edition_presentation'
-                        or routeName =='fdc_marche_du_film_edition_projections' ? 'active ' : '' }}red">Édition 2017
+                        or routeName =='fdc_marche_du_film_edition_projections'
+                        or routeName == 'fdc_marche_du_film_conference_home'
+                        or routeName == 'fdc_marche_du_film_conference_program'
+                        or routeName == 'fdc_marche_du_film_conference_speakers'
+                        or routeName == 'fdc_marche_du_film_conference_news'
+                        or routeName == 'fdc_marche_du_film_conference_partners'
+                        ? 'active ' : '' }}red">Édition 2017
                         </a>
                     </li>
                     <li>
@@ -122,13 +128,13 @@
                         </ul>
                     </li>
                     <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">producers workshop</a></li>
-                    <li><a href="#">producers network</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">producers network</a></li>
                 </ul>
                 <ul class="tright">
-                    <li><a href="#">Doc corner</a></li>
-                    <li><a href="#">Next</a></li>
-                    <li><a href="#">Mixers</a></li>
-                    <li><a href="#">Goes to Cannes</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">Doc corner</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">Next</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">Mixers</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">Goes to Cannes</a></li>
                 </ul>
             </div>
         </div>

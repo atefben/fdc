@@ -31,6 +31,18 @@
     {% if isWhoAreWe %}
         {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRoute': nextRoute, 'backRoute': backRoute} %}
     {% endif %}
+    {% if isConference %}
+        {% if nextRouteName %}
+            <div class="floatingButtonRight">
+                <div class="arrow showRight">
+                    <i class='icon icon_flecheGauche reverse'></i>
+                </div>
+                <a href="{{ path(nextRouteName, {'slug': slug}) }}">
+                    <div class="floatingButtonText showRight">{{ nextRouteLabel }}</div>
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
     {% if isPresentation %}
         {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
         {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}

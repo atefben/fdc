@@ -40,7 +40,10 @@ class ThemeController extends Controller
             'contact' => $contact,
         );
 
-        $pageData = array_merge($pageData, $conferencePagesManager->getPagesStatus($slug));
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'speakersIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
 
         return $this->render('FDCMarcheDuFilmBundle:conference:speakers.html.twig', $pageData);
     }
@@ -80,7 +83,10 @@ class ThemeController extends Controller
             'contact' => $contact
         );
 
-        $pageData = array_merge($pageData, $conferencePagesManager->getPagesStatus($slug));
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'programIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
 
         return $this->render('FDCMarcheDuFilmBundle:conference:program.html.twig', $pageData);
     }
@@ -117,7 +123,10 @@ class ThemeController extends Controller
             'contact' => $contact
         );
 
-        $pageData = array_merge($pageData, $conferencePagesManager->getPagesStatus($slug));
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'partnersIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
 
         return $this->render('FDCMarcheDuFilmBundle:conference:partners.html.twig', $pageData);
     }
@@ -130,7 +139,10 @@ class ThemeController extends Controller
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
-        $pageData = array_merge($contentTemplateManager->getPageData($slug), $conferencePagesManager->getPagesStatus($slug));
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextUrl = $conferencePagesManager->getHomeNextUrl($pagesStatus);
+
+        $pageData = array_merge($contentTemplateManager->getPageData($slug), $pagesStatus, $nextUrl);
 
         return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $pageData);
     }
@@ -145,6 +157,7 @@ class ThemeController extends Controller
         $conferenceNewsPageManager = $this->get('mdf.manager.conference_news_page');
         $contentTemplateManager = $this->get('mdf.manager.content_template');
         $contactManager = $this->get('mdf.manager.contact');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
         $conferenceNewsPage = $conferenceNewsPageManager->getConferenceNewsPageBySlug($slug);
         $newsContent = $contentTemplateManager->getNewsContent([$slug]);
@@ -154,12 +167,18 @@ class ThemeController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return $this->render('FDCMarcheDuFilmBundle:conference:news/show.html.twig', [
-                'newsPageContent' => $conferenceNewsPage,
-                'news' => $newsContent,
-                'conferenceTitle' => $slug,
-                'contact' => $contact,
-            ]
+        $pageData = array(
+            'newsPageContent' => $conferenceNewsPage,
+            'news' => $newsContent,
+            'conferenceTitle' => $slug,
+            'contact' => $contact,
         );
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'newsIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:news/show.html.twig', $pageData);
     }
 }

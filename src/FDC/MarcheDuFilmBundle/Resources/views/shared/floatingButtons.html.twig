@@ -1,21 +1,20 @@
-
-{% if backRoute %}
+{% if backRouteName %}
     <div class="floatingButtonLeft">
         <div class="arrow showLeft">
             <i class='icon icon_flecheGauche'></i>
         </div>
-        <a href="historique.php">
-            <div class="floatingButtonText showLeft">historique</div>
+        <a href="{{ path(backRouteName, {'slug': slug}) }}">
+            <div class="floatingButtonText showLeft">{{ backRouteLabel }}</div>
         </a>
     </div>
 {% endif %}
-{% if nextRoute %}
+{% if nextRouteName %}
     <div class="floatingButtonRight">
         <div class="arrow showRight">
             <i class='icon icon_flecheGauche reverse'></i>
         </div>
-        <a href="infos-utiles.php">
-            <div class="floatingButtonText showRight">infos utiles</div>
+        <a href="{{ path(nextRouteName, {'slug': slug}) }}">
+            <div class="floatingButtonText showRight">{{ nextRouteLabel }}</div>
         </a>
     </div>
 {% endif %}
