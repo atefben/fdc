@@ -27,8 +27,8 @@ class ServiceWidgetProduct
     protected $id;
 
     /**
-     * @var GalleryMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\GalleryMdf", inversedBy="product")
+     * @var MdfServiceGallery
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery", inversedBy="product")
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $gallery;
@@ -103,12 +103,10 @@ class ServiceWidgetProduct
 
 
     /**
-     * Set gallery
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\GalleryMdf $gallery
-     * @return ServiceWidgetProduct
+     * @param MdfServiceGallery|null $gallery
+     * @return $this
      */
-    public function setGallery(\FDC\MarcheDuFilmBundle\Entity\GalleryMdf $gallery = null)
+    public function setGallery(\FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -116,9 +114,7 @@ class ServiceWidgetProduct
     }
 
     /**
-     * Get gallery
-     *
-     * @return \FDC\MarcheDuFilmBundle\Entity\GalleryMdf
+     * @return MdfServiceGallery
      */
     public function getGallery()
     {
