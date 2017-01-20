@@ -10,6 +10,10 @@
     background-color: #fff !important;
   }
 
+  .border-top, .border-bottom {
+    border: 0px solid #fff;
+  }
+
   nav, #cookies-banner, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
     display: none !important;
   }
