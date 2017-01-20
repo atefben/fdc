@@ -392,7 +392,7 @@ var owInitSlider = function (sliderName) {
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = -w * (values - 1945) - 10; //todo script ?
+            var val = -w * (values - 1945); //todo script ?
             var slideElement = $('.slider-restropective[data-slide=' + number + ']');
             var slideElementText = $('.slider-restropective[data-slide=' + number + '] .texts');
 
@@ -470,18 +470,22 @@ var owInitSlider = function (sliderName) {
 
         if ($('.restrospective-init').length) {
 
-            var nm = isMac ? 4 : 21;
-            var w = $('body').width() + nm;
-            values = $('.slides-calc1 .date').data('date');
+            setTimeout(function(){
+                var nm = isMac ? 4 : 21;
+                var w = $('body').width() + nm;
+                values = $('.slides-calc1 .date').data('date');
 
-            slider.noUiSlider.set([values]);
+                slider.noUiSlider.set([values]);
 
-            number = values - 1945;
-            var val = -w * (values - 1945) - 10; //todo script
+                number = values - 1945;
+                var val = -w * (values - 1945); //todo script
 
-            $slide.css('transform', 'translate(' + val + 'px)');
+                $slide.css('transform', 'translate(' + val + 'px)');
 
-            animationOpen();
+                animationOpen();
+
+            }, 1000);
+
         }
     }
 };
