@@ -1555,7 +1555,7 @@ services:
         class: Base\AdminBundle\Admin\MdfSpeakersAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Speakers}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Intervenants}
 
     base.admin.mdf_speakers_choices_collection:
         class: Base\AdminBundle\Admin\MdfSpeakersChoicesCollectionAdmin
