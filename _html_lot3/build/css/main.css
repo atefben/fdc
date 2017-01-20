@@ -16062,7 +16062,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   }
 
   nav, #cookies-banner, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
-    display: none;
+    display: none !important;
   }
 
   .dark {
@@ -16077,6 +16077,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   }
   .dark .title, .dark .title-item, .dark .caption {
     color: #000 !important;
+  }
+  .dark .quote, .dark .article-single.dark .table-article td, .dark .article-single .dark .table-article th, .dark .single-movie.dark .table-article td, .dark .single-movie .dark .table-article th {
+    border-color: #ccc !important;
   }
 
   .block-movie-preview .bck-hover {

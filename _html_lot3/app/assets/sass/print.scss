@@ -11,7 +11,7 @@
   }
 
   nav, #cookies-banner, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
-    display: none;
+    display: none !important;
   }
 
   .dark {
@@ -28,6 +28,10 @@
 
     .title,  .title-item, .caption {
       color: #000 !important;
+    }
+
+    .quote, .article-single.dark .table-article td, .article-single .dark .table-article th, .single-movie.dark .table-article td, .single-movie .dark .table-article th {
+      border-color: #ccc !important;
     }
 
   }
