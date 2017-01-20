@@ -2,9 +2,9 @@
     <div class="conferenceMenu">
         <ul>
             {% for day in programDays %}
-                <li>
+                <li class="{{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'open-selected-conf' : '' }}">
                     <div class="open">{{ day.date|date('m-d-y') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
-                    <div class="content">
+                    <div class="content" style="display: {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'block' : 'none' }}">
                         <div class="parent">
                             {% for event in programDaysEvents[day.id] %}
                                 <div class="box events">

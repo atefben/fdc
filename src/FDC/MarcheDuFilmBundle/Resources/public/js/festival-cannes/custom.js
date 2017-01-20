@@ -537,7 +537,7 @@ function click() {
 
     $('#accordion-conf .open').each(function() {
 
-        $(this).click(function(){
+        $(this).click(function() {
 
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
           $('#accordion-conf .open').removeClass('open-selected-conf');
@@ -557,9 +557,7 @@ function click() {
            }
        });
 
-      });
-
-    $('#accordion-conf .content').hide();
+    });
 }
 
 click();
