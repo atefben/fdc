@@ -96,6 +96,10 @@ class MdfSpeakersMain extends Admin
                     ),
                 ),
             ))
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('speakersChoicesCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.new_speakers_tab',

@@ -74,6 +74,10 @@ class MdfConferenceProgramMain extends Admin
                     )
                 )
             ))
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('contentTemplateConferenceWidgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(

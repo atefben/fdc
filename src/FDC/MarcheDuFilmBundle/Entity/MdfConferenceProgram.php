@@ -44,6 +44,13 @@ class MdfConferenceProgram
     protected $type;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isActive = false;
+
+    /**
      * @var MdfContentTemplateWidget
      *
      * @ORM\OneToMany(targetEntity="MdfContentTemplateWidget", mappedBy="conferenceProgram", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -71,6 +78,26 @@ class MdfConferenceProgram
         $this->translations = new ArrayCollection();
         $this->contentTemplateConferenceWidgets = new ArrayCollection();
         $this->dayWidgetCollections = new ArrayCollection();
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param $isActive
+     *
+     * @return $this
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 
     /**

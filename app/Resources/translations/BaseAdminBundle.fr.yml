@@ -609,6 +609,7 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     mdf:
+        active: Is Active?
         gallery: Galeries
         status:
             inactive: Actif
