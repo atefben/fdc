@@ -78,6 +78,12 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
 
+    mdf.manager.conference_news_page:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferenceNewsPageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
     mdf.manager.programme:
         class: FDC\MarcheDuFilmBundle\Manager\ProgrammeManager
         arguments:
