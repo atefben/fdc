@@ -1993,7 +1993,7 @@ blockquote, .quote {
   color: #c8a461;
 }
 .contain-title p em, .contain-title ul em, .contain-title ol em {
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold Italic", Arial, Helvetica, sans-serif;
 }
 .contain-title p strong, .contain-title ul strong, .contain-title ol strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -2485,6 +2485,68 @@ a {
   text-align: center;
   display: block;
   margin-bottom: 25px;
+}
+
+.text em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+.text .title-article {
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+}
+.text .sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+.text .sub-title2 {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0px;
+}
+.text h3.sub-title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.text .little-txt {
+  color: #969696;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+}
+.text .big-txt {
+  color: #333333;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  line-height: 40px;
+  text-align: center;
+}
+.text .caption-article {
+  color: #333333;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+  display: block;
+  padding-top: 10px;
+  border-top: 1px solid #dfdfdf;
+}
+.text .descrip-participate {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
 }
 
 html {
@@ -3334,6 +3396,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-top .vFlexAlign {
   height: 100%;
+  max-width: 100%;
+  width: 977px !important;
+  margin: 0 auto;
 }
 .block-push-top .txts {
   text-align: center;
@@ -3363,7 +3428,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-top .date-back a, .block-push-top .date-next a {
   color: #fff;
-  font-size: .75rem;
+  font-size: .8rem;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 .block-push-top .date-back i, .block-push-top .date-next i {
@@ -3371,16 +3436,17 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #383738;
 }
 .block-push-top .date-back {
-  left: 28px;
+  left: 4px;
   top: 50%;
   transform: rotate(-90deg);
+  transition: left .4s ease;
 }
 .block-push-top .date-back i {
   transform: rotate(-180deg);
   font-size: 1.4rem;
 }
 .block-push-top .date-next {
-  right: 28px;
+  right: 4px;
   top: 50%;
   transform: rotate(90deg);
 }
@@ -3444,6 +3510,11 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   box-sizing: border-box;
   padding-right: 65px;
+}
+
+.text-01 a {
+  color: #c8a461;
+  text-decoration: none;
 }
 
 .block-videos {
@@ -8572,7 +8643,7 @@ header #searchContainer {
   min-height: 610px;
 }
 .card.w2.double .image {
-  height: 363px;
+  height: 362px;
 }
 .evenements .card.w2.double .image, .articles-list .card.w2.double .image {
   width: 89.9%;
@@ -9455,10 +9526,32 @@ body#home .isotope-01 .item .contain-img {
   box-shadow: none;
 }
 .s-slider-retrospective .timelapse .noUi-origin {
+  cursor: pointer;
+}
+.s-slider-retrospective .timelapse .noUi-origin:after {
+  content: '';
+  height: 1px;
+  width: 100%;
+  display: block;
+  left: 0px;
+  top: 20px;
   background-color: #222121;
+  position: absolute;
 }
 .s-slider-retrospective .timelapse .noUi-base {
   width: 99%;
+  padding: 20px 0px;
+  position: relative;
+  top: -20px;
+  cursor: pointer;
+}
+.s-slider-retrospective .timelapse .noUi-base:after {
+  content: '';
+  height: 1px;
+  width: 100%;
+  display: block;
+  left: 0px;
+  top: 0px;
   background-color: #c8a461;
 }
 .s-slider-retrospective .timelapse .noUi-horizontal {
@@ -9502,7 +9595,7 @@ body#home .isotope-01 .item .contain-img {
   width: 14px;
   height: 14px;
   left: 0px;
-  top: -7px;
+  top: 13px;
 }
 @media only screen and (max-width: 768px) {
   .s-slider-retrospective .timelapse .noUi-horizontal .noUi-handle.noUi-handle-lower {
@@ -12460,6 +12553,33 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 100px;
 }
 
+.who .contain-title {
+  min-height: initial;
+  margin-top: 59px;
+}
+.who .title-list-cat {
+  color: #fff;
+  padding: 42px;
+  font-size: 1rem;
+  text-align: center;
+}
+.who .title-list-cat .title {
+  width: 549px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 30px;
+  font-weight: 700;
+}
+.who .title-list-cat .title-item {
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
 .who .block-01-xs img {
   margin-bottom: 55px;
 }
@@ -12504,6 +12624,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: inline-block;
   overflow: hidden;
   margin-right: 29px;
+  margin-bottom: 28px;
 }
 .who-staff .title-22 {
   margin-bottom: 20px;
@@ -15927,4 +16048,159 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .sitemap section article li {
   padding-bottom: 20px;
   letter-spacing: 3px;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    padding: 10px;
+    margin: 0px;
+    width: 700px !important;
+    overflow: auto;
+    margin-top: 0px !important;
+    background-color: #fff !important;
+  }
+
+  nav, header, footer, .block-push-top, .slideshow, .block-videos, .audio-container, .title-9, .block-social-network {
+    display: none;
+  }
+
+  .slides {
+    display: none;
+  }
+  .slides-calc1, .slides-calc2, .slides-calc3 {
+    display: none;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+  body {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  body .video-player, body .video {
+    display: none;
+  }
+  body .half-photo {
+    margin-right: 20px !important;
+    width: 45% !important;
+  }
+  body .audio-player {
+    display: none;
+  }
+  body .slideshow {
+    display: none;
+  }
+  body .contain-img-honneur img {
+    max-width: 100%;
+  }
+  body .quote blockquote {
+    color: #000 !important;
+  }
+  body .categorie-items article {
+    display: none !important;
+  }
+
+  .categorie-items .title-list-cat, .categorie-items .title-list-cat .title-big {
+    color: #000;
+  }
+
+  .accreditation #accreditation .wrapper, .contain-img-honneur, .pres-honneur, .categorie-items .title-list-cat .title-item {
+    width: 500px !important;
+    margin: 0 auto;
+  }
+
+  .container {
+    width: 600px !important;
+    margin: 0px auto !important;
+  }
+
+  .single-article {
+    padding: 0px 0px;
+  }
+  .single-article .video-player {
+    display: none;
+  }
+  .single-article .half-photo {
+    margin-right: 20px !important;
+    width: 45% !important;
+  }
+  .single-article .audio-player {
+    display: none;
+  }
+  .single-article .slideshow {
+    display: none;
+  }
+
+  .header-press .head {
+    display: none;
+  }
+  .header-press p {
+    display: none;
+  }
+
+  .slideshow .slideshow-img {
+    background-color: #fff !important;
+  }
+
+  .article_photo .slideshow-img .images .img {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .contact-press .button {
+    display: none;
+  }
+
+  .nav-container .buttons {
+    display: none;
+  }
+
+  .request {
+    display: none;
+  }
+
+  #breadcrumb {
+    display: none;
+  }
+
+  footer, header, header.press, #share-article, .print, .nav.prev, .nav.next, .nav-accre, .share, .film, .focus, .same-day, .bandeau-list, .nav-movie {
+    display: none !important;
+  }
+
+  .owl-stage {
+    margin-left: 0px !important;
+    padding: 0px;
+  }
+
+  .main-image {
+    display: none !important;
+  }
+
+  .trailer {
+    display: none !important;
+  }
+
+  .poster.video {
+    display: none;
+  }
+
+  .info-film {
+    color: #000 !important;
+  }
+
+  .single-movie {
+    padding-top: 0px !important;
+  }
+  .single-movie .palmares {
+    width: 100% !important;
+  }
+  .single-movie #nav-movie {
+    display: none !important;
+  }
+  .single-movie .videos, .single-movie .slideshow-img, .single-movie .news, .single-movie .audios, .single-movie .press {
+    display: none;
+  }
 }

@@ -207,7 +207,7 @@ sub {
   text-align: center;
   margin-bottom: 44px;
   padding: 0px 155px;
-  
+
   .dark & {
     color: #fff;
   }
@@ -546,7 +546,7 @@ blockquote, .quote {
     }
 
     em {
-      font-family: $CamphorItalic;
+      font-family: $CamphorBoldItalic;
     }
 
     strong {
@@ -1130,5 +1130,78 @@ a {
       display: block;
       margin-bottom: 25px;
     }
+  }
+}
+
+
+.text {
+  em {
+    font-family: $CamphorItalic;
+    font-weight: normal;
+  }
+
+  .title-article {
+    font-family: $CamphorThin;
+    font-size: 3rem;
+    line-height: 60px;
+    display: block;
+    text-align: center;
+    margin-bottom: 44px;
+    padding: 0px 155px;
+  }
+
+  .sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: $CamphorRegular;
+  }
+
+  .sub-title2 {
+    font-family: $CamphorRegular;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 25px 0px
+  }
+
+  h3.sub-title {
+    font-family: $CamphorBold;
+    font-size: 0.875rem;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .little-txt {
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+  }
+
+  .big-txt {
+    color: #333333;
+    font-family: $CamphorRegular;
+    font-size: 1.25rem;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .caption-article {
+    color: #333333;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+    display: block;
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+  }
+
+  .descrip-participate {
+    width: 607px;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
   }
 }

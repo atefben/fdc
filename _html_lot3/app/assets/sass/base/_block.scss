@@ -459,6 +459,9 @@
 
   .vFlexAlign {
     height: 100%;
+    max-width: 100%;
+    width: 977px !important;
+    margin: 0 auto;
   }
 
   .txts {
@@ -493,7 +496,7 @@
 
     a {
       color: #fff;
-      font-size: .75rem;
+      font-size: .8rem;
       font-family: $CamphorHeavy;
     }
 
@@ -504,18 +507,20 @@
   }
 
   .date-back {
-    left: 28px;
+    left: 4px;
     top: 50%;
     transform: rotate(-90deg);
+    transition: left .4s ease;
 
     i {
       transform: rotate(-180deg);
       font-size: 1.4rem;
     }
+
   }
 
   .date-next {
-    right: 28px;
+    right: 4px;
     top: 50%;
     transform: rotate(90deg);
 
@@ -585,6 +590,11 @@
       padding-right: 65px;
     }
   }
+}
+
+.text-01 a {
+  color: #c8a461;
+  text-decoration: none;
 }
 
 

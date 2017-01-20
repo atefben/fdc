@@ -336,7 +336,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
+ * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
      *     options={"expose"=true})
      * @Template("FDCCorporateBundle:News:main.html.twig")
      * @param $slug
@@ -372,7 +372,10 @@ class NewsController extends Controller
         }
 
         // GET NEWS
-        $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format]);
+        $siteSlug = 'site-institutionnel';
+        $news = $this->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format], $siteSlug);
 
         if ($news === null) {
             throw new NotFoundHttpException();

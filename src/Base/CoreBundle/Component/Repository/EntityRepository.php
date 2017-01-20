@@ -91,6 +91,17 @@ class EntityRepository extends BaseRepository
      * @param $alias
      * @return QueryBuilder
      */
+    public function addFDCCorpoQueries(QueryBuilder $qb, $alias)
+    {
+        $qb->andWhere("{$alias}.slug = 'site-institutionnel'");
+        return $qb;
+    }
+
+    /**
+     * @param $qb
+     * @param $alias
+     * @return QueryBuilder
+     */
     public function addMobileQueries($qb, $alias)
     {
         $qb = $qb

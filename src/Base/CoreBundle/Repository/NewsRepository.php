@@ -286,13 +286,24 @@ class NewsRepository extends EntityRepository
             ;
     }
 
-    public function getNewsBySlug($slug, $festival, $locale, $isAdmin, $repository)
+    /**
+     * @param $slug
+     * @param $festival
+     * @param $locale
+     * @param $isAdmin
+     * @param $repository
+     * @param string $site
+     * @return News
+     */
+    public function getNewsBySlug($slug, $festival, $locale, $isAdmin, $repository, $site = 'site-evenementiel')
     {
         $qb = $this
             ->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftJoin($repository, 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('na1.translations', 'na1t')
+            ->andWhere('s.slug = :site')
+            ->setParameter(':site', $site)
         ;
 
         // add query for audio / video encoder
@@ -320,8 +331,6 @@ class NewsRepository extends EntityRepository
             $this->addMasterQueries($qb, 'na1', $festival);
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
-
-        $this->addFDCEventQueries($qb, 's');
 
         return $qb
             ->getQuery()

@@ -350,12 +350,38 @@
     }
 
     .noUi-origin {
-      background-color: #222121;
+      //background-color: #222121;
+      cursor: pointer;
+
+      &:after {
+        content:'';
+        height: 1px;
+        width: 100%;
+        display: block;
+        left: 0px;
+        top: 20px;
+        background-color: #222121;
+        position: absolute;
+      }
     }
 
     .noUi-base {
       width: 99%;
-      background-color: $gold;
+     // background-color: $gold;
+      padding: 20px 0px;
+      position: relative;
+      top: -20px;
+      cursor: pointer;
+
+      &:after {
+        content:'';
+        height: 1px;
+        width: 100%;
+        display: block;
+        left: 0px;
+        top: 0px;
+        background-color: $gold;
+      }
     }
 
     .noUi-horizontal {
@@ -407,7 +433,7 @@
         width: 14px;
         height: 14px;
         left: 0px;
-        top: -7px;
+        top: 13px;
 
         @media only screen  and (max-width : 768px) {
           width: 23px;

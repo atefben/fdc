@@ -1,17 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: piebel
- * Date: 22/01/2016
- * Time: 14:44
- */
-
 namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticle;
+use Base\CoreBundle\Entity\NewsAudio;
+use Base\CoreBundle\Entity\NewsImage;
+use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\Statement;
-use \Twig_Extension;
+use Twig_Extension;
 
 class NewsTypeExtension extends Twig_Extension
 {
@@ -27,6 +24,7 @@ class NewsTypeExtension extends Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('get_news_type', array($this, 'getNewsType')),
+            new \Twig_SimpleFilter('get_news_format_slug', array($this, 'getNewsFormatSlug')),
         );
     }
 
@@ -39,8 +37,7 @@ class NewsTypeExtension extends Twig_Extension
             $type = $object->getStatementType();
         } elseif ($object instanceof Info) {
             $type = $object->getInfoType();
-        }
-        elseif (is_string($object)) {
+        } elseif (is_string($object)) {
             $type = $object;
         }
         switch ($type) {
@@ -69,12 +66,22 @@ class NewsTypeExtension extends Twig_Extension
         return $type;
     }
 
+    public function getNewsFormatSlug($item)
+    {
+        if ($item instanceof NewsArticle) {
+            return 'articles';
+        } elseif ($item instanceof NewsImage) {
+            return 'images';
+        } elseif ($item instanceof NewsAudio) {
+            return 'audios';
+        } elseif ($item instanceof NewsVideo) {
+            return 'videos';
+        }
+    }
+
 
     /**
-     * getName function.
-     *
-     * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

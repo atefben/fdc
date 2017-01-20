@@ -2138,6 +2138,16 @@ var owInitGrid = function (id) {
                     } else {
                         var text = title.attr('data-title');
                     }
+
+                    var cat = $(e).find('.info .category');
+
+                    if (!cat.hasClass('init')) {
+                        var text2 = cat.text();
+                        cat.addClass('init');
+                        cat.attr('data-cat', text2);
+                    } else {
+                        var text2 = cat.attr('data-title');
+                    }
     
     
                     if($('.medias').length > 0) {
@@ -2150,6 +2160,7 @@ var owInitGrid = function (id) {
     
                     } else {
                         title.html(text.trunc(30, true));
+                        cat.html(text2.trunc(30, true));
                     }
                 });
             }
@@ -3641,9 +3652,15 @@ var owInitSlider = function (sliderName) {
             textTrunc.html(textI.trunc(400, false));
         });
 
-        $('.slider-home').on('click', function(){
-            var href = $('.owl-item.active .coverLink').attr('href');
-            window.location.href = href;
+        $('.slider-home').on('click', function(e){
+
+            if($(e.target).hasClass('owl-dot')){
+                return false;
+            }else{
+                var href = $('.owl-item.active .coverLink').attr('href');
+                window.location.href = href;
+            }
+
         })
 
 
@@ -3967,7 +3984,7 @@ var owInitSlider = function (sliderName) {
             var w = $('body').width() + nm;
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = -w * (values - 1945) - 10; //todo script ?
+            var val = -w * (values - 1945); //todo script ?
             var slideElement = $('.slider-restropective[data-slide=' + number + ']');
             var slideElementText = $('.slider-restropective[data-slide=' + number + '] .texts');
 
@@ -4045,18 +4062,22 @@ var owInitSlider = function (sliderName) {
 
         if ($('.restrospective-init').length) {
 
-            var nm = isMac ? 4 : 21;
-            var w = $('body').width() + nm;
-            values = $('.slides-calc1 .date').data('date');
+            setTimeout(function(){
+                var nm = isMac ? 4 : 21;
+                var w = $('body').width() + nm;
+                values = $('.slides-calc1 .date').data('date');
 
-            slider.noUiSlider.set([values]);
+                slider.noUiSlider.set([values]);
 
-            number = values - 1945;
-            var val = -w * (values - 1945) - 10; //todo script
+                number = values - 1945;
+                var val = -w * (values - 1945); //todo script
 
-            $slide.css('transform', 'translate(' + val + 'px)');
+                $slide.css('transform', 'translate(' + val + 'px)');
 
-            animationOpen();
+                animationOpen();
+
+            }, 1000);
+
         }
     }
 };
@@ -4351,8 +4372,8 @@ var openSlideShow = function (slider, hash) {
     }
 
     /* Initiliasion du slideshow fullscreen*/
-    $('body').prepend('<div class="c-fullscreen-slider"><div class="fullscreen-slider"> </div></div>');
-    var fullscreen = $('body').find(".fullscreen-slider");
+    $('body').prepend('<div class="c-fullscreen-slider animated fadeIn"><div class="fullscreen-slider"> </div></div>');
+    var fullscreen = $('body').find(".fullscreen-slider");s
 
     var wSlide = w * images.length + 100;
     var wSlide = wSlide + "px";
@@ -4932,8 +4953,7 @@ $(document).ready(function() {
           }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status);
-          alert(thrownError);
+
         }
       });
     }
