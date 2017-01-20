@@ -10,8 +10,6 @@ use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
-use Gedmo\Mapping\Annotation as Gedmo;
-
 /**
  * ServiceTranslation
  *
@@ -73,10 +71,9 @@ class ServiceTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"title"}, updatable=true)
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
-    protected $slug;
+    protected $url;
 
     /**
      * Set title
@@ -148,26 +145,22 @@ class ServiceTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return ServiceTranslation
+     * @param $url
+     * @return $this
      */
-    public function setSlug($slug)
+    public function setUrl($url)
     {
-        $this->slug = $slug;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get slug
-     *
-     * @return string 
+     * @return string
      */
-    public function getSlug()
+    public function getUrl()
     {
-        return $this->slug;
+        return $this->url;
     }
 
     /**

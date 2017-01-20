@@ -44,12 +44,16 @@ class ServiceController extends Controller
 
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();
+        $navServices = $servicesManager->getNavServices();
+        $navArrowsServices = $servicesManager->getNavArrowsServices($navServices);
         $service = $servicesManager->getService($slug);
         $serviceWidgets = $servicesManager->getServiceWidgets($service);
         $serviceWidgetProducts = $servicesManager->getServiceWidgetProducts($serviceWidgets);
 
         return $this->render('FDCMarcheDuFilmBundle:services:show_service.html.twig',
             [
+                'navServices' => $navServices,
+                'navArrowsServices' => $navArrowsServices,
                 'service' => $service,
                 'serviceWidgets' => $serviceWidgets,
                 'serviceWidgetProducts' => $serviceWidgetProducts,
