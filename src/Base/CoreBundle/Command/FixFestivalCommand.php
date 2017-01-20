@@ -35,7 +35,6 @@ class FixFestivalCommand extends ContainerAwareCommand
                 ->getQuery()
                 ->getOneOrNullResult()
             ;
-            dump($count);
             return null;
         }
 
@@ -61,8 +60,6 @@ class FixFestivalCommand extends ContainerAwareCommand
         }
         $bar->finish();
         $output->writeln('');
-
-
     }
 
     protected function fixItem($item)
