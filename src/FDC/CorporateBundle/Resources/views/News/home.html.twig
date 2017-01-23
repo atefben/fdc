@@ -34,7 +34,12 @@
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
                             {% endif %}
-                            {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
+                            {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'Statement' %}
+                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'communique', format: homeSlide.newsFormat, slug: trans.slug }) %}
+                            {% else%}
+                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'info', format: homeSlide.newsFormat, slug: trans.slug }) %}
+                            {% endif %}
+
                             {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
                             {% set sliderItems = sliderItems|merge(sliderItem) %}
                             {% set dataItem = dataItem + 1 %}
@@ -393,14 +398,14 @@
                             </div>
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
-                    
+
                 <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse="" class="read-more ajax-request">Afficher
                 <strong>plus d'infos</strong></a>
                 {% endif %}
             </div> <!-- end block 01-->
 
             {% if homepage.displayedVideo == false %}
-               {% if featuredVideo is defined and featuredVideo != null %} 
+               {% if featuredVideo is defined and featuredVideo != null %}
                     {# if featuredVideo is not null and featuredVideo.jobMp4State == 3 #}
                     <div class="block-02">
 

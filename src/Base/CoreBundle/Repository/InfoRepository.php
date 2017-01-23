@@ -207,7 +207,7 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository)
+    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository, $site= 'site-press')
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -242,7 +242,10 @@ class InfoRepository extends EntityRepository
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
-        $this->addFDCPressQueries($qb, 's');
+        $qb
+            ->andWhere("s.slug = :site")
+            ->setParameter(':site', $site)
+        ;
 
         return $qb
             ->getQuery()

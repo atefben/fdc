@@ -2,12 +2,20 @@
 namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoAudio;
+use Base\CoreBundle\Entity\InfoImage;
+use Base\CoreBundle\Entity\InfoVideo;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsAudio;
 use Base\CoreBundle\Entity\NewsImage;
 use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\StatementArticle;
+use Base\CoreBundle\Entity\StatementAudio;
+use Base\CoreBundle\Entity\StatementImage;
+use Base\CoreBundle\Entity\StatementVideo;
 use Twig_Extension;
 
 class NewsTypeExtension extends Twig_Extension
@@ -68,13 +76,13 @@ class NewsTypeExtension extends Twig_Extension
 
     public function getNewsFormatSlug($item)
     {
-        if ($item instanceof NewsArticle) {
+        if ($item instanceof NewsArticle || $item instanceof InfoArticle || $item instanceof StatementArticle) {
             return 'articles';
-        } elseif ($item instanceof NewsImage) {
+        } elseif ($item instanceof NewsImage || $item instanceof InfoImage || $item instanceof StatementImage) {
             return 'images';
-        } elseif ($item instanceof NewsAudio) {
+        } elseif ($item instanceof NewsAudio || $item instanceof InfoAudio || $item instanceof StatementAudio) {
             return 'audios';
-        } elseif ($item instanceof NewsVideo) {
+        } elseif ($item instanceof NewsVideo || $item instanceof InfoVideo || $item instanceof StatementVideo) {
             return 'videos';
         }
     }

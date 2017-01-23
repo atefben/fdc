@@ -37,13 +37,28 @@
             {% set trans = object.findTranslationByLocale('fr') %}
             {% set format = object|get_news_format_slug %}
             {% if trans and trans.slug and format and trans.status == 1 %}
-                <p>
-                    <a target="_blank"
-                       href="{{ path('fdc_corporate_news_get', {'year': object.festival.year, 'format': format, 'slug': trans.slug}) }}">
-                        <i class="fa fa-search"></i>
-                        Site institutionnel
-                    </a>
-                </p>
+                {% if class(object) starts with 'N' %}
+                    <p>
+                        <a target="_blank"
+                           href="{{ path('fdc_corporate_news_get', {'year': object.festival.year, 'format': format, 'slug': trans.slug}) }}">
+                            <i class="fa fa-search"></i>
+                            Site institutionnel
+                        </a>
+                    </p>
+                {% else %}
+                    {% if class(object) starts with 'S' %}
+                        {% set type = 'communique' %}
+                    {% else %}
+                        {% set type = 'info' %}
+                    {% endif %}
+                    <p>
+                        <a target="_blank"
+                           href="{{ url('fdc_corporate_news_presssingle', {year: object.festival.year, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                            <i class="fa fa-search"></i>
+                            Site institutionnel
+                        </a>
+                    </p>
+                {% endif %}
             {% endif %}
         {% endif %}
     </div>

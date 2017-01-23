@@ -964,7 +964,6 @@ class NewsRepository extends EntityRepository
     {
         $qb = $this
             ->createQueryBuilder('n')
-            ->getQuery()
             ->select('n')
             ->join('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')
