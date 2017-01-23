@@ -15959,6 +15959,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .legal-notice h2 {
+  padding: 60px;
   font-size: 28px;
 }
 .legal-notice section {
