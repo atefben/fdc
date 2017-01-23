@@ -236,3 +236,21 @@ var owFixImg = function(){
     })
   }
 }
+
+var initFilterCheck = function() {
+  var $form = $('.block-searh-more form');
+  var $label = $form.find('.icon-s');
+
+  $label.removeClass('active');
+
+  $.each($label, function(i,e){
+
+    if($(e).find("input[type=checkbox]").is(':checked')){
+
+      var element = $(e).find("input[type=checkbox]").is(':checked');
+      element.parent().hadClass('active');
+
+    }
+
+  });
+}

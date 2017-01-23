@@ -3332,6 +3332,24 @@ var owFixImg = function(){
     })
   }
 }
+
+var initFilterCheck = function() {
+  var $form = $('.block-searh-more form');
+  var $label = $form.find('.icon-s');
+
+  $label.removeClass('active');
+
+  $.each($label, function(i,e){
+
+    if($(e).find("input[type=checkbox]").is(':checked')){
+
+      var element = $(e).find("input[type=checkbox]").is(':checked');
+      element.parent().hadClass('active');
+
+    }
+
+  });
+}
 //setup twitter
 
 window.twttr = (function (d, s, id) {
@@ -5536,6 +5554,11 @@ $(document).ready(function () {
 
     if($('#google-map').length) {
         google.maps.event.addDomListener(window, 'load', initMap);
+    }
+
+
+    if($('.search-page-result').length) {
+        initFilterCheck();
     }
 
     setTimeout(function () {

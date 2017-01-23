@@ -364,6 +364,11 @@ $(document).ready(function () {
         google.maps.event.addDomListener(window, 'load', initMap);
     }
 
+
+    if($('.search-page-result').length) {
+        initFilterCheck();
+    }
+
     setTimeout(function () {
         $('body').removeClass('loading');
     }, 1000);
