@@ -20,11 +20,11 @@ class NewsController extends Controller
 {
     /**
      * @Route("/", options={"i18n": "false"})
-     * @Template("FDCEventBundle:News:prehome.html.twig")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function preHomeAction()
     {
-        return array();
+        return $this->redirect($this->generateUrl('fdc_event_news_index', ['_locale' => 'fr']));
     }
 
     /**
