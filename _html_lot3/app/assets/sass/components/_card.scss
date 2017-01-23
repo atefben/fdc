@@ -49,16 +49,17 @@
 
   &.w2.double {
     height: 613px;
+    //padding-left: 21px;
+    padding-left: 0px;
 
     .evenements &, .articles-list &  {
       padding-left: 0px;
       min-height: 610px;
     }
 
-    padding-left: 21px;
-
     .image {
       height: 362px;
+      width: 572px;
 
       .evenements &, .articles-list &  {
         width: 89.9%;
@@ -291,6 +292,16 @@
 
   &.portrait {
     height: auto;
+  }
+}
+
+.article-inverse {
+  .card:not(.w2.double) {
+    padding-left: 0px;
+
+    .image {
+      width: 263px;
+    }
   }
 }
 

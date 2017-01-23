@@ -8636,7 +8636,7 @@ header #searchContainer {
 }
 .card.w2.double {
   height: 613px;
-  padding-left: 21px;
+  padding-left: 0px;
 }
 .evenements .card.w2.double, .articles-list .card.w2.double {
   padding-left: 0px;
@@ -8644,6 +8644,7 @@ header #searchContainer {
 }
 .card.w2.double .image {
   height: 362px;
+  width: 572px;
 }
 .evenements .card.w2.double .image, .articles-list .card.w2.double .image {
   width: 89.9%;
@@ -8831,6 +8832,13 @@ header #searchContainer {
 }
 .card-01.portrait {
   height: auto;
+}
+
+.article-inverse .card:not(.w2.double) {
+  padding-left: 0px;
+}
+.article-inverse .card:not(.w2.double) .image {
+  width: 263px;
 }
 
 .mob .read-later {
@@ -9408,7 +9416,7 @@ body#home .isotope-01 .item .contain-img {
   margin-bottom: 9px;
 }
 .slider-01 .owl-stage {
-  margin-left: -147px;
+  margin-left: -171px;
 }
 .slider-01 .owl-stage-outer {
   overflow: visible;
