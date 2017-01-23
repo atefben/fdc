@@ -4662,7 +4662,7 @@ var slideshows = [],
 
 function initSlideshows() {
 
-  $('.slideshow-img .images .img:fist-child').addClass('active');
+  $('.slideshow-img .images .img:first-child').addClass('active');
   // create slider of thumbs
   var nbItems = $('.single-article').length != 0 ? 7 : 8;
 
