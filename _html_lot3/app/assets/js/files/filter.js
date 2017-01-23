@@ -190,6 +190,8 @@ var owRemoveElementListe = function () {
             $('.new-filter').parent().remove();
         }
 
+        $('.button-submit-02').trigger('click');
+
     });
 }
 
