@@ -8834,10 +8834,10 @@ header #searchContainer {
   height: auto;
 }
 
-.article-inverse .card:not(.w2.double) {
+.article-inverse .card:not(.w2):not(.double) {
   padding-left: 0px;
 }
-.article-inverse .card:not(.w2.double) .image {
+.article-inverse .card:not(.w2):not(.double) .image {
   width: 263px;
 }
 

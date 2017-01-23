@@ -296,7 +296,7 @@
 }
 
 .article-inverse {
-  .card:not(.w2.double) {
+  .card:not(.w2):not(.double) {
     padding-left: 0px;
 
     .image {
