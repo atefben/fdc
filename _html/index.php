@@ -255,129 +255,136 @@
       <div class="about">
         <div class="innerWrapper">
           <div class="aboutVideos">
-              <div id="slider-aboutVideos" class="owl-carousel">
-                <div class="item">
-
-                    <div class="video-container state-init video"
-                      data-file='[{"file":"./files/mov_bbb.webm"},
-                      {"file":"./files/mov_bbb.mp4"}]'
-                      data-img="/img/article/004.jpg">
-                      <div id="video-player" class="video-player v_<?php echo time();?>">
-                      </div>
-                      <div class="video-overlay"></div>
-                      <div class="infos-bar">
-                        <div class="picto"><i class="icon icon_video"></i></div>
-                        <div class="info">
-                          <div class="vCenter">
-                            <div class="vCenterKid">
-                              <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                              <p>The Lobster</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                </div>
-                <div class="item">
-
-                    <div class="video-container state-init video"
-                      data-file='[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"},
-                      {"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}]'
-                      data-img="img/slider-channels/02.jpg">
-                      <div id="video-player" class="video-player v_<?php echo time();?>">
-                      </div>
-                      <div class="video-overlay"></div>
-                      <div class="infos-bar">
-                        <div class="picto"><i class="icon icon_video"></i></div>
-                        <div class="info">
-                          <div class="vCenter">
-                            <div class="vCenterKid">
-                              <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                              <p>The Lobster</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                </div>
-                <div class="item">
-
-                    <div class="video-container state-init video"
-                      data-file='[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"},
-                      {"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}]'
-                      data-img="img/slider-channels/01.jpg">
-                      <div id="video-player" class="video-player v_<?php echo time();?>">
-                      </div>
-                      <div class="video-overlay"></div>
-                      <div class="infos-bar">
-                        <div class="picto"><i class="icon icon_video"></i></div>
-                        <div class="info">
-                          <div class="vCenter">
-                            <div class="vCenterKid">
-                              <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                              <p>The Lobster</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                </div>
-            </div>
-              
-          </div>
-          <div class="aboutPhotos">
-              <div class="slideshow goldSlideshow">
-                <div class="slideshow-img">
-                  <div class="images">
-                    <div class="img active">
-                      <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
-                        <img src="img/slide001.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div class="img">
-                      <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
-                        <img src="img/slide002.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div class="img">
-                      <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                    </div>
-                    <div class="img">
-                      <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                    </div>
-                    <div class="img">
-                      <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
-                    </div>
+            <div id="slider-aboutVideos" class="owl-carousel">
+              <div class="item">
+                <div class="video-container state-init video"
+                  data-facebook="//www.facebook.com"
+                  data-twitter="//www.twitter.com"
+                  data-link="//www.example.com"
+                  data-email="//www.gmail.com"
+                  data-name="test"
+                  data-file='[{"file":"./files/mov_bbb.mp4"}]'
+                  data-img="//dummyimage.com/960x540/000/c8a461.png">
+                  <div id="v_<?php echo "200".time();?>" class="video-player">
                   </div>
-                  <div class="owl-carousel thumbnails">
-                    <div data-id="photo1" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
-                      <img src="img/thumb01.jpg" />
-                    </div>
-                    <div data-id="photo2" class="thumb" data-caption="test">
-                      <img src="img/thumb01.jpg" />
-                    </div>
-                    <div data-id="photo3" class="thumb">
-                      <img src="img/thumb01.jpg" />
-                    </div>
-                    <div data-id="photo4" class="thumb">
-                      <img src="img/thumb01.jpg" />
+                  <div class="video-overlay"></div>
+                  <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                      <div class="vCenter">
+                        <div class="vCenterKid">
+                          <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                          <p>The Lobster</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
               </div>
+              <div class="item">
+                <div class="video-container state-init video"
+                  data-facebook="//www.facebook.com"
+                  data-twitter="//www.twitter.com"
+                  data-link="//www.example.com"
+                  data-email="//www.gmail.com"
+                  data-name="test"
+                  data-file='[{"file":"https://www.youtube.com/watch?v=rqslRZooFzk"}]'>
+                  <!-- data-img="//dummyimage.com/960x540/000/c8a461.png"> -->
+                  <div id="v_<?php echo 1+time();?>" class="video-player">
+                  </div>
+                  <div class="video-overlay"></div>
+                  <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                      <div class="vCenter">
+                        <div class="vCenterKid">
+                          <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                          <p>The Lobster</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="video-container state-init video"
+                  data-facebook="//www.facebook.com"
+                  data-twitter="//www.twitter.com"
+                  data-link="//www.example.com"
+                  data-email="//www.gmail.com"
+                  data-name="test"
+                  data-file='[{"file":"https://www.youtube.com/watch?v=YWNWi-ZWL3c"}]'>
+                  <!-- data-img="//dummyimage.com/960x540/000/c8a461.png"> -->
+                  <div id="v_<?php echo "100".time();?>" class="video-player">
+                  <!-- <div id="vtest"> -->
+                  </div>
+                  <div class="video-overlay"></div>
+                  <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                      <div class="vCenter">
+                        <div class="vCenterKid">
+                          <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                          <p>The Lobster</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aboutContent">
-            <span>A propos</span>
-            <a href="#"><h5>Le reflet de la volonté du Festival de Cannes d’affirmer son action auprès de la jeune création</h5></a>
-            <a href="#"><p>Inventif, souvent talentueux, libre et sans contrainte, le format court est porteur des valeurs que Cannes soutient depuis toujours. Accueillir les générations émergentes est une tâche primordiale et constitue l’un des moteurs du Festival.</p></a>
-            <a href="#"><div class="aboutMore">En Savoir plus</div></a>
-          </div>
+              
+          <div class="aboutPhotos">
+            <div class="slideshow goldSlideshow">
+              <div class="slideshow-img">
+                <div class="images">
+                  <div class="img active">
+                    <a id="photo1" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP">
+                      <img src="img/slide001.jpg" alt="" />
+                    </a>
+                  </div>
+                  <div class="img">
+                    <a id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                      <img src="img/slide002.jpg" alt="" />
+                    </a>
+                  </div>
+                  <div class="img">
+                    <a id="photo3" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo4" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                </div>
+                <div class="owl-carousel thumbnails">
+                  <div data-id="photo1" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo2" class="thumb" data-caption="test">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo3" class="thumb">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo4" class="thumb">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                </div>
+              </div>
+              <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
+            </div>
+        </div>
+        <div class="aboutContent">
+          <span>A propos</span>
+          <a href="#"><h5>Le reflet de la volonté du Festival de Cannes d’affirmer son action auprès de la jeune création</h5></a>
+          <a href="#"><p>Inventif, souvent talentueux, libre et sans contrainte, le format court est porteur des valeurs que Cannes soutient depuis toujours. Accueillir les générations émergentes est une tâche primordiale et constitue l’un des moteurs du Festival.</p></a>
+          <a href="#"><div class="aboutMore">En Savoir plus</div></a>
         </div>
       </div>
+    </div>
 
 
     <div class="competition">

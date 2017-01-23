@@ -1844,8 +1844,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: left;
 }
 .block-s-info a.button {
-  height: 50px;
-  line-height: 50px;
+  height: 48px;
+  line-height: 48px;
   /*
   width: 178px;
   */
@@ -3232,8 +3232,28 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   }
 }
 #slider-competition .owl-stage {
-  /*width: 5000px!important;*/
-  margin-left: 471px;
+  width: 50000px !important;
+  margin-left: 800px;
+}
+@media screen and (max-width: 1680px) {
+  #slider-competition .owl-stage {
+    margin-left: 835px;
+  }
+}
+@media screen and (max-width: 1366px) {
+  #slider-competition .owl-stage {
+    margin-left: 530px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  #slider-competition .owl-stage {
+    margin-left: 450px !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #slider-competition .owl-stage {
+    margin-left: 190px !important;
+  }
 }
 #slider-competition .item {
   width: 235px !important;
@@ -3310,14 +3330,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 /* CAROUSEL ABOUT */
 .aboutPhotos .slideshow {
-  height: 500px;
-  height: 459px !important;
+  height: 460px !important;
   width: 725px;
   border-bottom: 0px solid #e5e5e5;
 }
 .aboutPhotos .slideshow .slideshow-img {
-  height: 500px;
-  height: 459px !important;
+  height: 460px !important;
 }
 .aboutPhotos .slideshow .slideshow-img .images .img a {
   width: 100%;
@@ -3332,13 +3350,15 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: left;
 }
 
+#slider-aboutVideos {
+  /*.owl-item, .item {
+    width: 725px !important;
+  }*/
+}
 #slider-aboutVideos .vCenterKid {
   display: table-cell;
   vertical-align: middle;
   text-align: left;
-}
-#slider-aboutVideos .owl-item, #slider-aboutVideos .item {
-  width: 726px !important;
 }
 #slider-aboutVideos .video-container .infos-bar .picto {
   bottom: 20px;
@@ -7084,7 +7104,7 @@ a {
 }
 
 .buttons-02 {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .buttons-02 .button {
   border-color: #c8a461;
@@ -8695,8 +8715,8 @@ header #logo-wrapper #logo {
   padding: 5px 100px 0 0;
   text-align: center;
   vertical-align: middle;
-  width: 200px;
-  positon: relative;
+  width: 245px;
+  position: relative;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -8749,8 +8769,10 @@ header #logo-wrapper #logo p.stick.noTrans:after {
 header #logo-wrapper #logo h2 {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-weight: normal;
-  margin-top: -15px;
-  margin-left: 45px;
+  position: absolute;
+  top: 130px;
+  left: 65px;
+  margin-top: -4px;
 }
 header #logo-wrapper #logo h2 a {
   color: #c8a461;
@@ -15516,20 +15538,16 @@ a {
   width: 20%;
 }
 
-@media screen and (max-width: 1366px) {
-  .competition {
+.competition {
+  /*@media screen and (max-width: 1366px) {
     width: 1330px;
   }
-}
-@media screen and (max-width: 1280px) {
-  .competition {
+  @media screen and (max-width: 1280px) {
     width: 1200px;
   }
-}
-@media screen and (max-width: 1024px) {
-  .competition {
+  @media screen and (max-width: 1024px) {
     width: 1000px;
-  }
+  }*/
 }
 .competition h3 {
   font-size: 18px;
@@ -19580,7 +19598,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: white !important;
 }
 .contain-article-invit .image {
-  padding-top: 50px;
+  padding-top: 45px;
 }
 
 .webtv .image-wrapper {
@@ -28035,7 +28053,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0.7;
   letter-spacing: 1px;
   color: #b1b1b1;
-  bottom: 8%;
+  bottom: 10%;
 }
 .conferences .conf60 .confButton:hover, .conferences .conf70 .confButton:hover {
   color: #c8a461;
@@ -28167,7 +28185,7 @@ ul.tabs .quarterTab h4 {
   width: 20px;
 }
 .conferences .box {
-  min-height: 270px;
+  min-height: 230px;
   height: auto;
   cursor: default;
   position: relative;
@@ -28793,7 +28811,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .movieOnline h3 {
   font-size: 16px;
-  line-height: 50px;
+  line-height: 40px;
   text-align: center;
   padding: 40px 0px 30px 0px;
 }
@@ -29434,7 +29452,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   width: 25%;
 }
 .modal-content .half:nth-child(2) {
-  width: 55%;
+  width: 60%;
 }
 @media screen and (max-width: 1024px) {
   .modal-content .half {
@@ -29467,12 +29485,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #c3a05f;
   font-size: 10px;
   text-align: left;
-  padding: 10px 0px 50px 0px;
+  padding: 15px 0px 50px 0px;
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .modal-content .half .cats span {
-  margin-right: 10px;
+  margin-right: 12px;
 }
 .modal-content .half .cats span:after {
   content: '•';
@@ -29488,7 +29506,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .modal-content .half .titleHalf h3 {
   color: #141414;
-  font-size: 42px;
+  font-size: 47px;
   text-align: left;
   line-height: 60px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -29508,9 +29526,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom: 50px;
 }
 .modal-content .half .titleBig h2 {
-  line-height: 32px;
+  line-height: 30px;
   letter-spacing: 1px;
   font-style: italic;
+  font-size: 20px;
 }
 .modal-content .half .titleBig h2 span {
   color: #c8a461;
@@ -29522,7 +29541,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #c8a461;
   font-size: 300px;
   left: -30px;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .modal-content .half .authors {
   width: 100%;
@@ -29576,7 +29595,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-size: 12px;
   letter-spacing: 2px;
   line-height: 20px;
-  width: 50%;
+  width: 45%;
   float: left;
   padding-left: 8%;
 }

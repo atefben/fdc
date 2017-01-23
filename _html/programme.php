@@ -95,7 +95,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping hand</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE).</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
@@ -119,7 +119,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Screening</h6>
                               <span>Screening</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE).</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
@@ -143,7 +143,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE).</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
@@ -166,7 +166,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Pitching Training</h6>
                               <span>Pitching Training</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE).</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
@@ -189,7 +189,7 @@
                             <div class="conf60">
                               <h6 class="conf60title">Helping Hand</h6>
                               <span>Helping Hand</span>
-                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
+                              <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE).</p>
                               <a href=""><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               
                             </div>
@@ -1006,7 +1006,7 @@
             </div>
           </div>
           <div class="share" id="share" >
-              <p>Partagez l'article</p>
+              <p>Partagez</p>
               <div class="buttons square">
                 <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
                 <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>

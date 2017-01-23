@@ -48,10 +48,6 @@
 
   $('#slider-aboutVideos').owlCarousel({
       dots: true,
-      autoWidth:true,
-      video:true,
-      videoHeight: 450,
-      videoWidth: 725, 
       navigation : false,
       slideSpeed : 600,
       paginationSpeed : 400,
