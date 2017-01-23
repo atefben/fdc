@@ -4665,7 +4665,7 @@ function initSlideshows() {
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 
-  $('.thumbnails div[data-id="+idPhoto+"]').addClass('active');
+  $('.thumbnails div[data-id='+idPhoto+']').addClass('active');
 
 
   // create slider of thumbs
