@@ -1988,8 +1988,15 @@ var owInitFilter = function (isTabSelection) {
 
 var owRemoveElementListe = function () {
     $('.filters-02 li .icon-close').on('click', function () {
-        $(this).parent().remove();
+        var id = $(this).parent().data('id');
 
+        $('input#'+id).val('');
+        $('input#'+id).prop("checked", false);
+        $('input#'+id).parent().removeClass('active');
+
+        console.log($('input#'+id));
+
+        $(this).parent().remove();
 
         if (!$('.new-filter ul li').length) {
             $('.new-filter').parent().remove();
