@@ -27,7 +27,7 @@
                         <a href="{{ path('fdc_marche_du_film_conference_partners', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_partners' ? 'active customClass1' : '' }}">partenaires</a>
                     </li>
                 {% endif %}
-                {% if partnersIsActive %}
+                {% if infoAndContactIsActive %}
                     <li>
                         <a href="{{ path('fdc_marche_du_film_conference_infos_and_contacts', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_infos_and_contacts' ? 'active customClass1' : '' }}">infos et contact</a>
                     </li>

@@ -1984,6 +1984,36 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Infos et Contacts}
 
+    base.admin.mdf_conference_info_and_contact_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_next:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_mixers:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Infos et Contacts}
+
     base.admin.mdf_conference_partner_tab:
         class: Base\AdminBundle\Admin\MdfConferencePartnerTabAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTab, BaseAdminBundle:MdfConferencePartnerTabAdmin]

@@ -283,4 +283,34 @@ jQuery(document).ready(function($) {
             $(this).val(idx + 1);
         });
     });
+    $('form[action*="mdfconferenceinfoandcontactpn"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactdc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactn"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactm"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactgtc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
 });

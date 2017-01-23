@@ -15,6 +15,7 @@ class MdfConferenceInfoAndContactWidgetTranslationRepository extends EntityRepos
             ->andWhere('icw.conferenceInfoAndContact = :id')
             ->setParameter(':locale', $locale)
             ->setParameter(':id', $id)
+            ->orderBy('icw.position', 'ASC')
         ;
 
         return $qb->getQuery()->getResult();
