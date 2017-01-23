@@ -8840,6 +8840,9 @@ header #searchContainer {
 .article-inverse .card:not(.w2):not(.double) .image {
   width: 263px;
 }
+.article-inverse .car.w2.double {
+  padding-left: 41px;
+}
 
 .mob .read-later {
   opacity: 1 !important;
