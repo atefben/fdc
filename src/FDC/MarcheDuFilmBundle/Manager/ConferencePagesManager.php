@@ -7,6 +7,7 @@ use FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPageTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfSpeakersTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContactTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -32,6 +33,7 @@ class ConferencePagesManager
         $speakersIsActive = false;
         $newsIsActive = false;
         $partnersIsActive = false;
+        $infoAndContactIsActive = false;
 
         $programPage = $this->em
             ->getRepository(MdfConferenceProgramTranslation::class)
@@ -50,6 +52,10 @@ class ConferencePagesManager
             ->getRepository(MdfConferencePartnerTranslation::class)
             ->getConferencePartnerPageByLocaleAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $slug);
 
+        $infoAndContactPage = $this->em
+            ->getRepository(MdfConferenceInfoAndContactTranslation::class)
+            ->getConferenceInfoAndContactPageByLocaleAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $slug);
+
         if($programPage) {
             $programIsActive = $programPage->getTranslatable()->isIsActive();
         }
@@ -66,11 +72,16 @@ class ConferencePagesManager
             $partnersIsActive = $partnersPage->getTranslatable()->isIsActive();
         }
 
+        if($infoAndContactPage) {
+            $infoAndContactIsActive = $infoAndContactPage->getTranslatable()->isIsActive();
+        }
+
         return array(
             'programIsActive' => $programIsActive,
             'speakersIsActive' => $speakersIsActive,
             'newsIsActive' => $newsIsActive,
             'partnersIsActive' => $partnersIsActive,
+            'infoAndContactIsActive' => $infoAndContactIsActive,
             'slug' => $slug
         );
     }
@@ -141,6 +152,10 @@ class ConferencePagesManager
                         $nextRouteName = 'fdc_marche_du_film_conference_partners';
                         $nextRouteLabel = 'partenaires';
                         break;
+                    case 'infoAndContactIsActive':
+                        $nextRouteName = 'fdc_marche_du_film_conference_infos_and_contacts';
+                        $nextRouteLabel = 'infos et contacts';
+                        break;
                 }
                 break;
             }
@@ -178,6 +193,10 @@ class ConferencePagesManager
                         case 'partnersIsActive':
                             $backRouteName = 'fdc_marche_du_film_conference_partners';
                             $backRouteLabel = 'partenaires';
+                            break;
+                        case 'infoAndContactIsActive':
+                            $backRouteName = 'fdc_marche_du_film_conference_infos_and_contacts';
+                            $backRouteLabel = 'infos-et-contacts';
                             break;
                     }
                     break;

@@ -181,4 +181,45 @@ class ThemeController extends Controller
 
         return $this->render('FDCMarcheDuFilmBundle:conference:news/show.html.twig', $pageData);
     }
+
+    /**
+     * @Route("/{slug}/infos-et-contacts", name="fdc_marche_du_film_conference_infos_and_contacts")
+     *
+     * @param Request $request
+     * @param         $slug
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function infoAndContactAction(Request $request, $slug)
+    {
+        $conferenceInfoAndContactManager = $this->get('mdf.manager.conference_info_and_contact');
+        $contactManager = $this->get('mdf.manager.contact');
+        $conferencePagesManager = $this->get('mdf.manager.conference_pages');
+
+        $conferenceInfoAndContactPage = $conferenceInfoAndContactManager->getConferenceInfoAndContactPageBySlug($slug);
+
+        if(!$conferenceInfoAndContactPage) {
+            throw new NotFoundHttpException();
+        }
+
+        $conferenceInfoAndContactWidgets = $conferenceInfoAndContactManager
+            ->getConferenceInfoAndContactWidgets(
+                $conferenceInfoAndContactPage->getTranslatable()->getId()
+            );
+
+        $contact = $contactManager->getContactInfo();
+
+        $pageData = array(
+            'conferenceInfoAndContactPage' => $conferenceInfoAndContactPage,
+            'conferenceInfoAndContactWidgets' => $conferenceInfoAndContactWidgets,
+            'contact' => $contact
+        );
+
+        $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
+        $nextBackUrls = $conferencePagesManager->getNextAndBackUrl($pagesStatus, 'infoAndContactIsActive');
+
+        $pageData = array_merge($pageData, $pagesStatus, $nextBackUrls);
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:infoAndContact.html.twig', $pageData);
+    }
 }

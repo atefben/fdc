@@ -628,6 +628,15 @@ services:
             - ['setSonataAdmin', ['@base.admin.dispatch_de_service_widget_image_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
+    base.admin.form.conference_info_and_contact_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ConferenceInfoAndContactWidgetType
+        tags:
+            - { name: form.type, alias: 'conference_info_and_contact_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.conference_info_and_contact_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
     base.admin.form.accreditation_widget_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\AccreditationWidgetType
         tags:

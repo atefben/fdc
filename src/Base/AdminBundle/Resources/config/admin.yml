@@ -1781,6 +1781,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.conference_info_and_contact_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContactWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Conference Info And Contact Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.mdf_content_template_widget_image_dummy:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage, BaseAdminBundle:MdfImageDummyAdmin]
@@ -1969,6 +1977,12 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageGoesToCannesAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: News Page}
+
+    base.admin.mdf_conference_info_and_contact_producers_workshop:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactProducersWorkshopAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactProducersWorkshopAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Infos et Contacts}
 
     base.admin.mdf_conference_partner_tab:
         class: Base\AdminBundle\Admin\MdfConferencePartnerTabAdmin
