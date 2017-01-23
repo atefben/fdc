@@ -15294,8 +15294,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .article-single.dark caption, .article-single.dark .caption, .single-movie.dark caption, .single-movie.dark .caption {
   color: #fff;
-  font-size: 1rem;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
 }
 .article-single.dark caption strong, .article-single.dark .caption strong, .single-movie.dark caption strong, .single-movie.dark .caption strong {
