@@ -3343,7 +3343,7 @@ var initFilterCheck = function() {
 
     if($(e).find("input[type=checkbox]").is(':checked')){
 
-      var element = $(e).find("input[type=checkbox]").is(':checked');
+      var element = $(e).find("input[type=checkbox]");
       element.parent().addClass('active');
 
     }
