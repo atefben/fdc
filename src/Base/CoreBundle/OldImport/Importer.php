@@ -363,10 +363,11 @@ class Importer
      */
     protected function getFestival(OldArticle $oldArticle)
     {
+        $date = $oldArticle->getStartDate() ?: $oldArticle->getUpdatedAt();
         return $this
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmFestival')
-            ->findOneBy(['year' => $oldArticle->getCreatedAt()->format('Y')])
+            ->findOneBy(['year' => $date->format('Y')])
             ;
     }
 

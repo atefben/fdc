@@ -957,13 +957,14 @@ class NewsRepository extends EntityRepository
      * @param $locale
      * @param $festival
      * @param $startsAt
-     * @param $endAt
+     * @param $endsAt
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getNewsRetrospective($locale, $festival, $startsAt, $endsAt)
     {
         $qb = $this
             ->createQueryBuilder('n')
+            ->getQuery()
             ->select('n')
             ->join('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')

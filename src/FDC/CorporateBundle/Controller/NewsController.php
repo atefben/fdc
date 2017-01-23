@@ -2,14 +2,15 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
+use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use DateTime;
-use Base\CoreBundle\Entity\News;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * @Route("/69-editions/retrospective")
  */
@@ -22,6 +23,7 @@ class NewsController extends Controller
         }
         return ($a->getPublishedAt()->getTimestamp() > $b->getPublishedAt()->getTimestamp()) ? -1 : 1;
     }
+
     /**
      * @Route("/{year}/articles")
      * @Template("FDCCorporateBundle:News/list:article.html.twig")
@@ -53,9 +55,9 @@ class NewsController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
         //GET ALL NEWS ARTICLES
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
-        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
-        $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(),$festival->getFestivalStartsAt(),$festival->getFestivalEndsAt());
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+        $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
 
         $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
         usort($articles, [$this, 'compareArticle']);
@@ -102,10 +104,10 @@ class NewsController extends Controller
         }
 
         return array(
-            'articles' => $articles,
-            'filters'  => $filters,
-            'festivals'  => $festivals,
-            'festival'              => $festival,
+            'articles'  => $articles,
+            'filters'   => $filters,
+            'festivals' => $festivals,
+            'festival'  => $festival,
         );
     }
 
@@ -175,7 +177,7 @@ class NewsController extends Controller
 
             //check if filters don't already exist
             $date = $media->getPublishedAt();
-            $notin = array('16-05-16','15-05-16','14-05-16','13-05-16','12-05-16','11-05-16');
+            $notin = array('16-05-16', '15-05-16', '14-05-16', '13-05-16', '12-05-16', '11-05-16');
             if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates']) && !in_array($date->format('d-m-y'), $notin)) {
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
@@ -191,10 +193,10 @@ class NewsController extends Controller
         }
 
         shuffle($medias);
-        
+
         return array(
-            'medias'  => $medias,
-            'filters' => $filters,
+            'medias'    => $medias,
+            'filters'   => $filters,
             'festivals' => $festivals,
         );
     }
@@ -336,7 +338,7 @@ class NewsController extends Controller
     }
 
     /**
- * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
+     * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
      *     options={"expose"=true})
      * @Template("FDCCorporateBundle:News:main.html.twig")
      * @param $slug
@@ -374,8 +376,9 @@ class NewsController extends Controller
         // GET NEWS
         $siteSlug = 'site-institutionnel';
         $news = $this->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:News')
-            ->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format], $siteSlug);
+                     ->getRepository('BaseCoreBundle:News')
+                     ->getNewsBySlug($slug, $festival->getId(), $locale, $isAdmin, $mapper[$format], $siteSlug)
+        ;
 
         if ($news === null) {
             throw new NotFoundHttpException();
@@ -460,7 +463,7 @@ class NewsController extends Controller
             $newsDate = new DateTime();
         }
 
-        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($festival->getId(), $locale, $newsDate, $count, $news->getId(),null,$focusArticles);
+        $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($festival->getId(), $locale, $newsDate, $count, $news->getId(), null, $focusArticles);
         $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
 
         $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $festival->getId(), $newsDate);
