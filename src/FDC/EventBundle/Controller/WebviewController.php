@@ -1,9 +1,11 @@
 <?php
 namespace FDC\EventBundle\Controller;
 
-use FDC\EventMobileBundle\Component\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/webview")
@@ -15,12 +17,13 @@ class WebviewController extends Controller
 
     /**
      * @Route("/article/{type}/{variant}/{id}")
+     * @param Request $request
      * @param string $type
      * @param string $variant
      * @param int $id
      * @return Response
      */
-    public function articleAction($type, $variant, $id)
+    public function articleAction(Request $request, $type, $variant, $id)
     {
         $repositories = [
             'news'       => [
@@ -35,7 +38,7 @@ class WebviewController extends Controller
                 'audio'   => 'BaseCoreBundle:InfoAudio',
                 'video'   => 'BaseCoreBundle:InfoVideo',
             ],
-            'communique' => [
+            'statement' => [
                 'article' => 'BaseCoreBundle:StatementArticle',
                 'image'   => 'BaseCoreBundle:StatementImage',
                 'audio'   => 'BaseCoreBundle:StatementAudio',
@@ -50,10 +53,23 @@ class WebviewController extends Controller
         if (!$object) {
             throw $this->createNotFoundException("$repository ($id) not found");
         }
+
+        $timestamp = time();
+        $trans = $this->getTranslation($object, $request->getLocale());
+        $trans = $trans && $trans->getStatus() === TranslateChildInterface::STATUS_PUBLISHED;
+        $trans = $trans && $object->getPublishedAt();
+        $trans = $trans && $timestamp >= $object->getPublishedAt()->getTimestamp();
+        $trans = $trans && (!$object->getPublishEndedAt() || $timestamp <= $object->getPublishEndedAt()->getTimestamp());
+
+        if (!$trans) {
+            throw $this->createNotFoundException("$repository ($id) not found");
+        }
+
         return $this->render('FDCEventBundle:Webview:article.html.twig', [
             'type'    => $type,
             'variant' => $variant,
             'object'  => $object,
+            'trans'   => $trans,
         ]);
     }
 }

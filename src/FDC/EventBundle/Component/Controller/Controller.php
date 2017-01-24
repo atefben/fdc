@@ -223,4 +223,14 @@ class Controller extends BaseController
         return $site;
     }
 
+    protected function getTranslation($object, $locale = 'fr')
+    {
+        if (method_exists($object, 'findTranslationByLocale')) {
+            $trans = $object->findTranslationByLocale($locale);
+            if ($trans) {
+                return $trans;
+            }
+        }
+    }
+
 }
