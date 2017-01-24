@@ -5909,76 +5909,80 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   content: "\E05D";
 }
 
-.icon-stool:before {
+.icon-speacker:before {
   content: "\E05E";
 }
 
-.icon-taxi-fill:before {
+.icon-stool:before {
   content: "\E05F";
 }
 
-.icon-tools:before {
+.icon-taxi-fill:before {
   content: "\E060";
 }
 
-.icon-trailer-player:before {
+.icon-tools:before {
   content: "\E061";
 }
 
-.icon-trailer:before {
+.icon-trailer-player:before {
   content: "\E062";
 }
 
-.icon-train:before {
+.icon-trailer:before {
   content: "\E063";
 }
 
-.icon-truck:before {
+.icon-train:before {
   content: "\E064";
 }
 
-.icon-tumblr:before {
+.icon-truck:before {
   content: "\E065";
 }
 
-.icon-tv:before {
+.icon-tumblr:before {
   content: "\E066";
 }
 
-.icon-twitter:before {
+.icon-tv:before {
   content: "\E067";
 }
 
-.icon-user-fill:before {
+.icon-twitter:before {
   content: "\E068";
 }
 
-.icon-user-round:before {
+.icon-user-fill:before {
   content: "\E069";
 }
 
-.icon-video:before {
+.icon-user-round:before {
   content: "\E06A";
 }
 
-.icon-wen-fill:before {
+.icon-video:before {
   content: "\E06B";
 }
 
-.icon-wen-minus:before {
+.icon-wen-fill:before {
   content: "\E06C";
 }
 
-.icon-wen-more:before {
+.icon-wen-minus:before {
   content: "\E06D";
 }
 
-.icon-wifi:before {
+.icon-wen-more:before {
   content: "\E06E";
 }
 
-.icon-youtube:before {
+.icon-wifi:before {
   content: "\E06F";
+}
+
+.icon-youtube:before {
+  content: "\E070";
 }
 
 /*!
