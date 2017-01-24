@@ -1,6 +1,8 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 <div class="top-texts">
-    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.info_statement.count > 4 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info_statement'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
+    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.info_statement.count > 4 %}<a
+        href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info_statement'}|merge(app.request.query.all)) }}"
+        class="see-all">Tout voir</a>{% endif %}
     <h3>Communiqués de presse/infos - {{ result.info_statement.count }} résultats</h3>
 </div>
 
@@ -107,13 +109,18 @@
 
                             {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                         {% endif %}
-                        <i class="picto icon icon-release-press"></i>
+                        {% if class(article) starts with 'Info' %}
+                            <i class="picto icon icon-article"></i>
+                        {% elseif class(article) starts with 'Statement' %}
+                            <i class="picto icon icon-release-press"></i>
+                        {% endif %}
                     </div>
                     <div class="contain-txts">
                         {% if article.theme %}
-                        <span class="title-type-media">{{ article.theme|trans_fallback('name') }}</span>
+                            <span class="title-type-media">{{ article.theme|trans_fallback('name') }}</span>
                         {% endif %}
-                        <span class="title-dates">{{ article.publishedAt|date('d.m.y') }}  .  {{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
+                        <span class="title-dates">{{ article.publishedAt|date('d.m.y') }}
+                            . {{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
                         <span class="title-media">{{ article|trans_fallback('title')|truncate(40) }}</span>
                     </div>
                 </a>
