@@ -44,7 +44,7 @@ var owinitSlideShow = function (slider, hash) {
 
 var openSlideShow = function (slider, hash) {
 
-    $('body').addClass('slideshow-open');
+    $('html').addClass('slideshow-open');
 
     var images = [];
     var w = $(window).width();
@@ -425,6 +425,7 @@ var openSlideShow = function (slider, hash) {
             $('.c-fullscreen-slider').remove();
             $('.photoActive').removeClass('photoActive');
             history.pushState(null, null, '#');
+            $('html').removeClass('slideshow-open');
         }, 1000);
     });
 

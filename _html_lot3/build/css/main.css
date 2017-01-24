@@ -10505,7 +10505,7 @@ body#home .isotope-01 .item .contain-img {
   color: #c8a461;
 }
 
-body.slideshow-open {
+html.slideshow-open {
   overflow: hidden;
 }
 
