@@ -5524,6 +5524,17 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
 }
 
+strong.title-center {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+  text-transform: none;
+  display: block;
+  margin-bottom: 20px;
+}
+
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
