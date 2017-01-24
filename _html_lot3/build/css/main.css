@@ -4837,11 +4837,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-s-info-02 {
   -ms-flex-direction: column;
       flex-direction: column;
-  height: 362px;
   color: #fff;
   text-align: center;
   background: center 0 no-repeat fixed;
   background-size: cover;
+  padding: 50px 0px;
+}
+.block-s-info-02 p {
+  width: 643px;
 }
 .block-s-info-02 a {
   color: #c8a461;
