@@ -9,6 +9,7 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\Seo;
 
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,7 +30,7 @@ class StatementAudioTranslation implements TranslateChildInterface
     use TranslateChild;
     use Time;
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
 
 
     /**
@@ -56,7 +57,7 @@ class StatementAudioTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     * @Groups({"news_show"})
+     * @Groups({"news_show", "home"})
      */
     protected $slug;
 
