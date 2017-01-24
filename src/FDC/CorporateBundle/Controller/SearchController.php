@@ -109,11 +109,8 @@ class SearchController extends Controller
                 $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : $default;
                 $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, $displayNb) : $default;
                 $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, $displayNb) : $default;
-                //merging medias (photos,videos,audios)
-
                 $items = array_merge($photoResults['items'], $videoResults['items'], $audioResults['items']);
-                $items = array_slice($items, 0, 4);
-                $mediaResults = array('items' => $items, 'count' => count($items));
+                $mediaResults = array('items' => array_slice($items, 0, 4), 'count' => count($items));
             } else {
                 $mediaResults = false;
             }
