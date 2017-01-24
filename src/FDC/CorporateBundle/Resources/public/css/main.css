@@ -7148,6 +7148,8 @@ header #navigation ul li ul.tcenter {
   width: 639px;
   padding-left: 0;
   left: 0;
+  border-top: 1px solid #404040;
+  margin-top: 0px;
 }
 header #navigation ul li ul.tcenter li:last-child a {
   padding-right: 0;
@@ -7225,6 +7227,8 @@ header #navigation ul.user .participate-wrapper ul {
   left: auto;
   margin-left: -762px;
   text-align: right;
+  border-top: 1px solid #404040;
+  margin-top: 0px;
 }
 header #navigation ul.user .participate-wrapper ul li a {
   font-size: 0.688rem;
@@ -7233,6 +7237,8 @@ header #navigation ul.user .programmation-wrapper ul {
   left: auto;
   margin-left: -649px;
   text-align: right;
+  border-top: 1px solid #404040;
+  margin-top: 0px;
 }
 header #navigation ul.user .programmation-wrapper ul li a {
   font-size: 0.688rem;
