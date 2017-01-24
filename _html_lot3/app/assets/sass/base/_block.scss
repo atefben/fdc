@@ -592,6 +592,27 @@
   }
 }
 
+.text-01 {
+  em {
+    font-family: $CamphorItalic;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+    font-size: .5rem;
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: .5rem;
+  }
+
+}
+
 .text-01 a {
   color: #c8a461;
   text-decoration: none;

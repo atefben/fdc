@@ -3512,6 +3512,21 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-right: 65px;
 }
 
+.text-01 em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.text-01 strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.text-01 sub {
+  vertical-align: text-bottom;
+  font-size: .5rem;
+}
+.text-01 sup {
+  vertical-align: super;
+  font-size: .5rem;
+}
+
 .text-01 a {
   color: #c8a461;
   text-decoration: none;
