@@ -12671,6 +12671,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-top: 50px;
   margin-bottom: 80px;
 }
+.block-search .block-push-03 {
+  margin-top: 80px;
+}
 .block-search .search-txt {
   position: relative;
   background-color: #fff;
