@@ -5,11 +5,11 @@
         <div class="vFlexAlign">
             <div>
                 <strong class="title">{{ page|trans_fallback('pushTitle1') }}</strong>
-                <a class="link" href="{{ page|trans_fallback('pushUrl1') }}"><i
-                            class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}</a>
+                <a class="link" href="{{ page|trans_fallback('pushUrl1') }}"{{ page|trans_fallback('pushUrl1')|external_link }}>
+                    <i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}
+                </a>
             </div>
         </div>
-
         {% set trans = page.pushImage1.findTranslationByLocale(app.request.locale) %}
         {% if trans is null or trans.file is null %}
             {% set trans = page.pushImage1.findTranslationByLocale('fr') %}
@@ -21,8 +21,10 @@
         <div class="vFlexAlign">
             <div>
                 <strong class="title">{{ page|trans_fallback('pushTitle2') }}</strong>
-                <a class="link" href="{{ page|trans_fallback('pushUrl2') }}"><i
-                            class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}</a>
+                <a class="link" href="{{ page|trans_fallback('pushUrl2') }}"{{ page|trans_fallback('pushUrl2')|external_link }}>
+                    <i class="icon icon-arrow-right"></i>
+                    {{ 'search.form.label.discover'|trans }}
+                </a>
             </div>
         </div>
         {% set trans = page.pushImage2.findTranslationByLocale(app.request.locale) %}
@@ -37,8 +39,9 @@
         <div class="vFlexAlign">
             <div>
                 <strong class="title-2">{{ page|trans_fallback('pushTitle3') }}</strong>
-                <a class="link" href="{{ page|trans_fallback('pushUrl3') }}"><i
-                            class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}</a>
+                <a class="link" href="{{ page|trans_fallback('pushUrl3') }}"{{ page|trans_fallback('pushUrl3')|external_link }}>
+                    <i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}
+                </a>
             </div>
         </div>
         {% set trans = page.pushImage3.findTranslationByLocale(app.request.locale) %}
