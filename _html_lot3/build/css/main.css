@@ -4891,13 +4891,13 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   -ms-flex-direction: row;
       flex-direction: row;
 }
-.half-photos .caption {
+.half-photos p.caption {
   color: #666 !important;
-  font-size: 0.750rem;
-  margin: 10px 0 0;
-  line-height: 18px;
-  text-align: left;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem !important;
+  margin: 10px 0 0 !important;
+  line-height: 18px !important;
+  text-align: left !important;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
 }
 
 .half-photo {
