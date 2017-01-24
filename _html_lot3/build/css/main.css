@@ -3391,7 +3391,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   position: relative;
   background-attachment: inherit;
 }
-.who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top {
+.who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top, .media-library .block-push-top {
   background-attachment: fixed;
 }
 .block-push-top .vFlexAlign {
