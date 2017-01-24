@@ -399,6 +399,7 @@
       &.last {
         border-bottom: 0px solid #e7e7e7;
       }
+
     }
 
     .item {
@@ -633,8 +634,6 @@
         height: 20px;
         top: -10px;
       }
-
-
     }
   }
 
@@ -647,5 +646,11 @@
     background: #E8E7E6;
     left: 14px;
     top: 6px;
+  }
+}
+
+.search-page-result {
+  .block-push-03 {
+    margin-top: 80px;
   }
 }

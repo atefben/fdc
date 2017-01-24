@@ -13210,6 +13210,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   top: 6px;
 }
 
+.search-page-result .block-push-03 {
+  margin-top: 80px;
+}
+
 @media screen and (min-width: 1920px) {
   .app {
     background-position: 424px 113px !important;
