@@ -49,7 +49,9 @@ class MdfSpeakersChoicesCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('speakersChoice', 'sonata_type_model_list')
+            ->add('speakersChoice', 'sonata_type_model_list', array(
+                'btn_delete' => false
+            ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
