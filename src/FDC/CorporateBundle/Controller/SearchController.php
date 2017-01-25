@@ -155,14 +155,19 @@ class SearchController extends Controller
      */
     public function searchFilterAction($_locale, $searchFilter, Request $request)
     {
-
-
         $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
         $form = $this->_getFormFilters();
         $form = $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $items = explode('_', $searchFilter != 'media' ? $searchFilter : 'photos_videos_audios');
+        $searchResults = array('items' => array(), 'count' => 0);
+        foreach ($items as $item) {
+            if ($item == 'artist' && isset($data['professions'])) {
+                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
+            }
+        }
 
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
             //if none checked, check all
@@ -177,46 +182,42 @@ class SearchController extends Controller
                     }
                 }
             }
-
-            $filters = $this->_getFiltersFromData($data);
-
             if ($data['professions']) { //must be done before translation
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
 
+            $filters = $this->_getFiltersFromData($data);
+
             $data = $this->_translateData($data);
         }
 
-        $items = explode('_', $searchFilter != 'media' ? $searchFilter : 'photos_videos_audios');
-        $searchResults = array('items' => array(), 'count' => 0);
-
+        $check = ['audios', 'videos', 'photos'];
         foreach ($items as $item) {
-            if ($item == 'artist' && isset($data['professions'])) {
-                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
-            }
-
-            $data = $this->_translateData($data);
-            if ($data[$item]) {
-                $results = ['items' => [], 'count' => 0];
-                $page = 1;
-                while ($page && $subResults = $this->getSearchResults($_locale, $item, $data, 50, $page)) {
-                    $results['items'] = array_merge($results['items'], $subResults['items']);
-                    $results['count'] = $subResults['count'];
-                    ++$page;
-                    $pages = ceil($results['count'] / 50);
-                    if ($page > $pages) {
-                        $page = false;
-                    }
+            if (in_array($item, $check)) {
+                if (!$data[$item]) {
+                    continue;
                 }
-                $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
-                $searchResults['count'] = $searchResults['count'] + $results['count'];
             }
+            $data = $this->_translateData($data);
+            $results = ['items' => [], 'count' => 0];
+            $page = 1;
+            while ($page && $subResults = $this->getSearchResults($_locale, $item, $data, 50, $page)) {
+                $results['items'] = array_merge($results['items'], $subResults['items']);
+                $results['count'] = $subResults['count'];
+                ++$page;
+                $pages = ceil($results['count'] / 50);
+                if ($page > $pages) {
+                    $page = false;
+                }
+            }
+            $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
+            $searchResults['count'] = $searchResults['count'] + $results['count'];
         }
 
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
             'result'  => array($searchFilter => $searchResults),
             'filters' => $filters,
-            'form'    => $form,
+            'form'    => $form->createView(),
             'page'    => $page,
         ));
     }
