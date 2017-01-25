@@ -114,7 +114,11 @@
                         <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-minus"></i>
                         </div>
                         {% for format in form.formats %}
-                            {{ form_widget(format) }} <label for="{{ format.vars.id }}">{{ form_label(format) }}</label>
+                            {% set temp = form_widget(format) %}
+                            <input type="checkbox" id="formats_{{ format.vars.value }}"
+                                   name="{{ format.vars.full_name }}" value="{{ format.vars.value }}"
+                                   {% if format.vars.data %}checked="checked"{% endif %}/>
+                            <label for="{{ format.vars.id }}">{{ form_label(format) }}</label>
                         {% endfor %}
                     </div>
                 </div>
