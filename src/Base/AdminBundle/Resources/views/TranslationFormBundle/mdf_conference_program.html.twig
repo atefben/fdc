@@ -30,7 +30,6 @@
                                             {{ form_row(translationsFields.title) }}
                                             {{ form_row(translationsFields.subTitle) }}
                                             {{ form_row(translationsFields.header) }}
-                                            {{ form_row(form.parent.children.file) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
@@ -75,6 +74,28 @@
                                             </div>
 
                                         </div>
+
+                                        <div class="box-body">
+                                            <div class="fdc-widgets" data-form-widget="collection">
+                                                {% for widget in form.parent.children.files.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'program_file_type' %}
+                                                            <h4><strong>{{ 'form.mdf.conference_program.file.widget'|trans }}</strong></h4>
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+                                                        {{ form_row(widget.file) }}
+
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.files.vars.prototypes.program_file_type)|escape }}"><i
+                                                        class="icon-plus"></i>{{ 'form.mdf.conference_program.file.widget'|trans }}</a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +117,6 @@
                                                 {{ form_row(translationsFields.title) }}
                                                 {{ form_row(translationsFields.subTitle) }}
                                                 {{ form_row(translationsFields.header) }}
-                                                {{ form_row(form.parent.children.file) }}
                                             </div>
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
@@ -143,6 +163,21 @@
                                             </div>
 
                                         </div>
+
+                                        <div class="box-body">
+                                            <div class="fdc-widgets" data-form-widget="collection">
+                                                {% for widget in form.parent.children.files.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'program_file_type' %}
+                                                            <h4><strong>{{ 'form.mdf.conference_program.file.widget'|trans }}</strong></h4>
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+                                                        {{ form_row(widget.file) }}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

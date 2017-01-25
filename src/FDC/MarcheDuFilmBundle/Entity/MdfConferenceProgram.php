@@ -31,10 +31,9 @@ class MdfConferenceProgram
     protected $id;
 
     /**
-     * @var GalleryMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="MdfProgramFile", mappedBy="conferenceProgram", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      */
-    protected $file;
+    protected $files;
 
     /**
      * @var string
@@ -78,6 +77,32 @@ class MdfConferenceProgram
         $this->translations = new ArrayCollection();
         $this->contentTemplateConferenceWidgets = new ArrayCollection();
         $this->dayWidgetCollections = new ArrayCollection();
+        $this->files = new ArrayCollection();
+    }
+
+    /**
+     * @param MdfProgramFile $file
+     */
+    public function addFil(MdfProgramFile $file)
+    {
+        $file->setConferenceProgram($this);
+        $this->files->add($file);
+    }
+
+    /**
+     * @param MdfProgramFile $file
+     */
+    public function removeFil(MdfProgramFile $file)
+    {
+        $this->files->removeElement($file);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 
     /**
