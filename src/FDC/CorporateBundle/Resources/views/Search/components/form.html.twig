@@ -128,7 +128,7 @@
                             <input type="checkbox" id="selections_{{ selection.vars.value }}"
                                    name="{{ selection.vars.full_name }}" value="{{ selection.vars.value }}"
                                    {% if selection.vars.data %}checked="checked"{% endif %}/>
-                            <label for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
+                            <label for="selections_{{ selection.vars.value }}">{{ form_label(selection) }}</label>
                         {% endfor %}
                     </div>
                 </div>
