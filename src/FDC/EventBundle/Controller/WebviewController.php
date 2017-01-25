@@ -66,8 +66,6 @@ class WebviewController extends Controller
             throw $this->createNotFoundException("$repository ($id) not found");
         }
 
-        dump($object);
-
         return $this->render('FDCEventBundle:Webview:article.html.twig', [
             'type'    => $type,
             'variant' => $variant,
