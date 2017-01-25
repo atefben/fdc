@@ -28,7 +28,7 @@ class MdfSpeakersDetails
 
     /**
      * @var MediaMdfImage
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
     protected $image;
 
