@@ -4439,6 +4439,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
   text-decoration: underline;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .block-accordion-02 .item-manual .contain-infos .descrip-section p a:hover {
   color: #966505;
@@ -4470,6 +4471,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-accordion-02 .item-manual .contain-infos .contain-map .link {
   padding-top: 38px;
   color: #c8a461;
+  width: 311px;
 }
 .block-accordion-02 .item-manual .contain-infos .contain-map .link a {
   color: #c8a461;
@@ -4485,6 +4487,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-right: 9px;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   vertical-align: text-top;
+  font-size: .8rem;
 }
 .block-accordion-02 .item-manual .contain-infos .contain-map .link:hover {
   color: #966505;
@@ -15503,6 +15506,26 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 975px;
   height: 350px;
   margin-top: 51px;
+}
+
+.participate .title-22 {
+  font: 0.875rem "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c1c1c1;
+  text-transform: uppercase;
+  padding-top: 37px;
+  padding-bottom: 49px;
+  letter-spacing: 2px;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .item.active .title-22 {
+  color: #c8a461;
+}
+.participate .block-accordion-02 .item-manual .contain-infos .descrip-participate p {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
 }
 
 .c-contact input[type=text],

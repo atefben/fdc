@@ -1700,6 +1700,7 @@
           color: $gold;
           text-decoration: underline;
           transition: all .9s cubic-bezier(.25,.46,.45,.94);
+          font-family: $CamphorBold;
 
           &:hover {
             color: #966505;
@@ -1739,6 +1740,7 @@
       .link {
         padding-top: 38px;
         color: #c8a461;
+        width: 311px;
 
         a {
           color: #c8a461;
@@ -1756,6 +1758,7 @@
           padding-right: 9px;
           @include transition(all 0.9s $linear);
           vertical-align: text-top;
+          font-size: .8rem;
         }
       }
 
