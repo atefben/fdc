@@ -12632,7 +12632,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   text-align: center;
   padding: 20px 20px 0;
   font-size: .875rem;
-  width: 977px;
+  max-width: 977px;
   margin: 10px auto 2px;
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
