@@ -28,7 +28,7 @@ class MdfSpeakersChoicesCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices")
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      * @Assert\Count(
      *      max = "4",
