@@ -40,11 +40,13 @@
                         <div id="tab{{ tab.translatable.id }}" class="tab_content">
                             {% for speaker in speakersList[tab.translatable.id] %}
                                 <div class="minTab">
-                                    {% if speaker.translatable.image %}
-                                        <div class="speakersPicture">
+                                    <div class="speakersPicture">
+                                        {% if speaker.translatable.image %}
                                             <img src="{% path speaker.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 150px; height: 200px;">
-                                        </div>
-                                    {% endif %}
+                                        {% else %}
+                                            <img src="{{ asset('bundles/fdcmarchedufilm/img/avatar.png') }}" style="width: 150px; height: 200px;">
+                                        {% endif %}
+                                    </div>
                                     <div class="tabBox speakersBox">
                                         <span class="customClass1">{{ speaker.name }}</span>
                                         <h5>{{ speaker.company }}{% if speaker.country %} <span class="fromCountry customClass3">{{ speaker.country }}</span>{% endif %}</h5>

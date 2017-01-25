@@ -79,7 +79,8 @@ class MdfSpeakersDetailsAdmin extends Admin
                     ),
                     'country'     => array(
                         'label'              => 'form.mdf.label.speaker_country',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'details'         => array(
                         'label'              => 'form.mdf.label.speaker_details',
