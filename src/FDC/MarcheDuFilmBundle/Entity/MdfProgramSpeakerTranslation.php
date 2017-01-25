@@ -24,13 +24,6 @@ class MdfProgramSpeakerTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
     protected $name;
 
     /**
@@ -39,26 +32,6 @@ class MdfProgramSpeakerTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      */
     protected $description;
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param $title
-     *
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
 
     /**
      * @return string

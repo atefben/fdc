@@ -68,6 +68,33 @@ class MdfConferenceProgramEventTranslation implements TranslateChildInterface
     protected $eventAccessType;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $speakersTitle;
+
+    /**
+     * @return string
+     */
+    public function getSpeakersTitle()
+    {
+        return $this->speakersTitle;
+    }
+
+    /**
+     * @param $speakersTitle
+     *
+     * @return $this
+     */
+    public function setSpeakersTitle($speakersTitle)
+    {
+        $this->speakersTitle = $speakersTitle;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getTitle()

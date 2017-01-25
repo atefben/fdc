@@ -90,6 +90,10 @@ class MdfConferenceProgramEventAdmin extends Admin
                         'field_type'                => 'choice',
                         'choices'                   => MdfConferenceProgramEventTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'speakersTitle'          => array(
+                        'label'              => 'form.mdf.conference_program.speakers_title',
+                        'translation_domain' => 'BaseAdminBundle'
                     )
                 )
             ))

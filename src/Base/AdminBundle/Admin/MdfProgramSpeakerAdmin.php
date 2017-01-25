@@ -62,16 +62,12 @@ class MdfProgramSpeakerAdmin extends Admin
                             'class' => 'hidden'
                         )
                     ),
-                    'title'          => array(
-                        'label'              => 'form.mdf.conference_program.title',
-                        'translation_domain' => 'BaseAdminBundle'
-                    ),
                     'name'          => array(
-                        'label'              => 'form.mdf.conference_program.subTitle',
+                        'label'              => 'form.mdf.conference_program.speaker_name',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'description'          => array(
-                        'label'              => 'form.mdf.conference_program.description',
+                        'label'              => 'form.mdf.conference_program.speaker_description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'status'            => array(

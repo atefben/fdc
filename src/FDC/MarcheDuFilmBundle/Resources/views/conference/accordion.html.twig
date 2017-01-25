@@ -14,7 +14,7 @@
                                         {{ event.description }}
                                         <div class="confPeople">
                                             <hr>
-                                            <h6 class="confDetails">Intervenants</h6>
+                                            <h6 class="confDetails">{{ event.speakersTitle }}</h6>
                                             {% for item in eventsSpeakers[event.translatable.id] %}
                                                 <div class="quarterWidth">
                                                     <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
