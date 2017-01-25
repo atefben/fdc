@@ -14,7 +14,7 @@
   }
 
 
-    body#home .article-inverse & .item:not(.w2.double) {
+    body#home .article-inverse & .item:not(.w2):not(.double) {
       padding-left: 0px !important;
       padding-right: 61px !important;
     }
