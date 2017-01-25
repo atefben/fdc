@@ -9013,6 +9013,10 @@ body#home .isotope-01 .item .contain-img {
     padding: 0px;
     padding-left: 61px;
   }
+  body#home .isotope-01 .article-inverse .item {
+    padding-left: 0px;
+    padding-right: 61px;
+  }
   body#home .isotope-01 .item.w2 {
     width: 650px;
     padding: 0px;
