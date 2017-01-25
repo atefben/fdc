@@ -760,15 +760,13 @@ html {
           <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
         </video>
         <div class="Article-header-meta">
-          <span class="Article-header-meta-category">Palmarès</span>
-          <span class="Article-header-meta-date"><strong>Hier à</strong> 11H00</span>
+          <span class="Article-header-meta-category">{{ news.theme|trans_fallback('name') }}</span>
+          <span class="Article-header-meta-date"><strong>Hier à</strong> {{ agenda_leftbar_translate_hour(news.publishedAt|date('H:i'), true, true) }}</span>
           <span class="Article-header-meta-misc"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span>
         </div>
       </header>
       <div class="Article-content">
-        {{ dump(object.translations) }}
-        {{ dump(object.header) }}
-        {{ dump(object.theme) }}
+        {{ object.theme }}
         <img src="{% path object.header|trans_fallback('file') , '' %}" />
         <h1>{{ object|trans_fallback('title') }}</h1>
         {{ object|trans_fallback('introduction')|raw }}
