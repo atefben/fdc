@@ -313,28 +313,27 @@ class SearchController extends Controller
         $filters = array();
 
         $boolean = ['news', 'photos', 'videos', 'audios', 'events', 'artists', 'movies'];
-
         foreach ($data as $key => &$filter) {
             if ((in_array($key, $boolean) || is_bool($filter)) && $filter) {
                 /** @Ignore */
-                $filters[] = $translator->trans('search.form.' . $key, array(), 'FDCCorporateBundle');
+                $filters[$key] = $translator->trans('search.form.' . $key, array(), 'FDCCorporateBundle');
             } elseif (is_numeric($filter)) {
                 //don't add year-start and year-end
             } elseif (is_string($filter) && !empty($filter)) {
-                $filters[] = $filter;
+                $filters[$key] = $filter;
             } elseif (is_array($filter)) {
                 if ($key == 'professions') {
                     foreach ($filter as $f) {
-                        /** @Ignore */
+                        $subKey = $key . '_' . $f;
                         $f = $translator->trans('search.form.' . $f, array(), 'FDCCorporateBundle');
-                        $filters[] = $f;
+                        $filters[$subKey] = $f;
                     }
 
                 } else {
                     foreach ($filter as &$f) {
-                        /** @Ignore */
+                        $subKey = $key . '_' . $f;
                         $f = $translator->trans('search.form.' . $f, array(), 'FDCCorporateBundle');
-                        $filters[] = $f;
+                        $filters[$subKey] = $f;
                     }
                 }
             }

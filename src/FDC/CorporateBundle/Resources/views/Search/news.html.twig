@@ -18,7 +18,7 @@
                         {% else %}
                             {% set gabarit = '1144x724' %}
                         {% endif %}
-                        {% if article is news_article %}
+                        {% if article is news_article and article.header %}
                             {% set img = article.header %}
                             {% set trans = img.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
@@ -26,7 +26,7 @@
                             {% endif %}
                             {% set file = trans.file %}
                             {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                        {% elseif article is news_video %}
+                        {% elseif article is news_video and article.header %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
@@ -55,7 +55,7 @@
                             {% elseif imgamazon is defined and imgamazon is not null %}
                                 <img src="{{ imgamazon }}" alt="" />
                             {% endif %}
-                        {% elseif article is news_audio %}
+                        {% elseif article is news_audio and article.header %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
@@ -80,7 +80,7 @@
                             {% if file is defined %}
                                 {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                             {% endif %}
-                        {% elseif article is news_image %}
+                        {% elseif article is news_image and article.header %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
