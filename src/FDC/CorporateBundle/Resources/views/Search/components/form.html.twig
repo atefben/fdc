@@ -58,8 +58,12 @@
                         <div class="title-cont">{{ 'search.form.label.profession'|trans }} <i
                                     class="icon icon-create"></i></div>
                         {% for profession in form.professions %}
-                            {{ form_widget(profession) }} <label
-                                for="{{ profession.vars.id }}">{{ form_label(profession) }}</label>
+                            {% set temp = form_widget(profession) %}
+                            <input type="checkbox" id="professions_{{ profession.vars.value }}"
+                                   name="{{ profession.vars.full_name }}" value="{{ profession.vars.value }}"
+                                   {% if profession.vars.data %}checked="checked"{% endif %}/>
+                            <label
+                                    for="professions_{{ profession.vars.value }}">{{ form_label(profession) }}</label>
                         {% endfor %}
                     </div>
                 </div>
@@ -69,7 +73,11 @@
                         <div class="title-cont">{{ 'search.form.label.genre'|trans }} <i class="icon icon-create"></i>
                         </div>
                         {% for genre in form.genres %}
-                            {{ form_widget(genre) }} <label for="{{ genre.vars.id }}">{{ form_label(genre) }}</label>
+                            {% set temp = form_widget(genre) %}
+                            <input type="checkbox" id="genres_{{ genre.vars.value }}"
+                                   name="{{ genre.vars.full_name }}" value="{{ genre.vars.value }}"
+                                   {% if genre.vars.data %}checked="checked"{% endif %}/>
+                            <label for="genres_{{ genre.vars.value }}">{{ form_label(genre) }}</label>
                         {% endfor %}
                     </div>
                 </div>
@@ -92,7 +100,11 @@
                     <div class="price">
                         <div class="title-cont">prix <i class="icon icon-create"></i></div>
                         {% for prize in form.prizes %}
-                            {{ form_widget(prize) }} <label for="{{ prize.vars.id }}">{{ form_label(prize) }}</label>
+                            {% set temp = form_widget(prize) %}
+                            <input type="checkbox" id="prizes_{{ prize.vars.value }}"
+                                   name="{{ prize.vars.full_name }}" value="{{ prize.vars.value }}"
+                                   {% if prize.vars.data %}checked="checked"{% endif %}/>
+                            <label for="prizes_{{ prize.vars.value }}">{{ form_label(prize) }}</label>
                         {% endfor %}
                     </div>
                 </div>
@@ -112,8 +124,11 @@
                         <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i
                                     class="icon icon-minus"></i></div>
                         {% for selection in form.selections %}
-                            {{ form_widget(selection) }} <label
-                                for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
+                            {% set temp = form_widget(selection) %}
+                            <input type="checkbox" id="selections_{{ selection.vars.value }}"
+                                   name="{{ selection.vars.full_name }}" value="{{ selection.vars.value }}"
+                                   {% if selection.vars.data %}checked="checked"{% endif %}/>
+                            <label for="{{ selection.vars.id }}">{{ form_label(selection) }}</label>
                         {% endfor %}
                     </div>
                 </div>
