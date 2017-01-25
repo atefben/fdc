@@ -90,11 +90,15 @@ class MdfConferenceProgramMain extends Admin
                 'prototype' => true,
                 'by_reference' => false,
             ))
-            ->add('file', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.file',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => true,
-                'required' => false
+            ->add('files', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'program_file_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
             ))
             ->add('dayWidgetCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,

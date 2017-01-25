@@ -12,6 +12,7 @@ use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfProgramFile;
 use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection;
 use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfThemeTranslation;
@@ -59,6 +60,17 @@ class ConferenceProgramManager
         return $this->em
             ->getRepository(MdfConferenceProgramTranslation::class)
             ->getConferenceProgramPageByLocaleAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $slug);
+    }
+
+    public function getFiles($conferenceProgramId)
+    {
+        return $this->em
+            ->getRepository(MdfProgramFile::class)
+            ->findBy(
+                array(
+                    'conferenceProgram' => $conferenceProgramId
+                )
+            );
     }
 
     public function getConferenceProgramDaysWidgets($page)

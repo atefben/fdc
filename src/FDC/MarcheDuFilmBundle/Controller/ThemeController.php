@@ -80,7 +80,8 @@ class ThemeController extends Controller
             'programDays' => $programDays,
             'programDaysEvents' => $programDaysEvents,
             'eventsSpeakers' => $eventsSpeakers,
-            'contact' => $contact
+            'contact' => $contact,
+            'files' => $conferenceProgramManager->getFiles($conferenceProgramPage->getTranslatable()->getId())
         );
 
         $pagesStatus = $conferencePagesManager->getPagesStatus($slug);

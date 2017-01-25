@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MdfProgramSpeakersCollection
@@ -22,6 +23,10 @@ class MdfProgramSpeakerCollection
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfProgramSpeaker", cascade={"all"})
+     * @Assert\Count(
+     *      max = "8",
+     *      maxMessage = "validation.speakers_max"
+     * )
      */
     protected $programSpeakers;
 

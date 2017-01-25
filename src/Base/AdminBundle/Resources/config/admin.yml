@@ -2157,3 +2157,11 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeGoesToCannesAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Accueil}
+
+    base.admin.mdf_program_file_dummy:
+        class: Base\AdminBundle\Admin\MdfFileDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramFile, BaseAdminBundle:MdfFileDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Program File, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
