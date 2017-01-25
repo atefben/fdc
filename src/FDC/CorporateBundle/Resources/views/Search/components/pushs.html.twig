@@ -1,46 +1,53 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
-{% if page.pushImage1 is not null %}<div class="block-push-03">
+{% if page and page.pushImage1 %}
+<div class="block-push-03">
     <div class="half-div block-push block-push-item">
         <div class="vFlexAlign">
             <div>
                 <strong class="title">{{ page|trans_fallback('pushTitle1') }}</strong>
-                <a class="link" href="{{ page|trans_fallback('pushUrl1') }}"><i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}</a>
+                <a class="link" href="{{ page|trans_fallback('pushUrl1') }}"{{ page|trans_fallback('pushUrl1')|external_link }}>
+                    <i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}
+                </a>
             </div>
         </div>
-
         {% set trans = page.pushImage1.findTranslationByLocale(app.request.locale) %}
         {% if trans is null or trans.file is null %}
-        {% set trans = page.pushImage1.findTranslationByLocale('fr') %}
+            {% set trans = page.pushImage1.findTranslationByLocale('fr') %}
         {% endif %}
         <img src="{% path trans.file , '325x205' %}" alt="">
     </div>{% endif %}<!--
-      -->{% if page.pushImage2 is not null %}<div class="half-div block-push block-push-item">
+-->{% if page and page.pushImage2 is not null %}
+    <div class="half-div block-push block-push-item">
         <div class="vFlexAlign">
             <div>
                 <strong class="title">{{ page|trans_fallback('pushTitle2') }}</strong>
-                <a class="link" href="{{ page|trans_fallback('pushUrl2') }}"><i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}</a>
+                <a class="link" href="{{ page|trans_fallback('pushUrl2') }}"{{ page|trans_fallback('pushUrl2')|external_link }}>
+                    <i class="icon icon-arrow-right"></i>
+                    {{ 'search.form.label.discover'|trans }}
+                </a>
             </div>
         </div>
         {% set trans = page.pushImage2.findTranslationByLocale(app.request.locale) %}
         {% if trans is null or trans.file is null %}
-        {% set trans = page.pushImage2.findTranslationByLocale('fr') %}
+            {% set trans = page.pushImage2.findTranslationByLocale('fr') %}
         {% endif %}
         <img src="{% path trans.file , '325x205' %}" alt="">
     </div>
-</div>{% endif %}
-
-{% if page.pushImage3 is not null %}
-<div class="block-push block-push-03-alone">
-    <div class="vFlexAlign">
-        <div>
-            <strong class="title-2">{{ page|trans_fallback('pushTitle3') }}</strong>
-            <a class="link" href="{{ page|trans_fallback('pushUrl3') }}"><i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}</a>
+</div>{% endif %}<!--
+-->{% if page and page.pushImage3 is not null %}
+    <div class="block-push block-push-03-alone">
+        <div class="vFlexAlign">
+            <div>
+                <strong class="title-2">{{ page|trans_fallback('pushTitle3') }}</strong>
+                <a class="link" href="{{ page|trans_fallback('pushUrl3') }}"{{ page|trans_fallback('pushUrl3')|external_link }}>
+                    <i class="icon icon-arrow-right"></i> {{ 'search.form.label.discover'|trans }}
+                </a>
+            </div>
         </div>
+        {% set trans = page.pushImage3.findTranslationByLocale(app.request.locale) %}
+        {% if trans is null or trans.file is null %}
+            {% set trans = page.pushImage3.findTranslationByLocale('fr') %}
+        {% endif %}
+        <img src="{% path trans.file , '954x606' %}" alt="">
     </div>
-    {% set trans = page.pushImage3.findTranslationByLocale(app.request.locale) %}
-    {% if trans is null or trans.file is null %}
-    {% set trans = page.pushImage3.findTranslationByLocale('fr') %}
-    {% endif %}
-    <img src="{% path trans.file , '976x535' %}" alt="">
-</div>
 {% endif %}

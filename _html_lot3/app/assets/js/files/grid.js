@@ -40,15 +40,18 @@ var owInitGrid = function (id) {
 
             var url = $(this).attr('href');
 
+            var dateTime = $('.last-element').data('time');
+            console.log(dateTime);
 
-            $.get( url, function( data ) {
-                data = $(data);
-                $gridMore.append(data).isotope( 'addItems', data );
+            $.get( url, {date: dateTime}, function( data ) {
 
-
-                $gridMore.isotope();
-
-
+                if(data == null){
+                    return false;
+                }else{
+                    data = $(data);
+                    $gridMore.append(data).isotope( 'addItems', data );
+                    $gridMore.isotope();
+                }
             });
 
         });

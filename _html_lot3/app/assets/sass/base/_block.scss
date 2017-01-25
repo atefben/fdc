@@ -453,7 +453,7 @@
   position: relative;
   background-attachment: inherit;
 
-  .who &, .edition-69.story-movie &, .palm-gold &{
+  .who &, .edition-69.story-movie &, .palm-gold &, .media-library &, .participate &{
     background-attachment: fixed;
   }
 
@@ -590,6 +590,27 @@
       padding-right: 65px;
     }
   }
+}
+
+.text-01 {
+  em {
+    font-family: $CamphorItalic;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+    font-size: .5rem;
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: .5rem;
+  }
+
 }
 
 .text-01 a {
@@ -1679,6 +1700,7 @@
           color: $gold;
           text-decoration: underline;
           transition: all .9s cubic-bezier(.25,.46,.45,.94);
+          font-family: $CamphorBold;
 
           &:hover {
             color: #966505;
@@ -1718,6 +1740,7 @@
       .link {
         padding-top: 38px;
         color: #c8a461;
+        width: 311px;
 
         a {
           color: #c8a461;
@@ -1735,6 +1758,7 @@
           padding-right: 9px;
           @include transition(all 0.9s $linear);
           vertical-align: text-top;
+          font-size: .8rem;
         }
       }
 
@@ -2156,12 +2180,17 @@
 
 .block-s-info-02 {
   flex-direction: column;
-  height: 362px;
+  //height: 362px;
   color: #fff;
   // background-size: cover;
   text-align: center;
   background: center 0 no-repeat fixed;
   background-size: cover;
+  padding: 50px 0px;
+
+  p {
+    width: 643px;
+  }
 
   a {
     color: $gold;
@@ -2210,14 +2239,16 @@
   margin-top: 50px;
   flex-direction: row;
 
-  .caption {
+  p.caption {
     color: #666 !important;
-    font-size: 0.750rem;
-    margin: 10px 0 0;
-    line-height: 18px;
-    text-align: left;
-    font-family: $CamphorRegular;
+    font-size: 0.750rem !important;
+    margin: 10px 0 0 !important;
+    line-height: 18px !important;
+    text-align: left !important;
+    font-family: $CamphorRegular !important;
   }
+
+
 }
 
 .half-photo {

@@ -3391,7 +3391,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   position: relative;
   background-attachment: inherit;
 }
-.who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top {
+.who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top, .media-library .block-push-top, .participate .block-push-top {
   background-attachment: fixed;
 }
 .block-push-top .vFlexAlign {
@@ -3510,6 +3510,21 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   box-sizing: border-box;
   padding-right: 65px;
+}
+
+.text-01 em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.text-01 strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.text-01 sub {
+  vertical-align: text-bottom;
+  font-size: .5rem;
+}
+.text-01 sup {
+  vertical-align: super;
+  font-size: .5rem;
 }
 
 .text-01 a {
@@ -4424,6 +4439,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
   text-decoration: underline;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .block-accordion-02 .item-manual .contain-infos .descrip-section p a:hover {
   color: #966505;
@@ -4455,6 +4471,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-accordion-02 .item-manual .contain-infos .contain-map .link {
   padding-top: 38px;
   color: #c8a461;
+  width: 311px;
 }
 .block-accordion-02 .item-manual .contain-infos .contain-map .link a {
   color: #c8a461;
@@ -4470,6 +4487,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-right: 9px;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   vertical-align: text-top;
+  font-size: .8rem;
 }
 .block-accordion-02 .item-manual .contain-infos .contain-map .link:hover {
   color: #966505;
@@ -4822,11 +4840,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-s-info-02 {
   -ms-flex-direction: column;
       flex-direction: column;
-  height: 362px;
   color: #fff;
   text-align: center;
   background: center 0 no-repeat fixed;
   background-size: cover;
+  padding: 50px 0px;
+}
+.block-s-info-02 p {
+  width: 643px;
 }
 .block-s-info-02 a {
   color: #c8a461;
@@ -4873,13 +4894,13 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   -ms-flex-direction: row;
       flex-direction: row;
 }
-.half-photos .caption {
+.half-photos p.caption {
   color: #666 !important;
-  font-size: 0.750rem;
-  margin: 10px 0 0;
-  line-height: 18px;
-  text-align: left;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem !important;
+  margin: 10px 0 0 !important;
+  line-height: 18px !important;
+  text-align: left !important;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
 }
 
 .half-photo {
@@ -5164,6 +5185,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
   line-height: 24px;
+  margin-bottom: 8px;
 }
 .block-contain-txt-register-movie h6 {
   font-size: .75rem;
@@ -5503,6 +5525,18 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .wysiwyg-article-02 p span {
   color: #c8a461;
+}
+
+strong.title-center {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+  text-transform: none;
+  display: block;
+  margin-bottom: 20px;
+  color: #000;
 }
 
 @font-face {
@@ -5894,76 +5928,80 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   content: "\E05D";
 }
 
-.icon-stool:before {
+.icon-speacker:before {
   content: "\E05E";
 }
 
-.icon-taxi-fill:before {
+.icon-stool:before {
   content: "\E05F";
 }
 
-.icon-tools:before {
+.icon-taxi-fill:before {
   content: "\E060";
 }
 
-.icon-trailer-player:before {
+.icon-tools:before {
   content: "\E061";
 }
 
-.icon-trailer:before {
+.icon-trailer-player:before {
   content: "\E062";
 }
 
-.icon-train:before {
+.icon-trailer:before {
   content: "\E063";
 }
 
-.icon-truck:before {
+.icon-train:before {
   content: "\E064";
 }
 
-.icon-tumblr:before {
+.icon-truck:before {
   content: "\E065";
 }
 
-.icon-tv:before {
+.icon-tumblr:before {
   content: "\E066";
 }
 
-.icon-twitter:before {
+.icon-tv:before {
   content: "\E067";
 }
 
-.icon-user-fill:before {
+.icon-twitter:before {
   content: "\E068";
 }
 
-.icon-user-round:before {
+.icon-user-fill:before {
   content: "\E069";
 }
 
-.icon-video:before {
+.icon-user-round:before {
   content: "\E06A";
 }
 
-.icon-wen-fill:before {
+.icon-video:before {
   content: "\E06B";
 }
 
-.icon-wen-minus:before {
+.icon-wen-fill:before {
   content: "\E06C";
 }
 
-.icon-wen-more:before {
+.icon-wen-minus:before {
   content: "\E06D";
 }
 
-.icon-wifi:before {
+.icon-wen-more:before {
   content: "\E06E";
 }
 
-.icon-youtube:before {
+.icon-wifi:before {
   content: "\E06F";
+}
+
+.icon-youtube:before {
+  content: "\E070";
 }
 
 /*!
@@ -7133,6 +7171,8 @@ header #navigation ul li ul.tcenter {
   width: 639px;
   padding-left: 0;
   left: 0;
+  border-top: 1px solid #404040;
+  margin-top: 0px;
 }
 header #navigation ul li ul.tcenter li:last-child a {
   padding-right: 0;
@@ -7210,6 +7250,8 @@ header #navigation ul.user .participate-wrapper ul {
   left: auto;
   margin-left: -762px;
   text-align: right;
+  border-top: 1px solid #404040;
+  margin-top: 0px;
 }
 header #navigation ul.user .participate-wrapper ul li a {
   font-size: 0.688rem;
@@ -7218,6 +7260,8 @@ header #navigation ul.user .programmation-wrapper ul {
   left: auto;
   margin-left: -649px;
   text-align: right;
+  border-top: 1px solid #404040;
+  margin-top: 0px;
 }
 header #navigation ul.user .programmation-wrapper ul li a {
   font-size: 0.688rem;
@@ -8839,6 +8883,9 @@ header #searchContainer {
 }
 .article-inverse .card:not(.w2):not(.double) .image {
   width: 263px;
+}
+.article-inverse .card.w2.double {
+  padding-left: 41px;
 }
 
 .mob .read-later {
@@ -10481,7 +10528,7 @@ body#home .isotope-01 .item .contain-img {
   color: #c8a461;
 }
 
-body.slideshow-open {
+html.slideshow-open {
   overflow: hidden;
 }
 
@@ -12643,6 +12690,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-top: 50px;
   margin-bottom: 80px;
 }
+.block-search .block-push-03 {
+  margin-top: 80px;
+}
 .block-search .search-txt {
   position: relative;
   background-color: #fff;
@@ -13177,6 +13227,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   background: #E8E7E6;
   left: 14px;
   top: 6px;
+}
+
+.search-page-result .block-push-03 {
+  margin-top: 80px;
 }
 
 @media screen and (min-width: 1920px) {
@@ -15452,6 +15506,26 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 975px;
   height: 350px;
   margin-top: 51px;
+}
+
+.participate .title-22 {
+  font: 0.875rem "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c1c1c1;
+  text-transform: uppercase;
+  padding-top: 37px;
+  padding-bottom: 49px;
+  letter-spacing: 2px;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.participate .item.active .title-22 {
+  color: #c8a461;
+}
+.participate .block-accordion-02 .item-manual .contain-infos .descrip-participate p {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
 }
 
 .c-contact input[type=text],

@@ -2,7 +2,7 @@
 
 namespace Base\CoreBundle\Twig\Extension;
 
-use \Twig_Extension;
+use Twig_Extension;
 
 /**
  * Class ExternalLinkExtension
@@ -10,44 +10,10 @@ use \Twig_Extension;
  */
 class ExternalLinkExtension extends Twig_Extension
 {
-    private $em;
-
     private $eventDomain;
     private $eventMobileDomain;
     private $pressDomain;
     private $corpoDomain;
-
-    /**
-     * @return mixed
-     */
-    public function getEventDomain()
-    {
-        return $this->eventDomain;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEventMobileDomain()
-    {
-        return $this->eventMobileDomain;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPressDomain()
-    {
-        return $this->pressDomain;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCorpoDomain()
-    {
-        return $this->corpoDomain;
-    }
 
     /**
      * @param mixed $eventMobileDomain
@@ -90,12 +56,6 @@ class ExternalLinkExtension extends Twig_Extension
     }
 
 
-
-    public function __construct($em)
-    {
-        $this->em = $em;
-    }
-
     public function getFilters()
     {
         return array(
@@ -103,29 +63,26 @@ class ExternalLinkExtension extends Twig_Extension
         );
     }
 
-    public function externalLink($object)
+    public function externalLink($url)
     {
-        if(parse_url($object, PHP_URL_SCHEME)) {
+        if (parse_url($url, PHP_URL_SCHEME)) {
             $hosts = [
-                $this->getEventDomain(),
-                $this->getEventMobileDomain(),
-                $this->getCorpoDomain(),
-                $this->getPressDomain(),
+                $this->eventDomain,
+                $this->eventMobileDomain,
+                $this->corpoDomain,
+                $this->pressDomain,
             ];
-            $currentHost = parse_url($object, PHP_URL_HOST);
-            if (!in_array($currentHost,$hosts)) {
+            $currentHost = parse_url($url, PHP_URL_HOST);
+            if (!in_array($currentHost, $hosts)) {
                 return 'target="_blank"';
             }
-       }
-       return '';
+        }
+        return '';
     }
 
 
     /**
-     * getName function.
-     *
-     * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

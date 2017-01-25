@@ -21,7 +21,7 @@ header {
     overflow: initial;
 
     #navigation ul li ul.tcenter {
-      width: 836px
+      width: 836px;
     }
 
     #navigation ul.main {
@@ -504,6 +504,8 @@ header {
             width: 639px;
             padding-left: 0;
             left: 0;
+            border-top: 1px solid #404040;
+            margin-top: 0px;
 
             li:last-child a {
               padding-right: 0;
@@ -595,6 +597,9 @@ header {
           left: auto;
           margin-left: -762px;
           text-align: right;
+          border-top: 1px solid #404040;
+          margin-top: 0px;
+
           li{
             a{
               font-size: 0.688rem;
@@ -606,6 +611,9 @@ header {
           left: auto;
           margin-left: -649px;
           text-align: right;
+          border-top: 1px solid #404040;
+          margin-top: 0px;
+
           li{
             a{
               font-size: 0.688rem;

@@ -241,3 +241,31 @@
   height: 350px;
   margin-top: 51px;
 }
+
+.participate {
+  .title-22 {
+    font: .875rem $CamphorBold;
+    color: #c1c1c1;
+    text-transform: uppercase;
+    padding-top: 37px;
+    padding-bottom: 49px;
+    letter-spacing: 2px;
+    transition: all .9s cubic-bezier(.25,.46,.45,.94);
+  }
+  
+  .item.active {
+    .title-22 {
+      color: $gold;
+    }
+  }
+
+  .block-accordion-02 .item-manual .contain-infos .descrip-participate {
+    p {
+      width: 607px;
+      font-size: 1.25rem;
+      text-align: center;
+      margin: 0 auto;
+      line-height: 36px;
+    }
+  }
+}

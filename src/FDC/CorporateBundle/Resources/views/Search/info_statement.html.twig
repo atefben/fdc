@@ -1,6 +1,8 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 <div class="top-texts">
-    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.info_statement.count > 4 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info_statement'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
+    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.info_statement.count > 4 %}<a
+        href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info_statement'}|merge(app.request.query.all)) }}"
+        class="see-all">Tout voir</a>{% endif %}
     <h3>Communiqués de presse/infos - {{ result.info_statement.count }} résultats</h3>
 </div>
 
@@ -15,11 +17,12 @@
         {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
             {% set articleFormat = "photo" %}
         {% endif %}
+        {% set type = class(article) starts with 'Info' ? 'info' : 'communique' %}
         <article class="block-poster-search medias landscape-more">
             <div class="item communique">
-                <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}">
+                <a href="{{ path('fdc_corporate_news_presssingle', {year: article.festival.year, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}">
                     <div class="contain-img landscape">
-                        {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
+                        {% if (class(article) == "StatementArticle" or class(article) == "InfoArticle") and article.header %}
                             {% set img = article.header %}
                             {% set trans = img.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
@@ -27,7 +30,7 @@
                             {% endif %}
                             {% set file = trans.file %}
                             {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-                        {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
+                        {% elseif (class(article) == "StatementVideo" or class(article) == "InfoVideo") and article.header %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -54,7 +57,7 @@
 
                             {% endif %}
 
-                        {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
+                        {% elseif (class(article) == "StatementAudio" or class(article) == "InfoAudio") and article.header %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -80,7 +83,7 @@
                             {% endif %}
 
                             {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-                        {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
+                        {% elseif (class(article) == "StatementImage" or class(article) == "InfoImage") and article.header %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -107,11 +110,18 @@
 
                             {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                         {% endif %}
-                        <i class="picto icon icon-release-press"></i>
+                        {% if class(article) starts with 'Info' %}
+                            <i class="picto icon icon-article"></i>
+                        {% elseif class(article) starts with 'Statement' %}
+                            <i class="picto icon icon-release-press"></i>
+                        {% endif %}
                     </div>
                     <div class="contain-txts">
-                        <span class="title-type-media">communiqués de presse</span>
-                        <span class="title-dates">{{ article.publishedAt|date('d.m.y') }}  .  {{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
+                        {% if article.theme %}
+                            <span class="title-type-media">{{ article.theme|trans_fallback('name') }}</span>
+                        {% endif %}
+                        <span class="title-dates">{{ article.publishedAt|date('d.m.y') }}
+                            . {{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
                         <span class="title-media">{{ article|trans_fallback('title')|truncate(40) }}</span>
                     </div>
                 </a>

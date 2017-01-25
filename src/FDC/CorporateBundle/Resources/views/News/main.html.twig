@@ -117,87 +117,6 @@
                     </div>
                 </div>
 
-                {# if associatedFilm is not null or programmations is not empty %}
-                    <div class="film">
-                        {% if associatedFilm is not null %}
-                            <div class="info-film {% if programmations is empty %} single{% endif %}">
-                                <div class="wrapper">
-                                    <div class="vCenter">
-                                        <div class="vCenterKid">
-                                            <div class="poster">
-                                                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                                film: associatedFilm,
-                                                film_format: '293x397',
-                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
-                                                }) %}
-                                            </div>
-                                            <div class="text-container" id="filmPoster">
-                                                {% if associatedFilm.selectionSection is not null %}
-                                                    <span class="category">
-                                            {{ associatedFilm.selectionSection|trans_fallback('name') }}
-                                        </span>
-                                                {% endif %}
-                                                <h3>
-                                                    <a href="{{ path('fdc_event_movie_get',{'slug': associatedFilm.slug}) }}">
-                                                        {{ associatedFilm.titleVO }}
-                                                    </a>
-                                                </h3>
-                                                {% if director is defined and director|length > 1 %}
-                                                    <p class="director">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                                                    <p>
-                                                {% else %}
-                                                    <p class="director">
-                                                        {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != director|length %},{% endif %}{% endif %}
-                                                            {% if index == 4 %}...{% endif %}
-                                                        {% endfor %}
-                                                    </p>
-                                                {% endif %}
-                                                <p>
-                                                    {% for index,country in associatedFilm.countries %}
-                                                        {{ country.country|trans_fallback('name') }}{% if loop.index != country|length %},{% endif %}
-                                                    {% endfor %}
-                                                    {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
-                                                        - {{ associatedFilm.productionYear }}
-                                                    {% endif %}
-                                                </p>
-                                                <p>{{ associatedFilmDuration }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                        {% if programmations is not empty %}
-                            <div class="programmation-film">
-                                <div class="wrapper">
-                                    <div class="vCenter">
-                                        <div class="vCenterKid">
-                                            <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
-                                            <ul>
-                                                {% set progDisplayed = 0 %}
-                                                {% for programmation in programmations if progDisplayed < 4 %}
-                                                    {% if programmation.type not in ['Séance de presse', 'Conférence de presse', 'Divers'] %}
-                                                        <li>
-                                                            <span class="type">{{ 'article.film.text.projection'|trans }}</span>
-                                                            <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
-                                                            <span>{{ agenda_leftbar_translate_hour(programmation.startsAt|date('H:i'), true, true) }}</span>
-                                                            <span class="location">{{ programmation.room.name }}</span>
-                                                        </li>
-                                                        {% set progDisplayed = progDisplayed + 1 %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                            <a href="{{ path('fdc_event_agenda_scheduling') }}{{ nextProjectionDate ? '?date=' ~ nextProjectionDate : '' }}"
-                                               class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endif #}
-                <!--div class="container">
                 {% if focusArticles is not empty %}
                     <div class="focus">
                         <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
@@ -223,24 +142,24 @@
                     </div>
                 {% endif %}
             </div>
-        </div-->
-                <span class="anim"></span>
-            </div>
+            </div-->
+            <span class="anim"></span>
+        </div>
 
-            {{ render(controller('FDCEventBundle:Global:shareEmail',
-            {'section': news.theme|trans_fallback('name'),
-                'detail': news.publishedAt|date('d.m.y'),
-                'title': news|trans_fallback('title'),
-                'description': news|trans_fallback('introduction')|raw,
-                'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-            })) }}
-            {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
-            {'section': news.theme|trans_fallback('name'),
-                'detail': news.publishedAt|date('d.m.y'),
-                'title': news|trans_fallback('title'),
-                'description': news|trans_fallback('introduction')|raw,
-                'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-            })) }}
+        {{ render(controller('FDCEventBundle:Global:shareEmail',
+        {'section': news.theme|trans_fallback('name'),
+            'detail': news.publishedAt|date('d.m.y'),
+            'title': news|trans_fallback('title'),
+            'description': news|trans_fallback('introduction')|raw,
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+        })) }}
+        {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+        {'section': news.theme|trans_fallback('name'),
+            'detail': news.publishedAt|date('d.m.y'),
+            'title': news|trans_fallback('title'),
+            'description': news|trans_fallback('introduction')|raw,
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+        })) }}
         </div> <!-- end all contain -->
     </section>
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
