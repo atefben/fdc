@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -32,6 +33,7 @@ class MdfConferenceProgramMain extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -109,6 +111,17 @@ class MdfConferenceProgramMain extends Admin
                       'inline'   => 'table',
                       'sortable' => 'position',
                   ))
+        ;
+    }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id')
+            ->add('title')
         ;
     }
 }
