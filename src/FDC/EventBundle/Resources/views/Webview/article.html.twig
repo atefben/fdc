@@ -766,10 +766,10 @@ html {
         </div>
       </header>
       <div class="Article-content">
-        {{ dump(object) }}
+        {{ dump(object.translations|trans_fallback()) }}
         {{ dump(object.header) }}
         {{ dump(object.theme) }}
-        <img src="{% path object.header|trans_fallback('file') , '575x364' %}" />
+        <img src="{% path object.header|trans_fallback('file') , '' %}" />
         <h1>Juste la fin du monde de Xavier Dolan,<br/> Grand Prix</h1>
         <strong>Le Jury des Longs Métrages présidé par George Miller s'est longuement exprimé ce dimanche soir devant la presse au terme de la Cérémonie du Palmarès du 69e Festival de Cannes, durant laquelle il a décerné la Palme d'or au cinéaste britannique Ken Loach pour son film, Daniel Blake. Voici plusieurs morceaux choisis de cet échange avec les journalistes.</strong>
         <strong>George Miller, concernant le travail du Jury :</strong>
