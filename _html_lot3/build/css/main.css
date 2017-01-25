@@ -12617,6 +12617,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding: 42px;
   font-size: 1rem;
   text-align: center;
+  border-bottom: #e5e5e5 1px solid;
+  border-top: #e5e5e5 1px solid;
+  margin-bottom: 60px;
 }
 .who .title-list-cat .title {
   width: 549px;
