@@ -256,6 +256,14 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      */
     protected $oldNewsTable;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobile_display", type="string", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
+     */
+    protected $mobileDisplay;
+
     public function __construct()
     {
         $this->hideSameDay = false;
@@ -1180,5 +1188,28 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     public function getOldNewsTable()
     {
         return $this->oldNewsTable;
+    }
+
+    /**
+     * Set mobileDisplay
+     *
+     * @param string $mobileDisplay
+     * @return News
+     */
+    public function setMobileDisplay($mobileDisplay)
+    {
+        $this->mobileDisplay = $mobileDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get mobileDisplay
+     *
+     * @return string 
+     */
+    public function getMobileDisplay()
+    {
+        return $this->mobileDisplay;
     }
 }

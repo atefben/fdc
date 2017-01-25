@@ -15,7 +15,10 @@
     {% endif %}
 
     {% if film_attrs is not defined %}
-        {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
+        {% set film_attrs = [] %}
+    {% endif %}
+    {% if film_attrs.alt is not defined %}
+        {% set film_attrs = film_attrs|merge({'alt': (film|trans_fallback('title')?:film.titleVO)}) %}
     {% endif %}
 
     {% if film_format is not defined %}
@@ -30,9 +33,11 @@
         {% endif %}
     {% else %}
         {% if media is not empty and film_format is not empty and film_attrs is not empty %}
-            <img src="{% path media, film_format  %}"{% for key, val in film_attrs %} {{ key }}="{{ val }}"{% endfor %}>
+            <img src="{% path media, film_format %}"{% for key, val in film_attrs %} {{ key }}="{{ val }}"{% endfor %}>
         {% else %}
-            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs|raw }}{% endif %} data-object-fit="cover">
+            <img src="{{ asset(film_image_default) }}"
+                 alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs|raw }}{% endif %}
+                 data-object-fit="cover">
         {% endif %}
     {% endif %}
 {% endspaceless %}

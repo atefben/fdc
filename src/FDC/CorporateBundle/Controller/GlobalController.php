@@ -65,7 +65,10 @@ class GlobalController extends Controller {
                 foreach ($emails as $email){
                     $data    = $form->getData();
                     $artist = $request->get('artist');
-                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCCorporateBundle:Emails:share.html.twig', array(
+                    $message = \Swift_Message::newInstance()
+                            ->setSubject($data['title'])
+                            ->setFrom($data['user'])->setTo($email)
+                            ->setBody($this->renderView('FDCCorporateBundle:Emails:share.html.twig', array(
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],
@@ -81,7 +84,7 @@ class GlobalController extends Controller {
 
                     //send mail copy
                     if ($data['copy']) {
-                        $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                        $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCCorporateBundle:Emails:share.html.twig', array(
                             'message' => $data['message'],
                             'section' => $data['section'],
                             'title' => $data['title'],
@@ -104,7 +107,6 @@ class GlobalController extends Controller {
                     }
                 }
             } else {
-                dump($form->getErrorsAsString());exit;
                 $response['success'] = false;
             }
             return new JsonResponse($response);
@@ -127,6 +129,60 @@ class GlobalController extends Controller {
             );
         }
 
+    }
+    
+    private function newsletterEmailExists($email)
+    {
+        $client = new Client($this->container->getParameter('fdc_newsletter_api_url'));
+        $request = $client->get('contact/' . $email);
+        $request->setAuth(
+            $this->container->getParameter('fdc_newsletter_api_universe'),
+            $this->container->getParameter('fdc_newsletter_api_password')
+        );
+
+        try {
+            $request->send();
+        } catch (BadResponseException $e) {
+            $this->get('logger')->err('Unable to verify if email exists in newsletter - '. $e->getMessage());
+            return false;
+        } catch (Exception $e) {
+            $this->get('logger')->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
+            return false;
+        }
+
+        return ($request->getResponse()->getStatusCode() === 200) ? true : false;
+    }
+
+        private function newsletterEmailSubscribe($email, $locale) {
+        $date = new DateTime();
+        $client = new Client($this->container->getParameter('fdc_newsletter_api_url'));
+        $query = json_encode(array(
+            'email' => $email,
+            'lang' => $locale,
+            'date' => $date->format('Y-m-d H:i:s'),
+            'firstname' => '',
+            'lastname' => '',
+            'lists' => array(
+                array('id' => '0')
+            )
+        ));
+        $request = $client->post('contact/', null, $query);
+
+        $request->setAuth(
+                $this->container->getParameter('fdc_newsletter_api_universe'), $this->container->getParameter('fdc_newsletter_api_password')
+        );
+
+        try {
+            $request->send();
+        } catch (BadResponseException $e) {
+            $this->get('logger')->err('Unable to verify if ' . $email . ' exists in newsletter - ' . $e->getMessage());
+            return false;
+        } catch (Exception $e) {
+            $this->get('logger')->err('Unexpected error when subscribing ' . $email . ' in newsletter - ' . $e->getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     /**

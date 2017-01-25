@@ -34,7 +34,12 @@
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
                             {% endif %}
-                            {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
+                            {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'Statement' %}
+                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'communique', format: homeSlide.newsFormat, slug: trans.slug }) %}
+                            {% else %}
+                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'info', format: homeSlide.newsFormat, slug: trans.slug }) %}
+                            {% endif %}
+
                             {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
                             {% set sliderItems = sliderItems|merge(sliderItem) %}
                             {% set dataItem = dataItem + 1 %}
@@ -52,7 +57,7 @@
                                         <a href="{{ sliderItem.url }}">
                                             <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                         </a>
-                                <span class="text-trunc">
+                                        <span class="text-trunc">
                                     {{ sliderItem.introduction|raw }}
                                 </span>
                                     </div>
@@ -393,10 +398,10 @@
                             </div>
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
-                    
-                <a href="ajax_more_news.html"
-               data-reverse="ajax_more_news-reverse.html" class="read-more ajax-request">Afficher
-                <strong>plus d'infos</strong></a>
+
+                    <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse=""
+                       class="read-more ajax-request">Afficher
+                        <strong>plus d'infos</strong></a>
                 {% endif %}
             </div> <!-- end block 01-->
 
@@ -542,61 +547,61 @@
                             </div><!--
             -->
                             {% if filmReleases|length %}
-                            <div class="right info-02">
-                                <div class="block-infos">
-                                    <div class="text-infos vFlexAlign ">
-                                        {% set movie = filmReleases|first %}
-                                        <strong class="title-3">Sortie
-                                            le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
-                                        <strong class='title-4'>{{ movie.titleVO }}</strong>
-                                        {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                <div class="right info-02">
+                                    <div class="block-infos">
+                                        <div class="text-infos vFlexAlign ">
+                                            {% set movie = filmReleases|first %}
+                                            <strong class="title-3">Sortie
+                                                le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
+                                            <strong class='title-4'>{{ movie.titleVO }}</strong>
+                                            {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
 
-                                        <span>De <span class="title-5">
+                                            <span>De <span class="title-5">
                                         {% set dataWho = '' %}
-                                                {% for director in directors %}
-                                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.slug}) ~ '">' ~ director.fullName ~ '</a>' %}
-                                                    {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
-                                                {% endfor %}
-                                                {{ dataWho|raw }}</span>
+                                                    {% for director in directors %}
+                                                        {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.slug}) ~ '">' ~ director.fullName ~ '</a>' %}
+                                                        {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
+                                                    {% endfor %}
+                                                    {{ dataWho|raw }}</span>
                                     </span>
-                                        <span class="title-6">{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
-                                        {% set awardsUnique = [] %}
-                                        {% set dataAward = '' %}
-                                        {% for movieAward in movie.awards %}
-                                            {% if movieAward.award and movieAward.award.prize %}
-                                                {% if movieAward.award.id not in awardsUnique %}
-                                                    {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                                                    {% set dataAward = movieAward.award.prize|trans_fallback('title')|trim %}
-                                                    {% if movieAward.award.exAequo == 1 %}
-                                                        {% set dataAward = dataAward ~ ' (' ~ 'award.ex_aequo'|trans ~ ')' %}
+                                            <span class="title-6">{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
+                                            {% set awardsUnique = [] %}
+                                            {% set dataAward = '' %}
+                                            {% for movieAward in movie.awards %}
+                                                {% if movieAward.award and movieAward.award.prize %}
+                                                    {% if movieAward.award.id not in awardsUnique %}
+                                                        {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                                                        {% set dataAward = movieAward.award.prize|trans_fallback('title')|trim %}
+                                                        {% if movieAward.award.exAequo == 1 %}
+                                                            {% set dataAward = dataAward ~ ' (' ~ 'award.ex_aequo'|trans ~ ')' %}
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endif %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        <i class="icon ispalme icon-palme"></i>
-                                        <strong class="title-7">{{ dataAward }}</strong>
-                                        <span class="date">{{ movie.productionYear }}</span>
+                                            {% endfor %}
+                                            <i class="icon ispalme icon-palme"></i>
+                                            <strong class="title-7">{{ dataAward }}</strong>
+                                            <span class="date">{{ movie.productionYear }}</span>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="relative">
-                                    <div class="block-social-network">
-                                        <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=
+                                    <div class="relative">
+                                        <div class="block-social-network">
+                                            <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=
 http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
-                                                    class="icon icon-facebook"></i></a><!--
+                                                        class="icon icon-facebook"></i></a><!--
                 --><a class="twitter"
                       href="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat"><i
-                                                    class="icon icon-twitter"></i></a><!--
+                                                        class="icon icon-twitter"></i></a><!--
                 --><a href="#" rel="nofollow" class="link self"
                       data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i
-                                                    class="icon icon-link"></i></a><!--
+                                                        class="icon icon-link"></i></a><!--
                 --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a>
+                                        </div>
+                                        <div class="texts-clipboard"></div>
                                     </div>
-                                    <div class="texts-clipboard"></div>
-                                </div>
 
-                            </div> <!-- end info 02 -->
-                                {% endif %}
+                                </div> <!-- end info 02 -->
+                            {% endif %}
                         </div> <!-- end block film -->
 
                         <div class="block-list-img slider-02 s-video-playlist">
@@ -657,7 +662,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             class="icon icon-arrow-right"></i> découvrir</a>
                             </div>
                         </div>
-                        {%  if homepage.pushMainImage1 %}
+                        {% if homepage.pushMainImage1 %}
                             {% set trans = homepage.pushMainImage1.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
                                 {% set trans = homepage.pushMainImage1.findTranslationByLocale('fr') %}
@@ -665,8 +670,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-      -->
-                    <div class="half-div block-push">
+                    --><div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -678,7 +682,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             class="icon icon-arrow-right"></i> découvrir</a>
                             </div>
                         </div>
-                        {%  if homepage.pushMainImage2 %}
+                        {% if homepage.pushMainImage2 %}
                             {% set trans = homepage.pushMainImage2.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
                                 {% set trans = homepage.pushMainImage2.findTranslationByLocale('fr') %}
@@ -734,12 +738,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl1') }}">
                                         <div class="image-wrapper">
                                             {% if homepage.pushSecondaryImage1 %}
-                                            {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
-                                            {% endif %}
+                                                {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale(app.request.locale) %}
+                                                {% if trans is null or trans.file is null %}
+                                                    {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
+                                                {% endif %}
 
-                                            <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle1')|raw }}</strong>
@@ -747,17 +751,16 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-            -->
-                                <div class="small-push half-div">
+                                --><div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
                                             {% if homepage.pushSecondaryImage2 %}
-                                            {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale('fr') %}
-                                            {% endif %}
-                                            <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale(app.request.locale) %}
+                                                {% if trans is null or trans.file is null %}
+                                                    {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale('fr') %}
+                                                {% endif %}
+                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle2')|raw }}</strong>
@@ -766,18 +769,17 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-        -->
-                            <div class="left">
+                            --><div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">
                                         <div class="image-wrapper">
                                             {% if homepage.pushSecondaryImage3 %}
-                                            {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
-                                            {% endif %}
-                                            <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale(app.request.locale) %}
+                                                {% if trans is null or trans.file is null %}
+                                                    {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
+                                                {% endif %}
+                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle3')|raw }}</strong>

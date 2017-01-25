@@ -2133,6 +2133,13 @@ a {
   text-decoration: none;
 }
 
+.text-01 a
+{
+    color: #c8a461;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .button {
   border: 1px solid #dfdfdf;
   border-right: none;

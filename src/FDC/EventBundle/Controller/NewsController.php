@@ -20,11 +20,11 @@ class NewsController extends Controller
 {
     /**
      * @Route("/", options={"i18n": "false"})
-     * @Template("FDCEventBundle:News:prehome.html.twig")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function preHomeAction()
     {
-        return array();
+        return $this->redirect($this->generateUrl('fdc_event_news_index', ['_locale' => 'fr']), 301);
     }
 
     /**
@@ -308,7 +308,7 @@ class NewsController extends Controller
                 $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-
+                
                 $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
                 $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             }
@@ -387,8 +387,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
-     *     options={"expose"=true})
+     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},options={"expose"=true})
      * @Template("FDCEventBundle:News:main.html.twig")
      * @param $slug
      * @return array

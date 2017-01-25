@@ -5,6 +5,10 @@
   margin-top: 50px;
   margin-bottom: 80px;
 
+  .block-push-03 {
+    margin-top: 80px;
+  }
+
   .search-txt {
     position: relative;
     background-color: #fff;
@@ -21,7 +25,6 @@
       color:#141414;
       border:1px solid #f4f4f4;
     }
-
 
 
     input {
@@ -396,6 +399,7 @@
       &.last {
         border-bottom: 0px solid #e7e7e7;
       }
+
     }
 
     .item {
@@ -404,9 +408,8 @@
       &.last {
         margin-right: 0px;
       }
-
-
     }
+
     .contain-img{
       position: relative;
       margin-bottom: 20px;
@@ -630,8 +633,6 @@
         height: 20px;
         top: -10px;
       }
-
-
     }
   }
 
@@ -644,5 +645,11 @@
     background: #E8E7E6;
     left: 14px;
     top: 6px;
+  }
+}
+
+.search-page-result {
+  .block-push-03 {
+    margin-top: 80px;
   }
 }

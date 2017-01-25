@@ -264,6 +264,9 @@ $(document).ready(function () {
 
     if ($('.articles-list-medias').length) {
 
+        owInitNavSticky(1);
+
+
         var grid = owInitGrid('isotope-01');
 
         owInitAleaGrid(grid, $('.grid-01'), true);
@@ -359,6 +362,11 @@ $(document).ready(function () {
 
     if($('#google-map').length) {
         google.maps.event.addDomListener(window, 'load', initMap);
+    }
+
+
+    if($('.search-page-result').length) {
+        initFilterCheck();
     }
 
     setTimeout(function () {

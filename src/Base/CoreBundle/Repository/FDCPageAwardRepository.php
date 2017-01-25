@@ -64,7 +64,6 @@ class FDCPageAwardRepository extends TranslationRepository
         $qb
             ->join('p.translations', 't')
             ->andWhere('t.locale = :locale AND t.slug IS NOT NULL AND t.slug <> \'\'')
-            ->andWhere('p.image IS NOT NULL')
             ->setParameter('locale', $locale)
             ->orderBy('p.id', 'asc')
         ;

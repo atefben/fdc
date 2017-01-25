@@ -10,6 +10,9 @@
         </h4>
     </div>
     <div class="box-body">
+        {% if form.parent.children.mobileDisplay is defined %}
+            {{ form_row(form.parent.children.mobileDisplay) }}
+        {% endif %}
         {% if participate_section is defined %}
             <div class="fdc-help form-group">
                 {{ form_row(form.parent.children.evenmt) }}

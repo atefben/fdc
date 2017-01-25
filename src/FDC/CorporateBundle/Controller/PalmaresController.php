@@ -34,14 +34,14 @@ class PalmaresController extends Controller
             $isAdmin = false;
         }
 
-        $pages = $this
+        $tabs = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageAward')
             ->getPages($locale)
         ;
 
         if ($slug === null) {
-            foreach ($pages as $page) {
+            foreach ($tabs as $page) {
                 if ($page->findTranslationByLocale($locale)) {
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
@@ -76,7 +76,7 @@ class PalmaresController extends Controller
         $localeSlugs = $page->getLocaleSlugs();
 
         $parameters = array(
-            'pages'    => $pages,
+            'pages'    => $tabs,
             'page'     => $page,
             'category' => $page->getCategory(),
             'festival' => $festival,
@@ -94,8 +94,7 @@ class PalmaresController extends Controller
             $this->cameraDOrParameters($parameters);
         } elseif ($page->getId() == 5) {
             $parameters['subpages'] = array();
-            foreach ($pages as $subPage) {
-
+            foreach ($tabs as $subPage) {
                 if ($subPage->getId() == 1) { // competition
                     $subParameters = array(
                         'festival' => $festival,

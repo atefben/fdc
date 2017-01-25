@@ -1,3 +1,4 @@
+
 fdc_eventmobile:
     resource: "@FDCEventMobileBundle/Controller/"
     type:     annotation

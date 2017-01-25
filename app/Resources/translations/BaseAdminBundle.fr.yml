@@ -589,6 +589,19 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    mobile_settings:
+        title: Applications mobiles
+        ios_version: Numéro de version iOS
+        android_version: Numéro de version Android
+        countdown: Décompte
+        countdown_time: Date décompte
+        mobile_redirect: Redirection mobile
+        mobile_redirect_url: URL site mobile
+        save: Enregistrer
+    label_mobile_display: Affichage mobile
+    label_mobile_display_big: Grand format
+    label_mobile_display_main: En une
+    label_is_big: Afficher la news grand format dans l'app
     label_display_accredit: Désactiver cette strate
     label_display_reglement: Désactiver cette strate
     label_display_inscription: Désactiver cette strate
@@ -784,6 +797,7 @@ form:
         helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes : Format de l'image recommandé : 650x410
+        helper_push3 : Format de l'image recommandé : 954x606
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
     homepage_corporate:
@@ -1339,3 +1353,4 @@ FDCPageLaSelection: Page la sélection
 FilmJuryType: Type des jurys
 FilmSelectionSection: Sélections
 mobile_notification: Notifications mobiles
+Statement: Communiqué

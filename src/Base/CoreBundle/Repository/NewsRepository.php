@@ -6,12 +6,11 @@ use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use DateTime;
 use JMS\DiExtraBundle\Annotation as DI;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * NewsRepository class.
- *
  * \@extends EntityRepository
  * @author   Antoine Mineau
  * \@company Ohwee
@@ -44,7 +43,8 @@ class NewsRepository extends EntityRepository
         }
 
         if (isset($params['priorityStatus']) && !empty($params['priorityStatus']) &&
-            $params['priorityStatus'] != 'all') {
+            $params['priorityStatus'] != 'all'
+        ) {
             $qb
                 ->andWhere('
                     (na1.priorityStatus = :priorityStatus OR
@@ -57,7 +57,7 @@ class NewsRepository extends EntityRepository
         }
 
         if (!empty($params['sortField']) && !empty($params['sortValue'])) {
-            $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
+            $qb->orderBy('n.' . $params['sortField'], $params['sortValue']);
         }
 
 
@@ -102,8 +102,8 @@ class NewsRepository extends EntityRepository
             $qb
                 ->andWhere(':festivalEndAt < n.publishedAt')
                 //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
-                ->setParameter('festivalEndAt', $festivalEndsAt->format('Y-m-d H:i:s'));
-            ;
+                ->setParameter('festivalEndAt', $festivalEndsAt->format('Y-m-d H:i:s'))
+            ;;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -150,7 +150,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival->getId())
             ->getQuery()
             ->getResult()
-            ;
+        ;
         return $qb;
     }
 
@@ -216,13 +216,94 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNewsBySlug($slug, $festival, $locale, $isAdmin, $repository)
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $since
+     * @param int $page
+     * @param int $count
+     * @return News[]
+     */
+    public function getApiNewsHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    {
+        $now = new DateTime();
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftJoin('na1.translations', 'na1t')
+            ->leftJoin('na2.translations', 'na2t')
+            ->leftJoin('na3.translations', 'na3t')
+            ->leftJoin('na4.translations', 'na4t')
+            ->andWhere('n.displayedMobile= :displayedMobile')
+            ->setParameter('displayedMobile', true)
+            ->andWhere('n.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt <= :now)')
+            ->setParameter('since', $since)
+            ->setParameter('now', $now)
+            ->andWhere(
+                '(na1t.locale = :locale_fr AND na1t.status = :status) OR
+                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
+                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
+                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+            )
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb
+                ->leftJoin('na1.translations', 'na5t')
+                ->leftJoin('na2.translations', 'na6t')
+                ->leftJoin('na3.translations', 'na7t')
+                ->leftJoin('na4.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        if (null !== $page && null !== $count) {
+            $qb
+                ->setMaxResults($count)
+                ->setFirstResult(($page - 1) * $count)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('n.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $slug
+     * @param $festival
+     * @param $locale
+     * @param $isAdmin
+     * @param $repository
+     * @param string $site
+     * @return News
+     */
+    public function getNewsBySlug($slug, $festival, $locale, $isAdmin, $repository, $site = 'site-evenementiel')
     {
         $qb = $this
             ->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftJoin($repository, 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('na1.translations', 'na1t')
+            ->andWhere('s.slug = :site')
+            ->setParameter(':site', $site)
         ;
 
         // add query for audio / video encoder
@@ -250,8 +331,6 @@ class NewsRepository extends EntityRepository
             $this->addMasterQueries($qb, 'na1', $festival);
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
-
-        $this->addFDCEventQueries($qb, 's');
 
         return $qb
             ->getQuery()
@@ -329,17 +408,17 @@ class NewsRepository extends EntityRepository
             ;
         }
 
-        if($focusArticles !== null) {
+        if ($focusArticles !== null) {
             $id1 = (isset($focusArticles[0])) ? $focusArticles[0] : null;
             $id2 = (isset($focusArticles[1])) ? $focusArticles[1] : null;;
 
-            if($id1) {
+            if ($id1) {
                 $qb
                     ->andWhere('n.id <> :id1')
                     ->setParameter('id1', $id1->getId())
                 ;
             }
-            if($id2) {
+            if ($id2) {
                 $qb
                     ->andWhere('n.id <> :id2')
                     ->setParameter('id2', $id2->getId())
@@ -878,7 +957,7 @@ class NewsRepository extends EntityRepository
      * @param $locale
      * @param $festival
      * @param $startsAt
-     * @param $endAt
+     * @param $endsAt
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getNewsRetrospective($locale, $festival, $startsAt, $endsAt)
@@ -1004,16 +1083,16 @@ class NewsRepository extends EntityRepository
     public function getApiNews($festival, $locale, $start, $end)
     {
         $qb = $this->createQueryBuilder('n')
-            ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('nai.translations', 'nait')
-            ->leftJoin('nav.translations', 'navt')
-            ->where('n.festival = :festival')
-            ->andWhere('n.displayedMobile = :displayed_mobile')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('nai.translations', 'nait')
+                   ->leftJoin('nav.translations', 'navt')
+                   ->where('n.festival = :festival')
+                   ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $now = new \DateTime();
@@ -1074,7 +1153,6 @@ class NewsRepository extends EntityRepository
 
     /**
      *  Get the $locale version of News of current $festival by $id and verify publish date is between $dateTime
-     *
      * @param $id
      * @param $festival
      * @param $dateTime
@@ -1084,17 +1162,17 @@ class NewsRepository extends EntityRepository
     public function getApiNewsById($id, $festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-            ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('nai.translations', 'nait')
-            ->leftJoin('nav.translations', 'navt')
-            ->where('n.festival = :festival')
-            ->andWhere('n.id = :id')
-            ->andWhere('n.displayedMobile = :displayed_mobile')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('nai.translations', 'nait')
+                   ->leftJoin('nav.translations', 'navt')
+                   ->where('n.festival = :festival')
+                   ->andWhere('n.id = :id')
+                   ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $qb
@@ -1123,7 +1201,7 @@ class NewsRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         }
-        $news= $qb
+        $news = $qb
             ->setParameter('id', $id)
             ->setParameter('festival', $festival)
             ->setParameter('displayed_mobile', true)

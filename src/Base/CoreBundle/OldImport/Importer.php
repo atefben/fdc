@@ -363,10 +363,11 @@ class Importer
      */
     protected function getFestival(OldArticle $oldArticle)
     {
+        $date = $oldArticle->getStartDate() ?: $oldArticle->getUpdatedAt();
         return $this
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmFestival')
-            ->findOneBy(['year' => $oldArticle->getCreatedAt()->format('Y')])
+            ->findOneBy(['year' => $date->format('Y')])
             ;
     }
 
@@ -515,7 +516,7 @@ class Importer
         }
 
         $media = $mediaImageTranslation->getFile();
-        if (!$media) {
+        if (!$media || $this->input->getOption('force-reupload')) {
             $media = new Media();
             $media->setName($oldMedia->getFilename());
             $media->setEnabled(true);
@@ -528,11 +529,6 @@ class Importer
             $this->getMediaManager()->save($media, false);
 
             $mediaImageTranslation->setFile($media);
-
-        } elseif ($this->input->getOption('force-reupload')) {
-            $media->setBinaryContent($file);
-            $media->setThumbsGenerated(false);
-            $this->getMediaManager()->save($media, false);
         }
 
         $this->getManager()->flush();

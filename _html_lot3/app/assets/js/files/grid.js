@@ -40,15 +40,18 @@ var owInitGrid = function (id) {
 
             var url = $(this).attr('href');
 
+            var dateTime = $('.last-element').data('time');
+            console.log(dateTime);
 
-            $.get( url, function( data ) {
-                data = $(data);
-                $gridMore.append(data).isotope( 'addItems', data );
+            $.get( url, {date: dateTime}, function( data ) {
 
-
-                $gridMore.isotope();
-
-
+                if(data == null){
+                    return false;
+                }else{
+                    data = $(data);
+                    $gridMore.append(data).isotope( 'addItems', data );
+                    $gridMore.isotope();
+                }
             });
 
         });
@@ -90,6 +93,16 @@ var owInitGrid = function (id) {
                     } else {
                         var text = title.attr('data-title');
                     }
+
+                    var cat = $(e).find('.info .category');
+
+                    if (!cat.hasClass('init')) {
+                        var text2 = cat.text();
+                        cat.addClass('init');
+                        cat.attr('data-cat', text2);
+                    } else {
+                        var text2 = cat.attr('data-title');
+                    }
     
     
                     if($('.medias').length > 0) {
@@ -97,11 +110,12 @@ var owInitGrid = function (id) {
                         if (window.matchMedia("(max-width: 1405px)").matches) {
                             title.html(text.trunc(25, true));
                         }else{
-                            title.html(text.trunc(40, true));
+                            title.html(text.trunc(30, true));
                         }
     
                     } else {
-                        title.html(text.trunc(60, true));
+                        title.html(text.trunc(30, true));
+                        cat.html(text2.trunc(30, true));
                     }
                 });
             }
@@ -135,6 +149,15 @@ var owInitGrid = function (id) {
             });
         });
 
+
+        if($('.who-filter').length) {
+            var active = $('.filter .select span.active').data('filter');
+
+            $('.pages:not(.'+active+')').css('display','none');
+            $('.pages.'+active).css('display','block');
+
+            console.log(active);
+        }
 
         return $grid;
     }

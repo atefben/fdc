@@ -344,6 +344,7 @@
     font-family: $CamphorBold;
     letter-spacing: 2px;
     line-height: 24px;
+    margin-bottom: 8px;
   }
 
   h6 {
@@ -775,7 +776,16 @@
     }
   }
 
+}
 
-
-
+strong.title-center {
+  width: 607px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 36px;
+  text-transform: none;
+  display: block;
+  margin-bottom: 20px;
+  color: #000;
 }

@@ -334,12 +334,14 @@ class HomepageCorporateAdmin extends Admin
                     'sortable'  => 'position'
                 )
             )
-            ->add('translate')
+            ->add('translate', null, array(
+                'label' => 'form.label_translate',
+            ))
             ->add('translateOptions', 'choice', array(
                 'choices' => HomepageCorporate::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => HomepageCorporate::getPriorityStatuses(),

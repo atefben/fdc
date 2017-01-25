@@ -4,31 +4,28 @@ namespace FDC\CorporateBundle\Controller;
 
 use Elastica\Query;
 use Elastica\Query\QueryString;
+use FDC\CorporateBundle\Form\Type\SearchType;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
-use FDC\CorporateBundle\Form\Type\SearchType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/")
- *
  * @return JsonResponse
  */
 class SearchController extends Controller
 {
     private static $entityMapper = array(
-        'news'        => 'News',
-        'info'        => 'Info',
-        'statement'   => 'Statement',
-        'photos'      => 'MediaImage',
-        'videos'      => 'MediaVideo',
-        'audios'      => 'MediaAudio',
-        'event'       => 'Event',
-        'artist'      => 'FilmPerson',
-        'film'        => 'FilmFilm'
+        'news'      => 'News',
+        'info'      => 'Info',
+        'statement' => 'Statement',
+        'photos'    => 'MediaImage',
+        'videos'    => 'MediaVideo',
+        'audios'    => 'MediaAudio',
+        'event'     => 'Event',
+        'artist'    => 'FilmPerson',
+        'film'      => 'FilmFilm',
     );
 
     /**
@@ -46,12 +43,12 @@ class SearchController extends Controller
 
             //if none checked, check all
             $hasCheckedItem = false;
-            foreach($data as $filter) {
-                $hasCheckedItem = $hasCheckedItem?:$filter === true;
+            foreach ($data as $filter) {
+                $hasCheckedItem = $hasCheckedItem ?: $filter === true;
             }
-            if(!$hasCheckedItem) {
-                foreach($data as &$filter) {
-                    if(is_bool($filter)) {
+            if (!$hasCheckedItem) {
+                foreach ($data as &$filter) {
+                    if (is_bool($filter)) {
                         $filter = !$filter;
                     }
                 }
@@ -59,7 +56,7 @@ class SearchController extends Controller
 
             $filters = $this->_getFiltersFromData($data);
 
-            if($data['professions']) { //must be done before translation
+            if ($data['professions']) { //must be done before translation
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
 
@@ -70,14 +67,14 @@ class SearchController extends Controller
             $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
             $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : false;
 
-            if($data['news']) {
+            if ($data['news']) {
                 $infoStatementsResults = array();
                 $infoStatementsResults['items'] = array_merge($infoResults['items'], $statementResults['items']);
                 $infoStatementsResults['count'] = $infoResults['count'] + $statementResults['count'];
 
                 //may have too many (4 infos + 4 statements). reduce to 4 items
-                if(count($infoStatementsResults['items']) > 4) {
-                    for($i=count($infoStatementsResults['items'])-1; $i>=4; $i--) {
+                if (count($infoStatementsResults['items']) > 4) {
+                    for ($i = count($infoStatementsResults['items']) - 1; $i >= 4; $i--) {
                         unset($infoStatementsResults['items'][$i]);
                     }
                 }
@@ -85,14 +82,14 @@ class SearchController extends Controller
                 $infoStatementsResults = false;
             }
 
-            if($data['photos'] || $data['videos'] || $data['audios']) {
+            if ($data['photos'] || $data['videos'] || $data['audios']) {
 
                 $i = 0;
-                if($data['photos'])
+                if ($data['photos'])
                     $i += 1;
-                if($data['videos'])
+                if ($data['videos'])
                     $i += 1;
-                if($data['audios'])
+                if ($data['audios'])
                     $i += 1;
 
                 $displayNb = 4;
@@ -108,31 +105,12 @@ class SearchController extends Controller
                         break;
                 }
 
-                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : false;
-                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, $displayNb) : false;
-                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, $displayNb) : false;
-
-                //merging medias (photos,videos,audios)
-                $mediaResults = array('items' => array(), 'count' => 0);
-
-                //photos
-                $mediaResults['items'] = is_array($photoResults)?array_merge($mediaResults['items'], $photoResults['items']):$mediaResults['items'];
-                $mediaResults['count'] = is_array($photoResults)?$mediaResults['count']+$photoResults['count']:$mediaResults['count'];
-
-                //videos
-                $mediaResults['items'] = is_array($videoResults)?array_merge($mediaResults['items'], $videoResults['items']):$mediaResults['items'];
-                $mediaResults['count'] = is_array($videoResults)?$mediaResults['count']+$videoResults['count']:$mediaResults['count'];
-
-                //audios
-                $mediaResults['items'] = is_array($audioResults)?array_merge($mediaResults['items'], $audioResults['items']):$mediaResults['items'];
-                $mediaResults['count'] = is_array($audioResults)?$mediaResults['count']+$audioResults['count']:$mediaResults['count'];
-
-                //may have too many. reduce to 4 items
-                if(count($mediaResults['items']) > 4) {
-                    for($i=count($mediaResults['items'])-1; $i>=4; $i--) {
-                        unset($mediaResults['items'][$i]);
-                    }
-                }
+                $default = ['items' => []];
+                $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : $default;
+                $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, $displayNb) : $default;
+                $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, $displayNb) : $default;
+                $items = array_merge($photoResults['items'], $videoResults['items'], $audioResults['items']);
+                $mediaResults = array('items' => array_slice($items, 0, 4), 'count' => count($items));
             } else {
                 $mediaResults = false;
             }
@@ -141,31 +119,30 @@ class SearchController extends Controller
             $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
 
             $result = array(
-                'news' => $newsResults,
-                'artist' => $artistResults,
-                'film' => $filmResults,
+                'news'           => $newsResults,
+                'artist'         => $artistResults,
+                'film'           => $filmResults,
                 'info_statement' => $infoStatementsResults,
-                'media' => $mediaResults,
-                'event' => $eventResults,
+                'media'          => $mediaResults,
+                'event'          => $eventResults,
             );
 
             return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
-                'result' => $result,
+                'result'  => $result,
                 'filters' => $filters,
-                'form' => $searchForm->createView(),
-                'page' => $page
+                'form'    => $searchForm->createView(),
+                'page'    => $page,
             ));
         } else {
             return $this->render('FDCCorporateBundle:Search:search.html.twig', array(
                 'form' => $searchForm->createView(),
-                'page' => $page
+                'page' => $page,
             ));
         }
 
     }
 
     /**
-     *
      * @Route("/search/{searchFilter}")
      * @param Request $request
      * @param $searchTerm
@@ -180,38 +157,39 @@ class SearchController extends Controller
         $form = $form->handleRequest($request);
 
         //if filter is media, query on photos, videos and audios
-        $searchFilter = $searchFilter!='media'?$searchFilter:'photos_videos_audios';
+        $searchFilter = $searchFilter != 'media' ? $searchFilter : 'photos_videos_audios';
 
         $items = explode('_', $searchFilter);
 
-        $searchFilter = $searchFilter!='photos_videos_audios'?$searchFilter:'media'; //back to "media" for the url
+        $searchFilter = $searchFilter != 'photos_videos_audios' ? $searchFilter : 'media'; //back to "media" for the url
 
         $searchResults = array('items' => array(), 'count' => 0);
 
-        foreach($items as $item) {
-            if($item == 'artist' && isset($data['professions'])) {
+        foreach ($items as $item) {
+            if ($item == 'artist' && isset($data['professions'])) {
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
 
             $data = $this->_translateData($data);
             $results = $this->getSearchResults($_locale, $item, $data, 50, 1);
-            
+
             $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
             $searchResults['count'] = $searchResults['count'] + $results['count'];
         }
 
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
-            'result' => array($searchFilter => $searchResults),
+            'result'  => array($searchFilter => $searchResults),
             'filters' => $filters,
-            'form' => $form,
-            'page' => $page
+            'form'    => $form,
+            'page'    => $page,
         ));
     }
 
     //get linked labels for each profession
-    private function _getProfessionsTab() {
+    private function _getProfessionsTab()
+    {
         return array(
-            'search.form.director' => array(
+            'search.form.director'    => array(
                 'Réalisa(teur/trice)',
                 'Réalisatrice, Société des Réalisateurs de Films - SRF',
                 'Réalisateur, scénariste',
@@ -228,24 +206,24 @@ class SearchController extends Controller
                 'Assistant(e) réalisa(teur/trice)',
                 'Ac(teur/trice), Réalisa(teur/trice)',
                 'Auteur, Réalisatrice',
-                'Société des Réalisateurs de Films'
+                'Société des Réalisateurs de Films',
             ),
-            'search.form.actor' => array(
+            'search.form.actor'       => array(
                 'Acteur',
                 'Actrice',
                 'Acteur, Réalisateur, Producteur',
                 'Acteur, Réalisateur',
                 'Actrice, Réalisatrice',
-                'Cinéaste, Actrice'
+                'Cinéaste, Actrice',
             ),
-            'search.form.writer' => array(
+            'search.form.writer'      => array(
                 'Scénariste',
                 'Scénario / Dialogues',
                 'Réalisateur, Scénariste, Producteur',
                 'Réalisa(teur/trice), Scénariste, Produc(teur/trice)',
                 'Scénariste',
             ),
-            'search.form.producer' => array(
+            'search.form.producer'    => array(
                 'Produc(teur/trice) exécutif',
                 'Co-Produc(teur/trice)',
                 'Acteur, Réalisateur, Producteur',
@@ -262,26 +240,27 @@ class SearchController extends Controller
             ),
             'search.form.distributor' => array(
                 'Distribu(teur/trice)',
-                'Producteur, distributeur, exploitant'
+                'Producteur, distributeur, exploitant',
             ),
-            'search.form.composer' => array(
+            'search.form.composer'    => array(
                 'Composi(teur/trice) de musique de films',
-                'Auteur, Compositeur, Interprète'
+                'Auteur, Compositeur, Interprète',
             ),
-            'search.form.operator' => array(
+            'search.form.operator'    => array(
                 'Chef opérateur',
-                'Chef opérateur / direc(teur/trice) photo'
-            )
+                'Chef opérateur / direc(teur/trice) photo',
+            ),
         );
     }
 
     //returns a table with each labels linked to professions in array arg
-    private function _getLinkedProfessions($professions) {
+    private function _getLinkedProfessions($professions)
+    {
         $professionsLink = $this->_getProfessionsTab();
         $professionLabels = array();
         //for each profession, get every label linked to this profession
-        foreach($professions as $profession) {
-            foreach($professionsLink['search.form.'.$profession] as $label) {
+        foreach ($professions as $profession) {
+            foreach ($professionsLink['search.form.' . $profession] as $label) {
                 $professionLabels[] = $label;
             }
         }
@@ -290,30 +269,31 @@ class SearchController extends Controller
     }
 
     //receive form data and returns a table of filters labels
-    private function _getFiltersFromData($data) {
+    private function _getFiltersFromData($data)
+    {
         $translator = $this->get('translator');
         $filters = array();
 
-        foreach($data as $key => &$filter) {
-            if(is_bool($filter) && $filter) {
+        foreach ($data as $key => &$filter) {
+            if (is_bool($filter) && $filter) {
                 /** @Ignore */
-                $filters[] = $translator->trans('search.form.'.$key, array(), 'FDCCorporateBundle');
-            } elseif(is_numeric($filter)) {
+                $filters[] = $translator->trans('search.form.' . $key, array(), 'FDCCorporateBundle');
+            } elseif (is_numeric($filter)) {
                 //don't add year-start and year-end
-            } elseif(is_string($filter) && !empty($filter)) {
+            } elseif (is_string($filter) && !empty($filter)) {
                 $filters[] = $filter;
-            } elseif(is_array($filter)) {
-                if($key == 'professions') {
-                    foreach($filter as $f) {
+            } elseif (is_array($filter)) {
+                if ($key == 'professions') {
+                    foreach ($filter as $f) {
                         /** @Ignore */
-                        $f = $translator->trans('search.form.'.$f, array(), 'FDCCorporateBundle');
+                        $f = $translator->trans('search.form.' . $f, array(), 'FDCCorporateBundle');
                         $filters[] = $f;
                     }
 
                 } else {
-                    foreach($filter as &$f) {
+                    foreach ($filter as &$f) {
                         /** @Ignore */
-                        $f = $translator->trans('search.form.'.$f, array(), 'FDCCorporateBundle');
+                        $f = $translator->trans('search.form.' . $f, array(), 'FDCCorporateBundle');
                         $filters[] = $f;
                     }
                 }
@@ -324,66 +304,67 @@ class SearchController extends Controller
         return $filters;
     }
 
-    private function _getFormFilters() {
+    private function _getFormFilters()
+    {
         $translator = $this->get('translator');
         $professions = $this->_getProfessionsTab();
 
         //creating table for checkboxes keys and values
         //array('director' => 'search.form.jobs.director', etc.
         $professionsCheckBoxes = array();
-        foreach($professions as $label => $profession) {
+        foreach ($professions as $label => $profession) {
             $text = explode('.', $label);
-            $text = $text[count($text)-1];
+            $text = $text[count($text) - 1];
             $translatedLabel = $translator->trans($label, array(), 'FDCCorporateBundle');
             $professionsCheckBoxes[$translatedLabel] = $text;
         }
 
 
         $prizesCheckboxes = array(
-            $translator->trans('search.form.palmedor', array(), 'FDCCorporateBundle') =>  'palmedor',
-            $translator->trans('search.form.grandprix', array(), 'FDCCorporateBundle') => 'grandprix',
-            $translator->trans('search.form.prixmiseenscene', array(), 'FDCCorporateBundle') => 'prixmiseenscene',
-            $translator->trans('search.form.prixscenario', array(), 'FDCCorporateBundle') => 'prixscenario',
-            $translator->trans('search.form.prixinterpretefeminine', array(), 'FDCCorporateBundle') => 'prixinterpretefeminine',
+            $translator->trans('search.form.palmedor', array(), 'FDCCorporateBundle')                => 'palmedor',
+            $translator->trans('search.form.grandprix', array(), 'FDCCorporateBundle')               => 'grandprix',
+            $translator->trans('search.form.prixmiseenscene', array(), 'FDCCorporateBundle')         => 'prixmiseenscene',
+            $translator->trans('search.form.prixscenario', array(), 'FDCCorporateBundle')            => 'prixscenario',
+            $translator->trans('search.form.prixinterpretefeminine', array(), 'FDCCorporateBundle')  => 'prixinterpretefeminine',
             $translator->trans('search.form.prixinterpretemasculine', array(), 'FDCCorporateBundle') => 'prixinterpretemasculine',
-            $translator->trans('search.form.prixjury', array(), 'FDCCorporateBundle') => 'prixjury',
-            $translator->trans('search.form.palmedorcourtmetrage', array(), 'FDCCorporateBundle') => 'palmedorcourtmetrage',
-            $translator->trans('search.form.prixuncertainregard', array(), 'FDCCorporateBundle') => 'prixuncertainregard',
-            $translator->trans('search.form.groupamagan', array(), 'FDCCorporateBundle') => 'groupamagan',
-            $translator->trans('search.form.prixcinefondation', array(), 'FDCCorporateBundle') => 'prixcinefondation',
-            $translator->trans('search.form.camerador', array(), 'FDCCorporateBundle') => 'camerador',
+            $translator->trans('search.form.prixjury', array(), 'FDCCorporateBundle')                => 'prixjury',
+            $translator->trans('search.form.palmedorcourtmetrage', array(), 'FDCCorporateBundle')    => 'palmedorcourtmetrage',
+            $translator->trans('search.form.prixuncertainregard', array(), 'FDCCorporateBundle')     => 'prixuncertainregard',
+            $translator->trans('search.form.groupamagan', array(), 'FDCCorporateBundle')             => 'groupamagan',
+            $translator->trans('search.form.prixcinefondation', array(), 'FDCCorporateBundle')       => 'prixcinefondation',
+            $translator->trans('search.form.camerador', array(), 'FDCCorporateBundle')               => 'camerador',
         );
 
         $selectionsCheckboxes = array(
-            $translator->trans('search.form.competition', array(), 'FDCCorporateBundle') => 'competition',
-            $translator->trans('search.form.uncertainregard', array(), 'FDCCorporateBundle') => 'uncertainregard',
-            $translator->trans('search.form.horscompetition', array(), 'FDCCorporateBundle') => 'horscompetition',
-            $translator->trans('search.form.seancesspeciales', array(), 'FDCCorporateBundle') => 'seancesspeciales',
-            $translator->trans('search.form.courtmetrage', array(), 'FDCCorporateBundle') => 'courtmetrage',
-            $translator->trans('search.form.cinefondation', array(), 'FDCCorporateBundle') => 'cinefondation',
-            $translator->trans('search.form.invitedhonneur', array(), 'FDCCorporateBundle') => 'invitedhonneur',
-            $translator->trans('search.form.hommages', array(), 'FDCCorporateBundle') => 'hommages',
-            $translator->trans('search.form.copiesrestaurees', array(), 'FDCCorporateBundle') => 'copiesrestaurees',
+            $translator->trans('search.form.competition', array(), 'FDCCorporateBundle')        => 'competition',
+            $translator->trans('search.form.uncertainregard', array(), 'FDCCorporateBundle')    => 'uncertainregard',
+            $translator->trans('search.form.horscompetition', array(), 'FDCCorporateBundle')    => 'horscompetition',
+            $translator->trans('search.form.seancesspeciales', array(), 'FDCCorporateBundle')   => 'seancesspeciales',
+            $translator->trans('search.form.courtmetrage', array(), 'FDCCorporateBundle')       => 'courtmetrage',
+            $translator->trans('search.form.cinefondation', array(), 'FDCCorporateBundle')      => 'cinefondation',
+            $translator->trans('search.form.invitedhonneur', array(), 'FDCCorporateBundle')     => 'invitedhonneur',
+            $translator->trans('search.form.hommages', array(), 'FDCCorporateBundle')           => 'hommages',
+            $translator->trans('search.form.copiesrestaurees', array(), 'FDCCorporateBundle')   => 'copiesrestaurees',
             $translator->trans('search.form.worldcinemaproject', array(), 'FDCCorporateBundle') => 'worldcinemaproject',
-            $translator->trans('search.form.documentaires', array(), 'FDCCorporateBundle') => 'documentaires'
+            $translator->trans('search.form.documentaires', array(), 'FDCCorporateBundle')      => 'documentaires',
         );
 
         return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
     }
 
-    private function _translateData($data) {
+    private function _translateData($data)
+    {
         $translator = $this->get('translator');
-        foreach($data as &$value) {
-            if(is_array($value)) {
-                foreach($value as &$label) {
-                    $label = $translator->trans('search.form.'.$label, array(), 'FDCCorporateBundle');
+        foreach ($data as &$value) {
+            if (is_array($value)) {
+                foreach ($value as &$label) {
+                    $label = $translator->trans('search.form.' . $label, array(), 'FDCCorporateBundle');
                 }
             }
         }
 
         return $data;
     }
-
 
 
     /**
@@ -393,7 +374,7 @@ class SearchController extends Controller
      */
     public function searchAutocompleteAction($_locale, $searchTerm = null)
     {
-        
+
         $repository = $this->get('base.search.repository');
 
         $finalQuery = new \Elastica\Query\BoolQuery();
@@ -407,7 +388,7 @@ class SearchController extends Controller
 
         $response = array();
         foreach ($paginatedResults as $result) {
-            $response[] = (object) array(
+            $response[] = (object)array(
                 'type' => $this->renderView("FDCEventBundle:Search:components/type.html.twig", array('object' => $result)),
                 'name' => $this->renderView("FDCEventBundle:Search:components/name.html.twig", array('object' => $result)),
                 'link' => $this->renderView("FDCEventBundle:Search:components/link.html.twig", array('object' => $result)),
@@ -428,7 +409,7 @@ class SearchController extends Controller
         $index = $this->container->get('fos_elastica.finder.fdc.country');
 
         $keywordQuery = new QueryString();
-        $keywordQuery->setQuery("*".$searchTerm."*");
+        $keywordQuery->setQuery("*" . $searchTerm . "*");
 
         $query = new Query();
         $query->setQuery($keywordQuery);
@@ -436,7 +417,7 @@ class SearchController extends Controller
 
         $response = array();
         foreach ($index->find($query) as $result) {
-            $response[] = (object) array(
+            $response[] = (object)array(
                 'name' => $this->renderView("FDCEventBundle:Search:components/country.html.twig", array('object' => $result)),
 
             );
@@ -463,7 +444,7 @@ class SearchController extends Controller
     private function getSearchFilters($type, $items)
     {
         if (!count($items) || !in_array($type, array('info', 'statement', 'news', 'media'))) {
-            return FALSE;
+            return false;
         }
 
         $filters = array();
@@ -503,7 +484,7 @@ class SearchController extends Controller
         $reflect = new \ReflectionClass(get_class($item));
         $class = $reflect->getShortName();
 
-        return strtolower(strtr($class, array('Image' => 'Photo','Info' => '', 'Media' => '', 'Statement' => '', 'News' => '')));
+        return strtolower(strtr($class, array('Image' => 'Photo', 'Info' => '', 'Media' => '', 'Statement' => '', 'News' => '')));
     }
 
     private function getContentQuery($repository, $searchTerm, $_locale)
@@ -536,7 +517,7 @@ class SearchController extends Controller
         $participateSectionsPath = 'downloadSection.section.translations';
         $participateSectionsFields = array(
             'downloadSection.section.translations.title',
-            'downloadSection.section.translations.description'
+            'downloadSection.section.translations.description',
         );
         $participateSectionsQuery = $repository->getFieldsKeywordNestedQuery($participateSectionsFields, $searchTerm, $participateSectionsPath, $_locale);
 
@@ -630,7 +611,7 @@ class SearchController extends Controller
         // Get untranslated fields query.
         $fields = array(
             'selectionSection',
-            'titleVO'
+            'titleVO',
         );
 
         $fieldsQuery = $repository->getFieldsKeywordQuery($fields, $searchTerm, false);
@@ -683,13 +664,11 @@ class SearchController extends Controller
 
         $filmQuery = new \Elastica\Query\BoolQuery();
         $filmQuery
-            ->addShould($translationsQuery)
-        ;
+            ->addShould($translationsQuery);
 
         $filmFinalQuery = new \Elastica\Query\BoolQuery();
         $filmFinalQuery
-            ->addMust($filmQuery)
-        ;
+            ->addMust($filmQuery);
 
         return $filmFinalQuery;
     }

@@ -222,6 +222,14 @@ abstract class Info implements TranslateMainInterface
      */
     protected $oldNewsTable;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobile_display", type="string", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
+     */
+    protected $mobileDisplay = false;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -965,5 +973,28 @@ abstract class Info implements TranslateMainInterface
     public function getOldNewsTable()
     {
         return $this->oldNewsTable;
+    }
+
+    /**
+     * Set mobileDisplay
+     *
+     * @param string $mobileDisplay
+     * @return Info
+     */
+    public function setMobileDisplay($mobileDisplay)
+    {
+        $this->mobileDisplay = $mobileDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get mobileDisplay
+     *
+     * @return string 
+     */
+    public function getMobileDisplay()
+    {
+        return $this->mobileDisplay;
     }
 }

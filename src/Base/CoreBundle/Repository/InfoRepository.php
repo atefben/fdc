@@ -4,15 +4,13 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFestival;
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use JMS\DiExtraBundle\Annotation as DI;
 
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
-use Base\CoreBundle\Entity\InfoArticleTranslation;
-
 /**
  * InfoRepository class.
- *
  * \@extends EntityRepository
  * @author   Antoine Mineau
  * \@company Ohwee
@@ -45,7 +43,8 @@ class InfoRepository extends EntityRepository
         }
 
         if (isset($params['priorityStatus']) && !empty($params['priorityStatus']) &&
-            $params['priorityStatus'] != 'all') {
+            $params['priorityStatus'] != 'all'
+        ) {
             $qb
                 ->andWhere('
                     (na.priorityStatus = :priorityStatus OR
@@ -58,7 +57,7 @@ class InfoRepository extends EntityRepository
         }
 
         if (!empty($params['sortField']) && !empty($params['sortValue'])) {
-            $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
+            $qb->orderBy('n.' . $params['sortField'], $params['sortValue']);
         }
 
         return $qb->getQuery()->getResult();
@@ -66,7 +65,6 @@ class InfoRepository extends EntityRepository
 
     /**
      *  Get the $locale version of Info of current $festival by $id and verify publish date is between $dateTime
-     *
      * @param $id
      * @param $festival
      * @param $dateTime
@@ -76,17 +74,17 @@ class InfoRepository extends EntityRepository
     public function getApiInfoById($id, $festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'nai', 'WITH', 'nai.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nav', 'WITH', 'nav.id = n.id')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('nai.translations', 'nait')
-            ->leftJoin('nav.translations', 'navt')
-            ->where('n.festival = :festival')
-            ->andWhere('n.id = :id')
-            ->andWhere('n.displayedMobile = :displayed_mobile')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'nai', 'WITH', 'nai.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nav', 'WITH', 'nav.id = n.id')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('nai.translations', 'nait')
+                   ->leftJoin('nav.translations', 'navt')
+                   ->where('n.festival = :festival')
+                   ->andWhere('n.id = :id')
+                   ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $qb = $qb
@@ -121,7 +119,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('displayed_mobile', true)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
 
     /**
@@ -160,8 +158,8 @@ class InfoRepository extends EntityRepository
             $qb
                 ->andWhere(':festivalEndAt < n.publishedAt')
                 //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
-                ->setParameter('festivalEndAt', '2016-05-23 00:00:00');
-            ;
+                ->setParameter('festivalEndAt', '2016-05-23 00:00:00')
+            ;;
         } else { //live
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -209,7 +207,7 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository)
+    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository, $site= 'site-press')
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -244,7 +242,10 @@ class InfoRepository extends EntityRepository
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
-        $this->addFDCPressQueries($qb, 's');
+        $qb
+            ->andWhere("s.slug = :site")
+            ->setParameter(':site', $site)
+        ;
 
         return $qb
             ->getQuery()
@@ -252,7 +253,7 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfosByDate($locale, $festival, $dateTime, $count=null)
+    public function getInfosByDate($locale, $festival, $dateTime, $count = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -429,7 +430,6 @@ class InfoRepository extends EntityRepository
 
     /**
      * get an array of only the $locale version Info of current $festival and verify publish date is between $dateTime
-     *
      * @param $festival
      * @param $dateTime
      * @param $locale
@@ -438,16 +438,16 @@ class InfoRepository extends EntityRepository
     public function getInfos($festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('nv.translations', 'nvt')
-            ->leftJoin('ni.translations', 'nit')
-            ->andWhere('s.slug = :site')
+                   ->join('n.sites', 's')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('nv.translations', 'nvt')
+                   ->leftJoin('ni.translations', 'nit')
+                   ->andWhere('s.slug = :site')
         ;
 
         $qb = $qb
@@ -489,20 +489,20 @@ class InfoRepository extends EntityRepository
      * @param $endsAt
      * @return array|\Doctrine\ORM\QueryBuilder
      */
-    public function getInfoRetrospective($locale, $festival, $startsAt, $endsAt )
+    public function getInfoRetrospective($locale, $festival, $startsAt, $endsAt)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('nv.translations', 'nvt')
-            ->leftJoin('ni.translations', 'nit')
-            ->andWhere('s.slug = :site')
-            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
+                   ->join('n.sites', 's')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('nv.translations', 'nvt')
+                   ->leftJoin('ni.translations', 'nit')
+                   ->andWhere('s.slug = :site')
+                   ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
         ;
 
         $qb = $qb
@@ -542,7 +542,6 @@ class InfoRepository extends EntityRepository
     /**
      * get an array of only the $count last Info of $locale version of current
      * $festival and verify publish date is between $dateTime
-     *
      * @param $festival
      * @param $dateTime
      * @param $count
@@ -552,16 +551,16 @@ class InfoRepository extends EntityRepository
     public function getLastInfos($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('nv.translations', 'nvt')
-            ->leftJoin('ni.translations', 'nit')
-            ->andWhere('s.slug = :site')
+                   ->join('n.sites', 's')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('nv.translations', 'nvt')
+                   ->leftJoin('ni.translations', 'nit')
+                   ->andWhere('s.slug = :site')
         ;
 
         $qb = $qb
@@ -606,7 +605,6 @@ class InfoRepository extends EntityRepository
     /**
      * get an array of only the $count last Info of $locale version of current
      * $festival and verify publish date is between $dateTime
-     *
      * @param $festival
      * @param $dateTime
      * @param $count
@@ -616,16 +614,16 @@ class InfoRepository extends EntityRepository
     public function getApiLastInfos($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('nv.translations', 'nvt')
-            ->leftJoin('ni.translations', 'nit')
-            ->andWhere('n.displayedMobile = :displayedMobile')
+                   ->join('n.sites', 's')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('nv.translations', 'nvt')
+                   ->leftJoin('ni.translations', 'nit')
+                   ->andWhere('n.displayedMobile = :displayedMobile')
         ;
 
         $qb = $qb
@@ -665,6 +663,75 @@ class InfoRepository extends EntityRepository
         ;
 
         return $qb;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $since
+     * @param int $page
+     * @param int $count
+     * @return Info[]
+     */
+    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    {
+        $now = new \DateTime();
+        $qb = $this->createQueryBuilder('n')
+                   ->join('n.sites', 's')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+                   ->leftJoin('na.translations', 'nat')
+                   ->leftJoin('naa.translations', 'naat')
+                   ->leftJoin('nv.translations', 'nvt')
+                   ->leftJoin('ni.translations', 'nit')
+                   ->andWhere('n.displayedMobile = :displayedMobile')
+                   ->setParameter('displayedMobile', true)
+                   ->andWhere('n.festival = :festival')
+                   ->setParameter('festival', $festival)
+                   ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt <= :now)')
+                   ->setParameter('since', $since)
+                   ->setParameter('now', $now)
+                   ->andWhere(
+                       '(nat.locale = :locale_fr AND nat.status = :status)
+                OR (nit.locale = :locale_fr AND nit.status = :status)
+                OR (naat.locale = :locale_fr AND naat.status = :status)
+                OR (nvt.locale = :locale_fr AND nvt.status = :status)')
+                   ->setParameter('locale_fr', 'fr')
+                   ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb
+                ->leftJoin('na.translations', 'na5t')
+                ->leftJoin('naa.translations', 'na6t')
+                ->leftJoin('nv.translations', 'na7t')
+                ->leftJoin('ni.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        if (null !== $page && null !== $count) {
+            $qb
+                ->setMaxResults($count)
+                ->setFirstResult(($page - 1) * $count)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('n.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+
     }
 
     public function getOlderInfo($locale, $festival, $date)
