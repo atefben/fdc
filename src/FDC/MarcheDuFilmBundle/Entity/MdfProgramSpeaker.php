@@ -118,20 +118,20 @@ class MdfProgramSpeaker
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getName();
         } else {
             $string = strval($this->getId());
         }
         return (string) $string;
     }
 
-    public function getTitle()
+    public function getName()
     {
         $translation = $this->findTranslationByLocale('fr');
         $string = '';
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getName();
         }
 
         return $string;

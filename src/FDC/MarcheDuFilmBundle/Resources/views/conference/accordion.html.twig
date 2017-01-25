@@ -2,9 +2,9 @@
     <div class="conferenceMenu">
         <ul>
             {% for day in programDays %}
-                <li>
-                    <div class="open">{{ day.date|date('m-d-y') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
-                    <div class="content">
+                <li class="{{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'open-selected-conf' : '' }}">
+                    <div class="open">{{ day.date|date('m-d-y') }}<span class="openPlus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' noDisplay' : '' }}">+</span><span class="openMinus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' doDisplay' : '' }}">-</span></div>
+                    <div class="content" style="display: {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'block' : 'none' }}">
                         <div class="parent">
                             {% for event in programDaysEvents[day.id] %}
                                 <div class="box events">
@@ -14,8 +14,8 @@
                                         {{ event.description }}
                                         <div class="confPeople">
                                             <hr>
-                                            <h6 class="confDetails">Intervenants</h6>
-                                            {% for item in eventsSpeakers[event.id] %}
+                                            <h6 class="confDetails">{{ event.speakersTitle }}</h6>
+                                            {% for item in eventsSpeakers[event.translatable.id] %}
                                                 <div class="quarterWidth">
                                                     <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
                                                     <div class="name">

@@ -11,16 +11,19 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
  * MdfConferenceProgramEventTranslation
  * @ORM\Table(name="mdf_conference_program_event_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfConferenceProgramEventTranslationRepository")
  */
-class MdfConferenceProgramEventTranslation
+class MdfConferenceProgramEventTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string
@@ -39,7 +42,7 @@ class MdfConferenceProgramEventTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
 
@@ -63,6 +66,33 @@ class MdfConferenceProgramEventTranslation
      * @ORM\Column(type="string", nullable=true)
      */
     protected $eventAccessType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $speakersTitle;
+
+    /**
+     * @return string
+     */
+    public function getSpeakersTitle()
+    {
+        return $this->speakersTitle;
+    }
+
+    /**
+     * @param $speakersTitle
+     *
+     * @return $this
+     */
+    public function setSpeakersTitle($speakersTitle)
+    {
+        $this->speakersTitle = $speakersTitle;
+
+        return $this;
+    }
 
     /**
      * @return string

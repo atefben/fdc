@@ -33,6 +33,7 @@
                                             {{ form_row(translationsFields.eventHour) }}
                                             {{ form_row(translationsFields.eventPlace) }}
                                             {{ form_row(translationsFields.eventAccessType) }}
+                                            {{ form_row(translationsFields.speakersTitle) }}
                                         </div>
                                     </div>
                                 </div>
@@ -129,6 +130,16 @@
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
                                                     {{ form.children.fr.vars.value.eventAccessType }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                {{ 'form.label.conference_event_speakers_title'|trans }}
+                                            </label>
+                                            {% if form.children.fr.vars.value is not null %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.speakersTitle }}
                                                 </div>
                                             {% endif %}
                                         </div>
