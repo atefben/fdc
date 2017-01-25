@@ -769,7 +769,9 @@ html {
         {{ dump(object) }}
         <img src="{% path object.header|trans_fallback('file') , '' %}" />
         <h1>{{ object|trans_fallback('title') }}</h1>
+
         {{ object|trans_fallback('introduction')|raw }}
+
         {% for widget in object.widgets %}
             {% if widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                 {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with ({
@@ -797,59 +799,6 @@ html {
                 {% include 'FDCEventBundle:Webview:widget/dual-photo.html.twig' %}
             {% endif %}
         {% endfor %}
-        <div class="Article-slider-wrapper">
-          <a class="Article-slider-prev" href="#"></a>
-          <a class="Article-slider-next" href="#"></a>
-          <div class="Article-slider">
-            <div class="Article-slider-item">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <span class="Article-slider-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span> 
-            </div>
-            <div class="Article-slider-item">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <span class="Article-slider-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span> 
-            </div>
-            <div class="Article-slider-item">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <span class="Article-slider-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span> 
-            </div>
-            <div class="Article-slider-item">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <span class="Article-slider-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span> 
-            </div>
-            <div class="Article-slider-item">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <span class="Article-slider-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span> 
-            </div>
-          </div>
-          <div class="Article-slider-count"><strong>1</strong>/5</div>
-        </div>
-        <strong>Donald Sutherland, à propos du palmarès :</strong>
-        <p>« Il nous a fallu accoucher d'un ensemble que nous avons bâti pièce par pièce, comme un puzzle. Tout ce que l'on a réalisé ensemble, ici, tous ces débats, toute l'écoute que chacun a eue envers l'autre, au sein de ce jury, tout cela va me manquer. C'était remarquable de constater à quel point chacun des membres du Jury était au fait du cinéma. Tous ont une culture extraordinaire du 7e Art, j'ai été très admiratif de cela. »</p>
-      </div>
-      <div class="Article-audioPlayer" 
-      data-date="<strong>Le</strong> 10.05.16"  
-      data-title="Un certain regard<br/>sur le palmarès 2016" 
-      data-file-mp3="{{ asset('bundles/fdcevent/medias/placeholder.mp3') }}">&nbsp;</div>
-      <div class="Article-content">
-        <strong>George Miller, concernant le travail du Jury :</strong>
-        <p>« Nous avons tenu compte du côté novateur des films, de leur aptitude à être complets et de la qualité de mise en scène. Tous les débats que nous avons eu ont été épuisants émotionnellement, mais nous avons tous été très heureux d'y prendre part. En tant que Jury, nous avons vécu une expérience merveilleuse et fourni un travail de rigueur et de vigueur. C’était un honneur de travailler avec cette passion et cette honnêteté. »</p> 
-        <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
-        <strong>Donald Sutherland, à propos du palmarès :</strong>
-        <p>« Il nous a fallu accoucher d'un ensemble que nous avons bâti pièce par pièce, comme un puzzle. Tout ce que l'on a réalisé ensemble, ici, tous ces débats, toute l'écoute que chacun a eue envers l'autre, au sein de ce jury, tout cela va me manquer. C'était remarquable de constater à quel point chacun des membres du Jury était au fait du cinéma. Tous ont une culture extraordinaire du 7e Art, j'ai été très admiratif de cela. »</p>
-        <div class="Article-videoPlayer">
-          <a class="Article-videoPlayer-play" href="#"></a>
-          <video preload="none" style="background-image: url({{ asset('bundles/fdcevent/img/article/video-content-poster.png') }})">
-            <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
-          </video>
-          <div class="Article-videoPlayer-caption">
-            <h4>Discours</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-            <strong>Vincent Lindon - Discours</strong>
-          </div>
-        </div>
-      
-        <p>« Nous avons tenu compte du côté novateur des films, de leur aptitude à être complets et de la qualité de mise en scène. Tous les débats que nous avons eu ont été épuisants émotionnellement, mais nous avons tous été très heureux d'y prendre part. En tant que Jury, nous avons vécu une expérience merveilleuse et fourni un travail de rigueur et de vigueur. C’était un honneur de travailler avec cette passion et cette honnêteté. »</p>
       </div>
       <div class="Article-push">
         <div class="Article-push-image">
