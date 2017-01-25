@@ -1820,7 +1820,7 @@ var owInitFilter = function (isTabSelection) {
     // on click on a filter
     if (isTabSelection) {
 
-        $('.tab-selection .selection').on('click', function(e){
+        $('.tab-selection .selection').on('click', function (e) {
 
             e.preventDefault();
 
@@ -1843,8 +1843,8 @@ var owInitFilter = function (isTabSelection) {
 
             $('#filters span').on('click', function () {
                 var data = $(this).data('select');
-                var selected = $('#'+block+' .select option[value="'+data+'"]');
-                selected.attr('selected','selected');
+                var selected = $('#' + block + ' .select option[value="' + data + '"]');
+                selected.attr('selected', 'selected');
             });
 
         });
@@ -1860,19 +1860,19 @@ var owInitFilter = function (isTabSelection) {
 
     } else {
 
-        if(!$('.who-filter').length){
+        if (!$('.who-filter').length) {
 
             $('.filters .select span').on('click', function () {
 
-                $('.filter .select').each(function() {
+                $('.filter .select').each(function () {
                     $that = $(this);
-                    $id   = $(this).closest('.filter').attr('id');
+                    $id = $(this).closest('.filter').attr('id');
 
-                    $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+                    $that.find("span:not(.active):not([data-filter='all'])").each(function () {
                         $this = $(this);
 
                         var getVal = $this.data('filter');
-                        var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
+                        var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
                         if (numItems === 0) {
                             $this.addClass('disabled');
@@ -1918,22 +1918,22 @@ var owInitFilter = function (isTabSelection) {
                 });
             });
 
-        }else{
+        } else {
 
 
             $('.filters .select span').off('click').on('click', function () {
 
-                $('.filter .select').each(function() {
+                $('.filter .select').each(function () {
                     $that = $(this);
-                    $id   = $(this).closest('.filter').attr('id');
+                    $id = $(this).closest('.filter').attr('id');
 
-                    $that.find(".pages:not([data-filter='all'])").each(function() {
+                    $that.find(".pages:not([data-filter='all'])").each(function () {
                         $this = $(this);
 
                         console.log($this);
 
                         var getVal = $this.data('filter');
-                        var numItems = $('.item[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
+                        var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
                         if (numItems === 0) {
                             $this.addClass('disabled');
@@ -1967,8 +1967,8 @@ var owInitFilter = function (isTabSelection) {
                     $('#' + id + ' .select span').removeClass('active');
                     $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
-                    $('.pages:not(.'+f+')').css('display','none');
-                    $('.pages.'+f).css('display','block');
+                    $('.pages:not(.' + f + ')').css('display', 'none');
+                    $('.pages.' + f).css('display', 'block');
                     console.log(f);
                 });
 
@@ -1990,11 +1990,11 @@ var owRemoveElementListe = function () {
     $('.filters-02 li .icon-close').on('click', function () {
         var id = $(this).parent().data('id');
 
-        $('input#'+id).val('');
-        $('input#'+id).prop("checked", false);
-        $('input#'+id).parent().removeClass('active');
+        $('input#' + id).val('');
+        $('input#' + id).prop("checked", false);
+        $('input#' + id).parent().removeClass('active');
 
-        console.log($('input#'+id));
+        console.log($('input#' + id));
 
         $(this).parent().remove();
 
@@ -2002,29 +2002,27 @@ var owRemoveElementListe = function () {
             $('.new-filter').parent().remove();
         }
 
-        /*$('.button-submit-02').trigger('click');*/
+        $('.button-submit-02').trigger('click');
 
     });
 }
 
 var addNextFilters = function () {
+
     $('.filters-02 li.more').on('click', function (e) {
         e.preventDefault();
 
         $(this).remove();
 
-        var url = $(this).attr("data-url");
+        $('.filters-02.hidden').removeClass('hidden');
 
-        $.get(url, function (data) {
-            $('.c-filters').append(data);
+        $('.filters-02 li.more').off('click');
+        $('.filters-02 li .icon-close').off('click');
 
-            $('.filters-02 li.more').off('click');
-            $('.filters-02 li .icon-close').off('click');
+        owRemoveElementListe();
+        addNextFilters();
+        owInitNavSticky(3);
 
-            owRemoveElementListe();
-            addNextFilters();
-            owInitNavSticky(3);
-        });
     });
 }
 

@@ -8373,6 +8373,9 @@ header #searchContainer {
   border-bottom: 1px solid #eaeaea;
   position: relative;
 }
+.filters-02.hidden {
+  display: none;
+}
 .filters-02 .container {
   min-height: 77px;
 }
@@ -9329,6 +9332,13 @@ body#home .isotope-01 .item .contain-img {
   text-align: center;
 }
 .slider-home .owl-carousel .owl-controls .owl-dot {
+  display: inline-block;
+}
+.slider-home .owl-carousel .owl-controls .owl-dot.active span {
+  border: 3px solid #c8a461;
+  background-color: rgba(255, 255, 255, 0);
+}
+.slider-home .owl-carousel .owl-controls .owl-dot span {
   height: 6px;
   width: 6px;
   display: inline-block;
@@ -9337,10 +9347,6 @@ body#home .isotope-01 .item .contain-img {
   border: 0px solid #c8a461;
   background-color: #000;
   vertical-align: middle;
-}
-.slider-home .owl-carousel .owl-controls .owl-dot.active {
-  border: 3px solid #c8a461;
-  background-color: rgba(255, 255, 255, 0);
 }
 .slider-home .vFlexAlign {
   -ms-flex-direction: column;
@@ -12593,6 +12599,31 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .edition-69 figure.padding-bottom {
   padding-bottom: 56px;
 }
+.edition-69 .block-img-ie {
+  max-width: 100%;
+  height: 399px;
+  background-size: cover;
+}
+.edition-69 .block-img-ie img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.edition-69.dark .contain-img-honneur .caption {
+  margin-top: 20px;
+  font-size: .75rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  display: block;
+}
+.edition-69.dark .contain-img-honneur .caption strong {
+  color: #666666;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+.edition-69.dark .contain-img-honneur .copy {
+  text-align: left;
+  color: #666666;
+}
 
 .poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article-single .block-push-top .vFlexAlign, .articles-list .block-push-top .vFlexAlign {
   height: calc( 100% - 42px );
@@ -15358,13 +15389,13 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-weight: bold;
 }
 .article-single.dark caption, .article-single.dark .caption, .single-movie.dark caption, .single-movie.dark .caption {
-  color: #fff;
+  color: #666666;
   font-size: .75rem;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
 }
 .article-single.dark caption strong, .article-single.dark .caption strong, .single-movie.dark caption strong, .single-movie.dark .caption strong {
-  color: #fff;
+  color: #666666;
 }
 .article-single.dark .copy, .single-movie.dark .copy {
   color: #fff;

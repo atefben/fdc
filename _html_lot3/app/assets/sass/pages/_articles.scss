@@ -2,6 +2,8 @@
 
 
 .article-single, .single-movie {
+
+
   .picto .icon{
     margin: 0px !important;
   }
@@ -52,13 +54,13 @@
   }
 
   &.dark caption, &.dark .caption{
-    color: #fff;
+    color: #666666;
     font-size: .75rem;
     font-family: $CamphorRegular;
     margin-bottom: 20px;
-    
+
     strong {
-      color: #fff;
+      color: #666666;
     }
   }
 
