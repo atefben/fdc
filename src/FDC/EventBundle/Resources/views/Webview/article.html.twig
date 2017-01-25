@@ -766,6 +766,7 @@ html {
         </div>
       </header>
       <div class="Article-content">
+        {{ dump(object) }}
         {{ dump(object.header) }}
         {{ dump(object.theme) }}
         <img src="{% path object.header|trans_fallback('file') , '575x364' %}" />
