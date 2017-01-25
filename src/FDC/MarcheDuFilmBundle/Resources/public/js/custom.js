@@ -1,8 +1,9 @@
 $(document).ready(function() {
+  initNewsPage();
   initNews();
   initPagination();
   setNews();
-    initGlobalEvents();
+  initGlobalEvents();
 
   $("#owl-demo").owlCarousel({
 
@@ -161,6 +162,10 @@ function setNews() {
   });
 
   $(document).on('click', '.fifth',function() {
+    $(".fifth").each(function (index, element) {
+      $(this).removeClass('pagination-active');
+    });
+    $(this).addClass('pagination-active');
     pageIndex = parseInt($(this).attr('id'));
     setPaginationTabs();
     getNews();
@@ -168,6 +173,13 @@ function setNews() {
 
   $(document).on('click', '.paginationNavLeft',function() {
     if (pageIndex != 0) {
+      $(".fifth").each(function (index, element) {
+        $(this).removeClass('pagination-active');
+        if (parseInt($(this).attr('id')) == pageIndex - 1) {
+          $(this).removeClass('pagination-active');
+          $(this).addClass('pagination-active');
+        }
+      });
       pageIndex = pageIndex - 1;
       setPaginationTabs();
       getNews();
@@ -178,6 +190,13 @@ function setNews() {
     var pagesLength = $('div.fifth').length;
 
     if (pageIndex < pagesLength - 1) {
+      $(".fifth").each(function (index, element) {
+        $(this).removeClass('pagination-active');
+        if (parseInt($(this).attr('id')) == pageIndex + 1) {
+          $(this).removeClass('pagination-active');
+          $(this).addClass('pagination-active');
+        }
+      })
       pageIndex = pageIndex + 1;
       setPaginationTabs();
       getNews();
@@ -190,6 +209,16 @@ function initPagination() {
     if ($(this).attr('id') > paginationLimit - 1) {
       $(this).hide();
     }
+    if ($(this).attr('id') == 0) {
+      $(this).addClass('pagination-active');
+    }
+  });
+}
+
+function initNewsPage() {
+  $('.dropdown').children().click(function() {
+    $('#eventSelector').toggleClass("showeventSelector");
+    $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
   });
 }
 
@@ -226,14 +255,26 @@ function setPaginationTabs() {
         } else {
           $(this).show();
         }
+      } else if (pageIndex == 0) {
+        if (($(this).attr('id') > pageIndex + 3)) {
+          $(this).hide();
+        } else {
+          $(this).show();
+        }
       } else {
-        if (($(this).attr('id') > pageIndex + 3 || $(this).attr('id') < pageIndex - 2)) {
+        if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 2)) {
           $(this).hide();
         } else {
           $(this).show();
         }
       }
+
+      $(this).addClass('fifth-inactive-border');
+      $(this).removeClass('fifth-active-border');
     });
+
+    $('.fifth:visible:first').removeClass('fifth-inactive-border');
+    $('.fifth:visible:first').addClass('fifth-active-border');
   }
 }
 

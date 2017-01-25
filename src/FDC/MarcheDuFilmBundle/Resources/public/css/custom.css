@@ -16,3 +16,20 @@ header #navigation ul li a.golden.active {
 .color-inherit {
     color: inherit;
 }
+
+.pagination-active {
+    border: 1px solid #2b2b2b;
+    background: #2b2b2b;
+}
+
+.pagination-active span {
+    color: white !important;
+}
+
+.fifth-active-border {
+     border-left: 1px solid #dfdfdf !important;
+}
+
+.fifth-inactive-border {
+    border-left: 0px solid #dfdfdf !important;
+}
