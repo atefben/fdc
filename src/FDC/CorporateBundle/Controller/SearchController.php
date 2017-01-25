@@ -9,6 +9,7 @@ use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/")
@@ -30,6 +31,9 @@ class SearchController extends Controller
 
     /**
      * @Route("/search", options={"expose"=true})
+     * @param $_locale
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function searchSubmitAction($_locale, Request $request)
     {
@@ -61,7 +65,6 @@ class SearchController extends Controller
             }
 
             $data = $this->_translateData($data);
-
             $newsResults = $data['news'] ? $this->getSearchResults($_locale, 'news', $data, 4) : false;
             $infoResults = $data['news'] ? $this->getSearchResults($_locale, 'info', $data, 4) : false;
             $statementResults = $data['news'] ? $this->getSearchResults($_locale, 'statement', $data, 4) : false;
@@ -105,12 +108,13 @@ class SearchController extends Controller
                         break;
                 }
 
-                $default = ['items' => []];
+                $default = ['items' => [], 'count' => 0];
                 $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : $default;
                 $videoResults = $data['videos'] ? $this->getSearchResults($_locale, 'videos', $data, $displayNb) : $default;
                 $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, $displayNb) : $default;
                 $items = array_merge($photoResults['items'], $videoResults['items'], $audioResults['items']);
-                $mediaResults = array('items' => array_slice($items, 0, 4), 'count' => count($items));
+                $count = $photoResults['count'] + $videoResults['count'] + $audioResults['count'];
+                $mediaResults = array('items' => array_slice($items, 0, 4), 'count' => $count);
             } else {
                 $mediaResults = false;
             }
@@ -144,25 +148,46 @@ class SearchController extends Controller
 
     /**
      * @Route("/search/{searchFilter}")
+     * @param $_locale
+     * @param $searchFilter
      * @param Request $request
-     * @param $searchTerm
-     * @return array
+     * @return Response
      */
     public function searchFilterAction($_locale, $searchFilter, Request $request)
     {
-        $data = $request->query->all();
-        $filters = $this->_getFiltersFromData($data);
+
+
         $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
         $form = $this->_getFormFilters();
         $form = $form->handleRequest($request);
 
-        //if filter is media, query on photos, videos and audios
-        $searchFilter = $searchFilter != 'media' ? $searchFilter : 'photos_videos_audios';
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        $items = explode('_', $searchFilter);
+            $data = $form->getData();
 
-        $searchFilter = $searchFilter != 'photos_videos_audios' ? $searchFilter : 'media'; //back to "media" for the url
+            //if none checked, check all
+            $hasCheckedItem = false;
+            foreach ($data as $filter) {
+                $hasCheckedItem = $hasCheckedItem ?: $filter === true;
+            }
+            if (!$hasCheckedItem) {
+                foreach ($data as &$filter) {
+                    if (is_bool($filter)) {
+                        $filter = !$filter;
+                    }
+                }
+            }
 
+            $filters = $this->_getFiltersFromData($data);
+
+            if ($data['professions']) { //must be done before translation
+                $data['professions'] = $this->_getLinkedProfessions($data['professions']);
+            }
+
+            $data = $this->_translateData($data);
+        }
+
+        $items = explode('_', $searchFilter != 'media' ? $searchFilter : 'photos_videos_audios');
         $searchResults = array('items' => array(), 'count' => 0);
 
         foreach ($items as $item) {
@@ -171,10 +196,21 @@ class SearchController extends Controller
             }
 
             $data = $this->_translateData($data);
-            $results = $this->getSearchResults($_locale, $item, $data, 50, 1);
-
-            $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
-            $searchResults['count'] = $searchResults['count'] + $results['count'];
+            if ($data[$item]) {
+                $results = ['items' => [], 'count' => 0];
+                $page = 1;
+                while ($page && $subResults = $this->getSearchResults($_locale, $item, $data, 50, $page)) {
+                    $results['items'] = array_merge($results['items'], $subResults['items']);
+                    $results['count'] = $subResults['count'];
+                    ++$page;
+                    $pages = ceil($results['count'] / 50);
+                    if ($page > $pages) {
+                        $page = false;
+                    }
+                }
+                $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
+                $searchResults['count'] = $searchResults['count'] + $results['count'];
+            }
         }
 
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
@@ -274,8 +310,10 @@ class SearchController extends Controller
         $translator = $this->get('translator');
         $filters = array();
 
+        $boolean = ['news', 'photos', 'videos', 'audios', 'events', 'artists', 'movies'];
+
         foreach ($data as $key => &$filter) {
-            if (is_bool($filter) && $filter) {
+            if ((in_array($key, $boolean) || is_bool($filter)) && $filter) {
                 /** @Ignore */
                 $filters[] = $translator->trans('search.form.' . $key, array(), 'FDCCorporateBundle');
             } elseif (is_numeric($filter)) {
@@ -297,7 +335,6 @@ class SearchController extends Controller
                         $filters[] = $f;
                     }
                 }
-
             }
         }
 
