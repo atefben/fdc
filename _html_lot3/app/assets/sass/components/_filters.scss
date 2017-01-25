@@ -186,6 +186,10 @@
   border-bottom: 1px solid #eaeaea;
   position: relative;
 
+  &.hidden {
+    display: none;
+  }
+
   .container {
     min-height: 77px;
   }

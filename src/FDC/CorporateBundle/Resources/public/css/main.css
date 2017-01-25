@@ -8373,6 +8373,9 @@ header #searchContainer {
   border-bottom: 1px solid #eaeaea;
   position: relative;
 }
+.filters-02.hidden {
+  display: none;
+}
 .filters-02 .container {
   min-height: 77px;
 }
