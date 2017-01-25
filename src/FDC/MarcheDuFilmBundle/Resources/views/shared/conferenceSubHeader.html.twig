@@ -1,6 +1,6 @@
 {% set routeName = app.request.get('_route') %}
 <div class="text-presentation producersWorkshop mdf customClass1Bckg">
-    <h3>{{ title }}</h3>
+    <h3>{{ slug }}</h3>
     <div class="subNavigation">
         <nav>
             <ul class="main">
@@ -27,9 +27,11 @@
                         <a href="{{ path('fdc_marche_du_film_conference_partners', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_partners' ? 'active customClass1' : '' }}">partenaires</a>
                     </li>
                 {% endif %}
-                <li>
-                    <a href="#">infos et contact</a>
-                </li>
+                {% if infoAndContactIsActive %}
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_conference_infos_and_contacts', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_infos_and_contacts' ? 'active customClass1' : '' }}">infos et contact</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </div>
