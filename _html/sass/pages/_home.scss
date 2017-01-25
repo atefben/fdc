@@ -2039,7 +2039,7 @@ a {
 }
 
 .catalogue {
-  height: 700px;
+  height: 630px;
   @include align();
   margin-bottom: 100px;
   margin-top: 70px;
@@ -2119,7 +2119,7 @@ a {
     float: left;
     display: block;
     text-align: center;
-    margin-top: 132px;
+    margin-top: 120px;
     height: 550px;
     position: relative;
     z-index: 1000;
@@ -2153,7 +2153,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -40px;
+    margin-top: -90px;
   }
 
   .plusSign {
@@ -2173,6 +2173,7 @@ a {
     width: 100%;
     /* transform: rotate(90deg); */
     top: -2%;
+    top: -8%;
     position: absolute;
     opacity: 0.4;
     content: url(/img/trait.png);
@@ -2181,6 +2182,7 @@ a {
   }
 
   &:hover {
+    opacity: 0.7;
     &:after {
       height: 1px;
       display: block;
@@ -2188,7 +2190,7 @@ a {
       /* transform: rotate(90deg); */
       top: -2%;
       position: absolute;
-      opacity: 0;
+      opacity: 0.1;
       content: url(/img/trait.png);
       z-index: -1;
       @include transition(all 0s $smoothTransition);
@@ -2232,10 +2234,11 @@ a {
 }
 
 .opacity {
-    -moz-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
-    -webkit-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
-    box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
   @include transition(all 0.3s $smoothTransition);
+
 }
 
 .thirdBlocks {

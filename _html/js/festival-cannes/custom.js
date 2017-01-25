@@ -275,17 +275,6 @@ function smoothScrolling() {
     $('#accordion-conf .open').each(function() {
 
         $(this).click(function(){
-
-          $this = $(this);
-
-          /*$('html, body').animate({
-              scrollTop: $this.offset().top - $('.open-selected-conf').height()
-            }, 1000);*/
-          
-          /*$('html, body').animate({
-              scrollTop: $this.offset().top - $this.height()
-            }, 1000);*/
-
           
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
           $('#accordion-conf .open').removeClass('open-selected-conf');
@@ -296,10 +285,6 @@ function smoothScrolling() {
         
           
           if($(this).next().is(':hidden') == true) {
-
-            /*$('html, body').animate({
-              scrollTop: $('.conferencesMenu').offset().top - 1
-            }, 1000);*/
 
             $(this).closest('li').addClass('open-selected-conf');
             $(this).siblings().removeClass('open-selected-conf');
@@ -323,9 +308,15 @@ smoothScrolling();
 
 
 $(".conferencesMenu li").click(function() {
+  
   $('html,body').animate({ scrollTop:$(this).prev().offset().top}, 'slow');
     return false;
- });
+
+   if (!$(this).prev().hasClass("open-selected-conf")) {
+      $('html,body').animate({ scrollTop:$(this).offset().top}, 'slow');
+    }
+
+});
 
 
 // Quick & dirty toggle to demonstrate modal toggle behavior

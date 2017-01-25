@@ -3223,7 +3223,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin: 0 auto;
 }
 #slider-competition .owl-item {
-  width: 235px !important;
+  width: 235px;
+  width: 210px !important;
   margin-right: 50px !important;
 }
 @media screen and (max-width: 1024px) {
@@ -3233,30 +3234,31 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 #slider-competition .owl-stage {
   width: 50000px !important;
-  margin-left: 800px;
+  margin-left: 471.5px;
 }
 @media screen and (max-width: 1680px) {
   #slider-competition .owl-stage {
-    margin-left: 835px;
+    margin-left: 351.5px;
   }
 }
 @media screen and (max-width: 1366px) {
   #slider-competition .owl-stage {
-    margin-left: 530px;
+    margin-left: 194.5px;
   }
 }
 @media screen and (max-width: 1280px) {
   #slider-competition .owl-stage {
-    margin-left: 450px !important;
+    margin-left: 151.5px;
   }
 }
 @media screen and (max-width: 1024px) {
   #slider-competition .owl-stage {
-    margin-left: 190px !important;
+    margin-left: 90px !important;
   }
 }
 #slider-competition .item {
   width: 235px !important;
+  width: 210px !important;
 }
 #slider-competition .owl-buttons {
   display: none;
@@ -3294,6 +3296,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  max-width: 210px !important;
 }
 #slider-competition .title {
   width: 100%;
@@ -15290,7 +15293,7 @@ a {
 }
 
 .catalogue {
-  height: 700px;
+  height: 630px;
   margin: 0 auto;
   text-align: center;
   display: block;
@@ -15384,7 +15387,7 @@ a {
   float: left;
   display: block;
   text-align: center;
-  margin-top: 132px;
+  margin-top: 120px;
   height: 550px;
   position: relative;
   z-index: 1000;
@@ -15419,7 +15422,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -40px;
+  margin-top: -90px;
 }
 .catalogue .plusSign {
   cursor: pointer;
@@ -15443,6 +15446,7 @@ a {
   width: 100%;
   /* transform: rotate(90deg); */
   top: -2%;
+  top: -8%;
   position: absolute;
   opacity: 0.4;
   content: url(/img/trait.png);
@@ -15452,6 +15456,9 @@ a {
   -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.blocks:hover {
+  opacity: 0.7;
+}
 .blocks:hover:after {
   height: 1px;
   display: block;
@@ -15459,7 +15466,7 @@ a {
   /* transform: rotate(90deg); */
   top: -2%;
   position: absolute;
-  opacity: 0;
+  opacity: 0.1;
   content: url(/img/trait.png);
   z-index: -1;
   -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15517,9 +15524,9 @@ a {
 }
 
 .opacity {
-  -moz-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
-  -webkit-box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
-  box-shadow: inset 0 0 800px 800px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -19598,7 +19605,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: white !important;
 }
 .contain-article-invit .image {
-  padding-top: 45px;
+  padding-top: 47px;
 }
 
 .webtv .image-wrapper {
@@ -28799,7 +28806,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .movieOnline {
-  padding-bottom: 70px !important;
+  padding-bottom: 33px !important;
   margin-top: 50px !important;
   text-align: left;
   height: auto;
@@ -29491,6 +29498,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .modal-content .half .cats span {
   margin-right: 12px;
+  letter-spacing: 1px;
 }
 .modal-content .half .cats span:after {
   content: '•';
@@ -29506,7 +29514,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 .modal-content .half .titleHalf h3 {
   color: #141414;
-  font-size: 47px;
+  font-size: 48px;
   text-align: left;
   line-height: 60px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -29526,7 +29534,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom: 50px;
 }
 .modal-content .half .titleBig h2 {
-  line-height: 30px;
+  line-height: 25px;
   letter-spacing: 1px;
   font-style: italic;
   font-size: 20px;
@@ -29541,7 +29549,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #c8a461;
   font-size: 300px;
   left: -30px;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 .modal-content .half .authors {
   width: 100%;

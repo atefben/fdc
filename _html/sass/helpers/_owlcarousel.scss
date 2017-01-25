@@ -639,7 +639,8 @@
   margin: 0 auto;
 
   .owl-item {
-    width: 235px!important;
+    width: 235px;
+    width: 210px!important;
     margin-right: 50px!important;
     @media screen and (max-width: 1024px) {
         margin-right: 50px !important;
@@ -649,23 +650,24 @@
 
   .owl-stage {
     width: 50000px!important;
-    margin-left: 800px;
+        margin-left: 471.5px;
     @media screen and (max-width: 1680px) {
-        margin-left: 835px;
+        margin-left: 351.5px;
     }
     @media screen and (max-width: 1366px) {
-        margin-left: 530px; 
+        margin-left: 194.5px;
     }
     @media screen and (max-width: 1280px) {
-        margin-left: 450px !important;
+        margin-left: 151.5px;
     }
     @media screen and (max-width: 1024px) {
-        margin-left: 190px !important;
+        margin-left: 90px !important;
     }
   }
 
   .item {
     width: 235px!important;
+    width: 210px!important;
   }
 
   .owl-buttons {
@@ -710,6 +712,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    max-width: 210px!important;
   }
 
   .title {
