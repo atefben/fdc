@@ -12602,12 +12602,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 100%;
   object-fit: cover;
 }
-.dark .edition-69 .contain-img-honneur .copy {
+
+.edition-69.dark .contain-img-honneur .copy {
   font-size: .625rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   margin-top: 10px;
   text-align: left;
   color: #666666;
+  margin-top: 21px;
 }
 
 .poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article-single .block-push-top .vFlexAlign, .articles-list .block-push-top .vFlexAlign {

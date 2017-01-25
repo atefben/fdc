@@ -15,15 +15,18 @@
     }
   }
 
-  .contain-img-honneur {
-    .dark & {
-      .copy {
-        font-size: .625rem;
-        font-family: $CamphorMedium;
-        margin-top: 10px;
-        text-align: left;
-        color: #666666;
-      }
+
+}
+
+.contain-img-honneur {
+  .edition-69.dark & {
+    .copy {
+      font-size: .625rem;
+      font-family: $CamphorMedium;
+      margin-top: 10px;
+      text-align: left;
+      color: #666666;
+      margin-top: 21px;
     }
   }
 }
