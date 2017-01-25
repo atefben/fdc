@@ -48,6 +48,7 @@ class MdfConferenceProgramEvent
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->speakerCollections = new ArrayCollection();
     }
 
     /**

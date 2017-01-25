@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Validator\Constraints\Count;
 
 class MdfConferenceProgramEventAdmin extends Admin
 {
@@ -101,6 +102,14 @@ class MdfConferenceProgramEventAdmin extends Admin
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.speakers',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new Count(
+                        array(
+                            'max' => 8,
+                            'maxMessage' => "validation.speakers_max"
+                        )
+                    ),
+                ),
             ), array(
                 'edit'     => 'inline',
                 'inline'   => 'table',
