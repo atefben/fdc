@@ -9013,7 +9013,7 @@ body#home .isotope-01 .item .contain-img {
     padding: 0px;
     padding-left: 61px;
   }
-  body#home .isotope-01 .article-inverse .item {
+  .article-inverse body#home .isotope-01 .item {
     padding-left: 0px;
     padding-right: 61px;
   }
