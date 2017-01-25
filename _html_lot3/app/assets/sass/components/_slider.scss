@@ -39,7 +39,7 @@
     }
   }
 
-  .owl-dots {
+  .owl-dots  {
     position: absolute;
     bottom: 96px;
     width: 100%;
@@ -47,6 +47,18 @@
   }
 
   .owl-carousel .owl-controls .owl-dot {
+    display: inline-block;
+
+    &.active {
+
+      span {
+        border: 3px solid $gold;
+        background-color: rgba(255, 255, 255, 0);
+      }
+    }
+  }
+
+  .owl-carousel .owl-controls .owl-dot span{
     height: 6px;
     width: 6px;
     display: inline-block;
@@ -56,10 +68,7 @@
     background-color: #000;
     vertical-align: middle;
 
-    &.active {
-      border: 3px solid $gold;
-      background-color: rgba(255, 255, 255, 0);
-    }
+
   }
 
   .vFlexAlign {
