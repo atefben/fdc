@@ -182,11 +182,12 @@ class SearchController extends Controller
                     }
                 }
             }
+
+            $filters = $this->_getFiltersFromData($data);
+
             if ($data['professions']) { //must be done before translation
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
-
-            $filters = $this->_getFiltersFromData($data);
 
             $data = $this->_translateData($data);
         }
