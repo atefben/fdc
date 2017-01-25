@@ -370,10 +370,10 @@ function click() {
     var clicked;
     var selectbtn = $('.selectbtn');
 
-    $('.dropdown span').click(function() {
-        $('#eventSelector').toggleClass("showeventSelector");
-        $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
-    });
+    // $('.dropdown span').click(function() {
+    //     $('#eventSelector').toggleClass("showeventSelector");
+    //     $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
+    // });
 
 
 
