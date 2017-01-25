@@ -15,13 +15,14 @@
                 {# End #}
             </div>
         </div>
+        {{ dump(conferences) }}
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
                 <div class="dropdown">
                     <span>AFFICHER</span>
                     <div id="eventSelector">
                         {% for key, item in conferences %}
-                            <div class="selectText" id="{{ key }}">{{ key|replace({'-': ' '}) }}{% if loop.last ==false %},{% endif %}</div>
+                            <div class="selectText" id="{{ key }}">{{ item|trans }}{% if loop.last ==false %},{% endif %}</div>
                         {% endfor %}
                     </div>
                     <div class="dropArrow">
