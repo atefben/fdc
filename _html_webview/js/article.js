@@ -108,14 +108,22 @@ var ow = ow || {};
 
 	ow.playVideo = function(event){
 		var $this = $(event.target).is('a') ? $(event.target) : $(event.target).closest('a');
+		var $wrapper = $this.parent();
 		var video = $this.parent().find('video').get(0);
+
+		if($wrapper.find('.Article-videoPlayer-caption')){
+			$wrapper.find('.Article-videoPlayer-caption').toggleClass('Article-videoPlayer-caption--hidden');
+		}
+
+		
 		video.setAttribute("controls","controls");
+		video.removeAttribute('style');
 		video.play();
 		$this.remove();
 	}
 
 	ow.domEvents = function(){
-		$('.Article-video-play').on('click',function(e){ow.playVideo(e)});
+		$('.Article-video-play,.Article-videoPlayer-play').on('click',function(e){ow.playVideo(e);return false;});
 	}
 
 	$(document).ready(function(){

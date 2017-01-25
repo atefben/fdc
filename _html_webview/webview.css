@@ -432,6 +432,8 @@ html {
     background-image: -webkit-repeating-linear-gradient(bottom, black 0%, transparent 100%);
     background-image: repeating-linear-gradient(to top, black 0%, transparent 100%);
     background-image: -ms-repeating-linear-gradient(bottom, black 0%, transparent 100%); }
+    .Article-videoPlayer-caption--hidden {
+      display: none; }
     .Article-videoPlayer-caption h4 {
       display: inline;
       color: #c9a45e;

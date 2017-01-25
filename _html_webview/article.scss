@@ -54,7 +54,10 @@ html {
 				background-image: repeating-linear-gradient(to top,rgb(0, 0, 0) 0%,rgba(0, 0, 0, 0) 100%);
 				background-image: -ms-repeating-linear-gradient(bottom,rgb(0, 0, 0) 0%,rgba(0, 0, 0, 0) 100%);
 
-
+				&--hidden {
+					display: none;
+				}
+				
 				h4 {
 					display: inline;
 					color: #c9a45e;

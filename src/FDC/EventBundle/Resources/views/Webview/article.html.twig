@@ -766,6 +766,7 @@ html {
         </div>
       </header>
       <div class="Article-content">
+        {% object %}
         <h1>Juste la fin du monde de Xavier Dolan,<br/> Grand Prix</h1>
         <strong>Le Jury des Longs Métrages présidé par George Miller s'est longuement exprimé ce dimanche soir devant la presse au terme de la Cérémonie du Palmarès du 69e Festival de Cannes, durant laquelle il a décerné la Palme d'or au cinéaste britannique Ken Loach pour son film, Daniel Blake. Voici plusieurs morceaux choisis de cet échange avec les journalistes.</strong>
         <strong>George Miller, concernant le travail du Jury :</strong>
@@ -993,16 +994,24 @@ html {
 		}
 
 		ow.playVideo = function(event){
-			var $this = $(event.target).is('a') ? $(event.target) : $(event.target).closest('a');
-			var video = $this.parent().find('video').get(0);
-			video.setAttribute("controls","controls");
-			video.play();
-			$this.remove();
-		}
+      var $this = $(event.target).is('a') ? $(event.target) : $(event.target).closest('a');
+      var $wrapper = $this.parent();
+      var video = $this.parent().find('video').get(0);
 
-		ow.domEvents = function(){
-			$('.Article-video-play').on('click',function(e){ow.playVideo(e)});
-		}
+      if($wrapper.find('.Article-videoPlayer-caption')){
+        $wrapper.find('.Article-videoPlayer-caption').toggleClass('Article-videoPlayer-caption--hidden');
+      }
+
+      
+      video.setAttribute("controls","controls");
+      video.removeAttribute('style');
+      video.play();
+      $this.remove();
+    }
+
+    ow.domEvents = function(){
+      $('.Article-video-play,.Article-videoPlayer-play').on('click',function(e){ow.playVideo(e);return false;});
+    }
 
 		$(document).ready(function(){
 			ow.contentSlider();
