@@ -32,14 +32,7 @@ class AccreditationTranslation implements MdfStateInterface
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $activeSubtitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $inactiveSubtitle;
+    protected $subtitle;
 
     /**
      * @var string
@@ -279,21 +272,13 @@ class AccreditationTranslation implements MdfStateInterface
     }
 
     /**
-     * @return string
-     */
-    public function getActiveSubtitle()
-    {
-        return $this->activeSubtitle;
-    }
-
-    /**
-     * @param $activeSubtitle
+     * @param $title
      *
      * @return $this
      */
-    public function setActiveSubtitle($activeSubtitle)
+    public function setTitle($title)
     {
-        $this->activeSubtitle = $activeSubtitle;
+        $this->title = $title;
 
         return $this;
     }
@@ -301,21 +286,9 @@ class AccreditationTranslation implements MdfStateInterface
     /**
      * @return string
      */
-    public function getInactiveSubtitle()
+    public function getSubtitle()
     {
-        return $this->inactiveSubtitle;
-    }
-
-    /**
-     * @param $inactiveSubtitle
-     *
-     * @return $this
-     */
-    public function setInactiveSubtitle($inactiveSubtitle)
-    {
-        $this->inactiveSubtitle = $inactiveSubtitle;
-
-        return $this;
+        return $this->subtitle;
     }
 
     /**
