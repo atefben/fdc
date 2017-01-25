@@ -182,13 +182,20 @@ var owRemoveElementListe = function () {
         $('input#' + id).prop("checked", false);
         $('input#' + id).parent().removeClass('active');
 
-        console.log($('input#' + id));
-
         $(this).parent().remove();
 
         if (!$('.new-filter ul li').length) {
             $('.new-filter').parent().remove();
         }
+
+        $.each($('.filters-02 li'), function(i,e){
+            id = $(e).data('id');
+            text = $(e).data('text');
+
+            $('input#' + id).val(text);
+            $('input#' + id).prop("checked", true);
+            $('input#' + id).parent().addClass('active');
+        })
 
         $('.button-submit-02').trigger('click');
 
