@@ -16,6 +16,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Count;
 
 class MdfSpeakersMain extends Admin
 {
@@ -104,6 +105,14 @@ class MdfSpeakersMain extends Admin
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.new_speakers_tab',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new Count(
+                        array(
+                            'max' => 4,
+                            'maxMessage' => "validation.speakers_widget_tab_max"
+                        )
+                    ),
+                ),
             ), array(
                       'edit'     => 'inline',
                       'inline'   => 'table',

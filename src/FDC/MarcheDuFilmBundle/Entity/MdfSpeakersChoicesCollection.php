@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 use JMS\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MdfSpeakersChoicesCollection
@@ -29,6 +30,10 @@ class MdfSpeakersChoicesCollection
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices", cascade={"all"})
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
+     * @Assert\Count(
+     *      max = "4",
+     *      maxMessage = "validation.speakers_widget_tab_max"
+     * )
      */
     private $speakersChoice;
 
