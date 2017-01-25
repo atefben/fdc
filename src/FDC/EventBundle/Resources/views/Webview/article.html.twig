@@ -771,7 +771,7 @@ html {
         {{ dump(object.theme) }}
         <img src="{% path object.header|trans_fallback('file') , '' %}" />
         <h1>{{ object|trans_fallback('title') }}</h1>
-        <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
+        {{ object|trans_fallback('introduction')|raw }}
         <strong>George Miller, concernant le travail du Jury :</strong>
         <p>« Nous avons tenu compte du côté novateur des films, de leur aptitude à être complets et de la qualité de mise en scène. Tous les débats que nous avons eu ont été épuisants émotionnellement, mais nous avons tous été très heureux d'y prendre part. En tant que Jury, nous avons vécu une expérience merveilleuse et fourni un travail de rigueur et de vigueur. C’était un honneur de travailler avec cette passion et cette honnêteté. »</p>
         <div class="Article-slider-wrapper">
