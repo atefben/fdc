@@ -66,8 +66,12 @@ class MdfAccreditationAdmin extends Admin
                         'label'              => 'form.mdf.accreditation.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
-                    'subtitle'          => array(
-                        'label'              => 'form.mdf.accreditation.subtitle',
+                    'activeSubtitle'          => array(
+                        'label'              => 'form.mdf.accreditation.activeSubtitle',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'inactiveSubtitle'          => array(
+                        'label'              => 'form.mdf.accreditation.inactiveSubtitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
