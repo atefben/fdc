@@ -12604,12 +12604,12 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 
 .edition-69.dark .contain-img-honneur .copy {
-  font-size: .625rem;
+  font-size: .75rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: left;
   color: #666666;
-  margin-top: 21px;
+  display: block;
 }
 
 .poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article-single .block-push-top .vFlexAlign, .articles-list .block-push-top .vFlexAlign {
