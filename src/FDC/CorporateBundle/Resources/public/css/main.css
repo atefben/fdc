@@ -2469,7 +2469,6 @@ a {
   text-align: center;
   font-size: .875rem;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  font-weight: bold;
   line-height: 26px;
 }
 .article-single .small-pres .big-quote p strong, .article-single .pres-honneur .big-quote p strong {
@@ -12617,6 +12616,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding: 42px;
   font-size: 1rem;
   text-align: center;
+  border-bottom: #e5e5e5 1px solid;
+  border-top: #e5e5e5 1px solid;
+  margin-bottom: 60px;
 }
 .who .title-list-cat .title {
   width: 549px;
@@ -12629,6 +12631,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   text-align: center;
   padding: 20px 20px 0;
   font-size: .875rem;
+  max-width: 977px;
   margin: 10px auto 2px;
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
@@ -15380,6 +15383,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .article-single .quote p, .single-movie .quote p {
   margin-top: 0px;
+  font-size: 1.5rem !important;
 }
 .article-single .text a strong, .single-movie .text a strong {
   color: #c8a461;
