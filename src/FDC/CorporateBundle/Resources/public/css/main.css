@@ -15527,6 +15527,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin: 0 auto;
   line-height: 36px;
 }
+.participate .block-accordion-02 .item-manual .contain-infos .item-infos {
+  width: 239px;
+}
+.participate .block-accordion-02 .item-manual .contain-infos .item-infos.large {
+  width: 400px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 .c-contact input[type=text],
 .c-contact input[type=email],

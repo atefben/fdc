@@ -268,4 +268,14 @@
       line-height: 36px;
     }
   }
+
+  .block-accordion-02 .item-manual .contain-infos .item-infos {
+    width: 239px;
+
+    &.large {
+      width: 400px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
 }
