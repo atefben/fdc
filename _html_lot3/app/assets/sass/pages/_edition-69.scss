@@ -20,13 +20,23 @@
 
 .contain-img-honneur {
   .edition-69.dark & {
-    .copy {
+
+    .caption {
+      margin-top: 20px;
       font-size: .75rem;
       font-family: $CamphorMedium;
-      margin-top: 20px;
+      display: block;
+
+       strong {
+        color: #666666;
+        font-family: $CamphorBold;
+        font-weight: normal;
+      }
+    }
+
+    .copy {
       text-align: left;
       color: #666666;
-      display: block;
     }
   }
 }
