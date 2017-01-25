@@ -766,7 +766,6 @@ html {
         </div>
       </header>
       <div class="Article-content">
-        {{ dump(object) }}
         <img src="{% path object.header|trans_fallback('file') , '' %}" />
         <h1>{{ object|trans_fallback('title') }}</h1>
 
