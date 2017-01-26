@@ -441,8 +441,6 @@ html {
         {% else %}
           {% set trans = photo.findTranslationByLocale(app.request.locale) %}
           {% set cover_image = trans.file %}
-        }
-        }
         {% endif %}
 
         {% if object.video != null %}<a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>{% endif %}
