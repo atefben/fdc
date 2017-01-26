@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-11-22T13:50:11Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="e69f20e9f683920d3fb4329abd951e878b1f9372" resname="F">
+        <source>F</source>
+        <target state="new">F</target>
+        <jms:reference-file line="97">Form/Type/SearchType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c63ae6dd4fc9f9dda66970e827d13f7c73fe841c" resname="M">
+        <source>M</source>
+        <target state="new">M</target>
+        <jms:reference-file line="96">Form/Type/SearchType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f0045acf643c4f81ca32804a06f12fe4fb3217c0" resname="award.ex_aequo">
+        <source>award.ex_aequo</source>
+        <target state="new">award.ex_aequo</target>
+        <jms:reference-file line="525">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="567">views/News/home.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fe0a3e53e2281f9a54d4e8a255a5c3630caee544" resname="breadcrumb.69editions.home">
+        <source>breadcrumb.69editions.home</source>
+        <target>69 éditions</target>
+        <jms:reference-file line="28">News/list/medias.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="af0c760be1cc8b5a55129ce53d52eaf5477f1b44" resname="breadcrumb.retrospective.home">
+        <source>breadcrumb.retrospective.home</source>
+        <target>Rétrospective</target>
+        <jms:reference-file line="32">News/list/medias.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9bd1a4f4a20cef0887832bff429704b9a12dd80c" resname="courtmetrage">
+        <source>courtmetrage</source>
+        <target state="new">courtmetrage</target>
+        <jms:reference-file line="106">Form/Type/SearchType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d71bdec30a6d33175269a9463e5eb2d0b59b2cc4" resname="home.festival.follow">
+        <source>home.festival.follow</source>
+        <target state="new">home.festival.follow</target>
+        <jms:reference-file line="633">views/News/home.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="76466947f7620c70bdf2e243ef1db57cd964c1fb" resname="longmetrage">
+        <source>longmetrage</source>
+        <target state="new">longmetrage</target>
+        <jms:reference-file line="105">Form/Type/SearchType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="358765a86d7b88e12987c923379d1b36a7c5528b" resname="perspective.retour">
+        <source>perspective.retour</source>
+        <target>perspective.retour</target>
+        <jms:reference-file line="35">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6f2c8d0cd774fbfa3f9e3503dc207e36d698eac1" resname="retrospective.69ansfestival">
+        <source>retrospective.69ansfestival</source>
+        <target>69 ans de festival</target>
+        <jms:reference-file line="15">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="de93cee9f90e9d05015eb4598379af2ea20bc23f" resname="retrospective.discover">
+        <source>retrospective.discover</source>
+        <target>Découvrir</target>
+        <jms:reference-file line="68">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="dec79a4c18beb8dac858038d6a18e8177c139cf6" resname="retrospective.edition">
+        <source>retrospective.edition</source>
+        <target>édition</target>
+        <jms:reference-file line="66">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="36622355338368cd0b3eb9ea4acd55d0e4f9547c" resname="retrospective.pasdecontenu">
+        <source>retrospective.pasdecontenu</source>
+        <target>Il n'y a pas de contenu pour cette édition</target>
+        <jms:reference-file line="44">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="83ce53e20669e3a5f1550db9f777993cfe122b88" resname="retrospective.retour">
+        <source>retrospective.retour</source>
+        <target>Retour à la rétrospective</target>
+        <jms:reference-file line="57">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="687cb5738d0f50c71b47ab392d365622972b6f1d" resname="retrospective.revivez">
+        <source>retrospective.revivez</source>
+        <target>Revivez tous les moments forts de l'histoire du Festival de Cannes à travers cette timeline interactive</target>
+        <jms:reference-file line="16">Retrospective/components/years_slider_mini.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="aeaf509cbec24b393a5df4eb418788fb1cebf597" resname="slider.credit_image">
+        <source>slider.credit_image</source>
+        <target>Crédit image</target>
+        <jms:reference-file line="17">Media/components/media.html.twig</jms:reference-file>
+        <jms:reference-file line="25">Media/components/medias.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
