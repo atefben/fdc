@@ -178,14 +178,14 @@ html {
   position: absolute;
   width: 21px;
   height: 40px;
-  background: url(img/article/slider-prev.png) no-repeat top left;
+  background: url({{ asset('bundles/fdcevent/img/article/slider-prev.png') }}) no-repeat top left;
   background-size: 100%;
   z-index: 1;
   top: 50%;
   left: 0;
   margin-top: -20px; }
 .Article-slider-next {
-  background: url(img/article/slider-next.png) no-repeat top left;
+  background: url({{ asset('bundles/fdcevent/img/article/slider-next.png') }}) no-repeat top left;
   background-size: 100%;
   left: auto;
   right: 0; }
@@ -291,7 +291,7 @@ html {
         width: 1.2rem;
         height: 1rem;
         display: block;
-        background: url(img/article/icons/icon-article.png) no-repeat left top;
+        background: url({{ asset('bundles/fdcevent/img/article/icons/icon-article.png') }}) no-repeat left top;
         background-size: 100%;
         position: absolute;
         top: 1.2rem;
@@ -323,7 +323,7 @@ html {
   top: .7rem;
   margin-left: 10.3rem; }
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback {
-  background: url(img/article/videoPlayer/pause.png) no-repeat 2rem 3rem;
+  background: url({{ asset('bundles/fdcevent/img/article/videoPlayer/pause.png') }}) no-repeat 2rem 3rem;
   background-position: 2rem center;
   background-size: 1.2rem;
   left: 3.7rem;
@@ -382,7 +382,7 @@ html {
       text-transform: uppercase;
       margin-top: 1.8rem; }
   .jwplayer.jw-skin-fdc .jw-icon-playback {
-    background: url(img/article/audioPlayer/play.png) no-repeat 2rem 3rem;
+    background: url({{ asset('bundles/fdcevent/img/article/audioPlayer/play.png') }}) no-repeat 2rem 3rem;
     background-size: 1.8rem; }
     .jwplayer.jw-skin-fdc .jw-icon-playback:before {
       content: ""; }
@@ -395,7 +395,7 @@ html {
     width: 85%;
     float: right; }
   .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
-    background: url(img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
+    background: url({{ asset('bundles/fdcevent/img/article/audioPlayer/mic.png') }}) no-repeat 2rem 3rem;
     background-size: 1.8rem; }
   .jwplayer.jw-skin-fdc .jw-display-icon-container .jw-icon-display {
     text-align: left;
@@ -406,7 +406,7 @@ html {
       width: 1.2rem;
       height: 1.9rem;
       display: inline-block;
-      background: url(img/article/audioPlayer/play.png) no-repeat left top;
+      background: url({{ asset('bundles/fdcevent/img/article/audioPlayer/play.png') }}) no-repeat left top;
       background-size: 100%;
       vertical-align: top;
       margin-top: .5rem;
@@ -461,18 +461,17 @@ html {
             {% endif %}
         {% endfor %}
       </div>
-      <div class="Article-push">
+      <!--div class="Article-push">
         <div class="Article-push-image">
           <img src="{{ asset('bundles/fdcevent/img/article/push-cover.png') }}" class="Article-push-cover"/>
-        </div><!--
-        --><div class="Article-push-content">
+        </div><div class="Article-push-content">
           <strong>Cinéma de la plage</strong>
           <h3>Plus fort que les bombes</h3>
           <span>Eric Hannezo</span>
           <p>France - 2014<br/>
           1h35</p>
         </div>
-      </div>
+      </div-->
     </article>
     <aside class="Article-related">
       <h2>Le même jour</h2>
@@ -556,7 +555,7 @@ html {
 
         //size slides before slider declaration
         $slides.css('width',$wrap.width());
-        
+
         var Slider = new Sly($wrap, {
           horizontal: 1,
           itemNav: 'basic',
