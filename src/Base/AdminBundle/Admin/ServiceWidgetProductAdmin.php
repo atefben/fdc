@@ -49,7 +49,6 @@ class ServiceWidgetProductAdmin extends Admin
     {
         $formMapper
             ->add('gallery', 'sonata_type_model_list',array(
-                'btn_delete' => true,
                 'required' => false,
                 'label' => 'form.mdf.label.service_product_gallery'
             ))
