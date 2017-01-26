@@ -2011,10 +2011,12 @@ blockquote, .quote {
 .contain-title p sub, .contain-title ul sub, .contain-title ol sub {
   position: relative;
   bottom: -3px;
+  font-size: .5rem;
 }
 .contain-title p sup, .contain-title ul sup, .contain-title ol sup {
   position: relative;
   bottom: 9px;
+  font-size: .5rem;
 }
 .contain-title p a, .contain-title ul a, .contain-title ol a {
   color: #c8a461;
