@@ -436,7 +436,7 @@ html {
         {% if (object.video != null or object.image != null or object.header != null) %}
         {% if object.image != null %}
           {% set cover_image = object.image|trans_fallback('file') %}
-        {% else if object.imageAmazonUrl != null %}
+        {% elseif object.imageAmazonUrl != null %}
           {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
         {% else %}
           {% set cover_image = object.header|trans_fallback('file') %}
