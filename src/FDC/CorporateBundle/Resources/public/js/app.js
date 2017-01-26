@@ -4439,29 +4439,33 @@ var openSlideShow = function (slider, hash) {
 
         fullscreen.css('width', wSlide);
     });
-    
-    if (typeof hash != "undefined") {
 
-        for (var i = 0; i < images.length; i++) {
 
-            if (images[i].id == hash) {
-                centerElement = i;
-                fullscreen.append("<div class='"+images[i].isPortrait+" dezoom'><img src='" + images[i].src + "' alt='" + images[i].data + "' class='center-item' /></div>");
-            } else {
-                fullscreen.append("<div class='"+images[i].isPortrait+"'><img src='" + images[i].src + "' alt='" + images[i].data + "'/></div>");
+    setTimeout(function(){
+        if (typeof hash != "undefined") {
+
+            for (var i = 0; i < images.length; i++) {
+
+                if (images[i].id == hash) {
+                    centerElement = i;
+                    fullscreen.append("<div class='"+images[i].isPortrait+" dezoom'><img src='" + images[i].src + "' alt='" + images[i].data + "' class='center-item' /></div>");
+                } else {
+                    fullscreen.append("<div class='"+images[i].isPortrait+"'><img src='" + images[i].src + "' alt='" + images[i].data + "'/></div>");
+                }
+            }
+
+        } else {
+            for (var i = 0; i < images.length; i++) {
+
+                if (i == centerElement) {
+                    fullscreen.append("<div class='"+images[i].isPortrait+"'><img src='" + images[i].src + "' alt='" + images[i].data + "' class='center-item'  /></div>");
+                } else {
+                    fullscreen.append("<div class='"+images[i].isPortrait+"'><img src='" + images[i].src + "' alt='" + images[i].data + "' /></div>");
+                }
             }
         }
+    }, 1000);
 
-    } else {
-        for (var i = 0; i < images.length; i++) {
-
-            if (i == centerElement) {
-                fullscreen.append("<div class='"+images[i].isPortrait+"'><img src='" + images[i].src + "' alt='" + images[i].data + "' class='center-item'  /></div>");
-            } else {
-                fullscreen.append("<div class='"+images[i].isPortrait+"'><img src='" + images[i].src + "' alt='" + images[i].data + "' /></div>");
-            }
-        }
-    }
 
     var translate = (w + 0) * centerElement;
     translate = -translate + "px";
