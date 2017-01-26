@@ -8,7 +8,8 @@ var owInitGrid = function (id) {
                 itemSelector: '.item',
                 layoutMode: 'packery',
                 packery: {
-                    columnWidth: '.grid-sizer'
+                    columnWidth: '.grid-sizer',
+                    gutter: 0
                 }
             });
 
@@ -20,7 +21,7 @@ var owInitGrid = function (id) {
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                layoutMode: 'masonry',
+                layoutMode: 'packery',
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
