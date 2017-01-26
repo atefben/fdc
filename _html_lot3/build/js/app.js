@@ -3393,7 +3393,7 @@ var truncTitleSearch = function() {
     }
 
     title.html(text.trunc(40, true));
-    titleCat.html(text2.trunc(20, true));
+    titleCat.html(text2.trunc(25, true));
   });
 
   $(window).resize(function () {
