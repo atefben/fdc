@@ -139,7 +139,6 @@ class PalmaresController extends Controller
         $this->commonParameters($parameters);
 
         $template = 'FDCCorporateBundle:Palmares:award.html.twig';
-        $parameters['done'] = array();
         return $this->render($template, $parameters);
 
     }
