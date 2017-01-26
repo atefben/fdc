@@ -5590,7 +5590,7 @@ strong.title-center {
   text-align: center;
 }
 .dark .title-list-cat .title {
-  width: 549px;
+  max-width: 549px;
   margin: 0 auto;
   font-size: 1rem;
   line-height: 30px;
@@ -5602,7 +5602,7 @@ strong.title-center {
   text-align: center;
   padding: 20px 20px 0;
   font-size: .875rem;
-  width: 977px;
+  max-width: 977px;
   margin: 10px auto 2px;
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
