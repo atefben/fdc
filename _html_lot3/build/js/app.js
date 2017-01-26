@@ -3368,6 +3368,43 @@ var initFilterCheck = function() {
 
   });
 }
+
+var truncTitleSearch = function() {
+
+
+  $.each($('.medias .item'), function (i, e) {
+    var title = $(e).find('.title-media');
+    var titleCat = $(e).find('.title-type-media');
+
+    if (!title.hasClass('init')) {
+      var text = $(e).find('.title-media').text();
+      title.addClass('init');
+      title.attr('data-title', text);
+    } else {
+      var text = title.attr('data-title');
+    }
+
+    if (!titleCat.hasClass('init')) {
+      var text2 = $(e).find('.title-type-media').text();
+      titleCat.addClass('init');
+      titleCat.attr('data-title', text2);
+    } else {
+      var text2 = titleCat.attr('data-title');
+    }
+
+    title.html(text.trunc(40, true));
+    titleCat.html(text2.trunc(25, true));
+  });
+
+  $(window).resize(function () {
+    truncTitleSearch();
+  });
+
+  var title = $('.info strong a').text();
+}
+
+
+
 //setup twitter
 
 window.twttr = (function (d, s, id) {
@@ -5613,6 +5650,7 @@ $(document).ready(function () {
 
     if($('.search-page-result').length) {
         initFilterCheck();
+        truncTitleSearch();
     }
 
     setTimeout(function () {

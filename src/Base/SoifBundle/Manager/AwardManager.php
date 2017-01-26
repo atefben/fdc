@@ -2,12 +2,10 @@
 
 namespace Base\SoifBundle\Manager;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Base\CoreBundle\Entity\FilmAward;
 use Base\CoreBundle\Entity\FilmAwardAssociation;
-
-use \Exception;
+use Doctrine\Common\Collections\ArrayCollection;
+use Exception;
 
 /**
  * AwardManager class.
@@ -223,6 +221,7 @@ class AwardManager extends CoreManager
                     'film'     => $obj->Film,
                     'person'   => $obj->Persons,
                     'position' => $obj->Ordre,
+                    'award'    => $entity->getId(),
                 ))
                 ;
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmAwardAssociation();
