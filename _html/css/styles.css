@@ -29252,6 +29252,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background-color: transparent !important;
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .bandeau-list {
+    margin-top: -30px !important;
+  }
+}
 .confcourtaccordion .selectbtn {
   float: none !important;
   min-width: 0px !important;

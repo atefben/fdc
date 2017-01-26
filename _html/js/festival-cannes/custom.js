@@ -307,33 +307,44 @@ function smoothScrolling() {
 
 smoothScrolling();
 
-
+/*
 $(".conferencesMenu li").each(function() {
 
   $(this).click(function() {
 
-    /*if ($('.conferencesMenu li:last-child')) {
-      $('html,body').animate({ scrollTop:$('.conferencesMenu').offset().top}, 'slow');
-      return false;
-
-    } else {*/
-
     $('html,body').animate({ 
 
-      scrollTop:$('.conferencesMenu').offset().top +  $(this).prevAll().height() 
+      scrollTop:$('.conferencesMenu').offset().top +  $(this).prevAll().height()
 
     },'slow');
 
-    /*$('html,body').animate({ scrollTop:$(this).siblings('.conferencesMenu li:first').offset().top  }, 'slow');
+
+
+
+
+    $('html,body').animate({ scrollTop:$(this).siblings('.conferencesMenu li:first').offset().top  }, 'slow');
       return false;
 
     if ($('.conferencesMenu li:first-child)')) {
         $('html,body').animate({ scrollTop:$(this).prev().offset().top }, 'slow');
         return false;
-    }*/
+    }
 
   });
-});
+});*/
+
+  $(".conferencesMenu li").on('click', function(event) {
+
+    var target = $($(this).prev());
+
+    if( target.length ) {
+        event.preventDefault();
+        $('html, body').animate({
+            scrollTop: target.offset().top
+        }, 500);
+    }
+
+  });
 
 // Quick & dirty toggle to demonstrate modal toggle behavior
 $('.modal-toggle').on('click', function(e) {
