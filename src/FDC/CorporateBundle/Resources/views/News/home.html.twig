@@ -267,6 +267,8 @@
                     <div class="articles-wrapper add-ajax-request">
                         <div class="articles article-inverse">
                             <div class="cards grid-01 isotope-01">
+                                <div class="grid-sizer"></div>
+
                                 {% if homeContents|length > 3 %}
                                     {% for i in 3..(homeContents|length)-1 %}
                                         {% set article = homeContents[i] %}
@@ -360,7 +362,6 @@
                                             {% endif %}
                                         {% endif %}
 
-                                        <div class="grid-sizer"></div>
                                         <article
                                                 class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if i == 4 %}double w2{% else %}{% endif %}"
                                                 data-format="{{ contentType }}"
