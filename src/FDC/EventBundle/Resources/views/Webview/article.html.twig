@@ -503,8 +503,8 @@ html {
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
-        {% for relatedNews in object.associatedNews.coll.elements %}
-          {{ dump(relatedNews) }}
+        {% for associatedNews in object.associatedNews %}
+          {{ dump(associatedNews) }}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
