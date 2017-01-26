@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 use JMS\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MdfGlobalEventsDaysCollection
@@ -34,6 +35,10 @@ class MdfGlobalEventsDaysCollection
 
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEvents", inversedBy="daysCollection")
+     * * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "validation.schedule_min"
+     * )
      */
     private $globalEvent;
 

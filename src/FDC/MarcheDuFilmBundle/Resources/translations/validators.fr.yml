@@ -4,3 +4,4 @@ validation.service_product_image_max: At most 3 images can be added per product.
 validation.service_widget_max: At most 5 tabs can be added per service.
 validation.speakers_max: At most 8 speakers can be added.
 validation.speakers_widget_tab_max: At most 4 speakers tab can be added.
+validation.schedule_min: At least 1 event should be added on a day accordion.

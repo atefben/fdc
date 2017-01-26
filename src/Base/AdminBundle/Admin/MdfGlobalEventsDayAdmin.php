@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Count;
 
 class MdfGlobalEventsDayAdmin extends Admin
 {
@@ -54,6 +55,15 @@ class MdfGlobalEventsDayAdmin extends Admin
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.global_events_day',
                 'translation_domain' => 'BaseAdminBundle',
+                'required' => true,
+                'constraints'        => array(
+                    new Count(
+                        array(
+                            'min' => 1,
+                            'minMessage' => "validation.schedule_min"
+                        )
+                    ),
+                ),
             ), array(
                 'edit'     => 'inline',
                 'inline'   => 'table',
