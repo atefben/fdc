@@ -5581,6 +5581,33 @@ strong.title-center {
   border-bottom: 0px solid #fff;
 }
 
+.dark .title-list-cat {
+  color: #fff;
+  padding: 42px;
+  border-bottom: #202020 1px solid;
+  border-top: #202020 1px solid;
+  font-size: 1rem;
+  text-align: center;
+}
+.dark .title-list-cat .title {
+  width: 549px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 30px;
+  font-weight: 700;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+}
+.dark .title-list-cat .categorie-items .title-list-cat .title-item {
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  width: 977px;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
