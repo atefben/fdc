@@ -561,11 +561,13 @@ blockquote, .quote {
     sub {
       position: relative;
       bottom: -3px;
+      font-size: .5rem;
     }
 
     sup {
       position: relative;
       bottom: 9px;
+      font-size: .5rem;
     }
 
     font-size: 1rem;
