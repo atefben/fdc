@@ -11468,17 +11468,17 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1600px) {
   .single-movie .main-image {
-    height: 510px;
+    height: 541px;
   }
 }
 @media screen and (max-width: 1280px) {
   .single-movie .main-image {
-    height: 450px;
+    height: 481px;
   }
 }
 @media screen and (max-width: 1024px) {
   .single-movie .main-image {
-    height: 360px;
+    height: 391px;
   }
 }
 .single-movie .main-image .img {
