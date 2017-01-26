@@ -432,12 +432,13 @@ html {
   </head>
   <body class="Article">
     <article class="Article-wrapper">
-      {{ dump(object) }}
       <header class="Article-header">
-        <a href="#" class="Article-video-play"><img src="{% path object.header|trans_fallback('file') , 'reference' %}"/></a>
-        <video preload="none" style="background-image: url({{ asset('bundles/fdcevent/img/article/video-poster.png') }})">
-          <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
+        {% if object.video != null %}
+        <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
+        <video preload="none" style="background-image: url({% path object.image|trans_fallback('file') , 'reference' %})">
+          <source src="{% path object.video|trans_fallback('file') , 'reference' %}" type="video/mp4"/>
         </video>
+        {% endif %}
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date"><strong>Hier à</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
