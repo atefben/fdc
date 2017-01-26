@@ -260,6 +260,7 @@ var truncTitleSearch = function() {
 
   $.each($('.medias .item'), function (i, e) {
     var title = $(e).find('.title-media');
+    var titleCat = $(e).find('.title-type-media');
 
     if (!title.hasClass('init')) {
       var text = $(e).find('.title-media').text();
@@ -269,18 +270,16 @@ var truncTitleSearch = function() {
       var text = title.attr('data-title');
     }
 
-
-    if($('.medias').length > 0) {
-
-      if (window.matchMedia("(max-width: 1405px)").matches) {
-        title.html(text.trunc(25, true));
-      }else{
-        title.html(text.trunc(40, true));
-      }
-
+    if (!titleCat.hasClass('init')) {
+      var text2 = $(e).find('.title-type-media').text();
+      titleCat.addClass('init');
+      titleCat.attr('data-title', text2);
     } else {
-      title.html(text.trunc(60, true));
+      var text2 = titleCat.attr('data-title');
     }
+
+    title.html(text.trunc(40, true));
+    titleCat.html(text2.trunc(20, true));
   });
 
   $(window).resize(function () {
