@@ -118,7 +118,6 @@ class SearchController extends Controller
             } else {
                 $mediaResults = false;
             }
-
             $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
             $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
 
