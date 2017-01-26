@@ -33,7 +33,7 @@ class MdfConferenceProgramMain extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
+            ->add('subTitle')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -60,10 +60,6 @@ class MdfConferenceProgramMain extends Admin
                         'attr' => array (
                             'class' => 'hidden'
                         )
-                    ),
-                    'title'          => array(
-                        'label'              => 'form.mdf.conference_program.title',
-                        'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subTitle'          => array(
                         'label'              => 'form.mdf.conference_program.subtitle',

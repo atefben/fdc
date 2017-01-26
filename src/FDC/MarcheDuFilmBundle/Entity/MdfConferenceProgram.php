@@ -85,20 +85,20 @@ class MdfConferenceProgram
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getSubTitle();
         } else {
             $string = strval($this->getId());
         }
         return (string) $string;
     }
 
-    public function getTitle()
+    public function getSubTitle()
     {
         $translation = $this->findTranslationByLocale('fr');
         $string = '';
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getSubTitle();
         }
 
         return $string;
