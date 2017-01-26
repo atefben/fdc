@@ -3040,9 +3040,11 @@ video {
 @keyframes dezoom {
   from {
     transform: scale(1.1);
+    opacity: 0;
   }
   to {
     transform: scale(1);
+    opacity: 1;
   }
 }
 @keyframes anime-zoom {
@@ -8936,6 +8938,10 @@ header #searchContainer {
   overflow: hidden;
   background-size: cover;
 }
+body#home .article-inverse .isotope-01 .item:not(.w2):not(.double) {
+  padding-left: 0px !important;
+  padding-right: 41px !important;
+}
 body#home .isotope-01 .card {
   height: 300px;
 }
@@ -8999,11 +9005,21 @@ body#home .isotope-01 .item .contain-img {
   body#home .isotope-01 .grid-sizer {
     width: calc(100% / 3);
   }
+  body#home .isotope-01 .card .image {
+    height: 167px;
+  }
+  body#home .isotope-01 .w2.double .image {
+    height: 423px;
+    width: 672px;
+  }
   body#home .isotope-01 .item {
-    width: 305px;
+    width: 325px;
+    padding: 0px;
+    padding-left: 61px;
   }
   body#home .isotope-01 .item.w2 {
-    width: 614px;
+    width: 650px;
+    padding: 0px;
   }
   body#home .isotope-01 .three-cards {
     width: 305px;

@@ -13,6 +13,13 @@
     }
   }
 
+
+    body#home .article-inverse & .item:not(.w2):not(.double) {
+      padding-left: 0px !important;
+      padding-right: 41px !important;
+    }
+
+
   body#home & {
 
     .card {
@@ -92,12 +99,25 @@
       .grid-sizer {
         width: calc(100% / 3);
       }
+
+      .card .image {
+        height: 167px;
+      }
+
+      .w2.double .image {
+        height: 423px;
+        width: 672px;
+      }
+
       .item {
-        width: 305px;
+        width: 325px;
+        padding: 0px;
+        padding-left: 61px;
       }
 
       .item.w2 {
-        width: 614px;
+        width: 650px;
+        padding: 0px
       }
 
       .three-cards {
