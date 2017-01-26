@@ -1,5 +1,3 @@
-{{ dump(widget) }}
-
 {% if widget.gallery is not empty %}
         {% for gallery in widget.gallery.medias %}
             {% if gallery.media != null %}
@@ -8,10 +6,8 @@
                     {% set trans = gallery.media.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                        <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
-                        <div class="Article-picture-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> © {{ gallery.media|trans_fallback('copyright') }}</div>
-                    </div>
-                </div>
+                <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                <div class="Article-picture-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> © {{ gallery.media|trans_fallback('copyright') }}</div>
             {% endif %}
         {% endfor %}
     {% endif %}
