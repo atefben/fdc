@@ -432,7 +432,7 @@ html {
   </head>
   <body class="Article">
     <article class="Article-wrapper">
-      {{ dumpt(object.header) }}
+      {{ dump(object.header) }}
       <header class="Article-header">
         <a href="#" class="Article-video-play"><img src="{% path object.header|trans_fallback('file') , 'reference' %}"/></a>
         <video preload="none" style="background-image: url({{ asset('bundles/fdcevent/img/article/video-poster.png') }})">
