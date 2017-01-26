@@ -3,6 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * MdfContentTemplateWidgetVideo
@@ -11,29 +13,52 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MdfContentTemplateWidgetVideo extends MdfContentTemplateWidget
 {
-    /**
-     * @var MediaMdfVideo
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfVideo")
-     */
-    protected $video;
+    use Translatable;
 
     /**
-     * @return MediaMdfVideo
+     * @var MediaMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
      */
-    public function getVideo()
+    protected $image;
+
+    /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        return $this->video;
+        $this->translations = new ArrayCollection();
     }
 
     /**
-     * @param $video
+     * @return MediaMdf
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param $image
      *
      * @return $this
      */
-    public function setVideo($video)
+    public function setImage($image)
     {
-        $this->video = $video;
+        $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }

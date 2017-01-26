@@ -12,6 +12,7 @@ use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideoTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfProgramFile;
 use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection;
 use FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerTranslation;
@@ -35,9 +36,10 @@ class ConferenceProgramManager
         $textWidgets = $this->getContentTemplateTextWidgets($conferenceProgramPage);
         $imageWidgets = $this->getContentTemplateImageWidgets($conferenceProgramPage);
         $galleryWidgets = $this->getContentTemplateGalleryWidgets($conferenceProgramPage);
+        $youtubeWidgets = $this->getContentTemplateYoutubeWidgets($conferenceProgramPage);
 
         $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets);
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $youtubeWidgets);
 
         usort($widgets, function($a, $b)
         {
@@ -206,6 +208,12 @@ class ConferenceProgramManager
         return $this->em
             ->getRepository(MdfContentTemplateWidgetGallery::class)
             ->getConferenceProgramGalleryWidgetsByPageId($page->getTranslatable()->getId());
+    }
+
+    public function getContentTemplateYoutubeWidgets($page) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetVideoTranslation::class)
+            ->getConferenceProgramYoutubeWidgetsByLocaleAndPageId($this->requestStack->getMasterRequest()->get('_locale'), $page->getTranslatable()->getId());
     }
     
     public function getAllConferenceTypes()

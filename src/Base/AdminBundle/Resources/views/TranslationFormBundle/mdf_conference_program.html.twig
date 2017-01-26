@@ -43,8 +43,9 @@
                                                             <h4><strong>{{ 'form.mdf.content_template.widget.gallery'|trans }}</strong></h4>
                                                             {{ form_row(widget.gallery) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
-                                                            <h4><strong>{{ 'form.mdf.content_template.widget.video'|trans }}</strong></h4>
-                                                            {{ form_row(widget.video) }}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.youtube'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -65,7 +66,7 @@
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
-                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.video'|trans }}</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
 
                                             <div class="col-md-12">
                                                 <div class="box-body">
@@ -137,8 +138,9 @@
                                                             <h4><strong>Gallery widget</strong></h4>
                                                             {{ form_row(widget.gallery) }}
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
-                                                            <h4><strong>Video widget</strong></h4>
-                                                            {{ form_row(widget.video) }}
+                                                            <h4><strong>Youtube widget</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -159,7 +161,7 @@
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
-                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.video'|trans }}</a>
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
 
                                             <div class="col-md-8">
                                                 <div class="box-body">
@@ -236,6 +238,26 @@
                                                             </label>
                                                             <div>
                                                                 {{ widget.children.translations.fr.vars.value.contentText|raw }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                    <div class="item base-widget"
+                                                         data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.content_template.youtube_widget_title'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.content_template.text_widget_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.content_template.youtube_widget_url'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.url|raw }}
                                                             </div>
                                                         </div>
                                                     </div>

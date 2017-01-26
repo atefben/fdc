@@ -1363,8 +1363,9 @@
     <div class="item base-widget">
         <h4>{{ 'form.mdf.content_template.widget.video'|trans }}</h4>
         {{ form_widget(form.children._type) }}
-        {{ form_row(form.children.video) }}
+        {{ form_row(form.children.image) }}
         {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">

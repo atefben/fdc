@@ -139,4 +139,9 @@ abstract class MdfContentTemplateWidget
     {
         return $this instanceof MdfContentTemplateWidgetFile;
     }
+
+    public function isWidgetVideo()
+    {
+        return $this instanceof MdfContentTemplateWidgetVideo;
+    }
 }

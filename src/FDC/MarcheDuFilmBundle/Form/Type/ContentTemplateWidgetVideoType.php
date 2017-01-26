@@ -3,7 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Base\AdminBundle\Admin\MediaMdfVideoAdmin;
+use Base\AdminBundle\Admin\MediaMdfImageAdmin;
 
 class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
 {
@@ -21,9 +21,9 @@ class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
     private $admin;
 
     /**
-     * @var MediaMdfVideoAdmin
+     * @var MediaMdfImageAdmin
      */
-    private $mediaVideoAdmin;
+    private $mediaImageAdmin;
 
     /**
      * setSonataAdmin function.
@@ -37,9 +37,9 @@ class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
         $this->admin = $admin;
     }
 
-    public function setMediaVideoAdmin($mediaVideoAdmin)
+    public function setMediaImageAdmin($mediaImageAdmin)
     {
-        $this->mediaVideoAdmin = $mediaVideoAdmin;
+        $this->mediaImageAdmin = $mediaImageAdmin;
     }
 
     /**
@@ -50,15 +50,36 @@ class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
     {
         parent::buildForm($builder, $options);
         $builder
-            ->add('video', 'sonata_type_model_list', array(
-                'label' => 'form.label_video',
-                'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['video'],
-                'model_manager' => $this->mediaVideoAdmin->getModelManager(),
-                'class' => $this->mediaVideoAdmin->getClass(),
+            ->add('translations', 'a2lix_translations', array(
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array('fr'),
+                'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr'       => array(
+                            'class' => 'hidden',
+                        ),
+                    ),
+                    'title'          => array(
+                        'label'              => 'form.mdf.label.title',
+                        'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'url'          => array(
+                        'label'              => 'form.mdf.label.youtube_url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    )
+                ),
+            ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_image',
+                'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
+                'model_manager' => $this->mediaImageAdmin->getModelManager(),
+                'class' => $this->mediaImageAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => false
-            ));
+            ))
+        ;
     }
 
     /**
