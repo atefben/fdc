@@ -433,6 +433,7 @@ html {
   <body class="Article">
     <article class="Article-wrapper">
       <header class="Article-header">
+      {{ dump(object) }}
         {% if (object.video != null or object.image != null) %}
         
         {% if object.video != null %}<a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>{% endif %}
