@@ -439,7 +439,12 @@ html {
         {% elseif object.imageAmazonUrl != null %}
           {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
         {% else %}
+        {{ dump(object.header) }}
+        {{ dump(object|trans_fallback('header')) }}
+        {{ dump(object.header|trans_fallback('file')) }}
           {% set cover_image = object.header|trans_fallback('file') %}
+        }
+        }
         {% endif %}
 
         {% if object.video != null %}<a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>{% endif %}
