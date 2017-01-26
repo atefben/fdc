@@ -5,6 +5,8 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslationChanges;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,10 +16,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfGlobalEventsScheduleTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class MdfGlobalEventsScheduleTranslation
+class MdfGlobalEventsScheduleTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
     use Time;
 
     /**
