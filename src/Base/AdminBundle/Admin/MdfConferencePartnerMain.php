@@ -59,10 +59,6 @@ class MdfConferencePartnerMain extends Admin
                             'class' => 'hidden'
                         )
                     ),
-                    'title'          => array(
-                        'label'              => 'form.mdf.conference_partner.title',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
                     'subTitle'          => array(
                         'label'              => 'form.mdf.conference_partner.subtitle',
                         'translation_domain' => 'BaseAdminBundle',

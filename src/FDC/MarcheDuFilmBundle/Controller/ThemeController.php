@@ -143,6 +143,15 @@ class ThemeController extends Controller
         $pagesStatus = $conferencePagesManager->getPagesStatus($slug);
         $nextUrl = $conferencePagesManager->getHomeNextUrl($pagesStatus);
 
+//        var_dump($contentTemplateManager->getPageData($slug));die;
+
+        $contentTemplatePageData = $contentTemplateManager->getPageData($slug);
+
+        if($contentTemplatePageData['titleHeader'] == null && empty($contentTemplatePageData['widgets']))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $pageData = array_merge($contentTemplateManager->getPageData($slug), $pagesStatus, $nextUrl);
 
         return $this->render('FDCMarcheDuFilmBundle:contentTemplate:contentTemplate.html.twig', $pageData);

@@ -21,13 +21,6 @@ class MdfConferenceProgramTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
     protected $subTitle;
 
     /**
@@ -36,26 +29,6 @@ class MdfConferenceProgramTranslation
      * @ORM\Column(type="text", nullable=true)
      */
     protected $header;
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param $title
-     *
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
 
     /**
      * @return string
