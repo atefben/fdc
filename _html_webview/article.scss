@@ -137,6 +137,10 @@ html {
 			padding-bottom: 4rem;
 		}
 
+		table {
+			width: 100%!important;
+		}
+
 		p, strong {
 			display: block;
 			font-family: "Open Sans";
@@ -196,7 +200,7 @@ html {
 		}
 
 		&-caption {
-			height: 25px;
+			height: auto;
 			line-height: 25px;
 			font-size: 0.8rem;
 

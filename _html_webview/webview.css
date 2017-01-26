@@ -487,6 +487,8 @@ html {
     font-size: 2.8rem;
     line-height: 3rem;
     padding-bottom: 4rem; }
+  .Article-content table {
+    width: 100% !important; }
   .Article-content p, .Article-content strong {
     display: block;
     font-family: "Open Sans";
@@ -527,7 +529,7 @@ html {
   .Article-slider-item img {
     width: 100%; }
 .Article-slider-caption {
-  height: 25px;
+  height: auto;
   line-height: 25px;
   font-size: 0.8rem; }
   .Article-slider-caption strong {
