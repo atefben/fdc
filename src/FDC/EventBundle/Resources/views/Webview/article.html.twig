@@ -499,11 +499,12 @@ html {
         </div>
       </div-->
     </article>
-    {{ dump(object.associatedNews) }}
     <aside class="Article-related">
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
+        {% for relatedNews in object.associatedNews.coll.elements %}
+          {{ dump(relatedNews) }}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
@@ -514,36 +515,7 @@ html {
               <strong>La loi du Marché par Stéphane Brizé</strong>
             </div>
           </div>
-          <div class="Article-related-slider-item">
-            <div class="Article-related-slider-item-pictureWrap">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <i class="Article-related-slider-icon icon-audio"></i>
-            </div>
-            <div class="Article-related-slider-caption">
-              <h4>Cinéma de la plage</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-              <strong>La loi du Marché par Stéphane Brizé</strong>
-            </div>
-          </div>
-          <div class="Article-related-slider-item">
-            <div class="Article-related-slider-item-pictureWrap">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <i class="Article-related-slider-icon icon-video"></i>
-            </div>
-            <div class="Article-related-slider-caption">
-              <h4>Cinéma de la plage</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-              <strong>La loi du Marché par Stéphane Brizé</strong>
-            </div>
-          </div>
-          <div class="Article-related-slider-item">
-            <div class="Article-related-slider-item-pictureWrap">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-              <i class="Article-related-slider-icon icon-gallery"></i>
-            </div>
-            <div class="Article-related-slider-caption">
-              <h4>Cinéma de la plage</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-              <strong>La loi du Marché par Stéphane Brizé</strong>
-            </div>
-          </div>
+          {% endfor %}
       </div>
     </aside>
     <script type="text/javascript">
