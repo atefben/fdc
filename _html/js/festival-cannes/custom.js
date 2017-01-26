@@ -270,10 +270,14 @@ function click() {
 
 click();
 
+
 function smoothScrolling() {
 
     $('#accordion-conf .open').each(function() {
-
+        
+        $('#accordion-conf .content').hide();
+        $('#accordion-conf .firstContent').show();
+        
         $(this).click(function(){
           
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
@@ -298,26 +302,29 @@ function smoothScrolling() {
        });
 
       });
-      
-    $('#accordion-conf .content').hide();
-    $('#accordion-conf .firstContent').show();
-
+    
 }
 
 smoothScrolling();
 
 
-$(".conferencesMenu li").click(function() {
-  
-  $('html,body').animate({ scrollTop:$(this).prev().offset().top}, 'slow');
-    return false;
+$(".conferencesMenu li").each(function() {
 
-   if (!$(this).prev().hasClass("open-selected-conf")) {
-      $('html,body').animate({ scrollTop:$(this).offset().top}, 'slow');
-    }
+  $(this).click(function() {
 
+    $('html,body').animate({ scrollTop:$('.conferencesMenu').offset().top +  $(this).prevAll().height() }, 'slow');
+      return false;
+
+    /*$('html,body').animate({ scrollTop:$(this).siblings('.conferencesMenu li:first').offset().top  }, 'slow');
+      return false;
+
+    if ($('.conferencesMenu li:first-child)')) {
+        $('html,body').animate({ scrollTop:$(this).prev().offset().top }, 'slow');
+        return false;
+    }*/
+
+  });
 });
-
 
 // Quick & dirty toggle to demonstrate modal toggle behavior
 $('.modal-toggle').on('click', function(e) {

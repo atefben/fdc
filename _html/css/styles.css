@@ -2156,6 +2156,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #666666;
   line-height: 30px;
   margin-bottom: 25px;
+  text-align: center;
 }
 .block-contain-txt-register-movie a:not(.button) {
   color: #c8a461;
@@ -15578,7 +15579,7 @@ a {
 }
 .about:before {
   content: " ";
-  background: url(/img/palmeBckg.png);
+  background: url(/img/palmeBckg-2.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -28129,7 +28130,7 @@ ul.tabs .quarterTab h4 {
   text-transform: initial !important;
   line-height: 30px;
   text-align: left;
-  padding-top: 30px;
+  padding-top: 20px;
   font-size: 12px;
   background: #f6f6f6;
   height: 100%;
@@ -28806,8 +28807,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .movieOnline {
-  padding-bottom: 33px !important;
-  margin-top: 50px !important;
+  padding-bottom: 70px;
   text-align: left;
   height: auto;
   border-top: 2px solid #ececec;

@@ -238,18 +238,19 @@
                 <a href="ccm-participer-mettre-en-ligne.php" target="_blank"><div class="button centered autoBtn">voir le formulaire</div></a>
               </div>
             </div>
+          </div>
           
           
-              <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-              <div class="block-01-ms">
-                <strong class="title-25"><h3 class="reducedPadding">Avant de soumettre votre film</h3></strong>
-                <p class="centered">Merci de consulter le règlement 2017</p><br>
-                <div class="buttons-02 centered">
-                  <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
-                </div>
+          <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+            <div class="block-01-ms">
+              <strong class="title-25"><h3 class="reducedPadding">Avant de soumettre votre film</h3></strong>
+              <p class="centered">Merci de consulter le règlement 2017</p><br>
+              <div class="buttons-02 centered">
+                <a href="ccm-participate-rules.php" class="button autoBtn centered" target="_blank">Voir le règlement</a>
               </div>
             </div>
           </div>
+
         
 
 
