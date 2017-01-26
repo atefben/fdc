@@ -434,6 +434,8 @@ html {
     <article class="Article-wrapper">
       <header class="Article-header">
         {% if object.video != null %}
+        {{ object.video|trans_fallback('file') }}
+        {% path object.image|trans_fallback('file') , 'reference' %}
         <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
         <video preload="none" style="background-image: url({% path object.image|trans_fallback('file') , 'reference' %})">
           <source src="{% path object.video|trans_fallback('file') , 'reference' %}" type="video/mp4"/>
