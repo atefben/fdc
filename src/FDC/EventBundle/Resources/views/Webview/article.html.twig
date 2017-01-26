@@ -892,6 +892,9 @@ html {
         var $frame  = $wrap.find('.Article-slider');
         var $slides = $wrap.find('.Article-slider-item');
 
+        //size slides before slider declaration
+        $slides.css('width',$wrap.width());
+        
         var Slider = new Sly($wrap, {
           horizontal: 1,
           itemNav: 'basic',

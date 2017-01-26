@@ -1,5 +1,17 @@
 {{ dump(widget) }}
-<img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
-        <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
-        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
+
+{% if widget.gallery is not empty %}
+        {% for gallery in widget.gallery.medias %}
+            {% if gallery.media != null %}
+                {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = gallery.media.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                        <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                        <div class="Article-picture-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> © {{ gallery.media|trans_fallback('copyright') }}</div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
