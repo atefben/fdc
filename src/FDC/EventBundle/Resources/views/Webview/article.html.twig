@@ -440,8 +440,7 @@ html {
           {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
         {% else %}
         {{ dump(object.header) }}
-        {{ dump(object|trans_fallback('header')) }}
-        {{ dump(object.header|trans_fallback('file')) }}
+        {{ object.header }}
           {% set cover_image = object.header|trans_fallback('file') %}
         }
         }
