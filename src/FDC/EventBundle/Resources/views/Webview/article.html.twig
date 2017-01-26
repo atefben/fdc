@@ -505,6 +505,7 @@ html {
         <div class="Article-related-slider">
         {% for associatedNews in object.associatedNews %}
         {{ dump(associatedNews) }}
+        
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.news.header|trans_fallback('file'), 'reference' %}"/>
@@ -512,7 +513,7 @@ html {
             </div>
             <div class="Article-related-slider-caption">
               <h4>Cinéma de la plage</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-              <strong>La loi du Marché par Stéphane Brizé</strong>
+              <strong>{{ associatedNews.news|trans_fallback('title') }}</strong>
             </div>
           </div>
           {% endfor %}
