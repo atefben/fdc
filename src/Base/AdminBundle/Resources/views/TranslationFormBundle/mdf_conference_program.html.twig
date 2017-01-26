@@ -42,6 +42,9 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
                                                             <h4><strong>{{ 'form.mdf.content_template.widget.gallery'|trans }}</strong></h4>
                                                             {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.video'|trans }}</strong></h4>
+                                                            {{ form_row(widget.video) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -60,6 +63,9 @@
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.video'|trans }}</a>
 
                                             <div class="col-md-12">
                                                 <div class="box-body">
@@ -130,6 +136,9 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
                                                             <h4><strong>Gallery widget</strong></h4>
                                                             {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                            <h4><strong>Video widget</strong></h4>
+                                                            {{ form_row(widget.video) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -148,6 +157,9 @@
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateConferenceWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.video'|trans }}</a>
 
                                             <div class="col-md-8">
                                                 <div class="box-body">
