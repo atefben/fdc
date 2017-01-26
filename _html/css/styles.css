@@ -7085,6 +7085,9 @@ a {
 .buttons.square .button .icon {
   margin-right: 0px !important;
 }
+.buttons.square .button .button:last-child {
+  border-right: 1px solid #dfdfdf;
+}
 .buttons.square .button:hover {
   border-color: #dfdfdf;
 }
@@ -10500,6 +10503,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   transform: scale(1.1);
   -webkit-filter: blur(7px);
   filter: blur(7px);
+  -ms-filter: blur(7px);
 }
 .audio-container .audio-player .play-btn {
   display: block;
@@ -15534,10 +15538,10 @@ a {
   -moz-box-shadow: inset 0px 0px 0px 800px rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0px 0px 0px 800px rgba(255, 255, 255, 0.3);
   box-shadow: inset 0px 0px 0px 800px rgba(255, 255, 255, 0.3);
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .thirdBlocks {
@@ -16113,7 +16117,8 @@ article .read-later.rAlign span:after {
 }
 .single-article .single-photo .photo-container {
   display: inline-block;
-  width: auto;
+  width: 100%;
+  max-width: 977px;
 }
 .single-article .single-photo img {
   display: block;
@@ -16159,14 +16164,14 @@ article .read-later.rAlign span:after {
   float: right;
 }
 .single-article .chapeau {
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #333;
   font-size: 1.125rem;
   line-height: 2em;
   padding-bottom: 50px;
   margin-top: 20px;
   text-align: center;
-  width: 774px !important;
+  width: 977px !important;
   margin: 0 auto;
 }
 .single-article .chapeau a {
@@ -16200,6 +16205,7 @@ article .read-later.rAlign span:after {
   /*border-bottom: 1px solid #e5e5e5;
   border-top: 1px solid #e5e5e5;*/
   color: #666;
+  color: #333;
   font-size: 1.688rem;
   line-height: 1.4em;
   padding: 40px 15px;
@@ -16270,6 +16276,8 @@ article .read-later.rAlign span:after {
   background-color: #f4f4f4;
   padding: 88px 0px;
   margin-bottom: 70px;
+  max-width: 774px;
+  margin: 0 auto;
 }
 .single-article .txt-grey-bkg-container .content {
   width: 634px;
@@ -26270,9 +26278,7 @@ body:not(.tablette) .webtv #live .img {
   background-size: 100% 100%;
   text-align: center;
   height: 770px;
-  vertical-align: middle;
   width: 100%;
-  position: relative;
   z-index: 2;
 }
 .our-news .innerWrapper {
@@ -29233,6 +29239,17 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .showCourts:hover, .showShorts:hover {
   cursor: pointer;
+}
+
+.single-article .print {
+  border-right: 1px solid #dfdfdf;
+}
+.single-article .print:hover {
+  border-right: 1px solid #c8a461;
+}
+
+.list-article .bandeau-list, .list-article {
+  background-color: transparent !important;
 }
 
 .confcourtaccordion .selectbtn {

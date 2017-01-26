@@ -54,13 +54,21 @@
           
           <h2 class="title-article">Enragés, polar hybride d'Eric Hannezo</h2>
 
-          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
 
           
           <div class="buttons">
               <a id="share-article" class="button"><i class="icon icon_share"></i>Partager</a>
               <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
-          </div><br><br>
+          </div>
+
+          <div class="single-photo">
+            <div class="photo-container">
+              <img src="img/article/003.jpg" alt="" />
+            </div>
+          </div>
+
+          
+          <div class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <a href="#">Lambert Wilson</a> et Franck Gastambide.</div>
 
 
           <div class="slideshow eventSlideshow">

@@ -2243,7 +2243,7 @@ a {
     -moz-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
     -webkit-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
     box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
-  @include transition(all 0.3s $smoothTransition); 
+  @include transition(all 0.9s $smoothTransition); 
 
 }
 

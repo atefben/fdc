@@ -464,7 +464,8 @@ article {
 
     .photo-container {
       display: inline-block;
-      width: auto;
+      width: 100%;
+      max-width: 977px;
     }
 
     img {
@@ -522,14 +523,14 @@ article {
   }
 
   .chapeau {
-    font-family: $CamphorRegular;
+    font-family: $CamphorBold;
     color: #333;
     font-size: 1.125rem;
     line-height: 2em;
     padding-bottom: 50px;
     margin-top: 20px;
     text-align: center;
-    width: 774px!important;
+    width: 977px!important;
     margin: 0 auto;
 
     a {
@@ -574,6 +575,7 @@ article {
       /*border-bottom: 1px solid #e5e5e5;
       border-top: 1px solid #e5e5e5;*/ 
       color: #666;
+      color: #333;
       font-size: 1.688rem;
       line-height: 1.4em;
       padding: 40px 15px;
@@ -656,6 +658,8 @@ article {
     background-color: #f4f4f4;
     padding: 88px 0px;
     margin-bottom: 70px;
+    max-width: 774px;
+    margin: 0 auto;
 
     .content {
       width: 634px;

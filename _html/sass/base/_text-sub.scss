@@ -788,6 +788,10 @@ a {
       margin-right: 0px!important;
     }
 
+    .button:last-child {
+      border-right: 1px solid #dfdfdf;
+    }
+
     &:hover {
       border-color: #dfdfdf;
     }

@@ -43,6 +43,7 @@
       z-index: 0;
       @include transform(scale(1.1));
       @include filter(blur(7px));
+      -ms-filter: blur(7px);
     }
 
     .play-btn {

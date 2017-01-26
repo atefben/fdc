@@ -938,3 +938,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     cursor: pointer;
   }
 }
+
+.single-article {
+  
+  .print {
+    border-right: 1px solid #dfdfdf;
+
+    &:hover {
+      border-right: 1px solid $gold;
+    }
+  }
+}
+
+.list-article .bandeau-list, .list-article { 
+    background-color:transparent!important;
+}
