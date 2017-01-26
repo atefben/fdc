@@ -5607,6 +5607,7 @@ strong.title-center {
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
+  letter-spacing: normal;
 }
 
 @font-face {
