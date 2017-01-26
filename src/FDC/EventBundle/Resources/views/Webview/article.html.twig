@@ -504,10 +504,10 @@ html {
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in object.associatedNews %}
-          {% path associatedNews.news.header|trans_fallback('file'), 'reference' %}
+        {{ dump(associatedNews) }}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
-              <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
+              <img src="{% path associatedNews.news.header|trans_fallback('file'), 'reference' %}"/>
               <i class="Article-related-slider-icon icon-article"></i>
             </div>
             <div class="Article-related-slider-caption">
