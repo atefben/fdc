@@ -435,15 +435,14 @@ html {
       <header class="Article-header">
         {% if object.video != null %}
         
-        {{dump(object) }}
         <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
-        <video preload="none" style="background-image: url({% path object.image|trans_fallback('file') , 'reference' %})">
+        <video preload="none"{% if object.image != null %} style="background-image: url({% path object.image|trans_fallback('file') , 'reference' %})"{% endif %}>
           <source src="{{ s3_server_video ~ object.video|trans_fallback('file') }}" type="video/mp4"/>
         </video>
         {% endif %}
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
-          <span class="Article-header-meta-date"><strong>Hier à</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
+          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('D d') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
           <span class="Article-header-meta-misc"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span>
         </div>
       </header>
