@@ -434,9 +434,16 @@ html {
     <article class="Article-wrapper">
       <header class="Article-header">
         {% if (object.video != null or object.image != null or object.header != null) %}
-        
+        {% if object.image != null %}
+          {% set cover_image = object.image|trans_fallback('file') %}
+        {% else if object.imageAmazonUrl != null %}
+          {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
+        {% else %}
+          {% set cover_image = object.header|trans_fallback('file') %}
+        {% endif %}
+
         {% if object.video != null %}<a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>{% endif %}
-        <video preload="none"{% if object.image != null %} style="background-image: url({% path object.image|trans_fallback('file') , 'reference' %})"{% else %}  style="background-image: url({% path s3_server_video ~ object|trans_fallback('imageAmazonUrl') , 'reference' %})"{% endif %}>
+        <video preload="none" style="background-image: url()"{% else %}  style="background-image: url({% path cover_image , 'reference' %})">
           <source src="{{ s3_server_video ~ object.video|trans_fallback('file') }}" type="video/mp4"/>
         </video>
         {% endif %}
