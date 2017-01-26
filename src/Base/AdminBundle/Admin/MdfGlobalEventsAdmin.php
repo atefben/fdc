@@ -68,10 +68,6 @@ class MdfGlobalEventsAdmin extends Admin
                         'label'              => 'form.mdf.label.global_events_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'config_name' => 'widget',
                         'field_type' => 'ckeditor',
                     ),
                     'createdAt'         => array(
