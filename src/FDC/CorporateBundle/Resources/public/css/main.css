@@ -1977,6 +1977,16 @@ blockquote, .quote {
   display: block;
   text-align: center;
   line-height: 36px;
+    /*
+        sub {
+          vertical-align: text-bottom;
+          font-size: .5rem;
+        }
+
+        sup {
+          vertical-align: super;
+          font-size: .5rem;
+        }*/
   font-size: 1rem;
   line-height: 30px;
   list-style: inside;
@@ -1999,12 +2009,12 @@ blockquote, .quote {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .contain-title p sub, .contain-title ul sub, .contain-title ol sub {
-  vertical-align: text-bottom;
-  font-size: .5rem;
+  position: relative;
+  bottom: -3px;
 }
 .contain-title p sup, .contain-title ul sup, .contain-title ol sup {
-  vertical-align: super;
-  font-size: .5rem;
+  position: relative;
+  bottom: 9px;
 }
 .contain-title p a, .contain-title ul a, .contain-title ol a {
   color: #c8a461;
