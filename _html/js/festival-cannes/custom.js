@@ -312,8 +312,17 @@ $(".conferencesMenu li").each(function() {
 
   $(this).click(function() {
 
-    $('html,body').animate({ scrollTop:$('.conferencesMenu').offset().top +  $(this).prevAll().height() }, 'slow');
+    /*if ($('.conferencesMenu li:last-child')) {
+      $('html,body').animate({ scrollTop:$('.conferencesMenu').offset().top}, 'slow');
       return false;
+
+    } else {*/
+
+    $('html,body').animate({ 
+
+      scrollTop:$('.conferencesMenu').offset().top +  $(this).prevAll().height() 
+
+    },'slow');
 
     /*$('html,body').animate({ scrollTop:$(this).siblings('.conferencesMenu li:first').offset().top  }, 'slow');
       return false;
