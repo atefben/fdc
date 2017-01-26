@@ -504,7 +504,7 @@ html {
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in object.associatedNews %}
-          {{ associatedNews.news.header|trans_fallback('file') }}
+          {% path associatedNews.news.header|trans_fallback('file'), 'reference' %}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{{ asset('bundles/fdcevent/img/article/slide.png') }}"/>
