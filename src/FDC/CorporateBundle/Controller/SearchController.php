@@ -374,17 +374,13 @@ class SearchController extends Controller
         );
 
         $selectionsCheckboxes = array(
-            $translator->trans('search.form.competition', array(), 'FDCCorporateBundle')        => 'competition',
-            $translator->trans('search.form.uncertainregard', array(), 'FDCCorporateBundle')    => 'uncertainregard',
-            $translator->trans('search.form.horscompetition', array(), 'FDCCorporateBundle')    => 'horscompetition',
-            $translator->trans('search.form.seancesspeciales', array(), 'FDCCorporateBundle')   => 'seancesspeciales',
-            $translator->trans('search.form.courtmetrage', array(), 'FDCCorporateBundle')       => 'courtmetrage',
-            $translator->trans('search.form.cinefondation', array(), 'FDCCorporateBundle')      => 'cinefondation',
-            $translator->trans('search.form.invitedhonneur', array(), 'FDCCorporateBundle')     => 'invitedhonneur',
-            $translator->trans('search.form.hommages', array(), 'FDCCorporateBundle')           => 'hommages',
-            $translator->trans('search.form.copiesrestaurees', array(), 'FDCCorporateBundle')   => 'copiesrestaurees',
-            $translator->trans('search.form.worldcinemaproject', array(), 'FDCCorporateBundle') => 'worldcinemaproject',
-            $translator->trans('search.form.documentaires', array(), 'FDCCorporateBundle')      => 'documentaires',
+            $translator->trans('search.form.competition', array(), 'FDCCorporateBundle')      => 'competition',
+            $translator->trans('search.form.horscompetition', array(), 'FDCCorporateBundle')  => 'horscompetition',
+            $translator->trans('search.form.seancesspeciales', array(), 'FDCCorporateBundle') => 'seancesspeciales',
+            $translator->trans('search.form.uncertainregard', array(), 'FDCCorporateBundle')  => 'uncertainregard',
+            $translator->trans('search.form.cannesclassics', array(), 'FDCCorporateBundle')   => 'cannesclassics',
+            $translator->trans('search.form.cinefondation', array(), 'FDCCorporateBundle')    => 'cinefondation',
+            $translator->trans('search.form.cinemadelaplage', array(), 'FDCCorporateBundle')    => 'cinemadelaplage',
         );
 
         return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
