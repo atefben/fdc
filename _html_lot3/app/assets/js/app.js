@@ -367,6 +367,7 @@ $(document).ready(function () {
 
     if($('.search-page-result').length) {
         initFilterCheck();
+        truncTitleSearch();
     }
 
     setTimeout(function () {

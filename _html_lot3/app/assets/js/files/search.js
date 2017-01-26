@@ -254,3 +254,40 @@ var initFilterCheck = function() {
 
   });
 }
+
+var truncTitleSearch = function() {
+
+
+  $.each($('.medias .item'), function (i, e) {
+    var title = $(e).find('.title-media');
+
+    if (!title.hasClass('init')) {
+      var text = $(e).find('.title-media').text();
+      title.addClass('init');
+      title.attr('data-title', text);
+    } else {
+      var text = title.attr('data-title');
+    }
+
+
+    if($('.medias').length > 0) {
+
+      if (window.matchMedia("(max-width: 1405px)").matches) {
+        title.html(text.trunc(25, true));
+      }else{
+        title.html(text.trunc(40, true));
+      }
+
+    } else {
+      title.html(text.trunc(60, true));
+    }
+  });
+
+  $(window).resize(function () {
+    truncTitleSearch();
+  });
+
+  var title = $('.info strong a').text();
+}
+
+
