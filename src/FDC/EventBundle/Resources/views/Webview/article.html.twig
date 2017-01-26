@@ -411,25 +411,30 @@ html {
       vertical-align: top;
       margin-top: .5rem;
       margin-left: 6.3rem; }
-
-.quote blockquote {
-  border-bottom: 1px solid #e5e5e5;
-  border-top: 1px solid #e5e5e5;
-  color: #666;
-  font-size: 1.688rem;
-  line-height: 1.4em;
-  padding: 40px 15px;
-  text-align: center;
-  margin-top: 35px;
-  margin-bottom: 40px;
-}
+      /* development fixes */
+      .quote blockquote {
+        border-bottom: 1px solid #e5e5e5;
+        border-top: 1px solid #e5e5e5;
+        color: #666;
+        font-size: 1.688rem;
+        line-height: 1.4em;
+        padding: 40px 15px;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 40px;
+      }
+      .Article-content a {
+          color: #c8a461;
+          text-decoration: none;
+      }
   </style>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   </head>
   <body class="Article">
     <article class="Article-wrapper">
+      {{ dumpt(object.header) }}
       <header class="Article-header">
-        <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
+        <a href="#" class="Article-video-play"><img src="{% path object.header|trans_fallback('file') , 'reference' %}"/></a>
         <video preload="none" style="background-image: url({{ asset('bundles/fdcevent/img/article/video-poster.png') }})">
           <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
         </video>
@@ -440,7 +445,6 @@ html {
         </div>
       </header>
       <div class="Article-content">
-        <img src="{% path object.header|trans_fallback('file') , '' %}" />
         <h1>{{ object|trans_fallback('title') }}</h1>
 
         {{ object|trans_fallback('introduction')|raw }}
