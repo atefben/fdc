@@ -34,6 +34,10 @@ header #navigation ul li a.golden.active {
     border-left: 0px solid #dfdfdf !important;
 }
 
+#logo-wrapper {
+    overflow: hidden;
+}
+
 .read-more-state ~ .read-more-trigger:before {
     content: 'Plus de détails';
     padding-left: 30px;
