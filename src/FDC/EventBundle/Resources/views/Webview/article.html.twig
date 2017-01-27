@@ -529,8 +529,7 @@
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
-          {{  dump(sameDayObjects) }}
-        {% for associatedNews in object.sameDayObjects %}
+        {% for associatedNews in sameDayObjects %}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.news.header|trans_fallback('file'), 'reference' %}"/>
