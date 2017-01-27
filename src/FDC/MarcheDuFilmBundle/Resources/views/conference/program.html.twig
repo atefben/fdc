@@ -20,6 +20,9 @@
                         {% if widget.isWidgetGallery() is defined and widget.isWidgetGallery() %}
                             {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockGallery.html.twig' with {'widget': widget} %}
                         {% endif %}
+                        {% if widget.translatable is defined and widget.translatable.isWidgetVideo() %}
+                            {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockVideo.html.twig' with {'widget': widget} %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             {% endif %}
