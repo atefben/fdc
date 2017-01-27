@@ -417,7 +417,7 @@ article {
 
   .title-article {
     color: #333;
-    font-family: $Playfair;
+    font-family: $CamphorRegular!important;
     font-size: 3rem;
     font-weight: 400;
     line-height: 1.3em;
@@ -543,7 +543,7 @@ article {
     margin-bottom: 70px;
 
     .slideshow-img {
-      height: 462px;
+      /*height: 462px;*/
     }
 
     .caption strong {
@@ -566,7 +566,7 @@ article {
   }
 
   .quote {
-    width: 774px;
+    width: 977px;
     margin: 0 auto;
     border-bottom: 0px solid #e5e5e5;
     border-top: 0px solid #e5e5e5;
@@ -584,7 +584,7 @@ article {
   }
 
   .big-quote {
-    width: 774px;
+    width: 977px;
     margin: 0 auto;
     padding: 70px 70px;
     box-sizing: border-box;
@@ -614,7 +614,8 @@ article {
 
   .text {
     /*width: 630px;*/
-    width: 774px;
+    width: 977px;
+    max-width: 977px;
     margin: 0 auto 70px;
 
     p {
@@ -642,7 +643,7 @@ article {
   }
 
   .big-txt {
-    width: 630px;
+    width: 977px;
     margin: 0 auto 70px;
 
     p {
@@ -658,7 +659,7 @@ article {
     background-color: #f4f4f4;
     padding: 88px 0px;
     margin-bottom: 70px;
-    max-width: 774px;
+    max-width: 977px;
     margin: 0 auto;
 
     .content {
