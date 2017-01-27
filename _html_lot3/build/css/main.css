@@ -5577,6 +5577,39 @@ strong.title-center {
   color: #000;
 }
 
+.photos.photo-module.block-01-xs:last-child .slideshow {
+  border-bottom: 0px solid #fff;
+}
+
+.dark .title-list-cat {
+  color: #fff;
+  padding: 42px;
+  border-bottom: #2c2c2c 1px solid;
+  border-top: #2c2c2c 1px solid;
+  font-size: 1rem;
+  text-align: center;
+}
+.dark .title-list-cat .title {
+  max-width: 549px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 30px;
+  font-weight: 700;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+}
+.dark .title-list-cat .title-item {
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  max-width: 977px;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
@@ -9195,6 +9228,13 @@ body#home .isotope-01 .item .contain-img {
     width: calc(200% / 8);
   }
 }
+.jury .isotope-01 .item .contain-img {
+  position: relative;
+  z-index: 1;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
 
 .isotope-02 {
   margin-top: 39px;
@@ -9804,7 +9844,7 @@ body#home .isotope-01 .item .contain-img {
 .slider-restropective .calc3 img.i3 {
   position: relative;
   top: 2%;
-  left: 26%;
+  left: 8%;
 }
 .slider-restropective .calc4 {
   position: absolute;

@@ -326,6 +326,16 @@
     }
 
   }
+
+  .jury & {
+    .item .contain-img {
+      position: relative;
+      z-index: 1;
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 .isotope-02 { //with gutter

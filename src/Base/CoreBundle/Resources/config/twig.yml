@@ -143,6 +143,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    base.twig.palmares_extension:
+        class: Base\CoreBundle\Twig\Extension\PalmaresExtension
+        tags:
+            - { name: twig.extension }
+
     base.twig.media_video_extension:
         class: Base\CoreBundle\Twig\Extension\MediaVideoExtension
         tags:
