@@ -6771,7 +6771,7 @@ sub {
 }
 
 .quote {
-  width: 977px !important;
+  width: 776px !important;
 }
 
 blockquote, .quote {
@@ -7419,10 +7419,6 @@ a {
   text-align: center;
   display: block;
   margin-bottom: 25px;
-}
-
-.big-quote {
-  width: 977px;
 }
 
 .autoBtn {
@@ -15539,14 +15535,11 @@ a {
   box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
   -moz-box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
-  box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);*/
-  -moz-box-shadow: inset 0px 0px 0px 800px rgba(255, 255, 255, 0.3);
-  -webkit-box-shadow: inset 0px 0px 0px 800px rgba(255, 255, 255, 0.3);
-  box-shadow: inset 0px 0px 0px 800px rgba(255, 255, 255, 0.3);
-  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
+  -webkit-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
+  box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
+@include transition(all 0.9s $smoothTransition); */
 }
 
 .thirdBlocks {
@@ -15593,10 +15586,11 @@ a {
   z-index: 3;
 }
 .about:before {
-  content: " ";
-  background: url(/img/palmeBckg-2.png);
+  content: "";
+  background: url(/img/FESTIVAL_palme-blanche.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #f6f6f6;
   position: absolute;
   height: 1000px;
   width: 100%;
@@ -16217,7 +16211,7 @@ article .read-later.rAlign span:after {
   text-align: center;
 }
 .single-article .big-quote {
-  width: 977px;
+  width: 776px;
   margin: 0 auto;
   padding: 70px 70px;
   box-sizing: border-box;
@@ -16244,8 +16238,8 @@ article .read-later.rAlign span:after {
 }
 .single-article .text {
   /*width: 630px;*/
-  width: 977px;
-  max-width: 977px;
+  width: 776px;
+  max-width: 776px;
   margin: 0 auto 70px;
 }
 .single-article .text p {
@@ -16268,7 +16262,7 @@ article .read-later.rAlign span:after {
   font-weight: normal;
 }
 .single-article .big-txt {
-  width: 977px;
+  width: 776px;
   margin: 0 auto 70px;
 }
 .single-article .big-txt p {
@@ -16282,7 +16276,7 @@ article .read-later.rAlign span:after {
   background-color: #f4f4f4;
   padding: 88px 0px;
   margin-bottom: 70px;
-  max-width: 977px;
+  max-width: 776px;
   margin: 0 auto;
 }
 .single-article .txt-grey-bkg-container .content {
@@ -28691,7 +28685,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .wysiwygBlocks {
-  width: 977px;
+  width: 776px;
   margin: 0 auto;
   text-align: center;
   display: block;
@@ -29264,7 +29258,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 }
 .single-article .title-article {
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif !important;
 }
 
 .confcourtaccordion .selectbtn {

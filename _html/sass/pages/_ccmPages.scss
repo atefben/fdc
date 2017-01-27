@@ -340,7 +340,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .wysiwygBlocks {
-  width: 977px;
+  width: 776px;
   @include align();
   text-align: left;
   h3 {
@@ -963,6 +963,6 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .single-article {
   .title-article {
-    font-family: $CamphorRegular!important;
+    font-family: $CamphorThin!important;
   }
 } 
