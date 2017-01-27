@@ -17,10 +17,10 @@ class FilmAwardAssociationRepository extends EntityRepository
             ->join('p.translations', 'pt')
             ->andWhere('pt.category = :category')
             ->setParameter('category', $category)
+            ->addOrderBy('p.position', 'asc')
             ->addOrderBy('a.position', 'asc')
             ->addOrderBy('aa.position', 'asc')
             ->addOrderBy('ss.position', 'asc')
-            ->addOrderBy('p.position', 'asc')
         ;
 
         if ($selectionSection) {
