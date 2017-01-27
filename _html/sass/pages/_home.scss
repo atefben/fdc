@@ -2190,7 +2190,6 @@ a {
       /* transform: rotate(90deg); */
       top: -2%;
       position: absolute;
-      opacity: 0.1;
       content: url(/img/trait.png);
       z-index: -1;
       @include transition(all 0s $smoothTransition);

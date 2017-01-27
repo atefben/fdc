@@ -333,18 +333,18 @@ $(".conferencesMenu li").each(function() {
   });
 });*/
 
-  $(".conferencesMenu li").on('click', function(event) {
+$(".conferencesMenu li").on('click', function(event) {
 
-    var target = $($(this).prev());
+  var target = $($(this).prev());
 
-    if( target.length ) {
-        event.preventDefault();
-        $('html, body').animate({
-            scrollTop: target.offset().top
-        }, 500);
-    }
+  if( target.length ) {
+      event.preventDefault();
+      $('html, body').animate({
+          scrollTop: target.offset().top
+      }, 500);
+  }
 
-  });
+});
 
 // Quick & dirty toggle to demonstrate modal toggle behavior
 $('.modal-toggle').on('click', function(e) {
