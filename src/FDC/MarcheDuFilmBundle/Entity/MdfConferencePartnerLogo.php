@@ -122,11 +122,15 @@ class MdfConferencePartnerLogo
     {
         $translation = $this->findTranslationByLocale('fr');
 
+        $string = '';
         if ($translation !== null) {
             $string = $translation->getUrl();
-        } else {
-            $string = strval($this->getId());
         }
+
+        if($string == '') {
+            $string = $this->image->findTranslationByLocale('fr')->getAlt();
+        }
+
         return (string) $string;
     }
 
