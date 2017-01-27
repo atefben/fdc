@@ -891,3 +891,133 @@
     transition: all 900ms cubic-bezier(0.165, 0.435, 0, 0.935);
   }
 }
+
+
+
+/*
+Slider channel
+*/
+
+.channels-video {
+  height: 185px;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -92px;
+  z-index: -1;
+  @include transform(translate3d(0, 30px, 0));
+  @include transition(all .8s $smoothTransition);
+
+  &.active {
+    @include transform(translate3d(0, 0, 0));
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+    overflow: hidden;
+  }
+
+  .info, .picto {
+    display: block;
+  }
+
+  .info-container {
+    text-align: left;
+    max-width: 200px;
+  }
+
+  .image-wrapper {
+    overflow: hidden;
+    width: 293px;
+    height: 193px;
+    position: relative;
+  }
+
+
+  .owl-item {
+    opacity: 1;
+    width: 293px !important;
+
+    .image-wrapper {
+      img {
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .linkVid {
+      display: block;
+    }
+  }
+
+  .info {
+    bottom: 15px;
+    height: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    font-family: $CamphorMedium;
+    text-align: center;
+    z-index: 2;
+
+    p {
+      font-size: 0.850rem;
+
+    }
+
+    .picto {
+      bottom: auto;
+      float: left;
+      left: auto;
+      margin: 0 18px 0 20px;
+      position: relative;
+      top: auto;
+      color: #c8a461;
+      display: block;
+
+      .icon {
+        margin-left: 0px;
+        margin-top: 0px;
+      }
+    }
+
+    .info-container {
+      color: #666;
+      float: left;
+      height: 44px;
+    }
+
+    .category {
+      color: #c8a461;
+      font-size: .625rem;
+      letter-spacing: .1em;
+      margin-right: 12px;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    span {
+      color: #666;
+      display: inline-block;
+      font-size: .625rem;
+    }
+
+  }
+
+  .channel {
+    height: 185px;
+    overflow: hidden;
+    position: relative;
+    width: 293px;
+  }
+
+  .sliderDrag .owl-item.center {
+    opacity: 1;
+    transition: opacity .3s cubic-bezier(.15,.9,.34,.95);
+  }
+
+}

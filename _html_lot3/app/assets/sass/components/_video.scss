@@ -782,3 +782,18 @@
     }
   }
 }
+
+.video-container .over:before {
+  opacity: .8;
+  visibility: visible;
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  visibility: visible;
+  content: '';
+  background-color: #151515;
+}
