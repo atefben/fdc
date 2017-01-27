@@ -86,7 +86,7 @@ class WebviewController extends Controller
             'variant'         => $variant,
             'object'          => $object,
             'trans'           => $trans,
-            'samedDayObjects' => $sameDayObjects,
+            'sameDayObjects' => $sameDayObjects,
         ]);
     }
 
