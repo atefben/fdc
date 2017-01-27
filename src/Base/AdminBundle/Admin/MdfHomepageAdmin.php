@@ -70,8 +70,12 @@ class MdfHomepageAdmin extends Admin
                     ),
                     'description'          => array(
                         'label'              => 'form.mdf.label.content_block.description',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type'         => 'ckeditor',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
+                        'required' => true,
+                        'field_type' => 'ckeditor',
+                        'config_name' => 'widget'
                     ),
                     'url'          => array(
                         'label'              => 'form.mdf.label.content_block.url',
