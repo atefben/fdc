@@ -53,7 +53,6 @@ class MdfContentTemplateAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -69,6 +68,7 @@ class MdfContentTemplateAdmin extends Admin
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'required' => false
                     )
                 )
             ))

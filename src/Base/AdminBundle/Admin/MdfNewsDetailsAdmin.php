@@ -7,6 +7,7 @@ use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class MdfNewsDetailsAdmin
@@ -65,7 +66,6 @@ class MdfNewsDetailsAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -76,11 +76,13 @@ class MdfNewsDetailsAdmin extends Admin
                     'title'          => array(
                         'label'              => 'form.mdf.content_template.title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => true,
                     ),
                     'header'          => array(
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'required' => false
                     )
                 )
             ))
