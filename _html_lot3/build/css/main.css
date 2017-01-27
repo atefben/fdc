@@ -3798,6 +3798,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-movie-preview a .name-f {
   display: block;
+  margin: 0 auto;
 }
 .block-movie-preview .name-f {
   color: #fff;
