@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MdfConferencePartnerLogoCollection
@@ -22,6 +23,12 @@ class MdfConferencePartnerLogoCollection
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfConferencePartnerLogo")
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "validation.partners_logo_max",
+     *      max = "4",
+     *      maxMessage = "validation.partners_logo_max"
+     * )
      */
     protected $conferencePartnerLogo;
 

@@ -52,7 +52,6 @@ class MdfConferencePartnerLogoAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -62,7 +61,8 @@ class MdfConferencePartnerLogoAdmin extends Admin
                     ),
                     'url'          => array(
                         'label'              => 'form.mdf.conference_partner.url',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false
                     ),
                     'status'            => array(
                         'label'                     => 'form.mdf.label_status',
@@ -76,8 +76,7 @@ class MdfConferencePartnerLogoAdmin extends Admin
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.image',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
+                'btn_delete' => false
             ))
         ;
 

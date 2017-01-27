@@ -48,6 +48,7 @@ class MdfConferencePartnerTab
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->partnerLogoCollection = new ArrayCollection();
     }
 
     /**
