@@ -50,6 +50,13 @@ class MediaMdfImage extends MediaMdf
      * @Serializer\Accessor(getter="getApiTranslations")
      */
     protected $translations;
+
+    /**
+     * @var MdfConferencePartnerLogo
+     * 
+     * @ORM\OneToMany(targetEntity="MdfConferencePartnerLogo", mappedBy="image")
+     */
+    protected $logo;
     
     
 
