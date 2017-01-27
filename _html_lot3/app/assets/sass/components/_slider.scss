@@ -627,6 +627,10 @@
       transition: $smoothTransition .8s;
       width: 100%;
       object-fit: cover;
+
+      .ie & {
+        height: 404px;
+      }
     }
 
     .texts {

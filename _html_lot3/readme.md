@@ -1,7 +1,7 @@
 ## Install
 
 npm install
-gulp install
+npm install gulp (si la commande "gulp" n'est pas reconnue)
 bower install
 
 ## Gulp task
