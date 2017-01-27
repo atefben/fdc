@@ -59,13 +59,18 @@ class WebviewController extends Controller
         if (!$object) {
             throw $this->createNotFoundException("$repository ($id) not found");
         }
-        $timestamp = time();
-        $trans = $this->getTranslation($object, $locale);
-        if ('fr' == $trans->getLocale()) {
-            $isPublished = $trans->getStatus() === TranslateChildInterface::STATUS_PUBLISHED;
-        } else {
-            $isPublished = $trans->getStatus() === TranslateChildInterface::STATUS_TRANSLATED;
+
+        $isPublished = false;
+        $fr = $this->getTranslation($object, 'fr');
+        if ($fr) {
+            $isPublished = $fr->getStatus() === TranslateChildInterface::STATUS_PUBLISHED;
         }
+        $trans = $this->getTranslation($object, $locale);
+        if ($trans && 'fr' != $trans->getLocale()) {
+            $isPublished = $isPublished && $trans->getStatus() === TranslateChildInterface::STATUS_TRANSLATED;
+        }
+
+        $timestamp = time();
         $trans = $trans && $isPublished;
         $trans = $trans && $object->getPublishedAt();
         $trans = $trans && $timestamp >= $object->getPublishedAt()->getTimestamp();
@@ -82,10 +87,10 @@ class WebviewController extends Controller
         $sameDayObjects = $this->orderAndSlice(array_merge($news, $infos, $statements), 3);
 
         return $this->render('FDCEventBundle:Webview:article.html.twig', [
-            'type'            => $type,
-            'variant'         => $variant,
-            'object'          => $object,
-            'trans'           => $trans,
+            'type'           => $type,
+            'variant'        => $variant,
+            'object'         => $object,
+            'trans'          => $trans,
             'sameDayObjects' => $sameDayObjects,
         ]);
     }
