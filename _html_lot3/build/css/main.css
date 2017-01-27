@@ -9901,6 +9901,9 @@ body#home .isotope-01 .item .contain-img {
   z-index: 4;
   position: relative;
 }
+.ie .slider-restropective .block-01 .vFlexAlign img {
+  height: 404px;
+}
 .slider-restropective .vFlexAlign {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
   -ms-flex-direction: column;
@@ -9910,9 +9913,6 @@ body#home .isotope-01 .item .contain-img {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
   width: 100%;
   object-fit: cover;
-}
-.ie .slider-restropective .vFlexAlign img {
-  height: 404px;
 }
 .slider-restropective .vFlexAlign .texts {
   transition: opacity .2s;

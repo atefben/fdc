@@ -619,6 +619,12 @@
     position: relative;
   }
 
+  .block-01 .vFlexAlign img {
+    .ie & {
+      height: 404px;
+    }
+  }
+
   .vFlexAlign {
     transition: $smoothTransition .8s;
     flex-direction: column;
@@ -627,10 +633,6 @@
       transition: $smoothTransition .8s;
       width: 100%;
       object-fit: cover;
-
-      .ie & {
-        height: 404px;
-      }
     }
 
     .texts {
