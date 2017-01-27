@@ -8987,6 +8987,9 @@ header #searchContainer {
   overflow: hidden;
   background-size: cover;
 }
+.grid-selection .isotope-01 .item .title-13 {
+  display: block;
+}
 body#home .article-inverse .isotope-01 .item:not(.w2):not(.double) {
   padding-left: 0px !important;
   padding-right: 60px !important;

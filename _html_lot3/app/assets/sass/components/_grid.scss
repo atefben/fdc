@@ -13,6 +13,9 @@
     }
   }
 
+ .grid-selection & .item .title-13 {
+  display: block;
+ }
 
  body#home .article-inverse & .item:not(.w2):not(.double) {
     padding-left: 0px !important;
