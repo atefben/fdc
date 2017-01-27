@@ -106,11 +106,11 @@ class ConferencePagesManager
                         break;
                     case 'newsIsActive':
                         $nextRouteName = 'fdc_marche_du_film_conference_news';
-                        $nextRouteLabel = 'conférences';
+                        $nextRouteLabel = 'news';
                         break;
                     case 'partnersIsActive':
                         $nextRouteName = 'fdc_marche_du_film_conference_partners';
-                        $nextRouteLabel = 'conférences';
+                        $nextRouteLabel = 'partenaires';
                         break;
                 }
                 break;
@@ -146,7 +146,7 @@ class ConferencePagesManager
                         break;
                     case 'newsIsActive':
                         $nextRouteName = 'fdc_marche_du_film_conference_news';
-                        $nextRouteLabel = 'actualite';
+                        $nextRouteLabel = 'news';
                         break;
                     case 'partnersIsActive':
                         $nextRouteName = 'fdc_marche_du_film_conference_partners';
@@ -188,7 +188,7 @@ class ConferencePagesManager
                             break;
                         case 'newsIsActive':
                             $backRouteName = 'fdc_marche_du_film_conference_news';
-                            $backRouteLabel = 'actualite';
+                            $backRouteLabel = 'news';
                             break;
                         case 'partnersIsActive':
                             $backRouteName = 'fdc_marche_du_film_conference_partners';
