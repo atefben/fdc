@@ -3687,7 +3687,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   transition: .5s;
 }
 .block-movie-preview .wrapper-item {
-  width: 699px;
+  width: 977px;
   display: -ms-flexbox;
   display: flex;
   margin: 30px auto;
@@ -3782,7 +3782,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: 1rem;
   line-height: 26px;
   text-align: center;
-  width: 355px;
   margin-bottom: 40px;
 }
 .ie .block-movie-preview .description {
