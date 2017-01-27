@@ -26,7 +26,7 @@
                     <div id="tab{{ loop.index }}" class="tab_content">
                         <div class="tabbing">
                             {% for item in logos %}
-                                <a href="{{ item.url ? item.url : '#' }}">
+                                <a href="{{ item.url ? item.url : '#' }}" target="_blank">
                                     <div class="tabpicturesBox"><img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}"></div>
                                 </a>
                             {% endfor %}

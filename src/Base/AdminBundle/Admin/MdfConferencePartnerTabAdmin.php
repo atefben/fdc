@@ -58,7 +58,6 @@ class MdfConferencePartnerTabAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -72,7 +71,8 @@ class MdfConferencePartnerTabAdmin extends Admin
                     ),
                     'subTitle'          => array(
                         'label'              => 'form.mdf.conference_partner.subTitle',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false
                     ),
                     'status'            => array(
                         'label'                     => 'form.mdf.label_status',
