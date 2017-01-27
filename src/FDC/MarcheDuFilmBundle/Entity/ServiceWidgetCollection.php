@@ -27,7 +27,7 @@ class ServiceWidgetCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ServiceWidget", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="ServiceWidget")
      * @Assert\Count(
      *      max = "5",
      *      maxMessage = "validation.service_widget_max"
