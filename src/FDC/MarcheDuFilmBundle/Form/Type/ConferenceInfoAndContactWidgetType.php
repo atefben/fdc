@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Base\AdminBundle\Admin\MediaMdfImageAdmin;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ConferenceInfoAndContactWidgetType extends AbstractType
 {
@@ -79,6 +80,9 @@ class ConferenceInfoAndContactWidgetType extends AbstractType
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
                 'label' => 'form.mdf.label.header_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
