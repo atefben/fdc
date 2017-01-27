@@ -530,6 +530,7 @@
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
+          {{ dump(associatedNews) }}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
