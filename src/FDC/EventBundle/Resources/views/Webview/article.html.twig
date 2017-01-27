@@ -531,11 +531,16 @@
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
           {{ dump(class(associatedNews)) }}
-          {%  if class(associatedNews) starts with 'Info'  %}{% endif %}
+          {%  if class(associatedNews) ends with 'Article'  %}
+            {%  set iconClass = 'icon-article' %}
+          {% endif %}
+          {%  if class(associatedNews) ends with 'Image'  %}
+            {%  set iconClass = 'icon-photo' %}
+          {% endif %}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
-              <i class="Article-related-slider-icon icon-article"></i>
+              <i class="Article-related-slider-icon {{ iconClass }}"></i>
             </div>
             <div class="Article-related-slider-caption">
               <h4>{{ associatedNews.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
