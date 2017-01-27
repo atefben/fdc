@@ -532,12 +532,12 @@
         {% for associatedNews in sameDayObjects %}
           <div class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
-              <img src="{% path associatedNews.news.header|trans_fallback('file'), 'reference' %}"/>
+              <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
               <i class="Article-related-slider-icon icon-article"></i>
             </div>
             <div class="Article-related-slider-caption">
-              <h4>{{ associatedNews.news.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-              <strong>{{ associatedNews.news|trans_fallback('title') }}</strong>
+              <h4>{{ associatedNews.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
+              <strong>{{ associatedNews|trans_fallback('title') }}</strong>
             </div>
           </div>
           {% endfor %}
