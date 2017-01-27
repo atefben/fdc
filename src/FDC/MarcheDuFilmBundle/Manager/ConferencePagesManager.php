@@ -166,45 +166,41 @@ class ConferencePagesManager
             }
         }
 
-        if($currentPage == 'programIsActive')
-        {
-            $backRouteName = 'fdc_marche_du_film_conference_home';
-            $backRouteLabel = 'accueil';
-        } else {
+        $backRouteName = 'fdc_marche_du_film_conference_home';
+        $backRouteLabel = 'accueil';
 
-            $pagesStatusReversed = $this->reverseArray($pagesStatus);
+        $pagesStatusReversed = $this->reverseArray($pagesStatus);
 
-            $found = false;
-            foreach ($pagesStatusReversed as $key => $value) {
-                if ($value && $found) {
-                    switch ($key) {
-                        case 'programIsActive':
-                            $backRouteName = 'fdc_marche_du_film_conference_program';
-                            $backRouteLabel = 'conférences';
-                            break;
-                        case 'speakersIsActive':
-                            $backRouteName = 'fdc_marche_du_film_conference_speakers';
-                            $backRouteLabel = 'intervenants';
-                            break;
-                        case 'newsIsActive':
-                            $backRouteName = 'fdc_marche_du_film_conference_news';
-                            $backRouteLabel = 'news';
-                            break;
-                        case 'partnersIsActive':
-                            $backRouteName = 'fdc_marche_du_film_conference_partners';
-                            $backRouteLabel = 'partenaires';
-                            break;
-                        case 'infoAndContactIsActive':
-                            $backRouteName = 'fdc_marche_du_film_conference_infos_and_contacts';
-                            $backRouteLabel = 'infos-et-contacts';
-                            break;
-                    }
-                    break;
+        $found = false;
+        foreach ($pagesStatusReversed as $key => $value) {
+            if ($value && $found) {
+                switch ($key) {
+                    case 'programIsActive':
+                        $backRouteName = 'fdc_marche_du_film_conference_program';
+                        $backRouteLabel = 'conférences';
+                        break;
+                    case 'speakersIsActive':
+                        $backRouteName = 'fdc_marche_du_film_conference_speakers';
+                        $backRouteLabel = 'intervenants';
+                        break;
+                    case 'newsIsActive':
+                        $backRouteName = 'fdc_marche_du_film_conference_news';
+                        $backRouteLabel = 'news';
+                        break;
+                    case 'partnersIsActive':
+                        $backRouteName = 'fdc_marche_du_film_conference_partners';
+                        $backRouteLabel = 'partenaires';
+                        break;
+                    case 'infoAndContactIsActive':
+                        $backRouteName = 'fdc_marche_du_film_conference_infos_and_contacts';
+                        $backRouteLabel = 'infos-et-contacts';
+                        break;
                 }
+                break;
+            }
 
-                if ($key == $currentPage) {
-                    $found = true;
-                }
+            if ($key == $currentPage) {
+                $found = true;
             }
         }
 
