@@ -765,6 +765,8 @@ form:
             conference_next: Next
             conference_producers_network: Producers Network
             conference_producers_workshop: Producers Workshop
+            conference_news:
+                title: Sous-titre de page
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

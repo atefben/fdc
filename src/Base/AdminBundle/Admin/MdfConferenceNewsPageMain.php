@@ -60,7 +60,7 @@ class MdfConferenceNewsPageMain extends Admin
                         )
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.conference_partner.title',
+                        'label'              => 'form.mdf.label.conference_news.title',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 )
