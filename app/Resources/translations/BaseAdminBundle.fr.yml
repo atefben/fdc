@@ -721,6 +721,7 @@ form:
             header_banner: Image bannière publicitaire (728x90)
             header_banner_url: URL redirection publicitaire
             title: Titre
+            subtitle: Sous-titre
             content_block_dispatch_du_service: Bloc de contenu
             description: Chapô
             show_contact_block: Afficher le bloc de contact

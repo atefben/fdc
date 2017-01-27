@@ -60,7 +60,7 @@ class MdfConferenceInfoAndContactMain extends Admin
                         )
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.label.title',
+                        'label'              => 'form.mdf.label.subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
