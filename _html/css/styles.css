@@ -7490,6 +7490,12 @@ a {
   border-color: #c8a461;
 }
 
+.bigButton {
+  width: 100%;
+  text-align: center;
+  padding: 0px !important;
+}
+
 .quote.italic {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }

@@ -147,7 +147,7 @@
           </div>
           
           <div class="text">
-          <a href="programmation-evenementiel.php" class="button single-button">Toute la programmation</a>
+          <a href="programmation-evenementiel.php" class="button single-button bigButton">Toute la programmation</a>
           </div>
 
     
