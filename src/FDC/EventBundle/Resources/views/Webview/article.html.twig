@@ -530,7 +530,7 @@
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
-          {{ dump(class(associatedNews)) }}
+          {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
             {%  set iconClass = 'icon-article' %}
           {% endif %}
