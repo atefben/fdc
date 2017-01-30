@@ -1089,6 +1089,8 @@ var initVideo = function(hash) {
         });
     }else if($('.video-player').length > 0) {
 
+        console.log('here');
+
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
