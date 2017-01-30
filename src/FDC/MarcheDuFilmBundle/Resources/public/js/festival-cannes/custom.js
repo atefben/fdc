@@ -279,10 +279,10 @@ $('.floatingButtonRight').hover(function() {
 
 /* SELECTOR DROPDOWN FROM DROPWDOWNS */
 
-    $(".dropdown").click(function() {
-
-        $('.dropArrow').toggleClass('dropArrowOpen');
-    });
+    // $(".dropdown").click(function() {
+    //
+    //     $('.dropArrow').toggleClass('dropArrowOpen');
+    // });
 
     $(".select input").click(function() {
 
