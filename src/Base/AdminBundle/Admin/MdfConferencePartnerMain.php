@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Validator\Constraints\Count;
 
 class MdfConferencePartnerMain extends Admin
 {
@@ -78,6 +79,16 @@ class MdfConferencePartnerMain extends Admin
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.partner_tab',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new Count(
+                        array(
+                            'max' => 4,
+                            'min' => 1,
+                            'minMessage' => "validation.partners_tab_min",
+                            'maxMessage' => "validation.partners_tab_max",
+                        )
+                    ),
+                ),
             ), array(
                 'edit'     => 'inline',
                 'inline'   => 'table',
