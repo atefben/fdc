@@ -92,19 +92,13 @@ class MdfGlobalEventsScheduleAdmin extends Admin
                     )
                 ),
             ))
-            ->add('startTimeEvent', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
+            ->add('startTimeEvent', 'time', array(
                 'required' => false,
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
+                'attr' => array('class' => 'fixed-time')
             ))
-            ->add('endTimeEvent', 'sonata_type_datetime_picker', array(
-                'format' => 'dd/MM/yyyy HH:mm',
+            ->add('endTimeEvent', 'time', array(
                 'required' => false,
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
+                'attr' => array('class' => 'fixed-time')
             ))
         ;
     }

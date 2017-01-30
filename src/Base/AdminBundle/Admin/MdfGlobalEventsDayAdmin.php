@@ -44,7 +44,7 @@ class MdfGlobalEventsDayAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('dateEvent', 'sonata_type_datetime_picker', array(
+            ->add('dateEvent', 'sonata_type_date_picker', array(
                 'format' => 'dd/MM/yyyy',
                 'required' => true,
                 'attr' => array(
