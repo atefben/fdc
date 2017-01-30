@@ -61,6 +61,8 @@
 
 {{ render(controller('FDCMarcheDuFilmBundle:Transverse:footer')) }}
 
-{% include 'FDCMarcheDuFilmBundle:shared:javascripts.html.twig' %}
+{% block javascripts %}
+    {% include 'FDCMarcheDuFilmBundle:shared:javascripts.html.twig' %}
+{% endblock %}
 </body>
 </html>
