@@ -47,7 +47,7 @@
             <div class="tab_container ">
                 {% for widgetId, serviceProducts in serviceWidgetProducts %}
                     <div id="tab{{ widgetId }}" class="tab_content">
-                        {% for product in serviceProducts %}
+                        {% for key, product in serviceProducts %}
                             <div class="minTab{% if not product.translatable.gallery or not product.translatable.gallery.medias.count() %} nopicTab{% endif %}">
                                 {% if product.translatable.gallery and product.translatable.gallery.medias.count() %}
                                     <div class="tabPic">
@@ -64,7 +64,7 @@
                                     <span class="customClass2">{{ product.title }}</span>
                                     <h5>{{ product.grayText }} <span class="fromPrice">{{ product.colorText }}</span></h5>
                                     <p>{{ product.body }}</p>
-                                    <input type="checkbox" class="read-more-state" id="post-{{ product.id }}" style="opacity:0;"/>
+                                    <input type="checkbox" class="read-more-state" id="post-{{ key~product.id }}" style="opacity:0;"/>
                                     <div class="read-more-wrap">
                                         <div class="read-more-target">
                                             {# Formated in BO #}
@@ -73,7 +73,7 @@
                                         </div>
                                     </div>
                                     <i class='icon icon_flecheGauche opportuniteArrow'></i>
-                                    <label for="post-{{ product.id }}" class="read-more-trigger"><a href="{{ product.url }}"><div  class="blueBtn customClass2">Réserver</div></a></label>
+                                    <label for="post-{{ key~product.id }}" class="read-more-trigger"><a href="{{ product.url }}"><div  class="blueBtn customClass2">Réserver</div></a></label>
                                 </div>
                             </div>
                         {% endfor %}
