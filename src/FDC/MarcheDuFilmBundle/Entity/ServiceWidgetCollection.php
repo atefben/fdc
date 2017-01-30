@@ -29,7 +29,9 @@ class ServiceWidgetCollection
     /**
      * @ORM\ManyToOne(targetEntity="ServiceWidget")
      * @Assert\Count(
-     *      max = "5",
+     *      max = "4",
+     *      min = "1",
+     *      minMessage = "validation.service_widget_min",
      *      maxMessage = "validation.service_widget_max"
      * )
      */
