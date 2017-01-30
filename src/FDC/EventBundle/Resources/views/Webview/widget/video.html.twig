@@ -1,7 +1,9 @@
-{{ dump(widget) }}
+{{ widget.header|trans_fallback('title') }}
+{{ widget.header|trans_fallback('description') }}
+{{ widget.header|trans_fallback('createdAt') }}
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
-          <video preload="none" style="background-image: url({{ asset('bundles/fdcevent/img/article/video-content-poster.png') }})">
+          <video preload="none" style="background-image: url({{ widget.header|trans_fallback('file') }})">
             <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
           </video>
           <div class="Article-videoPlayer-caption">
