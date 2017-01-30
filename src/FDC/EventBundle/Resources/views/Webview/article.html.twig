@@ -516,7 +516,7 @@
         {% endif %}
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
-          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('l d') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
+          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('d/m/y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
           <span class="Article-header-meta-misc"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span>
         </div>
       </header>
