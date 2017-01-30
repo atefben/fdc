@@ -134,8 +134,10 @@ class ServiceAdmin extends Admin
                 'constraints'        => array(
                     new Count(
                         array(
-                            'max' => 5,
-                            'maxMessage' => "validation.service_widget_max"
+                            'max' => 4,
+                            'min' => 1,
+                            'minMessage' => "validation.service_widget_min",
+                            'maxMessage' => "validation.service_widget_max",
                         )
                     ),
                 ),
