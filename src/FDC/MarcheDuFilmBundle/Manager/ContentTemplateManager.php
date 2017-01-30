@@ -10,6 +10,7 @@ use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideoTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class ContentTemplateManager
@@ -90,13 +91,16 @@ class ContentTemplateManager
         }
 
         $titleHeader = $this->getTitleHeaderContent($pageType);
+        $pageId = $titleHeader->getTranslatable()->getId();
+
         $textWidgets = $this->getContentTemplateTextWidgets($pageType);
         $imageWidgets = $this->getContentTemplateImageWidgets($pageType);
         $galleryWidgets = $this->getContentTemplateGalleryWidgets($pageType);
         $fileWidgets = $this->getContentTemplateFileWidgets($pageType);
+        $videoWidgets = $this->getContentTemplateVideosByPageId($pageId);
 
         $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets, $videoWidgets);
 
         usort($widgets, function($a, $b)
         {
@@ -138,9 +142,10 @@ class ContentTemplateManager
         $imageWidgets = $this->getContentTemplateImageWidgetsByPageId($pageId);
         $galleryWidgets = $this->getContentTemplateGalleryWidgetsByPageId($pageId);
         $fileWidgets = $this->getContentTemplateFileWidgetsByPageId($pageId);
+        $videoWidgets = $this->getContentTemplateVideosByPageId($pageId);
 
         $widgets = [];
-        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets);
+        $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets, $videoWidgets);
 
         usort($widgets, function($a, $b)
         {
@@ -235,6 +240,12 @@ class ContentTemplateManager
         return $this->em
             ->getRepository(MdfContentTemplateWidgetTextTranslation::class)
             ->getTextWidgetsByLocaleAndPageId($this->requestStack->getMasterRequest()->get('_locale'), $pageId);
+    }
+
+    public function getContentTemplateVideosByPageId($pageId) {
+        return $this->em
+            ->getRepository(MdfContentTemplateWidgetVideoTranslation::class)
+            ->getYoutubeWidgetsByLocaleAndPageId($this->requestStack->getMasterRequest()->get('_locale'), $pageId);
     }
 
     public function getContentTemplateImageWidgetsByPageId($pageId) {

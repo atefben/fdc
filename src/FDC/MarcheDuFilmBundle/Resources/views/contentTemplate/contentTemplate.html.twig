@@ -5,7 +5,7 @@
         {% if isWhoAreWe %}
             {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
         {% endif %}
-        {% if isConference %}
+        {% if isConference is defined and isConference %}
             {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': titleHeader.title} %}
         {% endif %}
         <div class="bigContainer">
@@ -24,6 +24,9 @@
                     {% if widget.isWidgetFile() is defined and widget.isWidgetFile() %}
                         {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockDownload.html.twig' with {'widget': widget} %}
                     {% endif %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetVideo() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockVideo.html.twig' with {'widget': widget} %}
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -31,7 +34,7 @@
     {% if isWhoAreWe %}
         {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRoute': nextRoute, 'backRoute': backRoute} %}
     {% endif %}
-    {% if isConference %}
+    {% if isConference is defined and isConference %}
         {% if nextRouteName %}
             <div class="floatingButtonRight">
                 <div class="arrow showRight">
@@ -43,7 +46,7 @@
             </div>
         {% endif %}
     {% endif %}
-    {% if isPresentation or isConference %}
+    {% if (isPresentation is defined and isPresentation == true) or (isConference is defined and isConference == true) %}
         {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
         {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
     {% endif %}
