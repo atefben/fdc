@@ -574,19 +574,7 @@
         {% for associatedNews in sameDayObjects %}{{ associatedNews.id }}
           {% set type = 'news' %}
           {% set variant = 'article' %}
-          {% if associatedNews is news_article %}
-            {% set type = 'news' %}
-            {% set variant = 'article' %}
-          {% elseif associatedNews is news_video %}
-            {% set type = 'news' %}
-            {% set variant = 'video' %}
-          {% elseif associatedNews is news_audio %}
-            {% set type = 'news' %}
-            {% set variant = 'audio' %}
-          {% elseif associatedNews is news_image %}
-            {% set type = 'news' %}
-            {% set variant = 'image' %} 
-          {% endif %}
+
           {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
             {%  set iconClass = 'icon-article' %}
