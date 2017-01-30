@@ -498,6 +498,20 @@
         <video preload="none" style="background-image: url({% path cover_image , 'reference' %})">
           <source src="{{ s3_server_video ~ object.video|trans_fallback('mp4Url') }}" type="video/mp4"/>
         </video>
+        {% elseif object is news_image %}
+          <div class="Article-slider-wrapper">
+            <a class="Article-slider-prev" href="#"></a>
+            <a class="Article-slider-next" href="#"></a>
+            <div class="Article-slider">
+              {% for key, gallery in object.gallery.medias %}
+              <div class="Article-slider-item">
+                <img src="{% path gallery.media|trans_fallback('file'), '640x400' %}"/>
+                <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> {{ gallery.media|trans_fallback('copyright') }}</span> 
+              </div>
+              {% endfor %}
+            </div>
+            <div class="Article-slider-count"><strong>1</strong>/{{ object.gallery.medias|length }}</div>
+          </div>
         {% endif %}
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
