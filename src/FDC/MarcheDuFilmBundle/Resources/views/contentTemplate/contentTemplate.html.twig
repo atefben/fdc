@@ -43,7 +43,7 @@
             </div>
         {% endif %}
     {% endif %}
-    {% if isPresentation %}
+    {% if isPresentation or isConference %}
         {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
         {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
     {% endif %}
