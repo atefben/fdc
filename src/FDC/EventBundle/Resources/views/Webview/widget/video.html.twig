@@ -2,7 +2,7 @@
 {% set image = widget.news.header|trans_fallback('file') %}
 {% set video = widget.file|trans_fallback('file') %}
 
-{% set header = news.header %}
+{% set header = widget.news.header %}
 {% if header is not null %}
     {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
@@ -13,7 +13,7 @@
     {% if imageTrans is defined %}
         {% set image = imageTrans.file %}
     {% else %}
-        {% set header = news.video.image %}
+        {% set header = widget.news.video.image %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
         {% if imageTrans is null or imageTrans.file is null %}
             {% set imageTrans = header.findTranslationByLocale('fr') %}
