@@ -1,6 +1,7 @@
 
 {% set cover_image = widget.news.header|trans_fallback('file') %}
 {{ dump(widget.file) }}
+{{ widget.file|trans_fallback('file') }}
 
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
