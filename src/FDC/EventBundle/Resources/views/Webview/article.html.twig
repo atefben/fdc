@@ -523,7 +523,7 @@
       <div class="Article-content">
         <h1>{{ object|trans_fallback('title') }}</h1>
 
-        {{ object|trans_fallback('introduction')|raw }}
+        <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
 
         {% for widget in object.widgets %}
             {% if widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
