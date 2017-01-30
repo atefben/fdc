@@ -572,8 +572,6 @@
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}{{ associatedNews.id }}
-
-          {{ dump(associatedNews) }}
           {% set type = 'news' }
           {% set variant = 'article' }
           {% if associatedNews is news_article %}
