@@ -7,7 +7,7 @@
                 <div class="accredidationsMessage customClass5Bckg">
                     {% if accreditationContent.state == 0 %}
                         <div class="accredMsg">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
-                        <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">S'inscrire</div></a>
+                        <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">S'INSCRIRE</div></a>
                     {% elseif accreditationContent.state == 1 %}
                         <div class="noAvail">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
                     {% endif %}
