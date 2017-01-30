@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class MdfConferencePartnerLogoAdmin extends Admin
 {
@@ -32,6 +33,7 @@ class MdfConferencePartnerLogoAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('url')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -80,5 +82,16 @@ class MdfConferencePartnerLogoAdmin extends Admin
             ))
         ;
 
+    }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id')
+            ->add('url')
+        ;
     }
 }

@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\Count;
 
 class MdfConferenceProgramEventAdmin extends Admin
@@ -33,6 +34,7 @@ class MdfConferenceProgramEventAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -117,5 +119,16 @@ class MdfConferenceProgramEventAdmin extends Admin
             ))
         ;
 
+    }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id')
+            ->add('subTitle')
+        ;
     }
 }
