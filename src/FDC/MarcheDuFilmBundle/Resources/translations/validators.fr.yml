@@ -7,3 +7,5 @@ validation.speakers_widget_tab_max: At most 4 speakers tab can be added.
 validation.schedule_min: At least 1 event should be added on a day accordion.
 validation.partners_logo_max: At most 4 logos can be added.
 validation.partners_logo_min: At least 1 logo must be added.
+validation.partners_tab_min: At least 1 partner tabs can be added.
+validation.partners_tab_max: At most 4 partner tabs can be added.

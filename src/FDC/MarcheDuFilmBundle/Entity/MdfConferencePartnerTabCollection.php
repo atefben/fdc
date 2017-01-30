@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +23,12 @@ class MdfConferencePartnerTabCollection
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfConferencePartnerTab", cascade={"all"})
+     * @Assert\Count(
+     *      max = "4",
+     *      min = "1",
+     *      minMessage = "validation.partners_tab_min",
+     *      maxMessage = "validation.partners_tab_max"
+     * )
      */
     protected $conferencePartnerTab;
 
