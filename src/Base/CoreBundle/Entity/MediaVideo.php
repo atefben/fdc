@@ -94,6 +94,7 @@ class MediaVideo extends Media
      * @var NewsVideo
      *
      * @ORM\OneToOne(targetEntity="NewsVideo", cascade={"all"}, mappedBy="homepageMediaVideo")
+     * @ORM\JoinColumn(name="homepage_news_id", referencedColumnName="id")
      */
     protected $homepageNews;
 
@@ -401,7 +402,7 @@ class MediaVideo extends Media
     /**
      * Get displayedHomeCorpo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedHomeCorpo()
     {
@@ -424,7 +425,7 @@ class MediaVideo extends Media
     /**
      * Get themeHomeCorpo
      *
-     * @return \Base\CoreBundle\Entity\Theme 
+     * @return \Base\CoreBundle\Entity\Theme
      */
     public function getThemeHomeCorpo()
     {
@@ -447,7 +448,7 @@ class MediaVideo extends Media
     /**
      * Get dateHomeCorpo
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateHomeCorpo()
     {
