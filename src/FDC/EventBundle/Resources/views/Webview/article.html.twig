@@ -479,20 +479,22 @@
                   {% set imageTrans = object.header.findTranslationByLocale('fr') %}
               {% endif %}
           {% endif %}
-          {% if object.video.image is not null %}
-              {% if imageTrans is defined %}
-                  {% set cover_image = imageTrans.file %}
-              {% else %}
-                  {% set header = object.video.image %}
-                  {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-                  {% if imageTrans is null or imageTrans.file is null %}
-                      {% set imageTrans = header.findTranslationByLocale('fr') %}
-                  {% endif %}
+          {% if object.video is not null %}
+            {% if object.video.image is not null %}
+                {% if imageTrans is defined %}
+                    {% set cover_image = imageTrans.file %}
+                {% else %}
+                    {% set header = object.video.image %}
+                    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if imageTrans is null or imageTrans.file is null %}
+                        {% set imageTrans = header.findTranslationByLocale('fr') %}
+                    {% endif %}
 
-                  {% set cover_image = imageTrans.file %}
-              {% endif %}
+                    {% set cover_image = imageTrans.file %}
+                {% endif %}
+            {% endif %}
           {% endif %}
-        {% if object.video != null %}
+        {% if object.video is not null %}
         <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
         {% endif %}
         <video preload="none" style="background-image: url({% path cover_image , 'reference' %})">
