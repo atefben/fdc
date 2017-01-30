@@ -492,6 +492,7 @@
                   {% set cover_image = imageTrans.file %}
               {% endif %}
           {% endif %}
+          {{ cover_image }}
         {% if object.video != null %}
         <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
         {% endif %}
