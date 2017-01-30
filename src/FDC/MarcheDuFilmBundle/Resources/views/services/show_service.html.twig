@@ -120,3 +120,8 @@
     {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' %}
 
 {% endblock main %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/owl.carousel.min.js') }}"></script>
+{% endblock %}
