@@ -581,44 +581,46 @@
 
 		ow.contentSlider = function(){
 
-			var $wraps   = $('.Article-slider-wrapper');
+      if($('.Article-slider-wrapper').length){
 
-      $wraps.each(function(){
-        var $wrap = $(this);
-        var $frame  = $wrap.find('.Article-slider');
-        var $slides = $wrap.find('.Article-slider-item');
+  			var $wraps   = $('.Article-slider-wrapper');
 
-        //size slides before slider declaration
-        $slides.css('width',$wrap.width());
+        $wraps.each(function(){
+          var $wrap = $(this);
+          var $frame  = $wrap.find('.Article-slider');
+          var $slides = $wrap.find('.Article-slider-item');
 
-        var Slider = new Sly($wrap, {
-          horizontal: 1,
-          itemNav: 'basic',
-          slidee: $frame,
-          smart: 1,
-          activateOn: 'click',
-          mouseDragging: 1,
-          touchDragging: 1,
-          releaseSwing: 1,
-          scrollBy: 0,
-          activatePageOn: 'click',
-          speed: 300,
-          elasticBounds: 1,
-          dragHandle: 1,
-          dynamicHandle: 1,
-          clickBar: 1,
-          prev: $wrap.find('.Article-slider-prev'),
-          next: $wrap.find('.Article-slider-next')
-        });
+          //size slides before slider declaration
+          $slides.css('width',$wrap.width());
 
-        Slider.on('moveStart moveEnd', function (a,b,c) {
-          var increment = Slider.rel.firstItem + 1;
-          $('.Article-slider-count strong').html(increment);
-        });
+          var Slider = new Sly($wrap, {
+            horizontal: 1,
+            itemNav: 'basic',
+            slidee: $frame,
+            smart: 1,
+            activateOn: 'click',
+            mouseDragging: 1,
+            touchDragging: 1,
+            releaseSwing: 1,
+            scrollBy: 0,
+            activatePageOn: 'click',
+            speed: 300,
+            elasticBounds: 1,
+            dragHandle: 1,
+            dynamicHandle: 1,
+            clickBar: 1,
+            prev: $wrap.find('.Article-slider-prev'),
+            next: $wrap.find('.Article-slider-next')
+          });
 
-        Slider.init();
-      });
-			
+          Slider.on('moveStart moveEnd', function (a,b,c) {
+            var increment = Slider.rel.firstItem + 1;
+            $('.Article-slider-count strong').html(increment);
+          });
+
+          Slider.init();
+        });    
+      }
 		}
 
 		ow.relatedSlider = function(){
@@ -655,21 +657,21 @@
 		}
 
 		ow.audioPlayer = function(){
-			$('.Article-audioPlayer').each(function(){
-				var player = $(this);
-				jwplayer(player.get(0)).setup({
-					"file": player.data('file-mp3'),
-					"height": 90,
-					"title": player.data('title'),
-					"description": player.data('date'),
-					"width": '100%',
-					'skin': {
-						'name': 'fdc'
-					}
-				});
-			});
-			
-
+      if($('.Article-audioPlayer').length){
+  			$('.Article-audioPlayer').each(function(){
+  				var player = $(this);
+  				jwplayer(player.get(0)).setup({
+  					"file": player.data('file-mp3'),
+  					"height": 90,
+  					"title": player.data('title'),
+  					"description": player.data('date'),
+  					"width": '100%',
+  					'skin': {
+  						'name': 'fdc'
+  					}
+  				});
+  			});
+      }
 		}
 
 		ow.playVideo = function(event){
