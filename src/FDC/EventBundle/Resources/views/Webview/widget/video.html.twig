@@ -1,12 +1,11 @@
 
 {% set cover_image = widget.news.header|trans_fallback('file') %}
-{{ dump(widget.file) }}
-{{ widget.file|trans_fallback('file') }}
+{% set video = widget.file|trans_fallback('file') %}
 
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
           <video preload="none" style="background-image: url({% path cover_image, 'reference' %})">
-            <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
+            <source src="{{ s3_server_video ~ video }}" type="video/mp4"/>
           </video>
           <div class="Article-videoPlayer-caption">
             <h4>Discours</h4> <p>{{ widget.news.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}</p>
