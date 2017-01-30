@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use FDC\MarcheDuFilmBundle\Entity\MediaMdf;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HomeSliderTop
@@ -27,6 +28,7 @@ class HomeSliderTop
     /**
      * @var MediaMdf
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
+     * @Assert\NotBlank()
      */
     protected $image;
 

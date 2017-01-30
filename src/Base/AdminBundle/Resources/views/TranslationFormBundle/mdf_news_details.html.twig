@@ -47,6 +47,10 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
                                                             <h4><strong>{{ 'form.mdf.content_template.widget.file'|trans }}</strong></h4>
                                                             {{ form_row(widget.file) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.youtube'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -68,6 +72,9 @@
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
 
                                         </div>
                                     </div>
@@ -111,6 +118,10 @@
                                                         {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
                                                             <h4><strong>File widget</strong></h4>
                                                             {{ form_row(widget.file) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                            <h4><strong>Youtube widget</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -132,6 +143,9 @@
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
                                                 <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
                                         </div>
                                     </div>
                                 </div>

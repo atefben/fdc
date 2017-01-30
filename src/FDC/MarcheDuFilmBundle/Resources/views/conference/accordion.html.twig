@@ -3,7 +3,7 @@
         <ul>
             {% for day in programDays %}
                 <li class="{{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'open-selected-conf' : '' }}">
-                    <div class="open">{{ day.date|date('m-d-y') }}<span class="openPlus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' noDisplay' : '' }}">+</span><span class="openMinus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' doDisplay' : '' }}">-</span></div>
+                    <div class="open">{{ day.date|date('d M Y') }}<span class="openPlus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' noDisplay' : '' }}">+</span><span class="openMinus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' doDisplay' : '' }}">-</span></div>
                     <div class="content" style="display: {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'block' : 'none' }}">
                         <div class="parent">
                             {% for event in programDaysEvents[day.id] %}

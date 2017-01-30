@@ -78,7 +78,8 @@ class MdfDispatchDeServiceAdmin extends Admin
                     'contactTitle'          => array(
                         'required' => false,
                         'label'              => 'form.mdf.label.contact_title',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.mdf.label.contact_block_dispatch_du_service_info'
                     ),
                     'contactDescription'          => array(
                         'required' => false,

@@ -165,6 +165,7 @@ function setNews() {
     $(".fifth").each(function (index, element) {
       $(this).removeClass('pagination-active');
     });
+    $("html, body").animate({ scrollTop: $('.marketTitle').offset().top });
     $(this).addClass('pagination-active');
     pageIndex = parseInt($(this).attr('id'));
     setPaginationTabs();
@@ -176,6 +177,7 @@ function setNews() {
       $(".fifth").each(function (index, element) {
         $(this).removeClass('pagination-active');
         if (parseInt($(this).attr('id')) == pageIndex - 1) {
+          $("html, body").animate({ scrollTop: $('.marketTitle').offset().top });
           $(this).removeClass('pagination-active');
           $(this).addClass('pagination-active');
         }
@@ -193,6 +195,7 @@ function setNews() {
       $(".fifth").each(function (index, element) {
         $(this).removeClass('pagination-active');
         if (parseInt($(this).attr('id')) == pageIndex + 1) {
+          $("html, body").animate({ scrollTop: $('.marketTitle').offset().top });
           $(this).removeClass('pagination-active');
           $(this).addClass('pagination-active');
         }

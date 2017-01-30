@@ -723,6 +723,7 @@ form:
             title: Titre
             subtitle: Sous-titre
             content_block_dispatch_du_service: Bloc de contenu
+            contact_block_dispatch_du_service_info: Pour que le bloc Contact soit affiché sur la page Services, les trois champs de blocs de contacts doivent être remplis.
             description: Chapô
             show_contact_block: Afficher le bloc de contact
             contact_title: Titre du bloc de contact

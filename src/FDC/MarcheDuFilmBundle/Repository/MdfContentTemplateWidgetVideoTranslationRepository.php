@@ -21,4 +21,20 @@ class MdfContentTemplateWidgetVideoTranslationRepository extends EntityRepositor
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getYoutubeWidgetsByLocaleAndPageId($locale, $pageId)
+    {
+        $qb = $this->createQueryBuilder('ctvwt')
+            ->select('ctvwt, ctvw')
+            ->join('ctvwt.translatable', 'ctvw')
+            ->join('ctvw.contentTemplate', 'ct')
+            ->where('ctvwt.locale = :locale')
+            ->andWhere('ct.id = :pageId')
+            ->setParameter('locale', $locale)
+            ->setParameter('pageId', $pageId)
+            ->orderBy('ctvw.position', 'ASC')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

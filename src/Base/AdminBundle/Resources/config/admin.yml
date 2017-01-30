@@ -1633,7 +1633,7 @@ services:
         class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionPresentationAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionPresentation}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Présentation}
 
     base.admin.mdf_dispatch_de_service:
         class: Base\AdminBundle\Admin\MdfDispatchDeServiceAdmin

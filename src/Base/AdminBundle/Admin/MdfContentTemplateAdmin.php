@@ -79,6 +79,7 @@ class MdfContentTemplateAdmin extends Admin
                     'content_template_widget_image_type',
                     'content_template_widget_gallery_type',
                     'content_template_widget_file_type',
+                    'content_template_widget_video_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
