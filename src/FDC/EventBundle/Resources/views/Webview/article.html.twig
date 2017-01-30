@@ -492,10 +492,10 @@
                   {% set cover_image = imageTrans.file %}
               {% endif %}
           {% endif %}
-          {{ cover_image }}
         {% if object.video != null %}
         <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
         {% endif %}
+        {{ dump(object) }}
         <video preload="none" style="background-image: url({% path cover_image , 'reference' %})">
           <source src="{{ s3_server_video ~ object.video|trans_fallback('file') }}" type="video/mp4"/>
         </video>
