@@ -571,7 +571,24 @@
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
-        {% for associatedNews in sameDayObjects %}{{ associatedNews.id }}{{ dump(associatedNews) }}
+        {% for associatedNews in sameDayObjects %}{{ associatedNews.id }}
+
+          {{ dump(associatedNews) }}
+          {% set type = 'news' }
+          {% set variant = 'article' }
+          {% if associatedNews is news_article %}
+            {% set type = 'news' }
+            {% set variant = 'article' }
+          {% elseif associatedNews is news_video %}
+            {% set type = 'news' }
+            {% set variant = 'video' }
+          {% elseif associatedNews is news_audio %}
+            {% set type = 'news' }
+            {% set variant = 'audio' }
+          {% elseif associatedNews is news_image %}
+            {% set type = 'news' }
+            {% set variant = 'image' %} 
+          {% endif %}
           {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
             {%  set iconClass = 'icon-article' %}
@@ -579,7 +596,7 @@
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
           {% endif %}
-          <a href="{{ path('fdc_event_webview_article',{'type': 'type', 'variant': 'variant', 'id':'id'}) }}" class="Article-related-slider-item">
+          <a href="{{ path('fdc_event_webview_article',{'type': type, 'variant': variant, 'id':'associatedNews.id}) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
