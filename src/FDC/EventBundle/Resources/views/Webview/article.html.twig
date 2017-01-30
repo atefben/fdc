@@ -574,7 +574,19 @@
         {% for associatedNews in sameDayObjects %}{{ associatedNews.id }}
           {% set type = 'news' %}
           {% set variant = 'article' %}
-
+          {% if associatedNews is news_article %}
+            {% set type = 'news' %}
+            {% set variant = 'article' %}
+          {% elseif associatedNews is news_video %}
+            {% set type = 'news' %}
+            {% set variant = 'video' %}
+          {% elseif associatedNews is news_audio %}
+            {% set type = 'news' %}
+            {% set variant = 'audio' %}
+          {% elseif associatedNews is news_image %}
+            {% set type = 'news' %}
+            {% set variant = 'image' %} 
+          {% endif %}
           {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
             {%  set iconClass = 'icon-article' %}
@@ -582,7 +594,7 @@
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
           {% endif %}
-          <a href="" class="Article-related-slider-item">
+          <a href="#" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
