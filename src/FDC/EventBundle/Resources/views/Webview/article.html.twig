@@ -571,7 +571,7 @@
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
-        {% for associatedNews in sameDayObjects %}{{ associatedNews.slug }}
+        {% for associatedNews in sameDayObjects %}{{ associatedNews.id }}{{ dump(associatedNews) }}
           {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
             {%  set iconClass = 'icon-article' %}
@@ -579,7 +579,7 @@
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
           {% endif %}
-          <a href="#" class="Article-related-slider-item">
+          <a href="{{ path('fdc_event_movie_get',{'type': associatedNews.slug, 'variant': aa, 'id':bb}) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
