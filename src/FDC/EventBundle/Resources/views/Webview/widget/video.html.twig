@@ -1,6 +1,5 @@
-{{ widget|trans_fallback('title') }}
-{{ widget|trans_fallback('description') }}
-{{ widget.header|trans_fallback('createdAt') }}
+{{ dump(widget) }}
+{{ widget.header }}
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
           <video preload="none" style="background-image: url({{ widget.header|trans_fallback('file') }})">
