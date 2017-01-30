@@ -582,7 +582,7 @@
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
           {% endif %}
-          <a href="{{ path('fdc_event_webview_article',{'type': type, 'variant': variant, 'id':'associatedNews.id}) }}" class="Article-related-slider-item">
+          <a href="" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
