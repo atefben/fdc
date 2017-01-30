@@ -1,9 +1,10 @@
 {{ dump(widget) }}
-{{ widget.news.header }}
+{{ widget.news.header|trans_fallback('file') }}
+{{ widget|trans_fallback('file') }}
 
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
-          <video preload="none" style="background-image: url()">
+          <video preload="none" style="background-image: url({{ widget.news.header|trans_fallback('file') }})">
             <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
           </video>
           <div class="Article-videoPlayer-caption">
