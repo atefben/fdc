@@ -71,7 +71,7 @@ class MdfThemeAdmin extends Admin
                         )
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.content_template.title',
+                        'label'              => 'form.mdf.content_template.theme_title',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 )
