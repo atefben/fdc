@@ -1,10 +1,11 @@
 {{ dump(widget) }}
-{{ widget.news.header|trans_fallback('file') }}
-{{ widget.file }}
+{% set cover_image = widget.news.header|trans_fallback('file') %}
+{{ dump(widget.file) }}
+{{ widget.news|trans_fallback('title') }}
 
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
-          <video preload="none" style="background-image: url({{ widget.news.header|trans_fallback('file') }})">
+          <video preload="none" style="background-image: url({% path cover_image, 'reference' %})">
             <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
           </video>
           <div class="Article-videoPlayer-caption">
