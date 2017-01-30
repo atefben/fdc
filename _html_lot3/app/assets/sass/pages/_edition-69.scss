@@ -3,6 +3,42 @@
   figure.padding-bottom {
     padding-bottom: 56px;
   }
+
+  .block-img-ie {
+    max-width: 100%;
+    height: 399px;
+    background-size: cover;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+}
+
+.contain-img-honneur {
+  .edition-69.dark & {
+
+    .caption {
+      margin-top: 20px;
+      font-size: .75rem;
+      font-family: $CamphorMedium;
+      display: block;
+
+       strong {
+        color: #666666;
+        font-family: $CamphorBold;
+        font-weight: normal;
+      }
+    }
+
+    .copy {
+      text-align: left;
+      color: #666666;
+    }
+  }
 }
 
 .poster, .palmares, .article-single, .articles-list{
@@ -31,3 +67,4 @@
     }
   }
 }
+

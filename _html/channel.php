@@ -8,7 +8,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="webtv single-channel loading">
+    <div id="main" class="webtv single-cmhannel loading">
       <div class="container">
         <a href="#" class="back"><i class="icon icon_flecheGauche"></i> Retour aux chaînes</a>
       </div>

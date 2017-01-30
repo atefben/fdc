@@ -2,12 +2,27 @@
     <div class="filters-02">
         <div class="block-01 container">
             <ul>
-                {% for filter in filters %}
-                    <li>{{ filter }}  <i class="icon icon-close"></i></li>
+                {% for key,filter in filters|slice(0, 4) %}
+                    <li data-id="{{ key }}">{{ filter }} <i class="icon icon-close"></i></li>
                 {% endfor %}
-                <!--li class="more" data-url="ajax-result-more-filter.html">...</li-->
+                {% if filters|length > 4 %}
+                    <li class="more">...</li>
+                {% endif %}
             </ul>
         </div>
         <a href="#" class="submit result-more">Filtrer les résultats</a>
     </div>
+    {% if filters|length > 4 %}
+        <div class="filters-02 hidden">
+            <div class="block-01 container new-filter ">
+                <ul>
+                    {% for key,filter in filters|slice(4) %}
+                        <li data-id="{{ key }}">{{ filter }} <i class="icon icon-close"></i></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
 </div>
+</div>
+

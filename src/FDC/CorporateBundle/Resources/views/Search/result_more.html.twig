@@ -5,12 +5,17 @@
 
 {% block body %}
 
-<section class="brigth search-page-result" id="main">
+<section class="brigth search-page-result search-page" id="main">
     <div>
 
         {% include 'FDCCorporateBundle:Search:components/filters.html.twig' with {'filters': filters} %}
 
         <div class="block-search block-01">
+
+            <div class="block-searh-more">
+                {% include 'FDCCorporateBundle:Search:components/form.html.twig' %}
+            </div>
+
             <div class="content-result result-more">
 
                 {% set itemType = app.request.attributes.get('_route_params') %}

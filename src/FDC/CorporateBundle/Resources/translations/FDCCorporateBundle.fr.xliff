@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="2d56b7f3a740b2ddf0d15a9e56c3855c" resname="69edition.festival.history">
+        <source>69edition.festival.history</source>
+        <target>L'histoire du festival</target>
+      </trans-unit>
+      <trans-unit id="00ec863258bb381a98c07e0c9c337b80" resname="MESSAGE DE L’EXPÉDITEUR">
+        <source>MESSAGE DE L’EXPÉDITEUR</source>
+        <target>MESSAGE DE L’EXPÉDITEUR</target>
+      </trans-unit>
+      <trans-unit id="d6a720a2bcdab92da588b0439a29987a" resname="Retrouvez cette affiche sur le site du Festival de Cannes">
+        <source>Retrouvez cette affiche sur le site du Festival de Cannes</source>
+        <target>Retrouvez cette affiche sur le site du Festival de Cannes</target>
+      </trans-unit>
+      <trans-unit id="453dd0272e8b7af0a1333bb609c84f8b" resname="aboutus.team">
+        <source>aboutus.team</source>
+        <target>L'équipe</target>
+      </trans-unit>
+      <trans-unit id="1b9fc9c42225016dfc7aaf52663428b4" resname="article.btn.imprimer">
+        <source>article.btn.imprimer</source>
+        <target>Imprimer</target>
+      </trans-unit>
+      <trans-unit id="1216f031edcb1d7fff16e24184ac76a5" resname="article.btn.partager">
+        <source>article.btn.partager</source>
+        <target>Partager</target>
+      </trans-unit>
+      <trans-unit id="0704e0e824fa06c9441d906efd8a7385" resname="article.film.title.focus">
+        <source>article.film.title.focus</source>
+        <target>Focus</target>
+      </trans-unit>
+      <trans-unit id="c1bdf6b5d4797375fe5da6d7a92858e6" resname="article.film.title.lememejour">
+        <source>article.film.title.lememejour</source>
+        <target>Le même jour</target>
+      </trans-unit>
+      <trans-unit id="35d86fe0318095ca15f7dabac6509334" resname="article.filter.label.date">
+        <source>article.filter.label.date</source>
+        <target>Dates</target>
+      </trans-unit>
+      <trans-unit id="0b59015aa1f8ceb86fc7df9df541cce3" resname="article.filter.label.format">
+        <source>article.filter.label.format</source>
+        <target>Formats</target>
+      </trans-unit>
+      <trans-unit id="2228c1a15a4dac4429f4f660d3c16e12" resname="article.filter.label.theme">
+        <source>article.filter.label.theme</source>
+        <target>Thèmes</target>
+      </trans-unit>
+      <trans-unit id="3769b93d747c310c65a84b2601c59f6a" resname="article.text.partagerarticle">
+        <source>article.text.partagerarticle</source>
+        <target>Partager l'article</target>
+      </trans-unit>
+      <trans-unit id="c991cdc49ebcbf95963a4d5c3a8f939a" resname="article.text.redigepar">
+        <source>article.text.redigepar</source>
+        <target>Rédigé par</target>
+      </trans-unit>
+      <trans-unit id="cf8e37135c7be73cb0ba1dc4b8d57bb0" resname="award.ex_aequo">
+        <source>award.ex_aequo</source>
+        <target>ex-aequo</target>
+      </trans-unit>
+      <trans-unit id="6e53ec132e255d58788d1a623fab7ba3" resname="award.unanimity">
+        <source>award.unanimity</source>
+        <target>award.unanimity</target>
+      </trans-unit>
+      <trans-unit id="e7fd08cdb7fb58d699dc21119c6e1ffc" resname="breadcrumb.69editions.home">
+        <source>breadcrumb.69editions.home</source>
+        <target>69 éditions</target>
+      </trans-unit>
+      <trans-unit id="553fc92fc4a7c659dc85c75345540515" resname="breadcrumb.affiche">
+        <source>breadcrumb.affiche</source>
+        <target>L'affiche</target>
+      </trans-unit>
+      <trans-unit id="8f5cf9495e2ffddadf1bd631089b796a" resname="breadcrumb.btn.hautdelapage">
+        <source>breadcrumb.btn.hautdelapage</source>
+        <target>Haut de la page</target>
+      </trans-unit>
+      <trans-unit id="9905f1202cbdb7c95dfa055b22897adf" resname="breadcrumb.event.list">
+        <source>breadcrumb.event.list</source>
+        <target>Les évènements</target>
+      </trans-unit>
+      <trans-unit id="44b12990c840b8e1bf82adb9bac80d32" resname="breadcrumb.home">
+        <source>breadcrumb.home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="9ab7e98b5e8afa87fd514c90583747fc" resname="breadcrumb.jury.home">
+        <source>breadcrumb.jury.home</source>
+        <target>Les jurys</target>
+      </trans-unit>
+      <trans-unit id="86db23f3f96bd563cc259bce2c2e2142" resname="breadcrumb.la_selection">
+        <source>breadcrumb.la_selection</source>
+        <target>La sélection</target>
+      </trans-unit>
+      <trans-unit id="861947daed9942cfd98373297eb5b622" resname="breadcrumb.palmares.main">
+        <source>breadcrumb.palmares.main</source>
+        <target>Le palmarès</target>
+      </trans-unit>
+      <trans-unit id="751d6c103f13e159998ff310eb74fc2b" resname="breadcrumb.retrospective.home">
+        <source>breadcrumb.retrospective.home</source>
+        <target>Rétrospective</target>
+      </trans-unit>
+      <trans-unit id="ee7cde0b637ccc0dd584182845357ffd" resname="breadcrumb.search.home">
+        <source>breadcrumb.search.home</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="170cc4d124d490e612fafe5087a863b3" resname="breadcrumb.search.result">
+        <source>breadcrumb.search.result</source>
+        <target>Résultats</target>
+      </trans-unit>
+      <trans-unit id="7197a1a0c0525465478d244ac5602dc9" resname="breadcrumb.search.result.artist">
+        <source>breadcrumb.search.result.artist</source>
+        <target>Artistes</target>
+      </trans-unit>
+      <trans-unit id="678e852f67cfe3af76484ca4288151d5" resname="breadcrumb.search.result.event">
+        <source>breadcrumb.search.result.event</source>
+        <target>Evénements</target>
+      </trans-unit>
+      <trans-unit id="ffbf99c8bfe8702d0fec21d6bf7bc81d" resname="breadcrumb.search.result.film">
+        <source>breadcrumb.search.result.film</source>
+        <target>Films</target>
+      </trans-unit>
+      <trans-unit id="25dc72928c7ee56784cd0f3ae1bde201" resname="breadcrumb.search.result.info_statement">
+        <source>breadcrumb.search.result.info_statement</source>
+        <target>Communiqués et Infos</target>
+      </trans-unit>
+      <trans-unit id="f3933742a7c737f100f6c8db3ded6b1c" resname="breadcrumb.search.result.media">
+        <source>breadcrumb.search.result.media</source>
+        <target>Médias</target>
+      </trans-unit>
+      <trans-unit id="778f781e6ede0f6969f4ff4d343f0d0d" resname="breadcrumb.search.result.news">
+        <source>breadcrumb.search.result.news</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id="6f627120e4fb3df43b4a4c8ef48e5870" resname="cannesclassics.btn.imprimer">
+        <source>cannesclassics.btn.imprimer</source>
+        <target>Imprimer</target>
+      </trans-unit>
+      <trans-unit id="e22c4e9b1bac989cefd1b385ed7853f0" resname="cannesclassics.btn.partager">
+        <source>cannesclassics.btn.partager</source>
+        <target>Partager</target>
+      </trans-unit>
+      <trans-unit id="545b0668402da9008e55225b87024756" resname="cookie.text.enpoursuivantvotrenaviguationsurnossites">
+        <source>cookie.text.enpoursuivantvotrenaviguationsurnossites</source>
+        <target><![CDATA[En poursuivant votre navigation sur nos sites,<br/>vous acceptez l'installation et l'utilisation de cookies sur votre poste,
+notamment à des fins promotionnelles et/ou publicitaires, dans le respect de notre politique de protection de votre vie privée.]]></target>
+      </trans-unit>
+      <trans-unit id="d5e6181a3c7e8d7b3ae34647b95913ba" resname="download.pdf">
+        <source>download.pdf</source>
+        <target>Télécharger le PDF</target>
+      </trans-unit>
+      <trans-unit id="eddf03c1b5e1b9c2b72aef5e20c0b5f9" resname="event.btn.afficherplusdevenement">
+        <source>event.btn.afficherplusdevenement</source>
+        <target>Afficher plus d'évènements</target>
+      </trans-unit>
+      <trans-unit id="ef6389f6b1d57d16b99a4fde71dcd64f" resname="event.filter.label.theme">
+        <source>event.filter.label.theme</source>
+        <target>Thèmes</target>
+      </trans-unit>
+      <trans-unit id="ff285d3854f3a5aef2d2a8bed84fb5c3" resname="footer.nav.boutique">
+        <source>footer.nav.boutique</source>
+        <target>Boutique</target>
+      </trans-unit>
+      <trans-unit id="b10f477d56fb6f9a63b5b5421e0118c2" resname="footer.nav.contact">
+        <source>footer.nav.contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="2db90cc7fbbb05ee931b7c9156fa2205" resname="footer.nav.copyright">
+        <source>footer.nav.copyright</source>
+        <target>© Copyright</target>
+      </trans-unit>
+      <trans-unit id="8137f14eaf70ef0b81f8e135d5be43ea" resname="footer.nav.credit">
+        <source>footer.nav.credit</source>
+        <target>Crédits</target>
+      </trans-unit>
+      <trans-unit id="9d4567a6cd1221307d453347605b5da6" resname="footer.nav.faq">
+        <source>footer.nav.faq</source>
+        <target>FAQ</target>
+      </trans-unit>
+      <trans-unit id="70b0d6bfd1beef443beb1b8f6b25c671" resname="footer.nav.mentionslegales">
+        <source>footer.nav.mentionslegales</source>
+        <target>Mentions Légales</target>
+      </trans-unit>
+      <trans-unit id="9afb6fd6cbf1b8ccd9dcd13ca828272a" resname="footer.nav.nousrejoindre">
+        <source>footer.nav.nousrejoindre</source>
+        <target>Nous rejoindre</target>
+      </trans-unit>
+      <trans-unit id="57def781750e260b57efc685ef27ab0e" resname="footer.nav.plandusite">
+        <source>footer.nav.plandusite</source>
+        <target>Plan du Site</target>
+      </trans-unit>
+      <trans-unit id="ea8d1f17c39a6b52b05108d139d6914d" resname="footer.nav.politiqueconfidentialite">
+        <source>footer.nav.politiqueconfidentialite</source>
+        <target>Politique de Confidentialité</target>
+      </trans-unit>
+      <trans-unit id="d84754f98074c6d2e9f9feed33322b7e" resname="footer.newsletter.title.newsletter">
+        <source>footer.newsletter.title.newsletter</source>
+        <target>Newsletter</target>
+      </trans-unit>
+      <trans-unit id="3859116ba5351199bf8827a8ccdb9ada" resname="footer.newsletter.title.toutelactualite">
+        <source>footer.newsletter.title.toutelactualite</source>
+        <target>Toute l'actualité du festival</target>
+      </trans-unit>
+      <trans-unit id="d8fdb608878c26becad3076a9f0cb61e" resname="header.mainnav.nav.lactualite">
+        <source>header.mainnav.nav.lactualite</source>
+        <target>L'actualité</target>
+      </trans-unit>
+      <trans-unit id="e8367929b9c43c2e12cd81335b092bf5" resname="header.nav.69editions">
+        <source>header.nav.69editions</source>
+        <target>69 éditions</target>
+      </trans-unit>
+      <trans-unit id="f3c75f62349434de58c749b1bee85060" resname="header.nav.69editions.histoire">
+        <source>header.nav.69editions.histoire</source>
+        <target>L'histoire du festival</target>
+      </trans-unit>
+      <trans-unit id="bc169b71764940b057c6849cd9b0ae50" resname="header.nav.69editions.palme">
+        <source>header.nav.69editions.palme</source>
+        <target>La palme d'or</target>
+      </trans-unit>
+      <trans-unit id="bc44773afface7f7a7114f5d25a59c39" resname="header.nav.69editions.retrospective">
+        <source>header.nav.69editions.retrospective</source>
+        <target>Rétrospective</target>
+      </trans-unit>
+      <trans-unit id="067f053bdb9d3642f58435636f81f941" resname="header.nav.accredit">
+        <source>header.nav.accredit</source>
+        <target>S'accréditer</target>
+      </trans-unit>
+      <trans-unit id="a7d38e717d66c3d9ffc83828e82b6af9" resname="header.nav.accueil">
+        <source>header.nav.accueil</source>
+        <target>L'actualité</target>
+      </trans-unit>
+      <trans-unit id="32ca50c226c49b82bd8c883e100cc802" resname="header.nav.allactu">
+        <source>header.nav.allactu</source>
+        <target>Toute l'actualité</target>
+      </trans-unit>
+      <trans-unit id="04d8095ffac43ae50e097607a3b02a55" resname="header.nav.archive">
+        <source>header.nav.archive</source>
+        <target>Plus d'archives</target>
+      </trans-unit>
+      <trans-unit id="8407913cb8d2fb9a08ca5d8e773b5c31" resname="header.nav.guide">
+        <source>header.nav.guide</source>
+        <target>Guide Pratique</target>
+      </trans-unit>
+      <trans-unit id="f2a16921036956f6953dddc8d5af6eb4" resname="header.nav.inscription">
+        <source>header.nav.inscription</source>
+        <target>Inscrire un film</target>
+      </trans-unit>
+      <trans-unit id="d2cbf0e1799ea7bfceeb3dfe63541a19" resname="header.nav.jour">
+        <source>header.nav.jour</source>
+        <target>Jour après jour</target>
+      </trans-unit>
+      <trans-unit id="e3606fba924f5df8432d48e85f57d827" resname="header.nav.mediatheque">
+        <source>header.nav.mediatheque</source>
+        <target>Médiathèque</target>
+      </trans-unit>
+      <trans-unit id="49b7dd50fa3dafd9bb0e4a828db47b6d" resname="header.nav.participate">
+        <source>header.nav.participate</source>
+        <target>Participer</target>
+      </trans-unit>
+      <trans-unit id="a6ebe69164e982861f0ca9816e2f2d86" resname="header.nav.press">
+        <source>header.nav.press</source>
+        <target>Espace presse</target>
+      </trans-unit>
+      <trans-unit id="4c48ea6e2b2ea1b9f40b6f02b32484f0" resname="header.nav.qui">
+        <source>header.nav.qui</source>
+        <target>Qui sommes nous ?</target>
+      </trans-unit>
+      <trans-unit id="7f1d89047dcbc48de412d10658a4d5c8" resname="header.topbar.nav.cinefondation">
+        <source>header.topbar.nav.cinefondation</source>
+        <target>Cinéfondation</target>
+      </trans-unit>
+      <trans-unit id="fa25acc3ac25e4c782644b4b5e79fcd1" resname="header.topbar.nav.courtmetrage">
+        <source>header.topbar.nav.courtmetrage</source>
+        <target>Cannes Courts Métrages</target>
+      </trans-unit>
+      <trans-unit id="0302f7b3e6d3d59a16689941d55cf6b6" resname="header.topbar.nav.festival">
+        <source>header.topbar.nav.festival</source>
+        <target>Festival 2016</target>
+      </trans-unit>
+      <trans-unit id="9743bc29cfafcbfedf93a6ad2f947f6a" resname="header.topbar.nav.festivalcannes">
+        <source>header.topbar.nav.festivalcannes</source>
+        <target>Festival de Cannes</target>
+      </trans-unit>
+      <trans-unit id="220d0ec4ca2b848eac37b846a6001552" resname="header.topbar.nav.marche">
+        <source>header.topbar.nav.marche</source>
+        <target>Marché du film</target>
+      </trans-unit>
+      <trans-unit id="a8cd85a703a11a9c25ebfe4182a759dc" resname="header.usernav.nav.moncompte">
+        <source>header.usernav.nav.moncompte</source>
+        <target>Mon compte</target>
+      </trans-unit>
+      <trans-unit id="5f188b7ecdf46d90c68121055c5b9ce1" resname="header.usernav.nav.rechercher">
+        <source>header.usernav.nav.rechercher</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="6ace0605b7e23480a484081782442718" resname="juries.artist.btn.partager">
+        <source>juries.artist.btn.partager</source>
+        <target>Partager</target>
+      </trans-unit>
+      <trans-unit id="e3f936ca890c0186f89deb0720c83c5b" resname="juries.artiste.btn.imprimer">
+        <source>juries.artiste.btn.imprimer</source>
+        <target>Imprimer</target>
+      </trans-unit>
+      <trans-unit id="7b3d776ae1f76b5860823258f4819aaf" resname="juries.artiste.title.biographie">
+        <source>juries.artiste.title.biographie</source>
+        <target>Biographie</target>
+      </trans-unit>
+      <trans-unit id="7a67d6174611b6a067f1a21e066380d5" resname="juries.artiste.title.filmspresentes">
+        <source>juries.artiste.title.filmspresentes</source>
+        <target>Films présentés à Cannes</target>
+      </trans-unit>
+      <trans-unit id="1de9a83ecafb2cdae437a8b86f29561c" resname="juries.artiste.title.presences">
+        <source>juries.artiste.title.presences</source>
+        <target>Présences au Jury</target>
+      </trans-unit>
+      <trans-unit id="fc9fdf5e01ab0c72f21561aa8fbbd987" resname="juries.artiste.title.share">
+        <source>juries.artiste.title.share</source>
+        <target>Partager</target>
+      </trans-unit>
+      <trans-unit id="f6bed286162401d1979b481afca67d06" resname="juries.role.title.membresdujury.camera">
+        <source>juries.role.title.membresdujury.camera</source>
+        <target>Membres du jury de la caméra d'or</target>
+      </trans-unit>
+      <trans-unit id="47c9dca9e27f136f26ce5024562b896a" resname="juries.role.title.membresdujury.court">
+        <source>juries.role.title.membresdujury.court</source>
+        <target>Membre du jury de la cinéfondation et des courts métrages</target>
+      </trans-unit>
+      <trans-unit id="2191697d13f1b9819599374e3c47b6c0" resname="juries.role.title.membresdujury.long">
+        <source>juries.role.title.membresdujury.long</source>
+        <target>Membres du jury des longs métrages</target>
+      </trans-unit>
+      <trans-unit id="ec3853b10e4eb1357517862a7be906a0" resname="juries.role.title.membresdujury.regard">
+        <source>juries.role.title.membresdujury.regard</source>
+        <target>Membre du jury un certain regard</target>
+      </trans-unit>
+      <trans-unit id="acb60d94a62c4c2b1cfbe3d3e449bc58" resname="juries.role.title.presidentdujury">
+        <source>juries.role.title.presidentdujury</source>
+        <target>Président du jury</target>
+      </trans-unit>
+      <trans-unit id="87483c04ac6f1b9dde91a5e03eafbc8b" resname="juries.role.title.presidentedujury">
+        <source>juries.role.title.presidentedujury</source>
+        <target>Présidente du jury</target>
+      </trans-unit>
+      <trans-unit id="7bcd9e42bb1bb143eb3d9312f9b1373c" resname="mediatheque.filters.audios">
+        <source>mediatheque.filters.audios</source>
+        <target>Audios</target>
+      </trans-unit>
+      <trans-unit id="768380361babadeee948da78a276b8ae" resname="mediatheque.filters.photos">
+        <source>mediatheque.filters.photos</source>
+        <target>Photos</target>
+      </trans-unit>
+      <trans-unit id="52a3337236582f0e1e218409938c5a8b" resname="mediatheque.filters.submit">
+        <source>mediatheque.filters.submit</source>
+        <target>Lancer la recherche</target>
+      </trans-unit>
+      <trans-unit id="ade2cffefe64b585e50a894e58a6ffde" resname="mediatheque.filters.videos">
+        <source>mediatheque.filters.videos</source>
+        <target>Vidéos</target>
+      </trans-unit>
+      <trans-unit id="23cb77a2f576bcec3d4e2f5a85c6f6ba" resname="mediatheque.moreresults">
+        <source>mediatheque.moreresults</source>
+        <target><![CDATA[Afficher <strong>plus de résultats</strong>]]></target>
+      </trans-unit>
+      <trans-unit id="7926b2c9a5487fd97e52e6266838ba51" resname="mediatheque.title.nosresults">
+        <source>mediatheque.title.nosresults</source>
+        <target>Il n'existe aucun résultat pour votre recherche</target>
+      </trans-unit>
+      <trans-unit id="c81bdddaa4b2da44a8012c0fe234c650" resname="mediatheque.title.ourselection">
+        <source>mediatheque.title.ourselection</source>
+        <target>Notre Sélection</target>
+      </trans-unit>
+      <trans-unit id="9846d83186cf25d3cc5950d1f73eca3e" resname="movie.poster">
+        <source>movie.poster</source>
+        <target>L'affiche</target>
+      </trans-unit>
+      <trans-unit id="2208222aa1882845dbc41ec5e3a9c42a" resname="palmares.camerador.alt.quinzaine">
+        <source>palmares.camerador.alt.quinzaine</source>
+        <target>palmares.camerador.alt.quinzaine</target>
+      </trans-unit>
+      <trans-unit id="f63d4c0ce7f742a3ef14cb5413fbba4c" resname="palmares.camerador.alt.semainecritique">
+        <source>palmares.camerador.alt.semainecritique</source>
+        <target>palmares.camerador.alt.semainecritique</target>
+      </trans-unit>
+      <trans-unit id="02be3f6e8870c5a10b6ac52474be448a" resname="palmares.camerador.title.lesautresfilmsenlice">
+        <source>palmares.camerador.title.lesautresfilmsenlice</source>
+        <target>Les films en lice dans les autres sélections</target>
+      </trans-unit>
+      <trans-unit id="8dbda67d4c49a4485db1dff737592796" resname="palmares.camerador.title.lesfilmsenlice">
+        <source>palmares.camerador.title.lesfilmsenlice</source>
+        <target>Les films en lice dans la sélection officielle</target>
+      </trans-unit>
+      <trans-unit id="be1760691ccdcc966127cf7f6c476f01" resname="participate.accredit">
+        <source>participate.accredit</source>
+        <target>S'accréditer</target>
+      </trans-unit>
+      <trans-unit id="452178fb450ea68c351d2ce3d6688fe6" resname="participate.guide.pratique">
+        <source>participate.guide.pratique</source>
+        <target>Guide Pratique</target>
+      </trans-unit>
+      <trans-unit id="d0bf9c26ac14c16ec2d18ad670c6fc1a" resname="participate.prepare.sejour">
+        <source>participate.prepare.sejour</source>
+        <target>Préparer son séjour</target>
+      </trans-unit>
+      <trans-unit id="b95e5c6baf0c1f36fda51bf8bc8a2cba" resname="participate.register.movie">
+        <source>participate.register.movie</source>
+        <target>Inscrire un film</target>
+      </trans-unit>
+      <trans-unit id="1f835da4589fac7b829c0b37e1103319" resname="participate.register.procedure">
+        <source>participate.register.procedure</source>
+        <target>Consultez la procédure d'inscription en fonction de la catégorie</target>
+      </trans-unit>
+      <trans-unit id="bf45e2ab7690484ca8d35c680d485fac" resname="participate.rules">
+        <source>participate.rules</source>
+        <target>Règlement</target>
+      </trans-unit>
+      <trans-unit id="bf7367d0137c158ed70f329c3245afee" resname="participate.see.rules">
+        <source>participate.see.rules</source>
+        <target>Voir le règlement</target>
+      </trans-unit>
+      <trans-unit id="c70d8ff9d81c84f3e279bf97aa5b8461" resname="retrospective.69ansfestival">
+        <source>retrospective.69ansfestival</source>
+        <target>69 ans de festival</target>
+      </trans-unit>
+      <trans-unit id="b9bda3feac7bd8e9358c8ff58cc3c395" resname="retrospective.affiche.partager">
+        <source>retrospective.affiche.partager</source>
+        <target>Partager</target>
+      </trans-unit>
+      <trans-unit id="61a2ef61195b38aacb38c6d0fb8aa042" resname="retrospective.decouvrir">
+        <source>retrospective.decouvrir</source>
+        <target>Découvrir</target>
+      </trans-unit>
+      <trans-unit id="255294d1e623ddbe4346ffa3cb58c66e" resname="retrospective.edition">
+        <source>retrospective.edition</source>
+        <target>édition</target>
+      </trans-unit>
+      <trans-unit id="a60a91f7cca763ef8d757c0b108ca830" resname="retrospective.pasdecontenu">
+        <source>retrospective.pasdecontenu</source>
+        <target>Il n'y a pas de contenu pour cette édition</target>
+      </trans-unit>
+      <trans-unit id="d84cd7f613a68337585a9d1dc9296215" resname="retrospective.retour">
+        <source>retrospective.retour</source>
+        <target>Retour à la rétrospective</target>
+      </trans-unit>
+      <trans-unit id="b5e72b9d3e62a68566678b6c85dc6200" resname="retrospective.revivez">
+        <source>retrospective.revivez</source>
+        <target>Revivez tous les moments forts de l'histoire du Festival de Cannes à travers cette timeline interactive</target>
+      </trans-unit>
+      <trans-unit id="871fc060ca4cd5e3eb332c81629bc77e" resname="search.form.actor">
+        <source>search.form.actor</source>
+        <target>Acteur</target>
+      </trans-unit>
+      <trans-unit id="693035d0fe7a1d3c88dedf2c007c8b38" resname="search.form.artists">
+        <source>search.form.artists</source>
+        <target>Artistes</target>
+      </trans-unit>
+      <trans-unit id="21d4c4131fb7a14f6296ef1b4756e121" resname="search.form.audios">
+        <source>search.form.audios</source>
+        <target>Audios</target>
+      </trans-unit>
+      <trans-unit id="1fec0ed5769c7475c170f204d218d3f2" resname="search.form.camerador">
+        <source>search.form.camerador</source>
+        <target>Caméra d'or</target>
+      </trans-unit>
+      <trans-unit id="b63276308099585280cb63993631a652" resname="search.form.cinefondation">
+        <source>search.form.cinefondation</source>
+        <target>Cinéfondation</target>
+      </trans-unit>
+      <trans-unit id="61d4b684acea977d0ea7d027fc04ab46" resname="search.form.competition">
+        <source>search.form.competition</source>
+        <target>Compétition</target>
+      </trans-unit>
+      <trans-unit id="3db7fe58592c56b90e086558c099e5fd" resname="search.form.composer">
+        <source>search.form.composer</source>
+        <target>Compositeur</target>
+      </trans-unit>
+      <trans-unit id="dd6a0a3c5beec0dea0fc3254a32ee00d" resname="search.form.copiesrestaurees">
+        <source>search.form.copiesrestaurees</source>
+        <target>Copies restaurées</target>
+      </trans-unit>
+      <trans-unit id="5a5e430a903d5670e924e4c2c38cecbb" resname="search.form.country">
+        <source>search.form.country</source>
+        <target>Pays</target>
+      </trans-unit>
+      <trans-unit id="679504c7e0d932491699963cbadda30e" resname="search.form.courtmetrage">
+        <source>search.form.courtmetrage</source>
+        <target>Courts Métrages</target>
+      </trans-unit>
+      <trans-unit id="9a6f7d3d6e44645a19e6ec673e7d83ff" resname="search.form.director">
+        <source>search.form.director</source>
+        <target>Réalisateur</target>
+      </trans-unit>
+      <trans-unit id="b748796dea0dfb91156bc08b26e3fac7" resname="search.form.distributor">
+        <source>search.form.distributor</source>
+        <target>Distributeur</target>
+      </trans-unit>
+      <trans-unit id="892aea5d451528ccc8ddaf0ff400859f" resname="search.form.documentaires">
+        <source>search.form.documentaires</source>
+        <target>Documentaires</target>
+      </trans-unit>
+      <trans-unit id="1a4f5a9acd0b486064da29bde9af2e2b" resname="search.form.entrezrecherche">
+        <source>search.form.entrezrecherche</source>
+        <target>Entrez votre recherche</target>
+      </trans-unit>
+      <trans-unit id="038175df3b16475592213b850de2100e" resname="search.form.events">
+        <source>search.form.events</source>
+        <target>Événements</target>
+      </trans-unit>
+      <trans-unit id="702af17a726d81f1c7259f5832539457" resname="search.form.format.courtmetrage">
+        <source>search.form.format.courtmetrage</source>
+        <target>Courts Métrages</target>
+      </trans-unit>
+      <trans-unit id="911f061c19767bcf1bbaa9437385e290" resname="search.form.format.longmetrage">
+        <source>search.form.format.longmetrage</source>
+        <target>Longs Métrages</target>
+      </trans-unit>
+      <trans-unit id="38369d1daa490a906ebb315783f9033b" resname="search.form.gender.female">
+        <source>search.form.gender.female</source>
+        <target>Femme</target>
+      </trans-unit>
+      <trans-unit id="389e5948c92512fc47cc35a4c9eb7385" resname="search.form.gender.male">
+        <source>search.form.gender.male</source>
+        <target>Homme</target>
+      </trans-unit>
+      <trans-unit id="d457d3535340a688ed183a9b758e457a" resname="search.form.grandprix">
+        <source>search.form.grandprix</source>
+        <target>Grand Prix</target>
+      </trans-unit>
+      <trans-unit id="1d8eae572e28fa23f69bd1c0899d42ab" resname="search.form.groupamagan">
+        <source>search.form.groupamagan</source>
+        <target>Fondation Groupama Gan</target>
+      </trans-unit>
+      <trans-unit id="0c784242945759c289e8690a42c25bb4" resname="search.form.hommages">
+        <source>search.form.hommages</source>
+        <target>Hommages</target>
+      </trans-unit>
+      <trans-unit id="d7bade180c0877a8de6810a93e0d490d" resname="search.form.horscompetition">
+        <source>search.form.horscompetition</source>
+        <target>Hors Compétition</target>
+      </trans-unit>
+      <trans-unit id="9dc8aba6c0814e430e72b00ec605720c" resname="search.form.invitedhonneur">
+        <source>search.form.invitedhonneur</source>
+        <target>Invité d'honneur</target>
+      </trans-unit>
+      <trans-unit id="0060dae94b4d4e91475442cd2e6c3862" resname="search.form.label.discover">
+        <source>search.form.label.discover</source>
+        <target>Découvrir</target>
+      </trans-unit>
+      <trans-unit id="56bc611e5ff6fe26bbcb0a9e2cd1993e" resname="search.form.label.format">
+        <source>search.form.label.format</source>
+        <target>Format</target>
+      </trans-unit>
+      <trans-unit id="f272d2c9eefc1e58a18b397614b16f2f" resname="search.form.label.genre">
+        <source>search.form.label.genre</source>
+        <target>Genre</target>
+      </trans-unit>
+      <trans-unit id="4b81f2f11b4a75bfb94a3e6fb7038311" resname="search.form.label.profession">
+        <source>search.form.label.profession</source>
+        <target>Profession</target>
+      </trans-unit>
+      <trans-unit id="bf8a77ab9fed3abf3650534ff5419a8e" resname="search.form.label.selection">
+        <source>search.form.label.selection</source>
+        <target>Sélection</target>
+      </trans-unit>
+      <trans-unit id="53a9f1a18f2c3bc5a654aa06e44bbb66" resname="search.form.label.submitsearch">
+        <source>search.form.label.submitsearch</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="bc81e5b69924cd9663691e1ca715ad84" resname="search.form.movies">
+        <source>search.form.movies</source>
+        <target>Films</target>
+      </trans-unit>
+      <trans-unit id="276c08f2fe2120eacc7e648f1e6189d0" resname="search.form.news">
+        <source>search.form.news</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id="4103a013c1ef37ef3c913b47b3986bd4" resname="search.form.operator">
+        <source>search.form.operator</source>
+        <target>Chef opérateur</target>
+      </trans-unit>
+      <trans-unit id="d65ad5e04a45e7c5f8fec5dba5b00d5c" resname="search.form.palmedor">
+        <source>search.form.palmedor</source>
+        <target>Palme d'or</target>
+      </trans-unit>
+      <trans-unit id="8cb21876933240227b35863160f18185" resname="search.form.palmedorcourtmetrage">
+        <source>search.form.palmedorcourtmetrage</source>
+        <target>Palme d'or du court métrage</target>
+      </trans-unit>
+      <trans-unit id="18e4d9d255649655119ef5e21d703f17" resname="search.form.photos">
+        <source>search.form.photos</source>
+        <target>Photos</target>
+      </trans-unit>
+      <trans-unit id="138c59e205d2188a40493f23880d026d" resname="search.form.prixcinefondation">
+        <source>search.form.prixcinefondation</source>
+        <target>Prix cinéfondation</target>
+      </trans-unit>
+      <trans-unit id="d7f3514c44a76ecb51029d07e329a305" resname="search.form.prixinterpretefeminine">
+        <source>search.form.prixinterpretefeminine</source>
+        <target>Prix d'interprétation féminine</target>
+      </trans-unit>
+      <trans-unit id="1ec62790c389120204b4bf2c1d2ad87e" resname="search.form.prixinterpretemasculine">
+        <source>search.form.prixinterpretemasculine</source>
+        <target>Prix d'interprétation masculine</target>
+      </trans-unit>
+      <trans-unit id="c32d88d5c0b7c0760003a3c6d52798ff" resname="search.form.prixjury">
+        <source>search.form.prixjury</source>
+        <target>Prix du jury</target>
+      </trans-unit>
+      <trans-unit id="c92be58968ab5348d5c42cd69152db4e" resname="search.form.prixmiseenscene">
+        <source>search.form.prixmiseenscene</source>
+        <target>Prix de la mise en scène</target>
+      </trans-unit>
+      <trans-unit id="90ca8ae908a1bc5fafc53c0df62bbdf7" resname="search.form.prixscenario">
+        <source>search.form.prixscenario</source>
+        <target>Prix du scénario</target>
+      </trans-unit>
+      <trans-unit id="b86b3d061114266d1f6a300ca8ec0f1e" resname="search.form.prixuncertainregard">
+        <source>search.form.prixuncertainregard</source>
+        <target>Prix un certain regard</target>
+      </trans-unit>
+      <trans-unit id="f158f1e898a9762d835c98b63d3b749f" resname="search.form.producer">
+        <source>search.form.producer</source>
+        <target>Producteur</target>
+      </trans-unit>
+      <trans-unit id="caf7375a4282294f3c561e4e35788c3d" resname="search.form.seancesspeciales">
+        <source>search.form.seancesspeciales</source>
+        <target>Séances spéciales</target>
+      </trans-unit>
+      <trans-unit id="a5b87c3b71b0afd7c813bf41ab32cdbd" resname="search.form.uncertainregard">
+        <source>search.form.uncertainregard</source>
+        <target>Un certain regard</target>
+      </trans-unit>
+      <trans-unit id="0f610a9b10cd0de63a53a5945e76c4e7" resname="search.form.cannesclassics">
+        <source>search.form.cannesclassics</source>
+        <target>Cannes classics</target>
+      </trans-unit>
+      <trans-unit id="bc5c984c71c6c17a5c9badac497cebbb" resname="search.form.cinemadelaplage">
+        <source>search.form.cinemadelaplage</source>
+        <target>Cinéma de la plage</target>
+      </trans-unit>
+      <trans-unit id="6d719771539a8d227421c44257f69432" resname="search.form.videos">
+        <source>search.form.videos</source>
+        <target>Videos</target>
+      </trans-unit>
+      <trans-unit id="0a8104a6f6c72bd92b9b7e887af52f31" resname="search.form.worldcinemaproject">
+        <source>search.form.worldcinemaproject</source>
+        <target>World Cinéma Project</target>
+      </trans-unit>
+      <trans-unit id="4616e4fd71e3ef214e72809572502e7a" resname="search.form.writer">
+        <source>search.form.writer</source>
+        <target>Scénariste</target>
+      </trans-unit>
+      <trans-unit id="c97d61cd5ae515d3ee3ae49829635555" resname="search.result.filter.tous">
+        <source>search.result.filter.tous</source>
+        <target>TOUS</target>
+      </trans-unit>
+      <trans-unit id="84da15907a50c2a71867956d52cd0cbf" resname="search.result.filter.toutes">
+        <source>search.result.filter.toutes</source>
+        <target>TOUTES</target>
+      </trans-unit>
+      <trans-unit id="6910da9e880f5c2c4180dcfdd9d58f61" resname="selection.nav.cannes-classics">
+        <source>selection.nav.cannes-classics</source>
+        <target>Cannes Classics</target>
+      </trans-unit>
+      <trans-unit id="d9ee1cda83b26d7de6551ae5764cd54a" resname="selection.nav.cinema-la-plage">
+        <source>selection.nav.cinema-la-plage</source>
+        <target>Cinéma de la plage</target>
+      </trans-unit>
+      <trans-unit id="c56280185802999aad5e653d237f2fa6" resname="sharemail.btn.envoyer">
+        <source>sharemail.btn.envoyer</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="79dbdffddbad9c1651d7e0866c1eae16" resname="sharemail.form.placeholder.email">
+        <source>sharemail.form.placeholder.email</source>
+        <target>Email des destinataires*</target>
+      </trans-unit>
+      <trans-unit id="9e5917c0f6f29e21b712b59670b4c14f" resname="sharemail.form.placeholder.message">
+        <source>sharemail.form.placeholder.message</source>
+        <target>Votre message</target>
+      </trans-unit>
+      <trans-unit id="454b1a34d2ce9b5cbc4e4bc984ea5ff9" resname="sharemail.form.placeholder.votreemail">
+        <source>sharemail.form.placeholder.votreemail</source>
+        <target>Votre adresse email*</target>
+      </trans-unit>
+      <trans-unit id="6d4818f95b9d022d94e08020fe834562" resname="sharemail.label.copiemail">
+        <source>sharemail.label.copiemail</source>
+        <target>Lien copié !</target>
+      </trans-unit>
+      <trans-unit id="d60c6d74b55d1f2495ac35e3c46657a9" resname="sharemail.label.inscriptionnewsletter">
+        <source>sharemail.label.inscriptionnewsletter</source>
+        <target>Je souhaite recevoir la newsletter du Festival de Cannes</target>
+      </trans-unit>
+      <trans-unit id="36554d76bd60ead7c66bd6acd363117d" resname="sharemail.text.champsobligatoires">
+        <source>sharemail.text.champsobligatoires</source>
+        <target>Champs obligatoires</target>
+      </trans-unit>
+      <trans-unit id="3b6e4dbe913b25c57ebf6c96589819f6" resname="sharemail.text.enapplicationdelaloi">
+        <source>sharemail.text.enapplicationdelaloi</source>
+        <target>En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité. 
+OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.</target>
+      </trans-unit>
+      <trans-unit id="35ef7a7a541f1979da1520f3f8c1195a" resname="sharemail.text.separerparvirgule">
+        <source>sharemail.text.separerparvirgule</source>
+        <target>Séparez les adresses par des virgules</target>
+      </trans-unit>
+      <trans-unit id="dad85d80053f099589c2d28daa0c8428" resname="sitemap.title.plandusite">
+        <source>sitemap.title.plandusite</source>
+        <target>Plan du site</target>
+      </trans-unit>
+      <trans-unit id="ae48b2126f96a53b61a00c5df97e88ff" resname="slider.credit_image">
+        <source>slider.credit_image</source>
+        <target>__slider.credit_image</target>
+      </trans-unit>
+      <trans-unit id="e6b8a30fe884f278ddd843a92bc5a16f" resname="home.title.portfoliodujour">
+        <source>home.title.portfoliodujour</source>
+        <target>__home.title.portfoliodujour</target>
+      </trans-unit>
+      <trans-unit id="432010a316061fa7376dee4deccb997a" resname="movie.btn.ajouteramaselection">
+        <source>movie.btn.ajouteramaselection</source>
+        <target>__movie.btn.ajouteramaselection</target>
+      </trans-unit>
+      <trans-unit id="ddb8c2412265ceb2402ba779851b2fde" resname="movie.middlenav.videos">
+        <source>movie.middlenav.videos</source>
+        <target>__movie.middlenav.videos</target>
+      </trans-unit>
+      <trans-unit id="a3117d92f9f44a644c4fea3707be3d31" resname="movie.middlenav.creditcasting">
+        <source>movie.middlenav.creditcasting</source>
+        <target>__movie.middlenav.creditcasting</target>
+      </trans-unit>
+      <trans-unit id="845fa6b7d944d5640f2c65a4e39cc0d1" resname="movie.middlenav.photos">
+        <source>movie.middlenav.photos</source>
+        <target>__movie.middlenav.photos</target>
+      </trans-unit>
+      <trans-unit id="bd029a3c2ef0880b99146a6e5f0773fc" resname="movie.middlenav.actualites">
+        <source>movie.middlenav.actualites</source>
+        <target>__movie.middlenav.actualites</target>
+      </trans-unit>
+      <trans-unit id="b99061707ca6f379bf80f93bec014522" resname="movie.middlenav.audios">
+        <source>movie.middlenav.audios</source>
+        <target>__movie.middlenav.audios</target>
+      </trans-unit>
+      <trans-unit id="98a3d721cead8a4383f0eacf54bf6263" resname="movie.middlenav.infospresse">
+        <source>movie.middlenav.infospresse</source>
+        <target>__movie.middlenav.infospresse</target>
+      </trans-unit>
+      <trans-unit id="696456a1cded0f01c432e9b4bb78cc94" resname="sharemail.corpo_label.copiemail">
+        <source>sharemail.corpo_label.copiemail</source>
+        <target>__sharemail.corpo_label.copiemail</target>
+      </trans-unit>
+      <trans-unit id="ace48f6b1791ae57a089b6ad6e26e14e" resname="affiche.festival">
+        <source>affiche.festival</source>
+        <target>__affiche.festival</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

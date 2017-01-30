@@ -252,6 +252,8 @@ sonata_media:
                 1980x300: { width: 1980 , height: 300 , quality: 100, constraint: false}
                 #Widget Mosaic Movie Widget
                 368x500: { width: 368, height: 500, quality: 100, constraint: false}
+                #webview
+                640x400: { width: 640, height: 400, quality: 100, constraint: false}
 
         media_image_simple:
             providers:

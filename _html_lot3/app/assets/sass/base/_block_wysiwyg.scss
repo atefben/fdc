@@ -789,3 +789,41 @@ strong.title-center {
   margin-bottom: 20px;
   color: #000;
 }
+
+
+.photos.photo-module.block-01-xs:last-child .slideshow {
+  border-bottom: 0px solid #fff;
+}
+
+.dark {
+  .title-list-cat {
+    color: #fff;
+    padding: 42px;
+    border-bottom: #2c2c2c 1px solid;
+    border-top: #2c2c2c 1px solid;
+    font-size: 1rem;
+    text-align: center;
+
+    .title {
+      max-width: 549px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 30px;
+      font-weight: 700;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+    }
+
+    .title-item {
+      text-align: center;
+      padding: 20px 20px 0;
+      font-size: .875rem;
+      max-width: 977px;
+      margin: 10px auto 2px;
+      line-height: 26px;
+      font-family: $CamphorItalic;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+  }
+}

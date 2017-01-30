@@ -1,0 +1,35 @@
+
+{% set image = widget.news.header|trans_fallback('file') %}
+{% set video = widget.file|trans_fallback('file') %}
+
+{% set header = widget.news.header %}
+{% if header is not null %}
+    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if news.video.image is not null %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% else %}
+        {% set header = widget.news.video.image %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+
+        {% set image = imageTrans.file %}
+    {% endif %}
+{% endif %}
+{{ image }}
+<div class="Article-videoPlayer">
+          <a class="Article-videoPlayer-play" href="#"></a>
+          <video preload="none" style="background-image: url({% path image, 'reference' %})">
+            <source src="{{ s3_server_video ~ video }}" type="video/mp4"/>
+          </video>
+          <div class="Article-videoPlayer-caption">
+            <h4>Discours</h4> <p>{{ widget.news.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}</p>
+            <strong>{{ widget.news|trans_fallback('title') }}</strong>
+          </div>
+        </div>

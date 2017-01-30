@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="800618943025315f869e4e1f09471012" resname="F">
+        <source>F</source>
+        <target>F</target>
+      </trans-unit>
+      <trans-unit id="69691c7bdcc3ce6d5d8a1361f22d04ac" resname="M">
+        <source>M</source>
+        <target>M</target>
+      </trans-unit>
+      <trans-unit id="cf8e37135c7be73cb0ba1dc4b8d57bb0" resname="award.ex_aequo">
+        <source>award.ex_aequo</source>
+        <target>award.ex_aequo</target>
+      </trans-unit>
+      <trans-unit id="e7fd08cdb7fb58d699dc21119c6e1ffc" resname="breadcrumb.69editions.home">
+        <source>breadcrumb.69editions.home</source>
+        <target>69 éditions</target>
+      </trans-unit>
+      <trans-unit id="751d6c103f13e159998ff310eb74fc2b" resname="breadcrumb.retrospective.home">
+        <source>breadcrumb.retrospective.home</source>
+        <target>Rétrospective</target>
+      </trans-unit>
+      <trans-unit id="f3eb305bbfdd62fb7649178a3e53dabd" resname="courtmetrage">
+        <source>courtmetrage</source>
+        <target>courtmetrage</target>
+      </trans-unit>
+      <trans-unit id="41ee70c2f0abd85f540d692a3900b3a7" resname="home.festival.follow">
+        <source>home.festival.follow</source>
+        <target>home.festival.follow</target>
+      </trans-unit>
+      <trans-unit id="ca85e46d3d966e49555063c51802f563" resname="longmetrage">
+        <source>longmetrage</source>
+        <target>longmetrage</target>
+      </trans-unit>
+      <trans-unit id="9ddcf93e3a6951927c3b20f10a0867d5" resname="perspective.retour">
+        <source>perspective.retour</source>
+        <target>perspective.retour</target>
+      </trans-unit>
+      <trans-unit id="c70d8ff9d81c84f3e279bf97aa5b8461" resname="retrospective.69ansfestival">
+        <source>retrospective.69ansfestival</source>
+        <target>69 ans de festival</target>
+      </trans-unit>
+      <trans-unit id="8ed5ad7eaa462991451951cdbc47ffac" resname="retrospective.discover">
+        <source>retrospective.discover</source>
+        <target>Découvrir</target>
+      </trans-unit>
+      <trans-unit id="255294d1e623ddbe4346ffa3cb58c66e" resname="retrospective.edition">
+        <source>retrospective.edition</source>
+        <target>édition</target>
+      </trans-unit>
+      <trans-unit id="a60a91f7cca763ef8d757c0b108ca830" resname="retrospective.pasdecontenu">
+        <source>retrospective.pasdecontenu</source>
+        <target>Il n'y a pas de contenu pour cette édition</target>
+      </trans-unit>
+      <trans-unit id="d84cd7f613a68337585a9d1dc9296215" resname="retrospective.retour">
+        <source>retrospective.retour</source>
+        <target>Retour à la rétrospective</target>
+      </trans-unit>
+      <trans-unit id="b5e72b9d3e62a68566678b6c85dc6200" resname="retrospective.revivez">
+        <source>retrospective.revivez</source>
+        <target>Revivez tous les moments forts de l'histoire du Festival de Cannes à travers cette timeline interactive</target>
+      </trans-unit>
+      <trans-unit id="ae48b2126f96a53b61a00c5df97e88ff" resname="slider.credit_image">
+        <source>slider.credit_image</source>
+        <target>Crédit image</target>
+      </trans-unit>
+      <trans-unit id="94aaaacb11aee6bdd123e232506508b0" resname="header.mainnav.nav.jourapresjour">
+        <source>header.mainnav.nav.jourapresjour</source>
+        <target>__header.mainnav.nav.jourapresjour</target>
+      </trans-unit>
+      <trans-unit id="53047c0621f5ac3473edade951c3270f" resname="home.article.btn.ajouteramaselection">
+        <source>home.article.btn.ajouteramaselection</source>
+        <target>__home.article.btn.ajouteramaselection</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

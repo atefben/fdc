@@ -8,7 +8,8 @@ var owInitGrid = function (id) {
                 itemSelector: '.item',
                 layoutMode: 'packery',
                 packery: {
-                    columnWidth: '.grid-sizer'
+                    columnWidth: '.grid-sizer',
+                    gutter: 0
                 }
             });
 
@@ -20,7 +21,7 @@ var owInitGrid = function (id) {
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                layoutMode: 'masonry',
+                layoutMode: 'packery',
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
@@ -35,26 +36,58 @@ var owInitGrid = function (id) {
 
         var number = 0;
 
-        $('.read-more.ajax-request').off('click').on('click', function(e){
-            e.preventDefault();
+        if($('.home').length){
+            $('.read-more.ajax-request').off('click').on('click', function(e){
+                e.preventDefault();
 
-            var url = $(this).attr('href');
+                var url = $(this).attr('href');
 
-            var dateTime = $('.last-element').data('time');
-            console.log(dateTime);
+                var dateTime = $('.last-element').data('time');
+                console.log(dateTime);
 
-            $.get( url, {date: dateTime}, function( data ) {
+                $.get( url, {date: dateTime}, function( data ) {
 
-                if(data == null){
-                    return false;
-                }else{
-                    data = $(data);
-                    $gridMore.append(data).isotope( 'addItems', data );
-                    $gridMore.isotope();
-                }
+                    if(data == null){
+                        return false;
+                    }else{
+                        data = $(data);
+                        $gridMore.append(data).isotope( 'addItems', data );
+                        $gridMore.isotope();
+                    }
+                });
+
             });
+        }else{
+            $('.read-more.ajax-request').off('click').on('click', function(e){
+                e.preventDefault();
+                var url = $(this).attr('href');
 
-        });
+                $.post({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        search: $('input[name="search"]').val(),
+                        photo: $('input[name="photo"]').val(),
+                        video: $('input[name="video"]').val(),
+                        audio: $('input[name="audio"]').val(),
+                        'year-start': $('input[name="year-start"]').val(),
+                        'year-end': $('input[name="year-end"]').val(),
+                        pg: parseInt($('input[name="pg"]').val())+1
+                    },
+                    success: function(data) {
+                        data = $(data);
+                        $grid.append(data).isotope( 'addItems', data );
+                        $grid.isotope();
+                        $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+
+                        owinitSlideShow($grid);
+                        initVideo();
+                        initAudio();
+
+                    }
+                })
+            });
+        }
 
 
         if ($('.jury').length) {
@@ -176,35 +209,7 @@ var owInitGrid = function (id) {
             });
         });
 
-        $('.read-more.ajax-request').off('click').on('click', function(e){
-            e.preventDefault();
-            var url = $(this).attr('href');
 
-            $.post({
-                type: 'POST',
-                    url: url,
-                    data: {
-                    search: $('input[name="search"]').val(),
-                        photo: $('input[name="photo"]').val(),
-                        video: $('input[name="video"]').val(),
-                        audio: $('input[name="audio"]').val(),
-                        'year-start': $('input[name="year-start"]').val(),
-                        'year-end': $('input[name="year-end"]').val(),
-                        pg: parseInt($('input[name="pg"]').val())+1
-                },
-                success: function(data) {
-                    data = $(data);
-                    $grid.append(data).isotope( 'addItems', data );
-                    $grid.isotope();
-                    $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
-
-                    owinitSlideShow($grid);
-                    initVideo();
-                    initAudio();
-
-                }
-            })
-        });
 
         var trunTitle = function() {
             $.each($('.card.item'), function (i, e) {

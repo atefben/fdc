@@ -494,15 +494,18 @@
     @include transition(all 0.5s $smoothTransition);
 
     @include breakpoint(1600px) {
-      height: 510px;
+      //height: 510px;
+      height: 541px;
     }
 
     @include breakpoint(1280px) {
-      height: 450px;
+      //height: 450px;
+      height: 481px;
     }
 
     @include breakpoint(1024px) {
-      height: 360px;
+      //height: 360px;
+      height: 391px;
     }
 
     .img {

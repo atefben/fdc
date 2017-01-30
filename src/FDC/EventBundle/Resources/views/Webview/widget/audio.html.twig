@@ -1,0 +1,29 @@
+</div>
+{% trans_default_domain 'FDCEventBundle' %}
+{% set file = widget.file %}
+{% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+{% if file %}
+    {% set trans = file.findTranslationByLocale(app.request.locale) %}
+
+    {% if trans is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
+        {% set trans = file.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
+
+    {% set header = widget.file.image %}
+    {% if header is not null %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% endif %}
+{% endif %}
+
+<div class="Article-audioPlayer" 
+      data-date="<strong>Le</strong> 10.05.16"  
+      data-title="Un certain regard<br/>sur le palmarès 2016" 
+      data-file-mp3="{{ s3_server_audio ~ trans.mp3Url }}">&nbsp;</div>
+<div class="Article-content">
