@@ -21,7 +21,7 @@ class MdfConferenceProgramDayCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfConferenceProgramDay", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="MdfConferenceProgramDay")
      */
     protected $conferenceProgramDay;
 
