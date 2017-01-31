@@ -109,7 +109,12 @@ class ServiceWidgetProductAdmin extends Admin
                             new NotBlank(),
                         ),
                         'required' => true,
-//                        'field_type'         => 'ckeditor',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
+                        'field_type'         => 'ckeditor',
+                        'config_name' => 'widget',
+                        'input_sync' => true
                     ),
                     'createdAt'    => array(
                         'display' => false,
