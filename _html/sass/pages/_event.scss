@@ -72,6 +72,8 @@
 
     .content {
       background: white;
+      visibility: hidden;
+      height: 0px;
     }
 
    .open-selected-conf{
@@ -84,6 +86,11 @@
        .open {
         padding: 40px 0px;
         @include transition(all 0.3s $smoothTransition);
+       }
+
+       .content {
+        visibility: visible!important;
+        height: auto!important;
        }
    } 
 

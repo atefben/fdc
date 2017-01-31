@@ -273,33 +273,31 @@ click();
 
 function smoothScrolling() {
 
-    $('#accordion-conf .open').each(function() {
-        
-        $('#accordion-conf .content').hide();
-        $('#accordion-conf .firstContent').show();
-        
-        $(this).click(function(){
-          
-          $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
-          $('#accordion-conf .open').removeClass('open-selected-conf');
-          $('#accordion-conf .open').closest('li').removeClass('open-selected-conf');
-          $(this).find('.openPlus').toggleClass('noDisplay');
-          $(this).find('.openMinus').toggleClass('doDisplay');
-          $('#accordion-conf .content').slideUp('normal');
-        
-          
-          if($(this).next().is(':hidden') == true) {
+    $('#accordion-conf li').each(function() {
 
-            $(this).closest('li').addClass('open-selected-conf');
-            $(this).siblings().removeClass('open-selected-conf');
-            $('.openPlus').removeClass('noDisplay');
-            $('.openMinus').removeClass('doDisplay');
-            $(this).find('.openPlus').addClass('noDisplay');
-            $(this).find('.openMinus').addClass('doDisplay');
-            $(this).next().slideDown('normal');
+      var clicked = $(this);
+        
+          $(clicked).click(function(){
+
+            if(!$(clicked).hasClass('open-selected-conf')) {
+              $('#accordion-conf li').siblings().removeClass('open-selected-conf');
+              $('#accordion-conf li').removeClass('open-selected-conf');
+              $(clicked).toggleClass('open-selected-conf');
+              $('.openPlus').removeClass('noDisplay');
+              $('.openMinus').removeClass('doDisplay');
+              $(clicked).find('.openPlus').toggleClass('noDisplay');
+              $(clicked).find('.openMinus').toggleClass('doDisplay');
+              }
+
+              else {
+                $(clicked).removeClass('open-selected-conf');
+                $('.openPlus').removeClass('noDisplay');
+                $('.openMinus').removeClass('doDisplay');
+              }
             
-           } 
-       });
+
+
+         });
 
       });
     
