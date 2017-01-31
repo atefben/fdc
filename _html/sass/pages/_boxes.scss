@@ -40,10 +40,11 @@
     .articles {
       height: 560px;
       background: #FFFFFF;
-      width:32%;
+      width: 32.5%;
       display: block;
-      float:left;
-      text-align:left;
+      float: left;
+      text-align: left;
+      margin-left: 0.5%;
 
       .readMore {
           position: absolute;
@@ -51,6 +52,7 @@
           margin-top: 500px;
           margin-left: 30px;
           font-size: 25px;
+          color: #333;
       }
 
       @media screen and (max-width: $mobileWidth) {
