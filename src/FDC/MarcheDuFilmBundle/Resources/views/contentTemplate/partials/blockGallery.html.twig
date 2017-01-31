@@ -9,8 +9,8 @@
                 {% endif %}
                 <div class="img{{ loop.index == 1 ? ' active' : '' }}">
                     <a id="{{ 'photo' ~ loop.index }}" class="chocolat-image ajax" href="{% path image.media|trans_fallback('file'), 'reference' %}"
-                       title='<span class="category">{{ imageMediaTranslation ? imageMediaTranslation.title : imageMediaTranslation }}</span><span class="date">{{ image.media.publishedAt|date('d.m.y') }}</span><h2>{{ translations.alt }}</h2>'
-                       data-credit="{{ translations.legend ~ ' - @' ~  translations.copyright }}">
+                       title='<span class="category">{{ imageMediaTranslation ? imageMediaTranslation.title : imageMediaTranslation }}</span><span class="date">{{ image.media.publishedAt|date('d.m.y') }}</span><h2>{{ translations.alt|truncate(80, true, "...") }}</h2>'
+                       data-credit="{{ translations.legend|slice(0, 20) ~ ' - @' ~  translations.copyright|slice(0, 20) }}">
                         <img src="{% path image.media|trans_fallback('file'), 'reference' %}" alt="" />
                     </a>
                 </div>
