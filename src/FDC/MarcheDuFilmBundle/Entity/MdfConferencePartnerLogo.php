@@ -128,7 +128,7 @@ class MdfConferencePartnerLogo
         }
 
         if($string == '') {
-            $string = $this->image->findTranslationByLocale('fr')->getAlt();
+            $string = $this->image->findTranslationByLocale('fr')->getLegend();
         }
 
         return (string) $string;
@@ -141,6 +141,10 @@ class MdfConferencePartnerLogo
 
         if ($translation !== null) {
             $string = $translation->getUrl();
+        }
+
+        if (!$string) {
+            $string = $this->image->findTranslationByLocale('fr')->getLegend();
         }
 
         return $string;
