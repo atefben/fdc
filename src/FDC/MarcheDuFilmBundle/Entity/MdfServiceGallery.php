@@ -57,27 +57,6 @@ class MdfServiceGallery implements TranslateMainInterface
     private $product;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $displayedHomeCorpo;
-
-    /**
-     * @var MdfTheme
-     *
-     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MdfTheme")
-     *
-     */
-    private $themeHomeCorpo;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $dateHomeCorpo;
-    /**
      * ArrayCollection
      */
     protected $translations;
@@ -183,84 +162,5 @@ class MdfServiceGallery implements TranslateMainInterface
     {
         return $this->medias;
     }
-
-    public function getExportCreatedAt()
-    {
-        return Export::formatDate($this->getCreatedAt());
-    }
-
-    public function getExportUpdatedAt()
-    {
-        return Export::formatDate($this->getUpdatedAt());
-    }
-
-
-    /**
-     * Set displayedHomeCorpo
-     *
-     * @param boolean $displayedHomeCorpo
-     * @return GalleryMdf
-     */
-    public function setDisplayedHomeCorpo($displayedHomeCorpo)
-    {
-        $this->displayedHomeCorpo = $displayedHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedHomeCorpo
-     *
-     * @return boolean 
-     */
-    public function getDisplayedHomeCorpo()
-    {
-        return $this->displayedHomeCorpo;
-    }
-
-    /**
-     * Set dateHomeCorpo
-     *
-     * @param \DateTime $dateHomeCorpo
-     * @return GalleryMdf
-     */
-    public function setDateHomeCorpo($dateHomeCorpo)
-    {
-        $this->dateHomeCorpo = $dateHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get dateHomeCorpo
-     *
-     * @return \DateTime 
-     */
-    public function getDateHomeCorpo()
-    {
-        return $this->dateHomeCorpo;
-    }
-
-    /**
-     * Set themeHomeCorpo
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo
-     * @return GalleryMdf
-     */
-    public function setThemeHomeCorpo(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo = null)
-    {
-        $this->themeHomeCorpo = $themeHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get themeHomeCorpo
-     *
-     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
-     */
-    public function getThemeHomeCorpo()
-    {
-        return $this->themeHomeCorpo;
-    }
 }
+
