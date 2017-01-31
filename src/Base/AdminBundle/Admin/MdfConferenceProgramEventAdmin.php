@@ -75,10 +75,6 @@ class MdfConferenceProgramEventAdmin extends Admin
                         'label'              => 'form.mdf.conference_program.description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
-                    'eventHour'          => array(
-                        'label'              => 'form.mdf.conference_program.eventHour',
-                        'translation_domain' => 'BaseAdminBundle'
-                    ),
                     'eventPlace'          => array(
                         'label'              => 'form.mdf.conference_program.eventPlace',
                         'translation_domain' => 'BaseAdminBundle'
@@ -99,6 +95,16 @@ class MdfConferenceProgramEventAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle'
                     )
                 )
+            ))
+            ->add('startTimeEvent', 'time', array(
+                'label' => 'form.mdf.conference_program.eventStarTime',
+                'required' => false,
+                'attr' => array('class' => 'fixed-time')
+            ))
+            ->add('endTimeEvent', 'time', array(
+                'label' => 'form.mdf.conference_program.eventStarTime',
+                'required' => false,
+                'attr' => array('class' => 'fixed-time')
             ))
             ->add('speakerCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,

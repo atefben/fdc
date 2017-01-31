@@ -108,10 +108,10 @@ class ProgrammeManager
                             $globalEventsSchedules[$translatableId][] = $product;
                         }
                     }
+                    usort($globalEventsSchedules[$translatableId], function ($a, $b) {
+                        return $a->getTranslatable()->getStartTimeEvent() > $b->getTranslatable()->getStartTimeEvent();
+                    });
                 }
-                usort($globalEventsSchedules[$translatableId], function ($a, $b) {
-                   return $a->getTranslatable()->getStartTimeEvent() > $b->getTranslatable()->getStartTimeEvent();
-                });
             }
             return $globalEventsSchedules;
         }

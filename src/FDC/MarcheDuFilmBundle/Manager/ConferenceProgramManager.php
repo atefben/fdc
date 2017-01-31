@@ -145,6 +145,9 @@ class ConferenceProgramManager
                             $eventsCollection[$dayId][] = $event;
                         }
                     }
+                    usort($eventsCollection[$dayId], function ($a, $b) {
+                        return $a->getTranslatable()->getStartTimeEvent() > $b->getTranslatable()->getStartTimeEvent();
+                    });
                 }
             }
             return $eventsCollection;
