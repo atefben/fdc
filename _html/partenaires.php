@@ -26,9 +26,10 @@
       <div class="greyBckg">
         <div class="bigContainer">      
             <ul class="tabs tabsMargin">
-              <li class="active thirdTab" rel="tab1"><h4 class="redActive customClassRed">Sales agents</h4>Le Lorem Ipsum est simplement du faux texte</li>
-              <li class="thirdTab" rel="tab2"><h4 class="redActive">Festivals</h4>Le Lorem Ipsum est simplement du faux texte</li>
-              <li class="thirdTab" rel="tab3"><h4 class="redActive">Specialized organisations</h4>Le Lorem Ipsum est simplement du faux texte</li>
+              <li class="active partnersTabs" rel="tab1"><h4 class="redActive customClassRed">Sales agents</h4>Le Lorem Ipsum est simplement du faux texte</li>
+              <li class="partnersTabs" rel="tab2"><h4 class="redActive">Festivals</h4>Le Lorem Ipsum est simplement du faux texte</li>
+              <li class="partnersTabs" rel="tab3"><h4 class="redActive">Specialized organisations</h4>Le Lorem Ipsum est simplement du faux texte</li>
+              <li class="partnersTabs" rel="tab4"><h4 class="redActive">Specialized organisations</h4>Le Lorem Ipsum est simplement du faux texte</li>
             </ul>
         </div>
       </div>
@@ -72,6 +73,18 @@
                   </div>
               </div>
               <div id="tab3" class="tab_content">
+                  <div class="tabbing">
+                    <div class="tabpicturesBox"><img src="/img/partner1.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner2.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner1.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner2.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner1.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner2.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner1.png"></div>
+                    <div class="tabpicturesBox"><img src="/img/partner2.png"></div>
+                  </div>
+              </div>
+              <div id="tab4" class="tab_content">
                   <div class="tabbing">
                     <div class="tabpicturesBox"><img src="/img/partner1.png"></div>
                     <div class="tabpicturesBox"><img src="/img/partner2.png"></div>
