@@ -82,10 +82,8 @@ class ServicesManager
             $serviceWidgetRepo = $this->em->getRepository(ServiceWidgetTranslation::class);
 
             $serviceWidgetCollection = $serviceWidgetCollectionRepo
-                ->findBy(
-                    array(
-                        'service' => $service->getTranslatable()->getId()
-                    )
+                ->getWidgetsDependingOnPostion(
+                    $service->getTranslatable()->getId()
                 );
 
             if ($serviceWidgetCollection) {
