@@ -214,12 +214,14 @@ function initPagination() {
     }
     if ($(this).attr('id') == 0) {
       $(this).addClass('pagination-active');
+      $('.paginationNavLeft').addClass('arrow-inactive');
     }
   });
 }
 
 function initNewsPage() {
   $('.dropdown').children().click(function() {
+    $('.dropArrow').toggleClass('dropArrowOpen');
     $('#eventSelector').toggleClass("showeventSelector");
     $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
   });
@@ -237,6 +239,8 @@ function getNews() {
 
 function setPaginationTabs() {
   var pagesLength = $('div.fifth').length;
+  $('.paginationNavLeft').removeClass('arrow-inactive');
+  $('.paginationNavRight').removeClass('arrow-inactive');
 
   if (pagesLength > paginationLimit) {
     $(".fifth").each(function (index, element) {
@@ -253,12 +257,14 @@ function setPaginationTabs() {
           $(this).show();
         }
       } else if (pageIndex == pagesLength - 1) {
+        $('.paginationNavRight').addClass('arrow-inactive');
         if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 3)) {
           $(this).hide();
         } else {
           $(this).show();
         }
       } else if (pageIndex == 0) {
+        $('.paginationNavLeft').addClass('arrow-inactive');
         if (($(this).attr('id') > pageIndex + 3)) {
           $(this).hide();
         } else {
