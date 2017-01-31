@@ -45,9 +45,16 @@ class MdfGlobalEventsDay
      */
     protected $schedulesCollection;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="MdfGlobalEventsDaysCollection", mappedBy="day")
+     */
+    protected $daysCollection;
+
     public function __construct()
     {
         $this->schedulesCollection = new ArrayCollection();
+        $this->daysCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -136,5 +143,33 @@ class MdfGlobalEventsDay
     public function prePersist()
     {
         $this->dateString = $this->dateEvent->format('Y-m-d');
+    }
+
+    /**
+     * @param MdfGlobalEventsDaysCollection $daysCollection
+     * @return $this
+     */
+    public function addDaysCollection(\FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDaysCollection $daysCollection)
+    {
+        $daysCollection->setDay($this);
+        $this->daysCollection[] = $daysCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfGlobalEventsDaysCollection $daysCollection
+     */
+    public function removeDaysCollection(\FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDaysCollection $daysCollection)
+    {
+        $this->daysCollection->removeElement($daysCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDaysCollection()
+    {
+        return $this->daysCollection;
     }
 }

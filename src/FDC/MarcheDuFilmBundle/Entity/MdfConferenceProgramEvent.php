@@ -55,12 +55,18 @@ class MdfConferenceProgramEvent
     protected $speakerCollections;
 
     /**
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection", mappedBy="conferenceProgramEvent")
+     */
+    protected $programEventCollection;
+
+    /**
      * MdfContentTemplate constructor.
      */
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->speakerCollections = new ArrayCollection();
+        $this->programEventCollection = new ArrayCollection();
     }
 
     /**
@@ -207,3 +213,33 @@ class MdfConferenceProgramEvent
         $this->endTimeEvent = $endTimeEvent;
     }
 }
+
+    /**
+     * @param MdfConferenceProgramEventCollection $programEventCollection
+     * @return $this
+     */
+    public function addProgramEventCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection $programEventCollection)
+    {
+        $programEventCollection->setConferenceProgramEvent($this);
+        $this->programEventCollection[] = $programEventCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfConferenceProgramEventCollection $programEventCollection
+     */
+    public function removeProgramEventCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection $programEventCollection)
+    {
+        $this->programEventCollection->removeElement($programEventCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProgramEventCollection()
+    {
+        return $this->programEventCollection;
+    }
+}
+

@@ -22,16 +22,18 @@ class MdfProgramSpeakerCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfProgramSpeaker")
+     * @ORM\ManyToOne(targetEntity="MdfProgramSpeaker", cascade={"all"}, inversedBy="programSpeakerCollection")
      * @Assert\Count(
      *      max = "8",
      *      maxMessage = "validation.speakers_max"
      * )
+     * @ORM\JoinColumn(name="program_speakers_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $programSpeakers;
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfConferenceProgramEvent", inversedBy="speakersCollections")
+     * @ORM\JoinColumn(name="program_event_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $programEvent;
 

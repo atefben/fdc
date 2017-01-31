@@ -28,7 +28,7 @@ class ServiceWidgetProduct
 
     /**
      * @var MdfServiceGallery
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery", inversedBy="product")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery", cascade={"all"}, inversedBy="product")
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $gallery;
@@ -42,6 +42,12 @@ class ServiceWidgetProduct
 
     /**
      * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="ServiceWidgetProductCollection", mappedBy="product")
+     */
+    protected $productsCollection;
+
+    /**
+     * @var ArrayCollection
      *
      */
     protected $translations;
@@ -49,6 +55,7 @@ class ServiceWidgetProduct
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->productsCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -136,4 +143,33 @@ class ServiceWidgetProduct
     {
         $this->position = $position;
     }
+
+    /**
+     * @param ServiceWidgetProductCollection $productCollection
+     * @return $this
+     */
+    public function addProductsCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection $productCollection)
+    {
+        $productCollection->setProduct($this);
+        $this->productsCollection[] = $productCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param ServiceWidgetProductCollection $productCollection
+     */
+    public function removeProductsCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection $productCollection)
+    {
+        $this->productsCollection->removeElement($productCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProductsCollections()
+    {
+        return $this->productsCollection;
+    }
 }
+

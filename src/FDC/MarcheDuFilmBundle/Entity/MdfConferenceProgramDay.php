@@ -43,6 +43,17 @@ class MdfConferenceProgramDay
     protected $eventWidgetCollections;
 
     /**
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection", mappedBy="conferenceProgramDay")
+     */
+    protected $programDayCollection;
+
+    public function __construct()
+    {
+        $this->programDayCollection = new ArrayCollection();
+        $this->eventWidgetCollections = new ArrayCollection();
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -118,5 +129,33 @@ class MdfConferenceProgramDay
     public function __toString()
     {
         return (string) $this->date->format('Y-m-d');
+    }
+
+    /**
+     * @param MdfConferenceProgramDayCollection $programDayCollection
+     * @return $this
+     */
+    public function addProgramDayCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection $programDayCollection)
+    {
+        $programDayCollection->setConferenceProgramDay($this);
+        $this->programDayCollection[] = $programDayCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfConferenceProgramDayCollection $programDayCollection
+     */
+    public function removeProgramDayCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection $programDayCollection)
+    {
+        $this->programDayCollection->removeElement($programDayCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProgramDayCollection()
+    {
+        return $this->programDayCollection;
     }
 }

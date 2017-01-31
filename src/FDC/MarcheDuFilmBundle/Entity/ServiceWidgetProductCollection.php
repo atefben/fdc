@@ -27,12 +27,14 @@ class ServiceWidgetProductCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ServiceWidgetProduct", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="ServiceWidgetProduct", cascade={"all"}, inversedBy="productsCollection")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $product;
 
     /**
      * @ORM\ManyToOne(targetEntity="ServiceWidget", inversedBy="productCollections")
+     * @ORM\JoinColumn(name="service_widget_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $serviceWidget;
 

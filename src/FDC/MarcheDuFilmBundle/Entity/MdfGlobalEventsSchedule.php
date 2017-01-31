@@ -27,6 +27,12 @@ class MdfGlobalEventsSchedule
     protected $id;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="MdfGlobalEventsSchedulesCollection", mappedBy="schedule")
+     */
+    protected $schedulesCollection;
+
+    /**
      * @var \DateTime
      * @ORM\Column(name="start_time_event", type="datetime", nullable=true)
      */
@@ -46,6 +52,7 @@ class MdfGlobalEventsSchedule
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->schedulesCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -129,6 +136,34 @@ class MdfGlobalEventsSchedule
     public function setEndTimeEvent($endTimeEvent)
     {
         $this->endTimeEvent = $endTimeEvent;
+    }
+
+    /**
+     * @param MdfGlobalEventsSchedulesCollection $schedulesCollection
+     * @return $this
+     */
+    public function addSchedulesCollection(\FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedulesCollection $schedulesCollection)
+    {
+        $schedulesCollection->setSchedule($this);
+        $this->schedulesCollection[] = $schedulesCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfGlobalEventsSchedulesCollection $schedulesCollection
+     */
+    public function removeSchedulesCollection(\FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedulesCollection $schedulesCollection)
+    {
+        $this->schedulesCollection->removeElement($schedulesCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSchedulesCollection()
+    {
+        return $this->schedulesCollection;
     }
 }
 

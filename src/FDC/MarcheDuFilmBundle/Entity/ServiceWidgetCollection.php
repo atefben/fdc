@@ -27,18 +27,20 @@ class ServiceWidgetCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ServiceWidget")
+     * @ORM\ManyToOne(targetEntity="ServiceWidget", cascade={"all"}, inversedBy="widgetsCollection")
      * @Assert\Count(
      *      max = "4",
      *      min = "1",
      *      minMessage = "validation.service_widget_min",
      *      maxMessage = "validation.service_widget_max"
      * )
+     * @ORM\JoinColumn(name="widget_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $widget;
 
     /**
      * @ORM\ManyToOne(targetEntity="Service", inversedBy="widgetCollections")
+     * @ORM\JoinColumn(name="service_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $service;
 

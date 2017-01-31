@@ -27,14 +27,14 @@ class HomeSlider
 
     /**
      * @var MediaMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
-     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="homeSlider")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL") 
      */
     protected $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="sliders")
-     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;
 

@@ -28,13 +28,15 @@ class GalleryMdfMedia
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="MediaMdfImage", inversedBy="galleryMdfMedia")
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $media;
     
     /**
      * @ORM\ManyToOne(targetEntity="GalleryMdf", inversedBy="medias")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $gallery;
 

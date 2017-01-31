@@ -40,7 +40,8 @@ abstract class MdfContentTemplateWidget
     /**
      * @var MdfConferenceProgram
      *
-     * @ORM\ManyToOne(targetEntity="MdfConferenceProgram", inversedBy="contentTemplateConferenceWidgets")
+     * @ORM\ManyToOne(targetEntity="MdfConferenceProgram", cascade={"all"}, inversedBy="contentTemplateConferenceWidgets")
+     * @ORM\JoinColumn(name="conference_program_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferenceProgram;
 

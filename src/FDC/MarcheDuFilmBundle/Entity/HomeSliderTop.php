@@ -39,7 +39,7 @@ class HomeSliderTop
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="slidersTop")
-     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;
 

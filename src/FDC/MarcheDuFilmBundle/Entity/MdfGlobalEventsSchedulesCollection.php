@@ -27,12 +27,14 @@ class MdfGlobalEventsSchedulesCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule", cascade={"all"}, inversedBy="schedulesCollection")
+     * @ORM\JoinColumn(name="schedule_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $schedule;
 
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDay", inversedBy="schedulesCollection")
+     * @ORM\JoinColumn(name="global_events_day_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $globalEventsDay;
 

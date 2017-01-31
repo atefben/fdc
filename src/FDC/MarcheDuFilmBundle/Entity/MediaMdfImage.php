@@ -53,12 +53,65 @@ class MediaMdfImage extends MediaMdf
 
     /**
      * @var MdfConferencePartnerLogo
-     * 
+     *
      * @ORM\OneToMany(targetEntity="MdfConferencePartnerLogo", mappedBy="image")
      */
     protected $logo;
+
+    /**
+     * @var Contact
+     *
+     * @ORM\OneToMany(targetEntity="Contact", mappedBy="image")
+     */
+    protected $contact;
+
+    /**
+     * @var DispatchDeServiceWidget
+     *
+     * @ORM\OneToMany(targetEntity="DispatchDeServiceWidget", mappedBy="image")
+     */
+    protected $dispatchDeService;
+
+    /**
+     * @var GalleryMdfDualAlignMedia
+     *
+     * @ORM\OneToMany(targetEntity="GalleryMdfDualAlignMedia", mappedBy="media")
+     */
+    protected $galleryMdfDualAlignMedia;
+
+    /**
+     * @var GalleryMdfMedia
+     *
+     * @ORM\OneToMany(targetEntity="GalleryMdfMedia", mappedBy="media")
+     */
+    protected $galleryMdfMedia;
+
+    /**
+     * @var GalleryMdfMedia
+     *
+     * @ORM\OneToMany(targetEntity="HeaderFooter", mappedBy="headerBanner")
+     */
+    protected $headerFooter;
     
+    /**
+     * @var HomeSlider
+     *
+     * @ORM\OneToMany(targetEntity="HomeSlider", mappedBy="image")
+     */
+    protected $homeSlider;
     
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->logo = new ArrayCollection();
+        $this->contact = new ArrayCollection();
+        $this->dispatchDeService = new ArrayCollection();
+        $this->galleryMdfDualAlignMedia = new ArrayCollection();
+        $this->galleryMdfMedia = new ArrayCollection();
+        $this->headerFooter = new ArrayCollection();
+        $this->homeSlider = new ArrayCollection();
+    }
 
     public function getApiTranslations()
     {
@@ -140,6 +193,199 @@ class MediaMdfImage extends MediaMdf
         return Export::yesOrNo($this->getDisplayedAll());
     }
 
+    /**
+     * @param MdfConferencePartnerLogo $conferencePartnerLogo
+     * @return $this
+     */
+    public function addLogo(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogo $conferencePartnerLogo)
+    {
+        $conferencePartnerLogo->setImage($this);
+        $this->logo[] = $conferencePartnerLogo;
 
+        return $this;
+    }
 
+    /**
+     * @param MdfConferencePartnerLogo $conferencePartnerLogo
+     */
+    public function removeLogo(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogo $conferencePartnerLogo)
+    {
+        $this->logo->removeElement($conferencePartnerLogo);
+    }
+
+    /**
+     * @return ArrayCollection|MdfConferencePartnerLogo
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param Contact $contact
+     * @return $this
+     */
+    public function addContact(\FDC\MarcheDuFilmBundle\Entity\Contact $contact)
+    {
+        $contact->setImage($this);
+        $this->contact[] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @param Contact $contact
+     */
+    public function removeContact(\FDC\MarcheDuFilmBundle\Entity\Contact $contact)
+    {
+        $this->contact->removeElement($contact);
+    }
+
+    /**
+     * @return ArrayCollection|Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param DispatchDeServiceWidget $dispatchDeServiceWidget
+     * @return $this
+     */
+    public function addDispatchDeService(\FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidget $dispatchDeServiceWidget)
+    {
+        $dispatchDeServiceWidget->setImage($this);
+        $this->dispatchDeService[] = $dispatchDeServiceWidget;
+
+        return $this;
+    }
+
+    /**
+     * @param DispatchDeServiceWidget $dispatchDeServiceWidget
+     */
+    public function removeDispatchDeService(\FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidget $dispatchDeServiceWidget)
+    {
+        $this->dispatchDeService->removeElement($dispatchDeServiceWidget);
+    }
+
+    /**
+     * @return ArrayCollection|DispatchDeServiceWidget
+     */
+    public function getDispatchDeService()
+    {
+        return $this->dispatchDeService;
+    }
+
+    /**
+     * @param GalleryMdfDualAlignMedia $galleryMdfDualAlignMedia
+     * @return $this
+     */
+    public function addGalleryMdfDualAlignMedia(\FDC\MarcheDuFilmBundle\Entity\GalleryMdfDualAlignMedia $galleryMdfDualAlignMedia)
+    {
+        $galleryMdfDualAlignMedia->setMedia($this);
+        $this->galleryMdfDualAlignMedia[] = $galleryMdfDualAlignMedia;
+
+        return $this;
+    }
+
+    /**
+     * @param GalleryMdfDualAlignMedia $galleryMdfDualAlignMedia
+     */
+    public function removeGalleryMdfDualAlignMedia(\FDC\MarcheDuFilmBundle\Entity\GalleryMdfDualAlignMedia $galleryMdfDualAlignMedia)
+    {
+        $this->galleryMdfDualAlignMedia->removeElement($galleryMdfDualAlignMedia);
+    }
+
+    /**
+     * @return ArrayCollection|GalleryMdfDualAlignMedia
+     */
+    public function getGalleryMdfDualAlignMedia()
+    {
+        return $this->galleryMdfDualAlignMedia;
+    }
+
+    /**
+     * @param GalleryMdfMedia $galleryMdfMedia
+     * @return $this
+     */
+    public function addGalleryMdfMedia(\FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia $galleryMdfMedia)
+    {
+        $galleryMdfMedia->setMedia($this);
+        $this->galleryMdfMedia[] = $galleryMdfMedia;
+
+        return $this;
+    }
+
+    /**
+     * @param GalleryMdfMedia $galleryMdfMedia
+     */
+    public function removeGalleryMdfMedia(\FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia $galleryMdfMedia)
+    {
+        $this->galleryMdfMedia->removeElement($galleryMdfMedia);
+    }
+
+    /**
+     * @return ArrayCollection|GalleryMdfMedia
+     */
+    public function getGalleryMdfMedia()
+    {
+        return $this->galleryMdfMedia;
+    }
+
+    /**
+     * @param HeaderFooter $headerFooter
+     * @return $this
+     */
+    public function addHeaderFooter(\FDC\MarcheDuFilmBundle\Entity\HeaderFooter $headerFooter)
+    {
+        $headerFooter->setHeaderBanner($this);
+        $this->headerFooter[] = $headerFooter;
+
+        return $this;
+    }
+
+    /**
+     * @param HeaderFooter $headerFooter
+     */
+    public function removeHeaderFooter(\FDC\MarcheDuFilmBundle\Entity\HeaderFooter $headerFooter)
+    {
+        $this->headerFooter->removeElement($headerFooter);
+    }
+
+    /**
+     * @return ArrayCollection|GalleryMdfMedia
+     */
+    public function getHeaderFooter()
+    {
+        return $this->headerFooter;
+    }
+
+    /**
+     * @param HomeSlider $homeSlider
+     * @return $this
+     */
+    public function addHomeSlider(\FDC\MarcheDuFilmBundle\Entity\HomeSlider $homeSlider)
+    {
+        $homeSlider->setImage($this);
+        $this->homeSlider[] = $homeSlider;
+
+        return $this;
+    }
+
+    /**
+     * @param HomeSlider $homeSlider
+     */
+    public function removeHomeSlider(\FDC\MarcheDuFilmBundle\Entity\HomeSlider $homeSlider)
+    {
+        $this->homeSlider->removeElement($homeSlider);
+    }
+
+    /**
+     * @return ArrayCollection|HomeSlider
+     */
+    public function getHomeSlider()
+    {
+        return $this->homeSlider;
+    }
 }

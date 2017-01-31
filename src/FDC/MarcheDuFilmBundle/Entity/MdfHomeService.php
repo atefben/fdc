@@ -32,7 +32,7 @@ class MdfHomeService
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="services")
-     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;
 
