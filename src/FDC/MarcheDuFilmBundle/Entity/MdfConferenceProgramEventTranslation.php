@@ -51,13 +51,6 @@ class MdfConferenceProgramEventTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $eventHour;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
     protected $eventPlace;
 
     /**
@@ -150,26 +143,6 @@ class MdfConferenceProgramEventTranslation implements TranslateChildInterface
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventHour()
-    {
-        return $this->eventHour;
-    }
-
-    /**
-     * @param $eventHour
-     *
-     * @return $this
-     */
-    public function setEventHour($eventHour)
-    {
-        $this->eventHour = $eventHour;
 
         return $this;
     }

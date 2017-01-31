@@ -36,6 +36,18 @@ class MdfConferenceProgramEvent
     protected $translations;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(name="start_time_event", type="datetime", nullable=true)
+     */
+    protected $startTimeEvent;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="end_time_event", type="datetime", nullable=true)
+     */
+    protected $endTimeEvent;
+
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection", mappedBy="programEvent", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
@@ -161,5 +173,37 @@ class MdfConferenceProgramEvent
         }
 
         return null;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartTimeEvent()
+    {
+        return $this->startTimeEvent;
+    }
+
+    /**
+     * @param \DateTime $startTimeEvent
+     */
+    public function setStartTimeEvent($startTimeEvent)
+    {
+        $this->startTimeEvent = $startTimeEvent;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndTimeEvent()
+    {
+        return $this->endTimeEvent;
+    }
+
+    /**
+     * @param \DateTime $endTimeEvent
+     */
+    public function setEndTimeEvent($endTimeEvent)
+    {
+        $this->endTimeEvent = $endTimeEvent;
     }
 }

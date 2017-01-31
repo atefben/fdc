@@ -35,7 +35,7 @@
                                         </div>
                                         <div>
                                             <span>heure</span>
-                                            <p>{{ event.eventHour }}</p>
+                                            <p>{{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} à {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }}</p>
                                         </div>
                                         <div>
                                             <span>lieu</span>
