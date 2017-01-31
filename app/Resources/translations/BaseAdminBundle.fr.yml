@@ -770,6 +770,7 @@ form:
             conference_producers_workshop: Producers Workshop
             conference_news:
                 title: Sous-titre de page
+            gallery_name: Nom de galerie
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:
