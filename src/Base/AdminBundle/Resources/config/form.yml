@@ -675,5 +675,7 @@ services:
         tags:
             - { name: form.type, alias: 'content_template_widget_video_type'}
         calls:
+            - ['setSonataThemeAdmin', ['@base.admin.mdf_content_template_widget_theme_dummy']]
             - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_image_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+            - ['setThemeAdmin', ['@base.admin.mdf_theme']]

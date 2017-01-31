@@ -9,7 +9,7 @@
             {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': titleHeader.title} %}
         {% endif %}
         <div class="bigContainer">
-            <div class="text-presentation projection presse whoarewe">
+            <div class="projection presse whoarewe">
                 {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockTitleHeader.html.twig' with {'titleHeader': titleHeader} %}
                 {% for widget in widgets %}
                     {% if widget.translatable is defined and widget.translatable.isWidgetText() %}

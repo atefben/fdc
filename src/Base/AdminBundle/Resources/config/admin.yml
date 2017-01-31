@@ -1797,6 +1797,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.mdf_content_template_widget_theme_dummy:
+        class: Base\AdminBundle\Admin\MdfThemeDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideo, BaseAdminBundle:MdfThemeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Theme, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.home_slider_dummy:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\HomeSlider, BaseAdminBundle:MdfImageDummyAdmin]
