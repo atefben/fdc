@@ -61,7 +61,7 @@
                               <h6 class="conf60title">Producers Workshop</h6>
                               <span class="customClass1">Breakfast Meeting</span>
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
-                              <div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div>
+                              <a href="#"><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
                               <hr>
                             </div>
                             <div class="conf30">

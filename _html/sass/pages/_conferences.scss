@@ -260,6 +260,10 @@
         }
     }
 
+    a {
+      color: #505050!important;
+    }
+
     .confButton {
       position: relative;
       text-transform: uppercase;
@@ -268,6 +272,7 @@
       opacity: 0.7;
       margin-top: 40px;
       letter-spacing: 1px;
+      color: #505050!important;
 
       .ensavoirplus {
             -webkit-transform: rotate(180deg);
@@ -389,7 +394,7 @@
           &:before {  
             content: url(/img/access.png);
             position: relative;
-            top: 10px;
+            top: 25px;
             left: -10px;
             /* margin-right: 30px; */
             width: 20px;
@@ -400,7 +405,7 @@
       &:before {
             content: url(/img/clock.png);
             position: relative;
-            top: 10px;
+            top: 25px;
             left: -10px;
             /* margin-right: 30px; */
             width: 20px;
@@ -410,7 +415,7 @@
       &:before {
             content: url(/img/pin.png);
             position: relative;
-            top: 10px;
+            top: 25px;
             left: -10px;
             /* margin-right: 30px; */
             width: 20px;
