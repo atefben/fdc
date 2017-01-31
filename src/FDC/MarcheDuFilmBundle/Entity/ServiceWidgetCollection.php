@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * ServiceWidgetCollection
  *
  * @ORM\Table(name="mdf_service_widget_collection")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceWidgetCollectionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class ServiceWidgetCollection
