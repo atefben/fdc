@@ -481,6 +481,7 @@ admin:
         mdf_next: Next
         mdf_mixers: Mixers
         mdf_goes_to_cannes: Goes to Cannes
+        mdf_presse: Presse
 
 
 dashboard:
