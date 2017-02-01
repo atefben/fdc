@@ -39,7 +39,7 @@ class MdfConferencePartnerTab
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection", mappedBy="conferencePartnerTab",)
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="conferencePartnerTab",)
      */
     protected $conferencePartnerTabCollection;
 

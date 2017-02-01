@@ -38,7 +38,7 @@ class MdfProgramSpeaker
     protected $position;
 
     /**
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection", mappedBy="programSpeakers")
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="programSpeakers")
      */
     protected $programSpeakerCollection;
 

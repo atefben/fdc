@@ -42,7 +42,7 @@ class ServiceWidgetProduct
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="ServiceWidgetProductCollection", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="ServiceWidgetProductCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="product")
      */
     protected $productsCollection;
 

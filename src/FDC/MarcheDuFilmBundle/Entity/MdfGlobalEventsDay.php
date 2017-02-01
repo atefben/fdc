@@ -47,7 +47,7 @@ class MdfGlobalEventsDay
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="MdfGlobalEventsDaysCollection", mappedBy="day")
+     * @ORM\OneToMany(targetEntity="MdfGlobalEventsDaysCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="day")
      */
     protected $daysCollection;
 
