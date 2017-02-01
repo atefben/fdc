@@ -117,7 +117,7 @@
                             <input type="checkbox" id="formats_{{ format.vars.value }}"
                                    name="{{ format.vars.full_name }}" value="{{ format.vars.value }}"
                                    {% if format.vars.data %}checked="checked"{% endif %}/>
-                            <label for="{{ format.vars.id }}">{{ format.vars.label }}</label>
+                            <label for="formats_{{ format.vars.value }}">{{ format.vars.label }}</label>
                         {% endfor %}
                     </div>
                 </div>
