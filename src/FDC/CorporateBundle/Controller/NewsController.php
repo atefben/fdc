@@ -536,6 +536,9 @@ class NewsController extends Controller
                 ->getInfoBySlug($slug, $festivalId, $locale, $isAdmin, $repository, 'site-institutionnel')
             ;
         }
+        if (!$news) {
+            throw $this->createNotFoundException();
+        }
 
         $associatedFilm = null;
         $associatedProgrammation = null;
