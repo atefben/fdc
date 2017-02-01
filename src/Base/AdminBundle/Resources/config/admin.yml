@@ -1827,6 +1827,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Accreditation}
 
+    base.admin.mdf_press_coverage:
+        class: Base\AdminBundle\Admin\MdfPressCoverageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\PressCoverage, BaseAdminBundle:MdfPressCoverageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Retombées presse}
+
     base.admin.mdf_content_template_widget_gallery_dummy:
         class: Base\AdminBundle\Admin\MdfGalleryDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery, BaseAdminBundle:MdfGalleryDummyAdmin]
