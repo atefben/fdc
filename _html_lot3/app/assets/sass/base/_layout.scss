@@ -62,6 +62,10 @@ body {
     background-color: $black;
   }
 
+  .media-library & {
+    background-color: $black;
+  }
+
   &:after {
     background-color: $black;
     content: '';

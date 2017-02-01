@@ -1,11 +1,36 @@
-{{ dump(widget) }}
+
+{% set image = widget.news.header|trans_fallback('file') %}
+{% set video = widget.file|trans_fallback('file') %}
+
+{% set header = object.header %}
+{% if header is not null %}
+    {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = object.header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if object.video is not null %}
+	{% if object.video.image is not null %}
+	    {% if imageTrans is defined %}
+	        {% set image = imageTrans.file %}
+	    {% else %}
+	        {% set header = object.video.image %}
+	        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+	        {% if imageTrans is null or imageTrans.file is null %}
+	            {% set imageTrans = header.findTranslationByLocale('fr') %}
+	        {% endif %}
+
+	        {% set image = imageTrans.file %}
+	    {% endif %}
+	{% endif %}
+{% endif %}
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
-          <video preload="none" style="background-image: url({{ asset('bundles/fdcevent/img/article/video-content-poster.png') }})">
-            <source src="{{ asset('bundles/fdcevent/medias/placeholder.mp4') }}" type="video/mp4"/>
+          <video preload="none" style="background-image: url({% path image, 'reference' %})">
+            <source src="{{ s3_server_video ~ video }}" type="video/mp4"/>
           </video>
           <div class="Article-videoPlayer-caption">
-            <h4>Discours</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
-            <strong>Vincent Lindon - Discours</strong>
+            <h4>Discours</h4> <p>{{ widget.news.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}</p>
+            <strong>{{ widget.news|trans_fallback('title') }}</strong>
           </div>
         </div>
