@@ -748,6 +748,10 @@ OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous 
         <source>affiche.festival</source>
         <target>__affiche.festival</target>
       </trans-unit>
+	  <trans-unit id="home.festival.follow" resname="home.festival.follow">
+        <source>home.festival.follow</source>
+        <target>Suivez le festival de Cannes</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
