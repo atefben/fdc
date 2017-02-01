@@ -12,7 +12,7 @@
 
             <a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">
                 <div class="articles {{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).slug }} events global-news" data-index="{{ loop.index0 }}">
-                    <a class="color-inherit" href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}"><div class="readMore">...</div></a>
+                    <div class="readMore">...</div>
                     {% if newsItem['image'] is not empty %}
                     <div class="articles-img"><img src="{% path newsItem['image'][0].image|trans_fallback('file'), 'reference' %}"></div>
                     {% endif %}

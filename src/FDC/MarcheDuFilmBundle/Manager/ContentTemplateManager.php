@@ -143,6 +143,7 @@ class ContentTemplateManager
         $galleryWidgets = $this->getContentTemplateGalleryWidgetsByPageId($pageId);
         $fileWidgets = $this->getContentTemplateFileWidgetsByPageId($pageId);
         $videoWidgets = $this->getContentTemplateVideosByPageId($pageId);
+        $contact = $this->contactManager->getContactInfo();
 
         $widgets = [];
         $widgets = array_merge($widgets, $textWidgets, $imageWidgets, $galleryWidgets, $fileWidgets, $videoWidgets);
@@ -163,6 +164,8 @@ class ContentTemplateManager
         return array(
             'titleHeader' => $titleHeader,
             'widgets' => $widgets,
+            'isPresentation' => true,
+            'contact' => $contact,
             'isWhoAreWe' => false
         );
     }
