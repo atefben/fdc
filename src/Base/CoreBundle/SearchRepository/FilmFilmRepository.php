@@ -9,6 +9,8 @@ namespace Base\CoreBundle\SearchRepository;
  */
 use Base\CoreBundle\Component\Repository\SearchRepository;
 use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
+use Elastica\Aggregation\Terms;
+use Elastica\Filter\Term;
 use Elastica\Query\BoolQuery as ElasticaQueryBoolQuery;
 use Elastica\Query\Filtered as ElasticaQueryFiltered;
 
@@ -61,7 +63,12 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         if (!empty($searchTerm['selections'])) {
             $selectionsQuery = new ElasticaQueryBoolQuery();
             foreach ($searchTerm['selections'] as $format) {
-                $selectionsQuery->addShould($this->getSelectionQuery($format));
+                $terms = explode(' ', $format);
+                foreach ($terms as $term) {
+                    $selectionQuery = new \Elastica\Query\Match();
+                    $selectionQuery->setFieldQuery('selectionSection', $term);
+                    $selectionsQuery->addMust($selectionQuery);
+                }
             }
             $finalQuery->addMust($selectionsQuery);
         }

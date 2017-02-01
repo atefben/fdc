@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmFilm;
 use Elastica\Query;
 use Elastica\Query\QueryString;
 use FDC\CorporateBundle\Form\Type\SearchType;
@@ -188,8 +189,10 @@ class SearchController extends Controller
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
             }
 
-            $data = $this->_translateData($data);
+
         }
+
+        $data = $this->_translateData($data);
 
         $check = ['audios', 'videos', 'photos'];
         foreach ($items as $item) {
@@ -198,7 +201,6 @@ class SearchController extends Controller
                     continue;
                 }
             }
-
             $results = ['items' => [], 'count' => 0];
             $page = 1;
             while ($page && $subResults = $this->getSearchResults($_locale, $item, $data, 50, $page)) {
@@ -210,10 +212,16 @@ class SearchController extends Controller
                     $page = false;
                 }
             }
-            $data = $this->_translateData($data);
             $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
             $searchResults['count'] = $searchResults['count'] + $results['count'];
         }
+        $s = [];
+        foreach ($searchResults['items'] as $item) {
+            if ($item instanceof FilmFilm && $item->getSelectionSection()) {
+                $s[$item->getSelectionSection()->findTranslationByLocale('fr')->getName()] = '';
+            }
+        }
+
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
             'result'  => array($searchFilter => $searchResults),
             'filters' => $filters,
