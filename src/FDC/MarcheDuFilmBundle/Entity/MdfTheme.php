@@ -32,11 +32,17 @@ class MdfTheme implements TranslateMainInterface
     protected $translations;
 
     /**
+     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidget", mappedBy="theme")
+     */
+    protected $contentTemplate;
+
+    /**
      * HeaderFooter constructor.
      */
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->contentTemplate = new ArrayCollection();
     }
 
     public function __toString()
@@ -69,5 +75,33 @@ class MdfTheme implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param MdfContentTemplate $contentTemplate
+     * @return $this
+     */
+    public function addContentTemplate(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate $contentTemplate)
+    {
+        $contentTemplate->setTheme($this);
+        $this->contentTemplate[] = $contentTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfContentTemplate $contentTemplate
+     */
+    public function removeContentTemplate(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate $contentTemplate)
+    {
+        $this->contentTemplate->removeElement($contentTemplate);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContentTemplate()
+    {
+        return $this->contentTemplate;
     }
 }

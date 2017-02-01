@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use FDC\MarcheDuFilmBundle\Entity\MediaMdfImage;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SecurityExtraBundle\Tests\Fixtures\A;
 
 /**
  * MdfSpeakersDetails
@@ -28,7 +29,8 @@ class MdfSpeakersDetails
 
     /**
      * @var MediaMdfImage
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="speakersDetails")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $image;
 
@@ -40,6 +42,12 @@ class MdfSpeakersDetails
     protected $position;
 
     /**
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetailsCollection", mappedBy="speakersDetails")
+     */
+    protected $speakersDetailsCollection;
+
+    /**
      * @var ArrayCollection
      *
      */
@@ -48,6 +56,7 @@ class MdfSpeakersDetails
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->speakersDetailsCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -130,5 +139,33 @@ class MdfSpeakersDetails
     public function setPosition($position)
     {
         $this->position = $position;
+    }
+
+    /**
+     * @param MdfSpeakersDetailsCollection $speakersDetailsCollection
+     * @return $this
+     */
+    public function addSpeakersDetailsCollection(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetailsCollection $speakersDetailsCollection)
+    {
+        $speakersDetailsCollection->setSpeakersChoiceTab($this);
+        $this->speakersDetailsCollection[] = $speakersDetailsCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfSpeakersDetailsCollection $speakersDetailsCollection
+     */
+    public function removeSpeakersDetailsCollection(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetailsCollection $speakersDetailsCollection)
+    {
+        $this->speakersDetailsCollection->removeElement($speakersDetailsCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSpeakersDetailsCollection()
+    {
+        return $this->speakersDetailsCollection;
     }
 }

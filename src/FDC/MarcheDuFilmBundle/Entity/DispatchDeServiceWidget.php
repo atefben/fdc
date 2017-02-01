@@ -35,9 +35,8 @@ class DispatchDeServiceWidget
     /**
      * @var MediaMdf
      *
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     * @Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="dispatchDeService")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $image;
 
@@ -48,7 +47,7 @@ class DispatchDeServiceWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="DispatchDeService", inversedBy="dispatchDeServiceWidgets")
-     * @ORM\JoinColumn(name="dispatch_de_service_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="dispatch_de_service_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $dispatchDeService;
 

@@ -27,8 +27,8 @@ class HomeSliderTop
 
     /**
      * @var MediaMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
-     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="homeSliderTop")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $image;
 
@@ -39,7 +39,7 @@ class HomeSliderTop
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="slidersTop")
-     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;
 

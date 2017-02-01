@@ -26,13 +26,14 @@ class MdfHomeService
 
     /**
      * @var MediaMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="homeService")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfHomepage", inversedBy="services")
-     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;
 

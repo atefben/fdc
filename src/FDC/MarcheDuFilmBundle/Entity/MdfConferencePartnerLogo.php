@@ -38,6 +38,12 @@ class MdfConferencePartnerLogo
     protected $position;
 
     /**
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection", mappedBy="conferencePartnerLogo",)
+     */
+    protected $conferencePartnerLogoCollection;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -48,6 +54,7 @@ class MdfConferencePartnerLogo
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->conferencePartnerLogoCollection = new ArrayCollection();
     }
 
     /**
@@ -159,5 +166,33 @@ class MdfConferencePartnerLogo
         }
 
         return null;
+    }
+
+    /**
+     * @param MdfConferencePartnerLogoCollection $conferencePartnerLogoCollection
+     * @return $this
+     */
+    public function addConferencePartnerLogoCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection $conferencePartnerLogoCollection)
+    {
+        $conferencePartnerLogoCollection->setConferencePartnerLogo($this);
+        $this->conferencePartnerLogoCollection[] = $conferencePartnerLogoCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfConferencePartnerLogoCollection $conferencePartnerLogoCollection
+     */
+    public function removeConferencePartnerLogoCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection $conferencePartnerLogoCollection)
+    {
+        $this->conferencePartnerLogoCollection->removeElement($conferencePartnerLogoCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getConferencePartnerLogoCollection()
+    {
+        return $this->conferencePartnerLogoCollection;
     }
 }

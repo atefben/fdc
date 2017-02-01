@@ -28,8 +28,9 @@ class GalleryMdfDualAlignMedia
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="MediaMdfImage", inversedBy="galleryMdfDualAlignMedia")
      * @Groups({"news_show"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $media;
 

@@ -26,7 +26,8 @@ class HeaderFooter
 
     /**
      * @var MediaMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="headerFooter")
+     * @ORM\JoinColumn(name="header_banner_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $headerBanner;
 

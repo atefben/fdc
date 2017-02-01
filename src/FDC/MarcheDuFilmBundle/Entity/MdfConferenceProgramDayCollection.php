@@ -21,12 +21,14 @@ class MdfConferenceProgramDayCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfConferenceProgramDay")
+     * @ORM\ManyToOne(targetEntity="MdfConferenceProgramDay", inversedBy="programDayCollection")
+     * @ORM\JoinColumn(name="conference_program_day_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferenceProgramDay;
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfConferenceProgram", inversedBy="dayWidgetCollections")
+     * @ORM\JoinColumn(name="conference_program_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferenceProgram;
 

@@ -43,6 +43,11 @@ class MdfSpeakersChoices
      */
     protected $speakersDetailsCollections;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoicesCollection", mappedBy="speakersChoice")
+     */
+    protected $speakersChoicesCollection;
 
     /**
      * @var ArrayCollection
@@ -53,6 +58,7 @@ class MdfSpeakersChoices
     {
         $this->translations = new ArrayCollection();
         $this->speakersDetailsCollections = new ArrayCollection();
+        $this->speakersChoicesCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -154,5 +160,34 @@ class MdfSpeakersChoices
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * @param MdfSpeakersChoicesCollection $speakersChoicesCollection
+     * @return $this
+     * 
+     */
+    public function addSpeakersChoicesCollection(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoicesCollection $speakersChoicesCollection)
+    {
+        $speakersChoicesCollection->setSpeakersChoice($this);
+        $this->speakersChoicesCollection[] = $speakersChoicesCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfSpeakersChoicesCollection $speakersChoicesCollection
+     */
+    public function removeSpeakersChoicesCollection(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoicesCollection $speakersChoicesCollection)
+    {
+        $this->speakersChoicesCollection->removeElement($speakersChoicesCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSpeakersChoicesCollection()
+    {
+        return $this->speakersChoicesCollection;
     }
 }

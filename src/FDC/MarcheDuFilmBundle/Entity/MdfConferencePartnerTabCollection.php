@@ -22,18 +22,14 @@ class MdfConferencePartnerTabCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfConferencePartnerTab", cascade={"all"})
-     * @Assert\Count(
-     *      max = "4",
-     *      min = "1",
-     *      minMessage = "validation.partners_tab_min",
-     *      maxMessage = "validation.partners_tab_max"
-     * )
+     * @ORM\ManyToOne(targetEntity="MdfConferencePartnerTab", inversedBy="conferencePartnerTabCollection")
+     * @ORM\JoinColumn(name="conference_partner_tab_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferencePartnerTab;
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfConferencePartner", inversedBy="partnerTabCollection")
+     * @ORM\JoinColumn(name="conference_partner_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferencePartner;
 

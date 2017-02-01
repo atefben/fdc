@@ -37,6 +37,12 @@ class ServiceWidget
 
     /**
      * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="ServiceWidgetCollection", mappedBy="widget")
+     */
+    protected $widgetsCollection;
+
+    /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection", mappedBy="serviceWidget", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -52,6 +58,7 @@ class ServiceWidget
     {
         $this->translations = new ArrayCollection();
         $this->productCollections = new ArrayCollection();
+        $this->widgetsCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -151,11 +158,6 @@ class ServiceWidget
         $this->productCollections->removeElement($products);
     }
 
-//    public function setProducts($product)
-//    {
-//        $this->products = $product;
-//    }
-
     /**
      * Get products
      *
@@ -164,5 +166,33 @@ class ServiceWidget
     public function getProductCollections()
     {
         return $this->productCollections;
+    }
+
+    /**
+     * @param ServiceWidgetCollection $widgetCollection
+     * @return $this
+     */
+    public function addWidgetsCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection $widgetCollection)
+    {
+        $widgetCollection->setWidget($this);
+        $this->widgetsCollection[] = $widgetCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param ServiceWidgetCollection $widgetCollection
+     */
+    public function removeWidgetsCollection(\FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection $widgetCollection)
+    {
+        $this->widgetsCollection->removeElement($widgetCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getWidgetsCollection()
+    {
+        return $this->widgetsCollection;
     }
 }

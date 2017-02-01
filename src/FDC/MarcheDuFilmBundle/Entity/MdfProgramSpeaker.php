@@ -25,7 +25,8 @@ class MdfProgramSpeaker
 
     /**
      * @var MediaMdf
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfImage", inversedBy="programSpeaker")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $image;
 
@@ -37,12 +38,18 @@ class MdfProgramSpeaker
     protected $position;
 
     /**
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection", mappedBy="programSpeakers")
+     */
+    protected $programSpeakerCollection;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
 
     public function __construct() {
         $this->translations = new ArrayCollection();
+        $this->programSpeakerCollection = new ArrayCollection();
     }
 
     /**
@@ -146,5 +153,33 @@ class MdfProgramSpeaker
         }
 
         return null;
+    }
+
+    /**
+     * @param MdfProgramSpeakerCollection $programSpeakerCollection
+     * @return $this
+     */
+    public function addProgramSpeakerCollection(\FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection $programSpeakerCollection)
+    {
+        $programSpeakerCollection->setProgramSpeakers($this);
+        $this->programSpeakerCollection[] = $programSpeakerCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfProgramSpeakerCollection $programSpeakerCollection
+     */
+    public function removeProgramSpeakerCollection(\FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection $programSpeakerCollection)
+    {
+        $this->programSpeakerCollection->removeElement($programSpeakerCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProgramSpeakerCollection()
+    {
+        return $this->programSpeakerCollection;
     }
 }

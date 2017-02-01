@@ -61,7 +61,8 @@ class MdfContentTemplate implements TranslateMainInterface
     /**
      * @var Theme
      *
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfTheme", inversedBy="contentTemplate")
+     * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", onDelete="SET NULL")
      * @Assert\NotBlank(groups={"news"})
      */
     private $theme;

@@ -83,8 +83,8 @@ class MediaMdfVideo extends MediaMdf
     /**
      * @var MediaMdfImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaMdfImage", cascade={"persist"})
-     *
+     * @ORM\ManyToOne(targetEntity="MediaMdfImage", cascade={"persist"}, inversedBy="mediaMdfVideo")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      * @Groups({"trailer_list", "trailer_show", "live", "web_tv_show", "live", "film_show", "news_list", "search", "news_show", "event_show", "home", "orange_video_on_demand",
      *     "search"})
      */
