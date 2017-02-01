@@ -72,6 +72,7 @@ class ServiceAdmin extends Admin
                         'required' => true
                     ),
                     'url'             => array(
+                        'sonata_help' => 'form.mdf.note.service.url_help',
                         'label'              => 'form.mdf.label.service_url',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
