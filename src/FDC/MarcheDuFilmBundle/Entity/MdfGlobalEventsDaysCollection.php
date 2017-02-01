@@ -29,7 +29,7 @@ class MdfGlobalEventsDaysCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDay", cascade={"all"}, inversedBy="daysCollection")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDay", inversedBy="daysCollection")
      * @ORM\JoinColumn(name="day_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $day;

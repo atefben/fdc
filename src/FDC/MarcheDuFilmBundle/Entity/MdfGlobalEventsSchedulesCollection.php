@@ -27,7 +27,7 @@ class MdfGlobalEventsSchedulesCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule", cascade={"all"}, inversedBy="schedulesCollection")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule", inversedBy="schedulesCollection")
      * @ORM\JoinColumn(name="schedule_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $schedule;

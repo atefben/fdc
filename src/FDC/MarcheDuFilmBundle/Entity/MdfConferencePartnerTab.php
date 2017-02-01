@@ -38,6 +38,12 @@ class MdfConferencePartnerTab
     protected $partnerLogoCollection;
 
     /**
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection", mappedBy="conferencePartnerTab",)
+     */
+    protected $conferencePartnerTabCollection;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -49,6 +55,7 @@ class MdfConferencePartnerTab
     {
         $this->translations = new ArrayCollection();
         $this->partnerLogoCollection = new ArrayCollection();
+        $this->conferencePartnerTabCollection = new ArrayCollection();
     }
 
     /**
@@ -161,5 +168,33 @@ class MdfConferencePartnerTab
         }
 
         return null;
+    }
+
+    /**
+     * @param MdfConferencePartnerTabCollection $conferencePartnerTabCollection
+     * @return $this
+     */
+    public function addConferencePartnerTabCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection $conferencePartnerTabCollection)
+    {
+        $conferencePartnerTabCollection->setConferencePartnerTab($this);
+        $this->conferencePartnerTabCollection[] = $conferencePartnerTabCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfConferencePartnerTabCollection $conferencePartnerTabCollection
+     */
+    public function removeConferencePartnerTabCollection(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection $conferencePartnerTabCollection)
+    {
+        $this->conferencePartnerTabCollection->removeElement($conferencePartnerTabCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getConferencePartnerTabCollection()
+    {
+        return $this->conferencePartnerTabCollection;
     }
 }

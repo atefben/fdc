@@ -47,7 +47,7 @@ class DispatchDeServiceWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="DispatchDeService", inversedBy="dispatchDeServiceWidgets")
-     * @ORM\JoinColumn(name="dispatch_de_service_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="dispatch_de_service_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $dispatchDeService;
 

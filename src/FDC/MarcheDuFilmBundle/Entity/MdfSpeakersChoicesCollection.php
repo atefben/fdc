@@ -28,17 +28,19 @@ class MdfSpeakersChoicesCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices", inversedBy="speakersChoicesCollection")
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
      * @Assert\Count(
      *      max = "4",
      *      maxMessage = "validation.speakers_widget_tab_max"
      * )
+     * @ORM\JoinColumn(name="speakers_choice_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $speakersChoice;
 
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakers", inversedBy="speakersChoicesCollections")
+     * @ORM\JoinColumn(name="speakers_page_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $speakersPage;
 

@@ -27,7 +27,7 @@ class ServiceWidgetCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ServiceWidget", cascade={"all"}, inversedBy="widgetsCollection")
+     * @ORM\ManyToOne(targetEntity="ServiceWidget", inversedBy="widgetsCollection")
      * @Assert\Count(
      *      max = "4",
      *      min = "1",

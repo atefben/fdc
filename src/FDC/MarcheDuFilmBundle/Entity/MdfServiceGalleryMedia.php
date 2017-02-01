@@ -28,11 +28,12 @@ class MdfServiceGalleryMedia
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaMdfImage")
+     * @ORM\ManyToOne(targetEntity="MediaMdfImage", inversedBy="serviceGalleryMedia")
      * @Assert\Count(
      *      max = "3",
      *      maxMessage = "validation.service_product_image_max"
      * )
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $media;
     

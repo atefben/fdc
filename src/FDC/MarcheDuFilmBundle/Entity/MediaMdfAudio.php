@@ -29,8 +29,8 @@ class MediaMdfAudio extends MediaMdf implements RoutedItemInterface
     /**
      * @var MediaMdf
      *
-     * @ORM\ManyToOne(targetEntity="MediaMdfImage", cascade={"all"})
-     *
+     * @ORM\ManyToOne(targetEntity="MediaMdfImage", inversedBy="mediaMdfAudio")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      * @Groups({"news_show", "news_list", "search", "trailer_list", "trailer_show", "web_tv_show", "live", "film_show", "event_show", "home"})
      */
     private $image;

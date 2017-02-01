@@ -26,12 +26,14 @@ class MdfSpeakersDetailsCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetails", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetails", inversedBy="speakersDetailsCollection")
+     * @ORM\JoinColumn(name="speakers_details_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $speakersDetails;
 
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices", inversedBy="speakersDetailsCollections")
+     * @ORM\JoinColumn(name="speakers_choice_tab_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $speakersChoiceTab;
 

@@ -22,7 +22,7 @@ class MdfProgramSpeakerCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfProgramSpeaker", cascade={"all"}, inversedBy="programSpeakerCollection")
+     * @ORM\ManyToOne(targetEntity="MdfProgramSpeaker", inversedBy="programSpeakerCollection")
      * @Assert\Count(
      *      max = "8",
      *      maxMessage = "validation.speakers_max"

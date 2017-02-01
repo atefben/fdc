@@ -212,7 +212,6 @@ class MdfConferenceProgramEvent
     {
         $this->endTimeEvent = $endTimeEvent;
     }
-}
 
     /**
      * @param MdfConferenceProgramEventCollection $programEventCollection

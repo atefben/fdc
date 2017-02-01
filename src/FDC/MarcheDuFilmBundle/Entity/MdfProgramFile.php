@@ -26,7 +26,7 @@ class MdfProgramFile
     protected $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfConferenceProgram", cascade={"all"}, inversedBy="files")
+     * @ORM\ManyToOne(targetEntity="MdfConferenceProgram", inversedBy="files")
      * @ORM\JoinColumn(name="conference_program_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferenceProgram;

@@ -28,7 +28,7 @@ class ServiceWidgetProduct
 
     /**
      * @var MdfServiceGallery
-     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery", cascade={"all"}, inversedBy="product")
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery", inversedBy="product")
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $gallery;

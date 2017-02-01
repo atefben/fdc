@@ -22,18 +22,20 @@ class MdfConferencePartnerLogoCollection
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MdfConferencePartnerLogo")
+     * @ORM\ManyToOne(targetEntity="MdfConferencePartnerLogo", inversedBy="conferencePartnerLogoCollection")
      * @Assert\Count(
      *      min = "1",
      *      minMessage = "validation.partners_logo_max",
      *      max = "4",
      *      maxMessage = "validation.partners_logo_max"
      * )
+     * @ORM\JoinColumn(name="conference_partner_logo_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferencePartnerLogo;
 
     /**
      * @ORM\ManyToOne(targetEntity="MdfConferencePartnerTab", inversedBy="partnerLogoCollection")
+     * @ORM\JoinColumn(name="conference_partner_tab_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $conferencePartnerTab;
 
