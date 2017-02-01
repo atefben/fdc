@@ -13,7 +13,21 @@ $(document).ready(function() {
   if($('.single-movie').length) {
 
 
-
+    /* thomon - tetiere height computing */
+    var tetiere = $('.tetiere-movie'),
+    defaultHeight = 290, //magic number, booooh
+    currentHeight = tetiere.outerHeight();
+    
+    if(currentHeight > defaultHeight){
+      tetiere.css({
+        'position':'relative',
+        'top':  parseInt(defaultHeight) - parseInt(currentHeight)
+      });
+    }else{
+      tetiere.css('height',defaultHeight);
+    }
+    /* end tetiere height computing */
+    
     var cl = new CanvasLoader('canvasloader');
         cl.setColor('#ceb06e');
         cl.setDiameter(20);

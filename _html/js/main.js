@@ -912,21 +912,6 @@ $(document).ready(function() {
         $('#nav-movie').removeClass('sticky');
       }
 
-      /* thomon - tetiere height computing */
-      var tetiere = $('.tetiere-movie'),
-      defaultHeight = 290, //magic number, booooh
-      currentHeight = tetiere.outerHeight();
-      
-      if(currentHeight > defaultHeight){
-        tetiere.css({
-          'position':'relative',
-          'top':  parseInt(defaultHeight) - parseInt(currentHeight)
-        });
-      }else{
-        tetiere.css('height',defaultHeight);
-      }
-      /* end tetiere height computing */
-
       $('.main-image').height($('.main-image').data('height'));
       
       $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
