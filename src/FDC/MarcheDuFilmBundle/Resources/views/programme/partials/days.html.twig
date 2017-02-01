@@ -29,16 +29,16 @@
                             </div>
                             <div class="conf30">
                                 <div>
-                                    <span>type d'accès</span>
-                                    <p>{{ event.accessType }}</p>
-                                </div>
-                                <div>
                                     <span>heure</span>
                                     <p>De {{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} à {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }} </p>
                                 </div>
                                 <div>
                                     <span>lieu</span>
                                     <p>{{ event.location }}</p>
+                                </div>
+                                <div>
+                                    <span>type d'accès</span>
+                                    <p>{{ event.accessType }}</p>
                                 </div>
                             </div>
                         </div>
