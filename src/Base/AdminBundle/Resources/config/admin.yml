@@ -2181,3 +2181,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Video, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_404:
+        class: Base\AdminBundle\Admin\Mdf404Admin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Mdf404, BaseAdminBundle:Mdf404Admin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Erreur 404}

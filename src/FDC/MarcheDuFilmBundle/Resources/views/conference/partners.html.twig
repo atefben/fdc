@@ -14,9 +14,11 @@
         <div class="greyBckg">
             <div class="bigContainer">
                 <ul class="tabs tabsMargin">
-                    {% for item in conferencePartnersTabs %}
-                        <li class="{{ loop.index == 1 ? 'active ' : ''}}partnersTabs" rel="tab{{ loop.index }}"><h4 class="redActive{{ loop.index == 1 ? ' customClassRed' : ''}}">{{ item.title }}</h4>{{ item.subTitle }}</li>
-                    {% endfor %}
+                    {% if conferencePartnersTabs|length > 1 %}
+                        {% for item in conferencePartnersTabs %}
+                            <li class="{{ loop.index == 1 ? 'active ' : ''}}partnersTabs" rel="tab{{ loop.index }}"><h4 class="redActive{{ loop.index == 1 ? ' customClassRed' : ''}}">{{ item.title }}</h4>{{ item.subTitle }}</li>
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </div>

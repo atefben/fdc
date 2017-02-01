@@ -6,12 +6,13 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * MdfConferencePartnerTranslation
- * @ORM\Table(name="mdf_conference_partner_translation")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfConferencePartnerTranslationRepository")
+ * Mdf404Translation
+ * @ORM\Table(name="mdf_404_translation")
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\Mdf404TranslationRepository")
  */
-class MdfConferencePartnerTranslation
+class Mdf404Translation
 {
     use Translation;
     use TranslationChanges;
@@ -21,31 +22,31 @@ class MdfConferencePartnerTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $subTitle;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $header;
+    protected $description;
 
     /**
      * @return string
      */
-    public function getSubTitle()
+    public function getTitle()
     {
-        return $this->subTitle;
+        return $this->title;
     }
 
     /**
-     * @param $subTitle
+     * @param $title
      *
      * @return $this
      */
-    public function setSubTitle($subTitle)
+    public function setTitle($title)
     {
-        $this->subTitle = $subTitle;
+        $this->title = $title;
 
         return $this;
     }
@@ -53,19 +54,19 @@ class MdfConferencePartnerTranslation
     /**
      * @return string
      */
-    public function getHeader()
+    public function getDescription()
     {
-        return $this->header;
+        return $this->description;
     }
 
     /**
-     * @param $header
+     * @param $description
      *
      * @return $this
      */
-    public function setHeader($header)
+    public function setDescription($description)
     {
-        $this->header = $header;
+        $this->description = $description;
 
         return $this;
     }
