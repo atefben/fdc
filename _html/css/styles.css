@@ -15469,7 +15469,7 @@ a {
   transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .blocks:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 .blocks:hover:after {
   height: 1px;
@@ -15484,6 +15484,9 @@ a {
   -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.blocks:hover h6 {
+  opacity: 0.8;
 }
 .blocks hr {
   transform: rotate(90deg);

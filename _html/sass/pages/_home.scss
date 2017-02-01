@@ -2182,7 +2182,7 @@ a {
   }
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.6;
     &:after {
       height: 1px;
       display: block;
@@ -2194,6 +2194,10 @@ a {
       z-index: -1;
       @include transition(all 0s $smoothTransition);
     }  
+
+    h6 {
+      opacity: 0.8;
+    }
   }
 
   hr {
