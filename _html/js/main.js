@@ -921,7 +921,9 @@ $(document).ready(function() {
         tetiere.css({
           'position':'relative',
           'top':  parseInt(defaultHeight) - parseInt(currentHeight)
-        })
+        });
+      }else{
+        tetiere.css('height',defaultHeight);
       }
       /* end tetiere height computing */
 
