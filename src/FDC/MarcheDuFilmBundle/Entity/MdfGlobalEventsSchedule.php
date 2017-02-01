@@ -30,7 +30,7 @@ class MdfGlobalEventsSchedule
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="MdfGlobalEventsSchedulesCollection", mappedBy="schedule")
+     * @ORM\OneToMany(targetEntity="MdfGlobalEventsSchedulesCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="schedule")
      */
     protected $schedulesCollection;
 

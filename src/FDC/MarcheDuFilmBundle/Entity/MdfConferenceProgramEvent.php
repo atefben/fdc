@@ -57,7 +57,7 @@ class MdfConferenceProgramEvent
     protected $speakerCollections;
 
     /**
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection", mappedBy="conferenceProgramEvent")
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="conferenceProgramEvent")
      */
     protected $programEventCollection;
 

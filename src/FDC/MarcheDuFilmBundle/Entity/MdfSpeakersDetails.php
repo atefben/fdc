@@ -43,7 +43,7 @@ class MdfSpeakersDetails
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetailsCollection", mappedBy="speakersDetails")
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetailsCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="speakersDetails")
      */
     protected $speakersDetailsCollection;
 

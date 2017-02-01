@@ -39,7 +39,7 @@ class MdfConferencePartnerLogo
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection", mappedBy="conferencePartnerLogo",)
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="conferencePartnerLogo",)
      */
     protected $conferencePartnerLogoCollection;
 

@@ -32,7 +32,7 @@ class MdfTheme implements TranslateMainInterface
     protected $translations;
 
     /**
-     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidget", mappedBy="theme")
+     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidget", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="theme")
      */
     protected $contentTemplate;
 

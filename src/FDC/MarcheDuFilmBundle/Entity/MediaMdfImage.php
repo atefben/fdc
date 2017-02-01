@@ -55,119 +55,119 @@ class MediaMdfImage extends MediaMdf
     /**
      * @var MdfConferencePartnerLogo
      *
-     * @ORM\OneToMany(targetEntity="MdfConferencePartnerLogo", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfConferencePartnerLogo", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $logo;
 
     /**
      * @var Contact
      *
-     * @ORM\OneToMany(targetEntity="Contact", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="Contact", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $contact;
 
     /**
      * @var DispatchDeServiceWidget
      *
-     * @ORM\OneToMany(targetEntity="DispatchDeServiceWidget", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="DispatchDeServiceWidget", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $dispatchDeService;
 
     /**
      * @var GalleryMdfDualAlignMedia
      *
-     * @ORM\OneToMany(targetEntity="GalleryMdfDualAlignMedia", mappedBy="media")
+     * @ORM\OneToMany(targetEntity="GalleryMdfDualAlignMedia", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="media")
      */
     protected $galleryMdfDualAlignMedia;
 
     /**
      * @var GalleryMdfMedia
      *
-     * @ORM\OneToMany(targetEntity="GalleryMdfMedia", mappedBy="media")
+     * @ORM\OneToMany(targetEntity="GalleryMdfMedia", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="media")
      */
     protected $galleryMdfMedia;
 
     /**
      * @var GalleryMdfMedia
      *
-     * @ORM\OneToMany(targetEntity="HeaderFooter", mappedBy="headerBanner")
+     * @ORM\OneToMany(targetEntity="HeaderFooter", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="headerBanner")
      */
     protected $headerFooter;
     
     /**
      * @var HomeSlider
      *
-     * @ORM\OneToMany(targetEntity="HomeSlider", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="HomeSlider", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $homeSlider;
 
     /**
      * @var HomeSliderTop
      *
-     * @ORM\OneToMany(targetEntity="HomeSliderTop", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="HomeSliderTop", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $homeSliderTop;
 
     /**
      * @var MdfConferenceInfoAndContactWidget
      *
-     * @ORM\OneToMany(targetEntity="MdfConferenceInfoAndContactWidget", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfConferenceInfoAndContactWidget", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $infoAndContact;
 
     /**
      * @var MdfContentTemplateWidgetImage
      *
-     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidgetImage", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidgetImage", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $contentTemplateWidgetImage;
 
     /**
      * @var MdfContentTemplateWidgetVideo
      *
-     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidgetVideo", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfContentTemplateWidgetVideo", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $contentTemplateWidgetVideo;
 
     /**
      * @var MdfHomeService
      *
-     * @ORM\OneToMany(targetEntity="MdfHomeService", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfHomeService", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $homeService;
 
     /**
      * @var MdfProgramSpeaker
      *
-     * @ORM\OneToMany(targetEntity="MdfProgramSpeaker", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfProgramSpeaker", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $programSpeaker;
 
     /**
      * @var MdfServiceGalleryMedia
      *
-     * @ORM\OneToMany(targetEntity="MdfServiceGalleryMedia", mappedBy="media")
+     * @ORM\OneToMany(targetEntity="MdfServiceGalleryMedia", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="media")
      */
     protected $serviceGalleryMedia;
 
     /**
      * @var MdfSpeakersDetails
      *
-     * @ORM\OneToMany(targetEntity="MdfSpeakersDetails", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MdfSpeakersDetails", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $speakersDetails;
 
     /**
      * @var MediaMdfVideo
      *
-     * @ORM\OneToMany(targetEntity="MediaMdfVideo", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MediaMdfVideo", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $mediaMdfVideo;
 
     /**
      * @var MediaMdfAudio
      *
-     * @ORM\OneToMany(targetEntity="MediaMdfAudio", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="MediaMdfAudio", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $mediaMdfAudio;
     

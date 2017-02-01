@@ -43,7 +43,7 @@ class MdfConferenceProgramDay
     protected $eventWidgetCollections;
 
     /**
-     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection", mappedBy="conferenceProgramDay")
+     * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="conferenceProgramDay")
      */
     protected $programDayCollection;
 
