@@ -80,12 +80,11 @@
 
         .loupe {
             float: right;
-            width: 50px;
+            width: 1px; 
             background: transparent;
             border: none !important;
             background: url(/img/loupeGold.png) no-repeat;
             margin-top: -10px;
-            margin-right: 25px !important;
             display: block;
         }
     }
@@ -192,14 +191,14 @@
             display: block;
 
             h6, span {
-                font-size: 11px;
+                font-size: 10px;
                 color: #c3a05f;
                 font-family: $CamphorHeavy;
                 text-transform: uppercase;
                 line-height: 60px;
                 letter-spacing: 1px;
                 @media screen and (max-width:$mobileWidth) {
-                    font-size: 11px;
+                    font-size: 10px;
                     line-height: 45px;
                     letter-spacing: 0px;
                 }

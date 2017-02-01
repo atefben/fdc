@@ -973,7 +973,7 @@ header {
     padding: 0px;
     margin: 0px;
     @include transition(all .6s $smoothTransition);
-    z-index: 999;
+    z-index: 1001;
 }
 
 .showblackBckg {

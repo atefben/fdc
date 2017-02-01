@@ -38,7 +38,8 @@
             <div class="our-news newsPage pressReview">
               <h3>Revues de presse</h3>
               <div class="innerWrapper">
-                <div class="articles">
+                <a href="#">
+                  <div class="articles">
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
                       <a href="">Lire l'article</a>
@@ -48,7 +49,7 @@
                     <h6>Participez aux conférences NEXT dédiées au futur du cinéma</h6>
                     <span>Par <span class="article-date customClass4">denis lemarchal - le monde</span></span>
                   </div>
-                </div>
+                </div></a>
                 <div class="articles">
                     <div class="readMore">
                       <i class="icon icon_flecheGauche reverse"></i>
