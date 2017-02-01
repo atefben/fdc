@@ -647,6 +647,15 @@ services:
         tags:
             - { name: form.type, alias: 'press_coverage_widget_type'}
 
+    base.admin.form.press_gallery_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressGalleryWidgetType
+        tags:
+            - { name: form.type, alias: 'press_gallery_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.press_gallery_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
     base.admin.form.content_template_widget_gallery_type:
         scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetGalleryType

@@ -5,14 +5,13 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * PressCoverageTranslation
- * @ORM\Table(name="mdf_press_coverage_translation")
- * @ORM\Entity
+ * PressGalleryWidgetTranslation
+ * @ORM\Table(name="mdf_press_gallery_widget_translation")
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfPressGalleryWidgetTranslationRepository")
  */
-class PressCoverageTranslation
+class MdfPressGalleryWidgetTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -23,7 +22,6 @@ class PressCoverageTranslation
      * @ORM\Column(type="string", nullable=true)
      */
     protected $title;
-
 
     /**
      * @return string

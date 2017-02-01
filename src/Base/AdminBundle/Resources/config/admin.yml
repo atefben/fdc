@@ -1789,6 +1789,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_gallery_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGalleryWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Press Gallery Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.mdf_content_template_widget_image_dummy:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage, BaseAdminBundle:MdfImageDummyAdmin]
@@ -1832,6 +1840,12 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\PressCoverage, BaseAdminBundle:MdfPressCoverageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Retombées presse}
+
+    base.admin.mdf_press_gallery:
+        class: Base\AdminBundle\Admin\MdfPressGalleryAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGallery, BaseAdminBundle:MdfPressGalleryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Galerie photos}
 
     base.admin.mdf_content_template_widget_gallery_dummy:
         class: Base\AdminBundle\Admin\MdfGalleryDummyAdmin
