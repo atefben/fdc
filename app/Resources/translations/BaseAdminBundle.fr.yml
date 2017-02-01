@@ -772,7 +772,24 @@ form:
             conference_news:
                 title: Sous-titre de page
             gallery_name: Nom de galerie
-
+            global_events: Gestion du programme global de l'année
+            global_events_title: Titre de page
+            global_events_description: Chapô
+            global_events_day_widget: Gestion des jours disponible dans le programme
+            global_events_days_collection: Liste des jours disponibles dans le programme
+            global_events_day: Jour
+            global_event_date_event: Saisie du jour de l'événement
+            global_events_day_list: Liste des événements du jour
+            global_event_day_schedule: Événements
+            global_events_event_info: Détail de l'événement dans le programme global
+            global_events_event_conference: Sélection de la conférence associée
+            global_events_event_type: Type d'événement
+            global_events_event_description: Description de l'événement
+            global_events_event_url: Redirection du lien "En savoir plus"
+            global_events_event_access_type: Type d'accès
+            global_events_event_location: Lieu de l'événement
+            global_event_start_time: Heure de début de l'événement
+            global_event_end_time: Heure de fin de l'événement
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})

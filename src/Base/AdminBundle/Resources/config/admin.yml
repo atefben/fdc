@@ -1585,7 +1585,7 @@ services:
         class: Base\AdminBundle\Admin\MdfGlobalEventsAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEvents, BaseAdminBundle:MdfGlobalEventsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEvents}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Programme global}
 
     base.admin.mdf_global_events_days_collection:
         class: Base\AdminBundle\Admin\MdfGlobalEventsDaysCollectionAdmin
@@ -1597,7 +1597,7 @@ services:
         class: Base\AdminBundle\Admin\MdfGlobalEventsDayAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDay, BaseAdminBundle:MdfGlobalEventsDayAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsDay, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Ajout d'un jour au programme, show_in_dashboard: false}
 
     base.admin.mdf_global_events_schedules_collection:
         class: Base\AdminBundle\Admin\MdfGlobalEventsSchedulesCollectionAdmin
@@ -1609,7 +1609,7 @@ services:
         class: Base\AdminBundle\Admin\MdfGlobalEventsScheduleAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule, BaseAdminBundle:MdfGlobalEventsScheduleAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsSchedule, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gestion de l'évenement, show_in_dashboard: false}
 
     base.admin.mdf_header_footer:
         class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin

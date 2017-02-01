@@ -45,6 +45,7 @@ class MdfGlobalEventsDayAdmin extends Admin
     {
         $formMapper
             ->add('dateEvent', 'sonata_type_date_picker', array(
+                'label' => 'form.mdf.label.global_event_date_event',
                 'format' => 'dd/MM/yyyy',
                 'required' => true,
                 'attr' => array(
@@ -53,7 +54,7 @@ class MdfGlobalEventsDayAdmin extends Admin
             ))
             ->add('schedulesCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.label.global_events_day',
+                'label'              => 'form.mdf.label.global_events_day_list',
                 'translation_domain' => 'BaseAdminBundle',
                 'required' => true,
                 'constraints'        => array(

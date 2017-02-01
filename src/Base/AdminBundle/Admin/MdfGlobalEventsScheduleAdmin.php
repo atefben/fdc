@@ -93,13 +93,17 @@ class MdfGlobalEventsScheduleAdmin extends Admin
                 ),
             ))
             ->add('startTimeEvent', 'time', array(
-                'required' => false,
-                'attr' => array('class' => 'fixed-time')
-            ))
+                    'label' => 'form.mdf.label.global_event_start_time',
+                    'required' => false,
+                    'attr' => array('class' => 'fixed-time')
+                )
+            )
             ->add('endTimeEvent', 'time', array(
-                'required' => false,
-                'attr' => array('class' => 'fixed-time')
-            ))
+                    'label' => 'form.mdf.label.global_event_end_time',
+                    'required' => false,
+                    'attr' => array('class' => 'fixed-time')
+                )
+            )
         ;
     }
 
