@@ -6845,6 +6845,10 @@ body.chocolat-open > .chocolat-content {
   display: inline-block !important;
 }
 
+.block-movie-preview .description {
+  width: 475px;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -9819,24 +9823,6 @@ body#home .isotope-01 .item .contain-img {
   top: 6px;
 }
 
-/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
-.ie .slider-restropective .block-01 .vFlexAlign img {
-  height: 404px;
-}
-
-.isotope-01 .item.block-poster img {
-  display: block;
-}
-
-.item.block-poster .contain-txts {
-  padding-top: 25px;
-}
-
-.block-01 .title-12 {
-  display: inline-block !important;
-}
-
-/* thomon - end fixes */
 .slider-restropective {
   height: calc(100vh - 230px);
   background-size: cover;
