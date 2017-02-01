@@ -642,6 +642,11 @@ services:
         tags:
             - { name: form.type, alias: 'accreditation_widget_type'}
 
+    base.admin.form.press_coverage_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressCoverageWidgetType
+        tags:
+            - { name: form.type, alias: 'press_coverage_widget_type'}
+
     base.admin.form.content_template_widget_gallery_type:
         scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetGalleryType
