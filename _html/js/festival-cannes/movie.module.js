@@ -22,7 +22,7 @@ $(document).ready(function() {
       tetiere.css({
         'height': defaultHeight,
         'position':'relative',
-        'top':  (currentHeight > defaultHeight) ? 0 : parseInt(defaultHeight) - parseInt(currentHeight)
+        'top':  (currentHeight > defaultHeight) ? 0 : - (parseInt(defaultHeight) - parseInt(currentHeight))
       });
     }else{
       tetiere.css('height',defaultHeight);
