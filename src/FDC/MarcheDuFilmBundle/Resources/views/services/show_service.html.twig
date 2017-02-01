@@ -63,7 +63,9 @@
                                 <div class="tabBox">
                                     <span class="customClass2">{{ product.title }}</span>
                                     <h5>{{ product.grayText }} <span class="fromPrice">{{ product.colorText }}</span></h5>
-                                    <p>{{ product.body }}</p>
+                                    <div class="tabContent">
+                                        <p>{{ product.body }}</p>
+                                    </div>
                                     <input type="checkbox" class="read-more-state" id="post-{{ key~product.id }}" style="opacity:0;"/>
                                     <div class="read-more-wrap">
                                         <div class="read-more-target">
