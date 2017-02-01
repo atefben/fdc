@@ -707,10 +707,16 @@ var fixed = false;
    }
  });
 
-
-
-
-
+var len = $(".partnersTabs");
+if($(len).length === 2) {
+  $(".partnersTabs").addClass("halfTab");
+}
+else if ($(len).length === 3){
+  $(".partnersTabs").addClass("thirdTab");
+}
+else if ($(len).length === 4){
+  $(".partnersTabs").addClass("quarterTab");
+}
 
 
 /*if ($('.selectText').length > 1) {

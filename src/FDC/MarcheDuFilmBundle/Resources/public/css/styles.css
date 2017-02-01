@@ -23951,6 +23951,9 @@ ul.tabs .quarterTab h4 {
     margin-top: -140px;
   }
 }
+.conferences .conf60 a, .conferences .conf70 a {
+  color: #505050 !important;
+}
 .conferences .conf60 .confButton, .conferences .conf70 .confButton {
   position: relative;
   text-transform: uppercase;
@@ -23959,6 +23962,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0.7;
   margin-top: 40px;
   letter-spacing: 1px;
+  color: #505050 !important;
 }
 .conferences .conf60 .confButton .ensavoirplus, .conferences .conf70 .confButton .ensavoirplus {
   -webkit-transform: rotate(180deg);
@@ -24069,7 +24073,7 @@ ul.tabs .quarterTab h4 {
 .conferences .conf30 div:first-child:before, .conferences .conf30Sharp div:first-child:before {
   content: url(../img/access.png);
   position: relative;
-  top: 10px;
+  top: 25px;
   left: -10px;
   /* margin-right: 30px; */
   width: 20px;
@@ -24077,7 +24081,7 @@ ul.tabs .quarterTab h4 {
 .conferences .conf30 div:nth-child(2):before, .conferences .conf30Sharp div:nth-child(2):before {
   content: url(../img/clock.png);
   position: relative;
-  top: 10px;
+  top: 25px;
   left: -10px;
   /* margin-right: 30px; */
   width: 20px;
@@ -24085,7 +24089,7 @@ ul.tabs .quarterTab h4 {
 .conferences .conf30 div:nth-child(3):before, .conferences .conf30Sharp div:nth-child(3):before {
   content: url(../img/pin.png);
   position: relative;
-  top: 10px;
+  top: 25px;
   left: -10px;
   /* margin-right: 30px; */
   width: 20px;
