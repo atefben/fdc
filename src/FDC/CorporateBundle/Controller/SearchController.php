@@ -198,7 +198,7 @@ class SearchController extends Controller
                     continue;
                 }
             }
-            $data = $this->_translateData($data);
+
             $results = ['items' => [], 'count' => 0];
             $page = 1;
             while ($page && $subResults = $this->getSearchResults($_locale, $item, $data, 50, $page)) {
@@ -210,10 +210,10 @@ class SearchController extends Controller
                     $page = false;
                 }
             }
+            $data = $this->_translateData($data);
             $searchResults['items'] = array_merge($searchResults['items'], $results['items']);
             $searchResults['count'] = $searchResults['count'] + $results['count'];
         }
-
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
             'result'  => array($searchFilter => $searchResults),
             'filters' => $filters,
