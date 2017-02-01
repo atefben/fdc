@@ -772,6 +772,10 @@ form:
             conference_news:
                 title: Sous-titre de page
             gallery_name: Nom de galerie
+
+        note:
+            service:
+                url_help: Please provide the last part of URL (http://.../{this part})
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:
