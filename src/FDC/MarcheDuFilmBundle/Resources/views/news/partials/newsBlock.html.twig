@@ -2,6 +2,7 @@
     {% if news is not empty %}
         {% for newsItem in news %}
             {% set newsDecription = '' %}
+            {% set newsDescriptionLength =  (newsItem['content'].title|length / 30)|round(0 , 'floor') %}
 
             {% if newsItem['content'].header is not empty %}
                 {% set newsDecription = newsItem['content'].header %}
@@ -20,9 +21,9 @@
                         <h6>{{ newsItem['content'].title }}</h6>
                         {% if newsDecription|striptags|length > 210 %}
                             {% if newsItem['image'] is not empty %}
-                                {% set description = newsDecription|truncate(225, true, "...</p>") %}
+                                {% set description = newsDecription|truncate(350 - (newsDescriptionLength * 70), true, "...</p>") %}
                             {% else %}
-                                {% set description = newsDecription|truncate(550, true, "...</p>") %}
+                                {% set description = newsDecription|truncate(850 - (newsDescriptionLength * 90), true, "...</p>") %}
                             {% endif %}
                         {% else %}
                             {% set description = newsDecription %}

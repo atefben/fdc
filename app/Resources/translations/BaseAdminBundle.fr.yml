@@ -699,6 +699,7 @@ form:
                 image: Module image
                 gallery: Module slider
                 file: Module téléchargement de fichiers
+                youtube: Module video
         label:
             content_block:
                 category: Strate 1 - Label

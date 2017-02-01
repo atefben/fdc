@@ -141,7 +141,6 @@ class MediaMdfImageAdmin extends Admin
                     'legend'         => array(
                         'label'              => 'form.label_legend_img',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.media.helper_legend',
                         'constraints'        => array(
                             new NotBlank()
                         )
@@ -149,11 +148,9 @@ class MediaMdfImageAdmin extends Admin
                     'alt'            => array(
                         'label'              => 'form.label_alt_img',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.media.helper_alt',
                         'required'           => false
                     ),
                     'copyright'      => array(
-                        'sonata_help'        => 'form.media.helper_copyright',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),

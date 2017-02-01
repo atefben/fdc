@@ -133,6 +133,7 @@ class LockController extends Controller
         'mdfglobaleventsday' => 'MdfGlobalEventsDay',
         'mdfglobaleventsschedule' => 'MdfGlobalEventsSchedule',
         'mdfservicegallery' => 'MdfServiceGallery',
+        'mdftheme' => 'MdfTheme',
     );
 
     /**

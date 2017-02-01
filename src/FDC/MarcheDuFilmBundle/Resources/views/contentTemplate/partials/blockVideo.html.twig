@@ -15,7 +15,9 @@
     <div class="info">
         <div class="vCenter">
             <div class="vCenterKid">
-                {#<a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>#}
+                {% if widget.translatable.theme.findTranslationByLocale(app.request.locale).title is defined %}
+                    <a href="#" class="category">{{ widget.translatable.theme.findTranslationByLocale(app.request.locale).title }}</a><span class="date">{{ widget.translatable.updatedAt|date("d.m.Y") }}</span> . <span class="hour">{{ widget.translatable.updatedAt|date("H:i") }}</span>
+                {% endif %}
                 <p>{{ widget.title }}</p>
             </div>
         </div>

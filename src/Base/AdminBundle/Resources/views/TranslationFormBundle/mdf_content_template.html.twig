@@ -44,6 +44,7 @@
                                                     {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
                                                          <h4><strong>{{ 'form.mdf.content_template.widget.youtube'|trans }}</strong></h4>
                                                         {{ form_row(widget.image) }}
+                                                        {{ form_row(widget.theme) }}
                                                         {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                     {% endif %}
                                                     {{ form_row(widget._type) }}
@@ -112,6 +113,7 @@
                                                     {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
                                                         <h4><strong>Youtube widget</strong></h4>
                                                         {{ form_row(widget.image) }}
+                                                        {{ form_row(widget.theme) }}
                                                         {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                     {% endif %}
                                                     {{ form_row(widget._type) }}

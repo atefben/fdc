@@ -4,6 +4,7 @@ namespace FDC\MarcheDuFilmBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Base\AdminBundle\Admin\MediaMdfImageAdmin;
+use Base\AdminBundle\Admin\MdfThemeAdmin;
 
 class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
 {
@@ -21,9 +22,22 @@ class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
     private $admin;
 
     /**
+     * admin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $sonataThemeAdmin;
+
+    /**
      * @var MediaMdfImageAdmin
      */
     private $mediaImageAdmin;
+
+    /**
+     * @var MdfThemeAdmin
+     */
+    private $themeAdmin;
 
     /**
      * setSonataAdmin function.
@@ -37,9 +51,26 @@ class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
         $this->admin = $admin;
     }
 
+    /**
+     * setSonataAdmin function.
+     *
+     * @access public
+     * @param mixed $sonataThemeAdmin
+     * @return void
+     */
+    public function setSonataThemeAdmin($sonataThemeAdmin)
+    {
+        $this->sonataThemeAdmin = $sonataThemeAdmin;
+    }
+
     public function setMediaImageAdmin($mediaImageAdmin)
     {
         $this->mediaImageAdmin = $mediaImageAdmin;
+    }
+
+    public function setThemeAdmin($themeAdmin)
+    {
+        $this->themeAdmin = $themeAdmin;
     }
 
     /**
@@ -78,6 +109,15 @@ class ContentTemplateWidgetVideoType extends ContentTemplateWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => false
+            ))
+            ->add('theme', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.content_template.theme',
+                'sonata_field_description' =>  $this->sonataThemeAdmin->getFormFieldDescriptions()['theme'],
+                'model_manager' => $this->themeAdmin->getModelManager(),
+                'class' => $this->themeAdmin->getClass(),
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
             ))
         ;
     }
