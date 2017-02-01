@@ -5,11 +5,13 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FDC\MarcheDuFilmBundle\Validator\Constraints\CheckTime;
 
 /**
  * MdfConferenceProgramEvent
  * @ORM\Table(name="mdf_conference_program_event")
  * @ORM\Entity
+ * @CheckTime()
  */
 class MdfConferenceProgramEvent
 {

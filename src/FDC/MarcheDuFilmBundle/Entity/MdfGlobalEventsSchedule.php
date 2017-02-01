@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use FDC\MarcheDuFilmBundle\Entity\GalleryMdf;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FDC\MarcheDuFilmBundle\Validator\Constraints\CheckTime;
 
 /**
  * MdfGlobalEventsSchedule
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_global_events_schedule")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
+ * @CheckTime()
  */
 class MdfGlobalEventsSchedule
 {
