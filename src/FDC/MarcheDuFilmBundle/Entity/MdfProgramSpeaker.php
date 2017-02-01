@@ -129,6 +129,11 @@ class MdfProgramSpeaker
         } else {
             $string = strval($this->getId());
         }
+
+        if (!$string) {
+            $string = $this->image->findTranslationByLocale('fr')->getLegend();
+        }
+        
         return (string) $string;
     }
 
@@ -139,7 +144,11 @@ class MdfProgramSpeaker
 
         if ($translation !== null) {
             $string = $translation->getName();
+            if (!$string) {
+                $string = $this->image->findTranslationByLocale('fr')->getLegend();
+            }
         }
+
 
         return $string;
     }

@@ -34,6 +34,7 @@ class MdfProgramSpeakerAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -87,5 +88,16 @@ class MdfProgramSpeakerAdmin extends Admin
             ))
         ;
 
+    }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id')
+            ->add('name')
+        ;
     }
 }
