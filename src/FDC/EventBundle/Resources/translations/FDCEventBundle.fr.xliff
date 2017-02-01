@@ -1716,6 +1716,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="119">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="webview.article.signature_prefix" resname="webview.article.signature_prefix">
+        <source>webview.article.signature_prefix</source>
+        <target>Rédigé par</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
