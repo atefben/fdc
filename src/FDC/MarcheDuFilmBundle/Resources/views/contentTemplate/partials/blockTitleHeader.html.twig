@@ -1,10 +1,8 @@
 {% if titleHeader %}
-    <div class="text-presentation marche">
-        <h3>{{ titleHeader.title }}</h3>
-        <h4>
-            {% if titleHeader.header %}
-                {{ titleHeader.header|raw }}
-            {% endif %}
-        </h4>
-    </div>
+    <h3>{{ titleHeader.title }}</h3>
+    <h4>
+        {% if titleHeader.header %}
+            {{ titleHeader.header|raw }}
+        {% endif %}
+    </h4>
 {% endif %}
