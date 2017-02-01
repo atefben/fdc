@@ -629,6 +629,8 @@ form:
             active: Inactif
             deactivated: Désactivé
             early_bird: Early bird
+        press:
+            file_widget: Module téléchargement de fichiers
         home:
             top_sliders: Slider principale
             top_slider.widget: Module slider principal
@@ -717,6 +719,9 @@ form:
                 title: Nom du service
                 description: Description du service
                 url: Lien de redirection du service
+            press:
+                subtitle: Sous-titre
+                header: Chapô
             facebook_url: URL Facebook
             twitter_url: URL Twitter
             youtube_url: URL Youtube

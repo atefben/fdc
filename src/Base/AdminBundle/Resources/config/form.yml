@@ -684,3 +684,12 @@ services:
             - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_image_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
             - ['setThemeAdmin', ['@base.admin.mdf_theme']]
+
+    base.admin.form.press_release_file_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressReleaseFileType
+        tags:
+            - { name: form.type, alias: 'press_release_file_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_program_file_dummy']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
