@@ -8,7 +8,7 @@
     {% if result.film is not empty %}
         {% for film in result.film.items %}
             <article class="block-poster-search">
-                <div class="item">
+                <div class="item{% if loop.last %} last{% endif %}">
                     <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
                         <div class="contain-img portrait">
                             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
@@ -30,7 +30,6 @@
                             {% endif %}
                             {% if film.festival.year != 0 %}
                                 <span class="title-date">{{ film.festival.year }}</span>
-
                             {% endif %}
                         </div>
                     </a>

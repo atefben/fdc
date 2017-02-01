@@ -7,7 +7,7 @@
     {% if result.artist is not empty %}
         {% for artist in result.artist.items %}
             <article class="block-poster-search">
-                <div class="item">
+                <div class="item{% if loop.last %} last{% endif %}">
                     <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
                         <div class="contain-img portrait">
                             {% set artistImage = artist|person_image(true) %}
