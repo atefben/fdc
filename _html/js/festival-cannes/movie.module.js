@@ -18,16 +18,17 @@ $(document).ready(function() {
     defaultHeight = 290, //magic number, booooh
     currentHeight = tetiere.outerHeight();
     
-    if(currentHeight > defaultHeight){
+    if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
       tetiere.css({
+        'height': defaultHeight,
         'position':'relative',
-        'top':  parseInt(defaultHeight) - parseInt(currentHeight)
+        'top':  (currentHeight > defaultHeight) ? parseInt(defaultHeight) - parseInt(currentHeight) : 0
       });
     }else{
       tetiere.css('height',defaultHeight);
     }
     /* end tetiere height computing */
-    
+
     var cl = new CanvasLoader('canvasloader');
         cl.setColor('#ceb06e');
         cl.setDiameter(20);
