@@ -9,13 +9,13 @@
                 {% set newsDecription = newsItem['text'][0].contentText %}
             {% endif %}
 
-            <div class="articles {{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).slug }} events global-news" data-index="{{ loop.index0 }}">
-                <a class="color-inherit" href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}"><div class="readMore">...</div></a>
-                {% if newsItem['image'] is not empty %}
-                <a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}"><div class="articles-img"><img src="{% path newsItem['image'][0].image|trans_fallback('file'), 'reference' %}"></div></a>
-                {% endif %}
-                <div class="articles-content">
-                    <a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">
+            <a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}">
+                <div class="articles {{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).slug }} events global-news" data-index="{{ loop.index0 }}">
+                    <a class="color-inherit" href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem['content'].slug}) }}"><div class="readMore">...</div></a>
+                    {% if newsItem['image'] is not empty %}
+                    <div class="articles-img"><img src="{% path newsItem['image'][0].image|trans_fallback('file'), 'reference' %}"></div>
+                    {% endif %}
+                    <div class="articles-content">
                         <span class="customClass4">{{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).title }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
                         <h6>{{ newsItem['content'].title }}</h6>
                         {% if newsDecription|striptags|length > 210 %}
@@ -28,9 +28,9 @@
                             {% set description = newsDecription %}
                         {% endif %}
                         {{ description|raw }}
-                    </a>
+                    </div>
                 </div>
-            </div>
+            </a>
         {% endfor %}
     {% else %}
         <div id="empty-news-list" class="events message">Il n'y a pas de nouvelles disponibles.</div>
