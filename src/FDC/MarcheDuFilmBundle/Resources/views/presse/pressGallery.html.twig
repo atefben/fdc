@@ -1,0 +1,34 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle::shared/pressSubHeader.html.twig' %}
+        <div class="text-presentation galeriePresentation">
+            <div class="bigContainer">
+                <h3>{{ pressGalleryContent.title }}</h3>
+                <h5>{{ pressGalleryContent.description|raw }}</h5>
+            </div>
+        </div>
+        <div class="bigContainer">
+            <div class="our-news infosPage galeriePhotos">
+                <div class="innerWrapper">
+                    {% for pressGalleryWidget in pressGalleryWidgets %}
+                        {% set imageInfo = pressGalleryWidget.translatable.image.findTranslationByLocale(app.request.locale) %}
+                        <div class="articles">
+                            <div class="articles-content">
+                                <div class="photoWrapper">
+                                    <img src="{% path pressGalleryWidget.translatable.image|trans_fallback('file'), 'reference' %}">
+                                </div>
+                                <div class="textWrapper">
+                                    <h6>{{ pressGalleryWidget.title }}</h6>
+                                    <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
+                                    <span class="upSpan">{{ (pressGalleryWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} mo - {{ pressGalleryWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
