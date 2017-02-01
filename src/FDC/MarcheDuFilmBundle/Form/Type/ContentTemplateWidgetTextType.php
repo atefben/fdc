@@ -31,12 +31,7 @@ class ContentTemplateWidgetTextType extends ContentTemplateWidgetType
                     ),
                     'title' => array(
                         'label' => 'form.mdf.content_template.label.title',
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'required' => true,
-                        'field_type' => 'ckeditor',
-                        'config_name' => 'widget'
+                        'translation_domain' => 'BaseAdminBundle',
                     ),
                     'contentText' => array(
                         'label' => 'form.mdf.content_template.label.text',
