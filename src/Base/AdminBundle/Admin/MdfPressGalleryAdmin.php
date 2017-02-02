@@ -62,14 +62,14 @@ class MdfPressGalleryAdmin extends Admin
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.press_gallery.title',
+                        'label'              => 'form.mdf.press.subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
-                        'label'              => 'form.mdf.press_gallery.description',
+                        'label'              => 'form.mdf.press.header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
-                        'required' => false
+                        'required' => true
                     )
                 ),
             ))

@@ -66,7 +66,7 @@ class PressGalleryWidgetType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.press_coverage.widget_title',
+                        'label'              => 'form.mdf.press.gallery_widget_title',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 ),
@@ -75,7 +75,7 @@ class PressGalleryWidgetType extends AbstractType
                 'constraints' => array(
                     new NotBlank(),
                 ),
-                'label' => 'form.mdf.label.header_image',
+                'label' => 'form.mdf.press.gallery_widget_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),
