@@ -27,7 +27,10 @@
 	letter-spacing: 1px;
 }
 
-.toto {
-	font-size: 1px;
+.article-single section .table-article, .single-movie section .table-article {
+	width: 100%!important;
+}
+.article-single .table-article .text strong, .single-movie .table-article .text strong {
+	font-size: 12px;
 }
 /* thomon - end fixes */
