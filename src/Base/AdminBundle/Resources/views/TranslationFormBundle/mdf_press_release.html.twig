@@ -64,30 +64,6 @@
                             </div>
                         </div>
                     </div>
-                {% else %}
-                    {#<div class="col-md-8">#}
-                        {#<div class="box box-success">#}
-                            {#<div class="box-header">#}
-                                {#<h4 class="box-title">#}
-                                    {#{{ 'form.mdf.press.file_widget'|trans }}#}
-                                {#</h4>#}
-                            {#</div>#}
-                            {#<div class="box-body">#}
-                                {#<div class="fdc-widgets" data-form-widget="collection">#}
-                                    {#{% for widget in form.parent.children.files.children %}#}
-                                        {#<div class="item base-widget">#}
-                                            {#{% if widget.children._type.vars.value == 'presse_release_file_type' %}#}
-                                                {#<h4><strong>{{ 'form.mdf.press.file_widget'|trans }}</strong></h4>#}
-                                            {#{% endif %}#}
-                                            {#{{ form_row(widget._type) }}#}
-                                            {#{{ form_row(widget.file) }}#}
-                                            {#{{ form_row(widget.position) }}#}
-                                        {#</div>#}
-                                    {#{% endfor %}#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
                 {% endif %}
             </div>
         {% endfor %}
