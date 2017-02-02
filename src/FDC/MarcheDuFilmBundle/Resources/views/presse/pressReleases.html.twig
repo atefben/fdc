@@ -16,7 +16,7 @@
                             </div>
                             {% set translations = item.file.findTranslationByLocale(app.request.locale) %}
                             <div>
-                                <h6>{{ translations.name|length > 65 ? translations.name|slice(0, 65) ~ '...' : translations.name  }}</h6>
+                                <h6>{{ translations.name|length > 45 ? translations.name|slice(0, 45) ~ '...' : translations.name  }}</h6>
                             </div>
                             <div>
                                 <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
