@@ -33,7 +33,9 @@ class ContentTemplateManager
         $isWhoAreWe = false;
         $isPresentation = false;
         $nextRoute = null;
+        $nextRouteLabel = null;
         $backRoute = null;
+        $backRouteLabel = null;
         $isConference = null;
         switch ($routeName) {
             case 'fdc_marche_du_film_edition_presentation':
@@ -53,10 +55,14 @@ class ContentTemplateManager
             case 'fdc_marche_du_film_who_are_we_key_figures':
                 $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_KEY_FIGURES;
                 $isWhoAreWe = true;
+                $nextRoute = 'fdc_marche_du_film_who_are_we_environmental_approaches';
+                $nextRouteLabel = 'demarches environnementales';
                 break;
             case 'fdc_marche_du_film_who_are_we_environmental_approaches':
                 $pageType = MdfContentTemplate::TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES;
                 $isWhoAreWe = true;
+                $backRoute = 'fdc_marche_du_film_who_are_we_key_figures';
+                $backRouteLabel = 'chiffres cles';
                 break;
             case 'fdc_marche_du_film_legal_mentions':
                 $pageType = MdfContentTemplate::TYPE_LEGAL_MENTIONS;
@@ -122,7 +128,9 @@ class ContentTemplateManager
             'widgets' => $widgets,
             'isWhoAreWe' => $isWhoAreWe,
             'nextRoute' => $nextRoute,
+            'nextRouteLabel' => $nextRouteLabel,
             'backRoute' => $backRoute,
+            'backRouteLabel' => $backRouteLabel,
             'isPresentation' => $isPresentation,
             'contact' => $contact,
             'isConference' => $isConference
