@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Mdf404Translation
  * @ORM\Table(name="mdf_404_translation")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\Mdf404TranslationRepository")
+ * @ORM\Entity
  */
 class Mdf404Translation
 {

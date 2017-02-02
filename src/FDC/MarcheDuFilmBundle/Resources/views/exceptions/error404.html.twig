@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Marché du Film</title>
+
+    {% stylesheets
+    'bundles/fdcmarchedufilm/js/bower_components/chocolat/src/css/chocolat.css'
+    'bundles/fdcmarchedufilm/js/bower_components/fullcalendar/dist/fullcalendar.min.css'
+    'bundles/fdcmarchedufilm/css/styles.css'
+    'bundles/fdcmarchedufilm/css/print.css'
+    'bundles/fdcmarchedufilm/css/custom.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link type="text/css" rel="stylesheet" href="{{ asset('http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css') }}"/>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- //// FAVICON \\\\ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('bundles/fdcmarchedufilm/img/favicon/manifest.json') }}">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon//ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+
+<body>
+<div id="prehome-container">
+    <div id="prehome"></div>
+</div>
+
+<header>
+    <div id="top-bar">
+        <ul class="main-nav">
+            <li>
+                <a href={{ header_fdc_com }} target="_blank">Festival 2017</a>
+            </li>
+            <li>
+                <a href="{{ header_fdc_fr }}" target="_blank">Festival de Cannes</a>
+            </li>
+            <li>
+                <a href="{{ header_cine_fr }}" target="_blank">Cinéfondation</a>
+            </li>
+            <li>
+                <a href="{{ header_ccm_fr }}" target="_blank">Cannes Court Métrage</a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_marchedufilm_default_index') }}" class="active">Marché du film</a>
+            </li>
+        </ul>
+        <ul class="user-nav">
+            <li>
+                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+            </li>
+        </ul>
+    </div>
+    <div id="logo-wrapper">
+        <div class="container">
+            <div id="logo">
+                <a href="{{ path('fdc_marchedufilm_default_index') }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
+                <h1><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-du-film.png') }}" alt="Festival de Cannes" /></a></h1>
+                <p class="stick"><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
+            </div>
+            <div id="leaderBoard">
+                {% if banner %}
+                    <a href="{{ banner.headerBannerUrl }}" target="_blank">
+                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
+                    </a>
+                {% endif %}
+            </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="bigContainer">
+            <nav>
+                <ul class="main">
+                    <li id="edition">
+                        <a href="{{ path('fdc_marchedufilm_default_index') }}" class="red">Édition 2017
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="blue">ACCRÉDITATIONS</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="blue">SERVICES</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="golden">QUI SOMMES-NOUS ?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="golden">PRESSE</a>
+                    </li>
+                    <li>
+                        <a href="#" class="golden">INFORMATIONS UTILES</a>
+                    </li>
+                    <li class="liSearchBox">
+                        <div class="searchBox">
+                            <form action="action.php">
+                                <input type="text" name="name" id="searchInput" placeholder="Recherchez"/>
+                            </form>
+                        </div>
+                    </li>
+                    <li id="searchBar">
+                        <div>
+                            <a href="#" id=""><i class="icon icon_recherche"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="subMenu customClass1" id="subMenu">
+            <div class="bigContainer">
+                <ul class="tleft">
+                    <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_news') }}">Actualités</a></li>
+                    <li class="seeSub">
+                        <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
+                        <div class="prog">PROGRAMME</div>
+                        <ul class="subsubMenu">
+                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">Projections</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">Événements</a></li>
+                        </ul>
+                    </li>
+                    <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">producers workshop</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">producers network</a></li>
+                </ul>
+                <ul class="tright">
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">Doc corner</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">Next</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">Mixers</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">Goes to Cannes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="blackBckg"></div>
+
+{% block main %}
+<div id="main" class="home loading">
+<div class="text-presentation erreur404">
+<h3>{{ notFound404PageContent.title }}</h3>
+<h5>{{ notFound404PageContent.description }}</h5>
+<h4><i class="icon icon_flecheGauche reverse"></i><a href="{{ path('fdc_marchedufilm_default_index') }}">RETOUR À LA PAGE  D’ACCUEIL</a></h4>
+</div>
+</div>
+{% endblock %}
+
+{{ render(controller('FDCMarcheDuFilmBundle:Transverse:footer')) }}
+
+{% block javascripts %}
+    {% include 'FDCMarcheDuFilmBundle:shared:javascripts.html.twig' %}
+{% endblock %}
+</body>
+</html>
+
+
+{#{% block main %}#}
+{#<div id="main" class="home loading">#}
+    {#<div class="text-presentation erreur404">#}
+        {#<h3>Erreur 404</h3>#}
+        {#<h5>La page que vous recherchez n’existe pas, il est possible qu’elle soit en cours de traduction.<br> Veuillez réessayer plus tard !</h5>#}
+        {#<h4><i class="icon icon_flecheGauche reverse"></i><a href="/">RETOUR À LA PAGE  D’ACCUEIL</a></h4>#}
+    {#</div>#}
+{#</div>#}
+{#{% endblock %}#}

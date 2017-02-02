@@ -74,6 +74,7 @@ twig:
         resources:
             - 'InfiniteFormBundle::collection_theme.html.twig'
             - 'SonataCoreBundle:Form:datepicker.html.twig'
+    exception_controller:  FDCMarcheDuFilmBundle:Exception:showException
 
 # Assetic Configuration
 assetic:

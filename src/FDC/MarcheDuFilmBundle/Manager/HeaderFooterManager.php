@@ -19,12 +19,18 @@ class HeaderFooterManager
         $this->requestStack = $requestStack;
     }
 
-    public function getHeaderBanner() {
+    public function getHeaderBanner($locale = null) {
+
+        if(!$locale)
+        {
+            $locale = $this->requestStack->getMasterRequest()->get('_locale');
+        }
+
         return $this->em
             ->getRepository(HeaderFooterTranslation::class)
             ->findOneBy(
                 [
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                    'locale' => $locale
                 ]
             );
     }
