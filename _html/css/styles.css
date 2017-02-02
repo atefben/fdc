@@ -23079,6 +23079,8 @@ ul.tabs .quarterTab h4 {
 .infosPagePeople .articles {
   width: 32% !important;
   float: left;
+  margin-bottom: 50px;
+  min-height: 356px;
 }
 .infosPagePeople .articles .articles-content .photoWrapper {
   width: 150px;
