@@ -103,19 +103,16 @@ class CorpoSearchAdmin extends Admin
                     ),
                     'pushTitle1' => array(
                         'label' => 'Titre Push 1',
-                        'sonata_help' => 'X caractères max. Couleur blanche',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushTitle2' => array(
                         'label' => 'Titre Push 2',
-                        'sonata_help' => 'X caractères max. Couleur blanche',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
                     'pushTitle3' => array(
                         'label' => 'Titre Push 3',
-                        'sonata_help' => 'X caractères max. Couleur blanche',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),
