@@ -6924,6 +6924,14 @@ h2.sub-title {
   font-size: .8rem;
 }
 
+.text-01 sub {
+  vertical-align: sub !important;
+}
+
+.text-01 sup {
+  vertical-align: super !important;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
