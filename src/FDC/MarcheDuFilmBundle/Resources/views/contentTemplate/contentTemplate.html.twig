@@ -34,7 +34,7 @@
         </div>
     </div>
     {% if isWhoAreWe %}
-        {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRoute': nextRoute, 'backRoute': backRoute} %}
+        {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' with {'nextRouteName': nextRoute, 'backRouteName': backRoute} %}
     {% endif %}
     {% if isConference is defined and isConference %}
         {% if nextRouteName %}

@@ -47,8 +47,11 @@ class DefaultController extends Controller
 
         $sitePlanPage = $sitePlanManager->getSitePlanPage();
 
+        $servicesPages = $sitePlanManager->getServicesPages();
+
         return $this->render('FDCMarcheDuFilmBundle::sitePlan/sitePlan.html.twig', array(
             'sitePlanPage' => $sitePlanPage,
+            'servicesPages' => $servicesPages
         ));
     }
 }
