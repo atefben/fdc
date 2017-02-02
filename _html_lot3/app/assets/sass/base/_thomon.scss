@@ -34,4 +34,52 @@
 	font-size: 12px;
 	color: #ccc;
 }
+
+/* cms wysiwyg styles */
+.single-article .title-article {
+    color: #333;
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin: 20px auto;
+    max-width: 775px;
+    text-align: center;
+}
+
+.legal-notice h2 {
+    padding: 60px;
+    font-size: 28px;
+}
+
+h2.sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+h2.sub-title, h2.sub-title2 {
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+}
+
+.legal-notice h2 {
+    padding: 60px;
+    font-size: 28px;
+}
+
+h2.sub-title2 {
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 25px 0;
+}
+
+.single-article .chapeau {
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    color: #333;
+    font-size: 1.125rem;
+    line-height: 2em;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
 /* thomon - end fixes */
