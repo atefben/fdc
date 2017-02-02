@@ -36,20 +36,22 @@ class PressCoverageWidgetType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.press_coverage.widget_title',
+                        'label'              => 'form.mdf.label.press_coverage.widget_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'source'          => array(
-                        'label'              => 'form.mdf.press_coverage.widget_description',
+                        'label'              => 'form.mdf.label.press_coverage.widget_description',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'link'          => array(
-                        'label'              => 'form.mdf.press_coverage.widget_description',
+                        'label'              => 'form.mdf.label.press_coverage.widget_link',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
             ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
+                'label'    => 'form.mdf.label.press_coverage.widget_published_at',
+                'translation_domain' => 'BaseAdminBundle',
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => true,
                 'attr'     => array(

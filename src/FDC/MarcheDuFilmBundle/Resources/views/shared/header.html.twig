@@ -96,7 +96,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="{{ routeName == 'fdc_marche_du_film_press_releases' ? 'active ' : '' }}golden">PRESSE</a>
+                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="{{ routeName == 'fdc_marche_du_film_press_releases'
+                        or routeName =='fdc_marche_du_film_press_coverage'
+                        or routeName =='fdc_marche_du_film_press_gallery'
+                        or routeName =='fdc_marche_du_film_press_graphical_charter'
+                        ? 'active ' : '' }}golden">PRESSE</a>
                     </li>
                     <li>
                         <a href="#" class="golden">INFORMATIONS UTILES</a>
