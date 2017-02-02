@@ -1,9 +1,10 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="top-texts">
     {% if 'searchsubmit' in app.request.attributes.get("_route") and result.info_statement.count > 4 %}<a
         href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info_statement'}|merge(app.request.query.all)) }}"
         class="see-all">Tout voir</a>{% endif %}
-    <h3>Communiqués de presse/infos - {{ result.info_statement.count }} résultats</h3>
+    <h3>{{ 'search.result.info_statement.count'|transchoice(result.info_statement.count) }}</h3>
 </div>
 
 <section class="release">

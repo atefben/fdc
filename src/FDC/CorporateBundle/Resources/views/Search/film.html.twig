@@ -1,6 +1,9 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="top-texts">
     {% if 'searchsubmit' in app.request.attributes.get("_route") and result.film.count > 5 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'film'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
-    <h3>Films - {% if result.film is not empty %}{{ result.film.count }}{% else %}0{% endif %} résultats</h3>
+    <h3>{{ 'search.result.film.count'|transchoice(result.film.count) }}</h3>
+
 </div>
 
 

@@ -1,6 +1,10 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="top-texts first">
-    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.artist.count > 5 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'artist'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
-    <h3>Artistes - {% if result.artist is not empty %}{{ result.artist.count }}{% else %}0{% endif %} résultats</h3>
+    {% if 'searchsubmit' in app.request.attributes.get("_route") and result.artist.count > 5 %}<a
+        href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'artist'}|merge(app.request.query.all)) }}"
+        class="see-all">Tout voir</a>{% endif %}
+    <h3>{{ 'search.result.artist.count'|transchoice(result.artist.count) }}</h3>
 </div>
 
 <section class="artist">
@@ -12,18 +16,21 @@
                         <div class="contain-img portrait">
                             {% set artistImage = artist|person_image(true) %}
                             {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
-                                <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}" alt=""  >
+                                <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}" alt="">
                             {% elseif artistImage %}
                                 {% if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') %}
-                                    <img src="{% path artist.presidentJuryImage|trans_fallback('file'), 'search' %}" alt=""  >
+                                    <img src="{% path artist.presidentJuryImage|trans_fallback('file'), 'search' %}"
+                                         alt="">
                                 {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                                    <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, 'search' %}" alt=""  >
+                                    <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, 'search' %}"
+                                         alt="">
                                 {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                                    <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, 'search' %}" alt=""  >
+                                    <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, 'search' %}"
+                                         alt="">
                                 {% elseif class(artistImage) == 'FilmMedia' %}
-                                    <img src="{% path artistImage.file, 'search' %}" alt=""  >
+                                    <img src="{% path artistImage.file, 'search' %}" alt="">
                                 {% else %}
-                                    <img src="{% path artistImage, 'search' %}" alt=""  >
+                                    <img src="{% path artistImage, 'search' %}" alt="">
                                 {% endif %}
                             {% else %}
                                 {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
@@ -35,9 +42,9 @@
                                 {% endif %}
 
                                 {% if media is not empty %}
-                                    <img src="{% path media, 'search' %}" alt=""  >
+                                    <img src="{% path media, 'search' %}" alt="">
                                 {% else %}
-                                    <img src="{{ asset('bundles/fdccorporate/media/images/who-staff-01.jpg') }}" alt=""  >
+                                    <img src="{{ asset('bundles/fdccorporate/media/images/who-staff-01.jpg') }}" alt="">
                                 {% endif %}
                             {% endif %}
                         </div>
