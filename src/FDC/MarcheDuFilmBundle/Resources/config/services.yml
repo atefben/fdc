@@ -125,3 +125,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.who_are_we_team:
+        class: FDC\MarcheDuFilmBundle\Manager\WhoAreWeTeamManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

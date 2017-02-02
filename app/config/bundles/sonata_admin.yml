@@ -44,6 +44,9 @@ sonata_admin:
             admin.group.mdf_presse:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            admin.group.mdf_qui_sommes_nous:
+                items: ~
+                label_catalogue: BaseAdminBundle
             admin.group.mdf_goes_to_cannes:
                 items: ~
                 label_catalogue: BaseAdminBundle

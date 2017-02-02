@@ -482,6 +482,7 @@ admin:
         mdf_mixers: Mixers
         mdf_goes_to_cannes: Goes to Cannes
         mdf_presse: Presse
+        mdf_qui_sommes_nous: Qui sommes-nous ?
 
 
 dashboard:
@@ -731,6 +732,20 @@ form:
                 graphical_charter_widget_image: Visuel
                 graphical_charter_widget_title: Nom du fichier
                 graphical_charter_widget_button: Module téléchargement de fichiers
+            who_are_we:
+                subtitle: Sous-titre
+                contact_widget: Bloc de contact Info
+                contact_widget_date: Date
+                contact_widget_address: Adresse téléphone
+                contact_widget_phone: Téléphone
+                contact_widget_button: Bloc de contact Info
+                widget: Bloc de contact
+                widget_name: Nom et prénom
+                widget_post: Poste
+                widget_email: Email
+                widget_phone: Téléphone
+                widget_image: Photo
+                widget_button: Bloc de contact
             facebook_url: URL Facebook
             twitter_url: URL Twitter
             youtube_url: URL Youtube
