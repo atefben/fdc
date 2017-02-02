@@ -1,0 +1,20 @@
+{% if backRoute %}
+    <div class="floatingButtonLeft">
+        <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+        </div>
+        <a href="{{ path(backRoute) }}">
+            <div class="floatingButtonText showLeft">{{ backRouteLabel }}</div>
+        </a>
+    </div>
+{% endif %}
+{% if nextRoute %}
+    <div class="floatingButtonRight">
+        <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+        </div>
+        <a href="{{ path(nextRoute) }}">
+            <div class="floatingButtonText showRight">{{ nextRouteLabel }}</div>
+        </a>
+    </div>
+{% endif %}

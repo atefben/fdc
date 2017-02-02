@@ -41,14 +41,17 @@ class DefaultController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sitePlan()
+    public function sitePlanAction()
     {
         $sitePlanManager = $this->get('mdf.manager.site_plan');
 
         $sitePlanPage = $sitePlanManager->getSitePlanPage();
 
+        $servicesPages = $sitePlanManager->getServicesPages();
+
         return $this->render('FDCMarcheDuFilmBundle::sitePlan/sitePlan.html.twig', array(
             'sitePlanPage' => $sitePlanPage,
+            'servicesPages' => $servicesPages
         ));
     }
 }
