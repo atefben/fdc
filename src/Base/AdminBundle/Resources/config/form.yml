@@ -674,7 +674,7 @@ services:
             - ['setSonataAdmin', ['@base.admin.who_are_we_team_widget_image_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
-    ase.admin.form.who_are_we_team_contact_widget_type:
+    base.admin.form.who_are_we_team_contact_widget_type:
         class: FDC\MarcheDuFilmBundle\Form\Type\WhoAreWeTeamContactWidgetType
         tags:
             - { name: form.type, alias: 'who_are_we_team_contact_widget_type'}
