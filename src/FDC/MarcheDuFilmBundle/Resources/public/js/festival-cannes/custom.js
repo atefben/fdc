@@ -223,8 +223,10 @@ $(window).scroll(function(){
 
 $(window).scroll(function(){
 
-    if ($("body").scrollTop() > $(".contact-box").offset().top) {
-            $(".floatingButtonLeft, .floatingButtonRight").hide();
+    if ($(".contact-box").offset()) {
+      if ($("body").scrollTop() > $(".contact-box").offset().top) {
+        $(".floatingButtonLeft, .floatingButtonRight").hide();
+      }
     }
 
     if ($("header").hasClass("sticky")) {

@@ -8,11 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * PressCoverageTranslation
- * @ORM\Table(name="mdf_press_coverage_translation")
+ * MdfPressGraphicalCharterTranslation
+ * @ORM\Table(name="mdf_press_graphical_charter_translation")
  * @ORM\Entity
  */
-class PressCoverageTranslation
+class MdfPressGraphicalCharterTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -23,6 +23,13 @@ class PressCoverageTranslation
      * @ORM\Column(type="string", nullable=true)
      */
     protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $description;
 
 
     /**
@@ -41,6 +48,26 @@ class PressCoverageTranslation
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param $description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
 
         return $this;
     }

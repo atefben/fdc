@@ -1,0 +1,36 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle::shared/pressSubHeader.html.twig' %}
+        <div class="text-presentation galeriePresentation">
+            <div class="bigContainer">
+                <h3>{{ pressGraphicalCharterContent.title }}</h3>
+                <h5>{{ pressGraphicalCharterContent.description|raw }}</h5>
+            </div>
+        </div>
+        <div class="bigContainer">
+            <div class="our-news infosPage galeriePhotos">
+                <div class="innerWrapper">
+                    {% for pressGraphicalCharterWidget in pressGraphicalCharterWidgets %}
+                        {% set imageInfo = pressGraphicalCharterWidget.translatable.image.findTranslationByLocale(app.request.locale) %}
+                        <div class="articles">
+                            <a href="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" target="_blank" download>
+                                <div class="articles-content">
+                                    <div class="photoWrapper">
+                                        <img src="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}">
+                                    </div>
+                                    <div class="textWrapper">
+                                        <h6>{{ pressGraphicalCharterWidget.title }}</h6>
+                                        <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
+                                        <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} mo - {{ pressGraphicalCharterWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

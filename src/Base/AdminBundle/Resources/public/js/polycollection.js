@@ -319,10 +319,22 @@ jQuery(document).ready(function($) {
             $(this).val(idx + 1);
         });
     });
-  $('form[action*="presscoverage"]').submit(function() {
+    $('form[action*="presscoverage"]').submit(function() {
     var inputs = $('input[name$="[position]"]');
     inputs.each(function(idx) {
       $(this).val(idx + 1);
     });
-  });
+    });
+    $('form[action*="mdfpressgallery"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfpressgraphicalcharter"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
 });

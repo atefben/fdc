@@ -113,3 +113,15 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.press_gallery:
+        class: FDC\MarcheDuFilmBundle\Manager\PressGalleryManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.press_graphical_charter:
+        class: FDC\MarcheDuFilmBundle\Manager\PressGraphicalCharterManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
