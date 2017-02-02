@@ -6916,6 +6916,11 @@ h2.sub-title {
   text-align: center;
 }
 
+.block-contain-txt-register-movie h4 {
+  padding-bottom: 32px;
+  font-size: .8rem;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
