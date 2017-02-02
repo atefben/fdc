@@ -36,10 +36,10 @@
                         <div class="col-md-12">
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
-                                    {% for widget in form.parent.children.pressGalleryWidgets.children %}
+                                    {% for widget in form.parent.children.pressGraphicalCharterWidgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'press_gallery_widget_type' %}
-                                                <h4><strong>{{ 'form.mdf.label.press.gallery_widget'|trans }}</strong></h4>
+                                            {% if widget.children._type.vars.value == 'press_graphical_charter_widget_type' %}
+                                                <h4><strong>{{ 'form.mdf.label.press.graphical_charter_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -53,18 +53,18 @@
                                     {% endfor %}
                                 </div>
                                 <a class="btn btn-primary btn-add-base-widget"
-                                   data-prototype="{{ form_widget(form.parent.children.pressGalleryWidgets.vars.prototypes.press_gallery_widget_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.mdf.label.press.gallery_widget_button'|trans }}</a>
+                                   data-prototype="{{ form_widget(form.parent.children.pressGraphicalCharterWidgets.vars.prototypes.press_graphical_charter_widget_type)|escape }}"><i
+                                            class="icon-plus"></i>{{ 'form.mdf.label.press.graphical_charter_widget_button'|trans }}</a>
                             </div>
                         </div>
                     {% else %}
                         <div class="col-md-8">
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
-                                    {% for widget in form.parent.children.pressGalleryWidgets.children %}
+                                    {% for widget in form.parent.children.pressGraphicalCharterWidgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'press_gallery_widget_type' %}
-                                                <h4><strong>{{ 'form.mdf.label.press.gallery_widget'|trans }}</strong></h4>
+                                            {% if widget.children._type.vars.value == 'press_graphical_charter_widget_type' %}
+                                                <h4><strong>{{ 'form.mdf.label.press.graphical_charter_widget'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -85,13 +85,13 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {% for widget in form.parent.children.pressGalleryWidgets.children %}
+                                        {% for widget in form.parent.children.pressGraphicalCharterWidgets.children %}
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'press_gallery_widget_type' %}
-                                                    <h4><strong>{{ 'form.mdf.label.press.gallery_widget'|trans }}</strong></h4>
+                                                {% if widget.children._type.vars.value == 'press_graphical_charter_widget_type' %}
+                                                    <h4><strong>{{ 'form.mdf.label.press.graphical_charter_widget'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.mdf.label.press.gallery_widget_title'|trans }}
+                                                            {{ 'form.mdf.label.press.graphical_charter_widget_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}

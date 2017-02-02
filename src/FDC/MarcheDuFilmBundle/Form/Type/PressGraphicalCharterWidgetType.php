@@ -8,12 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Base\AdminBundle\Admin\MediaMdfImageAdmin;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class PressGalleryWidgetType extends AbstractType
+class PressGraphicalCharterWidgetType extends AbstractType
 {
     /**
      * @var string
      */
-    protected $dataClass = 'FDC\MarcheDuFilmBundle\Entity\MdfPressGalleryWidget';
+    protected $dataClass = 'FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharterWidget';
 
     /**
      * admin
@@ -66,7 +66,7 @@ class PressGalleryWidgetType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.label.press.gallery_widget_title',
+                        'label'              => 'form.mdf.label.press.graphical_charter_widget_title',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 ),
@@ -75,7 +75,7 @@ class PressGalleryWidgetType extends AbstractType
                 'constraints' => array(
                     new NotBlank(),
                 ),
-                'label' => 'form.mdf.label.press.gallery_widget_image',
+                'label' => 'form.mdf.label.press.graphical_charter_widget_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),
@@ -103,6 +103,6 @@ class PressGalleryWidgetType extends AbstractType
      */
     public function getName()
     {
-        return 'press_gallery_widget_type';
+        return 'press_graphical_charter_widget_type';
     }
 }

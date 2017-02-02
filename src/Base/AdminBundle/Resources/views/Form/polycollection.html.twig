@@ -1345,6 +1345,24 @@
     </div>
 {% endblock %}
 
+{% block press_graphical_charter_widget_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.mdf.press_graphical_charter.widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content_template_widget_gallery_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">

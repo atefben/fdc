@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 
-class MdfPressGalleryAdmin extends Admin
+class MdfPressGraphicalCharterAdmin extends Admin
 {
     protected $translationDomain = 'BaseAdminBundle';
     protected $formOptions = array(
@@ -73,10 +73,10 @@ class MdfPressGalleryAdmin extends Admin
                     )
                 ),
             ))
-            ->add('pressGalleryWidgets', 'infinite_form_polycollection', array(
+            ->add('pressGraphicalCharterWidgets', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
-                    'press_gallery_widget_type',
+                    'press_graphical_charter_widget_type',
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,

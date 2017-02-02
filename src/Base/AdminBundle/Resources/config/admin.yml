@@ -1797,6 +1797,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_graphical_charter_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharterWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Press Graphical Charter Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.mdf_content_template_widget_image_dummy:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage, BaseAdminBundle:MdfImageDummyAdmin]
@@ -1846,6 +1854,12 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGallery, BaseAdminBundle:MdfPressGalleryAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Galerie photos}
+
+    base.admin.mdf_press_graphical_charter:
+        class: Base\AdminBundle\Admin\MdfPressGraphicalCharterAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharter, BaseAdminBundle:MdfPressGraphicalCharterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Charte graphique}
 
     base.admin.mdf_content_template_widget_gallery_dummy:
         class: Base\AdminBundle\Admin\MdfGalleryDummyAdmin

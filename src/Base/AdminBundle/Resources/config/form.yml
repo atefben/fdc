@@ -656,6 +656,15 @@ services:
             - ['setSonataAdmin', ['@base.admin.press_gallery_widget_image_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
+    base.admin.form.press_graphical_charter_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressGraphicalCharterWidgetType
+        tags:
+            - { name: form.type, alias: 'press_graphical_charter_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.press_graphical_charter_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
     base.admin.form.content_template_widget_gallery_type:
         scope: prototype
         class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetGalleryType
