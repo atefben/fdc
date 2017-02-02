@@ -5,13 +5,15 @@ namespace FDC\MarcheDuFilmBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Base\AdminBundle\Admin\MediaMdfImageAdmin;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
-class PressCoverageWidgetType extends AbstractType
+class WhoAreWeTeamContactWidgetType extends AbstractType
 {
     /**
      * @var string
      */
-    protected $dataClass = 'FDC\MarcheDuFilmBundle\Entity\PressCoverageWidget';
+    protected $dataClass = 'FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeamContactWidget';
 
     /**
      * @param FormBuilderInterface $builder
@@ -35,27 +37,21 @@ class PressCoverageWidgetType extends AbstractType
                             'class' => 'hidden',
                         ),
                     ),
-                    'title'          => array(
-                        'label'              => 'form.mdf.label.press_coverage.widget_title',
+                    'date'          => array(
+                        'label'              => 'form.mdf.label.wo_are_we_team.contact_widget_date',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required'           => true
                     ),
-                    'source'          => array(
-                        'label'              => 'form.mdf.label.press_coverage.widget_description',
+                    'address'          => array(
+                        'label'              => 'form.mdf.label.wo_are_we_team.contact_widget_address',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required'           => true
                     ),
-                    'link'          => array(
-                        'label'              => 'form.mdf.label.press_coverage.widget_link',
+                    'phone'          => array(
+                        'label'              => 'form.mdf.label.wo_are_we_team.contact_widget_phone',
                         'translation_domain' => 'BaseAdminBundle',
-                    ),
-                ),
-            ))
-            ->add('publishedAt', 'sonata_type_datetime_picker', array(
-                'label'    => 'form.mdf.label.press_coverage.widget_published_at',
-                'translation_domain' => 'BaseAdminBundle',
-                'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => true,
-                'attr'     => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                        'required'           => true
+                    )
                 ),
             ))
         ;
@@ -78,6 +74,6 @@ class PressCoverageWidgetType extends AbstractType
      */
     public function getName()
     {
-        return 'press_coverage_widget_type';
+        return 'who_are_we_team_contact_widget_type';
     }
 }

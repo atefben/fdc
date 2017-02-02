@@ -1797,6 +1797,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.who_are_we_team_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeamWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Who Are We Team Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.press_graphical_charter_widget_image_dummy:
         class: Base\AdminBundle\Admin\MdfImageDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharterWidget, BaseAdminBundle:MdfImageDummyAdmin]
@@ -1861,6 +1869,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Charte graphique}
 
+    base.admin.mdf_who_are_we_team:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeTeamAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeam, BaseAdminBundle:MdfWhoAreWeTeamAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: L’équipe}
+
     base.admin.mdf_content_template_widget_gallery_dummy:
         class: Base\AdminBundle\Admin\MdfGalleryDummyAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery, BaseAdminBundle:MdfGalleryDummyAdmin]
@@ -1893,19 +1907,19 @@ services:
         class: Base\AdminBundle\Admin\MdfWhoAreWeHistoryAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeHistoryAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Historique}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: Historique}
 
     base.admin.mdf_who_are_we_key_figures:
         class: Base\AdminBundle\Admin\MdfWhoAreWeKeyFiguresAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeKeyFiguresAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Chiffres clés}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: Chiffres clés}
 
     base.admin.mdf_who_are_we_environmental_approaches:
         class: Base\AdminBundle\Admin\MdfWhoAreWeEnvironmentalApproachesAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeEnvironmentalApproachesAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Qui sommes-nous ? – Démarches environnementales}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: Démarches environnementales}
 
     base.admin.mdf_legal_mentions:
         class: Base\AdminBundle\Admin\MdfLegalMentionsAdmin

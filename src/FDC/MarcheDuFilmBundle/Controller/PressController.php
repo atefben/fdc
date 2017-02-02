@@ -66,4 +66,20 @@ class PressController extends Controller
             'pressGraphicalCharterWidgets' => $pressGraphicalCharterWidgets
         ));
     }
+
+    /**
+     * @Route("/presse/retombees-presse", name="fdc_marche_du_film_press_coverage")
+     */
+    public function pressCoverageAction()
+    {
+        $pressCoverageManager = $this->get('mdf.manager.press_coverage');
+
+        $pressCoverageContent = $pressCoverageManager->getPressCoverageContent();
+        $pressCoverageWidgets = $pressCoverageManager->getpressCoverageWidgets();
+
+        return $this->render('FDCMarcheDuFilmBundle:presse:pressCoverage.html.twig', array(
+            'pressCoverageContent' => $pressCoverageContent,
+            'pressCoverageWidgets' => $pressCoverageWidgets
+        ));
+    }
 }

@@ -10,3 +10,4 @@ validation.partners_logo_max: At most 4 logos can be added.
 validation.partners_logo_min: At least 1 logo must be added.
 validation.partners_tab_min: At least 1 partner tab must be added.
 validation.partners_tab_max: At most 4 partner tabs can be added.
+validation.who_are_we_length: At most 2 contact info tabs can be added.
