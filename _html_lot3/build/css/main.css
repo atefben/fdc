@@ -6845,8 +6845,14 @@ body.chocolat-open > .chocolat-content {
   display: inline-block !important;
 }
 
-.block-movie-preview .description {
+.block-movie-preview .wrapper-item .description {
   width: 475px;
+}
+
+.block-search .content-result .see-all {
+  font-size: .61rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
 }
 
 /* thomon - end fixes */
