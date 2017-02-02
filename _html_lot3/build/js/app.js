@@ -2063,8 +2063,12 @@ var owRemoveElementListe = function () {
             $('input#' + id).parent().addClass('active');
         })
 
-        $('.button-submit-02').trigger('click');
-
+        if (!$('.filters-02 li .icon-close').length) {
+            window.location.href = $('.button-submit-02').data('reset-url');
+        }
+        else {
+            $('.button-submit-02').trigger('click');
+        }
     });
 }
 
