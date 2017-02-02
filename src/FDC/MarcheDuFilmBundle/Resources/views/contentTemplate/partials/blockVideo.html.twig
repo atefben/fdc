@@ -3,7 +3,7 @@
      data-twitter="//www.twitter.com"
      data-link="//www.example.com"
      data-email="//www.gmail.com"
-     data-name="test"
+     data-name="{{ widget.title }}"
      data-file='[{"file":"{{ widget.url }}"}]'
      data-img="{% path widget.translatable.image|trans_fallback('file'), 'reference' %}">
     <div id="{{ '100' ~ date().timestamp }}" class="video-player">

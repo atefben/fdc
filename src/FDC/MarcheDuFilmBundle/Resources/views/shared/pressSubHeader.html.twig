@@ -1,20 +1,20 @@
 {% set routeName = app.request.get('_route') %}
 <div class="text-presentation producersWorkshop presses mdf">
-    <h3>Presse</h3>
+    <h3>{{ 'press.title'|trans }}</h3>
     <div class="subNavigation">
         <nav>
             <ul class="main">
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="{{ routeName == 'fdc_marche_du_film_press_releases' ? 'active' : '' }}">Communiqués de presse</a>
+                    <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="{{ routeName == 'fdc_marche_du_film_press_releases' ? 'active' : '' }}">{{ 'press.menu.releases'|trans }}</a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_press_coverage') }}" class="{{ routeName == 'fdc_marche_du_film_press_coverage' ? 'active' : '' }}">Retombées presse</a>
+                    <a href="{{ path('fdc_marche_du_film_press_coverage') }}" class="{{ routeName == 'fdc_marche_du_film_press_coverage' ? 'active' : '' }}">{{ 'press.menu.coverage'|trans }}</a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_press_gallery') }}" class="{{ routeName == 'fdc_marche_du_film_press_gallery' ? 'active' : '' }}">Galerie Photos</a>
+                    <a href="{{ path('fdc_marche_du_film_press_gallery') }}" class="{{ routeName == 'fdc_marche_du_film_press_gallery' ? 'active' : '' }}">{{ 'press.menu.gallery'|trans }}</a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_press_graphical_charter') }}" class="{{ routeName == 'fdc_marche_du_film_press_graphical_charter' ? 'active' : '' }}">Charte Graphique</a>
+                    <a href="{{ path('fdc_marche_du_film_press_graphical_charter') }}" class="{{ routeName == 'fdc_marche_du_film_press_graphical_charter' ? 'active' : '' }}">{{ 'press.menu.graphical_charter'|trans }}</a>
                 </li>
             </ul>
         </nav>

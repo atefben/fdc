@@ -23,21 +23,21 @@
                                 <span class="customClass1">{{ event.eventType }}</span>
                                 <p>{{ event.eventDescription }}</p>
                                 {# MISSING URL TAG. FO ISSUE #}
-                                <a href="{{ event.url }}"><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
+                                <a href="{{ event.url }}"><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i>{{ 'read_more'|trans }}</div></a>
                                 {# END #}
                                 <hr>
                             </div>
                             <div class="conf30">
                                 <div>
-                                    <span>heure</span>
-                                    <p>De {{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} à {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }} </p>
+                                    <span>{{ 'program.hour_label'|trans }}</span>
+                                    <p>De {{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} {{ 'program.hour_to'|trans }} {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }} </p>
                                 </div>
                                 <div>
-                                    <span>lieu</span>
+                                    <span>{{ 'program.place_label'|trans }}</span>
                                     <p>{{ event.location }}</p>
                                 </div>
                                 <div>
-                                    <span>type d'accès</span>
+                                    <span>{{ 'program.access_type_label'|trans }}</span>
                                     <p>{{ event.accessType }}</p>
                                 </div>
                             </div>

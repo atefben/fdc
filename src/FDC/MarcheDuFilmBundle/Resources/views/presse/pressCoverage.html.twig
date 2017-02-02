@@ -11,12 +11,12 @@
                         <div class="articles">
                             <div class="readMore">
                                 <i class="icon icon_flecheGauche reverse"></i>
-                                <a href="{{ pressCoverageWidget.link }}">Lire l'article</a>
+                                <a href="{{ pressCoverageWidget.link }}">{{ 'read_the_article'|trans }}</a>
                             </div>
                             <div class="articles-content">
                                 <span>publié le <span class="article-date customClass4">{{ pressCoverageWidget.translatable.publishedAt|date("d M Y") }}</span></span>
                                 <h6>{{ pressCoverageWidget.title }}</h6>
-                                <span>Par <span class="article-date customClass4">{{ pressCoverageWidget.source }}</span></span>
+                                <span>{{ 'article_by'|trans }}{#Par#} <span class="article-date customClass4">{{ pressCoverageWidget.source }}</span></span>
                             </div>
                         </div>
                     {% endfor %}
@@ -24,7 +24,7 @@
             </div>
             <a href="#">
                 <div class="moreArticles">
-                    <span>AFFICHER PLUS</span>
+                    <span>{{ 'display_more'|trans }}</span>
                 </div>
             </a>
         </div><!--CONTAINER-->

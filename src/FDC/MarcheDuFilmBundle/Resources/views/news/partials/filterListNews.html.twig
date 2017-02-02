@@ -2,9 +2,9 @@
 <div class="bigContainer">
     <div id="accordion-conf" class="conferences">
         <div class="dropdown">
-            <span>AFFICHER</span>
+            <span>{{ 'display'|trans }}</span>
             <div id="eventSelector">
-                <div class="selectText" id="showAll">Tous</div>
+                <div class="selectText" id="showAll">{{ 'filter_all'|trans }}</div>
                 {% for filter in filters %}
                     <div class="selectText hideAll" id="{{ filter.slug }}-filter">{{ filter.title }}</div>
                 {% endfor %}
@@ -14,7 +14,7 @@
             </div>
         </div><br>
         <div class="selector marketnewsSelector">
-            <div class="purpleBtn selectbtn marketnewsBtn" id="all">Tous</div>
+            <div class="purpleBtn selectbtn marketnewsBtn" id="all">{{ 'filter_all'|trans }}</div>
             {% for filter in filters %}
                 <div class="selectbtn marketnewsBtn" id="{{ filter.slug }}" rel="{{ filter.slug }}-filter">{{ filter.title }}</div>
             {% endfor %}

@@ -73,11 +73,6 @@ class MediaMdfVideo extends MediaMdf
      * @var \Base\CoreBundle\Entity\WebTv
      *
      * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\WebTv", inversedBy="mediaVideos")
-     * @Assert\Expression(
-     *     "this.isDisplayedWebTvChecked() == false",
-     *     message="Cette valeur ne doit pas être nulle."
-     * )
-     */
     private $webTv;
 
     /**
@@ -133,10 +128,6 @@ class MediaMdfVideo extends MediaMdf
         return $this->displayedWebTv;
     }
 
-
-    /**
-     * @Assert\IsFalse(message = "Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide")
-     */
     public function isDisplayedWebTvChecked()
     {
         return ($this->getDisplayedWebTv() == true && $this->getWebTv() == null);
@@ -384,7 +375,7 @@ class MediaMdfVideo extends MediaMdf
     /**
      * Get displayedHomeCorpo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedHomeCorpo()
     {
@@ -430,7 +421,7 @@ class MediaMdfVideo extends MediaMdf
     /**
      * Get dateHomeCorpo
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateHomeCorpo()
     {

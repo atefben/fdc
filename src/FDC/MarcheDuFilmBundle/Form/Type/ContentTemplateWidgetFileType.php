@@ -55,7 +55,8 @@ class ContentTemplateWidgetFileType extends ContentTemplateWidgetType
                 'model_manager' => $this->mediaFileAdmin->getModelManager(),
                 'class' => $this->mediaFileAdmin->getClass(),
                 'btn_delete' => false,
-                'label' => 'form.label_file'
+                'label' => 'form.label_file',
+                'translation_domain' => 'BaseAdminBundle'
             ));
     }
 

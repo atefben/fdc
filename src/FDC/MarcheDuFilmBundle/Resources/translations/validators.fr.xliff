@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2017-02-02T22:34:02Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="dc6d2a030740e27789f40fb1c7cf8900b57d8d6a" resname="validation.home_top_slider_max">
+        <source>validation.home_top_slider_max</source>
+        <target>At most 6 top sliders can be added.</target>
+      </trans-unit>
+      <trans-unit id="ac45b5bce592629db88149b2d7a429aa30efc594" resname="validation.home_top_slider_min">
+        <source>validation.home_top_slider_min</source>
+        <target>At least 1 top slider must be added.</target>
+      </trans-unit>
+      <trans-unit id="d9c1776912a4ec75c66541353069ae7d7cf7311c" resname="validation.partners_logo_max">
+        <source>validation.partners_logo_max</source>
+        <target>At most 4 logos can be added.</target>
+      </trans-unit>
+      <trans-unit id="25c673742a0d3e645a54c793df9b6f2fcaba4f81" resname="validation.schedule_min">
+        <source>validation.schedule_min</source>
+        <target>At least 1 event should be added on a day accordion.</target>
+      </trans-unit>
+      <trans-unit id="4262b68ce1f982a4e0d9a2b2e4ff09b2e1d2a7d0" resname="validation.service_product_image_max">
+        <source>validation.service_product_image_max</source>
+        <target>At most 3 images can be added per product.</target>
+      </trans-unit>
+      <trans-unit id="6feb96362eaf93d823c2b8435f94034bd3419c1a" resname="validation.service_widget_max">
+        <source>validation.service_widget_max</source>
+        <target>At most 4 tabs can be added per service.</target>
+      </trans-unit>
+      <trans-unit id="3a945c512dc9a91405fa848a32c08c4219b0cc98" resname="validation.service_widget_min">
+        <source>validation.service_widget_min</source>
+        <target>At least 1 tab must be added per service.</target>
+      </trans-unit>
+      <trans-unit id="8fc0172c3fba00c04917a17c0da40ddbddc65db6" resname="validation.speakers_max">
+        <source>validation.speakers_max</source>
+        <target>At most 8 speakers can be added.</target>
+      </trans-unit>
+      <trans-unit id="6137d3bcf040d877cf4970836c25fa0bdb02babd" resname="validation.speakers_widget_tab_max">
+        <source>validation.speakers_widget_tab_max</source>
+        <target>At most 4 speakers tab can be added.</target>
+      </trans-unit>
+      <trans-unit id="e409a3459c415fae935595ba8ec9840552ef6c60" resname="validation.who_are_we_length">
+        <source>validation.who_are_we_length</source>
+        <target>At most 2 contact info tabs can be added.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

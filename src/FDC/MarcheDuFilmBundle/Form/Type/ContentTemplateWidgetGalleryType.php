@@ -55,7 +55,8 @@ class ContentTemplateWidgetGalleryType extends ContentTemplateWidgetType
                 'model_manager' => $this->mediaGalleryAdmin->getModelManager(),
                 'class' => $this->mediaGalleryAdmin->getClass(),
                 'btn_delete' => false,
-                'label' => 'form.mdf.content_template.label.gallery'
+                'label' => 'form.mdf.content_template.label.gallery',
+                'translation_domain' => 'BaseAdminBundle'
 
             ));
     }

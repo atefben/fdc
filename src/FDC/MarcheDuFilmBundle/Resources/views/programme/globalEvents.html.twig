@@ -18,7 +18,7 @@
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
                 <div class="dropdown">
-                    <span>AFFICHER</span>
+                    <span>{{ 'display'|trans }}</span>
                     <div id="eventSelector">
                         {% for key, item in conferences %}
                             <div class="selectText" id="{{ key }}">{{ item|trans }}{% if loop.last ==false %},{% endif %}</div>
@@ -29,7 +29,7 @@
                     </div>
                 </div><br>
                 <div class="selector">
-                    <div class="purpleBtn selectbtn confBtn customClass1" id="all">Tous</div>
+                    <div class="purpleBtn selectbtn confBtn customClass1" id="all">{{ 'filter_all' }}</div>
                     {% for key, item in conferences %}
                         <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ key|replace({'-': ' '}) }}</div>
                     {% endfor %}
