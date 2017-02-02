@@ -36,6 +36,13 @@ jms_translation:
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: [Form]
             extractors: []
+        mdf:
+            dirs: [%kernel.root_dir%/../src/FDC/MarcheDuFilmBundle]
+            output_dir: %kernel.root_dir%/../src/FDC/MarcheDuFilmBundle/Resources/translations
+            ignored_domains: [FDCCorporateBundle, FDCEventBundle, FDCPressBundle, FDCEventMobileBundle, FDCPressMobileBundle, BaseAdminBundle]
+            excluded_names: ["*TestCase.php", "*Test.php"]
+            excluded_dirs: [wordpress-plugin]
+            extractors: []
         app:
             dirs: [%kernel.root_dir%/../src/FDC/EventBundle, %kernel.root_dir%/../src/FDC/CorporateBundle, %kernel.root_dir%/../src/FDC/PressBundle, %kernel.root_dir%/../src/FDC/EventMobileBundle]
             output_dir: %kernel.root_dir%/../app/Resources/translations

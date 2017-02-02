@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2017-02-02T18:59:41Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="947cdeff6c7f1dfdd4ac0fa999f65bd53a685228" resname="accrediation.bandeau.subscribe">
+        <source>accrediation.bandeau.subscribe</source>
+        <target>S'INSCRIRE</target>
+        <jms:reference-file line="10">views/accreditation/show.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="411ba31ef0ac007d3691244b67912ec98a87919b" resname="form.label.service._widget_product_gallery">
+        <source>form.label.service._widget_product_gallery</source>
+        <target state="new">form.label.service._widget_product_gallery</target>
+        <jms:reference-file line="61">Form/Type/ServiceWidgetProductType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="682ac5882f3f1b229a7bbae694425763909b5580" resname="form.label_file">
+        <source>form.label_file</source>
+        <target state="new">form.label_file</target>
+        <jms:reference-file line="58">Form/Type/ContentTemplateWidgetFileType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b18f4a58cf4edbba22a1421daa2bc036429667cb" resname="form.mdf.content_template.label.gallery">
+        <source>form.mdf.content_template.label.gallery</source>
+        <target state="new">form.mdf.content_template.label.gallery</target>
+        <jms:reference-file line="58">Form/Type/ContentTemplateWidgetGalleryType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="181c131206938aa4c24a65f02e328ad8a6d3d5ef" resname="form.mdf.content_template.label.text">
+        <source>form.mdf.content_template.label.text</source>
+        <target state="new">form.mdf.content_template.label.text</target>
+        <jms:reference-file line="37">Form/Type/ContentTemplateWidgetTextType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="95e00e088de09e9e7147e8cc6296aaaa84408aa4" resname="news.block.load_more_button">
+        <source>news.block.load_more_button</source>
+        <target>Plus d'articles</target>
+        <jms:reference-file line="13">conference/news/show.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="584bae554f9ba2c6ad6620268d869ebc410bf365" resname="news.block.read_more">
+        <source>news.block.read_more</source>
+        <target>...</target>
+        <jms:reference-file line="14">news/partials/newsBlock.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="33dc386a108b3e126da75d5de48a7dbd93fbc2fa" resname="program.access_type_label">
+        <source>program.access_type_label</source>
+        <target>type d'accès</target>
+        <jms:reference-file line="41">views/conference/accordion.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3e4f9c899cdd678c1848624849abb7e25dccf55e" resname="program.hour_label">
+        <source>program.hour_label</source>
+        <target>heure</target>
+        <jms:reference-file line="33">views/conference/accordion.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d2415b523b589d417d340e1d41f1620c62c70ed7" resname="program.hour_to">
+        <source>program.hour_to</source>
+        <target>à</target>
+        <jms:reference-file line="34">views/conference/accordion.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="67c47f04c0c2862d70f27f972c51e2fea83cf072" resname="program.place_label">
+        <source>program.place_label</source>
+        <target>lieu</target>
+        <jms:reference-file line="37">views/conference/accordion.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -24,18 +24,6 @@
             {% endif %}
             <div class="whiteBckg">
                 <div class="tab_container ">
-                    <div class="floatingButtonLeft">
-                        <div class="floatingButtonBckg">
-                            <span class="arrow"><i class='icon icon_flecheGauche'></i></span>
-                            <span class="floatingButtonText">nos conférences</span>
-                        </div>
-                    </div>
-                    <div class="floatingButtonRight">
-                        <div class="floatingButtonBckg">
-                            <span class="floatingButtonText">nos conférences</span>
-                            <span class="arrow"><i class='icon icon_flecheGauche reverse'></i></span>
-                        </div>
-                    </div>
                     {% for tab in speakersTabs %}
                         <div id="tab{{ tab.translatable.id }}" class="tab_content">
                             {% for speaker in speakersList[tab.translatable.id] %}

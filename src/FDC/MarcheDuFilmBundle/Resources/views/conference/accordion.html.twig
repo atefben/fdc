@@ -30,15 +30,15 @@
                                     </div>
                                     <div class="conf30Sharp">
                                         <div>
-                                            <span>heure</span>
-                                            <p>{{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} à {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }}</p>
+                                            <span>{{ 'program.hour_label'|trans }}</span>
+                                            <p>{{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} {{ 'program.hour_to'|trans }} {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }}</p>
                                         </div>
                                         <div>
-                                            <span>lieu</span>
+                                            <span>{{ 'program.place_label'|trans }}</span>
                                             <p>{{ event.eventPlace }}</p>
                                         </div>
                                         <div>
-                                            <span>type d'accès</span>
+                                            <span>{{ 'program.access_type_label'|trans }}</span>
                                             <p>{{ event.eventAccessType }}</p>
                                         </div>
                                     </div>
