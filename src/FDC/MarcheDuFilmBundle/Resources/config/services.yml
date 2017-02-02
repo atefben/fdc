@@ -101,3 +101,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.press_release:
+        class: FDC\MarcheDuFilmBundle\Manager\PressReleaseManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
