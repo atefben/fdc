@@ -45,6 +45,7 @@
     margin: 20px auto;
     max-width: 775px;
     text-align: center;
+    padding: 60px;
 }
 
 .legal-notice h2 {
@@ -58,7 +59,7 @@ h2.sub-title {
     text-align: center;
 }
 
-h2.sub-title, h2.sub-title2 {
+.text h2.sub-title, .text h2.sub-title2 {
     font-family: "Playfair Display",Times New Roman,Times,serif;
 }
 
@@ -67,7 +68,7 @@ h2.sub-title, h2.sub-title2 {
     font-size: 28px;
 }
 
-h2.sub-title2 {
+.text h2.sub-title2 {
     font-weight: 700;
     font-size: 1.125rem;
     margin: 25px 0;
