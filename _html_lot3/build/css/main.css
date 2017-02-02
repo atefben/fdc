@@ -4938,7 +4938,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .half-photos p.caption {
   color: #666 !important;
   font-size: 0.750rem !important;
-  margin: 10px 0 0 !important;
+  margin: 0 !important;
   line-height: 18px !important;
   text-align: left !important;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
