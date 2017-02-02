@@ -573,97 +573,86 @@
                 </ul>
               </div>
             </div>
-           <div class="text-presentation projection producersProgramme">
-                <div class="programme">
-                  <div>
-                    <img src="img/trombonne.png">
-                  </div>
-                  <div>
-                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
-                  </div>
-                  <div class="customClass1">
-                    <a href="">
-                      <img src="img/boutonDLRond.png">
-                    </a>
-                  </div>
-                </div> 
-                
-                <div class="programme">
-                  <div>
-                    <img src="img/trombonne.png">
-                  </div>
-                  <div>
-                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
-                  </div>
-                  <div class="customClass1">
-                    <a href="">
-                      <img src="img/boutonDLRond.png">
-                    </a>
-                  </div>
-                </div> 
 
-                <div class="programme">
-                  <div>
-                    <img src="img/trombonne.png">
-                  </div>
-                  <div>
-                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
-                  </div>
-                  <div class="customClass1">
-                    <a href="">
-                      <img src="img/boutonDLRond.png">
-                    </a>
-                  </div>
-                </div> 
-            
+                    <!--GOOD LOOP-->
+            <div class="text-presentation projection producersProgramme">
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
+                </div>
+                <div class="customClass1">
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div>      
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
+                </div>
+                <div class="customClass1">
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div> 
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
+                </div>
+                <div class="customClass1">
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div> 
+            </div>
+                
+            <!--BAD LOOP-->    
+            <div class="text-presentation projection producersProgramme">
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
+                </div>
+                <div class="customClass1">
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div>      
             </div>
 
-           <div class="text-presentation projection producersProgramme">
-                <div class="programme">
-                  <div>
-                    <img src="img/trombonne.png">
-                  </div>
-                  <div>
-                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
-                  </div>
-                  <div class="customClass1">
-                    <a href="">
-                      <img src="img/boutonDLRond.png">
-                    </a>
-                  </div>
-                </div> 
-                
-                <div class="programme">
-                  <div>
-                    <img src="img/trombonne.png">
-                  </div>
-                  <div>
-                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
-                  </div>
-                  <div class="customClass1">
-                    <a href="">
-                      <img src="img/boutonDLRond.png">
-                    </a>
-                  </div>
-                </div> 
-
-                <div class="programme">
-                  <div>
-                    <img src="img/trombonne.png">
-                  </div>
-                  <div>
-                    <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
-                  </div>
-                  <div class="customClass1">
-                    <a href="">
-                      <img src="img/boutonDLRond.png">
-                    </a>
-                  </div>
-                </div> 
-            
+            <div class="text-presentation projection producersProgramme">
+              <div class="programme">
+                <div>
+                  <img src="img/trombonne.png">
+                </div>
+                <div>
+                  <h6 class="customClass1">Téléchargez le programme complet du Producers Workshop</h6>
+                </div>
+                <div class="customClass1">
+                  <a href="">
+                    <img src="img/boutonDLRond.png">
+                  </a>
+                </div>
+              </div>      
             </div>
           </div>
-      </div>
+
+
+    </div>
     
     <div class="floatingButtonRight">
         <div class="arrow showRight">
