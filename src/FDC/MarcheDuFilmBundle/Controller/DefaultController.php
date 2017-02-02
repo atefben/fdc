@@ -41,7 +41,7 @@ class DefaultController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sitePlan()
+    public function sitePlanAction()
     {
         $sitePlanManager = $this->get('mdf.manager.site_plan');
 
