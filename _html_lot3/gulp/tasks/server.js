@@ -6,9 +6,11 @@ var gulp          = require('gulp'),
 gulp.task('server', ['styles', 'views', 'jshint', 'scripts:vendors', 'scripts:app', 'images', 'copy:sfcss', 'copy:sfjs'], function(){
   browserSync.init(config.browserSync);
   gulp.watch(config.styles.watchSrc, ['styles', reload]);
+  gulp.watch(config.styles.watchSrc, ['copy:sfcss', reload]);
   gulp.watch(config.views.watchSrc, ['views', reload]);
   gulp.watch(config.images.src, ['images', reload]);
   gulp.watch(config.scripts.src, ['jshint', reload]);
   gulp.watch(config.scripts.src, ['scripts:app', reload]);
+  gulp.watch(config.scripts.src, ['copy:sfjs', reload]);
   gulp.watch(config.iconfont.src, ['iconfontWatch', reload]);
 });
