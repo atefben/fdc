@@ -1,0 +1,33 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' %}
+        <div class="container">
+            <div class="text-presentation infosPage">
+                <h3>{{ conferenceInfoAndContactPage.title }}</h3>
+                <h5>{{ conferenceInfoAndContactPage.description|raw }}</h5>
+            </div>
+            <div class="innerWrapper infosPagePeople">
+                {% if conferenceInfoAndContactWidgets is not empty %}
+                    {% for InfoAndContactWidget in conferenceInfoAndContactWidgets %}
+                        <div class="articles">
+                            <div class="articles-content">
+                                <div class="photoWrapper">
+                                    <img src="{% path InfoAndContactWidget.translatable.image|trans_fallback('file'), 'reference' %}">
+                                </div>
+                                <div class="textWrapper">
+                                    <h6 class="customClass1">{{ InfoAndContactWidget.name }}</h6>
+                                    <span>{{ InfoAndContactWidget.post }}{% if InfoAndContactWidget.email is not empty %}<br><a href="mailto:{{ InfoAndContactWidget.email }}" class="customClass1">{{ InfoAndContactWidget.email }}</a>{% endif %}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+{% endblock %}

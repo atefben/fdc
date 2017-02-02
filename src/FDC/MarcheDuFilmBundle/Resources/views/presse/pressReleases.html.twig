@@ -1,0 +1,31 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle::shared/pressSubHeader.html.twig' %}
+        <div class="bigContainer">
+            <div class="text-presentation projection presse">
+                <h3>{{ pressReleasePage.subtitle }}</h3>
+                <h5>{{ pressReleasePage.description|raw }}</h5>
+
+                {% for item in pressReleasePage.translatable.files %}
+                    <a href="{% path item.file|trans_fallback('file'), 'reference' %}" target="_blank">
+                        <div class="programme communique">
+                            <div>
+                                <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
+                            </div>
+                            {% set translations = item.file.findTranslationByLocale(app.request.locale) %}
+                            <div>
+                                <h6>{{ translations.name|length > 45 ? translations.name|slice(0, 45) ~ '...' : translations.name  }}</h6>
+                            </div>
+                            <div>
+                                <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
+{% endblock %}

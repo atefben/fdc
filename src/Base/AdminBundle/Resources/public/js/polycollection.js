@@ -130,7 +130,214 @@ jQuery(document).ready(function($) {
             $(this).val(idx + 1);
         });
     });
+
     $('form[action*="filmfestival"]').submit(function() {
+      var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+
+    $('form[action*="service"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+
+    $('form[action*="mdfeditionpresentation"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="accreditation"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="dispatchdeservice"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfeditionprojections"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfindustryprogramhomepw"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfwhoarewehistory"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfwhoarewekeyfigures"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfwhoareweenvironmentalapproaches"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdflegalmentions"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfgeneralconditions"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfnewsdetails"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceprogrampw"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceprogramdc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceprogrampn"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceprogramnext"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceprogrammixers"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceprogramgtc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfindustryprogramhomepn"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfindustryprogramhomedc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfindustryprogramhomenext"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfindustryprogramhomemixers"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfindustryprogramhomegtc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactpw"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactpn"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactdc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactn"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactm"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfconferenceinfoandcontactgtc"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfpressrelease"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="presscoverage"]').submit(function() {
+    var inputs = $('input[name$="[position]"]');
+    inputs.each(function(idx) {
+      $(this).val(idx + 1);
+    });
+    });
+    $('form[action*="mdfpressgallery"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfpressgraphicalcharter"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="mdfwhoareweteam"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);

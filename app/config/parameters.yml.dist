@@ -213,6 +213,8 @@ parameters:
     fdc_press_domain: ~
     fdc_press_scheme: ~
     fdc_press_domain_regexp: ~
+    fdc_marche_du_film_domain: ~
+    fdc_marche_du_film_scheme: ~
     fdc_corporate_domain: ~
     fdc_app_android_download_url: '#'
     fdc_app_ios_download_url: '#'
@@ -224,7 +226,7 @@ parameters:
     header_cine: 'http://www.cinefondation.com/fr/'
     header_ccm: 'http://www.cannescourtmetrage.com/fr/'
     header_mdf: 'http://www.marchedufilm.com/fr/'
-    header_account: 'http://sub.festival-cannes.fr/'
+    header_account: 'http://moncompte.festival-cannes.com/Marche/espacem.aspx'
     partner_chopard_fr: //www.chopard.fr/
     partner_loreal_fr: //www.loreal-paris.fr/index.aspx
     partner_hp_fr: //www8.hp.com/fr/fr/home.html
@@ -302,6 +304,7 @@ parameters:
     amazon_remote_file_audio: 'media_audio_direct_upload'
     #satellite
     header_account: 'http://sub.festival-cannes.fr/'
+    header_fdc_com: 'http://www.festival-cannes.com'
     header_fdc_fr: 'http://www.festival-cannes.fr/fr.html'
     header_cine_fr: 'http://www.cinefondation.com/fr/'
     header_ccm_fr: 'http://www.cannescourtmetrage.com/fr/'

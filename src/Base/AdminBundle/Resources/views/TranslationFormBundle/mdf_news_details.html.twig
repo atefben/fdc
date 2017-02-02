@@ -1,0 +1,214 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
+            {% set locale = translationsFields.vars.name %}
+            {% if is_granted('ROLE_TRANSLATOR_FR') %}
+                {% set currentLocale = 'fr' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+                {% set currentLocale = 'en' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+                {% set currentLocale = 'zh' %}
+            {% endif %}
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                {% if form.vars.default_locale == locale %}
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.mdf.content_template.industry_program_home'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(translationsFields.title) }}
+                                            {{ form_row(translationsFields.header) }}
+                                            {{ form_row(form.parent.children.theme) }}
+                                            <div id="fdc-arrive-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.text'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.image'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.gallery'|trans }}</strong></h4>
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.file'|trans }}</strong></h4>
+                                                            {{ form_row(widget.file) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.youtube'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.theme) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+                                                        {{ form_row(widget.position) }}
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.content_template'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div id="{{ locale}}-translation-arrivee-title">
+                                                {{ form_row(translationsFields.title) }}
+                                                {{ form_row(translationsFields.header) }}
+                                            </div>
+                                            <div id="fdc-arrive-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                                    <div id="{{ locale}}-translation-content-template-widget-{{ loop.index }}"
+                                                         class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
+                                                            <h4><strong>{{ 'form.mdf.content_template.widget.text'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_image_type' %}
+                                                            <h4><strong>Image widget</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_gallery_type' %}
+                                                            <h4><strong>Gallery widget</strong></h4>
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_file_type' %}
+                                                            <h4><strong>File widget</strong></h4>
+                                                            {{ form_row(widget.file) }}
+                                                        {% elseif widget.children._type.vars.value == 'content_template_widget_video_type' %}
+                                                            <h4><strong>Youtube widget</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.theme) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+                                                        {{ form_row(widget.position) }}
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body widgets-translations">
+                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div class="form-group" data-translation="{{ locale }}-translation-content-template-title">
+                                                <label>
+                                                    {{ 'form.content_template.title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.title }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group" data-translation="{{ locale }}-translation-content-template-header">
+                                                <label>
+                                                    {{ 'form.content_template.header'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.header }}
+                                                </div>
+                                            </div>
+                                            {% for widget in form.parent.children.contentTemplateWidgets.children %}
+                                                {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
+                                                    <div class="item base-widget"
+                                                         data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.content_template.text_widget'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.content_template.text_widget_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.content_template.text_widget_text'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.contentText|raw }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

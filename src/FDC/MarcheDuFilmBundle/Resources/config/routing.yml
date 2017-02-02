@@ -1,0 +1,23 @@
+fdc_marche_du_film_services:
+    resource: "@FDCMarcheDuFilmBundle/Controller/ServiceController"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_marche_du_film_domain%"
+
+fdc_marche_du_film_services_widgets:
+    resource: "@FDCMarcheDuFilmBundle/Controller/ServiceController"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_marche_du_film_domain%"
+
+fdc_marche_du_film_accreditations:
+    resource: "@FDCMarcheDuFilmBundle/Controller/AccreditationController"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_marche_du_film_domain%"
+
+fdc_marche_du_film_edition_presentation:
+    resource: "@FDCMarcheDuFilmBundle/Controller/ContentTemplateController"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_marche_du_film_domain%"

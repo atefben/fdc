@@ -1,0 +1,8 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
+    {% set templateName = 'form.mdf.content_template.legal_mentions'|trans %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:mdf_content_template.html.twig' %}
+</div>

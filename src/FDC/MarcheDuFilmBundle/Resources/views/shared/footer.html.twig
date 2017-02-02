@@ -1,0 +1,26 @@
+<footer class="loading">
+    <div class="container">
+        <div class="social">
+            <p><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film-bas.png') }}" alt="Marché du film" /></p>
+            <ul>
+                {% if footerUrls %}
+                    <li><a class="facebook" href="{{ footerUrls.footerFacebookUrl }}" target="_blank"><i class="icon icon_facebook"></i></a></li>
+                    <li><a class="twitter" href="{{ footerUrls.footerTwitterUrl }}" target="_blank"><i class="icon icon_twitter"></i></a></li>
+                    <li><a class="youtube" href="{{ footerUrls.footerYoutubeUrl }}" target="_blank"><i class="icon icon_youtube"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="footer-menu">
+            <ul>
+                <li class="copyright">© Copyright {{ "now"|date('Y') }}</li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="">Informations utiles</a></li>
+                <li><a href="{{ path('fdc_marche_du_film_legal_mentions') }}">Mentions Légales</a></li>
+                <li><a href="{{ path('fdc_marche_du_film_site_plan') }}">Plan du Site</a></li>
+                <li><a href="{{ path('fdc_marche_du_film_general_conditions') }}">Conditions générales</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<div id="siteLoader" class="canvasloader"></div>

@@ -1,0 +1,39 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' %}
+
+
+
+        <div class="container">
+            <div class="text-presentation marche">
+                <h3>{{ conferenceProgram.subtitle }}</h3>
+                <h4>{{ conferenceProgram.header|raw }}</h4>
+            </div>
+            <div class="marche marcheBody contentBody">
+                {% for widget in contentTemplateWidgets %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetText() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockText.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetImage() is defined and widget.isWidgetImage() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockImage.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetGallery() is defined and widget.isWidgetGallery() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockGallery.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetVideo() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockVideo.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% include 'FDCMarcheDuFilmBundle:conference:accordion.html.twig' with {'programDays': programDays, 'programDaysEvents': programDaysEvents, 'eventsSpeakers':eventsSpeakers} %}
+            {% for file in files %}
+                {% include 'FDCMarcheDuFilmBundle:conference:blockDownload.html.twig' with {'widget': file}  %}
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+{% endblock %}

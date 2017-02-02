@@ -472,6 +472,19 @@ filter:
     fdc_page_participate:
         label_section: Nom de la section
 
+admin:
+    group:
+        mdf: Marché du film
+        mdf_producers_workshop: Producers Workshop
+        mdf_producers_network: Producers Network
+        mdf_doc_corner: Doc Corner
+        mdf_next: Next
+        mdf_mixers: Mixers
+        mdf_goes_to_cannes: Goes to Cannes
+        mdf_presse: Presse
+        mdf_qui_sommes_nous: Qui sommes-nous ?
+
+
 dashboard:
     translator:
         object:
@@ -610,6 +623,212 @@ form:
     label_hide_common_content: Ne pas afficher cette strate
     label_our_selection: Notre Sélection
     label_pdf: Pdf
+    mdf:
+        active: Is Active?
+        gallery: Galeries
+        status:
+            inactive: Actif
+            active: Inactif
+            deactivated: Désactivé
+            early_bird: Early bird
+        press:
+            file_widget: Module téléchargement de fichiers
+        home:
+            top_sliders: Slider principale
+            top_slider.widget: Module slider principal
+            sliders: Slider secondaire
+            slider.widget: Module slider secondaire
+            service.category: Strate Services - label
+            service.title: Strate Services - titre
+            service.widget: Module Services
+        accreditation:
+            widget: Module accordéon aide
+            widget_button: Ajouter un accordéon d'aide
+            widget_title: Titre de l'accordéon
+            widget_description: Description de l'accordéon
+            title: Titre de page
+            inativeSubtitle: Titre de bandeau
+            inativeSubtitle: Titre de bandeau
+            information: Chapô
+            see_more_url: Redirection du bandeau
+            promotions_title: Titre de section accréditations
+            is_early_bird: Early bird
+            promotion_title_1: Date bloc 1
+            promotion_price_1: Prix bloc 1
+            promotion_suffix_1: Suffixe bloc 1
+            promotion_state_1: Etat du bloc
+            promotion_title_2: Date bloc 2
+            promotion_price_2: Prix bloc 2
+            promotion_suffix_2: Suffixe bloc 2
+            promotion_state_2: Etat du bloc
+            promotion_title_3: Date bloc 3
+            promotion_price_3: Prix bloc 3
+            promotion_suffix_3: Suffixe bloc 3
+            promotion_state_3: Etat du bloc
+            promotion_details_title_1: Titre de ligne 1
+            promotion_details_price_prefix_1: Préfixe de prix 1
+            promotion_details_price_1: Prix 1
+            promotion_details_price_suffix_1: Suffixe du prix 1
+            promotion_details_information_1: Description de la ligne 1
+            promotion_details_title_2: Titre de ligne 2
+            promotion_details_price_prefix_2: Préfixe de prix 2
+            promotion_details_price_2: Prix 2
+            promotion_details_price_suffix_2: Suffixe du prix 2
+            promotion_details_information_2: Description de la ligne 2
+            promotion_details_title_3: Titre de ligne 3
+            promotion_details_price_prefix_3: Préfixe de prix 3
+            promotion_details_price_3: Prix 3
+            promotion_details_price_suffix_3: Suffixe du prix 3
+            promotion_details_information_3: Description de la ligne 3
+        content_template:
+            edition_presentation: Présentation de l'édition - gabarit de contenu
+            edition_projections: Projections de l'édition - gabarit de contenu
+            industry_program_home: Industry Program - Accueil
+            news: Actualité
+            who_are_we_history: Qui sommes-nous ? – Historique
+            who_are_we_key_figures: Qui sommes-nous ? – Chiffres clés
+            who_are_we_environmental_approaches: Qui sommes-nous ? – Démarches environnementales
+            legal_mentions: Mentions légales
+            general_conditions: Conditions générales
+            title: Titre de page
+            theme_title: Nom du thème
+            theme: Thème
+            header: Chapô
+            label:
+                title: Titre du paragraphe
+                text: Contenu texte
+                gallery: Nom du diaporama
+            widget:
+                text: Module de texte
+                image: Module image
+                gallery: Module slider
+                file: Module téléchargement de fichiers
+                youtube: Module video
+        label:
+            content_block:
+                category: Strate 1 - Label
+                title: Strate 1 - Titre
+                description: Strate 1 - Chapô
+                url: Strate 1 - Lien de redirection
+            top_slider:
+                title: Titre du slide
+                subTitle: Sous-titre du slide
+                dateText:  Description du slide
+            slider:
+                title: Titre du slide
+                url: Lien de redirection
+            service:
+                title: Nom du service
+                description: Description du service
+                url: Lien de redirection du service
+            press:
+                subtitle: Sous-titre
+                header: Chapô
+                gallery_widget: Bloc photo
+                gallery_widget_image: Visuel
+                gallery_widget_title: Nom du fichier
+                gallery_widget_button: Module téléchargement de fichiers
+                graphical_charter_widget: Bloc charte
+                graphical_charter_widget_image: Visuel
+                graphical_charter_widget_title: Nom du fichier
+                graphical_charter_widget_button: Module téléchargement de fichiers
+            press_coverage:
+                widget: Bloc d’article
+                widget_title: Titre d’article
+                widget_description: Source de l’article
+                widget_link: Lire l’article
+                widget_button: Bloc d’article
+                widget_published_at: Date de publication
+            who_are_we:
+                subtitle: Sous-titre
+                contact_widget: Bloc de contact Info
+                contact_widget_date: Date
+                contact_widget_address: Adresse téléphone
+                contact_widget_phone: Téléphone
+                contact_widget_button: Bloc de contact Info
+                widget: Bloc de contact
+                widget_name: Nom et prénom
+                widget_post: Poste
+                widget_email: Email
+                widget_phone: Téléphone
+                widget_image: Photo
+                widget_button: Bloc de contact
+            facebook_url: URL Facebook
+            twitter_url: URL Twitter
+            youtube_url: URL Youtube
+            header_banner: Image bannière publicitaire (728x90)
+            header_banner_url: URL redirection publicitaire
+            title: Titre
+            subtitle: Sous-titre
+            content_block_dispatch_du_service: Bloc de contenu
+            contact_block_dispatch_du_service_info: Pour que le bloc Contact soit affiché sur la page Services, les trois champs de blocs de contacts doivent être remplis.
+            description: Chapô
+            show_contact_block: Afficher le bloc de contact
+            contact_title: Titre du bloc de contact
+            contact_description: Description du bloc de contact
+            contact_see_more_url: Redirection du bloc de contact
+            dispatch_de_service_widget: Bloc de service
+            dispatch_de_service_widget_title: Titre du service
+            dispatch_de_service_widget_sub_title: Sous titre du service
+            dispatch_de_service_widget_description: Description du service
+            dispatch_de_service_widget_see_more_url: Redirection du service
+            dispatch_de_service_widget_helper_widgets: Helper du service
+            header_image: Image du service
+            contact_image: Image du contact
+            service_info: Informations générales détail de service
+            service_title: Titre de page
+            service_sub_title: Sous-titre de page
+            service_header: Chapô
+            service_widget: Liste des onglets disponibles
+            new_service_widget: Administration des onglets de la page de service
+            widget_service_page: Nom des onglets
+            service_content_block: Bloc de contenu bas de page
+            service_content_block_title: Titre du bloc de contenu bas de page
+            service_content_block_body: Corps du bloc de contenu bas de page
+            service_widget_info: Informations générales de l'onglet service
+            service_widget_tab_title: Titre de l'onglet
+            service_widget_tab_sub_title: Sous-titre de l'onglet
+            service_products: Liste des blocs de produits dans l'onglet
+            service_widget_product: Administrez la liste des produits disponible dans l'onglet
+            widget_product_service_tab: Nom du produit
+            service_product_gallery: Slider de produit
+            service_product_info: Informations bloc de produit
+            service_widget_product_title: Titre du produit
+            service_widget_product_url: Lien pour réservation
+            service_widget_product_gray_text: A partir de
+            service_widget_product_color_text: Prix
+            service_widget_product_body: Description courte
+            service_widget_product_toggled_body: Description longue
+            conference_doc_corner: Doc Corner
+            conference_goes_to_cannes: Goes to Cannes
+            conference_mixers: Mixers
+            conference_next: Next
+            conference_producers_network: Producers Network
+            conference_producers_workshop: Producers Workshop
+            conference_news:
+                title: Sous-titre de page
+            gallery_name: Nom de galerie
+            global_events: Gestion du programme global de l'année
+            global_events_title: Titre de page
+            global_events_description: Chapô
+            global_events_day_widget: Gestion des jours disponible dans le programme
+            global_events_days_collection: Liste des jours disponibles dans le programme
+            global_events_day: Jour
+            global_event_date_event: Saisie du jour de l'événement
+            global_events_day_list: Liste des événements du jour
+            global_event_day_schedule: Événements
+            global_events_event_info: Détail de l'événement dans le programme global
+            global_events_event_conference: Sélection de la conférence associée
+            global_events_event_type: Type d'événement
+            global_events_event_description: Description de l'événement
+            global_events_event_url: Redirection du lien "En savoir plus"
+            global_events_event_access_type: Type d'accès
+            global_events_event_location: Lieu de l'événement
+            global_event_start_time: Heure de début de l'événement
+            global_event_end_time: Heure de fin de l'événement
+        note:
+            service:
+                url_help: Please provide the last part of URL (http://.../{this part})
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

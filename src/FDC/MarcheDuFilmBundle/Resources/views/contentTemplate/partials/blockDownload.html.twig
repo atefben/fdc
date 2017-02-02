@@ -1,0 +1,18 @@
+<div class="text-presentation projection producersProgramme">
+    <a href="{% path widget.file|trans_fallback('file'), 'reference' %}" target="_blank">
+        <div class="programme">
+            <div>
+                <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
+            </div>
+            <div>
+                {% set translations = widget.file.findTranslationByLocale(app.request.locale) %}
+                <h6>{{ translations.name|length > 65 ? translations.name|slice(0, 65) ~ '...' : translations.name  }}</h6>
+            </div>
+            <div class="customClass1">
+                <a href="">
+                    <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
+                </a>
+            </div>
+        </div>
+    </a>
+</div>

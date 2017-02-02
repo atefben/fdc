@@ -1,0 +1,14 @@
+{% if video.id is defined and video.id is not null %}
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Media vidéo associé</th>
+    </tr>
+    </thead>
+    <tbody class="sonata-ba-tbody ui-sortable">
+    <tr>
+        <td class="control-group"><span class="inner-field-short-description"><a href="{{ path('admin_base_core_mediavideo_edit', {id:video.id} ) }}">{{ video|trans_fallback('title') }}</a></span></td>
+    </tr>
+    </tbody>
+</table>
+{% endif %}

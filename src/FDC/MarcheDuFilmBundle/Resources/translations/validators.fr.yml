@@ -1,0 +1,13 @@
+validation.home_top_slider_max: At most 6 top sliders can be added.
+validation.home_top_slider_min: At least 1 top slider must be added.
+validation.service_product_image_max: At most 3 images can be added per product.
+validation.service_widget_max: At most 4 tabs can be added per service.
+validation.service_widget_min: At least 1 tab must be added per service.
+validation.speakers_max: At most 8 speakers can be added.
+validation.speakers_widget_tab_max: At most 4 speakers tab can be added.
+validation.schedule_min: At least 1 event should be added on a day accordion.
+validation.partners_logo_max: At most 4 logos can be added.
+validation.partners_logo_min: At least 1 logo must be added.
+validation.partners_tab_min: At least 1 partner tab must be added.
+validation.partners_tab_max: At most 4 partner tabs can be added.
+validation.who_are_we_length: At most 2 contact info tabs can be added.

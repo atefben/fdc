@@ -1,0 +1,15 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="text-presentation marketTitle mdf">
+            <div class="bigContainer">
+                <h3>{{ newsPageContent.title }}</h3>
+            </div>
+        </div>
+        {% include 'FDCMarcheDuFilmBundle::news/partials/filterListNews.html.twig' %}
+    </div>
+
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+
+{% endblock main %}

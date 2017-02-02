@@ -1520,3 +1520,738 @@ services:
         arguments: [~, Base\CoreBundle\Entity\CorpoSearch, BaseAdminBundle:CorpoSearchAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: CorpoSearch}
+
+    base.admin.mdf_service:
+        class: Base\AdminBundle\Admin\ServiceAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Service, BaseAdminBundle:ServiceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Services}
+
+    base.admin.mdf_service_widget_collection:
+        class: Base\AdminBundle\Admin\ServiceWidgetCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetCollection, BaseAdminBundle:ServiceWidgetCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetCollection, show_in_dashboard: false}
+
+    base.admin.mdf_service_widget:
+        class: Base\AdminBundle\Admin\ServiceWidgetAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidget, BaseAdminBundle:ServiceWidgetAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidget, show_in_dashboard: false}
+
+    base.admin.mdf_service_widget_product_collection:
+        class: Base\AdminBundle\Admin\ServiceWidgetProductCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProductCollection, BaseAdminBundle:ServiceWidgetProductCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProductCollection, show_in_dashboard: false}
+
+    base.admin.mdf_service_widget_product:
+        class: Base\AdminBundle\Admin\ServiceWidgetProductAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ServiceWidgetProduct, BaseAdminBundle:ServiceWidgetProductAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ServiceWidgetProduct, show_in_dashboard: false}
+
+    base.admin.mdf_speakers:
+        class: Base\AdminBundle\Admin\MdfSpeakersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Intervenants}
+
+    base.admin.mdf_speakers_choices_collection:
+        class: Base\AdminBundle\Admin\MdfSpeakersChoicesCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoicesCollection, BaseAdminBundle:MdfSpeakersChoicesCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersChoicesCollection, show_in_dashboard: false}
+
+    base.admin.mdf_speakers_choices:
+        class: Base\AdminBundle\Admin\MdfSpeakersChoicesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices, BaseAdminBundle:MdfSpeakersChoicesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersChoices, show_in_dashboard: false}
+
+    base.admin.mdf_speakers_details_collection:
+        class: Base\AdminBundle\Admin\MdfSpeakersDetailsCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetailsCollection, BaseAdminBundle:MdfSpeakersDetailsCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersDetailsCollection, show_in_dashboard: false}
+
+    base.admin.mdf_speakers_details:
+        class: Base\AdminBundle\Admin\MdfSpeakersDetailsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetails, BaseAdminBundle:MdfSpeakersDetailsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersDetails, show_in_dashboard: false}
+
+    base.admin.mdf_global_events:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEvents, BaseAdminBundle:MdfGlobalEventsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Programme global}
+
+    base.admin.mdf_global_events_days_collection:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsDaysCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDaysCollection, BaseAdminBundle:MdfGlobalEventsDaysCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsDaysCollection, show_in_dashboard: false}
+
+    base.admin.mdf_global_events_day:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsDayAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsDay, BaseAdminBundle:MdfGlobalEventsDayAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Ajout d'un jour au programme, show_in_dashboard: false}
+
+    base.admin.mdf_global_events_schedules_collection:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsSchedulesCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedulesCollection, BaseAdminBundle:MdfGlobalEventsSchedulesCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GlobalEventsSchedulesCollection, show_in_dashboard: false}
+
+    base.admin.mdf_global_events_schedule:
+        class: Base\AdminBundle\Admin\MdfGlobalEventsScheduleAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsSchedule, BaseAdminBundle:MdfGlobalEventsScheduleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gestion de l'évenement, show_in_dashboard: false}
+
+    base.admin.mdf_header_footer:
+        class: Base\AdminBundle\Admin\MdfHeaderFooterAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HeaderFooter, BaseAdminBundle:MdfHeaderFooterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: HeaderFooter}
+
+    base.admin.mdf_homepage:
+        class: Base\AdminBundle\Admin\MdfHomepageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfHomepage, BaseAdminBundle:MdfHomepageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Homepage}
+
+    base.admin.mdf_contact:
+        class: Base\AdminBundle\Admin\MdfContactAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Contact, BaseAdminBundle:MdfContactAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Contact}
+
+    base.admin.mdf_edition_presentation:
+        class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionPresentationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Présentation}
+
+    base.admin.mdf_dispatch_de_service:
+        class: Base\AdminBundle\Admin\MdfDispatchDeServiceAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\DispatchDeService, BaseAdminBundle:MdfDispatchDeServiceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch De Service}
+
+    base.admin.mdf_service_gallery:
+        class: Base\AdminBundle\Admin\MdfServiceGalleryAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery, BaseAdminBundle:MdfServiceGalleryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MdfServiceGallery, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_service_gallery_media:
+        class: Base\AdminBundle\Admin\MdfServiceGalleryMediaAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfServiceGalleryMedia, BaseAdminBundle:MdfServiceGalleryMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MdfServiceGalleryMediaAdmin, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery:
+        class: Base\AdminBundle\Admin\GalleryMdfAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdf, BaseAdminBundle:GalleryMdfAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gallery}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media:
+        class: Base\AdminBundle\Admin\MediaMdfAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdf, BaseAdminBundle:MediaMdfAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Media, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_image:
+        class: Base\AdminBundle\Admin\MediaMdfImageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfImage, BaseAdminBundle:MediaMdfImageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_image_simple:
+        class: Base\AdminBundle\Admin\MediaMdfImageSimpleAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfImageSimple, BaseAdminBundle:MediaMdfImageSimpleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_image_simple, show_in_dashboard: false, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery_media:
+        class: Base\AdminBundle\Admin\GalleryMdfMediaAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdfMedia, BaseAdminBundle:GalleryMdfMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GalleryMdfMediaAdmin, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery_dual_align:
+        class: Base\AdminBundle\Admin\GalleryMdfDualAlignAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdfDualAlign, BaseAdminBundle:GalleryMdfDualAlignAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GalleryMdfDualAlign, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_gallery_dual_align_media:
+        class: Base\AdminBundle\Admin\GalleryMdfDualAlignMediaAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdfDualAlignMedia, BaseAdminBundle:GalleryMdfDualAlignMediaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: GalleryMdfDualAlignMediaAdmin, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_audio:
+        class: Base\AdminBundle\Admin\MediaMdfAudioAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfAudio, BaseAdminBundle:MediaMdfAudioAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_audio, show_in_dashboard: false, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_video:
+        class: Base\AdminBundle\Admin\MediaMdfVideoAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfVideo, BaseAdminBundle:MediaMdfVideoAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_video, show_in_dashboard: false, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+           - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_pdf:
+        class: Base\AdminBundle\Admin\MediaMdfPdfAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf, BaseAdminBundle:MediaMdfPdfAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: entity.media_pdf, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_tag:
+        class: Base\AdminBundle\Admin\MediaMdfTagAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfTag, BaseAdminBundle:MediaMdfTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfTag, show_in_dashboard: false}
+
+    base.admin.mdf_media_video_film_film_associated:
+        class: Base\AdminBundle\Admin\MediaMdfVideoFilmFilmAssociatedAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfVideoFilmFilmAssociated, BaseAdminBundle:MediaMdfVideoFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfVideoFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_media_audio_film_film_associated:
+        class: Base\AdminBundle\Admin\MediaMdfAudioFilmFilmAssociatedAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfAudioFilmFilmAssociated, BaseAdminBundle:MediaMdfAudioFilmFilmAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfAudioFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base_admin.mdf_media_film_projection_associated:
+        class: Base\AdminBundle\Admin\MediaMdfFilmProjectionAssociatedAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated, BaseAdminBundle:MediaMdfFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: MediaMdfFilmProjectionAssociated, show_in_dashboard: false}
+
+    base.admin.home_slider_top_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HomeSliderTop, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Slider Top, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.dispatch_de_service_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dispatch De Service Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.conference_info_and_contact_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContactWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Conference Info And Contact Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_gallery_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGalleryWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Press Gallery Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.who_are_we_team_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeamWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Who Are We Team Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_graphical_charter_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharterWidget, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Press Graphical Charter Widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_content_template_widget_image_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Image, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_content_template_widget_theme_dummy:
+        class: Base\AdminBundle\Admin\MdfThemeDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideo, BaseAdminBundle:MdfThemeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Theme, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.home_slider_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\HomeSlider, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Slider Top, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.home_service_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfHomeService, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Slider Top, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_accreditation:
+        class: Base\AdminBundle\Admin\MdfAccreditationAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Accreditation, BaseAdminBundle:MdfAccreditationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Accreditation}
+
+    base.admin.mdf_press_coverage:
+        class: Base\AdminBundle\Admin\MdfPressCoverageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\PressCoverage, BaseAdminBundle:MdfPressCoverageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Retombées presse}
+
+    base.admin.mdf_press_gallery:
+        class: Base\AdminBundle\Admin\MdfPressGalleryAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGallery, BaseAdminBundle:MdfPressGalleryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Galerie photos}
+
+    base.admin.mdf_press_graphical_charter:
+        class: Base\AdminBundle\Admin\MdfPressGraphicalCharterAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharter, BaseAdminBundle:MdfPressGraphicalCharterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Charte graphique}
+
+    base.admin.mdf_who_are_we_team:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeTeamAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeam, BaseAdminBundle:MdfWhoAreWeTeamAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: L’équipe}
+
+    base.admin.mdf_content_template_widget_gallery_dummy:
+        class: Base\AdminBundle\Admin\MdfGalleryDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery, BaseAdminBundle:MdfGalleryDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Gallery, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_content_template_widget_file_dummy:
+        class: Base\AdminBundle\Admin\MdfFileDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile, BaseAdminBundle:MdfFileDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget File, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_edition_projections:
+        class: Base\AdminBundle\Admin\MdfEditionProjectionsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionProjectionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionProjections}
+
+    base.admin.mdf_industry_program_home:
+        class: Base\AdminBundle\Admin\MdfIndustryProgramHomeAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Accueil}
+
+    base.admin.mdf_who_are_we_history:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeHistoryAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeHistoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: Historique}
+
+    base.admin.mdf_who_are_we_key_figures:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeKeyFiguresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeKeyFiguresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: Chiffres clés}
+
+    base.admin.mdf_who_are_we_environmental_approaches:
+        class: Base\AdminBundle\Admin\MdfWhoAreWeEnvironmentalApproachesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfWhoAreWeEnvironmentalApproachesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_qui_sommes_nous, label: Démarches environnementales}
+
+    base.admin.mdf_legal_mentions:
+        class: Base\AdminBundle\Admin\MdfLegalMentionsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfLegalMentionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Mentions légales}
+
+    base.admin.mdf_general_conditions:
+        class: Base\AdminBundle\Admin\MdfGeneralConditionsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfGeneralConditionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conditions générales}
+
+    base.admin.mdf_news_details:
+        class: Base\AdminBundle\Admin\MdfNewsDetailsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfNewsDetailsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Actualités}
+
+    base.admin.mdf_conference_program:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conférences}
+
+    base.admin.mdf_conference_program_day:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramDayAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDay, BaseAdminBundle:MdfConferenceProgramDayAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Day, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_day_collection:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramDayCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDayCollection, BaseAdminBundle:MdfConferenceProgramDayCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Day Collection, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_event:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramEventAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEvent, BaseAdminBundle:MdfConferenceProgramEventAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Event, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_event_collection:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramEventCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEventCollection, BaseAdminBundle:MdfConferenceProgramEventCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Event Collection, show_in_dashboard: false}
+
+    base.admin.mdf_program_speaker:
+        class: Base\AdminBundle\Admin\MdfProgramSpeakerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeaker, BaseAdminBundle:MdfProgramSpeakerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Program Speakers, show_in_dashboard: false}
+
+    base.admin.mdf_program_speaker_collection:
+        class: Base\AdminBundle\Admin\MdfProgramSpeakerCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeakerCollection, BaseAdminBundle:MdfProgramSpeakerCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Program Speakers Collection, show_in_dashboard: false}
+    base.admin.mdf_news_page:
+        class: Base\AdminBundle\Admin\MdfNewsPageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfNewsPage, BaseAdminBundle:MdfNewsPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: L’actualité du Marché}
+
+    base.admin.mdf_theme:
+        class: Base\AdminBundle\Admin\MdfThemeAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfTheme, BaseAdminBundle:MdfThemeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Thème}
+
+    base.admin.mdf_conference_partner_producers_workshop:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerProducersWorkshopAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerProducersWorkshopAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Partenaires}
+
+    base.admin.mdf_conference_news_page_producers_workshop:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageProducersWorkshopAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageProducersWorkshopAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: News Page}
+
+    base.admin.mdf_conference_news_page_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: News Page}
+
+    base.admin.mdf_conference_news_page_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: News Page}
+
+    base.admin.mdf_conference_news_page_next:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: News Page}
+
+    base.admin.mdf_conference_news_page_mixers:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: News Page}
+
+    base.admin.mdf_conference_news_page_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: News Page}
+
+    base.admin.mdf_conference_info_and_contact_producers_workshop:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactProducersWorkshopAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactProducersWorkshopAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_next:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_mixers:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Infos et Contacts}
+
+    base.admin.mdf_conference_partner_tab:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerTabAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTab, BaseAdminBundle:MdfConferencePartnerTabAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference partner tab, show_in_dashboard: false}
+
+    base.admin.mdf_conference_partner_logo:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerLogoAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogo, BaseAdminBundle:MdfConferencePartnerLogoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference partner logo, show_in_dashboard: false}
+
+    base.admin.mdf_conference_partner_tab_collection:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerTabCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTabCollection, BaseAdminBundle:MdfConferencePartnerTabCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Partner Tab Collection, show_in_dashboard: false}
+
+    base.admin.mdf_conference_partner_logo_collection:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerLogoCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogoCollection, BaseAdminBundle:MdfConferencePartnerLogoCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Partner Logo Collection, show_in_dashboard: false}
+
+    base.admin.mdf_conference_program_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Conférences}
+
+    base.admin.mdf_speakers_producers_network:
+        class: Base\AdminBundle\Admin\MdfSpeakersProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Intervenants}
+
+    base.admin.mdf_conference_partner_producers_network:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerProducersNetworkAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerProducersNetworkAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Partenaires}
+
+    base.admin.mdf_conference_program_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Conférences}
+
+    base.admin.mdf_speakers_doc_corner:
+        class: Base\AdminBundle\Admin\MdfSpeakersDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Intervenants}
+
+    base.admin.mdf_conference_partner_doc_corner:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Partenaires}
+
+    base.admin.mdf_conference_program_next:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Conférences}
+
+    base.admin.mdf_speakers_next:
+        class: Base\AdminBundle\Admin\MdfSpeakersNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Intervenants}
+
+    base.admin.mdf_conference_partner_next:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Partenaires}
+
+    base.admin.mdf_conference_program_mixers:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Conférences}
+
+    base.admin.mdf_speakers_mixers:
+        class: Base\AdminBundle\Admin\MdfSpeakersMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Intervenants}
+
+    base.admin.mdf_conference_partner_mixers:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Partenaires}
+
+    base.admin.mdf_conference_program_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Conférences}
+
+    base.admin.mdf_speakers_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfSpeakersGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Intervenants}
+
+    base.admin.mdf_conference_partner_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Partenaires}
+
+    base.admin.mdf_industry_program_home_producers_network:
+            class: Base\AdminBundle\Admin\MdfIndustryProgramHomeProducersNetworkAdmin
+            arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeProducersNetworkAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Accueil}
+
+    base.admin.mdf_industry_program_home_doc_corner:
+        class: Base\AdminBundle\Admin\MdfIndustryProgramHomeDocCornerAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeDocCornerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_doc_corner, label: Accueil}
+
+    base.admin.mdf_industry_program_home_next:
+        class: Base\AdminBundle\Admin\MdfIndustryProgramHomeNextAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeNextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_next, label: Accueil}
+
+    base.admin.mdf_industry_program_home_mixers:
+        class: Base\AdminBundle\Admin\MdfIndustryProgramHomeMixersAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeMixersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_mixers, label: Accueil}
+
+    base.admin.mdf_industry_program_home_goes_to_cannes:
+        class: Base\AdminBundle\Admin\MdfIndustryProgramHomeGoesToCannesAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeGoesToCannesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_goes_to_cannes, label: Accueil}
+
+    base.admin.mdf_program_file_dummy:
+        class: Base\AdminBundle\Admin\MdfFileDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramFile, BaseAdminBundle:MdfFileDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Program File, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_content_template_widget_video_dummy:
+        class: Base\AdminBundle\Admin\MdfImageDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideo, BaseAdminBundle:MdfImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Content Template Widget Video, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_404:
+        class: Base\AdminBundle\Admin\Mdf404Admin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\Mdf404, BaseAdminBundle:Mdf404Admin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Erreur 404}
+
+    base.admin.mdf_press_release_file_dummy:
+        class: Base\AdminBundle\Admin\MdfFileDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressReleaseFile, BaseAdminBundle:MdfFileDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Press Release File, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_press_release:
+        class: Base\AdminBundle\Admin\MdfPressReleaseAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressRelease, BaseAdminBundle:MdfPressReleaseAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Communiqué de presse}
+
+    base.admin.mdf_site_plan:
+        class: Base\AdminBundle\Admin\MdfSitePlanAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSitePlan, BaseAdminBundle:MdfSitePlanAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Plan du site}

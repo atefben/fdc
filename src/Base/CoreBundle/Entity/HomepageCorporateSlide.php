@@ -44,7 +44,7 @@ class HomepageCorporateSlide
     /**
      * @var HomepageCorporate
      *
-     * @ORM\ManyToOne(targetEntity="HomepageCorporate", inversedBy="homepageCorporateSlide")
+     * @ORM\ManyToOne(targetEntity="HomepageCorporate")
      */
     protected $homepage;
 

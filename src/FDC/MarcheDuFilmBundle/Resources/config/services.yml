@@ -1,0 +1,144 @@
+services:
+    mdf.manager.header_footer:
+        class: FDC\MarcheDuFilmBundle\Manager\HeaderFooterManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.homepage:
+        class: FDC\MarcheDuFilmBundle\Manager\HomepageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.contact:
+        class: FDC\MarcheDuFilmBundle\Manager\ContactManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.services:
+        class: FDC\MarcheDuFilmBundle\Manager\ServicesManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.content_template:
+        class: FDC\MarcheDuFilmBundle\Manager\ContentTemplateManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+            - '@mdf.manager.contact'
+
+    mdf.manager.dispatch_de_service:
+        class: FDC\MarcheDuFilmBundle\Manager\DispatchDeServiceManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.accreditation:
+        class: FDC\MarcheDuFilmBundle\Manager\AccreditationManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.services:
+        class: FDC\MarcheDuFilmBundle\Manager\ServicesManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.news:
+        class: FDC\MarcheDuFilmBundle\Manager\NewsManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.theme:
+        class: FDC\MarcheDuFilmBundle\Manager\ThemeManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.speakers:
+        class: FDC\MarcheDuFilmBundle\Manager\SpeakersManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.conference_program:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferenceProgramManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.conference_partner:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferencePartnerManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.conference_news_page:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferenceNewsPageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.conference_info_and_contact:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferenceInfoAndContactManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.programme:
+        class: FDC\MarcheDuFilmBundle\Manager\ProgrammeManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.conference_pages:
+        class: FDC\MarcheDuFilmBundle\Manager\ConferencePagesManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.press_release:
+        class: FDC\MarcheDuFilmBundle\Manager\PressReleaseManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.site_plan:
+        class: FDC\MarcheDuFilmBundle\Manager\SitePlanManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.press_gallery:
+        class: FDC\MarcheDuFilmBundle\Manager\PressGalleryManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.press_graphical_charter:
+        class: FDC\MarcheDuFilmBundle\Manager\PressGraphicalCharterManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.press_coverage:
+        class: FDC\MarcheDuFilmBundle\Manager\PressCoverageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.who_are_we_team:
+        class: FDC\MarcheDuFilmBundle\Manager\WhoAreWeTeamManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+
+    mdf.manager.404:
+        class: FDC\MarcheDuFilmBundle\Manager\NotFoundExceptionManager
+        arguments:
+            - '@doctrine.orm.entity_manager'

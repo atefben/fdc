@@ -62,6 +62,7 @@ class WebTv implements TranslateMainInterface
      * @var Homepage
      *
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topWebTvs")
+     * @ORM\JoinColumn(name="homepage")
      */
     protected $homepage;
 
