@@ -234,7 +234,7 @@
 
 .block-contain-txt-register-movie {
   padding-top: 55px;
-  // padding-bottom: 55px;
+  padding-bottom: 70px;
   display: none;
 
   em {
@@ -266,7 +266,7 @@
     color:#666666;
     line-height: 30px;
     margin-bottom: 25px;
-    text-align: center;
+    text-align: left;
   }
 
   a:not(.button) {
@@ -795,4 +795,14 @@
   }
 }
 
+.alignCenter {
+
+  p {
+    text-align: center;
+  }
+
+  .title-25 {
+    padding-bottom: 20px;
+  }
+}
 

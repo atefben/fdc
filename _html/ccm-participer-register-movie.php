@@ -207,7 +207,7 @@
              <h5>Conditions de présélection et formulaire d'inscription 2016</h5>
           </div>
          
-         <div class="block-01-ms">
+         <div class="block-01-ms movieOnline">
             <div class="goldBorders">
               <h3>important</h3>
               <p>Le Comité de Sélection du Festival de Cannes est responsable de la Sélection officielle exclusivement, et décide dans quelle section un film pourra être invité: Compétition, Hors Compétition ou Un Certain Regard.</p>
@@ -254,7 +254,7 @@
         
 
 
-          <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
+          <div class="block-s-info-02 border-bottom vFlexAlign alignCenter" style="background-image:url(/img/registerBckg.png)">
             <strong class="title-25">Formulaire d'inscription 2017</strong></br><br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>
@@ -1030,7 +1030,7 @@
             </div>
           </div>
 
-          <div class="block-s-info-02 border-bottom vFlexAlign" style="background-image:url(/img/registerBckg.png)">
+          <div class="block-s-info-02 border-bottom vFlexAlign alignCenter" style="background-image:url(/img/registerBckg.png)">
             <strong class="title-25">Formulaire d'inscription 2017</strong></br>
             <p>Pour soumettre un film, rendez-vous sur le formulaire d'inscription du <a target="_blanck"  href="http://sub.festival-cannes.fr/">site dédié</a>.</p>
             <p>La validation finale de ce formulaire, vaut pour acceptation du règlement<br>et des conditions de présélection du Festival de Cannes 2017.</p>

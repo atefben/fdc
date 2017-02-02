@@ -2126,6 +2126,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 .block-contain-txt-register-movie {
   padding-top: 55px;
+  padding-bottom: 70px;
   display: none;
   /*u {
     margin-bottom: 24px;
@@ -2156,7 +2157,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #666666;
   line-height: 30px;
   margin-bottom: 25px;
-  text-align: center;
+  text-align: left;
 }
 .block-contain-txt-register-movie a:not(.button) {
   color: #c8a461;
@@ -2574,6 +2575,13 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 .all-contain .border-top {
   border-top: 1px solid #ECECEC;
+}
+
+.alignCenter p {
+  text-align: center;
+}
+.alignCenter .title-25 {
+  padding-bottom: 20px;
 }
 
 .owl-carousel {
@@ -8785,7 +8793,8 @@ header #logo-wrapper #logo h2 {
   font-weight: normal;
   position: absolute;
   top: 130px;
-  left: 65px;
+  /*left: 65px;*/
+  left: 4px;
   margin-top: -4px;
 }
 header #logo-wrapper #logo h2 a {
@@ -8795,7 +8804,7 @@ header #logo-wrapper #logo h2 a {
 header #logo-wrapper #logo img.palm {
   display: block;
   width: 145px;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -8804,6 +8813,7 @@ header #logo-wrapper #logo img.palm {
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
   transform: translateY(0);
+  text-align: left;
 }
 header #logo-wrapper #logo.wichlist {
   margin: 0 auto;

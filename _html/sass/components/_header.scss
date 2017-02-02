@@ -359,7 +359,8 @@ header {
         font-weight: normal;
         position: absolute;
         top: 130px;
-        left: 65px;
+        /*left: 65px;*/
+        left: 4px;
         margin-top: -4px;
 
         a {
@@ -371,9 +372,10 @@ header {
       img.palm {
         display: block;
         width: 145px;
-        margin: 0 auto;
+        /*margin: 0 auto;*/
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
+        text-align: left;
       }
     }
 
