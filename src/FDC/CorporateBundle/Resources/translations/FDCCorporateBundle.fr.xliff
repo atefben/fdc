@@ -748,9 +748,33 @@ OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous 
         <source>affiche.festival</source>
         <target>__affiche.festival</target>
       </trans-unit>
-	  <trans-unit id="home.festival.follow" resname="home.festival.follow">
+      <trans-unit id="41ee70c2f0abd85f540d692a3900b3a7" resname="home.festival.follow">
         <source>home.festival.follow</source>
         <target>Suivez le festival de Cannes</target>
+      </trans-unit>
+      <trans-unit id="c129464fcd0a57561475308cb3f69a82" resname="search.result.artist.count">
+        <source>search.result.artist.count</source>
+        <target>{0} Artistes - %count% résultat|{1} Artistes - %count% résultat|]1,Inf[ Artistes - %count% résultats</target>
+      </trans-unit>
+      <trans-unit id="a2a31d6a16d25a5942d9e27232d77acc" resname="search.result.info_statement.count">
+        <source>search.result.info_statement.count</source>
+        <target>{0} Communiqués de presse/infos - %count% résultat|{1} Communiqués de presse/infos - %count% résultat|]1,Inf[ Communiqués de presse/infos - %count% résultats</target>
+      </trans-unit>
+      <trans-unit id="1de48abedee2208927066c02f8b05c74" resname="search.result.media.count">
+        <source>search.result.media.count</source>
+        <target>{0} Films - %count% résultat|{1} Films - %count% résultat|]1,Inf[ Films - %count% résultats</target>
+      </trans-unit>
+      <trans-unit id="3550adfcd0ccb8f0af402d4a1033f032" resname="search.result.film.count">
+        <source>search.result.film.count</source>
+        <target>{0} Artistes - %count% résultat|{1} Artistes - %count% résultat|]1,Inf[ Artistes - %count% résultats</target>
+      </trans-unit>
+      <trans-unit id="f0e38f6699137d3363ca232e66803b95" resname="search.result.event.count">
+        <source>search.result.event.count</source>
+        <target>{0} Événements - %count% résultat|{1} Événements - %count% résultat|]1,Inf[ Événements - %count% résultats</target>
+      </trans-unit>
+      <trans-unit id="8401bdeff0e01054d215f177ae00eac4" resname="search.result.news.count">
+        <source>search.result.news.count</source>
+        <target>{0} Actualités - %count% résultat|{1} Actualités - %count% résultat|]1,Inf[ Actualités - %count% résultats</target>
       </trans-unit>
     </body>
   </file>

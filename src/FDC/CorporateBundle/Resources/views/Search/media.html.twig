@@ -1,6 +1,8 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="top-texts">
     {% if 'searchsubmit' in app.request.attributes.get("_route") and result.media.count > 5 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'media'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
-    <h3>Médias - {{ result.media.count }} résultats</h3>
+    <h3>{{ 'search.result.media.count'|transchoice(result.media.count) }}</h3>
 </div>
 
 <section class="medias">
