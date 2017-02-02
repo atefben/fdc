@@ -911,7 +911,7 @@ $(document).ready(function() {
       } else {
         $('#nav-movie').removeClass('sticky');
       }
-      
+
       $('.main-image').height($('.main-image').data('height'));
       
       $('.main-image, .poster, .info-film, .nav').removeClass('trailer');

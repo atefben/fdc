@@ -1,3 +1,4 @@
+{% trans_default_domain 'FDCEventBundle' %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,11 +17,10 @@
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
+    small, strike, strong, tt, var,
     b, u, i, center,
-    dl, dt, dd, ol, ul, li,
+    dl, dt, dd, ol,
     fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed,
     figure, figcaption, footer, header, hgroup,
     menu, nav, output, ruby, section, summary,
@@ -479,36 +479,52 @@
                   {% set imageTrans = object.header.findTranslationByLocale('fr') %}
               {% endif %}
           {% endif %}
-          {% if object.video.image is not null %}
-              {% if imageTrans is defined %}
-                  {% set cover_image = imageTrans.file %}
-              {% else %}
-                  {% set header = object.video.image %}
-                  {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-                  {% if imageTrans is null or imageTrans.file is null %}
-                      {% set imageTrans = header.findTranslationByLocale('fr') %}
-                  {% endif %}
+          {% if object.video is not null %}
+            {% if object.video.image is not null %}
+                {% if imageTrans is defined %}
+                    {% set cover_image = imageTrans.file %}
+                {% else %}
+                    {% set header = object.video.image %}
+                    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if imageTrans is null or imageTrans.file is null %}
+                        {% set imageTrans = header.findTranslationByLocale('fr') %}
+                    {% endif %}
 
-                  {% set cover_image = imageTrans.file %}
-              {% endif %}
+                    {% set cover_image = imageTrans.file %}
+                {% endif %}
+            {% endif %}
           {% endif %}
-        {% if object.video != null %}
+        {% if object.video is not null %}
         <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
         {% endif %}
         <video preload="none" style="background-image: url({% path cover_image , 'reference' %})">
           <source src="{{ s3_server_video ~ object.video|trans_fallback('mp4Url') }}" type="video/mp4"/>
         </video>
+        {% elseif object is news_image %}
+          <div class="Article-slider-wrapper">
+            <a class="Article-slider-prev" href="#"></a>
+            <a class="Article-slider-next" href="#"></a>
+            <div class="Article-slider">
+              {% for key, gallery in object.gallery.medias %}
+              <div class="Article-slider-item">
+                <img src="{% path gallery.media|trans_fallback('file'), '640x400' %}"/>
+                <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> {{ gallery.media|trans_fallback('copyright') }}</span> 
+              </div>
+              {% endfor %}
+            </div>
+            <div class="Article-slider-count"><strong>1</strong>/{{ object.gallery.medias|length }}</div>
+          </div>
         {% endif %}
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
-          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('l d') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
+          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('d/m/y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
           <span class="Article-header-meta-misc"><strong>Le jury 2016</strong> © FDC / Théophile Delange</span>
         </div>
       </header>
       <div class="Article-content">
         <h1>{{ object|trans_fallback('title') }}</h1>
 
-        {{ object|trans_fallback('introduction')|raw }}
+        <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
 
         {% for widget in object.widgets %}
             {% if widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
@@ -537,6 +553,7 @@
                 {% include 'FDCEventBundle:Webview:widget/dual-photo.html.twig' %}
             {% endif %}
         {% endfor %}
+        {{ 'webview.article.signature_prefix'|trans }}
       </div>
       <!--div class="Article-push">
         <div class="Article-push-image">
@@ -556,6 +573,21 @@
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
+          {% set type = 'news' %}
+          {% set variant = 'article' %}
+          {% if associatedNews is news_article %}
+            {% set type = 'news' %}
+            {% set variant = 'article' %}
+          {% elseif associatedNews is news_video %}
+            {% set type = 'news' %}
+            {% set variant = 'video' %}
+          {% elseif associatedNews is news_audio %}
+            {% set type = 'news' %}
+            {% set variant = 'audio' %}
+          {% elseif associatedNews is news_image %}
+            {% set type = 'news' %}
+            {% set variant = 'image' %} 
+          {% endif %}
           {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
             {%  set iconClass = 'icon-article' %}
@@ -563,16 +595,21 @@
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
           {% endif %}
-          <div class="Article-related-slider-item">
+          <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
+            {% if associatedNews.header.file is null %}
+              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
+            {% else %}
               <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
+            {% endif %}
+              
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
             </div>
             <div class="Article-related-slider-caption">
               <h4>{{ associatedNews.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
               <strong>{{ associatedNews|trans_fallback('title') }}</strong>
             </div>
-          </div>
+          </a>
           {% endfor %}
       </div>
     </aside>

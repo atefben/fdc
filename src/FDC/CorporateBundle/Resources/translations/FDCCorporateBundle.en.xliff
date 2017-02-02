@@ -939,6 +939,10 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <target>Sitemap</target>
         <jms:reference-file line="6">views/Footer/plan-du-site.html.twig</jms:reference-file>
       </trans-unit>
+	  <trans-unit id="home.festival.follow" resname="home.festival.follow">
+        <source>home.festival.follow</source>
+        <target>Follow festival de Cannes</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

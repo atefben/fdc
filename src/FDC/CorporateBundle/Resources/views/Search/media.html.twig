@@ -1,6 +1,8 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="top-texts">
     {% if 'searchsubmit' in app.request.attributes.get("_route") and result.media.count > 5 %}<a href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'media'}|merge(app.request.query.all)) }}" class="see-all">Tout voir</a>{% endif %}
-    <h3>Médias - {{ result.media.count }} résultats</h3>
+    <h3>{{ 'search.result.media.count'|transchoice(result.media.count) }}</h3>
 </div>
 
 <section class="medias">
@@ -8,10 +10,12 @@
         {% if class(media) == "MediaImage" %}
             {% set title = media|trans_fallback('legend') %}
             {% set format = 'photo' %}
+            {% set icon = 'photo-single' %}
             {% set link = path('fdc_event_news_getphotos') ~ '#pid=' ~ media.id %}
         {% elseif class(media) == "MediaVideo" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'video' %}
+            {% set icon = 'video' %}
             {% set link = '' %}
             {% if media.displayedAll == true %}
                 {% set link = path('fdc_event_news_getvideos') ~ '#vid=' ~ media.id %}
@@ -23,6 +27,7 @@
         {% elseif class(media) == "MediaAudio" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'audio' %}
+            {% set icon = 'audio' %}
             {% set link = path('fdc_event_news_getaudios') ~ '#aid=' ~ media.id %}
         {% endif %}
         <article class="block-poster-search medias landscape-more">
@@ -56,7 +61,7 @@
                         {% else %}
                             <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
                         {% endif %}
-                        <i class="picto icon icon-{{ format }}"></i>
+                        <i class="picto icon icon-{{ icon }}"></i>
                         <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
                     </div>
                     <div class="contain-txts">

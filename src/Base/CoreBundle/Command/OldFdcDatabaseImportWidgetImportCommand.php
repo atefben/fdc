@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Command;
 
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
+use Base\CoreBundle\Entity\NewsWidgetImage;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
@@ -49,6 +50,7 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
                 $progress->advance();
                 if ($widget->getGallery()) {
                     $translation = $this->getOldArticleI18nById($widget->$getter()->getOldNewsId());
+                    $this->removeDuplicateImageFromGallery($widget->getGallery());
                     if ($translation->getMosaiqueTitle()) {
                         $widget->getGallery()->setName($translation->getMosaiqueTitle());
                     } else {
@@ -63,9 +65,13 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
                             $title = $widget->$getter()->getTranslations()[0]->getTitle();
                         }
                         $itemTranslation = $translations[$item];
-                        $widget->getGallery()->setName("Gallerie - {$title} - {$itemTranslation} - {$id}");
+                        $prefix = '';
+                        if ($widget->getGallery()->getMedias()->count() > 1) {
+                            $prefix = 'Gallerie - ';
+                        }
+                        $widget->getGallery()->setName("$prefix{$title} - {$itemTranslation} - {$id}");
                     }
-                    $this->removeDuplicateImageFromGallery($widget->getGallery());
+
                     $this->getManager()->flush();
                 }
             }

@@ -10992,7 +10992,7 @@ article .read-later.rAlign span:after {
   position: relative;
 }
 .single-movie .content-movie .tetiere-movie {
-  height: 290px;
+  height: auto;
 }
 .single-movie .slide-video:before {
   background: transparent;

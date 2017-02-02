@@ -3071,7 +3071,7 @@ video {
     opacity: 0;
   }
 }
-/* empêche la sélection */
+/* emp├¬che la s├®lection */
 [draggable] {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -4938,7 +4938,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .half-photos p.caption {
   color: #666 !important;
   font-size: 0.750rem !important;
-  margin: 10px 0 0 !important;
+  margin: 0 !important;
   line-height: 18px !important;
   text-align: left !important;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
@@ -5930,157 +5930,161 @@ strong.title-center {
   content: "\E04B";
 }
 
-.icon-photo-support:before {
+.icon-photo-single:before {
   content: "\E04C";
 }
 
-.icon-photo:before {
+.icon-photo-support:before {
   content: "\E04D";
 }
 
-.icon-plane:before {
+.icon-photo:before {
   content: "\E04E";
 }
 
-.icon-play:before {
+.icon-plane:before {
   content: "\E04F";
 }
 
-.icon-player:before {
+.icon-play:before {
   content: "\E050";
 }
 
-.icon-playlist:before {
+.icon-player:before {
   content: "\E051";
 }
 
-.icon-podcast:before {
+.icon-playlist:before {
   content: "\E052";
 }
 
-.icon-print:before {
+.icon-podcast:before {
   content: "\E053";
 }
 
-.icon-read-latter:before {
+.icon-print:before {
   content: "\E054";
 }
 
-.icon-release-press:before {
+.icon-read-latter:before {
   content: "\E055";
 }
 
-.icon-reverseFullscreen:before {
+.icon-release-press:before {
   content: "\E056";
 }
 
-.icon-rss:before {
+.icon-reverseFullscreen:before {
   content: "\E057";
 }
 
-.icon-safari:before {
+.icon-rss:before {
   content: "\E058";
 }
 
-.icon-search:before {
+.icon-safari:before {
   content: "\E059";
 }
 
-.icon-selfie:before {
+.icon-search:before {
   content: "\E05A";
 }
 
-.icon-share:before {
+.icon-selfie:before {
   content: "\E05B";
 }
 
-.icon-slideshow:before {
+.icon-share:before {
   content: "\E05C";
 }
 
-.icon-sound:before {
+.icon-slideshow:before {
   content: "\E05D";
 }
 
-.icon-speacker:before {
+.icon-sound:before {
   content: "\E05E";
 }
 
-.icon-stool:before {
+.icon-speacker:before {
   content: "\E05F";
 }
 
-.icon-taxi-fill:before {
+.icon-stool:before {
   content: "\E060";
 }
 
-.icon-tools:before {
+.icon-taxi-fill:before {
   content: "\E061";
 }
 
-.icon-trailer-player:before {
+.icon-tools:before {
   content: "\E062";
 }
 
-.icon-trailer:before {
+.icon-trailer-player:before {
   content: "\E063";
 }
 
-.icon-train:before {
+.icon-trailer:before {
   content: "\E064";
 }
 
-.icon-truck:before {
+.icon-train:before {
   content: "\E065";
 }
 
-.icon-tumblr:before {
+.icon-truck:before {
   content: "\E066";
 }
 
-.icon-tv:before {
+.icon-tumblr:before {
   content: "\E067";
 }
 
-.icon-twitter:before {
+.icon-tv:before {
   content: "\E068";
 }
 
-.icon-user-fill:before {
+.icon-twitter:before {
   content: "\E069";
 }
 
-.icon-user-round:before {
+.icon-user-fill:before {
   content: "\E06A";
 }
 
-.icon-video:before {
+.icon-user-round:before {
   content: "\E06B";
 }
 
-.icon-wen-fill:before {
+.icon-video:before {
   content: "\E06C";
 }
 
-.icon-wen-minus:before {
+.icon-wen-fill:before {
   content: "\E06D";
 }
 
-.icon-wen-more:before {
+.icon-wen-minus:before {
   content: "\E06E";
 }
 
-.icon-wifi:before {
+.icon-wen-more:before {
   content: "\E06F";
 }
 
-.icon-youtube:before {
+.icon-wifi:before {
   content: "\E070";
+}
+
+.icon-youtube:before {
+  content: "\E071";
 }
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -6828,6 +6832,112 @@ body.chocolat-open > .chocolat-content {
     background-attachment: initial;
   }
 }
+/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
+.ie .slider-restropective .block-01 .vFlexAlign img {
+  height: 404px;
+}
+
+.isotope-01 .item.block-poster img {
+  display: block;
+}
+
+.item.block-poster .contain-txts {
+  padding-top: 25px;
+}
+
+.block-01 .title-12 {
+  display: inline-block !important;
+}
+
+.block-movie-preview .wrapper-item .description {
+  width: 475px;
+}
+
+.block-search .content-result .top-texts .see-all {
+  font-size: .61rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+.article-single section .table-article, .single-movie section .table-article {
+  width: 100% !important;
+}
+
+.article-single .text .table-article strong, .single-movie .text .table-article strong {
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* cms wysiwyg styles */
+.single-article .title-article {
+  color: #333;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  max-width: 775px;
+  text-align: center;
+  padding: 60px;
+}
+
+.legal-notice h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+
+h2.sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.text h2.sub-title, .text h2.sub-title2 {
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+}
+
+.legal-notice h2 {
+  padding: 60px;
+  font-size: 28px;
+}
+
+.text h2.sub-title2 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0;
+}
+
+.single-article .chapeau {
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  color: #333;
+  font-size: 1.125rem;
+  line-height: 2em;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.block-contain-txt-register-movie h4 {
+  padding-bottom: 32px;
+}
+
+.block-contain-txt-register-movie h5 {
+  font-size: .8rem;
+}
+
+.text-01 sub {
+  vertical-align: sub !important;
+}
+
+.text-01 sup {
+  vertical-align: super !important;
+}
+
+.text-01 strong {
+  display: inline;
+  font-size: .9rem;
+}
+
+/* thomon - end fixes */
 header {
   background-color: #080808;
   position: relative;
@@ -8992,7 +9102,7 @@ header #searchContainer {
 .grid-selection .isotope-01 .item .title-13 {
   display: block;
   position: relative;
-  top: -2px;
+  top: -4px;
 }
 body#home .article-inverse .isotope-01 .item:not(.w2):not(.double) {
   padding-left: 0px !important;
@@ -9801,16 +9911,6 @@ body#home .isotope-01 .item .contain-img {
   top: 6px;
 }
 
-/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
-.ie .slider-restropective .block-01 .vFlexAlign img {
-  height: 404px;
-}
-
-.block-01 .title-12 {
-  display: inline-block !important;
-}
-
-/* thomon - end fixes */
 .slider-restropective {
   height: calc(100vh - 230px);
   background-size: cover;
@@ -10465,9 +10565,9 @@ Slider channel
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -10493,11 +10593,11 @@ Slider channel
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -10520,19 +10620,19 @@ Slider channel
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -13143,9 +13243,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 0px solid #000;
   border-right: 0px solid #000;
   width: 100%;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .block-search .more-search.active {
   display: table;
@@ -13224,11 +13324,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search [type="checkbox"]:not(:checked) + label,
 .block-search .more-search [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 29px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:before,
 .block-search .more-search [type="checkbox"]:checked + label:before {
@@ -13251,19 +13351,19 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 12px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .block-search .more-search [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;
@@ -13283,7 +13383,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-bottom: 26px;
 }
 .block-search .content-result.result-more .item {
-  margin-right: 31px;
+  margin-right: 44px;
 }
 .block-search .content-result.result-more .block-poster-search:not(.landscape-more) {
   max-width: 195px;

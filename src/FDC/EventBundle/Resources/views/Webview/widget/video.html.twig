@@ -2,27 +2,28 @@
 {% set image = widget.news.header|trans_fallback('file') %}
 {% set video = widget.file|trans_fallback('file') %}
 
-{% set header = widget.news.header %}
+{% set header = object.header %}
 {% if header is not null %}
-    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+    {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+        {% set imageTrans = object.header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{% if news.video.image is not null %}
-    {% if imageTrans is defined %}
-        {% set image = imageTrans.file %}
-    {% else %}
-        {% set header = widget.news.video.image %}
-        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-        {% if imageTrans is null or imageTrans.file is null %}
-            {% set imageTrans = header.findTranslationByLocale('fr') %}
-        {% endif %}
+{% if object.video is not null %}
+	{% if object.video.image is not null %}
+	    {% if imageTrans is defined %}
+	        {% set image = imageTrans.file %}
+	    {% else %}
+	        {% set header = object.video.image %}
+	        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+	        {% if imageTrans is null or imageTrans.file is null %}
+	            {% set imageTrans = header.findTranslationByLocale('fr') %}
+	        {% endif %}
 
-        {% set image = imageTrans.file %}
-    {% endif %}
+	        {% set image = imageTrans.file %}
+	    {% endif %}
+	{% endif %}
 {% endif %}
-{{ image }}
 <div class="Article-videoPlayer">
           <a class="Article-videoPlayer-play" href="#"></a>
           <video preload="none" style="background-image: url({% path image, 'reference' %})">

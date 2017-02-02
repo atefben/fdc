@@ -472,18 +472,6 @@
 
 }
 
-/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
-.slider-restropective .block-01 .vFlexAlign img {
-  .ie & {
-    height: 404px;
-  }
-}
-
-.block-01 .title-12 {
-  display: inline-block !important;
-}
-/* thomon - end fixes */
-
 .slider-restropective {
   height: calc(100vh - 230px);
   background-size: cover;

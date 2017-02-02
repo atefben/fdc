@@ -83,7 +83,7 @@
           </div>
           <div class="info-film tetiere-movie">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>
-            <h2>Adieu au langage</h2>
+            <h2>Adieu au langage sur plusieurs lignes pour debug la tétière</h2>
             <div class="title-original">(Adieu au langage)</div>
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
             <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
