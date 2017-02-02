@@ -723,6 +723,10 @@ form:
             press:
                 subtitle: Sous-titre
                 header: Chapô
+                gallery_widget: Bloc photo
+                gallery_widget_image: Visuel
+                gallery_widget_title: Nom du fichier
+                gallery_widget_button: Module téléchargement de fichiers
             facebook_url: URL Facebook
             twitter_url: URL Twitter
             youtube_url: URL Youtube
