@@ -6855,6 +6855,10 @@ body.chocolat-open > .chocolat-content {
   letter-spacing: 1px;
 }
 
+.toto {
+  font-size: 1px;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -13301,7 +13305,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-bottom: 26px;
 }
 .block-search .content-result.result-more .item {
-  margin-right: 31px;
+  margin-right: 44px;
 }
 .block-search .content-result.result-more .block-poster-search:not(.landscape-more) {
   max-width: 195px;
