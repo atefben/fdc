@@ -49,7 +49,10 @@ class MdfGlobalEventsSchedulesCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('schedule', 'sonata_type_model_list')
+            ->add('schedule', 'sonata_type_model_list', array(
+                    'label' => 'form.mdf.label.global_event_day_schedule',
+                )
+            )
         ;
     }
 
