@@ -7,6 +7,7 @@ use FOS\RestBundle\Controller\Annotations\Route;
 use Sonata\AdminBundle\Tests\Datagrid\PagerTest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ServiceController extends Controller
 {
@@ -47,6 +48,12 @@ class ServiceController extends Controller
         $navServices = $servicesManager->getNavServices();
         $navArrowsServices = $servicesManager->getNavArrowsServices($navServices);
         $service = $servicesManager->getService($slug);
+
+        /* If slug is not found redirect to 404 */
+        if (!$service) {
+            throw new NotFoundHttpException("Page not found");
+        }
+
         $serviceWidgets = $servicesManager->getServiceWidgets($service);
         $serviceWidgetProducts = $servicesManager->getServiceWidgetProducts($serviceWidgets);
 
