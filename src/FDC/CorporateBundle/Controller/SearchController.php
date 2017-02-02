@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class SearchController extends Controller
 {
-    private static $entityMapper = array(
+    private static $entityMapper = [
         'news'      => 'News',
         'info'      => 'Info',
         'statement' => 'Statement',
@@ -28,17 +28,21 @@ class SearchController extends Controller
         'event'     => 'Event',
         'artist'    => 'FilmPerson',
         'film'      => 'FilmFilm',
-    );
+    ];
 
     /**
      * @Route("/search", options={"expose"=true})
      * @param $_locale
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      */
     public function searchSubmitAction($_locale, Request $request)
     {
-        $page = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:CorpoSearch')->find(1);
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoSearch')
+            ->find(1)
+        ;
 
         $searchForm = $this->_getFormFilters();
         $searchForm->handleRequest($request);
@@ -72,7 +76,7 @@ class SearchController extends Controller
             $eventResults = $data['events'] ? $this->getSearchResults($_locale, 'event', $data, 4) : false;
 
             if ($data['news']) {
-                $infoStatementsResults = array();
+                $infoStatementsResults = [];
                 $infoStatementsResults['items'] = array_merge($infoResults['items'], $statementResults['items']);
                 $infoStatementsResults['count'] = $infoResults['count'] + $statementResults['count'];
 
@@ -115,33 +119,33 @@ class SearchController extends Controller
                 $audioResults = $data['audios'] ? $this->getSearchResults($_locale, 'audios', $data, $displayNb) : $default;
                 $items = array_merge($photoResults['items'], $videoResults['items'], $audioResults['items']);
                 $count = $photoResults['count'] + $videoResults['count'] + $audioResults['count'];
-                $mediaResults = array('items' => array_slice($items, 0, 4), 'count' => $count);
+                $mediaResults = ['items' => array_slice($items, 0, 4), 'count' => $count];
             } else {
                 $mediaResults = false;
             }
             $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
             $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
 
-            $result = array(
+            $result = [
                 'news'           => $newsResults,
                 'artist'         => $artistResults,
                 'film'           => $filmResults,
                 'info_statement' => $infoStatementsResults,
                 'media'          => $mediaResults,
                 'event'          => $eventResults,
-            );
+            ];
 
-            return $this->render('FDCCorporateBundle:Search:result.html.twig', array(
+            return $this->render('FDCCorporateBundle:Search:result.html.twig', [
                 'result'  => $result,
                 'filters' => $filters,
                 'form'    => $searchForm->createView(),
                 'page'    => $page,
-            ));
+            ]);
         } else {
-            return $this->render('FDCCorporateBundle:Search:search.html.twig', array(
+            return $this->render('FDCCorporateBundle:Search:search.html.twig', [
                 'form' => $searchForm->createView(),
                 'page' => $page,
-            ));
+            ]);
         }
 
     }
@@ -160,7 +164,7 @@ class SearchController extends Controller
         $form = $form->handleRequest($request);
 
         $items = explode('_', $searchFilter != 'media' ? $searchFilter : 'photos_videos_audios');
-        $searchResults = array('items' => array(), 'count' => 0);
+        $searchResults = ['items' => [], 'count' => 0];
         foreach ($items as $item) {
             if ($item == 'artist' && isset($data['professions'])) {
                 $data['professions'] = $this->_getLinkedProfessions($data['professions']);
@@ -222,19 +226,19 @@ class SearchController extends Controller
             }
         }
 
-        return $this->render("FDCCorporateBundle:Search:result_more.html.twig", array(
-            'result'  => array($searchFilter => $searchResults),
+        return $this->render("FDCCorporateBundle:Search:result_more.html.twig", [
+            'result'  => [$searchFilter => $searchResults],
             'filters' => $filters,
             'form'    => $form->createView(),
             'page'    => $page,
-        ));
+        ]);
     }
 
     //get linked labels for each profession
     private function _getProfessionsTab()
     {
-        return array(
-            'search.form.director'    => array(
+        return [
+            'search.form.director'    => [
                 'Réalisa(teur/trice)',
                 'Réalisatrice, Société des Réalisateurs de Films - SRF',
                 'Réalisateur, scénariste',
@@ -252,23 +256,23 @@ class SearchController extends Controller
                 'Ac(teur/trice), Réalisa(teur/trice)',
                 'Auteur, Réalisatrice',
                 'Société des Réalisateurs de Films',
-            ),
-            'search.form.actor'       => array(
+            ],
+            'search.form.actor'       => [
                 'Acteur',
                 'Actrice',
                 'Acteur, Réalisateur, Producteur',
                 'Acteur, Réalisateur',
                 'Actrice, Réalisatrice',
                 'Cinéaste, Actrice',
-            ),
-            'search.form.writer'      => array(
+            ],
+            'search.form.writer'      => [
                 'Scénariste',
                 'Scénario / Dialogues',
                 'Réalisateur, Scénariste, Producteur',
                 'Réalisa(teur/trice), Scénariste, Produc(teur/trice)',
                 'Scénariste',
-            ),
-            'search.form.producer'    => array(
+            ],
+            'search.form.producer'    => [
                 'Produc(teur/trice) exécutif',
                 'Co-Produc(teur/trice)',
                 'Acteur, Réalisateur, Producteur',
@@ -282,27 +286,27 @@ class SearchController extends Controller
                 'Productrice',
                 'Producteur',
                 'Producteur, distributeur, exploitant',
-            ),
-            'search.form.distributor' => array(
+            ],
+            'search.form.distributor' => [
                 'Distribu(teur/trice)',
                 'Producteur, distributeur, exploitant',
-            ),
-            'search.form.composer'    => array(
+            ],
+            'search.form.composer'    => [
                 'Composi(teur/trice) de musique de films',
                 'Auteur, Compositeur, Interprète',
-            ),
-            'search.form.operator'    => array(
+            ],
+            'search.form.operator'    => [
                 'Chef opérateur',
                 'Chef opérateur / direc(teur/trice) photo',
-            ),
-        );
+            ],
+        ];
     }
 
     //returns a table with each labels linked to professions in array arg
     private function _getLinkedProfessions($professions)
     {
         $professionsLink = $this->_getProfessionsTab();
-        $professionLabels = array();
+        $professionLabels = [];
         //for each profession, get every label linked to this profession
         foreach ($professions as $profession) {
             foreach ($professionsLink['search.form.' . $profession] as $label) {
@@ -317,13 +321,13 @@ class SearchController extends Controller
     private function _getFiltersFromData($data)
     {
         $translator = $this->get('translator');
-        $filters = array();
+        $filters = [];
 
         $boolean = ['news', 'photos', 'videos', 'audios', 'events', 'artists', 'movies'];
         foreach ($data as $key => &$filter) {
             if ((in_array($key, $boolean) || is_bool($filter)) && $filter) {
                 /** @Ignore */
-                $filters[$key] = $translator->trans('search.form.' . $key, array(), 'FDCCorporateBundle');
+                $filters[$key] = $translator->trans('search.form.' . $key, [], 'FDCCorporateBundle');
             } elseif (is_numeric($filter)) {
                 //don't add year-start and year-end
             } elseif (is_string($filter) && !empty($filter)) {
@@ -332,14 +336,14 @@ class SearchController extends Controller
                 if ($key == 'professions') {
                     foreach ($filter as $f) {
                         $subKey = $key . '_' . $f;
-                        $f = $translator->trans('search.form.' . $f, array(), 'FDCCorporateBundle');
+                        $f = $translator->trans('search.form.' . $f, [], 'FDCCorporateBundle');
                         $filters[$subKey] = $f;
                     }
 
                 } else {
                     foreach ($filter as &$f) {
                         $subKey = $key . '_' . $f;
-                        $f = $translator->trans('search.form.' . $f, array(), 'FDCCorporateBundle');
+                        $f = $translator->trans('search.form.' . $f, [], 'FDCCorporateBundle');
                         $filters[$subKey] = $f;
                     }
                 }
@@ -356,39 +360,39 @@ class SearchController extends Controller
 
         //creating table for checkboxes keys and values
         //array('director' => 'search.form.jobs.director', etc.
-        $professionsCheckBoxes = array();
+        $professionsCheckBoxes = [];
         foreach ($professions as $label => $profession) {
             $text = explode('.', $label);
             $text = $text[count($text) - 1];
-            $translatedLabel = $translator->trans($label, array(), 'FDCCorporateBundle');
+            $translatedLabel = $translator->trans($label, [], 'FDCCorporateBundle');
             $professionsCheckBoxes[$translatedLabel] = $text;
         }
 
 
-        $prizesCheckboxes = array(
-            $translator->trans('search.form.palmedor', array(), 'FDCCorporateBundle')                => 'palmedor',
-            $translator->trans('search.form.grandprix', array(), 'FDCCorporateBundle')               => 'grandprix',
-            $translator->trans('search.form.prixmiseenscene', array(), 'FDCCorporateBundle')         => 'prixmiseenscene',
-            $translator->trans('search.form.prixscenario', array(), 'FDCCorporateBundle')            => 'prixscenario',
-            $translator->trans('search.form.prixinterpretefeminine', array(), 'FDCCorporateBundle')  => 'prixinterpretefeminine',
-            $translator->trans('search.form.prixinterpretemasculine', array(), 'FDCCorporateBundle') => 'prixinterpretemasculine',
-            $translator->trans('search.form.prixjury', array(), 'FDCCorporateBundle')                => 'prixjury',
-            $translator->trans('search.form.palmedorcourtmetrage', array(), 'FDCCorporateBundle')    => 'palmedorcourtmetrage',
-            $translator->trans('search.form.prixuncertainregard', array(), 'FDCCorporateBundle')     => 'prixuncertainregard',
-            $translator->trans('search.form.groupamagan', array(), 'FDCCorporateBundle')             => 'groupamagan',
-            $translator->trans('search.form.prixcinefondation', array(), 'FDCCorporateBundle')       => 'prixcinefondation',
-            $translator->trans('search.form.camerador', array(), 'FDCCorporateBundle')               => 'camerador',
-        );
+        $prizesCheckboxes = [
+            $translator->trans('search.form.palmedor', [], 'FDCCorporateBundle')                => 'palmedor',
+            $translator->trans('search.form.grandprix', [], 'FDCCorporateBundle')               => 'grandprix',
+            $translator->trans('search.form.prixmiseenscene', [], 'FDCCorporateBundle')         => 'prixmiseenscene',
+            $translator->trans('search.form.prixscenario', [], 'FDCCorporateBundle')            => 'prixscenario',
+            $translator->trans('search.form.prixinterpretefeminine', [], 'FDCCorporateBundle')  => 'prixinterpretefeminine',
+            $translator->trans('search.form.prixinterpretemasculine', [], 'FDCCorporateBundle') => 'prixinterpretemasculine',
+            $translator->trans('search.form.prixjury', [], 'FDCCorporateBundle')                => 'prixjury',
+            $translator->trans('search.form.palmedorcourtmetrage', [], 'FDCCorporateBundle')    => 'palmedorcourtmetrage',
+            $translator->trans('search.form.prixuncertainregard', [], 'FDCCorporateBundle')     => 'prixuncertainregard',
+            $translator->trans('search.form.groupamagan', [], 'FDCCorporateBundle')             => 'groupamagan',
+            $translator->trans('search.form.prixcinefondation', [], 'FDCCorporateBundle')       => 'prixcinefondation',
+            $translator->trans('search.form.camerador', [], 'FDCCorporateBundle')               => 'camerador',
+        ];
 
-        $selectionsCheckboxes = array(
-            $translator->trans('search.form.competition', array(), 'FDCCorporateBundle')      => 'competition',
-            $translator->trans('search.form.horscompetition', array(), 'FDCCorporateBundle')  => 'horscompetition',
-            $translator->trans('search.form.seancesspeciales', array(), 'FDCCorporateBundle') => 'seancesspeciales',
-            $translator->trans('search.form.uncertainregard', array(), 'FDCCorporateBundle')  => 'uncertainregard',
-            $translator->trans('search.form.cannesclassics', array(), 'FDCCorporateBundle')   => 'cannesclassics',
-            $translator->trans('search.form.cinefondation', array(), 'FDCCorporateBundle')    => 'cinefondation',
-            $translator->trans('search.form.cinemadelaplage', array(), 'FDCCorporateBundle')    => 'cinemadelaplage',
-        );
+        $selectionsCheckboxes = [
+            $translator->trans('search.form.competition', [], 'FDCCorporateBundle')      => 'competition',
+            $translator->trans('search.form.horscompetition', [], 'FDCCorporateBundle')  => 'horscompetition',
+            $translator->trans('search.form.seancesspeciales', [], 'FDCCorporateBundle') => 'seancesspeciales',
+            $translator->trans('search.form.uncertainregard', [], 'FDCCorporateBundle')  => 'uncertainregard',
+            $translator->trans('search.form.cannesclassics', [], 'FDCCorporateBundle')   => 'cannesclassics',
+            $translator->trans('search.form.cinefondation', [], 'FDCCorporateBundle')    => 'cinefondation',
+            $translator->trans('search.form.cinemadelaplage', [], 'FDCCorporateBundle')  => 'cinemadelaplage',
+        ];
 
         return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
     }
@@ -399,7 +403,7 @@ class SearchController extends Controller
         foreach ($data as &$value) {
             if (is_array($value)) {
                 foreach ($value as &$label) {
-                    $label = $translator->trans('search.form.' . $label, array(), 'FDCCorporateBundle');
+                    $label = $translator->trans('search.form.' . $label, [], 'FDCCorporateBundle');
                 }
             }
         }
@@ -427,13 +431,13 @@ class SearchController extends Controller
 
         $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
 
-        $response = array();
+        $response = [];
         foreach ($paginatedResults as $result) {
-            $response[] = (object)array(
-                'type' => $this->renderView("FDCEventBundle:Search:components/type.html.twig", array('object' => $result)),
-                'name' => $this->renderView("FDCEventBundle:Search:components/name.html.twig", array('object' => $result)),
-                'link' => $this->renderView("FDCEventBundle:Search:components/link.html.twig", array('object' => $result)),
-            );
+            $response[] = (object)[
+                'type' => $this->renderView("FDCEventBundle:Search:components/type.html.twig", ['object' => $result]),
+                'name' => $this->renderView("FDCEventBundle:Search:components/name.html.twig", ['object' => $result]),
+                'link' => $this->renderView("FDCEventBundle:Search:components/link.html.twig", ['object' => $result]),
+            ];
         }
 
         return new JsonResponse($response);
@@ -456,12 +460,12 @@ class SearchController extends Controller
         $query->setQuery($keywordQuery);
 
 
-        $response = array();
+        $response = [];
         foreach ($index->find($query) as $result) {
-            $response[] = (object)array(
-                'name' => $this->renderView("FDCEventBundle:Search:components/country.html.twig", array('object' => $result)),
+            $response[] = (object)[
+                'name' => $this->renderView("FDCEventBundle:Search:components/country.html.twig", ['object' => $result]),
 
-            );
+            ];
         }
 
         return new JsonResponse($response);
@@ -484,15 +488,15 @@ class SearchController extends Controller
 
     private function getSearchFilters($type, $items)
     {
-        if (!count($items) || !in_array($type, array('info', 'statement', 'news', 'media'))) {
+        if (!count($items) || !in_array($type, ['info', 'statement', 'news', 'media'])) {
             return false;
         }
 
-        $filters = array();
+        $filters = [];
 
-        $dates = array();
-        $themes = array();
-        $formats = array();
+        $dates = [];
+        $themes = [];
+        $formats = [];
 
         foreach ($items as $item) {
             if (!in_array($item->getPublishedAt()->format('dmY'), $dates)) {
@@ -508,7 +512,7 @@ class SearchController extends Controller
 
             $format = $this->getItemFormat($item);
             if (!in_array($format, $formats)) {
-                $filters['format'][] = array('name' => $format, 'slug' => $format);
+                $filters['format'][] = ['name' => $format, 'slug' => $format];
 
                 $formats[] = $format;
             }
@@ -525,41 +529,41 @@ class SearchController extends Controller
         $reflect = new \ReflectionClass(get_class($item));
         $class = $reflect->getShortName();
 
-        return strtolower(strtr($class, array('Image' => 'Photo', 'Info' => '', 'Media' => '', 'Statement' => '', 'News' => '')));
+        return strtolower(strtr($class, ['Image' => 'Photo', 'Info' => '', 'Media' => '', 'Statement' => '', 'News' => '']));
     }
 
     private function getContentQuery($repository, $searchTerm, $_locale)
     {
         // Get theme query.
         $themePath = 'theme.translations';
-        $themeFields = array('theme.translations.name');
+        $themeFields = ['theme.translations.name'];
 
         $themeQuery = $repository->getFieldsKeywordNestedQuery($themeFields, $searchTerm, $themePath, $_locale);
 
         // Get translations query.
         $translationsPath = 'translations';
-        $translationsFields = array(
+        $translationsFields = [
             'title',
             'legend',
             'introduction',
             'content',
             'profession',
-        );
+        ];
 
         $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
 
         // Web TV query (for media)
         $webTvPath = 'webTv.translations';
-        $webTvFields = array('name');
+        $webTvFields = ['name'];
 
         $webTvQuery = $repository->getFieldsKeywordNestedQuery($webTvFields, $searchTerm, $webTvPath, $_locale);
 
         // Participate sections query.
         $participateSectionsPath = 'downloadSection.section.translations';
-        $participateSectionsFields = array(
+        $participateSectionsFields = [
             'downloadSection.section.translations.title',
             'downloadSection.section.translations.description',
-        );
+        ];
         $participateSectionsQuery = $repository->getFieldsKeywordNestedQuery($participateSectionsFields, $searchTerm, $participateSectionsPath, $_locale);
 
         // Get final query.
@@ -602,17 +606,17 @@ class SearchController extends Controller
     private function getArtistQuery($repository, $searchTerm, $_locale)
     {
         // Get untranslated fields query.
-        $artistFields = array(
+        $artistFields = [
             'firstname',
             'lastname',
             'nationality',
-        );
+        ];
 
         $artistQuery = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
 
         // Search for movie.
         $path = 'films.film.translations';
-        $fields = array('films.film.translations.title');
+        $fields = ['films.film.translations.title'];
         $keywordMatchQuery = $repository->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
 
         // Get only movies from FDC current year.
@@ -643,36 +647,36 @@ class SearchController extends Controller
     {
         // Get translations query.
         $translationsPath = 'translations';
-        $translationsFields = array(
+        $translationsFields = [
             'title',
-        );
+        ];
 
         $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
 
         // Get untranslated fields query.
-        $fields = array(
+        $fields = [
             'selectionSection',
             'titleVO',
-        );
+        ];
 
         $fieldsQuery = $repository->getFieldsKeywordQuery($fields, $searchTerm, false);
 
         // Film Presons Query
-        $filmPersonsFields = array('persons.name');
+        $filmPersonsFields = ['persons.name'];
         $filmPersonsQuery = $repository->getFieldsKeywordQuery($filmPersonsFields, $searchTerm);
 
 
         // Get film country Query
         $filmCountryPath = 'countries.country.translations';
-        $filmCountryFields = array('name');
+        $filmCountryFields = ['name'];
 
         $filmCountryQuery = $repository->getFieldsKeywordNestedQuery($filmCountryFields, $searchTerm, $filmCountryPath, $_locale);
 
         // Get film Query with year.
-        $productionYearQuery = $repository->getFieldsKeywordQuery(array('festival.year'), $this->container->getParameter('fdc_year'));
+        $productionYearQuery = $repository->getFieldsKeywordQuery(['festival.year'], $this->container->getParameter('fdc_year'));
 
         // Artist query.
-        $artistQuery = $repository->getFieldsKeywordQuery(array('persons.name'), $searchTerm);
+        $artistQuery = $repository->getFieldsKeywordQuery(['persons.name'], $searchTerm);
 
         $filmQuery = new \Elastica\Query\BoolQuery();
         $filmQuery
@@ -696,9 +700,9 @@ class SearchController extends Controller
     {
         // Get translations query.
         $translationsPath = 'translations';
-        $translationsFields = array(
+        $translationsFields = [
             'name',
-        );
+        ];
 
         $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
 
