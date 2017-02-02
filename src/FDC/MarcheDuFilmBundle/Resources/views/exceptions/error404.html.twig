@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Marché du Film</title>
+    <title>{{ 'site_title'|trans }}</title>
 
     {% stylesheets
     'bundles/fdcmarchedufilm/js/bower_components/chocolat/src/css/chocolat.css'
@@ -54,24 +54,24 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href={{ header_fdc_com }} target="_blank">Festival 2017</a>
+                <a href={{ header_fdc_com }} target="_blank">{{ 'header.festival'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_fdc_fr }}" target="_blank">Festival de Cannes</a>
+                <a href="{{ header_fdc_fr }}" target="_blank">{{ 'header.fdc'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_cine_fr }}" target="_blank">Cinéfondation</a>
+                <a href="{{ header_cine_fr }}" target="_blank">{{ 'header.cine'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_ccm_fr }}" target="_blank">Cannes Court Métrage</a>
+                <a href="{{ header_ccm_fr }}" target="_blank">{{ 'header.ccm'|trans }}</a>
             </li>
             <li>
-                <a href="{{ path('fdc_marchedufilm_default_index') }}" class="active">Marché du film</a>
+                <a href="{{ path('fdc_marchedufilm_default_index') }}" class="active">{{ 'header.mdf'|trans }}</a>
             </li>
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
             </li>
         </ul>
     </div>
@@ -92,7 +92,7 @@
             <div id="sticky-user">
                 <ul class="user-nav">
                     <li>
-                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                        <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
                     </li>
                 </ul>
             </div>
@@ -103,29 +103,29 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="{{ path('fdc_marchedufilm_default_index') }}" class="red">Édition 2017
+                        <a href="{{ path('fdc_marchedufilm_default_index') }}" class="red">{{ 'menu.edition'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="blue">ACCRÉDITATIONS</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="blue">{{ 'menu.accreditation'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" class="blue">SERVICES</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="blue">{{ 'menu.services'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="golden">QUI SOMMES-NOUS ?
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="golden">{{ 'menu.who_are_we'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="golden">PRESSE</a>
+                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="golden">{{ 'menu.press'|trans }}</a>
                     </li>
                     <li>
-                        <a href="#" class="golden">INFORMATIONS UTILES</a>
+                        <a href="#" class="golden">{{ 'menu.faq'|trans }}</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
-                            <form action="action.php">
-                                <input type="text" name="name" id="searchInput" placeholder="Recherchez"/>
+                            <form action="">
+                                <input type="text" name="name" id="searchInput" placeholder="{{ 'menu.search'|trans }}"/>
                             </form>
                         </div>
                     </li>
@@ -140,24 +140,24 @@
         <div class="subMenu customClass1" id="subMenu">
             <div class="bigContainer">
                 <ul class="tleft">
-                    <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_news') }}">Actualités</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">{{ 'menu.presentation'|trans }}</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_news') }}">{{ 'menu.news'|trans }}</a></li>
                     <li class="seeSub">
                         <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
-                        <div class="prog">PROGRAMME</div>
+                        <div class="prog">{{ 'menu.program'|trans }}</div>
                         <ul class="subsubMenu">
-                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">Projections</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">Événements</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">{{ 'menu.projections'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">{{ 'menu.events'|trans }}</a></li>
                         </ul>
                     </li>
-                    <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">producers workshop</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">producers network</a></li>
+                    <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">{{ 'menu.conference_producers_workshop'|trans }}</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">{{ 'menu.conference_producers_network'|trans }}</a></li>
                 </ul>
                 <ul class="tright">
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">Doc corner</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">Next</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">Mixers</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">Goes to Cannes</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">{{ 'menu.conference_doc_corner'|trans }}</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">{{ 'menu.conference_next'|trans }}</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">{{ 'menu.conference_mixers'|trans }}</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">{{ 'menu.conference_goes_to_cannes'|trans }}</a></li>
                 </ul>
             </div>
         </div>
@@ -167,11 +167,11 @@
 
 {% block main %}
 <div id="main" class="home loading">
-<div class="text-presentation erreur404">
-<h3>{{ notFound404PageContent.title }}</h3>
-<h5>{{ notFound404PageContent.description }}</h5>
-<h4><i class="icon icon_flecheGauche reverse"></i><a href="{{ path('fdc_marchedufilm_default_index') }}">RETOUR À LA PAGE  D’ACCUEIL</a></h4>
-</div>
+    <div class="text-presentation erreur404">
+        <h3>{{ notFound404PageContent.title }}</h3>
+        <h5>{{ notFound404PageContent.description }}</h5>
+        <h4><i class="icon icon_flecheGauche reverse"></i><a href="{{ path('fdc_marchedufilm_default_index') }}">{{ '404.return_to_homepage'|trans }}</a></h4>
+    </div>
 </div>
 {% endblock %}
 
@@ -182,14 +182,3 @@
 {% endblock %}
 </body>
 </html>
-
-
-{#{% block main %}#}
-{#<div id="main" class="home loading">#}
-    {#<div class="text-presentation erreur404">#}
-        {#<h3>Erreur 404</h3>#}
-        {#<h5>La page que vous recherchez n’existe pas, il est possible qu’elle soit en cours de traduction.<br> Veuillez réessayer plus tard !</h5>#}
-        {#<h4><i class="icon icon_flecheGauche reverse"></i><a href="/">RETOUR À LA PAGE  D’ACCUEIL</a></h4>#}
-    {#</div>#}
-{#</div>#}
-{#{% endblock %}#}

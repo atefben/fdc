@@ -9,44 +9,44 @@
                 <h3>{{ sitePlanPage ? sitePlanPage.title : '' }}</h3>
                 <div>
                     <div class="thirdSection">
-                        <a href="{{ path('fdc_marche_du_film_edition_presentation') }}"><h4 class="customClass1">Édition 2017</h4></a>
+                        <a href="{{ path('fdc_marche_du_film_edition_presentation') }}"><h4 class="customClass1">{{ 'site_plan.edition'|trans }}</h4></a>
                         <hr>
                         <ul>
-                            <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_news') }}">actualités</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">{{ 'site_plan.presentation'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_news') }}">{{ 'site_plan.news'|trans }}</a></li>
                         </ul>
                         <ul>
-                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">projections</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">événements</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">{{ 'site_plan.projections'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">{{ 'site_plan.events'|trans }}</a></li>
                         </ul>
                         <ul>
-                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'producers-workshop'}) }}">producers workshop</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'producers-network'}) }}">producers network</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'doc-corner'}) }}">doc corner</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'next'}) }}">next</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'mixers'}) }}">mixers</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'goes-to-cannes'}) }}">goes to cannes</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'producers-workshop'}) }}">{{ 'site_plan.producers_workshop'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'producers-network'}) }}">{{ 'site_plan.producers_network'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'doc-corner'}) }}">{{ 'site_plan.doc_corner'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'next'}) }}">{{ 'site_plan.next'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'mixers'}) }}">{{ 'site_plan.mixers'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'goes-to-cannes'}) }}">{{ 'site_plan.goes_to_cannes'|trans }}</a></li>
                         </ul>
                     </div>
                     <div class="thirdSection">
-                        <h4 class="greenColor"><a href="{{ path('fdc_marche_du_film_accreditations') }}">Accréditations</a></h4>
+                        <h4 class="greenColor"><a href="{{ path('fdc_marche_du_film_accreditations') }}">{{ 'site_plan.accreditation'|trans }}</a></h4>
                         <hr class="greenHr">
                     </div>
                     <div class="thirdSection">
-                        <h4 class="goldColor customClass3"><a href="{{ path('fdc_marche_du_film_who_are_we_history') }}">Qui sommes-nous ?</a></h4>
+                        <h4 class="goldColor customClass3"><a href="{{ path('fdc_marche_du_film_who_are_we_history') }}">{{ 'site_plan.who_are_we'|trans }}</a></h4>
                         <hr class="goldHr">
                         <ul>
-                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_history') }}">Historique</a></li>
-                            <li><a href="#">L'ÉQUIPE</a></li>
-                            <li><a href="#">Informations Pratiques</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_key_figures') }}">Chiffres clés</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_environmental_approaches') }}">Démarches</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_history') }}">{{ 'site_plan.history'|trans }}</a></li>
+                            <li><a href="#">{{ 'site_plan.team'|trans }}</a></li>
+                            <li><a href="#">{{ 'site_plan.practical_info'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_key_figures') }}">{{ 'site_plan.key_figures'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_environmental_approaches') }}">{{ 'site_plan.environmental_approaches'|trans }}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div>
                     <div class="thirdSection">
-                        <h4 class="greenColor"><a href="{{ path('fdc_marche_du_film_services') }}">Services</a></h4>
+                        <h4 class="greenColor"><a href="{{ path('fdc_marche_du_film_services') }}">{{ 'site_plan.services'|trans }}</a></h4>
                         <hr class="greenHr">
                         <ul>
                             {% for item in servicesPages %}
@@ -55,17 +55,17 @@
                         </ul>
                     </div>
                     <div class="thirdSection">
-                        <h4 class="goldColor customClass3"><a href="{{ path('fdc_marche_du_film_press_releases') }}">Presse</a></h4>
+                        <h4 class="goldColor customClass3"><a href="{{ path('fdc_marche_du_film_press_releases') }}">{{ 'site_plan.press'|trans }}</a></h4>
                         <hr class="goldHr">
                         <ul>
-                            <li><a href="{{ path('fdc_marche_du_film_press_releases') }}">Communiqué de presse</a></li>
-                            <li><a href="#">Retombées de presse</a></li>
-                            <li><a href="#">Galerie Photos</a></li>
-                            <li><a href="#">Charte Graphique</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_press_releases') }}">{{ 'site_plan.releases'|trans }}</a></li>
+                            <li><a href="#">{{ 'site_plan.coverage'|trans }}</a></li>
+                            <li><a href="#">{{ 'site_plan.gallery'|trans }}</a></li>
+                            <li><a href="#">{{ 'site_plan.graphical_charter'|trans }}</a></li>
                         </ul>
                     </div>
                     <div class="thirdSection">
-                        <h4 class="goldColor customClass3">Informations utiles</h4>
+                        <h4 class="goldColor customClass3">{{ 'site_plan.faq'|trans }}</h4>
                         <hr class="goldHr">
                     </div>
                 </div>

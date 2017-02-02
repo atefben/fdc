@@ -23,7 +23,7 @@
                                     <div class="textWrapper">
                                         <h6>{{ pressGraphicalCharterWidget.title }}</h6>
                                         <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
-                                        <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} mo - {{ pressGraphicalCharterWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
+                                        <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} {{ 'image_size_mo'|trans }} - {{ pressGraphicalCharterWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
                                     </div>
                                 </div>
                             </a>

@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-02-02T18:52:16Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2017-02-02T22:34:05Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="2974812f1597788840c6fca8b2314158dd3e94de" resname="Cette valeur ne doit pas être nulle.">
-        <source>Cette valeur ne doit pas être nulle.</source>
-        <target state="new">Cette valeur ne doit pas être nulle.</target>
-      </trans-unit>
-      <trans-unit id="00d9c8704dd2031627aaefcd0fe7786b0f003144" resname="Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide">
-        <source>Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide</source>
-        <target state="new">Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide</target>
-      </trans-unit>
       <trans-unit id="dc6d2a030740e27789f40fb1c7cf8900b57d8d6a" resname="validation.home_top_slider_max">
         <source>validation.home_top_slider_max</source>
         <target state="new">validation.home_top_slider_max</target>

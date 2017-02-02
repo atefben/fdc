@@ -58,7 +58,8 @@ class ServiceWidgetProductType extends AbstractType
                 'model_manager' => $this->galleryAdmin->getModelManager(),
                 'class' => $this->galleryAdmin->getClass(),
                 'btn_delete' => false,
-                'label' => 'form.label.service._widget_product_gallery'
+                'label' => 'form.label.service._widget_product_gallery',
+                'translation_domain' => 'BaseAdminBundle'
 
             ))
             ->add('_type', 'hidden', array(

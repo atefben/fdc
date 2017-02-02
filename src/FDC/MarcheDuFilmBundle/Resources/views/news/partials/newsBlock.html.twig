@@ -34,6 +34,6 @@
             </a>
         {% endfor %}
     {% else %}
-        <div id="empty-news-list" class="events message">Il n'y a pas de nouvelles disponibles.</div>
+        <div id="empty-news-list" class="events message">{{ 'no_news_available'|trans }}</div>
     {% endif %}
 </div>

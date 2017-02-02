@@ -8,7 +8,7 @@
             {% for contactInfo in contactInfos %}
                 <span class="howTo">{{ contactInfo }}</span>
             {% endfor %}
-            <a href="{{ contact.seeMoreUrl }}"><span class="knowMore">en savoir plus</span></a>
+            <a href="{{ contact.seeMoreUrl }}"><span class="knowMore">{{ 'read_more'|trans }}</span></a>
         </div>
     {% endif %}
 </div>

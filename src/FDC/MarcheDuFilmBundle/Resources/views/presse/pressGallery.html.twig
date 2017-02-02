@@ -23,7 +23,7 @@
                                     <div class="textWrapper">
                                         <h6>{{ pressGalleryWidget.title }}</h6>
                                         <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
-                                        <span class="upSpan">{{ (pressGalleryWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} mo - {{ pressGalleryWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
+                                        <span class="upSpan">{{ (pressGalleryWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} {{ 'image_size_mo'|trans }}{#mo#} - {{ pressGalleryWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
                                     </div>
                                 </div>
                             </a>

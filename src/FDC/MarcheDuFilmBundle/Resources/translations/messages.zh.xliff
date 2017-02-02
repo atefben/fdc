@@ -1,35 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-02-02T18:52:19Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
+  <file date="2017-02-02T22:34:09Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="0a02b85354f1158cd77f52be7d3e2f0c24075daa" resname="404.return_to_homepage">
+        <source>404.return_to_homepage</source>
+        <target state="new">404.return_to_homepage</target>
+        <jms:reference-file line="173">views/exceptions/error404.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="947cdeff6c7f1dfdd4ac0fa999f65bd53a685228" resname="accrediation.bandeau.subscribe">
         <source>accrediation.bandeau.subscribe</source>
         <target state="new">accrediation.bandeau.subscribe</target>
         <jms:reference-file line="10">views/accreditation/show.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="411ba31ef0ac007d3691244b67912ec98a87919b" resname="form.label.service._widget_product_gallery">
-        <source>form.label.service._widget_product_gallery</source>
-        <target state="new">form.label.service._widget_product_gallery</target>
-        <jms:reference-file line="61">Form/Type/ServiceWidgetProductType.php</jms:reference-file>
+      <trans-unit id="745decea5450d1a3f652655538d015f0225a9be9" resname="article_by">
+        <source>article_by</source>
+        <target state="new">article_by</target>
+        <jms:reference-file line="19">views/presse/pressCoverage.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="682ac5882f3f1b229a7bbae694425763909b5580" resname="form.label_file">
-        <source>form.label_file</source>
-        <target state="new">form.label_file</target>
-        <jms:reference-file line="58">Form/Type/ContentTemplateWidgetFileType.php</jms:reference-file>
+      <trans-unit id="f89e65046734d8a11c86c514e35f0e83444d4d3a" resname="book_service">
+        <source>book_service</source>
+        <target state="new">book_service</target>
+        <jms:reference-file line="78">views/services/show_service.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="b18f4a58cf4edbba22a1421daa2bc036429667cb" resname="form.mdf.content_template.label.gallery">
-        <source>form.mdf.content_template.label.gallery</source>
-        <target state="new">form.mdf.content_template.label.gallery</target>
-        <jms:reference-file line="58">Form/Type/ContentTemplateWidgetGalleryType.php</jms:reference-file>
+      <trans-unit id="32f02b0c23484c425b8f095c72611a20137b6c45" resname="conference.menu.conferences">
+        <source>conference.menu.conferences</source>
+        <target state="new">conference.menu.conferences</target>
+        <jms:reference-file line="12">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="181c131206938aa4c24a65f02e328ad8a6d3d5ef" resname="form.mdf.content_template.label.text">
-        <source>form.mdf.content_template.label.text</source>
-        <target state="new">form.mdf.content_template.label.text</target>
-        <jms:reference-file line="37">Form/Type/ContentTemplateWidgetTextType.php</jms:reference-file>
+      <trans-unit id="3c48593524b222bb8f13f7488fe5b051f061d05f" resname="conference.menu.contact">
+        <source>conference.menu.contact</source>
+        <target state="new">conference.menu.contact</target>
+        <jms:reference-file line="32">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b6cbe675aa6ffc650f7a22cd7537f31aff62ae7f" resname="conference.menu.home">
+        <source>conference.menu.home</source>
+        <target state="new">conference.menu.home</target>
+        <jms:reference-file line="8">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="17f7a2ca08ba7b3cac414b494ac5925f198ab9f0" resname="conference.menu.news">
+        <source>conference.menu.news</source>
+        <target state="new">conference.menu.news</target>
+        <jms:reference-file line="22">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7cb54ecd6d3fa26aedc0a08977f80dd1bcecf6c6" resname="conference.menu.partners">
+        <source>conference.menu.partners</source>
+        <target state="new">conference.menu.partners</target>
+        <jms:reference-file line="27">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f87facf963bb936b057be953cb157ee6b84678bb" resname="conference.menu.speakers">
+        <source>conference.menu.speakers</source>
+        <target state="new">conference.menu.speakers</target>
+        <jms:reference-file line="17">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1eb0b8dc987b82e5e310aa9e7d73f3798fdeebea" resname="discover">
+        <source>discover</source>
+        <target state="new">discover</target>
+        <jms:reference-file line="2">views/partials/newsBlock.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="59b189070af751d4e93a749ccffb4ccfd2de7ab5" resname="display">
+        <source>display</source>
+        <target state="new">display</target>
+        <jms:reference-file line="21">views/programme/globalEvents.html.twig</jms:reference-file>
+        <jms:reference-file line="5">news/partials/filterListNews.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3234829c297879788e215019ba4685e6b0bf43ab" resname="display_more">
+        <source>display_more</source>
+        <target state="new">display_more</target>
+        <jms:reference-file line="27">views/presse/pressCoverage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4b91958bf410461672ed33e6bab90664f1025095" resname="filter_all">
+        <source>filter_all</source>
+        <target state="new">filter_all</target>
+        <jms:reference-file line="7">news/partials/filterListNews.html.twig</jms:reference-file>
+        <jms:reference-file line="17">news/partials/filterListNews.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="67e7f019f7e640e6551bdcc361ecb8ce6772e7bd" resname="footer.contact">
+        <source>footer.contact</source>
+        <target state="new">footer.contact</target>
+        <jms:reference-file line="17">views/shared/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b469507c15ca085ba9753f60ab835f68cda9c725" resname="footer.copyright">
+        <source>footer.copyright</source>
+        <target state="new">footer.copyright</target>
+        <jms:reference-file line="16">views/shared/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0a294ad8ae25d72d5d386bce0eb2b640b9c423bc" resname="footer.faq">
+        <source>footer.faq</source>
+        <target state="new">footer.faq</target>
+        <jms:reference-file line="18">views/shared/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7da4973b0d812186fcd5fde46a4a1a0519e5d054" resname="footer.general_conditions">
+        <source>footer.general_conditions</source>
+        <target state="new">footer.general_conditions</target>
+        <jms:reference-file line="21">views/shared/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="686ae42fc68d36e2fd8862d553816623f676b3ba" resname="footer.legal_mentions">
+        <source>footer.legal_mentions</source>
+        <target state="new">footer.legal_mentions</target>
+        <jms:reference-file line="19">views/shared/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8bc8d9cf418f70847601c61943b5ef88dab50ff5" resname="footer.site_map">
+        <source>footer.site_map</source>
+        <target state="new">footer.site_map</target>
+        <jms:reference-file line="20">views/shared/footer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5f3dc63ae1a2cb3035385d0c74011842e3ee1190" resname="header.ccm">
+        <source>header.ccm</source>
+        <target state="new">header.ccm</target>
+        <jms:reference-file line="66">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="14">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bda04ddbf96fe6277481db6792278e08ad233b63" resname="header.cine">
+        <source>header.cine</source>
+        <target state="new">header.cine</target>
+        <jms:reference-file line="63">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8aa26cd8edf33d42e72e7b063ad816f41e5faae2" resname="header.fdc">
+        <source>header.fdc</source>
+        <target state="new">header.fdc</target>
+        <jms:reference-file line="60">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="8">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a9310c29180443c7fb894e00a9d3ec19e8921cb2" resname="header.festival">
+        <source>header.festival</source>
+        <target state="new">header.festival</target>
+        <jms:reference-file line="57">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="5">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="453fefba0efb20f78e4e6a4693b02b095eea93c6" resname="header.mdf">
+        <source>header.mdf</source>
+        <target state="new">header.mdf</target>
+        <jms:reference-file line="69">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="17">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="63c978524192b6fb9078fd0241505b691da62021" resname="header.my_account">
+        <source>header.my_account</source>
+        <target state="new">header.my_account</target>
+        <jms:reference-file line="74">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="95">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="22">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="53">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2dde3e15ebedb1c9421bc0adb9664a4bf37e8313" resname="image_size_mo">
+        <source>image_size_mo</source>
+        <target state="new">image_size_mo</target>
+        <jms:reference-file line="26">views/presse/pressGraphicalCharter.html.twig</jms:reference-file>
+        <jms:reference-file line="26">views/presse/pressGallery.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="952d2604958ee70282d6a61caa239ece16aa29c8" resname="last_news">
+        <source>last_news</source>
+        <target state="new">last_news</target>
+        <jms:reference-file line="3">views/partials/newsBlock.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="98c5288271cc51aba66fde312a84ac51f92e0fd9" resname="menu.accreditation">
+        <source>menu.accreditation</source>
+        <target state="new">menu.accreditation</target>
+        <jms:reference-file line="110">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="86">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="dd1dcffb59fcdd6ca55be8aab61efb8d6e5cbe74" resname="menu.conference_doc_corner">
+        <source>menu.conference_doc_corner</source>
+        <target state="new">menu.conference_doc_corner</target>
+        <jms:reference-file line="157">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="140">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="766caf200eb40c358f8fcda65cbf5af4335502b7" resname="menu.conference_goes_to_cannes">
+        <source>menu.conference_goes_to_cannes</source>
+        <target state="new">menu.conference_goes_to_cannes</target>
+        <jms:reference-file line="160">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="143">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6313c94de66ba939deff5f2e8973f934673b2ade" resname="menu.conference_mixers">
+        <source>menu.conference_mixers</source>
+        <target state="new">menu.conference_mixers</target>
+        <jms:reference-file line="159">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="142">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ad6367f34f357fef80feb61f6c9f8dfce9c93f1c" resname="menu.conference_next">
+        <source>menu.conference_next</source>
+        <target state="new">menu.conference_next</target>
+        <jms:reference-file line="158">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="141">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="af4d402ad3f9e72640c5a09c9110815051e2497d" resname="menu.conference_producers_network">
+        <source>menu.conference_producers_network</source>
+        <target state="new">menu.conference_producers_network</target>
+        <jms:reference-file line="154">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="137">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="158153117f5261a20db244a15d9154073245f6d5" resname="menu.conference_producers_workshop">
+        <source>menu.conference_producers_workshop</source>
+        <target state="new">menu.conference_producers_workshop</target>
+        <jms:reference-file line="153">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="136">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d292c6a52270b3ae678c3857f4d2ee9c173bf642" resname="menu.edition">
+        <source>menu.edition</source>
+        <target state="new">menu.edition</target>
+        <jms:reference-file line="106">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="82">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="55194a10208c568e4982a779aac43f3d029ded76" resname="menu.events">
+        <source>menu.events</source>
+        <target state="new">menu.events</target>
+        <jms:reference-file line="150">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="133">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ff7416d882246d046b377449d2d9ccba4d83b93b" resname="menu.faq">
+        <source>menu.faq</source>
+        <target state="new">menu.faq</target>
+        <jms:reference-file line="123">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="106">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c101e53f60a0786548c31eb05615d170ee90b292" resname="menu.news">
+        <source>menu.news</source>
+        <target state="new">menu.news</target>
+        <jms:reference-file line="144">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="127">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c446fa4c89826f232e7b4cbf5a90c7c174ff785b" resname="menu.presentation">
+        <source>menu.presentation</source>
+        <target state="new">menu.presentation</target>
+        <jms:reference-file line="143">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="126">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="91f595c9458da7539c9de99fc573411d1924db5c" resname="menu.press">
+        <source>menu.press</source>
+        <target state="new">menu.press</target>
+        <jms:reference-file line="120">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="103">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="14fd0bea6cce7085c362a45f315f51ab8543ed2b" resname="menu.program">
+        <source>menu.program</source>
+        <target state="new">menu.program</target>
+        <jms:reference-file line="147">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="130">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a883da18046ad7c6b837cf845101d9b285933ef3" resname="menu.projections">
+        <source>menu.projections</source>
+        <target state="new">menu.projections</target>
+        <jms:reference-file line="149">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="132">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b445390800bb2ee0665f9fbe01e9be436cbd59bd" resname="menu.search">
+        <source>menu.search</source>
+        <target state="new">menu.search</target>
+        <jms:reference-file line="128">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="111">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6ae0ef3374f93aa272b6acc5751cc6f1aa9e278b" resname="menu.services">
+        <source>menu.services</source>
+        <target state="new">menu.services</target>
+        <jms:reference-file line="113">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="89">views/shared/header.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e2449bd6c91089c93b927f79db2bd68369f9a610" resname="menu.who_are_we">
+        <source>menu.who_are_we</source>
+        <target state="new">menu.who_are_we</target>
+        <jms:reference-file line="116">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="95">views/shared/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="95e00e088de09e9e7147e8cc6296aaaa84408aa4" resname="news.block.load_more_button">
         <source>news.block.load_more_button</source>
@@ -39,27 +273,209 @@
       <trans-unit id="584bae554f9ba2c6ad6620268d869ebc410bf365" resname="news.block.read_more">
         <source>news.block.read_more</source>
         <target state="new">news.block.read_more</target>
+        <jms:reference-file line="18">views/services/show.html.twig</jms:reference-file>
         <jms:reference-file line="14">news/partials/newsBlock.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9b94403323c5bb3f9124e1c0921efa2c1e3c594e" resname="no_news_available">
+        <source>no_news_available</source>
+        <target state="new">no_news_available</target>
+        <jms:reference-file line="37">news/partials/newsBlock.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a384f37eba4f9f272a35462e336ab0f07214882c" resname="press.menu.coverage">
+        <source>press.menu.coverage</source>
+        <target state="new">press.menu.coverage</target>
+        <jms:reference-file line="11">views/shared/pressSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="46959e79b0cf0f2e8cac232d8bb04758e287690a" resname="press.menu.gallery">
+        <source>press.menu.gallery</source>
+        <target state="new">press.menu.gallery</target>
+        <jms:reference-file line="14">views/shared/pressSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1ae42ff0c740540da61ed02366f76eaefb62d66b" resname="press.menu.graphical_charter">
+        <source>press.menu.graphical_charter</source>
+        <target state="new">press.menu.graphical_charter</target>
+        <jms:reference-file line="17">views/shared/pressSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7366faa0196246ef5e48ef7f262201247cea46e2" resname="press.menu.releases">
+        <source>press.menu.releases</source>
+        <target state="new">press.menu.releases</target>
+        <jms:reference-file line="8">views/shared/pressSubHeader.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f7333d68058a5ce5b80441e6882e0dfbd3b0c0bd" resname="press.title">
+        <source>press.title</source>
+        <target state="new">press.title</target>
+        <jms:reference-file line="3">views/shared/pressSubHeader.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="33dc386a108b3e126da75d5de48a7dbd93fbc2fa" resname="program.access_type_label">
         <source>program.access_type_label</source>
         <target state="new">program.access_type_label</target>
+        <jms:reference-file line="40">programme/partials/days.html.twig</jms:reference-file>
         <jms:reference-file line="41">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e4f9c899cdd678c1848624849abb7e25dccf55e" resname="program.hour_label">
         <source>program.hour_label</source>
         <target state="new">program.hour_label</target>
+        <jms:reference-file line="32">programme/partials/days.html.twig</jms:reference-file>
         <jms:reference-file line="33">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d2415b523b589d417d340e1d41f1620c62c70ed7" resname="program.hour_to">
         <source>program.hour_to</source>
         <target state="new">program.hour_to</target>
+        <jms:reference-file line="33">programme/partials/days.html.twig</jms:reference-file>
         <jms:reference-file line="34">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="67c47f04c0c2862d70f27f972c51e2fea83cf072" resname="program.place_label">
         <source>program.place_label</source>
         <target state="new">program.place_label</target>
+        <jms:reference-file line="36">programme/partials/days.html.twig</jms:reference-file>
         <jms:reference-file line="37">views/conference/accordion.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ad1ee409b13768fa0736118aef26405092bd2f39" resname="read_more">
+        <source>read_more</source>
+        <target state="new">read_more</target>
+        <jms:reference-file line="26">programme/partials/days.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/partials/contactBlock.html.twig</jms:reference-file>
+        <jms:reference-file line="9">views/partials/accreditationBlock.html.twig</jms:reference-file>
+        <jms:reference-file line="22">views/partials/accreditationBlock.html.twig</jms:reference-file>
+        <jms:reference-file line="35">views/partials/accreditationBlock.html.twig</jms:reference-file>
+        <jms:reference-file line="45">views/services/show.html.twig</jms:reference-file>
+        <jms:reference-file line="10">homepage/partials/content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="51c706cd724b584200a022c7772d5f2c647db53a" resname="read_the_article">
+        <source>read_the_article</source>
+        <target state="new">read_the_article</target>
+        <jms:reference-file line="14">views/presse/pressCoverage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5c46aad25bc91611a02374f9d71325c0cb34acfa" resname="site_plan.accreditation">
+        <source>site_plan.accreditation</source>
+        <target state="new">site_plan.accreditation</target>
+        <jms:reference-file line="32">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d4d2e39c4338cbeb1ec2e19bf0f3f2a3335be850" resname="site_plan.coverage">
+        <source>site_plan.coverage</source>
+        <target state="new">site_plan.coverage</target>
+        <jms:reference-file line="62">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="55e199ddb892c27a3a0da0e2e1073ab4ef8825b6" resname="site_plan.doc_corner">
+        <source>site_plan.doc_corner</source>
+        <target state="new">site_plan.doc_corner</target>
+        <jms:reference-file line="25">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ea2598a1e21ace01275871289638f3ed7cca88e1" resname="site_plan.edition">
+        <source>site_plan.edition</source>
+        <target state="new">site_plan.edition</target>
+        <jms:reference-file line="12">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5b7272685977f5289d42d5e5868c32ae46d7dbac" resname="site_plan.environmental_approaches">
+        <source>site_plan.environmental_approaches</source>
+        <target state="new">site_plan.environmental_approaches</target>
+        <jms:reference-file line="43">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5abe32fa31b6ca539dbdaa6c440f63b5e040c8de" resname="site_plan.events">
+        <source>site_plan.events</source>
+        <target state="new">site_plan.events</target>
+        <jms:reference-file line="20">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a964e0f9a4eae7986f6c9386be3646c8ff38fd87" resname="site_plan.faq">
+        <source>site_plan.faq</source>
+        <target state="new">site_plan.faq</target>
+        <jms:reference-file line="68">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4abd7febcd83b6d535d42319f3bbe4d49bbcdb25" resname="site_plan.gallery">
+        <source>site_plan.gallery</source>
+        <target state="new">site_plan.gallery</target>
+        <jms:reference-file line="63">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="800274267c4d5e86e34a2f384dc820b023fffc43" resname="site_plan.goes_to_cannes">
+        <source>site_plan.goes_to_cannes</source>
+        <target state="new">site_plan.goes_to_cannes</target>
+        <jms:reference-file line="28">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2a430d9372d502b91de2343b5dae12e7bb28415c" resname="site_plan.graphical_charter">
+        <source>site_plan.graphical_charter</source>
+        <target state="new">site_plan.graphical_charter</target>
+        <jms:reference-file line="64">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="453b07788045dca5b317a2c359cf264756b7a9b8" resname="site_plan.history">
+        <source>site_plan.history</source>
+        <target state="new">site_plan.history</target>
+        <jms:reference-file line="39">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3a9f57cc6b611311bf1e2b2922b9ee79fcbe3e2e" resname="site_plan.key_figures">
+        <source>site_plan.key_figures</source>
+        <target state="new">site_plan.key_figures</target>
+        <jms:reference-file line="42">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="42599e81dcee5331b9e7ee1943c7e746907a5a2b" resname="site_plan.mixers">
+        <source>site_plan.mixers</source>
+        <target state="new">site_plan.mixers</target>
+        <jms:reference-file line="27">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bade38e2d0634a24ee4567f6d7773a035cb08d54" resname="site_plan.news">
+        <source>site_plan.news</source>
+        <target state="new">site_plan.news</target>
+        <jms:reference-file line="16">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="197bc4d9bde233d9b28a2eb509783349965e8d15" resname="site_plan.next">
+        <source>site_plan.next</source>
+        <target state="new">site_plan.next</target>
+        <jms:reference-file line="26">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="08ae91ad048e481ab5c2243c62cc4e5197785824" resname="site_plan.practical_info">
+        <source>site_plan.practical_info</source>
+        <target state="new">site_plan.practical_info</target>
+        <jms:reference-file line="41">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d827dfb4e0f5ab5391a43330b51ea3afe7dc8e15" resname="site_plan.presentation">
+        <source>site_plan.presentation</source>
+        <target state="new">site_plan.presentation</target>
+        <jms:reference-file line="15">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c4c3cb1b33cda6f4357bdd11d6f0c4ee254af52c" resname="site_plan.press">
+        <source>site_plan.press</source>
+        <target state="new">site_plan.press</target>
+        <jms:reference-file line="58">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="40c2042a63fe67429306ae4967e0728c3aea5f9e" resname="site_plan.producers_network">
+        <source>site_plan.producers_network</source>
+        <target state="new">site_plan.producers_network</target>
+        <jms:reference-file line="24">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="066e53f2a888d2be431031be9e1aa2642ae4a5b9" resname="site_plan.producers_workshop">
+        <source>site_plan.producers_workshop</source>
+        <target state="new">site_plan.producers_workshop</target>
+        <jms:reference-file line="23">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6d70f040b20e6972463f515352fc5c5a3c130699" resname="site_plan.projections">
+        <source>site_plan.projections</source>
+        <target state="new">site_plan.projections</target>
+        <jms:reference-file line="19">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0eef14fc9c17b993153674c2245811c1ab88c3b3" resname="site_plan.releases">
+        <source>site_plan.releases</source>
+        <target state="new">site_plan.releases</target>
+        <jms:reference-file line="61">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0b855a734fe3d62a829e8c3890cbcf90a2d674df" resname="site_plan.services">
+        <source>site_plan.services</source>
+        <target state="new">site_plan.services</target>
+        <jms:reference-file line="49">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8fa05d1d9caee496c1f3fff33129e0998fa87059" resname="site_plan.team">
+        <source>site_plan.team</source>
+        <target state="new">site_plan.team</target>
+        <jms:reference-file line="40">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e7e4542841777a5af21776bfb2f212bb505da1bb" resname="site_plan.who_are_we">
+        <source>site_plan.who_are_we</source>
+        <target state="new">site_plan.who_are_we</target>
+        <jms:reference-file line="36">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f04e70463f35bf97bbc9b3a8e5bf7e8d31036480" resname="site_title">
+        <source>site_title</source>
+        <target state="new">site_title</target>
+        <jms:reference-file line="10">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="10">Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>
