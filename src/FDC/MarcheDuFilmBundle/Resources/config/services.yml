@@ -107,3 +107,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.site_plan:
+        class: FDC\MarcheDuFilmBundle\Manager\SitePlanManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

@@ -2207,3 +2207,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressRelease, BaseAdminBundle:MdfPressReleaseAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Communiqué de presse}
+
+    base.admin.mdf_site_plan:
+        class: Base\AdminBundle\Admin\MdfSitePlanAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSitePlan, BaseAdminBundle:MdfSitePlanAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Plan du site}
