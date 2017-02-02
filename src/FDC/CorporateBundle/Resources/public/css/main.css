@@ -5930,152 +5930,156 @@ strong.title-center {
   content: "\E04B";
 }
 
-.icon-photo-support:before {
+.icon-photo-single:before {
   content: "\E04C";
 }
 
-.icon-photo:before {
+.icon-photo-support:before {
   content: "\E04D";
 }
 
-.icon-plane:before {
+.icon-photo:before {
   content: "\E04E";
 }
 
-.icon-play:before {
+.icon-plane:before {
   content: "\E04F";
 }
 
-.icon-player:before {
+.icon-play:before {
   content: "\E050";
 }
 
-.icon-playlist:before {
+.icon-player:before {
   content: "\E051";
 }
 
-.icon-podcast:before {
+.icon-playlist:before {
   content: "\E052";
 }
 
-.icon-print:before {
+.icon-podcast:before {
   content: "\E053";
 }
 
-.icon-read-latter:before {
+.icon-print:before {
   content: "\E054";
 }
 
-.icon-release-press:before {
+.icon-read-latter:before {
   content: "\E055";
 }
 
-.icon-reverseFullscreen:before {
+.icon-release-press:before {
   content: "\E056";
 }
 
-.icon-rss:before {
+.icon-reverseFullscreen:before {
   content: "\E057";
 }
 
-.icon-safari:before {
+.icon-rss:before {
   content: "\E058";
 }
 
-.icon-search:before {
+.icon-safari:before {
   content: "\E059";
 }
 
-.icon-selfie:before {
+.icon-search:before {
   content: "\E05A";
 }
 
-.icon-share:before {
+.icon-selfie:before {
   content: "\E05B";
 }
 
-.icon-slideshow:before {
+.icon-share:before {
   content: "\E05C";
 }
 
-.icon-sound:before {
+.icon-slideshow:before {
   content: "\E05D";
 }
 
-.icon-speacker:before {
+.icon-sound:before {
   content: "\E05E";
 }
 
-.icon-stool:before {
+.icon-speacker:before {
   content: "\E05F";
 }
 
-.icon-taxi-fill:before {
+.icon-stool:before {
   content: "\E060";
 }
 
-.icon-tools:before {
+.icon-taxi-fill:before {
   content: "\E061";
 }
 
-.icon-trailer-player:before {
+.icon-tools:before {
   content: "\E062";
 }
 
-.icon-trailer:before {
+.icon-trailer-player:before {
   content: "\E063";
 }
 
-.icon-train:before {
+.icon-trailer:before {
   content: "\E064";
 }
 
-.icon-truck:before {
+.icon-train:before {
   content: "\E065";
 }
 
-.icon-tumblr:before {
+.icon-truck:before {
   content: "\E066";
 }
 
-.icon-tv:before {
+.icon-tumblr:before {
   content: "\E067";
 }
 
-.icon-twitter:before {
+.icon-tv:before {
   content: "\E068";
 }
 
-.icon-user-fill:before {
+.icon-twitter:before {
   content: "\E069";
 }
 
-.icon-user-round:before {
+.icon-user-fill:before {
   content: "\E06A";
 }
 
-.icon-video:before {
+.icon-user-round:before {
   content: "\E06B";
 }
 
-.icon-wen-fill:before {
+.icon-video:before {
   content: "\E06C";
 }
 
-.icon-wen-minus:before {
+.icon-wen-fill:before {
   content: "\E06D";
 }
 
-.icon-wen-more:before {
+.icon-wen-minus:before {
   content: "\E06E";
 }
 
-.icon-wifi:before {
+.icon-wen-more:before {
   content: "\E06F";
 }
 
-.icon-youtube:before {
+.icon-wifi:before {
   content: "\E070";
+}
+
+.icon-youtube:before {
+  content: "\E071";
 }
 
 /*!
