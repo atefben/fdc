@@ -2193,3 +2193,23 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Mdf404, BaseAdminBundle:Mdf404Admin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Erreur 404}
+
+    base.admin.mdf_press_release_file_dummy:
+        class: Base\AdminBundle\Admin\MdfFileDummyAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressReleaseFile, BaseAdminBundle:MdfFileDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Press Release File, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_press_release:
+        class: Base\AdminBundle\Admin\MdfPressReleaseAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfPressRelease, BaseAdminBundle:MdfPressReleaseAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_presse, label: Communiqué de presse}
+
+    base.admin.mdf_site_plan:
+        class: Base\AdminBundle\Admin\MdfSitePlanAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSitePlan, BaseAdminBundle:MdfSitePlanAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Plan du site}

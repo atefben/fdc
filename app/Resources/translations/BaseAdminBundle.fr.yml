@@ -481,6 +481,7 @@ admin:
         mdf_next: Next
         mdf_mixers: Mixers
         mdf_goes_to_cannes: Goes to Cannes
+        mdf_presse: Presse
 
 
 dashboard:
@@ -629,6 +630,8 @@ form:
             active: Inactif
             deactivated: Désactivé
             early_bird: Early bird
+        press:
+            file_widget: Module téléchargement de fichiers
         home:
             top_sliders: Slider principale
             top_slider.widget: Module slider principal
@@ -717,6 +720,13 @@ form:
                 title: Nom du service
                 description: Description du service
                 url: Lien de redirection du service
+            press:
+                subtitle: Sous-titre
+                header: Chapô
+                gallery_widget: Bloc photo
+                gallery_widget_image: Visuel
+                gallery_widget_title: Nom du fichier
+                gallery_widget_button: Module téléchargement de fichiers
             facebook_url: URL Facebook
             twitter_url: URL Twitter
             youtube_url: URL Youtube

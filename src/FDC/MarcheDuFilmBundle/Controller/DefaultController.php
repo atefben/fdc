@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfSitePlanTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -32,6 +33,22 @@ class DefaultController extends Controller
             'news' => $newsContent,
             'contact' => $contact,
             'services' => $services
+        ));
+    }
+
+    /**
+     * @Route("/plan-du-site", name="fdc_marche_du_film_site_plan")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function sitePlan()
+    {
+        $sitePlanManager = $this->get('mdf.manager.site_plan');
+
+        $sitePlanPage = $sitePlanManager->getSitePlanPage();
+
+        return $this->render('FDCMarcheDuFilmBundle::sitePlan/sitePlan.html.twig', array(
+            'sitePlanPage' => $sitePlanPage,
         ));
     }
 }
