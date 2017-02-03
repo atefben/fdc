@@ -35,6 +35,7 @@ class MdfContactAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -61,25 +62,25 @@ class MdfContactAdmin extends Admin
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.label.contact_title',
+                        'label'              => 'form.mdf.label.contact_block.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.label.contact_sub_title',
+                        'label'              => 'form.mdf.label.contact_block.sub_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'information'          => array(
-                        'label'              => 'form.label.contact_information',
+                        'label'              => 'form.mdf.label.contact_block.information',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'seeMoreUrl'          => array(
-                        'label'              => 'form.label.see_more_url',
+                        'label'              => 'form.mdf.label.contact_block.see_more_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.label.contact_image',
+                'label' => 'form.mdf.label.contact_block.image',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => false

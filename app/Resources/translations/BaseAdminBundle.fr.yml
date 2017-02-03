@@ -754,6 +754,12 @@ form:
                 widget_phone: Numéro de téléphone du membre de l'équipe
                 widget_image: Image du membre de l'équipe
                 widget_button: Ajouter un membre de l'équipe
+            contact_block:
+                title: Titre du bloc
+                sub_title: Sous-titre du bloc
+                information: Description du bloc
+                see_more_url: URL de redirection "En savoir plus"
+                image: Image de fond de la strate
             facebook_url: URL Facebook
             twitter_url: URL Twitter
             youtube_url: URL Youtube

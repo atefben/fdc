@@ -1627,7 +1627,7 @@ services:
         class: Base\AdminBundle\Admin\MdfContactAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\Contact, BaseAdminBundle:MdfContactAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Contact}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Strate transverse Contact}
 
     base.admin.mdf_edition_presentation:
         class: Base\AdminBundle\Admin\MdfEditionPresentationAdmin
