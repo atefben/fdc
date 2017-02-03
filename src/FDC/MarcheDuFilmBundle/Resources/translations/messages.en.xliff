@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-02-03T10:39:16Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2017-02-03T12:10:42Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -354,7 +354,7 @@
       <trans-unit id="d4d2e39c4338cbeb1ec2e19bf0f3f2a3335be850" resname="site_plan.coverage">
         <source>site_plan.coverage</source>
         <target state="new">site_plan.coverage</target>
-        <jms:reference-file line="62">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="61">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="55e199ddb892c27a3a0da0e2e1073ab4ef8825b6" resname="site_plan.doc_corner">
         <source>site_plan.doc_corner</source>
@@ -369,7 +369,7 @@
       <trans-unit id="5b7272685977f5289d42d5e5868c32ae46d7dbac" resname="site_plan.environmental_approaches">
         <source>site_plan.environmental_approaches</source>
         <target state="new">site_plan.environmental_approaches</target>
-        <jms:reference-file line="43">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="42">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5abe32fa31b6ca539dbdaa6c440f63b5e040c8de" resname="site_plan.events">
         <source>site_plan.events</source>
@@ -379,12 +379,12 @@
       <trans-unit id="a964e0f9a4eae7986f6c9386be3646c8ff38fd87" resname="site_plan.faq">
         <source>site_plan.faq</source>
         <target state="new">site_plan.faq</target>
-        <jms:reference-file line="68">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="67">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4abd7febcd83b6d535d42319f3bbe4d49bbcdb25" resname="site_plan.gallery">
         <source>site_plan.gallery</source>
         <target state="new">site_plan.gallery</target>
-        <jms:reference-file line="63">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="62">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="800274267c4d5e86e34a2f384dc820b023fffc43" resname="site_plan.goes_to_cannes">
         <source>site_plan.goes_to_cannes</source>
@@ -394,7 +394,7 @@
       <trans-unit id="2a430d9372d502b91de2343b5dae12e7bb28415c" resname="site_plan.graphical_charter">
         <source>site_plan.graphical_charter</source>
         <target state="new">site_plan.graphical_charter</target>
-        <jms:reference-file line="64">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="63">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="453b07788045dca5b317a2c359cf264756b7a9b8" resname="site_plan.history">
         <source>site_plan.history</source>
@@ -404,7 +404,7 @@
       <trans-unit id="3a9f57cc6b611311bf1e2b2922b9ee79fcbe3e2e" resname="site_plan.key_figures">
         <source>site_plan.key_figures</source>
         <target state="new">site_plan.key_figures</target>
-        <jms:reference-file line="42">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="41">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="42599e81dcee5331b9e7ee1943c7e746907a5a2b" resname="site_plan.mixers">
         <source>site_plan.mixers</source>
@@ -421,11 +421,6 @@
         <target state="new">site_plan.next</target>
         <jms:reference-file line="26">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="08ae91ad048e481ab5c2243c62cc4e5197785824" resname="site_plan.practical_info">
-        <source>site_plan.practical_info</source>
-        <target state="new">site_plan.practical_info</target>
-        <jms:reference-file line="41">views/sitePlan/sitePlan.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="d827dfb4e0f5ab5391a43330b51ea3afe7dc8e15" resname="site_plan.presentation">
         <source>site_plan.presentation</source>
         <target state="new">site_plan.presentation</target>
@@ -434,7 +429,7 @@
       <trans-unit id="c4c3cb1b33cda6f4357bdd11d6f0c4ee254af52c" resname="site_plan.press">
         <source>site_plan.press</source>
         <target state="new">site_plan.press</target>
-        <jms:reference-file line="58">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="57">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="40c2042a63fe67429306ae4967e0728c3aea5f9e" resname="site_plan.producers_network">
         <source>site_plan.producers_network</source>
@@ -454,12 +449,12 @@
       <trans-unit id="0eef14fc9c17b993153674c2245811c1ab88c3b3" resname="site_plan.releases">
         <source>site_plan.releases</source>
         <target state="new">site_plan.releases</target>
-        <jms:reference-file line="61">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="60">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0b855a734fe3d62a829e8c3890cbcf90a2d674df" resname="site_plan.services">
         <source>site_plan.services</source>
         <target state="new">site_plan.services</target>
-        <jms:reference-file line="49">views/sitePlan/sitePlan.html.twig</jms:reference-file>
+        <jms:reference-file line="48">views/sitePlan/sitePlan.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8fa05d1d9caee496c1f3fff33129e0998fa87059" resname="site_plan.team">
         <source>site_plan.team</source>
@@ -482,6 +477,11 @@
         <target state="new">who_are_we.menu.environmental_approaches</target>
         <jms:reference-file line="20">views/shared/whoAreWe.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="42ffb8c567045e42e7b48a260361d41d1a8d70a3" resname="who_are_we.menu.faq">
+        <source>who_are_we.menu.faq</source>
+        <target state="new">who_are_we.menu.faq</target>
+        <jms:reference-file line="14">views/shared/whoAreWe.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="7bdbe4e4b31c38103738559d74e08470b80fbc23" resname="who_are_we.menu.history">
         <source>who_are_we.menu.history</source>
         <target state="new">who_are_we.menu.history</target>
@@ -491,11 +491,6 @@
         <source>who_are_we.menu.key_figures</source>
         <target state="new">who_are_we.menu.key_figures</target>
         <jms:reference-file line="17">views/shared/whoAreWe.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="03eb8ccc9d361891513c1d312c3a9a2d6b5d31a2" resname="who_are_we.menu.practical_info">
-        <source>who_are_we.menu.practical_info</source>
-        <target state="new">who_are_we.menu.practical_info</target>
-        <jms:reference-file line="14">views/shared/whoAreWe.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="40e1d0d22048b7ae31931cfb4481f01d30577079" resname="who_are_we.menu.team">
         <source>who_are_we.menu.team</source>
