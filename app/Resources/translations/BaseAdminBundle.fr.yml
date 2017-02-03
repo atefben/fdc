@@ -647,8 +647,7 @@ form:
             widget_title: Titre de l'accordéon
             widget_description: Description de l'accordéon
             title: Titre de page
-            inativeSubtitle: Titre de bandeau
-            inativeSubtitle: Titre de bandeau
+            subtitle: Texte du bandeau
             information: Chapô
             see_more_url: Redirection du bandeau
             promotions_title: Titre de section accréditations
