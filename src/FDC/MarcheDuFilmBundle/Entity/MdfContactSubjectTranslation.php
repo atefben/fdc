@@ -1,0 +1,82 @@
+<?php
+
+namespace FDC\MarcheDuFilmBundle\Entity;
+
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslationChanges;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MdfContactSubjectTranslation
+ *
+ * @ORM\Table(name="mdf_contact_subject_translation")
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContactSubjectTranslationRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class MdfContactSubjectTranslation implements TranslateChildInterface
+{
+    use Translation;
+    use TranslationChanges;
+    use TranslateChild;
+    use Time;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contact_theme", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $contactTheme;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"contactTheme"}, updatable=false)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    protected $slug;
+
+    /**
+     * @return string
+     */
+    public function getContactTheme()
+    {
+        return $this->contactTheme;
+    }
+
+    /**
+     * @param string $contactTheme
+     */
+    public function setContactTheme($contactTheme)
+    {
+        $this->contactTheme = $contactTheme;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param $slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+}
+

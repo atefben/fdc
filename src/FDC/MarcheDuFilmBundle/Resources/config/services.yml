@@ -142,3 +142,17 @@ services:
         class: FDC\MarcheDuFilmBundle\Manager\NotFoundExceptionManager
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    mdf.manager.contact_us:
+        class: FDC\MarcheDuFilmBundle\Manager\ContactUsManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+    mdf.manager.mailer:
+        class: FDC\MarcheDuFilmBundle\Manager\MailerManager
+        arguments:
+            - '@mailer'
+            - '@templating'
+            - '@translator'
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

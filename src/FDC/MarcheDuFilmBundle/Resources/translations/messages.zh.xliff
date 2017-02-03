@@ -56,6 +56,71 @@
         <target state="new">conference.menu.speakers</target>
         <jms:reference-file line="17">views/shared/conferenceSubHeader.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="81c77d791b50a0927929a92d4ac2d00fbddc7f58" resname="contactUs.email">
+        <source>contactUs.email</source>
+        <target state="new">contactUs.email</target>
+        <jms:reference-file line="37">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="43895c60e86122302eca5e98f61dcf4eb5fccb3c" resname="contactUs.email_error">
+        <source>contactUs.email_error</source>
+        <target state="new">contactUs.email_error</target>
+        <jms:reference-file line="37">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ef270c8fb03bba97d7ef5be49c02bbc632bdeddf" resname="contactUs.message">
+        <source>contactUs.message</source>
+        <target state="new">contactUs.message</target>
+        <jms:reference-file line="37">Form/Type/ContactFormType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7690a1009b62aef46c61bf30dacea40eff448352" resname="contactUs.message_error">
+        <source>contactUs.message_error</source>
+        <target state="new">contactUs.message_error</target>
+        <jms:reference-file line="40">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fcb862a99b3ad44768ef7126992f91ead595e53e" resname="contactUs.name">
+        <source>contactUs.name</source>
+        <target state="new">contactUs.name</target>
+        <jms:reference-file line="25">Form/Type/ContactFormType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e2d9be3e11d717ddceb7ffa53a087db1bd477314" resname="contactUs.name_error">
+        <source>contactUs.name_error</source>
+        <target state="new">contactUs.name_error</target>
+        <jms:reference-file line="35">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8d55cc562689a30d8fa89fe297677dc96f85167d" resname="contactUs.object">
+        <source>contactUs.object</source>
+        <target state="new">contactUs.object</target>
+        <jms:reference-file line="31">Form/Type/ContactFormType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d1825ca80cbef810bd4745ef9409f44c80f59e7b" resname="contactUs.object_error">
+        <source>contactUs.object_error</source>
+        <target state="new">contactUs.object_error</target>
+        <jms:reference-file line="39">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f74d59289e43b90ddc4dc9240eb1beb73e18feb2" resname="contactUs.required">
+        <source>contactUs.required</source>
+        <target state="new">contactUs.required</target>
+        <jms:reference-file line="42">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a358b9851fc5ae42dc5e432eb611862956d79b89" resname="contactUs.select">
+        <source>contactUs.select</source>
+        <target state="new">contactUs.select</target>
+        <jms:reference-file line="42">Form/Type/ContactFormType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="61590da6191c14f4111b98ad91db0c00b31f90c4" resname="contactUs.submit">
+        <source>contactUs.submit</source>
+        <target state="new">contactUs.submit</target>
+        <jms:reference-file line="43">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="34bcf092e44935abc9a044ea5bd5c11c3a19d81a" resname="contactUs.success">
+        <source>contactUs.success</source>
+        <target state="new">contactUs.success</target>
+        <jms:reference-file line="23">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6d925bf91f457283c57838065330ba35dc6b45e7" resname="contactUs.success_message">
+        <source>contactUs.success_message</source>
+        <target state="new">contactUs.success_message</target>
+        <jms:reference-file line="24">shared/contact/contactUs.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="1eb0b8dc987b82e5e310aa9e7d73f3798fdeebea" resname="discover">
         <source>discover</source>
         <target state="new">discover</target>
@@ -64,13 +129,18 @@
       <trans-unit id="59b189070af751d4e93a749ccffb4ccfd2de7ab5" resname="display">
         <source>display</source>
         <target state="new">display</target>
-        <jms:reference-file line="21">views/programme/globalEvents.html.twig</jms:reference-file>
         <jms:reference-file line="5">news/partials/filterListNews.html.twig</jms:reference-file>
+        <jms:reference-file line="21">views/programme/globalEvents.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3234829c297879788e215019ba4685e6b0bf43ab" resname="display_more">
         <source>display_more</source>
         <target state="new">display_more</target>
         <jms:reference-file line="29">views/presse/pressCoverage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="94406aca90e5c2fe070c30bdbc08c80e8c2124b5" resname="email.from">
+        <source>email.from</source>
+        <target state="new">email.from</target>
+        <jms:reference-file line="61">MarcheDuFilmBundle/Manager/MailerManager.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b91958bf410461672ed33e6bab90664f1025095" resname="filter_all">
         <source>filter_all</source>
@@ -111,40 +181,40 @@
       <trans-unit id="5f3dc63ae1a2cb3035385d0c74011842e3ee1190" resname="header.ccm">
         <source>header.ccm</source>
         <target state="new">header.ccm</target>
-        <jms:reference-file line="66">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="14">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="66">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bda04ddbf96fe6277481db6792278e08ad233b63" resname="header.cine">
         <source>header.cine</source>
         <target state="new">header.cine</target>
-        <jms:reference-file line="63">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="11">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="63">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8aa26cd8edf33d42e72e7b063ad816f41e5faae2" resname="header.fdc">
         <source>header.fdc</source>
         <target state="new">header.fdc</target>
-        <jms:reference-file line="60">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="8">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="60">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a9310c29180443c7fb894e00a9d3ec19e8921cb2" resname="header.festival">
         <source>header.festival</source>
         <target state="new">header.festival</target>
-        <jms:reference-file line="57">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="5">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="57">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="453fefba0efb20f78e4e6a4693b02b095eea93c6" resname="header.mdf">
         <source>header.mdf</source>
         <target state="new">header.mdf</target>
-        <jms:reference-file line="69">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="17">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="69">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="63c978524192b6fb9078fd0241505b691da62021" resname="header.my_account">
         <source>header.my_account</source>
         <target state="new">header.my_account</target>
-        <jms:reference-file line="74">views/exceptions/error404.html.twig</jms:reference-file>
-        <jms:reference-file line="95">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="22">views/shared/header.html.twig</jms:reference-file>
         <jms:reference-file line="53">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="74">views/exceptions/error404.html.twig</jms:reference-file>
+        <jms:reference-file line="95">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2dde3e15ebedb1c9421bc0adb9664a4bf37e8313" resname="image_size_mo">
         <source>image_size_mo</source>
@@ -160,110 +230,110 @@
       <trans-unit id="98c5288271cc51aba66fde312a84ac51f92e0fd9" resname="menu.accreditation">
         <source>menu.accreditation</source>
         <target state="new">menu.accreditation</target>
-        <jms:reference-file line="110">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="86">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="110">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dd1dcffb59fcdd6ca55be8aab61efb8d6e5cbe74" resname="menu.conference_doc_corner">
         <source>menu.conference_doc_corner</source>
         <target state="new">menu.conference_doc_corner</target>
-        <jms:reference-file line="157">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="140">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="157">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="766caf200eb40c358f8fcda65cbf5af4335502b7" resname="menu.conference_goes_to_cannes">
         <source>menu.conference_goes_to_cannes</source>
         <target state="new">menu.conference_goes_to_cannes</target>
-        <jms:reference-file line="160">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="143">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="160">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6313c94de66ba939deff5f2e8973f934673b2ade" resname="menu.conference_mixers">
         <source>menu.conference_mixers</source>
         <target state="new">menu.conference_mixers</target>
-        <jms:reference-file line="159">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="142">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="159">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ad6367f34f357fef80feb61f6c9f8dfce9c93f1c" resname="menu.conference_next">
         <source>menu.conference_next</source>
         <target state="new">menu.conference_next</target>
-        <jms:reference-file line="158">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="141">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="158">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="af4d402ad3f9e72640c5a09c9110815051e2497d" resname="menu.conference_producers_network">
         <source>menu.conference_producers_network</source>
         <target state="new">menu.conference_producers_network</target>
-        <jms:reference-file line="154">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="137">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="154">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="158153117f5261a20db244a15d9154073245f6d5" resname="menu.conference_producers_workshop">
         <source>menu.conference_producers_workshop</source>
         <target state="new">menu.conference_producers_workshop</target>
-        <jms:reference-file line="153">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="136">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="153">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d292c6a52270b3ae678c3857f4d2ee9c173bf642" resname="menu.edition">
         <source>menu.edition</source>
         <target state="new">menu.edition</target>
-        <jms:reference-file line="106">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="82">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="106">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="55194a10208c568e4982a779aac43f3d029ded76" resname="menu.events">
         <source>menu.events</source>
         <target state="new">menu.events</target>
-        <jms:reference-file line="150">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="133">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="150">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ff7416d882246d046b377449d2d9ccba4d83b93b" resname="menu.faq">
         <source>menu.faq</source>
         <target state="new">menu.faq</target>
-        <jms:reference-file line="123">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="106">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="123">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c101e53f60a0786548c31eb05615d170ee90b292" resname="menu.news">
         <source>menu.news</source>
         <target state="new">menu.news</target>
-        <jms:reference-file line="144">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="127">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="144">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c446fa4c89826f232e7b4cbf5a90c7c174ff785b" resname="menu.presentation">
         <source>menu.presentation</source>
         <target state="new">menu.presentation</target>
-        <jms:reference-file line="143">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="126">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="143">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="91f595c9458da7539c9de99fc573411d1924db5c" resname="menu.press">
         <source>menu.press</source>
         <target state="new">menu.press</target>
-        <jms:reference-file line="120">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="103">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="120">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="14fd0bea6cce7085c362a45f315f51ab8543ed2b" resname="menu.program">
         <source>menu.program</source>
         <target state="new">menu.program</target>
-        <jms:reference-file line="147">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="130">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="147">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a883da18046ad7c6b837cf845101d9b285933ef3" resname="menu.projections">
         <source>menu.projections</source>
         <target state="new">menu.projections</target>
-        <jms:reference-file line="149">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="132">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="149">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b445390800bb2ee0665f9fbe01e9be436cbd59bd" resname="menu.search">
         <source>menu.search</source>
         <target state="new">menu.search</target>
-        <jms:reference-file line="128">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="111">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="128">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6ae0ef3374f93aa272b6acc5751cc6f1aa9e278b" resname="menu.services">
         <source>menu.services</source>
         <target state="new">menu.services</target>
-        <jms:reference-file line="113">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="89">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="113">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e2449bd6c91089c93b927f79db2bd68369f9a610" resname="menu.who_are_we">
         <source>menu.who_are_we</source>
         <target state="new">menu.who_are_we</target>
-        <jms:reference-file line="116">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="95">views/shared/header.html.twig</jms:reference-file>
+        <jms:reference-file line="116">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="95e00e088de09e9e7147e8cc6296aaaa84408aa4" resname="news.block.load_more_button">
         <source>news.block.load_more_button</source>
@@ -273,8 +343,8 @@
       <trans-unit id="584bae554f9ba2c6ad6620268d869ebc410bf365" resname="news.block.read_more">
         <source>news.block.read_more</source>
         <target state="new">news.block.read_more</target>
-        <jms:reference-file line="18">views/services/show.html.twig</jms:reference-file>
         <jms:reference-file line="14">news/partials/newsBlock.html.twig</jms:reference-file>
+        <jms:reference-file line="18">views/services/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9b94403323c5bb3f9124e1c0921efa2c1e3c594e" resname="no_news_available">
         <source>no_news_available</source>
@@ -309,37 +379,37 @@
       <trans-unit id="33dc386a108b3e126da75d5de48a7dbd93fbc2fa" resname="program.access_type_label">
         <source>program.access_type_label</source>
         <target state="new">program.access_type_label</target>
+        <jms:reference-file line="41">views/conference/accordion.html.twig</jms:reference-file>
         <jms:reference-file line="40">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="43">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e4f9c899cdd678c1848624849abb7e25dccf55e" resname="program.hour_label">
         <source>program.hour_label</source>
         <target state="new">program.hour_label</target>
+        <jms:reference-file line="33">views/conference/accordion.html.twig</jms:reference-file>
         <jms:reference-file line="32">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="35">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d2415b523b589d417d340e1d41f1620c62c70ed7" resname="program.hour_to">
         <source>program.hour_to</source>
         <target state="new">program.hour_to</target>
+        <jms:reference-file line="34">views/conference/accordion.html.twig</jms:reference-file>
         <jms:reference-file line="33">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="36">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="67c47f04c0c2862d70f27f972c51e2fea83cf072" resname="program.place_label">
         <source>program.place_label</source>
         <target state="new">program.place_label</target>
+        <jms:reference-file line="37">views/conference/accordion.html.twig</jms:reference-file>
         <jms:reference-file line="36">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="39">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ad1ee409b13768fa0736118aef26405092bd2f39" resname="read_more">
         <source>read_more</source>
         <target state="new">read_more</target>
-        <jms:reference-file line="26">programme/partials/days.html.twig</jms:reference-file>
         <jms:reference-file line="11">views/partials/contactBlock.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/partials/accreditationBlock.html.twig</jms:reference-file>
         <jms:reference-file line="22">views/partials/accreditationBlock.html.twig</jms:reference-file>
         <jms:reference-file line="35">views/partials/accreditationBlock.html.twig</jms:reference-file>
-        <jms:reference-file line="45">views/services/show.html.twig</jms:reference-file>
         <jms:reference-file line="10">homepage/partials/content.html.twig</jms:reference-file>
+        <jms:reference-file line="26">programme/partials/days.html.twig</jms:reference-file>
+        <jms:reference-file line="45">views/services/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="51c706cd724b584200a022c7772d5f2c647db53a" resname="read_the_article">
         <source>read_the_article</source>
@@ -474,8 +544,8 @@
       <trans-unit id="f04e70463f35bf97bbc9b3a8e5bf7e8d31036480" resname="site_title">
         <source>site_title</source>
         <target state="new">site_title</target>
-        <jms:reference-file line="10">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="10">Resources/views/base.html.twig</jms:reference-file>
+        <jms:reference-file line="10">views/exceptions/error404.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9cb02bf6b1437e2073a7ff148da9f39e11264a10" resname="who_are_we.menu.environmental_approaches">
         <source>who_are_we.menu.environmental_approaches</source>
