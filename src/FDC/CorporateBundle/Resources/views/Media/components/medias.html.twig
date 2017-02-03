@@ -18,7 +18,8 @@
             {% set format = media.media.file.width > media.media.file.height ? 'paysage' : 'portrait' %}
             {% set legend = '' %}
             {% if app.request.locale == 'fr' and media.media.titleVf %}
-                {% set legend = media.media.titleVf %}
+                {% set legend = media.media.titleVf %}git status
+                
             {% elseif app.request.locale != 'fr' and media.media.titleVa %}
                 {% set legend = media.media.titleVa %}
             {% endif %}
