@@ -3,7 +3,7 @@
         <ul>
             {% for day in programDays %}
                 <li class="{{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'open-selected-conf' : '' }}">
-                    <div class="open">{{ day.date|date('d M Y') }}<span class="openPlus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' noDisplay' : '' }}">+</span><span class="openMinus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' doDisplay' : '' }}">-</span></div>
+                    <div class="open">{{ day.date|date('d') }} {{ day.date|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ day.date|date('Y') }}<span class="openPlus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' noDisplay' : '' }}">+</span><span class="openMinus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' doDisplay' : '' }}">-</span></div>
                     <div class="content" style="display: {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'block' : 'none' }}">
                         <div class="parent">
                             {% for event in programDaysEvents[day.id] %}
@@ -15,17 +15,19 @@
                                         <div class="confPeople">
                                             <hr>
                                             <h6 class="confDetails">{{ event.speakersTitle }}</h6>
-                                            {% for item in eventsSpeakers[event.translatable.id] %}
-                                                <div class="quarterWidth">
-                                                    <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
-                                                    <div class="name">
-                                                        <h6 class="customClass1">{{ item.name }}</h6>
+                                            {% if eventsSpeakers[event.translatable.id] is defined %}
+                                                {% for item in eventsSpeakers[event.translatable.id] %}
+                                                    <div class="quarterWidth">
+                                                        <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
+                                                        <div class="name">
+                                                            <h6 class="customClass1">{{ item.name }}</h6>
+                                                        </div>
+                                                        <div class="name">
+                                                            <p>{{ item.description }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="name">
-                                                        <p>{{ item.description }}</p>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
+                                                {% endfor %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="conf30Sharp">

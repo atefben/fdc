@@ -1,7 +1,7 @@
 <ul>
     {% for day in days %}
         <li>
-            <div class="open" data-date="{{ day.dateEvent|date("d-m-Y") }}">{{ day.dateEvent|date("d M Y") }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
+            <div class="open" data-date="{{ day.dateEvent|date("d-m-Y") }}">{{ day.dateEvent|date('d') }} {{ day.dateEvent|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ day.dateEvent|date('Y') }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
             <div class="content">
                 <div class="parent">
                     <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
