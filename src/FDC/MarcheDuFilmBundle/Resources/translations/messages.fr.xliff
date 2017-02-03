@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-02-02T22:34:02Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2017-02-03T10:43:15Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -19,7 +19,7 @@
       <trans-unit id="745decea5450d1a3f652655538d015f0225a9be9" resname="article_by">
         <source>article_by</source>
         <target>Par</target>
-        <jms:reference-file line="19">views/presse/pressCoverage.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/presse/pressCoverage.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f89e65046734d8a11c86c514e35f0e83444d4d3a" resname="book_service">
         <source>book_service</source>
@@ -70,7 +70,7 @@
       <trans-unit id="3234829c297879788e215019ba4685e6b0bf43ab" resname="display_more">
         <source>display_more</source>
         <target>AFFICHER PLUS</target>
-        <jms:reference-file line="27">views/presse/pressCoverage.html.twig</jms:reference-file>
+        <jms:reference-file line="29">views/presse/pressCoverage.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b91958bf410461672ed33e6bab90664f1025095" resname="filter_all">
         <source>filter_all</source>
@@ -268,7 +268,7 @@
       <trans-unit id="95e00e088de09e9e7147e8cc6296aaaa84408aa4" resname="news.block.load_more_button">
         <source>news.block.load_more_button</source>
         <target>Plus d'articles</target>
-        <jms:reference-file line="13">conference/news/show.html.twig</jms:reference-file>
+        <jms:reference-file line="14">conference/news/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="584bae554f9ba2c6ad6620268d869ebc410bf365" resname="news.block.read_more">
         <source>news.block.read_more</source>
@@ -310,25 +310,25 @@
         <source>program.access_type_label</source>
         <target>type d'accès</target>
         <jms:reference-file line="40">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="41">views/conference/accordion.html.twig</jms:reference-file>
+        <jms:reference-file line="43">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e4f9c899cdd678c1848624849abb7e25dccf55e" resname="program.hour_label">
         <source>program.hour_label</source>
         <target>heure</target>
         <jms:reference-file line="32">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="33">views/conference/accordion.html.twig</jms:reference-file>
+        <jms:reference-file line="35">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d2415b523b589d417d340e1d41f1620c62c70ed7" resname="program.hour_to">
         <source>program.hour_to</source>
         <target>à</target>
         <jms:reference-file line="33">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="34">views/conference/accordion.html.twig</jms:reference-file>
+        <jms:reference-file line="36">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="67c47f04c0c2862d70f27f972c51e2fea83cf072" resname="program.place_label">
         <source>program.place_label</source>
         <target>lieu</target>
         <jms:reference-file line="36">programme/partials/days.html.twig</jms:reference-file>
-        <jms:reference-file line="37">views/conference/accordion.html.twig</jms:reference-file>
+        <jms:reference-file line="39">views/conference/accordion.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ad1ee409b13768fa0736118aef26405092bd2f39" resname="read_more">
         <source>read_more</source>
@@ -344,7 +344,7 @@
       <trans-unit id="51c706cd724b584200a022c7772d5f2c647db53a" resname="read_the_article">
         <source>read_the_article</source>
         <target>Lire l'article</target>
-        <jms:reference-file line="14">views/presse/pressCoverage.html.twig</jms:reference-file>
+        <jms:reference-file line="15">views/presse/pressCoverage.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5c46aad25bc91611a02374f9d71325c0cb34acfa" resname="site_plan.accreditation">
         <source>site_plan.accreditation</source>
@@ -476,6 +476,36 @@
         <target>Marché du Film</target>
         <jms:reference-file line="10">views/exceptions/error404.html.twig</jms:reference-file>
         <jms:reference-file line="10">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9cb02bf6b1437e2073a7ff148da9f39e11264a10" resname="who_are_we.menu.environmental_approaches">
+        <source>who_are_we.menu.environmental_approaches</source>
+        <target>Démarches environnementales</target>
+        <jms:reference-file line="20">views/shared/whoAreWe.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7bdbe4e4b31c38103738559d74e08470b80fbc23" resname="who_are_we.menu.history">
+        <source>who_are_we.menu.history</source>
+        <target>Historique</target>
+        <jms:reference-file line="8">views/shared/whoAreWe.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="90c2a6aadba203c40c9259175ce94037525ffe07" resname="who_are_we.menu.key_figures">
+        <source>who_are_we.menu.key_figures</source>
+        <target>chiffres Clés</target>
+        <jms:reference-file line="17">views/shared/whoAreWe.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="03eb8ccc9d361891513c1d312c3a9a2d6b5d31a2" resname="who_are_we.menu.practical_info">
+        <source>who_are_we.menu.practical_info</source>
+        <target>Informations pratiques</target>
+        <jms:reference-file line="14">views/shared/whoAreWe.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="40e1d0d22048b7ae31931cfb4481f01d30577079" resname="who_are_we.menu.team">
+        <source>who_are_we.menu.team</source>
+        <target>L'Equipe</target>
+        <jms:reference-file line="11">views/shared/whoAreWe.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9643fbc01f59c6c2d5fbdf7cf982d51bab2031ca" resname="who_are_we.title">
+        <source>who_are_we.title</source>
+        <target>Qui sommes nous ?</target>
+        <jms:reference-file line="3">views/shared/whoAreWe.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

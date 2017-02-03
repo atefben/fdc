@@ -1,23 +1,23 @@
 {% set routeName = app.request.attributes.get('_route') %}
 <div class="text-presentation producersWorkshop presses mdf">
-    <h3>{{ 'who_are_we.title' }}{#Qui sommes nous ?#}</h3>
+    <h3>{{ 'who_are_we.title'|trans }}</h3>
     <div class="subNavigation">
         <nav>
             <ul class="main">
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_history' %} class="active" {% endif %}>{{ 'who_are_we.menu.history' }}{#Historique#}</a>
+                    <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_history' %} class="active" {% endif %}>{{ 'who_are_we.menu.history'|trans }}</a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_who_are_we_team') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_team' %} class="active" {% endif %}>{{ 'who_are_we.menu.team' }}{#L'Equipe#}</a>
+                    <a href="{{ path('fdc_marche_du_film_who_are_we_team') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_team' %} class="active" {% endif %}>{{ 'who_are_we.menu.team'|trans }}</a>
                 </li>
                 <li>
-                    <a href="#">{{ 'who_are_we.menu.practical_info' }}{#Informations pratiques#}</a>
+                    <a href="#">{{ 'who_are_we.menu.practical_info'|trans }}</a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_who_are_we_key_figures') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_key_figures' %} class="active" {% endif %}>{{ 'who_are_we.menu.key_figures' }}{#chiffres Clés#}</a>
+                    <a href="{{ path('fdc_marche_du_film_who_are_we_key_figures') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_key_figures' %} class="active" {% endif %}>{{ 'who_are_we.menu.key_figures'|trans }}</a>
                 </li>
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_who_are_we_environmental_approaches') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_environmental_approaches' %} class="active" {% endif %}>{{ 'who_are_we.menu.environmental_approaches' }}{#Démarches environnementales#}</a>
+                    <a href="{{ path('fdc_marche_du_film_who_are_we_environmental_approaches') }}" {% if routeName == 'fdc_marche_du_film_who_are_we_environmental_approaches' %} class="active" {% endif %}>{{ 'who_are_we.menu.environmental_approaches'|trans }}</a>
                 </li>
             </ul>
         </nav>
