@@ -6943,7 +6943,7 @@ h2.sub-title {
 
 .block-search .more-search .country {
   text-transform: none !important;
-  background: url(../img/arrow-down.png) no-repeat right bottom;
+  background: url(../img/arrow-down.png) no-repeat right 50%;
 }
 
 /* thomon - end fixes */
