@@ -1661,7 +1661,7 @@ services:
         class: Base\AdminBundle\Admin\GalleryMdfAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\GalleryMdf, BaseAdminBundle:GalleryMdfAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gallery}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gestion des galeries}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 

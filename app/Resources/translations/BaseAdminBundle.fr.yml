@@ -705,6 +705,7 @@ form:
                 file: Module téléchargement de fichiers
                 youtube: Module video
         label:
+            gallery: Titre de la galerie
             content_block:
                 category: Strate 1 - Label
                 title: Strate 1 - Titre
