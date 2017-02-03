@@ -1383,7 +1383,7 @@
 {% block who_are_we_team_widget_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.mdf.who_are_we_team.widget'|trans }}</h4>
+        <h4>{{ 'form.mdf.label.who_are_we_team.widget'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_row(form.children.image) }}
@@ -1401,7 +1401,7 @@
 {% block who_are_we_team_contact_widget_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.mdf.who_are_we_team_contact.widget'|trans }}</h4>
+        <h4>{{ 'form.mdf.label.who_are_we_team.contact_widget'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}

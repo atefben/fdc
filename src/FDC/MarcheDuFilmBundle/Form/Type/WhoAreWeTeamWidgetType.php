@@ -66,29 +66,29 @@ class WhoAreWeTeamWidgetType extends AbstractType
                         ),
                     ),
                     'name'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.widget_name',
+                        'label'              => 'form.mdf.label.who_are_we_team.widget_name',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => true
                     ),
                     'post'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.widget_post',
+                        'label'              => 'form.mdf.label.who_are_we_team.widget_post',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => true
                     ),
                     'email'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.widget_email',
+                        'label'              => 'form.mdf.label.who_are_we_team.widget_email',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),
                     'phone'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.widget_phone',
+                        'label'              => 'form.mdf.label.who_are_we_team.widget_phone',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     )
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.label.wo_are_we_team.widget_image',
+                'label' => 'form.mdf.label.who_are_we_team.widget_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),

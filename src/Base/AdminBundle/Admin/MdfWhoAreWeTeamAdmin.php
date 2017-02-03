@@ -63,7 +63,7 @@ class MdfWhoAreWeTeamAdmin extends Admin
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.label.press.subtitle',
+                        'label'              => 'form.mdf.label.who_are_we_team.subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                     )
                 ),

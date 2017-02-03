@@ -740,20 +740,20 @@ form:
                 widget_link: Lire l’article
                 widget_button: Bloc d’article
                 widget_published_at: Date de publication
-            who_are_we:
+            who_are_we_team:
                 subtitle: Sous-titre
-                contact_widget: Bloc de contact Info
-                contact_widget_date: Date
-                contact_widget_address: Adresse téléphone
-                contact_widget_phone: Téléphone
-                contact_widget_button: Bloc de contact Info
-                widget: Bloc de contact
-                widget_name: Nom et prénom
-                widget_post: Poste
-                widget_email: Email
-                widget_phone: Téléphone
-                widget_image: Photo
-                widget_button: Bloc de contact
+                contact_widget: Module de bandeau contact
+                contact_widget_date: Période de contact
+                contact_widget_address: Adresse de contact
+                contact_widget_phone: Numéro de téléphone de contact
+                contact_widget_button: Ajouter un bloc de contact (2 max.)
+                widget: Module de membre de l'équipe
+                widget_name: Nom et prénom du membre de l'équipe
+                widget_post: Poste du membre de l'équipe
+                widget_email: Email du membre de l'équipe
+                widget_phone: Numéro de téléphone du membre de l'équipe
+                widget_image: Image du membre de l'équipe
+                widget_button: Ajouter un membre de l'équipe
             facebook_url: URL Facebook
             twitter_url: URL Twitter
             youtube_url: URL Youtube

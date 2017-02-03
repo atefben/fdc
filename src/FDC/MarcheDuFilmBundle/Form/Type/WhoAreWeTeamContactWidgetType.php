@@ -38,17 +38,17 @@ class WhoAreWeTeamContactWidgetType extends AbstractType
                         ),
                     ),
                     'date'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.contact_widget_date',
+                        'label'              => 'form.mdf.label.who_are_we_team.contact_widget_date',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => true
                     ),
                     'address'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.contact_widget_address',
+                        'label'              => 'form.mdf.label.who_are_we_team.contact_widget_address',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => true
                     ),
                     'phone'          => array(
-                        'label'              => 'form.mdf.label.wo_are_we_team.contact_widget_phone',
+                        'label'              => 'form.mdf.label.who_are_we_team.contact_widget_phone',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => true
                     )
