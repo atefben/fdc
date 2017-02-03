@@ -2275,3 +2275,33 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ContactSubject, show_in_dashboard: false}
 
+
+    base.admin.mdf_informations:
+        class: Base\AdminBundle\Admin\MdfInformationsAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfInformations, BaseAdminBundle:MdfInformationsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Informations utiles}
+
+    base.admin.mdf_rubriques_collection:
+        class: Base\AdminBundle\Admin\MdfRubriquesCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfRubriquesCollection, BaseAdminBundle:MdfRubriquesCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: RubriquesCollection, show_in_dashboard: false}
+
+    base.admin.mdf_rubrique:
+        class: Base\AdminBundle\Admin\MdfRubriqueAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfRubrique, BaseAdminBundle:MdfRubriqueAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Rubrique, show_in_dashboard: false}
+
+    base.admin.mdf_rubrique_questions_collection:
+        class: Base\AdminBundle\Admin\MdfRubriqueQuestionsCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfRubriqueQuestionsCollection, BaseAdminBundle:MdfRubriqueQuestionsCollectionAdmin]
+        tags:
+          - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: RubriqueQuestionsCollection, show_in_dashboard: false}
+
+    base.admin.mdf_rubrique_question:
+        class: Base\AdminBundle\Admin\MdfRubriqueQuestionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfRubriqueQuestion, BaseAdminBundle:MdfRubriqueQuestionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Question-Answer, show_in_dashboard: false}

@@ -1,0 +1,63 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="home loading">
+        <div class="text-presentation infosUtiles mdf customClass3Bckg">
+            <h3>{{ 'menu.faq'|trans }}</h3>
+        </div>
+        <div class="bigContainer">
+            <div class="innerWrapper container box-infosUtiles">
+                <div class="results-sections">
+                    {% if infoRubriques is defined and infoRubriques is not null %}
+                        {% for rubrique in infoRubriques %}
+                            <div class="results-boxes resultClick {% if rubrique.name|length > 27 %}bigBox{% endif %}" rel="{{ rubrique.translatable.id }}">
+                                <h6 class="{% if (infoRubriques|first).id == rubrique.id %}active{% endif %}">{{ rubrique.name}}</h6>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="hideOverflow results-content">
+                {% if infoRubriques is defined and infoRubriques is not null%}
+                    {% for rubrique in infoRubriques %}
+                        {% if infoQuestionsAnswers[rubrique.translatable.id] is defined and infoQuestionsAnswers[rubrique.translatable.id] is not null %}
+                            <div class="{{ rubrique.translatable.id }} contents {% if (infoRubriques|first).id == rubrique.id %}activeContent{% endif %}">
+                                <div class="accordion-infos">
+                                    <ul>
+                                        {% for questionAnswer in infoQuestionsAnswers[rubrique.translatable.id] %}
+                                            <li {% if questionAnswer.questionText|length > 76 %}class="bigLi"{% endif %}>
+                                                <div class="open"><h5>{{ questionAnswer.questionText }}</h5><span class="openPlus">+</span><span class="openMinus">-</span></div>
+                                                <div class="content">
+                                                    {{ questionAnswer.answerText|raw }}
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div><!--CONTAINER-->
+
+    <div class="floatingButtonLeft">
+        <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+        </div>
+        <a href="{{ path('fdc_marche_du_film_who_are_we_team') }}">
+            <div class="floatingButtonText showLeft">{{ 'who_are_we.menu.team'|trans }}</div>
+        </a>
+    </div>
+    <div class="floatingButtonRight">
+        <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+        </div>
+        <a href="#">
+            <div class="floatingButtonText showRight">Chiffres clés</div>
+        </a>
+    </div>
+
+{% endblock main %}

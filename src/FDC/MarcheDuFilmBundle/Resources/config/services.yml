@@ -156,3 +156,8 @@ services:
             - '@translator'
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+    mdf.manager.info_utiles:
+        class: FDC\MarcheDuFilmBundle\Manager\InfoManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
