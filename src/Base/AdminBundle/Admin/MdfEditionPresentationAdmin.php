@@ -17,13 +17,13 @@ class MdfEditionPresentationAdmin extends MdfContentTemplateAdmin
     protected $baseRoutePattern = 'mdfeditionpresentation';
     protected $baseRouteName = 'mdf_edition_presentation';
 
-    /**
-     * @param RouteCollection $collection
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->clearExcept(['edit', 'list']);
-    }
+//    /**
+//     * @param RouteCollection $collection
+//     */
+//    protected function configureRoutes(RouteCollection $collection)
+//    {
+//        $collection->clearExcept(['edit', 'list']);
+//    }
 
     public function createQuery($context = 'list')
     {
