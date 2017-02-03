@@ -65,6 +65,10 @@ class ProgrammeManager
                         $globalEventsDays[] = $globalEventsDay;
                     }
                 }
+                usort($globalEventsDays, function ($a, $b) {
+                    return $a->getDateEvent() > $b->getDateEvent();
+                });
+
                 return $globalEventsDays;
             }
             return [];
