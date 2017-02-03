@@ -50,7 +50,8 @@ class MdfGlobalEventsDaysCollectionAdmin extends Admin
     {
         $formMapper
             ->add('day', 'sonata_type_model_list', array(
-                    'label' => 'form.mdf.label.global_events_day'
+                    'label' => 'form.mdf.label.global_events_day',
+                    'btn_delete' => false
                 )
             )
         ;

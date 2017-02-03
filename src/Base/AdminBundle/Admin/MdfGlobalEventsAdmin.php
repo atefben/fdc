@@ -60,6 +60,7 @@ class MdfGlobalEventsAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
+
                     'title'          => array(
                         'label'              => 'form.mdf.label.global_events_title',
                         'translation_domain' => 'BaseAdminBundle',
@@ -92,6 +93,10 @@ class MdfGlobalEventsAdmin extends Admin
                 'edit'     => 'inline',
                 'inline'   => 'table',
                 'sortable' => 'position',
+            ))
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
             ))
         ;
     }

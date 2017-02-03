@@ -6,6 +6,7 @@ use FOS\RestBundle\Controller\Annotations\Route;
 use Sonata\AdminBundle\Tests\Datagrid\PagerTest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProgrammeController extends Controller
 {
@@ -21,6 +22,11 @@ class ProgrammeController extends Controller
         $contact = $contactManager->getContactInfo();
         $conferences = $conferenceManager->getAllConferenceTypes();
         $globalEventsPage = $programmeManager->getGlobalEventsPage();
+
+        if (!$globalEventsPage || !$globalEventsPage->getTranslatable()->isIsActive()) {
+            throw new NotFoundHttpException("Page not found");
+        }
+
         $globalEventsDays = $programmeManager->getGlobalEventsDays($globalEventsPage);
         $globalEventsSchedules = $programmeManager->getGlobalEventsSchedulesSorted($globalEventsDays);
 
