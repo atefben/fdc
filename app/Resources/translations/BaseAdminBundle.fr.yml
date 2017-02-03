@@ -624,7 +624,7 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     mdf:
-        active: Is Active?
+        active: Activer la page
         gallery: Galeries
         status:
             inactive: Actif
@@ -826,6 +826,24 @@ form:
             global_events_event_location: Lieu de l'événement
             global_event_start_time: Heure de début de l'événement
             global_event_end_time: Heure de fin de l'événement
+            speakers_page_info: Édition de la page Intervenants dela conférence
+            speakers_sub_title: Titre de page
+            speakers_description: Chapô
+            speakers_widget: Gestion des onglets d'intervenants disponibles
+            new_speakers_tab: Liste des intervants
+            speakers_choice: Onglets présents
+            speaker_choices_info: Gestion des onglets d'intervenants
+            speakers_choices_title: Titre d'onglet
+            speakers_choices_sub_title: Sous-titre d'onglet
+            speakers: Gestion des intervenants de l'onglet
+            new_speaker: Ajout d'un intervenant à l'onglet
+            speakers_details_name: Nom de l'intervenant
+            speaker_details_image: Image de l'intervenant
+            speaker_info: Informations sur l'intervenant
+            speaker_name: Nom et prénom de l'intervenant
+            speaker_company: Entreprise de l'intervenant
+            speaker_country: Pays de l'intervenant
+            speaker_details: Détail de l'intervention
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})
