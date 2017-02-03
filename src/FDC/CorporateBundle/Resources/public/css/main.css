@@ -6946,6 +6946,10 @@ h2.sub-title {
   background: url(../img/arrow-down.png) no-repeat right 50%;
 }
 
+.block-search .tabs-two label {
+  letter-spacing: 1px;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
