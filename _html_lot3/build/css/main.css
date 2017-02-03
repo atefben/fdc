@@ -6955,6 +6955,14 @@ h2.sub-title {
   top: 2px;
 }
 
+.edition-69.dark .contain-img-honneur .copy {
+  color: #ccc;
+}
+
+.wysiwyg-article-02 .contain-title p {
+  margin-bottom: 39px;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
