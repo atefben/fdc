@@ -63,7 +63,6 @@ $(document).ready(function() {
         $('.errors .' + input.attr('name')).remove();
       }
       else{
-        console.log($('.errors .' + input.attr('name')));
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
         $('.errors ul').append('<li class="' + input.attr('name') + '">' + input.data('error') + '</li>');
