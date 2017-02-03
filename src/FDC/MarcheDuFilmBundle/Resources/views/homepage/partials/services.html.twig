@@ -11,7 +11,7 @@
                     <div class="services-boxes" data-rel="{{ 'pic' ~ loop.index }}">
                         <div class="customClass2">{{ service.title }}</div>
                         <div>{{ service.description|length > 95 ? service.description|slice(0, 95) ~ '...' : service.description  }}</div>
-                        <div>voir le détail</div>
+                        <div>{{ 'see_the_detail'|trans }}</div>
                         <span class="glyphicon glyphicon-menu-right customClass2"><i class="icon icon_flecheGauche reverse"></i></span>
                     </div>
                 </a>

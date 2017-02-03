@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-02-03T12:10:42Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2017-02-03T17:18:31Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -345,6 +345,11 @@
         <source>read_the_article</source>
         <target state="new">read_the_article</target>
         <jms:reference-file line="15">views/presse/pressCoverage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="78e30958d17b0bd3fe384bbdd05a346a23493134" resname="see_the_detail">
+        <source>see_the_detail</source>
+        <target state="new">see_the_detail</target>
+        <jms:reference-file line="14">homepage/partials/services.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5c46aad25bc91611a02374f9d71325c0cb34acfa" resname="site_plan.accreditation">
         <source>site_plan.accreditation</source>
