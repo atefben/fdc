@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+$('#main').removeClass('loading');
+
+window.onunload = function(){};
 
 /*CAROUSSELS OWL*/
 
@@ -175,6 +178,13 @@ function menuMDF() {
 
 menuMDF();
 
+$(window).scroll(function(){
+    if ($(window).scroll(200)){
+        $('#leaderBoard').hide();
+    } else {
+      $('#leaderBoard').show();
+    }
+});
 
 function hoverSearch() {
 

@@ -8,11 +8,12 @@
                 <h3>{{ newsPageContent.title }}</h3>
                 {% include 'FDCMarcheDuFilmBundle::conference/news/partials/newsBlock.html.twig' with { 'news': news } %}
             </div>
-            <a href="#">
-                <div class="moreArticles">
+
+            <div class="moreArticles">
+                <a href="#">
                     <span>{{ 'news.block.load_more_button'|trans }}</span>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
     {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}

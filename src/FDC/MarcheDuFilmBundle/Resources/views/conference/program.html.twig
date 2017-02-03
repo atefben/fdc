@@ -26,9 +26,12 @@
                 {% endfor %}
             </div>
             {% include 'FDCMarcheDuFilmBundle:conference:accordion.html.twig' with {'programDays': programDays, 'programDaysEvents': programDaysEvents, 'eventsSpeakers':eventsSpeakers} %}
+
+            <div class="text-presentation projection producersProgramme">
             {% for file in files %}
                 {% include 'FDCMarcheDuFilmBundle:conference:blockDownload.html.twig' with {'widget': file}  %}
             {% endfor %}
+            </div>
         </div>
     </div>
     {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}
