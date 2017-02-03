@@ -107,8 +107,8 @@
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
-                            <form action="">
-                                <input type="text" name="name" id="searchInput" placeholder="{{ 'menu.search'|trans }}"/>
+                            <form action="{{ path('fdc_marche_du_film_search') }}">
+                                <input type="text" name="term" id="searchInput" placeholder="{{ 'menu.search'|trans }}"/>
                             </form>
                         </div>
                     </li>
