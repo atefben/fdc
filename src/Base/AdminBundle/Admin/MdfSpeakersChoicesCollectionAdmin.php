@@ -50,6 +50,7 @@ class MdfSpeakersChoicesCollectionAdmin extends Admin
     {
         $formMapper
             ->add('speakersChoice', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.label.speakers_choice',
                 'btn_delete' => false
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))

@@ -1567,7 +1567,7 @@ services:
         class: Base\AdminBundle\Admin\MdfSpeakersChoicesAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakersChoices, BaseAdminBundle:MdfSpeakersChoicesAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersChoices, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Intervenants, show_in_dashboard: false}
 
     base.admin.mdf_speakers_details_collection:
         class: Base\AdminBundle\Admin\MdfSpeakersDetailsCollectionAdmin
@@ -1579,7 +1579,7 @@ services:
         class: Base\AdminBundle\Admin\MdfSpeakersDetailsAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakersDetails, BaseAdminBundle:MdfSpeakersDetailsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: SpeakersDetails, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gestion de l'intervenant, show_in_dashboard: false}
 
     base.admin.mdf_global_events:
         class: Base\AdminBundle\Admin\MdfGlobalEventsAdmin
