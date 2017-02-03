@@ -45,6 +45,7 @@ class MdfNewsDetailsAdmin extends Admin
     {
         $listMapper
             ->add('title')
+            ->add('theme.title')
             ->add('publishedAt')
             ->add('publishEndedAt')
             ->add('_action', 'actions', array(
