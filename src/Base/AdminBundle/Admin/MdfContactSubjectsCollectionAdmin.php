@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 /**
@@ -51,7 +52,10 @@ class MdfContactSubjectsCollectionAdmin extends Admin
         $formMapper
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
             ->add('contactSubject', 'sonata_type_model_list', array(
-                    'label' => 'form.mdf.label.contact_subject'
+                    'label' => 'form.mdf.label.contact_subject',
+                    'constraints'        => array(
+                        new NotBlank(),
+                    )
                 )
             )
         ;

@@ -76,6 +76,7 @@ class ContactUsManager
                     $contactPage->getTranslatable()->getId()
                 );
 
+
             if ($contactSubjectsCollection) {
                 $contactSubjects = [];
                 $contactSubjects['default'] = 'Séléctionnez un thème';

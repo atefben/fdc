@@ -15,7 +15,7 @@ class MdfContactSubjectsCollectionRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.contactPage = :contactPage')
-//            ->orderBy('s.position', 'ASC')
+            ->orderBy('s.position', 'ASC')
             ->setParameter(':contactPage', $contactPageId)
         ;
 

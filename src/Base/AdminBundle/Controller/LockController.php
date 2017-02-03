@@ -136,6 +136,7 @@ class LockController extends Controller
         'mdftheme' => 'MdfTheme',
         'mdfspeakerschoices' => 'MdfSpeakersChoices',
         'mdfspeakersdetails' => 'MdfSpeakersDetails',
+        'mdfcontactsubject' => 'MdfContactSubject',
     );
 
     /**

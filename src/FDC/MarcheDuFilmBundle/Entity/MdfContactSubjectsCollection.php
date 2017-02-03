@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MdfContactSubjectsCollection

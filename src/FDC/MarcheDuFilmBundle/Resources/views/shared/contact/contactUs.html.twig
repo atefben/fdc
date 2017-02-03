@@ -8,13 +8,19 @@
         <div class="coords">
             <div class="bigContainer">
                 {% if contactBlocks is defined and contactBlocks is not null %}
-                    {% for block in contactBlocks %}
-                        <div class="contactInfo">
-                            <h3>{{ block.contactDate }}</h3>
-                            <p>{{ block.contactAddress }}</p>
-                            <p>{{ block.contactPhone }}</p>
-                        </div>
-                    {% endfor %}
+                    {% if contactBlocks|length > 1 %}
+                        {% for block in contactBlocks %}
+                            <div class="contactInfo">
+                                <h3>{{ block.contactDate }}</h3>
+                                <p>{{ block.contactAddress }}</p>
+                                <p>{{ block.contactPhone }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h3>{{ contactBlocks[0].contactDate }}</h3>
+                        <p>{{ contactBlocks[0].contactAddress }}</p>
+                        <p>{{ contactBlocks[0].contactPhone }}</p>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

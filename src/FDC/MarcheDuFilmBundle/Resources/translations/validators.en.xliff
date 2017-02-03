@@ -8,11 +8,11 @@
     <body>
       <trans-unit id="228af31d0ff1f51bb0cd7de0bb77d719eab5b66c" resname="validation.contact_block_max">
         <source>validation.contact_block_max</source>
-        <target state="new">validation.contact_block_max</target>
+        <target>At most 2 contact blocks can be added.</target>
       </trans-unit>
       <trans-unit id="c4d17280eb5f615498efc9dc8d4da51b135a811f" resname="validation.contact_block_min">
         <source>validation.contact_block_min</source>
-        <target state="new">validation.contact_block_min</target>
+        <target>At leas 1 contact block must be added.</target>
       </trans-unit>
       <trans-unit id="dc6d2a030740e27789f40fb1c7cf8900b57d8d6a" resname="validation.home_top_slider_max">
         <source>validation.home_top_slider_max</source>

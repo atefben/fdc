@@ -55,6 +55,7 @@ class MdfContactPage implements TranslateMainInterface
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfContactSubjectsCollection", mappedBy="contactPage", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\NotBlank()
      */
     protected $subjectsList;
