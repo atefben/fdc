@@ -92,7 +92,7 @@ breadcrumb:
     link_mobile_notification_list: Notifications mobiles
     link_corpo_movie_inscription_list: Participer
     link_corpo_movie_inscription_procedure_list  : Participer
-    
+
 link:
     action_soif_refresh: Mettre à jour
 
@@ -845,6 +845,19 @@ form:
             speaker_company: Entreprise de l'intervenant
             speaker_country: Pays de l'intervenant
             speaker_details: Détail de l'intervention
+            contac_page_info: Informations sur la page contact
+            contact_page_title: Titre de page
+            contact_page_email_receiver: Récepteur email
+            contact_page_description: Chapô
+            contact_block: Bloc de contact
+            contact_block_date: Contact date de bloc
+            contact_block_address: Adresse de bloc de contact
+            contact_block_phone_number: Numéro de téléphone du contact
+            contact_block_list: Liste de contacts bloqués
+            contact_subject: Sujet du message
+            contact_page_subjects_list: Page de contact liste de sujets
+            contact_page_subject_info: Sujet du message info
+            contact_subject_theme: Page de contact thème
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})
@@ -1117,11 +1130,11 @@ form:
     label_video_main: Vidéo principale
     label_procedure_file : Fichier procédure
     label_procedure_second_file : Fichier procédure (en)
-    
+
     label_orange_series_widget_video_youtube_title: Titre
     label_orange_series_widget_video_youtube_subtitle: Sous-titre
     label_orange_series_widget_video_youtube_url: URL de la chaîne Youtube
-    
+
     label_orange_widget_film_vod_image: Image cover
     helper_orange_widget_film_vod_image: Dimensions attendues : 280x385 - ratio paysage. Format attendu : .jpg, .png, .gif
     label_orange_widget_film_vod_title: Titre du film
@@ -1129,14 +1142,14 @@ form:
     label_orange_widget_film_vod_copy: Copyright
     label_orange_widget_film_vod_producer: Réalisateur du film
     label_orange_widget_film_vod_section: Sous-rubrique
-    
+
     helper_orange_widget_film_ocs_image: Dimensions attendues : 580x365 - ratio paysage. Format attendu : .jpg, .png, .gif
     label_orange_widget_film_ocs_legend: Légende
     label_orange_widget_film_ocs_title: Titre du film
     label_orange_widget_film_ocs_description: Description
     label_orange_widget_film_ocs_name: Nom de la chaîne
     label_orange_widget_film_ocs_producer: Réalisateur du film
-    
+
     label_orange_widget_film_studio_image: Image cover
     helper_orange_widget_film_studio_image: Dimensions attendues : 320x435 - ratio paysage. Format attendu : .jpg, .png, .gif
     label_orange_widget_film_studio_title: Titre du film

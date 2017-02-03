@@ -1,0 +1,59 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="contact loading">
+        <h2 class="title">{{ contactPage.title }}</h2>
+        {# THIS SHOULD BE REPLACED IN NEW TEMPLATE FOR  MULTIPLE CONTACT BLOCKS #}
+        <div class="coords">
+            <div class="bigContainer">
+                {% if contactBlocks is defined and contactBlocks is not null %}
+                    {% if contactBlocks|length > 1 %}
+                        {% for block in contactBlocks %}
+                            <div class="contactInfo">
+                                <h3>{{ block.contactDate }}</h3>
+                                <p>{{ block.contactAddress }}</p>
+                                <p>{{ block.contactPhone }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h3>{{ contactBlocks[0].contactDate }}</h3>
+                        <p>{{ contactBlocks[0].contactAddress }}</p>
+                        <p>{{ contactBlocks[0].contactPhone }}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        {# END #}
+        <div class="success">
+            <h3>{{ 'contactUs.success'|trans }}</h3>
+            <p>{{ 'contactUs.success_message'|trans }}</p>
+        </div>
+        <div class="container">
+            {{ contactPage.body|raw }}
+            <div id="form">
+                <form action="{{ path('fdc_marche_du_film_contact_us') }}" method="post">
+                    <div class="select">
+                        {{ form_label(formContact.select) }}
+                        {{ form_widget(formContact.select) }}
+                        <span id="triggerSelect"></span>
+                    </div>
+                    {{ form_widget(formContact.name, {'attr' : {'data-error' : 'contactUs.name_error'|trans }}) }}
+                    {# JS field validation bug using form_widget. TODO: Fix JS #}
+                    <input type="email" name="email" placeholder="{{ 'contactUs.email'|trans }}"  data-error="{{ 'contactUs.email_error'|trans }}" />
+                    {# END #}
+                    {{ form_widget(formContact.object, {'attr' : {'data-error' : 'contactUs.object_error'|trans }}) }}
+                    {{ form_widget(formContact.message, {'attr' : {'data-error' : 'contactUs.message_error'|trans }}) }}
+
+                    <span class="required">{{ 'contactUs.required'|trans }}</span>
+                    <input type="submit" value="{{ 'contactUs.submit'|trans }}" />
+                    {{ form_widget(formContact._token) }}
+                </form>
+                <div class="errors">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}

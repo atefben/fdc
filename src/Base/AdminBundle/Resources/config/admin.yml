@@ -2255,3 +2255,23 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSitePlan, BaseAdminBundle:MdfSitePlanAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Plan du site}
+
+
+    base.admin.mdf_contact_page:
+        class: Base\AdminBundle\Admin\MdfContactPageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContactPage, BaseAdminBundle:MdfContactPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Contact Page}
+
+    base.admin.mdf_contact_subjects_collection:
+        class: Base\AdminBundle\Admin\MdfContactSubjectsCollectionAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContactSubjectsCollection, BaseAdminBundle:MdfContactSubjectsCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ContactPageSubjectsCollection, show_in_dashboard: false}
+
+    base.admin.mdf_contact_subject:
+        class: Base\AdminBundle\Admin\MdfContactSubjectAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContactSubject, BaseAdminBundle:MdfContactSubjectAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: ContactSubject, show_in_dashboard: false}
+
