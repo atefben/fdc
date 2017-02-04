@@ -6,14 +6,18 @@
         <div class="bigContainer">
             <div class="our-news newsPage mdf">
                 <h3>{{ newsPageContent.title }}</h3>
-                {% include 'FDCMarcheDuFilmBundle::conference/news/partials/newsBlock.html.twig' with { 'news': news } %}
+                <div class="innerWrapper">
+                    {% include 'FDCMarcheDuFilmBundle::conference/news/partials/newsBlock.html.twig' with { 'news': news } %}
+                </div>
             </div>
 
-            <div class="moreArticles">
-                <a href="#">
-                    <span>{{ 'news.block.load_more_button'|trans }}</span>
+            {% if news|length >= 9 %}
+                <a href="#" id="load-more-conference-articles" data-slug="{{ route_params['slug'] }}">
+                    <div class="moreArticles">
+                        <span>{{ 'news.block.load_more_button'|trans }}</span>
+                    </div>
                 </a>
-            </div>
+            {% endif %}
         </div>
     </div>
     {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}

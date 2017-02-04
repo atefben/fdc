@@ -32,7 +32,7 @@ class PressCoverageWidgetTranslationRepository extends EntityRepository
             ->innerJoin('pc.translatable', 'pct')
             ->orderBy('pct.publishedAt', 'DESC')
             ->setMaxResults(9)
-            ->setFirstResult($offset + 1)
+            ->setFirstResult($offset)
             ->setParameter(':locale', $locale)
         ;
 

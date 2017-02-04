@@ -211,6 +211,34 @@ class ContentTemplateManager
         return isset($newsContent) ? $newsContent : [];
     }
 
+    public function getConferenceNewsContent($conference) {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        $news = $this->getConferenceNews($pageType, $conference);
+
+        foreach ($news as $key => $newsItem) {
+            $newsContent[$key]['content'] = $newsItem;
+            $newsContent[$key]['image'] = $this->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+            $newsContent[$key]['text'] = $this->getContentTemplateTextWidgetsByPageId($newsItem->getTranslatable()->getId());
+        }
+
+        return isset($newsContent) ? $newsContent : [];
+    }
+
+    public function getMoreConferenceNewsContent($conference, $offset) {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        $news = $this->getMoreConferenceNews($pageType, $conference, $offset);
+
+        foreach ($news as $key => $newsItem) {
+            $newsContent[$key]['content'] = $newsItem;
+            $newsContent[$key]['image'] = $this->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+            $newsContent[$key]['text'] = $this->getContentTemplateTextWidgetsByPageId($newsItem->getTranslatable()->getId());
+        }
+
+        return isset($newsContent) ? $newsContent : [];
+    }
+
     public function getTitleHeaderContent($pageType) {
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)
@@ -293,6 +321,27 @@ class ContentTemplateManager
                 $this->requestStack->getMasterRequest()->get('_locale'),
                 $pageType,
                 $filters
+            );
+    }
+
+    public function getConferenceNews($pageType, $conference) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getConferenceNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
+                $pageType,
+                $conference
+            );
+    }
+
+    public function getMoreConferenceNews($type, $conference, $offset) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getMoreConferenceNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
+                $type,
+                $conference,
+                $offset
             );
     }
 
