@@ -4,6 +4,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -68,18 +69,26 @@ class PressController extends Controller
     }
 
     /**
-     * @Route("/presse/retombees-presse", name="fdc_marche_du_film_press_coverage")
+     * @Route("/presse/retombees-presse", options = { "expose" = true }, name="fdc_marche_du_film_press_coverage")
      */
-    public function pressCoverageAction()
+    public function pressCoverageAction(Request $request)
     {
         $pressCoverageManager = $this->get('mdf.manager.press_coverage');
+        
+        if ($offset = $request->request->get('numberOfArticles')) {
+            $pressCoverageWidgets = $pressCoverageManager->getMorePressCoverageWidgets($offset);
 
-        $pressCoverageContent = $pressCoverageManager->getPressCoverageContent();
-        $pressCoverageWidgets = $pressCoverageManager->getpressCoverageWidgets();
+            return $this->render('FDCMarcheDuFilmBundle:presse:article.html.twig', array(
+                'pressCoverageWidgets' => $pressCoverageWidgets
+            ));
+        } else {
+            $pressCoverageContent = $pressCoverageManager->getPressCoverageContent();
+            $pressCoverageWidgets = $pressCoverageManager->getpressCoverageWidgets();
 
-        return $this->render('FDCMarcheDuFilmBundle:presse:pressCoverage.html.twig', array(
-            'pressCoverageContent' => $pressCoverageContent,
-            'pressCoverageWidgets' => $pressCoverageWidgets
-        ));
+            return $this->render('FDCMarcheDuFilmBundle:presse:pressCoverage.html.twig', array(
+                'pressCoverageContent' => $pressCoverageContent,
+                'pressCoverageWidgets' => $pressCoverageWidgets
+            ));
+        }
     }
 }
