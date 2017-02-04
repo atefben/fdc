@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * MdfRubriquesCollectionAdmin class.
@@ -50,7 +50,10 @@ class MdfRubriquesCollectionAdmin extends Admin
     {
         $formMapper
             ->add('rubrique', 'sonata_type_model_list', array(
-                'btn_delete' => false
+                'btn_delete' => false,
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
