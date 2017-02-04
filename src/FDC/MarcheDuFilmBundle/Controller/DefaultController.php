@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="fdc_marche_du_film_homepage")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

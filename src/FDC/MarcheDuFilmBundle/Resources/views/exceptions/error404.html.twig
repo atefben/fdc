@@ -66,21 +66,31 @@
                 <a href="{{ header_ccm_fr }}" target="_blank">{{ 'header.ccm'|trans }}</a>
             </li>
             <li>
-                <a href="{{ path('fdc_marchedufilm_default_index') }}" class="active">{{ 'header.mdf'|trans }}</a>
+                <a href="{{ path('fdc_marche_du_film_homepage') }}" class="active">{{ 'header.mdf'|trans }}</a>
             </li>
         </ul>
         <ul class="user-nav">
             <li>
                 <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
             </li>
+            <li class="lang">
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
+                <ul class="sub-languages">
+                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                        <li>
+                            <a href="{{ path('fdc_marche_du_film_homepage', { _locale: locale }) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
         </ul>
     </div>
     <div id="logo-wrapper">
         <div class="container">
             <div id="logo">
-                <a href="{{ path('fdc_marchedufilm_default_index') }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
-                <h1><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-du-film.png') }}" alt="Festival de Cannes" /></a></h1>
-                <p class="stick"><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
+                <a href="{{ path('fdc_marche_du_film_homepage') }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
+                <h1><a href="{{ path('fdc_marche_du_film_homepage') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-du-film.png') }}" alt="Festival de Cannes" /></a></h1>
+                <p class="stick"><a href="{{ path('fdc_marche_du_film_homepage') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
             </div>
             <div id="leaderBoard">
                 {% if banner %}
@@ -94,6 +104,16 @@
                     <li>
                         <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
                     </li>
+                    <li class="lang">
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
+                        <ul class="sub-languages">
+                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                                <li>
+                                    <a href="{{ path('fdc_marche_du_film_homepage', { _locale: locale }) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -103,7 +123,7 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="{{ path('fdc_marchedufilm_default_index') }}" class="red">{{ 'menu.edition'|trans }}
+                        <a href="{{ path('fdc_marche_du_film_homepage') }}" class="red">{{ 'menu.edition'|trans }}
                         </a>
                     </li>
                     <li>
@@ -170,7 +190,7 @@
     <div class="text-presentation erreur404">
         <h3>{{ notFound404PageContent.title }}</h3>
         <h5>{{ notFound404PageContent.description }}</h5>
-        <h4><i class="icon icon_flecheGauche reverse"></i><a href="{{ path('fdc_marchedufilm_default_index') }}">{{ '404.return_to_homepage'|trans }}</a></h4>
+        <h4><i class="icon icon_flecheGauche reverse"></i><a href="{{ path('fdc_marche_du_film_homepage') }}">{{ '404.return_to_homepage'|trans }}</a></h4>
     </div>
 </div>
 {% endblock %}
