@@ -1,6 +1,20 @@
 {% set routeName = app.request.get('_route') %}
 <div class="text-presentation producersWorkshop mdf customClass1Bckg">
-    <h3>{{ slug|trans }}</h3>
+    {% set conferenceTitle = '' %}
+    {% if slug == 'producers-workshop' %}
+        {% set conferenceTitle = 'conference_title.producers_workshop'|trans %}
+    {% elseif slug == 'producers-network' %}
+        {% set conferenceTitle = 'conference_title.producers_network'|trans %}
+    {% elseif slug == 'doc-corner' %}
+        {% set conferenceTitle = 'conference_title.doc_corner'|trans %}
+    {% elseif slug == 'next' %}
+        {% set conferenceTitle = 'conference_title.next'|trans %}
+    {% elseif slug == 'mixers' %}
+        {% set conferenceTitle = 'conference_title.mixers'|trans %}
+    {% elseif slug == 'goes-to-cannes' %}
+        {% set conferenceTitle = 'conference_title.goes_to_cannes'|trans %}
+    {% endif %}
+    <h3>{{ conferenceTitle }}</h3>
     <div class="subNavigation">
         <nav>
             <ul class="main">
