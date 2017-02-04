@@ -64,7 +64,6 @@ class MdfSpeakersDetailsTranslation implements TranslateChildInterface
      */
     public function setName($name)
     {
-//        var_dump($name);die;
         $this->name = $name;
     }
 

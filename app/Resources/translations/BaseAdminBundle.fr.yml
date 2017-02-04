@@ -863,6 +863,16 @@ form:
             contact_page_subjects_list: Page de contact liste de sujets
             contact_page_subject_info: Sujet du message info
             contact_subject_theme: Page de contact thème
+            informations_page_info: Configuration de la page d'information
+            informations_page_rubrique_collection: Collection de sujets
+            informations_new_rubrique: Liste de sujets
+            rubrique_info: Informations sur le sujet
+            rubrique_name: Nom du sujet
+            rubrique_question_answer: Question et réponse
+            rubrique_new_question: Nouvelle question
+            question_answer_info: Informations sur les questions et réponses
+            rubrique_question_text: Texte de la question
+            rubrique_answer_text: Texte de réponse
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})
