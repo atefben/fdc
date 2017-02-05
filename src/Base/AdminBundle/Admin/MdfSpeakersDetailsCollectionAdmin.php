@@ -8,10 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
 /**
  * MdfSpeakersDetailsCollectionAdmin class.
- * 
+ *
  * \@extends Admin
  */
 class MdfSpeakersDetailsCollectionAdmin extends Admin

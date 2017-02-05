@@ -153,4 +153,39 @@ class MdfConferencePartner
 
         return $this;
     }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getSubTitle();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getSubTitle();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
 }

@@ -8,10 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
 /**
  * MdfServiceGalleryMediaAdmin class.
- * 
+ *
  * \@extends Admin
  */
 class MdfServiceGalleryMediaAdmin extends Admin

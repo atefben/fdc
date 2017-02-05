@@ -56,7 +56,8 @@ class MdfInformations implements TranslateMainInterface
 
     public function getTitle()
     {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
+        //$string = substr(strrchr(get_class($this), '\\'), 1);
+        $string = "Informations utiles";
 
         return $string;
     }

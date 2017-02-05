@@ -3,15 +3,12 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery;
-use FDC\MarcheDuFilmBundle\Entity\MdfServiceGalleryTranslation;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
-
+use FDC\MarcheDuFilmBundle\Entity\MdfServiceGalleryTranslation;
 
 /**
  * MdfServiceGalleryAdmin class.

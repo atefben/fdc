@@ -6,9 +6,7 @@ use FDC\MarcheDuFilmBundle\Entity\AccreditationTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-
 
 class MdfAccreditationAdmin extends Admin
 {
@@ -40,9 +38,7 @@ class MdfAccreditationAdmin extends Admin
             ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -231,23 +227,11 @@ class MdfAccreditationAdmin extends Admin
         ;
     }
 
-//    /**
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection->clearExcept(['edit', 'list']);
-//    }
-
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-            ->add('title')
-            ->add('description')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

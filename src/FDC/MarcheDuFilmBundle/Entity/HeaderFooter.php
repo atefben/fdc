@@ -71,4 +71,63 @@ class HeaderFooter
 
         return $this;
     }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getFooterFacebookUrl();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getFooterFacebookUrl()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getFooterFacebookUrl();
+        }
+
+        return $string;
+    }
+
+    public function getFooterTwitterUrl()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getFooterTwitterUrl();
+        }
+
+        return $string;
+    }
+
+    public function getFooterYoutubeUrl()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getFooterYoutubeUrl();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
 }

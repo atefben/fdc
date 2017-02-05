@@ -3,9 +3,9 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfConferenceNewsPageMain extends Admin
 {
@@ -32,11 +32,10 @@ class MdfConferenceNewsPageMain extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -70,5 +69,13 @@ class MdfConferenceNewsPageMain extends Admin
                 'required' => false
             ))
         ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }

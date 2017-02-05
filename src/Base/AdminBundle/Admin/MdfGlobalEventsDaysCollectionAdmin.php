@@ -8,10 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
 /**
  * MdfGlobalEventsDaysCollectionAdmin class.
- * 
+ *
  * \@extends Admin
  */
 class MdfGlobalEventsDaysCollectionAdmin extends Admin

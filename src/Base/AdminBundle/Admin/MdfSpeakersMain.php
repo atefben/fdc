@@ -1,20 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 17.01.2017
- * Time: 10:31
- */
 
 namespace Base\AdminBundle\Admin;
 
-use FDC\MarcheDuFilmBundle\Entity\MdfSpeakers;
 use FDC\MarcheDuFilmBundle\Entity\MdfSpeakersTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
 
@@ -41,10 +33,6 @@ class MdfSpeakersMain extends Admin
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('subTitle')
-            ->add('createdAt', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
-                'sortable' => 'createdAt',
-            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -122,13 +110,10 @@ class MdfSpeakersMain extends Admin
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-            ->add('subTitle')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

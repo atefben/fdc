@@ -3,11 +3,9 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
-
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfSitePlanAdmin extends Admin
 {
@@ -30,7 +28,8 @@ class MdfSitePlanAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -64,12 +63,10 @@ class MdfSitePlanAdmin extends Admin
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

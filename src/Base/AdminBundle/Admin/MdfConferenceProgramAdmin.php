@@ -3,8 +3,6 @@
 namespace Base\AdminBundle\Admin;
 
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Form\FormMapper;
 
 class MdfConferenceProgramAdmin extends MdfConferenceProgramMain
 {

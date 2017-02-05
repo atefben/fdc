@@ -5,7 +5,6 @@ namespace Base\AdminBundle\Admin;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfContactAdmin extends Admin
@@ -38,9 +37,7 @@ class MdfContactAdmin extends Admin
             ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -88,25 +85,11 @@ class MdfContactAdmin extends Admin
         ;
     }
 
-//    /**
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection->clearExcept(['edit', 'list']);
-//    }
-
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-            ->add('title')
-            ->add('subTitle')
-            ->add('information')
-            ->add('seeMoreUrl')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

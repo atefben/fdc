@@ -3,10 +3,10 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Validator\Constraints\Count;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfConferencePartnerMain extends Admin
 {
@@ -33,6 +33,7 @@ class MdfConferencePartnerMain extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -95,5 +96,13 @@ class MdfConferencePartnerMain extends Admin
                 'sortable' => 'position',
             ))
         ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }

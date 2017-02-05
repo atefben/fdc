@@ -2,7 +2,6 @@
 
 namespace Base\AdminBundle\Admin;
 
-
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 
 class MdfSpeakersProducersNetworkAdmin extends MdfSpeakersMain

@@ -3,9 +3,6 @@
 namespace Base\AdminBundle\Admin;
 
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class MdfEditionPresentationAdmin
@@ -16,14 +13,6 @@ class MdfEditionPresentationAdmin extends MdfContentTemplateAdmin
 {
     protected $baseRoutePattern = 'mdfeditionpresentation';
     protected $baseRouteName = 'mdf_edition_presentation';
-
-//    /**
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection->clearExcept(['edit', 'list']);
-//    }
 
     public function createQuery($context = 'list')
     {

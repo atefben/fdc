@@ -6,7 +6,6 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\AdminBundle\Show\ShowMapper;
 
 class MdfHomepageAdmin extends Admin
 {
@@ -35,11 +34,10 @@ class MdfHomepageAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -130,21 +128,11 @@ class MdfHomepageAdmin extends Admin
         ;
     }
 
-//    /**
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection->clearExcept(['edit', 'list']);
-//    }
-
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

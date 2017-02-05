@@ -2,13 +2,10 @@
 
 namespace Base\AdminBundle\Admin;
 
-use FDC\MarcheDuFilmBundle\Entity\Service;
 use FDC\MarcheDuFilmBundle\Entity\ServiceTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
 
@@ -36,10 +33,6 @@ class ServiceAdmin extends Admin
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('title')
-            ->add('createdAt', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
-                'sortable' => 'createdAt',
-            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -147,17 +140,6 @@ class ServiceAdmin extends Admin
                 'inline'   => 'table',
                 'sortable' => 'position',
             ))
-        ;
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
-            ->add('title')
         ;
     }
 }

@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 19.01.2017
- * Time: 12:20
- */
 
 namespace Base\AdminBundle\Admin;
-
 
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 
