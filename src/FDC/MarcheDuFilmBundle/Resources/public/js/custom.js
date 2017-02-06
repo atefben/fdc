@@ -173,7 +173,7 @@ function setNews() {
         getNews();
     });
 
-    $(document).on('click', '.paginationNavLeft',function() {
+    $(document).on('click', '#paginationNavLeft',function() {
         if (pageIndex != 0) {
             $(".fifth").each(function (index, element) {
                 $(this).removeClass('pagination-active');
@@ -189,7 +189,7 @@ function setNews() {
         }
     });
 
-    $(document).on('click', '.paginationNavRight',function() {
+    $(document).on('click', '#paginationNavRight',function() {
         var pagesLength = $('div.fifth').length;
 
         if (pageIndex < pagesLength - 1) {
@@ -215,7 +215,7 @@ function initPagination() {
         }
         if ($(this).attr('id') == 0) {
             $(this).addClass('pagination-active');
-            $('.paginationNavLeft').addClass('arrow-inactive');
+            $('#paginationNavLeft').addClass('arrow-inactive');
         }
     });
 }
@@ -240,52 +240,52 @@ function getNews() {
 
 function setPaginationTabs() {
     var pagesLength = $('div.fifth').length;
-    $('.paginationNavLeft').removeClass('arrow-inactive');
-    $('.paginationNavRight').removeClass('arrow-inactive');
+    $('#paginationNavLeft').removeClass('arrow-inactive');
+    $('#paginationNavRight').removeClass('arrow-inactive');
 
-    if (pagesLength > paginationLimit) {
-        $(".fifth").each(function (index, element) {
-            if (pageIndex == 1) {
-                if (($(this).attr('id') > pageIndex + 2 || $(this).attr('id') < pageIndex - 2)) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
-            } else if (pageIndex == 2) {
-                if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 2)) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
-            } else if (pageIndex == pagesLength - 1) {
-                $('.paginationNavRight').addClass('arrow-inactive');
-                if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 3)) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
-            } else if (pageIndex == 0) {
-                $('.paginationNavLeft').addClass('arrow-inactive');
-                if (($(this).attr('id') > pageIndex + 3)) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
+    $(".fifth").each(function (index, element) {
+        console.log(pagesLength - 1 ,pageIndex)
+
+        if (pageIndex == 0) {
+            $('#paginationNavLeft').addClass('arrow-inactive');
+            if (($(this).attr('id') > pageIndex + 3)) {
+                $(this).hide();
             } else {
-                if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 2)) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
+                $(this).show();
             }
+        } else if (pageIndex == pagesLength - 1) {
+            $('#paginationNavRight').addClass('arrow-inactive');
+            if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 3)) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        } else if (pageIndex == 2) {
+            if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 2)) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        } else if (pageIndex == 1) {
+            if (($(this).attr('id') > pageIndex + 2 || $(this).attr('id') < pageIndex - 2)) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        } else {
+            if (($(this).attr('id') > pageIndex + 1 || $(this).attr('id') < pageIndex - 2)) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        }
 
-            $(this).addClass('fifth-inactive-border');
-            $(this).removeClass('fifth-active-border');
-        });
+        $(this).addClass('fifth-inactive-border');
+        $(this).removeClass('fifth-active-border');
+    });
 
-        $('.fifth:visible:first').removeClass('fifth-inactive-border');
-        $('.fifth:visible:first').addClass('fifth-active-border');
-    }
+    $('.fifth:visible:first').removeClass('fifth-inactive-border');
+    $('.fifth:visible:first').addClass('fifth-active-border');
 }
 
 /** Open accordion depending on day **/

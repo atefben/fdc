@@ -49,6 +49,18 @@ header #navigation ul li a.golden.active {
 }
 
 .arrow-inactive {
-    color: #f8f8f8 !important;
+    color: #f8f8f8;
+}
 
+.arrow-inactive:hover {
+    border: 1px solid #dfdfdf !important;
+    background: #ffffff !important;
+}
+
+.arrow-inactive:hover i {
+    color: #f8f8f8 !important;
+}
+
+.graphical-charter {
+    height: 0px !important;
 }

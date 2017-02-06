@@ -24253,17 +24253,7 @@ ul.tabs .quarterTab h4 {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.servicesPage .fitImg:hover {
-  filter: brightness(70%);
-  -webkit-filter: brightness(70%);
-  -moz-filter: brightness(70%);
-  -o-filter: brightness(70%);
-  -ms-filter: brightness(70%);
-  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
+
 .servicesPage .normalImg {
   width: 100%;
   text-align: center;
