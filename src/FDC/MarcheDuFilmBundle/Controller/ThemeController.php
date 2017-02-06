@@ -180,6 +180,7 @@ class ThemeController extends Controller
         } else {
             $conferenceNewsPage = $conferenceNewsPageManager->getConferenceNewsPageBySlug($slug);
             $newsContent = $contentTemplateManager->getConferenceNewsContent($slug);
+            $showMoreButton = $contentTemplateManager->showMoreButton($slug);
             $contact = $contactManager->getContactInfo();
 
             if(!$conferenceNewsPage) {
@@ -191,6 +192,7 @@ class ThemeController extends Controller
                 'news' => $newsContent,
                 'conferenceTitle' => $slug,
                 'contact' => $contact,
+                'showMoreButton' => $showMoreButton,
             );
 
             $pagesStatus = $conferencePagesManager->getPagesStatus($slug);

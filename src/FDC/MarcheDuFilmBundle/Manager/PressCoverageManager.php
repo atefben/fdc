@@ -36,4 +36,18 @@ class PressCoverageManager
                 )
             );
     }
+    
+    public function showMoreButton()
+    {
+        $numberOfArticles = count(
+            $this->em
+                ->getRepository(PressCoverageWidgetTranslation::class)
+                ->getSortedPressCoverageWidgets($this->requestStack->getMasterRequest()->get('_locale'), false, false)
+        );
+        
+        if ($numberOfArticles > 9) {
+            return true;
+        }
+        return false;
+    }
 }

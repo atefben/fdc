@@ -352,4 +352,12 @@ class ContentTemplateManager
 
         return intval($nrOfRows);
     }
+    
+    public function showMoreButton($slug)
+    {
+        if ($this->countNews([$slug]) > 9) {
+            return true;
+        }
+        return false;
+    }
 }

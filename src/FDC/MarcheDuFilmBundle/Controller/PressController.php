@@ -84,10 +84,12 @@ class PressController extends Controller
         } else {
             $pressCoverageContent = $pressCoverageManager->getPressCoverageContent();
             $pressCoverageWidgets = $pressCoverageManager->getPressCoverageWidgets();
+            $showMoreButton = $pressCoverageManager->showMoreButton();
 
             return $this->render('FDCMarcheDuFilmBundle:presse:pressCoverage.html.twig', array(
                 'pressCoverageContent' => $pressCoverageContent,
-                'pressCoverageWidgets' => $pressCoverageWidgets
+                'pressCoverageWidgets' => $pressCoverageWidgets,
+                'showMoreButton' => $showMoreButton
             ));
         }
     }
