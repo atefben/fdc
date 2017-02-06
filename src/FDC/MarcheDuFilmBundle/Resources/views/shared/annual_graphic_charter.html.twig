@@ -1,0 +1,32 @@
+<style>
+    .customClass1 {
+        color: {{ graphicCharter.color1 }};
+    }
+    .customClass2 {
+        color: {{ graphicCharter.color2 }};
+    }
+    .customClass3 {
+        color: {{ graphicCharter.color3 }};
+    }
+    .customClass4 {
+        color: {{ graphicCharter.color4 }};
+    }
+    .customClass5 {
+        color: {{ graphicCharter.color5 }};
+    }
+    .customClass6 {
+        color: {{ graphicCharter.color6 }};
+    }
+    .customClass7 {
+        color: {{ graphicCharter.color7 }};
+    }
+    .customClass1Bckg {
+        background: url({% path graphicCharter.backgroundImage1|trans_fallback('file'), 'reference' %});
+    }
+    .customClass2Bckg {
+        background: url({% path graphicCharter.backgroundImage2|trans_fallback('file'), 'reference' %});
+    }
+    .customClass3Bckg {
+        background: url({% path graphicCharter.backgroundImage3|trans_fallback('file'), 'reference' %});
+    }
+</style>

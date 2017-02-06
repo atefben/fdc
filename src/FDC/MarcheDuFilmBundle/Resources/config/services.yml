@@ -148,6 +148,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
     mdf.manager.mailer:
         class: FDC\MarcheDuFilmBundle\Manager\MailerManager
         arguments:
@@ -156,8 +157,14 @@ services:
             - '@translator'
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
     mdf.manager.info_utiles:
         class: FDC\MarcheDuFilmBundle\Manager\InfoManager
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.manager.annual_graphic_charter:
+        class: FDC\MarcheDuFilmBundle\Manager\AnnualGraphicCharterManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
