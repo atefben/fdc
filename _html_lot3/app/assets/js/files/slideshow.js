@@ -400,7 +400,7 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
-            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
+            //thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
 
