@@ -16,6 +16,24 @@ html {
   overflow-x: hidden;
 }
 
+i {
+  font-style:italic;
+}
+
+sup { 
+    vertical-align: super;
+    font-size: smaller;
+    margin-left: 5px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
 /*strong, b, em {
   font: normal;
   font-weight:bold!important;

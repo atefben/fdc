@@ -23,8 +23,10 @@
         <div class="greyBckg"> 
           <div class="bigContainer"> 
               <ul class="tabs">
-                <li class="active halfTab" rel="tab1"><h4 class="redActive customClass1">Meet The Speakers</h4>Mettez en avant votre société ou votre film</li>
-                <li class="halfTab" rel="tab2"><h4 class="redActive">Meet The Experts (Guided Tour)</h4>Maximisez votre visibilité.</li>
+                <li class="speakersTabs active" rel="tab1"><h4 class="redActive customClass1">Meet The Speakers</h4>Mettez en avant votre société ou votre film</li>
+                <li class="speakersTabs" rel="tab2"><h4 class="redActive">Meet The Experts (Guided Tour)</h4>Maximisez votre visibilité.</li>
+                <li class="speakersTabs" rel="tab2"><h4 class="redActive">Meet The Experts (Guided Tour)</h4>Maximisez votre visibilité.</li>
+                <li class="speakersTabs" rel="tab2"><h4 class="redActive">Meet The Experts (Guided Tour)</h4>Maximisez votre visibilité.</li>
               </ul>
             </div>
         </div>

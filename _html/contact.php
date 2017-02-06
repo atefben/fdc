@@ -10,10 +10,20 @@
 
     <div id="main" class="contact loading">
       <h2 class="title">Contact</h2>
-      <div class="coords">
-        <h3>Festival de Cannes</h3>
-        <p>3, rue Amélie 75007 Paris - France</p>
-        <p>Tel: +33 (0) 1 53 59 61 00  -  Fax : +33 (0)1 53 59 61 10</p>
+      <div class="teamBckg">
+        <div class="bigContainer">
+            <div class="contactInfo">
+              <span class="customClass4">du 2 sept au 15 jan 2016</span>
+              <h6>3, rue Amélie 75007 Paris - France</h6>
+              <h6>Tel: +33 (0) 1 53 59 61 00</h6>
+            </div>
+            <div class="contactInfo">
+              <span class="customClass4">du 26 juin au 6 fév 2016</span>
+              <h6>3, rue Amélie 75007 Paris - France</h6>
+              <h6>Tel: +33 (0) 1 53 59 61 00</h6></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="success">
         <h3>Votre message a bien été envoyé.</h3>

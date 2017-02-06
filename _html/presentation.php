@@ -96,9 +96,9 @@
                 <ul>
                   <li>Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>
                   <li>Bénéficiez d'un accès gratuit pendant un an à Cinando</li>
-                  <li>Rencontrez des experts du monde entier dans le cadre de nos Industry Programs</li>
+                  <li><i> Rencontrez des experts</i>  du monde entier dans le cadre de nos Industry Programs</li>
                   <li>Participez aux conférences NEXT dédiées au futur du cinéma</li>
-                  <li>Plus de 1000 projections</li>
+                  <li>Plus de 1000 projections<sup>2<sup></li>
                   <li>Accès aux zones du Marché (Palais des Festivals, Riviera, Lérins, Village International)</li>
                   <li>Assistez à la reprise des films de la Sélection Officielle en projection privée les jeudi 19 et vendredi 20 mai 2016 </li>
                   <li>Recevez le sac du Marché du Film et ses publications pour organiser votre séjour: le Pocket Guide, le Producers Guide, le Focus, le Funds Guide</li>

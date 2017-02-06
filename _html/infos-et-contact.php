@@ -81,7 +81,7 @@
                   </div>
                   <div class="textWrapper">
                     <h6 class="customClass1">clara massot</h6>
-                    <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com" class="customClass1">clara.massot@gmail.com</a></span>
+                    <span>Project Manager NEXT<br><a class="maxStr" href="mailto:clara.massot@gmail.com" class="customClass1">clara.massotclara.massotclara.massotclara.massot@gmail.com</a></span>
                   </div>
                 </div>
               </div>
