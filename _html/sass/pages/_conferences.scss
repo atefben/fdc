@@ -334,7 +334,7 @@
   .conf30Sharp {
       width: 35%!important;
 
-      &:before {
+      /*&:before {
         height: 445px;
         display: block;
         width: 1px;
@@ -344,9 +344,9 @@
         position: relative;
         float: left;
         margin-top: 45px;
-      }
+      }*/
     }
-  .conf30 {
+  /*.conf30 {
       &:before {
         height: 200px;
         display: block;
@@ -359,7 +359,7 @@
         margin-top: 20px;
       }
 
-  }
+  }*/
   .conf30, .conf30Sharp {
     width: 35%;
     float:left;
@@ -369,6 +369,8 @@
     text-align: left;
     padding-top: 30px;
     font-size: 14px;
+    margin-top: 30px;
+    border-left: 1px solid #ECECEC;
 
     p {
       margin-left: 30px;
@@ -424,7 +426,6 @@
   }
 
 .box {
-  min-height: 290px;
   height: auto;
   cursor: default;
   position: relative;
@@ -453,7 +454,7 @@
   .conferenceMenu {
     .box {
       height: auto;
-      min-height: 900px!important;
+      /*min-height: 900px!important;*/
       cursor: default;
       position: relative;
       overflow: hidden !important;
@@ -464,7 +465,7 @@
     }
 
     .minBox {
-      min-height: 600px!important;
+      /*min-height: 600px!important;*/
     }
   }
 

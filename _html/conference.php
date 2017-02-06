@@ -56,60 +56,6 @@
                                     <p>LA BOITE A FANNY</p>
                                   </div>
                                 </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <div class="name">
-                                    <h6 class="customClass1">Fanny-Laure Malo</h6>
-                                  </div>
-                                  <div class="name">
-                                    <p>LA BOITE A FANNY</p>
-                                  </div>
-                                </div>
                               </div>
                              
                             </div>
@@ -173,31 +119,6 @@
                               <div class="confPeople">
                                 <hr> 
                                 <h6 class="confDetails">Intervenants</h6>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <h6>Fanny-Laure Malo</h6>
-                                  <p>LA BOITE A FANNY</p>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <h6>Fanny-Laure Malo</h6>
-                                  <p>LA BOITE A FANNY</p>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <h6>Fanny-Laure Malo</h6>
-                                  <p>LA BOITE A FANNY</p>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <h6>Fanny-Laure Malo</h6>
-                                  <p>LA BOITE A FANNY</p>
-                                </div>
-                                <div class="quarterWidth">
-                                  <img src="/img/intervenant1.png">
-                                  <h6>Fanny-Laure Malo</h6>
-                                  <p>LA BOITE A FANNY</p>
-                                </div>
                                 <div class="quarterWidth">
                                   <img src="/img/intervenant1.png">
                                   <h6>Fanny-Laure Malo</h6>
@@ -520,6 +441,41 @@
                                   <h6>Fanny-Laure Malo</h6>
                                   <p>LA BOITE A FANNY</p>
                                 </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
+                                <div class="quarterWidth">
+                                  <img src="/img/intervenant1.png">
+                                  <h6>Fanny-Laure Malo</h6>
+                                  <p>LA BOITE A FANNY</p>
+                                </div>
                               </div>
                                  
                             </div>
@@ -546,10 +502,7 @@
                               <p>Spotlight on Mexican Producers presented by Mexican Film Institute (IMCINE). Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée l'additiod'humour.</p>
                               <div class="confPeople">
                                 <hr>  
-                                <h6 class="confDetails">Intervenants</h6>
-                                <p>Europe looks like it has a lot of money for films. In fact, it does. In bits and pieces. All over the place. Subject to different rules, different regulations and unique and sometimes remarkable local industry practices. This workshop will help untangle the network of funders and funding and help producers develop a successful strategy for their features.</p>
-                                <h6 class="confDetails">intervenant(s)</h6>       
-                                <p>Rob H. AFT, Lucius BARRE, Linda BEATH, Roshanak BEHESHT NEDJAD, Sarah CALDERON, Diana ELBAUM, Sydney LEVINE, Katriel SCHORY, Peter WETHERELL</p>
+                               
                               </div> 
                                 
                             </div>
