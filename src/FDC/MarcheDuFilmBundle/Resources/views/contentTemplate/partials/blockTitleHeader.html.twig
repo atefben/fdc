@@ -2,7 +2,9 @@
     <h3>{{ titleHeader.title }}</h3>
     <h4>
         {% if titleHeader.header %}
-            {{ titleHeader.header|raw }}
+            <div class="customClass1">
+                {{ titleHeader.header|raw }}
+            </div>
         {% endif %}
     </h4>
 {% endif %}
