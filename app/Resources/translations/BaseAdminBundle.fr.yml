@@ -624,6 +624,47 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     mdf:
+        conference_partner:
+            form_name: Gestion du partenaire de la conférence
+            subtitle: Titre de page
+            header: Chapô
+            partner_tab: Gestion des onglets de partenaires
+            tab:
+                title: Titre de l'onglet de partenaire
+                subTitle: Sous-titre de l'onglet partenaire
+                logo: Gestion des logos des partenaires
+                logos: Liste des onglets de partenaires disponibles
+            logo:
+                form_label: Logos partenaires
+                url: Redirection au clic sur le logo
+                image: Gestion du visuel du logo
+        conference_program:
+            file_widget: Bloc de téléchargement de fichier de la conférence
+            file_button: Ajouter un fichier à télécharger
+            form_name: Bloc de contenu de la page Conférence
+            subtitle: Titre de conférence
+            header: Chapô
+            program_day: Gestion des jours disponibles dans le programme de la conférence
+            conference_day_widget: Bloc de jour du programme
+            day:
+                new_event: Gestion d'un nouveau jour de la conférence
+            event:
+                form_name: Gestion de l'événement d'une journée
+                title: Titre de l'événement
+                subTitle: Sous-titre de l'événement
+                description: Description de l'événement
+                eventStarTime: Heure de début de l'événement
+                eventEndTime: Heure de fin de l'événement
+                eventPlace: Lieu de l'événement
+                eventAccessType: Type d'accès de l'événement
+                speakers_title: Titre du bloc d'intervenants
+                program_speakers: Gestion des Intervenants
+                speakers: Liste des intervants
+            speaker:
+                name: Nom et prénom de l'intervenant
+                description: Description de l'intervenant
+                form_name: Ajout d'un intervenant à un événement
+                image: Image de l'intervenant
         active: Activer la page
         gallery: Galeries
         status:
@@ -703,6 +744,7 @@ form:
                 gallery: Module slider
                 file: Module téléchargement de fichiers
                 youtube: Module video
+                video: Module video
         label:
             gallery: Titre de la galerie
             content_block:

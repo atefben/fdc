@@ -64,23 +64,23 @@ class MdfConferenceProgramEventAdmin extends Admin
                         )
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.conference_program.title',
+                        'label'              => 'form.mdf.conference_program.event.title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.mdf.conference_program.subTitle',
+                        'label'              => 'form.mdf.conference_program.event.subTitle',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'description'          => array(
-                        'label'              => 'form.mdf.conference_program.description',
+                        'label'              => 'form.mdf.conference_program.event.description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'eventPlace'          => array(
-                        'label'              => 'form.mdf.conference_program.eventPlace',
+                        'label'              => 'form.mdf.conference_program.event.eventPlace',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'eventAccessType'          => array(
-                        'label'              => 'form.mdf.conference_program.eventAccessType',
+                        'label'              => 'form.mdf.conference_program.event.eventAccessType',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'status'            => array(
@@ -91,24 +91,24 @@ class MdfConferenceProgramEventAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'speakersTitle'          => array(
-                        'label'              => 'form.mdf.conference_program.speakers_title',
+                        'label'              => 'form.mdf.conference_program.event.speakers_title',
                         'translation_domain' => 'BaseAdminBundle'
                     )
                 )
             ))
             ->add('startTimeEvent', 'time', array(
-                'label' => 'form.mdf.conference_program.eventStarTime',
+                'label' => 'form.mdf.conference_program.event.eventStarTime',
                 'required' => false,
                 'attr' => array('class' => 'fixed-time')
             ))
             ->add('endTimeEvent', 'time', array(
-                'label' => 'form.mdf.conference_program.eventStarTime',
+                'label' => 'form.mdf.conference_program.event.eventEndTime',
                 'required' => false,
                 'attr' => array('class' => 'fixed-time')
             ))
             ->add('speakerCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.label.speakers',
+                'label'              => 'form.mdf.conference_program.event.speakers',
                 'translation_domain' => 'BaseAdminBundle',
                 'constraints'        => array(
                     new Count(

@@ -63,11 +63,11 @@ class MdfProgramSpeakerAdmin extends Admin
                         )
                     ),
                     'name'          => array(
-                        'label'              => 'form.mdf.conference_program.speaker_name',
+                        'label'              => 'form.mdf.conference_program.speaker.name',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'description'          => array(
-                        'label'              => 'form.mdf.conference_program.speaker_description',
+                        'label'              => 'form.mdf.conference_program.speaker.description',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'status'            => array(
@@ -80,7 +80,7 @@ class MdfProgramSpeakerAdmin extends Admin
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.image',
+                'label' => 'form.mdf.conference_program.speaker.image',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true

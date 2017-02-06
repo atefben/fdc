@@ -23,7 +23,7 @@
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                {{ 'form.mdf.conference_program'|trans }}
+                                                {{ 'form.mdf.conference_program.form_name'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
@@ -73,7 +73,7 @@
                                                 <div class="box-body">
                                                     <div class="fdc-widgets" data-form-widget="collection">
                                                         <div class="item base-widget">
-                                                            <h4><strong>{{ 'form.mdf.label.conference_day_widget'|trans }}</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.conference_program.conference_day_widget'|trans }}</strong></h4>
                                                             {{ form_row(form.parent.children.dayWidgetCollections) }}
                                                         </div>
                                                     </div>
@@ -87,7 +87,7 @@
                                                 {% for widget in form.parent.children.files.children %}
                                                     <div class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'program_file_type' %}
-                                                            <h4><strong>{{ 'form.mdf.conference_program.file.widget'|trans }}</strong></h4>
+                                                            <h4><strong>{{ 'form.mdf.conference_program.file_button'|trans }}</strong></h4>
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.file) }}
@@ -100,7 +100,7 @@
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.files.vars.prototypes.program_file_type)|escape }}"><i
-                                                        class="icon-plus"></i>{{ 'form.mdf.conference_program.file.widget'|trans }}</a>
+                                                        class="icon-plus"></i>{{ 'form.mdf.conference_program.file_button'|trans }}</a>
                                         </div>
 
                                     </div>

@@ -78,7 +78,7 @@ class MdfConferencePartnerMain extends Admin
             ))
             ->add('partnerTabCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.label.partner_tab',
+                'label'              => 'form.mdf.conference_partner.partner_tab',
                 'translation_domain' => 'BaseAdminBundle',
                 'constraints'        => array(
                     new Count(

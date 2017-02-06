@@ -54,7 +54,7 @@ class MdfConferenceProgramDayAdmin extends Admin
             ))
             ->add('eventWidgetCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.label.new_program_event',
+                'label'              => 'form.mdf.conference_program.day.new_event',
                 'translation_domain' => 'BaseAdminBundle',
             ), array(
                 'edit'     => 'inline',

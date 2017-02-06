@@ -67,11 +67,11 @@ class MdfConferencePartnerTabAdmin extends Admin
                         )
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.conference_partner.title',
+                        'label'              => 'form.mdf.conference_partner.tab.title',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'subTitle'          => array(
-                        'label'              => 'form.mdf.conference_partner.subTitle',
+                        'label'              => 'form.mdf.conference_partner.tab.subTitle',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),
@@ -86,7 +86,7 @@ class MdfConferencePartnerTabAdmin extends Admin
             ))
             ->add('partnerLogoCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.label.logos',
+                'label'              => 'form.mdf.conference_partner.tab.logos',
                 'translation_domain' => 'BaseAdminBundle',
                 'constraints'        => array(
                     new Count(
