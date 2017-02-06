@@ -43,9 +43,9 @@ class TransverseController extends Controller
      */
     public function contactAction(Request $request)
     {
-        
+
         $contactUsManager = $this->get('mdf.manager.contact_us');
-        
+
         $contactPage = $contactUsManager->getContactUsPage();
         $contactBlocks = $contactUsManager->getContactBlocks($contactPage);
         $contactSubjects = $contactUsManager->getContactSubjects($contactPage);
@@ -65,6 +65,18 @@ class TransverseController extends Controller
                 'contactSubjects' => $contactSubjects,
                 'formContact' => $formContact->createView(),
             )
+        );
+    }
+
+    public function annualGraphicCharterAction()
+    {
+        $annualGraphicCharterManager = $this->get('mdf.manager.annual_graphic_charter');
+
+        return $this->render(
+            'FDCMarcheDuFilmBundle::shared/annual_graphic_charter.html.twig',
+            [
+                'graphicCharter' => $annualGraphicCharterManager->getCurrentGraphicCharter()
+            ]
         );
     }
 }

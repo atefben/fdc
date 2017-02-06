@@ -2256,7 +2256,6 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Plan du site}
 
-
     base.admin.mdf_contact_page:
         class: Base\AdminBundle\Admin\MdfContactPageAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContactPage, BaseAdminBundle:MdfContactPageAdmin]
@@ -2305,3 +2304,9 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfRubriqueQuestion, BaseAdminBundle:MdfRubriqueQuestionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Question-Answer, show_in_dashboard: false}
+
+    base.admin.mdf_annual_graphic_charter:
+        class: Base\AdminBundle\Admin\MdfAnnualGraphicCharterAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfAnnualGraphicCharter, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Charte graphique annuelle}

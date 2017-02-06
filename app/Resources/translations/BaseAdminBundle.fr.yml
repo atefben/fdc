@@ -882,6 +882,17 @@ form:
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})
+        charte_graphique_annuelle:
+            image1: Fond 1
+            image2: Fond 2
+            image3: Fond 3
+            color1: Couleur 1
+            color2: Couleur 2
+            color3: Couleur 3
+            color4: Couleur 4
+            color5: Couleur 5
+            color6: Couleur 6
+            color7: Couleur 7
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:
