@@ -113,6 +113,15 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                 ),
                 'required' => true
             ))
+            ->add('backgroundImage4', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.charte_graphique_annuelle.image4',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+                'required' => true
+            ))
         ;
     }
 

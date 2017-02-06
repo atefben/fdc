@@ -44,6 +44,14 @@ class MdfAnnualGraphicCharter
     protected $backgroundImage3;
 
     /**
+     * @var \FDC\MarcheDuFilmBundle\Entity\MediaMdfImage
+     *
+     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MediaMdfImage")
+     * @ORM\JoinColumn(name="background_image4_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $backgroundImage4;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -175,6 +183,26 @@ class MdfAnnualGraphicCharter
     public function getBackgroundImage3()
     {
         return $this->backgroundImage3;
+    }
+
+    /**
+     * @return MediaMdfImage
+     */
+    public function getBackgroundImage4()
+    {
+        return $this->backgroundImage4;
+    }
+
+    /**
+     * @param $backgroundImage4
+     *
+     * @return $this
+     */
+    public function setBackgroundImage4($backgroundImage4)
+    {
+        $this->backgroundImage4 = $backgroundImage4;
+
+        return $this;
     }
 
     /**
