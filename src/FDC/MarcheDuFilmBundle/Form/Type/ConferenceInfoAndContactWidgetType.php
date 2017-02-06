@@ -83,7 +83,7 @@ class ConferenceInfoAndContactWidgetType extends AbstractType
                 'constraints'        => array(
                     new NotBlank(),
                 ),
-                'label' => 'form.mdf.label.header_image',
+                'label' => 'form.mdf.label.conference_info_and_contact_widget_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),

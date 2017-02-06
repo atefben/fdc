@@ -873,6 +873,12 @@ form:
             question_answer_info: Informations sur les questions et réponses
             rubrique_question_text: Texte de la question
             rubrique_answer_text: Texte de réponse
+            conference_info_and_contact_widget: Bloc de contact répétable
+            conference_info_and_contact_widget_image:  Image du contact
+            conference_info_and_contact_widget_name: Nom et prénom du contact
+            conference_info_and_contact_widget_post: Poste du contact
+            conference_info_and_contact_widget_email: Email du contact
+            conference_info_and_contact_add_widget: Ajouter un contact
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})

@@ -26,9 +26,9 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.isActive) }}
                                     {{ form_row(translationsFields.title) }}
                                     {{ form_row(translationsFields.description) }}
-                                    {{ form_row(form.parent.children.isActive) }}
                                 </div>
                             </div>
                         </div>
@@ -88,10 +88,9 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                {{ 'form.mdf.label.conference_info_and_contact_widget_helper_widgets'|trans }}<br/>
                                 <a class="btn btn-primary btn-add-base-widget"
                                    data-prototype="{{ form_widget(form.parent.children.conferenceInfoAndContactWidgets.vars.prototypes.conference_info_and_contact_widget_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.mdf.label.conference_info_and_contact_widget'|trans }}</a>
+                                            class="icon-plus"></i>{{ 'form.mdf.label.conference_info_and_contact_add_widget'|trans }}</a>
                             </div>
                         </div>
                     {% else %}
