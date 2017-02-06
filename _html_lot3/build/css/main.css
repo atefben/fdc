@@ -3437,8 +3437,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push-top .vFlexAlign {
   height: 100%;
-  max-width: 100%;
-  width: 977px !important;
   margin: 0 auto;
 }
 .block-push-top .txts {
@@ -3468,16 +3466,20 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   position: absolute;
 }
 .block-push-top .date-back a, .block-push-top .date-next a {
+  /* color: #fff;
+   font-size: .8rem;
+   font-family: $CamphorHeavy;*/
   color: #fff;
-  font-size: .8rem;
+  font-size: .85rem;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: .5px;
 }
 .block-push-top .date-back i, .block-push-top .date-next i {
   display: block;
   color: #383738;
 }
 .block-push-top .date-back {
-  left: 4px;
+  left: 18px;
   top: 50%;
   transform: rotate(-90deg);
   transition: left .4s ease;
@@ -3487,7 +3489,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: 1.4rem;
 }
 .block-push-top .date-next {
-  right: 4px;
+  right: 20px;
   top: 50%;
   transform: rotate(90deg);
 }
