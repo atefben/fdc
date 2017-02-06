@@ -945,6 +945,7 @@ form:
             color5: Couleur 5
             color6: Couleur 6
             color7: Couleur 7
+            color8: Couleur 8
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:
