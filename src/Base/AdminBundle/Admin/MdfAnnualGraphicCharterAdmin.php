@@ -40,30 +40,51 @@ class MdfAnnualGraphicCharterAdmin extends Admin
             ->add('color1', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color1',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('color2', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color2',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('color3', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color3',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('color4', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color4',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('color5', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color5',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('color6', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color6',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('color7', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color7',
                 'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
             ->add('backgroundImage1', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.charte_graphique_annuelle.image1',
