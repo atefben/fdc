@@ -3282,9 +3282,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   margin-top: 15px;
 }
-.block-push .title-2 {
-  letter-spacing: 4px;
-}
 .block-push.half-div {
   text-align: center;
   height: 325px;
@@ -3296,6 +3293,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   color: #f6f6f6;
   padding-bottom: 6px;
+}
+.block-push.half-div .title-2 {
+  letter-spacing: 4px;
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
   .block-push.half-div {

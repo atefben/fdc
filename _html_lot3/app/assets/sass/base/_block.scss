@@ -274,9 +274,6 @@
     margin-top: 15px;
   }
 
-  .title-2 {
-    letter-spacing: 4px;
-  }
 
   &.half-div {
     text-align: center;
@@ -292,6 +289,10 @@
       padding-bottom: 6px;
     }
 
+    .title-2 {
+      letter-spacing: 4px;
+    }
+    
     @media screen and (min-width: 1280px) and (max-width: 1599px) {
       height: 405px;
     }
