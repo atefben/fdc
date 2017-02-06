@@ -25558,11 +25558,12 @@ option:checked,
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .marche h4 {
-  color: #2b2b2b;
   font-size: 16px;
   line-height: 40px;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0px 100px;
+  text-align: center;
+  color: #141414;
 }
 .marche h3 {
   text-transform: initial;
