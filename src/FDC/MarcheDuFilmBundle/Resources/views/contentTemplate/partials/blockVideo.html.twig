@@ -6,7 +6,7 @@
      data-name="{{ widget.title }}"
      data-file='[{"file":"{{ widget.url }}"}]'
      data-img="{% path widget.translatable.image|trans_fallback('file'), 'reference' %}">
-    <div id="{{ '100' ~ date().timestamp }}" class="video-player">
+    <div id="{{ widget.id }}" class="video-player">
     <!-- <div id="vtest"> -->
 </div>
 <div class="video-overlay"></div>
