@@ -7814,6 +7814,7 @@ footer .footer-menu ul li a:hover {
 }
 
 #breadcrumb {
+  border-bottom: 1px solid #2c2c2c;
   position: relative;
 }
 #breadcrumb:after {
