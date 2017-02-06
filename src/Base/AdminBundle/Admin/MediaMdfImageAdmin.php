@@ -64,11 +64,6 @@ class MediaMdfImageAdmin extends Admin
                 'label'      => 'filter.media_image.displayed_all',
 
             ))
-            ->add('displayedHome', null, array(
-                'field_type' => 'checkbox',
-                'label'      => 'filter.media_image.displayed_home',
-
-            ))
         ;
     }
 
