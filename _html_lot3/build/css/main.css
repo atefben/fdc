@@ -9717,6 +9717,14 @@ body#home .isotope-01 .item .contain-img {
   position: relative;
   height: 100%;
 }
+.slider-home .container-txts sub {
+  vertical-align: sub !important;
+  font-size: .5rem;
+}
+.slider-home .container-txts sup {
+  vertical-align: super !important;
+  font-size: .5rem;
+}
 .slider-home .texts {
   width: 525px;
   height: 497px;
