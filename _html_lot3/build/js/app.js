@@ -139,20 +139,22 @@ var initVideo = function(hash) {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        var infos = {
-            "category": $container.parent().find('.info .category').html(),
-            "date": $container.parent().find('.info .date').html(),
-            "hour": $container.parent().find('.info .hour').html(),
-            "name": $container.parent().find('.info p').html()
-        }
+        setTimeout(function(){
+            var infos = {
+                "category": $container.parent().find('.info .category').html(),
+                "date": $container.parent().find('.info .date').html(),
+                "hour": $container.parent().find('.info .hour').html(),
+                "name": $container.parent().find('.info p').html()
+            }
 
-        console.log(infos);
+            console.log(infos);
 
-        $topBar.find('.info .category').text(infos.category);
-        $topBar.find('.info .date').text(infos.date);
-        $topBar.find('.info .hour').text(infos.hour);
-        $topBar.find('.info p').text(infos.name);
-        $topBar.find('.info').append($infoBar.html());
+            $topBar.find('.info .category').html(infos.category);
+            $topBar.find('.info .date').html(infos.date);
+            $topBar.find('.info .hour').html(infos.hour);
+            $topBar.find('.info p').html(infos.name);
+
+        }, 700);
 
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
@@ -518,7 +520,7 @@ var initVideo = function(hash) {
                 var tempSlide = $(slide);
 
                 var catTrunc = p.category;
-                catTrunc = catTrunc.trunc(20, true);
+                catTrunc = catTrunc.trunc(15, true);
 
                 tempSlide.find('.image-wrapper img').attr('src',p.image);
                 tempSlide.find('.info-container .category').html(catTrunc);

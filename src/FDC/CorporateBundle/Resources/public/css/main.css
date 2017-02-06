@@ -2611,6 +2611,9 @@ body.loading:before {
 #main.block-mediatheque {
   background-color: #141414;
 }
+.media-library #main {
+  background-color: #141414;
+}
 #main:after {
   background-color: #141414;
   content: '';
