@@ -113,11 +113,13 @@
 
                 <ol>
                   <li>Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>
-                  <li>Bénéficiez d'un accès gratuit pendant un an à Cinando</li>
+                  <li>Bénéficiez d'un accès gratuit pendant un an à Cinando
                     <ol>
                       <li>Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</li>
                       <li>Bénéficiez d'un accès gratuit pendant un an à Cinando</li>
                     </ol>
+                  </li>
+
                   <li><i> Rencontrez des experts</i>  du monde entier dans le cadre de nos Industry Programs</li>
                   <li>Participez aux conférences NEXT dédiées au futur du cinéma</li>
                   <li>Plus de 1000 projections<sup>2<sup></li>
