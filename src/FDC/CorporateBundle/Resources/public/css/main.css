@@ -2561,7 +2561,7 @@ a {
 }
 
 .no-margin {
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
 }
 
 html {
@@ -7341,6 +7341,7 @@ header #logo-wrapper #partners img.oreal {
 }
 header #logo-wrapper #partners img.renault {
   margin-top: 2px;
+  margin-right: 11px;
 }
 header #logo-wrapper #partners img.kering {
   margin-top: -2px;
