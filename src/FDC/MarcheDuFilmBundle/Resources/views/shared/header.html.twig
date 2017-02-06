@@ -79,20 +79,20 @@
                         or routeName == 'fdc_marche_du_film_conference_speakers'
                         or routeName == 'fdc_marche_du_film_conference_news'
                         or routeName == 'fdc_marche_du_film_conference_partners'
-                        ? 'active ' : '' }}red">{{ 'menu.edition'|trans }}
+                        ? 'active ' : '' }}editionColor">{{ 'menu.edition'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="{{routeName =='fdc_marche_du_film_accreditations' ? 'active ' : '' }}blue">{{ 'menu.accreditation'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="{{routeName =='fdc_marche_du_film_accreditations' ? 'active ' : '' }}accreditationColor">{{ 'menu.accreditation'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' ? 'active ' : '' }}blue">{{ 'menu.services'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' ? 'active ' : '' }}servicesColor">{{ 'menu.services'|trans }}</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="{{ routeName == 'fdc_marche_du_film_who_are_we_history'
                         or routeName =='fdc_marche_du_film_who_are_we_key_figures'
                         or routeName =='fdc_marche_du_film_who_are_we_team'
-                        ? 'active ' : '' }}golden">{{ 'menu.who_are_we'|trans }}
+                        ? 'active ' : '' }}whoAreWeColor">{{ 'menu.who_are_we'|trans }}
                         </a>
                     </li>
                     <li>
@@ -100,10 +100,10 @@
                         or routeName =='fdc_marche_du_film_press_coverage'
                         or routeName =='fdc_marche_du_film_press_gallery'
                         or routeName =='fdc_marche_du_film_press_graphical_charter'
-                        ? 'active ' : '' }}golden">{{ 'menu.press'|trans }}</a>
+                        ? 'active ' : '' }}presseColor">{{ 'menu.press'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="golden">{{ 'menu.faq'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="utilInfoColor">{{ 'menu.faq'|trans }}</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">

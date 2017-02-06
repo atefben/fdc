@@ -1,6 +1,18 @@
 <style>
     .customClass1 {
-        color: {{ graphicCharter.color1 }};
+        color: {{ graphicCharter.color1 }} !important;
+    }
+    .customClass1BckgColor {
+        background-color: {{ graphicCharter.color1 }} !important;
+    }
+    .customClass1BckgColorHover:hover {
+        background-color: {{ graphicCharter.color1 }} !important;
+    }
+    .projection .programme:hover div:nth-child(3).customClass1BckgColorHover {
+        background-color: {{ graphicCharter.color1 }} !important;
+    }
+    .customClass1 a:link {
+        color: {{ graphicCharter.color1 }} !important;
     }
     .customClass2 {
         color: {{ graphicCharter.color2 }};
@@ -29,4 +41,55 @@
     .customClass3Bckg {
         background: url({% path graphicCharter.backgroundImage3|trans_fallback('file'), 'reference' %});
     }
+
+    header #navigation ul li a.editionColor:hover,
+    header #navigation ul li a.editionColor.active {
+        color: {{ graphicCharter.color1 }};
+    }
+
+    header #navigation ul li a.accreditationColor:hover,
+    header #navigation ul li a.accreditationColor.active {
+        color: {{ graphicCharter.color2 }};
+    }
+
+    header #navigation ul li a.servicesColor:hover,
+    header #navigation ul li a.servicesColor.active {
+        color: {{ graphicCharter.color2 }};
+    }
+
+    header #navigation ul li a.whoAreWeColor:hover,
+    header #navigation ul li a.whoAreWeColor.active {
+        color: {{ graphicCharter.color4 }};
+    }
+
+    header #navigation ul li a.presseColor:hover,
+    header #navigation ul li a.presseColor.active {
+        color: {{ graphicCharter.color4 }};
+    }
+
+    header #navigation ul li a.utilInfoColor:hover,
+    header #navigation ul li a.utilInfoColor.active {
+        color: {{ graphicCharter.color4 }};
+    }
+
+    #subMenu {
+        background: {{ graphicCharter.color1 }};
+    }
+
+    #owl-second .redarrowLeft, #owl-second .redarrowRight {
+        background: {{ graphicCharter.color1 }};
+    }
+
+    #owl-mid .redarrowLeft, #owl-mid .redarrowRight {
+        background: {{ graphicCharter.color1 }};
+    }
+
+    .purpleBtn {
+        background: {{ graphicCharter.color1 }};
+    }
+
+    .selectText {
+        color: {{ graphicCharter.color1 }} !important;
+    }
+
 </style>

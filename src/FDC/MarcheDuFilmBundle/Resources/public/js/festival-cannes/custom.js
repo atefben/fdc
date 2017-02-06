@@ -53,7 +53,7 @@ window.onunload = function(){};
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:true,
-      navText: ["<div class='redarrowLeft customClass1'><i class='icon icon_flecheGauche customClass1'></div>","<div class='redarrowRight customClass1'><i class='icon icon_flecheGauche reverse customClass1'></div>"]
+      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
 
   });
 
@@ -106,7 +106,7 @@ window.onunload = function(){};
       paginationSpeed : 400,
       items : 3,
       margin:10,
-      navText: ["<div class='redarrowLeft customClass1'><i class='icon icon_flecheGauche customClass1'></div>","<div class='redarrowRight customClass1'><i class='icon icon_flecheGauche reverse customClass1'></div>"]
+      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
 
   });
 
