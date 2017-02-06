@@ -2203,7 +2203,7 @@ var owInitGrid = function (id) {
 
                         setTimeout(function(){
                             $grid.isotope( 'addItems', $data )
-                        }, 1000);
+                        }, 1500);
                         
                         $grid.isotope();
 
