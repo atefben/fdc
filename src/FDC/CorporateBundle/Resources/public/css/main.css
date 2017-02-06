@@ -7326,6 +7326,9 @@ header #navigation {
     overflow: hidden;
   }*/
 }
+header #navigation ul .actu .tcenter {
+  text-align: left;
+}
 header #navigation ul {
   float: left;
 }
