@@ -56,7 +56,7 @@ var owInitSlider = function (sliderName) {
             var textTrunc = $(e).find('.text-trunc p');
             var textI = textTrunc[0].innerText;
 
-            title.html(text.trunc(35, true));
+            title.html(text.trunc(40, true));
             textTrunc.html(textI.trunc(400, false));
         });
 
