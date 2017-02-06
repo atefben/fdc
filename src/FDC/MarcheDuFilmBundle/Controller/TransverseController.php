@@ -79,4 +79,15 @@ class TransverseController extends Controller
             ]
         );
     }
+    
+    public function sliderAccreditationAction()
+    {
+        $sliderAccreditationManager = $this->get('mdf.manager.slider_accreditation');
+        $slidersAccreditation = $sliderAccreditationManager->getAllSlidersAccreditation();
+        
+        return $this->render('FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig', array(
+                'sliders' => $slidersAccreditation,
+            )
+        );
+    }
 }

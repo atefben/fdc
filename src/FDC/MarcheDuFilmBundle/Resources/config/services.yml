@@ -168,3 +168,9 @@ services:
         class: FDC\MarcheDuFilmBundle\Manager\AnnualGraphicCharterManager
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    mdf.manager.slider_accreditation:
+        class: FDC\MarcheDuFilmBundle\Manager\SliderAccreditationManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

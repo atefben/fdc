@@ -170,6 +170,13 @@ class MediaMdfImage extends MediaMdf
      * @ORM\OneToMany(targetEntity="MediaMdfAudio", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
      */
     protected $mediaMdfAudio;
+
+    /**
+     * @var MdfSliderAccreditation
+     *
+     * @ORM\OneToMany(targetEntity="MdfSliderAccreditation", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="image")
+     */
+    protected $sliderAccreditation;
     
     public function __construct()
     {
@@ -192,6 +199,7 @@ class MediaMdfImage extends MediaMdf
         $this->speakersDetails = new ArrayCollection();
         $this->mediaMdfVideo = new ArrayCollection();
         $this->mediaMdfAudio = new ArrayCollection();
+        $this->sliderAccreditation = new ArrayCollection();
     }
 
     public function getApiTranslations()
@@ -748,5 +756,33 @@ class MediaMdfImage extends MediaMdf
     public function getMediaMdfAudio()
     {
         return $this->mediaMdfAudio;
+    }
+
+    /**
+     * @param MdfSliderAccreditation $sliderAccreditation
+     * @return $this
+     */
+    public function addSliderAccreditation(\FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditation $sliderAccreditation)
+    {
+        $sliderAccreditation->setImage($this);
+        $this->sliderAccreditation[] = $sliderAccreditation;
+
+        return $this;
+    }
+
+    /**
+     * @param MdfSliderAccreditation $sliderAccreditation
+     */
+    public function removeSliderAccreditation(\FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditation $sliderAccreditation)
+    {
+        $this->sliderAccreditation->removeElement($sliderAccreditation);
+    }
+
+    /**
+     * @return ArrayCollection|MdfSliderAccreditation
+     */
+    public function getSliderAccreditation()
+    {
+        return $this->sliderAccreditation;
     }
 }

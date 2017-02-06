@@ -52,3 +52,12 @@ header #navigation ul li a.golden.active {
     color: #f8f8f8 !important;
 
 }
+
+/* Accreditation slider */
+#owl-accred .altImgCustom, #owl-projections .altImgCustom {
+    width: 100%;
+    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+}

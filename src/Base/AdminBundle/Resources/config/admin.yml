@@ -2310,3 +2310,18 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfAnnualGraphicCharter, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Charte graphique annuelle}
+
+
+    base.admin.mdf_slider_accreditation_page:
+        class: Base\AdminBundle\Admin\MdfSliderAccreditationPageAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditationPage, BaseAdminBundle:MdfSliderAccreditationPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Slider Accreditation Configuration}
+
+    base.admin.mdf_slider_accreditation:
+        class: Base\AdminBundle\Admin\MdfSliderAccreditationAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditation, BaseAdminBundle:MdfSliderAccreditationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Slider Accreditation, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
