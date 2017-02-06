@@ -1895,7 +1895,7 @@ services:
         class: Base\AdminBundle\Admin\MdfEditionProjectionsAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionProjectionsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: EditionProjections}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Projections - age de contenu}
 
     base.admin.mdf_industry_program_home:
         class: Base\AdminBundle\Admin\MdfIndustryProgramHomeAdmin
@@ -1949,7 +1949,7 @@ services:
         class: Base\AdminBundle\Admin\MdfConferenceProgramDayAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramDay, BaseAdminBundle:MdfConferenceProgramDayAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Day, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gestion d'un nouveau jour de la conférence, show_in_dashboard: false}
 
     base.admin.mdf_conference_program_day_collection:
         class: Base\AdminBundle\Admin\MdfConferenceProgramDayCollectionAdmin
@@ -1961,7 +1961,7 @@ services:
         class: Base\AdminBundle\Admin\MdfConferenceProgramEventAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramEvent, BaseAdminBundle:MdfConferenceProgramEventAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Conference Program Event, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Gestion de l'événement, show_in_dashboard: false}
 
     base.admin.mdf_conference_program_event_collection:
         class: Base\AdminBundle\Admin\MdfConferenceProgramEventCollectionAdmin
@@ -1973,7 +1973,7 @@ services:
         class: Base\AdminBundle\Admin\MdfProgramSpeakerAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfProgramSpeaker, BaseAdminBundle:MdfProgramSpeakerAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Program Speakers, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Ajout d'un intervenant, show_in_dashboard: false}
 
     base.admin.mdf_program_speaker_collection:
         class: Base\AdminBundle\Admin\MdfProgramSpeakerCollectionAdmin
@@ -2074,13 +2074,13 @@ services:
         class: Base\AdminBundle\Admin\MdfConferencePartnerTabAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTab, BaseAdminBundle:MdfConferencePartnerTabAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference partner tab, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Onglet de partenaire, show_in_dashboard: false}
 
     base.admin.mdf_conference_partner_logo:
         class: Base\AdminBundle\Admin\MdfConferencePartnerLogoAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerLogo, BaseAdminBundle:MdfConferencePartnerLogoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Conference partner logo, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_workshop, label: Logos partenaires, show_in_dashboard: false}
 
     base.admin.mdf_conference_partner_tab_collection:
         class: Base\AdminBundle\Admin\MdfConferencePartnerTabCollectionAdmin

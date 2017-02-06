@@ -33,4 +33,10 @@
             </div>
         </div>
     </div>
+    {% include 'FDCMarcheDuFilmBundle::contentTemplate/partials/contentTemplateFloatingButtons.html.twig' with {
+    backRoute: 'fdc_marche_du_film_press_coverage',
+    backRouteLabel: 'retombées presse',
+    nextRoute:'fdc_marche_du_film_press_graphical_charter',
+    nextRouteLabel: 'charte graphique'
+    } %}
 {% endblock main %}

@@ -62,7 +62,7 @@ class MdfConferencePartnerLogoAdmin extends Admin
                         )
                     ),
                     'url'          => array(
-                        'label'              => 'form.mdf.conference_partner.url',
+                        'label'              => 'form.mdf.conference_partner.logo.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),
@@ -76,7 +76,7 @@ class MdfConferencePartnerLogoAdmin extends Admin
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.image',
+                'label' => 'form.mdf.conference_partner.logo.image',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false
             ))

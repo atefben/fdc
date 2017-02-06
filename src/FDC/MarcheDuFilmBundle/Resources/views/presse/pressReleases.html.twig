@@ -27,5 +27,11 @@
             </div>
         </div>
     </div>
+    {% include 'FDCMarcheDuFilmBundle::contentTemplate/partials/contentTemplateFloatingButtons.html.twig' with {
+        backRoute: '',
+        backRouteLabel: '',
+        nextRoute:'fdc_marche_du_film_press_coverage',
+        nextRouteLabel: 'retombées presse'
+    } %}
     {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
 {% endblock %}

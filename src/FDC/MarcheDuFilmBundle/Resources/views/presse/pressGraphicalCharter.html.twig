@@ -33,4 +33,10 @@
             </div>
         </div>
     </div>
+    {% include 'FDCMarcheDuFilmBundle::contentTemplate/partials/contentTemplateFloatingButtons.html.twig' with {
+    backRoute: 'fdc_marche_du_film_press_gallery',
+    backRouteLabel: 'galerie photos',
+    nextRoute:'',
+    nextRouteLabel: ''
+    } %}
 {% endblock main %}

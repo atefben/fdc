@@ -19,4 +19,10 @@
             {% endif %}
         </div><!--CONTAINER-->
     </div>
+    {% include 'FDCMarcheDuFilmBundle::contentTemplate/partials/contentTemplateFloatingButtons.html.twig' with {
+    backRoute: 'fdc_marche_du_film_press_releases',
+    backRouteLabel: 'communiques',
+    nextRoute:'fdc_marche_du_film_press_gallery',
+    nextRouteLabel: 'galerie photos'
+    } %}
 {% endblock %}
