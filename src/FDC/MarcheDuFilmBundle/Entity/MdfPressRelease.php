@@ -70,7 +70,7 @@ class MdfPressRelease
     /**
      * @param MdfPressReleaseFile $file
      */
-    public function addFil(MdfPressReleaseFile $file)
+    public function addFile(MdfPressReleaseFile $file)
     {
         $file->setPressRelease($this);
         $this->files->add($file);
@@ -79,7 +79,7 @@ class MdfPressRelease
     /**
      * @param MdfPressReleaseFile $file
      */
-    public function removeFil(MdfPressReleaseFile $file)
+    public function removeFile(MdfPressReleaseFile $file)
     {
         $this->files->removeElement($file);
     }
@@ -90,5 +90,40 @@ class MdfPressRelease
     public function getFiles()
     {
         return $this->files;
+    }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getSubtitle();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getSubtitle();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }

@@ -3,11 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Admin\MdfContentTemplateAdmin;
-
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfLegalMentionsAdmin extends MdfContentTemplateAdmin
 {

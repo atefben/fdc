@@ -103,39 +103,11 @@ abstract class MediaMdf implements TranslateMainInterface
     private $publishEndedAt;
 
     /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="\Base\CoreBundle\Entity\Site")
-     */
-    private $sites;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\FilmFestival")
-     */
-    private $festival;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
     private $displayedAll;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     */
-    private $displayedHome;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     */
-    private $displayedMobile;
 
     /**
      * @var boolean
@@ -183,40 +155,11 @@ abstract class MediaMdf implements TranslateMainInterface
      */
     private $updatedBy;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\FilmFilm")
-     *
-     * @Groups({"news_show"})
-     */
-    private $associatedFilm;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="\Base\CoreBundle\Entity\Event")
-     *
-     * @Groups({"news_show"})
-     */
-    private $associatedEvent;
-
-    /**
-     * @ORM\OneToMany(targetEntity="MediaMdfFilmProjectionAssociated", mappedBy="media", cascade={"all"}, orphanRemoval=true)
-     *
-     * @Groups({"news_show"})
-     */
-    private $associatedProjections;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $oldMediaId;
-
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
-        $this->sites = new ArrayCollection();
         $this->displayedAll = false;
-        $this->displayedHome = false;
-        $this->displayedMobile = false;
     }
 
     public function __toString()
@@ -328,16 +271,6 @@ abstract class MediaMdf implements TranslateMainInterface
     }
 
     /**
-     * Get publishedAt
-     *
-     * @return \DateTime
-     */
-    public function getApiPublishedAt()
-    {
-        return $this->publishedAt ? $this->publishedAt : new \DateTime();
-    }
-
-    /**
      * Set publishEndedAt
      *
      * @param \DateTime $publishEndedAt
@@ -358,40 +291,6 @@ abstract class MediaMdf implements TranslateMainInterface
     public function getPublishEndedAt()
     {
         return $this->publishEndedAt;
-    }
-
-
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaMdfImageTranslation
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSites()
-    {
-        return $this->sites;
     }
 
     /**
@@ -418,29 +317,6 @@ abstract class MediaMdf implements TranslateMainInterface
     }
 
     /**
-     * Set displayedHome
-     *
-     * @param boolean $displayedHome
-     * @return Media
-     */
-    public function setDisplayedHome($displayedHome)
-    {
-        $this->displayedHome = $displayedHome;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedHome
-     *
-     * @return boolean
-     */
-    public function getDisplayedHome()
-    {
-        return $this->displayedHome;
-    }
-
-    /**
      * Set theme
      *
      * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $theme
@@ -461,29 +337,6 @@ abstract class MediaMdf implements TranslateMainInterface
     public function getTheme()
     {
         return $this->theme;
-    }
-
-    /**
-     * Set displayedMobile
-     *
-     * @param boolean $displayedMobile
-     * @return News
-     */
-    public function setDisplayedMobile($displayedMobile)
-    {
-        $this->displayedMobile = $displayedMobile;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedMobile
-     *
-     * @return boolean
-     */
-    public function getDisplayedMobile()
-    {
-        return $this->displayedMobile;
     }
 
     /**
@@ -532,110 +385,6 @@ abstract class MediaMdf implements TranslateMainInterface
         return $this->updatedBy;
     }
 
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return Media
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
-
-    /**
-     * Set associatedFilm
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $associatedFilm
-     * @return Media
-     */
-    public function setAssociatedFilm(\Base\CoreBundle\Entity\FilmFilm $associatedFilm = null)
-    {
-        $this->associatedFilm = $associatedFilm;
-
-        return $this;
-    }
-
-    /**
-     * Get associatedFilm
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm
-     */
-    public function getAssociatedFilm()
-    {
-        return $this->associatedFilm;
-    }
-
-    /**
-     * Set associatedEvent
-     *
-     * @param \Base\CoreBundle\Entity\Event $associatedEvent
-     * @return Media
-     */
-    public function setAssociatedEvent(\Base\CoreBundle\Entity\Event $associatedEvent = null)
-    {
-        $this->associatedEvent = $associatedEvent;
-
-        return $this;
-    }
-
-    /**
-     * Get associatedEvent
-     *
-     * @return \Base\CoreBundle\Entity\Event
-     */
-    public function getAssociatedEvent()
-    {
-        return $this->associatedEvent;
-    }
-
-    /**
-     * Add associatedProjections
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated $associatedProjections
-     * @return Media
-     */
-    public function addAssociatedProjection(\FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated $associatedProjections)
-    {
-        $associatedProjections->setMedia($this);
-        $this->associatedProjections[] = $associatedProjections;
-
-        return $this;
-    }
-
-
-    /**
-     * Remove associatedProjections
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated $associatedProjections
-     */
-    public function removeAssociatedProjection(\FDC\MarcheDuFilmBundle\Entity\MediaMdfFilmProjectionAssociated $associatedProjections)
-    {
-        $this->associatedProjections->removeElement($associatedProjections);
-    }
-
-    /**
-     * Get associatedProjections
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAssociatedProjections()
-    {
-        return $this->associatedProjections;
-    }
-
     public function isElasticable()
     {
         $isElasticable = true;
@@ -665,33 +414,10 @@ abstract class MediaMdf implements TranslateMainInterface
     /**
      * Get excludeFromSearch
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getExcludeFromSearch()
     {
         return $this->excludeFromSearch;
-    }
-
-    /**
-     * Set oldMediaId
-     *
-     * @param integer $oldMediaId
-     * @return Media
-     */
-    public function setOldMediaId($oldMediaId)
-    {
-        $this->oldMediaId = $oldMediaId;
-
-        return $this;
-    }
-
-    /**
-     * Get oldMediaId
-     *
-     * @return integer 
-     */
-    public function getOldMediaId()
-    {
-        return $this->oldMediaId;
     }
 }

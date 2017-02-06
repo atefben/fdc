@@ -3,11 +3,8 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class MdfThemeAdmin
@@ -45,7 +42,6 @@ class MdfThemeAdmin extends Admin
             ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
                     'delete' => array(),
                 ),
@@ -76,18 +72,6 @@ class MdfThemeAdmin extends Admin
                     )
                 )
             ))
-        ;
-
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
-            ->add('title')
         ;
     }
 }

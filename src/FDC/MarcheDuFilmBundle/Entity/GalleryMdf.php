@@ -4,14 +4,11 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\SeoMain;
 
 use Base\CoreBundle\Util\TranslateMain;
 use Base\AdminBundle\Component\Admin\Export;
-use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use FDC\MarcheDuFilmBundle\Entity\MdfTheme;
 
 use Base\CoreBundle\Util\Time;
 use JMS\Serializer\Annotation\Groups;
@@ -65,27 +62,6 @@ class GalleryMdf implements TranslateMainInterface
     private $homepage;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    private $displayedHomeCorpo;
-
-    /**
-     * @var MdfTheme
-     *
-     * @ORM\ManyToOne(targetEntity="\FDC\MarcheDuFilmBundle\Entity\MdfTheme")
-     *
-     */
-    private $themeHomeCorpo;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $dateHomeCorpo;
-    /**
      * ArrayCollection
      */
     protected $translations;
@@ -124,11 +100,11 @@ class GalleryMdf implements TranslateMainInterface
 
         return $string;
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -218,7 +194,7 @@ class GalleryMdf implements TranslateMainInterface
     /**
      * Get medias
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedias()
     {
@@ -233,75 +209,5 @@ class GalleryMdf implements TranslateMainInterface
     public function getExportUpdatedAt()
     {
         return Export::formatDate($this->getUpdatedAt());
-    }
-
-
-    /**
-     * Set displayedHomeCorpo
-     *
-     * @param boolean $displayedHomeCorpo
-     * @return GalleryMdf
-     */
-    public function setDisplayedHomeCorpo($displayedHomeCorpo)
-    {
-        $this->displayedHomeCorpo = $displayedHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedHomeCorpo
-     *
-     * @return boolean 
-     */
-    public function getDisplayedHomeCorpo()
-    {
-        return $this->displayedHomeCorpo;
-    }
-
-    /**
-     * Set dateHomeCorpo
-     *
-     * @param \DateTime $dateHomeCorpo
-     * @return GalleryMdf
-     */
-    public function setDateHomeCorpo($dateHomeCorpo)
-    {
-        $this->dateHomeCorpo = $dateHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get dateHomeCorpo
-     *
-     * @return \DateTime 
-     */
-    public function getDateHomeCorpo()
-    {
-        return $this->dateHomeCorpo;
-    }
-
-    /**
-     * Set themeHomeCorpo
-     *
-     * @param \FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo
-     * @return GalleryMdf
-     */
-    public function setThemeHomeCorpo(\FDC\MarcheDuFilmBundle\Entity\MdfTheme $themeHomeCorpo = null)
-    {
-        $this->themeHomeCorpo = $themeHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get themeHomeCorpo
-     *
-     * @return \FDC\MarcheDuFilmBundle\Entity\MdfTheme
-     */
-    public function getThemeHomeCorpo()
-    {
-        return $this->themeHomeCorpo;
     }
 }

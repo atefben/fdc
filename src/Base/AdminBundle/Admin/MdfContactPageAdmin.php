@@ -6,7 +6,6 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Email;
@@ -39,9 +38,7 @@ class MdfContactPageAdmin extends Admin
             ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -136,13 +133,10 @@ class MdfContactPageAdmin extends Admin
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-            ->add('title')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

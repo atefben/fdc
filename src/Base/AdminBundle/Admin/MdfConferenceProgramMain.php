@@ -3,10 +3,9 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfConferenceProgramMain extends Admin
 {
@@ -36,9 +35,7 @@ class MdfConferenceProgramMain extends Admin
             ->add('subTitle')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -50,6 +47,10 @@ class MdfConferenceProgramMain extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
@@ -71,10 +72,6 @@ class MdfConferenceProgramMain extends Admin
                         'field_type'         => 'ckeditor',
                     )
                 )
-            ))
-            ->add('isActive', 'checkbox', array(
-                'label' => 'form.mdf.active',
-                'required' => false
             ))
             ->add('contentTemplateConferenceWidgets', 'infinite_form_polycollection', array(
                 'label' => false,
@@ -104,21 +101,18 @@ class MdfConferenceProgramMain extends Admin
                 'label'              => 'form.mdf.label.new_program_day',
                 'translation_domain' => 'BaseAdminBundle',
             ), array(
-                      'edit'     => 'inline',
-                      'inline'   => 'table',
-                      'sortable' => 'position',
-                  ))
+                'edit'     => 'inline',
+                'inline'   => 'table',
+                'sortable' => 'position',
+            ))
         ;
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-            ->add('title')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

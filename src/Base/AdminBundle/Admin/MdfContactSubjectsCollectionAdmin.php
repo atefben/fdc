@@ -9,10 +9,9 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-
 /**
  * MdfContactSubjectsCollectionAdmin class.
- * 
+ *
  * \@extends Admin
  */
 class MdfContactSubjectsCollectionAdmin extends Admin

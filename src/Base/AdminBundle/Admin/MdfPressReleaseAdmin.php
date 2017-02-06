@@ -3,9 +3,9 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfPressReleaseAdmin extends Admin
 {
@@ -32,11 +32,10 @@ class MdfPressReleaseAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -84,12 +83,10 @@ class MdfPressReleaseAdmin extends Admin
     }
 
     /**
-     * @param ShowMapper $showMapper
+     * @param RouteCollection $collection
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $showMapper
-            ->add('id')
-        ;
+        $collection->clearExcept(['edit', 'list']);
     }
 }

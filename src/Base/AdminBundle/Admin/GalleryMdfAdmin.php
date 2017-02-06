@@ -83,17 +83,6 @@ class GalleryMdfAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'titleHomeCorpo' => array(
-                        'label' => 'form.homepage_corporate.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                    ),
-                    'introductionHomeCorpo' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
@@ -111,22 +100,6 @@ class GalleryMdfAdmin extends Admin
                 'edit'     => 'inline',
                 'inline'   => 'table',
                 'sortable' => 'position',
-            ))
-            ->add('displayedHomeCorpo','checkbox',array(
-                'label' => 'form.label_homepage_corpo_display',
-                'required' => false
-            ))
-            ->add('themeHomeCorpo', 'sonata_type_model_list', array(
-                'label' => 'form.label_theme',
-                'btn_delete' => false
-            ))
-            ->add('dateHomeCorpo', 'sonata_type_datetime_picker', array(
-                'label'   => 'form.label_date',
-                'format'   => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr'     => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(

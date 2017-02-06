@@ -2,13 +2,8 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
-use Application\Sonata\MediaBundle\Entity\Media;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Util\SeoMain;
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -145,5 +140,40 @@ class MdfConferenceInfoAndContact
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }

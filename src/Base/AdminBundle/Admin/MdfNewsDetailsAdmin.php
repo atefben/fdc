@@ -7,7 +7,6 @@ use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class MdfNewsDetailsAdmin
@@ -44,10 +43,9 @@ class MdfNewsDetailsAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id')
             ->add('title')
             ->add('theme.title')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -139,5 +137,13 @@ class MdfNewsDetailsAdmin extends Admin
     {
         parent::prePersist($page);
         $page->setType(MdfContentTemplate::TYPE_NEWS_DETAILS);
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list', 'create']);
     }
 }

@@ -2,12 +2,9 @@
 
 namespace Base\AdminBundle\Admin;
 
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MdfContactSubjectAdmin extends Admin
@@ -63,15 +60,5 @@ class MdfContactSubjectAdmin extends Admin
                 ),
             ))
         ;
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
-            ->add('contactTheme');
     }
 }

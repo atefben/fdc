@@ -11,7 +11,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * MediaMdfAdmin class.
- * 
+ *
  * \@extends Admin
  */
 class MediaMdfAdmin extends Admin
@@ -37,9 +37,6 @@ class MediaMdfAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('displayedMobile', null, array(
-                'label' => 'list.displayed_mobile',
-            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

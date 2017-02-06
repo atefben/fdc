@@ -8,10 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
 /**
  * MdfGlobalEventsScheduleCollectionAdmin class.
- * 
+ *
  * \@extends Admin
  */
 class MdfGlobalEventsSchedulesCollectionAdmin extends Admin
@@ -51,6 +50,7 @@ class MdfGlobalEventsSchedulesCollectionAdmin extends Admin
         $formMapper
             ->add('schedule', 'sonata_type_model_list', array(
                     'label' => 'form.mdf.label.global_event_day_schedule',
+                    'btn_delete' => false
                 )
             )
         ;

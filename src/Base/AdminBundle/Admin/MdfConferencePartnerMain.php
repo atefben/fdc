@@ -3,10 +3,10 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Validator\Constraints\Count;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfConferencePartnerMain extends Admin
 {
@@ -33,6 +33,7 @@ class MdfConferencePartnerMain extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -49,6 +50,10 @@ class MdfConferencePartnerMain extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
@@ -71,10 +76,6 @@ class MdfConferencePartnerMain extends Admin
                     )
                 )
             ))
-            ->add('isActive', 'checkbox', array(
-                'label' => 'form.mdf.active',
-                'required' => false
-            ))
             ->add('partnerTabCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
                 'label'              => 'form.mdf.label.partner_tab',
@@ -95,5 +96,13 @@ class MdfConferencePartnerMain extends Admin
                 'sortable' => 'position',
             ))
         ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }

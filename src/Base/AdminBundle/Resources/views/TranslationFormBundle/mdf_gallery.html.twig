@@ -38,29 +38,8 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{  form_row(form.parent.children.displayedHomeCorpo) }}
-                            </div>
-                        </div>
                         <div id="level-nav" class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-4">
-                                                {{ form_row(form.parent.children.dateHomeCorpo) }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    {{ form_row(form.parent.children.themeHomeCorpo) }}
-                                </div>
-                                <div class="form-group">
-                                    {{ form_row(translationsFields.titleHomeCorpo) }}
-                                    {{ form_row(translationsFields.introductionHomeCorpo) }}
-                                </div>
                                 <div class="form-group fdc-input-border">
                                     {{ form_widget(form.parent.children.translate) }}
                                     {{ form_label(form.parent.children.translate) }}
@@ -73,43 +52,6 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="col-md-12">
-                        {% if form.vars.default_locale == locale %}
-
-                        {% else %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.french_version'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label_title'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.titleHomeCorpo }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label_alt_img'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
-                                                <div>
-                                                    {{ form.children.fr.vars.value.introductionHomeCorpo }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
 

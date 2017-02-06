@@ -5,9 +5,7 @@ namespace Base\AdminBundle\Admin;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-
 
 class MdfDispatchDeServiceAdmin extends Admin
 {
@@ -29,13 +27,13 @@ class MdfDispatchDeServiceAdmin extends Admin
         );
     }
 
-//    /**
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection->clearExcept(['edit', 'list']);
-//    }
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
+    }
 
     /**
      * @param ListMapper $listMapper
@@ -44,11 +42,10 @@ class MdfDispatchDeServiceAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -107,16 +104,6 @@ class MdfDispatchDeServiceAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
-        ;
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
         ;
     }
 }
