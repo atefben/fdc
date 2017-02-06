@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    {% include 'FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig' %}
+    {{ render(controller('FDCMarcheDuFilmBundle:Transverse:sliderAccreditation')) }}
     {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
 
 {% endblock main %}

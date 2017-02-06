@@ -921,6 +921,15 @@ form:
             conference_info_and_contact_widget_post: Poste du contact
             conference_info_and_contact_widget_email: Email du contact
             conference_info_and_contact_add_widget: Ajouter un contact
+            slider_accreditation_page_info: Informations sur la page d'accréditation du curseur
+            slider_accreditation_widget: Widget d'accréditation du curseur
+            slider_accreditation_image: Slider accreditation image
+            slider_accreditation_title: Titre d'accréditation du curseur
+            slider_accreditation_subtitle: Slider accreditation sous-titre
+            slider_accreditation_url: URL d'accréditation du curseur
+            slider_accreditation_widget_list: Liste d'outils d'accréditation du curseur
+            slider_accreditation_type: Ajouter un widget d'agrandissement du curseur
+
         note:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})

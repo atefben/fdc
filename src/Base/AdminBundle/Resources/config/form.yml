@@ -731,3 +731,13 @@ services:
         class: FDC\MarcheDuFilmBundle\Form\Type\ContactBlockType
         tags:
             - { name: form.type, alias: 'contact_block_type'}
+
+
+    base.admin.form.slider_accreditation_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\SliderAccreditationType
+        tags:
+            - { name: form.type, alias: 'slider_accreditation_type'}
+        calls:
+            - ['setSliderAccreditationAdmin', ['@base.admin.mdf_slider_accreditation']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]

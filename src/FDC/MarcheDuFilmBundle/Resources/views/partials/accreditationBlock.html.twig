@@ -1,41 +1,28 @@
-<div id="owl-accred" class="owl-carousel owl-theme">
-    <div class="item">
-        <div class="contact-box altImg">
-            <div class="text-presentation accreditation">
-                <h3>Réservez votre accréditation</h3>
-                <h5>du 12 mai au 17 mai à Cannes</h5>
-                <div class="container">
-                    <a href="">
-                        <div class="blackBtn">{{ 'read_more'|trans }}</div>
-                    </a>
+{% if sliders is defined and sliders is not null %}
+    {% set isMultiple = sliders|length > 1 %}
+    {% if isMultiple %}
+        <div id="owl-accred" class="owl-carousel owl-theme">
+    {% endif %}
+        {% for slider in sliders %}
+            {% if isMultiple %}
+                <div class="item">
+            {% endif %}
+                <div class="contact-box altImgCustom" style="background: url('{% path slider.translatable.image|trans_fallback('file'), 'reference' %}');">
+                    <div class="text-presentation accreditation">
+                        <h3>{{ slider.title }}</h3>
+                        <h5>{{ slider.subTitle }}</h5>
+                        <div class="container">
+                            <a href="{{ slider.url }}">
+                                <div class="blackBtn">{{ 'read_more'|trans }}</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="contact-box altImg">
-            <div class="text-presentation accreditation">
-                <h3>Réservez votre accréditation</h3>
-                <h5>du 12 mai au 17 mai à Cannes</h5>
-                <div class="container">
-                    <a href="">
-                        <div class="blackBtn">{{ 'read_more'|trans }}</div>
-                    </a>
+            {% if isMultiple %}
                 </div>
-            </div>
+            {% endif %}
+        {% endfor %}
+    {% if isMultiple %}
         </div>
-    </div>
-    <div class="item">
-        <div class="contact-box altImg">
-            <div class="text-presentation accreditation">
-                <h3>Réservez votre accréditation</h3>
-                <h5>du 12 mai au 17 mai à Cannes</h5>
-                <div class="container">
-                    <a href="">
-                        <div class="blackBtn">{{ 'read_more'|trans }}</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% endif %}
+{% endif %}

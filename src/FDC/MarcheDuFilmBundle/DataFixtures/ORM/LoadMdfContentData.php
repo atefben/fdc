@@ -341,6 +341,10 @@ class LoadMdfContentData implements FixtureInterface
             $charter = new \FDC\MarcheDuFilmBundle\Entity\MdfAnnualGraphicCharter();
             $manager->persist($charter);
         }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditationPage::class)->findAll()) == 0) {
+            $sliderAccreditation = new \FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditationPage();
+            $manager->persist($sliderAccreditation);
+        }
 
         $manager->flush();
     }

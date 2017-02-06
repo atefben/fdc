@@ -54,7 +54,7 @@
         {% endif %}
     {% endif %}
     {% if (isPresentation is defined and isPresentation == true) or (isConference is defined and isConference == true) %}
-        {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
+        {{ render(controller('FDCMarcheDuFilmBundle:Transverse:sliderAccreditation')) }}
         {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
     {% endif %}
 {% endblock %}
