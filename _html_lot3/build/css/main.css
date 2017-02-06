@@ -4233,6 +4233,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-decoration: underline;
   font-size: .8125rem;
   margin-top: 3px;
+  display: block;
 }
 .block-accordion .i-transport.item .item-manual .contain-infos .item-infos .title-infos {
   color: #000;
@@ -4522,7 +4523,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-accordion-02 .item-manual .contain-infos .descrip-section p a {
   color: #c8a461;
-  text-decoration: underline;
+  text-decoration: none;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
