@@ -86,6 +86,13 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                     new NotBlank(),
                 ),
             ))
+            ->add('color8', null, array(
+                'label' => 'form.mdf.charte_graphique_annuelle.color8',
+                'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+            ))
             ->add('backgroundImage1', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.charte_graphique_annuelle.image1',
                 'translation_domain' => 'BaseAdminBundle',

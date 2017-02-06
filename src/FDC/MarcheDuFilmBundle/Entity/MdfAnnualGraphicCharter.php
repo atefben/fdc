@@ -100,6 +100,13 @@ class MdfAnnualGraphicCharter
      */
     private $color7;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $color8;
+
 
     /**
      * HeaderFooter constructor.
@@ -364,6 +371,26 @@ class MdfAnnualGraphicCharter
     public function getColor7()
     {
         return $this->color7;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor8()
+    {
+        return $this->color8;
+    }
+
+    /**
+     * @param $color8
+     *
+     * @return $this
+     */
+    public function setColor8($color8)
+    {
+        $this->color8 = $color8;
+
+        return $this;
     }
 
     public function getTitle()
