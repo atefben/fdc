@@ -16,10 +16,8 @@ class AnnualGraphicCharterManager
 
     public function getCurrentGraphicCharter()
     {
-        $charters = $this->em
+        return $this->em
             ->getRepository(MdfAnnualGraphicCharter::class)
-            ->findAll();
-
-        return $charters[0];
+            ->findOneBy([]);
     }
 }
