@@ -19,18 +19,11 @@ class PressCoverageManager
         $this->requestStack = $requestStack;
     }
 
-    public function getMorePressCoverageWidgets($offset)
+    public function getPressCoverageWidgets($offset = false)
     {
         return $this->em
             ->getRepository(PressCoverageWidgetTranslation::class)
-            ->getMoreSortedPressCoverageWidgets($this->requestStack->getMasterRequest()->get('_locale'), $offset);
-    }
-
-    public function getPressCoverageWidgets()
-    {
-        return $this->em
-            ->getRepository(PressCoverageWidgetTranslation::class)
-            ->getSortedPressCoverageWidgets($this->requestStack->getMasterRequest()->get('_locale'));
+            ->getSortedPressCoverageWidgets($this->requestStack->getMasterRequest()->get('_locale'), $offset);
     }
 
     public function getPressCoverageContent()

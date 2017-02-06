@@ -170,7 +170,7 @@ class ThemeController extends Controller
         $conferencePagesManager = $this->get('mdf.manager.conference_pages');
 
         if ($offset = $request->request->get('numberOfArticles')) {
-            $newsContent = $contentTemplateManager->getMoreConferenceNewsContent($slug, $offset);
+            $newsContent = $contentTemplateManager->getConferenceNewsContent($slug, $offset);
             
             return $this->render('FDCMarcheDuFilmBundle::conference/news/partials/newsBlock.html.twig', array(
                     'news' => $newsContent

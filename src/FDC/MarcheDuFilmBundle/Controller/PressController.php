@@ -76,14 +76,14 @@ class PressController extends Controller
         $pressCoverageManager = $this->get('mdf.manager.press_coverage');
         
         if ($offset = $request->request->get('numberOfArticles')) {
-            $pressCoverageWidgets = $pressCoverageManager->getMorePressCoverageWidgets($offset);
+            $pressCoverageWidgets = $pressCoverageManager->getPressCoverageWidgets($offset);
 
-            return $this->render('FDCMarcheDuFilmBundle:presse:article.html.twig', array(
+            return $this->render('FDCMarcheDuFilmBundle:presse:articleList.html.twig', array(
                 'pressCoverageWidgets' => $pressCoverageWidgets
             ));
         } else {
             $pressCoverageContent = $pressCoverageManager->getPressCoverageContent();
-            $pressCoverageWidgets = $pressCoverageManager->getpressCoverageWidgets();
+            $pressCoverageWidgets = $pressCoverageManager->getPressCoverageWidgets();
 
             return $this->render('FDCMarcheDuFilmBundle:presse:pressCoverage.html.twig', array(
                 'pressCoverageContent' => $pressCoverageContent,

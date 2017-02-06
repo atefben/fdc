@@ -7,7 +7,7 @@
             <div class="our-news newsPage pressReview">
                 <h3>{{ pressCoverageContent.title }}</h3>
                 <div class="innerWrapper">
-                    {% include 'FDCMarcheDuFilmBundle::presse/article.html.twig' with {'pressCoverageWidgets': pressCoverageWidgets} %}
+                    {% include 'FDCMarcheDuFilmBundle::presse/articleList.html.twig' with {'pressCoverageWidgets': pressCoverageWidgets} %}
                 </div>
             </div>
             {% if  pressCoverageWidgets|length >= 9 %}

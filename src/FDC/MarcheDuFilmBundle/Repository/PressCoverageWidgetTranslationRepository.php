@@ -10,31 +10,20 @@ use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
  */
 class PressCoverageWidgetTranslationRepository extends EntityRepository
 {
-    public function getSortedPressCoverageWidgets($locale)
+    public function getSortedPressCoverageWidgets($locale, $offset)
     {
         $qb = $this->createQueryBuilder('pc');
         $qb
             ->where('pc.locale = :locale')
             ->innerJoin('pc.translatable', 'pct')
             ->orderBy('pct.publishedAt', 'DESC')
-            ->setMaxResults(9)
             ->setParameter(':locale', $locale)
-        ;
-
-        return $qb->getQuery()->getResult();
-    }
-
-    public function getMoreSortedPressCoverageWidgets($locale, $offset)
-    {
-        $qb = $this->createQueryBuilder('pc');
-        $qb
-            ->where('pc.locale = :locale')
-            ->innerJoin('pc.translatable', 'pct')
-            ->orderBy('pct.publishedAt', 'DESC')
             ->setMaxResults(9)
-            ->setFirstResult($offset)
-            ->setParameter(':locale', $locale)
         ;
+        
+        if ($offset) {
+            $qb->setFirstResult($offset);
+        }
 
         return $qb->getQuery()->getResult();
     }
