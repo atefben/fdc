@@ -105,6 +105,21 @@
                   <li><strong>Connectez</strong> vous en libre accès aux Web Points</li>
                   <li>Accèdez au Wi-Fi gratuitement et de façon illimitée</li>
                 </ul>
+
+                <table>
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                </tr>
+                <tr>
+                  <td>Peter</td>
+                  <td>Griffin</td>
+                </tr>
+                <tr>
+                  <td>Lois</td>
+                  <td>Griffin</td>
+                </tr>
+              </table>
               <p>Référencez votre <strong>société</strong> et votre équipe dans <a href="#">Le Guide du Marché du Film distribué</a> à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant Référencez votre société et votre équipe dans Le Guide du Marché du Film distribué à chaque participant</p>
               <div class="video-container state-init video"
                   data-facebook="//www.facebook.com"
