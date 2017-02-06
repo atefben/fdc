@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-02-04T16:30:19Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
+  <file date="2017-02-06T19:11:03Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -41,6 +41,14 @@
       <trans-unit id="3a945c512dc9a91405fa848a32c08c4219b0cc98" resname="validation.service_widget_min">
         <source>validation.service_widget_min</source>
         <target state="new">validation.service_widget_min</target>
+      </trans-unit>
+      <trans-unit id="72a96c0cce3204028081977ba013640aea1591d9" resname="validation.slider_accreditation_max">
+        <source>validation.slider_accreditation_max</source>
+        <target state="new">validation.slider_accreditation_max</target>
+      </trans-unit>
+      <trans-unit id="81ddea51f459d982fedcfc6dc273229d4347f2ae" resname="validation.slider_accreditation_min">
+        <source>validation.slider_accreditation_min</source>
+        <target state="new">validation.slider_accreditation_min</target>
       </trans-unit>
       <trans-unit id="8fc0172c3fba00c04917a17c0da40ddbddc65db6" resname="validation.speakers_max">
         <source>validation.speakers_max</source>

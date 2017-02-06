@@ -45,3 +45,11 @@
     {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
 
 {% endblock main %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var noFilterForGlobalMessage = "{{ 'no_filter_global_events_selected'|trans }}";
+        var noAvailableGlobalMessage = "{{ 'no_available_events'|trans }}";
+    </script>
+{% endblock %}
