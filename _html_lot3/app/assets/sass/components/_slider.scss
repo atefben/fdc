@@ -478,6 +478,10 @@
   text-align: center;
   width: 100vw;
 
+  &.block-push {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
   .portrait.mobile & {
     width: 100.5vw;
   }

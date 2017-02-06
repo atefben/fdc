@@ -10005,6 +10005,9 @@ body#home .isotope-01 .item .contain-img {
   position: relative;
   z-index: 0;
 }
+.slider-restropective .block-push {
+  -webkit-transform: translate3d(0, 0, 0);
+}
 .portrait.mobile .slider-restropective {
   width: 100.5vw;
 }
