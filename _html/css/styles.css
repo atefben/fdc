@@ -3609,9 +3609,17 @@ table {
   border-collapse: collapse;
 }
 
+ol > li {
+  list-style-type: decimal !important;
+}
+
 table, td, th {
   border: 1px solid black;
   padding: 5px 20px;
+}
+
+#main ul > li > ul, #main ol > li > ol {
+  padding: 0px 0px 0px 50px !important;
 }
 
 /*strong, b, em {
