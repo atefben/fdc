@@ -47,6 +47,10 @@ class MdfConferenceInfoAndContactMain extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
@@ -68,10 +72,6 @@ class MdfConferenceInfoAndContactMain extends Admin
                         'translation_domain' => 'BaseAdminBundle'
                     )
                 )
-            ))
-            ->add('isActive', 'checkbox', array(
-                'label' => 'form.mdf.active',
-                'required' => false
             ))
             ->add('conferenceInfoAndContactWidgets', 'infinite_form_polycollection', array(
                 'label'        => false,

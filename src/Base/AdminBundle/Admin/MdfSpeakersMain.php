@@ -47,6 +47,10 @@ class MdfSpeakersMain extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
                 'fields' => array(
@@ -84,10 +88,6 @@ class MdfSpeakersMain extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
-            ))
-            ->add('isActive', 'checkbox', array(
-                'label' => 'form.mdf.active',
-                'required' => false
             ))
             ->add('speakersChoicesCollections', 'sonata_type_collection', array(
                 'by_reference'       => false,

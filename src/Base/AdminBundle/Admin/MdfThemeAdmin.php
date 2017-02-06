@@ -5,7 +5,6 @@ namespace Base\AdminBundle\Admin;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class MdfThemeAdmin
@@ -43,7 +42,6 @@ class MdfThemeAdmin extends Admin
             ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
                     'delete' => array(),
                 ),
@@ -74,18 +72,6 @@ class MdfThemeAdmin extends Admin
                     )
                 )
             ))
-        ;
-
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
-            ->add('title')
         ;
     }
 }

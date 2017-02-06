@@ -47,6 +47,10 @@ class MdfConferenceProgramMain extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('isActive', 'checkbox', array(
+                'label' => 'form.mdf.active',
+                'required' => false
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
@@ -68,10 +72,6 @@ class MdfConferenceProgramMain extends Admin
                         'field_type'         => 'ckeditor',
                     )
                 )
-            ))
-            ->add('isActive', 'checkbox', array(
-                'label' => 'form.mdf.active',
-                'required' => false
             ))
             ->add('contentTemplateConferenceWidgets', 'infinite_form_polycollection', array(
                 'label' => false,

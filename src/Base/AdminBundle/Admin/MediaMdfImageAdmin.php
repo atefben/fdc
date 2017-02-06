@@ -92,9 +92,6 @@ class MediaMdfImageAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
             ))
-            ->add('displayedMobile', null, array(
-                'label' => 'list.displayed_mobile',
-            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaMdfImage::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
@@ -184,12 +181,6 @@ class MediaMdfImageAdmin extends Admin
                     )
                 )
             ))
-            /*->add('sites', null, array(
-                'label'    => 'form.label_publish_on',
-                'class'    => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true
-            ))*/
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => false,
@@ -225,15 +216,11 @@ class MediaMdfImageAdmin extends Admin
                 'required' => false
             ))
             ->add('translate')
-            //->add('displayedMobile')
             ->add('excludeFromSearch', null, array(
                 'label' => 'form.label_exclude_from_search',
             ))
             ->add('displayedAll', null, array(
                 'label' => 'form.media_image.displayed_all'
-            ))
-            ->add('displayedHome', null, array(
-                'label' => 'form.media_image.displayed_home'
             ))
             ->add('translateOptions', 'choice', array(
                 'choices'            => MediaMdfImage::getAvailableTranslateOptions(),

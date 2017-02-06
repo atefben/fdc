@@ -138,12 +138,6 @@ class MediaMdfPdfAdmin extends Admin
                     ),
                 )
             ))
-            ->add('sites', null, array(
-                'label'    => 'form.label_publish_on',
-                'class'    => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true
-            ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => false,
