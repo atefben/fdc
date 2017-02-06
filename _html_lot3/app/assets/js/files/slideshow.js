@@ -361,7 +361,7 @@ var openSlideShow = function (slider, hash) {
     }
 
     console.log(images.length);
-    if(images.length < 6){
+    if(images.length < 7){
         var carouselOpts = {
             nav: false,
             dots: false,
