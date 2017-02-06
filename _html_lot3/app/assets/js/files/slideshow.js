@@ -360,15 +360,29 @@ var openSlideShow = function (slider, hash) {
         }
     }
 
+    console.log(images.length);
+    if(images.length < 6){
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            mouseDrag: false,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }else{
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }
 
-    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel({
-        nav: false,
-        dots: false,
-        smartSpeed: 500,
-        margin: 0,
-        autoWidth: true,
-        URLhashListener: false
-    });
+    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel(carouselOpts);
 
     thumbs = thumbnails.find(".thumb");
 
