@@ -11,6 +11,8 @@ var owinitSlideShow = function (slider, hash) {
 
         if($('.article-single').length){
 
+            console.log('ok')
+
             $('.slideshow-img').on('click', function (e) {
                 e.preventDefault();
 
