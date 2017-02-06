@@ -2065,8 +2065,12 @@ var owRemoveElementListe = function () {
             $('input#' + id).parent().addClass('active');
         })
 
-        $('.button-submit-02').trigger('click');
-
+        if (!$('.filters-02 li .icon-close').length) {
+            window.location.href = $('.button-submit-02').data('reset-url');
+        }
+        else {
+            $('.button-submit-02').trigger('click');
+        }
     });
 }
 
@@ -4619,15 +4623,28 @@ var openSlideShow = function (slider, hash) {
         }
     }
 
+    if(images.length < 6){
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            mouseDrag: false,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }else{
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }
 
-    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel({
-        nav: false,
-        dots: false,
-        smartSpeed: 500,
-        margin: 0,
-        autoWidth: true,
-        URLhashListener: false
-    });
+    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel(carouselOpts);
 
     thumbs = thumbnails.find(".thumb");
 

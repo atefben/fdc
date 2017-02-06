@@ -11,15 +11,15 @@
             </ul>
         </div>
     </label>
-    <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article"></i><span
+    <label for="{{ form.news.vars.id }}" class="icon-s vFlexAlign "><i class="icon icon-article" style="height:15px;"></i><span
                 class="text">{{ form_label(form.news) }}</span>{{ form_widget(form.news) }}</label>
-    <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span
+    <label for="{{ form.photos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-photo" style="height:17px;"></i><span
                 class="text">{{ form_label(form.photos) }}</span>{{ form_widget(form.photos) }}</label>
-    <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span
+    <label for="{{ form.videos.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-video" style="height:13px;"></i><span
                 class="text">{{ form_label(form.videos) }}</span>{{ form_widget(form.videos) }}</label>
-    <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span
+    <label for="{{ form.audios.vars.id }}" class="icon-s vFlexAlign"><i class="icon icon-audio" style="height:14px;"></i><span
                 class="text">{{ form_label(form.audios) }}</span>{{ form_widget(form.audios) }}</label>
-    <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span
+    <label for="{{ form.events.vars.id }}" class="icon-s vFlexAlign last"><i class="icon icon-speacker" style="height:14px;"></i><span
                 class="text">{{ form_label(form.events) }}</span>{{ form_widget(form.events) }}</label>
 </div>
 <div class="slider-selection">
@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="sub-tab active">
+                <div class="sub-tab">
                     <div class="format">
                         <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-minus"></i>
                         </div>
@@ -117,12 +117,12 @@
                             <input type="checkbox" id="formats_{{ format.vars.value }}"
                                    name="{{ format.vars.full_name }}" value="{{ format.vars.value }}"
                                    {% if format.vars.data %}checked="checked"{% endif %}/>
-                            <label for="{{ format.vars.id }}">{{ format.vars.label }}</label>
+                            <label for="formats_{{ format.vars.value }}">{{ format.vars.label }}</label>
                         {% endfor %}
                     </div>
                 </div>
 
-                <div class="sub-tab active">
+                <div class="sub-tab">
                     <div class="selection-type">
                         <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i
                                     class="icon icon-minus"></i></div>
@@ -141,7 +141,7 @@
 </table>
 
 <div class="buttons-02">
-    <button type="submit" class="button button-submit-02">
+    <button type="submit" class="button button-submit-02" data-reset-url="{{ path('fdc_corporate_search_searchsubmit') }}">
         <i class="icon icon-search"></i>{{ 'search.form.label.submitsearch'|trans }}
     </button>
 </div>

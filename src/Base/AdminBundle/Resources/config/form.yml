@@ -554,3 +554,174 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.orange_widget_film_ocs_dummy']]
             - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]
+
+    base.admin.form.service_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ServiceWidgetType
+        tags:
+            - { name: form.type, alias: 'service_widget_type'}
+        calls:
+            - ['setServiceWidgetAdmin', ['@base.admin.mdf_service_widget']]
+            - ['setServiceWidgetProductAdmin  ', ['@base.admin.mdf_service_widget_product']]
+
+    base.admin.form.service_widget_type_product:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ServiceWidgetProductType
+        tags:
+            - { name: form.type, alias: 'service_widget_product_type'}
+        calls:
+            - ['setGalleryAdmin', ['@base.admin.mdf_gallery']]
+            - ['setServiceWidgetProductAdmin  ', ['@base.admin.mdf_service_widget_product']]
+
+    base.admin.form.home_slider_top_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderTopType
+        tags:
+            - { name: form.type, alias: 'home_slider_top_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_slider_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.home_slider_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeSliderType
+        tags:
+            - { name: form.type, alias: 'home_slider_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_slider_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.home_service_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\HomeServiceType
+        tags:
+            - { name: form.type, alias: 'home_service_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.home_service_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.content_template_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_type'}
+
+    base.admin.form.content_template_widget_text_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetTextType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_text_type'}
+
+    base.admin.form.content_template_widget_image_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetImageType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_image_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.dispatch_de_service_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\DispatchDeServiceWidgetType
+        tags:
+            - { name: form.type, alias: 'dispatch_de_service_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.dispatch_de_service_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.conference_info_and_contact_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ConferenceInfoAndContactWidgetType
+        tags:
+            - { name: form.type, alias: 'conference_info_and_contact_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.conference_info_and_contact_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.accreditation_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\AccreditationWidgetType
+        tags:
+            - { name: form.type, alias: 'accreditation_widget_type'}
+
+    base.admin.form.press_coverage_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressCoverageWidgetType
+        tags:
+            - { name: form.type, alias: 'press_coverage_widget_type'}
+
+    base.admin.form.press_gallery_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressGalleryWidgetType
+        tags:
+            - { name: form.type, alias: 'press_gallery_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.press_gallery_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.press_graphical_charter_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressGraphicalCharterWidgetType
+        tags:
+            - { name: form.type, alias: 'press_graphical_charter_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.press_graphical_charter_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.who_are_we_team_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\WhoAreWeTeamWidgetType
+        tags:
+            - { name: form.type, alias: 'who_are_we_team_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.who_are_we_team_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.who_are_we_team_contact_widget_type:
+        class: FDC\MarcheDuFilmBundle\Form\Type\WhoAreWeTeamContactWidgetType
+        tags:
+            - { name: form.type, alias: 'who_are_we_team_contact_widget_type'}
+
+    base.admin.form.content_template_widget_gallery_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetGalleryType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_gallery_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_gallery_dummy']]
+            - ['setMediaGalleryAdmin', ['@base.admin.mdf_gallery']]
+
+    base.admin.form.content_template_widget_file_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetFileType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_file_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_file_dummy']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
+
+    base.admin.form.program_file_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ProgramFileType
+        tags:
+            - { name: form.type, alias: 'program_file_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_program_file_dummy']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
+
+    base.admin.form.content_template_widget_video_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ContentTemplateWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'content_template_widget_video_type'}
+        calls:
+            - ['setSonataThemeAdmin', ['@base.admin.mdf_content_template_widget_theme_dummy']]
+            - ['setSonataAdmin', ['@base.admin.mdf_content_template_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+            - ['setThemeAdmin', ['@base.admin.mdf_theme']]
+
+    base.admin.form.press_release_file_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\PressReleaseFileType
+        tags:
+            - { name: form.type, alias: 'press_release_file_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.mdf_program_file_dummy']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]

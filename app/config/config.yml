@@ -26,6 +26,7 @@ imports:
     - { resource: roles/security_all.yml }
     # news roles
     - { resource: roles/groups/security_admin_fdc.yml }
+    - { resource: roles/groups/security_admin_mdf.yml }
     - { resource: roles/groups/security_community_manager.yml }
     - { resource: roles/groups/security_contributor_photos.yml }
     - { resource: roles/groups/security_contributor_videos_audios.yml }
@@ -73,11 +74,12 @@ twig:
         resources:
             - 'InfiniteFormBundle::collection_theme.html.twig'
             - 'SonataCoreBundle:Form:datepicker.html.twig'
+    exception_controller:  app.exception_controller:showAction
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle, FDCMarcheDuFilmBundle ]
     use_controller: true
     filters:
         cssrewrite:

@@ -1,0 +1,14 @@
+<div class="contact-box" id="contact-box">
+    {% if contact is not empty %}
+        <img src="{% path contact.translatable.image|trans_fallback('file'), 'reference' %}" class="backgroundImg">
+        {% set contactInfos = contact.information|split('\n') %}
+        <div class="contact-details">
+            <span class="informations">{{ contact.title }}</span>
+            <span class="getTo">{{ contact.subTitle }}</span>
+            {% for contactInfo in contactInfos %}
+                <span class="howTo">{{ contactInfo }}</span>
+            {% endfor %}
+            <a href="{{ contact.seeMoreUrl }}"><span class="knowMore">en savoir plus</span></a>
+        </div>
+    {% endif %}
+</div>

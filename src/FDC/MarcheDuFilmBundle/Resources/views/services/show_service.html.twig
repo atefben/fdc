@@ -1,0 +1,129 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="text-presentation producersWorkshop opportunites mdf customClass2Bckg">
+            {% if navServices[route_params["slug"]] is defined %}
+                <h3>{{ navServices[route_params["slug"]] }}</h3>
+            {% endif %}
+            <div class="subNavigation">
+                <nav>
+                    <ul class="main">
+                        {% if navServices is defined and navServices is not null %}
+                            {% for url, service in navServices %}
+                                <li>
+                                    <a href="{{ url }}" {% if url == route_params["slug"] %} class="active customClass2" {% endif %}>{{ service }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    {% if serviceWidgets and serviceWidgets|length > 1 %}
+        <div class="greyBckg">
+    {% endif %}
+            <div class="bigContainer">
+                <div class="text-presentation boxes">
+                    <h3>{{ service.subTitle }}</h3>
+                    {# Formated in BO #}
+                    {{ service.header|raw }}
+                    {# End #}
+                </div>
+            </div>
+    {% if serviceWidgets and serviceWidgets|length > 1 %}
+        </div>
+        <div class="greyBckg">
+            <div class="bigContainer">
+                <ul class="tabs">
+                    {% for widget in serviceWidgets %}
+                        <li class="{% if (serviceWidgets|first).id == widget.id %}active{% endif %} quarterTab" rel="tab{{ widget.translatable.id }}"><h4>{{ widget.title }}</h4>{{ widget.subTitle }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+        <div class="whiteBckg">
+            <div class="tab_container ">
+                {% for widgetId, serviceProducts in serviceWidgetProducts %}
+                    <div id="tab{{ widgetId }}" class="tab_content">
+                        {% for key, product in serviceProducts %}
+                            <div class="minTab{% if not product.translatable.gallery or not product.translatable.gallery.medias.count() %} nopicTab{% endif %}">
+                                {% if product.translatable.gallery and product.translatable.gallery.medias.count() %}
+                                    <div class="tabPic">
+                                        <div class="owl-pub owl-carousel owl-theme">
+                                            {% for mediaGallery in product.translatable.gallery.medias %}
+                                                <div class="item">
+                                                    <img src="{% path mediaGallery.media|trans_fallback('file'), 'reference' %}" alt="Marché du film" style="width: 346px; height: 346px;">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="tabBox">
+                                    <span class="customClass2">{{ product.title }}</span>
+                                    <h5>{{ product.grayText }} <span class="fromPrice">{{ product.colorText }}</span></h5>
+                                    <div class="tabContent">
+                                        <p>{{ product.body }}</p>
+                                    </div>
+                                    <input type="checkbox" class="read-more-state" id="post-{{ key~product.id }}" style="opacity:0;"/>
+                                    <div class="read-more-wrap">
+                                        <div class="read-more-target">
+                                            {# Formated in BO #}
+                                            {{ product.toggledBody|raw }}
+                                            {# End #}
+                                        </div>
+                                    </div>
+                                    <i class='icon icon_flecheGauche opportuniteArrow'></i>
+                                    <label for="post-{{ key~product.id }}" class="read-more-trigger"><a href="{{ product.url }}"><div  class="blueBtn customClass2">Réserver</div></a></label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% if service.contentBlockTitle is not null or service.contentBlockBody is not null %}
+        <div class="tarifs">
+            <div class="text-presentation">
+                <h3>{{ service.contentBlockTitle }}</h3>
+                <ul>
+                    {{ service.contentBlockBody|raw }}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if navArrowsServices is defined and navArrowsServices is not null %}
+        {% if navArrowsServices[0][route_params["slug"]] is defined and navArrowsServices[1][navArrowsServices[0][route_params["slug"]] - 1] is defined %}
+            <div class="floatingButtonLeft">
+                <div class="arrow showLeft">
+                    <i class='icon icon_flecheGauche'></i>
+                </div>
+                <a href="{{ navArrowsServices[1][navArrowsServices[0][route_params["slug"]] - 1] }}">
+                    <div class="floatingButtonText showLeft">{{ navServices[navArrowsServices[1][navArrowsServices[0][route_params["slug"]] - 1]] }}</div>
+                </a>
+            </div>
+        {% endif %}
+        {% if navArrowsServices[0][route_params["slug"]] is defined and navArrowsServices[1][navArrowsServices[0][route_params["slug"]] + 1] is defined  %}
+            <div class="floatingButtonRight">
+                <div class="arrow showRight">
+                    <i class='icon icon_flecheGauche reverse'></i>
+                </div>
+                <a href="{{ navArrowsServices[1][navArrowsServices[0][route_params["slug"]] + 1] }}">
+                    <div class="floatingButtonText showRight">{{ navServices[navArrowsServices[1][navArrowsServices[0][route_params["slug"]] + 1]] }}</div>
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' %}
+
+{% endblock main %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fdcmarchedufilm/js/festival-cannes/owl.carousel.min.js') }}"></script>
+{% endblock %}

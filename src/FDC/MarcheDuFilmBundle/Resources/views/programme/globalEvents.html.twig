@@ -1,0 +1,64 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="home loading">
+        <div class="text-presentation calendar mdf customClass1Bckg">
+            <div class="bigContainer">
+                <h3>{{ globalEventsPage.title }}</h3>
+            </div>
+        </div>
+        <div class="text-presentation greyBckg minPadding">
+            <div class="bigContainer">
+                {# Formated in BO #}
+                {{ globalEventsPage.body|raw }}
+                {# End #}
+            </div>
+        </div>
+        <div class="bigContainer">
+            <div id="accordion-conf" class="conferences">
+                <div class="dropdown">
+                    <span>AFFICHER</span>
+                    <div id="eventSelector">
+                        {% for key, item in conferences %}
+                            <div class="selectText" id="{{ key }}">{{ item|trans }}{% if loop.last ==false %},{% endif %}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="dropArrow">
+                        <i class="icon icon_flecheGauche"></i>
+                    </div>
+                </div><br>
+                <div class="selector">
+                    <div class="purpleBtn selectbtn confBtn customClass1" id="all">Tous</div>
+                    {% for key, item in conferences %}
+                        <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ key|replace({'-': ' '}) }}</div>
+                    {% endfor %}
+                </div>
+                <div class="conferencesMenu">
+                    {% include 'FDCMarcheDuFilmBundle::programme/partials/days.html.twig' with { 'days': globalEventsDays, 'events' : globalEventsSchedules } %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floatingButtonLeft">
+        <div class="arrow showLeft">
+            <i class='icon icon_flecheGauche'></i>
+        </div>
+        <a href="#">
+            <div class="floatingButtonText showLeft">conférences</div>
+        </a>
+    </div>
+    <div class="floatingButtonRight">
+        <div class="arrow showRight">
+            <i class='icon icon_flecheGauche reverse'></i>
+        </div>
+        <a href="#">
+            <div class="floatingButtonText showRight">intervenants</div>
+        </a>
+    </div>
+
+    {% include 'FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+
+{% endblock main %}

@@ -79,7 +79,11 @@ trait TranslateChild
      */
     public function setStatus($status)
     {
-        $this->status = $status;
+        if($status == '') {
+            $this->status = self::STATUS_PUBLISHED;
+        } else {
+            $this->status = $status;
+        }
 
         return $this;
     }

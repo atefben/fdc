@@ -167,7 +167,6 @@ class Homepage implements TranslateMainInterface
      * @var WebTv
      *
      * @ORM\OneToMany(targetEntity="WebTv", mappedBy="homepage")
-     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $topWebTvs;
 

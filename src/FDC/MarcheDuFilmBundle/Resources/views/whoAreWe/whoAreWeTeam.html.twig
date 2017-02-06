@@ -1,0 +1,46 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
+        <div class="text-presentation team">
+            <h3>{{ whoAreWeTeamContent.title }}</h3>
+        </div>
+        <div class="teamBckg">
+            <div class="bigContainer">
+                {% for whoAreWeTeamContactWidget in whoAreWeTeamContactWidgets %}
+                    <div class="contactInfo">
+                        <span class="customClass4">{{ whoAreWeTeamContactWidget.date }}</span>
+                        <h6>{{ whoAreWeTeamContactWidget.address }}</h6>
+                        <h6>{{ whoAreWeTeamContactWidget.phone }}</h6>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+    <div class="bigContainer">
+
+        <div class="infosPage teamPresentation">
+            <div class="innerTeam">
+                {% for whoAreWeTeamWidget in whoAreWeTeamWidgets %}
+                    <div class="articles">
+                        <div class="articles-content">
+                            <div class="photoWrapper">
+                                {% if whoAreWeTeamWidget.translatable.image %}
+                                    <img src="{% path whoAreWeTeamWidget.translatable.image|trans_fallback('file'), 'reference' %}">
+                                {% else %}
+                                    <img src="{{ asset('bundles/fdcmarchedufilm/img/avatar.png') }}">
+                                {% endif %}
+                            </div>
+                            <div class="textWrapper">
+                                <h6 class="customClass4">{{ whoAreWeTeamWidget.name }}</h6>
+                                <span>{{ whoAreWeTeamWidget.post }}
+                              {% if whoAreWeTeamWidget.email is not empty %}<br><a href="mailto:{{ whoAreWeTeamWidget.email }}" class="customClass1">{{ whoAreWeTeamWidget.email }}</a>{% endif %}</span>
+                                {% if whoAreWeTeamWidget.phone is not empty %}<br><span class="teamTel">{{ whoAreWeTeamWidget.phone }}</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

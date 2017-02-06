@@ -1,0 +1,68 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="home loading">
+        {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' %}
+        <div class="greyBckg">
+            <div class="bigContainer">
+                <div class="text-presentation boxes">
+                    <h3>{{ speakersPage.subTitle }}</h3>
+                    {{ speakersPage.description|raw }}
+                </div>
+            </div>
+            {% if speakersTabs and speakersTabs|length > 1 %}
+                <div class="greyBckg">
+                    <div class="bigContainer">
+                        <ul class="tabs">
+                            {% for tab in speakersTabs %}
+                                <li class="{% if (speakersTabs|first).id == tab.id %}active{% endif %} halfTab" rel="tab{{ tab.translatable.id }}"><h4 class="redActive {% if (speakersTabs|first).id == tab.id %}customClass1{% endif %}">{{ tab.title }}</h4>{{ tab.subTitle }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="whiteBckg">
+                <div class="tab_container ">
+                    <div class="floatingButtonLeft">
+                        <div class="floatingButtonBckg">
+                            <span class="arrow"><i class='icon icon_flecheGauche'></i></span>
+                            <span class="floatingButtonText">nos conférences</span>
+                        </div>
+                    </div>
+                    <div class="floatingButtonRight">
+                        <div class="floatingButtonBckg">
+                            <span class="floatingButtonText">nos conférences</span>
+                            <span class="arrow"><i class='icon icon_flecheGauche reverse'></i></span>
+                        </div>
+                    </div>
+                    {% for tab in speakersTabs %}
+                        <div id="tab{{ tab.translatable.id }}" class="tab_content">
+                            {% for speaker in speakersList[tab.translatable.id] %}
+                                <div class="minTab">
+                                    <div class="speakersPicture">
+                                        {% if speaker.translatable.image %}
+                                            <img src="{% path speaker.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 150px; height: 200px;">
+                                        {% else %}
+                                            <img src="{{ asset('bundles/fdcmarchedufilm/img/avatar.png') }}" style="width: 150px; height: 200px;">
+                                        {% endif %}
+                                    </div>
+                                    <div class="tabBox speakersBox">
+                                        <span class="customClass1">{{ speaker.name }}</span>
+                                        <h5>{{ speaker.company }}{% if speaker.country %} <span class="fromCountry customClass3">{{ speaker.country }}</span>{% endif %}</h5>
+                                        <p>{{ speaker.details }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'FDCMarcheDuFilmBundle:shared:floatingButtons.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
+    {% include 'FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+
+{% endblock main %}

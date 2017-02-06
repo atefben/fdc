@@ -1,0 +1,22 @@
+{% set routeName = app.request.get('_route') %}
+<div class="text-presentation producersWorkshop presses mdf">
+    <h3>Presse</h3>
+    <div class="subNavigation">
+        <nav>
+            <ul class="main">
+                <li>
+                    <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="{{ routeName == 'fdc_marche_du_film_press_releases' ? 'active' : '' }}">Communiqués de presse</a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_marche_du_film_press_coverage') }}" class="{{ routeName == 'fdc_marche_du_film_press_coverage' ? 'active' : '' }}">Retombées presse</a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_marche_du_film_press_gallery') }}" class="{{ routeName == 'fdc_marche_du_film_press_gallery' ? 'active' : '' }}">Galerie Photos</a>
+                </li>
+                <li>
+                    <a href="{{ path('fdc_marche_du_film_press_graphical_charter') }}" class="{{ routeName == 'fdc_marche_du_film_press_graphical_charter' ? 'active' : '' }}">Charte Graphique</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

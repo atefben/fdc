@@ -1,0 +1,50 @@
+<ul>
+    {% for day in days %}
+        <li>
+            <div class="open" data-date="{{ day.dateEvent|date("d-m-Y") }}">{{ day.dateEvent|date("d M Y") }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
+            <div class="content">
+                <div class="parent">
+                    <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
+                    {% for event in events[day.id] %}
+                        <div class="box {{ event.conference }} events">
+                            {% set textArray = event.conference|split("-") %}
+                            {% set eventTheme = null %}
+                            {% if textArray is defined and textArray is not null %}
+                                {% if textArray|length > 2 %}
+                                    <div class="conf10">{{ textArray[0] }}<br>{{ textArray[1] }}<br>{{ textArray[2] }}</div>
+                                {% elseif textArray|length == 2 %}
+                                    <div class="conf10">{{ textArray[0] }}<br>{{ textArray[1] }}</div>
+                                {% else %}
+                                    <div class="conf10">{{ textArray[0] }}</div>
+                                {% endif %}
+                            {% endif %}
+                            <div class="conf60">
+                                <h6 class="conf60title">{{ event.conference|replace({'-': ' '}) }}</h6>
+                                <span class="customClass1">{{ event.eventType }}</span>
+                                <p>{{ event.eventDescription }}</p>
+                                {# MISSING URL TAG. FO ISSUE #}
+                                <a href="{{ event.url }}"><div class="confButton"><i class="icon icon_flecheGauche ensavoirplus"></i> En savoir plus</div></a>
+                                {# END #}
+                                <hr>
+                            </div>
+                            <div class="conf30">
+                                <div>
+                                    <span>heure</span>
+                                    <p>De {{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} à {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }} </p>
+                                </div>
+                                <div>
+                                    <span>lieu</span>
+                                    <p>{{ event.location }}</p>
+                                </div>
+                                <div>
+                                    <span>type d'accès</span>
+                                    <p>{{ event.accessType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

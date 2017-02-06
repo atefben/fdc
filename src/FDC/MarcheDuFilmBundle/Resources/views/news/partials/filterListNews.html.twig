@@ -1,0 +1,39 @@
+{% set pageLimit = 9  %}
+<div class="bigContainer">
+    <div id="accordion-conf" class="conferences">
+        <div class="dropdown">
+            <span>AFFICHER</span>
+            <div id="eventSelector">
+                <div class="selectText" id="showAll">Tous</div>
+                {% for filter in filters %}
+                    <div class="selectText hideAll" id="{{ filter.slug }}-filter">{{ filter.title }}</div>
+                {% endfor %}
+            </div>
+            <div class="dropArrow">
+                <i class="icon icon_flecheGauche"></i>
+            </div>
+        </div><br>
+        <div class="selector marketnewsSelector">
+            <div class="purpleBtn selectbtn marketnewsBtn" id="all">Tous</div>
+            {% for filter in filters %}
+                <div class="selectbtn marketnewsBtn" id="{{ filter.slug }}" rel="{{ filter.slug }}-filter">{{ filter.title }}</div>
+            {% endfor %}
+        </div>
+        <div id="news-html" class="our-news marketActu">
+            {% include 'FDCMarcheDuFilmBundle::news/partials/newsBlock.html.twig' with { 'news': news } %}
+        </div>
+    </div>
+</div>
+<div class="pagination">
+    <div class="paginationContainer">
+        {% if numberOfNews > pageLimit %}
+            <div class="paginationNavLeft"><i class="icon icon_flecheGauche"></i></div>
+            <div class="paginationBoxes">
+                {% for index in range(1, numberOfNews, pageLimit) %}
+                    <div id="{{ loop.index0 }}" class="fifth"><span>{{ loop.index }}</span></div>
+                {% endfor %}
+            </div>
+            <div class="paginationNavRight"><i class="icon icon_flecheGauche"></i></div>
+        {% endif %}
+    </div>
+</div>

@@ -125,6 +125,7 @@ twig:
         admin_fdc_footer_mentions_legales_id: %admin_fdc_footer_mentions_legales_id%
         admin_fdc_footer_credits_id: %admin_fdc_footer_credits_id%
         #satellite
+        header_fdc_com: '%header_fdc_com%'
         header_fdc_fr: '%header_fdc_fr%'
         header_cine_fr: '%header_cine_fr%'
         header_ccm_fr: '%header_ccm_fr%'

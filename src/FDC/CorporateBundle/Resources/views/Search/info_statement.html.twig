@@ -1,9 +1,10 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="top-texts">
     {% if 'searchsubmit' in app.request.attributes.get("_route") and result.info_statement.count > 4 %}<a
         href="{{ url('fdc_corporate_search_searchfilter', {'searchFilter':'info_statement'}|merge(app.request.query.all)) }}"
         class="see-all">Tout voir</a>{% endif %}
-    <h3>Communiqués de presse/infos - {{ result.info_statement.count }} résultats</h3>
+    <h3>{{ 'search.result.info_statement.count'|transchoice(result.info_statement.count) }}</h3>
 </div>
 
 <section class="release">
@@ -17,10 +18,10 @@
         {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
             {% set articleFormat = "photo" %}
         {% endif %}
-        {% set type = class(article) starts with 'Info' ? 'info' : 'communique' %}
+        {% set type = (class(article) starts with 'Info') ? 'info' : 'communique' %}
         <article class="block-poster-search medias landscape-more">
             <div class="item communique">
-                <a href="{{ path('fdc_corporate_news_presssingle', {year: article.festival.year, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}">
+                <a href="{{ path('fdc_corporate_news_presssingle', {year: article.festival.year, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
                     <div class="contain-img landscape">
                         {% if (class(article) == "StatementArticle" or class(article) == "InfoArticle") and article.header %}
                             {% set img = article.header %}

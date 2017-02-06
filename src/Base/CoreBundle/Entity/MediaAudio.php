@@ -44,7 +44,7 @@ class MediaAudio extends Media implements RoutedItemInterface
     /**
      * @var NewsAudio
      *
-     * @ORM\OneToOne(targetEntity="NewsAudio", cascade={"all"}, inversedBy="homepageMediaAudio", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="NewsAudio", cascade={"all"}, mappedBy="homepageMediaAudio", orphanRemoval=true)
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     protected $homepageNews;

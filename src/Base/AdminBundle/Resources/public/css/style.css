@@ -327,3 +327,8 @@ form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.
 .socialwall-message {
     width: 300px;
 }
+
+/* Custom style for time picker */
+.fixed-time .select2-container {
+    width: auto !important;
+}

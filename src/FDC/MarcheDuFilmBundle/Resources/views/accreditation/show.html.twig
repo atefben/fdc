@@ -1,0 +1,118 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% if accreditationContent is not empty %}
+            {% if accreditationContent.state != 2 %}
+                <div class="accredidationsMessage customClass5Bckg">
+                    {% if accreditationContent.state == 0 %}
+                        <div class="accredMsg">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
+                        <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">S'INSCRIRE</div></a>
+                    {% elseif accreditationContent.state == 1 %}
+                        <div class="noAvail">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="text-presentation accredidationsDetails greyBckg mdf customClass5">
+                <h3>{{ accreditationContent.title }}</h3>
+            </div>
+            <div class="greyBckg">
+                <div class="midContainer">
+                    <h5 class="getMargin">{{ accreditationContent.description|raw }}</h5>
+                    <div id="accordion-menu">
+                        <ul>
+                            {% for accreditationWidget in accreditationWidgets %}
+                                <li>
+                                    <div class="open">{{ accreditationWidget.title }}<span class="openPlus">+</span><span class="openMinus">-</span></div>
+                                    <div class="content">
+                                        <p>{{ accreditationWidget.description }}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="accreditations customClass5Bckg">
+                    <div class="bigContainer">
+                        <h3>{{ accreditationContent.promotionsTitle|raw }}</h3>
+                        <div class="pricesContainer">
+                            <div class="innerWrapper">
+                                <div class="articles {% if accreditationContent.promotionState1 %}pricesNoavail{% endif %}">
+                                    {% if accreditationContent.promotionState1 %}
+                                        <div class="articlesOverlay"></div>
+                                    {% endif %}
+                                    {% if accreditationContent.isEarlyBird %}
+                                        <span class="earlyBird"><img src="{{ asset('bundles/fdcmarchedufilm/img/early-bird.png') }}"></span>
+                                    {% endif %}
+                                    <div class="articles-content {% if accreditationContent.isEarlyBird %}primo{% endif %}">
+                                        <div class="textWrapper">
+                                            <span>{{ accreditationContent.promotionTitle1 }}</span>
+                                            <h6>{{ accreditationContent.promotionPrice1 }} <span class="ht">{{ accreditationContent.promotionInformation1 }}</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="articles {% if accreditationContent.promotionState2 %}pricesNoavail{% endif %}">
+                                    {% if accreditationContent.promotionState2 %}
+                                        <div class="articlesOverlay"></div>
+                                    {% endif %}
+                                    <div class="articles-content">
+                                        <div class="textWrapper">
+                                            <span>{{ accreditationContent.promotionTitle2 }}</span>
+                                            <h6>{{ accreditationContent.promotionPrice2 }} <span class="ht">{{ accreditationContent.promotionInformation2 }}</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="articles {% if accreditationContent.promotionState3 %}pricesNoavail{% endif %}">
+                                    {% if accreditationContent.promotionState3 %}
+                                        <div class="articlesOverlay"></div>
+                                    {% endif %}
+                                    <div class="articles-content">
+                                        <div class="textWrapper">
+                                            <span>{{ accreditationContent.promotionTitle3 }}</span>
+                                            <h6>{{ accreditationContent.promotionPrice3 }} <span class="ht">{{ accreditationContent.promotionInformation3 }}</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricesContent">
+                            <div class="innerWrapper">
+                                <div class="plusPrices">
+                                    <div class="plusPricesdetails">
+                                        <span>{{ accreditationContent.promotionDetailsTitle1|raw }}</span>
+                                        <h6><span class="plusColor">{{ accreditationContent.promotionDetailsPricePrefix1 }}</span>{{ accreditationContent.promotionDetailsPrice1 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix1 }}</span></h6>
+                                    </div>
+                                    <div class="plusPricestext">
+                                        {{ accreditationContent.promotionDetailsInformation1|raw }}
+                                    </div>
+                                </div>
+                                <div class="plusPrices">
+                                    <div class="plusPricesdetails">
+                                        <span>{{ accreditationContent.promotionDetailsTitle2|raw }}</span>
+                                        <h6><span class="plusColor">{{ accreditationContent.promotionDetailsPricePrefix2 }}</span>{{ accreditationContent.promotionDetailsPrice2 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix2 }}</span></h6>
+                                    </div>
+                                    <div class="plusPricestext">
+                                        {{ accreditationContent.promotionDetailsInformation2|raw }}
+                                    </div>
+                                </div>
+                                <div class="plusPrices">
+                                    <div class="plusPricesdetails">
+                                        <span>{{ accreditationContent.promotionDetailsTitle3|raw }}</span>
+                                        <h6><span class="plusColor">{{ accreditationContent.promotionDetailsPricePrefix3 }}</span>{{ accreditationContent.promotionDetailsPrice3 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix3 }}</span></h6>
+                                    </div>
+                                    <div class="plusPricestext">
+                                        {{ accreditationContent.promotionDetailsInformation3|raw }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+
+{% endblock main %}

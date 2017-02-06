@@ -1,0 +1,26 @@
+<div class="video-container state-init video"
+     data-facebook="//www.facebook.com"
+     data-twitter="//www.twitter.com"
+     data-link="//www.example.com"
+     data-email="//www.gmail.com"
+     data-name="test"
+     data-file='[{"file":"{{ widget.url }}"}]'
+     data-img="{% path widget.translatable.image|trans_fallback('file'), 'reference' %}">
+    <div id="{{ '100' ~ date().timestamp }}" class="video-player">
+    <!-- <div id="vtest"> -->
+</div>
+<div class="video-overlay"></div>
+<div class="infos-bar">
+    <div class="picto"><i class="icon icon_video"></i></div>
+    <div class="info">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                {% if widget.translatable.theme.findTranslationByLocale(app.request.locale).title is defined %}
+                    <a href="#" class="category">{{ widget.translatable.theme.findTranslationByLocale(app.request.locale).title }}</a><span class="date">{{ widget.translatable.updatedAt|date("d.m.Y") }}</span> . <span class="hour">{{ widget.translatable.updatedAt|date("H:i") }}</span>
+                {% endif %}
+                <p>{{ widget.title }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div><br>

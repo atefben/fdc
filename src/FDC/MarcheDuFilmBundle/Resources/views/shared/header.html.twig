@@ -1,0 +1,149 @@
+<header>
+    <div id="top-bar">
+        <ul class="main-nav">
+            <li>
+                <a href={{ header_fdc_com }} target="_blank">Festival 2017</a>
+            </li>
+            <li>
+                <a href="{{ header_fdc_fr }}" target="_blank">Festival de Cannes</a>
+            </li>
+            <li>
+                <a href="{{ header_cine_fr }}" target="_blank">Cinéfondation</a>
+            </li>
+            <li>
+                <a href="{{ header_ccm_fr }}" target="_blank">Cannes Court Métrage</a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_marchedufilm_default_index') }}" class="active">Marché du film</a>
+            </li>
+        </ul>
+        <ul class="user-nav">
+            <li>
+                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+            </li>
+            <li class="lang">
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
+                <ul class="sub-languages">
+                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                        <li>
+                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="logo-wrapper">
+        <div class="container">
+            <div id="logo">
+                <a href="{{ path('fdc_marchedufilm_default_index') }}"><img src="{{ asset('bundles/fdcmarchedufilm/img/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
+                <h1><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-du-film.png') }}" alt="Festival de Cannes" /></a></h1>
+                <p class="stick"><a href="{{ path('fdc_marchedufilm_default_index') }}"><img width="100%" src="{{ asset('bundles/fdcmarchedufilm/img/logo-marche-film.png') }}" alt="Festival de Cannes" /></a></p>
+            </div>
+            <div id="leaderBoard">
+                {% if banner %}
+                    <a href="{{ banner.headerBannerUrl }}" target="_blank">
+                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
+                    </a>
+                {% endif %}
+            </div>
+            <div id="sticky-user">
+                <ul class="user-nav">
+                    <li>
+                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                    </li>
+                    <li class="lang">
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
+                        <ul class="sub-languages">
+                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                                <li>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="bigContainer">
+            <nav>
+                <ul class="main">
+                    <li id="edition">
+                        <a href="{{ path('fdc_marchedufilm_default_index') }}" class="{{ routeName == 'fdc_marchedufilm_default_index'
+                        or routeName == 'fdc_marche_du_film_edition_presentation'
+                        or routeName =='fdc_marche_du_film_edition_projections'
+                        or routeName == 'fdc_marche_du_film_conference_home'
+                        or routeName == 'fdc_marche_du_film_conference_program'
+                        or routeName == 'fdc_marche_du_film_conference_speakers'
+                        or routeName == 'fdc_marche_du_film_conference_news'
+                        or routeName == 'fdc_marche_du_film_conference_partners'
+                        ? 'active ' : '' }}red">Édition 2017
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="{{routeName =='fdc_marche_du_film_accreditations' ? 'active ' : '' }}blue">ACCRÉDITATIONS</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' ? 'active ' : '' }}blue">SERVICES</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="{{ routeName == 'fdc_marche_du_film_who_are_we_history'
+                        or routeName =='fdc_marche_du_film_who_are_we_key_figures'
+                        or routeName =='fdc_marche_du_film_who_are_we_team'
+                        ? 'active ' : '' }}golden">QUI SOMMES-NOUS ?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="{{ routeName == 'fdc_marche_du_film_press_releases'
+                        or routeName =='fdc_marche_du_film_press_coverage'
+                        or routeName =='fdc_marche_du_film_press_gallery'
+                        or routeName =='fdc_marche_du_film_press_graphical_charter'
+                        ? 'active ' : '' }}golden">PRESSE</a>
+                    </li>
+                    <li>
+                        <a href="#" class="golden">INFORMATIONS UTILES</a>
+                    </li>
+                    <li class="liSearchBox">
+                        <div class="searchBox">
+                            <form action="action.php">
+                                <input type="text" name="name" id="searchInput" placeholder="Recherchez"/>
+                            </form>
+                        </div>
+                    </li>
+                    <li id="searchBar">
+                        <div>
+                            <a href="#" id=""><i class="icon icon_recherche"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="subMenu customClass1" id="subMenu">
+            <div class="bigContainer">
+                <ul class="tleft">
+                    <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_news') }}">Actualités</a></li>
+                    <li class="seeSub">
+                        <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
+                        <div class="prog">PROGRAMME</div>
+                        <ul class="subsubMenu">
+                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">Projections</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">Événements</a></li>
+                        </ul>
+                    </li>
+                    <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">producers workshop</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">producers network</a></li>
+                </ul>
+                <ul class="tright">
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">Doc corner</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">Next</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">Mixers</a></li>
+                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">Goes to Cannes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="blackBckg"></div>

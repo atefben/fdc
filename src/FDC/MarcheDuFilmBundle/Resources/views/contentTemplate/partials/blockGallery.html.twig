@@ -1,0 +1,33 @@
+<div class="slideshow">
+    <div class="slideshow-img">
+        <div class="images">
+            {% for image in widget.gallery.medias %}
+                {% set translations = image.media.findTranslationByLocale(app.request.locale) %}
+                {% set imageMediaTranslation = '' %}
+                {% if image.media.theme %}
+                    {% set imageMediaTranslation = image.media.theme.findTranslationByLocale(app.request.locale) %}
+                {% endif %}
+                <div class="img{{ loop.index == 1 ? ' active' : '' }}">
+                    <a id="{{ 'photo' ~ loop.index }}" class="chocolat-image ajax" href="{% path image.media|trans_fallback('file'), 'reference' %}"
+                       title='<span class="category">{{ imageMediaTranslation ? imageMediaTranslation.title : imageMediaTranslation }}</span><span class="date">{{ image.media.publishedAt|date('d.m.y') }}</span><h2>{{ translations.alt|truncate(80, true, "...") }}</h2>'
+                       data-credit="{{ translations.legend|slice(0, 20) ~ ' - @' ~  translations.copyright|slice(0, 20) }}">
+                        <img src="{% path image.media|trans_fallback('file'), 'reference' %}" alt="" />
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="owl-carousel thumbnails">
+            {% for image in widget.gallery.medias %}
+                {% set translations = image.media.findTranslationByLocale(app.request.locale) %}
+                <div data-id="{{ 'photo' ~ loop.index }}" class="thumb{{ loop.index == 1 ? ' active' : '' }}" data-caption="{{ translations.legend ~ ' - ©' ~  translations.copyright}}">
+                    <img src="{% path image.media|trans_fallback('file'), 'reference' %}" />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if widget.gallery.medias[0] is defined %}
+        {% set translation = widget.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
+        <p class="caption">{{ translation.legend ~ ' - ©' ~  translation.copyright }}</p>
+    {% endif %}
+</div>

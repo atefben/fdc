@@ -1,0 +1,75 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="bigContainer">
+
+            <div class="text-presentation projection siteMap">
+
+                <h3>{{ sitePlanPage ? sitePlanPage.title : '' }}</h3>
+                <div>
+                    <div class="thirdSection">
+                        <a href="{{ path('fdc_marche_du_film_edition_presentation') }}"><h4 class="customClass1">Édition 2017</h4></a>
+                        <hr>
+                        <ul>
+                            <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">présentation</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_news') }}">actualités</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">projections</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">événements</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'producers-workshop'}) }}">producers workshop</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'producers-network'}) }}">producers network</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'doc-corner'}) }}">doc corner</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'next'}) }}">next</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'mixers'}) }}">mixers</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', {'slug': 'goes-to-cannes'}) }}">goes to cannes</a></li>
+                        </ul>
+                    </div>
+                    <div class="thirdSection">
+                        <h4 class="greenColor"><a href="{{ path('fdc_marche_du_film_accreditations') }}">Accréditations</a></h4>
+                        <hr class="greenHr">
+                    </div>
+                    <div class="thirdSection">
+                        <h4 class="goldColor customClass3"><a href="{{ path('fdc_marche_du_film_who_are_we_history') }}">Qui sommes-nous ?</a></h4>
+                        <hr class="goldHr">
+                        <ul>
+                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_history') }}">Historique</a></li>
+                            <li><a href="#">L'ÉQUIPE</a></li>
+                            <li><a href="#">Informations Pratiques</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_key_figures') }}">Chiffres clés</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_who_are_we_environmental_approaches') }}">Démarches</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="thirdSection">
+                        <h4 class="greenColor"><a href="{{ path('fdc_marche_du_film_services') }}">Services</a></h4>
+                        <hr class="greenHr">
+                        <ul>
+                            {% for item in servicesPages %}
+                                <li><a href="{{ path('fdc_marche_du_film_services_widgets', {'slug': item.url}) }}">{{ item.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="thirdSection">
+                        <h4 class="goldColor customClass3"><a href="{{ path('fdc_marche_du_film_press_releases') }}">Presse</a></h4>
+                        <hr class="goldHr">
+                        <ul>
+                            <li><a href="{{ path('fdc_marche_du_film_press_releases') }}">Communiqué de presse</a></li>
+                            <li><a href="#">Retombées de presse</a></li>
+                            <li><a href="#">Galerie Photos</a></li>
+                            <li><a href="#">Charte Graphique</a></li>
+                        </ul>
+                    </div>
+                    <div class="thirdSection">
+                        <h4 class="goldColor customClass3">Informations utiles</h4>
+                        <hr class="goldHr">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

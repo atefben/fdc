@@ -1,0 +1,60 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        {% if isWhoAreWe %}
+            {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
+        {% endif %}
+        {% if isConference is defined and isConference %}
+            {% include 'FDCMarcheDuFilmBundle:shared:conferenceSubHeader.html.twig' with {'title': titleHeader.title} %}
+        {% endif %}
+        <div class="container">
+            <div class="text-presentation marche">
+                {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockTitleHeader.html.twig' with {'titleHeader': titleHeader} %}
+            </div>
+            <div class="marche marcheBody contentBody">
+                {% for widget in widgets %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetText() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockText.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetImage() is defined and widget.isWidgetImage() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockImage.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetGallery() is defined and widget.isWidgetGallery() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockGallery.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.isWidgetFile() is defined and widget.isWidgetFile() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockDownload.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                    {% if widget.translatable is defined and widget.translatable.isWidgetVideo() %}
+                        {% include 'FDCMarcheDuFilmBundle:contentTemplate/partials:blockVideo.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% if isWhoAreWe %}
+        {% include 'FDCMarcheDuFilmBundle:contentTemplate:partials/contentTemplateFloatingButtons.html.twig' with {
+            'nextRoute': nextRoute,
+            'nextRouteLabel': nextRouteLabel,
+            'backRoute': backRoute,
+            'backRouteLabel': backRouteLabel
+        }%}
+    {% endif %}
+    {% if isConference is defined and isConference %}
+        {% if nextRouteName %}
+            <div class="floatingButtonRight">
+                <div class="arrow showRight">
+                    <i class='icon icon_flecheGauche reverse'></i>
+                </div>
+                <a href="{{ path(nextRouteName, {'slug': slug}) }}">
+                    <div class="floatingButtonText showRight">{{ nextRouteLabel }}</div>
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
+    {% if (isPresentation is defined and isPresentation == true) or (isConference is defined and isConference == true) %}
+        {% include 'FDCMarcheDuFilmBundle:partials:accreditationBlock.html.twig' %}
+        {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+    {% endif %}
+{% endblock %}

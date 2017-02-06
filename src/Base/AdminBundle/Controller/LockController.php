@@ -116,6 +116,29 @@ class LockController extends Controller
     );
 
     /**
+     * @var array
+     *
+     * Entity mapper for MarcheDuFilmBundle
+     */
+    private static $mdfEntityMapper = array(
+        'mediamdfimage' => 'MediaMdfImage',
+        'gallerymdf' => 'GalleryMdf',
+        'servicewidget' => 'ServiceWidget',
+        'servicewidgetproduct' => 'ServiceWidgetProduct',
+        'mdfconferenceprogramday' => 'MdfConferenceProgramDay',
+        'mdfconferenceprogramevent' => 'MdfConferenceProgramEvent',
+        'mdfprogramspeaker' => 'MdfProgramSpeaker',
+        'mdfconferencepartnertab' => 'MdfConferencePartnerTab',
+        'mdfconferencepartnerlogo' => 'MdfConferencePartnerLogo',
+        'mdfglobaleventsday' => 'MdfGlobalEventsDay',
+        'mdfglobaleventsschedule' => 'MdfGlobalEventsSchedule',
+        'mdfservicegallery' => 'MdfServiceGallery',
+        'mdftheme' => 'MdfTheme',
+        'mdfspeakerschoices' => 'MdfSpeakersChoices',
+        'mdfspeakersdetails' => 'MdfSpeakersDetails',
+    );
+
+    /**
      * createLockAction function.
      *
      * @access public
@@ -144,7 +167,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!isset(self::$entityMapper[$entity])) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt create the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -152,7 +175,16 @@ class LockController extends Controller
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        /** Check if entity is from FDC or Base **/
+        if (isset(self::$entityMapper[$entity])) {
+            $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$mdfEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } else {
+            $entity = null;
+        }
+        /** End **/
+
         if ($entity === null) {
             $logger->error(__CLASS__ . " - Couldnt create the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);
@@ -217,7 +249,7 @@ class LockController extends Controller
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
-        if (!isset(self::$entityMapper[$entity])) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -225,7 +257,16 @@ class LockController extends Controller
             ));
         }
 
-        $master = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        /** Check if entity is from FDC or Base **/
+        if (isset(self::$entityMapper[$entity])) {
+            $master = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$mdfEntityMapper[$entity])) {
+            $master = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } else {
+            $master = null;
+        }
+        /** End **/
+
         if ($master === null) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);
@@ -234,23 +275,31 @@ class LockController extends Controller
             ));
         }
 
-        $trans = $master->findTranslationByLocale($locale);
-        if ($trans === null) {
-            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
-            $response->setStatusCode(400);
-            return $response->setData(array(
-                'message' => 'Impossible de vérifier l\'existence du verrou.'
-            ));
-        }
+        if(method_exists($master,'findTranslationByLocale')) {
+            $trans = $master->findTranslationByLocale($locale);
+            if ($trans === null) {
+                $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
+                $response->setStatusCode(400);
 
-        if ($trans->getLockedBy()) {
-            $data = array(
-                'locked' => true,
-                'lockedBy' => ($trans->getLockedBy()->getFullName() != ' ') ? $trans->getLockedBy()->getFullName() : $trans->getLockedBy()->getUsername()
-            );
+                return $response->setData(array(
+                                              'message' => 'Impossible de vérifier l\'existence du verrou.'
+                                          ));
+            }
+
+            if ($trans->getLockedBy()) {
+                $data = array(
+                    'locked'   => true,
+                    'lockedBy' => ($trans->getLockedBy()->getFullName() != ' ') ? $trans->getLockedBy()->getFullName() : $trans->getLockedBy()->getUsername()
+                );
+            } else {
+                $data = array(
+                    'locked'   => false,
+                    'lockedBy' => null
+                );
+            }
         } else {
             $data = array(
-                'locked' => false,
+                'locked'   => false,
                 'lockedBy' => null
             );
         }
@@ -289,7 +338,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!isset(self::$entityMapper[$entity])) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -297,7 +346,16 @@ class LockController extends Controller
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        /** Check if entity is from FDC or Base **/
+        if (isset(self::$entityMapper[$entity])) {
+            $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$mdfEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } else {
+            $entity = null;
+        }
+        /** End **/
+
         if ($entity === null) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}', id not found");
             $response->setStatusCode(400);
@@ -370,13 +428,23 @@ class LockController extends Controller
             ));
         }
 
-        if (!isset(self::$entityMapper[$entity])) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt find the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de supprimer le verrou.'
             ));
         }
+
+        /** Check if entity is from FDC or Base **/
+        if (isset(self::$entityMapper[$entity])) {
+            $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$mdfEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } else {
+            $entity = null;
+        }
+        /** End **/
 
         $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         if ($entity === null) {

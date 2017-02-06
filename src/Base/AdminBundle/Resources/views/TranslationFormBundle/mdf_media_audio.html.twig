@@ -1,0 +1,174 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    <ul class="a2lix_translationsLocales nav nav-tabs">
+        {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+        {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
+    </ul>
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
+            {% set locale = translationsFields.vars.name %}
+            {% if is_granted('ROLE_TRANSLATOR_FR') %}
+                {% set currentLocale = 'fr' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+                {% set currentLocale = 'en' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+                {% set currentLocale = 'zh' %}
+            {% endif %}
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Informations de base
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.file) }}
+                                    {{ form_row(translationsFields.amazonRemoteFile) }}
+                                    {{ form_row(translationsFields.title) }}
+                                    {{ form_row(form.parent.children.theme) }}
+                                    {{ form_row(form.parent.children.image) }}
+                                    {{ form_row(form.parent.children.tags) }}
+                                    {{ form_row(form.parent.children.associatedFilms) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.parent.children.excludeFromSearch) }}
+                                        {{ form_label(form.parent.children.excludeFromSearch) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.parent.children.displayedAll) }}
+                                        {{ form_label(form.parent.children.displayedAll) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.parent.children.displayedHome) }}
+                                        {{ form_label(form.parent.children.displayedHome) }}
+                                    </div>
+                                    <div class="displayed-home form-group">
+                                        {{ form_row(form.parent.children.associatedFilm) }}
+                                        {{ form_row(form.parent.children.associatedEvent) }}
+                                        {{ form_row(form.parent.children.associatedProjections) }}
+                                    </div>
+                                    {% if form.vars.default_locale != locale %}
+                                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                        {% elseif is_granted('ROLE_JOURNALIST') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                        {% else %}
+                                            {{ form_row(translationsFields.status) }}
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        {% if form.vars.default_locale == locale %}
+                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' with {'isDisplayedHome': false} %}
+                        {% else %}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                {{ 'form.label_title'|trans }}
+                                            </label>
+                                            {% if form.children.fr.vars.value is not null and form.children.fr.vars.value.title is defined %}
+                                                <div>
+                                                    {{ form.children.fr.vars.value.title }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {{ form_row(form.parent.children.seoFile) }}
+                            </div>
+                        </div>
+                    </div>
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-4">
+                            <p>
+                                {{ 'group.helper_seo_example'|trans|nl2br }}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value|raw }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if form.vars.default_locale != locale %}
+                    <div class="row">
+                        <div class="col-md-4">
+                            {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                            {% elseif is_granted('ROLE_JOURNALIST') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                            {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                            {% else %}
+                                {{ form_row(translationsFields.status) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

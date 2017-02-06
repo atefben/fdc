@@ -74,6 +74,26 @@
         <source>home.article.btn.ajouteramaselection</source>
         <target>__home.article.btn.ajouteramaselection</target>
       </trans-unit>
+      <trans-unit id="c129464fcd0a57561475308cb3f69a82" resname="search.result.artist.count">
+        <source>search.result.artist.count</source>
+        <target>__search.result.artist.count</target>
+      </trans-unit>
+      <trans-unit id="1de48abedee2208927066c02f8b05c74" resname="search.result.media.count">
+        <source>search.result.media.count</source>
+        <target>__search.result.media.count</target>
+      </trans-unit>
+      <trans-unit id="3550adfcd0ccb8f0af402d4a1033f032" resname="search.result.film.count">
+        <source>search.result.film.count</source>
+        <target>__search.result.film.count</target>
+      </trans-unit>
+      <trans-unit id="f0e38f6699137d3363ca232e66803b95" resname="search.result.event.count">
+        <source>search.result.event.count</source>
+        <target>__search.result.event.count</target>
+      </trans-unit>
+      <trans-unit id="8401bdeff0e01054d215f177ae00eac4" resname="search.result.news.count">
+        <source>search.result.news.count</source>
+        <target>__search.result.news.count</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

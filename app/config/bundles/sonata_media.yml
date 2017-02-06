@@ -329,6 +329,7 @@ sonata_media:
                 # film cover mobile
                 1600x903: { width: 1600, height: 903, quality: 100, constraint: false }
                 210x284: { width: 210 , height: 284 , quality: 100, constraint: false }
+                346x346: { width: 346 , height: 346 , quality: 100, constraint: false }
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
                 954x606: { width: 954 , height: 606 , quality: 100, constraint: false }
 

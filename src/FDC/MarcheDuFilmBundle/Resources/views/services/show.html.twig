@@ -1,0 +1,60 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="home loading">
+        <div class="bigContainer">
+
+            <div class="our-news newsPage servicesPage">
+                {% if serviceContent is not empty %}
+                    <h3>{{ serviceContent.title  }}</h3>
+                    {# Content formated in ckeditor#}
+                    {{ serviceContent.description|raw }}
+                    {# End #}
+                    <div class="innerWrapper">
+                        {% for serviceWidget in serviceWidgets %}
+                            <div class="articles">
+                                <a href="{{ serviceWidget.seeMoreUrl }}">
+                                    <div class="readMore">...</div>
+                                    <div class="articles-img">
+                                        {% if serviceWidget.translatable.image is not empty %}
+                                            <img class="fitImg" src="{% path serviceWidget.translatable.image|trans_fallback('file'), 'reference' %}">
+                                        {% endif %}
+                                        <div class="normalImg">
+                                            <img src="{{ asset('bundles/fdcmarchedufilm/img/plus.png') }}" alt="Marché du film">
+                                        </div>
+                                    </div>
+                                    <div class="articles-content">
+                                        <h6>{{ serviceWidget.title }}</h6>
+                                        <span>{{ serviceWidget.subtitle }}</span>
+                                        {# Content formated in ckeditor#}
+                                        {{ serviceWidget.description|raw }}
+                                        {# End #}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                        {% if serviceContent.contactTitle is not null and serviceContent.contactDescription is not null and serviceContent.contactSeeMoreUrl is not null %}
+                            <div class="articles lastServicesArticle">
+                                <div class="articles-content">
+                                    <div class="lastArticle">
+                                        <h6>{{ serviceContent.contactTitle }}</h6>
+                                        {# Content formated in ckeditor#}
+                                        {{ serviceContent.contactDescription|raw }}
+                                        {# End #}
+                                        <a href="{{ serviceContent.contactSeeMoreUrl }}" target="_blank"><div class="blackBtn">En Savoir Plus</div></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'FDCMarcheDuFilmBundle::partials/newsBlock.html.twig' with { 'news': news } %}
+    {% include 'FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig' %}
+    {% include 'FDCMarcheDuFilmBundle::partials/contactBlock.html.twig' with { 'contact': contact } %}
+
+{% endblock main %}
