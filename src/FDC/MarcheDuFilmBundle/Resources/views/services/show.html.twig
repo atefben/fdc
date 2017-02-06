@@ -25,10 +25,23 @@
                                         </div>
                                     </div>
                                     <div class="articles-content">
-                                        <h6>{{ serviceWidget.title }}</h6>
-                                        <span>{{ serviceWidget.subtitle }}</span>
+                                        {% if serviceWidget.title|length > 25 %}
+                                            <h6>{{ serviceWidget.title|truncate(25, true, "...") }}</h6>
+                                        {% else %}
+                                            <h6>{{ serviceWidget.title }}</h6>
+                                        {% endif %}
+                                        {% if serviceWidget.subtitle|length > 60 %}
+                                            <span>{{ serviceWidget.subtitle|truncate(60, true, "...") }}</span>
+                                        {% else %}
+                                            <span>{{ serviceWidget.subtitle }}</span>
+                                        {% endif %}
+                                        {% if serviceWidget.description|striptags|length > 80 %}
+                                            {% set description = serviceWidget.description|truncate(80, true, "...</p>") %}
+                                        {% else %}
+                                            {% set description = serviceWidget.description %}
+                                        {% endif %}
                                         {# Content formated in ckeditor#}
-                                        {{ serviceWidget.description|raw }}
+                                        {{ description|raw }}
                                         {# End #}
                                     </div>
                                 </a>
