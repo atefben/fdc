@@ -2821,6 +2821,10 @@ video {
   z-index: 1;
 }
 
+.photo-module.last {
+  border-bottom: none;
+}
+
 .border-bottom {
   border-bottom: 1px solid #2C2C2C;
 }
