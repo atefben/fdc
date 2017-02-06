@@ -75,7 +75,7 @@ var owInitGrid = function (id) {
                         pg: parseInt($('input[name="pg"]').val())+1
                     },
                     success: function(data) {
-                        data = $(data);
+                        $data = $(data);
 
                         console.log(data);
 
