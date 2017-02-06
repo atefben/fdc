@@ -762,11 +762,11 @@ OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous 
       </trans-unit>
       <trans-unit id="1de48abedee2208927066c02f8b05c74" resname="search.result.media.count">
         <source>search.result.media.count</source>
-        <target>{0} Films - %count% résultat|{1} Films - %count% résultat|]1,Inf[ Films - %count% résultats</target>
+        <target>{0} Films - %count% résultat|{1} Médias - %count% résultat|]1,Inf[ Films - %count% résultats</target>
       </trans-unit>
       <trans-unit id="3550adfcd0ccb8f0af402d4a1033f032" resname="search.result.film.count">
         <source>search.result.film.count</source>
-        <target>{0} Artistes - %count% résultat|{1} Artistes - %count% résultat|]1,Inf[ Artistes - %count% résultats</target>
+        <target>{0} Artistes - %count% résultat|{1} Films - %count% résultat|]1,Inf[ Artistes - %count% résultats</target>
       </trans-unit>
       <trans-unit id="f0e38f6699137d3363ca232e66803b95" resname="search.result.event.count">
         <source>search.result.event.count</source>
