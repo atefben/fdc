@@ -17,6 +17,10 @@ footer {
   position: relative;
   z-index: 2;
 
+  .title {
+    margin-bottom: 15px;
+  }
+
   .block-01 img {
     object-fit: initial;
   }
