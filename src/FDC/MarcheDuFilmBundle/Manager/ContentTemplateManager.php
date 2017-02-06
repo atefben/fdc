@@ -211,6 +211,20 @@ class ContentTemplateManager
         return isset($newsContent) ? $newsContent : [];
     }
 
+    public function getConferenceNewsContent($conference, $offset = false) {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+
+        $news = $this->getConferenceNews($pageType, $conference, $offset);
+
+        foreach ($news as $key => $newsItem) {
+            $newsContent[$key]['content'] = $newsItem;
+            $newsContent[$key]['image'] = $this->getContentTemplateImageWidgetsByPageId($newsItem->getTranslatable()->getId());
+            $newsContent[$key]['text'] = $this->getContentTemplateTextWidgetsByPageId($newsItem->getTranslatable()->getId());
+        }
+
+        return isset($newsContent) ? $newsContent : [];
+    }
+
     public function getTitleHeaderContent($pageType) {
         return $this->em
             ->getRepository(MdfContentTemplateTranslation::class)
@@ -293,6 +307,17 @@ class ContentTemplateManager
                 $this->requestStack->getMasterRequest()->get('_locale'),
                 $pageType,
                 $filters
+            );
+    }
+
+    public function getConferenceNews($type, $conference, $offset) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getConferenceNewsByLocaleAndType(
+                $this->requestStack->getMasterRequest()->get('_locale'),
+                $type,
+                $conference,
+                $offset
             );
     }
 

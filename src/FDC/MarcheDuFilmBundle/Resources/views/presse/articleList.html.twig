@@ -1,0 +1,15 @@
+{% for pressCoverageWidget in pressCoverageWidgets %}
+    <a href="{{ pressCoverageWidget.link }}" target="_blank">
+        <div class="articles">
+            <div class="readMore">
+                <i class="icon icon_flecheGauche reverse"></i>
+                <a href="{{ pressCoverageWidget.link }}" target="_blank">{{ 'read_the_article'|trans }}</a>
+            </div>
+            <div class="articles-content">
+                <span>publié le <span class="article-date customClass4">{{ pressCoverageWidget.translatable.publishedAt|date("d M Y") }}</span></span>
+                <h6>{{ pressCoverageWidget.title }}</h6>
+                <span>{{ 'article_by'|trans }}{#Par#} <span class="article-date customClass4">{{ pressCoverageWidget.source }}</span></span>
+            </div>
+        </div>
+    </a>
+{% endfor %}
