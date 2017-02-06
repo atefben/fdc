@@ -2821,7 +2821,7 @@ video {
   z-index: 1;
 }
 
-.photo-module.last {
+.photo-module.last .slideshow {
   border-bottom: none;
 }
 
@@ -3537,6 +3537,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-legend .info h2 a {
   color: #141414;
+  font-size: 1.125rem;
 }
 .block-legend .texts {
   display: -ms-flexbox;
