@@ -3282,6 +3282,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .875rem;
   margin-top: 15px;
 }
+.block-push .title {
+  letter-spacing: 2px;
+}
 .block-push.half-div {
   text-align: center;
   height: 325px;
