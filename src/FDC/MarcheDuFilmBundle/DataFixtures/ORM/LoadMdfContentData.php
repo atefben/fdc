@@ -337,6 +337,10 @@ class LoadMdfContentData implements FixtureInterface
             $industry->setType(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate::TYPE_INDUSTRY_PROGRAM_HOME);
             $manager->persist($industry);
         }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfAnnualGraphicCharter::class)->findAll()) == 0) {
+            $charter = new \FDC\MarcheDuFilmBundle\Entity\MdfAnnualGraphicCharter();
+            $manager->persist($charter);
+        }
 
         $manager->flush();
     }

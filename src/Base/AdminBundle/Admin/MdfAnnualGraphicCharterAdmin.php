@@ -5,7 +5,6 @@ namespace Base\AdminBundle\Admin;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MdfAnnualGraphicCharterAdmin extends Admin
@@ -22,11 +21,10 @@ class MdfAnnualGraphicCharterAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'   => array(),
                     'edit'   => array(),
-                    'delete' => array(),
                 ),
             ))
         ;
@@ -93,16 +91,6 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                 ),
                 'required' => true
             ))
-        ;
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
         ;
     }
 }

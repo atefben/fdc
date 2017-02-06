@@ -337,4 +337,14 @@ class MdfAnnualGraphicCharter
     {
         return $this->color7;
     }
+
+    public function getTitle()
+    {
+        return 'Charte graphique annuelle';
+    }
+
+    public function __toString()
+    {
+        return 'Charte graphique annuelle';
+    }
 }
