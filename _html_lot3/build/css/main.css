@@ -4228,6 +4228,43 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   overflow: visible;
   max-height: none;
 }
+.block-accordion .hebergement.item .descrip-section a {
+  color: #c8a461;
+  text-decoration: underline;
+  font-size: .8125rem;
+  margin-top: 3px;
+}
+.block-accordion .i-transport.item .item-manual .contain-infos .item-infos .title-infos {
+  color: #000;
+  font: 0.75rem "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  display: block;
+  text-transform: uppercase;
+  padding-top: 17px;
+  padding-bottom: 15px !important;
+  letter-spacing: 0px;
+}
+.block-accordion .i-transport.item .btn {
+  font-size: .625rem;
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  margin-top: 23px;
+  display: inline-block;
+  width: 154.44px;
+  height: 42px;
+  box-sizing: border-box;
+  padding-top: 9px;
+}
+.block-accordion .i-transport.item .btn .icon-create {
+  font-size: .5rem !important;
+  margin-right: 10px !important;
+  vertical-align: middle !important;
+  margin-bottom: 3px !important;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 .block-accordion .a-left {
   text-align: left;
 }
@@ -4254,11 +4291,18 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-accordion .description-top.bottom-padding {
   margin-bottom: 22px;
 }
-.block-accordion .icon-minus, .block-accordion .icon-create {
+.block-accordion .icon-minus, .block-accordion .icon-more-square {
   float: right;
   font-size: .6rem;
   margin-top: 5px;
+  margin-right: 22px;
+}
+.block-accordion .icon-more-square {
+  float: right;
+  font-size: 2.7rem;
+  margin-top: -11px;
   margin-right: 5px;
+  color: #c1c1c1;
 }
 .block-accordion .icon-download {
   margin-top: 0px;
