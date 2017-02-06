@@ -191,6 +191,15 @@
           width: 50%;
           z-index: 2;
           cursor: pointer;
+
+          .icon {
+            color: $gold;
+            position: relative;
+            left: -25px;
+
+            font-size: .5rem;
+          }
+
         }
 
         label {
@@ -212,6 +221,7 @@
           font-size: 0.688rem;
           outline: none;
           -webkit-appearance: none;
+          -moz-appearance: none !important;
           text-transform: uppercase;
           padding-right: 10px;
           width: 280px;

@@ -10005,7 +10005,7 @@ body#home .isotope-01 .item .contain-img {
   position: relative;
   z-index: 0;
 }
-.slider-restropective .block-push {
+.slider-restropective.block-push {
   -webkit-transform: translate3d(0, 0, 0);
 }
 .portrait.mobile .slider-restropective {
@@ -16176,6 +16176,12 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   z-index: 2;
   cursor: pointer;
 }
+.c-contact .contact #form .select #triggerSelect .icon {
+  color: #c8a461;
+  position: relative;
+  left: -25px;
+  font-size: .5rem;
+}
 .c-contact .contact #form .select label {
   color: #333;
   display: inline-block;
@@ -16194,6 +16200,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.688rem;
   outline: none;
   -webkit-appearance: none;
+  -moz-appearance: none !important;
   text-transform: uppercase;
   padding-right: 10px;
   width: 280px;
