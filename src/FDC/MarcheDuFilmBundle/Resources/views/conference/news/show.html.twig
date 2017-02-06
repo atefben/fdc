@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            {% if news|length >= 9 %}
+            {% if showMoreButton >= 9 %}
                 <a href="#" id="load-more-conference-articles" data-slug="{{ route_params['slug'] }}">
                     <div class="moreArticles">
                         <span>{{ 'news.block.load_more_button'|trans }}</span>

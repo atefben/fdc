@@ -10,7 +10,7 @@ use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
  */
 class PressCoverageWidgetTranslationRepository extends EntityRepository
 {
-    public function getSortedPressCoverageWidgets($locale, $offset)
+    public function getSortedPressCoverageWidgets($locale, $offset, $limit = true)
     {
         $qb = $this->createQueryBuilder('pc');
         $qb
@@ -18,8 +18,11 @@ class PressCoverageWidgetTranslationRepository extends EntityRepository
             ->innerJoin('pc.translatable', 'pct')
             ->orderBy('pct.publishedAt', 'DESC')
             ->setParameter(':locale', $locale)
-            ->setMaxResults(9)
         ;
+        
+        if ($limit) {
+            $qb->setMaxResults(9);
+        }
         
         if ($offset) {
             $qb->setFirstResult($offset);

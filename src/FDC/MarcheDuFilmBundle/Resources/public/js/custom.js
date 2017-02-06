@@ -311,7 +311,7 @@ function loadRetombeesPress() {
               numberOfArticles: currentArticles
           },
           success: function(data, textStatus, xhr) {
-              if ($(data).filter('.articles').length < 9) {
+              if ($(data).find('.articles').length < 9) {
                   $('#load-more-retombee-articles').remove();
               }
               $(data).insertAfter($('.articles').last());
