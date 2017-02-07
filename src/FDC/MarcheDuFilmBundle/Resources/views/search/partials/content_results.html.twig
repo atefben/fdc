@@ -23,7 +23,8 @@
                     {% set image = contentTemplateWidget %}
                 {% endif %}
             {% endfor %}
-            <a href="{{ path(contentUrls[content.type])|default(path('fdc_marche_du_film_news_details', {'slug': translation.slug})) }}" target="_blank">
+{#            <a href="{{ path(contentUrls[content.type])|default(path('fdc_marche_du_film_news_details', {'slug': translation.slug})) }}" target="_blank">#}
+            <a href="{% if contentUrls[content.type] is defined %}{{ path(contentUrls[content.type]) }} {% else %} {{ path('fdc_marche_du_film_news_details', {'slug': translation.slug}) }} {% endif %}" target="_blank">
                 <div class="articles result" {% if loop.parent.loop.index > 1  %} hidden {% endif %}>
                     <div class="articles-content">
                         <div class="photoWrapper">
