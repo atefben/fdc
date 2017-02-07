@@ -32,7 +32,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="accreditations customClass2Bckg">
+                <div class="accreditations customClass2Bckg accreditationsCustom">
                     <div class="bigContainer">
                         <h3>{{ accreditationContent.promotionsTitle|raw }}</h3>
                         <div class="pricesContainer">
@@ -77,33 +77,64 @@
                         </div>
                         <div class="pricesContent">
                             <div class="innerWrapper">
-                                <div class="plusPrices">
-                                    <div class="plusPricesdetails">
-                                        <span class="customClass3">{{ accreditationContent.promotionDetailsTitle1|raw }}</span>
-                                        <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix1 }}</span>{{ accreditationContent.promotionDetailsPrice1 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix1 }}</span></h6>
+                                {#{{ dump() }}#}
+                                {% if accreditationContent.promotionDetailsTitle1 or accreditationContent.promotionDetailsPricePrefix1 or accreditationContent.promotionDetailsPrice1 or accreditationContent.promotionDetailsPriceSuffix1 or accreditationContent.promotionDetailsInformation1 %}
+                                    <div class="plusPrices">
+                                        {% if accreditationContent.promotionDetailsTitle1 or accreditationContent.promotionDetailsPricePrefix1 or accreditationContent.promotionDetailsPrice1 or accreditationContent.promotionDetailsPriceSuffix1 %}
+                                            {% set verticalAlign1 = false %}
+                                            <div class="plusPricesdetails">
+                                                <span class="customClass3">{{ accreditationContent.promotionDetailsTitle1|raw }}</span>
+                                                <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix1 }}</span>{{ accreditationContent.promotionDetailsPrice1 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix1 }}</span></h6>
+                                            </div>
+                                        {% else %}
+                                            {% set verticalAlign1 = true %}
+                                        {% endif %}
+                                        {% if verticalAlign1 %}
+                                            <div class="v-middle-anchor"></div>
+                                        {% endif %}
+                                        <div class="{% if verticalAlign1 %}plusPricestextCustom{% else %}plusPricestext{% endif %}">
+                                            {{ accreditationContent.promotionDetailsInformation1|raw }}
+                                        </div>
                                     </div>
-                                    <div class="plusPricestext">
-                                        {{ accreditationContent.promotionDetailsInformation1|raw }}
+                                {% endif %}
+                                {% if accreditationContent.promotionDetailsTitle2 or accreditationContent.promotionDetailsPricePrefix2 or accreditationContent.promotionDetailsPrice2 or accreditationContent.promotionDetailsPriceSuffix2 or accreditationContent.promotionDetailsInformation2 %}
+                                    <div class="plusPrices">
+                                        {% if accreditationContent.promotionDetailsTitle2 or accreditationContent.promotionDetailsPricePrefix2 or accreditationContent.promotionDetailsPrice2 or accreditationContent.promotionDetailsPriceSuffix2 %}
+                                            {% set verticalAlign2 = false %}
+                                            <div class="plusPricesdetails">
+                                                <span class="customClass3">{{ accreditationContent.promotionDetailsTitle2|raw }}</span>
+                                                <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix2 }}</span>{{ accreditationContent.promotionDetailsPrice2 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix2 }}</span></h6>
+                                            </div>
+                                        {% else %}
+                                            {% set verticalAlign2 = true %}
+                                        {% endif %}
+                                        {% if verticalAlign2 %}
+                                            <div class="v-middle-anchor"></div>
+                                        {% endif %}
+                                        <div class="{% if verticalAlign2 %}plusPricestextCustom{% else %}plusPricestext{% endif %}">
+                                            {{ accreditationContent.promotionDetailsInformation2|raw }}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="plusPrices">
-                                    <div class="plusPricesdetails">
-                                        <span class="customClass3">{{ accreditationContent.promotionDetailsTitle2|raw }}</span>
-                                        <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix2 }}</span>{{ accreditationContent.promotionDetailsPrice2 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix2 }}</span></h6>
+                                {% endif %}
+                                {% if accreditationContent.promotionDetailsTitle3 or accreditationContent.promotionDetailsPricePrefix3 or accreditationContent.promotionDetailsPrice3 or accreditationContent.promotionDetailsPriceSuffix3 or accreditationContent.promotionDetailsInformation3 %}
+                                    <div class="plusPrices">
+                                        {% if accreditationContent.promotionDetailsTitle3 or accreditationContent.promotionDetailsPricePrefix3 or accreditationContent.promotionDetailsPrice3 or accreditationContent.promotionDetailsPriceSuffix3 %}
+                                            {% set verticalAlign3 = false %}
+                                            <div class="plusPricesdetails">
+                                                <span class="customClass3">{{ accreditationContent.promotionDetailsTitle3|raw }}</span>
+                                                <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix3 }}</span>{{ accreditationContent.promotionDetailsPrice3 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix3 }}</span></h6>
+                                            </div>
+                                        {% else %}
+                                            {% set verticalAlign3 = true %}
+                                        {% endif %}
+                                        {% if verticalAlign3 %}
+                                            <div class="v-middle-anchor"></div>
+                                        {% endif %}
+                                        <div class="{% if verticalAlign3 %}plusPricestextCustom{% else %}plusPricestext{% endif %}">
+                                            {{ accreditationContent.promotionDetailsInformation3|raw }}
+                                        </div>
                                     </div>
-                                    <div class="plusPricestext">
-                                        {{ accreditationContent.promotionDetailsInformation2|raw }}
-                                    </div>
-                                </div>
-                                <div class="plusPrices">
-                                    <div class="plusPricesdetails">
-                                        <span class="customClass3">{{ accreditationContent.promotionDetailsTitle3|raw }}</span>
-                                        <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix3 }}</span>{{ accreditationContent.promotionDetailsPrice3 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix3 }}</span></h6>
-                                    </div>
-                                    <div class="plusPricestext">
-                                        {{ accreditationContent.promotionDetailsInformation3|raw }}
-                                    </div>
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
