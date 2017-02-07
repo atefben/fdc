@@ -9,7 +9,9 @@
                 {% if serviceContent is not empty %}
                     <h3>{{ serviceContent.title  }}</h3>
                     {# Content formated in ckeditor#}
-                    {{ serviceContent.description|raw }}
+                    <div class="customClass1">
+                        {{ serviceContent.description|raw }}
+                    </div>
                     {# End #}
                     <div class="innerWrapper">
                         {% for serviceWidget in serviceWidgets %}

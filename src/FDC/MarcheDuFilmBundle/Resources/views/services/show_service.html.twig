@@ -27,7 +27,9 @@
                 <div class="text-presentation boxes">
                     <h3>{{ service.subTitle }}</h3>
                     {# Formated in BO #}
-                    {{ service.header|raw }}
+                    <div class="customClass1">
+                        {{ service.header|raw }}
+                    </div>
                     {# End #}
                 </div>
             </div>
@@ -68,7 +70,7 @@
                                 {% endif %}
                                 <div class="tabBox">
                                     <span class="customClass2">{{ product.title }}</span>
-                                    <h5>{{ product.grayText }} <span class="fromPrice">{{ product.colorText }}</span></h5>
+                                    <h5>{{ product.grayText }} <span class="fromPrice customClass1">{{ product.colorText }}</span></h5>
                                     <div class="tabContent">
                                         <p>{{ product.body }}</p>
                                     </div>
@@ -94,7 +96,7 @@
         <div class="tarifs">
             <div class="text-presentation">
                 <h3>{{ service.contentBlockTitle }}</h3>
-                <div class="tarifsBody">
+                <div class="tarifsBody customClass1">
                     {{ service.contentBlockBody|raw }}
                 </div>
             </div>
