@@ -2244,6 +2244,8 @@ a {
 .button-submit-02 .icon {
   margin-right: 24px;
   vertical-align: middle;
+  position: relative;
+  top: 2px;
 }
 .button-submit-02:hover {
   background-color: transparent;
