@@ -462,7 +462,7 @@ html {
     overflow: hidden;
     width: 85%;
     float: right; }
-  .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
+  .jwplayer.jw-skin-fdc .jw-controlbar-left-group { 
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
     background-size: 1.8rem; }
   .jwplayer.jw-skin-fdc .jw-display-icon-container .jw-icon-display {

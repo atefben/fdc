@@ -2,7 +2,7 @@
           <a class="Article-slider-prev" href="#"></a>
           <a class="Article-slider-next" href="#"></a>
           <div class="Article-slider">
-            {% for key, gallery in widget.gallery.medias %}
+            {% for key, gallery in medias %}
             <div class="Article-slider-item">
               <img src="{% path gallery.media|trans_fallback('file'), '640x400' %}"/>
               <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> {{ gallery.media|trans_fallback('copyright') }}</span> 
