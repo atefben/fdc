@@ -91,6 +91,12 @@
   .block-01 {
     margin-bottom: 68px;
   }
+
+  .pages {
+    .block-01:last-child {
+      border-bottom: 0px solid #fff;
+    }
+  }
 }
 
 
