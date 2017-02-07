@@ -76,7 +76,7 @@ function setNews() {
                 if (this.id == 'all' || el.length < 1 ) {
                     $('.parent > div').fadeOut(200);
                     $('#empty-news-list').hide();
-                    $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
+                    $('#no-filter-news').show();
                     $('.selectText').hide();
 
                 } else if (this.id == 'all') {
@@ -311,7 +311,7 @@ function loadRetombeesPress() {
               numberOfArticles: currentArticles
           },
           success: function(data, textStatus, xhr) {
-              if ($(data).filter('.articles').length < 9) {
+              if ($(data).find('.articles').length < 9) {
                   $('#load-more-retombee-articles').remove();
               }
               $(data).insertAfter($('.articles').last());

@@ -411,14 +411,17 @@ function click() {
                   el.splice(indexRel, 1);
               }
 
-              $('.' + identification).fadeOut(200);
+              $('.' + identification).fadeOut(200, function () {
+                  insertNoEventMessage(el);
+              });
               $('#' + attr).hide();
               console.log("removed " + identification);
               console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
                   $('.parent > div').fadeOut(200);
-                  $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
+                  $('.parent').append('<div class="events message event-message">' + noFilterForGlobalMessage + '</div>');
+                  removeNoEventMessages();
                   $('.selectText').hide();
               } else if (this.id == 'all') {
                   $('.selectText').hide();
@@ -442,15 +445,17 @@ function click() {
             $('.parent > div').fadeIn(200);
             $('.selectText').show();
             $('.selectText').removeClass('hideContent');
-            $('.message').empty();
+            $('.event-message').empty();
             $(this).addClass('purpleBtn');
             $(this).siblings().removeClass('purpleBtn');
             $('.events').removeClass('hideContent');
             el = [];
             console.log(el);
+            removeNoEventMessages();
           } else if (el){
               $('.selectText').hide();
               $.each(el, function(i, val) {
+                  console.log(val);
                  $('.' + val).show();
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
@@ -462,11 +467,42 @@ function click() {
                   }
               });
               $('#' + attr).show();
+
+              insertNoEventMessage();
           }
 
         }
     });
 
+    function insertNoEventMessage() {
+        /* Check if there is at least one event available per day */
+        $.each($('.parent'), function () {
+            var visible = 0;
+            var that = this;
+            $.each($(that).find('.box'), function () {
+                if ($(this).css('display') == 'block') {
+                    visible++;
+                    return;
+                }
+            });
+            if (visible == 0 && el.length > 0) {
+                if ($(".event-" + $(that).data('id'))) {
+                    $(".event-" + $(that).data('id')).remove();
+                }
+                $(that).append('<div class="event-' + $(that).data('id') + ' message">' + noAvailableGlobalMessage + '</div>');
+            } else {
+                $(".event-" + $(that).data('id')).remove();
+            }
+        });
+    }
+
+    function removeNoEventMessages() {
+        $.each($('.parent'), function () {
+            if ($(".event-" + $(this).data('id'))) {
+                $(".event-" + $(this).data('id')).remove();
+            }
+        });
+    }
 /* MARKET NEWS*/
 
     /*$('.marketnewsBtn').click(function() {

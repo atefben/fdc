@@ -157,7 +157,7 @@ $('body').on('click', '.chocolat-image', function() {
   }else{
     $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
   }
-  $('<div class="buttons square img-slideshow-share"><a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a><a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
+  $('<div class="buttons square img-slideshow-share"><a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a><a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a></div>').appendTo('.chocolat-bottom');
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
@@ -332,7 +332,7 @@ $('body').on('click', '.chocolat-right', function(e) {
 
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').parent().next().find('a').data('pid') + '"]').addClass('active');
-    
+
     updatePhotoShare($('[data-'+type+'='+pid+']').parent().next().find('a').data('pid'), $('[data-'+type+'='+pid+']').parent().next().find('a').attr('title'));
   }
 });
@@ -384,22 +384,23 @@ function updatePhotoShare(pid, title) {
   $('.chocolat-bottom .img-slideshow-share .button.twitter').off('click');
 
   // CUSTOM LINK FACEBOOK
-  var fbHref = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
+  var fbHref = "//www.facebook.com/sharer.php?u=CUSTOM_URL&description=CUSTOM_DESC&picture=CUSTOM_IMAGE&caption=CUSTOM_NAME";
+  /*var fbHref = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
       '&link=CUSTOM_URL' +
       '&picture=CUSTOM_IMAGE' +
       '&name=CUSTOM_NAME' +
       '&caption=' +
       '&description=CUSTOM_DESC' +
       '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
-      '&display=popup';
+      '&display=popup';*/
   fbHref     = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
   fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($('[data-pid='+pid+']').attr('href')));
-  fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent(t1.slice(0, -1)));
-  fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent('© ' + $('[data-pid='+pid+']').attr('data-credit')));
+  fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($('[data-pid='+pid+']').attr('data-seo-title')));
+  fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($('[data-pid='+pid+']').attr('data-seo-description')));
   $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
   // CUSTOM LINK TWITTER
   var twHref = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
-  twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
+  twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent($('[data-pid='+pid+']').attr('data-seo-title')+" "+shareUrl));
   $('.chocolat-bottom .img-slideshow-share .twitter').attr('href', twHref);
   // CUSTOM LINK COPY
   $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', shareUrl);

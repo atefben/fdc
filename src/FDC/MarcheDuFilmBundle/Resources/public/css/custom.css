@@ -72,4 +72,11 @@ header #navigation ul li a.golden.active {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 600px;
+
+}
+
+/* Slideshow share */
+.share {
+    padding: 0px 0px 0px 0px;
+    border-top: 0px;
 }
