@@ -1328,10 +1328,10 @@
 {% block press_coverage_widget_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.mdf.press_coverage.widget'|trans }}</h4>
+        <h4>{{ 'form.mdf.label.press_coverage.widget'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
-        <label>{{ 'form.mdf.press_coverage.widget_published_at'|trans }}</label>
+        <label>{{ 'form.mdf.label.press_coverage.widget_published_at'|trans }}</label>
         {{ form_widget(form.children.publishedAt) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">

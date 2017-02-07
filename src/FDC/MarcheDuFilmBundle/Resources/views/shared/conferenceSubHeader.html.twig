@@ -19,31 +19,31 @@
         <nav>
             <ul class="main">
                 <li>
-                    <a href="{{ path('fdc_marche_du_film_conference_home', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_home' ? 'active customClass1' : '' }}">{{ 'conference.menu.home'|trans }}</a>
+                    <a href="{{ path('fdc_marche_du_film_conference_home', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_home' ? 'active customClass1' : 'conferenceColor1' }}">{{ 'conference.menu.home'|trans }}</a>
                 </li>
                 {% if programIsActive %}
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_conference_program', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_program' ? 'active customClass1' : '' }}">{{ 'conference.menu.conferences'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_conference_program', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_program' ? 'active customClass1' : 'conferenceColor1' }}">{{ 'conference.menu.conferences'|trans }}</a>
                     </li>
                 {% endif %}
                 {% if speakersIsActive %}
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_conference_speakers', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_speakers' ? 'active customClass1' : '' }}">{{ 'conference.menu.speakers'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_conference_speakers', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_speakers' ? 'active customClass1' : 'conferenceColor1' }}">{{ 'conference.menu.speakers'|trans }}</a>
                     </li>
                 {% endif %}
                 {% if newsIsActive %}
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_conference_news', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_news' ? 'active customClass1' : '' }}">{{ 'conference.menu.news'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_conference_news', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_news' ? 'active customClass1' : 'conferenceColor1' }}">{{ 'conference.menu.news'|trans }}</a>
                     </li>
                 {% endif %}
                 {% if partnersIsActive %}
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_conference_partners', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_partners' ? 'active customClass1' : '' }}">{{ 'conference.menu.partners'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_conference_partners', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_partners' ? 'active customClass1' : 'conferenceColor1' }}">{{ 'conference.menu.partners'|trans }}</a>
                     </li>
                 {% endif %}
                 {% if infoAndContactIsActive %}
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_conference_infos_and_contacts', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_infos_and_contacts' ? 'active customClass1' : '' }}">{{ 'conference.menu.contact'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_conference_infos_and_contacts', {'slug': slug}) }}" class="{{ routeName == 'fdc_marche_du_film_conference_infos_and_contacts' ? 'active customClass1' : 'conferenceColor1' }}">{{ 'conference.menu.contact'|trans }}</a>
                     </li>
                 {% endif %}
             </ul>
