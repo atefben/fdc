@@ -1,0 +1,32 @@
+<div class="documents contents">
+
+    <div class="resultsTitle">
+        <h6>Documents</h6>
+        <div class="seeAll" rel="documents">tout voir</div>
+    </div>
+
+    {% for document in items.documentResults%}
+        <div class="projection ">
+
+                {% set translation = document.file.findTranslationByLocale(app.request.locale) %}
+                <a href="{% path document.file|trans_fallback('file'), 'reference' %}" target="_blank">
+                    <div class="programme result" {% if loop.index > 3  %} hidden {% endif %}>
+                        <div class="customClass1">
+                            <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
+                        </div>
+                        <div>
+                            <h6 class="customClass1">
+                                {{ translation.name|length > 65 ? translation.name|slice(0, 65) ~ '...' : translation.name  }}
+                            </h6>
+                        </div>
+                        <div class="customClass1">
+
+                                <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
+                        </div>
+                    </div>
+                </a>
+
+        </div>
+    {% endfor %}
+
+</div>

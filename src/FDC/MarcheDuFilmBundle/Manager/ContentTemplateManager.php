@@ -360,4 +360,22 @@ class ContentTemplateManager
         }
         return false;
     }
+
+    /**
+     * Find MdfContentTemplateTranslation by MdfContentTemplateWidget
+     * 
+     * @param string $locale
+     * @param string $type
+     * @param int $id
+     * 
+     * @return array
+     */
+    public function findContentTemplateByWidget($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfContentTemplateTranslation::class)
+            ->getByWidget(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

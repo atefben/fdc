@@ -1,0 +1,19 @@
+<div class="hideOverflow results-content">
+        {% include
+            'FDCMarcheDuFilmBundle::search/partials/content_results.html.twig'
+            with
+            { 'items': items}
+        %}
+        
+        {% include
+            'FDCMarcheDuFilmBundle::search/partials/media_results.html.twig'
+            with
+            { 'items': items}
+        %}
+
+        {% include
+            'FDCMarcheDuFilmBundle::search/partials/document_results.html.twig'
+            with
+            { 'items': items}
+        %}
+</div>

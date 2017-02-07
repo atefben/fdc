@@ -1,0 +1,30 @@
+{% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
+
+{% set totalContentResults = items.contentResults | length %}
+{% set totalMediaResults = items.mediaResults | length %}
+{% set totalDocumentResults = items.documentResults | length %}
+{% set total = totalContentResults + totalMediaResults + totalDocumentResults %}
+
+{% block main %}
+    <div id="main" class="home loading">
+        <div class="bigContainer results">
+            <div class="resultTitle">
+                <form action="{{ path('fdc_marche_du_film_search') }}">
+                    <input type="text" name="term" placeholder="Recherche..." value="{{ searchTerm }}">
+                    <input class="loupe" type="submit" value="">
+                    <span>{{ total }} résultats</span>
+
+                </form>
+            </div>
+            <div class="innerWrapper container">
+                {% include
+                'FDCMarcheDuFilmBundle::search/partials/filter.html.twig'
+                with
+                { 'total': total, 'totalContentResults': totalContentResults, 'totalMediaResults' : totalMediaResults, 'totalDocumentResults': totalDocumentResults }
+                %}
+
+                {% include 'FDCMarcheDuFilmBundle::search/partials/results.html.twig' with { 'items': items } %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
