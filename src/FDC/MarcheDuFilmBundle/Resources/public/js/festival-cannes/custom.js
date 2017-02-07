@@ -766,6 +766,17 @@ else if ($(len).length === 4){
   $(".partnersTabs").addClass("quarterTab");
 }
 
+var len = $(".speakersTabs");
+if($(len).length === 2) {
+  $(".speakersTabs").addClass("halfTab");
+}
+else if ($(len).length === 3){
+  $(".speakersTabs").addClass("thirdTab");
+}
+else if ($(len).length === 4){
+  $(".speakersTabs").addClass("quarterTab");
+}
+
 
 /*if ($('.selectText').length > 1) {
     $('.selectText').addClass('virgule');

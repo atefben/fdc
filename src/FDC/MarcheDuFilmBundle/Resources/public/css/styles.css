@@ -3595,6 +3595,33 @@ html {
   overflow-x: hidden;
 }
 
+i {
+  font-style: italic;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  margin-left: 5px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+ol > li {
+  list-style-type: decimal !important;
+}
+
+table, td, th {
+  border: 1px solid black;
+  padding: 5px 20px;
+}
+
+#main ul > li > ul, #main ol > li > ol {
+  padding: 0px 0px 0px 50px !important;
+}
+
 /*strong, b, em {
   font: normal;
   font-weight:bold!important;
@@ -23098,6 +23125,7 @@ ul.tabs .quarterTab h4 {
   margin: 0 auto;
   text-align: left;
   margin-left: 80px;
+  word-break: break-all;
 }
 .infosPagePeople .articles .articles-content .textWrapper h6, .infosPagePeople .articles .articles-content .textWrapper span {
   text-transform: uppercase;
@@ -23755,6 +23783,20 @@ ul.tabs .quarterTab h4 {
   padding: 0px;
   margin: 50px 0px 0px 0px;
   height: auto;
+  /*.conf30 {
+      &:before {
+        height: 200px;
+        display: block;
+        width: 1px;
+        background: #ececec;
+        border-right: 1px white;
+        content: '';
+        position: relative;
+        float: left;
+        margin-top: 20px;
+      }
+
+  }*/
 }
 .conferences .content {
   background: white;
@@ -24029,28 +24071,17 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .conf30Sharp {
   width: 35% !important;
-}
-.conferences .conf30Sharp:before {
-  height: 445px;
-  display: block;
-  width: 1px;
-  background: #ececec;
-  border-right: 1px white;
-  content: '';
-  position: relative;
-  float: left;
-  margin-top: 45px;
-}
-.conferences .conf30:before {
-  height: 200px;
-  display: block;
-  width: 1px;
-  background: #ececec;
-  border-right: 1px white;
-  content: '';
-  position: relative;
-  float: left;
-  margin-top: 20px;
+  /*&:before {
+    height: 445px;
+    display: block;
+    width: 1px;
+    background: #ececec;
+    border-right: 1px white;
+    content: '';
+    position: relative;
+    float: left;
+    margin-top: 45px;
+  }*/
 }
 .conferences .conf30, .conferences .conf30Sharp {
   width: 35%;
@@ -24061,6 +24092,8 @@ ul.tabs .quarterTab h4 {
   text-align: left;
   padding-top: 30px;
   font-size: 14px;
+  margin-top: 30px;
+  border-left: 1px solid #ECECEC;
 }
 .conferences .conf30 p, .conferences .conf30Sharp p {
   margin-left: 30px;
@@ -24105,7 +24138,6 @@ ul.tabs .quarterTab h4 {
   width: 20px;
 }
 .conferences .box {
-  min-height: 290px;
   height: auto;
   cursor: default;
   position: relative;
@@ -24131,7 +24163,7 @@ ul.tabs .quarterTab h4 {
 
 .conferenceMenu .box {
   height: auto;
-  min-height: 900px !important;
+  /*min-height: 900px!important;*/
   cursor: default;
   position: relative;
   overflow: hidden !important;
@@ -24143,7 +24175,7 @@ ul.tabs .quarterTab h4 {
   }
 }
 .conferenceMenu .minBox {
-  min-height: 600px !important;
+  /*min-height: 600px!important;*/
 }
 
 .confPeople .quarterWidth {
@@ -24184,6 +24216,7 @@ ul.tabs .quarterTab h4 {
   color: #505050;
   font-size: 10px !important;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  line-height: 20px;
 }
 .confPeople .quarterWidth .alignLeft {
   text-align: left;
@@ -24253,7 +24286,17 @@ ul.tabs .quarterTab h4 {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
+.servicesPage .fitImg:hover {
+  filter: brightness(70%);
+  -webkit-filter: brightness(70%);
+  -moz-filter: brightness(70%);
+  -o-filter: brightness(70%);
+  -ms-filter: brightness(70%);
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 .servicesPage .normalImg {
   width: 100%;
   text-align: center;
@@ -25515,11 +25558,12 @@ option:checked,
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .marche h4 {
-  color: #2b2b2b;
   font-size: 16px;
   line-height: 40px;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0px 100px;
+  text-align: center;
+  color: #141414;
 }
 .marche h3 {
   text-transform: initial;
