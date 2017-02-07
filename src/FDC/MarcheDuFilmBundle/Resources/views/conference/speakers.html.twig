@@ -8,7 +8,9 @@
             <div class="bigContainer">
                 <div class="text-presentation boxes">
                     <h3>{{ speakersPage.subTitle }}</h3>
-                    {{ speakersPage.description|raw }}
+                    <div class="customClass1">
+                        {{ speakersPage.description|raw }}
+                    </div>
                 </div>
             </div>
             {% if speakersTabs and speakersTabs|length > 1 %}
