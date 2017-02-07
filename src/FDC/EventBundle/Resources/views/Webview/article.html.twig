@@ -8,15 +8,7 @@
 {% endif %}
 {% if object.video is not null %}
   {% if object.video.image is not null %}
-      {% if imageTrans is not defined %}
-          {% set header = object.video.image %}
-          {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-          {% if imageTrans is null or imageTrans.file is null %}
-              {% set imageTrans = header.findTranslationByLocale('fr') %}
-          {% endif %}
-      {% endif %}
-      {{ object.video.image|trans_fallback('file') }}
-      {% set cover_image = imageTrans.file %}
+      {% set cover_image = object.video.image|trans_fallback('file') %}
   {% endif %}
 {% endif %}
 {% if (object.video != null or object.image != null or object.header != null) %}
