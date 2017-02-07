@@ -139,6 +139,10 @@ window.onunload = function(){};
           $('.' + $(this).attr("rel")).addClass('activeContent');
           
           showAllSearchResults($(this).attr("rel"));
+          $('#rubrique-' + $(this).attr("rel") + '-1').addClass('open-selected');
+          $('#rubrique-content-' + $(this).attr("rel") + '-1').show();
+          $('#rubrique-plus-' + $(this).attr("rel") + '-1').addClass('noDisplay');
+          $('#rubrique-minus-' + $(this).attr("rel") + '-1').addClass('doDisplay');
       });
     });
 
@@ -392,6 +396,11 @@ $('.accordion-infos .open').each(function() {
   });
 
 $('.accordion-infos .content').hide();
+
+$('#rubrique-1-1').addClass('open-selected');
+$('#rubrique-content-1-1').show();
+$('#rubrique-plus-1-1').addClass('noDisplay');
+$('#rubrique-minus-1-1').addClass('doDisplay');
 
 /* EVENT SELECTOR */
 
