@@ -24,10 +24,10 @@
                             <span class="title-11">{{ film|trans_fallback('title')? film|trans_fallback('title')|truncate(26) : film.titleVo|truncate(26) }}</span>
                             <span class="title-type">{{ film.selectionSection|trans_fallback('name') }}</span>
                             {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                {% set directors = film.getDirectors() %}
                                 {% for key,director in directors %}
                                     {% if director %}
-                                        <a class="title-12" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}{{ loop.last == true ? '' : ',' }}</a>
+                                        <a class="title-12" href="{{ path('fdc_event_artist_get', {slug: director.person.slug }) }}">{% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} %}{{ loop.last == true ? '' : ',' }}</a>
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}

@@ -57,9 +57,9 @@
                                                     {{ film.titleVO }}
                                                 </p>
                                                 <p>
-                                                    {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    {% for k,director in film.getDirectors() %}
                                                         <a style="display: inline-block" class="director"
-                                                           href="#">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
+                                                           href="#">{{ director.person.fullName }}</a>{{ loop.last ? ' ' : ',' }}
                                                     {% endfor %}
                                                 </p>
                                             </div>

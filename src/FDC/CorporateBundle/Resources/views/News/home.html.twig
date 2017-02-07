@@ -555,12 +555,12 @@
                                             <strong class="title-3">Sortie
                                                 le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
                                             <strong class='title-4'>{{ movie.titleVO }}</strong>
-                                            {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                            {% set directors = movie.getDirectors() %}
 
                                             <span>De <span class="title-5">
                                         {% set dataWho = '' %}
                                                     {% for director in directors %}
-                                                        {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.slug}) ~ '">' ~ director.fullName ~ '</a>' %}
+                                                        {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
                                                         {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
                                                     {% endfor %}
                                                     {{ dataWho|raw }}</span>
@@ -608,10 +608,10 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                         <div class="block-list-img slider-02 s-video-playlist">
                             {% for movie in filmReleases %}
                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
-                                {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                {% set directors = movie.getDirectors() %}
                                 {% set dataWho = '' %}
                                 {% for director in directors %}
-                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.slug}) ~ '">' ~ director.fullName ~ '</a>' %}
+                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
                                     {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
                                 {% endfor %}
                                 {% set awardsUnique = [] %}

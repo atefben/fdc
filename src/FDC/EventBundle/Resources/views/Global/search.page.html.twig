@@ -229,11 +229,11 @@
                                                             {{ 'search.result.film.text.de'|trans }}
                                                             
                                                             {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {% set directors = film.getDirectors() %}
                                                             {%- for key,director in directors -%}
                                                                 {%- if director -%}
                                                                     {{ loop.first == true ? '' : ',' }}
-                                                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                                                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}
                                                                 {%- endif -%}
                                                             {%- endfor -%}
                                                             {% endif %}

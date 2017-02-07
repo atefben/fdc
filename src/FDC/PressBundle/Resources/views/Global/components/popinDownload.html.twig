@@ -7,8 +7,8 @@
             <div class="contain-text vCenter">
                 <div class="vCenterKid">
                     <h3> {{ film|trans_fallback('title') }} </h3>
-                    {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                        <span class="name">{{ director.fullName }}</span>
+                    {% for director in film.getDirectors() %}
+                        <span class="name">{{ director.person.fullName }}</span>
                     {% endfor %}
                 </div>
             </div>

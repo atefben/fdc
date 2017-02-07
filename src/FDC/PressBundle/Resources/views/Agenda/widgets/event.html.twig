@@ -75,10 +75,10 @@
                 <div class="txt">
                     {%- if event.programmationFilms|length == 1 -%}
                         <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                        {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                        {%- set directors = film.getDirectors() -%}
                         <strong>
                             {%- for director in directors -%}
-                                {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} -%}
                                 {%- if loop.index != directors|length -%}, {%- endif -%}
                             {%- endfor -%}
                         </strong>

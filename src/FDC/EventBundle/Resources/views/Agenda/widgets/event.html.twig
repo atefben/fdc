@@ -82,8 +82,8 @@
             <div class="txt{%- if event.medias|length == 0 and event.programmationFilms[0].film == null -%} txt-padding{%- endif -%}">
                 {%- if event.programmationFilms|length == 1 -%}
                     <span>{{ film.titleVO|truncate(38) }}</span>
-                    {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                    <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
+                    {%- set directors = film.getDirectors() -%}
+                    <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
                 {%- else -%}
                     <span> {{ event.name }}</span>
                 {%- endif -%}

@@ -22,10 +22,10 @@
                                 {% endif %}
                             </a>
                         </p>
-                        {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                        {% set directors = movie.getDirectors() %}
                         {% for director in directors %}
                             <a class="director"
-                               href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}{% if loop.last == false %},{% endif %}</a>
+                               href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}{% if loop.last == false %},{% endif %}</a>
                         {% endfor %}
                     </div>
                 </div>
