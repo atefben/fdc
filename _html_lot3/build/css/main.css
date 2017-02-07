@@ -3122,6 +3122,8 @@ video {
 }
 .three-quarts-div .title-8 {
   width: 325px;
+  position: relative;
+  top: 1px;
 }
 .three-quarts-div .small-push.half-div .title-8 {
   width: 295px;
