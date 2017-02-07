@@ -167,4 +167,29 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
+    
+    /**
+     * Get by MdfContentTemplateWidget
+     * 
+     * @param string $locale
+     * @param array $filters
+     * 
+     * @return array
+     */
+    public function getByWidget($locale, $filters)
+    {
+        $qb = $this
+            ->createQueryBuilder('ctt')
+            ->join('ctt.translatable', 'ct')
+            ->join('ct.contentTemplateWidgets', 'cttw')
+            ->where('ctt.locale = :locale')
+            ->andWhere('cttw.id = :id')
+//            ->andWhere('cttw.type = :type')
+            ->setParameter('id', $filters['id'])
+//            ->setParameter('type', $filters['type'])
+            ->setParameter('locale', $locale)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

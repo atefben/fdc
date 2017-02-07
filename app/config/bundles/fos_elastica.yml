@@ -239,7 +239,7 @@ fos_elastica:
                                     properties :
                                         name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         locale: ~
-  
+
                 info:
                     persistence:
                         # the driver can be orm, mongodb, phpcr or propel
@@ -312,7 +312,7 @@ fos_elastica:
                                     properties :
                                         name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         locale: ~
-                                
+
                 participate:
                     persistence:
                         driver: orm
@@ -339,7 +339,7 @@ fos_elastica:
                                         title: { boost: 5, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         description: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         locale: ~
-                            
+
                 film:
                     persistence:
                         model_to_elastica_transformer:
@@ -462,3 +462,145 @@ fos_elastica:
                                 name: { boost: 5, search_analyzer: custom_search_analyzer, index_analyzer: custom_search_analyzer, type: string }
                                 locale: ~
                                 status: ~
+        fdc_mdf:
+            client: default
+            finder: ~
+            settings:
+                index:
+                    analysis:
+                        analyzer:
+                            custom_index_analyzer:
+                                type:      custom
+                                tokenizer: nGram
+                                filter:    [lowercase, asciifolding, stopwords_fr, elision, snowball_fr, word_delimiter]
+                            custom_search_analyzer:
+                                type:      custom
+                                tokenizer: standard
+                                filter:    [lowercase, asciifolding, stopwords_fr, elision, snowball_fr, word_delimiter]
+                        tokenizer:
+                            nGram:
+                              type:     nGram
+                              min_gram: 3
+                              max_gram: 20
+                        filter:
+                            snowball_fr:
+                                type:     snowball
+                                language: French
+                            elision:
+                                type:     elision
+                                articles: [l, m, t, qu, n, s, j, d]
+                            stopwords_fr:
+                                type:        stop
+                                stopwords:   [_french_]
+                                ignore_case: true
+            types:
+                content:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfContentTemplateRepository
+                    mappings:
+                        publishedAt: { type: date }
+                        publishEndedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                                header: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        theme.translations:
+                            type: nested
+                            properties :
+                                title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        contentTemplateWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        contentText: ~
+                                        locale: ~
+                media:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidget
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfContentTemplateWidgetRepository
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.media_to_elastica_transformer
+                    mappings:
+                        id: ~
+                        # mapping for MdfContentTemplateWidgetGallery objects
+                        gallery.translations:
+                            type: nested
+                            properties:
+                                locale: ~
+                                name: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                createdAt: { type: date }
+                        # mapping for MdfContentTemplateWidgetImage objects
+                        image:
+                            type: nested
+                            properties:
+                                publishedAt: { type: date }
+                                translations:
+                                    type: nested
+                                    properties :
+                                        alt: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        legend: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                                        status: ~
+                                        createdAt: { type: date }
+                                theme.translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                                tags:
+                                    type: nested
+                                    properties :
+                                        tag.translations:
+                                            type: nested
+                                            properties:
+                                                name: ~
+#                        # mapping for MdfContentTemplateWidgetVideo objects
+                        publishedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        theme.translations:
+                            type: nested
+                            properties :
+                                title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                document:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfContentTemplateWidgetFileRepository
+                    mappings:
+                        file.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~

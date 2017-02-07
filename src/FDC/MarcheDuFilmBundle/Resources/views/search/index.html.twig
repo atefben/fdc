@@ -9,7 +9,7 @@
     <div id="main" class="home loading">
         <div class="bigContainer results">
             <div class="resultTitle">
-                <form action="">
+                <form action="{{ path('fdc_marche_du_film_search') }}">
                     <input type="text" name="term" placeholder="Recherche..." value="{{ searchTerm }}">
                     <input class="loupe" type="submit" value="">
                     <span>{{ total }} résultats</span>
