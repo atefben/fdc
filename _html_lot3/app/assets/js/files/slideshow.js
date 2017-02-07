@@ -11,6 +11,8 @@ var owinitSlideShow = function (slider, hash) {
 
         if($('.article-single').length){
 
+            console.log('ok')
+
             $('.slideshow-img').on('click', function (e) {
                 e.preventDefault();
 
@@ -398,7 +400,7 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
-            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
+            //thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
 

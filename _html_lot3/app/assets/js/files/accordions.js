@@ -13,11 +13,11 @@ var owInitAccordion = function(id) {
       if($parent.hasClass('active')) {
 
         $parent.removeClass('active');
-        $icon.removeClass('icon-minus').addClass('icon-create');
+        $icon.removeClass('icon-minus').addClass('icon-more-square');
 
       }else{
         $parent.addClass('active');
-        $icon.removeClass('icon-create').addClass('icon-minus');
+        $icon.removeClass('icon-more-square').addClass('icon-minus');
 
       }
     });

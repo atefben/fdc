@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\FilmAward;
+use Base\CoreBundle\Entity\FilmFilm;
 use Twig_Extension;
 
 /**
@@ -21,6 +22,7 @@ class PalmaresAwardMutualExtension extends Twig_Extension
         return array(
             new \Twig_SimpleFunction('palmares_award_mutual_get', array($this, 'getPalmaresAwardMutual')),
             new \Twig_SimpleFunction('palmares_award_mutual_set', array($this, 'setPalmaresAwardMutual')),
+            new \Twig_SimpleFunction('palmares_award_is_mutual_done', array($this, 'isMutualDone')),
         );
     }
 
@@ -33,11 +35,36 @@ class PalmaresAwardMutualExtension extends Twig_Extension
     }
 
     /**
+     * @return array
+     */
+    public function isMutualDone(FilmAward $award, FilmFilm $movie = null)
+    {
+        if (!$award->getFilmMutual()) {
+            return null;
+        }
+        if ($movie) {
+            $value  = $award->getId() . '-' . $movie->getId();
+            if (in_array($value, static::$mutuals)) {
+                return true;
+            }
+        }
+    }
+
+    /**
      * @param FilmAward $award
      */
-    public function setPalmaresAwardMutual(FilmAward $award)
+    public function setPalmaresAwardMutual(FilmAward $award, FilmFilm $movie = null)
     {
-        static::$mutuals[] = $award->getId();
+        if (!$award->getFilmMutual()) {
+            return null;
+        }
+
+        if ($movie) {
+            static::$mutuals[] = $award->getId() . '-' . $movie->getId();
+        } else {
+            static::$mutuals[] = $award->getId();
+        }
+
     }
 
     /**

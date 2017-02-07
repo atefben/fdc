@@ -52,6 +52,7 @@ body {
     text-shadow: none;
 }
 
+
 #main {
   background-color: #fff;
   clear: both;
@@ -286,6 +287,10 @@ video{
     left: 0;
     z-index: 1;
   }
+}
+
+.photo-module.last .slideshow {
+  border-bottom: none;
 }
 
 .border-bottom{

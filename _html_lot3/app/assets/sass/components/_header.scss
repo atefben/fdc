@@ -383,6 +383,7 @@ header {
 
         &.renault {
           margin-top: 2px;
+          margin-right: 11blpx;
         }
 
         &.kering {
@@ -433,6 +434,10 @@ header {
     /*.container {
       overflow: hidden;
     }*/
+
+    ul .actu .tcenter {
+      text-align: left;
+    }
 
     ul {
       float: left;

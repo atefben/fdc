@@ -401,14 +401,11 @@ class LockController extends Controller
     }
 
     /**
-     * deleteLockAction function.
-     *
-     * @access public
-     * @param mixed $slug
-     * @return void
-     *
      * @Secure(roles="ROLE_ADMIN")
      * @Route("/delete/{id}", options={"expose"=true})
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
      */
     public function deleteAction(Request $request, $id)
     {
@@ -438,15 +435,14 @@ class LockController extends Controller
 
         /** Check if entity is from FDC or Base **/
         if (isset(self::$entityMapper[$entity])) {
-            $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+            $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->find($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
-            $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+            $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->find($id);
         } else {
             $entity = null;
         }
         /** End **/
 
-        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         if ($entity === null) {
             $logger->error(__CLASS__ . " - Couldnt find the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);

@@ -983,11 +983,11 @@ var owInitAccordion = function(id) {
       if($parent.hasClass('active')) {
 
         $parent.removeClass('active');
-        $icon.removeClass('icon-minus').addClass('icon-create');
+        $icon.removeClass('icon-minus').addClass('icon-more-square');
 
       }else{
         $parent.addClass('active');
-        $icon.removeClass('icon-create').addClass('icon-minus');
+        $icon.removeClass('icon-more-square').addClass('icon-minus');
 
       }
     });
@@ -2197,9 +2197,16 @@ var owInitGrid = function (id) {
                         pg: parseInt($('input[name="pg"]').val())+1
                     },
                     success: function(data) {
-                        data = $(data);
-                        $grid.append(data).isotope( 'addItems', data );
+                        $data = $(data);
+
+                        $grid.append($data);
+
+                        setTimeout(function(){
+                            $grid.isotope( 'addItems', $data )
+                        }, 1500);
+                        
                         $grid.isotope();
+
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
                         owinitSlideShow($grid);
@@ -3785,7 +3792,7 @@ var owInitSlider = function (sliderName) {
             var textTrunc = $(e).find('.text-trunc p');
             var textI = textTrunc[0].innerText;
 
-            title.html(text.trunc(30, true));
+            title.html(text.trunc(40, true));
             textTrunc.html(textI.trunc(400, false));
         });
 
@@ -4274,6 +4281,8 @@ var owinitSlideShow = function (slider, hash) {
 
         if($('.article-single').length){
 
+            console.log('ok')
+
             $('.slideshow-img').on('click', function (e) {
                 e.preventDefault();
 
@@ -4661,7 +4670,7 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
-            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
+            //thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
 
@@ -5485,6 +5494,7 @@ $(document).ready(function () {
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.block-diaporama .slider-01');
             owinitSlideShow(slider, hash);
+
         }
     }
 
@@ -5585,7 +5595,6 @@ $(document).ready(function () {
 
         if (!$('.single-movie').length > 0) {
             var slider = $('.slideshow-img .images');
-            owinitSlideShow(slider);
 
             var hash = window.location.hash;
             hash = hash.substring(1, hash.length);
