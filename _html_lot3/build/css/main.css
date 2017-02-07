@@ -2214,6 +2214,7 @@ a {
   height: 55px;
   margin-top: 46px;
   outline: none;
+  letter-spacing: 1px;
 }
 .dark .button-submit {
   border: 1px solid #181818;
@@ -2236,6 +2237,7 @@ a {
   margin-top: 46px;
   outline: none;
 }
+#5249
 .dark .button-submit-02 {
   border: 1px solid #181818;
 }
