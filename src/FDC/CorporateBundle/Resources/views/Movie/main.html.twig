@@ -64,11 +64,9 @@
                 {% else %}
                     {% set mainTitle = movie.titleVO %}
                 {% endif %}
-                {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {% set directorsName = '' %}
-                {% for director in directors %}
-                    {% set directorsName = directorsName ~ director.fullName %}</a>
-                    {% if loop.index != directors|length %}, {% endif %}
+                {% for director in movie.getDirectors() %}
+                    {% set directorsName = directorsName ~ ' ' ~ director.person.fullName %}
                 {% endfor %}
                 <div class="relative">
                     <div class="block-social-network block-social-network-all">

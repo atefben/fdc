@@ -105,7 +105,7 @@
     <div class="block-01">
       <nav>
         <ul class="main">
-          <li>
+          <li class="actu">
             <a href="/" class="active noLink">L'actualité</a>
             <ul class="tcenter">
               <li><a href="/">Jour à jour</a></li>
@@ -189,7 +189,7 @@
   <div class="c-timer block-01">
     <span class="time" data-date="2017-05-11 00:00:00"></span>
     <span class="c-texts">avant l'ouverture<br>du Festival de Cannes 2017</span>
-    <span class="c-icon"><i class="icon icon-close"></i></span>
+    <span class="c-icon"><i class="icon icon-close-thin"></i></span>
   </div>
 </div>
 
@@ -215,11 +215,13 @@
                     <div class="select">
                         <label for="select">Votre message concerne:</label>
                         <select name="select">
-                            <option class="default" value="default">Séléctionnez un thème</option>
+                            <option class="default" value="default">Séléctionnez un thème </option>
                             <option value="theme1">Theme 1</option>
                             <option value="theme2">Theme 2</option>
                         </select>
-                        <span id="triggerSelect"></span>
+                        <span id="triggerSelect">
+                            <i class="icon icon-arrow-down"></i>
+                        </span>
                     </div>
                     <input type="text" name="name" placeholder="Votre nom*" data-error="Votre nom n'est pas renseigné" />
                     <input type="email" name="email" placeholder="Votre adresse email*"  data-error="L'adresse email n'est pas valide" />

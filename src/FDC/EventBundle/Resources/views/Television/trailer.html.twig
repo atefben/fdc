@@ -86,8 +86,8 @@
                                 {% endif %}
                             </a>
                             <span class="name-person">
-                                {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                    {{ loop.index0 ? ', ': '' }}<a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>
+                                {%- for director in film.getDirectors() -%}
+                                    {{ loop.index0 ? ', ': '' }}<a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>
                                 {%- endfor -%}
                             </span>
                         </div>
@@ -197,11 +197,11 @@
         {% endif %}
     </div>
     {% set author = '' %}
-    {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+    {%- for director in film.getDirectors() -%}
         {% if loop.first == false %}
             {% set author = author ~ ', ' %}
         {% endif %}
-        {% set author = author ~ director.fullName %}
+        {% set author = author ~ director.person.fullName %}
     {%- endfor -%}
     {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
         {'section': '',

@@ -89,6 +89,8 @@ header {
 
           .icon{
             font-size: .7rem; //todo
+            position: relative;
+            top: 1px;
           }
         }
 
@@ -185,11 +187,13 @@ header {
           background-size: 20px;
           margin-right: 0;
           position: relative;
-          top: .5px;
+          //top: .5px;
 
           .icon{
-            font-size: .85rem; //todo
+            font-size: .87rem; //todo
             vertical-align: bottom;
+            position: relative;
+            top: 1.5px;
           }
           &:hover {
             opacity: 1;
@@ -383,6 +387,7 @@ header {
 
         &.renault {
           margin-top: 2px;
+          margin-right: 11blpx;
         }
 
         &.kering {
@@ -433,6 +438,10 @@ header {
     /*.container {
       overflow: hidden;
     }*/
+
+    ul .actu .tcenter {
+      text-align: left;
+    }
 
     ul {
       float: left;
@@ -688,5 +697,11 @@ header{
   .c-icon {
     color: $gold;
     cursor: pointer;
+
+    .icon {
+      position: relative;
+      top: 8px;
+      right: 24px;
+    }
   }
 }

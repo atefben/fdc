@@ -92,13 +92,12 @@
                 {% endif %}
                 <span class="nom-item">{% spaceless %}
                     {% set author = '' %}
-                    {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) if not director.duplicate %}
+                    {% for director in movie.getDirectors() %}
                         {% if author != '' %}
                             {% set author = author ~ ', ' %}
                         {% endif %}
-
-                        {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
-                        {% set author = author ~ director.fullName %}
+                        {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.person.slug }) ~ '">' %}
+                        {% set author = author ~ director.person.fullName %}
                         {% set author = author ~ '</a>' %}
                     {% endfor %}
                     {{ author|raw }}

@@ -1,8 +1,8 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% if award_association.award is defined and award_association.award.id not in palmares_award_mutual_get() %}
+{% if award_association.award is defined and not palmares_award_is_mutual_done(award_association.award, award_association.film) %}
     {% if award_association.award.filmMutual %}
-        {{ palmares_award_mutual_set(award_association.award) }}
+        {{ palmares_award_mutual_set(award_association.award, award_association.film) }}
     {% endif %}
 
     {% if movie is not defined %}
@@ -78,13 +78,13 @@
                     <div class="wrapper-author">
                         {% spaceless %}
                             {% set author = '' %}
-                            {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                            {% for director in movie.getDirectors() %}
                                 {% if loop.first == false %}
                                     {% set author = author ~ ', ' %}
                                 {% endif %}
 
-                                {% set author = author ~ '<a class="names-a" href="' ~ path('fdc_corporate_artist_get', {slug: director.slug }) ~ '">' %}
-                                {% set author = author ~ director.fullName %}
+                                {% set author = author ~ '<a class="names-a" href="' ~ path('fdc_corporate_artist_get', {slug: director.person.slug }) ~ '">' %}
+                                {% set author = author ~ director.person.fullName %}
                                 {% set author = author ~ '</a>' %}
                             {% endfor %}
                             {{ author|raw }}

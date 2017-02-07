@@ -9,6 +9,21 @@
     margin-top: 80px;
   }
 
+  .media-library & {
+    .button-submit {
+      border: 1px solid $gold;
+
+      &:hover {
+        opacity: .6;
+      }
+
+      .icon {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
   .search-txt {
     position: relative;
     background-color: #fff;
@@ -123,7 +138,7 @@
     color: #fff;
     text-align: center;
     border-collapse: collapse;
-    border: 1px solid #181818;
+    border: 1px solid #2c2c2c;
     flex-direction:row;
     transition: .5s;
     border-right: 0px solid #fff !important;
@@ -138,8 +153,12 @@
 
     }
 
+    &:last-child {
+      border-right: 1px solid #2c2c2c !important;
+    }
+
     &.last {
-      border-right: 1px solid #181818 !important;
+      border-right: 1px solid #2c2c2c !important;
 
       .brigth & {
         border-right: 1px solid #f4f4f4 !important;
@@ -156,6 +175,7 @@
       font-size: .5rem;
       line-height: 18px;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .icon {
@@ -528,7 +548,7 @@
   font-size: 1rem;
   font-family: $CamphorBold;
   padding: 30px;
-  border: 1px solid #181818;
+  border: 1px solid #2c2c2c;
   border-top: 0px solid #fff;
 
   .brigth & {
@@ -553,6 +573,7 @@
     display: inline-block;
     vertical-align: super;
     margin: 0px 10px;
+    margin-right: 11px;
     // margin-right: 0px;
   }
 

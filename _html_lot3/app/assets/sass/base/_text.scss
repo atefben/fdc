@@ -423,6 +423,7 @@ blockquote, .quote {
   border: 1px solid $gold;
   margin: 50px 0px;
   margin-left: -40px;
+  margin-right: -40px;
 
   font-size: 1rem;
   color: #666666;
@@ -438,6 +439,16 @@ blockquote, .quote {
   }
 
   strong {
+    display: initial;
+    font-size: 1rem;
+    font-size: 1rem;
+    /* color: #666666; */
+    line-height: 30px;
+    font-weight: normal;
+    letter-spacing: 0px;
+  }
+
+ /* strong {
     font-size: .75rem;
     color: #0c0c0c;
     font-family: $CamphorBold;
@@ -445,7 +456,7 @@ blockquote, .quote {
     letter-spacing: 2px;
     margin-bottom: 24px;
     display: block;
-  }
+  }*/
 }
 
 .quote-02 {
@@ -813,6 +824,7 @@ a {
   height: 55px;
   margin-top: 46px;
   outline: none;
+  letter-spacing: 1px;
 
   .dark & {
     border: 1px solid #181818;
@@ -837,6 +849,7 @@ a {
   height: 55px;
   margin-top: 46px;
   outline: none;
+  letter-spacing: 1px;
 
   .dark & {
     border: 1px solid #181818;
@@ -845,6 +858,8 @@ a {
   .icon {
     margin-right: 24px;
     vertical-align: middle;
+    position: relative;
+    top: 2px;
   }
 
   &:hover {
@@ -1205,4 +1220,9 @@ a {
     margin: 0 auto;
     line-height: 36px;
   }
+}
+
+
+.no-margin {
+  margin-bottom: 0px !important;
 }

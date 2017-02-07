@@ -125,6 +125,7 @@ $(document).ready(function () {
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.block-diaporama .slider-01');
             owinitSlideShow(slider, hash);
+
         }
     }
 
@@ -225,7 +226,6 @@ $(document).ready(function () {
 
         if (!$('.single-movie').length > 0) {
             var slider = $('.slideshow-img .images');
-            owinitSlideShow(slider);
 
             var hash = window.location.hash;
             hash = hash.substring(1, hash.length);

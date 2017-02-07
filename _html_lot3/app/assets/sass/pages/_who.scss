@@ -91,6 +91,12 @@
   .block-01 {
     margin-bottom: 68px;
   }
+
+  .pages {
+    .block-01:last-child {
+      border-bottom: 0px solid #fff;
+    }
+  }
 }
 
 
@@ -106,5 +112,9 @@
   .title-22 {
     margin-bottom: 20px;
     display: block;
+  }
+
+  .contain-title {
+    margin-bottom: 60px;
   }
 }

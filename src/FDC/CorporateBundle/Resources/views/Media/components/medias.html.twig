@@ -19,6 +19,7 @@
             {% set legend = '' %}
             {% if app.request.locale == 'fr' and media.media.titleVf %}
                 {% set legend = media.media.titleVf %}
+                
             {% elseif app.request.locale != 'fr' and media.media.titleVa %}
                 {% set legend = media.media.titleVa %}
             {% endif %}

@@ -131,8 +131,8 @@
                                             {% else %}
                                                 <p class="director">
                                                     {% set comma = false %}
-                                                    {% spaceless %}{% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) if not director.duplicate %}
-                                                    {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{% if comma %}, {% endif %}{{ director.fullName }}</a>{% endif %}
+                                                    {% spaceless %}{% for index,director in associatedFilm.getDirectors() %}
+                                                    {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.person.slug }) }}">{% if comma %}, {% endif %}{{ director.person.fullName }}</a>{% endif %}
                                                         {% if index == 4 %}...{% endif %}
                                                     {% set comma = true %}
                                                     {% endfor %}{% endspaceless %}

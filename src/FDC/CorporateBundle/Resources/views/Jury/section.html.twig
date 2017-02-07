@@ -26,14 +26,14 @@
 
                 <div class="all-contain">
 
-                    {% if president %}
+                    {% for president in presidents %}
                         <div class="block-jury">
                             <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                                     <div class="contain-img"
                                          style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
                                     </div>
-                                {%- else -%}
+                                {%- elseif president['jury'].id is defined -%}
                                     {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
                                     {%- if media is not empty -%}
                                         <div class="contain-img"
@@ -61,7 +61,7 @@
                                 </div>
                             </a>
                         </div>
-                    {% endif %}
+                    {% endfor %}
 
 
                     <div class="contain-title vFlexAlign ">

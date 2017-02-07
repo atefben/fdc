@@ -101,7 +101,6 @@ class JuryController extends Controller
             ->getRepository('BaseCoreBundle:FilmJury')
             ->getJurysByType($festival, $locale, $juryTypeId)
         ;
-
         $members = array();
         $president = null;
         $hasPresident = false;
@@ -151,13 +150,28 @@ class JuryController extends Controller
             }
         }
 
+        if (2015 == $year) {
+            $persons = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmPerson')
+                ->findBy(['id' => [319026, 319034]])
+            ;
+            $presidents = [];
+            foreach ($persons as $person) {
+                $presidents[] = ['jury' => ['person' => $person]];
+            }
+        }
+        else {
+            $presidents = [$president];
+        }
+
         return $this->render('FDCCorporateBundle:Jury:section.html.twig', [
             'festival'    => $this->getFestival($year),
             'page'        => $page,
             'pages'       => $pages,
             'next'        => is_object($next) ? $next : false,
             'members'     => $members,
-            'president'   => $president,
+            'presidents'   => $presidents,
             'localeSlugs' => $localeSlugs,
             'festivals'   => $festivals,
         ]);

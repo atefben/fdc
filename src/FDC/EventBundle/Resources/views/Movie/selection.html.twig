@@ -39,9 +39,9 @@
                                                 <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
                                             {% endif %}
                                         </a>
-                                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
-                                                <span class="author">{{ director.fullName|trim }}{{ loop.last == true ? '':', '}}</span>
+                                        {% for director in movie.getDirectors() %}
+                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">
+                                                <span class="author">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</span>
                                             </a>
                                         {% endfor %}
                                     </figcaption>

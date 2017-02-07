@@ -11,6 +11,8 @@ var owinitSlideShow = function (slider, hash) {
 
         if($('.article-single').length){
 
+            console.log('ok')
+
             $('.slideshow-img').on('click', function (e) {
                 e.preventDefault();
 
@@ -360,19 +362,34 @@ var openSlideShow = function (slider, hash) {
         }
     }
 
+    if(images.length < 6){
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            mouseDrag: false,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }else{
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }
 
-    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel({
-        nav: false,
-        dots: false,
-        smartSpeed: 500,
-        margin: 0,
-        autoWidth: true,
-        URLhashListener: false
-    });
+    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel(carouselOpts);
 
     thumbs = thumbnails.find(".thumb");
 
-    thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    if(images.length > 6) {
+        thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    }
 
     $(thumbs).removeClass('active');
     $(thumbs[centerElement]).addClass('active');
@@ -385,7 +402,7 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
-            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
+            //thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
 

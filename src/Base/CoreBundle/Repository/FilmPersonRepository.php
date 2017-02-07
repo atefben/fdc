@@ -60,6 +60,8 @@ class FilmPersonRepository extends EntityRepository
             ->setParameter('id_director', FilmFunctionInterface::FUNCTION_DIRECTOR)
             ->andWhere('(fp.portraitImage IS NOT NULL OR fpm.media IS NOT NULL)')
             ->andWhere('fp.id != :exclude')
+            ->andWhere('fp.duplicate = :false')
+            ->setParameter(':false', false)
             ->setParameter('exclude', $exclude)
             ->addOrderBy('rand')
             ->setMaxResults($count)

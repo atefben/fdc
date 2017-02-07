@@ -75,9 +75,16 @@ var owInitGrid = function (id) {
                         pg: parseInt($('input[name="pg"]').val())+1
                     },
                     success: function(data) {
-                        data = $(data);
-                        $grid.append(data).isotope( 'addItems', data );
+                        $data = $(data);
+
+                        $grid.append($data);
+
+                        setTimeout(function(){
+                            $grid.isotope( 'addItems', $data )
+                        }, 1500);
+                        
                         $grid.isotope();
+
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
                         owinitSlideShow($grid);

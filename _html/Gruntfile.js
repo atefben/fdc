@@ -119,6 +119,18 @@ module.exports = function(grunt) {
            {
               src: "./js/app.min.js.map",
               dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js.map"
+           },
+           {
+              src: "./js/vendor.min.js",
+              dest: "../src/FDC/EventBundle/Resources/public/js/vendor.min.js"
+           },
+           {
+              src: "./js/app.min.js",
+              dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js"
+           },
+           {
+              src: "./js/app.min.js.map",
+              dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js.map"
            }
         ]
       },

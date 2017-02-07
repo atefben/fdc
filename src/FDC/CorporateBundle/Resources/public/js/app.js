@@ -139,20 +139,22 @@ var initVideo = function(hash) {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        var infos = {
-            "category": $container.parent().find('.info .category').html(),
-            "date": $container.parent().find('.info .date').html(),
-            "hour": $container.parent().find('.info .hour').html(),
-            "name": $container.parent().find('.info p').html()
-        }
+        setTimeout(function(){
+            var infos = {
+                "category": $container.parent().find('.info .category').html(),
+                "date": $container.parent().find('.info .date').html(),
+                "hour": $container.parent().find('.info .hour').html(),
+                "name": $container.parent().find('.info p').html()
+            }
 
-        console.log(infos);
+            console.log(infos);
 
-        $topBar.find('.info .category').text(infos.category);
-        $topBar.find('.info .date').text(infos.date);
-        $topBar.find('.info .hour').text(infos.hour);
-        $topBar.find('.info p').text(infos.name);
-        $topBar.find('.info').append($infoBar.html());
+            $topBar.find('.info .category').html(infos.category);
+            $topBar.find('.info .date').html(infos.date);
+            $topBar.find('.info .hour').html(infos.hour);
+            $topBar.find('.info p').html(infos.name);
+
+        }, 700);
 
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
@@ -518,7 +520,7 @@ var initVideo = function(hash) {
                 var tempSlide = $(slide);
 
                 var catTrunc = p.category;
-                catTrunc = catTrunc.trunc(20, true);
+                catTrunc = catTrunc.trunc(15, true);
 
                 tempSlide.find('.image-wrapper img').attr('src',p.image);
                 tempSlide.find('.info-container .category').html(catTrunc);
@@ -981,11 +983,11 @@ var owInitAccordion = function(id) {
       if($parent.hasClass('active')) {
 
         $parent.removeClass('active');
-        $icon.removeClass('icon-minus').addClass('icon-create');
+        $icon.removeClass('icon-minus').addClass('icon-more-square');
 
       }else{
         $parent.addClass('active');
-        $icon.removeClass('icon-create').addClass('icon-minus');
+        $icon.removeClass('icon-more-square').addClass('icon-minus');
 
       }
     });
@@ -2195,9 +2197,16 @@ var owInitGrid = function (id) {
                         pg: parseInt($('input[name="pg"]').val())+1
                     },
                     success: function(data) {
-                        data = $(data);
-                        $grid.append(data).isotope( 'addItems', data );
+                        $data = $(data);
+
+                        $grid.append($data);
+
+                        setTimeout(function(){
+                            $grid.isotope( 'addItems', $data )
+                        }, 1500);
+                        
                         $grid.isotope();
+
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
                         owinitSlideShow($grid);
@@ -3050,7 +3059,7 @@ var onInitParallax = function () {
         $(window).on('scroll', function () {
 
             if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 100;
+                var s = $(this).scrollTop() - 240;
                 $('.block-push').css('background-position', '0px ' + s + 'px');
             } else {
                 $('.block-push').css('background-position', '0px ' + '-240px');
@@ -3783,7 +3792,7 @@ var owInitSlider = function (sliderName) {
             var textTrunc = $(e).find('.text-trunc p');
             var textI = textTrunc[0].innerText;
 
-            title.html(text.trunc(30, true));
+            title.html(text.trunc(40, true));
             textTrunc.html(textI.trunc(400, false));
         });
 
@@ -4272,6 +4281,8 @@ var owinitSlideShow = function (slider, hash) {
 
         if($('.article-single').length){
 
+            console.log('ok')
+
             $('.slideshow-img').on('click', function (e) {
                 e.preventDefault();
 
@@ -4621,19 +4632,34 @@ var openSlideShow = function (slider, hash) {
         }
     }
 
+    if(images.length < 6){
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            mouseDrag: false,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }else{
+        var carouselOpts = {
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            margin: 0,
+            autoWidth: true,
+            URLhashListener: false
+        }
+    }
 
-    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel({
-        nav: false,
-        dots: false,
-        smartSpeed: 500,
-        margin: 0,
-        autoWidth: true,
-        URLhashListener: false
-    });
+    thumbnailsSlide = $('.chocolat-wrapper .thumbnails').owlCarousel(carouselOpts);
 
     thumbs = thumbnails.find(".thumb");
 
-    thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    if(images.length > 6) {
+        thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    }
 
     $(thumbs).removeClass('active');
     $(thumbs[centerElement]).addClass('active');
@@ -4646,7 +4672,7 @@ var openSlideShow = function (slider, hash) {
             $(this).addClass('active');
 
             id = $(this).find('img').attr('data-id');
-            thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
+            //thumbnailsSlide.trigger('to.owl.carousel', [$(this).parent().index(), 400, true]);
 
             goToSLide(id);
 
@@ -5470,6 +5496,7 @@ $(document).ready(function () {
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.block-diaporama .slider-01');
             owinitSlideShow(slider, hash);
+
         }
     }
 
@@ -5570,7 +5597,6 @@ $(document).ready(function () {
 
         if (!$('.single-movie').length > 0) {
             var slider = $('.slideshow-img .images');
-            owinitSlideShow(slider);
 
             var hash = window.location.hash;
             hash = hash.substring(1, hash.length);

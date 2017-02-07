@@ -156,9 +156,9 @@
                                                 <div class="vCenterKid">
                                                     <p>
                                                         {{- media.film.titleVO -}}
-                                                        {%- for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                                        {%- for director in media.film.getDirectors() -%}
                                                             <a class="director"
-                                                               href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
+                                                               href="{{ path('fdc_event_artist_get', {slug: director.person.slug }) }}">{{- director.person.fullName -}}</a>
                                                         {%- endfor -%}
                                                     </p>
                                                 </div>

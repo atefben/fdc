@@ -41,16 +41,19 @@
   }
 }
 
-.poster, .palmares, .article-single, .articles-list{
+.retrospective {
+  .poster, .palmares, .article-single, .articles-list{
 
-  .block-push-top {
+    .block-push-top {
 
-    .vFlexAlign {
-      height: calc( 100% - 42px );
+      .vFlexAlign {
+        height: calc( 100% - 42px );
+      }
     }
-  }
 
+  }
 }
+
 
 .article{
 

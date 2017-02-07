@@ -72,9 +72,22 @@
 // - THREE QUARTS DIV
 .three-quarts-div {
   height: 100%;
-  width: 75%;
+  width: 66.7%;
   display: inline-block;
   vertical-align: top;
+
+
+  .title-8 {
+    width: 325px;
+    position: relative;
+    top: 1px;
+  }
+
+  .small-push.half-div {
+    .title-8 {
+      width: 295px;
+    }
+  }
 }
 
 // - CARDS
@@ -267,8 +280,9 @@
     line-height: 20px;
     text-align: center;
     font-size: .875rem;
-    margin-top: 17px;
+    margin-top: 15px;
   }
+
 
   &.half-div {
     text-align: center;
@@ -282,6 +296,11 @@
       font-size: .875rem;
       color: #f6f6f6;
       padding-bottom: 6px;
+    }
+
+    .title-2 {
+      letter-spacing: 4px;
+      font-weight: normal;
     }
 
     @media screen and (min-width: 1280px) and (max-width: 1599px) {
@@ -459,8 +478,8 @@
 
   .vFlexAlign {
     height: 100%;
-    max-width: 100%;
-    width: 977px !important;
+    //max-width: 100%;
+    //width: 977px !important;
     margin: 0 auto;
   }
 
@@ -495,9 +514,13 @@
     position: absolute;
 
     a {
-      color: #fff;
+     /* color: #fff;
       font-size: .8rem;
+      font-family: $CamphorHeavy;*/
+      color: #fff;
+      font-size: .85rem;
       font-family: $CamphorHeavy;
+      letter-spacing: .5px;
     }
 
     i {
@@ -507,7 +530,8 @@
   }
 
   .date-back {
-    left: 4px;
+    //left: 4px;
+    left: 18px;
     top: 50%;
     transform: rotate(-90deg);
     transition: left .4s ease;
@@ -520,7 +544,8 @@
   }
 
   .date-next {
-    right: 4px;
+    //right: 4px;
+    right: 20px;
     top: 50%;
     transform: rotate(90deg);
 
@@ -566,6 +591,7 @@
   .info h2 {
     a {
       color: #141414;
+      font-size: 1.125rem;
     }
   }
 
@@ -576,7 +602,7 @@
     h2 {
       width: 38%;
       box-sizing: border-box;
-      padding-right: 100px;
+      padding-right: 90px;
       line-height: 24px;
     }
 
@@ -1398,6 +1424,57 @@
     }
   }
 
+
+  & .hebergement.item {
+    .descrip-section {
+      a {
+        color: $gold;
+        text-decoration: underline;
+        font-size: .8125rem;
+        margin-top: 3px;
+        display: block;
+      }
+    }
+  }
+
+  & .i-transport.item {
+    .item-manual .contain-infos .item-infos {
+      .title-infos {
+        color: #000;
+        font: .75rem $CamphorHeavy;
+        display: block;
+        text-transform: uppercase;
+        padding-top: 17px;
+        padding-bottom: 15px !important;
+        letter-spacing: 0px;
+      }
+    }
+
+    .btn {
+      font-size: .625rem;
+      border: 1px solid #c8a461;
+      color: #c8a461;
+      transition: all .9s cubic-bezier(.25,.46,.45,.94);
+      font-family: $CamphorHeavy;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      margin-top: 23px;
+      display: inline-block;
+      width: 154.44px;
+      height: 42px;
+      box-sizing: border-box;
+      padding-top: 9px;
+
+      .icon-create {
+        font-size: .5rem !important;
+        margin-right: 10px !important;
+        vertical-align: middle!important;
+        margin-bottom: 3px !important;
+        transition: all .9s cubic-bezier(.25,.46,.45,.94);
+      }
+    }
+  }
+
   .a-left {
     text-align: left;
   }
@@ -1432,11 +1509,19 @@
     }
   }
 
-  .icon-minus, .icon-create {
+  .icon-minus, .icon-more-square {
     float: right;
     font-size: .6rem;
     margin-top: 5px;
+    margin-right: 22px;
+  }
+
+  .icon-more-square {
+    float: right;
+    font-size: 2.7rem;
+    margin-top: -11px;
     margin-right: 5px;
+    color: #c1c1c1;
   }
 
   .icon-download {
@@ -1698,7 +1783,7 @@
 
         a {
           color: $gold;
-          text-decoration: underline;
+          text-decoration: none;
           transition: all .9s cubic-bezier(.25,.46,.45,.94);
           font-family: $CamphorBold;
 
@@ -1954,7 +2039,7 @@
       padding-right: 13px;
       transition: all .9s cubic-bezier(.25, .46, .45, .94);
       text-decoration: underline;
-      text-transform: uppercase;
+      //text-transform: uppercase;
       font-family: $CamphorBold;
     }
 
@@ -1962,6 +2047,10 @@
       display: inline-block;
       width: 67%;
     }
+
+   .item-manual .item-manual:last-child .item-partners {
+     border-bottom: 0px solid #fff;
+   }
 
     .item-partners .text-partners .portrait {
       display: inline-block;
@@ -2134,6 +2223,9 @@
       transition: .5s;
       cursor: pointer;
       line-height: 18px;
+      padding-right: 40px;
+      box-sizing: border-box;
+      padding-left: 40px;
 
       &:hover {
         cursor: pointer;
@@ -2174,7 +2266,10 @@
     */
     text-align: center;
     padding: 0px;
-    padding: 0px 10px;
+    padding: 0px 25px;
+
+    min-width: 178px;
+    box-sizing: border-box;
   }
 }
 
