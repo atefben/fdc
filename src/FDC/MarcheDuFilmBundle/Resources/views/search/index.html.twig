@@ -10,9 +10,9 @@
         <div class="bigContainer results">
             <div class="resultTitle">
                 <form action="{{ path('fdc_marche_du_film_search') }}">
-                    <input type="text" name="term" placeholder="Recherche..." value="{{ searchTerm }}">
+                    <input type="text" name="term" placeholder="{{ 'search.placeholder'|trans }}" value="{{ searchTerm }}">
                     <input class="loupe" type="submit" value="">
-                    <span>{{ total }} résultats</span>
+                    <span>{{ total }} {{ 'search.results'|trans }}</span>
 
                 </form>
             </div>
