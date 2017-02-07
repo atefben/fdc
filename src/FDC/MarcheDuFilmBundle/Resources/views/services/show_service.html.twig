@@ -2,7 +2,7 @@
 
 {% block main %}
     <div id="main" class="home loading">
-        <div class="text-presentation producersWorkshop opportunites mdf customClass2Bckg">
+        <div class="text-presentation producersWorkshop opportunites mdf customClass4Bckg">
             {% if navServices[route_params["slug"]] is defined %}
                 <h3>{{ navServices[route_params["slug"]] }}</h3>
             {% endif %}
@@ -93,7 +93,7 @@
         </div>
     </div>
     {% if service.contentBlockTitle is not null or service.contentBlockBody is not null %}
-        <div class="tarifs">
+        <div class="tarifs customClass4Bckg">
             <div class="text-presentation">
                 <h3>{{ service.contentBlockTitle }}</h3>
                 <div class="tarifsBody customClass1">

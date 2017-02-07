@@ -41,6 +41,9 @@
     .customClass3Bckg {
         background: url({% path graphicCharter.backgroundImage3|trans_fallback('file'), 'reference' %});
     }
+    .customClass4Bckg {
+        background: url({% path graphicCharter.backgroundImage4|trans_fallback('file'), 'reference' %});
+    }
 
     header #navigation ul li a.editionColor:hover,
     header #navigation ul li a.editionColor.active {
@@ -118,6 +121,10 @@
 
     ul.tabs .active .redActive {
         color: {{ graphicCharter.color1 }} !important;
+    }
+
+    .servicesPage .lastServicesArticle {
+        background: url({% path graphicCharter.backgroundImage4|trans_fallback('file'), 'reference' %}) !important;
     }
 
 </style>
