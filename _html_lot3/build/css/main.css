@@ -7605,6 +7605,11 @@ header #navigation ul.user li a .icon.icon-espace-presse {
   color: #c8a461;
   cursor: pointer;
 }
+.b-timer .c-icon .icon {
+  position: relative;
+  top: 8px;
+  right: 24px;
+}
 
 footer * {
   box-sizing: border-box;

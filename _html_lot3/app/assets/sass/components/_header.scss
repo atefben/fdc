@@ -693,5 +693,11 @@ header{
   .c-icon {
     color: $gold;
     cursor: pointer;
+
+    .icon {
+      position: relative;
+      top: 8px;
+      right: 24px;
+    }
   }
 }
