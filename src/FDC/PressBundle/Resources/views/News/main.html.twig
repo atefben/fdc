@@ -142,9 +142,9 @@
                                                 <p>
                                             {% else %}
                                                 <p class="director">
-                                                    {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    {% for index,director in associatedFilm.getDirectors() %}
                                                         {% if index < 4 %}
-                                                            <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                            <a href="{{ path('fdc_event_artist_get', {slug: director.person.slug }) }}">{{ director.person.fullName }}</a>
                                                             {% if loop.index != director|length and index != 3 %}
                                                                 ,
                                                             {% endif %}

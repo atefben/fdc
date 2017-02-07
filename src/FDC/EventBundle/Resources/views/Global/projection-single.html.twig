@@ -42,8 +42,8 @@
                         {%- endif -%}
                         <p>
                             {{- 'movie.label.realisepar'|trans }} :{{ ' ' }}
-                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                            {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
+                            {%- set directors = film.getDirectors() -%}
+                            {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
                         </p>
                         {%- if film.productionYear is not null and film.productionYear != 0 -%}
                             <p>
@@ -154,8 +154,8 @@
                                     {%- if seance.programmationFilms|length == 1 -%}
                                         <div class="txt">
                                             <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                            <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
+                                            {%- set directors = film.getDirectors() -%}
+                                            <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
                                         </div>
                                     {%- else -%}
                                         <span> {{ seance.programmationSection }}</span>
@@ -257,9 +257,9 @@
                                     {%- if conference.programmationFilms|length == 1 -%}
                                         <div class="txt">
                                             <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                            {%- set directors = film.getDirectors() -%}
                                             <strong>
-                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
+                                                {%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}
                                             </strong>
                                         </div>
                                     {%- else -%}
@@ -357,8 +357,8 @@
                                     {%- if relatedProjection.programmationFilms|length > 0 -%}
                                         <div class="txt">
                                             <span>{{ film.titleVO }}</span>
-                                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                            <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
+                                            {%- set directors = film.getDirectors() -%}
+                                            <strong>{%- for director in directors -%}{%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} -%}{%- if loop.index != directors|length -%},&nbsp;{%- endif -%}{%- endfor -%}</strong>
                                         </div>
                                     {%- else -%}
                                         <span> {{ relatedProjection.programmationSection }}</span>

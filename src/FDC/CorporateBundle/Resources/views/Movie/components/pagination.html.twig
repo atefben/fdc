@@ -13,10 +13,10 @@
                 <div class="vCenterKid">
                     {% set title = prev.titleVO %}
                     <h2>{{ title }}</h2>
-                    {% set directors = prev|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                    {% set directors = prev.getDirectors() %}
                     {% spaceless %}
                         {% for director in directors %}
-                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != directors|length %}<a href="#"><span class="nom-item">, </span></a>{% endif %}
+                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}{% if loop.index != directors|length %}<a href="#"><span class="nom-item">, </span></a>{% endif %}
                         {% endfor %}
                     {% endspaceless %}
                     {% if prev.countries|length > 0 %}
@@ -41,10 +41,10 @@
                 <div class="vCenterKid">
                     {% set title = next.titleVO %}
                     <h2>{{ title }}</h2>
-                    {% set directors = next|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                    {% set directors = next.getDirectors() %}
                     {% spaceless %}
                         {% for director in directors %}
-                            {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != directors|length %}<a href="#"><span class="nom-item">, </span></a>{% endif %}
+                            {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}{% if loop.index != directors|length %}<a href="#"><span class="nom-item">, </span></a>{% endif %}
                         {% endfor %}
                     {% endspaceless %}
                     {% if next.countries|length > 0 %}

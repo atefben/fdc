@@ -101,12 +101,12 @@
                                                     <div class="infos">
                                                         <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                     class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                        {% set directors = film.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                        {% set directors = film.getDirectors() %}
                                                         {% set directorsName = '' %}
                                                         {% for director in directors %}
-                                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}"><span
+                                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}"><span
                                                                         class="names-a">
-                                                                    {{ directorsName ~ director.fullName }}
+                                                                    {{ directorsName ~ director.person.fullName }}
                                                                     {% if loop.index != directors|length %} - {% endif %}
                                                                 </span></a>
 

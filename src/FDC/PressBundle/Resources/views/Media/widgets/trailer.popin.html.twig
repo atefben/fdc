@@ -16,8 +16,8 @@
 
             {% set title = film.titleVO %}
             {% set authors = '' %}
-            {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                {%- set authors = authors ~ director.fullName %}{% if loop.last == false %}{% set authors = authors ~ ', ' %}{% endif -%}
+            {% for director in film.getDirectors() %}
+                {%- set authors = authors ~ director.person.fullName %}{% if loop.last == false %}{% set authors = authors ~ ', ' %}{% endif -%}
             {% endfor %}
             <div class="contain-text vCenter">
                 <div class="vCenterKid">
@@ -40,8 +40,8 @@
             <tbody>
             {% set title = film.titleVO %}
             {% set authors = '' %}
-            {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                {%- set authors = authors ~ director.fullName %}{% if loop.last == false %}{% set authors = authors ~ ', ' %}{% endif -%}
+            {% for director in film.getDirectors() %}
+                {%- set authors = authors ~ director.person.fullName %}{% if loop.last == false %}{% set authors = authors ~ ', ' %}{% endif -%}
             {% endfor %}
             {% if(video|trans_fallback('jobMp4State') == 3) %}
             <tr>
