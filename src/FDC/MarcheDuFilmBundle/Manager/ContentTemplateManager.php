@@ -12,6 +12,7 @@ use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetTextTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideoTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ContentTemplateManager
 {
@@ -142,7 +143,7 @@ class ContentTemplateManager
         $titleHeader = $this->getTitleHeaderContentBySlug($pageType, $slug);
 
         if (empty($titleHeader))
-            throw $this->createNotFoundException('Empty content');
+            throw new NotFoundHttpException('Empty content');
 
         $pageId = $titleHeader->getTranslatable()->getId();
 
