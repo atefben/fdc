@@ -81,6 +81,28 @@ header #navigation ul li a.golden.active {
     border-top: 0px;
 }
 
+.plusPrices .plusPricestextCustom {
+    width: 100%;
+    opacity: 0.9;
+    display: inline-block;
+    text-align: center;
+}
+
+.plusPrices .plusPricestextCustom p {
+    color: white !important;
+}
+
+.v-middle-anchor {
+    display: inline-block;
+    vertical-align: middle;
+    height: 35%;
+    width: 0;
+}
+
+.accreditationsCustom {
+    height: inherit !important;
+}
+
 @media screen and (max-width: 1280px) {
     .conferenceMenu .box {
         min-height: inherit !important;
