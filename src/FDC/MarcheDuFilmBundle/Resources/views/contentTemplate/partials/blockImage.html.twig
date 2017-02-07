@@ -1,7 +1,7 @@
 <div class="single-photo">
     <div class="photo-container">
         {% set translations = widget.image.findTranslationByLocale(app.request.locale) %}
-        <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}" />
+        <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}" style="width: 881px; height: 555px;" />
         <p class="caption">{{ translations.legend ~ ' - ©' ~ translations.copyright }}</p>
     </div>
 </div>
