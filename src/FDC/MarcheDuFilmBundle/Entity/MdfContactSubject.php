@@ -34,7 +34,7 @@ class MdfContactSubject
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="MdfGlobalEventsSchedulesCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="contactSubject")
+     * @ORM\OneToMany(targetEntity="MdfContactSubjectsCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="contactSubject")
      */
     protected $contactSubjectsCollection;
 
