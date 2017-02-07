@@ -1156,7 +1156,7 @@
 {% block contact_block_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>{{ 'form.mdf.label.contact_block'|trans }}</h4>
+        <h4>{{ 'form.mdf.label.contact_block_conf'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}

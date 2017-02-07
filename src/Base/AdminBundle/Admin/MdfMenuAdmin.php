@@ -38,13 +38,13 @@ class MdfMenuAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('from.mdf.menu.program')
+            ->with('form.mdf.label.menu.program')
                 ->add('programProjectsIsActive', 'checkbox', array(
-                    'label' => 'from.mdf.menu.program.projections',
+                    'label' => 'form.mdf.label.menu.program_projections',
                     'required' => false
                 ))
                 ->add('programEventsIsActive', 'checkbox', array(
-                    'label' => 'from.mdf.menu.program.events',
+                    'label' => 'form.mdf.label.menu.program_events',
                     'required' => false
                 ))
             ->end()

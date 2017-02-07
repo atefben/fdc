@@ -896,7 +896,8 @@ form:
             contact_page_title: Titre de page
             contact_page_email_receiver: Récepteur email
             contact_page_description: Chapô
-            contact_block: Bloc de contact
+            contact_block_add: Ajouter un bloc de contact
+            contact_block_conf: Configurer le bloc de contacts
             contact_block_date: Contact date de bloc
             contact_block_address: Adresse de bloc de contact
             contact_block_phone_number: Numéro de téléphone du contact
@@ -929,6 +930,10 @@ form:
             slider_accreditation_url: URL d'accréditation du curseur
             slider_accreditation_widget_list: Liste d'outils d'accréditation du curseur
             slider_accreditation_type: Ajouter un widget d'agrandissement du curseur
+            menu:
+                program: Configurer Programme
+                program_projections: Activer la page Projections?
+                program_events: Activer la page événements?
 
         note:
             service:
