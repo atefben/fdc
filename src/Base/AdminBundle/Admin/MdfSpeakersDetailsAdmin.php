@@ -48,7 +48,6 @@ class MdfSpeakersDetailsAdmin extends Admin
         $formMapper
             ->add('image', 'sonata_type_model_list',array(
                 'label' => 'form.mdf.label.speaker_details_image',
-                'btn_delete' => true,
                 'required' => false
             ))
             ->add('translations', 'a2lix_translations', array(
