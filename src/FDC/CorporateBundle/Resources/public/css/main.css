@@ -13358,6 +13358,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: .5rem;
   line-height: 18px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .block-search .icon-s .icon {
   font-size: 1rem;
