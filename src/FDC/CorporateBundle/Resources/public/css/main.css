@@ -13217,6 +13217,16 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .block-push-03 {
   margin-top: 80px;
 }
+.media-library .block-search .button-submit {
+  border: 1px solid #2c2c2c;
+}
+.media-library .block-search .button-submit:hover {
+  border: 1px solid #c8a461;
+}
+.media-library .block-search .button-submit .icon {
+  position: relative;
+  top: 2px;
+}
 .block-search .search-txt {
   position: relative;
   background-color: #fff;
@@ -13317,7 +13327,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #fff;
   text-align: center;
   border-collapse: collapse;
-  border: 1px solid #181818;
+  border: 1px solid #2c2c2c;
   -ms-flex-direction: row;
       flex-direction: row;
   transition: .5s;
@@ -13330,8 +13340,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 1.2rem;
   margin-bottom: 6px;
 }
+.block-search .icon-s:last-child {
+  border-right: 1px solid #2c2c2c !important;
+}
 .block-search .icon-s.last {
-  border-right: 1px solid #181818 !important;
+  border-right: 1px solid #2c2c2c !important;
 }
 .brigth .block-search .icon-s.last {
   border-right: 1px solid #f4f4f4 !important;

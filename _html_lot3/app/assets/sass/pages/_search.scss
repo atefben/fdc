@@ -9,6 +9,21 @@
     margin-top: 80px;
   }
 
+  .media-library & {
+    .button-submit {
+      border: 1px solid #2c2c2c;
+
+      &:hover {
+        border: 1px solid $gold;
+      }
+
+      .icon {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
   .search-txt {
     position: relative;
     background-color: #fff;
@@ -123,7 +138,7 @@
     color: #fff;
     text-align: center;
     border-collapse: collapse;
-    border: 1px solid #181818;
+    border: 1px solid #2c2c2c;
     flex-direction:row;
     transition: .5s;
     border-right: 0px solid #fff !important;
@@ -138,8 +153,12 @@
 
     }
 
+    &:last-child {
+      border-right: 1px solid #2c2c2c !important;
+    }
+
     &.last {
-      border-right: 1px solid #181818 !important;
+      border-right: 1px solid #2c2c2c !important;
 
       .brigth & {
         border-right: 1px solid #f4f4f4 !important;
