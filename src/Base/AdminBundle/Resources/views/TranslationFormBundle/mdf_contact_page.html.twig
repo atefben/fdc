@@ -41,7 +41,7 @@
                                     {% for widget in form.parent.children.contactBlock.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'contact_block_type' %}
-                                                <h4><strong>{{ 'form.mdf.label.contact_block'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.mdf.label.contact_block_conf'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -56,7 +56,7 @@
                                 {{ 'form.mdf.label.contact_block_list'|trans }}<br/>
                                 <a class="btn btn-primary btn-add-base-widget"
                                    data-prototype="{{ form_widget(form.parent.children.contactBlock.vars.prototypes.contact_block_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.mdf.label.contact_block'|trans }}</a>
+                                            class="icon-plus"></i>{{ 'form.mdf.label.contact_block_add'|trans }}</a>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -76,7 +76,7 @@
                                     {% for widget in form.parent.children.contactBlock.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'contact_block_type' %}
-                                                <h4><strong>{{ 'form.mdf.label.contact_block'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.mdf.label.contact_block_conf'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
