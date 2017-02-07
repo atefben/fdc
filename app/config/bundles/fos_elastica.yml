@@ -578,7 +578,6 @@ fos_elastica:
                                             properties:
                                                 name: ~
 #                        # mapping for MdfContentTemplateWidgetVideo objects
-                        publishedAt: { type: date }
                         translations:
                             type: nested
                             properties :

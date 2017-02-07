@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Transformer;
 use Elastica\Document;
 use FOS\ElasticaBundle\Transformer\ModelToElasticaTransformerInterface;
 use FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer;
+use FDC\MarcheDuFilmBundle\Entity\MdfTheme;
 
 class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implements ModelToElasticaTransformerInterface
 {
@@ -28,31 +29,35 @@ class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implemen
                 
                 // if theme isn't set, should remove indexation
                 if (is_null($object->getTheme())) {
+                    $object->setTheme(new MdfTheme());
                     unset($fields['theme.translations']);
                 } 
                 break;
             case 'MdfContentTemplateWidgetImage':
                 unset($fields['gallery.translations']);
-                unset($fields['publishedAt']);
                 unset($fields['translations']);
                 unset($fields['theme.translations']);
                 
                 // if theme isn't set, should remove indexation
                 if (is_null($object->getImage()->getTheme())) {
+                    $object->getImage()->setTheme(new MdfTheme());
                     unset($fields['image.theme.translations']);
                 }                    
                 break;
             case 'MdfContentTemplateWidgetGallery':
                 unset($fields['image']);
-                unset($fields['publishedAt']);
                 unset($fields['translations']);
                 unset($fields['theme.translations']);
+                
+                // if gallery isn't set, should remove indexation
+                if (is_null($object->getGallery())) {
+                    unset($fields['gallery.translations']);
+                } 
                 break;
             case 'MdfContentTemplateWidgetFile':
             case 'MdfContentTemplateWidgetText':
             unset($fields['gallery.translations']);
             unset($fields['image']);
-            unset($fields['publishedAt']);
             unset($fields['translations']);
             unset($fields['theme.translations']);
             break;
