@@ -2039,7 +2039,7 @@
       padding-right: 13px;
       transition: all .9s cubic-bezier(.25, .46, .45, .94);
       text-decoration: underline;
-      text-transform: uppercase;
+      //text-transform: uppercase;
       font-family: $CamphorBold;
     }
 
@@ -2047,6 +2047,10 @@
       display: inline-block;
       width: 67%;
     }
+
+   .item-manual .item-manual:last-child .item-partners {
+     border-bottom: 0px solid #fff;
+   }
 
     .item-partners .text-partners .portrait {
       display: inline-block;
@@ -2219,6 +2223,9 @@
       transition: .5s;
       cursor: pointer;
       line-height: 18px;
+      padding-right: 40px;
+      box-sizing: border-box;
+      padding-left: 40px;
 
       &:hover {
         cursor: pointer;
