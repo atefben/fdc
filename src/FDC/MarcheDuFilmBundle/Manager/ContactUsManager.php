@@ -79,7 +79,6 @@ class ContactUsManager
 
             if ($contactSubjectsCollection) {
                 $contactSubjects = [];
-                $contactSubjects['default'] = 'Séléctionnez un thème';
                 foreach ($contactSubjectsCollection as $widget) {
                     $contactSubject = $contactSubjectsRepo
                         ->getSubjectByLocaleAndTranslatableId(

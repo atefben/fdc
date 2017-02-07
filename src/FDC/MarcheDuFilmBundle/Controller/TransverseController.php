@@ -56,9 +56,13 @@ class TransverseController extends Controller
         $formContact->handleRequest($request);
         if ($formContact->isSubmitted() && $formContact->isValid()) {
             $emailData = $formContact->getData();
-            $emailData['emailFrom'] = $request->request->get('email');
             $emailData['emailTo'] = $contactPage->getReceiverEmail();
             $this->get('mdf.manager.mailer')->sendMessage($emailData);
+
+            return $this->redirectToRoute('fdc_marche_du_film_contact_us', array(
+                    'send' => 'success'
+                )
+            );
         }
 
         return $this->render('FDCMarcheDuFilmBundle::shared/contact/contactUs.html.twig', array(
@@ -66,6 +70,7 @@ class TransverseController extends Controller
                 'contactBlocks' => $contactBlocks,
                 'contactSubjects' => $contactSubjects,
                 'formContact' => $formContact->createView(),
+                'send' => $request->get('send') ? true : false,
             )
         );
     }

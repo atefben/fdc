@@ -25,7 +25,7 @@
             </div>
         </div>
         {# END #}
-        <div class="success">
+        <div class="success"  {% if send %} style="display: block;" {% endif %}>
             <h3>{{ 'contactUs.success'|trans }}</h3>
             <p>{{ 'contactUs.success_message'|trans }}</p>
         </div>
@@ -39,9 +39,7 @@
                         <span id="triggerSelect"></span>
                     </div>
                     {{ form_widget(formContact.name, {'attr' : {'data-error' : 'contactUs.name_error'|trans }}) }}
-                    {# JS field validation bug using form_widget. TODO: Fix JS #}
-                    <input type="email" name="email" placeholder="{{ 'contactUs.email'|trans }}"  data-error="{{ 'contactUs.email_error'|trans }}" />
-                    {# END #}
+                    {{ form_widget(formContact.email, {'attr' : {'data-error' : 'contactUs.email_error'|trans }}) }}
                     {{ form_widget(formContact.object, {'attr' : {'data-error' : 'contactUs.object_error'|trans }}) }}
                     {{ form_widget(formContact.message, {'attr' : {'data-error' : 'contactUs.message_error'|trans }}) }}
 
