@@ -2,27 +2,15 @@
 
 namespace FDC\MarcheDuFilmBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\SeoMain;
-use Base\CoreBundle\Util\Time;
-use Base\CoreBundle\Util\TranslateMain;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MdfMenu
  * @ORM\Table(name="mdf_menu")
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks()
  */
-class MdfMenu implements TranslateMainInterface
+class MdfMenu
 {
-    use Time;
-    use SeoMain;
-    use Translatable;
-    use TranslateMain;
-
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -30,11 +18,6 @@ class MdfMenu implements TranslateMainInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $translations;
 
     /**
      * @var boolean
@@ -49,11 +32,7 @@ class MdfMenu implements TranslateMainInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $programEventsIsActive = true;
-
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
+    
 
     public function __toString()
     {
@@ -74,22 +53,6 @@ class MdfMenu implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * @param ArrayCollection $translations
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
     }
 
     /**
