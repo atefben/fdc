@@ -1883,6 +1883,7 @@ blockquote, .quote {
   border: 1px solid #c8a461;
   margin: 50px 0px;
   margin-left: -40px;
+  margin-right: -40px;
   font-size: 1rem;
   color: #666666;
   line-height: 30px;
@@ -4778,7 +4779,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   width: 67%;
 }
 .block-accordion-02 .item-manual .item-manual:last-child .item-partners {
-  border-bottom: 0px;
+  border-bottom: 0px solid #fff;
 }
 .block-accordion-02 .item-partners .text-partners .portrait {
   display: inline-block;
