@@ -2244,6 +2244,8 @@ a {
 .button-submit-02 .icon {
   margin-right: 24px;
   vertical-align: middle;
+  position: relative;
+  top: 2px;
 }
 .button-submit-02:hover {
   background-color: transparent;
@@ -13220,10 +13222,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-top: 80px;
 }
 .media-library .block-search .button-submit {
-  border: 1px solid #2c2c2c;
+  border: 1px solid #c8a461;
 }
 .media-library .block-search .button-submit:hover {
-  border: 1px solid #c8a461;
+  opacity: .6;
 }
 .media-library .block-search .button-submit .icon {
   position: relative;
@@ -13671,7 +13673,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 1rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 30px;
-  border: 1px solid #181818;
+  border: 1px solid #2c2c2c;
   border-top: 0px solid #fff;
 }
 .brigth .slider-selection {

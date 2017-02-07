@@ -838,7 +838,7 @@ a {
   height: 55px;
   margin-top: 46px;
   outline: none;
-  letter-spacing: 1px; 
+  letter-spacing: 1px;
 
   .dark & {
     border: 1px solid #181818;
@@ -847,6 +847,8 @@ a {
   .icon {
     margin-right: 24px;
     vertical-align: middle;
+    position: relative;
+    top: 2px;
   }
 
   &:hover {
