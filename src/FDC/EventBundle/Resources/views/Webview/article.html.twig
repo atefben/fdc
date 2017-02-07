@@ -40,7 +40,7 @@
         {% elseif object is news_video %}
           {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'video':object.video,'image':cover_image } %}
         {% elseif object is news_image %}
-          {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias':object.gallery.medias } %}
+          {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias': object.gallery.medias } %}
         {% endif %}
         
         <div class="Article-header-meta">
@@ -82,7 +82,9 @@
                 {% include 'FDCEventBundle:Webview:widget/dual-photo.html.twig' %}
             {% endif %}
         {% endfor %}
+        {% if object.signature is not null %}
         <span style="font-size:0.8rem" >{{ 'webview.article.signature_prefix'|trans }} {{ object.signature }}</span>
+        {% endif %}
       </div>
       <!--div class="Article-push">
         <div class="Article-push-image">
