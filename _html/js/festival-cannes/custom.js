@@ -386,13 +386,14 @@ function click() {
         
         $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
         $('.selector').toggle();
+        $('.dropArrow').toggleClass('dropArrowOpen');
     });
 
     
     $(".dropArrow").click(function() {
 
         $('.dropArrow').toggleClass('dropArrowOpen');
-        $('#eventSelector').toggleClass("showeventSelector");
+        $('.selector').toggle();
     });
 
 /* CONFERENCES */
