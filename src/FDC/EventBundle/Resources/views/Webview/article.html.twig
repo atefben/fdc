@@ -105,7 +105,7 @@
             {% endif %}
         {% endfor %}
         <span style="font-size:0.8rem" >{{ 'webview.article.signature_prefix'|trans }} {{ object.signature }}</span>
-      </div>{{ dump(object.hideSameDay) }}
+      </div>
       <!--div class="Article-push">
         <div class="Article-push-image">
           <img src="{{ asset('bundles/fdcevent/img/article/push-cover.png') }}" class="Article-push-cover"/>
@@ -118,7 +118,7 @@
         </div>
       </div-->
     </article>
-    {% if sameDayObjects != null %}
+    {% if sameDayObjects != null and object.hideSameDay == false %}
     <aside class="Article-related">
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
