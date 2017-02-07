@@ -6,19 +6,19 @@
             {% if accreditationContent.state != 2 %}
                 <div class="accredidationsMessage customClass5Bckg">
                     {% if accreditationContent.state == 0 %}
-                        <div class="accredMsg">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
-                        <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister">{{ 'accrediation.bandeau.subscribe'|trans }}</div></a>
+                        <div class="accredMsg customClass5BckgColor">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
+                        <a href="{{ accreditationContent.activeUrl }}"><div class="accredRegister customClass6BckgColor">{{ 'accrediation.bandeau.subscribe'|trans }}</div></a>
                     {% elseif accreditationContent.state == 1 %}
                         <div class="noAvail">{{ accreditationContent.subtitle|truncate(130, true, "...") }}</div>
                     {% endif %}
                 </div>
             {% endif %}
-            <div class="text-presentation accredidationsDetails greyBckg mdf customClass5">
+            <div class="text-presentation accredidationsDetails greyBckg mdf customClass5 customClass2Bckg">
                 <h3>{{ accreditationContent.title }}</h3>
             </div>
             <div class="greyBckg">
                 <div class="midContainer">
-                    <h5 class="getMargin">{{ accreditationContent.description|raw }}</h5>
+                    <h5 class="getMargin customClass1">{{ accreditationContent.description|raw }}</h5>
                     <div id="accordion-menu">
                         <ul>
                             {% for accreditationWidget in accreditationWidgets %}
@@ -32,7 +32,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="accreditations customClass5Bckg">
+                <div class="accreditations customClass2Bckg">
                     <div class="bigContainer">
                         <h3>{{ accreditationContent.promotionsTitle|raw }}</h3>
                         <div class="pricesContainer">
@@ -47,7 +47,7 @@
                                     <div class="articles-content {% if accreditationContent.isEarlyBird %}primo{% endif %}">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle1 }}</span>
-                                            <h6>{{ accreditationContent.promotionPrice1 }} <span class="ht">{{ accreditationContent.promotionInformation1 }}</span></h6>
+                                            <h6 class="customClass1">{{ accreditationContent.promotionPrice1 }} <span class="ht customClass1">{{ accreditationContent.promotionInformation1 }}</span></h6>
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                     <div class="articles-content">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle2 }}</span>
-                                            <h6>{{ accreditationContent.promotionPrice2 }} <span class="ht">{{ accreditationContent.promotionInformation2 }}</span></h6>
+                                            <h6 class="customClass1">{{ accreditationContent.promotionPrice2 }} <span class="ht customClass1">{{ accreditationContent.promotionInformation2 }}</span></h6>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                     <div class="articles-content">
                                         <div class="textWrapper">
                                             <span>{{ accreditationContent.promotionTitle3 }}</span>
-                                            <h6>{{ accreditationContent.promotionPrice3 }} <span class="ht">{{ accreditationContent.promotionInformation3 }}</span></h6>
+                                            <h6 class="customClass1">{{ accreditationContent.promotionPrice3 }} <span class="ht customClass1">{{ accreditationContent.promotionInformation3 }}</span></h6>
                                         </div>
                                     </div>
                                 </div>
@@ -79,8 +79,8 @@
                             <div class="innerWrapper">
                                 <div class="plusPrices">
                                     <div class="plusPricesdetails">
-                                        <span>{{ accreditationContent.promotionDetailsTitle1|raw }}</span>
-                                        <h6><span class="plusColor">{{ accreditationContent.promotionDetailsPricePrefix1 }}</span>{{ accreditationContent.promotionDetailsPrice1 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix1 }}</span></h6>
+                                        <span class="customClass3">{{ accreditationContent.promotionDetailsTitle1|raw }}</span>
+                                        <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix1 }}</span>{{ accreditationContent.promotionDetailsPrice1 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix1 }}</span></h6>
                                     </div>
                                     <div class="plusPricestext">
                                         {{ accreditationContent.promotionDetailsInformation1|raw }}
@@ -88,8 +88,8 @@
                                 </div>
                                 <div class="plusPrices">
                                     <div class="plusPricesdetails">
-                                        <span>{{ accreditationContent.promotionDetailsTitle2|raw }}</span>
-                                        <h6><span class="plusColor">{{ accreditationContent.promotionDetailsPricePrefix2 }}</span>{{ accreditationContent.promotionDetailsPrice2 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix2 }}</span></h6>
+                                        <span class="customClass3">{{ accreditationContent.promotionDetailsTitle2|raw }}</span>
+                                        <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix2 }}</span>{{ accreditationContent.promotionDetailsPrice2 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix2 }}</span></h6>
                                     </div>
                                     <div class="plusPricestext">
                                         {{ accreditationContent.promotionDetailsInformation2|raw }}
@@ -97,8 +97,8 @@
                                 </div>
                                 <div class="plusPrices">
                                     <div class="plusPricesdetails">
-                                        <span>{{ accreditationContent.promotionDetailsTitle3|raw }}</span>
-                                        <h6><span class="plusColor">{{ accreditationContent.promotionDetailsPricePrefix3 }}</span>{{ accreditationContent.promotionDetailsPrice3 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix3 }}</span></h6>
+                                        <span class="customClass3">{{ accreditationContent.promotionDetailsTitle3|raw }}</span>
+                                        <h6><span class="plusColor customClass3">{{ accreditationContent.promotionDetailsPricePrefix3 }}</span>{{ accreditationContent.promotionDetailsPrice3 }} <span class="ht">{{ accreditationContent.promotionDetailsPriceSuffix3 }}</span></h6>
                                     </div>
                                     <div class="plusPricestext">
                                         {{ accreditationContent.promotionDetailsInformation3|raw }}
