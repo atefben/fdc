@@ -28,32 +28,34 @@ var ow = ow || {};
 		var $slides = $('.Article-slider-item');
 		var $wrap   = $('.Article-slider-wrapper');
 
-		var Slider = new Sly($wrap, {
-			horizontal: 1,
-			itemNav: 'basic',
-			slidee: $frame,
-			smart: 1,
-			activateOn: 'click',
-			mouseDragging: 1,
-			touchDragging: 1,
-			releaseSwing: 1,
-			scrollBy: 0,
-			activatePageOn: 'click',
-			speed: 300,
-			elasticBounds: 1,
-			dragHandle: 1,
-			dynamicHandle: 1,
-			clickBar: 1,
-			prev: $wrap.find('.Article-slider-prev'),
-			next: $wrap.find('.Article-slider-next')
-		});
+		if($wrap.length){
+			var Slider = new Sly($wrap, {
+				horizontal: 1,
+				itemNav: 'basic',
+				slidee: $frame,
+				smart: 1,
+				activateOn: 'click',
+				mouseDragging: 1,
+				touchDragging: 1,
+				releaseSwing: 1,
+				scrollBy: 0,
+				activatePageOn: 'click',
+				speed: 300,
+				elasticBounds: 1,
+				dragHandle: 1,
+				dynamicHandle: 1,
+				clickBar: 1,
+				prev: $wrap.find('.Article-slider-prev'),
+				next: $wrap.find('.Article-slider-next')
+			});
 
-		Slider.on('moveStart moveEnd', function (a,b,c) {
-			var increment = Slider.rel.firstItem + 1;
-			$('.Article-slider-count strong').html(increment);
-		});
+			Slider.on('moveStart moveEnd', function (a,b,c) {
+				var increment = Slider.rel.firstItem + 1;
+				$('.Article-slider-count strong').html(increment);
+			});
 
-		Slider.init();
+			Slider.init();
+		}
 	}
 
 	ow.relatedSlider = function(){
@@ -61,50 +63,52 @@ var ow = ow || {};
 		var $slides = $('.Article-related-slider-item');
 		var $wrap   = $('.Article-related-slider-wrapper');
 
-		var Slider = new Sly($wrap, {
-			horizontal: 1,
-			itemNav: 'basic',
-			slidee: $frame,
-			smart: 1,
-			activateOn: 'click',
-			mouseDragging: 1,
-			touchDragging: 1,
-			releaseSwing: 1,
-			scrollBy: 0,
-			activatePageOn: 'click',
-			speed: 300,
-			elasticBounds: 1,
-			dragHandle: 1,
-			dynamicHandle: 1,
-			clickBar: 1,
-			prev: $wrap.find('.Article-slider-prev'),
-			next: $wrap.find('.Article-slider-next')
-		});
+		if($wrap.length){
+			var Slider = new Sly($wrap, {
+				horizontal: 1,
+				itemNav: 'basic',
+				slidee: $frame,
+				smart: 1,
+				activateOn: 'click',
+				mouseDragging: 1,
+				touchDragging: 1,
+				releaseSwing: 1,
+				scrollBy: 0,
+				activatePageOn: 'click',
+				speed: 300,
+				elasticBounds: 1,
+				dragHandle: 1,
+				dynamicHandle: 1,
+				clickBar: 1,
+				prev: $wrap.find('.Article-slider-prev'),
+				next: $wrap.find('.Article-slider-next')
+			});
 
-		Slider.on('moveStart moveEnd', function (a,b,c) {
-			var increment = Slider.rel.firstItem + 1;
-			$('.Article-slider-count strong').html(increment);
-		});
+			Slider.on('moveStart moveEnd', function (a,b,c) {
+				var increment = Slider.rel.firstItem + 1;
+				$('.Article-slider-count strong').html(increment);
+			});
 
-		Slider.init();
+			Slider.init();
+		}
 	}
 
 	ow.audioPlayer = function(){
-		$('.Article-audioPlayer').each(function(){
-			var player = $(this);
-			jwplayer(player.get(0)).setup({
-				"file": player.data('file-mp3'),
-				"height": 90,
-				"title": player.data('title'),
-				"description": player.data('date'),
-				"width": '100%',
-				'skin': {
-					'name': 'fdc'
-				}
+		if($('.Article-audioPlayer').length){
+			$('.Article-audioPlayer').each(function(){
+				var player = $(this);
+				jwplayer(player.get(0)).setup({
+					"file": player.data('file-mp3'),
+					"height": 90,
+					"title": player.data('title'),
+					"description": player.data('date'),
+					"width": '100%',
+					'skin': {
+						'name': 'fdc'
+					}
+				});
 			});
-		});
-
-
+		}
 	}
 
 	ow.playVideo = function(event){
