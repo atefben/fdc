@@ -13695,6 +13695,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: inline-block;
   vertical-align: super;
   margin: 0px 10px;
+  margin-right: 11px;
 }
 .slider-selection .noUi-target {
   border-radius: 0px;
