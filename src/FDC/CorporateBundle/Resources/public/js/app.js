@@ -3059,7 +3059,7 @@ var onInitParallax = function () {
         $(window).on('scroll', function () {
 
             if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 100;
+                var s = $(this).scrollTop() - 240;
                 $('.block-push').css('background-position', '0px ' + s + 'px');
             } else {
                 $('.block-push').css('background-position', '0px ' + '-240px');
