@@ -293,10 +293,6 @@ $('.floatingButtonRight').hover(function() {
 
 /* SELECTOR DROPDOWN FROM DROPWDOWNS */
 
-    $(".dropdown").click(function() {
-
-        $('.dropArrow').toggleClass('dropArrowOpen');
-    });
 
     $(".select input").click(function() {
 
@@ -383,13 +379,21 @@ function click() {
     var el = [];
     var clicked;
     var selectbtn = $('.selectbtn');
+
+    $('.selector').hide();
     
     $('.dropdown span').click(function() {
-        $('#eventSelector').toggleClass("showeventSelector");
+        
         $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
+        $('.selector').toggle();
     });
 
     
+    $(".dropArrow").click(function() {
+
+        $('.dropArrow').toggleClass('dropArrowOpen');
+        $('#eventSelector').toggleClass("showeventSelector");
+    });
 
 /* CONFERENCES */
 

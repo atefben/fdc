@@ -27,7 +27,7 @@
                 
                 <div class="dropdown"> 
                   <span>AFFICHER</span>
-                  <div id="eventSelector">
+                  <div id="eventSelector" class="showeventSelector">
                     <div class="selectText" id="producers-network">Producers Workshop,</div>
                     <div class="selectText" id="producers-workshop">Producers Network,</div>
                     <div class="selectText" id="doc-corner">Doc Corner,</div>
