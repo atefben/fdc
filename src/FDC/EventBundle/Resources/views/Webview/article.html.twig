@@ -1,4 +1,33 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% set header = object.header %}
+{% if header is not null %}
+    {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = object.header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if object.video is not null %}
+  {% if object.video.image is not null %}
+      {% if imageTrans is not defined %}
+          {% set header = object.video.image %}
+          {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+          {% if imageTrans is null or imageTrans.file is null %}
+              {% set imageTrans = header.findTranslationByLocale('fr') %}
+          {% endif %}
+      {% endif %}
+      {% set cover_image = imageTrans.file %}
+  {% endif %}
+{% endif %}
+{% if (object.video != null or object.image != null or object.header != null) %}
+  {% if object.image != null %}
+    {% set cover_image = object.image|trans_fallback('file') %}
+  {% elseif object.imageAmazonUrl != null %}
+    {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
+  {% else %}
+    {% set trans = object.findTranslationByLocale(app.request.locale) %}
+    {% set cover_image = trans.translatable.header|trans_fallback('file') %}
+  {% endif %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,74 +42,23 @@
   <body class="Article">
     <article class="Article-wrapper">
       <header class="Article-header">
-        {% if (object.video != null or object.image != null or object.header != null) %}
-        {% if object.image != null %}
-          {% set cover_image = object.image|trans_fallback('file') %}
-        {% elseif object.imageAmazonUrl != null %}
-          {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
-        {% else %}
-          {% set trans = object.findTranslationByLocale(app.request.locale) %}
-          {% set cover_image = trans.translatable.header|trans_fallback('file') %}
-        {% endif %}
-
-        {% set header = object.header %}
-          {% if header is not null %}
-              {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
-              {% if imageTrans is null or imageTrans.file is null %}
-                  {% set imageTrans = object.header.findTranslationByLocale('fr') %}
-              {% endif %}
-          {% endif %}
-          {% if object.video is not null %}
-            {% if object.video.image is not null %}
-                {% if imageTrans is defined %}
-                    {% set cover_image = imageTrans.file %}
-                {% else %}
-                    {% set header = object.video.image %}
-                    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-                    {% if imageTrans is null or imageTrans.file is null %}
-                        {% set imageTrans = header.findTranslationByLocale('fr') %}
-                    {% endif %}
-
-                    {% set cover_image = imageTrans.file %}
-                {% endif %}
-            {% endif %}
-          {% endif %}
-        {% if object.video is not null %}
-        <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
-        {% endif %}
-        <video preload="none" style="background-image: url({% path cover_image , 'reference' %})">
-          <source src="{{ s3_server_video ~ object.video|trans_fallback('mp4Url') }}" type="video/mp4"/>
-        </video>
+        {% if object is news_article %}
+          {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with { 'widget':object } %}
+        {% elseif object is news_audio %}
+          {% include 'FDCEventBundle:Webview:widget/audio.html.twig' with { 'widget':object } %}
+        {% elseif object is news_video %}
+          {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'video':object.video,'image':cover_image } %}
         {% elseif object is news_image %}
-          <div class="Article-slider-wrapper">
-            <a class="Article-slider-prev" href="#"></a>
-            <a class="Article-slider-next" href="#"></a>
-            <div class="Article-slider">
-              {% for key, gallery in object.gallery.medias %}
-              <div class="Article-slider-item">
-                <img src="{% path gallery.media|trans_fallback('file'), '640x400' %}"/>
-                <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> {{ gallery.media|trans_fallback('copyright') }}</span> 
-              </div>
-              {% endfor %}
-            </div>
-            <div class="Article-slider-count"><strong>1</strong>/{{ object.gallery.medias|length }}</div>
-          </div>
+          {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias':object.gallery.medias } %}
         {% endif %}
+        
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('d/m/y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
           <span class="Article-header-meta-misc"><strong>{{ object.header|trans_fallback('legend') }}</strong> {{ object.header|trans_fallback('copyright') }}</span>
         </div>
       </header>
-      {% if object is news_article %}
-        article
-      {% elseif object is news_audio %}
-        audio
-      {% elseif object is news_video %}
-        video
-      {% elseif object is news_image %}
-        image
-      {% endif %}
+
       <div class="Article-content">
         <h1>{{ object|trans_fallback('title') }}</h1>
 
@@ -93,7 +71,7 @@
                 'photo_class' : ' large-photo'
                 }) %}
             {% elseif widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' %}
+                {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with {'medias': widget.gallery.medias } %}
             {% elseif widget is news_widget_text %}
                 {% include 'FDCEventBundle:Webview:widget/text.html.twig' %}
             {% elseif widget is news_widget_video %}
