@@ -6,11 +6,8 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
@@ -57,6 +54,7 @@ html {
 
 .Article-wrapper {
   font-family: "Open Sans"; }
+
 .Article-video-play {
   position: absolute;
   width: 3.8rem;
@@ -67,6 +65,7 @@ html {
   z-index: 1; }
   .Article-video-play img {
     width: 100%; }
+
 .Article-videoPlayer {
   position: relative; }
   .Article-videoPlayer video {
@@ -110,11 +109,13 @@ html {
       font-weight: 300;
       font-size: 1.2rem;
       line-height: 1.5rem; }
+
 .Article-header video {
   width: 100%;
   display: block;
   background: transparent 50% 50% / cover no-repeat;
   height: 240px; }
+
 .Article-header-meta {
   display: block;
   height: 18px;
@@ -133,11 +134,12 @@ html {
     padding-left: 10px; }
   .Article-header-meta-misc {
     font-size: 0.6rem;
-    float: right;
-    padding-right: 12px;
-    color: #666666; }
+    padding-left: 12px;
+    color: #666666;
+    display: block; }
     .Article-header-meta-misc strong {
       color: #212121; }
+
 .Article-content {
   padding: 25px 20px 15px 20px;
   font-size: 1.4em; }
@@ -169,6 +171,7 @@ html {
       padding-bottom: 1.6rem;
       line-height: 2.2rem;
       display: inline; }
+
 .Article-quote blockquote {
   border-bottom: 1px solid #e5e5e5;
   border-top: 1px solid #e5e5e5;
@@ -179,8 +182,10 @@ html {
   text-align: center;
   margin-top: 35px;
   margin-bottom: 40px; }
+
 .Article-slider-wrapper {
   position: relative; }
+
 .Article-slider-prev, .Article-slider-next {
   position: absolute;
   width: 21px;
@@ -191,22 +196,26 @@ html {
   top: 50%;
   left: 0;
   margin-top: -20px; }
+
 .Article-slider-next {
   background: url(../img/article/slider-next.png) no-repeat top left;
   background-size: 100%;
   left: auto;
   right: 0; }
+
 .Article-slider-item {
   float: left;
   width: 100vw; }
   .Article-slider-item img {
     width: 100%; }
+
 .Article-slider-caption {
   height: auto;
   line-height: 25px;
   font-size: 0.8rem; }
   .Article-slider-caption strong {
     display: inline; }
+
 .Article-slider-count {
   position: absolute;
   font-size: 1.1rem;
@@ -216,6 +225,7 @@ html {
   .Article-slider-count strong {
     display: inline;
     color: #212121; }
+
 .Article-push {
   background: #141414; }
   .Article-push > * {
@@ -261,6 +271,7 @@ html {
       line-height: 1.5rem;
       color: #919191;
       padding-top: 1.3rem; }
+
 .Article-related h2 {
   padding-top: 80px;
   padding-bottom: 70px;
@@ -270,11 +281,14 @@ html {
   font-family: "Playfair Display";
   font-weight: bold;
   text-align: center; }
+
 .Article-related-slider-item {
   float: left;
   display: inline-block;
   width: 85vw;
-  padding-left: 1.5rem; }
+  padding-left: 1.5rem;
+  text-decoration: none;
+  color: #000; }
   .Article-related-slider-item:last-child {
     padding-right: 3.3rem; }
   .Article-related-slider-item-pictureWrap {
@@ -333,6 +347,7 @@ html {
         position: absolute;
         top: 0;
         left: 0; }
+
 .Article-related-slider-caption h4 {
   display: inline-block;
   color: #c9a45e;
@@ -341,6 +356,7 @@ html {
   font-family: "Camphor W01 Heavy";
   height: 3.5rem;
   line-height: 3.5rem; }
+
 .Article-related-slider-caption p {
   display: inline-block;
   font-family: "Camphor W01 Regular";
@@ -348,6 +364,7 @@ html {
   line-height: 3.5rem;
   font-size: 1rem;
   color: #b8b8b8; }
+
 .Article-related-slider-caption strong {
   display: block;
   font-weight: normal;
@@ -355,10 +372,18 @@ html {
   padding-bottom: 3.7rem;
   font-size: 1.5rem; }
 
+.Article-content a {
+  text-decoration: none;
+  color: #c8a461; }
+
+.Article-content table {
+  width: 100% !important; }
+
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
   top: .7rem;
   margin-left: 10.3rem; }
+
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback {
   background: url(../img/article/videoPlayer/pause.png) no-repeat 2rem 3rem;
   background-position: 2rem center;
@@ -367,8 +392,10 @@ html {
   top: -0.2rem; }
   .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback:before, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback:before {
     content: ""; }
+
 .jwplayer.jw-skin-fdc.jw-state-paused .jw-title {
   display: block; }
+
 .jwplayer.jw-skin-fdc.jw-state-paused .jw-icon-playback {
   background-position: 2rem center;
   background-size: 1.2rem;
@@ -376,8 +403,10 @@ html {
   top: -0.2rem; }
   .jwplayer.jw-skin-fdc.jw-state-paused .jw-icon-playback:before {
     content: ""; }
+
 .jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
   display: none; }
+
 .jwplayer.jw-skin-fdc {
   height: 9rem; }
   .jwplayer.jw-skin-fdc .jw-icon-fullscreen {
@@ -450,5 +479,3 @@ html {
       vertical-align: top;
       margin-top: .5rem;
       margin-left: 6.3rem; }
-
-/*# sourceMappingURL=webview.css.map */
