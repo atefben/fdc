@@ -70,20 +70,26 @@
                                 {% endif %}
                                 <div class="tabBox">
                                     <span class="customClass2">{{ product.title }}</span>
-                                    <h5>{{ product.grayText }} <span class="fromPrice customClass1">{{ product.colorText }}</span></h5>
+                                    {% if product.grayText is not null and product.colorText is not null%}
+                                        <h5>{{ product.grayText }} <span class="fromPrice customClass1">{{ product.colorText }}</span></h5>
+                                    {% endif %}
                                     <div class="tabContent">
                                         <p>{{ product.body }}</p>
                                     </div>
-                                    <input type="checkbox" class="read-more-state" id="post-{{ key~product.id }}" style="opacity:0;"/>
-                                    <div class="read-more-wrap">
-                                        <div class="read-more-target">
-                                            {# Formated in BO #}
-                                            {{ product.toggledBody|raw }}
-                                            {# End #}
+                                    {% if product.toggledBody is not null and product.toggledBody|length > 0 %}
+                                        <input type="checkbox" class="read-more-state" id="post-{{ key~product.id }}" style="opacity:0;"/>
+                                        <div class="read-more-wrap">
+                                            <div class="read-more-target">
+                                                {# Formated in BO #}
+                                                {{ product.toggledBody|raw }}
+                                                {# End #}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <i class='icon icon_flecheGauche opportuniteArrow customClass2'></i>
-                                    <label for="post-{{ key~product.id }}" class="read-more-trigger"><a href="{{ product.url }}" target="_blank"><div  class="blueBtn customClass2 customClass2Border customClass2BckgColorHover">{{ 'book_service'|trans }}</div></a></label>
+                                        <i class='icon icon_flecheGauche opportuniteArrow customClass2'></i>
+                                    {% endif %}
+                                    {% if product.url is not null and product.url|length > 0 %}
+                                        <label for="post-{{ key~product.id }}" class="read-more-trigger"><a href="{{ product.url }}" target="_blank"><div  class="blueBtn customClass2 customClass2Border customClass2BckgColorHover">{{ 'book_service'|trans }}</div></a></label>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
