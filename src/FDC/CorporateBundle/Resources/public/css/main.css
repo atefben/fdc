@@ -13234,6 +13234,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-bottom: 20px;
   display: block;
 }
+.who-staff .contain-title {
+  margin-bottom: 60px;
+}
 
 .block-search {
   margin-top: 50px;
