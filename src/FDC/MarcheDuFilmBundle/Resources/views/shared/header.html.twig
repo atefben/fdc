@@ -125,14 +125,20 @@
                 <ul class="tleft">
                     <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">{{ 'menu.presentation'|trans }}</a></li>
                     <li><a href="{{ path('fdc_marche_du_film_news') }}">{{ 'menu.news'|trans }}</a></li>
-                    <li class="seeSub">
-                        <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
-                        <div class="prog">{{ 'menu.program'|trans }}</div>
-                        <ul class="subsubMenu">
-                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">{{ 'menu.projections'|trans }}</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">{{ 'menu.events'|trans }}</a></li>
-                        </ul>
-                    </li>
+                    {% if availableMenu is not null and (availableMenu.programProjectsIsActive or availableMenu.programEventsIsActive) %}
+                        <li class="seeSub">
+                            <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></i></div>
+                            <div class="prog">{{ 'menu.program'|trans }}</div>
+                            <ul class="subsubMenu">
+                                {% if availableMenu.programProjectsIsActive %}
+                                    <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">{{ 'menu.projections'|trans }}</a></li>
+                                {% endif %}
+                                {% if availableMenu.programEventsIsActive %}
+                                    <li><a href="{{ path('fdc_marche_du_film_global_events') }}">{{ 'menu.events'|trans }}</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
                     <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">{{ 'menu.conference_producers_workshop'|trans }}</a></li>
                     <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">{{ 'menu.conference_producers_network'|trans }}</a></li>
                 </ul>

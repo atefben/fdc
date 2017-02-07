@@ -13,13 +13,15 @@ class TransverseController extends Controller
     {
         $headerFooterManager = $this->get('mdf.manager.header_footer');
         $banner = $headerFooterManager->getHeaderBanner();
+        $availableMenu = $headerFooterManager->getMenuAvailability();
 
         return $this->render(
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
                 'banner' => $banner,
                 'routeName' => $routeName,
-                'routeParams' => $routeParams
+                'routeParams' => $routeParams,
+                'availableMenu' => $availableMenu
             ]
         );
     }

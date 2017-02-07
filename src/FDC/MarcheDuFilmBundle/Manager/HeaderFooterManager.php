@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use FDC\MarcheDuFilmBundle\Entity\HeaderFooter;
 use FDC\MarcheDuFilmBundle\Entity\HeaderFooterTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfMenuTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class HeaderFooterManager
@@ -43,5 +44,20 @@ class HeaderFooterManager
                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
                 ]
             );
+    }
+
+    public function getMenuAvailability()
+    {
+        $menuTranslation = $this->em
+            ->getRepository(MdfMenuTranslation::class)
+            ->findOneBy(
+                [
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                ]
+            );
+        if ($menuTranslation) {
+            return $menuTranslation->getTranslatable();
+        }
+        return null; 
     }
 }
