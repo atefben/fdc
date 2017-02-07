@@ -3122,6 +3122,8 @@ video {
 }
 .three-quarts-div .title-8 {
   width: 325px;
+  position: relative;
+  top: 1px;
 }
 .three-quarts-div .small-push.half-div .title-8 {
   width: 295px;
@@ -7627,6 +7629,7 @@ footer {
   padding: 40px 0 0 0;
   position: relative;
   z-index: 2;
+  padding-top: 46px;
 }
 footer .title {
   margin-bottom: 15px;
