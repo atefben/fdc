@@ -409,6 +409,8 @@ html {
 
 .jwplayer.jw-skin-fdc {
   height: 9rem; }
+  .jwplayer.jw-skin-fdc .jw-icon-volume {
+    display: none !important; }
   .jwplayer.jw-skin-fdc .jw-icon-fullscreen {
     display: none; }
   .jwplayer.jw-skin-fdc .jw-time-tip {
@@ -462,7 +464,7 @@ html {
     overflow: hidden;
     width: 85%;
     float: right; }
-  .jwplayer.jw-skin-fdc .jw-controlbar-left-group { 
+  .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
     background-size: 1.8rem; }
   .jwplayer.jw-skin-fdc .jw-display-icon-container .jw-icon-display {

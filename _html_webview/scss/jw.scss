@@ -7,7 +7,7 @@
 			margin-left: 10.3rem;
 		}
 		.jw-icon-playback {
-			background: url(../../img/article/videoPlayer/pause.png) no-repeat 2rem 3rem;
+			background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
 			background-position: 2rem center;
 			background-size: 1.2rem;
 			left: 3.7rem;
@@ -44,6 +44,7 @@
 		&-skin-fdc {
 			height: 9rem;
 
+			.jw-icon-volume {display: none!important }
 			.jw {
 				&-icon-fullscreen {
 					display: none;
