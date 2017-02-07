@@ -242,7 +242,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('displayedMobile', true)
             ->andWhere('n.festival = :festival')
             ->setParameter('festival', $festival)
-            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt <= :now)')
+            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('since', $since)
             ->setParameter('now', $now)
             ->andWhere(

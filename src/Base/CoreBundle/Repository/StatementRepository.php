@@ -687,7 +687,7 @@ class StatementRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->andWhere('s.slug = :site')
             ->setParameter('site', 'site-press')
-            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt <= :now)')
+            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('since', $since)
             ->setParameter('now', $now)
             ->andWhere(

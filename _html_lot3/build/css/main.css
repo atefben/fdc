@@ -7106,6 +7106,8 @@ header.sticky #sticky-user .user-nav a.search {
 }
 header.sticky #sticky-user .user-nav a.search .icon {
   font-size: .7rem;
+  position: relative;
+  top: 1px;
 }
 header.sticky #sticky-user .user-nav a {
   transform: translateZ(0);
@@ -7183,11 +7185,12 @@ header .user-nav li a.language {
   background-size: 20px;
   margin-right: 0;
   position: relative;
-  top: .5px;
 }
 header .user-nav li a.language .icon {
-  font-size: .85rem;
+  font-size: .87rem;
   vertical-align: bottom;
+  position: relative;
+  top: 1.5px;
 }
 header .user-nav li a.language:hover {
   opacity: 1;
@@ -7604,6 +7607,11 @@ header #navigation ul.user li a .icon.icon-espace-presse {
 .b-timer .c-icon {
   color: #c8a461;
   cursor: pointer;
+}
+.b-timer .c-icon .icon {
+  position: relative;
+  top: 8px;
+  right: 24px;
 }
 
 footer * {

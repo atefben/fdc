@@ -4657,7 +4657,9 @@ var openSlideShow = function (slider, hash) {
 
     thumbs = thumbnails.find(".thumb");
 
-    thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    if(images.length > 6) {
+        thumbnailsSlide.trigger('to.owl.carousel', [centerElement, 400, true]);
+    }
 
     $(thumbs).removeClass('active');
     $(thumbs[centerElement]).addClass('active');
