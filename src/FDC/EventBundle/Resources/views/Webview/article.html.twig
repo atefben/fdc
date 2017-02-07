@@ -69,7 +69,7 @@
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('d/m/y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
-          <span class="Article-header-meta-misc"><strong>Le jury 2016</strong> </span>{{ dump(object) }}
+          <span class="Article-header-meta-misc"><strong>Le jury 2016</strong> </span>{{ object.header|trans_fallback('copyright') }}
         </div>
       </header>
       <div class="Article-content">
