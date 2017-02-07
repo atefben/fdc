@@ -104,7 +104,7 @@
                 {% include 'FDCEventBundle:Webview:widget/dual-photo.html.twig' %}
             {% endif %}
         {% endfor %}
-        {{ 'webview.article.signature_prefix'|trans }} {{ object|trans_fallback('signature') }}
+        {{ 'webview.article.signature_prefix'|trans }} {{ object.signature }}
       </div>
       <!--div class="Article-push">
         <div class="Article-push-image">
