@@ -76,8 +76,15 @@
   display: inline-block;
   vertical-align: top;
 
+
   .title-8 {
     width: 325px;
+  }
+
+  .small-push.half-div {
+    .title-8 {
+      width: 295px;
+    }
   }
 }
 
