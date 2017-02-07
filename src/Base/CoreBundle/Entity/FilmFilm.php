@@ -701,6 +701,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function getCredits($avoidRemoveMultipleFunctions = false)
     {
+        $done = [];
         $collection = new ArrayCollection();
         if ($this->getPersons()->count() > 0) {
             foreach ($this->getPersons() as $person) {
@@ -709,13 +710,17 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                         if ($personFunction->getFunction() &&
                             $personFunction->getFunction()->getId() != FilmFunctionInterface::FUNCTION_ACTOR
                         ) {
-                            $clone = clone $person;
-                            $functions = new ArrayCollection();
-                            foreach ($person->getFunctions() as $function) {
-                                $functions->add($function);
+                            $valueDone = $person->getId();
+                            if (!in_array($valueDone, $done)) {
+                                $clone = clone $person;
+                                $functions = new ArrayCollection();
+                                foreach ($person->getFunctions() as $function) {
+                                    $functions->add($function);
+                                }
+                                $clone->setFunctions($functions);
+                                $collection->add($clone);
+                                $done[] = $valueDone;
                             }
-                            $clone->setFunctions($functions);
-                            $collection->add($clone);
                         }
                     }
                 }
