@@ -162,7 +162,7 @@
                     <div class="info">
                       <div class="vCenter">
                         <div class="vCenterKid">
-                          <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                          <!--<a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>-->
                           <p>The Lobster</p>
                         </div>
                       </div>

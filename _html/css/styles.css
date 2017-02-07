@@ -7312,6 +7312,9 @@ video {
   overflow: hidden;
   width: 630px;
   height: calc(630px / 1.58);
+  text-align: center !important;
+  margin: 0 auto !important;
+  padding-bottom: 20px !important;
 }
 .video-container button {
   background: none;
