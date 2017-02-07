@@ -17,9 +17,6 @@
 
   {% elseif object.imageAmazonUrl != null %}
     {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
-  {% else %}
-    {% set trans = object.findTranslationByLocale(app.request.locale) %}
-    {% set cover_image = trans.translatable.header|trans_fallback('file') %}
   {% endif %}
 {% endif %}
 <!DOCTYPE html>
