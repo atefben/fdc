@@ -85,3 +85,13 @@ header #navigation ul li a.golden.active {
         min-height: inherit !important;
     }
 }
+
+em {
+  font-style: italic;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+  margin-left: 5px;
+}
