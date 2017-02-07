@@ -39,8 +39,8 @@
             <div class="bigContainer">
                 <ul class="tabs">
                     {% set found = false %}
-                    {% for widget in serviceWidgets %}
-                        <li class="{% if (serviceWidgets|first).id == widget.id and not found %} {% set found = true %}active{% endif %} quarterTab" rel="tab{{ widget.translatable.id }}"><h4>{{ widget.title }}</h4>{{ widget.subTitle }}</li>
+                    {% for widgetId, widget in serviceWidgets %}
+                        <li class="{% if (serviceWidgets|first).id == widget.id and not found %} {% set found = true %}active{% endif %} quarterTab" rel="tab{{ widgetId }}"><h4>{{ widget.title }}</h4>{{ widget.subTitle }}</li>
                     {% endfor %}
                 </ul>
             </div>
@@ -48,9 +48,10 @@
     {% endif %}
         <div class="whiteBckg">
             <div class="tab_container ">
-                {% for widgetId, serviceProducts in serviceWidgetProducts %}
+                {% for widgetId, serviceProducts in serviceWidgets %}
                     <div id="tab{{ widgetId }}" class="tab_content">
-                        {% for key, product in serviceProducts %}
+                        {% set index = loop.index %}
+                        {% for product in serviceWidgetProducts[widgetId] %}
                             <div class="minTab{% if not product.translatable.gallery or not product.translatable.gallery.medias.count() %} nopicTab{% endif %}">
                                 {% if product.translatable.gallery and product.translatable.gallery.medias.count() > 1 %}
                                     <div class="tabPic">
@@ -78,7 +79,7 @@
                                         <p>{{ product.body }}</p>
                                     </div>
                                     {% if product.toggledBody is not null and product.toggledBody|length > 0 %}
-                                        <input type="checkbox" class="read-more-state" id="post-{{ key~product.id }}" style="opacity:0;"/>
+                                        <input type="checkbox" class="read-more-state" id="post-{{ widgetId~product.id }}" style="opacity:0;"/>
                                         <div class="read-more-wrap">
                                             <div class="read-more-target">
                                                 {# Formated in BO #}
@@ -89,7 +90,8 @@
                                         <i class='icon icon_flecheGauche opportuniteArrow customClass2'></i>
                                     {% endif %}
                                     {% if product.url is not null and product.url|length > 0 %}
-                                        <label for="post-{{ key~product.id }}" class="read-more-trigger"><a href="{{ product.url }}" target="_blank"><div  class="blueBtn customClass2 customClass2Border customClass2BckgColorHover">{{ 'book_service'|trans }}</div></a></label>
+                                        <label for="post-{{ widgetId~product.id }}" class="read-more-trigger"><a href="{{ product.url }}" target="_blank"><div  class="blueBtn
+                                        customClass2 customClass2Border customClass2BckgColorHover">{{ 'book_service'|trans }}</div></a></label>
                                     {% endif %}
                                 </div>
                             </div>
