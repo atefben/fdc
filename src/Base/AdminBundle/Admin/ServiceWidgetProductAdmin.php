@@ -65,10 +65,7 @@ class ServiceWidgetProductAdmin extends Admin
                     'url'          => array(
                         'label'              => 'form.mdf.label.service_widget_product_url',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'title'        => array(
                         'label'              => 'form.mdf.label.service_widget_product_title',
@@ -81,18 +78,12 @@ class ServiceWidgetProductAdmin extends Admin
                     'grayText'     => array(
                         'label'              => 'form.mdf.label.service_widget_product_gray_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'colorText'     => array(
                         'label'              => 'form.mdf.label.service_widget_product_color_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'body'         => array(
                         'label'              => 'form.mdf.label.service_widget_product_body',
@@ -105,10 +96,7 @@ class ServiceWidgetProductAdmin extends Admin
                     'toggledBody'  => array(
                         'label'              => 'form.mdf.label.service_widget_product_toggled_body',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
