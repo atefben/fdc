@@ -934,18 +934,17 @@ form:
             service:
                 url_help: Please provide the last part of URL (http://.../{this part})
         charte_graphique_annuelle:
-            image1: Fond 1
-            image2: Fond 2
-            image3: Fond 3
-            image4: Fond 4
-            color1: Couleur 1
-            color2: Couleur 2
-            color3: Couleur 3
-            color4: Couleur 4
-            color5: Couleur 5
-            color6: Couleur 6
-            color7: Couleur 7
-            color8: Couleur 8
+            image1: Fond n°2
+            image2: Fond n°5
+            image3: Fond n°8
+            image4: Fond n°10
+            color1: Coleur n°1
+            color2: Coleur n°7
+            color3: Coleur n°6
+            color4: Coleur n°9
+            color5: Coleur n°3
+            color6: Coleur n°4
+            color7: Coleur n°11
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

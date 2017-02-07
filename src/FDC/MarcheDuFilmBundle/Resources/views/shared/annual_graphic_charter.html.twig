@@ -1,31 +1,4 @@
 <style>
-    .speakersBox .fromCountry {
-        color: {{ graphicCharter.color4 }} !important;
-    }
-    .presses .subNavigation .active {
-        color: {{ graphicCharter.color4 }} !important;
-    }
-    .pressReview .articles .articles-content .article-date {
-        color: {{ graphicCharter.color4 }} !important;
-    }
-    .contact .coords h3, .contact .success h3 {
-        color: {{ graphicCharter.color4 }} !important;
-    }
-    .contact #form input[type="submit"] {
-        border-color: {{ graphicCharter.color4 }} !important;
-        color: {{ graphicCharter.color4 }} !important;
-    }
-    #our-services .services-boxes:hover {
-        background: {{ graphicCharter.color2 }} !important;
-        color: #FFFFFF !important;
-    }
-    #accordion-menu .open-selected {
-        background-color: {{ graphicCharter.color6 }} !important;
-        color: {{ graphicCharter.color5 }} !important;
-    }
-    .customClass2Border {
-        border: 1px solid {{ graphicCharter.color2 }} !important;
-    }
     .customClass1 {
         color: {{ graphicCharter.color1 }} !important;
     }
@@ -35,18 +8,15 @@
     .customClass1BckgColorHover:hover {
         background-color: {{ graphicCharter.color1 }} !important;
     }
-    .projection .programme:hover div:nth-child(3).customClass1BckgColorHover {
-        background-color: {{ graphicCharter.color1 }} !important;
-    }
-    .customClass1 a:link {
-        color: {{ graphicCharter.color1 }} !important;
-    }
     .customClass2 {
         color: {{ graphicCharter.color2 }} !important;
     }
     .customClass2:hover {
         background: {{ graphicCharter.color2 }} !important;
         color: white !important;
+    }
+    .customClass2Border {
+        border: 1px solid {{ graphicCharter.color2 }} !important;
     }
     .customClass3 {
         color: {{ graphicCharter.color3 }} !important;
@@ -164,4 +134,34 @@
         background: url({% path graphicCharter.backgroundImage4|trans_fallback('file'), 'reference' %}) !important;
     }
 
+    .speakersBox .fromCountry {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .presses .subNavigation .active {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .pressReview .articles .articles-content .article-date {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .contact .coords h3, .contact .success h3 {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .contact #form input[type="submit"] {
+        border-color: {{ graphicCharter.color4 }} !important;
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    #our-services .services-boxes:hover {
+        background: {{ graphicCharter.color2 }} !important;
+        color: #FFFFFF !important;
+    }
+    #accordion-menu .open-selected {
+        background-color: {{ graphicCharter.color6 }} !important;
+        color: {{ graphicCharter.color5 }} !important;
+    }
+    .projection .programme:hover div:nth-child(3).customClass1BckgColorHover {
+        background-color: {{ graphicCharter.color1 }} !important;
+    }
+    .customClass1 a:link {
+        color: {{ graphicCharter.color1 }} !important;
+    }
 </style>
