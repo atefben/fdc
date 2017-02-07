@@ -1,4 +1,31 @@
 <style>
+    .speakersBox .fromCountry {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .presses .subNavigation .active {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .pressReview .articles .articles-content .article-date {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .contact .coords h3, .contact .success h3 {
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    .contact #form input[type="submit"] {
+        border-color: {{ graphicCharter.color4 }} !important;
+        color: {{ graphicCharter.color4 }} !important;
+    }
+    #our-services .services-boxes:hover {
+        background: {{ graphicCharter.color2 }} !important;
+        color: #FFFFFF !important;
+    }
+    #accordion-menu .open-selected {
+        background-color: {{ graphicCharter.color6 }} !important;
+        color: {{ graphicCharter.color5 }} !important;
+    }
+    .customClass2Border {
+        border: 1px solid {{ graphicCharter.color2 }} !important;
+    }
     .customClass1 {
         color: {{ graphicCharter.color1 }} !important;
     }
@@ -15,22 +42,32 @@
         color: {{ graphicCharter.color1 }} !important;
     }
     .customClass2 {
-        color: {{ graphicCharter.color2 }};
+        color: {{ graphicCharter.color2 }} !important;
+    }
+    .customClass2:hover {
+        background: {{ graphicCharter.color2 }} !important;
+        color: white !important;
     }
     .customClass3 {
-        color: {{ graphicCharter.color3 }};
+        color: {{ graphicCharter.color3 }} !important;
     }
     .customClass4 {
-        color: {{ graphicCharter.color4 }};
+        color: {{ graphicCharter.color4 }} !important;
     }
     .customClass5 {
-        color: {{ graphicCharter.color5 }};
+        color: {{ graphicCharter.color5 }} !important;
+    }
+    .customClass5BckgColor {
+        background: {{ graphicCharter.color5 }} !important;
     }
     .customClass6 {
-        color: {{ graphicCharter.color6 }};
+        color: {{ graphicCharter.color6 }} !important;
     }
-    .customClass7 {
-        color: {{ graphicCharter.color7 }};
+    .customClass6BckgColor {
+        background: {{ graphicCharter.color6 }} !important;
+    }
+    .customClass7BckgColor {
+        background: {{ graphicCharter.color7 }} !important;
     }
     .customClass1Bckg {
         background: url({% path graphicCharter.backgroundImage1|trans_fallback('file'), 'reference' %});
