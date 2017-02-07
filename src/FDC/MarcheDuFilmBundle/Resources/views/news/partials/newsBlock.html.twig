@@ -34,7 +34,7 @@
                         {% else %}
                             {% set description = newsDecription %}
                         {% endif %}
-                        {{ description|raw }}
+                        <p>{{ description|striptags|convert_encoding('UTF-8', 'HTML-ENTITIES') }}</p>
                     </div>
                 </div>
             </a>
