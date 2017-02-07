@@ -21,7 +21,21 @@
                     <span>{{ 'display'|trans }}</span>
                     <div id="eventSelector">
                         {% for key, item in conferences %}
-                            <div class="selectText" id="{{ key }}">{{ item|trans }}{% if loop.last ==false %},{% endif %}</div>
+                            {% set conferenceTitle = '' %}
+                            {% if item == 'form.mdf.label.conference_producers_workshop' %}
+                                {% set conferenceTitle = 'conference_title.producers_workshop'|trans %}
+                            {% elseif item == 'form.mdf.label.conference_producers_network' %}
+                                {% set conferenceTitle = 'conference_title.producers_network'|trans %}
+                            {% elseif item == 'form.mdf.label.conference_doc_corner' %}
+                                {% set conferenceTitle = 'conference_title.doc_corner'|trans %}
+                            {% elseif item == 'form.mdf.label.conference_next' %}
+                                {% set conferenceTitle = 'conference_title.next'|trans %}
+                            {% elseif item == 'form.mdf.label.conference_mixers' %}
+                                {% set conferenceTitle = 'conference_title.mixers'|trans %}
+                            {% elseif item == 'form.mdf.label.conference_goes_to_cannes' %}
+                                {% set conferenceTitle = 'conference_title.goes_to_cannes'|trans %}
+                            {% endif %}
+                            <div class="selectText" id="{{ key }}">{{ conferenceTitle }}{% if loop.last ==false %},{% endif %}</div>
                         {% endfor %}
                     </div>
                     <div class="dropArrow">
@@ -31,7 +45,21 @@
                 <div class="selector">
                     <div class="purpleBtn selectbtn confBtn customClass1" id="all">{{ 'filter_all'|trans }}</div>
                     {% for key, item in conferences %}
-                        <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ key|replace({'-': ' '}) }}</div>
+                        {% set conferenceTitle = '' %}
+                        {% if item == 'form.mdf.label.conference_producers_workshop' %}
+                            {% set conferenceTitle = 'conference_title.producers_workshop'|trans %}
+                        {% elseif item == 'form.mdf.label.conference_producers_network' %}
+                            {% set conferenceTitle = 'conference_title.producers_network'|trans %}
+                        {% elseif item == 'form.mdf.label.conference_doc_corner' %}
+                            {% set conferenceTitle = 'conference_title.doc_corner'|trans %}
+                        {% elseif item == 'form.mdf.label.conference_next' %}
+                            {% set conferenceTitle = 'conference_title.next'|trans %}
+                        {% elseif item == 'form.mdf.label.conference_mixers' %}
+                            {% set conferenceTitle = 'conference_title.mixers'|trans %}
+                        {% elseif item == 'form.mdf.label.conference_goes_to_cannes' %}
+                            {% set conferenceTitle = 'conference_title.goes_to_cannes'|trans %}
+                        {% endif %}
+                        <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ conferenceTitle }}</div>
                     {% endfor %}
                 </div>
                 <div class="conferencesMenu">
