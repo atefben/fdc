@@ -4957,6 +4957,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: center;
   padding: 0px;
   padding: 0px 10px;
+  min-width: 178px;
+  box-sizing: border-box;
 }
 
 .block-s-info-02 {
