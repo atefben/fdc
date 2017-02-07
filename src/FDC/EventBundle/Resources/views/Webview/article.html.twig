@@ -148,13 +148,15 @@
           {% endif %}
           <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
-            {% if associatedNews.header.file is null %}
-              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
-            {% else %}
-              <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
+            {% if associatedNews.header is not null %}
+              {% if associatedNews.header.file is null %}
+                <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
+              {% else %}
+                <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
+              {% endif %}
             {% endif %}
-              
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
+              }
             </div>
             <div class="Article-related-slider-caption">
               <h4>{{ associatedNews.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
