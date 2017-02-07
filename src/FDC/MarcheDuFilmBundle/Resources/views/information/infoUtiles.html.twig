@@ -21,13 +21,14 @@
                 {% if infoRubriques is defined and infoRubriques is not null%}
                     {% for rubrique in infoRubriques %}
                         {% if infoQuestionsAnswers[rubrique.translatable.id] is defined and infoQuestionsAnswers[rubrique.translatable.id] is not null %}
+                            {% set rubriqueIndex = loop.index %}
                             <div class="{{ rubrique.translatable.id }} contents {% if (infoRubriques|first).id == rubrique.id %}activeContent{% endif %}">
                                 <div class="accordion-infos">
                                     <ul>
                                         {% for questionAnswer in infoQuestionsAnswers[rubrique.translatable.id] %}
-                                            <li {% if questionAnswer.questionText|length > 76 %}class="bigLi"{% endif %}>
-                                                <div class="open"><h5>{{ questionAnswer.questionText }}</h5><span class="openPlus">+</span><span class="openMinus">-</span></div>
-                                                <div class="content">
+                                            <li id="rubrique-{{ rubriqueIndex }}-{{ loop.index }}" {% if questionAnswer.questionText|length > 76 %}class="bigLi"{% endif %}>
+                                                <div class="open"><h5>{{ questionAnswer.questionText }}</h5><span id="rubrique-plus-{{ rubriqueIndex }}-{{ loop.index }}" class="openPlus">+</span><span id="rubrique-minus-{{ rubriqueIndex }}-{{ loop.index }}" class="openMinus">-</span></div>
+                                                <div id="rubrique-content-{{ rubriqueIndex }}-{{ loop.index }}" class="content">
                                                     {{ questionAnswer.answerText|raw }}
                                                 </div>
                                             </li>
