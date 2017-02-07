@@ -33,8 +33,12 @@
                             </div>
                             <div class="textWrapper">
                                 <h6 class="customClass4">{{ whoAreWeTeamWidget.name }}</h6>
-                                <span>{{ whoAreWeTeamWidget.post }}
-                              {% if whoAreWeTeamWidget.email is not empty %}<br><a href="mailto:{{ whoAreWeTeamWidget.email }}" class="customClass1">{{ whoAreWeTeamWidget.email }}</a>{% endif %}</span>
+                                <span class="customClass1">{{ whoAreWeTeamWidget.post }}
+                                {% if whoAreWeTeamWidget.email is not empty %}
+                                    <br>
+                                    <a href="mailto:{{ whoAreWeTeamWidget.email }}">{{ whoAreWeTeamWidget.email }}</a>
+                                {% endif %}
+                                </span>
                                 {% if whoAreWeTeamWidget.phone is not empty %}<br><span class="teamTel">{{ whoAreWeTeamWidget.phone }}</span>{% endif %}
                             </div>
                         </div>
