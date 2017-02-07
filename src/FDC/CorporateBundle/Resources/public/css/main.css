@@ -3299,6 +3299,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-push.half-div .title-2 {
   letter-spacing: 4px;
+  font-weight: normal;
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
   .block-push.half-div {
