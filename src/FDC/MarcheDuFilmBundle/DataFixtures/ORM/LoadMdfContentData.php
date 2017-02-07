@@ -345,6 +345,10 @@ class LoadMdfContentData implements FixtureInterface
             $sliderAccreditation = new \FDC\MarcheDuFilmBundle\Entity\MdfSliderAccreditationPage();
             $manager->persist($sliderAccreditation);
         }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfMenu::class)->findAll()) == 0) {
+            $menu = new \FDC\MarcheDuFilmBundle\Entity\MdfMenu();
+            $manager->persist($menu);
+        }
 
         $manager->flush();
     }

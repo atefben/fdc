@@ -2325,3 +2325,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Slider Accreditation, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.mdf_menu:
+        class: Base\AdminBundle\Admin\MdfMenuAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfMenu, BaseAdminBundle:MdfMenuAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Configure Menu}
