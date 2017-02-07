@@ -44,26 +44,14 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                     new NotBlank(),
                 ),
             ))
-            ->add('color2', null, array(
-                'label' => 'form.mdf.charte_graphique_annuelle.color2',
+            ->add('backgroundImage1', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.charte_graphique_annuelle.image1',
                 'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
                 'constraints'        => array(
                     new NotBlank(),
                 ),
-            ))
-            ->add('color3', null, array(
-                'label' => 'form.mdf.charte_graphique_annuelle.color3',
-                'translation_domain' => 'BaseAdminBundle',
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
-            ))
-            ->add('color4', null, array(
-                'label' => 'form.mdf.charte_graphique_annuelle.color4',
-                'translation_domain' => 'BaseAdminBundle',
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
+                'required' => true
             ))
             ->add('color5', null, array(
                 'label' => 'form.mdf.charte_graphique_annuelle.color5',
@@ -79,22 +67,6 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                     new NotBlank(),
                 ),
             ))
-            ->add('color7', null, array(
-                'label' => 'form.mdf.charte_graphique_annuelle.color7',
-                'translation_domain' => 'BaseAdminBundle',
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
-            ))
-            ->add('backgroundImage1', 'sonata_type_model_list', array(
-                'label' => 'form.mdf.charte_graphique_annuelle.image1',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
-                'required' => true
-            ))
             ->add('backgroundImage2', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.charte_graphique_annuelle.image2',
                 'translation_domain' => 'BaseAdminBundle',
@@ -104,6 +76,20 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                 ),
                 'required' => true
             ))
+            ->add('color3', null, array(
+                'label' => 'form.mdf.charte_graphique_annuelle.color3',
+                'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+            ))
+            ->add('color2', null, array(
+                'label' => 'form.mdf.charte_graphique_annuelle.color2',
+                'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+            ))
             ->add('backgroundImage3', 'sonata_type_model_list', array(
                 'label' => 'form.mdf.charte_graphique_annuelle.image3',
                 'translation_domain' => 'BaseAdminBundle',
@@ -112,6 +98,29 @@ class MdfAnnualGraphicCharterAdmin extends Admin
                     new NotBlank(),
                 ),
                 'required' => true
+            ))
+            ->add('color4', null, array(
+                'label' => 'form.mdf.charte_graphique_annuelle.color4',
+                'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+            ))
+            ->add('backgroundImage4', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.charte_graphique_annuelle.image4',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+                'required' => true
+            ))
+            ->add('color7', null, array(
+                'label' => 'form.mdf.charte_graphique_annuelle.color7',
+                'translation_domain' => 'BaseAdminBundle',
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
             ))
         ;
     }

@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="text-presentation greyBckg minPadding">
-            <div class="bigContainer">
+            <div class="bigContainer customClass1">
                 {# Formated in BO #}
                 {{ globalEventsPage.body|raw }}
                 {# End #}
@@ -29,7 +29,7 @@
                     </div>
                 </div><br>
                 <div class="selector">
-                    <div class="purpleBtn selectbtn confBtn customClass1" id="all">{{ 'filter_all'|trans }}</div>
+                    <div class="purpleBtn selectbtn confBtn" id="all">{{ 'filter_all'|trans }}</div>
                     {% for key, item in conferences %}
                         <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ key|replace({'-': ' '}) }}</div>
                     {% endfor %}
