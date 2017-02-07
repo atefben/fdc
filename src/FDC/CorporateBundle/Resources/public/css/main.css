@@ -1886,6 +1886,15 @@ blockquote, .quote {
   font-size: 1rem;
   color: #666666;
   line-height: 30px;
+  /* strong {
+     font-size: .75rem;
+     color: #0c0c0c;
+     font-family: $CamphorBold;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     margin-bottom: 24px;
+     display: block;
+   }*/
 }
 .quote-important a, .p-register .info a {
   color: #c8a461;
@@ -1895,13 +1904,13 @@ blockquote, .quote {
   opacity: .8;
 }
 .quote-important strong, .p-register .info strong {
-  font-size: .75rem;
-  color: #0c0c0c;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-  display: block;
+  display: initial;
+  font-size: 1rem;
+  font-size: 1rem;
+  /* color: #666666; */
+  line-height: 30px;
+  font-weight: normal;
+  letter-spacing: 0px;
 }
 
 .quote-02 {
