@@ -104,7 +104,7 @@
                 {% include 'FDCEventBundle:Webview:widget/dual-photo.html.twig' %}
             {% endif %}
         {% endfor %}
-        {{ 'webview.article.signature_prefix'|trans }} {{ dump(object) }}
+        {{ 'webview.article.signature_prefix'|trans }} {{ object|trans_fallback('signature') }}
       </div>
       <!--div class="Article-push">
         <div class="Article-push-image">
@@ -156,7 +156,6 @@
               {% endif %}
             {% endif %}
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
-              }
             </div>
             <div class="Article-related-slider-caption">
               <h4>{{ associatedNews.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
