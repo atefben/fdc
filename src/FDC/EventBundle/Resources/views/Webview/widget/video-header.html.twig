@@ -1,4 +1,4 @@
-
+{{ image }}
 <a href="#" class="Article-video-play"><img src="{{ asset('bundles/fdcevent/img/article/Article-video-play.png') }}"/></a>
 <video preload="none" style="background-image: url({% path image , 'reference' %})">
 	<source src="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" type="video/mp4"/>
