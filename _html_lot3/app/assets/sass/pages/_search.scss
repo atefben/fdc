@@ -11,10 +11,10 @@
 
   .media-library & {
     .button-submit {
-      border: 1px solid #2c2c2c;
+      border: 1px solid $gold;
 
       &:hover {
-        border: 1px solid $gold;
+        opacity: .6;
       }
 
       .icon {
@@ -548,7 +548,7 @@
   font-size: 1rem;
   font-family: $CamphorBold;
   padding: 30px;
-  border: 1px solid #181818;
+  border: 1px solid #2c2c2c;
   border-top: 0px solid #fff;
 
   .brigth & {
