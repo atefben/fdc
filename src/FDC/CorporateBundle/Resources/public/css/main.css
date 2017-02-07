@@ -4921,6 +4921,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   transition: .5s;
   cursor: pointer;
   line-height: 18px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  padding-left: 40px;
 }
 .block-tab-switch table td:hover {
   cursor: pointer;
