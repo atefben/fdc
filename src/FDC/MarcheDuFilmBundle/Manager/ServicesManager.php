@@ -118,7 +118,7 @@ class ServicesManager
             $serviceWidgetProductCollectionRepo = $this->em->getRepository(ServiceWidgetProductCollection::class);
             $serviceWidgetProductRepo = $this->em->getRepository(ServiceWidgetProductTranslation::class);
 
-            foreach ($widgets as $widget) {
+            foreach ($widgets as $key => $widget) {
                 $translatableId = $widget->getTranslatable()->getId();
                 $productCollection = $serviceWidgetProductCollectionRepo
                     ->findBy(
@@ -128,7 +128,7 @@ class ServicesManager
                     );
 
                 if ($productCollection) {
-                    $productsCollection[$translatableId] = [];
+                    $productsCollection[$key] = [];
 
                     foreach ($productCollection as $productCollectionItem) {
                         $product = $serviceWidgetProductRepo
@@ -138,7 +138,7 @@ class ServicesManager
                             );
 
                         if ($product) {
-                            $productsCollection[$translatableId][] = $product;
+                            $productsCollection[$key][] = $product;
                         }
                     }
                 }
