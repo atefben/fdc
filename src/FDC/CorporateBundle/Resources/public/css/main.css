@@ -5243,6 +5243,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
   text-align: center;
   font-size: .75rem;
+  margin-top: 2px;
 }
 .block-contain-txt-register-movie p {
   font-size: 1rem;
