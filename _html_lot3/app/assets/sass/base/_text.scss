@@ -438,6 +438,16 @@ blockquote, .quote {
   }
 
   strong {
+    display: initial;
+    font-size: 1rem;
+    font-size: 1rem;
+    /* color: #666666; */
+    line-height: 30px;
+    font-weight: normal;
+    letter-spacing: 0px;
+  }
+
+ /* strong {
     font-size: .75rem;
     color: #0c0c0c;
     font-family: $CamphorBold;
@@ -445,7 +455,7 @@ blockquote, .quote {
     letter-spacing: 2px;
     margin-bottom: 24px;
     display: block;
-  }
+  }*/
 }
 
 .quote-02 {
