@@ -1,0 +1,48 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% set file = widget.file %}
+{% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+{% if file %}
+    {% set trans = file.findTranslationByLocale(app.request.locale) %}
+
+    {% if trans is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
+        {% set trans = file.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
+
+    {% set header = widget.file.image %}
+    {% if header is not null %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% endif %}
+{% endif %}
+{% if trans.jobMp3State == 3 and trans.mp3Url %}
+    <div class="audio-container"
+         data-link="{{ currentUrl }}"
+         data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+         data-img="{% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+         data-aid="{{ trans.id }}">
+        <div class="audio-player">
+            <div id="audio-player-{{ trans.id }}" class="audio-player-container"></div>
+            <div class="image" style="background-image: url({% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %});"></div>
+            <button class="play-btn play"><i class="icon icon_play"></i></button>
+            <div class="off">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <div class="picto"><i class="icon icon_audio"></i></div>
+                        <div class="info">
+                            <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span>
+                            <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(widget.file.publishedAt|date('H:i'), true, true) }}</span>
+                            <p>{{ trans.title }}</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="on"></div>
+        </div>
+    </div>
+{% endif %}
