@@ -1,6 +1,7 @@
 </div>
 {% trans_default_domain 'FDCEventBundle' %}
 
+{{ dump(widget) }}
 {% set file = widget.file %}
 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% if file %}
@@ -22,7 +23,6 @@
         {% set image = imageTrans.file %}
     {% endif %}
 {% endif %}
-{{ file }}
 <div class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
       data-title="Un certain regard<br/>sur le palmarès 2016" 
