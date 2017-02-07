@@ -15,12 +15,14 @@
               {% set imageTrans = header.findTranslationByLocale('fr') %}
           {% endif %}
       {% endif %}
+      {{ dump(object.video.image) }}
       {% set cover_image = imageTrans.file %}
   {% endif %}
 {% endif %}
 {% if (object.video != null or object.image != null or object.header != null) %}
   {% if object.image != null %}
     {% set cover_image = object.image|trans_fallback('file') %}
+    
   {% elseif object.imageAmazonUrl != null %}
     {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
   {% else %}
@@ -47,7 +49,6 @@
         {% elseif object is news_audio %}
           {% include 'FDCEventBundle:Webview:widget/audio.html.twig' with { 'widget':object } %}
         {% elseif object is news_video %}
-          {{ dump(cover_image) }}
           {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'video':object.video,'image':cover_image } %}
         {% elseif object is news_image %}
           {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias':object.gallery.medias } %}
