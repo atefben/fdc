@@ -38,8 +38,9 @@
         <div class="greyBckg">
             <div class="bigContainer">
                 <ul class="tabs">
+                    {% set found = false %}
                     {% for widget in serviceWidgets %}
-                        <li class="{% if (serviceWidgets|first).id == widget.id %}active{% endif %} quarterTab" rel="tab{{ widget.translatable.id }}"><h4>{{ widget.title }}</h4>{{ widget.subTitle }}</li>
+                        <li class="{% if (serviceWidgets|first).id == widget.id and not found %} {% set found = true %}active{% endif %} quarterTab" rel="tab{{ widget.translatable.id }}"><h4>{{ widget.title }}</h4>{{ widget.subTitle }}</li>
                     {% endfor %}
                 </ul>
             </div>
