@@ -10,12 +10,12 @@ $(document).ready(function() {
       var is_name = input.val();
       if(is_name){
         input.removeClass("invalid").addClass("valid");
-        $('.errors .' + input.attr('name')).remove();
+        $('.errors .' + input.data('name')).remove();
       }
       else{
         input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="' + input.attr('name') + '">' + input.data('error') + '</li>');
+        $('.errors .' + input.data('name')).remove();
+        $('.errors ul').append('<li class="' + input.data('name') + '">' + input.data('error') + '</li>');
       }
 
       if($('.invalid').length) {
@@ -48,8 +48,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.selectOptions span', function() {
-      var i = parseInt($(this).index()) + 1;
-      $('select option').eq(i).prop('selected', 'selected');
+      $('select[data-name="select"]').val($(this).data('select'));
       $('.select').removeClass('invalid');
     });
 
@@ -60,12 +59,12 @@ $(document).ready(function() {
       var is_email=re.test(input.val());
       if(is_email){
         input.removeClass("invalid").addClass("valid");
-        $('.errors .' + input.attr('name')).remove();
+        $('.errors .' + input.data('name')).remove();
       }
       else{
         input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="' + input.attr('name') + '">' + input.data('error') + '</li>');
+        $('.errors .' + input.data('name')).remove();
+        $('.errors ul').append('<li class="' + input.data('name') + '">' + input.data('error') + '</li>');
       }
 
       if($('.invalid').length) {

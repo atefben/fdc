@@ -55,24 +55,26 @@ class MailerManager
                 )
             );
 
-        $message = \Swift_Message::newInstance();
-        $message
-            ->setSubject($emailData['object'])
-            ->setFrom($this->translator->trans('email.from'))
-            ->setTo($emailData['emailTo'])
-            ->setBody(
-                $this->templating->render(
-                    'FDCMarcheDuFilmBundle::emails/contact.html.twig',
-                    array(
-                        'message' => $emailData['message'],
-                        'theme' => $theme->getContactTheme(),
-                        'name' => $emailData['name'],
-                        'email' => $emailData['emailFrom']
-                    )
-                ),
-                'text/html'
-            );
-        
-        $this->mailer->send($message);
+        if ($theme) {
+            $message = \Swift_Message::newInstance();
+            $message
+                ->setSubject($emailData['object'])
+                ->setFrom($this->translator->trans('email.from'))
+                ->setTo($emailData['emailTo'])
+                ->setBody(
+                    $this->templating->render(
+                        'FDCMarcheDuFilmBundle::emails/contact.html.twig',
+                        array(
+                            'message' => $emailData['message'],
+                            'theme' => $theme->getContactTheme(),
+                            'name' => $emailData['name'],
+                            'email' => $emailData['email']
+                        )
+                    ),
+                    'text/html'
+                );
+
+            $this->mailer->send($message);
+        }
     }
 }
