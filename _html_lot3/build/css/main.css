@@ -10044,6 +10044,11 @@ body#home .isotope-01 .item .contain-img {
 .slider-restropective.block-push {
   -webkit-transform: translate3d(0, 0, 0);
 }
+@-moz-document url-prefix() {
+  .slider-restropective.block-push {
+    transition: linear 0.3s;
+  }
+}
 .portrait.mobile .slider-restropective {
   width: 100.5vw;
 }

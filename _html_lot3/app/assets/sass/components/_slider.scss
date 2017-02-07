@@ -490,6 +490,11 @@
 
   &.block-push {
     -webkit-transform: translate3d(0, 0, 0);
+
+    @-moz-document url-prefix() {
+      transition: linear 0.3s;
+    }
+
   }
 
   .portrait.mobile & {
