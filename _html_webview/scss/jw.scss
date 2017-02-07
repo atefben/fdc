@@ -7,7 +7,7 @@
 			margin-left: 10.3rem;
 		}
 		.jw-icon-playback {
-			background: url(../img/article/videoPlayer/pause.png) no-repeat 2rem 3rem;
+			background: url(../../img/article/videoPlayer/pause.png) no-repeat 2rem 3rem;
 			background-position: 2rem center;
 			background-size: 1.2rem;
 			left: 3.7rem;
@@ -107,7 +107,7 @@
 
 				&-icon-playback {
 
-					background: url(../img/article/audioPlayer/play.png) no-repeat 2rem 3rem;
+					background: url(../../img/article/audioPlayer/play.png) no-repeat 2rem 3rem;
 					background-size: 1.8rem;
 
 					&:before {
@@ -128,14 +128,14 @@
 				}
 
 				&-controlbar-left-group {
-					background: url(../img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
+					background: url(../../img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
 					background-size: 1.8rem;
 				}
 
 				&-display-icon-container {
 					.jw-icon-display {
 						text-align: left;
-						background: url(../img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
+						background: url(../../img/article/audioPlayer/mic.png) no-repeat 2rem 3rem;
 						background-size: 1.8rem;
 
 						&:before {
@@ -143,7 +143,7 @@
 							width: 1.2rem;
 							height: 1.9rem;
 							display: inline-block;
-							background: url(../img/article/audioPlayer/play.png) no-repeat left top;
+							background: url(../../img/article/audioPlayer/play.png) no-repeat left top;
 							background-size: 100%;
 							vertical-align: top;
 							margin-top: .5rem;

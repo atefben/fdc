@@ -35,7 +35,7 @@ html {
 				width: 100%;
 				height: 100%;
 				position: absolute;
-				background: url(../img/article/video-play-btn.png) no-repeat center;
+				background: url(../../img/article/video-play-btn.png) no-repeat center;
 				background-size: 2.2rem;
 				z-index: 1;
 			}
@@ -93,7 +93,7 @@ html {
 
 		&-meta {
 			display: block;
-			height: 18px;
+			height: auto;
 			line-height: 18px;
 			font-size: 0.8rem;
 
@@ -193,7 +193,7 @@ html {
 			position: absolute;
 			width: 21px;
 			height: 40px;
-			background: url(../img/article/slider-prev.png) no-repeat top left;
+			background: url(../../img/article/slider-prev.png) no-repeat top left;
 			background-size: 100%;
 			z-index: 1;
 			top: 50%;
@@ -202,7 +202,7 @@ html {
 		}
 
 		 &-next {
-		 	background: url(../img/article/slider-next.png) no-repeat top left;
+		 	background: url(../../img/article/slider-next.png) no-repeat top left;
 		 	background-size: 100%;
 		 	left: auto;
 		 	right: 0;
@@ -353,7 +353,7 @@ html {
 							width: 100%;
 							height: 100%;
 							display: block;
-							background: url(../img/article/icons/Article.svg) no-repeat left top;
+							background: url(../../img/article/icons/Article.svg) no-repeat left top;
 							background-size: 100%;
 							position: absolute; 
 							top: 0;
@@ -365,7 +365,7 @@ html {
 							width: 100%;
 							height: 100%;
 							display: block;
-							background: url(../img/article/icons/Audio.svg) no-repeat left top;
+							background: url(../../img/article/icons/Audio.svg) no-repeat left top;
 							background-size: 100%;
 							position: absolute; 
 							top: 0;
@@ -377,7 +377,7 @@ html {
 							width: 100%;
 							height: 100%;
 							display: block;
-							background: url(../img/article/icons/Photo.svg) no-repeat left top;
+							background: url(../../img/article/icons/Photo.svg) no-repeat left top;
 							background-size: 100%;
 							position: absolute; 
 							top: 0;
@@ -389,7 +389,7 @@ html {
 							width: 100%;
 							height: 100%;
 							display: block;
-							background: url(../img/article/icons/Video.svg) no-repeat left top;
+							background: url(../../img/article/icons/Video.svg) no-repeat left top;
 							background-size: 100%;
 							position: absolute; 
 							top: 0;
