@@ -1,0 +1,9 @@
+{
+  "name": "ohwee_fdc_webviews",
+  "version": "1.0.0",
+  "author": "Ohwee - thomon",
+  "private": true,
+  "devDependencies": {
+    "gulp-sass": "^2.1.0"
+  }
+}
