@@ -18,7 +18,7 @@
                     <div class="bigContainer">
                         <ul class="tabs">
                             {% for tab in speakersTabs %}
-                                <li class="{% if (speakersTabs|first).id == tab.id %}active{% endif %} halfTab" rel="tab{{ tab.translatable.id }}"><h4 class="redActive {% if (speakersTabs|first).id == tab.id %}customClass1{% endif %}">{{ tab.title }}</h4>{{ tab.subTitle }}</li>
+                                <li class="speakersTabs {% if (speakersTabs|first).id == tab.id %}active{% endif %}" rel="tab{{ tab.translatable.id }}"><h4 class="redActive {% if (speakersTabs|first).id == tab.id %}customClass1{% endif %}">{{ tab.title }}</h4>{{ tab.subTitle }}</li>
                             {% endfor %}
                         </ul>
                     </div>
