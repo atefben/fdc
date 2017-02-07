@@ -90,12 +90,12 @@
         {% if secondTitle != '' and secondTitle != null and mainTitle != secondTitle %}
             <div class="title-original">({{ secondTitle }})</div>
         {% endif %}
-        {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+        {% set directors = movie.getDirectors() %}
         {% if directors|length > 0 %}
             <p>
                 {{ 'movie.label.realisepar'|trans }} :
                 {% for director in directors %}
-                    <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>
+                    <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>
                     {% if loop.index != directors|length %}, {% endif %}
                 {% endfor %}
             </p>

@@ -633,7 +633,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
             $collection = $this->orderByNullLast($collection, 'ASC');
         }
-
         return $collection;
     }
 
