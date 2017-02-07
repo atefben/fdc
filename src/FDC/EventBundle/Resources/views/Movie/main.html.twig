@@ -62,13 +62,10 @@
                 {% else %}
                     {% set mainTitle = movie.titleVO %}
                 {% endif %}
-                {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {% set directorsName = '' %}
-                {% for director in directors %}
-                    {% set directorsName = directorsName ~ director.fullName %}</a>
-                    {% if loop.index != directors|length %}, {% endif %}
+                {% for director in movie.getDirectors() %}
+                    {% set directorsName = directorsName ~ ' ' ~ director.person.fullName %}
                 {% endfor %}
-                
                 <div class="buttons square">
                     <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
 						<i class="icon icon_facebook"></i>
