@@ -2120,6 +2120,7 @@ blockquote, .quote {
 .small-pres ul, .small-pres ol, .pres-honneur ul, .pres-honneur ol {
   list-style: inside;
   color: #666666;
+  line-height: 30px;
 }
 
 figcaption, .caption {
