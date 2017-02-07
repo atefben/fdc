@@ -103,7 +103,7 @@
                         ? 'active ' : '' }}presseColor">{{ 'menu.press'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="utilInfoColor">{{ 'menu.faq'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="{{ routeName == 'fdc_marche_du_film_infos_utiles' ? 'active ': ''}}utilInfoColor">{{ 'menu.faq'|trans }}</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
