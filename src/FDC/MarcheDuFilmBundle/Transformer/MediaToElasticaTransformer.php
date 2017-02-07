@@ -5,7 +5,6 @@ namespace FDC\MarcheDuFilmBundle\Transformer;
 use Elastica\Document;
 use FOS\ElasticaBundle\Transformer\ModelToElasticaTransformerInterface;
 use FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer;
-use FDC\MarcheDuFilmBundle\Entity\MdfTheme;
 
 class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implements ModelToElasticaTransformerInterface
 {
@@ -26,12 +25,22 @@ class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implemen
             case 'MdfContentTemplateWidgetVideo':
                 unset($fields['gallery.translations']);
                 unset($fields['image']);
+                
+                // if theme isn't set, should remove indexation
+                if (is_null($object->getTheme())) {
+                    unset($fields['theme.translations']);
+                } 
                 break;
             case 'MdfContentTemplateWidgetImage':
                 unset($fields['gallery.translations']);
                 unset($fields['publishedAt']);
                 unset($fields['translations']);
                 unset($fields['theme.translations']);
+                
+                // if theme isn't set, should remove indexation
+                if (is_null($object->getImage()->getTheme())) {
+                    unset($fields['image.theme.translations']);
+                }                    
                 break;
             case 'MdfContentTemplateWidgetGallery':
                 unset($fields['image']);
