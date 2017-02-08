@@ -329,3 +329,6 @@ parameters:
     sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider
     selfkit_amazon_url: http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/selfkit/
     selfkit_amazon_url_hd: http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/selfkithd/
+    mdf_google_analytics_first_id: null
+    mdf_google_analytics_second_id: null
+    mdf_hide_ch_language: true

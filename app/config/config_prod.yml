@@ -37,8 +37,3 @@ monolog:
             level:              debug
         console:
             type:  console
-
-twig:
-    globals:
-        mdf_google_analytics_first_id: UA-6318832-1
-        mdf_google_analytics_second_id: UA-47740723-1
