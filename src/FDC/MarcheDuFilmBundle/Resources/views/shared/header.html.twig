@@ -22,14 +22,12 @@
                 <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
             </li>
             <li class="lang">
-                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' and not mdf_hide_ch_language ? 'CHN' : app.request.locale|upper }}</a>
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
-                        {% if locale == 'zh' and not mdf_hide_ch_language or locale != 'zh' %}
-                            <li>
-                                <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' and not mdf_hide_ch_language ? 'CHN' : locale|upper }}</a>
-                            </li>
-                        {% endif %}
+                    {% for locale in mdf_locales if locale != app.request.locale %}
+                        <li>
+                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </li>
@@ -55,14 +53,12 @@
                         <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
                     </li>
                     <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' and not mdf_hide_ch_language ? 'CHN' : app.request.locale|upper }} </a>
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
-                                {% if locale == 'zh' and not mdf_hide_ch_language or locale != 'zh' %}
-                                    <li>
-                                        <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' and not mdf_hide_ch_language ? 'CHN' : locale|upper }}</a>
-                                    </li>
-                                {% endif %}
+                            {% for locale in mdf_locales if locale != app.request.locale %}
+                                <li>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </li>

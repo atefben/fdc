@@ -331,4 +331,4 @@ parameters:
     selfkit_amazon_url_hd: http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/selfkithd/
     mdf_google_analytics_first_id: null
     mdf_google_analytics_second_id: null
-    mdf_hide_ch_language: true
+    mdf_locales: [fr, en, zh]
