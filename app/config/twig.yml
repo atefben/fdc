@@ -143,3 +143,6 @@ twig:
         header_ccm_zh: '%header_ccm_zh%'
         header_mdf_zh: '%header_mdf_zh%'
         selfkit_amazon_url: "%selfkit_amazon_url%"
+        mdf_google_analytics_first_id: '%mdf_google_analytics_first_id%'
+        mdf_google_analytics_second_id: '%mdf_google_analytics_second_id%'
+        mdf_hide_ch_language: '%mdf_hide_ch_language%'
