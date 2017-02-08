@@ -139,20 +139,19 @@ var initVideo = function(hash) {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        setTimeout(function(){
+         setTimeout(function(){
             var infos = {
+                'all': $container.parent().find('.info'),
                 "category": $container.parent().find('.info .category').html(),
                 "date": $container.parent().find('.info .date').html(),
                 "hour": $container.parent().find('.info .hour').html(),
                 "name": $container.parent().find('.info p').html()
             }
 
-            console.log(infos);
+            console.log($container.closest('.popin-video').find('.popin-info'));
 
-            $topBar.find('.info .category').html(infos.category);
-            $topBar.find('.info .date').html(infos.date);
-            $topBar.find('.info .hour').html(infos.hour);
-            $topBar.find('.info p').html(infos.name);
+            $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
+
 
         }, 700);
 
@@ -459,6 +458,7 @@ var initVideo = function(hash) {
                 playerInstance.playlistItem(index);
 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+
                 $topBar.find('.info .category').text(infos.category);
                 $topBar.find('.info .date').text(infos.date);
                 $topBar.find('.info .hour').text(infos.hour);
@@ -468,7 +468,26 @@ var initVideo = function(hash) {
                 $container.find('.jwplayer').removeClass('overlay-channels');
                 $container.find('.jwplayer').removeClass('overlay-channels over');
 
-                sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true]);
+                sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true])
+
+                console.log(infos)
+
+                updateShareLink(index)
+
+                var item = $('.grid-01 .item.video')[index];
+                var vid = $(item).data('vid');
+                var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
+                history.replaceState('', document.title, newURL);
+
+                updatePopinMedia({
+                    'type': "video",
+                    'category': infos.category,
+                    'date': infos.date,
+                    'title': infos.name,
+                    'url': newURL
+                });
+
+                initRs();
 
             });
 
@@ -2200,12 +2219,53 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         $grid.append($data);
+                        $grid.isotope('destroy');
 
-                        setTimeout(function(){
-                            $grid.isotope( 'addItems', $data )
-                        }, 1500);
+                        $grid.imagesLoaded(function () {
+                            $grid.isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            });
+                            //scroll bottom
+                            $('html,body').animate({
+                                scrollTop: $('.isotope-01').outerHeight()
+                            },300);
+
+                            var trunTitle = function() {
+                                $.each($('.card.item'), function (i, e) {
+                                    var title = $(e).find('.info strong a');
+                                    console.log(title);
+                                    if (!title.hasClass('init')) {
+                                        var text = $(e).find('.info strong a').text();
+                                        title.addClass('init');
+                                        title.attr('data-title', text);
+                                    } else {
+                                        var text = title.attr('data-title');
+                                    }
+
+                                    var cat = $(e).find('.info .category');
+
+                                    if (!cat.hasClass('init')) {
+                                        text2 = cat.text();
+                                        cat.addClass('init');
+                                        cat.attr('data-cat', text2);
+                                    } else {
+                                        text2 = cat.attr('data-title');
+                                    }
+
+                                    title.html(text.trunc(30, true));
+                                    cat.html(text2.trunc(30, true));
+                                    
+                                });
+                            }
+                            trunTitle();
+                        });
                         
-                        $grid.isotope();
+                        
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
@@ -2259,11 +2319,11 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     if (!cat.hasClass('init')) {
-                        var text2 = cat.text();
+                        text2 = cat.text();
                         cat.addClass('init');
                         cat.attr('data-cat', text2);
                     } else {
-                        var text2 = cat.attr('data-title');
+                        text2 = cat.attr('data-title');
                     }
     
     
@@ -2277,6 +2337,7 @@ var owInitGrid = function (id) {
     
                     } else {
                         title.html(text.trunc(30, true));
+
                         cat.html(text2.trunc(30, true));
                     }
                 });
@@ -2600,15 +2661,35 @@ $(document).ready(function() {
     $('.contacts').css('min-height',h);
   }
 
+  /* thomon - tetiere height computing */
+  if($('.tetiere-movie').length) {
+    var tetiere = $('.tetiere-movie'),
+    defaultHeight = 290, //magic number, booooh
+    currentHeight = tetiere.outerHeight();
+    
+    if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
+      tetiere.css({
+        'height': defaultHeight,
+        'position':'relative',
+        'top':  (currentHeight > defaultHeight) ? 0 : - (parseInt(defaultHeight) - parseInt(currentHeight))
+      });
+    }else{
+      tetiere.css('height',defaultHeight);
+    }
+  }
+  /* end tetiere height computing */
+
   if($('.single-movie').length) {
 
-    var cl = new CanvasLoader('canvasloader');
+        
+
+    /*var cl = new CanvasLoader('canvasloader');
         cl.setColor('#ceb06e');
         cl.setDiameter(20);
         cl.setDensity(34);
         cl.setRange(0.8);
         cl.setSpeed(1);
-        cl.setFPS(60);
+        cl.setFPS(60);*/
 
     function setActiveMovieVideos() {
       $('#slider-movie-videos .owl-item').removeClass('center');
@@ -3798,7 +3879,7 @@ var owInitSlider = function (sliderName) {
 
         $('.slider-home').on('click', function(e){
 
-            if($(e.target).hasClass('owl-dot')){
+            if($(e.target).hasClass('owl-dots')){
                 return false;
             }else{
                 var href = $('.owl-item.active .coverLink').attr('href');
@@ -4229,8 +4310,11 @@ var owInitSlider = function (sliderName) {
 
 var rtime;
 var timeout = false;
-var delta = 200;
+var delta = 300;
 $(window).resize(function() {
+
+    $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
+
     rtime = new Date();
     if (timeout === false) {
         timeout = true;
@@ -4239,12 +4323,18 @@ $(window).resize(function() {
 });
 
 function resizeend() {
+
+
     if (new Date() - rtime < delta) {
         setTimeout(resizeend, delta);
-    } else {
-        timeout = false;
-        if ($('.retrospective').length) {
+        var $slideCalc1 = $('.slides');
 
+
+    } else {
+        timeout = false; 
+        if ($('.retrospective').length) {
+            
+            $('.slides').removeClass('fadeOut').addClass('fadeIn');
             var $slide = $('.slides');
             var $slideCalc1 = $('.slides-calc1');
 
@@ -4314,7 +4404,7 @@ var owinitSlideShow = function (slider, hash) {
             }
 
             if($('.medias').length > 0 || $('.media-library').length > 0) {
-                $('.item.photo').on('click', function (e) {
+                $('.item.photo').off('click').on('click', function (e) {
                     e.preventDefault();
 
                     $(this).addClass('photoActive');
@@ -4338,7 +4428,6 @@ var openSlideShow = function (slider, hash) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-
     slider.find('.item, .img').each(function (index, value) {
 
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
@@ -4447,7 +4536,8 @@ var openSlideShow = function (slider, hash) {
         $(thumbs).removeClass('active');
         $(thumbs[centerElement]).addClass('active');
 
-
+        console.log(centerElement);
+        console.log(images[centerElement]);
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');

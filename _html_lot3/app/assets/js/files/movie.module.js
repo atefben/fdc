@@ -10,15 +10,35 @@ $(document).ready(function() {
     $('.contacts').css('min-height',h);
   }
 
+  /* thomon - tetiere height computing */
+  if($('.tetiere-movie').length) {
+    var tetiere = $('.tetiere-movie'),
+    defaultHeight = 290, //magic number, booooh
+    currentHeight = tetiere.outerHeight();
+    
+    if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
+      tetiere.css({
+        'height': defaultHeight,
+        'position':'relative',
+        'top':  (currentHeight > defaultHeight) ? 0 : - (parseInt(defaultHeight) - parseInt(currentHeight))
+      });
+    }else{
+      tetiere.css('height',defaultHeight);
+    }
+  }
+  /* end tetiere height computing */
+
   if($('.single-movie').length) {
 
-    var cl = new CanvasLoader('canvasloader');
+        
+
+    /*var cl = new CanvasLoader('canvasloader');
         cl.setColor('#ceb06e');
         cl.setDiameter(20);
         cl.setDensity(34);
         cl.setRange(0.8);
         cl.setSpeed(1);
-        cl.setFPS(60);
+        cl.setFPS(60);*/
 
     function setActiveMovieVideos() {
       $('#slider-movie-videos .owl-item').removeClass('center');

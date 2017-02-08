@@ -44,7 +44,7 @@ var owinitSlideShow = function (slider, hash) {
             }
 
             if($('.medias').length > 0 || $('.media-library').length > 0) {
-                $('.item.photo').on('click', function (e) {
+                $('.item.photo').off('click').on('click', function (e) {
                     e.preventDefault();
 
                     $(this).addClass('photoActive');
@@ -68,7 +68,6 @@ var openSlideShow = function (slider, hash) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-
     slider.find('.item, .img').each(function (index, value) {
 
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
@@ -177,7 +176,8 @@ var openSlideShow = function (slider, hash) {
         $(thumbs).removeClass('active');
         $(thumbs[centerElement]).addClass('active');
 
-
+        console.log(centerElement);
+        console.log(images[centerElement]);
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');

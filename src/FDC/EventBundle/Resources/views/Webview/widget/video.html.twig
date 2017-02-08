@@ -24,13 +24,10 @@
 	    {% endif %}
 	{% endif %}
 {% endif %}
-<div class="Article-videoPlayer">
-          <a class="Article-videoPlayer-play" href="#"></a>
-          <video preload="none" style="background-image: url({% path image, 'reference' %})">
-            <source src="{{ s3_server_video ~ video }}" type="video/mp4"/>
-          </video>
-          <div class="Article-videoPlayer-caption">
-            <h4>Discours</h4> <p>{{ widget.news.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}</p>
-            <strong>{{ widget.news|trans_fallback('title') }}</strong>
-          </div>
-        </div>
+<div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
+data-poster="{% path image, 'reference' %}" 
+data-file="{{ s3_server_video ~ video }}" 
+data-title="{{ widget.news|trans_fallback('title') }}"
+data-desc="<h4>Discours</h4> <p>{{ widget.news.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}"
+id="videoPlayer1" >
+</div>

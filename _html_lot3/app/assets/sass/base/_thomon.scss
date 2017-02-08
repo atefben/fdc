@@ -5,6 +5,10 @@
   }
 }
 
+.block-search .content-result .artist .item, .block-search  .content-result .movies .item{
+    width: 162px;
+}
+
 .isotope-01 .item.block-poster img {
   display: block;
 }
@@ -91,6 +95,10 @@ h2.sub-title {
 	font-size: .8rem;
 }
 
+.block-contain-txt-register-movie .info {
+  margin-top: 42px !important;
+}
+
 .text-01 sub {
 	vertical-align: sub!important;
 }
@@ -107,7 +115,9 @@ h2.sub-title {
 
 .block-search .more-search .country {
     text-transform: none!important;
-    background: url(../img/arrow-down.png) no-repeat right 50%;
+    //background: url(../img/arrow-down.png) no-repeat right 50%;
+  font-family: $CamphorItalic;
+  padding-bottom: 8px;
 }
 
 .block-search .tabs-two label {
@@ -121,14 +131,18 @@ h2.sub-title {
 .edition-69.dark .contain-img-honneur .copy {
     color: #ccc;
 }
-.wysiwyg-article-02 .contain-title p {
-    margin-bottom: 39px;
+.story-movie .wysiwyg-article-02 .contain-title p {
+    margin-bottom: 18px;
 }
 .article-single .block-push-top .vFlexAlign {
     height: 100%;
 }
 .faq {
     min-height: 513px;
+}
+
+.article-single .text .table-article a strong, .single-movie .text .table-article a strong{
+  color: $gold;
 }
 
 /* thomon - end fixes */

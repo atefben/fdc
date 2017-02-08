@@ -24,9 +24,6 @@ $(document).ready(function() {
         $.get(urlPath, function(data) {
           var matches = data.match(/<title>(.*?)<\/title>/);
 
-          console.log($(data).find('.sub-languages').html());
-
-
           var spUrlTitle = matches[1];
 
           document.title = spUrlTitle;
@@ -49,7 +46,14 @@ $(document).ready(function() {
                 $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
               }
             });
+
+            $(window).trigger('resize');
+            $grid.isotope('layout');
+
           });
+
+
+
         });
         $('.jurys-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');

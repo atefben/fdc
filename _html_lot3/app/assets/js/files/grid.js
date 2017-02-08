@@ -78,12 +78,53 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         $grid.append($data);
+                        $grid.isotope('destroy');
 
-                        setTimeout(function(){
-                            $grid.isotope( 'addItems', $data )
-                        }, 1500);
+                        $grid.imagesLoaded(function () {
+                            $grid.isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            });
+                            //scroll bottom
+                            $('html,body').animate({
+                                scrollTop: $('.isotope-01').outerHeight()
+                            },300);
+
+                            var trunTitle = function() {
+                                $.each($('.card.item'), function (i, e) {
+                                    var title = $(e).find('.info strong a');
+                                    console.log(title);
+                                    if (!title.hasClass('init')) {
+                                        var text = $(e).find('.info strong a').text();
+                                        title.addClass('init');
+                                        title.attr('data-title', text);
+                                    } else {
+                                        var text = title.attr('data-title');
+                                    }
+
+                                    var cat = $(e).find('.info .category');
+
+                                    if (!cat.hasClass('init')) {
+                                        text2 = cat.text();
+                                        cat.addClass('init');
+                                        cat.attr('data-cat', text2);
+                                    } else {
+                                        text2 = cat.attr('data-title');
+                                    }
+
+                                    title.html(text.trunc(30, true));
+                                    cat.html(text2.trunc(30, true));
+                                    
+                                });
+                            }
+                            trunTitle();
+                        });
                         
-                        $grid.isotope();
+                        
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
@@ -137,11 +178,11 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     if (!cat.hasClass('init')) {
-                        var text2 = cat.text();
+                        text2 = cat.text();
                         cat.addClass('init');
                         cat.attr('data-cat', text2);
                     } else {
-                        var text2 = cat.attr('data-title');
+                        text2 = cat.attr('data-title');
                     }
     
     
@@ -155,6 +196,7 @@ var owInitGrid = function (id) {
     
                     } else {
                         title.html(text.trunc(30, true));
+
                         cat.html(text2.trunc(30, true));
                     }
                 });
