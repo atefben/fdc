@@ -7312,6 +7312,9 @@ video {
   overflow: hidden;
   width: 630px;
   height: calc(630px / 1.58);
+  text-align: center !important;
+  margin: 0 auto !important;
+  padding-bottom: 20px !important;
 }
 .video-container button {
   background: none;
@@ -23845,8 +23848,11 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 200px;
   margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  float: left;
+  position: relative;
 }
 @media screen and (max-width: 1279px) {
   .conferences .conferencesMenu {
