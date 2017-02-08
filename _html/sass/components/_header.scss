@@ -282,7 +282,7 @@ header {
 
   #logo-wrapper {
     background-color: $black;
-    height: 160px!important;
+    height: 154px !important;
     @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));
 
