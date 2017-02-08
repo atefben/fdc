@@ -7060,7 +7060,8 @@ h2.sub-title {
 
 .block-search .more-search .country {
   text-transform: none !important;
-  background: url(../img/arrow-down.png) no-repeat right 50%;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  padding-bottom: 8px;
 }
 
 .block-search .tabs-two label {
