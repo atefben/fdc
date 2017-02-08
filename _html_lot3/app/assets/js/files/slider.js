@@ -493,8 +493,11 @@ var owInitSlider = function (sliderName) {
 
 var rtime;
 var timeout = false;
-var delta = 200;
+var delta = 500;
 $(window).resize(function() {
+
+    $('.slides').css('opacity', 0)
+
     rtime = new Date();
     if (timeout === false) {
         timeout = true;
@@ -503,12 +506,18 @@ $(window).resize(function() {
 });
 
 function resizeend() {
+
+
     if (new Date() - rtime < delta) {
         setTimeout(resizeend, delta);
-    } else {
-        timeout = false;
-        if ($('.retrospective').length) {
+        var $slideCalc1 = $('.slides');
 
+
+    } else {
+        timeout = false; 
+        if ($('.retrospective').length) {
+            
+            $('.slides').css('opacity', 1)
             var $slide = $('.slides');
             var $slideCalc1 = $('.slides-calc1');
 
