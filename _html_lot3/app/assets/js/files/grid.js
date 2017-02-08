@@ -91,6 +91,8 @@ var owInitGrid = function (id) {
                                     gutter: 0
                                 }
                             });
+                            //scroll bottom
+                            $('html,body').scrollTop($('.read-more').offset().top);
                         });
                         
                         
