@@ -55,8 +55,8 @@ class MovieController extends Controller
             ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId())
         ;
 
-        $articles = array();
-        $articlesIds = array();
+        $articles = [];
+        $articlesIds = [];
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
@@ -144,7 +144,7 @@ class MovieController extends Controller
         }
 
         $now = new \DateTime();
-        $projections = array();
+        $projections = [];
         foreach ($movie->getProjectionProgrammationFilms() as $projectionProgrammationFilm) {
             if ($projectionProgrammationFilm instanceof FilmProjectionProgrammationFilm && $projectionProgrammationFilm->getProjection()) {
                 $projection = $projectionProgrammationFilm->getProjection();
@@ -264,14 +264,15 @@ class MovieController extends Controller
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-            return $this->render('FDCCorporateBundle:Movie:cinema_plage.html.twig', array(
-                'page'           => $page,
-                'projections'    => $projections,
-                'cannesClassics' => $cannesClassics,
-                'selectionTabs'  => $selectionTabs,
-                'next'           => $next,
-                'festivals'      => $festivals,
-            ));
+            return $this->render('FDCCorporateBundle:Movie:cinema_plage.html.twig', [
+                'page'            => $page,
+                'cinemaDeLaPlage' => $page,
+                'projections'     => $projections,
+                'cannesClassics'  => $cannesClassics,
+                'selectionTabs'   => $selectionTabs,
+                'next'            => $next,
+                'festivals'       => $festivals,
+            ]);
         }
 
 
@@ -286,7 +287,7 @@ class MovieController extends Controller
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $selectionTabs = array();
+        $selectionTabs = [];
         $defaultSlug = null;
         foreach ($pages as $p) {
             $movies = $this
@@ -303,7 +304,7 @@ class MovieController extends Controller
         }
 
         if ($slug === null) {
-            return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $defaultSlug, 'year' => $year));
+            return $this->redirectToRoute('fdc_corporate_movie_selection', ['slug' => $defaultSlug, 'year' => $year]);
         }
 
         $page = $this
@@ -392,7 +393,7 @@ class MovieController extends Controller
         }
 
 
-        return $this->render('FDCCorporateBundle:Movie:selection.html.twig', array(
+        return $this->render('FDCCorporateBundle:Movie:selection.html.twig', [
             'cannesClassics'  => $cannesClassics,
             'cinemaDeLaPlage' => $cinemaDelaPlage,
             'selectionTabs'   => $selectionTabs,
@@ -402,7 +403,7 @@ class MovieController extends Controller
             'next_classics'   => !empty($nextClassics),
             'localeSlugs'     => $localeSlugs,
             'festivals'       => $festivals,
-        ));
+        ]);
     }
 
     /**
@@ -453,7 +454,7 @@ class MovieController extends Controller
             $next = reset($filters);
         }
 
-        return array(
+        return [
             'cannesClassics' => $filters,
             'classic'        => $classic,
             'filters'        => $filters,
@@ -461,6 +462,6 @@ class MovieController extends Controller
             'next'           => is_object($next) ? $next : false,
             'localeSlugs'    => $localeSlugs,
             'festivals'      => $festivals,
-        );
+        ];
     }
 }
