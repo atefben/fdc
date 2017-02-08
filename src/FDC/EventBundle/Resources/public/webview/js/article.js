@@ -23,12 +23,11 @@ var ow = ow || {};
 (function(){
 	'use strict';
 
-	ow.contentSlider = function(){
-		var $frame  = $('.Article-slider');
-		var $slides = $('.Article-slider-item');
-		var $wrap   = $('.Article-slider-wrapper');
+	ow.contentSlider = function($wrap){
+		var $frame  = $wrap.find('.Article-slider');
+		var $slides = $wrap.find('.Article-slider-item');
 
-		if($wrap.length){console.log('here');
+		if($wrap.length){
 			var Slider = new Sly($wrap, {
 				horizontal: 1,
 				itemNav: 'basic',
@@ -51,10 +50,11 @@ var ow = ow || {};
 
 			Slider.on('moveStart moveEnd', function (a,b,c) {
 				var increment = Slider.rel.firstItem + 1;
-				$('.Article-slider-count strong').html(increment);
+				$wrap.find('.Article-slider-count strong').html(increment);
 			});
 
 			Slider.init();
+			
 		}
 	}
 
@@ -148,7 +148,9 @@ var ow = ow || {};
 	}
 
 	$(document).ready(function(){
-		ow.contentSlider();
+		$('.Article-slider-wrapper').each(function(){
+			ow.contentSlider($(this));
+		});
 		ow.relatedSlider();
 		ow.audioPlayer();
 		ow.videoPlayer();
