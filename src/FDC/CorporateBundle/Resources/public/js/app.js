@@ -2238,7 +2238,7 @@ var owInitGrid = function (id) {
                             var trunTitle = function() {
                                 $.each($('.card.item'), function (i, e) {
                                     var title = $(e).find('.info strong a');
-                    
+                                    console.log(title);
                                     if (!title.hasClass('init')) {
                                         var text = $(e).find('.info strong a').text();
                                         title.addClass('init');
@@ -2256,21 +2256,10 @@ var owInitGrid = function (id) {
                                     } else {
                                         text2 = cat.attr('data-title');
                                     }
-                    
-                    
-                                    if($('.medias').length > 0) {
-                    
-                                        if (window.matchMedia("(max-width: 1405px)").matches) {
-                                            title.html(text.trunc(25, true));
-                                        }else{
-                                            title.html(text.trunc(30, true));
-                                        }
-                    
-                                    } else {
-                                        title.html(text.trunc(30, true));
 
-                                        cat.html(text2.trunc(30, true));
-                                    }
+                                    title.html(text.trunc(30, true));
+                                    cat.html(text2.trunc(30, true));
+                                    
                                 });
                             }
                             trunTitle();
