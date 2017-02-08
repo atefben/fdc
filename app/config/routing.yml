@@ -1,3 +1,8 @@
+fdc_court_metrage:
+    resource: "@FDCCourtMetrageBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 #admin
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
