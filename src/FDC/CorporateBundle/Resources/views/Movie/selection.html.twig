@@ -35,11 +35,9 @@
                                     {% else %}
                                         <span class="title-11">{{ movie.titleVo }}</span>
                                     {% endif %}
-                                    <span>
                                     {% for director in movie.getDirectors() %}
                                         <a class="title-12" href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</a>
                                     {% endfor %}
-                                    </span>
                                 </div>
                             </a>
                         </div>
