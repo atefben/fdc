@@ -1,6 +1,11 @@
 {% extends 'FDCMarcheDuFilmBundle::base.html.twig' %}
 
 {% block main %}
+    <style>
+        .producersProgramme {
+            margin-bottom: 20px;
+        }
+    </style>
     <div id="main" class="home loading">
         {% if isWhoAreWe %}
             {% include 'FDCMarcheDuFilmBundle:shared:whoAreWe.html.twig' %}
