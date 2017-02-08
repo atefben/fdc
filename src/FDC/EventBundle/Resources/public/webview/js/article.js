@@ -111,6 +111,22 @@ var ow = ow || {};
 		}
 	}
 
+	ow.videoPlayer = function(){
+		if($('.jw-video').length){
+			$('.jw-video').each(function(){
+				var player = $(this);
+				jwplayer(player.get(0)).setup({
+					"file": player.data('file'),
+					"image": player.data('poster'),
+					"width": '100%',
+					'skin': {
+						'name': 'fdc'
+					}
+				});
+			});
+		}
+	}
+
 	ow.playVideo = function(event){
 		var $this = $(event.target).is('a') ? $(event.target) : $(event.target).closest('a');
 		var $wrapper = $this.parent();
@@ -135,6 +151,7 @@ var ow = ow || {};
 		ow.contentSlider();
 		ow.relatedSlider();
 		ow.audioPlayer();
+		ow.videoPlayer();
 		ow.domEvents();
 	});
 })();
