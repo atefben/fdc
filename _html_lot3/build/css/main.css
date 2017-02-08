@@ -7097,6 +7097,10 @@ h2.sub-title {
   min-height: 513px;
 }
 
+.article-single .text .table-article a strong, .single-movie .text .table-article a strong {
+  color: #c8a461;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
