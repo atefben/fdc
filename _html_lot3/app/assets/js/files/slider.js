@@ -62,7 +62,7 @@ var owInitSlider = function (sliderName) {
 
         $('.slider-home').on('click', function(e){
 
-            if($(e.target).hasClass('owl-dot')){
+            if($(e.target).hasClass('owl-dots')){
                 return false;
             }else{
                 var href = $('.owl-item.active .coverLink').attr('href');
