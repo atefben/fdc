@@ -2193,7 +2193,7 @@ var owInitGrid = function (id) {
                     }else{
                         data = $(data);
                         $gridMore.append(data).isotope( 'addItems', data );
-                        $gridMore.isotope('layout');
+                        $gridMore.isotope();
                         //TODO update pictures array
                     }
                 });
@@ -2219,13 +2219,15 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data);
 
-                        $grid.append($data);
+                        //$grid.append($data);
 
                         setTimeout(function(){
-                            $grid.isotope( 'addItems', $data )
+                            console.log($data);
+                            $grid.isotope('addItems', $data);
+                            $grid.isotope();
                         }, 1500);
                         
-                        $grid.isotope();
+                        
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
