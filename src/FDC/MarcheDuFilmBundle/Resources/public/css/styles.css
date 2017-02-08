@@ -4785,7 +4785,7 @@ header #top-bar .icon_langue {
 }
 header #logo-wrapper {
   background-color: #141414;
-  height: 160px !important;
+  height: 154px !important;
   -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
