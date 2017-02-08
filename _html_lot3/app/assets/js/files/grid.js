@@ -92,7 +92,9 @@ var owInitGrid = function (id) {
                                 }
                             });
                             //scroll bottom
-                            $('html,body').scrollTop($('.isotope-01').outerHeight());
+                            $('html,body').animate({
+                                scrollTop: $('.isotope-01').outerHeight()
+                            },300);
                         });
                         
                         
