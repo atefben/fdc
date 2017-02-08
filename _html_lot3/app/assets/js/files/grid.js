@@ -52,7 +52,8 @@ var owInitGrid = function (id) {
                     }else{
                         data = $(data);
                         $gridMore.append(data).isotope( 'addItems', data );
-                        $gridMore.isotope();
+                        $gridMore.isotope('layout');
+                        //TODO update pictures array
                     }
                 });
 
