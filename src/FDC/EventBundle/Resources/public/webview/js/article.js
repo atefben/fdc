@@ -28,7 +28,7 @@ var ow = ow || {};
 		var $slides = $('.Article-slider-item');
 		var $wrap   = $('.Article-slider-wrapper');
 
-		if($wrap.length){
+		if($wrap.length){console.log('here');
 			var Slider = new Sly($wrap, {
 				horizontal: 1,
 				itemNav: 'basic',
