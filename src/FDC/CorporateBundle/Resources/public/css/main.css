@@ -3729,16 +3729,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-movie-preview .wrapper-item {
   width: 977px;
-  display: -ms-flexbox;
-  display: flex;
   margin: 30px auto;
   height: auto;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
-  align-items: center;
-  -webkit-justify-content: center;
+      align-items: center;
   -ms-flex-pack: center;
+      justify-content: center;
 }
 .ie .block-movie-preview .wrapper-item {
   width: 87%;
@@ -3945,6 +3943,15 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .palmares .block-movie-preview .line:after {
   margin: 17px auto;
+}
+.selection .block-movie-preview .date-infos {
+  margin-right: 0px;
+}
+.selection .block-movie-preview .infos {
+  margin-left: 50px;
+}
+.selection .block-movie-preview .description {
+  width: 507px;
 }
 
 .block-list-img {
