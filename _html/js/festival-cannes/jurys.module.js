@@ -49,7 +49,13 @@ $(document).ready(function() {
                 $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
               }
             });
+
+            $(window).trigger('resize');
+            $grid.isotope('layout');
           });
+
+
+
         });
         $('.jurys-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');

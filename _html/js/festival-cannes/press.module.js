@@ -1,8 +1,5 @@
 $(document).ready(function () {
   // init array of events
-
-  popin-plan-div
-
   var events = [];
 
   // get local storage
