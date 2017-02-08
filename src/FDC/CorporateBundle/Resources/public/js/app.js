@@ -4290,7 +4290,7 @@ var owInitSlider = function (sliderName) {
 
 var rtime;
 var timeout = false;
-var delta = 300;
+var delta = 300; 
 $(window).resize(function() {
 
     $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
