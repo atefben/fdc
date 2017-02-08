@@ -45,9 +45,11 @@ class TransverseController extends Controller
      */
     public function contactAction(Request $request)
     {
-
+        $request->getSession()
+            ->getFlashBag()
+            ->clear()
+        ;
         $contactUsManager = $this->get('mdf.manager.contact_us');
-
         $contactPage = $contactUsManager->getContactUsPage();
         $contactBlocks = $contactUsManager->getContactBlocks($contactPage);
         $contactSubjects = $contactUsManager->getContactSubjects($contactPage);
@@ -58,10 +60,13 @@ class TransverseController extends Controller
             $emailData = $formContact->getData();
             $this->get('mdf.manager.mailer')->sendMessage($emailData);
 
-            return $this->redirectToRoute('fdc_marche_du_film_contact_us', array(
-                    'send' => 'success'
-                )
-            );
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success','success')
+            ;
+
+            unset($formContact);
+            $formContact = $this->createForm(new ContactFormType($contactSubjects));
         }
 
         return $this->render('FDCMarcheDuFilmBundle::shared/contact/contactUs.html.twig', array(
@@ -69,7 +74,6 @@ class TransverseController extends Controller
                 'contactBlocks' => $contactBlocks,
                 'contactSubjects' => $contactSubjects,
                 'formContact' => $formContact->createView(),
-                'send' => $request->get('send') ? true : false,
             )
         );
     }
