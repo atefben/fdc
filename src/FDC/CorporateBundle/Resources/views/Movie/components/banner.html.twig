@@ -12,9 +12,9 @@
             ')"></div>
     <div class="links">
         <div class="container">
-            <a class="movies" href="#"><i class="icon icon-arrow-left"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
-            <a class="programmation" href="#"><i
-                        class="icon icon-calendar"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
+            <a class="movies" href="{{ path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': movie.selectionSection|trans_fallback('slug')}) }}"><i class="icon icon-arrow-left"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
+            <a class="programmation"></a>
+        </div>
         </div>
     </div>
     <div class="trailer">
