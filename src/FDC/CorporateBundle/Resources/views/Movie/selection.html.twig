@@ -38,9 +38,9 @@
                                         {% endif %}
                                         {% if movie.getDirectors()|length %}
                                             <div class="title-12">
-                                                {%- for director in movie.getDirectors() -%}
+                                                {% for director in movie.getDirectors() %}
                                                     <a class="title-12" href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', ' }}</a>
-                                                {%- endfor -%}
+                                                {% endfor %}
                                             </div>
                                         {% endif %}
                                     </div>
