@@ -56,7 +56,6 @@ class TransverseController extends Controller
         $formContact->handleRequest($request);
         if ($formContact->isSubmitted() && $formContact->isValid()) {
             $emailData = $formContact->getData();
-            $emailData['emailTo'] = $contactPage->getReceiverEmail();
             $this->get('mdf.manager.mailer')->sendMessage($emailData);
 
             return $this->redirectToRoute('fdc_marche_du_film_contact_us', array(
