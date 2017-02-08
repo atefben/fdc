@@ -80,10 +80,17 @@ var owInitGrid = function (id) {
 
                         $grid.append($data);
 
-                        setTimeout(function(){
-                            //$grid.isotope('addItems', data);
-                            $grid.isotope('layout');
-                        }, 1500);
+                        //setTimeout(function(){
+                            $grid.isotope('destroy');
+                            $grid.isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            });
+                        //}, 1500);
                         
                         
 
