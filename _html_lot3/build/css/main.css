@@ -3935,13 +3935,16 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: -9px;
 }
 .palmares .block-movie-preview .wrapper-item {
-  width: 709px;
+  width: 679px;
 }
 .palmares .block-movie-preview .name-award {
   width: 331px;
 }
 .palmares .block-movie-preview .infos {
-  margin-left: 70px;
+  margin-left: 90px;
+}
+.palmares .block-movie-preview .line:after {
+  margin: 17px auto;
 }
 
 .block-list-img {

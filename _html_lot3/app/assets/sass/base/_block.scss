@@ -1026,7 +1026,7 @@
 
   .palmares &{
     .wrapper-item {
-      width: 709px;
+      width: 679px;
     }
 
     .name-award {
@@ -1034,7 +1034,11 @@
     }
 
     .infos {
-      margin-left: 70px;
+      margin-left: 90px;
+    }
+
+    .line:after {
+      margin: 17px auto;
     }
   }
 }
