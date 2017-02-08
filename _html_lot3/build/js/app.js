@@ -4489,7 +4489,8 @@ var openSlideShow = function (slider, hash) {
         $(thumbs).removeClass('active');
         $(thumbs[centerElement]).addClass('active');
 
-
+        console.log(centerElement);
+        console.log(images[centerElement]);
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');
