@@ -2,55 +2,62 @@
 
 {% block main %}
 
-    <div id="main" class="contact loading">
-        <h2 class="title">{{ contactPage.title }}</h2>
+    <div id="main" class="contact loading" xmlns="http://www.w3.org/1999/html">
+        <div class="text-presentation team">
+            <h3>{{ contactPage.title }}</h3>
+        </div>
         {# THIS SHOULD BE REPLACED IN NEW TEMPLATE FOR  MULTIPLE CONTACT BLOCKS #}
-        <div class="coords">
+        <div class="teamBckg">
             <div class="bigContainer">
                 {% if contactBlocks is defined and contactBlocks is not null %}
                     {% if contactBlocks|length > 1 %}
                         {% for block in contactBlocks %}
                             <div class="contactInfo">
-                                <h3>{{ block.contactDate }}</h3>
-                                <p>{{ block.contactAddress }}</p>
-                                <p>{{ block.contactPhone }}</p>
+                                <span class="customClass4">{{ block.contactDate }}</span>
+                                <h6>{{ block.contactAddress }}</h6>
+                                <h6>{{ block.contactPhone }}</h6>
                             </div>
                         {% endfor %}
                     {% else %}
-                        <h3>{{ contactBlocks[0].contactDate }}</h3>
-                        <p>{{ contactBlocks[0].contactAddress }}</p>
-                        <p>{{ contactBlocks[0].contactPhone }}</p>
+                        <span class="customClass4">{{ contactBlocks[0].contactDate }}</span>
+                        <h6>{{ contactBlocks[0].contactAddress }}</h6>
+                        <h6>{{ contactBlocks[0].contactPhone }}</h6>
                     {% endif %}
                 {% endif %}
             </div>
         </div>
         {# END #}
-        <div class="success"  {% if send %} style="display: block;" {% endif %}>
+        <div class="success" {% if app.session.flashBag.has('success') %}style="display: block;"{% endif %}>
             <h3>{{ 'contactUs.success'|trans }}</h3>
             <p>{{ 'contactUs.success_message'|trans }}</p>
         </div>
-        <div class="container">
-            {{ contactPage.body|raw }}
-            <div id="form">
-                <form action="{{ path('fdc_marche_du_film_contact_us') }}" method="post">
-                    <div class="select">
-                        {{ form_label(formContact.select) }}
-                        {{ form_widget(formContact.select) }}
-                        <span id="triggerSelect"></span>
-                    </div>
-                    {{ form_widget(formContact.name, {'attr' : {'data-error' : 'contactUs.name_error'|trans }}) }}
-                    {{ form_widget(formContact.email, {'attr' : {'data-error' : 'contactUs.email_error'|trans }}) }}
-                    {{ form_widget(formContact.object, {'attr' : {'data-error' : 'contactUs.object_error'|trans }}) }}
-                    {{ form_widget(formContact.message, {'attr' : {'data-error' : 'contactUs.message_error'|trans }}) }}
+        <div class="bigContainer">
+            <section id="contactForm">
+                {{ contactPage.body|raw }}
+                <div class="formContainer">
+                    <form action="{{ path('fdc_marche_du_film_contact_us') }}" method="post">
+                        <div class="select">
+                            <span>
+                                <input placeholder="{{ 'contactUs.select'|trans }}" onclick="$(this).closest('div').find('select').slideToggle(110)">
+                                <div class="selectArrow">
+                                    <i class="icon icon_flecheGauche"></i>
+                                </div>
+                                <br>
+                                {{ form_widget(formContact.select) }}
+                            </span>
+                        </div>
+                        {{ form_widget(formContact.name, {'attr' : {'data-error' : 'contactUs.name_error'|trans }}) }}
+                        {{ form_widget(formContact.email, {'attr' : {'data-error' : 'contactUs.email_error'|trans }}) }}
+                        {{ form_widget(formContact.object, {'attr' : {'data-error' : 'contactUs.object_error'|trans }}) }}
+                        {{ form_widget(formContact.message, {'attr' : {'data-error' : 'contactUs.message_error'|trans }}) }}
 
-                    <span class="required">{{ 'contactUs.required'|trans }}</span>
-                    <input type="submit" value="{{ 'contactUs.submit'|trans }}" />
-                    {{ form_widget(formContact._token) }}
-                </form>
-                <div class="errors">
-                    <ul></ul>
+                        <button name="send" type="submit" class="submit">{{ 'contactUs.submit'|trans }}</button>
+                        {{ form_widget(formContact._token) }}
+                    </form>
+                    <p>{{ 'contactUs.required'|trans }}</p>
+                    <div class="errorMessage" style="display: none;"></div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 
