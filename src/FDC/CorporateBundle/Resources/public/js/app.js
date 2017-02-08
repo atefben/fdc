@@ -2220,9 +2220,10 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         $grid.append($data);
+                        $grid.isotope('destroy');
 
-                        //setTimeout(function(){
-                            $grid.isotope('destroy');
+                        $grid.imagesLoaded(function () {
+                            console.log('images loaded');
                             $grid.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'packery',
@@ -2231,7 +2232,7 @@ var owInitGrid = function (id) {
                                     gutter: 0
                                 }
                             });
-                        //}, 1500);
+                        });
                         
                         
 
