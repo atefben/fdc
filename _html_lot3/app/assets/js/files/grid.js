@@ -78,13 +78,11 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data);
 
-                        //$grid.append($data);
+                        $grid.append($data);
 
                         setTimeout(function(){
-                            console.log(data);
-                            console.log($data);
-                            $grid.isotope('addItems', data);
-                            $grid.isotope();
+                            //$grid.isotope('addItems', data);
+                            $grid.isotope('layout');
                         }, 1500);
                         
                         
