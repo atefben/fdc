@@ -531,7 +531,8 @@
 
   .date-back {
     //left: 4px;
-    left: 18px;
+    //left: 18px;
+    left: 111px;
     top: 50%;
     transform: rotate(-90deg);
     transition: left .4s ease;
@@ -545,7 +546,8 @@
 
   .date-next {
     //right: 4px;
-    right: 20px;
+    //right: 20px;
+    right: 111px;  
     top: 50%;
     transform: rotate(90deg);
 
