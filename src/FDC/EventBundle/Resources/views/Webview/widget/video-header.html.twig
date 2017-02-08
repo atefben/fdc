@@ -1,5 +1,5 @@
 {% set image = video.image|trans_fallback('file') %}
-<div class="Article-videoPlayer" 
+<div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
 data-title=""

@@ -24,7 +24,7 @@
 	    {% endif %}
 	{% endif %}
 {% endif %}
-<div class="Article-videoPlayer" 
+<div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video }}" 
 data-title="{{ widget.news|trans_fallback('title') }}"

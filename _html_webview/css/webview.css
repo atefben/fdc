@@ -440,6 +440,8 @@ html {
 
 .jwplayer.jw-skin-fdc-video {
   position: relative; }
+  .jwplayer.jw-skin-fdc-video.jw-state-complete .jw-display-icon-container > .jw-icon {
+    background: transparent; }
   .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
     width: 100%;
     height: 100%;
@@ -459,7 +461,8 @@ html {
     display: none !important; }
   .jwplayer.jw-skin-fdc-video .jw-background-color,
   .jwplayer.jw-skin-fdc-video .jw-display-icon-container {
-    background: transparent; }
+    background: transparent !important;
+    background-color: transparent !important; }
   .jwplayer.jw-skin-fdc-video .jw-controlbar {
     width: 100%; }
     .jwplayer.jw-skin-fdc-video .jw-controlbar-left-group {
