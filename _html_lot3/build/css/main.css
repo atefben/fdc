@@ -11834,9 +11834,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .video-container .top-bar .info {
   color: #666;
   display: block;
-  height: 100%;
   float: left;
-  margin-top: 0;
+  margin-top: 21px;
   margin-left: 25px;
   position: relative;
   text-align: left;
@@ -14474,9 +14473,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-right: 8px;
   vertical-align: middle !important;
   margin-bottom: 2px;
-}
-.single-movie .main-image .links a:last-child {
-  float: right;
 }
 .single-movie .main-image .links a:hover {
   opacity: 0.6;
