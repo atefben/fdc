@@ -4293,7 +4293,7 @@ var timeout = false;
 var delta = 500;
 $(window).resize(function() {
 
-    $('.slides').css('opacity', 0)
+    $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
 
     rtime = new Date();
     if (timeout === false) {
@@ -4314,7 +4314,7 @@ function resizeend() {
         timeout = false; 
         if ($('.retrospective').length) {
             
-            $('.slides').css('opacity', 1)
+            $('.slides').removeClass('fadeOut').addClass('fadeIn');
             var $slide = $('.slides');
             var $slideCalc1 = $('.slides-calc1');
 
