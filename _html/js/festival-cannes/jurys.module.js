@@ -50,7 +50,7 @@ $(document).ready(function() {
               }
             });
 
-            $grid.isotope();
+            $grid.isotope('layout');
           });
 
 
