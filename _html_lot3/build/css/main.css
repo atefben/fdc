@@ -6954,7 +6954,7 @@ body.chocolat-open > .chocolat-content {
   height: 404px;
 }
 
-.block-search .content-result .item {
+.block-search .content-result.artist .item, .block-search .content-result.movies .item {
   width: 162px;
 }
 
