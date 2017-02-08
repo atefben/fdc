@@ -3934,6 +3934,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-bottom: 10px;
   margin-top: -9px;
 }
+.palmares .block-movie-preview .wrapper-item {
+  width: 709px;
+}
+.palmares .block-movie-preview .name-award {
+  width: 331px;
+}
 
 .block-list-img {
   margin-top: 30px;
