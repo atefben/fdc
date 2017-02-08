@@ -51,3 +51,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+twig:
+    globals:
+        mdf_google_analytics_first_id: null
+        mdf_google_analytics_second_id: null
