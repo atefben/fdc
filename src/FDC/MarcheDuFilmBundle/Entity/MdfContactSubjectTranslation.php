@@ -35,6 +35,14 @@ class MdfContactSubjectTranslation implements TranslateChildInterface
 
     /**
      * @var string
+     * @ORM\Column(name="receiver_email", type="string", length=255, nullable=true)
+     * @Assert\Email
+     * @Assert\NotBlank()
+     */
+    protected $receiverEmail;
+
+    /**
+     * @var string
      *
      * @Gedmo\Slug(fields={"contactTheme"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
@@ -77,6 +85,22 @@ class MdfContactSubjectTranslation implements TranslateChildInterface
         $this->slug = $slug;
 
         return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getReceiverEmail()
+    {
+        return $this->receiverEmail;
+    }
+
+    /**
+     * @param string $receiverEmail
+     */
+    public function setReceiverEmail($receiverEmail)
+    {
+        $this->receiverEmail = $receiverEmail;
     }
 }
 

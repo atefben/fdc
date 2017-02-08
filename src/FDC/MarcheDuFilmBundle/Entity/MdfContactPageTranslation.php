@@ -40,14 +40,7 @@ class MdfContactPageTranslation implements TranslateChildInterface
      * @ORM\Column(name="body", type="text", nullable=true)
      */
     protected $body;
-
-    /**
-     * @var string
-     * @ORM\Column(name="receiver_email", type="string", length=255, nullable=true)
-     * @Assert\Email
-     * @Assert\NotBlank()
-     */
-    protected $receiverEmail;
+    
 
     /**
      * @return string
@@ -79,22 +72,6 @@ class MdfContactPageTranslation implements TranslateChildInterface
     public function setBody($body)
     {
         $this->body = $body;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReceiverEmail()
-    {
-        return $this->receiverEmail;
-    }
-
-    /**
-     * @param string $receiverEmail
-     */
-    public function setReceiverEmail($receiverEmail)
-    {
-        $this->receiverEmail = $receiverEmail;
     }
 }
 
