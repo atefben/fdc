@@ -24,9 +24,6 @@ $(document).ready(function() {
         $.get(urlPath, function(data) {
           var matches = data.match(/<title>(.*?)<\/title>/);
 
-          console.log($(data).find('.sub-languages').html());
-
-
           var spUrlTitle = matches[1];
 
           document.title = spUrlTitle;
@@ -52,6 +49,7 @@ $(document).ready(function() {
 
             $(window).trigger('resize');
             $grid.isotope('layout');
+
           });
 
 
