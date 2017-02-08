@@ -12,6 +12,22 @@ $(document).ready(function() {
 
   if($('.single-movie').length) {
 
+        /* thomon - tetiere height computing */
+        var tetiere = $('.tetiere-movie'),
+        defaultHeight = 290, //magic number, booooh
+        currentHeight = tetiere.outerHeight();
+        
+        if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
+          tetiere.css({
+            'height': defaultHeight,
+            'position':'relative',
+            'top':  (currentHeight > defaultHeight) ? 0 : - (parseInt(defaultHeight) - parseInt(currentHeight))
+          });
+        }else{
+          tetiere.css('height',defaultHeight);
+        }
+        /* end tetiere height computing */
+        
     /*var cl = new CanvasLoader('canvasloader');
         cl.setColor('#ceb06e');
         cl.setDiameter(20);
