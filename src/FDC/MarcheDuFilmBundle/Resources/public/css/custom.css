@@ -118,3 +118,7 @@ sub {
   font-size: smaller;
   margin-left: 5px;
 }
+
+.contentTemplateDownload {
+    margin-bottom: 20px;
+}
