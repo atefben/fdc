@@ -12,7 +12,7 @@
     {% set author = '' %}
 {% endif %}
 
-{% if movie is defined and not award_done(award_association) %}
+{% if award_association.award is defined and movie is defined and not award_done(award_association) %}
     <article class="block-movie-preview" style='background-image: url("{% spaceless %}
         {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
         film: movie,
