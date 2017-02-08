@@ -14474,9 +14474,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   vertical-align: middle !important;
   margin-bottom: 2px;
 }
-.single-movie .main-image .links a:last-child {
-  float: right;
-}
 .single-movie .main-image .links a:hover {
   opacity: 0.6;
 }
