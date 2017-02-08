@@ -86,7 +86,7 @@
                         <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="{{routeName =='fdc_marche_du_film_accreditations' ? 'active ' : '' }}accreditationColor">{{ 'menu.accreditation'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' ? 'active ' : '' }}servicesColor">{{ 'menu.services'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' or routeName == 'fdc_marche_du_film_services_widgets' ? 'active ' : '' }}servicesColor">{{ 'menu.services'|trans }}</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="{{ routeName == 'fdc_marche_du_film_who_are_we_history'
