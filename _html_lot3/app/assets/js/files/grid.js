@@ -137,11 +137,11 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     if (!cat.hasClass('init')) {
-                        var text2 = cat.text();
+                        text2 = cat.text();
                         cat.addClass('init');
                         cat.attr('data-cat', text2);
                     } else {
-                        var text2 = cat.attr('data-title');
+                        text2 = cat.attr('data-title');
                     }
     
     
@@ -155,6 +155,7 @@ var owInitGrid = function (id) {
     
                     } else {
                         title.html(text.trunc(30, true));
+
                         cat.html(text2.trunc(30, true));
                     }
                 });

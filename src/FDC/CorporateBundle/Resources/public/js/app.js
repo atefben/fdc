@@ -139,20 +139,19 @@ var initVideo = function(hash) {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        setTimeout(function(){
+         setTimeout(function(){
             var infos = {
+                'all': $container.parent().find('.info'),
                 "category": $container.parent().find('.info .category').html(),
                 "date": $container.parent().find('.info .date').html(),
                 "hour": $container.parent().find('.info .hour').html(),
                 "name": $container.parent().find('.info p').html()
             }
 
-            console.log(infos);
+            console.log($container.closest('.popin-video').find('.popin-info'));
 
-            $topBar.find('.info .category').html(infos.category);
-            $topBar.find('.info .date').html(infos.date);
-            $topBar.find('.info .hour').html(infos.hour);
-            $topBar.find('.info p').html(infos.name);
+            $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
+
 
         }, 700);
 
@@ -459,6 +458,7 @@ var initVideo = function(hash) {
                 playerInstance.playlistItem(index);
 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+
                 $topBar.find('.info .category').text(infos.category);
                 $topBar.find('.info .date').text(infos.date);
                 $topBar.find('.info .hour').text(infos.hour);
@@ -468,7 +468,26 @@ var initVideo = function(hash) {
                 $container.find('.jwplayer').removeClass('overlay-channels');
                 $container.find('.jwplayer').removeClass('overlay-channels over');
 
-                sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true]);
+                sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true])
+
+                console.log(infos)
+
+                updateShareLink(index)
+
+                var item = $('.grid-01 .item.video')[index];
+                var vid = $(item).data('vid');
+                var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
+                history.replaceState('', document.title, newURL);
+
+                updatePopinMedia({
+                    'type': "video",
+                    'category': infos.category,
+                    'date': infos.date,
+                    'title': infos.name,
+                    'url': newURL
+                });
+
+                initRs();
 
             });
 
@@ -2259,11 +2278,11 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     if (!cat.hasClass('init')) {
-                        var text2 = cat.text();
+                        text2 = cat.text();
                         cat.addClass('init');
                         cat.attr('data-cat', text2);
                     } else {
-                        var text2 = cat.attr('data-title');
+                        text2 = cat.attr('data-title');
                     }
     
     
@@ -2277,6 +2296,7 @@ var owInitGrid = function (id) {
     
                     } else {
                         title.html(text.trunc(30, true));
+
                         cat.html(text2.trunc(30, true));
                     }
                 });
