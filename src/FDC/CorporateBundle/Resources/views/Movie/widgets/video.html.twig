@@ -16,7 +16,7 @@
     {% if firstVideo is not null %}
         <div class="block-films block-01" data-section='videos'>
             <article class="video-player-style">
-                <div class="video-container state-init video-player-style video-playlist"
+                <div class="video-container state-init video"
                      data-playlist='[
 
                     {% for video in videos %}
@@ -43,7 +43,7 @@
                           "name":"{{ firstVideo|trans_fallback_movie('title') }}",
                           "image":"{% if videoImage is not empty %}{{ videoImage }}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}",
                           "category":"{{ firstVideo.theme|trans_fallback('name') }}",
-                          "date":"{{firstVideo.publishedAt()|date('d/m/Y') }}",
+                          "date":"{{ firstVideo.publishedAt()|date('d/m/Y') }}",
                           "hour":"{{ firstVideo.publishedAt()|date('H:i') }}"
                         }{% if loop.last %}{% else %},{% endif %}{% endfor %}
                     ]'>
@@ -56,7 +56,10 @@
                             <div class="info">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="#" class="category">{{ video.mediaVideo.theme|trans_fallback('name') }}</a><span class="date">{{ video.mediaVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(video.mediaVideo.publishedAt|date('H:i'), true, true) }}</span>
+                                        <a href="#"
+                                           class="category">{{ video.mediaVideo.theme|trans_fallback('name') }}</a><span
+                                                class="date">{{ video.mediaVideo.publishedAt|date('d.m.y') }}</span> .
+                                        <span class="hour">{{ agenda_leftbar_translate_hour(video.mediaVideo.publishedAt|date('H:i'), true, true) }}</span>
                                         <p>{{ video.mediaVideo|trans_fallback('title') }}</p>
                                     </div>
                                 </div>
@@ -65,8 +68,10 @@
                         {% set break = 1 %}
                     {% endfor %}
                 </div>
-            </div>
-            <div id="slider-movie-videos" class="owl-carousel sliderDrag">
+            </article>
+        </div>
+        <div class="videos block-01">
+            <div id="slider-movie-videos" class="block-list-img slider-02 s-video-playlist sliderDrag">
                 {% for video in videos %}
                     {% set video = video.mediaVideo %}
                     {% set trans = video.findTranslationByLocale(app.request.locale) %}
@@ -75,15 +80,14 @@
                     {% endif %}
 
                     {% if trans is not null and trans.jobMp4State == 3 and
-                    trans.mp4Url is not null and trans.webmUrl is not null
-                    %}
+                    trans.mp4Url is not null and trans.webmUrl is not null %}
                         {% if video.image and video.image|trans_fallback('file') %}
                             {% set videoImage = media_public_url(video.image|trans_fallback('file'), '586x370') %}
                         {% elseif video|trans_fallback('imageAmazonUrl') %}
                             {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                         {% endif %}
                         <div class="slide-video shadow-bottom">
-                            <img src="{{ videoImage }}" alt="" width="293" height="185" />
+                            <img src="{{ videoImage }}" alt="" width="293" height="185"/>
                             <a class="linkVid" href="#"></a>
                             <div class="info">
                                 <div class="picto"><i class="icon icon_video"></i></div>
