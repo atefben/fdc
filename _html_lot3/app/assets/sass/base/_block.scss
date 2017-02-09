@@ -1259,10 +1259,8 @@
     justify-content: initial;
     text-align: center;
 
+    height: 140px;
 
-    @media  only screen and (max-width: 1200px) {
-      height: 140px;
-    }
 
     .ie & {
       padding-top: 0px !important;

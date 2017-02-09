@@ -26,13 +26,6 @@ $(document).ready(function () {
         $('body').addClass('ie');
     }
 
-    function isMacintosh() {
-        return navigator.platform.indexOf('Mac') > -1
-    }
-
-    function isWindows() {
-        return navigator.platform.indexOf('Win') > -1
-    }
 
     initHeaderSticky();
     // owInitLinkChangeEffect(); add ??

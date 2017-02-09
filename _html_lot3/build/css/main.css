@@ -4121,11 +4121,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   -ms-flex-pack: initial;
       justify-content: initial;
   text-align: center;
-}
-@media only screen and (max-width: 1200px) {
-  .block-poster .contain-txts {
-    height: 140px;
-  }
+  height: 140px;
 }
 .ie .block-poster .contain-txts {
   padding-top: 0px !important;
