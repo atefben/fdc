@@ -771,17 +771,7 @@ var fixed = false;
 
 
  $(document).scroll(function() {
-   if( $(this).scrollTop() >= topTrigger ) {
-     if( !fixed ) {
-       fixed = true;
-       $('.subNavigation').addClass("subNavigationFixed");
-     }
-   } else {
-     if( fixed ) {
-       fixed = false;
-       $('.subNavigation').removeClass("subNavigationFixed");
-     }
-   }
+
  });
 
 var len = $(".partnersTabs");
