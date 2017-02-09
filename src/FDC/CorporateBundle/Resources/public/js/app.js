@@ -3138,7 +3138,7 @@ var onInitParallax = function () {
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
        $('.block-push').css('background-position', '0px -10px');
 
-        $(window).on('scroll', function () {
+        /*$(window).on('scroll', function () {
 
             if ($('header.sticky').length) {
                 var s = $(this).scrollTop() - 240;
@@ -3147,7 +3147,7 @@ var onInitParallax = function () {
                 $('.block-push').css('background-position', '0px ' + '-240px');
             }
 
-        });
+        });*/
     }
 
 };
