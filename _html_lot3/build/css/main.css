@@ -6954,10 +6954,6 @@ body.chocolat-open > .chocolat-content {
   height: 404px;
 }
 
-.block-search .content-result .item {
-  width: 162px;
-}
-
 .isotope-01 .item.block-poster img {
   display: block;
 }
@@ -7081,8 +7077,8 @@ h2.sub-title {
   color: #ccc;
 }
 
-.story-movie .wysiwyg-article-02 .contain-title p {
-  margin-bottom: 18px;
+.wysiwyg-article-02 .contain-title p {
+  margin-bottom: 39px;
 }
 
 .article-single .block-push-top .vFlexAlign {
