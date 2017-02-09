@@ -3504,10 +3504,12 @@ var owFixImg = function(){
   }
 }
 
-var initFilterCheck = function() {
-  var $form = $('.block-searh-more form');
-  var $label = $form.find('.icon-s');
+var initFilterCheck = function(form) {
 
+
+  var $form = form.length ? form : $('.block-searh-more form');
+  var $label = $form.find('.icon-s');
+  
   $label.removeClass('active');
 
   $.each($label, function(i,e){
@@ -3516,11 +3518,12 @@ var initFilterCheck = function() {
 
       var element = $(e).find("input[type=checkbox]");
       element.parent().addClass('active');
-
+      
     }
 
   });
 }
+
 
 var truncTitleSearch = function() {
 
@@ -5830,6 +5833,11 @@ $(document).ready(function () {
     if($('.search-page-result').length) {
         initFilterCheck();
         truncTitleSearch();
+    }
+
+    if($('.search-page').length){
+        $form = $('.block-search form');
+        initFilterCheck($form);
     }
 
     setTimeout(function () {

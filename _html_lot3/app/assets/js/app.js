@@ -370,6 +370,11 @@ $(document).ready(function () {
         truncTitleSearch();
     }
 
+    if($('.search-page').length){
+        $form = $('.block-search form');
+        initFilterCheck($form);
+    }
+
     setTimeout(function () {
         $('body').removeClass('loading');
     }, 1000);
