@@ -1,0 +1,12 @@
+{% macro sliderImage(mediaImage) %}
+    {% spaceless %}
+        {% set mainTrans = mediaImage.findTranslationByLocale(app.request.locale) %}
+        {% if mainTrans and mainTrans.locale != 'fr' and mainTrans.status != 6) %}
+            {% set mainTrans = null %}
+        {% endif %}
+        {% if mainTrans is null or mainTrans.file is null %}
+            {% set mainTrans = mediaImage.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% path mainTrans.file, '1280x808' %}
+    {% endspaceless %}
+{% endmacro sliderImage %}
