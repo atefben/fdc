@@ -7,11 +7,13 @@ use Base\CoreBundle\Util\Time;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use FOS\ElasticaBundle\Configuration\Search;
 
 /**
  * MdfContentTemplateWidgetVideo
+ * @Search(repositoryClass="FDC\MarcheDuFilmBundle\SearchRepository\MdfContentTemplateWidgetVideoRepository")
  * @ORM\Table(name="mdf_content_template_widget_video")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateWidgetVideoRepository")
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
 class MdfContentTemplateWidgetVideo extends MdfContentTemplateWidget

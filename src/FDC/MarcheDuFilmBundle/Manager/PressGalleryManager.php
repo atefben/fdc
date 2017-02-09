@@ -36,4 +36,13 @@ class PressGalleryManager
                 )
             );
     }
+
+    public function findPressGalleryByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfPressGalleryTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

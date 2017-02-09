@@ -147,4 +147,13 @@ class ServicesManager
         }
         return [];
     }
+
+    public function findServiceByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(ServiceTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

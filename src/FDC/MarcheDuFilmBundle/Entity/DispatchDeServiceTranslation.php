@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * DispatchDeServicecTranslation
  * @ORM\Table(name="mdf_dispatch_de_service_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\DispatchDeServiceTranslationRepository")
  */
 class DispatchDeServiceTranslation
 {

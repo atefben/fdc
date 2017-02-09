@@ -42,12 +42,6 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
 
-    mdf.manager.services:
-        class: FDC\MarcheDuFilmBundle\Manager\ServicesManager
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@request_stack'
-
     mdf.manager.news:
         class: FDC\MarcheDuFilmBundle\Manager\NewsManager
         arguments:
