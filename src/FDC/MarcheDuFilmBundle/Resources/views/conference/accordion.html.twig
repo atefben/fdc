@@ -6,46 +6,50 @@
                     <div class="open">{{ day.date|date('d') }} {{ day.date|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ day.date|date('Y') }}<span class="openPlus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' noDisplay' : '' }}">+</span><span class="openMinus {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? ' doDisplay' : '' }}">-</span></div>
                     <div class="content" style="display: {{ day.date|date('m-d-y') == "now"|date("m-d-y") ? 'block' : 'none' }}">
                         <div class="parent">
-                            {% for event in programDaysEvents[day.id] %}
-                                <div class="box events">
-                                    <div class="conf70">
-                                        <span class="customClass1">{{ event.title }}</span><br>
-                                        <h6 class="confDetails confDetailsTop">{{ event.subTitle }}</h6>
-                                        {{ event.description }}
-                                        <div class="confPeople">
-                                            <hr>
-                                            <h6 class="confDetails">{{ event.speakersTitle }}</h6>
-                                            {% if eventsSpeakers[event.translatable.id] is defined %}
-                                                {% for item in eventsSpeakers[event.translatable.id] %}
-                                                    <div class="quarterWidth">
-                                                        <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
-                                                        <div class="name">
-                                                            <h6 class="customClass1">{{ item.name }}</h6>
+                            {% if programDaysEvents[day.id] is defined and programDaysEvents[day.id]|length > 0 %}
+                                {% for event in programDaysEvents[day.id] %}
+                                    <div class="box events">
+                                        <div class="conf70">
+                                            <span class="customClass1">{{ event.title }}</span><br>
+                                            <h6 class="confDetails confDetailsTop">{{ event.subTitle }}</h6>
+                                            {{ event.description }}
+                                            <div class="confPeople">
+                                                <hr>
+                                                <h6 class="confDetails">{{ event.speakersTitle }}</h6>
+                                                {% if eventsSpeakers[event.translatable.id] is defined %}
+                                                    {% for item in eventsSpeakers[event.translatable.id] %}
+                                                        <div class="quarterWidth">
+                                                            <img src="{% path item.translatable.image|trans_fallback('file'), 'reference' %}">
+                                                            <div class="name">
+                                                                <h6 class="customClass1">{{ item.name }}</h6>
+                                                            </div>
+                                                            <div class="name">
+                                                                <p>{{ item.description }}</p>
+                                                            </div>
                                                         </div>
-                                                        <div class="name">
-                                                            <p>{{ item.description }}</p>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="conf30Sharp">
+                                            <div>
+                                                <span>{{ 'program.hour_label'|trans }}</span>
+                                                <p>{{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} {{ 'program.hour_to'|trans }} {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }}</p>
+                                            </div>
+                                            <div>
+                                                <span>{{ 'program.place_label'|trans }}</span>
+                                                <p>{{ event.eventPlace }}</p>
+                                            </div>
+                                            <div>
+                                                <span>{{ 'program.access_type_label'|trans }}</span>
+                                                <p>{{ event.eventAccessType }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="conf30Sharp">
-                                        <div>
-                                            <span>{{ 'program.hour_label'|trans }}</span>
-                                            <p>{{ event.translatable.startTimeEvent|date("G\\h i")|replace({' ':''}) }} {{ 'program.hour_to'|trans }} {{ event.translatable.endTimeEvent|date("G\\h i")|replace({' ':''}) }}</p>
-                                        </div>
-                                        <div>
-                                            <span>{{ 'program.place_label'|trans }}</span>
-                                            <p>{{ event.eventPlace }}</p>
-                                        </div>
-                                        <div>
-                                            <span>{{ 'program.access_type_label'|trans }}</span>
-                                            <p>{{ event.eventAccessType }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="events message">{{ 'no_conference_events_available'|trans }}</div>
+                            {% endif %}
                         </div>
                     </div>
                 </li>
