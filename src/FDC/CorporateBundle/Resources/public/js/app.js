@@ -3886,7 +3886,8 @@ var owInitSlider = function (sliderName) {
         });
 
         $('.slider-home').on('click', function(e){
-
+            console.log($(e.target));
+            console.log($(e.target).hasClass('owl-dots'));
             if($(e.target).hasClass('owl-dots')){
                 return false;
             }else{
