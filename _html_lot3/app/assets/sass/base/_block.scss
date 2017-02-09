@@ -1247,6 +1247,10 @@
     display: inline-block;
   }
 
+  .last-line {
+    margin-bottom: 0px;
+  }
+
   .contain-txts {
     box-sizing: border-box;
     padding-top: 27px;
@@ -1254,6 +1258,11 @@
     flex-direction: column;
     justify-content: initial;
     text-align: center;
+
+
+    @media  only screen and (max-width: 1200px) {
+      height: 140px;
+    }
 
     .ie & {
       padding-top: 0px !important;
