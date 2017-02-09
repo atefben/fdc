@@ -4,9 +4,9 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 
 use FDC\MarcheDuFilmBundle\Entity\GalleryMdf;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
-use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideo;
 use FDC\MarcheDuFilmBundle\Entity\MediaMdfImage;
+use FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,7 +39,7 @@ class SearchController extends Controller
 
             // documentResults
             $items['documentResults'] = $repositoryManager
-                ->getRepository(MdfContentTemplateWidgetFile::class)
+                ->getRepository(MediaMdfPdf::class)
                 ->findWithCustomQuery($locale, $searchTerm);
 
             // mediaResults

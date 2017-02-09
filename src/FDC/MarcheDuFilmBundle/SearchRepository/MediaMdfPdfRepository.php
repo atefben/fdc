@@ -4,7 +4,7 @@ namespace FDC\MarcheDuFilmBundle\SearchRepository;
 
 use FDC\MarcheDuFilmBundle\Component\Elastica\SearchRepository;
 
-class MdfContentTemplateWidgetFileRepository extends SearchRepository
+class MediaMdfPdfRepository extends SearchRepository
 {
     public function findWithCustomQuery($_locale, $searchTerm)
     {
@@ -31,7 +31,7 @@ class MdfContentTemplateWidgetFileRepository extends SearchRepository
 
     private function getFieldsQuery($_locale, $searchTerm)
     {
-        $path = 'file.translations';
+        $path = 'translations';
         $fields = array(
             'name',
         );

@@ -613,14 +613,14 @@ fos_elastica:
                 document:
                     persistence:
                         driver: orm
-                        model: FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetFile
+                        model: FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf
                         provider: ~
                         listener:
                             immediate: ~
                         finder: ~
-                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfContentTemplateWidgetFileRepository
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MediaMdfPdfRepository
                     mappings:
-                        file.translations:
+                        translations:
                             type: nested
                             properties :
                                 name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
