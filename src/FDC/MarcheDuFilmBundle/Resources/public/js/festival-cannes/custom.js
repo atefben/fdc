@@ -7,7 +7,7 @@ window.onunload = function(){};
 /*CAROUSSELS OWL*/
 
 
-  /*if ($('#owl-top .item').length === 1) {
+  if ($('#owl-top .item').length === 1) {
       $('#owl-top').owlCarousel({
           items:1,
           dots: false,
@@ -110,10 +110,10 @@ window.onunload = function(){};
 
   });
 
-    }*/
+    }
 
 /* BOX SERVICES and RESULTS*/
-/*
+
     var servicesBoxes = $('.services-boxes');
     var selectedBox = $('.services-pictures div');
 
@@ -164,7 +164,7 @@ window.onunload = function(){};
         showAllSearchResults($(this).attr("rel"));
       });
     });
-    */
+  
  function showAllSearchResults(category)
  {
      var results = $('.results-content .' + category + ' .result');
@@ -255,7 +255,7 @@ $(window).scroll(function(){
 
 $(window).scroll(function(){
 
-    /*if ($(".contact-box").offset()) {
+    if ($(".contact-box").offset()) {
       if ($("body").scrollTop() > $(".contact-box").offset().top) {
         $(".floatingButtonLeft, .floatingButtonRight").hide();
       }
@@ -267,7 +267,7 @@ $(window).scroll(function(){
     } else {
       $("#leaderBoard").show();
       $("#logo-wrapper").css("overflow", "hidden");
-    }*/
+    }
 
 });
 
