@@ -5266,6 +5266,11 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-contain-txt-register-movie .info {
   text-align: left;
 }
+.block-contain-txt-register-movie .info .title-info {
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  display: block;
+}
 .block-contain-txt-register-movie em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
@@ -5742,6 +5747,14 @@ strong.title-center {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
   letter-spacing: normal;
+}
+
+.text-grey-bkg-container-paragraph {
+  background-color: #f6f6f6;
+  display: block;
+  font-size: 1rem;
+  padding: 20px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 
 @font-face {
