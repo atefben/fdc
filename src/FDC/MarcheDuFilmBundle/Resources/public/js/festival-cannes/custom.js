@@ -225,12 +225,10 @@ function hoverSearch() {
         });
 
     $(".liSearchBox").mouseover(function() {
-
             $('#navigation li').addClass('marginli');
             $('#searchBar').addClass('marginLastli');
             $('.searchBox').addClass("showsearchBox");
             $('.icon_recherche').addClass("blackIcon");
-
       });
 
     $("#main, #logo-wrapper, .text-presentation ").click(function(e){
