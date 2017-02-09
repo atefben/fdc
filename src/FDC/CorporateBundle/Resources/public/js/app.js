@@ -2354,6 +2354,27 @@ var owInitGrid = function (id) {
             var title = $('.info strong a').text();
         }
 
+
+        if($('.item.block-poster').length) {
+            var stop = false;
+
+            $.each($('.item.block-poster'), function (i,e) {
+                var p = $(e).find('.title-12');
+
+                console.log(p.length )
+
+                if(p.length > 3){ 
+                    stop = true;
+                }
+
+                if(stop) {
+                    $('.block-poster .contain-txts').css('height',' 140px');
+                    $(window).trigger('resize');
+                    return false;
+                }
+            })
+        }
+
         return $grid;
     }
 
@@ -3142,9 +3163,9 @@ var onInitParallax = function () {
 
             if ($('header.sticky').length) {
                 var s = $(this).scrollTop() - 240;
-                $('.block-push').css('background-position', '0px ' + s + 'px');
+                $('.block-push.big').css('background-position', '0px ' + s + 'px');
             } else {
-                $('.block-push').css('background-position', '0px ' + '-240px');
+                $('.block-push.big').css('background-position', '0px ' + '-240px');
             }
 
         });
