@@ -133,3 +133,9 @@ fdc_marche_du_film:
     type:     annotation
     prefix:   /
     host: "%fdc_marche_du_film_domain%"
+
+fdc_court_metrage:
+    resource: "@FDCCourtMetrageBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host: "%fdc_court_metrage_domain%"
