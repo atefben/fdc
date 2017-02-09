@@ -237,9 +237,14 @@
   // padding-bottom: 55px;
   display: none;
 
-
   .info {
     text-align: left;
+
+    .title-info {
+      text-transform: uppercase;
+      margin-bottom: 7px;
+      display: block;
+    }
   }
 
   em {
@@ -832,4 +837,12 @@ strong.title-center {
       letter-spacing: normal;
     }
   }
+}
+
+.text-grey-bkg-container-paragraph {
+  background-color: #f6f6f6;
+  display: block;
+  font-size: 1rem;
+  padding: 20px;
+  font-family: $CamphorItalic;
 }
