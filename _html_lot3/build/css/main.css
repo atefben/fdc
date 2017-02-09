@@ -13466,6 +13466,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   vertical-align: sub;
   margin-right: 10px;
 }
+.block-search .icon-s .icon.icon-video {
+  height: 13px;
+  position: relative;
+  top: -1px;
+}
 .block-search .icon-s input {
   opacity: 0;
   position: absolute;
