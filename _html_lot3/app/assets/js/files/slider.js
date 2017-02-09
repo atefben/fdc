@@ -223,8 +223,9 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('update', function (values, handle) {
 
+            var nm = isMac ? 4 : 21;
             //drag
-            var w = $(window).width() + 4;
+            var w = $(window).width() + nm;
             var number = 0;
 
 

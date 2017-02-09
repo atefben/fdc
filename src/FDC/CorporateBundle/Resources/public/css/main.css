@@ -4784,6 +4784,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   border-bottom: 1px solid #e0e0e0;
   padding: 41px 0;
 }
+.block-accordion-02 .item-partners.last {
+  border-bottom: 0px solid #e0e0e0;
+}
 .block-accordion-02 .item-partners .text-partners {
   width: 551px;
   display: inline-block;

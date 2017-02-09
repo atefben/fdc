@@ -4048,8 +4048,9 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('update', function (values, handle) {
 
+            var nm = isMac ? 4 : 21;
             //drag
-            var w = $(window).width() + 4;
+            var w = $(window).width() + nm;
             var number = 0;
 
 
@@ -5494,6 +5495,14 @@ $(document).ready(function () {
 
     if (/MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent)) {
         $('body').addClass('ie');
+    }
+
+    function isMacintosh() {
+        return navigator.platform.indexOf('Mac') > -1
+    }
+
+    function isWindows() {
+        return navigator.platform.indexOf('Win') > -1
     }
 
     initHeaderSticky();
