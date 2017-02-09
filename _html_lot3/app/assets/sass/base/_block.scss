@@ -2050,6 +2050,10 @@
     .item-partners {
       border-bottom: 1px solid #e0e0e0;
       padding: 41px 0;
+
+      &.last{
+        border-bottom: 0px solid #e0e0e0;
+      }
     }
 
     .item-partners .text-partners {
