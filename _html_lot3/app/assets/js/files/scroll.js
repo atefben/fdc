@@ -148,6 +148,10 @@ var scrollSingleMovie = function () {
                 $('.nav, .prevmovie, .nextmovie').removeClass('black');
             }
 
+            if(! $('div.press').length > 0) {
+                $('.nav, .prevmovie, .nextmovie').addClass('black');
+            }
+
             if ($('.main-image').length > 0 && (s > 100 && $('.main-image').hasClass('trailer'))) {
 
                 if ($('body').hasClass('tablet')) {

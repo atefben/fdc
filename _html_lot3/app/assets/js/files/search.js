@@ -251,7 +251,7 @@ var initFilterCheck = function(form) {
 
       var element = $(e).find("input[type=checkbox]");
       element.parent().addClass('active');
-      
+
     }
 
   });
