@@ -366,7 +366,8 @@ $(document).ready(function () {
 
 
     if($('.search-page-result').length) {
-        initFilterCheck();
+        $form = $('.block-searh-more form');
+        initFilterCheck($form);
         truncTitleSearch();
     }
 
