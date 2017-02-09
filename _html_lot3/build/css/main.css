@@ -5263,6 +5263,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-top: 55px;
   display: none;
 }
+.block-contain-txt-register-movie .info {
+  text-align: left;
+}
 .block-contain-txt-register-movie em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
