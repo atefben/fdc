@@ -3,9 +3,9 @@
 {% if movies|length %}
     <div class="competition">
         <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ movie.festival.year }}</h2>
-        <div id="slider-competition" class="owl-carousel sliderDrag">
+            <div id="slider-competition" class="slider-03">
             {% for movie in movies %}
-                <div class="slide">
+                <div class="slide item">
                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: movie,
                     film_format: '240x320',
