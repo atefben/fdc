@@ -348,7 +348,7 @@ $(document).ready(function () {
 
     if ($('.webtv-ba').length) {
         // Scroll
-        $(window).on('scroll', function () {
+        $(window).on('scroll', function () {console.log('7');
             var s = $(window).scrollTop();
             var h = $("#main").height() - 900;
 

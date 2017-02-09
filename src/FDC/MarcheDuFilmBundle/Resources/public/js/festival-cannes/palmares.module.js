@@ -26,7 +26,7 @@ $(document).ready(function() {
     });
 
     //Scroll
-    $(window).on('scroll', function() {console.log('2');
+    $(window).on('scroll', function() {console.log('4');
       var s = $(window).scrollTop(),
           h = $("#main").height()-900;
 

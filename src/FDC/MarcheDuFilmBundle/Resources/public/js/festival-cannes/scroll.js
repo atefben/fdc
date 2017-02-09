@@ -135,7 +135,7 @@ $(document).ready(function () {
         $navMovie = $('#nav-movie'),
         $faqmenu = $(".faq-menu");
 
-    $(window).on('scroll', function () {
+    $(window).on('scroll', function () {console.log('6');
         var s = $(this).scrollTop();
         scrollTarget = s;
 
