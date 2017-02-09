@@ -136,6 +136,11 @@ header .user-nav li a.account {
     display: none!important;
 }
 
+
+header.sticky #sticky-user .user-nav a {
+    background: #000!important;
+}
+
 @media screen and (min-width: 1279px) {
     .tabpicturesBox img {
         width: 266px;
