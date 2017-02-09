@@ -32,7 +32,7 @@
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
     return url.link(url);
-  });
+  }); 
 };
 
 // parse twitter username in String
