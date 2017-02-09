@@ -652,6 +652,10 @@
 .block-videos {
   padding-top: 25px;
   padding-bottom: 25px;
+
+  & + .block-legend {
+    padding-top: 21px;
+  }
 }
 
 // - BLOCK FILMS
