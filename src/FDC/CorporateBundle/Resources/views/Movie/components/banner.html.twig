@@ -20,7 +20,7 @@
     <div class="trailer">
         {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
             {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
-            <div class="video-container state-init video"
+            <div class="video-container state-init"
                  data-file='[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                  data-vid="{{ trans.id }}"
                  data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
@@ -28,11 +28,10 @@
                  film_format: '976x535',
                  display_film_path: true,
                  film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                 }) %}{% endspaceless %}"
-            >
+                 }) %}{% endspaceless %}">
                 <div id="video-movie-trailer" class="video-player"></div>
                 <div class="video-overlay"></div>
-                <div class="infos-bar">
+                <div class="infos-bar hide-info">
                     <div class="picto"><i class="icon icon_video"></i></div>
                     <div class="info">
                         <div class="vCenter">
@@ -47,6 +46,7 @@
         {% endif %}
     </div>
 </div>
+
 <div class="container container-top">
     {% set hasVideo = false %}
     {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
