@@ -108,9 +108,9 @@ window.onunload = function(){};
       margin:10,
       navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
 
-  });*/
+  });
 
-    }
+    }*/
 
 /* BOX SERVICES and RESULTS*/
 /*
