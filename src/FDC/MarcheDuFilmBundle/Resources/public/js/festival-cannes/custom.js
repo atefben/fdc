@@ -200,7 +200,7 @@ function menuMDF() {
 
 menuMDF();
 
-$(window).scroll(function(){console.log('1');
+$(window).scroll(function(){
     if ($(window).scroll(200)){
         $('#leaderBoard').hide();
     } else {
@@ -244,7 +244,7 @@ function hoverSearch() {
 hoverSearch();
 
 
-$(window).scroll(function(){console.log('2');
+$(window).scroll(function(){
    if ($(this).scrollTop() > 400 && $(this).scrollTop() < 2000) {
         $(".floatingButtonLeft, .floatingButtonRight").addClass("showBtn");
     }
@@ -253,9 +253,9 @@ $(window).scroll(function(){console.log('2');
     }
 });
 
-$(window).scroll(function(){console.log('3');
+$(window).scroll(function(){
 
-    if ($(".contact-box").offset()) {
+    /*if ($(".contact-box").offset()) {
       if ($("body").scrollTop() > $(".contact-box").offset().top) {
         $(".floatingButtonLeft, .floatingButtonRight").hide();
       }
@@ -267,7 +267,7 @@ $(window).scroll(function(){console.log('3');
     } else {
       $("#leaderBoard").show();
       $("#logo-wrapper").css("overflow", "hidden");
-    }
+    }*/
 
 });
 
@@ -428,7 +428,6 @@ function click() {
 
             $(this).removeClass('purpleBtn');
 
-            console.log("class removed");
               var index = el.indexOf(identification);
               if (index > -1) {
                   el.splice(index, 1);
@@ -442,8 +441,6 @@ function click() {
                   insertNoEventMessage(el);
               });
               $('#' + attr).hide();
-              console.log("removed " + identification);
-              console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
                   $('.parent > div').fadeOut(200);
@@ -466,7 +463,6 @@ function click() {
         el.push(identification);
         el.push(attr);
 
-        console.log(el);
 
           if (this.id == 'all') {
             $('.parent > div').fadeIn(200);
@@ -477,18 +473,14 @@ function click() {
             $(this).siblings().removeClass('purpleBtn');
             $('.events').removeClass('hideContent');
             el = [];
-            console.log(el);
             removeNoEventMessages();
           } else if (el){
               $('.selectText').hide();
               $.each(el, function(i, val) {
-                  console.log(val);
                  $('.' + val).show();
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
                  $('#' + val).show();
-                  console.log("here is " + val);
-                  console.log("here is " + attr);
                   if ($(identification) != val) {
                     $("." + identification).addClass('hideContent');
                   }
@@ -770,7 +762,7 @@ var fixed = false;
  var topTrigger = $('.subNavigation').length ? $('.subNavigation').offset().top - 250 : 0;
 
 
- $(document).scroll(function() {console.log('4');
+ $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {
        fixed = true;
