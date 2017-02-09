@@ -132,6 +132,10 @@ sub {
   color: #141414;
 }
 
+header .user-nav li a.account {
+    display: none!important;
+}
+
 @media screen and (min-width: 1279px) {
     .tabpicturesBox img {
         width: 266px;

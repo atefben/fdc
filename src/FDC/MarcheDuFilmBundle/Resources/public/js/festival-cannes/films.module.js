@@ -3,7 +3,7 @@
 $(document).ready(function() {
   if($('.list-article').length) {
     if($('.nav-list').length) {
-      $(window).on('scroll', function() {console.log('1');
+      $(window).on('scroll', function() {
         var s = $(window).scrollTop();
         var h = $("#main").height()-900;
 

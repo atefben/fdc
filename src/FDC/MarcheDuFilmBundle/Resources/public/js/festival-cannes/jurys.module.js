@@ -57,7 +57,7 @@ $(document).ready(function() {
     });
 
     //Scroll
-    $(window).on('scroll', function() {console.log('2');
+    $(window).on('scroll', function() {
       var s = $(window).scrollTop();
       var h = $("#main").height()-900;
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
   //2. Artist
   if($('.artist').length) {
-    $(window).on('scroll', function() {console.log('3');
+    $(window).on('scroll', function() {
       var s = $(window).scrollTop(),
           h = $('#main').height() - 900;
 

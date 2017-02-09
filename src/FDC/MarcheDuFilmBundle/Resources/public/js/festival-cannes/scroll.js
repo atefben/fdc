@@ -135,8 +135,8 @@ $(document).ready(function () {
         $navMovie = $('#nav-movie'),
         $faqmenu = $(".faq-menu");
 
-    $(window).on('scroll', function () {console.log('6');
-        var s = $(this).scrollTop();
+    $(window).on('scroll', function () {
+    /*    var s = $(this).scrollTop();
         scrollTarget = s;
 
         // STICKY HEADER
@@ -415,7 +415,7 @@ $(document).ready(function () {
 
         }
 
-        lastScrollTop = s;
+        lastScrollTop = s;*/
     });
 
     // ---------- PARALLAX ------------
