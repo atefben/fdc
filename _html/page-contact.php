@@ -80,7 +80,6 @@
               </div>
               <div class="errorMessage">
                   <div class="redMessage">• L’adresse email n’est pas valide</div>
-                  <div class="redMessage">• L’objet de votre message n’est pas renseigné</div>
               </div>
 
             </section>
