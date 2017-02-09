@@ -23,44 +23,23 @@ class MediaToElasticaTransformer extends ModelToElasticaAutoTransformer implemen
 
         // customize indexes taking care of MdfContentTemplateWidget type
         switch ($className->getShortName()) {
+            case 'MediaMdfImage':
+                if (is_null($object->getTheme())) {
+                    $object->setTheme(new MdfTheme());
+                    unset($fields['theme.translations']);
+                }
+
+                if (empty($object->getTags())) {
+                    unset($fields['tags']);
+                }
+                break;
             case 'MdfContentTemplateWidgetVideo':
-                unset($fields['gallery.translations']);
-                unset($fields['image']);
-                
                 // if theme isn't set, should remove indexation
                 if (is_null($object->getTheme())) {
                     $object->setTheme(new MdfTheme());
                     unset($fields['theme.translations']);
                 } 
                 break;
-            case 'MdfContentTemplateWidgetImage':
-                unset($fields['gallery.translations']);
-                unset($fields['translations']);
-                unset($fields['theme.translations']);
-                
-                // if theme isn't set, should remove indexation
-                if (is_null($object->getImage()->getTheme())) {
-                    $object->getImage()->setTheme(new MdfTheme());
-                    unset($fields['image.theme.translations']);
-                }                    
-                break;
-            case 'MdfContentTemplateWidgetGallery':
-                unset($fields['image']);
-                unset($fields['translations']);
-                unset($fields['theme.translations']);
-                
-                // if gallery isn't set, should remove indexation
-                if (is_null($object->getGallery())) {
-                    unset($fields['gallery.translations']);
-                } 
-                break;
-            case 'MdfContentTemplateWidgetFile':
-            case 'MdfContentTemplateWidgetText':
-            unset($fields['gallery.translations']);
-            unset($fields['image']);
-            unset($fields['translations']);
-            unset($fields['theme.translations']);
-            break;
             default:
                 break;
         }

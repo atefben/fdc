@@ -19,4 +19,27 @@ class MdfConferencePartnerTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    public function getByMedia($locale, $filters)
+    {
+        $qb = $this
+            ->createQueryBuilder('cptt')
+            ->join('cptt.translatable', 'cp')
+            ->where('cptt.locale = :locale')
+            ->setParameter('locale', $locale)
+        ;
+
+        if ($filters['type'] == 'image') {
+            $qb
+                ->join('cp.partnerTabCollection', 'cptc')
+                ->join('cptc.conferencePartnerTab', 'cpt')
+                ->join('cpt.partnerLogoCollection', 'cplc')
+                ->join('cplc.conferencePartnerLogo', 'cpl')
+                ->andWhere('cpl.image = :image')
+                ->setParameter('image', $filters['id'])
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

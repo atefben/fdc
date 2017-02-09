@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * HomeSliderTopTranslation
  * @ORM\Table(name="mdf_homepage_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfHomepageTranslationRepository")
  */
 class MdfHomepageTranslation
 {

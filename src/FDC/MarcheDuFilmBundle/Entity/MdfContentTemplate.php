@@ -29,6 +29,18 @@ class MdfContentTemplate implements TranslateMainInterface
     const TYPE_GENERAL_CONDITIONS = 'general_conditions';
     const TYPE_NEWS_DETAILS = 'news_details';
 
+    public static $CONTENT_TEMPLATE_OPTIONS = array(
+        self::TYPE_EDITION_PRESENTATION,
+        self::TYPE_EDITION_PROJECTIONS,
+        self::TYPE_INDUSTRY_PROGRAM_HOME,
+        self::TYPE_WHO_ARE_WE_HISTORY,
+        self::TYPE_WHO_ARE_WE_KEY_FIGURES,
+        self::TYPE_WHO_ARE_WE_ENVIRONMENTAL_APPROACHES,
+        self::TYPE_LEGAL_MENTIONS,
+        self::TYPE_GENERAL_CONDITIONS,
+        self::TYPE_NEWS_DETAILS,
+    );
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")

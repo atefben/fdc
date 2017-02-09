@@ -44,4 +44,13 @@ class WhoAreWeTeamManager
                 )
             );
     }
+
+    public function findWhoAreWeTeamByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfWhoAreWeTeamTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

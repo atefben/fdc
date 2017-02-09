@@ -37,4 +37,13 @@ class SliderAccreditationManager
         
         return [];
     }
+
+    public function findSliderAccreditationByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfSliderAccreditationTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

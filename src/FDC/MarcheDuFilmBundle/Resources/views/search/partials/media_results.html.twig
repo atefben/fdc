@@ -5,36 +5,24 @@
         <div class="seeAll customClass4" rel="medias">{{ 'search.see_all'|trans }}</div>
     </div>
 
+    {% set icons = { 'image': 'icon-photo.png', 'video': 'icon-play.png', 'gallery': 'icon-photo.png'} %}
+
     {% for media in items.mediaResults%}
-        {% if media.isWidgetGallery() %}
-            {% set translation = media.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
-            {% set icon = 'icon-photo.png' %}
-            {% set type = 'gallery' %}
-            {% set image =  media.gallery.medias[0].media %}
-        {% elseif media.isWidgetImage() %}
-            {% set translation = media.image.findTranslationByLocale(app.request.locale) %}
-            {% set icon = 'icon-photo.png' %}
-            {% set type = 'image' %}
-            {% set image =  media.image %}
-        {% elseif media.isWidgetVideo() %}
-            {% set translation = media.image.findTranslationByLocale(app.request.locale) %}
-            {% set icon = 'icon-play.png' %}
-            {% set type = 'video' %}
-            {% set image =  media.image %}
-        {% endif %}
+
         <div class="articles result" {% if loop.index > 3  %} hidden {% endif %}>
             <div class="articles-content">
-                <a href="{{ path('fdc_marche_du_film_get_media_source', {'id': media.id, 'type': type }) }}" target="_blank">
+                <a href="{{ path('fdc_marche_du_film_get_media_source', {'id': media.id, 'type': media.type }) }}" target="_blank">
                     <div class="photoWrapper">
-                        <img class="floatingIcon" src="{{ asset('bundles/fdcmarchedufilm/img/' ~ icon ) }}">
-                        <img class="mainPic" src="{% path image|trans_fallback('file'), 'reference' %}">
+                        <img class="floatingIcon" src="{{ asset('bundles/fdcmarchedufilm/img/' ~ icons[media.type] ) }}" alt="alt-{{ media.type }}">
+                        <img class="mainPic" src="{% path media.image|trans_fallback('file'), 'reference' %}" alt="{{ media.alt }}">
                     </div>
                 </a>
                 <div class="textWrapper">
-                    <h6 class="blackTitle">{{ translation.legend|slice(0, 20) }}</h6>
+                    <h6 class="blackTitle">{{ media.title|slice(0, 20) }}</h6>
                 </div>
             </div>
         </div>
+
     {% endfor %}
 
     <hr>
