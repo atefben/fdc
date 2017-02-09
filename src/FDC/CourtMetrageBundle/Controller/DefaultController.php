@@ -17,12 +17,12 @@ use FDC\CourtMetrageBundle\Form\Type\ShareEmailType;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        return;
     }
 
 

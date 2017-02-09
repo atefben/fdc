@@ -2515,3 +2515,17 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Sub Menu Item, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_homepage_slider_top_dummy:
+        class: Base\AdminBundle\Admin\MediaImageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSlider, BaseAdminBundle:MediaImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Homepage Slider, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_homepage:
+        class: Base\AdminBundle\Admin\CCM\HomepageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\Homepage, BaseAdminBundle:CCM:HomepageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Homepage}

@@ -837,3 +837,12 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_film_register_procedure_dummy']]
             - ['setRegisterProcedureAdmin', ['@base.admin.ccm_register_procedure']]
+
+    base.admin.form.homepage_slider_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\HomepageSliderType
+        tags:
+            - { name: form.type, alias: 'homepage_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_homepage']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image']]

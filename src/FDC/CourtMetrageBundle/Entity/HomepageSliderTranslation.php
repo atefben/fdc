@@ -135,4 +135,19 @@ class HomepageSliderTranslation
 
         return $this;
     }
+
+    /**
+     * Get text sizes.
+     *
+     * @access public
+     * @static
+     */
+    public static function getTextSizes()
+    {
+        return array(
+            self::SMALL => 'form.ccm.size.small',
+            self::MEDIUM => 'form.ccm.size.small',
+            self::LARGE => 'form.ccm.size.small'
+        );
+    }
 }

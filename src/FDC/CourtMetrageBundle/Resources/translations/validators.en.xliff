@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2017-02-20T15:15:53Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a90957959f56b1c32cec424ea04538c391f01b9f" resname="ccm.validation.homepage.catalog.pushes_max">
+        <source>ccm.validation.homepage.catalog.pushes_max</source>
+        <target state="new">ccm.validation.homepage.catalog.pushes_max</target>
+      </trans-unit>
+      <trans-unit id="b9f6f9481dc454a4ec7f9ad325b4e05a1d6b977d" resname="ccm.validation.homepage.catalog.pushes_min">
+        <source>ccm.validation.homepage.catalog.pushes_min</source>
+        <target state="new">ccm.validation.homepage.catalog.pushes_min</target>
+      </trans-unit>
+      <trans-unit id="a32caadd4fad92be629ee61d599ce3b7267feed9" resname="ccm.validation.homepage.pushes_max">
+        <source>ccm.validation.homepage.pushes_max</source>
+        <target state="new">ccm.validation.homepage.pushes_max</target>
+      </trans-unit>
+      <trans-unit id="cf97f473df5129057a5d3558ed0a804cdd46f7ee" resname="ccm.validation.homepage.pushes_min">
+        <source>ccm.validation.homepage.pushes_min</source>
+        <target state="new">ccm.validation.homepage.pushes_min</target>
+      </trans-unit>
+      <trans-unit id="1f5a6cf7129781e0c46b99f99174fd5f348b459f" resname="ccm.validation.homepage.sliders_max">
+        <source>ccm.validation.homepage.sliders_max</source>
+        <target state="new">ccm.validation.homepage.sliders_max</target>
+      </trans-unit>
+      <trans-unit id="62509277d30cbd344933d5bedd894ecedab50889" resname="ccm.validation.homepage.sliders_min">
+        <source>ccm.validation.homepage.sliders_min</source>
+        <target state="new">ccm.validation.homepage.sliders_min</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
