@@ -12,6 +12,42 @@
     <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-movie">
+        <div class="prevmovie black">
+            <div class="img">
+                <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/05/thumb_4929_film_poster_156x206.jpeg" alt="">
+            </div>
+
+            <div class="info">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <h2>IL RACCONTO DEI RACCONTI</h2>
+                        <a href="#">Paolo SORRENTINO</a>
+                        <p>Pays : Italie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nextmovie black">
+            <div class="img">
+                <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/05/thumb_4929_film_poster_156x206.jpeg" alt="">
+            </div>
+            <div class="info">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <h2>Youth</h2>
+                        <a href="#">Paolo SORRENTINO</a>
+                        <p>Pays : Italie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrows visible">
+            <a href="#" class="nav prev black"><i class="icon icon-arrow-left"></i></a>
+            <a href="#" class="nav next black"><i class="icon icon-arrow-right"></i></a>
+        </div>
+        
         {% include 'FDCCorporateBundle:Movie:components/pagination.html.twig' %}
 
         <span id="plx"></span>
