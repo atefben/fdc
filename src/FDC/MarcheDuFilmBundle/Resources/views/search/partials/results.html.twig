@@ -1,19 +1,26 @@
 <div class="hideOverflow results-content">
+
+    {% if items.contentResults %}
         {% include
             'FDCMarcheDuFilmBundle::search/partials/content_results.html.twig'
             with
             { 'items': items}
         %}
-        
+    {% endif %}
+
+    {% if items.mediaResults %}
         {% include
             'FDCMarcheDuFilmBundle::search/partials/media_results.html.twig'
             with
             { 'items': items}
         %}
+    {% endif %}
 
+    {% if items.documentResults %}
         {% include
             'FDCMarcheDuFilmBundle::search/partials/document_results.html.twig'
             with
             { 'items': items}
         %}
+    {% endif %}
 </div>

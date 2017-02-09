@@ -37,4 +37,13 @@ class DispatchDeServiceManager
                 )
             );
     }
+
+    public function findDispatchDeServiceByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(DispatchDeServiceTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

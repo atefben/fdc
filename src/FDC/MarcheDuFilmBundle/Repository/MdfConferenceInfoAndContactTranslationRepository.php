@@ -19,4 +19,24 @@ class MdfConferenceInfoAndContactTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    public function getByMedia($locale, $filters)
+    {
+        $qb = $this
+            ->createQueryBuilder('cict')
+            ->join('cict.translatable', 'cic')
+            ->where('cict.locale = :locale')
+            ->setParameter('locale', $locale)
+        ;
+
+        if ($filters['type'] == 'image') {
+            $qb
+                ->join('cic.conferenceInfoAndContactWidgets', 'cicw')
+                ->andWhere('cicw.image = :image')
+                ->setParameter('image', $filters['id'])
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

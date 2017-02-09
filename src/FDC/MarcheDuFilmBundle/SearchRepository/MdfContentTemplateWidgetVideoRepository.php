@@ -4,7 +4,7 @@ namespace FDC\MarcheDuFilmBundle\SearchRepository;
 
 use FDC\MarcheDuFilmBundle\Component\Elastica\SearchRepository;
 
-class MdfContentTemplateRepository extends SearchRepository
+class MdfContentTemplateWidgetVideoRepository extends SearchRepository
 {
     public function findWithCustomQuery($_locale, $searchTerm)
     {
@@ -16,18 +16,10 @@ class MdfContentTemplateRepository extends SearchRepository
             $stringQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm))
                 ->addShould($this->getThemeQuery($_locale, $searchTerm))
-                ->addShould($this->getWidgetsQuery($_locale, $searchTerm))
             ;
 
             $finalQuery->addMust($stringQuery);
         }
-
-//        $sortedQuery = new \Elastica\Query();
-//        $sortedQuery
-//            ->setQuery($statusQuery)
-////            ->addSort('_score')
-//            ->addSort(array('publishedAt' => array('order' => 'desc')))
-//        ;
 
         return $this->find($finalQuery);
     }
@@ -37,7 +29,6 @@ class MdfContentTemplateRepository extends SearchRepository
         $path = 'translations';
         $fields = array(
             'title',
-            'header',
         );
 
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
@@ -47,16 +38,6 @@ class MdfContentTemplateRepository extends SearchRepository
     {
         $path = 'theme.translations';
         $fields = array('title');
-
-        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
-    }
-
-    private function getWidgetsQuery($_locale, $searchTerm)
-    {
-        $path = 'contentTemplateWidgets.translations';
-        $fields = array('title', 'contentText');
-
-
 
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
     }

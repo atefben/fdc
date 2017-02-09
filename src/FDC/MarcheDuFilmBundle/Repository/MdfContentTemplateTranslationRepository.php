@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Repository;
 
+use Doctrine\ORM\Query\Expr\Join;
 use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
 
 /**
@@ -181,12 +182,35 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('ctt')
             ->join('ctt.translatable', 'ct')
-            ->join('ct.contentTemplateWidgets', 'cttw')
-            ->where('ctt.locale = :locale')
-            ->andWhere('cttw.id = :id')
-//            ->andWhere('cttw.type = :type')
-            ->setParameter('id', $filters['id'])
-//            ->setParameter('type', $filters['type'])
+        ;
+
+        if ($filters['type'] == 'video') {
+            $qb
+                ->join('ct.contentTemplateWidgets', 'cttw')
+                ->andWhere('cttw.id = :id')
+                ->setParameter('id', $filters['id'])
+                ;
+        }
+
+        if ($filters['type'] == 'image') {
+            $qb
+                ->join('FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage', 'cttwi',Join::WITH, 'ct.id = cttwi.contentTemplate')
+                ->join('cttwi.image', 'cttwii')
+                ->andWhere('cttwii.id = :id')
+                ->setParameter('id', $filters['id'])
+            ;
+        }
+
+        if ($filters['type'] == 'gallery') {
+            $qb
+                ->join('FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery', 'cttwg',Join::WITH, 'ct.id = cttwg.contentTemplate')
+                ->andWhere('cttwg.gallery = :gallery')
+                ->setParameter('gallery', $filters['id'])
+            ;
+        }
+
+        $qb
+            ->andwhere('ctt.locale = :locale')
             ->setParameter('locale', $locale)
         ;
 

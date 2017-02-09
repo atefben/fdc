@@ -43,4 +43,13 @@ class ConferenceInfoAndContactManager
                 $id
             );
     }
+
+    public function findConferenceInfoAndContactByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfConferenceInfoAndContactTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

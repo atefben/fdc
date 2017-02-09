@@ -23,4 +23,29 @@ class ServiceTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    public function getByMedia($locale, $filters)
+    {
+        $qb = $this
+            ->createQueryBuilder('st')
+            ->join('st.translatable', 's')
+            ->where('st.locale = :locale')
+            ->setParameter('locale', $locale)
+        ;
+
+        if ($filters['type'] == 'image') {
+            $qb
+                ->join('s.widgetCollections', 'swc')
+                ->join('swc.widget', 'sw')
+                ->join('sw.productCollections', 'swpc')
+                ->join('swpc.product', 'swp')
+                ->join('swp.gallery', 'swpg')
+                ->join('swpg.medias', 'swpgm')
+                ->andWhere('swpgm.media = :image')
+                ->setParameter('image', $filters['id'])
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

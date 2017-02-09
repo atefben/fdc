@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * PressGalleryTranslation
  * @ORM\Table(name="mdf_press_gallery_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfPressGalleryTranslationRepository")
  */
 class MdfPressGalleryTranslation
 {

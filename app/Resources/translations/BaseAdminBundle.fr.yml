@@ -628,14 +628,16 @@ form:
             form_name: Gestion du partenaire de la conférence
             subtitle: Titre de page
             header: Chapô
-            partner_tab: Gestion des onglets de partenaires
+            partner_tab: Gestion de l'onglet de partenaire
+            tab_collection: Gestion des onglets disponibles
+            logo_collection: Logos partenaires
             tab:
                 title: Titre de l'onglet de partenaire
                 subTitle: Sous-titre de l'onglet partenaire
                 logo: Gestion des logos des partenaires
                 logos: Liste des onglets de partenaires disponibles
             logo:
-                form_label: Logos partenaires
+                form_label: Gestion du logo partenaire
                 url: Redirection au clic sur le logo
                 image: Gestion du visuel du logo
         conference_program:

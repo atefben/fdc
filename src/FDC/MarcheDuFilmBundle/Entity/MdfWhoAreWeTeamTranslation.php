@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * MdfWhoAreWeTeamTranslation
  * @ORM\Table(name="mdf_who_are_we_team_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfWhoAreWeTeamTranslationRepository")
  */
 class MdfWhoAreWeTeamTranslation
 {
