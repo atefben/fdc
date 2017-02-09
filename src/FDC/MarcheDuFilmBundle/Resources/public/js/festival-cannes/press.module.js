@@ -1485,7 +1485,7 @@ $(document).ready(function () {
   //downloding nav sticky
   if ($('.downloading-press').length) {
     //Scroll
-    $(window).on('scroll', function () {
+    $(window).on('scroll', function () {console.log('1');
       var s            = $(window).scrollTop(),
           h            = $("#main").height() - 180,
           affiche      = $('#affiche-officielle').length ? $('#affiche-officielle').offset().top - 180 : 0,
