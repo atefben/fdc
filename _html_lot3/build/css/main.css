@@ -13453,6 +13453,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .block-search .icon-s input {
   opacity: 0;
+  position: absolute;
 }
 .block-search .icon-s.active, .not-mobile .block-search .icon-s:hover {
   color: #c8a461;
