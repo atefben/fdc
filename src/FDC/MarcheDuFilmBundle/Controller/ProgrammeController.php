@@ -23,10 +23,6 @@ class ProgrammeController extends Controller
         $conferences = $conferenceManager->getAllConferenceTypes();
         $globalEventsPage = $programmeManager->getGlobalEventsPage();
 
-        if (!$globalEventsPage || !$globalEventsPage->getTranslatable()->isIsActive()) {
-            throw new NotFoundHttpException("Page not found");
-        }
-
         $globalEventsDays = $programmeManager->getGlobalEventsDays($globalEventsPage);
         $globalEventsSchedules = $programmeManager->getGlobalEventsSchedulesSorted($globalEventsDays);
 
