@@ -136,7 +136,7 @@ $(document).ready(function () {
         $faqmenu = $(".faq-menu");
 
     $(window).on('scroll', function () {
-    /*    var s = $(this).scrollTop();
+        var s = $(this).scrollTop();
         scrollTarget = s;
 
         // STICKY HEADER
@@ -415,7 +415,7 @@ $(document).ready(function () {
 
         }
 
-        lastScrollTop = s;*/
+        lastScrollTop = s;
     });
 
     // ---------- PARALLAX ------------
