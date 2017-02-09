@@ -176,3 +176,4 @@ services:
         arguments:
             - %fdc_marche_du_film_domain%
             - %mdf_locales%
+            - %kernel.default_locale%
