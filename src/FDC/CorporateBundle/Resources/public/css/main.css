@@ -6954,6 +6954,10 @@ body.chocolat-open > .chocolat-content {
   height: 404px;
 }
 
+.block-search .content-result .artist .item, .block-search .content-result .movies .item {
+  width: 162px;
+}
+
 .isotope-01 .item.block-poster img {
   display: block;
 }
@@ -7041,6 +7045,10 @@ h2.sub-title {
   font-size: .8rem;
 }
 
+.block-contain-txt-register-movie .info {
+  margin-top: 42px !important;
+}
+
 .text-01 sub {
   vertical-align: sub !important;
 }
@@ -7087,6 +7095,10 @@ h2.sub-title {
 
 .faq {
   min-height: 513px;
+}
+
+.article-single .text .table-article a strong, .single-movie .text .table-article a strong {
+  color: #c8a461;
 }
 
 /* thomon - end fixes */

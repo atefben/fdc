@@ -60,7 +60,7 @@ class MailerManager
             $message
                 ->setSubject($emailData['object'])
                 ->setFrom($this->translator->trans('email.from'))
-                ->setTo($emailData['emailTo'])
+                ->setTo($theme->getReceiverEmail())
                 ->setBody(
                     $this->templating->render(
                         'FDCMarcheDuFilmBundle::emails/contact.html.twig',

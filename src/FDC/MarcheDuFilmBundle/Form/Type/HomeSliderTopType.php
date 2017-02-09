@@ -67,7 +67,7 @@ class HomeSliderTopType extends AbstractType
                             'class' => 'hidden',
                         ),
                     ),
-                    'title'          => array(
+                    'title'             => array(
                         'label'              => 'form.mdf.label.top_slider.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
@@ -79,6 +79,10 @@ class HomeSliderTopType extends AbstractType
                         'label'              => 'form.mdf.label.top_slider.dateText',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'url'               => array(
+                        'label'              => 'form.mdf.label.slider.url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    )
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(

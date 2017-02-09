@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
 
 class MdfContactSubjectAdmin extends Admin
 {
@@ -56,7 +57,16 @@ class MdfContactSubjectAdmin extends Admin
                             new NotBlank(),
                         ),
                         'required' => true
-                    )
+                    ),
+                    'receiverEmail'          => array(
+                        'label'              => 'form.mdf.label.contact_page_email_receiver',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                            new Email(),
+                        ),
+                        'required' => true,
+                    ),
                 ),
             ))
         ;

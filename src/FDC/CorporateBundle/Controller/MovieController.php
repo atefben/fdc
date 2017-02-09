@@ -249,6 +249,18 @@ class MovieController extends Controller
                 ->getProjectionsByFestivalYearAndProgrammationSection($festival, $page->getTitle())
             ;
 
+            $selectionSectionTranslation = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmSelectionSectionTranslation')
+                ->findOneBy(['locale' => 'fr', 'name' => 'Cinéma de la plage'])
+            ;
+
+            $movies = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTranslation->getTranslatable()->getId())
+            ;
+
             // NEXT SELECTION
             $next = null;
             if (count($selectionTabs) > 0) {
@@ -268,6 +280,7 @@ class MovieController extends Controller
                 'page'            => $page,
                 'cinemaDeLaPlage' => $page,
                 'projections'     => $projections,
+                'movies'     => $movies,
                 'cannesClassics'  => $cannesClassics,
                 'selectionTabs'   => $selectionTabs,
                 'next'            => $next,

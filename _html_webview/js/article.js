@@ -97,7 +97,6 @@ var ow = ow || {};
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
 				var player = $(this);
-				console.log(player.data('file-mp3'));
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
 					"height": 90,

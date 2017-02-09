@@ -943,13 +943,13 @@ form:
             image2: Fond n°5
             image3: Fond n°8
             image4: Fond n°10
-            color1: Coleur n°1
-            color2: Coleur n°7
-            color3: Coleur n°6
-            color4: Coleur n°9
-            color5: Coleur n°3
-            color6: Coleur n°4
-            color7: Coleur n°11
+            color1: Couleur n°1
+            color2: Couleur n°7
+            color3: Couleur n°6
+            color4: Couleur n°9
+            color5: Couleur n°3
+            color6: Couleur n°4
+            color7: Couleur n°11
     media_pdf:
         helper_file: Format attendu : .pdf
     fdc_page_participate_section:

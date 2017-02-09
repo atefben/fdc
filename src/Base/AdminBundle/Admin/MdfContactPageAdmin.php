@@ -8,7 +8,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
-use Symfony\Component\Validator\Constraints\Email;
 
 class MdfContactPageAdmin extends Admin
 {
@@ -69,15 +68,6 @@ class MdfContactPageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
-                        ),
-                        'required' => true,
-                    ),
-                    'receiverEmail'          => array(
-                        'label'              => 'form.mdf.label.contact_page_email_receiver',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                            new Email(),
                         ),
                         'required' => true,
                     ),

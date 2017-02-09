@@ -76,7 +76,7 @@
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                    {% for locale in mdf_locales if locale != app.request.locale %}
                         <li>
                             <a href="{{ path('fdc_marche_du_film_homepage', { _locale: locale }) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                         </li>
@@ -107,7 +107,7 @@
                     <li class="lang">
                         <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                            {% for locale in mdf_locales if locale != app.request.locale %}
                                 <li>
                                     <a href="{{ path('fdc_marche_du_film_homepage', { _locale: locale }) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                                 </li>

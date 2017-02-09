@@ -3,33 +3,36 @@
 {% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark{% endblock %}
 
 {% block body %}
-<section class="border-bottom s-slider-retrospective">
+    <section class="border-bottom s-slider-retrospective">
 
-    {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
 
-    <div class="ajax-section"><div class="contain-ajax">
+        <div class="ajax-section">
+            <div class="contain-ajax">
 
-            {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
-            {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
+                {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
 
-            <div class="all-contain">
+                <div class="all-contain">
 
-                <div class="contain-title contain-title-small vFlexAlign border-bottom">
-                    <h2 class="title-04">{{ page|trans_fallback('subtitle') }}</h2>
-                </div>
-
-                {% for projection in projections %}
-                    {%  if projection.programmationFilms|length > 0 %}
-                        {% set film = projection.programmationFilms[0].film %}
-                        {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': film, 'projection': projection, 'restauration': true} %}
+                    {% if projections|length %}
+                        {% for projection in projections %}
+                            {% if projection.programmationFilms|length > 0 %}
+                                {% set film = projection.programmationFilms[0].film %}
+                                {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': film, 'projection': projection, 'restauration': true} %}
+                            {% endif %}
+                        {% endfor %}
+                    {% elseif movies|length %}
+                        {% for movie in movies %}
+                            {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': movie, 'restauration': true} only %}
+                        {% endfor %}
                     {% endif %}
-                {% endfor %}
 
-            </div> <!-- end all contain -->
+                </div> <!-- end all contain -->
+            </div>
         </div>
-    </div>
-</section>
+    </section>
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
@@ -61,6 +64,5 @@
         'title'  : '',
         'description': '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    }))
-    }}
+    })) }}
 {% endblock %}

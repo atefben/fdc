@@ -9,19 +9,19 @@ $(document).ready(function() {
       var input = $(this);
       var is_name = input.val();
       if(is_name){
-        input.removeClass("invalid").addClass("valid");
-        $('.errors .' + input.data('name')).remove();
+        input.removeClass("redRequired").addClass("valid");
+        $('.errorMessage .' + input.data('name')).remove();
       }
       else{
-        input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.data('name')).remove();
-        $('.errors ul').append('<li class="' + input.data('name') + '">' + input.data('error') + '</li>');
+        input.removeClass("valid").addClass("redRequired");
+        $('.errorMessage .' + input.data('name')).remove();
+        $('.errorMessage').append('<div class="redMessage ' + input.data('name') + '">' + input.data('error') + '</div>');
       }
 
-      if($('.invalid').length) {
-        $('.errors').addClass('show');
+      if($('.redRequired').length) {
+        $('.errorMessage').show();
       } else {
-        $('.errors').removeClass('show');
+        $('.errorMessage').hide();
       }
     });
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     $('body').on('click', '.selectOptions span', function() {
       $('select[data-name="select"]').val($(this).data('select'));
-      $('.select').removeClass('invalid');
+      $('.select').removeClass('redRequired');
     });
 
     // check valid email address
@@ -58,30 +58,30 @@ $(document).ready(function() {
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       var is_email=re.test(input.val());
       if(is_email){
-        input.removeClass("invalid").addClass("valid");
-        $('.errors .' + input.data('name')).remove();
+        input.removeClass("redRequired").addClass("valid");
+        $('.errorMessage .' + input.data('name')).remove();
       }
       else{
-        input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.data('name')).remove();
-        $('.errors ul').append('<li class="' + input.data('name') + '">' + input.data('error') + '</li>');
+        input.removeClass("valid").addClass("redRequired");
+        $('.errorMessage .' + input.data('name')).remove();
+        $('.errorMessage').append('<div class="redMessage ' + input.data('name') + '">' + input.data('error') + '</div>');
       }
 
-      if($('.invalid').length) {
-        $('.errors').addClass('show');
+      if($('.redRequired').length) {
+        $('.errorMessage').show();
       } else {
-        $('.errors').removeClass('show');
+        $('.errorMessage').hide();
       }
     });
 
-    // on submit : check if there are errors in the form
+    // on submit : check if there are errorMessage in the form
     $('.contact form').on('submit', function() {
       var empty = false;
 
       if($('select').val() == 'default') {
-        $('.select').addClass('invalid');
+        $('.select').addClass('redRequired');
       } else {
-        $('.select').removeClass('invalid');
+        $('.select').removeClass('redRequired');
       }
 
       $('.contact input[type="text"], .contact input[type="email"], .contact textarea').each(function() {
@@ -92,7 +92,7 @@ $(document).ready(function() {
         $('.contact input[type="email"], .contact input[type="text"], textarea').trigger('input');
       }
 
-      if($('.invalid').length || empty) {
+      if($('.redRequired').length || empty) {
         return false;
       }
     });

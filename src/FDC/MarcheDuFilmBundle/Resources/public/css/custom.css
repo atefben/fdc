@@ -118,3 +118,22 @@ sub {
   font-size: smaller;
   margin-left: 5px;
 }
+
+.contentTemplateDownload {
+    margin-bottom: 20px;
+}
+
+.marche h4 p {
+  font-size: 16px;
+  line-height: 40px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  padding: 0px 100px;
+  text-align: center;
+  color: #141414;
+}
+
+@media screen and (min-width: 1279px) {
+    .tabpicturesBox img {
+        width: 266px;
+    }
+}
