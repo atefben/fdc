@@ -712,6 +712,39 @@ String.prototype.trunc = function (n, useWordBoundary) {
     return isTooLong ? s_ + '...' : s_;
 };
 
+
+
+var len1 = $(".partnersTabs");
+  if($(len1).length === 2) {
+    $(".partnersTabs").addClass("halfTab");
+  }
+  else if ($(len1).length === 3){
+    $(".partnersTabs").addClass("thirdTab");
+  } 
+  else if ($(len1).length === 4){
+    $(".partnersTabs").addClass("quarterTab");
+  } 
+
+var len2 = $(".speakersTabs");
+  if($(len2).length === 2) {
+    $(".speakersTabs").addClass("halfTab");
+  }
+  else if ($(len2).length === 3){
+    $(".speakersTabs").addClass("thirdTab");
+  } 
+  else if ($(len2).length === 4){
+    $(".speakersTabs").addClass("quarterTab");
+  } 
+
+var len3 = $(".contactInfo");
+  if($(len3).length === 2) {
+    $(".contactInfo").addClass("halfContact");
+  }
+  else if ($(len3).length === 1){
+    $(".contactInfo").addClass("fullContact");
+  } 
+
+
 var fixed = false;
  var topTrigger = $('.subNavigation').offset().top - 250;
  $(document).scroll(function() {
@@ -729,27 +762,8 @@ var fixed = false;
  });
 
 
-var len = $(".partnersTabs");
-  if($(len).length === 2) {
-    $(".partnersTabs").addClass("halfTab");
-  }
-  else if ($(len).length === 3){
-    $(".partnersTabs").addClass("thirdTab");
-  } 
-  else if ($(len).length === 4){
-    $(".partnersTabs").addClass("quarterTab");
-  } 
 
-var len = $(".speakersTabs");
-  if($(len).length === 2) {
-    $(".speakersTabs").addClass("halfTab");
-  }
-  else if ($(len).length === 3){
-    $(".speakersTabs").addClass("thirdTab");
-  } 
-  else if ($(len).length === 4){
-    $(".speakersTabs").addClass("quarterTab");
-  } 
+
 
 
 /*if ($('.selectText').length > 1) {

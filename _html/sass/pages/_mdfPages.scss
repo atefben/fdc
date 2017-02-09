@@ -588,10 +588,8 @@
   background-color: #f8f8f8;
   width: 100%;
 }
-
 .contactInfo {
   padding-top:10px;
-  width: 50%;
   height: 150px;
   margin: 0 auto;
   text-align: center;
@@ -614,6 +612,15 @@
     opacity: 0.8;
   }
 }
+
+.halfContact {
+    width: 50%;
+}
+
+.fullContact {
+    width: 100%;
+}
+
 
 .teamPresentation {
 

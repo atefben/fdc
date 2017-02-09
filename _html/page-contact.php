@@ -81,6 +81,7 @@
               <div class="errorMessage">
                   <div class="redMessage">• L’adresse email n’est pas valide</div>
               </div>
+              
 
             </section>
         </div><!--CONTAINER-->

@@ -24933,7 +24933,6 @@ ul.tabs .quarterTab h4 {
 
 .contactInfo {
   padding-top: 10px;
-  width: 50%;
   height: 150px;
   margin: 0 auto;
   text-align: center;
@@ -24953,6 +24952,14 @@ ul.tabs .quarterTab h4 {
   color: #505050;
   line-height: 50px;
   opacity: 0.8;
+}
+
+.halfContact {
+  width: 50%;
+}
+
+.fullContact {
+  width: 100%;
 }
 
 .teamPresentation .innerTeam {
