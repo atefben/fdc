@@ -767,7 +767,7 @@ String.prototype.trunc = function (n, useWordBoundary) {
 };
 
 var fixed = false;
- var topTrigger = $('.subNavigation').offset().top - 250;
+ var topTrigger = $('.subNavigation').length ? $('.subNavigation').offset().top - 250 : 0;
  $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {
