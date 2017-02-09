@@ -329,3 +329,5 @@ parameters:
     sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider
     selfkit_amazon_url: http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/selfkit/
     selfkit_amazon_url_hd: http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/selfkithd/
+    fdc_court_metrage_domain: ~
+    fdc_court_metrage_scheme: ~
