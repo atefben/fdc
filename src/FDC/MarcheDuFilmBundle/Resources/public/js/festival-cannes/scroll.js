@@ -1,7 +1,7 @@
 // init parallax elements and push them into an array
 var parallaxElements = {};
 
-/*function initParallaxElements() {
+function initParallaxElements() {
     var $header = $('header');
 
     if ($('.home').length) {
@@ -451,4 +451,3 @@ $(document).ready(function () {
         });
     }
 });
-*/
