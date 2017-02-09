@@ -4,6 +4,7 @@ namespace FDC\MarcheDuFilmBundle\Repository;
 
 use Doctrine\ORM\Query\Expr\Join;
 use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
 
 /**
  * Class MdfContentTemplateTranslationRepository
@@ -17,9 +18,12 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('ctt')
                    ->join('ctt.translatable', 'ct')
                    ->where('ctt.locale = :locale')
+                   ->andWhere('ctt.status = :statusPublished or ctt.status = :statusTranslated')
                    ->andWhere('ct.type = :type')
                    ->setParameter('locale', $locale)
                    ->setParameter('type', $type)
+                   ->setParameter('statusPublished', MdfContentTemplateTranslation::STATUS_PUBLISHED)
+                   ->setParameter('statusTranslated', MdfContentTemplateTranslation::STATUS_TRANSLATED)
         ;
 
         return $qb->getQuery()->getOneOrNullResult();

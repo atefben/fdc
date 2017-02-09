@@ -98,6 +98,11 @@ class ContentTemplateManager
         }
 
         $titleHeader = $this->getTitleHeaderContent($pageType);
+
+
+        if(!$titleHeader) {
+            throw new NotFoundHttpException();
+        }
         $pageId = $titleHeader->getTranslatable()->getId();
 
         $textWidgets = $this->getContentTemplateTextWidgets($pageType);
