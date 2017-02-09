@@ -201,11 +201,11 @@ function menuMDF() {
 menuMDF();
 
 $(window).scroll(function(){
-    if ($(window).scroll(200)){
+    /*if ($(window).scroll(200)){
         $('#leaderBoard').hide();
     } else {
       $('#leaderBoard').show();
-    }
+    }*/
 });
 
 function hoverSearch() {
