@@ -2331,3 +2331,43 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfMenu, BaseAdminBundle:MdfMenuAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Configurer Programme}
+
+    #CCM News
+    base.admin.ccm_news:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsAdmin
+        arguments: [~, FDC\CourtMetrageBundle\EntityCcmNews, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+    base.admin.ccm_news_article:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsArticleAdmin
+        arguments: [~, FDC\CourtMetrageBundle\EntityCcmNewsArticle, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_article, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_video:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsVideoAdmin
+        arguments: [~, FDC\CourtMetrageBundle\EntityCcmNewsVideo, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_image:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsImageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\EntityCcmNewsImage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_audio:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsAudioAdmin
+        arguments: [~, FDC\CourtMetrageBundle\EntityCcmNewsAudio, BApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
