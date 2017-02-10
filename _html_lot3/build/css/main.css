@@ -9298,6 +9298,10 @@ header #searchContainer {
   float: left;
 }
 
+.articles-list-medias .card-01.double.w2 .image {
+  width: auto;
+}
+
 .isotope-01 {
   /*
   body#home .article-inverse & .item.w2.double {
