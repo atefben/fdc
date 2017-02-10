@@ -28,13 +28,25 @@ class Homepage
      * @ORM\OneToMany(targetEntity="HomepageSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      min = "3",
-     *      minMessage = "ccm.validation.homepage.min",
+     *      minMessage = "ccm.validation.homepage.sliders_min",
      *      max = "6",
-     *      maxMessage = "ccm.validation.homepage.max"
+     *      maxMessage = "ccm.validation.homepage.sliders_max"
      * )
      * @Assert\Valid
      */
     protected $sliders;
+
+    /**
+     * @ORM\OneToMany(targetEntity="HomepageSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = "3",
+     *      minMessage = "ccm.validation.homepage.pushes_min",
+     *      max = "9",
+     *      maxMessage = "ccm.validation.homepage.pushes_max"
+     * )
+     * @Assert\Valid
+     */
+    protected $pushes;
 
     /**
      * @var ArrayCollection
@@ -48,6 +60,7 @@ class Homepage
     public function __construct() {
         $this->translations = new ArrayCollection();
         $this->sliders = new ArrayCollection();
+        $this->pushes = new ArrayCollection();
     }
 
     /**
@@ -58,16 +71,6 @@ class Homepage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Get Sliders.
-     *
-     * @return mixed
-     */
-    public function getSliders()
-    {
-        return $this->sliders;
     }
 
     /**
@@ -98,6 +101,16 @@ class Homepage
         }
 
         return (string) $string;
+    }
+
+    /**
+     * Get Sliders.
+     *
+     * @return mixed
+     */
+    public function getSliders()
+    {
+        return $this->sliders;
     }
 
     /**
@@ -133,5 +146,50 @@ class Homepage
     public function removeSlider(HomepageSlider $slider)
     {
         $this->sliders->removeElement($slider);
+    }
+
+    /**
+     * Get pushes.
+     *
+     * @return mixed
+     */
+    public function getPushes()
+    {
+        return $this->pushes;
+    }
+
+    /**
+     * Set pushes.
+     *
+     * @param mixed $pushes
+     */
+    public function setPushes($pushes)
+    {
+        $this->pushes = $pushes;
+    }
+
+    /**
+     * Add push.
+     *
+     * @param HomepagePush $push
+     *
+     * @return $this
+     */
+    public function addPush(HomepagePush $push)
+    {
+        $this->pushes->add($push);
+        $push->setHomepage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove push.
+     *
+     * @param HomepagePush $push
+     */
+    public function removePush(HomepagePush $push)
+    {
+        $this->pushes->removeElement($push);
     }
 }

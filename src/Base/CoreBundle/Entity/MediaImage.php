@@ -66,11 +66,18 @@ class MediaImage extends Media
      */
     protected $homepageSliders;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepagePush", mappedBy="image")
+     */
+    protected $homepagePushes;
+
     public function __construct()
     {
         parent::__construct();
         $this->galleries = new ArrayCollection();
         $this->homepageSliders = new ArrayCollection();
+        $this->homepagePushes = new ArrayCollection();
 
     }
 
@@ -205,6 +212,8 @@ class MediaImage extends Media
     }
 
     /**
+     * Add homepageSlider.
+     *
      * @param \FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider
      * @return $this
      */
@@ -235,5 +244,40 @@ class MediaImage extends Media
     public function getHomepageSliders()
     {
         return $this->homepageSliders;
+    }
+
+    /**
+     * Add homepagePush.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush
+     * @return $this
+     */
+    public function addHomepagePush(\FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush)
+    {
+        $this->homepagePushes[] = $homepagePush;
+        $homepagePush->setImage($this);
+
+        return $this;
+    }
+
+    /**
+     *
+     * Remove homepagePush
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush
+     */
+    public function removeHomepagePush(\FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush)
+    {
+        $this->homepagePushes->removeElement($homepagePush);
+    }
+
+    /**
+     * Get homepagePush.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHomepagePushes()
+    {
+        return $this->homepagePushes;
     }
 }

@@ -9,11 +9,11 @@ use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HomepageSlider
- * @ORM\Table(name="ccm_homepage_slider")
+ * HomepagePush
+ * @ORM\Table(name="ccm_homepage_push")
  * @ORM\Entity
  */
-class HomepageSlider
+class HomepagePush
 {
     use Translatable;
 
@@ -27,7 +27,7 @@ class HomepageSlider
 
     /**
      * @var MediaImage
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepageSliders")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepagePushes")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=false, onDelete="SET NULL")
      */
     protected $image;
@@ -120,7 +120,7 @@ class HomepageSlider
     }
 
     /**
-     * Set Homepage
+     * Set Homepage.
      *
      * @param $homepage
      *
