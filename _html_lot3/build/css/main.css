@@ -10195,9 +10195,9 @@ body#home .isotope-01 .item .contain-img {
   left: -5%;
 }
 .slider-restropective .calc3 img.i2 {
-  top: 20%;
+  top: 38%;
   position: relative;
-  right: 1%;
+  right: 21%;
 }
 .slider-restropective .calc3 img.i3 {
   position: relative;
@@ -13449,6 +13449,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .icon-s .icon.icon-movie-clap {
   font-size: 1.2rem;
   margin-bottom: 6px;
+  position: relative;
+  top: 2px;
 }
 .block-search .icon-s:last-child {
   border-right: 1px solid #2c2c2c !important;

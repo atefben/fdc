@@ -383,7 +383,26 @@ $(document).ready(function () {
 
 
     if($('.affiche-fdc').length){
-        owinitSlideShow();
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+
+        if (hash.length > 0 && verif == "pid") {
+            var slider = $('.affiche-fdc');
+            owinitSlideShow(slider, hash);
+
+            $('.poster').on('click', function(e){
+                slider = $('.all-contain');
+                $(this).parent().addClass('active center');
+
+                openSlideShow(slider, "undefined", true);
+            })
+
+        }else{
+            owinitSlideShow();
+        }
     }
 
 
