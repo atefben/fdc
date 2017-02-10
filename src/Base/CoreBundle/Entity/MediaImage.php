@@ -60,10 +60,18 @@ class MediaImage extends Media
      */
     protected $galleries;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepageSlider", mappedBy="image")
+     */
+    protected $homepageSliders;
+
     public function __construct()
     {
         parent::__construct();
         $this->galleries = new ArrayCollection();
+        $this->homepageSliders = new ArrayCollection();
+
     }
 
 
@@ -189,10 +197,43 @@ class MediaImage extends Media
     /**
      * Get galleries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGalleries()
     {
         return $this->galleries;
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider
+     * @return $this
+     */
+    public function addHomepageSlider(\FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider)
+    {
+        $this->homepageSliders[] = $homepageSlider;
+        $homepageSlider->setImage($this);
+
+        return $this;
+    }
+
+    /**
+     *
+     * Remove homepageSlider
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider
+     */
+    public function removeHomepageSlider(\FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider)
+    {
+        $this->homepageSliders->removeElement($homepageSlider);
+    }
+
+    /**
+     * Get homepageSliders.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHomepageSliders()
+    {
+        return $this->homepageSliders;
     }
 }

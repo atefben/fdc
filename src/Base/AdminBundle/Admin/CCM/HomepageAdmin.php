@@ -5,6 +5,7 @@ namespace  Base\AdminBundle\Admin\CCM;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class HomepageAdmin extends Admin
@@ -57,6 +58,11 @@ class HomepageAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
+                    'title' => array(
+                        'label'              => 'form.ccm.label.title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => true
+                    ),
                 )
             ))
             ->add('sliders', 'infinite_form_polycollection', array(
@@ -71,12 +77,41 @@ class HomepageAdmin extends Admin
             ))
         ;
     }
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id')
+        ;
+    }
 
     /**
-     * @param RouteCollection $collection
+     * Pre persist.
+     *
+     * @param Homepage $homepage
      */
-    protected function configureRoutes(RouteCollection $collection)
+    public function prePersist($homepage)
     {
-        $collection->clearExcept(['edit', 'list']);
+        parent::prePersist($homepage);
+
+        foreach ($homepage->getSliders() as $slider) {
+            $slider->setHomepage($homepage);
+        }
+    }
+
+    /**
+     * Pre update.
+     *
+     * @param Homepage $homepage
+     */
+    public function preUpdate($homepage)
+    {
+        parent::preUpdate($homepage);
+
+        foreach ($homepage->getSliders() as $slider) {
+            $slider->setHomepage($homepage);
+        }
     }
 }

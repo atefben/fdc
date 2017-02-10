@@ -681,7 +681,18 @@ form:
                 sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
                 sub_nav_route: Itinéraire de la deuxième onglet de navigation
                 sub_nav_is_active: Ce deuxième onglet de navigation est actif?
-
+            slider:
+                whiteTitle: Titre Blanc
+                goldenTitle: Titre Doré
+                buttonLabel: Libellé de bouton
+                url: URL de la slide
+            homepage_slider_type: Ajouter
+            slider_accreditation_widget: Slider
+            slider_accreditation_page_info: Slider info
+        size:
+            small:  Titre petit
+            medium: Titre moyen
+            large: Tite gros
     mdf:
         label_status: Statut
         conference_partner:

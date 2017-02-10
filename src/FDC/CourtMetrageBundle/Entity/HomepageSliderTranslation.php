@@ -146,8 +146,8 @@ class HomepageSliderTranslation
     {
         return array(
             self::SMALL => 'form.ccm.size.small',
-            self::MEDIUM => 'form.ccm.size.small',
-            self::LARGE => 'form.ccm.size.small'
+            self::MEDIUM => 'form.ccm.size.medium',
+            self::LARGE => 'form.ccm.size.large'
         );
     }
 }

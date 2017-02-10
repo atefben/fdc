@@ -100,7 +100,8 @@ class HomepageSliderType extends AbstractType
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
-            ));
+            ))
+        ;
     }
 
     /**
@@ -120,6 +121,6 @@ class HomepageSliderType extends AbstractType
      */
     public function getName()
     {
-        return 'homepage_type';
+        return 'homepage_slider_type';
     }
 }

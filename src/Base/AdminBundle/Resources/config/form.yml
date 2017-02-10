@@ -842,7 +842,8 @@ services:
         scope: prototype
         class: FDC\CourtMetrageBundle\Form\Type\HomepageSliderType
         tags:
-            - { name: form.type, alias: 'homepage_type'}
+            - { name: form.type, alias: 'homepage_slider_type'}
         calls:
-            - ['setSonataAdmin', ['@base.admin.ccm_homepage']]
+            - ['setSonataAdmin', ['@base.admin.ccm_homepage_slider_top_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.media_image']]
+

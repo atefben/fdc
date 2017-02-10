@@ -41,12 +41,23 @@ class Homepage
      */
     protected $translations;
 
+
     /**
      * Homepage constructor.
      */
     public function __construct() {
         $this->translations = new ArrayCollection();
         $this->sliders = new ArrayCollection();
+    }
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -57,18 +68,6 @@ class Homepage
     public function getSliders()
     {
         return $this->sliders;
-    }
-
-    /**
-     * Set sliders.
-     *
-     * @param mixed $sliders
-     */
-    public function setSliders($sliders)
-    {
-        $this->sliders = $sliders;
-
-        return $this;
     }
 
     /**
@@ -99,5 +98,40 @@ class Homepage
         }
 
         return (string) $string;
+    }
+
+    /**
+     * Set sliders.
+     *
+     * @param mixed $sliders
+     */
+    public function setSliders($sliders)
+    {
+        $this->sliders = $sliders;
+    }
+
+    /**
+     * Add sliders.
+     *
+     * @param HomepageSlider $slider
+     *
+     * @return $this
+     */
+    public function addSlider(HomepageSlider $slider)
+    {
+        $this->sliders->add($slider);
+        $slider->setHomepage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove sliders.
+     *
+     * @param HomepageSlider $slider
+     */
+    public function removeSlider(HomepageSlider $slider)
+    {
+        $this->sliders->removeElement($slider);
     }
 }

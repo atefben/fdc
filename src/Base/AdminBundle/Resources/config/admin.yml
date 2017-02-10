@@ -2517,8 +2517,8 @@ services:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.ccm_homepage_slider_top_dummy:
-        class: Base\AdminBundle\Admin\MediaImageAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSlider, BaseAdminBundle:MediaImageDummyAdmin]
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSlider, BaseAdminBundle:CCM\ImageDummyAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Homepage Slider, show_in_dashboard: false}
         calls:
@@ -2526,6 +2526,6 @@ services:
 
     base.admin.ccm_homepage:
         class: Base\AdminBundle\Admin\CCM\HomepageAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\Homepage, BaseAdminBundle:CCM:HomepageAdmin]
+        arguments: [~, FDC\CourtMetrageBundle\Entity\Homepage, BaseAdminBundle:CCM\HomepageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Homepage}
