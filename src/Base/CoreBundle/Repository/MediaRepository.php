@@ -2,29 +2,25 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\MediaAudioTranslation;
-use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
-
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\Media;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\Site;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
- * MediaRepository class.
- *
- * \@extends EntityRepository
- *  @author   Antoine Mineau
- * \@company Ohwee
+ * Class MediaRepository
+ * @package Base\CoreBundle\Repository
  */
 class MediaRepository extends EntityRepository
 {
 
     /**
-     * Find all displayed images
-     *
      * @param $locale
-     * @return \Doctrine\ORM\Query
+     * @param $festival
+     * @param null $startsAt
+     * @param null $endAt
+     * @return Media[]
      */
     public function getImageMedia($locale, $festival, $startsAt = null, $endAt = null)
     {
@@ -36,20 +32,22 @@ class MediaRepository extends EntityRepository
             ->andWhere('m.displayedAll = 1')
         ;
 
-        if($startsAt && $endAt) {
-            $qb = $qb->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
+        if ($startsAt && $endAt) {
+            $qb->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
                 ->setParameter('startsAt', $startsAt)
-                ->setParameter('endAt', $endAt);
+                ->setParameter('endAt', $endAt)
+            ;
         }
 
-        $qb = $this->addMasterQueries($qb, 'mi', $festival);
-        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
-        $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+        $this->addMasterQueries($qb, 'mi', $festival);
+        $this->addTranslationQueries($qb, 'mit', $locale);
+        $this->addFDCCorpoQueries($qb, 's');
 
-        return $qb;
+        return $qb
+            ->orderBy('mi.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
     /**
@@ -82,8 +80,7 @@ class MediaRepository extends EntityRepository
         }
 
         $qb = $qb
-            ->andWhere("m.publishEndedAt IS NULL")
-        ;
+            ->andWhere("m.publishEndedAt IS NULL");
 
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -91,62 +88,73 @@ class MediaRepository extends EntityRepository
         $qb = $qb
             ->orderBy('ma.publishedAt', 'DESC')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         //dump($qb);exit;
 
         return $qb;
     }
 
-    public function searchTest($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 500) {
+    public function searchTest($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 500)
+    {
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.theme', 't')
             ->leftJoin('t.translations', 'tt')
-            ->andWhere('m.displayedAll = 1');
+            ->andWhere('m.displayedAll = 1')
+        ;
 
         $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
-            ->leftJoin('mi.translations', 'mit');
+            ->leftJoin('mi.translations', 'mit')
+        ;
         $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
-            ->leftJoin('mv.translations', 'mvt');
+            ->leftJoin('mv.translations', 'mvt')
+        ;
         $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
-            ->leftJoin('ma.translations', 'mat');
+            ->leftJoin('ma.translations', 'mat')
+        ;
 
         $qb = $qb->andWhere("m.publishEndedAt IS NULL")
             ->orderBy('m.publishedAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
-    public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 30, $page = 1) {
+    public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 30, $page = 1)
+    {
 
         $qb = $this->createQueryBuilder('m')
             ->leftJoin('m.theme', 't')
             ->leftJoin('t.translations', 'tt')
             ->leftJoin('m.tags', 'mediatags')
             ->leftJoin('mediatags.tag', 'tag')
-            ->leftJoin('tag.translations', 'tagt');
+            ->leftJoin('tag.translations', 'tagt')
+        ;
 
-        $searchOr = array('tt.name LIKE :search', 'tagt.name LIKE :search');
+        $searchOr = ['tt.name LIKE :search', 'tagt.name LIKE :search'];
 
-        if($photo) {
+        if ($photo) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
                 ->leftJoin('mi.translations', 'mit')
-                ->andWhere('(m.associatedFilm IS NOT NULL) OR (m.displayedHome = 1)');
+                ->andWhere('(m.associatedFilm IS NOT NULL) OR (m.displayedHome = 1)')
+            ;
 
             $qb = $this->addTranslationQueries($qb, 'mit', $locale);
 
             $searchOr[] = 'mit.legend LIKE :search';
         }
 
-        if($video) {
+        if ($video) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
                 ->leftJoin('mv.translations', 'mvt')
                 ->leftJoin('mv.webTv', 'w')
                 ->leftJoin('w.translations', 'wt')
-                ->andWhere('mv.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1');
+                ->andWhere('mv.displayedAll = 1 OR mv.displayedWebTv = 1 OR mv.displayedTrailer = 1')
+            ;
 
             $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
             $qb = $this->addTranslationQueries($qb, 'wt', $locale);
@@ -155,10 +163,11 @@ class MediaRepository extends EntityRepository
             $searchOr[] = 'wt.name LIKE :search';
         }
 
-        if($audio) {
+        if ($audio) {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
                 ->leftJoin('ma.translations', 'mat')
-                ->andWhere('m.displayedAll = 1');
+                ->andWhere('m.displayedAll = 1')
+            ;
 
             $qb = $this->addTranslationQueries($qb, 'mat', $locale);
 
@@ -166,15 +175,16 @@ class MediaRepository extends EntityRepository
 
         }
 
-        $qb->andWhere('('.implode(' OR ', $searchOr).')');
+        $qb->andWhere('(' . implode(' OR ', $searchOr) . ')');
 
-        $qb->setParameter('search', '%'.$search.'%');
+        $qb->setParameter('search', '%' . $search . '%');
 
-        if($yearStart && $yearEnd) {
+        if ($yearStart && $yearEnd) {
             $qb->innerJoin('m.festival', 'f')
                 ->andWhere('f.year BETWEEN :yearStart AND :yearEnd')
                 ->setParameter('yearStart', $yearStart)
-                ->setParameter('yearEnd', $yearEnd);
+                ->setParameter('yearEnd', $yearEnd)
+            ;
         }
 
         //because of entity relations
@@ -184,9 +194,69 @@ class MediaRepository extends EntityRepository
             ->orderBy('m.publishedAt', 'DESC')
             ->setMaxResults($max)
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param int $maxResults
+     * @param int $page
+     * @return Media[]
+     */
+    public function getRetrospective($locale, $festival, $maxResults = 30, $page = 1)
+    {
+
+        $qb = $this
+            ->createQueryBuilder('m')
+            ->distinct(true)
+//            ->innerJoin('m.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
+            ->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
+            ->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
+            ->leftJoin('mi.translations', 'mit')
+            ->leftJoin('mv.translations', 'mvt')
+            ->leftJoin('ma.translations', 'mat')
+            ->andWhere('m.displayedAll = 1')
+            ->andWhere('m.festival = :festival')
+            ->setParameter(':festival', $festival)
+//            ->andWhere(
+//                '(mit.locale = :locale_fr AND mit.status = :status) OR
+//                    (mvt.locale = :locale_fr AND mvt.status = :status) OR
+//                    (mat.locale = :locale_fr AND mat.status = :status)'
+//            )
+//            ->setParameter('locale_fr', 'fr')
+//            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+        ;
+
+//        if ($locale != 'fr') {
+//            $qb
+//                ->leftJoin('mi.translations', 'mitNotFr')
+//                ->leftJoin('mv.translations', 'mvtNotFr')
+//                ->leftJoin('ma.translations', 'matNotFr')
+//                ->andWhere(
+//                    '(mitNotFr.locale = :locale AND mitNotFr.status = :status_translated) OR
+//                    (mvtNotFr.locale = :locale AND mvtNotFr.status = :status_translated) OR
+//                    (matNotFr.locale = :locale AND matNotFr.status = :status_translated)'
+//                )
+//                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
+//                ->setParameter('locale', $locale)
+//            ;
+//        }
+
+//        $this->addFDCCorpoQueries($qb, 's');
+
+        return $qb
+            ->andWhere("m.publishEndedAt IS NULL")
+            ->addOrderBy('m.publishedAt', 'DESC')
+            ->setMaxResults($maxResults)
+            ->setFirstResult(($page - 1) * $maxResults)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
     /**
@@ -220,8 +290,7 @@ class MediaRepository extends EntityRepository
         }
 
         $qb = $qb
-            ->andWhere("m.publishEndedAt IS NULL")
-        ;
+            ->andWhere("m.publishEndedAt IS NULL");
 
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -229,7 +298,8 @@ class MediaRepository extends EntityRepository
         $qb = $qb
             ->orderBy('ma.publishedAt', 'DESC')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         //dump($qb);exit;
 
@@ -253,7 +323,8 @@ class MediaRepository extends EntityRepository
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
             ->where('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)')
-            ->andWhere('m.displayedHome = 1');
+            ->andWhere('m.displayedHome = 1')
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival, false);
         $qb
@@ -263,12 +334,14 @@ class MediaRepository extends EntityRepository
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
             ->setParameter('datetime', $dateTime1)
-            ->setParameter('datetime2', $dateTime2);
+            ->setParameter('datetime2', $dateTime2)
+        ;
 
         $qb = $qb
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -289,18 +362,21 @@ class MediaRepository extends EntityRepository
             ->andWhere('m.displayedAll = 1')
         ;
 
-        if($startsAt && $endAt) {
+        if ($startsAt && $endAt) {
             $qb = $qb->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
                 ->setParameter('startsAt', $startsAt)
-                ->setParameter('endAt', $endAt);
+                ->setParameter('endAt', $endAt)
+            ;
         }
 
         $this->addMasterQueries($qb, 'mi', $festival);
-        $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
+        $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb = $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
         $qb = $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
 
@@ -322,10 +398,11 @@ class MediaRepository extends EntityRepository
             ->andWhere('m.displayedAll = 1')
         ;
 
-        if($startsAt && $endAt) {
+        if ($startsAt && $endAt) {
             $qb = $qb->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
                 ->setParameter('startsAt', $startsAt)
-                ->setParameter('endAt', $endAt);
+                ->setParameter('endAt', $endAt)
+            ;
         }
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
@@ -333,7 +410,8 @@ class MediaRepository extends EntityRepository
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
