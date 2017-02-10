@@ -2,11 +2,26 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\Accreditation;
+use FDC\MarcheDuFilmBundle\Entity\DispatchDeService;
 use FDC\MarcheDuFilmBundle\Entity\GalleryMdf;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
+use FDC\MarcheDuFilmBundle\Entity\MdfContactPage;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetVideo;
+use FDC\MarcheDuFilmBundle\Entity\MdfHomepage;
+use FDC\MarcheDuFilmBundle\Entity\MdfInformations;
+use FDC\MarcheDuFilmBundle\Entity\MdfPressGallery;
+use FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharter;
+use FDC\MarcheDuFilmBundle\Entity\MdfPressRelease;
+use FDC\MarcheDuFilmBundle\Entity\MdfSpeakers;
+use FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeam;
 use FDC\MarcheDuFilmBundle\Entity\MediaMdfImage;
 use FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf;
+use FDC\MarcheDuFilmBundle\Entity\PressCoverage;
+use FDC\MarcheDuFilmBundle\Entity\Service;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,9 +48,7 @@ class SearchController extends Controller
 
         if ($searchTerm) {
             // contentResults
-            $items['contentResults'] = $repositoryManager
-                ->getRepository(MdfContentTemplate::class)
-                ->findWithCustomQuery($locale, $searchTerm);
+            $items['contentResults'] = $this->searchContent($repositoryManager, $searchTerm, $locale);
 
             // documentResults
             $items['documentResults'] = $repositoryManager
@@ -43,23 +56,117 @@ class SearchController extends Controller
                 ->findWithCustomQuery($locale, $searchTerm);
 
             // mediaResults
-            $imageResults = $repositoryManager
-                ->getRepository(MediaMdfImage::class)
-                ->findWithCustomQuery($locale, $searchTerm);
-            $videoResults = $repositoryManager
-                ->getRepository(MdfContentTemplateWidgetVideo::class)
-                ->findWithCustomQuery($locale, $searchTerm);
-
-            $galleryResults = $repositoryManager
-                ->getRepository(GalleryMdf::class)
-                ->findWithCustomQuery($locale, $searchTerm);
-            $items['mediaResults'] = $this->mergeMedia($imageResults, $videoResults, $galleryResults, $locale);
+            $items['mediaResults'] = $this->searchMedia($repositoryManager, $searchTerm, $locale);
         }
 
         return $this->render('FDCMarcheDuFilmBundle::search/index.html.twig', array(
             'searchTerm' => $searchTerm,
             'items' => $items,
         ));
+    }
+
+    protected function searchContent($repositoryManager, $searchTerm, $locale)
+    {
+        $contentTemplateResults = $repositoryManager
+            ->getRepository(MdfContentTemplate::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $homepageResults = $repositoryManager
+            ->getRepository(MdfHomepage::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $accreditationResults = $repositoryManager
+            ->getRepository(Accreditation::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $dispatchDeServiceResults = $repositoryManager
+            ->getRepository(DispatchDeService::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $serviceResults = $repositoryManager
+            ->getRepository(Service::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $conferenceProgramResults = $repositoryManager
+            ->getRepository(MdfConferenceProgram::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $conferenceSpeakerResults = $repositoryManager
+            ->getRepository(MdfSpeakers::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $conferencePartnerResults = $repositoryManager
+            ->getRepository(MdfConferencePartner::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $conferenceInfoAndContactResults = $repositoryManager
+            ->getRepository(MdfConferenceInfoAndContact::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $whoAreWeResults = $repositoryManager
+            ->getRepository(MdfWhoAreWeTeam::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $pressReleaseResults = $repositoryManager
+            ->getRepository(MdfPressRelease::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $pressCoverageResults = $repositoryManager
+            ->getRepository(PressCoverage::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $pressGalleryResults = $repositoryManager
+            ->getRepository(MdfPressGallery::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $pressGraphicalCharterResults = $repositoryManager
+            ->getRepository(MdfPressGraphicalCharter::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $informationResults = $repositoryManager
+            ->getRepository(MdfInformations::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $contactResults = $repositoryManager
+            ->getRepository(MdfContactPage::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        return $this
+            ->mergeContent(
+                $contentTemplateResults,
+                $homepageResults,
+                $accreditationResults,
+                $dispatchDeServiceResults,
+                $serviceResults,
+                $conferenceProgramResults,
+                $conferenceSpeakerResults,
+                $conferencePartnerResults,
+                $conferenceInfoAndContactResults,
+                $whoAreWeResults,
+                $pressReleaseResults,
+                $pressCoverageResults,
+                $pressGalleryResults,
+                $pressGraphicalCharterResults,
+                $informationResults,
+                $contactResults,
+                $locale
+            );
+    }
+
+    protected function searchMedia($repositoryManager, $searchTerm, $locale)
+    {
+        $imageResults = $repositoryManager
+            ->getRepository(MediaMdfImage::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+        $videoResults = $repositoryManager
+            ->getRepository(MdfContentTemplateWidgetVideo::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        $galleryResults = $repositoryManager
+            ->getRepository(GalleryMdf::class)
+            ->findWithCustomQuery($locale, $searchTerm);
+
+        return $this->mergeMedia($imageResults, $videoResults, $galleryResults, $locale);
     }
 
     protected function mergeMedia($imageResults, $videoResults, $galleryResults, $locale)
@@ -109,6 +216,353 @@ class SearchController extends Controller
         }
 
         //order by created at
+
+        return $output;
+    }
+
+    protected function mergeContent(
+        $contentTemplateResults,
+        $homepageResults,
+        $accreditationResults,
+        $dispatchDeServiceResults,
+        $serviceResults,
+        $conferenceProgramResults,
+        $conferenceSpeakerResults,
+        $conferencePartnerResults,
+        $conferenceInfoAndContactResults,
+        $whoAreWeResults,
+        $pressReleaseResults,
+        $pressCoverageResults,
+        $pressGalleryResults,
+        $pressGraphicalCharterResults,
+        $informationResults,
+        $contactResults,
+        $locale
+    ) {
+        $output = array();
+        $router = $this->container->get('router');
+        $translator = $this->container->get('translator');
+
+        foreach ($contentTemplateResults as $contentTemplateResult) {
+            $translation = $contentTemplateResult->findTranslationByLocale($locale);
+            $image = $theme = null;
+            //search for first image in the page
+            foreach ($contentTemplateResult->getContentTemplateWidgets() as $widget) {
+                if ($widget->isWidgetImage() && $widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+            //find url of page and theme if exists
+            if (in_array($contentTemplateResult->getType(), MdfContentTemplate::$CONTENT_TEMPLATE_OPTIONS)) {
+
+                if ($contentTemplateResult->getType() == MdfContentTemplate::TYPE_NEWS_DETAILS) {
+                    $url = $router->generate('fdc_marche_du_film_news_details', array(
+                        'slug' => $translation->getSlug(),
+                    ));
+                    $theme = $contentTemplateResult->getTheme()->findTranslationByLocale($locale)->getTitle();
+                } else {
+                    $url = $router->generate('fdc_marche_du_film_' . $contentTemplateResult->getType());
+                }
+            } else {
+                $url = $router->generate('fdc_marche_du_film_conference_program', array(
+                    'slug' => $contentTemplateResult->getType(),
+                ));
+                $theme = str_replace('-', ' ', $contentTemplateResult->getType());//hope is ok
+            }
+
+            $output[] = array(
+                'title' => $translation->getTitle(),
+                'theme' => $theme,//posibil sa fie si pt MdfConferenceProgram
+                'date' => $contentTemplateResult->getPublishedAt(),
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $url
+            );
+        }
+
+        foreach ($homepageResults as $homepageResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($homepageResult->getGallery()->getMedias() as $widget) {
+                if ($widget->getMedia()->findTranslationByLocale($locale)) {
+                    $image = $widget->getMedia();
+
+                    break;
+                }
+            }
+            $output[] = array(
+                'title' => $homepageResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => $homepageResult->getPublishedAt(),
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_homepage')
+            );
+        }
+
+        foreach ($accreditationResults as $accreditationResult) {
+            $output[] = array(
+                'title' => $accreditationResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => null,//no image
+                'url' => $router->generate('fdc_marche_du_film_accreditations')
+            );
+        }
+
+        foreach ($dispatchDeServiceResults as $dispatchDeServiceResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($dispatchDeServiceResult->getDispatchDeServiceWidgets() as $widget) {
+                if ($widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+            $output[] = array(
+                'title' => $dispatchDeServiceResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_services')
+            );
+        }
+
+        foreach ($serviceResults as $serviceResult) {
+            //find translation
+            $translation = $serviceResult->findTranslationByLocale($locale);
+            $image = null;
+            //search for first image in the page
+            foreach ($serviceResult->getWidgetCollections() as $widget) {
+                foreach ($widget->getWidget()->getProductCollections() as $product) {
+                    if ($product->getProduct()->getGallery()) {
+                        foreach ($product->getProduct()->getGallery()->getMedias() as $media) {
+                            if ($media->getMedia()->findTranslationByLocale($locale)) {
+                                $image = $media->getMedia();
+
+                                break 3;
+                            }
+                        }
+                    }
+                }
+            }
+            $output[] = array(
+                'title' => $translation->getTitle(),
+                'theme' => null,
+                'date' => $serviceResult->getPublishedAt(),
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_services_widgets', array(
+                    'slug' => $translation->getUrl(),
+                ))
+            );
+        }
+
+        foreach ($conferenceProgramResults as $conferenceProgramResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($conferenceProgramResult->getContentTemplateConferenceWidgets() as $widget) {
+                if ($widget->isWidgetImage() && $widget->getImage() && $widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+            $output[] = array(
+                'title' => $conferenceProgramResult->findTranslationByLocale($locale)->getSubTitle(),
+                'theme' => str_replace('-', ' ', $conferenceProgramResult->getType()),//hope is ok
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_conference_program', array(
+                    'slug' => $conferenceProgramResult->getType(),
+                ))
+            );
+        }
+
+        foreach ($conferenceSpeakerResults as $conferenceSpeakerResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($conferenceSpeakerResult->getSpeakersChoicesCollections() as $choice) {
+                foreach ($choice->getSpeakersChoice()->getSpeakersDetailsCollections() as $details) {
+                    if ($details->getSpeakersDetails()->getImage() && $details->getSpeakersDetails()->getImage()->findTranslationByLocale($locale)) {
+                        $image = $details->getSpeakersDetails()->getImage();
+
+                        break 2;
+                    }
+                }
+            }
+            $output[] = array(
+                'title' => $conferenceSpeakerResult->findTranslationByLocale($locale)->getSubTitle(),
+                'theme' => str_replace('-', ' ', $conferenceSpeakerResult->getType()),//hope is ok
+                'date' => $conferenceSpeakerResult->getCreatedAt(),
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_conference_speakers', array(
+                    'slug' => $conferenceSpeakerResult->getType(),
+                ))
+            );
+        }
+
+        foreach ($conferencePartnerResults as $conferencePartnerResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($conferencePartnerResult->getPartnerTabCollection() as $tab) {
+                foreach ($tab->getConferencePartnerTab()->getPartnerLogoCollection() as $logo) {
+                    if ($logo->getConferencePartnerLogo()->getImage() && $logo->getConferencePartnerLogo()->getImage()->findTranslationByLocale($locale)) {
+                        $image = $logo->getConferencePartnerLogo()->getImage();
+
+                        break 2;
+                    }
+                }
+            }
+            $output[] = array(
+                'title' => $conferencePartnerResult->findTranslationByLocale($locale)->getSubTitle(),
+                'theme' => str_replace('-', ' ', $conferencePartnerResult->getType()),//hope is ok
+                'date' => $conferencePartnerResult->getCreatedAt(),
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_conference_partners', array(
+                    'slug' => $conferencePartnerResult->getType(),
+                ))
+            );
+        }
+
+
+        foreach ($conferenceInfoAndContactResults as $conferenceInfoAndContactResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($conferenceInfoAndContactResult->getConferenceInfoAndContactWidgets() as $widget) {
+                if ($widget->getImage() && $widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+
+            $output[] = array(
+                'title' => $conferenceInfoAndContactResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => str_replace('-', ' ', $conferenceInfoAndContactResult->getType()),//hope is ok
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_conference_infos_and_contacts', array(
+                    'slug' => $conferenceInfoAndContactResult->getType(),
+                ))
+            );
+        }
+
+        foreach ($whoAreWeResults as $whoAreWeResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($whoAreWeResult->getWhoAreWeTeamWidgets() as $widget) {
+                if ($widget->getImage() && $widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+
+            $output[] = array(
+                'title' => $whoAreWeResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_who_are_we_team')
+            );
+        }
+
+        foreach ($pressReleaseResults as $pressReleaseResult) {
+            $output[] = array(
+                'title' =>  $pressReleaseResult->findTranslationByLocale($locale)->getSubtitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'press-release',
+                'image' => null,
+                'url' => $router->generate('fdc_marche_du_film_press_releases')
+            );
+        }
+
+        foreach ($pressCoverageResults as $pressCoverageResult) {
+            $output[] = array(
+                'title' => $pressCoverageResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'press-release',
+                'image' => null,
+                'url' => $router->generate('fdc_marche_du_film_press_coverage')
+            );
+        }
+
+        foreach ($pressGalleryResults as $pressGalleryResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($pressGalleryResult->getPressGalleryWidgets() as $widget) {
+                if ($widget->getImage() && $widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+
+            $output[] = array(
+                'title' => $pressGalleryResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'press-release',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_press_gallery')
+            );
+        }
+
+        foreach ($pressGraphicalCharterResults as $pressGraphicalCharterResult) {
+            $image = null;
+            //search for first image in the page
+            foreach ($pressGraphicalCharterResult->getPressGraphicalCharterWidgets() as $widget) {
+                if ($widget->getImage() && $widget->getImage()->findTranslationByLocale($locale)) {
+                    $image = $widget->getImage();
+
+                    break;
+                }
+            }
+
+            $output[] = array(
+                'title' => $pressGraphicalCharterResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'press-release',
+                'image' => $image,
+                'url' => $router->generate('fdc_marche_du_film_press_graphical_charter')
+            );
+        }
+
+        foreach ($informationResults as $informationResult) {
+            $output[] = array(
+                'title' => $translator->trans('menu.faq'),//hope is ok
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => null,
+                'url' => $router->generate('fdc_marche_du_film_infos_utiles')
+            );
+        }
+
+        foreach ($contactResults as $contactResult) {
+            $output[] = array(
+                'title' => $contactResult->findTranslationByLocale($locale)->getTitle(),
+                'theme' => null,
+                'date' => null,//no createdAt
+                'icon' => 'text',
+                'image' => null,
+                'url' => $router->generate('fdc_marche_du_film_contact_us')
+            );
+        }
 
         return $output;
     }

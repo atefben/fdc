@@ -494,7 +494,7 @@ fos_elastica:
                                 stopwords:   [_french_]
                                 ignore_case: true
             types:
-                content:
+                content_template:
                     persistence:
                         driver: orm
                         model: FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate
@@ -530,6 +530,530 @@ fos_elastica:
                                         title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                         contentText: ~
                                         locale: ~
+                content_homepage:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfHomepage
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfHomepageRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                category: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                servicesCategory: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                servicesTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        services:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        description: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_accreditation:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\Accreditation
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\AccreditationRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                subtitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionsTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionTitle1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionInformation1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionTitle2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionInformation2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionTitle3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionInformation3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsTitle1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPricePrefix1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPrice1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPriceSuffix1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsInformation1: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsTitle2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPricePrefix2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPrice2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPriceSuffix2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsInformation2: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsTitle3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPricePrefix3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPrice3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsPriceSuffix3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                promotionDetailsInformation3: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        accreditationWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        description: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_dispatch_de_service:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\DispatchDeService
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\DispatchDeServiceRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                contactTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                contactDescription: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        dispatchDeServiceWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        subtitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        description: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_service:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\Service
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\ServiceRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                header: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                contentBlockTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                contentBlockBody: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        widgetCollections:
+                            type: nested
+                            properties :
+                                widget:
+                                    type: nested
+                                    properties :
+                                        translations:
+                                            type: nested
+                                            properties :
+                                                title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                subtitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                locale: ~
+                                        productCollections:
+                                            type: nested
+                                            properties :
+                                                product:
+                                                    type: nested
+                                                    properties :
+                                                        translations:
+                                                            type: nested
+                                                            properties :
+                                                                title: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                grayText: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                colorText: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                body: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                toggledBody: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                locale: ~
+                content_conference_program:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfConferenceProgramRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                header: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        dayWidgetCollections:
+                            type: nested
+                            properties :
+                                conferenceProgramDay:
+                                    type: nested
+                                    properties :
+                                        eventWidgetCollections:
+                                            type: nested
+                                            properties :
+                                                conferenceProgramEvent:
+                                                    type: nested
+                                                    properties :
+                                                        translations:
+                                                            type: nested
+                                                            properties :
+                                                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                eventPlace: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                eventAccessType: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                speakersTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                locale: ~
+                                                        speakerCollections:
+                                                            type: nested
+                                                            properties :
+                                                                programSpeakers:
+                                                                    type: nested
+                                                                    properties :
+                                                                        translations:
+                                                                            type: nested
+                                                                            properties :
+                                                                                name: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                                locale: ~
+                content_conference_speaker:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfSpeakers
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfSpeakersRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        speakersChoicesCollections:
+                            type: nested
+                            properties :
+                                speakersChoice:
+                                    type: nested
+                                    properties :
+                                        translations:
+                                            type: nested
+                                            properties :
+                                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                locale: ~
+                                        speakersDetailsCollections:
+                                            type: nested
+                                            properties :
+                                                speakersDetails:
+                                                    type: nested
+                                                    properties :
+                                                        translations:
+                                                            type: nested
+                                                            properties :
+                                                                name: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                company: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                country: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                details: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                locale: ~
+                content_conference_partner:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfConferencePartnerRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                header: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        partnerTabCollection:
+                            type: nested
+                            properties :
+                                conferencePartnerTab:
+                                    type: nested
+                                    properties :
+                                        translations:
+                                            type: nested
+                                            properties :
+                                                subTitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                locale: ~
+                content_conference_info_and_contact:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfConferenceInfoAndContactRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        conferenceInfoAndContactWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        post: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_who_are_we_team:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeam
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfWhoAreWeTeamRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        whoAreWeTeamContactWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        address: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                        whoAreWeTeamWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        post: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_press_release:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfPressRelease
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfPressReleaseRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                subtitle: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                content_press_coverage:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\PressCoverage
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\PressCoverageRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        pressCoverageWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        source: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_press_gallery:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfPressGallery
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfPressGalleryRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        pressGalleryWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_press_graphical_charte:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharter
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfPressGraphicalCharterRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                description: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        pressGraphicalCharterWidgets:
+                            type: nested
+                            properties :
+                                translations:
+                                    type: nested
+                                    properties :
+                                        title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                content_infos_utiles:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfInformations
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfInformationsRepository
+                    mappings:
+                        rubriquesCollection:
+                            type: nested
+                            properties :
+                                rubrique:
+                                    type: nested
+                                    properties :
+                                        translations:
+                                            type: nested
+                                            properties :
+                                                name: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                locale: ~
+                                        questionsCollection:
+                                            type: nested
+                                            properties :
+                                                rubriqueQuestion:
+                                                    type: nested
+                                                    properties :
+                                                        translations:
+                                                            type: nested
+                                                            properties :
+                                                                questionText: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                answerText: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                                                locale: ~
+                content_contact_us:
+                    persistence:
+                        driver: orm
+                        model: FDC\MarcheDuFilmBundle\Entity\MdfContactPage
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            ignore_missing: true
+                        model_to_elastica_transformer:
+                             service: mdf.transformers.content_to_elastica_transformer
+                        repository: FDC\MarcheDuFilmBundle\SearchRepository\MdfContactPageRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                body: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
                 image:
                     persistence:
                         driver: orm

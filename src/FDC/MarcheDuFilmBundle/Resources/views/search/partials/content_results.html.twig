@@ -4,41 +4,23 @@
         <div class="seeAll customClass4" rel="contenu">{{ 'search.see_all'|trans }}</div>
     </div>
 
-    {% set contentUrls = {
-        'edition_presentation': 'fdc_marche_du_film_edition_presentation',
-        'edition_projections': 'fdc_marche_du_film_edition_projections',
-        'industry_program_home': 'fdc_marche_du_film_industry_program_home',
-        'who_are_we_history': 'fdc_marche_du_film_who_are_we_history',
-        'who_are_we_key_figures': 'fdc_marche_du_film_who_are_we_key_figures',
-        'who_are_we_environmental_approaches': 'fdc_marche_du_film_who_are_we_environmental_approaches',
-        'legal_mentions': 'fdc_marche_du_film_legal_mentions',
-        'general_conditions': 'fdc_marche_du_film_general_conditions',
-    } %}
     {% for rowContent in items.contentResults | batch(3) %}
         {% for content in rowContent %}
-            {% set translation = content.findTranslationByLocale(app.request.locale) %}
-            {% set image = asset('bundles/fdcmarchedufilm/img/no-image.png') %}
-            {% for contentTemplateWidget in content.contentTemplateWidgets %}
-                {% if contentTemplateWidget.isWidgetImage() %}
-                    {% set image = contentTemplateWidget %}
-                {% endif %}
-            {% endfor %}
-{#            <a href="{{ path(contentUrls[content.type])|default(path('fdc_marche_du_film_news_details', {'slug': translation.slug})) }}" target="_blank">#}
-            <a href="{% if contentUrls[content.type] is defined %}{{ path(contentUrls[content.type]) }} {% else %} {{ path('fdc_marche_du_film_news_details', {'slug': translation.slug}) }} {% endif %}" target="_blank">
+            <a href="{{ content.url }}" target="_blank">
                 <div class="articles result" {% if loop.parent.loop.index > 1  %} hidden {% endif %}>
                     <div class="articles-content">
                         <div class="photoWrapper">
-                            {#<img class="floatingIcon" src="{{ asset('bundles/fdcmarchedufilm/img/icon-press-release.png') }}">#}
-                            <img class="floatingIcon" src="{{ asset('bundles/fdcmarchedufilm/img/icon-text.png') }}">
+                            <img class="floatingIcon" src="{{ asset('bundles/fdcmarchedufilm/img/icon-' ~ content.icon ~ '.png') }}" alt="icon">
                             <img class="mainPic"
-                                 src="{% if image.image is defined  %}{% path image.image|trans_fallback('file'), 'reference' %}{% else %}{{ image }}{% endif %}">
+                                 src="{% if content.image %}{% path content.image|trans_fallback('file'), 'reference' %}{% else %}{{ asset('bundles/fdcmarchedufilm/img/no-image.png') }}{% endif %}"
+                                 alt="{% if content.image %}{{ content.image|trans_fallback('alt') }}{% else %}default-image{% endif %}">
                         </div>
                         <div class="textWrapper">
                             <h6 class="{% if loop.index %2 == 0 %}redtitle customClass1{% else %}customClass4{% endif %}">
-                                {#thème de la page#}
-                                <span>{{ content.publishedAt|date("d M Y") }}</span>
+                                {{ content.theme|title }}
+                                <span>{{ content.date|date("d M Y")|default() }}</span>
                             </h6>
-                            <p>{{ translation.title|length > 81 ? translation.title|slice(0, 81) ~ '...' : translation.title }}</p>
+                            <p>{{ content.title|length > 81 ? content.title|slice(0, 81) ~ '...' : content.title }}</p>
                         </div>
                     </div>
                 </div>
