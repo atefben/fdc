@@ -2244,7 +2244,7 @@ var owInitGrid = function (id) {
                                 var catText;
 
                                 //if (!title.hasClass('init')) {
-                                    titleText = $(e).find('.info strong a').text();
+                                    titleText = $this.find('.info strong a').text();
                                     title.addClass('init');
                                     title.attr('data-title', titleText);
 
@@ -2255,7 +2255,6 @@ var owInitGrid = function (id) {
 
                                 cat.addClass('init').attr('data-cat', cat.text());
 
-                                console.log(titleText);
                                 title.html(titleText.trunc(30, true));
                                 cat.html(catText.trunc(30, true));
                             });
