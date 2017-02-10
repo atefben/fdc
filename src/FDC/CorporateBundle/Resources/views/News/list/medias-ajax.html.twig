@@ -1,25 +1,17 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
-<section class="border-bottom s-slider-retrospective" id="main">
+{{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
-    <div class="ajax-section">
-        <div class="contain-ajax medias" id="main">
+{% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
 
-            {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+{% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 
-            {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+<div class="grid-01 isotope-01">
+    <div class="grid-sizer"></div>
+    {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
+</div>
 
-            {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
-
-            <div class="grid-01 isotope-01">
-                <div class="grid-sizer"></div>
-                {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <a href="{{ path('fdc_corporate_news_getmediasajax', {'page': page + 1, 'year': festival.year}) }}"
-           class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
-        </a>
-    </div>
-</section>
+<div class="bright">
+    <a href="{{ path('fdc_corporate_news_getmediasajax', {'page': page + 1, 'year': festival.year}) }}"
+       class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
+    </a>
+</div>
