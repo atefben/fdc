@@ -3952,7 +3952,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   position: relative;
 }
 .palmares .block-movie-preview .line:after {
-  margin: 17px auto;
+  margin: 8px auto;
+  margin-bottom: 0px;
 }
 .selection .block-movie-preview .date-infos {
   margin-right: 0px;
