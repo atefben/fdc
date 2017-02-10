@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\ContactTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -74,6 +75,13 @@ class MdfContactAdmin extends Admin
                         'label'              => 'form.mdf.label.contact_block.see_more_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => ContactTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                    )
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
