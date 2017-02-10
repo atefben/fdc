@@ -687,8 +687,8 @@ form:
                 buttonLabel: Libellé de bouton
                 url: URL de la slide
             homepage_slider_type: Ajouter
-            slider_accreditation_widget: Slider
-            slider_accreditation_page_info: Slider info
+            slider_accreditation_widget: Slide
+            slider_accreditation_page_info: Slider
         size:
             small:  Titre petit
             medium: Titre moyen

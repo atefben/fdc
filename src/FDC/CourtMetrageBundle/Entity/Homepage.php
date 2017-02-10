@@ -28,9 +28,9 @@ class Homepage
      * @ORM\OneToMany(targetEntity="HomepageSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      min = "3",
-     *      minMessage = "validation.ccm_home_slider_min",
+     *      minMessage = "ccm.validation.homepage.min",
      *      max = "6",
-     *      maxMessage = "validation.ccm_home_slider_max"
+     *      maxMessage = "ccm.validation.homepage.max"
      * )
      * @Assert\Valid
      */
