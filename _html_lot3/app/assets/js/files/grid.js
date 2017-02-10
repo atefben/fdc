@@ -197,7 +197,9 @@ var owInitGrid = function (id) {
                     } else {
                         title.html(text.trunc(30, true));
 
-                        cat.html(text2.trunc(30, true));
+                        if (typeof text2 !== "undefined") {
+                            cat.html(text2.trunc(30, true));
+                        }
                     }
                 });
             }
