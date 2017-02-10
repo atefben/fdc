@@ -43,7 +43,9 @@ class MdfConferenceProgramEventCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('conferenceProgramEvent', 'sonata_type_model_list')
+            ->add('conferenceProgramEvent', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.conference_program.program_event'
+            ))
             ->add('position','hidden', array(
                 'attr' => array(
                     "hidden" => true

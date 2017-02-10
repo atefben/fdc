@@ -630,6 +630,7 @@ form:
             subtitle: Titre de page
             header: Chapô
             partner_tab: Gestion de l'onglet de partenaire
+            partner_list: Gestion de l'onglet de partenaires
             tab_collection: Gestion des onglets disponibles
             logo_collection: Logos partenaires
             tab:
@@ -637,11 +638,15 @@ form:
                 subTitle: Sous-titre de l'onglet partenaire
                 logo: Gestion des logos des partenaires
                 logos: Liste des onglets de partenaires disponibles
+                logos_list: Liste des logos des partenaires disponibles
             logo:
                 form_label: Gestion du logo partenaire
                 url: Redirection au clic sur le logo
                 image: Gestion du visuel du logo
         conference_program:
+            speakers_list: Intervenants présents
+            program_event: Événements disponibles
+            day_list: Jours disponibles pour la conférence
             file_widget: Bloc de téléchargement de fichier de la conférence
             file_button: Ajouter un fichier à télécharger
             form_name: Bloc de contenu de la page Conférence
@@ -650,7 +655,7 @@ form:
             program_day: Gestion des jours disponibles dans le programme de la conférence
             conference_day_widget: Bloc de jour du programme
             day:
-                new_event: Gestion d'un nouveau jour de la conférence
+                new_event: Gestion des événements de la journée
             event:
                 form_name: Gestion de l'événement d'une journée
                 title: Titre de l'événement
