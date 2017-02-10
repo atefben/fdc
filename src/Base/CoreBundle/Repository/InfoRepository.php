@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
@@ -33,7 +34,7 @@ class InfoRepository extends EntityRepository
             ->setParameter('locales', $locales)
         ;
 
-        $this->addDashboardTranslatorQueries($qb, array('naat', 'nat', 'nait', 'navt'), $params);
+        $this->addDashboardTranslatorQueries($qb, ['naat', 'nat', 'nait', 'navt'], $params);
 
         if (isset($params['id']) && !empty($params['id'])) {
             $qb
@@ -74,17 +75,17 @@ class InfoRepository extends EntityRepository
     public function getApiInfoById($id, $festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'nai', 'WITH', 'nai.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nav', 'WITH', 'nav.id = n.id')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('nai.translations', 'nait')
-                   ->leftJoin('nav.translations', 'navt')
-                   ->where('n.festival = :festival')
-                   ->andWhere('n.id = :id')
-                   ->andWhere('n.displayedMobile = :displayed_mobile')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nav', 'WITH', 'nav.id = n.id')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('nai.translations', 'nait')
+            ->leftJoin('nav.translations', 'navt')
+            ->where('n.festival = :festival')
+            ->andWhere('n.id = :id')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $qb = $qb
@@ -207,7 +208,7 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository, $site= 'site-press')
+    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository, $site = 'site-press')
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -438,16 +439,16 @@ class InfoRepository extends EntityRepository
     public function getInfos($festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->join('n.sites', 's')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('nv.translations', 'nvt')
-                   ->leftJoin('ni.translations', 'nit')
-                   ->andWhere('s.slug = :site')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('s.slug = :site')
         ;
 
         $qb = $qb
@@ -485,58 +486,58 @@ class InfoRepository extends EntityRepository
     /**
      * @param $locale
      * @param $festival
-     * @param $startsAt
-     * @param $endsAt
-     * @return array|\Doctrine\ORM\QueryBuilder
+     * @param $since
+     * @param int $maxResults
+     * @return Info[]
      */
-    public function getInfoRetrospective($locale, $festival, $startsAt, $endsAt)
+    public function getInfoRetrospective($locale, $festival, $since, $maxResults = 30)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->join('n.sites', 's')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('nv.translations', 'nvt')
-                   ->leftJoin('ni.translations', 'nit')
-                   ->andWhere('s.slug = :site')
-                   ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
-        ;
-
-        $qb = $qb
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
             ->andWhere(
                 '(nat.locale = :locale_fr AND nat.status = :status)
                 OR (nit.locale = :locale_fr AND nit.status = :status)
                 OR (naat.locale = :locale_fr AND naat.status = :status)
                 OR (nvt.locale = :locale_fr AND nvt.status = :status)')
-            ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter(':locale_fr', 'fr')
+            ->setParameter(':status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->andWhere(
                     '(nat.locale = :locale AND nat.status = :status_translated)
                     OR (nit.locale = :locale AND nit.status = :status_translated)
                     OR (naat.locale = :locale AND naat.status = :status_translated)
                     OR (nvt.locale = :locale AND nvt.status = :status_translated)')
-                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale)
+                ->setParameter(':locale', $locale)
+                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
             ;
         }
 
-        $qb = $this->addMasterQueries($qb, 'n', $festival);
-        $qb = $qb
-            ->setParameter('startsAt', $startsAt)
-            ->setParameter('endsAt', $endsAt)
-            ->setParameter('site', 'site-institutionnel')
+        $this->addMasterQueries($qb, 'n', $festival, false);
+        $this->addFDCCorpoQueries($qb, 's');
+
+        if ($since) {
+            $qb
+                ->andWhere('n.publishedAt > :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
+        return $qb
+            ->setMaxResults($maxResults)
             ->getQuery()
             ->getResult()
-        ;
-
-        return $qb;
+            ;
     }
 
     /**
@@ -551,16 +552,16 @@ class InfoRepository extends EntityRepository
     public function getLastInfos($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->join('n.sites', 's')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('nv.translations', 'nvt')
-                   ->leftJoin('ni.translations', 'nit')
-                   ->andWhere('s.slug = :site')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('s.slug = :site')
         ;
 
         $qb = $qb
@@ -614,16 +615,16 @@ class InfoRepository extends EntityRepository
     public function getApiLastInfos($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->join('n.sites', 's')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('nv.translations', 'nvt')
-                   ->leftJoin('ni.translations', 'nit')
-                   ->andWhere('n.displayedMobile = :displayedMobile')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('n.displayedMobile = :displayedMobile')
         ;
 
         $qb = $qb
@@ -677,29 +678,29 @@ class InfoRepository extends EntityRepository
     {
         $now = new \DateTime();
         $qb = $this->createQueryBuilder('n')
-                   ->join('n.sites', 's')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('nv.translations', 'nvt')
-                   ->leftJoin('ni.translations', 'nit')
-                   ->andWhere('n.displayedMobile = :displayedMobile')
-                   ->setParameter('displayedMobile', true)
-                   ->andWhere('n.festival = :festival')
-                   ->setParameter('festival', $festival)
-                   ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
-                   ->setParameter('since', $since)
-                   ->setParameter('now', $now)
-                   ->andWhere(
-                       '(nat.locale = :locale_fr AND nat.status = :status)
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('n.displayedMobile = :displayedMobile')
+            ->setParameter('displayedMobile', true)
+            ->andWhere('n.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
+            ->setParameter('since', $since)
+            ->setParameter('now', $now)
+            ->andWhere(
+                '(nat.locale = :locale_fr AND nat.status = :status)
                 OR (nit.locale = :locale_fr AND nit.status = :status)
                 OR (naat.locale = :locale_fr AND naat.status = :status)
                 OR (nvt.locale = :locale_fr AND nvt.status = :status)')
-                   ->setParameter('locale_fr', 'fr')
-                   ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
         ;
 
         if ($locale != 'fr') {

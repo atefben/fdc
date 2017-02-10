@@ -14,7 +14,7 @@ $(document).ready(function() {
       cl.setDiameter(20);
       cl.setDensity(34);
       cl.setRange(0.8);
-      cl.setSpeed(1.2);
+      cl.setSpeed(1.2); 
       cl.setFPS(60);
 
   cl.show();

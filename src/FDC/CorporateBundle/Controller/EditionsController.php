@@ -21,14 +21,7 @@ class EditionsController extends Controller
      */
     public function retrospectiveAction()
     {
-        $festivals = $this
-            ->getDoctrine()
-            ->getRepository('BaseCoreBundle:FilmFestival')
-            ->findAll()
-        ;
-        return $this->render('FDCCorporateBundle:Retrospective:years_slider.html.twig', [
-            'festivals' => $festivals,
-        ]);
+        return $this->render('FDCCorporateBundle:Retrospective:years_slider.html.twig');
     }
 
     /**
@@ -89,28 +82,7 @@ class EditionsController extends Controller
      */
     public function yearAction($year)
     {
-        /*$locale = $request->getLocale();
-
-        $pages = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
-            ->getPagesOrdoredBySelectionSectionOrder($locale);
-
-        foreach ($pages as $page) {
-            if ($page instanceof FDCPageLaSelection) {
-                if ($page->findTranslationByLocale($locale)) {
-                    $slug = $page->findTranslationByLocale($locale)->getSlug();
-                }
-                if (!$slug) {
-                    $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
-                }
-                if ($slug) {
-                    return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $slug, 'year' => $year));
-                }
-            }
-        }
-        throw $this->createNotFoundException('There is not available selection.');*/
-        return $this->redirectToRoute('fdc_corporate_movie_selection', array('year' => $year));
+        return $this->redirectToRoute('fdc_corporate_movie_selection', ['year' => $year]);
     }
 
 
@@ -220,7 +192,7 @@ class EditionsController extends Controller
                         $slug = $page->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_corporate_editions_palme', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_corporate_editions_palme', ['slug' => $slug]);
                     }
                 }
             }

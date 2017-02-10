@@ -3,7 +3,8 @@ var owInitGrid = function (id) {
     if (id == 'isotope-01') {
 
 
-        var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
+        var $grid = $('.isotope-01:not(.add-ajax-request)');
+        $grid.imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
                 layoutMode: 'packery',
@@ -11,6 +12,11 @@ var owInitGrid = function (id) {
                     columnWidth: '.grid-sizer',
                     gutter: 0
                 }
+            });
+            var globalOffset = $grid.offset().top;
+            $grid.find('.item').each(function(index,value){
+                var topValue = (parseInt($(this).offset().top) - globalOffset) - 1;
+                $(this).css('top',topValue);
             });
 
         });
@@ -31,6 +37,7 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
+            $gridMore.isotope();
         });
 
 
@@ -89,39 +96,35 @@ var owInitGrid = function (id) {
                                     gutter: 0
                                 }
                             });
+
                             //scroll bottom
                             $('html,body').animate({
                                 scrollTop: $('.isotope-01').outerHeight()
                             },300);
 
-                            var trunTitle = function() {
-                                $.each($('.card.item'), function (i, e) {
-                                    var title = $(e).find('.info strong a');
-                                    console.log(title);
-                                    if (!title.hasClass('init')) {
-                                        var text = $(e).find('.info strong a').text();
-                                        title.addClass('init');
-                                        title.attr('data-title', text);
-                                    } else {
-                                        var text = title.attr('data-title');
-                                    }
+                            $('.card.item').each(function(){
+                                var $this = $(this);
+                                var title = $this.find('.info strong a');
+                                var cat = $this.find('.info .category');
+                                var titleText;
+                                var catText;
 
-                                    var cat = $(e).find('.info .category');
+                                //if (!title.hasClass('init')) {
+                                    titleText = $this.find('.info strong a').text();
+                                    title.addClass('init');
+                                    title.attr('data-title', titleText);
 
-                                    if (!cat.hasClass('init')) {
-                                        text2 = cat.text();
-                                        cat.addClass('init');
-                                        cat.attr('data-cat', text2);
-                                    } else {
-                                        text2 = cat.attr('data-title');
-                                    }
+                                //if (!cat.hasClass('init')) {
+                                    catText = cat.text();
+                                    cat.addClass('init');
+                                    cat.attr('data-cat', catText);
 
-                                    title.html(text.trunc(30, true));
-                                    cat.html(text2.trunc(30, true));
-                                    
-                                });
-                            }
-                            trunTitle();
+                                cat.addClass('init').attr('data-cat', cat.text());
+
+                                title.html(titleText.trunc(30, true));
+                                cat.html(catText.trunc(30, true));
+                            });
+
                         });
                         
                         
@@ -197,7 +200,9 @@ var owInitGrid = function (id) {
                     } else {
                         title.html(text.trunc(30, true));
 
-                        cat.html(text2.trunc(30, true));
+                        if (typeof text2 !== "undefined") {
+                            cat.html(text2.trunc(30, true));
+                        }
                     }
                 });
             }
@@ -211,6 +216,27 @@ var owInitGrid = function (id) {
             });
     
             var title = $('.info strong a').text();
+        }
+
+
+        if($('.item.block-poster').length) {
+            var stop = false;
+
+            $.each($('.item.block-poster'), function (i,e) {
+                var p = $(e).find('.title-12');
+
+                console.log(p.length )
+
+                if(p.length > 3){ 
+                    stop = true;
+                }
+
+                if(stop) {
+                    $('.block-poster .contain-txts').css('height',' 140px');
+                    $(window).trigger('resize');
+                    return false;
+                }
+            })
         }
 
         return $grid;

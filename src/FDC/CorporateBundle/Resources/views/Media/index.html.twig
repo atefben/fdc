@@ -17,19 +17,17 @@
         <div class="block-search block-01">
             <form method="post">
                 <div class="vFlexAlign">
-                    <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text"
-                                                                                                             placeholder="Entrez votre recherche"
-                                                                                                             name="search"
-                                                                                                             id="s-text"
-                                                                                                             value="{% if app.request.get('search') is not null %}{{ app.request.get('search') }}{% endif %}"/></label>
-                    <label for="s-photo"
-                           class="icon-s vFlexAlign{% if app.request.get('photo') == 1 %} active{% endif %}"><i
-                                class="icon icon-photo"></i><span
-                                class="text">{{ 'mediatheque.filters.photos'|trans }}</span><input class="choice"
-                                                                                                   type="checkbox"
-                                                                                                   name="photo"
-                                                                                                   id="s-photo"
-                                                                                                   {% if app.request.get('photo') is not null %}checked {% endif %}/></label>
+                    <label for="s-text" class="search-txt vFlexAlign">
+                        <i class="icon icon-search"></i>
+                        <input type="text" placeholder="Entrez votre recherche" name="search" id="s-text"
+                               value="{% if app.request.get('search') %}{{ app.request.get('search') }}{% endif %}"/>
+                    </label>
+                    <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') %} active{% endif %}">
+                        <i class="icon icon-photo"></i>
+                        <span class="text"> {{ 'mediatheque.filters.photos'|trans }}</span>
+                        <input class="choice" type="checkbox" name="photo" id="s-photo"
+                               {% if app.request.get('photo') is not null %}checked {% endif %}/>
+                    </label>
                     <label for="s-video"
                            class="icon-s vFlexAlign{% if app.request.get('video') == 1 %} active{% endif %}"><i
                                 class="icon icon-video"></i><span
@@ -63,13 +61,14 @@
                             class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}</button>
             </form>
         </div>
+
         {% if app.request.method == 'GET' and page.displayedSelection == false and app.request.query.all is empty %}
             <div class="contain-title vFlexAlign">
                 <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
             </div>
         {% endif %}
 
-        {% if noresults %}
+        {% if medias|length %}
             <div class="contain-title vFlexAlign">
                 <h1 class="title-01">{{ 'mediatheque.title.nosresults'|trans }}</h1>
             </div>
@@ -82,14 +81,12 @@
 
         <div class="grid-01 isotope-01 padding-bottom" id="main">
             <div class="grid-sizer"></div>
-
             {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
+        </div>
 
-        </div> <!-- fin de grid-01 -->
-
-        {% if moreresults %}
+        {% if more %}
             <div>
-                <a href="{{ path('fdc_corporate_media_index_ajax', {'ajax' : true }) }}"
+                <a href="{{ path('fdc', {'ajax' : true }) }}"
                    class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
             </div>
         {% endif %}

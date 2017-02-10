@@ -1,5 +1,7 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
+{% import 'FDCCorporateBundle:Retrospective/macro:slider.html.twig' as macro_slider %}
+
 <div class="slides-calc2 navigation prev"{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} style="display: none;"{% endif %}><i class="icon icon-arrow-left"></i></div>
 <div class="slides-calc2 navigation next"{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} style="display: none;"{% endif %}><i class="icon icon-arrow-right"></i></div>
 
@@ -32,12 +34,13 @@
             </div>
         </div>
     </div>
-
+    {% set festivals = get_all_festivals() %}
     {% set currentYear = festivals|first.year %}
     {% set yearEdition = 1 %}
     {% set slideId = 1 %}
     {% set lastSlideId = festivals|last.year - festivals|first.year %}
     {% for festival in festivals %}
+        {% set images = get_festival_images(festival, 'site-institutionnel') %}
         {% if currentYear != festival.year %}
             <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-top background-effet small{% endif %}">
                 <div class="container block-01 vFlexAlign">
@@ -78,23 +81,9 @@
                 {% if yearEdition > 1 %}<div class="date-back"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
                 {% if yearEdition < lastSlideId %}<div class="date-next" data-url='{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}'><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(1)) }}">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
-                {% macro sliderImage(mediaImage) %}
-                    {% spaceless %}
-                        {% if mediaImage is defined and mediaImage.association is defined and mediaImage.association %}
-                            {% set mainTrans = mediaImage.association.findTranslationByLocale(app.request.locale) %}
-                            {% if mainTrans is null or mainTrans.file is null %}
-                                {% set mainTrans = mediaImage.association.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% if mainTrans.status == 1 %}
-                            {% path mainTrans.file, '1280x808' %}
-                            {% endif %}
-                        {% endif %}
-                    {% endspaceless %}
-                {% endmacro sliderImage %}
-
                 <div class="vFlexAlign">
-                    {% if festival.associatedMediaImages[0] is defined %}
-                        <img src="{% if festival.associatedMediaImages[0] is defined and festival.associatedMediaImages[0].association is not null and  festival.associatedMediaImages[0].association.findTranslationByLocale(app.request.locale).status == 1 %}{{- _self.sliderImage(festival.associatedMediaImages[0])|trim -}}{% endif %}" alt="" />
+                    {% if images|length %}
+                        <img src="{{- macro_slider.sliderImage(images|first)|trim -}}" alt="" />
                     {% endif %}
                     <div class="texts">
                         <span class="title-edition">{{ yearEdition }}<sub>E</sub> {{ 'retrospective.edition'|trans }}</span>
@@ -106,17 +95,21 @@
                 </div>
             </div>
 
+            {%- if images|length -%}
             <div class="calc3">
-                {% if festival.associatedMediaImages[0] is defined %}<img class="i1" src="{{- _self.sliderImage(festival.associatedMediaImages[0])|trim -}}" alt="">{% endif %}
-                {% if festival.associatedMediaImages[1] is defined %}<img class="i2" src="{{- _self.sliderImage(festival.associatedMediaImages[1])|trim -}}" alt="">{% endif %}
-                {% if festival.associatedMediaImages[2] is defined %}<img class="i3" src="{{- _self.sliderImage(festival.associatedMediaImages[2])|trim -}}" alt="">{% endif %}
+                {%- for image in images|slice(0, 3) -%}
+                    <img class="i{{ loop.index }}" src="{{ macro_slider.sliderImage(image)|trim }}" alt="">
+                {%- endfor -%}
             </div>
+            {%- endif -%}
 
+            {%- if images|length > 3 -%}
             <div class="calc4">
-                {% if festival.associatedMediaImages[3] is defined %}<img class="i1" src="{{- _self.sliderImage(festival.associatedMediaImages[3])|trim -}}" alt="">{% endif %}
-                {% if festival.associatedMediaImages[4] is defined %}<img class="i2" src="{{- _self.sliderImage(festival.associatedMediaImages[4])|trim -}}" alt="">{% endif %}
-                {% if festival.associatedMediaImages[5] is defined %}<img class="i3" src="{{- _self.sliderImage(festival.associatedMediaImages[5])|trim -}}" alt="">{% endif %}
+                {%- for image in images|slice(3, 6) -%}
+                    <img class="i{{ loop.index }}" src="{{ macro_slider.sliderImage(image)|trim }}" alt="">
+                {%- endfor -%}
             </div>
+            {% endif %}
         </div>
 
         {% set yearEdition = yearEdition + 1 %}

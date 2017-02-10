@@ -36,6 +36,7 @@
         margin-left: 17px;
         position: relative;
         top: -2px;
+        left: 17px;
     }
   }
 
@@ -49,7 +50,7 @@
   }
 
   .content-movie .tetiere-movie {
-    height: 290px;
+    height: auto;
   }
 
   .relative {
@@ -144,6 +145,7 @@
 
       img {
         display: block;
+        width: 100%;
       }
     }
 
@@ -301,6 +303,7 @@
         margin-left: 26px;
         position: relative;
         top: 27%;
+        left: 31%;
       }
 
       &:hover + img {
@@ -783,6 +786,7 @@
           font-size: 1.8rem;
           margin-top: 25px;
           margin-left: 27px;
+          left: 16px;
         }
       }
 

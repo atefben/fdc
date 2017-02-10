@@ -26,6 +26,7 @@ $(document).ready(function () {
         $('body').addClass('ie');
     }
 
+
     initHeaderSticky();
     // owInitLinkChangeEffect(); add ??
 
@@ -366,14 +367,43 @@ $(document).ready(function () {
 
 
     if($('.search-page-result').length) {
-        initFilterCheck();
+        $form = $('.block-searh-more form');
+        initFilterCheck($form);
         truncTitleSearch();
+    }
+
+    if($('.search-page').length){
+        $form = $('.block-search form');
+        initFilterCheck($form);
     }
 
     setTimeout(function () {
         $('body').removeClass('loading');
     }, 1000);
 
+
+    if($('.affiche-fdc').length){
+
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
+
+        verif = hash.slice(0, 3);
+
+        if (hash.length > 0 && verif == "pid") {
+            var slider = $('.affiche-fdc');
+            owinitSlideShow(slider, hash);
+
+            $('.poster').on('click', function(e){
+                slider = $('.all-contain');
+                $(this).parent().addClass('active center');
+
+                openSlideShow(slider, "undefined", true);
+            })
+
+        }else{
+            owinitSlideShow();
+        }
+    }
 
 
     //FIX IE

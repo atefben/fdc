@@ -61,8 +61,9 @@ var owInitSlider = function (sliderName) {
         });
 
         $('.slider-home').on('click', function(e){
-
-            if($(e.target).hasClass('owl-dots')){
+            console.log($(e.target));
+            console.log($(e.target).hasClass('owl-dots') || $(e.target).closest('.owl-dots').length);
+            if($(e.target).hasClass('owl-dots') || $(e.target).closest('.owl-dots').length){
                 return false;
             }else{
                 var href = $('.owl-item.active .coverLink').attr('href');
@@ -222,8 +223,9 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('update', function (values, handle) {
 
+            var nm = isMac ? 4 : 21;
             //drag
-            var w = $(window).width() + 4;
+            var w = $(window).width() + nm;
             var number = 0;
 
 

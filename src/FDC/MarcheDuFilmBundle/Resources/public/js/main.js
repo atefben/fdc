@@ -32,7 +32,7 @@
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
     return url.link(url);
-  });
+  }); 
 };
 
 // parse twitter username in String
@@ -866,7 +866,7 @@ $(document).ready(function() {
   $(window).on('scroll', function() {console.log('8');
     var s = $(window).scrollTop();
 
-    if(($('#prehome-container').length == 0 && s > 50) || ($('#prehome-container').length && s > $(window).height() + 10)) {
+    if( s > 50 ) {
       $('header').addClass('sticky');
     } else {
       $('header').removeClass('sticky');

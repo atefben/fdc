@@ -431,7 +431,7 @@ var initVideo = function(hash) {
                         }
                     });
 
-                    if(!$('.media-library').length){
+                    if(!$('.media-library').length && !$('.medias').length){
                         sliderChannelsVideo.trigger('to.owl.carousel', index);
                     }
 
@@ -455,6 +455,9 @@ var initVideo = function(hash) {
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
+                index = parseInt(index)
+                console.log(index);
+                console.log(index)
                 playerInstance.playlistItem(index);
 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
@@ -469,8 +472,6 @@ var initVideo = function(hash) {
                 $container.find('.jwplayer').removeClass('overlay-channels over');
 
                 sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true])
-
-                console.log(infos)
 
                 updateShareLink(index)
 
@@ -964,24 +965,24 @@ var initVideo = function(hash) {
             }, 500);
 
         });
-    }else if($('.video-player').length > 0) {
+    } else if($('.medias').length > 0 || $('.media-library').length > 0) {
+
+        initPopinVideo(hash);
+
+    } else if($('.video-playlist').length > 0) {
+
+        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
+
+    } else if ($('#video-player-ba').length > 0) {
+
+        videoMovieBa = playerInit('video-player-ba', false, true)
+
+    } else if($('.video-player').length > 0) {
 
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
         })
-    }
-
-    if($('.video-playlist').length > 0) {
-        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
-    }
-
-    if ($('#video-player-ba').length > 0) {
-        videoMovieBa = playerInit('video-player-ba', false, true)
-    }
-
-    if($('.medias').length > 0 || $('.media-library').length > 0) {
-        initPopinVideo(hash);
     }
     
 

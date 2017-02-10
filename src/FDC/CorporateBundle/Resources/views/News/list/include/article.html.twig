@@ -1,0 +1,139 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+<article
+        class="card item article date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all"
+        data-format="{{ article.newsType|get_news_type }}"
+        data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420"
+        data-end="false" data-date="date-{{ article.publishedAt|date('d-m-y') }}">
+    <div class="image">
+        <div class="image-wrapper">
+            {% if article is news_object %}
+                {% set type = 'news' %}
+            {% else %}
+                {% if class(article) starts with 'S' %}
+                    {% set type = 'communique' %}
+                {% else %}
+                    {% set type = 'info' %}
+                {% endif %}
+            {% endif %}
+
+            {% if (article is news_article or article is statement_article or article is info_article) and article.header %}
+                {% set img = article.header %}
+                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                <img src="{% path file , '572x362' %}"
+                     srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x"
+                     alt="{{ img|trans_fallback('alt') }} ">
+            {% elseif (article is news_video or article is statement_video or article is info_video) and article.header %}
+                {% set header = article.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = trans %}
+                    {% else %}
+                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                    {% if imageTrans is defined and imageTrans is not null %}
+                        {% set file = imageTrans.file %}
+                        {% set img = header %}
+                    {% endif %}
+                {% endif %}
+                {% if trans is defined and trans is not null %}
+                    {% set img = article.video.image %}
+                    {% if img is defined and img is not null %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+                    {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
+                {% endif %}
+                {% if file is defined and file is not null %}
+                    <img src="{% path file , '572x362' %}"
+                         srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x"
+                         alt="{{ img|trans_fallback('alt') }} ">
+                {% elseif imgamazon is defined and imgamazon is not null %}
+                    <img src="{{ imgamazon }}" alt=""/>
+                {% endif %}
+            {% elseif (article is news_audio or article is info_audio or article is statement_audio) and article.header %}
+                {% set header = article.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = trans %}
+                    {% else %}
+                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                    {% if imageTrans is defined and imageTrans is not null %}
+                        {% set file = imageTrans.file %}
+                        {% set img = article.header %}
+                    {% endif %}
+                {% else %}
+                    {% set img = article.audio.image %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% endif %}
+
+                <img src="{% path file , '572x362' %}"
+                     srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x"
+                     alt="{{ img|trans_fallback('alt') }} ">
+            {% elseif article is news_image and article.header %}
+                {% set header = article.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                    {% else %}
+                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                    {% if imageTrans is defined and imageTrans is not null %}
+                        {% set img = article.header %}
+                        {% set file = imageTrans.file %}
+                    {% endif %}
+                {% else %}
+                    {% set img = article.gallery.medias[0].media %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% endif %}
+
+                <img src="{% path file , '572x362' %}"
+                     srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x"
+                     alt="{{ img|trans_fallback('alt') }} ">
+            {% endif %}
+        </div>
+        {% if type == 'news' %}
+        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}"
+           class="linkImage"></a>
+        {% else %}
+        <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}"
+           class="linkImage">
+            {% endif %}
+            <span class="picto"><i class="icon icon-{{ article|get_news_type }}"></i></span>
+        </a>
+    </div>
+    <div class="info">
+        <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a><span
+                class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
+                class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
+        <strong><a href="{{ path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') , 'year': festival.year}) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></strong>
+    </div>
+</article>
