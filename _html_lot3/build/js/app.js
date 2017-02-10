@@ -2145,7 +2145,8 @@ var owInitGrid = function (id) {
     if (id == 'isotope-01') {
 
 
-        var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
+        var $grid = $('.isotope-01:not(.add-ajax-request)');
+        $grid.imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
                 layoutMode: 'packery',
@@ -2153,6 +2154,11 @@ var owInitGrid = function (id) {
                     columnWidth: '.grid-sizer',
                     gutter: 0
                 }
+            });
+            var globalOffset = $grid.offset().top;
+            $grid.find('.item').each(function(index,value){
+                var topValue = (parseInt($(this).offset().top) - globalOffset) - 1;
+                $(this).css('top',topValue);
             });
 
         });
@@ -2173,6 +2179,7 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
+            $gridMore.isotope();
         });
 
 
