@@ -6,6 +6,8 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContactTranslation;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MdfConferenceInfoAndContactMain extends Admin
 {
@@ -70,7 +72,17 @@ class MdfConferenceInfoAndContactMain extends Admin
                         'field_type' => 'ckeditor',
                         'label'              => 'form.mdf.label.description',
                         'translation_domain' => 'BaseAdminBundle'
-                    )
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfConferenceInfoAndContactTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints'               => array(
+                            new NotBlank()
+                        )
+                    ),
                 )
             ))
             ->add('conferenceInfoAndContactWidgets', 'infinite_form_polycollection', array(
