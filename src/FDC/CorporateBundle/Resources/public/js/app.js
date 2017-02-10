@@ -2230,39 +2230,41 @@ var owInitGrid = function (id) {
                                     gutter: 0
                                 }
                             });
+
                             //scroll bottom
                             $('html,body').animate({
                                 scrollTop: $('.isotope-01').outerHeight()
                             },300);
 
-                            var trunTitle = function() {
-                                $.each($('.card.item'), function (i, e) {
-                                    var title = $(e).find('.info strong a');
-                                    console.log(title);
-                                    if (!title.hasClass('init')) {
-                                        var text = $(e).find('.info strong a').text();
-                                        title.addClass('init');
-                                        title.attr('data-title', text);
-                                    } else {
-                                        var text = title.attr('data-title');
-                                    }
+                            $('.card.item').each(function(){
+                                var $this = $(this);
+                                var title = $this.find('.info strong a');
+                                var cat = $this.find('.info .category');
+                                var titleText;
+                                var catText;
 
-                                    var cat = $(e).find('.info .category');
+                                if (!title.hasClass('init')) {
+                                    titleText = $(e).find('.info strong a').text();
+                                    title.addClass('init');
+                                    title.attr('data-title', text);
+                                } else {
+                                    titleText = title.attr('data-title');
+                                }
 
-                                    if (!cat.hasClass('init')) {
-                                        text2 = cat.text();
-                                        cat.addClass('init');
-                                        cat.attr('data-cat', text2);
-                                    } else {
-                                        text2 = cat.attr('data-title');
-                                    }
+                                if (!cat.hasClass('init')) {
+                                    text2 = cat.text();
+                                    cat.addClass('init');
+                                    cat.attr('data-cat', text2);
+                                } else {
+                                    text2 = cat.attr('data-title');
+                                }
 
-                                    title.html(text.trunc(30, true));
-                                    cat.html(text2.trunc(30, true));
-                                    
-                                });
-                            }
-                            trunTitle();
+                                cat.addClass('init').attr('data-cat', cat.text());
+
+                                title.html(titleText.trunc(30, true));
+                                cat.html(catText.trunc(30, true));
+                            });
+                            
                         });
                         
                         
@@ -3160,20 +3162,16 @@ var owArrowDisplay = function () {
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
-       $('.block-push').css('background-position', '0px -10px');
-
+        $('.block-push').css('background-position', '0px -10px');
         $(window).on('scroll', function () {
-
             if ($('header.sticky').length) {
                 var s = $(this).scrollTop() - 240;
                 $('.block-push.big').css('background-position', '0px ' + s + 'px');
             } else {
                 $('.block-push.big').css('background-position', '0px ' + '-240px');
             }
-
         });
     }
-
 };
 
 

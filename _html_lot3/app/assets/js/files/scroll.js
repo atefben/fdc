@@ -76,20 +76,16 @@ var owArrowDisplay = function () {
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
-       $('.block-push').css('background-position', '0px -10px');
-
+        $('.block-push').css('background-position', '0px -10px');
         $(window).on('scroll', function () {
-
             if ($('header.sticky').length) {
                 var s = $(this).scrollTop() - 240;
                 $('.block-push.big').css('background-position', '0px ' + s + 'px');
             } else {
                 $('.block-push.big').css('background-position', '0px ' + '-240px');
             }
-
         });
     }
-
 };
 
 
