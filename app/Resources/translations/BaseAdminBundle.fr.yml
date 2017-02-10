@@ -749,6 +749,7 @@ form:
                 youtube: Module video
                 video: Module video
         label:
+            plan_du_site: Plan du site
             gallery: Titre de la galerie
             content_block:
                 category: Strate 1 - Label

@@ -30,10 +30,7 @@ class InfoManager
     {
         $infoPage = $this->em
             ->getRepository(MdfInformationsTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
+            ->getByLocaleAndStatus($this->requestStack->getMasterRequest()->get('_locale')
             );
 
         if ($infoPage) {
@@ -42,7 +39,7 @@ class InfoManager
 
             $rubriquesCollection = $rubriquesCollectionRepo
                 ->getWidgetsDependingOnPostion(
-                    $infoPage[0]->getTranslatable()->getId()
+                    $infoPage->getTranslatable()->getId()
                 );
 
             if ($rubriquesCollection) {

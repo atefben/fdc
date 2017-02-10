@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Component\HttpFoundation\Request;
 use FDC\MarcheDuFilmBundle\Form\Type\ContactFormType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TransverseController extends Controller
 {
@@ -51,6 +52,11 @@ class TransverseController extends Controller
         ;
         $contactUsManager = $this->get('mdf.manager.contact_us');
         $contactPage = $contactUsManager->getContactUsPage();
+        
+        if (!$contactPage) {
+            throw new NotFoundHttpException("Page not found");
+        }
+        
         $contactBlocks = $contactUsManager->getContactBlocks($contactPage);
         $contactSubjects = $contactUsManager->getContactSubjects($contactPage);
         $formContact = $this->createForm(new ContactFormType($contactSubjects));

@@ -56,6 +56,10 @@ class DefaultController extends Controller
 
         $sitePlanPage = $sitePlanManager->getSitePlanPage();
 
+        if (!$sitePlanPage) {
+            throw new NotFoundHttpException('Page Not Found');
+        }
+
         $servicesPages = $sitePlanManager->getServicesPages();
 
         return $this->render('FDCMarcheDuFilmBundle::sitePlan/sitePlan.html.twig', array(

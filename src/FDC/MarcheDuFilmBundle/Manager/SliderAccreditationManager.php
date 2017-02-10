@@ -23,11 +23,8 @@ class SliderAccreditationManager
     {
         $sliderAccreditionPge = $this->em
             ->getRepository(MdfSliderAccreditationPageTranslation::class)
-            ->findOneBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+            ->getByLocaleAndStatus( $this->requestStack->getMasterRequest()->get('_locale'))
+        ;
         
         if ($sliderAccreditionPge) {
             return $this->em
