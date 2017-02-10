@@ -27,7 +27,7 @@ class SearchController extends Controller
             'mediaResults' => array(),
             'documentResults' => array(),
         );
-        
+
         /** FOS\ElasticaBundle\Manager\RepositoryManager */
         $repositoryManager = $this->container->get('fos_elastica.manager');
 
@@ -68,24 +68,28 @@ class SearchController extends Controller
 
         foreach ($imageResults as $imageResult) {
             $translation = $imageResult->findTranslationByLocale($locale);
-            $output[] = array(
-                'title' => $translation->getLegend(),
-                'id' => $translation->getId(),
-                'type' => 'image',
-                'image' => $imageResult,
-                'alt' => $translation->getAlt()
-            );
+            if ($translation) {
+                $output[] = array(
+                    'title' => $translation->getLegend(),
+                    'id' => $translation->getId(),
+                    'type' => 'image',
+                    'image' => $imageResult,
+                    'alt' => $translation->getAlt()
+                );
+            }
         }
 
         foreach ($videoResults as $videoResult) {
             $translation = $videoResult->findTranslationByLocale($locale);
-            $output[] = array(
-                'title' => $translation->getTitle(),
-                'id' => $translation->getId(),
-                'type' => 'video',
-                'image' => $videoResult->getImage(),
-                'alt' => $videoResult->getImage()->findTranslationByLocale($locale)->getAlt()
-            );
+            if ($translation) {
+                $output[] = array(
+                    'title' => $translation->getTitle(),
+                    'id' => $translation->getId(),
+                    'type' => 'video',
+                    'image' => $videoResult->getImage(),
+                    'alt' => $videoResult->getImage()->findTranslationByLocale($locale)->getAlt()
+                );
+            }
 
             continue;
         }
@@ -93,21 +97,22 @@ class SearchController extends Controller
         foreach ($galleryResults as $galleryResult) {
             $translation = $galleryResult->findTranslationByLocale($locale);
             $image = $galleryResult->getMedias()[0]->getMedia();
-
-            $output[] = array(
-                'title' => $translation->getName(),
-                'id' => $galleryResult->getId(),
-                'type' => 'gallery',
-                'image' => $image,
-                'alt' => $image->findTranslationByLocale($locale)->getAlt()
-            );
+            if ($translation && $image) {
+                $output[] = array(
+                    'title' => $translation->getName(),
+                    'id' => $galleryResult->getId(),
+                    'type' => 'gallery',
+                    'image' => $image,
+                    'alt' => $image->findTranslationByLocale($locale)->getAlt()
+                );
+            }
         }
 
         //order by created at
 
         return $output;
     }
-    
+
     /**
      * @Route("/media-source/{type}/{id}", name="fdc_marche_du_film_get_media_source")
      *
@@ -262,7 +267,7 @@ class SearchController extends Controller
             default:
                 break;
         }
-        
+
         return $this->redirectToRoute(
             $finalSource['route'],
             array_key_exists('args', $finalSource) ? $finalSource['args'] : array(),
