@@ -105,7 +105,7 @@ var owInitGrid = function (id) {
                                 //if (!title.hasClass('init')) {
                                     titleText = $(e).find('.info strong a').text();
                                     title.addClass('init');
-                                    title.attr('data-title', text);
+                                    title.attr('data-title', titleText);
 
                                 //if (!cat.hasClass('init')) {
                                     catText = cat.text();
