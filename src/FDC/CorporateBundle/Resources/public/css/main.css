@@ -7133,6 +7133,10 @@ h2.sub-title {
   color: #c8a461;
 }
 
+.affiche-fdc .block-movie-preview .poster:hover {
+  cursor: pointer;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
