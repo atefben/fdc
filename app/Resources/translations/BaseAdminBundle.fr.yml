@@ -624,6 +624,7 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     mdf:
+        label_status: Statut
         conference_partner:
             form_name: Gestion du partenaire de la conférence
             subtitle: Titre de page
