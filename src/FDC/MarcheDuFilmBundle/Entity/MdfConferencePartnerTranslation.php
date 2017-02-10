@@ -3,6 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,10 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mdf_conference_partner_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfConferencePartnerTranslationRepository")
  */
-class MdfConferencePartnerTranslation
+class MdfConferencePartnerTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string

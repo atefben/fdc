@@ -3,6 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Repository;
 
 use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTranslation;
 
 class MdfConferencePartnerTranslationRepository extends EntityRepository
 {
@@ -11,10 +12,13 @@ class MdfConferencePartnerTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cpt');
         $qb
             ->where('cpt.locale = :locale')
+            ->andWhere('cpt.status = :statusPublished or cpt.status = :statusTranslated')
             ->innerJoin('cpt.translatable', 'cp')
             ->andWhere('cp.type = :slug')
             ->setParameter(':locale', $locale)
             ->setParameter(':slug', $slug)
+            ->setParameter(':statusPublished', MdfConferencePartnerTranslation::STATUS_PUBLISHED)
+            ->setParameter(':statusTranslated', MdfConferencePartnerTranslation::STATUS_TRANSLATED)
         ;
 
         return $qb->getQuery()->getOneOrNullResult();

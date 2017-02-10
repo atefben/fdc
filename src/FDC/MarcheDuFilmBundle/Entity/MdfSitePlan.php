@@ -65,7 +65,7 @@ class MdfSitePlan
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
-            $string = $translation->getSubtitle();
+            $string = $translation->getTitle();
         } else {
             $string = strval($this->getId());
         }
@@ -78,7 +78,7 @@ class MdfSitePlan
         $string = '';
 
         if ($translation !== null) {
-            $string = $translation->getSubtitle();
+            $string = $translation->getTitle();
         }
 
         return $string;

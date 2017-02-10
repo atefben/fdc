@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 use FDC\MarcheDuFilmBundle\Entity\MdfSitePlanTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -46,6 +47,10 @@ class DefaultController extends Controller
         $sitePlanManager = $this->get('mdf.manager.site_plan');
 
         $sitePlanPage = $sitePlanManager->getSitePlanPage();
+
+        if (!$sitePlanPage) {
+            throw new NotFoundHttpException('Page Not Found');
+        }
 
         $servicesPages = $sitePlanManager->getServicesPages();
 
