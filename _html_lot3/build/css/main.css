@@ -13974,6 +13974,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 17px;
   position: relative;
   top: -2px;
+  left: 17px;
 }
 .single-movie .block-films {
   height: auto;
@@ -14199,6 +14200,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 26px;
   position: relative;
   top: 27%;
+  left: 31%;
 }
 .single-movie .poster .picto:hover + img {
   transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -14619,6 +14621,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 1.8rem;
   margin-top: 25px;
   margin-left: 27px;
+  left: 16px;
 }
 .single-movie .videos .video-player .info {
   height: 80px;
