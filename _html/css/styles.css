@@ -11234,6 +11234,16 @@ header #searchContainer {
   opacity: 0.8;
 }
 
+.show {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.hide {
+  display: none;
+}
+
 header #logo-wrapper {
   height: 180px;
 }
@@ -21905,7 +21915,7 @@ body:not(.tablette) .webtv #live .img {
 }
 .accreditations .articles .articles-content .ht {
   color: inherit;
-  font-size: 24px !important;
+  font-size: 15px !important;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
 }
 .accreditations .articles .primo {

@@ -119,7 +119,8 @@ window.onunload = function(){};
     var selectedBox = $('.services-pictures div');
 
     $(servicesBoxes).hover(function() {
-          $(selectedBox).toggleClass('hide')
+          $(selectedBox).toggleClass('hide');
+          $('#' + $(this).data('rel')).removeClass('hide');
           $('#' + $(this).data('rel')).toggleClass('show');
     });
 

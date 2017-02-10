@@ -187,19 +187,19 @@
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right customClass2"><i class="icon icon_flecheGauche reverse"></i></span>
                       </div></a>
-                     <a href="#"><div class="services-boxes firstBox" data-rel="firstPic">
+                     <a href="#"><div class="services-boxes firstBox" data-rel="fourthPic">
                           <div class="customClass2">stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right customClass2"><i class="icon icon_flecheGauche reverse"></i></span>
                       </div></a>
-                      <a href="#"><div class="services-boxes" data-rel="secondPic">
+                      <a href="#"><div class="services-boxes" data-rel="fifthPic">
                           <div class="customClass2">stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
                           <span class="glyphicon glyphicon-menu-right customClass2"><i class="icon icon_flecheGauche reverse"></i></span>
                       </div></a>
-                      <div class="services-boxes" data-rel="thirdPic">
+                      <div class="services-boxes" data-rel="sixthPic">
                           <div class="customClass2">stand</div>
                           <div>Le Lorem Ipsum est simplement du faux texte et la mise en page avant impression …</div>
                           <div>voir le détail</div>
@@ -211,6 +211,9 @@
                       <div id="firstPic"><img src="img/photo.png"/></div>
                       <div id="secondPic"><img src="img/photo2.png"/></div>
                       <div id="thirdPic"><img src="img/photo.png"/></div>
+                      <div id="fourthPic"><img src="img/photo.png"/></div>
+                      <div id="fifthPic"><img src="img/photo2.png"/></div>
+                      <div id="sixthPic"><img src="img/photo.png"/></div>
                     </div>
                     </div>
                 </div>
