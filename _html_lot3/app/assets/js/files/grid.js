@@ -111,11 +111,11 @@ var owInitGrid = function (id) {
                                 }
 
                                 if (!cat.hasClass('init')) {
-                                    text2 = cat.text();
+                                    catText = cat.text();
                                     cat.addClass('init');
-                                    cat.attr('data-cat', text2);
+                                    cat.attr('data-cat', catText);
                                 } else {
-                                    text2 = cat.attr('data-title');
+                                    catText = cat.attr('data-title');
                                 }
 
                                 cat.addClass('init').attr('data-cat', cat.text());
