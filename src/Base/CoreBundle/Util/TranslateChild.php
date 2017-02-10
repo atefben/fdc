@@ -80,7 +80,7 @@ trait TranslateChild
     public function setStatus($status)
     {
         if($status == '') {
-            $this->status = self::STATUS_PUBLISHED;
+            $this->status = self::STATUS_DRAFT;
         } else {
             $this->status = $status;
         }

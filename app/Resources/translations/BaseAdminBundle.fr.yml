@@ -624,6 +624,7 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     mdf:
+        label_status: Statut
         conference_partner:
             form_name: Gestion du partenaire de la conférence
             subtitle: Titre de page
@@ -1127,7 +1128,7 @@ form:
     label_date: Date et heure
     label_published_at: Date de début de publication
     label_publish_ended_at: Date de fin de publication
-    label_status: Statut
+    label_status: Statut du bandeau
     label_article_tags: Tags de recherche associés à l'article
     label_priority_status: Priorité
     label_seo_title: Titre
