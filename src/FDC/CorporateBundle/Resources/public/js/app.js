@@ -2243,21 +2243,15 @@ var owInitGrid = function (id) {
                                 var titleText = "";
                                 var catText = "";
 
-                                if (!title.hasClass('init')) {
+                                //if (!title.hasClass('init')) {
                                     titleText = $(e).find('.info strong a').text();
                                     title.addClass('init');
                                     title.attr('data-title', text);
-                                } else {
-                                    titleText = title.attr('data-title');
-                                }
 
-                                if (!cat.hasClass('init')) {
+                                //if (!cat.hasClass('init')) {
                                     catText = cat.text();
                                     cat.addClass('init');
                                     cat.attr('data-cat', catText);
-                                } else {
-                                    catText = cat.attr('data-title');
-                                }
 
                                 cat.addClass('init').attr('data-cat', cat.text());
 
