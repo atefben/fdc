@@ -644,6 +644,9 @@ form:
                 url: Redirection au clic sur le logo
                 image: Gestion du visuel du logo
         conference_program:
+            speakers_list: Intervenants présents
+            program_event: Événements disponibles
+            day_list: Jours disponibles pour la conférence
             file_widget: Bloc de téléchargement de fichier de la conférence
             file_button: Ajouter un fichier à télécharger
             form_name: Bloc de contenu de la page Conférence
@@ -652,7 +655,7 @@ form:
             program_day: Gestion des jours disponibles dans le programme de la conférence
             conference_day_widget: Bloc de jour du programme
             day:
-                new_event: Gestion d'un nouveau jour de la conférence
+                new_event: Gestion des événements de la journée
             event:
                 form_name: Gestion de l'événement d'une journée
                 title: Titre de l'événement
