@@ -39,7 +39,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CcmNews
  *
  * @ORM\Table(name="ccm_news")
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\CcmNewsRepository")
+ * @ORM\Entity()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "CcmNewsArticle", "audio" = "CcmNewsAudio", "image" = "CcmNewsImage", "video" = "CcmNewsVideo"})
@@ -66,7 +66,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      /**
       * @var Theme
       *
-      * @ORM\ManyToOne(targetEntity="Theme")
+      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme")
       * @ORM\JoinColumn(nullable=true)
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
@@ -76,14 +76,14 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmFestival")
      */
     protected $festival;
 
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Homepage", cascade={"all"})
      */
     protected $homepage;
 
@@ -122,15 +122,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_show", "film_show"})
-     */
-    protected $signature;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     *
      */
     protected $typeClone;
 
@@ -142,36 +133,17 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     protected $hidden = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="CcmNewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $associatedNews;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="news")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmFilm", inversedBy="ccmNews")
      */
     protected $associatedFilm;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Event")
-     *
-     */
-    protected $associatedEvent;
-
-    /**
-     * @ORM\OneToMany(targetEntity="NewsFilmProjectionAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
-     *
-     */
-    protected $associatedProjections;
-
-    /**
-     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
-     *
-     * @Groups({"news_show"})
-     */
-    protected $associatedFilms;
-
+    
     /**
      * @var CcmNewsWidget
      *
@@ -233,7 +205,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var MediaVideo
      *
-     * @ORM\OneToOne(targetEntity="MediaAudio", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     protected $homepageMediaAudio;
@@ -241,7 +213,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var MediaVideo
      *
-     * @ORM\OneToOne(targetEntity="MediaVideo", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     protected $homepageMediaVideo;
@@ -504,29 +476,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     }
 
     /**
-     * Set signature
-     *
-     * @param string $signature
-     * @return CcmNews
-     */
-    public function setSignature($signature)
-    {
-        $this->signature = $signature;
-
-        return $this;
-    }
-
-    /**
-     * Get signature
-     *
-     * @return string
-     */
-    public function getSignature()
-    {
-        return $this->signature;
-    }
-
-    /**
      * Set displayedMobile
      *
      * @param boolean $displayedMobile
@@ -598,10 +547,10 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Add associatedNews
      *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     * @param CcmNewsNewsAssociated $associatedNews
      * @return CcmNews
      */
-    public function addAssociatedNew(NewsNewsAssociated $associatedNews)
+    public function addAssociatedNew(CcmNewsNewsAssociated $associatedNews)
     {
         $associatedNews->setNews($this);
         $this->associatedNews[] = $associatedNews;
@@ -612,9 +561,9 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Remove associatedNews
      *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     * @param CcmNewsNewsAssociated $associatedNews
      */
-    public function removeAssociatedNew(NewsNewsAssociated $associatedNews)
+    public function removeAssociatedNew(CcmNewsNewsAssociated $associatedNews)
     {
         $this->associatedNews->removeElement($associatedNews);
     }
@@ -623,10 +572,10 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Add associatedNews
      *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     * @param CcmNewsNewsAssociated $associatedNews
      * @return CcmNews
      */
-    public function addAssociatedNews(NewsNewsAssociated $associatedNews)
+    public function addAssociatedNews(CcmNewsNewsAssociated $associatedNews)
     {
         $associatedNews->setNews($this);
         $this->associatedNews[] = $associatedNews;
@@ -637,9 +586,9 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Remove associatedNews
      *
-     * @param \Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews
+     * @param CcmNewsNewsAssociated $associatedNews
      */
-    public function removeAssociatedNews(NewsNewsAssociated $associatedNews)
+    public function removeAssociatedNews(CcmNewsNewsAssociated $associatedNews)
     {
         $this->associatedNews->removeElement($associatedNews);
     }
@@ -647,13 +596,13 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get associatedNews
      *
-     * @return \Base\CoreBundle\Entity\NewsNewsAssociated
+     * @return CcmNewsNewsAssociated
      */
     public function getAssociatedNews()
     {
         if ($this->associatedNews->count() < 2) {
             while ($this->associatedNews->count() != 2) {
-                $entity = new NewsNewsAssociated();
+                $entity = new CcmNewsNewsAssociated();
                 $entity->setNews($this);
                 $this->associatedNews->add($entity);
             }
@@ -683,97 +632,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getAssociatedFilm()
     {
         return $this->associatedFilm;
-    }
-
-    /**
-     * Set associatedEvent
-     *
-     * @param \Base\CoreBundle\Entity\Event $associatedEvent
-     * @return CcmNews
-     */
-    public function setAssociatedEvent(Event $associatedEvent = null)
-    {
-        $this->associatedEvent = $associatedEvent;
-
-        return $this;
-    }
-
-    /**
-     * Get associatedEvent
-     *
-     * @return \Base\CoreBundle\Entity\Event
-     */
-    public function getAssociatedEvent()
-    {
-        return $this->associatedEvent;
-    }
-
-    /**
-     * Add associatedProjections
-     *
-     * @param \Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections
-     * @return CcmNews
-     */
-    public function addAssociatedProjection(NewsFilmProjectionAssociated $associatedProjections)
-    {
-        $associatedProjections->setNews($this);
-        $this->associatedProjections[] = $associatedProjections;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedProjections
-     *
-     * @param \Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections
-     */
-    public function removeAssociatedProjection(NewsFilmProjectionAssociated $associatedProjections)
-    {
-        $this->associatedProjections->removeElement($associatedProjections);
-    }
-
-    /**
-     * Get associatedProjections
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAssociatedProjections()
-    {
-        return $this->associatedProjections;
-    }
-
-    /**
-     * Add associatedFilms
-     *
-     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms
-     * @return CcmNews
-     */
-    public function addAssociatedFilm(NewsFilmFilmAssociated $associatedFilms)
-    {
-        $associatedFilms->setNews($this);
-        $this->associatedFilms[] = $associatedFilms;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedFilms
-     *
-     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms
-     */
-    public function removeAssociatedFilm(NewsFilmFilmAssociated $associatedFilms)
-    {
-        $this->associatedFilms->removeElement($associatedFilms);
-    }
-
-    /**
-     * Get associatedFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAssociatedFilms()
-    {
-        return $this->associatedFilms;
     }
 
     /**
@@ -1016,13 +874,13 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getFeedItemRouteParameters(){
 
         $format = 'articles';
-        if($this->getNewsType() == 'NewsArticle') {
+        if($this->getNewsType() == 'CcmNewsArticle') {
             $format = 'articles';
-        } elseif ($this->getNewsType() == 'NewsAudio') {
+        } elseif ($this->getNewsType() == 'CcmNewsAudio') {
             $format = 'audios';
-        } elseif ($this->getNewsType() == 'NewsImage') {
+        } elseif ($this->getNewsType() == 'CcmNewsImage') {
             $format = 'videos';
-        } elseif ($this->getNewsType() == 'NewsVideo') {
+        } elseif ($this->getNewsType() == 'CcmNewsVideo') {
             $format = 'videos';
         }
         return array(

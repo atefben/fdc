@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
 class CcmNewsWidgetImageDualAlign extends CcmNewsWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="GalleryDualAlign")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\GalleryDualAlign")
      * @Groups({"news_show"})
      */
     protected $gallery;

@@ -43,7 +43,7 @@ class CcmNewsVideo extends CcmNews
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */

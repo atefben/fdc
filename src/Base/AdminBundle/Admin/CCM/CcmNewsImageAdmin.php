@@ -23,6 +23,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class CcmNewsImageAdmin extends Admin
 {
+    protected $baseRouteName = 'ccm_news_image';
+    protected $baseRoutePattern = 'ccm-news-image';
+    
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
@@ -144,13 +147,13 @@ class CcmNewsImageAdmin extends Admin
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(
-                    'news_widget_text_type',
-                    'news_widget_quote_type',
-                    'news_widget_audio_type',
-                    'news_widget_image_type',
-                    'news_widget_image_dual_align_type',
-                    'news_widget_video_type',
-                    'news_widget_video_youtube_type'
+                    'ccm_news_widget_text_type',
+                    'ccm_news_widget_quote_type',
+                    'ccm_news_widget_audio_type',
+                    'ccm_news_widget_image_type',
+                    'ccm_news_widget_image_dual_align_type',
+                    'ccm_news_widget_video_type',
+                    'ccm_news_widget_video_youtube_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -159,19 +162,6 @@ class CcmNewsImageAdmin extends Admin
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
-            ))
-            ->add('tags', 'sonata_type_collection', array(
-                'label' => 'form.label_article_tags',
-                'help' => 'form.news.helper_tags',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
-            ->add('signature', null, array(
-                'help' => 'form.news.helper_signature'
             ))
             ->add('gallery', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_gallery',
@@ -189,30 +179,6 @@ class CcmNewsImageAdmin extends Admin
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false
             ))
-            ->add('associatedEvent', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_event_associated',
-                'required' => false
-            ))
-            ->add('associatedProjections', 'sonata_type_collection', array(
-                'label' => 'form.label_news_film_projection_associated',
-                'help' => 'form.news.helper_news_film_projection_associated',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
-            ->add('associatedFilms', 'sonata_type_collection', array(
-                'label' => 'form.label_news_film_film_associated',
-                'help' => 'form.news.helper_news_film_film_associated',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
             ->add('associatedNews', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.news.helper_news_news_associated',

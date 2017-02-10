@@ -19,6 +19,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class CcmNewsAdmin extends Admin
 {
+    protected $baseRouteName = 'ccm_news';
+    protected $baseRoutePattern = 'ccm-news';
+
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
@@ -34,10 +37,10 @@ class CcmNewsAdmin extends Admin
         static $joined = false;
         if (!$joined) {
             $queryBuilder
-                ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', "na1.id = {$alias}.id")
-                ->leftjoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', "na2.id = {$alias}.id")
-                ->leftjoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', "na3.id = {$alias}.id")
-                ->leftjoin('Base\CoreBundle\Entity\NewsVideo', 'na4', 'WITH', "na4.id = {$alias}.id")
+                ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsArticle', 'na1', 'WITH', "na1.id = {$alias}.id")
+                ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsAudio', 'na2', 'WITH', "na2.id = {$alias}.id")
+                ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsImage', 'na3', 'WITH', "na3.id = {$alias}.id")
+                ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsVideo', 'na4', 'WITH', "na4.id = {$alias}.id")
                 ->leftjoin('na1.translations', 'na1t')
                 ->leftjoin('na2.translations', 'na2t')
                 ->leftjoin('na3.translations', 'na3t')
@@ -76,10 +79,10 @@ class CcmNewsAdmin extends Admin
                         return true;
                     } else {
                         $queryBuilder
-                            ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', "na1.id = {$alias}.id")
-                            ->leftjoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', "na2.id = {$alias}.id")
-                            ->leftjoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', "na3.id = {$alias}.id")
-                            ->leftjoin('Base\CoreBundle\Entity\NewsVideo', 'na4', 'WITH', "na4.id = {$alias}.id")
+                            ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsArticle', 'na1', 'WITH', "na1.id = {$alias}.id")
+                            ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsAudio', 'na2', 'WITH', "na2.id = {$alias}.id")
+                            ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsImage', 'na3', 'WITH', "na3.id = {$alias}.id")
+                            ->leftjoin('FDC\CourtMetrageBundle\Entity\CcmNewsVideo', 'na4', 'WITH', "na4.id = {$alias}.id")
                             ->leftjoin('na1.translations', 'na1t')
                             ->leftjoin('na2.translations', 'na2t')
                             ->leftjoin('na3.translations', 'na3t')
