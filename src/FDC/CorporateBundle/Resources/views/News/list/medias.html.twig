@@ -21,13 +21,13 @@
                     <div class="grid-sizer"></div>
                     {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
                 </div>
-            </div>
-        </div>
 
-        <div class="bright">
-            <a href="{{ path('fdc_corporate_news_getmediasajax', {'page': page + 1, 'year': festival.year}) }}"
-               class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
-            </a>
+                <div class="bright">
+                    <a href="{{ path('fdc_corporate_news_getmediasajax', {'page': page + 1, 'year': festival.year}) }}"
+                       class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [

@@ -24,20 +24,13 @@ class NewsController extends Controller
 
     /**
      * @Route("/{year}/articles")
-     * @Template("FDCCorporateBundle:News/list:article.html.twig")
      */
     public function getArticlesAction(Request $request, $year)
     {
-        //$offset = 30;
         $this->isPageEnabled($request->get('_route'));
-
-        $dateTime = new DateTime();
-
-        $em = $this->getDoctrine()->getManager();
         $locale = $request->getLocale();
 
         $festival = $this->getFestival($year);
-        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
         // SEO
         $id = $this->getParameter('admin_fdc_page_news_articles_id');
@@ -47,22 +40,65 @@ class NewsController extends Controller
             ->find($id)
         ;
 
-        if ($page == NULL) {
-            throw $this->createNotFoundException('Page not found');
+        if (!$page) {
+            $this->createNotFoundException('Page not found');
         }
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
-        //GET ALL NEWS ARTICLES
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsRetrospective($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
-        $statementArticles = $em->getRepository('BaseCoreBundle:Statement')->getStatementRetrospective($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
-        $infoArticles = $em->getRepository('BaseCoreBundle:Info')->getInfoRetrospective($locale, $festival->getId(), $festival->getFestivalStartsAt(), $festival->getFestivalEndsAt());
+
+        $parameters = $this->getArticlesAndFilters($festival, $locale);
+        return $this->render('FDCCorporateBundle:News/list:article.html.twig', $parameters);
+    }
+
+    /**
+     * @Route("/{year}/articles-ajax/{time}", options={"expose"=true})
+     * @param Request $request
+     * @param $year
+     * @param int|null $time
+     * @return Response
+     */
+    public function getArticlesAjaxAction(Request $request, $year, $time = null)
+    {
+        $locale = $request->getLocale();
+        $festival = $this->getFestival($year);
+
+        $parameters = $this->getArticlesAndFilters($festival, $locale, $time);
+
+        return $this->render('FDCCorporateBundle:News/list:articles-ajax.html.twig', $parameters);
+    }
+
+    private function getArticlesAndFilters(FilmFestival $festival, $locale, $time = null)
+    {
+        $since = null;
+        if ($time) {
+            $since = new DateTime();
+            $since->setTimestamp($time);
+        }
+        $maxResults = 30;
+
+        $newsArticles = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getNewsRetrospective($locale, $festival, $since, $maxResults)
+        ;
+        $statementArticles = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getStatementRetrospective($locale, $festival, $since, $maxResults)
+        ;
+        $infoArticles = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getInfoRetrospective($locale, $festival, $since, $maxResults)
+        ;
 
         $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
         usort($articles, [$this, 'compareArticle']);
 
 
         $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
-        if ($articles === null || count($articles) == 0) {
+        $articles = array_slice($articles, 0, 30);
+        if (!$articles) {
             throw new NotFoundHttpException();
         }
 
@@ -76,36 +112,38 @@ class NewsController extends Controller
 
 
         foreach ($articles as $key => $newsArticle) {
-            $isPublished = ($articles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
-            if ($isPublished) {
-                if (($key % 3) == 0) {
-                    $newsArticle->double = true;
-                }
+            if (($key % 3) == 0) {
+                $newsArticle->double = true;
+            }
 
-                //check if filters don't already exist
-                $date = $newsArticle->getPublishedAt();
-                if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
-                    $filters['dates'][$date->format('y-m-d')] = $date;
-                }
+            //check if filters don't already exist
+            $date = $newsArticle->getPublishedAt();
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                $filters['dates'][$date->format('y-m-d')] = $date;
+            }
 
-                if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                    $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
-                    $filters['themes']['content'][] = $newsArticle->getTheme();
-                }
+            if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
+                $filters['themes']['content'][] = $newsArticle->getTheme();
+            }
 
-                if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
-                    $filters['format'][] = $newsArticle->getNewsType();
-                }
-            } else {
-                unset($articles[$key]);
+            if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
+                $filters['format'][] = $newsArticle->getNewsType();
+            }
+        }
+
+        $time = null;
+        if ($articles && ($last = end($articles))) {
+            if (method_exists($last, 'getPublishedAt') && $last->getPublishedAt()) {
+                $time = $last->getPublishedAt()->getTimestamp();
             }
         }
 
         return [
-            'articles'  => $articles,
-            'filters'   => $filters,
-            'festivals' => $festivals,
-            'festival'  => $festival,
+            'festival' => $festival,
+            'articles' => $articles,
+            'filters'  => $filters,
+            'time'  => $time,
         ];
     }
 
@@ -130,7 +168,7 @@ class NewsController extends Controller
             ->find($id)
         ;
 
-        if ($page === null) {
+        if (!$page) {
             $this->createNotFoundException('Page not found');
         }
 
@@ -170,7 +208,7 @@ class NewsController extends Controller
         $medias = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Media')
-            ->getRetrospective($locale, $festival, 3, $page)
+            ->getRetrospective($locale, $festival, 30, $page)
         ;
 
         //set default filters
