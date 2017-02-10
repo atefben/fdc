@@ -99,8 +99,8 @@ var owInitGrid = function (id) {
                                 var $this = $(this);
                                 var title = $this.find('.info strong a');
                                 var cat = $this.find('.info .category');
-                                var titleText = "";
-                                var catText = "";
+                                var titleText;
+                                var catText;
 
                                 //if (!title.hasClass('init')) {
                                     titleText = $(e).find('.info strong a').text();
@@ -114,7 +114,7 @@ var owInitGrid = function (id) {
 
                                 cat.addClass('init').attr('data-cat', cat.text());
 
-                                console.log(catText);
+                                console.log(titleText);
                                 title.html(titleText.trunc(30, true));
                                 cat.html(catText.trunc(30, true));
                             });
