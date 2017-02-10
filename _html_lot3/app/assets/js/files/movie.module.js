@@ -17,9 +17,9 @@ $(document).ready(function() {
     defaultHeight = 290, //magic number, booooh
     currentHeight = tetiere.outerHeight();
     
-    if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
+    if(tetiere.find('h2').outerHeight() > 30 ){ //2 lines & more
       tetiere.css({
-        'height': defaultHeight,
+        'height': currentHeight,
         'position':'relative',
         'top':  (currentHeight > defaultHeight) ? 0 : - (parseInt(defaultHeight) - parseInt(currentHeight))
       });
