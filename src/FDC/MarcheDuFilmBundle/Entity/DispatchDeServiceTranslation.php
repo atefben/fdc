@@ -5,16 +5,19 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Util\TranslateChild;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 /**
  * DispatchDeServicecTranslation
  * @ORM\Table(name="mdf_dispatch_de_service_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\DispatchDeServiceTranslationRepository")
  */
-class DispatchDeServiceTranslation
+class DispatchDeServiceTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string

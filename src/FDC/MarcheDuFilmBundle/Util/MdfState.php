@@ -29,7 +29,7 @@ trait MdfState
      * @access public
      * @static
      */
-    public static function getMainStatuses()
+    public static function getMainStatusesAccreditation()
     {
         return array(
             '' => '',

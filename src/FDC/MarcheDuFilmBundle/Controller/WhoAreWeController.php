@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfWhoAreWeTeamTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -22,6 +23,13 @@ class WhoAreWeController extends Controller
         $whoAreWeTeamManager = $this->get('mdf.manager.who_are_we_team');
 
         $whoAreWeTeamContent = $whoAreWeTeamManager->getWhoAreWeTeamContent();
+
+        $pageTranslationStatus = $whoAreWeTeamContent->getStatus();
+        if(($pageTranslationStatus != MdfWhoAreWeTeamTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfWhoAreWeTeamTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $whoAreWeTeamContactWidgets = $whoAreWeTeamManager->getWhoAreWeTeamContactWidgets();
         $whoAreWeTeamWidgets = $whoAreWeTeamManager->getWhoAreWeTeamWidgets();
 

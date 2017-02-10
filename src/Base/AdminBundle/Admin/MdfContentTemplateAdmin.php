@@ -70,7 +70,7 @@ class MdfContentTemplateAdmin extends Admin
                         'required' => false
                     ),
                     'status'         => array(
-                        'label'                     => 'form.label_status',
+                        'label'                     => 'form.mdf.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => MdfContentTemplateTranslation::getStatuses(),

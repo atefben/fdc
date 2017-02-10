@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceTranslation;
 use FDC\MarcheDuFilmBundle\Repository\ServiceRepository;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Sonata\AdminBundle\Tests\Datagrid\PagerTest;
@@ -21,6 +22,13 @@ class ServiceController extends Controller
         $contactManager = $this->get('mdf.manager.contact');
 
         $dispatchDeServiceContent = $dispatchDeServiceManager->getDispatchDeServiceContent();
+
+        $pageTranslationStatus = $dispatchDeServiceContent->getStatus();
+        if(($pageTranslationStatus != DispatchDeServiceTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != DispatchDeServiceTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $dispatchDeServiceWidgets = $dispatchDeServiceManager->getDispatchDeServiceWidgets();
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();

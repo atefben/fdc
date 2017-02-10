@@ -2,9 +2,11 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfHomepageTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfSitePlanTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -23,6 +25,13 @@ class DefaultController extends Controller
         $slidersTop = $homepageManager->getSlidersTop();
         $sliders = $homepageManager->getSliders();
         $homepageContent = $homepageManager->getHomepageContent();
+
+        $pageTranslationStatus = $homepageContent->getStatus();
+        if(($pageTranslationStatus != MdfHomepageTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfHomepageTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $contact = $contactManager->getContactInfo();
         $services = $homepageManager->getHomepageServices();
 

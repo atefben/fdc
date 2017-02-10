@@ -5,16 +5,19 @@ namespace FDC\MarcheDuFilmBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 
 /**
  * HomeSliderTopTranslation
  * @ORM\Table(name="mdf_homepage_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfHomepageTranslationRepository")
  */
-class MdfHomepageTranslation
+class MdfHomepageTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string

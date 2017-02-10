@@ -80,7 +80,7 @@ class MdfAccreditationAdmin extends Admin
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
-                        'choices'                   => AccreditationTranslation::getMainStatuses(),
+                        'choices'                   => AccreditationTranslation::getMainStatusesAccreditation(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                     'promotionsTitle'          => array(
@@ -227,6 +227,13 @@ class MdfAccreditationAdmin extends Admin
                         'field_type'         => 'ckeditor',
                         'required'           => false,
                     ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => AccreditationTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                    )
                 ),
             ))
             ->add('accreditationWidgets', 'infinite_form_polycollection', array(
