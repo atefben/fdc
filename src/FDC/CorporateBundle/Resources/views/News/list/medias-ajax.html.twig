@@ -1,4 +1,5 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
+<h1>test</h1>
 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
 {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}

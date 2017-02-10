@@ -17,9 +17,9 @@
 
                 {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 
-                <div class="grid-01 isotope-01">
+                <div class="grid-01 isotope-01 padding-bottom">
                     <div class="grid-sizer"></div>
-                    {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
+                    {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias } %}
                 </div>
 
                 <div class="bright">
