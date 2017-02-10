@@ -13988,7 +13988,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: block;
 }
 .single-movie .content-movie .tetiere-movie {
-  height: 290px;
+  height: auto;
 }
 .single-movie .relative {
   float: right;
