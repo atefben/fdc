@@ -121,11 +121,7 @@ class ServicesManager
             foreach ($widgets as $key => $widget) {
                 $translatableId = $widget->getTranslatable()->getId();
                 $productCollection = $serviceWidgetProductCollectionRepo
-                    ->findBy(
-                        array(
-                            'serviceWidget' => $translatableId
-                        )
-                    );
+                    ->getServiceProductsByPosition($translatableId);
 
                 if ($productCollection) {
                     $productsCollection[$key] = [];
