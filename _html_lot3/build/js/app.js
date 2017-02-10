@@ -4396,7 +4396,15 @@ var owinitSlideShow = function (slider, hash) {
         }, 100);
     }else{
 
-        if($('.article-single').length){
+        if($('.affiche-fdc').length) {
+
+            $('.poster img').on('click', function(e){
+                slider = $('.all-contain');
+
+                openSlideShow(slider, "undefined", true);
+            })
+
+        } else if($('.article-single').length){
 
             console.log('ok')
 
@@ -4447,7 +4455,7 @@ var owinitSlideShow = function (slider, hash) {
 }
 
 
-var openSlideShow = function (slider, hash) {
+var openSlideShow = function (slider, hash, affiche) {
 
     $('html').addClass('slideshow-open');
 
@@ -4455,7 +4463,10 @@ var openSlideShow = function (slider, hash) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-    slider.find('.item, .img').each(function (index, value) {
+
+    slider.find('.item, .img, .poster').each(function (index, value) {
+
+        console.log(value)
 
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
             if ($(value).parent().hasClass('active center')) {
@@ -4466,8 +4477,21 @@ var openSlideShow = function (slider, hash) {
                 centerElement = index;
             }
 
+            if($('.affiche-fdc').length ) {
 
-            if($('.photo-module').length ) {
+                var src = $(value).find('img').attr('src');
+                var alt = $(value).find('img').attr('alt');
+                var title = $(value).parent().find('.infos  .name-f').html();
+                var label = $(value).parent().find('.infos .names-a').html();
+                var date =  $(value).parent().data('date');
+                var caption = $(value).parent().data('credit');
+                var id = $(value).parent().data('pid');
+                var facebookurl = $(value).parent().data('facebook');
+                var twitterurl = $(value).parent().data('twitter');
+                var url = $(value).parent().data('url');
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+
+            } else if($('.photo-module').length ) {
 
                 var src = $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
@@ -5869,6 +5893,10 @@ $(document).ready(function () {
         $('body').removeClass('loading');
     }, 1000);
 
+
+    if($('.affiche-fdc').length){
+        owinitSlideShow();
+    }
 
 
     //FIX IE
