@@ -454,7 +454,7 @@ var initVideo = function(hash) {
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
                 index = parseInt(index)
-
+                console.log(index);
                 console.log(index)
                 playerInstance.playlistItem(index);
 
