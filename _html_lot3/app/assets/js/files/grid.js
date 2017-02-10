@@ -120,6 +120,7 @@ var owInitGrid = function (id) {
 
                                 cat.addClass('init').attr('data-cat', cat.text());
 
+                                console.log(catText);
                                 title.html(titleText.trunc(30, true));
                                 cat.html(catText.trunc(30, true));
                             });
