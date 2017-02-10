@@ -382,6 +382,10 @@ $(document).ready(function () {
     }, 1000);
 
 
+    if($('.affiche-fdc').length){
+        owinitSlideShow();
+    }
+
 
     //FIX IE
 
