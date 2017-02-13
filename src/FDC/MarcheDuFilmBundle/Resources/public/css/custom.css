@@ -145,3 +145,13 @@ header.sticky #sticky-user .user-nav a {
         width: 266px;
     }
 }
+
+.minTab {
+    min-height: 20px !important;
+    padding-bottom: 30px;
+}
+
+.tab_container .tabBox {
+    min-height: 20px !important;
+    padding-bottom: 50px;
+}
