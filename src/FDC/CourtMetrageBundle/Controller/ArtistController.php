@@ -52,7 +52,6 @@ class ArtistController extends CcmController
             'artist'    => $artist,
             'directors' => $directors,
         ]);
-
     }
 
     /**

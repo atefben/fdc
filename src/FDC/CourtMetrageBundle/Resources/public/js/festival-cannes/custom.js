@@ -420,9 +420,11 @@ $(".blocks").each(function () {
 
 
 $("#share-article").click(function(){
-   $('html, body').animate({
-        scrollTop: $("#share").offset().top - 400
+  if(document.getElementById('share')) {
+    $('html, body').animate({
+      scrollTop: $("#share").offset().top - 400
     }, 2000);
+  }
 });
 
 /*$(window).resize(function(){
