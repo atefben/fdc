@@ -81,7 +81,6 @@ class MediaImage extends Media
 
     }
 
-
     public function getApiTranslations()
     {
         $en = $this->findTranslationByLocale('en');

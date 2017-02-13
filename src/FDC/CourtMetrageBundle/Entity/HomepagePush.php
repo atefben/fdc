@@ -28,9 +28,16 @@ class HomepagePush
     /**
      * @var MediaImage
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepagePushes")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=false, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $image;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isActive = false;
 
     /**
      * @var ArrayCollection
@@ -81,6 +88,28 @@ class HomepagePush
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive.
+     *
+     * @return bool
+     */
+    public function isIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set isactive.
+     *
+     * @param bool $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

@@ -75,6 +75,16 @@ class HomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('pushes', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'homepage_push_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
         ;
     }
     /**
@@ -99,6 +109,9 @@ class HomepageAdmin extends Admin
         foreach ($homepage->getSliders() as $slider) {
             $slider->setHomepage($homepage);
         }
+        foreach ($homepage->getPushes() as $push) {
+            $push->setHomepage($homepage);
+        }
     }
 
     /**
@@ -112,6 +125,9 @@ class HomepageAdmin extends Admin
 
         foreach ($homepage->getSliders() as $slider) {
             $slider->setHomepage($homepage);
+        }
+        foreach ($homepage->getPushes() as $push) {
+            $push->setHomepage($homepage);
         }
     }
 }

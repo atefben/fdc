@@ -2529,3 +2529,11 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\Homepage, BaseAdminBundle:CCM\HomepageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Homepage}
+
+    base.admin.ccm_homepage_push_top_dummy:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepagePush, BaseAdminBundle:CCM\ImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Module Push, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]

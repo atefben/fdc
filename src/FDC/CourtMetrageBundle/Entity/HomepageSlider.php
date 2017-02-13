@@ -28,7 +28,7 @@ class HomepageSlider
     /**
      * @var MediaImage
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepageSliders")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=false, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $image;
 

@@ -17,24 +17,20 @@
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'form.ccm.label.slider_accreditation_page_info'|trans }}
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
 
                     {% if form.vars.default_locale == locale %}
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <h4> {{'form.ccm.label.slide'|trans}}</h4>
+                            </div>
+                        </div></br>
                         <div class="col-md-12">
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'homepage_slider_type' %}
-                                                <h4><strong>{{ 'form.ccm.label.slider_accreditation_widget'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.ccm.label.slide'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
@@ -46,10 +42,40 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                {{ 'form.mdf.label.slider_accreditation_widget_list'|trans }}<br/>
+
                                 <a class="btn btn-primary btn-add-base-widget"
                                    data-prototype="{{ form_widget(form.parent.children.sliders.vars.prototypes.homepage_slider_type)|escape }}"><i
                                             class="icon-plus"></i>{{ 'form.ccm.label.homepage_slider_type'|trans }}</a>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <h4> {{ 'form.ccm.label.pushes'|trans}}</h4>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="box-body">
+
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    {% for widget in form.parent.children.pushes.children %}
+                                        <div class="item base-widget">
+                                            {% if widget.children._type.vars.value == 'homepage_push_type' %}
+                                                <h4><strong>{{ 'form.ccm.label.push.homepage'|trans }}</strong></h4>
+                                            {% endif %}
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.image) }}
+                                            {{ form_row(widget.isActive) }}
+                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                            <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="btn btn-primary btn-add-base-widget"
+                                   data-prototype="{{ form_widget(form.parent.children.pushes.vars.prototypes.homepage_push_type)|escape }}"><i
+                                            class="icon-plus"></i>{{ 'form.ccm.label.homepage_push_type'|trans }}</a>
                             </div>
                         </div>
                     {% else %}
@@ -58,11 +84,18 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'homepage_slider_type' %}
-                                                <h4><strong>{{ 'form.ccm.label.slider_accreditation_widget'|trans }}</strong></h4>
-                                            {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
+                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    {% for widget in form.parent.children.pushes.children %}
+                                        <div class="item base-widget">
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.image) }}
+                                            {{ form_row(widget.isActive) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}

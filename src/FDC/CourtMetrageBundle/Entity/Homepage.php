@@ -37,7 +37,7 @@ class Homepage
     protected $sliders;
 
     /**
-     * @ORM\OneToMany(targetEntity="HomepageSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="HomepagePush", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      min = "3",
      *      minMessage = "ccm.validation.homepage.pushes_min",

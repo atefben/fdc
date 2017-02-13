@@ -681,14 +681,24 @@ form:
                 sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
                 sub_nav_route: Itinéraire de la deuxième onglet de navigation
                 sub_nav_is_active: Ce deuxième onglet de navigation est actif?
+            push:
+                whiteTitle: Titre Blanc
+                goldenTitle: Titre Doré
+                url: URL de la push
+                isActive: Activer le module
+                add_message: Pushes
             slider:
                 whiteTitle: Titre Blanc
                 goldenTitle: Titre Doré
                 buttonLabel: Libellé de bouton
                 url: URL de la slide
             homepage_slider_type: Ajouter
-            slider_accreditation_widget: Slide
-            slider_accreditation_page_info: Slider
+            homepage_push_type: Ajouter
+            homepage_push: Push
+            pushes: Module Push
+            homepage_slider: Slide
+            slide: Slider
+
         size:
             small:  Titre petit
             medium: Titre moyen
