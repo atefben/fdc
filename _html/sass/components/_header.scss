@@ -741,7 +741,6 @@ header {
   @include transition(all  2s $smoothTransition);
   display: inline-block!important;
   width: 100px!important;
-
 }
 
 .marginli {
@@ -995,12 +994,6 @@ header {
 @media screen and (max-width: 1155px) {
     .main {
       float:none;
-    }
-
-    #navigation {
-      ul {
-
-      }
     }
 }
 
