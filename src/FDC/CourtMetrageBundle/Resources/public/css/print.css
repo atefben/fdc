@@ -1,0 +1,139 @@
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    padding: 10px;
+    margin: 0px;
+    width: 700px !important;
+    overflow: auto;
+    margin-top: 0px !important;
+    background-color: #fff !important;
+  }
+
+  .list-article, .honneur-invit, .contain-article-invit {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  .list-article .video-player, .list-article .video, .honneur-invit .video-player, .honneur-invit .video, .contain-article-invit .video-player, .contain-article-invit .video {
+    display: none;
+  }
+  .list-article .half-photo, .honneur-invit .half-photo, .contain-article-invit .half-photo {
+    margin-right: 20px !important;
+    width: 45% !important;
+  }
+  .list-article .audio-player, .honneur-invit .audio-player, .contain-article-invit .audio-player {
+    display: none;
+  }
+  .list-article .slideshow, .honneur-invit .slideshow, .contain-article-invit .slideshow {
+    display: none;
+  }
+  .list-article .contain-img-honneur img, .honneur-invit .contain-img-honneur img, .contain-article-invit .contain-img-honneur img {
+    max-width: 100%;
+  }
+  .list-article .quote blockquote, .honneur-invit .quote blockquote, .contain-article-invit .quote blockquote {
+    color: #000 !important;
+  }
+  .list-article .categorie-items article, .honneur-invit .categorie-items article, .contain-article-invit .categorie-items article {
+    display: none !important;
+  }
+
+  .categorie-items .title-list-cat, .categorie-items .title-list-cat .title-big {
+    color: #000;
+  }
+
+  .accreditation #accreditation .wrapper, .contain-img-honneur, .pres-honneur, .categorie-items .title-list-cat .title-item {
+    width: 500px !important;
+    margin: 0 auto;
+  }
+
+  .container {
+    width: 600px !important;
+    margin: 0px auto !important;
+  }
+
+  .single-article {
+    padding: 0px 0px;
+  }
+  .single-article .video-player {
+    display: none;
+  }
+  .single-article .half-photo {
+    margin-right: 20px !important;
+    width: 45% !important;
+  }
+  .single-article .audio-player {
+    display: none;
+  }
+  .single-article .slideshow {
+    display: none;
+  }
+
+  .header-press .head {
+    display: none;
+  }
+  .header-press p {
+    display: none;
+  }
+
+  .slideshow .slideshow-img {
+    background-color: #fff !important;
+  }
+
+  .article_photo .slideshow-img .images .img {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .contact-press .button {
+    display: none;
+  }
+
+  .nav-container .buttons {
+    display: none;
+  }
+
+  .request {
+    display: none;
+  }
+
+  #breadcrumb {
+    display: none;
+  }
+
+  footer, header, header.press, #share-article, .print, .nav.prev, .nav.next, .nav-accre, .share, .film, .focus, .same-day, .bandeau-list, .nav-movie {
+    display: none !important;
+  }
+
+  .owl-stage {
+    margin-left: 0px !important;
+    padding: 0px;
+  }
+
+  .main-image {
+    display: none !important;
+  }
+
+  .trailer {
+    display: none !important;
+  }
+
+  .poster.video {
+    display: none;
+  }
+
+  .info-film {
+    color: #000 !important;
+  }
+
+  .single-movie {
+    padding-top: 0px !important;
+  }
+  .single-movie .palmares {
+    width: 100% !important;
+  }
+  .single-movie #nav-movie {
+    display: none !important;
+  }
+  .single-movie .videos, .single-movie .slideshow-img, .single-movie .news, .single-movie .audios, .single-movie .press {
+    display: none;
+  }
+}

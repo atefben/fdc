@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="Calque_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="programmation.svgz" inkscape:version="0.48.4 r9939"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="85.635px" height="60px"
+	 viewBox="0 0 85.635 60" enable-background="new 0 0 85.635 60" xml:space="preserve">
+<sodipodi:namedview  inkscape:cy="30" inkscape:cx="42.817501" inkscape:zoom="3.9333333" showgrid="false" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" pagecolor="#ffffff" bordercolor="#666666" id="namedview31" inkscape:current-layer="Calque_1" inkscape:window-maximized="0" inkscape:window-y="0" inkscape:window-x="0" inkscape:window-height="480" inkscape:window-width="640" inkscape:pageopacity="0" inkscape:pageshadow="2">
+	</sodipodi:namedview>
+<g id="g3">
+	<g id="g5">
+		<rect id="rect7" x="7731" y="25" fill="#C8A461" width="55" height="5"/>
+	</g>
+	<g id="g9">
+		<rect id="rect11" x="7731" y="39" fill="#C8A461" width="55" height="5"/>
+	</g>
+	<g id="g13">
+		<rect id="rect15" x="7731" y="53" fill="#C8A461" width="55" height="5"/>
+	</g>
+	<g id="g17">
+		<rect id="rect19" x="7731" y="67" fill="#C8A461" width="27" height="5"/>
+	</g>
+</g>
+<g id="g21">
+	<path id="path23" fill="#CCCCCC" d="M66,8V0h-5v8H24V0h-5v8h-5v52h57V8H66z M66,54H19V21h47V54z"/>
+	<g id="g25">
+		<path id="path27" fill="#CCCCCC" d="M30.825,31.055h-0.068l-4.274,2.033l-0.862-3.93l5.962-2.757h4.308v22.402h-5.065
+			L30.825,31.055L30.825,31.055z"/>
+		<path id="path29" fill="#CCCCCC" d="M59.327,26.401v3.31l-9.235,19.094h-5.55l9.236-18.025V30.71H43.508v-4.309H59.327z"/>
+	</g>
+</g>
+</svg>
