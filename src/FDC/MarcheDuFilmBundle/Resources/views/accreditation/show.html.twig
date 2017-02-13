@@ -87,16 +87,9 @@
                                             </div>
                                         {% else %}
                                             {% set verticalAlign1 = true %}
-                                            <div class="plusPricesdetails">
-                                                <span class="customClass3"></span>
-                                                <h6><span class="plusColor customClass3"></span><span class="ht"></span></h6>
-                                            </div>
                                         {% endif %}
 
-                                        {% if verticalAlign1 %}
-                                            <div class="v-middle-anchor"></div>
-                                        {% endif %}
-                                        <div class="plusPricestext">
+                                        <div class="{% if verticalAlign1 %}plusPricestextCustom{% else %}plusPricestext{% endif %}">
                                             {{ accreditationContent.promotionDetailsInformation1|raw }}
                                         </div>
                                     </div>
@@ -112,9 +105,7 @@
                                         {% else %}
                                             {% set verticalAlign2 = true %}
                                         {% endif %}
-                                        {% if verticalAlign2 %}
-                                            <div class="v-middle-anchor"></div>
-                                        {% endif %}
+
                                         <div class="{% if verticalAlign2 %}plusPricestextCustom{% else %}plusPricestext{% endif %}">
                                             {{ accreditationContent.promotionDetailsInformation2|raw }}
                                         </div>
@@ -131,9 +122,7 @@
                                         {% else %}
                                             {% set verticalAlign3 = true %}
                                         {% endif %}
-                                        {% if verticalAlign3 %}
-                                            <div class="v-middle-anchor"></div>
-                                        {% endif %}
+
                                         <div class="{% if verticalAlign3 %}plusPricestextCustom{% else %}plusPricestext{% endif %}">
                                             {{ accreditationContent.promotionDetailsInformation3|raw }}
                                         </div>
