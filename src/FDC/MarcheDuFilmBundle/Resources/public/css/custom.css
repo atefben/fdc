@@ -81,6 +81,11 @@ header #navigation ul li a.golden.active {
     border-top: 0px;
 }
 
+.plusPrices {
+    height: auto;
+    overflow: auto;
+}
+
 .plusPrices .plusPricestextCustom {
     width: 100%;
     opacity: 0.9;
@@ -90,13 +95,6 @@ header #navigation ul li a.golden.active {
 
 .plusPrices .plusPricestextCustom p {
     color: white !important;
-}
-
-.v-middle-anchor {
-    display: inline-block;
-    vertical-align: middle;
-    height: 35%;
-    width: 0;
 }
 
 .accreditationsCustom {
@@ -144,4 +142,14 @@ header.sticky #sticky-user .user-nav a {
     .tabpicturesBox img {
         width: 266px;
     }
+}
+
+.minTab {
+    min-height: 20px !important;
+    padding-bottom: 30px;
+}
+
+.tab_container .tabBox {
+    min-height: 20px !important;
+    padding-bottom: 50px;
 }
