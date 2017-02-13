@@ -4619,6 +4619,7 @@ header.sticky #logo-wrapper {
 }
 header.sticky #logo-wrapper #logo {
   width: 310px;
+  padding-top: 5px;
 }
 header.sticky #logo-wrapper #logo img.palm {
   float: left;
@@ -5267,11 +5268,19 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 .marginli {
-  margin-left: 15px !important;
+  margin-left: 0px !important;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .marginLastli {
   display: none !important;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
 .showsearchBox > *, .searchBox > * {

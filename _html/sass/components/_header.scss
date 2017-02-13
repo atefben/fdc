@@ -111,6 +111,7 @@ header {
 
       #logo {
         width:310px;
+        padding-top: 5px;
 
         img.palm {
           float: left;
@@ -744,11 +745,13 @@ header {
 }
 
 .marginli {
-  margin-left:15px!important;
+  margin-left: 0px!important;
+  @include transition(all  0.9s $smoothTransition);
 }
 
 .marginLastli {
   display: none!important;
+  @include transition(all  0.9s $smoothTransition);
 }
 
 .showsearchBox > *, .searchBox > * {
