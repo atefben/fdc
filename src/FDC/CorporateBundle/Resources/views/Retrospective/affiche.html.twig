@@ -8,27 +8,37 @@
 
     {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
-    <div class="ajax-section"><div class="contain-ajax">
+    <div class="ajax-section">
+    <div class="contain-ajax">
 
     {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
-    <div class="all-contain">
+    {% set currentURL = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+    <div class="all-contain affiche-fdc">
         {% set affiche = null %}
         {% for poster in posters %}
             {% if poster.type == 13 %}
                 {% set affiche = poster %}
             {% endif %}
-            <div class="contain-title vFlexAlign border-bottom">
-                <h1 class="title-01">{{ 'affiche.festival'|trans }}</h1>
+            <div class="contain-title vFlexAlign border-bottom{% if not loop.first %} border-top{% endif %}">
+                {% set fr = poster.findTranslationByLocale('fr') %}
+                {% if fr and 'UN CERTAIN REGARD' in fr.title|upper %}
+                    <h1 class="title-01">{{ 'affiche.festival.un.certain.regard'|trans }}</h1>
+                {% else %}
+                    <h1 class="title-01">{{ 'affiche.festival'|trans }}</h1>
+                {% endif %}
             </div>
 
             <article class="block-movie-preview" style="background-image: url('{% path poster.file, '976x535' %}')">
                 <div class="bck-hover">
-                    <div class="wrapper-item">
+                    <div class="wrapper-item" data-date="afficher" data-pid="pid={{ poster.file.id }}"
+                         data-credit="{{ poster.copyright }}"
+                         data-url="{{ currentURL }}#pid={{ poster.file.id }}"
+                         data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ currentURL|escape('url') }}&amp;picture={% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ currentURL }}&amp;display=popup"
+                         data-twitterurl="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
                         <div class="poster">
-                          {% if poster.file is not empty %}
-                            <img src="{% path poster.file, '256x348' %}" />
-                          {% endif %}
+                            {% if poster.file is not empty %}
+                                <img src="{% path poster.file, '256x348' %}"/>
+                            {% endif %}
                         </div>
                         <div class="infos">
                             <p class="description">
@@ -36,20 +46,24 @@
                             </p>
                             <strong class="name-f">{{ poster|trans_fallback('title') }}</strong>
                             <a href="#" class="names-a">{{ poster.copyright }}</a>
-                            <!--span class="names-a">Pour “Rebel Without a Cause” (Warner Bros).</span-->
                         </div>
                     </div>
                 </div>
             </article>
         {% endfor %}
-        {% set currentPath = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
         <div class="black small-h">
             <strong class="title-9">{{ 'retrospective.affiche.partager'|trans }}</strong>
             <div class="block-social-network block-social-network-all ">
-                <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentPath }}&picture=
-{% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&name=L'affiche du Festival {{ app.request.attributes.get('year') }}&caption={% if affiche is not null %}{{ affiche.copyright }}{% endif %}&description={{ currentPath }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
-            --><a class="twitter" href="https://twitter.com/intent/tweet?text=L'affiche du Festival {{ app.request.attributes.get('year') }}%20%2D%20{% if affiche is not null %}{{ affiche.copyright }}{% endif %}%20%2D%20{{ urlshare }}"><i class="icon icon-twitter"></i></a><!--
-            --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentPath }}"><i class="icon icon-link"></i></a><!--
+                <a class="facebook"
+                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentURL }}&picture=
+{% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&name=L'affiche du Festival {{ app.request.attributes.get('year') }}&caption={% if affiche is not null %}{{ affiche.copyright }}{% endif %}&description={{ currentURL }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
+                            class="icon icon-facebook"></i></a><!--
+            --><a class="twitter"
+                  href="https://twitter.com/intent/tweet?text={{ ('affiche.festival'|trans) ~ ' ' ~  year ~ (affiche ?  ' - ' ~ affiche.copyright : '') ~ ' - ' ~ urlshare }}"><i
+                            class="icon icon-twitter"></i></a><!--
+            --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentURL }}"><i
+                            class="icon icon-link"></i></a><!--
             --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
             --><a href="#" class="print" onclick="javascript:window.print()"><i class="icon icon-print"></i></a>
             </div>
@@ -63,8 +77,7 @@
         'title'  : 'L\'affiche du Festival ' ~ app.request.attributes.get('year'),
         'description': (affiche) ? affiche.copyright : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    }))
-    }}
+    })) }}
 
     {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
     {"breadcrumb":
