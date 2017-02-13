@@ -113,6 +113,7 @@ function initPopinMail(cls){
     } else {
       // TODO envoie du mail //
       var u = $(cls).hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
+      $("#errorMsg").html("");
 
       $.ajax({
         type     : "POST",
@@ -122,7 +123,7 @@ function initPopinMail(cls){
         data     : $(cls).find('form#form').serialize(),
         success: function (data) {
           if (data.success == false) {
-
+            $(cls).find('#errorMsg').append('<div>' + GLOBALS.texts.popin.formError + '</div>');
           }
           else {
             // TODO envoie du mail //

@@ -1,13 +1,8 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% if 'CorporateBundle' in app.request.attributes.get("_controller") %}
-    {% set extended_layout = 'FDCCorporateBundle::layout.html.twig' %}
-{% else %}
-    {% set extended_layout = 'FDCEventBundle::layout.html.twig' %}
-{% endif %}
 
-{% extends extended_layout %}
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
 
-{% block body %}
+{% block main %}
     <div id="main" class="single-article artist loading">
         <div class="content-article">
             <div class="container">
@@ -283,6 +278,14 @@
         </div>
         <span class="anim"></span>
     </div>
-    {% include 'FDCCourtMetrageBundle::shared/shareMail.html.twig' %}
 
-{% endblock body %}
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+    {'section': '',
+        'detail': '',
+        'title': artist.fullName,
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+        'artist' : artist.id
+    })) }}
+
+{% endblock main %}
