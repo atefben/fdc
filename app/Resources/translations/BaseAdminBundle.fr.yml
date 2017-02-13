@@ -834,6 +834,7 @@ form:
             contact_image: Image du contact
             service_info: Informations générales détail de service
             service_title: Titre de page
+            service_url: Slug de page
             service_sub_title: Sous-titre de page
             service_header: Chapô
             service_widget: Liste des onglets disponibles
@@ -946,7 +947,7 @@ form:
 
         note:
             service:
-                url_help: Please provide the last part of URL (http://.../{this part})
+                url_help: "Please provide the last part of URL (http://www.marchedufilm.com/fr/services/[slug])"
         charte_graphique_annuelle:
             image1: Fond n°2
             image2: Fond n°5
