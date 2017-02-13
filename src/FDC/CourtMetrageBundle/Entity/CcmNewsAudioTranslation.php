@@ -10,7 +10,6 @@ use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\Seo;
 
 use Base\CoreBundle\Util\TranslationChanges;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -41,16 +40,6 @@ class CcmNewsAudioTranslation implements TranslateChildInterface
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     protected $title;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     * @Groups({"news_list", "search", "news_show"})
-     */
-    protected $introduction;
-
 
     /**
      * @var string
@@ -66,7 +55,7 @@ class CcmNewsAudioTranslation implements TranslateChildInterface
      */
     public function __construct()
     {
-        $this->sites = new ArrayCollection();
+        
     }
 
     /**
@@ -91,30 +80,6 @@ class CcmNewsAudioTranslation implements TranslateChildInterface
     {
         return $this->title;
     }
-
-    /**
-     * Set introduction
-     *
-     * @param string $introduction
-     * @return CcmNewsAudioTranslation
-     */
-    public function setIntroduction($introduction)
-    {
-        $this->introduction = $introduction;
-
-        return $this;
-    }
-
-    /**
-     * Get introduction
-     *
-     * @return string 
-     */
-    public function getIntroduction()
-    {
-        return $this->introduction;
-    }
-
 
     /**
      * Set slug

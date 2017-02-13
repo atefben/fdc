@@ -40,16 +40,6 @@ class CcmNewsImageTranslation implements TranslateChildInterface
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     protected $title;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     * @Groups({"news_list", "search", "news_show"})
-     */
-    protected $introduction;
-
 
     /**
      * @var string
@@ -65,7 +55,7 @@ class CcmNewsImageTranslation implements TranslateChildInterface
      */
     public function __construct()
     {
-        $this->sites = new ArrayCollection();
+        
     }
 
     /**
@@ -90,30 +80,7 @@ class CcmNewsImageTranslation implements TranslateChildInterface
     {
         return $this->title;
     }
-
-    /**
-     * Set introduction
-     *
-     * @param string $introduction
-     * @return CcmNewsImageTranslation
-     */
-    public function setIntroduction($introduction)
-    {
-        $this->introduction = $introduction;
-
-        return $this;
-    }
-
-    /**
-     * Get introduction
-     *
-     * @return string 
-     */
-    public function getIntroduction()
-    {
-        return $this->introduction;
-    }
-
+    
     /**
      * Get id
      *

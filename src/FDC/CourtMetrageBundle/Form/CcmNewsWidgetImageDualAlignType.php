@@ -33,6 +33,9 @@ class CcmNewsWidgetImageDualAlignType extends CcmNewsWidgetType
      */
     private $newsWidgetImageDummyAdmin;
 
+    /**
+     * @var mixed
+     */
     private $galleryDualAlignDummyAdmin;
 
     /**

@@ -2,8 +2,8 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
-use Base\CoreBundle\Entity\News;
+
+use FDC\CourtMetrageBundle\Entity\CcmNews;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -15,10 +15,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class CcmNewsArticleAdmin extends Admin
+class CcmNewsArticleAdmin extends CcmNewsAdmin
 {
     protected $baseRouteName = 'ccm_news_article';
-    protected $baseRoutePattern = 'ccm-news-article';
+    protected $baseRoutePattern = 'ccmnewsarticle';
     
     public function createQuery($context = 'list')
     {
@@ -74,12 +74,6 @@ class CcmNewsArticleAdmin extends Admin
                             new NotBlank(),
                         ),
                     ),
-                    'introduction'   => array(
-                        'field_type'         => 'ckeditor',
-                        'label'              => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
-                    ),
                     'createdAt'      => array(
                         'display' => false,
                     ),
@@ -113,12 +107,6 @@ class CcmNewsArticleAdmin extends Admin
                     ),
                 ),
             ))
-            ->add('sites', null, array(
-                'label'    => 'form.label_publish_on',
-                'class'    => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true,
-            ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format'   => 'dd/MM/yyyy HH:mm',
                 'required' => false,
@@ -136,11 +124,14 @@ class CcmNewsArticleAdmin extends Admin
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
+                    'ccm_news_widget_description_type',
                     'ccm_news_widget_text_type',
                     'ccm_news_widget_quote_type',
+                    'ccm_news_widget_signature_type',
                     'ccm_news_widget_audio_type',
                     'ccm_news_widget_image_type',
                     'ccm_news_widget_image_dual_align_type',
+                    'ccm_news_widget_gallery_type',
                     'ccm_news_widget_video_type',
                     'ccm_news_widget_video_youtube_type',
                 ),
@@ -176,26 +167,17 @@ class CcmNewsArticleAdmin extends Admin
                     'inline' => 'table',
                 )
             )
-            ->add('mobileDisplay', 'choice', array(
-                'required' => false,
-                'choices'  => [
-                    'big'                       => 'form.label_mobile_display_big',
-                    'main'                      => 'form.label_mobile_display_main',
-                ],
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
             ->add('hideSameDay')
             ->add('displayedHome')
-            ->add('displayedMobile')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices'            => News::getAvailableTranslateOptions(),
+                'choices'            => CcmNews::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple'           => true,
                 'expanded'           => true,
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices'                   => News::getPriorityStatuses(),
+                'choices'                   => CcmNews::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->add('seoFile', 'sonata_media_type', array(

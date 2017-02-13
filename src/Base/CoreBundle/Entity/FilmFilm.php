@@ -438,6 +438,11 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     protected $news;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNews", mappedBy="associatedFilm")
+     */
+    protected $ccmNews;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
@@ -556,6 +561,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->tags = new ArrayCollection();
         $this->news = new ArrayCollection();
         $this->selfkitImages = new ArrayCollection();
+        $this->ccmNews = new ArrayCollection();
     }
 
     public function __toString()
@@ -2688,5 +2694,33 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getSelfkitImages()
     {
         return $this->selfkitImages;
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews
+     * @return $this
+     */
+    public function addCcmNews(\FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews)
+    {
+        $ccmNews->setAssociatedFilm($this);
+        $this->ccmNews[] = $ccmNews;
+
+        return $this;
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews
+     */
+    public function removeCcmNews(\FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews)
+    {
+        $this->ccmNews->removeElement($ccmNews);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCcmNews()
+    {
+        return $this->ccmNews;
     }
 }

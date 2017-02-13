@@ -4,16 +4,11 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
-use Base\CoreBundle\Entity\Event;
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\Homepage;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
-use Base\CoreBundle\Entity\NewsFilmProjectionAssociated;
-use Base\CoreBundle\Entity\NewsNewsAssociated;
-use Base\CoreBundle\Entity\Site;
 use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use \DateTime;
@@ -29,8 +24,6 @@ use Base\CoreBundle\Interfaces\TranslateMainInterface;
 
 use Eko\FeedBundle\Item\Writer\RoutedItemInterface;
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Discriminator;
-use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -66,8 +59,8 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      /**
       * @var Theme
       *
-      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme")
-      * @ORM\JoinColumn(nullable=true)
+      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme", inversedBy="ccmNews")
+      * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", nullable=true)
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
       */
@@ -102,13 +95,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      *
      */
     protected $displayedHome;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     */
-    protected $displayedMobile;
 
     /**
      * @var boolean
@@ -153,14 +139,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      * @Groups({"news_show"})
      */
     protected $widgets;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Base\CoreBundle\Entity\Site")
-     *
-     */
-    protected $sites;
 
     /**
      * @var \DateTime
@@ -231,25 +209,13 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      */
     protected $oldNewsTable;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mobile_display", type="string", nullable=true)
-     * @Groups({"news_list", "search", "news_show", "home"})
-     */
-    protected $mobileDisplay;
-
     public function __construct()
     {
         $this->hideSameDay = false;
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
-        $this->sites = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
-        $this->associatedProjections = new ArrayCollection();
-        $this->associatedFilms = new ArrayCollection();
         $this->displayedHome = false;
-        $this->displayedMobile = false;
     }
 
     public function __toString() {
@@ -372,40 +338,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     {
         return $this->festival;
     }
-
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return CcmNews
-     */
-    public function addSite(Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
-
+    
     /**
      * Set homepage
      *
@@ -473,29 +406,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getDisplayedHome()
     {
         return $this->displayedHome;
-    }
-
-    /**
-     * Set displayedMobile
-     *
-     * @param boolean $displayedMobile
-     * @return CcmNews
-     */
-    public function setDisplayedMobile($displayedMobile)
-    {
-        $this->displayedMobile = $displayedMobile;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedMobile
-     *
-     * @return boolean
-     */
-    public function getDisplayedMobile()
-    {
-        return $this->displayedMobile;
     }
 
     /**
@@ -1014,28 +924,5 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getOldNewsTable()
     {
         return $this->oldNewsTable;
-    }
-
-    /**
-     * Set mobileDisplay
-     *
-     * @param string $mobileDisplay
-     * @return CcmNews
-     */
-    public function setMobileDisplay($mobileDisplay)
-    {
-        $this->mobileDisplay = $mobileDisplay;
-
-        return $this;
-    }
-
-    /**
-     * Get mobileDisplay
-     *
-     * @return string 
-     */
-    public function getMobileDisplay()
-    {
-        return $this->mobileDisplay;
     }
 }

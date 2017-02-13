@@ -20,10 +20,13 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
  *  "text" = "CcmNewsWidgetText",
+ *  "description" = "CcmNewsWidgetDescription",   
  *  "quote" = "CcmNewsWidgetQuote",
+ *  "signature" = "CcmNewsWidgetSignature",
  *  "audio" = "CcmNewsWidgetAudio",
  *  "image" = "CcmNewsWidgetImage",
  *  "image_dual_align" = "CcmNewsWidgetImageDualAlign",
+ *  "gallery" = "CcmNewsWidgetGallery",   
  *  "video" = "CcmNewsWidgetVideo",
  *  "video_youtube" = "CcmNewsWidgetVideoYoutube",
  * })
@@ -55,8 +58,7 @@ abstract class CcmNewsWidget
      * @ORM\ManyToOne(targetEntity="CcmNews", inversedBy="widgets")
      */
     protected $news;
-
-
+    
     /**
      * @var string
      * @ORM\Column(name="old_import_reference", type="string", length=255, nullable=true)

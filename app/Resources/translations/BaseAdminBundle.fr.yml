@@ -1037,12 +1037,15 @@ form:
         subtitle: Module sous-titre
         intro: Module chapeau
         text: Module de texte
+        description: Module de description
         video: Module vidéo Amazon
         video_youtube: Module vidéo Youtube
         audio: Module audio
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
+        gallery: Module de galerie
         quote: Module citation
+        signature: Module de signature
         subtitle: Module sous-titre
         orange_series_video_youtube: Module vidéo Youtube
         film_vod: Module film

@@ -52,7 +52,6 @@
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(form.parent.children.header) }}
                                         {{ form_row(form.parent.children.gallery) }}
-                                        {{ form_row(translationsFields.introduction) }}
                                     </div>
                                 </div>
                             {% else %}
@@ -168,7 +167,6 @@
                                             </div>
                                             {% endif %}
                                         </div>
-                                        {{ form_row(translationsFields.introduction) }}
                                     </div>
                                 </div>
                             {% endif %}
@@ -285,17 +283,6 @@
                                                 {% endfor %}
                                             </div>
                                             {% endif %}
-                                            <div>
-                                                <label>
-                                                    Chapeau
-                                                </label>
-
-                                                <div>
-                                                    {% if form.children.fr.vars.value is not null %}
-                                                        {{ form.children.fr.vars.value.introduction|raw }}
-                                                    {% endif %}
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -317,7 +304,9 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'ccm_news_widget_text_type' %}
+                                                {% if widget.children._type.vars.value == 'ccm_news_widget_description_type' %}
+                                                    <h4><strong>{{ 'form.widget.description'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_text_type' %}
                                                     <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_news_widget_video_type' %}
                                                     <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
@@ -329,14 +318,21 @@
                                                     <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' %}
                                                     <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_gallery_type' %}
+                                                    <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_news_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_signature_type' %}
+                                                    <h4><strong>{{ 'form.widget.signature'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'ccm_news_widget_text_type' or
+                                                {% if
+                                                widget.children._type.vars.value == 'ccm_news_widget_description_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_text_type' or
                                                 widget.children._type.vars.value == 'ccm_news_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'ccm_news_widget_quote_type'
+                                                widget.children._type.vars.value == 'ccm_news_widget_quote_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_signature_type'
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
@@ -349,7 +345,8 @@
                                                     {{ form_row(widget.image) }}
                                                 {% endif %}
                                                 {% if widget.children._type.vars.value == 'ccm_news_widget_image_type' or
-                                                widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type'
+                                                widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_galley_type'
                                                 %}
                                                     {{ form_row(widget.gallery) }}
                                                 {% endif %}
@@ -360,13 +357,16 @@
                                         {% endfor %}
                                     </div>
                                     {{ 'form.news.helper_widgets'|trans }}<br/>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_description_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.description'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_gallery_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.gallery'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_signature_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.signature'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_news_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
                                 </div>
                             </div>
                         </div>
@@ -383,7 +383,9 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'ccm_news_widget_text_type' %}
+                                                {% if widget.children._type.vars.value == 'ccm_news_widget_description_type' %}
+                                                    <h4><strong>{{ 'form.widget.description'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_text_type' %}
                                                     <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_news_widget_video_type' %}
                                                     <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
@@ -395,14 +397,21 @@
                                                     <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' %}
                                                     <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_gallery_type' %}
+                                                    <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_news_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_signature_type' %}
+                                                    <h4><strong>{{ 'form.widget.signature'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'ccm_news_widget_text_type' or
+                                                {% if
+                                                widget.children._type.vars.value == 'ccm_news_widget_text_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_description_type' or
                                                 widget.children._type.vars.value == 'ccm_news_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'ccm_news_widget_quote_type'
+                                                widget.children._type.vars.value == 'ccm_news_widget_quote_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_signature_type'
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
@@ -475,7 +484,8 @@
                                                     </div>
                                                 {% elseif
                                                 widget.children._type.vars.value == 'ccm_news_widget_image_type' or
-                                                widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type'
+                                                widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_gallery_type'
                                                 %}
                                                     <div class="form-group">
                                                         <label class="control-label">
@@ -532,13 +542,19 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 {% if
+                                                widget.children._type.vars.value == 'ccm_news_widget_description_type' or
                                                 widget.children._type.vars.value == 'ccm_news_widget_text_type' or
-                                                widget.children._type.vars.value == 'ccm_news_widget_quote_type'
+                                                widget.children._type.vars.value == 'ccm_news_widget_quote_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_signature_type'
                                                 %}
-                                                    {% if widget.children._type.vars.value == 'ccm_news_widget_text_type' %}
+                                                    {% if widget.children._type.vars.value == 'ccm_news_widget_description_type' %}
+                                                        <h4><strong>{{ 'form.widget.description'|trans }}</strong></h4>
+                                                    {% elseif widget.children._type.vars.value == 'ccm_news_widget_text_type' %}
                                                         <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
                                                     {% elseif widget.children._type.vars.value == 'ccm_news_widget_quote_type' %}
                                                         <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                    {% elseif widget.children._type.vars.value == 'ccm_news_widget_signature_type' %}
+                                                        <h4><strong>{{ 'form.widget.signature'|trans }}</strong></h4>
                                                     {% endif %}
                                                     <div class="form-group">
                                                         <label>
@@ -659,8 +675,15 @@
                                                             {% endif %}
                                                         </div>
                                                     </div>
-                                                {% elseif widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' %}
-                                                    <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                {% elseif
+                                                widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' or
+                                                widget.children._type.vars.value == 'ccm_news_widget_gallery_type'
+                                                %}
+                                                    {% if widget.children._type.vars.value == 'ccm_news_widget_image_dual_align_type' %}
+                                                        <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                    {% elseif widget.children._type.vars.value == 'ccm_news_widget_gallery_type' %}
+                                                        <h4><strong>{{ 'form.widget.gallery'|trans }}</strong></h4>
+                                                    {% endif %}
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             {{ 'form.label_header_gallery'|trans }}

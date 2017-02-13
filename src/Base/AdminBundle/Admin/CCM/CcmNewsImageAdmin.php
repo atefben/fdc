@@ -2,13 +2,10 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
-use Base\CoreBundle\Entity\News;
-use Base\CoreBundle\Entity\NewsArticle;
-use Base\CoreBundle\Entity\NewsImageTranslation;
-use Base\CoreBundle\Entity\NewsImage;
-use Base\CoreBundle\Entity\NewsNewsAssociated;
+use FDC\CourtMetrageBundle\Entity\CcmNews;
 
 use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
+use FDC\CourtMetrageBundle\Entity\CcmNewsImageTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -24,7 +21,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class CcmNewsImageAdmin extends Admin
 {
     protected $baseRouteName = 'ccm_news_image';
-    protected $baseRoutePattern = 'ccm-news-image';
+    protected $baseRoutePattern = 'ccmnewsimage';
     
     public function createQuery($context = 'list')
     {
@@ -76,12 +73,6 @@ class CcmNewsImageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
                     ),
-                    'introduction' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -92,7 +83,7 @@ class CcmNewsImageAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => NewsImageTranslation::getStatuses(),
+                        'choices' => CcmNewsImageTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
@@ -116,20 +107,6 @@ class CcmNewsImageAdmin extends Admin
                     )
                 )
             ))
-            ->add('mobileDisplay', 'choice', array(
-                'required' => false,
-                'choices'  => [
-                    'big'                       => 'form.label_mobile_display_big',
-                    'main'                      => 'form.label_mobile_display_main',
-                ],
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('sites', null, array(
-                'label' => 'form.label_publish_on',
-                'class' => 'BaseCoreBundle:Site',
-                'multiple' => true,
-                'expanded' => true
-            ))
             ->add('publishedAt', 'sonata_type_datetime_picker', array(
                 'format' => 'dd/MM/yyyy HH:mm',
                 'required' => false,
@@ -147,11 +124,14 @@ class CcmNewsImageAdmin extends Admin
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(
+                    'ccm_news_widget_description_type',
                     'ccm_news_widget_text_type',
                     'ccm_news_widget_quote_type',
+                    'ccm_news_widget_signature_type',
                     'ccm_news_widget_audio_type',
                     'ccm_news_widget_image_type',
                     'ccm_news_widget_image_dual_align_type',
+                    'ccm_news_widget_gallery_type',
                     'ccm_news_widget_video_type',
                     'ccm_news_widget_video_youtube_type',
                 ),
@@ -192,16 +172,15 @@ class CcmNewsImageAdmin extends Admin
             )
             ->add('hideSameDay')
             ->add('displayedHome')
-            ->add('displayedMobile')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => News::getAvailableTranslateOptions(),
+                'choices' => CcmNews::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => News::getPriorityStatuses(),
+                'choices' => CcmNews::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
