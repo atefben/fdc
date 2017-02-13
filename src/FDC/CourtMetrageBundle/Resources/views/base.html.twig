@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ 'ccm_site_title'|trans }}</title>
+
+    {% stylesheets
+    'bundles/fdccourtmetrage/js/bower_components/chocolat/src/css/chocolat.css'
+    'bundles/fdccourtmetrage/js/bower_components/fullcalendar/dist/fullcalendar.min.css'
+    'bundles/fdccourtmetrage/css/styles.css'
+    'bundles/fdccourtmetrage/css/print.css'
+    'bundles/fdccourtmetrage/css/custom.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+
+    <link type="text/css" rel="stylesheet" href="{{ asset('http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css') }}"/>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- //// FAVICON \\\\ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/fdccourtmetrage/img/favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('bundles/fdccourtmetrage/img/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/fdccourtmetrage/img/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('bundles/fdccourtmetrage/img/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('bundles/fdccourtmetrage/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('bundles/fdccourtmetrage/img/favicon/manifest.json') }}">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ asset('bundles/fdccourtmetrage/img/favicon/ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+
+<body>
+
+{{ render(controller('FDCCourtMetrageBundle:Transverse:header')) }}
+
+{% block main %}{% endblock main %}
+
+{{ render(controller('FDCCourtMetrageBundle:Transverse:footer')) }}
+
+{% block javascripts %}
+    {% include 'FDCCourtMetrageBundle:Shared:javascripts.html.twig' %}
+{% endblock %}
+
+</body>
+</html>
