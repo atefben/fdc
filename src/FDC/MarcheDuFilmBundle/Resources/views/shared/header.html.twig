@@ -26,7 +26,11 @@
                 <ul class="sub-languages">
                     {% for locale in mdf_locales if locale != app.request.locale %}
                         <li>
-                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                            {% set params = {'_locale' : locale} %}
+                            {% if localeSlugs is defined and localeSlugs|length > 0 and localeSlugs[app.request.locale] %}
+                                {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                            {% endif %}
+                            <a href="{{ path(routeName, routeParams|merge(params)) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -57,7 +61,11 @@
                         <ul class="sub-languages">
                             {% for locale in mdf_locales if locale != app.request.locale %}
                                 <li>
-                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                    {% set params = {'_locale' : locale} %}
+                                    {% if localeSlugs is defined and localeSlugs|length > 0 and localeSlugs[app.request.locale] %}
+                                        {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                                    {% endif %}
+                                    <a href="{{ path(routeName, routeParams|merge(params)) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                                 </li>
                             {% endfor %}
                         </ul>

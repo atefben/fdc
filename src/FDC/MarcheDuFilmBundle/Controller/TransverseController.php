@@ -16,13 +16,23 @@ class TransverseController extends Controller
         $banner = $headerFooterManager->getHeaderBanner();
         $availableMenu = $headerFooterManager->getMenuAvailability();
 
+        $localeSlugs = [];
+        if ($routeName == 'fdc_marche_du_film_services_widgets') {
+            $localeSlugs = $this->get('mdf.manager.services')->getLocaleSlugsForService($routeParams['slug']);
+        }
+
+        if ($routeName == 'fdc_marche_du_film_news_details') {
+            $localeSlugs = $this->get('mdf.manager.content_template')->getNewsPageLocales($routeParams['slug']);
+        }
+
         return $this->render(
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
                 'banner' => $banner,
                 'routeName' => $routeName,
                 'routeParams' => $routeParams,
-                'availableMenu' => $availableMenu
+                'availableMenu' => $availableMenu,
+                'localeSlugs' => $localeSlugs
             ]
         );
     }
@@ -52,11 +62,11 @@ class TransverseController extends Controller
         ;
         $contactUsManager = $this->get('mdf.manager.contact_us');
         $contactPage = $contactUsManager->getContactUsPage();
-        
+
         if (!$contactPage) {
             throw new NotFoundHttpException("Page not found");
         }
-        
+
         $contactBlocks = $contactUsManager->getContactBlocks($contactPage);
         $contactSubjects = $contactUsManager->getContactSubjects($contactPage);
         $formContact = $this->createForm(new ContactFormType($contactSubjects));
@@ -95,12 +105,12 @@ class TransverseController extends Controller
             ]
         );
     }
-    
+
     public function sliderAccreditationAction()
     {
         $sliderAccreditationManager = $this->get('mdf.manager.slider_accreditation');
         $slidersAccreditation = $sliderAccreditationManager->getAllSlidersAccreditation();
-        
+
         return $this->render('FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig', array(
                 'sliders' => $slidersAccreditation,
             )

@@ -4,9 +4,11 @@ namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate;
+use FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class MdfNewsDetailsAdmin
@@ -82,6 +84,16 @@ class MdfNewsDetailsAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                         'required' => false
+                    ),
+                    'status'         => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfContentTemplateTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints'               => array(
+                            new NotBlank()
+                        )
                     )
                 )
             ))

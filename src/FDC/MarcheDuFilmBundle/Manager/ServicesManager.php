@@ -24,27 +24,27 @@ class ServicesManager
         $this->em = $entityManager;
         $this->requestStack = $requestStack;
     }
-    
+
     public function getNavServices() {
         $services = $this->em->getRepository(ServiceTranslation::class)
             ->findBy(
                 array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')    
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
                 )
             );
-        
+
         if ($services) {
             $navServices = [];
             foreach ($services as $service) {
                 $navServices[$service->getUrl()] = $service->getTitle();
             }
-            
+
             return $navServices;
         }
-        
+
         return [];
     }
-    
+
     public function getNavArrowsServices($navServices)
     {
         if ($navServices) {
@@ -57,10 +57,10 @@ class ServicesManager
                 $navArrowsServices[0][$url] = $position++;
                 $navArrowsServices[1][] = $url;
             }
-            
+
             return $navArrowsServices;
         }
-        
+
         return [];
     }
 
@@ -68,6 +68,19 @@ class ServicesManager
     {
         return $this->em->getRepository(ServiceTranslation::class)
             ->getServiceByLocaleAndSlug($this->requestStack->getMasterRequest()->get('_locale'), $slug);
+    }
+
+    public function getLocaleSlugsForService($slug)
+    {
+        $serviceTranslation = $this->getService($slug);
+        $translations = $serviceTranslation->getTranslatable()->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getUrl() != null) ? $trans->getUrl() : '404';
+        }
+
+        return $slugs;
     }
 
     /**

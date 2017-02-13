@@ -184,6 +184,24 @@ class ContentTemplateManager
         );
     }
 
+    public function getNewsPageLocales($slug)
+    {
+        $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
+        $titleHeader = $this->getTitleHeaderContentBySlug($pageType, $slug);
+
+        if (empty($titleHeader))
+            throw new NotFoundHttpException('Empty content');
+
+        $translations = $titleHeader->getTranslatable()->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getSlug() != null) ? $trans->getSlug() : '404';
+        }
+
+        return $slugs;
+    }
+
     public function getHomepageNewsContent() {
         $pageType = MdfContentTemplate::TYPE_NEWS_DETAILS;
 
@@ -358,7 +376,7 @@ class ContentTemplateManager
 
         return intval($nrOfRows);
     }
-    
+
     public function showMoreButton($slug)
     {
         if ($this->countNews([$slug]) > 9) {
@@ -369,11 +387,11 @@ class ContentTemplateManager
 
     /**
      * Find MdfContentTemplateTranslation by MdfContentTemplateWidget
-     * 
+     *
      * @param string $locale
      * @param string $type
      * @param int $id
-     * 
+     *
      * @return array
      */
     public function findContentTemplateByWidget($locale, $type, $id) {

@@ -3,9 +3,7 @@
 namespace FDC\MarcheDuFilmBundle\Controller;
 
 use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceTranslation;
-use FDC\MarcheDuFilmBundle\Repository\ServiceRepository;
 use FOS\RestBundle\Controller\Annotations\Route;
-use Sonata\AdminBundle\Tests\Datagrid\PagerTest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
