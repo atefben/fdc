@@ -43,7 +43,7 @@
             <div id="leaderBoard">
                 {% if banner %}
                     <a href="{{ banner.headerBannerUrl }}" target="_blank">
-                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
+                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" style="height: 90px; width: 720px"/>
                     </a>
                 {% endif %}
             </div>
