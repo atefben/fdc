@@ -300,27 +300,35 @@ function initGlobalEvents() {
 
 /** Load press articles **/
 function loadRetombeesPress() {
-  $('#load-more-retombee-articles').on('click', function (){
-      var currentArticles = $('.articles').length;
+    $('#load-more-retombee-articles').on('click', function (e){
+        var currentArticles = $('.articles').length;
 
-      $.ajax({
-          url: Routing.generate('fdc_marche_du_film_press_coverage'),
-          type: "POST",
-          cache: false,
-          data: {
-              numberOfArticles: currentArticles
-          },
-          success: function(data, textStatus, xhr) {
-              if ($(data).find('.articles').length < 9) {
-                  $('#load-more-retombee-articles').remove();
-              }
-              $(data).insertAfter($('.articles').last());
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              console.log(errorThrown);
-          }
-      });
-  })
+        var me = $(this);
+        e.preventDefault();
+        if ( me.data('requestRunning') ) {
+            return;
+        }
+        me.data('requestRunning', true);
+
+        $.ajax({
+            url: Routing.generate('fdc_marche_du_film_press_coverage'),
+            type: "POST",
+            cache: false,
+            data: {
+                numberOfArticles: currentArticles
+            },
+            success: function(data, textStatus, xhr) {
+                me.data('requestRunning', false);
+                if ($(data).find('.articles').length < 9) {
+                    $('#load-more-retombee-articles').remove();
+                }
+                $(data).insertAfter($('.articles').last());
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    })
 }
 
 function loadConferenceNewsArticles() {
