@@ -4808,7 +4808,7 @@ header #logo-wrapper .container {
 }
 header #logo-wrapper #logo {
   display: inline-block;
-  padding: 5px 100px 20px 0;
+  padding: 0px 100px 0px 0;
   text-align: center;
   vertical-align: middle;
   width: 200px;
@@ -4827,8 +4827,8 @@ header #logo-wrapper #logo h1 {
   position: absolute;
   /*top: 108px;
   left: 0px;*/
-  top: 90px !important;
-  left: 10px !important;
+  top: 95px !important;
+  left: 40px !important;
 }
 header #logo-wrapper #logo h2 {
   position: absolute;
@@ -4878,9 +4878,8 @@ header #logo-wrapper #logo h2 a {
 header #logo-wrapper #logo img.palm {
   display: block;
   margin: 0 auto;
-  width: 165px;
-  width: 123px;
-  margin-left: 35px;
+  width: 145px;
+  margin-left: 55px;
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4991,7 +4990,6 @@ header #navigation ul {
 }
 header #navigation ul li {
   display: inline-block;
-  margin-left: 40px;
 }
 @media screen and (max-width: 1279px) {
   header #navigation ul li {
@@ -5006,22 +5004,26 @@ header #navigation ul li:hover > a {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #navigation ul li:first-child {
-  margin-left: 50px;
-}
-@media screen and (max-width: 1279px) {
-  header #navigation ul li:first-child {
+  margin-left: 45px;
+  /*@media screen and(max-width: $mobileWidth) {
     margin-left: 5px;
-  }
+  }*/
 }
 header #navigation ul li a {
   color: #fff;
+  font-size: 14px;
   display: block;
-  padding-right: 20px;
+  padding-right: 45px;
   text-transform: uppercase;
   -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+@media screen and (max-width: 1279px) {
+  header #navigation ul li a {
+    padding-right: 20px;
+  }
 }
 header #navigation ul li a:hover, header #navigation ul li a.active {
   color: #ec3050;
@@ -5244,9 +5246,13 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 #searchBar {
-  margin-left: 80px !important;
+  margin-left: 105px !important;
   border-left: 1px solid #404040;
   padding-left: 20px;
+}
+
+#searchBarA {
+  padding-right: 20px !important;
 }
 
 .showsearchBox {
@@ -5534,10 +5540,6 @@ header #navigation {
   .main {
     float: none;
   }
-
-  #navigation ul {
-    margin-left: 75px;
-  }
 }
 .minifiedBar {
   display: block !important;
@@ -5684,7 +5686,7 @@ footer .social {
   border-left: none;
   border-right: none;
   overflow: hidden;
-  padding: 50px 0 45px 0;
+  padding: 50px 0 15px 0;
 }
 footer .social p {
   color: #fff;
