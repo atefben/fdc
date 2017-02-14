@@ -39,7 +39,7 @@ data-poster="{% path image, 'reference' %}"
 data-file="{{ s3_server_video ~ video }}" 
 {% if redactional is not null %}
 data-title="{{ redactional|trans_fallback('title') }}"
-data-desc="<h4>Discours</h4> <p>{{ redactional.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}"
+data-desc="<h4>Discours</h4> <p>{{ redactional.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ redactional.updatedAt|date('H:i') }}"
 {% endif %}
 id="videoPlayer1" >
 </div>
