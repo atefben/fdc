@@ -76,7 +76,7 @@
                 <h2 class="title title-01">communiqués et infos</h2>
 
                 {% if homepage.displayedFeaturedContentsFilters == false %}
-                    {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+                    {% include 'FDCCorporateBundle:News:components/filters.html.twig' with({'removePaddingSmallTop': true}) %}
                 {% endif %}
             </div>
         {% endif %}
@@ -210,7 +210,7 @@
                     </div> <!-- end article wrapper-->
                 {% endif %}
 
-                {% if homepage.displayedGallery == false and gallery is not null and glry is not null and glry.medias|length > 0 %}
+                {% if homepage.displayedGallery == false and gallery is not null and glry is not null and glry.medias is defined and glry.medias|length > 0 %}
                     <div class="block-diaporama">
 
                         <div class="slider-01">
