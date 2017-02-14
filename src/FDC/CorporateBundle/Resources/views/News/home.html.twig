@@ -191,17 +191,18 @@
                                         {% if trans == null %}
                                             {% set trans = article.findTranslationByLocale('fr') %}
                                         {% endif %}
-                                        <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"
+                                        {% set sliderUrl = path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, type: type, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
+                                        <a href="{{ sliderUrl }}"
                                            class="linkImage"></a>
                                         <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
                                         <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
                                     </div>
                                     <div class="info">
-                                        <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"
+                                        <a href="#"
                                            class="category">{{ article.theme|trans_fallback('name') }}</a><span
                                                 class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
                                                 class="hour">{{ article.publishedAt|date('H:i') }}</span>
-                                        <strong><a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></strong>
+                                        <strong><a href="{{ sliderUrl }}">{{ article|trans_fallback('title') }}</a></strong>
                                     </div>
                                 </article>
                             {% endfor %}
@@ -235,7 +236,9 @@
                                                  data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                                  data-twitterurl="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat"
                                                  data-url="http://localhost:3000/#pid=1889">
-                                            <figcaption><strong>{{ photo|trans_fallback('legend') }}</strong> {% if copyright is not empty %} © {{ copyright }}{% endif %}</figcaption>
+                                            <figcaption>
+                                                <strong>{{ photo|trans_fallback('legend') }}</strong> {% if copyright is not empty %} © {{ copyright }}{% endif %}
+                                            </figcaption>
                                         </figure>
                                     </div>
                                 {% endif %}
@@ -361,7 +364,7 @@
                                         {% endif %}
 
                                         <article
-                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if loop.first %}double w2{% else %}{% endif %}"
+                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if loop.index == 2 %}double w2{% else %}{% endif %}"
                                                 data-format="{{ contentType }}"
                                                 data-theme="{{ article.theme|trans_fallback('slug') }}"
                                                 data-time="1455909420" data-end="false">
@@ -373,12 +376,7 @@
                                                 {% if trans == null %}
                                                     {% set trans = article.findTranslationByLocale('fr') %}
                                                 {% endif %}
-                                                {% if type == 'news' %}
-                                                    {% set sliderUrl = url('fdc_corporate_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) %}
-                                                {% else %}
-                                                    {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
-                                                {% endif %}
-
+                                                {% set sliderUrl = path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, type: type, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
                                                 <a href="{{ sliderUrl }}" class="linkImage"></a>
 
                                                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
@@ -481,7 +479,8 @@
                             <div>
                                 <strong class="title-2">{{ homepage|trans_fallback('pushEditionTitle')|raw }}</strong>
                                 <a class="link" href="{{ homepage|trans_fallback('pushEditionUrl') }}"><i
-                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}
+                                </a>
                             </div>
                         </div>
                     </div> <!-- end block push -->
@@ -655,7 +654,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <p>{{ homepage|trans_fallback('pushMainSubtitle1') }}</p>
                                 <a class="link" {{ homepage|trans_fallback('pushMainUrl1')|external_link }}
                                    href="{{ homepage|trans_fallback('pushMainUrl1') }}"><i
-                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}
+                                </a>
                             </div>
                         </div>
                         {% if homepage.pushMainImage1 %}
@@ -666,7 +666,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    --><div class="half-div block-push">
+                    -->
+                    <div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -675,7 +676,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <p>{{ homepage|trans_fallback('pushMainSubtitle2') }}</p>
                                 <a class="link" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                                    href="{{ homepage|trans_fallback('pushMainUrl2') }}"><i
-                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}
+                                </a>
                             </div>
                         </div>
                         {% if homepage.pushMainImage2 %}
@@ -747,7 +749,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                --><div class="small-push half-div">
+                                -->
+                                <div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -765,7 +768,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            --><div class="left">
+                            -->
+                            <div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">
