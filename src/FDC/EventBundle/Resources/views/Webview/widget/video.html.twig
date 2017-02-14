@@ -1,8 +1,9 @@
-{% elseif class(widget) begins with 'News' %}
-{% set image = widget.news.header|trans_fallback('file') %}
+{% if class(widget) begins with 'News' %}
+	{% set image = widget.news.header|trans_fallback('file') %}
+	{% set object = widget.news %}
+	{% set header = object.header %}
+{% endif %}
 {% set video = widget.file|trans_fallback('file') %}
-{% set object = widget.news %}
-{% set header = object.header %}
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
