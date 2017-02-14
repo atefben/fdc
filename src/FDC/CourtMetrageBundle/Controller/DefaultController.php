@@ -65,10 +65,11 @@ class DefaultController extends Controller
             }
 
             if ($form->isValid()) {
+                $emailTemplate = 'FDCCourtMetrageBundle:Emails:share.html.twig';
                 foreach ($emails as $email){
                     $data    = $form->getData();
                     $artist = $request->get('artist');
-                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView($emailTemplate, array(
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],
@@ -84,7 +85,7 @@ class DefaultController extends Controller
 
                     //send mail copy
                     if ($data['copy']) {
-                        $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                        $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView($emailTemplate, array(
                             'message' => $data['message'],
                             'section' => $data['section'],
                             'title' => $data['title'],

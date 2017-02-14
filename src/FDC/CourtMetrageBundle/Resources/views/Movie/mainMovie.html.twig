@@ -3,7 +3,7 @@
 {% block main %}
 
     <div id="main" class="single-movie loading">
-        <span id="addtext">Ajouter à ma sélection</span>
+        <span id="addtext">{{ 'ccm.add_my_selection'|trans }}</span>
         <div id="canvasloader" class="canvasloader"></div>
         <div class="content-movie">
             {% include 'FDCCourtMetrageBundle:Movie:partials/nav.html.twig' with ({
@@ -35,22 +35,22 @@
                                 {% endif %}
                             {% endfor %}
                             {% if firstVideo is not null %}
-                                <li><a href="#videos">videos</a></li>
+                                <li><a href="#videos">{{ 'ccm.videos'|trans }}</a></li>
                             {% endif %}
                         {% endif %}
                         {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
-                            <li><a href="#casting">crédits & casting</a></li>
+                            <li><a href="#casting">{{ 'ccm.credits_casting'|trans }}</a></li>
                         {% endif %}
                         {% if movie.getMedias()|length > 0  or movie.selfkitImages|length %}
-                            <li><a href="#photos">photos</a></li>
+                            <li><a href="#photos">{{ 'ccm.photos'|trans }}</a></li>
                         {% endif %}
                         {% if articles|length > 0 %}
-                            <li><a href="#news">actualites</a></li>
+                            <li><a href="#news">{{ 'ccm.news'|trans }}</a></li>
                         {% endif %}
                         {% if movie.associatedMediaAudios(app.request.get('_locale'))|length > 0 %}
-                            <li><a href="#audios">audios</a></li>
+                            <li><a href="#audios">{{ 'ccm.audios'|trans }}</a></li>
                         {% endif %}
-                        <li><a href="#press">infos presse</a></li>
+                        <li><a href="#press">{{ 'ccm.info_press'|trans }}</a></li>
                     </ul>
                     {% set secondTitle = null %}
                     {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}
@@ -110,65 +110,16 @@
         <span class="anim"></span>
     </div>
     <!-- POPIN MAIL SHARE -->
-    <div class="popin-mail popin">
-        <div class="contain-popin popin">
-            <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
-            <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
-            <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
-        </div>
-        <form action="" id="form" class="popin">
-            <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas valide" required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
-            <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas valide" required>
-            <span class="complet-infos popin">
-              <input type="checkbox" class="popin" id="mail-copy" name='mail-copy'>
-              <label for="mail-copy" class="popin">M'envoyez une copie par email</label>
-            </span>
-            <textarea placeholder="Votre message" name="message" class="popin"></textarea>
-            <span class="complet-infos newsletter popin">
-              <input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'>
-              <label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label>
-            </span>
-            <span class="detail popin">* Champs obligatoires</span>
-            <input type="submit" value='envoyer' class='popin'>
-            <div class="errors popin">
-                <ul class="popin">
-                </ul>
-            </div>
-        </form>
-        <div class="info-popin popin">
-            <p class="popin">
-                En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
-                <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
-            </p>
-        </div>
-    </div>
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+            {
+                'section': movie.selectionSection|trans_fallback('name')|trans,
+                'detail' : directorsName,
+                'title'  : mainTitle,
+                'description': movie|trans_fallback('synopsis')|truncate(150),
+                'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+            }
+        ))
+    }}
     <!-- END POPIN MAIL SHARE -->
-
-    <!-- POPIN MAIL SHARE -->
-    <div class="popin-mail media popin">
-        <div class="contain-popin popin">
-            <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
-            <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
-        </div>
-        <form action="" id="form" class="popin">
-            <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas " required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
-            <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas" required>
-            <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
-            <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
-            <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
-            <span class="detail popin">* Champs obligatoires</span>
-            <input type="submit" value='envoyer' class='popin'>
-            <div class="errors popin">
-                <ul class="popin">
-                </ul>
-            </div>
-        </form>
-        <div class="info-popin popin">
-            <p class="popin">
-                En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
-                <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
-            </p>
-        </div>
-    </div>
 
 {% endblock %}

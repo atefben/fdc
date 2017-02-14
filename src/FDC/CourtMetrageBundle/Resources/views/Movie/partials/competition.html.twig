@@ -47,7 +47,7 @@
                         </p>
                         {% set directors = movie.getDirectors() %}
                         {% for director in directors %}
-                            <a class="director" href="#">{{ director.person.fullName }}{% if loop.last == false %},{% endif %}</a>
+                            <a class="director" href="{{ path('fdc_court_metrage_artist', {'slug' : director.person.slug}) }}">{{ director.person.fullName }}{% if loop.last == false %},{% endif %}</a>
                         {% endfor %}
                     </div>
                 </div>

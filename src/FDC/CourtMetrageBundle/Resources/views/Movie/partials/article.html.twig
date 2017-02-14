@@ -112,7 +112,7 @@
             <a href="#" class="linkImage"></a>
             {# END #}
 
-            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
+            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{{ 'ccm.add_my_selection'|trans }}</span></a>
             {% if article is news_object %}
                 <span class="picto"><i class="icon icon_{{ article|get_news_type }}"></i></span>
             {% elseif article is info_object %}

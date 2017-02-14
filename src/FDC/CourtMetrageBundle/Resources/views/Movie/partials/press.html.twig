@@ -15,7 +15,7 @@
                 <div class="vCenter">
                     <div class="vCenterKidTop">
                         {% if (hidePressBlock is not defined or not hidePressBlock) and medias|length %}
-                            <h3 class="gold">Infos presse</h3>
+                            <h3 class="gold">{{ 'ccm.info_press'|trans }}</h3>
                             <div class="folder">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
@@ -61,27 +61,27 @@
                         {% endif %}
                         {% if movie.website or movie.facebook or movie.twitter %}
                             <div class="links">
-                                <p class="sub">Liens</p>
+                                <p class="sub">{{ 'ccm.connections'|trans }}</p>
                                 {% if movie.website %}
                                     <a href="{{ (('http' in movie.website  or 'https' in  movie.website ) ? '' : 'http://') ~ movie.website }}"
-                                       target="_blank">Site internet</a>
+                                       target="_blank">{{ 'ccm.website'|trans }}</a>
                                 {% endif %}
                                 {% if movie.facebook %}
                                     <a href="{{ (('http' in movie.facebook or 'https' in movie.facebook ) ? '' : 'http://') ~ movie.facebook }}"
-                                       target="_blank">Facebook</a>
+                                       target="_blank">{{ 'ccm.facebook'|trans }}</a>
                                 {% endif %}
                                 {% if movie.twitter %}
                                     <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'https://twitter.com/') ~  movie.twitter }}"
-                                       target="_blank">Twitter</a>
+                                       target="_blank">{{ 'ccm.twitter'|trans }}</a>
                                 {% endif %}
                             </div>
                         {% endif %}
                         <div class="buttons">
-                            <p class="sub">Plus d'informations</p>
-                            <a href="#" class="button">Espace presse</a>
+                            <p class="sub">{{ 'ccm.more_info'|trans }}</p>
+                            <a href="#" class="button">{{ 'ccm.press_area'|trans }}</a>
 
                             {# TODO:Should use nextProjectionDate when press agenda scheduling page is done  #}
-                            <a href="#" class="button">Voir la programmation</a>
+                            <a href="#" class="button">{{ 'ccm.see_the_program'|trans }}</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                 <div class="vCenter">
                     <div class="vCenterKidTop">
                         {% if movie.contacts|length > 0 %}
-                            <h3>Contacts</h3>
+                            <h3>{{ 'ccm.contacts'|trans }}</h3>
                             {% set hasProd = false %}
                             {% for contact in movie.contacts %}
                                 {% if
@@ -108,7 +108,7 @@
                                         {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
                                             {% if first %}
                                                 {% set first = false %}
-                                                <p class="sub">Production</p>
+                                                <p class="sub">{{ 'ccm.production'|trans }}</p>
                                             {% endif %}
                                             {% set increasePaddingBottom = true %}
                                             <div class="contact-reduce-line-height">
@@ -173,7 +173,7 @@
                                 {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION') %}
                                     {% if first %}
                                         {% set first = false %}
-                                        <p class="sub">Distribution</p>
+                                        <p class="sub">{{ 'ccm.distribution'|trans }}</p>
                                     {% endif %}
                                     <div>
                                         <p>
@@ -206,7 +206,7 @@
                                 {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_PRESS_COMPANY') %}
                                     {% if first %}
                                         {% set first = false %}
-                                        <p class="sub">Presse française</p>
+                                        <p class="sub">{{ 'ccm.french_press'|trans }}</p>
                                     {% endif %}
                                     <div>
                                         <p>
@@ -248,7 +248,7 @@
                                 {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_INTERNATIONAL_PRESS_COMPANY') %}
                                     {% if first %}
                                         {% set first = false %}
-                                        <p class="sub">Presse internationale</p>
+                                        <p class="sub">{{ 'ccm.international_press'|trans }}</p>
                                     {% endif %}
                                     <div>
                                         <p>
@@ -290,7 +290,7 @@
                                 {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_INTERNATIONAL_SELLING') %}
                                     {% if first %}
                                         {% set first = false %}
-                                        <p class="sub">Ventes à l'étranger</p>
+                                        <p class="sub">{{ 'ccm.foreign_sales'|trans }}</p>
                                     {% endif %}
                                     <div>
                                         <p>

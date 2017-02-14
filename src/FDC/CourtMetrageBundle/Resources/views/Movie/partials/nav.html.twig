@@ -26,9 +26,9 @@
                 <div class="vCenterKid">
                     <h2>{{ prev.titleVO }}</h2>
                     {% for director in prev.getDirectors() %}
-                        <a href="#">{{ director.person.firstname ~ director.person.lastname }}{% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}</a>
+                        <a href="{{ path('fdc_court_metrage_artist', {'slug' : director.person.slug}) }}">{{ director.person.firstname ~ director.person.lastname }}{% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}</a>
                     {% endfor %}
-                    <p>Pays :
+                    <p>{{ 'ccm.country'|trans }} :
                         {% for country in prev.countries %}
                             {{ country.country|trans_fallback('name') }} {% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}
                         {% endfor %}
@@ -66,7 +66,7 @@
                 <div class="vCenterKid">
                     <h2>{{ next.titleVO }}</h2>
                     {% for director in next.getDirectors() %}
-                        <a href="#">{{ director.person.firstname ~ director.person.lastname }}{% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}</a>
+                        <a href="{{ path('fdc_court_metrage_artist', {'slug' : director.person.slug}) }}">{{ director.person.firstname ~ director.person.lastname }}{% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}</a>
                     {% endfor %}
                     <p>Pays :
                         {% for country in next.countries %}
@@ -82,5 +82,5 @@
     <a href="{{ path('fdc_ccm_movie_show', { 'slug' : prev.slug }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
 {% endif %}
 {% if next is not null %}
-    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></i></a>
+    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
 {% endif %}

@@ -58,14 +58,14 @@
             <div class="vCenter">
                 <div class="vCenterKid">
                     {% if movie.getCredits()|length > 0 %}
-                        <h3 class="title-section">Crédits</h3>
+                        <h3 class="title-section">{{ 'ccm.credits'|trans }}</h3>
                         {% for filmPerson in movie.getCredits(true) if filmPerson.person and not filmPerson.person.duplicate %}
                             {% if filmPerson.person is not empty %}
                                 {% for personFunction in filmPerson.functions %}
                                     {% if personFunction.function.id not in [65, 30, 4]  %}
                                         <p>
                                             {% set person = filmPerson.person %}
-                                            <a href="#">{{person.lastName ~ ' ' ~ person.firstName|upper }}</a> - {{ filmPerson.person|person_function_gender(personFunction.function, 'name') }}
+                                            <a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{person.lastName ~ ' ' ~ person.firstName|upper }}</a> - {{ filmPerson.person|person_function_gender(personFunction.function, 'name') }}
                                         </p>
                                     {% endif %}
                                 {% endfor %}
@@ -73,11 +73,11 @@
                         {% endfor %}
                     {% endif %}
                     <div class="actors">
-                        <h3 class="title-section">Casting</h3>
+                        <h3 class="title-section">{{ 'ccm.casting'|trans }}</h3>
                         {% for filmPerson in movie.getActors() %}
                             {% if filmPerson.person is not empty %}
                                 {% set person = filmPerson.person %}
-                                <p><a href="#">{{person.lastName ~ ' ' ~ person.firstName|upper }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
+                                <p><a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{person.lastName ~ ' ' ~ person.firstName|upper }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
                             {% endif %}
                         {% endfor %}
                     </div>
