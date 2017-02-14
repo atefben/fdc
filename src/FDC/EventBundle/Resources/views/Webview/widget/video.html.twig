@@ -1,5 +1,5 @@
 {{ dump(class(widget)) }}
-
+{% set image = '' %}
 {% set video = widget.file|trans_fallback('file') %}
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
