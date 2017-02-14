@@ -2331,3 +2331,100 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfMenu, BaseAdminBundle:MdfMenuAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Configurer Programme}
+
+    #CCM News
+    base.admin.ccm_news:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNews, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+    base.admin.ccm_news_article:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsArticleAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsArticle, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_article, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_video:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsVideoAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsVideo, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_image:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsImageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsImage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_audio:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsAudioAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsAudio, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    #CCN News Widgets
+    base.admin.ccm_news_widget_audio_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetAudioDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsWidgetAudio, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Audio, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_widget_image_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsWidgetImage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_widget_image_dual_align_dummy:
+            class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetImageDualAlignDummyAdmin
+            arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsWidgetImageDualAlign, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image Dual Align, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_widget_gallery_dummy:
+            class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetGalleryDummyAdmin
+            arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsWidgetGallery, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Gallery, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_news_associated:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsNewsAssociatedAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsNewsAssociated, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: NewsNewsAssociated, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_widget_video_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetVideoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsWidgetVideo, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Video, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_news_widget_video_youtube_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetVideoYoutubeDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsWidgetVideoYoutube, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Video Youtube, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]

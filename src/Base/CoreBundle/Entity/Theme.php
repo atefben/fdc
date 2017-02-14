@@ -46,9 +46,15 @@ class Theme implements TranslateMainInterface
      */
     protected $translations;
 
+    /**
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNews", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="theme")
+     */
+    protected $ccmNews;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->ccmNews = new ArrayCollection();
     }
 
     public function __toString()
@@ -137,5 +143,33 @@ class Theme implements TranslateMainInterface
     public function getExportTranslationZh()
     {
         return Export::translationField($this, 'name', 'zh');
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews
+     * @return $this
+     */
+    public function addCcmNews(\FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews)
+    {
+        $ccmNews->setTheme($this);
+        $this->ccmNews[] = $ccmNews;
+
+        return $this;
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews
+     */
+    public function removeCcmNews(\FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews)
+    {
+        $this->ccmNews->removeElement($ccmNews);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCcmNews()
+    {
+        return $this->ccmNews;
     }
 }
