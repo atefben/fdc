@@ -534,7 +534,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/{type}/{format}/{slug}", requirements={"format": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
+     * @Route("/{year}/{type}/{format}/{slug}", requirements={"type": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
      * @param Request $request
      * @param $year
      * @param $type
@@ -567,7 +567,7 @@ class NewsController extends Controller
             $news = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Statement')
-                ->getStatementBySlug($slug, $festivalId, $locale, $isAdmin, $repository)
+                ->getStatementBySlug($slug, $festivalId, $locale, $isAdmin, $repository, 'site-institutionnel')
             ;
         } else {
             $repository = array_flip(Info::getTypes())[$format];

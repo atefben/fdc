@@ -88,7 +88,7 @@
                         <div class="cards grid-01 isotope-01">
                             <div class="grid-sizer"></div>
                             {% for article in homeContents|slice(0, 3) %}
-                                {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
+                                {% if class(article) starts with 'S' %}
                                     {% set type = 'communique' %}
                                 {% else %}
                                     {% set type = 'info' %}
@@ -191,10 +191,9 @@
                                         {% if trans == null %}
                                             {% set trans = article.findTranslationByLocale('fr') %}
                                         {% endif %}
-                                        {% set sliderUrl = path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, type: type, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
+                                        {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
                                         <a href="{{ sliderUrl }}"
                                            class="linkImage"></a>
-                                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
                                         <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
                                     </div>
                                     <div class="info">
@@ -273,7 +272,7 @@
 
                                 {% if homeContents|length > 3 %}
                                     {% for article in homeContents|slice(3) %}
-                                        {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
+                                        {% if class(article) starts with 'S' %}
                                             {% set type = 'communique' %}
                                         {% else %}
                                             {% set type = 'info' %}
@@ -376,7 +375,7 @@
                                                 {% if trans == null %}
                                                     {% set trans = article.findTranslationByLocale('fr') %}
                                                 {% endif %}
-                                                {% set sliderUrl = path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, type: type, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
+                                                {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
                                                 <a href="{{ sliderUrl }}" class="linkImage"></a>
 
                                                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->

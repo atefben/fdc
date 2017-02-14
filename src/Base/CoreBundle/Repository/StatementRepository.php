@@ -206,7 +206,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository)
+    public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository, $site = 'site-press')
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -241,7 +241,10 @@ class StatementRepository extends EntityRepository
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
-        $this->addFDCPressQueries($qb, 's');
+        $qb
+            ->andWhere("s.slug = :site")
+            ->setParameter(':site', $site)
+        ;
 
         return $qb
             ->getQuery()
