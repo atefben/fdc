@@ -9,7 +9,6 @@
         {% set imageTrans = object.header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{{ dump(video) }}
 {% if object.video is not null %}
 	{% set video = widget.video|trans_fallback('file') %}
 	{% if object.video.image is not null %}

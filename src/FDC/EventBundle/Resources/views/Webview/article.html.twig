@@ -56,28 +56,27 @@
         <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
         
         {% for widget in object.widgets %}
-          {{  dump(class(widget) ends with 'WidgetVideo')  }}
-            {% if widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+            {% if class(widget) ends with 'WidgetImage' and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                 {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with ({
                 'photo' : widget.gallery.medias[0].media,
                 'photo_class' : ' large-photo'
                 }) %}
-            {% elseif widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+            {% elseif class(widget) ends with 'WidgetImage' and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                 {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with {'medias': widget.gallery.medias } %}
-            {% elseif widget is news_widget_text %}
+            {% elseif class(widget) ends with 'WidgetText' %}
                 {% include 'FDCEventBundle:Webview:widget/text.html.twig' %}
-            {% elseif widget is news_widget_video %}
+            {% elseif class(widget) ends with 'WidgetVideo' %}
                 {% include 'FDCEventBundle:Webview:widget/video.html.twig' with {'widget': widget} %}
-            {% elseif widget is news_widget_video_youtube %}
+            {% elseif class(widget) ends with 'WidgetVideoYoutube' %}
                 {% include 'FDCEventBundle:Webview:widget/video-youtube.html.twig' with {'widget': widget} %}
-            {% elseif widget is news_widget_audio %}
+            {% elseif class(widget) ends with 'WidgetAudio' %}
                 {% if widget.title is defined %}
                     <h2 class="title">{{ widget.title }}</h2>
                 {% endif %}
                 {% include 'FDCEventBundle:Webview:widget/audio.html.twig' with {'widget': widget} %}
-            {% elseif widget is news_widget_quote %}
+            {% elseif class(widget) ends with 'WidgetQuote' %}
                 {% include 'FDCEventBundle:Webview:widget/quote.html.twig' %}
-            {% elseif widget is news_widget_image_dual_align %}
+            {% elseif class(widget) ends with 'WidgetImageDualAlign' %}
                 {% include 'FDCEventBundle:Webview:widget/dual-photo.html.twig' %}
             {% endif %}
         {% endfor %}
