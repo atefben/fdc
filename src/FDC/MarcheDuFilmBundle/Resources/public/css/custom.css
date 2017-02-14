@@ -13,6 +13,10 @@ header #navigation ul li a.golden.active {
     color: #a1844f;
 }
 
+.pressReview a {
+    text-transform: none;
+}
+
 .color-inherit {
     color: inherit;
 }
