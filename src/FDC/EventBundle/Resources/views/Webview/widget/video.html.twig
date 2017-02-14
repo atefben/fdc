@@ -1,6 +1,4 @@
 
-{% set image = widget.news.header|trans_fallback('file') %}
-
 {% set video = widget.file|trans_fallback('file') %}
 {% set object = widget.news %}
 {% set header = object.header %}
@@ -26,7 +24,7 @@
 	    {% endif %}
 	{% endif %}
 {% endif %}
-{{ dump(video) }}
+
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video }}" 
