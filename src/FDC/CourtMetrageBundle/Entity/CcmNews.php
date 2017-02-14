@@ -32,7 +32,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CcmNews
  *
  * @ORM\Table(name="ccm_news")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmNewsRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "CcmNewsArticle", "audio" = "CcmNewsAudio", "image" = "CcmNewsImage", "video" = "CcmNewsVideo"})

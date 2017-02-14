@@ -1,2 +1,4 @@
-## YAML Template.
----
+services:
+    ccm.manager.news:
+        class: FDC\CourtMetrageBundle\Manager\NewsManager
+        arguments: [ '@doctrine.orm.entity_manager' ]
