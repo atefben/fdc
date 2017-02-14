@@ -1,5 +1,10 @@
 {{ dump(class(widget)) }}
-{% set image = '' %}
+{% if class(widget) begins with 'News' %}
+	{% set image = widget.news.header|trans_fallback('file') %}
+	{% set object = widget.news %}
+	{% set header = object.header %}
+	{% set redactional = widget.news %}
+{% endif %}
 {% set video = widget.file|trans_fallback('file') %}
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
@@ -26,7 +31,9 @@
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video }}" 
-data-title="{{ widget.news|trans_fallback('title') }}"
-data-desc="<h4>Discours</h4> <p>{{ widget.news.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}"
+{% if redactional is not null %}
+data-title="{{ redactional|trans_fallback('title') }}"
+data-desc="<h4>Discours</h4> <p>{{ redactional.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ widget.news.updatedAt|date('H:i') }}"
+{% endif %}
 id="videoPlayer1" >
 </div>
