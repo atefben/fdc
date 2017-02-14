@@ -1,6 +1,6 @@
-{% if widget.news is not null %}
+
 {% set image = widget.news.header|trans_fallback('file') %}
-{% endif %}
+
 {% set video = widget.file|trans_fallback('file') %}
 {% set object = widget.news %}
 {% set header = object.header %}
