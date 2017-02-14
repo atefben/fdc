@@ -204,4 +204,12 @@
     .subNavigation ul li a:hover {
         color: {{ graphicCharter.color2 }};
     }
+
+    .read-more-state ~ .read-more-trigger:before {
+        content: "{{ 'detailDeService.readMore'|trans }}";
+    }
+
+    .read-more-state:checked ~ .read-more-trigger:before {
+        content: "{{ 'detailDeService.close'|trans }}";
+    }
 </style>
