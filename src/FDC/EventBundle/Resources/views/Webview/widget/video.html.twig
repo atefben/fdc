@@ -10,6 +10,7 @@
     {% endif %}
 {% endif %}
 {% if object.video is not null %}
+	{% set video = widget.video|trans_fallback('file') %}
 	{% if object.video.image is not null %}
 	    {% if imageTrans is defined %}
 	        {% set image = imageTrans.file %}
