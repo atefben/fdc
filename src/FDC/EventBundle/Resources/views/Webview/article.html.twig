@@ -56,7 +56,7 @@
         <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
 
         {% for widget in object.widgets %}
-            {{ dump(widget is news_widget_image) }}
+            {{ dump(widget) }}
             {{ dump(widget is news_widget_text) }}
             {{ dump(widget is news_widget_video) }}
             {{ dump(widget is news_widget_video_youtube) }}
