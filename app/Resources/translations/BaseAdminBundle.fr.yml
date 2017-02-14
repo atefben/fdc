@@ -992,6 +992,7 @@ form:
         helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes : Format de l'image recommandé : 650x410
+        helper_pushes_3 : Format de l'image recommandé : 652x206
         helper_push3 : Format de l'image recommandé : 954x606
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
