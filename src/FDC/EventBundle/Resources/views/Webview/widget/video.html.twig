@@ -1,9 +1,5 @@
 {{ dump(class(widget)) }}
-{% if class(widget) begins with 'News' %}
-	{% set image = widget.news.header|trans_fallback('file') %}
-	{% set object = widget.news %}
-	{% set header = object.header %}
-{% endif %}
+
 {% set video = widget.file|trans_fallback('file') %}
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
@@ -27,7 +23,6 @@
 	    {% endif %}
 	{% endif %}
 {% endif %}
-{{ dump(video) }}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video }}" 
