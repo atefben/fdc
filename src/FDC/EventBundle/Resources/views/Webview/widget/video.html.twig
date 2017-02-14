@@ -9,7 +9,7 @@
 	{% set object = widget.statement %}
 	{% set redactional = object %}
 	{% set header = redactional.header %}
-	{% set image = header.image %}
+	{% set image = object.image %}
 {% endif %}
 {% set video = widget.file|trans_fallback('file') %}
 {% if header is not null %}
