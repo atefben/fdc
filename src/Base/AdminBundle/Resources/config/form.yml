@@ -744,34 +744,34 @@ services:
 
     #CCN News Widget Forms
     base.admin.form.ccm_news_widget_type:
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_type'}
 
     base.admin.form.ccm_news_widget_text_type:
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetTextType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetTextType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_text_type'}
 
     base.admin.form.ccm_news_widget_description_type:
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetDescriptionType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetDescriptionType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_description_type'}
 
     base.admin.form.ccm_news_widget_quote_type:
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetQuoteType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetQuoteType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_quote_type'}
 
     base.admin.form.ccm_news_widget_signature_type:
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetSignatureType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetSignatureType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_signature_type'}
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_audio_type:
         scope: prototype
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetAudioType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetAudioType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_audio_type'}
         calls:
@@ -781,7 +781,7 @@ services:
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_image_type:
         scope: prototype
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetImageType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetImageType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_image_type'}
         calls:
@@ -791,7 +791,7 @@ services:
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_image_dual_align_type:
         scope: prototype
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetImageDualAlignType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetImageDualAlignType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_image_dual_align_type'}
         calls:
@@ -801,7 +801,7 @@ services:
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_gallery_type:
         scope: prototype
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetGalleryType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetGalleryType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_gallery_type'}
         calls:
@@ -811,7 +811,7 @@ services:
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_video_type:
         scope: prototype
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetVideoType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetVideoType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_video_type'}
         calls:
@@ -821,7 +821,7 @@ services:
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_video_youtube_type:
         scope: prototype
-        class: FDC\CourtMetrageBundle\Form\CcmNewsWidgetVideoYoutubeType
+        class: FDC\CourtMetrageBundle\Form\Type\CcmNewsWidgetVideoYoutubeType
         tags:
             - { name: form.type, alias: 'ccm_news_widget_video_youtube_type'}
         calls:

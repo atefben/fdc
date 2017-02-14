@@ -1,27 +1,27 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
+namespace FDC\CourtMetrageBundle\Form\Type;
 
 
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * CcmNewsWidgetSignatureType class.
+ * CcmNewsWidgetQuoteType class.
  *
  * \@extends CcmNewsWidgetType
  * \@company Ohwee
  */
-class CcmNewsWidgetSignatureType extends CcmNewsWidgetType
+class CcmNewsWidgetQuoteType extends CcmNewsWidgetType
 {
     /**
      * dataClass
      *
-     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetSignature')
+     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetQuote')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetSignature';
+    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetQuote';
 
     /**
      * buildForm function.
@@ -48,7 +48,7 @@ class CcmNewsWidgetSignatureType extends CcmNewsWidgetType
                 'content' => array(
                     'label' => false,
                     'attr' => array(
-                        'class' => '' // todo: add class?
+                        'class' => 'quote'
                     )
                 ),
                 'createdAt' => array(
@@ -68,6 +68,6 @@ class CcmNewsWidgetSignatureType extends CcmNewsWidgetType
      */
     public function getName()
     {
-        return 'ccm_news_widget_signature_type';
+        return 'ccm_news_widget_quote_type';
     }
 }

@@ -26,9 +26,14 @@ class NewsController extends Controller
         /** @var NewsManager $newsManager */
         $newsManager = $this->get('ccm.manager.news');
         
-        $filters = $newsManager->getAvailableFilters($locale);
-        dump($filters);die;
-        
-        return $this->render('@FDCCourtMetrage/news/news.html.twig');
+        $filters = $newsManager->getAvailableListFilters($locale);
+        $news = $newsManager->getNewsArticlesForListPage($locale);
+        //dump($news);die;
+
+
+        return $this->render('@FDCCourtMetrage/news/news.html.twig', [
+            'news'    => $news,  
+            'filters' => $filters
+        ]);
     }
 }

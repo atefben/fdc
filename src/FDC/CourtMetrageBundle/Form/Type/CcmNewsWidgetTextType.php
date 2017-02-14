@@ -1,27 +1,27 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
+namespace FDC\CourtMetrageBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * CcmNewsWidgetDescriptionType class.
+ * CcmNewsWidgetTextType class.
  * 
  * \@extends CcmNewsWidgetType
  * \@company Ohwee
  */
-class CcmNewsWidgetDescriptionType extends CcmNewsWidgetType
+class CcmNewsWidgetTextType extends CcmNewsWidgetType
 {
     /**
      * dataClass
      * 
-     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetDescription')
+     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetText')
      * 
      * @var string
      * @access protected
      */
-    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetDescription';
+    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetText';
     
     /**
      * buildForm function.
@@ -38,12 +38,12 @@ class CcmNewsWidgetDescriptionType extends CcmNewsWidgetType
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
             'fields' => array(
-                'applyChanges' => array(
-                    'field_type' => 'hidden',
-                    'attr' => array (
-                        'class' => 'hidden'
-                    )
-                ),
+                 'applyChanges' => array(
+                     'field_type' => 'hidden',
+                     'attr' => array (
+                         'class' => 'hidden'
+                     )
+                 ),
                 'content' => array(
                     'label' => false,
                     'attr' => array(
@@ -73,6 +73,6 @@ class CcmNewsWidgetDescriptionType extends CcmNewsWidgetType
      */
     public function getName()
     {
-        return 'ccm_news_widget_description_type';
+        return 'ccm_news_widget_text_type';
     }
 }

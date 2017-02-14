@@ -6,180 +6,84 @@
         <div class="filters">
             <div id="theme" class="filter">
                 <span class="label">Dates :</span>
-          <span class="select">
-            <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
-            <span data-filter="date0">Date 0</span>
-            <span data-filter="date1">Date 1</span>
-            <span data-filter="date2">Date 2</span>
-            <span data-filter="date3">Date 3</span>
-          </span>
+                <span class="select">
+                    <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
+                    {% for year, yearData in filters.years %}
+                        <span data-filter="year{{ year }}">{{ year }}</span>
+                    {% endfor %}
+                </span>
             </div>
             <div id="format" class="filter">
                 <span class="label">Thèmes :</span>
-          <span class="select">
-            <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
-            <span data-filter="theme0">Thème 0</span>
-            <span data-filter="theme1">Thème 1</span>
-            <span data-filter="theme2">Thème 2</span>
-          </span>
+                <span class="select">
+                    <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+                    {% for themeId, themeData in filters.themes %}
+                        <span data-filter="theme{{ themeId }}">{{ themeData.name }}</span>
+                    {% endfor %}
+                </span>
             </div>
         </div>
         <div id="gridAudios" class="grid-wrapper" data-type="articles">
             <div class="grid-sizer"></div>
-            <div class="item theme1 date2 date theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme2 date1 date article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme2 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 date article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme2 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme2 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
-            <div class="item theme1 date1 date theme article">
-                <article class="article">
-                    <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
-                    <div class="info">
-                        <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                        <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
-                    </div>
-                </article>
-            </div>
+            {% for article in news %}
+                <div class="item theme1 date2 date theme article">
+                    <article class="article">
+                        <div class="img">
+                            <span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='/bundles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
+                        <div class="info">
+                            <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                            <h3><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h3>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
         </div>
+        {#{% for newsItem in news %}
+            {% set newsDecription = '' %}
+            {% if newsItem.image is not empty %}
+                {% set newsTitleLength = 45 %}
+                {% set newsDecriptionLength = 130 %}
+            {% else %}
+                {% set newsTitleLength = 75 %}
+                {% set newsDecriptionLength = 400 %}
+            {% endif %}
+
+            {% if newsItem.header is not empty %}
+                {% set newsDecription = newsItem.header %}
+            {% elseif newsItem.text is not empty %}
+                {% set newsDecription = newsItem['text'][0].contentText %}
+            {% endif %}
+
+            <a href="{{ path('fdc_marche_du_film_news_details', {'slug': newsItem.slug}) }}">
+                <div class="articles {{ newsItem.translatable.theme.findTranslationByLocale(app.request.locale).slug }} events global-news" data-index="{{ loop.index0 }}">
+                    <div class="readMore">...</div>
+                    {% if newsItem.image is not empty %}
+                        <div class="articles-img"><img src="{% path newsItem.image|trans_fallback('file'), 'reference' %}"></div>
+                    {% endif %}
+                    <div class="articles-content">
+                        <span class="customClass4">{{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).title }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
+                        {% if newsItem['content'].title|length > newsTitleLength %}
+                            <h6>{{ newsItem['content'].title|truncate(newsTitleLength, true, "...") }}</h6>
+                        {% else %}
+                            <h6>{{ newsItem['content'].title }}</h6>
+                        {% endif %}
+                        {% if newsDecription|striptags|length > newsDecriptionLength %}
+                            {% set description = newsDecription|truncate(newsDecriptionLength, true, "...</p>") %}
+                        {% else %}
+                            {% set description = newsDecription %}
+                        {% endif %}
+                        <p>{{ description|striptags|convert_encoding('UTF-8', 'HTML-ENTITIES') }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}#}
         <a id="next" href="articles2.html"></a>
     </div>
+    {# todo: cancel javascript addition of class="disabled" for news filter options and remove below js #}
+    <script>
+        setTimeout(function () {
+            $('span[data-filter].disabled').removeClass('disabled');
+        }, 4500);
+    </script>
+    {# todo: end todo #}
 {% endblock %}

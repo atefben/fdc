@@ -6,7 +6,6 @@ use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\FilmFilm;
-use Base\CoreBundle\Entity\Homepage;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\Theme;
@@ -74,7 +73,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     protected $festival;
 
     /**
-     * @var Homepage
+     * @var \Base\CoreBundle\Entity\Homepage
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Homepage", cascade={"all"})
      */
@@ -345,7 +344,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      * @param \Base\CoreBundle\Entity\Homepage $homepage
      * @return CcmNews
      */
-    public function setHomepage(Homepage $homepage = null)
+    public function setHomepage($homepage = null)
     {
         $this->homepage = $homepage;
 
