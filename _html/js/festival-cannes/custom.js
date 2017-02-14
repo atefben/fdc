@@ -1,9 +1,16 @@
 $(document).ready(function() {
 
-
-$('#main').removeClass('loading');
-
 window.onunload = function(){};
+
+if(navigator.userAgent.match(/Trident\/7\./)) {
+
+  location.reload(true);
+
+}
+
+$(window).load(function () {
+  $('#main').removeClass('loading');
+});
 
 /*CAROUSSELS OWL*/
  
