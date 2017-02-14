@@ -30,7 +30,7 @@
                                     {% for widget in form.parent.children.sliders.children %}
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'homepage_slider_type' %}
-                                                <h4><strong>{{ 'form.ccm.label.slide'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.ccm.label.slider.homepage'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}

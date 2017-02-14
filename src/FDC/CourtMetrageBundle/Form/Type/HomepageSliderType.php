@@ -68,15 +68,23 @@ class HomepageSliderType extends AbstractType
                         ),
                     ),
                     'whiteTitle'          => array(
-                        'field_type' => 'choice',
-                        'choices' => HomepageSliderTranslation::getTextSizes(),
                         'label'              => 'form.ccm.label.slider.whiteTitle',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
-                    'goldenTitle'          => array(
+                    'whiteTitleSize'          => array(
                         'field_type' => 'choice',
                         'choices' => HomepageSliderTranslation::getTextSizes(),
+                        'label'              => 'form.ccm.label.slider.whiteTitleSize',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'goldenTitle'          => array(
                         'label'              => 'form.ccm.label.slider.goldenTitle',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'goldenTitleSize'          => array(
+                        'field_type' => 'choice',
+                        'choices' => HomepageSliderTranslation::getTextSizes(),
+                        'label'              => 'form.ccm.label.slider.goldenTitleSize',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'url'          => array(

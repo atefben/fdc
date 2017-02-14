@@ -37,6 +37,20 @@ class HomepageSliderTranslation
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $whiteTitleSize = HomepageSliderTranslation::LARGE;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $goldenTitleSize = HomepageSliderTranslation::LARGE;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=false)
      */
     protected $url;
@@ -132,6 +146,50 @@ class HomepageSliderTranslation
     public function setButtonLabel($buttonLabel)
     {
         $this->buttonLabel = $buttonLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get whiteTitleSize.
+     *
+     * @return string
+     */
+    public function getWhiteTitleSize()
+    {
+        return $this->whiteTitleSize;
+    }
+
+    /**
+     * Set whiteTitleSize.
+     *
+     * @param string $whiteTitleSize
+     */
+    public function setWhiteTitleSize($whiteTitleSize)
+    {
+        $this->whiteTitleSize = $whiteTitleSize;
+
+        return $this;
+    }
+
+    /**
+     * Get goldenTitleSize.
+     *
+     * @return string
+     */
+    public function getGoldenTitleSize()
+    {
+        return $this->goldenTitleSize;
+    }
+
+    /**
+     * Set goldenTitleSize.
+     *
+     * @param string $goldenTitleSize
+     */
+    public function setGoldenTitleSize($goldenTitleSize)
+    {
+        $this->goldenTitleSize = $goldenTitleSize;
 
         return $this;
     }

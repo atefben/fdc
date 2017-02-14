@@ -682,22 +682,25 @@ form:
                 sub_nav_route: Itinéraire de la deuxième onglet de navigation
                 sub_nav_is_active: Ce deuxième onglet de navigation est actif?
             push:
+                homepage: Push
                 whiteTitle: Titre Blanc
                 goldenTitle: Titre Doré
                 url: URL de la push
                 isActive: Activer le module
                 add_message: Pushes
             slider:
+                homepage: Slide
                 whiteTitle: Titre Blanc
+                whiteTitleSize: Taille du Titre Blanc
                 goldenTitle: Titre Doré
+                goldenTitleSize: Taille du Titre Doré
                 buttonLabel: Libellé de bouton
                 url: URL de la slide
             homepage_slider_type: Ajouter
             homepage_push_type: Ajouter
-            homepage_push: Push
             pushes: Module Push
             homepage_slider: Slide
-            slide: Slider
+            slide: Module Slider
 
         size:
             small:  Titre petit

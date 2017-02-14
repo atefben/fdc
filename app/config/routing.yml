@@ -125,8 +125,6 @@ fdc_press_mobile:
     prefix:   /press
     host:     "%fdc_event_mobile_domain%"
 
-
-
 # marche du film
 fdc_marche_du_film:
     resource: "@FDCMarcheDuFilmBundle/Controller"
@@ -135,7 +133,7 @@ fdc_marche_du_film:
     host: "%fdc_marche_du_film_domain%"
 
 fdc_court_metrage:
-    resource: "@FDCCourtMetrageBundle/Controller/"
+    resource: "@FDCCourtMetrageBundle/Controller"
     type:     annotation
     prefix:   /
     host: "%fdc_court_metrage_domain%"
