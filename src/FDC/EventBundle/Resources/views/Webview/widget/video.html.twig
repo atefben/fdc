@@ -4,6 +4,11 @@
 	{% set object = widget.news %}
 	{% set header = object.header %}
 	{% set redactional = widget.news %}
+{% else %}
+	{% set image = '' %}
+	{% set object = '' %}
+	{% set header = '' %}
+	{% set redactional = '' %}
 {% endif %}
 {% set video = widget.file|trans_fallback('file') %}
 {% if header is not null %}
