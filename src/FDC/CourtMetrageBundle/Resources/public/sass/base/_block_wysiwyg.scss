@@ -1,0 +1,808 @@
+// - Block WISIWYG //
+// - BLOCK PARTICIPATE REGISTER
+// - BLOCK TXT PARTICIPATE REGISTER
+// =========================
+
+
+
+// - BLOCK PARTICIPATE REGISTER
+.block-p-register {
+  margin-top: 70px;
+
+  h2 {
+    font-family: $CamphorBold;
+    font-size: 1rem;
+    color:#0c0c0c;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: $CamphorBold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    line-height: 24px;
+  }
+
+  h4 {
+    font-family: $CamphorBold;
+    font-size: .88rem;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    margin-bottom: 10px;
+    color: #c8a461;
+  }
+
+  em {
+    font-family: $CamphorItalic;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+    font-size: .5rem;
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: .5rem;
+  }
+
+
+
+  table {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+
+
+    td, th {
+      font-weight: normal;
+      vertical-align: middle;
+      border: 1px solid #dfdfdf;
+      padding: 15px 0px;
+      width: 320px;
+      text-align: center;
+      color:#666666;
+      font-size: .74rem;
+      font-family: $CamphorMedium;
+      text-align: center;
+    }
+
+    th {
+      text-transform: uppercase;
+      color:#000;
+      font-family: $CamphorBold;
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  table[border="0"] td {
+    border: none !important;
+  }
+
+  &.accredit {
+
+    h5 {
+      font-size: .75rem;
+      line-height: 24px;
+      font-family: $CamphorBold;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin-bottom: 36px;
+    }
+
+    p {
+      line-height: 30px;
+      font-size: 1rem;
+      margin-bottom: 36px;
+      margin-top: 0px;
+      color: #666666;
+
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+
+
+    ul li {
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      color: #666666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+
+    }
+
+    ul {
+      list-style: inherit;
+      color: #666666;
+      margin-bottom: 36px;
+    }
+
+    ol li {
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      list-style-type: decimal;
+      color: #666666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+    }
+
+    ol {
+      list-style: inherit;
+      list-style-type: decimal;
+      color: #666666;
+      margin-left: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+  } //fin accredit class
+
+  p {
+    color: #666666;
+    font-size: 1rem;
+    line-height: 30px;
+    font-family: $CamphorRegular;
+    margin-top: 32px;
+    margin-bottom: 66px;
+
+    a {
+      color:$gold;
+    }
+  }
+
+  ol {
+    font-size: .75rem;
+    color: #0c0c0c;
+    font-family: $CamphorRegular;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 30px;
+    width: 94%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 26px;
+    list-style: none;
+
+    counter-reset: section;
+    list-style-type: none;
+
+    li {
+      list-style-position: outside;
+      position: relative;
+    }
+
+    li:before {
+       counter-increment: section;
+       content: counters(section, ".") ". ";
+       color: $gold;
+       font-family: $CamphorHeavy;
+       position: absolute;
+       left: -21px;
+    }
+  }
+
+}
+
+// - BLOCK TXT PARTICIPATE REGISTER
+
+.block-contain-txt-register-movie.active {
+  display: block;
+}
+
+.block-contain-txt-register-movie {
+  padding-top: 55px;
+  padding-bottom: 70px;
+  display: none;
+
+  em {
+    font-family: $CamphorItalic;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+    font-size: .5rem;
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: .5rem;
+  }
+
+  .legend {
+    display: block;
+    text-align: center;
+    font-size: .75rem;
+  }
+
+  p {
+    font-size:1rem;
+    color:#666666;
+    line-height: 30px;
+    margin-bottom: 25px;
+    text-align: left;
+  }
+
+  a:not(.button) {
+    color: $gold;
+    transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+    &:hover {
+      color: #8e6d30;
+    }
+  }
+
+
+  ul {
+    font-size:1rem;
+    color:#666666;
+    line-height: 30px;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  ol li {
+    font-size: 1rem;
+    line-height: 30px;
+    list-style: inside;
+    list-style-type: decimal;
+    list-style-position: inside;
+    color: #666666;
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  ol {
+    list-style: inherit;
+    list-style-type: decimal;
+    list-style-position: inside;
+    color: #666666;
+    margin-bottom: 36px;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    color: $gold;
+    font-size: .875rem;
+    text-transform: uppercase;
+    font-family: $CamphorBold;
+    letter-spacing: 2px;
+    line-height: 26px;
+    padding-bottom: 27px;
+  }
+
+  h5 {
+    color: #0c0c0c;
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: $CamphorBold;
+    letter-spacing: 2px;
+    line-height: 24px;
+  }
+
+  h6 {
+    font-size: .75rem;
+    color: #0c0c0c;
+    font-family: $CamphorBold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    margin-top: 5px;
+    display: block;
+  }
+
+  strong {
+    font-family: $CamphorBold;
+  }
+
+  /*u {
+    margin-bottom: 24px;
+    display: block;
+  }*/
+
+  .block-contact {
+    ul,p {
+      color: #666666;
+      margin-bottom: 42px;
+      margin-left: 0px;
+      margin-top: 0px;
+      font-size: .875rem;
+      line-height: 20px;
+      list-style: none;
+      list-style-type: none;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+
+    h5 {
+      color: #0c0c0c;
+      font-size: .75rem;
+      text-transform: uppercase;
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+      line-height: 24px;
+    }
+  }
+
+  .block-s-info-02 p {
+    line-height: 30px;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+}
+
+
+.wysiwyg-article {
+
+  h1 {
+  color: #0c0c0c;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+  }
+
+  h4 {
+    color: #141414;
+    font-size: 1.125rem;
+    font-family: $CamphorBold;
+    display: block;
+    text-align: center;
+    line-height: 36px;
+
+  }
+
+  p {
+    color: #666666;
+    font-size: 1rem;
+    line-height: 26px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  blockquote{
+    padding: 30px 90px;
+    color: #141414;
+    text-align: center;
+    font-size: 1.5rem;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 69px;
+    margin-bottom: 69px;
+    line-height: 32px;
+
+    p {
+      color: #141414;
+      font-size: 1.5rem;
+      line-height: 32px;
+    }
+
+    em {
+      color: #141414;
+      font-size: 1.5rem;
+      line-height: 32px;
+    }
+  }
+
+  .by-author {
+    font-size: .75rem;
+    color: #666666;
+    font-family: $CamphorMedium;
+    line-height: 24px;
+    margin-top: 59px;
+    padding-top: 11px;
+    border-top: 1px solid #e5e5e5;
+    display: block;
+  }
+
+}
+
+.wysiwyg-article-02 {
+
+  .block-movie-preview .wrapper-item-big p {
+    font-family: $CamphorRegular;
+    font-size: .875rem;
+    line-height: 24px;
+    margin-bottom: 0px;
+  }
+
+  .block-movie-preview .wrapper-item-big .description {
+    margin-bottom: 0px;
+  }
+
+  .block-movie-preview:hover .wrapper-item-big ol li, .block-movie-preview:hover ul li {
+    color: #fff;
+    transition: .5s;
+  }
+
+  .block-movie-preview .wrapper-item-big {
+    ul {
+      font-size:1rem;
+      color:#666666;
+      line-height: 30px;
+      list-style-type: disc;
+      list-style-position: inside;
+      margin: 0px;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+    }
+
+    ol li {
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      list-style-type: decimal;
+      list-style-position: inside;
+      color: #666666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+    }
+
+    ol {
+      list-style: inherit;
+      list-style-type: decimal;
+      list-style-position: inside;
+      color: #666666;
+    }
+  }
+
+
+
+  table {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+
+    &:after {
+      content: '';
+      clear: both;
+    }
+
+    td, th {
+      font-weight: normal;
+      vertical-align: middle;
+      border: 1px solid #666;
+      padding: 15px 0px;
+      width: 320px;
+      text-align: center;
+      color: #666666;
+      font-size: .74rem;
+      font-family: $CamphorMedium;
+      text-align: center;
+      font-size: .74rem !important;
+
+      p {
+        font-size: .74rem !important;
+        font-family: $CamphorMedium;
+      }
+    }
+
+    th {
+      text-transform: uppercase;
+      color: #000;
+      font-family: $CamphorBold;
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25, .46, .45, .94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  .block-movie-preview p.description, .block-movie-preview p{
+    margin-top: 0px;
+  }
+
+  .audio-container .audio-player .off .info p {
+    margin-bottom: 0px;
+  }
+
+  .title-acces {
+    text-transform: uppercase;
+  }
+
+  .title-article {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+
+  h2.sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  h2.sub-title2 {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 25px 0px;
+  }
+
+  h3.sub-title {
+    font-family: $CamphorBold;
+    font-size: 0.875rem;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .descrip-participate {
+    width: 607px;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+  }
+
+  .title-acces {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: $CamphorBold;
+    font-size: .75rem;
+    padding-bottom: 20px;
+  }
+
+  .descript-acces {
+    padding-bottom: 20px;
+    font-size: .8125rem;
+    line-height: 24px;
+  }
+
+  h2, h3, .contain-title p, .contain-title h3, .contain-title h5 {
+    font-size: 1.125rem;
+    font-family:$CamphorMedium;
+    color: #fff;
+    display: block;
+    text-align: center;
+    line-height: 36px;
+
+    a {
+      color:$gold;
+    }
+
+    span {
+      color:$gold;
+    }
+  }
+
+  .contain-title ul, .contain-title ol {
+    color: #fff;
+
+    a {
+      color:$gold;
+    }
+
+
+  }
+
+  .text {
+    ol li {
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      list-style-type: decimal;
+      color: #666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+    }
+
+    ol {
+      list-style: inherit;
+      list-style-type: decimal;
+      color: #fff;
+    }
+
+    p, ul, ol {
+      font-size: 1rem;
+      font-family: $CamphorRegular;
+      color: #666666;
+      display:block;
+
+      .ie & {
+        margin-top: 67px;
+        width: 100%;
+      }
+
+      .bright & {
+        color: #141414;
+      }
+
+      a {
+        color: $gold;
+      }
+
+      em {
+        font-family: $CamphorItalic;
+      }
+
+      strong {
+        font-family: $CamphorBold;
+        color: #fff;
+      }
+
+      sub {
+        vertical-align: text-bottom;
+        font-size: .5rem;
+      }
+
+      sup {
+        vertical-align: super;
+        font-size: .5rem;
+      }
+
+      font-size: 1rem;
+      line-height: 30px;
+      list-style: inside;
+      color: #666666;
+
+      a {
+        color: $gold;
+        transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+        &:hover {
+          color: #8e6d30;
+        }
+      }
+
+    }
+
+  }
+
+
+
+  h4 {
+    font-family: $CamphorBold;
+    font-size: 1rem;
+    line-height: 24px;
+    color: #fff;
+
+    a {
+      color:$gold;
+    }
+
+
+    span {
+      color:$gold;
+    }
+  }
+
+  p {
+    color: #666666;
+    font-size: 1rem;
+    line-height: 26px;
+    font-size:$CamphorRegular;
+    margin-top: 32px;
+    margin-bottom: 66px;
+
+    a {
+      color:$gold;
+    }
+
+
+    span {
+      color:$gold;
+    }
+  }
+}
+
+.all-contain {
+  .border-top {
+    border-top: 1px solid #ECECEC;
+  }
+}
+
+.alignCenter {
+
+  p {
+    text-align: center;
+  }
+
+  .title-25 {
+    padding-bottom: 20px;
+  }
+}
+

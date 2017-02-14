@@ -1,0 +1,86 @@
+{% if prev is not null%}
+    <div class="prevmovie">
+        <div class="img">
+            {% set media = prev.imageMain|trans_fallback('file') %}
+
+            {% if media is empty %}
+                {% set media = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = prev.getSelfkitImages()|first %}
+            {% endif %}
+
+            {% if film_format is not defined %}
+                {% set film_format = 'small' %}
+            {% endif %}
+            <img src="{% path media, film_format %}" alt="{{ prev|trans_fallback('title')?:prev.titleVO }}" />
+        </div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h2>{{ prev.titleVO }}</h2>
+                    {% for director in prev.getDirectors() %}
+                        <a href="#">{{ director.person.firstname ~ director.person.lastname }}{% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}</a>
+                    {% endfor %}
+                    <p>Pays :
+                        {% for country in prev.countries %}
+                            {{ country.country|trans_fallback('name') }} {% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if next is not null %}
+    <div class="nextmovie">
+        <div class="img">
+            {% set media = next.imageMain|trans_fallback('file') %}
+
+            {% if media is empty %}
+                {% set media = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = next.getSelfkitImages()|first %}
+            {% endif %}
+
+            {% if film_format is not defined %}
+                {% set film_format = 'small' %}
+            {% endif %}
+            <img src="{% path media, film_format %}" alt="{{ next|trans_fallback('title')?:next.titleVO }}" />
+        </div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h2>{{ next.titleVO }}</h2>
+                    {% for director in next.getDirectors() %}
+                        <a href="#">{{ director.person.firstname ~ director.person.lastname }}{% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}</a>
+                    {% endfor %}
+                    <p>Pays :
+                        {% for country in next.countries %}
+                            {{ country.country|trans_fallback('name') }} {% if loop.last ==false %}<span class="nom-item">, </span>{% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if prev is not null %}
+    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : prev.slug }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+{% endif %}
+{% if next is not null %}
+    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></i></a>
+{% endif %}

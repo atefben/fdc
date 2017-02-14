@@ -1,0 +1,57 @@
+{% if movies|length %}
+    <div class="competition">
+        <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ movie.festival.year }}</h2>
+        <div id="slider-competition" class="owl-carousel sliderDrag">
+            {% for movie in movies %}
+                <div class="slide">
+                    {% set media = movie.imageMain|trans_fallback('file') %}
+                    {% set film_attrs = {'alt': (movie|trans_fallback('title')?:movie.titleVO)} %}
+                    {% set film_format = '240x320' %}
+
+                    {% if media is empty %}
+                        {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                    {% endif %}
+                    {% if media is empty %}
+                        {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                    {% endif %}
+                    {% if media is empty %}
+                        {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                    {% endif %}
+                    {% if media is empty %}
+                        {% set media = movie.getSelfkitImages()|first %}
+                    {% endif %}
+                    {% if media is not empty and film_format is not empty and film_attrs is not empty %}
+                        <img src="{% path media, film_format %}"{% for key, val in film_attrs %} {{ key }}="{{ val }}"{% endfor %}>
+                    {% else %}
+                        {% set film_image_default_attrs = 'style="width: 240px;height: 320px;"' %}
+                        {% set legacy = get_legacy_film_image(movie) %}
+                        {% if legacy %}
+                            <img src="{{ selfkit_amazon_url }}{{ legacy.fichier }}"
+                                 alt="{{ legacy.titre?:'Affiche du film' }}"
+                                    {% if film_image_default_attrs is defined %} {{ film_image_default_attrs }} {% endif %}>
+                        {% else %}
+                            <img src="{{ asset(app.request.schemeAndHttpHost ~ '/bundles/fdcevent/img/palmares/film_w210.jpg') }}" alt="{{ 'movie.poster'|trans() }}"
+                                    {% if film_image_default_attrs is defined %} {{ film_image_default_attrs }} {% endif %}>
+                        {% endif %}
+                    {% endif %}
+                    <a class="linkVid" href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}"></a>
+                    <div class="info-movie">
+                        <p>
+                            <a href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}">
+                                {{ movie.titleVO }}
+                                {% set transTitle = movie|trans_fallback_movie('title') %}
+                                {% if transTitle|trim and transTitle|trim != movie.titleVo|trim %}
+                                    <br/><span class="translated-title">({{ transTitle }})</span>
+                                {% endif %}
+                            </a>
+                        </p>
+                        {% set directors = movie.getDirectors() %}
+                        {% for director in directors %}
+                            <a class="director" href="#">{{ director.person.fullName }}{% if loop.last == false %},{% endif %}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
