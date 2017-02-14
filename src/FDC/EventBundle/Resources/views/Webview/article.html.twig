@@ -54,7 +54,7 @@
         <h1>{{ object|trans_fallback('title') }}</h1>
 
         <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
-
+        {{ dump(object.widgets) }}
         {% for widget in object.widgets %}
             {% if widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                 {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with ({
