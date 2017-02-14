@@ -630,7 +630,7 @@ form:
             subtitle: Titre de page
             header: Chapô
             partner_tab: Gestion de l'onglet de partenaire
-            partner_list: Gestion de l'onglet de partenaires
+            partner_list: Gestion des onglets de partenaires
             tab_collection: Gestion des onglets disponibles
             logo_collection: Logos partenaires
             tab:
