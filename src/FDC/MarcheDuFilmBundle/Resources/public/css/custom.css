@@ -13,6 +13,19 @@ header #navigation ul li a.golden.active {
     color: #a1844f;
 }
 
+/*.noWdBr {*/
+    /*word-break: keep-all;*/
+/*}*/
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
 .pressReview a {
     text-transform: none;
 }

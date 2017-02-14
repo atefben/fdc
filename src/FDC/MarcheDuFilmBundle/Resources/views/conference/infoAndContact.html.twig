@@ -8,7 +8,7 @@
                 <h3>{{ conferenceInfoAndContactPage.title }}</h3>
                 <h5 class="customClass1">{{ conferenceInfoAndContactPage.description|raw }}</h5>
             </div>
-            <div class="innerWrapper infosPagePeople">
+            <div class="innerWrapper infosPagePeople clearfix">
                 {% if conferenceInfoAndContactWidgets is not empty %}
                     {% for InfoAndContactWidget in conferenceInfoAndContactWidgets %}
                         <div class="articles">
