@@ -290,11 +290,29 @@ class MediaImageAdmin extends Admin
 
     public function prePersist($object)
     {
+        if ($object instanceof MediaImage) {
+            foreach ($object->getTranslations() as $translation) {
+                if ($translation instanceof MediaImageTranslation) {
+                    if ($translation->getFile()) {
+                        $translation->getFile()->setUploadedFromBO(true);
+                    }
+                }
+            }
+        }
         session_write_close();
     }
 
     public function preUpdate($object)
     {
+        if ($object instanceof MediaImage) {
+            foreach ($object->getTranslations() as $translation) {
+                if ($translation instanceof MediaImageTranslation) {
+                    if ($translation->getFile()) {
+                        $translation->getFile()->setUploadedFromBO(true);
+                    }
+                }
+            }
+        }
         session_write_close();
     }
 }

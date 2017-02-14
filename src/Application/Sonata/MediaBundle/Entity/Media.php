@@ -40,6 +40,7 @@ class Media extends SonataBaseMedia
     protected $parentAudioTranslation;
 
     private $thumbsGenerated = false;
+    private $uploadedFromBO = false;
     private $ignoreListener = false;
     private $oldMediaPhoto;
     private $oldMediaPhotoType;
@@ -287,5 +288,28 @@ class Media extends SonataBaseMedia
     public function getOldMediaPhotoJury()
     {
         return $this->oldMediaPhotoJury;
+    }
+
+    /**
+     * Set uploadedFromBO
+     *
+     * @param boolean $uploadedFromBO
+     * @return Media
+     */
+    public function setUploadedFromBO($uploadedFromBO)
+    {
+        $this->uploadedFromBO = $uploadedFromBO;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadedFromBO
+     *
+     * @return boolean 
+     */
+    public function getUploadedFromBO()
+    {
+        return $this->uploadedFromBO;
     }
 }
