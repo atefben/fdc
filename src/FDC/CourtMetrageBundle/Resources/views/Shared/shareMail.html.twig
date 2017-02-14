@@ -1,0 +1,85 @@
+<div class="popin-mail popin">
+    <div class="contain-popin popin">
+        <div id="msg"></div>
+        <strong class="theme-article popin">{% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }}{% else %}{{ share_email.section }}{% endif %}
+        </strong>
+        <span class="date-article popin">{% if artist is defined and artist is not null %} {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ share_email.detail }}{% endif %}</span>
+        <h2 class="title-article popin">{{ share_email.title }}</h2>
+        <div class="chap-article popin">{{ share_email.description|raw }}</div>
+    </div>
+
+    {{ form_start(form, {'action': path('fdc_court_metrage_shareemail'),attr: {class:'popin', id:'form'}}) }}
+        {% if form_errors(form.email) %}
+            {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.email) }}
+        {% endif %}
+        <span class="complet-infos popin">Séparez les adresses par des virgules</span>
+
+        {% if form_errors(form.user) %}
+            {{ form_widget(form.user, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.user) }}
+        {% endif %}
+
+        <span class="complet-infos popin">
+            {{ form_widget(form.copy) }}
+            {{ form_label(form.copy) }}
+        </span>
+
+        {% if form_errors(form.message) %}
+            {{ form_widget(form.message, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.message) }}
+        {% endif %}
+
+        {{ form_widget(form.section, {'value' : share_email.section}) }}
+        {{ form_widget(form.detail, {'value' : share_email.detail}) }}
+        {{ form_widget(form.title, {'value' : share_email.title}) }}
+        {{ form_widget(form.description, {'value' : share_email.description}) }}
+        {{ form_widget(form.url, {'value' : share_email.url}) }}
+        <span class="complet-infos newsletter popin">
+            {{ form_widget(form.newsletter) }}
+            {{ form_label(form.newsletter) }}
+        </span>
+
+        <span class="detail popin">* Champs obligatoires</span>
+        <div id="errorMsg"></div>
+        <input type="submit" value='ENVOYER' class='popin' id="share_mail">
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+
+    <div class="info-popin popin">
+        <p class="popin">
+            En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
+            <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
+        </p>
+    </div>
+</div>
+
+<div class="popin-mail media popin">
+    <div class="contain-popin popin">
+        <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
+        <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
+    </div>
+    <form action="" id="form" class="popin">
+        <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas " required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas" required>
+        <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
+        <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
+        <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
+        <span class="detail popin">* Champs obligatoires</span>
+        <input type="submit" value='envoyer' class='popin'>
+        <div class="errors popin">
+            <ul class="popin">
+            </ul>
+        </div>
+    </form>
+    <div class="info-popin popin">
+        <p class="popin">
+            En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
+            <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
+        </p>
+    </div>
+</div>
+<!-- END POPIN MAIL SHARE -->
