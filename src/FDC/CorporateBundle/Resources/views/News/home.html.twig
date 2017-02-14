@@ -211,11 +211,11 @@
                     </div> <!-- end article wrapper-->
                 {% endif %}
 
-                {% if homepage.displayedGallery == false and gallery is not null and glry is not null and glry.medias is defined and glry.medias|length > 0 %}
+                {% if homepage.displayedGallery == false and gallery is not null and galleryMedias|length %}
                     <div class="block-diaporama">
 
                         <div class="slider-01">
-                            {% for image in glry.medias %}
+                            {% for image in galleryMedias %}
                                 {% if image.media is defined and image.media is not null %}
                                     {% set photo = image.media %}
                                     {% set trans = photo.findTranslationByLocale(app.request.locale) %}
