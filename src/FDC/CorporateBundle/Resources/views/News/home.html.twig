@@ -72,10 +72,9 @@
             </div> <!-- end padding-bottom -->
         {% endif %}
 
-        {% if homepage.displayedFeaturedContents == false %}
+        {% if not homepage.displayedFeaturedContents %}
             <div class="padding-top">
                 <h2 class="title title-01">{{ 'home.coporate.statements.and.infos.block.title'|trans|raw }}</h2>
-
                 {% if homepage.displayedFeaturedContentsFilters == false %}
                     {% include 'FDCCorporateBundle:News:components/filters.html.twig' with({'removePaddingSmallTop': true}) %}
                 {% endif %}
@@ -84,12 +83,11 @@
 
         <div class="content">
             <div class="block-01 padding-bottom block-scale">
-                {% if homepage.displayedFeaturedContents == false %}
+                {% if not homepage.displayedFeaturedContents %}
                     <div class="contain-card">
                         <div class="cards grid-01 isotope-01">
                             <div class="grid-sizer"></div>
-                            {% for i in 0..2 if homeContents|length %}
-                                {% set article = homeContents[i] %}
+                            {% for article in homeContents|slice(0, 3) %}
                                 {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
                                     {% set type = 'communique' %}
                                 {% else %}
@@ -180,7 +178,7 @@
                                     {% endif %}
                                 {% endif %}
                                 <article
-                                        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{% if i == 0 %} double w2{% endif %}"
+                                        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{% if loop.first %} double w2{% endif %}"
                                         data-format="{{ contentType }}"
                                         data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420"
                                         data-end="false">
@@ -264,15 +262,14 @@
                     </div> <!-- end diaporama-->
                 {% endif %}
 
-                {% if homepage.displayedFeaturedContents == false %}
+                {% if not homepage.displayedFeaturedContents %}
                     <div class="articles-wrapper add-ajax-request">
                         <div class="articles article-inverse">
                             <div class="cards grid-01 isotope-01">
                                 <div class="grid-sizer"></div>
 
                                 {% if homeContents|length > 3 %}
-                                    {% for i in 3..(homeContents|length)-1 %}
-                                        {% set article = homeContents[i] %}
+                                    {% for article in homeContents|slice(3) %}
                                         {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
                                             {% set type = 'communique' %}
                                         {% else %}
@@ -364,7 +361,7 @@
                                         {% endif %}
 
                                         <article
-                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if i == 4 %}double w2{% else %}{% endif %}"
+                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if loop.first %}double w2{% else %}{% endif %}"
                                                 data-format="{{ contentType }}"
                                                 data-theme="{{ article.theme|trans_fallback('slug') }}"
                                                 data-time="1455909420" data-end="false">

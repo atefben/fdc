@@ -2,6 +2,8 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\Statement;
 use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -63,6 +65,7 @@ class DefaultController extends Controller
         }
 
         // Infos and statements
+        $homeContents = [];
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
@@ -74,6 +77,7 @@ class DefaultController extends Controller
             ->getStatementByDate($locale, null, $dateTime, null, 'site-institutionnel')
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
+        $this->sortByDate($homeContents);
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
 
         //set default filters
@@ -131,6 +135,23 @@ class DefaultController extends Controller
             'galleryMedias'     => $galleryMedias,
             'filters'           => $filters
         ];
+    }
+
+    protected function sortByDate(&$items)
+    {
+        $sort = [];
+        foreach ($items as $item) {
+            if ($item instanceof Info) {
+                $key = $item->getPublishedAt()->getTimestamp() . '-info' . $item->getId();
+                $sort[] = $item;
+            }
+            elseif ($item instanceof Statement) {
+                $key = $item->getPublishedAt()->getTimestamp() . '-statement' . $item->getId();
+                $sort[] = $item;
+            }
+        }
+        krsort($sort);
+        $items = array_values($sort);
     }
 
     /**
