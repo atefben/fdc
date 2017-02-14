@@ -56,8 +56,7 @@
         <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
 
         {% for widget in object.widgets %}
-            {{ dump(widget) }}
-            {{ dump(widget ends with widget_text) }}
+            {{ dump(widget.className) }}
             {{ dump(widget is widget_video) }}
             {{ dump(widget is widget_video_youtube) }}
             {{ dump(widget is widget_audio) }}
