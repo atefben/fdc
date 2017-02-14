@@ -106,4 +106,13 @@ class SpeakersManager
         }
         return [];
     }
+
+    public function findSpeakerByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfSpeakersTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

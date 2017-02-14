@@ -223,4 +223,13 @@ class ConferenceProgramManager
     {
         return MdfConferenceProgram::getConferences();
     }
+
+    public function findConferenceProgramByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfConferenceProgramTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

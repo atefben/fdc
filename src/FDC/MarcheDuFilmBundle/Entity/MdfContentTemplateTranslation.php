@@ -3,20 +3,23 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\TranslationChanges;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Base\CoreBundle\Util\TranslateChild;
 
 /**
  * MdfContentTemplateTranslation
  * @ORM\Table(name="mdf_content_template_translation")
  * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateTranslationRepository")
  */
-class MdfContentTemplateTranslation
+class MdfContentTemplateTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string

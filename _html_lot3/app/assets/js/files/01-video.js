@@ -148,8 +148,6 @@ var initVideo = function(hash) {
                 "name": $container.parent().find('.info p').html()
             }
 
-            console.log($container.closest('.popin-video').find('.popin-info'));
-
             $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
 
 
@@ -532,7 +530,12 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
+                console.log(playlist)
+                playerInstance.load(playlist);
+
+
             } else if (typeof $container.data('playlist') != "undefined") {
+
                 playlist = $container.data('playlist');
                 playerInstance.load(playlist);
             }
@@ -567,8 +570,14 @@ var initVideo = function(hash) {
                 }
             });
 
-            initChannel();
-            initChannelTopBar();
+            if($('.medias').length || $('.media-library').length){
+                initChannelTopBar();
+            }else{
+                initChannel();
+                initChannelTopBar();
+            }
+
+
 
 
             if($('.infos-videos .buttons').length > 0) {

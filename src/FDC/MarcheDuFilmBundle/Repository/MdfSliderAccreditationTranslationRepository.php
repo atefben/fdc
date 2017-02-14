@@ -24,4 +24,24 @@ class MdfSliderAccreditationTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getByMedia($locale, $filters)
+    {
+        $qb = $this
+            ->createQueryBuilder('sat')
+            ->join('sat.translatable', 'sa')
+            ->where('sat.locale = :locale')
+            ->setParameter('locale', $locale)
+        ;
+
+        if ($filters['type'] == 'image') {
+            $qb
+                ->andWhere('sa.image = :image')
+                ->setParameter('image', $filters['id'])
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
 }

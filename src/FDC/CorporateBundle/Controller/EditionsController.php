@@ -76,17 +76,6 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
-     * @param $year
-     * @return RedirectResponse
-     */
-    public function yearAction($year)
-    {
-        return $this->redirectToRoute('fdc_corporate_movie_selection', ['year' => $year]);
-    }
-
-
-    /**
      * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
      * @param Request $request
      * @param $year
@@ -95,12 +84,6 @@ class EditionsController extends Controller
     public function afficheAction(Request $request, $year)
     {
         $festival = $this->getFestival($year);
-
-        $festivals = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmFestival')
-            ->findAll()
-        ;
 
         $posters = $this
             ->getDoctrineManager()
@@ -118,9 +101,19 @@ class EditionsController extends Controller
         return $this->render('FDCCorporateBundle:Retrospective:affiche.html.twig', [
             'posters'   => $posters,
             'festival'  => $festival,
-            'festivals' => $festivals,
             'urlshare'  => $results['data']['url'],
+            'year'  => $year,
         ]);
+    }
+
+    /**
+     * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
+     * @param $year
+     * @return RedirectResponse
+     */
+    public function yearAction($year)
+    {
+        return $this->redirectToRoute('fdc_corporate_movie_selection', ['year' => $year]);
     }
 
     /**

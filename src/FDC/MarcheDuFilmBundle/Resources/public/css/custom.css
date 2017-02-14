@@ -81,6 +81,11 @@ header #navigation ul li a.golden.active {
     border-top: 0px;
 }
 
+.plusPrices {
+    height: auto;
+    overflow: auto;
+}
+
 .plusPrices .plusPricestextCustom {
     width: 100%;
     opacity: 0.9;
@@ -90,13 +95,6 @@ header #navigation ul li a.golden.active {
 
 .plusPrices .plusPricestextCustom p {
     color: white !important;
-}
-
-.v-middle-anchor {
-    display: inline-block;
-    vertical-align: middle;
-    height: 35%;
-    width: 0;
 }
 
 .accreditationsCustom {
@@ -127,7 +125,6 @@ sub {
   font-size: 16px;
   line-height: 40px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  padding: 0px 100px;
   text-align: center;
   color: #141414;
 }
@@ -141,9 +138,18 @@ header.sticky #sticky-user .user-nav a {
     background: #141414!important;
 }
 
-
 @media screen and (min-width: 1279px) {
     .tabpicturesBox img {
         width: 266px;
     }
+}
+
+.minTab {
+    min-height: 20px !important;
+    padding-bottom: 30px;
+}
+
+.tab_container .tabBox {
+    min-height: 20px !important;
+    padding-bottom: 50px;
 }

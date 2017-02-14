@@ -10,5 +10,5 @@ interface MdfStateInterface
     const STATE_EARLY_BIRD = 3;
 
     public static function getPromotionStatuses();
-    public static function getMainStatuses();
+    public static function getMainStatusesAccreditation();
 }

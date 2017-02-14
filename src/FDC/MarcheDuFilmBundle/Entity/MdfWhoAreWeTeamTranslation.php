@@ -3,6 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,12 +12,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * MdfWhoAreWeTeamTranslation
  * @ORM\Table(name="mdf_who_are_we_team_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfWhoAreWeTeamTranslationRepository")
  */
-class MdfWhoAreWeTeamTranslation
+class MdfWhoAreWeTeamTranslation implements TranslateChildInterface
 {
     use Translation;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string

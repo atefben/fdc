@@ -863,7 +863,7 @@ $(document).ready(function() {
   // 13. Events on scroll
   // =========================
 
-  $(window).on('scroll', function() {
+  $(window).on('scroll', function() {console.log('8');
     var s = $(window).scrollTop();
 
     if( s > 50 ) {
@@ -1861,7 +1861,7 @@ $(document).ready(function() {
 							});
 					}
 			});
-		$(window).on('scroll', function() {
+		$(window).on('scroll', function() {console.log('9');
 				var s = $(window).scrollTop();
 				var h = $("#main").height()-900;
 			  console.log(h);

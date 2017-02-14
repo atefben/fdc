@@ -36,4 +36,13 @@ class PressGraphicalCharterManager
                 )
             );
     }
+
+    public function findPressGraphicalCharterByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfPressGraphicalCharterTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

@@ -10,7 +10,7 @@ use Base\CoreBundle\Util\Time;
  * ServiceWidgetProductCollection
  *
  * @ORM\Table(name="mdf_service_widget_product_collection")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\ServiceWidgetProductCollectionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class ServiceWidgetProductCollection

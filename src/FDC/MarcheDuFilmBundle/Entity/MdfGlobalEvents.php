@@ -32,13 +32,6 @@ class MdfGlobalEvents implements TranslateMainInterface
     protected $id;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $isActive = false;
-    
-    /**
      * @var \DateTime
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      */
@@ -178,21 +171,5 @@ class MdfGlobalEvents implements TranslateMainInterface
     public function getDaysCollection()
     {
         return $this->daysCollection;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param boolean $isActive
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
     }
 }

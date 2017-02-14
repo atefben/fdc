@@ -30,6 +30,10 @@ class MdfContactSubjectsCollection
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfContactSubject", inversedBy="contactSubjectsCollection")
      * @ORM\JoinColumn(name="contact_subject__id", referencedColumnName="id", onDelete="SET NULL")
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "validation.contact_page_subject_min"
+     * ) 
      */
     private $contactSubject;
 

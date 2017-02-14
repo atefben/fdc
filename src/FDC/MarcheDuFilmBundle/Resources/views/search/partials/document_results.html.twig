@@ -2,30 +2,29 @@
 
     <div class="resultsTitle">
         <h6>{{ 'search.document_section'|trans }}</h6>
-        <div class="seeAll" rel="documents">{{ 'search.see_all'|trans }}</div>
+        <div class="seeAll customClass4" rel="documents">{{ 'search.see_all'|trans }}</div>
     </div>
 
-    {% for document in items.documentResults%}
-        <div class="projection ">
-
-                {% set translation = document.file.findTranslationByLocale(app.request.locale) %}
-                <a href="{% path document.file|trans_fallback('file'), 'reference' %}" target="_blank">
-                    <div class="programme result" {% if loop.index > 3  %} hidden {% endif %}>
-                        <div class="customClass1">
-                            <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
-                        </div>
-                        <div>
-                            <h6 class="customClass1">
-                                {{ translation.name|length > 65 ? translation.name|slice(0, 65) ~ '...' : translation.name  }}
-                            </h6>
-                        </div>
-                        <div class="customClass1">
-                                <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
-                        </div>
+    <div class="projection ">
+        {% for document in items.documentResults %}
+            {% set translation = document.findTranslationByLocale(app.request.locale) %}
+            <a href="{% path document|trans_fallback('file'), 'reference' %}" target="_blank">
+                <div class="programme result" {% if loop.index > 3  %} hidden {% endif %}>
+                    <div class="customClass1">
+                        <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
                     </div>
-                </a>
+                    <div>
+                        <h6 class="customClass1">
+                            {{ translation.name|length > 55 ? translation.name|slice(0, 55) ~ '...' : translation.name  }}
+                        </h6>
+                    </div>
+                    <div class="customClass1">
 
-        </div>
-    {% endfor %}
+                            <img src="{{ asset('bundles/fdcmarchedufilm/img/boutonDLRond.png') }}">
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 
 </div>

@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Validator\Constraints\Count;
 use Sonata\AdminBundle\Route\RouteCollection;
+use FDC\MarcheDuFilmBundle\Entity\MdfConferencePartnerTranslation;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MdfConferencePartnerMain extends Admin
 {
@@ -73,12 +75,22 @@ class MdfConferencePartnerMain extends Admin
                         'label'              => 'form.mdf.conference_partner.header',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
-                    )
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfConferencePartnerTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints'               => array(
+                            new NotBlank()
+                        )
+                    ),
                 )
             ))
             ->add('partnerTabCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.conference_partner.partner_tab',
+                'label'              => 'form.mdf.conference_partner.tab_collection',
                 'translation_domain' => 'BaseAdminBundle',
                 'constraints'        => array(
                     new Count(

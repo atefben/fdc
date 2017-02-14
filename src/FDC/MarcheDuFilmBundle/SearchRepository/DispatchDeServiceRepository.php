@@ -4,39 +4,44 @@ namespace FDC\MarcheDuFilmBundle\SearchRepository;
 
 use FDC\MarcheDuFilmBundle\Component\Elastica\SearchRepository;
 
-class MdfContentTemplateWidgetFileRepository extends SearchRepository
+class DispatchDeServiceRepository extends SearchRepository
 {
     public function findWithCustomQuery($_locale, $searchTerm)
     {
         $finalQuery = new \Elastica\Query\BoolQuery();
-        
+
         if($searchTerm) {
-            $searchTerm = '%' . $searchTerm . '%';
-            
             $stringQuery = new \Elastica\Query\BoolQuery();
 
             $stringQuery
                 ->addShould($this->getFieldsQuery($_locale, $searchTerm))
+                ->addShould($this->getWidgetsQuery($_locale, $searchTerm))
             ;
 
             $finalQuery->addMust($stringQuery);
         }
-
-//        $sortedQuery = new \Elastica\Query();
-//        $sortedQuery
-//            ->setQuery($finalQuery)
-//            ->addSort(array('publishedAt' => array('order' => 'desc')))
-//        ;
 
         return $this->find($finalQuery);
     }
 
     private function getFieldsQuery($_locale, $searchTerm)
     {
-        $path = 'file.translations';
+        $path = 'translations';
         $fields = array(
-            'name',
+            'contactTitle',
+            'title',
+            'description',
+            'contactDescription',
         );
+
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+
+    }
+
+    private function getWidgetsQuery($_locale, $searchTerm)
+    {
+        $path = 'dispatchDeServiceWidgets.translations';
+        $fields = array('title', 'description', 'subtitle');
 
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
     }

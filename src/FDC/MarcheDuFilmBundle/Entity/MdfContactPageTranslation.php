@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MdfContactPageTranslation
  *
  * @ORM\Table(name="mdf_contact_page_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContactPageTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  * 
  */

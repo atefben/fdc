@@ -11,8 +11,6 @@ class MediaMdfImageRepository extends SearchRepository
         $finalQuery = new \Elastica\Query\BoolQuery();
         
         if($searchTerm) {
-            $searchTerm = '%' . $searchTerm . '%';
-            
             $stringQuery = new \Elastica\Query\BoolQuery();
 
             $stringQuery

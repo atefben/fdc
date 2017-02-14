@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\Count;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class MdfSliderAccreditationPageAdmin extends Admin
@@ -80,11 +81,14 @@ class MdfSliderAccreditationPageAdmin extends Admin
                         'display' => false,
                     ),
                     'status'            => array(
-                        'label'                     => 'form.mdf.label_status',
+                        'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => MdfSliderAccreditationPageTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints'               => array(
+                            new NotBlank()
+                        )
                     ),
                 ),
             ))

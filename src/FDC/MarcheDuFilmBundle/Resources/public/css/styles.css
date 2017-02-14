@@ -25774,7 +25774,6 @@ option:checked,
   width: 10%;
   margin-right: 25px;
   line-height: 25px;
-  cursor: pointer;
 }
 .results .resultTitle .loupe {
   float: right;
@@ -25784,6 +25783,7 @@ option:checked,
   background: url(../img/loupeGold.png) no-repeat;
   margin-top: -10px;
   display: block;
+  cursor: pointer;
 }
 .results .results-sections {
   width: 20%;

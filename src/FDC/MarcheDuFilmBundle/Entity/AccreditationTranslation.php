@@ -3,6 +3,8 @@
 namespace FDC\MarcheDuFilmBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TranslateChild;
 use FDC\MarcheDuFilmBundle\Interfaces\MdfStateInterface;
 use FDC\MarcheDuFilmBundle\Util\MdfState;
 use Base\CoreBundle\Util\TranslationChanges;
@@ -14,11 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="mdf_accreditation_translation")
  * @ORM\Entity
  */
-class AccreditationTranslation implements MdfStateInterface
+class AccreditationTranslation implements MdfStateInterface, TranslateChildInterface
 {
     use Translation;
     use MdfState;
     use TranslationChanges;
+    use TranslateChild;
 
     /**
      * @var string

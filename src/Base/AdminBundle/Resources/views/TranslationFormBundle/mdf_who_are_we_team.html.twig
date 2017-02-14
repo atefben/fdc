@@ -77,6 +77,15 @@
                                 <a class="btn btn-primary btn-add-base-widget"
                                    data-prototype="{{ form_widget(form.parent.children.whoAreWeTeamWidgets.vars.prototypes.who_are_we_team_widget_type)|escape }}"><i
                                             class="icon-plus"></i>{{ 'form.mdf.label.who_are_we_team.widget_button'|trans }}</a>
+                                {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                {% elseif is_granted('ROLE_JOURNALIST') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                {% else %}
+                                    {{ form_row(translationsFields.status) }}
+                                {% endif %}
                             </div>
                         </div>
                     {% else %}
@@ -221,6 +230,15 @@
                                             </div>
                                         {% endfor %}
                                     </div>
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
