@@ -7,7 +7,7 @@
 {% else %}
 	{% set image = '' %}
 	{% set object = '' %}
-	{% set header = '' %}
+	{% set header = widget.header %}
 	{% set redactional = '' %}
 {% endif %}
 {% set video = widget.file|trans_fallback('file') %}
