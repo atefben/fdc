@@ -20,12 +20,17 @@ class GalleryMdfRepository extends SearchRepository
             $finalQuery->addMust($stringQuery);
         }
 
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($finalQuery)
+            ->setQuery($statusQuery)
             ->addSort(array('createdAt' => array('order' => 'desc')))
         ;
-        //+status
 
         return $this->find($sortedQuery);
     }
