@@ -1,4 +1,5 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% trans_default_domain 'FDCCorporateBundle' %}
 
 {% block bodyClass %}home{% endblock %}
 {% block bodyId %}home{% endblock %}
@@ -73,7 +74,7 @@
 
         {% if homepage.displayedFeaturedContents == false %}
             <div class="padding-top">
-                <h2 class="title title-01">communiqués et infos</h2>
+                <h2 class="title title-01">{{ 'home.coporate.statements.and.infos.block.title'|trans|raw }}</h2>
 
                 {% if homepage.displayedFeaturedContentsFilters == false %}
                     {% include 'FDCCorporateBundle:News:components/filters.html.twig' with({'removePaddingSmallTop': true}) %}
@@ -401,16 +402,13 @@
                     </div> <!-- end article wrapper-->
 
                     <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse=""
-                       class="read-more ajax-request">Afficher
-                        <strong>plus d'infos</strong></a>
+                       class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                 {% endif %}
-            </div> <!-- end block 01-->
+            </div>
 
             {% if homepage.displayedVideo == false %}
                 {% if featuredVideo is defined and featuredVideo != null %}
-                    {# if featuredVideo is not null and featuredVideo.jobMp4State == 3 #}
                     <div class="block-02">
-
                         <div class="block-01">
                             <h2 class="title title-01">Vidéo à la une</h2>
 
@@ -486,7 +484,7 @@
                             <div>
                                 <strong class="title-2">{{ homepage|trans_fallback('pushEditionTitle')|raw }}</strong>
                                 <a class="link" href="{{ homepage|trans_fallback('pushEditionUrl') }}"><i
-                                            class="icon icon-arrow-right"></i> découvrir</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}</a>
                             </div>
                         </div>
                     </div> <!-- end block push -->
@@ -496,7 +494,7 @@
             {% if homepage.displayedCannesReleases == false %}
                 <div class="block-02" id="sortiecanne">
                     <div class="block-01">
-                        <h2 class="title title-01">sorties de cannes</h2>
+                        <h2 class="title title-01">{{ 'home.coporate.sorties.de.cannes'|trans|raw }}</h2>
 
                         <div class="block-films">
                             <div class="left">
@@ -660,7 +658,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <p>{{ homepage|trans_fallback('pushMainSubtitle1') }}</p>
                                 <a class="link" {{ homepage|trans_fallback('pushMainUrl1')|external_link }}
                                    href="{{ homepage|trans_fallback('pushMainUrl1') }}"><i
-                                            class="icon icon-arrow-right"></i> découvrir</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}</a>
                             </div>
                         </div>
                         {% if homepage.pushMainImage1 %}
@@ -680,7 +678,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <p>{{ homepage|trans_fallback('pushMainSubtitle2') }}</p>
                                 <a class="link" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                                    href="{{ homepage|trans_fallback('pushMainUrl2') }}"><i
-                                            class="icon icon-arrow-right"></i> découvrir</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}</a>
                             </div>
                         </div>
                         {% if homepage.pushMainImage2 %}
@@ -706,7 +704,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             </div>
 
                             <div id="networks">
-                                <p>{{ 'home.festival.follow'|trans }}</p>
+                                <p>{{ 'home.coporate.social.follow'|trans|raw }}</p>
                                 <ul>
                                     <li><a class="facebook"
                                            href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937"
