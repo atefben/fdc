@@ -11,10 +11,8 @@ use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
- * StatementRepository class.
- * \@extends EntityRepository
- * @author   Antoine Mineau
- * \@company Ohwee
+ * Class StatementRepository
+ * @package Base\CoreBundle\Repository
  */
 class StatementRepository extends EntityRepository
 {
@@ -329,7 +327,15 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getStatementByDate($locale, $festival, $dateTime, $count = null)
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $dateTime
+     * @param null $count
+     * @param string $site
+     * @return mixed
+     */
+    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press')
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -343,14 +349,23 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na2.translations', 'na2t')
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
-            ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival')
-            //->andWhere('n.displayedHome = 1')
+            ->andWhere('na1.header is not null or na2.header is not null or na3.header is not null or na4.video is not null')
+            ->andWhere('n.theme is not null')
+            ->andWhere('s.slug = :site_slug')
+            ->setParameter('site_slug', $site)
             ->andWhere('(n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->setParameter('datetime', $dateTime)
         ;
 
-        $qb = $qb
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -362,7 +377,7 @@ class StatementRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -378,14 +393,8 @@ class StatementRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
-            ->orderBy('n.publishedAt', 'DESC')
-            ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-press')
-        ;
-
         return $qb
+            ->orderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
             ;

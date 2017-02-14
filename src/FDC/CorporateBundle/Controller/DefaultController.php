@@ -49,10 +49,7 @@ class DefaultController extends Controller
             throw new NotFoundHttpException();
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      SLIDER      //////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////
-
+        // Slider
         $slides = $em->getRepository('BaseCoreBundle:HomepageCorporateSlide')->getAllSlide($locale, $dateTime);
 
         $displayHomeSlider = $homepage->getDisplayedSlider();
@@ -65,15 +62,18 @@ class DefaultController extends Controller
             }
         }
 
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      INFOS AND STATEMENTS      ////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////
-        $lastFestival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneBy([], ['id' => 'DESC']);
-        $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $lastFestival->getId(), $dateTime);
-        $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $lastFestival->getId(), $dateTime);
+        // Infos and statements
+        $homeInfos = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getInfosByDate($locale, null, $dateTime, null, 'site-institutionnel')
+        ;
+        $homeStatement = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getStatementByDate($locale, null, $dateTime, null, 'site-institutionnel')
+        ;
         $homeContents = array_merge($homeInfos, $homeStatement);
-
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
 
         //set default filters
@@ -83,8 +83,6 @@ class DefaultController extends Controller
         $filters['themes']['id'][0] = 'all';
 
         foreach ($homeContents as $key => $homeContent) {
-            $homeContent->setTheme($homeContent->getTheme());
-
             if (($key % 3) == 0) {
                 $homeContent->double = true;
             }
@@ -130,7 +128,7 @@ class DefaultController extends Controller
             'featuredVideo'     => $featuredVideo,
             'festivalStartsAt'  => $homepage->getFestivalStartsAt(),
             'gallery'           => $gallery,
-            'galleryMedias'              => $galleryMedias,
+            'galleryMedias'     => $galleryMedias,
             'filters'           => $filters
         ];
     }
