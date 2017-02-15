@@ -21,7 +21,13 @@ class MdfInformationsRepository extends SearchRepository
             $finalQuery->addMust($stringQuery);
         }
 
-        return $this->find($finalQuery);
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+
+        return $this->find($statusQuery);
     }
 
     private function getFieldsQuery($_locale, $searchTerm)

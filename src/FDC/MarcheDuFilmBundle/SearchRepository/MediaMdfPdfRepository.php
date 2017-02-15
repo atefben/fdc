@@ -20,13 +20,13 @@ class MediaMdfPdfRepository extends SearchRepository
             $finalQuery->addMust($stringQuery);
         }
 
-//        $sortedQuery = new \Elastica\Query();
-//        $sortedQuery
-//            ->setQuery($finalQuery)
-//            ->addSort(array('publishedAt' => array('order' => 'desc')))
-//        ;
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
 
-        return $this->find($finalQuery);
+        return $this->find($statusQuery);
     }
 
     private function getFieldsQuery($_locale, $searchTerm)

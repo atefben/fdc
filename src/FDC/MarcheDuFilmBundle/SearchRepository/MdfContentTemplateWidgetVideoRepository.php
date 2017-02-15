@@ -39,6 +39,6 @@ class MdfContentTemplateWidgetVideoRepository extends SearchRepository
         $path = 'theme.translations';
         $fields = array('title');
 
-        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale, true);
     }
 }

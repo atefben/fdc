@@ -22,9 +22,15 @@ class MediaMdfImageRepository extends SearchRepository
             $finalQuery->addMust($stringQuery);
         }
 
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($finalQuery)
+            ->setQuery($statusQuery)
             ->addSort(array('publishedAt' => array('order' => 'desc')))
         ;
 
@@ -48,7 +54,7 @@ class MediaMdfImageRepository extends SearchRepository
         $path = 'theme.translations';
         $fields = array('title');
 
-        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale, true);
     }
 
     public function getTagsQuery($_locale, $searchTerm)
@@ -56,6 +62,6 @@ class MediaMdfImageRepository extends SearchRepository
         $path = 'tags.tag.translations';
         $fields = array('name');
 
-        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale, true);
     }
 }
