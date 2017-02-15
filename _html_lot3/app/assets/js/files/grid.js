@@ -1,5 +1,4 @@
 var owInitGrid = function (id) {
-
     if (id == 'isotope-01') {
 
 
@@ -14,10 +13,7 @@ var owInitGrid = function (id) {
                 }
             });
             var globalOffset = $grid.offset().top;
-            $grid.find('.item').each(function(index,value){
-                var topValue = (parseInt($(this).offset().top) - globalOffset) - 1;
-                $(this).css('top',topValue);
-            });
+            var colOffset = 2;
 
         });
 
@@ -27,10 +23,7 @@ var owInitGrid = function (id) {
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                layoutMode: 'packery',
-                packery: {
-                    columnWidth: '.grid-sizer'
-                },
+                layoutMode: 'masonry',
                 getSortData: {
                     number: '[data-sort]'
                 },

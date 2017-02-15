@@ -261,12 +261,7 @@ var initAudio = function (hash) {
         callback(playerInstance);
 
     }
-
-
-    if ($('.audio-player-container').length > 0 && !$('.medias').length > 0) {
-        audioPlayer = audioInit(false, 'audio-player-container', false);
-    }
-
+    
     var audioPopin;
 
     if ($('#audio-player-popin').length > 0) {
@@ -479,4 +474,9 @@ var initAudio = function (hash) {
 
         });
     }
+
+    if ($('.audio-player-container').length > 0 && !$('.medias').length > 0) {
+        audioPlayer = audioInit(false, 'audio-player-container', false);
+    }
 }
+initAudio();
