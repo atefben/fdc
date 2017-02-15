@@ -33,7 +33,7 @@
                         <li>
                             {% set params = {'_locale' : locale} %}
                             {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
-                                {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
+                                {% if localeSlugs[locale] is defined and localeSlugs[locale] %}
                                     {% set params = params|merge({'slug': localeSlugs[locale]}) %}
                                 {% endif %}
                             {% endif %}

@@ -112,7 +112,9 @@ class HomeController extends FOSRestController
         $statements = $this->getStatements2017($festival, $locale, $since, null, null);
 
         $output['news'] = array_merge($news, $infos, $statements);
+        krsort($output['news']);
         $output['news'] = array_values($output['news']);
+
         // set context view
         $groups = array('home');
         $context = $coreManager->setContext($groups, $paramFetcher);

@@ -454,10 +454,11 @@ var initVideo = function(hash) {
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
                 index = parseInt(index)
-                console.log(index);
-                console.log(index)
-                playerInstance.playlistItem(index);
 
+                playerInstance.playlistItem(index);
+                console.log(playerInstance);
+                console.log(playerInstance.getPlaylist());
+                
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
 
                 $topBar.find('.info .category').text(infos.category);

@@ -15,6 +15,7 @@ use Application\Sonata\MediaBundle\Entity\Media;
 use Sonata\MediaBundle\Command\BaseCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -29,6 +30,11 @@ class SyncMissingThumbsCommand extends BaseCommand
     protected $output;
 
     /**
+     * @var InputInterface
+     */
+    protected $input;
+
+    /**
      * {@inheritdoc}
      */
     public function configure()
@@ -36,6 +42,7 @@ class SyncMissingThumbsCommand extends BaseCommand
         $this
             ->setName('base:media:sync-missing-thumbnails')
             ->setDescription('Sync missing uploaded image thumbs with new media formats')
+            ->addOption('from-bo', null, InputOption::VALUE_NONE, 'Sync only from bo')
         ;
     }
 
@@ -44,13 +51,15 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->output = $output;
+        $this->input = $input;
+
         if ($this->isLocked()) {
             $output->writeln('The sync is locked');
             die;
         }
 
         $this->lock();
-        $this->output = $output;
         $medias = $this->getMedias();
 
         $progress = new ProgressBar($output, count($medias));
@@ -91,10 +100,17 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     private function getMedias()
     {
+        if ($this->input->getOption('from-bo')) {
+            return $this
+                ->getDoctrineManager()
+                ->getRepository('ApplicationSonataMediaBundle:Media')
+                ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => true], null, 10)
+                ;
+        }
         return $this
             ->getDoctrineManager()
             ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy(['thumbsGenerated' => false], null, 10)
+            ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => false], null, 10)
             ;
     }
 
@@ -126,6 +142,9 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     private function getLockFile()
     {
+        if ($this->input->getOption('from-bo')) {
+            return $this->getContainer()->get('kernel')->getRootDir() . '/../cron_thumbs_bo_lock';
+        }
         return $this->getContainer()->get('kernel')->getRootDir() . '/../cron_thumbs_lock';
     }
 

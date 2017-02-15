@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     public function createDateRangeArrayEvent($strDateFrom, $strDateTo, $reverse = true)
     {
-        $aryRange = array();
+        $aryRange = [];
         $iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
         $iDateTo = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
         if ($iDateTo >= $iDateFrom) {
@@ -41,16 +41,16 @@ class Controller extends BaseController
 
     public function removeUnpublishedNewsAudioVideo($array, $locale, $count = null, $hideDisplayedHome = false)
     {
-        $newsTypes = array('NewsAudio', 'NewsVideo', 'InfoAudio', 'StatementAudio', 'InfoVideo', 'StatementVideo');
+        $newsTypes = ['NewsAudio', 'NewsVideo', 'InfoAudio', 'StatementAudio', 'InfoVideo', 'StatementVideo'];
 
-        $mediaTypes = array(
+        $mediaTypes = [
             'NewsAudio'      => 'getAudio',
             'NewsVideo'      => 'getVideo',
             'InfoAudio'      => 'getAudio',
             'StatementAudio' => 'getAudio',
             'InfoVideo'      => 'getVideo',
             'StatementVideo' => 'getVideo',
-        );
+        ];
 
         foreach ($newsTypes as $newsType) {
             foreach ($array as $key => $news) {
@@ -112,9 +112,9 @@ class Controller extends BaseController
      */
     public function isPageEnabled($route)
     {
-        $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
+        $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy([
             'route' => $route,
-        ))
+        ])
         ;
 
         if ($page && !$page->getEnabled()) {
@@ -125,13 +125,16 @@ class Controller extends BaseController
 
     /**
      * @return Settings
-     * @throws NotFoundHttpException
      */
     public function getSettings()
     {
-        $settings = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        $settings = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Settings')
+            ->findOneBy(['slug' => 'fdc-year'])
+        ;
 
-        if ($settings === null) {
+        if (!$settings) {
             throw $this->createNotFoundException();
         }
         return $settings;
@@ -187,13 +190,13 @@ class Controller extends BaseController
         if ($waitingPage) {
             $debug = debug_backtrace();
             if (isset($debug[1]) && isset($debug[1]['class']) && strpos($debug[1]['class'], 'Mobile')) {
-                return $this->render('FDCEventMobileBundle:Global:waiting-page.html.twig', array(
+                return $this->render('FDCEventMobileBundle:Global:waiting-page.html.twig', [
                     'waitingPage' => $waitingPage,
-                ));
+                ]);
             } else {
-                return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
+                return $this->render('FDCEventBundle:Global:waiting-page.html.twig', [
                     'waitingPage' => $waitingPage,
-                ));
+                ]);
             }
         }
     }
