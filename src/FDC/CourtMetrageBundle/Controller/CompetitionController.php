@@ -24,4 +24,19 @@ class CompetitionController extends CcmController
             'selectionTab' => $selectionTab
         ));
     }
+
+    /**
+     * @Route("jury", name="fdc_court_metrage_competition_jury")
+     */
+    public function juryAction()
+    {
+        $competitionManager = $this->get('ccm.manager.competition');
+
+        $selectionTab = $competitionManager->getSelectionTab();
+        $festivalId = $this->getFestival()->getId();
+
+        return $this->render('FDCCourtMetrageBundle:Competition:jury.html.twig', array(
+            'selectionTab' => $selectionTab
+        ));
+    }
 }

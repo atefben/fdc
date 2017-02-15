@@ -1,0 +1,52 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="list-article jurys-list loading">
+        {% include 'FDCCourtMetrageBundle:Competition/partials:competitionSubHeader.html.twig' with {
+        'selectionTab': selectionTab,
+        'isSelection': true
+        }
+        %}
+        <div class="container-jurys">
+            <div class="container container-list">
+                <section class="categorie-items contain-jury">
+                    <a href="artist_page.php">
+                        <div class="photo-jury" style="background-image:url({{ asset('bundles/fdccourtmetrage/img/films/selection-officielle/push.jpg') }})">
+                        </div>
+                    </a>
+                    <div class="contain-descript">
+                        <h3 class="descript-title">Président du jury</h3>
+                        <a href="artist_page.php"><h2 class="descript-name">Jane campion</h2></a>
+                        <span class="descript-rank">Réalisatrice, Scénariste, Productrice</span>
+                        <p>
+                            La réalisatrice, productrice et scénariste néo-zélandaise Jane Campion fait partie des cinéastes majeurs de notre temps. Elle est la seule femme à avoir reçu la Palme d’or à Cannes (1993) et la deuxième sur quatre à avoir été nommée dans la catégorie Meilleure Réalisation aux Oscars (1994), pour "La Leçon de piano", également Oscar du Meilleur Scénario. </p>
+                        <p>
+                            Jane a étudié l’anthropologie à l’université Victoria de Wellington, puis la peinture à l’École d’Art de Chelsea à Londres et à la Faculté de Sydney, avant de passer à la réalisation au début des années 1980 pendant son cursus à l’École australienne du Film et de la Télévision. Peel (1982) remporte la Palme d’or du court métrage à Cannes en 1986. Son premier long métrage, "Sweetie" (1989) est suivi de "Un Ange à ma table" (1990) sur la romancière néo-zélandaise Janet Frame. Après avoir reçu de nombreux prix pour "La Leçon de piano", elle réalise "Portrait de femme" (1996), "Holy Smoke" (1999), actuellement adapté à la scène, "In the Cut" (2003) et "Bright Star" présenté en Compétition à Cannes en 2009.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam explicabo sint voluptates quo unde autem. Delectus similique, tenetur fugit dignissimos mollitia dolorum ipsam rerum, cupiditate sed alias? Eveniet similique corporis, dolorem quasi velit doloribus reprehenderit laudantium quo minima dolorum, molestias, inventore tempore enim quisquam, et maiores impedit aut quia quas ea quos vero repellat accusantium. Alias dicta tempora fuga fugiat, quidem vitae ex maiores beatae sequi repudiandae pariatur illum, nihil rem quaerat ratione mollitia maxime minima eveniet qui asperiores cum nostrum eum! Corrupti est nostrum ab, maxime ipsum ducimus aperiam. Hic in quibusdam doloremque maiores iure sequi, rerum porro architecto, neque harum quas. Labore illum doloremque necessitatibus voluptatibus inventore exercitationem ratione eos et, fugiat quas nesciunt odio vero excepturi dolorum, facere architecto officia suscipit. Voluptas fuga esse voluptate aut, repudiandae nobis? Incidunt dignissimos quis aut perferendis animi quia itaque laborum obcaecati nemo, saepe quibusdam autem esse blanditiis accusamus, assumenda hic atque aliquam recusandae, quisquam aliquid alias. Corporis consequatur eveniet optio labore enim. Vitae eos molestias dolores necessitatibus! Vel at eos, doloremque ratione dolorem impedit asperiores temporibus repudiandae. Voluptate quia quos laborum dolores rem unde reiciendis, eius et esse nam, omnis reprehenderit accusantium! Ab eligendi sit magni sunt ratione, molestiae recusandae.
+                        </p>
+                    </div>
+                </section>
+                <section class="categorie-items contain-jurys-list grid">
+                    <h1 class="title-list-cat title">Membres du jury de la cinéfondation et des courts métrages</h1>
+                    <div id="gridJurys" class="grid-wrapper">
+                        <div class="grid-sizer"></div>
+                        <div class="jury-box item">
+                            <a href="artist_page.php">
+                                <div class="image">
+                                    <img src="{{ asset('bundles/fdccourtmetrage/img/jurys/jury-1.jpg') }}" alt="">
+                                </div>
+                                <div class="legend">
+                                    <span class="name">Carole Bouquet</span>
+                                    <span class="rank">Actrice</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

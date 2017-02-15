@@ -2429,14 +2429,21 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.ccm_short_film_competition_tab:
-        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabAdmin
+    base.admin.ccm_short_film_competition_tab_selection:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabSelectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – La sélection}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_short_film_competition_tab_jury:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabJuryAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – Jury}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
     base.admin.ccm_menu:
         class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]
