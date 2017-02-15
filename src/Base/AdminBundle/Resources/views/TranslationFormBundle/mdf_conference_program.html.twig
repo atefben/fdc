@@ -30,7 +30,7 @@
                                             {{ form_row(translationsFields.subTitle) }}
                                             {{ form_row(translationsFields.header) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
-                                                 data-form-widget="collection">
+                                                 data-form-widget="collection" data-itemtype="programwidget">
                                                 {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                     <div class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
@@ -85,7 +85,7 @@
                                         <div class="box-body">
                                             <div class="fdc-widgets" data-form-widget="collection">
                                                 {% for widget in form.parent.children.files.children %}
-                                                    <div class="item base-widget">
+                                                    <div class="item base-widget" data-itemtype="programfile">
                                                         {% if widget.children._type.vars.value == 'program_file_type' %}
                                                             <h4><strong>{{ 'form.mdf.conference_program.file_button'|trans }}</strong></h4>
                                                         {% endif %}
