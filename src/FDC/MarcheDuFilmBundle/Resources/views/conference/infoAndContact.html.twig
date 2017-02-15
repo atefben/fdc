@@ -17,8 +17,14 @@
                                     <img src="{% path InfoAndContactWidget.translatable.image|trans_fallback('file'), 'reference' %}">
                                 </div>
                                 <div class="textWrapper">
-                                    <h6 class="customClass1">{{ InfoAndContactWidget.name }}</h6>
-                                    <span>{{ InfoAndContactWidget.post }}{% if InfoAndContactWidget.email is not empty %}<br><a href="mailto:{{ InfoAndContactWidget.email }}" class="customClass1">{{ InfoAndContactWidget.email }}</a>{% endif %}</span>
+                                    <h6 class="customClass1 noWdBr">{{ InfoAndContactWidget.name }}</h6>
+                                    <span class="noWdBr">{{ InfoAndContactWidget.post }}</span>
+                                    {% if InfoAndContactWidget.email is not empty %}
+                                        <span>
+                                            <br>
+                                            <a href="mailto:{{ InfoAndContactWidget.email }}" class="customClass1">{{ InfoAndContactWidget.email }}</a>
+                                        </span>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

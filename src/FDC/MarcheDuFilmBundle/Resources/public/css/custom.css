@@ -13,9 +13,13 @@ header #navigation ul li a.golden.active {
     color: #a1844f;
 }
 
-/*.noWdBr {*/
-    /*word-break: keep-all;*/
-/*}*/
+.noWdBr {
+    word-break: keep-all;
+}
+
+.infosPagePeople .articles:nth-child(3n+1) {
+    clear: left;
+}
 
 .clearfix:after {
     visibility: hidden;
