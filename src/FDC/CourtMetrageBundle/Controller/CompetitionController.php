@@ -14,13 +14,14 @@ class CompetitionController extends CcmController
 
         $competitionManager = $this->get('ccm.manager.competition');
 
+        $selectionTab = $competitionManager->getSelectionTab();
         $festivalId = $this->getFestival()->getId();
-
 
         $films = $competitionManager->getSelectionFilms($festivalId);
 
         return $this->render('FDCCourtMetrageBundle:Competition:selection.html.twig', array(
-            'films' => $films
+            'films' => $films,
+            'selectionTab' => $selectionTab
         ));
     }
 }
