@@ -199,9 +199,16 @@ class MdfContentTemplateTranslationRepository extends EntityRepository
         if ($filters['type'] == 'image') {
             $qb
                 ->join('FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetImage', 'cttwi',Join::WITH, 'ct.id = cttwi.contentTemplate')
-                ->join('cttwi.image', 'cttwii')
-                ->andWhere('cttwii.id = :id')
-                ->setParameter('id', $filters['id'])
+                ->join('FDC\MarcheDuFilmBundle\Entity\MdfContentTemplateWidgetGallery', 'cttwg',Join::WITH, 'ct.id = cttwg.contentTemplate')
+                ->join('cttwg.gallery', 'cttwgg')
+                ->join('cttwgg.medias', 'cttwggm')
+                ->andWhere(
+                    $qb->expr()->orX(
+                        'cttwi.image = :image',
+                        'cttwggm.media = :image'
+                    )
+                )
+                ->setParameter('image', $filters['id'])
             ;
         }
 
