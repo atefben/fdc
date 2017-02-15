@@ -1,6 +1,6 @@
 /**
  * Copy of infinite form bundle collection.js with customization :
- * Commented parsehtml so it pastes the js 
+ * Commented parsehtml so it pastes the js
  */
 (function ($) {
     "use strict";
@@ -97,9 +97,15 @@
 
             if (!event.isDefaultPrevented()) {
                 var index = $row.index();
-                $('.a2lix_translationsFields > .tab-pane').each(function(i, e) {
-                    $(e).find('.fdc-widgets .base-widget').eq(index).remove();
-                });
+                if ($row[0].dataset['itemtype']) {
+                    $('.a2lix_translationsFields > .tab-pane').each(function(i, e) {
+                        $(e).find('.fdc-widgets .base-widget[data-itemtype="' + $row[0].dataset['itemtype'] + '"]').eq(index).remove();
+                    });
+                } else {
+                    $('.a2lix_translationsFields > .tab-pane').each(function(i, e) {
+                        $(e).find('.fdc-widgets .base-widget').eq(index).remove();
+                    });
+                }
             }
         },
 
