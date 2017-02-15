@@ -141,6 +141,7 @@ class CcmNewsImageAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
+                'required'   => true,
                 'btn_delete' => false
             ))
             ->add('gallery', 'sonata_type_model_list', array(
@@ -153,7 +154,8 @@ class CcmNewsImageAdmin extends Admin
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false
+                'required' => true,
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',

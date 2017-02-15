@@ -143,13 +143,15 @@ class CcmNewsVideoAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
+                'required'   => true,
                 'btn_delete' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false
+                'required' => true,
+                'btn_delete' => false
             ))
             ->add('video', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_video',

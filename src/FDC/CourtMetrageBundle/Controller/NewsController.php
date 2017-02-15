@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class NewsController extends Controller
 {
     /**
-     * @Route("news", name="ccm_news")
+     * @Route("actualites", name="ccm_news")
      * @param Request $request
      * @return Response
      */
@@ -28,12 +28,26 @@ class NewsController extends Controller
         
         $filters = $newsManager->getAvailableListFilters($locale);
         $news = $newsManager->getNewsArticlesForListPage($locale);
-        //dump($news);die;
-
 
         return $this->render('@FDCCourtMetrage/news/news.html.twig', [
+            'locale'  => $locale,
             'news'    => $news,  
             'filters' => $filters
         ]);
+    }
+
+    /**
+     * @Route("actualites/{slug}", name="ccm_news_detail")
+     * @param $slug
+     * @param Request $request
+     * @return Response
+     */
+    public function newsDetailAction($slug, Request $request)
+    {
+        $locale = $request->get('_locale', 'fr');
+        /** @var NewsManager $newsManager */
+        $newsManager = $this->get('ccm.manager.news');
+        
+        return new Response('Details page for CCM news with slug: ' . $slug);
     }
 }

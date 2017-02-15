@@ -102,7 +102,7 @@ class CcmNewsRepository extends EntityRepository
         }
         $qb
             ->orderBy('n.publishedAt', 'DESC')
-            ->setMaxResults(16)
+            //->setMaxResults(16) // we show all of them for now
             ->setFirstResult($offset)
         ;
 

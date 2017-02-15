@@ -82,7 +82,6 @@ class NewsManager
     {
         /** @var CcmNews[] $newsArticles */
         $newsArticles = $this->em->getRepository(CcmNews::class)->getNewsArticlesByYearAndTheme($locale, $year, $themeId, $offset);
-        // todo: process and only send relevant data
 
         return $newsArticles;
     }
