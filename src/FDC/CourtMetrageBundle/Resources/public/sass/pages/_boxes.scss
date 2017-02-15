@@ -1,0 +1,577 @@
+.navBckg {
+    background: url("/img/oldCam.png") no-repeat;
+    background-size: 100% 100%;
+    text-align:center;
+    height: 400px;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    z-index: 1000;  
+}
+
+.our-news {
+    background: url("/img/newsBckg.png") no-repeat;
+    background-size: 100% 100%;
+    text-align:center;
+    height: 770px;
+    width: 100%;
+    z-index: 2;
+
+    .innerWrapper {
+      width: 1072px;
+      @include align();
+    }
+    
+    @media screen and (max-width:1279px) {
+
+          .innerWrapper {
+            width: 70%!important;
+            max-width: 70%!important;
+          }
+          .noShow {
+            display: none!important;
+          }
+      }
+    
+    span {
+      color:#533b0e;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: $CamphorHeavy;
+      letter-spacing: 1px;
+      text-align: center;
+      line-height: 30px;
+    }
+
+    h3 {
+      font-size: 18px;
+      color: white;
+      text-transform: uppercase;
+      padding-top: 70px;
+      margin: 0px 0px 50px 0px;
+      letter-spacing: 10px;
+      text-align: center;
+      font-family: $Playfair;
+      font-weight: bold!important;
+      text-align: center;
+    }
+
+    .articles {
+      height: 560px;
+      background: #FFFFFF;
+      width: 32%;
+      display: block;
+      float: left;
+      text-align: center;
+      margin-left: 1%;
+
+      img {
+        @include transition(all 8s $smoothTransition);
+      }
+
+            
+      &:hover {
+        
+      img {
+        -ms-transform: scale(1.1); /* IE 9 */
+        -webkit-transform: scale(1.1); /* Safari */
+        transform: scale(1.1);
+        @include transition(all 8s $smoothTransition);
+        }
+      }
+
+      .readMore {
+          position: absolute;
+          /* top: 1%; */
+          margin-top: 500px;
+          margin-left: 30px;
+          font-size: 25px;
+      }
+
+      @media screen and (max-width:1279px) {
+          width: 49% !important;
+          margin-left: 0% !important;
+          margin: 0.5% !important;
+      }
+
+        .articles-content {
+          padding: 30px;
+          display: block;
+            .readMore {
+              font-size: 25px;
+              position: absolute;
+            }
+        }
+
+        .articles-img {
+          height: 215px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &:nth-child(2), &:nth-child(3) {
+          margin-left: 2%;
+        }
+
+        span {
+          text-transform: uppercase;
+          color: #c3a05f;
+          font-size: 10px;
+          font-family: $CamphorHeavy;
+          letter-spacing: 2px;
+        }
+      
+        .article-date {
+            color: #333;
+            padding-left: 5px;
+          }
+
+        h6 {
+          margin: 20px 0px 40px;
+          letter-spacing: 1px;
+          font-size: 25px;
+          line-height: 27px;
+          color: #000000;
+          font-family: "Playfair Display","Times New Roman",Times,serif;
+        }
+
+        p {
+          font-size: 13px;
+          color: #b1b1b1;
+          overflow: hidden;
+          line-height: 25px;
+          text-align: center;
+          font-family: $CamphorRegular;
+          overflow: hidden!important;
+          text-overflow: ellipsis!important;
+          opacity: 0.8;
+          @-moz-document url-prefix() { 
+            font-size: 13px;
+          }
+        }
+    }
+}
+
+/* BOX PRODUCERS WORKSHOP */
+
+.producersWorkshop {
+    width: 100%;
+    height: 310px;
+    padding: 0px 0px;
+    background: url("/img/redBackg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+    h3 {
+      color: white;
+      margin: 85px 0px 105px 0px;
+      text-transform: initial;
+      letter-spacing: 1px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.opportunites {
+    width: 100%;
+    height: 310px;
+    padding: 0px 0px;
+    background: url("/img/ligthblueBckg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+
+    h3 {
+      color: white;
+      margin: 90px 0px 100px 0px;
+      text-transform: initial;
+      letter-spacing: 3px;
+    }
+}
+
+.subNavigation {
+    background: black;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    margin-bottom: 100px;
+
+    .active {
+      color: #c3a05f;
+    }
+
+    ul {
+      font-size: 0.875rem;
+      li {
+        display: inline-block;
+        margin-left: 30px;
+        a {
+          color: #fff;
+          font-family: $CamphorRegular;
+          font-size: 12px;
+          display: block;
+          padding-right: 20px;
+          text-transform: uppercase;
+          -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          letter-spacing: 1px;
+          font-weight: normal;
+          &:hover {
+            color: $gold;
+          }
+        }
+      }
+    }
+}
+
+.opportunites {
+  .subNavigation {
+    .active {
+      color: #1bafd1;
+    }
+  }
+}
+
+/* END BOX PRODUCERS WORKSHOP */
+
+
+/* BOX CONTACT */
+
+#contact-box {
+  z-index: 2; 
+}
+
+.contact-box {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    /*background: url("/img/plageCannes.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("/img/plageCannes.png");
+    background-size: 100%;
+    background: center 0 no-repeat fixed;
+    background-size: cover;*/
+    @include align();
+    padding-top:100px;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .contact-details {
+      h3, span  {
+        color: #ffffff;
+        font-size: 42px;
+        font-family: $CamphorBold;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        margin: 25px 0px 80px 0px;
+        letter-spacing: 5px;
+      }
+
+      span {
+        font-size: 12px;
+        font-family: $CamphorHeavy;
+        letter-spacing: 5px;
+      }
+
+      .participateBtn {
+        width: 235px;
+        height: 50px;
+        border: 1px solid #c8a461;
+        color: #c8a461;
+        font-size: 12px;
+        font-family: $CamphorBold;
+        line-height: 50px;
+        text-align: center;
+        margin: 0 auto;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        @include transition(all .8s $smoothTransition);
+
+        &:hover {
+          background: #c8a461;
+          color: white;
+          @include transition(all .8s $smoothTransition);
+        }
+      }
+    }
+}
+
+
+.reverse {
+      -ms-transform: rotate(180deg); 
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+/* COMPONENTS : FLOATING BUTTONS*/
+
+.blackBtn {
+  width: 180px;
+  height: 50px;
+  background: black;
+  color:white;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.floatingButton {
+    position: absolute;
+    z-index: 1004;
+    z-index: 999;    
+    right: 1%;
+    top: 100%;
+    
+    span:first-child {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      float: right;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
+      
+    }
+    
+    .icon_flecheGauche:hover span:first-child {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    
+    &:hover .arrow {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+
+    }
+}
+
+
+.showBtn {
+  display: block!important;
+}
+
+.floatingButtonRight {
+  /*position: absolute;
+  z-index: 1004;  
+  right: 1%;
+  top: 100%;*/
+  display: none;
+  position: fixed;
+  z-index: 999;  
+  right: 1%; 
+  top: 50%;
+  @include transition(all .5s $smoothTransition);
+
+  @media screen and (max-width: $mobileWidth) {
+    top: 48%;
+  }      
+
+    span {
+      float: left;
+    }
+
+    .floatingButtonText{
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      display: none;
+      float: left;
+      max-width: 200px;
+      @include transition(all .5s $smoothTransition);
+      @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      width: 70px;
+      height: 70px;
+      float: right;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
+    }
+    
+    &:hover {
+      @include transition(all .5s $smoothTransition);
+    }
+}
+
+.floatingButtonLeft {
+  display: none;
+  position: fixed;
+  z-index: 999;  
+  left: 1%; 
+  top: 50%;
+  @include transition(all .5s $smoothTransition);
+
+  @media screen and (max-width: $mobileWidth) {
+    top: 48%;
+  }  
+    span {
+      float: left;
+    }
+
+    .floatingButtonText {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      max-width: 200px;
+      text-transform: uppercase;
+      display: none;
+      float: left;
+      @include transition(all .5s $smoothTransition);
+
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      width: 70px;
+      height: 70px;
+      float: left;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
+      
+    }
+
+    &:hover {
+      @include transition(all .5s $smoothTransition);
+    }
+}
+
+.eventMessage {
+  margin-left: 50px;
+  text-transform: initial;
+  font-size: 16px;
+  color: #505050;
+  font-family: $CamphorHeavy;
+  @include transition(all 1s $smoothTransition);
+}
+
+.blueBtn {
+    float: right;
+    right: 5%;
+    width: 139px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #29afcf;
+    color: #29afcf;
+    line-height: 50px;
+    text-decoration: none;
+    background: transparent;
+    z-index: 1005;
+    cursor: pointer;
+
+    &:hover {
+      background: #29afcf!important;
+      color: white!important;
+      cursor: pointer;
+    }
+}
+
+
+.eventsPage {
+   .share {
+    @include align();
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 70px 0;
+    /* height: 120px; */
+    position: relative;
+    float: left;
+    width: 100%;
+    margin: 50px 0px;
+
+    p {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+      text-transform: uppercase;
+    }
+  }
+
+  .buttons.square .button {
+    line-height: 73px;
+  } 
+}
+
+
+.buttons {
+  i {
+      margin-right: 5px;
+    }
+}
+

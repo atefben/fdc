@@ -1,0 +1,587 @@
+/* EVENT PAGE */
+.noPadding {
+  padding: 0px 0;
+}
+
+.single-article .half-div {
+    margin: 0 auto;
+}
+
+.blackBcgk {
+  background: #141414;
+  margin-bottom: 10px;
+}
+
+.calendar {
+    width: 100%;
+    height: 240px;
+    padding: 0px 0px;
+    background: url(/img/redBackg2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+    h3 {
+      color: white;
+      margin: 75px 0px 0px 0px;
+      text-transform: initial;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.events {
+  p {
+    color: #b1b1b1;
+    text-align: left;
+  }
+}
+
+.conference {
+
+  height: auto!important;
+
+  h5 {
+    margin-bottom: 50px;
+    padding: 0px 90px;
+  }
+
+  h6 {
+    text-align: left;
+    margin-top: 10px;
+    font-family: $CamphorRegular;
+    font-size: 10px;
+    color: #666666;
+    margin-left: 85px;
+  }
+
+  img {
+    max-width: 977px;
+    width: 100%;
+  }
+}
+
+.conferences {
+  padding: 0px;
+  margin: 50px 0px 0px 0px;
+  height: auto;
+
+    .content {
+      background: white;
+      visibility: hidden;
+      height: 0px;
+    }
+
+   .open-selected-conf{
+      background: #333333!important;
+      color: white!important;
+      padding-bottom: 25px;
+      transition: opacity 500 ease-in-out;
+      @include transition(all 0.3s $smoothTransition);
+
+       .open {
+        padding: 40px 0px;
+        @include transition(all 0.3s $smoothTransition);
+       }
+
+       .content {
+        visibility: visible!important;
+        height: auto!important;
+       }
+   } 
+
+   .open {
+    font-family: $CamphorBold;
+    padding: 20px 0px;
+    margin-left: 25px;
+    @include transition(all 0.3s $smoothTransition);
+   }
+
+  .dropdown {
+    width: 100%;
+    float: left;
+    text-align: center;
+    height: auto;
+    min-height: 70px;
+  }
+  
+  .selector {
+    width: 100%;
+    float: left;
+    min-height: 200px;
+    height: auto;
+  }
+
+  .selectbtn {
+    letter-spacing: 1px;
+    float: none;
+    border: 1px solid #ECECEC;
+    @include transition(all 0.3s $smoothTransition);
+
+    &:hover {
+      background: #c3a05f;
+      @include transition(all 0.3s $smoothTransition);
+      color: white;
+    }
+  }
+  
+  .conferencesMenu {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 220px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+
+    @media screen and (max-width: $mobileWidth) {
+      width: 90%;
+    }
+  }
+  .conferenceMenu {
+    width: 100%;
+    margin-top: 0px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+    @media screen and (max-width: $mobileWidth) {
+      width: 90%;
+    }
+  }
+
+  li {
+    padding: 0px 25px 0px 25px;
+    text-transform: uppercase;
+    color: #505050;
+    background: #f8f8f8;
+    line-height: 50px;
+    border-bottom: 3px solid white;
+    text-align: left;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+    @include transition(all 1s $smoothTransition);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .dropdown span {
+    color: #505050!important;
+     font-size: 16px!important;
+     text-transform: uppercase!important;
+      width: 100%!important;
+      text-align: center!important;
+      margin-bottom: 50px!important;
+  }
+  select, option {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     background: transparent;
+     border:none;
+     color: #c60e2d!important;
+     font-size: 22px;
+  }
+  select::-ms-expand, option::-ms-expand { /* for IE 11 */
+      display: none;
+  }
+
+  .openPlus {
+    color: #333;
+    float: right;
+    margin-right: 30px;
+    font-size: 15px;
+    font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+  }
+
+  .openMinus {
+    display: none;
+    color: white;
+    float: right;
+    margin-right: 30px;
+    font-size: 15px;
+    font-family: $CamphorHeavy;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+  }
+
+  .noDisplay {
+    display: none;
+  }
+
+  .doDisplay {
+    display: block;
+  }
+
+  .conf10 {
+    width: 15%;
+    float: left;
+    color: #c3a05f;
+    font-family: $CamphorHeavy;
+    text-transform: uppercase;
+    line-height: 30px;
+    padding-top: 75px;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+    p {
+      text-align: right;
+      margin-right: 25px;
+      color: #c3a05f;
+      font-family: $CamphorHeavy!important;
+      text-transform: uppercase;
+      line-height: 30px;
+      font-size: 12px;
+      line-height: 25px;
+      width: 70px;
+      float: right;
+    }
+  }
+
+  .conf60, .conf70 {
+    display: block;
+    width: 47%;
+    float: left;
+    color: #505050;
+    text-transform: initial!important;
+    line-height: 30px;
+    text-align: left;
+    padding-top: 15px;
+    min-height: 200px;
+    height: auto;
+    padding-right: 30px;
+
+    p {
+      font-family: $CamphorRegular;
+      font-size: 14px;
+      color: #505050;
+      text-align: left;
+      padding-bottom: 30px;
+      padding-top: 10px;
+      color: #505050;
+      line-height: 25px;
+      text-transform: initial!important;
+      text-transform: none!important;
+    }
+
+
+    @media screen and (max-width: 1280px) {
+       width: 44%;
+    }
+
+    .conf60title {
+      display: none;
+      color: #c3a05f;
+      font-size: 12px;
+      font-family: $CamphorHeavy;
+      text-transform: uppercase;
+    }
+
+    hr {
+      display: none;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      margin-right: -100px;
+      width: 140px;
+      border-right: 1px solid #e7e7e7;
+      margin-top: -115px;
+      opacity: 0.2;
+      @media screen and (max-width: 1280px) {
+          margin-right: -95px;
+          margin-top: -140px;
+        }
+    }
+
+    .confButton {
+      position: absolute;
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      font-size: 12px;
+      opacity: 0.7;
+      letter-spacing: 1px;
+      color: #b1b1b1;
+      bottom: 10%;
+
+      &:hover {
+        color: $gold;
+      }
+
+      .ensavoirplus {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+            color: #c3a05f;
+            margin-right: 5px;
+      }
+    }
+
+    span {
+      text-transform: uppercase;
+      font-size: 16px;
+      color:#312f2f!important;
+      font-family: $CamphorBold;
+      line-height: 50px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .conf70 { 
+    width: 59%;
+    padding-left: 3%;
+    height: auto;
+
+    @media screen and (max-width: 1280px) {
+        width: 55%;
+    }
+
+    img {
+      max-width: 120px;
+      height: 160px;
+      text-align: left;
+    }
+    
+    hr {
+      display: none;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      margin-right: -255px;
+      width: 440px;
+      border-right: 1px solid #e7e7e7;
+      margin-top: 60px;
+      margin-bottom: -27px;
+      opacity: 0.2;
+      float: right;
+      @media screen and (max-width: 1280px) {
+          /*margin-right: -95px;
+          margin-top: -70px;*/
+        }
+    }
+  }
+
+  .conf30Sharp {
+      width: 35%!important;
+    }
+
+  .conf30, .conf30Sharp {
+    position: absolute;
+    width: 36%;
+    float: right;
+    color: #505050;
+    text-transform: initial!important;
+    line-height: 30px;
+    text-align: left;
+    padding-top: 20px;
+    font-size: 12px;
+    background: #f6f6f6;
+    height: 100%;
+    /* min-height: 590px; */
+    border-left: 1px solid #e7e7e7;
+    overflow: hidden;
+    z-index: 1;
+    /* display: table-cell; */
+    right: 0%;
+
+      @media screen and (max-width: 1280px) {
+          float: right;
+        }
+
+    p {
+      margin-left: 28px;
+      margin-top: -5px;
+      color: #505050;
+      opacity: 0.9;
+      text-align: left;
+      font-family: $CamphorRegular;
+      font-size: 14px;
+      text-transform: initial!important;
+      text-transform: none!important;
+    }
+
+    span {
+      color: #505050;
+      text-transform: uppercase;
+      opacity: 0.4;
+      font-family: $CamphorBold;
+      letter-spacing: 1px;
+    }
+
+    div {
+          padding-left: 45px;
+          margin-bottom: 5px;
+    }
+    div:first-child {
+          &:before {  
+            content: url(/img/access.png);
+            position: relative;
+            top: 20px;
+            left: -10px;
+            /* margin-right: 30px; */
+            width: 20px;
+        }
+    }
+
+    div:nth-child(2) {
+      &:before {
+            content: url(/img/clock.png);
+            position: relative;
+            top: 20px;
+            left: -10px;
+            /* margin-right: 30px; */
+            width: 20px;
+        }
+    }
+    div:nth-child(3) {
+      &:before {
+            content: url(/img/pin.png);
+            position: relative;
+            top: 20px;
+            left: -10px;
+            /* margin-right: 30px; */
+            width: 20px;
+        }
+    }
+  }
+
+.box {
+  min-height: 230px;
+  height: auto;
+  cursor: default;
+  position: relative;
+  overflow: hidden!important;
+  border-bottom: 20px solid #333333!important;
+  padding-bottom: 15px;
+    
+    @media screen and (max-width: 1280px) {
+        min-height: 325px!important;
+    }
+}
+
+  .confDetails {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: $CamphorHeavy;
+    color: #505050!important;
+    line-height: 50px;
+  }
+
+  .confDetailsTop {
+    color: #505050!important;
+  }
+}
+
+  .conferenceMenu {
+    .box {
+      position: relative;
+      height: auto;
+      min-height: 900px!important;
+        @media screen and (max-width: 1280px) {
+            min-height: 1000px!important;
+        }
+    }
+
+    .minBox {
+      min-height: 600px!important;
+    }
+  }
+
+
+.confPeople {
+  .quarterWidth {
+    width: 25%;
+    float: left;
+    min-height: 300px;
+    text-align: left;
+    font-size: 10px;
+    font-family: $CamphorHeavy;
+    span {
+      font-size: 12px!important;
+      text-align: left;
+    }
+
+    h6 {
+      text-align: left;
+      line-height: 25px;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: #ec3050 !important;
+      font-family: $CamphorBold;
+      line-height: 20px;
+    }
+
+    .name {
+      height: 60px;
+      width: 130px;
+      text-align: left;
+      text-transform: uppercase;
+      line-height: 20px;
+
+      h6 {
+        font-size: 10px!important;
+        letter-spacing: 1px;
+        font-family: $CamphorHeavy;
+      }
+
+      p {
+        text-align: left;
+        color: #505050;
+        font-size: 10px!important;
+        font-family: $CamphorHeavy;
+      }
+    }
+
+    .alignLeft {
+        text-align: left;
+        margin-left: 15px;
+    }
+
+    p {
+      text-align: left;
+      color: #505050;
+      font-size: 10px;
+    }
+  }
+}
+
+.minPadding {
+  padding: 60px 0px 0px 0px !important;
+  height: auto !important;
+  line-height: 30px;
+  color: #2b2b2b;
+  font-family: $CamphorRegular;
+  font-size: 14px;
+}
+
+.minMargin {
+    margin-bottom: 20px!important;
+    color: #2b2b2b;
+    font-size: 14px;
+    line-height: 25px;
+    width: 766px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.producersProgramme {
+  height: auto!important;
+  display: block;
+  margin-bottom: 100px;
+}

@@ -37,14 +37,14 @@ class ShareEmailType extends AbstractType
             ->add('email', 'text', array(
                 'pattern' => '^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$',
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('sharemail.form.placeholder.email'),
+                    'placeholder' => $this->translator->trans('ccm.sharemail.form.placeholder.email'),
                     'class'       => 'popin'
                 ),
                 'label' => false
             ))
             ->add('user', 'email', array(
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('sharemail.form.placeholder.votreemail'),
+                    'placeholder' => $this->translator->trans('ccm.sharemail.form.placeholder.votreemail'),
                     'class'       => 'popin'
                 ),
                 'label' => false
@@ -60,7 +60,7 @@ class ShareEmailType extends AbstractType
             ))
             ->add('message', 'textarea', array(
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('sharemail.form.placeholder.message'),
+                    'placeholder' => $this->translator->trans('ccm.sharemail.form.placeholder.message'),
                     'class'       => 'popin'
                 ),
                 'label' => false,
@@ -88,12 +88,12 @@ class ShareEmailType extends AbstractType
     {
         $collectionConstraint = new Collection(array(
            'email' => array(
-               new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
+               new NotBlank(array('message' => $this->translator->trans('ccm.contact.form.errors.email'))),
                new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
            ),
            'user' => array(
-               new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
-               new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
+               new NotBlank(array('message' => $this->translator->trans('ccm.contact.form.errors.email'))),
+               new Email(array('message' => $this->translator->trans('ccm.contact.form.errors.email')))
            ),
            'message' => array(),
            'copy'=> array(),
