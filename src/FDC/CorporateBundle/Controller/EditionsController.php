@@ -47,7 +47,7 @@ class EditionsController extends Controller
         $medias = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Media')
-            ->getImageMedia($locale, $festival->getId())
+            ->getImageMedia($locale, $festival->getId(), null, null, 'site-institutionnel')
         ;
 
         //news

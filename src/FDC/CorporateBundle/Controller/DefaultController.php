@@ -4,11 +4,13 @@ namespace FDC\CorporateBundle\Controller;
 
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
@@ -37,7 +39,8 @@ class DefaultController extends Controller
 
     /**
      * @Route("/")
-     * @Template("FDCCorporateBundle:News:home.html.twig")
+     * @param Request $request
+     * @return Response
      */
     public function homeAction(Request $request)
     {
@@ -95,11 +98,6 @@ class DefaultController extends Controller
         $filters['themes']['id'][0] = 'all';
 
         foreach ($homeContents as $key => $homeContent) {
-            if (($key % 3) == 0) {
-                $homeContent->double = true;
-            }
-
-            //check if filters don't already exist
             if (!in_array($homeContent->getTheme()->getId(), $filters['themes']['id'])) {
                 $filters['themes']['id'][] = $homeContent->getTheme()->getId();
                 $filters['themes']['content'][] = $homeContent->getTheme();
@@ -119,7 +117,13 @@ class DefaultController extends Controller
         ;
         $galleryMedias = [];
         foreach ($gallery->getMedias() as $m) {
-            if ($m->getMedia() && $m->getMedia()->findTranslationByLocale('fr')->getStatus() == 1 && $m->getMedia()->getPublishedAt() <= new \DateTime()) {
+            $available = $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr');
+            if ($available) {
+                $trans = $m->getMedia()->findTranslationByLocale('fr');
+            }
+            $available = $available && $trans->getStatus() == TranslateChildInterface::STATUS_PUBLISHED;
+            $available = $available && $m->getMedia()->getPublishedAt() <= new \DateTime();
+            if ($available) {
                 $galleryMedias[] = $m;
             }
         }
@@ -131,7 +135,7 @@ class DefaultController extends Controller
             ->getFilmsReleases($dateTime)
         ;
 
-        return [
+        return $this->render('FDCCorporateBundle:News:home.html.twig', [
             'homepage'          => $homepage,
             'displayHomeSlider' => $displayHomeSlider,
             'filmReleases'      => $movies,
@@ -142,7 +146,7 @@ class DefaultController extends Controller
             'gallery'           => $gallery,
             'galleryMedias'     => $galleryMedias,
             'filters'           => $filters
-        ];
+        ]);
     }
 
     protected function sortByDate(&$items)

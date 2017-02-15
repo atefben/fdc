@@ -641,7 +641,12 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
         //GET ALL MEDIA PHOTOS
-        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId());
+        $currentFestivalId = $settings->getFestival()->getId();
+        $photos = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Media')
+            ->getImageMedia($locale, $currentFestivalId)
+        ;
         //set default filters
         $filters = array();
         $filters['dates'][0] = 'all';
