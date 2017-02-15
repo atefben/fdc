@@ -72,8 +72,8 @@
                                 {% endif %}
                                 <div class="tabBox">
                                     <span class="customClass2">{{ product.title }}</span>
-                                    {% if product.grayText is not null and product.colorText is not null%}
-                                        <h5>{{ product.grayText }} <span class="fromPrice customClass1">{{ product.colorText }}</span></h5>
+                                    {% if product.grayText is not null or product.colorText is not null%}
+                                        <h5>{% if product.grayText is not null %}{{ product.grayText }} {% endif %} {% if product.colorText is not null %}<span class="fromPrice customClass1">{{ product.colorText }}</span>{% endif %}</h5>
                                     {% endif %}
                                     <div class="tabContent">
                                         <p>{{ product.body }}</p>
