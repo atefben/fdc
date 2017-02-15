@@ -1,0 +1,154 @@
+<?php
+
+namespace FDC\CourtMetrageBundle\Entity;
+
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Entity\FilmSelectionSection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Base\CoreBundle\Entity\MediaImage;
+
+/**
+ * CcmShortFilmCompetitionTab
+ * @ORM\Table(name="ccm_short_film_competition_tab")
+ * @ORM\Entity
+ */
+class CcmShortFilmCompetitionTab
+{
+    use Translatable;
+
+    const TYPE_SELECTION = 'competition_selection';
+    const TYPE_JURY = 'competition_jury';
+    const TYPE_PALMARES = 'competition_palmares';
+
+    /**
+     * @var integer
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $type;
+
+    /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     *
+     */
+    protected $image;
+
+    /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmSelectionSection")
+     */
+    protected $selectionSection;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+    /**
+     * MdfConferencePartnerLogo constructor.
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return MediaImage
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param $type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @param $image
+     *
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return FilmSelectionSection
+     */
+    public function getSelectionSection()
+    {
+        return $this->selectionSection;
+    }
+
+    /**
+     * @param $selectionSection
+     *
+     * @return $this
+     */
+    public function setSelectionSection($selectionSection)
+    {
+        $this->selectionSection = $selectionSection;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param $translations
+     *
+     * @return $this
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
+}

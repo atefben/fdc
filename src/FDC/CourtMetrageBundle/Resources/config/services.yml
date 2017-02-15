@@ -1,4 +1,9 @@
 services:
+    ccm.manager.competition:
+        class: FDC\CourtMetrageBundle\Manager\CompetitionManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
     ccm.manager.menu:
         class: FDC\CourtMetrageBundle\Manager\MenuManager
         arguments:

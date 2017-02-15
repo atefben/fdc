@@ -483,6 +483,7 @@ admin:
         mdf_goes_to_cannes: Goes to Cannes
         mdf_presse: Presse
         mdf_qui_sommes_nous: Qui sommes-nous ?
+        ccm_seo_tetieres: SEO + TETIERES
 
 
 dashboard:
@@ -623,6 +624,11 @@ form:
     label_hide_common_content: Ne pas afficher cette strate
     label_our_selection: Notre Sélection
     label_pdf: Pdf
+    ccm:
+        label:
+            competition_tab_name: Surcharger le nom de la sélection
+            image: Image cover
+            film_selection: Sélection
     ccm:
         label:
             menu:
