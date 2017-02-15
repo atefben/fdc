@@ -68,15 +68,6 @@ class ElasticaPostListener
             case 'MdfThemeTranslation':
                 $widget = $entity->getTranslatable()->getContentTemplate();
 
-                if ($widget && $widget->isWidgetText()) {
-                    $this->updateElasticaIndexes(
-                        $entity->getTranslatable()->getContentTemplate(),
-                        self::$ELASTICA_RESOURCES['MdfHomepageTranslation']
-                    );
-
-                    break;
-                }
-
                 if ($widget && $widget->isWidgetVideo()) {
                     $this->updateElasticaIndexes(
                         $entity->getTranslatable()->getContentTemplate(),
