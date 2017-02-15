@@ -158,9 +158,13 @@ class SearchController extends Controller
         $imageResults = $repositoryManager
             ->getRepository(MediaMdfImage::class)
             ->findWithCustomQuery($locale, $searchTerm);
+//        $videoResults = $repositoryManager
+//            ->getRepository(MdfContentTemplateWidgetVideo::class)
+//            ->findWithCustomQuery($locale, $searchTerm);//to investigate why is not working
+
         $videoResults = $repositoryManager
             ->getRepository(MdfContentTemplateWidgetVideo::class)
-            ->findWithCustomQuery($locale, $searchTerm);
+            ->find($searchTerm);// not the best approach, because it doesn't search considering locale too;
 
         $galleryResults = $repositoryManager
             ->getRepository(GalleryMdf::class)
@@ -194,7 +198,7 @@ class SearchController extends Controller
                     'id' => $videoResult->getId(),
                     'type' => 'video',
                     'image' => $videoResult->getImage(),
-                    'alt' => $videoResult->getImage()->findTranslationByLocale($locale)->getAlt()
+                    'alt' => $videoResult->getImage() ? $videoResult->getImage()->findTranslationByLocale($locale)->getAlt() : null,
                 );
             }
 

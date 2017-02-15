@@ -14,7 +14,9 @@
                 <a href="{{ path('fdc_marche_du_film_get_media_source', {'id': media.id, 'type': media.type }) }}" target="_blank">
                     <div class="photoWrapper">
                         <img class="floatingIcon" src="{{ asset('bundles/fdcmarchedufilm/img/' ~ icons[media.type] ) }}" alt="alt-{{ media.type }}">
-                        <img class="mainPic" src="{% path media.image|trans_fallback('file'), 'reference' %}" alt="{{ media.alt }}">
+                        <img class="mainPic"
+                             src="{% if media.image %}{% path media.image|trans_fallback('file'), 'reference' %}{% else %}{{ asset('bundles/fdcmarchedufilm/img/no-image.png') }}{% endif %}"
+                             alt="{{ media.alt|default('default-image') }}">
                     </div>
                     <div class="textWrapper">
                         <h6 class="blackTitle">{{ media.title|slice(0, 20) }}</h6>

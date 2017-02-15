@@ -115,74 +115,72 @@ class ElasticaPostListener
                 );
                 break;
             case 'ServiceWidgetTranslation':
-                $this->updateElasticaIndexes(
-                    $entity->getTranslatable()->getWidgetsCollection()->getService(),
-                    self::$ELASTICA_RESOURCES['ServiceTranslation']
-                );
+                foreach ($entity->getTranslatable()->getWidgetsCollection() as $widget) {
+                    $this->updateElasticaIndexes(
+                        $widget->getService(),
+                        self::$ELASTICA_RESOURCES['ServiceTranslation']
+                    );
+                }
                 break;
             case 'ServiceWidgetProductTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getProductsCollections()
-                        ->getServiceWidget()
-                        ->getWidgetsCollection()
-                        ->getService(),
-                    self::$ELASTICA_RESOURCES['ServiceTranslation']
-                );
+                foreach ($entity->getTranslatable()->getProductsCollections() as $product) {
+                    foreach ($product->getServiceWidget()->getWidgetsCollection() as $widget) {
+                        $this->updateElasticaIndexes(
+                            $widget->getService(),
+                            self::$ELASTICA_RESOURCES['ServiceTranslation']
+                        );
+                    }
+                }
                 break;
             case 'MdfConferenceProgramEventTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getProgramEventCollection()
-                        ->getConferenceProgramDay()
-                        ->getProgramDayCollection()
-                        ->getConferenceProgram(),
-                    self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
-                );
+                foreach ($entity->getTranslatable()->getProgramEventCollection() as $programEvent) {
+                    foreach ($programEvent->getConferenceProgramDay()->getProgramDayCollection() as $programDay) {
+                        $this->updateElasticaIndexes(
+                            $programDay->getConferenceProgram(),
+                            self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                        );
+                    }
+                }
                 break;
             case 'MdfProgramSpeakerTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getProgramSpeakerCollection()
-                        ->getProgramEvent()
-                        ->getProgramEventCollection()
-                        ->getConferenceProgramDay()
-                        ->getProgramDayCollection()
-                        ->getConferenceProgram(),
-                    self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
-                );
+                foreach ($entity->getTranslatable()->getProgramSpeakerCollection() as $programSpeaker) {
+                    foreach ($programSpeaker->getProgramEvent()->getProgramEventCollection() as $programEvent) {
+                        foreach ($programEvent->getConferenceProgramDay()->getProgramDayCollection() as $programDay) {
+                            $this->updateElasticaIndexes(
+                                $programDay->getConferenceProgram(),
+                                self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                            );
+                        }
+                    }
+                }
                 break;
             case 'MdfSpeakersChoicesTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getSpeakersChoicesCollection()
-                        ->getSpeakersPage(),
-                    self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
-                );
+                foreach ($entity->getTranslatable()->getSpeakersChoicesCollection() as $speakersChoice) {
+                    $this->updateElasticaIndexes(
+                        $speakersChoice
+                            ->getSpeakersPage(),
+                        self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
+                    );
+                }
                 break;
             case 'MdfSpeakersDetailsTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getSpeakersDetailsCollection()
-                        ->getSpeakersChoiceTab()
-                        ->getSpeakersChoicesCollection()
-                        ->getSpeakersPage(),
-                    self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
-                );
+                foreach ($entity->getTranslatable()->getSpeakersDetailsCollection() as $speakersDetail) {
+                    foreach ($speakersDetail->getSpeakersChoiceTab()->getSpeakersChoicesCollection() as $speakersChoice) {
+                        $this->updateElasticaIndexes(
+                            $speakersChoice->getSpeakersPage(),
+                            self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
+                        );
+                    }
+                }
                 break;
             case 'MdfConferencePartnerTabTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getConferencePartnerTabCollection()
-                        ->getConferencePartner(),
-                    self::$ELASTICA_RESOURCES['MdfConferencePartnerTranslation']
-                );
+                foreach ($entity->getTranslatable()->getConferencePartnerTabCollection() as $conferencePartnerTab) {
+                    $this->updateElasticaIndexes(
+                        $conferencePartnerTab
+                            ->getConferencePartner(),
+                        self::$ELASTICA_RESOURCES['MdfConferencePartnerTranslation']
+                    );
+                }
                 break;
             case 'MdfConferenceInfoAndContactWidgetTranslation':
                 $this->updateElasticaIndexes(
@@ -233,37 +231,25 @@ class ElasticaPostListener
                 );
                 break;
             case 'MdfRubriqueTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getRubriquesCollection()
-                        ->getInformationPage(),
-                    self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
-                );
+                foreach ($entity->getTranslatable()->getRubriquesCollection() as $rubrique) {
+                    $this->updateElasticaIndexes(
+                        $rubrique
+                            ->getInformationPage(),
+                        self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
+                    );
+                }
                 break;
             case 'MdfRubriqueQuestionTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getRubriqueQuestionsCollection()
-                        ->getRubrique()
-                        ->getRubriquesCollection()
-                        ->getInformationPage(),
-                    self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
-                );
+                foreach ($entity->getTranslatable()->getRubriqueQuestionsCollection() as $rubriquesQuestion) {
+                    foreach ($rubriquesQuestion->getRubrique()->getRubriquesCollection() as $rubrique) {
+                        $this->updateElasticaIndexes(
+                            $rubrique
+                                ->getInformationPage(),
+                            self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
+                        );
+                    }
+                }
                 break;
-            case 'TagTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getRubriqueQuestionsCollection()
-                        ->getRubrique()
-                        ->getRubriquesCollection()
-                        ->getInformationPage(),
-                    self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
-                );
-                break;
-
         }
     }
 

@@ -11,7 +11,6 @@ use FOS\ElasticaBundle\Configuration\Search;
 
 /**
  * MdfContentTemplateWidgetVideo
- * @Search(repositoryClass="FDC\MarcheDuFilmBundle\SearchRepository\MdfContentTemplateWidgetVideoRepository")
  * @ORM\Table(name="mdf_content_template_widget_video")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
@@ -98,5 +97,23 @@ class MdfContentTemplateWidgetVideo extends MdfContentTemplateWidget
     public function getTranslations()
     {
         return $this->translations;
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return array
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }
