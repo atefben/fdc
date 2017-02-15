@@ -158,9 +158,13 @@ class SearchController extends Controller
         $imageResults = $repositoryManager
             ->getRepository(MediaMdfImage::class)
             ->findWithCustomQuery($locale, $searchTerm);
+//        $videoResults = $repositoryManager
+//            ->getRepository(MdfContentTemplateWidgetVideo::class)
+//            ->findWithCustomQuery($locale, $searchTerm);//to investigate why is not working
+
         $videoResults = $repositoryManager
             ->getRepository(MdfContentTemplateWidgetVideo::class)
-            ->findWithCustomQuery($locale, $searchTerm);
+            ->find($searchTerm);// not the best approach, because it doesn't search considering locale too;
 
         $galleryResults = $repositoryManager
             ->getRepository(GalleryMdf::class)
@@ -178,7 +182,7 @@ class SearchController extends Controller
             if ($translation) {
                 $output[] = array(
                     'title' => $translation->getLegend(),
-                    'id' => $translation->getId(),
+                    'id' => $imageResult->getId(),
                     'type' => 'image',
                     'image' => $imageResult,
                     'alt' => $translation->getAlt()
@@ -191,10 +195,10 @@ class SearchController extends Controller
             if ($translation) {
                 $output[] = array(
                     'title' => $translation->getTitle(),
-                    'id' => $translation->getId(),
+                    'id' => $videoResult->getId(),
                     'type' => 'video',
                     'image' => $videoResult->getImage(),
-                    'alt' => $videoResult->getImage()->findTranslationByLocale($locale)->getAlt()
+                    'alt' => $videoResult->getImage() ? $videoResult->getImage()->findTranslationByLocale($locale)->getAlt() : null,
                 );
             }
 
@@ -587,15 +591,7 @@ class SearchController extends Controller
                     continue;
                 }
 
-                //if don't have source in MdfContentTemplate then check source in Homepage
-                $source = $this->getHomepageSource($id, $type, $locale);
-                if ($source) {
-                    $finalSource = $source;
-
-                    continue;
-                }
-
-                //if don't have source in Homepage then check source in DispatchDeService
+                //if don't have source in MdfContentTemplate  then check source in DispatchDeService
                 $source = $this->getDispatchDeServiceSource($id, $type, $locale);
                 if ($source) {
                     $finalSource = $source;
@@ -675,6 +671,13 @@ class SearchController extends Controller
                     continue;
                 }
 
+                //if don't have source in SliderAccreditation then check source in Homepage
+                $source = $this->getHomepageSource($id, $type, $locale);
+                if ($source) {
+                    $finalSource = $source;
+
+                    continue;
+                }
                 break;
             case 'video':
                 //check source in MdfContentTemplate
