@@ -1,2 +1,6 @@
-## YAML Template.
----
+services:
+    ccm.manager.menu:
+        class: FDC\CourtMetrageBundle\Manager\MenuManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

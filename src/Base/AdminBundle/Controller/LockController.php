@@ -141,6 +141,11 @@ class LockController extends Controller
         'mdfrubriquequestion' => 'MdfRubriqueQuestion',
     );
 
+    private static $ccmEntityMapper = array(
+        'ccmmainnav' => 'CcmMainNav',
+        'ccmsubnav' => 'CcmSubNav',
+    );
+
     /**
      * createLockAction function.
      *
@@ -170,7 +175,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt create the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -183,6 +188,8 @@ class LockController extends Controller
             $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $entity = null;
         }
@@ -252,7 +259,7 @@ class LockController extends Controller
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -265,6 +272,8 @@ class LockController extends Controller
             $master = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $master = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $master = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $master = null;
         }
@@ -341,7 +350,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -354,6 +363,8 @@ class LockController extends Controller
             $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $entity = null;
         }
@@ -428,7 +439,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt find the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -441,6 +452,8 @@ class LockController extends Controller
             $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->find($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->find($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $entity = null;
         }

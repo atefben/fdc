@@ -2428,3 +2428,45 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Video Youtube, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
+
+    base.admin.ccm_menu:
+        class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Menu}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_main_nav_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmMainNavCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMainNavCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Main menu collection, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_main_nav:
+        class: Base\AdminBundle\Admin\CCM\CcmMainNavAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMainNav, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Main Menu Item, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_sub_nav_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmSubNavCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSubNavCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Sub Menu collection, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_sub_nav:
+        class: Base\AdminBundle\Admin\CCM\CcmSubNavAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSubNav, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Sub Menu Item, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]

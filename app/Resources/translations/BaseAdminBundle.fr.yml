@@ -623,6 +623,25 @@ form:
     label_hide_common_content: Ne pas afficher cette strate
     label_our_selection: Notre Sélection
     label_pdf: Pdf
+    ccm:
+        label:
+            menu:
+                program_pic_is_active: Le bouton Programme est visible?
+                catalog_pic_is_active: Le bouton Catalogue est visible?
+                register_pic_is_active: Le bouton Registre est visible?
+                main_nav_list: Liste des onglets de navigation principale
+                main_nav_item: Onglet de navigation principal
+                main_nav_name: Nom de l'onglet de navigation principal
+                main_nav_fo_translation_key: Touche de traduction de l'onglet principal de navigation
+                main_nav_route: Onglet principal de navigation
+                main_nav_is_active: Cet onglet de navigation principal est actif?
+                sub_nav_list: Deuxième onglet de navigation
+                sub_nav_item: Deuxième élément de l'onglet de navigation
+                sub_nav_name: Deuxième nom de l'onglet de navigation
+                sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
+                sub_nav_route: Itinéraire de la deuxième onglet de navigation
+                sub_nav_is_active: Ce deuxième onglet de navigation est actif?
+
     mdf:
         conference_partner:
             form_name: Gestion du partenaire de la conférence
