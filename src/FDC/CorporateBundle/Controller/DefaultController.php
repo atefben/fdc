@@ -41,18 +41,27 @@ class DefaultController extends Controller
      */
     public function homeAction(Request $request)
     {
-        $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
         $locale = $request->getLocale();
+        $settings = $this->getSettings();
+        $festivalId = $settings->getFestival()->getId();
 
         // GET HOMEPAGE SETTINGS
-        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        $homepage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:HomepageCorporate')
+            ->find(1)
+        ;
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
 
         // Slider
-        $slides = $em->getRepository('BaseCoreBundle:HomepageCorporateSlide')->getAllSlide($locale, $dateTime);
+        $slides = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:HomepageCorporateSlide')
+            ->getAllSlide($locale, $dateTime)
+        ;
 
         $displayHomeSlider = $homepage->getDisplayedSlider();
         $homeSlider = [];
@@ -65,16 +74,15 @@ class DefaultController extends Controller
         }
 
         // Infos and statements
-        $homeContents = [];
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, null, $dateTime, null, 'site-institutionnel')
+            ->getInfosByDate($locale, $festivalId, $dateTime, null, 'site-institutionnel')
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, null, $dateTime, null, 'site-institutionnel')
+            ->getStatementByDate($locale, $festivalId, $dateTime, null, 'site-institutionnel')
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
         $this->sortByDate($homeContents);
@@ -144,8 +152,7 @@ class DefaultController extends Controller
             if ($item instanceof Info) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-info' . $item->getId();
                 $sort[] = $item;
-            }
-            elseif ($item instanceof Statement) {
+            } elseif ($item instanceof Statement) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-statement' . $item->getId();
                 $sort[] = $item;
             }
