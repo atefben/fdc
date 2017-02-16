@@ -139,6 +139,7 @@ class LockController extends Controller
         'mdfcontactsubject' => 'MdfContactSubject',
         'mdfrubrique' => 'MdfRubrique',
         'mdfrubriquequestion' => 'MdfRubriqueQuestion',
+        'mediamdfpdf' => 'MediaMdfPdf'
     );
 
     /**

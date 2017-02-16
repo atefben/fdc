@@ -120,13 +120,8 @@
                      alt="{{ img|trans_fallback('alt') }} ">
             {% endif %}
         </div>
-        {% if type == 'news' %}
-        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}"
-           class="linkImage"></a>
-        {% else %}
-        <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}"
+        <a href="{{ path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) }}"
            class="linkImage">
-            {% endif %}
             <span class="picto"><i class="icon icon-{{ article|get_news_type }}"></i></span>
         </a>
     </div>
@@ -134,6 +129,6 @@
         <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a><span
                 class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
                 class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
-        <strong><a href="{{ path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') , 'year': festival.year}) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></strong>
+        <strong><a href="{{ path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></strong>
     </div>
 </article>

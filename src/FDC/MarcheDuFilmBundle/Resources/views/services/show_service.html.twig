@@ -89,10 +89,14 @@
                                         </div>
                                         <i class='icon icon_flecheGauche opportuniteArrow customClass2'></i>
                                     {% endif %}
-                                    {% if product.url is not null and product.url|length > 0 %}
-                                        <label for="post-{{ widgetId~product.id }}" class="read-more-trigger"><a href="{{ product.url }}" target="_blank"><div  class="blueBtn
-                                        customClass2 customClass2Border customClass2BckgColorHover">{{ 'book_service'|trans }}</div></a></label>
-                                    {% endif %}
+                                    <label for="post-{{ widgetId~product.id }}" class="read-more-trigger">
+                                        {% if product.url is not null and product.url|length > 0 %}
+                                            <a href="{{ product.url }}" target="_blank">
+                                                <div class="blueBtn customClass2 customClass2Border customClass2BckgColorHover">{{ 'book_service'|trans }}</div>
+                                            </a>
+                                        {% endif %}
+                                    </label>
+
                                 </div>
                             </div>
                         {% endfor %}

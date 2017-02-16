@@ -22,7 +22,7 @@ class MediaRepository extends EntityRepository
      * @param null $endAt
      * @return Media[]
      */
-    public function getImageMedia($locale, $festival, $startsAt = null, $endAt = null)
+    public function getImageMedia($locale, $festival, $startsAt = null, $endAt = null, $site = 'site-evenementiel')
     {
         $qb = $this->createQueryBuilder('m')
             ->join('m.sites', 's')
@@ -30,6 +30,8 @@ class MediaRepository extends EntityRepository
             ->leftjoin('mi.translations', 'mit')
             ->where('m.festival = :festival')
             ->andWhere('m.displayedAll = 1')
+            ->andWhere("s.slug = :site")
+            ->setParameter(':site', $site)
         ;
 
         if ($startsAt && $endAt) {
@@ -41,7 +43,6 @@ class MediaRepository extends EntityRepository
 
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);
-        $this->addFDCCorpoQueries($qb, 's');
 
         return $qb
             ->orderBy('mi.publishedAt', 'DESC')

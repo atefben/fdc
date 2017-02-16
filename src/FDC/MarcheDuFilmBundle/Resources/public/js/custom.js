@@ -319,10 +319,15 @@ function loadRetombeesPress() {
             },
             success: function(data, textStatus, xhr) {
                 me.data('requestRunning', false);
-                if ($(data).find('.articles').length < 9) {
+
+                $(data).insertAfter($('.articles').last());
+
+                var nrOfDisplayedArticles = $('.articles').length;
+                var totalNrOfArticles = parseInt($('.nrOfArticles').text());
+
+                if(nrOfDisplayedArticles == totalNrOfArticles) {
                     $('#load-more-retombee-articles').remove();
                 }
-                $(data).insertAfter($('.articles').last());
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);

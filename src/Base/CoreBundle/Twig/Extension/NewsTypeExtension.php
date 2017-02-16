@@ -36,6 +36,14 @@ class NewsTypeExtension extends Twig_Extension
         );
     }
 
+    public function getFunctions()
+    {
+        return array(
+            new \Twig_SimpleFunction('get_news_type', array($this, 'getNewsType')),
+            new \Twig_SimpleFunction('get_news_format_slug', array($this, 'getNewsFormatSlug')),
+        );
+    }
+
     public function getNewsType($object)
     {
         $type = null;

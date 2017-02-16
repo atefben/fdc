@@ -630,7 +630,7 @@ form:
             subtitle: Titre de page
             header: Chapô
             partner_tab: Gestion de l'onglet de partenaire
-            partner_list: Gestion de l'onglet de partenaires
+            partner_list: Gestion des onglets de partenaires
             tab_collection: Gestion des onglets disponibles
             logo_collection: Logos partenaires
             tab:
@@ -834,6 +834,7 @@ form:
             contact_image: Image du contact
             service_info: Informations générales détail de service
             service_title: Titre de page
+            service_url: Slug de page
             service_sub_title: Sous-titre de page
             service_header: Chapô
             service_widget: Liste des onglets disponibles
@@ -946,7 +947,7 @@ form:
 
         note:
             service:
-                url_help: Please provide the last part of URL (http://.../{this part})
+                url_help: "Please provide the last part of URL (http://www.marchedufilm.com/fr/services/[slug])"
         charte_graphique_annuelle:
             image1: Fond n°2
             image2: Fond n°5
@@ -992,6 +993,7 @@ form:
         helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes : Format de l'image recommandé : 650x410
+        helper_pushes_3 : Format de l'image recommandé : 652x206
         helper_push3 : Format de l'image recommandé : 954x606
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410

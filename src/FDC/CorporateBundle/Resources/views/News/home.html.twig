@@ -1,4 +1,5 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
+{% trans_default_domain 'FDCCorporateBundle' %}
 
 {% block bodyClass %}home{% endblock %}
 {% block bodyId %}home{% endblock %}
@@ -71,25 +72,23 @@
             </div> <!-- end padding-bottom -->
         {% endif %}
 
-        {% if homepage.displayedFeaturedContents == false %}
+        {% if not homepage.displayedFeaturedContents %}
             <div class="padding-top">
-                <h2 class="title title-01">communiqués et infos</h2>
-
+                <h2 class="title title-01">{{ 'home.coporate.statements.and.infos.block.title'|trans|raw }}</h2>
                 {% if homepage.displayedFeaturedContentsFilters == false %}
-                    {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+                    {% include 'FDCCorporateBundle:News:components/filters.html.twig' with({'removePaddingSmallTop': true}) %}
                 {% endif %}
             </div>
         {% endif %}
 
         <div class="content">
             <div class="block-01 padding-bottom block-scale">
-                {% if homepage.displayedFeaturedContents == false %}
+                {% if not homepage.displayedFeaturedContents %}
                     <div class="contain-card">
                         <div class="cards grid-01 isotope-01">
                             <div class="grid-sizer"></div>
-                            {% for i in 0..2 if homeContents|length %}
-                                {% set article = homeContents[i] %}
-                                {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
+                            {% for article in homeContents|slice(0, 3) %}
+                                {% if class(article) starts with 'S' %}
                                     {% set type = 'communique' %}
                                 {% else %}
                                     {% set type = 'info' %}
@@ -179,7 +178,7 @@
                                     {% endif %}
                                 {% endif %}
                                 <article
-                                        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{% if i == 0 %} double w2{% endif %}"
+                                        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{% if loop.first %} double w2{% endif %}"
                                         data-format="{{ contentType }}"
                                         data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420"
                                         data-end="false">
@@ -192,17 +191,17 @@
                                         {% if trans == null %}
                                             {% set trans = article.findTranslationByLocale('fr') %}
                                         {% endif %}
-                                        <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"
+                                        {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
+                                        <a href="{{ sliderUrl }}"
                                            class="linkImage"></a>
-                                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
                                         <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
                                     </div>
                                     <div class="info">
-                                        <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"
+                                        <a href="#"
                                            class="category">{{ article.theme|trans_fallback('name') }}</a><span
                                                 class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
                                                 class="hour">{{ article.publishedAt|date('H:i') }}</span>
-                                        <strong><a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></strong>
+                                        <strong><a href="{{ sliderUrl }}">{{ article|trans_fallback('title') }}</a></strong>
                                     </div>
                                 </article>
                             {% endfor %}
@@ -210,11 +209,11 @@
                     </div> <!-- end article wrapper-->
                 {% endif %}
 
-                {% if homepage.displayedGallery == false and gallery is not null and glry is not null and glry.medias|length > 0 %}
+                {% if homepage.displayedGallery == false and gallery is not null and galleryMedias|length %}
                     <div class="block-diaporama">
 
                         <div class="slider-01">
-                            {% for image in glry.medias %}
+                            {% for image in galleryMedias %}
                                 {% if image.media is defined and image.media is not null %}
                                     {% set photo = image.media %}
                                     {% set trans = photo.findTranslationByLocale(app.request.locale) %}
@@ -229,14 +228,16 @@
                                         <figure>
                                             <img src="{% path file, '640x404' %}" alt="image"
                                                  data-id="pid={{ photo.id }}"
-                                                 data-credit="{{ photo|trans_fallback('legend') }}"
+                                                 data-credit="{{ copyright }}"
                                                  data-title="{{ photo|trans_fallback('legend') }}"
                                                  data-label="{{ photo.theme|trans_fallback('slug') }}"
                                                  data-date="{{ photo.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}"
                                                  data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                                  data-twitterurl="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat"
                                                  data-url="http://localhost:3000/#pid=1889">
-                                            <figcaption>{% if copyright is not empty %} © {{ copyright }}{% endif %}</figcaption>
+                                            <figcaption>
+                                                <strong>{{ photo|trans_fallback('legend') }}</strong> {% if copyright is not empty %} © {{ copyright }}{% endif %}
+                                            </figcaption>
                                         </figure>
                                     </div>
                                 {% endif %}
@@ -263,16 +264,15 @@
                     </div> <!-- end diaporama-->
                 {% endif %}
 
-                {% if homepage.displayedFeaturedContents == false %}
+                {% if not homepage.displayedFeaturedContents %}
                     <div class="articles-wrapper add-ajax-request">
                         <div class="articles article-inverse">
                             <div class="cards grid-01 isotope-01">
                                 <div class="grid-sizer"></div>
 
                                 {% if homeContents|length > 3 %}
-                                    {% for i in 3..(homeContents|length)-1 %}
-                                        {% set article = homeContents[i] %}
-                                        {% if class is defined and attribute(article, class) is defined and class(article) starts with 'S' %}
+                                    {% for article in homeContents|slice(3) %}
+                                        {% if class(article) starts with 'S' %}
                                             {% set type = 'communique' %}
                                         {% else %}
                                             {% set type = 'info' %}
@@ -363,7 +363,7 @@
                                         {% endif %}
 
                                         <article
-                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if i == 4 %}double w2{% else %}{% endif %}"
+                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if loop.index == 2 %}double w2{% else %}{% endif %}"
                                                 data-format="{{ contentType }}"
                                                 data-theme="{{ article.theme|trans_fallback('slug') }}"
                                                 data-time="1455909420" data-end="false">
@@ -375,12 +375,7 @@
                                                 {% if trans == null %}
                                                     {% set trans = article.findTranslationByLocale('fr') %}
                                                 {% endif %}
-                                                {% if type == 'news' %}
-                                                    {% set sliderUrl = url('fdc_corporate_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) %}
-                                                {% else %}
-                                                    {% set sliderUrl = url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) %}
-                                                {% endif %}
-
+                                                {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
                                                 <a href="{{ sliderUrl }}" class="linkImage"></a>
 
                                                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
@@ -401,18 +396,15 @@
                     </div> <!-- end article wrapper-->
 
                     <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse=""
-                       class="read-more ajax-request">Afficher
-                        <strong>plus d'infos</strong></a>
+                       class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                 {% endif %}
-            </div> <!-- end block 01-->
+            </div>
 
             {% if homepage.displayedVideo == false %}
                 {% if featuredVideo is defined and featuredVideo != null %}
-                    {# if featuredVideo is not null and featuredVideo.jobMp4State == 3 #}
                     <div class="block-02">
-
                         <div class="block-01">
-                            <h2 class="title title-01">Vidéo à la une</h2>
+                            <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
                                 <article class="video">
@@ -486,7 +478,8 @@
                             <div>
                                 <strong class="title-2">{{ homepage|trans_fallback('pushEditionTitle')|raw }}</strong>
                                 <a class="link" href="{{ homepage|trans_fallback('pushEditionUrl') }}"><i
-                                            class="icon icon-arrow-right"></i> découvrir</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}
+                                </a>
                             </div>
                         </div>
                     </div> <!-- end block push -->
@@ -496,7 +489,7 @@
             {% if homepage.displayedCannesReleases == false %}
                 <div class="block-02" id="sortiecanne">
                     <div class="block-01">
-                        <h2 class="title title-01">sorties de cannes</h2>
+                        <h2 class="title title-01">{{ 'home.coporate.sorties.de.cannes'|trans|raw }}</h2>
 
                         <div class="block-films">
                             <div class="left">
@@ -660,7 +653,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <p>{{ homepage|trans_fallback('pushMainSubtitle1') }}</p>
                                 <a class="link" {{ homepage|trans_fallback('pushMainUrl1')|external_link }}
                                    href="{{ homepage|trans_fallback('pushMainUrl1') }}"><i
-                                            class="icon icon-arrow-right"></i> découvrir</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}
+                                </a>
                             </div>
                         </div>
                         {% if homepage.pushMainImage1 %}
@@ -671,7 +665,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    --><div class="half-div block-push">
+                    -->
+                    <div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -680,7 +675,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <p>{{ homepage|trans_fallback('pushMainSubtitle2') }}</p>
                                 <a class="link" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                                    href="{{ homepage|trans_fallback('pushMainUrl2') }}"><i
-                                            class="icon icon-arrow-right"></i> découvrir</a>
+                                            class="icon icon-arrow-right"></i> {{ 'home.coporate.discover'|trans|raw }}
+                                </a>
                             </div>
                         </div>
                         {% if homepage.pushMainImage2 %}
@@ -706,7 +702,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             </div>
 
                             <div id="networks">
-                                <p>{{ 'home.festival.follow'|trans }}</p>
+                                <p>{{ 'home.coporate.social.follow'|trans|raw }}</p>
                                 <ul>
                                     <li><a class="facebook"
                                            href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937"
@@ -752,7 +748,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                --><div class="small-push half-div">
+                                -->
+                                <div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -770,7 +767,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            --><div class="left">
+                            -->
+                            <div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">

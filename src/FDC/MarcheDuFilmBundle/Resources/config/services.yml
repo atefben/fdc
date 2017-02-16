@@ -177,3 +177,9 @@ services:
             - %fdc_marche_du_film_domain%
             - %mdf_locales%
             - %kernel.default_locale%
+
+    mdf.listener.elastica.post_update:
+        class: FDC\MarcheDuFilmBundle\EventListener\ElasticaPostListener
+        arguments: ['@service_container']
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }
