@@ -2,6 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CcmSubNav
 {
+    use Translatable;
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -29,25 +31,9 @@ class CcmSubNav
     protected $position;
 
     /**
-     * @var
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @var ArrayCollection
      */
-    private $name;
-
-    /**
-     * @var
-     *
-     * @ORM\Column(name="fo_translation_key", type="string", length=255, nullable=true)
-     */
-    private $foTranslationKey;
-
-    /**
-     * @var
-     *
-     * @ORM\Column(name="route", type="string", length=255, nullable=true)
-     */
-    private $route;
+    protected $translations;
 
     /**
      * @var
@@ -64,12 +50,43 @@ class CcmSubNav
 
     public function __construct()
     {
+        $this->translations = new ArrayCollection();
         $this->subNavsCollection = new ArrayCollection();
     }
 
     public function __toString()
     {
-        return $this->getName();
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getName()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getName();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -122,54 +139,6 @@ class CcmSubNav
     public function getSubNavsCollection()
     {
         return $this->subNavsCollection;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFoTranslationKey()
-    {
-        return $this->foTranslationKey;
-    }
-
-    /**
-     * @param mixed $foTranslationKey
-     */
-    public function setFoTranslationKey($foTranslationKey)
-    {
-        $this->foTranslationKey = $foTranslationKey;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRoute()
-    {
-        return $this->route;
-    }
-
-    /**
-     * @param mixed $route
-     */
-    public function setRoute($route)
-    {
-        $this->route = $route;
     }
 
     /**

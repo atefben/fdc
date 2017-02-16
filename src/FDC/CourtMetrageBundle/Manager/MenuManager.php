@@ -3,12 +3,12 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmSubNavTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMainNavTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 use FDC\CourtMetrageBundle\Entity\CcmMenu;
 use FDC\CourtMetrageBundle\Entity\CcmMainNavCollection;
-use FDC\CourtMetrageBundle\Entity\CcmMainNav;
 use FDC\CourtMetrageBundle\Entity\CcmSubNavCollection;
-use FDC\CourtMetrageBundle\Entity\CcmSubNav;
 
 class MenuManager
 {
@@ -51,8 +51,8 @@ class MenuManager
                 $mainNavs = [];
 
                 foreach ($mainNavCollection as $item) {
-                    $tab = $this->em->getRepository(CcmMainNav::class)
-                        ->find($item->getMainNav());
+                    $tab = $this->em->getRepository(CcmMainNavTranslation::class)
+                        ->getByTranslatableAndLocale($this->requestStack->getMasterRequest()->get('_locale'), $item->getMainNav());
 
                     if ($tab) {
                         $mainNavs[] = $tab;
@@ -87,8 +87,8 @@ class MenuManager
                     $subNavs[$key] = [];
 
                     foreach ($subNavCollection as $item) {
-                        $subTab = $this->em->getRepository(CcmSubNav::class)
-                            ->find($item->getSubNav());
+                        $subTab = $this->em->getRepository(CcmSubNavTranslation::class)
+                            ->getByTranslatableAndLocale($this->requestStack->getMasterRequest()->get('_locale'), $item->getSubNav());
 
                         if ($subTab) {
                             $subNavs[$key][] = $subTab;

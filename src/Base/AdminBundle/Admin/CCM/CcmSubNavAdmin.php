@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use FDC\CourtMetrageBundle\Entity\CcmSubNavTranslation;
 
 class CcmSubNavAdmin extends Admin
 {
@@ -42,30 +43,47 @@ class CcmSubNavAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array(
-                    'label' => 'form.ccm.label.menu.sub_nav_name',
-                    'constraints'        => array(
-                        new NotBlank(),
+            ->add('translations', 'a2lix_translations', array(
+                'label'              => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'fields'             => array(
+                    'applyChanges'   => array(
+                        'field_type' => 'hidden',
+                        'attr'       => array(
+                            'class' => 'hidden',
+                        ),
                     ),
-                    'required' => true
-                )
-            )
-            ->add('foTranslationKey', null, array(
-                    'label' => 'form.ccm.label.menu.sub_nav_fo_translation_key',
-                    'constraints'        => array(
-                        new NotBlank(),
+                    'name'          => array(
+                        'label'              => 'form.ccm.label.menu.sub_nav_name',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help'        => 'form.news.helper_title',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
                     ),
-                    'required' => true
-                )
-            )
-            ->add('route', null, array(
-                    'label' => 'form.ccm.label.menu.sub_nav_route',
-                    'constraints'        => array(
-                        new NotBlank(),
+                    'route'          => array(
+                        'label'              => 'form.ccm.label.menu.sub_nav_route',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help'        => 'form.news.helper_title',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
                     ),
-                    'required' => true
-                )
-            )
+                    'createdAt'      => array(
+                        'display' => false,
+                    ),
+                    'updatedAt'      => array(
+                        'display' => false,
+                    ),
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => CcmSubNavTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                    ),
+                ),
+            ))
             ->add('isActive', 'checkbox', array(
                     'label' => 'form.ccm.label.menu.sub_nav_is_active',
                     'required' => false,

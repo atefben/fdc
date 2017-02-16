@@ -11,10 +11,10 @@
                 <a href="{{ header_cine_fr }}" target="_blank">{{ 'header.cine'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_ccm_fr }}" target="_blank">{{ 'header.ccm'|trans }}</a>
+                <a href="{{ header_ccm_fr }}" class="active">{{ 'header.ccm'|trans }}</a>
             </li>
             <li>
-                <a href="{{ path('fdc_marche_du_film_homepage') }}" class="active">{{ 'header.mdf'|trans }}</a>
+                <a href="{{ header_mdf_fr }}" target="_blank">{{ 'header.mdf'|trans }}</a>
             </li>
         </ul>
         <ul class="user-nav">
@@ -92,17 +92,16 @@
             <nav>
                 <ul class="main">
                     {% if mainNavs is defined and mainNavs is not null %}
-                        {% set baseUrl = app.request.getSchemeAndHttpHost() ~ app.request.getBaseURL() ~ '/' ~ app.request.locale ~ '/' %}
                         {% for key, mainTab in mainNavs %}
-                            {% if mainTab.isActive %}
+                            {% if mainTab.translatable.isActive %}
                                 <li>
                                     {# TODO: IMPLEMENT DYNAMIC ACTIVE CLASS AFTER ROUTE NAMES ARE IMPLEMENTED #}
-                                    <a href="{{ baseUrl ~ mainTab.route }}" {% if loop.first %}class="active"{% endif %}>{{ mainTab.foTranslationKey|trans }}</a>
+                                    <a href="{{ path(mainTab.route) }}" {% if loop.first %}class="active"{% endif %}>{{ mainTab.name }}</a>
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         <ul class="tcenter">
                                             {% for subTab in subNavs[key] %}
-                                                {% if subTab.isActive %}
-                                                    <li><a href="{{ baseUrl ~ subTab.route }}">{{ subTab.foTranslationKey|trans }}</a></li>
+                                                {% if subTab.translatable.isActive %}
+                                                    <li><a href="{{ path(subTab.route) }}">{{ subTab.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
                                         </ul>

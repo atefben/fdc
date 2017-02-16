@@ -29,7 +29,7 @@ class CcmMenuAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
