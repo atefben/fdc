@@ -10993,6 +10993,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .content-movie .tetiere-movie {
   height: auto;
+  border: 1px solid red;
 }
 .single-movie .slide-video:before {
   background: transparent;
@@ -19619,6 +19620,9 @@ body:not(.tablette) .webtv #live .img {
   text-transform: uppercase;
   text-align: center;
   padding-bottom: 22px;
+}
+.accreditation #accreditation .nav-accre .wrapper table {
+  margin: 0 auto;
 }
 .accreditation #accreditation .nav-accre .wrapper table td {
   width: 324px;
