@@ -12,11 +12,11 @@ var owInitGrid = function (id) {
                     gutter: 0
                 }
             });
-            
+
             $grid.on( 'arrangeComplete', function( event, filteredItems ) {
                 $('.item-inner').css({
-                    'width':'100.5%',
-                    'height':'100.5%'
+                    'width':'100.1%',
+                    'height':'100.1%'
                 })
             });
 
