@@ -21,7 +21,7 @@
                 {% set legend = media.media.titleVf %}
                 
             {% elseif app.request.locale != 'fr' and media.media.titleVa %}
-                {% set legend = media.media.titleVa %}
+                {% set legend = media.media.titleVa %} 
             {% endif %}
             <article class="card card-01 item photo shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}" data-format="photo"
                      data-theme="{{ title }}" data-time="1455909420" data-end="false" data-date="date-{{ dateMedia }}">
