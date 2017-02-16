@@ -11,7 +11,7 @@ $(window).on('load', function () {
  */
 function initNewsListWatcher() {
     var NewsListWatcher = {
-        fetchingOffset: 500, // distance from bottom of the page at witch we get net items
+        fetchingOffset: 500, // distance from bottom of the page at witch we get next items
         batchSize: 15,
         $window: $(window),
         $grid: $('#gridAudios'),

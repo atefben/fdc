@@ -232,7 +232,10 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     {
         return substr(strrchr(get_called_class(), '\\'), 1);
     }
-    
+
+    /**
+     * @return string
+     */
     public function getType()
     {
         return strtolower(str_replace('CcmNews', '', $this->getNewsType()));

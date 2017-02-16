@@ -77,6 +77,14 @@ abstract class CcmNewsWidget
     }
 
     /**
+     * @return string
+     */
+    public function getType()
+    {
+        return strtolower(str_replace('CcmNewsWidget', '', $this->getWidgetType()));
+    }
+
+    /**
      * findTranslationByLocale function.
      *
      * @access public

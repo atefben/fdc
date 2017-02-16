@@ -23,10 +23,11 @@
                 </span>
             </div>
         </div>
+        {% if news|length > 0 %}
         <div id="gridAudios" class="grid-wrapper" data-type="articles">
             <div class="grid-sizer"></div>
             {% for article in news %}
-                {% set articleTranslation = article.findTranslationByLocale(locale) %}
+                {% set articleTranslation = article.findTranslationByLocale(app.request.locale) %}
                 <div class="item date{{ article.publishedAt|date('Y') }} theme{{ article.theme.id }} date theme article {{ loop.index > 15 ? 'hidden' : '' }}" >
                     <article class="article">
                         <div class="img">
@@ -43,7 +44,7 @@
                             <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
                         </div>
                         <div class="info">
-                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ article.theme.findTranslationByLocale(locale).name }}</a>
+                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</a>
                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
                                 <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
                                 <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
@@ -54,6 +55,9 @@
                 </div>
             {% endfor %}
         </div>
+        {% else %}
+            <h3 class="title">{#Aucun article à afficher#}{{ 'ccm.news.no_news_to_show'|trans }}</h3>
+        {% endif %}
         <a id="next" href="#"></a>
     </div>
 {% endblock %}

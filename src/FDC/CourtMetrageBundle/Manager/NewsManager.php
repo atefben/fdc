@@ -85,4 +85,16 @@ class NewsManager
 
         return $newsArticles;
     }
+
+    /**
+     * @param $slug
+     * @param string $locale
+     * @return CcmNews|null
+     */
+    public function getNewsArticleBySlugAndLocale($slug, $locale = 'fr')
+    {
+        $newsArticle = $this->em->getRepository(CcmNews::class)->getNewsArticleBySlugAndLocale($slug, $locale);
+
+        return $newsArticle;
+    }
 }

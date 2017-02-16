@@ -30,7 +30,6 @@ class NewsController extends Controller
         $news = $newsManager->getNewsArticlesForListPage($locale);
 
         return $this->render('@FDCCourtMetrage/news/news.html.twig', [
-            'locale'  => $locale,
             'news'    => $news,  
             'filters' => $filters
         ]);
@@ -48,6 +47,14 @@ class NewsController extends Controller
         /** @var NewsManager $newsManager */
         $newsManager = $this->get('ccm.manager.news');
         
-        return new Response('Details page for CCM news with slug: ' . $slug);
+        $article = $newsManager->getNewsArticleBySlugAndLocale($slug, $locale);
+
+        if ($article == null) {
+            throw $this->createNotFoundException();
+        }
+        
+        return $this->render('@FDCCourtMetrage/news/news_details.html.twig', [
+            'article' => $article
+        ]);
     }
 }

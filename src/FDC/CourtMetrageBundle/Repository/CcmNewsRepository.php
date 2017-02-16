@@ -108,4 +108,44 @@ class CcmNewsRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * @param $slug
+     * @param string $locale
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getNewsArticleBySlugAndLocale($slug, $locale = 'fr')
+    {
+        $now = new \DateTime();
+
+        $qb =  $this
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftJoin('na1.translations', 'na1t')
+            ->leftJoin('na2.translations', 'na2t')
+            ->leftJoin('na3.translations', 'na3t')
+            ->leftJoin('na4.translations', 'na4t')
+            ->andWhere(
+                '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status) OR
+                (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status) OR
+                (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status) OR
+                (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status)'
+            )
+            ->andWhere('n.publishedAt <= :now AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
+            ->setParameters([
+                'now'    => $now,
+                'slug'   => $slug,
+                'locale' => $locale,
+                'status' => CcmNewsArticleTranslation::STATUS_PUBLISHED
+            ])
+            ->setMaxResults(1)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }
