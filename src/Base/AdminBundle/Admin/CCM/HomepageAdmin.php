@@ -85,6 +85,18 @@ class HomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('selectionSection', 'sonata_type_model_list', array(
+                'label'    => 'form.ccm.label.court.film_selection',
+                'required' => true,
+                'btn_add' => false,
+                ))
+            ->add('courtIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.court.court_is_activated',
+                'required' => false,
+            ))
+            ->add('courtYear', 'text', array(
+                'label'    => 'form.ccm.label.court.court_year',
+            ))
         ;
     }
     /**

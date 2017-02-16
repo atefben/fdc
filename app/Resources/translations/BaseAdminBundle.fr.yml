@@ -696,6 +696,11 @@ form:
                 goldenTitleSize: Taille du Titre Doré
                 buttonLabel: Libellé de bouton
                 url: URL de la slide
+            court:
+                homepage: Module Courts en compétition
+                film_selection: Liste des films
+                court_is_activated: Activer le module
+                court_year: L’année
             homepage_slider_type: Ajouter
             homepage_push_type: Ajouter
             pushes: Module Push

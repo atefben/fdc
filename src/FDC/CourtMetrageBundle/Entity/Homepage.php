@@ -2,10 +2,12 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
+use Base\CoreBundle\Util\Soif;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
+use Base\CoreBundle\Entity\FilmSelectionSection;
 
 /**
  * Homepage
@@ -49,10 +51,30 @@ class Homepage
     protected $pushes;
 
     /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmSelectionSection")
+     */
+    protected $selectionSection;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $courtYear;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $courtIsActive = false;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
-
 
     /**
      * Homepage constructor.
@@ -166,6 +188,8 @@ class Homepage
     public function setPushes($pushes)
     {
         $this->pushes = $pushes;
+
+        return $this;
     }
 
     /**
@@ -191,5 +215,71 @@ class Homepage
     public function removePush(HomepagePush $push)
     {
         $this->pushes->removeElement($push);
+    }
+
+    /**
+     * Get selectionSection.
+     *
+     * @return FilmSelectionSection
+     */
+    public function getSelectionSection()
+    {
+        return $this->selectionSection;
+    }
+
+    /**
+     * Set selectionSection.
+     *
+     * @param FilmSelectionSection $selectionSection
+     */
+    public function setSelectionSection($selectionSection)
+    {
+        $this->selectionSection = $selectionSection;
+
+        return $this;
+    }
+
+    /**
+     * Get CourtIsActive.
+     *
+     * @return bool
+     */
+    public function getCourtIsActive()
+    {
+        return $this->courtIsActive;
+    }
+
+    /**
+     * Set courtIsActive.
+     *
+     * @param bool $courtIsActive
+     */
+    public function setCourtIsActive($courtIsActive)
+    {
+        $this->courtIsActive = $courtIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Get courtYear.
+     *
+     * @return string
+     */
+    public function getCourtYear()
+    {
+        return $this->courtYear;
+    }
+
+    /**
+     * Set courtYear.
+     *
+     * @param string $courtYear
+     */
+    public function setCourtYear($courtYear)
+    {
+        $this->courtYear = $courtYear;
+
+        return $this;
     }
 }

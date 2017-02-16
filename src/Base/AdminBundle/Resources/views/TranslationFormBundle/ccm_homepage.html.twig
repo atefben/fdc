@@ -3,6 +3,21 @@
 <div class="a2lix_translations tabbable">
     {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
     {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
+    </br></br>
+    <div class="col-md-12">
+        <div class="box box-success">
+            <h4> {{'form.ccm.label.court.homepage'|trans}}</h4>
+        </div>
+        {{ form_label(form.parent.courtIsActive) }}
+        {{ form_widget(form.parent.courtIsActive) }}
+        </br>
+        {{ form_label(form.parent.courtYear) }}
+        {{ form_widget(form.parent.courtYear) }}
+        </br>
+        {{ form_label(form.parent.selectionSection) }}
+        {{ form_widget(form.parent.selectionSection) }}
+        </br></br>
+    </div>
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
