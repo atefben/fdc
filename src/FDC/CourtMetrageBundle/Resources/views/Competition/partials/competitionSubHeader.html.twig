@@ -21,10 +21,10 @@
             <a href="{{ path('fdc_court_metrage_competition_selection') }}" class='{{ isSelection ? 'active ' : ' ' }}'>{{ selectionTab.name }}</a>
         </li>
         <li>
-            <a href="{{ path('fdc_court_metrage_competition_jury') }}" class="{{ isJury ? 'active ' : ' ' }}">Jury</a>
+            <a href="{{ path('fdc_court_metrage_competition_jury') }}" class="{{ isJury ? 'active ' : ' ' }}">{{ juryTab.name }}</a>
         </li>
         <li>
-            <a href="{{ path('fdc_court_metrage_competition_palmares') }}" class="{{ isPalmares ? 'active ' : ' ' }}">Palmarès</a>
+            <a href="{{ path('fdc_court_metrage_competition_palmares') }}" class="{{ isPalmares ? 'active ' : ' ' }}">{{ palmaresTab.name }}</a>
         </li>
     </ul>
 </div>

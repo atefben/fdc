@@ -625,6 +625,11 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     ccm:
+        film_register:
+            title: Têtière titre
+            text: Text
+            header_photo: Têtière photo
+            is_text_active: active
         label:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover

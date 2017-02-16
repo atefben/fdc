@@ -2,13 +2,14 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
+use FDC\CourtMetrageBundle\Entity\CcmFilmRegisterTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTabTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CcmShortFilmCompetitionTabAdmin extends Admin
+class CcmFilmRegisterAdmin extends Admin
 {
     public function configure()
     {
@@ -56,29 +57,33 @@ class CcmShortFilmCompetitionTabAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
-                    'name'          => array(
-                        'label'              => 'form.ccm.label.competition_tab_name',
+                    'title'          => array(
+                        'label'              => 'form.ccm.film_register.title',
                         'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'text'          => array(
+                        'label'              => 'form.ccm.film_register.text',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'ckeditor',
                     ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
-                        'choices'                   => CcmShortFilmCompetitionTabTranslation::getStatuses(),
+                        'choices'                   => CcmFilmRegisterTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     )
                 )
             ))
-            ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.ccm.label.image',
+            ->add('isTextActive', 'checkbox', array(
+                'label' => 'form.ccm.film_register.is_text_active',
+                'required' => false
+            ))
+            ->add('headerPhoto', 'sonata_type_model_list', array(
+                'label' => 'form.ccm.film_register.header_photo',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
-            ))
-            ->add('selectionSection', 'sonata_type_model_list', array(
-                'label'    => 'form.ccm.label.film_selection',
-                'required' => true,
-                'btn_add' => false,
             ))
         ;
     }

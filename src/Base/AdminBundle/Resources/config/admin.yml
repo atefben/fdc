@@ -2452,6 +2452,14 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – Palmarès}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_film_register:
+        class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegister, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: Inscrire un film}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
     base.admin.ccm_menu:
         class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]

@@ -2,6 +2,8 @@
 
 namespace FDC\CourtMetrageBundle\Controller;
 
+use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTabTranslation;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class CompetitionController extends CcmController
@@ -15,6 +17,10 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
+        $translationStatus = $selectionTab->getStatus();
+        if(!$selectionTab || ($translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
+            throw new NotFoundHttpException();
+        }
         $juryTab = $competitionManager->getJuryTab();
         $palmaresTab = $competitionManager->getPalmaresTab();
         $festivalId = $this->getFestival()->getId();
@@ -38,7 +44,14 @@ class CompetitionController extends CcmController
 
         $selectionTab = $competitionManager->getSelectionTab();
         $juryTab = $competitionManager->getJuryTab();
+
+        $translationStatus = $juryTab->getStatus();
+        if(!$juryTab || ($translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
+            throw new NotFoundHttpException();
+        }
+
         $palmaresTab = $competitionManager->getPalmaresTab();
+
         $festival = $this->getFestival();
 
         $jury = $competitionManager->getJury($festival->getId());
@@ -63,6 +76,12 @@ class CompetitionController extends CcmController
         $selectionTab = $competitionManager->getSelectionTab();
         $juryTab = $competitionManager->getJuryTab();
         $palmaresTab = $competitionManager->getPalmaresTab();
+
+        $translationStatus = $palmaresTab->getStatus();
+        if(!$palmaresTab || ($translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
+            throw new NotFoundHttpException();
+        }
+
         $festival = $this->getFestival();
 
         $palmares = $competitionManager->getPalmares($festival->getId());
