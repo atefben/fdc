@@ -22,7 +22,15 @@ class FDCCourtMetrageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $configFiles = array(
+            'form.yml',
+        );
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        foreach ($configFiles as $configFile) {
+            $loader->load($configFile);
+        }
     }
 }

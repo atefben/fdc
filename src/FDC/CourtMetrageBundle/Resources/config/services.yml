@@ -17,7 +17,7 @@ services:
 
     ccm.manager.participate:
         class: FDC\CourtMetrageBundle\Manager\ParticipateManager
-        
+
     ccm.manager.homepage:
         class: FDC\CourtMetrageBundle\Manager\HomepageManager
         arguments:

@@ -44,7 +44,7 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'homepage_slider_type' %}
+                                            {% if widget.children._type.vars.value == 'ccm_homepage_slider_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.slider.homepage'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <a class="btn btn-primary btn-add-base-widget"
-                                   data-prototype="{{ form_widget(form.parent.children.sliders.vars.prototypes.homepage_slider_type)|escape }}"><i
+                                   data-prototype="{{ form_widget(form.parent.children.sliders.vars.prototypes.ccm_homepage_slider_type)|escape }}"><i
                                             class="icon-plus"></i>{{ 'form.ccm.label.homepage_slider_type'|trans }}</a>
                             </div>
 
@@ -74,12 +74,11 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.pushes.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'homepage_push_type' %}
+                                            {% if widget.children._type.vars.value == 'ccm_homepage_push_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.push.homepage'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
-                                            {{ form_row(widget.isActive) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
 
                                             <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -89,7 +88,7 @@
                                     {% endfor %}
                                 </div>
                                 <a class="btn btn-primary btn-add-base-widget"
-                                   data-prototype="{{ form_widget(form.parent.children.pushes.vars.prototypes.homepage_push_type)|escape }}"><i
+                                   data-prototype="{{ form_widget(form.parent.children.pushes.vars.prototypes.ccm_homepage_push_type)|escape }}"><i
                                             class="icon-plus"></i>{{ 'form.ccm.label.homepage_push_type'|trans }}</a>
                             </div>
                         </div>
@@ -110,7 +109,6 @@
                                         <div class="item base-widget">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
-                                            {{ form_row(widget.isActive) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}

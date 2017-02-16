@@ -93,10 +93,6 @@ class HomepagePushType extends AbstractType
                 'btn_delete' => false,
                 'required' => true
             ))
-            ->add('isActive', 'checkbox', array(
-            'label' => 'form.ccm.label.push.isActive',
-            'translation_domain' => 'BaseAdminBundle',
-            ))
         ;
     }
 
@@ -117,6 +113,6 @@ class HomepagePushType extends AbstractType
      */
     public function getName()
     {
-        return 'homepage_push_type';
+        return 'ccm_homepage_push_type';
     }
 }

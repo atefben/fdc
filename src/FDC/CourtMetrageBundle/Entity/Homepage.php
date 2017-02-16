@@ -51,6 +51,12 @@ class Homepage
     protected $pushes;
 
     /**
+     * @ORM\OneToOne(targetEntity="HomepageCatalog")
+     * @Assert\Valid
+     */
+    protected $catalog;
+
+    /**
      * @var FilmSelectionSection
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmSelectionSection")
@@ -70,6 +76,13 @@ class Homepage
      * @ORM\Column(type="boolean")
      */
     protected $courtIsActive = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $pushIsActive = false;
 
     /**
      * @var ArrayCollection
@@ -281,5 +294,47 @@ class Homepage
         $this->courtYear = $courtYear;
 
         return $this;
+    }
+
+    /**
+     * Get catalog.
+     *
+     * @return mixed
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
+    }
+
+    /**
+     * Set Catalog.
+     *
+     * @param mixed $catalog
+     */
+    public function setCatalog($catalog)
+    {
+        $this->catalog = $catalog;
+
+        return $this;
+    }
+
+    /**
+     * Get pushIsActive.
+     *
+     * @return bool
+     */
+    public function getPushIsActive()
+    {
+        return $this->pushIsActive;
+    }
+
+    /**
+     * Set pushIsActive.
+     *
+     * @param bool $pushIsActive
+     */
+    public function setPushIsActive($pushIsActive)
+    {
+        $this->pushIsActive = $pushIsActive;
     }
 }

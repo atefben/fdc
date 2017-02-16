@@ -741,6 +741,7 @@ services:
         calls:
             - ['setSliderAccreditationAdmin', ['@base.admin.mdf_slider_accreditation']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+<<<<<<< 558c3e99bd8bdc6f8a42a073e9ffdf3969e9a29d
 
     #CCN News Widget Forms
     base.admin.form.ccm_news_widget_type:

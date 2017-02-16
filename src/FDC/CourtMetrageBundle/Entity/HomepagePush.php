@@ -33,13 +33,6 @@ class HomepagePush
     protected $image;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $isActive = false;
-
-    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -88,28 +81,6 @@ class HomepagePush
     public function setImage($image)
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive.
-     *
-     * @return bool
-     */
-    public function isIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * Set isactive.
-     *
-     * @param bool $isActive
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
 
         return $this;
     }

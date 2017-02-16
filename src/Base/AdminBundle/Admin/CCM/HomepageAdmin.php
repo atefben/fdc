@@ -5,7 +5,6 @@ namespace  Base\AdminBundle\Admin\CCM;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class HomepageAdmin extends Admin
@@ -68,7 +67,7 @@ class HomepageAdmin extends Admin
             ->add('sliders', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
-                    'homepage_slider_type',
+                    'ccm_homepage_slider_type',
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,
@@ -78,7 +77,7 @@ class HomepageAdmin extends Admin
             ->add('pushes', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
-                    'homepage_push_type',
+                    'ccm_homepage_push_type',
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,
@@ -97,15 +96,6 @@ class HomepageAdmin extends Admin
             ->add('courtYear', 'text', array(
                 'label'    => 'form.ccm.label.court.court_year',
             ))
-        ;
-    }
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
         ;
     }
 
@@ -141,5 +131,13 @@ class HomepageAdmin extends Admin
         foreach ($homepage->getPushes() as $push) {
             $push->setHomepage($homepage);
         }
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }

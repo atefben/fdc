@@ -701,8 +701,11 @@ form:
                 film_selection: Liste des films
                 court_is_activated: Activer le module
                 court_year: L’année
+            catalog:
+                homepage: Le catalogue
             homepage_slider_type: Ajouter
             homepage_push_type: Ajouter
+            homepage_push: Push
             pushes: Module Push
             homepage_slider: Slide
             slide: Module Slider
