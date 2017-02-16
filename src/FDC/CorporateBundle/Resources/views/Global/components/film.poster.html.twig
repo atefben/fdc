@@ -1,7 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% spaceless %}
-
     {% set media = film.imageMain|trans_fallback('file') %}
 
     {% if media is empty %}
@@ -14,7 +13,22 @@
         {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
     {% endif %}
     {% if media is empty %}
-        {% set media = film.getSelfkitImages()|first %}
+        {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') %}
+            {% set media = selfkitImage %}
+        {% endfor %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film.getSelfkitImages()|first %}
+        {% endif %}
     {% endif %}
 
     {% if film_attrs is not defined %}
@@ -51,14 +65,8 @@
                 {% endif %}
             {% endif %}
             {% set legacy = get_legacy_film_image(film) %}
-            {% if legacy %}
-                <img src="{{ selfkit_amazon_url }}{{ legacy.fichier }}"
-                     alt="{{ legacy.titre?:'Affiche du film' }}"
-                     data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
-            {% else %}
-                <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"
-                     data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
-            {% endif %}
+            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"
+                 data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
         {% endif %}
     {% endif %}
 {% endspaceless %}
