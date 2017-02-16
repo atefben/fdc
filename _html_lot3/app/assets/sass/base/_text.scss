@@ -924,8 +924,16 @@ a {
 .arrows {
   opacity: 0;
   transition: .3s;
-  z-index: 1;
+  z-index: 3;
   position: relative;
+
+  .single-movie & {
+    .icon {
+      font-size: 1rem;
+      position: relative;
+      top: 2px;
+    }
+  }
 
   .ie & {
     display: none;

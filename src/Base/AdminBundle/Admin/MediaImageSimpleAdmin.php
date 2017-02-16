@@ -178,6 +178,15 @@ class MediaImageSimpleAdmin extends Admin
 
     public function prePersist($object)
     {
+        if ($object instanceof MediaImageSimple) {
+            foreach ($object->getTranslations() as $translation) {
+                if ($translation instanceof MediaImageSimpleTranslation) {
+                    if ($translation->getFile()) {
+                        $translation->getFile()->setUploadedFromBO(true);
+                    }
+                }
+            }
+        }
         session_write_close();
         $object->findTranslationByLocale('fr')->setStatus(1);
         $object->preUpdate($object);
@@ -185,6 +194,15 @@ class MediaImageSimpleAdmin extends Admin
 
     public function preUpdate($object)
     {
+        if ($object instanceof MediaImageSimple) {
+            foreach ($object->getTranslations() as $translation) {
+                if ($translation instanceof MediaImageSimpleTranslation) {
+                    if ($translation->getFile()) {
+                        $translation->getFile()->setUploadedFromBO(true);
+                    }
+                }
+            }
+        }
         session_write_close();
         $object->findTranslationByLocale('fr')->setStatus(1);
 //        $object->findTranslationByLocale('en')->setStatus(1);

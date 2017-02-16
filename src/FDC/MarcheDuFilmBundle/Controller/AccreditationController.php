@@ -2,8 +2,10 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\AccreditationTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AccreditationController extends Controller
 {
@@ -17,6 +19,13 @@ class AccreditationController extends Controller
         $contactManager = $this->get('mdf.manager.contact');
 
         $accreditationContent = $accreditationManager->getAccreditationContent();
+
+        $pageTranslationStatus = $accreditationContent->getStatus();
+        if(($pageTranslationStatus != AccreditationTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != AccreditationTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $accreditationWidgets = $accreditationManager->getAccreditationWidgets();
         $newsContent = $contentTemplateManager->getHomepageNewsContent();
         $contact = $contactManager->getContactInfo();

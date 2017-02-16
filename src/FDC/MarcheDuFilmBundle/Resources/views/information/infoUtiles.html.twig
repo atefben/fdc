@@ -28,7 +28,7 @@
                                         {% for questionAnswer in infoQuestionsAnswers[rubrique.translatable.id] %}
                                             <li id="rubrique-{{ rubriqueIndex }}-{{ loop.index }}" {% if questionAnswer.questionText|length > 76 %}class="bigLi"{% endif %}>
                                                 <div class="open"><h5>{{ questionAnswer.questionText }}</h5><span id="rubrique-plus-{{ rubriqueIndex }}-{{ loop.index }}" class="openPlus">+</span><span id="rubrique-minus-{{ rubriqueIndex }}-{{ loop.index }}" class="openMinus">-</span></div>
-                                                <div id="rubrique-content-{{ rubriqueIndex }}-{{ loop.index }}" class="content">
+                                                <div id="rubrique-content-{{ rubriqueIndex }}-{{ loop.index }}" class="content customClass1">
                                                     {{ questionAnswer.answerText|raw }}
                                                 </div>
                                             </li>

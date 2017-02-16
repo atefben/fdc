@@ -3,6 +3,7 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
 {% set selfkits = movie.selfkitImages %}
+{% block bodyClass %}article-single retrospective retrospective-home restrospective-init loading{% endblock bodyClass %}
 
 {% block body %}
     <section class="s-slider-retrospective">
@@ -12,6 +13,7 @@
     <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-movie">
+        
         {% include 'FDCCorporateBundle:Movie:components/pagination.html.twig' %}
 
         <span id="plx"></span>
@@ -115,7 +117,7 @@
 
         {% include 'FDCEventBundle:Movie:components/contact.html.twig' with {'corpo':true} %}
 
-        {% include 'FDCEventBundle:Movie:widgets/competition.html.twig' %}
+        {% include 'FDCCorporateBundle:Movie:widgets/competition.html.twig' %}
 
     </div>
     <span class="anim"></span>

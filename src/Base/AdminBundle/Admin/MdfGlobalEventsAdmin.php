@@ -87,10 +87,6 @@ class MdfGlobalEventsAdmin extends Admin
                 'inline'   => 'table',
                 'sortable' => 'position',
             ))
-            ->add('isActive', 'checkbox', array(
-                'label' => 'form.mdf.active',
-                'required' => false
-            ))
         ;
     }
 

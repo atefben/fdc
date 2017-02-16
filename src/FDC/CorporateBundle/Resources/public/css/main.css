@@ -2315,8 +2315,13 @@ a {
 .arrows {
   opacity: 0;
   transition: .3s;
-  z-index: 1;
+  z-index: 3;
   position: relative;
+}
+.single-movie .arrows .icon {
+  font-size: 1rem;
+  position: relative;
+  top: 2px;
 }
 .ie .arrows {
   display: none;
@@ -3094,7 +3099,7 @@ video {
     opacity: 0;
   }
 }
-/* empêche la sélection */
+/* emp├¬che la s├®lection */
 [draggable] {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -3514,7 +3519,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #383738;
 }
 .block-push-top .date-back {
-  left: 18px;
+  left: 111px;
   top: 50%;
   transform: rotate(-90deg);
   transition: left .4s ease;
@@ -3524,7 +3529,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: 1.4rem;
 }
 .block-push-top .date-next {
-  right: 20px;
+  right: 111px;
   top: 50%;
   transform: rotate(90deg);
 }
@@ -3614,6 +3619,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-videos {
   padding-top: 25px;
   padding-bottom: 25px;
+}
+.block-videos + .block-legend {
+  padding-top: 21px;
 }
 
 .block-films {
@@ -3729,16 +3737,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-movie-preview .wrapper-item {
   width: 977px;
-  display: -ms-flexbox;
-  display: flex;
   margin: 30px auto;
   height: auto;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
-  align-items: center;
-  -webkit-justify-content: center;
+      align-items: center;
   -ms-flex-pack: center;
+      justify-content: center;
 }
 .ie .block-movie-preview .wrapper-item {
   width: 87%;
@@ -3935,16 +3941,28 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: -9px;
 }
 .palmares .block-movie-preview .wrapper-item {
-  width: 679px;
+  width: 593px;
 }
 .palmares .block-movie-preview .name-award {
   width: 331px;
 }
 .palmares .block-movie-preview .infos {
-  margin-left: 90px;
+  margin-left: 2px;
+  left: 94px;
+  position: relative;
 }
 .palmares .block-movie-preview .line:after {
-  margin: 17px auto;
+  margin: 8px auto;
+  margin-bottom: 0px;
+}
+.selection .block-movie-preview .date-infos {
+  margin-right: 0px;
+}
+.selection .block-movie-preview .infos {
+  margin-left: 50px;
+}
+.selection .block-movie-preview .description {
+  width: 507px;
 }
 
 .block-list-img {
@@ -4090,6 +4108,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-poster .title-11 {
   display: block;
+}
+.block-poster .title-12 {
+  display: inline-block;
+}
+.block-poster .last-line {
+  margin-bottom: 0px;
 }
 .block-poster .contain-txts {
   box-sizing: border-box;
@@ -4758,6 +4782,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   border-bottom: 1px solid #e0e0e0;
   padding: 41px 0;
 }
+.block-accordion-02 .item-partners.last {
+  border-bottom: 0px solid #e0e0e0;
+}
 .block-accordion-02 .item-partners .text-partners {
   width: 551px;
   display: inline-block;
@@ -5238,6 +5265,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-top: 55px;
   display: none;
 }
+.block-contain-txt-register-movie .info {
+  text-align: left;
+}
+.block-contain-txt-register-movie .info .title-info {
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  display: block;
+}
 .block-contain-txt-register-movie em {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
@@ -5716,6 +5751,13 @@ strong.title-center {
   letter-spacing: normal;
 }
 
+.txt-grey-bkg-container-paragraph {
+  background-color: #f6f6f6;
+  display: block;
+  font-size: 1rem;
+  padding: 20px;
+}
+
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
@@ -6191,7 +6233,7 @@ strong.title-center {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -6943,6 +6985,13 @@ body.chocolat-open > .chocolat-content {
 .ie .slider-restropective .block-01 .vFlexAlign img {
   height: 404px;
 }
+.ie .slider-restropective .block-01 .vFlexAlign img.open {
+  height: auto;
+}
+
+.block-search .content-result .artist .item, .block-search .content-result .movies .item {
+  width: 162px;
+}
 
 .isotope-01 .item.block-poster img {
   display: block;
@@ -7031,6 +7080,10 @@ h2.sub-title {
   font-size: .8rem;
 }
 
+.block-contain-txt-register-movie .info {
+  margin-top: 42px !important;
+}
+
 .text-01 sub {
   vertical-align: sub !important;
 }
@@ -7050,7 +7103,8 @@ h2.sub-title {
 
 .block-search .more-search .country {
   text-transform: none !important;
-  background: url(../img/arrow-down.png) no-repeat right 50%;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  padding-bottom: 8px;
 }
 
 .block-search .tabs-two label {
@@ -7076,6 +7130,14 @@ h2.sub-title {
 
 .faq {
   min-height: 513px;
+}
+
+.article-single .text .table-article a strong, .single-movie .text .table-article a strong {
+  color: #c8a461;
+}
+
+.affiche-fdc .block-movie-preview .poster:hover {
+  cursor: pointer;
 }
 
 /* thomon - end fixes */
@@ -9245,6 +9307,10 @@ header #searchContainer {
   float: left;
 }
 
+.articles-list-medias .card-01.double.w2 .image {
+  width: auto;
+}
+
 .isotope-01 {
   /*
   body#home .article-inverse & .item.w2.double {
@@ -9258,6 +9324,7 @@ header #searchContainer {
 .isotope-01 .item .contain-img {
   overflow: hidden;
   background-size: cover;
+  width: 100.5%;
 }
 .grid-selection .isotope-01 .item .title-13 {
   display: block;
@@ -9270,6 +9337,7 @@ body#home .article-inverse .isotope-01 .item:not(.w2):not(.double) {
 }
 body#home .isotope-01 .card {
   height: 300px;
+  min-height: 321px;
 }
 body#home .isotope-01 .card.w2 {
   height: 600px;
@@ -10131,14 +10199,14 @@ body#home .isotope-01 .item .contain-img {
   left: -5%;
 }
 .slider-restropective .calc3 img.i2 {
-  top: 50%;
+  top: 38%;
   position: relative;
-  right: 5%;
+  right: 21%;
 }
 .slider-restropective .calc3 img.i3 {
   position: relative;
-  top: 2%;
-  left: 8%;
+  top: 3%;
+  left: 1%;
 }
 .slider-restropective .calc4 {
   position: absolute;
@@ -10306,6 +10374,8 @@ body#home .isotope-01 .item .contain-img {
 .slider-restropective.big .vFlexAlign img.open {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
   min-height: 107%;
+  min-width: 100%;
+  width: auto;
 }
 .slider-restropective.big .vFlexAlign .texts.visible {
   display: block;
@@ -10741,9 +10811,9 @@ Slider channel
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -10769,11 +10839,11 @@ Slider channel
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -10796,19 +10866,19 @@ Slider channel
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -11831,9 +11901,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .video-container .top-bar .info {
   color: #666;
   display: block;
-  height: 100%;
   float: left;
-  margin-top: 0;
+  margin-top: 21px;
   margin-left: 25px;
   position: relative;
   text-align: left;
@@ -13386,6 +13455,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .icon-s .icon.icon-movie-clap {
   font-size: 1.2rem;
   margin-bottom: 6px;
+  position: relative;
+  top: 2px;
 }
 .block-search .icon-s:last-child {
   border-right: 1px solid #2c2c2c !important;
@@ -13412,8 +13483,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   vertical-align: sub;
   margin-right: 10px;
 }
+.block-search .icon-s .icon.icon-video {
+  height: 13px;
+  position: relative;
+  top: -1px;
+}
 .block-search .icon-s input {
   opacity: 0;
+  position: absolute;
 }
 .block-search .icon-s.active, .not-mobile .block-search .icon-s:hover {
   color: #c8a461;
@@ -13439,9 +13516,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 0px solid #000;
   border-right: 0px solid #000;
   width: 100%;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .block-search .more-search.active {
   display: table;
@@ -13520,11 +13597,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search [type="checkbox"]:not(:checked) + label,
 .block-search .more-search [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 29px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:before,
 .block-search .more-search [type="checkbox"]:checked + label:before {
@@ -13547,19 +13624,19 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 12px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .block-search .more-search [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;
@@ -13915,6 +13992,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 17px;
   position: relative;
   top: -2px;
+  left: 17px;
 }
 .single-movie .block-films {
   height: auto;
@@ -13924,7 +14002,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: block;
 }
 .single-movie .content-movie .tetiere-movie {
-  height: 290px;
+  height: auto;
 }
 .single-movie .relative {
   float: right;
@@ -14001,6 +14079,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .prevmovie .img img, .single-movie .nextmovie .img img {
   display: block;
+  width: 100%;
 }
 .single-movie .prevmovie .info, .single-movie .nextmovie .info {
   height: 203px;
@@ -14139,6 +14218,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 26px;
   position: relative;
   top: 27%;
+  left: 31%;
 }
 .single-movie .poster .picto:hover + img {
   transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -14472,9 +14552,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   vertical-align: middle !important;
   margin-bottom: 2px;
 }
-.single-movie .main-image .links a:last-child {
-  float: right;
-}
 .single-movie .main-image .links a:hover {
   opacity: 0.6;
 }
@@ -14562,6 +14639,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 1.8rem;
   margin-top: 25px;
   margin-left: 27px;
+  left: 16px;
 }
 .single-movie .videos .video-player .info {
   height: 80px;

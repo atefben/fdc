@@ -3,79 +3,83 @@
 {% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark not-mobile{% endblock %}
 
 {% block body %}
-<section class="padding-bottom border-bottom s-slider-retrospective">
+    <section class="padding-bottom border-bottom s-slider-retrospective">
 
-    {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
-    <div class="ajax-section"><div class="contain-ajax grid-selection">
+        <div class="ajax-section">
+            <div class="contain-ajax grid-selection">
 
-            {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
-            {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
+                {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
 
-            <div class="all-contain">
-                <div class="isotope-01">
+                <div class="all-contain">
+                    <div class="isotope-01">
 
-                    <div class="grid-sizer"></div>
+                        <div class="grid-sizer"></div>
 
-                    {% for movie in movies %}
-                        <div class="item block-poster">
-                            <a href="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}">
-                                <div class="contain-img">
-                                    {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
-                                    film: movie,
-                                    film_format: '240x320',
-                                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                                    }) %}
-                                </div>
-                                <div class="contain-txts vFlexAlign">
-                                    {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
-                                        <span class="title-11">{{ movie.titleVo }}</span><br />
-                                        <span class="title-13">({{ movie|trans_fallback_movie('title') }})</span>
-                                    {% else %}
-                                        <span class="title-11">{{ movie.titleVo }}</span>
-                                    {% endif %}
-                                    {% for director in movie.getDirectors() %}
-                                        <a class="title-12" href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</a>
-                                    {% endfor %}
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
+                        {% for movie in movies %}
+                            <div class="item block-poster">
+                                <a href="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}">
+                                    <div class="contain-img">
+                                        {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
+                                        film: movie,
+                                        film_format: '240x320',
+                                        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg'
+                                        }) %}
+                                    </div>
+                                    <div class="contain-txts vFlexAlign">
+                                        {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
+                                            <span class="title-11">{{ movie.titleVo }}</span><br/>
+                                            <span class="title-13">({{ movie|trans_fallback_movie('title') }})</span>
+                                        {% else %}
+                                            <span class="title-11">{{ movie.titleVo }}</span>
+                                        {% endif %}
+                                        {% if movie.getDirectors()|length %}
+                                            <div class="title-12">
+                                                {% for director in movie.getDirectors() %}
+                                                    <a class="title-12" href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', ' }}</a>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
 
-                </div> <!-- end isotope 01 -->
-            </div> <!-- end all contain -->
+                    </div> <!-- end isotope 01 -->
+                </div> <!-- end all contain -->
+            </div>
         </div>
-    </div>
-</section>
-{% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-{
-"name" : 'breadcrumb.69editions.home'|trans,
-"url"  : path('fdc_corporate_default_home')
-},
-{
-"name" : 'breadcrumb.retrospective.home'|trans,
-"url"  : path('fdc_corporate_editions_retrospective')
-},
-{
-"name" : app.request.attributes.get('year'),
-"url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-},
-{
-"name" : 'breadcrumb.la_selection'|trans,
-"url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
-},
-{
-"name" : (page|trans_fallback('overrideName')?:page.selectionSection|trans_fallback('name'))|trans,
-"url"  : ''
-}
-]} %}
-{{ render(controller('FDCCorporateBundle:Global:shareEmail',
-{'section': '',
-    'detail' : '',
-    'title'  : '',
-    'description': '',
-    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-}))
-}}
+    </section>
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.la_selection'|trans,
+    "url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : (page|trans_fallback('overrideName')?:page.selectionSection|trans_fallback('name'))|trans,
+    "url"  : ''
+    }
+    ]} %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}

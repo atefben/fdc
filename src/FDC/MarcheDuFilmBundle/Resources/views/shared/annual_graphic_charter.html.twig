@@ -160,6 +160,10 @@
         border-color: {{ graphicCharter.color4 }} !important;
         color: {{ graphicCharter.color4 }} !important;
     }
+    .contact #form input[type="submit"]:hover {
+        border-color: #000 !important;
+        color: #000 !important;
+    }
     #our-services .services-boxes:hover {
         background: {{ graphicCharter.color2 }} !important;
         color: #FFFFFF !important;
@@ -172,6 +176,9 @@
         background-color: {{ graphicCharter.color1 }} !important;
     }
     .customClass1 a:link {
+        color: {{ graphicCharter.color1 }} !important;
+    }
+    .customClass1 a:visited {
         color: {{ graphicCharter.color1 }} !important;
     }
     .siteMap .thirdSection ul li, .siteMap .thirdSection ul a {
@@ -188,5 +195,21 @@
     }
     .results .results-boxes .active {
         color: {{ graphicCharter.color4 }} !important;
+    }
+
+    ul.tabs .active h4 {
+        color: {{ graphicCharter.color2 }} !important;
+    }
+
+    .subNavigation ul li a:hover {
+        color: {{ graphicCharter.color2 }};
+    }
+
+    .read-more-state ~ .read-more-trigger:before {
+        content: "{{ 'detailDeService.readMore'|trans }}";
+    }
+
+    .read-more-state:checked ~ .read-more-trigger:before {
+        content: "{{ 'detailDeService.close'|trans }}";
     }
 </style>

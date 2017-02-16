@@ -2,7 +2,15 @@
 .slider-restropective .block-01 .vFlexAlign img {
   .ie & {
     height: 404px;
+
+    &.open {
+        height: auto;
+    }
   }
+}
+
+.block-search .content-result .artist .item, .block-search  .content-result .movies .item{
+    width: 162px;
 }
 
 .isotope-01 .item.block-poster img {
@@ -91,6 +99,10 @@ h2.sub-title {
 	font-size: .8rem;
 }
 
+.block-contain-txt-register-movie .info {
+  margin-top: 42px !important;
+}
+
 .text-01 sub {
 	vertical-align: sub!important;
 }
@@ -107,7 +119,9 @@ h2.sub-title {
 
 .block-search .more-search .country {
     text-transform: none!important;
-    background: url(../img/arrow-down.png) no-repeat right 50%;
+    //background: url(../img/arrow-down.png) no-repeat right 50%;
+  font-family: $CamphorItalic;
+  padding-bottom: 8px;
 }
 
 .block-search .tabs-two label {
@@ -131,4 +145,13 @@ h2.sub-title {
     min-height: 513px;
 }
 
+.article-single .text .table-article a strong, .single-movie .text .table-article a strong{
+  color: $gold;
+}
+
+
+
+.affiche-fdc .block-movie-preview .poster:hover {
+  cursor: pointer;
+}
 /* thomon - end fixes */

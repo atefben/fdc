@@ -2,6 +2,8 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfSpeakersTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,6 +28,12 @@ class ThemeController extends Controller
         $speakersPage = $speakersManager->getSpeakersPageByLocale($slug);
 
         if(!$speakersPage) {
+            throw new NotFoundHttpException();
+        }
+
+        $pageTranslationStatus = $speakersPage->getStatus();
+        if(($pageTranslationStatus != MdfSpeakersTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfSpeakersTranslation::STATUS_PUBLISHED))
+        {
             throw new NotFoundHttpException();
         }
 
@@ -64,6 +72,12 @@ class ThemeController extends Controller
         $conferenceProgramPage = $conferenceProgramManager->getConferenceProgramPageBySlug($slug);
 
         if(!$conferenceProgramPage) {
+            throw new NotFoundHttpException();
+        }
+
+        $pageTranslationStatus = $conferenceProgramPage->getStatus();
+        if(($pageTranslationStatus != MdfConferenceProgramTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfConferenceProgramTranslation::STATUS_PUBLISHED))
+        {
             throw new NotFoundHttpException();
         }
 

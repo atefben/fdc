@@ -20,6 +20,7 @@
                 <div class="dropdown">
                     <span>{{ 'display'|trans }}</span>
                     <div id="eventSelector">
+                        <div class="selectText" id="showAll">{{ 'filter_all'|trans }}</div>
                         {% for key, item in conferences %}
                             {% set conferenceTitle = '' %}
                             {% if item == 'form.mdf.label.conference_producers_workshop' %}
@@ -35,15 +36,15 @@
                             {% elseif item == 'form.mdf.label.conference_goes_to_cannes' %}
                                 {% set conferenceTitle = 'conference_title.goes_to_cannes'|trans %}
                             {% endif %}
-                            <div class="selectText" id="{{ key }}">{{ conferenceTitle }}{% if loop.last ==false %},{% endif %}</div>
+                            <div class="selectText hideAll" id="{{ key }}-filter">{{ conferenceTitle }}{% if loop.last ==false %},{% endif %}</div>
                         {% endfor %}
                     </div>
                     <div class="dropArrow">
                         <i class="icon icon_flecheGauche"></i>
                     </div>
                 </div><br>
-                <div class="selector">
-                    <div class="purpleBtn selectbtn confBtn" id="all">{{ 'filter_all'|trans }}</div>
+                <div class="selector marketnewsSelector">
+                    <div class="purpleBtn selectbtn marketnewsBtn" id="all">{{ 'filter_all'|trans }}</div>
                     {% for key, item in conferences %}
                         {% set conferenceTitle = '' %}
                         {% if item == 'form.mdf.label.conference_producers_workshop' %}
@@ -59,7 +60,7 @@
                         {% elseif item == 'form.mdf.label.conference_goes_to_cannes' %}
                             {% set conferenceTitle = 'conference_title.goes_to_cannes'|trans %}
                         {% endif %}
-                        <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}">{{ conferenceTitle }}</div>
+                        <div class="selectbtn confBtn" id="{{ key }}" rel="{{ key }}-filter">{{ conferenceTitle }}</div>
                     {% endfor %}
                 </div>
                 <div class="conferencesMenu">

@@ -21,14 +21,7 @@ class EditionsController extends Controller
      */
     public function retrospectiveAction()
     {
-        $festivals = $this
-            ->getDoctrine()
-            ->getRepository('BaseCoreBundle:FilmFestival')
-            ->findAll()
-        ;
-        return $this->render('FDCCorporateBundle:Retrospective:years_slider.html.twig', [
-            'festivals' => $festivals,
-        ]);
+        return $this->render('FDCCorporateBundle:Retrospective:years_slider.html.twig');
     }
 
     /**
@@ -54,7 +47,7 @@ class EditionsController extends Controller
         $medias = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Media')
-            ->getImageMedia($locale, $festival->getId())
+            ->getImageMedia($locale, $festival->getId(), null, null, 'site-institutionnel')
         ;
 
         //news
@@ -83,38 +76,6 @@ class EditionsController extends Controller
     }
 
     /**
-     * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
-     * @param $year
-     * @return RedirectResponse
-     */
-    public function yearAction($year)
-    {
-        /*$locale = $request->getLocale();
-
-        $pages = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
-            ->getPagesOrdoredBySelectionSectionOrder($locale);
-
-        foreach ($pages as $page) {
-            if ($page instanceof FDCPageLaSelection) {
-                if ($page->findTranslationByLocale($locale)) {
-                    $slug = $page->findTranslationByLocale($locale)->getSlug();
-                }
-                if (!$slug) {
-                    $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
-                }
-                if ($slug) {
-                    return $this->redirectToRoute('fdc_corporate_movie_selection', array('slug' => $slug, 'year' => $year));
-                }
-            }
-        }
-        throw $this->createNotFoundException('There is not available selection.');*/
-        return $this->redirectToRoute('fdc_corporate_movie_selection', array('year' => $year));
-    }
-
-
-    /**
      * @Route("/retrospective/{year}/affiche", requirements={"year" = "\d+"})
      * @param Request $request
      * @param $year
@@ -123,12 +84,6 @@ class EditionsController extends Controller
     public function afficheAction(Request $request, $year)
     {
         $festival = $this->getFestival($year);
-
-        $festivals = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmFestival')
-            ->findAll()
-        ;
 
         $posters = $this
             ->getDoctrineManager()
@@ -146,9 +101,19 @@ class EditionsController extends Controller
         return $this->render('FDCCorporateBundle:Retrospective:affiche.html.twig', [
             'posters'   => $posters,
             'festival'  => $festival,
-            'festivals' => $festivals,
             'urlshare'  => $results['data']['url'],
+            'year'  => $year,
         ]);
+    }
+
+    /**
+     * @Route("/retrospective/{year}/", requirements={"year" = "\d+"})
+     * @param $year
+     * @return RedirectResponse
+     */
+    public function yearAction($year)
+    {
+        return $this->redirectToRoute('fdc_corporate_movie_selection', ['year' => $year]);
     }
 
     /**
@@ -220,7 +185,7 @@ class EditionsController extends Controller
                         $slug = $page->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_corporate_editions_palme', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_corporate_editions_palme', ['slug' => $slug]);
                     }
                 }
             }

@@ -2,6 +2,10 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfPressGalleryTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfPressGraphicalCharterTranslation;
+use FDC\MarcheDuFilmBundle\Entity\MdfPressReleaseTranslation;
+use FDC\MarcheDuFilmBundle\Entity\PressCoverageTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -30,6 +34,12 @@ class PressController extends Controller
             throw new NotFoundHttpException();
         }
 
+        $pageTranslationStatus = $pressReleasePage->getStatus();
+        if(($pageTranslationStatus != MdfPressReleaseTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfPressReleaseTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         return $this->render('FDCMarcheDuFilmBundle::presse/pressReleases.html.twig', array(
             'pressReleasePage' => $pressReleasePage,
             'news' => $newsContent
@@ -44,6 +54,13 @@ class PressController extends Controller
         $pressGalleryManager = $this->get('mdf.manager.press_gallery');
 
         $pressGalleryContent = $pressGalleryManager->getPressGalleryContent();
+
+        $pageTranslationStatus = $pressGalleryContent->getStatus();
+        if(($pageTranslationStatus != MdfPressGalleryTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfPressGalleryTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $pressGalleryWidgets = $pressGalleryManager->getPressGalleryWidgets();
 
         return $this->render('FDCMarcheDuFilmBundle:presse:pressGallery.html.twig', array(
@@ -60,6 +77,13 @@ class PressController extends Controller
         $pressGraphicalCharterManager = $this->get('mdf.manager.press_graphical_charter');
 
         $pressGraphicalCharterContent = $pressGraphicalCharterManager->getPressGraphicalCharterContent();
+
+        $pageTranslationStatus = $pressGraphicalCharterContent->getStatus();
+        if(($pageTranslationStatus != MdfPressGraphicalCharterTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfPressGraphicalCharterTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
         $pressGraphicalCharterWidgets = $pressGraphicalCharterManager->getPressGraphicalCharterWidgets();
 
         return $this->render('FDCMarcheDuFilmBundle:presse:pressGraphicalCharter.html.twig', array(
@@ -83,13 +107,20 @@ class PressController extends Controller
             ));
         } else {
             $pressCoverageContent = $pressCoverageManager->getPressCoverageContent();
+
+            $pageTranslationStatus = $pressCoverageContent->getStatus();
+            if(($pageTranslationStatus != PressCoverageTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != PressCoverageTranslation::STATUS_PUBLISHED))
+            {
+                throw new NotFoundHttpException();
+            }
+
             $pressCoverageWidgets = $pressCoverageManager->getPressCoverageWidgets();
-            $showMoreButton = $pressCoverageManager->showMoreButton();
+            $nrOfArticles = $pressCoverageManager->getNumberOfArticles();
 
             return $this->render('FDCMarcheDuFilmBundle:presse:pressCoverage.html.twig', array(
                 'pressCoverageContent' => $pressCoverageContent,
                 'pressCoverageWidgets' => $pressCoverageWidgets,
-                'showMoreButton' => $showMoreButton
+                'nrOfArticles' => $nrOfArticles
             ));
         }
     }

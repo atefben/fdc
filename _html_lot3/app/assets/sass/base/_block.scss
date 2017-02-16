@@ -531,7 +531,8 @@
 
   .date-back {
     //left: 4px;
-    left: 18px;
+    //left: 18px;
+    left: 111px;
     top: 50%;
     transform: rotate(-90deg);
     transition: left .4s ease;
@@ -545,7 +546,8 @@
 
   .date-next {
     //right: 4px;
-    right: 20px;
+    //right: 20px;
+    right: 111px;  
     top: 50%;
     transform: rotate(90deg);
 
@@ -650,6 +652,10 @@
 .block-videos {
   padding-top: 25px;
   padding-bottom: 25px;
+
+  & + .block-legend {
+    padding-top: 21px;
+  }
 }
 
 // - BLOCK FILMS
@@ -777,19 +783,11 @@
 
   .wrapper-item {
     width: 977px;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     margin: 30px auto;
     height: auto;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
+    justify-content: center;
 
     .ie & {
       width: 87%;
@@ -1026,7 +1024,8 @@
 
   .palmares &{
     .wrapper-item {
-      width: 679px;
+      //width: 679px;
+      width: 593px;
     }
 
     .name-award {
@@ -1034,11 +1033,29 @@
     }
 
     .infos {
-      margin-left: 90px;
+      //margin-left: 90px;
+      margin-left: 2px;
+      left: 94px;
+      position: relative;
     }
 
     .line:after {
-      margin: 17px auto;
+      margin: 8px auto;
+      margin-bottom: 0px;
+    }
+  }
+
+  .selection &{
+    .date-infos {
+      margin-right:0px;
+    }
+
+    .infos {
+      margin-left: 50px;
+    }
+
+    .description {
+      width: 507px;
     }
   }
 }
@@ -1231,6 +1248,14 @@
     display: block;
   }
 
+  .title-12 {
+    display: inline-block;
+  }
+
+  .last-line {
+    margin-bottom: 0px;
+  }
+
   .contain-txts {
     box-sizing: border-box;
     padding-top: 27px;
@@ -1238,6 +1263,9 @@
     flex-direction: column;
     justify-content: initial;
     text-align: center;
+
+    //height: 140px;
+
 
     .ie & {
       padding-top: 0px !important;
@@ -2025,6 +2053,10 @@
     .item-partners {
       border-bottom: 1px solid #e0e0e0;
       padding: 41px 0;
+
+      &.last{
+        border-bottom: 0px solid #e0e0e0;
+      }
     }
 
     .item-partners .text-partners {

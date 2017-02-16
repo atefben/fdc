@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
-use Symfony\Component\Validator\Constraints\Email;
+use FDC\MarcheDuFilmBundle\Entity\MdfContactPageTranslation;
 
 class MdfContactPageAdmin extends Admin
 {
@@ -72,21 +72,22 @@ class MdfContactPageAdmin extends Admin
                         ),
                         'required' => true,
                     ),
-                    'receiverEmail'          => array(
-                        'label'              => 'form.mdf.label.contact_page_email_receiver',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                            new Email(),
-                        ),
-                        'required' => true,
-                    ),
                     'body'          => array(
                         'label'              => 'form.mdf.label.contact_page_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                         'required' => false
-                    )
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfContactPageTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints'               => array(
+                            new NotBlank()
+                        )
+                    ),
                 )
             ))
             ->add('contactBlock', 'infinite_form_polycollection', array(

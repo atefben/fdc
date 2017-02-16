@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\MarcheDuFilmBundle\Entity\MdfGlobalEventsTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Sonata\AdminBundle\Tests\Datagrid\PagerTest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,8 +24,10 @@ class ProgrammeController extends Controller
         $conferences = $conferenceManager->getAllConferenceTypes();
         $globalEventsPage = $programmeManager->getGlobalEventsPage();
 
-        if (!$globalEventsPage || !$globalEventsPage->getTranslatable()->isIsActive()) {
-            throw new NotFoundHttpException("Page not found");
+        $pageTranslationStatus = $globalEventsPage->getStatus();
+        if(($pageTranslationStatus != MdfGlobalEventsTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != MdfGlobalEventsTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
         }
 
         $globalEventsDays = $programmeManager->getGlobalEventsDays($globalEventsPage);

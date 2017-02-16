@@ -86,7 +86,7 @@ class MdfConferencePartnerTabAdmin extends Admin
             ))
             ->add('partnerLogoCollection', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.conference_partner.tab.logos',
+                'label'              => 'form.mdf.conference_partner.tab.logos_list',
                 'translation_domain' => 'BaseAdminBundle',
                 'constraints'        => array(
                     new Count(

@@ -308,7 +308,7 @@ class HomepageCorporateAdmin extends Admin
             ))
             ->add('pushSecondaryImage3', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_pushes_3',
                 'required' => false,
             ))
             ->add('displayedSocialWall','checkbox',array(

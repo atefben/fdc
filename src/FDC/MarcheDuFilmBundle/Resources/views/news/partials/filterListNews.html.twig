@@ -6,7 +6,7 @@
             <div id="eventSelector">
                 <div class="selectText" id="showAll">{{ 'filter_all'|trans }}</div>
                 {% for filter in filters %}
-                    <div class="selectText hideAll" id="{{ filter.slug }}-filter">{{ filter.title }}</div>
+                    <div class="selectText hideAll" id="{{ filter.slug }}-filter">{{ filter.title }}{% if loop.last ==false %},{% endif %}</div>
                 {% endfor %}
             </div>
             <div class="dropArrow">

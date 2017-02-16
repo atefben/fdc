@@ -15,9 +15,6 @@
     <div class="info">
         <div class="vCenter">
             <div class="vCenterKid">
-                {% if widget.translatable.theme.findTranslationByLocale(app.request.locale).title is defined %}
-                    <a href="#" class="category">{{ widget.translatable.theme.findTranslationByLocale(app.request.locale).title }}</a><span class="date">{{ widget.translatable.updatedAt|date("d.m.Y") }}</span> . <span class="hour">{{ widget.translatable.updatedAt|date("H:i") }}</span>
-                {% endif %}
                 <p>{{ widget.title }}</p>
             </div>
         </div>

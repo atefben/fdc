@@ -121,4 +121,13 @@ class ConferencePartnerManager
         }
         return [];
     }
+
+    public function findConferencePartnerByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfConferencePartnerTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

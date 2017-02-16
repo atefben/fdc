@@ -1,0 +1,15 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+
+<div class="grid-01 isotope-01">
+    <div class="grid-sizer"></div>
+    {% for article in articles %}
+        {% include 'FDCCorporateBundle:News/list/include:article.html.twig' %}
+    {% endfor %}
+</div>
+
+{#<div class="bright">#}
+    {#<a href="{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}"#}
+       {#class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}#}
+    {#</a>#}
+{#</div>#}

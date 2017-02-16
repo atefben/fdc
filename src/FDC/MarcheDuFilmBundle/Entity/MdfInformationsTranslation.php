@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MdfInformationsTranslation
  * @ORM\Table(name="mdf_informations_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfInformationsTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MdfInformationsTranslation implements TranslateChildInterface

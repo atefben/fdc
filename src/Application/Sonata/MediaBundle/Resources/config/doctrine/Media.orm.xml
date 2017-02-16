@@ -21,6 +21,9 @@
         <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="false">
         </field>
 
+        <field name="uploadedFromBO" type="boolean" column="uploaded_from_bo" nullable="false">
+        </field>
+
         <one-to-many field="filmMedias" target-entity="Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
         </one-to-many>
 

@@ -26,8 +26,7 @@ class NotFoundExceptionManager
     {
         return $this->em
             ->getRepository(Mdf404Translation::class)
-            ->findOneBy(array(
-                'locale' => $locale
-            ));
+            ->getByLocaleAndStatus($locale)
+            ;
     }
 }

@@ -30,7 +30,7 @@
                                             {{ form_row(translationsFields.subTitle) }}
                                             {{ form_row(translationsFields.header) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
-                                                 data-form-widget="collection">
+                                                 data-form-widget="collection" data-itemtype="programwidget">
                                                 {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                     <div class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
@@ -85,7 +85,7 @@
                                         <div class="box-body">
                                             <div class="fdc-widgets" data-form-widget="collection">
                                                 {% for widget in form.parent.children.files.children %}
-                                                    <div class="item base-widget">
+                                                    <div class="item base-widget" data-itemtype="programfile">
                                                         {% if widget.children._type.vars.value == 'program_file_type' %}
                                                             <h4><strong>{{ 'form.mdf.conference_program.file_button'|trans }}</strong></h4>
                                                         {% endif %}
@@ -101,8 +101,17 @@
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.files.vars.prototypes.program_file_type)|escape }}"><i
                                                         class="icon-plus"></i>{{ 'form.mdf.conference_program.file_button'|trans }}</a>
-                                        </div>
 
+                                            {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                                {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                            {% elseif is_granted('ROLE_JOURNALIST') %}
+                                                {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                            {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                                {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                            {% else %}
+                                                {{ form_row(translationsFields.status) }}
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +137,7 @@
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                     <div id="{{ locale}}-translation-content-template-widget-{{ loop.index }}"
-                                                         class="item base-widget">
+                                                         class="item base-widget" data-itemtype="programwidget">
                                                         {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
                                                             <h4><strong>{{ 'form.mdf.content_template.widget.text'|trans }}</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -181,7 +190,7 @@
                                         <div class="box-body">
                                             <div class="fdc-widgets" data-form-widget="collection">
                                                 {% for widget in form.parent.children.files.children %}
-                                                    <div class="item base-widget">
+                                                    <div class="item base-widget" data-itemtype="programfile">
                                                         {% if widget.children._type.vars.value == 'program_file_type' %}
                                                             <h4><strong>{{ 'form.mdf.conference_program.file.widget'|trans }}</strong></h4>
                                                         {% endif %}
@@ -225,7 +234,7 @@
                                             </div>
                                             {% for widget in form.parent.children.contentTemplateConferenceWidgets.children %}
                                                 {% if widget.children._type.vars.value == 'content_template_widget_text_type' %}
-                                                    <div class="item base-widget"
+                                                    <div class="item base-widget" data-itemtype="programwidget"
                                                          data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
                                                         <div class="form-group">
                                                             <h4>{{ 'form.content_template.text_widget'|trans }}</h4>
@@ -245,7 +254,7 @@
                                                     </div>
                                                 {% endif %}
                                                 {% if widget.children._type.vars.value == 'content_template_widget_video_type' %}
-                                                    <div class="item base-widget"
+                                                    <div class="item base-widget" data-itemtype="programwidget"
                                                          data-translation="{{ locale }}-translation-content-template-widget-{{ loop.index }}">
                                                         <div class="form-group">
                                                             <h4>{{ 'form.content_template.youtube_widget_title'|trans }}</h4>
@@ -268,6 +277,15 @@
                                         </div>
                                     {% endif %}
                                 </div>
+                                {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                {% elseif is_granted('ROLE_JOURNALIST') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                {% else %}
+                                    {{ form_row(translationsFields.status) }}
+                                {% endif %}
                             </div>
                         </div>
                     </div>

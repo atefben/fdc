@@ -48,7 +48,9 @@ class MdfConferencePartnerTabCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('conferencePartnerTab', 'sonata_type_model_list')
+            ->add('conferencePartnerTab', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.conference_partner.tab_collection')
+            )
             ->add('position','hidden', array(
                 'attr' => array(
                     "hidden" => true

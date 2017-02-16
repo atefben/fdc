@@ -42,12 +42,6 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
 
-    mdf.manager.services:
-        class: FDC\MarcheDuFilmBundle\Manager\ServicesManager
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@request_stack'
-
     mdf.manager.news:
         class: FDC\MarcheDuFilmBundle\Manager\NewsManager
         arguments:
@@ -174,3 +168,18 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    mdf.kernel_request_listener:
+        class: FDC\MarcheDuFilmBundle\EventListener\KernelRequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
+        arguments:
+            - %fdc_marche_du_film_domain%
+            - %mdf_locales%
+            - %kernel.default_locale%
+
+    mdf.listener.elastica.post_update:
+        class: FDC\MarcheDuFilmBundle\EventListener\ElasticaPostListener
+        arguments: ['@service_container']
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }

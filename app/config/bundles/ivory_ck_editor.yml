@@ -11,7 +11,7 @@ ivory_ck_editor:
                 - ['Link', 'Unlink']
                 - ['Maximize', 'ShowBlocks']
                 - ['Image']
-                - ['Italic']
+                - ['Italic', 'Bold']
             customConfig: /bundles/baseadmin/ckeditor/config_default.js
             contentsCss: /bundles/baseadmin/ckeditor/default.css
             filebrowserBrowseRoute: admin_sonata_media_media_browser

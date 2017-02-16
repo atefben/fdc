@@ -75,6 +75,15 @@
                                 </div>
                             </div>
                         </div>
+                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                        {% elseif is_granted('ROLE_JOURNALIST') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                        {% else %}
+                            {{ form_row(translationsFields.status) }}
+                        {% endif %}
                     </div>
                 </div>
             {% else %}
@@ -124,21 +133,6 @@
                                                 </div>
                                             {% endfor %}
                                         </div>
-                                        <a class="btn btn-primary btn-add-base-widget"
-                                           data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_text_type)| escape }}">
-                                            <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
-                                        <a class="btn btn-primary btn-add-base-widget"
-                                           data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_image_type)| escape }}">
-                                            <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.image'|trans }}</a>
-                                        <a class="btn btn-primary btn-add-base-widget"
-                                           data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_gallery_type)|escape }}">
-                                            <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.gallery'|trans }}</a>
-                                        <a class="btn btn-primary btn-add-base-widget"
-                                           data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_file_type)|escape }}">
-                                            <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.file'|trans }}</a>
-                                        <a class="btn btn-primary btn-add-base-widget"
-                                           data-prototype="{{ form_widget(form.parent.children.contentTemplateWidgets.vars.prototypes.content_template_widget_video_type)|escape }}">
-                                            <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.youtube'|trans }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +190,15 @@
                                 {% endif %}
                             </div>
                         </div>
+                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                        {% elseif is_granted('ROLE_JOURNALIST') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                        {% else %}
+                            {{ form_row(translationsFields.status) }}
+                        {% endif %}
                     </div>
                 </div>
             {% endif %}

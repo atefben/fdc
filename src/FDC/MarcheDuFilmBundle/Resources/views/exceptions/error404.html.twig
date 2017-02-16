@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
+    {{ render(controller('FDCMarcheDuFilmBundle:Transverse:annualGraphicCharter')) }}
+
     <link type="text/css" rel="stylesheet" href="{{ asset('http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css') }}"/>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
 
@@ -46,9 +48,6 @@
 
 
 <body>
-<div id="prehome-container">
-    <div id="prehome"></div>
-</div>
 
 <header>
     <div id="top-bar">
@@ -76,7 +75,7 @@
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                    {% for locale in mdf_locales if locale != app.request.locale %}
                         <li>
                             <a href="{{ path('fdc_marche_du_film_homepage', { _locale: locale }) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                         </li>
@@ -107,7 +106,7 @@
                     <li class="lang">
                         <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                            {% for locale in mdf_locales if locale != app.request.locale %}
                                 <li>
                                     <a href="{{ path('fdc_marche_du_film_homepage', { _locale: locale }) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                                 </li>
@@ -123,24 +122,24 @@
             <nav>
                 <ul class="main">
                     <li id="edition">
-                        <a href="{{ path('fdc_marche_du_film_homepage') }}" class="red">{{ 'menu.edition'|trans }}
+                        <a href="{{ path('fdc_marche_du_film_homepage') }}" class="editionColor">{{ 'menu.edition'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="blue">{{ 'menu.accreditation'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="accreditationColor">{{ 'menu.accreditation'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" class="blue">{{ 'menu.services'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="servicesColor">{{ 'menu.services'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="golden">{{ 'menu.who_are_we'|trans }}
+                        <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="whoAreWeColor">{{ 'menu.who_are_we'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="golden">{{ 'menu.press'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="presseColor">{{ 'menu.press'|trans }}</a>
                     </li>
                     <li>
-                        <a href="#" class="golden">{{ 'menu.faq'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="utilInfoColor">{{ 'menu.faq'|trans }}</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
@@ -151,25 +150,31 @@
                     </li>
                     <li id="searchBar">
                         <div>
-                            <a href="#" id=""><i class="icon icon_recherche"></i></a>
+                            <a href="#" id="searchBarA"><i class="icon icon_recherche"></i></a>
                         </div>
                     </li>
                 </ul>
             </nav>
         </div>
-        <div class="subMenu customClass1" id="subMenu">
+        <div class="subMenu" id="subMenu">
             <div class="bigContainer">
                 <ul class="tleft">
                     <li><a href="{{ path('fdc_marche_du_film_edition_presentation') }}">{{ 'menu.presentation'|trans }}</a></li>
                     <li><a href="{{ path('fdc_marche_du_film_news') }}">{{ 'menu.news'|trans }}</a></li>
-                    <li class="seeSub">
-                        <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></div></i>
-                        <div class="prog">{{ 'menu.program'|trans }}</div>
-                        <ul class="subsubMenu">
-                            <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">{{ 'menu.projections'|trans }}</a></li>
-                            <li><a href="{{ path('fdc_marche_du_film_global_events') }}">{{ 'menu.events'|trans }}</a></li>
-                        </ul>
-                    </li>
+                    {% if availableMenu is not null and (availableMenu.programProjectsIsActive or availableMenu.programEventsIsActive) %}
+                        <li class="seeSub">
+                            <div class="rotateArrow"><i class='icon icon_flecheGauche reverse rotateArrow'></i></div>
+                            <div class="prog">{{ 'menu.program'|trans }}</div>
+                            <ul class="subsubMenu">
+                                {% if availableMenu.programProjectsIsActive %}
+                                    <li><a href="{{ path('fdc_marche_du_film_edition_projections') }}">{{ 'menu.projections'|trans }}</a></li>
+                                {% endif %}
+                                {% if availableMenu.programEventsIsActive %}
+                                    <li><a href="{{ path('fdc_marche_du_film_global_events') }}">{{ 'menu.events'|trans }}</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
                     <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">{{ 'menu.conference_producers_workshop'|trans }}</a></li>
                     <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">{{ 'menu.conference_producers_network'|trans }}</a></li>
                 </ul>
@@ -188,8 +193,13 @@
 {% block main %}
 <div id="main" class="home loading">
     <div class="text-presentation erreur404">
-        <h3>{{ notFound404PageContent.title }}</h3>
-        <h5>{{ notFound404PageContent.description }}</h5>
+        {% if notFound404PageContent %}
+            <h3>{{ notFound404PageContent.title }}</h3>
+            <h5>{{ notFound404PageContent.description }}</h5>
+        {% else %}
+            <h3></h3>
+            <h5></h5>
+        {% endif %}
         <h4><i class="icon icon_flecheGauche reverse"></i><a href="{{ path('fdc_marche_du_film_homepage') }}">{{ '404.return_to_homepage'|trans }}</a></h4>
     </div>
 </div>

@@ -6,6 +6,7 @@ use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -956,16 +957,16 @@ class NewsRepository extends EntityRepository
     /**
      * @param $locale
      * @param $festival
-     * @param $startsAt
-     * @param $endsAt
-     * @return \Doctrine\ORM\QueryBuilder
+     * @param $since
+     * @param int $maxResults
+     * @return News[]
      */
-    public function getNewsRetrospective($locale, $festival, $startsAt, $endsAt)
+    public function getNewsRetrospective($locale, $festival, $since, $maxResults)
     {
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
-            ->join('n.sites', 's')
+            ->innerJoin('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', 'na3.id = n.id')
@@ -974,11 +975,6 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na2.translations', 'na2t')
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
-            ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt BETWEEN :startsAt AND :endsAt')
-        ;
-
-        $qb = $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -986,11 +982,11 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter(':status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -1001,27 +997,27 @@ class NewsRepository extends EntityRepository
                     (na7t.locale = :locale AND na7t.status = :status_translated) OR
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
-                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale)
+                ->setParameter(':locale', $locale)
+                ->setParameter(':status_translated', TranslateChildInterface::STATUS_TRANSLATED)
             ;
         }
 
-        $qb = $qb
-            ->orderBy('n.publishedAt', 'DESC')
-            ->setParameter('festival', $festival)
-            ->setParameter('startsAt', $startsAt)
-            ->setParameter('endsAt', $endsAt)
-            ->setParameter('site_slug', 'site-institutionnel')
-        ;
+        $this->addMasterQueries($qb, 'n', $festival, false);
+        $this->addFDCCorpoQueries($qb, 's');
 
-        $this->addMasterQueries($qb, 'n', $festival, true);
+        if ($since) {
+            $qb
+                ->setMaxResults($maxResults)
+                ->andWhere('n.publishedAt > :since')
+                ->setParameter(':since', $since)
+            ;
+        }
 
-        $qb = $qb
+        return $qb
+            ->addOrderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
     }
 
     public function getNewsAudios($locale, $festival, $dateTime)

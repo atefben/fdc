@@ -71,4 +71,13 @@ class HomepageManager
                 )
             );
     }
+
+    public function findHomepageByMedia($locale, $type, $id) {
+        return $this->em
+            ->getRepository(MdfHomepageTranslation::class)
+            ->getByMedia(
+                $locale,
+                array('id' => $id, 'type' => $type)
+            );
+    }
 }

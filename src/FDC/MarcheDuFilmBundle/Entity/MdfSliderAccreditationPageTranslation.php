@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MdfSliderAccreditationPageTranslation
  * @ORM\Table(name="mdf_slider_accreditation_page_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfSliderAccreditationPageTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MdfSliderAccreditationPageTranslation implements TranslateChildInterface

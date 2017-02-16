@@ -2,11 +2,15 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use DateTime;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
@@ -17,9 +21,9 @@ class DefaultController extends Controller
      */
     public function galleryCorpoAction(Request $request)
     {
-        $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+        $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(['displayedHomeCorpo' => 1], ['id' => 'DESC']);
 
-        return array('gallery' => $gallery);
+        return ['gallery' => $gallery];
     }
 
     /**
@@ -28,35 +32,42 @@ class DefaultController extends Controller
      */
     public function videoCorpoAction(Request $request)
     {
-        $video = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
+        $video = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:MediaVideo')->findOneBy(['displayedHomeCorpo' => 1], ['id' => 'DESC']);
 
-        return array('video' => $video);
+        return ['video' => $video];
     }
 
     /**
      * @Route("/")
-     * @Template("FDCCorporateBundle:News:home.html.twig")
+     * @param Request $request
+     * @return Response
      */
     public function homeAction(Request $request)
     {
-        $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
         $locale = $request->getLocale();
+        $settings = $this->getSettings();
+        $festivalId = $settings->getFestival()->getId();
 
         // GET HOMEPAGE SETTINGS
-        $homepage = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        $homepage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:HomepageCorporate')
+            ->find(1)
+        ;
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      SLIDER      //////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////
-
-        $slides = $em->getRepository('BaseCoreBundle:HomepageCorporateSlide')->getAllSlide($locale, $dateTime);
+        // Slider
+        $slides = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:HomepageCorporateSlide')
+            ->getAllSlide($locale, $dateTime)
+        ;
 
         $displayHomeSlider = $homepage->getDisplayedSlider();
-        $homeSlider = array();
+        $homeSlider = [];
         foreach ($slides as $slide) {
             if ($slide->getInfo() != null) {
                 $homeSlider[] = $slide->getInfo();
@@ -65,31 +76,28 @@ class DefaultController extends Controller
             }
         }
 
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      INFOS AND STATEMENTS      ////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////
-        $lastFestival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneBy(array(), array('id' => 'DESC'));
-        $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $lastFestival->getId(), $dateTime);
-        $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $lastFestival->getId(), $dateTime);
+        // Infos and statements
+        $homeInfos = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getInfosByDate($locale, $festivalId, $dateTime, null, 'site-institutionnel')
+        ;
+        $homeStatement = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getStatementByDate($locale, $festivalId, $dateTime, null, 'site-institutionnel')
+        ;
         $homeContents = array_merge($homeInfos, $homeStatement);
-
+        $this->sortByDate($homeContents);
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
 
         //set default filters
-        $filters = array();
+        $filters = [];
         $filters['format'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
 
         foreach ($homeContents as $key => $homeContent) {
-            $homeContent->setTheme($homeContent->getTheme());
-
-            if (($key % 3) == 0) {
-                $homeContent->double = true;
-            }
-
-            //check if filters don't already exist
             if (!in_array($homeContent->getTheme()->getId(), $filters['themes']['id'])) {
                 $filters['themes']['id'][] = $homeContent->getTheme()->getId();
                 $filters['themes']['content'][] = $homeContent->getTheme();
@@ -100,41 +108,63 @@ class DefaultController extends Controller
             }
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      FEATURED VIDEO      //////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////
         $featuredVideo = $homepage->getVideoUne();
 
-
-        $gallery = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:Gallery')->findOneBy(array('displayedHomeCorpo' => 1), array('id' => 'DESC'));
-        $glry = array();
-        foreach($gallery->getMedias() as $m) {
-            if( $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr')->getStatus() == 1 && $m->getMedia()->getPublishedAt() <= new \DateTime()) {
-                $glry['medias'][] = $m;
+        $gallery = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Gallery')
+            ->findOneBy(['displayedHomeCorpo' => 1], ['id' => 'DESC'])
+        ;
+        $galleryMedias = [];
+        foreach ($gallery->getMedias() as $m) {
+            $available = $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr');
+            if ($available) {
+                $trans = $m->getMedia()->findTranslationByLocale('fr');
+            }
+            $available = $available && $trans->getStatus() == TranslateChildInterface::STATUS_PUBLISHED;
+            $available = $available && $m->getMedia()->getPublishedAt() <= new \DateTime();
+            if ($available) {
+                $galleryMedias[] = $m;
             }
         }
 
 
-        /////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      CANNES RELEASES      /////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////
-        $movies = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsReleases($dateTime);
-        //$movies = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFilm')->findBy(array(), array('publishedAt' => 'DESC'), 10);
+        $movies = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsReleases($dateTime)
+        ;
 
-        return array(
-            'homepage'           => $homepage,
-            'displayHomeSlider'  => $displayHomeSlider,
-            'filmReleases'       => $movies,
-            'homeSlider'         => $homeSlider,
-            'homeContents'       => $homeContents,
-            'featuredVideo'      => $featuredVideo,
-            'festivalStartsAt'   => $homepage->getFestivalStartsAt(),
-            'gallery'            => $gallery,
-            'glry'               => $glry,
-            'filters'            => $filters
-        );
+        return $this->render('FDCCorporateBundle:News:home.html.twig', [
+            'homepage'          => $homepage,
+            'displayHomeSlider' => $displayHomeSlider,
+            'filmReleases'      => $movies,
+            'homeSlider'        => $homeSlider,
+            'homeContents'      => $homeContents,
+            'featuredVideo'     => $featuredVideo,
+            'festivalStartsAt'  => $homepage->getFestivalStartsAt(),
+            'gallery'           => $gallery,
+            'galleryMedias'     => $galleryMedias,
+            'filters'           => $filters
+        ]);
     }
-    
+
+    protected function sortByDate(&$items)
+    {
+        $sort = [];
+        foreach ($items as $item) {
+            if ($item instanceof Info) {
+                $key = $item->getPublishedAt()->getTimestamp() . '-info' . $item->getId();
+                $sort[] = $item;
+            } elseif ($item instanceof Statement) {
+                $key = $item->getPublishedAt()->getTimestamp() . '-statement' . $item->getId();
+                $sort[] = $item;
+            }
+        }
+        krsort($sort);
+        $items = array_values($sort);
+    }
+
     /**
      * @Route("/home-more-infos")
      * @Template("FDCCorporateBundle:News:widgets/article-home-ajax.html.twig")
@@ -152,12 +182,12 @@ class DefaultController extends Controller
         $locale = $request->getLocale();
 
         // GET HOMEPAGE SETTINGS
-        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
+        $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy([
             'festival' => $this->getFestival(),
-        )) 
-       ;
+        ])
+        ;
 
-        
+
         $date = new DateTime();
         $dateTime = $date->setTimestamp($timestamp);
         $count = 7;
@@ -202,7 +232,7 @@ class DefaultController extends Controller
                 $dateTimeNext = $dateTime->modify('-1 day');
                 $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
             } else {
-                $homeArticlesNext = array();
+                $homeArticlesNext = [];
             }
             if ($homeArticles != null) {
                 $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $countNext);
@@ -217,7 +247,7 @@ class DefaultController extends Controller
         }
 
         //set default filters
-        $filters = array();
+        $filters = [];
         $filters['format'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
@@ -238,18 +268,18 @@ class DefaultController extends Controller
                 $filters['format'][] = $homeArticle->getNewsType();
             }
         }
-        
+
 
         if (count($homeArticles) > 6) {
             unset($homeArticles[6]);
         }
 
-        return array(
+        return [
             'homeArticlesSlider' => $homeArticlesSlider,
             'endOfArticles'      => $endOfArticles,
             'homeArticles'       => $homeArticles,
             'homeArticlesNext'   => $homeArticlesNext,
             'filters'            => $filters,
-        );
+        ];
     }
 }

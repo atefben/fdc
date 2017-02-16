@@ -7,7 +7,7 @@
             {% if isMultiple %}
                 <div class="item">
             {% endif %}
-                <div class="contact-box altImgCustom" style="background: url('{% path slider.translatable.image|trans_fallback('file'), 'reference' %}'); background-size: 100% 100%; background-repeat: no-repeat;">
+                <div class="contact-box altImgCustom" style="background: url('{% path slider.translatable.image|trans_fallback('file'), 'reference' %}'); background-size: cover; background-repeat: no-repeat;">
                     <div class="text-presentation accreditation">
                         <h3>{{ slider.title }}</h3>
                         <h5>{{ slider.subTitle }}</h5>
