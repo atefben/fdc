@@ -2,7 +2,9 @@
 
   .item {
     .item-inner {
-      width: 100.5%;
+      width: 100.1%;
+      height: 100%;
+      width: calc( 100% + 1px );
     }
 
     img {
