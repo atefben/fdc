@@ -144,7 +144,6 @@ $(window).load(function () {
           $('.' + $(this).attr("rel")).removeClass('activeContent');
           $('.' + $(this).attr("rel")).addClass('activeContent');
 
-          showAllSearchResults($(this).attr("rel"));
           $('#rubrique-' + $(this).attr("rel") + '-1').addClass('open-selected');
           $('#rubrique-content-' + $(this).attr("rel") + '-1').show();
           $('#rubrique-plus-' + $(this).attr("rel") + '-1').addClass('noDisplay');
