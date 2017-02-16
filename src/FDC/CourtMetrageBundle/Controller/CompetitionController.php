@@ -15,13 +15,15 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
+        $juryTab = $competitionManager->getJuryTab();
         $festivalId = $this->getFestival()->getId();
 
         $films = $competitionManager->getSelectionFilms($festivalId);
 
         return $this->render('FDCCourtMetrageBundle:Competition:selection.html.twig', array(
             'films' => $films,
-            'selectionTab' => $selectionTab
+            'selectionTab' => $selectionTab,
+            'juryTab' => $juryTab
         ));
     }
 
@@ -33,10 +35,17 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
-        $festivalId = $this->getFestival()->getId();
+        $juryTab = $competitionManager->getJuryTab();
+        $festival = $this->getFestival();
+
+        $jury = $competitionManager->getJury($festival->getId());
 
         return $this->render('FDCCourtMetrageBundle:Competition:jury.html.twig', array(
-            'selectionTab' => $selectionTab
+            'selectionTab' => $selectionTab,
+            'juryTab' => $juryTab,
+            'members' => $jury['members'],
+            'president' => $jury['president'],
+            'festival' => $festival
         ));
     }
 }

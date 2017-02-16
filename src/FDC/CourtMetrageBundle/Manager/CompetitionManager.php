@@ -26,6 +26,13 @@ class CompetitionManager
             ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_SELECTION);
     }
 
+    public function getJuryTab()
+    {
+        return $this->em
+            ->getRepository(CcmShortFilmCompetitionTabTranslation::class)
+            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_JURY);
+    }
+
     public function getSelectionFilms($festivalId)
     {
         $selectionSectionId = $this->getSelectionTab()->getTranslatable()->getSelectionSection()->getId();
@@ -37,5 +44,50 @@ class CompetitionManager
         ;
 
         return $films;
+    }
+
+    public function getJury($festivalId)
+    {
+        $selectionSectionId = $this->getJuryTab()->getTranslatable()->getSelectionSection()->getId();
+
+        $juries = $this
+            ->em
+            ->getRepository('BaseCoreBundle:FilmJury')
+            ->getJurysByType($festivalId, $this->requestStack->getMasterRequest()->get('_locale'), $selectionSectionId)
+        ;
+
+        $members = array();
+        $president = null;
+        $hasPresident = false;
+        foreach ($juries as $jury) {
+            $filmMedia = null;
+            if ($jury->getMedias()->count()) {
+                foreach ($jury->getMedias() as $media) {
+                    $filmMedia = $media;
+                }
+            }
+            if (!$filmMedia && $jury->getPerson() && $jury->getPerson()->getMedias()->count()) {
+                foreach ($jury->getPerson()->getMedias() as $media) {
+                    $filmMedia = $media->getMedia();
+                }
+            }
+            if (!$hasPresident && in_array($jury->getFunction()->getId(), array(1, 4))) {
+                $president = array(
+                    'jury'       => $jury,
+                    'film_media' => $filmMedia,
+                );
+                $hasPresident = true;
+            } else {
+                array_push($members, array(
+                    'jury'       => $jury,
+                    'film_media' => $filmMedia,
+                ));
+            }
+        }
+
+        return array(
+            'members' => $members,
+            'president' => $president
+        );
     }
 }

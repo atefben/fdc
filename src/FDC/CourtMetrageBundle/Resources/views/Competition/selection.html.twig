@@ -3,8 +3,10 @@
 {% block main %}
 <div id="main" class="list-article films-list selection-officielle loading">
     {% include 'FDCCourtMetrageBundle:Competition/partials:competitionSubHeader.html.twig' with {
-        'selectionTab': selectionTab,
-        'isSelection': true
+            'selectionTab': selectionTab,
+            'isSelection': true,
+            'juryTab': juryTab,
+            'isJury': false
         }
     %}
     <div class="container container-list ">
