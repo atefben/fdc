@@ -1,4 +1,13 @@
 /* thomon 27/01/2017 - misc fixes retrospective 69e edition */
+.slider-restropective .block-01 .vFlexAlign img {
+  .ie & {
+    height: 404px;
+
+    &.open {
+        height: auto;
+    }
+  }
+}
 
 .block-search .content-result .artist .item, .block-search  .content-result .movies .item{
     width: 162px;
