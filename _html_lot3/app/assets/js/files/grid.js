@@ -24,6 +24,9 @@ var owInitGrid = function (id) {
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
+                packery: {
+                    columnWidth: '.grid-sizer'
+                },
                 getSortData: {
                     number: '[data-sort]'
                 },
