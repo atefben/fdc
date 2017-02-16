@@ -77,15 +77,57 @@ class ElasticaPostListener
                     break;
                 }
                 break;
+            case 'MdfContentTemplateWidgetFile':
+                $this->updateElasticaIndexes(
+                    $entity->getFile(),
+                    self::$ELASTICA_RESOURCES['MediaMdfPdfTranslation']
+                );
+                break;
+            case 'MdfContentTemplateWidgetGallery':
+                $this->updateElasticaIndexes(
+                    $entity->getGallery(),
+                    self::$ELASTICA_RESOURCES['GalleryMdfTranslation']
+                );
+                break;
+            case 'MdfContentTemplateWidgetImage':
+                $this->updateElasticaIndexes(
+                    $entity->getImage(),
+                    self::$ELASTICA_RESOURCES['MediaMdfImageTranslation']
+                );
+                break;
             case 'MdfContentTemplateWidgetTextTranslation':
-                $this->updateElasticaIndexes(
-                    $entity->getTranslatable()->getContentTemplate(),
-                    self::$ELASTICA_RESOURCES['MdfHomepageTranslation']
-                );
-                $this->updateElasticaIndexes(
-                    $entity->getTranslatable()->getConferenceProgram(),
-                    self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
-                );
+                if ($entity->getTranslatable()->getContentTemplate()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getTranslatable()->getContentTemplate(),
+                        self::$ELASTICA_RESOURCES['MdfContentTemplateTranslation']
+                    );
+                    break;
+                }
+
+                if ($entity->getTranslatable()->getConferenceProgram()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getTranslatable()->getConferenceProgram(),
+                        self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                    );
+                    break;
+                }
+                break;
+            case 'MdfContentTemplateWidgetText':
+                if ($entity->getContentTemplate()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getContentTemplate(),
+                        self::$ELASTICA_RESOURCES['MdfContentTemplateTranslation']
+                    );
+                    break;
+                }
+
+                if ($entity->getConferenceProgram()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getConferenceProgram(),
+                        self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                    );
+                    break;
+                }
                 break;
             case 'AccreditationWidgetTranslation':
                 $this->updateElasticaIndexes(
@@ -252,9 +294,7 @@ class ElasticaPostListener
 
     protected function initPostPersister($index)
     {
-        if (null === $this->objectPersisterPost) {
-            // fos_elastica.object_persister.<index_name>.<type_name>
-            $this->objectPersisterPost = $this->container->get('fos_elastica.object_persister.fdc_mdf.' . $index);
-        }
+        // fos_elastica.object_persister.<index_name>.<type_name>
+        $this->objectPersisterPost = $this->container->get('fos_elastica.object_persister.fdc_mdf.' . $index);
     }
 }
