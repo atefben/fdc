@@ -507,7 +507,7 @@ $(window).resize(function() {
     }
 });
 
-function resizeend() {
+function resizeend() {console.log('resizeend');
 
 
     if (new Date() - rtime < delta) {
