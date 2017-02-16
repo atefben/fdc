@@ -1,0 +1,28 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="list-article palmares-list loading ">
+        {% include 'FDCCourtMetrageBundle:Competition/partials:competitionSubHeader.html.twig' with {
+                'selectionTab': selectionTab,
+                'isSelection': false,
+                'juryTab': juryTab,
+                'isJury': false,
+                'palmaresTab': palmaresTab,
+                'isPalmares': true
+            }
+        %}
+
+        <div class="container container-list">
+            <section class="categorie-items">
+                <div class="title-list-cat">
+                    <h2 class="title">Courts métrages</h2>
+                </div>
+                {% for award_association in award_associations %}
+                    {% include 'FDCCourtMetrageBundle:Competition:partials/movie.html.twig' %}
+                {% endfor %}
+            </section>
+        </div>
+
+        {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
+    </div>
+{% endblock %}

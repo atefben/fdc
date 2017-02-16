@@ -3,11 +3,13 @@
 {% block main %}
     <div id="main" class="list-article jurys-list loading">
         {% include 'FDCCourtMetrageBundle:Competition/partials:competitionSubHeader.html.twig' with {
-            'selectionTab': selectionTab,
-            'isSelection': false,
-            'juryTab': juryTab,
-            'isJury': true
-        }
+                'selectionTab': selectionTab,
+                'isSelection': false,
+                'juryTab': juryTab,
+                'isJury': true,
+                'palmaresTab': palmaresTab,
+                'isPalmares': false
+            }
         %}
         <div class="container-jurys">
             <div class="container container-list">
@@ -43,7 +45,7 @@
                                         {% if artistImage is not empty %}
                                             <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}" style="width: 384px; height: 485px;"/>
                                         {% else %}
-                                            <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}">
+                                            <img src="{{ asset('bundles/fdccourtmetrage/img/jurys/member.jpg') }}">
                                         {% endif %}
                                     </div>
                                     <div class="legend">

@@ -33,6 +33,13 @@ class CompetitionManager
             ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_JURY);
     }
 
+    public function getPalmaresTab()
+    {
+        return $this->em
+            ->getRepository(CcmShortFilmCompetitionTabTranslation::class)
+            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_PALMARES);
+    }
+
     public function getSelectionFilms($festivalId)
     {
         $selectionSectionId = $this->getSelectionTab()->getTranslatable()->getSelectionSection()->getId();
@@ -89,5 +96,18 @@ class CompetitionManager
             'members' => $members,
             'president' => $president
         );
+    }
+
+    public function getPalmares($festivalId)
+    {
+        $selectionSectionId = $this->getPalmaresTab()->getTranslatable()->getSelectionSection()->getId();
+
+        $palmares = $this
+            ->em
+            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+            ->getByCategoryWithAward($festivalId, 'Compétition', $selectionSectionId)
+        ;
+
+        return $palmares;
     }
 }
