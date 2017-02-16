@@ -2554,3 +2554,68 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Module Push, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_pros_page:
+        class: Base\AdminBundle\Admin\CCM\CcmProsPageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsPage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Les pros du court}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_domain_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmDomainCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmDomainCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Domain Collection, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_domain:
+        class: Base\AdminBundle\Admin\CCM\CcmDomainAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmDomain, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Domain, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_pros_detail:
+        class: Base\AdminBundle\Admin\CCM\CcmProsDetailAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsDetail, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Liste des pros}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_pros_activity_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmProsActivityCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsActivityCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Activity Collection, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_pros_activity:
+        class: Base\AdminBundle\Admin\CCM\CcmProsActivityAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsActivity, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Activity, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_pros_contact_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmProsContactCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsContactCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Contact Collection, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_pros_contact:
+        class: Base\AdminBundle\Admin\CCM\CcmProsContactAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsContact, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Contact, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+

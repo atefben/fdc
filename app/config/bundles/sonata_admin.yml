@@ -44,6 +44,9 @@ sonata_admin:
             admin.group.ccm:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            admin.group.ccm.pros:
+                items: ~
+                label_catalogue: BaseAdminBundle
             admin.group.mdf:
                 items: ~
                 label_catalogue: BaseAdminBundle

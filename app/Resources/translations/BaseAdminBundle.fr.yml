@@ -484,6 +484,8 @@ admin:
         mdf_presse: Presse
         mdf_qui_sommes_nous: Qui sommes-nous ?
         ccm_seo_tetieres: SEO + TETIERES
+        ccm:
+            pros: Short Film Corner
 
 
 dashboard:
