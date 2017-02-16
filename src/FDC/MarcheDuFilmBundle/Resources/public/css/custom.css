@@ -174,3 +174,7 @@ header.sticky #sticky-user .user-nav a {
     min-height: 20px !important;
     padding-bottom: 50px;
 }
+
+.show {
+    position: inherit !important;
+}

@@ -36,7 +36,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.whoAreWeTeamContactWidgets.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="contactblock">
                                             {% if widget.children._type.vars.value == 'who_are_we_team_contact_widget_type' %}
                                                 <h4><strong>{{ 'form.mdf.label.who_are_we_team.contact_widget'|trans }}</strong></h4>
                                             {% endif %}
@@ -59,7 +59,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.whoAreWeTeamWidgets.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="contactperson">
                                             {% if widget.children._type.vars.value == 'who_are_we_team_widget_type' %}
                                                 <h4><strong>{{ 'form.mdf.label.who_are_we_team.widget'|trans }}</strong></h4>
                                             {% endif %}
@@ -93,7 +93,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.whoAreWeTeamContactWidgets.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="contactblock">
                                             {% if widget.children._type.vars.value == 'who_are_we_team_contact_widget_type' %}
                                                 <h4><strong>{{ 'form.mdf.label.who_are_we_team.contact_widget'|trans }}</strong></h4>
                                             {% endif %}
@@ -109,7 +109,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.whoAreWeTeamWidgets.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="contactperson">
                                             {% if widget.children._type.vars.value == 'who_are_we_team_widget_type' %}
                                                 <h4><strong>{{ 'form.mdf.label.who_are_we_team.widget'|trans }}</strong></h4>
                                             {% endif %}
@@ -133,7 +133,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {% for widget in form.parent.children.whoAreWeTeamContactWidgets.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="contactblock">
                                                 {% if widget.children._type.vars.value == 'who_are_we_team_contact_widget_type' %}
                                                     <h4><strong>{{ 'form.mdf.label.who_are_we_team.contact_widget'|trans }}</strong></h4>
                                                     <div class="form-group">
@@ -183,7 +183,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {% for widget in form.parent.children.whoAreWeTeamWidgets.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="contactperson">
                                                 {% if widget.children._type.vars.value == 'who_are_we_team_widget_type' %}
                                                     <h4><strong>{{ 'form.mdf.label.who_are_we_team.widget'|trans }}</strong></h4>
                                                     <div class="form-group">

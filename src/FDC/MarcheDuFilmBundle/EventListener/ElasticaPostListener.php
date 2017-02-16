@@ -68,15 +68,6 @@ class ElasticaPostListener
             case 'MdfThemeTranslation':
                 $widget = $entity->getTranslatable()->getContentTemplate();
 
-                if ($widget && $widget->isWidgetText()) {
-                    $this->updateElasticaIndexes(
-                        $entity->getTranslatable()->getContentTemplate(),
-                        self::$ELASTICA_RESOURCES['MdfHomepageTranslation']
-                    );
-
-                    break;
-                }
-
                 if ($widget && $widget->isWidgetVideo()) {
                     $this->updateElasticaIndexes(
                         $entity->getTranslatable()->getContentTemplate(),
@@ -86,15 +77,57 @@ class ElasticaPostListener
                     break;
                 }
                 break;
+            case 'MdfContentTemplateWidgetFile':
+                $this->updateElasticaIndexes(
+                    $entity->getFile(),
+                    self::$ELASTICA_RESOURCES['MediaMdfPdfTranslation']
+                );
+                break;
+            case 'MdfContentTemplateWidgetGallery':
+                $this->updateElasticaIndexes(
+                    $entity->getGallery(),
+                    self::$ELASTICA_RESOURCES['GalleryMdfTranslation']
+                );
+                break;
+            case 'MdfContentTemplateWidgetImage':
+                $this->updateElasticaIndexes(
+                    $entity->getImage(),
+                    self::$ELASTICA_RESOURCES['MediaMdfImageTranslation']
+                );
+                break;
             case 'MdfContentTemplateWidgetTextTranslation':
-                $this->updateElasticaIndexes(
-                    $entity->getTranslatable()->getContentTemplate(),
-                    self::$ELASTICA_RESOURCES['MdfHomepageTranslation']
-                );
-                $this->updateElasticaIndexes(
-                    $entity->getTranslatable()->getConferenceProgram(),
-                    self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
-                );
+                if ($entity->getTranslatable()->getContentTemplate()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getTranslatable()->getContentTemplate(),
+                        self::$ELASTICA_RESOURCES['MdfContentTemplateTranslation']
+                    );
+                    break;
+                }
+
+                if ($entity->getTranslatable()->getConferenceProgram()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getTranslatable()->getConferenceProgram(),
+                        self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                    );
+                    break;
+                }
+                break;
+            case 'MdfContentTemplateWidgetText':
+                if ($entity->getContentTemplate()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getContentTemplate(),
+                        self::$ELASTICA_RESOURCES['MdfContentTemplateTranslation']
+                    );
+                    break;
+                }
+
+                if ($entity->getConferenceProgram()) {
+                    $this->updateElasticaIndexes(
+                        $entity->getConferenceProgram(),
+                        self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                    );
+                    break;
+                }
                 break;
             case 'AccreditationWidgetTranslation':
                 $this->updateElasticaIndexes(
@@ -115,74 +148,72 @@ class ElasticaPostListener
                 );
                 break;
             case 'ServiceWidgetTranslation':
-                $this->updateElasticaIndexes(
-                    $entity->getTranslatable()->getWidgetsCollection()->getService(),
-                    self::$ELASTICA_RESOURCES['ServiceTranslation']
-                );
+                foreach ($entity->getTranslatable()->getWidgetsCollection() as $widget) {
+                    $this->updateElasticaIndexes(
+                        $widget->getService(),
+                        self::$ELASTICA_RESOURCES['ServiceTranslation']
+                    );
+                }
                 break;
             case 'ServiceWidgetProductTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getProductsCollections()
-                        ->getServiceWidget()
-                        ->getWidgetsCollection()
-                        ->getService(),
-                    self::$ELASTICA_RESOURCES['ServiceTranslation']
-                );
+                foreach ($entity->getTranslatable()->getProductsCollections() as $product) {
+                    foreach ($product->getServiceWidget()->getWidgetsCollection() as $widget) {
+                        $this->updateElasticaIndexes(
+                            $widget->getService(),
+                            self::$ELASTICA_RESOURCES['ServiceTranslation']
+                        );
+                    }
+                }
                 break;
             case 'MdfConferenceProgramEventTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getProgramEventCollection()
-                        ->getConferenceProgramDay()
-                        ->getProgramDayCollection()
-                        ->getConferenceProgram(),
-                    self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
-                );
+                foreach ($entity->getTranslatable()->getProgramEventCollection() as $programEvent) {
+                    foreach ($programEvent->getConferenceProgramDay()->getProgramDayCollection() as $programDay) {
+                        $this->updateElasticaIndexes(
+                            $programDay->getConferenceProgram(),
+                            self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                        );
+                    }
+                }
                 break;
             case 'MdfProgramSpeakerTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getProgramSpeakerCollection()
-                        ->getProgramEvent()
-                        ->getProgramEventCollection()
-                        ->getConferenceProgramDay()
-                        ->getProgramDayCollection()
-                        ->getConferenceProgram(),
-                    self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
-                );
+                foreach ($entity->getTranslatable()->getProgramSpeakerCollection() as $programSpeaker) {
+                    foreach ($programSpeaker->getProgramEvent()->getProgramEventCollection() as $programEvent) {
+                        foreach ($programEvent->getConferenceProgramDay()->getProgramDayCollection() as $programDay) {
+                            $this->updateElasticaIndexes(
+                                $programDay->getConferenceProgram(),
+                                self::$ELASTICA_RESOURCES['MdfConferenceProgramTranslation']
+                            );
+                        }
+                    }
+                }
                 break;
             case 'MdfSpeakersChoicesTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getSpeakersChoicesCollection()
-                        ->getSpeakersPage(),
-                    self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
-                );
+                foreach ($entity->getTranslatable()->getSpeakersChoicesCollection() as $speakersChoice) {
+                    $this->updateElasticaIndexes(
+                        $speakersChoice
+                            ->getSpeakersPage(),
+                        self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
+                    );
+                }
                 break;
             case 'MdfSpeakersDetailsTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getSpeakersDetailsCollection()
-                        ->getSpeakersChoiceTab()
-                        ->getSpeakersChoicesCollection()
-                        ->getSpeakersPage(),
-                    self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
-                );
+                foreach ($entity->getTranslatable()->getSpeakersDetailsCollection() as $speakersDetail) {
+                    foreach ($speakersDetail->getSpeakersChoiceTab()->getSpeakersChoicesCollection() as $speakersChoice) {
+                        $this->updateElasticaIndexes(
+                            $speakersChoice->getSpeakersPage(),
+                            self::$ELASTICA_RESOURCES['MdfSpeakersTranslation']
+                        );
+                    }
+                }
                 break;
             case 'MdfConferencePartnerTabTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getConferencePartnerTabCollection()
-                        ->getConferencePartner(),
-                    self::$ELASTICA_RESOURCES['MdfConferencePartnerTranslation']
-                );
+                foreach ($entity->getTranslatable()->getConferencePartnerTabCollection() as $conferencePartnerTab) {
+                    $this->updateElasticaIndexes(
+                        $conferencePartnerTab
+                            ->getConferencePartner(),
+                        self::$ELASTICA_RESOURCES['MdfConferencePartnerTranslation']
+                    );
+                }
                 break;
             case 'MdfConferenceInfoAndContactWidgetTranslation':
                 $this->updateElasticaIndexes(
@@ -233,37 +264,25 @@ class ElasticaPostListener
                 );
                 break;
             case 'MdfRubriqueTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getRubriquesCollection()
-                        ->getInformationPage(),
-                    self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
-                );
+                foreach ($entity->getTranslatable()->getRubriquesCollection() as $rubrique) {
+                    $this->updateElasticaIndexes(
+                        $rubrique
+                            ->getInformationPage(),
+                        self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
+                    );
+                }
                 break;
             case 'MdfRubriqueQuestionTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getRubriqueQuestionsCollection()
-                        ->getRubrique()
-                        ->getRubriquesCollection()
-                        ->getInformationPage(),
-                    self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
-                );
+                foreach ($entity->getTranslatable()->getRubriqueQuestionsCollection() as $rubriquesQuestion) {
+                    foreach ($rubriquesQuestion->getRubrique()->getRubriquesCollection() as $rubrique) {
+                        $this->updateElasticaIndexes(
+                            $rubrique
+                                ->getInformationPage(),
+                            self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
+                        );
+                    }
+                }
                 break;
-            case 'TagTranslation':
-                $this->updateElasticaIndexes(
-                    $entity
-                        ->getTranslatable()
-                        ->getRubriqueQuestionsCollection()
-                        ->getRubrique()
-                        ->getRubriquesCollection()
-                        ->getInformationPage(),
-                    self::$ELASTICA_RESOURCES['MdfInformationsTranslation']
-                );
-                break;
-
         }
     }
 
@@ -275,9 +294,7 @@ class ElasticaPostListener
 
     protected function initPostPersister($index)
     {
-        if (null === $this->objectPersisterPost) {
-            // fos_elastica.object_persister.<index_name>.<type_name>
-            $this->objectPersisterPost = $this->container->get('fos_elastica.object_persister.fdc_mdf.' . $index);
-        }
+        // fos_elastica.object_persister.<index_name>.<type_name>
+        $this->objectPersisterPost = $this->container->get('fos_elastica.object_persister.fdc_mdf.' . $index);
     }
 }

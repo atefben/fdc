@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Base\AdminBundle\Admin\MediaMdfImageAdmin;
 
 class HomeServiceType extends AbstractType
@@ -80,6 +81,9 @@ class HomeServiceType extends AbstractType
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
                 'label' => 'form.label_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
