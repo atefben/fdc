@@ -5167,7 +5167,7 @@ body.chocolat-open {
 
 body.fixed {
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 div.chocolat-wrapper {

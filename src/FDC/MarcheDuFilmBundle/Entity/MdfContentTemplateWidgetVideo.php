@@ -7,11 +7,12 @@ use Base\CoreBundle\Util\Time;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use FOS\ElasticaBundle\Configuration\Search;
 
 /**
  * MdfContentTemplateWidgetVideo
  * @ORM\Table(name="mdf_content_template_widget_video")
- * @ORM\Entity(repositoryClass="FDC\MarcheDuFilmBundle\Repository\MdfContentTemplateWidgetVideoRepository")
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
 class MdfContentTemplateWidgetVideo extends MdfContentTemplateWidget
@@ -96,5 +97,23 @@ class MdfContentTemplateWidgetVideo extends MdfContentTemplateWidget
     public function getTranslations()
     {
         return $this->translations;
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return array
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }

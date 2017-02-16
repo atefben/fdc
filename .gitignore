@@ -110,6 +110,7 @@ app/config/bundles/fos_elastica.yml
 
 app/config/bundles/fos_elastica.yml
 /cron_thumbs_lock
+/cron_thumbs_bo_lock
 
 src/FDC/MarcheDuFilmBundle/Resources/translations/messages.en.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/messages.fr.xliff

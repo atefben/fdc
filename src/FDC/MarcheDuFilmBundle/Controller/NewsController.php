@@ -5,6 +5,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class NewsController extends Controller
 {
@@ -19,6 +20,11 @@ class NewsController extends Controller
         $themeManager = $this->get('mdf.manager.theme');
 
         $newsPageContent = $newsManager->getNewsPageTitle();
+        
+        if (!$newsPageContent) {
+            throw new NotFoundHttpException('Page not found');
+        }
+        
         $newsContent = $contentTemplateManager->getNewsContent();
         $numberOfNews = $contentTemplateManager->countNews(['all']);
         $filters = $themeManager->getAllThemes();

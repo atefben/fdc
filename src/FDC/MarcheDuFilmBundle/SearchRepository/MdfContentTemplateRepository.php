@@ -11,8 +11,6 @@ class MdfContentTemplateRepository extends SearchRepository
         $finalQuery = new \Elastica\Query\BoolQuery();
 
         if($searchTerm) {
-            $searchTerm = '%' . $searchTerm . '%';
-            
             $stringQuery = new \Elastica\Query\BoolQuery();
 
             $stringQuery
@@ -24,14 +22,13 @@ class MdfContentTemplateRepository extends SearchRepository
             $finalQuery->addMust($stringQuery);
         }
 
-//        $sortedQuery = new \Elastica\Query();
-//        $sortedQuery
-//            ->setQuery($statusQuery)
-////            ->addSort('_score')
-//            ->addSort(array('publishedAt' => array('order' => 'desc')))
-//        ;
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
 
-        return $this->find($finalQuery);
+        return $this->find($statusQuery);
     }
 
     private function getFieldsQuery($_locale, $searchTerm)
@@ -50,7 +47,7 @@ class MdfContentTemplateRepository extends SearchRepository
         $path = 'theme.translations';
         $fields = array('title');
 
-        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale, true);
     }
 
     private function getWidgetsQuery($_locale, $searchTerm)

@@ -23,11 +23,8 @@ class SitePlanManager
     {
         return $this->em
             ->getRepository(MdfSitePlanTranslation::class)
-            ->findOneBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+            ->getByLocaleAndStatus( $this->requestStack->getMasterRequest()->get('_locale'))
+            ;
     }
 
     public function getServicesPages()

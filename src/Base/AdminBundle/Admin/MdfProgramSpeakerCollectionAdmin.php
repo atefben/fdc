@@ -43,7 +43,9 @@ class MdfProgramSpeakerCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('programSpeakers', 'sonata_type_model_list')
+            ->add('programSpeakers', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.conference_program.speakers_list'
+            ))
             ->add('position','hidden', array(
                 'attr' => array(
                     "hidden" => true

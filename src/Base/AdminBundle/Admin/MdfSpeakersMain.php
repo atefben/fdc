@@ -81,11 +81,14 @@ class MdfSpeakersMain extends Admin
                         'display' => false,
                     ),
                     'status'            => array(
-                        'label'                     => 'form.mdf.label_status',
+                        'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => MdfSpeakersTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
+                        'constraints'               => array(
+                            new NotBlank()
+                        )
                     ),
                 ),
             ))

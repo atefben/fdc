@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
-$('#main').removeClass('loading');
-
 window.onunload = function(){};
+
+if(navigator.userAgent.match(/Trident\/7\./)) {
+  location.reload(true);
+}
+
+$(window).load(function () {
+  $('#main').removeClass('loading');
+});
 
 /*CAROUSSELS OWL*/
 
@@ -137,8 +143,7 @@ window.onunload = function(){};
           $(searchBox).removeClass('activeContent');
           $('.' + $(this).attr("rel")).removeClass('activeContent');
           $('.' + $(this).attr("rel")).addClass('activeContent');
-          
-          showAllSearchResults($(this).attr("rel"));
+
           $('#rubrique-' + $(this).attr("rel") + '-1').addClass('open-selected');
           $('#rubrique-content-' + $(this).attr("rel") + '-1').show();
           $('#rubrique-plus-' + $(this).attr("rel") + '-1').addClass('noDisplay');
@@ -157,14 +162,14 @@ window.onunload = function(){};
       $(this).siblings().find("h6").removeClass("active");
       $(this).siblings().find("span").removeClass("active");
     });
-    
+
     $(seeAll).each(function() {
       $(this).click(function(event) {
         event.stopPropagation();
         showAllSearchResults($(this).attr("rel"));
       });
     });
-    
+
  function showAllSearchResults(category)
  {
      var results = $('.results-content .' + category + ' .result');
@@ -201,11 +206,11 @@ function menuMDF() {
 menuMDF();
 
 $(window).scroll(function(){
-    if ($(window).scroll(200)){
+    /*if ($(window).scroll(200)){
         $('#leaderBoard').hide();
     } else {
       $('#leaderBoard').show();
-    }
+    }*/
 });
 
 function hoverSearch() {
@@ -225,12 +230,10 @@ function hoverSearch() {
         });
 
     $(".liSearchBox").mouseover(function() {
-
             $('#navigation li').addClass('marginli');
             $('#searchBar').addClass('marginLastli');
             $('.searchBox').addClass("showsearchBox");
             $('.icon_recherche').addClass("blackIcon");
-
       });
 
     $("#main, #logo-wrapper, .text-presentation ").click(function(e){
@@ -428,7 +431,6 @@ function click() {
 
             $(this).removeClass('purpleBtn');
 
-            console.log("class removed");
               var index = el.indexOf(identification);
               if (index > -1) {
                   el.splice(index, 1);
@@ -442,8 +444,6 @@ function click() {
                   insertNoEventMessage(el);
               });
               $('#' + attr).hide();
-              console.log("removed " + identification);
-              console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
                   $('.parent > div').fadeOut(200);
@@ -466,7 +466,6 @@ function click() {
         el.push(identification);
         el.push(attr);
 
-        console.log(el);
 
           if (this.id == 'all') {
             $('.parent > div').fadeIn(200);
@@ -477,18 +476,14 @@ function click() {
             $(this).siblings().removeClass('purpleBtn');
             $('.events').removeClass('hideContent');
             el = [];
-            console.log(el);
             removeNoEventMessages();
           } else if (el){
               $('.selectText').hide();
               $.each(el, function(i, val) {
-                  console.log(val);
                  $('.' + val).show();
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
                  $('#' + val).show();
-                  console.log("here is " + val);
-                  console.log("here is " + attr);
                   if ($(identification) != val) {
                     $("." + identification).addClass('hideContent');
                   }
@@ -767,7 +762,8 @@ String.prototype.trunc = function (n, useWordBoundary) {
 };
 
 var fixed = false;
- var topTrigger = $('.subNavigation').offset().top - 250;
+ var topTrigger = $('.subNavigation').length ? $('.subNavigation').offset().top - 250 : 0;
+
  $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {

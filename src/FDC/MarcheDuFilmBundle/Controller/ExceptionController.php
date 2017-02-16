@@ -37,10 +37,12 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
 
             if($exception->getStatusCode() === 404) {
                 $banner = $this->headerFooterManager->getHeaderBanner($locale);
+                $availableMenu = $this->headerFooterManager->getMenuAvailability();
 
                 return new Response($this->twig->render('FDCMarcheDuFilmBundle::exceptions/error404.html.twig', array(
                     'notFound404PageContent' => $this->notFound404Manager->get404PageContent($locale),
-                    'banner' => $banner
+                    'banner' => $banner,
+                    'availableMenu' => $availableMenu,
                 )));
             }
         }

@@ -61,8 +61,9 @@ var owInitSlider = function (sliderName) {
         });
 
         $('.slider-home').on('click', function(e){
-
-            if($(e.target).hasClass('owl-dot')){
+            console.log($(e.target));
+            console.log($(e.target).hasClass('owl-dots') || $(e.target).closest('.owl-dots').length);
+            if($(e.target).hasClass('owl-dots') || $(e.target).closest('.owl-dots').length){
                 return false;
             }else{
                 var href = $('.owl-item.active .coverLink').attr('href');
@@ -222,8 +223,9 @@ var owInitSlider = function (sliderName) {
 
         slider.noUiSlider.on('update', function (values, handle) {
 
+            var nm = isMac ? 4 : 21;
             //drag
-            var w = $(window).width() + 4;
+            var w = $(window).width() + nm;
             var number = 0;
 
 
@@ -493,8 +495,11 @@ var owInitSlider = function (sliderName) {
 
 var rtime;
 var timeout = false;
-var delta = 200;
+var delta = 300;
 $(window).resize(function() {
+
+    $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
+
     rtime = new Date();
     if (timeout === false) {
         timeout = true;
@@ -503,12 +508,18 @@ $(window).resize(function() {
 });
 
 function resizeend() {
+
+
     if (new Date() - rtime < delta) {
         setTimeout(resizeend, delta);
-    } else {
-        timeout = false;
-        if ($('.retrospective').length) {
+        var $slideCalc1 = $('.slides');
 
+
+    } else {
+        timeout = false; 
+        if ($('.retrospective').length) {
+            
+            $('.slides').removeClass('fadeOut').addClass('fadeIn');
             var $slide = $('.slides');
             var $slideCalc1 = $('.slides-calc1');
 

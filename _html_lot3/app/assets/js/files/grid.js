@@ -1,9 +1,9 @@
 var owInitGrid = function (id) {
-
     if (id == 'isotope-01') {
 
 
-        var $grid = $('.isotope-01:not(.add-ajax-request)').imagesLoaded(function () {
+        var $grid = $('.isotope-01:not(.add-ajax-request)');
+        $grid.imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
                 layoutMode: 'packery',
@@ -13,6 +13,14 @@ var owInitGrid = function (id) {
                 }
             });
 
+            $grid.on( 'arrangeComplete', function( event, filteredItems ) {
+                $('.item-inner').css({
+                    'width':'100.5%',
+                    'height':'100.5%'
+                })
+            });
+
+
         });
 
         var $items = $('.item');
@@ -21,7 +29,7 @@ var owInitGrid = function (id) {
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                layoutMode: 'packery',
+                layoutMode: 'masonry',
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
@@ -31,6 +39,8 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
+            $gridMore.isotope();
+
         });
 
 
@@ -78,12 +88,49 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         $grid.append($data);
+                        $grid.isotope('destroy');
 
-                        setTimeout(function(){
-                            $grid.isotope( 'addItems', $data )
-                        }, 1500);
+                        $grid.imagesLoaded(function () {
+                            $grid.isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            });
+
+                            //scroll bottom
+                            $('html,body').animate({
+                                scrollTop: $('.isotope-01').outerHeight()
+                            },300);
+
+                            $('.card.item').each(function(){
+                                var $this = $(this);
+                                var title = $this.find('.info strong a');
+                                var cat = $this.find('.info .category');
+                                var titleText;
+                                var catText;
+
+                                //if (!title.hasClass('init')) {
+                                    titleText = $this.find('.info strong a').text();
+                                    title.addClass('init');
+                                    title.attr('data-title', titleText);
+
+                                //if (!cat.hasClass('init')) {
+                                    catText = cat.text();
+                                    cat.addClass('init');
+                                    cat.attr('data-cat', catText);
+
+                                cat.addClass('init').attr('data-cat', cat.text());
+
+                                title.html(titleText.trunc(30, true));
+                                cat.html(catText.trunc(30, true));
+                            });
+
+                        });
                         
-                        $grid.isotope();
+                        
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
@@ -137,11 +184,11 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     if (!cat.hasClass('init')) {
-                        var text2 = cat.text();
+                        text2 = cat.text();
                         cat.addClass('init');
                         cat.attr('data-cat', text2);
                     } else {
-                        var text2 = cat.attr('data-title');
+                        text2 = cat.attr('data-title');
                     }
     
     
@@ -155,7 +202,10 @@ var owInitGrid = function (id) {
     
                     } else {
                         title.html(text.trunc(30, true));
-                        cat.html(text2.trunc(30, true));
+
+                        if (typeof text2 !== "undefined") {
+                            cat.html(text2.trunc(30, true));
+                        }
                     }
                 });
             }
@@ -169,6 +219,27 @@ var owInitGrid = function (id) {
             });
     
             var title = $('.info strong a').text();
+        }
+
+
+        if($('.item.block-poster').length) {
+            var stop = false;
+
+            $.each($('.item.block-poster'), function (i,e) {
+                var p = $(e).find('.title-12');
+
+                console.log(p.length )
+
+                if(p.length > 3){ 
+                    stop = true;
+                }
+
+                if(stop) {
+                    $('.block-poster .contain-txts').css('height',' 140px');
+                    $(window).trigger('resize');
+                    return false;
+                }
+            })
         }
 
         return $grid;

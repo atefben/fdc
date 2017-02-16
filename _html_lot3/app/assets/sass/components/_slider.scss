@@ -554,16 +554,22 @@
       }
 
       &.i2 {
-        top: 50%;
+        //top: 50%;
+        //top: -31%;
+        //position: relative;
+        //right: 5%;
+        top: 38%;
         position: relative;
-        right: 5%;
+        right: 21%;
       }
 
       &.i3 {
         position: relative;
-        top: 2%;
+       // top: 2%;
         //left: 26%;
-        left: 8%;
+        //left: 8%;
+        top: 3%;
+        left: 1%;
       }
     }
   }
@@ -768,6 +774,8 @@
         &.open {
           transition: $smoothTransition .8s;
           min-height: 107%;
+          min-width: 100%;
+          width: auto;
         }
       }
 

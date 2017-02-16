@@ -36,7 +36,7 @@ class MdfGlobalEventsDaysCollection
 
     /**
      * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MdfGlobalEvents", inversedBy="daysCollection")
-     * * @Assert\Count(
+     * @Assert\Count(
      *      min = "1",
      *      minMessage = "validation.schedule_min"
      * )

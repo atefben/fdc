@@ -42,10 +42,19 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     <div class="item base-widget">
-                                        <h4><strong>{{ 'form.mdf.conference_partner.partner_tab'|trans }}</strong></h4>
+                                        <h4><strong>{{ 'form.mdf.conference_partner.partner_list'|trans }}</strong></h4>
                                         {{ form_row(form.parent.children.partnerTabCollection) }}
                                     </div>
                                 </div>
+                                {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                {% elseif is_granted('ROLE_JOURNALIST') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                {% else %}
+                                    {{ form_row(translationsFields.status) }}
+                                {% endif %}
                             </div>
                         </div>
                     {% else %}
@@ -53,10 +62,19 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     <div class="item base-widget">
-                                        <h4><strong>{{ 'form.mdf.conference_partner.partner_tab'|trans }}</strong></h4>
+                                        <h4><strong>{{ 'form.mdf.conference_partner.partner_list'|trans }}</strong></h4>
                                         {{ form_row(form.parent.children.partnerTabCollection) }}
                                     </div>
                                 </div>
+                                {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                {% elseif is_granted('ROLE_JOURNALIST') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                    {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                {% else %}
+                                    {{ form_row(translationsFields.status) }}
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-4">

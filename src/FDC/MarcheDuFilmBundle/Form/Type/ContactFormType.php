@@ -40,6 +40,7 @@ class ContactFormType extends AbstractType
                     'attr' => array(
                         'placeholder' => 'contactUs.message',
                         'data-name' => 'message',
+                        'class' => 'bigHeight'
                     ),
                     'required' => false,
                 )
@@ -54,11 +55,14 @@ class ContactFormType extends AbstractType
             )
             ->add('select', 'choice', array(
                 'attr' => array(
-                    'data-name' => 'select'
+                    'data-name' => 'select',
+                    'class' => 'selection',
+                    'size' => 8,
+                    'onclick' => "$(this).hide().closest('div').find('input').val($(this).find('option:selected').text());"
                 ),
-                'label' => 'contactUs.select',
                 'required' => false,
                 'choices' => $this->contactSubjects,
+                'empty_value' => false,
             ));
     }
 

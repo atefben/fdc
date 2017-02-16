@@ -331,3 +331,6 @@ parameters:
     selfkit_amazon_url_hd: http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/selfkithd/
     fdc_court_metrage_domain: ~
     fdc_court_metrage_scheme: ~
+    mdf_google_analytics_first_id: null
+    mdf_google_analytics_second_id: null
+    mdf_locales: [fr, en, zh]

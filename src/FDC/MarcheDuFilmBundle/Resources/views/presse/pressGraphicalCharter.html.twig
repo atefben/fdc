@@ -6,7 +6,7 @@
         <div class="text-presentation galeriePresentation">
             <div class="bigContainer">
                 <h3>{{ pressGraphicalCharterContent.title }}</h3>
-                <h5>{{ pressGraphicalCharterContent.description|raw }}</h5>
+                <h5 class="customClass1">{{ pressGraphicalCharterContent.description|raw }}</h5>
             </div>
         </div>
         <div class="bigContainer">
@@ -21,7 +21,7 @@
                                         <img src="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 341px; height: 217px;">
                                     </div>
                                     <div class="textWrapper">
-                                        <h6>{{ pressGraphicalCharterWidget.title }}</h6>
+                                        <h6>{{ pressGraphicalCharterWidget.title|truncate(28, true, "...") }}</h6>
                                         <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
                                         <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} {{ 'image_size_mo'|trans }} - {{ pressGraphicalCharterWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
                                     </div>

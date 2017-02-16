@@ -1895,7 +1895,7 @@ services:
         class: Base\AdminBundle\Admin\MdfEditionProjectionsAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfEditionProjectionsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Projections - age de contenu}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Projections - Page de contenu}
 
     base.admin.mdf_industry_program_home:
         class: Base\AdminBundle\Admin\MdfIndustryProgramHomeAdmin

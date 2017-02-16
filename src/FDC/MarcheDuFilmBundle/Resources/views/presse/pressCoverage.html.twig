@@ -10,13 +10,14 @@
                     {% include 'FDCMarcheDuFilmBundle::presse/articleList.html.twig' with {'pressCoverageWidgets': pressCoverageWidgets} %}
                 </div>
             </div>
-            {% if showMoreButton %}
+            {% if nrOfArticles > 9 %}
                 <a href="#" id="load-more-retombee-articles">
                     <div class="moreArticles">
                         <span>{{ 'display_more'|trans }}</span>
                     </div>
                 </a>
             {% endif %}
+            <div class="nrOfArticles" hidden>{{ nrOfArticles }}</div>
         </div><!--CONTAINER-->
     </div>
     {% include 'FDCMarcheDuFilmBundle::contentTemplate/partials/contentTemplateFloatingButtons.html.twig' with {

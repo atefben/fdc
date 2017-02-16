@@ -20,12 +20,21 @@ class ContactManager
     }
 
     public function getContactInfo() {
-        return $this->em
+        $contact = $this->em
             ->getRepository(ContactTranslation::class)
             ->findOneBy(
                 [
                     'locale' => $this->requestStack->getMasterRequest()->get('_locale')
                 ]
             );
+
+
+        $pageTranslationStatus = $contact->getStatus();
+        if(($pageTranslationStatus != ContactTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != ContactTranslation::STATUS_PUBLISHED))
+        {
+            $contact = null;
+        }
+
+        return $contact;
     }
 }

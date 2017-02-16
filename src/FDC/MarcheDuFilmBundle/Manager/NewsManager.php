@@ -24,10 +24,7 @@ class NewsManager
     {
         return $this->em
             ->getRepository(MdfNewsPageTranslation::class)
-            ->findOneBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
+            ->getByLocaleAndStatus($this->requestStack->getMasterRequest()->get('_locale')
             );
     }
 }

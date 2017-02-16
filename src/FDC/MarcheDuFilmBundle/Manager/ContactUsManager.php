@@ -28,10 +28,7 @@ class ContactUsManager
     {
         return $this->em
             ->getRepository(MdfContactPageTranslation::class)
-            ->findOneBy(
-                [
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                ]
+            ->getByLocaleAndStatus($this->requestStack->getMasterRequest()->get('_locale')
             );
     }
 

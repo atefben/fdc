@@ -29,7 +29,7 @@
                                 <div class="box-body">
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.slidersTop.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="first-slider">
                                                 {% if widget.children._type.vars.value == 'home_slider_top_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.top_slider.widget'|trans }}</strong></h4>
                                                 {% endif %}
@@ -60,7 +60,7 @@
                                 <div class="box-body">
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.sliders.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="second-slider">
                                                 {% if widget.children._type.vars.value == 'home_slider_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.slider.widget'|trans }}</strong></h4>
                                                 {% endif %}
@@ -91,7 +91,7 @@
                                 <div class="box-body">
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.slidersTop.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="first-slider">
                                                 {% if widget.children._type.vars.value == 'home_slider_top_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.top_slider.widget'|trans }}</strong></h4>
                                                 {% endif %}
@@ -115,7 +115,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {% for widget in form.parent.children.slidersTop.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="first-slider">
                                                 {% if widget.children._type.vars.value == 'home_slider_top_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.top_slider.widget'|trans }}</strong></h4>
                                                     <div class="form-group">
@@ -166,7 +166,7 @@
                                 <div class="box-body">
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.sliders.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="second-slider">
                                                 {% if widget.children._type.vars.value == 'home_slider_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.slider.widget'|trans }}</strong></h4>
                                                 {% endif %}
@@ -190,7 +190,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {% for widget in form.parent.children.sliders.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="second-slider">
                                                 {% if widget.children._type.vars.value == 'home_slider_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.slider.widget'|trans }}</strong></h4>
                                                     <div class="form-group">
@@ -350,7 +350,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.services.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="services">
                                             {% if widget.children._type.vars.value == 'home_service_type' %}
                                                 <h4><strong>{{ 'form.mdf.home.service.widget'|trans }}</strong></h4>
                                             {% endif %}
@@ -375,7 +375,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.services.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="services">
                                             {% if widget.children._type.vars.value == 'home_service_type' %}
                                                 <h4><strong>{{ 'form.mdf.home.service.widget'|trans }}</strong></h4>
                                             {% endif %}
@@ -397,7 +397,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {% for widget in form.parent.children.services.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="services">
                                                 {% if widget.children._type.vars.value == 'home_service_type' %}
                                                     <h4><strong>{{ 'form.mdf.home.service.widget'|trans }}</strong></h4>
                                                     <div class="form-group">
@@ -438,6 +438,17 @@
                             </div>
                         </div>
                     {% endif %}
+                    <div class="col-md-8">
+                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                        {% elseif is_granted('ROLE_JOURNALIST') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                        {% else %}
+                            {{ form_row(translationsFields.status) }}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         {% endfor %}

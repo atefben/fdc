@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -91,6 +92,13 @@ class MdfDispatchDeServiceAdmin extends Admin
                         'required' => false,
                         'label'              => 'form.mdf.label.contact_see_more_url',
                         'translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => DispatchDeServiceTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     )
                 )
             ))

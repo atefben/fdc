@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Component\HttpFoundation\Request;
 use FDC\MarcheDuFilmBundle\Form\Type\ContactFormType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TransverseController extends Controller
 {
@@ -15,13 +16,23 @@ class TransverseController extends Controller
         $banner = $headerFooterManager->getHeaderBanner();
         $availableMenu = $headerFooterManager->getMenuAvailability();
 
+        $localeSlugs = [];
+        if ($routeName == 'fdc_marche_du_film_services_widgets') {
+            $localeSlugs = $this->get('mdf.manager.services')->getLocaleSlugsForService($routeParams['slug']);
+        }
+
+        if ($routeName == 'fdc_marche_du_film_news_details') {
+            $localeSlugs = $this->get('mdf.manager.content_template')->getNewsPageLocales($routeParams['slug']);
+        }
+
         return $this->render(
             'FDCMarcheDuFilmBundle::shared/header.html.twig',
             [
                 'banner' => $banner,
                 'routeName' => $routeName,
                 'routeParams' => $routeParams,
-                'availableMenu' => $availableMenu
+                'availableMenu' => $availableMenu,
+                'localeSlugs' => $localeSlugs
             ]
         );
     }
@@ -45,10 +56,17 @@ class TransverseController extends Controller
      */
     public function contactAction(Request $request)
     {
-
+        $request->getSession()
+            ->getFlashBag()
+            ->clear()
+        ;
         $contactUsManager = $this->get('mdf.manager.contact_us');
-
         $contactPage = $contactUsManager->getContactUsPage();
+
+        if (!$contactPage) {
+            throw new NotFoundHttpException("Page not found");
+        }
+
         $contactBlocks = $contactUsManager->getContactBlocks($contactPage);
         $contactSubjects = $contactUsManager->getContactSubjects($contactPage);
         $formContact = $this->createForm(new ContactFormType($contactSubjects));
@@ -56,13 +74,15 @@ class TransverseController extends Controller
         $formContact->handleRequest($request);
         if ($formContact->isSubmitted() && $formContact->isValid()) {
             $emailData = $formContact->getData();
-            $emailData['emailTo'] = $contactPage->getReceiverEmail();
             $this->get('mdf.manager.mailer')->sendMessage($emailData);
 
-            return $this->redirectToRoute('fdc_marche_du_film_contact_us', array(
-                    'send' => 'success'
-                )
-            );
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success','success')
+            ;
+
+            unset($formContact);
+            $formContact = $this->createForm(new ContactFormType($contactSubjects));
         }
 
         return $this->render('FDCMarcheDuFilmBundle::shared/contact/contactUs.html.twig', array(
@@ -70,7 +90,6 @@ class TransverseController extends Controller
                 'contactBlocks' => $contactBlocks,
                 'contactSubjects' => $contactSubjects,
                 'formContact' => $formContact->createView(),
-                'send' => $request->get('send') ? true : false,
             )
         );
     }
@@ -86,12 +105,12 @@ class TransverseController extends Controller
             ]
         );
     }
-    
+
     public function sliderAccreditationAction()
     {
         $sliderAccreditationManager = $this->get('mdf.manager.slider_accreditation');
         $slidersAccreditation = $sliderAccreditationManager->getAllSlidersAccreditation();
-        
+
         return $this->render('FDCMarcheDuFilmBundle::partials/accreditationBlock.html.twig', array(
                 'sliders' => $slidersAccreditation,
             )

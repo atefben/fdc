@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\MarcheDuFilmBundle\Entity\MdfPressGalleryTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -67,6 +68,13 @@ class MdfPressGalleryAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
                         'required' => true
+                    ),
+                    'status'            => array(
+                        'label'                     => 'form.mdf.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => MdfPressGalleryTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     )
                 ),
             ))

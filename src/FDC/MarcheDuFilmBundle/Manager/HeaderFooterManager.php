@@ -55,6 +55,6 @@ class HeaderFooterManager
         if ($menuTranslation) {
             return $menuTranslation[0];
         }
-        return null; 
+        return null;
     }
 }

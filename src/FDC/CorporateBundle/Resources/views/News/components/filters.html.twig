@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
-<div class="filters padding-small-top">
+<div class="filters{% if removePaddingSmallTop is not defined or not removePaddingSmallTop %} padding-small-top{% endif %}">
 
     {% if filters.dates is defined %}
     <div id="date" class="filter">

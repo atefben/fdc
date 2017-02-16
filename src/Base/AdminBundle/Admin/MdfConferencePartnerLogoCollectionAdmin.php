@@ -48,7 +48,9 @@ class MdfConferencePartnerLogoCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('conferencePartnerLogo', 'sonata_type_model_list')
+            ->add('conferencePartnerLogo', 'sonata_type_model_list', array(
+                'label' => 'form.mdf.conference_partner.logo_collection'
+            ))
             ->add('position','hidden', array(
                 'attr' => array(
                     "hidden" => true

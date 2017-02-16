@@ -139,20 +139,17 @@ var initVideo = function(hash) {
             $topBar       = $container.find('.top-bar'),
             $playlist     = [];
 
-        setTimeout(function(){
+         setTimeout(function(){
             var infos = {
+                'all': $container.parent().find('.info'),
                 "category": $container.parent().find('.info .category').html(),
                 "date": $container.parent().find('.info .date').html(),
                 "hour": $container.parent().find('.info .hour').html(),
                 "name": $container.parent().find('.info p').html()
             }
 
-            console.log(infos);
+            $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
 
-            $topBar.find('.info .category').html(infos.category);
-            $topBar.find('.info .date').html(infos.date);
-            $topBar.find('.info .hour').html(infos.hour);
-            $topBar.find('.info p').html(infos.name);
 
         }, 700);
 
@@ -432,7 +429,7 @@ var initVideo = function(hash) {
                         }
                     });
 
-                    if(!$('.media-library').length){
+                    if(!$('.media-library').length && !$('.medias').length){
                         sliderChannelsVideo.trigger('to.owl.carousel', index);
                     }
 
@@ -456,9 +453,14 @@ var initVideo = function(hash) {
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
-                playerInstance.playlistItem(index);
+                index = parseInt(index)
 
+                playerInstance.playlistItem(index);
+                console.log(playerInstance);
+                console.log(playerInstance.getPlaylist());
+                
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+
                 $topBar.find('.info .category').text(infos.category);
                 $topBar.find('.info .date').text(infos.date);
                 $topBar.find('.info .hour').text(infos.hour);
@@ -468,7 +470,24 @@ var initVideo = function(hash) {
                 $container.find('.jwplayer').removeClass('overlay-channels');
                 $container.find('.jwplayer').removeClass('overlay-channels over');
 
-                sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true]);
+                sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true])
+
+                updateShareLink(index)
+
+                var item = $('.grid-01 .item.video')[index];
+                var vid = $(item).data('vid');
+                var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
+                history.replaceState('', document.title, newURL);
+
+                updatePopinMedia({
+                    'type': "video",
+                    'category': infos.category,
+                    'date': infos.date,
+                    'title': infos.name,
+                    'url': newURL
+                });
+
+                initRs();
 
             });
 
@@ -511,7 +530,12 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
+                console.log(playlist)
+                playerInstance.load(playlist);
+
+
             } else if (typeof $container.data('playlist') != "undefined") {
+
                 playlist = $container.data('playlist');
                 playerInstance.load(playlist);
             }
@@ -546,8 +570,14 @@ var initVideo = function(hash) {
                 }
             });
 
-            initChannel();
-            initChannelTopBar();
+            if($('.medias').length || $('.media-library').length){
+                initChannelTopBar();
+            }else{
+                initChannel();
+                initChannelTopBar();
+            }
+
+
 
 
             if($('.infos-videos .buttons').length > 0) {
@@ -945,24 +975,24 @@ var initVideo = function(hash) {
             }, 500);
 
         });
-    }else if($('.video-player').length > 0) {
+    } else if($('.medias').length > 0 || $('.media-library').length > 0) {
+
+        initPopinVideo(hash);
+
+    } else if($('.video-playlist').length > 0) {
+
+        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
+
+    } else if ($('#video-player-ba').length > 0) {
+
+        videoMovieBa = playerInit('video-player-ba', false, true)
+
+    } else if($('.video-player').length > 0) {
 
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
         })
-    }
-
-    if($('.video-playlist').length > 0) {
-        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
-    }
-
-    if ($('#video-player-ba').length > 0) {
-        videoMovieBa = playerInit('video-player-ba', false, true)
-    }
-
-    if($('.medias').length > 0 || $('.media-library').length > 0) {
-        initPopinVideo(hash);
     }
     
 

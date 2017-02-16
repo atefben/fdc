@@ -66,50 +66,6 @@ html {
   .Article-video-play img {
     width: 100%; }
 
-.Article-videoPlayer {
-  position: relative; }
-  .Article-videoPlayer video {
-    width: 100%;
-    height: 17.7rem;
-    background-size: cover; }
-  .Article-videoPlayer-play {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: url(../../img/article/video-play-btn.png) no-repeat center;
-    background-size: 2.2rem;
-    z-index: 1; }
-  .Article-videoPlayer-caption {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    color: #fff;
-    width: 90%;
-    padding: 0 5%;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
-    background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0, black), color-stop(1, transparent));
-    background-image: -webkit-repeating-linear-gradient(bottom, black 0%, transparent 100%);
-    background-image: repeating-linear-gradient(to top, black 0%, transparent 100%);
-    background-image: -ms-repeating-linear-gradient(bottom, black 0%, transparent 100%); }
-    .Article-videoPlayer-caption--hidden {
-      display: none; }
-    .Article-videoPlayer-caption h4 {
-      display: inline;
-      color: #c9a45e;
-      text-transform: uppercase;
-      font-size: 1rem;
-      font-family: "Camphor W01 Heavy"; }
-    .Article-content .Article-videoPlayer-caption p {
-      display: inline;
-      font-family: "Camphor W01 Regular";
-      font-size: 1rem;
-      color: #b8b8b8; }
-    .Article-content .Article-videoPlayer-caption strong {
-      font-family: "Open Sans";
-      font-weight: 300;
-      font-size: 1.2rem;
-      line-height: 1.5rem; }
-
 .Article-header video {
   width: 100%;
   display: block;
@@ -379,6 +335,118 @@ html {
 .Article-content table {
   width: 100% !important; }
 
+.Article-content .big-quote {
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 70px; }
+
+.Article-content .txt-grey-bkg-container {
+  background-color: #f4f4f4;
+  padding: 70px 70px;
+  margin-bottom: 70px;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px; }
+
+.Article-content .cke_editable .single-button {
+  border-right: 1px solid #c8a461 !important;
+  border-color: #c8a461; }
+
+.Article-content .button {
+  border: 1px solid #dfdfdf;
+  border-right: none;
+  color: #c8a461;
+  display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 19px 0 19px;
+  text-transform: uppercase;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95); }
+
+.Article-content .title-article {
+  color: #333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  text-align: center; }
+
+.Article-content h2.sub-title {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center; }
+
+.Article-content h2.sub-title2 {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 25px 0px; }
+
+.Article-content h3.sub-title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase; }
+
+.Article-content .little-txt {
+  color: #969696;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left; }
+
+.Article-content .big-txt {
+  color: #333333;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  line-height: 40px;
+  text-align: center; }
+
+.Article-content .chapeau {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 1.125rem;
+  line-height: 2em;
+  margin-bottom: 70px;
+  text-align: center; }
+
+.Article-content .caption-article {
+  color: #333333;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+  display: block;
+  padding-top: 10px;
+  border-top: 1px solid #dfdfdf; }
+
+.Article-content .title-acces {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  padding-bottom: 20px; }
+
+.Article-content .descript-acces {
+  padding-bottom: 20px;
+  font-size: .8125rem;
+  line-height: 24px; }
+
+.Article-content .loc {
+  display: block;
+  width: 246px;
+  margin: 0 auto;
+  line-height: 20px; }
+
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
   top: .7rem;
@@ -481,3 +549,82 @@ html {
       vertical-align: top;
       margin-top: .5rem;
       margin-left: 6.3rem; }
+
+.jwplayer.jw-skin-fdc-video {
+  position: relative; }
+  .jwplayer.jw-skin-fdc-video.jw-state-complete .jw-display-icon-container > .jw-icon {
+    background: transparent; }
+  .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: transparent url(../../img/article/video-play-btn.png) no-repeat center;
+    background-size: 2.2rem;
+    z-index: 1; }
+  .jwplayer.jw-skin-fdc-video .jw-slider-container {
+    height: 3px;
+    top: -18px;
+    overflow: hidden; }
+  .jwplayer.jw-skin-fdc-video .jw-icon {
+    color: #fff; }
+  .jwplayer.jw-skin-fdc-video.jw-state-idle .jw-icon-display:before {
+    content: ""; }
+  .jwplayer.jw-skin-fdc-video .jw-tooltip-time {
+    display: none !important; }
+  .jwplayer.jw-skin-fdc-video .jw-background-color,
+  .jwplayer.jw-skin-fdc-video .jw-display-icon-container {
+    background: transparent !important;
+    background-color: transparent !important; }
+  .jwplayer.jw-skin-fdc-video .jw-controlbar {
+    width: 100%; }
+    .jwplayer.jw-skin-fdc-video .jw-controlbar-left-group {
+      width: 18%;
+      display: inline-block; }
+    .jwplayer.jw-skin-fdc-video .jw-controlbar-center-group {
+      width: 66%;
+      display: inline-block; }
+    .jwplayer.jw-skin-fdc-video .jw-controlbar-right-group {
+      width: 15%;
+      display: inline-block;
+      text-align: right; }
+  .jwplayer.jw-skin-fdc-video .jw-title {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    top: auto;
+    color: #fff;
+    width: 100%;
+    padding: 0 5%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+    background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0, black), color-stop(1, transparent));
+    background-image: -webkit-repeating-linear-gradient(bottom, black 0%, transparent 100%);
+    background-image: repeating-linear-gradient(to top, black 0%, transparent 100%);
+    background-image: -ms-repeating-linear-gradient(bottom, black 0%, transparent 100%); }
+    .jwplayer.jw-skin-fdc-video .jw-title--hidden {
+      display: none; }
+    .jwplayer.jw-skin-fdc-video .jw-title-primary {
+      position: absolute;
+      bottom: -0px;
+      left: 0;
+      font-weight: normal;
+      font-family: "Open Sans";
+      font-weight: 300;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      padding-left: 12px; }
+    .jwplayer.jw-skin-fdc-video .jw-title-secondary {
+      position: absolute;
+      left: 0px;
+      bottom: 12px;
+      padding-left: 12px; }
+    .jwplayer.jw-skin-fdc-video .jw-title h4 {
+      display: inline;
+      color: #c9a45e;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-family: "Camphor W01 Heavy"; }
+    .Article-content .jwplayer.jw-skin-fdc-video .jw-title p {
+      display: inline;
+      font-family: "Camphor W01 Regular";
+      font-size: 1rem;
+      color: #b8b8b8; }

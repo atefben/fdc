@@ -150,7 +150,8 @@
     .icon.icon-movie-clap {
       font-size: 1.2rem;
       margin-bottom: 6px;
-
+      position: relative;
+      top: 2px;
     }
 
     &:last-child {
@@ -182,10 +183,17 @@
       font-size: 1rem;
       vertical-align: sub;
       margin-right: 10px;
+
+      &.icon-video {
+        height: 13px;
+        position: relative;
+        top: -1px;
+      }
     }
 
     input {
       opacity: 0;
+      position: absolute;
     }
 
     &.active, .not-mobile &:hover {

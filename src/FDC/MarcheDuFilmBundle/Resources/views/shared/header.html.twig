@@ -24,9 +24,13 @@
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                    {% for locale in mdf_locales if locale != app.request.locale %}
                         <li>
-                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                            {% set params = {'_locale' : locale} %}
+                            {% if localeSlugs is defined and localeSlugs|length > 0 and localeSlugs[app.request.locale] %}
+                                {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                            {% endif %}
+                            <a href="{{ path(routeName, routeParams|merge(params)) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -43,7 +47,7 @@
             <div id="leaderBoard">
                 {% if banner %}
                     <a href="{{ banner.headerBannerUrl }}" target="_blank">
-                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" />
+                        <img src="{% path banner.translatable.headerBanner|trans_fallback('file'), 'reference' %}" alt="" class="palm" style="height: 90px; width: 720px"/>
                     </a>
                 {% endif %}
             </div>
@@ -55,9 +59,13 @@
                     <li class="lang">
                         <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                            {% for locale in mdf_locales if locale != app.request.locale %}
                                 <li>
-                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                    {% set params = {'_locale' : locale} %}
+                                    {% if localeSlugs is defined and localeSlugs|length > 0 and localeSlugs[app.request.locale] %}
+                                        {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                                    {% endif %}
+                                    <a href="{{ path(routeName, routeParams|merge(params)) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -86,7 +94,7 @@
                         <a href="{{ path('fdc_marche_du_film_accreditations') }}"  class="{{routeName =='fdc_marche_du_film_accreditations' ? 'active ' : '' }}accreditationColor">{{ 'menu.accreditation'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' ? 'active ' : '' }}servicesColor">{{ 'menu.services'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' or routeName == 'fdc_marche_du_film_services_widgets' ? 'active ' : '' }}servicesColor">{{ 'menu.services'|trans }}</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="{{ routeName == 'fdc_marche_du_film_who_are_we_history'
@@ -114,7 +122,7 @@
                     </li>
                     <li id="searchBar">
                         <div>
-                            <a href="#" id=""><i class="icon icon_recherche"></i></a>
+                            <a href="#" id="searchBarA"><i class="icon icon_recherche"></i></a>
                         </div>
                     </li>
                 </ul>

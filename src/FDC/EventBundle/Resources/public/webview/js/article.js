@@ -97,7 +97,8 @@ var ow = ow || {};
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
 				var player = $(this);
-				jwplayer(player.get(0)).setup({
+				console.log(player.data('file-mp3'));
+				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
 					"height": 90,
 					"title": player.data('title'),
@@ -112,15 +113,18 @@ var ow = ow || {};
 	}
 
 	ow.videoPlayer = function(){
-		if($('.jw-video').length){
-			$('.jw-video').each(function(){
+		if($('.Article-videoPlayer').length){
+			$('.Article-videoPlayer').each(function(){
 				var player = $(this);
-				jwplayer(player.get(0)).setup({
+				var videoInstance = jwplayer(player.attr('id')).setup({
 					"file": player.data('file'),
 					"image": player.data('poster'),
+					"title": player.data('title'),
+					"description": player.data('desc'),
 					"width": '100%',
+					"height": 180,
 					'skin': {
-						'name': 'fdc'
+						'name': 'fdc-video'
 					}
 				});
 			});
