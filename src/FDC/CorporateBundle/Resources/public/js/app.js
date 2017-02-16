@@ -2579,7 +2579,7 @@ var owInitGrid = function (id) {
 
             $grid.on( 'arrangeComplete', function( event, filteredItems ) {
                 $('.item-inner').css({
-                    'width':'100.1%',
+                    'width':'100.5%',
                     'height':'100.5%'
                 })
             });
