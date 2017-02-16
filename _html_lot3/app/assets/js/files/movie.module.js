@@ -1,5 +1,6 @@
 var videoMovie;
 
+
 // Single Movie
 // =========================
 $(document).ready(function() {
@@ -128,6 +129,72 @@ $(document).ready(function() {
       $('.prevmovie, .nextmovie').removeClass('show');
       $('.single-movie .nav').removeClass('over');
     });
+
+    if($('#video-movie-trailer').length > 0) {
+      videoMovie = playerInit('video-movie-trailer');
+      videoMovie.resize('100%','100%');
+      // show and play trailer
+      console.log('init');
+      $('.poster .picto').on('click', function(e) {
+        console.log('playvid');
+        $('html, body').animate({
+          scrollTop: 0
+        }, 300, function() {
+          $('.main-image, .poster, .info-film, .palmares, .nav').addClass('trailer');
+          $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
+          $('#video-movie-trailer').closest('.video-container').css({
+            'margin-top': '91px',
+            'height' : 'calc(100% - 91px)'
+          });
+          setTimeout(function() {
+            $('header').addClass('sticky');
+            $('body').css('padding-top', 0);
+          }, 800);
+        });
+
+        setTimeout(function() {
+          videoMovie.play();
+        }, 500);
+        e.preventDefault();
+      });
+    }
+
+    //movie slider
+    if($("#slider-movie-videos").length){
+      var sliderMovieVideos = $("#slider-movie-videos").owlCarousel({
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        loop: false,
+        margin: 50,
+        autoWidth: true,
+        dragEndSpeed: 600,
+        responsive:{
+          0:{
+            items: 3
+          },
+          1675: {
+            items: 4
+          }
+        },
+        onInitialized: function() {
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-movie-videos .owl-stage').css({ 'margin-left': m });
+          setActiveMovieVideos();
+        },
+        onResized: function() {
+          var m = ($(window).width() - $('.container').width()) / 2;
+          $('#slider-movie-videos .owl-stage').css({ 'margin-left': m });
+        },
+        onTranslated: function() {
+          setActiveMovieVideos();
+        }
+      });
+
+      $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+        sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+      });
+    }
 
     // previous and next
     /*$('body').on('click', '.single-movie .nav', function(e) {

@@ -1,5 +1,4 @@
 var owInitGrid = function (id) {
-
     if (id == 'isotope-01') {
 
 
@@ -13,11 +12,14 @@ var owInitGrid = function (id) {
                     gutter: 0
                 }
             });
-            var globalOffset = $grid.offset().top;
-            $grid.find('.item').each(function(index,value){
-                var topValue = (parseInt($(this).offset().top) - globalOffset) - 1;
-                $(this).css('top',topValue);
+
+            $grid.on( 'arrangeComplete', function( event, filteredItems ) {
+                $('.item-inner').css({
+                    'width':'100.5%',
+                    'height':'100.5%'
+                })
             });
+
 
         });
 
@@ -27,7 +29,7 @@ var owInitGrid = function (id) {
         var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
-                layoutMode: 'packery',
+                layoutMode: 'masonry',
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
@@ -38,6 +40,7 @@ var owInitGrid = function (id) {
                 sortBy: ['number']
             });
             $gridMore.isotope();
+
         });
 
 

@@ -774,6 +774,8 @@
         &.open {
           transition: $smoothTransition .8s;
           min-height: 107%;
+          min-width: 100%;
+          width: auto;
         }
       }
 

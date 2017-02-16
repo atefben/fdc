@@ -2,6 +2,10 @@
 .slider-restropective .block-01 .vFlexAlign img {
   .ie & {
     height: 404px;
+
+    &.open {
+        height: auto;
+    }
   }
 }
 
