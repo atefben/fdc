@@ -2576,8 +2576,14 @@ var owInitGrid = function (id) {
                     gutter: 0
                 }
             });
-            var globalOffset = $grid.offset().top;
-            var colOffset = 2;
+            
+            $grid.on( 'arrangeComplete', function( event, filteredItems ) {
+                $('.item-inner').css({
+                    'width':'100.5%',
+                    'height':'100.5%'
+                })
+            });
+
 
         });
 
@@ -2598,6 +2604,7 @@ var owInitGrid = function (id) {
                 sortBy: ['number']
             });
             $gridMore.isotope();
+
         });
 
 
