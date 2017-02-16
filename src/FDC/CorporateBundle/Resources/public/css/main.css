@@ -10371,6 +10371,8 @@ body#home .isotope-01 .item .contain-img {
 .slider-restropective.big .vFlexAlign img.open {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
   min-height: 107%;
+  min-width: 100%;
+  width: auto;
 }
 .slider-restropective.big .vFlexAlign .texts.visible {
   display: block;

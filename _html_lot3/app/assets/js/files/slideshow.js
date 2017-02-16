@@ -14,13 +14,11 @@ var owinitSlideShow = function (slider, hash) {
             $('.poster').on('click', function(e){
                 slider = $('.all-contain');
                 $(this).parent().addClass('active center');
-
-                openSlideShow(slider, "undefined", true);
+                var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
+                openSlideShow(slider,hash, true);
             })
 
         } else if($('.article-single').length){
-
-            console.log('ok')
 
             $('.slideshow-img').on('click', function (e) {
                 e.preventDefault();
@@ -89,7 +87,8 @@ var openSlideShow = function (slider, hash, affiche) {
                 centerElement = index;
 
                 if($('.affiche-fdc').length ) {
-                    var hashPush = $(value).parent().data('pid');
+                    console.log(hash);
+                    var hashPush = hash;
 
 
                     var CheminComplet = document.location.href;
@@ -214,8 +213,6 @@ var openSlideShow = function (slider, hash, affiche) {
         $(thumbs).removeClass('active');
         $(thumbs[centerElement]).addClass('active');
 
-        console.log(centerElement);
-        console.log(images[centerElement]);
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');
