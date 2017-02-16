@@ -4838,7 +4838,7 @@ var rtime;
 var timeout = false;
 var delta = 300;
 $(window).resize(function() {
-
+    console.log(timeout);
     $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
 
     rtime = new Date();
@@ -4966,8 +4966,6 @@ var openSlideShow = function (slider, hash, affiche) {
     var caption = "";
 
     slider.find('.item, .img, .poster').each(function (index, value) {
-
-        console.log(value)
 
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 

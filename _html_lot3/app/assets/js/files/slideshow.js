@@ -81,8 +81,6 @@ var openSlideShow = function (slider, hash, affiche) {
 
     slider.find('.item, .img, .poster').each(function (index, value) {
 
-        console.log(value)
-
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
 
