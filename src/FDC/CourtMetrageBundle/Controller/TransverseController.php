@@ -9,11 +9,21 @@ use FDC\MarcheDuFilmBundle\Form\Type\ContactFormType;
 
 class TransverseController extends Controller
 {
-    public function headerAction()
+    public function headerAction($routeName, $routeParams)
     {
+        $menuManager = $this->get('ccm.manager.menu');
 
-        return $this->render(
-            'FDCCourtMetrageBundle::Shared/header.html.twig'
+        $menuPage = $menuManager->getMenuPage();
+        $mainNavs = $menuManager->getMainNavs($menuPage);
+        $subNavs = $menuManager->getSubNavs($mainNavs);
+
+        return $this->render('FDCCourtMetrageBundle::Shared/header.html.twig', array(
+                'menuPage' => $menuPage,
+                'mainNavs' => $mainNavs,
+                'subNavs' => $subNavs,
+                'routeName' => $routeName,
+                'routeParams' => $routeParams,
+            )
         );
     }
 
