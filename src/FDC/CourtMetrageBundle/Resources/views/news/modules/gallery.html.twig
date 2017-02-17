@@ -2,30 +2,12 @@
     <div class="slideshow-img">
         <div class="images">
             {% for image in widget.gallery.medias %}
-                {% set translations = image.media.findTranslationByLocale(app.request.locale) %}
-                {% set imageThemeTranslation = '' %}
-                {% if image.media.theme %}
-                    {% set imageThemeTranslation = image.media.theme.findTranslationByLocale(app.request.locale) %}
-                {% endif %}
-                <div class="img{{ loop.index == 1 ? ' active' : '' }}">
-                    <a id="{{ 'photo' ~ loop.index }}" class="chocolat-image ajax" href="{% path image.media|trans_fallback('file'), 'reference' %}"
-                       title='<span class="category">{{ imageThemeTranslation ? imageThemeTranslation.name : imageThemeTranslation }}</span><span class="date">{{ image.media.publishedAt|date('d.m.y') }}</span><h2>{{ translations.alt|truncate(80, true, "...") }}</h2>'
-                       data-credit="{{ translations.legend|slice(0, 20) ~ ' - @' ~  translations.copyright|slice(0, 20) }}"
-                       data-pid="{{ widget.id ~ widget.gallery.id ~ image.id }}"
-                       data-seo-title="{{ translations.seoTitle }}"
-                       data-seo-description="{{ translations.seoDescription }}">
-                        <img src="{% path image.media|trans_fallback('file'), 'reference' %}" alt="" />
-                    </a>
-                </div>
+                {% include '@FDCCourtMetrage/news/partials/gallery_image.html.twig' with {'mediaImage': image.media, 'galleryId': widget.gallery.id, 'index': loop.index} only %}
             {% endfor %}
         </div>
-
         <div class="owl-carousel thumbnails">
             {% for image in widget.gallery.medias %}
-                {% set translations = image.media.findTranslationByLocale(app.request.locale) %}
-                <div data-id="{{ 'photo' ~ loop.index }}" class="thumb{{ loop.index == 1 ? ' active' : '' }}" data-caption="{{ translations.legend ~ ' - ©' ~  translations.copyright}}">
-                    <img src="{% path image.media|trans_fallback('file'), 'reference' %}" />
-                </div>
+                {% include '@FDCCourtMetrage/news/partials/gallery_thumbnail.html.twig' with {'mediaImage': image.media, 'index': loop.index} only %}
             {% endfor %}
         </div>
     </div>

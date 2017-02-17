@@ -25,29 +25,48 @@
                         <span class="update">{#Mise à jour#}{{ 'ccm.news.update'|trans }} :</span><span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date(hourFormat) }}</span>
                     {% endif %}
                 </div>
-                <h2 class="title-article">{{ article.findTranslationByLocale(app.request.locale).title }}</h2>
+                <h2 class="title-article">{{ article|trans_fallback('title') }}</h2>
                 <div class="buttons">
                     <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{#Partager#}{{ 'ccm.news.share'|trans }}</a>
                     <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{#Imprimer#}{{ 'ccm.news.print'|trans }}</a>
                 </div>
                 {{ dump(article) }}
-                {#{% if article.getType() == 'article' %}
-                    {% include '@FDCCourtMetrage/news/modules/image.html.twig' %}
-                {% endif %}#}
+                {% if article.getType() == 'article' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/article.html.twig' with {'mediaImage': article.header} %}
+                {% elseif article.getType() == 'image' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/image.html.twig' with {'mediaImage': article.header, 'gallery': article.gallery} %}
+                {% elseif article.getType() == 'audio' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/audio.html.twig' with {'mediaAudio': article.audio} %}
+                {% elseif article.getType() == 'video' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/video.html.twig' with {'mediaVideo': article.video, 'mediaImage': article.image} %}
+                {% endif %}
 
+                {% set articleDescriptionWidget = null %}
                 {% for widget in article.widgets %}
+                    {% if widget.getType() == 'description' and articleDescriptionWidget is null %}
+                        {% set articleDescriptionWidget = widget %}
+                    {% endif %}
                     {% include '@FDCCourtMetrage/news/modules/' ~ widget.getType() ~ '.html.twig' with {'widget': widget} %}
                 {% endfor %}
             </div>
             <div class="share">
                 <p>Partagez l'article</p>
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                    <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
+                    {% spaceless %}
+                        <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl|url_encode(true) }}&picture={% if article.seoFile is not null %}{% path article.seoFile|trans_fallback('file'), '384x485' -%}{% elseif article.header is not null %}{% path article.header|trans_fallback('file'), 'reference' -%}{% elseif article.image is not null %}{% path article.image|trans_fallback('file'), 'reference' -%}{% endif %}&title={{ article|trans_fallback('title')|url_encode(true) }}&description={% if articleDescriptionWidget is not null %}{{ articleDescriptionWidget|trans_fallback('content')|striptags|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                            rel="nofollow" class="button facebook">
+                            <i class="icon icon_facebook"></i>
+                        </a>
+                    {% endspaceless %}
+                    <a href="https://twitter.com/intent/tweet?text={{ article|trans_fallback('title')|url_encode(true) }} {{ currentUrl }}"
+                       rel="nofollow"
+                       class="button twitter">
+                        <i class="icon icon_twitter"></i>
                     </a>
                     <a href="#" class="button link self"><i class="icon icon_link"></i></a>
                     <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
-                    <a href="#" class="button print"><i class="icon icon_print"></i></a>
+                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
                 </div>
             </div>
             <div class="film">
@@ -99,39 +118,42 @@
                 </div>
             </div>
             <div class="container">
-                <div class="focus">
+                {{ dump(article.associatedNews) }}
+                {% if article.associatedNews|length > 0 %}
+                    <div class="focus">
                     <h2 class="title">Focus</h2>
                     <div class="articles">
-                        <article class="article" data-format="article" data-theme="competition">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="/bundles/03.jpg" alt="">
+                        {% for articleAssociation in article.associatedNews %}
+                            {% set associatedArticle = articleAssociation.association %}
+                            {% set articleTranslation = associatedArticle.findTranslationByLocale(app.request.locale) %}
+                            <article class="article" data-format="article" data-theme="competition">
+                                <div class="image">
+                                    <div class="image-wrapper">
+                                        {% if associatedArticle.header is not null %}
+                                            {% set translations = associatedArticle.header.findTranslationByLocale(app.request.locale) %}
+                                            <img src="{% path associatedArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                        {% elseif associatedArticle.image is not null %}
+                                            {% set translations = associatedArticle.image.findTranslationByLocale(app.request.locale) %}
+                                            <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                        {% endif %}
+                                    </div>
+                                    <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
+                                    <span class="picto"><i class="icon icon_{{ associatedArticle.getType != 'image' ? associatedArticle.getType : 'photo' }}"></i></span>
+                                    <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
                                 </div>
-                                <a href="article.php" class="linkImage"></a>
-                                <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                                <span class="picto"><i class="icon icon_article"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
-                            </div>
-                        </article>
-                        <article class="video" data-format="video" data-theme="photocall">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="/bundles/03.jpg" alt="">
+                                <div class="info">
+                                    <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                                    <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                        <span class="date">{{ associatedArticle.publishedAt|date('d.m.y') }}</span> .
+                                        <span class="hour">{{ associatedArticle.publishedAt|date('H:i') }}</span>
+                                    </a>
+                                    <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
                                 </div>
-                                <a href="article.php" class="linkImage"></a>
-                                <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                                <span class="picto"><i class="icon icon_video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <h2><a href="article.php">Z de Costa-Gravas</a></h2>
-                            </div>
-                        </article>
+                            </article>
+                        {% endfor %}
                     </div>
                 </div>
+                {% endif %}
                 <div class="same-day">
                     <h2 class="title">Le même jour</h2>
                     <div class="articles center">

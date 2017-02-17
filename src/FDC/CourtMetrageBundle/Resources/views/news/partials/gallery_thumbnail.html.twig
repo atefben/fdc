@@ -1,0 +1,3 @@
+<div data-id="{{ 'photo' ~ mediaImage.id }}" class="thumb {{ index is defined and index == 1 ? 'active' : '' }}" data-caption="{{ mediaImage|trans_fallback('legend') ~ ' - ©' ~  mediaImage|trans_fallback('copyright') }}">
+    <img src="{% path mediaImage|trans_fallback('file'), 'reference' %}" />
+</div>

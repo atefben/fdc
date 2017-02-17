@@ -1,0 +1,23 @@
+{% set translation = mediaAudio.findTranslationByLocale(app.request.locale) %}
+{% if ( translation is null or translation.mp3url is null or translation.jobMp3State != 3 ) and app.request.locale != 'fr' %}
+    {% set translation = mediaAudio.findTranslationByLocale('fr') %}
+{% endif %}
+{% if translation.jobMp3State == 3 and translation.mp3url %}
+    <div class="video-container state-init video"
+         data-name="{{ translation.title }}"
+         data-file='[{"file":"{{ s3_server_audio ~ translation.mp3url }}"}]'
+         data-img="{% path mediaAudio.image|trans_fallback('file'), 'reference' %}">
+        <div id="{{ mediaAudio.id }}" class="video-player"></div>
+        <div class="video-overlay"></div>
+        <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <p>{{ translation.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

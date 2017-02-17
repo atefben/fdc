@@ -1,0 +1,23 @@
+{% set translation = mediaVideo.findTranslationByLocale(app.request.locale) %}
+{% if ( translation is null or translation.mp4url is null or translation.jobMp4State != 3 ) and app.request.locale != 'fr' %}
+    {% set translation = mediaVideo.findTranslationByLocale('fr') %}
+{% endif %}
+{% if translation is not null and translation.mp4url is not null and translation.jobMp4State == 3 %}
+    <div class="video-container state-init video"
+         data-name="{{ translation.title }}"
+         data-file='[{% if(translation.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ translation.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ translation.mp4Url }}"}]'
+         data-img="{% path (mediaImage is not null ? mediaImage : mediaVideo.image)|trans_fallback('file'), 'reference' %}">
+        <div id="{{ mediaVideo.id }}" class="video-player"></div>
+        <div class="video-overlay"></div>
+        <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <p>{{ translation.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
