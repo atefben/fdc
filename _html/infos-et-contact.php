@@ -37,7 +37,7 @@
                   </div>
                   <div class="textWrapper">
                     <h6 class="customClass1">clara massot</h6>
-                    <span>Project Manager NEXT<br></span>
+                    <span> Project Manager NEXT Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com" class="customClass1">clara.massot@gmail.com</a></span>
                   </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                   </div>
                   <div class="textWrapper">
                     <h6 class="customClass1">clara massot</h6>
-                    <span>Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com" class="customClass1">clara.massot@gmail.com</a></span>
+                    <span>Project Manager NEXT Project Manager NEXT Project Manager NEXT<br><a href="mailto:clara.massot@gmail.com" class="customClass1">clara.massot@gmail.com</a></span>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,18 @@
                   </div>
                   <div class="textWrapper">
                     <h6 class="customClass1">clara massot</h6>
-                    <span>Project Manager NEXT<br></span>
+                    <span>Project Manager NEXT Project Manager NEXT Project Manager NEXT<a href="mailto:clara.massot@gmail.com" class="customClass1">clara.massot@gmail.com</a></span>
+                  </div>
+                </div>
+              </div>
+              <div class="articles">
+                <div class="articles-content">
+                  <div class="photoWrapper">
+                    <img src="img/clara-massot.png">
+                  </div>
+                  <div class="textWrapper">
+                    <h6 class="customClass1">clara massot</h6>
+                    <span>Project Manager NEXT<br><a class="maxStr" href="mailto:clara.massot@gmail.com" class="customClass1">clara.massotclara.massotclara.massotclara.massot@gmail.com</a></span>
                   </div>
                 </div>
               </div>
@@ -93,6 +104,17 @@
                   <div class="textWrapper">
                     <h6 class="littleMargin customClass1">KEVIN MONTERO deschamps</h6>
                     <span>Coordination Asst. NEXT <br><a href="mailto:km.deschamps@gmail.com" class="customClass1">km.deschamps@gmail.com</a></span>
+                  </div>
+                </div>
+              </div>
+             <div class="articles">
+                <div class="articles-content">
+                  <div class="photoWrapper">
+                    <img src="img/clara-massot.png">
+                  </div>
+                  <div class="textWrapper">
+                    <h6 class="customClass1">clara massot</h6>
+                    <span>Project Manager NEXT<br><a class="maxStr" href="mailto:clara.massot@gmail.com" class="customClass1">clara.massotclara.massotclara.massotclara.massot@gmail.com</a></span>
                   </div>
                 </div>
               </div>

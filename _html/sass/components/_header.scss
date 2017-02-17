@@ -34,6 +34,7 @@ header {
       li a {
         color: #a7a7a7;
 
+
         &:hover {
           color: $gold;
         }
@@ -110,6 +111,7 @@ header {
 
       #logo {
         width:310px;
+        padding-top: 5px;
 
         img.palm {
           float: left;
@@ -297,7 +299,7 @@ header {
 
     #logo {
       display: inline-block;
-      padding: 5px 100px 20px 0;
+      padding: 0px 100px 0px 0;
       text-align: center;
       vertical-align: middle;
       width: 200px;
@@ -318,8 +320,8 @@ header {
         position: absolute;
         /*top: 108px;
         left: 0px;*/
-        top: 90px!important;
-        left: 10px!important;
+        top: 95px!important;
+        left: 40px!important;
       }
 
       h2 {
@@ -368,9 +370,8 @@ header {
       img.palm {
         display: block;
         margin: 0 auto;
-        width: 165px;
-        width: 123px;
-        margin-left: 35px;
+        width: 145px;
+        margin-left: 55px;
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
       }
@@ -483,7 +484,7 @@ header {
 
       li {
         display: inline-block;
-        margin-left: 40px;
+
 
         @media screen and(max-width: $mobileWidth) {
           margin-left: 5px;
@@ -495,18 +496,23 @@ header {
         }
 
         &:first-child {
-          margin-left: 50px;
-          @media screen and(max-width: $mobileWidth) {
+          margin-left: 45px;
+          /*@media screen and(max-width: $mobileWidth) {
             margin-left: 5px;
-          }
+          }*/
         }
 
         a {
           color: #fff;
+          font-size: 14px;
           display: block;
-          padding-right: 20px;
+          padding-right: 45px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
+
+          @media screen and(max-width: $mobileWidth) {
+              padding-right: 20px;
+          }
 
           &:hover, &.active {
             color: #ec3050;
@@ -721,10 +727,14 @@ header {
 }
 
 #searchBar {
-    margin-left: 80px!important;
+    margin-left: 105px !important;
     border-left: 1px solid #404040;
     padding-left: 20px;
   }  
+
+#searchBarA {
+  padding-right: 20px!important;
+}
   
 .showsearchBox {
   right: 30%;
@@ -732,15 +742,16 @@ header {
   @include transition(all  2s $smoothTransition);
   display: inline-block!important;
   width: 100px!important;
-
 }
 
 .marginli {
-  margin-left:15px!important;
+  margin-left: 0px!important;
+  @include transition(all  0.9s $smoothTransition);
 }
 
 .marginLastli {
   display: none!important;
+  @include transition(all  0.9s $smoothTransition);
 }
 
 .showsearchBox > *, .searchBox > * {
@@ -986,12 +997,6 @@ header {
 @media screen and (max-width: 1155px) {
     .main {
       float:none;
-    }
-
-    #navigation {
-      ul {
-        margin-left: 75px;
-      }
     }
 }
 
