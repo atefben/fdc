@@ -40,6 +40,11 @@ class CcmFilmRegister
     protected $headerPhoto;
 
     /**
+     * @ORM\OneToMany(targetEntity="CcmFilmRegisterProcedure", mappedBy="filmRegister", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     */
+    protected $filmRegisterProcedure;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -50,6 +55,7 @@ class CcmFilmRegister
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->filmRegisterProcedure = new ArrayCollection();
     }
 
     /**
@@ -118,5 +124,77 @@ class CcmFilmRegister
         $this->translations = $translations;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilmRegisterProcedure()
+    {
+        return $this->filmRegisterProcedure;
+    }
+
+    /**
+     * @param CcmFilmRegisterProcedure $filmRegisterProcedure
+     *
+     * @return $this
+     */
+    public function addFilmRegisterProcedure(CcmFilmRegisterProcedure $filmRegisterProcedure)
+    {
+        if (!$this->filmRegisterProcedure->contains($filmRegisterProcedure)) {
+            $this->filmRegisterProcedure->add($filmRegisterProcedure);
+            $filmRegisterProcedure->setFilmRegister($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param CcmFilmRegisterProcedure $filmRegisterProcedure
+     *
+     * @return $this
+     */
+    public function removeFilmRegisterProcedure(CcmFilmRegisterProcedure $filmRegisterProcedure)
+    {
+        if ($this->filmRegisterProcedure->contains($filmRegisterProcedure)) {
+            $this->filmRegisterProcedure->removeElement($filmRegisterProcedure);
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        } else {
+            $string = strval($this->getId());
+        }
+        return (string) $string;
+    }
+
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        }
+
+        return $string;
+    }
+
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }

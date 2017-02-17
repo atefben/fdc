@@ -625,11 +625,40 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     ccm:
+        register_procedure:
+            name: Catégorie des procédures d’inscription
         film_register:
             title: Têtière titre
             text: Text
             header_photo: Têtière photo
             is_text_active: active
+            procedure_widget: Procédures d’inscription
+            widget: Module procédures d’inscription
+            label_procedure: Procédures
+            procedure_text: Texte de procédures d’inscription
+            characteristics_title: Caractéristiques de mise en ligne - Titre
+            characteristics_text: Caractéristiques de mise en ligne - Text
+            characteristics_url: Caractéristiques de mise en ligne - Url
+            characteristics_button_label: Caractéristiques de mise en ligne - Button label
+            is_characteristics_active: Active
+            regulation_title: Voir le règlement - Titre
+            regulation_text: Voir le règlement - Text
+            is_regulation_active: Active
+            register_form_title: Formulaire d’inscription - Titre
+            register_form_text: Formulaire d’inscription - Text
+            register_form_background: Formulaire d’inscription - image de fond
+            is_register_form_active: Active
+            contact_us_title: Contactez-nous - Titre
+            contact_us_left_text: Contactez-nous - Colonne de gauche
+            contact_us_right_text: Contactez-nous - Colonne de droite
+            technique_characteristics_title: Détail des caractéristiques techniques - Titre
+            technique_characteristics_video: Détail des caractéristiques techniques - Spécifications vidéo
+            technique_characteristics_audio: Détail des caractéristiques techniques - Spécifications audio
+            technique_characteristics_text: Détail des caractéristiques techniques - Détail
+            regulation_details_text: Détail du règlement - Text
+            regulation_details_file: Détail du règlement - Fichier
+            regulation_details_button_label: Détail du règlement - Bouton libellé
+            regulation_details_button_url: Détail du règlement - Bouton lien
         label:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover

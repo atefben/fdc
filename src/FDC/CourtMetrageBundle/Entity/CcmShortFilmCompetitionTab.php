@@ -57,7 +57,7 @@ class CcmShortFilmCompetitionTab
     protected $translations;
 
     /**
-     * MdfConferencePartnerLogo constructor.
+     * CcmShortFilmCompetitionTab constructor.
      */
     public function __construct()
     {

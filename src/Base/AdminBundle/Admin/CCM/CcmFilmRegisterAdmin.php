@@ -64,7 +64,12 @@ class CcmFilmRegisterAdmin extends Admin
                     'text'          => array(
                         'label'              => 'form.ccm.film_register.text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'ckeditor',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
+                        'field_type'         => 'ckeditor',
+                        'config_name' => 'widget',
+                        'input_sync' => true
                     ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
@@ -84,6 +89,16 @@ class CcmFilmRegisterAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
+            ))
+            ->add('filmRegisterProcedure', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'film_register_procedure',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
             ))
         ;
     }

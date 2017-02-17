@@ -2460,6 +2460,22 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: Inscrire un film}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_register_procedure:
+        class: Base\AdminBundle\Admin\CCM\CcmRegisterProcedureAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: Catégories des procédures d’inscription}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_film_register_procedure_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterProcedureDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Film Register Procedure, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
     base.admin.ccm_menu:
         class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]
