@@ -2537,3 +2537,17 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Module Push, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_homepage_catalog:
+        class: Base\AdminBundle\Admin\CCM\HomepageCatalogAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageCatalog,~]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: HomepageCatalog}
+
+#    base.admin.ccm_homepage_catalog_top_dummy:
+#        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+#        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageCatalog, BaseAdminBundle:CCM\ImageDummyAdmin]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Module Catalog, show_in_dashboard: false}
+#        calls:
+#            - [ setTranslationDomain, ['BaseAdminBundle']]

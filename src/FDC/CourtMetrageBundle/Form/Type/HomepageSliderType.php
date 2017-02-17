@@ -129,6 +129,6 @@ class HomepageSliderType extends AbstractType
      */
     public function getName()
     {
-        return 'homepage_slider_type';
+        return 'ccm_homepage_slider_type';
     }
 }
