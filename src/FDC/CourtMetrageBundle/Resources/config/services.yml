@@ -1,4 +1,12 @@
 services:
+<<<<<<< HEAD
     ccm.manager.news:
         class: FDC\CourtMetrageBundle\Manager\NewsManager
         arguments: [ '@doctrine.orm.entity_manager' ]
+=======
+    ccm.manager.menu:
+        class: FDC\CourtMetrageBundle\Manager\MenuManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+>>>>>>> 24709e61977f45e3ba0c870fdc8783e41595b2e6

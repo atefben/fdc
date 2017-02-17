@@ -2,33 +2,33 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="/" >Festival 2016</a>
+                <a href="{{ header_fdc_com }}" target="_blank">{{ 'header.festival'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.festival-cannes.com/fr.html" target="_blank">Festival de Cannes</a>
+                <a href="{{ header_fdc_fr }}" target="_blank">{{ 'header.fdc'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.cinefondation.com/fr/" target="_blank">Cinéfondation</a>
+                <a href="{{ header_cine_fr }}" target="_blank">{{ 'header.cine'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.cannescourtmetrage.com/fr/" target="_blank" class="active">Cannes Court Métrage</a>
+                <a href="{{ header_ccm_fr }}" class="active">{{ 'header.ccm'|trans }}</a>
             </li>
             <li>
-                <a href="http://www.marchedufilm.com/fr/" target="_blank">Marché du film</a>
+                <a href="{{ header_mdf_fr }}" target="_blank">{{ 'header.mdf'|trans }}</a>
             </li>
-
         </ul>
         <ul class="user-nav">
-            <!--<li>
-              <a href="#" class="selection"><i class="icon icon_ma-selection"></i> Ma Sélection</a>
-            </li>-->
-            <li style="display:none;">
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+            <li>
+                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
             </li>
             <li class="lang">
-                <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    <li><a href="#">EN</a></li>
+                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                        <li>
+                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>
@@ -49,31 +49,40 @@
               <a href="//group.renault.com/" target="_blank"><img width="95" src="img/header/renault.svg" alt="Renault" class="renault" /></a>
               <a href="//www.mastercard.com/fr/particuliers/index.html" target="_blank"><img width="73" src="img/header/mastercard.png" alt="Mastercard" class="mastercard" /></a>
             </div>-->
-            <div class="topiconsContainer">
-                <div class="topIcons first">
-                    <a href="#"><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
+            {% if menuPage is defined and menuPage is not null %}
+                <div class="topiconsContainer">
+                    {% if menuPage.programPicIsActive %}
+                        <div class="topIcons first">
+                            <a href="#"><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
+                        </div>
+                    {% endif %}
+                    {% if menuPage.catalogPicIsActive %}
+                        <div class="topIcons second">
+                            <a href="#"><img src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
+                        </div>
+                    {% endif %}
+                    {% if menuPage.registerPicIsActive %}
+                        <div class="topIcons third">
+                            <a href="#"><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="topIcons second">
-                    <a href="#"><img src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
-                </div>
-                <div class="topIcons third">
-                    <a href="#"><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
-                </div>
-            </div>
+            {% endif %}
             <div id="sticky-user">
                 <ul class="user-nav">
-                    <li style="display:none;">
-                        <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon_mon-compte"></i> Mon compte</a>
+                    <li>
+                        <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
                     </li>
                     <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> FR</a>
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            <li><a href="#">EN</a></li>
+                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                                <li>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
-                    <!--<li>
-                      <a href="#" class="search"><i class="icon icon_recherche"></i>Rechercher</a>
-                    </li>-->
                 </ul>
             </div>
         </div>
@@ -82,36 +91,25 @@
         <div class="container">
             <nav>
                 <ul class="main">
-                    <li>
-                        <a href="#" class="active">Les Courts en Compétition</a>
-                    </li>
-                    <li>
-                        <a href="">short film corner</a>
-                        <ul class="tcenter">
-                            <li><a href="#">Qui sommes-nous ?</a></li>
-                            <li><a href="#">Nos événements</a></li>
-                            <li><a href="#">Programme 2017</a></li>
-                            <li><a href="#">Revivez l'édition 2016</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="http://sub.festival-cannes.fr/SfcCatalogue/ListThematiqueSfc" target="_blank">Le catalogue</a>
-                    </li>
-                    <li>
-                        <a href="#">Les Pros du court</a>
-                    </li>
-                    <li>
-                        <a href="#">Les actualités</a>
-                    </li>
-                    <li>
-                        <a href="">participer</a>
-                        <ul class="tcenter">
-                            <li><a href="#">Inscrire un film</a></li>
-                            <li><a href="#">Preparer son séjour</a></li>
-                            <li><a href="#">Partenaires</a></li>
-                            <li><a href="#">Labels</a></li>
-                        </ul>
-                    </li>
+                    {% if mainNavs is defined and mainNavs is not null %}
+                        {% for key, mainTab in mainNavs %}
+                            {% if mainTab.translatable.isActive %}
+                                <li>
+                                    {# TODO: IMPLEMENT DYNAMIC ACTIVE CLASS AFTER ROUTE NAMES ARE IMPLEMENTED #}
+                                    <a href="{{ path(mainTab.route) }}" {% if loop.first %}class="active"{% endif %}>{{ mainTab.name }}</a>
+                                    {% if subNavs[key] is defined and subNavs[key] is not null %}
+                                        <ul class="tcenter">
+                                            {% for subTab in subNavs[key] %}
+                                                {% if subTab.translatable.isActive %}
+                                                    <li><a href="{{ path(subTab.route) }}">{{ subTab.name }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </ul>
                 <!--<ul class="user">
                   <li  class="programmation-wrapper">
