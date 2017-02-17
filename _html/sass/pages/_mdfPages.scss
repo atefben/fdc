@@ -796,6 +796,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       font-family: $CamphorBold;
+      text-transform: none!important;
 
       &:after {
           content: url('/img/goldDL.png');
@@ -1393,6 +1394,7 @@ option:checked,
 
       h6 {
         margin: 20px 0px;
+        text-transform: none!important;
       }
 
       &:hover {

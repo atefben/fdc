@@ -23320,6 +23320,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0.8;
   color: #000000;
   font-family: "Playfair Display","Times New Roman",Times,serif;
+  text-transform: none !important;
 }
 .our-news .articles p {
   font-size: 13px;
@@ -23993,6 +23994,7 @@ ul.tabs .quarterTab h4 {
   font-size: 14px;
   color: #505050;
   text-align: left;
+  text-transform: none !important;
 }
 @media screen and (max-width: 1280px) {
   .conferences .conf60, .conferences .conf70 {
@@ -24343,6 +24345,7 @@ ul.tabs .quarterTab h4 {
   margin: 10px 0px;
   margin: 10px 0px 20px 0px !important;
   line-height: 40px;
+  text-transform: none !important;
 }
 .servicesPage .articles .articles-content {
   display: block;
@@ -25132,6 +25135,7 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: none !important;
 }
 .galeriePhotos .textWrapper h6:after {
   content: url("/img/goldDL.png");
@@ -25668,6 +25672,7 @@ option:checked,
 }
 .newsPage .articles h6 {
   margin: 20px 0px;
+  text-transform: none !important;
 }
 .newsPage .articles:hover {
   background: white;
