@@ -3,6 +3,8 @@
 namespace FDC\CourtMetrageBundle\Controller;
 
 
+use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmNewsNewsAssociated;
 use FDC\CourtMetrageBundle\Manager\NewsManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -52,9 +54,68 @@ class NewsController extends Controller
         if ($article == null) {
             throw $this->createNotFoundException();
         }
+
+        //get associated film to the news
+        $associatedFilm = null;
+        $associatedProgrammation = null;
+        $associatedFilmDuration = null;
+        if ($article->getAssociatedFilm() != null) {
+            $associatedFilm = $article->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
+        }
+
+        //get film projection
+        $programmations = array();
+        if ($associatedProgrammation != null) {
+            foreach ($associatedProgrammation as $projection) {
+                if ($projection->getProjection() != null) {
+                    $programmations[] = $projection->getProjection();
+                }
+            }
+        }
+        $tempProjections = array();
+        $now = new \DateTime();
+        if ($programmations) {
+            foreach ($programmations as $item) {
+                if ($item !== null && $item->getStartsAt() && $item->getStartsAt() > $now) {
+                    $tempProjections[$item->getStartsAt()->getTimestamp()] = $item->getStartsAt()->format('Y-m-d');
+                }
+            }
+        }
+        $nextProjectionDate = '';
+        if ($tempProjections) {
+            ksort($tempProjections);
+            $tempProjections = array_values($tempProjections);
+            $nextProjectionDate = $tempProjections[0];
+        }
+
+        //get focus articles
+        $associatedNews = $newsManager->getNewsFocusArticles($article, $locale);
+
+        //get day articles
+        $count = 3;
+        if ($article->getPublishedAt()) {
+            $newsDate = $article->getPublishedAt();
+        } else {
+            $newsDate = new \DateTime();
+        }
+        $sameDayArticles = $newsManager->getSameDayNews($newsDate, $locale, $count, $article->getId(), $associatedNews);
+
+        // next and previous button links
+        $prevArticles = $newsManager->getPrevOrNextNews($newsDate, 'prev', $locale);
+        $nextArticles = $newsManager->getPrevOrNextNews($newsDate, 'next', $locale);
         
         return $this->render('@FDCCourtMetrage/news/news_details.html.twig', [
-            'article' => $article
+            'article'                   => $article,
+            'prev'                      => $prevArticles,
+            'next'                      => $nextArticles,
+            'associatedNews'            => $associatedNews,
+            'programmations'            => $programmations,
+            'associatedFilm'            => $associatedFilm,
+            'sameDayArticles'           => $sameDayArticles,
+            'nextProjectionDate'        => $nextProjectionDate,
+            'associatedFilmDuration'    => $associatedFilmDuration
         ]);
     }
 }

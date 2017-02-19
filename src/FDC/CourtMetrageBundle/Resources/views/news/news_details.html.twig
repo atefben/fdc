@@ -5,8 +5,12 @@
         <div id="canvasloader" class="canvasloader"></div>
         <div class="content-article">
             <div class="container small-container">
-                <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
-                <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+                {% if prev[0] is defined and not prev[0] is empty %}<a
+                    href="{{ path('ccm_news_detail', {'slug': prev[0]|trans_fallback('slug')}) }}"
+                    class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
+                {% if next[0] is defined and not next[0] is empty %}<a
+                    href="{{ path('ccm_news_detail', {'slug': next[0]|trans_fallback('slug')}) }}"
+                    class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
                 <div class="info">
                     <a href="#" class="category">
                         {% set themeTranslation = article.theme.findTranslationByLocale(app.request.locale) %}
@@ -30,7 +34,6 @@
                     <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{#Partager#}{{ 'ccm.news.share'|trans }}</a>
                     <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{#Imprimer#}{{ 'ccm.news.print'|trans }}</a>
                 </div>
-                {{ dump(article) }}
                 {% if article.getType() == 'article' %}
                     {% include '@FDCCourtMetrage/news/mainmedia/article.html.twig' with {'mediaImage': article.header} %}
                 {% elseif article.getType() == 'image' %}
@@ -50,7 +53,7 @@
                 {% endfor %}
             </div>
             <div class="share">
-                <p>Partagez l'article</p>
+                <p>{#Partagez l'article#}{{ 'ccm.news.share_article'|trans }}</p>
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
                     {% spaceless %}
@@ -69,144 +72,161 @@
                     <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
                 </div>
             </div>
-            <div class="film">
-                <div class="info-film">
-                    <div class="wrapper">
-                        <div class="vCenter">
-                            <div class="vCenterKid">
-                                <div class="poster">
-                                    <img src="/bundles/007.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <span class="category">Un certain regard</span>
-                                    <h3><a href="#">Enragé</a></h3>
-                                    <p class="director"><a href="#">Eric HANNEZO</a><p>
-                                    <p>France - 2014</p>
-                                    <p>1h35</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="programmation-film">
-                    <div class="wrapper">
-                        <div class="vCenter">
-                            <div class="vCenterKid">
-                                <span class="category">Programmation</span>
-                                <ul>
-                                    <li>
-                                        <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
-                                        <span class="location">Salle Debussy</span>
-                                    </li>
-                                    <li>
-                                        <span class="type">Projection</span><span>15/07/2015</span><span>10h</span>
-                                        <span class="location">Cinéma de la plage</span>
-                                    </li>
-                                    <li>
-                                        <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
-                                        <span class="location">Salle du Soixantième</span>
-                                    </li>
-                                    <li>
-                                        <span class="type">Projection</span><span>15/07/2015</span><span>9h</span>
-                                        <span class="location">Grand Théâtre Lumière</span>
-                                    </li>
-                                </ul>
-                                <a href="programmation-evenementiel.php" class="button">Toute la programmation</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                {% if article.associatedNews|length > 0 %}
-                    <div class="focus">
-                    <h2 class="title">Focus</h2>
-                    <div class="articles">
-                        {% for articleAssociation in article.associatedNews %}
-                            {% set associatedArticle = articleAssociation.association %}
-                            {% set articleTranslation = associatedArticle.findTranslationByLocale(app.request.locale) %}
-                            {% if articleTranslation is not null  %}
-                                <article class="article" data-format="article" data-theme="competition">
-                                    <div class="image">
-                                        <div class="image-wrapper">
-                                            {% if associatedArticle.header is not null %}
-                                                {% set translations = associatedArticle.header.findTranslationByLocale(app.request.locale) %}
-                                                <img src="{% path associatedArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
-                                            {% elseif associatedArticle.image is not null %}
-                                                {% set translations = associatedArticle.image.findTranslationByLocale(app.request.locale) %}
-                                                <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
-                                            {% endif %}
+            {% if associatedFilm is not null or programmations is not empty %}
+                <div class="film">
+                    {% if associatedFilm is not null %}
+                        <div class="info-film {% if programmations is empty %} single{% endif %}">
+                            <div class="wrapper">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <div class="poster">
+                                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                            film: associatedFilm,
+                                            film_format: '293x397',
+                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                            }) %}
                                         </div>
-                                        <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
-                                        <span class="picto"><i class="icon icon_{{ associatedArticle.getType != 'image' ? associatedArticle.getType : 'photo' }}"></i></span>
-                                        <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
+                                        <div class="text-container" id="filmPoster">
+                                            {% if associatedFilm.selectionSection is not null %}
+                                                <span class="category">
+                                        {{ associatedFilm.selectionSection|trans_fallback('name') }}
+                                    </span>
+                                            {% endif %}
+                                            <h3>
+                                                <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
+                                                    {{ associatedFilm.titleVO }}
+                                                </a>
+                                            </h3>
+                                            <p class="director">
+                                                {% set comma = false %}
+                                                {% spaceless %}{% for index,director in associatedFilm.getDirectors() %}
+                                                    {% if index < 4 %}<a href="{{ path('fdc_court_metrage_artist', {slug: director.person.slug }) }}">{% if comma %}, {% endif %}{{ director.person.fullName }}</a>{% endif %}
+                                                    {% if index == 4 %}...{% endif %}
+                                                    {% set comma = true %}
+                                                {% endfor %}{% endspaceless %}
+                                            </p>
+                                            <p>
+                                                {% spaceless %}{% for index,country in associatedFilm.countries %}{% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}{% if index == 4 %}...{% endif %}{% endfor %}{% endspaceless %}
+                                                {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
+                                                    - {{ associatedFilm.productionYear }}
+                                                {% endif %}
+                                            </p>
+                                            <p>{{ associatedFilmDuration }}</p>
+                                        </div>
                                     </div>
-                                    <div class="info">
-                                        <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
-                                        <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
-                                            <span class="date">{{ associatedArticle.publishedAt|date('d.m.y') }}</span> .
-                                            <span class="hour">{{ associatedArticle.publishedAt|date('H:i') }}</span>
-                                        </a>
-                                        <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if programmations is not empty %}
+                        <div class="programmation-film">
+                            <div class="wrapper">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <span class="category">{{ 'ccm.news.programmation'|trans }}</span>
+                                        <ul>
+                                            {% set progDisplayed = 0 %}
+                                            {% for programmation in programmations if progDisplayed < 4 %}
+                                                {% if programmation.type not in ['Séance de presse', 'Conférence de presse', 'Divers'] %}
+                                                    <li>
+                                                        <span class="type">{{ 'article.film.text.projection'|trans }}</span>
+                                                        <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
+                                                        <span>{{ agenda_leftbar_translate_hour(programmation.startsAt|date('H:i'), true, true) }}</span>
+                                                        <span class="location">{{ programmation.room.name }}</span>
+                                                    </li>
+                                                    {% set progDisplayed = progDisplayed + 1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                        {# todo: ccm event link ? #}
+                                        <a href="{{ path('fdc_event_agenda_scheduling') }}{{ nextProjectionDate ? '?date=' ~ nextProjectionDate : '' }}"
+                                           class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
                                     </div>
-                                </article>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
+            {% endif %}
+            <div class="container">
+                {% if associatedNews|length > 0 %}
+                    <div class="focus">
+                        <h2 class="title">{#Focus#}{{ 'ccm.news.focus'|trans }}</h2>
+                        <div class="articles">
+                            {% for associatedArticle in associatedNews %}
+                                {% set articleTranslation = associatedArticle.findTranslationByLocale(app.request.locale) %}
+                                {% if articleTranslation is not null  %}
+                                    {% set articleType = associatedArticle.getType != 'image' ? associatedArticle.getType : 'photo' %}
+                                    <article class="{{ articleType }}" data-format="{{ articleType }}" data-theme="competition">
+                                        <div class="image">
+                                            <div class="image-wrapper">
+                                                {% if associatedArticle.header is not null %}
+                                                    {% set translations = associatedArticle.header.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path associatedArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% elseif associatedArticle.image is not null %}
+                                                    {% set translations = associatedArticle.image.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
+                                            <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
+                                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
+                                        </div>
+                                        <div class="info">
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                                <span class="date">{{ associatedArticle.publishedAt|date('d.m.y') }}</span> .
+                                                <span class="hour">{{ associatedArticle.publishedAt|date('H:i') }}</span>
+                                            </a>
+                                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                                        </div>
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% endif %}
-                <div class="same-day">
-                    <h2 class="title">Le même jour</h2>
-                    <div class="articles center">
-                        <article class="article" data-format="article" data-theme="competition">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="/bundles/03.jpg" alt="">
-                                </div>
-                                <a href="article.php" class="linkImage"></a>
-                                <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                                <span class="picto"><i class="icon icon_article"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Compétition</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
-                            </div>
-                        </article>
-                        <article class="video" data-format="video" data-theme="photocall">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="/bundles/03.jpg" alt="">
-                                </div>
-                                <a href="article.php" class="linkImage"></a>
-                                <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                                <span class="picto"><i class="icon icon_video"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">Photocall</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <h2><a href="article.php">Z de Costa-Gravas</a></h2>
-                            </div>
-                        </article>
-                        <article class="photo" data-format="photo" data-theme="photograph">
-                            <div class="image">
-                                <div class="image-wrapper">
-                                    <img src="/bundles/03.jpg" alt="">
-                                </div>
-                                <a href="article.php" class="linkImage"></a>
-                                <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a>
-                                <span class="picto"><i class="icon icon_photo"></i></span>
-                            </div>
-                            <div class="info">
-                                <a href="#" class="category">L'oeil du photographe</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <h2><a href="article.php">Renaud, réalisateur indépendant canadien © Balint Porneczi / supported by [NEUS]</a></h2>
-                            </div>
-                        </article>
+                {% if sameDayArticles is not empty and article.hideSameDay == false %}
+                    <div class="same-day">
+                        <h2 class="title">{{ 'ccm.news.same_day'|trans }}</h2>
+                        <div class="articles center">
+                            {% for sameDayArticle in sameDayArticles %}
+                                {% if sameDayArticle is not null %}
+                                    {% set articleTranslation = sameDayArticle.findTranslationByLocale(app.request.locale) %}
+                                    {% set articleType = sameDayArticle.getType != 'image' ? sameDayArticle.getType : 'photo' %}
+                                    <article class="{{ articleType }}" data-format="{{ articleType }}" data-theme="competition">
+                                        <div class="image">
+                                            <div class="image-wrapper">
+                                                {% if sameDayArticle.header is not null %}
+                                                    {% set translations = sameDayArticle.header.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path sameDayArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% elseif sameDayArticle.image is not null %}
+                                                    {% set translations = sameDayArticle.image.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path sameDayArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
+                                            <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
+                                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
+                                        </div>
+                                        <div class="info">
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ sameDayArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                                <span class="date">{{ sameDayArticle.publishedAt|date('d.m.y') }}</span> .
+                                                <span class="hour">{{ sameDayArticle.publishedAt|date('H:i') }}</span>
+                                            </a>
+                                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                                        </div>
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
         <span class="anim"></span>
     </div>
-
 
     <!-- POPIN MAIL SHARE -->
     <div class="popin-mail popin">

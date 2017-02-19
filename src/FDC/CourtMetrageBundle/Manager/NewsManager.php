@@ -3,8 +3,12 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 
+use Base\CoreBundle\Entity\MediaAudioTranslation;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmNews;
+use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmNewsNewsAssociated;
 
 /**
  * Class NewsManager
@@ -95,6 +99,148 @@ class NewsManager
     {
         $newsArticle = $this->em->getRepository(CcmNews::class)->getNewsArticleBySlugAndLocale($slug, $locale);
 
+        return $newsArticle;
+    }
+
+    /**
+     * @param CcmNews $news
+     * @param string $locale
+     * @return array
+     */
+    public function getNewsFocusArticles(CcmNews $news, $locale = 'fr')
+    {
+        $associatedNews = $news->getAssociatedNews();
+        $focusArticles = [];
+        /** @var CcmNewsNewsAssociated $newsAssociation */
+        foreach ($associatedNews as $newsAssociation) {
+            if ($newsAssociation->getAssociation() != null) {
+                $associatedArticle = $newsAssociation->getAssociation();
+                /** @var CcmNewsArticleTranslation $translation */
+                $translation = $associatedArticle->findTranslationByLocale($locale);
+                if (
+                    $translation != null &&
+                    $translation->getStatus() == CcmNewsArticleTranslation::STATUS_PUBLISHED &&
+                    $associatedArticle->getPublishedAt() < new \DateTime()
+                ) {
+                    $focusArticles[] = $newsAssociation->getAssociation();
+                }
+            }
+        }
+        
+        return $focusArticles;
+    }
+
+    /**
+     * @param \DateTime $date
+     * @param string $locale
+     * @param bool $count
+     * @param int|bool $currentNewsId
+     * @param array $focusArticles
+     * 
+     * @return array
+     */
+    public function getSameDayNews($date, $locale = 'fr', $count = false, $currentNewsId = false, $focusArticles = [])
+    {
+        $excludedIds = [];
+        is_int($currentNewsId) ? $excludedIds[] = $currentNewsId : null;
+        (isset($focusArticles[0])) ? $excludedIds[] = $focusArticles[0]->getId() : null;
+        (isset($focusArticles[1])) ? $excludedIds[] = $focusArticles[1]->getId() : null;
+        $sameDayNews = $this->em->getRepository(CcmNews::class)->getSameDayNews($date, $locale, $count, $excludedIds);
+        $sameDayNews = $this->removeUnpublishedNewsAudioVideo($sameDayNews, $locale, $count);
+        
+        return $sameDayNews;
+    }
+
+    /**
+     * @param $array
+     * @param $locale
+     * @param null $count
+     * @param bool $hideDisplayedHome
+     * @return array
+     */
+    public function removeUnpublishedNewsAudioVideo($array, $locale, $count = null, $hideDisplayedHome = false)
+    {
+        $newsTypes = ['NewsAudio', 'NewsVideo', 'InfoAudio', 'StatementAudio', 'InfoVideo', 'StatementVideo'];
+
+        $mediaTypes = [
+            'NewsAudio'      => 'getAudio',
+            'NewsVideo'      => 'getVideo',
+            'InfoAudio'      => 'getAudio',
+            'StatementAudio' => 'getAudio',
+            'InfoVideo'      => 'getVideo',
+            'StatementVideo' => 'getVideo',
+        ];
+
+        foreach ($newsTypes as $newsType) {
+            foreach ($array as $key => $news) {
+                if (strpos(get_class($news), $newsType) !== false) {
+                    if ($news->{$mediaTypes[$newsType]}() == null) {
+                        unset($array[$key]);
+                    } elseif ($hideDisplayedHome && $news->{$mediaTypes[$newsType]}()->getDisplayedHome()) {
+                        unset($array[$key]);
+                    } else {
+                        $trans = $news->{$mediaTypes[$newsType]}()->findTranslationByLocale($locale);
+                        $transFr = $news->{$mediaTypes[$newsType]}()->findTranslationByLocale('fr');
+                        if ($this->checkMediaAudioVideoPublished($trans, $transFr) === false) {
+                            if ($this->checkMediaAudioVideoPublished($transFr, $transFr) === false) {
+                                unset($array[$key]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $array = array_values($array);
+
+        if ($count !== null) {
+            $array = array_slice($array, 0, $count);
+        }
+
+        return $array;
+    }
+
+    /**
+     * @param MediaVideoTranslation|MediaAudioTranslation|null $trans
+     * @param MediaVideoTranslation|MediaAudioTranslation $transFr
+     * @return bool
+     */
+    private function checkMediaAudioVideoPublished($trans, $transFr)
+    {
+        if ($trans === null || $transFr->getStatus() !== MediaAudioTranslation::STATUS_PUBLISHED) {
+            return false;
+        }
+
+        if (strpos(get_class($trans), 'MediaAudioTranslation')) {
+            if ($trans->getJobMp3State() != MediaAudioTranslation::ENCODING_STATE_READY ||
+                $trans->getMp3Url() === null
+            ) {
+                return false;
+            }
+        }
+
+        if (strpos(get_class($trans), 'MediaVideoTranslation')) {
+            if ($trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
+                $trans->getMp4Url() === null || $trans->getWebmUrl() === null
+            ) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param \DateTime $date
+     * @param $direction
+     * @param string $locale
+     * @return array
+     */
+    public function getPrevOrNextNews($date, $direction, $locale = 'fr')
+    {
+        $newsArticle = $this->em->getRepository(CcmNews::class)->getPrevOrNextNews($date, $direction, $locale);
+        $newsArticle = $this->removeUnpublishedNewsAudioVideo($newsArticle, 'fr');
+        
         return $newsArticle;
     }
 }
