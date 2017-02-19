@@ -7,6 +7,3 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
-    ccm.manager.news:
-        class: FDC\CourtMetrageBundle\Manager\NewsManager
-        arguments: [ '@doctrine.orm.entity_manager' ]
