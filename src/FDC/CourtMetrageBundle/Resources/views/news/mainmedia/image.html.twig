@@ -1,5 +1,4 @@
 {% if mediaImage is null and gallery.medias|length == 1 %}
-    {{ dump(gallery.medias[0].media) }}
     {% include '@FDCCourtMetrage/news/mainmedia/article.html.twig' with {'mediaImage': gallery.medias[0].media} %}
 {% elseif gallery.medias|length > 1 %}
     <div class="slideshow">
