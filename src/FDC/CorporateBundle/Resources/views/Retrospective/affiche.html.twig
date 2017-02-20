@@ -35,7 +35,11 @@
                          data-url="{{ currentURL }}#pid={{ poster.file.id }}"
                          data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ currentURL|escape('url') }}&amp;picture={% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ currentURL }}&amp;display=popup"
                          data-twitterurl="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
-                        <div class="poster" data-url="{{ currentURL|escape('html_attr') }}#pid={{ poster.file.id|escape('html_attr') }}">
+                        <div class="poster" data-date="afficher" data-pid="pid={{ poster.file.id }}"
+                             data-credit="{{ poster.copyright }}"
+                             data-url="{{ currentURL }}#pid={{ poster.file.id }}"
+                             data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ currentURL|escape('url') }}&amp;picture={% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ currentURL }}&amp;display=popup"
+                             data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
                             {% if poster.file is not empty %}
                                 <img src="{% path poster.file, '256x348' %}"/>
                             {% endif %}
