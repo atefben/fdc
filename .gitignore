@@ -120,8 +120,9 @@ src/FDC/MarcheDuFilmBundle/Resources/translations/validators.fr.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.zh.xliff
 
 #CCM
-src/FDC/CourtMetrageBundle/Resources/translations/validators.de.xliff
-src/FDC/CourtMetrageBundle/Resources/translations/BaseAdminBundle.de.xliff
-src/FDC/CourtMetrageBundle/Resources/translations/BaseAdminBundle.fr.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/validators.en.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/validators.fr.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/FDCCourtMetrageBundle.en.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/FDCCourtMetrageBundle.fr.xliff
 src/FDC/CourtMetrageBundle/Resources/translations/messages.en.xliff
 src/FDC/CourtMetrageBundle/Resources/translations/messages.fr.xliff
