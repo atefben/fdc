@@ -150,11 +150,6 @@ sub {
   color: #141414;
 }
 
-header .user-nav li a.account {
-    display: none!important;
-}
-
-
 header.sticky #sticky-user .user-nav a {
     background: #141414!important;
 }

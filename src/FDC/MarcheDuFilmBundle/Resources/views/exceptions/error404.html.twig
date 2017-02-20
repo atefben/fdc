@@ -70,7 +70,13 @@
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                {% if app.request.locale == 'fr' %}
+                <a href="{{ header_account_fr }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                {% elseif app.request.locale == 'en' %}
+                <a href="{{ header_account_en }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                {% elseif app.request.locale == 'zh' %}
+                <a href="{{ header_account_zh }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                {% endif %}
             </li>
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
@@ -101,7 +107,13 @@
             <div id="sticky-user">
                 <ul class="user-nav">
                     <li>
-                        <a href="{{ header_account }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                        {% if app.request.locale == 'fr' %}
+                        <a href="{{ header_account_fr }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                        {% elseif app.request.locale == 'en' %}
+                        <a href="{{ header_account_en }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                        {% elseif app.request.locale == 'zh' %}
+                        <a href="{{ header_account_zh }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                        {% endif %}
                     </li>
                     <li class="lang">
                         <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>

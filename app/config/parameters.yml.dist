@@ -226,7 +226,9 @@ parameters:
     header_cine: 'http://www.cinefondation.com/fr/'
     header_ccm: 'http://www.cannescourtmetrage.com/fr/'
     header_mdf: 'http://www.marchedufilm.com/fr/'
-    header_account: 'http://moncompte.festival-cannes.com/Marche/espacem.aspx'
+    header_account_fr: 'http://moncompte.festival-cannes.com/Marche/espacem.aspx'
+    header_account_en: 'http://moncompte.festival-cannes.com/Marche/espacem.aspx'
+    header_account_zh: 'http://moncompte.festival-cannes.com/Marche/espacem.aspx'
     partner_chopard_fr: //www.chopard.fr/
     partner_loreal_fr: //www.loreal-paris.fr/index.aspx
     partner_hp_fr: //www8.hp.com/fr/fr/home.html
