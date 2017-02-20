@@ -1,0 +1,51 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading noPadding whiteBckg">
+        <div class="list-article">
+            {% include 'FDCCourtMetrageBundle:Participate:partials/registerBanner.html.twig' %}
+            <!--<div class="subNavigation">
+                <nav>
+                  <ul class="main">
+                    <li>
+                      <a href="stands.php">screening</a>
+                    </li>
+                    <li>
+                      <a href="#">ateliers</a>
+                    </li>
+                    <li>
+                      <a href="projections.php">projections</a>
+                    </li>
+                    <li>
+                      <a href="equipements-services.php">petits dejeuners</a>
+                    </li>
+                    <li>
+                      <a href="opportunites-pub.php" class="active">conférences</a>
+                    </li>
+                  </ul>
+                 </nav>
+            </div>-->
+        </div>
+        <div class="wideWrapper onlineWrapper">
+            <h1>{{ registerProcedure.techniqueCharacteristicsTitle }}</h1>
+            <div class="onlinegoldBorders">
+                <div class="specs">
+                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/camera.svg') }}"> Spécifications vidéo</h2>
+                    {{ registerProcedure.techniqueCharacteristicsVideo|raw }}
+                </div>
+                <div class="specs">
+                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/sound.svg') }}"> Spécifications audio</h2>
+                    {{ registerProcedure.techniqueCharacteristicsAudio|raw }}
+                </div>
+            </div>
+        </div>
+        <div class="block-register-pop">
+            <div class="block-s-info">
+                <div class="block-01-ms vFlexAlign">
+                    {{ registerProcedure.techniqueCharacteristicsText|raw }}
+                </div>
+            </div>
+        </div>
+        <!--<button class="modal-toggle">Update</button>-->
+    </div>
+{% endblock %}

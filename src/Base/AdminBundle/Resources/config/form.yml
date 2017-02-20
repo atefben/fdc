@@ -828,3 +828,12 @@ services:
             - ['setSonataAdmin', ['@base.admin.ccm_news_widget_video_youtube_dummy']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
     #CCN - end News Widget Forms
+
+    base.admin.form.film_register_procedure_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmFilmRegisterProcedureType
+        tags:
+            - { name: form.type, alias: 'film_register_procedure'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_film_register_procedure_dummy']]
+            - ['setRegisterProcedureAdmin', ['@base.admin.ccm_register_procedure']]

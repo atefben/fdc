@@ -1,0 +1,57 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+<div id="main" class="list-article films-list selection-officielle loading">
+    {% include 'FDCCourtMetrageBundle:Competition/partials:competitionSubHeader.html.twig' with {
+            'selectionTab': selectionTab,
+            'isSelection': true,
+            'juryTab': juryTab,
+            'isJury': false,
+            'palmaresTab': palmaresTab,
+            'isPalmares': false
+        }
+    %}
+    <div class="container container-list ">
+        <section class="categorie-items">
+            <div class="grid">
+                <div id="gridFilmSelection" class="grid-wrapper">
+                    <div class="grid-sizer"></div>
+                    {% for movie in films %}
+                        <div class="item">
+                            <figure>
+                                <div class="image">
+                                    {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
+                                    film: movie,
+                                    film_format: '366x488',
+                                    film_attrs: {
+                                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                                    'data-object-fit': 'cover'
+                                    },
+                                    film_image_default: 'bundles/fdccourtmetrage/img/palmares/film_w181.jpg'
+                                    }) %}
+                                </div>
+                                <figcaption>
+                                    <a href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}">
+                                        {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
+                                            <span class="name">{{ movie.titleVo }}</span>
+                                            <span class="sub-name">({{ movie|trans_fallback_movie('title') }})</span>
+                                        {% else %}
+                                            <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                        {% endif %}
+                                    </a>
+                                    {% for director in movie.getDirectors() %}
+                                        <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                                            <span class="author">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</span>
+                                        </a>
+                                    {% endfor %}
+                                </figcaption>
+                            </figure>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+    {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
+</div>
+{% endblock %}

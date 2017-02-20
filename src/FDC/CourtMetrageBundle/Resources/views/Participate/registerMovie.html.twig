@@ -1,0 +1,123 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <section id="main" class="home noPadding whiteBckg">
+        <div class="list-article">
+            {% include 'FDCCourtMetrageBundle:Participate:partials/registerBanner.html.twig' %}
+            <!--<div class="subNavigation">
+                <nav>
+                  <ul class="main">
+                    <li>
+                      <a href="stands.php">screening</a>
+                    </li>
+                    <li>
+                      <a href="#">ateliers</a>
+                    </li>
+                    <li>
+                      <a href="projections.php">projections</a>
+                    </li>
+                    <li>
+                      <a href="equipements-services.php">petits dejeuners</a>
+                    </li>
+                    <li>
+                      <a href="opportunites-pub.php" class="active">conférences</a>
+                    </li>
+                  </ul>
+                 </nav>
+            </div>-->
+        </div>
+
+
+        <div class="all-contain">
+
+            {% if filmRegisterPage.translatable.isTextActive %}
+                <div class="block-p-register block-01-ms">
+                    {{ filmRegisterPage.text|raw }}
+                </div>
+            {% endif %}
+
+            <div class="block-tab-switch block-01-ms">
+                <h3 class="title-tab-swich">Consultez la procédure d’inscription en<br>fonction de la catégorie :</h3>
+            </div>
+
+            <div class="block-tab-switch">
+
+                <table class="tab1">
+                    <tbody>
+                    {% for item in registerProcedures %}
+                        {% if loop.index0 is divisible by(3) %}
+                            <tr>
+                        {% endif %}
+                        <td data-tab="{{ item.slug }}" >{{ item.name }}</td>
+                        {% if loop.index is divisible by(3) %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="border-top">
+
+                {% for item in registerProcedures %}
+                    <div class="block-contain-txt-register-movie" data-article="{{ item.slug }}">
+                        <div class="block-01-ms">
+
+                            <h4>{{ item.name }}</h4>
+                            {{ item.procedureText|raw }}
+
+                            {% if item.isCharacteristicsActive %}
+                                <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+                                    <div class="block-01-ms">
+                                        <strong class="title-25"><h3>{{ item.characteristicsTitle }}</h3></strong>
+
+                                        {{ item.characteristicsText|raw }}
+
+                                        <div class="buttons-02 centered">
+                                            <a href="{{ path('fdc_court_metrage_technical_characteristics', {slug: item.slug}) }}" target="_blank"><div class="button centered autoBtn">{{ item.characteristicsButtonLabel ? item.characteristicsButtonLabel : 'voir le formulaire'}}</div></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if item.isRegulationActive %}
+                                <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+                                    <div class="block-01-ms">
+                                        <strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>
+                                        <p class="centered">{{ item.regulationText|raw }}</p><br>
+                                        <div class="buttons-02 centered">
+                                            <a href="{{ path('fdc_court_metrage_regulation_detail', {slug: item.slug}) }}" class="button autoBtn centered" target="_blank">Voir le règlement</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if item.isRegisterFormActive %}
+                            <div class="block-s-info-02 border-bottom vFlexAlign alignCenter" style="background-image:url({% path item.translatable.registerFormBackground|trans_fallback('file'), 'reference' %})">
+                                <strong class="title-25">{{ item.registerFormTitle }}</strong></br><br>
+                                {{ item.registerFormText|raw }}
+                                <div class="buttons-02">
+                                    <a href="http://sub.festival-cannes.fr/" class="button autoBtn centered" target="_blank">Voir le formulaire</a>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="block-contact block-01-ms">
+                            <strong class="title-25">{{ item.contactUsTitle }}</strong>
+                            <div class="item i-1">
+                                {{ item.contactUsLeftText|raw }}
+                            </div>
+
+                            <div class="item i-2">
+                                {{ item.contactUsRightText|raw }}
+                                <div class="buttons-02">
+                                    <a href="#" class="button autoBtn centered">Formulaire de contact</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div> <!-- FIN border-top border-bottom-->
+        </div>
+    </section>
+{% endblock %}
