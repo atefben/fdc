@@ -138,6 +138,7 @@ jQuery(document).ready(function($) {
         });
     });
 
+    /** MDF **/
     $('form[action*="service"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
@@ -350,6 +351,14 @@ jQuery(document).ready(function($) {
         });
     });
     $('form[action*="mdfslideraccreditationpage"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+
+    /** CCM **/
+    $('form[action*="ccmprosdetail"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);

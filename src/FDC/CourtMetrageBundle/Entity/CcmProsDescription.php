@@ -3,45 +3,40 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * CcmProsContactCollection
- *
- * @ORM\Table(name="ccm_pros_contacts_collection")
+ * CcmProsDescription
+ * @ORM\Table(name="ccm_pros_description")
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *  "single" = "CcmProsDescriptionSingleColumn",
+ *  "double" = "CcmProsDescriptionDoubleColumn",
+ * })
  */
-class CcmProsContactCollection
+abstract class CcmProsDescription
 {
+
     /**
      * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsContact", inversedBy="contactsCollection")
-     * @ORM\JoinColumn(name="contact_id", referencedColumnName="id", onDelete="SET NULL")
-     * @Assert\NotBlank()
-     */
-    private $contact;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsDetail", inversedBy="contactsCollection")
-     * @ORM\JoinColumn(name="pros_detail_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $prosDetail;
+    protected $id;
 
     /**
      * @var integer
-     *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $position;
+    protected $position;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsDetail", inversedBy="description")
+     * @ORM\JoinColumn(name="pros_detail_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $prosDetail;
 
     /**
      * @return int
@@ -81,22 +76,6 @@ class CcmProsContactCollection
     public function setProsDetail($prosDetail)
     {
         $this->prosDetail = $prosDetail;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
-     * @param mixed $contact
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
     }
 }
 

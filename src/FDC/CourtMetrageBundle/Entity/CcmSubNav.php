@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="ccm_sub_nav")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmSubNav
 {

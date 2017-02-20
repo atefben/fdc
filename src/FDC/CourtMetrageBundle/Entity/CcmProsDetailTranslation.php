@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CcmProsDetailTranslation
  * @ORM\Table(name="ccm_pros_detail_translation")
  * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmProsDetailTranslationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsDetailTranslation implements TranslateChildInterface
 {
@@ -56,16 +57,16 @@ class CcmProsDetailTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="domain", type="string", length=255, nullable=true)
+     * @ORM\Column(name="url_name", type="string", length=255, nullable=true)
      */
-    protected $domain;
+    protected $urlName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="domain", type="string", length=255, nullable=true)
      */
-    protected $description;
+    protected $domain;
 
     /**
      * @return string
@@ -134,17 +135,17 @@ class CcmProsDetailTranslation implements TranslateChildInterface
     /**
      * @return string
      */
-    public function getDescription()
+    public function getUrlName()
     {
-        return $this->description;
+        return $this->urlName;
     }
 
     /**
-     * @param string $description
+     * @param string $urlName
      */
-    public function setDescription($description)
+    public function setUrlName($urlName)
     {
-        $this->description = $description;
+        $this->urlName = $urlName;
     }
 
     /**

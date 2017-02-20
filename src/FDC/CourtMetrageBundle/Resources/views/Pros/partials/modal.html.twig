@@ -1,113 +1,67 @@
-<div class="modal-overlay modal-toggle"></div>
-<div class="modal-wrapper modal-transition">
 
-
-    <div class="modal-body">
-        <div class="modal-goldBackg"></div>
-        <div class="modal-content">
             <div class="half">
                 <div class="photo">
                     <div class="photoContainer">
-                        <img src="img/person.png" alt="">
-                        <img class="containerFit" src="img/member.jpg" alt="">
+                        {% if pro.translatable.image is defined and pro.translatable.image is not null %}
+                            <img src="{% path pro.translatable.image|trans_fallback("file"), "reference" %}" alt="">
+                        {% else %}
+                            <img class="containerFit" src="img/member.jpg" alt="">
+                        {% endif %}
                     </div>
-                    <div class="sfcLogo">
-                        <img src="img/sfcLogo.png" alt="">
+                    {% if pro.translatable.isShortFilmCorner %}
+                        <div class="sfcLogo">
+                            <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
+                        </div>
+                    {% endif %}
+                </div>
+                {% if pro.quote is not null %}
+                    <div class="titleBig">
+                        <h2>{{ pro.quote }}</h2>
+                        <div class="bckgQuote">&#8220;</div>
                     </div>
-                </div>
-                <div class="titleBig">
-                    <h2>Soyez professionnels, exigeants et originaux et profressionnels et exigeants!</h2>
-                    <!--<h2<span>&#8220;</span>Soyez professionnels, exigeants et originaux et profressionnels et exigeants!<span>&#8221;</span></h2>-->
-                    <div class="bckgQuote">&#8220;</div>
-                </div>
+                {% endif %}
                 <div class="contactInfo">
-                    <div><img src="img/world.png" alt=""> <h3>Japan</h3></div>
-                    <div><img src="img/computer.png" alt=""><h3><a href="www.shortshorts.org/en/" target="blank">shortshorts.org</a></h3></div>
-                    <!--<div><img src="img/flyingPaper.png" alt=""><h3><a href="mailto:aki@shortshorts.org" >aki@shortshorts.org</h3></a></div>
-                    <div><img src="img/flyingPaper.png" alt=""><h3>jessica@shortshorts.org</h3></div>
-                    <div><img src="img/flyingPaper.png" alt=""><h3>clairechauvat@shortshorts.org</h3></div>-->
+                    {% if pro.country is not null %}
+                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/world.png') }}" alt=""><h3>{{ pro.country }}</h3></div>
+                    {% endif %}
+                    {% if pro.url is not null %}
+                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/computer.png') }}" alt=""><h3><a href="{{ pro.url }}" target="blank">{{ pro.urlName }}</a></h3></div>
+                    {% endif %}
                 </div>
             </div>
             <div class="half">
-                <div class="maj">Dernière mise à jour le 27 oct. 2016</div>
-                <!--<div class="cats">distribution • achat • vente</div>-->
-                <div class="titleHalf"><h3>L’agence du court métrage</h3></div>
-                <div class="cats"><span>distribution</span><span>achat</span><span>vente</span></div>
-                <div class="authors">
-                    <div class="full">
-                        <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Florence KELLER von midtag</h4></a>
-                        <div class="job"><h4>productrice</h4></div>
-                    </div>
-                    <div class="full">
-                        <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Augustin Keller von Keller</h4></a>
-                        <div class="job"><h4>acheteuse</h4></div>
-                    </div>
-                    <div class="full">
-                        <a href="mailto:aki@shortshorts.org"><h4 class="mailName">Gertrude von Munchen</h4></a>
-                        <div class="job"><h4>actrice</h4></div>
-                    </div>
+                {% if pro.updatedAt is not null %}
+                    <div class="maj">{{ 'date_pro_modal' }} {{ pro.updatedAt|date('d') }} {{ pro.updatedAt|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ pro.updatedAt|date('Y') }}</div>
+                {% endif %}
+                <div class="titleHalf"><h3>{{ pro.name }}</h3></div>
+                <div class="cats">
+                    {% if pro.translatable.getActivitiesCollection is not null %}
+                        {% for activityCollection in pro.translatable.getActivitiesCollection %}
+                            {% if activityCollection.activity is defined and activityCollection.activity is not null %}
+                                {% if activityCollection.activity.translations[app.request.locale] is defined and activityCollection.activity.translations[app.request.locale] is not null %}
+                                    {% set proActivity = activityCollection.activity.translations[app.request.locale] %}
+                                    <span>{{ proActivity.name }}</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
+                {% if pro.translatable.getContactsCollection is not null %}
+                    <div class="authors">
+                        {% for contactCollection in pro.translatable.getContactsCollection %}
+                            {% if contactCollection.contact is defined and contactCollection.contact is not null %}
+                                {% if contactCollection.contact.translations[app.request.locale] is defined and contactCollection.contact.translations[app.request.locale] is not null %}
+                                    {% set proContact = contactCollection.contact.translations[app.request.locale] %}
+                                    <div class="full">
+                                        <a href="mailto:{{ proContact.email }}"><h4 class="mailName">{{ proContact.name }}</h4></a>
+                                        <div class="job"><h4>{{ proContact.function }}</h4></div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 <div class="content">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <div class="content halfContent">
-                        <h5>title ergezrg</h5>
-                        <p>Pacific Voice Inc..</p>
-                    </div>
-                    <div class="content halfContent">
-                        <h5>title ergezrg</h5>
-                        <p>Pacific Voice Inc..</p>
-                    </div>
-                    <div class="content halfContent">
-                        <h5>title ergezrg</h5>
-                        <p>Pacific Voice Inc..</p>
-                    </div>
-                    <div class="content halfContent">
-                        <h5>title ergezrg</h5>
-                        <p>Pacific Voice Inc..</p>
-                    </div>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-
-                    <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
-                </div>
-                <div class="content halfContent">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc..</p>
-                </div>
-                <div class="content halfContent">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc..</p>
-                </div>
-                <div class="content halfContent">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc..</p>
-                </div>
-                <div class="content halfContent">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc..</p>
-                </div>
-                <div class="content halfContent">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc..</p>
-                </div>
-                <div class="content">
-                    <h5>title ergezrg</h5>
-                    <p>Pacific Voice Inc. ributeur de courts métrages, nous avons pour but d'introduirdu monde.</p>
+                    {{ pro.description|raw }}
                 </div>
             </div>
-            <!--<button class="modal-toggle">Update</button>-->
-        </div>
-    </div>
-</div>

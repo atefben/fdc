@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="ccm_sub_nav_translation")
  * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmSubNavTranslationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmSubNavTranslation implements TranslateChildInterface
 {

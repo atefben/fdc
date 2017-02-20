@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="ccm_pros_activity_collection")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsActivityCollection
 {

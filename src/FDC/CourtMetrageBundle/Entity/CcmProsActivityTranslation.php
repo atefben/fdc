@@ -15,6 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="ccm_pros_activity_translation")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsActivityTranslation implements TranslateChildInterface
 {

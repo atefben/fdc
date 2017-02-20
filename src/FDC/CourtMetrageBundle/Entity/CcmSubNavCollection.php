@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="ccm_sub_nav_collection")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmSubNavCollection
 {

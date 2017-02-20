@@ -4,8 +4,8 @@ namespace FDC\CourtMetrageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use FDC\MarcheDuFilmBundle\Form\Type\ContactFormType;
 
 class ProsController extends Controller
 {
@@ -30,5 +30,41 @@ class ProsController extends Controller
                 'hasSFC' => $hasSFC,
             ]
         );
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * 
+     * @Route("/pros-du-court/{id}", options={"expose" = true}, name="fdc_ccm_pros_du_court_modal")
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function showModalAction(Request $request, $id)
+    {
+        if ($id) {
+            $prosManager = $this->get('ccm.manager.pros');
+            $pro = $prosManager->getProById($id);
+
+            if ($pro) {
+                return $this->render('FDCCourtMetrageBundle:Pros:partials/modal.html.twig', [
+                        'pro' => $pro,
+                    ]
+                );
+            } else {
+                return new JsonResponse(
+                    array(
+                        'message' => 'Pro doesn\'t exist!'
+                    ),
+                    555
+                );
+            }
+        } else {
+            return new JsonResponse(
+                array(
+                    'message' => 'Id not sent!'
+                ),
+                444
+            );
+        }
     }
 }

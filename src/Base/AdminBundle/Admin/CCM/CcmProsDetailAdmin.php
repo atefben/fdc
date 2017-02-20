@@ -26,6 +26,14 @@ class CcmProsDetailAdmin extends Admin
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
     /**
      * @param ListMapper $listMapper
      */
@@ -98,15 +106,10 @@ class CcmProsDetailAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
-                    'description'            => array(
-                        'label'              => 'form.ccm.label.pros.page_description',
+                    'urlName'          => array(
+                        'label'              => 'form.ccm.label.pros.detail_url_name',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                        'field_type' => 'ckeditor',
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'config_name' => 'widget'
+                        'required' => false
                     ),
                     'createdAt'         => array(
                         'display' => false,
@@ -143,6 +146,18 @@ class CcmProsDetailAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
+            ->add('description', 'infinite_form_polycollection', array(
+                    'label' => false,
+                    'types' => array(
+                        'single_description_type',
+                        'double_description_type',
+                    ),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'prototype' => true,
+                    'by_reference' => false,
+                )
+            )
         ;
     }
 
@@ -168,12 +183,4 @@ class CcmProsDetailAdmin extends Admin
 
         return [];
     }
-
-//    /**
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection->clearExcept(['edit', 'list']);
-//    }
 }

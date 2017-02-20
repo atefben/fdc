@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CcmProsPage
  * @ORM\Table(name="ccm_pros_page")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks() 
  */
 class CcmProsPage implements TranslateMainInterface
 {

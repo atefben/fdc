@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * CcmProsActivity
  * @ORM\Table(name="ccm_pros_activity")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsActivity
 {

@@ -8,30 +8,55 @@ use FDC\CourtMetrageBundle\Entity\CcmProsDetailTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmProsPageTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Class ProsManager
+ * @package FDC\CourtMetrageBundle\Manager
+ */
 class ProsManager
 {
+    /**
+     * @var EntityManager
+     */
     protected $em;
-
+    
+    /**
+     * @var RequestStack
+     */
     protected $requestStack;
 
+    /**
+     * ProsManager constructor.
+     * @param EntityManager $entityManager
+     * @param RequestStack $requestStack
+     */
     public function __construct(EntityManager $entityManager, RequestStack $requestStack)
     {
         $this->em = $entityManager;
         $this->requestStack = $requestStack;
     }
 
+    /**
+     * @return mixed
+     */
     public function getProsPageByLocale()
     {
         return $this->em->getRepository(CcmProsPageTranslation::class)
             ->getByLocaleAndStatus($this->requestStack->getMasterRequest()->getLocale());
     }
 
+    /**
+     * @return mixed
+     */
     public function getProsByLocale()
     {
         return $this->em->getRepository(CcmProsDetailTranslation::class)
             ->getByLocaleAndStatus($this->requestStack->getMasterRequest()->getLocale());
     }
 
+    /**
+     * @param $pros
+     * @return array|null
+     */
     public function getDomains($pros)
     {
         if ($pros) {
@@ -58,6 +83,10 @@ class ProsManager
         return null;
     }
 
+    /**
+     * @param $pros
+     * @return bool
+     */
     public function hasSFC($pros)
     {
         $hasSFC = false;
@@ -69,5 +98,15 @@ class ProsManager
         }
         
         return $hasSFC;
+    }
+
+    /**
+     * @param $id
+     * @return null|object
+     */
+    public function getProById($id)
+    {
+        return $this->em->getRepository(CcmProsDetailTranslation::class)
+            ->find($id);
     }
 }

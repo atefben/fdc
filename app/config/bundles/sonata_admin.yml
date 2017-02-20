@@ -38,10 +38,10 @@ sonata_admin:
         # setting messages as label_catalogue for groups because JmsTranslation can't handle variables translation.
         # Related translations available in app/Resources/translations
         groups:
-            admin.group.ccm_seo_tetieres:
+            admin.group.ccm.general:
                 items: ~
                 label_catalogue: BaseAdminBundle
-            admin.group.ccm:
+            admin.group.ccm_seo_tetieres:
                 items: ~
                 label_catalogue: BaseAdminBundle
             admin.group.ccm.pros:

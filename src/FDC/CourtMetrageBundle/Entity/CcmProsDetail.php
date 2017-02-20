@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CcmProsDetail
  * @ORM\Table(name="ccm_pros_detail")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsDetail implements TranslateMainInterface
 {
@@ -65,12 +66,19 @@ class CcmProsDetail implements TranslateMainInterface
      */
     protected $contactsCollection;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsDescription", mappedBy="prosDetail", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $description;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->domainsCollection = new ArrayCollection();
         $this->activitiesCollection = new ArrayCollection();
         $this->contactsCollection = new ArrayCollection();
+        $this->description = new ArrayCollection();
     }
 
     public function __toString()
@@ -207,5 +215,34 @@ class CcmProsDetail implements TranslateMainInterface
     public function setIsShortFilmCorner($isShortFilmCorner)
     {
         $this->isShortFilmCorner = $isShortFilmCorner;
+    }
+
+
+    /**
+     * @param CcmProsDescription $prosDescription
+     * @return $this
+     */
+    public function addDescription(\FDC\CourtMetrageBundle\Entity\CcmProsDescription $prosDescription)
+    {
+        $prosDescription->setProsDetail($this);
+        $this->description[] = $prosDescription;
+
+        return $this;
+    }
+
+    /**
+     * @param CcmProsDescription $prosDescription
+     */
+    public function removeDescription(\FDC\CourtMetrageBundle\Entity\CcmProsDescription $prosDescription)
+    {
+        $this->description->removeElement($prosDescription);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

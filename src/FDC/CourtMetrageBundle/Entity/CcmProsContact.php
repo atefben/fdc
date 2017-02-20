@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * CcmProsContact
  * @ORM\Table(name="ccm_pros_contact")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsContact
 {
