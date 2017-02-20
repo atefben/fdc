@@ -211,6 +211,7 @@ sonata_media:
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival
                 640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
                 1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false}
+                1280x: { width: 1280 , quality: 100, constraint: false}
                 808x1280: { width: 808 , height: 1280 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival portrait
                 320x404: { width: 320 , height: 404 , quality: 100, constraint: false}

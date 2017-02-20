@@ -7,6 +7,6 @@
         {% if mainTrans is null or mainTrans.file is null %}
             {% set mainTrans = mediaImage.findTranslationByLocale('fr') %}
         {% endif %}
-        {% path mainTrans.file, '1280x808' %}
+        {% path mainTrans.file, '1280x' %}
     {% endspaceless %}
 {% endmacro sliderImage %}
