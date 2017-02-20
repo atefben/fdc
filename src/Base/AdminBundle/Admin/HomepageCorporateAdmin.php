@@ -346,7 +346,7 @@ class HomepageCorporateAdmin extends Admin
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => HomepageCorporate::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
-                'label'                     => 'label_priority_status',
+                'label'                     => 'form.label_priority_status',
             ))
         ;
     }
