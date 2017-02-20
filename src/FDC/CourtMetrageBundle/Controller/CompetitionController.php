@@ -17,6 +17,7 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
+
         $translationStatus = $selectionTab->getStatus();
         if(!$selectionTab || ($translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
             throw new NotFoundHttpException();
@@ -74,6 +75,9 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
+
+        $competitionManager->checkWaitingPage($selectionTab);
+
         $juryTab = $competitionManager->getJuryTab();
         $palmaresTab = $competitionManager->getPalmaresTab();
 

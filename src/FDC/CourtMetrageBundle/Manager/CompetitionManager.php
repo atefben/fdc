@@ -2,6 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Manager;
 
+use FDC\CourtMetrageBundle\Entity\CcmWaitingPageTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab;
@@ -109,5 +110,15 @@ class CompetitionManager
         ;
 
         return $palmares;
+    }
+
+    public function checkWaitingPage($selectionTab)
+    {
+        $waitingPage = $this
+            ->em
+            ->getRepository(CcmWaitingPageTranslation::class)
+            ->findPageByLocaleAndTab($this->requestStack->getMasterRequest()->get('_locale'), $selectionTab->getTranslatable());
+
+        var_dump($waitingPage);die;
     }
 }
