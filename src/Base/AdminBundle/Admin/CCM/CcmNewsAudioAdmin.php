@@ -3,8 +3,6 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use FDC\CourtMetrageBundle\Entity\CcmNews;
-
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use FDC\CourtMetrageBundle\Entity\CcmNewsAudioTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -18,7 +16,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class CcmNewsAudioAdmin extends Admin
+class CcmNewsAudioAdmin extends CcmNewsAdmin
 {
     protected $baseRouteName = 'ccm_news_audio';
     protected $baseRoutePattern = 'ccmnewsaudio';
@@ -60,6 +58,7 @@ class CcmNewsAudioAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -140,13 +139,15 @@ class CcmNewsAudioAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
+                'required'   => true,
                 'btn_delete' => false
             ))
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false
+                'required' => false,
+                'btn_delete' => false
             ))
             ->add('audio', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_audio',

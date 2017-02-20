@@ -1,0 +1,18 @@
+<div class="slideshow">
+    <div class="slideshow-img">
+        <div class="images">
+            {% for image in widget.gallery.medias %}
+                {% include '@FDCCourtMetrage/news/partials/gallery_image.html.twig' with {'mediaImage': image.media, 'galleryId': widget.gallery.id, 'index': loop.index} only %}
+            {% endfor %}
+        </div>
+        <div class="owl-carousel thumbnails">
+            {% for image in widget.gallery.medias %}
+                {% include '@FDCCourtMetrage/news/partials/gallery_thumbnail.html.twig' with {'mediaImage': image.media, 'index': loop.index} only %}
+            {% endfor %}
+        </div>
+    </div>
+    {% if widget.gallery.medias[0] is defined %}
+        {% set translation = widget.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
+        <p class="caption">{{ translation.legend ~ ' - ©' ~  translation.copyright }}</p>
+    {% endif %}
+</div>

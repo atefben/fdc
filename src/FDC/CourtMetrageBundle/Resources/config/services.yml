@@ -4,11 +4,17 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    ccm.manager.news:
+        class: FDC\CourtMetrageBundle\Manager\NewsManager
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
     ccm.manager.menu:
         class: FDC\CourtMetrageBundle\Manager\MenuManager
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
     ccm.manager.participate:
         class: FDC\CourtMetrageBundle\Manager\ParticipateManager
         arguments:

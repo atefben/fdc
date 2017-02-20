@@ -1,42 +1,38 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
+namespace FDC\CourtMetrageBundle\Form\Type;
 
-use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * CcmNewsWidgetImageDualAlignType class.
+ * CcmNewsWidgetImageType class.
  *
  * \@extends CcmNewsWidgetType
  * \@company Ohwee
  */
-class CcmNewsWidgetImageDualAlignType extends CcmNewsWidgetType
+class CcmNewsWidgetImageType extends CcmNewsWidgetType
 {
 
     /**
      * dataClass
      *
-     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetImageDualAlign')
+     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetImage')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetImageDualAlign';
+    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetImage';
 
     /**
-     * ccmNewsWidgetImageDummyAdmin
+     * newsWidgetImageDummyAdmin
      *
      * @var mixed
      * @access private
      */
     private $newsWidgetImageDummyAdmin;
 
-    /**
-     * @var mixed
-     */
-    private $galleryDualAlignDummyAdmin;
+    private $galleryAdmin;
 
     /**
      * setNewsWidgetImageDummyAdmin function.
@@ -50,9 +46,9 @@ class CcmNewsWidgetImageDualAlignType extends CcmNewsWidgetType
         $this->newsWidgetImageDummyAdmin = $newsWidgetImageDummyAdmin;
     }
 
-    public function setGalleryDualAlignAdmin($galleryDualAlignDummyAdmin)
+    public function setgalleryAdmin($galleryAdmin)
     {
-        $this->galleryDualAlignDummyAdmin = $galleryDualAlignDummyAdmin;
+        $this->galleryAdmin = $galleryAdmin;
     }
 
     /**
@@ -68,8 +64,8 @@ class CcmNewsWidgetImageDualAlignType extends CcmNewsWidgetType
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
             'sonata_field_description' => $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager'            => $this->galleryDualAlignDummyAdmin->getModelManager(),
-            'class'                    => $this->galleryDualAlignDummyAdmin->getClass(),
+            'model_manager'            => $this->galleryAdmin->getModelManager(),
+            'class'                    => $this->galleryAdmin->getClass(),
             'label'                    => false,
         ));
     }
@@ -78,10 +74,9 @@ class CcmNewsWidgetImageDualAlignType extends CcmNewsWidgetType
      * getName function.
      *
      * @access public
-     * @return string
      */
     public function getName()
     {
-        return 'ccm_news_widget_image_dual_align_type';
+        return 'ccm_news_widget_image_type';
     }
 }

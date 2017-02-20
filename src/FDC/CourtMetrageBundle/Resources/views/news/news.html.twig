@@ -1,0 +1,63 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div id="main" class="all-articles grid loading">
+        <span id="addtext">{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span>
+        <h2 class="title">{#Tous les articles#}{{ 'ccm.news.all_articles'|trans }}</h2>
+        <div class="filters">
+            <div id="theme" class="filter">
+                <span class="label">{#Dates#}{{ 'ccm.news.dates'|trans }} :</span>
+                <span class="select">
+                    <span class="active" data-filter="all">{#Toutes#}{{ 'ccm.news.all'|trans }}</span><i class="icon icon_fleche-down"></i>
+                    {% for year, yearData in filters.years %}
+                        <span data-filter="date{{ year }}">{{ year }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+            <div id="format" class="filter">
+                <span class="label">{#Thèmes#}{{ 'ccm.news.themes'|trans }} :</span>
+                <span class="select">
+                    <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+                    {% for themeId, themeData in filters.themes %}
+                        <span data-filter="theme{{ themeId }}">{{ themeData.name }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+        {% if news|length > 0 %}
+        <div id="gridAudios" class="grid-wrapper" data-type="articles">
+            <div class="grid-sizer"></div>
+            {% for article in news %}
+                {% set articleTranslation = article.findTranslationByLocale(app.request.locale) %}
+                <div class="item date{{ article.publishedAt|date('Y') }} theme{{ article.theme.id }} date theme article {{ loop.index > 15 ? 'hidden' : '' }}" >
+                    <article class="article">
+                        <div class="img">
+                            <span class="picto"><i class="icon icon_{{ article.getType != 'image' ? article.getType : 'photo' }}"></i></span>
+                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                {% if article.header is not null %}
+                                    {% set translations = article.header.findTranslationByLocale(app.request.locale) %}
+                                    <img src="{% path article.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                {% elseif article.image is not null %}
+                                    {% set translations = article.image.findTranslationByLocale(app.request.locale) %}
+                                    <img src="{% path article.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                {% endif %}
+                            </a>
+                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
+                        </div>
+                        <div class="info">
+                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
+                                <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                            </a>
+                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3 class="title">{#Aucun article à afficher#}{{ 'ccm.news.no_news_to_show'|trans }}</h3>
+        {% endif %}
+        <a id="next" href="#"></a>
+    </div>
+{% endblock %}

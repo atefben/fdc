@@ -1,0 +1,23 @@
+{% set translation = widget.file.findTranslationByLocale(app.request.locale) %}
+<div class="audio-container"
+     data-file='[{"file":"{{ s3_server_audio ~ translation.mp3Url }}"}]'
+     data-img="{% path widget.file.image|trans_fallback('file'), 'reference' %}"
+     data-aid="{{ translation.id }}">
+    <div class="audio-player">
+        <div id="audio-player-11" class="audio-player-container"></div>
+        <div class="image" style="background-image: url({% path widget.file.image|trans_fallback('file'), 'reference' %});"></div>
+        <button class="play-btn play"><i class="icon icon_play"></i></button>
+        <div class="off">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div class="picto"><i class="icon icon_audio"></i></div>
+                    <div class="info">
+                        <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a><span class="date">11.03.15</span> . <span class="hour">09:00</span>
+                        <p>{{ translation.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="on"></div>
+    </div>
+</div>

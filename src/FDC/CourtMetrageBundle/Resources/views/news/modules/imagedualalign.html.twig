@@ -1,0 +1,12 @@
+<div class="half-div v2">
+    {% for image in widget.gallery.medias %}
+        {% set translations = image.media.findTranslationByLocale(app.request.locale) %}
+        <div class="half-photo">
+            <div class="photo-container">
+                <img src="{% path image.media|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"  />
+                <p class="caption">{{ translations.legend ~ ' - ©' ~ translations.copyright }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="author">{{ widget.gallery|trans_fallback('aithor') }}</div>
+</div>

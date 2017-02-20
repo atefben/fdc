@@ -4,9 +4,7 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
-use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\FilmFilm;
-use Base\CoreBundle\Entity\Homepage;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\Theme;
@@ -32,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CcmNews
  *
  * @ORM\Table(name="ccm_news")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmNewsRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "CcmNewsArticle", "audio" = "CcmNewsAudio", "image" = "CcmNewsImage", "video" = "CcmNewsVideo"})
@@ -65,20 +63,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
       */
     protected $theme;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmFestival")
-     */
-    protected $festival;
-
-    /**
-     * @var Homepage
-     *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Homepage", cascade={"all"})
-     */
-    protected $homepage;
 
     /**
      * @var boolean
@@ -250,6 +234,14 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     }
 
     /**
+     * @return string
+     */
+    public function getType()
+    {
+        return strtolower(str_replace('CcmNews', '', $this->getNewsType()));
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -314,52 +306,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getTheme()
     {
         return $this->theme;
-    }
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return CcmNews
-     */
-    public function setFestival(FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
-    
-    /**
-     * Set homepage
-     *
-     * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return CcmNews
-     */
-    public function setHomepage(Homepage $homepage = null)
-    {
-        $this->homepage = $homepage;
-
-        return $this;
-    }
-
-    /**
-     * Get homepage
-     *
-     * @return \Base\CoreBundle\Entity\Homepage
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
     }
 
     /**
@@ -861,7 +807,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      * Set excludeFromSearch
      *
      * @param boolean $excludeFromSearch
-     * @return Media
+     * @return CcmNews
      */
     public function setExcludeFromSearch($excludeFromSearch)
     {
