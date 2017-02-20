@@ -4578,6 +4578,9 @@ header.sticky {
 header.sticky #top-bar, header.sticky h1 {
   display: none;
 }
+header.sticky #edition {
+  margin-left: 10px !important;
+}
 header.sticky #sticky-user {
   opacity: 1;
   visibility: visible;
@@ -4625,8 +4628,6 @@ header.sticky #logo-wrapper #logo img.palm {
   float: left;
   margin-top: -5px;
   width: 72px;
-  margin-left: 35px;
-  margin-left: 50px;
 }
 header.sticky #logo-wrapper #logo h2 {
   display: none;
@@ -4732,11 +4733,11 @@ header .user-nav li.lang:hover .sub-languages {
   visibility: visible;
 }
 header #top-bar {
-  border-bottom: 0px solid #080808;
+  border-bottom: 1px solid #080808;
   background-color: #141414;
   font-size: 0.750rem;
-  height: 35px;
-  line-height: 30px;
+  height: 28px;
+  line-height: 28px;
   -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4787,7 +4788,7 @@ header #top-bar .icon_langue {
 }
 header #logo-wrapper {
   background-color: #141414;
-  height: 154px !important;
+  height: 159px !important;
   -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4800,20 +4801,16 @@ header #logo-wrapper {
 header #logo-wrapper .container {
   height: 100%;
   position: relative;
-  width: 1152px;
-}
-@media screen and (max-width: 1024px) {
-  header #logo-wrapper .container {
-    width: 1152px;
-  }
+  width: 977px;
 }
 header #logo-wrapper #logo {
   display: inline-block;
-  padding: 0px 100px 0px 0;
+  padding: 5px 100px 0 0;
   text-align: center;
   vertical-align: middle;
-  width: 200px;
-  positon: relative;
+  /*width: 200px;*/
+  width: 165px;
+  margin-left: 10px;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -4826,10 +4823,8 @@ header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
 }
 header #logo-wrapper #logo h1 {
   position: absolute;
-  /*top: 108px;
-  left: 0px;*/
-  top: 95px !important;
-  left: 40px !important;
+  top: 100px !important;
+  left: 10px !important;
 }
 header #logo-wrapper #logo h2 {
   position: absolute;
@@ -4880,7 +4875,6 @@ header #logo-wrapper #logo img.palm {
   display: block;
   margin: 0 auto;
   width: 145px;
-  margin-left: 55px;
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4931,7 +4925,7 @@ header #logo-wrapper #leaderBoard {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   top: 30px;
-  left: 405px;
+  left: 230px;
   background: #333333;
   text-align: center;
   color: white;
@@ -5005,16 +4999,18 @@ header #navigation ul li:hover > a {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #navigation ul li:first-child {
-  margin-left: 45px;
-  /*@media screen and(max-width: $mobileWidth) {
-    margin-left: 5px;
-  }*/
+  margin-left: 10px;
+}
+@media screen and (max-width: 1279px) {
+  header #navigation ul li:first-child {
+    margin-left: 10px;
+  }
 }
 header #navigation ul li a {
   color: #fff;
   font-size: 14px;
   display: block;
-  padding-right: 45px;
+  padding-right: 20px;
   text-transform: uppercase;
   -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5247,9 +5243,14 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 #searchBar {
-  margin-left: 105px !important;
+  margin-left: 85px !important;
   border-left: 1px solid #404040;
   padding-left: 20px;
+}
+@media screen and (max-width: 1279px) {
+  #searchBar {
+    margin-left: 55px !important;
+  }
 }
 
 #searchBarA {
@@ -5559,6 +5560,13 @@ header #navigation {
   position: absolute !important;
   right: 0% !important;
   z-index: 1000 !important;
+}
+
+header .bigContainer {
+  max-width: 977px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden !important;
 }
 
 footer * {
