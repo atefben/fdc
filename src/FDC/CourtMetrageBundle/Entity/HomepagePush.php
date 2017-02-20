@@ -38,7 +38,7 @@ class HomepagePush
     protected $translations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliders")
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="pushes")
      * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;

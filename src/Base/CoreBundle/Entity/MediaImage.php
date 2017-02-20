@@ -72,13 +72,20 @@ class MediaImage extends Media
      */
     protected $homepagePushes;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\Homepage", mappedBy="catalogImage")
+     */
+    protected $catalogPushes;
+
+
     public function __construct()
     {
         parent::__construct();
         $this->galleries = new ArrayCollection();
         $this->homepageSliders = new ArrayCollection();
         $this->homepagePushes = new ArrayCollection();
-
+        $this->catalogPushes = new ArrayCollection();
     }
 
     public function getApiTranslations()
@@ -278,5 +285,49 @@ class MediaImage extends Media
     public function getHomepagePushes()
     {
         return $this->homepagePushes;
+    }
+
+    /**
+     * Get catalogPushes.
+     *
+     * @return ArrayCollection
+     */
+    public function getCatalogPushes()
+    {
+        return $this->catalogPushes;
+    }
+
+    /**
+     * Set catalogPushes.
+     *
+     * @param ArrayCollection $catalogPushes
+     */
+    public function setCatalogPushes($catalogPushes)
+    {
+        $this->catalogPushes = $catalogPushes;
+    }
+
+    /**
+     * Add catalogPush.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\Homepage $catalogPush
+     * @return $this
+     */
+    public function addCatalogPush(\FDC\CourtMetrageBundle\Entity\Homepage $catalogPush)
+    {
+        $this->catalogPushes[] = $catalogPush;
+        $catalogPush->setCatalogPushes($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove catalogPush.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\Homepage $catalogPush
+     */
+    public function removeCatalogPush(\FDC\CourtMetrageBundle\Entity\Homepage $catalogPush)
+    {
+        $this->homepagePushes->removeElement($catalogPush);
     }
 }

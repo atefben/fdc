@@ -79,6 +79,32 @@ class Homepage
     protected $pushIsActive = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $catalogIsActive = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CatalogPush", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = "3",
+     *      minMessage = "ccm.validation.homepage.catalog.pushes_min",
+     *      max = "5",
+     *      maxMessage = "ccm.validation.homepage.catalog.pushes_max"
+     * )
+     * @Assert\Valid
+     */
+    protected $catalogPushes;
+
+    /**
+     * @var MediaImage
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="catalogPushes")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    protected $catalogImage;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -90,6 +116,7 @@ class Homepage
         $this->translations = new ArrayCollection();
         $this->sliders = new ArrayCollection();
         $this->pushes = new ArrayCollection();
+        $this->catalogPushes =  new ArrayCollection();
     }
 
     /**
@@ -308,5 +335,96 @@ class Homepage
     public function setPushIsActive($pushIsActive)
     {
         $this->pushIsActive = $pushIsActive;
+    }
+
+    /**
+     * Get catalogIsActive.
+     *
+     * @return bool
+     */
+    public function getCatalogIsActive()
+    {
+        return $this->catalogIsActive;
+    }
+
+    /**
+     * Set catalogIsActive.
+     *
+     * @param bool $catalogIsActive
+     */
+    public function setCatalogIsActive($catalogIsActive)
+    {
+        $this->catalogIsActive = $catalogIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Get catalogPushes.
+     *
+     * @return mixed
+     */
+    public function getCatalogPushes()
+    {
+        return $this->catalogPushes;
+    }
+
+    /**
+     * Set catalogPushes.
+     *
+     * @param mixed $catalogPushes
+     */
+    public function setCatalogPushes($catalogPushes)
+    {
+        $this->catalogPushes = $catalogPushes;
+
+        return $this;
+    }
+
+    /**
+     * Add catalogPush.
+     *
+     * @param catalogPush $push
+     *
+     * @return $this
+     */
+    public function addCatalogPush(CatalogPush $catalogPush)
+    {
+        $this->catalogPushes->add($catalogPush);
+        $catalogPush->setHomepage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove catalogPush.
+     *
+     * @param CatalogPush $push
+     */
+    public function removeCatalogPush(CatalogPush $catalogPush)
+    {
+        $this->catalogPushes->removeElement($catalogPush);
+    }
+
+    /**
+     * Get catalogImage.
+     *
+     * @return MediaImage
+     */
+    public function getCatalogImage()
+    {
+        return $this->catalogImage;
+    }
+
+    /**
+     * Set catalogImage.
+     *
+     * @param MediaImage $catalogImage
+     */
+    public function setCatalogImage($catalogImage)
+    {
+        $this->catalogImage = $catalogImage;
+
+        return $this;
     }
 }

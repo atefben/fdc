@@ -96,6 +96,28 @@ class HomepageAdmin extends Admin
             ->add('courtYear', 'text', array(
                 'label'    => 'form.ccm.label.court.court_year',
             ))
+            ->add('pushIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.catalog.push_is_activated',
+                'required' => false,
+            ))
+            ->add('catalogIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.catalog.push_is_activated',
+                'required' => false,
+            ))
+            ->add('catalogPushes', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'ccm_catalog_push_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
+            ->add('catalogImage', 'sonata_type_model_list', array(
+                    'required' => true,
+                )
+            )
         ;
     }
 
@@ -114,6 +136,9 @@ class HomepageAdmin extends Admin
         foreach ($homepage->getPushes() as $push) {
             $push->setHomepage($homepage);
         }
+        foreach ($homepage->getCatalogPushes() as $push) {
+            $push->setCatalog($homepage);
+        }
     }
 
     /**
@@ -130,6 +155,9 @@ class HomepageAdmin extends Admin
         }
         foreach ($homepage->getPushes() as $push) {
             $push->setHomepage($homepage);
+        }
+        foreach ($homepage->getCatalogPushes() as $push) {
+            $push->setCatalog($homepage);
         }
     }
 

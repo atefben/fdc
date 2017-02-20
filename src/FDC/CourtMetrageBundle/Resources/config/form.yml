@@ -1,4 +1,10 @@
 services:
+    base.admin.form.ccm_catalog_push_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CatalogPushType
+        tags:
+            - { name: form.type, alias: 'ccm_catalog_push_type'}
+
     base.admin.form.ccm_homepage_slider_type:
         scope: prototype
         class: FDC\CourtMetrageBundle\Form\Type\HomepageSliderType

@@ -681,6 +681,13 @@ form:
                 sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
                 sub_nav_route: Itinéraire de la deuxième onglet de navigation
                 sub_nav_is_active: Ce deuxième onglet de navigation est actif?
+            catalog:
+                pushes: Module Catalogue
+                push: Ajouter Pushes
+                push_is_activated: Activer le module
+                homepage: Catalogue
+                whiteTitle: Nom du push
+                url: URL
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc
