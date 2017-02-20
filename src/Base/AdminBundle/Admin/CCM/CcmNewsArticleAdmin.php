@@ -59,6 +59,7 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
             ->add('translations', 'a2lix_translations', array(
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'fields'             => array(
                     'applyChanges'   => array(
                         'field_type' => 'hidden',

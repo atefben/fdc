@@ -37,6 +37,7 @@ class CcmNewsWidgetTextType extends CcmNewsWidgetType
         $builder->add('translations', 'a2lix_translations', array(
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
+            'locales' => ['fr','en'],
             'fields' => array(
                  'applyChanges' => array(
                      'field_type' => 'hidden',

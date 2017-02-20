@@ -3,8 +3,6 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use FDC\CourtMetrageBundle\Entity\CcmNews;
-
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use FDC\CourtMetrageBundle\Entity\CcmNewsImageTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -12,13 +10,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsImageAdmin class.
+ * CcmNewsImageAdmin class.
  *
- * \@extends Admin
+ * \@extends CcmNewsAdmin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class CcmNewsImageAdmin extends Admin
+class CcmNewsImageAdmin extends CcmNewsAdmin
 {
     protected $baseRouteName = 'ccm_news_image';
     protected $baseRoutePattern = 'ccmnewsimage';
@@ -61,6 +59,7 @@ class CcmNewsImageAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',

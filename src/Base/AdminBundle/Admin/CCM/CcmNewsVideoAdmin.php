@@ -3,22 +3,18 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use FDC\CourtMetrageBundle\Entity\CcmNews;
-
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use FDC\CourtMetrageBundle\Entity\CcmNewsVideoTranslation;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsVideoAdmin class.
+ * CcmNewsVideoAdmin class.
  *
- * \@extends Admin
+ * \@extends CcmNewsAdmin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class CcmNewsVideoAdmin extends Admin
+class CcmNewsVideoAdmin extends CcmNewsAdmin
 {
     protected $baseRouteName = 'ccm_news_video';
     protected $baseRoutePattern = 'ccmnewsvideo';
@@ -63,6 +59,7 @@ class CcmNewsVideoAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',

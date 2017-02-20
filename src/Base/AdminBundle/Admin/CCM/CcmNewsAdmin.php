@@ -3,8 +3,8 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use Base\CoreBundle\Entity\NewsArticle;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmNewsArticle;
+use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class CcmNewsAdmin extends Admin
 {
     protected $baseRouteName = 'ccm_news';
-    protected $baseRoutePattern = 'ccm-news';
+    protected $baseRoutePattern = 'ccmnews';
 
     public function createQuery($context = 'list')
     {
@@ -114,7 +114,7 @@ class CcmNewsAdmin extends Admin
                         return;
                     }
                     if ($value['value']) {
-                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, NewsArticleTranslation::STATUS_TRANSLATION_PENDING);
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, CcmNewsArticleTranslation::STATUS_TRANSLATION_PENDING);
                     }
                     return true;
                 },
@@ -128,7 +128,7 @@ class CcmNewsAdmin extends Admin
                     }
 
                     if ($value['value']) {
-                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING);
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, CcmNewsArticleTranslation::STATUS_TRANSLATION_VALIDATING);
                     }
                     return true;
                 },
@@ -141,7 +141,7 @@ class CcmNewsAdmin extends Admin
                         return;
                     }
                     if ($value['value']) {
-                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, NewsArticleTranslation::STATUS_TRANSLATED);
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, CcmNewsArticleTranslation::STATUS_TRANSLATED);
                     }
                     return true;
                 },
@@ -182,18 +182,17 @@ class CcmNewsAdmin extends Admin
                 'label' => 'list.displayed_mobile',
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices'   => NewsArticle::getPriorityStatusesList(),
+                'choices'   => CcmNewsArticle::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle',
                 'label'     => 'form.label_priority_status'
             ))
             ->add('statusMain', 'choice', array(
-                'choices'   => NewsArticleTranslation::getMainStatuses(),
+                'choices'   => CcmNewsArticleTranslation::getMainStatuses(),
                 'catalogue' => 'BaseAdminBundle',
                 'label'     => 'show.label_status'
             ))
-            ->add('translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_see_translations.html.twig',
-                'label'    => 'dashboard.link.bo_translation',
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }
