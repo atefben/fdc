@@ -12,18 +12,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class HomepageCorporateSlideAdmin extends Admin
 {
-
-    public function toString($object)
-    {
-        if ($object instanceof Statement || $object instanceof Info) {
-            $fr = $object->findTranslationByLocale('fr');
-            if ($fr && method_exists($fr, 'getTitle') && $fr->getTitle()) {
-                return $fr->getTitle();
-            }
-        }
-        return parent::toString($object);
-    }
-
     /**
      * @param DatagridMapper $datagridMapper
      */
