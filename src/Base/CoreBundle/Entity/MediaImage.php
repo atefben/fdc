@@ -60,12 +60,33 @@ class MediaImage extends Media
      */
     protected $galleries;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepageSlider", mappedBy="image")
+     */
+    protected $homepageSliders;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepagePush", mappedBy="image")
+     */
+    protected $homepagePushes;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\Homepage", mappedBy="catalogImage")
+     */
+    protected $catalogPushes;
+
+
     public function __construct()
     {
         parent::__construct();
         $this->galleries = new ArrayCollection();
+        $this->homepageSliders = new ArrayCollection();
+        $this->homepagePushes = new ArrayCollection();
+        $this->catalogPushes = new ArrayCollection();
     }
-
 
     public function getApiTranslations()
     {
@@ -189,10 +210,124 @@ class MediaImage extends Media
     /**
      * Get galleries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGalleries()
     {
         return $this->galleries;
+    }
+
+    /**
+     * Add homepageSlider.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider
+     * @return $this
+     */
+    public function addHomepageSlider(\FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider)
+    {
+        $this->homepageSliders[] = $homepageSlider;
+        $homepageSlider->setImage($this);
+
+        return $this;
+    }
+
+    /**
+     *
+     * Remove homepageSlider
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider
+     */
+    public function removeHomepageSlider(\FDC\CourtMetrageBundle\Entity\HomepageSlider $homepageSlider)
+    {
+        $this->homepageSliders->removeElement($homepageSlider);
+    }
+
+    /**
+     * Get homepageSliders.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHomepageSliders()
+    {
+        return $this->homepageSliders;
+    }
+
+    /**
+     * Add homepagePush.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush
+     * @return $this
+     */
+    public function addHomepagePush(\FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush)
+    {
+        $this->homepagePushes[] = $homepagePush;
+        $homepagePush->setImage($this);
+
+        return $this;
+    }
+
+    /**
+     *
+     * Remove homepagePush
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush
+     */
+    public function removeHomepagePush(\FDC\CourtMetrageBundle\Entity\HomepagePush $homepagePush)
+    {
+        $this->homepagePushes->removeElement($homepagePush);
+    }
+
+    /**
+     * Get homepagePush.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHomepagePushes()
+    {
+        return $this->homepagePushes;
+    }
+
+    /**
+     * Get catalogPushes.
+     *
+     * @return ArrayCollection
+     */
+    public function getCatalogPushes()
+    {
+        return $this->catalogPushes;
+    }
+
+    /**
+     * Set catalogPushes.
+     *
+     * @param ArrayCollection $catalogPushes
+     */
+    public function setCatalogPushes($catalogPushes)
+    {
+        $this->catalogPushes = $catalogPushes;
+    }
+
+    /**
+     * Add catalogPush.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\Homepage $catalogPush
+     * @return $this
+     */
+    public function addCatalogPush(\FDC\CourtMetrageBundle\Entity\Homepage $catalogPush)
+    {
+        $this->catalogPushes[] = $catalogPush;
+        $catalogPush->setCatalogPushes($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove catalogPush.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\Homepage $catalogPush
+     */
+    public function removeCatalogPush(\FDC\CourtMetrageBundle\Entity\Homepage $catalogPush)
+    {
+        $this->homepagePushes->removeElement($catalogPush);
     }
 }

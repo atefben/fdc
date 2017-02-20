@@ -2,29 +2,38 @@
 
 namespace FDC\CourtMetrageBundle\Controller;
 
+use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DateTime;
 use Exception;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\BadResponseException;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Form\FormError;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Buzz\Message\Request;
 use FDC\CourtMetrageBundle\Form\Type\ShareEmailType;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
-     * @Template()
+     * @Route("/", name="fdc_ccm_homepage")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
-    }
+        $homepageManger = $this->get('ccm.manager.homepage');
+        $homepagePushes = $homepageManger->getPushes();
+        $homepageSliders = $homepageManger->getSliders();
 
+        return $this->render(
+            'FDCCourtMetrageBundle::homepage/homepage.html.twig',
+            [
+                'sliders' => $homepageSliders,
+                'pushes'  => $homepagePushes,
+            ]
+        );
+    }
 
     /**
      * @Route("/share-email-ccm", name="fdc_court_metrage_shareemail", options={"expose"=true})

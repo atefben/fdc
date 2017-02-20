@@ -1,0 +1,24 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="prehome-container">
+        <div id="prehome"></div>
+    </div>
+
+    <div id="main" class="home loading">
+        <div id="featured-movies">
+            <div class="container"><div class="whiteBar"></div></div>
+            {% if sliders is defined and sliders is not null %}
+                {% include 'FDCCourtMetrageBundle::homepage/_slider.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="discover">
+        <div id="slider-discover" class="owl-carousel">
+            {% if pushes is defined and pushes is not null %}
+                {% include 'FDCCourtMetrageBundle::homepage/_push.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

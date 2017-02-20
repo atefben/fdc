@@ -837,3 +837,23 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_film_register_procedure_dummy']]
             - ['setRegisterProcedureAdmin', ['@base.admin.ccm_register_procedure']]
+
+    base.admin.form.homepage_slider_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\HomepageSliderType
+        tags:
+            - { name: form.type, alias: 'homepage_slider_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_homepage_slider_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+
+
+    base.admin.form.homepage_push_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\HomepagePushType
+        tags:
+            - { name: form.type, alias: 'homepage_push_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_homepage_push_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+

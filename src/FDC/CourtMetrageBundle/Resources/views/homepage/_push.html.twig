@@ -1,0 +1,11 @@
+{% for push in pushes %}
+    {% if push.translatable.isActive %}
+        <div class="item">
+            <div class="title">
+                <a href=""><h5>{{ push.whiteTitle }}</h5></a>
+                <a href=""><h4>{{ push.goldenTitle }}</h4></a>
+            </div>
+            <a href="{{ push.url }}"><img src="{% path push.translatable.image|trans_fallback('file'), 'reference' %}"></a>
+        </div>
+    {% endif %}
+{% endfor %}

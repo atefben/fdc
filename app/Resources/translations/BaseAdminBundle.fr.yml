@@ -681,7 +681,46 @@ form:
                 sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
                 sub_nav_route: Itinéraire de la deuxième onglet de navigation
                 sub_nav_is_active: Ce deuxième onglet de navigation est actif?
+            catalog:
+                pushes: Module Catalogue
+                push: Ajouter Pushes
+                push_is_activated: Activer le module
+                homepage: Catalogue
+                whiteTitle: Nom du push
+                url: URL
+            push:
+                homepage: Push
+                whiteTitle: Titre Blanc
+                goldenTitle: Titre Doré
+                url: URL de la push
+                isActive: Activer le module
+                add_message: Pushes
+            slider:
+                homepage: Slide
+                whiteTitle: Titre Blanc
+                whiteTitleSize: Taille du Titre Blanc
+                goldenTitle: Titre Doré
+                goldenTitleSize: Taille du Titre Doré
+                buttonLabel: Libellé de bouton
+                url: URL de la slide
+            court:
+                homepage: Module Courts en compétition
+                film_selection: Liste des films
+                court_is_activated: Activer le module
+                court_year: L’année
+            catalog:
+                homepage: Le catalogue
+            homepage_slider_type: Ajouter
+            homepage_push_type: Ajouter
+            homepage_push: Push
+            pushes: Module Push
+            homepage_slider: Slide
+            slide: Module Slider
 
+        size:
+            small:  Titre petit
+            medium: Titre moyen
+            large: Tite gros
     mdf:
         label_status: Statut
         conference_partner:
