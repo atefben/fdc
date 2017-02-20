@@ -4838,7 +4838,7 @@ var rtime;
 var timeout = false;
 var delta = 300;
 $(window).resize(function() {
-
+    console.log(timeout);
     $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
 
     rtime = new Date();
@@ -4848,7 +4848,7 @@ $(window).resize(function() {
     }
 });
 
-function resizeend() {
+function resizeend() {console.log('resizeend');
 
 
     if (new Date() - rtime < delta) {
@@ -4897,9 +4897,10 @@ var owinitSlideShow = function (slider, hash) {
 
         if($('.affiche-fdc').length) {
 
-            $('.poster').on('click', function(e){
+            $('.poster').off('click').on('click', function(e){
                 slider = $('.all-contain');
                 $(this).parent().addClass('active center');
+                console.log($(this));
                 var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
                 openSlideShow(slider,hash, true);
             })
@@ -4954,7 +4955,9 @@ var owinitSlideShow = function (slider, hash) {
 
 
 var openSlideShow = function (slider, hash, affiche) {
-
+    console.log(slider);
+    console.log(hash);
+    console.log(affiche);
     $('html').addClass('slideshow-open');
 
     var images = [];
@@ -4964,8 +4967,6 @@ var openSlideShow = function (slider, hash, affiche) {
 
     slider.find('.item, .img, .poster').each(function (index, value) {
 
-        console.log(value)
-
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
 
@@ -4973,7 +4974,6 @@ var openSlideShow = function (slider, hash, affiche) {
                 centerElement = index;
 
                 if($('.affiche-fdc').length ) {
-                    console.log(hash);
                     var hashPush = hash;
 
 

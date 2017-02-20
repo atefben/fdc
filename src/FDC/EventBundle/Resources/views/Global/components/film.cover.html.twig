@@ -13,7 +13,22 @@
         {%- set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first -%}
     {%- endif -%}
     {%- if media is empty -%}
-        {% set media = film.getSelfkitImages()|first %}
+        {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') %}
+            {% set media = selfkitImage %}
+        {% endfor %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film.getSelfkitImages()|first %}
+        {% endif %}
     {%- endif -%}
 
     {%- if film_attrs is not defined -%}

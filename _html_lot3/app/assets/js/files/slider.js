@@ -497,7 +497,7 @@ var rtime;
 var timeout = false;
 var delta = 300;
 $(window).resize(function() {
-
+    console.log(timeout);
     $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
 
     rtime = new Date();
@@ -507,7 +507,7 @@ $(window).resize(function() {
     }
 });
 
-function resizeend() {
+function resizeend() {console.log('resizeend');
 
 
     if (new Date() - rtime < delta) {

@@ -32,7 +32,7 @@
         <div class="nav-accre">
             <div class="wrapper">
                 <h2>{{ 'press.accrediter.title.consultezlaprocedure'|trans }}</h2>
-                <table>
+                <table style="margin:0 auto">
                     <tr>
                     {% for key,sectionFilter in accredit.procedure %}
                         <td data-cat="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}" class="{% if key == 0 %}active{% endif %}">
