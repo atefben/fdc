@@ -12,9 +12,7 @@
             ')"></div>
     <div class="links">
         <div class="container">
-            <a class="movies"
-               href="{{ path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': movie.selectionSection|trans_fallback('slug')}) }}"><i
-                        class="icon icon-arrow-left"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
+            <a class="movies" href="{{ path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': movie.selectionSection|trans_fallback('slug')}) }}"><i class="icon icon-arrow-left"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
             <a class="programmation"></a>
         </div>
     </div>
@@ -27,26 +25,24 @@
                      data-twitter="//www.twitter.com"
                      data-link="//www.example.com"
                      data-email="//www.gmail.com"
-                     data-file="" [{% if trans.jobWebmState == 3 %}{\
-                "file\":\"{{ s3_server_video ~ trans.webmUrl }}\"},{% endif %}
-                {\"file\":\"{{ s3_server_video ~ trans.mp4Url }}\"}]"
-                data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-                film: movie,
-                film_format: '976x535',
-                display_film_path: true,
-                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                }) %}{% endspaceless %}">
-                <div id="video-movie-trailer" class="video-player">
-                </div>
-                <div class="video-overlay"></div>
-                <div class="infos-bar hide-info">
-                    <div class="picto"><i class="icon icon_video"></i></div>
-                    <div class="info">
-                        <div class="vCenter">
-                            <div class="vCenterKid">
-                                <a href="#" class="category">Bande-annonce</a><span
-                                        class="date">18.05.15</span> . <span class="hour">09:00</span>
-                                <p>The Lobster</p>
+                     data-file='[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                     data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                     film: movie,
+                     film_format: "976x535",
+                     display_film_path: true,
+                     film_image_default: "/bundles/fdccorporate/media/images/film_w256.jpg",
+                     }) %}{% endspaceless %}">
+                    <div id="video-movie-trailer" class="video-player"></div>
+                    <div class="video-overlay"></div>
+                    <div class="infos-bar hide-info">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">Bande-annonce</a><span
+                                            class="date">18.05.15</span> . <span class="hour">09:00</span>
+                                    <p>The Lobster</p>
+                                </div>
                             </div>
                         </div>
                     </div>
