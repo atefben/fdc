@@ -3,6 +3,8 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\Statement;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -10,6 +12,18 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class HomepageCorporateSlideAdmin extends Admin
 {
+
+    public function toString($object)
+    {
+        if ($object instanceof Statement || $object instanceof Info) {
+            $fr = $object->findTranslationByLocale('fr');
+            if ($fr && method_exists($fr, 'getTitle') && $fr->getTitle()) {
+                return $fr->getTitle();
+            }
+        }
+        return parent::toString($object);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
