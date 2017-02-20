@@ -33,7 +33,7 @@
                     <div class="wrapper-item" data-date="afficher" data-pid="pid={{ poster.file.id }}"
                          data-credit="{{ poster.copyright }}"
                          data-url="{{ currentURL }}#pid={{ poster.file.id }}"
-                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ absolute_url(currentURL)|escape('url') }}&amp;picture={% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ currentURL }}&amp;display=popup"
+                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ absolute_url(currentURL)|escape('url') }}&amp;picture={% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ absolute_url(currentURL) }}&amp;display=popup"
                          data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
                         <div class="poster" data-date="afficher" data-pid="pid={{ poster.file.id }}"
                              data-credit="{{ poster.copyright }}"
