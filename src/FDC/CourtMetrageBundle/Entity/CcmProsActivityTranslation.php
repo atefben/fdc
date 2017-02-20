@@ -14,7 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * CcmProsActivityTranslation
  *
  * @ORM\Table(name="ccm_pros_activity_translation")
- * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmProsActivityTranslationRepository")
+ * @ORM\Entity
  */
 class CcmProsActivityTranslation implements TranslateChildInterface
 {

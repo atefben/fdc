@@ -1,0 +1,114 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading eventsPage">
+        <div class="list-article">
+            <div class="bandeau-list">
+                <div class="bandeau-list-img bandeau-head vCenter subHeader eventsHeader" style="background-image:url('{% path prosPage.translatable.image|trans_fallback("file"), "reference" %}')">
+                    <h3>{{ prosPage.title }}</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="minPadding">
+            <div class="container">
+                <h5 class="minMargin">{{ prosPage.description|raw }}</h5>
+            </div>
+        </div>
+
+        <div class="bigContainer">
+            <div id="accordion-conf" class="conferences confcourtaccordion">
+
+                <div class="dropdown">
+                    <span>{{ 'afficher'|trans }}</span>
+                    <div id="eventSelector">
+
+                        {% if hasSFC %}
+                            <div class="selectText" id="short-fim-corner">{{ 'present_sfc'|trans }}</div>
+                        {% endif %}
+
+                        {% if prosDomains is defined and prosDomains is not null %}
+                            {% for key, domain in prosDomains %}
+                                <div class="selectText" id="{{ key }}">{{ domain }}{% if loop.last == false %}, {% endif %}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div><br>
+                <div class="selector">
+                    {% if hasSFC %}
+                        <div class="selectbtn bigSelectbtn" id="short-fim-corner" rel="short-fim-corner">
+                            {{ 'present_sfc'|trans }} <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
+                        </div>
+                    {% endif %}
+
+                    {% if prosDomains is defined and prosDomains is not null %}
+                        {% for key, domain in prosDomains %}
+                            <div class="selectbtn" id="{{ key }}" rel="{{ key }}">{{ domain }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="conferencesMenu confcourt">
+            <div class="content firstContent">
+                <div class="parent">
+                    {% if prosList is defined and prosList is not null %}
+                        {% for pro in prosList %}
+                            <div class="box {{ pro.domain }} {% if pro.translatable.isShortFilmCorner %}short-fim-corner {% endif %}events modal-toggle" data-pro-id="{{ pro.id }}">
+                                <div class="eventPhoto">
+                                    <div class="eventPhotoContainer">
+                                        {% if pro.translatable.image is defined and pro.translatable.image is not null%}
+                                            <img src="{% path pro.translatable.image|trans_fallback("file"), "reference" %}" style="height: 230px;width: 160px;" alt="">
+                                        {% else %}
+                                            <img class="containerFit" src="{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}" alt="">
+                                        {% endif %}
+                                    </div>
+                                    {% if pro.translatable.isShortFilmCorner %}
+                                        <div class="sfcLogo">
+                                            <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="eventTitle"><h3>{{ pro.name }}</h3></div>
+                                <div class="eventCat">
+                                    {% if pro.translatable.getActivitiesCollection is not null %}
+                                        {% for activityCollection in pro.translatable.getActivitiesCollection %}
+                                            {% if activityCollection.activity is defined and activityCollection.activity is not null %}
+                                                {% if activityCollection.activity.translations[app.request.locale] is defined and activityCollection.activity.translations[app.request.locale] is not null %}
+                                                    {% set proActivity = activityCollection.activity.translations[app.request.locale] %}
+                                                    <span>{{ proActivity.name }}</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="share" id="share" >
+            <p>Partagez</p>
+            <div class="buttons square">
+                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
+                </a>
+                <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i></a>
+            </div>
+        </div>
+
+        {#<?php include('box-catalogue.php'); ?>#}
+        {#<?php include('box-social.php'); ?>#}
+        {#<?php include('box-news.php'); ?>#}
+        {#<?php include('box-contact.php'); ?>#}
+
+
+        <!-- POP PERSONS -->
+        <div class="modal"></div>
+{% endblock %}

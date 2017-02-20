@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CcmProsContactTranslation
  *
  * @ORM\Table(name="ccm_pros_contact_translation")
- * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmProsContactTranslationRepository")
+ * @ORM\Entity
  */
 class CcmProsContactTranslation implements TranslateChildInterface
 {
