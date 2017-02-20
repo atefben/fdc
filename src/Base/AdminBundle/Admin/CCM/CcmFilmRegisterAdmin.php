@@ -64,6 +64,7 @@ class CcmFilmRegisterAdmin extends Admin
                     'text'          => array(
                         'label'              => 'form.ccm.film_register.text',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),

@@ -631,7 +631,7 @@ form:
             title: Têtière titre
             text: Text
             header_photo: Têtière photo
-            is_text_active: active
+            is_text_active: Est le texte affiché?
             procedure_widget: Procédures d’inscription
             widget: Module procédures d’inscription
             label_procedure: Procédures

@@ -6,12 +6,13 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CcmRegisterProcedureTranslation
  * @ORM\Table(name="ccm_register_procedure_translation")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmRegisterProcedureTranslationRepository")
  */
 class CcmRegisterProcedureTranslation implements TranslateChildInterface
 {
@@ -25,6 +26,14 @@ class CcmRegisterProcedureTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      */
     protected $name;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"}, updatable=false)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    protected $slug;
 
     /**
      * @var string
@@ -172,6 +181,26 @@ class CcmRegisterProcedureTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      */
     protected $regulationDetailsButtonUrl;
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param $slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
 
     /**
      * @return boolean

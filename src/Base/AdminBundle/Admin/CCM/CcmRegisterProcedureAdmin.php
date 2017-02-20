@@ -97,8 +97,9 @@ class CcmRegisterProcedureAdmin extends Admin
                         'required' => false
                     ),
                     'isCharacteristicsActive' => array(
-                        'field_type' => 'checkbox',
                         'label' => 'form.ccm.film_register.is_characteristics_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'checkbox',
                         'required' => false
                     ),
                     'regulationTitle'   => array(
@@ -120,8 +121,9 @@ class CcmRegisterProcedureAdmin extends Admin
                         'input_sync' => true
                     ),
                     'isRegulationActive' => array(
-                        'field_type' => 'checkbox',
                         'label' => 'form.ccm.film_register.is_regulation_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'checkbox',
                         'required' => false
                     ),
                     'registerFormTitle'   => array(
@@ -143,8 +145,9 @@ class CcmRegisterProcedureAdmin extends Admin
                         'input_sync' => true
                     ),
                     'isRegisterFormActive' => array(
-                        'field_type' => 'checkbox',
                         'label' => 'form.ccm.film_register.is_register_form_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'checkbox',
                         'required' => false
                     ),
                     'contactUsTitle'   => array(
