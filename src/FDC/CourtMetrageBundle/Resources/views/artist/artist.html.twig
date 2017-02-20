@@ -64,10 +64,10 @@
                             {% endif %}
                             <div class="item">
                                 {% if filmPerson.film.festival.id == festival %}
-                                    <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                    <a href="{{ path('fdc_ccm_movie_show', {'slug': filmPerson.film.slug}) }}">
                                 {% endif %}
                                 <div class="image">
-                                    {% include 'FDCCourtMetrageBundle:artist:filmPoster.html.twig' with ({
+                                    {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
                                     film: filmPerson.film,
                                     film_format: '366x488',
                                     film_attrs: {
@@ -139,10 +139,10 @@
                                     {% endif %}
                                     <div class="item">
                                         {% if filmPerson.film.festival.id == festival %}
-                                            <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                            <a href="{{ path('fdc_ccm_movie_show', {'slug': filmPerson.film.slug}) }}">
                                         {% endif %}
                                         <div class="image">
-                                            {% include 'FDCCourtMetrageBundle:artist:filmPoster.html.twig' with ({
+                                            {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
                                             film: filmPerson.film,
                                             film_format: '366x488',
                                             film_attrs: {

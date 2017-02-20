@@ -2429,8 +2429,53 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_short_film_competition_tab_selection:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabSelectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – La sélection}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_short_film_competition_tab_jury:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabJuryAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – Jury}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_short_film_competition_tab_palmares:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabPalmaresAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – Palmarès}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_film_register:
+        class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegister, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Inscrire un film}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_register_procedure:
+        class: Base\AdminBundle\Admin\CCM\CcmRegisterProcedureAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Catégories des procédures d’inscription}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_film_register_procedure_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterProcedureDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Film Register Procedure, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
     base.admin.ccm_menu:
         class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]

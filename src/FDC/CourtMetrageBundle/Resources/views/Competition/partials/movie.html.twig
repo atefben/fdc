@@ -1,0 +1,90 @@
+{% if award_association.award is defined and not palmares_award_is_mutual_done(award_association.award, award_association.film) %}
+    {% if award_association.award.filmMutual %}
+        {{ palmares_award_mutual_set(award_association.award, award_association.film) }}
+    {% endif %}
+
+    {% if movie is not defined %}
+        {% set movie = award_association.film %}
+    {% endif %}
+
+    {% set author = '' %}
+{% endif %}
+
+{% if award_association.award is defined and movie is defined and not award_done(award_association) %}
+    <article style="background-image:url('{% spaceless %}
+        {% include 'FDCCourtMetrageBundle:Shared:filmCover.html.twig' with ({
+        film: movie,
+        film_format: '976x535',
+        display_film_path: true,
+        film_image_default: 'bundles/fdccourtmetrage/img/palmares/film_w256.jpg'
+        }) %}
+    {% endspaceless %}')">
+        <div class="bck-hover">
+            <div class="contain_item">
+                <a href="{{ path('fdc_ccm_movie_show', {slug: movie.slug}) }}">
+                    {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
+                    film: movie,
+                    film_format: 'mobile',
+                    film_attrs: {
+                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                    'data-object-fit': 'cover'
+                    },
+                    film_image_default: 'bundles/fdccourtmetrage/img/palmares/film_w256.jpg',
+                    }) %}
+                </a>
+
+                <div class="infos-item-list">
+                    {% if award_association is defined and award_association %}
+                        {% if hidePalme is not defined or hidePalme == false %}
+                            <div class="logo-palme-dor-container">
+                                <i class="icon icon_palme palme-dor-img"></i>
+                                <strong class="palme-dor-text verticalline">
+                                    {{ award_association.award.prize|trans_fallback('title') }}
+                                    {% if award_association.award.exAequo %}
+                                        ({{ 'award.ex_aequo'|trans }})
+                                    {% endif %}
+                                    {% if award_association.award.unanimity %}
+                                        ({{ 'award.unanimity'|trans }})
+                                    {% endif %}
+                                </strong>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if award_association != '' and award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
+                        {% if award_association.award.filmMutual %}
+                            <strong class="name-f line">
+                                {% for assocationMutual in award_association.award.associations %}
+                                    {% set person = assocationMutual.person %}
+                                    <a href="{{ path('fdc_court_metrage_artist', {'slug': person.slug}) }}">
+                                        {{ person.fullName }}{{ loop.last == true ? '' : ',' }}
+                                    </a>
+                                {% endfor %}
+                            </strong>
+                        {% else %}
+                            {% set person = award_association.person %}
+                            <strong class="name-f line">
+                                <a href="{{ path('fdc_court_metrage_artist', {'slug': person.slug}) }}">
+                                    {{ person.fullName }}
+                                </a>
+                            </strong>
+                        {% endif %}
+                    {% endif %}
+
+                    <a href="{{ path('fdc_ccm_movie_show', {slug: movie.slug}) }}">
+                        <h3 class="title-item">{{ movie.titleVO }}</h3>
+                        {% if movie|trans_fallback('title') != movie.titleVO and movie|trans_fallback('title') %}
+                            <h4 class="sub-title-item">({{ movie|trans_fallback('title') }})</h4>
+                        {% endif %}
+                    </a>
+
+                    {% for director in movie.getDirectors() %}
+                        <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                            <span class="nom-item">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </article>
+{% endif %}
