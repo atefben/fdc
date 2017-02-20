@@ -663,8 +663,6 @@ form:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection
-    ccm:
-        label:
             menu:
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
