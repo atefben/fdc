@@ -1,6 +1,6 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
+namespace FDC\CourtMetrageBundle\Form\Type;
 
 
 use Symfony\Component\Form\FormBuilderInterface;

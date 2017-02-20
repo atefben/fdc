@@ -1,6 +1,6 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
+namespace FDC\CourtMetrageBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -74,6 +74,7 @@ class CcmNewsWidgetVideoYoutubeType extends CcmNewsWidgetType
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
+                'locales' => ['fr','en'],
                 'fields' => array(
                  'applyChanges' => array(
                      'field_type' => 'hidden',

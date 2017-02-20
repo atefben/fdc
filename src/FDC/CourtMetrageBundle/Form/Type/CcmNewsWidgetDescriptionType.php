@@ -1,31 +1,31 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
-
+namespace FDC\CourtMetrageBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * CcmNewsWidgetSignatureType class.
- *
+ * CcmNewsWidgetDescriptionType class.
+ * 
  * \@extends CcmNewsWidgetType
  * \@company Ohwee
  */
-class CcmNewsWidgetSignatureType extends CcmNewsWidgetType
+class CcmNewsWidgetDescriptionType extends CcmNewsWidgetType
 {
     /**
      * dataClass
-     *
-     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetSignature')
-     *
+     * 
+     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetDescription')
+     * 
      * @var string
      * @access protected
      */
-    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetSignature';
-
+    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetDescription';
+    
     /**
      * buildForm function.
-     *
+     * 
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -35,21 +35,27 @@ class CcmNewsWidgetSignatureType extends CcmNewsWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('translations', 'a2lix_translations', array(
-            'label' => false,
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
+            'locales' => ['fr','en'],
             'fields' => array(
-                 'applyChanges' => array(
-                     'field_type' => 'hidden',
-                     'attr' => array (
-                         'class' => 'hidden'
-                     )
-                 ),
+                'applyChanges' => array(
+                    'field_type' => 'hidden',
+                    'attr' => array (
+                        'class' => 'hidden'
+                    )
+                ),
                 'content' => array(
                     'label' => false,
                     'attr' => array(
-                        'class' => '' // todo: add class?
-                    )
+                        'class' => 'ckeditor'
+                    ),
+                    'constraints' => array(
+                        new NotBlank()
+                    ),
+					'required' => true,
+                    'field_type' => 'ckeditor',
+                    'config_name' => 'widget'
                 ),
                 'createdAt' => array(
                     'display' => false
@@ -60,14 +66,14 @@ class CcmNewsWidgetSignatureType extends CcmNewsWidgetType
             )
         ));
     }
-
+    
     /**
      * getName function.
-     *
+     * 
      * @access public
      */
     public function getName()
     {
-        return 'ccm_news_widget_signature_type';
+        return 'ccm_news_widget_description_type';
     }
 }

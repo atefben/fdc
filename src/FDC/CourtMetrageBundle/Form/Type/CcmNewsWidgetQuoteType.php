@@ -1,31 +1,31 @@
 <?php
 
-namespace FDC\CourtMetrageBundle\Form;
+namespace FDC\CourtMetrageBundle\Form\Type;
+
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * CcmNewsWidgetTextType class.
- * 
+ * CcmNewsWidgetQuoteType class.
+ *
  * \@extends CcmNewsWidgetType
  * \@company Ohwee
  */
-class CcmNewsWidgetTextType extends CcmNewsWidgetType
+class CcmNewsWidgetQuoteType extends CcmNewsWidgetType
 {
     /**
      * dataClass
-     * 
-     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetText')
-     * 
+     *
+     * (default value: 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetQuote')
+     *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetText';
-    
+    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmNewsWidgetQuote';
+
     /**
      * buildForm function.
-     * 
+     *
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -35,8 +35,10 @@ class CcmNewsWidgetTextType extends CcmNewsWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('translations', 'a2lix_translations', array(
+            'label' => false,
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
+            'locales' => ['fr','en'],
             'fields' => array(
                  'applyChanges' => array(
                      'field_type' => 'hidden',
@@ -47,14 +49,8 @@ class CcmNewsWidgetTextType extends CcmNewsWidgetType
                 'content' => array(
                     'label' => false,
                     'attr' => array(
-                        'class' => 'ckeditor'
-                    ),
-                    'constraints' => array(
-                        new NotBlank()
-                    ),
-					'required' => true,
-                    'field_type' => 'ckeditor',
-                    'config_name' => 'widget'
+                        'class' => 'quote'
+                    )
                 ),
                 'createdAt' => array(
                     'display' => false
@@ -65,14 +61,14 @@ class CcmNewsWidgetTextType extends CcmNewsWidgetType
             )
         ));
     }
-    
+
     /**
      * getName function.
-     * 
+     *
      * @access public
      */
     public function getName()
     {
-        return 'ccm_news_widget_text_type';
+        return 'ccm_news_widget_quote_type';
     }
 }

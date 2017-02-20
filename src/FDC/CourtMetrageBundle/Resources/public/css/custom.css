@@ -1,0 +1,9 @@
+.hidden {
+    display: none;
+}
+.half-div.v2 .half-photo img {
+    position: relative;
+}
+.half-div.v2 .half-photo .photo-container {
+    overflow: hidden;
+}

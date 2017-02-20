@@ -1,0 +1,239 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div id="main" class="single-article loading">
+        <span id="addtext">{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span>
+        <div id="canvasloader" class="canvasloader"></div>
+        <div class="content-article">
+            <div class="container small-container">
+                {% if prev[0] is defined and not prev[0] is empty %}<a
+                    href="{{ path('ccm_news_detail', {'slug': prev[0]|trans_fallback('slug')}) }}"
+                    class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
+                {% if next[0] is defined and not next[0] is empty %}<a
+                    href="{{ path('ccm_news_detail', {'slug': next[0]|trans_fallback('slug')}) }}"
+                    class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
+                <div class="info">
+                    <a href="#" class="category">
+                        {% set themeTranslation = article.theme.findTranslationByLocale(app.request.locale) %}
+                        {% if app.request.locale != 'fr' and themeTranslation is null %}
+                            {% set themeTranslation = article.theme.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {{ themeTranslation.name }}
+                    </a>
+                    {% if app.request.locale != 'en' %}
+                        {% set hourFormat = 'H:i' %}
+                    {% else %}
+                        {% set hourFormat = 'h:i A' %}
+                    {% endif %}
+                    <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date(hourFormat) }}</span>
+                    {% if article.updatedAt is not null %}
+                        <span class="update">{#Mise à jour#}{{ 'ccm.news.update'|trans }} :</span><span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date(hourFormat) }}</span>
+                    {% endif %}
+                </div>
+                <h2 class="title-article">{{ article|trans_fallback('title') }}</h2>
+                <div class="buttons">
+                    <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{#Partager#}{{ 'ccm.news.share'|trans }}</a>
+                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{#Imprimer#}{{ 'ccm.news.print'|trans }}</a>
+                </div>
+                {% if article.getType() == 'article' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/article.html.twig' with {'mediaImage': article.header} %}
+                {% elseif article.getType() == 'image' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/image.html.twig' with {'mediaImage': article.header, 'gallery': article.gallery} %}
+                {% elseif article.getType() == 'audio' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/audio.html.twig' with {'mediaAudio': article.audio} %}
+                {% elseif article.getType() == 'video' %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/video.html.twig' with {'mediaVideo': article.video, 'mediaImage': article.image} %}
+                {% endif %}
+
+                {% set articleDescriptionWidget = null %}
+                {% for widget in article.widgets %}
+                    {% if widget.getType() == 'description' and articleDescriptionWidget is null %}
+                        {% set articleDescriptionWidget = widget %}
+                    {% endif %}
+                    {% include '@FDCCourtMetrage/news/modules/' ~ widget.getType() ~ '.html.twig' with {'widget': widget} %}
+                {% endfor %}
+            </div>
+            <div class="share">
+                <p>{#Partagez l'article#}{{ 'ccm.news.share_article'|trans }}</p>
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                <div class="buttons square">
+                    {% spaceless %}
+                        <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl|url_encode(true) }}&picture={% if article.seoFile is not null %}{% path article.seoFile|trans_fallback('file'), '384x485' -%}{% elseif article.header is not null %}{% path article.header|trans_fallback('file'), 'reference' -%}{% elseif article.image is not null %}{% path article.image|trans_fallback('file'), 'reference' -%}{% endif %}&title={{ article|trans_fallback('title')|url_encode(true) }}&description={% if articleDescriptionWidget is not null %}{{ articleDescriptionWidget|trans_fallback('content')|striptags|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                            rel="nofollow" class="button facebook">
+                            <i class="icon icon_facebook"></i>
+                        </a>
+                    {% endspaceless %}
+                    <a href="https://twitter.com/intent/tweet?text={{ article|trans_fallback('title')|url_encode(true) }} {{ currentUrl }}"
+                       rel="nofollow"
+                       class="button twitter">
+                        <i class="icon icon_twitter"></i>
+                    </a>
+                    <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                    <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
+                </div>
+            </div>
+            {% if associatedFilm is not null or programmations is not empty %}
+                <div class="film">
+                    {% if associatedFilm is not null %}
+                        <div class="info-film {% if programmations is empty %} single{% endif %}">
+                            <div class="wrapper">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <div class="poster">
+                                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                            film: associatedFilm,
+                                            film_format: '293x397',
+                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                            }) %}
+                                        </div>
+                                        <div class="text-container" id="filmPoster">
+                                            {% if associatedFilm.selectionSection is not null %}
+                                                <span class="category">
+                                        {{ associatedFilm.selectionSection|trans_fallback('name') }}
+                                    </span>
+                                            {% endif %}
+                                            <h3>
+                                                <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
+                                                    {{ associatedFilm.titleVO }}
+                                                </a>
+                                            </h3>
+                                            <p class="director">
+                                                {% set comma = false %}
+                                                {% spaceless %}{% for index,director in associatedFilm.getDirectors() %}
+                                                    {% if index < 4 %}<a href="{{ path('fdc_court_metrage_artist', {slug: director.person.slug }) }}">{% if comma %}, {% endif %}{{ director.person.fullName }}</a>{% endif %}
+                                                    {% if index == 4 %}...{% endif %}
+                                                    {% set comma = true %}
+                                                {% endfor %}{% endspaceless %}
+                                            </p>
+                                            <p>
+                                                {% spaceless %}{% for index,country in associatedFilm.countries %}{% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}{% if index == 4 %}...{% endif %}{% endfor %}{% endspaceless %}
+                                                {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
+                                                    - {{ associatedFilm.productionYear }}
+                                                {% endif %}
+                                            </p>
+                                            <p>{{ associatedFilmDuration }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if programmations is not empty %}
+                        <div class="programmation-film">
+                            <div class="wrapper">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <span class="category">{{ 'ccm.news.programmation'|trans }}</span>
+                                        <ul>
+                                            {% set progDisplayed = 0 %}
+                                            {% for programmation in programmations if progDisplayed < 4 %}
+                                                {% if programmation.type not in ['Séance de presse', 'Conférence de presse', 'Divers'] %}
+                                                    <li>
+                                                        <span class="type">{{ 'article.film.text.projection'|trans }}</span>
+                                                        <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
+                                                        <span>{{ agenda_leftbar_translate_hour(programmation.startsAt|date('H:i'), true, true) }}</span>
+                                                        <span class="location">{{ programmation.room.name }}</span>
+                                                    </li>
+                                                    {% set progDisplayed = progDisplayed + 1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                        {# todo: ccm event link ? #}
+                                        <a href="{{ path('fdc_event_agenda_scheduling') }}{{ nextProjectionDate ? '?date=' ~ nextProjectionDate : '' }}"
+                                           class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="container">
+                {% if associatedNews|length > 0 %}
+                    <div class="focus">
+                        <h2 class="title">{#Focus#}{{ 'ccm.news.focus'|trans }}</h2>
+                        <div class="articles">
+                            {% for associatedArticle in associatedNews %}
+                                {% set articleTranslation = associatedArticle.findTranslationByLocale(app.request.locale) %}
+                                {% if articleTranslation is not null  %}
+                                    {% set articleType = associatedArticle.getType != 'image' ? associatedArticle.getType : 'photo' %}
+                                    <article class="{{ articleType }}" data-format="{{ articleType }}" data-theme="competition">
+                                        <div class="image">
+                                            <div class="image-wrapper">
+                                                {% if associatedArticle.header is not null %}
+                                                    {% set translations = associatedArticle.header.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path associatedArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% elseif associatedArticle.image is not null %}
+                                                    {% set translations = associatedArticle.image.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
+                                            <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
+                                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
+                                        </div>
+                                        <div class="info">
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                                <span class="date">{{ associatedArticle.publishedAt|date('d.m.y') }}</span> .
+                                                <span class="hour">{{ associatedArticle.publishedAt|date('H:i') }}</span>
+                                            </a>
+                                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                                        </div>
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if sameDayArticles is not empty and article.hideSameDay == false %}
+                    <div class="same-day">
+                        <h2 class="title">{{ 'ccm.news.same_day'|trans }}</h2>
+                        <div class="articles center">
+                            {% for sameDayArticle in sameDayArticles %}
+                                {% if sameDayArticle is not null %}
+                                    {% set articleTranslation = sameDayArticle.findTranslationByLocale(app.request.locale) %}
+                                    {% set articleType = sameDayArticle.getType != 'image' ? sameDayArticle.getType : 'photo' %}
+                                    <article class="{{ articleType }}" data-format="{{ articleType }}" data-theme="competition">
+                                        <div class="image">
+                                            <div class="image-wrapper">
+                                                {% if sameDayArticle.header is not null %}
+                                                    {% set translations = sameDayArticle.header.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path sameDayArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% elseif sameDayArticle.image is not null %}
+                                                    {% set translations = sameDayArticle.image.findTranslationByLocale(app.request.locale) %}
+                                                    <img src="{% path sameDayArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
+                                            <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
+                                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
+                                        </div>
+                                        <div class="info">
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ sameDayArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                                <span class="date">{{ sameDayArticle.publishedAt|date('d.m.y') }}</span> .
+                                                <span class="hour">{{ sameDayArticle.publishedAt|date('H:i') }}</span>
+                                            </a>
+                                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                                        </div>
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <span class="anim"></span>
+    </div>
+    <!-- POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+    {'section': article.theme|trans_fallback('name'),
+        'detail': article.publishedAt|date('d.m.y'),
+        'title': article|trans_fallback('title'),
+        'description': articleDescriptionWidget is not null ? articleDescriptionWidget|trans_fallback('content') : '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+    <!-- END POPIN MAIL SHARE -->
+{% endblock %}

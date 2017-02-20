@@ -59,6 +59,7 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
             ->add('translations', 'a2lix_translations', array(
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'fields'             => array(
                     'applyChanges'   => array(
                         'field_type' => 'hidden',
@@ -142,7 +143,7 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false,
-                'required'   => false,
+                'required'   => true,
             ))
             ->add('header', 'sonata_type_model_list', array(
                 'label'              => 'form.label_header_image',

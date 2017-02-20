@@ -3,22 +3,18 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use FDC\CourtMetrageBundle\Entity\CcmNews;
-use Base\CoreBundle\Entity\NewsVideoTranslation;
-
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use FDC\CourtMetrageBundle\Entity\CcmNewsVideoTranslation;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsVideoAdmin class.
+ * CcmNewsVideoAdmin class.
  *
- * \@extends Admin
+ * \@extends CcmNewsAdmin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class CcmNewsVideoAdmin extends Admin
+class CcmNewsVideoAdmin extends CcmNewsAdmin
 {
     protected $baseRouteName = 'ccm_news_video';
     protected $baseRoutePattern = 'ccmnewsvideo';
@@ -63,6 +59,7 @@ class CcmNewsVideoAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -85,7 +82,7 @@ class CcmNewsVideoAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => NewsVideoTranslation::getStatuses(),
+                        'choices' => CcmNewsVideoTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
@@ -143,13 +140,15 @@ class CcmNewsVideoAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
+                'required'   => true,
                 'btn_delete' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false
+                'required' => false,
+                'btn_delete' => false
             ))
             ->add('video', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_video',

@@ -2,7 +2,7 @@
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
-    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
+    {% include '@BaseAdmin/Block/mdf_languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
         {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations : null %}
