@@ -1,13 +1,13 @@
 $(document).ready(function() {
-    //initNewsPage();
-    //initNews();
-    //initPagination();
-    //setNews();
-    //initGlobalEvents();
-    //loadRetombeesPress();
-    //loadConferenceNewsArticles();
+    initNewsPage();
+    initNews();
+    initPagination();
+    setNews();
+    initGlobalEvents();
+    loadRetombeesPress();
+    loadConferenceNewsArticles();
 
-    /*$("#owl-demo").owlCarousel({
+    $("#owl-demo").owlCarousel({
         navigation : true, // Show next and prev buttons
         slideSpeed : 300,
         paginationSpeed : 400,
@@ -20,7 +20,7 @@ $(document).ready(function() {
         // itemsTablet: false,
         // itemsMobile : false
 
-    });*/
+    });
 });
 
 var el = [];
