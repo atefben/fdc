@@ -44,7 +44,7 @@ class CcmWaitingPage
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    protected $enabled = false;
+    protected $enabled;
 
     /**
      * @var ArrayCollection
