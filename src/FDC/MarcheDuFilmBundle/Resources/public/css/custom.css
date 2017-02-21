@@ -173,7 +173,3 @@ header.sticky #sticky-user .user-nav a {
 .show {
     position: inherit !important;
 }
-
-header .user-nav li a.account {
-	display:none !important;
-}
