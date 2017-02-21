@@ -566,6 +566,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->tags = new ArrayCollection();
         $this->news = new ArrayCollection();
         $this->selfkitImages = new ArrayCollection();
+        $this->selfkitPdfFiles = new ArrayCollection();
     }
 
     public function __toString()
