@@ -395,7 +395,8 @@
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
 
-                    <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse=""
+                    <a id="home-news-statements-more" href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                       data-reverse=""
                        class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                 {% endif %}
             </div>
