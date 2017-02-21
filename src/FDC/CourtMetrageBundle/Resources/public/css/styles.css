@@ -20761,11 +20761,7 @@ body:not(.tablette) .webtv #live .img {
 .faq .faq-active {
   display: inline-block;
 }
-.faq section[data-name="informations-generales"], .faq section[data-name="general-informations"], .faq section[data-name="informaciones-generales"], .faq section[data-name="chang-gui-xin-xi"] {
-  top: 1px;
-  opacity: 1;
-  display: inline-block;
-}
+
 .faq h2 {
   padding: 60px;
   font-size: 1.75rem;
@@ -20778,9 +20774,9 @@ body:not(.tablette) .webtv #live .img {
   color: #666666;
   padding-bottom: 150px;
   position: relative;
-  opacity: 0;
+  opacity: 1;
   display: inline-block;
-  top: 200px;
+  top: 1px;
   margin-left: 240px;
 }
 .faq section article {
@@ -20841,6 +20837,7 @@ body:not(.tablette) .webtv #live .img {
   right: 12px;
   font-size: 0.7rem;
   color: #c8a461;
+  cursor: pointer;
 }
 .faq section article .faq-description {
   width: 660px;

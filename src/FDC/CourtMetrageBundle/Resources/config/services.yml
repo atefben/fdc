@@ -29,3 +29,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    ccm.manager.faq:
+        class: FDC\CourtMetrageBundle\Manager\FaqManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
