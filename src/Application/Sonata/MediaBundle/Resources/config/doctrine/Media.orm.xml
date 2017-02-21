@@ -12,6 +12,9 @@
         <field name="oldMediaPhoto" type="string" column="old_media_photo" nullable="true">
         </field>
 
+        <field name="oldMediaFilm" type="string" column="old_media_film" nullable="true">
+        </field>
+
         <field name="oldMediaPhotoType" type="string" column="old_media_photo_type" nullable="true">
         </field>
 

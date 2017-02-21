@@ -324,7 +324,7 @@ class PersonMediaExtension extends Twig_Extension
                     ];
                     $movieAdded = false;
                     foreach ($film->getSelfkitImages() as $movieSelfkitImage) {
-                        if ($selfkitImage->getId() == $movieSelfkitImage->getId()) {
+                        if ($selfkitImage->getOldMediaFilm() == $film->getId()) {
                             $mediasMovies[$selfkitImage->getOldMediaPhotoType()][$key] = $toAdd;
                             $movieAdded = true;
                         }

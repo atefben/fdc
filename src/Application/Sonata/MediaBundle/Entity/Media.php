@@ -45,6 +45,7 @@ class Media extends SonataBaseMedia
     private $oldMediaPhoto;
     private $oldMediaPhotoType;
     private $oldMediaPhotoJury;
+    private $oldMediaFilm;
 
     public function __construct()
     {
@@ -311,5 +312,28 @@ class Media extends SonataBaseMedia
     public function getUploadedFromBO()
     {
         return $this->uploadedFromBO;
+    }
+
+    /**
+     * Set oldMediaFilm
+     *
+     * @param string $oldMediaFilm
+     * @return Media
+     */
+    public function setOldMediaFilm($oldMediaFilm)
+    {
+        $this->oldMediaFilm = $oldMediaFilm;
+
+        return $this;
+    }
+
+    /**
+     * Get oldMediaFilm
+     *
+     * @return string 
+     */
+    public function getOldMediaFilm()
+    {
+        return $this->oldMediaFilm;
     }
 }
