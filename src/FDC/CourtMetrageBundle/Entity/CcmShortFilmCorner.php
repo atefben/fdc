@@ -116,31 +116,6 @@ class CcmShortFilmCorner implements TranslateMainInterface
     }
 
     /**
-     * @param CcmShortFilmCornerWidget $shortFilmCornerWidget
-     */
-    public function addContentTemplateWidget(CcmShortFilmCornerWidget $shortFilmCornerWidget)
-    {
-        $shortFilmCornerWidget->setShortFilmCorner($this);
-        $this->widgets->add($shortFilmCornerWidget);
-    }
-
-    /**
-     * @param CcmShortFilmCornerWidget $shortFilmCornerWidget
-     */
-    public function removeContentTemplateWidget(CcmShortFilmCornerWidget $shortFilmCornerWidget)
-    {
-        $this->widgets->removeElement($shortFilmCornerWidget);
-    }
-
-    /**
-     * @return ArrayCollection|CcmShortFilmCornerWidget
-     */
-    public function getContentTemplateWidgets()
-    {
-        return $this->widgets;
-    }
-
-    /**
      * @return string
      */
     public function getType()
@@ -204,7 +179,7 @@ class CcmShortFilmCorner implements TranslateMainInterface
      * Set image
      *
      * @param MediaImageSimple $image
-     * @return CcmShortFilmCornerWidgetVideoYoutube
+     * @return CcmShortFilmCorner
      */
     public function setImage(MediaImageSimple $image = null)
     {
@@ -221,5 +196,39 @@ class CcmShortFilmCorner implements TranslateMainInterface
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add widgets
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidget $widget
+     * @return CcmShortFilmCorner
+     */
+    public function addWidget(CcmShortFilmCornerWidget $widget)
+    {
+        $widget->setShortFilmCorner($this);
+        $this->widgets[] = $widget;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidget $widget
+     */
+    public function removeWidget(CcmShortFilmCornerWidget $widget)
+    {
+        $this->widgets->removeElement($widget);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
     }
 }

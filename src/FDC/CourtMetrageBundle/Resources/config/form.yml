@@ -107,3 +107,70 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_news_widget_video_youtube_dummy']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+
+    # Short film corner widget forms
+    base.admin.form.ccm_sfc_widget_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_type'}
+
+    base.admin.form.ccm_sfc_widget_text_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetTextType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_text_type'}
+
+    base.admin.form.ccm_sfc_widget_quote_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetQuoteType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_quote_type'}
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.ccm_sfc_widget_audio_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetAudioType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_audio_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_audio_dummy']]
+            - ['setMediaAudioAdmin', ['@base.admin.media_audio']]
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.ccm_sfc_widget_image_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetImageType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_image_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_image_dummy']]
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.ccm_sfc_widget_image_dual_align_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetImageDualAlignType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_image_dual_align_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_image_dual_align_dummy']]
+            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.ccm_sfc_widget_video_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_video_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_video_dummy']]
+            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.ccm_sfc_widget_video_youtube_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetVideoYoutubeType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_video_youtube_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_video_youtube_dummy']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+    # end Short film corner widget forms

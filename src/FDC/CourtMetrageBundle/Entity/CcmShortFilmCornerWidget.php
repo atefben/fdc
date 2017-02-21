@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use Base\CoreBundle\Util\Time;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
