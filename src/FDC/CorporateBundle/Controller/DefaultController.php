@@ -162,10 +162,10 @@ class DefaultController extends Controller
         foreach ($items as $item) {
             if ($item instanceof Info) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-info' . $item->getId();
-                $sort[] = $item;
+                $sort[$key] = $item;
             } elseif ($item instanceof Statement) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-statement' . $item->getId();
-                $sort[] = $item;
+                $sort[$key] = $item;
             }
         }
         krsort($sort);
