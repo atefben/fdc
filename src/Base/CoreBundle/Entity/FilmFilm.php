@@ -535,6 +535,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $selfkitImages;
 
     /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinTable(name="film_film_selfkit_pdf",
+     *      joinColumns={@ORM\JoinColumn(name="film", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="pdf", referencedColumnName="id")}
+     *      )
+     */
+    protected $selfkitPdfFiles;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -2691,5 +2701,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getSelfkitImages()
     {
         return $this->selfkitImages;
+    }
+
+    /**
+     * Add selfkitPdfFiles
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $selfkitPdfFiles
+     * @return FilmFilm
+     */
+    public function addSelfkitPdfFile(\Application\Sonata\MediaBundle\Entity\Media $selfkitPdfFiles)
+    {
+        $this->selfkitPdfFiles[] = $selfkitPdfFiles;
+
+        return $this;
+    }
+
+    /**
+     * Remove selfkitPdfFiles
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $selfkitPdfFiles
+     */
+    public function removeSelfkitPdfFile(\Application\Sonata\MediaBundle\Entity\Media $selfkitPdfFiles)
+    {
+        $this->selfkitPdfFiles->removeElement($selfkitPdfFiles);
+    }
+
+    /**
+     * Get selfkitPdfFiles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSelfkitPdfFiles()
+    {
+        return $this->selfkitPdfFiles;
     }
 }
