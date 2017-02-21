@@ -313,7 +313,7 @@ class PersonMediaExtension extends Twig_Extension
             }
 
             foreach ($person->getSelfkitImages() as $selfkitImage) {
-                if ($selfkitImage instanceof Media && $selfkitImage->getOldMediaPhotoType() == FilmFilmMedia::TYPE_DIRECTOR) {
+                if ($selfkitImage instanceof Media) {
                     $key = $selfkitImage->getCreatedAt()->getTimestamp() . '-0-' . $selfkitImage->getId();
                     //$medias[$selfkitImage->getOldMediaPhotoType()][$key] = [
                     $toAdd = [
