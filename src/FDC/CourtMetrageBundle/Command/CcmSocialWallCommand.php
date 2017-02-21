@@ -41,7 +41,7 @@ class CcmSocialWallCommand extends ContainerAwareCommand
 
         $socialWallTag = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWallHashTag')->findAll();
 
-        $tags[] = $socialWallTag[0]->getHashTag();
+        $tags = explode(', ',$socialWallTag[0]->getHashTag());
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////   TWITTER   ///////////////////////////////
