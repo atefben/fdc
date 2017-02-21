@@ -8,19 +8,19 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * CcmSubNavTranslation
+ * CcmDomainTranslation
  *
- * @ORM\Table(name="ccm_sub_nav_translation")
- * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmSubNavTranslationRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="ccm_domain_translation")
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmDomainTranslationRepository")
  */
-class CcmSubNavTranslation implements TranslateChildInterface
+class CcmDomainTranslation implements TranslateChildInterface
 {
+    use Time;
     use Translation;
     use TranslationChanges;
-    use Time;
     use TranslateChild;
 
     /**
@@ -28,15 +28,15 @@ class CcmSubNavTranslation implements TranslateChildInterface
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
-     * @var
+     * @var string
      *
-     * @ORM\Column(name="route", type="string", length=255, nullable=true)
+     * @Gedmo\Slug(fields={"name"}, updatable=false)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $route;
-    
+    protected $slug;
 
     /**
      * @return string
@@ -55,19 +55,18 @@ class CcmSubNavTranslation implements TranslateChildInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRoute()
+    public function getSlug()
     {
-        return $this->route;
+        return $this->slug;
     }
 
     /**
-     * @param mixed $route
+     * @param string $slug
      */
-    public function setRoute($route)
+    public function setSlug($slug)
     {
-        $this->route = $route;
+        $this->slug = $slug;
     }
 }
-

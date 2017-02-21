@@ -1,9 +1,48 @@
-$(window).on('load', function () {
-
+$(document).ready(function () {
+    /** Bind here all the functions **/
+    initProPage();
     if ($('.all-articles').length) {
         initNewsListWatcher();
     }
 });
+
+function initProPage() {
+    $('.modal-toggle').on('click', function(e) {
+        e.preventDefault();
+
+        if ($('.modal').hasClass('is-visible')) {
+            $('.modal').toggleClass('is-visible');
+        } else {
+            getProInfo(this);
+        }
+    });
+}
+
+function getProInfo(pro) {
+
+    $.ajax({
+        url: Routing.generate('fdc_ccm_pros_du_court_modal', {id: $(pro).data('pro-id')}),
+        type: 'POST',
+        cache: false,
+        data: {
+            id: $(pro).data('pro-id')
+        },
+        success: function (data, textStatus, xhr) {
+            if (typeof data == 'object') {
+                console.log('Error ' + xhr.status + ': ' + data.message);
+            } else {
+                $('.modal-content').empty();
+                $('.modal-content').append(data);
+            }
+        },
+        error: function (response) {
+        }
+    }).done(function () {
+        setTimeout(function () {
+            $('.modal').toggleClass('is-visible');
+        }, 200);
+    });
+}
 
 /**
  * handles news articles infinite scroll
@@ -75,3 +114,4 @@ function initNewsListWatcher() {
 
     NewsListWatcher.init();
 }
+    

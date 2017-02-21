@@ -3,19 +3,22 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Doctrine\Common\Collections\ArrayCollection;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * CcmSubNav
- *
- * @ORM\Table(name="ccm_sub_nav")
+ * CcmDomain
+ * @ORM\Table(name="ccm_domain")
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks()
  */
-class CcmSubNav
+class CcmDomain
 {
+    use Time;
     use Translatable;
+    use SeoMain;
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -32,27 +35,20 @@ class CcmSubNav
     protected $position;
 
     /**
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmDomainCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="domain")
+     */
+    protected $domainsCollection;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
 
-    /**
-     * @var
-     *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
-     */
-    private $isActive = true;
-
-    /**
-     * @var
-     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmSubNavCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="subNav")
-     */
-    protected $subNavsCollection;
-
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->subNavsCollection = new ArrayCollection();
+        $this->domainsCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -89,9 +85,10 @@ class CcmSubNav
 
         return null;
     }
-
+    
     /**
-     * @return int
+     * Get id
+     * @return integer
      */
     public function getId()
     {
@@ -99,62 +96,51 @@ class CcmSubNav
     }
 
     /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
-     * @param CcmSubNavCollection $subNavCollection
+     * @param CcmDomainCollection $domainCollection
      * @return $this
      */
-    public function addSubNavsCollection(\FDC\CourtMetrageBundle\Entity\CcmSubNavCollection $subNavCollection)
+    public function addDomainsCollection(\FDC\CourtMetrageBundle\Entity\CcmDomainCollection $domainCollection)
     {
-        $subNavCollection->setSubNav($this);
-        $this->subNavsCollection[] = $subNavCollection;
+        $domainCollection->setDomain($this);
+        $this->domainsCollection[] = $domainCollection;
 
         return $this;
     }
 
     /**
-     * @param CcmSubNavCollection $subNavCollection
+     * @param CcmDomainCollection $domainCollection
      */
-    public function removeSubNavsCollection(\FDC\CourtMetrageBundle\Entity\CcmSubNavCollection $subNavCollection)
+    public function removeDomainsCollection(\FDC\CourtMetrageBundle\Entity\CcmDomainCollection $domainCollection)
     {
-        $this->subNavsCollection->removeElement($subNavCollection);
+        $this->domainsCollection->removeElement($domainCollection);
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getSubNavsCollection()
+    public function getDomainsCollection()
     {
-        return $this->subNavsCollection;
+        return $this->domainsCollection;
     }
 
     /**
-     * @return mixed
+     * @param $position
+     * @return $this
      */
-    public function getIsActive()
+    public function setPosition($position)
     {
-        return $this->isActive;
+        $this->position = $position;
+
+        return $this;
     }
 
     /**
-     * @param mixed $isActive
+     * Get position
+     *
+     * @return integer
      */
-    public function setIsActive($isActive)
+    public function getPosition()
     {
-        $this->isActive = $isActive;
+        return $this->position;
     }
 }

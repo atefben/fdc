@@ -857,3 +857,16 @@ services:
             - ['setSonataAdmin', ['@base.admin.ccm_homepage_push_top_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.media_image']]
 
+    #CCM - pro's single description block
+    base.admin.form.ccm_single_description_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\SingleDescriptionType
+        tags:
+            - { name: form.type, alias: 'single_description_type'}
+
+    #CCM - pro's double description block
+    base.admin.form.ccm_double_description_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\DoubleDescriptionType
+        tags:
+            - { name: form.type, alias: 'double_description_type'}

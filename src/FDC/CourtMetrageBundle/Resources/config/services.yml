@@ -23,3 +23,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    ccm.manager.pros:
+        class: FDC\CourtMetrageBundle\Manager\ProsManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'

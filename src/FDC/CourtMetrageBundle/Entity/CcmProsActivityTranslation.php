@@ -8,35 +8,29 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * CcmSubNavTranslation
+ * CcmProsActivityTranslation
  *
- * @ORM\Table(name="ccm_sub_nav_translation")
- * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmSubNavTranslationRepository")
+ * @ORM\Table(name="ccm_pros_activity_translation")
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class CcmSubNavTranslation implements TranslateChildInterface
+class CcmProsActivityTranslation implements TranslateChildInterface
 {
+    use Time;
     use Translation;
     use TranslationChanges;
-    use Time;
     use TranslateChild;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * 
      */
-    private $name;
-
-    /**
-     * @var
-     *
-     * @ORM\Column(name="route", type="string", length=255, nullable=true)
-     */
-    private $route;
-    
+    protected $name;
 
     /**
      * @return string
@@ -53,21 +47,4 @@ class CcmSubNavTranslation implements TranslateChildInterface
     {
         $this->name = $name;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getRoute()
-    {
-        return $this->route;
-    }
-
-    /**
-     * @param mixed $route
-     */
-    public function setRoute($route)
-    {
-        $this->route = $route;
-    }
 }
-

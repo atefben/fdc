@@ -345,10 +345,11 @@ $(".conferencesMenu li").on('click', function(event) {
 });
 
 // Quick & dirty toggle to demonstrate modal toggle behavior
-$('.modal-toggle').on('click', function(e) {
-  e.preventDefault();
-  $('.modal').toggleClass('is-visible');
-});
+//  Moved to ../custom.js.
+// $('.modal-toggle').on('click', function(e) {
+//   e.preventDefault();
+//   $('.modal').toggleClass('is-visible');
+// });
 
 
 // CATALOGUE

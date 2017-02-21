@@ -148,7 +148,10 @@ class LockController extends Controller
         'ccmnewsarticle' => 'CcmNewsArticle',
         'ccmnewsvideo' => 'CcmNewsVideo',
         'ccmnewsaudio' => 'CcmNewsAudio',
-        'ccmnewsimage' => 'CcmNewsImage'
+        'ccmnewsimage' => 'CcmNewsImage',
+        'ccmprosactivity' => 'CcmProsActivity',
+        'ccmproscontact' => 'CcmProsContact',
+        'ccmdomain' => 'CcmDomain',
     );
 
     /**

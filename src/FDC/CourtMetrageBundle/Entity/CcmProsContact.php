@@ -3,19 +3,23 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Doctrine\Common\Collections\ArrayCollection;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * CcmSubNav
- *
- * @ORM\Table(name="ccm_sub_nav")
+ * CcmProsContact
+ * @ORM\Table(name="ccm_pros_contact")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class CcmSubNav
+class CcmProsContact
 {
+    use Time;
     use Translatable;
+    use SeoMain;
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -32,27 +36,20 @@ class CcmSubNav
     protected $position;
 
     /**
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsContactCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="contact")
+     */
+    protected $contactsCollection;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
 
-    /**
-     * @var
-     *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
-     */
-    private $isActive = true;
-
-    /**
-     * @var
-     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmSubNavCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="subNav")
-     */
-    protected $subNavsCollection;
-
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->subNavsCollection = new ArrayCollection();
+        $this->contactsCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -89,9 +86,10 @@ class CcmSubNav
 
         return null;
     }
-
+    
     /**
-     * @return int
+     * Get id
+     * @return integer
      */
     public function getId()
     {
@@ -99,62 +97,51 @@ class CcmSubNav
     }
 
     /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
-     * @param CcmSubNavCollection $subNavCollection
+     * @param CcmProsContactCollection $contactCollection
      * @return $this
      */
-    public function addSubNavsCollection(\FDC\CourtMetrageBundle\Entity\CcmSubNavCollection $subNavCollection)
+    public function addContactsCollection(\FDC\CourtMetrageBundle\Entity\CcmProsContactCollection $contactCollection)
     {
-        $subNavCollection->setSubNav($this);
-        $this->subNavsCollection[] = $subNavCollection;
+        $contactCollection->setContact($this);
+        $this->contactsCollection[] = $contactCollection;
 
         return $this;
     }
 
     /**
-     * @param CcmSubNavCollection $subNavCollection
+     * @param CcmProsContactCollection $contactCollection
      */
-    public function removeSubNavsCollection(\FDC\CourtMetrageBundle\Entity\CcmSubNavCollection $subNavCollection)
+    public function removeContactsCollection(\FDC\CourtMetrageBundle\Entity\CcmProsContactCollection $contactCollection)
     {
-        $this->subNavsCollection->removeElement($subNavCollection);
+        $this->contactsCollection->removeElement($contactCollection);
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getSubNavsCollection()
+    public function getContactsCollection()
     {
-        return $this->subNavsCollection;
+        return $this->contactsCollection;
     }
 
     /**
-     * @return mixed
+     * @param $position
+     * @return $this
      */
-    public function getIsActive()
+    public function setPosition($position)
     {
-        return $this->isActive;
+        $this->position = $position;
+
+        return $this;
     }
 
     /**
-     * @param mixed $isActive
+     * Get position
+     *
+     * @return integer
      */
-    public function setIsActive($isActive)
+    public function getPosition()
     {
-        $this->isActive = $isActive;
+        return $this->position;
     }
 }
