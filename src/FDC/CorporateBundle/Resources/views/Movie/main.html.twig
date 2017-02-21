@@ -106,7 +106,7 @@
 			{% endif %}
 
 			{% if movie.associatedMediaAudios|length > 0 %}
-                <div class="audios" data-section="audios">
+                <div class="audios single-article" data-section="audios">
                 {% for associatedMediaAudio in movie.associatedMediaAudios %}
                     {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio, 'corpo' : true } %}
                 {% endfor %}
