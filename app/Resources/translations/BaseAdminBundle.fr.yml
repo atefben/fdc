@@ -627,6 +627,11 @@ form:
     ccm:
         register_procedure:
             name: Catégorie des procédures d’inscription
+        waiting_page:
+            title: Titre
+            content: Contenu de la page
+            image: Photo
+            enabled: Actif?
         film_register:
             title: Têtière titre
             text: Text

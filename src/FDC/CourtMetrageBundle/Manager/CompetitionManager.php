@@ -2,23 +2,44 @@
 
 namespace FDC\CourtMetrageBundle\Manager;
 
+use FDC\CourtMetrageBundle\Entity\CcmWaitingPageTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTabTranslation;
 
+/**
+ * Class CompetitionManager
+ *
+ * @package FDC\CourtMetrageBundle\Manager
+ */
 class CompetitionManager
 {
+    /**
+     * @var EntityManager
+     */
     protected $em;
 
+    /**
+     * @var RequestStack
+     */
     protected $requestStack;
 
+    /**
+     * CompetitionManager constructor.
+     *
+     * @param EntityManager $entityManager
+     * @param RequestStack  $requestStack
+     */
     public function __construct(EntityManager $entityManager, RequestStack $requestStack)
     {
         $this->em = $entityManager;
         $this->requestStack = $requestStack;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSelectionTab()
     {
         return $this->em
@@ -26,6 +47,9 @@ class CompetitionManager
             ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_SELECTION);
     }
 
+    /**
+     * @return mixed
+     */
     public function getJuryTab()
     {
         return $this->em
@@ -33,6 +57,9 @@ class CompetitionManager
             ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_JURY);
     }
 
+    /**
+     * @return mixed
+     */
     public function getPalmaresTab()
     {
         return $this->em
@@ -40,6 +67,11 @@ class CompetitionManager
             ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_PALMARES);
     }
 
+    /**
+     * @param $festivalId
+     *
+     * @return mixed
+     */
     public function getSelectionFilms($festivalId)
     {
         $selectionSectionId = $this->getSelectionTab()->getTranslatable()->getSelectionSection()->getId();
@@ -53,6 +85,11 @@ class CompetitionManager
         return $films;
     }
 
+    /**
+     * @param $festivalId
+     *
+     * @return array
+     */
     public function getJury($festivalId)
     {
         $selectionSectionId = $this->getJuryTab()->getTranslatable()->getSelectionSection()->getId();
@@ -98,6 +135,11 @@ class CompetitionManager
         );
     }
 
+    /**
+     * @param $festivalId
+     *
+     * @return mixed
+     */
     public function getPalmares($festivalId)
     {
         $selectionSectionId = $this->getPalmaresTab()->getTranslatable()->getSelectionSection()->getId();
@@ -109,5 +151,25 @@ class CompetitionManager
         ;
 
         return $palmares;
+    }
+
+    /**
+     * @param $selectionTab
+     *
+     * @return bool
+     */
+    public function checkWaitingPage($selectionTab)
+    {
+        $waitingPage = $this
+            ->em
+            ->getRepository(CcmWaitingPageTranslation::class)
+            ->findPageByLocaleAndTab($this->requestStack->getMasterRequest()->get('_locale'), $selectionTab->getTranslatable());
+
+        if($waitingPage && $waitingPage->getTranslatable()->isEnabled())
+        {
+            return $waitingPage;
+        }
+
+        return false;
     }
 }
