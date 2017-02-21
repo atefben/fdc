@@ -614,7 +614,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      * @return array|ArrayCollection
      */
-    public function getDirectors()
+    public function getDirectors($collection = false)
     {
         $collection = new ArrayCollection();
         if ($this->getPersons()->count() > 0) {
@@ -632,6 +632,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             }
 
             $collection = $this->orderByNullLast($collection, 'ASC');
+        }
+        if ($collection && is_array($collection)) {
+            $collection = new ArrayCollection($collection);
         }
         return $collection;
     }
