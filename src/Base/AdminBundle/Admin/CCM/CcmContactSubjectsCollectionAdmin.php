@@ -51,7 +51,7 @@ class CcmContactSubjectsCollectionAdmin extends Admin
         $formMapper
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
             ->add('contactSubject', 'sonata_type_model_list', array(
-                    'label' => 'form.mdf.label.contact_subject'
+                    'label' => 'form.ccm.label.contact_subject'
                 )
             )
         ;
