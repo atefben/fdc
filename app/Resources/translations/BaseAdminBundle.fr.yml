@@ -750,6 +750,13 @@ form:
                 whiteTitle: Nom du push
                 url: URL
                 homepage: Le catalogue
+            sejour:
+                title1: Titre 1
+                title2: Titre 2
+                url: URL
+                sejour_is_activated: Activer le module
+                title: Les actualités
+
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc
@@ -773,6 +780,7 @@ form:
             homepage_slider_type: Ajouter
             homepage_push_type: Ajouter
             homepage_actualite_type: Ajouter
+            homepage_sejour_type: Ajouter
             homepage_push: Push
             pushes: Module Push
             homepage_slider: Slide

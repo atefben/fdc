@@ -132,6 +132,20 @@ class HomepageAdmin extends Admin
                 'label'    => 'form.ccm.label.actualite.is_active',
                 'required' => false,
             ))
+            ->add('sejoures', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'ccm_homepage_sejour_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
+            ->add('sejourIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.sejour.sejour_is_activated',
+                'required' => false,
+            ))
         ;
     }
 

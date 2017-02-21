@@ -80,6 +80,12 @@ class MediaImage extends Media
 
     /**
      * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepageSejour", mappedBy="image")
+     */
+    protected $homepageSejoures;
+
+    /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\Homepage", mappedBy="catalogImage")
      */
     protected $catalogPushes;
@@ -93,6 +99,7 @@ class MediaImage extends Media
         $this->homepagePushes = new ArrayCollection();
         $this->catalogPushes = new ArrayCollection();
         $this->actualites = new ArrayCollection();
+        $this->homepageSejoures = new ArrayCollection();
     }
 
     public function getApiTranslations()
@@ -382,5 +389,51 @@ class MediaImage extends Media
     public function removeHomepageActualite(\FDC\CourtMetrageBundle\Entity\HomepageActualite $homepageActualite)
     {
         $this->homepageActualites->removeElement($homepageActualite);
+    }
+
+    /**
+     * Get homepageSejour.
+     *
+     * @return ArrayCollection
+     */
+    public function getHomepageSejour()
+    {
+        return $this->homepageSejour;
+    }
+
+    /**
+     * Set homepageSejour.
+     *
+     * @param ArrayCollection $homepageSejour
+     */
+    public function setHomepageSejour($homepageSejour)
+    {
+        $this->homepageSejour = $homepageSejour;
+
+        return $this;
+    }
+
+    /**
+     * Add homepageSejour.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageSejour $homepageSejour
+     * @return $this
+     */
+    public function addHomepageSejour(\FDC\CourtMetrageBundle\Entity\HomepageSejour $homepageSejour)
+    {
+        $this->homepageSejoures[] = $homepageSejour;
+        $homepageSejour->setImage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove homepageSejour
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageSejour $homepageSejour
+     */
+    public function removeHomepageSejour(\FDC\CourtMetrageBundle\Entity\HomepageSejour $homepageSejour)
+    {
+        $this->homepageSejoures->removeElement($homepageSejour);
     }
 }

@@ -115,6 +115,18 @@ class Homepage
     protected $actualites;
 
     /**
+     * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     */
+    protected $sejoures;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $sejourIsActive = false;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -130,6 +142,7 @@ class Homepage
         $this->pushes = new ArrayCollection();
         $this->catalogPushes =  new ArrayCollection();
         $this->actualites =  new ArrayCollection();
+        $this->sejoures =  new ArrayCollection();
     }
 
     /**
@@ -506,5 +519,74 @@ class Homepage
     public function setActualiteIsActive($actualiteIsActive)
     {
         $this->actualiteIsActive = $actualiteIsActive;
+    }
+
+    /**
+     * Get sejoures.
+     *
+     * @return mixed
+     */
+    public function getSejoures()
+    {
+        return $this->sejoures;
+    }
+
+    /**
+     * Set sejoures.
+     *
+     * @param mixed $sejoures
+     */
+    public function setSejoures($sejoures)
+    {
+        $this->sejoures = $sejoures;
+
+        return $this;
+    }
+
+    /**
+     * Get sejourIsActive.
+     *
+     * @return bool
+     */
+    public function getSejourIsActive()
+    {
+        return $this->sejourIsActive;
+    }
+
+    /**
+     * Set sujourIsActive.
+     *
+     * @param bool $sejourIsActive
+     */
+    public function setSejourIsActive($sejourIsActive)
+    {
+        $this->sejourIsActive = $sejourIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Add sejour.
+     *
+     * @param HomepageSejour $sejour
+     *
+     * @return $this
+     */
+    public function addSejour(HomepageSejour $sejour)
+    {
+        $this->sejoures->add($sejour);
+        $sejour->setHomepage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove sejour.
+     *
+     * @param HomepageSejour $sejour
+     */
+    public function removeSejour(HomepageSejour $sejour)
+    {
+        $this->sejoures->removeElement($sejour);
     }
 }
