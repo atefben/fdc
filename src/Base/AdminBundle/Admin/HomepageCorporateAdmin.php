@@ -298,12 +298,12 @@ class HomepageCorporateAdmin extends Admin
             ))
             ->add('pushSecondaryImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_pushes_306x206',
                 'required' => false,
             ))
             ->add('pushSecondaryImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_pushes_306x206',
                 'required' => false,
             ))
             ->add('pushSecondaryImage3', 'sonata_type_model_list', array(
@@ -346,6 +346,7 @@ class HomepageCorporateAdmin extends Admin
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => HomepageCorporate::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
+                'label'                     => 'form.label_priority_status',
             ))
         ;
     }

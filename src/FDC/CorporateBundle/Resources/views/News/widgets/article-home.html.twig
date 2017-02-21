@@ -13,7 +13,7 @@
     {% endif %}
 {% endif %}
 
-<article class="{{ picto }} {% if isDouble is defined %} {{isDouble}} {% endif %} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ picto }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}" data-type="{{ type }}">
+<article class="card item all {{ picto }} {% if article.double is defined and article.double %}double{% endif %}{{ articleClass is defined ? articleClass : '' }}" data-format="{{ picto }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}"  data-type="{{ type }}">
     <div class="image">
         <div class="image-wrapper">
             {% if article is news_article or article is statement_article or article is info_article %}
@@ -118,7 +118,7 @@
         {% endif %}
 
         {% if type == 'news' %}
-            <a class="linkImage" href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+            <a class="linkImage" href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, year: article.festival.year, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% else %}
             <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% endif %}
@@ -138,7 +138,7 @@
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
         <h2>
             {% if type == 'news' %}
-                <a class="linkImage" href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
+                <a class="linkImage" href="{{ url('fdc_corporate_news_get', { _locale: app.request.locale, year: article.festival.year, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
             {% else %}
                 <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
             {% endif %}

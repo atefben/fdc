@@ -312,6 +312,10 @@ class InfoRepository extends EntityRepository
             ;
         }
 
+        if ($count) {
+            $qb->setMaxResults($count);
+        }
+
         return $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->getQuery()

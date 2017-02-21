@@ -214,7 +214,7 @@ class MediaRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('m')
             ->distinct(true)
-//            ->innerJoin('m.sites', 's')
+            ->innerJoin('m.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
             ->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
@@ -224,31 +224,31 @@ class MediaRepository extends EntityRepository
             ->andWhere('m.displayedAll = 1')
             ->andWhere('m.festival = :festival')
             ->setParameter(':festival', $festival)
-//            ->andWhere(
-//                '(mit.locale = :locale_fr AND mit.status = :status) OR
-//                    (mvt.locale = :locale_fr AND mvt.status = :status) OR
-//                    (mat.locale = :locale_fr AND mat.status = :status)'
-//            )
-//            ->setParameter('locale_fr', 'fr')
-//            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+            ->andWhere(
+                '(mit.locale = :locale_fr AND mit.status = :status) OR
+                    (mvt.locale = :locale_fr AND mvt.status = :status) OR
+                    (mat.locale = :locale_fr AND mat.status = :status)'
+            )
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
 
-//        if ($locale != 'fr') {
-//            $qb
-//                ->leftJoin('mi.translations', 'mitNotFr')
-//                ->leftJoin('mv.translations', 'mvtNotFr')
-//                ->leftJoin('ma.translations', 'matNotFr')
-//                ->andWhere(
-//                    '(mitNotFr.locale = :locale AND mitNotFr.status = :status_translated) OR
-//                    (mvtNotFr.locale = :locale AND mvtNotFr.status = :status_translated) OR
-//                    (matNotFr.locale = :locale AND matNotFr.status = :status_translated)'
-//                )
-//                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
-//                ->setParameter('locale', $locale)
-//            ;
-//        }
+        if ($locale != 'fr') {
+            $qb
+                ->leftJoin('mi.translations', 'mitNotFr')
+                ->leftJoin('mv.translations', 'mvtNotFr')
+                ->leftJoin('ma.translations', 'matNotFr')
+                ->andWhere(
+                    '(mitNotFr.locale = :locale AND mitNotFr.status = :status_translated) OR
+                    (mvtNotFr.locale = :locale AND mvtNotFr.status = :status_translated) OR
+                    (matNotFr.locale = :locale AND matNotFr.status = :status_translated)'
+                )
+                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
 
-//        $this->addFDCCorpoQueries($qb, 's');
+        $this->addFDCCorpoQueries($qb, 's');
 
         return $qb
             ->andWhere("m.publishEndedAt IS NULL")
