@@ -3,7 +3,7 @@ $(document).ready(function() {
 window.onunload = function(){};
 
 if(navigator.userAgent.match(/Trident\/7\./)) {
-  location.reload(true);
+  //location.reload(true);
 }
 
 $(window).load(function () {
