@@ -24,6 +24,11 @@ class LoadCcmContentData implements FixtureInterface
             $manager->persist($faqPage);
         }
 
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmContactPage::class)->findAll()) == 0) {
+            $contactPage = new \FDC\CourtMetrageBundle\Entity\CcmContactPage();
+            $manager->persist($contactPage);
+        }
+
         $manager->flush();
     }
 }

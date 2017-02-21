@@ -2707,3 +2707,21 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestion, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Question-Answer, show_in_dashboard: false}
+
+    base.admin.ccm_contact_page:
+        class: Base\AdminBundle\Admin\CCM\CcmContactPageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactPage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Contact Page}
+
+    base.admin.ccm_contact_subjects_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmContactSubjectsCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubjectsCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactPageSubjectsCollection, show_in_dashboard: false}
+
+    base.admin.ccm_contact_subject:
+        class: Base\AdminBundle\Admin\CCM\CcmContactSubjectAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
