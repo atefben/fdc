@@ -13,7 +13,7 @@
                         {% for rubrique in faqRubriques %}
                             <li
                                 class="{% if (faqRubriques|first).id == rubrique.id %}active{% endif %}"
-                                data-name="{{ rubrique.name|replace({ ' ': '-', 'ć':'c','Ć':'C' }) }}">
+                                data-name="rubrique-{{ rubrique.id }}">
                                 {{ rubrique.name}}
                             </li>
                         {% endfor %}
@@ -24,7 +24,9 @@
             {% if faqRubriques is defined and faqRubriques is not null%}
                 {% for rubrique in faqRubriques %}
                     {% if faqQuestionsAnswers[rubrique.translatable.id] is defined and faqQuestionsAnswers[rubrique.translatable.id] is not null %}
-                    <section class="faq-container {% if (faqRubriques|first).id == rubrique.id %}faq-active{% endif %}" data-name="{{ rubrique.name|replace({ ' ': '-', 'ć':'c','Ć':'C' }) }}">
+                    <section 
+                        class="faq-container {% if (faqRubriques|first).id == rubrique.id %}faq-active{% endif %}" 
+                        data-name="rubrique-{{ rubrique.id }}">
                         {% for questionAnswer in faqQuestionsAnswers[rubrique.translatable.id] %}
                             <article>
                                 <div class="faq-question">
