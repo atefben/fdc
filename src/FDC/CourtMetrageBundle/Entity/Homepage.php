@@ -110,6 +110,18 @@ class Homepage
     protected $translations;
 
     /**
+     * @ORM\OneToMany(targetEntity="HomepageActualite", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     */
+    protected $actualites;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $actualiteIsActive = false;
+
+    /**
      * Homepage constructor.
      */
     public function __construct() {
@@ -117,6 +129,7 @@ class Homepage
         $this->sliders = new ArrayCollection();
         $this->pushes = new ArrayCollection();
         $this->catalogPushes =  new ArrayCollection();
+        $this->actualites =  new ArrayCollection();
     }
 
     /**
@@ -426,5 +439,72 @@ class Homepage
         $this->catalogImage = $catalogImage;
 
         return $this;
+    }
+
+    /**
+     * Get actualites.
+     *
+     * @return mixed
+     */
+    public function getActualites()
+    {
+        return $this->actualites;
+    }
+
+    /**
+     * Set actualites.
+     *
+     * @param mixed $actualites
+     */
+    public function setActualites($actualites)
+    {
+        $this->actualites = $actualites;
+
+        return $this;
+    }
+
+    /**
+     * Add actualite.
+     *
+     * @param HomepageActualite $actualite
+     *
+     * @return $this
+     */
+    public function addActualite(HomepageActualite $actualite)
+    {
+        $this->actualites->add($actualite);
+        $actualite->setHomepage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove actualite.
+     *
+     * @param HomepageActualite $actualite
+     */
+    public function removeActualite(HomepageActualite $actualite)
+    {
+        $this->actualites->removeElement($actualite);
+    }
+
+    /**
+     * Get actualiteIsActive.
+     *
+     * @return bool
+     */
+    public function getActualiteIsActive()
+    {
+        return $this->actualiteIsActive;
+    }
+
+    /**
+     * Set actualiteIsActive
+     *
+     * @param bool $actualiteIsActive
+     */
+    public function setActualiteIsActive($actualiteIsActive)
+    {
+        $this->actualiteIsActive = $actualiteIsActive;
     }
 }

@@ -114,10 +114,24 @@ class HomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('actualites', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'ccm_homepage_actualite_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
             ->add('catalogImage', 'sonata_type_model_list', array(
                     'required' => true,
                 )
             )
+            ->add('actualiteIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.actualite.is_active',
+                'required' => false,
+            ))
         ;
     }
 

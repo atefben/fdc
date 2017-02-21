@@ -1,4 +1,13 @@
 services:
+    base.admin.form.ccm_homepage_actualite_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\HomepageActualiteType
+        tags:
+            - { name: form.type, alias: 'ccm_homepage_actualite_type'}
+        calls:
+            - ['setSonataAdminTheme', ['@base.admin.ccm_homepage_actualite_theme_top_dummy']]
+            - ['setThemeAdmin', ['@base.admin.theme']]
+
     base.admin.form.ccm_catalog_push_type:
         scope: prototype
         class: FDC\CourtMetrageBundle\Form\Type\CatalogPushType

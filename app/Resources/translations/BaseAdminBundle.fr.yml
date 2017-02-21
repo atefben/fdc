@@ -736,13 +736,20 @@ form:
                 page_config: Informations sur la page
                 domains_collection: Collection de domaines
                 page_image: Page image
+            actualite:
+                title: Les actualités
+                date: Date
+                title: Titre
+                description: Description
+                is_active: Activer le module
             catalog:
                 pushes: Module Catalogue
-                push: Ajouter Pushes
+                push: Ajouter
                 push_is_activated: Activer le module
                 homepage: Catalogue
                 whiteTitle: Nom du push
                 url: URL
+                homepage: Le catalogue
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc
@@ -763,10 +770,9 @@ form:
                 film_selection: Liste des films
                 court_is_activated: Activer le module
                 court_year: L’année
-            catalog:
-                homepage: Le catalogue
             homepage_slider_type: Ajouter
             homepage_push_type: Ajouter
+            homepage_actualite_type: Ajouter
             homepage_push: Push
             pushes: Module Push
             homepage_slider: Slide

@@ -2668,6 +2668,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Activity, show_in_dashboard: false}
         calls:
+<<<<<<< 0ebff16d96f02828477bdfa224803072fb42d953
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.ccm_pros_contact_collection:
@@ -2764,4 +2765,17 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
+<<<<<<< 2e7c7d5d2bb87f2bc2cda987a84257f95a1af982
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Mentions Légales }
+=======
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_homepage_actualite_theme_top_dummy:
+        class: Base\AdminBundle\Admin\CCM\ThemeDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageActualite, BaseAdminBundle:CCM\ThemeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Module Actualite, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+>>>>>>> Actualite.
