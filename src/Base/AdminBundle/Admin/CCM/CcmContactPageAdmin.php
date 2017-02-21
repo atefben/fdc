@@ -18,17 +18,6 @@ class CcmContactPageAdmin extends Admin
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
 
-//    /**
-//     * @return array
-//     */
-//    public function getFormTheme()
-//    {
-//        return array_merge(
-//            parent::getFormTheme(),
-//            array('BaseAdminBundle:Form:polycollection.html.twig')
-//        );
-//    }
-
     /**
      * @param ListMapper $listMapper
      */
@@ -59,7 +48,7 @@ class CcmContactPageAdmin extends Admin
             ))
             ->add('subjectsList', 'sonata_type_collection', array(
                 'by_reference'       => false,
-                'label'              => 'form.mdf.label.contact_page_subjects_list',
+                'label'              => 'form.ccm.label.contact_page_subjects_list',
                 'translation_domain' => 'BaseAdminBundle',
                 'constraints'        => array(
                     new Count(

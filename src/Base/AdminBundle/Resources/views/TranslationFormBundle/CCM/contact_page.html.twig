@@ -22,30 +22,6 @@
                         <div class="col-md-12">
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
-                                    {% for widget in form.parent.children.contactBlock.children %}
-                                        <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'contact_block_type' %}
-                                                <h4><strong>{{ 'form.mdf.label.contact_block'|trans }}</strong></h4>
-                                            {% endif %}
-                                            {{ form_row(widget._type) }}
-                                            {{ form_row(widget.position) }}
-                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                            <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                            </a>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                                {{ 'form.mdf.label.contact_block_list'|trans }}<br/>
-                                <a class="btn btn-primary btn-add-base-widget"
-                                   data-prototype="{{ form_widget(form.parent.children.contactBlock.vars.prototypes.contact_block_type)|escape }}"><i
-                                            class="icon-plus"></i>{{ 'form.mdf.label.contact_block'|trans }}</a>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="box-body">
-                                <div class="fdc-widgets" data-form-widget="collection">
                                     <div class="item base-widget">
                                         <h4><strong>{{ 'form.mdf.label.contact_subject'|trans }}</strong></h4>
                                         {{ form_row(form.parent.children.subjectsList) }}
@@ -54,22 +30,6 @@
                             </div>
                         </div>
                     {% else %}
-                        <div class="col-md-8">
-                            <div class="box-body">
-                                <div class="fdc-widgets" data-form-widget="collection">
-                                    {% for widget in form.parent.children.contactBlock.children %}
-                                        <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'contact_block_type' %}
-                                                <h4><strong>{{ 'form.mdf.label.contact_block'|trans }}</strong></h4>
-                                            {% endif %}
-                                            {{ form_row(widget._type) }}
-                                            {{ form_row(widget.position) }}
-                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="col-md-4">
                             <div class="box box-success">
@@ -77,47 +37,6 @@
                                     <h4 class="box-title">
                                         {{ 'group.french_version'|trans }}
                                     </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {% for widget in form.parent.children.contactBlock.children %}
-                                            <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'contact_block_type' %}
-                                                    <h4><strong>{{ 'form.mdf.label.contact_block'|trans }}</strong></h4>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.mdf.label.contact_block_date'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.contactDate }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.mdf.label.contact_block_address'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.contactAddress }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            {{ 'form.mdf.label.contact_block_phone_number'|trans }}
-                                                        </label>
-                                                        <div>
-                                                            {% if widget.children.translations.fr.vars.value is not null %}
-                                                                {{ widget.children.translations.fr.vars.value.contactPhone }}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                {% endif %}
-                                            </div>
-                                        {% endfor %}
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CcmContactSubjectAdmin extends Admin
@@ -53,13 +54,23 @@ class CcmContactSubjectAdmin extends Admin
                         ),
                     ),
                     'contactTheme' => array(
-                        'label' => 'form.mdf.label.contact_subject_theme',
+                        'label' => 'form.ccm.label.contact_subject_theme',
                         'translation_domain' => 'BaseAdminBundle',
                         'constraints'        => array(
                             new NotBlank(),
                         ),
                         'required' => true
-                    )
+                    ),
+                    'receiverEmail'          => array(
+                        'label'              => 'form.ccm.label.contact_page_email_receiver',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                            new Email(),
+                        ),
+                        'required' => true,
+                    ),
+
                 ),
             ))
         ;
@@ -72,6 +83,8 @@ class CcmContactSubjectAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('contactTheme');
+            ->add('contactTheme')
+            ->add('receiverEmail');
+        ;
     }
 }
