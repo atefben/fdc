@@ -11,7 +11,7 @@ use DateTime;
 use Exception;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\BadResponseException;
-use Buzz\Message\Request;
+use Symfony\Component\HttpFoundation\Request;
 use FDC\CourtMetrageBundle\Form\Type\ShareEmailType;
 
 class DefaultController extends Controller
