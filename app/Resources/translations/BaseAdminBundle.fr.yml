@@ -669,6 +669,11 @@ form:
             regulation_details_button_url: Détail du règlement - Bouton lien
         label_status: Statut
         label:
+            contact_subject_theme: Page de contact thème
+            contact_page_email_receiver: Récepteur email
+            contact_page_subjects_list: Page de contact liste de sujets
+            contact_page_subject_info: Sujet du message info
+            contact_subject: Sujet du message
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection

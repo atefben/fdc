@@ -61,6 +61,6 @@ class CcmFaqPageAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->clearExcept(['edit', 'list', 'create']);
+        $collection->clearExcept(['edit', 'list']);
     }
 }
