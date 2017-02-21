@@ -667,6 +667,7 @@ form:
             regulation_details_file: Détail du règlement - Fichier
             regulation_details_button_label: Détail du règlement - Bouton libellé
             regulation_details_button_url: Détail du règlement - Bouton lien
+        label_status: Statut
         label:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
@@ -689,6 +690,46 @@ form:
                 sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
                 sub_nav_route: Itinéraire de la deuxième onglet de navigation
                 sub_nav_is_active: Ce deuxième onglet de navigation est actif?
+            pros:
+                detail_image: Pro image
+                detail_is_sfc: Est SFC
+                detail_name: Nom du pro
+                detail_quote: Pro quote
+                detail_country: Pro pays
+                detail_url: Pro url
+                detail_url_name: Nom du site Web pro
+                detail_activities_list: Liste des activités
+                detail_contacts_list: Liste de contacts
+                activity: Activité
+                activity_name: Nom de l'activité
+                contact: Contact
+                contact_name: Nom du contact
+                contact_function: Fonction de contact
+                contact_email: Email du contact
+                detail_title_single: Titre colonne simple
+                detail_description_single: Description colonne simple
+                detail_title_first_double: Premier titre
+                detail_description_first_double: Première description
+                detail_title_second_double: Deuxième titre
+                detail_description_second_double: Deuxième description
+                detail_config: Informations sur pro
+                activities_collection: Collection d'activités
+                contacts_collection: Collection de contacts
+                description_1_column_widget: Un widget de description de colonne
+                description_2_column_widget: Deux colonnes description widget
+                description_1_column: Ajouter une description de colonne
+                description_2_column: Ajouter deux colonnes description
+                contact_config: Informations de contact
+                activity_config: Informations sur l'activité
+                domain_config: Informations sur le domaine
+                domain_name: Nom de domaine
+                domain: Domaine
+                page_title: titre de la page
+                page_description: Description de la page
+                page_domains_list: Liste des domaines
+                page_config: Informations sur la page
+                domains_collection: Collection de domaines
+                page_image: Page image
             catalog:
                 pushes: Module Catalogue
                 push: Ajouter Pushes

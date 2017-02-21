@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmDomainTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmProsDescription;
 use FDC\CourtMetrageBundle\Entity\CcmProsDetailTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmProsPageTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -108,5 +109,18 @@ class ProsManager
     {
         return $this->em->getRepository(CcmProsDetailTranslation::class)
             ->find($id);
+    }
+
+    public function getProDescription($id)
+    {
+        return $this->em->getRepository(CcmProsDescription::class)
+            ->findby(
+                array(
+                    'prosDetail' => $id
+                ),
+                array(
+                    'position' => 'ASC'
+                )
+            );
     }
 }

@@ -44,10 +44,12 @@ class ProsController extends Controller
         if ($id) {
             $prosManager = $this->get('ccm.manager.pros');
             $pro = $prosManager->getProById($id);
+            $proDescription = $prosManager->getProDescription($id);
 
             if ($pro) {
                 return $this->render('FDCCourtMetrageBundle:Pros:partials/modal.html.twig', [
                         'pro' => $pro,
+                        'proDescription' => $proDescription,
                     ]
                 );
             } else {

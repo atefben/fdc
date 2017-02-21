@@ -77,5 +77,18 @@ abstract class CcmProsDescription
     {
         $this->prosDetail = $prosDetail;
     }
+
+    public function getWidgetType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+     {
+         return strtolower(str_replace('CcmProsDescription', '', $this->getWidgetType()));
+     }
 }
 

@@ -61,7 +61,26 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-                <div class="content">
-                    {{ pro.description|raw }}
-                </div>
+                {% if proDescription is defined and proDescription is not null %}
+                    {% for description in proDescription %}
+                        {% if description.translations[app.request.locale] is defined and description.translations[app.request.locale] is not null %}
+                            {% set translation = description.translations[app.request.locale] %}
+                        {% endif %}
+                        {% if description.getType == 'singlecolumn' %}
+                            <div class="content">
+                                <h5>{{ translation.title }}</h5>
+                                {{ translation.description|raw }}
+                            </div>
+                        {% else %}
+                            <div class="content halfContent">
+                                <h5>{{ translation.titleFirst }}</h5>
+                                {{ translation.descriptionFirst|raw }}
+                            </div>
+                            <div class="content halfContent">
+                                <h5>{{ translation.titleSecond }}</h5>
+                                {{ translation.descriptionSecond|raw }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
