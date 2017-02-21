@@ -2678,3 +2678,32 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_faq_page:
+        class: Base\AdminBundle\Admin\CCM\CcmFaqPageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFaqPage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: FAQ Page}
+
+    base.admin.ccm_rubriques_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmRubriquesCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriquesCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: RubriquesCollection, show_in_dashboard: false}
+
+    base.admin.ccm_rubrique:
+        class: Base\AdminBundle\Admin\CCM\CcmRubriqueAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubrique, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Rubrique, show_in_dashboard: false}
+
+    base.admin.ccm_rubrique_questions_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmRubriqueQuestionsCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestionsCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+          - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: RubriqueQuestionsCollection, show_in_dashboard: false}
+
+    base.admin.ccm_rubrique_question:
+        class: Base\AdminBundle\Admin\CCM\CcmRubriqueQuestionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestion, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Question-Answer, show_in_dashboard: false}
