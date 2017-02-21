@@ -2532,6 +2532,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Competition Tab, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_homepage_slider_top_dummy:
         class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSlider, BaseAdminBundle:CCM\ImageDummyAdmin]
