@@ -255,7 +255,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // CUSTOM LINK COPY
         $topBar.find('.buttons .link').attr('href', shareUrl);
         $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
-
+        console.log('require updatePopinMedia');
         updatePopinMedia({
             'type': "video",
             'category': $playlist[index].category,
