@@ -13,7 +13,7 @@
     {% endif %}
 {% endif %}
 
-<article class="{{ picto }} {% if article.double is defined and article.double %}double{% endif %}{{ articleClass is defined ? articleClass : '' }}" data-format="{{ picto }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}"  data-type="{{ type }}">
+<article class="card item all {{ picto }} {% if article.double is defined and article.double %}double{% endif %}{{ articleClass is defined ? articleClass : '' }}" data-format="{{ picto }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}"  data-type="{{ type }}">
     <div class="image">
         <div class="image-wrapper">
             {% if article is news_article or article is statement_article or article is info_article %}
