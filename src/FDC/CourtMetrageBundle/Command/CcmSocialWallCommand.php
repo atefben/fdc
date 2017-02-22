@@ -59,22 +59,24 @@ class CcmSocialWallCommand extends ContainerAwareCommand
             'token_secret' => $this->getContainer()->getParameter('twitter_token_secret')
          )));
 
-        // get last id twitter
-        $lastIdTwitter = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findBy(
-            array('network' => constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_TWITTER')),
-            array('id' => 'DESC'),
-            1,
-            null
-        );
-
-        // Get last twitter id in db
-        $maxId   = (isset($lastIdTwitter[0])) ? $lastIdTwitter[0]->getMaxIdTwitter() : null;
-        $request = $twitterClient->get('search/tweets.json');
         $tweets = array();
 
         // Get all tweets
         foreach ($tags as $tag) {
+
+            $lastIdTwitter = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findBy(
+                array('network' => constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_TWITTER'),
+                      'tags' => $tag
+                ),
+                array('id' => 'DESC'),
+                1,
+                null
+            );
+
+            $maxId   = (isset($lastIdTwitter[0])) ? $lastIdTwitter[0]->getMaxIdTwitter() : null;
+
             $tag = trim($tag);
+            $request = $twitterClient->get('search/tweets.json');
             while (TRUE) {
 
                 $request->getQuery()->set('q', $tag);
@@ -89,8 +91,85 @@ class CcmSocialWallCommand extends ContainerAwareCommand
                     $tweets = array_merge($tweets, $results->statuses);
                     $output->writeln('TWEETS DONE: ' . sizeof($results->statuses));
                     $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
+
+
                     // Exit when no more tweets are returned
                     if (sizeof($results->statuses) !== $offset) {
+
+                        $socialWalls = array();
+                        $retweetsCount = 0;
+                        if (count($tweets) > 0) {
+                            krsort($tweets);
+                            foreach ($tweets as $tweet) {
+
+                                $tweetByUrl = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array(
+                                        'url' => 'https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id
+                                    )
+                                );
+
+                                $tweetByContent = null;
+                                if (isset($tweet->entities->media[0]->media_url)) {
+                                    $tweetByContent = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array(
+                                           'content' => $tweet->entities->media[0]->media_url
+                                       )
+                                    );
+                                }
+
+                                $tweetByMessage = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array(
+                                       'message' => json_encode($tweet->text)
+                                   )
+                                );
+
+                                if($tweetByUrl || $tweetByContent || $tweetByMessage)
+                                {
+                                    $retweetsCount += 1;
+                                    continue;
+                                }
+
+                                $socialWall = new CcmSocialWall();
+                                $socialWall->setMessage(json_encode($tweet->text));
+                                if (isset($tweet->entities->media[0]->media_url)) {
+                                    $socialWall->setContent($tweet->entities->media[0]->media_url);
+                                } else {
+                                    $socialWall->setContent(null);
+                                }
+                                $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
+                                $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
+                                $socialWall->setEnabledDesktop(0);
+                                $socialWall->setMaxIdTwitter($maxId);
+                                $socialWall->setDate($datetime);
+                                $socialWall->setCreatedAt(new DateTime($tweet->created_at));
+                                $socialWall->setTags($this->getHashTagsForTweet($tweet->entities->hashtags, $tags));
+                                $em->persist($socialWall);
+                                $socialWalls[] = $socialWall;
+                                $em->flush();
+                            }
+
+                            //update ACL
+                            foreach ($socialWalls as $socialWall) {
+                                $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
+                                $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+                                if (is_null($acl)) {
+                                    $acl = $adminSecurityHandler->createAcl($objectIdentity);
+                                }
+                                $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
+                                $adminSecurityHandler->updateAcl($acl);
+                            }
+                        }
+
+                        // regenerating acl
+                        $tweetsCount = count($socialWalls);
+                        $lines = array();
+                        exec("php app/console base:admin:ccm_regenerate_acl_social_wall_twitter {$tweetsCount}", $lines);
+                        foreach ($lines as $line) {
+                            $output->writeln($line);
+                        }
+
+                        $output->writeln('Tweet added: ' . $tweetsCount);
+                        $output->writeln('Retweets not saved: ' . $retweetsCount);
+
+                        $tweets = array();
+
                         break;
                     }
                 } catch (\Exception $e) {
@@ -100,51 +179,6 @@ class CcmSocialWallCommand extends ContainerAwareCommand
                 }
             }
         }
-
-        $socialWalls = array();
-        if (count($tweets) > 0) {
-            krsort($tweets);
-            foreach ($tweets as $tweet) {
-                $socialWall = new CcmSocialWall();
-                $socialWall->setMessage(json_encode($tweet->text));
-                if (isset($tweet->entities->media[0]->media_url)) {
-                    $socialWall->setContent($tweet->entities->media[0]->media_url);
-                } else {
-                    $socialWall->setContent(null);
-                }
-                $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
-                $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
-                $socialWall->setEnabledDesktop(0);
-                $socialWall->setMaxIdTwitter($maxId);
-                $socialWall->setDate($datetime);
-                $socialWall->setCreatedAt(new DateTime($tweet->created_at));
-                $socialWall->setTags($this->getHashTagsForTweet($tweet->entities->hashtags, $tags));
-                $em->persist($socialWall);
-                $socialWalls[] = $socialWall;
-            }
-            $em->flush();
-
-            //update ACL
-            foreach ($socialWalls as $socialWall) {
-                $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
-                $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
-                if (is_null($acl)) {
-                    $acl = $adminSecurityHandler->createAcl($objectIdentity);
-                }
-                $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
-                $adminSecurityHandler->updateAcl($acl);
-            }
-        }
-
-        // regenerating acl
-        $tweetsCount = count($socialWalls);
-        $lines = array();
-        exec("php app/console base:admin:regenerate_acl_social_wall_twitter {$tweetsCount}", $lines);
-        foreach ($lines as $line) {
-            $output->writeln($line);
-        }
-
-        $output->writeln('Tweet added: ' . $tweetsCount);
 
         ////////////////////////////////////////////////////////////////////
         /////////////////////////   INSTAGRAM   ////////////////////////////

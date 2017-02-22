@@ -10,7 +10,7 @@ use Base\CoreBundle\Util\Time;
 /**
  * CcmSocialWall
  * @ORM\Table(name="ccm_social_wall")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmSocialWallRepository")
  */
 class CcmSocialWall
 {
