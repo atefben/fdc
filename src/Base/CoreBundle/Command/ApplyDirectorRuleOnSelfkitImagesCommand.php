@@ -181,6 +181,7 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
             foreach ($person->getSelfkitImages() as $selfkitImage) {
                 if (!$this->isOldInternet($selfkitImage)) {
                     $person->removeSelfkitImage($selfkitImage);
+                    $this->getDoctrineManager()->remove($selfkitImage);
                     $flush = true;
                 }
             }
