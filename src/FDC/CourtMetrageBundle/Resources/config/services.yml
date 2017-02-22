@@ -35,3 +35,10 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
+
+    ccm.manager.footer_content:
+        class: FDC\CourtMetrageBundle\Manager\FooterContentManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+

@@ -783,3 +783,10 @@ services:
         class: FDC\CourtMetrageBundle\Form\Type\DoubleDescriptionType
         tags:
             - { name: form.type, alias: 'double_description_type'}
+
+    #CCM - footer content type text
+    base.admin.form.ccm_content_text_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ContentTextType
+        tags:
+            - { name: form.type, alias: 'content_text_type'}

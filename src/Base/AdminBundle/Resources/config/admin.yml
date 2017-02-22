@@ -2666,3 +2666,27 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
+
+    base.admin.ccm_footer_content:
+        class: Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Footer Content, show_in_dashboard: false}
+
+    base.admin.ccm_confidentialite:
+        class: Base\AdminBundle\Admin\CCM\CcmConfidentialiteAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Politique de confidentialité }
+
+    base.admin.ccm_credits:
+        class: Base\AdminBundle\Admin\CCM\CcmCreditsAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Crédits }
+
+    base.admin.ccm_legal:
+        class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }

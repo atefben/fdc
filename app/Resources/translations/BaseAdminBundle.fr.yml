@@ -770,7 +770,15 @@ form:
             pushes: Module Push
             homepage_slider: Slide
             slide: Module Slider
-
+            footer:
+                content_config: Informations sur la page
+                title: Titre de la page
+                subtitle: Sous-titre de la page
+                description: Description de la page
+                content_text_type_widget: Description widget
+                content_text_title: Titre du widget texte
+                content_text_body: Texte widget corps
+                content_text_type: Ajouter un widget description
         size:
             small:  Titre petit
             medium: Titre moyen
