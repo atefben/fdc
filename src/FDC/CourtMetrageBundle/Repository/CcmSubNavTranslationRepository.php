@@ -20,7 +20,6 @@ class CcmSubNavTranslationRepository extends EntityRepository
             ->andWhere('s.status = :publish or s.status = :translate')
             ->setParameter('publish',CcmSubNavTranslation::STATUS_PUBLISHED)
             ->setParameter('translate',CcmSubNavTranslation::STATUS_TRANSLATED)
-            ->innerJoin('s.translatable', 't')
             ->setParameter(':locale', $locale)
             ->setParameter(':translatable', $translatable)
         ;

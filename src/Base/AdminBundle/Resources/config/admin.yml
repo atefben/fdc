@@ -2614,6 +2614,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_social_wall_hashtag:
+        class: Base\AdminBundle\Admin\CCM\CcmSocialWallHashTagAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall hashtag}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_pros_page:
         class: Base\AdminBundle\Admin\CCM\CcmProsPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsPage, ApplicationSonataAdminBundle:CRUD]
@@ -2678,6 +2686,14 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_social_wall:
+        class: Base\AdminBundle\Admin\CCM\CcmSocialWallAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWall, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_faq_page:
         class: Base\AdminBundle\Admin\CCM\CcmFaqPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFaqPage, ApplicationSonataAdminBundle:CRUD]
@@ -2725,3 +2741,27 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
+
+    base.admin.ccm_footer_content:
+        class: Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Footer Content, show_in_dashboard: false}
+
+    base.admin.ccm_confidentialite:
+        class: Base\AdminBundle\Admin\CCM\CcmConfidentialiteAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Politique de confidentialité }
+
+    base.admin.ccm_credits:
+        class: Base\AdminBundle\Admin\CCM\CcmCreditsAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Crédits }
+
+    base.admin.ccm_legal:
+        class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }

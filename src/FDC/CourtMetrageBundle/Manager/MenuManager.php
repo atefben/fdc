@@ -76,7 +76,7 @@ class MenuManager
                 $subNavCollection = $this->em->getRepository(CcmSubNavCollection::class)
                     ->findBy(
                             array(
-                                'mainNav' => $nav->getId(),
+                                'mainNav' => $nav->getTranslatable()->getId(),
                         ),
                         array(
                             'position' => 'ASC'
