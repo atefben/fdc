@@ -41,7 +41,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="slider">
                                             {% if widget.children._type.vars.value == 'ccm_homepage_slider_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.slider.homepage'|trans }}</strong></h4>
                                             {% endif %}
@@ -74,7 +74,7 @@
                                     {{ form_widget(form.parent.pushIsActive) }}
                                     </br></br>
                                     {% for widget in form.parent.children.pushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="push">
                                             {% if widget.children._type.vars.value == 'ccm_homepage_push_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.push.homepage'|trans }}</strong></h4>
                                             {% endif %}
@@ -107,7 +107,7 @@
                                     {{ form_label(form.parent.catalogImage) }}
                                     {{ form_widget(form.parent.catalogImage) }}
                                     {% for widget in form.parent.children.catalogPushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="catalog">
                                             {% if widget.children._type.vars.value == 'ccm_catalog_push_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.catalog.homepage'|trans }}</strong></h4>
                                             {% endif %}
@@ -137,7 +137,7 @@
                                         {{ form_widget(form.parent.actualiteIsActive) }}
                                         </br>
                                         {% for widget in form.parent.children.actualites.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="actualite">
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.image) }}
                                                 {{ form_row(widget.theme) }}
@@ -169,7 +169,7 @@
                                         {{ form_widget(form.parent.sejourIsActive) }}
                                         </br>
                                         {% for widget in form.parent.children.sejoures.children %}
-                                            <div class="item base-widget">
+                                            <div class="item base-widget" data-itemtype="sejour">
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.image) }}
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -195,7 +195,7 @@
                                 </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="slider">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -207,7 +207,7 @@
                                 </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.pushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="push">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.catalogPushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="catalog">
                                             {{ form_row(widget._type) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.actualites.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="actualite">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_row(widget.theme) }}
@@ -244,7 +244,7 @@
                                 </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sejoures.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="sejour">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
