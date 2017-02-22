@@ -9,6 +9,10 @@ services:
         class: FDC\CourtMetrageBundle\Manager\NewsManager
         arguments: [ '@doctrine.orm.entity_manager' ]
 
+    ccm.manager.sfc:
+        class: FDC\CourtMetrageBundle\Manager\ShortFilmCornerManager
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
     ccm.manager.menu:
         class: FDC\CourtMetrageBundle\Manager\MenuManager
         arguments:
@@ -17,6 +21,9 @@ services:
 
     ccm.manager.participate:
         class: FDC\CourtMetrageBundle\Manager\ParticipateManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
 
     ccm.manager.homepage:
         class: FDC\CourtMetrageBundle\Manager\HomepageManager

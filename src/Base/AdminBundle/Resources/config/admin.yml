@@ -2429,6 +2429,65 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    #CCM Short Film Corner
+    base.admin.ccm_sfc_who_are_we:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWhoAreWeAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmsfc, label: Qui sommes nous}
+
+    base.admin.ccm_sfc_our_events:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerOurEventsAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmsfc, label: Nos évènements}
+
+    base.admin.ccm_sfc_relive_edition:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerReliveEditionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmsfc, label: Revivez l’édition}
+
+    base.admin.ccm_sfc_widget_audio_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetAudioDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetAudio, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Audio, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_sfc_widget_image_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetImage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Image, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_sfc_widget_image_dual_align_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetImageDualAlignDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetImageDualAlign, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Image Dual Align, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_sfc_widget_video_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetVideoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetVideo, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Video, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_sfc_widget_video_youtube_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetVideoYoutubeDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetVideoYoutube, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Video Youtube, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_short_film_competition_tab_selection:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabSelectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
