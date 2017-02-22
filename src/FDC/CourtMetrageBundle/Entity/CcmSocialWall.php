@@ -61,13 +61,6 @@ class CcmSocialWall
      *
      * @ORM\Column(type="boolean")
      */
-    protected $enabledMobile;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean")
-     */
     protected $enabledDesktop;
 
     /**
@@ -196,28 +189,6 @@ class CcmSocialWall
     public function getFestival()
     {
         return $this->festival;
-    }
-
-    /**
-     * @param $enabledMobile
-     *
-     * @return $this
-     */
-    public function setEnabledMobile($enabledMobile)
-    {
-        $this->enabledMobile = $enabledMobile;
-
-        return $this;
-    }
-
-    /**
-     * Get enabledMobile
-     *
-     * @return boolean
-     */
-    public function getEnabledMobile()
-    {
-        return $this->enabledMobile;
     }
 
     /**

@@ -30,7 +30,6 @@ class CcmSocialWallAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('festival')
-            ->add('enabledMobile')
             ->add('enabledDesktop')
             ->add('tags')
             ->add('createdBefore', 'doctrine_orm_callback', array(
@@ -116,7 +115,6 @@ class CcmSocialWallAdmin extends Admin
             ->add('content', null, array('template' => 'BaseAdminBundle:SocialWall:CCM/content_display_social.html.twig'))
             ->add('tags')
             ->add('message', null, array('template' => 'BaseAdminBundle:SocialWall:CCM/message.html.twig'))
-            ->add('enabledMobile', null, array('editable' => true))
             ->add('enabledDesktop', null, array('editable' => true))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:CCM/list_created_at.html.twig',
@@ -133,7 +131,6 @@ class CcmSocialWallAdmin extends Admin
         $formMapper
             ->add('url')
             ->add('network')
-            ->add('enabledMobile')
             ->add('enabledDesktop')
             ->add('tags')
             ->add('createdAt')
@@ -150,7 +147,6 @@ class CcmSocialWallAdmin extends Admin
             ->add('id')
             ->add('url')
             ->add('network')
-            ->add('enabledMobile')
             ->add('enabledDesktop')
             ->add('tags')
             ->add('createdAt')

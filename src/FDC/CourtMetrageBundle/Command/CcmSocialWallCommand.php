@@ -41,7 +41,7 @@ class CcmSocialWallCommand extends ContainerAwareCommand
 
         $socialWallTag = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWallHashTag')->findAll();
 
-        $tags = explode(', ',$socialWallTag[0]->getHashTag());
+        $tags = explode(', ', $socialWallTag[0]->getHashTag());
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////   TWITTER   ///////////////////////////////
@@ -105,7 +105,6 @@ class CcmSocialWallCommand extends ContainerAwareCommand
         if (count($tweets) > 0) {
             krsort($tweets);
             foreach ($tweets as $tweet) {
-
                 $socialWall = new CcmSocialWall();
                 $socialWall->setMessage(json_encode($tweet->text));
                 if (isset($tweet->entities->media[0]->media_url)) {
@@ -115,11 +114,11 @@ class CcmSocialWallCommand extends ContainerAwareCommand
                 }
                 $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
                 $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
-                $socialWall->setEnabledMobile(0);
                 $socialWall->setEnabledDesktop(0);
                 $socialWall->setMaxIdTwitter($maxId);
                 $socialWall->setDate($datetime);
-                $socialWall->setTags($socialWallTag[0]->getHashTag());
+                $socialWall->setCreatedAt(new DateTime($tweet->created_at));
+                $socialWall->setTags($this->getHashTagsForTweet($tweet->entities->hashtags, $tags));
                 $em->persist($socialWall);
                 $socialWalls[] = $socialWall;
             }
@@ -202,7 +201,6 @@ class CcmSocialWallCommand extends ContainerAwareCommand
 //            $socialWall->setUrl($instagramPost->link);
 //            $socialWall->setNetwork(constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_INSTAGRAM'));
 //            $socialWall->setMaxIdInstagram($instagramPost->id);
-//            $socialWall->setEnabledMobile(0);
 //            $socialWall->setEnabledDesktop(0);
 //            $socialWall->setDate($datetime);
 //            $socialWall->setTags($socialWallTag[0]->getHashTag());
@@ -222,6 +220,22 @@ class CcmSocialWallCommand extends ContainerAwareCommand
 //            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
 //            $adminSecurityHandler->updateAcl($acl);
 //        }
+    }
+
+    private function getHashTagsForTweet($hashTags, $boHashTags)
+    {
+        foreach($hashTags as $hashTag)
+        {
+            foreach ($boHashTags as $boHashTag)
+            {
+                if(strtolower($boHashTag) == '#' . strtolower($hashTag->text))
+                {
+                    return $boHashTag;
+                }
+            }
+        }
+
+        return '';
     }
 
     private function writeError($output, $logger, $msg) {
