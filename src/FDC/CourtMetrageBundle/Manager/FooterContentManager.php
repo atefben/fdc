@@ -3,6 +3,7 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmFooterContent;
 use FDC\CourtMetrageBundle\Entity\CcmFooterContentText;
 use Symfony\Component\HttpFoundation\RequestStack;
 use FDC\CourtMetrageBundle\Entity\CcmFooterContentTranslation;
@@ -25,9 +26,9 @@ class FooterContentManager
     protected $requestStack;
 
     protected $routes = [
-        'fdc_ccm_footer_credits' => 'credits',
-        'fdc_ccm_footer_mentions_legales' => 'politique-de-confidentialite',
-        'fdc_ccm_footer_politique_de_confidentialite' => 'mentions-legales'
+        'fdc_ccm_footer_credits' => CcmFooterContent::FOOTER_CREDITS,
+        'fdc_ccm_footer_mentions_legales' => CcmFooterContent::FOOTER_MENTIONES_LEGALES,
+        'fdc_ccm_footer_politique_de_confidentialite' => CcmFooterContent::FOOTER_CONFIDENTIALITE
     ];
 
     /**
