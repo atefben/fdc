@@ -4,7 +4,6 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
-use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\OldFilmPhoto;
 
@@ -188,6 +187,10 @@ class OldFilmPhotoRepository extends EntityRepository
 //            ->andWhere('fp.idtypephoto in (:types)')
 //            ->setParameter(':types', $types)
 //        ;
+        $qb
+            ->andWhere('fp.internet = :internet')
+            ->setParameter(':internet', 'O')
+        ;
 
         if ($filmPerson) {
             $qb
@@ -228,6 +231,8 @@ class OldFilmPhotoRepository extends EntityRepository
 
         $qb
             ->select('count(fp)')
+            ->andWhere('fp.internet = :internet')
+            ->setParameter(':internet', 'O')
 //            ->andWhere('fp.idtypephoto in (:types)')
 //            ->setParameter(':types', $types)
         ;

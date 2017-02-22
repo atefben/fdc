@@ -42,6 +42,7 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
             ->setName('base:import:selfkit-director-rules')
             ->addOption('count-movies', null, InputOption::VALUE_NONE)
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Get 100 movies per page')
+            ->addOption('remove', null, InputOption::VALUE_NONE)
         ;
     }
 
@@ -49,6 +50,11 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
     {
         $this->input = $input;
         $this->output = $output;
+        if ($input->getOption('remove')) {
+            $this->remove();
+            die;
+        }
+
 
         if ($input->getOption('count-movies')) {
             $output->writeln('<info>' . $this->countMovies() . ' movies found</info>');
@@ -160,4 +166,37 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
         return $this->getContainer()->get('doctrine')->getManager();
     }
 
+
+    private function remove()
+    {
+        $persons = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->findAll();
+        $bar = new ProgressBar($this->output, count($persons));
+        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+        $bar->start();
+        $flush = false;
+        foreach ($persons as $person) {
+            foreach ($person->getSelfkitImages() as $selfkitImage) {
+                if (!$this->isOldInternet($selfkitImage)) {
+                    $person->removeSelfkitImage($selfkitImage);
+                    $flush = true;
+                }
+            }
+            if ($flush) {
+                $this->getDoctrineManager()->flush();
+                $flush = false;
+            }
+        }
+    }
+
+    private function isOldInternet(Media $media)
+    {
+        $old = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:OldFilmPhoto')
+            ->findOneBy(['idphoto' => $media->getOldMediaPhoto()])
+        ;
+        if ($old) {
+            return $old->getInternet() == 'O';
+        }
+    }
 }
