@@ -2555,6 +2555,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_social_wall_hashtag:
+        class: Base\AdminBundle\Admin\CCM\CcmSocialWallHashTagAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall hashtag}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_pros_page:
         class: Base\AdminBundle\Admin\CCM\CcmProsPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsPage, ApplicationSonataAdminBundle:CRUD]
@@ -2616,6 +2624,14 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsContact, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Contact, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_social_wall:
+        class: Base\AdminBundle\Admin\CCM\CcmSocialWallAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWall, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
