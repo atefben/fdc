@@ -176,18 +176,18 @@ class OldFilmPhotoRepository extends EntityRepository
      */
     public function getLegacyPersonImages(FilmPerson $filmPerson = null, $firstResult = null, $maxResults = null)
     {
-        $types = [
-            FilmFilmMedia::TYPE_JURY,
-            FilmFilmMedia::TYPE_DIRECTOR,
-            FilmFilmMedia::TYPE_PERSON,
-        ];
+//        $types = [
+//            FilmFilmMedia::TYPE_JURY,
+//            FilmFilmMedia::TYPE_DIRECTOR,
+//            FilmFilmMedia::TYPE_PERSON,
+//        ];
 
         $qb = $this->createQueryBuilder('fp');
 
-        $qb
-            ->andWhere('fp.idtypephoto in (:types)')
-            ->setParameter(':types', $types)
-        ;
+//        $qb
+//            ->andWhere('fp.idtypephoto in (:types)')
+//            ->setParameter(':types', $types)
+//        ;
 
         if ($filmPerson) {
             $qb
@@ -218,18 +218,18 @@ class OldFilmPhotoRepository extends EntityRepository
      */
     public function getLegacyPersonImagesCount(FilmPerson $filmPerson = null)
     {
-        $types = [
-            FilmFilmMedia::TYPE_JURY,
-            FilmFilmMedia::TYPE_DIRECTOR,
-            FilmFilmMedia::TYPE_PERSON,
-        ];
+//        $types = [
+//            FilmFilmMedia::TYPE_JURY,
+//            FilmFilmMedia::TYPE_DIRECTOR,
+//            FilmFilmMedia::TYPE_PERSON,
+//        ];
 
         $qb = $this->createQueryBuilder('fp');
 
         $qb
             ->select('count(fp)')
-            ->andWhere('fp.idtypephoto in (:types)')
-            ->setParameter(':types', $types)
+//            ->andWhere('fp.idtypephoto in (:types)')
+//            ->setParameter(':types', $types)
         ;
 
         if ($filmPerson) {
