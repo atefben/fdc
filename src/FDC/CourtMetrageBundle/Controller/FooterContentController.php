@@ -17,7 +17,7 @@ class FooterContentController extends Controller
      * Retrieve data for Mentions Légales / Crédits / Politique de confidentialité page
      * @param Request $request
      *
-     * @Route("/{type}", name="fdc_ccm_footer_content")
+     * @Route("/page/{type}", name="fdc_ccm_footer_content")
      */
     public function showAction(Request $request, $type)
     {
