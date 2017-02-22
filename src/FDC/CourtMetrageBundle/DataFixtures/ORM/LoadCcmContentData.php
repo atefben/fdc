@@ -32,21 +32,21 @@ class LoadCcmContentData implements FixtureInterface
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::class)
                 ->findBy(['type' => \FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_MENTIONES_LEGALES])) == 0) {
             $legalePage = new \FDC\CourtMetrageBundle\Entity\CcmFooterContent();
-            $legalePage->setType('mentions-legales');
+            $legalePage->setType(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_MENTIONES_LEGALES);
             $manager->persist($legalePage);
         }
 
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::class)
                 ->findBy(['type' => \FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_CREDITS])) == 0) {
             $creditsPage = new \FDC\CourtMetrageBundle\Entity\CcmFooterContent();
-            $creditsPage->setType('credits');
+            $creditsPage->setType(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_CREDITS);
             $manager->persist($creditsPage);
         }
 
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::class)
                 ->findBy(['type' => \FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_CONFIDENTIALITE])) == 0) {
             $confidentialitePage = new \FDC\CourtMetrageBundle\Entity\CcmFooterContent();
-            $confidentialitePage->setType('politique-de-confidentialite');
+            $confidentialitePage->setType(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_CONFIDENTIALITE);
             $manager->persist($confidentialitePage);
         }
 
