@@ -169,7 +169,10 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
 
     private function remove()
     {
-        $persons = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmPerson')->findAll();
+        $persons = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmPerson')
+            ->findBy([], null, 100, ($page -1 )*100);
         $bar = new ProgressBar($this->output, count($persons));
         $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
         $bar->start();
