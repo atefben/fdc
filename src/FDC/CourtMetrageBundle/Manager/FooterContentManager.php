@@ -24,6 +24,12 @@ class FooterContentManager
      */
     protected $requestStack;
 
+    protected $routes = [
+        'fdc_ccm_footer_credits' => 'credits',
+        'fdc_ccm_footer_mentions_legales' => 'politique-de-confidentialite',
+        'fdc_ccm_footer_politique_de_confidentialite' => 'mentions-legales'
+    ];
+
     /**
      * ProsManager constructor.
      * @param EntityManager $entityManager
@@ -35,13 +41,19 @@ class FooterContentManager
         $this->requestStack = $requestStack;
     }
     
-    public function getPageContent($type)
+    public function getPageContent($route)
     {
-        return $this->em->getRepository(CcmFooterContentTranslation::class)
-            ->getPageByTypeAndLocale(
-                $type,
-                $this->requestStack->getMasterRequest()->getLocale()
-            );
+        if (isset($this->routes[$route])) {
+            $type = $this->routes[$route];
+
+            return $this->em->getRepository(CcmFooterContentTranslation::class)
+                ->getPageByTypeAndLocale(
+                    $type,
+                    $this->requestStack->getMasterRequest()->getLocale()
+                );
+        }
+
+        return null;
     }
     
     public function getPageDescription($page)

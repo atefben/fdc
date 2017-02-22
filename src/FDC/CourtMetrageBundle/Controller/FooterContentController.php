@@ -17,13 +17,15 @@ class FooterContentController extends Controller
      * Retrieve data for Mentions Légales / Crédits / Politique de confidentialité page
      * @param Request $request
      *
-     * @Route("/page/{type}", name="fdc_ccm_footer_content")
+     * @Route("/mentions-legales", name="fdc_ccm_footer_mentions_legales")
+     * @Route("/credits", name="fdc_ccm_footer_credits")
+     * @Route("/politique-de-confidentialite", name="fdc_ccm_footer_politique_de_confidentialite")
      */
-    public function showAction(Request $request, $type)
+    public function showAction(Request $request)
     {
         $footerContentManager = $this->get('ccm.manager.footer_content');
-
-        $pageContent = $footerContentManager->getPageContent($type);
+        $routeName = $request->get('_route');
+        $pageContent = $footerContentManager->getPageContent($routeName);
         
         if (!$pageContent) {
             throw new NotFoundHttpException();
