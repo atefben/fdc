@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * CcmShortFilmCorner
  * @ORM\Table(name="ccm_short_film_corner")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmShortFilmCornerRepository")
  */
 class CcmShortFilmCorner implements TranslateMainInterface
 {

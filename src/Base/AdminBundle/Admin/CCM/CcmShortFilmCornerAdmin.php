@@ -86,6 +86,7 @@ class CcmShortFilmCornerAdmin extends Admin
                 'label'        => false,
                 'types'        => array(
                     'ccm_sfc_widget_text_type',
+                    'ccm_sfc_widget_subtitle_type',
                     'ccm_sfc_widget_quote_type',
                     'ccm_sfc_widget_audio_type',
                     'ccm_sfc_widget_image_type',

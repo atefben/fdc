@@ -16,6 +16,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
  *  "text" = "CcmShortFilmCornerWidgetText",
+ *  "subtitle" = "CcmShortFilmCornerWidgetSubtitle",   
  *  "quote" = "CcmShortFilmCornerWidgetQuote",
  *  "audio" = "CcmShortFilmCornerWidgetAudio",
  *  "image" = "CcmShortFilmCornerWidgetImage",

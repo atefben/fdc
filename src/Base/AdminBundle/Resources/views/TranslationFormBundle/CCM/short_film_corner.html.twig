@@ -120,7 +120,9 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.widgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_text_type' %}
+                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' %}
+                                                <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_text_type' %}
                                                 <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_video_type' %}
                                                 <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
@@ -137,7 +139,8 @@
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
-                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_text_type' or
+                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' or
+                                            widget.children._type.vars.value == 'ccm_sfc_widget_text_type' or
                                             widget.children._type.vars.value == 'ccm_sfc_widget_video_youtube_type' or
                                             widget.children._type.vars.value == 'ccm_sfc_widget_quote_type' %}
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -160,6 +163,7 @@
                                     {% endfor %}
                                 </div>
                                 {{ 'form.news.helper_widgets'|trans }}<br/>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_sfc_widget_subtitle_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.subtitle'|trans }}</a>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_sfc_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_sfc_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.ccm_sfc_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
@@ -183,7 +187,9 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.widgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_text_type' %}
+                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' %}
+                                                <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_text_type' %}
                                                 <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_video_type' %}
                                                 <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
@@ -200,7 +206,8 @@
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
-                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_text_type' or
+                                            {% if widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' or
+                                            widget.children._type.vars.value == 'ccm_sfc_widget_text_type' or
                                             widget.children._type.vars.value == 'ccm_sfc_widget_video_youtube_type' or
                                             widget.children._type.vars.value == 'ccm_sfc_widget_quote_type' %}
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -345,9 +352,12 @@
                                         <div class="item base-widget">
                                             {% if
                                             widget.children._type.vars.value == 'ccm_sfc_widget_text_type' or
+                                            widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' or
                                             widget.children._type.vars.value == 'ccm_sfc_widget_quote_type' %}
                                                 {% if widget.children._type.vars.value == 'ccm_sfc_widget_text_type' %}
                                                     <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' %}
+                                                    <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
                                                 {% endif %}
