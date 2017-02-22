@@ -8,12 +8,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class CcmFilmRegisterProcedureType extends AbstractType
+class CcmLabelSectionPositionType extends AbstractType
 {
     /**
      * @var string
      */
-    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmFilmRegisterProcedure';
+    protected $dataClass = 'FDC\CourtMetrageBundle\Entity\CcmLabelSectionPosition';
 
     /**
      * admin
@@ -26,7 +26,7 @@ class CcmFilmRegisterProcedureType extends AbstractType
     /**
      * @var CcmRegisterProcedureAdmin
      */
-    private $registerProcedureAdmin;
+    private $labelSection;
 
     /**
      * setSonataAdmin function.
@@ -40,9 +40,9 @@ class CcmFilmRegisterProcedureType extends AbstractType
         $this->admin = $admin;
     }
 
-    public function setRegisterProcedureAdmin($registerProcedureAdmin)
+    public function setLabelSectionAdmin($labelSectionAdmin)
     {
-        $this->registerProcedureAdmin = $registerProcedureAdmin;
+        $this->labelSection = $labelSectionAdmin;
     }
 
     /**
@@ -56,18 +56,20 @@ class CcmFilmRegisterProcedureType extends AbstractType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
-            ->add('procedure', 'sonata_type_model_list', array(
+            ->add('labelSection', 'sonata_type_model_list', array(
                 'constraints'        => array(
                     new NotBlank(),
                 ),
-                'label' => 'form.ccm.film_register.label_procedure',
-                'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['procedure'],
-                'model_manager' => $this->registerProcedureAdmin->getModelManager(),
-                'class' => $this->registerProcedureAdmin->getClass(),
+                'label' => 'form.ccm.graphical_charter.section',
+                'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['labelSection'],
+                'model_manager' => $this->labelSection->getModelManager(),
+                'class' => $this->labelSection->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
-            ));
+            ))
+            ->add('position')
+        ;
     }
 
     /**
@@ -87,6 +89,6 @@ class CcmFilmRegisterProcedureType extends AbstractType
      */
     public function getName()
     {
-        return 'film_register_procedure';
+        return 'ccm_label_section_position_type';
     }
 }

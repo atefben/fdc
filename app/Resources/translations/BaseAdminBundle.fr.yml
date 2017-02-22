@@ -486,6 +486,7 @@ admin:
         ccm:
             pros: Short Film Corner
             general: CCM General
+            participate: Participer
             news: Actualités
             seo_tetieres: SEO + TETIERES
             participer: Participer
@@ -629,6 +630,20 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     ccm:
+        graphical_charter:
+            header: Chapô
+            text: Bloc de texte
+            form_title: Sections de charte graphique
+            label_sections: Sections de charte graphique
+            label_section: Section de charte graphique
+            widget_section: Accordéon item
+            section: Section
+            section_name: Nom
+            widget_text:
+                text: Texte
+            content:
+                text: Module de texte
+
         register_procedure:
             name: Catégorie des procédures d’inscription
         waiting_page:

@@ -784,6 +784,25 @@ services:
         tags:
             - { name: form.type, alias: 'double_description_type'}
 
+    base.admin.form.ccm_label_section_content_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_type'}
+
+    base.admin.form.ccm_label_section_content_text_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentTextType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_text_type'}
+
+    base.admin.form.ccm_label_section_position:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionPositionType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_position_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_label_section_position_dummy']]
+            - ['setLabelSectionAdmin', ['@base.admin.ccm_label_section']]
+
     #CCM - footer content type text
     base.admin.form.ccm_content_text_type:
         scope: prototype
