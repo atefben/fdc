@@ -7,3 +7,6 @@
 .half-div.v2 .half-photo .photo-container {
     overflow: hidden;
 }
+.single-article .chapeau {
+    text-align: left;
+}
