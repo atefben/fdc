@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin;
 use FDC\CourtMetrageBundle\Entity\CcmFooterContent;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class CcmConfidentialiteAdmin extends CcmFooterContentAdmin
 {
@@ -25,5 +26,13 @@ class CcmConfidentialiteAdmin extends CcmFooterContentAdmin
     {
         parent::prePersist($page);
         $page->setType(CcmFooterContent::FOOTER_CONFIDENTIALITE);
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }
