@@ -10,3 +10,6 @@
 .single-article .chapeau {
     text-align: left;
 }
+.visible-popin {
+    z-index: 1007;
+}

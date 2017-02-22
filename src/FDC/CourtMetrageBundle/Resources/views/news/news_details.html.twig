@@ -227,7 +227,6 @@
         </div>
         <span class="anim"></span>
     </div>
-    <!-- POPIN MAIL SHARE -->
     {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
     {'section': article.theme|trans_fallback('name'),
         'detail': article.publishedAt|date('d.m.y'),
@@ -235,5 +234,11 @@
         'description': articleDescriptionWidget is not null ? articleDescriptionWidget|trans_fallback('content') : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
-    <!-- END POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmailMedia',
+    {'section': article.theme|trans_fallback('name'),
+        'detail': article.publishedAt|date('d.m.y'),
+        'title': article|trans_fallback('title'),
+        'description': articleDescriptionWidget is not null ? articleDescriptionWidget|trans_fallback('content') : '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}
