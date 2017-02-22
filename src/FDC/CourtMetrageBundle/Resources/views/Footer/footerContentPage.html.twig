@@ -7,9 +7,7 @@
         <section class="legal-notice-container">
             <h3 class="legal-notice-description">{{ pageContent.subtitle }}</h3>
             <div class="legal-notice-responsable">
-                {# TODO: BO GESTION #}
-                <p><strong>Responsable :</strong> Vinca Van Eecke</p>
-                <p><strong>Hébergement :</strong> Amazon</p>
+                {{ pageContent.description|raw }}
             </div>
             {% if pageDescription is defined and pageDescription is not null %}
                 {% for description in pageDescription %}

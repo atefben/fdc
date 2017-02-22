@@ -79,6 +79,15 @@ class CcmFooterContentAdmin extends Admin
                         ),
                         'required' => true
                     ),
+                    'description'          => array(
+                        'label'              => 'form.ccm.label.footer.description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true,
+                        'field_type'         => 'ckeditor',
+                    ),
                     'createdAt'         => array(
                         'display' => false,
                     ),

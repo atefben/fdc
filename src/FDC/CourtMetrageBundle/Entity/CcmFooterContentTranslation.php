@@ -41,6 +41,13 @@ class CcmFooterContentTranslation implements TranslateChildInterface
     protected $subtitle;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    protected $description;
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -70,6 +77,22 @@ class CcmFooterContentTranslation implements TranslateChildInterface
     public function setSubtitle($subtitle)
     {
         $this->subtitle = $subtitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 }
 
