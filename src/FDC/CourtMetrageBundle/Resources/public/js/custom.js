@@ -27,7 +27,7 @@ function shortFilmCornerStickyHeader() {
 }
 
 function initProPage() {
-    $('.modal-toggle').on('click', function(e) {
+    $('.modal-toggle').unbind().on('click', function(e) {
         e.preventDefault();
 
         if ($('.modal').hasClass('is-visible')) {
