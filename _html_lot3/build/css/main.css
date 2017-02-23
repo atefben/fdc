@@ -6985,6 +6985,7 @@ body.chocolat-open > .chocolat-content {
 .ie .slider-restropective .block-01 .vFlexAlign img {
   height: auto !important;
   width: auto !important;
+  max-width: none !important;
   border: 1px solid green;
 }
 .ie .slider-restropective .block-01 .vFlexAlign img.open {
