@@ -3,6 +3,7 @@
   .ie & {
     height: 404px;
     width: auto!important;
+    border: 1px solid red;
     &.open {
         height: auto;
     }
