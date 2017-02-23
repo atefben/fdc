@@ -1,12 +1,14 @@
 /* thomon 27/01/2017 - misc fixes retrospective 69e edition */
 .slider-restropective .block-01 .vFlexAlign img {
   .ie & {
+
     height: auto!important;
     width: auto!important;
     min-width: none!important;
-    max-with: none!important;
+    max-with: 100%!important;
     min-height: none!important;
-    max-height: none!important;
+    max-height: 100%!important;
+
     &.open {
         height: auto;
     }
