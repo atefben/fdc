@@ -484,6 +484,15 @@ services:
         calls:
             - ['setFDCPageParticipateSectionWidgetTypeoneDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typeone_dummy']]
 
+    base.admin.form.fdc_page_la_selection_cannes_classics_widget_typeone_type_media_image:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImageType
+        tags:
+            - { name: form.type, alias: 'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type'}
+        calls:
+            - ['setAdmin', ['@base.admin.fdc_page_participate_section_widget_typeone_media_image_dummy']]
+#            - ['setAdmin', ['@base.admin.fdc_page_participate_section_widget_typeone_dummy']]
+
     base.admin.form.fdc_page_participate_section_widget_typetwo_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypetwoType

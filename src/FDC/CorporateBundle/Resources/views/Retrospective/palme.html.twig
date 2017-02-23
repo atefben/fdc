@@ -171,7 +171,7 @@
                                         <p class="title-item">{{ transWidget.paragraph }}</p>
                                     {% endif %}
                                 </div>
-                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_typeone %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_typeone_media_image %}
                                 {% if widget.image is not null %}
                                     {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
                                     {% if trans is null or trans.file is null %}
@@ -179,16 +179,17 @@
                                     {% endif %}
                                     {% set image = trans.file %}
                                 {% endif %}
-                                <article class="block-movie-preview"
-                                         style='background-image: url({% path image, '976x535' %}'>
+                                <article class="block-movie-preview"{% if image is defined and image %} style="background-image: url('{% path image, '976x535' %}');"{% endif %}>
                                     <div class="bck-hover">
                                         <div class="wrapper-item-big">
                                             <div class="poster">
+                                                {% if image is defined and image %}
                                                 <figure>
                                                     <img src="{% path image, '363x260' %}"
                                                          alt="{{ widget.image|trans_fallback('alt') }}">
-                                                    <figcaption>Lorem ipsumt quia.</figcaption>
+                                                    <figcaption>{{ widget.image|trans_fallback('legend') }}</figcaption>
                                                 </figure>
+                                                {% endif %}
                                             </div>
                                             <div class="infos">
                                                 <strong class="big-date">{{ widget|trans_fallback('title') }}</strong>

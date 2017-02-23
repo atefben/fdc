@@ -1046,6 +1046,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_participate_section_widget_typeone_media_image_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypeoneMediaImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage, BaseAdminBundle:FDCPageParticipateSectionWidgetTypeoneMediaImageDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typeone Media Image widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.fdc_page_participate_section_widget_typetwo_dummy:
         class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypetwoDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwo, BaseAdminBundle:FDCPageParticipateSectionWidgetTypetwoDummyAdmin]

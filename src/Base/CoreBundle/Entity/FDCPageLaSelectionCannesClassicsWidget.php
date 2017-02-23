@@ -30,6 +30,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "subtitle" = "FDCPageLaSelectionCannesClassicsWidgetSubtitle",
  *  "movie" = "FDCPageLaSelectionCannesClassicsWidgetMovie",
  *  "typeone" = "FDCPageLaSelectionCannesClassicsWidgetTypeone",
+ *  "typeonemediaimage" = "FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage",
  *
  * })
  */

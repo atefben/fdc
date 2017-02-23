@@ -255,6 +255,8 @@ sonata_media:
                 368x500: { width: 368, height: 500, quality: 100, constraint: false}
                 #webview
                 640x400: { width: 640, height: 400, quality: 100, constraint: false}
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                363x260: { width: 363 , height: 260 , quality: 100, constraint: false }
 
         media_image_simple:
             providers:

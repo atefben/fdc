@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Form\Type;
 
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTypeone;
 use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,7 @@ class FDCPageLaSelectionCannesClassicsWidgetTypeoneType extends FDCPageLaSelecti
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCPageLaSelectionCannesClassicsWidgetTypeone';
+    protected $dataClass = FDCPageLaSelectionCannesClassicsWidgetTypeone::class;
 
     /**
      * PressGuideWidgetDocumentDummyAdmin

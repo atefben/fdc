@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetImage;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetImageDualAlign;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetQuote;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTypeone;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideo;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideoYoutube;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntro;
@@ -44,6 +45,7 @@ class FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension extends Twig_Ext
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_intro', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetIntro; }),
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_subtitle', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetSubtitle; }),
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeone; })
+            new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone_media_image', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage; })
 
         );
     }

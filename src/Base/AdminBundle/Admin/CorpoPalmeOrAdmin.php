@@ -213,7 +213,7 @@ class CorpoPalmeOrAdmin extends Admin
                     'fdc_page_la_selection_cannes_classics_widget_subtitle_type',
                     'fdc_page_la_selection_cannes_classics_widget_intro_type',
                     'fdc_page_la_selection_cannes_classics_widget_movie_type',
-                    'fdc_page_la_selection_cannes_classics_widget_typeone_type'
+                    'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
