@@ -81,7 +81,6 @@
                         {% endif %}
 
                         {% if section.procedure.displayInscription != true %}
-
                             {% if section.procedure.backgroundImage %}
                             {% set mainTrans = section.procedure.backgroundImage.findTranslationByLocale(app.request.locale) %}
                             {% if mainTrans is null or mainTrans.file is null %}
