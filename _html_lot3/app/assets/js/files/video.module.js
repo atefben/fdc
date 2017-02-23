@@ -466,7 +466,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         controls: ($('body').hasClass('tablet')) ? true : false
     });
 
-
     if (havePlaylist) {
         var tempSlider = $(slider),
             playlist = [];

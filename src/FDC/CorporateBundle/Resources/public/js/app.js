@@ -506,7 +506,7 @@ var initVideo = function(hash) {
             var videoFile =  $container.data('file');
             var videoImage =  $container.data('img');
         }
-        console.log(videoFile);
+        
         playerInstance.setup({
             //sources: videoFile,
             file: videoFile[0],
@@ -6517,7 +6517,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         height: $(vid).parent('div').height(),
         controls: ($('body').hasClass('tablet')) ? true : false
     });
-
 
     if (havePlaylist) {
         var tempSlider = $(slider),
