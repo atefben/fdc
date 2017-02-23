@@ -494,16 +494,16 @@ var owInitSlider = function (sliderName) {
 
 
 var rtime;
-var timeout = false;
-console.log(timeout);
+var timeoutVar = false;
+console.log(timeoutVar);
 var delta = 300;
 $(window).resize(function() {
-    console.log(timeout);
+    console.log(timeoutVar);
     $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
 
     rtime = new Date();
-    if (timeout === false) {
-        timeout = true;
+    if (timeoutVar === false) {
+        timeoutVar = true;
         setTimeout(resizeend, delta);
     }
 });
@@ -517,7 +517,7 @@ function resizeend() {console.log('resizeend');
 
 
     } else {
-        timeout = false; 
+        timeoutVar = false; 
         if ($('.retrospective').length) {
             
             $('.slides').removeClass('fadeOut').addClass('fadeIn');
