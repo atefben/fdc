@@ -44,8 +44,8 @@ class FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension extends Twig_Ext
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_movie', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetMovie; }),
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_intro', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetIntro; }),
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_subtitle', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetSubtitle; }),
-            new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeone; })
-            new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone_media_image', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage; })
+            new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeone; }),
+            new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone_media_image', function ($widget) { return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage; }),
 
         );
     }
