@@ -122,6 +122,7 @@ var initVideo = function(hash) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
         setTimeout(function(){
+            console.log($container.find('.jwplayer'));
             $container.find('.jwplayer').removeClass('jw-skin-seven');
         },500);
 
