@@ -333,6 +333,7 @@ sonata_media:
                 346x346: { width: 346 , height: 346 , quality: 100, constraint: false }
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
                 954x606: { width: 954 , height: 606 , quality: 100, constraint: false }
+                726x518: { width: 726 , height: 518 , quality: 100, constraint: false }
 
         media_audio:
             providers:
