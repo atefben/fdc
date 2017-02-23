@@ -6113,7 +6113,7 @@ var timeout = 1000,
     $topBar = '',
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-function playerInit(id, cls, havePlaylist, live) {
+function playerInit(id, cls, havePlaylist, live) {alert('init');
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
     live = live || false;
@@ -6699,7 +6699,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function () {
-    alert('a');
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
