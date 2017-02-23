@@ -35,6 +35,9 @@ class GalleryDualAlignAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('medias', null, [
+                'associated_property' => 'media'
+            ])
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
