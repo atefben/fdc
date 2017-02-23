@@ -50,13 +50,13 @@
                                                 </strong>
                                                 <i class="icon icon-nav-accordion icon-minus"></i>
                                             </div>
-                                            {% if content|trans_fallback('mainDescription')|raw %}
-                                                <div class="contain-infos-02">
-                                                    <h3>
-                                                        {{ content|trans_fallback('mainDescription')|raw }}
-                                                    </h3>
-                                                </div>
-                                            {% endif %}
+                                            {#{% if content|trans_fallback('mainDescription')|raw %}#}
+                                                {#<div class="contain-infos-02">#}
+                                                    {#<h3>#}
+                                                        {#{{ content|trans_fallback('mainDescription')|raw }}#}
+                                                    {#</h3>#}
+                                                {#</div>#}
+                                            {#{% endif %}#}
                                             <div class="item-manual">
                                                 <div class="contain-infos">
                                                     {% for widget in content.arriveWidgets %}
