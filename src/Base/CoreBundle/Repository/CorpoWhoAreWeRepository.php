@@ -31,23 +31,6 @@ class CorpoWhoAreWeRepository extends TranslationRepository
             ->setParameter('slug', $slug)
         ;
 
-        $output = $qb->getQuery()->getOneOrNullResult();
-
-        if (!$output) {
-            $qb = $this->createQueryBuilder('p');
-
-            $qb
-                ->join('p.selectionSection', 's')
-                ->join('s.translations', 't')
-                ->andWhere('t.locale = :locale')
-                ->andWhere('t.slug = :slug')
-                ->setParameter('locale', $locale)
-                ->setParameter('slug', $slug)
-            ;
-
-            return $qb->getQuery()->getOneOrNullResult();
-        }
-
-        return $output;
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }
