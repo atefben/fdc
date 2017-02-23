@@ -5,6 +5,9 @@ namespace Base\AdminBundle\Admin\CCM;
 
 use Doctrine\ORM\QueryBuilder;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
+
 /**
  * Class CcmShortFilmCornerWhoAreWeAdmin
  *
@@ -41,5 +44,28 @@ class CcmShortFilmCornerWhoAreWeAdmin extends CcmShortFilmCornerAdmin
     {
         parent::prePersist($page);
         $page->setType(CcmShortFilmCorner::TYPE_WHO_ARE_WE);
+    }
+
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        //$this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager')
+        // todo: get choices and handle position change
+        parent::configureFormFields($formMapper);
+        $formMapper
+            ->add('position', 'choice',[
+                'choices' => [1,2,3]
+            ])
+        ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list', 'create', 'delete']);
     }
 }

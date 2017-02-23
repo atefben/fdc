@@ -3,32 +3,23 @@
     <div class="block-push block-push-top" style="background-image: url('{% path image|trans_fallback('file'), 'reference' %}')">
         <div class="vFlexAlign">
             <div class="txts">
-                <h1 class="title-3">{{ title }}</h1>
+                <h1 class="title-3">{{ transCode|trans }}</h1>
             </div>
         </div>
     </div>
     <div class="ajax-section short-film-corner">
         <div class="contain-ajax bright" id="main">
-            <nav class="navigation-sticky">
-                <ul>
-                    <li>
-                        <a href="{{ header_fdc_fr }}" target="_blank">{{ 'header.fdc'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ header_cine_fr }}" target="_blank">{{ 'header.cine'|trans }}</a>
-                    </li>
-                    <li class="active">
-                        <a href="{{ header_ccm_fr }}" class="active">{{ 'header.ccm'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ header_mdf_fr }}" target="_blank">{{ 'header.mdf'|trans }}</a>
-                    </li>
-                    {#todo: next links#}
-                    <li><a href="who-village-international.html">Village international</a></li>
-                    <li><a href="who-staff.html">L'équipe</a></li>
-                    <li><a href="who-identity-guidelines.html">Charte graphique</a></li>
-                </ul>
-            </nav>
+            {% if whoAreWePages is defined %}
+                <nav class="navigation-sticky">
+                    <ul>
+                        {% for page in whoAreWePages %}
+                            <li {{ slug == page.slug ? 'class="active"' : '' }}>
+                                <a href="{{ path('ccm_sfc_who_are_we',{'slug': page.slug}) }}">{{ page.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            {% endif %}
             <section id="main" class="single-article">
                 <div class="all-contain">
                     <div class="contain-title vFlexAlign block-01-s">
