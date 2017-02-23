@@ -22,7 +22,7 @@ var owInitGrid = function (id) {
         });
 
         var $items = $('.item');
-
+        var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function () {
             $gridMore.isotope({
@@ -45,13 +45,19 @@ var owInitGrid = function (id) {
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
-                            console.log('click');
-                            $('.ajax-request').trigger('click');
+                            if(clickAllow){
+                                clickAllow = false;
+                                $('.ajax-request').trigger('click');
+                            }
                         }
                     });
                 }
             }
         });
+
+        var ticker = window.setInterval(function(){
+            clickAllow = true;
+        },1000);
 
 
         var number = 0;
