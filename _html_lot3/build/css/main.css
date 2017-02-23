@@ -6984,7 +6984,7 @@ body.chocolat-open > .chocolat-content {
 /* thomon 27/01/2017 - misc fixes retrospective 69e edition */
 .ie .slider-restropective .block-01 .vFlexAlign img {
   height: auto !important;
-  max-width: none !important;
+  width: auto !important;
 }
 .ie .slider-restropective .block-01 .vFlexAlign img.open {
   height: auto;
