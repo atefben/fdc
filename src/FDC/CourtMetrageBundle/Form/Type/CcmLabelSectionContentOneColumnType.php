@@ -94,7 +94,37 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'checkbox',
                         'required' => false
-                    )
+                    ),
+                    'fileTitle'             => array(
+                        'label'              => 'form.ccm.graphical_charter.file_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'file'           => array(
+                        'label' => 'form.ccm.graphical_charter.file_1',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                        'field_type'         => 'sonata_media_type',
+                        'provider'           => 'sonata.media.provider.archive',
+//                        'constraints'        => array(
+//                            new NotBlank()
+//                        )
+                    ),
+                    'file2Title'             => array(
+                        'label'              => 'form.ccm.graphical_charter.file2_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'file2'           => array(
+                        'label' => 'form.ccm.graphical_charter.file_2',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                        'field_type'         => 'sonata_media_type',
+                        'provider'           => 'sonata.media.provider.archive',
+//                        'constraints'        => array(
+//                            new NotBlank()
+//                        )
+                    ),
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(

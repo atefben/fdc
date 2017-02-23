@@ -631,6 +631,10 @@ form:
     label_pdf: Pdf
     ccm:
         graphical_charter:
+            file_1: Fichier 1
+            file_2: Fichier 2
+            file_title: Bouton 1 titre
+            file2_title: Bouton 2 titre
             image_1: Image colonne 1
             image_2: Image colonne 2
             image_3: Image colonne 3
