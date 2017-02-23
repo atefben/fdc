@@ -35,3 +35,11 @@ sup {
 .wysiwyg a {
     color: #c8a461;
 }
+
+.topiconsContainer .icon-border-right {
+    border-right: 1px solid #404040;
+}
+
+.topiconsContainer .icon-border-left {
+    border-left: 1px solid #404040;
+}
