@@ -5,28 +5,28 @@
                 <a href="{{ header_fdc_com }}" target="_blank">{{ 'header.festival'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_fdc_fr }}" target="_blank">{{ 'header.fdc'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank">{{ 'header.fdc'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_cine_fr }}" target="_blank">{{ 'header.cine'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank">{{ 'header.cine'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_ccm_fr }}" class="active">{{ 'header.ccm'|trans }}</a>
+                <a href="{{ path('fdc_ccm_homepage') }}" class="active">{{ 'header.ccm'|trans }}</a>
             </li>
             <li>
-                <a href="{{ header_mdf_fr }}" target="_blank">{{ 'header.mdf'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank">{{ 'header.mdf'|trans }}</a>
             </li>
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="{{ header_account_fr }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_account_'~ app.request.locale) }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
             </li>
             <li class="lang">
-                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }}</a>
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                    {% for locale in ccm_locales if locale != app.request.locale %}
                         <li>
-                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                            <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -71,14 +71,14 @@
             <div id="sticky-user">
                 <ul class="user-nav">
                     <li>
-                        <a href="{{ header_account_fr }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
+                        <a href="{{ attribute(_context, 'header_account_'~ app.request.locale) }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>
                     </li>
                     <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale == 'zh' ? 'CHN' : app.request.locale|upper }} </a>
+                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            {% for locale in locales if locale != app.request.locale and locale != 'es' %}
+                            {% for locale in ccm_locales if locale != app.request.locale %}
                                 <li>
-                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale == 'zh' ? 'CHN' : locale|upper }}</a>
+                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
                                 </li>
                             {% endfor %}
                         </ul>

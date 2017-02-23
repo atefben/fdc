@@ -336,3 +336,5 @@ parameters:
     mdf_google_analytics_first_id: null
     mdf_google_analytics_second_id: null
     mdf_locales: [fr, en, zh]
+    ccm_locales: [fr, en]
+
