@@ -447,7 +447,6 @@ var initVideo = function(hash) {
         }
 
         function initChannelTopBar() {
-            console.log('initChannelTopBar');
             sliderChannelsVideoTop = $container.find(".slider-channels-video").owlCarousel({
                 nav: false,
                 dots: false,
@@ -578,7 +577,7 @@ var initVideo = function(hash) {
             });
 
             if($('.medias').length || $('.media-library').length){
-                initChannelTopBar();
+                //initChannelTopBar();
             }else{
                 initChannel();
                 initChannelTopBar();
