@@ -651,7 +651,7 @@
     img{
       transition: $smoothTransition .8s;
       width: 100%;
-      object-fit: cover;
+      object-fit: initial;
     }
 
     .texts {
