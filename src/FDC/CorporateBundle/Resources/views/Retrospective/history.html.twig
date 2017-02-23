@@ -164,7 +164,7 @@
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                                <div class="title-list-cat block-01-xs">
+                                <div class="title-list-cat">
                                     {% if transWidget.subtitle|trim %}
                                         <h2 class="title">{{ transWidget.subtitle }}</h2>
                                     {% endif %}
