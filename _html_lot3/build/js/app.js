@@ -4848,6 +4848,7 @@ var owInitSlider = function (sliderName) {
 
 var rtime;
 var timeout = false;
+console.log(timeout);
 var delta = 300;
 $(window).resize(function() {
     console.log(timeout);
