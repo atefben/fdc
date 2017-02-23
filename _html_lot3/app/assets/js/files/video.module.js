@@ -74,7 +74,6 @@ var timeout = 1000,
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
-    alert('playerInit');
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
     live = live || false;
@@ -113,7 +112,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).closest('.video-container');
-    alert('load');
     $container.find('.jwplayer').removeClass('jw-skin-seven');
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
@@ -661,7 +659,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function () {
-
+    alert('a');
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true)
     }
