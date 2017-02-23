@@ -24,7 +24,7 @@
             </div>
 
             <div class="block-tab-switch block-01">
-                <h3 class="title-tab-swich">{{ 'participate.register.procedure'|trans }}</h3>
+                <h3 class="title-tab-swich">{{ accredit|trans_fallback('tabPrefix')|raw }}</h3>
 
                 {% if accredit.procedure|length > 0 %}
                     <table class="tab1">
