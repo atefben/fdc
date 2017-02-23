@@ -63,6 +63,12 @@
                                                             {% endif %}
                                                             <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
                                                             {{ widget|trans_fallback('content')|raw }}
+                                                            {% if widget|trans_fallback('btnLabel') %}
+                                                                <a href="http://www.voyages-sncf.com/" class="btn" target="_blank">
+                                                                    <i class="icon icon-create"></i>
+                                                                    {{ 'participate.button.savoirplus'|trans }}
+                                                                </a>
+                                                            {% endif %}
                                                         </div>
                                                     {% endif %}
                                                 {% endfor %}
