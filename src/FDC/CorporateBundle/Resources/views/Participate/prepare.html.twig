@@ -34,13 +34,6 @@
                     </ul>
                 </nav>
                 <div class="all-contain">
-                    {% if content|trans_fallback('mainDescription')|raw %}
-                    <div class="contain-infos-02">
-                        <h3>
-                            {{ content|trans_fallback('mainDescription')|raw }}
-                        </h3>
-                    </div>
-                    {% endif %}
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
                         {% if app.request.attributes.get('slug') == 'prepare' %}
@@ -53,6 +46,13 @@
                                             </strong>
                                             <i class="icon icon-nav-accordion icon-minus"></i>
                                         </div>
+                                        {% if content|trans_fallback('mainDescription')|raw %}
+                                            <div class="contain-infos-02">
+                                                <h3>
+                                                    {{ content|trans_fallback('mainDescription')|raw }}
+                                                </h3>
+                                            </div>
+                                        {% endif %}
                                         <div class="item-manual">
                                             <div class="contain-infos">
                                                 {% for widget in content.arriveWidgets %}
