@@ -181,11 +181,12 @@ h2.sub-title {
 
 header #navigation ul.user li a .icon {
     margin-right: 7px!important;
+    margin-left: 12px!important;
     top: 1px!important;
     color: #d1d1d1;
 }
 
-header #navigation ul.user li a .icon-pencil:after {
+header #navigation ul.user li a .icon-pencil:before {
     content: "";
     background: url(../img/pencil.svg) no-repeat left top;
     background-size: 100%;
