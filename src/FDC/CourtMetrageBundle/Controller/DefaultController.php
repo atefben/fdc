@@ -26,6 +26,8 @@ class DefaultController extends Controller
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
         $movies = $homepageManger->getFilmsByCourtYear();
+        $catalogs = $homepageManger->getCatalogPushes();
+        $catalogImage = $homepageManger->getCatalogImage();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/homepage.html.twig',
@@ -33,6 +35,8 @@ class DefaultController extends Controller
                 'sliders' => $homepageSliders,
                 'pushes'  => $homepagePushes,
                 'movies' => $movies,
+                'catalogs' => $catalogs,
+                'catalogImage' => $catalogImage,
             ]
         );
     }

@@ -3,6 +3,7 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSliderTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -43,6 +44,17 @@ class HomepageManager
             );
     }
 
+    public function getHomepageTranslation()
+    {
+        return $this
+            ->em
+            ->getRepository(HomepageTranslation::class)
+            ->findOneBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
     /**
      * @param $festivalId
      *
@@ -50,13 +62,7 @@ class HomepageManager
      */
     public function getFilmsByCourtYear()
     {
-        $homepage = $this->em
-            ->getRepository(HomepageTranslation::class)
-            ->findOneBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+        $homepage = $this->getHomepageTranslation();
 
         if($homepage) {
             $year = $homepage->getTranslatable()->getCourtYear();
@@ -67,6 +73,27 @@ class HomepageManager
                 ->findBy(['productionYear' => $year]);
 
             return $films;
+        }
+    }
+
+    public function getCatalogPushes()
+    {
+        return $this->em
+            ->getRepository(CatalogPushTranslation::class)
+            ->findBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+
+    public function getCatalogImage()
+    {
+        $homepage = $this->getHomepageTranslation();
+
+        if($homepage) {
+
+            return $homepage->getTranslatable()->getCatalogImage();
         }
     }
 }

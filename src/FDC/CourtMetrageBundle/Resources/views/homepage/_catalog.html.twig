@@ -1,0 +1,12 @@
+{% for catalog in catalogs %}
+<div class="blocks">
+    <h6>{{ catalog.name }}</h6>
+    <a href="{{ catalog.url }}" target="_blank">
+        <div class="plusSignContainer">
+            <div class="plusSign">
+                <img src="{{ asset('bundles/fdccourtmetrage/img/plusSign.png') }}"/>
+            </div>
+        </div>
+    </a>
+</div>
+{% endfor %}
