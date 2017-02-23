@@ -7,11 +7,8 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use \Twig_Extension;
 
 /**
- * FallbackTranslationExtension class.
- *
- * @extends Twig_Extension
- * @author  Antoine Mineau
- * @company Ohwee
+ * Class MiscExtension
+ * @package Base\CoreBundle\Twig\Extension
  */
 class MiscExtension extends Twig_Extension
 {
@@ -25,7 +22,7 @@ class MiscExtension extends Twig_Extension
 
     public function urlize($text)
     {
-        return Transliterator::urlize($text)
+        return Transliterator::urlize($text);
     }
 
     /**
