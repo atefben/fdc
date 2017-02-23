@@ -68,7 +68,7 @@
                         {% if section.procedure.displayReglement != true %}
                             <div class="block-s-info-02 border-bottom border-top vFlexAlign">
                                 <strong class="title-26">{{ section.procedure|trans_fallback('pushTitle') }}</strong>
-                                <p>{{ section.procedure|trans_fallback('pushSubTitle') }}</p>
+                                <p style="background: #000;">{{ section.procedure|trans_fallback('pushSubTitle') }}</p>
                                 <div class="buttons-02">
                                     <a href="{{ path('fdc_corporate_participate_rules', {'id' : section.procedure.id}) }}"
                                        class="button" target="_blank">
