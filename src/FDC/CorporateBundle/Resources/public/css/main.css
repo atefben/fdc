@@ -7152,8 +7152,8 @@ h2.sub-title {
   overflow: hidden;
 }
 .block-diaporama .slider-01 .owl-item .item figure {
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 
 .block-legend .texts .text-01 strong {
