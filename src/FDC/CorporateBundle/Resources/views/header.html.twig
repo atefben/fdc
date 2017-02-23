@@ -81,6 +81,7 @@
     </div>
     <div id="navigation">
         <div class="block-01">
+            {{ render(controller('FDCCorporateBundle:Global:menu', {route : app.request.get('_route')})) }}
 
             {#<nav>#}
                 {#<ul class="main">#}
