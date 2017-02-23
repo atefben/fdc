@@ -488,6 +488,7 @@ admin:
             general: CCM General
             news: Actualités
             seo_tetieres: SEO + TETIERES
+            participer: Participer
 
 dashboard:
     translator:

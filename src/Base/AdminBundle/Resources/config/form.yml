@@ -790,3 +790,61 @@ services:
         class: FDC\CourtMetrageBundle\Form\Type\ContentTextType
         tags:
             - { name: form.type, alias: 'content_text_type'}
+
+    base.admin.form.ccm_module_image_text_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleImageTextType
+        tags:
+            - { name: form.type, alias: 'module_image_text_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_module_image_text']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+
+    base.admin.form.ccm_module_partenaires_fournisseur_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModulePFType
+        tags:
+            - { name: form.type, alias: 'module_partenaires_fournisseur_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_module_partenaires_fournisseur']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+
+    base.admin.form.ccm_module_pictos_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModulePictosType
+        tags:
+            - { name: form.type, alias: 'module_pictos_type'}
+
+    base.admin.form.ccm_module_three_columns_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleThreeColumnsType
+        tags:
+            - { name: form.type, alias: 'module_three_columns_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_module_three_columns']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
+
+    base.admin.form.ccm_module_four_columns_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleFourColumnsType
+        tags:
+            - { name: form.type, alias: 'module_four_columns_type'}
+
+    base.admin.form.ccm_module_subtitle_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleSubtitleType
+        tags:
+            - { name: form.type, alias: 'module_subtitle_type'}
+
+    base.admin.form.ccm_module_transport_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleTransportType
+        tags:
+            - { name: form.type, alias: 'module_transport_type'}
+
+    base.admin.form.ccm_module_google_maps_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleGoogleMapsType
+        tags:
+            - { name: form.type, alias: 'module_google_maps_type'}
