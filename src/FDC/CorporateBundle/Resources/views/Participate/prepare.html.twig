@@ -61,11 +61,11 @@
                                                             {% if widget.picto is not null %}
                                                                 <i class="icon {{ widget.picto|icon_corpo }}"></i>
                                                             {% endif %}
-                                                            <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
-                                                            {{ widget|trans_fallback('content')|raw }}
+                                                            <strong class="transport">{{ widget|trans_fallback('title') }}</strong>
+                                                            <span class="time">{{ widget|trans_fallback('content')|raw }}</span>
                                                             {% if widget|trans_fallback('btnLabel') %}
-                                                                <a href="http://www.voyages-sncf.com/" class="btn" target="_blank">
-                                                                    <i class="icon icon-create"></i>
+                                                                <a href="widget|trans_fallback('btnLabel')" class="btn" target="_blank">
+                                                                    <i class="icon icon_creer"></i>
                                                                     {{ 'participate.button.savoirplus'|trans }}
                                                                 </a>
                                                             {% endif %}
