@@ -5,95 +5,122 @@
 {% endblock bodyClass %}
 {% block body %}
 
-<section id="main">
-    <div class="block-push block-push-top" style="background-image: url({{ asset('bundles/fdccorporate/media/images/who-fdc-01.jpg') }});" >
-        <div class="vFlexAlign">
-            <div class="txts">
-                <h1 class="title-3">qui sommes nous ?</h1>
+    <section id="main">
+        <div class="block-push block-push-top"
+             style="background-image: url({{ asset('bundles/fdccorporate/media/images/who-fdc-01.jpg') }});">
+            <div class="vFlexAlign">
+                <div class="txts">
+                    <h1 class="title-3">qui sommes nous ?</h1>
+                </div>
             </div>
-        </div>
-    </div> <!-- end block push -->
+        </div> <!-- end block push -->
 
-    <div class="ajax-section"><div class="contain-ajax">
-           {{ render(controller('FDCCorporateBundle:WhoAreWe:nav',{'slug': app.request.attributes.get('slug')})) }}
+        <div class="ajax-section">
+            <div class="contain-ajax">
+                {{ render(controller('FDCCorporateBundle:WhoAreWe:nav',{'slug': app.request.attributes.get('slug')})) }}
 
-            <div class="all-contain">
+                <div class="all-contain">
 
-                <div class="contain-title vFlexAlign block-01-s">
-                    <h2 class="title-02">
-                        {{ currentPage|trans_fallback('chapo')|raw }}
-                    </h2>
-                </div>
+                    <div class="contain-title vFlexAlign block-01-s">
+                        <h2 class="title-02">
+                            {{ currentPage|trans_fallback('chapo')|raw }}
+                        </h2>
+                    </div>
 
-                <div class="buttons buttons-01">
-                    <a id="share-article" href="#" class="button"><i class="icon icon-share"></i>Partager</a>
-                    <a href="#" class="button" onclick="window.print()"><i class="icon icon-print"></i>Imprimer</a>
-                </div>
+                    <div class="buttons buttons-01">
+                        <a id="share-article" href="#" class="button"><i class="icon icon-share"></i>Partager</a>
+                        <a href="#" class="button" onclick="window.print()"><i class="icon icon-print"></i>Imprimer</a>
+                    </div>
 
                     {% for widget in currentPage.widgets %}
-                <div class="{{ widget is fdc_page_la_selection_cannes_classics_widget_quote ? 'block-01' : 'block-01-xs' }}">
-                        {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
+
+                    {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
+                        <div class="block-01-xs">
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             <div class="small-pres text">
                                 {{ transWidget.content|raw }}
                             </div>
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
+                        <div class="block-01">
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
+                        <div class="block-01-xs">
                             {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
+                        <div class="block-01-xs">
                             {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
+                        <div class="block-01-xs">
                             {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
-                        {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                        </div>
+                    {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                        <div class="block-01-xs">
                             <div class="contain-img-honneur">
                                 {% set photo = widget.gallery.medias[0].media %}
                                 {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
                                 {% set copyright = photo|trans_fallback('copyright') %}
                                 <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
                             </div>
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                        <div class="block-01-xs">
                             <div class="photos photo-module" data-section="photos">
                                 {% include 'FDCCorporateBundle:News:widgets/slideshow.html.twig' %}
                             </div>
-                        {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
+                        </div>
+                    {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
+                        <div class="block-01-xs">
                             <div class="small-pres half-photos container">
                                 {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' with {'hideHalfDiv': true} %}
                             </div>
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
+                        <div class="block-01-xs">
                             {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
                                 {% for film in widget.widgetMovie.films %}
                                     {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film.film, 'restauration': true} %}
                                 {% endfor %}
                             {% endif %}
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
+                        <div class="block-01-xs">
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             <div class="pres-honneur">
                                 {{ transWidget.introduction|raw }}
                             </div>
-                        {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
-                            {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                            <div class="title-list-cat">
-                                {% if transWidget.subtitle|trim %}
-                                    <h2 class="title">{{ transWidget.subtitle }}</h2>
-                                {% endif %}
-                                {% if transWidget.paragraph|trim %}
-                                    <p class="title-item">{{ transWidget.paragraph }}</p>
-                                {% endif %}
-                            </div>
-                        {% endif %}
+                        </div>
+                    {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
+                        {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                        <div class="title-list-cat">
+                            {% if transWidget.subtitle|trim %}
+                                <h2 class="title">{{ transWidget.subtitle }}</h2>
+                            {% endif %}
+                            {% if transWidget.paragraph|trim %}
+                                <p class="title-item">{{ transWidget.paragraph }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
                 </div>
-                    {% endfor %}
+                {% endfor %}
 
                 <div class="border-top">
                     <strong class="title-9">Partager la page</strong>
                     {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                     <div class="relative">
                         <div class="block-social-network block-social-network-all">
-                            <a class="facebook" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'Qui sommes nous ? - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a><!--
-                --><a class="twitter" href="https://twitter.com/intent/tweet?text={{ 'Qui sommes nous ? - '|url_encode(true)  ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i class="icon icon-twitter"></i></a><!--
-                --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentUrl }}"><i class="icon icon-link"></i></a><!--
+                            <a class="facebook"
+                               href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&name={{ 'Qui sommes nous ? - '|url_encode(true) ~ currentPage|trans_fallback('title')|url_encode(true) }}&description={{ currentPage|trans_fallback('chapo')|striptags|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
+                                        class="icon icon-facebook"></i></a><!--
+                --><a class="twitter"
+                      href="https://twitter.com/intent/tweet?text={{ 'Qui sommes nous ? - '|url_encode(true)  ~ currentPage|trans_fallback('title')|url_encode(true) ~ ' '|url_encode(true) ~ currentUrl|url_encode(true) }}"><i
+                                        class="icon icon-twitter"></i></a><!--
+                --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentUrl }}"><i
+                                        class="icon icon-link"></i></a><!--
                 --><a href="#" class="popin-mail-open"><i class="icon icon-letter"></i></a><!--
                 --><a href="#" onclick="window.print()" class="print"><i class="icon icon-print"></i></a>
                         </div>
@@ -101,16 +128,16 @@
                     </div>
                 </div>
             </div> <!-- end all contain -->
-        </div></div>
-</section>
+        </div>
+        </div>
+    </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': 'qui sommes nous ?',
         'detail' : '',
         'title'  : currentPage|trans_fallback('title'),
         'description': currentPage|trans_fallback('chapo')|striptags|truncate(250),
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    }))
-    }}
+    })) }}
 
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
