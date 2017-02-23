@@ -758,6 +758,7 @@ form:
                 url: URL
                 sejour_is_activated: Activer le module
                 title: Préparer son séjour
+                button : Bouton titre
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc

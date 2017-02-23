@@ -86,30 +86,6 @@ class HomepageSlider
     }
 
     /**
-     * Get Translations.
-     *
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * Set Translations.
-     *
-     * @param ArrayCollection $translations
-     *
-     * @return $this
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-
-        return $this;
-    }
-
-    /**
      * Get Homepage.
      *
      * @return mixed
@@ -133,4 +109,27 @@ class HomepageSlider
         return $this;
     }
 
+    /**
+     * Get Translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set Translations.
+     *
+     * @param ArrayCollection $translations
+     *
+     * @return $this
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
 }

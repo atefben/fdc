@@ -86,30 +86,6 @@ class HomepagePush
     }
 
     /**
-     * Get Translations.
-     *
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * Set Translations.
-     *
-     * @param ArrayCollection $translations
-     *
-     * @return $this
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-
-        return $this;
-    }
-
-    /**
      * Get Homepage.
      *
      * @return mixed
@@ -129,6 +105,30 @@ class HomepagePush
     public function setHomepage($homepage)
     {
         $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get Translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set Translations.
+     *
+     * @param ArrayCollection $translations
+     *
+     * @return $this
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
 
         return $this;
     }

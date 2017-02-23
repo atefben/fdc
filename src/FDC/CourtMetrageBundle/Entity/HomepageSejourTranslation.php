@@ -38,6 +38,13 @@ class HomepageSejourTranslation
     protected $url;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $button;
+
+    /**
      * Get title1.
      *
      * @return string
@@ -99,6 +106,28 @@ class HomepageSejourTranslation
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get button.
+     *
+     * @return string
+     */
+    public function getButton()
+    {
+        return $this->button;
+    }
+
+    /**
+     * Set button.
+     *
+     * @param string $button
+     */
+    public function setButton($button)
+    {
+        $this->button = $button;
 
         return $this;
     }

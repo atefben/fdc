@@ -79,6 +79,10 @@ class HomepageSejourType extends AbstractType
                         'label'              => 'form.ccm.label.sejour.url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'button'          => array(
+                        'label'              => 'form.ccm.label.sejour.button',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(

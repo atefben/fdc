@@ -27,6 +27,7 @@ class DefaultController extends Controller
         $homepageSliders = $homepageManger->getSliders();
         $movies = $homepageManger->getFilmsByCourtYear();
         $catalogs = $homepageManger->getCatalogPushes();
+        $sejour = $homepageManger->getSejour();
         $catalogImage = $homepageManger->getCatalogImage();
         $actualites = $homepageManger->getActualite();
 
@@ -39,6 +40,7 @@ class DefaultController extends Controller
                 'catalogs' => $catalogs,
                 'catalogImage' => $catalogImage,
                 'actualites' => $actualites,
+                'sejour' => $sejour,
             ]
         );
     }

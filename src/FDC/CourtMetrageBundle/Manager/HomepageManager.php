@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
+use FDC\CourtMetrageBundle\Entity\HomepageSejourTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSliderTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 use FDC\CourtMetrageBundle\Entity\HomepageTranslation;
@@ -109,4 +110,14 @@ class HomepageManager
             );
     }
 
+    public function getSejour()
+    {
+        return $this->em
+            ->getRepository(HomepageSejourTranslation::class)
+            ->findOneBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
 }

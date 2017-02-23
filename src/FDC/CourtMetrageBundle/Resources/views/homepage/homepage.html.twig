@@ -51,4 +51,12 @@
             {% endif %}
         </div>
     </div>
+
+    <div class="list-article">
+        <div class="bandeau-list">
+            {% if sejour is defined and sejour is not null %}
+                {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

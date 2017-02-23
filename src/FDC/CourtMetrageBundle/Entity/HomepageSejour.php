@@ -83,28 +83,6 @@ class HomepageSejour
     }
 
     /**
-     * Get Translations.
-     *
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * Set translations
-     *
-     * @param ArrayCollection $translations
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-
-        return $this;
-    }
-
-    /**
      * Get homepage.
      *
      * @return mixed
@@ -122,6 +100,28 @@ class HomepageSejour
     public function setHomepage($homepage)
     {
         $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get Translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set translations
+     *
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
 
         return $this;
     }

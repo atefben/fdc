@@ -16,21 +16,6 @@ use Base\CoreBundle\Entity\FilmSelectionSection;
  */
 class Homepage
 {
-    /**
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * @param ArrayCollection $translations
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-    }
     use Translatable;
 
     /**
@@ -131,6 +116,13 @@ class Homepage
 
     /**
      * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "ccm.validation.homepage.sejour_min",
+     *      max = "1",
+     *      maxMessage = "ccm.validation.homepage.sejour_max"
+     * )
+     * @Assert\Valid
      */
     protected $sejoures;
 
@@ -603,5 +595,27 @@ class Homepage
     public function removeSejour(HomepageSejour $sejour)
     {
         $this->sejoures->removeElement($sejour);
+    }
+
+    /**
+     * Get Translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set translations.
+     *
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
     }
 }

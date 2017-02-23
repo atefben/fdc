@@ -86,5 +86,7 @@ class CatalogPush
     public function setTranslations($translations)
     {
         $this->translations = $translations;
+
+        return $this;
     }
 }

@@ -109,28 +109,6 @@ class HomepageActualite
     }
 
     /**
-     * Get translations.
-     *
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * Set translations.
-     *
-     * @param ArrayCollection $translations
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-
-        return $this;
-    }
-
-    /**
      * Get theme.
      *
      * @return Theme
@@ -212,6 +190,28 @@ class HomepageActualite
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set translations.
+     *
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
 
         return $this;
     }
