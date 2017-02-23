@@ -12,7 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
- *  "text" = "CcmLabelSectionContentText"
+ *  "text" = "CcmLabelSectionContentText",
+ *  "oneColumn" = "CcmLabelSectionContentOneColumn",
+ *  "twoColumns" = "CcmLabelSectionContentTwoColumns",
+ *  "threeColumns" = "CcmLabelSectionContentThreeColumns"
  * })
  */
 abstract class CcmLabelSectionContent

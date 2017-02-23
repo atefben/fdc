@@ -78,7 +78,10 @@ class CcmLabelSectionAdmin extends Admin
             ->add('labelSectionContent', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(
-                    'ccm_label_section_content_text_type'
+                    'ccm_label_section_content_text_type',
+                    'ccm_label_section_content_one_column_type',
+                    'ccm_label_section_content_two_columns_type',
+                    'ccm_label_section_content_three_columns_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,

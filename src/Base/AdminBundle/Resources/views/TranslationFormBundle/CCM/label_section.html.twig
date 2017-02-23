@@ -36,6 +36,21 @@
                                                         {% if widget.children._type.vars.value == 'ccm_label_section_content_text_type' %}
                                                             <h4><strong>{{ 'form.ccm.graphical_charter.content.text'|trans }}</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_one_column_type'%}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.one_column'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_two_columns_type'%}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.image2) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_three_columns_type'%}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.three_columns'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.image2) }}
+                                                            {{ form_row(widget.image3) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}
@@ -47,8 +62,18 @@
                                             </div>
                                             <a class="btn btn-primary btn-add-base-widget"
                                                data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_text_type)| escape }}">
-                                                <i class="icon-plus"></i>{{ 'form.mdf.content_template.widget.text'|trans }}</a>
-
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.text'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_one_column_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.one_column'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_two_columns_type)|
+                                               escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.two_columns'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_three_columns_type)|
+                                               escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.three_columns'|trans }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -75,6 +100,7 @@
                                                 {{ 'form.content_template'|trans }}
                                             </h4>
                                         </div>
+                                        {{ form_row(translationsFields.name) }}
                                         <div class="sonata-ba-collapsed-fields">
                                             <div id="{{ locale}}-translation-arrivee-title">
                                             </div>
@@ -85,6 +111,12 @@
                                                          class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'ccm_label_section_content_text_type' %}
                                                             <h4><strong>{{ 'form.ccm.graphical_charter.content.text'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_one_column_type' %}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_two_columns_type' %}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_three_columns_type' %}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}

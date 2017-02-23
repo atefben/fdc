@@ -2856,6 +2856,30 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Module Three Columns, show_in_dashboard: false }
 
+    base.admin.ccm_label_section_content_one_column_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentOneColumn, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_two_columns_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_videos_collection:
         class: Base\AdminBundle\Admin\CCM\CcmVideosCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmVideosCollection, ApplicationSonataAdminBundle:CRUD]
