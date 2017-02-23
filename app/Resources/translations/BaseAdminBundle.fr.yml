@@ -483,11 +483,11 @@ admin:
         mdf_goes_to_cannes: Goes to Cannes
         mdf_presse: Presse
         mdf_qui_sommes_nous: Qui sommes-nous ?
-        ccm_seo_tetieres: SEO + TETIERES
         ccm:
             pros: Short Film Corner
             general: CCM General
-
+            news: Actualités
+            seo_tetieres: SEO + TETIERES
 
 dashboard:
     translator:
