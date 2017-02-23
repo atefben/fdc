@@ -500,9 +500,10 @@ var initVideo = function(hash) {
 
         }
         
-        if($('.activeVideo').length > 0) {alert('activevid');
+        if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
+            console.log(videoFile);
         }
         
         playerInstance.setup({
