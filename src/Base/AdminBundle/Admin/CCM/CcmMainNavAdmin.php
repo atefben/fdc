@@ -64,7 +64,7 @@ class CcmMainNavAdmin extends Admin
                     'route'          => array(
                         'label'              => 'form.ccm.label.menu.main_nav_route',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.news.helper_title',
+                        'sonata_help'        => 'form.ccm.label.menu.main_nav_help',
                         'constraints'        => array(
                             new NotBlank(),
                         ),
@@ -93,7 +93,7 @@ class CcmMainNavAdmin extends Admin
                     'by_reference'       => false,
                     'label'              => 'form.ccm.label.menu.sub_nav_list',
                     'translation_domain' => 'BaseAdminBundle',
-                ), 
+                ),
                 array(
                     'edit'     => 'inline',
                     'inline'   => 'table',
