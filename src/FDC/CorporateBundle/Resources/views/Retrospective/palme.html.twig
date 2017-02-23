@@ -118,7 +118,7 @@
                                                         <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                     class="name-f">{{ film.film.titleVO }}</strong></a>
                                                         <a href="#"><span class="names-a">
-                                                            {% set directors = film.getDirectors() %}
+                                                            {% set directors = film.film.getDirectors() %}
                                                                 {% set directorsName = '' %}
                                                                 {% for director in directors %}
                                                                     {{ directorsName ~ director.person.fullName }}
