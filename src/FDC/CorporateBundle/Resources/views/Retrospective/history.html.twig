@@ -67,16 +67,19 @@
                                 {% endif %}
                                 {% set file = trans.file %}
                                 {% if file %}
-                                    <figure class="padding-bottom">
-                                        <div class="block-img-ie" style="background-image:url('{% path file, '633x399' %}')">
-                                        </div>
-                                        <p class="caption">
-                                            {% if photo|trans_fallback('legend') -%}
-                                                <strong>{{ photo|trans_fallback('legend')|raw }}</strong>
-                                            {%- endif %}
-                                            {% if photo|trans_fallback('copyright') %}© {{ photo|trans_fallback('copyright') }}{% endif %}
-                                        </p>
-                                    </figure>
+                                    <div class="block-01-xs">
+                                        <figure class="padding-bottom">
+                                            <div class="block-img-ie"
+                                                 style="background-image:url('{% path file, '633x399' %}')">
+                                            </div>
+                                            <p class="caption">
+                                                {% if photo|trans_fallback('legend') -%}
+                                                    <strong>{{ photo|trans_fallback('legend')|raw }}</strong>
+                                                {%- endif %}
+                                                {% if photo|trans_fallback('copyright') %}© {{ photo|trans_fallback('copyright') }}{% endif %}
+                                            </p>
+                                        </figure>
+                                    </div>
                                 {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                                 <div class="photos photo-module block-01-xs" data-section="photos">
