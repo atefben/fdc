@@ -2609,6 +2609,7 @@ var owInitGrid = function (id) {
                     $(window).scroll(function(){
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
                             console.log('click');
+                            $('.ajax-request').trigger('click');
                         }
                     });
                 }

@@ -79,13 +79,13 @@
             {% endif %}
         {% endif %}
 
-        <div class="grid-01 isotope-01 padding-bottom" id="main">
+        <div class="grid-01 isotope-01 padding-bottom{% if more %} add-ajax-request{% endif %}" id="main">
             <div class="grid-sizer"></div>
             {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
         </div>
 
         {% if more %}
-            <div>
+            <div class="test">
                 <a href="{{ path('fdc', {'ajax' : true }) }}"
                    class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
             </div>
