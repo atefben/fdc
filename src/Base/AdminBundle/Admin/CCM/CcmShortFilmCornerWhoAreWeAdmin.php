@@ -51,13 +51,9 @@ class CcmShortFilmCornerWhoAreWeAdmin extends CcmShortFilmCornerAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        //$this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager')
-        // todo: get choices and handle position change
         parent::configureFormFields($formMapper);
         $formMapper
-            ->add('position', 'choice',[
-                'choices' => [1,2,3]
-            ])
+            ->add('position', 'number')
         ;
     }
 
