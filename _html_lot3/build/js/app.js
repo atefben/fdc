@@ -500,7 +500,7 @@ var initVideo = function(hash) {
 
         }
         
-        if($('.activeVideo').length > 0) {
+        if($('.activeVideo').length > 0) {alert('activevid');
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
         }
