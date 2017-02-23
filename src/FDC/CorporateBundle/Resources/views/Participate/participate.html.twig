@@ -53,7 +53,7 @@
                                                         {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
-                                                            {% include 'FDCCorporateBundle:Participate/widgets:participate-two.html.twig' %}
+                                                            {% include 'FDCCorporateBundle:Participate/widgets:participate-two.html.twig' with {'classItemPartners' : 'last'}%}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
