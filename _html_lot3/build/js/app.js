@@ -2563,8 +2563,6 @@ var owFixMobile = function() {
 
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
-
-
         var $grid = $('.isotope-01:not(.add-ajax-request)');
         $grid.imagesLoaded(function () {
             $grid.isotope({
@@ -2588,8 +2586,8 @@ var owInitGrid = function (id) {
 
         var $items = $('.item');
 
-        
-        var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
+        var $gridDom = $('.add-ajax-request');
+        var $gridMore = $gridDom.imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
@@ -2604,6 +2602,17 @@ var owInitGrid = function (id) {
             });
             $gridMore.isotope();
 
+            if($gridDom.parent().find('.ajax-request').length){
+                if(!$gridDom.find('.ajax-request').is(':visible')){
+                    //hidden button, infinite load
+                    var footerHeight = $('footer').outerHeight();
+                    $(window).scroll(function(){
+                        if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
+                            console.log('click');
+                        }
+                    });
+                }
+            }
         });
 
 
@@ -4954,9 +4963,7 @@ var owinitSlideShow = function (slider, hash) {
 
 
 var openSlideShow = function (slider, hash, affiche) {
-    console.log(slider);
     console.log(hash);
-    console.log(affiche);
     $('html').addClass('slideshow-open');
 
     var images = [];
@@ -5029,6 +5036,10 @@ var openSlideShow = function (slider, hash, affiche) {
                 var url = $(value).find('img').attr('data-url');
 
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+            }
+
+            if(hash == id && centerElement == 0){
+                centerElement = $(this).index('.photo');
             }
 
             var image = {
@@ -5226,7 +5237,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }, 1000);
 
-
+    console.log(centerElement);
     var translate = (w + 0) * centerElement;
     translate = -translate + "px";
 
@@ -6118,9 +6129,9 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            // console.log("",this);
-            // console.log("",this.className);
-            // console.log("",this.id);
+            console.log("",this);
+            console.log("",this.className);
+            console.log("",this.id);
             var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {

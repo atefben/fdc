@@ -93,9 +93,9 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            // console.log("",this);
-            // console.log("",this.className);
-            // console.log("",this.id);
+            console.log("",this);
+            console.log("",this.className);
+            console.log("",this.id);
             var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {

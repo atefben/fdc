@@ -1,7 +1,5 @@
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
-
-
         var $grid = $('.isotope-01:not(.add-ajax-request)');
         $grid.imagesLoaded(function () {
             $grid.isotope({
@@ -25,8 +23,8 @@ var owInitGrid = function (id) {
 
         var $items = $('.item');
 
-        
-        var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
+        var $gridDom = $('.add-ajax-request');
+        var $gridMore = $gridDom.imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
@@ -41,6 +39,17 @@ var owInitGrid = function (id) {
             });
             $gridMore.isotope();
 
+            if($gridDom.parent().find('.ajax-request').length){
+                if(!$gridDom.find('.ajax-request').is(':visible')){
+                    //hidden button, infinite load
+                    var footerHeight = $('footer').outerHeight();
+                    $(window).scroll(function(){
+                        if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
+                            console.log('click');
+                        }
+                    });
+                }
+            }
         });
 
 
