@@ -122,6 +122,8 @@ var initVideo = function(hash) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
 
+        $container.find('.jwplayer').removeClass('jw-skin-seven');
+        
         if($container.find('.control-bar').length <= 0) {
             $container.append(controlBar);
         }
