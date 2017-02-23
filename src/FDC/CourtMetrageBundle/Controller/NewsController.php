@@ -3,8 +3,6 @@
 namespace FDC\CourtMetrageBundle\Controller;
 
 
-use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
-use FDC\CourtMetrageBundle\Entity\CcmNewsNewsAssociated;
 use FDC\CourtMetrageBundle\Manager\NewsManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

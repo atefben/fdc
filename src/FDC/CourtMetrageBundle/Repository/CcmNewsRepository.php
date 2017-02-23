@@ -21,7 +21,7 @@ class CcmNewsRepository extends EntityRepository
     {
         $now = new \DateTime();
 
-        return $this
+        $qb = $this
             ->createQueryBuilder('n')
             ->select('t.id', 'tt.name', 'n.publishedAt')
             ->join('n.theme', 't')
@@ -36,17 +36,31 @@ class CcmNewsRepository extends EntityRepository
             ->leftJoin('na4.translations', 'na4t')
             ->andWhere('n.publishedAt <= :now and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('now', $now)
-            ->andWhere(
-                '(na1t.locale = :locale AND na1t.status = :status) OR
-                (na2t.locale = :locale AND na2t.status = :status) OR
-                (na3t.locale = :locale AND na3t.status = :status) OR
-                (na4t.locale = :locale AND na4t.status = :status)'
-            )
             ->setParameter('locale', $locale)
-            ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
-            ->getQuery()
-            ->getResult()
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere(
+                    '(na1t.locale = :locale AND na1t.status = :status_translated) OR
+                    (na2t.locale = :locale AND na2t.status = :status_translated) OR
+                    (na3t.locale = :locale AND na3t.status = :status_translated) OR
+                    (na4t.locale = :locale AND na4t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
+            ;
+        } else {
+            $qb
+                ->andWhere(
+                    '(na1t.locale = :locale AND na1t.status = :status) OR
+                    (na2t.locale = :locale AND na2t.status = :status) OR
+                    (na3t.locale = :locale AND na3t.status = :status) OR
+                    (na4t.locale = :locale AND na4t.status = :status)'
+                )
+                ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     /**

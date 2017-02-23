@@ -1,0 +1,75 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div class="block-push block-push-top" style="background-image: url('{% path image|trans_fallback('file'), 'reference' %}')">
+        <div class="vFlexAlign">
+            <div class="txts">
+                <h1 class="title-3">{{ title }}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="ajax-section short-film-corner">
+        <div class="contain-ajax bright" id="main">
+            <nav class="navigation-sticky">
+                <ul>
+                    <li>
+                        <a href="{{ header_fdc_fr }}" target="_blank">{{ 'header.fdc'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ header_cine_fr }}" target="_blank">{{ 'header.cine'|trans }}</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ header_ccm_fr }}" class="active">{{ 'header.ccm'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ header_mdf_fr }}" target="_blank">{{ 'header.mdf'|trans }}</a>
+                    </li>
+                    {#todo: next links#}
+                    <li><a href="who-village-international.html">Village international</a></li>
+                    <li><a href="who-staff.html">L'équipe</a></li>
+                    <li><a href="who-identity-guidelines.html">Charte graphique</a></li>
+                </ul>
+            </nav>
+            <section id="main" class="single-article">
+                <div class="all-contain">
+                    <div class="contain-title vFlexAlign block-01-s">
+                        <h2 class="title-02">{{ description }}</h2>
+                    </div>
+                    <div class="buttons buttons-01">
+                        <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
+                        <a href="#" class="button" onclick="window.print()"><i class="icon icon_print"></i>Imprimer</a>
+                    </div>
+                    <div class="block-01-xs">
+                        {% for widget in widgets %}
+                            {% include '@FDCCourtMetrage/shortfilmcorner/blocks/' ~ widget.getType() ~ '.html.twig' with {'widget': widget} %}
+                        {% endfor %}
+                    </div>
+                    <div class="share">
+                        <p>Partagez l'article</p>
+                        <div class="buttons square">
+                            {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                            {% spaceless %}
+                                <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl|url_encode(true) }}&picture={% if image is not null %}{% path image|trans_fallback('file'), 'reference' -%}{% endif %}&title={{ title|url_encode(true) }}&description={{ description|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                   rel="nofollow" class="button facebook"><i class="icon icon_facebook"></i>
+                                </a>
+                            {% endspaceless %}
+                            <a  href="//twitter.com/intent/tweet?text={{ title ~ ' ' ~ currentUrl }}" class="button twitter"><i class="icon icon_twitter"></i>
+                            </a>
+                            <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                            <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                            <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+    {'section': '',
+        'detail': '',
+        'title': title,
+        'description': description,
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+    <!-- END POPIN MAIL SHARE -->
+{% endblock %}

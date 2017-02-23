@@ -13,3 +13,39 @@
 .visible-popin {
     z-index: 1007;
 }
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+i {
+  font-style: italic;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+  margin-left: 5px;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  margin-left: 5px;
+}
+
+.wysiwyg a {
+    color: #c8a461;
+}
+
+.topiconsContainer .icon-border-right {
+    border-right: 1px solid #404040;
+}
+
+.topiconsContainer .icon-border-left {
+    border-left: 1px solid #404040;
+}
