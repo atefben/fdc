@@ -15,7 +15,12 @@ var owInitGrid = function (id) {
                 $('.item-inner').css({
                     'width':'100.5%',
                     'height':'100.5%'
-                })
+                });
+
+                $('.isotope-01 .item.video').on('click',function(){
+                    $('.isotope-01 .item.video').removeClass('activeVideo');
+                    $(this).addClass('activeVideo');
+                });
             });
 
 
