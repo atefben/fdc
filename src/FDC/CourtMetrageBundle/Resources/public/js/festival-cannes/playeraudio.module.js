@@ -70,11 +70,11 @@ function updateShareLink() {
     fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($audio.attr('data-img')));
     fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($audio.parent().find('.title-article').html()));
     fbHref       = fbHref.replace('CUSTOM_DESC', '');
-    $container.find('.buttons .facebook').attr('href', fbHref);
+    $container.find('.buttons .facebook:not(.news-fb-share)').attr('href', fbHref);
     // CUSTOM LINK TWITTER
     var twHref   = twitterLink;
     twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($audio.parent().find('.title-article').html() + " " + $audio.attr('data-link')));
-    $container.find('.buttons .twitter').attr('href', twHref);
+    $container.find('.buttons .twitter:not(.news-twttr-share)').attr('href', twHref);
 
 }
 

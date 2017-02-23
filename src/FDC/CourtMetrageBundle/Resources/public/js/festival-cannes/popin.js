@@ -171,7 +171,7 @@ $(document).ready(function() {
       });
     });
   } 
-  if($('.popin-mail.media').length) {console.log('here');
+  if($('.popin-mail.media').length) {
     initPopinMail('.popin-mail.media');
   }
 
