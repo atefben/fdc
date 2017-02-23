@@ -73,7 +73,7 @@ var timeout = 1000,
     $topBar = '',
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-function playerInit(id, cls, havePlaylist, live) {alert('init');
+function playerInit(id, cls, havePlaylist, live) {
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
     live = live || false;
@@ -664,6 +664,7 @@ $(document).ready(function () {
     }
 
     if ($('.video-player').length > 0) {
+        alert('init video-player');
         videoPlayer = playerInit(false, 'video-player', false);
     }
 
