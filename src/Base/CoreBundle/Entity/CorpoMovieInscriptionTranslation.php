@@ -31,6 +31,13 @@ class CorpoMovieInscriptionTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      */
+    protected $tabPrefix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
     protected $commonContent;
 
 
@@ -57,4 +64,27 @@ class CorpoMovieInscriptionTranslation implements TranslateChildInterface
         return $this->commonContent;
     }
 
+
+    /**
+     * Set tabPrefix
+     *
+     * @param string $tabPrefix
+     * @return CorpoMovieInscriptionTranslation
+     */
+    public function setTabPrefix($tabPrefix)
+    {
+        $this->tabPrefix = $tabPrefix;
+
+        return $this;
+    }
+
+    /**
+     * Get tabPrefix
+     *
+     * @return string 
+     */
+    public function getTabPrefix()
+    {
+        return $this->tabPrefix;
+    }
 }

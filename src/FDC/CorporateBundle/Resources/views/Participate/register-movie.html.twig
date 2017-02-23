@@ -1,8 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}
-    participate p-register bright
-{% endblock bodyClass %}
+{% block bodyClass %} participate p-register bright {% endblock bodyClass %}
 {% block body %}
 
     <section id="main">
@@ -14,7 +12,7 @@
         <div class="block-push block-push-top" style="background-image: url({% path mainImage, '1280x808' %})">
             <div class="vFlexAlign">
                 <div class="txts">
-                    <h1 class="title-3">{{ 'participate.register.movie'|trans }}</h1>
+                    <h1 class="title-3">{{ accredit|trans_fallback('tabPrefix') }}</h1>
                 </div>
             </div>
         </div> <!-- end block push -->
