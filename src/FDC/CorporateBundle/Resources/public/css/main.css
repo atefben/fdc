@@ -7156,6 +7156,10 @@ h2.sub-title {
   height: auto;
 }
 
+.block-legend .texts .text-01 strong {
+  font-weight: bold;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
