@@ -60,13 +60,13 @@
                                     {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                                 </div>
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                                {% set photo = widget.gallery.medias|first.media %}
                                 {% set trans = photo.findTranslationByLocale(app.request.locale) %}
                                 {% if trans is null or trans.file is null %}
                                     {% set trans = photo.findTranslationByLocale('fr') %}
                                 {% endif %}
                                 {% set file = trans.file %}
                                 {% if file %}
-                                    {% set photo = widget.gallery.medias|first.media %}
                                     <figure class="padding-bottom">
                                         <div class="block-img-ie" style="background-image:url('{% path file, '633x399' %}')">
                                         </div>
