@@ -503,19 +503,20 @@ var initVideo = function(hash) {
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
-            console.log(videoFile);
+        }else{
+            var videoFile =  $container.data('file');
+            var videoImage =  $container.data('img');
         }
-        
-        /*playerInstance.setup({
-            // file: $container.data('file'),
-            sources: $('.activeVideo').length > 0 ? videoFile : $container.data('file'),
-            image: $('.activeVideo').length > 0 ? videoImage :  $container.data('img'),
+        console.log(videoFile);
+        playerInstance.setup({
+            sources: videoFile,
+            image: videoImage,
             primary: 'html5',
             aspectratio: '16:9',
             width: $(vid).parent('div').width(),
             height: $(vid).parent('div').height(),
             controls: ($('body').hasClass('mobile')) ? true : false
-        });*/
+        });
 
         if(havePlaylist) {
             var tempSlider = $(slider),
