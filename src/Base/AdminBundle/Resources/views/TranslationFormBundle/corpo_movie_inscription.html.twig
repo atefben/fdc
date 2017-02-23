@@ -7,96 +7,97 @@
     <div class="a2lix_translationsFields tab-content">
         {% set procedureTranslations = (form.parent.children.procedure.vars.data|length > 0 is not null) ? form.parent.children.procedure.vars.data.translations : null %}
         {% for translationsFields in form %}
-            {{ form_row(translationsFields.applyChanges) }}
-            {% set locale = translationsFields.vars.name %}
-            {% if is_granted('ROLE_TRANSLATOR_FR') %}
-                {% set currentLocale = 'fr' %}
-            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
-                {% set currentLocale = 'en' %}
-            {% elseif is_granted('ROLE_TRANSLATOR_ES') %}
-                {% set currentLocale = 'es' %}
-            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
-                {% set currentLocale = 'zh' %}
-            {% endif %}
-            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
-                <div class="row">
-                    {% if form.vars.default_locale == locale %}
-                        <div class="col-md-12">
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.main_infos'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(form.parent.children.mainImage) }}
-                                        {{ form_row(translationsFields.commonContent) }}
-                                        <span class="help-block sonata-ba-field-help">Dimensions attendues : 2560x1103. Format attendu : .jpg, .png, .gif</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        Procédure d'inscription
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
-                                        <style>
-                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
-                                                display: none;
-                                            }
-                                        </style>
-                                        {{ form_row(form.parent.children.procedure) }}
-                                    </div>
-                                </div>
+        {{ form_row(translationsFields.applyChanges) }}
+        {% set locale = translationsFields.vars.name %}
+        {% if is_granted('ROLE_TRANSLATOR_FR') %}
+            {% set currentLocale = 'fr' %}
+        {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+            {% set currentLocale = 'en' %}
+        {% elseif is_granted('ROLE_TRANSLATOR_ES') %}
+            {% set currentLocale = 'es' %}
+        {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+            {% set currentLocale = 'zh' %}
+        {% endif %}
+        <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+            <div class="row">
+                {% if form.vars.default_locale == locale %}
+                <div class="col-md-12">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                {{ 'group.main_infos'|trans }}
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <div class="sonata-ba-collapsed-fields">
+                                {{ form_row(form.parent.children.mainImage) }}
+                                {{ form_row(translationsFields.commonContent) }}
+                                <span class="help-block sonata-ba-field-help">Dimensions attendues : 2560x1103. Format attendu : .jpg, .png, .gif</span>
                             </div>
                         </div>
-                    {% else %}
-                        <div class="col-md-8">
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.main_infos'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.commonContent) }}
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                Procédure d'inscription
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
+                                <style>
+                                    #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
+                                        display: none;
+                                    }
+                                </style>
+                                {{ form_row(translationsFields.tabPrefix) }}
+                                {{ form_row(form.parent.children.procedure) }}
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.french_version'|trans|nl2br }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <h4 class="box-title">
-                                        Informations communes
-                                    </h4>
-                                    <div>
-                                        <label>
-                                            Contenu
-                                        </label>
-                                    <span>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-md-8">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                {{ 'group.main_infos'|trans }}
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <div class="sonata-ba-collapsed-fields">
+                                {{ form_row(translationsFields.commonContent) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                {{ 'group.french_version'|trans|nl2br }}
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <h4 class="box-title">
+                                Informations communes
+                            </h4>
+                            <div>
+                                <label>
+                                    Contenu
+                                </label>
+                                <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
                                             {{ form.children.fr.vars.value.commonContent|raw }}
                                         </div>
                                     {% endif %}
                                     </span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="box box-success">
+                        </div>
+                    </div>
+                    <div class="box box-success">
 
-                            </div>
+                    </div>
                     {% endif %}
                 </div>
                 <div class="row">
@@ -210,6 +211,7 @@
                     {% endif %}
                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
