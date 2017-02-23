@@ -82,7 +82,7 @@
                                     </div>
                                 {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                                <div class="photos photo-module block-01-xs" data-section="photos">
+                                <div class="photos photo-module block-01-xs{{ if loop.last }} last{%  %}" data-section="photos">
                                     {% include 'FDCCorporateBundle:News:widgets/slideshow.html.twig' %}
                                 </div>
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
