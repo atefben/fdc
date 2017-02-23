@@ -7,6 +7,12 @@
 .half-div.v2 .half-photo .photo-container {
     overflow: hidden;
 }
+.single-article .chapeau {
+    text-align: left;
+}
+.visible-popin {
+    z-index: 1007;
+}
 
 strong {
   font-weight: bold;
