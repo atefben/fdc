@@ -85,6 +85,10 @@ class HomepageActualiteType extends AbstractType
                         'label'              => 'form.ccm.label.actualite.description',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'url'          => array(
+                        'label'              => 'form.ccm.label.actualite.url',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
@@ -119,6 +123,10 @@ class HomepageActualiteType extends AbstractType
                 'attr'     => array(
                     'data-date-format' => 'dd/MM/yyyy',
                 ),
+            ))
+            ->add('isActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.actualite.is_active_actualite',
+                'translation_domain' => 'BaseAdminBundle',
             ))
         ;
     }

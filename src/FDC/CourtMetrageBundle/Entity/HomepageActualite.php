@@ -62,6 +62,13 @@ class HomepageActualite
     protected $homepage;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isActive = false;
+
+    /**
      * HomepageActualite constructor.
      */
     public function __construct()
@@ -187,4 +194,25 @@ class HomepageActualite
         return $this;
     }
 
+    /**
+     * Get isActive.
+     *
+     * @return bool
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set isActive.
+     *
+     * @param bool $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
 }

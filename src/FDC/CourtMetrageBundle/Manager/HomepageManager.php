@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
+use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSliderTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -96,4 +97,16 @@ class HomepageManager
             return $homepage->getTranslatable()->getCatalogImage();
         }
     }
+
+    public function getActualite()
+    {
+        return $this->em
+            ->getRepository(HomepageActualiteTranslation::class)
+            ->findBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+
 }

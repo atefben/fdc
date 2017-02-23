@@ -43,4 +43,12 @@
         {% endif %}
     </div>
 
+    <div class="our-news">
+        <h3>les actualités</h3>
+        <div class="innerWrapper">
+            {% if actualites is defined and actualites is not null %}
+                {% include 'FDCCourtMetrageBundle::homepage/_actualite.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

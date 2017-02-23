@@ -742,6 +742,8 @@ form:
                 title: Titre
                 description: Description
                 is_active: Activer le module
+                is_active_actualite: Activer le actualite
+                url: URL
             catalog:
                 pushes: Module Catalogue
                 push: Ajouter

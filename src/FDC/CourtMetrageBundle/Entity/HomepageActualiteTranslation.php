@@ -28,6 +28,13 @@ class HomepageActualiteTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    protected $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $description;
 
     /**
@@ -70,6 +77,28 @@ class HomepageActualiteTranslation
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get url.
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set url.
+     *
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
 
         return $this;
     }
