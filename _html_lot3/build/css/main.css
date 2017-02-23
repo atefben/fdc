@@ -7160,6 +7160,10 @@ h2.sub-title {
   font-weight: bold;
 }
 
+.block-01.socialwall .title {
+  font-weight: 300;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -13164,6 +13168,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   line-height: 20px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 #networks ul {
