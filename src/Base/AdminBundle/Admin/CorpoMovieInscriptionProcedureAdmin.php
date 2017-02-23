@@ -135,14 +135,6 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
-                    'btnSelectionLabel' => array(
-                        'field_type' => 'text',
-                        'label' => 'Libellé du bouton 1 (gauche)'
-                    ),
-                    'btnSelectionLink' => array(
-                        'field_type' => 'text',
-                        'label' => 'Lien du bouton 1 (gauche)'
-                    ),
                     'firstColumnContact' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.first',
