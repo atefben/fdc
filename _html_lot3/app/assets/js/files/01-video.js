@@ -506,7 +506,7 @@ var initVideo = function(hash) {
             console.log(videoFile);
         }
         
-        playerInstance.setup({
+        /*playerInstance.setup({
             // file: $container.data('file'),
             sources: $('.activeVideo').length > 0 ? videoFile : $container.data('file'),
             image: $('.activeVideo').length > 0 ? videoImage :  $container.data('img'),
@@ -515,7 +515,7 @@ var initVideo = function(hash) {
             width: $(vid).parent('div').width(),
             height: $(vid).parent('div').height(),
             controls: ($('body').hasClass('mobile')) ? true : false
-        });
+        });*/
 
         if(havePlaylist) {
             var tempSlider = $(slider),
