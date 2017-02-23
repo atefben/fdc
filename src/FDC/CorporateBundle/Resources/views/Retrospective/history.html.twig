@@ -60,12 +60,24 @@
                                     {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                                 </div>
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
-                                <div class="contain-img-honneur block-01-xs">
-                                    {% set photo = widget.gallery.medias[0].media %}
-                                    {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
-                                    {% set copyright = photo|trans_fallback('copyright') %}
-                                    <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
-                                </div>
+                                {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = photo.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                                {% if file %}
+                                    {% set photo = widget.gallery.medias|first.media %}
+                                    <figure class="padding-bottom">
+                                        <div class="block-img-ie" style="background-image:url('{% path file, '633x399' %}')">
+                                        </div>
+                                        <p class="caption">
+                                            {% if photo|trans_fallback('legend') -%}
+                                                <strong>{{ photo|trans_fallback('legend')|raw }}</strong>
+                                            {%- endif %}
+                                            {% if photo|trans_fallback('copyright') %}© {{ photo|trans_fallback('copyright') }}{% endif %}
+                                        </p>
+                                    </figure>
+                                {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                                 <div class="photos photo-module block-01-xs" data-section="photos">
                                     {% include 'FDCCorporateBundle:News:widgets/slideshow.html.twig' %}
@@ -101,7 +113,7 @@
                                                     <div class="infos">
                                                         <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                     class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                        {% set directors = film.getDirectors() %}
+                                                        {% set directors = film.film.getDirectors() %}
                                                         {% set directorsName = '' %}
                                                         {% for director in directors %}
                                                             <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}"><span

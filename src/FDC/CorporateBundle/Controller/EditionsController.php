@@ -128,7 +128,7 @@ class EditionsController extends Controller
             ->find(1)
         ;
 
-        if ($page->findTranslationByLocale('fr')->getStatus() == 1) {
+        if ($page->findTranslationByLocale('fr')->getStatus() == TranslateChildInterface::STATUS_PUBLISHED) {
             return $this->render('FDCCorporateBundle:Retrospective:history.html.twig', [
                 'currentPage' => $page,
             ]);
