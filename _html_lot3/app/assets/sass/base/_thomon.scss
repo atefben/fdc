@@ -3,6 +3,10 @@
   .ie & {
     height: auto!important;
     width: auto!important;
+    min-width: none!important;
+    max-with: none!important;
+    min-height: none!important;
+    max-height: none!important;
     &.open {
         height: auto;
     }
