@@ -59,7 +59,8 @@
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
                         </div>
                         {% if section.procedure.displayReglement != true %}
-                            <div class="block-s-info border-bottom border-top vFlexAlign">
+                            <div class="block-s-info border-bottom border-top vFlexAlign"
+                                 style="background-image:url({% path mainImage, '1280x808' %})">
                                 <strong class="title-25">{{ section.procedure|trans_fallback('pushTitle') }}</strong>
                                 <p>{{ section.procedure|trans_fallback('pushSubTitle') }}</p>
                                 <div class="buttons-02">
@@ -76,7 +77,9 @@
                                 {% if mainTrans is null or mainTrans.file is null %}
                                     {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
                                 {% endif %}
-                                {% set mainImage = mainTrans.file %}
+                                {% if mainTrans %}
+                                    {% set mainImage = mainTrans.file %}
+                                {% endif %}
                                 <div class="block-s-info-02 border-bottom vFlexAlign"
                                      style="background-image:url({% path mainImage, '1280x808' %})">
                                     <strong class="title-25">{{ section.procedure|trans_fallback('btnText') }}</strong>

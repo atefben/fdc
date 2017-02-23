@@ -43,7 +43,6 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.pushTitle) }}
                                     {{ form_row(translationsFields.pushSubTitle) }}
-                                    {{ form_row(form.parent.children.mainImage) }}
                                     <div class="row">
                                         <div class="col-md-5">
                                             {{ form_row(translationsFields.btnSelectionLabel) }}
@@ -53,6 +52,7 @@
                                             {{ form_row(translationsFields.btnSelectionLink) }}
                                         </div>
                                     </div>
+                                    {{ form_row(form.parent.children.mainImage) }}
                                     {{ form_row(translationsFields.rulesContent) }}
                                     {{ form_row(form.parent.children.pdf) }}
                                     {{ form_row(form.parent.children.displayReglement) }}
@@ -73,16 +73,18 @@
                                         }
                                     </style>
                                     {{ form_row(translationsFields.btnText) }}
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnLabel) }}
+                                            {{ form_row(form.parent.children.displayInscription) }}
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnLink) }}
+                                        </div>
+                                    </div>
                                     {{ form_row(form.parent.children.backgroundImage) }}
                                     {{ form_row(translationsFields.inscriptionContent) }}
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnLabel) }}
-                                        {{ form_row(form.parent.children.displayInscription) }}
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnLink) }}
-                                    </div>
                                 </div>
                             </div>
                         </div>
