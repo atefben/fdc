@@ -121,9 +121,11 @@ var initVideo = function(hash) {
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
-        setInterval(function(){
-            console.log($container.find('.jwplayer').hasClass('jw-skin-seven'));
+        var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
+            if($container.find('.jwplayer').hasClass('jw-skin-seven')){
+                window.clearInterval(checkInt);
+            }
         },500);
 
         if($container.find('.control-bar').length <= 0) {
