@@ -169,7 +169,9 @@
                                                     <div class="contain-infos">
                                                         {% if s.section|trans_fallback('description') %}
                                                             <div class="descrip-section">
-                                                                {{ s.section|trans_fallback('description')|raw }}
+                                                                <h4 class="descrip-participate">
+                                                                    {{ s.section|trans_fallback('description')|raw }}
+                                                                </h4>
                                                             </div>
                                                         {% endif %}
 
