@@ -156,9 +156,18 @@ h2.sub-title {
   color: $gold;
 }
 
-
-
 .affiche-fdc .block-movie-preview .poster:hover {
   cursor: pointer;
+}
+
+.block-diaporama .slider-01 .owl-item .item {
+    width: 640px;
+    height: 424px;
+    overflow: hidden;
+
+    figure {
+        width: 100%;
+        height: auto;
+    }
 }
 /* thomon - end fixes */

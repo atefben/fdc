@@ -7146,6 +7146,16 @@ h2.sub-title {
   cursor: pointer;
 }
 
+.block-diaporama .slider-01 .owl-item .item {
+  width: 640px;
+  height: 424px;
+  overflow: hidden;
+}
+.block-diaporama .slider-01 .owl-item .item figure {
+  width: 100%;
+  height: auto;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -12910,7 +12920,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 
 #social-wall {
-  padding-top: 80px;
+  padding-top: 16px;
 }
 #social-wall #graph {
   border-bottom: 1px solid #eaeaea;
