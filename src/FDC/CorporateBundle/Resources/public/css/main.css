@@ -7170,6 +7170,12 @@ header #navigation ul.user li a .icon {
   color: #d1d1d1;
 }
 
+.slider-01 figcaption {
+  color: #666666;
+  font-size: .75rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
