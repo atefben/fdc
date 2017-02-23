@@ -119,7 +119,7 @@ var initVideo = function(hash) {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-
+        console.log(vid.id);
         var $container    = $("#"+vid.id).closest('.video-container');
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -536,7 +536,6 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                console.log(playlist)
                 playerInstance.load(playlist);
 
 
