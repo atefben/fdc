@@ -7,3 +7,31 @@
 .half-div.v2 .half-photo .photo-container {
     overflow: hidden;
 }
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+i {
+  font-style: italic;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+  margin-left: 5px;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  margin-left: 5px;
+}
+
+.wysiwyg a {
+    color: #c8a461;
+}
