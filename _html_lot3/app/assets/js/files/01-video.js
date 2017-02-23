@@ -508,7 +508,7 @@ var initVideo = function(hash) {
         }
         console.log(videoFile);
         playerInstance.setup({
-            sources: videoFile,
+            //sources: videoFile,
             file: videoFile[0],
             image: videoImage,
             primary: 'html5',
