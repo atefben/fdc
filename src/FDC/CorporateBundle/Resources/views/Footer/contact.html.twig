@@ -40,7 +40,9 @@
                 <div class="select{% if form_errors(form.select) %} invalid{% endif %}">
                     {{ form_label(form.select) }}
                     {{ form_widget(form.select) }}
-                    <span id="triggerSelect"></span>
+                    <span id="triggerSelect">
+                         <i class="icon icon-arrow-down"></i>
+                    </span>
                 </div>
                 {% if form_errors(form.name) %}
                     {{ form_widget(form.name, {'attr': {'class': 'invalid'}}) }}

@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCPressBundle' %}
 <div class="">
     <div class="contain-infos">
-        <div class="item-partners">
+        <div class="item-partners{% if classItemPartners is defined and classItemPartners %} {{ classItemPartners }}{% endif %}">
             <div class="contain-img">
                 {% if widget.image is not null %}
                     {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}

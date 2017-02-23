@@ -35,7 +35,7 @@
                                                 <strong class="title-22">
                                                     <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
                                                 </strong>
-                                                <i class="icon icon-nav-accordion {% if i == 0 %}icon-minus{% else %}icon-create{% endif %}"></i>
+                                                <i class="icon icon-nav-accordion {% if i == 0 %}icon-minus{% else %}icon-more-square{% endif %}"></i>
                                             </div>
                                             {% set i = 1 %}
                                             <div class="item-manual">
@@ -53,7 +53,7 @@
                                                         {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
-                                                            {% include 'FDCCorporateBundle:Participate/widgets:participate-two.html.twig' %}
+                                                            {% include 'FDCCorporateBundle:Participate/widgets:participate-two.html.twig' with {'classItemPartners' : loop.last ? 'last': ''}%}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
                                                         {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
