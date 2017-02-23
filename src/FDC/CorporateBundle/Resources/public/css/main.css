@@ -7165,9 +7165,15 @@ h2.sub-title {
 }
 
 header #navigation ul.user li a .icon {
-  margin-right: 7px;
-  top: 1px;
+  margin-right: 7px !important;
+  top: 1px !important;
   color: #d1d1d1;
+}
+
+header #navigation ul.user li a .icon-pencil:after {
+  content: "";
+  background: url(../img/pencil.svg) no-repeat left top;
+  background-size: 100%;
 }
 
 .slider-01 figcaption {
