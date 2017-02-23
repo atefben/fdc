@@ -159,7 +159,7 @@
                                 {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                                <div class="pres-honneur block-01-xs">
+                                <div class="contain-title vFlexAlign block-01-m">
                                     {{ transWidget.introduction|raw }}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
