@@ -30,8 +30,8 @@
                     <a href="#" class="button" onclick="window.print()"><i class="icon icon-print"></i>Imprimer</a>
                 </div>
 
-                <div class="block-01-xs">
                     {% for widget in currentPage.widgets %}
+                <div class="{{ widget is fdc_page_la_selection_cannes_classics_widget_quote ? 'block-01' : 'block-01-xs' }}">
                         {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             <div class="small-pres text">
@@ -83,8 +83,8 @@
                                 {% endif %}
                             </div>
                         {% endif %}
-                    {% endfor %}
                 </div>
+                    {% endfor %}
 
                 <div class="border-top">
                     <strong class="title-9">Partager la page</strong>
