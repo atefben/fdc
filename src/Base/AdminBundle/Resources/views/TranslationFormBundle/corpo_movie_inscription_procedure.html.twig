@@ -44,15 +44,17 @@
                                     {{ form_row(translationsFields.pushTitle) }}
                                     {{ form_row(translationsFields.pushSubTitle) }}
                                     {{ form_row(form.parent.children.mainImage) }}
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnSelectionLabel) }}
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnSelectionLink) }}
+                                        </div>
+                                    </div>
                                     {{ form_row(translationsFields.rulesContent) }}
                                     {{ form_row(form.parent.children.pdf) }}
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnSelectionLabel) }}
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnSelectionLink) }}
-                                    </div>
                                     {{ form_row(form.parent.children.displayReglement) }}
                                 </div>
                             </div>
