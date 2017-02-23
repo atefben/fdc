@@ -4,7 +4,7 @@ services:
         tags:
             - { name: twig.extension }
 
-    base.twig.news_instance_of_extension:
+    base.twig.misc_extension:
         class: Base\CoreBundle\Twig\Extension\MiscExtension
         tags:
             - { name: twig.extension }
