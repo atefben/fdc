@@ -29,7 +29,6 @@
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.title) }}
-                                    {{ form_row(form.parent.children.mainImage) }}
                                     {{ form_row(translationsFields.procedureContent) }}
                                 </div>
                             </div>
@@ -44,6 +43,7 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.pushTitle) }}
                                     {{ form_row(translationsFields.pushSubTitle) }}
+                                    {{ form_row(form.parent.children.mainImage) }}
                                     {{ form_row(translationsFields.rulesContent) }}
                                     {{ form_row(form.parent.children.pdf) }}
                                     <div class="col-md-5">
@@ -73,7 +73,6 @@
                                     {{ form_row(translationsFields.btnText) }}
                                     {{ form_row(translationsFields.inscriptionContent) }}
                                     {{ form_row(form.parent.children.backgroundImage) }}
-{#                                    {{ form_row(form.parent.children.mainImage) }}#}
                                     <div class="col-md-5">
                                         {{ form_row(translationsFields.btnLabel) }}
                                         {{ form_row(form.parent.children.displayInscription) }}
