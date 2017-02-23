@@ -58,12 +58,14 @@
                             <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
                         </div>
+                        {% if section.procedure.mainImage %}
                         {% set mainTrans = section.procedure.mainImage.findTranslationByLocale(app.request.locale) %}
                         {% if mainTrans is null or mainTrans.file is null %}
                             {% set mainTrans = section.procedure.mainImage.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% if mainTrans %}
                             {% set mainImage = mainTrans.file %}
+                        {% endif %}
                         {% endif %}
                         {% if section.procedure.displayReglement != true %}
                             <div class="block-s-info border-bottom border-top vFlexAlign"{% if mainImage is defined %} style="background-image:url({% path mainImage, '1280x808' %})"{% endif %}>
@@ -79,12 +81,15 @@
                         {% endif %}
 
                         {% if section.procedure.displayInscription != true %}
+
+                            {% if section.procedure.backgroundImage %}
                             {% set mainTrans = section.procedure.backgroundImage.findTranslationByLocale(app.request.locale) %}
                             {% if mainTrans is null or mainTrans.file is null %}
                                 {% set mainTrans = section.procedure.backgroundImage.findTranslationByLocale('fr') %}
                             {% endif %}
                             {% if mainTrans %}
                                 {% set backgroundImage = mainTrans.file %}
+                            {% endif %}
                             {% endif %}
                                 <div class="block-s-info-02 border-bottom vFlexAlign"{% if backgroundImage is defined %} style="background-image:url({% path backgroundImage, '1280x808' %})"{% endif %}>
                                     <strong class="title-25">{{ section.procedure|trans_fallback('btnText') }}</strong>
