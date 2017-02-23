@@ -16,6 +16,21 @@ use Base\CoreBundle\Entity\FilmSelectionSection;
  */
 class Homepage
 {
+    /**
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+    }
     use Translatable;
 
     /**
@@ -43,7 +58,7 @@ class Homepage
      * @Assert\Count(
      *      min = "3",
      *      minMessage = "ccm.validation.homepage.pushes_min",
-     *      max = "9",
+     *      max = "6",
      *      maxMessage = "ccm.validation.homepage.pushes_max"
      * )
      * @Assert\Valid
@@ -89,9 +104,9 @@ class Homepage
      * @ORM\OneToMany(targetEntity="CatalogPush", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      min = "3",
-     *      minMessage = "ccm.validation.homepage.catalog.pushes_min",
+     *      minMessage = "ccm.validation.homepage.catalog_min",
      *      max = "5",
-     *      maxMessage = "ccm.validation.homepage.catalog.pushes_max"
+     *      maxMessage = "ccm.validation.homepage.catalog_max"
      * )
      * @Assert\Valid
      */

@@ -150,46 +150,6 @@ class HomepageAdmin extends Admin
     }
 
     /**
-     * Pre persist.
-     *
-     * @param Homepage $homepage
-     */
-    public function prePersist($homepage)
-    {
-        parent::prePersist($homepage);
-
-        foreach ($homepage->getSliders() as $slider) {
-            $slider->setHomepage($homepage);
-        }
-        foreach ($homepage->getPushes() as $push) {
-            $push->setHomepage($homepage);
-        }
-        foreach ($homepage->getCatalogPushes() as $push) {
-            $push->setCatalog($homepage);
-        }
-    }
-
-    /**
-     * Pre update.
-     *
-     * @param Homepage $homepage
-     */
-    public function preUpdate($homepage)
-    {
-        parent::preUpdate($homepage);
-
-        foreach ($homepage->getSliders() as $slider) {
-            $slider->setHomepage($homepage);
-        }
-        foreach ($homepage->getPushes() as $push) {
-            $push->setHomepage($homepage);
-        }
-        foreach ($homepage->getCatalogPushes() as $push) {
-            $push->setCatalog($homepage);
-        }
-    }
-
-    /**
      * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)

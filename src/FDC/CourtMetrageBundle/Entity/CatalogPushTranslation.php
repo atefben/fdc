@@ -7,7 +7,7 @@ use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HomepagePushTranslation
+ * CatalogPushTranslation
  * @ORM\Table(name="ccm_catalog_push_translation")
  * @ORM\Entity
  */
@@ -19,14 +19,14 @@ class CatalogPushTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $url;
 

@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSliderTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
+use FDC\CourtMetrageBundle\Entity\HomepageTranslation;
 
 class HomepageManager
 {
@@ -40,5 +41,32 @@ class HomepageManager
                     'locale' => $this->requestStack->getMasterRequest()->get('_locale')
                 )
             );
+    }
+
+    /**
+     * @param $festivalId
+     *
+     * @return mixed
+     */
+    public function getFilmsByCourtYear()
+    {
+        $homepage = $this->em
+            ->getRepository(HomepageTranslation::class)
+            ->findOneBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+
+        if($homepage) {
+            $year = $homepage->getTranslatable()->getCourtYear();
+
+            $films = $this
+                ->em
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->findBy(['productionYear' => $year]);
+
+            return $films;
+        }
     }
 }

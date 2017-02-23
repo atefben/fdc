@@ -62,6 +62,14 @@ class HomepageActualite
     protected $homepage;
 
     /**
+     * HomepageActualite constructor.
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
      * Get id.
      *
      * @return int
@@ -178,4 +186,5 @@ class HomepageActualite
 
         return $this;
     }
+
 }

@@ -755,8 +755,7 @@ form:
                 title2: Titre 2
                 url: URL
                 sejour_is_activated: Activer le module
-                title: Les actualités
-
+                title: Préparer son séjour
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc

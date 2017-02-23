@@ -13,11 +13,11 @@ class ThemeDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('image', 'sonata_type_model_list', array(
+            ->add('theme', 'sonata_type_model_list', array(
                     'required' => true,
                 )
             )
-            ->add('theme', 'sonata_type_model_list', array(
+            ->add('image', 'sonata_type_model_list', array(
                     'required' => true,
                 )
             )

@@ -132,4 +132,5 @@ class HomepageSlider
 
         return $this;
     }
+
 }

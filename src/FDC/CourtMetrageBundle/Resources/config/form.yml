@@ -16,6 +16,7 @@ services:
         calls:
             - ['setSonataAdminTheme', ['@base.admin.ccm_homepage_actualite_theme_top_dummy']]
             - ['setThemeAdmin', ['@base.admin.theme']]
+            - ['setImageAdmin', ['@base.admin.media_image']]
 
     base.admin.form.ccm_catalog_push_type:
         scope: prototype

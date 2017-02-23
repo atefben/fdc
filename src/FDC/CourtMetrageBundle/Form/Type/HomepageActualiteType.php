@@ -30,6 +30,11 @@ class HomepageActualiteType extends AbstractType
     private $themeAdmin;
 
     /**
+     * @var ImageAdmin
+     */
+    private $imageAdmin;
+
+    /**
      * setSonataAdmin function.
      *
      * @access public
@@ -44,6 +49,11 @@ class HomepageActualiteType extends AbstractType
     public function setThemeAdmin($themeAdmin)
     {
         $this->themeAdmin = $themeAdmin;
+    }
+
+    public function setImageAdmin($imageAdmin)
+    {
+        $this->imageAdmin = $imageAdmin;
     }
 
     /**
@@ -83,8 +93,8 @@ class HomepageActualiteType extends AbstractType
                 ),
                 'label' => 'form.label_image',
                 'sonata_field_description' =>  $this->adminTheme->getFormFieldDescriptions()['image'],
-                'model_manager' => $this->themeAdmin->getModelManager(),
-                'class' => $this->themeAdmin->getClass(),
+                'model_manager' => $this->imageAdmin->getModelManager(),
+                'class' => $this->imageAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true,

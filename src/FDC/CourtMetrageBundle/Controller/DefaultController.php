@@ -25,12 +25,14 @@ class DefaultController extends Controller
         $homepageManger = $this->get('ccm.manager.homepage');
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
+        $movies = $homepageManger->getFilmsByCourtYear();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/homepage.html.twig',
             [
                 'sliders' => $homepageSliders,
                 'pushes'  => $homepagePushes,
+                'movies' => $movies,
             ]
         );
     }

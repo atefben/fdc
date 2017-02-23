@@ -98,7 +98,7 @@ class MediaImage extends Media
         $this->homepageSliders = new ArrayCollection();
         $this->homepagePushes = new ArrayCollection();
         $this->catalogPushes = new ArrayCollection();
-        $this->actualites = new ArrayCollection();
+        $this->homepageActualites = new ArrayCollection();
         $this->homepageSejoures = new ArrayCollection();
     }
 
@@ -392,13 +392,13 @@ class MediaImage extends Media
     }
 
     /**
-     * Get homepageSejour.
+     * Get homepageSejoures.
      *
      * @return ArrayCollection
      */
     public function getHomepageSejour()
     {
-        return $this->homepageSejour;
+        return $this->homepageSejoures;
     }
 
     /**
@@ -406,9 +406,9 @@ class MediaImage extends Media
      *
      * @param ArrayCollection $homepageSejour
      */
-    public function setHomepageSejour($homepageSejour)
+    public function setHomepageSejoures($homepageSejoures)
     {
-        $this->homepageSejour = $homepageSejour;
+        $this->homepageSejoures = $homepageSejoures;
 
         return $this;
     }

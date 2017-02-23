@@ -44,6 +44,13 @@ class HomepageSejour
     protected $homepage;
 
     /**
+     * HomepageSejour constructor.
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+    /**
      * Get id.
      *
      * @return int
