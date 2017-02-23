@@ -509,6 +509,7 @@ var initVideo = function(hash) {
         console.log(videoFile);
         playerInstance.setup({
             sources: videoFile,
+            file: videoFile[0],
             image: videoImage,
             primary: 'html5',
             aspectratio: '16:9',
@@ -577,7 +578,7 @@ var initVideo = function(hash) {
             });
 
             if($('.medias').length || $('.media-library').length){
-                //initChannelTopBar();
+                initChannelTopBar();
             }else{
                 initChannel();
                 initChannelTopBar();
