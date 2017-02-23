@@ -6986,9 +6986,9 @@ body.chocolat-open > .chocolat-content {
   height: auto !important;
   width: auto !important;
   min-width: none !important;
-  max-with: none !important;
+  max-with: 100% !important;
   min-height: none !important;
-  max-height: none !important;
+  max-height: 100% !important;
 }
 .ie .slider-restropective .block-01 .vFlexAlign img.open {
   height: auto;
