@@ -74,6 +74,7 @@ var timeout = 1000,
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
+    alert('playerInit');
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
     live = live || false;
