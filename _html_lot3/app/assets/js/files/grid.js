@@ -244,8 +244,6 @@ var owInitGrid = function (id) {
             $.each($('.item.block-poster'), function (i,e) {
                 var p = $(e).find('.title-12');
 
-                console.log(p.length )
-
                 if(p.length > 3){ 
                     stop = true;
                 }

@@ -2807,8 +2807,6 @@ var owInitGrid = function (id) {
             $.each($('.item.block-poster'), function (i,e) {
                 var p = $(e).find('.title-12');
 
-                console.log(p.length )
-
                 if(p.length > 3){ 
                     stop = true;
                 }
@@ -3130,7 +3128,6 @@ $(document).ready(function() {
   }
 
   /* thomon - tetiere height computing */
-  console.log($('.tetiere-movie').length);
   if($('.tetiere-movie').length) {
     var tetiere = $('.tetiere-movie'),
     defaultHeight = 290, //magic number, booooh
