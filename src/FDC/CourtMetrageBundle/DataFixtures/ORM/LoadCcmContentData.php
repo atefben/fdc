@@ -29,13 +29,6 @@ class LoadCcmContentData implements FixtureInterface
             $contactPage = new \FDC\CourtMetrageBundle\Entity\CcmContactPage();
             $manager->persist($contactPage);
         }
-
-        if (count($manager->getRepository(CcmShortFilmCorner::class)
-                ->findBy(['type' => CcmShortFilmCorner::TYPE_WHO_ARE_WE])) == 0) {
-            $whoAreWe = new CcmShortFilmCorner();
-            $whoAreWe->setType(CcmShortFilmCorner::TYPE_WHO_ARE_WE);
-            $manager->persist($whoAreWe);
-        }
         
         if (count($manager->getRepository(CcmShortFilmCorner::class)
                 ->findBy(['type' => CcmShortFilmCorner::TYPE_RELIVE_EDITION])) == 0) {
