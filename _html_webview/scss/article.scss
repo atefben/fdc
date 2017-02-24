@@ -182,6 +182,10 @@ html {
 
 			strong {
 				display: inline;
+				
+				.Article-slider-caption & {
+					font-size: 0.8rem;
+				}
 			}
 		}
 

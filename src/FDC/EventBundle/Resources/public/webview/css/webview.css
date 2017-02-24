@@ -185,7 +185,8 @@ html {
   line-height: 25px;
   font-size: 0.8rem; }
   .Article-slider-caption strong {
-    display: inline; }
+    display: inline;
+    font-size: 0.8rem; }
 
 .Article-slider-count {
   position: absolute;
