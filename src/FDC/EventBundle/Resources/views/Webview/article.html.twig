@@ -34,7 +34,8 @@
     <article class="Article-wrapper">
       <header class="Article-header">
         {% if object is news_article %}
-          {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with { 'widget': object } %}
+          <img src="{% path widget.header|trans_fallback('file'), 'reference' %}"/>
+          <div class="Article-picture-caption"><strong>{{ widget.header|trans_fallback('legend') }}</strong> {{ widget.header|trans_fallback('copyright') }}</div>
         {% elseif object is news_audio %}
           {% include 'FDCEventBundle:Webview:widget/audio.html.twig' with { 'widget':object } %}
         {% elseif object is news_video %}
