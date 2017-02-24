@@ -4,29 +4,7 @@
     <section id="main" class="home noPadding whiteBckg">
         <div class="list-article">
             {% include 'FDCCourtMetrageBundle:Participate:partials/registerBanner.html.twig' %}
-            <!--<div class="subNavigation">
-                <nav>
-                  <ul class="main">
-                    <li>
-                      <a href="stands.php">screening</a>
-                    </li>
-                    <li>
-                      <a href="#">ateliers</a>
-                    </li>
-                    <li>
-                      <a href="projections.php">projections</a>
-                    </li>
-                    <li>
-                      <a href="equipements-services.php">petits dejeuners</a>
-                    </li>
-                    <li>
-                      <a href="opportunites-pub.php" class="active">conférences</a>
-                    </li>
-                  </ul>
-                 </nav>
-            </div>-->
         </div>
-
 
         <div class="all-contain block-01-ms padding-top block-rules">
             <strong class="title-23">{{ registerProcedure.name }}</strong>
@@ -46,4 +24,22 @@
             </div>
         </div>
     </section>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_ccm_homepage')
+        },
+        {
+            "name" : 'breadcrumb.participate'|trans,
+            "url"  : path('fdc_court_metrage_register_movie')
+        },
+        {
+            "name" : registerProcedure.name,
+            "url"  : ''
+        }
+        ]
+    }
+%}
 {% endblock %}

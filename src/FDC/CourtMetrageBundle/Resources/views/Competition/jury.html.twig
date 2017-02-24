@@ -66,4 +66,23 @@
             {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
         </div>
     </div>
+
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_ccm_homepage')
+        },
+        {
+            "name" : 'breadcrumb.competition'|trans,
+            "url"  : path('fdc_court_metrage_competition_selection')
+        },
+        {
+            "name" : juryTab.name,
+            "url"  : path('fdc_court_metrage_competition_jury')
+        }
+        ]
+    }
+%}
 {% endblock %}

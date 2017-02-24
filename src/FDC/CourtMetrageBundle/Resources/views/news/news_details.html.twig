@@ -227,6 +227,24 @@
         </div>
         <span class="anim"></span>
     </div>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_ccm_homepage')
+        },
+        {
+            "name" : 'ccm.news.all_articles'|trans,
+            "url"  : path('ccm_news')
+        },
+        {
+            "name" : article|trans_fallback('title'),
+            "url"  : ''
+        }
+        ]
+    }
+%}
     {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
     {'section': article.theme|trans_fallback('name'),
         'detail': article.publishedAt|date('d.m.y'),
