@@ -15,7 +15,6 @@
 {% if(video|trans_fallback('jobWebmState') == 3) %}
 	{{ s3_server_video ~ video|trans_fallback('webmUrl') }}
 {% endif %}
-{{ s3_server_video ~ video|trans_fallback('mp4Url') }}
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
@@ -40,7 +39,7 @@
 {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
-data-file="{{ s3_server_video ~ video }}" 
+data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
 {% if redactional is not null %}
 data-title="{{ redactional|trans_fallback('title') }}"
 data-desc="<h4>Discours</h4> <p>{{ redactional.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ redactional.updatedAt|date('H:i') }}"
