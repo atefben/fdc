@@ -78,8 +78,8 @@ class MiscExtension extends Twig_Extension
         }
         $inSite = false;
         if ($site) {
-            foreach ($object->getSites() as $site) {
-                if ($site->getSlug() == $site) {
+            foreach ($object->getSites() as $item) {
+                if ($item->getSlug() == $site) {
                     $inSite = true;
                 }
             }
