@@ -152,6 +152,7 @@ class LockController extends Controller
         'ccmprosactivity' => 'CcmProsActivity',
         'ccmproscontact' => 'CcmProsContact',
         'ccmdomain' => 'CcmDomain',
+        'ccmcontactsubject' => 'CcmContactSubject',
         'ccmfaq' => 'CcmFAQPage',
     );
 

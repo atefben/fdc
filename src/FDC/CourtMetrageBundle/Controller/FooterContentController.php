@@ -2,6 +2,10 @@
 
 namespace FDC\CourtMetrageBundle\Controller;
 
+
+use FDC\CourtMetrageBundle\Entity\CcmContactPage;
+use FDC\CourtMetrageBundle\Entity\CcmContactSubjectTranslation;
+use FDC\CourtMetrageBundle\Form\Type\CcmContactFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,5 +42,53 @@ class FooterContentController extends Controller
                 'pageDescription' => $pageDescription,
             ]
         );
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/contact", name="ccm_contact")
+     */
+    public function contactAction(Request $request)
+    {
+        $locale = $request->get('_locale', 'fr');
+        $contactManager = $this->get('ccm.manager.contact_page');
+        /** @var CcmContactPage $contactPage */
+        $contactPage = $contactManager->getContactPage();
+
+        if ($contactPage == null) {
+            throw $this->createNotFoundException();
+        }
+        
+        $contactSubjects = $contactManager->getContactPageSubjects($contactPage, $locale);
+        
+        $form = $this->createForm(new CcmContactFormType($contactSubjects));
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactManager->validateFormData($form, $locale);
+            if ($form->isValid()) {
+                $formData = $form->getData();
+                /** @var CcmContactSubjectTranslation $subjectTranslation */
+                $subjectTranslation = $contactManager->getSubjectTranslationBySlugAndLocale($formData['select'], $locale);
+                $contactManager->sendEmail([
+                    'to'      => $subjectTranslation->getReceiverEmail(),
+                    'from'    => $formData['email'],
+                    'name'    => $formData['name'],
+                    'email'   => $formData['email'],
+                    'theme'   => $subjectTranslation->getContactTheme(),
+                    'subject' => $formData['object'],
+                    'message' => $formData['message']
+                ]);
+                $this->addFlash('success', '');
+
+                return $this->redirectToRoute('ccm_contact');
+            }
+        }
+
+        return $this->render('@FDCCourtMetrage/Footer/contact.html.twig', [
+            'form'  => $form->createView()
+        ]);
     }
 }

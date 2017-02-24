@@ -43,6 +43,13 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
 
+    ccm.manager.contact_page:
+        class: FDC\CourtMetrageBundle\Manager\ContactPageManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@templating'
+            - '@mailer'
+
     ccm.manager.footer_content:
         class: FDC\CourtMetrageBundle\Manager\FooterContentManager
         arguments:
