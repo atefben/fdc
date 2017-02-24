@@ -94,8 +94,8 @@ class MiscExtension extends Twig_Extension
         }
         $now = time();
         return $object->getPublishedAt() &&
-            $object->getPublishedAt()->getTimestamp() >= $now
-            && (!$object->getPublishEndedAt() || $object->getPublishEndedAt()->getTimestamp() <= $now);
+            $object->getPublishedAt()->getTimestamp() <= $now
+            && (!$object->getPublishEndedAt() || $object->getPublishEndedAt()->getTimestamp() >= $now);
     }
 
     private function isPublishedMediaVideo($object)
