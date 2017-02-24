@@ -2344,7 +2344,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmNewsArticleAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsArticle, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_article, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_article, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2352,7 +2352,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmNewsVideoAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsVideo, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2360,7 +2360,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmNewsImageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsImage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2368,7 +2368,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmNewsAudioAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsAudio, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmnews, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2434,19 +2434,19 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWhoAreWeAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmsfc, label: Qui sommes nous}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Qui sommes nous ?}
 
     base.admin.ccm_sfc_our_events:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerOurEventsAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmsfc, label: Nos évènements}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Nos évènements}
 
     base.admin.ccm_sfc_relive_edition:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerReliveEditionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccmsfc, label: Revivez l’édition}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Revivez l’édition}
 
     base.admin.ccm_sfc_widget_audio_dummy:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetAudioDummyAdmin
@@ -2492,7 +2492,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabSelectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – La sélection}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – La sélection}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2500,7 +2500,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabJuryAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – Jury}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – Jury}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2508,7 +2508,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabPalmaresAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm_seo_tetieres, label: LES COURTS EN COMPETITION – Palmarès}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – Palmarès}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2516,7 +2516,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegister, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Inscrire un film}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Inscrire un film}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2524,7 +2524,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmRegisterProcedureAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Catégories des procédures d’inscription}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Catégories des procédures d’inscription}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2540,7 +2540,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Menu}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Menu}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2548,7 +2548,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmMainNavCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMainNavCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Main menu collection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Main menu collection, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2556,7 +2556,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmMainNavAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMainNav, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Main Menu Item, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Main Menu Item, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2564,7 +2564,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSubNavCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSubNavCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Sub Menu collection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Sub Menu collection, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2572,7 +2572,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSubNavAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSubNav, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Sub Menu Item, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Sub Menu Item, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2580,7 +2580,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmWaitingPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmWaitingPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Pages d'attente}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Pages d'attente}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2596,7 +2596,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSlider, BaseAdminBundle:CCM\ImageDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Homepage Slider, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Homepage Slider, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2604,13 +2604,13 @@ services:
         class: Base\AdminBundle\Admin\CCM\HomepageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\Homepage, BaseAdminBundle:CCM\HomepageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Homepage}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Homepage}
 
     base.admin.ccm_homepage_push_top_dummy:
         class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\HomepagePush, BaseAdminBundle:CCM\ImageDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Module Push, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Module Push, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2618,7 +2618,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSocialWallHashTagAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall hashtag}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Social wall hashtag}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2690,7 +2690,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSocialWallAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWall, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Social wall}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2698,70 +2698,70 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmFaqPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFaqPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: FAQ Page}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: FAQ Page}
 
     base.admin.ccm_rubriques_collection:
         class: Base\AdminBundle\Admin\CCM\CcmRubriquesCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriquesCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: RubriquesCollection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: RubriquesCollection, show_in_dashboard: false}
 
     base.admin.ccm_rubrique:
         class: Base\AdminBundle\Admin\CCM\CcmRubriqueAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubrique, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Rubrique, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Rubrique, show_in_dashboard: false}
 
     base.admin.ccm_rubrique_questions_collection:
         class: Base\AdminBundle\Admin\CCM\CcmRubriqueQuestionsCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestionsCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-          - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: RubriqueQuestionsCollection, show_in_dashboard: false}
+          - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: RubriqueQuestionsCollection, show_in_dashboard: false}
 
     base.admin.ccm_rubrique_question:
         class: Base\AdminBundle\Admin\CCM\CcmRubriqueQuestionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestion, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Question-Answer, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Question-Answer, show_in_dashboard: false}
 
     base.admin.ccm_contact_page:
         class: Base\AdminBundle\Admin\CCM\CcmContactPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Contact Page}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Contact Page}
 
     base.admin.ccm_contact_subjects_collection:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectsCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubjectsCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactPageSubjectsCollection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: ContactPageSubjectsCollection, show_in_dashboard: false}
 
     base.admin.ccm_contact_subject:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: ContactSubject, show_in_dashboard: false}
 
     base.admin.ccm_footer_content:
         class: Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Footer Content, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Footer Content, show_in_dashboard: false}
 
     base.admin.ccm_confidentialite:
         class: Base\AdminBundle\Admin\CCM\CcmConfidentialiteAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Politique de confidentialité }
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Politique de confidentialité }
 
     base.admin.ccm_credits:
         class: Base\AdminBundle\Admin\CCM\CcmCreditsAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Crédits }
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Crédits }
 
     base.admin.ccm_legal:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Mentions Légales }

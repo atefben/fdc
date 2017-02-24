@@ -140,6 +140,94 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * @Route("/share-email-media-ccm", name="fdc_court_metrage_shareemail_media", options={"expose"=true})
+     * @param Request $request
+     * @param $section
+     * @param $detail
+     * @param $title
+     * @param $description
+     * @return array
+     */
+    public function shareEmailMediaAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null) {
+        
+        $emailData = array(
+            'section' => $section,
+            'detail' => $detail,
+            'title' => $title,
+            'description' => $description,
+            'url' => $url
+        );
+
+        $translator = $this->get('translator');
+        $hasErrors  = false;
+
+        $form = $this->createForm(new ShareEmailType($translator));
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
+            if ($form['email']->isValid()) {
+                $emails = explode(',', $form['email']->getData());
+                foreach ($emails as $email) {
+                    if (!filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+                        $error = new FormError('email.invalid');
+                        $form['email']->addError($error);
+                        break;
+                    }
+                }
+            }
+            if ($form->isValid()) {
+                foreach ($emails as $email){
+                    $data    = $form->getData();
+                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                        'message' => $data['message'],
+                        'section' => $data['section'],
+                        'title' => $data['title'],
+                        'description' => strip_tags($data['description'], '<p><em>'),
+                        'detail' => $data['detail'],
+                        'url' => $data['url']
+                    )), 'text/html');
+                    $mailer  = $this->get('mailer');
+                    $mailer->send($message);
+
+                    $response['success'] = true;
+
+                    //send mail copy
+                    if ($data['copy']) {
+                        $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                            'message' => $data['message'],
+                            'section' => $data['section'],
+                            'title' => $data['title'],
+                            'description' => strip_tags($data['description'], '<p><em>'),
+                            'detail' => $data['detail'],
+                            'url' => $data['url']
+                        )), 'text/html');
+                        $mailer  = $this->get('mailer');
+                        $mailer->send($message);
+                    }
+
+                    // subscribe to newsletter
+                    if ($data['newsletter']) {
+                        $locale = ($request->getLocale() == 'fr') ? 'fr' : 'en';
+                        $exist = $this->newsletterEmailExists($data['user']);
+                        if ($exist == false) {
+                            $subscribed = $this->newsletterEmailSubscribe($data['email'], $locale);
+                        }
+                    }
+                }
+            } else {
+                $response['success'] = false;
+            }
+            return new JsonResponse($response);
+        }
+
+        return $this->render('FDCCourtMetrageBundle:Shared:shareMailMedia.html.twig', [
+            'share_email_media' => $emailData,
+            'form' => $form->createView(),
+            'hasErrors' => $hasErrors,
+        ]);
+    }
+
     private function newsletterEmailExists($email)
     {
         $client = new Client($this->container->getParameter('fdc_newsletter_api_url'));

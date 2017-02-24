@@ -91,13 +91,21 @@ function initNewsListWatcher() {
             },
             listenToFilterChange: function ()
             {
-                /**
-                 * when articles are filtered we must re-fetch articles if the newly
-                 * applied filter resulted in a small number of results
-                 */
                 $(document).delegate('#filters span[data-filter]', 'click', $.proxy(function() {
+                    /**
+                     * when articles are filtered we must re-fetch articles if the newly
+                     * applied filter resulted in a small number of results
+                     */
                     this.checkPosition();
+                    /**
+                     * workaround for re-displaying filters that were hidden
+                     */
+                    this.displayHiddenFilters();
                 }, this));
+            },
+            displayHiddenFilters: function ()
+            {
+                $('.filters span[data-filter].disabled').removeClass('disabled');
             },
             checkPosition: function ()
             {

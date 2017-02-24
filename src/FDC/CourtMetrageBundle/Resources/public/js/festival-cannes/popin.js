@@ -170,7 +170,8 @@ $(document).ready(function() {
         }
       });
     });
-  } else if($('.popin-mail.media').length) {
+  } 
+  if($('.popin-mail.media').length) {
     initPopinMail('.popin-mail.media');
   }
 

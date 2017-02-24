@@ -1,14 +1,14 @@
-<div class="popin-mail popin">
+<!-- POPIN MAIL MEDIA SHARE -->
+<div class="popin-mail media popin">
     <div class="contain-popin popin">
         <div id="msg"></div>
-        <strong class="theme-article popin">{% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }}{% else %}{{ share_email.section }}{% endif %}
-        </strong>
-        <span class="date-article popin">{% if artist is defined and artist is not null %} {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ share_email.detail }}{% endif %}</span>
-        <h2 class="title-article popin">{{ share_email.title }}</h2>
-        <div class="chap-article popin">{{ share_email.description|raw }}</div>
+        <strong class="theme-article popin">{{ share_email_media.section }}</strong>
+        <span class="date-article popin">{{ share_email_media.detail }}</span>
+        <h2 class="title-article popin">{{ share_email_media.title }}</h2>
+        <div class="chap-article popin">{{ share_email_media.description|raw }}</div>
     </div>
 
-    {{ form_start(form, {'action': path('fdc_court_metrage_shareemail'),attr: {class:'popin', id:'form'}}) }}
+    {{ form_start(form, {'action': path('fdc_court_metrage_shareemail_media'),attr: {class:'popin', id:'form'}}) }}
         {% if form_errors(form.email) %}
             {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
         {% else %}
@@ -33,11 +33,11 @@
             {{ form_widget(form.message) }}
         {% endif %}
 
-        {{ form_widget(form.section, {'value' : share_email.section}) }}
-        {{ form_widget(form.detail, {'value' : share_email.detail}) }}
-        {{ form_widget(form.title, {'value' : share_email.title}) }}
-        {{ form_widget(form.description, {'value' : share_email.description}) }}
-        {{ form_widget(form.url, {'value' : share_email.url}) }}
+        {{ form_widget(form.section, {'value' : share_email_media.section}) }}
+        {{ form_widget(form.detail, {'value' : share_email_media.detail}) }}
+        {{ form_widget(form.title, {'value' : share_email_media.title}) }}
+        {{ form_widget(form.description, {'value' : share_email_media.description}) }}
+        {{ form_widget(form.url, {'value' : share_email_media.url}) }}
         <span class="complet-infos newsletter popin">
             {{ form_widget(form.newsletter) }}
             {{ form_label(form.newsletter) }}
@@ -56,4 +56,4 @@
         </p>
     </div>
 </div>
-<!-- END POPIN MAIL SHARE -->
+<!-- END POPIN MAIL MEDIA SHARE -->

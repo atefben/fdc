@@ -57,14 +57,14 @@
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
                     {% spaceless %}
-                        <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl|url_encode(true) }}&picture={% if article.seoFile is not null %}{% path article.seoFile|trans_fallback('file'), '384x485' -%}{% elseif article.header is not null %}{% path article.header|trans_fallback('file'), 'reference' -%}{% elseif article.image is not null %}{% path article.image|trans_fallback('file'), 'reference' -%}{% endif %}&title={{ article|trans_fallback('title')|url_encode(true) }}&description={% if articleDescriptionWidget is not null %}{{ articleDescriptionWidget|trans_fallback('content')|striptags|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
-                            rel="nofollow" class="button facebook">
+                        <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if article.seoFile is not null %}{% path article.seoFile|trans_fallback('file'), '384x485' -%}{% elseif article.header is not null %}{% path article.header|trans_fallback('file'), 'reference' -%}{% elseif article.image is not null %}{% path article.image|trans_fallback('file'), 'reference' -%}{% endif %}&title={{ article|trans_fallback('title')|url_encode(true) }}&description={% if articleDescriptionWidget is not null %}{{ articleDescriptionWidget|trans_fallback('content')|striptags|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                            rel="nofollow" class="button facebook news-fb-share">
                             <i class="icon icon_facebook"></i>
                         </a>
                     {% endspaceless %}
                     <a href="https://twitter.com/intent/tweet?text={{ article|trans_fallback('title')|url_encode(true) }} {{ currentUrl }}"
                        rel="nofollow"
-                       class="button twitter">
+                       class="button twitter news-twttr-share">
                         <i class="icon icon_twitter"></i>
                     </a>
                     <a href="#" class="button link self"><i class="icon icon_link"></i></a>
@@ -227,7 +227,6 @@
         </div>
         <span class="anim"></span>
     </div>
-    <!-- POPIN MAIL SHARE -->
     {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
     {'section': article.theme|trans_fallback('name'),
         'detail': article.publishedAt|date('d.m.y'),
@@ -235,5 +234,11 @@
         'description': articleDescriptionWidget is not null ? articleDescriptionWidget|trans_fallback('content') : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
-    <!-- END POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmailMedia',
+    {'section': article.theme|trans_fallback('name'),
+        'detail': article.publishedAt|date('d.m.y'),
+        'title': article|trans_fallback('title'),
+        'description': articleDescriptionWidget is not null ? articleDescriptionWidget|trans_fallback('content') : '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}
