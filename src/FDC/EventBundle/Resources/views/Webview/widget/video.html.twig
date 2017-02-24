@@ -12,9 +12,7 @@
 {% endif %}
 
 {% set video = widget.file %}
-{% if(video|trans_fallback('jobWebmState') == 3) %}
-	{{ s3_server_video ~ video|trans_fallback('webmUrl') }}
-{% endif %}
+
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
