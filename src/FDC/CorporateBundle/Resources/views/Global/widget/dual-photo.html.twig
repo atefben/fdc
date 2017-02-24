@@ -1,0 +1,39 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if hideHalfDiv is defined and hideHalfDiv == true and  widget.gallery is not empty %}
+    {% for gallery in widget.gallery.medias %}
+        {% if gallery.media != null and gallery.media|is_published('site-institutionnel') %}
+            {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = gallery.media.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            <div class="half-photo">
+                <div class="photo-container">
+                    <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                    <p class="caption">{{ gallery.media|trans_fallback('copyright')  }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <div class="half-photos">
+        {% if widget.gallery is not empty %}
+            {% for gallery in widget.gallery.medias %}
+                {% if gallery.media != null and gallery.media|is_published('site-institutionnel') %}
+                    {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = gallery.media.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    <div class="half-photo">
+                        <div class="photo-container">
+                            <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                            <p class="caption">{{ gallery.media|trans_fallback('copyright') }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endif %}
