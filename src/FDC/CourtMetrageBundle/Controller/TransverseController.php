@@ -41,7 +41,8 @@ class TransverseController extends Controller
     public function actualiteAction()
     {
         $homepageManger = $this->get('ccm.manager.homepage');
-        $actualites = $homepageManger->getActualite();
+        $newsManger = $this->get('ccm.manager.news');
+        $actualites = $newsManger->getNewsArticlesForListPage();
         $actualiteIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getActualiteIsActive();
 
         return $this->render(

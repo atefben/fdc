@@ -2,8 +2,10 @@
 
 namespace FDC\CourtMetrageBundle\Manager;
 
+use Base\CoreBundle\Entity\News;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSejourTranslation;
@@ -99,15 +101,12 @@ class HomepageManager
         }
     }
 
-    public function getActualite()
+    public function getActualite($locale = 'fr', $year = null, $themeId = null, $offset = 0, $limit = 3)
     {
-        return $this->em
-            ->getRepository(HomepageActualiteTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+        /** @var CcmNews[] $actualite */
+        $actualites = $this->em->getRepository(CcmNews::class)->getNewsArticlesByYearAndTheme($locale, $year, $themeId, $offset, $limit);
+
+        return $actualites;
     }
 
     public function getSejour()

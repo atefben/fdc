@@ -70,7 +70,7 @@ class CcmNewsRepository extends EntityRepository
      * @param int $offset
      * @return array
      */
-    public function getNewsArticlesByYearAndTheme($locale = 'fr', $year = null, $themeId = null, $offset = 0)
+    public function getNewsArticlesByYearAndTheme($locale = 'fr', $year = null, $themeId = null, $offset = 0, $limit = null)
     {
         $qb =  $this
             ->createQueryBuilder('n')
@@ -132,10 +132,12 @@ class CcmNewsRepository extends EntityRepository
         }
         $qb
             ->orderBy('n.publishedAt', 'DESC')
-            //->setMaxResults(16) // we show all of them for now
             ->setFirstResult($offset)
         ;
 
+        if($limit) {
+            $qb->setMaxResults($limit);
+        }
         return $qb->getQuery()->getResult();
     }
 
