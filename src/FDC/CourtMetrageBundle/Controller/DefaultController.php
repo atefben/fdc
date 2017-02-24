@@ -26,10 +26,11 @@ class DefaultController extends Controller
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
         $movies = $homepageManger->getFilmsByCourtYear();
-        $catalogs = $homepageManger->getCatalogPushes();
         $sejour = $homepageManger->getSejour();
-        $catalogImage = $homepageManger->getCatalogImage();
-        $actualites = $homepageManger->getActualite();
+
+        $pushIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getPushIsActive();
+        $courtIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getCourtIsActive();
+        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/homepage.html.twig',
@@ -37,10 +38,11 @@ class DefaultController extends Controller
                 'sliders' => $homepageSliders,
                 'pushes'  => $homepagePushes,
                 'movies' => $movies,
-                'catalogs' => $catalogs,
-                'catalogImage' => $catalogImage,
-                'actualites' => $actualites,
                 'sejour' => $sejour,
+
+                'pushIsActive' => $pushIsActive,
+                'courtIsActive' => $courtIsActive,
+                'sejourIsActive' => $sejourIsActive,
             ]
         );
     }

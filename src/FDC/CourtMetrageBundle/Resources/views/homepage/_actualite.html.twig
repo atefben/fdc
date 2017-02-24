@@ -1,16 +1,23 @@
-{% for actualite in actualites %}
-    {% if actualite.translatable.isActive == 1 %}
-        <a href="{{ actualite.url }}">
-            <div class="articles">
-                <div class="articles-content">
-                    <span>
-                        THEME
-                        <br><span class="article-date">{{ actualite.translatable.date|date("d M Y") }}</span>
-                    </span>
-                    <h6>{{ actualite.title }}</h6>
-                    <p>{{ actualite.description }}</p>
-                </div>
-            </div>
-        </a>
-    {% endif %}
-{% endfor %}
+<div class="our-news">
+    <h3>les actualités</h3>
+    <div class="innerWrapper">
+        {% if actualites is defined and actualites is not null and actualiteIsActive == 1 %}
+            {% for actualite in actualites %}
+                {% if actualite.translatable.isActive == 1 %}
+                    <a href="{{ actualite.url }}">
+                        <div class="articles">
+                            <div class="articles-content">
+                                <span>
+                                    {{ actualite.translatable.theme.name }}
+                                    <br><span class="article-date">{{ actualite.translatable.date|date("d M Y") }}</span>
+                                </span>
+                                <h6>{{ actualite.title }}</h6>
+                                <p>{{ actualite.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

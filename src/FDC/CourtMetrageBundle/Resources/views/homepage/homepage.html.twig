@@ -14,49 +14,40 @@
         </div>
     </div>
 
-    <div class="discover">
-        <div id="slider-discover" class="owl-carousel">
-            {% if pushes is defined and pushes is not null %}
-                {% include 'FDCCourtMetrageBundle::homepage/_push.html.twig' %}
-            {% endif %}
+    {% if pushIsActive == 1 %}
+        <div class="discover">
+            <div id="slider-discover" class="owl-carousel">
+                {% if pushes is defined and pushes is not null %}
+                    {% include 'FDCCourtMetrageBundle::homepage/_push.html.twig' %}
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
-    <div class="competition">
-        <div class="maxContainer">
-            <h3>courts en compétition</h3>
+    {% if courtIsActive == 1 %}
+        <div class="competition">
+            <div class="maxContainer">
+                <h3>courts en compétition</h3>
+            </div>
+            <div id="slider-competition" class="owl-carousel">
+                {% if movies is defined and movies is not null %}
+                    {% include 'FDCCourtMetrageBundle::homepage/_courts_en_competition.html.twig' %}
+                {% endif %}
+            </div>
         </div>
-        <div id="slider-competition" class="owl-carousel">
-            {% if movies is defined and movies is not null %}
-                {% include 'FDCCourtMetrageBundle::homepage/_courts_en_competition.html.twig' %}
-            {% endif %}
-        </div>
-    </div>
+    {% endif %}
 
-    <div class="catalogue">
-        <div class="imgIllustration">
-            <img class="img" style="background-image:url({% path catalogImage|trans_fallback('file'), 'reference' %})">
-        </div>
-        <h5>le catalogue</h5>
-        {% if catalogs is defined and catalogs is not null %}
-            {% include 'FDCCourtMetrageBundle::homepage/_catalog.html.twig' %}
-        {% endif %}
-    </div>
+    {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
 
-    <div class="our-news">
-        <h3>les actualités</h3>
-        <div class="innerWrapper">
-            {% if actualites is defined and actualites is not null %}
-                {% include 'FDCCourtMetrageBundle::homepage/_actualite.html.twig' %}
-            {% endif %}
-        </div>
-    </div>
+    {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
 
-    <div class="list-article">
-        <div class="bandeau-list">
-            {% if sejour is defined and sejour is not null %}
-                {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
-            {% endif %}
+    {% if sejourIsActive == 1 %}
+        <div class="list-article">
+            <div class="bandeau-list">
+                {% if sejour is defined and sejour is not null %}
+                    {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}
