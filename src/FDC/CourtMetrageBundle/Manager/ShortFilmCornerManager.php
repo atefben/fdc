@@ -44,9 +44,9 @@ class ShortFilmCornerManager
         $translation = $shortFilmCornerPage->findTranslationByLocale($locale);
         $pageData = [
             'slug'        => $translation->getSlug(),
+            'type'        => $type,
             'title'       => $translation->getTitle(),
             'image'       => $shortFilmCornerPage->getImage(),
-            'transCode'   => 'ccm.short_film_corner.' . $type,
             'description' => $translation->getHeader(),
             'widgets'     => $shortFilmCornerPage->getWidgets()
         ];
