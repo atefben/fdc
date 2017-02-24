@@ -53,7 +53,9 @@ class CcmShortFilmCornerWhoAreWeAdmin extends CcmShortFilmCornerAdmin
     {
         parent::configureFormFields($formMapper);
         $formMapper
-            ->add('position', 'number')
+            ->add('menuOrder', 'number',[
+                'label' => 'Position'
+            ])
         ;
     }
 

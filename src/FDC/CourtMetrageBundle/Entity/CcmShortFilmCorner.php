@@ -68,9 +68,9 @@ class CcmShortFilmCorner implements TranslateMainInterface
     /**
      * @var int
      *
-     * @ORM\Column(name="position", type="smallint", nullable=true, options={"unsigned": true})
+     * @ORM\Column(name="menu_order", type="smallint", nullable=true, options={"unsigned": true})
      */
-    protected $position;
+    protected $menuOrder;
 
     /**
      * @var CcmShortFilmCornerWidget
@@ -251,18 +251,18 @@ class CcmShortFilmCorner implements TranslateMainInterface
     /**
      * @return int
      */
-    public function getPosition()
+    public function getMenuOrder()
     {
-        return $this->position;
+        return $this->menuOrder;
     }
 
     /**
-     * @param $position
+     * @param $menuOrder
      * @return CcmShortFilmCorner
      */
-    public function setPosition($position)
+    public function setMenuOrder($menuOrder)
     {
-        $this->position = $position;
+        $this->menuOrder = $menuOrder;
 
         return $this;
     }

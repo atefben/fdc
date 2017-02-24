@@ -42,7 +42,9 @@
                                     <hr>
                                     {{ form_row(translationsFields.header) }}
                                     <hr>
-                                    {{ form_row(form.parent.children.position) }}
+                                    {% if form.parent.children.menuOrder is defined %}
+                                        {{ form_row(form.parent.children.menuOrder) }}
+                                    {% endif %}
                                 </div>
                             </div>
                         {% else %}

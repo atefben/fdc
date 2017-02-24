@@ -63,7 +63,7 @@ class CcmShortFilmCornerRepository extends EntityRepository
             ->andWhere('t.status = :status')
             ->setParameter('locale', $locale)
             ->setParameter('type', CcmShortFilmCorner::TYPE_WHO_ARE_WE)
-            ->orderBy('sfc.position', 'ASC')
+            ->orderBy('sfc.menuOrder', 'ASC')
         ;
         if ($locale != 'fr') {
             $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_TRANSLATED);
