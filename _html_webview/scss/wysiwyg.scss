@@ -49,6 +49,12 @@
 		    transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 		}
 
+		.single-button {
+		    border-right: 1px solid #c8a461!important;
+		    border-color: #c8a461;
+		    margin: 10px;
+		}
+
 		.title-article {
 		    color: #333;
 		    font-family: "Playfair Display", Times New Roman, Times, serif;
