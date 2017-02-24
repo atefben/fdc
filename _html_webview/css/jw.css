@@ -163,12 +163,14 @@
       font-weight: 300;
       font-size: 1.2rem;
       line-height: 1.5rem;
-      padding-left: 12px; }
+      padding-left: 12px;
+      overflow: visible; }
     .jwplayer.jw-skin-fdc-video .jw-title-secondary {
       position: absolute;
       left: 0px;
       bottom: 12px;
-      padding-left: 12px; }
+      padding-left: 12px;
+      overflow: visible; }
     .jwplayer.jw-skin-fdc-video .jw-title h4 {
       display: inline;
       color: #c9a45e;
