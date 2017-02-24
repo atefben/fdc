@@ -1959,7 +1959,7 @@
         <h4>{{ 'form.ccm.graphical_charter.content.one_column'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
-        {{ form_widget(form.children.image) }}
+        {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -1977,11 +1977,11 @@
         <h4>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
-        {{ form_widget(form.children.image) }}
-        {{ form_widget(form.children.image2) }}
-        {{ form_widget(form.children.image2) }}
-        {{ form_widget(form.children.labelContentFiles) }}
-        {{ form_widget(form.children.labelContentFiles2) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.labelContentFiles) }}
+        {{ form_row(form.children.labelContentFiles2) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -1999,12 +1999,12 @@
         <h4>{{ 'form.ccm.graphical_charter.content.three_columns'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
-        {{ form_widget(form.children.image) }}
-        {{ form_widget(form.children.image2) }}
-        {{ form_widget(form.children.image3) }}
-        {{ form_widget(form.children.labelContentFiles) }}
-        {{ form_widget(form.children.labelContentFiles2) }}
-        {{ form_widget(form.children.labelContentFiles3) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.image3) }}
+        {{ form_row(form.children.labelContentFiles) }}
+        {{ form_row(form.children.labelContentFiles2) }}
+        {{ form_row(form.children.labelContentFiles3) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
