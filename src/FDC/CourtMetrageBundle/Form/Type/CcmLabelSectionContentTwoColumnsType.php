@@ -29,6 +29,21 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
     private $mediaImageSimpleAdmin;
 
     /**
+     * @var
+     */
+    private $sonataAdminContentFiles;
+
+    /**
+     * @var
+     */
+    private $sonataAdminContentFilesTwo;
+
+    /**
+     * @var
+     */
+    private $contentFilesAdmin;
+
+    /**
      * setSonataAdmin function.
      *
      * @access public
@@ -43,6 +58,21 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
     public function setMediaImageSimpleAdmin($mediaImageAdmin)
     {
         $this->mediaImageSimpleAdmin = $mediaImageAdmin;
+    }
+
+    public function setSonataAdminContentFiles($sonataAdminContentFiles)
+    {
+        $this->sonataAdminContentFiles = $sonataAdminContentFiles;
+    }
+
+    public function setSonataAdminContentFilesTwo($sonataAdminContentFilesTwo)
+    {
+        $this->sonataAdminContentFilesTwo = $sonataAdminContentFilesTwo;
+    }
+
+    public function setContentFilesAdmin($contentFilesAdmin)
+    {
+        $this->contentFilesAdmin = $contentFilesAdmin;
     }
 
     /**
@@ -149,6 +179,30 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageSimpleAdmin->getModelManager(),
                 'class' => $this->mediaImageSimpleAdmin->getClass(),
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
+            ))
+            ->add('labelContentFiles', 'sonata_type_model_list', array(
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+                'label' => 'form.ccm.graphical_charter.content_files',
+                'sonata_field_description' =>  $this->sonataAdminContentFiles->getFormFieldDescriptions()['labelContentFiles'],
+                'model_manager' => $this->contentFilesAdmin->getModelManager(),
+                'class' => $this->contentFilesAdmin->getClass(),
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
+                'required' => true
+            ))
+            ->add('labelContentFiles2', 'sonata_type_model_list', array(
+                'constraints'        => array(
+                    new NotBlank(),
+                ),
+                'label' => 'form.ccm.graphical_charter.content_files_2',
+                'sonata_field_description' =>  $this->sonataAdminContentFilesTwo->getFormFieldDescriptions()['labelContentFiles2'],
+                'model_manager' => $this->contentFilesAdmin->getModelManager(),
+                'class' => $this->contentFilesAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true

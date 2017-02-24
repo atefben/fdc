@@ -631,6 +631,21 @@ form:
     label_pdf: Pdf
     ccm:
         graphical_charter:
+            content_files: Fichiers colonne 1
+            content_files_2: Fichiers colonne 2
+            section_file_title: Bouton titre
+            section_file: Fichier
+            files_on_section: Boutons disponible
+            files_section: Sections du fichiers
+            label_file_collection: Gestion de boutons
+            label_file: Boutons
+            label_content_file_widget_collection: Section du fichier
+            label_content_file_widget: Sections disponibles
+            button_section_title: Titre du section de fichier
+            section_title: Nom de la section
+            bo_name: Backoffice nom
+            files_section_widget: Module fichiers colonne
+            file_section_widget: Module fichiers colonne
             file_1: Fichier 1
             file_2: Fichier 2
             file_title: Bouton 1 titre
