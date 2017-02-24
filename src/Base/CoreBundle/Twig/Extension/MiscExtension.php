@@ -73,6 +73,9 @@ class MiscExtension extends Twig_Extension
 
     private function isPublishedInSite($object, $site)
     {
+        if (!method_exists($object, 'getSites') || !$site) {
+            return true;
+        }
         $inSite = false;
         if ($site) {
             foreach ($object->getSites() as $site) {
@@ -86,8 +89,13 @@ class MiscExtension extends Twig_Extension
 
     private function isPublishedDate($object)
     {
+        if (!method_exists($object, 'getPublishedAt') || !method_exists($object, 'getPublishEndedAt')) {
+            return true;
+        }
         $now = time();
-        return $object->getPublishedAt()->getTimestamp() >= $now && (!$object->getPublishEndedAt() || $object->getPublishEndedAt()->getTimestamp() <= $now);
+        return $object->getPublishedAt() &&
+            $object->getPublishedAt()->getTimestamp() >= $now
+            && (!$object->getPublishEndedAt() || $object->getPublishEndedAt()->getTimestamp() <= $now);
     }
 
     private function isPublishedMediaVideo($object)
@@ -137,7 +145,9 @@ class MiscExtension extends Twig_Extension
             return false;
         } else {
             $main = $object->findTranslationByLocale($this->defaultLocale);
-            if ($main->getStatus() == TranslateChildInterface::STATUS_PUBLISHED && $trans->getStatus() == TranslateChildInterface::STATUS_TRANSLATED) {
+            if ($main->getStatus() == TranslateChildInterface::STATUS_PUBLISHED
+                && $trans->getStatus() == TranslateChildInterface::STATUS_TRANSLATED
+            ) {
                 return true;
             }
             return false;
