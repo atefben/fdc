@@ -127,11 +127,36 @@
           {% endif %}
           <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
+
             {% if associatedNews.header is not null %}
-              {% if associatedNews.header.file is null %}
-                <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
+              {% set header = associatedNews.header %}
+                {% if header is not null %}
+                    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if imageTrans is null or imageTrans.file is null %}
+                        {% set imageTrans = header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is defined and imageTrans.file is not null %}
+                    {% set img = associatedNews.header %}
+                    {% set file = imageTrans.file %}
+                {% else %}
+                    {% if associatedNews.gallery and associatedNews.gallery.medias|length > 0 %}
+                        {% set img = associatedNews.gallery.medias[0].media %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                    {% endif %}
+                {% endif %}
+                {% if file is defined %}
+                    <img src="{% path file, 'reference' %}"/>
+                {% else %}
+                  <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
+                {% endif %}
+                
               {% else %}
-                <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
+                
               {% endif %}
             {% endif %}
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
