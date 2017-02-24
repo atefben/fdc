@@ -23,7 +23,7 @@ class CcmNewsRepository extends EntityRepository
 
         $qb = $this
             ->createQueryBuilder('n')
-            ->select('t.id', 'tt.name', 'n.publishedAt')
+            ->select('t.id', 'n.publishedAt')
             ->join('n.theme', 't')
             ->join('Base\CoreBundle\Entity\ThemeTranslation', 'tt', 'WITH', 'tt.translatable = t.id AND tt.locale = :locale')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsArticle', 'na1', 'WITH', 'na1.id = n.id')
