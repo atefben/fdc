@@ -633,6 +633,7 @@ form:
         graphical_charter:
             content_files: Fichiers colonne 1
             content_files_2: Fichiers colonne 2
+            content_files_3: Fichiers colonne 3
             section_file_title: Bouton titre
             section_file: Fichier
             files_on_section: Boutons disponible

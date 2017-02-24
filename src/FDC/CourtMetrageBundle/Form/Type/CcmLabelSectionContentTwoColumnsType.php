@@ -24,6 +24,11 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
     private $admin;
 
     /**
+     * @var
+     */
+    private $adminTwo;
+
+    /**
      * @var MediaImageSimpleAdmin
      */
     private $mediaImageSimpleAdmin;
@@ -73,6 +78,11 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
     public function setContentFilesAdmin($contentFilesAdmin)
     {
         $this->contentFilesAdmin = $contentFilesAdmin;
+    }
+
+    public function setSonataTwoAdmin($adminTwo)
+    {
+        $this->adminTwo = $adminTwo;
     }
 
     /**
@@ -176,7 +186,7 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
                 'constraints'        => array(
                     new NotBlank(),
                 ),
-                'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
+                'sonata_field_description' =>  $this->adminTwo->getFormFieldDescriptions()['image2'],
                 'model_manager' => $this->mediaImageSimpleAdmin->getModelManager(),
                 'class' => $this->mediaImageSimpleAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',

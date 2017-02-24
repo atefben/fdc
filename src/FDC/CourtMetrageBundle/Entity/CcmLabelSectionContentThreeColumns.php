@@ -41,6 +41,30 @@ class CcmLabelSectionContentThreeColumns extends CcmLabelSectionContent
     protected $image3;
 
     /**
+     * @var CcmLabelContentFiles
+     *
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles")
+     *
+     */
+    protected $labelContentFiles;
+
+    /**
+     * @var CcmLabelContentFiles
+     *
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles")
+     *
+     */
+    protected $labelContentFiles2;
+
+    /**
+     * @var CcmLabelContentFiles
+     *
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles")
+     *
+     */
+    protected $labelContentFiles3;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -129,6 +153,66 @@ class CcmLabelSectionContentThreeColumns extends CcmLabelSectionContent
     public function setTranslations($translations)
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * @return CcmLabelContentFiles
+     */
+    public function getLabelContentFiles()
+    {
+        return $this->labelContentFiles;
+    }
+
+    /**
+     * @param $labelContentFiles
+     *
+     * @return $this
+     */
+    public function setLabelContentFiles($labelContentFiles)
+    {
+        $this->labelContentFiles = $labelContentFiles;
+
+        return $this;
+    }
+
+    /**
+     * @return CcmLabelContentFiles
+     */
+    public function getLabelContentFiles2()
+    {
+        return $this->labelContentFiles2;
+    }
+
+    /**
+     * @param $labelContentFiles2
+     *
+     * @return $this
+     */
+    public function setLabelContentFiles2($labelContentFiles2)
+    {
+        $this->labelContentFiles2 = $labelContentFiles2;
+
+        return $this;
+    }
+
+    /**
+     * @return CcmLabelContentFiles
+     */
+    public function getLabelContentFiles3()
+    {
+        return $this->labelContentFiles3;
+    }
+
+    /**
+     * @param $labelContentFiles3
+     *
+     * @return $this
+     */
+    public function setLabelContentFiles3($labelContentFiles3)
+    {
+        $this->labelContentFiles3 = $labelContentFiles3;
 
         return $this;
     }

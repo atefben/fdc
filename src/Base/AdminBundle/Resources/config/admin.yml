@@ -2872,11 +2872,35 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_label_section_content_two_columns_two_image_dummy_admin:
+            class: Base\AdminBundle\Admin\CCM\ImageTwoDummyAdmin
+            arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy two columns, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_label_section_content_three_columns_image_dummy_admin:
         class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_two_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageTwoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_three_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyThreeAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns three, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2925,7 +2949,30 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns two, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-    base.admin.ccm_videos_collection:
+
+    base.admin.ccm_label_section_content_three_columns_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentThreeColumnsDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_two_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentThreeColumnsTwoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_three_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentThreeColumnsThreeDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns three, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]    base.admin.ccm_videos_collection:
         class: Base\AdminBundle\Admin\CCM\CcmVideosCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmVideosCollection, ApplicationSonataAdminBundle:CRUD]
         tags:

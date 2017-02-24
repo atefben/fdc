@@ -826,6 +826,7 @@ services:
             - { name: form.type, alias: 'ccm_label_section_content_two_columns_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_label_section_content_two_columns_image_dummy_admin']]
+            - ['setSonataTwoAdmin', ['@base.admin.ccm_label_section_content_two_columns_two_image_dummy_admin']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
             - ['setSonataAdminContentFiles', ['@base.admin.ccm_label_section_content_two_columns_dummy_admin']]
             - ['setSonataAdminContentFilesTwo', ['@base.admin.ccm_label_section_content_two_columns_two_dummy_admin']]
@@ -838,7 +839,13 @@ services:
             - { name: form.type, alias: 'ccm_label_section_content_three_columns_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_label_section_content_three_columns_image_dummy_admin']]
+            - ['setSonataTwoAdmin', ['@base.admin.ccm_label_section_content_three_columns_two_image_dummy_admin']]
+            - ['setSonataThreeAdmin', ['@base.admin.ccm_label_section_content_three_columns_three_image_dummy_admin']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.ccm_label_section_content_three_columns_dummy_admin']]
+            - ['setSonataAdminContentFilesTwo', ['@base.admin.ccm_label_section_content_three_columns_two_dummy_admin']]
+            - ['setSonataAdminContentFilesThree', ['@base.admin.ccm_label_section_content_three_columns_three_dummy_admin']]
+            - ['setContentFilesAdmin', ['@base.admin.ccm_label_content_files']]
 
     base.admin.form.ccm_module_image_text_type:
         scope: prototype
