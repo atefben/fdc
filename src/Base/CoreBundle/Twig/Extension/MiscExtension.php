@@ -56,7 +56,7 @@ class MiscExtension extends Twig_Extension
 
     public function isPublished($object, $site = null)
     {
-        if (!method_exists($object, 'findTranslationByLocale')) {
+        if (!$object || !method_exists($object, 'findTranslationByLocale')) {
             return null;
         }
         if ($site) {

@@ -47,17 +47,21 @@
                             {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
-                        <div class="block-01-xs">
-                            {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
-                        </div>
+                        {% if widget.file|is_published('site-institutionnel') %}
+                            <div class="block-01-xs">
+                                {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
+                            </div>
+                        {% endif %}
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
                         <div class="block-01-xs">
                             {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
-                        <div class="block-01-xs">
-                            {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
-                        </div>
+                        {% if widget.file|is_published('site-institutionnel') %}
+                            <div class="block-01-xs">
+                                {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                            </div>
+                        {% endif %}
                     {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                         <div class="block-01-xs">
                             <div class="contain-img-honneur">
