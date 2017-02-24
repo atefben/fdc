@@ -1,4 +1,4 @@
-{{ widget|trans_fallback('file') }}
+{{ widget.file|trans_fallback('file') }}
 {% if class(widget) starts with 'News' %}
 	{% set image = widget.news.header|trans_fallback('file') %}
 	{% set object = widget.news %}
