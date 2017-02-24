@@ -277,6 +277,20 @@
         <span class="anim"></span>
     </div>
 
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_ccm_homepage')
+        },
+        {
+            "name" : artist.fullName,
+            "url"  : ''
+        }
+        ]
+    }
+%}
     {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
     {'section': '',
         'detail': '',

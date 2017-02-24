@@ -60,4 +60,18 @@
         {% endif %}
         <a id="next" href="#"></a>
     </div>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_ccm_homepage')
+        },
+        {
+            "name" : 'ccm.news.all_articles'|trans,
+            "url"  : ''
+        }
+        ]
+    }
+%}
 {% endblock %}
