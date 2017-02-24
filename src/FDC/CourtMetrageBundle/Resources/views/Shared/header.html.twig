@@ -100,7 +100,7 @@
                                         <ul class="tcenter">
                                             {% for subTab in subNavs[key] %}
                                                 {% if subTab.translatable.isActive %}
-                                                    <li><a href="{{ path(subTab.route) }}">{{ subTab.name }}</a></li>
+                                                    <li><a {% if routeName == subTab.route %}class="active"{% endif %} href="{{ path(subTab.route) }}">{{ subTab.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
                                         </ul>
