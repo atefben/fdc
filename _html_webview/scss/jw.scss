@@ -1,4 +1,5 @@
 .jwplayer {
+
 	&.jw-skin-fdc.jw-state-playing,
 	&.jw-skin-fdc.jw-state-complete {
 		.jw-title {
@@ -157,6 +158,7 @@
 
 		&-skin-fdc-video {
 			position: relative;
+			margin-bottom: 2rem;
 
 			&.jw-state-complete {
 				.jw-display-icon-container{

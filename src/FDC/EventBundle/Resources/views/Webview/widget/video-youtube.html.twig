@@ -4,3 +4,12 @@
 <p>{{ widget.title }}</p>
 {% endif %}
 <br/>
+
+<div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
+data-poster="{% path image, 'reference' %}" 
+data-file="{{ widget|trans_fallback('url') }}" 
+{% if widget.title is defined %}
+data-title="{{ widget.title }}</p>"
+{% endif %}
+>
+</div>

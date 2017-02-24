@@ -72,6 +72,20 @@ html {
   background: transparent 50% 50% / cover no-repeat;
   height: 240px; }
 
+.Article-header img {
+  width: 100%; }
+
+.Article-header .Article-picture-caption {
+  height: auto;
+  line-height: 25px;
+  font-size: 0.8rem;
+  margin-bottom: 1.6rem; }
+  .Article-header .Article-picture-caption strong {
+    font-family: "Open Sans";
+    padding-bottom: 1.6rem;
+    line-height: 2.2rem;
+    display: inline; }
+
 .Article-header-meta {
   display: block;
   height: auto;
@@ -441,6 +455,12 @@ html {
   font-size: .8125rem;
   line-height: 24px; }
 
+.Article-content .loc {
+  display: block;
+  width: 246px;
+  margin: 0 auto;
+  line-height: 20px; }
+
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
   top: .7rem;
@@ -545,7 +565,8 @@ html {
       margin-left: 6.3rem; }
 
 .jwplayer.jw-skin-fdc-video {
-  position: relative; }
+  position: relative;
+  margin-bottom: 1rem; }
   .jwplayer.jw-skin-fdc-video.jw-state-complete .jw-display-icon-container > .jw-icon {
     background: transparent; }
   .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
