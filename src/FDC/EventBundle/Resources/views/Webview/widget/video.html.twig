@@ -11,7 +11,11 @@
 	{% set image = object.image %}
 {% endif %}
 
-{% set video = 'media_video_encoded/direct_encoded/' ~ widget.file|trans_fallback('file') %}
+{% set video = widget.file %}
+{% if(video|trans_fallback('jobWebmState') == 3) %}
+	{{ s3_server_video ~ video|trans_fallback('webmUrl') }}
+{% endif %}
+{{ s3_server_video ~ video|trans_fallback('mp4Url') }}
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
