@@ -3,8 +3,10 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\CourtMetrageBundle\Entity\CcmParticiperPage;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayer;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmParticiperPageTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -55,13 +57,19 @@ class CcmParticiperPageLayerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('page', 'choice', array(
+                'label' => 'form.ccm.label.layer.page',
+                'translation_domain'        => 'BaseAdminBundle',
+                'choices' => $this->getPages(),
+                'choice_translation_domain' => 'BaseAdminBundle',
+            ))
             ->add('icon', 'choice', array(
                 'label' => 'form.ccm.label.layer.icon',
                 'translation_domain'        => 'BaseAdminBundle',
                 'choices' => CcmParticiperPageLayer::getIcons(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
-            ->add('position', 'integer', array(
+            ->add('layerPosition', 'integer', array(
                     'label' => 'form.ccm.label.layer.position',
                     'required' => true,
                     'constraints'        => array(
@@ -120,5 +128,28 @@ class CcmParticiperPageLayerAdmin extends Admin
                 )
             )
         ;
+    }
+
+    protected function getPages()
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager();
+
+        $pagesCollection = $em->getRepository(CcmParticiperPageTranslation::class)
+            ->findBy(
+                array(
+                    'locale' => $this->request->getLocale()
+                )
+            );
+
+        if ($pagesCollection) {
+            $pages = [];
+            foreach ($pagesCollection as $item) {
+                $pages[$item->getSlug()] = $item->getName();
+            }
+
+            return $pages;
+        }
+
+        return [];
     }
 }

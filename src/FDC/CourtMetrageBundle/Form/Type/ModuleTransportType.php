@@ -35,19 +35,23 @@ class ModuleTransportType extends ModuleType
                         'choices' => CcmModuleTransportTranslation::getTransportPictos(),
                         'label'              => 'form.ccm.label.module.transport.picto',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'title'          => array(
                         'label'              => 'form.ccm.label.module.transport.title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'description'            => array(
                         'label'              => 'form.ccm.label.module.transport.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'required' => false,
                     ),
                     'url'          => array(
                         'label'              => 'form.ccm.label.module.transport.url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                 ),
             ))

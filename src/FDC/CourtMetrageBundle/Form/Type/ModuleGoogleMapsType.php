@@ -33,10 +33,12 @@ class ModuleGoogleMapsType extends ModuleType
                         'label'              => 'form.ccm.label.module.google_maps.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'required' => false,
                     ),
                     'urlGoogleMaps'          => array(
                         'label'              => 'form.ccm.label.module.google_maps.url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                 ),
             ))

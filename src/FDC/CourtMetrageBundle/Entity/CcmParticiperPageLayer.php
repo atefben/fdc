@@ -42,16 +42,23 @@ class CcmParticiperPageLayer implements CcmIconInterface, TranslateMainInterface
 
     /**
      * @var integer
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(name="layer_position", type="integer", nullable=true)
      */
-    protected $position;
+    protected $layerPosition;
 
     /**
-     * @var boolean
+     * @var string
      *
      * @ORM\Column(name="icon", type="string", length=255, nullable=true)
      */
     protected $icon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="page", type="string", length=255, nullable=true)
+     */
+    protected $page;
 
     /**
      * @var ArrayCollection
@@ -143,15 +150,31 @@ class CcmParticiperPageLayer implements CcmIconInterface, TranslateMainInterface
     }
 
     /**
-     * @return boolean
+     * @return int
      */
-    public function isIcon()
+    public function getLayerPosition()
+    {
+        return $this->layerPosition;
+    }
+
+    /**
+     * @param int $layerPosition
+     */
+    public function setLayerPosition($layerPosition)
+    {
+        $this->layerPosition = $layerPosition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon()
     {
         return $this->icon;
     }
 
     /**
-     * @param boolean $icon
+     * @param string $icon
      */
     public function setIcon($icon)
     {
@@ -159,18 +182,18 @@ class CcmParticiperPageLayer implements CcmIconInterface, TranslateMainInterface
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPosition()
+    public function getPage()
     {
-        return $this->position;
+        return $this->page;
     }
 
     /**
-     * @param int $position
+     * @param string $page
      */
-    public function setPosition($position)
+    public function setPage($page)
     {
-        $this->position = $position;
+        $this->page = $page;
     }
 }

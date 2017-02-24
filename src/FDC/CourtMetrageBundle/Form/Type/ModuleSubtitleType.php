@@ -32,11 +32,13 @@ class ModuleSubtitleType extends ModuleType
                     'title'          => array(
                         'label'              => 'form.ccm.label.module.subtitle.title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'description'            => array(
                         'label'              => 'form.ccm.label.module.subtitle.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'required' => false,
                     ),
                 ),
             ))

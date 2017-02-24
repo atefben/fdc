@@ -823,7 +823,7 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_module_three_columns']]
             - ['setMediaImageAdmin', ['@base.admin.media_image']]
-            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
+            - ['setMediaFileAdmin', ['@base.admin.media_pdf']]
 
     base.admin.form.ccm_module_four_columns_type:
         scope: prototype

@@ -64,19 +64,23 @@ class ModulePFType extends ModuleType
                     'namePF'          => array(
                         'label'              => 'form.ccm.label.module.pf.name_pf',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'description'            => array(
                         'label'              => 'form.ccm.label.module.pf.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'required' => false,
                     ),
                     'nameSurname'          => array(
                         'label'              => 'form.ccm.label.module.pf.name_surname',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'function'          => array(
                         'label'              => 'form.ccm.label.module.pf.function',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                 ),
             ))
