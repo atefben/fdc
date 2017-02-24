@@ -46,7 +46,7 @@
                                     {{ media.titleVa }}
                                 {% endif %}
                                 ">
-                                    <img src="{% path media.file, media.file.context ~ '_38x46'  %}" alt="{{ media|trans_fallback('title')?:media.titleVO }}">
+                                    <img src="{% path media.file, media.file.context ~ '_38x46'  %}" alt="{{ movie|trans_fallback('title')?:movie.titleVO }}">
                                 </a>
                             {% endfor %}
                         </div>

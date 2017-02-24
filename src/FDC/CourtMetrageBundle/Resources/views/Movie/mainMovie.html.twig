@@ -109,6 +109,30 @@
         </div>
         <span class="anim"></span>
     </div>
+
+{% if movie|trans_fallback('title') is not empty %}
+    {% set mainTitle = movie|trans_fallback('title') %}
+{% else %}
+    {% set mainTitle = movie.titleVO %}
+{% endif %}
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_ccm_homepage')
+        },
+        {
+            "name" : 'breadcrumb.competition'|trans,
+            "url"  : path('fdc_court_metrage_competition_selection')
+        },
+        {
+            "name" : mainTitle,
+            "url"  : ''
+        }
+        ]
+    }
+%}
     <!-- POPIN MAIL SHARE -->
     {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
             {
