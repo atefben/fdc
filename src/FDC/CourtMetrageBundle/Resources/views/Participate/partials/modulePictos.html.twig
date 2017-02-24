@@ -1,0 +1,31 @@
+{% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+    {% set translation = module.translations[app.request.getLocale()] %}
+    <div class="item visible">
+        {% if translation.picto1 is not null %}
+            <i class="icon {{ translation.picto1 }}"></i>
+        {% endif %}
+        <strong class="transport">{{ translation.title1 }}</strong>
+        <span class="time">{{ translation.description1|raw }}</span>
+    </div>
+    <div class="item visible">
+        {% if translation.picto2 is not null %}
+            <i class="icon {{ translation.picto2 }}"></i>
+        {% endif %}
+        <strong class="transport">{{ translation.title2 }}</strong>
+        <span class="time">{{ translation.description2|raw }}</span>
+    </div>
+    <div class="item visible">
+        {% if translation.picto3 is not null %}
+            <i class="icon {{ translation.picto3 }}"></i>
+        {% endif %}
+        <strong class="transport">{{ translation.title3 }}</strong>
+        <span class="time">{{ translation.description3|raw }}</span>
+    </div>
+    <div class="item visible">
+        {% if translation.picto4 is not null %}
+            <i class="icon {{ translation.picto4 }}"></i>
+        {% endif %}
+        <strong class="transport">{{ translation.title4 }}</strong>
+        <span class="time">{{ translation.description4|raw }}</span>
+    </div>
+{% endif %}

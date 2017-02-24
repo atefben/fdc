@@ -1,0 +1,5 @@
+services:
+    base.twig.menu_extension:
+      class: FDC\CourtMetrageBundle\Twig\MenuExtension
+      tags:
+          - name: twig.extension

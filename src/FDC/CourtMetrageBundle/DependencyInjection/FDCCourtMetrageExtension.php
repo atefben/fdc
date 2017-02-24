@@ -24,6 +24,7 @@ class FDCCourtMetrageExtension extends Extension
 
         $configFiles = array(
             'form.yml',
+            'twig.yml',
         );
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

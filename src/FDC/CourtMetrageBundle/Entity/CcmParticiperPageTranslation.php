@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmParticiperPageTranslation
  * @ORM\Table(name="ccm_participer_page_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmParticiperPageTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class CcmParticiperPageTranslation implements TranslateChildInterface

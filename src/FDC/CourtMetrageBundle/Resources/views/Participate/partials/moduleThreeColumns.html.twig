@@ -1,0 +1,34 @@
+
+{% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+    {% set translation = module.translations[app.request.getLocale()] %}
+    <div class="contain-map">
+        <strong class="name">{{ translation.title1 }}</strong>
+        {% if module.image1 is not null %}
+            <a href="#" target="_blank"><img src="{% path module.image1|trans_fallback("file"), "reference" %}" alt="" class="map"></a>
+        {% endif %}
+        {% if module.pdf1 is not null %}
+            <a href="{% path module.pdf1|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+        {% endif %}
+        <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description1|raw }}</div>
+    </div>
+    <div class="contain-map">
+        <strong class="name">{{ translation.title2 }}</strong>
+        {% if module.image2 is not null %}
+            <a href="#" target="_blank"><img src="{% path module.image2|trans_fallback("file"), "reference" %}" alt="" class="map"></a>
+        {% endif %}
+        {% if module.pdf2 is not null %}
+            <a href="{% path module.pdf2|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+        {% endif %}
+        <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description2|raw }}</div>
+    </div>
+    <div class="contain-map">
+        <strong class="name">{{ translation.title3 }}</strong>
+        {% if module.image3 is not null %}
+            <a href="#" target="_blank"><img src="{% path module.image3|trans_fallback("file"), "reference" %}" alt="" class="map"></a>
+        {% endif %}
+        {% if module.pdf3 is not null %}
+            <a href="{% path module.pdf3|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+        {% endif %}
+        <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description3|raw }}</div>
+    </div>
+{% endif %}

@@ -1,0 +1,23 @@
+<div class="item-partners">
+    <div class="contain-img">
+        {% if module.logo is not null %}
+            <img src="{% path module.logo|trans_fallback("file"), "reference" %}"  style="height: 270px; width: 165px;" alt="{{ module.logo|trans_fallback('alt') }}" />
+        {% endif %}
+    </div>
+    <div class="text-partners">
+        {% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+        {% set translation = module.translations[app.request.getLocale()] %}
+            <div class="content-text-with-portrait">
+                <h4 class="title-partners">{{ translation.namePF }}</h4>
+                {{ translation.description|raw }}
+            </div>
+            <div class="portrait">
+                {% if module.photo is not null %}
+                    <img src="{% path module.photo|trans_fallback("file"), "reference" %}" style="height: 60px; width: 81px;"  alt="{{ module.photo|trans_fallback('alt') }}" />
+                {% endif %}
+                <strong class="name">{{ translation.nameSurname }}</strong>
+                <span class="rank">{{ translation.function }}</span>
+            </div>
+        {% endif %}
+    </div>
+</div>

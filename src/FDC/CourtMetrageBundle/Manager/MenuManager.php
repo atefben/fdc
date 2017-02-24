@@ -3,6 +3,7 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmParticiperPageTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmSubNavTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmMainNavTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -100,5 +101,11 @@ class MenuManager
         }
 
         return null;
+    }
+
+    public function getParticipatePages()
+    {
+        return $this->em->getRepository(CcmParticiperPageTranslation::class)
+            ->getAllPagesByLocale($this->requestStack->getMasterRequest()->getLocale());
     }
 }

@@ -10,7 +10,7 @@ trait CcmPicto
             self::PICTO_POINT_INFOS => 'form.ccm.label.picto.point_infos',
             self::PICTO_CONSIGNES => 'form.ccm.label.picto.consignes',
             self::PICTO_OBJETS_TROUVES => 'form.ccm.label.picto.objets_trouves',
-            self::PICTO_URGENCES => 'form.ccm.label.picto.urgence',
+            self::PICTO_URGENCES => 'form.ccm.label.picto.urgences',
         );
     }
     
