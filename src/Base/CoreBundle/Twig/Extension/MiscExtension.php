@@ -2,6 +2,10 @@
 
 namespace Base\CoreBundle\Twig\Extension;
 
+use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaAudioTranslation;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Behat\Transliterator\Transliterator;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -59,17 +63,68 @@ class MiscExtension extends Twig_Extension
         if (!$object || !method_exists($object, 'findTranslationByLocale')) {
             return null;
         }
+
+        return $this->isPublishedStatus($object) &&
+            $this->isPublishedDate($object) &&
+            $this->isPublishedInSite($object) &&
+            $this->isPublishedMediaVideo($object) &&
+            $this->isPublishedMediaAudio($object);
+    }
+
+    private function isPublishedInSite($object, $site)
+    {
+        $inSite = false;
         if ($site) {
-            $inSite = false;
             foreach ($object->getSites() as $site) {
                 if ($site->getSlug() == $site) {
                     $inSite = true;
                 }
             }
-            if (!$inSite) {
-                return false;
-            }
         }
+        return $inSite;
+    }
+
+    private function isPublishedDate($object)
+    {
+        $now = time();
+        return $object->getPublishedAt()->getTimestamp() >= $now && (!$object->getPublishEndedAt() || $object->getPublishEndedAt()->getTimestamp() <= $now);
+    }
+
+    private function isPublishedMediaVideo($object)
+    {
+        if ($object instanceof MediaVideo) {
+            $currentLocale = $this->requestStack->getCurrentRequest()->getLocale();
+            $trans = $object->findTranslationByLocale($currentLocale);
+            if (
+                $trans instanceof MediaVideoTranslation &&
+                $trans->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY &&
+                $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY
+            ) {
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private function isPublishedMediaAudio($object)
+    {
+        if ($object instanceof MediaAudio) {
+            $currentLocale = $this->requestStack->getCurrentRequest()->getLocale();
+            $trans = $object->findTranslationByLocale($currentLocale);
+            if (
+                $trans instanceof MediaAudioTranslation &&
+                $trans->getJobMp3State() == MediaAudioTranslation::ENCODING_STATE_READY
+            ) {
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private function isPublishedStatus($object)
+    {
         $currentLocale = $this->requestStack->getCurrentRequest()->getLocale();
         $trans = $object->findTranslationByLocale($currentLocale);
         if (!$trans) {
@@ -83,7 +138,7 @@ class MiscExtension extends Twig_Extension
         } else {
             $main = $object->findTranslationByLocale($this->defaultLocale);
             if ($main->getStatus() == TranslateChildInterface::STATUS_PUBLISHED && $trans->getStatus() == TranslateChildInterface::STATUS_TRANSLATED) {
-
+                return true;
             }
             return false;
         }

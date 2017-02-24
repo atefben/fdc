@@ -9,6 +9,7 @@ use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +25,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     use Seo;
     use Time;
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
     use TranslateChild;
 
     const ENCODING_STATE_IN_PROGRESS = 1;
