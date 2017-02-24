@@ -53,7 +53,6 @@ class FDCPageLaSelectionCannesClassicsWidgetType extends BaseType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        dump($this->dataClass);
         $resolver->setDefaults(array(
             'data_class'  => $this->dataClass,
             'model_class' => $this->dataClass,

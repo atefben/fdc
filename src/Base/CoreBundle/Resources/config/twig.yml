@@ -8,6 +8,9 @@ services:
         class: Base\CoreBundle\Twig\Extension\MiscExtension
         tags:
             - { name: twig.extension }
+        calls:
+            - ['setDefaultLocale', ['%locale_fallback%']]
+            - ['setRequestStack', ['@request_stack']]
 
     base.twig.news_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\NewsInstanceOfExtension
