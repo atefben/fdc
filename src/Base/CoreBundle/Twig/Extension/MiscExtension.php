@@ -66,7 +66,7 @@ class MiscExtension extends Twig_Extension
 
         return $this->isPublishedStatus($object) &&
             $this->isPublishedDate($object) &&
-            $this->isPublishedInSite($object) &&
+            $this->isPublishedInSite($object, $site) &&
             $this->isPublishedMediaVideo($object) &&
             $this->isPublishedMediaAudio($object);
     }
