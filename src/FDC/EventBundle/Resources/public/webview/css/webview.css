@@ -388,7 +388,8 @@ html {
 .Article-content .single-button {
   border-right: 1px solid #c8a461 !important;
   border-color: #c8a461;
-  margin: 10px; }
+  margin: 10px 0;
+  with: 100%; }
 
 .Article-content .title-article {
   color: #333;
