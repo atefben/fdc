@@ -97,7 +97,7 @@ html {
 			width: 100%!important;
 		}
 
-		p, strong {
+		p {
 			display: block;
 			font-family: "Open Sans";
 			padding-bottom: 1.6rem;
@@ -106,6 +106,7 @@ html {
 
 		img {
 			max-width: 100%;
+			height: auto!important;
 		}
 
 		a {

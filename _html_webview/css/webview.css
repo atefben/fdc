@@ -121,13 +121,14 @@ html {
     padding-bottom: 4rem; }
   .Article-content table {
     width: 100% !important; }
-  .Article-content p, .Article-content strong {
+  .Article-content p {
     display: block;
     font-family: "Open Sans";
     padding-bottom: 1.6rem;
     line-height: 2.2rem; }
   .Article-content img {
-    max-width: 100%; }
+    max-width: 100%;
+    height: auto !important; }
   .Article-content a {
     color: #c8a461;
     text-decoration: none; }
