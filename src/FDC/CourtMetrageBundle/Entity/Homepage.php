@@ -109,10 +109,10 @@ class Homepage
      */
     protected $translations;
 
-    /**
-     * @ORM\OneToMany(targetEntity="HomepageActualite", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
-     */
-    protected $actualites;
+//    /**
+//     * @ORM\OneToMany(targetEntity="HomepageActualite", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+//     */
+//    protected $actualites;
 
     /**
      * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
@@ -148,7 +148,7 @@ class Homepage
         $this->sliders = new ArrayCollection();
         $this->pushes = new ArrayCollection();
         $this->catalogPushes =  new ArrayCollection();
-        $this->actualites =  new ArrayCollection();
+//        $this->actualites =  new ArrayCollection();
         $this->sejoures =  new ArrayCollection();
     }
 
@@ -461,52 +461,52 @@ class Homepage
         return $this;
     }
 
-    /**
-     * Get actualites.
-     *
-     * @return mixed
-     */
-    public function getActualites()
-    {
-        return $this->actualites;
-    }
+//    /**
+//     * Get actualites.
+//     *
+//     * @return mixed
+//     */
+//    public function getActualites()
+//    {
+//        return $this->actualites;
+//    }
+//
+//    /**
+//     * Set actualites.
+//     *
+//     * @param mixed $actualites
+//     */
+//    public function setActualites($actualites)
+//    {
+//        $this->actualites = $actualites;
+//
+//        return $this;
+//    }
 
-    /**
-     * Set actualites.
-     *
-     * @param mixed $actualites
-     */
-    public function setActualites($actualites)
-    {
-        $this->actualites = $actualites;
-
-        return $this;
-    }
-
-    /**
-     * Add actualite.
-     *
-     * @param HomepageActualite $actualite
-     *
-     * @return $this
-     */
-    public function addActualite(HomepageActualite $actualite)
-    {
-        $this->actualites->add($actualite);
-        $actualite->setHomepage($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove actualite.
-     *
-     * @param HomepageActualite $actualite
-     */
-    public function removeActualite(HomepageActualite $actualite)
-    {
-        $this->actualites->removeElement($actualite);
-    }
+//    /**
+//     * Add actualite.
+//     *
+//     * @param HomepageActualite $actualite
+//     *
+//     * @return $this
+//     */
+//    public function addActualite(HomepageActualite $actualite)
+//    {
+//        $this->actualites->add($actualite);
+//        $actualite->setHomepage($this);
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove actualite.
+//     *
+//     * @param HomepageActualite $actualite
+//     */
+//    public function removeActualite(HomepageActualite $actualite)
+//    {
+//        $this->actualites->removeElement($actualite);
+//    }
 
     /**
      * Get actualiteIsActive.

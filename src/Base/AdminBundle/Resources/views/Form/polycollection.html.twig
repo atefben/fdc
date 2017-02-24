@@ -1919,24 +1919,24 @@
     </div>
 {% endblock %}
 
-{% block ccm_homepage_actualite_type_widget %}
-    {% set locale = locale_default_translation %}
-    <div class="item base-widget" data-itemtype="actualite">
-        {{ form_widget(form.children._type) }}
-        {{ form_row(form.children.image) }}
-        {{ form_row(form.children.theme) }}
-        {{ form_row(form.children.date) }}
-        {{ form_row(form.children.isActive) }}
-        {{ form_widget(attribute(form.children.translations, locale)) }}
-        <div class="clearfix">
-            <div class="fdc-widget-remove-btn">
-                <a class="btn btn-danger btn-sm btn-outline remove_item">
-                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                </a>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+{#{% block ccm_homepage_actualite_type_widget %}#}
+    {#{% set locale = locale_default_translation %}#}
+    {#<div class="item base-widget" data-itemtype="actualite">#}
+        {#{{ form_widget(form.children._type) }}#}
+        {#{{ form_row(form.children.image) }}#}
+        {#{{ form_row(form.children.theme) }}#}
+        {#{{ form_row(form.children.date) }}#}
+        {#{{ form_row(form.children.isActive) }}#}
+        {#{{ form_widget(attribute(form.children.translations, locale)) }}#}
+        {#<div class="clearfix">#}
+            {#<div class="fdc-widget-remove-btn">#}
+                {#<a class="btn btn-danger btn-sm btn-outline remove_item">#}
+                    {#<i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}#}
+                {#</a>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#{% endblock %}#}
 
 {% block ccm_homepage_sejour_type_widget %}
     {% set locale = locale_default_translation %}
