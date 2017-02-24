@@ -116,3 +116,11 @@
   width: 246px;
   margin: 0 auto;
   line-height: 20px; }
+
+.Article-content em {
+  font-style: italic; }
+
+.Article-content strong {
+  display: inline;
+  font-weight: bold;
+  font-size: 1.6rem; }

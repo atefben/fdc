@@ -135,5 +135,15 @@
 		    margin: 0 auto;
 		    line-height: 20px;
 		}
+
+		em {
+			font-style: italic;
+		}
+
+		strong {
+			display: inline;
+			font-weight: bold;
+			font-size: 1.6rem;
+		}
 	}
 }

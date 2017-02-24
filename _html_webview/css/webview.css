@@ -461,6 +461,14 @@ html {
   margin: 0 auto;
   line-height: 20px; }
 
+.Article-content em {
+  font-style: italic; }
+
+.Article-content strong {
+  display: inline;
+  font-weight: bold;
+  font-size: 1.6rem; }
+
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
   top: .7rem;
