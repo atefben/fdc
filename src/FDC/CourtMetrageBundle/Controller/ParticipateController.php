@@ -74,6 +74,16 @@ class ParticipateController extends Controller
     }
 
     /**
+     * @Route("participer/label", name="fdc_court_metrage_label")
+     *
+     * @return Response
+     */
+    public function labelAction()
+    {
+        return $this->render('FDCCourtMetrageBundle:Participate:label.html.twig');
+    }
+
+    /**
      * Participate pages with associated layers
      *
      * @param Request $request
