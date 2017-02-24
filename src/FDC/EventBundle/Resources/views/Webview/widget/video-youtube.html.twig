@@ -1,6 +1,8 @@
-{{ dump(widget) }}
+{{ dump() }}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
-data-poster="" 
+{% if widget.image is not null %}
+data-poster="{% path widget.image, 'reference' %}" 
+{% endif %}
 data-file="{{ widget|trans_fallback('url') }}" 
 {% if widget.title is defined %}
 data-title="{{ widget.title }}</p>"
