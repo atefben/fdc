@@ -49,3 +49,6 @@ sup {
 .topiconsContainer .icon-border-left {
     border-left: 1px solid #404040;
 }
+.contact .success.show {
+    display: block;
+}
