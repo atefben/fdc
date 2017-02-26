@@ -513,7 +513,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                                     {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
                                                 {% endif %}
 
-                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                <img src="{% path trans.file , '650x410' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle1')|raw }}</strong>
