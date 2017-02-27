@@ -90,4 +90,24 @@ abstract class CcmLabelSectionContent
 
         return $this;
     }
+
+    public function isWidgetText()
+    {
+        return $this instanceof CcmLabelSectionContentText;
+    }
+
+    public function isWidgetOneColumn()
+    {
+        return $this instanceof CcmLabelSectionContentOneColumn;
+    }
+
+    public function isWidgetTwoColumns()
+    {
+        return $this instanceof CcmLabelSectionContentTwoColumns;
+    }
+
+    public function isWidgetThreeColumns()
+    {
+        return $this instanceof CcmLabelSectionContentThreeColumns;
+    }
 }

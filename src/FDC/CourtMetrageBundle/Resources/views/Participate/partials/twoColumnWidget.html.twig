@@ -1,0 +1,64 @@
+<div class="contain-infos">
+    <div class="two-images">
+        <div class="item-img small">
+
+            <div class="contain-img vFlexAlign">
+                <img src="{% path widget.translatable.image|trans_fallback('file'), 'reference' %}" alt="image">
+            </div>
+
+            <div class="download no-flex">
+                <span class="title-img">{{ widget.title }}</span>
+                <p class="caption"><span class="italic">{{ widget.legend|raw }}</p>
+            </div>
+        </div>
+
+        <div class="item-img big">
+
+            <div class="contain-img vFlexAlign">
+                <img src="{% path widget.translatable.image2|trans_fallback('file'), 'reference' %}" alt="image">
+            </div>
+
+            <div class="download no-flex">
+                <span class="title-img">{{ widget.title2 }}</span>
+                <p class="caption"><span class="italic">{{ widget.legend2|raw }}</span></p>
+            </div>
+
+            {#<div class="download">#}
+
+                {#<div class="item">#}
+                    {#<strong class="title-dowload">compétition</strong>#}
+                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
+                    {#</div>#}
+                {#</div>#}
+
+                {#<div class="item">#}
+                    {#<strong class="title-dowload">un certain regard</strong>#}
+                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
+                    {#</div>#}
+                {#</div>#}
+
+                {#<div class="item">#}
+                    {#<strong class="title-dowload">hors compétition</strong>#}
+                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
+                    {#</div>#}
+                {#</div>#}
+
+                {#<div class="item">#}
+                    {#<strong class="title-dowload">cannes classic</strong>#}
+                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
+                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
+                    {#</div>#}
+                    {#<a href="#" class="link">Contraintes techniques</a>#}
+                {#</div>#}
+
+            {#</div> <!-- fin download -->#}
+        </div> <!--fin item-img-->
+    </div> <!-- fin two-image-->
+</div> <!-- fin contain-infos -->

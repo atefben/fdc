@@ -3,6 +3,7 @@
 namespace FDC\CourtMetrageBundle\Controller;
 
 use FDC\CourtMetrageBundle\Entity\CcmFilmRegisterTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelTranslation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Base\CoreBundle\Entity\FilmPerson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -80,7 +81,23 @@ class ParticipateController extends Controller
      */
     public function labelAction()
     {
-        return $this->render('FDCCourtMetrageBundle:Participate:label.html.twig');
+        $participateManager = $this->get('ccm.manager.participate');
+
+        $labelPage = $participateManager->getLabelPage();
+
+        if($labelPage->getStatus() != CcmLabelTranslation::STATUS_PUBLISHED && $labelPage->getStatus() != CcmLabelTranslation::STATUS_TRANSLATED)
+        {
+            throw new NotFoundHttpException();
+        }
+
+        $labelSections = $participateManager->getLabelSections($labelPage);
+        $labelSectionsWidgets = $participateManager->getLabelSectionsWidgets($labelPage);
+
+        return $this->render('FDCCourtMetrageBundle:Participate:label.html.twig', array(
+            'labelPage' => $labelPage,
+            'labelSectionsWidgets' => $labelSectionsWidgets,
+            'labelSections' => $labelSections
+        ));
     }
 
     /**

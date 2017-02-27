@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmLabelSectionContentOneColumnTranslation
  * @ORM\Table(name="ccm_label_section_content_one_column_translation")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmLabelSectionContentOneColumnTranslationRepository")
  */
 class CcmLabelSectionContentOneColumnTranslation
 {
@@ -71,7 +71,7 @@ class CcmLabelSectionContentOneColumnTranslation
      * @var \Application\Sonata\MediaBundle\Entity\Media
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="file_2_id", referencedColumnName="id")
      *
      */
     protected $file2;

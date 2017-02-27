@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmLabelSectionContentTwoColumnsTranslation
  * @ORM\Table(name="ccm_label_section_content_two_columns_translation")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmLabelSectionContentTwoColumnsTranslationRepository")
  */
 class CcmLabelSectionContentTwoColumnsTranslation
 {

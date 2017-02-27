@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmLabelSectionPosition
  * @ORM\Table(name="ccm_label_section_position")
- * @ORM\Entity
+ * @ORM\Entity()
  */
 class CcmLabelSectionPosition
 {

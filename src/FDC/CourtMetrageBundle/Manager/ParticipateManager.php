@@ -3,10 +3,17 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use FDC\CourtMetrageBundle\Entity\CcmFilmRegisterTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentOneColumnTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTextTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumnsTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumnsTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelSectionTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmModule;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmRegisterProcedureTranslation;
+use FDC\CourtMetrageBundle\Repository\CcmLabelSectionContentTextTranslationRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Doctrine\ORM\EntityManager;
 
@@ -59,6 +66,81 @@ class ParticipateManager
             ));
     }
 
+    public function getLabelPage()
+    {
+        return $this->em
+            ->getRepository(CcmLabelTranslation::class)
+            ->findOneBy([
+                'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+            ]);
+    }
+
+    public function getLabelSections($labelPage)
+    {
+        $sections = $labelPage->getTranslatable()->getLabelSection();
+
+        $labelSections = array();
+        foreach($sections as $section)
+        {
+            $labelSections[$section->getLabelSection()->getId()] = $this->em
+                ->getRepository(CcmLabelSectionTranslation::class)
+                ->getLabelSectionsBySectionIdAndLocale($section->getLabelSection()->getId(), $this->requestStack->getMasterRequest()->get('_locale'));
+
+        }
+
+        return $labelSections;
+    }
+
+    public function getLabelSectionsWidgets($labelPage)
+    {
+        $sections = $labelPage->getTranslatable()->getLabelSection();
+
+        $labeSections = array();
+
+        foreach($sections as $section)
+        {
+            $labelSections[] = $section;
+        }
+
+        usort($labelSections, function($a, $b)
+        {
+            return $a->getPosition() > $b->getPosition();
+        });
+
+        $labelSectionsWidgets = array();
+        foreach($labelSections as $section)
+        {
+            $textWidgets = $this->em
+                ->getRepository(CcmLabelSectionContentTextTranslation::class)
+                ->getLabelContentTextWidgetsByLocaleAndSectionId($this->requestStack->getMasterRequest()->get('_locale'), $section->getLabelSection()->getId());
+
+            $oneColumnWidgets = $this->em
+                ->getRepository(CcmLabelSectionContentOneColumnTranslation::class)
+                ->getLabelContentOneColumnWidgetsByLocaleAndSectionId($this->requestStack->getMasterRequest()->get('_locale'), $section->getLabelSection()->getId());
+
+            $twoColumnWidgets = $this->em
+                ->getRepository(CcmLabelSectionContentTwoColumnsTranslation::class)
+                ->getLabelContentTwoColumnWidgetsByLocaleAndSectionId($this->requestStack->getMasterRequest()->get('_locale'), $section->getLabelSection()->getId());
+
+            $threeColumnWidgets = $this->em
+                ->getRepository(CcmLabelSectionContentThreeColumnsTranslation::class)
+                ->getLabelContentThreeColumnWidgetsByLocaleAndSectionId($this->requestStack->getMasterRequest()->get('_locale'), $section->getLabelSection()->getId());
+
+
+            $widgets = array();
+            $widgets = array_merge($widgets, $textWidgets, $oneColumnWidgets, $twoColumnWidgets, $threeColumnWidgets);
+
+            usort($widgets, function($a, $b)
+            {
+                return $a->getTranslatable()->getPosition() > $b->getTranslatable()->getPosition();
+            });
+
+            $labelSectionsWidgets[$section->getLabelSection()->getId()] = $widgets;
+        }
+
+        return $labelSectionsWidgets;
+    }
+
     public function getParticipatePage($slug)
     {
         return $this->em->getRepository(CcmParticiperPageTranslation::class)
@@ -68,11 +150,11 @@ class ParticipateManager
     public function getPageLayers($page)
     {
         if ($page) {
-            
+
             return $this->em->getRepository(CcmParticiperPageLayerTranslation::class)
                 ->getByPageAndLocale($page->getSlug(), $this->requestStack->getMasterRequest()->getLocale());
         }
-        
+
         return null;
     }
 
@@ -94,7 +176,7 @@ class ParticipateManager
                     $modules[$key] = $modulesCollection;
                 }
             }
-            
+
             return $modules;
         }
 

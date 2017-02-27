@@ -29,6 +29,13 @@ class CcmLabelTranslation implements TranslateChildInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
@@ -69,6 +76,26 @@ class CcmLabelTranslation implements TranslateChildInterface
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param $title
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
 
         return $this;
     }

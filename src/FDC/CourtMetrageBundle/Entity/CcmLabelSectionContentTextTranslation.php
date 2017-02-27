@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmLabelSectionContentTextTranslation
  * @ORM\Table(name="ccm_label_section_content_text_translation")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmLabelSectionContentTextTranslationRepository")
  */
 class CcmLabelSectionContentTextTranslation
 {
