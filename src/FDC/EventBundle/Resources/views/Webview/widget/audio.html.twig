@@ -15,7 +15,7 @@
     {% set url = trans.mp3Url %}
     {% set header = widget.file.image %}
     {% if header is not null %}
-        {% set imageTrans = he ader.findTranslationByLocale(app.request.locale) %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
         {% if imageTrans is null or imageTrans.file is null %}
             {% set imageTrans = header.findTranslationByLocale('fr') %}
         {% endif %}
