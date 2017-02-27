@@ -6,7 +6,11 @@
     <div class="video-container state-init video"
          data-name="{{ translation.title }}"
          data-file='[{"file":"{{ s3_server_audio ~ translation.mp3url }}"}]'
-         data-img="{% path mediaAudio.image|trans_fallback('file'), 'reference' %}">
+         {% if mediaImage is defined and mediaImage is not null and mediaImage|trans_fallback('file') is not null %}
+             data-img="{% path mediaImage|trans_fallback('file'), 'reference' %}">
+         {% else %}
+             data-img="{% path mediaAudio.image|trans_fallback('file'), 'reference' %}">
+         {% endif %}
         <div id="{{ mediaAudio.id }}" class="video-player"></div>
         <div class="video-overlay"></div>
         <div class="infos-bar">
