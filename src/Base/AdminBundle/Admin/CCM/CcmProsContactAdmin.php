@@ -44,36 +44,37 @@ class CcmProsContactAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                    'translation_domain' => 'BaseAdminBundle',
-                    'required_locales' => array('fr'),
-                    'fields' => array(
-                        'applyChanges' => array(
-                            'field_type' => 'hidden',
-                            'attr'       => array(
-                                'class' => 'hidden',
-                            ),
-                        ),
-                        'name'        => array(
-                            'label'              => 'form.ccm.label.pros.contact_name',
-                            'translation_domain' => 'BaseAdminBundle',
-                            'required' => false
-                        ),
-                        'function'        => array(
-                            'label'              => 'form.ccm.label.pros.contact_function',
-                            'translation_domain' => 'BaseAdminBundle',
-                            'required' => false
-                        ),
-                        'email'        => array(
-                            'label'              => 'form.ccm.label.pros.contact_email',
-                            'translation_domain' => 'BaseAdminBundle',
-                            'constraints' => array(
-                              new Email()
-                            ),
-                            'required' => false
+                'locales' => ['fr','en'],
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array('fr'),
+                'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr'       => array(
+                            'class' => 'hidden',
                         ),
                     ),
-                )
+                    'name'        => array(
+                        'label'              => 'form.ccm.label.pros.contact_name',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'function'        => array(
+                        'label'              => 'form.ccm.label.pros.contact_function',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'email'        => array(
+                        'label'              => 'form.ccm.label.pros.contact_email',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints' => array(
+                          new Email()
+                        ),
+                        'required' => false
+                    ),
+                ),
             )
+        )
         ;
     }
 

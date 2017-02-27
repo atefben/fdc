@@ -28,6 +28,7 @@ class ContentTextType extends AbstractType
             ))
             ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',
                 'fields' => array(
                     'applyChanges' => array(

@@ -64,6 +64,7 @@ class ModuleThreeColumnsType extends ModuleType
         parent::buildForm($builder, $options);
         $builder
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',
                 'fields' => array(
                     'applyChanges' => array(

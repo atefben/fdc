@@ -65,6 +65,7 @@ class CcmProsDetailAdmin extends Admin
                 'required' => false
             ))
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'label'  => false,
                 'fields' => array(
                     'applyChanges'      => array(

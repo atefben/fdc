@@ -798,10 +798,10 @@ form:
                 content_text_body: Texte widget corps
                 content_text_type: Ajouter un widget description
             layer:
-                page: Couche pour la page
-                icon: Icône de calque
-                position: Position de la couche
-                name: Nom du calque
+                page: Strate pour la page
+                icon: Icône de la strate
+                position: Position de la strate
+                name: Nom de la strate
                 module_image_text_type_widget: Widget d'image et de texte
                 module_partenaires_fournisseur_type_widget: Partenaires et fournisseur widget
                 module_pictos_type_widget: Pictos widget

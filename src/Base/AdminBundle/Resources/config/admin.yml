@@ -2516,7 +2516,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegister, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Inscrire un film}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Inscrire un film}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2524,7 +2524,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmRegisterProcedureAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Catégories des procédures d’inscription}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Catégories des procédures d’inscription}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2740,7 +2740,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: ContactSubject, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
 
     base.admin.ccm_footer_content:
         class: Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin
@@ -2764,7 +2764,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Mentions Légales }
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
