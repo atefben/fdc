@@ -165,7 +165,10 @@
                     {% endif %}
                 {% endif %}
                 {% if associatedNews is news_audio %}
+                {{ dump(associatedNews.header) }}
                   {% set file = associatedNews.header.file|trans_fallback('file') %}
+                }
+                }
                 {% endif %}
             {% endif %}
             {% if file is defined %}
