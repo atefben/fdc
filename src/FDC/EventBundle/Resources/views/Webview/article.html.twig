@@ -164,32 +164,31 @@
                         {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                 {% endif %}
-                {% if associatedNews is news_audio %}
-                  {% set header = associatedNews.header %}
-                      {% if header is not null %}headernotnull 
-                          {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                {% elseif article is news_audio or article is info_audio or article is statement_audio %}
+                  {% set header = article.header %}
+                  {% if header is not null %}
+                      {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                      {% if trans is not null and trans.file is not null %}
+                          {% set imageTrans = trans %}
+                      {% else %}
+                          {% set trans = article.header.findTranslationByLocale('fr') %}
                           {% if trans is not null and trans.file is not null %}
                               {% set imageTrans = trans %}
-                          {% else %}
-                              {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
-                              {% if trans is not null and trans.file is not null %}
-                                  {% set imageTrans = trans %}
-                              {% endif %}
                           {% endif %}
                       {% endif %}
-                      {% if imageTrans is defined and imageTrans is not null %}
-                          {% set file = imageTrans.file %}
-                          {% set img = associatedNews.header %}
-                      {% else %}
-                          {% set img = associatedNews.audio.image %}
-                          {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                          {% if trans is null or trans.file is null %}
-                              {% set trans = img.findTranslationByLocale('fr') %}
-                          {% endif %}
-                          {% set file = trans.file %}
+                  {% endif %}
+                  {% if imageTrans is defined and imageTrans is not null %}
+                      {% set file = imageTrans.file %}
+                      {% set img = article.header %}
+                  {% else %}
+                      {% set img = article.audio.image %}
+                      {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                      {% if trans is null or trans.file is null %}
+                          {% set trans = img.findTranslationByLocale('fr') %}
                       {% endif %}
-
-                {% endif %}
+                      {% set file = trans.file %}
+                  {% endif %}
+              {% endif %}
             {% endif %}
             {% if file is defined and file is not null %}
                 <img src="{% path file, 'reference' %}"/>
