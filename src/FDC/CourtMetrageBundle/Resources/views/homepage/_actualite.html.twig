@@ -5,20 +5,18 @@
             {% for actualite in actualites %}
                 {% set actualiteTranslation = actualite.findTranslationByLocale(app.request.locale) %}
                 {% if actualite.displayedHome == 1 %}
-                    {% if article is news_article %}
-                        <a href="{{ path('ccm_news_detail',{'slug':actualiteTranslation.slug}) }}">
-                            <div class="articles">
-                                <div class="articles-content">
-                                    <span>
-                                        {{ actualite.theme.name }}
-                                        <br><span class="article-date">{{ actualite.publishedAt|date("d M Y") }}</span>
-                                    </span>
-                                    <h6>{{ actualiteTranslation.title }}</h6>
-                                    <p>{{ actualite.description(app.request.locale) }}</p>
-                                </div>
+                    <a href="{{ path('ccm_news_detail',{'slug':actualiteTranslation.slug}) }}">
+                        <div class="articles">
+                            <div class="articles-content">
+                                <span>
+                                    {{ actualite.theme.name }}
+                                    <br><span class="article-date">{{ actualite.publishedAt|date("d M Y") }}</span>
+                                </span>
+                                <h6>{{ actualiteTranslation.title }}</h6>
+                                <p>{{ actualite.description(app.request.locale) }}</p>
                             </div>
-                        </a>
-                    {% endif %}
+                        </div>
+                    </a>
                 {% endif %}
             {% endfor %}
         {% endif %}
