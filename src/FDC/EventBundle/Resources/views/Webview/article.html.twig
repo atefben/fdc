@@ -165,7 +165,9 @@
                     {% endif %}
                 {% endif %}
                 {% if file is not defined %}
+                  {{ dump(associatedNews) }}
                   {% set file = associatedNews.file|trans_fallback('file') %}
+                  }
                 {% endif %}
             {% endif %}
             {% if file is defined %}
