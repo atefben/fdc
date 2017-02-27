@@ -164,14 +164,14 @@
                         {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                 {% endif %}
-                {% elseif article is news_audio or article is info_audio or article is statement_audio %}
-                  {% set header = article.header %}
+                {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+                  {% set header = associatedNews.header %}
                   {% if header is not null %}
                       {% set trans = header.findTranslationByLocale(app.request.locale) %}
                       {% if trans is not null and trans.file is not null %}
                           {% set imageTrans = trans %}
                       {% else %}
-                          {% set trans = article.header.findTranslationByLocale('fr') %}
+                          {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
                           {% if trans is not null and trans.file is not null %}
                               {% set imageTrans = trans %}
                           {% endif %}
@@ -179,9 +179,9 @@
                   {% endif %}
                   {% if imageTrans is defined and imageTrans is not null %}
                       {% set file = imageTrans.file %}
-                      {% set img = article.header %}
+                      {% set img = associatedNews.header %}
                   {% else %}
-                      {% set img = article.audio.image %}
+                      {% set img = associatedNews.audio.image %}
                       {% set trans = img.findTranslationByLocale(app.request.locale) %}
                       {% if trans is null or trans.file is null %}
                           {% set trans = img.findTranslationByLocale('fr') %}
