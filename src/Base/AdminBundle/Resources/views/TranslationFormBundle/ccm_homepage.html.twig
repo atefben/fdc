@@ -140,6 +140,8 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {{ form_label(form.parent.catalogIsActive) }}
                                     {{ form_widget(form.parent.catalogIsActive) }}
+                                    {{ form_label(form.parent.positionCatalog) }}
+                                    {{ form_widget(form.parent.positionCatalog) }}
                                     </br>
                                     {{ form_label(form.parent.catalogImage) }}
                                     {{ form_widget(form.parent.catalogImage) }}
@@ -173,6 +175,8 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {{ form_label(form.parent.actualiteIsActive) }}
                                         {{ form_widget(form.parent.actualiteIsActive) }}
+                                        {{ form_label(form.parent.positionActualites) }}
+                                        {{ form_widget(form.parent.positionActualites) }}
                                         </br>
                                         {#{% for widget in form.parent.children.actualites.children %}#}
                                             {#<div class="item base-widget" data-itemtype="actualite">#}
@@ -205,6 +209,8 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {{ form_label(form.parent.sejourIsActive) }}
                                         {{ form_widget(form.parent.sejourIsActive) }}
+                                        {{ form_label(form.parent.positionSejour) }}
+                                        {{ form_widget(form.parent.positionSejour) }}
                                         </br>
                                         {% for widget in form.parent.children.sejoures.children %}
                                             <div class="item base-widget" data-itemtype="sejour">

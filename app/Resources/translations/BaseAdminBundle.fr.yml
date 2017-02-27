@@ -767,6 +767,10 @@ form:
                 url: URL de la push
                 isActive: Activer le module
                 add_message: Pushes
+            homepage:
+                position_sejour: La position du module Séjour
+                position_actualite: La position du module Actualité
+                position_catalog: La position du module Catalog
             slider:
                 homepage: Slide
                 whiteTitle: Titre Blanc

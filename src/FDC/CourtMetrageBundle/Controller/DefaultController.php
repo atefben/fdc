@@ -40,6 +40,8 @@ class DefaultController extends Controller
         $courtIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getCourtIsActive();
         $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
 
+        $positions = $homepageManger->orderTransversModules();
+
         return $this->render(
             'FDCCourtMetrageBundle::homepage/homepage.html.twig',
             [
@@ -53,6 +55,8 @@ class DefaultController extends Controller
                 'pushIsActive' => $pushIsActive,
                 'courtIsActive' => $courtIsActive,
                 'sejourIsActive' => $sejourIsActive,
+
+                'positions' => $positions,
             ]
         );
     }

@@ -180,6 +180,27 @@ class Homepage implements CcmAProposInterface
     protected $gallery;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionCatalog;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionActualites;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionSejour;
+
+    /**
      * Homepage constructor.
      */
     public function __construct() {
@@ -696,6 +717,26 @@ class Homepage implements CcmAProposInterface
     {
         $youtubesCollection->setHomepage($this);
         $this->youtubesCollection[] = $youtubesCollection;
+    }
+
+    /**
+     * Get PositionCatalog.
+     *
+     * @return int
+     */
+    public function getPositionCatalog()
+    {
+        return $this->positionCatalog;
+    }
+
+    /**
+     * Set PositionCatalog.
+     *
+     * @param int $positionCatalog
+     */
+    public function setPositionCatalog($positionCatalog)
+    {
+        $this->positionCatalog = $positionCatalog;
 
         return $this;
     }
@@ -762,5 +803,49 @@ class Homepage implements CcmAProposInterface
     public function setGallery($gallery)
     {
         $this->gallery = $gallery;
+    }
+
+    /**
+     * Get PositionActualites.
+     *
+     * @return int
+     */
+    public function getPositionActualites()
+    {
+        return $this->positionActualites;
+    }
+
+    /**
+     * Set PositionActualites.
+     *
+     * @param int $positionActualites
+     */
+    public function setPositionActualites($positionActualites)
+    {
+        $this->positionActualites = $positionActualites;
+
+        return $this;
+    }
+
+    /**
+     * Get PositionSejour.
+     *
+     * @return int
+     */
+    public function getPositionSejour()
+    {
+        return $this->positionSejour;
+    }
+
+    /**
+     * Set PositionSejour
+     *
+     * @param int $positionSejour
+     */
+    public function setPositionSejour($positionSejour)
+    {
+        $this->positionSejour = $positionSejour;
+
+        return $this;
     }
 }

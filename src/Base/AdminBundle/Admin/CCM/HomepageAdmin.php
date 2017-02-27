@@ -214,6 +214,24 @@ class HomepageAdmin extends Admin
                 'label'    => 'form.ccm.label.sejour.sejour_is_activated',
                 'required' => false,
             ))
+            ->add('positionCatalog',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_catalog',
+                    'required' => false,
+                ))
+            ->add('positionActualites',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_actualite',
+                    'required' => false,
+                ))
+            ->add('positionSejour',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_sejour',
+                    'required' => false,
+                ))
         ;
     }
 
