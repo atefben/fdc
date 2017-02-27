@@ -1,7 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{{ dump(widget) }}
-{% set file = widget.file %}
+{% set file = widget.audio %}
 {% set url = '' %}
 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% if file %}
@@ -12,7 +11,7 @@
     {% endif %}
     {% set file = trans.file %}
     {% set url = trans.mp3Url %}
-    {% set header = widget.file.image %}
+    {% set header = widget.header %}
     {% if header is not null %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
         {% if imageTrans is null or imageTrans.file is null %}
