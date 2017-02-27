@@ -5,6 +5,8 @@ namespace FDC\CourtMetrageBundle\Manager;
 
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Entity\Theme;
+use Base\CoreBundle\Entity\ThemeTranslation;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
@@ -37,9 +39,16 @@ class NewsManager
     public function getAvailableListFilters($locale = 'fr')
     {
         /**
-         * get the themes (id & name) and date for every published news article
+         * get the themes (id) and date for every published news article
          */
         $rawData = $this->em->getRepository(CcmNews::class)->getThemesAndDatesOfPublishedNews($locale);
+        /**
+         * we get the names for all the themes,
+         * falling back to fr if they don't have a translation for the current locale
+         */
+        $themeNames = $this->getThemeNamesByIdsAndLocale(array_unique(array_map(function($item){
+            return $item['id'];
+        }, $rawData)), $locale);
         /**
          * We group the raw data by years and themes:
          *  - for each theme save the years that it contains
@@ -48,11 +57,12 @@ class NewsManager
         $themes = [];
         $years = [];
         foreach ($rawData as $data) {
+            $themeName = isset($themeNames[$data['id']]) ? $themeNames[$data['id']] : '';
             /** @var array|\DateTime[] $data */
             $year = intval($data['publishedAt']->format('Y'));
             if (!array_key_exists($data['id'], $themes)) {
                 $themes[$data['id']] = [
-                    'name'  => $data['name'],
+                    'name'  => $themeName,
                     'years' => [$year]
                 ];
             } elseif (!in_array($year, $themes[$data['id']]['years'])) {
@@ -61,11 +71,11 @@ class NewsManager
             if (!array_key_exists($year, $years)) {
                 $years[$year] = [
                     'themes' => [
-                        $data['id'] => $data['name']
+                        $data['id'] => $themeName
                     ]
                 ];
             } elseif(!array_key_exists($data['id'], $years[$year]['themes'])) {
-                $years[$year]['themes'][$data['id']] = $data['name'];
+                $years[$year]['themes'][$data['id']] = $themeName;
             }
         }
 
@@ -73,6 +83,50 @@ class NewsManager
             'years'  => $years,
             'themes' => $themes
         ];
+    }
+
+    /**
+     * @param $themeIds
+     * @param string $locale
+     * @return array
+     */
+    private function getThemeNamesByIdsAndLocale($themeIds, $locale = 'fr')
+    {
+        /**
+         * todo: move in ccm theme repository if Theme entity will be duplicated
+         */
+        $qb = $this->em->getRepository(Theme::class)
+            ->createQueryBuilder('t')
+            ->select('t.id')
+            ->leftJoin('t.translations', 'tt', 'with', 'tt.locale = :locale and tt.status = :status')
+            ->setParameter('locale', $locale)
+            ->andWhere('t.id in (:themeIds)')
+            ->setParameter('themeIds', $themeIds)
+        ;
+        if ($locale == 'fr') {
+            $qb
+                ->addSelect('tt.name')
+                ->setParameter('status', ThemeTranslation::STATUS_PUBLISHED)
+            ;
+        } else {
+            $qb
+                ->setParameter('status', ThemeTranslation::STATUS_TRANSLATED)
+                ->leftJoin('t.translations', 'frtt', 'with', 'frtt.locale = :fr_locale and frtt.status = :fr_status')
+                ->setParameter('fr_status', ThemeTranslation::STATUS_PUBLISHED)
+                ->setParameter('fr_locale', 'fr')
+                ->addSelect(
+                    'case when tt.id is not null then tt.name else frtt.name end as name'
+                )
+            ;
+        }
+        $themeNames = $qb->getQuery()->getResult();
+
+        $byIds = [];
+        foreach ($themeNames as $themeName) {
+            $byIds[$themeName['id']] = $themeName['name'];
+        }
+
+        return $byIds;
     }
 
     /**

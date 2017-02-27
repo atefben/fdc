@@ -9,6 +9,7 @@
 }
 .single-article .chapeau {
     text-align: left;
+    max-width: 100%;
 }
 .visible-popin {
     z-index: 1007;
