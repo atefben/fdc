@@ -55,6 +55,10 @@ sup {
     border-left: 1px solid #404040;
 }
 
+.seatingchart #seatingchart .maps img {
+    max-width: 100%;
+}
+
 .contact .success.show {
     display: block;
 }

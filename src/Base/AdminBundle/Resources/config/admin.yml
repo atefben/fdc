@@ -2487,6 +2487,25 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Video Youtube, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+    # Plan des salles
+    base.admin.ccm_plan_des_salles:
+        class: Base\AdminBundle\Admin\CCM\CcmPlanDesSallesAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmPlanDesSalles, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Se reperer à Cannes}
+
+    base.admin.ccm_plan_des_salles_sector_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmPlanDesSallesSectorCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmPlanDesSallesSectorCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: PlanDesSallesSectorCollection, show_in_dashboard: false}
+
+    base.admin.ccm_plan_des_salles_sector:
+        class: Base\AdminBundle\Admin\CCM\CcmPlanDesSallesSectorAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmPlanDesSallesSector, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: PlanDesSallesSector, show_in_dashboard: false}
+    # end plan des salles
 
     base.admin.ccm_short_film_competition_tab_selection:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabSelectionAdmin
