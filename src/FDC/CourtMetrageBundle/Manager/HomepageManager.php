@@ -89,11 +89,7 @@ class HomepageManager
     {
         return $this->em
             ->getRepository(CatalogPushTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+            ->findCatalogsByLocaleOrderByPosition($this->requestStack->getMasterRequest()->get('_locale'));
     }
 
     public function getCatalogImage()

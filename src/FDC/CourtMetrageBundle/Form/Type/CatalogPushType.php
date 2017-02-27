@@ -2,6 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -45,6 +46,7 @@ class CatalogPushType extends AbstractType
                 'data'   => $this->getName(),
                 'mapped' => false
             ))
+            ->add('position','hidden')
             ->add('translations', 'a2lix_translations', array(
                 'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',

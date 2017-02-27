@@ -192,6 +192,8 @@ class HomepageAdmin extends Admin
 //            ))
             ->add('catalogImage', 'sonata_type_model_list', array(
                     'required' => true,
+                ), array(
+                    'sortable' => 'order',
                 )
             )
             ->add('actualiteIsActive', 'checkbox', array(

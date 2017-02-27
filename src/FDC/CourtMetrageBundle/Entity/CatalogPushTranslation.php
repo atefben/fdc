@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CatalogPushTranslation
  * @ORM\Table(name="ccm_catalog_push_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CatalogPushTranslationRepository")
  */
 class CatalogPushTranslation
 {

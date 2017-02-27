@@ -33,6 +33,13 @@ class CatalogPush
     protected $homepage;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $position;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -86,6 +93,28 @@ class CatalogPush
     public function setTranslations($translations)
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * Get position.
+     *
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set position.
+     *
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
 
         return $this;
     }
