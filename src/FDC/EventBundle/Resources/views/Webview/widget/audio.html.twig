@@ -4,6 +4,7 @@
 
 {% set file = widget.file %}
 {% set url = '' %}
+{% set title = '' %}
 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% if file %}
     {% set trans = file.findTranslationByLocale(app.request.locale) %}
@@ -12,6 +13,7 @@
         {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
+    {% set title = trans.title %}
     {% set url = trans.mp3Url %}
     {% set header = widget.file.image %}
     {% if header is not null %}
@@ -26,6 +28,6 @@
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
-      data-title="{{ widget.title }}" 
+      data-title="{{ title }}" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>
 <div class="Article-content">
