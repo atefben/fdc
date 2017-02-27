@@ -22,7 +22,7 @@ class CcmNewsWidgetAudio extends CcmNewsWidget
     /**
      * @var MediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $file;
