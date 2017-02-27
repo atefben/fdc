@@ -197,6 +197,7 @@
                                     <article class="{{ articleType }}" data-format="{{ articleType }}" data-theme="competition">
                                         <div class="image">
                                             <div class="image-wrapper">
+                                                <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
                                                 {% if sameDayArticle.header is not null %}
                                                     {% set translations = sameDayArticle.header.findTranslationByLocale(app.request.locale) %}
                                                     <img src="{% path sameDayArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
@@ -204,8 +205,8 @@
                                                     {% set translations = sameDayArticle.image.findTranslationByLocale(app.request.locale) %}
                                                     <img src="{% path sameDayArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
                                                 {% endif %}
+                                                </a>
                                             </div>
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
                                             <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
                                             <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
                                         </div>
