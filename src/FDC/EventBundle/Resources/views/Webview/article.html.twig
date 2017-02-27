@@ -164,10 +164,9 @@
                         {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                 {% endif %}
-                {{ associatedNews.header|trans_fallback('file') }}
                 {% if associatedNews is news_audio %}
                   {% set header = associatedNews.header %}
-                      {% if header is not null %}
+                      {% if header is not null %}headernotnull 
                           {% set trans = header.findTranslationByLocale(app.request.locale) %}
                           {% if trans is not null and trans.file is not null %}
                               {% set imageTrans = trans %}
@@ -192,7 +191,7 @@
 
                 {% endif %}
             {% endif %}
-            {% if file is defined %}
+            {% if file is defined and file is not null %}
                 <img src="{% path file, 'reference' %}"/>
             {% else %}
               <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
