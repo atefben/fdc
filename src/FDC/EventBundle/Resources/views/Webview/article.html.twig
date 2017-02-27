@@ -164,7 +164,7 @@
                         {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                 {% endif %}
-                {{ dump(associatedNews) }}
+                {{ dump(associatedNews.header) }}
                 {% if associatedNews is news_audio %}
                   {% set file = associatedNews.header|trans_fallback('file') %}
                 {% endif %}
