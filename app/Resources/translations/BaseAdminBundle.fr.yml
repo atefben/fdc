@@ -882,6 +882,30 @@ form:
                 page_title: Titre de la page
                 page_name: Nom de la page
                 page_slug: Page slug
+            icon:
+                rendre: Rendre
+                plans: Plans
+                hebergement: Hebergement
+                information: Information
+                carte_id: Carte ID
+                access: Accès
+                projecteur: Projecteur
+                check: Enregistrement
+                horloge: Horloge
+            picto:
+                point_infos: Point infos
+                consignes: Consignes
+                objets_trouves: Objets trouves
+                urgences: Urgences
+                enregistreur: Enregistreur
+                selfie: Selfie
+                telephone: Telephone
+                dress_code: Dress code
+                train: Train
+                voiture: Voiture
+                avion: Avion
+                bus: Bus
+                taxi: Taxi
         size:
             small:  Titre petit
             medium: Titre moyen
