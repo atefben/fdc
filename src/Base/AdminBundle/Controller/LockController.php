@@ -155,6 +155,8 @@ class LockController extends Controller
         'ccmcontactsubject' => 'CcmContactSubject',
         'ccmplandessallessector' => 'CcmPlanDesSallesSector',
         'ccmfaq' => 'CcmFAQPage',
+        'ccmrubrique' => 'CcmRubrique',
+        'ccmrubriquequestion' => 'CcmRubriqueQuestion',
     );
 
     /**

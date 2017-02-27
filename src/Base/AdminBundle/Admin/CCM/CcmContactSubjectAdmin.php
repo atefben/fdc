@@ -2,9 +2,7 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
-use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram;
 use Base\AdminBundle\Component\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -44,6 +42,7 @@ class CcmContactSubjectAdmin extends Admin
         $formMapper
             ->add('position', 'hidden')
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
                 'fields' => array(

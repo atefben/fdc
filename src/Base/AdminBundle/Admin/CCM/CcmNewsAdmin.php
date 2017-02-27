@@ -12,7 +12,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * NewsAdmin class.
- * 
+ *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
@@ -163,10 +163,6 @@ class CcmNewsAdmin extends Admin
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
                 'label'    => 'list.news_common.label_title',
             ))
-            ->add('type', null, array(
-                'template' => 'BaseAdminBundle:News:list_type.html.twig',
-                'label'    => 'show.label_type',
-            ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
@@ -177,9 +173,6 @@ class CcmNewsAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
                 'label'    => 'form.label_published_at'
-            ))
-            ->add('displayedMobile', null, array(
-                'label' => 'list.displayed_mobile',
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => CcmNewsArticle::getPriorityStatusesList(),

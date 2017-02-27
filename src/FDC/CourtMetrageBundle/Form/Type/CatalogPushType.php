@@ -46,6 +46,7 @@ class CatalogPushType extends AbstractType
                 'mapped' => false
             ))
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
                 'fields' => array(

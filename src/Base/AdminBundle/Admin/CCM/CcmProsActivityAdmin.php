@@ -43,26 +43,27 @@ class CcmProsActivityAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                    'translation_domain' => 'BaseAdminBundle',
-                    'required_locales' => array('fr'),
-                    'fields' => array(
-                        'applyChanges' => array(
-                            'field_type' => 'hidden',
-                            'attr'       => array(
-                                'class' => 'hidden',
-                            ),
-                        ),
-                        'name'        => array(
-                            'label'              => 'form.ccm.label.pros.activity_name',
-                            'translation_domain' => 'BaseAdminBundle',
-                            'constraints'        => array(
-                                new NotBlank(),
-                            ),
-                            'required' => true
+                'locales' => ['fr','en'],
+                'translation_domain' => 'BaseAdminBundle',
+                'required_locales' => array('fr'),
+                'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr'       => array(
+                            'class' => 'hidden',
                         ),
                     ),
-                )
+                    'name'        => array(
+                        'label'              => 'form.ccm.label.pros.activity_name',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'constraints'        => array(
+                            new NotBlank(),
+                        ),
+                        'required' => true
+                    ),
+                ),
             )
+        )
         ;
     }
 

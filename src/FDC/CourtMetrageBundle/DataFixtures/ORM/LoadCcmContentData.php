@@ -30,14 +30,14 @@ class LoadCcmContentData implements FixtureInterface
             $contactPage = new \FDC\CourtMetrageBundle\Entity\CcmContactPage();
             $manager->persist($contactPage);
         }
-        
+
         if (count($manager->getRepository(CcmShortFilmCorner::class)
                 ->findBy(['type' => CcmShortFilmCorner::TYPE_RELIVE_EDITION])) == 0) {
             $reliveEdition = new CcmShortFilmCorner();
             $reliveEdition->setType(CcmShortFilmCorner::TYPE_RELIVE_EDITION);
             $manager->persist($reliveEdition);
         }
-        
+
         if (count($manager->getRepository(CcmShortFilmCorner::class)
                 ->findBy(['type' => CcmShortFilmCorner::TYPE_OUR_EVENTS])) == 0) {
             $ourEvents = new CcmShortFilmCorner();
@@ -69,6 +69,11 @@ class LoadCcmContentData implements FixtureInterface
             $confidentialitePage = new \FDC\CourtMetrageBundle\Entity\CcmFooterContent();
             $confidentialitePage->setType(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::FOOTER_CONFIDENTIALITE);
             $manager->persist($confidentialitePage);
+        }
+
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag::class)->findAll()) == 0) {
+            $socialWallHashtag = new \FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag();
+            $manager->persist($socialWallHashtag);
         }
 
         $manager->flush();

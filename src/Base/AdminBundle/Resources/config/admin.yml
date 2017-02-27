@@ -2535,7 +2535,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmFilmRegisterAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFilmRegister, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Inscrire un film}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Inscrire un film}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2543,7 +2543,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmRegisterProcedureAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Catégories des procédures d’inscription}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Catégories des procédures d’inscription}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2759,7 +2759,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: ContactSubject, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
 
     base.admin.ccm_footer_content:
         class: Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin
@@ -2783,7 +2783,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Mentions Légales }
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2802,3 +2802,33 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Les Actualites, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_participer_page:
+        class: Base\AdminBundle\Admin\CCM\CcmParticiperPageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Pages Participer }
+
+    base.admin.ccm_participer_page_layer:
+        class: Base\AdminBundle\Admin\CCM\CcmParticiperPageLayerAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayer, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Strates Participer }
+
+    base.admin.ccm_module_image_text:
+        class: Base\AdminBundle\Admin\CCM\CcmModuleImageTextAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmModuleImageText, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Module Image + Text, show_in_dashboard: false }
+
+    base.admin.ccm_module_partenaires_fournisseur:
+        class: Base\AdminBundle\Admin\CCM\CcmModulePFAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmModulePF, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Module Partenaires/Fournisseur, show_in_dashboard: false }
+
+    base.admin.ccm_module_three_columns:
+        class: Base\AdminBundle\Admin\CCM\CcmModuleThreeColumnsAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmModuleThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Module Three Columns, show_in_dashboard: false }

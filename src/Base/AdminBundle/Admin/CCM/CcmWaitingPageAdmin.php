@@ -2,8 +2,6 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
-use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab;
-use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTabTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
 use FDC\CourtMetrageBundle\Entity\CcmWaitingPageTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -40,6 +38,7 @@ class CcmWaitingPageAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit'   => array(),
@@ -55,6 +54,7 @@ class CcmWaitingPageAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'label'  => false,
                 'fields' => array(
                     'applyChanges'      => array(

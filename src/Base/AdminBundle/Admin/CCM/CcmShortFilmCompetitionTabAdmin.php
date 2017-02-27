@@ -33,6 +33,7 @@ class CcmShortFilmCompetitionTabAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit'   => array(),
@@ -48,6 +49,7 @@ class CcmShortFilmCompetitionTabAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'label'  => false,
                 'fields' => array(
                     'applyChanges'      => array(

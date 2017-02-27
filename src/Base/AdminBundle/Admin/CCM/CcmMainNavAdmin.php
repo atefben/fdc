@@ -44,6 +44,7 @@ class CcmMainNavAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'locales' => ['fr','en'],
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'fields'             => array(

@@ -488,6 +488,7 @@ admin:
             general: CCM General
             news: Actualités
             seo_tetieres: SEO + TETIERES
+            participer: Participer
 
 dashboard:
     translator:
@@ -796,6 +797,115 @@ form:
                 content_text_title: Titre du widget texte
                 content_text_body: Texte widget corps
                 content_text_type: Ajouter un widget description
+            layer:
+                page: Strate pour la page
+                icon: Icône de la strate
+                position: Position de la strate
+                name: Nom de la strate
+                module_image_text_type_widget: Widget d'image et de texte
+                module_partenaires_fournisseur_type_widget: Partenaires et fournisseur widget
+                module_pictos_type_widget: Pictos widget
+                module_three_columns_type_widget: Widget de trois colonnes
+                module_four_columns_type_widget: Widget de quatre colonnes
+                module_subtitle_type_widget: Widget de sous-titre
+                module_transport_type_widget: Widget de transport
+                module_google_maps_type_widget: Widget google maps
+                module_image_text_type_add: Ajouter un widget d'image et de texte
+                module_partenaires_fournisseur_type_add: Ajouter des partenaires et un fournisseur widget
+                module_pictos_type_add: Ajouter pictos widget
+                module_three_columns_type_add: Ajouter trois colonnes widget
+                module_four_columns_type_add: Ajouter un widget de quatre colonnes
+                module_subtitle_type_add: Ajouter un widget de sous-titre
+                module_transport_type_add: Ajouter widget de transport
+                module_google_maps_type_add: Ajouter google maps widget
+            module:
+                image_text:
+                    image: Image du module
+                    title: Titre du module
+                    description: Description du module
+                pf:
+                    logo: Logo du module
+                    photo: Photo de module
+                    name_pf: Partenaire ou nom du fournisseur
+                    description: Description partenaires et fournisseur
+                    name_surname: Nom et prénom du partenaire ou du fournisseur
+                    function: Partenaires ou fonction fournisseur
+                pictos:
+                    picto1: Picto 1
+                    title1: Titre 1
+                    description1: la description 1
+                    picto2: Picto 2
+                    title2: Titre 2
+                    description2: la description 2
+                    picto3: Picto 3
+                    title3: Titre 3
+                    description3: la description 3
+                    picto4: Picto 4
+                    title4: Titre 4
+                    description4: la description 4
+                three_columns:
+                    image1: Image 1
+                    pdf1: Pdf 1
+                    title1: Titre 1
+                    description1: la description 1
+                    image2: Image 2
+                    pdf2: Pdf 2
+                    title2: Titre 2
+                    description2: la description 2
+                    image3: Image 3
+                    pdf3: Pdf 3
+                    title3: Titre 3
+                    description3: la description 3
+                four_columns:
+                    picto1: Picto 1
+                    description1: la description 3
+                    picto2: Picto 2
+                    description2: la description 2
+                    picto3: Picto 3
+                    description3: la description 3
+                    picto4: Picto 4
+                    description4: la description 4
+                subtitle:
+                    title: Titre
+                    description: la description
+                transport:
+                    picto: Picto
+                    title: Titre
+                    description: la description
+                    url: Url
+                google_maps:
+                    description: la description
+                    url: Url
+            participer:
+                page_image: Page image
+                page_config: Informations sur la page
+                page_title: Titre de la page
+                page_name: Nom de la page
+                page_slug: Page slug
+            icon:
+                rendre: Rendre
+                plans: Plans
+                hebergement: Hebergement
+                information: Information
+                carte_id: Carte ID
+                access: Accès
+                projecteur: Projecteur
+                check: Enregistrement
+                horloge: Horloge
+            picto:
+                point_infos: Point infos
+                consignes: Consignes
+                objets_trouves: Objets trouves
+                urgences: Urgences
+                enregistreur: Enregistreur
+                selfie: Selfie
+                telephone: Telephone
+                dress_code: Dress code
+                train: Train
+                voiture: Voiture
+                avion: Avion
+                bus: Bus
+                taxi: Taxi
         size:
             small:  Titre petit
             medium: Titre moyen
