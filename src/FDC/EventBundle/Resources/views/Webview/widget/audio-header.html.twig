@@ -1,6 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% set file = widget.audio %}
+{{ dump(widget) }}
+{% set file = widget.file %}
 {% set url = '' %}
 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% if file %}
