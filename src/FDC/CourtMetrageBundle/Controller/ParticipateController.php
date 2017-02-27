@@ -72,4 +72,34 @@ class ParticipateController extends Controller
             'registerProcedure' => $registerProcedure
         ));
     }
+
+    /**
+     * Participate pages with associated layers
+     *
+     * @param Request $request
+     * @param $slug
+     *
+     * @Route("participer/{slug}", name="fdc_court_metrage_participer_page")
+     */
+    public function participerPageAction(Request $request, $slug)
+    {
+        $participateManager = $this->get('ccm.manager.participate');
+
+        $participatePage = $participateManager->getParticipatePage($slug);
+
+        if (!$participatePage) {
+            throw new NotFoundHttpException();
+        }
+        $pageLayers = $participateManager->getPageLayers($participatePage);
+        $layerModules = $participateManager->getLayerModules($pageLayers);
+
+        return $this->render('FDCCourtMetrageBundle:Participate:participatePage.html.twig', [
+                'page' => $participatePage,
+                'layers' => $pageLayers,
+                'modules' => $layerModules,
+            ]
+        );
+    }
+
+
 }

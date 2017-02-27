@@ -103,6 +103,19 @@
                                                     <li><a {% if routeName == subTab.route %}class="active"{% endif %} href="{{ path(subTab.route) }}">{{ subTab.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
+                                        {% if isParticipate(mainTab.route) == false %}
+                                            </ul>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if isParticipate(mainTab.route) %}
+                                        {% if participatePages is defined and participatePages is not null %}
+                                            {% if subNavs[key] is not defined or subNavs[key] is null %}
+                                                <ul class="tcenter">
+                                            {% endif %}
+                                                {% for page in participatePages %}
+                                                    <li><a href="{{ path('fdc_court_metrage_participer_page', {'slug' : page.slug}) }}">{{ page.name }}</a></li>
+                                                {% endfor %}
+                                        {% endif %}
                                         </ul>
                                     {% endif %}
                                 </li>

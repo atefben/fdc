@@ -1,0 +1,14 @@
+<div class="contain-article">
+    {% if module.image is not null %}
+        <div class="aside">
+            <img src="{% path module.image|trans_fallback("file"), "reference" %}" style="height: 363px; width: 229px;"/>
+        </div>
+    {% endif %}
+    <div class="texts">
+        {% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+            {% set translation = module.translations[app.request.getLocale()] %}
+            <strong>{{ translation.title }}</strong>
+            {{ translation.description|raw }}
+        {% endif %}
+    </div>
+</div>
