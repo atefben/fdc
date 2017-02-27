@@ -149,7 +149,6 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
                 'label'              => 'form.label_header_image',
                 'help'               => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete'         => false,
                 'required'           => false,
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(

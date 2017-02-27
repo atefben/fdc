@@ -17,7 +17,7 @@ class CcmNewsWidgetImage extends CcmNewsWidget
 {
     /**
      * @var Gallery
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $gallery;

@@ -18,7 +18,7 @@ class CcmNewsWidgetVideo extends CcmNewsWidget
     /**
      * @var MediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $file;

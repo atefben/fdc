@@ -39,7 +39,7 @@
                 {% elseif article.getType() == 'image' %}
                     {% include '@FDCCourtMetrage/news/mainmedia/image.html.twig' with {'mediaImage': article.header, 'gallery': article.gallery} %}
                 {% elseif article.getType() == 'audio' %}
-                    {% include '@FDCCourtMetrage/news/mainmedia/audio.html.twig' with {'mediaAudio': article.audio} %}
+                    {% include '@FDCCourtMetrage/news/mainmedia/audio.html.twig' with {'mediaAudio': article.audio, 'mediaImage': article.header} %}
                 {% elseif article.getType() == 'video' %}
                     {% include '@FDCCourtMetrage/news/mainmedia/video.html.twig' with {'mediaVideo': article.video, 'mediaImage': article.image} %}
                 {% endif %}

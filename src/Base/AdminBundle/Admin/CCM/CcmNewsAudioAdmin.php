@@ -146,8 +146,7 @@ class CcmNewsAudioAdmin extends CcmNewsAdmin
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false,
-                'btn_delete' => false
+                'required' => false
             ))
             ->add('audio', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_audio',

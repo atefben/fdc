@@ -36,7 +36,7 @@ class CcmNewsWidgetVideoYoutube extends CcmNewsWidget
     /**
      * @var MediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $image;
