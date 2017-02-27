@@ -3,6 +3,7 @@
 namespace  Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\CourtMetrageBundle\Entity\Homepage;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -63,8 +64,72 @@ class HomepageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => true
                     ),
+                    'aProposLabel' => array(
+                        'label'              => 'form.ccm.label.a_propos.label',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'aProposTitle' => array(
+                        'label'              => 'form.ccm.label.a_propos.title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'aProposDescription'    => array(
+                        'label'              => 'form.ccm.label.a_propos.description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                        'field_type'         => 'ckeditor',
+                    ),
+                    'aProposUrl' => array(
+                        'label'              => 'form.ccm.label.a_propos.url',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+
                 )
             ))
+            ->add('aProposType', 'choice', array(
+                    'label'              => 'form.ccm.label.a_propos.type',
+                    'translation_domain' => 'BaseAdminBundle',
+                    'choices'  => Homepage::getAProposTypes(),
+                    'required' => false,
+
+                )
+            )
+            ->add('aProposIsActive', 'checkbox', array(
+                    'label'    => 'form.ccm.label.a_propos.is_activated',
+                    'translation_domain' => 'BaseAdminBundle',
+                    'required' => false,
+                )
+            )
+            ->add('videosCollection', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.ccm.label.a_propos.videos_list',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false,
+            ), array(
+                    'edit'     => 'inline',
+                    'inline'   => 'table',
+                    'sortable' => 'position',
+                )
+            )
+            ->add('youtubesCollection', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.ccm.label.a_propos.youtubes_list',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false,
+            ), array(
+                    'edit'     => 'inline',
+                    'inline'   => 'table',
+                    'sortable' => 'position',
+                )
+            )
+            ->add('gallery', 'sonata_type_model_list',array(
+                    'label'              => 'form.ccm.label.a_propos.gallery',
+                    'translation_domain' => 'BaseAdminBundle',
+                    'required' => false,
+                )
+            )
             ->add('sliders', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(
@@ -150,11 +215,11 @@ class HomepageAdmin extends Admin
         ;
     }
 
-    /**
-     * @param RouteCollection $collection
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->clearExcept(['edit', 'list']);
-    }
+//    /**
+//     * @param RouteCollection $collection
+//     */
+//    protected function configureRoutes(RouteCollection $collection)
+//    {
+//        $collection->clearExcept(['edit', 'list']);
+//    }
 }

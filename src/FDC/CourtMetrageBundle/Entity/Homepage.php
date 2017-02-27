@@ -3,20 +3,24 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use Base\CoreBundle\Util\Soif;
+use FDC\CourtMetrageBundle\Interfaces\CcmAProposInterface;
+use FDC\CourtMetrageBundle\Util\CcmAPropos;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Base\CoreBundle\Entity\FilmSelectionSection;
+use Base\CoreBundle\Entity\Gallery;
 
 /**
  * Homepage
  * @ORM\Table(name="ccm_homepage")
  * @ORM\Entity
  */
-class Homepage
+class Homepage implements CcmAProposInterface
 {
     use Translatable;
+    use CcmAPropos;
 
     /**
      * @var integer
@@ -141,6 +145,41 @@ class Homepage
     protected $actualiteIsActive = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="a_propos_isActive", type="boolean", nullable=true)
+     */
+    protected $aProposIsActive;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="a_propos_type", type="string", length=255, nullable=true)
+     */
+    protected $aProposType;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmVideosCollection", mappedBy="homepage", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $videosCollection;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection", mappedBy="homepage", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $youtubesCollection;
+
+    /**
+     * @var Gallery
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $gallery;
+
+    /**
      * Homepage constructor.
      */
     public function __construct() {
@@ -150,6 +189,8 @@ class Homepage
         $this->catalogPushes =  new ArrayCollection();
 //        $this->actualites =  new ArrayCollection();
         $this->sejoures =  new ArrayCollection();
+        $this->videosCollection = new ArrayCollection();
+        $this->youtubesCollection = new ArrayCollection();
     }
 
     /**
@@ -617,5 +658,109 @@ class Homepage
         $this->translations = $translations;
 
         return $this;
+    }
+
+    /**
+     * @param CcmVideosCollection $videosCollection
+     * @return $this
+     */
+    public function addVideosCollection(\FDC\CourtMetrageBundle\Entity\CcmVideosCollection $videosCollection)
+    {
+        $videosCollection->setHomepage($this);
+        $this->videosCollection[] = $videosCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param CcmVideosCollection $videosCollection
+     */
+    public function removeVideosCollection(\FDC\CourtMetrageBundle\Entity\CcmVideosCollection $videosCollection)
+    {
+        $this->videosCollection->removeElement($videosCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getVideosCollection()
+    {
+        return $this->videosCollection;
+    }
+
+    /**
+     * @param CcmYoutubesCollection $youtubesCollection
+     * @return $this
+     */
+    public function addYoutubesCollection(\FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection $youtubesCollection)
+    {
+        $youtubesCollection->setHomepage($this);
+        $this->youtubesCollection[] = $youtubesCollection;
+
+        return $this;
+    }
+
+    /**
+     * @param CcmYoutubesCollection $youtubesCollection
+     */
+    public function removeYoutubesCollection(\FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection $youtubesCollection)
+    {
+        $this->youtubesCollection->removeElement($youtubesCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getYoutubesCollection()
+    {
+        return $this->youtubesCollection;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAProposIsActive()
+    {
+        return $this->aProposIsActive;
+    }
+
+    /**
+     * @param boolean $aProposIsActive
+     */
+    public function setAProposIsActive($aProposIsActive)
+    {
+        $this->aProposIsActive = $aProposIsActive;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAProposType()
+    {
+        return $this->aProposType;
+    }
+
+    /**
+     * @param string $aProposType
+     */
+    public function setAProposType($aProposType)
+    {
+        $this->aProposType = $aProposType;
+    }
+
+    /**
+     * @return Gallery
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param Gallery $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
     }
 }

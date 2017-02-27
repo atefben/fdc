@@ -31,6 +31,43 @@
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
+                    {# A propos module #}
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.ccm.label.a_propos.config'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    {{ form_row(translationsFields.aProposLabel) }}
+                                    {{ form_row(translationsFields.aProposTitle) }}
+                                    {{ form_row(translationsFields.aProposDescription) }}
+                                    {{ form_row(translationsFields.aProposUrl) }}
+                                    {{ form_row(form.parent.children.aProposType) }}
+                                    {{ form_row(form.parent.children.aProposIsActive) }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    <div class="item base-widget">
+                                        <h4><strong>{{ 'form.ccm.label.a_propos.youtubes_collection'|trans }}</strong></h4>
+                                        {{ form_row(form.parent.children.youtubesCollection) }}
+                                    </div>
+                                    <div class="item base-widget">
+                                        <h4><strong>{{ 'form.ccm.label.a_propos.videos_collection'|trans }}</strong></h4>
+                                        {{ form_row(form.parent.children.videosCollection) }}
+                                    </div>
+                                    <div class="item base-widget">
+                                        <h4><strong>{{ 'form.ccm.label.a_propos.images_collection'|trans }}</strong></h4>
+                                        {{ form_row(form.parent.children.gallery) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# End #}
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
                             <div class="box box-success">
