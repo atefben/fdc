@@ -166,8 +166,29 @@
                 {% endif %}
                 {{ associatedNews.header|trans_fallback('file') }}
                 {% if associatedNews is news_audio %}
-                  {{ dump(associatedNews.header.image) }}
-                  {% set file = associatedNews.header|trans_fallback('file') %}
+                  {% set header = associatedNews.header %}
+                      {% if header is not null %}
+                          {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                          {% if trans is not null and trans.file is not null %}
+                              {% set imageTrans = trans %}
+                          {% else %}
+                              {% set trans = article.header.findTranslationByLocale('fr') %}
+                              {% if trans is not null and trans.file is not null %}
+                                  {% set imageTrans = trans %}
+                              {% endif %}
+                          {% endif %}
+                      {% endif %}
+                      {% if imageTrans is defined and imageTrans is not null %}
+                          {% set file = imageTrans.file %}
+                          {% set img = article.header %}
+                      {% else %}
+                          {% set img = article.audio.image %}
+                          {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                          {% if trans is null or trans.file is null %}
+                              {% set trans = img.findTranslationByLocale('fr') %}
+                          {% endif %}
+                          {% set file = trans.file %}
+                      {% endif %}
 
                 {% endif %}
             {% endif %}
