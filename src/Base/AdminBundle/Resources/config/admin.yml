@@ -2764,4 +2764,22 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Mentions Légales }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_homepage_actualite_theme_top_dummy:
+        class: Base\AdminBundle\Admin\CCM\ThemeDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageActualite, BaseAdminBundle:CCM\ThemeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Module Actualite, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_homepage_sejour_top_dummy:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSejour, BaseAdminBundle:CCM\ImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm, label: Les Actualites, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]

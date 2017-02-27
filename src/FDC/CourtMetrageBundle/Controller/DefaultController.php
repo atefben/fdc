@@ -25,12 +25,24 @@ class DefaultController extends Controller
         $homepageManger = $this->get('ccm.manager.homepage');
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
+        $movies = $homepageManger->getFilmsByCourtYear();
+        $sejour = $homepageManger->getSejour();
+
+        $pushIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getPushIsActive();
+        $courtIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getCourtIsActive();
+        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/homepage.html.twig',
             [
                 'sliders' => $homepageSliders,
                 'pushes'  => $homepagePushes,
+                'movies' => $movies,
+                'sejour' => $sejour,
+
+                'pushIsActive' => $pushIsActive,
+                'courtIsActive' => $courtIsActive,
+                'sejourIsActive' => $sejourIsActive,
             ]
         );
     }

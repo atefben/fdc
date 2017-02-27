@@ -37,6 +37,11 @@ class CatalogPush
      */
     protected $translations;
 
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+
     /**
      * @return int
      */
@@ -63,6 +68,24 @@ class CatalogPush
     public function setHomepage($homepage)
     {
         $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
 
         return $this;
     }

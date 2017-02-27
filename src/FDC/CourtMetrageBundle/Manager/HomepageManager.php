@@ -2,10 +2,16 @@
 
 namespace FDC\CourtMetrageBundle\Manager;
 
+use Base\CoreBundle\Entity\News;
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmNews;
+use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
+use FDC\CourtMetrageBundle\Entity\HomepageSejourTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSliderTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
+use FDC\CourtMetrageBundle\Entity\HomepageTranslation;
 
 class HomepageManager
 {
@@ -36,6 +42,78 @@ class HomepageManager
         return $this->em
             ->getRepository(HomepagePushTranslation::class)
             ->findBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+
+    public function getHomepageTranslation()
+    {
+        return $this
+            ->em
+            ->getRepository(HomepageTranslation::class)
+            ->findOneBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+    /**
+     * @param $festivalId
+     *
+     * @return mixed
+     */
+    public function getFilmsByCourtYear()
+    {
+        $homepage = $this->getHomepageTranslation();
+
+        if($homepage) {
+            $year = $homepage->getTranslatable()->getCourtYear();
+
+            $films = $this
+                ->em
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->findBy(['productionYear' => $year]);
+
+            return $films;
+        }
+    }
+
+    public function getCatalogPushes()
+    {
+        return $this->em
+            ->getRepository(CatalogPushTranslation::class)
+            ->findBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
+                )
+            );
+    }
+
+    public function getCatalogImage()
+    {
+        $homepage = $this->getHomepageTranslation();
+
+        if($homepage) {
+
+            return $homepage->getTranslatable()->getCatalogImage();
+        }
+    }
+
+    public function getActualite($locale = 'fr', $year = null, $themeId = null, $offset = 0, $limit = 3)
+    {
+        /** @var CcmNews[] $actualite */
+        $actualites = $this->em->getRepository(CcmNews::class)->getNewsArticlesByYearAndTheme($locale, $year, $themeId, $offset, $limit);
+
+        return $actualites;
+    }
+
+    public function getSejour()
+    {
+        return $this->em
+            ->getRepository(HomepageSejourTranslation::class)
+            ->findOneBy(
                 array(
                     'locale' => $this->requestStack->getMasterRequest()->get('_locale')
                 )

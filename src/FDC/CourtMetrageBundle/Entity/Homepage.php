@@ -43,7 +43,7 @@ class Homepage
      * @Assert\Count(
      *      min = "3",
      *      minMessage = "ccm.validation.homepage.pushes_min",
-     *      max = "9",
+     *      max = "6",
      *      maxMessage = "ccm.validation.homepage.pushes_max"
      * )
      * @Assert\Valid
@@ -89,9 +89,9 @@ class Homepage
      * @ORM\OneToMany(targetEntity="CatalogPush", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      min = "3",
-     *      minMessage = "ccm.validation.homepage.catalog.pushes_min",
+     *      minMessage = "ccm.validation.homepage.catalog_min",
      *      max = "5",
-     *      maxMessage = "ccm.validation.homepage.catalog.pushes_max"
+     *      maxMessage = "ccm.validation.homepage.catalog_max"
      * )
      * @Assert\Valid
      */
@@ -109,6 +109,37 @@ class Homepage
      */
     protected $translations;
 
+//    /**
+//     * @ORM\OneToMany(targetEntity="HomepageActualite", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+//     */
+//    protected $actualites;
+
+    /**
+     * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "ccm.validation.homepage.sejour_min",
+     *      max = "1",
+     *      maxMessage = "ccm.validation.homepage.sejour_max"
+     * )
+     * @Assert\Valid
+     */
+    protected $sejoures;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $sejourIsActive = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $actualiteIsActive = false;
+
     /**
      * Homepage constructor.
      */
@@ -117,6 +148,8 @@ class Homepage
         $this->sliders = new ArrayCollection();
         $this->pushes = new ArrayCollection();
         $this->catalogPushes =  new ArrayCollection();
+//        $this->actualites =  new ArrayCollection();
+        $this->sejoures =  new ArrayCollection();
     }
 
     /**
@@ -424,6 +457,164 @@ class Homepage
     public function setCatalogImage($catalogImage)
     {
         $this->catalogImage = $catalogImage;
+
+        return $this;
+    }
+
+//    /**
+//     * Get actualites.
+//     *
+//     * @return mixed
+//     */
+//    public function getActualites()
+//    {
+//        return $this->actualites;
+//    }
+//
+//    /**
+//     * Set actualites.
+//     *
+//     * @param mixed $actualites
+//     */
+//    public function setActualites($actualites)
+//    {
+//        $this->actualites = $actualites;
+//
+//        return $this;
+//    }
+
+//    /**
+//     * Add actualite.
+//     *
+//     * @param HomepageActualite $actualite
+//     *
+//     * @return $this
+//     */
+//    public function addActualite(HomepageActualite $actualite)
+//    {
+//        $this->actualites->add($actualite);
+//        $actualite->setHomepage($this);
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove actualite.
+//     *
+//     * @param HomepageActualite $actualite
+//     */
+//    public function removeActualite(HomepageActualite $actualite)
+//    {
+//        $this->actualites->removeElement($actualite);
+//    }
+
+    /**
+     * Get actualiteIsActive.
+     *
+     * @return bool
+     */
+    public function getActualiteIsActive()
+    {
+        return $this->actualiteIsActive;
+    }
+
+    /**
+     * Set actualiteIsActive
+     *
+     * @param bool $actualiteIsActive
+     */
+    public function setActualiteIsActive($actualiteIsActive)
+    {
+        $this->actualiteIsActive = $actualiteIsActive;
+    }
+
+    /**
+     * Get sejoures.
+     *
+     * @return mixed
+     */
+    public function getSejoures()
+    {
+        return $this->sejoures;
+    }
+
+    /**
+     * Set sejoures.
+     *
+     * @param mixed $sejoures
+     */
+    public function setSejoures($sejoures)
+    {
+        $this->sejoures = $sejoures;
+
+        return $this;
+    }
+
+    /**
+     * Get sejourIsActive.
+     *
+     * @return bool
+     */
+    public function getSejourIsActive()
+    {
+        return $this->sejourIsActive;
+    }
+
+    /**
+     * Set sujourIsActive.
+     *
+     * @param bool $sejourIsActive
+     */
+    public function setSejourIsActive($sejourIsActive)
+    {
+        $this->sejourIsActive = $sejourIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Add sejour.
+     *
+     * @param HomepageSejour $sejour
+     *
+     * @return $this
+     */
+    public function addSejour(HomepageSejour $sejour)
+    {
+        $this->sejoures->add($sejour);
+        $sejour->setHomepage($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove sejour.
+     *
+     * @param HomepageSejour $sejour
+     */
+    public function removeSejour(HomepageSejour $sejour)
+    {
+        $this->sejoures->removeElement($sejour);
+    }
+
+    /**
+     * Get Translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set translations.
+     *
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
 
         return $this;
     }

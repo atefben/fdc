@@ -18,7 +18,6 @@
         {{ form_widget(form.parent.selectionSection) }}
         </br></br>
     </div>
-
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
             {{ form_row(translationsFields.applyChanges) }}
@@ -32,7 +31,6 @@
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
                             <div class="box box-success">
@@ -43,7 +41,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="slider">
                                             {% if widget.children._type.vars.value == 'ccm_homepage_slider_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.slider.homepage'|trans }}</strong></h4>
                                             {% endif %}
@@ -76,7 +74,7 @@
                                     {{ form_widget(form.parent.pushIsActive) }}
                                     </br></br>
                                     {% for widget in form.parent.children.pushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="push">
                                             {% if widget.children._type.vars.value == 'ccm_homepage_push_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.push.homepage'|trans }}</strong></h4>
                                             {% endif %}
@@ -109,7 +107,7 @@
                                     {{ form_label(form.parent.catalogImage) }}
                                     {{ form_widget(form.parent.catalogImage) }}
                                     {% for widget in form.parent.children.catalogPushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="catalog">
                                             {% if widget.children._type.vars.value == 'ccm_catalog_push_type' %}
                                                 <h4><strong>{{ 'form.ccm.label.catalog.homepage'|trans }}</strong></h4>
                                             {% endif %}
@@ -126,32 +124,130 @@
                                    data-prototype="{{ form_widget(form.parent.children.catalogPushes.vars.prototypes.ccm_catalog_push_type)|escape }}"><i
                                             class="icon-plus"></i>{{ 'form.ccm.label.catalog.push'|trans }}</a>
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <h4> {{'form.ccm.label.actualite.title'|trans}}</h4>
+                                </div>
+                            </div></br>
+                            <div class="col-md-12">
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {{ form_label(form.parent.actualiteIsActive) }}
+                                        {{ form_widget(form.parent.actualiteIsActive) }}
+                                        </br>
+                                        {#{% for widget in form.parent.children.actualites.children %}#}
+                                            {#<div class="item base-widget" data-itemtype="actualite">#}
+                                                {#{{ form_row(widget._type) }}#}
+                                                {#{{ form_row(widget.isActive) }}#}
+                                                {#{{ form_row(widget.image) }}#}
+                                                {#{{ form_row(widget.theme) }}#}
+                                                {#{{ form_row(widget.date) }}#}
+                                                {#{{ form_widget(attribute(widget.children.translations, locale)) }}#}
+                                                {#<a class="btn btn-danger btn-sm btn-outline remove_item">#}
+                                                    {#<i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}#}
+                                                {#</a>#}
+                                            {#</div>#}
+                                        {#{% endfor %}#}
+                                    </div>
+
+                                    {#<a class="btn btn-primary btn-add-base-widget"#}
+                                       {#data-prototype="{{ form_widget(form.parent.children.actualites.vars.prototypes.ccm_homepage_actualite_type)|escape }}"><i#}
+                                                {#class="icon-plus"></i>{{ 'form.ccm.label.homepage_actualite_type'|trans }}</a>#}
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <h4> {{'form.ccm.label.sejour.title'|trans}}</h4>
+                                </div>
+                            </div></br>
+                            <div class="col-md-12">
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {{ form_label(form.parent.sejourIsActive) }}
+                                        {{ form_widget(form.parent.sejourIsActive) }}
+                                        </br>
+                                        {% for widget in form.parent.children.sejoures.children %}
+                                            <div class="item base-widget" data-itemtype="sejour">
+                                                {{ form_row(widget._type) }}
+                                                {{ form_row(widget.image) }}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <a class="btn btn-primary btn-add-base-widget"
+                                       data-prototype="{{ form_widget(form.parent.children.sejoures.vars.prototypes.ccm_homepage_sejour_type)|escape }}"><i
+                                                class="icon-plus"></i>{{ 'form.ccm.label.homepage_sejour_type'|trans }}</a>
+                                </div>
+                            </div>
                         </div>
                     {% else %}
                         <div class="col-md-8">
                             <div class="box-body">
+                                <div class="box box-success">
+                                    <h4> {{'form.ccm.label.slide'|trans}}</h4>
+                                </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.sliders.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="slider">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}
+                                </div>
+                                <div class="box box-success">
+                                    <h4> {{ 'form.ccm.label.catalog.pushes'|trans}}</h4>
                                 </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.pushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="push">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}
                                 </div>
+                                <div class="box box-success">
+                                    <h4> {{ 'form.ccm.label.catalog.pushes'|trans}}</h4>
+                                </div>
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.catalogPushes.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="catalog">
                                             {{ form_row(widget._type) }}
+                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                {#<div class="box box-success">#}
+                                    {#<h4> {{ 'form.ccm.label.actualite.title'|trans}}</h4>#}
+                                {#</div>#}
+                                {#<div class="fdc-widgets" data-form-widget="collection">#}
+                                    {#{% for widget in form.parent.children.actualites.children %}#}
+                                        {#<div class="item base-widget" data-itemtype="actualite">#}
+                                            {#{{ form_row(widget._type) }}#}
+                                            {#{{ form_row(widget.date) }}#}
+                                            {#{{ form_row(widget.image) }}#}
+                                            {#{{ form_row(widget.theme) }}#}
+                                            {#{{ form_row(widget.isActive) }}#}
+                                            {#{{ form_widget(attribute(widget.children.translations, locale)) }}#}
+                                        {#</div>#}
+                                    {#{% endfor %}#}
+                                {#</div>#}
+                                <div class="box box-success">
+                                    <h4> {{ 'form.ccm.label.sejour.title'|trans}}</h4>
+                                </div>
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    {% for widget in form.parent.children.sejoures.children %}
+                                        <div class="item base-widget" data-itemtype="sejour">
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}

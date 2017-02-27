@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * HomepagePushTranslation
- * @ORM\Table(name="ccm_homepage_push_translation")
+ * @ORM\Table(name="ccm_homepage_actualite_translation")
  * @ORM\Entity
  */
-class HomepagePushTranslation
+class HomepageActualiteTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -21,14 +21,7 @@ class HomepagePushTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $whiteTitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $goldenTitle;
+    protected $title;
 
     /**
      * @var string
@@ -38,45 +31,52 @@ class HomepagePushTranslation
     protected $url;
 
     /**
-     * Get whiteTitle.
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $description;
+
+    /**
+     * Get title.
      *
      * @return string
      */
-    public function getWhiteTitle()
+    public function getTitle()
     {
-        return $this->whiteTitle;
+        return $this->title;
     }
 
     /**
-     * Set whiteTitle.
+     * Set title.
      *
-     * @param string $whiteTitle
+     * @param string $title
      */
-    public function setWhiteTitle($whiteTitle)
+    public function setTitle($title)
     {
-        $this->whiteTitle = $whiteTitle;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get goldenTitle.
+     * Get description.
      *
      * @return string
      */
-    public function getGoldenTitle()
+    public function getDescription()
     {
-        return $this->goldenTitle;
+        return $this->description;
     }
 
     /**
-     * Set goldenTitle.
+     * Set description.
      *
-     * @param string $goldenTitle
+     * @param string $description
      */
-    public function setGoldenTitle($goldenTitle)
+    public function setDescription($description)
     {
-        $this->goldenTitle = $goldenTitle;
+        $this->description = $description;
 
         return $this;
     }

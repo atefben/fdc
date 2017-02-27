@@ -114,51 +114,39 @@ class HomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+//            ->add('actualites', 'infinite_form_polycollection', array(
+//                'label'        => false,
+//                'types'        => array(
+//                    'ccm_homepage_actualite_type',
+//                ),
+//                'allow_add'    => true,
+//                'allow_delete' => true,
+//                'prototype'    => true,
+//                'by_reference' => false,
+//            ))
             ->add('catalogImage', 'sonata_type_model_list', array(
                     'required' => true,
                 )
             )
+            ->add('actualiteIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.actualite.is_active',
+                'required' => false,
+            ))
+            ->add('sejoures', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'ccm_homepage_sejour_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
+            ->add('sejourIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.sejour.sejour_is_activated',
+                'required' => false,
+            ))
         ;
-    }
-
-    /**
-     * Pre persist.
-     *
-     * @param Homepage $homepage
-     */
-    public function prePersist($homepage)
-    {
-        parent::prePersist($homepage);
-
-        foreach ($homepage->getSliders() as $slider) {
-            $slider->setHomepage($homepage);
-        }
-        foreach ($homepage->getPushes() as $push) {
-            $push->setHomepage($homepage);
-        }
-        foreach ($homepage->getCatalogPushes() as $push) {
-            $push->setCatalog($homepage);
-        }
-    }
-
-    /**
-     * Pre update.
-     *
-     * @param Homepage $homepage
-     */
-    public function preUpdate($homepage)
-    {
-        parent::preUpdate($homepage);
-
-        foreach ($homepage->getSliders() as $slider) {
-            $slider->setHomepage($homepage);
-        }
-        foreach ($homepage->getPushes() as $push) {
-            $push->setHomepage($homepage);
-        }
-        foreach ($homepage->getCatalogPushes() as $push) {
-            $push->setCatalog($homepage);
-        }
     }
 
     /**

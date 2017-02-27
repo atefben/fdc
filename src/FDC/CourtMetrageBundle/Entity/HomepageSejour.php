@@ -9,11 +9,11 @@ use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HomepageSlider
- * @ORM\Table(name="ccm_homepage_slider")
+ * HomepageSejour
+ * @ORM\Table(name="ccm_homepage_sejour")
  * @ORM\Entity
  */
-class HomepageSlider
+class HomepageSejour
 {
     use Translatable;
 
@@ -27,7 +27,7 @@ class HomepageSlider
 
     /**
      * @var MediaImage
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepageSliders")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepageSejoures")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $image;
@@ -38,19 +38,18 @@ class HomepageSlider
     protected $translations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliders")
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sejoures")
      * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $homepage;
 
     /**
-     * HomepageSlider constructor.
+     * HomepageSejour constructor.
      */
     public function __construct()
     {
         $this->translations = new ArrayCollection();
     }
-
     /**
      * Get id.
      *
@@ -62,7 +61,7 @@ class HomepageSlider
     }
 
     /**
-     * Get Image.
+     * Get image.
      *
      * @return MediaImage
      */
@@ -72,11 +71,9 @@ class HomepageSlider
     }
 
     /**
-     * Set Image.
+     * Set image.
      *
      * @param MediaImage $image
-     *
-     * @return $this
      */
     public function setImage($image)
     {
@@ -86,7 +83,7 @@ class HomepageSlider
     }
 
     /**
-     * Get Homepage.
+     * Get homepage.
      *
      * @return mixed
      */
@@ -96,11 +93,9 @@ class HomepageSlider
     }
 
     /**
-     * Set Homepage
+     * Set homepage.
      *
-     * @param $homepage
-     *
-     * @return $this
+     * @param mixed $homepage
      */
     public function setHomepage($homepage)
     {
@@ -120,11 +115,9 @@ class HomepageSlider
     }
 
     /**
-     * Set Translations.
+     * Set translations
      *
      * @param ArrayCollection $translations
-     *
-     * @return $this
      */
     public function setTranslations($translations)
     {

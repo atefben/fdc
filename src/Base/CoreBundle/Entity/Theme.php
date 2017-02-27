@@ -51,10 +51,17 @@ class Theme implements TranslateMainInterface
      */
     protected $ccmNews;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepageActualite", mappedBy="theme")
+     */
+    protected $homepageActualites;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->ccmNews = new ArrayCollection();
+        $this->homepageActualites = new ArrayCollection();
     }
 
     public function __toString()
@@ -171,5 +178,51 @@ class Theme implements TranslateMainInterface
     public function getCcmNews()
     {
         return $this->ccmNews;
+    }
+
+    /**
+     * Get homepageActualite.
+     *
+     * @return ArrayCollection
+     */
+    public function getHomepageActualites()
+    {
+        return $this->homepageActualites;
+    }
+
+    /**
+     * Set homepageActualites.
+     *
+     * @param ArrayCollection $homepageActualites
+     */
+    public function setHomepageActualites($homepageActualites)
+    {
+        $this->homepageActualites = $homepageActualites;
+
+        return $this;
+    }
+
+    /**
+     * Add homepageActualite.
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageActualite $homepageActualite
+     * @return $this
+     */
+    public function addHomepageActualite(\FDC\CourtMetrageBundle\Entity\HomepageActualite $homepageActualite)
+    {
+        $this->homepageActualites[] = $homepageActualite;
+        $homepageActualite->setTheme($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove homepageActualite
+     *
+     * @param \FDC\CourtMetrageBundle\Entity\HomepageActualite $homepageActualite
+     */
+    public function removeHomepageActualite(\FDC\CourtMetrageBundle\Entity\HomepageActualite $homepageActualite)
+    {
+        $this->homepageActualites->removeElement($homepageActualite);
     }
 }

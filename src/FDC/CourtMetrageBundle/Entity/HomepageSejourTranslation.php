@@ -7,11 +7,11 @@ use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HomepagePushTranslation
- * @ORM\Table(name="ccm_homepage_push_translation")
+ * HomepageSliderTranslation
+ * @ORM\Table(name="ccm_homepage_sejour_translation")
  * @ORM\Entity
  */
-class HomepagePushTranslation
+class HomepageSejourTranslation
 {
     use Translation;
     use TranslationChanges;
@@ -21,14 +21,14 @@ class HomepagePushTranslation
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $whiteTitle;
+    protected $title1;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $goldenTitle;
+    protected $title2;
 
     /**
      * @var string
@@ -38,45 +38,52 @@ class HomepagePushTranslation
     protected $url;
 
     /**
-     * Get whiteTitle.
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $button;
+
+    /**
+     * Get title1.
      *
      * @return string
      */
-    public function getWhiteTitle()
+    public function getTitle1()
     {
-        return $this->whiteTitle;
+        return $this->title1;
     }
 
     /**
-     * Set whiteTitle.
+     * Set title1.
      *
-     * @param string $whiteTitle
+     * @param string $title1
      */
-    public function setWhiteTitle($whiteTitle)
+    public function setTitle1($title1)
     {
-        $this->whiteTitle = $whiteTitle;
+        $this->title1 = $title1;
 
         return $this;
     }
 
     /**
-     * Get goldenTitle.
+     * Get title2.
      *
      * @return string
      */
-    public function getGoldenTitle()
+    public function getTitle2()
     {
-        return $this->goldenTitle;
+        return $this->title2;
     }
 
     /**
-     * Set goldenTitle.
+     * Set title2.
      *
-     * @param string $goldenTitle
+     * @param string $title2
      */
-    public function setGoldenTitle($goldenTitle)
+    public function setTitle2($title2)
     {
-        $this->goldenTitle = $goldenTitle;
+        $this->title2 = $title2;
 
         return $this;
     }
@@ -99,6 +106,28 @@ class HomepagePushTranslation
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get button.
+     *
+     * @return string
+     */
+    public function getButton()
+    {
+        return $this->button;
+    }
+
+    /**
+     * Set button.
+     *
+     * @param string $button
+     */
+    public function setButton($button)
+    {
+        $this->button = $button;
 
         return $this;
     }
