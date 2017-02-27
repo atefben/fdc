@@ -133,55 +133,18 @@
 
             {% if associatedNews.header is not null %}
               {% set header = associatedNews.header %}
-                {% if header is not null %}
-                    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-                    {% if imageTrans is null or imageTrans.file is null %}
-                        {% set imageTrans = header.findTranslationByLocale('fr') %}
-                    {% endif %}
-                {% endif %}
-                {% if imageTrans is defined and imageTrans.file is not null %}
-                    {% set img = associatedNews.header %}
-                    {% set file = imageTrans.file %}
-                {% else %}
-                    {% if associatedNews.gallery and associatedNews.gallery.medias|length > 0 %}
-                        {% set img = associatedNews.gallery.medias[0].media %}
-                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = img.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {% set file = trans.file %}
-                    {% endif %}
-                {% endif %}
-
-                {% if associatedNews is news_article %}
-                    {% set img = associatedNews.header %}
-                    {% if img is not null %}
-                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = img.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {% set file = trans.file %}
-                        {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                    {% endif %}
-                {% endif %}
-                {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
-                  {% set header = associatedNews.header %}
-                  {% if header is not null %}
-                      {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                      {% if trans is not null and trans.file is not null %}
-                          {% set imageTrans = trans %}
-                      {% else %}
-                          {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
-                          {% if trans is not null and trans.file is not null %}
-                              {% set imageTrans = trans %}
-                          {% endif %}
-                      {% endif %}
+              {% if header is not null %}
+                  {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+                  {% if imageTrans is null or imageTrans.file is null %}
+                      {% set imageTrans = header.findTranslationByLocale('fr') %}
                   {% endif %}
-                  {% if imageTrans is defined and imageTrans is not null %}
-                      {% set file = imageTrans.file %}
-                      {% set img = associatedNews.header %}
-                  {% else %}
-                      {% set img = associatedNews.audio.image %}
+              {% endif %}
+              {% if imageTrans is defined and imageTrans.file is not null %}
+                  {% set img = associatedNews.header %}
+                  {% set file = imageTrans.file %}
+              {% else %}
+                  {% if associatedNews.gallery and associatedNews.gallery.medias|length > 0 %}
+                      {% set img = associatedNews.gallery.medias[0].media %}
                       {% set trans = img.findTranslationByLocale(app.request.locale) %}
                       {% if trans is null or trans.file is null %}
                           {% set trans = img.findTranslationByLocale('fr') %}
@@ -189,6 +152,42 @@
                       {% set file = trans.file %}
                   {% endif %}
               {% endif %}
+
+              {% if associatedNews is news_article %}
+                  {% set img = associatedNews.header %}
+                  {% if img is not null %}
+                      {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                      {% if trans is null or trans.file is null %}
+                          {% set trans = img.findTranslationByLocale('fr') %}
+                      {% endif %}
+                      {% set file = trans.file %}
+                      {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                  {% endif %}
+              {% endif %}
+              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+                {% set header = associatedNews.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = trans %}
+                    {% else %}
+                        {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is defined and imageTrans is not null %}
+                    {% set file = imageTrans.file %}
+                    {% set img = associatedNews.header %}
+                {% else %}
+                    {% set img = associatedNews.audio.image %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% endif %}
             {% endif %}
             {% if file is defined and file is not null %}
                 <img src="{% path file, 'reference' %}"/>
