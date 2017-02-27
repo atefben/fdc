@@ -91,4 +91,14 @@ class FooterContentController extends Controller
             'form'  => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/plan-du-site", name="fdc_courtmetrage_site_plan")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function sitePlanAction()
+    {
+        return $this->render('@FDCCourtMetrage/site_plan/index.html.twig');
+    }
 }
