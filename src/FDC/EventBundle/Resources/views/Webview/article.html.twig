@@ -164,9 +164,9 @@
                 {% if file is not defined %}
                   {% set file = associatedNews.file|trans_fallback('file') %}
                 {% endif %}
-                {% if file is defined %}
+                {% if file is defined %}filedefined
                     <img src="{% path file, 'reference' %}"/>
-                {% else %}
+                {% else %}placeholder
                   <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
                 {% endif %}
             {% endif %}
