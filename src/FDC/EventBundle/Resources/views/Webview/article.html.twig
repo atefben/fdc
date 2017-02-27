@@ -40,7 +40,7 @@
           <img src="{% path object.header|trans_fallback('file'), 'reference' %}"/>
           <div class="Article-picture-caption"><strong>{{ object.header|trans_fallback('legend') }}</strong> {{ object.header|trans_fallback('copyright') }}</div>
         {% elseif object is news_audio %}
-          {% include 'FDCEventBundle:Webview:widget/audio.html.twig' with { 'widget':object } %}
+          {% include 'FDCEventBundle:Webview:widget/audio-header.html.twig' with { 'widget':object } %}
         {% elseif object is news_video %}
           {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'video':object.video,'image':cover_image } %}
         {% elseif object is news_image %}
