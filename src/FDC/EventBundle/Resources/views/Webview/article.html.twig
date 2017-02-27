@@ -164,7 +164,6 @@
                 {% if file is not defined %}
                   {% set file = associatedNews.file|trans_fallback('file') %}
                 {% endif %}
-                {{ dump(associatedNews) }}
                 {% if file is defined %}
                     <img src="{% path file, 'reference' %}"/>
                 {% else %}
