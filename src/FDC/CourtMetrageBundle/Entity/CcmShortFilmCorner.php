@@ -66,6 +66,13 @@ class CcmShortFilmCorner implements TranslateMainInterface
     protected $translations;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="menu_order", type="smallint", nullable=true, options={"unsigned": true})
+     */
+    protected $menuOrder;
+
+    /**
      * @var CcmShortFilmCornerWidget
      *
      * @ORM\OneToMany(targetEntity="CcmShortFilmCornerWidget", mappedBy="shortFilmCorner", cascade={"all"}, orphanRemoval=true)
@@ -83,8 +90,12 @@ class CcmShortFilmCorner implements TranslateMainInterface
         $this->widgets = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
+        /** @var CcmShortFilmCornerTranslation $translation */
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
@@ -92,11 +103,16 @@ class CcmShortFilmCorner implements TranslateMainInterface
         } else {
             $string = strval($this->getId());
         }
+
         return (string) $string;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
+        /** @var CcmShortFilmCornerTranslation $translation */
         $translation = $this->findTranslationByLocale('fr');
         $string = '';
 
@@ -230,5 +246,24 @@ class CcmShortFilmCorner implements TranslateMainInterface
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMenuOrder()
+    {
+        return $this->menuOrder;
+    }
+
+    /**
+     * @param $menuOrder
+     * @return CcmShortFilmCorner
+     */
+    public function setMenuOrder($menuOrder)
+    {
+        $this->menuOrder = $menuOrder;
+
+        return $this;
     }
 }
