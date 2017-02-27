@@ -166,7 +166,9 @@
                 {% endif %}
                 {{ associatedNews.header|trans_fallback('file') }}
                 {% if associatedNews is news_audio %}
+                  {{ dump(associatedNews.header.image) }}
                   {% set file = associatedNews.header|trans_fallback('file') %}
+
                 {% endif %}
             {% endif %}
             {% if file is defined %}
