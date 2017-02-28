@@ -3,16 +3,15 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CcmWaitingPage
- * @ORM\Table(name="ccm_waiting_page")
+ * CcmLabel
+ * @ORM\Table(name="ccm_label")
  * @ORM\Entity
  */
-class CcmWaitingPage
+class CcmLabel
 {
     use Translatable;
 
@@ -25,26 +24,9 @@ class CcmWaitingPage
     protected $id;
 
     /**
-     * @var MediaImageSimple
-     *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
-     *
+     * @ORM\OneToMany(targetEntity="CcmLabelSectionPosition", mappedBy="label", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      */
-    protected $image;
-
-    /**
-     * @var CcmShortFilmCompetitionTab
-     * @ORM\ManyToOne(targetEntity="CcmShortFilmCompetitionTab")
-     *
-     */
-    protected $page;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $enabled;
+    protected $labelSection;
 
     /**
      * @var ArrayCollection
@@ -52,11 +34,12 @@ class CcmWaitingPage
     protected $translations;
 
     /**
-     * CcmWaitingPage constructor.
+     * CcmLabel constructor.
      */
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->labelSection = new ArrayCollection();
     }
 
     /**
@@ -65,66 +48,6 @@ class CcmWaitingPage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return CcmShortFilmCompetitionTab
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param $page
-     *
-     * @return $this
-     */
-    public function setPage($page)
-    {
-        $this->page = $page;
-
-        return $this;
-    }
-
-    /**
-     * @return MediaImageSimple
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param $image
-     *
-     * @return $this
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * @param $isActive
-     *
-     * @return $this
-     */
-    public function setEnabled($isActive)
-    {
-        $this->enabled = $isActive;
-
-        return $this;
     }
 
     /**
@@ -147,25 +70,62 @@ class CcmWaitingPage
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getLabelSection()
+    {
+        return $this->labelSection;
+    }
+
+    /**
+     * @param CcmLabelSectionPosition $labelSection
+     *
+     * @return $this
+     */
+    public function addLabelSection(CcmLabelSectionPosition $labelSection)
+    {
+        if (!$this->labelSection->contains($labelSection)) {
+            $this->labelSection->add($labelSection);
+            $labelSection->setLabel($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param CcmLabelSectionPosition $labelSection
+     *
+     * @return $this
+     */
+    public function removeLabelSection(CcmLabelSectionPosition $labelSection)
+    {
+        if ($this->labelSection->contains($labelSection)) {
+            $this->labelSection->removeElement($labelSection);
+        }
+
+        return $this;
+    }
+
     public function __toString()
     {
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getHeader();
         } else {
             $string = strval($this->getId());
         }
         return (string) $string;
     }
 
-    public function getTitle()
+    public function getHeader()
     {
         $translation = $this->findTranslationByLocale('fr');
         $string = '';
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getHeader();
         }
 
         return $string;

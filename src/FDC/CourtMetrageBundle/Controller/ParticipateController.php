@@ -3,6 +3,7 @@
 namespace FDC\CourtMetrageBundle\Controller;
 
 use FDC\CourtMetrageBundle\Entity\CcmFilmRegisterTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelTranslation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Base\CoreBundle\Entity\FilmPerson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -70,6 +71,38 @@ class ParticipateController extends Controller
         return $this->render('FDCCourtMetrageBundle:Participate:registerRegulationDetail.html.twig', array(
             'filmRegisterPage' => $filmRegisterPage,
             'registerProcedure' => $registerProcedure
+        ));
+    }
+
+    /**
+     * @Route("participer/label", name="fdc_court_metrage_label")
+     *
+     * @return Response
+     */
+    public function labelAction()
+    {
+        $participateManager = $this->get('ccm.manager.participate');
+
+        $labelPage = $participateManager->getLabelPage();
+
+        if($labelPage->getStatus() != CcmLabelTranslation::STATUS_PUBLISHED && $labelPage->getStatus() != CcmLabelTranslation::STATUS_TRANSLATED)
+        {
+            throw new NotFoundHttpException();
+        }
+
+        $labelSections = $participateManager->getLabelSections($labelPage);
+        $labelSectionsWidgets = $participateManager->getLabelSectionsWidgets($labelPage);
+
+        $filesWidgets = $participateManager->getFilesWidgetsList($labelSectionsWidgets);
+
+        return $this->render('FDCCourtMetrageBundle:Participate:label.html.twig', array(
+            'labelPage' => $labelPage,
+            'labelSectionsWidgets' => $labelSectionsWidgets,
+            'labelSections' => $labelSections,
+            'threeColumnsTabs' => $filesWidgets['threeColumnsTabs'],
+            'threeColumnsFiles' => $filesWidgets['threeColumnsFiles'],
+            'twoColumnsTabs' => $filesWidgets['twoColumnsTabs'],
+            'twoColumnsFiles' => $filesWidgets['twoColumnsFiles']
         ));
     }
 

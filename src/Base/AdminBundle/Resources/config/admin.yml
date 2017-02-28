@@ -2573,7 +2573,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmMenuAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMenu, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Menu}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Menu}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2581,7 +2581,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmMainNavCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMainNavCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Main menu collection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Main menu collection, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2589,7 +2589,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmMainNavAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMainNav, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Main Menu Item, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Main Menu Item, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2597,7 +2597,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSubNavCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSubNavCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Sub Menu collection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Sub Menu collection, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2605,7 +2605,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSubNavAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSubNav, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Sub Menu Item, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Sub Menu Item, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2613,7 +2613,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmWaitingPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmWaitingPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Pages d'attente}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Pages d'attente}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2629,7 +2629,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\HomepageSlider, BaseAdminBundle:CCM\ImageDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Homepage Slider, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Homepage Slider, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2637,13 +2637,13 @@ services:
         class: Base\AdminBundle\Admin\CCM\HomepageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\Homepage, BaseAdminBundle:CCM\HomepageAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Homepage}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Homepage}
 
     base.admin.ccm_homepage_push_top_dummy:
         class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\HomepagePush, BaseAdminBundle:CCM\ImageDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Module Push, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Module Push, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2651,7 +2651,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSocialWallHashTagAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Social wall hashtag}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall hashtag}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2723,7 +2723,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSocialWallAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWall, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Social wall}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Social wall}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2731,43 +2731,43 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmFaqPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFaqPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: FAQ Page}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: FAQ Page}
 
     base.admin.ccm_rubriques_collection:
         class: Base\AdminBundle\Admin\CCM\CcmRubriquesCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriquesCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: RubriquesCollection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: RubriquesCollection, show_in_dashboard: false}
 
     base.admin.ccm_rubrique:
         class: Base\AdminBundle\Admin\CCM\CcmRubriqueAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubrique, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Rubrique, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Rubrique, show_in_dashboard: false}
 
     base.admin.ccm_rubrique_questions_collection:
         class: Base\AdminBundle\Admin\CCM\CcmRubriqueQuestionsCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestionsCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-          - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: RubriqueQuestionsCollection, show_in_dashboard: false}
+          - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: RubriqueQuestionsCollection, show_in_dashboard: false}
 
     base.admin.ccm_rubrique_question:
         class: Base\AdminBundle\Admin\CCM\CcmRubriqueQuestionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRubriqueQuestion, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Question-Answer, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Question-Answer, show_in_dashboard: false}
 
     base.admin.ccm_contact_page:
         class: Base\AdminBundle\Admin\CCM\CcmContactPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Contact Page}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Contact Page}
 
     base.admin.ccm_contact_subjects_collection:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectsCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubjectsCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: ContactPageSubjectsCollection, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactPageSubjectsCollection, show_in_dashboard: false}
 
     base.admin.ccm_contact_subject:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectAdmin
@@ -2775,29 +2775,52 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: ContactSubject, show_in_dashboard: false}
 
+    base.admin.ccm_label:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabel, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: La charte graphique}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Sections de charte graphique}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_position_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionPositionDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionPosition, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Label section position, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
     base.admin.ccm_footer_content:
         class: Base\AdminBundle\Admin\CCM\CcmFooterContentAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Footer Content, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Footer Content, show_in_dashboard: false}
 
     base.admin.ccm_confidentialite:
         class: Base\AdminBundle\Admin\CCM\CcmConfidentialiteAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Politique de confidentialité }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Politique de confidentialité }
 
     base.admin.ccm_credits:
         class: Base\AdminBundle\Admin\CCM\CcmCreditsAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Crédits }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Crédits }
 
     base.admin.ccm_legal:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Mentions Légales }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Mentions Légales }
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2846,6 +2869,124 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmModuleThreeColumns, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Module Three Columns, show_in_dashboard: false }
+
+    base.admin.ccm_label_section_content_one_column_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentOneColumn, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_two_columns_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_two_columns_two_image_dummy_admin:
+            class: Base\AdminBundle\Admin\CCM\ImageTwoDummyAdmin
+            arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy two columns, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_two_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageTwoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_three_image_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\ImageDummyThreeAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns three, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_content_files:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Charte graphique sections boutons }
+
+    base.admin.ccm_label_content_files_widget:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesWidgetAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidget, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label content files widget boutons, show_in_dashboard: false }
+
+    base.admin.ccm_label_file:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelFileAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelFile, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label File, show_in_dashboard: false}
+
+    base.admin.ccm_label_file_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelFileCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelFileCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label file collection, show_in_dashboard: false}
+
+    base.admin.ccm_label_content_files_widget_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesWidgetCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidgetCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label content files collection, show_in_dashboard: false}
+
+    base.admin.ccm_label_section_content_two_columns_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentTwoColumnsDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_two_columns_two_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentTwoColumnsTwoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentThreeColumnsDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_two_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentThreeColumnsTwoDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_label_section_content_three_columns_three_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentThreeColumnsThreeDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns three, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.ccm_videos_collection:
         class: Base\AdminBundle\Admin\CCM\CcmVideosCollectionAdmin

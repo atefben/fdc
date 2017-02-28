@@ -1,0 +1,157 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
+    {% set templateName = 'form.ccm.graphical_charter.form_title'|trans %}
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
+            {% set locale = translationsFields.vars.name %}
+            {% if is_granted('ROLE_TRANSLATOR_FR') %}
+                {% set currentLocale = 'fr' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+                {% set currentLocale = 'en' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+                {% set currentLocale = 'zh' %}
+            {% endif %}
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                {% if form.vars.default_locale == locale %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ templateName }}
+                                            </h4>
+                                        </div>
+                                        {{ form_row(translationsFields.name) }}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div id="fdc-arrive-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.labelSectionContent.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'ccm_label_section_content_text_type' %}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.text'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_one_column_type'%}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.one_column'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_two_columns_type'%}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.image2) }}
+                                                            {{ form_row(widget.labelContentFiles) }}
+                                                            {{ form_row(widget.labelContentFiles2) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_three_columns_type'%}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.three_columns'|trans }}</strong></h4>
+                                                            {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.image2) }}
+                                                            {{ form_row(widget.image3) }}
+                                                            {{ form_row(widget.labelContentFiles) }}
+                                                            {{ form_row(widget.labelContentFiles2) }}
+                                                            {{ form_row(widget.labelContentFiles3) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+                                                        {{ form_row(widget.position) }}
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_text_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.text'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_one_column_type)| escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.one_column'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_two_columns_type)|
+                                               escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.two_columns'|trans }}</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.labelSectionContent.vars.prototypes.ccm_label_section_content_three_columns_type)|
+                                               escape }}">
+                                                <i class="icon-plus"></i>{{ 'form.ccm.graphical_charter.widget.three_columns'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                            {% elseif is_granted('ROLE_JOURNALIST') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                            {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                            {% else %}
+                                {{ form_row(translationsFields.status) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.content_template'|trans }}
+                                            </h4>
+                                        </div>
+                                        {{ form_row(translationsFields.name) }}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div id="{{ locale}}-translation-arrivee-title">
+                                            </div>
+                                            <div id="fdc-arrive-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.labelSectionContent.children %}
+                                                    <div id="{{ locale}}-translation-content-template-widget-{{ loop.index }}"
+                                                         class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'ccm_label_section_content_text_type' %}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.text'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_one_column_type' %}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.one_column'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_two_columns_type' %}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% elseif widget.children._type.vars.value == 'ccm_label_section_content_three_columns_type' %}
+                                                            <h4><strong>{{ 'form.ccm.graphical_charter.content.three_columns'|trans }}</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+                                                        {{ form_row(widget.position) }}
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                            {% elseif is_granted('ROLE_JOURNALIST') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                            {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                            {% else %}
+                                {{ form_row(translationsFields.status) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,66 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+<section id="main">
+    <div class="ajax-section">
+        <div class="contain-ajax">
+            <div class="all-contain">
+
+                <div class="contain-title vFlexAlign block-01-s">
+                    <h2 class="title-02" style="color: #0a0a0a">{{ labelPage.header }}</h2>
+                </div>
+
+                <div class="block-01">
+
+                    <div class="block-01-xs">
+                        <strong class="title-22">{{ labelPage.title }}</strong>
+                        <div class="texte-01">
+                            {{ labelPage.text|raw }}
+                        </div>
+                    </div>
+
+                    <div class="block-accordion">
+
+                        {% for section in labelPage.translatable.labelSection %}
+                            <div class="item{{ loop.index == 1 ? ' active' : ' border-top' }}">
+                                <div class="title-contain{{ loop.index == 1 ? ' border-top' : '' }} ">
+                                    <strong class="title-22">
+                                        {{ labelSections[section.labelSection.id].name }}
+                                    </strong>
+                                    <i class="icon icon-nav-accordion icon-minus"></i>
+                                </div>
+
+                                {% for widget in labelSectionsWidgets[section.labelSection.id] %}
+                                    {% if widget.translatable.isWidgetText() %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/textWidget.html.twig' with {'widget': widget} %}
+                                    {% endif %}
+
+                                    {% if widget.translatable.isWidgetOneColumn() %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/oneColumnWidget.html.twig' with {'widget': widget} %}
+                                    {% endif %}
+
+                                    {% if widget.translatable.isWidgetTwoColumns() %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/twoColumnWidget.html.twig' with {
+                                            'widget': widget,
+                                            'twoColumnsTabs': twoColumnsTabs,
+                                            'twoColumnsFiles': twoColumnsFiles
+                                        } %}
+                                    {% endif %}
+
+                                    {% if widget.translatable.isWidgetThreeColumns() %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/threeColumnWidget.html.twig' with {
+                                            'widget': widget,
+                                            'threeColumnsTabs': threeColumnsTabs,
+                                            'threeColumnsFiles': threeColumnsFiles
+                                        } %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div> <!-- fin de item-->
+                        {% endfor %}
+                    </div> <!-- fin de accordion -->
+                </div> <!-- fin block 01 -->
+            </div> <!-- end all contain -->
+        </div>
+    </div>
+</section>
+{% endblock %}

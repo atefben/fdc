@@ -486,6 +486,7 @@ admin:
         ccm:
             pros: Short Film Corner
             general: CCM General
+            participate: Participer
             news: Actualités
             seo_tetieres: SEO + TETIERES
             participer: Participer
@@ -629,6 +630,67 @@ form:
     label_our_selection: Notre Sélection
     label_pdf: Pdf
     ccm:
+        graphical_charter:
+            content_files: Fichiers colonne 1
+            content_files_2: Fichiers colonne 2
+            content_files_3: Fichiers colonne 3
+            section_file_title: Bouton titre
+            section_file: Fichier
+            files_on_section: Boutons disponible
+            files_section: Sections du fichiers
+            label_file_collection: Gestion de boutons
+            label_file: Boutons
+            label_content_file_widget_collection: Section du fichier
+            label_content_file_widget: Sections disponibles
+            button_section_title: Titre du section de fichier
+            section_title: Nom de la section
+            bo_name: Backoffice nom
+            files_section_widget: Module fichiers colonne
+            file_section_widget: Module fichiers colonne
+            file_1: Fichier 1
+            file_2: Fichier 2
+            file_title: Bouton 1 titre
+            file2_title: Bouton 2 titre
+            image_1: Image colonne 1
+            image_2: Image colonne 2
+            image_3: Image colonne 3
+            title: Titre
+            title_1: Titre colonne 1
+            title_2: Titre colonne 2
+            title_3: Titre colonne 3
+            legend: Légende
+            legend_1: Légende colonne 1
+            legend_2: Légende colonne 2
+            legend_3: Légende colonne 3
+            technical_constraints: Contraintes techniques
+            technical_constraints_1: Contraintes techniques colonne 1
+            technical_constraints_2: Contraintes techniques colonne 2
+            technical_constraints_3: Contraintes techniques colonne 3
+            is_technical_constraints_popup_active: Afficher vers la pop-in
+            is_technical_constraints_popup_active_1: Afficher vers la pop-in colonne 1
+            is_technical_constraints_popup_active_2: Afficher vers la pop-in colonne 2
+            is_technical_constraints_popup_active_3: Afficher vers la pop-in colonne 3
+            header: Chapô
+            text: Bloc de texte
+            form_title: Sections de charte graphique
+            label_sections: Sections de charte graphique
+            label_section: Section de charte graphique
+            widget_section: Accordéon item
+            section: Section
+            section_name: Nom
+            widget_text:
+                text: Texte
+            content:
+                text: Module de texte
+                one_column: Module une colonne
+                two_columns: Module deux colonnes
+                three_columns: Module trois colonnes
+            widget:
+                one_column: Module une colonne
+                two_columns: Module deux colonnes
+                three_columns: Module trois colonnes
+                text: Module de texte
+
         register_procedure:
             name: Catégorie des procédures d’inscription
         waiting_page:

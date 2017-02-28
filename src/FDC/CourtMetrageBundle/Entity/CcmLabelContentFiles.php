@@ -3,18 +3,21 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Doctrine\Common\Collections\ArrayCollection;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CcmWaitingPage
- * @ORM\Table(name="ccm_waiting_page")
+ * CcmLabelContentFiles
+ * @ORM\Table(name="ccm_label_content_files")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
-class CcmWaitingPage
+class CcmLabelContentFiles implements TranslateMainInterface
 {
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -25,26 +28,11 @@ class CcmWaitingPage
     protected $id;
 
     /**
-     * @var MediaImageSimple
-     *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
-     *
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidgetCollection", mappedBy="labelContentFiles", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
-    protected $image;
-
-    /**
-     * @var CcmShortFilmCompetitionTab
-     * @ORM\ManyToOne(targetEntity="CcmShortFilmCompetitionTab")
-     *
-     */
-    protected $page;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $enabled;
+    protected $labelContentFileWidgetCollection;
 
     /**
      * @var ArrayCollection
@@ -52,11 +40,41 @@ class CcmWaitingPage
     protected $translations;
 
     /**
-     * CcmWaitingPage constructor.
+     * CcmLabel constructor.
      */
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->labelContentFileWidgetCollection = new ArrayCollection();
+    }
+
+    /**
+     * @param CcmLabelContentFilesWidgetCollection $collection
+     *
+     * @return $this
+     */
+    public function addLabelContentFileWidgetCollection(CcmLabelContentFilesWidgetCollection $collection)
+    {
+        $collection->setLabelContentFiles($this);
+        $this->labelContentFileWidgetCollection[] = $collection;
+
+        return $this;
+    }
+
+    /**
+     * @param CcmLabelContentFilesWidgetCollection $collection
+     */
+    public function removeLabelContentFileWidgetCollection(CcmLabelContentFilesWidgetCollection $collection)
+    {
+        $this->labelContentFileWidgetCollection->removeElement($collection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLabelContentFileWidgetCollection()
+    {
+        return $this->labelContentFileWidgetCollection;
     }
 
     /**
@@ -65,66 +83,6 @@ class CcmWaitingPage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return CcmShortFilmCompetitionTab
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param $page
-     *
-     * @return $this
-     */
-    public function setPage($page)
-    {
-        $this->page = $page;
-
-        return $this;
-    }
-
-    /**
-     * @return MediaImageSimple
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param $image
-     *
-     * @return $this
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * @param $isActive
-     *
-     * @return $this
-     */
-    public function setEnabled($isActive)
-    {
-        $this->enabled = $isActive;
-
-        return $this;
     }
 
     /**
@@ -152,20 +110,20 @@ class CcmWaitingPage
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getBoName();
         } else {
             $string = strval($this->getId());
         }
         return (string) $string;
     }
 
-    public function getTitle()
+    public function getBoName()
     {
         $translation = $this->findTranslationByLocale('fr');
         $string = '';
 
         if ($translation !== null) {
-            $string = $translation->getTitle();
+            $string = $translation->getBoName();
         }
 
         return $string;
