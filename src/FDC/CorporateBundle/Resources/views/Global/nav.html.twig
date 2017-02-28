@@ -51,15 +51,22 @@
                             {% for child in menu['__children'] %}
                                 {% if child.enabled %}
                                     <li>
-                                        {% if child.route != '#' %}
-                                        <a href="{{ path(child.route) }}"
-                                           class="{% if route == child.route %}active{% endif %}">
-                                            {{ child.transName|trans }}
-                                        </a>
-                                        {% elseif child.route == '#' %}
-                                        <a href="#">
-                                            {{ child.transName|trans }}
-                                        </a>
+                                        {% if menu.route == 'fdc_corporate_news_getarticles' and menu.enabled == true %}
+                                            <a href="{{ path('fdc_corporate_news_getarticles', {'year': currentYear}) }}"
+                                               {% if route =='fdc_corporate_news_getarticles' %}active{% endif %}>
+                                                {{ menu.transName|trans }}
+                                            </a>
+                                        {% else %}
+                                            {% if child.route != '#' %}
+                                            <a href="{{ path(child.route) }}"
+                                               class="{% if route == child.route %}active{% endif %}">
+                                                {{ child.transName|trans }}
+                                            </a>
+                                            {% elseif child.route == '#' %}
+                                            <a href="#">
+                                                {{ child.transName|trans }}
+                                            </a>
+                                            {% endif %}
                                         {% endif %}
                                     </li>
                                 {% endif %}

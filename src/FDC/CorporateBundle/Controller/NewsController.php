@@ -23,17 +23,13 @@ class NewsController extends Controller
 {
 
     /**
-     * @Route("/{year}/articles", defaults={"year":null})
+     * @Route("/{year}/articles")
      * @param Request $request
      * @param null $year
      * @return Response
      */
-    public function getArticlesAction(Request $request, $year = null)
+    public function getArticlesAction(Request $request, $year)
     {
-        if (!$year) {
-            $year = $this->getSettings()->getFestival()->getYear();
-            return $this->redirectToRoute('fdc_corporate_news_getarticles', ['year' => $year]);
-        }
         $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
 
