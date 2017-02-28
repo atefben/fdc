@@ -2,16 +2,21 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
+
 use Base\AdminBundle\Component\Admin\Admin;
+use Base\CoreBundle\Entity\FilmFilm;
+use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticle;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsAdmin class.
+ * CcmNewsAdmin class.
  *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
@@ -21,6 +26,19 @@ class CcmNewsAdmin extends Admin
 {
     protected $baseRouteName = 'ccm_news';
     protected $baseRoutePattern = 'ccmnews';
+
+    /**
+     * @var EntityManager
+     */
+    protected $em;
+
+    /**
+     * @param EntityManager $entityManager
+     */
+    public function setEntityManager(EntityManager $entityManager)
+    {
+        $this->em = $entityManager;
+    }
 
     public function createQuery($context = 'list')
     {
@@ -226,5 +244,69 @@ class CcmNewsAdmin extends Admin
             'Statut traduction zh'                      => 'exportStatusZh',
             'Publié sur'                                => 'exportSites',
         );
+    }
+
+    /**
+     * @param mixed $news
+     * @return mixed|void
+     */
+    public function prePersist($news)
+    {
+        $this->handleFilmAssociation($news);
+    }
+
+    /**
+     * @param mixed $news
+     * @return mixed|void
+     */
+    public function preUpdate($news)
+    {
+        $this->handleFilmAssociation($news);
+    }
+
+    /**
+     * @param CcmNews $news
+     */
+    private function handleFilmAssociation($news)
+    {
+        /** @var EntityManager $em */
+        $em = $this->em;
+        /**
+         * if the news article IS associated with a Film
+         * we also create an entry in the CcmNewsFilmFilmAssociated table
+         * in order for it to show up when editing a Film in the BO
+         */
+        if ($news->getAssociatedFilm() != null) {
+            /** @var FilmFilm $associatedFilm */
+            $associatedFilm = $news->getAssociatedFilm();
+            /** @var CcmNewsFilmFilmAssociated $association */
+            $association = $em->getRepository(CcmNewsFilmFilmAssociated::class)->findOneBy([
+                'ccmNews'     => $news,
+                'association' => $associatedFilm
+            ]);
+            if ($association == null) {
+                $association = new CcmNewsFilmFilmAssociated();
+                $association
+                    ->setCcmNews($news)
+                    ->setAssociation($associatedFilm)
+                ;
+                $em->persist($association);
+                $em->flush();
+            }
+        } else {
+            /**
+             * if the news is not associated with a film,
+             * we find and remove all existing film -> ccm news associations
+             *
+             * @var CcmNewsFilmFilmAssociated[] $existingAssociations
+             */
+            $existingAssociations = $em->getRepository(CcmNewsFilmFilmAssociated::class)->findBy([
+                'ccmNews' => $news
+            ]);
+            foreach ($existingAssociations as $association) {
+                $em->remove($association);
+            }
+            $em->flush();
+        }
     }
 }

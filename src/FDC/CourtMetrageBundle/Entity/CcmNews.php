@@ -193,12 +193,18 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      */
     protected $oldNewsTable;
 
+    /**
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated", mappedBy="ccmNews", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $associatedFilms;
+
     public function __construct()
     {
         $this->hideSameDay = false;
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
+        $this->associatedFilms = new ArrayCollection();
         $this->displayedHome = false;
     }
 
@@ -892,5 +898,39 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
         }
 
         return $description;
+    }
+
+    /**
+     * Add associatedFilms
+     *
+     * @param CcmNewsFilmFilmAssociated $associatedFilms
+     * @return CcmNews
+     */
+    public function addAssociatedFilm(CcmNewsFilmFilmAssociated $associatedFilms)
+    {
+        $associatedFilms->setCcmNews($this);
+        $this->associatedFilms[] = $associatedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedFilms
+     *
+     * @param CcmNewsFilmFilmAssociated $associatedFilms
+     */
+    public function removeAssociatedFilm(CcmNewsFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms->removeElement($associatedFilms);
+    }
+
+    /**
+     * Get associatedFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedFilms()
+    {
+        return $this->associatedFilms;
     }
 }

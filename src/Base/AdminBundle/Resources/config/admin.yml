@@ -2340,6 +2340,8 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
     base.admin.ccm_news_article:
         class: Base\AdminBundle\Admin\CCM\CcmNewsArticleAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsArticle, ApplicationSonataAdminBundle:CRUD]
@@ -2347,6 +2349,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_article, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
     base.admin.ccm_news_video:
         class: Base\AdminBundle\Admin\CCM\CcmNewsVideoAdmin
@@ -2355,6 +2358,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
     base.admin.ccm_news_image:
         class: Base\AdminBundle\Admin\CCM\CcmNewsImageAdmin
@@ -2363,12 +2367,22 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
     base.admin.ccm_news_audio:
         class: Base\AdminBundle\Admin\CCM\CcmNewsAudioAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsAudio, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.news, label: entity.news_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    base.admin.ccm_news_film_film_associated:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsFilmFilmAssociatedAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CcmNewsFilmFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
