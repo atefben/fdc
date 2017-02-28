@@ -109,14 +109,15 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->find($oldImage->getIdpersonne())
                 ;
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
+
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
                 if (!is_file($filename)) {
                     file_put_contents($filename, file_get_contents($remoteFilename));
-
                 }
+
                 if (!(@is_array(getimagesize($filename)))) {
-                    $this->output->writeln("<info>Ingnore filename.</info>");
+                    $this->output->writeln("<info>Ignore filename.</info>");
                     continue;
                 }
 
@@ -224,15 +225,19 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->find($oldImage->getIdfilm())
                 ;
 
+
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
+                $ftpRemotFilename = $this->getFtpUrl() . $oldImage->getFichier();
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
                 if (!is_file($filename)) {
-                    file_put_contents($filename, file_get_contents($remoteFilename));
-
+                    file_put_contents($filename, file_get_contents($ftpRemotFilename));
+                    if (!(@is_array(getimagesize($filename)))) {
+                        file_put_contents($filename, file_get_contents($remoteFilename));
+                    }
                 }
                 if (!(@is_array(getimagesize($filename)))) {
-                    dump('Ignore ' . $filename);
+                    $this->output->writeln(PHP_EOL . "<error>Ignore  $filename</error>");
                     continue;
                 }
 
@@ -273,6 +278,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                         $this->getManager()->flush();
                     }
                 }
+                unlink($filename);
             } catch (\Exception $e) {
                 dump($e->getMessage());
             }
@@ -314,6 +320,14 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     private function getAmazonDirectory()
     {
         return $this->getContainer()->getParameter('selfkit_amazon_url_hd');
+    }
+
+    /**
+     * @return string
+     */
+    private function getFtpUrl()
+    {
+        return 'ftp://Site_internet:inter8963@ftp2.cannesinteractive.com/SELFKIT/Presse/';
     }
 
     /**
