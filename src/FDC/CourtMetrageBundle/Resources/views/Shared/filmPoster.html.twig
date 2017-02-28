@@ -25,7 +25,9 @@
         {% set film_format = 'small' %}
     {% endif %}
 
-    {% if display_film_path is defined and display_film_path %}
+    {% if film.imageMain %}
+        <img src="{% path media, 'reference' %}" style="width: 256px;height: 348px;object-fit: cover;">
+    {% elseif display_film_path is defined and display_film_path %}
         {% if media is not empty %}
             {% path media, film_format %}
         {% else %}
