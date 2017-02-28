@@ -34,11 +34,6 @@
 
                             <div class="item animated active" data-item="{{ dataItem }}"
                                  style="background-image:url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')"></div>
-                            {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'S' %}
-                                {% set type = 'communique' %}
-                            {% else %}
-                                {% set type = 'info' %}
-                            {% endif %}
                             {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
