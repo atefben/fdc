@@ -8,7 +8,6 @@
     {% set trans = video.findTranslationByLocale('fr') %}
 {% endif %}
 
-{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
