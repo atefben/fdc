@@ -50,14 +50,14 @@ class HomepageCorporateSlideRepository extends EntityRepository
             ->leftjoin('i4.translations', 'i4t')
 
             ->andWhere(
-                 '(s1t.locale = :locale AND s1t.isPublishedOnFDCEvent = 1 AND ss.slug = :siteCorpo ) OR
-                 (s2t.locale = :locale AND s2t.isPublishedOnFDCEvent = 1 AND ss.slug = :siteCorpo ) OR
-                 (s3t.locale = :locale AND s3t.isPublishedOnFDCEvent = 1 AND ss.slug = :siteCorpo ) OR
-                 (s4t.locale = :locale AND s4t.isPublishedOnFDCEvent = 1 AND ss.slug = :siteCorpo ) OR
-                 (i1t.locale = :locale AND i1t.isPublishedOnFDCEvent = 1 AND iss.slug = :siteCorpo ) OR
-                 (i2t.locale = :locale AND i2t.isPublishedOnFDCEvent = 1 AND iss.slug = :siteCorpo ) OR
-                 (i3t.locale = :locale AND i3t.isPublishedOnFDCEvent = 1 AND iss.slug = :siteCorpo ) OR
-                 (i4t.locale = :locale AND i4t.isPublishedOnFDCEvent = 1 AND iss.slug = :siteCorpo )'
+                 '(s1t.locale = :locale AND ss.slug = :siteCorpo ) OR
+                 (s2t.locale = :locale AND ss.slug = :siteCorpo ) OR
+                 (s3t.locale = :locale AND ss.slug = :siteCorpo ) OR
+                 (s4t.locale = :locale AND ss.slug = :siteCorpo ) OR
+                 (i1t.locale = :locale AND iss.slug = :siteCorpo ) OR
+                 (i2t.locale = :locale AND iss.slug = :siteCorpo ) OR
+                 (i3t.locale = :locale AND iss.slug = :siteCorpo ) OR
+                 (i4t.locale = :locale AND iss.slug = :siteCorpo )'
             )
             ->setParameter('locale', $locale)
             ->setParameter('siteCorpo', 'site-institutionnel')
