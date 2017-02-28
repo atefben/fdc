@@ -8,7 +8,7 @@
                         <a href="#">
                             {{ menu.transName|trans }}
                         </a>
-                    {% if menu.route == 'fdc_corporate_news_getarticles' and menu.enabled == true %}
+                    {% elseif menu.route == 'fdc_corporate_news_getarticles' and menu.enabled == true %}
                         <a href="{{ path('fdc_corporate_news_getarticles', {'year': currentYear}) }}"
                            {% if route =='fdc_corporate_news_getarticles' %}active{% endif %}>
                             {{ menu.transName|trans }}
