@@ -113,7 +113,7 @@ $(document).ready(function() {
         }
 
         checkDisplayHomeCheckbox();
-        $("input[id*='sites_1']").on('ifChanged', function () {
+        $("input[id*='sites_1'], input[id*='sites_3']").on('ifChanged', function () {
             checkDisplayHomeCheckbox()
         });
     }
