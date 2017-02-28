@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use FDC\CourtMetrageBundle\Entity\CcmPlanDesSalles;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner;
 
 class LoadCcmContentData implements FixtureInterface
@@ -42,6 +43,11 @@ class LoadCcmContentData implements FixtureInterface
             $ourEvents = new CcmShortFilmCorner();
             $ourEvents->setType(CcmShortFilmCorner::TYPE_OUR_EVENTS);
             $manager->persist($ourEvents);
+        }
+
+        if (count($manager->getRepository(CcmPlanDesSalles::class)->findAll()) == 0) {
+            $planDesSalles = new CcmPlanDesSalles();
+            $manager->persist($planDesSalles);
         }
 
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmFooterContent::class)
