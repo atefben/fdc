@@ -44,6 +44,12 @@ class HomepageSejour
     protected $homepage;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CcmShortFilmCorner", inversedBy="sejoures")
+     * @ORM\JoinColumn(name="short_film_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $shortFilm;
+
+    /**
      * HomepageSejour constructor.
      */
     public function __construct()
@@ -122,6 +128,28 @@ class HomepageSejour
     public function setTranslations($translations)
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * Get shortFilm.
+     *
+     * @return mixed
+     */
+    public function getShortFilm()
+    {
+        return $this->shortFilm;
+    }
+
+    /**
+     * Set shortFilm.
+     *
+     * @param mixed $shortFilm
+     */
+    public function setShortFilm($shortFilm)
+    {
+        $this->shortFilm = $shortFilm;
 
         return $this;
     }
