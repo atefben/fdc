@@ -193,12 +193,12 @@ class DefaultController extends Controller
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
 
@@ -207,8 +207,7 @@ class DefaultController extends Controller
         if (count($homeContents) > 6) {
             $last = false;
             $homeContents = array_slice($homeContents, 0, 6);
-        }
-        else {
+        } else {
             $last = true;
         }
 
@@ -238,8 +237,8 @@ class DefaultController extends Controller
             'homeArticles'    => $homeContents,
             'filters'         => $filters,
             'lastPublishedAt' => $lastPublishedAt,
-            'festivalYear' => $settings->getFestival()->getYear(),
-            'last' => $last,
+            'festivalYear'    => $settings->getFestival()->getYear(),
+            'last'            => $last,
         ]);
     }
 }

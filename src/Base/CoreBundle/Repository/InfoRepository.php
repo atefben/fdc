@@ -254,7 +254,16 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press')
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $dateTime
+     * @param null $count
+     * @param string $site
+     * @param bool $displayedHome
+     * @return Info[]
+     */
+    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -314,6 +323,13 @@ class InfoRepository extends EntityRepository
 
         if ($count) {
             $qb->setMaxResults($count);
+        }
+
+        if ($displayedHome) {
+            $qb
+                ->andWhere('n.displayedHome = :displayedHome')
+                ->setParameter(':displayedHome', true)
+            ;
         }
 
         return $qb

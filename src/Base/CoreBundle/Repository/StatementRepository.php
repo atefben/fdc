@@ -336,9 +336,10 @@ class StatementRepository extends EntityRepository
      * @param $dateTime
      * @param null $count
      * @param string $site
-     * @return mixed
+     * @param bool $displayedHome
+     * @return Statement[]
      */
-    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press')
+    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -359,6 +360,7 @@ class StatementRepository extends EntityRepository
             ->andWhere('(n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->setParameter('datetime', $dateTime)
+
         ;
 
         if ($festival) {
@@ -398,6 +400,13 @@ class StatementRepository extends EntityRepository
 
         if ($count) {
             $qb->setMaxResults($count);
+        }
+
+        if ($displayedHome) {
+            $qb
+                ->andWhere('n.displayedHome = :displayedHome')
+                ->setParameter(':displayedHome', true)
+            ;
         }
 
         return $qb
