@@ -1,5 +1,5 @@
 {% if movie.persons|length > 0 %}
-    <div class="casting" data-section="casting">
+    <div class="casting" data-section="casting" style="margin-top:1px;">
         {% set medias = director_film_media_all(movie, app.request.locale) %}
         {% if medias|length > 0 %}
             <div class="gallery">
@@ -11,47 +11,47 @@
                             {% else %}
                                 {% media media.file, media.file.context ~ '_292x397' with {title: '', width: '', height: ''} %}
                             {% endif %}
-                            <span class="caption">
-                                {% if media.copyright %}
-                                    © {{ media.copyright }}
-                                {% endif %}
-                                {% if app.request.locale == 'fr' and media.titleVf %}
-                                    {% if media.copyright %} / {% endif %}
-                                    {{ media.titleVf }}
-                                {% elseif app.request.locale != 'fr' and media.titleVa %}
-                                    {% if media.copyright %} / {% endif %}
-                                    {{ media.titleVa }}
-                                {% endif %}
-                            </span>
+                            {% if loop.index0 == 0 %}
+                                <span class="caption">
+                                    {% if media.copyright %}
+                                        © {{ media.copyright }}
+                                    {% endif %}
+                                    {% if app.request.locale == 'fr' and media.titleVf %}
+                                        {% if media.copyright %} / {% endif %}
+                                        {{ media.titleVf }}
+                                    {% elseif app.request.locale != 'fr' and media.titleVa %}
+                                        {% if media.copyright %} / {% endif %}
+                                        {{ media.titleVa }}
+                                    {% endif %}
+                                </span>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="thumbs">
-                    {% if medias|length > 1 %}
-                        <div class="thumbs">
-                            {% for media in medias %}
-                                <a href="#"
-                                {% if loop.index0 == 0 %}
-                                    class="active"
-                                {% endif %}
-                                   data-caption="
-                                {% if media.copyright %}
-                                    © {{ media.copyright }}
-                                {% endif %}
-                                {% if app.request.locale == 'fr' and media.titleVf %}
-                                    {% if media.copyright %} / {% endif %}
-                                    {{ media.titleVf }}
-                                {% elseif app.request.locale != 'fr' and media.titleVa %}
-                                    {% if media.copyright %} / {% endif %}
-                                    {{ media.titleVa }}
-                                {% endif %}
-                                ">
-                                    <img src="{% path media.file, media.file.context ~ '_38x46'  %}" alt="{{ movie|trans_fallback('title')?:movie.titleVO }}">
-                                </a>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </div>
+                {% if medias|length > 1 %}
+                    <div class="thumbs">
+                        {% for media in medias %}
+                            <a href="#"
+                            {% if loop.index0 == 0 %}
+                                class="active"
+                            {% endif %}
+                               data-caption="
+                            {% if media.copyright %}
+                                © {{ media.copyright }}
+                            {% endif %}
+                            {% if app.request.locale == 'fr' and media.titleVf %}
+                                {% if media.copyright %} / {% endif %}
+                                {{ media.titleVf }}
+                            {% elseif app.request.locale != 'fr' and media.titleVa %}
+                                {% if media.copyright %} / {% endif %}
+                                {{ media.titleVa }}
+                            {% endif %}
+                            ">
+                                <img src="{% path media.file, media.file.context ~ '_38x46'  %}" alt="{{ movie|trans_fallback('title')?:movie.titleVO }}">
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
         <div class="content">
@@ -72,15 +72,17 @@
                             {% endif %}
                         {% endfor %}
                     {% endif %}
-                    <div class="actors">
-                        <h3 class="title-section">{{ 'ccm.casting'|trans }}</h3>
-                        {% for filmPerson in movie.getActors() %}
-                            {% if filmPerson.person is not empty %}
-                                {% set person = filmPerson.person %}
-                                <p><a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{ person.firstName|trim ~ ' ' ~ person.lastName|trim }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+                    {% if movie.getActors()|length > 0 %}
+                        <div class="actors">
+                            <h3 class="title-section">{{ 'ccm.casting'|trans }}</h3>
+                            {% for filmPerson in movie.getActors() %}
+                                {% if filmPerson.person is not empty %}
+                                    {% set person = filmPerson.person %}
+                                    <p><a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{ person.firstName|trim ~ ' ' ~ person.lastName|trim }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
