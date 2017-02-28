@@ -95,6 +95,7 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
         $builder
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
                 'required_locales' => array('fr'),
                 'fields' => array(
                     'applyChanges' => array(

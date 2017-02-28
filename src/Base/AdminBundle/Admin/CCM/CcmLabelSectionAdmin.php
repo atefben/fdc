@@ -51,6 +51,7 @@ class CcmLabelSectionAdmin extends Admin
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
+                'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',
                 'fields' => array(
                     'applyChanges' => array(
