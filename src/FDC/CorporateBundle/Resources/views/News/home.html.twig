@@ -14,7 +14,7 @@
                         {% set sliderItems = {} %}
                         {% set dataItem = 1 %}
                         {% for homeSlide in homeSlider %}
-                            {% if class(article) starts with 'S' %}
+                            {% if class(homeSlide) starts with 'S' %}
                                 {% set type = 'communique' %}
                             {% else %}
                                 {% set type = 'info' %}
