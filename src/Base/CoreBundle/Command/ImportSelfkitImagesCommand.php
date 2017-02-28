@@ -166,9 +166,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
                     $media->setOldMediaPhotoJury($oldImage->getIdjury());
                     $media->setCopyright($oldImage->getCopyright());
-                } elseif ($this->input->getOption('force-reupload')) {
-                    $media->setBinaryContent($filename);
-                    $media->setThumbsGenerated(false);
                 }
                 $media->setName($oldImage->getTitre());
                 $media->setOldMediaFilm($oldImage->getIdfilm());
