@@ -480,8 +480,10 @@ html {
 
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
-  top: 2.2rem;
+  top: 1rem;
   margin-left: 10.3rem; }
+  .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .Article-header .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
+    top: 2.2rem; }
 
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback {
   background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;

@@ -24,6 +24,12 @@
 		}
 	}
 
+	&.jw-skin-fdc.jw-state-buffering {
+		.jw-display-icon-container .jw-icon-display {
+			display: none;
+		}	
+	}
+
 	&.jw-skin-fdc.jw-state-idle {
 		.jw-icon-playback {
 			background: transparent;

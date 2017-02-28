@@ -14,6 +14,9 @@
   .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback:before, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback:before {
     content: ""; }
 
+.jwplayer.jw-skin-fdc.jw-state-buffering .jw-display-icon-container .jw-icon-display {
+  display: none; }
+
 .jwplayer.jw-skin-fdc.jw-state-idle .jw-icon-playback {
   background: transparent; }
 
