@@ -106,7 +106,6 @@
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
-          {{ dump(associatedNews) }}
           {% set type = 'news' %}
           {% set variant = 'article' %}
           {% if associatedNews is news_article %}
@@ -178,6 +177,7 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
+                {{ dump(imageTrans) }}
                 {% if imageTrans is defined and imageTrans is not null %}
                     {% set file = imageTrans.file %}
                     {% set img = associatedNews.header %}
