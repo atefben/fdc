@@ -7,17 +7,16 @@
 {% endif %}
 
 {% set header = news.header %}
-in tpl
-{% if header is not null %}headernotnull 
+{% if header is not null %}
     {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
         {% set imageTrans = news.header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{% if news.video.image is not null %}newsvideoimagenotnull 
+{% if news.video.image is not null %}
     {% if imageTrans is defined %}
         {% set image = imageTrans.file %}
-    {% else %}newsvideoimagenotnullelse 
+    {% else %}
         {% set header = news.video.image %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
         {% if imageTrans is null or imageTrans.file is null %}
