@@ -61,11 +61,19 @@
                                     {% endif %}
 
                                     {% if widget.translatable.isWidgetTwoColumns() %}
-                                        {% include 'FDCCourtMetrageBundle:Participate:partials/twoColumnWidget.html.twig' with {'widget': widget} %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/twoColumnWidget.html.twig' with {
+                                            'widget': widget,
+                                            'twoColumnsTabs': twoColumnsTabs,
+                                            'twoColumnsFiles': twoColumnsFiles
+                                        } %}
                                     {% endif %}
 
                                     {% if widget.translatable.isWidgetThreeColumns() %}
-                                        {% include 'FDCCourtMetrageBundle:Participate:partials/threeColumnWidget.html.twig' with {'widget': widget} %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/threeColumnWidget.html.twig' with {
+                                            'widget': widget,
+                                            'threeColumnsTabs': threeColumnsTabs,
+                                            'threeColumnsFiles': threeColumnsFiles
+                                        } %}
                                     {% endif %}
                                 {% endfor %}
                             </div> <!-- fin de item-->

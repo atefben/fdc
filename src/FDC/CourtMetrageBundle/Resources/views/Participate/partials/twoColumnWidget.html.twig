@@ -10,6 +10,15 @@
                 <span class="title-img">{{ widget.title }}</span>
                 <p class="caption"><span class="italic">{{ widget.legend|raw }}</p>
             </div>
+
+            {% if twoColumnsTabs[widget.translatable.id][1] is defined %}
+                {% include 'FDCCourtMetrageBundle:Participate:partials/downloadZip.html.twig' with {
+                    'widget': widget,
+                    'tabs': twoColumnsTabs,
+                    'files': twoColumnsFiles,
+                    'column': 1
+                } %}
+            {% endif %}
         </div>
 
         <div class="item-img big">
@@ -23,42 +32,14 @@
                 <p class="caption"><span class="italic">{{ widget.legend2|raw }}</span></p>
             </div>
 
-            {#<div class="download">#}
-
-                {#<div class="item">#}
-                    {#<strong class="title-dowload">compétition</strong>#}
-                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<div class="item">#}
-                    {#<strong class="title-dowload">un certain regard</strong>#}
-                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<div class="item">#}
-                    {#<strong class="title-dowload">hors compétition</strong>#}
-                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<div class="item">#}
-                    {#<strong class="title-dowload">cannes classic</strong>#}
-                    {#<div class="buttons buttons-02 a-left s-margin-top">#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>#}
-                        {#<a href="#" class="button"><i class="icon icon-download"></i> .eps</a>#}
-                    {#</div>#}
-                    {#<a href="#" class="link">Contraintes techniques</a>#}
-                {#</div>#}
-
-            {#</div> <!-- fin download -->#}
+            {% if twoColumnsTabs[widget.translatable.id][2] is defined %}
+                {% include 'FDCCourtMetrageBundle:Participate:partials/downloadZip.html.twig' with {
+                    'widget': widget,
+                    'tabs': twoColumnsTabs,
+                    'files': twoColumnsFiles,
+                    'column': 2
+                } %}
+            {% endif %}
         </div> <!--fin item-img-->
     </div> <!-- fin two-image-->
 </div> <!-- fin contain-infos -->

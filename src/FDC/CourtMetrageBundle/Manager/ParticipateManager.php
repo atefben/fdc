@@ -3,6 +3,11 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use FDC\CourtMetrageBundle\Entity\CcmFilmRegisterTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidget;
+use FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidgetCollection;
+use FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidgetTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelFileCollection;
+use FDC\CourtMetrageBundle\Entity\CcmLabelFileTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentOneColumnTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTextTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumnsTranslation;
@@ -181,5 +186,139 @@ class ParticipateManager
         }
 
         return null;
+    }
+
+    public function getImageSectionTabs($section)
+    {
+        if ($section) {
+            $labelContentFilesWidgetCollectionRepo = $this->em->getRepository(CcmLabelContentFilesWidgetCollection::class);
+            $labelContentFilesWidgetRepo = $this->em->getRepository(CcmLabelContentFilesWidgetTranslation::class);
+
+            $labelContentFilesWidgetCollection = $labelContentFilesWidgetCollectionRepo
+                ->findBy(
+                    array(
+                        'labelContentFiles' => $section->getId()
+                    )
+                );
+
+
+            if ($labelContentFilesWidgetCollection) {
+                $filesWidgets = [];
+                foreach ($labelContentFilesWidgetCollection as $widget) {
+                    $fileWidget = $labelContentFilesWidgetRepo
+                        ->getFilesWidgetsByLocaleAndWidgetId(
+                            $this->requestStack->getMasterRequest()->get('_locale'), $widget->getLabelContentFileWidget()
+                        );
+
+                    if ($fileWidget) {
+                        $filesWidgets[] = $fileWidget;
+                    }
+                }
+                return $filesWidgets;
+            }
+            return [];
+        }
+        return [];
+    }
+
+    public function getFilesList($widgets)
+    {
+        if ($widgets) {
+            $filesList = [];
+            $labelFileCollectionRepo = $this->em->getRepository(CcmLabelFileCollection::class);
+            $labelFileRepo = $this->em->getRepository(CcmLabelFileTranslation::class);
+
+            foreach ($widgets as $widget) {
+                $translatableId = $widget->getTranslatable()->getId();
+                $labelFileCollection = $labelFileCollectionRepo
+                    ->findBy(
+                        array(
+                            'contentFilesWidget' => $translatableId
+                        )
+                    );
+
+                if ($labelFileCollection) {
+                    $filesList[$translatableId] = [];
+
+                    foreach ($labelFileCollection as $item) {
+                        $file = $labelFileRepo
+                            ->getLabelFileByLocaleAndLabelFileId(
+                                $this->requestStack->getMasterRequest()->get('_locale'),
+                                $item->getLabelFile()
+                            );
+
+                        if ($file) {
+                            $filesList[$translatableId][] = $file;
+                        }
+                    }
+                }
+            }
+            return $filesList;
+        }
+        return [];
+    }
+
+    public function getFilesWidgetsList($labelSectionsWidgets)
+    {
+        $twoColumnsTabs = array();
+        $twoColumnsFiles = array();
+
+        $threeColumnsTabs = array();
+        $threeColumnsFiles = array();
+        foreach($labelSectionsWidgets as $sectionWidgets) {
+            foreach ($sectionWidgets as $widget) {
+                if ($widget->getTranslatable()->isWidgetTwoColumns()) {
+                    if($widget->getTranslatable()->getLabelContentFiles()){
+                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles());
+                        $files = $this->getFilesList($tabs);
+
+                        $twoColumnsTabs[$widget->getTranslatable()->getId()][1] = $tabs;
+                        $twoColumnsFiles = $twoColumnsFiles + $files;
+                    }
+
+                    if($widget->getTranslatable()->getLabelContentFiles2()) {
+                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles2());
+                        $files = $this->getFilesList($tabs);
+
+                        $twoColumnsTabs[$widget->getTranslatable()->getId()][2] = $tabs;
+                        $twoColumnsFiles = $twoColumnsFiles + $files;
+
+                    }
+                }
+
+                if ($widget->getTranslatable()->isWidgetThreeColumns()) {
+                    if($widget->getTranslatable()->getLabelContentFiles()){
+                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles());
+                        $files = $this->getFilesList($tabs);
+
+                        $threeColumnsTabs[$widget->getTranslatable()->getId()][1] = $tabs;
+                        $threeColumnsFiles = $threeColumnsFiles + $files;
+                    }
+
+                    if($widget->getTranslatable()->getLabelContentFiles2()) {
+                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles2());
+                        $files = $this->getFilesList($tabs);
+
+                        $threeColumnsTabs[$widget->getTranslatable()->getId()][2] = $tabs;
+                        $threeColumnsFiles = $threeColumnsFiles + $files;
+                    }
+
+                    if($widget->getTranslatable()->getLabelContentFiles3()) {
+                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles3());
+                        $files = $this->getFilesList($tabs);
+
+                        $threeColumnsTabs[$widget->getTranslatable()->getId()][3] = $tabs;
+                        $threeColumnsFiles = $threeColumnsFiles + $files;
+                    }
+                }
+            }
+        }
+
+        return array(
+            'threeColumnsTabs' => $threeColumnsTabs,
+            'threeColumnsFiles' => $threeColumnsFiles,
+            'twoColumnsTabs' => $twoColumnsTabs,
+            'twoColumnsFiles' => $twoColumnsFiles
+        );
     }
 }

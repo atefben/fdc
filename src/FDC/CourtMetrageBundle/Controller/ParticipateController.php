@@ -93,10 +93,16 @@ class ParticipateController extends Controller
         $labelSections = $participateManager->getLabelSections($labelPage);
         $labelSectionsWidgets = $participateManager->getLabelSectionsWidgets($labelPage);
 
+        $filesWidgets = $participateManager->getFilesWidgetsList($labelSectionsWidgets);
+
         return $this->render('FDCCourtMetrageBundle:Participate:label.html.twig', array(
             'labelPage' => $labelPage,
             'labelSectionsWidgets' => $labelSectionsWidgets,
-            'labelSections' => $labelSections
+            'labelSections' => $labelSections,
+            'threeColumnsTabs' => $filesWidgets['threeColumnsTabs'],
+            'threeColumnsFiles' => $filesWidgets['threeColumnsFiles'],
+            'twoColumnsTabs' => $filesWidgets['twoColumnsTabs'],
+            'twoColumnsFiles' => $filesWidgets['twoColumnsFiles']
         ));
     }
 

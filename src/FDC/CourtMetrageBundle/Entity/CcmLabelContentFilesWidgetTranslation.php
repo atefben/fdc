@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmLabelContentFilesWidgetTranslation
  * @ORM\Table(name="ccm_label_content_files_widget_translation")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmLabelContentFilesWidgetTranslationRepository")
  */
 class CcmLabelContentFilesWidgetTranslation implements TranslateChildInterface
 {

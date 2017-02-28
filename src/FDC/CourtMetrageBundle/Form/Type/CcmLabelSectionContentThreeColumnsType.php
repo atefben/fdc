@@ -258,40 +258,31 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                 'required' => true
             ))
             ->add('labelContentFiles', 'sonata_type_model_list', array(
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
                 'label' => 'form.ccm.graphical_charter.content_files',
                 'sonata_field_description' =>  $this->sonataAdminContentFiles->getFormFieldDescriptions()['labelContentFiles'],
                 'model_manager' => $this->contentFilesAdmin->getModelManager(),
                 'class' => $this->contentFilesAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
+                'btn_delete' => true,
+                'required' => false
             ))
             ->add('labelContentFiles2', 'sonata_type_model_list', array(
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
                 'label' => 'form.ccm.graphical_charter.content_files_2',
                 'sonata_field_description' =>  $this->sonataAdminContentFilesTwo->getFormFieldDescriptions()['labelContentFiles2'],
                 'model_manager' => $this->contentFilesAdmin->getModelManager(),
                 'class' => $this->contentFilesAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
+                'btn_delete' => true,
+                'required' => false
             ))
             ->add('labelContentFiles3', 'sonata_type_model_list', array(
-                'constraints'        => array(
-                    new NotBlank(),
-                ),
                 'label' => 'form.ccm.graphical_charter.content_files_3',
                 'sonata_field_description' =>  $this->sonataAdminContentFilesThree->getFormFieldDescriptions()['labelContentFiles2'],
                 'model_manager' => $this->contentFilesAdmin->getModelManager(),
                 'class' => $this->contentFilesAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
+                'btn_delete' => true,
+                'required' => false
             ))
         ;
     }
