@@ -127,7 +127,7 @@ class CcmSocialWallCommand extends ContainerAwareCommand
                                 }
 
                                 $socialWall = new CcmSocialWall();
-                                $socialWall->setMessage(json_encode($tweet->text));
+                                $socialWall->setMessage($tweet->text);
                                 if (isset($tweet->entities->media[0]->media_url)) {
                                     $socialWall->setContent($tweet->entities->media[0]->media_url);
                                 } else {
