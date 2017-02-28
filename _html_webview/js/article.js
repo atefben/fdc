@@ -98,8 +98,6 @@ var ow = ow || {};
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
 				var player = $(this);
-				console.log(player.attr('id'));
-				console.log(player.data('file-mp3'));
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
 					"controls":false,
@@ -110,6 +108,8 @@ var ow = ow || {};
 					'skin': {
 						'name': 'fdc'
 					}
+				}).on('ready',function(){
+					player.find('audio').prop('playsinline',true);
 				});
 			});
 		}
