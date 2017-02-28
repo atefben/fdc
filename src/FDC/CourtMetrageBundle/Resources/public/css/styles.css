@@ -20628,7 +20628,7 @@ body:not(.tablette) .webtv #live .img {
   font-weight: 300;
   margin-bottom: 27px;
 }
-.sitemap section article a {
+.sitemap section article a.sub-cat {
   color: #c8a461;
   text-transform: uppercase;
   font-size: 0.8rem;
