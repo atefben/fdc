@@ -65,7 +65,7 @@
                                     {% if personFunction.function.id not in [65, 30, 4]  %}
                                         <p>
                                             {% set person = filmPerson.person %}
-                                            <a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{person.lastName ~ ' ' ~ person.firstName|upper }}</a> - {{ filmPerson.person|person_function_gender(personFunction.function, 'name') }}
+                                            <a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{ person.firstName|trim ~ ' ' ~ person.lastName|trim }}</a> - {{ filmPerson.person|person_function_gender(personFunction.function, 'name') }}
                                         </p>
                                     {% endif %}
                                 {% endfor %}
@@ -77,7 +77,7 @@
                         {% for filmPerson in movie.getActors() %}
                             {% if filmPerson.person is not empty %}
                                 {% set person = filmPerson.person %}
-                                <p><a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{person.lastName ~ ' ' ~ person.firstName|upper }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
+                                <p><a href="{{ path('fdc_court_metrage_artist', {'slug' : person.slug}) }}">{{ person.firstName|trim ~ ' ' ~ person.lastName|trim }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
                             {% endif %}
                         {% endfor %}
                     </div>
