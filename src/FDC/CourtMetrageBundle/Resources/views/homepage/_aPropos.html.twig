@@ -17,7 +17,7 @@
             <a href="#">{{ homepage.aProposDescription|raw }}</a>
         {% endif %}
         {% if homepage.aProposUrl is not null %}
-            <a href="{{ homepage.aProposUrl }}"><div class="aboutMore">{{ 'ccm_en_savoir_plus'|trans }}</div></a>
+            <a href="{{ homepage.aProposUrl }}" {% if fdc_court_metrage_domain in homepage.aProposUrl %}target="_blank"{% endif %}><div class="aboutMore">{{ 'ccm_en_savoir_plus'|trans }}</div></a>
         {% endif %}
     </div>
 </div>
