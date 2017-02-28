@@ -22,10 +22,10 @@
                 {% endif %}
                 <div class="contactInfo">
                     {% if pro.country is not null %}
-                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/world.png') }}" alt=""><h3>{{ pro.country }}</h3></div>
+                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/world.png') }}" alt=""><h3>{{ pro.country|shorten(56, '...') }}</h3></div>
                     {% endif %}
                     {% if pro.url is not null %}
-                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/computer.png') }}" alt=""><h3><a href="{{ pro.url }}" target="blank">{{ pro.urlName }}</a></h3></div>
+                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/computer.png') }}" alt=""><h3><a href="{{ pro.url|shorten(56, '...') }}" target="blank">{{ pro.urlName }}</a></h3></div>
                     {% endif %}
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 {% if pro.updatedAt is not null %}
                     <div class="maj">{{ 'date_pro_modal' }} {{ pro.updatedAt|date('d') }} {{ pro.updatedAt|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ pro.updatedAt|date('Y') }}</div>
                 {% endif %}
-                <div class="titleHalf"><h3>{{ pro.name }}</h3></div>
+                <div class="titleHalf"><h3>{{ pro.name|shorten(46,'...') }}</h3></div>
                 <div class="cats">
                     {% if pro.translatable.getActivitiesCollection is not null %}
                         {% for activityCollection in pro.translatable.getActivitiesCollection %}

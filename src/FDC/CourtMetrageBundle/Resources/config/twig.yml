@@ -3,3 +3,8 @@ services:
       class: FDC\CourtMetrageBundle\Twig\MenuExtension
       tags:
           - name: twig.extension
+
+    base.twig.filter_extension:
+      class: FDC\CourtMetrageBundle\Twig\FilterExtension
+      tags:
+          - name: twig.extension
