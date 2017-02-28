@@ -103,19 +103,35 @@ $(document).ready(function() {
         }
     });
 
-    if ($("input[id*='sites_1']").is(':checked')) {
-        $('.form-group[id$="displayedHomepageLabel"]').show();
-    } else {
-        $('.form-group[id$="displayedHomepageLabel"]').hide();
-    }
-
-    $("input[id*='sites_1']").on('ifChanged', function() {
-        if (!$(this).is(':checked')) {
-            $('.form-group[id$="displayedHomepageLabel"]').hide();
-        } else {
-            $('.form-group[id$="displayedHomepageLabel"]').show();
+    if ($("input[id*='sites_1']").length && $("input[id*='sites_3']").length) {
+        function checkDisplayHomeCheckbox() {
+            if ($("input[id*='sites_1']").is(':checked') || $("input[id*='sites_3']").is(':checked')) {
+                $('.form-group[id$="displayedHomepageLabel"]').show();
+            } else {
+                $('.form-group[id$="displayedHomepageLabel"]').hide();
+            }
         }
-    });
+
+        checkDisplayHomeCheckbox();
+        $("input[id*='sites_1']").on('ifChanged', function () {
+            checkDisplayHomeCheckbox()
+        });
+    }
+    else {
+        if ($("input[id*='sites_1']").is(':checked')) {
+            $('.form-group[id$="displayedHomepageLabel"]').show();
+        } else {
+            $('.form-group[id$="displayedHomepageLabel"]').hide();
+        }
+
+        $("input[id*='sites_1']").on('ifChanged', function () {
+            if (!$(this).is(':checked')) {
+                $('.form-group[id$="displayedHomepageLabel"]').hide();
+            } else {
+                $('.form-group[id$="displayedHomepageLabel"]').show();
+            }
+        });
+    }
 
     //change link to original edit for home
     if( $('#homepageSlide').length > 0) {
