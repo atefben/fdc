@@ -102,6 +102,7 @@ var ow = ow || {};
 				console.log(player.data('file-mp3'));
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
+					"controls":false,
 					"height": 90,
 					"title": player.data('title'),
 					"description": player.data('date'),
