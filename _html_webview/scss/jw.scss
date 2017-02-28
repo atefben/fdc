@@ -24,8 +24,8 @@
 		}
 	}
 
-	&.jw-skin-fdc.jw-state-buffering {
-		.jw-display-icon-container .jw-icon-display {
+	&.jw-skin-fdc-video.jw-state-buffering {
+		.jw-display-icon-container .jw-icon-display, .jw-controlbar {
 			display: none;
 		}	
 	}
