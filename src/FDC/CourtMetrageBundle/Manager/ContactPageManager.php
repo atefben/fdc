@@ -65,10 +65,12 @@ class ContactPageManager
         foreach ($contactPage->getSubjectsList() as $contactSubjectList) {
             /** @var CcmContactSubject $subject */
             $subject = $contactSubjectList->getContactSubject();
-            /** @var CcmContactSubjectTranslation $translation */
-            $translation = $subject->findTranslationByLocale($locale);
-            if ($translation != null) {
-                $contactSubjects[$translation->getSlug()] = $translation->getContactTheme();
+            if ($subject != null) {
+                /** @var CcmContactSubjectTranslation $translation */
+                $translation = $subject->findTranslationByLocale($locale);
+                if ($translation != null) {
+                    $contactSubjects[$translation->getSlug()] = $translation->getContactTheme();
+                }
             }
         }
         
