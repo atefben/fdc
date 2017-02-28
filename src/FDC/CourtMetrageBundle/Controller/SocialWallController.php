@@ -19,10 +19,6 @@ class SocialWallController extends Controller
 
         $posts = $socialManager->getRandomPosts();
 
-//        if (!$posts) {
-//            throw new NotFoundHttpException("Page not found");
-//        }
-
         return $this->render('FDCCourtMetrageBundle:social:wall.html.twig', array(
                 'posts' => $posts,
             )
