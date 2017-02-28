@@ -192,6 +192,8 @@ class HomepageAdmin extends Admin
 //            ))
             ->add('catalogImage', 'sonata_type_model_list', array(
                     'required' => true,
+                ), array(
+                    'sortable' => 'order',
                 )
             )
             ->add('actualiteIsActive', 'checkbox', array(
@@ -210,6 +212,34 @@ class HomepageAdmin extends Admin
             ))
             ->add('sejourIsActive', 'checkbox', array(
                 'label'    => 'form.ccm.label.sejour.sejour_is_activated',
+                'required' => false,
+            ))
+            ->add('positionCatalog',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_catalog',
+                    'required' => false,
+                ))
+            ->add('positionActualites',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_actualite',
+                    'required' => false,
+                ))
+            ->add('positionSejour',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_sejour',
+                    'required' => false,
+                ))
+            ->add('positionSocial',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.social.position_social',
+                    'required' => false,
+                ))
+            ->add('socialIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.social.social_is_activated',
                 'required' => false,
             ))
         ;

@@ -745,6 +745,10 @@ form:
                 is_active: Activer le module
                 is_active_actualite: Activer le actualite
                 url: URL
+            social:
+                title: Le social wall
+                position_social: La position du module Social
+                social_is_activated: Activer le module
             catalog:
                 pushes: Module Catalogue
                 push: Ajouter
@@ -767,6 +771,10 @@ form:
                 url: URL de la push
                 isActive: Activer le module
                 add_message: Pushes
+            homepage:
+                position_sejour: La position du module Séjour
+                position_actualite: La position du module Actualité
+                position_catalog: La position du module Catalog
             slider:
                 homepage: Slide
                 whiteTitle: Titre Blanc

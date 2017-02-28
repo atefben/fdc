@@ -11,6 +11,7 @@ use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmVideosCollection;
 use FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection;
 use FDC\CourtMetrageBundle\Entity\CcmYoutubeTranslation;
+use FDC\CourtMetrageBundle\Entity\Homepage;
 use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSejourTranslation;
@@ -89,11 +90,7 @@ class HomepageManager
     {
         return $this->em
             ->getRepository(CatalogPushTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+            ->findCatalogsByLocaleOrderByPosition($this->requestStack->getMasterRequest()->get('_locale'));
     }
 
     public function getCatalogImage()
@@ -255,5 +252,18 @@ class HomepageManager
         }
 
         return null;
+    }
+
+    public function orderTransversModules()
+    {
+        $positions = [];
+        $homepage = $this->getHomepageTranslation();
+
+        $positions[$homepage->getTranslatable()->getPositionCatalog()] = 'catalog';
+        $positions[$homepage->getTranslatable()->getPositionActualites()] = 'actualite';
+        $positions[$homepage->getTranslatable()->getPositionSejour()] = 'sejour';
+        $positions[$homepage->getTranslatable()->getPositionSocial()] = 'social';
+
+        return $positions;
     }
 }
