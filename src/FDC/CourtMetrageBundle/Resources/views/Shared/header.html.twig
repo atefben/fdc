@@ -87,36 +87,42 @@
                         {% for key, mainTab in mainNavs %}
                             {% if mainTab.translatable.isActive %}
                                 <li>
-                                    {% set menuIsActive = (routeName == mainTab.route ? true : false) %}
+                                    {% set menuURL = ('http' in mainTab.route or 'https' in mainTab.route ? mainTab.route : path(mainTab.route)) %}
+                                    {% set menuIsActive = (mainTab.route == routeName ? true : false) %}
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         {% for subTab in subNavs[key] %}
-                                            {% if subTab.translatable.isActive and routeName == subTab.route %}
+                                            {% if subTab.translatable.isActive and subTab.route == routeName %}
                                                 {% set menuIsActive = true %}
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
-                                    <a href="{{ path(mainTab.route) }}" {% if menuIsActive %}class="active"{% endif %}>{{ mainTab.name }}</a>
+                                    {% if 'inscrire-un-film' in menuURL %}
+                                        {% if participatePages is defined and participatePages is not null %}
+                                            {% for page in participatePages %}
+                                                {% if routeName == 'fdc_court_metrage_participer_page' and routeParams['slug'] == page.slug %}
+                                                    {% set menuIsActive = true %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %}
+                                    <a href="{{ menuURL }}" {% if menuIsActive %}class="active"{% endif %}>{{ mainTab.name }}</a>
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         <ul class="tcenter">
                                             {% for subTab in subNavs[key] %}
                                                 {% if subTab.translatable.isActive %}
-                                                    <li><a {% if routeName == subTab.route %}class="active"{% endif %} href="{{ path(subTab.route) }}">{{ subTab.name }}</a></li>
+                                                    {% set submenuURL = ('http' in subTab.route or 'https' in subTab.route ? subTab.route : path(subTab.route)) %}
+                                                    <li><a {% if subTab.route == routeName %}class="active"{% endif %} href="{{ submenuURL }}">{{ subTab.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
-                                        {% if isParticipate(mainTab.route) == false %}
-                                            </ul>
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if isParticipate(mainTab.route) %}
-                                        {% if participatePages is defined and participatePages is not null %}
-                                            {% if subNavs[key] is not defined or subNavs[key] is null %}
-                                                <ul class="tcenter">
+
+                                            {% if 'inscrire-un-film' in menuURL %}
+                                                {% if participatePages is defined and participatePages is not null %}
+                                                    {% for page in participatePages %}
+                                                        <li><a href="{{ path('fdc_court_metrage_participer_page', {'slug' : page.slug}) }}" {% if routeName == 'fdc_court_metrage_participer_page' and routeParams['slug'] == page.slug %}class="active"{% endif %}>{{ page.name }}</a></li>
+                                                    {% endfor %}
+                                                {% endif %}
                                             {% endif %}
-                                                {% for page in participatePages %}
-                                                    <li><a href="{{ path('fdc_court_metrage_participer_page', {'slug' : page.slug}) }}">{{ page.name }}</a></li>
-                                                {% endfor %}
-                                        {% endif %}
-                                        </ul>
+                                            </ul>
                                     {% endif %}
                                 </li>
                             {% endif %}
