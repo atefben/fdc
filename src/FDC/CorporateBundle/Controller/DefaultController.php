@@ -203,7 +203,14 @@ class DefaultController extends Controller
         $homeContents = array_merge($homeInfos, $homeStatement);
 
         $this->sortByDate($homeContents);
-        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
+        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
+        if (count($homeContents) > 6) {
+            $last = false;
+            $homeContents = array_slice($homeContents, 0, 6);
+        }
+        else {
+            $last = true;
+        }
 
         //set default filters
         $filters = [];
@@ -232,6 +239,7 @@ class DefaultController extends Controller
             'filters'         => $filters,
             'lastPublishedAt' => $lastPublishedAt,
             'festivalYear' => $settings->getFestival()->getYear(),
+            'last' => $last,
         ]);
     }
 }

@@ -1,20 +1,20 @@
 {% if homeArticles|length %}
-    {% if homeArticles|length %}
-        <div class="articles right pad">
-            {% for article in homeArticles|slice(0, 3) %}
-                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
-            {% endfor %}
-        </div>
-    {% endif %}
+    <div class="articles right pad">
+        {% for article in homeArticles|slice(0, 3) %}
+            {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
+        {% endfor %}
+    </div>
+{% endif %}
 
-    {% if homeArticles|length > 3 %}
-        <div class="articles left">
-            {% for article in homeArticles|slice(3) %}
-                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
-            {% endfor %}
-        </div>
-    {% endif %}
+{% if homeArticles|length > 3 %}
+    <div class="articles left">
+        {% for article in homeArticles|slice(3) %}
+            {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
+        {% endfor %}
+    </div>
+{% endif %}
 
+{% if not last %}
     <script type="text/javascript">
         $('#home-news-statements-more').attr('href', '{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}');
     </script>
