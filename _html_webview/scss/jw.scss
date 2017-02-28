@@ -4,8 +4,12 @@
 	&.jw-skin-fdc.jw-state-complete {
 		.jw-title {
 			display: block;
-			top: .7rem;
+			top: 1rem;
 			margin-left: 10.3rem;
+
+			.Article-header & {
+				top: 2.2rem;
+			}
 		}
 		.jw-icon-playback {
 			background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
@@ -18,6 +22,22 @@
 				content: "";
 			}
 		}
+	}
+
+	&.jw-skin-fdc.jw-state-idle {
+		.jw-icon-playback {
+			background: transparent;
+		}
+
+		.jw-title {
+			top: 2.2rem;
+		}
+
+		.jw-text-elapsed,
+		.jw-text-duration {
+			display: none;
+		}
+
 	}
 
 	&.jw-skin-fdc.jw-state-paused {
