@@ -252,9 +252,10 @@ abstract class Statement implements TranslateMainInterface
     public function __toString() {
         $string = null;
         $class = substr(strrchr(get_class($this), '\\'), 1);
+
         if ($this->getId()) {
             if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
-                $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+                $string = ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
                 $string = $this->truncate($string, 40, '..."', true);
             } else {
                 $string = "$class {$this->getId()}";
