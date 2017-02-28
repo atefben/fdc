@@ -42,11 +42,20 @@ class InfoArticle extends Info
 
 
     public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
+        $string = null;
+        $class = substr(strrchr(get_class($this), '\\'), 1);
         if ($this->getId()) {
-            $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
-            $string = $this->truncate($string, 40, '..."', true);
+            if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
+                $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+                $string = $this->truncate($string, 40, '..."', true);
+            } else {
+                $string = "$class {$this->getId()}";
+            }
+
+        }
+
+        if (!$string) {
+            $string = $class;
         }
 
         return $string;
