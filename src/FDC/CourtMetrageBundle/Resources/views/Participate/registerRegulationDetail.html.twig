@@ -24,7 +24,10 @@
             </div>
         </div>
     </section>
-{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+
+    {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
     {"breadcrumb":
         [
         {

@@ -56,3 +56,7 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@request_stack'
 
+    ccm.manager.social_wall:
+        class: FDC\CourtMetrageBundle\Manager\SocialWallManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
