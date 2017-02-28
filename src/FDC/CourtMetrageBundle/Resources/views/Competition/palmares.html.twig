@@ -20,7 +20,11 @@
             </section>
         </div>
 
-        {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
+        {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' with {
+            'isSelection': false,
+            'isJury': false,
+            'isPalmares': true
+        }%}
     </div>
 
 {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with

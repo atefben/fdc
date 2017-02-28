@@ -63,7 +63,11 @@
                     </div>
                 </section>
             </div>
-            {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
+            {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' with {
+                'isSelection': false,
+                'isJury': true,
+                'isPalmares': false
+            }%}
         </div>
     </div>
 
