@@ -63,6 +63,10 @@ sup {
     margin-top: 50px;
 }
 
+body.chocolat-open.fixed {
+    overflow-y: initial;
+}
+
 .confcourt .eventPhoto .eventPhotoContainer img {
     object-fit: cover;
     width: 100%;
