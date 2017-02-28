@@ -129,9 +129,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
                 if (!is_file($filename)) {
-                    file_put_contents($filename, file_get_contents($ftpRemotFilename));
+                    @file_put_contents($filename, file_get_contents($ftpRemotFilename));
                     if (!(@is_array(getimagesize($filename)))) {
-                        file_put_contents($filename, file_get_contents($remoteFilename));
+                        @file_put_contents($filename, file_get_contents($remoteFilename));
                     }
                 }
                 if (!(@is_array(getimagesize($filename)))) {
@@ -252,9 +252,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
                 if (!is_file($filename)) {
-                    file_put_contents($filename, file_get_contents($ftpRemotFilename));
+                    @file_put_contents($filename, file_get_contents($ftpRemotFilename));
                     if (!(@is_array(getimagesize($filename)))) {
-                        file_put_contents($filename, file_get_contents($remoteFilename));
+                        @file_put_contents($filename, file_get_contents($remoteFilename));
                     }
                 }
                 if (!(@is_array(getimagesize($filename)))) {
