@@ -13,6 +13,7 @@ use Base\CoreBundle\Util\Soif;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -433,6 +434,11 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $associatedNews;
 
     /**
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $associatedCcmNews;
+
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="News", mappedBy="associatedFilm")
      */
@@ -556,6 +562,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->languages = new ArrayCollection();
         $this->projectionProgrammationFilms = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
+        $this->associatedCcmNews = new ArrayCollection();
         $this->associatedInfo = new ArrayCollection();
         $this->associatedStatement = new ArrayCollection();
         $this->tags = new ArrayCollection();
@@ -2253,6 +2260,40 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getAssociatedNews()
     {
         return $this->associatedNews;
+    }
+
+    /**
+     * Add ccm associatedNews
+     *
+     * @param CcmNewsFilmFilmAssociated $associatedNews
+     * @return FilmFilm
+     */
+    public function addAssociatedCcmNew(CcmNewsFilmFilmAssociated $associatedNews)
+    {
+        $associatedNews->setAssociation($this);
+        $this->associatedCcmNews[] = $associatedNews;
+
+        return $this;
+    }
+
+    /**
+     * Remove ccm associatedNews
+     *
+     * @param CcmNewsFilmFilmAssociated $associatedNews
+     */
+    public function removeAssociatedCcmNew(CcmNewsFilmFilmAssociated $associatedNews)
+    {
+        $this->associatedCcmNews->removeElement($associatedNews);
+    }
+
+    /**
+     * Get ccm associatedNews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedCcmNews()
+    {
+        return $this->associatedCcmNews;
     }
 
     /**

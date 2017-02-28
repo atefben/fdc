@@ -216,6 +216,16 @@ class FilmFilmAdmin extends SoifAdmin
                     'inline' => 'table'
                 )
             )
+            ->add('associatedCcmNews', 'sonata_type_collection', array(
+                'label'        => 'form.label_film_film_associated_ccm_news',
+                'help'         => 'form.film.helper_film_film_associated_ccm_news',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('tags', 'sonata_type_collection', array(
                 'label'        => 'form.label_article_tags',
                 'help'         => 'form.news.helper_tags',

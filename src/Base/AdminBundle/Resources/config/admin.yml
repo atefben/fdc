@@ -2372,6 +2372,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_news_film_film_associated:
+        class: Base\AdminBundle\Admin\CCM\CcmNewsFilmFilmAssociatedAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CcmNewsFilmFilmAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #CCN News Widgets
     base.admin.ccm_news_widget_audio_dummy:
         class: Base\AdminBundle\Admin\CCM\CcmNewsWidgetAudioDummyAdmin
