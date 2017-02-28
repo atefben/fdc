@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\TruncatePro;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -38,6 +39,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     use Time;
     use SeoMain;
     use TranslateMain;
+    use TruncatePro;
 
     public static $localeTemp = 'fr';
 
@@ -279,10 +281,19 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     }
 
     public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
+        $string = null;
+        $class = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
+                $string = $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '..."', true);
+            } else {
+                $string = "$class {$this->getId()}";
+            }
+        }
+
+        if (!$string) {
+            $string = $class;
         }
 
         return $string;

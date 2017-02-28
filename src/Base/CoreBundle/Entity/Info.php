@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Base\AdminBundle\Component\Admin\Export;
+use Base\CoreBundle\Util\TruncatePro;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -34,6 +35,7 @@ abstract class Info implements TranslateMainInterface
     use Time;
     use SeoMain;
     use TranslateMain;
+    use TruncatePro;
 
     /**
      * @var integer
@@ -243,12 +245,20 @@ abstract class Info implements TranslateMainInterface
         $this->sites = new ArrayCollection();
     }
 
-    public function __toString()
-    {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
+    public function __toString() {
+        $string = null;
+        $class = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #' . $this->getId();
+            if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
+                $string = $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '..."', true);
+            } else {
+                $string = "$class {$this->getId()}";
+            }
+        }
+
+        if (!$string) {
+            $string = $class;
         }
 
         return $string;
