@@ -79,8 +79,8 @@
     </div>
 {% endif %}
 {% if prev is not null %}
-    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : prev.slug }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : prev.slug }) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
 {% endif %}
 {% if next is not null %}
-    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+    <a href="{{ path('fdc_ccm_movie_show', { 'slug' : next.slug }) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>
 {% endif %}
